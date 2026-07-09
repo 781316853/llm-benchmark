@@ -1,0 +1,71 @@
+/* ===== 清新自然风 - 品牌设计变量 ===== */
+:root {
+  /* 主色系:薄荷绿 */
+  --brand-primary: #2D9D78;
+  --brand-primary-hover: #248A68;
+  --brand-primary-light: #E8F5F0;
+  --brand-primary-muted: #B8DFD0;
+
+  /* 中性色阶:由深到浅 */
+  --color-text-primary: #1A2332;
+  --color-text-secondary: #4A5568;
+  --color-text-tertiary: #718096;
+  --color-text-inverse: #FFFFFF;
+
+  /* 背景色阶 */
+  --bg-primary: #F7FAF8;
+  --bg-secondary: #EDF2EF;
+  --bg-tertiary: #E2EAE5;
+  --bg-elevated: #FFFFFF;
+
+  /* 边框 */
+  --border-default: #D1DDD6;
+  --border-subtle: #E8EFEB;
+  --border-strong: #A8BFB0;
+
+  /* 语义状态色 */
+  --state-success: #2D9D78;
+  --state-success-bg: #E8F5F0;
+  --state-warning: #D4943A;
+  --state-warning-bg: #FFF8ED;
+  --state-error: #D45B5B;
+  --state-error-bg: #FDF0F0;
+  --state-info: #4A90C4;
+  --state-info-bg: #EDF4FB;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* 阴影(静态组件 alpha ≤ 0.05,仅浮动层允许更深) */
+  --shadow-sm: 0 1px 3px rgba(26,35,50,0.04);
+  --shadow-md: 0 2px 8px rgba(26,35,50,0.05);
+  --shadow-lg: 0 8px 24px rgba(26,35,50,0.08);
+
+  /* 字体 */
+  --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+  --font-body: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+
+  /* 字号 */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+
+  /* 间距 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+}

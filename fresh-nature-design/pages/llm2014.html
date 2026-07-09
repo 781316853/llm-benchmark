@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>llm2014 编程榜 code_v3 - 大模型编码基准整合门户</title>
+    <style id="theme-vars">
+/* ===== 清新自然风 - 品牌设计变量 ===== */
+:root {
+  /* 主色系:薄荷绿 */
+  --brand-primary: #2D9D78;
+  --brand-primary-hover: #248A68;
+  --brand-primary-light: #E8F5F0;
+  --brand-primary-muted: #B8DFD0;
+
+  /* 中性色阶:由深到浅 */
+  --color-text-primary: #1A2332;
+  --color-text-secondary: #4A5568;
+  --color-text-tertiary: #718096;
+  --color-text-inverse: #FFFFFF;
+
+  /* 背景色阶 */
+  --bg-primary: #F7FAF8;
+  --bg-secondary: #EDF2EF;
+  --bg-tertiary: #E2EAE5;
+  --bg-elevated: #FFFFFF;
+
+  /* 边框 */
+  --border-default: #D1DDD6;
+  --border-subtle: #E8EFEB;
+  --border-strong: #A8BFB0;
+
+  /* 语义状态色 */
+  --state-success: #2D9D78;
+  --state-success-bg: #E8F5F0;
+  --state-warning: #D4943A;
+  --state-warning-bg: #FFF8ED;
+  --state-error: #D45B5B;
+  --state-error-bg: #FDF0F0;
+  --state-info: #4A90C4;
+  --state-info-bg: #EDF4FB;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* 阴影(静态组件 alpha ≤ 0.05,仅浮动层允许更深) */
+  --shadow-sm: 0 1px 3px rgba(26,35,50,0.04);
+  --shadow-md: 0 2px 8px rgba(26,35,50,0.05);
+  --shadow-lg: 0 8px 24px rgba(26,35,50,0.08);
+
+  /* 字体 */
+  --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+  --font-body: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+
+  /* 字号 */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: 36px;
+
+  /* 间距 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+
+  <!-- ==================== 顶部标题栏 ==================== -->
+  <header class="site-header">
+    <h1>大模型编码基准整合门户</h1>
+    <p>聚合 DeepSWE · Vibe Code Bench · llm2014 code_v3 三大编码评测，聚焦跨基准模型对比</p>
+  </header>
+
+  <!-- ==================== 标签导航 ==================== -->
+  <nav class="tab-nav-wrapper">
+    <div class="tab-nav">
+      <a href="overview.html" data-dom-id="tab-overview">总览</a>
+      <a href="deepswe.html" data-dom-id="tab-deepswe">DeepSWE</a>
+      <a href="vibecode.html" data-dom-id="tab-vibecode">Vibe Code</a>
+      <a href="llm2014.html" class="active">llm2014</a>
+    </div>
+  </nav>
+
+  <!-- ==================== 主内容区 ==================== -->
+  <main class="main-content">
+
+    <!-- 页面标题区 -->
+    <section class="page-title-section">
+      <div class="page-title-row">
+        <h2>llm2014 编程榜 code_v3</h2>
+        <span class="tag">个人私有题库</span>
+      </div>
+      <div class="page-controls">
+        <select aria-label="选择月份">
+          <option value="2025-06" selected>2025-06</option>
+          <option value="2025-05">2025-05</option>
+          <option value="2025-04">2025-04</option>
+        </select>
+        <label class="toggle-group">
+          <div class="toggle-switch" role="switch" aria-checked="false" tabindex="0"></div>
+          <span>显示全部模型</span>
+        </label>
+      </div>
+      <p class="page-description">
+        llm2014 编程榜是个人维护的编程能力评测基准，涵盖多种项目类型（REST API、CLI 工具、Web 前端等），通过统一评分体系衡量主流大模型的代码生成质量。每月更新一次，提供跨项目的综合能力评估。
+      </p>
+    </section>
+
+    <!-- ==================== 双图表区域 ==================== -->
+    <div class="charts-grid">
+
+      <!-- 左图: 热力图 -->
+      <div class="card">
+        <div class="card-header">
+          <h3>项目 x 模型 热力图</h3>
+        </div>
+        <div class="card-body">
+          <div class="heatmap-container">
+            <div class="heatmap-grid">
+              <!-- 表头行 -->
+              <div class="heatmap-header model-col"></div>
+              <div class="heatmap-header">REST API</div>
+              <div class="heatmap-header">CLI工具</div>
+              <div class="heatmap-header">Web前端</div>
+              <div class="heatmap-header">数据处理</div>
+              <div class="heatmap-header">文件管理</div>
+              <div class="heatmap-header">单元测试</div>
+
+              <!-- Claude 4 Opus -->
+              <div class="heatmap-model">Claude 4 Opus</div>
+              <div class="heatmap-cell grade-aplus">A+</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-a">A</div>
+
+              <!-- GPT-4.1 -->
+              <div class="heatmap-model">GPT-4.1</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+
+              <!-- Gemini 2.5 Pro -->
+              <div class="heatmap-model">Gemini 2.5 Pro</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+
+              <!-- DeepSeek R1 -->
+              <div class="heatmap-model">DeepSeek R1</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-b">B</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-b">B</div>
+              <div class="heatmap-cell grade-a">A</div>
+
+              <!-- Claude 3.7 Sonnet -->
+              <div class="heatmap-model">Claude 3.7 Sonnet</div>
+              <div class="heatmap-cell grade-b">B</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-b">B</div>
+              <div class="heatmap-cell grade-a">A</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+
+              <!-- Qwen3 235B -->
+              <div class="heatmap-model">Qwen3 235B</div>
+              <div class="heatmap-cell grade-cplus">C+</div>
+              <div class="heatmap-cell grade-b">B</div>
+              <div class="heatmap-cell grade-cplus">C+</div>
+              <div class="heatmap-cell grade-bplus">B+</div>
+              <div class="heatmap-cell grade-c">C</div>
+              <div class="heatmap-cell grade-b">B</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右图: 综合分柱状图 -->
+      <div class="card">
+        <div class="card-header">
+          <h3>模型综合分(均值)</h3>
+        </div>
+        <div class="card-body">
+          <div class="bar-chart-list">
+            <!-- Claude 4 Opus: 8.62 -->
+            <div class="bar-row">
+              <div class="bar-label">Claude 4 Opus</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-pct-86">
+                  <span class="bar-value">8.62</span>
+                </div>
+              </div>
+            </div>
+            <!-- GPT-4.1: 7.85 -->
+            <div class="bar-row">
+              <div class="bar-label">GPT-4.1</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-pct-78">
+                  <span class="bar-value">7.85</span>
+                </div>
+              </div>
+            </div>
+            <!-- Gemini 2.5 Pro: 7.43 -->
+            <div class="bar-row">
+              <div class="bar-label">Gemini 2.5 Pro</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-pct-74">
+                  <span class="bar-value">7.43</span>
+                </div>
+              </div>
+            </div>
+            <!-- DeepSeek R1: 6.98 -->
+            <div class="bar-row">
+              <div class="bar-label">DeepSeek R1</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-pct-70">
+                  <span class="bar-value">6.98</span>
+                </div>
+              </div>
+            </div>
+            <!-- Claude 3.7 Sonnet: 6.21 -->
+            <div class="bar-row">
+              <div class="bar-label">Claude 3.7 Sonnet</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-pct-62">
+                  <span class="bar-value">6.21</span>
+                </div>
+              </div>
+            </div>
+            <!-- Qwen3 235B: 5.54 -->
+            <div class="bar-row">
+              <div class="bar-label">Qwen3 235B</div>
+              <div class="bar-track">
+                <div class="bar-fill bar-pct-55">
+                  <span class="bar-value">5.54</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.charts-grid -->
+
+    <!-- ==================== 图例 ==================== -->
+    <section class="legend-section">
+      <div class="legend-row">
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-aplus)"></div>A+</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-a)"></div>A</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-bplus)"></div>B+</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-b)"></div>B</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-cplus)"></div>C+</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-c)"></div>C</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-dplus)"></div>D+</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--grade-d)"></div>D</div>
+        <div class="legend-item"><div class="legend-swatch pass"></div>Pass</div>
+        <div class="legend-item"><div class="legend-swatch failed"></div>Failed</div>
+        <div class="legend-item"><div class="legend-swatch skip"></div>Skip</div>
+        <div class="legend-item"><div class="legend-swatch pending"></div>Pending</div>
+      </div>
+    </section>
+
+    <!-- ==================== 详细数据表格 ==================== -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <div class="card-header">
+        <h3>详细数据</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>模型</th>
+                <th>REST API</th>
+                <th>CLI工具</th>
+                <th>Web前端</th>
+                <th>数据处理</th>
+                <th>文件管理</th>
+                <th>单元测试</th>
+                <th>综合分(/10)</th>
+                <th>IDE/CLI</th>
+                <th>思考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 1. Claude 4 Opus -->
+              <tr>
+                <td>1</td>
+                <td>Claude 4 Opus</td>
+                <td><span class="grade-text-aplus">A+</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td class="score-cell">8.62</td>
+                <td>Cursor</td>
+                <td>是</td>
+              </tr>
+              <!-- 2. GPT-4.1 -->
+              <tr>
+                <td>2</td>
+                <td>GPT-4.1</td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td class="score-cell">7.85</td>
+                <td>Copilot</td>
+                <td>是</td>
+              </tr>
+              <!-- 3. Gemini 2.5 Pro -->
+              <tr>
+                <td>3</td>
+                <td>Gemini 2.5 Pro</td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td class="score-cell">7.43</td>
+                <td>Copilot</td>
+                <td>是</td>
+              </tr>
+              <!-- 4. DeepSeek R1 -->
+              <tr>
+                <td>4</td>
+                <td>DeepSeek R1</td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-b">B</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-b">B</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td class="score-cell">6.98</td>
+                <td>Cursor</td>
+                <td>是</td>
+              </tr>
+              <!-- 5. Claude 3.7 Sonnet -->
+              <tr>
+                <td>5</td>
+                <td>Claude 3.7 Sonnet</td>
+                <td><span class="grade-text-b">B</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-b">B</span></td>
+                <td><span class="grade-text-a">A</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td class="score-cell">6.21</td>
+                <td>Cursor</td>
+                <td>是</td>
+              </tr>
+              <!-- 6. Qwen3 235B -->
+              <tr>
+                <td>6</td>
+                <td>Qwen3 235B</td>
+                <td><span class="grade-text-cplus">C+</span></td>
+                <td><span class="grade-text-b">B</span></td>
+                <td><span class="grade-text-cplus">C+</span></td>
+                <td><span class="grade-text-bplus">B+</span></td>
+                <td><span class="grade-text-c">C</span></td>
+                <td><span class="grade-text-b">B</span></td>
+                <td class="score-cell">5.54</td>
+                <td>Copilot</td>
+                <td>否</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 来源说明 ==================== -->
+    <div class="source-note">
+      来源：<a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014.github.io/llm_benchmark</a> · 月度 2025-06 · 综合分按10分制显示
+    </div>
+
+  </main>
+
+  <!-- ==================== 全局页脚 ==================== -->
+  <footer class="site-footer">
+    <p>&copy; 2025 大模型编码基准整合门户 &middot; 数据仅供参考，以各评测官方为准</p>
+  </footer>
+
+
+    <style>
+    /* ==================== 基础重置与全局变量 ==================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-primary: #2D9D78;
+      --color-bg: #F7FAF8;
+      --color-text: #1A2332;
+      --color-text-secondary: #4A5568;
+      --color-card-bg: #FFFFFF;
+      --color-border: #D1DDD6;
+      --color-success: #2D9D78;
+      --color-warning: #D4943A;
+      --color-error: #D45B5B;
+      --color-purple: #7C5CFC;
+
+      /* 等级颜色 */
+      --grade-aplus: #2bb673;
+      --grade-a: #34c084;
+      --grade-bplus: #8fce3a;
+      --grade-b: #9fd84a;
+      --grade-cplus: #f0b424;
+      --grade-c: #f5be38;
+      --grade-dplus: #f87171;
+      --grade-d: #fb8585;
+
+      --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      --font-display: 'Playfair Display', 'Inter', serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==================== 顶部标题栏 ==================== */
+    .site-header {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #238a68 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+    }
+    .site-header h1 {
+      font-family: var(--font-body);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .site-header p {
+      font-size: 0.95rem;
+      opacity: 0.88;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ==================== 标签导航 ==================== */
+    .tab-nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247,250,248,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .tab-nav a {
+      display: block;
+      padding: 0.85rem 1.5rem;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      border-bottom: 2.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-nav a:hover {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    .tab-nav a.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* ==================== 主内容区 ==================== */
+    .main-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    /* ==================== 页面标题区 ==================== */
+    .page-title-section {
+      margin-bottom: 2rem;
+    }
+    .page-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .page-title-row h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(45,157,120,0.12);
+      color: var(--color-primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .page-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .page-controls select {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      padding: 0.45rem 0.75rem;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      cursor: pointer;
+      outline: none;
+    }
+    .page-controls select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(45,157,120,0.15);
+    }
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--color-text-secondary);
+    }
+    /* 开关样式 */
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      background: var(--color-border);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .toggle-switch.active {
+      background: var(--color-primary);
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: transform 0.25s;
+    }
+    .toggle-switch.active::after {
+      transform: translateX(18px);
+    }
+    .page-description {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ==================== 卡片通用 ==================== */
+    .card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 1rem 1.25rem 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .card-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    /* ==================== 双图表网格 ==================== */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 960px) {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==================== 热力图 ==================== */
+    .heatmap-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: minmax(130px, 1.2fr) repeat(6, 1fr);
+      gap: 2px;
+      min-width: 520px;
+    }
+    /* 表头行 */
+    .heatmap-header {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      padding: 0.5rem 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(45,157,120,0.06);
+      border-radius: 4px;
+    }
+    .heatmap-header.model-col {
+      justify-content: flex-end;
+      padding-right: 0.6rem;
+    }
+    /* 模型名称列 */
+    .heatmap-model {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0.75rem;
+      white-space: nowrap;
+    }
+    /* 等级单元格 */
+    .heatmap-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 0.55rem 0.25rem;
+      border-radius: 4px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+      min-height: 36px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .heatmap-cell:hover {
+      transform: scale(1.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
+    /* 各等级背景色 */
+    .grade-aplus { background: var(--grade-aplus); }
+    .grade-a     { background: var(--grade-a); }
+    .grade-bplus { background: var(--grade-bplus); }
+    .grade-b     { background: var(--grade-b); }
+    .grade-cplus { background: var(--grade-cplus); }
+    .grade-c     { background: var(--grade-c); }
+    .grade-dplus { background: var(--grade-dplus); }
+    .grade-d     { background: var(--grade-d); }
+
+    /* ==================== 柱状图 ==================== */
+    .bar-chart-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .bar-label {
+      width: 140px;
+      min-width: 140px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--color-text);
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bar-track {
+      flex: 1;
+      height: 28px;
+      background: #f0f5f2;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--color-purple), var(--color-primary));
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0.5rem;
+      transition: width 0.5s ease;
+    }
+    .bar-value {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    /* 柱宽百分比(10分制) */
+    .bar-pct-86  { width: 86%; }
+    .bar-pct-78  { width: 78%; }
+    .bar-pct-74  { width: 74%; }
+    .bar-pct-70  { width: 70%; }
+    .bar-pct-62  { width: 62%; }
+    .bar-pct-55  { width: 55%; }
+
+    /* ==================== 图例 ==================== */
+    .legend-section {
+      margin-bottom: 1.5rem;
+    }
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.1rem;
+      align-items: center;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+    .legend-swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .legend-swatch.pass    { background: var(--grade-a); }
+    .legend-swatch.failed  { background: var(--grade-dplus); }
+    .legend-swatch.skip    { background: #cbd5e0; }
+    .legend-swatch.pending { background: #a0aec0; }
+
+    /* ==================== 数据表格 ==================== */
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 820px;
+    }
+    .data-table thead {
+      background: rgba(45,157,120,0.06);
+    }
+    .data-table th {
+      padding: 0.7rem 0.6rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary);
+      text-align: center;
+      border-bottom: 2px solid var(--color-border);
+      white-space: nowrap;
+    }
+    .data-table th:first-child,
+    .data-table th:nth-child(2) {
+      text-align: left;
+    }
+    .data-table td {
+      padding: 0.65rem 0.6rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+    .data-table td:first-child {
+      color: var(--color-text-secondary);
+      font-size: 0.82rem;
+    }
+    .data-table td:nth-child(2) {
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .data-table tbody tr:hover {
+      background: rgba(45,157,120,0.04);
+    }
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    /* 综合分加粗 */
+    .score-cell {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--color-text);
+    }
+    /* 等级文字着色 */
+    .grade-text-aplus,
+    .grade-text-a     { color: var(--grade-aplus); font-weight: 600; }
+    .grade-text-bplus,
+    .grade-text-b     { color: var(--grade-bplus); font-weight: 600; }
+    .grade-text-cplus,
+    .grade-text-c     { color: var(--grade-cplus); font-weight: 600; }
+    .grade-text-dplus,
+    .grade-text-d     { color: var(--grade-dplus); font-weight: 600; }
+
+    /* ==================== 来源说明 ==================== */
+    .source-note {
+      margin-top: 1.5rem;
+      padding: 0.85rem 1.15rem;
+      background: rgba(45,157,120,0.05);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ==================== 全局页脚 ==================== */
+    .site-footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      border-top: 1px solid var(--color-border);
+      margin-top: 2rem;
+    }
+    .site-footer a {
+      color: var(--color-primary);
+    }
+
+    /* ==================== 响应式补充 ==================== */
+    @media (max-width: 600px) {
+      .site-header h1 { font-size: 1.35rem; }
+      .site-header p { font-size: 0.85rem; }
+      .page-title-row h2 { font-size: 1.3rem; }
+      .bar-label { width: 100px; min-width: 100px; font-size: 0.78rem; }
+      .tab-nav a { padding: 0.7rem 0.9rem; font-size: 0.84rem; }
+    }
+  </style>
+</body>
+</html>

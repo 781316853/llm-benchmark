@@ -14,6 +14,13 @@
   // "NEW" 徽标(近 7 天内首次上榜的模型);仅对判定为新的模型追加在模型名后
   var newBadge = function () { return ' <span class="badge-new">NEW</span>'; };
 
+  // 三基准描述文案(对齐设计稿卡片信息层级);按 benchSummary 的 key 索引
+  var BENCH_DESC = {
+    deepswe: "长程软件工程任务评测,覆盖真实 GitHub issue 到 PR 的完整解决链路",
+    vibecode: "从零构建 Web 应用的端到端评测,衡量模型独立完成项目的能力",
+    llm2014: "个人私有编码题库,涵盖算法、数据结构、系统设计等多维度编码能力"
+  };
+
   // ===== llm2014 单元格背景色(热力图填充 + 图例共用) =====
   // 色系与 CSS 等级着色保持一致:绿(A/Pass)→黄绿(B)→琥珀(C)→红(D/Failed),灰=无数据(Skip/Pending)
   var LM_BG = {
@@ -119,8 +126,9 @@
     var sum = D.benchSummary();
     document.getElementById("benchCards").innerHTML = sum.map(function (b) {
       return '<div class="bench-card">' +
-        '<h3>' + b.name + ' <span class="bc-tag">' + b.tag + '</span></h3>' +
-        '<div class="bc-stats">' + b.stats.map(function (s) { return '<div class="bc-stat"><b>' + esc(s.v) + '</b><span> ' + s.l + '</span></div>'; }).join("") + '</div>' +
+        '<h3>' + esc(b.name) + ' <span class="bc-tag">' + esc(b.tag) + '</span></h3>' +
+        '<p class="bc-desc">' + esc(BENCH_DESC[b.key] || "") + '</p>' +
+        '<div class="bc-stats">' + b.stats.map(function (s) { return '<div class="bc-stat"><b>' + esc(s.v) + '</b><span> ' + esc(s.l) + '</span></div>'; }).join("") + '</div>' +
         '<div class="bc-top">头名:' + esc(b.top) + '</div>' +
         '<div class="bc-tag">更新 ' + esc(b.updated) + ' · <a href="' + b.url + '" target="_blank" rel="noopener">原站 ↗</a></div>' +
         '</div>';
@@ -173,7 +181,7 @@
     // 柱状(pass1 升序,使最高在上)
     var sorted = ms.slice().sort(function (a, b) { return a.pass1 - b.pass1; });
     CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name; }),
-      sorted.map(function (m) { return m.pass1; }), "#4d8dff", "%", { max: 80 }));
+      sorted.map(function (m) { return m.pass1; }), "#2D9D78", "%", { max: 80 }));
     // 散点:成本 vs pass1,气泡=步数
     CH.apply("dsScatter", CH.scatterOption(
       ms.map(function (m) { return [m.cost, m.pass1, m.steps, m.name]; }),
@@ -203,7 +211,7 @@
     var topN = sorted.slice(-20);
     // left 加宽到 180 并允许标签换行,确保"模型·harness"完整显示不被截断
     CH.apply("vcBar", CH.barOption(topN.map(function (m) { return m.name + "·" + m.harness; }),
-      topN.map(function (m) { return m.score; }), "#22d3ee", "%", { max: 100, left: 180, labelSize: 11 }));
+      topN.map(function (m) { return m.score; }), "#2D9D78", "%", { max: 100, left: 180, labelSize: 11 }));
     // 散点显示全部系统(分布趋势),数据多时关闭标签避免重叠
     // bubbleDiv 调大至 220,使高延迟系统气泡明显变小,避免互相遮挡
     CH.apply("vcScatter", CH.scatterOption(
@@ -241,7 +249,7 @@
     rows.forEach(function (r, yi) {
       r.cells.forEach(function (c, xi) {
         heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, c.raw],
-          itemStyle: { color: lmCellBg(c), borderColor: "rgba(255,255,255,.06)", borderWidth: 1 } });
+          itemStyle: { color: lmCellBg(c), borderColor: "rgba(255,255,255,.55)", borderWidth: 1 } });
       });
     });
     CH.apply("lmHeat", CH.heatmapOption(xLabels, yLabels, heat, D.MAX_GRADE));
@@ -249,7 +257,7 @@
     // 综合分柱(10 分制:内部 0-4.3 折算为 0-10)
     var bsorted = rows.slice().sort(function (a, b) { return (a.score || 0) - (b.score || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
-      bsorted.map(function (r) { return r.score == null ? 0 : Number(D.to10(r.score).toFixed(2)); }), "#7C5CFF", "", { max: 10 }));
+      bsorted.map(function (r) { return r.score == null ? 0 : Number(D.to10(r.score).toFixed(2)); }), "#2D9D78", "", { max: 10 }));
 
     // 图例:色块与热力图填充色严格一致(绿→黄绿→琥珀→红,灰=无数据)
     var legendSeq = [["A+", LM_BG["A+"]], ["A", LM_BG.A], ["B+", LM_BG["B+"]], ["B", LM_BG.B],
