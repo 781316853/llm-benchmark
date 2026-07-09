@@ -8,8 +8,8 @@ window.VIBECODE = {
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "2026-07-09",
   version: "v1.1",
-  totalSystems: 68,
-  note: "共 68 系统,展示 overall 视图全部 61 个有记录系统",
+  totalSystems: 72,
+  note: "共 72 系统,展示 overall 视图全部 64 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -37,12 +37,28 @@ window.VIBECODE = {
     'latencyS': 4001
   },
   {
+    'name': 'Gpt 5.6 sol [新]',
+    'harness': 'OpenHands',
+    'score': 80.5,
+    'ci': 3.72,
+    'cost': 33.4,
+    'latencyS': 2033
+  },
+  {
     'name': 'Claude Opus 4.8',
     'harness': 'Claude Code',
     'score': 77.49,
     'ci': 3.74,
     'cost': 6.86,
     'latencyS': 1142
+  },
+  {
+    'name': 'Gpt 5.6 luna [新]',
+    'harness': 'OpenHands',
+    'score': 77.06,
+    'ci': 3.07,
+    'cost': 3.63,
+    'latencyS': 1552
   },
   {
     'name': 'Claude Opus 4.7',
@@ -67,6 +83,14 @@ window.VIBECODE = {
     'ci': 4.48,
     'cost': 4.1,
     'latencyS': 830
+  },
+  {
+    'name': 'Gpt 5.6 terra [新]',
+    'harness': 'OpenHands',
+    'score': 67.84,
+    'ci': 5.1,
+    'cost': 10.82,
+    'latencyS': 959
   },
   {
     'name': 'GPT 5.4',

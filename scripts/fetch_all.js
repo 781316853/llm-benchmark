@@ -32,48 +32,74 @@ function writeFileIfChanged(file, content) {
   console.log("  ✓ 写入 " + path.basename(file) + " (" + content.length + " 字节)");
 }
 
-// ===== 1) DeepSWE:解析 datacurve.ai 内嵌 run 对象,每模型取最高 pass_at_1 =====
-// 注:此处仅抓取 v1.1(默认榜单,初始 HTML 内嵌)。v1.0 历史榜单数据不在静态 HTML 中,
-// 需点击榜单 v1 切换器后由客户端注入,纯 Node HTTP 无法复现,故 v1.0 作为静态快照
-// 存于 data/deepswe_v10.js(不随每日刷新);两版由 js/data.js 的 deepSwe() 合并展示。
-async function fetchDeepSwe() {
-  console.log("[DeepSWE] 抓取 https://deepswe.datacurve.ai/");
-  const html = await fetchText("https://deepswe.datacurve.ai/");
-  // 每个 run:model:"x",...,reasoning_effort:"y",...,pass_at_1:0.x,...,ci_half:0.x,mean_cost_usd:x,mean_output_tokens:x,mean_agent_steps:x
-  const re = /model:"([^"]+)"[^}]*?reasoning_effort:"([^"]*)"[^}]*?pass_at_1:([\d.]+)[^}]*?ci_half:([\d.]+)[^}]*?mean_cost_usd:([\d.]+)[^}]*?mean_output_tokens:([\d.]+)[^}]*?mean_agent_steps:([\d.]+)/g;
-  let m, runs = [];
-  while ((m = re.exec(html)) !== null) {
-    runs.push({
-      name: m[1], effort: m[2] || "-",
-      pass1: Math.round(parseFloat(m[3]) * 100),
-      ci: Math.round(parseFloat(m[4]) * 100),
-      cost: Math.round(parseFloat(m[5]) * 100) / 100,
-      outTok: Math.round(parseFloat(m[6])),
-      steps: Math.round(parseFloat(m[7]))
-    });
-  }
+// ===== 1) DeepSWE:抓取官方 JSON 端点(结构化,比解析 HTML 稳健)=====
+// 端点规律:/artifacts/<version>/leaderboard-live.json,由榜单 v1/v1.1 切换器在客户端请求。
+// v1.1(默认榜单,每日刷新)写入 data/deepswe.js;v1.0(历史榜单,同样每日刷新)写入 data/deepswe_v10.js。
+// 两版 schema 一致;每模型取 Pass@1 最高的 run(与原站榜单一致)。
+// 抓取单个版本:解析 rows -> 每模型最高 pass_at_1 -> 按 pass1 降序
+// urlSlug=URL 路径段(站点用 v1 / v1.1);version=展示版本号(v1.0 / v1.1)
+async function fetchDeepSweJson(urlSlug, opts) {
+  opts = opts || {};
+  const version = opts.version || urlSlug;
+  const url = "https://deepswe.datacurve.ai/artifacts/" + urlSlug + "/leaderboard-live.json";
+  console.log("[DeepSWE " + version + "] 抓取 " + url);
+  const text = await fetchText(url);
+  const data = JSON.parse(text);
+  const nTasks = data.n_tasks_in_set || 113;
+  // 字段映射:JSON -> 站点榜单展示字段;effort 为 null 记为 "-"
+  const runs = (data.rows || []).map((r) => ({
+    name: r.model, effort: r.reasoning_effort || "-",
+    pass1: Math.round(r.pass_at_1 * 100),
+    ci: Math.round(r.ci_half * 100),
+    cost: Math.round(r.mean_cost_usd * 100) / 100,
+    outTok: Math.round(r.mean_output_tokens),
+    steps: Math.round(r.mean_agent_steps)
+  }));
   if (!runs.length) throw new Error("未解析到任何 run");
   // 每模型取 pass1 最高的一条,再按 pass1 降序
   const best = {};
   runs.forEach((r) => { if (!best[r.name] || r.pass1 > best[r.name].pass1) best[r.name] = r; });
   const models = Object.values(best).sort((a, b) => b.pass1 - a.pass1);
-  const content =
+  let content;
+  if (opts.isV11) {
+    // v1.1 -> data/deepswe.js (window.DEEPSWE)
+    content =
 `// 数据源1:DeepSWE 基准快照(云端抓取)
 // 来源:https://deepswe.datacurve.ai/  (更新于 ${TODAY})
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
-// 注:每模型取 Pass@1 最高的 run(与原站榜单一致)。
+// 注:抓取 /artifacts/v1.1/leaderboard-live.json;每模型取 Pass@1 最高的 run(与原站榜单一致)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   updated: "${TODAY}",
-  version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: ${models.length} },
+  version: "${version}",
+  stats: { tasks: ${nTasks}, repos: 91, languages: 5, models: ${models.length} },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
 };
 `;
-  writeFileIfChanged(path.join(DATA, "deepswe.js"), content);
+    writeFileIfChanged(path.join(DATA, "deepswe.js"), content);
+  } else {
+    // v1.0 -> data/deepswe_v10.js (window.DEEPSWE_V10)
+    content =
+`// 数据源1b:DeepSWE v1.0 历史榜单快照(每日刷新)
+// 来源:https://deepswe.datacurve.ai/ 榜单 "v1" 切换器
+// 抓取方式:/artifacts/v1/leaderboard-live.json(结构化 JSON,由站点榜单 v1 视图在客户端请求)。
+// 字段同 deepswe.js;effort 为 null 记为 "-"。与 v1.1 由 js/data.js 的 deepSwe() 合并展示。
+window.DEEPSWE_V10 = {
+  source: "DeepSWE",
+  url: "https://deepswe.datacurve.ai/",
+  version: "${version}",
+  captured: "${TODAY}",
+  stats: { models: ${models.length} },
+  desc: "DeepSWE v1.0 历史榜单(测试了更多模型),作为 v1.1 的补充数据合入展示。",
+  models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
+};
+`;
+    writeFileIfChanged(path.join(DATA, "deepswe_v10.js"), content);
+  }
+  return models.length;
 }
 
 // ===== 2) Vibe Code:解析 vals.ai RSC payload;显示名用 slug->名称表 =====
@@ -231,7 +257,18 @@ async function fetchLlm() {
 
 (async () => {
   if (!fs.existsSync(DATA)) fs.mkdirSync(DATA, { recursive: true });
-  for (const [name, fn] of [["DeepSWE", fetchDeepSwe], ["Vibe", fetchVibe], ["llm2014", fetchLlm]]) {
+  // DeepSWE:v1.1(默认榜单)与 v1.0(历史榜单)分别抓取,各自独立容错
+  // 注意 URL 路径段:v1.1 用 "v1.1",v1.0 用 "v1"(站点命名);展示版本号分别为 v1.1 / v1.0
+  const deepJobs = [
+    ["DeepSWE v1.1", () => fetchDeepSweJson("v1.1", { isV11: true, version: "v1.1" })],
+    ["DeepSWE v1.0", () => fetchDeepSweJson("v1", { isV11: false, version: "v1.0" })]
+  ];
+  for (const [name, fn] of deepJobs) {
+    try { await fn(); }
+    catch (e) { console.log("[" + name + "] 抓取失败,保留旧文件: " + e.message); }
+  }
+  // 其余两源(Vibe / llm2014)
+  for (const [name, fn] of [["Vibe", fetchVibe], ["llm2014", fetchLlm]]) {
     try { await fn(); }
     catch (e) { console.log("[" + name + "] 抓取失败,保留旧文件: " + e.message); }
   }

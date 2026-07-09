@@ -121,10 +121,10 @@
       if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null };
       return map[c.id];
     }
-    // DeepSWE
+    // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
     deepSwe().forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, norm: m.pass1 };
+      if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, version: m.version, norm: m.pass1 };
     });
     // Vibe Code
     vibeCode().forEach(function (m) {

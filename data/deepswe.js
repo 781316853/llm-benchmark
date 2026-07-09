@@ -2,15 +2,24 @@
 // 来源:https://deepswe.datacurve.ai/  (更新于 2026-07-09)
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
-// 注:每模型取 Pass@1 最高的 run(与原站榜单一致)。
+// 注:抓取 /artifacts/v1.1/leaderboard-live.json;每模型取 Pass@1 最高的 run(与原站榜单一致)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-07-09",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 9 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 13 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
+  {
+    'name': 'gpt-5-6-sol',
+    'effort': 'max',
+    'pass1': 73,
+    'ci': 3,
+    'cost': 8.39,
+    'outTok': 60014,
+    'steps': 61
+  },
   {
     'name': 'claude-fable-5',
     'effort': 'xhigh',
@@ -19,6 +28,24 @@ window.DEEPSWE = {
     'cost': 13.41,
     'outTok': 80352,
     'steps': 68
+  },
+  {
+    'name': 'gpt-5-6-terra',
+    'effort': 'max',
+    'pass1': 70,
+    'ci': 3,
+    'cost': 4.95,
+    'outTok': 71939,
+    'steps': 76
+  },
+  {
+    'name': 'gpt-5-6-luna',
+    'effort': 'max',
+    'pass1': 67,
+    'ci': 4,
+    'cost': 3.03,
+    'outTok': 73400,
+    'steps': 102
   },
   {
     'name': 'gpt-5-5',
@@ -73,6 +100,15 @@ window.DEEPSWE = {
     'cost': 7.34,
     'outTok': 275778,
     'steps': 86
+  },
+  {
+    'name': 'kimi-k2-7-code',
+    'effort': '-',
+    'pass1': 31,
+    'ci': 1,
+    'cost': 2.82,
+    'outTok': 59297,
+    'steps': 149
   },
   {
     'name': 'claude-sonnet-4-6',

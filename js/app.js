@@ -147,7 +147,8 @@
     var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 2; });
     if (!rows.length) rows = allRows;
     var html = rows.map(function (r, i) {
-      var ds = r.deepswe ? r.deepswe.pass1 + "%" : "—";
+      // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
+      var ds = r.deepswe ? r.deepswe.pass1 + "%" + verBadge(r.deepswe.version) : "—";
       var vc = r.vibe ? r.vibe.score + "%" : "—";
       var lm = (r.llm && r.llm.score != null) ? D.to10(r.llm.score).toFixed(2) : "—";
       // NEW 判定:模型在任一已收录榜单上"近 7 天内首次上榜"即为新
@@ -179,7 +180,7 @@
     fillTableHead("matrixTable", head);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     document.getElementById("overviewNote").textContent =
-      '说明:综合分 = 三榜归一化质量均值 × (0.8 + 0.2 × 命中榜数/3),质量为主、广度为辅,满分100;默认按综合分降序。DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
+      '说明:综合分 = 三榜归一化质量均值 × (0.8 + 0.2 × 命中榜数/3),质量为主、广度为辅,满分100;默认按综合分降序。DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
       (state.showAll.overview ? '' : ' · 当前仅显示命中≥2榜的 ' + rows.length + ' 个模型(勾选右上方"显示全部"可展开所有模型)。');
   }
 

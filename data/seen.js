@@ -93,6 +93,13 @@ window.SEEN = {
     'llm|Doubao-Seed-2.0-Code (high)': '2026-07-09',
     'llm|MiMo-V2.5-Pro': '2026-07-09',
     'llm|MiniMax-M2.5': '2026-07-09',
-    'llm|Fable-5 (high)': '2026-07-09'
+    'llm|Fable-5 (high)': '2026-07-09',
+    'deepswe|gpt-5-6-sol': '2026-07-09',
+    'deepswe|gpt-5-6-terra': '2026-07-09',
+    'deepswe|gpt-5-6-luna': '2026-07-09',
+    'deepswe|kimi-k2-7-code': '2026-07-09',
+    'vibe|Gpt 5.6 sol [新]': '2026-07-09',
+    'vibe|Gpt 5.6 luna [新]': '2026-07-09',
+    'vibe|Gpt 5.6 terra [新]': '2026-07-09'
   }
 };

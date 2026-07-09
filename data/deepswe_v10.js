@@ -1,15 +1,12 @@
-// 数据源1b:DeepSWE v1.0 历史榜单快照(静态,不随每日刷新)
-// 来源:https://deepswe.datacurve.ai/ 榜单 "v1" 切换器(2026-07-10 抓取)
-// 抓取方式:v1.0 数据不在静态 HTML 中,需点击榜单 v1 按钮后由客户端注入;
-//           经浏览器(Edge + agent-browser)切到 v1 视图,从页面 React fiber 提取 run,
-//           再按"每模型取最高 Pass@1"归并,数值与原站榜单一致。
-// 历史冻结数据,不再自动刷新;如需重抓,复现上述浏览器步骤即可。
-// 字段同 deepswe.js:name/effort/pass1(%) /ci(±%) /cost($) /outTok/steps;effort 为 null 记为 "-"。
+// 数据源1b:DeepSWE v1.0 历史榜单快照(每日刷新)
+// 来源:https://deepswe.datacurve.ai/ 榜单 "v1" 切换器
+// 抓取方式:/artifacts/v1/leaderboard-live.json(结构化 JSON,由站点榜单 v1 视图在客户端请求)。
+// 字段同 deepswe.js;effort 为 null 记为 "-"。与 v1.1 由 js/data.js 的 deepSwe() 合并展示。
 window.DEEPSWE_V10 = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   version: "v1.0",
-  captured: "2026-07-10",
+  captured: "2026-07-09",
   stats: { models: 21 },
   desc: "DeepSWE v1.0 历史榜单(测试了更多模型),作为 v1.1 的补充数据合入展示。",
   models: [
