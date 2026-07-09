@@ -5,11 +5,31 @@
   var state = { tab: "overview", llmMonth: null,
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
-    showAll: { overview: false, deepswe: false, vibe: false, llm: false } };
+    // 总览默认收起(聚焦跨榜命中),其余三页默认展开全部模型
+    showAll: { overview: false, deepswe: true, vibe: true, llm: true } };
   var fmtK = function (n) { return n >= 1000 ? (n / 1000).toFixed(0) + "k" : n; };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
+
+  // ===== llm2014 单元格背景色(热力图填充 + 图例共用) =====
+  // 色系与 CSS 等级着色保持一致:绿(A/Pass)→黄绿(B)→琥珀(C)→红(D/Failed),灰=无数据(Skip/Pending)
+  var LM_BG = {
+    "A+": "#2bb673", A: "#34c084",
+    "B+": "#8fce3a", B: "#9fd84a",
+    "C+": "#f0b424", C: "#f5be38",
+    "D+": "#f87171", D: "#fb8585"
+  };
+  var LM_BG_SPECIAL = { pass: "#1fa063", failed: "#e0524a", skip: "#3a4250", pending: "#2f3744", unknown: "#3a4250" };
+  // 依据单元格状态/等级返回对应背景色;供热力图 itemStyle.color 与图例色块统一使用
+  function lmCellBg(cell) {
+    if (cell.status === "grade") return LM_BG[cell.grade] || "#4a5466";
+    return LM_BG_SPECIAL[cell.status] || "#3a4250";
+  }
+  // 图例色块:带背景的圆角小方块 + 文字
+  function lmLegendChip(label, bg) {
+    return '<span><i style="background:' + bg + ';width:13px;height:13px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px"></i>' + label + '</span>';
+  }
 
   // 通用表格构造;headerClasses 可选(与 headers 等长),给对应 <th> 附加类(如 "num" 使表头与数据同对齐)
   function fillTable(id, headers, rowsHtml, headerClasses) {
@@ -174,12 +194,14 @@
     // 柱状图仅显示 Top 20(数据量大时避免拥挤;表格仍展示全部),升序使最高在上
     var sorted = ms.slice().sort(function (a, b) { return a.score - b.score; });
     var topN = sorted.slice(-20);
+    // left 加宽到 180 并允许标签换行,确保"模型·harness"完整显示不被截断
     CH.apply("vcBar", CH.barOption(topN.map(function (m) { return m.name + "·" + m.harness; }),
-      topN.map(function (m) { return m.score; }), "#22d3ee", "%", { max: 100 }));
+      topN.map(function (m) { return m.score; }), "#22d3ee", "%", { max: 100, left: 180, labelSize: 11 }));
     // 散点显示全部系统(分布趋势),数据多时关闭标签避免重叠
+    // bubbleDiv 调大至 220,使高延迟系统气泡明显变小,避免互相遮挡
     CH.apply("vcScatter", CH.scatterOption(
       ms.map(function (m) { return [m.cost, m.score, m.latencyS, m.name + "·" + m.harness]; }),
-      { xName: "单测成本($)", yName: "准确率(%)", bubble: true, bubbleDiv: 100, yMax: 100, label: false }));
+      { xName: "单测成本($)", yName: "准确率(%)", bubble: true, bubbleDiv: 220, yMax: 100, label: false }));
     var html = ms.map(function (m, i) {
       return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + '</td>' +
         '<td>' + esc(m.harness) + '</td><td class="num">' + m.score + '±' + m.ci + '%</td>' +
@@ -205,11 +227,13 @@
     var rows = filterHits(allRows, function (r) { return r.canon.id; }, state.showAll.llm);
     var yLabels = rows.map(function (r) { return r.model; });
 
-    // 热力数据:[xIndex, yIndex, num, raw]
+    // 热力数据:[xIndex, yIndex, num, raw];颜色按等级/状态显式指定(与图例一致),
+    // Skip/Pending 用中性灰,Failed 用红,避免旧实现里"无数据"被涂成代表最差的深红
     var heat = [];
     rows.forEach(function (r, yi) {
       r.cells.forEach(function (c, xi) {
-        heat.push([xi, yi, c.num == null ? 0 : c.num, c.raw]);
+        heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, c.raw],
+          itemStyle: { color: lmCellBg(c), borderColor: "rgba(255,255,255,.06)", borderWidth: 1 } });
       });
     });
     CH.apply("lmHeat", CH.heatmapOption(xLabels, yLabels, heat, D.MAX_GRADE));
@@ -219,11 +243,13 @@
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
       bsorted.map(function (r) { return r.score == null ? 0 : Number(D.to10(r.score).toFixed(2)); }), "#7C5CFF", "", { max: 10 }));
 
-    // 图例
+    // 图例:色块与热力图填充色严格一致(绿→黄绿→琥珀→红,灰=无数据)
+    var legendSeq = [["A+", LM_BG["A+"]], ["A", LM_BG.A], ["B+", LM_BG["B+"]], ["B", LM_BG.B],
+      ["C+", LM_BG["C+"]], ["C", LM_BG.C], ["D+", LM_BG["D+"]], ["D", LM_BG.D]];
+    var legendSp = [["Pass", LM_BG_SPECIAL.pass], ["Failed", LM_BG_SPECIAL.failed],
+      ["Skip", LM_BG_SPECIAL.skip], ["Pending", LM_BG_SPECIAL.pending]];
     document.getElementById("lmLegend").innerHTML =
-      ["A+", "A", "B+", "B", "C+", "C", "D+", "D"].map(function (g) {
-        return '<span><span class="g-' + ({ "A+": "Ap", A: "A", "B+": "Bp", B: "B", "C+": "Cp", C: "C", "D+": "Dp", D: "D" }[g]) + '">' + g + '</span></span>';
-      }).join("") + '<span><span class="g-Pass">Pass</span></span><span><span class="g-Failed">Failed</span></span><span><span class="g-Skip">Skip</span></span><span><span class="g-Pending">Pending</span></span>';
+      legendSeq.concat(legendSp).map(function (it) { return lmLegendChip(it[0], it[1]); }).join("");
 
     // 明细表
     var html = rows.map(function (r, i) {

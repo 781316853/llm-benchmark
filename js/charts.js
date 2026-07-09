@@ -31,14 +31,17 @@
   // ===== 横向柱状(用于 Pass@1 / 准确率 / 综合分排行) =====
   function barOption(cats, values, color, unit, opts) {
     opts = opts || {};
+    var lw = opts.left || 140; // 左侧留给类目标签的宽度,标签在其内自动换行
     return {
-      grid: { left: opts.left || 140, right: 48, top: 16, bottom: 24, containLabel: false },
+      grid: { left: lw, right: 48, top: 16, bottom: 24, containLabel: false },
       xAxis: { type: "value", max: opts.max, name: unit || "", nameTextStyle: { color: "#9aa6b2" },
         axisLine: { lineStyle: { color: "#3a4658" } }, axisLabel: { color: "#9aa6b2" },
         splitLine: { lineStyle: { color: "rgba(255,255,255,.06)" } } },
       // inverse:false + 升序数据 => 最高分位于顶部
+      // interval:0 强制显示全部类目;width+overflow=break 使过长名称在指定宽度内自动换行,避免被省略截断
       yAxis: { type: "category", data: cats, inverse: false,
-        axisLabel: { color: "#cbd5e1", fontSize: 12 },
+        axisLabel: { color: "#cbd5e1", fontSize: opts.labelSize || 12, interval: 0,
+          width: lw - 12, overflow: "break" },
         axisLine: { lineStyle: { color: "#3a4658" } }, splitLine: { show: false } },
       tooltip: { trigger: "axis", axisPointer: { type: "shadow" },
         formatter: function (p) { return p[0].name + "<br/><b>" + p[0].value + (unit || "") + "</b>"; } },
@@ -83,7 +86,8 @@
         max: opts.yMax, min: opts.yMin }, AXIS),
       series: [{
         type: "scatter", data: points,
-        symbolSize: function (d) { return opts.bubble ? Math.max(8, Math.min(46, d[2] / (opts.bubbleDiv || 6))) : 14; },
+        // 气泡模式按 d[2] 缩放;上限调小(26)避免高延迟/多步数时圆点过大互相遮挡
+        symbolSize: function (d) { return opts.bubble ? Math.max(6, Math.min(26, d[2] / (opts.bubbleDiv || 6))) : 12; },
         itemStyle: { opacity: 0.85 },
         // label 默认显示;数据量大时调用方可传 opts.label=false 关闭以免重叠
         label: { show: opts.label !== false, formatter: function (p) { return p.data[3]; }, position: "top", color: "#9aa6b2", fontSize: 10 }
@@ -91,21 +95,24 @@
     };
   }
 
-  // ===== 热力图(项目 × 模型,数值化分 0-4.3) =====
+  // ===== 热力图(项目 × 模型) =====
+  // 注:颜色由调用方在每条数据项的 itemStyle.color 中按等级/状态显式指定,
+  // 故此处不使用 visualMap(连续映射会覆盖每点颜色,且与离散等级语义不符)。
   function heatmapOption(xLabels, yLabels, data, max) {
     return {
       tooltip: { position: "top",
         formatter: function (p) { return yLabels[p.value[1]] + " · " + xLabels[p.value[0]] + "<br/>" + (p.value[3] || "—"); } },
-      grid: { left: 130, right: 30, top: 30, bottom: 80 },
-      xAxis: { type: "category", data: xLabels, axisLabel: { color: "#cbd5e1", fontSize: 11 }, splitArea: { show: true },
-        axisLine: { lineStyle: { color: "#3a4658" } } },
+      grid: { left: 140, right: 30, top: 30, bottom: 56 },
+      // interval:0 强制显示全部项目名,rotate 防止多列时重叠
+      xAxis: { type: "category", data: xLabels, axisLabel: { color: "#cbd5e1", fontSize: 11, interval: 0, rotate: 28 },
+        splitArea: { show: true }, axisLine: { lineStyle: { color: "#3a4658" } } },
       yAxis: { type: "category", data: yLabels, inverse: true, axisLabel: { color: "#cbd5e1", fontSize: 11 },
         splitArea: { show: true }, axisLine: { lineStyle: { color: "#3a4658" } } },
-      visualMap: { min: 0, max: max || 4.3, calculable: true, orient: "horizontal", left: "center", bottom: 6,
-        textStyle: { color: "#9aa6b2" },
-        inRange: { color: ["#3a2426", "#7a4a2a", "#b07a2a", "#3f8f4a", "#2bb673"] } },
       series: [{ type: "heatmap", data: data,
-        label: { show: true, color: "#fff", fontSize: 10, formatter: function (p) { return p.value[3]; } },
+        // 文字加阴影,保证在任意底色(尤其黄/琥珀)上都清晰可读
+        label: { show: true, color: "#fff", fontSize: 10,
+          textShadowColor: "rgba(0,0,0,.55)", textShadowBlur: 3,
+          formatter: function (p) { return p.value[3]; } },
         emphasis: { itemStyle: { shadowBlur: 8, shadowColor: "#000" } } }]
     };
   }

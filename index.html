@@ -36,7 +36,7 @@
 
     <!-- 2) DeepSWE -->
     <section class="page" id="page-deepswe">
-      <div class="page-head"><h2>DeepSWE <span class="tag">长程软件工程任务</span></h2><label class="switch" title="默认仅显示命中≥2个榜单的模型,勾选可展开全部"><input type="checkbox" id="dsShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label><p id="deepsweDesc" class="page-desc"></p></div>
+      <div class="page-head"><h2>DeepSWE <span class="tag">长程软件工程任务</span></h2><label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="dsShowAll" checked><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label><p id="deepsweDesc" class="page-desc"></p></div>
       <div class="chart-row">
         <div class="chart-box"><h3>Pass@1 排行</h3><div id="dsBar" class="chart"></div></div>
         <div class="chart-box"><h3>成本 vs 成绩(气泡=步数)</h3><div id="dsScatter" class="chart"></div></div>
@@ -47,7 +47,7 @@
 
     <!-- 3) Vibe Code -->
     <section class="page" id="page-vibecode">
-      <div class="page-head"><h2>Vibe Code Bench <span class="tag">从零构建 Web 应用</span></h2><label class="switch" title="默认仅显示命中≥2个榜单的模型,勾选可展开全部"><input type="checkbox" id="vcShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label><p id="vcDesc" class="page-desc"></p></div>
+      <div class="page-head"><h2>Vibe Code Bench <span class="tag">从零构建 Web 应用</span></h2><label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="vcShowAll" checked><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label><p id="vcDesc" class="page-desc"></p></div>
       <div class="chart-row">
         <div class="chart-box"><h3>准确率排行</h3><div id="vcBar" class="chart"></div></div>
         <div class="chart-box"><h3>Pareto:成本 vs 准确率</h3><div id="vcScatter" class="chart"></div></div>
@@ -64,7 +64,7 @@
           <label>月份:
             <select id="llmMonth" class="select"></select>
           </label>
-          <label class="switch" title="默认仅显示命中≥2个榜单的模型,勾选可展开全部"><input type="checkbox" id="lmShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
+          <label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="lmShowAll" checked><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
         </div>
         <p id="lmDesc" class="page-desc"></p>
       </div>
