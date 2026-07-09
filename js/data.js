@@ -156,6 +156,31 @@
     return e ? e.benchCount : 0;
   }
 
+  // ===== "7 天内新上榜"判定(基于 window.SEEN 首次上榜记录) =====
+  var SEEN_WINDOW = 7; // 高亮窗口(天)
+  // YYYY-MM-DD -> UTC 0 点时间戳;非法返回 NaN
+  function parseDay(s) { return new Date(String(s) + "T00:00:00Z").getTime(); }
+  // 两个日期字符串的天数差(向下取整,可为负);任一非法返回 NaN
+  function dayDiff(a, b) { return Math.floor((parseDay(b) - parseDay(a)) / 86400000); }
+  // 单榜判定:某原始模型名是否在指定榜单上"近 7 天内首次上榜"
+  // 规则:记录存在 且 firstSeen>since(排除上线存量) 且 0<=(updated-firstSeen)<=7 天
+  function isNewRaw(bench, rawName) {
+    var seen = window.SEEN;
+    if (!seen || !seen.entries || !seen.updated || !seen.since || rawName == null) return false;
+    var firstSeen = seen.entries[bench + "|" + rawName];
+    if (!firstSeen) return false;
+    if (!(firstSeen > seen.since)) return false; // 守卫:首启存量(firstSeen===since)不算新
+    var d = dayDiff(firstSeen, seen.updated);
+    return d >= 0 && d <= SEEN_WINDOW;
+  }
+  // 矩阵行判定:模型在任一已收录榜单上"新"即为真
+  function isNewAny(dsName, vcName, llmName) {
+    if (dsName && isNewRaw("deepswe", dsName)) return true;
+    if (vcName && isNewRaw("vibe", vcName)) return true;
+    if (llmName && isNewRaw("llm", llmName)) return true;
+    return false;
+  }
+
   // 暴露
   window.D = {
     MAX_GRADE: MAX_GRADE,
@@ -170,6 +195,10 @@
     unified: unified,
     hitCount: hitCount,
     benchSummary: benchSummary,
+    // "7 天内新上榜"判定
+    isNewRaw: isNewRaw,
+    isNewAny: isNewAny,
+    seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
     src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014 }
   };

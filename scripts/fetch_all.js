@@ -156,6 +156,61 @@ window.VIBECODE = {
   writeFileIfChanged(path.join(DATA, "vibecode.js"), content);
 }
 
+// ===== 首次上榜追踪:data/seen.js 维护 =====
+// 沙箱方式读取 data/*.js 中某个 window 全局变量(避免 require 缓存,且不污染全局)
+function loadJsGlobal(file, varName) {
+  const p = path.join(DATA, file);
+  if (!fs.existsSync(p)) return null;
+  const txt = fs.readFileSync(p, "utf8");
+  const sandbox = { window: {} };
+  try { new Function("window", txt)(sandbox.window); }
+  catch (e) { console.log("  ! 解析 " + file + " 失败:" + e.message); return null; }
+  return sandbox.window[varName];
+}
+// 读取既有 seen.js -> {since, updated, entries};文件不存在视为首启
+function loadSeen() {
+  const p = path.join(DATA, "seen.js");
+  if (!fs.existsSync(p)) return null;
+  const txt = fs.readFileSync(p, "utf8");
+  const m = txt.match(/window\.SEEN\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
+  if (!m) return null;
+  try { return eval("(" + m[1] + ")"); } catch (e) { return null; }
+}
+// 维护首次上榜记录:仅新增缺失键,绝不覆盖既有 firstSeen;首启写入 since
+function updateSeen() {
+  console.log("[seen] 维护首次上榜记录 data/seen.js");
+  let seen = loadSeen() || { since: TODAY, updated: TODAY, entries: {} };
+  if (!seen.entries) seen.entries = {};
+  const entries = seen.entries;
+  // 记录一个当前模型;已存在则跳过(保留原始首次上榜日)
+  function add(bench, name) {
+    if (!name) return;
+    const key = bench + "|" + String(name);
+    if (!(key in entries)) entries[key] = TODAY;
+  }
+  // DeepSWE
+  const ds = loadJsGlobal("deepswe.js", "DEEPSWE");
+  if (ds && Array.isArray(ds.models)) ds.models.forEach(function (m) { add("deepswe", m.name); });
+  // Vibe Code
+  const vc = loadJsGlobal("vibecode.js", "VIBECODE");
+  if (vc && Array.isArray(vc.models)) vc.models.forEach(function (m) { add("vibe", m.name); });
+  // llm2014(遍历所有月份取模型并集)
+  const lm = loadJsGlobal("llm2014.js", "LLM2014");
+  if (lm && lm.months) Object.keys(lm.months).forEach(function (mk) {
+    const mo = lm.months[mk];
+    if (mo && Array.isArray(mo.rows)) mo.rows.forEach(function (r) { add("llm", r.model); });
+  });
+  seen.updated = TODAY; // 始终刷新"最近一次维护日";since 保持首启值不被覆盖
+  const content =
+`// 首次上榜追踪记录(由 scripts/fetch_all.js 每日维护)
+// key 形如 "榜单|原始模型名",value 为首次上榜日期(YYYY-MM-DD)。
+// since=追踪起始日;firstSeen===since 的为上线即存在的存量模型,不判为新。
+// 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
+window.SEEN = ${JSON.stringify(seen, null, 2).replace(/"/g, "'")};
+`;
+  writeFileIfChanged(path.join(DATA, "seen.js"), content);
+}
+
 // ===== 3) llm2014:解析 GitHub raw CSV(结构化) =====
 // llm2014 数据结构相对稳定但变换较繁;此处先验证可达性,实际 CSV->cells 变换沿用既有逻辑。
 // 若 datasets.json/CSV 解析失败则保留旧文件(站点不崩)。
@@ -177,5 +232,8 @@ async function fetchLlm() {
     try { await fn(); }
     catch (e) { console.log("[" + name + "] 抓取失败,保留旧文件: " + e.message); }
   }
+  // 三源抓取后,维护首次上榜记录(读取最新写入的 data/*.js)
+  try { updateSeen(); }
+  catch (e) { console.log("[seen] 维护失败:" + e.message); }
   console.log("完成 @ " + TODAY);
 })();

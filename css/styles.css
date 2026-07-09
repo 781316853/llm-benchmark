@@ -121,6 +121,12 @@ a:hover { text-decoration: underline; }
 .data-table .num { text-align: center; font-variant-numeric: tabular-nums; }
 .data-table .rank { color: var(--text-dim); width: 42px; }
 .data-table tr.row-hit { background: rgba(34,211,238,.06); }
+/* "近 7 天新上榜" 行高亮(琥珀底色);置于 row-hit 之后,确保两类高亮并存时新上榜视觉优先 */
+.data-table tr.row-new { background: rgba(251,191,36,.18); }
+.data-table tr.row-new:hover { background: rgba(251,191,36,.26); }
+.badge-new { display: inline-block; font-size: 10px; font-weight: 700; color: #0e1117;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b); padding: 1px 6px; border-radius: 999px;
+  margin-left: 6px; vertical-align: 1px; letter-spacing: .5px; }
 .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--panel-2);
   color: var(--text-dim); border: 1px solid var(--border); margin-left: 6px; font-weight: 400; }
 
