@@ -11,6 +11,8 @@
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
+  // "NEW" 徽标(近 7 天内首次上榜的模型);仅对判定为新的模型追加在模型名后
+  var newBadge = function () { return ' <span class="badge-new">NEW</span>'; };
 
   // ===== llm2014 单元格背景色(热力图填充 + 图例共用) =====
   // 色系与 CSS 等级着色保持一致:绿(A/Pass)→黄绿(B)→琥珀(C)→红(D/Failed),灰=无数据(Skip/Pending)
@@ -132,8 +134,12 @@
       var ds = r.deepswe ? r.deepswe.pass1 + "%" : "—";
       var vc = r.vibe ? r.vibe.score + "%" : "—";
       var lm = (r.llm && r.llm.score != null) ? D.to10(r.llm.score).toFixed(2) : "—";
-      return '<tr class="' + (r.benchCount >= 2 ? "row-hit" : "") + '">' +
-        '<td>' + dot(r.color) + esc(r.id) + '</td>' +
+      // NEW 判定:模型在任一已收录榜单上"近 7 天内首次上榜"即为新
+      var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.vibe && r.vibe.name, r.llm && r.llm.name);
+      // row-hit(跨榜命中)与 row-new(新上榜)可并存;CSS 中 row-new 置后以生效
+      var cls = (r.benchCount >= 2 ? "row-hit " : "") + (nw ? "row-new" : "");
+      return '<tr class="' + cls.trim() + '">' +
+        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
         '<td class="num">' + ds + '</td>' +
         '<td class="num">' + vc + '</td>' +
@@ -153,7 +159,7 @@
     fillTableHead("matrixTable", head);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     document.getElementById("overviewNote").textContent =
-      '说明:DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。' +
+      '说明:DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
       (state.showAll.overview ? '' : ' · 当前仅显示命中≥2榜的 ' + rows.length + ' 个模型(勾选右上方"显示全部"可展开所有模型)。');
   }
 
@@ -174,7 +180,8 @@
       { xName: "平均成本($)", yName: "Pass@1(%)", bubble: true, bubbleDiv: 6, yMax: 80 }));
     // 表格
     var html = ms.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + '</td>' +
+      var nw = D.isNewRaw("deepswe", m.name);
+      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + (nw ? newBadge() : "") + '</td>' +
         '<td>' + esc(m.effort) + '</td><td class="num">' + m.pass1 + '±' + m.ci + '%</td>' +
         '<td class="num">$' + m.cost + '</td><td class="num">' + fmtK(m.outTok) + '</td><td class="num">' + m.steps + '</td></tr>';
     });
@@ -203,7 +210,8 @@
       ms.map(function (m) { return [m.cost, m.score, m.latencyS, m.name + "·" + m.harness]; }),
       { xName: "单测成本($)", yName: "准确率(%)", bubble: true, bubbleDiv: 220, yMax: 100, label: false }));
     var html = ms.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + '</td>' +
+      var nw = D.isNewRaw("vibe", m.name);
+      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + (nw ? newBadge() : "") + '</td>' +
         '<td>' + esc(m.harness) + '</td><td class="num">' + m.score + '±' + m.ci + '%</td>' +
         '<td class="num">$' + m.cost + '</td><td class="num">' + Math.round(m.latencyS / 60) + ' 分</td></tr>';
     });
@@ -253,13 +261,14 @@
 
     // 明细表
     var html = rows.map(function (r, i) {
-      var tds = '<td class="rank">' + (i + 1) + '</td><td>' + dot(r.canon.color) + esc(r.model) + '</td>';
+      var nw = D.isNewRaw("llm", r.model);
+      var tds = '<td class="rank">' + (i + 1) + '</td><td>' + dot(r.canon.color) + esc(r.model) + (nw ? newBadge() : "") + '</td>';
       r.cells.forEach(function (c) {
         tds += '<td class="num"><span class="' + gradeClass(c) + '">' + esc(c.raw) + '</span></td>';
       });
       tds += '<td class="num">' + (r.score != null ? D.to10(r.score).toFixed(2) : "—") + '</td>';
       tds += '<td>' + esc(r.ide) + '</td><td class="num">' + (r.think ? "是" : "否") + '</td>';
-      return '<tr>' + tds + '</tr>';
+      return '<tr class="' + (nw ? "row-new" : "") + '">' + tds + '</tr>';
     });
     // 表头:各 project 列与综合分/思考为数值列,加 num 类居中;#、模型、IDE/CLI 为文本列
     var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/10)", "IDE/CLI", "思考"]);
