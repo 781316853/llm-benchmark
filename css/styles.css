@@ -166,6 +166,13 @@ a:hover { text-decoration: underline; }
 .badge-new { display: inline-block; font-size: 10px; font-weight: 700; color: #fff;
   background: linear-gradient(135deg, #D4943A, #C27D24); padding: 1px 6px; border-radius: 999px;
   margin-left: 6px; vertical-align: 1px; letter-spacing: .5px; }
+/* 数据版本徽标:区分 DeepSWE v1.1(当前,绿)与 v1.0(历史,琥珀) */
+.badge-v11 { display: inline-block; font-size: 10px; font-weight: 700; color: #1f6f54;
+  background: #d8f0e7; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #b3ddc9; }
+.badge-v10 { display: inline-block; font-size: 10px; font-weight: 700; color: #8a5a16;
+  background: #fbeccd; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #ecd49a; }
 .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--bg-soft);
   color: var(--text-dim); border: 1px solid var(--border-subtle); margin-left: 6px; font-weight: 400; }
 

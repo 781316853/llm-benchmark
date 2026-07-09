@@ -13,6 +13,10 @@
   var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
   // "NEW" 徽标(近 7 天内首次上榜的模型);仅对判定为新的模型追加在模型名后
   var newBadge = function () { return ' <span class="badge-new">NEW</span>'; };
+  // 版本徽标:区分 DeepSWE v1.1(默认每日刷新)与 v1.0(历史快照)数据来源
+  var verBadge = function (v) {
+    return v === "v1.0" ? ' <span class="badge-v10">v1.0</span>' : ' <span class="badge-v11">v1.1</span>';
+  };
 
   // 三基准描述文案(对齐设计稿卡片信息层级);按 benchSummary 的 key 索引
   var BENCH_DESC = {
@@ -76,6 +80,8 @@
   var MATRIX_COLS = [
     { key: "model",   label: "模型", type: "text", bench: false, val: function (r) { return r.id; } },
     { key: "vendor",  label: "厂商", type: "text", bench: false, val: function (r) { return r.vendor; } },
+    // 综合分:质量均值×广度微折损(0-100);作为默认排序主键,bench=false 表示排序时不过滤无值行
+    { key: "composite", label: "综合分", type: "num", bench: false, val: function (r) { return CMP.composite(r); } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/10)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.score != null) ? r.llm.score : null; } },
@@ -83,7 +89,9 @@
   ];
 
   // 计算点击某列后的排序方向:新列首击一律降序(高→低),同列在升序/降序间翻转
+  // 特例:默认综合排序(sortKey=null)时综合分列已视为 desc,首击它翻转至 asc
   function nextSortDir(key) {
+    if (state.sortKey === null && key === "composite") return "asc";
     if (state.sortKey !== key) return "desc";
     return state.sortDir === "asc" ? "desc" : "asc";
   }
@@ -149,15 +157,19 @@
       return '<tr class="' + cls.trim() + '">' +
         '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
+        '<td class="num">' + CMP.composite(r).toFixed(1) + '</td>' +
         '<td class="num">' + ds + '</td>' +
         '<td class="num">' + vc + '</td>' +
         '<td class="num">' + lm + '</td>' +
         '<td class="num">' + r.benchCount + '/3</td></tr>';
     });
     // 表头:可点击,激活列显示方向指示符;数值列追加 num 类以与数据居中对齐
+    // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     var head = MATRIX_COLS.map(function (c) {
-      var active = state.sortKey === c.key;
-      var ind = active ? ' <span class="sort-ind">' + (state.sortDir === "asc" ? "▲" : "▼") + '</span>' : "";
+      var isDefaultComposite = state.sortKey === null && c.key === "composite";
+      var active = state.sortKey === c.key || isDefaultComposite;
+      var dir = state.sortKey === null ? "desc" : state.sortDir;
+      var ind = active ? ' <span class="sort-ind">' + (dir === "asc" ? "▲" : "▼") + '</span>' : "";
       var classes = [];
       if (active) classes.push("sort-active");
       if (c.type === "num") classes.push("num");
@@ -167,7 +179,7 @@
     fillTableHead("matrixTable", head);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     document.getElementById("overviewNote").textContent =
-      '说明:DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
+      '说明:综合分 = 三榜归一化质量均值 × (0.8 + 0.2 × 命中榜数/3),质量为主、广度为辅,满分100;默认按综合分降序。DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
       (state.showAll.overview ? '' : ' · 当前仅显示命中≥2榜的 ' + rows.length + ' 个模型(勾选右上方"显示全部"可展开所有模型)。');
   }
 
@@ -178,24 +190,27 @@
     var ms = filterHits(D.deepSwe(), function (m) { return m.canon.id; }, state.showAll.deepswe);
     var total = D.deepSwe().length;
     document.getElementById("deepsweDesc").textContent = src.desc || "";
-    // 柱状(pass1 升序,使最高在上)
+    // 柱状(pass1 升序,使最高在上);模型名后缀版本简标便于区分数据来源
     var sorted = ms.slice().sort(function (a, b) { return a.pass1 - b.pass1; });
-    CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name; }),
+    CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
       sorted.map(function (m) { return m.pass1; }), "#2D9D78", "%", { max: 80 }));
-    // 散点:成本 vs pass1,气泡=步数
+    // 散点:成本 vs pass1,气泡=步数;tooltip 名称带版本后缀
     CH.apply("dsScatter", CH.scatterOption(
-      ms.map(function (m) { return [m.cost, m.pass1, m.steps, m.name]; }),
+      ms.map(function (m) { return [m.cost, m.pass1, m.steps, m.name + "(" + (m.version || "v1.1") + ")"]; }),
       { xName: "平均成本($)", yName: "Pass@1(%)", bubble: true, bubbleDiv: 6, yMax: 80 }));
-    // 表格
+    // 表格:模型名后挂版本徽章(v1.1/v1.0);NEW 徽标在其后
     var html = ms.map(function (m, i) {
       var nw = D.isNewRaw("deepswe", m.name);
-      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + (nw ? newBadge() : "") + '</td>' +
+      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + verBadge(m.version) + (nw ? newBadge() : "") + '</td>' +
         '<td>' + esc(m.effort) + '</td><td class="num">' + m.pass1 + '±' + m.ci + '%</td>' +
         '<td class="num">$' + m.cost + '</td><td class="num">' + fmtK(m.outTok) + '</td><td class="num">' + m.steps + '</td></tr>';
     });
     fillTable("dsTable", ["#", "模型", "强度", "Pass@1", "平均成本", "输出tokens", "步数"], html,
       ["", "", "", "num", "num", "num", "num"]);
-    document.getElementById("dsNote").textContent = "来源:" + src.url + " · 版本 " + (src.version || "") + " · 更新 " + (src.updated || "") + " · " + (src.stats ? src.stats.tasks + " 任务 / " + src.stats.repos + " 仓库" : "") +
+    // 脚注:说明 v1.1(每日刷新)+ v1.0(历史快照)的构成与计数
+    var vc = D.deepSweVersionCounts();
+    document.getElementById("dsNote").textContent = "来源:" + src.url + " · v1.1 更新 " + (src.updated || "") + " · v1.0 历史快照(" + ((window.DEEPSWE_V10 && window.DEEPSWE_V10.captured) || "") + ") · " +
+      "共 " + total + " 个模型(v1.1: " + vc.v11 + " / v1.0 独有: " + vc.v10 + ")" + (src.stats ? " · v1.1 " + src.stats.tasks + " 任务 / " + src.stats.repos + " 仓库" : "") +
       (state.showAll.deepswe ? "" : " · 仅显示命中≥2榜的 " + ms.length + "/" + total + " 个模型");
   }
 

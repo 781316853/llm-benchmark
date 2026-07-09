@@ -55,13 +55,37 @@
     return { id: raw, vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
   }
 
-  // ===== DeepSWE:按 canonical 聚合(同名取最高 pass1) =====
+  // ===== DeepSWE:v1.1(每日刷新)与 v1.0(历史静态快照)合并 =====
+  // 策略:v1.1 优先,同名模型按 canonical 去重只保留 v1.1;v1.0 独有的模型追加进来。
+  // 每条附带 version 字段("v1.1"/"v1.0"),供前端挂版本徽章;最终按 pass1 降序。
   function deepSwe() {
-    var src = window.DEEPSWE || { models: [] };
-    // 按 Pass@1 降序,保证表格排名可靠(即便数据源顺序变化)
-    return src.models.slice().sort(function (a, b) { return b.pass1 - a.pass1; }).map(function (m) {
-      return Object.assign({}, m, { canon: canon(m.name) });
+    var v11Src = window.DEEPSWE || { models: [] };
+    var v10Src = window.DEEPSWE_V10 || { models: [] };
+    // v1.1 为基底:附加版本标记与 canonical
+    var merged = v11Src.models.map(function (m) {
+      return Object.assign({}, m, { version: "v1.1", canon: canon(m.name) });
     });
+    // 用 canonical id 去重:v1.1 已收录的同模型不再重复加入 v1.0
+    var seen = {};
+    merged.forEach(function (m) { seen[m.canon.id] = true; });
+    v10Src.models.forEach(function (m) {
+      var c = canon(m.name);
+      if (!seen[c.id]) {
+        merged.push(Object.assign({}, m, { version: "v1.0", canon: c }));
+        seen[c.id] = true;
+      }
+    });
+    // 按 Pass@1 降序,保证表格排名可靠
+    return merged.sort(function (a, b) { return b.pass1 - a.pass1; });
+  }
+
+  // 版本构成计数:返回合并集中 v1.1 / v1.0 独有的模型数,供脚注展示
+  function deepSweVersionCounts() {
+    var counts = { v11: 0, v10: 0 };
+    deepSwe().forEach(function (m) {
+      if (m.version === "v1.0") counts.v10++; else counts.v11++;
+    });
+    return counts;
   }
 
   // ===== Vibe Code:同名 canonical 取最高 score(Claude Opus 4.8 多 harness) =====
@@ -189,6 +213,7 @@
     parseCell: parseCell,
     canon: canon,
     deepSwe: deepSwe,
+    deepSweVersionCounts: deepSweVersionCounts,
     vibeCode: vibeCode,
     llmMonth: llmMonth,
     llmMonths: llmMonths,

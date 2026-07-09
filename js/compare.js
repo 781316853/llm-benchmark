@@ -5,13 +5,14 @@
 
   var D = window.D;
 
-  // 交叉矩阵:按"出现基准数"降序,再按三榜可用分综合排序
+  // 交叉矩阵:按"综合分"降序(质量为主、广度微折损),同分时按命中数降序兜底
   function matrix(llmMonthKey) {
     var map = D.unified(llmMonthKey);
     var rows = Object.keys(map).map(function (k) { return map[k]; });
     rows.sort(function (a, b) {
-      if (b.benchCount !== a.benchCount) return b.benchCount - a.benchCount;
-      return avgNorm(b) - avgNorm(a);
+      var ca = composite(a), cb = composite(b);
+      if (ca !== cb) return cb - ca;      // 综合分降序(主键)
+      return b.benchCount - a.benchCount; // 同分时命中榜数降序兜底,保证排序稳定
     });
     return rows;
   }
@@ -21,6 +22,11 @@
     if (e.vibe) vs.push(e.vibe.norm);
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
     return vs.length ? vs.reduce(function (a, b) { return a + b; }, 0) / vs.length : 0;
+  }
+  // 综合分:以质量均值(avgNorm)为核心,内嵌跨榜广度(benchCount)的微折损
+  // 全命中(3榜)系数1.0;命中2榜≈0.933;命中1榜≈0.867 —— 单榜极强不会轻易压过跨榜强模型
+  function composite(e) {
+    return avgNorm(e) * (0.8 + 0.2 * e.benchCount / 3);
   }
 
   // 雷达:三轴归一化 0-100
@@ -90,7 +96,7 @@
   }
 
   window.CMP = {
-    matrix: matrix, avgNorm: avgNorm,
+    matrix: matrix, avgNorm: avgNorm, composite: composite,
     radarSeries: radarSeries, metricCards: metricCards,
     costSeries: costSeries, defaultSelection: defaultSelection, options: options,
     INDICATORS: INDICATORS

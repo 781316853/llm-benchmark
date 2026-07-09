@@ -33,6 +33,9 @@ function writeFileIfChanged(file, content) {
 }
 
 // ===== 1) DeepSWE:解析 datacurve.ai 内嵌 run 对象,每模型取最高 pass_at_1 =====
+// 注:此处仅抓取 v1.1(默认榜单,初始 HTML 内嵌)。v1.0 历史榜单数据不在静态 HTML 中,
+// 需点击榜单 v1 切换器后由客户端注入,纯 Node HTTP 无法复现,故 v1.0 作为静态快照
+// 存于 data/deepswe_v10.js(不随每日刷新);两版由 js/data.js 的 deepSwe() 合并展示。
 async function fetchDeepSwe() {
   console.log("[DeepSWE] 抓取 https://deepswe.datacurve.ai/");
   const html = await fetchText("https://deepswe.datacurve.ai/");
