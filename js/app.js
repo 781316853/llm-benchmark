@@ -8,8 +8,8 @@
     // 总览默认收起(聚焦跨榜命中),其余三页默认展开全部模型
     showAll: { overview: false, deepswe: true, vibe: true, llm: true } };
   var fmtK = function (n) { return n >= 1000 ? (n / 1000).toFixed(0) + "k" : n; };
-  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
-    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>\"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" }[c]; }); };
   var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
   // "NEW" 徽标(近 7 天内首次上榜的模型);仅对判定为新的模型追加在模型名后
   var newBadge = function () { return ' <span class="badge-new">NEW</span>'; };
