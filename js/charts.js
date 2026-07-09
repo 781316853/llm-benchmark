@@ -1,0 +1,123 @@
+// ECharts 封装:统一暗色主题、实例管理、窗口自适应,并提供各图表类型的 option 构建器。
+// 暴露 window.CH;app/compare 调用 CH.apply(id, option) 渲染。
+(function () {
+  "use strict";
+  if (!window.echarts) { console.warn("ECharts 未加载,图表功能降级"); }
+
+  var registry = {};
+  var AXIS = { axisLine: { lineStyle: { color: "#3a4658" } },
+    axisLabel: { color: "#9aa6b2" }, splitLine: { lineStyle: { color: "rgba(255,255,255,.06)" } } };
+
+  // 获取/创建实例;若 ECharts 缺失则返回 null
+  function inst(id) {
+    if (!window.echarts) return null;
+    var dom = document.getElementById(id);
+    if (!dom) return null;
+    if (!registry[id]) registry[id] = window.echarts.init(dom, null, { renderer: "canvas" });
+    return registry[id];
+  }
+
+  // 应用 option(合并基础暗色样式)
+  function apply(id, option) {
+    var c = inst(id);
+    if (!c) return;
+    option = option || {};
+    option.textStyle = Object.assign({ color: "#e6edf3" }, option.textStyle || {});
+    option.tooltip = Object.assign({ trigger: "item", backgroundColor: "rgba(20,28,40,.92)",
+      borderColor: "#2a3547", textStyle: { color: "#e6edf3" } }, option.tooltip || {});
+    c.setOption(option, true);
+  }
+
+  // ===== 横向柱状(用于 Pass@1 / 准确率 / 综合分排行) =====
+  function barOption(cats, values, color, unit, opts) {
+    opts = opts || {};
+    return {
+      grid: { left: opts.left || 140, right: 48, top: 16, bottom: 24, containLabel: false },
+      xAxis: { type: "value", max: opts.max, name: unit || "", nameTextStyle: { color: "#9aa6b2" },
+        axisLine: { lineStyle: { color: "#3a4658" } }, axisLabel: { color: "#9aa6b2" },
+        splitLine: { lineStyle: { color: "rgba(255,255,255,.06)" } } },
+      // inverse:false + 升序数据 => 最高分位于顶部
+      yAxis: { type: "category", data: cats, inverse: false,
+        axisLabel: { color: "#cbd5e1", fontSize: 12 },
+        axisLine: { lineStyle: { color: "#3a4658" } }, splitLine: { show: false } },
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" },
+        formatter: function (p) { return p[0].name + "<br/><b>" + p[0].value + (unit || "") + "</b>"; } },
+      series: [{
+        type: "bar", data: values.map(function (v, i) {
+          return { value: v, itemStyle: { color: color, borderRadius: [0, 4, 4, 0] } };
+        }),
+        barWidth: "58%",
+        label: { show: true, position: "right", color: "#cbd5e1", formatter: function (p) { return p.value + (unit || ""); } }
+      }]
+    };
+  }
+
+  // ===== 雷达(三轴归一化 0-100) =====
+  function radarOption(indicators, series) {
+    return {
+      tooltip: {},
+      legend: { bottom: 0, textStyle: { color: "#cbd5e1" }, type: "scroll" },
+      radar: {
+        indicator: indicators,
+        radius: "62%", center: ["50%", "48%"],
+        axisName: { color: "#cbd5e1", fontSize: 12 },
+        splitLine: { lineStyle: { color: "rgba(255,255,255,.1)" } },
+        splitArea: { areaStyle: { color: ["rgba(77,141,255,.03)", "rgba(77,141,255,.07)"] } },
+        axisLine: { lineStyle: { color: "rgba(255,255,255,.12)" } }
+      },
+      series: [{ type: "radar", data: series, symbolSize: 5,
+        areaStyle: { opacity: 0.12 }, lineStyle: { width: 2 } }]
+    };
+  }
+
+  // ===== 散点(成本 vs 成绩;可带气泡大小与颜色) =====
+  function scatterOption(points, opts) {
+    opts = opts || {};
+    return {
+      grid: { left: 60, right: 30, top: 30, bottom: 56 },
+      tooltip: { formatter: function (p) {
+        var d = p.data; return d[3] + "<br/>" + (opts.xName || "X") + ": " + d[0] + "<br/>" + (opts.yName || "Y") + ": " + d[1]; } },
+      xAxis: Object.assign({ type: "value", name: opts.xName, nameLocation: "middle", nameGap: 30,
+        nameTextStyle: { color: "#9aa6b2" } }, AXIS),
+      yAxis: Object.assign({ type: "value", name: opts.yName, nameTextStyle: { color: "#9aa6b2" },
+        max: opts.yMax, min: opts.yMin }, AXIS),
+      series: [{
+        type: "scatter", data: points,
+        symbolSize: function (d) { return opts.bubble ? Math.max(8, Math.min(46, d[2] / (opts.bubbleDiv || 6))) : 14; },
+        itemStyle: { opacity: 0.85 },
+        // label 默认显示;数据量大时调用方可传 opts.label=false 关闭以免重叠
+        label: { show: opts.label !== false, formatter: function (p) { return p.data[3]; }, position: "top", color: "#9aa6b2", fontSize: 10 }
+      }]
+    };
+  }
+
+  // ===== 热力图(项目 × 模型,数值化分 0-4.3) =====
+  function heatmapOption(xLabels, yLabels, data, max) {
+    return {
+      tooltip: { position: "top",
+        formatter: function (p) { return yLabels[p.value[1]] + " · " + xLabels[p.value[0]] + "<br/>" + (p.value[3] || "—"); } },
+      grid: { left: 130, right: 30, top: 30, bottom: 80 },
+      xAxis: { type: "category", data: xLabels, axisLabel: { color: "#cbd5e1", fontSize: 11 }, splitArea: { show: true },
+        axisLine: { lineStyle: { color: "#3a4658" } } },
+      yAxis: { type: "category", data: yLabels, inverse: true, axisLabel: { color: "#cbd5e1", fontSize: 11 },
+        splitArea: { show: true }, axisLine: { lineStyle: { color: "#3a4658" } } },
+      visualMap: { min: 0, max: max || 4.3, calculable: true, orient: "horizontal", left: "center", bottom: 6,
+        textStyle: { color: "#9aa6b2" },
+        inRange: { color: ["#3a2426", "#7a4a2a", "#b07a2a", "#3f8f4a", "#2bb673"] } },
+      series: [{ type: "heatmap", data: data,
+        label: { show: true, color: "#fff", fontSize: 10, formatter: function (p) { return p.value[3]; } },
+        emphasis: { itemStyle: { shadowBlur: 8, shadowColor: "#000" } } }]
+    };
+  }
+
+  // 窗口自适应
+  window.addEventListener("resize", function () {
+    Object.keys(registry).forEach(function (id) { registry[id].resize(); });
+  });
+
+  window.CH = {
+    apply: apply, inst: inst,
+    barOption: barOption, radarOption: radarOption,
+    scatterOption: scatterOption, heatmapOption: heatmapOption
+  };
+})();

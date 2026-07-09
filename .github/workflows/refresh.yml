@@ -1,0 +1,46 @@
+name: 每日数据刷新
+on:
+  schedule:
+    - cron: "0 1 * * *"   # UTC 01:00 ≈ 北京 09:00
+  workflow_dispatch:       # 支持手动触发验证
+
+permissions:
+  contents: write          # 允许把刷新后的 data/*.js 提交回仓库
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 抓取三源并重写 data/*.js
+        run: node scripts/fetch_all.js
+
+      - name: 提交变更(若有)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/*.js
+          if git diff --staged --quiet; then
+            echo "数据无变化,跳过提交"
+          else
+            git commit -m "chore(data): 每日刷新 $(date -u +%F)"
+            git push
+          fi
+
+      - name: 清除 jsDelivr CDN 缓存(使公网站点即时更新)
+        if: success()
+        env:
+          BR: ${{ github.ref_name }}
+        run: |
+          for f in index.html data/deepswe.js data/vibecode.js data/llm2014.js data/models.js; do
+            curl -fsSL "https://purge.jsdelivr.net/gh/${{ github.repository }}@${BR}/$f" || true
+          done

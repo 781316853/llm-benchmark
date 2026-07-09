@@ -1,0 +1,14 @@
+# TRAE 本地缓存/配置(含开发探针脚本与计划文档)
+.trae/
+
+# 临时抓取转储
+*.dump.html
+trae_dump.html
+
+# Node(供 scripts/ 用)
+node_modules/
+
+# 系统/编辑器
+Thumbs.db
+.DS_Store
+*.log
