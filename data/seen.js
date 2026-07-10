@@ -100,6 +100,20 @@ window.SEEN = {
     'deepswe|kimi-k2-7-code': '2026-07-09',
     'vibe|Gpt 5.6 sol [新]': '2026-07-09',
     'vibe|Gpt 5.6 luna [新]': '2026-07-09',
-    'vibe|Gpt 5.6 terra [新]': '2026-07-09'
+    'vibe|Gpt 5.6 terra [新]': '2026-07-09',
+    'deepswe|claude-opus-4-7': '2026-07-09',
+    'deepswe|claude-opus-4-6': '2026-07-09',
+    'deepswe|gpt-5-4-mini': '2026-07-09',
+    'deepswe|kimi-k2-6': '2026-07-09',
+    'deepswe|minimax-m3': '2026-07-09',
+    'deepswe|mimo-v2-5-pro': '2026-07-09',
+    'deepswe|qwen3-7-max': '2026-07-09',
+    'deepswe|glm-5-1': '2026-07-09',
+    'deepswe|grok-build-0-1': '2026-07-09',
+    'deepswe|deepseek-v4-pro': '2026-07-09',
+    'deepswe|gemini-3-flash-preview': '2026-07-09',
+    'deepswe|qwen3-6-plus': '2026-07-09',
+    'deepswe|claude-haiku-4-5': '2026-07-09',
+    'deepswe|minimax-m2-7': '2026-07-09'
   }
 };

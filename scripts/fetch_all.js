@@ -217,9 +217,12 @@ function updateSeen() {
     const key = bench + "|" + String(name);
     if (!(key in entries)) entries[key] = TODAY;
   }
-  // DeepSWE
+  // DeepSWE v1.1
   const ds = loadJsGlobal("deepswe.js", "DEEPSWE");
   if (ds && Array.isArray(ds.models)) ds.models.forEach(function (m) { add("deepswe", m.name); });
+  // DeepSWE v1.0(历史榜单模型也纳入首次上榜追踪)
+  const ds10 = loadJsGlobal("deepswe_v10.js", "DEEPSWE_V10");
+  if (ds10 && Array.isArray(ds10.models)) ds10.models.forEach(function (m) { add("deepswe", m.name); });
   // Vibe Code
   const vc = loadJsGlobal("vibecode.js", "VIBECODE");
   if (vc && Array.isArray(vc.models)) vc.models.forEach(function (m) { add("vibe", m.name); });
