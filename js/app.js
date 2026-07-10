@@ -369,7 +369,14 @@
       b.addEventListener("click", function () { showTab(b.dataset.tab); });
     });
     document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / Vibe " + (D.src.vibe ? D.src.vibe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth);
-    showTab("overview");
+    // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行重渲染并移除指示器
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        showTab("overview");
+        var loading = document.getElementById("appLoading");
+        if (loading) loading.remove();
+      });
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

@@ -4,7 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>大模型编码基准整合门户 · DeepSWE / Vibe Code / llm2014</title>
+  <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
   <link rel="stylesheet" href="css/styles.css?v=20260710" />
+  <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <!-- 数据快照(全局变量) -->
+  <script defer src="data/models.js"></script>
+  <script defer src="data/deepswe.js"></script>
+  <script defer src="data/deepswe_v10.js"></script>
+  <script defer src="data/vibecode.js"></script>
+  <script defer src="data/llm2014.js"></script>
+  <script defer src="data/swebench.js"></script>
+  <script defer src="data/tbench.js"></script>
+  <script defer src="data/seen.js"></script>
+  <!-- 业务脚本 -->
+  <script defer src="js/data.js"></script>
+  <script defer src="js/charts.js"></script>
+  <script defer src="js/compare.js"></script>
+  <script defer src="js/app.js"></script>
+  <!-- 意见反馈交互 -->
+  <script defer src="js/feedback.js"></script>
 </head>
 <body>
   <!-- 顶部标题区 -->
@@ -27,6 +48,11 @@
   <main class="content">
     <!-- 1) 总览 -->
     <section class="page active" id="page-overview">
+      <!-- 加载指示器:脚本加载完成前显示,由 app.js init() 移除 -->
+      <div id="appLoading" class="app-loading">
+        <div class="app-loading-spinner"></div>
+        <p>正在加载数据...</p>
+      </div>
       <div class="bench-cards" id="benchCards"></div>
       <h2 class="section-title">交叉模型矩阵 <span class="hint">同一模型在三个基准中的成绩(高亮表示多榜命中);默认按综合分降序,点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</span></h2>
       <label class="switch" title="默认仅显示命中≥2个榜单的模型,勾选可展开全部"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
@@ -131,24 +157,5 @@
       </div>
     </div>
   </div>
-
-  <!-- ECharts 图表库(CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <!-- 数据快照(全局变量) -->
-  <script src="data/models.js"></script>
-  <script src="data/deepswe.js"></script>
-  <script src="data/deepswe_v10.js"></script>
-  <script src="data/vibecode.js"></script>
-  <script src="data/llm2014.js"></script>
-  <script src="data/swebench.js"></script>
-  <script src="data/tbench.js"></script>
-  <script src="data/seen.js"></script>
-  <!-- 业务脚本 -->
-  <script src="js/data.js"></script>
-  <script src="js/charts.js"></script>
-  <script src="js/compare.js"></script>
-  <script src="js/app.js"></script>
-  <!-- 意见反馈交互 -->
-  <script src="js/feedback.js"></script>
 </body>
 </html>
