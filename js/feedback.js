@@ -47,13 +47,19 @@
     closeModal();
   }
 
-  // 绑定所有交互事件
+  // 绑定所有交互事件（逐个检查元素存在性，避免空指针异常）
   function bindEvents() {
-    document.getElementById("feedbackFab").addEventListener("click", openModal);
-    document.getElementById("feedbackClose").addEventListener("click", closeModal);
-    document.getElementById("feedbackCancel").addEventListener("click", closeModal);
-    document.getElementById("feedbackOverlay").addEventListener("click", closeModal);
-    document.getElementById("feedbackSubmit").addEventListener("click", submitFeedback);
+    var fab = document.getElementById("feedbackFab");
+    var close = document.getElementById("feedbackClose");
+    var cancel = document.getElementById("feedbackCancel");
+    var overlay = document.getElementById("feedbackOverlay");
+    var submit = document.getElementById("feedbackSubmit");
+
+    if (fab) fab.addEventListener("click", openModal);
+    if (close) close.addEventListener("click", closeModal);
+    if (cancel) cancel.addEventListener("click", closeModal);
+    if (overlay) overlay.addEventListener("click", closeModal);
+    if (submit) submit.addEventListener("click", submitFeedback);
   }
 
   // 缓存 DOM 引用并绑定事件
