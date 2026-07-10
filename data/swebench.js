@@ -1,17 +1,16 @@
-// 数据源4:SWE-bench Pro 多源聚合快照(云端抓取)
-// 数据源:Scale AI SEAL 标准化榜单(scale.com) + llm-stats.com vendor 聚合榜
+// 数据源4:SWE-bench Pro 快照(云端抓取)
+// 数据源:llm-stats.com vendor 聚合榜(厂商自报分数聚合)
 // 更新于 2026-07-10
-// Scale SEAL:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分(顶级 ~59%,抗污染)
-// llm-stats:厂商自报分数聚合(顶级 ~80%,含更多模型如 Fable5/Opus4.8/GLM-5.2 等)
-// 合并策略:同一模型取两源最高分(保留最优公开成绩);source 字段标注数据来源
-// 字段说明:name=模型名;score=Pass@1(%);ci=置信区间(±%);harness=评测 scaffold;source=数据来源;vendor=厂商
+// SWE-bench Pro:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified
+// llm-stats:聚合各厂商公开报告的 Pass@1 分数(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
+// 字段说明:name=模型名;score=Pass@1(%);source=数据来源;vendor=厂商
 window.SWEBENCH = {
   source: "SWE-bench Pro",
-  url: "https://scale.com/leaderboard/swe_bench_pro_public",
+  url: "https://llm-stats.com/benchmarks/swe-bench-pro",
   updated: "2026-07-10",
-  variant: "Pro Public (multi-source)",
+  variant: "Pro (llm-stats aggregate)",
   stats: { tasks: 731, repos: 41, languages: 4, models: 35 },
-  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。聚合 Scale SEAL 标准化分与 llm-stats vendor 聚合分,取最高。",
+  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。数据源为 llm-stats.com 厂商自报分数聚合。",
   models: [
   {
     'name': 'Claude Fable 5',
