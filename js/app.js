@@ -84,7 +84,7 @@
     { key: "composite", label: "综合分", type: "num", bench: false, val: function (r) { return CMP.composite(r); } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
-    { key: "llm",     label: "llm2014 (综合分/10)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.score != null) ? r.llm.score : null; } },
+    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.score != null) ? r.llm.score : null; } },
     // SWE-bench Pro + Terminal-Bench 双值列:排序时仅显示有值的模型
     { key: "swetb", label: "SWE-bench Pro + TBench", type: "num", bench: true,
       val: function (r) {
@@ -155,7 +155,7 @@
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       var ds = r.deepswe ? r.deepswe.pass1 + "%" + verBadge(r.deepswe.version) : "—";
       var vc = r.vibe ? r.vibe.score + "%" : "—";
-      var lm = (r.llm && r.llm.score != null) ? D.to10(r.llm.score).toFixed(2) : "—";
+      var lm = (r.llm && r.llm.score != null) ? D.to100(r.llm.score).toFixed(1) : "-";
       // SWE-bench Pro / Terminal-Bench 双值并列显示
       var swe = r.swe ? r.swe.score + "%" : "—";
       var tb = r.tbench ? r.tbench.score + "%" : "—";
@@ -282,10 +282,10 @@
     });
     CH.apply("lmHeat", CH.heatmapOption(xLabels, yLabels, heat, D.MAX_GRADE));
 
-    // 综合分柱(10 分制:内部 0-4.0 折算为 0-10)
+    // 综合分柱(百分制:内部 0-4.0 折算为 0-100)
     var bsorted = rows.slice().sort(function (a, b) { return (a.score || 0) - (b.score || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
-      bsorted.map(function (r) { return r.score == null ? 0 : Number(D.to10(r.score).toFixed(2)); }), "#2D9D78", "", { max: 10 }));
+      bsorted.map(function (r) { return r.score == null ? 0 : Number(D.to100(r.score).toFixed(1)); }), "#2D9D78", "", { max: 100 }));
 
     // 图例:色块与热力图填充色严格一致(绿→黄绿→琥珀→红,灰=无数据)
     var legendSeq = [["A+", LM_BG["A+"]], ["A", LM_BG.A], ["B+", LM_BG["B+"]], ["B", LM_BG.B],
@@ -302,15 +302,15 @@
       r.cells.forEach(function (c) {
         tds += '<td class="num"><span class="' + gradeClass(c) + '">' + esc(c.raw) + '</span></td>';
       });
-      tds += '<td class="num">' + (r.score != null ? D.to10(r.score).toFixed(2) : "—") + '</td>';
+      tds += '<td class="num">' + (r.score != null ? D.to100(r.score).toFixed(1) : "-") + '</td>';
       tds += '<td>' + esc(r.ide) + '</td><td class="num">' + (r.think ? "是" : "否") + '</td>';
       return '<tr class="' + (nw ? "row-new" : "") + '">' + tds + '</tr>';
     });
     // 表头:各 project 列与综合分/思考为数值列,加 num 类居中;#、模型、IDE/CLI 为文本列
-    var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/10)", "IDE/CLI", "思考"]);
+    var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/100)", "IDE/CLI", "思考"]);
     var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num", "", "num"]);
     fillTable("lmTable", lmHeaders, html, lmHeadCls);
-    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 综合分按 10 分制显示(由等级数值 A+=4.0/A=3.5/B+=3.0/B=2.5/C+=2.0/C=1.5/D+=1.0/D=0.5 折算,相邻等级 0.5 间隔;Pass=4.0;Failed=0;Skip/Pending 不计入)。热力图仍按单项等级(0-4.0)着色。" +
+    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 综合分按百分制显示(由等级数值 A+=4.0/A=3.5/B+=3.0/B=2.5/C+=2.0/C=1.5/D+=1.0/D=0.5 折算,相邻等级 0.5 间隔;Pass=4.0;Failed=0;Skip/Pending 不计入)。热力图仍按单项等级(0-4.0)着色。" +
       (state.showAll.llm ? "" : " · 仅显示命中≥2榜的 " + rows.length + "/" + allRows.length + " 个模型");
   }
 

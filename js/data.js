@@ -208,8 +208,8 @@
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
     var lmTop = lmRows.slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); })[0] || {};
-    // llm2014 头名按 10 分制折算显示(内部 score 仍为 0-4.0 等级均值)
-    var lmTopScore = lmTop.score != null ? (lmTop.score / MAX_GRADE * 10) : null;
+    // llm2014 头名按百分制折算显示(内部 score 仍为 0-4.0 等级均值)
+    var lmTopScore = lmTop.score != null ? (lmTop.score / MAX_GRADE * 100) : null;
     return [
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
@@ -260,6 +260,8 @@
     MAX_GRADE: MAX_GRADE,
     // 把内部 0-4.0 等级分折算为 0-10 分制用于对外显示;null 原样返回
     to10: function (s) { return s == null ? null : s / MAX_GRADE * 10; },
+    // 百分制折算:0-4.0 等级分 -> 0-100;null 原样返回
+    to100: function (s) { return s == null ? null : s / MAX_GRADE * 100; },
     parseCell: parseCell,
     canon: canon,
     deepSwe: deepSwe,
