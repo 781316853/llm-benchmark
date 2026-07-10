@@ -27,16 +27,22 @@
     return { raw: s, status: "unknown", num: null };
   }
 
-  // ===== 字符串归一:小写 + 去非字母数字,用于模型别名匹配 =====
+  // ===== 字符串归一:小写 + 统一分隔符,用于模型别名匹配 =====
+  // 将连续的非字母数字字符(空格、-、_、. 等)统一折叠为单个 "-",再去除首尾连字符。
+  // 这样 "gpt-5-6-sol"、"Gpt 5.6 sol"、"gpt_5_6_sol" 均归一为 "gpt-5-6-sol",保证不同写法可匹配;
+  // 同时因保留了数字分组,可避免 "5-6"(版本5.6)与 "56"(版本56)被误判为同一模型。
   function norm(s) {
-    return String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")  // 连续非字母数字 -> 单个连字符
+      .replace(/^-+|-+$/g, "");      // 去除首尾连字符
   }
-  // 剥离 effort 后缀后再归一(兜底匹配)
+  // 剥离 effort 后缀后再归一(兜底匹配,用于别名命中后的宽松匹配)
   function normLight(s) {
     return String(s || "")
       .replace(/\([^)]*\)/g, "")     // 去括号注解 (high)/(max)
       .replace(/(high|max|medium|xhigh|low|think|preview)/gi, "")
-      .toLowerCase().replace(/[^a-z0-9]/g, "");
+      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   }
 
   // 构建别名索引
@@ -48,11 +54,21 @@
     aliasIndex[normLight(c.id)] = c;
   });
 
-  // 根据原始模型名解析 canonical;未命中则自成一家
+  // 未登记模型自动归并缓存:归一键 -> canonical 对象
+  // 未在 MODEL_MAP 登记的模型,按归一键自动合并:仅分隔符/大小写不同的写法
+  // (如 "gpt-5-6-sol" 与 "Gpt 5.6 sol")复用首次出现时建立的 canonical,实现自动匹配。
+  var autoIndex = {};
+
+  // 根据原始模型名解析 canonical;未命中别名索引则按归一键自动归并
   function canon(raw) {
     var c = aliasIndex[norm(raw)] || aliasIndex[normLight(raw)];
     if (c) return c;
-    return { id: raw, vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
+    // 自动匹配:未登记模型按归一键去重,首次出现的原始名作为显示名
+    var k = norm(raw);
+    if (autoIndex[k]) return autoIndex[k];
+    var fb = { id: raw, vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
+    autoIndex[k] = fb;
+    return fb;
   }
 
   // ===== DeepSWE:v1.1(每日刷新)与 v1.0(历史静态快照)合并 =====
@@ -167,7 +183,7 @@
       { key: "vibecode", name: "Vibe Code Bench", tag: "从零构建 Web 应用", url: vc.url, updated: vc.updated,
         stats: [{ l: "系统", v: vc.totalSystems }, { l: "展示", v: (vc.models || []).length }],
         top: vcTop.name + " · " + vcTop.score + "%" },
-      { key: "llm2014", name: "llm2014 code_v3", tag: "个人私有题库", url: lm.url, updated: latest,
+      { key: "llm2014", name: "llm2014 code_v3", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
         top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/10" : "—") }
     ];

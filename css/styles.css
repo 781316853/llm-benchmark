@@ -222,18 +222,21 @@ a:hover { text-decoration: underline; }
 
 /* ===== 意见反馈浮动按钮 ===== */
 .feedback-fab {
-  display: inline-flex; align-items: center; gap: 6px;
+  appearance: none; -webkit-appearance: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   position: fixed; bottom: 28px; right: 28px; z-index: 50;
   background: var(--accent); color: #fff; border: none; border-radius: 999px;
-  padding: 12px 20px; font-size: 14px; font-weight: 600; cursor: pointer;
-  font-family: var(--font-body);
+  margin: 0; padding: 12px 20px; font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body); line-height: 1; text-align: center;
   box-shadow: 0 4px 14px rgba(45,157,120,.35);
   transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
 }
+.feedback-fab svg { flex: none; display: block; }
 .feedback-fab:hover { background: var(--accent-hover); transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(45,157,120,.4); }
 .feedback-fab:active { transform: translateY(0); }
-.fab-text { line-height: 1; }
+.feedback-fab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fab-text { line-height: 1; white-space: nowrap; }
 
 /* ===== 意见反馈弹窗 ===== */
 .feedback-modal { position: fixed; inset: 0; z-index: 100; display: flex;
@@ -270,6 +273,7 @@ a:hover { text-decoration: underline; }
   outline-offset: -1px; border-color: var(--accent); }
 /* 底部操作按钮 */
 .feedback-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+.feedback-cancel, .feedback-submit { appearance: none; -webkit-appearance: none; }
 .feedback-cancel:hover { border-color: var(--text-tertiary); color: var(--text-tertiary); }
 .feedback-submit { background: var(--accent); color: #fff; border-color: transparent;
   font-weight: 600; }
