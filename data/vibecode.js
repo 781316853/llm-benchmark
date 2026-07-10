@@ -37,7 +37,7 @@ window.VIBECODE = {
     'latencyS': 4001
   },
   {
-    'name': 'Gpt 5.6 sol [新]',
+    'name': 'GPT 5.6 Sol',
     'harness': 'OpenHands',
     'score': 80.5,
     'ci': 3.72,
@@ -53,7 +53,7 @@ window.VIBECODE = {
     'latencyS': 1142
   },
   {
-    'name': 'Gpt 5.6 luna [新]',
+    'name': 'GPT 5.6 Luna',
     'harness': 'OpenHands',
     'score': 77.06,
     'ci': 3.07,
@@ -85,7 +85,7 @@ window.VIBECODE = {
     'latencyS': 830
   },
   {
-    'name': 'Gpt 5.6 terra [新]',
+    'name': 'GPT 5.6 Terra',
     'harness': 'OpenHands',
     'score': 67.84,
     'ci': 5.1,

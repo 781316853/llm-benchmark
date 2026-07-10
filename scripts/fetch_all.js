@@ -113,6 +113,7 @@ const VIBE_NAMES = {
   "anthropic/claude-sonnet-4-5-20250929-thinking": "Claude Sonnet 4.5",
   "anthropic/claude-haiku-4-5-20251001-thinking": "Claude Haiku 4.5",
   "openai/gpt-5.5": "GPT 5.5", "openai/gpt-5.5-codex": "GPT 5.5 Codex", "openai/gpt-5.5-factory": "GPT 5.5",
+  "openai/gpt-5.6-sol": "GPT 5.6 Sol", "openai/gpt-5.6-terra": "GPT 5.6 Terra", "openai/gpt-5.6-luna": "GPT 5.6 Luna",
   "openai/gpt-5.4": "GPT 5.4", "openai/gpt-5.4-2026-03-05": "GPT 5.4", "openai/gpt-5.4-mini-2026-03-17": "GPT 5.4 Mini",
   "openai/gpt-5.4-nano-2026-03-17": "GPT 5.4 Nano", "openai/gpt-5.3-codex": "GPT 5.3 Codex",
   "openai/gpt-5.2-2025-12-11": "GPT 5.2", "openai/gpt-5.2-codex": "GPT 5.2 Codex",

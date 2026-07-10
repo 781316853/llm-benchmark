@@ -270,7 +270,7 @@
     });
     CH.apply("lmHeat", CH.heatmapOption(xLabels, yLabels, heat, D.MAX_GRADE));
 
-    // 综合分柱(10 分制:内部 0-4.3 折算为 0-10)
+    // 综合分柱(10 分制:内部 0-4.0 折算为 0-10)
     var bsorted = rows.slice().sort(function (a, b) { return (a.score || 0) - (b.score || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
       bsorted.map(function (r) { return r.score == null ? 0 : Number(D.to10(r.score).toFixed(2)); }), "#2D9D78", "", { max: 10 }));
@@ -298,7 +298,7 @@
     var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/10)", "IDE/CLI", "思考"]);
     var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num", "", "num"]);
     fillTable("lmTable", lmHeaders, html, lmHeadCls);
-    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 综合分按 10 分制显示(由等级数值 A+=4.3/A=4.0/B+=3.3/B=3.0/C+=2.3/C=2.0/D+=1.3/D=1.0 折算;Pass=4.3;Failed=0;Skip/Pending 不计入)。热力图仍按单项等级(0-4.3)着色。" +
+    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 综合分按 10 分制显示(由等级数值 A+=4.0/A=3.5/B+=3.0/B=2.5/C+=2.0/C=1.5/D+=1.0/D=0.5 折算,相邻等级 0.5 间隔;Pass=4.0;Failed=0;Skip/Pending 不计入)。热力图仍按单项等级(0-4.0)着色。" +
       (state.showAll.llm ? "" : " · 仅显示命中≥2榜的 " + rows.length + "/" + allRows.length + " 个模型");
   }
 

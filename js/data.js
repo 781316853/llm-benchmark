@@ -3,9 +3,9 @@
 (function () {
   "use strict";
 
-  // 字母等级 -> 数值(Pass 视为满分 4.3;Failed=0;Skip/Pending=null 不参与统计)
-  var GRADE_NUM = { "A+": 4.3, A: 4.0, "B+": 3.3, B: 3.0, "C+": 2.3, C: 2.0, "D+": 1.3, D: 1.0 };
-  var MAX_GRADE = 4.3;
+  // 字母等级 -> 数值(0.5 等差间隔:Pass 视为满分 4.0;Failed=0;Skip/Pending=null 不参与统计)
+  var GRADE_NUM = { "A+": 4.0, A: 3.5, "B+": 3.0, B: 2.5, "C+": 2.0, C: 1.5, "D+": 1.0, D: 0.5 };
+  var MAX_GRADE = 4.0;
 
   // ===== 单元格解析:"7/A" -> {minutes:7, grade:'A', num:4.0, status:'grade'} =====
   function parseCell(raw) {
@@ -174,7 +174,7 @@
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
     var lmTop = lmRows.slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); })[0] || {};
-    // llm2014 头名按 10 分制折算显示(内部 score 仍为 0-4.3 等级均值)
+    // llm2014 头名按 10 分制折算显示(内部 score 仍为 0-4.0 等级均值)
     var lmTopScore = lmTop.score != null ? (lmTop.score / MAX_GRADE * 10) : null;
     return [
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
@@ -224,7 +224,7 @@
   // 暴露
   window.D = {
     MAX_GRADE: MAX_GRADE,
-    // 把内部 0-4.3 等级分折算为 0-10 分制用于对外显示;null 原样返回
+    // 把内部 0-4.0 等级分折算为 0-10 分制用于对外显示;null 原样返回
     to10: function (s) { return s == null ? null : s / MAX_GRADE * 10; },
     parseCell: parseCell,
     canon: canon,
