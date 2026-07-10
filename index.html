@@ -55,8 +55,8 @@
       </div>
       <div class="bench-cards" id="benchCards"></div>
       <h2 class="section-title">交叉模型矩阵 <span class="hint">同一模型在三个基准中的成绩(高亮表示多榜命中);默认按综合分降序,点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</span></h2>
-      <label class="switch" title="默认仅显示命中≥2个榜单的模型,勾选可展开全部"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
       <div class="table-wrap"><table id="matrixTable" class="data-table"></table></div>
+      <label class="switch switch-lg" title="默认仅显示命中≥2个基准组且排名前30的模型,勾选可展开全部"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
       <p class="source-note" id="overviewNote"></p>
       <!-- 阅读说明:总览页概念指引 -->
       <section class="notes-section">
@@ -68,7 +68,7 @@
           <li>「—」表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。</li>
           <li>浅绿底色行表示跨榜命中数 ≥ 2 的模型;模型名后 NEW 表示近 7 天内首次上榜(仅基于 DeepSWE/Vibe/llm2014 三基准判定)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>
-          <li>「显示全部模型」开关可展开完整模型列表(包含仅出现在单一榜单的模型);默认仅显示命中≥2个基准组的模型。</li>
+          <li>「显示全部模型」开关可展开完整模型列表(包含命中不足2个或排名30之后的模型);默认仅显示命中≥2个基准组且排名前30的模型。</li>
           <li>本页仅用于学习与对比展示,数据为快照,不代表对各模型能力的绝对评价。</li>
         </ul>
       </section>

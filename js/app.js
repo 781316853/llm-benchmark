@@ -95,10 +95,8 @@
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
-  // 计算点击某列后的排序方向:新列首击一律降序(高→低),同列在升序/降序间翻转
-  // 特例:默认综合排序(sortKey=null)时综合分列已视为 desc,首击它翻转至 asc
+  // 计算点击某列后的排序方向:新列首击一律降序(高->低),同列在升序/降序间翻转
   function nextSortDir(key) {
-    if (state.sortKey === null && key === "composite") return "asc";
     if (state.sortKey !== key) return "desc";
     return state.sortDir === "asc" ? "desc" : "asc";
   }
@@ -149,9 +147,9 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:按当前排序状态(过滤+排序)处理行,再按"仅跨榜"开关过滤
+    // 矩阵表:先过滤命中≥2的模型,再取排名前30;勾选"显示全部"则展示所有
     var allRows = sortedMatrixRows(CMP.matrix(state.llmMonth));
-    var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 2; });
+    var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 2; }).slice(0, 30);
     if (!rows.length) rows = allRows;
     var html = rows.map(function (r, i) {
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
@@ -165,7 +163,9 @@
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.vibe && r.vibe.name, r.llm && r.llm.name);
       // row-hit(跨榜命中)与 row-new(新上榜)可并存;CSS 中 row-new 置后以生效
       var cls = (r.benchCount >= 2 ? "row-hit " : "") + (nw ? "row-new" : "");
+      // 序号列:按排序后的行序展示,不参与排序
       return '<tr class="' + cls.trim() + '">' +
+        '<td class="num">' + (i + 1) + '</td>' +
         '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
         '<td class="num">' + CMP.composite(r).toFixed(1) + '</td>' +
@@ -177,7 +177,8 @@
     });
     // 表头:可点击,激活列显示方向指示符;数值列追加 num 类以与数据居中对齐
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
-    var head = MATRIX_COLS.map(function (c) {
+    // 序号列表头(不参与排序,无 data-key)
+    var head = '<th class="num">#</th>' + MATRIX_COLS.map(function (c) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
       var active = state.sortKey === c.key || isDefaultComposite;
       var dir = state.sortKey === null ? "desc" : state.sortDir;
@@ -192,7 +193,7 @@
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     // 动态行数提示(显示全部模型开关状态)
     document.getElementById("overviewNote").textContent =
-      state.showAll.overview ? '当前显示全部 ' + rows.length + ' 个模型' : '当前仅显示命中≥2个基准组的 ' + rows.length + ' 个模型(勾选右上方"显示全部"可展开所有模型)。';
+      state.showAll.overview ? '当前显示全部 ' + rows.length + ' 个模型' : '当前仅显示命中≥2个基准组且排名前 ' + rows.length + ' 的模型(勾选下方"显示全部"可展开所有模型)。';
   }
 
   // ===== 2) DeepSWE =====
@@ -346,8 +347,9 @@
       var th = e.target.closest ? e.target.closest("th[data-key]") : null;
       if (!th) return;
       var key = th.getAttribute("data-key");
-      state.sortKey = key;
+      // 先计算方向再更新 sortKey,否则 nextSortDir 内 state.sortKey 已被覆盖,无法区分新旧列
       state.sortDir = nextSortDir(key);
+      state.sortKey = key;
       renderOverview();
     });
     // 各页"仅跨榜模型/显示全部"开关
