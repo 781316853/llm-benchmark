@@ -250,45 +250,15 @@ window.SEEN = ${JSON.stringify(seen, null, 2).replace(/"/g, "'")};
   writeFileIfChanged(path.join(DATA, "seen.js"), content);
 }
 
-// ===== 4) SWE-bench Pro:多源聚合(Scale SEAL 标准化 + llm-stats vendor 聚合) =====
-// 数据源1:Scale AI SEAL 公开榜单(scale.com)—— 统一 scaffold 标准化评分(顶级 ~59%)
-//   受 Cloudflare 保护,Node 环境常 403;失败则跳过,仅用 llm-stats 数据。
-// 数据源2:llm-stats.com vendor 聚合榜 —— 厂商自报分数聚合(顶级 ~80%,含 Fable5/Opus4.8 等)
-// 合并策略:同一模型取两源中的最高分(vendor 聚合通常 ≥ Scale 标准化,保留最优公开成绩)
+// ===== 4) SWE-bench Pro:llm-stats.com vendor 聚合榜 =====
+// 数据源:llm-stats.com —— 厂商自报分数聚合(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
+// 注:Scale SEAL 标准化榜单(labs.scale.com)受 Cloudflare 保护(返回 403),已移除以规避反爬风险。
+//     llm-stats 作为聚合源已覆盖足够多的模型,数据来源于各厂商公开报告。
 async function fetchSweBench() {
-  console.log("[SWE-bench Pro] 多源聚合抓取");
-
-  // --- 源1:Scale SEAL 标准化榜单(可选,失败不致命) ---
-  const sealModels = [];
-  try {
-    console.log("  [Scale SEAL] 抓取 https://scale.com/leaderboard/swe_bench_pro_public");
-    const sealHtml = await fetchText("https://scale.com/leaderboard/swe_bench_pro_public");
-    const sealDecoded = htmlDecode(sealHtml);
-    const re1 = /(\d+)\s*\n\s*([a-zA-Z0-9][a-zA-Z0-9.\- ()*]*?)\s*\n\s*(?:NEW\s*\n\s*)?(\d+(?:\.\d+)?)\s*[±]\s*(\d+(?:\.\d+)?)/g;
-    let m1, sealSeen = {};
-    while ((m1 = re1.exec(sealDecoded)) !== null) {
-      let name = m1[2].trim();
-      const isMini = /\*$/.test(name);
-      name = name.replace(/\*$/, "").trim();
-      if (sealSeen[name]) continue;
-      sealSeen[name] = true;
-      sealModels.push({
-        name: name, source: "Scale SEAL",
-        score: Math.round(parseFloat(m1[3]) * 100) / 100,
-        ci: Math.round(parseFloat(m1[4]) * 100) / 100,
-        harness: isMini ? "mini-swe-agent" : "SWE-Agent"
-      });
-    }
-    console.log("  [Scale SEAL] 解析到 " + sealModels.length + " 个模型");
-  } catch (e) {
-    console.log("  [Scale SEAL] 抓取失败(Cloudflare 拦截),跳过: " + e.message);
-  }
-
-  // --- 源2:llm-stats.com vendor 聚合榜(核心数据源,35 个模型) ---
-  console.log("  [llm-stats] 抓取 https://llm-stats.com/benchmarks/swe-bench-pro");
+  console.log("[SWE-bench Pro] 抓取 https://llm-stats.com/benchmarks/swe-bench-pro");
   const lsHtml = await fetchText("https://llm-stats.com/benchmarks/swe-bench-pro");
   const trs = lsHtml.match(/<tr[\s\S]*?<\/tr>/g) || [];
-  const lsModels = [];
+  const models = [];
   trs.forEach((tr) => {
     // 提取 <a href="/models/xxx">模型名</a> 与紧随其后的厂商文本
     const nameM = tr.match(/<a[^>]*href="\/models\/[^"]*"[^>]*>([^<]+)<\/a>/);
@@ -296,7 +266,7 @@ async function fetchSweBench() {
     // 提取 score(0.xxx 小数格式,llm-stats 使用 0-1 区间)
     const scoreM = tr.match(/>\s*(0\.\d{3})\s*</);
     if (nameM && scoreM) {
-      lsModels.push({
+      models.push({
         name: nameM[1].trim(),
         source: "llm-stats",
         score: Math.round(parseFloat(scoreM[1]) * 1000) / 10,
@@ -304,34 +274,25 @@ async function fetchSweBench() {
       });
     }
   });
-  if (!lsModels.length && !sealModels.length) throw new Error("SWE-bench Pro 两源均未解析到数据");
-  console.log("  [llm-stats] 解析到 " + lsModels.length + " 个模型");
-
-  // --- 合并:按模型名归并,取最高分 ---
-  const merged = {};
-  function upsert(m) {
-    const key = m.name.toLowerCase().trim();
-    if (!merged[key] || m.score > merged[key].score) merged[key] = m;
-  }
-  sealModels.forEach(upsert);
-  lsModels.forEach(upsert);
-  const models = Object.values(merged).sort((a, b) => b.score - a.score);
+  if (!models.length) throw new Error("SWE-bench Pro 未解析到任何模型");
+  console.log("  [llm-stats] 解析到 " + models.length + " 个模型");
+  // 按分数降序
+  models.sort((a, b) => b.score - a.score);
 
   const content =
-`// 数据源4:SWE-bench Pro 多源聚合快照(云端抓取)
-// 数据源:Scale AI SEAL 标准化榜单(scale.com) + llm-stats.com vendor 聚合榜
+`// 数据源4:SWE-bench Pro 快照(云端抓取)
+// 数据源:llm-stats.com vendor 聚合榜(厂商自报分数聚合)
 // 更新于 ${TODAY}
-// Scale SEAL:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分(顶级 ~59%,抗污染)
-// llm-stats:厂商自报分数聚合(顶级 ~80%,含更多模型如 Fable5/Opus4.8/GLM-5.2 等)
-// 合并策略:同一模型取两源最高分(保留最优公开成绩);source 字段标注数据来源
-// 字段说明:name=模型名;score=Pass@1(%);ci=置信区间(±%);harness=评测 scaffold;source=数据来源;vendor=厂商
+// SWE-bench Pro:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified
+// llm-stats:聚合各厂商公开报告的 Pass@1 分数(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
+// 字段说明:name=模型名;score=Pass@1(%);source=数据来源;vendor=厂商
 window.SWEBENCH = {
   source: "SWE-bench Pro",
-  url: "https://scale.com/leaderboard/swe_bench_pro_public",
+  url: "https://llm-stats.com/benchmarks/swe-bench-pro",
   updated: "${TODAY}",
-  variant: "Pro Public (multi-source)",
+  variant: "Pro (llm-stats aggregate)",
   stats: { tasks: 731, repos: 41, languages: 4, models: ${models.length} },
-  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。聚合 Scale SEAL 标准化分与 llm-stats vendor 聚合分,取最高。",
+  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。数据源为 llm-stats.com 厂商自报分数聚合。",
   models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
 };
 `;
