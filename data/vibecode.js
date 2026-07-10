@@ -9,7 +9,7 @@ window.VIBECODE = {
   updated: "2026-07-10",
   version: "v1.1",
   totalSystems: 72,
-  note: "共 72 系统,展示 overall 视图全部 64 个有记录系统",
+  note: "共 72 系统,展示 overall 视图全部 66 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -59,6 +59,14 @@ window.VIBECODE = {
     'ci': 3.07,
     'cost': 3.63,
     'latencyS': 1552
+  },
+  {
+    'name': 'Meta Muse Spark 1.1',
+    'harness': 'OpenHands',
+    'score': 72.16,
+    'ci': 3.33,
+    'cost': 0.92,
+    'latencyS': 615
   },
   {
     'name': 'Claude Opus 4.7',
@@ -355,6 +363,14 @@ window.VIBECODE = {
     'ci': 3.41,
     'cost': 1.53,
     'latencyS': 1852
+  },
+  {
+    'name': 'Meta Muse Spark',
+    'harness': 'OpenHands',
+    'score': 19.67,
+    'ci': 3.97,
+    'cost': 0.58,
+    'latencyS': 981
   },
   {
     'name': 'Grok 4.3',

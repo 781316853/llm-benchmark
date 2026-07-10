@@ -192,6 +192,8 @@ window.SEEN = {
     'tbench|gpt-5.3-codex-spark': '2026-07-10',
     'tbench|claude-opus-4-8': '2026-07-10',
     'tbench|grok-4.3': '2026-07-10',
-    'tbench|glm-5.2': '2026-07-10'
+    'tbench|glm-5.2': '2026-07-10',
+    'vibe|Meta Muse Spark 1.1': '2026-07-10',
+    'vibe|Meta Muse Spark': '2026-07-10'
   }
 };

@@ -131,7 +131,7 @@ const VIBE_NAMES = {
   "kimi/kimi-k2.7-code": "Kimi K2.7-Code", "kimi/kimi-k2.6": "Kimi K2.6", "kimi/kimi-k2.5-thinking": "Kimi K2.5",
   "cursor/composer-2.5": "Composer 2.5", "devin/swe-1-6-fast": "Devin SWE-1.6 Fast",
   "xiaomi/mimo-v2.5": "MiMo v2.5", "xiaomi/mimo-v2.5-pro": "MiMo v2.5 Pro",
-  "meta/muse_spark": "Meta Muse Spark", "minimax/MiniMax-M2.5": "MiniMax M2.5",
+  "meta/muse_spark": "Meta Muse Spark", "meta/muse_spark_1_1": "Meta Muse Spark 1.1", "minimax/MiniMax-M2.5": "MiniMax M2.5",
   "minimax/MiniMax-M2.7": "MiniMax M2.7", "minimax/MiniMax-M3": "MiniMax M3",
   "mistralai/mistral-medium-3.5": "Mistral Medium 3.5", "mistralai/mistral-small-2603": "Mistral Small",
   "nvidia/nemotron-3-ultra-550b-a55b": "Nemotron 3 Ultra",
@@ -148,7 +148,8 @@ async function fetchVibe() {
   const html = await fetchText("https://www.vals.ai/benchmarks/vibe-code");
   const decoded = htmlDecode(html);
   // results.overall 块:"<slug>":[0,{"accuracy":[0,N],"latency":[0,N],"stderr":[0,N],"cost_per_test":[0,N],...,"harness":[0,"H"]}]
-  const re = /"([a-z0-9.\-]+\/[a-z0-9.\-]+)":\[0,\{"accuracy":\[0,([\d.]+)\],"latency":\[0,([\d.]+)\],"stderr":\[0,([\d.]+)\],"cost_per_test":\[0,([\d.]+)\][^}]*?"harness":\[0,"([^"]+)"\]\}/g;
+  // slug 字符集含下划线(如 meta/muse_spark_1_1),用 [a-z0-9.\-_] 确保完整匹配
+  const re = /"([a-z0-9.\-_]+\/[a-z0-9.\-_]+)":\[0,\{"accuracy":\[0,([\d.]+)\],"latency":\[0,([\d.]+)\],"stderr":\[0,([\d.]+)\],"cost_per_test":\[0,([\d.]+)\][^}]*?"harness":\[0,"([^"]+)"\]\}/g;
   let m, bySlug = {};
   while ((m = re.exec(decoded)) !== null) {
     if (bySlug[m[1]]) continue; // RSC 数据重复,按 slug 去重
