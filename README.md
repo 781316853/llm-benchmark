@@ -4,7 +4,7 @@
 
 ## 在线访问
 
-- 静态站点(可直接双击 `index.html` 打开,或用任意静态服务器托管)
+- 静态站点(可直接双击 `index.html` 打开,或用任意静态服务器托管)或https://781316853.github.io/llm-benchmark/
 - 数据为快照,可由 GitHub Actions 每日刷新(见下)
 
 ## 功能
