@@ -189,11 +189,13 @@
       var e = ensure(m.canon);
       if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
     });
+    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / SWE-bench Pro+Terminal-Bench(合并计 1 榜)共 4 榜
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
+      if (e.swe || e.tbench) e.benchCount++;
     });
     return map;
   }
@@ -245,13 +247,11 @@
     var d = dayDiff(firstSeen, seen.updated);
     return d >= 0 && d <= SEEN_WINDOW;
   }
-  // 矩阵行判定:模型在任一已收录榜单上"新"即为真
-  function isNewAny(dsName, vcName, llmName, sweName, tbName) {
+  // 矩阵行判定:模型在旧三基准上"新"即为真(新两基准 SWE-Pro/TBench 不参与 NEW 判定)
+  function isNewAny(dsName, vcName, llmName) {
     if (dsName && isNewRaw("deepswe", dsName)) return true;
     if (vcName && isNewRaw("vibe", vcName)) return true;
     if (llmName && isNewRaw("llm", llmName)) return true;
-    if (sweName && isNewRaw("swebench", sweName)) return true;
-    if (tbName && isNewRaw("tbench", tbName)) return true;
     return false;
   }
 

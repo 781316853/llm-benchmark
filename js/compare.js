@@ -5,7 +5,7 @@
 
   var D = window.D;
 
-  // 交叉矩阵:按"综合分"降序(质量为主、广度微折损),同分时按命中数降序兜底
+  // 交叉矩阵:按"综合分"降序,同分时按命中数降序兜底
   function matrix(llmMonthKey) {
     var map = D.unified(llmMonthKey);
     var rows = Object.keys(map).map(function (k) { return map[k]; });
@@ -30,13 +30,13 @@
     if (e.tbench) vs.push(e.tbench.norm);
     return vs.length ? vs.reduce(function (a, b) { return a + b; }, 0) / vs.length : null;
   }
-  // 综合分:旧三基准占 80%、新两基准封顶占 20%;新组无数据时权重回流至旧组(不惩罚缺失)
-  // 内嵌跨榜广度(benchCount)微折损:全命中(3榜)系数1.0;命中2榜≈0.933;命中1榜≈0.867
+  // 综合分:旧三基准占 80%、新两基准封顶占 20%
+  // 仅当 SWE-Pro 与 Terminal-Bench 都有数据时才参与 20% 计算;否则权重全回流到旧三基准(不惩罚缺失)
   function composite(e) {
     var oldAvg = avgNorm(e);
-    var newAvg = avgNewNorm(e);
-    var quality = (newAvg != null) ? (oldAvg * 0.8 + newAvg * 0.2) : oldAvg;
-    return quality * (0.8 + 0.2 * e.benchCount / 3);
+    // 两新榜都有数据才计算新组均值;否则视为缺失,权重全部归于旧三基准
+    var newAvg = (e.swe && e.tbench) ? avgNewNorm(e) : null;
+    return (newAvg != null) ? (oldAvg * 0.8 + newAvg * 0.2) : oldAvg;
   }
 
   // 雷达:三轴归一化 0-100
