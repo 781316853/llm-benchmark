@@ -23,10 +23,20 @@
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
     return vs.length ? vs.reduce(function (a, b) { return a + b; }, 0) / vs.length : 0;
   }
-  // 综合分:以质量均值(avgNorm)为核心,内嵌跨榜广度(benchCount)的微折损
-  // 全命中(3榜)系数1.0;命中2榜≈0.933;命中1榜≈0.867 —— 单榜极强不会轻易压过跨榜强模型
+  // 新两基准(SWE-bench Pro + Terminal-Bench)的归一化均值;无数据返回 null(区别于 avgNorm 的 0)
+  function avgNewNorm(e) {
+    var vs = [];
+    if (e.swe) vs.push(e.swe.norm);
+    if (e.tbench) vs.push(e.tbench.norm);
+    return vs.length ? vs.reduce(function (a, b) { return a + b; }, 0) / vs.length : null;
+  }
+  // 综合分:旧三基准占 80%、新两基准封顶占 20%;新组无数据时权重回流至旧组(不惩罚缺失)
+  // 内嵌跨榜广度(benchCount)微折损:全命中(3榜)系数1.0;命中2榜≈0.933;命中1榜≈0.867
   function composite(e) {
-    return avgNorm(e) * (0.8 + 0.2 * e.benchCount / 3);
+    var oldAvg = avgNorm(e);
+    var newAvg = avgNewNorm(e);
+    var quality = (newAvg != null) ? (oldAvg * 0.8 + newAvg * 0.2) : oldAvg;
+    return quality * (0.8 + 0.2 * e.benchCount / 3);
   }
 
   // 雷达:三轴归一化 0-100
@@ -96,7 +106,7 @@
   }
 
   window.CMP = {
-    matrix: matrix, avgNorm: avgNorm, composite: composite,
+    matrix: matrix, avgNorm: avgNorm, avgNewNorm: avgNewNorm, composite: composite,
     radarSeries: radarSeries, metricCards: metricCards,
     costSeries: costSeries, defaultSelection: defaultSelection, options: options,
     INDICATORS: INDICATORS

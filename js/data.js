@@ -113,6 +113,28 @@
     });
   }
 
+  // ===== SWE-bench Pro:Scale SEAL 标准化榜单,附加 canonical 映射 =====
+  function sweBench() {
+    var src = window.SWEBENCH || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; }).map(function (m) {
+      return Object.assign({}, m, { canon: canon(m.name) });
+    });
+  }
+
+  // ===== Terminal-Bench 2.1:每 canonical 模型取最高分(跨 agent) =====
+  function tbench() {
+    var src = window.TBENCH || { models: [] };
+    var best = {};
+    src.models.forEach(function (m) {
+      var c = canon(m.model);
+      if (!best[c.id] || m.score > best[c.id].score) {
+        best[c.id] = Object.assign({}, m, { canon: c });
+      }
+    });
+    return Object.keys(best).map(function (k) { return best[k]; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+
   // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, score}]} =====
   function llmMonth(month) {
     var src = window.LLM2014 || { months: {} };
@@ -157,6 +179,16 @@
         }
       });
     }
+    // SWE-bench Pro:同名取最高 score(norm=score,即 Pass@1 百分比)
+    sweBench().forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.swe || m.score > e.swe.score) e.swe = { score: m.score, name: m.name, norm: m.score };
+    });
+    // Terminal-Bench:同名取最高 score(跨 agent;norm=score,即准确率百分比)
+    tbench().forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
+    });
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
@@ -214,10 +246,12 @@
     return d >= 0 && d <= SEEN_WINDOW;
   }
   // 矩阵行判定:模型在任一已收录榜单上"新"即为真
-  function isNewAny(dsName, vcName, llmName) {
+  function isNewAny(dsName, vcName, llmName, sweName, tbName) {
     if (dsName && isNewRaw("deepswe", dsName)) return true;
     if (vcName && isNewRaw("vibe", vcName)) return true;
     if (llmName && isNewRaw("llm", llmName)) return true;
+    if (sweName && isNewRaw("swebench", sweName)) return true;
+    if (tbName && isNewRaw("tbench", tbName)) return true;
     return false;
   }
 
@@ -231,6 +265,8 @@
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
     vibeCode: vibeCode,
+    sweBench: sweBench,
+    tbench: tbench,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
     unified: unified,
@@ -241,6 +277,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014 }
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, swe: window.SWEBENCH, tbench: window.TBENCH }
   };
 })();

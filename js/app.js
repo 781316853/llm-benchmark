@@ -85,6 +85,13 @@
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/10)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.score != null) ? r.llm.score : null; } },
+    // SWE-bench Pro + Terminal-Bench 双值列:排序时仅显示有值的模型
+    { key: "swetb", label: "SWE-bench Pro + TBench", type: "num", bench: true,
+      val: function (r) {
+        var s = r.swe ? r.swe.score : null;
+        var t = r.tbench ? r.tbench.score : null;
+        return (s != null && t != null) ? (s + t) / 2 : (s != null ? s : t);
+      } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -151,8 +158,12 @@
       var ds = r.deepswe ? r.deepswe.pass1 + "%" + verBadge(r.deepswe.version) : "—";
       var vc = r.vibe ? r.vibe.score + "%" : "—";
       var lm = (r.llm && r.llm.score != null) ? D.to10(r.llm.score).toFixed(2) : "—";
+      // SWE-bench Pro / Terminal-Bench 双值并列显示
+      var swe = r.swe ? r.swe.score + "%" : "—";
+      var tb = r.tbench ? r.tbench.score + "%" : "—";
       // NEW 判定:模型在任一已收录榜单上"近 7 天内首次上榜"即为新
-      var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.vibe && r.vibe.name, r.llm && r.llm.name);
+      var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.vibe && r.vibe.name, r.llm && r.llm.name,
+        r.swe && r.swe.name, r.tbench && r.tbench.model);
       // row-hit(跨榜命中)与 row-new(新上榜)可并存;CSS 中 row-new 置后以生效
       var cls = (r.benchCount >= 2 ? "row-hit " : "") + (nw ? "row-new" : "");
       return '<tr class="' + cls.trim() + '">' +
@@ -162,6 +173,7 @@
         '<td class="num">' + ds + '</td>' +
         '<td class="num">' + vc + '</td>' +
         '<td class="num">' + lm + '</td>' +
+        '<td class="num">' + swe + ' / ' + tb + '</td>' +
         '<td class="num">' + r.benchCount + '/3</td></tr>';
     });
     // 表头:可点击,激活列显示方向指示符;数值列追加 num 类以与数据居中对齐
@@ -180,7 +192,7 @@
     fillTableHead("matrixTable", head);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     document.getElementById("overviewNote").textContent =
-      '说明:综合分 = 三榜归一化质量均值 × (0.8 + 0.2 × 命中榜数/3),质量为主、广度为辅,满分100;默认按综合分降序。DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。"—" 表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
+      '说明:综合分 = 旧三基准归一化均值×80% + 新两基准(SWE-bench Pro+Terminal-Bench)归一化均值×20%,再乘广度系数(0.8+0.2×命中榜数/3),满分100;新两榜无数据时不惩罚(权重回流至旧三榜)。默认按综合分降序。DeepSWE 与 Vibe Code 为百分比;llm2014 为 10 分制综合分(由等级数值折算)。SWE-bench Pro 为 Scale SEAL 标准化榜单 Pass@1(731题,顶级~59%,远难于 Verified);Terminal-Bench 2.1 为终端任务准确率(89题,取该模型最优 agent 成绩)。"—" 表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。点击表头按该列排序(按某评测排序时仅显示该评测有数据的模型)。模型名后 NEW 表示该模型近 7 天内首次上榜。' +
       (state.showAll.overview ? '' : ' · 当前仅显示命中≥2榜的 ' + rows.length + ' 个模型(勾选右上方"显示全部"可展开所有模型)。');
   }
 

@@ -233,6 +233,12 @@ function updateSeen() {
     const mo = lm.months[mk];
     if (mo && Array.isArray(mo.rows)) mo.rows.forEach(function (r) { add("llm", r.model); });
   });
+  // SWE-bench Pro
+  const swe = loadJsGlobal("swebench.js", "SWEBENCH");
+  if (swe && Array.isArray(swe.models)) swe.models.forEach(function (m) { add("swebench", m.name); });
+  // Terminal-Bench 2.1
+  const tb = loadJsGlobal("tbench.js", "TBENCH");
+  if (tb && Array.isArray(tb.models)) tb.models.forEach(function (m) { add("tbench", m.model); });
   seen.updated = TODAY; // 始终刷新"最近一次维护日";since 保持首启值不被覆盖
   const content =
 `// 首次上榜追踪记录(由 scripts/fetch_all.js 每日维护)
@@ -242,6 +248,178 @@ function updateSeen() {
 window.SEEN = ${JSON.stringify(seen, null, 2).replace(/"/g, "'")};
 `;
   writeFileIfChanged(path.join(DATA, "seen.js"), content);
+}
+
+// ===== 4) SWE-bench Pro:多源聚合(Scale SEAL 标准化 + llm-stats vendor 聚合) =====
+// 数据源1:Scale AI SEAL 公开榜单(scale.com)—— 统一 scaffold 标准化评分(顶级 ~59%)
+//   受 Cloudflare 保护,Node 环境常 403;失败则跳过,仅用 llm-stats 数据。
+// 数据源2:llm-stats.com vendor 聚合榜 —— 厂商自报分数聚合(顶级 ~80%,含 Fable5/Opus4.8 等)
+// 合并策略:同一模型取两源中的最高分(vendor 聚合通常 ≥ Scale 标准化,保留最优公开成绩)
+async function fetchSweBench() {
+  console.log("[SWE-bench Pro] 多源聚合抓取");
+
+  // --- 源1:Scale SEAL 标准化榜单(可选,失败不致命) ---
+  const sealModels = [];
+  try {
+    console.log("  [Scale SEAL] 抓取 https://scale.com/leaderboard/swe_bench_pro_public");
+    const sealHtml = await fetchText("https://scale.com/leaderboard/swe_bench_pro_public");
+    const sealDecoded = htmlDecode(sealHtml);
+    const re1 = /(\d+)\s*\n\s*([a-zA-Z0-9][a-zA-Z0-9.\- ()*]*?)\s*\n\s*(?:NEW\s*\n\s*)?(\d+(?:\.\d+)?)\s*[±]\s*(\d+(?:\.\d+)?)/g;
+    let m1, sealSeen = {};
+    while ((m1 = re1.exec(sealDecoded)) !== null) {
+      let name = m1[2].trim();
+      const isMini = /\*$/.test(name);
+      name = name.replace(/\*$/, "").trim();
+      if (sealSeen[name]) continue;
+      sealSeen[name] = true;
+      sealModels.push({
+        name: name, source: "Scale SEAL",
+        score: Math.round(parseFloat(m1[3]) * 100) / 100,
+        ci: Math.round(parseFloat(m1[4]) * 100) / 100,
+        harness: isMini ? "mini-swe-agent" : "SWE-Agent"
+      });
+    }
+    console.log("  [Scale SEAL] 解析到 " + sealModels.length + " 个模型");
+  } catch (e) {
+    console.log("  [Scale SEAL] 抓取失败(Cloudflare 拦截),跳过: " + e.message);
+  }
+
+  // --- 源2:llm-stats.com vendor 聚合榜(核心数据源,35 个模型) ---
+  console.log("  [llm-stats] 抓取 https://llm-stats.com/benchmarks/swe-bench-pro");
+  const lsHtml = await fetchText("https://llm-stats.com/benchmarks/swe-bench-pro");
+  const trs = lsHtml.match(/<tr[\s\S]*?<\/tr>/g) || [];
+  const lsModels = [];
+  trs.forEach((tr) => {
+    // 提取 <a href="/models/xxx">模型名</a> 与紧随其后的厂商文本
+    const nameM = tr.match(/<a[^>]*href="\/models\/[^"]*"[^>]*>([^<]+)<\/a>/);
+    const vendorM = tr.match(/<\/a>\s*<\/td>\s*<td[^>]*>([^<]+)/);
+    // 提取 score(0.xxx 小数格式,llm-stats 使用 0-1 区间)
+    const scoreM = tr.match(/>\s*(0\.\d{3})\s*</);
+    if (nameM && scoreM) {
+      lsModels.push({
+        name: nameM[1].trim(),
+        source: "llm-stats",
+        score: Math.round(parseFloat(scoreM[1]) * 1000) / 10,
+        vendor: vendorM ? vendorM[1].trim() : ""
+      });
+    }
+  });
+  if (!lsModels.length && !sealModels.length) throw new Error("SWE-bench Pro 两源均未解析到数据");
+  console.log("  [llm-stats] 解析到 " + lsModels.length + " 个模型");
+
+  // --- 合并:按模型名归并,取最高分 ---
+  const merged = {};
+  function upsert(m) {
+    const key = m.name.toLowerCase().trim();
+    if (!merged[key] || m.score > merged[key].score) merged[key] = m;
+  }
+  sealModels.forEach(upsert);
+  lsModels.forEach(upsert);
+  const models = Object.values(merged).sort((a, b) => b.score - a.score);
+
+  const content =
+`// 数据源4:SWE-bench Pro 多源聚合快照(云端抓取)
+// 数据源:Scale AI SEAL 标准化榜单(scale.com) + llm-stats.com vendor 聚合榜
+// 更新于 ${TODAY}
+// Scale SEAL:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分(顶级 ~59%,抗污染)
+// llm-stats:厂商自报分数聚合(顶级 ~80%,含更多模型如 Fable5/Opus4.8/GLM-5.2 等)
+// 合并策略:同一模型取两源最高分(保留最优公开成绩);source 字段标注数据来源
+// 字段说明:name=模型名;score=Pass@1(%);ci=置信区间(±%);harness=评测 scaffold;source=数据来源;vendor=厂商
+window.SWEBENCH = {
+  source: "SWE-bench Pro",
+  url: "https://scale.com/leaderboard/swe_bench_pro_public",
+  updated: "${TODAY}",
+  variant: "Pro Public (multi-source)",
+  stats: { tasks: 731, repos: 41, languages: 4, models: ${models.length} },
+  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。聚合 Scale SEAL 标准化分与 llm-stats vendor 聚合分,取最高。",
+  models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
+};
+`;
+  writeFileIfChanged(path.join(DATA, "swebench.js"), content);
+}
+
+// ===== 5) Terminal-Bench 2.1:多源聚合(tbench.ai 官方榜 + roybench.org OMP 榜) =====
+// 数据源1:tbench.ai 官方排行榜 —— Agent+Model 组合条目(官方验证,13 条)
+// 数据源2:roybench.org OMP 排行榜 —— 开源 JSON API,38 条(更多模型组合)
+// 合并策略:全部保留(含 agent/model 组合),前端按 canonical 取最高分归入
+async function fetchTBench() {
+  console.log("[Terminal-Bench 2.1] 多源聚合抓取");
+
+  // --- 源1:tbench.ai 官方排行榜 ---
+  const tbModels = [];
+  try {
+    console.log("  [tbench.ai] 抓取 https://www.tbench.ai/leaderboard/terminal-bench/2.1");
+    const html = await fetchText("https://www.tbench.ai/leaderboard/terminal-bench/2.1");
+    const cleaned = html.replace(/<!--\s*-->/g, "");
+    const re = /<span>([^<]+)<\/span><\/td>\s*<td[^>]*><span>([^<]+)<\/span><\/td>\s*<td[^>]*>(\d{4}-\d{2}-\d{2})<\/td>\s*<td[^>]*>([^<]*)<\/td>\s*<td[^>]*>(?:<span>)?([^<]*)(?:<\/span>)?<\/td>\s*<td[^>]*>(?:<p[^>]*>)?<span[^>]*>(\d+(?:\.\d+)?)%<\/span>\s*<span[^>]*>±\s*(\d+(?:\.\d+)?)/g;
+    let m;
+    while ((m = re.exec(cleaned)) !== null) {
+      tbModels.push({
+        source: "tbench.ai",
+        agent: htmlDecode(m[1].trim()),
+        model: htmlDecode(m[2].trim()),
+        date: m[3].trim(),
+        agentOrg: htmlDecode(m[4].trim()),
+        modelOrg: htmlDecode(m[5].trim()),
+        score: Math.round(parseFloat(m[6]) * 100) / 100,
+        ci: Math.round(parseFloat(m[7]) * 100) / 100
+      });
+    }
+    console.log("  [tbench.ai] 解析到 " + tbModels.length + " 条记录");
+  } catch (e) {
+    console.log("  [tbench.ai] 抓取失败,跳过: " + e.message);
+  }
+
+  // --- 源2:roybench.org OMP 排行榜(JSON API) ---
+  console.log("  [roybench] 抓取 https://roybench.org/data/leaderboard.json");
+  const rbModels = [];
+  try {
+    const rbJson = await fetchText("https://roybench.org/data/leaderboard.json");
+    const rbData = JSON.parse(rbJson);
+    (rbData.items || []).forEach((it) => {
+      // 只收录有通过任务数的记录(passed_count > 0),避免配置失败的零分噪音
+      if (!it.passed_count || it.passed_count <= 0) return;
+      const total = it.terminal_count || 88;
+      rbModels.push({
+        source: "roybench OMP",
+        agent: it.harness || "OMP",
+        model: it.model,
+        score: Math.round((it.passed_count / total) * 1000) / 10,
+        ci: null,
+        backend: it.backend,
+        think: it.reasoning_effort,
+        passed: it.passed_count,
+        total: total
+      });
+    });
+    console.log("  [roybench] 解析到 " + rbModels.length + " 条记录");
+  } catch (e) {
+    console.log("  [roybench] 抓取失败,跳过: " + e.message);
+  }
+
+  const models = tbModels.concat(rbModels);
+  if (!models.length) throw new Error("Terminal-Bench 两源均未解析到数据");
+  // 按分数降序
+  models.sort((a, b) => b.score - a.score);
+  const content =
+`// 数据源5:Terminal-Bench 2.1 多源聚合快照(云端抓取)
+// 数据源:tbench.ai 官方排行榜 + roybench.org OMP 排行榜
+// 更新于 ${TODAY}
+// tbench.ai:89 个终端任务,确定性评分(exit code / 文件 diff / 输出 regex),官方验证条目
+// roybench OMP:开源多模型批量评测,更多模型组合(kimi-k2.7-code/deepseek-v4-pro/grok-4.3 等)
+// 合并策略:全部保留(含 agent/model 组合),前端按 canonical 取最高分归入
+// 字段说明:agent=运行框架;model=模型名;score=准确率(%);ci=置信区间(±%);source=数据来源;date/orgs=元数据
+window.TBENCH = {
+  source: "Terminal-Bench 2.1",
+  url: "https://www.tbench.ai/leaderboard/terminal-bench/2.1",
+  updated: "${TODAY}",
+  version: "2.1",
+  stats: { tasks: 89, entries: ${models.length} },
+  desc: "Terminal-Bench 2.1:89 个终端任务,在 Linux 沙箱中用 bash 命令完成多步骤任务,确定性评分。聚合 tbench.ai 官方榜与 roybench.org OMP 榜。",
+  models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
+};
+`;
+  writeFileIfChanged(path.join(DATA, "tbench.js"), content);
 }
 
 // ===== 3) llm2014:解析 GitHub raw CSV(结构化) =====
@@ -271,8 +449,8 @@ async function fetchLlm() {
     try { await fn(); }
     catch (e) { console.log("[" + name + "] 抓取失败,保留旧文件: " + e.message); }
   }
-  // 其余两源(Vibe / llm2014)
-  for (const [name, fn] of [["Vibe", fetchVibe], ["llm2014", fetchLlm]]) {
+  // 其余四源(Vibe / llm2014 / SWE-bench Pro / Terminal-Bench)
+  for (const [name, fn] of [["Vibe", fetchVibe], ["llm2014", fetchLlm], ["SWE-bench Pro", fetchSweBench], ["Terminal-Bench", fetchTBench]]) {
     try { await fn(); }
     catch (e) { console.log("[" + name + "] 抓取失败,保留旧文件: " + e.message); }
   }
