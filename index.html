@@ -97,6 +97,39 @@
     <a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014</a>
   </footer>
 
+  <!-- 意见反馈浮动按钮 -->
+  <button class="feedback-fab" id="feedbackFab" aria-label="意见反馈">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span class="fab-text">反馈</span>
+  </button>
+
+  <!-- 意见反馈弹窗 -->
+  <div class="feedback-modal" id="feedbackModal" hidden>
+    <div class="feedback-overlay" id="feedbackOverlay"></div>
+    <div class="feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+      <button class="feedback-close" id="feedbackClose" aria-label="关闭">&times;</button>
+      <h3 class="feedback-title" id="feedbackTitle">意见反馈</h3>
+      <p class="feedback-desc">感谢你的反馈！提交后将跳转到 GitHub Issue 页面完成创建。</p>
+      <label class="feedback-label" for="feedbackType">反馈类型</label>
+      <select id="feedbackType" class="feedback-select">
+        <option value="Bug 报告">Bug 报告</option>
+        <option value="功能建议">功能建议</option>
+        <option value="数据纠错">数据纠错</option>
+        <option value="其他">其他</option>
+      </select>
+      <label class="feedback-label" for="feedbackContent">反馈内容</label>
+      <textarea id="feedbackContent" class="feedback-textarea" rows="5"
+                placeholder="请描述你遇到的问题或建议..."></textarea>
+      <div class="feedback-actions">
+        <button class="btn feedback-cancel" id="feedbackCancel">取消</button>
+        <button class="btn feedback-submit" id="feedbackSubmit">提交到 GitHub</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ECharts 图表库(CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量) -->
@@ -111,5 +144,7 @@
   <script src="js/charts.js"></script>
   <script src="js/compare.js"></script>
   <script src="js/app.js"></script>
+  <!-- 意见反馈交互 -->
+  <script src="js/feedback.js"></script>
 </body>
 </html>
