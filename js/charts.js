@@ -40,17 +40,16 @@
   // ===== 横向柱状(用于 Pass@1 / 准确率 / 综合分排行) =====
   function barOption(cats, values, color, unit, opts) {
     opts = opts || {};
-    var lw = opts.left || 140; // 左侧留给类目标签的宽度,标签在其内自动换行
     return {
-      grid: { left: lw, right: 48, top: 16, bottom: 24, containLabel: false },
+      // containLabel:true 让 ECharts 自动测量类目标签宽度并调整左侧空间,确保模型名完整显示
+      grid: { left: 20, right: 48, top: 16, bottom: 24, containLabel: true },
       xAxis: { type: "value", max: opts.max, name: unit || "", nameTextStyle: { color: C.textTertiary },
         axisLine: { lineStyle: { color: C.border } }, axisLabel: { color: C.textTertiary },
         splitLine: { lineStyle: { color: C.split } } },
       // inverse:false + 升序数据 => 最高分位于顶部
-      // interval:0 强制显示全部类目;width+overflow=break 使过长名称在指定宽度内自动换行,避免被省略截断
+      // interval:0 强制显示全部类目;不设 width/overflow,模型名单行完整显示不换行
       yAxis: { type: "category", data: cats, inverse: false,
-        axisLabel: { color: C.textDim, fontSize: opts.labelSize || 12, interval: 0,
-          width: lw - 12, overflow: "break" },
+        axisLabel: { color: C.textDim, fontSize: opts.labelSize || 12, interval: 0 },
         axisLine: { lineStyle: { color: C.border } }, splitLine: { show: false } },
       tooltip: { trigger: "axis", axisPointer: { type: "shadow" },
         formatter: function (p) { return p[0].name + "<br/><b>" + p[0].value + (unit || "") + "</b>"; } },
@@ -58,7 +57,7 @@
         type: "bar", data: values.map(function (v, i) {
           return { value: v, itemStyle: { color: color, borderRadius: [0, 4, 4, 0] } };
         }),
-        barWidth: "58%",
+        barWidth: "48%",
         label: { show: true, position: "right", color: C.textDim, formatter: function (p) { return p.value + (unit || ""); } }
       }]
     };
