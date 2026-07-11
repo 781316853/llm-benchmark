@@ -16,8 +16,7 @@
   <script defer src="data/deepswe_v10.js"></script>
   <script defer src="data/vibecode.js"></script>
   <script defer src="data/llm2014.js"></script>
-  <script defer src="data/swebench.js"></script>
-  <script defer src="data/tbench.js"></script>
+  <script defer src="data/aaci.js"></script>
   <script defer src="data/seen.js"></script>
   <!-- 业务脚本 -->
   <script defer src="js/data.js"></script>
@@ -32,7 +31,7 @@
   <header class="topbar">
     <div class="brand">
       <h1>大模型编码基准整合门户</h1>
-      <p class="subtitle">聚合 DeepSWE · Vibe Code Bench · llm2014 code_v3 · SWE-bench Pro · Terminal-Bench 五大编码评测,聚焦跨基准模型对比</p>
+      <p class="subtitle">聚合 DeepSWE · Vibe Code Bench · llm2014 code_v3 · Artificial Analysis Coding Agent Index 四大编码评测,聚焦跨基准模型对比</p>
     </div>
     <div class="topbar-meta" id="topMeta">数据为快照,详见各页脚注</div>
   </header>
@@ -65,9 +64,9 @@
       <section class="notes-section">
         <p class="note-title">阅读说明</p>
         <ul>
-          <li>「综合分」= 旧三基准(DeepSWE/Vibe Code/llm2014)归一化均值×80% + 新两基准(SWE-bench Pro+Terminal-Bench)归一化均值×20%,满分100;新两榜无数据时不惩罚(权重回流至旧三榜)。另引入一致性折减:跨榜标准差越大折减越多(每点σ扣0.15分,上限2分),各榜成绩越均衡的模型综合分越占优。列表默认按综合分容差分组排序:差距<1.5分的模型视为同档,同档内优先排列命中数多、跨榜一致性高的模型。</li>
-          <li>「命中」表示该模型在对应基准组中进入榜单,4/4 表示五项基准(四个基准组)均有排名(SWE-Pro 与 Terminal-Bench 合并计为1组)。</li>
-          <li>DeepSWE 与 Vibe Code 为百分比;llm2014 为百分制综合分(由等级数值折算);SWE-bench Pro 为 Scale SEAL 标准化榜单 Pass@1(731题,顶级~59%,远难于 Verified);Terminal-Bench 2.1 为终端任务准确率(89题,取该模型最优 agent 成绩)。</li>
+          <li>「综合分」= 旧三基准(DeepSWE/Vibe Code/llm2014)归一化最高单项×90% + 新基准(AA Coding Agent Index)归一化分×10%,满分100;新榜无数据时不惩罚(权重回流至旧三榜)。另引入一致性折减:跨榜标准差越大折减越多(每点σ扣0.15分,上限2分),各榜成绩越均衡的模型综合分越占优。列表默认按综合分容差分组排序:差距<1.5分的模型视为同档,同档内优先排列命中数多、跨榜一致性高的模型。</li>
+          <li>「命中」表示该模型在对应基准组中进入榜单,4/4 表示四项基准(DeepSWE / Vibe Code / llm2014 / AA Coding Agent Index)均有排名。</li>
+          <li>DeepSWE 与 Vibe Code 为百分比;llm2014 为百分制综合分(由等级数值折算);AA Coding Agent Index 为 Artificial Analysis 综合编码代理指数(v1.1:DeepSWE+Terminal-Bench v2+SWE-Atlas-QnA 三项 pass@1 均值,0-100 分,每模型取最优 agent 成绩)。</li>
           <li>「—」表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。</li>
           <li>浅绿底色行表示跨榜命中数 ≥ 2 的模型;模型名后 NEW 表示近 7 天内首次上榜(仅基于 DeepSWE/Vibe/llm2014 三基准判定)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>

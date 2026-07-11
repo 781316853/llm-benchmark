@@ -32,12 +32,9 @@
     // max 选拔:取最高单项(多参加基准只可能刷高 max,不会被弱项拉低)
     return Math.max.apply(null, vs);
   }
-  // 新两基准(SWE-bench Pro + Terminal-Bench)的归一化均值;无数据返回 null(区别于 avgNorm 的 0)
+  // 新基准(AA Coding Agent Index)的归一化值;无数据返回 null(区别于 avgNorm 的 0)
   function avgNewNorm(e) {
-    var vs = [];
-    if (e.swe) vs.push(e.swe.norm);
-    if (e.tbench) vs.push(e.tbench.norm);
-    return vs.length ? vs.reduce(function (a, b) { return a + b; }, 0) / vs.length : null;
+    return (e.aaci && e.aaci.norm != null) ? e.aaci.norm : null;
   }
   // 跨榜一致性(标准差):各基准 norm 值的离散程度
   // 数据不足 2 个基准时返回 0,避免单榜模型被误判为"最均衡"
@@ -46,8 +43,7 @@
     if (e.deepswe) vs.push(e.deepswe.norm);
     if (e.vibe) vs.push(e.vibe.norm);
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
-    if (e.swe) vs.push(e.swe.norm);
-    if (e.tbench) vs.push(e.tbench.norm);
+    if (e.aaci && e.aaci.norm != null) vs.push(e.aaci.norm);
     if (vs.length < 2) return 0;
     var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
     var sumSq = vs.reduce(function (s, v) { var d = v - mean; return s + d * d; }, 0);
@@ -56,11 +52,10 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:旧三基准 max(最高单项)占 90%、新两基准占 10%,再减去一致性折减
-  // 新两基准各自独立参与(有 swe 或 tbench 任一即可计入),不要求两者同时有数据
+  // 综合分:旧三基准 max(最高单项)占 90%、新基准(AA Coding Agent Index)占 10%,再减去一致性折减
+  // 新基准有数据即参与 10% 计算,无数据时权重回流至旧三基准
   function composite(e) {
     var oldAvg = avgNorm(e);
-    // 新两榜各自独立参与(去掉全有或全无守卫):有 swe 或 tbench 任一即可计入 10% 新榜部分
     var newAvg = avgNewNorm(e);
     var base = (newAvg != null) ? (oldAvg * 0.9 + newAvg * 0.1) : oldAvg;
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);

@@ -11,7 +11,7 @@ window.TBENCH = {
   url: "https://www.tbench.ai/leaderboard/terminal-bench/2.1",
   updated: "2026-07-11",
   version: "2.1",
-  stats: { tasks: 89, entries: 66 },
+  stats: { tasks: 89, entries: 67 },
   desc: "Terminal-Bench 2.1:89 个终端任务,在 Linux 沙箱中用 bash 命令完成多步骤任务,确定性评分。聚合 tbench.ai 官方榜、roybench.org OMP 榜与 datalearner.com 补充。",
   models: [
   {
@@ -646,6 +646,13 @@ window.TBENCH = {
     'think': 'xhigh',
     'passed': 29,
     'total': 88
+  },
+  {
+    'source': 'z.ai',
+    'agent': '',
+    'model': 'GLM-5.2',
+    'score': 81.0,
+    'ci': null
   },
   {
     'source': 'roybench OMP',

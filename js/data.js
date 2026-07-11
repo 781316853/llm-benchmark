@@ -113,17 +113,9 @@
     });
   }
 
-  // ===== SWE-bench Pro:Scale SEAL 标准化榜单,附加 canonical 映射 =====
-  function sweBench() {
-    var src = window.SWEBENCH || { models: [] };
-    return src.models.slice().sort(function (a, b) { return b.score - a.score; }).map(function (m) {
-      return Object.assign({}, m, { canon: canon(m.name) });
-    });
-  }
-
-  // ===== Terminal-Bench 2.1:每 canonical 模型取最高分(跨 agent) =====
-  function tbench() {
-    var src = window.TBENCH || { models: [] };
+  // ===== AA Coding Agent Index:每 canonical 模型取最高分(跨 agent) =====
+  function aaci() {
+    var src = window.AACI || { models: [] };
     var best = {};
     src.models.forEach(function (m) {
       var c = canon(m.model);
@@ -187,25 +179,18 @@
         }
       });
     }
-    // SWE-bench Pro:同名取最高 score(norm=score,即 Pass@1 百分比)
-    sweBench().forEach(function (m) {
+    // AA Coding Agent Index:同名取最高 score(跨 agent;norm=score,即 0-100 分)
+    aaci().forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.swe || m.score > e.swe.score) e.swe = { score: m.score, name: m.name, norm: m.score };
+      if (!e.aaci || m.score > e.aaci.score) e.aaci = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
     });
-    // Terminal-Bench:同名取最高 score(跨 agent;norm=score,即准确率百分比)
-    tbench().forEach(function (m) {
-      var e = ensure(m.canon);
-      if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
-    });
-    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / SWE-bench Pro+Terminal-Bench(合并计 1 榜)共 4 榜
-    // 注意:SWE-bench Pro 与 Terminal-Bench 需两者都有数据才算命中该合并榜,
-    // 与 composite 综合分的逻辑保持一致(只有一个数据时不算命中)
+    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / AA Coding Agent Index 共 4 榜
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
-      if (e.swe && e.tbench) e.benchCount++;
+      if (e.aaci) e.benchCount++;
     });
     return map;
   }
@@ -257,7 +242,7 @@
     var d = dayDiff(firstSeen, seen.updated);
     return d >= 0 && d <= SEEN_WINDOW;
   }
-  // 矩阵行判定:模型在旧三基准上"新"即为真(新两基准 SWE-Pro/TBench 不参与 NEW 判定)
+  // 矩阵行判定:模型在旧三基准上"新"即为真(新基准 AA Coding Agent Index 不参与 NEW 判定)
   function isNewAny(dsName, vcName, llmName) {
     if (dsName && isNewRaw("deepswe", dsName)) return true;
     if (vcName && isNewRaw("vibe", vcName)) return true;
@@ -277,8 +262,7 @@
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
     vibeCode: vibeCode,
-    sweBench: sweBench,
-    tbench: tbench,
+    aaci: aaci,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
     unified: unified,
@@ -289,6 +273,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, swe: window.SWEBENCH, tbench: window.TBENCH }
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, aaci: window.AACI }
   };
 })();
