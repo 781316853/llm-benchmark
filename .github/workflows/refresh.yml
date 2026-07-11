@@ -16,12 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true   # 确保 git push 有 GITHUB_TOKEN 凭据
 
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: 抓取三源并重写 data/*.js
+      - name: 抓取多源数据并重写 data/*.js
         run: node scripts/fetch_all.js
 
       - name: 提交变更(若有)
@@ -33,11 +35,11 @@ jobs:
             echo "数据无变化,跳过提交"
           else
             git commit -m "chore(data): 每日刷新 $(date -u +%F)"
-            git push
+            git push origin HEAD:$(git rev-parse --abbrev-ref HEAD)
           fi
 
       - name: 清除 jsDelivr CDN 缓存(使公网站点即时更新)
-        if: success()
+        if: always()
         env:
           BR: ${{ github.ref_name }}
         run: |

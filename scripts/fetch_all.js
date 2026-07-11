@@ -1,4 +1,6 @@
-// 云端抓取三源数据,重写 data/*.js(GitHub Actions 每日刷新用)
+// 云端抓取多源数据,重写 data/*.js(GitHub Actions 每日刷新用)
+// 数据源:DeepSWE / Vibe Code / llm2014 / SWE-bench Pro / Terminal-Bench
+// 补充源:datalearner.com 为 DeepSWE / SWE-bench Pro / Terminal-Bench 提供额外模型
 // 设计:每源独立 try/catch,失败保留旧文件;数值与现有快照格式一致。
 // 运行:node scripts/fetch_all.js  (在仓库根目录)
 "use strict";
@@ -10,18 +12,24 @@ const DATA = path.join(ROOT, "data");
 const TODAY = new Date().toISOString().slice(0, 10);
 
 function fetchText(url) {
-  // 用 Node 内置 https/http 同步获取(Actions 环境无额外依赖)
+  // 用 Node 内置 https/http 异步获取(Actions 环境无额外依赖),带 30 秒超时防卡死
   const client = url.startsWith("https") ? require("https") : require("http");
   return new Promise((resolve, reject) => {
-    client.get(url, { headers: { "User-Agent": "llm-benchmark-refresh/1.0", "Accept": "*/*" } }, (res) => {
+    const req = client.get(url, { headers: { "User-Agent": "Mozilla/5.0 (compatible; llm-benchmark-refresh/1.0)", "Accept": "*/*" } }, (res) => {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return resolve(fetchText(res.headers.location));
+        res.resume();
+        const loc = res.headers.location;
+        // 处理相对路径重定向:拼接协议+主机
+        const next = loc.startsWith("http") ? loc : new URL(loc, url).href;
+        return resolve(fetchText(next));
       }
       if (res.statusCode !== 200) { res.resume(); return reject(new Error("HTTP " + res.statusCode + " " + url)); }
       let buf = ""; res.setEncoding("utf8");
       res.on("data", (d) => buf += d);
       res.on("end", () => resolve(buf));
-    }).on("error", reject);
+    });
+    req.on("error", reject);
+    req.setTimeout(30000, () => { req.destroy(); reject(new Error("timeout " + url)); });
   });
 }
 function htmlDecode(s) { return s.replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#39;/g, "'"); }
@@ -31,6 +39,45 @@ function writeFileIfChanged(file, content) {
   fs.writeFileSync(file, content);
   console.log("  ✓ 写入 " + path.basename(file) + " (" + content.length + " 字节)");
 }
+
+// ===== datalearner.com 通用解析器 =====
+// datalearner.com 基准排名页面解析:提取模型名、分数、评测模式、发布日期、参数量、许可证
+// 页面结构:HTML <table> 中每行一个模型,<td> 分别为排名/模型/分数/日期/参数/许可证
+// 用途:作为 DeepSWE / Terminal-Bench / SWE-bench Pro 的补充数据源,合并主源未收录的模型
+async function fetchDataLearner(url) {
+  console.log("  [datalearner] 抓取 " + url);
+  const html = await fetchText(url);
+  const trs = html.match(/<tr[\s\S]*?<\/tr>/g) || [];
+  const models = [];
+  trs.forEach(function (tr) {
+    // 模型名:<span class="truncate font-medium">NAME</span>
+    var nameM = tr.match(/<span class="truncate font-medium">([^<]+)<\/span>/);
+    // 分数:<span class="text-sm font-semibold tabular-nums flex-shrink-0 text-slate-9xx">SCORE</span>
+    var scoreM = tr.match(/text-sm font-semibold tabular-nums[^"]*text-slate-\d+">\s*(\d+(?:\.\d+)?)\s*<\/span>/);
+    if (!nameM || !scoreM) return;
+    // 评测模式:title="评测模式: XXX"
+    var modeM = tr.match(/title="评测模式:\s*([^"]+)"/);
+    // 发布日期和参数量(两个连续的 text-xs text-slate-500 td)
+    var metaMs = tr.match(/text-xs text-slate-500 tabular-nums">([^<]*)<\/td>/g) || [];
+    // 许可证
+    var licM = tr.match(/text-xs font-medium rounded-full[^>]*>([^<]+)<\/span>/);
+    models.push({
+      name: nameM[1].trim(),
+      score: Math.round(parseFloat(scoreM[1]) * 10) / 10,
+      mode: modeM ? modeM[1].trim() : "",
+      date: metaMs[0] ? metaMs[0].replace(/.*tabular-nums">([^<]*)<\/td>.*/, "$1").trim() : "",
+      params: metaMs[1] ? metaMs[1].replace(/.*tabular-nums">([^<]*)<\/td>.*/, "$1").trim() : "",
+      license: licM ? licM[1].trim() : ""
+    });
+  });
+  if (!models.length) throw new Error("datalearner 未解析到任何模型");
+  console.log("  [datalearner] 解析到 " + models.length + " 个模型");
+  return models;
+}
+
+// 模型名归一化(跨源去重匹配):转小写并移除非字母数字字符
+// 例:"GPT-5.6 Sol" -> "gpt56sol","gpt-5-6-sol" -> "gpt56sol"(两者匹配)
+function normName(s) { return String(s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
 
 // ===== 1) DeepSWE:抓取官方 JSON 端点(结构化,比解析 HTML 稳健)=====
 // 端点规律:/artifacts/<version>/leaderboard-live.json,由榜单 v1/v1.1 切换器在客户端请求。
@@ -60,15 +107,34 @@ async function fetchDeepSweJson(urlSlug, opts) {
   const best = {};
   runs.forEach((r) => { if (!best[r.name] || r.pass1 > best[r.name].pass1) best[r.name] = r; });
   const models = Object.values(best).sort((a, b) => b.pass1 - a.pass1);
+  // v1.1:补充 datalearner.com 未收录的模型(如 Hy3 / Gemini 3.1 Pro 等)
+  if (opts.isV11) {
+    try {
+      const dlModels = await fetchDataLearner("https://www.datalearner.com/benchmarks/deepswe");
+      const existing = {};
+      models.forEach(function (m) { existing[normName(m.name)] = true; });
+      dlModels.forEach(function (dl) {
+        if (!existing[normName(dl.name)]) {
+          existing[normName(dl.name)] = true;  // 标记已收录,避免 datalearner 内部重复
+          models.push({ name: dl.name, effort: dl.mode || "-", pass1: dl.score, ci: null, cost: null, outTok: null, steps: null, source: "datalearner" });
+          console.log("  [datalearner] 补充: " + dl.name + " (" + dl.score + "%)");
+        }
+      });
+      // 补充后重新按 pass1 降序排列
+      models.sort(function (a, b) { return b.pass1 - a.pass1; });
+    } catch (e) {
+      console.log("  [datalearner] DeepSWE 补充失败: " + e.message);
+    }
+  }
   let content;
   if (opts.isV11) {
     // v1.1 -> data/deepswe.js (window.DEEPSWE)
     content =
 `// 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/  (更新于 ${TODAY})
+// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 ${TODAY})
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
-// 注:抓取 /artifacts/v1.1/leaderboard-live.json;每模型取 Pass@1 最高的 run(与原站榜单一致)。
+// 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
@@ -251,58 +317,83 @@ window.SEEN = ${JSON.stringify(seen, null, 2).replace(/"/g, "'")};
   writeFileIfChanged(path.join(DATA, "seen.js"), content);
 }
 
-// ===== 4) SWE-bench Pro:llm-stats.com vendor 聚合榜 =====
-// 数据源:llm-stats.com —— 厂商自报分数聚合(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
-// 注:Scale SEAL 标准化榜单(labs.scale.com)受 Cloudflare 保护(返回 403),已移除以规避反爬风险。
-//     llm-stats 作为聚合源已覆盖足够多的模型,数据来源于各厂商公开报告。
+// ===== 4) SWE-bench Pro:多源聚合(llm-stats.com + datalearner.com) =====
+// 主源:llm-stats.com —— 厂商自报分数聚合(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
+// 补充:datalearner.com —— 中文 AI 模型数据库,覆盖 llm-stats 未收录的模型
+// 合并策略:llm-stats 为主,补充 datalearner 独有的模型;主源失败时以 datalearner 兜底
 async function fetchSweBench() {
-  console.log("[SWE-bench Pro] 抓取 https://llm-stats.com/benchmarks/swe-bench-pro");
-  const lsHtml = await fetchText("https://llm-stats.com/benchmarks/swe-bench-pro");
-  const trs = lsHtml.match(/<tr[\s\S]*?<\/tr>/g) || [];
-  const models = [];
-  trs.forEach((tr) => {
-    // 提取 <a href="/models/xxx">模型名</a> 与紧随其后的厂商文本
-    const nameM = tr.match(/<a[^>]*href="\/models\/[^"]*"[^>]*>([^<]+)<\/a>/);
-    const vendorM = tr.match(/<\/a>\s*<\/td>\s*<td[^>]*>([^<]+)/);
-    // 提取 score(0.xxx 小数格式,llm-stats 使用 0-1 区间)
-    const scoreM = tr.match(/>\s*(0\.\d{3})\s*</);
-    if (nameM && scoreM) {
-      models.push({
-        name: nameM[1].trim(),
-        source: "llm-stats",
-        score: Math.round(parseFloat(scoreM[1]) * 1000) / 10,
-        vendor: vendorM ? vendorM[1].trim() : ""
-      });
-    }
-  });
-  if (!models.length) throw new Error("SWE-bench Pro 未解析到任何模型");
-  console.log("  [llm-stats] 解析到 " + models.length + " 个模型");
+  var models = [];
+
+  // --- 主源:llm-stats.com ---
+  try {
+    console.log("[SWE-bench Pro] 抓取 https://llm-stats.com/benchmarks/swe-bench-pro");
+    const lsHtml = await fetchText("https://llm-stats.com/benchmarks/swe-bench-pro");
+    const trs = lsHtml.match(/<tr[\s\S]*?<\/tr>/g) || [];
+    trs.forEach(function (tr) {
+      // 提取 <a href="/models/xxx">模型名</a> 与紧随其后的厂商文本
+      const nameM = tr.match(/<a[^>]*href="\/models\/[^"]*"[^>]*>([^<]+)<\/a>/);
+      const vendorM = tr.match(/<\/a>\s*<\/td>\s*<td[^>]*>([^<]+)/);
+      // 提取 score(0.xxx 小数格式,llm-stats 使用 0-1 区间)
+      const scoreM = tr.match(/>\s*(0\.\d{3})\s*</);
+      if (nameM && scoreM) {
+        models.push({
+          name: nameM[1].trim(),
+          source: "llm-stats",
+          score: Math.round(parseFloat(scoreM[1]) * 1000) / 10,
+          vendor: vendorM ? vendorM[1].trim() : ""
+        });
+      }
+    });
+    console.log("  [llm-stats] 解析到 " + models.length + " 个模型");
+  } catch (e) {
+    console.log("  [llm-stats] 抓取失败: " + e.message);
+  }
+
+  // --- 补充源:datalearner.com(合并 llm-stats 未收录的模型) ---
+  try {
+    const dlModels = await fetchDataLearner("https://www.datalearner.com/benchmarks/swe-bench-pro");
+    const existing = {};
+    models.forEach(function (m) { existing[normName(m.name)] = true; });
+    dlModels.forEach(function (dl) {
+      if (!existing[normName(dl.name)]) {
+        existing[normName(dl.name)] = true;  // 标记已收录,避免 datalearner 内部重复
+        models.push({ name: dl.name, source: "datalearner", score: dl.score, vendor: "" });
+        console.log("  [datalearner] 补充: " + dl.name + " (" + dl.score + "%)");
+      }
+    });
+  } catch (e) {
+    console.log("  [datalearner] SWE-bench Pro 补充失败: " + e.message);
+  }
+
+  if (!models.length) throw new Error("SWE-bench Pro 两源均未解析到数据");
   // 按分数降序
-  models.sort((a, b) => b.score - a.score);
+  models.sort(function (a, b) { return b.score - a.score; });
 
   const content =
 `// 数据源4:SWE-bench Pro 快照(云端抓取)
-// 数据源:llm-stats.com vendor 聚合榜(厂商自报分数聚合)
+// 数据源:llm-stats.com vendor 聚合榜 + datalearner.com 补充
 // 更新于 ${TODAY}
 // SWE-bench Pro:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified
 // llm-stats:聚合各厂商公开报告的 Pass@1 分数(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
+// datalearner:中文 AI 模型数据库,补充 llm-stats 未收录的模型
 // 字段说明:name=模型名;score=Pass@1(%);source=数据来源;vendor=厂商
 window.SWEBENCH = {
   source: "SWE-bench Pro",
   url: "https://llm-stats.com/benchmarks/swe-bench-pro",
   updated: "${TODAY}",
-  variant: "Pro (llm-stats aggregate)",
+  variant: "Pro (llm-stats + datalearner)",
   stats: { tasks: 731, repos: 41, languages: 4, models: ${models.length} },
-  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。数据源为 llm-stats.com 厂商自报分数聚合。",
+  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。数据源为 llm-stats.com 厂商自报分数聚合,datalearner.com 补充未收录模型。",
   models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
 };
 `;
   writeFileIfChanged(path.join(DATA, "swebench.js"), content);
 }
 
-// ===== 5) Terminal-Bench 2.1:多源聚合(tbench.ai 官方榜 + roybench.org OMP 榜) =====
+// ===== 5) Terminal-Bench 2.1:多源聚合(tbench.ai 官方榜 + roybench.org OMP 榜 + datalearner.com) =====
 // 数据源1:tbench.ai 官方排行榜 —— Agent+Model 组合条目(官方验证,13 条)
 // 数据源2:roybench.org OMP 排行榜 —— 开源 JSON API,38 条(更多模型组合)
+// 数据源3:datalearner.com —— 中文 AI 模型数据库,补充未收录的模型
 // 合并策略:全部保留(含 agent/model 组合),前端按 canonical 取最高分归入
 async function fetchTBench() {
   console.log("[Terminal-Bench 2.1] 多源聚合抓取");
@@ -360,15 +451,33 @@ async function fetchTBench() {
   }
 
   const models = tbModels.concat(rbModels);
-  if (!models.length) throw new Error("Terminal-Bench 两源均未解析到数据");
+
+  // --- 源3:datalearner.com(补充 tbench/roybench 未收录的模型) ---
+  try {
+    const dlModels = await fetchDataLearner("https://www.datalearner.com/benchmarks/terminal-bench-2-1");
+    const existing = {};
+    models.forEach(function (m) { existing[normName(m.model)] = true; });
+    dlModels.forEach(function (dl) {
+      if (!existing[normName(dl.name)]) {
+        existing[normName(dl.name)] = true;  // 标记已收录,避免 datalearner 内部重复
+        models.push({ source: "datalearner", agent: "", model: dl.name, score: dl.score, ci: null });
+        console.log("  [datalearner] 补充: " + dl.name + " (" + dl.score + "%)");
+      }
+    });
+  } catch (e) {
+    console.log("  [datalearner] Terminal-Bench 补充失败: " + e.message);
+  }
+
+  if (!models.length) throw new Error("Terminal-Bench 三源均未解析到数据");
   // 按分数降序
   models.sort((a, b) => b.score - a.score);
   const content =
 `// 数据源5:Terminal-Bench 2.1 多源聚合快照(云端抓取)
-// 数据源:tbench.ai 官方排行榜 + roybench.org OMP 排行榜
+// 数据源:tbench.ai 官方排行榜 + roybench.org OMP 排行榜 + datalearner.com 补充
 // 更新于 ${TODAY}
 // tbench.ai:89 个终端任务,确定性评分(exit code / 文件 diff / 输出 regex),官方验证条目
 // roybench OMP:开源多模型批量评测,更多模型组合(kimi-k2.7-code/deepseek-v4-pro/grok-4.3 等)
+// datalearner:中文 AI 模型数据库,补充未收录的模型
 // 合并策略:全部保留(含 agent/model 组合),前端按 canonical 取最高分归入
 // 字段说明:agent=运行框架;model=模型名;score=准确率(%);ci=置信区间(±%);source=数据来源;date/orgs=元数据
 window.TBENCH = {
@@ -377,7 +486,7 @@ window.TBENCH = {
   updated: "${TODAY}",
   version: "2.1",
   stats: { tasks: 89, entries: ${models.length} },
-  desc: "Terminal-Bench 2.1:89 个终端任务,在 Linux 沙箱中用 bash 命令完成多步骤任务,确定性评分。聚合 tbench.ai 官方榜与 roybench.org OMP 榜。",
+  desc: "Terminal-Bench 2.1:89 个终端任务,在 Linux 沙箱中用 bash 命令完成多步骤任务,确定性评分。聚合 tbench.ai 官方榜、roybench.org OMP 榜与 datalearner.com 补充。",
   models: ${JSON.stringify(models, null, 2).replace(/"/g, "'")}
 };
 `;
@@ -416,7 +525,7 @@ async function fetchLlm() {
     try { await fn(); }
     catch (e) { console.log("[" + name + "] 抓取失败,保留旧文件: " + e.message); }
   }
-  // 三源抓取后,维护首次上榜记录(读取最新写入的 data/*.js)
+  // 多源抓取后,维护首次上榜记录(读取最新写入的 data/*.js)
   try { updateSeen(); }
   catch (e) { console.log("[seen] 维护失败:" + e.message); }
   console.log("完成 @ " + TODAY);

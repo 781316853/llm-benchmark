@@ -1,16 +1,17 @@
 // 数据源4:SWE-bench Pro 快照(云端抓取)
-// 数据源:llm-stats.com vendor 聚合榜(厂商自报分数聚合)
-// 更新于 2026-07-10
+// 数据源:llm-stats.com vendor 聚合榜 + datalearner.com 补充
+// 更新于 2026-07-11
 // SWE-bench Pro:731 题,41 仓库,4 语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified
 // llm-stats:聚合各厂商公开报告的 Pass@1 分数(顶级 ~80%,含 Fable5/Opus4.8/GLM-5.2 等 35 个模型)
+// datalearner:中文 AI 模型数据库,补充 llm-stats 未收录的模型
 // 字段说明:name=模型名;score=Pass@1(%);source=数据来源;vendor=厂商
 window.SWEBENCH = {
   source: "SWE-bench Pro",
   url: "https://llm-stats.com/benchmarks/swe-bench-pro",
-  updated: "2026-07-10",
-  variant: "Pro (llm-stats aggregate)",
-  stats: { tasks: 731, repos: 41, languages: 4, models: 35 },
-  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。数据源为 llm-stats.com 厂商自报分数聚合。",
+  updated: "2026-07-11",
+  variant: "Pro (llm-stats + datalearner)",
+  stats: { tasks: 731, repos: 41, languages: 4, models: 46 },
+  desc: "Scale AI SWE-bench Pro:731 题公开集,41 个专业仓库,4 种语言(Py/Go/TS/JS),统一 scaffold 评分,抗污染设计,远难于 Verified。数据源为 llm-stats.com 厂商自报分数聚合,datalearner.com 补充未收录模型。",
   models: [
   {
     'name': 'Claude Fable 5',
@@ -31,8 +32,20 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
+    'name': 'Grok 4.5',
+    'source': 'datalearner',
+    'score': 64.7,
+    'vendor': ''
+  },
+  {
     'name': 'Claude Opus 4.7',
     'source': 'llm-stats',
+    'score': 64.3,
+    'vendor': ''
+  },
+  {
+    'name': 'Opus 4.7',
+    'source': 'datalearner',
     'score': 64.3,
     'vendor': ''
   },
@@ -49,8 +62,20 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
+    'name': 'Muse Spark 1.1',
+    'source': 'datalearner',
+    'score': 61.5,
+    'vendor': ''
+  },
+  {
     'name': 'Qwen3.7 Max',
     'source': 'llm-stats',
+    'score': 60.6,
+    'vendor': ''
+  },
+  {
+    'name': 'Qwen3.7-Max-Preview',
+    'source': 'datalearner',
     'score': 60.6,
     'vendor': ''
   },
@@ -61,13 +86,13 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
-    'name': 'Kimi K2.6',
+    'name': 'GPT-5.5',
     'source': 'llm-stats',
     'score': 58.6,
     'vendor': ''
   },
   {
-    'name': 'GPT-5.5',
+    'name': 'Kimi K2.6',
     'source': 'llm-stats',
     'score': 58.6,
     'vendor': ''
@@ -76,6 +101,12 @@ window.SWEBENCH = {
     'name': 'GLM-5.1',
     'source': 'llm-stats',
     'score': 58.4,
+    'vendor': ''
+  },
+  {
+    'name': 'Hy3',
+    'source': 'datalearner',
+    'score': 57.9,
     'vendor': ''
   },
   {
@@ -94,6 +125,12 @@ window.SWEBENCH = {
     'name': 'Seed 2.1 Pro',
     'source': 'llm-stats',
     'score': 57.5,
+    'vendor': ''
+  },
+  {
+    'name': 'Qwen3.6-Max-Preview',
+    'source': 'datalearner',
+    'score': 57.3,
     'vendor': ''
   },
   {
@@ -121,6 +158,12 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
+    'name': 'Qwen 3.6 Plus Preview',
+    'source': 'datalearner',
+    'score': 56.6,
+    'vendor': ''
+  },
+  {
     'name': 'GPT-5.2 Codex',
     'source': 'llm-stats',
     'score': 56.4,
@@ -139,6 +182,12 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
+    'name': 'GPT-5.2',
+    'source': 'datalearner',
+    'score': 55.6,
+    'vendor': ''
+  },
+  {
     'name': 'MiniMax M2.5',
     'source': 'llm-stats',
     'score': 55.4,
@@ -147,6 +196,12 @@ window.SWEBENCH = {
   {
     'name': 'DeepSeek-V4-Pro-Max',
     'source': 'llm-stats',
+    'score': 55.4,
+    'vendor': ''
+  },
+  {
+    'name': 'DeepSeek-V4-Pro',
+    'source': 'datalearner',
     'score': 55.4,
     'vendor': ''
   },
@@ -169,6 +224,12 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
+    'name': 'Gemini 3.1 Pro Preview',
+    'source': 'datalearner',
+    'score': 54.2,
+    'vendor': ''
+  },
+  {
     'name': 'Qwen3.6-27B',
     'source': 'llm-stats',
     'score': 53.5,
@@ -187,13 +248,19 @@ window.SWEBENCH = {
     'vendor': ''
   },
   {
-    'name': 'Muse Spark',
+    'name': 'DeepSeek-V4-Flash',
+    'source': 'datalearner',
+    'score': 52.6,
+    'vendor': ''
+  },
+  {
+    'name': 'GPT-5.4 nano',
     'source': 'llm-stats',
     'score': 52.4,
     'vendor': ''
   },
   {
-    'name': 'GPT-5.4 nano',
+    'name': 'Muse Spark',
     'source': 'llm-stats',
     'score': 52.4,
     'vendor': ''

@@ -1,27 +1,28 @@
 // 数据源5:Terminal-Bench 2.1 多源聚合快照(云端抓取)
-// 数据源:tbench.ai 官方排行榜 + roybench.org OMP 排行榜
-// 更新于 2026-07-10
+// 数据源:tbench.ai 官方排行榜 + roybench.org OMP 排行榜 + datalearner.com 补充
+// 更新于 2026-07-11
 // tbench.ai:89 个终端任务,确定性评分(exit code / 文件 diff / 输出 regex),官方验证条目
 // roybench OMP:开源多模型批量评测,更多模型组合(kimi-k2.7-code/deepseek-v4-pro/grok-4.3 等)
+// datalearner:中文 AI 模型数据库,补充未收录的模型
 // 合并策略:全部保留(含 agent/model 组合),前端按 canonical 取最高分归入
 // 字段说明:agent=运行框架;model=模型名;score=准确率(%);ci=置信区间(±%);source=数据来源;date/orgs=元数据
 window.TBENCH = {
   source: "Terminal-Bench 2.1",
   url: "https://www.tbench.ai/leaderboard/terminal-bench/2.1",
-  updated: "2026-07-10",
+  updated: "2026-07-11",
   version: "2.1",
-  stats: { tasks: 89, entries: 51 },
-  desc: "Terminal-Bench 2.1:89 个终端任务,在 Linux 沙箱中用 bash 命令完成多步骤任务,确定性评分。聚合 tbench.ai 官方榜与 roybench.org OMP 榜。",
+  stats: { tasks: 89, entries: 66 },
+  desc: "Terminal-Bench 2.1:89 个终端任务,在 Linux 沙箱中用 bash 命令完成多步骤任务,确定性评分。聚合 tbench.ai 官方榜、roybench.org OMP 榜与 datalearner.com 补充。",
   models: [
   {
     'source': 'roybench OMP',
     'agent': 'omp',
     'model': 'gpt-5.5',
-    'score': 93.2,
+    'score': 92,
     'ci': null,
     'backend': 'gpt-proxy',
     'think': 'high',
-    'passed': 82,
+    'passed': 81,
     'total': 88
   },
   {
@@ -45,6 +46,13 @@ window.TBENCH = {
     'think': 'medium',
     'passed': 80,
     'total': 88
+  },
+  {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Claude Fable 5',
+    'score': 88,
+    'ci': null
   },
   {
     'source': 'roybench OMP',
@@ -154,6 +162,42 @@ window.TBENCH = {
     'ci': 2.3
   },
   {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Claude Sonnet 5',
+    'score': 80.4,
+    'ci': null
+  },
+  {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Muse Spark 1.1',
+    'score': 80,
+    'ci': null
+  },
+  {
+    'source': 'roybench OMP',
+    'agent': 'omp',
+    'model': 'gpt-5.6-luna',
+    'score': 79.5,
+    'ci': null,
+    'backend': 'gpt-proxy',
+    'think': 'high',
+    'passed': 70,
+    'total': 88
+  },
+  {
+    'source': 'roybench OMP',
+    'agent': 'omp',
+    'model': 'gpt-5.6-sol',
+    'score': 79.5,
+    'ci': null,
+    'backend': 'gpt-proxy',
+    'think': 'high',
+    'passed': 70,
+    'total': 88
+  },
+  {
     'source': 'roybench OMP',
     'agent': 'omp',
     'model': 'gpt-5.5',
@@ -251,6 +295,28 @@ window.TBENCH = {
   {
     'source': 'roybench OMP',
     'agent': 'omp',
+    'model': 'gpt-5.6-luna',
+    'score': 72.7,
+    'ci': null,
+    'backend': 'gpt-proxy',
+    'think': 'xhigh',
+    'passed': 64,
+    'total': 88
+  },
+  {
+    'source': 'roybench OMP',
+    'agent': 'omp',
+    'model': 'gpt-5.6-sol',
+    'score': 72.7,
+    'ci': null,
+    'backend': 'gpt-proxy',
+    'think': 'xhigh',
+    'passed': 64,
+    'total': 88
+  },
+  {
+    'source': 'roybench OMP',
+    'agent': 'omp',
     'model': 'claude-opus-4-6',
     'score': 72.7,
     'ci': null,
@@ -282,9 +348,27 @@ window.TBENCH = {
     'total': 88
   },
   {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Hy3',
+    'score': 71.7,
+    'ci': null
+  },
+  {
     'source': 'roybench OMP',
     'agent': 'omp',
     'model': 'gpt-5.5',
+    'score': 71.6,
+    'ci': null,
+    'backend': 'gpt-proxy',
+    'think': 'xhigh',
+    'passed': 63,
+    'total': 88
+  },
+  {
+    'source': 'roybench OMP',
+    'agent': 'omp',
+    'model': 'gpt-5.6-terra',
     'score': 71.6,
     'ci': null,
     'backend': 'gpt-proxy',
@@ -301,6 +385,13 @@ window.TBENCH = {
     'modelOrg': 'Google',
     'score': 70.7,
     'ci': 2.9
+  },
+  {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Gemini 3.1 Pro Preview',
+    'score': 70.7,
+    'ci': null
   },
   {
     'source': 'tbench.ai',
@@ -321,6 +412,13 @@ window.TBENCH = {
     'modelOrg': 'Anthropic',
     'score': 69.7,
     'ci': 2.7
+  },
+  {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Opus 4.7',
+    'score': 69.7,
+    'ci': null
   },
   {
     'source': 'roybench OMP',
@@ -345,6 +443,17 @@ window.TBENCH = {
     'total': 88
   },
   {
+    'source': 'roybench OMP',
+    'agent': 'omp',
+    'model': 'gpt-5.6-terra',
+    'score': 67,
+    'ci': null,
+    'backend': 'gpt-proxy',
+    'think': 'high',
+    'passed': 59,
+    'total': 88
+  },
+  {
     'source': 'tbench.ai',
     'agent': 'Gemini CLI',
     'model': 'Gemini 3 Pro',
@@ -363,6 +472,13 @@ window.TBENCH = {
     'modelOrg': 'Anthropic',
     'score': 66.1,
     'ci': 2.7
+  },
+  {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'MiniMax M3',
+    'score': 66,
+    'ci': null
   },
   {
     'source': 'roybench OMP',
@@ -463,6 +579,13 @@ window.TBENCH = {
     'total': 88
   },
   {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Gemini 3.0 Flash',
+    'score': 58,
+    'ci': null
+  },
+  {
     'source': 'roybench OMP',
     'agent': 'omp',
     'model': 'kimi-k2.7-code',
@@ -472,6 +595,13 @@ window.TBENCH = {
     'think': 'low',
     'passed': 50,
     'total': 88
+  },
+  {
+    'source': 'datalearner',
+    'agent': '',
+    'model': 'Kimi K2.6',
+    'score': 53.6,
+    'ci': null
   },
   {
     'source': 'roybench OMP',

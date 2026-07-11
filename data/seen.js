@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-07-10',
+  'updated': '2026-07-11',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -194,6 +194,32 @@ window.SEEN = {
     'tbench|grok-4.3': '2026-07-10',
     'tbench|glm-5.2': '2026-07-10',
     'vibe|Meta Muse Spark 1.1': '2026-07-10',
-    'vibe|Meta Muse Spark': '2026-07-10'
+    'vibe|Meta Muse Spark': '2026-07-10',
+    'deepswe|Muse Spark 1.1': '2026-07-11',
+    'deepswe|Grok 4.5': '2026-07-11',
+    'deepswe|Hy3': '2026-07-11',
+    'swebench|Grok 4.5': '2026-07-11',
+    'swebench|Opus 4.7': '2026-07-11',
+    'swebench|Muse Spark 1.1': '2026-07-11',
+    'swebench|Qwen3.7-Max-Preview': '2026-07-11',
+    'swebench|Hy3': '2026-07-11',
+    'swebench|Qwen3.6-Max-Preview': '2026-07-11',
+    'swebench|Qwen 3.6 Plus Preview': '2026-07-11',
+    'swebench|GPT-5.2': '2026-07-11',
+    'swebench|DeepSeek-V4-Pro': '2026-07-11',
+    'swebench|Gemini 3.1 Pro Preview': '2026-07-11',
+    'swebench|DeepSeek-V4-Flash': '2026-07-11',
+    'tbench|Claude Fable 5': '2026-07-11',
+    'tbench|Claude Sonnet 5': '2026-07-11',
+    'tbench|Muse Spark 1.1': '2026-07-11',
+    'tbench|gpt-5.6-luna': '2026-07-11',
+    'tbench|gpt-5.6-sol': '2026-07-11',
+    'tbench|Hy3': '2026-07-11',
+    'tbench|gpt-5.6-terra': '2026-07-11',
+    'tbench|Gemini 3.1 Pro Preview': '2026-07-11',
+    'tbench|Opus 4.7': '2026-07-11',
+    'tbench|MiniMax M3': '2026-07-11',
+    'tbench|Gemini 3.0 Flash': '2026-07-11',
+    'tbench|Kimi K2.6': '2026-07-11'
   }
 };
