@@ -493,19 +493,96 @@ window.TBENCH = {
   writeFileIfChanged(path.join(DATA, "tbench.js"), content);
 }
 
-// ===== 3) llm2014:解析 GitHub raw CSV(结构化) =====
-// llm2014 数据结构相对稳定但变换较繁;此处先验证可达性,实际 CSV->cells 变换沿用既有逻辑。
-// 若 datasets.json/CSV 解析失败则保留旧文件(站点不崩)。
-async function fetchLlm() {
-  console.log("[llm2014] 抓取 datasets.json (可达性验证,数据沿用既有快照)");
-  // 仅探测,不覆盖:真正的 CSV 变换在本地 TRAE 任务中已验证,云端如需启用再补全。
-  try {
-    const meta = await fetchText("https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/data/code_v3/datasets.json");
-    const months = (meta.match(/"(20\d\d-\d\d)"/g) || []).map((s) => s.replace(/"/g, ""));
-    console.log("  ✓ datasets.json 可达,涉及月份示例: " + (months.slice(-3).join(", ") || "(需解析)"));
-  } catch (e) {
-    console.log("  ! datasets.json 探测失败,llm2014 保留既有快照: " + e.message);
+// ===== 3) llm2014:解析 datasets.json + 逐月 CSV(结构化) =====
+// 数据源:github.com/llm2014/llm_benchmark
+// 流程:读 docs/data/datasets.json -> 过滤 category=code_v3 总榜 -> 抓取每个 CSV -> 解析为 {projects, rows}
+// 月份 key 取 CSV 文件名(如 "2026-05");排除 2026-01(旧评分制,无字母等级,口径不兼容)
+// CSV 表头:"Model","MacOS App(C)",...,"iOS+Server(I)","Unprompted","IDE/CLI","Think"
+//   -> 首列=模型名;末三列=Unprompted/IDE/CLI/Think;中间列=任务列(去括号字母后缀后为 projects)
+// 简易 CSV 解析:支持双引号包裹的字段(含 "Failed(2/12)" 等含特殊字符值)
+function parseCsv(text) {
+  const rows = [];
+  const lines = text.replace(/\r/g, "").split("\n").filter(function (l) { return l.trim(); });
+  for (const line of lines) {
+    const fields = [];
+    let cur = "", inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') {
+        if (inQ && line[i + 1] === '"') { cur += '"'; i++; }  // 转义的双引号
+        else inQ = !inQ;
+      } else if (ch === "," && !inQ) {
+        fields.push(cur); cur = "";
+      } else {
+        cur += ch;
+      }
+    }
+    fields.push(cur);
+    rows.push(fields);
   }
+  return rows;
+}
+async function fetchLlm() {
+  console.log("[llm2014] 抓取 datasets.json");
+  const metaUrl = "https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/data/datasets.json";
+  const metaText = await fetchText(metaUrl);
+  const meta = JSON.parse(metaText);
+  // 过滤 code_v3 总榜(tableIndex=0),按 reportDate 升序
+  const codeV3 = (meta.datasets || []).filter(function (d) {
+    return d.category === "code_v3" && d.tableIndex === 0;
+  }).sort(function (a, b) { return a.reportDate < b.reportDate ? -1 : 1; });
+  if (!codeV3.length) throw new Error("datasets.json 未找到 code_v3 条目");
+  const months = {};
+  for (const d of codeV3) {
+    // CSV 路径如 "data/code_v3/2026-05.csv",月份 key 取文件名
+    const csvName = d.csv.split("/").pop().replace(/\.csv$/, "");
+    // 排除旧评分制(2026-01:原始分钟数 + 总扣分,无字母等级,口径不兼容)
+    if (csvName === "2026-01") { console.log("  [llm2014] 跳过旧评分制: " + csvName); continue; }
+    const csvUrl = "https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/" + d.csv;
+    console.log("  [llm2014] 抓取 " + csvName + ".csv (reportDate=" + d.reportDate + ")");
+    const csvText = await fetchText(csvUrl);
+    const rows = parseCsv(csvText);
+    if (rows.length < 2) throw new Error(csvName + " 解析行数不足");
+    const header = rows[0];
+    // 表头首列=Model;末三列=Unprompted/IDE/CLI/Think;中间列为任务列
+    const projCount = header.length - 4;  // 去掉 Model + Unprompted + IDE/CLI + Think
+    const projects = header.slice(1, 1 + projCount).map(function (h) {
+      return h.replace(/\s*\([A-Z]\)\s*$/, "");  // 去掉任务名末尾的 "(C)" 字母后缀
+    });
+    const dataRows = [];
+    for (let r = 1; r < rows.length; r++) {
+      const cells = rows[r];
+      if (!cells[0] || cells[0] === "Model") continue;  // 跳过空行/重复表头
+      dataRows.push({
+        model: cells[0].trim(),
+        cells: cells.slice(1, 1 + projCount),
+        unprompted: parseInt(cells[1 + projCount], 10) || 0,
+        ide: (cells[2 + projCount] || "").trim(),
+        think: parseInt(cells[3 + projCount], 10) || 0
+      });
+    }
+    months[csvName] = { projects: projects, rows: dataRows };
+    console.log("  [llm2014] " + csvName + ": " + dataRows.length + " 模型, " + projects.length + " 任务");
+  }
+  if (!Object.keys(months).length) throw new Error("未解析到任何有效月份");
+  const monthKeys = Object.keys(months).sort();
+  const latest = monthKeys[monthKeys.length - 1];
+  const content =
+`// 数据源3:llm2014 code_v3 基准快照(中文个人私有题库,按月归档)
+// 来源:https://llm2014.github.io/llm_benchmark/  (raw: github.com/llm2014/llm_benchmark)
+// 单元格原始值形如 "7/A"(耗时分钟 / 字母等级),或 Pass / Failed(n/m) / Skip / Pending。
+// 数值化规则在 js/data.js 中统一处理。
+// 注:2026-01 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
+window.LLM2014 = {
+  source: "llm2014 编程榜 code_v3",
+  url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C${latest}%7C0",
+  updated: "${TODAY}",
+  desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
+  // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
+  months: ${JSON.stringify(months, null, 2).replace(/"/g, "'")}
+};
+`;
+  writeFileIfChanged(path.join(DATA, "llm2014.js"), content);
 }
 
 (async () => {

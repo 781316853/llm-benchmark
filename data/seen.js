@@ -220,6 +220,8 @@ window.SEEN = {
     'tbench|Opus 4.7': '2026-07-11',
     'tbench|MiniMax M3': '2026-07-11',
     'tbench|Gemini 3.0 Flash': '2026-07-11',
-    'tbench|Kimi K2.6': '2026-07-11'
+    'tbench|Kimi K2.6': '2026-07-11',
+    'llm|Doubao-Seed-2.0-Code  (high)': '2026-07-11',
+    'llm|Grok 4.5 (high)': '2026-07-11'
   }
 };
