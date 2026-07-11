@@ -1,4 +1,4 @@
-name: 每日数据刷新
+name: 每日数据刷新与部署
 on:
   schedule:
     - cron: "0 1 * * *"   # UTC 01:00 ≈ 北京 09:00
@@ -6,6 +6,8 @@ on:
 
 permissions:
   contents: write          # 允许把刷新后的 data/*.js 提交回仓库
+  pages: write             # 允许部署到 GitHub Pages
+  id-token: write          # Pages 部署所需的 OIDC 令牌
 
 concurrency:
   group: refresh-data
@@ -27,18 +29,44 @@ jobs:
         run: node scripts/fetch_all.js
 
       - name: 提交变更(若有)
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/*.js
           if git diff --staged --quiet; then
             echo "数据无变化,跳过提交"
+            echo "changed=false" >> $GITHUB_OUTPUT
           else
             git commit -m "chore(data): 每日刷新 $(date -u +%F)"
             git push origin HEAD:$(git rev-parse --abbrev-ref HEAD)
+            echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: 清除 jsDelivr CDN 缓存(使公网站点即时更新)
+  # 部署阶段:重新拉取最新代码后部署,确保线上与提交一致
+  deploy:
+    needs: refresh
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 配置 GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传站点产物(整个静态站点:index.html + css + js + data)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: 清除 jsDelivr CDN 缓存(使 CDN 节点即时更新)
         if: always()
         env:
           BR: ${{ github.ref_name }}
