@@ -523,9 +523,16 @@ function parseCsv(text) {
   return rows;
 }
 async function fetchLlm() {
+  // 数据源 URL:优先 jsDelivr CDN 镜像(比 raw.githubusercontent.com 在 Actions 环境更稳定),
+  // 失败时回退到 raw 直链
+  const baseCdn = "https://cdn.jsdelivr.net/gh/llm2014/llm_benchmark@main/docs/";
+  const baseRaw = "https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/";
+  async function fetchGh(relPath) {
+    try { return await fetchText(baseCdn + relPath); }
+    catch (e) { console.log("  [llm2014] jsDelivr 失败,回退 raw: " + e.message); return await fetchText(baseRaw + relPath); }
+  }
   console.log("[llm2014] 抓取 datasets.json");
-  const metaUrl = "https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/data/datasets.json";
-  const metaText = await fetchText(metaUrl);
+  const metaText = await fetchGh("data/datasets.json");
   const meta = JSON.parse(metaText);
   // 过滤 code_v3 总榜(tableIndex=0),按 reportDate 升序
   const codeV3 = (meta.datasets || []).filter(function (d) {
@@ -538,11 +545,17 @@ async function fetchLlm() {
     const csvName = d.csv.split("/").pop().replace(/\.csv$/, "");
     // 排除旧评分制(2026-01:原始分钟数 + 总扣分,无字母等级,口径不兼容)
     if (csvName === "2026-01") { console.log("  [llm2014] 跳过旧评分制: " + csvName); continue; }
-    const csvUrl = "https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/" + d.csv;
     console.log("  [llm2014] 抓取 " + csvName + ".csv (reportDate=" + d.reportDate + ")");
-    const csvText = await fetchText(csvUrl);
-    const rows = parseCsv(csvText);
-    if (rows.length < 2) throw new Error(csvName + " 解析行数不足");
+    // 单月 CSV 抓取/解析失败时跳过该月,不影响其他月份(站点不崩)
+    let rows;
+    try {
+      const csvText = await fetchGh(d.csv);
+      rows = parseCsv(csvText);
+      if (rows.length < 2) throw new Error(csvName + " 解析行数不足");
+    } catch (e) {
+      console.log("  [llm2014] " + csvName + " 抓取失败,跳过: " + e.message);
+      continue;
+    }
     const header = rows[0];
     // 表头首列=Model;末三列=Unprompted/IDE/CLI/Think;中间列为任务列
     const projCount = header.length - 4;  // 去掉 Model + Unprompted + IDE/CLI + Think
