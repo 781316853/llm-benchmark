@@ -163,6 +163,10 @@ a:hover { text-decoration: underline; }
 /* "近 7 天新上榜" 行高亮(琥珀底色);置于 row-hit 之后,确保两类高亮并存时新上榜视觉优先 */
 .data-table tr.row-new { background: rgba(212,148,58,.14); }
 .data-table tr.row-new:hover { background: rgba(212,148,58,.22); }
+/* 国产模型高亮行(用户主动开启「高亮国产模型」开关时生效);
+   置于 row-hit/row-new 之后,确保用户主动开启时国产高亮获得视觉优先 */
+.data-table tr.row-domestic { background: rgba(208,76,76,.13); }
+.data-table tr.row-domestic:hover { background: rgba(208,76,76,.21); }
 .badge-new { display: inline-block; font-size: 10px; font-weight: 700; color: #fff;
   background: linear-gradient(135deg, #D4943A, #C27D24); padding: 1px 6px; border-radius: 999px;
   margin-left: 6px; vertical-align: 1px; letter-spacing: .5px; }
@@ -173,6 +177,10 @@ a:hover { text-decoration: underline; }
 .badge-v10 { display: inline-block; font-size: 10px; font-weight: 700; color: #8a5a16;
   background: #fbeccd; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid #ecd49a; }
+/* 国产模型徽标:红色调,与国产行高亮配套(仅「高亮国产模型」开关开启时出现) */
+.badge-domestic { display: inline-block; font-size: 10px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, #D04C4C, #B8384A); padding: 1px 6px; border-radius: 999px;
+  margin-left: 6px; vertical-align: 1px; letter-spacing: .3px; }
 .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--bg-soft);
   color: var(--text-dim); border: 1px solid var(--border-subtle); margin-left: 6px; font-weight: 400; }
 
@@ -224,6 +232,10 @@ a:hover { text-decoration: underline; }
 .switch-lg .switch-track { width: 48px; height: 26px; border-radius: 26px; }
 .switch-lg .switch-track::after { top: 3px; left: 3px; width: 20px; height: 20px; }
 .switch-lg .switch input:checked + .switch-track::after { transform: translateX(22px); }
+/* 总览页开关组容器:并排居中展示多个开关 */
+.overview-switches { display: flex; justify-content: center; align-items: center;
+  gap: 28px; flex-wrap: wrap; margin: 16px 0; }
+.overview-switches .switch-lg { margin: 0; }
 
 .footer { text-align: center; color: var(--text-tertiary); font-size: 12px; padding: 24px; border-top: 1px solid var(--border-subtle); }
 

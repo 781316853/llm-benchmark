@@ -190,12 +190,14 @@
       if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
     });
     // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / SWE-bench Pro+Terminal-Bench(合并计 1 榜)共 4 榜
+    // 注意:SWE-bench Pro 与 Terminal-Bench 需两者都有数据才算命中该合并榜,
+    // 与 composite 综合分的逻辑保持一致(只有一个数据时不算命中)
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
-      if (e.swe || e.tbench) e.benchCount++;
+      if (e.swe && e.tbench) e.benchCount++;
     });
     return map;
   }

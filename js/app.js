@@ -4,9 +4,13 @@
   var D = window.D, CH = window.CH, CMP = window.CMP;
   var state = { tab: "overview", llmMonth: null,
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
+    highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
     // 总览默认收起(聚焦跨榜命中),其余三页默认展开全部模型
     showAll: { overview: false, deepswe: true, vibe: true, llm: true } };
+  // 国产厂商集合(来自 MODEL_MAP.domesticVendors):用于总览页判定模型是否为国产
+  var DOMESTIC = {};
+  ((window.MODEL_MAP && window.MODEL_MAP.domesticVendors) || []).forEach(function (v) { DOMESTIC[v] = 1; });
   var fmtK = function (n) { return n >= 1000 ? (n / 1000).toFixed(0) + "k" : n; };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>\"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" }[c]; }); };
@@ -161,12 +165,16 @@
       var tb = r.tbench ? r.tbench.score + "%" : "—";
       // NEW 判定:仅基于旧三基准(DeepSWE/Vibe/llm2014);SWE-Pro/TBench 不参与
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.vibe && r.vibe.name, r.llm && r.llm.name);
-      // row-hit(跨榜命中)与 row-new(新上榜)可并存;CSS 中 row-new 置后以生效
-      var cls = (r.benchCount >= 2 ? "row-hit " : "") + (nw ? "row-new" : "");
+      // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
+      var dom = state.highlightDomestic && DOMESTIC[r.vendor];
+      // row-hit(跨榜命中)、row-new(新上榜)、row-domestic(国产高亮)可并存;
+      // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
+      var cls = (r.benchCount >= 2 ? "row-hit " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
+      var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
       // 序号列:按排序后的行序展示,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (i + 1) + '</td>' +
-        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + '</td>' +
+        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
         '<td class="num">' + CMP.composite(r).toFixed(1) + '</td>' +
         '<td class="num">' + ds + '</td>' +
@@ -192,8 +200,13 @@
     fillTableHead("matrixTable", head);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     // 动态行数提示(显示全部模型开关状态)
-    document.getElementById("overviewNote").textContent =
-      state.showAll.overview ? '当前显示全部 ' + rows.length + ' 个模型' : '当前仅显示命中≥2个基准组且排名前 ' + rows.length + ' 的模型(勾选下方"显示全部"可展开所有模型)。';
+    var note = state.showAll.overview ? '当前显示全部 ' + rows.length + ' 个模型' : '当前仅显示命中≥2个基准组且排名前 ' + rows.length + ' 的模型(勾选下方"显示全部"可展开所有模型)。';
+    // 国产高亮开启时,追加国产模型数量提示
+    if (state.highlightDomestic) {
+      var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
+      note += ' · 当前高亮 ' + domCnt + ' 个国产模型。';
+    }
+    document.getElementById("overviewNote").textContent = note;
   }
 
   // ===== 2) DeepSWE =====
@@ -365,6 +378,12 @@
         state.showAll[sw.key] = el.checked;
         sw.render();
       });
+    });
+    // 总览页「高亮国产模型」开关:切换后重渲染矩阵以应用/取消国产高亮
+    var hdEl = document.getElementById("ovHighlightDomestic");
+    if (hdEl) hdEl.addEventListener("change", function () {
+      state.highlightDomestic = hdEl.checked;
+      renderOverview();
     });
     // 标签点击
     Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (b) {

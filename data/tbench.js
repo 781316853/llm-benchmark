@@ -651,11 +651,11 @@ window.TBENCH = {
     'source': 'roybench OMP',
     'agent': 'omp',
     'model': 'glm-5.2',
-    'score': 33,
+    'score': 56.8,
     'ci': null,
     'backend': 'zhipu-coding-plan',
-    'think': 'medium',
-    'passed': 29,
+    'think': 'high',
+    'passed': 50,
     'total': 88
   },
   {

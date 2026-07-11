@@ -46,7 +46,7 @@ window.MODEL_MAP = {
     { id: "Grok 4.5",         vendor: "xAI",       color: "#9AA3AF", aliases: ["Grok 4.5", "grok-4.5"] },
     { id: "Grok 4.3",         vendor: "xAI",       color: "#AEB5BC", aliases: ["grok-4.3"] },
     { id: "Grok Build",       vendor: "xAI",       color: "#B8BFC6", aliases: ["grok-build-0-1", "grok-build-0.1", "Grok Build"] },
-    { id: "Tencent Hy3",      vendor: "Tencent",   color: "#12B7F5", aliases: ["Tencent Hy3 (high)", "Tencent Hy3 Preview"] },
+    { id: "Tencent Hy3",      vendor: "Tencent",   color: "#12B7F5", aliases: ["Tencent Hy3 (high)", "Tencent Hy3 Preview", "Hy3"] },
     { id: "MiniMax-M3",       vendor: "MiniMax",   color: "#FF5C8A", aliases: ["MiniMax-M3", "minimax-m3", "MiniMax M3"] },
     { id: "MiniMax-M2.7",     vendor: "MiniMax",   color: "#FF7DA3", aliases: ["minimax-m2-7", "MiniMax-M2.7", "MiniMax M2.7"] },
     { id: "MiniMax M2.5",     vendor: "MiniMax",   color: "#FF9EBB", aliases: ["MiniMax M2.5", "minimax-m2-5"] },
@@ -67,5 +67,7 @@ window.MODEL_MAP = {
     { id: "North Mini Code 1.0", vendor: "North",  color: "#8A8F98", aliases: ["North Mini Code 1.0"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
-  vendorDefaultColor: "#8A8F98"
+  vendorDefaultColor: "#8A8F98",
+  // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
+  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi"]
 };
