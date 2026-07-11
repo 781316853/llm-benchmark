@@ -140,12 +140,19 @@
     var src = window.LLM2014 || { months: {} };
     var mo = src.months[month];
     if (!mo) return null;
-    var rows = mo.rows.map(function (r) {
+    var rows = mo.rows.map(function (r, idx) {
       var cells = r.cells.map(parseCell);
+      var total = cells.length;  // 总任务数(含 Skip/Pending)
       var nums = cells.map(function (c) { return c.num; }).filter(function (n) { return n != null; });
       var mean = nums.length ? nums.reduce(function (a, b) { return a + b; }, 0) / nums.length : null;
+      // 完成率门槛制:≥50% 不折扣(质量可直接代表),<50% 按完成率折扣(抑制小样本虚高)
+      var raw = mean == null ? null : mean / MAX_GRADE * 100;
+      var completion = total ? nums.length / total : 1;
+      var norm = raw == null ? null : (completion >= 0.5 ? raw : raw * completion);
       return { model: r.model, canon: canon(r.model), cells: cells, ide: r.ide, think: r.think,
-        score: mean, norm: mean == null ? null : mean / MAX_GRADE * 100 };
+        score: mean,  // 原始均值(llm2014 页展示用,反映完成质量)
+        norm: norm,   // 门槛制折扣后(综合分计算用)
+        rank: idx };  // CSV 行序 = 原站排名(0 = 第一名)
     });
     return { projects: mo.projects, rows: rows };
   }
@@ -174,7 +181,8 @@
     if (lm) {
       lm.rows.forEach(function (r) {
         var e = ensure(r.canon);
-        if (!e.llm || (r.score != null && r.score > (e.llm.score == null ? -1 : e.llm.score))) {
+        // 取首现(CSV 行序最优排名),不再按最高 score 覆盖
+        if (!e.llm) {
           e.llm = { score: r.score, norm: r.norm, name: r.model };
         }
       });
@@ -221,7 +229,7 @@
         top: vcTop.name + " · " + vcTop.score + "%" },
       { key: "llm2014", name: "llm2014 code_v3", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
-        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/10" : "—") }
+        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/100" : "—") }
     ];
   }
 
