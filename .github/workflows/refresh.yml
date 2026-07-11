@@ -3,6 +3,12 @@ on:
   schedule:
     - cron: "0 23 * * *"   # UTC 23:00 = 北京次日 07:00
   workflow_dispatch:       # 支持手动触发验证
+  push:                    # 推送代码变更时触发部署
+    branches: [main]       # 仅监听 main 分支
+    paths-ignore:          # 排除以下路径,避免机器人提交 data/*.js 触发循环
+      - "data/**"
+      - ".github/**"
+      - "*.md"
 
 permissions:
   contents: write          # 允许把刷新后的 data/*.js 提交回仓库
@@ -15,6 +21,8 @@ concurrency:
 
 jobs:
   refresh:
+    # 仅定时/手动触发时抓取数据;push 事件跳过(只部署,不重复刷新)
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -44,7 +52,9 @@ jobs:
           fi
 
   # 部署阶段:重新拉取最新代码后部署,确保线上与提交一致
+  # needs refresh 但允许 refresh 被跳过(push 事件时直接部署)
   deploy:
+    if: always()
     needs: refresh
     runs-on: ubuntu-latest
     environment:
