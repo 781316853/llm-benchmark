@@ -56,7 +56,7 @@ window.MODEL_MAP = {
     { id: "Doubao-Seed-2.0-Code", vendor: "ByteDance", color: "#3C8CFF", aliases: ["Doubao-Seed-2.0-Code (high)", "Seed-2.0-Code(high)"] },
     { id: "MiMo-V2.5-Pro",    vendor: "Xiaomi",    color: "#FF6900", aliases: ["MiMo-V2.5-Pro"] },
     { id: "MiMo-V2.5",        vendor: "Xiaomi",    color: "#FF831A", aliases: ["MiMo-V2.5"] },
-    { id: "Meta Muse Spark",  vendor: "Meta",      color: "#0866FF", aliases: ["Muse Spark", "meta/muse_spark", "Muse Spark 1.1", "Meta Muse Spark 1.1", "Meta Muse Spark"] },
+    { id: "Meta Muse Spark 1.1",  vendor: "Meta",      color: "#0866FF", aliases: ["Muse Spark", "meta/muse_spark", "Muse Spark 1.1", "Meta Muse Spark", "Meta Muse Spark 1.1"] },
     { id: "MAI-Thinking-1",   vendor: "Microsoft", color: "#0078D4", aliases: ["MAI-Thinking-1"] },
     { id: "MAI-Code-1-Flash", vendor: "Microsoft", color: "#2A9DE8", aliases: ["MAI-Code-1-Flash"] },
     { id: "Gemma 3 27B",      vendor: "Google",    color: "#9AC4FA", aliases: ["gemma-3-27b-it"] },
