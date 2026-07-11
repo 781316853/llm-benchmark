@@ -5,6 +5,7 @@
   var state = { tab: "overview", llmMonth: null,
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
+    showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
     // 总览默认收起(聚焦跨榜命中),其余三页默认展开全部模型
     showAll: { overview: false, deepswe: true, vibe: true, llm: true } };
@@ -84,8 +85,8 @@
   var MATRIX_COLS = [
     { key: "model",   label: "模型", type: "text", bench: false, val: function (r) { return r.id; } },
     { key: "vendor",  label: "厂商", type: "text", bench: false, val: function (r) { return r.vendor; } },
-    // 综合分:质量均值×广度微折损(0-100);作为默认排序主键,bench=false 表示排序时不过滤无值行
-    { key: "composite", label: "综合分", type: "num", bench: false, val: function (r) { return CMP.composite(r); } },
+    // 梯队:综合分按金字塔权重动态分档(S+~E);作为默认排序主键,bench=false 表示排序时不过滤无值行
+    { key: "composite", label: "梯队", type: "num", bench: false, val: function (r) { return CMP.composite(r); } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.score != null) ? r.llm.score : null; } },
@@ -147,8 +148,10 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:先过滤命中≥2的模型,再取排名前30;勾选"显示全部"则展示所有
-    var allRows = sortedMatrixRows(CMP.matrix(state.llmMonth));
+    // 矩阵表:先分配梯队(基于全量模型),再过滤命中≥2的模型,取排名前30;勾选"显示全部"则展示所有
+    var matrixRows = CMP.matrix(state.llmMonth);
+    CMP.assignTiers(matrixRows);
+    var allRows = sortedMatrixRows(matrixRows);
     var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 2; }).slice(0, 30);
     if (!rows.length) rows = allRows;
     var html = rows.map(function (r, i) {
@@ -171,7 +174,15 @@
         '<td class="num">' + (i + 1) + '</td>' +
         '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
-        '<td class="num">' + CMP.composite(r).toFixed(1) + '</td>' +
+        // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
+        (function () {
+          var t = r.tier || "E";
+          var tc = t.replace("+", "p"); // S+ -> Sp,用作 CSS 类名
+          var score = CMP.composite(r).toFixed(1);
+          var badge = '<span class="tier-badge tier-' + tc + '" title="综合分 ' + score + '">' + t + '</span>';
+          var num = state.showScore ? ' <span class="tier-score">' + score + '</span>' : "";
+          return '<td class="num">' + badge + num + '</td>';
+        })() +
         '<td class="num">' + ds + '</td>' +
         '<td class="num">' + vc + '</td>' +
         '<td class="num">' + lm + '</td>' +
@@ -378,6 +389,12 @@
     var hdEl = document.getElementById("ovHighlightDomestic");
     if (hdEl) hdEl.addEventListener("change", function () {
       state.highlightDomestic = hdEl.checked;
+      renderOverview();
+    });
+    // 总览页「显示综合分」开关:切换后在梯队徽标旁显示/隐藏精确综合分
+    var ssEl = document.getElementById("ovShowScore");
+    if (ssEl) ssEl.addEventListener("change", function () {
+      state.showScore = ssEl.checked;
       renderOverview();
     });
     // 标签点击

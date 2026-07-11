@@ -181,6 +181,24 @@ a:hover { text-decoration: underline; }
 .badge-domestic { display: inline-block; font-size: 10px; font-weight: 700; color: #fff;
   background: linear-gradient(135deg, #D04C4C, #B8384A); padding: 1px 6px; border-radius: 999px;
   margin-left: 6px; vertical-align: 1px; letter-spacing: .3px; }
+/* 梯队徽标:综合分按金字塔权重动态分档为 S+~E 共 12 级 */
+.tier-badge { display: inline-block; font-size: 12px; font-weight: 700; color: #fff;
+  padding: 2px 8px; border-radius: 4px; min-width: 28px; text-align: center; letter-spacing: .3px; }
+/* 「显示综合分」开关开启时,梯队徽标旁的数值 */
+.tier-score { font-size: 12px; color: var(--text-dim); margin-left: 4px; font-variant-numeric: tabular-nums; }
+/* 各梯队配色:从 S+(紫)到 E(深红)渐变 */
+.tier-Sp { background: linear-gradient(135deg, #7C3AED, #6D28D9); }
+.tier-S  { background: linear-gradient(135deg, #D4943A, #C27D24); }
+.tier-Ap { background: linear-gradient(135deg, #E67E22, #D35400); }
+.tier-A  { background: linear-gradient(135deg, #2D9D78, #238B66); }
+.tier-Bp { background: linear-gradient(135deg, #3B9B6B, #2E8055); }
+.tier-B  { background: linear-gradient(135deg, #3498DB, #2980B9); }
+.tier-Cp { background: linear-gradient(135deg, #5B8DEF, #4A7BD8); }
+.tier-C  { background: linear-gradient(135deg, #7B8CA8, #6B7B96); }
+.tier-Dp { background: linear-gradient(135deg, #95A5A6, #7F8C8D); }
+.tier-D  { background: linear-gradient(135deg, #A0522D, #8B4513); }
+.tier-Ep { background: linear-gradient(135deg, #B85450, #A04540); }
+.tier-E  { background: linear-gradient(135deg, #8B3A3A, #722F2F); }
 .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--bg-soft);
   color: var(--text-dim); border: 1px solid var(--border-subtle); margin-left: 6px; font-weight: 400; }
 
