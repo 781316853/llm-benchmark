@@ -132,6 +132,7 @@ window.SEEN = {
     'aaci|GLM-5.2': '2026-07-11',
     'aaci|Composer 2.5 Fast': '2026-07-11',
     'aaci|DeepSeek V4 Pro': '2026-07-11',
-    'aaci|Gemini 3.1 Pro': '2026-07-11'
+    'aaci|Gemini 3.1 Pro': '2026-07-11',
+    'llm|GPT-5.6-Sol (max)': '2026-07-12'
   }
 };

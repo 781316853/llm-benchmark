@@ -347,6 +347,21 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'GPT-5.6-Sol (max)',
+        'cells': [
+          'Pass',
+          'Pass',
+          'Pass',
+          'Pass',
+          'Pending',
+          '4/A',
+          '8/A'
+        ],
+        'unprompted': 1,
+        'ide': 'Codex App',
+        'think': 1
+      },
+      {
         'model': 'GPT-5.5 (high)',
         'cells': [
           '7/A',
