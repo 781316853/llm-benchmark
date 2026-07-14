@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-07-13',
+  'updated': '2026-07-14',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -133,6 +133,7 @@ window.SEEN = {
     'aaci|Composer 2.5 Fast': '2026-07-11',
     'aaci|DeepSeek V4 Pro': '2026-07-11',
     'aaci|Gemini 3.1 Pro': '2026-07-11',
-    'llm|GPT-5.6-Sol (max)': '2026-07-12'
+    'llm|GPT-5.6-Sol (max)': '2026-07-12',
+    'deepswe|muse-spark-1-1': '2026-07-14'
   }
 };
