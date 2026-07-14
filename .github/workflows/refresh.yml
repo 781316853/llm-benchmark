@@ -47,7 +47,7 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             git commit -m "chore(data): 每日刷新 $(date -u +%F)"
-            git push origin HEAD:$(git rev-parse --abbrev-ref HEAD)
+            git push origin HEAD:${{ github.ref_name }}
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
@@ -62,6 +62,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # 拉取默认分支最新提交(含 refresh 刚推送的数据),否则默认检出工作流触发时的旧 commit
 
       - name: 配置 GitHub Pages
         id: pages
