@@ -8,8 +8,8 @@ window.VIBECODE = {
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "2026-07-17",
   version: "v1.1",
-  totalSystems: 72,
-  note: "共 72 系统,展示 overall 视图全部 66 个有记录系统",
+  totalSystems: 73,
+  note: "共 73 系统,展示 overall 视图全部 66 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {

@@ -362,6 +362,21 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'Kimi-K3 (max)',
+        'cells': [
+          '7/A',
+          'Pass',
+          'Pending',
+          '15/B',
+          'Pending(≤B)',
+          '6/A',
+          '5/A'
+        ],
+        'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
         'model': 'GPT-5.5 (high)',
         'cells': [
           '7/A',

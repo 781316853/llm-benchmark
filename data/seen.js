@@ -134,6 +134,9 @@ window.SEEN = {
     'aaci|DeepSeek V4 Pro': '2026-07-11',
     'aaci|Gemini 3.1 Pro': '2026-07-11',
     'llm|GPT-5.6-Sol (max)': '2026-07-12',
-    'deepswe|muse-spark-1-1': '2026-07-14'
+    'deepswe|muse-spark-1-1': '2026-07-14',
+    'deepswe|kimi-k3': '2026-07-17',
+    'deepswe|grok-4-5': '2026-07-17',
+    'llm|Kimi-K3 (max)': '2026-07-17'
   }
 };

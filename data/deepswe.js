@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-07-17",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 16 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 17 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -37,6 +37,15 @@ window.DEEPSWE = {
     'cost': 4.95,
     'outTok': 71939,
     'steps': 76
+  },
+  {
+    'name': 'kimi-k3',
+    'effort': 'max',
+    'pass1': 69,
+    'ci': 5,
+    'cost': 4.65,
+    'outTok': 81500,
+    'steps': 98
   },
   {
     'name': 'gpt-5-6-luna',
@@ -75,6 +84,15 @@ window.DEEPSWE = {
     'steps': 268
   },
   {
+    'name': 'grok-4-5',
+    'effort': 'high',
+    'pass1': 54,
+    'ci': 2,
+    'cost': 2.42,
+    'outTok': 35525,
+    'steps': 61
+  },
+  {
     'name': 'muse-spark-1-1',
     'effort': 'xhigh',
     'pass1': 53,
@@ -82,16 +100,6 @@ window.DEEPSWE = {
     'cost': 2.36,
     'outTok': 74008,
     'steps': 96
-  },
-  {
-    'name': 'Grok 4.5',
-    'effort': '思考模式 High（工具）',
-    'pass1': 53,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
   },
   {
     'name': 'gpt-5-4',
