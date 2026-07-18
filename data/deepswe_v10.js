@@ -6,7 +6,7 @@ window.DEEPSWE_V10 = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   version: "v1.0",
-  captured: "2026-07-17",
+  captured: "2026-07-18",
   stats: { models: 21 },
   desc: "DeepSWE v1.0 历史榜单(测试了更多模型),作为 v1.1 的补充数据合入展示。",
   models: [
