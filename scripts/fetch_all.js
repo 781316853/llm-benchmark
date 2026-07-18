@@ -194,7 +194,7 @@ const VIBE_NAMES = {
   "deepseek/deepseek-v4-pro": "DeepSeek V4 Pro", "fireworks/deepseek-v3p2-thinking": "DeepSeek V3.2",
   "alibaba/qwen3.7-max": "Qwen3.7-Max", "alibaba/qwen3.7-plus": "Qwen3.7-Plus", "alibaba/qwen3.6-plus": "Qwen3.6-Plus",
   "alibaba/qwen3.6-27b": "Qwen3.6-27B", "alibaba/qwen3.5-plus-thinking": "Qwen3.5-Plus", "alibaba/qwen3-max": "Qwen3-Max",
-  "kimi/kimi-k2.7-code": "Kimi K2.7-Code", "kimi/kimi-k2.6": "Kimi K2.6", "kimi/kimi-k2.5-thinking": "Kimi K2.5",
+  "kimi/kimi-k2.7-code": "Kimi K2.7-Code", "kimi/kimi-k2.6": "Kimi K2.6", "kimi/kimi-k2.5-thinking": "Kimi K2.5", "kimi/kimi-k3": "Kimi K3",
   "cursor/composer-2.5": "Composer 2.5", "devin/swe-1-6-fast": "Devin SWE-1.6 Fast",
   "xiaomi/mimo-v2.5": "MiMo v2.5", "xiaomi/mimo-v2.5-pro": "MiMo v2.5 Pro",
   "meta/muse_spark": "Meta Muse Spark", "meta/muse_spark_1_1": "Meta Muse Spark 1.1", "minimax/MiniMax-M2.5": "MiniMax M2.5",
@@ -213,9 +213,10 @@ async function fetchVibe() {
   console.log("[Vibe Code] 抓取 https://www.vals.ai/benchmarks/vibe-code");
   const html = await fetchText("https://www.vals.ai/benchmarks/vibe-code");
   const decoded = htmlDecode(html);
-  // results.overall 块:"<slug>":[0,{"accuracy":[0,N],"latency":[0,N],"stderr":[0,N],"cost_per_test":[0,N],...,"harness":[0,"H"]}]
+  // results.overall 块:"<slug>":[0,{"accuracy":[0,N],"latency":[0,N],"stderr":[0,N],"cost_per_test":[0,N|null],...,"harness":[0,"H"]}]
   // slug 字符集含下划线(如 meta/muse_spark_1_1),用 [a-z0-9.\-_] 确保完整匹配
-  const re = /"([a-z0-9.\-_]+\/[a-z0-9.\-_]+)":\[0,\{"accuracy":\[0,([\d.]+)\],"latency":\[0,([\d.]+)\],"stderr":\[0,([\d.]+)\],"cost_per_test":\[0,([\d.]+)\][^}]*?"harness":\[0,"([^"]+)"\]\}/g;
+  // cost_per_test 可能为 null(如开源/免费模型未计成本),正则需兼容;null 记为 0 避免下游渲染 NaN
+  const re = /"([a-z0-9.\-_]+\/[a-z0-9.\-_]+)":\[0,\{"accuracy":\[0,([\d.]+)\],"latency":\[0,([\d.]+)\],"stderr":\[0,([\d.]+)\],"cost_per_test":\[0,(null|[\d.]+)\][^}]*?"harness":\[0,"([^"]+)"\]\}/g;
   let m, bySlug = {};
   while ((m = re.exec(decoded)) !== null) {
     if (bySlug[m[1]]) continue; // RSC 数据重复,按 slug 去重
@@ -223,7 +224,7 @@ async function fetchVibe() {
       name: vibeNameFromSlug(m[1]), harness: m[6],
       score: Math.round(parseFloat(m[2]) * 100) / 100,
       ci: Math.round(parseFloat(m[4]) * 100) / 100,
-      cost: Math.round(parseFloat(m[5]) * 100) / 100,
+      cost: m[5] === "null" ? 0 : Math.round(parseFloat(m[5]) * 100) / 100,
       latencyS: Math.round(parseFloat(m[3]))
     };
   }

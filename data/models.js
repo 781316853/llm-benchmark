@@ -33,6 +33,7 @@ window.MODEL_MAP = {
     { id: "Kimi-K2.7-Code",   vendor: "Moonshot",  color: "#7C5CFF", aliases: ["kimi-k2.7-code", "Kimi-K2.7-Code"] },
     { id: "Kimi-K2.6",        vendor: "Moonshot",  color: "#8E6EFF", aliases: ["Kimi-K2.6 (Think)", "K2.6-code-preview", "Kimi K2.6"] },
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
+    { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)"] },
     { id: "DeepSeek V4 Pro",  vendor: "DeepSeek",  color: "#4D6BFE", aliases: ["DeepSeek V4 Pro (max)", "DeepSeek V4 Pro (high)", "DeepSeek-V4-Pro-Max", "deepseek-v4-pro"] },
     { id: "DeepSeek V4 Flash",vendor: "DeepSeek",  color: "#6A82FE", aliases: ["DeepSeek V4 Flash (max)", "DeepSeek-V4-Flash-Max"] },
     { id: "DeepSeek V3.2",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["deepseek-v3p2"] },
