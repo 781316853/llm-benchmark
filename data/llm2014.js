@@ -366,9 +366,9 @@ window.LLM2014 = {
         'cells': [
           '7/A',
           'Pass',
-          'Pending',
+          '12/B',
           '15/B',
-          'Pending(≤B)',
+          '18/B',
           '6/A',
           '5/A'
         ],

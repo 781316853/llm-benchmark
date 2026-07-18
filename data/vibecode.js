@@ -21,6 +21,14 @@ window.VIBECODE = {
     'latencyS': 3711
   },
   {
+    'name': 'Kimi K3',
+    'harness': 'OpenHands',
+    'score': 84.96,
+    'ci': 2.69,
+    'cost': 0,
+    'latencyS': 5203
+  },
+  {
     'name': 'Claude Opus 4.8',
     'harness': 'OpenHands',
     'score': 82.73,
@@ -67,14 +75,6 @@ window.VIBECODE = {
     'ci': 3.33,
     'cost': 0.92,
     'latencyS': 615
-  },
-  {
-    'name': 'Kimi K3',
-    'harness': 'OpenHands',
-    'score': 71.06,
-    'ci': 4.84,
-    'cost': 0,
-    'latencyS': 4079
   },
   {
     'name': 'Claude Opus 4.7',
@@ -389,6 +389,14 @@ window.VIBECODE = {
     'latencyS': 589
   },
   {
+    'name': 'Inkling [新]',
+    'harness': 'OpenHands',
+    'score': 19.21,
+    'ci': 3.66,
+    'cost': 0,
+    'latencyS': 1105
+  },
+  {
     'name': 'Kimi K2.5',
     'harness': 'OpenHands',
     'score': 17.54,
@@ -539,14 +547,6 @@ window.VIBECODE = {
     'ci': 0.4,
     'cost': 1.22,
     'latencyS': 2097
-  },
-  {
-    'name': 'Command A+',
-    'harness': 'OpenHands',
-    'score': 0,
-    'ci': 0,
-    'cost': 0,
-    'latencyS': 447
   },
   {
     'name': 'Gemini 3.1 Flash Lite',

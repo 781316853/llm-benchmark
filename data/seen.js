@@ -141,6 +141,7 @@ window.SEEN = {
     'vibe|Kimi K3': '2026-07-18',
     'vibe|Grok Build': '2026-07-18',
     'vibe|Nemotron 3 Ultra': '2026-07-18',
-    'vibe|Devin SWE-1.6 Fast': '2026-07-18'
+    'vibe|Devin SWE-1.6 Fast': '2026-07-18',
+    'vibe|Inkling [新]': '2026-07-18'
   }
 };
