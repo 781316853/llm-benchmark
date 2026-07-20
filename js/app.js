@@ -156,8 +156,13 @@
     if (!rows.length) rows = allRows;
     var html = rows.map(function (r, i) {
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
-      var ds = r.deepswe ? r.deepswe.pass1 + "%" + verBadge(r.deepswe.version) : "—";
-      var vc = r.vibe ? r.vibe.score + "%" : "—";
+      // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
+      var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
+        ? ' <span class="cell-cost">$' + r.deepswe.cost + '</span>' : "";
+      var ds = r.deepswe ? r.deepswe.pass1 + "%" + verBadge(r.deepswe.version) + dsCost : "—";
+      var vcCost = (r.vibe && typeof r.vibe.cost === "number" && r.vibe.cost > 0)
+        ? ' <span class="cell-cost">$' + r.vibe.cost + '</span>' : "";
+      var vc = r.vibe ? r.vibe.score + "%" + vcCost : "—";
       var lm = (r.llm && r.llm.score != null) ? D.to100(r.llm.score).toFixed(1) : "-";
       // AA Coding Agent Index 单值显示
       var aa = r.aaci ? r.aaci.score : null;

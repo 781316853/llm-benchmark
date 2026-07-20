@@ -67,7 +67,7 @@
         <ul>
           <li>「梯队」根据上榜模型数量与综合分分布动态分档(金字塔分档),将全部模型按综合分降序,以 S+=1、S=3、A+=5、A=7、B+=9、B=11、C+=13、C=15、D+=17、D=19、E+=21、E=剩余 的金字塔权重分配至 S+ / S / A+ / A / B+ / B / C+ / C / D+ / D / E+ / E 共 12 级。高档少、低档多,梯队边界随数据变化动态浮动,不设固定阈值。鼠标悬停梯队标签可查看精确综合分;勾选「显示综合分」可在梯队旁直接显示数值。综合分计算方式不变:旧三基准加权平均(DeepSWE 40%/Vibe Code 40%/llm2014 20%)×90% + 新基准(AA Coding Agent Index)归一化分×10%,再减一致性折减(跨榜标准差越大折减越多,每点σ扣0.15分,上限2分)。列表默认按综合分容差分组排序:差距<1.5分的模型视为同档,同档内优先排列命中数多、跨榜一致性高的模型。</li>
           <li>「命中」表示该模型在对应基准组中进入榜单,4/4 表示四项基准(DeepSWE / Vibe Code / llm2014 / AA Coding Agent Index)均有排名。</li>
-          <li>DeepSWE 与 Vibe Code 为百分比;llm2014 为百分制综合分(由等级数值折算);AA Coding Agent Index 为 Artificial Analysis 综合编码代理指数(v1.1:DeepSWE+Terminal-Bench v2+SWE-Atlas-QnA 三项 pass@1 均值,0-100 分,每模型取最优 agent 成绩)。</li>
+          <li>DeepSWE 与 Vibe Code 为百分比,分数后的「$X」为该模型在对应基准的单次任务成本(美元,DeepSWE 为平均成本、Vibe Code 为单测成本);llm2014 为百分制综合分(由等级数值折算);AA Coding Agent Index 为 Artificial Analysis 综合编码代理指数(v1.1:DeepSWE+Terminal-Bench v2+SWE-Atlas-QnA 三项 pass@1 均值,0-100 分,每模型取最优 agent 成绩)。</li>
           <li>「—」表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。</li>
           <li>浅绿底色行表示跨榜命中数 ≥ 2 的模型;模型名后 NEW 表示近 7 天内首次上榜(仅基于 DeepSWE/Vibe/llm2014 三基准判定)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>
