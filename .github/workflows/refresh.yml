@@ -15,15 +15,22 @@ permissions:
   pages: write             # 允许部署到 GitHub Pages
   id-token: write          # Pages 部署所需的 OIDC 令牌
 
-concurrency:
-  group: refresh-data
-  cancel-in-progress: false
+# 注意:不在顶层设置单一 concurrency 组。
+# 历史上 refresh 与 deploy 共用 group=refresh-data,一旦定时刷新的 job 卡死在
+# queued(如 2026-07-20 故障),连 push 触发的部署也会被同一把锁阻塞。
+# 现改为在 refresh / deploy 各自 job 上单独控制并发(见下方注释)。
 
 jobs:
   refresh:
     # 仅定时/手动触发时抓取数据;push 事件跳过(只部署,不重复刷新)
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
+    timeout-minutes: 15   # 兜底:防止数据抓取卡死而长期占用并发锁
+    # refresh 单独成组:只限制多个刷新之间串行(避免并发改写 data/*),
+    # 新的刷新会抢占旧的卡死 run,确保锁不会无限期被占用。
+    concurrency:
+      group: refresh-data
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
         with:
@@ -57,6 +64,10 @@ jobs:
     if: always()
     needs: refresh
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # deploy 不进任何 concurrency 组:GitHub Pages 的 environment=github-pages
+    # 本身就保证同一环境同时只有一个部署,无需额外的 workflow 级锁。
+    # 这样即便 refresh 的 job 卡死,部署也不会被它连带阻塞。
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
