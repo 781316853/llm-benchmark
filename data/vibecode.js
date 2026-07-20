@@ -9,7 +9,7 @@ window.VIBECODE = {
   updated: "2026-07-18",
   version: "v1.1",
   totalSystems: 73,
-  note: "共 73 系统,展示 overall 视图全部 66 个有记录系统",
+  note: "共 73 系统,展示 overall 视图全部 70 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -19,6 +19,14 @@ window.VIBECODE = {
     'ci': 2.1,
     'cost': 12.51,
     'latencyS': 3711
+  },
+  {
+    'name': 'Kimi K3',
+    'harness': 'OpenHands',
+    'score': 84.96,
+    'ci': 2.69,
+    'cost': 0,
+    'latencyS': 5203
   },
   {
     'name': 'Claude Opus 4.8',
@@ -381,6 +389,14 @@ window.VIBECODE = {
     'latencyS': 589
   },
   {
+    'name': 'Inkling [新]',
+    'harness': 'OpenHands',
+    'score': 19.21,
+    'ci': 3.66,
+    'cost': 0,
+    'latencyS': 1105
+  },
+  {
     'name': 'Kimi K2.5',
     'harness': 'OpenHands',
     'score': 17.54,
@@ -413,6 +429,14 @@ window.VIBECODE = {
     'latencyS': 698
   },
   {
+    'name': 'Grok Build',
+    'harness': 'Grok Build',
+    'score': 13.35,
+    'ci': 3.82,
+    'cost': 0,
+    'latencyS': 395
+  },
+  {
     'name': 'GPT 5.1 Codex',
     'harness': 'OpenHands',
     'score': 13.12,
@@ -443,6 +467,22 @@ window.VIBECODE = {
     'ci': 2.82,
     'cost': 2.06,
     'latencyS': 2382
+  },
+  {
+    'name': 'Nemotron 3 Ultra',
+    'harness': 'OpenHands',
+    'score': 7.64,
+    'ci': 2.78,
+    'cost': 0,
+    'latencyS': 2217
+  },
+  {
+    'name': 'Devin SWE-1.6 Fast',
+    'harness': 'Devin CLI',
+    'score': 7.22,
+    'ci': 2.64,
+    'cost': 0,
+    'latencyS': 189
   },
   {
     'name': 'Laguna XS.2',
@@ -507,14 +547,6 @@ window.VIBECODE = {
     'ci': 0.4,
     'cost': 1.22,
     'latencyS': 2097
-  },
-  {
-    'name': 'Command A+',
-    'harness': 'OpenHands',
-    'score': 0,
-    'ci': 0,
-    'cost': 0,
-    'latencyS': 447
   },
   {
     'name': 'Gemini 3.1 Flash Lite',

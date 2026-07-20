@@ -137,6 +137,11 @@ window.SEEN = {
     'deepswe|muse-spark-1-1': '2026-07-14',
     'deepswe|kimi-k3': '2026-07-17',
     'deepswe|grok-4-5': '2026-07-17',
-    'llm|Kimi-K3 (max)': '2026-07-17'
+    'llm|Kimi-K3 (max)': '2026-07-17',
+    'vibe|Kimi K3': '2026-07-18',
+    'vibe|Grok Build': '2026-07-18',
+    'vibe|Nemotron 3 Ultra': '2026-07-18',
+    'vibe|Devin SWE-1.6 Fast': '2026-07-18',
+    'vibe|Inkling [新]': '2026-07-18'
   }
 };
