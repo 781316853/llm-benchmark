@@ -1,6 +1,9 @@
 // 数据源:Artificial Analysis Coding Agent Index(aitoolsreview.co.uk 镜像)
-// 迁移自原 fetch_all.js 的 fetchAACI。
-// 解析 Full comparison HTML 表格;每条 {agent, model, score, ci:null}。
+// 迁移自原 fetch_all.js 的 fetchAACI(保持原始解析逻辑)。
+// 期望:Full comparison HTML 表格的 Coding 列(AA 官方综合分,0-100)。
+// 2026-07 站点改版:原 Coding 综合分列已被 SWE-bench Pro / Terminal-Bench 2.1 / GDPval-AA 等分量取代,
+//                  这些分量非官方 AA 口径,已弃用。本源保持原始期望,fail-soft 保留旧 data/aaci.js,
+//                  用历史综合分数据参与 DeepSWE 的交叉验证(时效性告警会提示数据陈旧)。
 // 输出格式与原脚本逐字节等价(window.AACI)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -19,6 +22,9 @@ class AaciSource extends BaseSource {
     });
   }
   parse(html) {
+    // 原始解析逻辑:Full comparison 表格行
+    // 期望列:Model | Intelligence | Coding(分数+agent)
+    // Coding 列格式:<td>...<br>...<br>...</td>,含整数分数与 agent 名
     const models = [];
     try {
       const trs = html.match(/<tr>[\s\S]*?<\/tr>/g) || [];
@@ -30,10 +36,12 @@ class AaciSource extends BaseSource {
         }
         var modelRaw = clean(tds[0]);
         var codingRaw = clean(tds[2]);
+        // Coding 列:可能为 "—" 或 "分数 agent"(如 "77 Claude Code");只取有分数的行
         var codingMatch = codingRaw.match(/^(\d+)\s*(.*)$/);
         if (!codingMatch) return;
         var score = parseInt(codingMatch[1], 10);
         var agent = codingMatch[2].trim();
+        // 模型名清理:去除 "New" 后缀、厂商后缀(如 "Anthropic · max, with fallback")
         var modelName = modelRaw.replace(/New$/i, "").replace(/\s*·\s*.*$/, "").trim();
         if (!modelName || isNaN(score)) return;
         models.push({ agent: agent, model: modelName, score: score, ci: null });
@@ -42,7 +50,8 @@ class AaciSource extends BaseSource {
     } catch (e) {
       console.log("  [aitoolsreview] 抓取失败: " + e.message);
     }
-    if (!models.length) throw new Error("AA Coding Agent Index 未解析到数据");
+
+    if (!models.length) throw new Error("AA Coding Agent Index 未解析到数据(站点结构变更,保留旧文件供交叉验证)");
     models.sort(function (a, b) { return b.score - a.score; });
     return models;
   }
@@ -50,11 +59,10 @@ class AaciSource extends BaseSource {
     var srcId = this.cfg.id;
     return normalizer.fromArray(srcId, models, function (m, idx) {
       return {
-        name: m.model,        // 用 model 字段作为模型名(跨 agent 去重键)
-        score: m.score,
-        rank: idx,
-        updated: CONFIG.TODAY,
-        metrics: { ci: m.ci, agent: m.agent }
+        name: m.model,        // canonical 匹配键用 model 名
+        score: m.score, rank: idx, updated: CONFIG.TODAY,
+        metrics: { ci: m.ci, agent: m.agent },
+        meta: {}
       };
     });
   }
@@ -69,6 +77,7 @@ class AaciSource extends BaseSource {
 // 三项 pass@1 简单平均,分数范围 0-100;评估 agent+model 组合的综合编码代理能力
 // 字段说明:agent=运行框架;model=模型名;score=Coding Agent Index 分数(0-100);ci=置信区间(±)
 // 合并策略:每 canonical 模型跨 agent 取最高分(前端 canon() 归并)
+// 注:2026-07 站点改版,官方综合分已下线;fail-soft 保留旧文件参与交叉验证。
 window.AACI = {
   source: "Artificial Analysis Coding Agent Index",
   url: "https://artificialanalysis.ai/leaderboards/coding-agents",

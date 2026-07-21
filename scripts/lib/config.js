@@ -59,18 +59,12 @@ module.exports = {
       url: "https://aitoolsreview.co.uk/benchmarks",
       host: "aitoolsreview.co.uk"
     },
-    swebench: {
-      url: "https://www.swebench.com/",
-      host: "www.swebench.com"
-    },
-    aider: {
-      url: "https://aider.chat/docs/leaderboards/",
-      host: "aider.chat"
-    },
-    livecode: {
-      // BigCodeBench leaderboard API(分页 JSON REST)
-      url: "https://bigcode-bench.github.io/results.json",
-      host: "bigcode-bench.github.io"
+    aa_official: {
+      // AA 官方 Coding Agent Index:数据内嵌在 /agents/coding-agents 页的
+      // <script type="application/ld+json"> 块(schema.org Dataset 格式),
+      // 含三个维度:codingAgentsIndex / codingAgentsMeanAgentWallTimeSec / codingAgentsMeanCostUsd
+      url: "https://artificialanalysis.ai/agents/coding-agents",
+      host: "artificialanalysis.ai"
     }
   },
 
