@@ -40,6 +40,11 @@ jobs:
         with:
           node-version: '22'
 
+      - name: 安装依赖(p-limit + p-retry)
+        # 用 npm install(非 ci):首次运行时仓库尚无 package-lock.json,
+        # npm install 会生成它并安装依赖;之后可切回 npm ci 获得可复现构建。
+        run: npm install --no-audit --no-fund
+
       - name: 抓取多源数据并重写 data/*.js
         run: node scripts/fetch_all.js
 
@@ -94,6 +99,6 @@ jobs:
         env:
           BR: ${{ github.ref_name }}
         run: |
-          for f in index.html data/deepswe.js data/deepswe_v10.js data/vibecode.js data/llm2014.js data/aaci.js data/models.js data/seen.js; do
+          for f in index.html data/deepswe.js data/deepswe_v10.js data/vibecode.js data/llm2014.js data/aaci.js data/models.js data/seen.js data/quality.js data/swebench.js data/aider.js data/livecode.js data/datalearner.js; do
             curl -fsSL "https://purge.jsdelivr.net/gh/${{ github.repository }}@${BR}/$f" || true
           done
