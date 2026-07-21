@@ -96,6 +96,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'Gemini 3.6 Flash',
+      'score': 49,
+      'mode': '思考模式（工具）',
+      'date': '2026-07-21',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'GLM-5.2',
       'score': 44,
       'mode': '深度思考模式（工具）',

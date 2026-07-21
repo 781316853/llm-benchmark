@@ -216,6 +216,8 @@ window.SEEN = {
     'aa_official|GLM-5.2': '2026-07-21',
     'aa_official|Composer 2.5 Fast': '2026-07-21',
     'aa_official|Gemini 3.1 Pro': '2026-07-21',
-    'aa_official|DeepSeek V4 Pro': '2026-07-21'
+    'aa_official|DeepSeek V4 Pro': '2026-07-21',
+    'deepswe|gemini-3-6-flash': '2026-07-21',
+    'datalearner|Gemini 3.6 Flash': '2026-07-21'
   }
 };

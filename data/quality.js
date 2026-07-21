@@ -7,6 +7,17 @@ window.QUALITY = {
   'overallScore': 0.833,
   'sources': [
     {
+      'id': 'aa_official',
+      'name': 'AA Coding Agent Index (官方)',
+      'status': 'ok',
+      'modelCount': 10,
+      'updated': '2026-07-21',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'aaci',
       'name': 'AA Coding Agent Index',
       'status': 'error',
@@ -20,21 +31,10 @@ window.QUALITY = {
       ]
     },
     {
-      'id': 'aa_official',
-      'name': 'AA Coding Agent Index (官方)',
-      'status': 'ok',
-      'modelCount': 10,
-      'updated': '2026-07-21',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
-      'modelCount': 17,
+      'modelCount': 18,
       'updated': '2026-07-21',
       'ageDays': 0,
       'completeness': 1,
@@ -45,7 +45,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 17,
+      'modelCount': 18,
       'updated': '2026-07-21',
       'ageDays': 0,
       'completeness': 1,
@@ -619,6 +619,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Gemini 3.6 Flash',
+      'name': 'Gemini 3.6 Flash',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 49,
+        'deepswe_v11': 49
+      },
+      'mean': 49,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Tencent Hy3',
       'name': 'Hy3',
       'vendor': 'Tencent',
@@ -646,17 +662,17 @@ window.QUALITY = {
     },
     'datalearner': {
       'rate': 1,
-      'total': 17,
-      'complete': 17,
-      'modelCount': 17,
+      'total': 18,
+      'complete': 18,
+      'modelCount': 18,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 17,
-      'complete': 17,
-      'modelCount': 17,
+      'total': 18,
+      'complete': 18,
+      'modelCount': 18,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -688,15 +704,15 @@ window.QUALITY = {
     }
   },
   'timeliness': {
-    'aaci': {
-      'updated': '2026-07-11',
-      'ageDays': 10,
-      'flag': 'alert'
-    },
     'aa_official': {
       'updated': '2026-07-21',
       'ageDays': 0,
       'flag': 'ok'
+    },
+    'aaci': {
+      'updated': '2026-07-11',
+      'ageDays': 10,
+      'flag': 'alert'
     },
     'datalearner': {
       'updated': '2026-07-21',

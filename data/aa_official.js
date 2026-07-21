@@ -31,9 +31,9 @@ window.AA_OFFICIAL = {
       'model': 'Fable 5 (with fallback)',
       'effort': 'max',
       'score': 59.2,
-      'indexRaw': 0.5921621225646345,
-      'wallSec': 1405,
-      'costUsd': 11.72,
+      'indexRaw': 0.5921621225646347,
+      'wallSec': 1403,
+      'costUsd': 11.71,
       'ci': null
     },
     {
@@ -61,7 +61,7 @@ window.AA_OFFICIAL = {
       'model': 'Opus 4.8',
       'effort': 'max',
       'score': 54.9,
-      'indexRaw': 0.548957280758594,
+      'indexRaw': 0.5489572807585936,
       'wallSec': 1388,
       'costUsd': 7.7,
       'ci': null
@@ -91,7 +91,7 @@ window.AA_OFFICIAL = {
       'model': 'Composer 2.5 Fast',
       'effort': null,
       'score': 33.9,
-      'indexRaw': 0.33889696964204524,
+      'indexRaw': 0.3388969696420454,
       'wallSec': 406,
       'costUsd': 0.55,
       'ci': null
@@ -101,7 +101,7 @@ window.AA_OFFICIAL = {
       'model': 'Gemini 3.1 Pro',
       'effort': 'high',
       'score': 29.2,
-      'indexRaw': 0.29173595723695644,
+      'indexRaw': 0.2917359572369561,
       'wallSec': 649,
       'costUsd': 2,
       'ci': null
