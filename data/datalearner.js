@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-07-23)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-07-24)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-07-23',
+  'updated': '2026-07-24',
   'models': [
     {
       'name': 'GPT-5.6 Sol',

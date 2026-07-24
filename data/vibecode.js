@@ -1,15 +1,15 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-07-23)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-07-24)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-07-23",
+  updated: "2026-07-24",
   version: "v1.1",
-  totalSystems: 73,
-  note: "共 73 系统,展示 overall 视图全部 70 个有记录系统",
+  totalSystems: 75,
+  note: "共 75 系统,展示 overall 视图全部 72 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -17,7 +17,7 @@ window.VIBECODE = {
     'harness': 'OpenHands',
     'score': 90.35,
     'ci': 2.1,
-    'cost': 12.51,
+    'cost': 41.71,
     'latencyS': 3711
   },
   {
@@ -25,7 +25,7 @@ window.VIBECODE = {
     'harness': 'OpenHands',
     'score': 84.96,
     'ci': 2.69,
-    'cost': 0,
+    'cost': 17.59,
     'latencyS': 5203
   },
   {
@@ -157,6 +157,14 @@ window.VIBECODE = {
     'latencyS': 1279
   },
   {
+    'name': 'Gemini 3.6 flash [新]',
+    'harness': 'OpenHands',
+    'score': 57.32,
+    'ci': 5.05,
+    'cost': 3.04,
+    'latencyS': 1523
+  },
+  {
     'name': 'Claude Sonnet 4.6',
     'harness': 'Claude Code',
     'score': 55.77,
@@ -275,6 +283,14 @@ window.VIBECODE = {
     'ci': 4.91,
     'cost': 1.93,
     'latencyS': 2968
+  },
+  {
+    'name': 'Gemini 3.5 flash lite [新]',
+    'harness': 'OpenHands',
+    'score': 37.16,
+    'ci': 4.63,
+    'cost': 0.83,
+    'latencyS': 502
   },
   {
     'name': 'MiMo v2.5 Pro',
