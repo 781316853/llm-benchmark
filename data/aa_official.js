@@ -1,5 +1,5 @@
 // 新增数据源:Artificial Analysis 官方 Coding Agent Index(云端抓取)
-// 来源:https://artificialanalysis.ai/agents/coding-agents  (更新于 2026-07-24)
+// 来源:https://artificialanalysis.ai/agents/coding-agents  (更新于 2026-07-25)
 // 抓取方式:解析页面内嵌的 3 个 <script type='application/ld+json'> schema.org Dataset 块:
 //          Coding Agent Index(0-1)/ Time per Task(秒)/ Cost per Task($),按 label 合并三维。
 // label 格式:'<agent> - <model> (<effort>)';score=index*100(百分制);wallSec=平均任务耗时;costUsd=平均任务成本。
@@ -7,7 +7,7 @@
 window.AA_OFFICIAL = {
   'source': 'Artificial Analysis Coding Agent Index (Official)',
   'url': 'https://artificialanalysis.ai/agents/coding-agents',
-  'updated': '2026-07-24',
+  'updated': '2026-07-25',
   'version': '1.1',
   'componentsList': [
     'DeepSWE',
@@ -16,6 +16,16 @@ window.AA_OFFICIAL = {
   ],
   'scoreScale': '0-100 (index*100)',
   'models': [
+    {
+      'agent': 'Claude Code',
+      'model': 'Opus 5',
+      'effort': 'xhigh',
+      'score': 66.7,
+      'indexRaw': 0.6674377366641138,
+      'wallSec': 1419,
+      'costUsd': 8.23,
+      'ci': null
+    },
     {
       'agent': 'Codex',
       'model': 'GPT-5.6 Sol',
@@ -31,7 +41,7 @@ window.AA_OFFICIAL = {
       'model': 'Fable 5 (with fallback)',
       'effort': 'max',
       'score': 65.8,
-      'indexRaw': 0.6584703662922334,
+      'indexRaw': 0.658470366292233,
       'wallSec': 1403,
       'costUsd': 11.71,
       'ci': null
@@ -54,16 +64,6 @@ window.AA_OFFICIAL = {
       'indexRaw': 0.6133537089146563,
       'wallSec': 1428,
       'costUsd': 3.18,
-      'ci': null
-    },
-    {
-      'agent': 'Claude Code',
-      'model': 'Opus 4.8',
-      'effort': 'max',
-      'score': 60.5,
-      'indexRaw': 0.6054088936618197,
-      'wallSec': 1388,
-      'costUsd': 7.7,
       'ci': null
     },
     {
@@ -91,7 +91,7 @@ window.AA_OFFICIAL = {
       'model': 'Composer 2.5 Fast',
       'effort': null,
       'score': 38.2,
-      'indexRaw': 0.3819077223302173,
+      'indexRaw': 0.3819077223302172,
       'wallSec': 406,
       'costUsd': 0.55,
       'ci': null
