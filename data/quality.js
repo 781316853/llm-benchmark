@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-07-25;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-07-26;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-07-25',
+  'generatedAt': '2026-07-26',
   'overallScore': 0.833,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'AA Coding Agent Index (官方)',
       'status': 'ok',
       'modelCount': 10,
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -23,7 +23,7 @@ window.QUALITY = {
       'status': 'error',
       'modelCount': 11,
       'updated': '2026-07-11',
-      'ageDays': 14,
+      'ageDays': 15,
       'completeness': null,
       'fetchAttempts': 1,
       'errors': [
@@ -34,8 +34,8 @@ window.QUALITY = {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
-      'modelCount': 18,
-      'updated': '2026-07-25',
+      'modelCount': 19,
+      'updated': '2026-07-26',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -45,8 +45,8 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 18,
-      'updated': '2026-07-25',
+      'modelCount': 19,
+      'updated': '2026-07-26',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -57,7 +57,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -68,7 +68,7 @@ window.QUALITY = {
       'name': 'llm2014',
       'status': 'ok',
       'modelCount': 42,
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -79,7 +79,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 73,
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -349,6 +349,24 @@ window.QUALITY = {
       },
       'mean': 47.4,
       'stddev': 8.3,
+      'flag': 'warn'
+    },
+    {
+      'canonId': 'Claude opus 5 [新]',
+      'name': 'Claude Opus 5',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 68.8,
+        'deepswe_v11': 74,
+        'vibecode': 88.4
+      },
+      'mean': 77.1,
+      'stddev': 8.29,
       'flag': 'warn'
     },
     {
@@ -664,17 +682,17 @@ window.QUALITY = {
     },
     'datalearner': {
       'rate': 1,
-      'total': 18,
-      'complete': 18,
-      'modelCount': 18,
+      'total': 19,
+      'complete': 19,
+      'modelCount': 19,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 18,
-      'complete': 18,
-      'modelCount': 18,
+      'total': 19,
+      'complete': 19,
+      'modelCount': 19,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -707,37 +725,37 @@ window.QUALITY = {
   },
   'timeliness': {
     'aa_official': {
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'flag': 'ok'
     },
     'aaci': {
       'updated': '2026-07-11',
-      'ageDays': 14,
+      'ageDays': 15,
       'flag': 'alert'
     },
     'datalearner': {
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-07-25',
+      'updated': '2026-07-26',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -747,7 +765,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'timeliness',
       'sourceId': 'aaci',
-      'message': '数据已 14 天未更新(>7 天)'
+      'message': '数据已 15 天未更新(>7 天)'
     },
     {
       'level': 'warn',
