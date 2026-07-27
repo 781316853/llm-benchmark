@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-07-26',
+  'updated': '2026-07-27',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -224,6 +224,7 @@ window.SEEN = {
     'vibe|Claude opus 5 [新]': '2026-07-25',
     'aa_official|Opus 5': '2026-07-25',
     'deepswe|claude-opus-5': '2026-07-26',
-    'datalearner|Claude Opus 5': '2026-07-26'
+    'datalearner|Claude Opus 5': '2026-07-26',
+    'llm|Claude Opus 5 (max)': '2026-07-27'
   }
 };

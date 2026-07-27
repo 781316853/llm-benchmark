@@ -6,7 +6,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-07%7C0",
-  updated: "2026-07-26",
+  updated: "2026-07-27",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -359,6 +359,21 @@ window.LLM2014 = {
         ],
         'unprompted': 1,
         'ide': 'Codex App',
+        'think': 1
+      },
+      {
+        'model': 'Claude Opus 5 (max)',
+        'cells': [
+          'Pass',
+          'Pass',
+          '8/B+',
+          'Pass',
+          '15/B+',
+          '4/A',
+          '1/A+'
+        ],
+        'unprompted': 2,
+        'ide': 'Claude Code',
         'think': 1
       },
       {
