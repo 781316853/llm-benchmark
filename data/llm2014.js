@@ -6,7 +6,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-01",
+  updated: "2026-08-02",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -735,6 +735,21 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'DeepSeek V4 Flash 0731 (max)',
+        'cells': [
+          'Skip',
+          'Skip',
+          '8/A',
+          '9/A',
+          '44/D+',
+          '17/B',
+          '24/D+'
+        ],
+        'unprompted': 2,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
         'model': 'Claude Sonnet 5 (high)',
         'cells': [
           'Pass',
@@ -795,7 +810,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'DeepSeek V4 Pro (max)',
+        'model': 'DeepSeek V4 Pro preview(max)',
         'cells': [
           '16/C',
           '8/B',
@@ -825,22 +840,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Kimi-K2.7-Code',
-        'cells': [
-          '30/C',
-          '18/C',
-          '26/C',
-          '55/D',
-          'Skip',
-          '30/C',
-          'Pending'
-        ],
-        'unprompted': 0,
-        'ide': 'Kimi Code',
-        'think': 1
-      },
-      {
-        'model': 'DeepSeek V4 Flash (max)',
+        'model': 'DeepSeek V4 Flash preview(max)',
         'cells': [
           'Failed(5/12)',
           '19/C',
@@ -870,7 +870,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Qwen3.6-Plus(Think)',
+        'model': 'Qwen3.6-Plus',
         'cells': [
           'Failed(5/12)',
           '16/C',
