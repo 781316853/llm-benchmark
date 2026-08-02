@@ -1,5 +1,5 @@
 // 模型名归一化与 canonical 解析(抓取端端口)
-// 移植自 js/data.js 的 norm / normLight / canon 逻辑,读取 data/models.js 别名表。
+// 移植自 js/data.js 的 norm / normLight / cleanDisplay / canon 逻辑,读取 data/models.js 别名表。
 // 用途:让抓取端的标准化结果可按 canonical 聚合,供交叉验证引擎使用。
 "use strict";
 const fs = require("fs");
@@ -46,26 +46,42 @@ var aliasIndex = {};
 });
 
 // 未登记模型自动归并缓存:归一键 -> canonical 对象
+// 建档/命中同时使用 norm 精确键与 normLight 宽松键,使 "claude-opus-5" 与
+// "Claude Opus 5 (max)" 这类 effort 注解写法自动归并为同一模型(与 js/data.js 一致)。
 var autoIndex = {};
 
-// 根据原始模型名解析 canonical;未命中别名索引则按归一键自动归并(首次出现的原始名作显示名)
+// 未登记模型的显示名清洗:去括号注解 (max)/(high)、去 vibe 降级标记 [新]、压缩空白
+function cleanDisplay(raw) {
+  return String(raw || "")
+    .replace(/\([^)]*\)/g, "")
+    .replace(/\[新\]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// 根据原始模型名解析 canonical;未命中别名索引则按归一键自动归并
 function canon(raw) {
   var c = aliasIndex[norm(raw)] || aliasIndex[normLight(raw)];
   if (c) return c;
+  // 自动匹配:先按精确归一键,再按剥离 effort 注解的宽松键归并
   var k = norm(raw);
-  if (autoIndex[k]) return autoIndex[k];
-  var fb = {
-    id: raw,
+  var fb = autoIndex[k] || autoIndex[normLight(raw)];
+  if (fb) return fb;
+  // 首次出现:清洗后的原始名作为显示名,双键建档供后续任意写法命中
+  fb = {
+    id: cleanDisplay(raw),
     vendor: "其他",
     color: MODEL_MAP.vendorDefaultColor || "#8A8F98"
   };
   autoIndex[k] = fb;
+  autoIndex[normLight(raw)] = fb;
   return fb;
 }
 
 module.exports = {
   norm: norm,
   normLight: normLight,
+  cleanDisplay: cleanDisplay,
   canon: canon,
   // 重新加载(测试或 models.js 变更后调用)
   reload: function () {

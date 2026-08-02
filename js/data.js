@@ -57,17 +57,31 @@
   // 未登记模型自动归并缓存:归一键 -> canonical 对象
   // 未在 MODEL_MAP 登记的模型,按归一键自动合并:仅分隔符/大小写不同的写法
   // (如 "gpt-5-6-sol" 与 "Gpt 5.6 sol")复用首次出现时建立的 canonical,实现自动匹配。
+  // 建档/命中同时使用 norm 精确键与 normLight 宽松键,使 "claude-opus-5" 与
+  // "Claude Opus 5 (max)" 这类 effort 注解写法自动归并为同一模型,无需手工登记别名。
   var autoIndex = {};
+
+  // 未登记模型的显示名清洗:去括号注解 (max)/(high)、去 vibe 降级标记 [新]、压缩空白
+  function cleanDisplay(raw) {
+    return String(raw || "")
+      .replace(/\([^)]*\)/g, "")
+      .replace(/\[新\]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
 
   // 根据原始模型名解析 canonical;未命中别名索引则按归一键自动归并
   function canon(raw) {
     var c = aliasIndex[norm(raw)] || aliasIndex[normLight(raw)];
     if (c) return c;
-    // 自动匹配:未登记模型按归一键去重,首次出现的原始名作为显示名
+    // 自动匹配:先按精确归一键,再按剥离 effort 注解的宽松键归并
     var k = norm(raw);
-    if (autoIndex[k]) return autoIndex[k];
-    var fb = { id: raw, vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
+    var fb = autoIndex[k] || autoIndex[normLight(raw)];
+    if (fb) return fb;
+    // 首次出现:清洗后的原始名作为显示名,双键建档供后续任意写法命中
+    fb = { id: cleanDisplay(raw), vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
     autoIndex[k] = fb;
+    autoIndex[normLight(raw)] = fb;
     return fb;
   }
 
