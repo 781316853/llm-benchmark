@@ -14,11 +14,15 @@ function norm(s) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
-// 剥离 effort 后缀(high/max/think/preview 等)后再归一,用于兜底宽松匹配
+// 剥离 effort 后缀(high/max/think 等)后再归一,用于兜底宽松匹配
+// 注:括号内容为日期/构建号(如 0731、2025-08-07)时保留,其余括号注解 (high)/(with fallback) 等剥离;
+// 且 preview 是真实变体名(如 "DeepSeek V4 Flash preview")不再剥离。
 function normLight(s) {
   return String(s || "")
-    .replace(/\([^)]*\)/g, "")
-    .replace(/(high|max|medium|xhigh|low|think|preview)/gi, "")
+    .replace(/\(([^)]*)\)/g, function (m, inner) {
+      return /^[\d\s\-/.年月日]+$/.test(inner.trim()) ? m : "";
+    })
+    .replace(/(high|max|medium|xhigh|low|think)/gi, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -50,10 +54,12 @@ var aliasIndex = {};
 // "Claude Opus 5 (max)" 这类 effort 注解写法自动归并为同一模型(与 js/data.js 一致)。
 var autoIndex = {};
 
-// 未登记模型的显示名清洗:去括号注解 (max)/(high)、去 vibe 降级标记 [新]、压缩空白
+// 未登记模型的显示名清洗:去括号注解 (max)/(high)/(with fallback) 等(日期/构建号如 (0731) 保留)、去 vibe 降级标记 [新]、压缩空白
 function cleanDisplay(raw) {
   return String(raw || "")
-    .replace(/\([^)]*\)/g, "")
+    .replace(/\(([^)]*)\)/g, function (m, inner) {
+      return /^[\d\s\-/.年月日]+$/.test(inner.trim()) ? m : "";
+    })
     .replace(/\[新\]/g, "")
     .replace(/\s+/g, " ")
     .trim();
