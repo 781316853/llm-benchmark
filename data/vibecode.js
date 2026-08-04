@@ -1,15 +1,15 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-08-03)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-08-04)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-08-03",
+  updated: "2026-08-04",
   version: "v1.1",
-  totalSystems: 76,
-  note: "共 76 系统,展示 overall 视图全部 73 个有记录系统",
+  totalSystems: 78,
+  note: "共 78 系统,展示 overall 视图全部 75 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -421,6 +421,14 @@ window.VIBECODE = {
     'latencyS': 1105
   },
   {
+    'name': 'Inkling small [新]',
+    'harness': 'OpenHands',
+    'score': 19.05,
+    'ci': 3.4,
+    'cost': 0.43,
+    'latencyS': 2949
+  },
+  {
     'name': 'Kimi K2.5',
     'harness': 'OpenHands',
     'score': 17.54,
@@ -547,6 +555,14 @@ window.VIBECODE = {
     'ci': 1.16,
     'cost': 10.85,
     'latencyS': 10002
+  },
+  {
+    'name': 'Ling 3.0 flash 2607 [新]',
+    'harness': 'OpenHands',
+    'score': 2.91,
+    'ci': 2.07,
+    'cost': 0,
+    'latencyS': 1006
   },
   {
     'name': 'Mistral Medium 3.5',

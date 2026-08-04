@@ -6,7 +6,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-03",
+  updated: "2026-08-04",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -636,71 +636,86 @@ window.LLM2014 = {
   '2026-08': {
     'projects': [
       'MacOS App',
-      'Flutter',
       'Web',
       'Game',
       'Rust App',
       'Simple Model',
-      'iOS+Server'
+      'iOS+Server',
+      'Animation'
     ],
     'rows': [
       {
-        'model': 'Fable-5 (high)',
+        'model': 'Claude Fable 5 (high)',
         'cells': [
-          'Pass',
           'Pass',
           'Pass',
           'Pass',
           'Pending',
           '2/A+',
-          '3/A+'
+          '3/A+',
+          'Pending'
         ],
         'unprompted': 1,
         'ide': 'Claude Code',
-        'think': 1
-      },
-      {
-        'model': 'GPT-5.6-Sol (max)',
-        'cells': [
-          'Pass',
-          'Pass',
-          'Pass',
-          'Pass',
-          '15/B+',
-          '4/A',
-          '8/A'
-        ],
-        'unprompted': 1,
-        'ide': 'Codex App',
         'think': 1
       },
       {
         'model': 'Claude Opus 5 (max)',
         'cells': [
           'Pass',
+          'Pending',
           'Pass',
-          '8/B+',
+          'Pending',
+          '4/A',
+          '1/A+',
+          '12/B+'
+        ],
+        'unprompted': 3,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-5.6 Sol (max)',
+        'cells': [
+          'Pass',
+          'Pass',
           'Pass',
           '15/B+',
           '4/A',
-          '1/A+'
+          '8/A',
+          '23/B'
         ],
         'unprompted': 2,
-        'ide': 'Claude Code',
+        'ide': 'Codex App',
         'think': 1
       },
       {
         'model': 'Kimi-K3 (max)',
         'cells': [
           '7/A',
-          'Pass',
           '12/B',
           '15/B',
           '18/B',
           '6/A',
-          '5/A'
+          '5/A',
+          '22/B'
         ],
-        'unprompted': 1,
+        'unprompted': 2,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Qwen3.8-Max (max)',
+        'cells': [
+          'Pending',
+          'Pending',
+          'Pending',
+          'Pending',
+          '11/B',
+          '10/B',
+          '15/B'
+        ],
+        'unprompted': 0,
         'ide': 'Claude Code',
         'think': 1
       },
@@ -708,27 +723,27 @@ window.LLM2014 = {
         'model': 'Grok 4.5 (high)',
         'cells': [
           '12/B+',
-          'Skip',
           '7/A',
           'Pending',
           'Pending',
           '16/B',
-          '7/B+'
+          '7/B+',
+          'Pending'
         ],
         'unprompted': 1,
         'ide': 'Grok Build',
         'think': 1
       },
       {
-        'model': 'GLM-5.2(max)',
+        'model': 'GLM-5.2 (max)',
         'cells': [
           '16/B',
-          '6/A',
           '8/A',
           '8/A',
           '43/C',
           '14/B',
-          '15/C+'
+          '15/C+',
+          '30/C'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -738,12 +753,12 @@ window.LLM2014 = {
         'model': 'DeepSeek V4 Flash 0731 (max)',
         'cells': [
           'Skip',
-          'Skip',
           '8/A',
           '9/A',
           '44/D+',
           '17/B',
-          '24/D+'
+          '24/D+',
+          'Failed'
         ],
         'unprompted': 2,
         'ide': 'Claude Code',
@@ -752,13 +767,13 @@ window.LLM2014 = {
       {
         'model': 'Claude Sonnet 5 (high)',
         'cells': [
-          'Pass',
-          'Pass',
+          'Skip',
           '18/B',
           '14/B+',
           'Pending',
           '22/C',
-          '16/C+'
+          '16/C+',
+          'Failed'
         ],
         'unprompted': 1,
         'ide': 'Claude Code',
@@ -769,38 +784,38 @@ window.LLM2014 = {
         'cells': [
           '11/B',
           '12/B',
-          '12/B',
           '13/B',
           'Failed(5/9)',
           '10/B',
-          '20/C+'
+          '20/C+',
+          'Failed'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
         'think': 1
       },
       {
-        'model': 'GPT-5.6-Luna (max)',
+        'model': 'GPT-5.6 Luna (max)',
         'cells': [
           'Skip',
           'Skip',
           'Skip',
           'Skip',
-          'Skip',
           '27/C',
-          '21/C'
+          '21/C',
+          'Failed'
         ],
         'unprompted': 0,
-        'ide': 'Codex App',
+        'ide': 'Codex',
         'think': 1
       },
       {
         'model': 'Gemini 3.5 Flash (high)',
         'cells': [
           '21/C',
-          '15/B',
           '20/C',
           '17/B',
+          'Skip',
           'Skip',
           'Skip',
           'Pending'
@@ -813,12 +828,12 @@ window.LLM2014 = {
         'model': 'DeepSeek V4 Pro preview(max)',
         'cells': [
           '16/C',
-          '8/B',
           '21/C',
           '36/C',
           'Failed(0/9)',
           '31/C',
-          '28/C'
+          '28/C',
+          'Failed'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -828,12 +843,12 @@ window.LLM2014 = {
         'model': 'Qwen3.7-Max',
         'cells': [
           'Failed(2/12)',
-          '14/B',
           '17/C+',
           '46/D',
           'Skip',
           '26/C',
-          'Pending'
+          'Skip',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -843,12 +858,12 @@ window.LLM2014 = {
         'model': 'DeepSeek V4 Flash preview(max)',
         'cells': [
           'Failed(5/12)',
-          '19/C',
           '32/C',
           '48/D',
           'Skip',
           'Skip',
-          'Pending'
+          'Skip',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -858,8 +873,8 @@ window.LLM2014 = {
         'model': 'MiniMax-M3',
         'cells': [
           'Skip',
-          '19/C+',
           '51/D+',
+          'Skip',
           'Skip',
           'Skip',
           'Skip',
@@ -873,10 +888,10 @@ window.LLM2014 = {
         'model': 'Qwen3.6-Plus',
         'cells': [
           'Failed(5/12)',
-          '16/C',
           '43/D+',
           'Failed(3/9)',
           'Failed(0/9)',
+          'Skip',
           'Skip',
           'Skip'
         ],
@@ -888,30 +903,15 @@ window.LLM2014 = {
         'model': 'Doubao-Seed-2.0-Code  (high)',
         'cells': [
           'Failed(7/12)',
-          '40/C',
           '39/C',
           'Failed(3/9)',
+          'Skip',
           'Skip',
           'Skip',
           'Skip'
         ],
         'unprompted': 1,
         'ide': 'TRAE',
-        'think': 1
-      },
-      {
-        'model': 'MiMo-V2.5-Pro',
-        'cells': [
-          'Skip',
-          'Failed(6/9)',
-          '42/C',
-          'Skip',
-          'Skip',
-          'Skip',
-          'Skip'
-        ],
-        'unprompted': 0,
-        'ide': 'Claude Code',
         'think': 1
       }
     ]
