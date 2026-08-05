@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-08-04;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-08-05;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-08-04',
+  'generatedAt': '2026-08-05',
   'overallScore': 0.833,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'AA Coding Agent Index (官方)',
       'status': 'ok',
       'modelCount': 10,
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -23,7 +23,7 @@ window.QUALITY = {
       'status': 'error',
       'modelCount': 11,
       'updated': '2026-07-11',
-      'ageDays': 24,
+      'ageDays': 25,
       'completeness': null,
       'fetchAttempts': 1,
       'errors': [
@@ -35,7 +35,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 20,
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -45,8 +45,8 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 20,
-      'updated': '2026-08-04',
+      'modelCount': 21,
+      'updated': '2026-08-05',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -57,7 +57,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -68,7 +68,7 @@ window.QUALITY = {
       'name': 'llm2014',
       'status': 'ok',
       'modelCount': 61,
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -78,8 +78,8 @@ window.QUALITY = {
       'id': 'vibecode',
       'name': 'Vibe Code',
       'status': 'ok',
-      'modelCount': 75,
-      'updated': '2026-08-04',
+      'modelCount': 77,
+      'updated': '2026-08-05',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -600,6 +600,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Qwen3.8 max [新]',
+      'name': 'qwen3-8-max',
+      'vendor': '其他',
+      'sources': [
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 57,
+        'vibecode': 64.7
+      },
+      'mean': 60.9,
+      'stddev': 3.85,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'GPT-5.5',
       'name': 'GPT-5.5',
       'vendor': 'OpenAI',
@@ -706,9 +722,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 20,
-      'complete': 20,
-      'modelCount': 20,
+      'total': 21,
+      'complete': 21,
+      'modelCount': 21,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -732,46 +748,46 @@ window.QUALITY = {
     },
     'vibecode': {
       'rate': 1,
-      'total': 75,
-      'complete': 75,
-      'modelCount': 75,
+      'total': 77,
+      'complete': 77,
+      'modelCount': 77,
       'missingFields': {},
       'flag': 'ok'
     }
   },
   'timeliness': {
     'aa_official': {
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'flag': 'ok'
     },
     'aaci': {
       'updated': '2026-07-11',
-      'ageDays': 24,
+      'ageDays': 25,
       'flag': 'alert'
     },
     'datalearner': {
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-08-04',
+      'updated': '2026-08-05',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -781,7 +797,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'timeliness',
       'sourceId': 'aaci',
-      'message': '数据已 24 天未更新(>7 天)'
+      'message': '数据已 25 天未更新(>7 天)'
     },
     {
       'level': 'warn',

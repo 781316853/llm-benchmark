@@ -1,15 +1,15 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-08-04)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-08-05)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-08-04",
+  updated: "2026-08-05",
   version: "v1.1",
-  totalSystems: 78,
-  note: "共 78 系统,展示 overall 视图全部 75 个有记录系统",
+  totalSystems: 80,
+  note: "共 80 系统,展示 overall 视图全部 77 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -77,6 +77,14 @@ window.VIBECODE = {
     'latencyS': 1552
   },
   {
+    'name': 'Deepseek v4 flash 0731 [新]',
+    'harness': 'OpenHands',
+    'score': 74.74,
+    'ci': 3.44,
+    'cost': 0.2,
+    'latencyS': 2242
+  },
+  {
     'name': 'Meta Muse Spark 1.1',
     'harness': 'OpenHands',
     'score': 72.16,
@@ -131,6 +139,14 @@ window.VIBECODE = {
     'ci': 4.75,
     'cost': 5.93,
     'latencyS': 1177
+  },
+  {
+    'name': 'Qwen3.8 max [新]',
+    'harness': 'OpenHands',
+    'score': 64.7,
+    'ci': 5.36,
+    'cost': 8.24,
+    'latencyS': 10135
   },
   {
     'name': 'GLM 5.2',
