@@ -41,7 +41,7 @@ window.VIBECODE = {
     'harness': 'OpenHands',
     'score': 82.73,
     'ci': 3.08,
-    'cost': 5.09,
+    'cost': 26.88,
     'latencyS': 4549
   },
   {
@@ -325,7 +325,7 @@ window.VIBECODE = {
     'latencyS': 2404
   },
   {
-    'name': 'Gemini 3.1 Pro',
+    'name': 'Gemini 3.1 Pro Preview',
     'harness': 'OpenHands',
     'score': 32.03,
     'ci': 4.34,
@@ -397,7 +397,7 @@ window.VIBECODE = {
     'latencyS': 2283
   },
   {
-    'name': 'Gemini 3 Flash',
+    'name': 'Gemini 3 Flash Preview',
     'harness': 'OpenHands',
     'score': 20.2,
     'ci': 3.95,
@@ -433,7 +433,7 @@ window.VIBECODE = {
     'harness': 'OpenHands',
     'score': 19.21,
     'ci': 3.66,
-    'cost': 0,
+    'cost': 1.61,
     'latencyS': 1105
   },
   {
@@ -461,7 +461,7 @@ window.VIBECODE = {
     'latencyS': 3016
   },
   {
-    'name': 'Gemini 3 Pro',
+    'name': 'Gemini 3 Pro Preview',
     'harness': 'OpenHands',
     'score': 14.3,
     'ci': 3.06,

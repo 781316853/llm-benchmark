@@ -72,7 +72,7 @@ class Llm2014Source extends BaseSource {
     for (const d of codeV3) {
       const csvName = d.csv.split("/").pop().replace(/\.csv$/, "");
       if (csvName === "2026-01") { console.log("  [llm2014] 跳过旧评分制: " + csvName); continue; }
-      console.log("  [llm2014] 抓取 " + csvName + ".csv (reportDate=" + d.reportDate + ")");
+      console.log("  [llm2014] 抓取 " + csvName + ".csv → 月份 " + d.reportDate);
       let rows;
       try {
         const csvText = await this._fetchGh(d.csv);
@@ -99,8 +99,10 @@ class Llm2014Source extends BaseSource {
           think: parseInt(cells[3 + projCount], 10) || 0
         });
       }
-      months[csvName] = { projects: projects, rows: dataRows };
-      console.log("  [llm2014] " + csvName + ": " + dataRows.length + " 模型, " + projects.length + " 任务");
+      // 月份键用报告月(reportDate),与新版站点数据集键一致(csv 文件名可能与报告月不一致,
+      // 如 reportDate=2026-06 对应 data/code_v3/2026-05.csv),保证"原站↗"链接指向真实网页。
+      months[d.reportDate] = { projects: projects, rows: dataRows };
+      console.log("  [llm2014] " + d.reportDate + ": " + dataRows.length + " 模型, " + projects.length + " 任务");
     }
     if (!Object.keys(months).length) throw new Error("未解析到任何有效月份");
     return { months: months };
@@ -130,9 +132,11 @@ class Llm2014Source extends BaseSource {
     const body = JSON.stringify(parsed.months, null, 2).replace(/"/g, "'");
     return `// 数据源3:llm2014 code_v3 基准快照(中文个人私有题库,按月归档)
 // 来源:https://llm2014.github.io/llm_benchmark/  (raw: github.com/llm2014/llm_benchmark)
-// 单元格原始值形如 "7/A"(耗时分钟 / 字母等级),或 Pass / Failed(n/m) / Skip / Pending。
+// 单元格原始值形如 "7/A"(扣分数 / 字母等级,数字越小越好),或 Pass / Failed(n/m) / Skip / Pending;
+// 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
 // 数值化规则在 js/data.js 中统一处理。
-// 注:2026-01 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
+// 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
+// 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C${latest}%7C0",

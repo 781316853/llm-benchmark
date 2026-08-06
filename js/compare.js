@@ -135,7 +135,7 @@
         id: id, color: e.color, vendor: e.vendor,
         deepswe: e.deepswe ? (e.deepswe.pass1 + "% · $" + e.deepswe.cost + " · " + e.deepswe.steps + "步") : "—",
         vibe: e.vibe ? (e.vibe.score + "% · $" + e.vibe.cost + " · " + Math.round(e.vibe.latencyS / 60) + "分") : "—",
-        llm: e.llm && e.llm.score != null ? (D.to100(e.llm.score).toFixed(1) + " / 100") : "-"
+        llm: e.llm && e.llm.norm != null ? (e.llm.norm.toFixed(1) + " / 100") : "-"
       };
     });
   }

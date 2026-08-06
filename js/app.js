@@ -27,7 +27,7 @@
   var BENCH_DESC = {
     deepswe: "长程软件工程任务评测,覆盖真实 GitHub issue 到 PR 的完整解决链路",
     vibecode: "从零构建 Web 应用的端到端评测,衡量模型独立完成项目的能力",
-    llm2014: "个人私有编码题库,涵盖算法、数据结构、系统设计等多维度编码能力"
+    llm2014: "个人私有题库的档位制评测,从零构建实际应用并按通过情况评级(含单任务测试成本)"
   };
 
   // ===== llm2014 单元格背景色(热力图填充 + 图例共用) =====
@@ -47,6 +47,23 @@
   // 图例色块:带背景的圆角小方块 + 文字
   function lmLegendChip(label, bg) {
     return '<span><i style="background:' + bg + ';width:13px;height:13px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px"></i>' + label + '</span>';
+  }
+  // 单元格文本:等级单元格含测试成本时格式化为 "7/A+ ¥90.52"(与新版站点展示一致)
+  function lmCellText(c) {
+    if (c.status === "grade" && c.cost != null) {
+      return c.raw.replace(/\(\s*\d+(?:\.\d+)?\s*\)$/, "") + " ¥" + c.cost;
+    }
+    return c.raw;
+  }
+  // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
+  function lmCellHtml(c) {
+    var inner;
+    if (c.status === "grade" && c.cost != null) {
+      inner = esc(c.raw.replace(/\(\s*\d+(?:\.\d+)?\s*\)$/, "")) + ' <span class="cell-cost">¥' + c.cost + '</span>';
+    } else {
+      inner = esc(c.raw);
+    }
+    return '<span class="' + gradeClass(c) + '">' + inner + '</span>';
   }
 
   // 通用表格构造;headerClasses 可选(与 headers 等长),给对应 <th> 附加类(如 "num" 使表头与数据同对齐)
@@ -89,7 +106,7 @@
     { key: "composite", label: "梯队", type: "num", bench: false, val: function (r) { return CMP.composite(r); } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
-    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.score != null) ? r.llm.score : null; } },
+    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AA Coding Agent Index 单值列:排序时仅显示有值的模型
     { key: "aaci", label: "AA Coding Index", type: "num", bench: true,
       val: function (r) { return (r.aaci && r.aaci.score != null) ? r.aaci.score : null; } },
@@ -163,7 +180,7 @@
       var vcCost = (r.vibe && typeof r.vibe.cost === "number" && r.vibe.cost > 0)
         ? ' <span class="cell-cost">$' + r.vibe.cost + '</span>' : "";
       var vc = r.vibe ? r.vibe.score + "%" + vcCost : "—";
-      var lm = (r.llm && r.llm.score != null) ? D.to100(r.llm.score).toFixed(1) : "-";
+      var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(1) : "-";
       // AA Coding Agent Index 单值显示
       var aa = r.aaci ? r.aaci.score : null;
       // NEW 判定:仅基于旧三基准(DeepSWE/Vibe/llm2014);AA Coding Agent Index 不参与
@@ -300,7 +317,7 @@
     var heat = [];
     rows.forEach(function (r, yi) {
       r.cells.forEach(function (c, xi) {
-        heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, c.raw],
+        heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, lmCellText(c)],
           itemStyle: { color: lmCellBg(c), borderColor: "rgba(255,255,255,.55)", borderWidth: 1 } });
       });
     });
@@ -324,7 +341,7 @@
       var nw = D.isNewRaw("llm", r.model);
       var tds = '<td class="rank">' + (i + 1) + '</td><td>' + dot(r.canon.color) + esc(r.model) + (nw ? newBadge() : "") + '</td>';
       r.cells.forEach(function (c) {
-        tds += '<td class="num"><span class="' + gradeClass(c) + '">' + esc(c.raw) + '</span></td>';
+        tds += '<td class="num">' + lmCellHtml(c) + '</td>';
       });
       tds += '<td class="num">' + (r.norm != null ? r.norm.toFixed(1) : "-") + '</td>';
       tds += '<td>' + esc(r.ide) + '</td><td class="num">' + (r.think ? "是" : "否") + '</td>';
@@ -334,7 +351,7 @@
     var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/100)", "IDE/CLI", "思考"]);
     var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num", "", "num"]);
     fillTable("lmTable", lmHeaders, html, lmHeadCls);
-    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 综合分按百分制显示(由等级数值 A+=4.0/A=3.5/B+=3.0/B=2.5/C+=2.0/C=1.5/D+=1.0/D=0.5 折算,相邻等级 0.5 间隔;Pass=4.0;Failed=0)。完成率门槛制:≥50% 不折扣,<50% 按完成率折扣,避免严重跳题的小样本均值虚高。热力图仍按单项等级(0-4.0)着色。" +
+    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 单元格格式:扣分数/档位(数字越小越好);2026-08 起等级单元格可含单任务测试成本,如 \"7/A+(90.52)\" 表示扣 7 分、A 档、成本 ¥90.52。档位说明:A=几乎不犯错(仅微小 UI/交互类错误);B=大概率会错但 ≤2 轮内可修复;C=需更多轮交互但模型能自主推进修复;D=必须人工提供大量 log/视觉描述等协助;Pass=推测模型可顺利完成测试;Failed=知识或方法论不够,即便有人帮助也无法完成;Pending=测试中;同档位中仅少数轮次出问题、大部分情况表现良好时升半档(B+/C+/D+)。综合分按源数据排序赋值:源 CSV 行序即原站排名;项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似);组间按排名等距 0-100 递减(第一名 100,最后一名 0);热力图仍按单项等级(0-4.0)着色。" +
       (state.showAll.llm ? "" : " · 仅显示命中≥2榜的 " + rows.length + "/" + allRows.length + " 个模型");
   }
 

@@ -1,8 +1,10 @@
 // 数据源3:llm2014 code_v3 基准快照(中文个人私有题库,按月归档)
 // 来源:https://llm2014.github.io/llm_benchmark/  (raw: github.com/llm2014/llm_benchmark)
-// 单元格原始值形如 "7/A"(耗时分钟 / 字母等级),或 Pass / Failed(n/m) / Skip / Pending。
+// 单元格原始值形如 "7/A"(扣分数 / 字母等级,数字越小越好),或 Pass / Failed(n/m) / Skip / Pending;
+// 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
 // 数值化规则在 js/data.js 中统一处理。
-// 注:2026-01 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
+// 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
+// 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
@@ -10,7 +12,7 @@ window.LLM2014 = {
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
-  '2026-05': {
+  '2026-06': {
     'projects': [
       'MacOS App',
       'Flutter',

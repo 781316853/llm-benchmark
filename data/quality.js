@@ -7,17 +7,6 @@ window.QUALITY = {
   'overallScore': 0.833,
   'sources': [
     {
-      'id': 'aa_official',
-      'name': 'AA Coding Agent Index (官方)',
-      'status': 'ok',
-      'modelCount': 10,
-      'updated': '2026-08-06',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
       'id': 'aaci',
       'name': 'AA Coding Agent Index',
       'status': 'error',
@@ -29,6 +18,17 @@ window.QUALITY = {
       'errors': [
         'AA Coding Agent Index 未解析到数据(站点结构变更,保留旧文件供交叉验证)'
       ]
+    },
+    {
+      'id': 'aa_official',
+      'name': 'AA Coding Agent Index (官方)',
+      'status': 'ok',
+      'modelCount': 10,
+      'updated': '2026-08-06',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
     },
     {
       'id': 'datalearner',
@@ -252,25 +252,21 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'Gemini 3.1 Pro',
-      'name': 'Gemini 3.1 Pro',
-      'vendor': 'Google',
+      'canonId': 'DeepSeek V4 Flash',
+      'name': 'DeepSeek-V4-Flash',
+      'vendor': 'DeepSeek',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
-        'deepswe_v10',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 30.3,
-        'datalearner': 12,
-        'deepswe_v11': 12,
-        'deepswe_v10': 10,
-        'vibecode': 32.03
+        'datalearner': 54.4,
+        'deepswe_v11': 54.4,
+        'vibecode': 74.74
       },
-      'mean': 19.3,
-      'stddev': 9.76,
+      'mean': 61.2,
+      'stddev': 9.59,
       'flag': 'warn'
     },
     {
@@ -291,6 +287,26 @@ window.QUALITY = {
       },
       'mean': 74,
       'stddev': 9.57,
+      'flag': 'warn'
+    },
+    {
+      'canonId': 'Gemini 3.1 Pro Preview',
+      'name': 'Gemini 3.1 Pro Preview',
+      'vendor': 'Google',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'deepswe_v10',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 12,
+        'deepswe_v11': 12,
+        'deepswe_v10': 10,
+        'vibecode': 32.03
+      },
+      'mean': 16.5,
+      'stddev': 9,
       'flag': 'warn'
     },
     {
@@ -352,7 +368,7 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Claude opus 5 [新]',
+      'canonId': 'Claude Opus 5',
       'name': 'Claude Opus 5',
       'vendor': '其他',
       'sources': [
@@ -388,7 +404,7 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Gemini 3 Flash',
+      'canonId': 'Gemini 3 Flash Preview',
       'name': 'gemini-3-flash-preview',
       'vendor': 'Google',
       'sources': [
@@ -582,7 +598,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Gemini 3.6 flash [新]',
+      'canonId': 'Gemini 3.6 Flash',
       'name': 'Gemini 3.6 Flash',
       'vendor': '其他',
       'sources': [
@@ -600,7 +616,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Qwen3.8 max [新]',
+      'canonId': 'qwen3-8-max',
       'name': 'qwen3-8-max',
       'vendor': '其他',
       'sources': [
@@ -668,22 +684,6 @@ window.QUALITY = {
       },
       'mean': 13.2,
       'stddev': 0.17,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'DeepSeek V4 Flash',
-      'name': 'DeepSeek-V4-Flash',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 54.4,
-        'deepswe_v11': 54.4
-      },
-      'mean': 54.4,
-      'stddev': 0,
       'flag': 'ok'
     },
     {
@@ -756,15 +756,15 @@ window.QUALITY = {
     }
   },
   'timeliness': {
-    'aa_official': {
-      'updated': '2026-08-06',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
     'aaci': {
       'updated': '2026-07-11',
       'ageDays': 26,
       'flag': 'alert'
+    },
+    'aa_official': {
+      'updated': '2026-08-06',
+      'ageDays': 0,
+      'flag': 'ok'
     },
     'datalearner': {
       'updated': '2026-08-06',

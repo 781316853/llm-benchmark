@@ -91,7 +91,7 @@ window.AA_OFFICIAL = {
       'model': 'Composer 2.5 Fast',
       'effort': null,
       'score': 38.2,
-      'indexRaw': 0.3819077223302172,
+      'indexRaw': 0.3819077223302173,
       'wallSec': 406,
       'costUsd': 0.55,
       'ci': null

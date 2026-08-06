@@ -7,23 +7,25 @@
   var GRADE_NUM = { "A+": 4.0, A: 3.5, "B+": 3.0, B: 2.5, "C+": 2.0, C: 1.5, "D+": 1.0, D: 0.5 };
   var MAX_GRADE = 4.0;
 
-  // ===== 单元格解析:"7/A" -> {minutes:7, grade:'A', num:4.0, status:'grade'} =====
+  // ===== 单元格解析:"7/A" -> {deduction:7, grade:'A', num:4.0, status:'grade'} =====
+  // 2026-08 起等级单元格可带单任务测试成本括号:"7/A+(90.52)" -> {grade:'A+', num:4.0, cost:90.52}
   function parseCell(raw) {
     var s = String(raw == null ? "" : raw).trim();
     if (s === "" || /^pending$/i.test(s)) return { raw: s || "Pending", status: "pending", num: null };
     if (/^pass/i.test(s)) return { raw: "Pass", status: "pass", num: MAX_GRADE };
     if (/^skip/i.test(s)) return { raw: "Skip", status: "skip", num: null };
     if (/^fail/i.test(s)) return { raw: s, status: "failed", num: 0 }; // Failed(n/m)
-    // 形如 "7/A" 或 "7/A+"
-    var m = s.match(/^(\d+)\s*\/\s*([A-D]\+?)$/i);
+    // 形如 "7/A"、"7/A+" 或 2026-08 起 "7/A+(90.52)"(扣分数 / 字母等级,括号内为测试成本 ¥)
+    var m = s.match(/^(\d+)\s*\/\s*([A-D]\+?)(?:\(\s*(\d+(?:\.\d+)?)\s*\))?$/i);
     if (m) {
       var g = m[2].toUpperCase();
-      return { raw: s, minutes: Number(m[1]), grade: g, status: "grade", num: GRADE_NUM[g] };
+      return { raw: s, deduction: Number(m[1]), grade: g, status: "grade", num: GRADE_NUM[g],
+        cost: m[3] != null ? Number(m[3]) : null };
     }
     // 仅等级(无耗时)
     var g2 = s.match(/^([A-D]\+?)$/i);
     if (g2) { var gg = g2[1].toUpperCase(); return { raw: s, grade: gg, status: "grade", num: GRADE_NUM[gg] }; }
-    // 纯数字(旧制分钟数)兜底:无等级信息,按 null 处理
+    // 纯数字(旧制扣分数)兜底:无等级信息,按 null 处理
     return { raw: s, status: "unknown", num: null };
   }
 
@@ -147,24 +149,37 @@
       .sort(function (a, b) { return b.score - a.score; });
   }
 
-  // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, score}]} =====
+  // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, norm, rank}]} =====
+  // 综合分(norm,0-100)按源数据排序赋值:源 CSV 行序即原站排名(rank 0=第一名);
+  // "项目评测等级结果相似纳入公式":相邻模型中等级均值(0.5 档)相同的视为相似,同分;
+  // 组严格按源行序编号,组间等距 0-100 递减(第一名 100,最后一名 0),保证综合分随源排序单调;
+  // 综合分与热力图(单项等级着色)解耦。
   function llmMonth(month) {
     var src = window.LLM2014 || { months: {} };
     var mo = src.months[month];
     if (!mo) return null;
     var rows = mo.rows.map(function (r, idx) {
       var cells = r.cells.map(parseCell);
-      var total = cells.length;  // 总任务数(含 Skip/Pending)
+      // 等级均值(仅计已测等级项),四舍五入到 0.5 档:用于"等级结果相似"的归并
       var nums = cells.map(function (c) { return c.num; }).filter(function (n) { return n != null; });
       var mean = nums.length ? nums.reduce(function (a, b) { return a + b; }, 0) / nums.length : null;
-      // 完成率门槛制:≥50% 不折扣(质量可直接代表),<50% 按完成率折扣(抑制小样本虚高)
-      var raw = mean == null ? null : mean / MAX_GRADE * 100;
-      var completion = total ? nums.length / total : 1;
-      var norm = raw == null ? null : (completion >= 0.5 ? raw : raw * completion);
       return { model: r.model, canon: canon(r.model), cells: cells, ide: r.ide, think: r.think,
-        score: mean,  // 原始均值(llm2014 页展示用,反映完成质量)
-        norm: norm,   // 门槛制折扣后(综合分计算用)
-        rank: idx };  // CSV 行序 = 原站排名(0 = 第一名)
+        rank: idx, gLevel: mean == null ? null : Math.round(mean * 2) / 2 };
+    });
+    // 相邻归并:等级均值 0.5 档相同的相邻模型并入同一组(同分);组按源行序编号,保持单调
+    var groups = [], prevLevel = undefined;
+    rows.forEach(function (r) {
+      if (groups.length && r.gLevel === prevLevel) {
+        groups[groups.length - 1].ranks.push(r.rank);
+      } else {
+        groups.push({ gLevel: r.gLevel, ranks: [r.rank] });
+      }
+      prevLevel = r.gLevel;
+    });
+    var m = groups.length;
+    groups.forEach(function (g, gi) {
+      var norm = m <= 1 ? 100 : Math.round(100 * (1 - gi / (m - 1)) * 10) / 10;
+      g.ranks.forEach(function (ri) { rows[ri].norm = norm; });
     });
     return { projects: mo.projects, rows: rows };
   }
@@ -193,9 +208,9 @@
     if (lm) {
       lm.rows.forEach(function (r) {
         var e = ensure(r.canon);
-        // 取首现(CSV 行序最优排名),不再按最高 score 覆盖
+        // 取首现(CSV 行序最优排名),不再按最高分覆盖
         if (!e.llm) {
-          e.llm = { score: r.score, norm: r.norm, name: r.model };
+          e.llm = { norm: r.norm, name: r.model };
         }
       });
     }
@@ -222,9 +237,9 @@
     var vcTop = (vc.models || [])[0] || {};
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
-    var lmTop = lmRows.slice().sort(function (a, b) { return (b.score || 0) - (a.score || 0); })[0] || {};
-    // llm2014 头名按百分制折算显示(内部 score 仍为 0-4.0 等级均值)
-    var lmTopScore = lmTop.score != null ? (lmTop.score / MAX_GRADE * 100) : null;
+    // llm2014 头名 = 源排序第一名(rank 0),综合分即排序赋值后的 norm
+    var lmTop = lmRows[0] || {};
+    var lmTopScore = lmTop.norm != null ? lmTop.norm : null;
     return [
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
@@ -234,7 +249,7 @@
         top: vcTop.name + " · " + vcTop.score + "%" },
       { key: "llm2014", name: "llm2014 code_v3", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
-        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/100" : "—") }
+        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + "/100" : "—") }
     ];
   }
 
