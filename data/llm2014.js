@@ -6,7 +6,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-05",
+  updated: "2026-08-06",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -651,8 +651,8 @@ window.LLM2014 = {
           'Pass',
           'Pass',
           'Pending',
-          '2/A+',
-          '3/A+',
+          '2/A+(90.52)',
+          '3/A+(122.57)',
           'Pending'
         ],
         'unprompted': 1,
@@ -666,9 +666,9 @@ window.LLM2014 = {
           'Pending',
           'Pass',
           'Pending',
-          '4/A',
-          '1/A+',
-          '12/B+'
+          '4/A(123.94)',
+          '1/A+(122.57)',
+          '12/B+(573.18)'
         ],
         'unprompted': 3,
         'ide': 'Claude Code',
@@ -680,10 +680,10 @@ window.LLM2014 = {
           'Pass',
           'Pass',
           'Pass',
-          '15/B+',
-          '4/A',
-          '8/A',
-          '23/B'
+          '15/B+(683.21)',
+          '4/A(63.86)',
+          '8/A(26.97)',
+          '23/B(97.98)'
         ],
         'unprompted': 2,
         'ide': 'Codex App',
@@ -692,13 +692,13 @@ window.LLM2014 = {
       {
         'model': 'Kimi-K3 (max)',
         'cells': [
-          '7/A',
-          '12/B',
-          '15/B',
-          '18/B',
-          '6/A',
-          '5/A',
-          '22/B'
+          '7/A(122.87)',
+          '12/B(171.72)',
+          '15/B(126.40)',
+          '18/B(771.86)',
+          '6/A(29.59)',
+          '5/A(43.22)',
+          '22/B(43.23)'
         ],
         'unprompted': 2,
         'ide': 'Claude Code',
@@ -707,13 +707,13 @@ window.LLM2014 = {
       {
         'model': 'Qwen3.8-Max (max)',
         'cells': [
+          'Skip',
+          'Skip',
           'Pending',
-          'Pending',
-          'Pending',
-          'Pending',
-          '11/B',
-          '10/B',
-          '15/B'
+          'Skip',
+          '11/B(33.16)',
+          '10/B(50.86)',
+          '15/B(48.94)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -722,13 +722,13 @@ window.LLM2014 = {
       {
         'model': 'Grok 4.5 (high)',
         'cells': [
-          '12/B+',
-          '7/A',
-          'Pending',
-          'Pending',
-          '16/B',
-          '7/B+',
-          'Pending'
+          '12/B+(55.98)',
+          '7/A(91.51)',
+          'Skip',
+          'Skip',
+          '16/B(23.12)',
+          '7/B+(15.98)',
+          'Skip'
         ],
         'unprompted': 1,
         'ide': 'Grok Build',
@@ -737,13 +737,13 @@ window.LLM2014 = {
       {
         'model': 'GLM-5.2 (max)',
         'cells': [
-          '16/B',
-          '8/A',
-          '8/A',
-          '43/C',
-          '14/B',
-          '15/C+',
-          '30/C'
+          '16/B(58.92)',
+          '8/A(79.17)',
+          '8/A(51.98)',
+          '43/C(266.62)',
+          '14/B(10.75)',
+          '15/C+(28.61)',
+          '30/C(26.76)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -753,11 +753,11 @@ window.LLM2014 = {
         'model': 'DeepSeek V4 Flash 0731 (max)',
         'cells': [
           'Skip',
-          '8/A',
-          '9/A',
-          '44/D+',
-          '17/B',
-          '24/D+',
+          '8/A(5.33)',
+          '9/A(7.62)',
+          '44/D+(12.41)',
+          '17/B(1.61)',
+          '24/D+(1.10)',
           'Failed'
         ],
         'unprompted': 2,
@@ -768,11 +768,11 @@ window.LLM2014 = {
         'model': 'Claude Sonnet 5 (high)',
         'cells': [
           'Skip',
-          '18/B',
-          '14/B+',
-          'Pending',
-          '22/C',
-          '16/C+',
+          '18/B(192.63)',
+          '14/B+(144.10)',
+          'Skip',
+          '22/C(154.97)',
+          '16/C+(72.34)',
           'Failed'
         ],
         'unprompted': 1,
@@ -782,12 +782,12 @@ window.LLM2014 = {
       {
         'model': 'Tencent Hy3 (high)',
         'cells': [
-          '11/B',
-          '12/B',
-          '13/B',
+          '11/B(8.06)',
+          '12/B(8.68)',
+          '13/B(11.04)',
           'Failed(5/9)',
-          '10/B',
-          '20/C+',
+          '10/B(2.01)',
+          '20/C+(13.29)',
           'Failed'
         ],
         'unprompted': 0,
@@ -801,8 +801,8 @@ window.LLM2014 = {
           'Skip',
           'Skip',
           'Skip',
-          '27/C',
-          '21/C',
+          '27/C(3.84)',
+          '21/C(4.90)',
           'Failed'
         ],
         'unprompted': 0,
@@ -818,7 +818,7 @@ window.LLM2014 = {
           'Skip',
           'Skip',
           'Skip',
-          'Pending'
+          'Skip'
         ],
         'unprompted': 3,
         'ide': 'Gemini CLI',
@@ -831,8 +831,8 @@ window.LLM2014 = {
           '21/C',
           '36/C',
           'Failed(0/9)',
-          '31/C',
-          '28/C',
+          '31/C(1.38)',
+          '28/C(1.75)',
           'Failed'
         ],
         'unprompted': 0,
