@@ -711,7 +711,7 @@ window.LLM2014 = {
         'cells': [
           'Skip',
           'Skip',
-          '8/B',
+          '8/B(293.87)',
           'Skip',
           '11/B(33.16)',
           '10/B(50.86)',
@@ -756,10 +756,10 @@ window.LLM2014 = {
         'cells': [
           'Skip',
           'Skip',
-          'Pending',
+          '19/B(134.29)',
           'Skip',
-          '26/C',
-          '11/B',
+          '26/C(15.82)',
+          '11/B(17.76)',
           'Failed'
         ],
         'unprompted': 0,

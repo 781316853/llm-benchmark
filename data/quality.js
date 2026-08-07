@@ -45,7 +45,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 22,
       'updated': '2026-08-07',
       'ageDays': 0,
       'completeness': 1,
@@ -175,6 +175,22 @@ window.QUALITY = {
       },
       'mean': 63.1,
       'stddev': 12.88,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Muse_spark_1_2',
+      'name': 'muse-spark-1-2',
+      'vendor': '其他',
+      'sources': [
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 55,
+        'vibecode': 79.1
+      },
+      'mean': 67.1,
+      'stddev': 12.05,
       'flag': 'alert'
     },
     {
@@ -722,9 +738,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 22,
+      'complete': 22,
+      'modelCount': 22,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -834,6 +850,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'datalearner,deepswe_v11,vibecode',
       'message': 'Claude Sonnet 5 跨源分数标准差 12.88(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'deepswe_v11,vibecode',
+      'message': 'muse-spark-1-2 跨源分数标准差 12.05(>10)'
     },
     {
       'level': 'error',

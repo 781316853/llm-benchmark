@@ -247,6 +247,7 @@ window.SEEN = {
     'llm|Qwen3.6-Plus': '2026-08-06',
     'deepswe|deepseek-v4-flash': '2026-08-07',
     'vibe|Muse_spark_1_2 [新]': '2026-08-07',
-    'llm|Muse Spark 1.2 (xhigh)': '2026-08-07'
+    'llm|Muse Spark 1.2 (xhigh)': '2026-08-07',
+    'deepswe|muse-spark-1-2': '2026-08-07'
   }
 };

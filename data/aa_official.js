@@ -111,7 +111,7 @@ window.AA_OFFICIAL = {
       'model': 'Gemini 3.1 Pro',
       'effort': 'high',
       'score': 30.3,
-      'indexRaw': 0.3033847027566694,
+      'indexRaw': 0.30338470275666973,
       'wallSec': 649,
       'costUsd': 2,
       'ci': null

@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-07",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 21 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 22 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -91,6 +91,15 @@ window.DEEPSWE = {
     'cost': 3.73,
     'outTok': 95075,
     'steps': 111
+  },
+  {
+    'name': 'muse-spark-1-2',
+    'effort': 'xhigh',
+    'pass1': 55,
+    'ci': 2,
+    'cost': 3.7,
+    'outTok': 99226,
+    'steps': 101
   },
   {
     'name': 'claude-sonnet-5',
