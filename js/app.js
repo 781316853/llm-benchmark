@@ -55,6 +55,14 @@
     }
     return c.raw;
   }
+  // 热力图标签:含成本的等级单元格拆成两行("7/A+ ¥90.52" -> "7/A+\n{cost|¥90.52}"),
+  // 成本行经 rich 富文本以小字显示;单元格窄时避免单行文字溢出被截断
+  function lmHeatLabel(c) {
+    if (c.status === "grade" && c.cost != null) {
+      return lmCellText(c).replace(/ ¥/, "\n{cost|¥");
+    }
+    return c.raw;
+  }
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
   function lmCellHtml(c) {
     var inner;
@@ -312,14 +320,24 @@
     var rows = filterHits(allRows, function (r) { return r.canon.id; }, state.showAll.llm);
     var yLabels = rows.map(function (r) { return r.model; });
 
-    // 热力数据:[xIndex, yIndex, num, raw];颜色按等级/状态显式指定(与图例一致),
+    // 热力数据:[xIndex, yIndex, num, tooltipText, labelText];颜色按等级/状态显式指定(与图例一致),
     // Skip/Pending 用中性灰,Failed 用红,避免旧实现里"无数据"被涂成代表最差的深红
     var heat = [];
     rows.forEach(function (r, yi) {
       r.cells.forEach(function (c, xi) {
-        heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, lmCellText(c)],
+        heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, lmCellText(c), lmHeatLabel(c)],
           itemStyle: { color: lmCellBg(c), borderColor: "rgba(255,255,255,.55)", borderWidth: 1 } });
       });
+    });
+    // 含成本的单元格标签为两行(扣分/档位 + 成本),固定 360px 高时行高不足会互相压叠;
+    // 按行数动态加高两个图表,保证每行 ≥26px 容纳双行文字
+    var lmH = Math.min(760, Math.max(380, rows.length * 26 + 90));
+    ["lmHeat", "lmBar"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.style.height = lmH + "px";
+      var inst = CH.inst(id);
+      if (inst) inst.resize();
     });
     CH.apply("lmHeat", CH.heatmapOption(xLabels, yLabels, heat, D.MAX_GRADE));
 
@@ -351,8 +369,20 @@
     var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/100)", "IDE/CLI", "思考"]);
     var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num", "", "num"]);
     fillTable("lmTable", lmHeaders, html, lmHeadCls);
-    document.getElementById("lmNote").textContent = "来源:" + src.url + " · 月度 " + month + " · 单元格格式:扣分数/档位(数字越小越好);2026-08 起等级单元格可含单任务测试成本,如 \"7/A+(90.52)\" 表示扣 7 分、A 档、成本 ¥90.52。档位说明:A=几乎不犯错(仅微小 UI/交互类错误);B=大概率会错但 ≤2 轮内可修复;C=需更多轮交互但模型能自主推进修复;D=必须人工提供大量 log/视觉描述等协助;Pass=推测模型可顺利完成测试;Failed=知识或方法论不够,即便有人帮助也无法完成;Pending=测试中;同档位中仅少数轮次出问题、大部分情况表现良好时升半档(B+/C+/D+)。综合分按源数据排序赋值:源 CSV 行序即原站排名;项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似);组间按排名等距 0-100 递减(第一名 100,最后一名 0);热力图仍按单项等级(0-4.0)着色。" +
-      (state.showAll.llm ? "" : " · 仅显示命中≥2榜的 " + rows.length + "/" + allRows.length + " 个模型");
+    // 底部说明按结构分块换行:每行「标签:内容」,行内长文本自动折行
+    var noteParts = [
+      { k: "来源", v: src.url + " · 月度 " + month },
+      { k: "单元格格式", v: "扣分数/档位(数字越小越好);2026-08 起等级单元格可含单任务测试成本,如 \"7/A+(90.52)\" 表示扣 7 分、A 档、成本 ¥90.52。" },
+      { k: "档位说明", v: "A=几乎不犯错(仅微小 UI/交互类错误);B=大概率会错但 ≤2 轮内可修复;C=需更多轮交互但模型能自主推进修复;D=必须人工提供大量 log/视觉描述等协助;Pass=推测模型可顺利完成测试;Failed=知识或方法论不够,即便有人帮助也无法完成;Pending=测试中;同档位中仅少数轮次出问题、大部分情况表现良好时升半档(B+/C+/D+)。" },
+      { k: "综合分", v: "按源数据排序赋值:源 CSV 行序即原站排名;项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似);组间按排名等距 0-100 递减(第一名 100,最后一名 0);热力图仍按单项等级(0-4.0)着色。" }
+    ];
+    var noteHtml = noteParts.map(function (p) {
+      return '<div class="note-line"><b>' + esc(p.k) + '</b>' + esc(p.v) + '</div>';
+    }).join("");
+    if (!state.showAll.llm) {
+      noteHtml += '<div class="note-line note-sub">仅显示命中≥2榜的 ' + rows.length + '/' + allRows.length + ' 个模型(勾选「显示全部模型」可展开)。</div>';
+    }
+    document.getElementById("lmNote").innerHTML = noteHtml;
   }
 
   // ===== 标签切换 =====
