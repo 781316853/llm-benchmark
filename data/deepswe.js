@@ -1,12 +1,12 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-08-06)
+// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-08-07)
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
-  updated: "2026-08-06",
+  updated: "2026-08-07",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 21 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
@@ -93,16 +93,6 @@ window.DEEPSWE = {
     'steps': 111
   },
   {
-    'name': 'DeepSeek-V4-Flash',
-    'effort': '最高（工具）',
-    'pass1': 54.4,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
-  },
-  {
     'name': 'claude-sonnet-5',
     'effort': 'max',
     'pass1': 54,
@@ -119,6 +109,15 @@ window.DEEPSWE = {
     'cost': 2.42,
     'outTok': 35525,
     'steps': 61
+  },
+  {
+    'name': 'deepseek-v4-flash',
+    'effort': 'max',
+    'pass1': 53,
+    'ci': 4,
+    'cost': 0.1,
+    'outTok': 107687,
+    'steps': 153
   },
   {
     'name': 'muse-spark-1-1',

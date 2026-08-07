@@ -8,7 +8,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-06",
+  updated: "2026-08-07",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -711,7 +711,7 @@ window.LLM2014 = {
         'cells': [
           'Skip',
           'Skip',
-          'Pending',
+          '8/B',
           'Skip',
           '11/B(33.16)',
           '10/B(50.86)',
@@ -746,6 +746,21 @@ window.LLM2014 = {
           '14/B(10.75)',
           '15/C+(28.61)',
           '30/C(26.76)'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Muse Spark 1.2 (xhigh)',
+        'cells': [
+          'Skip',
+          'Skip',
+          'Pending',
+          'Skip',
+          '26/C',
+          '11/B',
+          'Failed'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -842,36 +857,6 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Qwen3.7-Max',
-        'cells': [
-          'Failed(2/12)',
-          '17/C+',
-          '46/D',
-          'Skip',
-          '26/C',
-          'Skip',
-          'Skip'
-        ],
-        'unprompted': 0,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
-        'model': 'DeepSeek V4 Flash preview(max)',
-        'cells': [
-          'Failed(5/12)',
-          '32/C',
-          '48/D',
-          'Skip',
-          'Skip',
-          'Skip',
-          'Skip'
-        ],
-        'unprompted': 0,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
         'model': 'MiniMax-M3',
         'cells': [
           'Skip',
@@ -899,21 +884,6 @@ window.LLM2014 = {
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
-        'think': 1
-      },
-      {
-        'model': 'Doubao-Seed-2.0-Code  (high)',
-        'cells': [
-          'Failed(7/12)',
-          '39/C',
-          'Failed(3/9)',
-          'Skip',
-          'Skip',
-          'Skip',
-          'Skip'
-        ],
-        'unprompted': 1,
-        'ide': 'TRAE',
         'think': 1
       }
     ]
