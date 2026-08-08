@@ -8,7 +8,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-07",
+  updated: "2026-08-08",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -643,7 +643,8 @@ window.LLM2014 = {
       'Rust App',
       'Simple Model',
       'iOS+Server',
-      'Animation'
+      'Animation',
+      'Data Process'
     ],
     'rows': [
       {
@@ -655,6 +656,7 @@ window.LLM2014 = {
           'Pending',
           '2/A+(90.52)',
           '3/A+(122.57)',
+          'Pending',
           'Pending'
         ],
         'unprompted': 1,
@@ -670,7 +672,8 @@ window.LLM2014 = {
           'Pending',
           '4/A(123.94)',
           '1/A+(122.57)',
-          '12/B+(573.18)'
+          '12/B+(573.18)',
+          'Pending'
         ],
         'unprompted': 3,
         'ide': 'Claude Code',
@@ -685,7 +688,8 @@ window.LLM2014 = {
           '15/B+(683.21)',
           '4/A(63.86)',
           '8/A(26.97)',
-          '23/B(97.98)'
+          '23/B(97.98)',
+          '8/B(770.41)'
         ],
         'unprompted': 2,
         'ide': 'Codex App',
@@ -700,7 +704,8 @@ window.LLM2014 = {
           '18/B(771.86)',
           '6/A(29.59)',
           '5/A(43.22)',
-          '22/B(43.23)'
+          '22/B(43.23)',
+          '28/D+(383.49)'
         ],
         'unprompted': 2,
         'ide': 'Claude Code',
@@ -715,7 +720,8 @@ window.LLM2014 = {
           'Skip',
           '11/B(33.16)',
           '10/B(50.86)',
-          '15/B(48.94)'
+          '15/B(48.94)',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -730,6 +736,7 @@ window.LLM2014 = {
           'Skip',
           '16/B(23.12)',
           '7/B+(15.98)',
+          'Skip',
           'Skip'
         ],
         'unprompted': 1,
@@ -745,7 +752,8 @@ window.LLM2014 = {
           '43/C(266.62)',
           '14/B(10.75)',
           '15/C+(28.61)',
-          '30/C(26.76)'
+          '30/C(26.76)',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -760,7 +768,8 @@ window.LLM2014 = {
           'Skip',
           '26/C(15.82)',
           '11/B(17.76)',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -775,6 +784,7 @@ window.LLM2014 = {
           '44/D+(12.41)',
           '17/B(1.61)',
           '24/D+(1.10)',
+          'Failed',
           'Failed'
         ],
         'unprompted': 2,
@@ -790,7 +800,8 @@ window.LLM2014 = {
           'Skip',
           '22/C(154.97)',
           '16/C+(72.34)',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 1,
         'ide': 'Claude Code',
@@ -805,6 +816,7 @@ window.LLM2014 = {
           'Failed(5/9)',
           '10/B(2.01)',
           '20/C+(13.29)',
+          'Failed',
           'Failed'
         ],
         'unprompted': 0,
@@ -820,7 +832,8 @@ window.LLM2014 = {
           'Skip',
           '27/C(3.84)',
           '21/C(4.90)',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Codex',
@@ -832,6 +845,7 @@ window.LLM2014 = {
           '21/C',
           '20/C',
           '17/B',
+          'Skip',
           'Skip',
           'Skip',
           'Skip',
@@ -850,7 +864,8 @@ window.LLM2014 = {
           'Failed(0/9)',
           '31/C(1.38)',
           '28/C(1.75)',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -861,6 +876,7 @@ window.LLM2014 = {
         'cells': [
           'Skip',
           '51/D+',
+          'Skip',
           'Skip',
           'Skip',
           'Skip',
@@ -878,6 +894,7 @@ window.LLM2014 = {
           '43/D+',
           'Failed(3/9)',
           'Failed(0/9)',
+          'Skip',
           'Skip',
           'Skip',
           'Skip'

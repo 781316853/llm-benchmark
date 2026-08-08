@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-08-07;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-08-08;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-08-07',
+  'generatedAt': '2026-08-08',
   'overallScore': 0.833,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'AA Coding Agent Index (官方)',
       'status': 'ok',
       'modelCount': 10,
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -23,7 +23,7 @@ window.QUALITY = {
       'status': 'error',
       'modelCount': 11,
       'updated': '2026-07-11',
-      'ageDays': 27,
+      'ageDays': 28,
       'completeness': null,
       'fetchAttempts': 1,
       'errors': [
@@ -35,7 +35,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 20,
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -46,7 +46,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.1',
       'status': 'ok',
       'modelCount': 22,
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -57,7 +57,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -68,7 +68,7 @@ window.QUALITY = {
       'name': 'llm2014',
       'status': 'ok',
       'modelCount': 59,
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -79,7 +79,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 78,
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -614,21 +614,23 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Gemini 3.6 flash',
+      'canonId': 'Gemini 3.6 Flash',
       'name': 'Gemini 3.6 Flash',
       'vendor': '其他',
       'sources': [
+        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
+        'aa_official': 45.6,
         'datalearner': 49,
         'deepswe_v11': 49,
         'vibecode': 57.32
       },
-      'mean': 51.8,
-      'stddev': 3.92,
+      'mean': 50.2,
+      'stddev': 4.32,
       'flag': 'ok'
     },
     {
@@ -773,37 +775,37 @@ window.QUALITY = {
   },
   'timeliness': {
     'aa_official': {
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'flag': 'ok'
     },
     'aaci': {
       'updated': '2026-07-11',
-      'ageDays': 27,
+      'ageDays': 28,
       'flag': 'alert'
     },
     'datalearner': {
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-08-07',
+      'updated': '2026-08-08',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -813,7 +815,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'timeliness',
       'sourceId': 'aaci',
-      'message': '数据已 27 天未更新(>7 天)'
+      'message': '数据已 28 天未更新(>7 天)'
     },
     {
       'level': 'warn',
