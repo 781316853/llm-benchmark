@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-08-10;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-08-11;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-08-10',
+  'generatedAt': '2026-08-11',
   'overallScore': 0.833,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'AA Coding Agent Index (官方)',
       'status': 'ok',
       'modelCount': 10,
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -23,7 +23,7 @@ window.QUALITY = {
       'status': 'error',
       'modelCount': 11,
       'updated': '2026-07-11',
-      'ageDays': 30,
+      'ageDays': 31,
       'completeness': null,
       'fetchAttempts': 1,
       'errors': [
@@ -35,7 +35,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 20,
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -46,7 +46,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.1',
       'status': 'ok',
       'modelCount': 22,
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -57,7 +57,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -68,7 +68,7 @@ window.QUALITY = {
       'name': 'llm2014',
       'status': 'ok',
       'modelCount': 59,
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -79,7 +79,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 78,
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -89,20 +89,18 @@ window.QUALITY = {
   'consistency': [
     {
       'canonId': 'DeepSeek V4 Pro',
-      'name': 'DeepSeek V4 Pro',
+      'name': 'deepseek-v4-pro',
       'vendor': 'DeepSeek',
       'sources': [
-        'aa_official',
         'deepswe_v10',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 31.4,
         'deepswe_v10': 8,
         'vibecode': 49.93
       },
-      'mean': 29.8,
-      'stddev': 17.16,
+      'mean': 29,
+      'stddev': 20.97,
       'flag': 'alert'
     },
     {
@@ -268,24 +266,6 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'DeepSeek V4 Flash',
-      'name': 'DeepSeek-V4-Flash',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 54.4,
-        'deepswe_v11': 53,
-        'vibecode': 74.74
-      },
-      'mean': 60.7,
-      'stddev': 9.93,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Claude Fable 5',
       'name': 'Fable 5 (with fallback)',
       'vendor': 'Anthropic',
@@ -323,6 +303,26 @@ window.QUALITY = {
       },
       'mean': 16.5,
       'stddev': 9,
+      'flag': 'warn'
+    },
+    {
+      'canonId': 'DeepSeek V4 Flash',
+      'name': 'DeepSeek V4 Flash',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'aa_official',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'aa_official': 55.5,
+        'datalearner': 54.4,
+        'deepswe_v11': 53,
+        'vibecode': 74.74
+      },
+      'mean': 59.4,
+      'stddev': 8.9,
       'flag': 'warn'
     },
     {
@@ -775,37 +775,37 @@ window.QUALITY = {
   },
   'timeliness': {
     'aa_official': {
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'flag': 'ok'
     },
     'aaci': {
       'updated': '2026-07-11',
-      'ageDays': 30,
+      'ageDays': 31,
       'flag': 'alert'
     },
     'datalearner': {
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-08-10',
+      'updated': '2026-08-11',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -815,7 +815,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'timeliness',
       'sourceId': 'aaci',
-      'message': '数据已 30 天未更新(>7 天)'
+      'message': '数据已 31 天未更新(>7 天)'
     },
     {
       'level': 'warn',
@@ -826,8 +826,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'aa_official,deepswe_v10,vibecode',
-      'message': 'DeepSeek V4 Pro 跨源分数标准差 17.16(>10)'
+      'sourceId': 'deepswe_v10,vibecode',
+      'message': 'deepseek-v4-pro 跨源分数标准差 20.97(>10)'
     },
     {
       'level': 'error',
