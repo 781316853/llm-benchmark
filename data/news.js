@@ -14,10 +14,98 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-12',
+      'title': '谷歌在Made by Google 2026上推出Pixel 11系列、新的AirTag竞争对手和Gemini功能',
+      'brief': '从Pixel 11系列和Apple AirTag的全新竞争对手，以下是Made by Google 2026活动的所有公告。',
+      'url': 'https://techcrunch.com/2026/08/12/google-unveils-pixel-11-lineup-new-airtag-rival-and-gemini-features-at-made-by-google-2026/',
+      'source': 'TechCrunch',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '人工智能代码测试初创公司Blacksmith的估值在不到一年的时间里跃升了近10倍',
+      'brief': 'Blacksmith表示，过去一年的收入增长了十倍以上。',
+      'url': 'https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '谷歌Pixel Watch 5深入探索人工智能与健康',
+      'brief': '$ 399的Google Pixel Watch 5与硬件无关。当然，还有新的缎面黄铁矿表壳饰面、一些新的表带颜色和Steph Cu……',
+      'url': 'https://www.theverge.com/tech/978094/pixel-watch-5-hands-on-made-by-google-gemini-wearables-smartwatch',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '当然， ChatGPT狗癌症疫苗催生了一家初创公司',
+      'brief': '请记住一个关于澳大利亚科技企业家使用ChatGPT、Grok和其他人工智能工具来制作个性化癌症的大肆宣传的故事……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/978671/ai-cured-dog-cancer-mrna-vaccine-startup-gamgee',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': 'Grok现在是人工智能的“队友” ，您可以分配工作',
+      'brief': 'SpaceXAI推出了Grok Bot ，这是一种始终在线的AI代理服务，旨在表现得像独立的“AI队友” ，可以为您完成工作......',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/978666/spacexai-grok-bot-ai-agent-beta-launch',
+      'source': 'The Verge',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-12',
       'title': 'Saber否认用ChatGPT取代Rideshare Stimulator的作者',
       'brief': '一位前首席作家声称Saber “用ChatGPT取代了我” ，首席执行官Matthew Karch现在声称， “Saber和Unigine都没有取代……',
       'url': 'https://www.theverge.com/games/978558/rideshare-stimulator-writer-ai-saber-interactive',
       'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '推出HN ：发现材料（ YC P26 ） – AI代理发现新材料',
+      'brief': '推出HN ：发现材料（ YC P26 ） – AI代理发现新材料',
+      'url': 'https://discoveredmaterials.com/research/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '人工智能代理入侵健身房，让用户在普拉提课程中占有一席之地',
+      'brief': '人工智能代理入侵健身房，让用户在普拉提课程中占有一席之地',
+      'url': 'https://www.bbc.com/news/articles/cn0nww2qlp7o',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '当人工智能泡沫破裂时会发生什么？',
+      'brief': '当人工智能泡沫破裂时会发生什么？',
+      'url': 'https://thehustle.co/originals/what-happens-when-the-ai-bubble-pops',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '公司提供“100%人工编写，从不人工智能”的医学研究是100%的人工智能',
+      'brief': '公司提供“100%人工编写，从不人工智能”的医学研究是100%的人工智能',
+      'url': 'https://www.404media.co/company-offering-100-human-written-never-ai-peer-review-is-entirely-ai/',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': 'Gemini成为谷歌有史以来增长最快的产品，吸引了10亿用户',
+      'brief': 'Gemini成为谷歌有史以来增长最快的产品，吸引了10亿用户',
+      'url': 'https://arstechnica.com/ai/2026/08/google-says-gemini-has-reached-1b-users-faster-than-any-other-google-product/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '实测 GenOffice Alpha 版：补上办公工作流最后一环｜AI 上新',
+      'brief': '作者｜lfei 编辑｜靖宇 8 月 3 日， Genspark 创始人&CEO 景鲲在 AGI Playground 2026 大会上发布了 GenOffice 。这是一款 AI 深度集成的本地 Office 客户端，其亮点在于打通了从 AI 生成到工作交付间的链路：通过 Gen…',
+      'url': 'http://www.geekpark.net/news/368744',
+      'source': '极客公园',
       'type': '公司动态'
     },
     {
@@ -27,6 +115,22 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/368700',
       'source': '极客公园',
       'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '从亚百毫秒级启动到生产级部署，腾讯云为何重构 Agent 沙箱？',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/KwZX2bLcaHRjuLG95vHI?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '群青智能联合创始人&CEO 吴哲明博士确认出席AICon深圳，将分享“从真实产线定义智能——工业具身智能的物理 AI 闭环”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/b1V6WF6iUajJpND8VmCE?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
     },
     {
       'date': '2026-08-11',
@@ -46,35 +150,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-11',
-      'title': 'OpenAI长期首席运营官Brad Lightcap将离职， “开始新事物”',
-      'brief': 'OpenAI任职时间最长的高管之一即将离职，尽管这位长期首席运营官告诉员工，他“很高兴能帮助你们所有人……',
-      'url': 'https://techcrunch.com/2026/08/11/brad-lightcap-openais-longtime-coo-is-leaving-to-start-something-new/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'General Catalyst领投$ 11亿美金，进入2个月前的River AI',
-      'brief': 'River AI是一家由xAI联合创始人Igor Babuschkin创立的初创公司，对个人代理有着迷人的愿景，并从中获得了11亿美元的$...',
-      'url': 'https://techcrunch.com/2026/08/11/general-catalyst-leads-1-1b-round-into-2-month-old-river-ai/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-11',
       'title': '未发布的Anthropic模型在数学最大的未解决问题之一上取得了进展',
       'brief': '150多年来，黎曼假说一直是数学中尚未解决的主要问题之一。Anthropic还没有解决它-- …',
       'url': 'https://techcrunch.com/2026/08/11/an-unreleased-anthropic-model-made-progress-on-one-of-maths-biggest-unsolved-problems/',
       'source': 'TechCrunch',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Spotify将标记“AI Persona”个人资料，并将其音乐从推荐中排除',
-      'brief': 'Spotify正在为艺术家个人资料引入“AI Persona”标签，这些标签代表AI生成的身份，并将其音乐排除在编辑之外……',
-      'url': 'https://techcrunch.com/2026/08/11/spotify-will-label-ai-persona-profiles-and-exclude-their-music-from-recommendations/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-11',
@@ -86,67 +166,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-11',
-      'title': '据报道， OpenAI完成了70亿美元的员工收购要约',
-      'brief': '旧金山的房地产市场再次陷入困境。',
-      'url': 'https://techcrunch.com/2026/08/10/openai-reportedly-completed-a-7-billion-employee-tender-offer/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Google 2026制作：所有Pixel新闻和公告',
-      'brief': '谷歌正准备在8月12日推出一系列新的Pixel设备。导致事件发生的一系列泄漏表明， Pixel…',
-      'url': 'https://www.theverge.com/tech/977561/made-by-google-2026-pixel-11-news',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-11',
       'title': '使用少于20个AI提示发现的“Zoomsday”黑客',
       'brief': 'Zoom修补了一个主要安全漏洞，该漏洞可能允许攻击者在会议期间劫持任何人的设备。在一篇关于T…的博客文章中',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/977909/zoom-vulnerability-ai-attack',
       'source': 'The Verge',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Spotify表示不会推荐“AI角色”的音乐',
-      'brief': 'Spotify将很快为AI艺术家贴上标签，并将他们的音乐从您的推荐中删除。变革将在六月中旬开始推出……',
-      'url': 'https://www.theverge.com/entertainment/977815/spotify-ai-persona-label-recommendations',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Claude将对人工智能文本和图像应用不可见的水印',
-      'brief': 'Anthropic已承诺开始使用机器可读数据标记Claude生成的文本和图像，以遵守欧洲的规则……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '人工智能对数学的接管已经开始',
-      'brief': '数学家詹姆斯·梅纳德（ James Maynard ）在过去的一年里花了很多时间“寻找灵魂”。“牛津大学教授， T…',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/977273/the-ai-takeover-of-mathematics-has-begun',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Suzanne ：用于设计和制造实物产品的人工智能工具',
-      'brief': 'Suzanne ：用于设计和制造实物产品的人工智能工具',
-      'url': 'https://www.suzanne3d.com/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Go是人工智能辅助软件工程的理想语言',
-      'brief': 'Go是人工智能辅助软件工程的理想语言',
-      'url': 'https://developers.googleblog.com/why-go-is-an-ideal-language-for-ai-assisted-software-engineering/',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-11',
@@ -174,14 +198,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-11',
-      'title': '让 Agent 读懂业务世界：Snowflake Cortex Agents 的本体驱动推理实践',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/2NsA9FT1uhjmdRrwzOo3?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-11',
       'title': 'OpenAI 代理群利用 Artifactory 零日漏洞逃离沙箱并入侵 Hugging Face',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/gkzDEyCF5U4DtKAa1Eee?utm_source=rss&utm_medium=article',
@@ -190,19 +206,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-11',
-      'title': 'DORA：AI 辅助软件开发的团队画像与能力模型，帮助团队将研究成果落地',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/1oV8oaYwzU15W5BdSL7C?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '开源LangAlpha正式发布：金融领域的Claude Code，用自然语言驱动投研工作流',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/q1f3Na2a1MhhGqSETlUm?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
+      'title': 'Claude将对人工智能文本和图像应用不可见的水印',
+      'brief': 'Anthropic已承诺开始使用机器可读数据标记Claude生成的文本和图像，以遵守欧洲的规则……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images',
+      'source': 'The Verge',
+      'type': '政策与安全'
     }
   ]
 };
