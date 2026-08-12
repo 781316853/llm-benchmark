@@ -12,6 +12,7 @@ const fs = require("fs");
 const CONFIG = require("./lib/config");
 const pipeline = require("./lib/pipeline");
 const seen = require("./lib/seen");
+const news = require("./lib/news");
 
 (async () => {
   if (!fs.existsSync(CONFIG.DATA_DIR)) fs.mkdirSync(CONFIG.DATA_DIR, { recursive: true });
@@ -20,5 +21,8 @@ const seen = require("./lib/seen");
   // 2) 维护首次上榜记录(读取最新写入的 data/*.js)
   try { seen.updateSeen(); }
   catch (e) { console.log("[seen] 维护失败:" + e.message); }
+  // 3) 维护 AI 热点新闻(仅保留最近 N 天;fail-soft,失败保留旧文件)
+  try { await news.updateNews(); }
+  catch (e) { console.log("[news] 维护失败:" + e.message); }
   console.log("完成 @ " + CONFIG.TODAY);
 })();

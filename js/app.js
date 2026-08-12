@@ -159,8 +159,51 @@
     return kept.length ? kept : list;
   }
 
+  // ===== 总览页 AI 热点总结(按类型分组,手动滚动) =====
+  // 从 window.NEWS 读取近 2 天新闻;按类型分组展示(每类型≤5 条),容器 overflow-y 滚动由 CSS 控制
+  function renderNews() {
+    var inner = document.getElementById("newsTickerInner");
+    if (!inner) return;
+    var NEWS = window.NEWS || {};
+    var items = (NEWS.items || []).slice().sort(function (a, b) {
+      return (a.date || "") < (b.date || "") ? 1 : ((a.date || "") > (b.date || "") ? -1 : 0);
+    });
+    // 顶部提示:更新频率 + 保留天数 + 更新时间
+    var hint = document.getElementById("newsHint");
+    if (hint) {
+      var base = "每日更新 2 次 · 仅保留最近 " + (NEWS.retentionDays || 2) + " 天";
+      hint.textContent = NEWS.updated ? (base + " · 更新于 " + NEWS.updated) : base;
+    }
+    if (!items.length) {
+      inner.innerHTML = '<div class="news-empty">暂无热点新闻,等待每日数据刷新…</div>';
+      return;
+    }
+    // 按类型分组(展示顺序取数据文件中的 types 列表)
+    var order = NEWS.types || ["模型发布", "公司动态", "技术研究", "政策与安全", "行业动态"];
+    var groups = {};
+    items.forEach(function (it) { (groups[it.type] = groups[it.type] || []).push(it); });
+    var row = function (it) {
+      var date = (it.date || "").slice(5); // YYYY-MM-DD -> MM-DD
+      var brief = (it.brief && it.brief !== it.title) ? ' <span class="news-brief">' + esc(it.brief) + '</span>' : "";
+      return '<div class="news-item">' +
+        '<span class="news-date">' + esc(date) + '</span>' +
+        '<span class="news-text" title="' + esc(it.title) + '"><b class="news-title">' + esc(it.title) + '</b>' + brief + '</span>' +
+        (it.source ? '<span class="news-source">' + esc(it.source) + '</span>' : "") +
+        '<a class="news-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">详情 ↗</a>' +
+        '</div>';
+    };
+    var html = order.filter(function (t) { return groups[t] && groups[t].length; }).map(function (t) {
+      return '<div class="news-group">' +
+        '<div class="news-group-head">' + esc(t) + '<span class="news-group-count">' + groups[t].length + ' 条</span></div>' +
+        groups[t].map(row).join("") +
+        '</div>';
+    }).join("");
+    inner.innerHTML = html; // 手动滚动,无自动动画
+  }
+
   // ===== 1) 总览 =====
   function renderOverview() {
+    renderNews();
     // 卡片
     var sum = D.benchSummary();
     document.getElementById("benchCards").innerHTML = sum.map(function (b) {

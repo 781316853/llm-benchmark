@@ -89,5 +89,63 @@ module.exports = {
       warnAgeDays: 3,
       alertAgeDays: 7
     }
+  },
+
+  // ===== AI 热点新闻(scripts/lib/news.js 使用,不进基准管线) =====
+  // 每日抓取多源 AI 新闻,合并去重后仅保留最近 retentionDays 天,差异写入 data/news.js。
+  // 源:TechCrunch AI / The Verge AI / Hacker News Algolia / 极客公园 / InfoQ(均已实测可访问,无需 API Key)。
+  // 注:36氪 RSS 对纯 Node 客户端返回反爬挑战页,已弃用;机器之心 RSS 已停更,同样弃用。
+  news: {
+    retentionDays: 2,        // 保留最近 N 个自然日(含今天;每日更新 2 次)
+    maxPerDayPerSource: 12,  // 每源每天最多保留条数
+    maxPerType: 5,           // 每个新闻类型最多保留条数
+    maxTotal: 60,            // 总量上限(兜底;实际受每类型上限约束)
+    outFile: "news.js",
+    windowVar: "NEWS",
+    // AI 相关性关键词(标题+摘要命中任一即保留;用于过滤 36kr/InfoQ/The Verge 等混合内容源)
+    // 纯 ASCII 关键词在匹配时自动加词边界并兼容复数,避免 "ai" 误命中 email/said/available 等
+    keywords: [
+      "ai", "llm", "gpt", "claude", "gemini", "deepseek", "qwen", "kimi",
+      "anthropic", "openai", "chatgpt", "sora", "llama", "mistral", "glm",
+      "minimax", "agent", "model", "robot", "具身智能", "人形机器人",
+      "人工智能", "大模型", "智谱", "豆包", "算力", "机器学习", "深度学习"
+    ],
+    // 新闻类型分类(按数组顺序优先匹配,未命中归入 fallbackType)
+    // model 类型需同时命中 modelHints(模型特征词),避免把普通产品发布误判为"模型发布"
+    types: [
+      { id: "policy", label: "政策与安全",
+        keywords: "监管|法规|合规|水印|版权|隐私|审查|法案|deepfake|深伪|漏洞|攻击|AI\\s*Act|regulation|regulat|policy|watermark|safety|security|law|legal" },
+      { id: "model", label: "模型发布",
+        keywords: "发布|推出|上线|首发|亮相|开源|open[-\\s]source|open[-\\s]weight|unveil|debut|launch|releas|introduc|新模型|新版本",
+        modelHints: "gpt|claude|gemini|deepseek|qwen|kimi|glm|llama|mistral|minimax|模型|智谱|豆包|通义|书生|manus|sora" },
+      { id: "company", label: "公司动态",
+        keywords: "融资|领投|收购|投资|离职|上任|并购|IPO|上市|财报|营收|创办|成立|估值|用户|月活|招股|合作|创始|acqui|funding|fundrais|raise|invest|hires|resign|depart|CEO|COO|milestone|billion\\s*users|surges|tender|offer|\\bround\\b|\\bled\\b|\\bleads\\b|partner" },
+      { id: "research", label: "技术研究",
+        keywords: "研究|论文|数学|推理|基准|突破|进步|能力|智能体|机器人|具身|research|paper|reasoning|math|benchmark|breakthrough|progress|capabilit|agent" }
+    ],
+    fallbackType: "行业动态",  // 未命中任何类型时的兜底
+    typeDisplayOrder: ["模型发布", "公司动态", "技术研究", "政策与安全", "行业动态"], // 前端展示顺序
+    // 各源定义:type = rss(RSS 2.0)/ atom(Atom)/ hn(Hacker News Algolia JSON)
+    sources: [
+      { id: "techcrunch", name: "TechCrunch", type: "rss", host: "techcrunch.com",
+        url: "https://techcrunch.com/category/artificial-intelligence/feed/" },
+      { id: "verge", name: "The Verge", type: "atom", host: "www.theverge.com",
+        url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" },
+      { id: "hn", name: "Hacker News", type: "hn", host: "hn.algolia.com",
+        url: "https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&hitsPerPage=30&numericFilters=points%3E20" },
+      { id: "geekpark", name: "极客公园", type: "rss", host: "www.geekpark.net",
+        url: "https://www.geekpark.net/rss" },
+      { id: "infoq", name: "InfoQ", type: "rss", host: "www.infoq.cn",
+        url: "https://www.infoq.cn/feed" }
+    ],
+
+    // 英文新闻翻译为中文(免费接口,无需 Key;主源失败自动切换备源,全部失败保留原文)
+    // MyMemory:匿名 5000 字符/天,附带 de 邮箱参数可提升至 50000 字符/天;quotaFinished 时停止请求
+    translate: {
+      enabled: true,
+      endpoints: [
+        { url: "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&de=llm-benchmark-refresh%40users.noreply.github.com&q=" }
+      ]
+    }
   }
 };

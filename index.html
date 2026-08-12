@@ -7,7 +7,7 @@
   <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
-  <link rel="stylesheet" href="css/styles.css?v=20260710" />
+  <link rel="stylesheet" href="css/styles.css?v=20260812" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量) -->
@@ -18,6 +18,7 @@
   <script defer src="data/llm2014.js"></script>
   <script defer src="data/aaci.js"></script>
   <script defer src="data/seen.js"></script>
+  <script defer src="data/news.js"></script>
   <!-- 业务脚本 -->
   <script defer src="js/data.js"></script>
   <script defer src="js/charts.js"></script>
@@ -52,6 +53,13 @@
         <div class="app-loading-spinner"></div>
         <p>正在加载数据...</p>
       </div>
+      <!-- AI 热点总结:每日抓取,垂直滚动展示,悬停暂停(置顶显示) -->
+      <section class="news-section">
+        <h2 class="section-title">AI 热点总结 <span class="hint" id="newsHint">每日更新 2 次 · 仅保留最近 2 天 · 支持滚动查看</span></h2>
+        <div class="news-ticker" id="newsTicker">
+          <div class="news-ticker-inner" id="newsTickerInner"></div>
+        </div>
+      </section>
       <div class="bench-cards" id="benchCards"></div>
       <h2 class="section-title">交叉模型矩阵 <span class="hint">同一模型在三个基准中的成绩(高亮表示多榜命中);默认按综合分降序,点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</span></h2>
       <div class="table-wrap"><table id="matrixTable" class="data-table"></table></div>
