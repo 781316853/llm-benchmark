@@ -253,6 +253,8 @@ window.SEEN = {
     'aa_official|DeepSeek V4 Flash': '2026-08-11',
     'deepswe|Grok 4.6': '2026-08-13',
     'vibe|Grok 4.6 [新]': '2026-08-13',
-    'datalearner|Grok 4.6': '2026-08-13'
+    'datalearner|Grok 4.6': '2026-08-13',
+    'deepswe|grok-4-6': '2026-08-13',
+    'vibe|Deepseek v4 pro 0813 [新]': '2026-08-13'
   }
 };

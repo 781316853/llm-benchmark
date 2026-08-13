@@ -45,7 +45,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 23,
+      'modelCount': 24,
       'updated': '2026-08-13',
       'ageDays': 0,
       'completeness': 1,
@@ -78,7 +78,7 @@ window.QUALITY = {
       'id': 'vibecode',
       'name': 'Vibe Code',
       'status': 'ok',
-      'modelCount': 79,
+      'modelCount': 80,
       'updated': '2026-08-13',
       'ageDays': 0,
       'completeness': 1,
@@ -92,15 +92,17 @@ window.QUALITY = {
       'name': 'deepseek-v4-pro',
       'vendor': 'DeepSeek',
       'sources': [
+        'deepswe_v11',
         'deepswe_v10',
         'vibecode'
       ],
       'scores': {
+        'deepswe_v11': 63,
         'deepswe_v10': 8,
         'vibecode': 49.93
       },
-      'mean': 29,
-      'stddev': 20.97,
+      'mean': 40.3,
+      'stddev': 23.46,
       'flag': 'alert'
     },
     {
@@ -601,24 +603,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Grok 4.6',
-      'name': 'Grok 4.6',
-      'vendor': '其他',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 65.9,
-        'deepswe_v11': 65.9,
-        'vibecode': 76.24
-      },
-      'mean': 69.3,
-      'stddev': 4.87,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'GPT-5.6 Luna',
       'name': 'GPT-5.6 Luna',
       'vendor': 'OpenAI',
@@ -634,6 +618,24 @@ window.QUALITY = {
       },
       'mean': 70.4,
       'stddev': 4.7,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Grok 4.6',
+      'name': 'Grok 4.6',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 65.9,
+        'deepswe_v11': 67,
+        'vibecode': 76.24
+      },
+      'mean': 69.7,
+      'stddev': 4.64,
       'flag': 'ok'
     },
     {
@@ -758,9 +760,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 23,
-      'complete': 23,
-      'modelCount': 23,
+      'total': 24,
+      'complete': 24,
+      'modelCount': 24,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -784,9 +786,9 @@ window.QUALITY = {
     },
     'vibecode': {
       'rate': 1,
-      'total': 79,
-      'complete': 79,
-      'modelCount': 79,
+      'total': 80,
+      'complete': 80,
+      'modelCount': 80,
       'missingFields': {},
       'flag': 'ok'
     }
@@ -844,8 +846,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'deepswe_v10,vibecode',
-      'message': 'deepseek-v4-pro 跨源分数标准差 20.97(>10)'
+      'sourceId': 'deepswe_v11,deepswe_v10,vibecode',
+      'message': 'deepseek-v4-pro 跨源分数标准差 23.46(>10)'
     },
     {
       'level': 'error',

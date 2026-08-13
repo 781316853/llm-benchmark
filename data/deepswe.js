@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-13",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 23 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 24 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -57,6 +57,15 @@ window.DEEPSWE = {
     'steps': 98
   },
   {
+    'name': 'grok-4-6',
+    'effort': 'medium',
+    'pass1': 67,
+    'ci': 2,
+    'cost': 3.45,
+    'outTok': 49764,
+    'steps': 70
+  },
+  {
     'name': 'gpt-5-6-luna',
     'effort': 'max',
     'pass1': 67,
@@ -75,14 +84,13 @@ window.DEEPSWE = {
     'steps': 82
   },
   {
-    'name': 'Grok 4.6',
-    'effort': '思考模式 High（工具）',
-    'pass1': 65.9,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
+    'name': 'deepseek-v4-pro',
+    'effort': 'max',
+    'pass1': 63,
+    'ci': 6,
+    'cost': 0.24,
+    'outTok': 105999,
+    'steps': 155
   },
   {
     'name': 'claude-opus-4-8',

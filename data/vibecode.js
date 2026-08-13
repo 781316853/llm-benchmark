@@ -8,8 +8,8 @@ window.VIBECODE = {
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "2026-08-13",
   version: "v1.1",
-  totalSystems: 82,
-  note: "共 82 系统,展示 overall 视图全部 79 个有记录系统",
+  totalSystems: 83,
+  note: "共 83 系统,展示 overall 视图全部 80 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -43,6 +43,14 @@ window.VIBECODE = {
     'ci': 3.08,
     'cost': 26.88,
     'latencyS': 4549
+  },
+  {
+    'name': 'Deepseek v4 pro 0813 [新]',
+    'harness': 'OpenHands',
+    'score': 82.3,
+    'ci': 3.15,
+    'cost': 0.36,
+    'latencyS': 3983
   },
   {
     'name': 'Claude Sonnet 5',

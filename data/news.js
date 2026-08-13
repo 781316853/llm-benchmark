@@ -14,6 +14,70 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-13',
+      'title': '微软正在将其Copilot应用程序与“超级应用程序”相结合',
+      'brief': '微软终于开始将其消费者和商业Copilot AI助手整合到一个单一的“超级应用”界面中，从...',
+      'url': 'https://www.theverge.com/tech/979466/microsoft-copilot-365-app-unified-experience',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-13',
+      'title': '选择一个人工智能模型：一个提示， 11个模型，不同的结果',
+      'brief': '选择一个人工智能模型：一个提示， 11个模型，不同的结果',
+      'url': 'https://www.netlify.com/blog/one-prompt-11-models-very-different-results/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-13',
+      'title': 'DeepSeek线束',
+      'brief': 'DeepSeek线束',
+      'url': 'https://github.com/deepseek-ai/deepseek-harness',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-13',
+      'title': 'DeepSeek API定价更新',
+      'brief': 'DeepSeek API定价更新',
+      'url': 'https://twitter.com/deepseek_ai/status/2087864589895798968',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-13',
+      'title': '如果我拥有Claude的输出，为什么我不能用它们训练自己的模型？',
+      'brief': '如果我拥有Claude的输出，为什么我不能用它们训练自己的模型？',
+      'url': 'https://support.claude.com/en/articles/12326764-can-i-use-my-outputs-to-train-an-ai-model',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-13',
+      'title': '视频游戏律师说，她所有的客户都有反人工智能合同',
+      'brief': '视频游戏律师说，她所有的客户都有反人工智能合同',
+      'url': 'https://www.gamesradar.com/games/echoing-palworld-dev-video-game-lawyer-says-all-her-clients-have-anti-ai-contracts-because-gamers-hate-it-and-its-a-copyright-landmine-i-think-were-going-to-see-lawsuits/',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-13',
+      'title': '实测正式版 DeepSeek V4 Pro，补齐 Agent 能力｜AI 上新',
+      'brief': '作者｜桦林舞王 编辑｜靖宇 没有预告，没有倒计时，甚至连更新日志都没来得及写好。DeepSeek V4 Pro 的正式版，就这么悄悄的来了。 8 月 13 日凌晨，DeepSeek 官网悄悄刷新了 API 文档。模型名还是那个 deepseek-v4-pro，但 fingerpr…',
+      'url': 'http://www.geekpark.net/news/368777',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-13',
+      'title': '「美国豆包手机」全系涨价，新东西全留给了 Gemini',
+      'brief': 'Pixel 11 不是一台想赢的手机，它是 Gemini 的身体。 作者｜张勇毅 编辑｜靖宇 纽约时间 8 月 12 日下午，谷歌在布鲁克林开完了今年的 Made by Google 发布会。 Pixel 11 全系四款手机、Pixel Watch 5，加上防丢器 Pixel T…',
+      'url': 'http://www.geekpark.net/news/368766',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-13',
       'title': 'Deepseek V4 Pro 正式版 API 上线，百万 Token 仅 6 元；腾讯计划近期发布 HY4 大模型；曝 iPhone18 至少涨价 2000 元起 | 极客早知道',
       'brief': 'DeepSeek V4 Pro 正式版 API 更新上线，多项测试性能接近 Fable 5 8 月 13 日消息，DeepSeek V4 Pro 正式版正式发布，已更新至 API，调用模型名不变。 新版本增强了 Agent 能力，支持 Responses API 和 Codex…',
       'url': 'http://www.geekpark.net/news/368747',
@@ -22,19 +86,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-13',
-      'title': '与运行时无关的 AI 工作流：一种兼顾生产环境稳定性和快速评估迭代的模式',
+      'title': '从“开放模型”到“开放生态”，AI 开源进入下半场',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Za8vaFWPCM7LtuRfhDmD?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/oEMzispbWkEP8TtKdUtf?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '智象未来 (HiDream.ai)算法科学家潘滢炜博士确认出席AICon深圳，将分享“从 Token 预测到状态预测：迈向世界模型的原生全模态之路”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/9d9Oik3uZpqfjbfElZaq?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '模型发布'
     },
     {
       'date': '2026-08-12',
@@ -67,30 +123,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-08-12',
-      'title': 'Mesh是Automattic面向所有人的CRM ，适用于Android',
-      'brief': 'Mesh是Automattic的人工智能联系人应用程序和关系管理器，现在是一款Android应用程序。',
-      'url': 'https://techcrunch.com/2026/08/12/mesh-automattics-crm-for-everyone-comes-to-android/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-12',
-      'title': '为什么Stream戒指制造商Sandbar说人工智能可穿戴设备的未来是语音',
-      'brief': '在过去的几年里，人工智能笔记硬件已经起飞，有信用卡大小的设备、吊坠、别针，甚至转录ea……',
-      'url': 'https://techcrunch.com/video/why-stream-ring-maker-sandbar-says-the-future-of-ai-wearables-is-voice/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-12',
-      'title': '为什么Sandbar认为它是支持语音的戒指可以避开人工智能硬件的墓地',
-      'brief': '在过去的几年里，人工智能笔记硬件已经起飞，有信用卡大小的设备、吊坠、别针，甚至转录ea……',
-      'url': 'https://techcrunch.com/podcast/why-sandbar-thinks-its-voice-enabled-ring-can-avoid-the-ai-hardware-graveyard/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-12',
