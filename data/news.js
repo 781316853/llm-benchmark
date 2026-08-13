@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-12',
+  'updated': '2026-08-13',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,35 +13,83 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-08-12',
-      'title': '谷歌在Made by Google 2026上推出Pixel 11系列、新的AirTag竞争对手和Gemini功能',
-      'brief': '从Pixel 11系列和Apple AirTag的全新竞争对手，以下是Made by Google 2026活动的所有公告。',
-      'url': 'https://techcrunch.com/2026/08/12/google-unveils-pixel-11-lineup-new-airtag-rival-and-gemini-features-at-made-by-google-2026/',
-      'source': 'TechCrunch',
+      'date': '2026-08-13',
+      'title': 'Deepseek V4 Pro 正式版 API 上线，百万 Token 仅 6 元；腾讯计划近期发布 HY4 大模型；曝 iPhone18 至少涨价 2000 元起 | 极客早知道',
+      'brief': 'DeepSeek V4 Pro 正式版 API 更新上线，多项测试性能接近 Fable 5 8 月 13 日消息，DeepSeek V4 Pro 正式版正式发布，已更新至 API，调用模型名不变。 新版本增强了 Agent 能力，支持 Responses API 和 Codex…',
+      'url': 'http://www.geekpark.net/news/368747',
+      'source': '极客公园',
       'type': '模型发布'
     },
     {
+      'date': '2026-08-13',
+      'title': '与运行时无关的 AI 工作流：一种兼顾生产环境稳定性和快速评估迭代的模式',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/Za8vaFWPCM7LtuRfhDmD?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-13',
+      'title': '智象未来 (HiDream.ai)算法科学家潘滢炜博士确认出席AICon深圳，将分享“从 Token 预测到状态预测：迈向世界模型的原生全模态之路”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/9d9Oik3uZpqfjbfElZaq?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
       'date': '2026-08-12',
-      'title': '人工智能代码测试初创公司Blacksmith的估值在不到一年的时间里跃升了近10倍',
-      'brief': 'Blacksmith表示，过去一年的收入增长了十倍以上。',
-      'url': 'https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/',
+      'title': '一些Claude用户很生气，因为Anthropic的新水印会在他们的工作和课程中使用它',
+      'brief': 'Anthropic的新水印系统是不是一种讽刺？有些人在社交媒体上抱怨确实如此。',
+      'url': 'https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '据报道，人工智能编程初创公司Cognition已经在谈判以400亿美元的估值筹集资金',
+      'brief': 'Cognition可能希望在以260亿美元的估值筹集10亿美元后，在短短几个月内再筹集一轮大型融资。',
+      'url': 'https://techcrunch.com/2026/08/12/ai-coding-startup-cognition-reportedly-already-in-talks-to-raise-at-40b-valuation/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': '随着人工智能安全问题的日益增加，三位先驱提出了保持开放的理由',
+      'brief': '在Ai4 ，世界上最受尊敬的三位人工智能专家--杰弗里·辛顿（ Geoffrey Hinton ）、李飞飞（ Fei-Fei Li ）和吴恩达（ Andrew Ng ） --讨论了监管、开源访问……',
+      'url': 'https://techcrunch.com/2026/08/12/as-ai-safety-concerns-mount-three-pioneers-make-the-case-for-staying-open/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-12',
+      'title': 'OpenAI支持的Thrive Holdings筹集了$ 2B ，将AI带入企业',
+      'brief': 'Thrive Holdings以120亿美元的估值从软银、D1 Capital Partners和Altim等投资者那里筹集了20亿美元的新资金……',
+      'url': 'https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-12',
+      'title': 'Mesh是Automattic面向所有人的CRM ，适用于Android',
+      'brief': 'Mesh是Automattic的人工智能联系人应用程序和关系管理器，现在是一款Android应用程序。',
+      'url': 'https://techcrunch.com/2026/08/12/mesh-automattics-crm-for-everyone-comes-to-android/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-08-12',
-      'title': '谷歌Pixel Watch 5深入探索人工智能与健康',
-      'brief': '$ 399的Google Pixel Watch 5与硬件无关。当然，还有新的缎面黄铁矿表壳饰面、一些新的表带颜色和Steph Cu……',
-      'url': 'https://www.theverge.com/tech/978094/pixel-watch-5-hands-on-made-by-google-gemini-wearables-smartwatch',
-      'source': 'The Verge',
+      'title': '为什么Stream戒指制造商Sandbar说人工智能可穿戴设备的未来是语音',
+      'brief': '在过去的几年里，人工智能笔记硬件已经起飞，有信用卡大小的设备、吊坠、别针，甚至转录ea……',
+      'url': 'https://techcrunch.com/video/why-stream-ring-maker-sandbar-says-the-future-of-ai-wearables-is-voice/',
+      'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-08-12',
-      'title': '当然， ChatGPT狗癌症疫苗催生了一家初创公司',
-      'brief': '请记住一个关于澳大利亚科技企业家使用ChatGPT、Grok和其他人工智能工具来制作个性化癌症的大肆宣传的故事……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/978671/ai-cured-dog-cancer-mrna-vaccine-startup-gamgee',
-      'source': 'The Verge',
+      'title': '为什么Sandbar认为它是支持语音的戒指可以避开人工智能硬件的墓地',
+      'brief': '在过去的几年里，人工智能笔记硬件已经起飞，有信用卡大小的设备、吊坠、别针，甚至转录ea……',
+      'url': 'https://techcrunch.com/podcast/why-sandbar-thinks-its-voice-enabled-ring-can-avoid-the-ai-hardware-graveyard/',
+      'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
@@ -78,27 +126,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-12',
-      'title': '当人工智能泡沫破裂时会发生什么？',
-      'brief': '当人工智能泡沫破裂时会发生什么？',
-      'url': 'https://thehustle.co/originals/what-happens-when-the-ai-bubble-pops',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-12',
       'title': '公司提供“100%人工编写，从不人工智能”的医学研究是100%的人工智能',
       'brief': '公司提供“100%人工编写，从不人工智能”的医学研究是100%的人工智能',
       'url': 'https://www.404media.co/company-offering-100-human-written-never-ai-peer-review-is-entirely-ai/',
       'source': 'Hacker News',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-08-12',
-      'title': 'Gemini成为谷歌有史以来增长最快的产品，吸引了10亿用户',
-      'brief': 'Gemini成为谷歌有史以来增长最快的产品，吸引了10亿用户',
-      'url': 'https://arstechnica.com/ai/2026/08/google-says-gemini-has-reached-1b-users-faster-than-any-other-google-product/',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-12',
@@ -123,94 +155,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/KwZX2bLcaHRjuLG95vHI?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-12',
-      'title': '群青智能联合创始人&CEO 吴哲明博士确认出席AICon深圳，将分享“从真实产线定义智能——工业具身智能的物理 AI 闭环”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/b1V6WF6iUajJpND8VmCE?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'OpenAI推出适用于Linux的ChatGPT桌面应用程序',
-      'brief': 'OpenAI终于将专用的ChatGPT桌面应用程序引入Linux操作系统。',
-      'url': 'https://techcrunch.com/2026/08/11/openai-launches-chatgpt-desktop-app-for-linux/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '谷歌Gemini应用飙升至10亿用户',
-      'brief': '谷歌还分享了人们如何实际使用聊天机器人的数字， 63%的Gemini用户使用聊天机器人直接与助手交谈……',
-      'url': 'https://techcrunch.com/2026/08/11/googles-gemini-app-surges-to-one-billion-users/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '未发布的Anthropic模型在数学最大的未解决问题之一上取得了进展',
-      'brief': '150多年来，黎曼假说一直是数学中尚未解决的主要问题之一。Anthropic还没有解决它-- …',
-      'url': 'https://techcrunch.com/2026/08/11/an-unreleased-anthropic-model-made-progress-on-one-of-maths-biggest-unsolved-problems/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Anthropic表示，它将为其AI模型生成的文本添加水印',
-      'brief': 'Anthropic还将扩展对旧模型水印AI代的支持。',
-      'url': 'https://techcrunch.com/2026/08/11/anthropic-says-it-will-watermark-text-generated-by-its-ai-models/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '使用少于20个AI提示发现的“Zoomsday”黑客',
-      'brief': 'Zoom修补了一个主要安全漏洞，该漏洞可能允许攻击者在会议期间劫持任何人的设备。在一篇关于T…的博客文章中',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/977909/zoom-vulnerability-ai-attack',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '对话影溯章国锋：互联网数据才是空间智能最需要的「太阳能」',
-      'brief': '作者｜张鹏 整理｜ 徐珊 世界模型的牌桌上，坐着的已经全是重量级玩家。Yann LeCun 离开 Meta 亲自下场，李飞飞的 World Labs 发布 Marble，NVIDIA 用 Cosmos 拉起联盟，国内的大厂与创业公司也在密集进场。让 AI 理解物理世界，已经是今年…',
-      'url': 'http://www.geekpark.net/news/368667',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Seedance 2.5 上线后，LibTV 先帮创作者「学会」了新模型',
-      'brief': '作者｜甘德 编辑｜ 郑玄 Seedance 2.5 发布的时候，身边几乎所有 AI 视频或者 AI 影视相关的朋友都很兴奋。 「模型能力已经溢出了」。 一位在做 AI 短剧导演的朋友这样评价。他的体验是，现在有一个好故事，有专业的电影制作经验，或者一支足够专业的抽卡师团队，以及比…',
-      'url': 'http://www.geekpark.net/news/368665',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-11',
-      'title': '千问 App 推出付费服务，办公助理最高一年 1499 元；豆包酒店订单开收 12% 服务费；拼多多上线「最快明日达」｜极客早知道',
-      'brief': '综合扣费 12%，消息称豆包渠道的酒店订单今日起开始执行独立费率 8 月 10 日消息，据新浪科技消息，从今日起，通过豆包入口跳转抖音来客成交的酒店订单，将执行独立费率：11.4% 的软件服务费加 0.6% 的支付手续费， 综合费率约 12% 。 对此，有酒店行业人士表示，此消息…',
-      'url': 'http://www.geekpark.net/news/368640',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'OpenAI 代理群利用 Artifactory 零日漏洞逃离沙箱并入侵 Hugging Face',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/gkzDEyCF5U4DtKAa1Eee?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-11',
-      'title': 'Claude将对人工智能文本和图像应用不可见的水印',
-      'brief': 'Anthropic已承诺开始使用机器可读数据标记Claude生成的文本和图像，以遵守欧洲的规则……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/977823/anthropic-claude-ai-watermarks-c2pa-text-images',
-      'source': 'The Verge',
-      'type': '政策与安全'
     }
   ]
 };
