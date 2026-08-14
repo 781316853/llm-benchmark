@@ -1,14 +1,14 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-08-13)
+// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-08-14)
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
-  updated: "2026-08-13",
+  updated: "2026-08-14",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 24 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 25 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -82,6 +82,15 @@ window.DEEPSWE = {
     'cost': 7.23,
     'outTok': 46295,
     'steps': 82
+  },
+  {
+    'name': 'gemini-3-7-flash',
+    'effort': 'medium',
+    'pass1': 65,
+    'ci': 3,
+    'cost': 2.03,
+    'outTok': 93991,
+    'steps': 117
   },
   {
     'name': 'deepseek-v4-pro',
@@ -167,11 +176,11 @@ window.DEEPSWE = {
   {
     'name': 'gemini-3-6-flash',
     'effort': 'high',
-    'pass1': 49,
-    'ci': 5,
-    'cost': 3.53,
-    'outTok': 96978,
-    'steps': 108
+    'pass1': 47,
+    'ci': 4,
+    'cost': 4.42,
+    'outTok': 95845,
+    'steps': 117
   },
   {
     'name': 'glm-5-2',
@@ -184,12 +193,12 @@ window.DEEPSWE = {
   },
   {
     'name': 'gemini-3-5-flash',
-    'effort': 'medium',
-    'pass1': 37,
-    'ci': 2,
-    'cost': 7.34,
-    'outTok': 275778,
-    'steps': 86
+    'effort': 'high',
+    'pass1': 36,
+    'ci': 4,
+    'cost': 3.45,
+    'outTok': 75730,
+    'steps': 105
   },
   {
     'name': 'kimi-k2-7-code',
@@ -223,10 +232,10 @@ window.DEEPSWE = {
     'name': 'gemini-3-1-pro-preview',
     'effort': 'high',
     'pass1': 12,
-    'ci': 2,
-    'cost': 9.48,
-    'outTok': 196386,
-    'steps': 81
+    'ci': 1,
+    'cost': 2.14,
+    'outTok': 28369,
+    'steps': 76
   }
 ]
 };

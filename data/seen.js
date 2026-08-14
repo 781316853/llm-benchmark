@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-08-13',
+  'updated': '2026-08-14',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -255,6 +255,8 @@ window.SEEN = {
     'vibe|Grok 4.6 [新]': '2026-08-13',
     'datalearner|Grok 4.6': '2026-08-13',
     'deepswe|grok-4-6': '2026-08-13',
-    'vibe|Deepseek v4 pro 0813 [新]': '2026-08-13'
+    'vibe|Deepseek v4 pro 0813 [新]': '2026-08-13',
+    'deepswe|gemini-3-7-flash': '2026-08-14',
+    'llm|DeepSeek V4 Pro 0813 (max)': '2026-08-14'
   }
 };
