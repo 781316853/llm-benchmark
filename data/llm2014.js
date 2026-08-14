@@ -728,6 +728,22 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'Grok 4.6 (high)',
+        'cells': [
+          'Skip',
+          'Pass',
+          'Skip',
+          'Skip',
+          '16/C+(17.67)',
+          '7/B+(18.69)',
+          '20/C+(23.19)',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Grok Build',
+        'think': 1
+      },
+      {
         'model': 'Grok 4.5 (high)',
         'cells': [
           '12/B+(55.98)',
@@ -736,7 +752,7 @@ window.LLM2014 = {
           'Skip',
           '16/B(23.12)',
           '7/B+(15.98)',
-          'Skip',
+          'Failed',
           'Skip'
         ],
         'unprompted': 1,

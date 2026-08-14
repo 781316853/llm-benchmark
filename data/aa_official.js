@@ -42,8 +42,8 @@ window.AA_OFFICIAL = {
       'effort': 'max',
       'score': 65.8,
       'indexRaw': 0.658470366292233,
-      'wallSec': 1403,
-      'costUsd': 11.71,
+      'wallSec': 1404,
+      'costUsd': 11.7,
       'ci': null
     },
     {
@@ -52,7 +52,7 @@ window.AA_OFFICIAL = {
       'effort': 'high',
       'score': 64.4,
       'indexRaw': 0.6443924859568593,
-      'wallSec': 992,
+      'wallSec': 989,
       'costUsd': 2.59,
       'ci': null
     },

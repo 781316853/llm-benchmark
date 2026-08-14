@@ -64,6 +64,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'GLM-5.3',
+      'score': 66.9,
+      'mode': '最高（工具）',
+      'date': '2026-08-14',
+      'params': '7533.3亿',
+      'license': '闭源'
+    },
+    {
       'name': 'Grok 4.6',
       'score': 65.9,
       'mode': '思考模式 High（工具）',

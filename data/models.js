@@ -39,6 +39,8 @@ window.MODEL_MAP = {
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
     { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)"] },
     { id: "DeepSeek V4 Pro",  vendor: "DeepSeek",  color: "#4D6BFE", aliases: ["DeepSeek V4 Pro (max)", "DeepSeek V4 Pro (high)", "DeepSeek-V4-Pro-Max", "deepseek-v4-pro"] },
+    { id: "DeepSeek V4 Pro 0813", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4 Pro 0813 (max)", "DeepSeek V4 Pro 0813", "DeepSeek-V4-Pro-0813", "DeepSeek-V4-Pro-0813-Max"] },
+    { id: "DeepSeek V4 Pro preview", vendor: "DeepSeek", color: "#5D7CFE", aliases: ["DeepSeek V4 Pro preview(max)", "DeepSeek V4 Pro preview"] },
     { id: "DeepSeek V4 Flash",vendor: "DeepSeek",  color: "#6A82FE", aliases: ["DeepSeek V4 Flash (max)", "DeepSeek-V4-Flash-Max", "DeepSeek V4 Flash 0731", "DeepSeek V4 Flash (0731)", "DeepSeek-V4-Flash-0731"] },
     { id: "DeepSeek V4 Flash preview", vendor: "DeepSeek", color: "#5D7CFE", aliases: ["DeepSeek V4 Flash preview", "DeepSeek-V4-Flash-Preview"] },
     { id: "DeepSeek V3.2",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["deepseek-v3p2"] },

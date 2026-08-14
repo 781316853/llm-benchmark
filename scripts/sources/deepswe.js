@@ -51,6 +51,10 @@ class DeepSweBase extends BaseSource {
     let parsed = this.parse(text);
     // v1.1:补充 datalearner 未收录的模型(与原脚本逻辑一致)
     if (this.cfg.isV11) {
+      // 0813 正式版映射:deepswe v1.1 当前榜的 deepseek-v4-pro 即 DeepSeek V4 Pro 0813 正式版成绩(2026-08-13 上线)
+      parsed.models = parsed.models.map(function (m) {
+        return m.name === "deepseek-v4-pro" ? Object.assign({}, m, { name: "DeepSeek V4 Pro 0813" }) : m;
+      });
       try {
         console.log("  [datalearner] 抓取补充源");
         const dlHtml = await transport.fetchWithRetry(CONFIG.sources.datalearner.url);

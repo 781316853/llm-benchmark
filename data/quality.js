@@ -7,17 +7,6 @@ window.QUALITY = {
   'overallScore': 0.833,
   'sources': [
     {
-      'id': 'aa_official',
-      'name': 'AA Coding Agent Index (官方)',
-      'status': 'ok',
-      'modelCount': 10,
-      'updated': '2026-08-14',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
       'id': 'aaci',
       'name': 'AA Coding Agent Index',
       'status': 'error',
@@ -31,10 +20,21 @@ window.QUALITY = {
       ]
     },
     {
+      'id': 'aa_official',
+      'name': 'AA Coding Agent Index (官方)',
+      'status': 'ok',
+      'modelCount': 10,
+      'updated': '2026-08-14',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 22,
       'updated': '2026-08-14',
       'ageDays': 0,
       'completeness': 1,
@@ -45,7 +45,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 25,
+      'modelCount': 26,
       'updated': '2026-08-14',
       'ageDays': 0,
       'completeness': 1,
@@ -67,7 +67,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 60,
+      'modelCount': 61,
       'updated': '2026-08-14',
       'ageDays': 0,
       'completeness': 0,
@@ -78,7 +78,7 @@ window.QUALITY = {
       'id': 'vibecode',
       'name': 'Vibe Code',
       'status': 'ok',
-      'modelCount': 80,
+      'modelCount': 81,
       'updated': '2026-08-14',
       'ageDays': 0,
       'completeness': 1,
@@ -92,17 +92,15 @@ window.QUALITY = {
       'name': 'deepseek-v4-pro',
       'vendor': 'DeepSeek',
       'sources': [
-        'deepswe_v11',
         'deepswe_v10',
         'vibecode'
       ],
       'scores': {
-        'deepswe_v11': 63,
         'deepswe_v10': 8,
         'vibecode': 49.93
       },
-      'mean': 40.3,
-      'stddev': 23.46,
+      'mean': 29,
+      'stddev': 20.97,
       'flag': 'alert'
     },
     {
@@ -178,7 +176,7 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'Muse_spark_1_2',
+      'canonId': 'Muse Spark 1.2',
       'name': 'muse-spark-1-2',
       'vendor': '其他',
       'sources': [
@@ -266,6 +264,22 @@ window.QUALITY = {
       'mean': 67.2,
       'stddev': 10.64,
       'flag': 'alert'
+    },
+    {
+      'canonId': 'DeepSeek V4 Pro 0813',
+      'name': 'DeepSeek V4 Pro 0813',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 63,
+        'vibecode': 82.3
+      },
+      'mean': 72.7,
+      'stddev': 9.65,
+      'flag': 'warn'
     },
     {
       'canonId': 'Claude Fable 5',
@@ -386,7 +400,7 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Claude opus 5',
+      'canonId': 'Claude Opus 5',
       'name': 'Claude Opus 5',
       'vendor': '其他',
       'sources': [
@@ -654,7 +668,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Qwen3.8 max',
+      'canonId': 'Qwen3.8-Max',
       'name': 'qwen3-8-max',
       'vendor': '其他',
       'sources': [
@@ -667,6 +681,22 @@ window.QUALITY = {
       },
       'mean': 60.9,
       'stddev': 3.85,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'gemini-3-7-flash',
+      'name': 'gemini-3-7-flash',
+      'vendor': '其他',
+      'sources': [
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 65,
+        'vibecode': 70.4
+      },
+      'mean': 67.7,
+      'stddev': 2.7,
       'flag': 'ok'
     },
     {
@@ -725,6 +755,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'GLM-5.3',
+      'name': 'GLM-5.3',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 66.9,
+        'deepswe_v11': 66.9
+      },
+      'mean': 66.9,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Tencent Hy3',
       'name': 'Hy3',
       'vendor': 'Tencent',
@@ -752,17 +798,17 @@ window.QUALITY = {
     },
     'datalearner': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 22,
+      'complete': 22,
+      'modelCount': 22,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 26,
+      'complete': 26,
+      'modelCount': 26,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -776,33 +822,33 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 60,
+      'total': 61,
       'complete': 0,
-      'modelCount': 60,
+      'modelCount': 61,
       'missingFields': {
-        'score': 60
+        'score': 61
       },
       'flag': 'warn'
     },
     'vibecode': {
       'rate': 1,
-      'total': 80,
-      'complete': 80,
-      'modelCount': 80,
+      'total': 81,
+      'complete': 81,
+      'modelCount': 81,
       'missingFields': {},
       'flag': 'ok'
     }
   },
   'timeliness': {
-    'aa_official': {
-      'updated': '2026-08-14',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
     'aaci': {
       'updated': '2026-07-11',
       'ageDays': 34,
       'flag': 'alert'
+    },
+    'aa_official': {
+      'updated': '2026-08-14',
+      'ageDays': 0,
+      'flag': 'ok'
     },
     'datalearner': {
       'updated': '2026-08-14',
@@ -846,8 +892,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'deepswe_v11,deepswe_v10,vibecode',
-      'message': 'deepseek-v4-pro 跨源分数标准差 23.46(>10)'
+      'sourceId': 'deepswe_v10,vibecode',
+      'message': 'deepseek-v4-pro 跨源分数标准差 20.97(>10)'
     },
     {
       'level': 'error',

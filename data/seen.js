@@ -251,12 +251,16 @@ window.SEEN = {
     'deepswe|muse-spark-1-2': '2026-08-07',
     'aa_official|Gemini 3.6 Flash': '2026-08-08',
     'aa_official|DeepSeek V4 Flash': '2026-08-11',
-    'deepswe|Grok 4.6': '2026-08-13',
-    'vibe|Grok 4.6 [新]': '2026-08-13',
-    'datalearner|Grok 4.6': '2026-08-13',
-    'deepswe|grok-4-6': '2026-08-13',
-    'vibe|Deepseek v4 pro 0813 [新]': '2026-08-13',
+    'deepswe|grok-4-6': '2026-08-14',
+    'deepswe|GLM-5.3': '2026-08-14',
     'deepswe|gemini-3-7-flash': '2026-08-14',
-    'llm|DeepSeek V4 Pro 0813 (max)': '2026-08-14'
+    'vibe|Deepseek v4 pro 0813 [新]': '2026-08-14',
+    'vibe|Grok 4.6 [新]': '2026-08-14',
+    'vibe|Gemini 3.7 flash [新]': '2026-08-14',
+    'datalearner|GLM-5.3': '2026-08-14',
+    'datalearner|Grok 4.6': '2026-08-14',
+    'llm|Grok 4.6 (high)': '2026-08-14',
+    'llm|DeepSeek V4 Pro 0813 (max)': '2026-08-14',
+    'deepswe|DeepSeek V4 Pro 0813': '2026-08-14'
   }
 };

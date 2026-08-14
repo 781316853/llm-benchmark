@@ -14,11 +14,99 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-14',
+      'title': '苹果在阿里巴巴的帮助下为中国培训了自己的人工智能模型',
+      'brief': '据报道，苹果已经与国内科技巨头阿里巴巴一起为中国市场培训了一个定制的人工智能模型，这是一种罕见的跨境合作伙伴关系。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/980160/apple-intelligence-china-custom-ai-model-alibaba',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'GLM-5.3 ：具有新兴网络功能的前沿编码',
+      'brief': 'GLM-5.3 ：具有新兴网络功能的前沿编码',
+      'url': 'https://z.ai/blog/glm-5.3',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '甚至Claude也对Dario Amodei的妻子一无所知',
+      'brief': '甚至Claude也对Dario Amodei的妻子一无所知',
+      'url': 'https://www.wsj.com/tech/ai/claude-dario-amodei-wife-anthropic-e1eeda7d',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'DeepSeek Harness 实测：一夜 5 万星，Agent 界的 Android 来了',
+      'brief': 'Agent 行业需要一个 Android。 作者｜张勇毅 编辑｜靖宇 北京时间 8 月 13 日晚上八点半，DeepSeek 正式公布了它成立以来的第一个 Agent 产品，之前预热很久，大家期待值很高的 Deepseek Harness。 截至发稿， 它的 GitHub 仓库已…',
+      'url': 'http://www.geekpark.net/news/368809',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-14',
       'title': 'DeepSeek Harness 公测，对标 Claude Cowork ；长鑫科技市值超越腾讯；OpenAI 年化营收有望翻番达 400 亿美元',
       'brief': '对标 Claude Cowork：DeepSeek Harness 公测，同步开放插件生态 8 月 13 日消息，DeepSeek-V4-Pro-0813 正式开源，同时还推出了其开源（MIT 协议）的代码智能体框架 Harness 的 v0.1 开发者预览版（基于 Cordis…',
       'url': 'http://www.geekpark.net/news/368789',
       'source': '极客公园',
       'type': '模型发布'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'Zig 创始人直言，Bun 靠 Claude 生成的 Rust 重构版是“没人把关的烂代码”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/5JAOs4xARzjGb5sj2LxG?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'Claude Code没有“魔法”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/aVJlp0XApUkyu6CNLOkL?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'DeepSeek 把 Harness 开源了：模型、工具、Agent Loop 全是插件',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/de9AljWc4ejW2KAyW8dD?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '从“工具”到“同事”——AI 时代的产品进化',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/ABCk0CzDtSKMHbPXCdWF?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'DeepSeek + Pi 王炸组合跑赢 Claude Code？Pi创始人：这套组合我早押中了',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/XpFUaftcEE3iLgGzYGZi?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '从“会用”到“驾驭”：AI Coding 进入生产环境的真实碰撞',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/ydy2QDIAzQ1L314UH4qc?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'Rust 给 AI 编程立新规：能帮你看，不能替你写，用多了还会“熔断”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/4t8SKMGI28buD345I2Ta?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
     },
     {
       'date': '2026-08-14',
@@ -46,14 +134,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-13',
-      'title': 'Databricks希望筹集$ 10亿，投资者希望筹集$ 150亿。它以$ 1900亿的估值结算为$ 50亿。',
-      'brief': 'Ali Ghodsi告诉TechCrunch ，人工智能很昂贵。由于有这么多投资者希望加入他的最新一轮融资，他对超出计划的投资表示赞同。',
-      'url': 'https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-13',
       'title': 'OpenAI引入了“超快” ，这是一种新模式，使GPT-5.6 SOL以14倍的速度工作',
       'brief': 'OpenAI正在推出其最新、最强大的模型的加速版本的预览版，以吸引企业用户。',
       'url': 'https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/',
@@ -62,75 +142,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-13',
-      'title': 'IBM与OpenAI合作支持企业AI推送',
-      'brief': '作为这笔交易的一部分， IBM计划对数万名OpenAI技术顾问进行培训和认证。',
-      'url': 'https://techcrunch.com/2026/08/13/ibm-partners-with-openai-to-bolster-enterprise-ai-push/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'Anthropic让AI智能体在相同的任务上松动。他们发动了一场地盘战争。',
-      'brief': '人类学研究人员发现，人工智能特工可以以意想不到的方式发生冲突、勾结和协调，从而提出了新的问题，即当今的安全状况是否……',
-      'url': 'https://techcrunch.com/2026/08/13/anthropic-set-ai-agents-loose-on-the-same-task-they-started-a-turf-war/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'OpenAI聘请新的首席风险官，因为高管重组仍在继续',
-      'brief': 'OpenAI在首席营收官丹尼斯·德雷瑟（ Denise Dresser ）上任仅仅9个月后就取代了他，任命了Wiz总裁兼首席运营官……',
-      'url': 'https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-13',
       'title': '微软在合并其单独的Copilot应用程序时消除了不成功的AI功能',
       'brief': '微软正在通过结合其消费者和商业应用程序来简化Copilot ，并放弃人工智能生成的播客、群聊、深度研究……',
       'url': 'https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/',
       'source': 'TechCrunch',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '英伟达的新$ 5000B计划风险高，但非常出色，特别是对于老化的GPU',
-      'brief': '英伟达有一个计划，以确保其GPU不会失去价值。它希望说服一批新的金融家继续为人工智能建设提供贷款。',
-      'url': 'https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'Suno试图看起来更像是一个真正的音乐制作工具',
-      'brief': 'Suno正在发布Studio 2.0 ，它进行了重大升级，使其更接近实际的数字音频工作站(DAW) ，而不是光秃秃的……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/979345/suno-studio-2-0-midi-chatbot-custom-effects',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '我看了一部人工智能生成的电影，最好的部分都是人类',
-      'brief': '想象一下，三个笨手笨脚的英国小伙子幻想着成为巨星，同时在一家肮脏的酒吧里喝了几杯啤酒……',
-      'url': 'https://www.theverge.com/entertainment/977994/higgsfield-ai-cully-hill-boys-black-list',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '谷歌甚至想在人工智能上获胜吗？',
-      'brief': '今天，在Decoder上，我正在与The Verge的高级人工智能记者Hayden Field谈论一个围绕技术发展的问题……',
-      'url': 'https://www.theverge.com/podcast/979370/google-deepmind-ai-race-lose-jeff-dean-demis-hassabis',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '微软正在将其Copilot应用程序与“超级应用程序”相结合',
-      'brief': '微软终于开始将其消费者和商业Copilot AI助手整合到一个单一的“超级应用”界面中，从...',
-      'url': 'https://www.theverge.com/tech/979466/microsoft-copilot-365-app-unified-experience',
-      'source': 'The Verge',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-13',
@@ -177,14 +193,6 @@ window.NEWS = {
       'title': '「美国豆包手机」全系涨价，新东西全留给了 Gemini',
       'brief': 'Pixel 11 不是一台想赢的手机，它是 Gemini 的身体。 作者｜张勇毅 编辑｜靖宇 纽约时间 8 月 12 日下午，谷歌在布鲁克林开完了今年的 Made by Google 发布会。 Pixel 11 全系四款手机、Pixel Watch 5，加上防丢器 Pixel T…',
       'url': 'http://www.geekpark.net/news/368766',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'Deepseek V4 Pro 正式版 API 上线，百万 Token 仅 6 元；腾讯计划近期发布 HY4 大模型；曝 iPhone18 至少涨价 2000 元起 | 极客早知道',
-      'brief': 'DeepSeek V4 Pro 正式版 API 更新上线，多项测试性能接近 Fable 5 8 月 13 日消息，DeepSeek V4 Pro 正式版正式发布，已更新至 API，调用模型名不变。 新版本增强了 Agent 能力，支持 Responses API 和 Codex…',
-      'url': 'http://www.geekpark.net/news/368747',
       'source': '极客公园',
       'type': '模型发布'
     }

@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-14",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 25 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 26 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -84,6 +84,16 @@ window.DEEPSWE = {
     'steps': 82
   },
   {
+    'name': 'GLM-5.3',
+    'effort': '最高（工具）',
+    'pass1': 66.9,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
+  },
+  {
     'name': 'gemini-3-7-flash',
     'effort': 'medium',
     'pass1': 65,
@@ -93,7 +103,7 @@ window.DEEPSWE = {
     'steps': 117
   },
   {
-    'name': 'deepseek-v4-pro',
+    'name': 'DeepSeek V4 Pro 0813',
     'effort': 'max',
     'pass1': 63,
     'ci': 6,
