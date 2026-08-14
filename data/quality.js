@@ -7,6 +7,17 @@ window.QUALITY = {
   'overallScore': 0.833,
   'sources': [
     {
+      'id': 'aa_official',
+      'name': 'AA Coding Agent Index (官方)',
+      'status': 'ok',
+      'modelCount': 10,
+      'updated': '2026-08-14',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'aaci',
       'name': 'AA Coding Agent Index',
       'status': 'error',
@@ -20,21 +31,10 @@ window.QUALITY = {
       ]
     },
     {
-      'id': 'aa_official',
-      'name': 'AA Coding Agent Index (官方)',
-      'status': 'ok',
-      'modelCount': 10,
-      'updated': '2026-08-14',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
-      'modelCount': 22,
+      'modelCount': 24,
       'updated': '2026-08-14',
       'ageDays': 0,
       'completeness': 1,
@@ -67,7 +67,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 61,
+      'modelCount': 60,
       'updated': '2026-08-14',
       'ageDays': 0,
       'completeness': 0,
@@ -176,7 +176,7 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'Muse Spark 1.2',
+      'canonId': 'Muse_spark_1_2',
       'name': 'muse-spark-1-2',
       'vendor': '其他',
       'sources': [
@@ -400,7 +400,7 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Claude Opus 5',
+      'canonId': 'Claude opus 5',
       'name': 'Claude Opus 5',
       'vendor': '其他',
       'sources': [
@@ -668,35 +668,39 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Qwen3.8-Max',
-      'name': 'qwen3-8-max',
+      'canonId': 'Qwen3.8 max',
+      'name': 'Qwen3.8-Max',
       'vendor': '其他',
       'sources': [
+        'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
+        'datalearner': 56.6,
         'deepswe_v11': 57,
         'vibecode': 64.7
       },
-      'mean': 60.9,
-      'stddev': 3.85,
+      'mean': 59.4,
+      'stddev': 3.73,
       'flag': 'ok'
     },
     {
-      'canonId': 'gemini-3-7-flash',
-      'name': 'gemini-3-7-flash',
+      'canonId': 'Gemini 3.7 flash',
+      'name': 'Gemini 3.7 Flash',
       'vendor': '其他',
       'sources': [
+        'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
+        'datalearner': 65.3,
         'deepswe_v11': 65,
         'vibecode': 70.4
       },
-      'mean': 67.7,
-      'stddev': 2.7,
+      'mean': 66.9,
+      'stddev': 2.48,
       'flag': 'ok'
     },
     {
@@ -798,9 +802,9 @@ window.QUALITY = {
     },
     'datalearner': {
       'rate': 1,
-      'total': 22,
-      'complete': 22,
-      'modelCount': 22,
+      'total': 24,
+      'complete': 24,
+      'modelCount': 24,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -822,11 +826,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 61,
+      'total': 60,
       'complete': 0,
-      'modelCount': 61,
+      'modelCount': 60,
       'missingFields': {
-        'score': 61
+        'score': 60
       },
       'flag': 'warn'
     },
@@ -840,15 +844,15 @@ window.QUALITY = {
     }
   },
   'timeliness': {
-    'aaci': {
-      'updated': '2026-07-11',
-      'ageDays': 34,
-      'flag': 'alert'
-    },
     'aa_official': {
       'updated': '2026-08-14',
       'ageDays': 0,
       'flag': 'ok'
+    },
+    'aaci': {
+      'updated': '2026-07-11',
+      'ageDays': 34,
+      'flag': 'alert'
     },
     'datalearner': {
       'updated': '2026-08-14',

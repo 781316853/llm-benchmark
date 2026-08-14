@@ -38,6 +38,22 @@ window.NEWS = {
     },
     {
       'date': '2026-08-14',
+      'title': '这家靠全景起步的公司，正在逐步让用户「忘掉相机」',
+      'brief': '你上一次打开全景相机，是什么时候？ 几个全景品类的老用户告诉我：全景相机很容易「吃灰」。他们当年冲着拍出酷炫的运动视频下单，到手之后发现不是没有相机，而是没那么多时间去滑雪、潜水、登山&hellip;&hellip;机器用了几次就放抽屉里了。 不过，更多最近一年入手全景相机的朋友…',
+      'url': 'http://www.geekpark.net/news/368847',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '阿里云，接得住中国智驾吗？',
+      'brief': '作者｜李苏 编辑｜靖宇 8 月，乌兰察布。 近 30 位来自核心车企和方案商的智驾关键力量，被请进了阿里巴巴数据中心。 这里承载着中国智能驾驶研发 60% 的算力。数据中心昼夜不停，像一颗强健搏动的心脏；而道路上智能驾驶的车辆每一次从容的转弯、精准的刹停、安稳的跟车，背后都可能是…',
+      'url': 'http://www.geekpark.net/news/368846',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
       'title': 'DeepSeek Harness 实测：一夜 5 万星，Agent 界的 Android 来了',
       'brief': 'Agent 行业需要一个 Android。 作者｜张勇毅 编辑｜靖宇 北京时间 8 月 13 日晚上八点半，DeepSeek 正式公布了它成立以来的第一个 Agent 产品，之前预热很久，大家期待值很高的 Deepseek Harness。 截至发稿， 它的 GitHub 仓库已…',
       'url': 'http://www.geekpark.net/news/368809',
@@ -102,27 +118,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-14',
-      'title': 'Rust 给 AI 编程立新规：能帮你看，不能替你写，用多了还会“熔断”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/4t8SKMGI28buD345I2Ta?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
       'title': 'AI 智能体开始参与交付，谁来证明它没有“动手脚”？IBM 与 Red Hat 给出一套新方案',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/AJz1m242RSJLpXpsC1eg?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '涛思数据创始人&CEO陶建辉博士确认出席AICon深圳，将分享“大模型在工业场景落地的挑战与实践”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Uiz6Ovab2eKT0T9q3Nzp?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     },
     {
       'date': '2026-08-13',

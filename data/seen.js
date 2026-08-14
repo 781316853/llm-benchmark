@@ -261,6 +261,8 @@ window.SEEN = {
     'datalearner|Grok 4.6': '2026-08-14',
     'llm|Grok 4.6 (high)': '2026-08-14',
     'llm|DeepSeek V4 Pro 0813 (max)': '2026-08-14',
-    'deepswe|DeepSeek V4 Pro 0813': '2026-08-14'
+    'deepswe|DeepSeek V4 Pro 0813': '2026-08-14',
+    'datalearner|Gemini 3.7 Flash': '2026-08-14',
+    'datalearner|Qwen3.8-Max': '2026-08-14'
   }
 };
