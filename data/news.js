@@ -14,6 +14,46 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-15',
+      'title': 'Debian已开始就AI/LLM贡献的未来进行投票',
+      'brief': 'Debian已开始就AI/LLM贡献的未来进行投票',
+      'url': 'https://lists.debian.org/debian-devel-announce/2026/08/msg00002.html',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-15',
+      'title': '怀疑法院使用人工智能，男子在文件中注入提示，试图赢得案件',
+      'brief': '怀疑法院使用人工智能，男子在文件中注入提示，试图赢得案件',
+      'url': 'https://arstechnica.com/tech-policy/2026/08/suspecting-court-of-using-ai-man-injected-prompts-in-filings-to-try-to-win-case/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-15',
+      'title': 'Show HN: Deltix –人工智能驱动测试',
+      'brief': 'Show HN: Deltix –人工智能驱动测试',
+      'url': 'https://app.deltix.ai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-15',
+      'title': '3 个月烧掉 105 亿，腾讯急了',
+      'brief': '头图来源：视觉中国 腾讯的 AI 故事，正在进入一个更昂贵的阶段。 8 月 12 日，腾讯发布 2026 年第二季度财报。本季度营收 2047.9 亿元，同比增长 11%；Non-IFRS 经营利润 756.4 亿元，同比增长 9%；Non-IFRS 归母净利润 684 亿元，同…',
+      'url': 'http://www.geekpark.net/news/368852',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-15',
+      'title': '当 AI 开始批量写 HTML，WorkBuddy 想解决「生成之后」的问题',
+      'brief': '头图来源：视觉中国 「人人都应该有一个 AI 工作台」，最近这段时间，网络上掀起了一阵搭建个人工作台的热潮。 先是一位百万级大网红用 WorkBuddy 几句话搭出了一个专属工作台，视频发出后，抖音、小红书的评论区随即变成了「大型交作业现场」&mdash;&mdash; 有人搭自…',
+      'url': 'http://www.geekpark.net/news/368851',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-15',
       'title': '智谱发布 GLM-5.3，编程能力更强；传苹果训练国内专用 AI 模型；微信：朋友圈现在、过去、未来都不会有二次编辑功能 | 极客早知道',
       'brief': '智谱正式发布 GLM-5.3，拥有更强编程能力 8 月 14 日，据介绍，与 GLM-5.2 相比，GLM-5.3 基座模型未变，但通过极致的后训练 Scaling 大大提高了模型的智能上界。 GLM-5.3 拥有更强的编程能力，在内部自建体感评测中较 GLM-5.2 提升 50…',
       'url': 'http://www.geekpark.net/news/368849',
@@ -46,30 +86,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-14',
-      'title': '马克·扎克伯格真的相信人工智能“适合所有人”吗？',
-      'brief': 'Meta本周发布了Glimmer ，这是一种任何人都可以下载并在自己的硬件上运行的开放式AI模型，与Muse Spark形成鲜明对比。',
-      'url': 'https://techcrunch.com/video/does-mark-zuckerberg-really-believe-ai-is-for-everyone/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '如果新的预测被证明是正确的，超大规模企业可能会后悔拥抱天然气',
-      'brief': '美国部分地区的天然气价格可能会上涨两倍，这可能会让超大规模企业背负巨额账单，为其人工智能数据中心提供动力……',
-      'url': 'https://techcrunch.com/2026/08/14/hyperscalers-might-regret-embracing-natural-gas-if-new-forecast-proves-correct/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'Meta的“开放式”人工智能， 2.5亿美元的交易出错了',
-      'brief': 'Meta本周发布了Glimmer ，这是一种任何人都可以下载并在自己的硬件上运行的开放式AI模型，与Muse Spark形成鲜明对比。',
-      'url': 'https://techcrunch.com/podcast/metas-open-ai-and-a-250m-deal-gone-very-wrong/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
       'title': '您现在可以关闭Google Gemini的可见水印',
       'brief': 'Google现在允许您从使用AI工具制作的图像、视频和音乐中删除可见的水印。通过更新，您可以切换……',
       'url': 'https://www.theverge.com/tech/980416/google-gemini-ai-watermarks-removal',
@@ -91,14 +107,6 @@ window.NEWS = {
       'url': 'https://cvd.z.ai',
       'source': 'Hacker News',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '手动AI',
-      'brief': '手动AI',
-      'url': 'https://www.byhand.ai/',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-14',
@@ -139,14 +147,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/368789',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'Zig 创始人直言，Bun 靠 Claude 生成的 Rust 重构版是“没人把关的烂代码”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/5JAOs4xARzjGb5sj2LxG?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     },
     {
       'date': '2026-08-14',
