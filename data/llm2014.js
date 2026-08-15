@@ -8,7 +8,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-14",
+  updated: "2026-08-15",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -728,6 +728,22 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'Grok 4.6 (high)',
+        'cells': [
+          'Skip',
+          'Pass',
+          'Skip',
+          'Skip',
+          '16/C+(17.67)',
+          '7/B+(18.69)',
+          '20/C+(23.19)',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Grok Build',
+        'think': 1
+      },
+      {
         'model': 'Grok 4.5 (high)',
         'cells': [
           '12/B+(55.98)',
@@ -736,7 +752,7 @@ window.LLM2014 = {
           'Skip',
           '16/B(23.12)',
           '7/B+(15.98)',
-          'Skip',
+          'Failed',
           'Skip'
         ],
         'unprompted': 1,

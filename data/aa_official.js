@@ -1,5 +1,5 @@
 // 新增数据源:Artificial Analysis 官方 Coding Agent Index(云端抓取)
-// 来源:https://artificialanalysis.ai/agents/coding-agents  (更新于 2026-08-14)
+// 来源:https://artificialanalysis.ai/agents/coding-agents  (更新于 2026-08-15)
 // 抓取方式:解析页面内嵌的 3 个 <script type='application/ld+json'> schema.org Dataset 块:
 //          Coding Agent Index(0-1)/ Time per Task(秒)/ Cost per Task($),按 label 合并三维。
 // label 格式:'<agent> - <model> (<effort>)';score=index*100(百分制);wallSec=平均任务耗时;costUsd=平均任务成本。
@@ -7,7 +7,7 @@
 window.AA_OFFICIAL = {
   'source': 'Artificial Analysis Coding Agent Index (Official)',
   'url': 'https://artificialanalysis.ai/agents/coding-agents',
-  'updated': '2026-08-14',
+  'updated': '2026-08-15',
   'version': '1.1',
   'componentsList': [
     'DeepSWE',
@@ -67,33 +67,33 @@ window.AA_OFFICIAL = {
       'ci': null
     },
     {
+      'agent': 'Muse Code',
+      'model': 'Muse Spark 1.2',
+      'effort': 'xhigh',
+      'score': 60.5,
+      'indexRaw': 0.6052533202832947,
+      'wallSec': 2519,
+      'costUsd': 2.33,
+      'ci': null
+    },
+    {
+      'agent': 'Opencode',
+      'model': 'Gemini 3.7 Flash',
+      'effort': 'high',
+      'score': 57.1,
+      'indexRaw': 0.5706854442224124,
+      'wallSec': 508,
+      'costUsd': 0,
+      'ci': null
+    },
+    {
       'agent': 'Codex',
       'model': 'DeepSeek V4 Flash',
       'effort': 'max',
       'score': 55.5,
-      'indexRaw': 0.5546772456564064,
+      'indexRaw': 0.5546772456564061,
       'wallSec': 877,
       'costUsd': 0.07,
-      'ci': null
-    },
-    {
-      'agent': 'Opencode',
-      'model': 'Muse Spark 1.1',
-      'effort': 'xhigh',
-      'score': 53.5,
-      'indexRaw': 0.5354216416163317,
-      'wallSec': 755,
-      'costUsd': 1.43,
-      'ci': null
-    },
-    {
-      'agent': 'Opencode',
-      'model': 'Gemini 3.6 Flash',
-      'effort': 'high',
-      'score': 45.6,
-      'indexRaw': 0.456272174870519,
-      'wallSec': 625,
-      'costUsd': 2.08,
       'ci': null
     },
     {
@@ -111,7 +111,7 @@ window.AA_OFFICIAL = {
       'model': 'Composer 2.5 Fast',
       'effort': null,
       'score': 38.2,
-      'indexRaw': 0.3819077223302172,
+      'indexRaw': 0.3819077223302175,
       'wallSec': 406,
       'costUsd': 0.55,
       'ci': null

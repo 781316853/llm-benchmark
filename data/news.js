@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-14',
+  'updated': '2026-08-15',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,12 +13,100 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-08-15',
+      'title': '智谱发布 GLM-5.3，编程能力更强；传苹果训练国内专用 AI 模型；微信：朋友圈现在、过去、未来都不会有二次编辑功能 | 极客早知道',
+      'brief': '智谱正式发布 GLM-5.3，拥有更强编程能力 8 月 14 日，据介绍，与 GLM-5.2 相比，GLM-5.3 基座模型未变，但通过极致的后训练 Scaling 大大提高了模型的智能上界。 GLM-5.3 拥有更强的编程能力，在内部自建体感评测中较 GLM-5.2 提升 50…',
+      'url': 'http://www.geekpark.net/news/368849',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-15',
+      'title': '33%增速、126%留存：Snowflake 用一份财报，把“AI落地难”讲成了印钞机故事',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/55mbodVKkHgiHYqfqkFG?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-15',
+      'title': 'Gemini 3.7 Flash 突袭：性能逼近旗舰、价格打“骨折”！！DeepMind新帅重画性价比斩杀线',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/plZY01etBHv3ETOYG0af?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '谷歌现在允许用户从其AI代中删除可见的水印',
+      'brief': '关闭此设置不会影响用于识别AI生成文件的不可见基准。',
+      'url': 'https://techcrunch.com/2026/08/14/google-will-now-allow-users-to-remove-visible-watermark-from-its-ai-generations/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '马克·扎克伯格真的相信人工智能“适合所有人”吗？',
+      'brief': 'Meta本周发布了Glimmer ，这是一种任何人都可以下载并在自己的硬件上运行的开放式AI模型，与Muse Spark形成鲜明对比。',
+      'url': 'https://techcrunch.com/video/does-mark-zuckerberg-really-believe-ai-is-for-everyone/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '如果新的预测被证明是正确的，超大规模企业可能会后悔拥抱天然气',
+      'brief': '美国部分地区的天然气价格可能会上涨两倍，这可能会让超大规模企业背负巨额账单，为其人工智能数据中心提供动力……',
+      'url': 'https://techcrunch.com/2026/08/14/hyperscalers-might-regret-embracing-natural-gas-if-new-forecast-proves-correct/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'Meta的“开放式”人工智能， 2.5亿美元的交易出错了',
+      'brief': 'Meta本周发布了Glimmer ，这是一种任何人都可以下载并在自己的硬件上运行的开放式AI模型，与Muse Spark形成鲜明对比。',
+      'url': 'https://techcrunch.com/podcast/metas-open-ai-and-a-250m-deal-gone-very-wrong/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '您现在可以关闭Google Gemini的可见水印',
+      'brief': 'Google现在允许您从使用AI工具制作的图像、视频和音乐中删除可见的水印。通过更新，您可以切换……',
+      'url': 'https://www.theverge.com/tech/980416/google-gemini-ai-watermarks-removal',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
       'date': '2026-08-14',
       'title': '苹果在阿里巴巴的帮助下为中国培训了自己的人工智能模型',
       'brief': '据报道，苹果已经与国内科技巨头阿里巴巴一起为中国市场培训了一个定制的人工智能模型，这是一种罕见的跨境合作伙伴关系。',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/980160/apple-intelligence-china-custom-ai-model-alibaba',
       'source': 'The Verge',
       'type': '公司动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'Z.ai安全披露',
+      'brief': 'Z.ai安全披露',
+      'url': 'https://cvd.z.ai',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-14',
+      'title': '手动AI',
+      'brief': '手动AI',
+      'url': 'https://www.byhand.ai/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-14',
+      'title': 'HashAgent –将AI代理共享为URL ，通过WebGPU在本地运行',
+      'brief': 'HashAgent –将AI代理共享为URL ，通过WebGPU在本地运行',
+      'url': 'https://hashagent.pages.dev/',
+      'source': 'Hacker News',
+      'type': '技术研究'
     },
     {
       'date': '2026-08-14',
@@ -30,27 +118,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-14',
-      'title': '甚至Claude也对Dario Amodei的妻子一无所知',
-      'brief': '甚至Claude也对Dario Amodei的妻子一无所知',
-      'url': 'https://www.wsj.com/tech/ai/claude-dario-amodei-wife-anthropic-e1eeda7d',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
       'title': '这家靠全景起步的公司，正在逐步让用户「忘掉相机」',
       'brief': '你上一次打开全景相机，是什么时候？ 几个全景品类的老用户告诉我：全景相机很容易「吃灰」。他们当年冲着拍出酷炫的运动视频下单，到手之后发现不是没有相机，而是没那么多时间去滑雪、潜水、登山&hellip;&hellip;机器用了几次就放抽屉里了。 不过，更多最近一年入手全景相机的朋友…',
       'url': 'http://www.geekpark.net/news/368847',
       'source': '极客公园',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '阿里云，接得住中国智驾吗？',
-      'brief': '作者｜李苏 编辑｜靖宇 8 月，乌兰察布。 近 30 位来自核心车企和方案商的智驾关键力量，被请进了阿里巴巴数据中心。 这里承载着中国智能驾驶研发 60% 的算力。数据中心昼夜不停，像一颗强健搏动的心脏；而道路上智能驾驶的车辆每一次从容的转弯、精准的刹停、安稳的跟车，背后都可能是…',
-      'url': 'http://www.geekpark.net/news/368846',
-      'source': '极客公园',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-14',
@@ -78,14 +150,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-14',
-      'title': 'Claude Code没有“魔法”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/aVJlp0XApUkyu6CNLOkL?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
       'title': 'DeepSeek 把 Harness 开源了：模型、工具、Agent Loop 全是插件',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/de9AljWc4ejW2KAyW8dD?utm_source=rss&utm_medium=article',
@@ -94,107 +158,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-14',
-      'title': '从“工具”到“同事”——AI 时代的产品进化',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/ABCk0CzDtSKMHbPXCdWF?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'DeepSeek + Pi 王炸组合跑赢 Claude Code？Pi创始人：这套组合我早押中了',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/XpFUaftcEE3iLgGzYGZi?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '从“会用”到“驾驭”：AI Coding 进入生产环境的真实碰撞',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/ydy2QDIAzQ1L314UH4qc?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
       'title': 'AI 智能体开始参与交付，谁来证明它没有“动手脚”？IBM 与 Red Hat 给出一套新方案',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/AJz1m242RSJLpXpsC1eg?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'Writer引入新的AI模型和升级后的线束以控制代币成本',
-      'brief': 'Writer表示，作为Z.ai开源模型GLM-5.2的培训后版本，新系统应提供部署就绪能力……',
-      'url': 'https://techcrunch.com/2026/08/13/writer-introduces-new-ai-model-and-upgraded-harness-to-contain-token-costs/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'OpenAI引入了“超快” ，这是一种新模式，使GPT-5.6 SOL以14倍的速度工作',
-      'brief': 'OpenAI正在推出其最新、最强大的模型的加速版本的预览版，以吸引企业用户。',
-      'url': 'https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '微软在合并其单独的Copilot应用程序时消除了不成功的AI功能',
-      'brief': '微软正在通过结合其消费者和商业应用程序来简化Copilot ，并放弃人工智能生成的播客、群聊、深度研究……',
-      'url': 'https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '人工智能文本水印的工作原理',
-      'brief': '人工智能文本水印的工作原理',
-      'url': 'https://declaude.org/watermarking/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '有人在法律文件中隐藏提示注入，告诉人工智能站在他们一边',
-      'brief': '有人在法律文件中隐藏提示注入，告诉人工智能站在他们一边',
-      'url': 'https://www.404media.co/person-hides-prompt-injection-in-legal-filing-telling-ai-to-side-with-them/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '文本AI水印将始终是微不足道的删除',
-      'brief': '文本AI水印将始终是微不足道的删除',
-      'url': 'https://www.seangoedecke.com/text-ai-watermarks/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '人工智能特工撒谎、欺骗和窃取。这是在拖延用户',
-      'brief': '人工智能特工撒谎、欺骗和窃取。这是在拖延用户',
-      'url': 'https://www.economist.com/business/2026/08/12/ai-agents-lie-cheat-and-steal-that-is-putting-off-users',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '实测正式版 DeepSeek V4 Pro，补齐 Agent 能力｜AI 上新',
-      'brief': '作者｜桦林舞王 编辑｜靖宇 没有预告，没有倒计时，甚至连更新日志都没来得及写好。DeepSeek V4 Pro 的正式版，就这么悄悄的来了。 8 月 13 日凌晨，DeepSeek 官网悄悄刷新了 API 文档。模型名还是那个 deepseek-v4-pro，但 fingerpr…',
-      'url': 'http://www.geekpark.net/news/368777',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '「美国豆包手机」全系涨价，新东西全留给了 Gemini',
-      'brief': 'Pixel 11 不是一台想赢的手机，它是 Gemini 的身体。 作者｜张勇毅 编辑｜靖宇 纽约时间 8 月 12 日下午，谷歌在布鲁克林开完了今年的 Made by Google 发布会。 Pixel 11 全系四款手机、Pixel Watch 5，加上防丢器 Pixel T…',
-      'url': 'http://www.geekpark.net/news/368766',
-      'source': '极客公园',
-      'type': '模型发布'
     }
   ]
 };
