@@ -88,6 +88,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'DeepSeek-V4-Pro',
+      'score': 62.7,
+      'mode': '极高强度思考（工具）',
+      'date': '2026-08-13',
+      'params': '16000亿',
+      'license': '免费商用'
+    },
+    {
       'name': 'Claude Opus 4.8',
       'score': 59,
       'mode': '深度思考模式（工具）',

@@ -14,6 +14,22 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-16',
+      'title': '流氓人工智能不再是科幻小说',
+      'brief': 'The Stepback是一份每周时事通讯，详细介绍了科技界的一个重要故事。有关人工智能安全的更多信息，请关注Robert Hart……',
+      'url': 'https://www.theverge.com/column/980337/rogue-ai-science-fiction-openai',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-16',
+      'title': 'ChatGPT在一年内失去了22分的网络份额',
+      'brief': 'ChatGPT在一年内失去了22分的网络份额',
+      'url': 'https://aicharts.grok.me/c/market-share',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-16',
       'title': 'Anthropic 评估 AI 风险上升, 暂不公开更强模型；刘炽平：微信将成为 AI 为先的生态系统；全网吐槽《牛来》票房逆袭',
       'brief': '2026 世界机器人大会展位图揭晓：8 月 19 日开幕，宇树科技、优必选等参展 8 月 16 日消息，2026 世界机器人大会将于 8 月 19 日至 23 日在北京经济技术开发区北人亦创国际会展中心举行。近日，2026 世界机器人大会展位图全揭晓。 作为大会展览的重要新增空间…',
       'url': 'http://www.geekpark.net/news/368854',
@@ -62,19 +78,19 @@ window.NEWS = {
     },
     {
       'date': '2026-08-15',
-      'title': '药物发现中的人工智能–它是什么，我们的立场和前进的道路',
-      'brief': '药物发现中的人工智能–它是什么，我们的立场和前进的道路',
-      'url': 'https://www.science.org/content/blog-post/so-how-ai-drug-discovery-doing-really',
+      'title': '人工智能辅助GPU移植25万行传统天气模拟代码',
+      'brief': '人工智能辅助GPU移植25万行传统天气模拟代码',
+      'url': 'https://arxiv.org/abs/2608.13122',
       'source': 'Hacker News',
       'type': '行业动态'
     },
     {
       'date': '2026-08-15',
-      'title': '人工智能可以获得比人类大脑大得多的工作记忆',
-      'brief': '人工智能可以获得比人类大脑大得多的工作记忆',
-      'url': 'https://davidepiffer.com/p/ai-isnt-outthinking-mathematicians',
+      'title': '美国告诉合作伙伴，他们必须在与中国的人工智能竞赛中选边站',
+      'brief': '美国告诉合作伙伴，他们必须在与中国的人工智能竞赛中选边站',
+      'url': 'https://www.reuters.com/world/china/us-tell-partners-they-must-pick-sides-ai-race-with-china-2026-08-14/',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '公司动态'
     },
     {
       'date': '2026-08-15',

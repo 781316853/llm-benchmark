@@ -267,6 +267,8 @@ window.SEEN = {
     'deepswe|Qwen3.8-27B': '2026-08-15',
     'aa_official|Muse Spark 1.2': '2026-08-15',
     'aa_official|Gemini 3.7 Flash': '2026-08-15',
-    'datalearner|Qwen3.8-27B': '2026-08-15'
+    'datalearner|Qwen3.8-27B': '2026-08-15',
+    'deepswe|DeepSeek-V4-Pro': '2026-08-16',
+    'datalearner|DeepSeek-V4-Pro': '2026-08-16'
   }
 };

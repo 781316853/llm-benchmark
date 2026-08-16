@@ -10,7 +10,7 @@ window.QUALITY = {
       'id': 'aa_official',
       'name': 'AA Coding Agent Index (官方)',
       'status': 'ok',
-      'modelCount': 10,
+      'modelCount': 9,
       'updated': '2026-08-16',
       'ageDays': 0,
       'completeness': 1,
@@ -34,7 +34,7 @@ window.QUALITY = {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
-      'modelCount': 25,
+      'modelCount': 26,
       'updated': '2026-08-16',
       'ageDays': 0,
       'completeness': 1,
@@ -45,7 +45,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 27,
+      'modelCount': 28,
       'updated': '2026-08-16',
       'ageDays': 0,
       'completeness': 1,
@@ -89,18 +89,22 @@ window.QUALITY = {
   'consistency': [
     {
       'canonId': 'DeepSeek V4 Pro',
-      'name': 'deepseek-v4-pro',
+      'name': 'DeepSeek-V4-Pro',
       'vendor': 'DeepSeek',
       'sources': [
+        'datalearner',
+        'deepswe_v11',
         'deepswe_v10',
         'vibecode'
       ],
       'scores': {
+        'datalearner': 62.7,
+        'deepswe_v11': 62.7,
         'deepswe_v10': 8,
         'vibecode': 49.93
       },
-      'mean': 29,
-      'stddev': 20.97,
+      'mean': 45.8,
+      'stddev': 22.46,
       'flag': 'alert'
     },
     {
@@ -171,6 +175,22 @@ window.QUALITY = {
       },
       'mean': 63.1,
       'stddev': 12.88,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Muse_spark_1_2',
+      'name': 'muse-spark-1-2',
+      'vendor': '其他',
+      'sources': [
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 55,
+        'vibecode': 79.1
+      },
+      'mean': 67.1,
+      'stddev': 12.05,
       'flag': 'alert'
     },
     {
@@ -245,24 +265,6 @@ window.QUALITY = {
       },
       'mean': 67.2,
       'stddev': 10.64,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'Muse Spark 1.2',
-      'name': 'Muse Spark 1.2',
-      'vendor': '其他',
-      'sources': [
-        'aa_official',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'aa_official': 60.5,
-        'deepswe_v11': 55,
-        'vibecode': 79.1
-      },
-      'mean': 64.9,
-      'stddev': 10.31,
       'flag': 'alert'
     },
     {
@@ -810,25 +812,25 @@ window.QUALITY = {
   'completeness': {
     'aa_official': {
       'rate': 1,
-      'total': 10,
-      'complete': 10,
-      'modelCount': 10,
+      'total': 9,
+      'complete': 9,
+      'modelCount': 9,
       'missingFields': {},
       'flag': 'ok'
     },
     'datalearner': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 26,
+      'complete': 26,
+      'modelCount': 26,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 27,
-      'complete': 27,
-      'modelCount': 27,
+      'total': 28,
+      'complete': 28,
+      'modelCount': 28,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -912,8 +914,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'deepswe_v10,vibecode',
-      'message': 'deepseek-v4-pro 跨源分数标准差 20.97(>10)'
+      'sourceId': 'datalearner,deepswe_v11,deepswe_v10,vibecode',
+      'message': 'DeepSeek-V4-Pro 跨源分数标准差 22.46(>10)'
     },
     {
       'level': 'error',
@@ -942,6 +944,12 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
+      'sourceId': 'deepswe_v11,vibecode',
+      'message': 'muse-spark-1-2 跨源分数标准差 12.05(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
       'sourceId': 'deepswe_v10,vibecode',
       'message': 'gpt-5-4-mini 跨源分数标准差 11.99(>10)'
     },
@@ -962,12 +970,6 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'datalearner,deepswe_v11,deepswe_v10,vibecode,vibecode',
       'message': 'Claude Opus 4.8 跨源分数标准差 10.64(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'aa_official,deepswe_v11,vibecode',
-      'message': 'Muse Spark 1.2 跨源分数标准差 10.31(>10)'
     }
   ]
 };
