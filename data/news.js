@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-16',
+  'updated': '2026-08-17',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,6 +13,78 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-08-17',
+      'title': '问界「童车」上市，华为联合设计；DeepSeek 涨价策略今日实行；大学生用 AI 人脸视频盗刷 5 万元被判刑',
+      'brief': 'IPO 前 Anthropic CEO 达里奥 &middot; 阿莫迪罕见发长文回应质疑，预告未来 5-10 年 AI 将治愈多数疾病 Anthropic CEO 达里奥 &middot; 阿莫迪（Dario Amodei）几乎从不碰社交媒体。但就在 IPO 估值被推到 2 万…',
+      'url': 'http://www.geekpark.net/news/368859',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': 'Netflix详述其基于Triton与vLLM的内部LLM服务平台',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/J9Zi9LELcpxFRe23PHdY?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '中行回应“Token贷”：已投放3户800万元；头部AI大厂员工：90小时工作制成常态；宇树科技中签者不敢发朋友圈：怕被嫉妒｜AI 周报',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/GzEYHpjhJafhihcYc58x?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '编程能力提高50%！GLM-5.3 满分通过了GPT-5.6给的Coding 测试',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/xWyWwu4ZNptlhpb15tia?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-16',
+      'title': '据报道， Stripe将以$ 70亿+的价格收购AI网关初创公司OpenRouter',
+      'brief': 'OpenRouter的首席执行官最近将这家初创公司描述为Stripe for AI。',
+      'url': 'https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-16',
+      'title': '为什么人们不购买马克·扎克伯格的人工智能未来',
+      'brief': '在最新一期的Equity播客中，我们讨论了为什么不是每个人都会购买扎克伯格的愿景。',
+      'url': 'https://techcrunch.com/2026/08/16/why-people-arent-buying-mark-zuckerbergs-ai-future/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-16',
+      'title': 'Anthropic首席执行官表示，人工智能的反弹“从根本上是一场信任危机”',
+      'brief': '达里奥·阿莫代（ Dario Amodei ）正在反驳这样一种观点，即他一直在描绘一幅过于悲观的人工智能图景。',
+      'url': 'https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-16',
+      'title': '据报道， OpenAI解散了其准备团队',
+      'brief': '据英国《金融时报》报道， OpenAI于上月底解散了其准备团队。准备团队的工作是……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/980817/openai-disbands-preparedness-team',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-16',
+      'title': 'ChatGPT的计算机历史记录会跟踪您的点击和击键情况',
+      'brief': 'ChatGPT在macOS上的桌面应用程序具有名为“计算机历史记录”的新功能，可将您的操作转化为训练数据，了解您的工作方式……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/980742/chatgpts-computer-history-tracks-your-clicks-and-keystrokes',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
       'date': '2026-08-16',
       'title': '流氓人工智能不再是科幻小说',
       'brief': 'The Stepback是一份每周时事通讯，详细介绍了科技界的一个重要故事。有关人工智能安全的更多信息，请关注Robert Hart……',
@@ -22,11 +94,19 @@ window.NEWS = {
     },
     {
       'date': '2026-08-16',
-      'title': 'ChatGPT在一年内失去了22分的网络份额',
-      'brief': 'ChatGPT在一年内失去了22分的网络份额',
-      'url': 'https://aicharts.grok.me/c/market-share',
+      'title': '年轻人如此热情地憎恨人工智能首席执行官，以至于几乎难以置信',
+      'brief': '年轻人如此热情地憎恨人工智能首席执行官，以至于几乎难以置信',
+      'url': 'https://futurism.com/artificial-intelligence/young-people-ai-ceos-executives-poll',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-16',
+      'title': 'MathCode ，数学编码代理',
+      'brief': 'MathCode ，数学编码代理',
+      'url': 'https://math-ai-org.github.io/mathcode/',
+      'source': 'Hacker News',
+      'type': '技术研究'
     },
     {
       'date': '2026-08-16',
@@ -35,110 +115,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/368854',
       'source': '极客公园',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-16',
-      'title': '从代码生成到研发闭环：AI Coding 在金融科技 SDLC 中的落地实践｜AICon深圳',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/LflwIiIVHRZlakxDgexC?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '一位女士声称她的继父使用Grok将童年照片转化为清晰的图像',
-      'brief': '这名妇女声称，人工智能工具正在“夺走日常生活，并将其变成对儿童的性虐待”。',
-      'url': 'https://techcrunch.com/2026/08/15/woman-claims-her-stepfather-used-grok-to-transform-childhood-photo-into-explicit-imagery/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': 'Anthropic分享了有关Claude的新水印如何工作的更多详细信息',
-      'brief': '水印的实际工作原理是什么？是否可以通过编辑将其隐藏？这对代码有何影响？',
-      'url': 'https://techcrunch.com/2026/08/15/anthropic-shares-more-details-about-how-claudes-new-watermarks-will-work/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-15',
-      'title': 'SpaceX正式完成对Cursor的收购',
-      'brief': '人工智能编程初创公司Cursor现在正式成为SpaceX的一部分。',
-      'url': 'https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '通过作为聊天机器人的角色扮演来嘲笑人工智能的代价',
-      'brief': '您的AI Slop Bores Me的简单性非常出色。有两个选项卡：人类和LARP作为人工智能。您可以在一侧输入请求。On the o…',
-      'url': 'https://www.theverge.com/entertainment/980502/roleplay-as-an-ai-chatbot',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '人工智能辅助GPU移植25万行传统天气模拟代码',
-      'brief': '人工智能辅助GPU移植25万行传统天气模拟代码',
-      'url': 'https://arxiv.org/abs/2608.13122',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '美国告诉合作伙伴，他们必须在与中国的人工智能竞赛中选边站',
-      'brief': '美国告诉合作伙伴，他们必须在与中国的人工智能竞赛中选边站',
-      'url': 'https://www.reuters.com/world/china/us-tell-partners-they-must-pick-sides-ai-race-with-china-2026-08-14/',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': 'OpenAI人才外流在IPO前引发“巨大危险信号”',
-      'brief': 'OpenAI人才外流在IPO前引发“巨大危险信号”',
-      'url': 'https://www.cnbc.com/2026/08/14/open-ai-ipo-red-flag.html',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': 'Yadda 3.0.0 ：人工智能代理时代的BDD',
-      'brief': 'Yadda 3.0.0 ：人工智能代理时代的BDD',
-      'url': 'http://www.stephen-cresswell.com/2026/08/15/Yadda-3.0.0-BDD-in-the-Age-of-AI-Agents.html',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '3 个月烧掉 105 亿，腾讯急了',
-      'brief': '头图来源：视觉中国 腾讯的 AI 故事，正在进入一个更昂贵的阶段。 8 月 12 日，腾讯发布 2026 年第二季度财报。本季度营收 2047.9 亿元，同比增长 11%；Non-IFRS 经营利润 756.4 亿元，同比增长 9%；Non-IFRS 归母净利润 684 亿元，同…',
-      'url': 'http://www.geekpark.net/news/368852',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '智谱发布 GLM-5.3，编程能力更强；传苹果训练国内专用 AI 模型；微信：朋友圈现在、过去、未来都不会有二次编辑功能 | 极客早知道',
-      'brief': '智谱正式发布 GLM-5.3，拥有更强编程能力 8 月 14 日，据介绍，与 GLM-5.2 相比，GLM-5.3 基座模型未变，但通过极致的后训练 Scaling 大大提高了模型的智能上界。 GLM-5.3 拥有更强的编程能力，在内部自建体感评测中较 GLM-5.2 提升 50…',
-      'url': 'http://www.geekpark.net/news/368849',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-15',
-      'title': 'Cloudflare Computer 发布：让 AI 智能体拥有持久化运行环境',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/RaKIH7E4lA9uQ4Iasltb?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-15',
-      'title': '33%增速、126%留存：Snowflake 用一份财报，把“AI落地难”讲成了印钞机故事',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/55mbodVKkHgiHYqfqkFG?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     }
   ]
 };

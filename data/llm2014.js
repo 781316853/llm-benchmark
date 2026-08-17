@@ -8,7 +8,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-16",
+  updated: "2026-08-17",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -782,10 +782,10 @@ window.LLM2014 = {
           'Skip',
           'Skip',
           'Skip',
-          '14/B(2.07)',
-          '16/C(1.95)',
+          '14/B(13.46)',
+          '16/C(12.73)',
           'Failed',
-          '16/B(2.73)'
+          '16/B(18.64)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -814,8 +814,8 @@ window.LLM2014 = {
           '8/A(5.33)',
           '9/A(7.62)',
           '44/D+(12.41)',
-          '17/B(1.61)',
-          '24/D+(1.10)',
+          '17/B(7.38)',
+          '24/D+(4.79)',
           'Failed',
           'Failed'
         ],
