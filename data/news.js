@@ -14,6 +14,86 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-18',
+      'title': '谷歌的宠物记忆忘记了我的猫是谁',
+      'brief': '我的智能家居做的最好的事情之一就是帮助我照顾我的宠物，监控摄像头对于跟踪我的……特别有用',
+      'url': 'https://www.theverge.com/tech/981269/google-home-gemini-pet-memory-nest-camera-review',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-18',
+      'title': 'ChatGPT正在为青少年提供专用模式',
+      'brief': 'OpenAI正在为青少年推出专用的ChatGPT模式，将现有的青少年保障措施和新的安全功能结合在一起。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/981333/openai-chatgpt-teen-mode',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-18',
+      'title': '谷歌在拍卖会上购买了坠毁的航空公司Spirit的数据，因为人工智能',
+      'brief': '谷歌在拍卖会上购买了坠毁的航空公司Spirit的数据，因为人工智能',
+      'url': 'https://www.theregister.com/ai-and-ml/2026/08/18/google-buys-crashed-airline-spirits-data-at-auction-because-ai/5288962',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-18',
+      'title': 'Snowflake CoCo AI 成本优化指南：7 个关键方法 | 技术实践',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/pOfV96f9DHG9Cw1KQAZB?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-18',
+      'title': '共识之外：Linux 生态系统中 AI 政策的碎片化现象',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/jsqPaMGuPXFkhifJmTym?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-18',
+      'title': '阿里云的野心，不在 Agent Builder',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/QekQuwv8UhxAcrOFgKM8?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-18',
+      'title': '豆包视频通话升级，火山引擎多模态传输系统提供技术支撑',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/kJK3qG9m7UEYtf7siCgU?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-18',
+      'title': '世界人工智能开源大赛（GOAI）初赛评审正式启动，全球AI创新项目进入首轮遴选',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/gC7CU8lbYmha1QPMvqP7?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-18',
+      'title': '模型跑起来之后：视觉 AI 还需要哪些系统能力？',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/LLrRNFqoYHPWGNSPslWm?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-18',
+      'title': 'Cloudflare 推出 Precursor，通过持续性行为分析识别恶意机器人与 AI 自动化程序',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/7QNfsJhpgskMtVllCpWJ?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-18',
       'title': 'Agentic AI 在普惠健康险的创新与实践｜AICon深圳',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/3MxCwCyMpwcWjpvKJ7u4?utm_source=rss&utm_medium=article',
@@ -27,22 +107,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '人工智能自动化初创公司Relay关闭，员工加入谷歌Chrome团队',
-      'brief': '“我们有一些非常雄心勃勃的计划来帮助您在Chrome中使用人工智能来完成任务，我很快就会分享更多信息。” Jacob Bank, R…',
-      'url': 'https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '最初销售书籍的亚马逊正在销毁罕见的文本来训练人工智能',
-      'brief': '稀有书籍对于培训LLM非常有价值，因为这些模型已经对在线可用的内容进行了培训。',
-      'url': 'https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-17',
@@ -62,35 +126,19 @@ window.NEWS = {
     },
     {
       'date': '2026-08-17',
+      'title': 'Whisker的人工智能垃圾机器人认为我的猫交换了身体',
+      'brief': '近年来宠物科技领域最伟大的发明是垃圾机器人。一台舀猫咪粪便的机器，这样你就不必-什么...',
+      'url': 'https://www.theverge.com/tech/978323/whisker-litter-robot-5-pro-review',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-17',
       'title': 'Anthropic解释了Claude的隐形文字水印将如何工作',
       'brief': 'Anthropic已经澄清了它计划如何将隐形水印应用于Claude生成的文本，以符合欧洲的AI Transpa……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/980869/anthropic-claude-watermarks-synthid-text-system',
       'source': 'The Verge',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '我的朋友都讨厌人工智能；我刚刚加入了一家人工智能初创公司',
-      'brief': '我的朋友都讨厌人工智能；我刚刚加入了一家人工智能初创公司',
-      'url': 'https://www.fast.ai/posts/2026-08-18-returning-to-AI/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-17',
-      'title': 'GPT-5.6 Sol定价削减50%',
-      'brief': 'GPT-5.6 Sol定价削减50%',
-      'url': 'https://openrouter.ai/openai/gpt-5.6-sol',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '以色列创建假智库，可能试图欺骗人工智能聊天机器人',
-      'brief': '以色列创建假智库，可能试图欺骗人工智能聊天机器人',
-      'url': 'https://responsiblestatecraft.org/israel-influence-chatgpt/',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-17',
@@ -114,38 +162,6 @@ window.NEWS = {
       'brief': '作者｜Li Yuan 编辑｜郑玄 会算命的非遗挂件？专挑膝盖下手的外骨骼？会跳的机器人？ 8 月 7 日，地瓜机器人办的这场闭门路演「地心引力 DemoDay 2026」，十个项目轮番上台，画风一个比一个野。 有做具身智能的，也有做智能硬件的，大部分都还初具雏形：一些项目，半年前…',
       'url': 'http://www.geekpark.net/news/368885',
       'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '问界「童车」上市，华为联合设计；DeepSeek 涨价策略今日实行；大学生用 AI 人脸视频盗刷 5 万元被判刑',
-      'brief': 'IPO 前 Anthropic CEO 达里奥 &middot; 阿莫迪罕见发长文回应质疑，预告未来 5-10 年 AI 将治愈多数疾病 Anthropic CEO 达里奥 &middot; 阿莫迪（Dario Amodei）几乎从不碰社交媒体。但就在 IPO 估值被推到 2 万…',
-      'url': 'http://www.geekpark.net/news/368859',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-17',
-      'title': 'WorkSwarm：引领办公智能体新范式，让AI从一个助手，进化为一支与你并肩作战的团队',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/77NthDLZNgqTgBuMKsQh?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-17',
-      'title': 'AI 智能体改变代码评审逻辑，Rootly 废止小 PR 规则',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/FzWV9Jzv2CPK8yjLPxdA?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '甲骨文企业AI战略曝光：Agent进数据库、GPU跑满、多云砍掉流量费',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/7wuQJXJqFVR3rZb8Usyg?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
       'type': '技术研究'
     }
   ]
