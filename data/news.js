@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-17',
+  'updated': '2026-08-18',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,6 +13,54 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-08-18',
+      'title': 'Agentic AI 在普惠健康险的创新与实践｜AICon深圳',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/3MxCwCyMpwcWjpvKJ7u4?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-17',
+      'title': 'Anthropic的年化收入激增至$ 650亿',
+      'brief': '这家模型制造商在两个月内增加了180亿美元的年化收入。',
+      'url': 'https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '人工智能自动化初创公司Relay关闭，员工加入谷歌Chrome团队',
+      'brief': '“我们有一些非常雄心勃勃的计划来帮助您在Chrome中使用人工智能来完成任务，我很快就会分享更多信息。” Jacob Bank, R…',
+      'url': 'https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '最初销售书籍的亚马逊正在销毁罕见的文本来训练人工智能',
+      'brief': '稀有书籍对于培训LLM非常有价值，因为这些模型已经对在线可用的内容进行了培训。',
+      'url': 'https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': 'Groq筹集了3.5亿美元，以推动其从人工智能芯片到新云的转变',
+      'brief': 'Groq以35亿美元的估值筹集了3.5亿美元，因为这家前人工智能芯片制造商转向了新云业务，并扩大了其由Nvidia提供支持的业务。',
+      'url': 'https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '英伟达向OpenAI项目背后的软银数据中心开发商投资15亿$',
+      'brief': '英伟达对软银数据中心开发商的投资将保证其芯片为OpenAI数据中心提供动力。',
+      'url': 'https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
       'date': '2026-08-17',
       'title': 'Anthropic解释了Claude的隐形文字水印将如何工作',
       'brief': 'Anthropic已经澄清了它计划如何将隐形水印应用于Claude生成的文本，以符合欧洲的AI Transpa……',
@@ -22,19 +70,35 @@ window.NEWS = {
     },
     {
       'date': '2026-08-17',
-      'title': 'HackEurope 2026 ：对人工智能和黑客马拉松的简短咆哮',
-      'brief': 'HackEurope 2026 ：对人工智能和黑客马拉松的简短咆哮',
-      'url': 'https://duti.dev/blog/2026/spr/',
+      'title': '我的朋友都讨厌人工智能；我刚刚加入了一家人工智能初创公司',
+      'brief': '我的朋友都讨厌人工智能；我刚刚加入了一家人工智能初创公司',
+      'url': 'https://www.fast.ai/posts/2026-08-18-returning-to-AI/',
       'source': 'Hacker News',
       'type': '行业动态'
     },
     {
       'date': '2026-08-17',
-      'title': '被 AI 碾压 30 年后，人们重新爱上了下棋',
-      'brief': '作者｜Techno 之王 编辑｜靖宇 1997 年 5 月 11 日，纽约。 IBM 的超级计算机「深蓝」在六局对决中，以 3.5 比 2.5 击败国际象棋世界冠军卡斯帕罗夫。 这是人类第一次在智力游戏的最高殿堂输给机器。 那场比赛的最后一局只用了 19 步。卡斯帕罗夫在一个经典…',
-      'url': 'http://www.geekpark.net/news/368897',
-      'source': '极客公园',
+      'title': 'GPT-5.6 Sol定价削减50%',
+      'brief': 'GPT-5.6 Sol定价削减50%',
+      'url': 'https://openrouter.ai/openai/gpt-5.6-sol',
+      'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '以色列创建假智库，可能试图欺骗人工智能聊天机器人',
+      'brief': '以色列创建假智库，可能试图欺骗人工智能聊天机器人',
+      'url': 'https://responsiblestatecraft.org/israel-influence-chatgpt/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-17',
+      'title': '宇树发布「机器超人」：原地跳高 2m；豆包上线新功能，手机可远程控制电脑；吉利汽车架构调整，李书福辞任董事会主席｜极客早知道',
+      'brief': '宇树科技发布「超人」机器人，并定 8 月 19 日科创板上市 8 月 17 日，宇树科技发布了一款人形机器人新品「超人」，原地跳高 2m，极限速度 12.66m/s（0.85m 腿长），超越全世界全人类原地跳高和奔跑速度纪录。 宇树科技表示，全新整机刚用 3 个多月研发出来，未来…',
+      'url': 'http://www.geekpark.net/news/368929',
+      'source': '极客公园',
+      'type': '模型发布'
     },
     {
       'date': '2026-08-17',
@@ -62,14 +126,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-17',
-      'title': '当 AI 遇见 FinOps：Snowflake 如何为 AI 时代重新定义成本管理 | 技术趋势',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/0MLCGOPXzzILTxB8CORk?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-17',
       'title': 'WorkSwarm：引领办公智能体新范式，让AI从一个助手，进化为一支与你并肩作战的团队',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/77NthDLZNgqTgBuMKsQh?utm_source=rss&utm_medium=article',
@@ -86,67 +142,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-17',
-      'title': '当操作系统开始“理解意图”：鸿蒙 AI 如何改变开发者的工作方式',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/FEdxCeBCNO8DENqbGNZ0?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-17',
-      'title': 'Vibe check：你的AI产品真的能落地吗',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/urRl1WXpPSQQd1A9hN5f?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-17',
       'title': '甲骨文企业AI战略曝光：Agent进数据库、GPU跑满、多云砍掉流量费',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/7wuQJXJqFVR3rZb8Usyg?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-17',
-      'title': '编程能力提高50%！GLM-5.3 满分通过了GPT-5.6给的Coding 测试',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/xWyWwu4ZNptlhpb15tia?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-16',
-      'title': '据报道， Stripe将以$ 70亿+的价格收购AI网关初创公司OpenRouter',
-      'brief': 'OpenRouter的首席执行官最近将这家初创公司描述为Stripe for AI。',
-      'url': 'https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-16',
-      'title': 'Anthropic首席执行官表示，人工智能的反弹“从根本上是一场信任危机”',
-      'brief': '达里奥·阿莫代（ Dario Amodei ）正在反驳这样一种观点，即他一直在描绘一幅过于悲观的人工智能图景。',
-      'url': 'https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-16',
-      'title': '流氓人工智能不再是科幻小说',
-      'brief': 'The Stepback是一份每周时事通讯，详细介绍了科技界的一个重要故事。有关人工智能安全的更多信息，请关注Robert Hart……',
-      'url': 'https://www.theverge.com/column/980337/rogue-ai-science-fiction-openai',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-16',
-      'title': 'Anthropic首席执行官表示，人工智能赢得公众的方法是治愈癌症',
-      'brief': 'Anthropic首席执行官表示，人工智能赢得公众的方法是治愈癌症',
-      'url': 'https://www.businessinsider.com/anthropic-ceo-dario-amodei-ai-public-opinion-cure-cancer-2026-8',
-      'source': 'Hacker News',
-      'type': '公司动态'
     }
   ]
 };
