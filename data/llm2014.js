@@ -8,7 +8,7 @@
 window.LLM2014 = {
   source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-18",
+  updated: "2026-08-19",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
@@ -728,6 +728,22 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'Gemini 3.7 Flash (high)',
+        'cells': [
+          'Skip',
+          '12/B(38.76)',
+          'Skip',
+          'Skip',
+          '14/B(9.38)',
+          '8/B(16.84)',
+          '14/B(14.28)',
+          '34/D(28.93)'
+        ],
+        'unprompted': 4,
+        'ide': 'OpenCode CLI',
+        'think': 1
+      },
+      {
         'model': 'Grok 4.6 (high)',
         'cells': [
           'Skip',
@@ -888,22 +904,6 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'DeepSeek V4 Pro preview(max)',
-        'cells': [
-          '16/C',
-          '21/C',
-          '36/C',
-          'Failed(0/9)',
-          '31/C(1.38)',
-          '28/C(1.75)',
-          'Failed',
-          'Skip'
-        ],
-        'unprompted': 0,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
         'model': 'MiniMax-M3',
         'cells': [
           'Skip',
@@ -916,22 +916,6 @@ window.LLM2014 = {
           'Skip'
         ],
         'unprompted': 1,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
-        'model': 'Qwen3.6-Plus',
-        'cells': [
-          'Failed(5/12)',
-          '43/D+',
-          'Failed(3/9)',
-          'Failed(0/9)',
-          'Skip',
-          'Skip',
-          'Skip',
-          'Skip'
-        ],
-        'unprompted': 0,
         'ide': 'Claude Code',
         'think': 1
       }
