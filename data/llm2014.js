@@ -712,6 +712,22 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'GLM-5.3 (max)',
+        'cells': [
+          'Skip',
+          'Pass',
+          'Pass',
+          'Pending',
+          '8/B+(11.48)',
+          '7/A(25.25)',
+          'Pending',
+          '30/D(83.29)'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
         'model': 'Qwen3.8-Max (max)',
         'cells': [
           'Skip',
