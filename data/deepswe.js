@@ -48,6 +48,15 @@ window.DEEPSWE = {
     'steps': 76
   },
   {
+    'name': 'glm-5-3',
+    'effort': 'max',
+    'pass1': 69,
+    'ci': 3,
+    'cost': 3.99,
+    'outTok': 80436,
+    'steps': 124
+  },
+  {
     'name': 'kimi-k3',
     'effort': 'max',
     'pass1': 69,
@@ -82,16 +91,6 @@ window.DEEPSWE = {
     'cost': 7.23,
     'outTok': 46295,
     'steps': 82
-  },
-  {
-    'name': 'GLM-5.3',
-    'effort': '最高（工具）',
-    'pass1': 66.9,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
   },
   {
     'name': 'gemini-3-7-flash',

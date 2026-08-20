@@ -286,6 +286,26 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'DeepSeek V4 Flash',
+      'name': 'DeepSeek V4 Flash',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'aa_official',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'aa_official': 49.8,
+        'datalearner': 54.4,
+        'deepswe_v11': 53,
+        'vibecode': 74.74
+      },
+      'mean': 58,
+      'stddev': 9.82,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'DeepSeek V4 Pro 0813',
       'name': 'DeepSeek V4 Pro 0813',
       'vendor': 'DeepSeek',
@@ -312,13 +332,13 @@ window.QUALITY = {
         'vibecode'
       ],
       'scores': {
-        'aa_official': 65.8,
+        'aa_official': 67.2,
         'datalearner': 70,
         'deepswe_v11': 70,
         'vibecode': 90.35
       },
-      'mean': 74,
-      'stddev': 9.57,
+      'mean': 74.4,
+      'stddev': 9.29,
       'flag': 'warn'
     },
     {
@@ -342,46 +362,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'DeepSeek V4 Flash',
-      'name': 'DeepSeek V4 Flash',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'aa_official',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'aa_official': 55.5,
-        'datalearner': 54.4,
-        'deepswe_v11': 53,
-        'vibecode': 74.74
-      },
-      'mean': 59.4,
-      'stddev': 8.9,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Kimi K3',
-      'name': 'Kimi K3',
-      'vendor': 'Moonshot',
-      'sources': [
-        'aa_official',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'aa_official': 61.3,
-        'datalearner': 67.5,
-        'deepswe_v11': 69,
-        'vibecode': 84.96
-      },
-      'mean': 70.7,
-      'stddev': 8.73,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Claude Opus 4.7',
       'name': 'claude-opus-4-7',
       'vendor': 'Anthropic',
@@ -398,6 +378,26 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
+      'canonId': 'Kimi K3',
+      'name': 'Kimi K3',
+      'vendor': 'Moonshot',
+      'sources': [
+        'aa_official',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'aa_official': 62.6,
+        'datalearner': 67.5,
+        'deepswe_v11': 69,
+        'vibecode': 84.96
+      },
+      'mean': 71,
+      'stddev': 8.39,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'GLM-5.2',
       'name': 'GLM-5.2',
       'vendor': 'zAI',
@@ -409,14 +409,14 @@ window.QUALITY = {
         'vibecode'
       ],
       'scores': {
-        'aa_official': 43.2,
+        'aa_official': 43.3,
         'datalearner': 44,
         'deepswe_v11': 44,
         'deepswe_v10': 42,
         'vibecode': 63.96
       },
-      'mean': 47.4,
-      'stddev': 8.3,
+      'mean': 47.5,
+      'stddev': 8.29,
       'flag': 'warn'
     },
     {
@@ -552,13 +552,13 @@ window.QUALITY = {
         'vibecode'
       ],
       'scores': {
-        'aa_official': 64.4,
+        'aa_official': 64.1,
         'datalearner': 53,
         'deepswe_v11': 54,
         'vibecode': 69
       },
-      'mean': 60.1,
-      'stddev': 6.81,
+      'mean': 60,
+      'stddev': 6.76,
       'flag': 'warn'
     },
     {
@@ -625,34 +625,14 @@ window.QUALITY = {
         'vibecode'
       ],
       'scores': {
-        'aa_official': 66.6,
+        'aa_official': 65.1,
         'datalearner': 72.7,
         'deepswe_v11': 73,
         'vibecode': 80.5
       },
-      'mean': 73.2,
-      'stddev': 4.93,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'Gemini 3.7 Flash',
-      'name': 'Gemini 3.7 Flash',
-      'vendor': '其他',
-      'sources': [
-        'aa_official',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'aa_official': 57.1,
-        'datalearner': 65.3,
-        'deepswe_v11': 65,
-        'vibecode': 70.4
-      },
-      'mean': 64.5,
-      'stddev': 4.76,
-      'flag': 'ok'
+      'mean': 72.8,
+      'stddev': 5.45,
+      'flag': 'warn'
     },
     {
       'canonId': 'GPT-5.6 Luna',
@@ -703,6 +683,26 @@ window.QUALITY = {
       },
       'mean': 17.6,
       'stddev': 4.53,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Gemini 3.7 Flash',
+      'name': 'Gemini 3.7 Flash',
+      'vendor': '其他',
+      'sources': [
+        'aa_official',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'aa_official': 59.6,
+        'datalearner': 65.3,
+        'deepswe_v11': 65,
+        'vibecode': 70.4
+      },
+      'mean': 65.1,
+      'stddev': 3.82,
       'flag': 'ok'
     },
     {
@@ -763,6 +763,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'GLM-5.3',
+      'name': 'GLM-5.3',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 66.9,
+        'deepswe_v11': 69
+      },
+      'mean': 68,
+      'stddev': 1.05,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Grok Build',
       'name': 'grok-build-0-1',
       'vendor': 'xAI',
@@ -776,22 +792,6 @@ window.QUALITY = {
       },
       'mean': 13.2,
       'stddev': 0.17,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'GLM-5.3',
-      'name': 'GLM-5.3',
-      'vendor': '其他',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 66.9,
-        'deepswe_v11': 66.9
-      },
-      'mean': 66.9,
-      'stddev': 0,
       'flag': 'ok'
     },
     {

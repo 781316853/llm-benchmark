@@ -273,6 +273,7 @@ window.SEEN = {
     'vibe|Qwen3.8 27b [新]': '2026-08-19',
     'llm|Gemini 3.7 Flash (high)': '2026-08-19',
     'llm|GLM-5.3 (max)': '2026-08-19',
-    'vibe|Nemotron lightning 3p5 30b a3b [新]': '2026-08-20'
+    'vibe|Nemotron lightning 3p5 30b a3b [新]': '2026-08-20',
+    'deepswe|glm-5-3': '2026-08-20'
   }
 };
