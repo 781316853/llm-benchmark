@@ -223,9 +223,10 @@ a:hover { text-decoration: underline; }
 .page-head h2 { margin: 0; font-size: 22px; font-weight: 700; }
 .page-desc { color: var(--text-dim); font-size: 13px; margin: 6px 0; flex-basis: 100%; }
 .source-note { color: var(--text-tertiary); font-size: 12px; margin-top: 12px; line-height: 1.8; }
-/* 结构化脚注:每行「标签:内容」独立成行,长文本在行内自动折行 */
-.source-note .note-line { margin: 3px 0; }
-.source-note .note-line b { color: var(--text-dim); font-weight: 600; margin-right: 6px; }
+/* 结构化脚注:每条「标签:内容」独立成行;标签固定左侧,内容(含多行)折行时与首行对齐 */
+.source-note .note-line { display: flex; align-items: baseline; margin: 3px 0; }
+.source-note .note-line b { flex: none; color: var(--text-dim); font-weight: 600; margin-right: 6px; }
+.source-note .note-line .note-body { flex: 1; min-width: 0; }
 .source-note .note-sub { opacity: .8; }
 
 /* 阅读说明区块(总览页,信息层级增强) */

@@ -412,31 +412,55 @@
     var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/100)", "IDE/CLI", "思考"]);
     var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num", "", "num"]);
     fillTable("lmTable", lmHeaders, html, lmHeadCls);
-    // 底部说明按结构分块换行:每行「标签:内容」,行内长文本自动折行
+    // 底部说明按结构分块:标签固定在左,内容为数组时逐行展示(档位/项目等长文案分行更易读)
     // 档位/项目说明优先用数据快照携带的源站官方文案(notes,随每日刷新同步);
     // 旧数据文件无 notes 时回退手写摘述
     var lmNotes = src.notes;
-    var gradeFallback = "A档:几乎不犯错,只犯微小的 UI、交互类错误;B档:大概率会错,但只要描述错误现象,都可以1轮修复;C档:大概率错,但需要交互更多轮,模型能自主推进修复,无需人工提供辅助;D档:必须有人工提供大量 log、视觉描述,协助操作等才能修复问题;Failed:知识或方法论不够,即便有人帮助,也无法完成任务;Pass:前代模型已经拿到 A,不再测试;Skip:各方面原因,不进行测试;Pending:正在测试中;同档位中,只有少数轮次出现问题,大部分情况表现良好时,会升半档,用 B+、C+ 来表示。";
-    var gradeText = gradeFallback, projectsText = null;
+    var gradeFallback = [
+      "A档:几乎不犯错,只犯微小的 UI、交互类错误。",
+      "B档:大概率会错,但只要描述错误现象,都可以1轮修复。",
+      "C档:大概率错,但需要交互更多轮,模型能自主推进修复,无需人工提供辅助。",
+      "D档:必须有人工提供大量 log、视觉描述,协助操作等才能修复问题。",
+      "Failed:知识或方法论不够,即便有人帮助,也无法完成任务。",
+      "Pass:前代模型已经拿到 A,不再测试。",
+      "Skip:各方面原因,不进行测试。",
+      "Pending:正在测试中。",
+      "半档：同档位中,只有少数轮次出现问题,大部分情况表现良好时,会升半档,用 B+、C+ 来表示。"
+    ];
+    var gradeLines = gradeFallback, projectLines = null;
     if (lmNotes && lmNotes.grades && lmNotes.projects) {
       // 源站文案惯例:A-D 档以"档："开头,Pass/Skip/Pending 以"："开头,Failed 无前缀
-      gradeText = lmNotes.grades.map(function (g) {
+      gradeLines = lmNotes.grades.map(function (g) {
         return /^[：:]|^档/.test(g.t) ? g.k + g.t : g.k + "：" + g.t;
-      }).join("") + (lmNotes.halfGrade || "");
-      projectsText = lmNotes.projects.map(function (p) { return p.k + ": " + p.t; }).join(";") + "。";
+      });
+      if (lmNotes.halfGrade) gradeLines = gradeLines.concat(["半档：" + lmNotes.halfGrade]);
+      projectLines = lmNotes.projects.map(function (p) { return p.k + ": " + p.t; });
     }
     var noteParts = [
       { k: "来源", v: src.url + " · 月度 " + month },
-      { k: "单元格格式", v: (lmNotes && lmNotes.cellFormat ? lmNotes.cellFormat : "扣分数/档位") + "(数字越小越好);2026-08 起等级单元格可含单任务测试成本,如 \"7/A+(90.52)\" 表示扣 7 分、A 档、成本 ¥90.52。" },
-      { k: "档位说明", v: gradeText }
+      { k: "单元格格式", v: [
+        (lmNotes && lmNotes.cellFormat ? lmNotes.cellFormat : "扣分数/档位") + "(数字越小越好)",
+        "2026-08 起等级单元格可含单任务测试成本,如 \"7/A+(90.52)\" 表示扣 7 分、A 档、成本 ¥90.52"
+      ] },
+      { k: "档位说明", v: gradeLines }
     ];
-    if (projectsText) {
-      noteParts.push({ k: "项目说明", v: projectsText + "表格列名括号内的字母代号(如 \"MacOS App(C)\")对应上述项目。" });
+    if (projectLines) {
+      noteParts.push({ k: "项目说明", v: projectLines.concat(["表格列名括号内的字母代号(如 \"MacOS App(C)\")对应上述项目"]) });
     }
-    noteParts.push({ k: "综合分", v: "按源数据排序赋值:源 CSV 行序即原站排名;项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似);组间按排名等距 0-100 递减(第一名 100,最后一名 0);热力图仍按单项等级(0-4.0)着色。" });
-    var noteHtml = noteParts.map(function (p) {
-      return '<div class="note-line"><b>' + esc(p.k) + '</b>' + esc(p.v) + '</div>';
-    }).join("");
+    noteParts.push({ k: "综合分", v: [
+      "按源数据排序赋值:源 CSV 行序即原站排名",
+      "项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似)",
+      "组间按排名等距 0-100 递减(第一名 100,最后一名 0)",
+      "热力图仍按单项等级(0-4.0)着色"
+    ] });
+    // 单条说明渲染:字符串内容单行跟随标签;数组内容套 note-body 逐行展示,折行对齐
+    var noteLineHtml = function (p) {
+      var body = Array.isArray(p.v)
+        ? '<div class="note-body">' + p.v.map(function (l) { return "<div>" + esc(l) + "</div>"; }).join("") + "</div>"
+        : esc(p.v);
+      return '<div class="note-line"><b>' + esc(p.k) + '</b>' + body + '</div>';
+    };
+    var noteHtml = noteParts.map(noteLineHtml).join("");
     if (!state.showAll.llm) {
       noteHtml += '<div class="note-line note-sub">仅显示命中≥2榜的 ' + rows.length + '/' + allRows.length + ' 个模型(勾选「显示全部模型」可展开)。</div>';
     }
