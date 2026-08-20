@@ -1,24 +1,95 @@
-// 数据源3:llm2014 code_v3 基准快照(中文个人私有题库,按月归档)
+// 数据源3:llm2014 Agentic(原 code_v3)基准快照(中文个人私有题库,按月归档)
 // 来源:https://llm2014.github.io/llm_benchmark/  (raw: github.com/llm2014/llm_benchmark)
+// 源站已把该类别显示为 "Agentic";档位/项目说明文案来自源站 docs/assets/i18n.js(每日刷新时同步)。
 // 单元格原始值形如 "7/A"(扣分数 / 字母等级,数字越小越好),或 Pass / Failed(n/m) / Skip / Pending;
 // 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
+// 项目列表名保留源站字母代号(如 "MacOS App(C)"),对应 notes.projects 的项目说明。
 // 数值化规则在 js/data.js 中统一处理。
 // 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
-  source: "llm2014 编程榜 code_v3",
+  source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-14",
+  updated: "2026-08-20",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
-  // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
+  // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
+  notes: {
+  'cellFormat': '1/A 代表扣分数/档位',
+  'grades': [
+    {
+      'k': 'A',
+      't': '档：几乎不犯错，只犯微小的 UI、交互类错误。'
+    },
+    {
+      'k': 'B',
+      't': '档：大概率会错，但只要描述错误现象，都可以1轮修复。'
+    },
+    {
+      'k': 'C',
+      't': '档：大概率错，但需要交互更多轮，模型能自主推进修复，无需人工提供辅助。'
+    },
+    {
+      'k': 'D',
+      't': '档：必须有人工提供大量 log、视觉描述，协助操作等才能修复问题。'
+    },
+    {
+      'k': 'Failed',
+      't': '知识或方法论不够，即便有人帮助，也无法完成任务。'
+    },
+    {
+      'k': 'Pass',
+      't': '：前代模型已经拿到 A，不再测试。'
+    },
+    {
+      'k': 'Skip',
+      't': '：各方面原因，不进行测试。'
+    },
+    {
+      'k': 'Pending',
+      't': '：正在测试中。'
+    }
+  ],
+  'halfGrade': '同档位中，只有少数轮次出现问题，大部分情况表现良好时，会升半档，用 B+、C+ 来表示。',
+  'projects': [
+    {
+      'k': 'C',
+      't': 'MacOS App + OpenGL'
+    },
+    {
+      'k': 'E',
+      't': 'Web + WASM'
+    },
+    {
+      'k': 'F',
+      't': 'Godot + Physics'
+    },
+    {
+      'k': 'H',
+      't': 'Web + 3D Modeling'
+    },
+    {
+      'k': 'I',
+      't': 'iOS App + Rust Server'
+    },
+    {
+      'k': 'J',
+      't': 'Web + 2D Animation'
+    },
+    {
+      'k': 'K',
+      't': 'Harmony OS App + C++ Native'
+    }
+  ]
+},
+  // 月份 -> { projects: 任务列名数组(含字母代号), rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
   '2026-06': {
     'projects': [
-      'MacOS App',
-      'Flutter',
-      'Web',
-      'Game',
-      'Rust App'
+      'MacOS App(C)',
+      'Flutter(D)',
+      'Web(E)',
+      'Game(F)',
+      'Rust App(G)'
     ],
     'rows': [
       {
@@ -324,13 +395,13 @@ window.LLM2014 = {
   },
   '2026-07': {
     'projects': [
-      'MacOS App',
-      'Flutter',
-      'Web',
-      'Game',
-      'Rust App',
-      'Simple Model',
-      'iOS+Server'
+      'MacOS App(C)',
+      'Flutter(D)',
+      'Web(E)',
+      'Game(F)',
+      'Rust App(G)',
+      'Simple Model(H)',
+      'iOS+Server(I)'
     ],
     'rows': [
       {
@@ -637,14 +708,14 @@ window.LLM2014 = {
   },
   '2026-08': {
     'projects': [
-      'MacOS App',
-      'Web',
-      'Game',
-      'Rust App',
-      'Simple Model',
-      'iOS+Server',
-      'Animation',
-      'Data Process'
+      'MacOS App(C)',
+      'Web(E)',
+      'Game(F)',
+      'Rust App(G)',
+      'Simple Model(H)',
+      'iOS+Server(I)',
+      'Animation(J)',
+      'Data Process(K)'
     ],
     'rows': [
       {
@@ -712,6 +783,22 @@ window.LLM2014 = {
         'think': 1
       },
       {
+        'model': 'GLM-5.3 (max)',
+        'cells': [
+          'Skip',
+          'Pass',
+          'Pass',
+          'Pending',
+          '8/B+(11.48)',
+          '7/A(25.25)',
+          'Pending',
+          '30/D(83.29)'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
         'model': 'Qwen3.8-Max (max)',
         'cells': [
           'Skip',
@@ -725,6 +812,22 @@ window.LLM2014 = {
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Gemini 3.7 Flash (high)',
+        'cells': [
+          'Skip',
+          '12/B(38.76)',
+          'Skip',
+          'Skip',
+          '14/B(9.38)',
+          '8/B(16.84)',
+          '14/B(14.28)',
+          '34/D(28.93)'
+        ],
+        'unprompted': 4,
+        'ide': 'OpenCode CLI',
         'think': 1
       },
       {
@@ -782,10 +885,10 @@ window.LLM2014 = {
           'Skip',
           'Skip',
           'Skip',
-          '14/B(2.07)',
-          '16/C(1.95)',
+          '14/B(13.46)',
+          '16/C(12.73)',
           'Failed',
-          '16/B(2.73)'
+          '16/B(18.64)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -814,8 +917,8 @@ window.LLM2014 = {
           '8/A(5.33)',
           '9/A(7.62)',
           '44/D+(12.41)',
-          '17/B(1.61)',
-          '24/D+(1.10)',
+          '17/B(7.38)',
+          '24/D+(4.79)',
           'Failed',
           'Failed'
         ],
@@ -888,22 +991,6 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'DeepSeek V4 Pro preview(max)',
-        'cells': [
-          '16/C',
-          '21/C',
-          '36/C',
-          'Failed(0/9)',
-          '31/C(1.38)',
-          '28/C(1.75)',
-          'Failed',
-          'Skip'
-        ],
-        'unprompted': 0,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
         'model': 'MiniMax-M3',
         'cells': [
           'Skip',
@@ -916,22 +1003,6 @@ window.LLM2014 = {
           'Skip'
         ],
         'unprompted': 1,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
-        'model': 'Qwen3.6-Plus',
-        'cells': [
-          'Failed(5/12)',
-          '43/D+',
-          'Failed(3/9)',
-          'Failed(0/9)',
-          'Skip',
-          'Skip',
-          'Skip',
-          'Skip'
-        ],
-        'unprompted': 0,
         'ide': 'Claude Code',
         'think': 1
       }

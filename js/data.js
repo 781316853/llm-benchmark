@@ -247,7 +247,7 @@
       { key: "vibecode", name: "Vibe Code Bench", tag: "从零构建 Web 应用", url: vc.url, updated: vc.updated,
         stats: [{ l: "系统", v: vc.totalSystems }, { l: "展示", v: (vc.models || []).length }],
         top: vcTop.name + " · " + vcTop.score + "%" },
-      { key: "llm2014", name: "llm2014 code_v3", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
+      { key: "llm2014", name: "llm2014 Agentic", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
         top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + "/100" : "—") }
     ];
