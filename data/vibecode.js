@@ -1,15 +1,15 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-08-19)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-08-20)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-08-19",
+  updated: "2026-08-20",
   version: "v1.1",
-  totalSystems: 85,
-  note: "共 85 系统,展示 overall 视图全部 82 个有记录系统",
+  totalSystems: 86,
+  note: "共 86 系统,展示 overall 视图全部 83 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -109,6 +109,14 @@ window.VIBECODE = {
     'latencyS': 2242
   },
   {
+    'name': 'GPT 5.6 Terra',
+    'harness': 'OpenHands',
+    'score': 74.59,
+    'ci': 4.2,
+    'cost': 7.89,
+    'latencyS': 1152
+  },
+  {
     'name': 'Meta Muse Spark 1.1',
     'harness': 'OpenHands',
     'score': 72.16,
@@ -149,14 +157,6 @@ window.VIBECODE = {
     'latencyS': 830
   },
   {
-    'name': 'GPT 5.6 Terra',
-    'harness': 'OpenHands',
-    'score': 67.84,
-    'ci': 5.1,
-    'cost': 4.33,
-    'latencyS': 959
-  },
-  {
     'name': 'GPT 5.4',
     'harness': 'OpenHands',
     'score': 67.42,
@@ -174,11 +174,11 @@ window.VIBECODE = {
   },
   {
     'name': 'Qwen3.8 27b [新]',
-    'harness': 'OpenHands',
+    'harness': 'openhands',
     'score': 64.85,
     'ci': 4.83,
-    'cost': 0,
-    'latencyS': 12141
+    'cost': 23.46,
+    'latencyS': 2619
   },
   {
     'name': 'Qwen3.8 max [新]',
@@ -667,6 +667,14 @@ window.VIBECODE = {
     'ci': 0,
     'cost': 6.47,
     'latencyS': 1815
+  },
+  {
+    'name': 'Nemotron lightning 3p5 30b a3b [新]',
+    'harness': 'OpenHands',
+    'score': 0,
+    'ci': 0,
+    'cost': 0.13,
+    'latencyS': 2224
   }
 ]
 };
