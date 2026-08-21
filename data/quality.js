@@ -45,7 +45,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 28,
+      'modelCount': 29,
       'updated': '2026-08-21',
       'ageDays': 0,
       'completeness': 1,
@@ -287,7 +287,7 @@ window.QUALITY = {
     },
     {
       'canonId': 'DeepSeek V4 Flash',
-      'name': 'DeepSeek V4 Flash',
+      'name': 'DeepSeek V4 Flash 0731',
       'vendor': 'DeepSeek',
       'sources': [
         'aa_official',
@@ -830,9 +830,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 28,
-      'complete': 28,
-      'modelCount': 28,
+      'total': 29,
+      'complete': 29,
+      'modelCount': 29,
       'missingFields': {},
       'flag': 'ok'
     },

@@ -21,7 +21,7 @@ window.AA_OFFICIAL = {
       'model': 'Opus 5',
       'effort': 'xhigh',
       'score': 68.1,
-      'indexRaw': 0.6814975428587521,
+      'indexRaw': 0.6814975428587517,
       'wallSec': 1422,
       'costUsd': 8.17,
       'ci': null
@@ -78,10 +78,10 @@ window.AA_OFFICIAL = {
     },
     {
       'agent': 'Codex',
-      'model': 'DeepSeek V4 Flash',
+      'model': 'DeepSeek V4 Flash 0731',
       'effort': 'max',
       'score': 49.8,
-      'indexRaw': 0.49757600316190503,
+      'indexRaw': 0.49757600316190537,
       'wallSec': 868,
       'costUsd': 0.06,
       'ci': null
@@ -91,7 +91,7 @@ window.AA_OFFICIAL = {
       'model': 'GLM-5.2',
       'effort': null,
       'score': 43.3,
-      'indexRaw': 0.43310157193602167,
+      'indexRaw': 0.433101571936022,
       'wallSec': 1507,
       'costUsd': 6.66,
       'ci': null

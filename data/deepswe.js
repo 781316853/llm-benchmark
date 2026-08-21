@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-21",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 28 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 29 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -114,6 +114,16 @@ window.DEEPSWE = {
     'name': 'DeepSeek-V4-Pro',
     'effort': '极高强度思考（工具）',
     'pass1': 62.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
+  },
+  {
+    'name': 'DeepSeek-V4-Flash-Vision-Exp',
+    'effort': '最高（工具）',
+    'pass1': 59.3,
     'ci': null,
     'cost': null,
     'outTok': null,

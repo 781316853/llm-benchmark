@@ -22,6 +22,30 @@ window.NEWS = {
     },
     {
       'date': '2026-08-21',
+      'title': '主要的YouTube创作者因接受人工智能资金而面临强烈反对',
+      'brief': '在过去的几天里，包括Matti Haapoja和Sam \'Kold\' Kolder在内的一些著名电影制作内容创作者已经发布了以下视频：',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/983181/matti-haapoja-sam-kold-kolder-higgsfield-seedance-backlash',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
+      'brief': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
+      'url': 'https://annas-archive.pk/blog/physical-destruction.html',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
+      'brief': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
+      'url': 'https://annas-archive.gl/blog/physical-destruction.html',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-21',
       'title': '在欧盟，版权不保护人工智能生成的内容',
       'brief': '在欧盟，版权不保护人工智能生成的内容',
       'url': 'https://mathstodon.xyz/@maxpool/117128107757895678',
@@ -30,11 +54,59 @@ window.NEWS = {
     },
     {
       'date': '2026-08-21',
-      'title': '曝周杰伦将代言 vivo 手机；华为「阔直板」手机曝光；柯洁透露战胜 AI 秘诀：装弱智｜极客早知道',
-      'brief': '《黑神话：钟馗》全新 15 分钟游戏实机演示公布，首次展示主角战斗与部分剧情片段 8 月 20 日消息，由游戏科学开发的黑神话系列第二部作品《黑神话：钟馗》，今日带来全新 15 分钟游戏实机演示，首次展示主角战斗与部分剧情片段。 官方称，本视频为开发中版本录制，运行时屏幕宽高比设…',
-      'url': 'http://www.geekpark.net/news/369114',
+      'title': 'MiniMax，做视频领域的 Claude Code 的野心已经藏不住了',
+      'brief': '作者｜Cynthia 编辑｜靖宇 7 月 31 日，MiniMax H3 发布当天，我们就做了实测。 屏幕上的进度指示走到尽头，一段最高 2K 分辨率的视频出现在屏幕：画面、运动、声音被协调地装在同一个结果里。无论流畅度、画面精细程度，还是后期的视频修改操作便捷度，这无疑都是当前…',
+      'url': 'http://www.geekpark.net/news/369201',
       'source': '极客公园',
-      'type': '行业动态'
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '从单点突破到全数 SOTA，阿里打响「模型团战」第一枪',
+      'brief': '作者｜李苏 编辑｜靖宇 8 月 20 日晚，阿里巴巴发布新季度业绩。 阿里云外部商业化收入同比增长 45%，创 22 个季度以来的新高。AI 云及算力服务收入达到 484.37 亿元，经调整 EBITA 为 56.28 亿元，同比增长 133%，利润率升至 12%。AI 相关产品…',
+      'url': 'http://www.geekpark.net/news/369200',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '前 TikTok 产品经理创业，AI 视频共创平台 Wapoo 获千万美元天使融资',
+      'brief': '头图来源：Wapoo 官网 极客公园获悉，面向 Gen Alpha 的视频共创社交平台 Wapoo 已完成近千万美元天使轮融资。本轮融资由某互联网集团旗下战略投资方投资，其在全球化产品运营、年轻用户生态及新兴市场拓展方面已具备一定积累，探奇资本担任公司独家融资顾问。目前，Wapo…',
+      'url': 'http://www.geekpark.net/news/369162',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '小红书悄悄开源发布了自己的大模型，内容平台也要造底座',
+      'brief': '头图来源：chatgpt 生成 前几天，我们注意小红书在海外发布了一款大模型 dots3-note preview。 这款模型采用 MoE 架构，总参数 280B、激活参数 16B，支持 512K 上下文，并具备文本、视觉、语音的多模态理解能力。它属于 dots3 系列，后续还将…',
+      'url': 'http://www.geekpark.net/news/369161',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-21',
+      'title': 'DeepSeek 发布多模态模型，“小鲸鱼”长出了眼睛',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/jlTfe57D4r0Juzpz8Fk5?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '材科源图三个月完成两轮融资，AI全链路闭环加速材料产业化',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/YB51rwb95keVmlIZ0xQd?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': 'OpenAI 之后又是 Anthropic，Claude 将攻击延伸至公共互联网',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/9FZ8z60yB4tS4WQEP4dw?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '政策与安全'
     },
     {
       'date': '2026-08-20',
@@ -51,22 +123,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/08/20/chatgpt-can-now-send-texts-for-you-with-new-apple-messages-plugin/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '谷歌为发布商提供了应对人工智能驱动的流量损失的新方法',
-      'brief': '谷歌正在为发布商提供一个新的按钮，让读者可以让他们成为搜索、发现和谷歌新闻的首选来源，潜在的...',
-      'url': 'https://techcrunch.com/2026/08/20/google-gives-publishers-a-new-way-to-fight-ai-driven-traffic-losses/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-20',
-      'title': 'Linkdaze的智能日历旨在管理家庭，而不仅仅是跟踪时间表',
-      'brief': 'Linkdaze的智能数字日历脱颖而出，因为它没有将其功能放在付费墙后面，包括人工智能膳食计划工具。',
-      'url': 'https://techcrunch.com/2026/08/20/linkdazes-smart-calendar-is-built-to-run-a-household-not-just-track-a-schedule/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-20',
@@ -105,14 +161,6 @@ window.NEWS = {
       'title': '「广告位」时代已死，智能体商业开收「中介费」',
       'brief': '「意图」这两个字，在整场支付宝 AI 生态合作伙伴大会上被提及了超 40 次。 如果说 5 月的 AI 支付生态大会上，Token Pay、AI 钱包，加上此前推出的 AI 付与 AI 收，代表支付宝明确了「支付可以用 AI」；那么这一次，我们看到的是，支付宝内部对智能体商业化该…',
       'url': 'http://www.geekpark.net/news/369078',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '中国首次实现火箭陆地回收；宇树上市，市值最高超 4000 亿；蔡明同款机器人亮相，9.9 万元｜极客早知道',
-      'brief': '朱雀三号遥二发射成功，我国首次实现火箭陆地回收 据央视新闻报道，8 月 19 日，朱雀三号遥二运载火箭在东风商业航天创新试验区发射升空，火箭一子级按预定程序成功着陆于甘肃省民勤县朱雀三号着陆场坪，飞行任务取得圆满成功。这是我国在重复使用火箭关键技术上取得的又一重大突破，朱雀三号成…',
-      'url': 'http://www.geekpark.net/news/369056',
       'source': '极客公园',
       'type': '公司动态'
     },
