@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-21',
+  'updated': '2026-08-22',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,11 +13,59 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-08-22',
+      'title': '微信灰测「按住转文字」功能被吐槽；DeepSeek 上线多模态功能；应急机械拉手难操作，多家车企召回 427 万辆车',
+      'brief': 'DeepSeek V4-Flash-Vision-Exp 上线：开启多模态 API 服务，Agent 能力接近 Opus-4.8 8 月 21 日消息， 深度求索官方宣布全新的多模态视觉理解模型 DeepSeek-V4-Flash-Vision-Exp 上线 DeepSeek A…',
+      'url': 'http://www.geekpark.net/news/369206',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-22',
+      'title': 'JetBrains详细阐述了控制AI支出快速增长的首批举措',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/CQhb4TOREpEZshtqWZMy?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': 'Anthropic的Opus 4.6是一台黑穗机',
+      'brief': 'Anthropic禁止其Claude模型生成色情内容。但TechCrunch进行的一系列测试发现，它……',
+      'url': 'https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '英伟达与数据中心开发商Cloverleaf合作',
+      'brief': '英伟达继续为数据中心开发投入资金--就像人工智能数据中心为英伟达带来大量资金一样。',
+      'url': 'https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '英伟达刚刚表明，线束，而不是人工智能模型，现在是真正的英雄',
+      'brief': '英伟达的研究表明，人工智能代理可以通过微调来表现出色，而不是走出深渊，即使人工智能模型不是那么糟糕……',
+      'url': 'https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
       'date': '2026-08-21',
       'title': '人工智能数据初创公司Micro1在人工智能培训热潮中毛运行率达到$ 5亿',
       'brief': '对人工智能培训数据的需求激增，正在推动这家初创公司及其竞争对手的快速增长。',
       'url': 'https://techcrunch.com/2026/08/20/ai-data-startup-micro1-reaches-500m-gross-run-rate-amid-ai-training-boom/',
       'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-21',
+      'title': '超过100万人点击了LinkedIn的人工智能SLOP按钮',
+      'brief': 'LinkedIn实际上在7月30日宣布了一个“看起来像AI SLOP”按钮，该公司表示很多人已经使用过它。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message',
+      'source': 'The Verge',
       'type': '行业动态'
     },
     {
@@ -30,27 +78,19 @@ window.NEWS = {
     },
     {
       'date': '2026-08-21',
-      'title': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
-      'brief': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
-      'url': 'https://annas-archive.pk/blog/physical-destruction.html',
+      'title': '展示HN ： OzBrain ，代理和您的团队之间共享知识的大脑',
+      'brief': '展示HN ： OzBrain ，代理和您的团队之间共享知识的大脑',
+      'url': 'https://ozbrain.com',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-08-21',
-      'title': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
-      'brief': '人工智能公司销毁实体书籍–让我们在为时已晚之前扫描稀有书籍',
-      'url': 'https://annas-archive.gl/blog/physical-destruction.html',
+      'title': 'Show HN: Proliferate -任何编码代理的开源、自托管Codex',
+      'brief': 'Show HN: Proliferate -任何编码代理的开源、自托管Codex',
+      'url': 'https://github.com/proliferate-ai/proliferate',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '在欧盟，版权不保护人工智能生成的内容',
-      'brief': '在欧盟，版权不保护人工智能生成的内容',
-      'url': 'https://mathstodon.xyz/@maxpool/117128107757895678',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-08-21',
@@ -107,78 +147,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/9FZ8z60yB4tS4WQEP4dw?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '新数据显示， OpenAI正在通过业务用户在Anthropic上获益',
-      'brief': '随着每个实验室发布新模型，企业愿意来回颠倒，波动性应该让两家公司的投资者都暂停……',
-      'url': 'https://techcrunch.com/2026/08/20/openai-is-gaining-on-anthropic-with-business-users-new-data-indicates/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-20',
-      'title': 'ChatGPT现在可以使用新的Apple Messages插件为您发送短信',
-      'brief': '有没有想过让别人帮你发短信？通过新的Apple Messages集成， ChatGPT将作为自动文本抄写器提供……',
-      'url': 'https://techcrunch.com/2026/08/20/chatgpt-can-now-send-texts-for-you-with-new-apple-messages-plugin/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '研究发现，自ChatGPT推出以来，三分之一的网页显示出人工智能作者身份的迹象',
-      'brief': 'ChatGPT和其他人工智能模型现在正在创作和编辑大部分新网络。',
-      'url': 'https://techcrunch.com/2026/08/20/a-third-of-webpages-published-since-chatgpts-launch-show-signs-of-ai-authorship-study-finds/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '币安现在允许人工智能代理进行交易，但控制它们在很大程度上取决于用户',
-      'brief': '币安的代理操作系统可使用ChatGPT、Claude Code和Cursor等工具。',
-      'url': 'https://techcrunch.com/2026/08/20/binance-now-lets-ai-agents-trade-but-keeping-them-in-check-is-largely-up-to-users/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '欢迎来到人工智能数学危机',
-      'brief': '今天在Decoder上，我正在与The Verge驻伦敦的人工智能记者罗伯特·哈特（ Robert Hart ）谈论人工智能对数学领域和……',
-      'url': 'https://www.theverge.com/podcast/982434/ai-math-openai-astra-existential-crisis',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-20',
-      'title': 'Slack正在推出协作氛围编码渠道',
-      'brief': 'Slack正在推出专用渠道，让团队可以与人工智能代理一起进行氛围编码，而不是在不同的工具之间跳转……',
-      'url': 'https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '「广告位」时代已死，智能体商业开收「中介费」',
-      'brief': '「意图」这两个字，在整场支付宝 AI 生态合作伙伴大会上被提及了超 40 次。 如果说 5 月的 AI 支付生态大会上，Token Pay、AI 钱包，加上此前推出的 AI 付与 AI 收，代表支付宝明确了「支付可以用 AI」；那么这一次，我们看到的是，支付宝内部对智能体商业化该…',
-      'url': 'http://www.geekpark.net/news/369078',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-20',
-      'title': 'CFP 开放 | KCD 杭州站邀您共议 Agent 时代的云原生、可观测与大模型推理',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/LpNjOA7au7WIhTBmVcJo?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-20',
-      'title': '你的 Coding Agent 有多大价值，取决于它对你的数据了解多少 | 技术实践',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/CPidTC2YJ7AvlU7jUgiq?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     }
   ]
 };

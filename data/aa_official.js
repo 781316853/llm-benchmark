@@ -1,5 +1,5 @@
 // 新增数据源:Artificial Analysis 官方 Coding Agent Index(云端抓取)
-// 来源:https://artificialanalysis.ai/agents/coding-agents  (更新于 2026-08-21)
+// 来源:https://artificialanalysis.ai/agents/coding-agents  (更新于 2026-08-22)
 // 抓取方式:解析页面内嵌的 3 个 <script type='application/ld+json'> schema.org Dataset 块:
 //          Coding Agent Index(0-1)/ Time per Task(秒)/ Cost per Task($),按 label 合并三维。
 // label 格式:'<agent> - <model> (<effort>)';score=index*100(百分制);wallSec=平均任务耗时;costUsd=平均任务成本。
@@ -7,7 +7,7 @@
 window.AA_OFFICIAL = {
   'source': 'Artificial Analysis Coding Agent Index (Official)',
   'url': 'https://artificialanalysis.ai/agents/coding-agents',
-  'updated': '2026-08-21',
+  'updated': '2026-08-22',
   'version': '1.1',
   'componentsList': [
     'DeepSWE',
@@ -91,7 +91,7 @@ window.AA_OFFICIAL = {
       'model': 'GLM-5.2',
       'effort': null,
       'score': 43.3,
-      'indexRaw': 0.433101571936022,
+      'indexRaw': 0.43310157193602167,
       'wallSec': 1507,
       'costUsd': 6.66,
       'ci': null

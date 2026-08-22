@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-08-21',
+  'updated': '2026-08-22',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -276,6 +276,7 @@ window.SEEN = {
     'vibe|Nemotron lightning 3p5 30b a3b [新]': '2026-08-20',
     'deepswe|glm-5-3': '2026-08-20',
     'deepswe|DeepSeek-V4-Flash-Vision-Exp': '2026-08-21',
-    'aa_official|DeepSeek V4 Flash 0731': '2026-08-21'
+    'aa_official|DeepSeek V4 Flash 0731': '2026-08-21',
+    'datalearner|DeepSeek-V4-Flash-Vision-Exp': '2026-08-22'
   }
 };
