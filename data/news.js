@@ -14,11 +14,27 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-22',
+      'title': '越会用 AI 的人，学习能力退化得越快',
+      'brief': '「坏 AI，使人笨！」 作者｜张勇毅 编辑｜靖宇 「AI 用多了，人会不会逐渐变笨？」 这应该是过去三年被讨论最多的一个迷思之一，从 ChatGPT 走红那天就有。吵了三年多，两边都拿不出像样的证据： 担心的人只有体感，不担心的人只有立场。 8 月 18 日，《经济学人》给这场争…',
+      'url': 'http://www.geekpark.net/news/369212',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-22',
       'title': '微信灰测「按住转文字」功能被吐槽；DeepSeek 上线多模态功能；应急机械拉手难操作，多家车企召回 427 万辆车',
       'brief': 'DeepSeek V4-Flash-Vision-Exp 上线：开启多模态 API 服务，Agent 能力接近 Opus-4.8 8 月 21 日消息， 深度求索官方宣布全新的多模态视觉理解模型 DeepSeek-V4-Flash-Vision-Exp 上线 DeepSeek A…',
       'url': 'http://www.geekpark.net/news/369206',
       'source': '极客公园',
       'type': '模型发布'
+    },
+    {
+      'date': '2026-08-22',
+      'title': 'Cloudflare 推出 Agent Tracing：支持截断限制，不同框架的 Payload 默认记录策略存在差异',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/IBYDTeu3rse9tH3549wf?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
     },
     {
       'date': '2026-08-22',
