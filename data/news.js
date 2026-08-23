@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-22',
+  'updated': '2026-08-23',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -12,6 +12,70 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-08-23',
+      'title': 'DeepSeek 周末用量统一低价收费；特斯拉 9 月 3 日首秀 Cybercab；神秘 Ox Alpha 模型爆火网络',
+      'brief': '第二届世界人形机器人运动会开幕：2056 台机器人齐聚「冰丝带」，666 支队伍竞技 51 赛项 8 月 22 日晚间，第二届世界人形机器人运动会在国家速滑馆「冰丝带」开幕。 本届赛事由北京市人民政府、中央广播电视总台、世界机器人合作组织、亚太机器人世界杯国际理事会联合主办。来自…',
+      'url': 'http://www.geekpark.net/news/369215',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '哈佛大学$ 699的创业训练营提供教师的人工智能头像',
+      'brief': '在HBS Foundry计划中， AI头像在练习推介和董事会会议期间提供反馈。',
+      'url': 'https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '由DeepMind校友创立的Inherent表示，其AI “队友”在复制resea方面的表现刚刚超过了Anthropic和OpenAI……',
+      'brief': '由DeepMind校友构建的英国人工智能实验室Inherent发布了Faraday ，这是一种人工智能代理，其复制科学论文的能力可能是一步......',
+      'url': 'https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-22',
+      'title': 'OpenAI表示，加州应加强其人工智能安全法案',
+      'brief': 'OpenAI呼吁加利福尼亚州加强该公司此前反对的人工智能安全法案SB 53。',
+      'url': 'https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '前沿人工智能实验室仍然不会说他们将如何包含一个流氓模型',
+      'brief': '一项新的研究发现，领先的人工智能实验室几乎没有公开记录的包含流氓模型的计划，这引发了对作为人工智能的准备工作的质疑……',
+      'url': 'https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
+      'brief': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
+      'url': 'https://www.cnbc.com/2026/08/21/-anthropic-ipo-filing-will-show-ai-backlash-as-risk-sources-say.html',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '挖掘我的技能的坟墓：好莱坞创意人员培训人工智能来完成他们的工作',
+      'brief': '挖掘我的技能的坟墓：好莱坞创意人员培训人工智能来完成他们的工作',
+      'url': 'https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '嵌入式AI',
+      'brief': '嵌入式AI',
+      'url': 'https://nostarch.com/embedded-ai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
     {
       'date': '2026-08-22',
       'title': '越会用 AI 的人，学习能力退化得越快',
@@ -43,126 +107,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/CQhb4TOREpEZshtqWZMy?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '行业动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': 'Anthropic的Opus 4.6是一台黑穗机',
-      'brief': 'Anthropic禁止其Claude模型生成色情内容。但TechCrunch进行的一系列测试发现，它……',
-      'url': 'https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '英伟达与数据中心开发商Cloverleaf合作',
-      'brief': '英伟达继续为数据中心开发投入资金--就像人工智能数据中心为英伟达带来大量资金一样。',
-      'url': 'https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '英伟达刚刚表明，线束，而不是人工智能模型，现在是真正的英雄',
-      'brief': '英伟达的研究表明，人工智能代理可以通过微调来表现出色，而不是走出深渊，即使人工智能模型不是那么糟糕……',
-      'url': 'https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '人工智能数据初创公司Micro1在人工智能培训热潮中毛运行率达到$ 5亿',
-      'brief': '对人工智能培训数据的需求激增，正在推动这家初创公司及其竞争对手的快速增长。',
-      'url': 'https://techcrunch.com/2026/08/20/ai-data-startup-micro1-reaches-500m-gross-run-rate-amid-ai-training-boom/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '超过100万人点击了LinkedIn的人工智能SLOP按钮',
-      'brief': 'LinkedIn实际上在7月30日宣布了一个“看起来像AI SLOP”按钮，该公司表示很多人已经使用过它。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '主要的YouTube创作者因接受人工智能资金而面临强烈反对',
-      'brief': '在过去的几天里，包括Matti Haapoja和Sam \'Kold\' Kolder在内的一些著名电影制作内容创作者已经发布了以下视频：',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/983181/matti-haapoja-sam-kold-kolder-higgsfield-seedance-backlash',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '展示HN ： OzBrain ，代理和您的团队之间共享知识的大脑',
-      'brief': '展示HN ： OzBrain ，代理和您的团队之间共享知识的大脑',
-      'url': 'https://ozbrain.com',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-21',
-      'title': 'Show HN: Proliferate -任何编码代理的开源、自托管Codex',
-      'brief': 'Show HN: Proliferate -任何编码代理的开源、自托管Codex',
-      'url': 'https://github.com/proliferate-ai/proliferate',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-21',
-      'title': 'MiniMax，做视频领域的 Claude Code 的野心已经藏不住了',
-      'brief': '作者｜Cynthia 编辑｜靖宇 7 月 31 日，MiniMax H3 发布当天，我们就做了实测。 屏幕上的进度指示走到尽头，一段最高 2K 分辨率的视频出现在屏幕：画面、运动、声音被协调地装在同一个结果里。无论流畅度、画面精细程度，还是后期的视频修改操作便捷度，这无疑都是当前…',
-      'url': 'http://www.geekpark.net/news/369201',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '从单点突破到全数 SOTA，阿里打响「模型团战」第一枪',
-      'brief': '作者｜李苏 编辑｜靖宇 8 月 20 日晚，阿里巴巴发布新季度业绩。 阿里云外部商业化收入同比增长 45%，创 22 个季度以来的新高。AI 云及算力服务收入达到 484.37 亿元，经调整 EBITA 为 56.28 亿元，同比增长 133%，利润率升至 12%。AI 相关产品…',
-      'url': 'http://www.geekpark.net/news/369200',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '前 TikTok 产品经理创业，AI 视频共创平台 Wapoo 获千万美元天使融资',
-      'brief': '头图来源：Wapoo 官网 极客公园获悉，面向 Gen Alpha 的视频共创社交平台 Wapoo 已完成近千万美元天使轮融资。本轮融资由某互联网集团旗下战略投资方投资，其在全球化产品运营、年轻用户生态及新兴市场拓展方面已具备一定积累，探奇资本担任公司独家融资顾问。目前，Wapo…',
-      'url': 'http://www.geekpark.net/news/369162',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '小红书悄悄开源发布了自己的大模型，内容平台也要造底座',
-      'brief': '头图来源：chatgpt 生成 前几天，我们注意小红书在海外发布了一款大模型 dots3-note preview。 这款模型采用 MoE 架构，总参数 280B、激活参数 16B，支持 512K 上下文，并具备文本、视觉、语音的多模态理解能力。它属于 dots3 系列，后续还将…',
-      'url': 'http://www.geekpark.net/news/369161',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-21',
-      'title': 'DeepSeek 发布多模态模型，“小鲸鱼”长出了眼睛',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/jlTfe57D4r0Juzpz8Fk5?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-21',
-      'title': '材科源图三个月完成两轮融资，AI全链路闭环加速材料产业化',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/YB51rwb95keVmlIZ0xQd?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-21',
-      'title': 'OpenAI 之后又是 Anthropic，Claude 将攻击延伸至公共互联网',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/9FZ8z60yB4tS4WQEP4dw?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '政策与安全'
     }
   ]
 };
