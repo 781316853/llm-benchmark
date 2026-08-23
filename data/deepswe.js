@@ -1,14 +1,14 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-08-14)
+// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-08-23)
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
-  updated: "2026-08-14",
+  updated: "2026-08-23",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 26 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 29 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -48,6 +48,15 @@ window.DEEPSWE = {
     'steps': 76
   },
   {
+    'name': 'glm-5-3',
+    'effort': 'max',
+    'pass1': 69,
+    'ci': 3,
+    'cost': 3.99,
+    'outTok': 80436,
+    'steps': 124
+  },
+  {
     'name': 'kimi-k3',
     'effort': 'max',
     'pass1': 69,
@@ -84,16 +93,6 @@ window.DEEPSWE = {
     'steps': 82
   },
   {
-    'name': 'GLM-5.3',
-    'effort': '最高（工具）',
-    'pass1': 66.9,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
-  },
-  {
     'name': 'gemini-3-7-flash',
     'effort': 'medium',
     'pass1': 65,
@@ -110,6 +109,26 @@ window.DEEPSWE = {
     'cost': 0.24,
     'outTok': 105999,
     'steps': 155
+  },
+  {
+    'name': 'DeepSeek-V4-Pro',
+    'effort': '极高强度思考（工具）',
+    'pass1': 62.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
+  },
+  {
+    'name': 'DeepSeek-V4-Flash-Vision-Exp',
+    'effort': '最高（工具）',
+    'pass1': 59.3,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
   },
   {
     'name': 'claude-opus-4-8',
@@ -200,6 +219,16 @@ window.DEEPSWE = {
     'cost': 3.92,
     'outTok': 78175,
     'steps': 129
+  },
+  {
+    'name': 'Qwen3.8-27B',
+    'effort': '思考模式（工具）',
+    'pass1': 42.2,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
   },
   {
     'name': 'gemini-3-5-flash',

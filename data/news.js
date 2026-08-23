@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-14',
+  'updated': '2026-08-23',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,188 +13,124 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-08-14',
-      'title': '苹果在阿里巴巴的帮助下为中国培训了自己的人工智能模型',
-      'brief': '据报道，苹果已经与国内科技巨头阿里巴巴一起为中国市场培训了一个定制的人工智能模型，这是一种罕见的跨境合作伙伴关系。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/980160/apple-intelligence-china-custom-ai-model-alibaba',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'GLM-5.3 ：具有新兴网络功能的前沿编码',
-      'brief': 'GLM-5.3 ：具有新兴网络功能的前沿编码',
-      'url': 'https://z.ai/blog/glm-5.3',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '甚至Claude也对Dario Amodei的妻子一无所知',
-      'brief': '甚至Claude也对Dario Amodei的妻子一无所知',
-      'url': 'https://www.wsj.com/tech/ai/claude-dario-amodei-wife-anthropic-e1eeda7d',
+      'date': '2026-08-23',
+      'title': '“AI拒绝者”辞去了梦寐以求的工作，希望别人跟随',
+      'brief': '“AI拒绝者”辞去了梦寐以求的工作，希望别人跟随',
+      'url': 'https://www.smh.com.au/technology/this-ai-refuser-quit-her-dream-job-and-hopes-others-follow-20260818-p60pdu.html',
       'source': 'Hacker News',
       'type': '行业动态'
     },
     {
-      'date': '2026-08-14',
-      'title': 'DeepSeek Harness 实测：一夜 5 万星，Agent 界的 Android 来了',
-      'brief': 'Agent 行业需要一个 Android。 作者｜张勇毅 编辑｜靖宇 北京时间 8 月 13 日晚上八点半，DeepSeek 正式公布了它成立以来的第一个 Agent 产品，之前预热很久，大家期待值很高的 Deepseek Harness。 截至发稿， 它的 GitHub 仓库已…',
-      'url': 'http://www.geekpark.net/news/368809',
+      'date': '2026-08-23',
+      'title': 'DeepSeek 周末用量统一低价收费；特斯拉 9 月 3 日首秀 Cybercab；神秘 Ox Alpha 模型爆火网络',
+      'brief': '第二届世界人形机器人运动会开幕：2056 台机器人齐聚「冰丝带」，666 支队伍竞技 51 赛项 8 月 22 日晚间，第二届世界人形机器人运动会在国家速滑馆「冰丝带」开幕。 本届赛事由北京市人民政府、中央广播电视总台、世界机器人合作组织、亚太机器人世界杯国际理事会联合主办。来自…',
+      'url': 'http://www.geekpark.net/news/369215',
       'source': '极客公园',
       'type': '公司动态'
     },
     {
-      'date': '2026-08-14',
-      'title': 'DeepSeek Harness 公测，对标 Claude Cowork ；长鑫科技市值超越腾讯；OpenAI 年化营收有望翻番达 400 亿美元',
-      'brief': '对标 Claude Cowork：DeepSeek Harness 公测，同步开放插件生态 8 月 13 日消息，DeepSeek-V4-Pro-0813 正式开源，同时还推出了其开源（MIT 协议）的代码智能体框架 Harness 的 v0.1 开发者预览版（基于 Cordis…',
-      'url': 'http://www.geekpark.net/news/368789',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'Zig 创始人直言，Bun 靠 Claude 生成的 Rust 重构版是“没人把关的烂代码”',
+      'date': '2026-08-23',
+      'title': '亚马逊云科技开源 Dogwood：给 AI 智能体的工具调用立规矩',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/5JAOs4xARzjGb5sj2LxG?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'Claude Code没有“魔法”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/aVJlp0XApUkyu6CNLOkL?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'DeepSeek 把 Harness 开源了：模型、工具、Agent Loop 全是插件',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/de9AljWc4ejW2KAyW8dD?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '从“工具”到“同事”——AI 时代的产品进化',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/ABCk0CzDtSKMHbPXCdWF?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'DeepSeek + Pi 王炸组合跑赢 Claude Code？Pi创始人：这套组合我早押中了',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/XpFUaftcEE3iLgGzYGZi?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': '从“会用”到“驾驭”：AI Coding 进入生产环境的真实碰撞',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/ydy2QDIAzQ1L314UH4qc?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'Rust 给 AI 编程立新规：能帮你看，不能替你写，用多了还会“熔断”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/4t8SKMGI28buD345I2Ta?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-14',
-      'title': 'AI 智能体开始参与交付，谁来证明它没有“动手脚”？IBM 与 Red Hat 给出一套新方案',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/AJz1m242RSJLpXpsC1eg?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/cwj5Ikvhqu5mKH22zKsO?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
     },
     {
-      'date': '2026-08-14',
-      'title': '涛思数据创始人&CEO陶建辉博士确认出席AICon深圳，将分享“大模型在工业场景落地的挑战与实践”',
+      'date': '2026-08-23',
+      'title': '向量数据库要被取代？DynamoDB 开始原生支持 AI 搜索',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Uiz6Ovab2eKT0T9q3Nzp?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/9YicfQysexJdmx11xG4m?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '哈佛大学$ 699的创业训练营提供教师的人工智能头像',
+      'brief': '在HBS Foundry计划中， AI头像在练习推介和董事会会议期间提供反馈。',
+      'url': 'https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors/',
+      'source': 'TechCrunch',
       'type': '公司动态'
     },
     {
-      'date': '2026-08-13',
-      'title': 'Writer引入新的AI模型和升级后的线束以控制代币成本',
-      'brief': 'Writer表示，作为Z.ai开源模型GLM-5.2的培训后版本，新系统应提供部署就绪能力……',
-      'url': 'https://techcrunch.com/2026/08/13/writer-introduces-new-ai-model-and-upgraded-harness-to-contain-token-costs/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-13',
-      'title': 'OpenAI引入了“超快” ，这是一种新模式，使GPT-5.6 SOL以14倍的速度工作',
-      'brief': 'OpenAI正在推出其最新、最强大的模型的加速版本的预览版，以吸引企业用户。',
-      'url': 'https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '微软在合并其单独的Copilot应用程序时消除了不成功的AI功能',
-      'brief': '微软正在通过结合其消费者和商业应用程序来简化Copilot ，并放弃人工智能生成的播客、群聊、深度研究……',
-      'url': 'https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/',
+      'date': '2026-08-22',
+      'title': '由DeepMind校友创立的Inherent表示，其AI “队友”在复制resea方面的表现刚刚超过了Anthropic和OpenAI……',
+      'brief': '由DeepMind校友构建的英国人工智能实验室Inherent发布了Faraday ，这是一种人工智能代理，其复制科学论文的能力可能是一步......',
+      'url': 'https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/',
       'source': 'TechCrunch',
       'type': '技术研究'
     },
     {
-      'date': '2026-08-13',
-      'title': '人工智能文本水印的工作原理',
-      'brief': '人工智能文本水印的工作原理',
-      'url': 'https://declaude.org/watermarking/',
+      'date': '2026-08-22',
+      'title': 'OpenAI表示，加州应加强其人工智能安全法案',
+      'brief': 'OpenAI呼吁加利福尼亚州加强该公司此前反对的人工智能安全法案SB 53。',
+      'url': 'https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '前沿人工智能实验室仍然不会说他们将如何包含一个流氓模型',
+      'brief': '一项新的研究发现，领先的人工智能实验室几乎没有公开记录的包含流氓模型的计划，这引发了对作为人工智能的准备工作的质疑……',
+      'url': 'https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '人工智能未能赢得人们的信任。它的制造商？不太值得信赖',
+      'brief': '人工智能未能赢得人们的信任。它的制造商？不太值得信赖',
+      'url': 'https://www.euronews.com/next/2026/08/20/ai-has-failed-to-win-peoples-trust-its-makers-even-less-trusted',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
+      'brief': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
+      'url': 'https://www.cnbc.com/2026/08/21/-anthropic-ipo-filing-will-show-ai-backlash-as-risk-sources-say.html',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '挖掘我的技能的坟墓：好莱坞创意人员培训人工智能来完成他们的工作',
+      'brief': '挖掘我的技能的坟墓：好莱坞创意人员培训人工智能来完成他们的工作',
+      'url': 'https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
+      'title': '荷兰监管机构因允许人工智能停用合作车主账号而对优步处以€ 8.25亿罚款',
+      'brief': '荷兰监管机构因允许人工智能停用合作车主账号而对优步处以€ 8.25亿罚款',
+      'url': 'https://nltimes.nl/2026/08/21/dutch-regulator-fines-uber-eu825-mil-letting-algorithm-deactivate-drivers-accounts',
       'source': 'Hacker News',
       'type': '政策与安全'
     },
     {
-      'date': '2026-08-13',
-      'title': '有人在法律文件中隐藏提示注入，告诉人工智能站在他们一边',
-      'brief': '有人在法律文件中隐藏提示注入，告诉人工智能站在他们一边',
-      'url': 'https://www.404media.co/person-hides-prompt-injection-in-legal-filing-telling-ai-to-side-with-them/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '文本AI水印将始终是微不足道的删除',
-      'brief': '文本AI水印将始终是微不足道的删除',
-      'url': 'https://www.seangoedecke.com/text-ai-watermarks/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '人工智能特工撒谎、欺骗和窃取。这是在拖延用户',
-      'brief': '人工智能特工撒谎、欺骗和窃取。这是在拖延用户',
-      'url': 'https://www.economist.com/business/2026/08/12/ai-agents-lie-cheat-and-steal-that-is-putting-off-users',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-13',
-      'title': '实测正式版 DeepSeek V4 Pro，补齐 Agent 能力｜AI 上新',
-      'brief': '作者｜桦林舞王 编辑｜靖宇 没有预告，没有倒计时，甚至连更新日志都没来得及写好。DeepSeek V4 Pro 的正式版，就这么悄悄的来了。 8 月 13 日凌晨，DeepSeek 官网悄悄刷新了 API 文档。模型名还是那个 deepseek-v4-pro，但 fingerpr…',
-      'url': 'http://www.geekpark.net/news/368777',
+      'date': '2026-08-22',
+      'title': '越会用 AI 的人，学习能力退化得越快',
+      'brief': '「坏 AI，使人笨！」 作者｜张勇毅 编辑｜靖宇 「AI 用多了，人会不会逐渐变笨？」 这应该是过去三年被讨论最多的一个迷思之一，从 ChatGPT 走红那天就有。吵了三年多，两边都拿不出像样的证据： 担心的人只有体感，不担心的人只有立场。 8 月 18 日，《经济学人》给这场争…',
+      'url': 'http://www.geekpark.net/news/369212',
       'source': '极客公园',
       'type': '技术研究'
     },
     {
-      'date': '2026-08-13',
-      'title': '「美国豆包手机」全系涨价，新东西全留给了 Gemini',
-      'brief': 'Pixel 11 不是一台想赢的手机，它是 Gemini 的身体。 作者｜张勇毅 编辑｜靖宇 纽约时间 8 月 12 日下午，谷歌在布鲁克林开完了今年的 Made by Google 发布会。 Pixel 11 全系四款手机、Pixel Watch 5，加上防丢器 Pixel T…',
-      'url': 'http://www.geekpark.net/news/368766',
+      'date': '2026-08-22',
+      'title': '微信灰测「按住转文字」功能被吐槽；DeepSeek 上线多模态功能；应急机械拉手难操作，多家车企召回 427 万辆车',
+      'brief': 'DeepSeek V4-Flash-Vision-Exp 上线：开启多模态 API 服务，Agent 能力接近 Opus-4.8 8 月 21 日消息， 深度求索官方宣布全新的多模态视觉理解模型 DeepSeek-V4-Flash-Vision-Exp 上线 DeepSeek A…',
+      'url': 'http://www.geekpark.net/news/369206',
       'source': '极客公园',
       'type': '模型发布'
+    },
+    {
+      'date': '2026-08-22',
+      'title': 'Cloudflare 推出 Agent Tracing：支持截断限制，不同框架的 Payload 默认记录策略存在差异',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/IBYDTeu3rse9tH3549wf?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
     }
   ]
 };

@@ -1,95 +1,24 @@
-// 数据源3:llm2014 Agentic(原 code_v3)基准快照(中文个人私有题库,按月归档)
+// 数据源3:llm2014 code_v3 基准快照(中文个人私有题库,按月归档)
 // 来源:https://llm2014.github.io/llm_benchmark/  (raw: github.com/llm2014/llm_benchmark)
-// 源站已把该类别显示为 "Agentic";档位/项目说明文案来自源站 docs/assets/i18n.js(每日刷新时同步)。
 // 单元格原始值形如 "7/A"(扣分数 / 字母等级,数字越小越好),或 Pass / Failed(n/m) / Skip / Pending;
 // 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
-// 项目列表名保留源站字母代号(如 "MacOS App(C)"),对应 notes.projects 的项目说明。
 // 数值化规则在 js/data.js 中统一处理。
 // 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
-  source: "llm2014 Agentic",
+  source: "llm2014 编程榜 code_v3",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-20",
+  updated: "2026-08-23",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
-  // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
-  notes: {
-  'cellFormat': '1/A 代表扣分数/档位',
-  'grades': [
-    {
-      'k': 'A',
-      't': '档：几乎不犯错，只犯微小的 UI、交互类错误。'
-    },
-    {
-      'k': 'B',
-      't': '档：大概率会错，但只要描述错误现象，都可以1轮修复。'
-    },
-    {
-      'k': 'C',
-      't': '档：大概率错，但需要交互更多轮，模型能自主推进修复，无需人工提供辅助。'
-    },
-    {
-      'k': 'D',
-      't': '档：必须有人工提供大量 log、视觉描述，协助操作等才能修复问题。'
-    },
-    {
-      'k': 'Failed',
-      't': '知识或方法论不够，即便有人帮助，也无法完成任务。'
-    },
-    {
-      'k': 'Pass',
-      't': '：前代模型已经拿到 A，不再测试。'
-    },
-    {
-      'k': 'Skip',
-      't': '：各方面原因，不进行测试。'
-    },
-    {
-      'k': 'Pending',
-      't': '：正在测试中。'
-    }
-  ],
-  'halfGrade': '同档位中，只有少数轮次出现问题，大部分情况表现良好时，会升半档，用 B+、C+ 来表示。',
-  'projects': [
-    {
-      'k': 'C',
-      't': 'MacOS App + OpenGL'
-    },
-    {
-      'k': 'E',
-      't': 'Web + WASM'
-    },
-    {
-      'k': 'F',
-      't': 'Godot + Physics'
-    },
-    {
-      'k': 'H',
-      't': 'Web + 3D Modeling'
-    },
-    {
-      'k': 'I',
-      't': 'iOS App + Rust Server'
-    },
-    {
-      'k': 'J',
-      't': 'Web + 2D Animation'
-    },
-    {
-      'k': 'K',
-      't': 'Harmony OS App + C++ Native'
-    }
-  ]
-},
-  // 月份 -> { projects: 任务列名数组(含字母代号), rows: [{model, cells:[原始值...], ide, think, unprompted}] }
+  // 月份 -> { projects: 任务列名数组, rows: [{model, cells:[原始值...], ide, think, unprompted}] }
   months: {
   '2026-06': {
     'projects': [
-      'MacOS App(C)',
-      'Flutter(D)',
-      'Web(E)',
-      'Game(F)',
-      'Rust App(G)'
+      'MacOS App',
+      'Flutter',
+      'Web',
+      'Game',
+      'Rust App'
     ],
     'rows': [
       {
@@ -395,13 +324,13 @@ window.LLM2014 = {
   },
   '2026-07': {
     'projects': [
-      'MacOS App(C)',
-      'Flutter(D)',
-      'Web(E)',
-      'Game(F)',
-      'Rust App(G)',
-      'Simple Model(H)',
-      'iOS+Server(I)'
+      'MacOS App',
+      'Flutter',
+      'Web',
+      'Game',
+      'Rust App',
+      'Simple Model',
+      'iOS+Server'
     ],
     'rows': [
       {
@@ -708,14 +637,14 @@ window.LLM2014 = {
   },
   '2026-08': {
     'projects': [
-      'MacOS App(C)',
-      'Web(E)',
-      'Game(F)',
-      'Rust App(G)',
-      'Simple Model(H)',
-      'iOS+Server(I)',
-      'Animation(J)',
-      'Data Process(K)'
+      'MacOS App',
+      'Web',
+      'Game',
+      'Rust App',
+      'Simple Model',
+      'iOS+Server',
+      'Animation',
+      'Data Process'
     ],
     'rows': [
       {
@@ -791,7 +720,7 @@ window.LLM2014 = {
           'Pending',
           '8/B+(11.48)',
           '7/A(25.25)',
-          'Pending',
+          '20/C+(90.76)',
           '30/D(83.29)'
         ],
         'unprompted': 0,

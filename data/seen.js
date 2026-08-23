@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-08-14',
+  'updated': '2026-08-23',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -237,6 +237,22 @@ window.SEEN = {
     'datalearner|Grok 4.6': '2026-08-14',
     'llm|Grok 4.6 (high)': '2026-08-14',
     'llm|DeepSeek V4 Pro 0813 (max)': '2026-08-14',
-    'deepswe|DeepSeek V4 Pro 0813': '2026-08-14'
+    'deepswe|DeepSeek V4 Pro 0813': '2026-08-14',
+    'datalearner|Gemini 3.7 Flash': '2026-08-14',
+    'datalearner|Qwen3.8-Max': '2026-08-14',
+    'deepswe|Qwen3.8-27B': '2026-08-15',
+    'aa_official|Muse Spark 1.2': '2026-08-15',
+    'aa_official|Gemini 3.7 Flash': '2026-08-15',
+    'datalearner|Qwen3.8-27B': '2026-08-15',
+    'deepswe|DeepSeek-V4-Pro': '2026-08-16',
+    'datalearner|DeepSeek-V4-Pro': '2026-08-16',
+    'vibe|Qwen3.8 27b [新]': '2026-08-19',
+    'llm|Gemini 3.7 Flash (high)': '2026-08-19',
+    'llm|GLM-5.3 (max)': '2026-08-19',
+    'vibe|Nemotron lightning 3p5 30b a3b [新]': '2026-08-20',
+    'deepswe|glm-5-3': '2026-08-20',
+    'deepswe|DeepSeek-V4-Flash-Vision-Exp': '2026-08-21',
+    'aa_official|DeepSeek V4 Flash 0731': '2026-08-21',
+    'datalearner|DeepSeek-V4-Flash-Vision-Exp': '2026-08-22'
   }
 };
