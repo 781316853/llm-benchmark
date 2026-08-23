@@ -149,6 +149,27 @@
       .sort(function (a, b) { return b.score - a.score; });
   }
 
+  // ===== Code Arena · WebDev(LMArena):每 canonical 模型取最高 Elo,并做快照内 min-max 归一化到 0-100 =====
+  // Elo 原值(约 1079-1692)存于 score 供矩阵列展示;norm 供综合分主基准组使用。
+  function webdev() {
+    var src = window.ARENA_WEBDEV || { models: [] };
+    var best = {};
+    src.models.forEach(function (m) {
+      var c = canon(m.name);
+      if (!best[c.id] || m.score > best[c.id].score) {
+        best[c.id] = Object.assign({}, m, { canon: c });
+      }
+    });
+    var list = Object.keys(best).map(function (k) { return best[k]; });
+    if (!list.length) return [];
+    // 快照内 min-max 归一化:norm = (elo - min)/(max - min) * 100
+    var min = list.reduce(function (a, m) { return Math.min(a, m.score); }, Infinity);
+    var max = list.reduce(function (a, m) { return Math.max(a, m.score); }, -Infinity);
+    var span = (max - min) || 1;
+    list.forEach(function (m) { m.norm = Math.round((m.score - min) / span * 1000) / 10; });
+    return list.sort(function (a, b) { return b.score - a.score; });
+  }
+
   // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, norm, rank}]} =====
   // 综合分(norm,0-100)按源数据排序赋值:源 CSV 行序即原站排名(rank 0=第一名);
   // "项目评测等级结果相似纳入公式":相邻模型中等级均值(0.5 档)相同的视为相似,同分;
@@ -185,12 +206,12 @@
   }
   function llmMonths() { return Object.keys((window.LLM2014 && window.LLM2014.months) || {}).sort(); }
 
-  // ===== 统一视图:canonical -> {deepswe, vibe, llm} 用于矩阵/雷达 =====
-  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值
+  // ===== 统一视图:canonical -> {deepswe, vibe, llm, aaci, webdev} 用于矩阵/雷达 =====
+  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;aaci/webdev:同名取最高
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, aaci: null, webdev: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -219,22 +240,29 @@
       var e = ensure(m.canon);
       if (!e.aaci || m.score > e.aaci.score) e.aaci = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
     });
-    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / AA Coding Agent Index 共 4 榜
+    // Code Arena · WebDev:同名取最高 Elo(前端已做快照内 min-max 归一化到 0-100)
+    webdev().forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
+    });
+    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / AA Coding Agent Index / WebDev 共 5 榜
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.aaci) e.benchCount++;
+      if (e.webdev) e.benchCount++;
     });
     return map;
   }
 
   // ===== 汇总卡片信息 =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {};
+    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {};
     var dsTop = (ds.models || [])[0] || {};
     var vcTop = (vc.models || [])[0] || {};
+    var wdTop = wd.models ? webdev()[0] || {} : {};
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
     // llm2014 头名 = 源排序第一名(rank 0),综合分即排序赋值后的 norm
@@ -249,7 +277,10 @@
         top: vcTop.name + " · " + vcTop.score + "%" },
       { key: "llm2014", name: "llm2014 Agentic", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
-        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + "/100" : "—") }
+        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + "/100" : "—") },
+      { key: "webdev", name: "Code Arena · WebDev", tag: "前端 Web 应用开发", url: wd.officialUrl || wd.url, updated: wd.updated,
+        stats: [{ l: "模型", v: (wd.models || []).length }, { l: "Elo", v: (wdTop.score != null ? wdTop.score : "—") }],
+        top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") }
     ];
   }
 
@@ -298,6 +329,7 @@
     deepSweVersionCounts: deepSweVersionCounts,
     vibeCode: vibeCode,
     aaci: aaci,
+    webdev: webdev,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
     unified: unified,
@@ -308,6 +340,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, aaci: window.AACI }
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, aaci: window.AACI, webdev: window.ARENA_WEBDEV }
   };
 })();

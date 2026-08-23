@@ -65,6 +65,16 @@ module.exports = {
       // 含三个维度:codingAgentsIndex / codingAgentsMeanAgentWallTimeSec / codingAgentsMeanCostUsd
       url: "https://artificialanalysis.ai/agents/coding-agents",
       host: "artificialanalysis.ai"
+    },
+    arena_webdev: {
+      // Code Arena | WebDev(LMArena):前端 Web 开发权威竞技场,Elo 评分。
+      // 官方站 https://arena.ai/leaderboard/code 有 Cloudflare 防护,直接抓取返 403;
+      // 故以权威镜像 m.aitntnews.com/arena/code/ 为主(其 ld+json 声明:
+      //   creator=LM Arena、isBasedOn=https://arena.ai/leaderboard/code,每日快照官方数据)。
+      // 解析镜像页 <tr data-name/... data-score/... data-org/...> 行,含 Elo/CI/投票。
+      url: "https://m.aitntnews.com/arena/code/",
+      officialUrl: "https://arena.ai/leaderboard/code",
+      host: "m.aitntnews.com"
     }
   },
 

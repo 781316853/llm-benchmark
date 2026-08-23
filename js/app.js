@@ -27,7 +27,8 @@
   var BENCH_DESC = {
     deepswe: "长程软件工程任务评测,覆盖真实 GitHub issue 到 PR 的完整解决链路",
     vibecode: "从零构建 Web 应用的端到端评测,衡量模型独立完成项目的能力",
-    llm2014: "个人私有题库的档位制评测,从零构建实际应用并按通过情况评级(含单任务测试成本)"
+    llm2014: "个人私有题库的档位制评测,从零构建实际应用并按通过情况评级(含单任务测试成本)",
+    webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力"
   };
 
   // ===== llm2014 单元格背景色(热力图填充 + 图例共用) =====
@@ -118,6 +119,9 @@
     // AA Coding Agent Index 单值列:排序时仅显示有值的模型
     { key: "aaci", label: "AA Coding Index", type: "num", bench: true,
       val: function (r) { return (r.aaci && r.aaci.score != null) ? r.aaci.score : null; } },
+    // Code Arena · WebDev 单值列(Elo 原值):排序时仅显示有值的模型
+    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true,
+      val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -234,6 +238,11 @@
       var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(1) : "-";
       // AA Coding Agent Index 单值显示
       var aa = r.aaci ? r.aaci.score : null;
+      // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci,后附折算综合分(norm 0-100)
+      var wd = r.webdev ? r.webdev.score : null;
+      var wdCi = (r.webdev && typeof r.webdev.ci === "number")
+        ? '<span class="cell-cost">±' + r.webdev.ci + '</span>' : "";
+      var wdNorm = (r.webdev && r.webdev.norm != null) ? r.webdev.norm.toFixed(1) : null;
       // NEW 判定:仅基于旧三基准(DeepSWE/Vibe/llm2014);AA Coding Agent Index 不参与
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.vibe && r.vibe.name, r.llm && r.llm.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
@@ -260,7 +269,8 @@
         '<td class="num">' + vc + '</td>' +
         '<td class="num">' + lm + '</td>' +
         '<td class="num">' + (aa != null ? aa : "—") + '</td>' +
-        '<td class="num">' + r.benchCount + '/4</td></tr>';
+        '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
+        '<td class="num">' + r.benchCount + '/5</td></tr>';
     });
     // 表头:可点击,激活列显示方向指示符;数值列追加 num 类以与数据居中对齐
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见

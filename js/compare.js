@@ -25,15 +25,16 @@
     });
     return rows;
   }
-  // 旧三基准权重:DeepSWE 40%、Vibe Code 40%、llm2014 20%
-  // (降低 llm2014 权重,因等级折算制不如 pass@1 直接)
-  var OLD_WEIGHTS = { deepswe: 0.4, vibe: 0.4, llm: 0.2 };
+  // 主基准组权重:DeepSWE 40%、Vibe Code 40%、llm2014 20%、WebDev 40%
+  // (WebDev 与 Vibe 同属前端,权重一致;avgNorm 按在场基准权重归一化,缺失权重自动回流)
+  var OLD_WEIGHTS = { deepswe: 0.4, vibe: 0.4, llm: 0.2, webdev: 0.4 };
   function avgNorm(e) {
     var sum = 0, wsum = 0;
     // 按权重加权平均;缺失基准的权重自动回流至已有基准(归一化)
     if (e.deepswe) { sum += e.deepswe.norm * OLD_WEIGHTS.deepswe; wsum += OLD_WEIGHTS.deepswe; }
     if (e.vibe)    { sum += e.vibe.norm    * OLD_WEIGHTS.vibe;    wsum += OLD_WEIGHTS.vibe; }
     if (e.llm && e.llm.norm != null) { sum += e.llm.norm * OLD_WEIGHTS.llm; wsum += OLD_WEIGHTS.llm; }
+    if (e.webdev && e.webdev.norm != null) { sum += e.webdev.norm * OLD_WEIGHTS.webdev; wsum += OLD_WEIGHTS.webdev; }
     return wsum > 0 ? sum / wsum : 0;
   }
   // 新基准(AA Coding Agent Index)的归一化值;无数据返回 null(区别于 avgNorm 的 0)
@@ -48,6 +49,7 @@
     if (e.vibe) vs.push(e.vibe.norm);
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
     if (e.aaci && e.aaci.norm != null) vs.push(e.aaci.norm);
+    if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
     if (vs.length < 2) return 0;
     var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
     var sumSq = vs.reduce(function (s, v) { var d = v - mean; return s + d * d; }, 0);
@@ -56,8 +58,8 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:旧三基准加权平均(DeepSWE 40%/Vibe Code 40%/llm2014 20%)占 90%、新基准占 10%
-  // 新基准有数据即参与 10% 计算,无数据时权重回流至旧三基准
+  // 综合分:主基准组加权平均(DeepSWE 40%/Vibe Code 40%/llm2014 20%/WebDev 40%)占 90%、AA Coding Agent Index 占 10%
+  // AA 有数据即参与 10% 计算,无数据时权重回流至主基准组
   function composite(e) {
     var oldAvg = avgNorm(e);
     var newAvg = avgNewNorm(e);

@@ -231,10 +231,10 @@ a:hover { text-decoration: underline; }
 
 /* 阅读说明区块(总览页,信息层级增强) */
 .notes-section { margin-top: 24px; padding: 18px 20px; background: var(--bg-soft);
-  border-radius: var(--radius); font-size: 13px; color: var(--text-dim); line-height: 1.8; }
+  border-radius: var(--radius); font-size: 13px; color: var(--text-dim); line-height: 1.5; }
 .notes-section .note-title { font-weight: 600; color: var(--text); margin-bottom: 6px; }
 .notes-section ul { padding-left: 20px; margin: 0; }
-.notes-section li { margin-bottom: 2px; }
+.notes-section li { margin-bottom: 1px; }
 .notes-section li::marker { color: var(--accent); }
 
 /* "仅跨榜/显示全部" 开关(白色滑块 + 品牌轨道) */
