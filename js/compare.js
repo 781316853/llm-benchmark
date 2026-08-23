@@ -37,10 +37,6 @@
     if (e.webdev && e.webdev.norm != null) { sum += e.webdev.norm * OLD_WEIGHTS.webdev; wsum += OLD_WEIGHTS.webdev; }
     return wsum > 0 ? sum / wsum : 0;
   }
-  // 新基准(AA Coding Agent Index)的归一化值;无数据返回 null(区别于 avgNorm 的 0)
-  function avgNewNorm(e) {
-    return (e.aaci && e.aaci.norm != null) ? e.aaci.norm : null;
-  }
   // 跨榜一致性(标准差):各基准 norm 值的离散程度
   // 数据不足 2 个基准时返回 0,避免单榜模型被误判为"最均衡"
   function variance(e) {
@@ -48,7 +44,6 @@
     if (e.deepswe) vs.push(e.deepswe.norm);
     if (e.vibe) vs.push(e.vibe.norm);
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
-    if (e.aaci && e.aaci.norm != null) vs.push(e.aaci.norm);
     if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
     if (vs.length < 2) return 0;
     var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
@@ -58,12 +53,9 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:主基准组加权平均(DeepSWE 40%/Vibe Code 40%/llm2014 20%/WebDev 40%)占 90%、AA Coding Agent Index 占 10%
-  // AA 有数据即参与 10% 计算,无数据时权重回流至主基准组
+  // 综合分:主基准组加权平均(DeepSWE 40%/Vibe Code 40%/llm2014 20%/WebDev 40%)减去一致性折减
   function composite(e) {
-    var oldAvg = avgNorm(e);
-    var newAvg = avgNewNorm(e);
-    var base = (newAvg != null) ? (oldAvg * 0.9 + newAvg * 0.1) : oldAvg;
+    var base = avgNorm(e);
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);
     return base - penalty;
   }
@@ -170,7 +162,7 @@
   }
 
   window.CMP = {
-    matrix: matrix, avgNorm: avgNorm, avgNewNorm: avgNewNorm, composite: composite,
+    matrix: matrix, avgNorm: avgNorm, composite: composite,
     assignTiers: assignTiers,
     variance: variance,
     radarSeries: radarSeries, metricCards: metricCards,

@@ -24,8 +24,6 @@ function updateSeen() {
     { file: "deepswe.js", varName: "DEEPSWE", bench: "deepswe", field: "models", nameField: "name" },
     { file: "deepswe_v10.js", varName: "DEEPSWE_V10", bench: "deepswe", field: "models", nameField: "name" },
     { file: "vibecode.js", varName: "VIBECODE", bench: "vibe", field: "models", nameField: "name" },
-    { file: "aaci.js", varName: "AACI", bench: "aaci", field: "models", nameField: "model" },
-    { file: "aa_official.js", varName: "AA_OFFICIAL", bench: "aa_official", field: "models", nameField: "model" },
     { file: "datalearner.js", varName: "DATALEARNER", bench: "datalearner", field: "models", nameField: "name" }
   ];
   map.forEach(function (m) {

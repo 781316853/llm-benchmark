@@ -1,6 +1,6 @@
 # 大模型编码基准整合门户
 
-聚合 **DeepSWE** · **Vibe Code Bench** · **llm2014 Agentic**(原 code_v3) · **AA Coding Agent Index** · **Code Arena · WebDev** 五大编码评测,聚焦跨基准模型对比。
+聚合 **DeepSWE** · **Vibe Code Bench** · **llm2014 Agentic**(原 code_v3) · **Code Arena · WebDev** 四大编码评测,聚焦跨基准模型对比。
 
 ## 在线访问
 
@@ -24,7 +24,7 @@ js/data.js              数据归一(canonical 命中映射、unified 视图、h
 js/charts.js            ECharts 封装
 js/compare.js           跨基准矩阵/雷达/指标卡
 js/app.js               标签路由与渲染(含"仅跨榜"过滤)
-data/                   多源数据快照(deepswe/vibecode/llm2014/aaci/arena_webdev/models)
+data/                   多源数据快照(deepswe/vibecode/llm2014/arena_webdev/models)
 scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用)
 .github/workflows/refresh.yml  每日定时刷新数据并提交
 ```

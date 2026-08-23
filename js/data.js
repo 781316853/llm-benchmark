@@ -135,20 +135,6 @@
     });
   }
 
-  // ===== AA Coding Agent Index:每 canonical 模型取最高分(跨 agent) =====
-  function aaci() {
-    var src = window.AACI || { models: [] };
-    var best = {};
-    src.models.forEach(function (m) {
-      var c = canon(m.model);
-      if (!best[c.id] || m.score > best[c.id].score) {
-        best[c.id] = Object.assign({}, m, { canon: c });
-      }
-    });
-    return Object.keys(best).map(function (k) { return best[k]; })
-      .sort(function (a, b) { return b.score - a.score; });
-  }
-
   // ===== Code Arena · WebDev(LMArena):每 canonical 模型取最高 Elo,并做快照内 min-max 归一化到 0-100 =====
   // Elo 原值(约 1079-1692)存于 score 供矩阵列展示;norm 供综合分主基准组使用。
   function webdev() {
@@ -206,12 +192,12 @@
   }
   function llmMonths() { return Object.keys((window.LLM2014 && window.LLM2014.months) || {}).sort(); }
 
-  // ===== 统一视图:canonical -> {deepswe, vibe, llm, aaci, webdev} 用于矩阵/雷达 =====
-  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;aaci/webdev:同名取最高
+  // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev} 用于矩阵/雷达 =====
+  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, aaci: null, webdev: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, webdev: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -235,23 +221,17 @@
         }
       });
     }
-    // AA Coding Agent Index:同名取最高 score(跨 agent;norm=score,即 0-100 分)
-    aaci().forEach(function (m) {
-      var e = ensure(m.canon);
-      if (!e.aaci || m.score > e.aaci.score) e.aaci = { score: m.score, agent: m.agent, model: m.model, norm: m.score };
-    });
     // Code Arena · WebDev:同名取最高 Elo(前端已做快照内 min-max 归一化到 0-100)
     webdev().forEach(function (m) {
       var e = ensure(m.canon);
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
     });
-    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / AA Coding Agent Index / WebDev 共 5 榜
+    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / WebDev 共 4 榜
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
-      if (e.aaci) e.benchCount++;
       if (e.webdev) e.benchCount++;
     });
     return map;
@@ -308,7 +288,7 @@
     var d = dayDiff(firstSeen, seen.updated);
     return d >= 0 && d <= SEEN_WINDOW;
   }
-  // 矩阵行判定:模型在旧三基准上"新"即为真(新基准 AA Coding Agent Index 不参与 NEW 判定)
+  // 矩阵行判定:模型在已有基准上"新"即为真
   function isNewAny(dsName, vcName, llmName) {
     if (dsName && isNewRaw("deepswe", dsName)) return true;
     if (vcName && isNewRaw("vibe", vcName)) return true;
@@ -328,7 +308,6 @@
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
     vibeCode: vibeCode,
-    aaci: aaci,
     webdev: webdev,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
@@ -340,6 +319,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, aaci: window.AACI, webdev: window.ARENA_WEBDEV }
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV }
   };
 })();

@@ -4,32 +4,8 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-08-14',
-  'overallScore': 0.833,
+  'overallScore': 0.8,
   'sources': [
-    {
-      'id': 'aaci',
-      'name': 'AA Coding Agent Index',
-      'status': 'error',
-      'modelCount': 11,
-      'updated': '2026-07-11',
-      'ageDays': 34,
-      'completeness': null,
-      'fetchAttempts': 1,
-      'errors': [
-        'AA Coding Agent Index 未解析到数据(站点结构变更,保留旧文件供交叉验证)'
-      ]
-    },
-    {
-      'id': 'aa_official',
-      'name': 'AA Coding Agent Index (官方)',
-      'status': 'ok',
-      'modelCount': 10,
-      'updated': '2026-08-14',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
     {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
@@ -108,20 +84,18 @@ window.QUALITY = {
       'name': 'Muse Spark 1.1',
       'vendor': 'Meta',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 53.5,
         'datalearner': 53.3,
         'deepswe_v11': 53,
         'vibecode': 19.67
       },
-      'mean': 50.3,
-      'stddev': 16.99,
+      'mean': 49.5,
+      'stddev': 18.87,
       'flag': 'alert'
     },
     {
@@ -286,19 +260,17 @@ window.QUALITY = {
       'name': 'Fable 5 (with fallback)',
       'vendor': 'Anthropic',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 65.8,
         'datalearner': 70,
         'deepswe_v11': 70,
         'vibecode': 90.35
       },
-      'mean': 74,
-      'stddev': 9.57,
+      'mean': 76.8,
+      'stddev': 9.59,
       'flag': 'warn'
     },
     {
@@ -326,19 +298,17 @@ window.QUALITY = {
       'name': 'DeepSeek V4 Flash',
       'vendor': 'DeepSeek',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 55.5,
         'datalearner': 54.4,
         'deepswe_v11': 53,
         'vibecode': 74.74
       },
-      'mean': 59.4,
-      'stddev': 8.9,
+      'mean': 60.7,
+      'stddev': 9.93,
       'flag': 'warn'
     },
     {
@@ -346,19 +316,17 @@ window.QUALITY = {
       'name': 'Kimi K3',
       'vendor': 'Moonshot',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 61.3,
         'datalearner': 67.5,
         'deepswe_v11': 69,
         'vibecode': 84.96
       },
-      'mean': 70.7,
-      'stddev': 8.73,
+      'mean': 73.8,
+      'stddev': 7.9,
       'flag': 'warn'
     },
     {
@@ -382,21 +350,19 @@ window.QUALITY = {
       'name': 'GLM-5.2',
       'vendor': 'zAI',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'deepswe_v10',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 43.2,
         'datalearner': 44,
         'deepswe_v11': 44,
         'deepswe_v10': 42,
         'vibecode': 63.96
       },
-      'mean': 47.4,
-      'stddev': 8.3,
+      'mean': 48.5,
+      'stddev': 8.97,
       'flag': 'warn'
     },
     {
@@ -472,19 +438,17 @@ window.QUALITY = {
       'name': 'Gemini 3.6 Flash',
       'vendor': '其他',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 45.6,
         'datalearner': 49,
         'deepswe_v11': 47,
         'vibecode': 64.01
       },
-      'mean': 51.4,
-      'stddev': 7.38,
+      'mean': 53.3,
+      'stddev': 7.59,
       'flag': 'warn'
     },
     {
@@ -528,19 +492,17 @@ window.QUALITY = {
       'name': 'Grok 4.5',
       'vendor': 'xAI',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 64.4,
         'datalearner': 53,
         'deepswe_v11': 54,
         'vibecode': 69
       },
-      'mean': 60.1,
-      'stddev': 6.81,
+      'mean': 58.7,
+      'stddev': 7.32,
       'flag': 'warn'
     },
     {
@@ -601,19 +563,17 @@ window.QUALITY = {
       'name': 'GPT-5.6 Sol',
       'vendor': 'OpenAI',
       'sources': [
-        'aa_official',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'aa_official': 66.6,
         'datalearner': 72.7,
         'deepswe_v11': 73,
         'vibecode': 80.5
       },
-      'mean': 73.2,
-      'stddev': 4.93,
+      'mean': 75.4,
+      'stddev': 3.61,
       'flag': 'ok'
     },
     {
@@ -788,14 +748,6 @@ window.QUALITY = {
     }
   ],
   'completeness': {
-    'aa_official': {
-      'rate': 1,
-      'total': 10,
-      'complete': 10,
-      'modelCount': 10,
-      'missingFields': {},
-      'flag': 'ok'
-    },
     'datalearner': {
       'rate': 1,
       'total': 22,
@@ -840,16 +792,6 @@ window.QUALITY = {
     }
   },
   'timeliness': {
-    'aaci': {
-      'updated': '2026-07-11',
-      'ageDays': 34,
-      'flag': 'alert'
-    },
-    'aa_official': {
-      'updated': '2026-08-14',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
     'datalearner': {
       'updated': '2026-08-14',
       'ageDays': 0,
@@ -878,12 +820,6 @@ window.QUALITY = {
   },
   'alerts': [
     {
-      'level': 'error',
-      'dimension': 'timeliness',
-      'sourceId': 'aaci',
-      'message': '数据已 34 天未更新(>7 天)'
-    },
-    {
       'level': 'warn',
       'dimension': 'completeness',
       'sourceId': 'llm2014',
@@ -898,8 +834,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'aa_official,datalearner,deepswe_v11,vibecode,vibecode',
-      'message': 'Muse Spark 1.1 跨源分数标准差 16.99(>10)'
+      'sourceId': 'datalearner,deepswe_v11,vibecode,vibecode',
+      'message': 'Muse Spark 1.1 跨源分数标准差 18.87(>10)'
     },
     {
       'level': 'error',

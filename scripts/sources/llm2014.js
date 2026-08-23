@@ -176,7 +176,7 @@ class Llm2014Source extends BaseSource {
   }
   toStandard(parsed) {
     // 把所有月份所有模型平铺为标准记录(score 字段为原始单元格值,无法直接百分化;这里用 null,
-    // 一致性校验主要面向已有百分制的 deepswe/vibe/aaci/swebench/aider/livecode)。
+    // 一致性校验主要面向已有百分制的 deepswe/vibe/swebench/aider/livecode)。
     var srcId = this.cfg.id;
     var out = [];
     Object.keys(parsed.months).forEach(function (mk) {

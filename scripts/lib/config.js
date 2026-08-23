@@ -55,17 +55,6 @@ module.exports = {
       metaPath: "data/datasets.json",
       host: "cdn.jsdelivr.net"
     },
-    aaci: {
-      url: "https://aitoolsreview.co.uk/benchmarks",
-      host: "aitoolsreview.co.uk"
-    },
-    aa_official: {
-      // AA 官方 Coding Agent Index:数据内嵌在 /agents/coding-agents 页的
-      // <script type="application/ld+json"> 块(schema.org Dataset 格式),
-      // 含三个维度:codingAgentsIndex / codingAgentsMeanAgentWallTimeSec / codingAgentsMeanCostUsd
-      url: "https://artificialanalysis.ai/agents/coding-agents",
-      host: "artificialanalysis.ai"
-    },
     arena_webdev: {
       // Code Arena | WebDev(LMArena):前端 Web 开发权威竞技场,Elo 评分。
       // 官方站 https://arena.ai/leaderboard/code 有 Cloudflare 防护,直接抓取返 403;
