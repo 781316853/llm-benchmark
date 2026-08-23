@@ -14,11 +14,35 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-23',
+      'title': '“AI拒绝者”辞去了梦寐以求的工作，希望别人跟随',
+      'brief': '“AI拒绝者”辞去了梦寐以求的工作，希望别人跟随',
+      'url': 'https://www.smh.com.au/technology/this-ai-refuser-quit-her-dream-job-and-hopes-others-follow-20260818-p60pdu.html',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-23',
       'title': 'DeepSeek 周末用量统一低价收费；特斯拉 9 月 3 日首秀 Cybercab；神秘 Ox Alpha 模型爆火网络',
       'brief': '第二届世界人形机器人运动会开幕：2056 台机器人齐聚「冰丝带」，666 支队伍竞技 51 赛项 8 月 22 日晚间，第二届世界人形机器人运动会在国家速滑馆「冰丝带」开幕。 本届赛事由北京市人民政府、中央广播电视总台、世界机器人合作组织、亚太机器人世界杯国际理事会联合主办。来自…',
       'url': 'http://www.geekpark.net/news/369215',
       'source': '极客公园',
       'type': '公司动态'
+    },
+    {
+      'date': '2026-08-23',
+      'title': '亚马逊云科技开源 Dogwood：给 AI 智能体的工具调用立规矩',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/cwj5Ikvhqu5mKH22zKsO?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-23',
+      'title': '向量数据库要被取代？DynamoDB 开始原生支持 AI 搜索',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/9YicfQysexJdmx11xG4m?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
     },
     {
       'date': '2026-08-22',
@@ -54,6 +78,14 @@ window.NEWS = {
     },
     {
       'date': '2026-08-22',
+      'title': '人工智能未能赢得人们的信任。它的制造商？不太值得信赖',
+      'brief': '人工智能未能赢得人们的信任。它的制造商？不太值得信赖',
+      'url': 'https://www.euronews.com/next/2026/08/20/ai-has-failed-to-win-peoples-trust-its-makers-even-less-trusted',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-22',
       'title': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
       'brief': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
       'url': 'https://www.cnbc.com/2026/08/21/-anthropic-ipo-filing-will-show-ai-backlash-as-risk-sources-say.html',
@@ -70,11 +102,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-22',
-      'title': '嵌入式AI',
-      'brief': '嵌入式AI',
-      'url': 'https://nostarch.com/embedded-ai',
+      'title': '荷兰监管机构因允许人工智能停用合作车主账号而对优步处以€ 8.25亿罚款',
+      'brief': '荷兰监管机构因允许人工智能停用合作车主账号而对优步处以€ 8.25亿罚款',
+      'url': 'https://nltimes.nl/2026/08/21/dutch-regulator-fines-uber-eu825-mil-letting-algorithm-deactivate-drivers-accounts',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '政策与安全'
     },
     {
       'date': '2026-08-22',
@@ -99,14 +131,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/IBYDTeu3rse9tH3549wf?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-22',
-      'title': 'JetBrains详细阐述了控制AI支出快速增长的首批举措',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/CQhb4TOREpEZshtqWZMy?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
     }
   ]
 };
