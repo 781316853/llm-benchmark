@@ -31,39 +31,6 @@
     webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力"
   };
 
-  // ===== llm2014 单元格背景色(热力图填充 + 图例共用) =====
-  // 色系与 CSS 等级着色保持一致:绿(A/Pass)→黄绿(B)→琥珀(C)→红(D/Failed),灰=无数据(Skip/Pending)
-  var LM_BG = {
-    "A+": "#2bb673", A: "#34c084",
-    "B+": "#8fce3a", B: "#9fd84a",
-    "C+": "#f0b424", C: "#f5be38",
-    "D+": "#f87171", D: "#fb8585"
-  };
-  var LM_BG_SPECIAL = { pass: "#1fa063", failed: "#e0524a", skip: "#3a4250", pending: "#2f3744", unknown: "#3a4250" };
-  // 依据单元格状态/等级返回对应背景色;供热力图 itemStyle.color 与图例色块统一使用
-  function lmCellBg(cell) {
-    if (cell.status === "grade") return LM_BG[cell.grade] || "#4a5466";
-    return LM_BG_SPECIAL[cell.status] || "#3a4250";
-  }
-  // 图例色块:带背景的圆角小方块 + 文字
-  function lmLegendChip(label, bg) {
-    return '<span><i style="background:' + bg + ';width:13px;height:13px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px"></i>' + label + '</span>';
-  }
-  // 单元格文本:等级单元格含测试成本时格式化为 "7/A+ ¥90.52"(与新版站点展示一致)
-  function lmCellText(c) {
-    if (c.status === "grade" && c.cost != null) {
-      return c.raw.replace(/\(\s*\d+(?:\.\d+)?\s*\)$/, "") + " ¥" + c.cost;
-    }
-    return c.raw;
-  }
-  // 热力图标签:含成本的等级单元格拆成两行("7/A+ ¥90.52" -> "7/A+\n{cost|¥90.52}"),
-  // 成本行经 rich 富文本以小字显示;单元格窄时避免单行文字溢出被截断
-  function lmHeatLabel(c) {
-    if (c.status === "grade" && c.cost != null) {
-      return lmCellText(c).replace(/ ¥/, "\n{cost|¥");
-    }
-    return c.raw;
-  }
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
   function lmCellHtml(c) {
     var inner;
@@ -365,41 +332,21 @@
     var allRows = mo.rows.slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); });
     // 仅跨榜模型过滤(命中<2榜默认收起;勾选"显示全部"恢复)
     var rows = filterHits(allRows, function (r) { return r.canon.id; }, state.showAll.llm);
-    var yLabels = rows.map(function (r) { return r.model; });
 
-    // 热力数据:[xIndex, yIndex, num, tooltipText, labelText];颜色按等级/状态显式指定(与图例一致),
-    // Skip/Pending 用中性灰,Failed 用红,避免旧实现里"无数据"被涂成代表最差的深红
-    var heat = [];
-    rows.forEach(function (r, yi) {
-      r.cells.forEach(function (c, xi) {
-        heat.push({ value: [xi, yi, c.num == null ? 0 : c.num, lmCellText(c), lmHeatLabel(c)],
-          itemStyle: { color: lmCellBg(c), borderColor: "rgba(255,255,255,.55)", borderWidth: 1 } });
-      });
-    });
-    // 含成本的单元格标签为两行(扣分/档位 + 成本),固定 360px 高时行高不足会互相压叠;
-    // 按行数动态加高两个图表,保证每行 ≥26px 容纳双行文字
+    // 按行数动态加高综合分柱状图,行数多时避免标签拥挤
     var lmH = Math.min(760, Math.max(380, rows.length * 26 + 90));
-    ["lmHeat", "lmBar"].forEach(function (id) {
+    ["lmBar"].forEach(function (id) {
       var el = document.getElementById(id);
       if (!el) return;
       el.style.height = lmH + "px";
       var inst = CH.inst(id);
       if (inst) inst.resize();
     });
-    CH.apply("lmHeat", CH.heatmapOption(xLabels, yLabels, heat, D.MAX_GRADE));
 
     // 综合分柱(百分制:含完成率折扣,跳过任务过多的小样本均值会被拉低)
     var bsorted = rows.slice().sort(function (a, b) { return (a.norm || 0) - (b.norm || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
       bsorted.map(function (r) { return r.norm == null ? 0 : Number(r.norm.toFixed(1)); }), "#2D9D78", "", { max: 100 }));
-
-    // 图例:色块与热力图填充色严格一致(绿→黄绿→琥珀→红,灰=无数据)
-    var legendSeq = [["A+", LM_BG["A+"]], ["A", LM_BG.A], ["B+", LM_BG["B+"]], ["B", LM_BG.B],
-      ["C+", LM_BG["C+"]], ["C", LM_BG.C], ["D+", LM_BG["D+"]], ["D", LM_BG.D]];
-    var legendSp = [["Pass", LM_BG_SPECIAL.pass], ["Failed", LM_BG_SPECIAL.failed],
-      ["Skip", LM_BG_SPECIAL.skip], ["Pending", LM_BG_SPECIAL.pending]];
-    document.getElementById("lmLegend").innerHTML =
-      legendSeq.concat(legendSp).map(function (it) { return lmLegendChip(it[0], it[1]); }).join("");
 
     // 明细表
     var html = rows.map(function (r, i) {
@@ -454,8 +401,7 @@
     noteParts.push({ k: "综合分", v: [
       "按源数据排序赋值:源 CSV 行序即原站排名",
       "项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似)",
-      "组间按排名等距 0-100 递减(第一名 100,最后一名 0)",
-      "热力图仍按单项等级(0-4.0)着色"
+      "组间按排名等距 0-100 递减(第一名 100,最后一名 0)"
     ] });
     // 单条说明渲染:字符串内容单行跟随标签;数组内容套 note-body 逐行展示,折行对齐
     var noteLineHtml = function (p) {

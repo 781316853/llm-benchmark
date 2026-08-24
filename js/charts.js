@@ -104,33 +104,6 @@
     };
   }
 
-  // ===== 热力图(项目 × 模型) =====
-  // 注:颜色由调用方在每条数据项的 itemStyle.color 中按等级/状态显式指定,
-  // 故此处不使用 visualMap(连续映射会覆盖每点颜色,且与离散等级语义不符)。
-  function heatmapOption(xLabels, yLabels, data, max) {
-    return {
-      tooltip: { position: "top",
-        formatter: function (p) { return yLabels[p.value[1]] + " · " + xLabels[p.value[0]] + "<br/>" + (p.value[3] || "—"); } },
-      // containLabel:true 让 ECharts 按最长模型名自动扩宽左侧留白,避免模型名被截断
-      grid: { left: 20, right: 30, top: 30, bottom: 56, containLabel: true },
-      // interval:0 强制显示全部项目名,rotate 防止多列时重叠
-      xAxis: { type: "category", data: xLabels, axisLabel: { color: C.textTertiary, fontSize: 11, interval: 0, rotate: 28 },
-        splitArea: { show: true, areaStyle: { color: ["rgba(26,35,50,.015)", "rgba(26,35,50,.03)"] } }, axisLine: { lineStyle: { color: C.border } } },
-      yAxis: { type: "category", data: yLabels, inverse: true, axisLabel: { color: C.textDim, fontSize: 11 },
-        splitArea: { show: true, areaStyle: { color: ["rgba(26,35,50,.015)", "rgba(26,35,50,.03)"] } }, axisLine: { lineStyle: { color: C.border } } },
-      series: [{ type: "heatmap", data: data,
-        // 文字加阴影,保证在任意底色(尤其黄/琥珀)上都清晰可读
-        // 等级单元格含成本时调用方在 value[4] 传双行富文本(如 "7/A+\n{cost|¥90.52}"),
-        // 成本行用 rich 小字,避免单行文本超出窄单元格被截断
-        label: { show: true, color: "#fff", fontSize: 10,
-          textShadowColor: "rgba(0,0,0,.45)", textShadowBlur: 2,
-          rich: { cost: { fontSize: 9, color: "rgba(255,255,255,.82)",
-            textShadowColor: "rgba(0,0,0,.45)", textShadowBlur: 2 } },
-          formatter: function (p) { return p.value[4] || p.value[3]; } },
-        emphasis: { itemStyle: { shadowBlur: 8, shadowColor: "rgba(26,35,50,.25)" } } }]
-    };
-  }
-
   // 窗口自适应
   window.addEventListener("resize", function () {
     Object.keys(registry).forEach(function (id) { registry[id].resize(); });
@@ -139,6 +112,6 @@
   window.CH = {
     apply: apply, inst: inst,
     barOption: barOption, radarOption: radarOption,
-    scatterOption: scatterOption, heatmapOption: heatmapOption
+    scatterOption: scatterOption
   };
 })();
