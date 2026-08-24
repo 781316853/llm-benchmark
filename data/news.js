@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-23',
+  'updated': '2026-08-24',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,12 +13,68 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-08-24',
+      'title': '传 Hugging Face 寻求出售，估值 130 亿美元；Altman：担心 AI 被少数强势主体掌控；成都 AG.AL 获电竞世俱杯冠军',
+      'brief': 'OpenAI CEO 奥特曼：担心人工智能会被少数强势主体掌控 8 月 24 日消息，OpenAI 首席执行官萨姆 &middot; 奥特曼表示，他担心人工智能终有一天会被少数公司、模型或个人所控制，让绝大多数消费者在技术如何塑造世界这个问题上没有发言权。 Anthropic 还…',
+      'url': 'http://www.geekpark.net/news/369224',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-24',
+      'title': 'DeepSeek 再度调价；英伟达AI服务器涨价超 15%；“AI红娘”承诺三年不结婚就退款，前 Kimi搜索负责人创业目标：拉高10%结婚率 | AI周报',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/ONGSA7k86LcxFyU64N2z?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-23',
+      'title': '新的“隐形模式” Ox Alpha背后是谁？',
+      'brief': '一种名为Ox Alpha的神秘新人工智能模型将互联网的某些角落推向了疯狂的猜测。',
+      'url': 'https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-23',
+      'title': 'Linkdaze的智能日历旨在管理家庭，而不仅仅是跟踪时间表',
+      'brief': 'Linkdaze的智能数字日历脱颖而出，因为它没有将其功能放在付费墙后面，包括人工智能膳食计划工具。',
+      'url': 'https://techcrunch.com/2026/08/23/linkdazes-smart-calendar-is-built-to-run-a-household-not-just-track-a-schedule/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-23',
+      'title': '在受版权保护的书籍上训练人工智能模型是否合法？这很复杂',
+      'brief': '大多数已发表的作者在不知情或未经同意的情况下，为开发相同的人工智能工具做出了贡献，这些工具可能会破坏……',
+      'url': 'https://techcrunch.com/2026/08/23/is-it-legal-to-train-ai-models-on-copyrighted-books-its-complicated/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
       'date': '2026-08-23',
       'title': '“AI拒绝者”辞去了梦寐以求的工作，希望别人跟随',
       'brief': '“AI拒绝者”辞去了梦寐以求的工作，希望别人跟随',
       'url': 'https://www.smh.com.au/technology/this-ai-refuser-quit-her-dream-job-and-hopes-others-follow-20260818-p60pdu.html',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-08-23',
+      'title': 'Gen1.5 模型带来重要进展：物理 AI 正在接近 GPT3 时刻',
+      'brief': '如果物理 AI 也能 scaling，意味着什么？ 作者｜Li Yuan 编辑｜靖宇 研究人员先教机器人拿起刷子，把桌上的积木扫进碗里。 然后，他们把刷子拿走，换成一根香蕉。 机器人抓起香蕉，将它横过来贴住桌面，把积木一点点扫进碗中。 随后，香蕉又被换成了一只簸箕。机器人这次没有…',
+      'url': 'http://www.geekpark.net/news/369223',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-23',
+      'title': '世界机器人大会观察，银河星脑的愿景：让所有机器人共享「大脑」',
+      'brief': '从人形、轮式到重载，从家庭、零售到工业，银河星脑正在走进更多身体和真实场景。 作者｜Li Yuan 编辑｜ 靖宇 每年走进世界机器人大会，人们最先看到的都是身体。 有的机器人长出双腿，有的装上轮子；有的把手指做得越来越像人，有的用钢铁手臂扛起几十公斤重物。我们也因此习惯用外形给机…',
+      'url': 'http://www.geekpark.net/news/369221',
+      'source': '极客公园',
+      'type': '技术研究'
     },
     {
       'date': '2026-08-23',
@@ -43,94 +99,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/9YicfQysexJdmx11xG4m?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '行业动态'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '哈佛大学$ 699的创业训练营提供教师的人工智能头像',
-      'brief': '在HBS Foundry计划中， AI头像在练习推介和董事会会议期间提供反馈。',
-      'url': 'https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '由DeepMind校友创立的Inherent表示，其AI “队友”在复制resea方面的表现刚刚超过了Anthropic和OpenAI……',
-      'brief': '由DeepMind校友构建的英国人工智能实验室Inherent发布了Faraday ，这是一种人工智能代理，其复制科学论文的能力可能是一步......',
-      'url': 'https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-22',
-      'title': 'OpenAI表示，加州应加强其人工智能安全法案',
-      'brief': 'OpenAI呼吁加利福尼亚州加强该公司此前反对的人工智能安全法案SB 53。',
-      'url': 'https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '前沿人工智能实验室仍然不会说他们将如何包含一个流氓模型',
-      'brief': '一项新的研究发现，领先的人工智能实验室几乎没有公开记录的包含流氓模型的计划，这引发了对作为人工智能的准备工作的质疑……',
-      'url': 'https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '人工智能未能赢得人们的信任。它的制造商？不太值得信赖',
-      'brief': '人工智能未能赢得人们的信任。它的制造商？不太值得信赖',
-      'url': 'https://www.euronews.com/next/2026/08/20/ai-has-failed-to-win-peoples-trust-its-makers-even-less-trusted',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
-      'brief': '消息人士称， Anthropic IPO申请将显示人工智能反弹是一个风险因素',
-      'url': 'https://www.cnbc.com/2026/08/21/-anthropic-ipo-filing-will-show-ai-backlash-as-risk-sources-say.html',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '挖掘我的技能的坟墓：好莱坞创意人员培训人工智能来完成他们的工作',
-      'brief': '挖掘我的技能的坟墓：好莱坞创意人员培训人工智能来完成他们的工作',
-      'url': 'https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '荷兰监管机构因允许人工智能停用合作车主账号而对优步处以€ 8.25亿罚款',
-      'brief': '荷兰监管机构因允许人工智能停用合作车主账号而对优步处以€ 8.25亿罚款',
-      'url': 'https://nltimes.nl/2026/08/21/dutch-regulator-fines-uber-eu825-mil-letting-algorithm-deactivate-drivers-accounts',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '越会用 AI 的人，学习能力退化得越快',
-      'brief': '「坏 AI，使人笨！」 作者｜张勇毅 编辑｜靖宇 「AI 用多了，人会不会逐渐变笨？」 这应该是过去三年被讨论最多的一个迷思之一，从 ChatGPT 走红那天就有。吵了三年多，两边都拿不出像样的证据： 担心的人只有体感，不担心的人只有立场。 8 月 18 日，《经济学人》给这场争…',
-      'url': 'http://www.geekpark.net/news/369212',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-22',
-      'title': '微信灰测「按住转文字」功能被吐槽；DeepSeek 上线多模态功能；应急机械拉手难操作，多家车企召回 427 万辆车',
-      'brief': 'DeepSeek V4-Flash-Vision-Exp 上线：开启多模态 API 服务，Agent 能力接近 Opus-4.8 8 月 21 日消息， 深度求索官方宣布全新的多模态视觉理解模型 DeepSeek-V4-Flash-Vision-Exp 上线 DeepSeek A…',
-      'url': 'http://www.geekpark.net/news/369206',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-22',
-      'title': 'Cloudflare 推出 Agent Tracing：支持截断限制，不同框架的 Payload 默认记录策略存在差异',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/IBYDTeu3rse9tH3549wf?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     }
   ]
 };
