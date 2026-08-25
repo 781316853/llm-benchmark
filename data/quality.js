@@ -185,6 +185,27 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'DeepSeek V4 Flash 0731',
+      'name': 'deepseek-v4-flash-high',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'arena_webdev',
+        'arena_webdev',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'arena_webdev': 1431,
+        'datalearner': 54.4,
+        'deepswe_v11': 53,
+        'vibecode': 74.74
+      },
+      'mean': 638.4,
+      'stddev': 709.14,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'Gemini 3.5 flash lite',
       'name': 'gemini-3.5-flash-lite',
       'vendor': '其他',
@@ -373,29 +394,6 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'DeepSeek V4 Pro',
-      'name': 'deepseek-v4-pro-high-20260813',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'arena_webdev',
-        'arena_webdev',
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'arena_webdev': 1445,
-        'datalearner': 62.7,
-        'deepswe_v11': 62.7,
-        'deepswe_v10': 8,
-        'vibecode': 49.93
-      },
-      'mean': 535.1,
-      'stddev': 693.24,
-      'flag': 'alert'
-    },
-    {
       'canonId': 'Kimi K3',
       'name': 'kimi-k3-max',
       'vendor': 'Moonshot',
@@ -529,6 +527,32 @@ window.QUALITY = {
       },
       'mean': 496.2,
       'stddev': 681.58,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'DeepSeek V4 Pro 0813',
+      'name': 'deepseek-v4-pro-high-20260813',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'arena_webdev',
+        'arena_webdev',
+        'arena_webdev',
+        'datalearner',
+        'deepswe_v11',
+        'deepswe_v11',
+        'deepswe_v10',
+        'vibecode',
+        'vibecode'
+      ],
+      'scores': {
+        'arena_webdev': 1445,
+        'datalearner': 62.7,
+        'deepswe_v11': 62.7,
+        'deepswe_v10': 8,
+        'vibecode': 49.93
+      },
+      'mean': 535.5,
+      'stddev': 681.03,
       'flag': 'alert'
     },
     {
@@ -742,26 +766,6 @@ window.QUALITY = {
       },
       'mean': 446.9,
       'stddev': 658.23,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'DeepSeek V4 Flash',
-      'name': 'deepseek-v4-flash-high',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'arena_webdev',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'arena_webdev': 1579,
-        'datalearner': 54.4,
-        'deepswe_v11': 53,
-        'vibecode': 74.74
-      },
-      'mean': 440.3,
-      'stddev': 657.49,
       'flag': 'alert'
     },
     {
@@ -1156,22 +1160,6 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'DeepSeek V4 Pro 0813',
-      'name': 'DeepSeek V4 Pro 0813',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'deepswe_v11': 63,
-        'vibecode': 82.3
-      },
-      'mean': 72.7,
-      'stddev': 9.65,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Gemini 3 Flash Preview',
       'name': 'gemini-3-flash-preview',
       'vendor': 'Google',
@@ -1366,6 +1354,12 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
+      'sourceId': 'arena_webdev,arena_webdev,datalearner,deepswe_v11,vibecode',
+      'message': 'deepseek-v4-flash-high 跨源分数标准差 709.14(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
       'sourceId': 'arena_webdev,vibecode',
       'message': 'gemini-3.5-flash-lite 跨源分数标准差 705.92(>10)'
     },
@@ -1432,12 +1426,6 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'arena_webdev,arena_webdev,datalearner,deepswe_v11,deepswe_v10,vibecode',
-      'message': 'deepseek-v4-pro-high-20260813 跨源分数标准差 693.24(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
       'sourceId': 'arena_webdev,datalearner,deepswe_v11,vibecode',
       'message': 'kimi-k3-max 跨源分数标准差 692.93(>10)'
     },
@@ -1476,6 +1464,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'arena_webdev,deepswe_v10,vibecode',
       'message': 'qwen3.6-plus 跨源分数标准差 681.58(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'arena_webdev,arena_webdev,arena_webdev,datalearner,deepswe_v11,deepswe_v11,deepswe_v10,vibecode,vibecode',
+      'message': 'deepseek-v4-pro-high-20260813 跨源分数标准差 681.03(>10)'
     },
     {
       'level': 'error',
@@ -1542,12 +1536,6 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'arena_webdev,datalearner,deepswe_v11,vibecode',
       'message': 'gemini-3.7-flash-high 跨源分数标准差 658.23(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'arena_webdev,datalearner,deepswe_v11,vibecode',
-      'message': 'deepseek-v4-flash-high 跨源分数标准差 657.49(>10)'
     },
     {
       'level': 'error',
