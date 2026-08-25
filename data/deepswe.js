@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-24",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 25 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 26 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -199,6 +199,16 @@ window.DEEPSWE = {
     'cost': 3.92,
     'outTok': 78175,
     'steps': 129
+  },
+  {
+    'name': 'Qwen3.8-27B',
+    'effort': '思考模式（工具）',
+    'pass1': 42.2,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
   },
   {
     'name': 'gemini-3-5-flash',
