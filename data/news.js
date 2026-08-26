@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-25',
+  'updated': '2026-08-26',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -12,6 +12,62 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-08-26',
+      'title': '消息人士称，机器人初创公司Generalist的估值达到$ 3B',
+      'brief': '$ 2亿的扩展是在这家物理AI初创公司达到$ 20亿估值后几个月。',
+      'url': 'https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '随着高调离职潮的持续， OpenAI失去了一名顶级数据中心高管',
+      'brief': '在马龙离开之前， OpenAI已经重组了其基础设施组织，将他的报告线从总裁格雷格·布罗克曼（ Greg Brockman ）转移到……',
+      'url': 'https://techcrunch.com/2026/08/25/openai-loses-a-top-data-center-exec-as-stream-of-high-profile-departures-continues/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '苹果突袭发布 M6 与 M5 Ultra 芯片与新款 Mac Mini；字节发布 AI 办公产品「豆包工作」；SpaceX 拟千亿美元建设第二座「星际基地」｜极客早知道',
+      'brief': '苹果突袭发布 M6 与 M5 Ultra 芯片，新 Mac mini、Mac Studio 全面押注本地 AI 8 月 25 日，苹果未举办发布会，直接上架了两款全新自研芯片 M6 与 M5 Ultra，以及搭载它们的新款 Mac mini 与新款 Mac Studio，并即刻开…',
+      'url': 'http://www.geekpark.net/news/369355',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'Grab 借助 AI 代理将机械性分析的工作量从 44% 降至 30%',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/LqdtQ5sKYcEAzhCNNToE?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-25',
+      'title': '图像生成器Stable Diffusion的制造商Stability AI筹集了7600万美元的新资金',
+      'brief': '该公司新的筹款总额现在为2.32亿美元（ $ ）。',
+      'url': 'https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-25',
+      'title': 'Claude Cowork终于记得您在聊天中告诉应用程序的内容',
+      'brief': 'Anthropic为Claude提供了跨聊天和Cowork的共享记忆，因此用户不再需要反复向人工智能简要介绍项目、偏好……',
+      'url': 'https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-25',
+      'title': '基准显示， OpenAI的Jalapeño芯片专为大规模快速推理而构建',
+      'brief': 'Jalapeño在SemiAnalysis的InferenceX基准测试中测试，每个用户注册的代币数量和每千瓦的吞吐量都比货币多……',
+      'url': 'https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
     {
       'date': '2026-08-25',
       'title': 'Accel支持的Keenable正在为人工智能代理索引网络',
@@ -38,6 +94,14 @@ window.NEWS = {
     },
     {
       'date': '2026-08-25',
+      'title': 'OpenAI表示，其Jalapeño芯片可以比竞争对手更快地支持AI响应',
+      'brief': 'OpenAI表示，其新的人工智能芯片Jalapeño比其他人工智能系统更高效地完成任务并更快地返回响应。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/984290/openai-jalapeno-ai-chip-benchmarks',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-25',
       'title': 'Alabama AG就Hugging Face hack传唤OpenAI',
       'brief': '阿拉巴马州总检察长周一向OpenAI发出传票，作为调查其人工智能特工如何逃脱假设...',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/984239/alabama-attorney-general-subpoena-openai-hugging-face-hack',
@@ -46,19 +110,27 @@ window.NEWS = {
     },
     {
       'date': '2026-08-25',
-      'title': '苹果推出M6和M5 Ultra ，实现性能和人工智能计算的巨大飞跃',
-      'brief': '苹果推出M6和M5 Ultra ，实现性能和人工智能计算的巨大飞跃',
-      'url': 'https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/',
+      'title': '在Windows沙盒中为计算机使用代理运行Minecraft',
+      'brief': '在Windows沙盒中为计算机使用代理运行Minecraft',
+      'url': 'https://cua.ai/docs/how-to-guides/sandbox/minecraft',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-08-25',
-      'title': '80%的开发人员认为人工智能编码更具成瘾性而非实用性',
-      'brief': '80%的开发人员认为人工智能编码更具成瘾性而非实用性',
-      'url': 'https://www.zdnet.com/article/i-cant-stop-80-of-developers-find-ai-coding-more-addictive-than-helpful/',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'title': '从被找到、被用好到被修好，HarmonyOS 7 给出开发者一套新解法',
+      'brief': '原来关注 App 被打开的次数，现在关注的是服务被调用的次数。 作者｜张勇毅 编辑｜靖宇 对应用开发者来讲，一天里有三个时刻经常会想起操作系统：早上看数据。昨天的新增还剩多少，七日留存掉到了哪条线，还有那一大批装了就再没打开过的用户&mdash;&mdash;你的图标被留在第四屏…',
+      'url': 'http://www.geekpark.net/news/369356',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-25',
+      'title': '苹果 Mac mini M6 发布：两年涨 2500 块，AI 税反噬「龙虾神机」',
+      'brief': '「内存涨价狂潮」，专门吃掉便宜的那一档 作者｜张勇毅 编辑｜靖宇 只要是今年持续有关注 AI 软件领域的人，你一定不会忘记 Mac mini 在其中的「江湖」地位：因为 OpenClaw 爆火，这类工具要一台机器长期开着跑，因此量大管饱的 Mac mini M4 成为了版本答案…',
+      'url': 'http://www.geekpark.net/news/369354',
+      'source': '极客公园',
+      'type': '政策与安全'
     },
     {
       'date': '2026-08-25',
@@ -67,94 +139,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/369344',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-08-25',
-      'title': '《有头有脸的大模型公司，集体搞起「匿名公测」》',
-      'brief': '头图来源：oxalpha.com 最近，海外开发者圈又被一个没有名字的模型刷屏了。 8 月 20 日，OpenRouter 上多了一个叫 Ox Alpha 的模型，100 万 token 上下文、支持图片和视频输入、能调用工具、免费。随后，它被接进 OpenCode、Hermes…',
-      'url': 'http://www.geekpark.net/news/369324',
-      'source': '极客公园',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': 'TRAE、扣子并入豆包，字节将推「豆包工作」；拓竹回应 2027 年 IPO 传闻：消息不实；要钱还是使命，Anthropic 面试流程曝光｜极客早知道',
-      'brief': 'TRAE、扣子并入豆包，字节将推统一办公品牌 \'豆包工作\' 8 月 24 日消息，字节跳动对旗下的办公 AI 产品完成了一轮团队整合，TRAE、扣子（Coze）团队将整体并入豆包体系，其中 TRAE Work、扣子将与豆包在工作场景的产品能力进行整合；TRAE IDE 及 CLI…',
-      'url': 'http://www.geekpark.net/news/369303',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': 'SpaceXAI 推出面向自主 AI 智能代理的 Grok Bot',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/a2Y7bOxLHZfCVWtKhAtQ?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'Instinct强大的人工智能助手正在引发隐私和安全问题',
-      'brief': '早期的测试人员对Instinct的功能赞不绝口，但有人说人工智能助手的广泛访问权限、广泛的条款和对用户采取行动的能力……',
-      'url': 'https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'Valor ， Point72回归General Intuition ，估值为$ 6B ，因为人工智能初创公司进军机器人领域',
-      'brief': 'General Intuition是一家建立基础模型的初创公司，该模型训练广义人工智能代理如何在空间和时间中移动，目前正在进行谈判……',
-      'url': 'https://techcrunch.com/2026/08/24/valor-point72-back-general-intuition-at-6b-valuation-as-ai-startup-pushes-into-robotics/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'OpenAI正在为所有事物构建人工智能代理。大家都会用吗？',
-      'brief': '在前沿实验室推动将人工智能代理从软件工程师带到大众的推动下。',
-      'url': 'https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '130 亿美元，Hugging Face 要卖了',
-      'brief': '作者｜桦林舞王 编辑｜靖宇 又一家 AI 中间层公司，要卖了。 当地时间 8 月 23 日，外媒爆出消息，Hugging Face 正在探索出售，估值可能达到 130 亿美元甚至更高。这家总部位于纽约的公司，已经聘请了投行来试探潜在买家的兴趣。 这个价格放在三年前会显得荒唐。20…',
-      'url': 'http://www.geekpark.net/news/369289',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '「AstraTennis」时刻：机器人在全球直播中打了一场真正的网球',
-      'brief': '作者｜李苏 编辑｜ 郑玄 一场特殊的网球比赛，一次数字智能向物理智能的跨越。 人形机器人挥出第一拍之前，没有人确定它能不能接住对面飞来的球。 事实上，球贴着边线飞来，机器人横移数步挥拍回击，球落在界内。它接住了，比赛继续。 这是 8 月 22 日第二届世界人形机器人运动会上的真实…',
-      'url': 'http://www.geekpark.net/news/369283',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'DeepSeek 上线多模态，我用它做了《牛来》小游戏｜AI 上新',
-      'brief': '作者｜Wildcard 编辑｜靖宇 多模态也是「梁心」地板价。 「鲸鱼睁眼了！」 非常突然的，8 月 21 日 DeepSeek 官方正式宣布，V4-Flash-Vision-Exp 上线，开启多模态 API 服务。 等了这么久，DeepSeek 模型终于补上了多模态能力，欢喜的…',
-      'url': 'http://www.geekpark.net/news/369278',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '形界智能：沿用两段式架构，是市场对 AI 实时视频的最大误判',
-      'brief': '作者｜Cynthia 编辑｜郑玄 投资人广撒网式布局，但真正的全域沉浸式生成，还少之又少。 2024 年 8 月 27 日，DOOM 里的一声枪响，在 2026 年年中的资本市场，听到了震耳欲聋的回响。 这一天，一段《DOOM》的游戏画面出现在 Google Research、G…',
-      'url': 'http://www.geekpark.net/news/369264',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '多个 AI 智能体“同住”一台 EC2：AgentCore 推出持久计算',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/2IBWc7BuB2qoGao5tlQT?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     }
   ]
 };
