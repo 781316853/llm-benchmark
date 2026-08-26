@@ -8,7 +8,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-26",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 29 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 30 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -138,6 +138,16 @@ window.DEEPSWE = {
     'cost': 13.22,
     'outTok': 135032,
     'steps': 120
+  },
+  {
+    'name': 'Qwen3.8-Flash-Next',
+    'effort': '极高强度思考（工具）',
+    'pass1': 58.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
   },
   {
     'name': 'qwen3-8-max',

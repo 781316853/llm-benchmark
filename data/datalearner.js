@@ -120,6 +120,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'Qwen3.8-Flash-Next',
+      'score': 58.7,
+      'mode': '极高强度思考（工具）',
+      'date': '2026-08-26',
+      'params': '1250亿',
+      'license': '免费商用'
+    },
+    {
       'name': 'Qwen3.8-Max',
       'score': 56.6,
       'mode': '极高强度思考（工具）',

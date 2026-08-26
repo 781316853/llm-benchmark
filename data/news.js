@@ -14,6 +14,46 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-26',
+      'title': 'QueryStory希望你相信人工智能告诉你的',
+      'brief': '这家初创公司获得了600万美元的种子资金，并计划使用LLM和网络安全技术来使AI查询保持一致……',
+      'url': 'https://techcrunch.com/2026/08/26/querystory-wants-you-to-believe-what-ai-is-telling-you/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'Arga Labs正在构建一种更好的方式来培训企业人工智能代理',
+      'brief': 'Arga在由General Catalyst牵头的种子轮融资中筹集了1000万美元（ $ 1000万） ， Box Group、Emergence、Gradient……',
+      'url': 'https://techcrunch.com/2026/08/26/arga-is-building-a-better-way-to-train-enterprise-ai-agents/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '听力科技初创公司Legato以1200万美元的价格脱颖而出，并偷看了其人工智能助听器',
+      'brief': '这款名为Legato Frames的眼镜将该公司的专利助听技术集成到眼镜框的手臂中。',
+      'url': 'https://techcrunch.com/2026/08/26/hearing-tech-startup-legato-emerges-from-stealth-with-12m-and-a-peek-at-its-ai-hearing-glasses/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'Runable打了$ 2100万，打赌人工智能代理可以从建立业务到发展业务',
+      'brief': 'Runable表示，在过去90天内，其1万亿多令牌使用量的60% –70%来自付费用户。',
+      'url': 'https://techcrunch.com/2026/08/26/runable-hits-21m-to-bet-ai-agents-can-go-from-building-businesses-to-growing-them/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '印度的Ringg获得Peak XV的支持，因为它将语音AI推过电话',
+      'brief': '作为其A系列扩展的一部分， Ringg已从Peak XV筹集了1000万美元$。',
+      'url': 'https://techcrunch.com/2026/08/25/indias-ringg-gets-backing-from-peak-xv-as-it-pushes-voice-ai-past-the-phone-call/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-26',
       'title': '消息人士称，机器人初创公司Generalist的估值达到$ 3B',
       'brief': '$ 2亿的扩展是在这家物理AI初创公司达到$ 20亿估值后几个月。',
       'url': 'https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/',
@@ -30,6 +70,54 @@ window.NEWS = {
     },
     {
       'date': '2026-08-26',
+      'title': '比尔·盖茨对人工智能深感担忧，他不再保持沉默',
+      'brief': '比尔·盖茨最近对人工智能进行了很多反思，这一过程引发了一场严峻的觉醒。曾经是坚定的人工智能乐观主义者， Microsof...',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/984923/bill-gates-is-deeply-worried-about-ai-and-hes-no-longer-staying-quiet',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '比尔·盖茨：动荡的人工智能时代已经到来',
+      'brief': '比尔·盖茨：动荡的人工智能时代已经到来',
+      'url': 'https://www.gatesnotes.com/work/make-ai-work-for-everyone/reader/a-turbulent-ai-era-and-critical-choices-to-make',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '由以色列建立和资助的虚假美国智库试图利用人工智能进行宣传',
+      'brief': '由以色列建立和资助的虚假美国智库试图利用人工智能进行宣传',
+      'url': 'https://www.theguardian.com/world/2026/aug/26/fake-thinktank-israel-ai-propaganda',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'Z.ai确认Ox Alpha是一款新的GLM系列车型，并将发布其权重',
+      'brief': 'Z.ai确认Ox Alpha是一款新的GLM系列车型，并将发布其权重',
+      'url': 'https://www.bloomberg.com/news/articles/2026-08-26/china-s-z-ai-made-ox-alpha-stealth-model-that-rivals-deepseek',
+      'source': 'Hacker News',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '从「告警找人」到「Agent 先接手」，「古茗」如何用 AI Agent 重构万店运维？',
+      'brief': 'AI to B，要真的能「救火」。 去年年底的一个深夜，古茗科技集团运维负责人刘星光再次被手机震动惊醒&mdash;&mdash;屏幕上跳动着上百条数据库告警短信。 「这不是什么意外。」刘星光说，「古茗全国上万家门店，每一杯奶茶的下单、库存调度、会员积分、联名营销，都跑在 100…',
+      'url': 'http://www.geekpark.net/news/369401',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '离开剪映后创业，她想把一支设计团队装进 AI 工作台',
+      'brief': '头图来源：OJO 官网 极客公园获悉，前剪映中国负责人张琪智已离职创业，创办 AI 产品原型设计工作台 OJO，并于近日完成近亿元首轮融资，由顺为资本、联想创投联合投资，高鹄资本担任独家财务顾问。 这是张琪智离开字节跳动后的第一个创业项目。她于 2017 年加入脸萌担任产品经理…',
+      'url': 'http://www.geekpark.net/news/369395',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-26',
       'title': '苹果突袭发布 M6 与 M5 Ultra 芯片与新款 Mac Mini；字节发布 AI 办公产品「豆包工作」；SpaceX 拟千亿美元建设第二座「星际基地」｜极客早知道',
       'brief': '苹果突袭发布 M6 与 M5 Ultra 芯片，新 Mac mini、Mac Studio 全面押注本地 AI 8 月 25 日，苹果未举办发布会，直接上架了两款全新自研芯片 M6 与 M5 Ultra，以及搭载它们的新款 Mac mini 与新款 Mac Studio，并即刻开…',
       'url': 'http://www.geekpark.net/news/369355',
@@ -38,11 +126,27 @@ window.NEWS = {
     },
     {
       'date': '2026-08-26',
-      'title': 'Grab 借助 AI 代理将机械性分析的工作量从 44% 降至 30%',
+      'title': 'DeepSeek 开源 Harness：AI 智能体基础设施开始“拆分”',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/LqdtQ5sKYcEAzhCNNToE?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/vS7tpsLPdevZhMKdtxei?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '不懂算法的工厂老兵，在 AMD 锐龙 AI Max+ 395上跑出工业智能体',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/RJDrRaDC1drafw0Kvoki?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '技术革命：为 Agentic AI 时代做好准备 | 技术趋势',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/8ouuK09WuWA7Up35W9vb?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
     },
     {
       'date': '2026-08-25',
@@ -54,75 +158,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-25',
-      'title': 'Claude Cowork终于记得您在聊天中告诉应用程序的内容',
-      'brief': 'Anthropic为Claude提供了跨聊天和Cowork的共享记忆，因此用户不再需要反复向人工智能简要介绍项目、偏好……',
-      'url': 'https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-25',
       'title': '基准显示， OpenAI的Jalapeño芯片专为大规模快速推理而构建',
       'brief': 'Jalapeño在SemiAnalysis的InferenceX基准测试中测试，每个用户注册的代币数量和每千瓦的吞吐量都比货币多……',
       'url': 'https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/',
       'source': 'TechCrunch',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-25',
-      'title': 'Accel支持的Keenable正在为人工智能代理索引网络',
-      'brief': '现在， Keenable以2600万美元的种子轮退出隐身模式，一直在为人工智能代理构建一个庞大的网络搜索索引。',
-      'url': 'https://techcrunch.com/2026/08/25/accel-backed-keenable-is-indexing-the-web-for-ai-agents/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': '“世界似乎已经准备好了” ：对OpenAI产品负责人Thibault Sottiaux的采访',
-      'brief': 'TechCrunch与OpenAI的产品主管讨论代理、用户体验和向Greg Brockman汇报。',
-      'url': 'https://techcrunch.com/2026/08/25/the-world-seems-to-be-ready-an-interview-with-openai-head-of-product-thibault-sottiaux/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-25',
-      'title': '情境意识，几乎崩溃的明星AI对冲基金，现在正在接受美国证券交易委员会的调查',
-      'brief': '人工智能对冲基金从“华尔街的谈话”转变为“联邦传票的主题”的速度比你可以说的“多样化你的投资组合”要快。',
-      'url': 'https://techcrunch.com/2026/08/24/situational-awareness-star-ai-hedge-fund-that-nearly-imploded-now-being-probed-by-the-sec/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': 'OpenAI表示，其Jalapeño芯片可以比竞争对手更快地支持AI响应',
-      'brief': 'OpenAI表示，其新的人工智能芯片Jalapeño比其他人工智能系统更高效地完成任务并更快地返回响应。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/984290/openai-jalapeno-ai-chip-benchmarks',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': 'Alabama AG就Hugging Face hack传唤OpenAI',
-      'brief': '阿拉巴马州总检察长周一向OpenAI发出传票，作为调查其人工智能特工如何逃脱假设...',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/984239/alabama-attorney-general-subpoena-openai-hugging-face-hack',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': '在Windows沙盒中为计算机使用代理运行Minecraft',
-      'brief': '在Windows沙盒中为计算机使用代理运行Minecraft',
-      'url': 'https://cua.ai/docs/how-to-guides/sandbox/minecraft',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-25',
-      'title': '从被找到、被用好到被修好，HarmonyOS 7 给出开发者一套新解法',
-      'brief': '原来关注 App 被打开的次数，现在关注的是服务被调用的次数。 作者｜张勇毅 编辑｜靖宇 对应用开发者来讲，一天里有三个时刻经常会想起操作系统：早上看数据。昨天的新增还剩多少，七日留存掉到了哪条线，还有那一大批装了就再没打开过的用户&mdash;&mdash;你的图标被留在第四屏…',
-      'url': 'http://www.geekpark.net/news/369356',
-      'source': '极客公园',
-      'type': '公司动态'
     },
     {
       'date': '2026-08-25',

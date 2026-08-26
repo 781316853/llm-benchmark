@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'datalearner',
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
-      'modelCount': 28,
+      'modelCount': 29,
       'updated': '2026-08-26',
       'ageDays': 0,
       'completeness': 1,
@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 29,
+      'modelCount': 30,
       'updated': '2026-08-26',
       'ageDays': 0,
       'completeness': 1,
@@ -1222,6 +1222,22 @@ window.QUALITY = {
       'mean': 59.3,
       'stddev': 0,
       'flag': 'ok'
+    },
+    {
+      'canonId': 'Qwen3.8-Flash-Next',
+      'name': 'Qwen3.8-Flash-Next',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 58.7,
+        'deepswe_v11': 58.7
+      },
+      'mean': 58.7,
+      'stddev': 0,
+      'flag': 'ok'
     }
   ],
   'completeness': {
@@ -1235,17 +1251,17 @@ window.QUALITY = {
     },
     'datalearner': {
       'rate': 1,
-      'total': 28,
-      'complete': 28,
-      'modelCount': 28,
+      'total': 29,
+      'complete': 29,
+      'modelCount': 29,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 29,
-      'complete': 29,
-      'modelCount': 29,
+      'total': 30,
+      'complete': 30,
+      'modelCount': 30,
       'missingFields': {},
       'flag': 'ok'
     },

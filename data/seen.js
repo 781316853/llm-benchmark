@@ -254,6 +254,8 @@ window.SEEN = {
     'deepswe|DeepSeek-V4-Flash-Vision-Exp': '2026-08-21',
     'aa_official|DeepSeek V4 Flash 0731': '2026-08-21',
     'datalearner|DeepSeek-V4-Flash-Vision-Exp': '2026-08-22',
-    'datalearner|Muse Spark 1.2': '2026-08-24'
+    'datalearner|Muse Spark 1.2': '2026-08-24',
+    'deepswe|Qwen3.8-Flash-Next': '2026-08-26',
+    'datalearner|Qwen3.8-Flash-Next': '2026-08-26'
   }
 };
