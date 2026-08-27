@@ -91,7 +91,7 @@ a:hover { text-decoration: underline; }
 .hint { color: var(--text-dim); font-weight: 400; font-size: 13px; }
 
 /* ===== 基准卡片(左色条 + 统计网格,对齐设计稿) ===== */
-.bench-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bench-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .bench-card {
   position: relative; background: var(--panel); border: 1px solid var(--border);
   border-left: 3px solid var(--accent); border-radius: var(--radius);
@@ -376,7 +376,8 @@ a:hover { text-decoration: underline; }
 
 /* ===== 响应式 ===== */
 @media (max-width: 960px) {
-  .bench-cards, .metric-cards { grid-template-columns: 1fr; }
+  .metric-cards { grid-template-columns: 1fr; }
+  .bench-cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .chart-row, .compare-grid { grid-template-columns: 1fr; }
   .multi-select { min-width: 100%; }
   .chart { height: 300px; }
