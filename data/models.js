@@ -83,7 +83,7 @@ window.MODEL_MAP = {
     { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview"] },
     // ===== Artificial Analysis Intelligence Index 上榜补充的新模型(2026-08) =====
     { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },
-    { id: "GLM-5.3-Flash",    vendor: "zAI",       color: "#6C7DFF", aliases: ["GLM-5.3-Flash", "glm-5-3-flash", "GLM 5.3 Flash"] },
+    { id: "GLM-5.3-Flash",    vendor: "zAI",       color: "#6C7DFF", aliases: ["GLM-5.3-Flash", "glm-5-3-flash", "GLM 5.3 Flash", "GLM5.3 Flash", "GLM5.3Flash"] },
     { id: "Motif 3",          vendor: "Motif Technologies", color: "#8A8F98", aliases: ["Motif 3", "motif-3"] },
     { id: "Inkling",          vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling", "inkling"] },
     { id: "Nemotron 3 Ultra", vendor: "NVIDIA",    color: "#76B900", aliases: ["Nemotron 3 Ultra", "nvidia-nemotron-3-ultra-550b-a55b", "Nemotron 3 Ultra 550B"] },
