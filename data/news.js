@@ -30,6 +30,14 @@ window.NEWS = {
     },
     {
       'date': '2026-08-27',
+      'title': '人类对人工智能意识的争论倒退',
+      'brief': '人类对人工智能意识的争论倒退',
+      'url': 'https://economist.com/by-invitation/2026/08/20/humanity-has-the-debate-about-ai-consciousness-backwards',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
       'title': '让视频模型更好、更快地学习',
       'brief': '让视频模型更好、更快地学习',
       'url': 'https://www.linum.ai/field-notes/data-filtering-gen-video',
@@ -47,7 +55,7 @@ window.NEWS = {
     {
       'date': '2026-08-27',
       'title': '129 亿美元，英伟达拿下 Hugging Face',
-      'brief': '作者｜Wildcard 编辑｜靖宇 芯片巨头，开始抢「分发权」了。 129 亿美元，英伟达要把 Hugging Face 买下来了。 当地时间 8 月 26 日外媒率先爆出消息， 两天前还只是 Hugging Face「正在探索出售」的新闻，转眼就变成了「双方已达成协议」。速度快…',
+      'brief': '作者｜Wildcard 编辑｜靖宇 129 亿美元，英伟达要把 Hugging Face 买下来了。 当地时间 8 月 26 日外媒率先爆出消息， 两天前还只是 Hugging Face「正在探索出售」的新闻，转眼就变成了「双方已达成协议」。速度快得让人来不及消化。 这不是一笔普…',
       'url': 'http://www.geekpark.net/news/369458',
       'source': '极客公园',
       'type': '行业动态'
@@ -59,6 +67,38 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/369414',
       'source': '极客公园',
       'type': '模型发布'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '世界人工智能开源大赛（GOAI）初赛评审结果暨晋级名单公告',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/Y410fSRGi67fUrNUuzYb?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '给 Agent 做“CT”：大规模 Agent 的可观测与质量保障体系',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/QqDSrCEGWitk7kkJg7Kj?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '大模型推理加速全链路：内存管理、编译优化、量化与并行策略',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/AN2AuAT58V9fe8KXD2zi?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'Cloudflare 利用 AI 智能体将 Astro GitHub 问题减少 85%',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/iJu3eUyEhEI373KeYhYN?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
     },
     {
       'date': '2026-08-27',
@@ -78,14 +118,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-27',
-      'title': '非结构化数据的结构化处理：基于 Snowflake Cortex AI Functions | 技术实践',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Xw6Nlqq7N2J0CKA0ehx8?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-27',
       'title': 'ARR 超 8 亿美元，B 端收入占比升至 80%！MiniMax 第二份财报：增长与商业化来到验证时刻',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/OtZAGeLtUBgd9UzkO7eC?utm_source=rss&utm_medium=article',
@@ -99,14 +131,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/AkgUFEFE4uG7WIlqaO2g?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-26',
-      'title': 'Anthropic继续与Nscale达成$ 450亿的交易',
-      'brief': '与基础设施提供商的新交易是Anthropic炙手可热的计算机连胜的最新例子。',
-      'url': 'https://techcrunch.com/2026/08/26/anthropic-continues-compute-gobbling-streak-in-45-billion-deal-with-nscale/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-26',
@@ -134,35 +158,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-26',
-      'title': '惊喜： Z.ai是神秘的Ox Alpha模型背后的人工智能实验室',
-      'brief': 'Z.ai确认它落后于Ox Alpha ，这是神秘的开放式人工智能模型，在基准和排行榜上名列前茅，其权重将被释放……',
-      'url': 'https://techcrunch.com/2026/08/26/surprise-z-ai-is-the-ai-lab-behind-the-mysterious-ox-alpha-model/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-26',
       'title': 'QueryStory希望你相信人工智能告诉你的',
       'brief': '这家初创公司获得了600万美元的种子资金，并计划使用LLM和网络安全技术来使AI查询保持一致……',
       'url': 'https://techcrunch.com/2026/08/26/querystory-wants-you-to-believe-what-ai-is-telling-you/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-26',
-      'title': 'OpenAI的流氓AI模型事件比我们想象的要糟糕',
-      'brief': '7月，一个未发布的OpenAI模型突破了受限的环境，弄清楚了如何访问互联网，允许人工智能代理……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/985385/openais-rogue-ai-model-hugging-face-cybersecurity-incident-reports-metr',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-26',
-      'title': '谷歌的新AI转录会编辑掉你的“ums”和“ahs”',
-      'brief': '谷歌更新了Gemini Audio ，新增了自动检测专业术语和超过85种语言的转录功能……',
-      'url': 'https://www.theverge.com/tech/985186/google-gemini-3-5-transcribe-audio-ai',
-      'source': 'The Verge',
-      'type': '技术研究'
     },
     {
       'date': '2026-08-26',
