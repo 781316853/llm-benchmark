@@ -66,7 +66,7 @@
       <h2 class="section-title">交叉模型矩阵 <span class="hint">同一模型在三个基准中的成绩(高亮表示多榜命中);默认按综合分降序,点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</span></h2>
       <div class="table-wrap"><table id="matrixTable" class="data-table"></table></div>
       <div class="overview-switches">
-        <label class="switch switch-lg" title="默认仅显示命中≥2个基准组且排名前30的模型,勾选可展开全部"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
+        <label class="switch switch-lg" title="默认仅显示命中≥3个基准组且排名前30的模型,勾选可展开全部"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
         <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"></span><span class="switch-text">高亮国产模型</span></label>
         <label class="switch switch-lg" title="默认仅显示梯队,勾选后在梯队旁显示精确综合分"><input type="checkbox" id="ovShowScore"><span class="switch-track"></span><span class="switch-text">显示综合分</span></label>
       </div>
@@ -81,10 +81,10 @@
 llm2014 为按源数据排序赋值的综合分(0-100,源 CSV 行序即原站排名,相邻模型中项目等级均值 0.5 档相同者视为相似、同分),其明细单元格为「扣分数/档位」,2026-08 起等级单元格可含单任务测试成本(如「7/A+(90.52)」表示扣 7 分、A 档、成本 ¥90.52);
 Code Arena · WebDev 为 LMArena 前端竞技场的 Elo 评分(社区匿名盲测投票,分值越高越好,矩阵列显示原始 Elo),参与综合分主基准组时按快照内 min-max 归一化到 0-100。</li>
           <li>「—」表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充)。</li>
-          <li>浅绿底色行表示跨榜命中数 ≥ 2 的模型;模型名后 NEW 表示近 7 天内首次上榜(仅基于 DeepSWE/Vibe/llm2014 三基准判定)。</li>
+          <li>浅绿底色行表示跨榜命中数 ≥ 3 的模型;模型名后 NEW 表示近 7 天内首次上榜(仅基于 DeepSWE/Vibe/llm2014 三基准判定)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>
-          <li>「显示全部模型」开关可展开完整模型列表(包含命中不足2个或排名30之后的模型);
-默认仅显示命中≥2个基准组且排名前30的模型。</li>
+          <li>「显示全部模型」开关可展开完整模型列表(包含命中不足3个或排名30之后的模型);
+默认仅显示命中≥3个基准组且排名前30的模型。</li>
           <li>「高亮国产模型」开关开启后,国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型行将以红色底色高亮,并在模型名后标注「国产」徽标,便于快速定位国产模型成绩。</li>
           <li>本页仅用于学习与对比展示,数据为快照,不代表对各模型能力的绝对评价。</li>
         </ul>

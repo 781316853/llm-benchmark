@@ -184,11 +184,11 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:先分配梯队(基于全量模型),再过滤命中≥2的模型,取排名前30;勾选"显示全部"则展示所有
+    // 矩阵表:先分配梯队(基于全量模型),再过滤命中≥3的模型,取排名前30;勾选"显示全部"则展示所有
     var matrixRows = CMP.matrix(state.llmMonth);
     CMP.assignTiers(matrixRows);
     var allRows = sortedMatrixRows(matrixRows);
-    var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 2; }).slice(0, 30);
+    var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 3; }).slice(0, 30);
     if (!rows.length) rows = allRows;
     var html = rows.map(function (r, i) {
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
@@ -211,7 +211,7 @@
       var dom = state.highlightDomestic && DOMESTIC[r.vendor];
       // row-hit(跨榜命中)、row-new(新上榜)、row-domestic(国产高亮)可并存;
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
-      var cls = (r.benchCount >= 2 ? "row-hit " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
+      var cls = (r.benchCount >= 3 ? "row-hit " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
       // 序号列:按排序后的行序展示,不参与排序
       return '<tr class="' + cls.trim() + '">' +
@@ -250,7 +250,7 @@
     fillTableHead("matrixTable", head);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     // 动态行数提示(显示全部模型开关状态)
-    var note = state.showAll.overview ? '当前显示全部 ' + rows.length + ' 个模型' : '当前仅显示命中≥2个基准组且排名前 ' + rows.length + ' 的模型(勾选下方"显示全部"可展开所有模型)。';
+    var note = state.showAll.overview ? '当前显示全部 ' + rows.length + ' 个模型' : '当前仅显示命中≥3个基准组且排名前 ' + rows.length + ' 的模型(勾选下方"显示全部"可展开所有模型)。';
     // 国产高亮开启时,追加国产模型数量提示
     if (state.highlightDomestic) {
       var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
