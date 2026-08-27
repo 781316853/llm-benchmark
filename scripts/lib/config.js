@@ -80,8 +80,11 @@ module.exports = {
     consistency: {
       // 跨源同模型 score 标准差阈值(百分制)
       okMaxStddev: 5,
-      warnMaxStddev: 10
+      warnMaxStddev: 10,
       // > warnMaxStddev -> alert
+      // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
+      // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
+      excludedSources: ["arena_webdev"]
     },
     completeness: {
       // 每条记录必填字段

@@ -7,10 +7,14 @@ const CONFIG = require("./config");
 
 // ===== 一致性:同 canonical 模型跨源 score 标准差 =====
 // 移植自 js/compare.js variance() 的标准差算法;仅对 score 非 null 且命中 ≥2 源的模型计算。
+// 注:仅比百分制分数。量纲不同的源(如 arena_webdev 的 Elo 分)按 CONFIG 排除;
+//     同一源内同一模型的重复记录(原始名变体)先按源取均值,再参与跨源比对。
 function consistency(recordsBySource) {
-  // 先聚合:canonId -> [{sourceId, score}]
+  var excluded = (CONFIG.validation.consistency.excludedSources || []);
+  // 先聚合:canonId -> {sourceId -> [score,...]}
   var byCanon = {};
   Object.keys(recordsBySource).forEach(function (srcId) {
+    if (excluded.indexOf(srcId) !== -1) return;   // 量纲不同的源不参与一致性
     (recordsBySource[srcId] || []).forEach(function (r) {
       if (r.score == null) return;          // 缺分数的记录不参与一致性
       if (!byCanon[r.canonId]) byCanon[r.canonId] = { canonId: r.canonId, name: r.name, vendor: r.vendor, samples: [] };
@@ -21,17 +25,30 @@ function consistency(recordsBySource) {
   var out = [];
   Object.keys(byCanon).forEach(function (k) {
     var e = byCanon[k];
-    if (e.samples.length < 2) return;       // 单源无法做一致性
-    var vs = e.samples.map(function (s) { return s.score; });
+    // 同一源的多条记录(名字变体各一条)取均值聚合为一个样本,消除伪"跨源"重复
+    var perSrc = {};
+    e.samples.forEach(function (s) {
+      if (!perSrc[s.sourceId]) perSrc[s.sourceId] = [];
+      perSrc[s.sourceId].push(s.score);
+    });
+    var srcIds = Object.keys(perSrc);
+    if (srcIds.length < 2) return;          // 单源无法做一致性
+    var vs = srcIds.map(function (sid) {
+      var arr = perSrc[sid];
+      return arr.reduce(function (a, b) { return a + b; }, 0) / arr.length;
+    });
     var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
     var sumSq = vs.reduce(function (s, v) { var d = v - mean; return s + d * d; }, 0);
     var stddev = Math.sqrt(sumSq / vs.length);
     var flag = stddev <= th.okMaxStddev ? "ok" : (stddev <= th.warnMaxStddev ? "warn" : "alert");
     var scores = {};
-    e.samples.forEach(function (s) { scores[s.sourceId] = s.score; });
+    srcIds.forEach(function (sid) {
+      var arr = perSrc[sid];
+      scores[sid] = Math.round(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length * 100) / 100;
+    });
     out.push({
       canonId: e.canonId, name: e.name, vendor: e.vendor,
-      sources: e.samples.map(function (s) { return s.sourceId; }),
+      sources: srcIds,
       scores: scores, mean: Math.round(mean * 10) / 10,
       stddev: Math.round(stddev * 100) / 100, flag: flag
     });
