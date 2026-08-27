@@ -45,7 +45,7 @@ window.VIBECODE = {
     'latencyS': 4549
   },
   {
-    'name': 'Deepseek v4 pro 0813 [新]',
+    'name': 'DeepSeek V4 Pro 0813',
     'harness': 'OpenHands',
     'score': 82.3,
     'ci': 3.15,

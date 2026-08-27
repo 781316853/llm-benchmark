@@ -25,9 +25,10 @@
     });
     return rows;
   }
-  // 主基准组权重:DeepSWE 40%、Vibe Code 20%、llm2014 20%、WebDev 20%
-  // (WebDev 与 Vibe 同属前端,合计权重 40%;avgNorm 按在场基准权重归一化,缺失权重自动回流)
-  var OLD_WEIGHTS = { deepswe: 0.4, vibe: 0.2, llm: 0.2, webdev: 0.2 };
+  // 主基准组权重:DeepSWE 40%、Vibe Code 20%、llm2014 10%、WebDev 20%
+  // (llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准,2026-08-27 起权重由 20% 降至 10%;
+  //  WebDev 与 Vibe 同属前端,合计权重 40%;avgNorm 按在场基准权重归一化,缺失权重自动回流)
+  var OLD_WEIGHTS = { deepswe: 0.4, vibe: 0.2, llm: 0.1, webdev: 0.2 };
   function avgNorm(e) {
     var sum = 0, wsum = 0;
     // 按权重加权平均;缺失基准的权重自动回流至已有基准(归一化)
@@ -53,7 +54,7 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:主基准组加权平均(DeepSWE 40%/Vibe Code 20%/llm2014 20%/WebDev 20%)减去一致性折减
+  // 综合分:主基准组加权平均(DeepSWE 40%/Vibe Code 20%/llm2014 10%/WebDev 20%)减去一致性折减
   function composite(e) {
     var base = avgNorm(e);
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);
