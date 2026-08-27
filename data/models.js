@@ -80,7 +80,21 @@ window.MODEL_MAP = {
     { id: "Gemini 3.7 Flash", vendor: "Google",    color: "#4285F4", aliases: ["Gemini 3.7 Flash", "gemini-3.7-flash-high"] },
     { id: "Gemini 3.6 Flash", vendor: "Google",    color: "#5A95F5", aliases: ["Gemini 3.6 Flash", "gemini-3.6-flash-high"] },
     { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)"] },
-    { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview"] }
+    { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview"] },
+    // ===== Artificial Analysis Intelligence Index 上榜补充的新模型(2026-08) =====
+    { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },
+    { id: "GLM-5.3-Flash",    vendor: "zAI",       color: "#6C7DFF", aliases: ["GLM-5.3-Flash", "glm-5-3-flash", "GLM 5.3 Flash"] },
+    { id: "Motif 3",          vendor: "Motif Technologies", color: "#8A8F98", aliases: ["Motif 3", "motif-3"] },
+    { id: "Inkling",          vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling", "inkling"] },
+    { id: "Nemotron 3 Ultra", vendor: "NVIDIA",    color: "#76B900", aliases: ["Nemotron 3 Ultra", "nvidia-nemotron-3-ultra-550b-a55b", "Nemotron 3 Ultra 550B"] },
+    { id: "Gemini 3.5 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.5 Flash-Lite", "gemini-3-5-flash-lite", "Gemini 3.5 Flash Lite"] },
+    { id: "Solar Open2 250B", vendor: "Upstage",   color: "#8A8F98", aliases: ["Solar Open2 250B", "solar-open2-250b"] },
+    { id: "Muse Glimmer",     vendor: "Meta",      color: "#2E90FF", aliases: ["Muse Glimmer", "muse-glimmer", "Muse Glimmer (high)"] },
+    { id: "A.X-K2",           vendor: "SK Telecom", color: "#8A8F98", aliases: ["A.X-K2", "a-x-k2", "A.X K2"] },
+    { id: "K-EXAONE 2.0",     vendor: "LG AI Research", color: "#A14233", aliases: ["K-EXAONE 2.0", "k-exaone-2-0-0803", "K-EXAONE 2.0 (0803)"] },
+    { id: "Mistral Medium 3.5", vendor: "Mistral", color: "#FF8053", aliases: ["Mistral Medium 3.5", "mistral-medium-3-5"] },
+    { id: "Nemotron 3.5 Lightning", vendor: "NVIDIA", color: "#86C40A", aliases: ["Nemotron 3.5 Lightning", "nemotron-3-5-lightning"] },
+    { id: "Command A+",       vendor: "Cohere",    color: "#39594D", aliases: ["Command A+", "command-a-plus"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   vendorDefaultColor: "#8A8F98",

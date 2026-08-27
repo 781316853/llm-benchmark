@@ -11,19 +11,20 @@
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
-  <script defer src="data/models.js?v=20260824c"></script>
+  <script defer src="data/models.js?v=20260827a"></script>
   <script defer src="data/deepswe.js?v=20260824a"></script>
   <script defer src="data/deepswe_v10.js?v=20260824a"></script>
   <script defer src="data/vibecode.js?v=20260824a"></script>
   <script defer src="data/llm2014.js?v=20260824a"></script>
   <script defer src="data/arena_webdev.js?v=20260824a"></script>
+  <script defer src="data/artificial_analysis.js?v=20260827a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260824a"></script>
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20260824a"></script>
+  <script defer src="js/data.js?v=20260827a"></script>
   <script defer src="js/charts.js?v=20260824a"></script>
   <script defer src="js/compare.js?v=20260824a"></script>
-  <script defer src="js/app.js?v=20260824a"></script>
+  <script defer src="js/app.js?v=20260827a"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -43,6 +44,7 @@
     <button class="tab" data-tab="deepswe">DeepSWE</button>
     <button class="tab" data-tab="vibecode">Vibe Code</button>
     <button class="tab" data-tab="llm2014">llm2014</button>
+    <button class="tab" data-tab="aa">Intelligence Index</button>
   </nav>
 
   <main class="content">
@@ -127,13 +129,31 @@ Code Arena · WebDev 为 LMArena 前端竞技场的 Elo 评分(社区匿名盲�
       <div class="table-wrap"><table id="lmTable" class="data-table"></table></div>
       <p class="source-note" id="lmNote"></p>
     </section>
+
+    <!-- 5) Artificial Analysis Intelligence Index(通用智能指数,独立榜单,不计入综合分) -->
+    <section class="page" id="page-aa">
+      <div class="page-head"><h2>Artificial Analysis Intelligence Index <span class="tag">通用智能指数</span></h2><p id="aaDesc" class="page-desc"></p></div>
+      <div class="chart-box"><h3>Intelligence Index 排行</h3><div id="aaBar" class="chart"></div></div>
+      <div class="table-wrap"><table id="aaTable" class="data-table"></table></div>
+      <p class="source-note" id="aaNote"></p>
+      <section class="notes-section">
+        <p class="note-title">阅读说明</p>
+        <ul style="white-space: pre-wrap;">
+          <li>Artificial Analysis Intelligence Index 是通用智能指数(汇总 GDPval-AA、τ³-Banking、Terminal-Bench、SciCode、Humanity's Last Exam、GPQA Diamond 等多项评测),覆盖知识、推理、数学等维度,<b>不是编码专项基准</b>。</li>
+          <li>该指数与站内其它编码基准<b>不同纲</b>,不参与总览页综合分加权,仅作独立榜单参考。</li>
+          <li>快照覆盖 Artificial Analysis 页面默认入选的约 30 个主流模型(其全量 ~175 模型榜单为客户端动态加载,不在每日抓取范围)。</li>
+          <li>同一基础模型的不同推理强度变体(如 max/high/xhigh)分别计分;分数越高越好。</li>
+        </ul>
+      </section>
+    </section>
   </main>
 
   <footer class="footer">
     <span>仅用于学习与对比展示 · 数据版权归原作者 · </span>
     <a href="https://deepswe.datacurve.ai/" target="_blank" rel="noopener">DeepSWE</a> ·
     <a href="https://www.vals.ai/benchmarks/vibe-code" target="_blank" rel="noopener">Vibe Code</a> ·
-    <a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014</a>
+    <a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014</a> ·
+    <a href="https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index" target="_blank" rel="noopener">Intelligence Index</a>
   </footer>
 
   <!-- 意见反馈浮动按钮 -->

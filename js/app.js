@@ -417,6 +417,35 @@
     document.getElementById("lmNote").innerHTML = noteHtml;
   }
 
+  // ===== 6) Artificial Analysis Intelligence Index(通用智能指数,独立榜单) =====
+  function renderAA() {
+    var src = D.src.aa || {};
+    var ms = D.artificialAnalysis();
+    document.getElementById("aaDesc").textContent = (src.desc || "") + (src.note ? "(" + src.note + ")" : "");
+    // 柱状:升序使最高在上;最多展示 Top 25 防止标签拥挤
+    var sorted = ms.slice().sort(function (a, b) { return a.score - b.score; });
+    var topN = sorted.slice(-25);
+    var aaH = Math.min(760, Math.max(380, topN.length * 26 + 90));
+    var barEl = document.getElementById("aaBar");
+    if (barEl) {
+      barEl.style.height = aaH + "px";
+      var inst0 = CH.inst("aaBar");
+      if (inst0) inst0.resize();
+    }
+    CH.apply("aaBar", CH.barOption(topN.map(function (m) { return m.name; }),
+      topN.map(function (m) { return m.score; }), "#2D9D78", "", { max: 100, left: 190, labelSize: 11 }));
+    var html = ms.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + '</td>' +
+        '<td>' + esc(m.vendorAA || m.canon.vendor) + '</td><td class="num">' + m.score.toFixed(2) + '</td></tr>';
+    });
+    fillTable("aaTable", ["#", "模型", "厂商", "Intelligence Index"], html,
+      ["", "", "", "num"]);
+    document.getElementById("aaNote").innerHTML =
+      '<div class="note-line"><b>来源</b>' + esc(src.url || "") + '</div>' +
+      '<div class="note-line"><b>版本</b>Intelligence Index v' + esc(src.version || "?") + ' · 更新 ' + esc(src.updated || "") + ' · 共展示 ' + ms.length + ' 个模型</div>' +
+      '<div class="note-line"><b>说明</b>通用智能指数(含知识/推理/数学等评测),非编码专项;与站内编码基准不同纲,不计入综合分。同一模型的不同推理强度变体分别计分。</div>';
+  }
+
   // ===== 标签切换 =====
   function showTab(name) {
     state.tab = name;
@@ -430,6 +459,7 @@
     else if (name === "deepswe") renderDeepSwe();
     else if (name === "vibecode") renderVibeCode();
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
+    else if (name === "aa") renderAA();
     // 切换后重绘图表以适配可见尺寸
     setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
   }

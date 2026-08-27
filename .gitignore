@@ -12,3 +12,6 @@ node_modules/
 Thumbs.db
 .DS_Store
 *.log
+
+# ZCode 本地会话/计划文件
+.zcode/
