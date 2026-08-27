@@ -30,6 +30,14 @@ window.NEWS = {
     },
     {
       'date': '2026-08-27',
+      'title': '让视频模型更好、更快地学习',
+      'brief': '让视频模型更好、更快地学习',
+      'url': 'https://www.linum.ai/field-notes/data-filtering-gen-video',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
       'title': '首席执行官解雇了开发人员，为人工智能腾出空间。开发人员创建开源AI首席执行官',
       'brief': '首席执行官解雇了开发人员，为人工智能腾出空间。开发人员创建开源AI首席执行官',
       'url': 'https://github.com/SenteLabsAI/OpenExecutive',
@@ -38,11 +46,35 @@ window.NEWS = {
     },
     {
       'date': '2026-08-27',
+      'title': '129 亿美元，英伟达拿下 Hugging Face',
+      'brief': '作者｜Wildcard 编辑｜靖宇 芯片巨头，开始抢「分发权」了。 129 亿美元，英伟达要把 Hugging Face 买下来了。 当地时间 8 月 26 日外媒率先爆出消息， 两天前还只是 Hugging Face「正在探索出售」的新闻，转眼就变成了「双方已达成协议」。速度快…',
+      'url': 'http://www.geekpark.net/news/369458',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
       'title': 'Ox Alpha「牛来」 身份揭晓；黄仁勋：AI 已迈过商业化拐点；世界人形机器人运动会闭幕：天工 Ultra 百米跑出 8 秒 64｜极客早知道',
       'brief': '智谱正式发布并开源 GLM-5.3-Flash，Ox Alpha「牛来」 身份揭晓 8 月 26 日，智谱正式上线并开源 GLM-5.3-Flash（320B-A18B），这是 GLM-5 系列的首个原生多模态模型，也正是上周以来匿名登顶 OpenRouter、被社区称为 \'牛来…',
       'url': 'http://www.geekpark.net/news/369414',
       'source': '极客公园',
       'type': '模型发布'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'Azure DevOps Remote MCP 服务器正式发布，暂不支持 Claude、ChatGPT 及 Cursor',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/SvTBvljtvGctvWPQRqr7?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '不做手机缩小版：AI 健康记录迁到手腕，要跨过哪些工程鸿沟？',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/9TmFlNIk6EamqpvJIOkI?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
     },
     {
       'date': '2026-08-27',
@@ -78,22 +110,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-26',
-      'title': '谷歌的双子座有一个品牌问题，其余的人工智能',
-      'brief': '消费者AI应用程序需要停止让用户学习他们的产品架构。',
-      'url': 'https://techcrunch.com/2026/08/26/googles-gemini-has-a-branding-problem-and-so-does-the-rest-of-ai/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-26',
-      'title': '我们如何解释OpenAI的高管外流？',
-      'brief': '格雷格·布罗克曼一直都是合适的高管吗？',
-      'url': 'https://techcrunch.com/2026/08/26/how-do-we-explain-openais-executive-exodus/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-26',
       'title': 'OpenAI发布关于Hugging Face违规行为的官方报告',
       'brief': '该报告涵盖了几种离散的网络安全漏洞，是对该事件迄今为止最完整的描述。',
       'url': 'https://techcrunch.com/2026/08/26/openai-releases-its-official-report-on-the-hugging-face-breach/',
@@ -115,14 +131,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/08/26/ex-meta-scientists-want-to-bring-visual-ai-to-the-factory-floor/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-08-26',
-      'title': '比尔·盖茨希望看到机器人税和“人类保留”工作，以减轻人工智能的危害',
-      'brief': '盖茨主要是负责任的人工智能阵营，但这里有一些我们以前从未听说过的想法。',
-      'url': 'https://techcrunch.com/2026/08/26/bill-gates-wants-to-see-a-robot-tax-and-human-reserved-jobs-to-mitigate-harms-from-ai/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-26',
