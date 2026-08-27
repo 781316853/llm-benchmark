@@ -259,6 +259,7 @@ window.SEEN = {
     'deepswe|Qwen3.8-Flash-Next': '2026-08-26',
     'datalearner|GLM-5.3-Flash': '2026-08-27',
     'datalearner|Qwen3.8-Flash-Next': '2026-08-26',
-    'llm|GLM-5.3-Flash (max)': '2026-08-27'
+    'llm|GLM-5.3-Flash (max)': '2026-08-27',
+    'vibe|DeepSeek V4 Pro 0813': '2026-08-27'
   }
 };
