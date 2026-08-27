@@ -1,6 +1,8 @@
 // 首次上榜追踪维护(data/seen.js)
 // 迁移自原 fetch_all.js 的 updateSeen + loadSeen + loadJsGlobal。
 // 策略:仅新增缺失键,绝不覆盖既有 firstSeen;首启写入 since。
+// 注:该策略只对"键级"生效——若 seen.js 文件本身被合并冲突误覆盖
+// (整文件采用他方版本),脚本无从知晓更早日期,需以 git 历史为准手工修正。
 "use strict";
 const fs = require("fs");
 const path = require("path");

@@ -256,9 +256,9 @@ window.SEEN = {
     'datalearner|DeepSeek-V4-Flash-Vision-Exp': '2026-08-22',
     'datalearner|Muse Spark 1.2': '2026-08-24',
     'deepswe|glm-5-3-flash': '2026-08-27',
-    'deepswe|Qwen3.8-Flash-Next': '2026-08-27',
+    'deepswe|Qwen3.8-Flash-Next': '2026-08-26',
     'datalearner|GLM-5.3-Flash': '2026-08-27',
-    'datalearner|Qwen3.8-Flash-Next': '2026-08-27',
+    'datalearner|Qwen3.8-Flash-Next': '2026-08-26',
     'llm|GLM-5.3-Flash (max)': '2026-08-27'
   }
 };
