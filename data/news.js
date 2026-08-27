@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-25',
+  'updated': '2026-08-27',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,124 +13,164 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-08-25',
-      'title': '情境意识，几乎崩溃的明星AI对冲基金，现在正在接受美国证券交易委员会的调查',
-      'brief': '人工智能对冲基金从“华尔街的谈话”转变为“联邦传票的主题”的速度比你可以说的“多样化你的投资组合”要快。',
-      'url': 'https://techcrunch.com/2026/08/24/situational-awareness-star-ai-hedge-fund-that-nearly-imploded-now-being-probed-by-the-sec/',
+      'date': '2026-08-27',
+      'title': '英伟达完成对Hugging Face的收购',
+      'brief': '据报道，英伟达已同意以129亿美元的价格收购流行的开源人工智能中心Hugging Face ，此举将让英伟达同时支持……',
+      'url': 'https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/',
       'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-25',
-      'title': 'TRAE、扣子并入豆包，字节将推「豆包工作」；拓竹回应 2027 年 IPO 传闻：消息不实；要钱还是使命，Anthropic 面试流程曝光｜极客早知道',
-      'brief': 'TRAE、扣子并入豆包，字节将推统一办公品牌 \'豆包工作\' 8 月 24 日消息，字节跳动对旗下的办公 AI 产品完成了一轮团队整合，TRAE、扣子（Coze）团队将整体并入豆包体系，其中 TRAE Work、扣子将与豆包在工作场景的产品能力进行整合；TRAE IDE 及 CLI…',
-      'url': 'http://www.geekpark.net/news/369303',
-      'source': '极客公园',
       'type': '公司动态'
     },
     {
-      'date': '2026-08-25',
-      'title': 'SpaceXAI 推出面向自主 AI 智能代理的 Grok Bot',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/a2Y7bOxLHZfCVWtKhAtQ?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'Instinct强大的人工智能助手正在引发隐私和安全问题',
-      'brief': '早期的测试人员对Instinct的功能赞不绝口，但有人说人工智能助手的广泛访问权限、广泛的条款和对用户采取行动的能力……',
-      'url': 'https://techcrunch.com/2026/08/24/instincts-powerful-ai-assistant-is-raising-privacy-and-security-concerns/',
+      'date': '2026-08-27',
+      'title': '病毒式人工智能初创公司Instinct以25亿美元的估值筹集了3.5亿美元',
+      'brief': '这家初创公司只有一年的历史，但它已经引起了大量的炒作（和金钱） ，同时也引发了对隐私的担忧。',
+      'url': 'https://techcrunch.com/2026/08/26/viral-ai-startup-instinct-has-raised-350-million-at-a-2-5-billion-valuation/',
       'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'Valor ， Point72回归General Intuition ，估值为$ 6B ，因为人工智能初创公司进军机器人领域',
-      'brief': 'General Intuition是一家建立基础模型的初创公司，该模型训练广义人工智能代理如何在空间和时间中移动，目前正在进行谈判……',
-      'url': 'https://techcrunch.com/2026/08/24/valor-point72-back-general-intuition-at-6b-valuation-as-ai-startup-pushes-into-robotics/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'OpenAI正在为所有事物构建人工智能代理。大家都会用吗？',
-      'brief': '在前沿实验室推动将人工智能代理从软件工程师带到大众的推动下。',
-      'url': 'https://techcrunch.com/2026/08/24/openai-is-building-an-ai-agent-for-everything-will-everyone-use-them/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-24',
-      'title': 'Ox-Alpha是GLM',
-      'brief': 'Ox-Alpha是GLM',
-      'url': 'https://dejan.ai/blog/ox-alpha/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '编码专业知识将因对人工智能的依赖而崩溃',
-      'brief': '编码专业知识将因对人工智能的依赖而崩溃',
-      'url': 'https://larsfaye.com/articles/ai-coding-will-prevent-expertise',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '我们从不使用人工智能。',
-      'brief': '我们从不使用人工智能。',
-      'url': 'https://corkmac.app/our-ai-stance/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '130 亿美元，Hugging Face 要卖了',
-      'brief': '作者｜桦林舞王 编辑｜靖宇 又一家 AI 中间层公司，要卖了。 当地时间 8 月 23 日，外媒爆出消息，Hugging Face 正在探索出售，估值可能达到 130 亿美元甚至更高。这家总部位于纽约的公司，已经聘请了投行来试探潜在买家的兴趣。 这个价格放在三年前会显得荒唐。20…',
-      'url': 'http://www.geekpark.net/news/369289',
-      'source': '极客公园',
       'type': '公司动态'
     },
     {
-      'date': '2026-08-24',
-      'title': '「AstraTennis」时刻：机器人在全球直播中打了一场真正的网球',
-      'brief': '作者｜李苏 编辑｜ 郑玄 一场特殊的网球比赛，一次数字智能向物理智能的跨越。 人形机器人挥出第一拍之前，没有人确定它能不能接住对面飞来的球。 事实上，球贴着边线飞来，机器人横移数步挥拍回击，球落在界内。它接住了，比赛继续。 这是 8 月 22 日第二届世界人形机器人运动会上的真实…',
-      'url': 'http://www.geekpark.net/news/369283',
-      'source': '极客公园',
-      'type': '技术研究'
+      'date': '2026-08-27',
+      'title': '首席执行官解雇了开发人员，为人工智能腾出空间。开发人员创建开源AI首席执行官',
+      'brief': '首席执行官解雇了开发人员，为人工智能腾出空间。开发人员创建开源AI首席执行官',
+      'url': 'https://github.com/SenteLabsAI/OpenExecutive',
+      'source': 'Hacker News',
+      'type': '公司动态'
     },
     {
-      'date': '2026-08-24',
-      'title': 'DeepSeek 上线多模态，我用它做了《牛来》小游戏｜AI 上新',
-      'brief': '作者｜Wildcard 编辑｜靖宇 多模态也是「梁心」地板价。 「鲸鱼睁眼了！」 非常突然的，8 月 21 日 DeepSeek 官方正式宣布，V4-Flash-Vision-Exp 上线，开启多模态 API 服务。 等了这么久，DeepSeek 模型终于补上了多模态能力，欢喜的…',
-      'url': 'http://www.geekpark.net/news/369278',
+      'date': '2026-08-27',
+      'title': 'Ox Alpha「牛来」 身份揭晓；黄仁勋：AI 已迈过商业化拐点；世界人形机器人运动会闭幕：天工 Ultra 百米跑出 8 秒 64｜极客早知道',
+      'brief': '智谱正式发布并开源 GLM-5.3-Flash，Ox Alpha「牛来」 身份揭晓 8 月 26 日，智谱正式上线并开源 GLM-5.3-Flash（320B-A18B），这是 GLM-5 系列的首个原生多模态模型，也正是上周以来匿名登顶 OpenRouter、被社区称为 \'牛来…',
+      'url': 'http://www.geekpark.net/news/369414',
       'source': '极客公园',
       'type': '模型发布'
     },
     {
-      'date': '2026-08-24',
-      'title': '形界智能：沿用两段式架构，是市场对 AI 实时视频的最大误判',
-      'brief': '作者｜Cynthia 编辑｜郑玄 投资人广撒网式布局，但真正的全域沉浸式生成，还少之又少。 2024 年 8 月 27 日，DOOM 里的一声枪响，在 2026 年年中的资本市场，听到了震耳欲聋的回响。 这一天，一段《DOOM》的游戏画面出现在 Google Research、G…',
-      'url': 'http://www.geekpark.net/news/369264',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '传 Hugging Face 寻求出售，估值 130 亿美元；Altman：担心 AI 被少数强势主体掌控；成都 AG.AL 获电竞世俱杯冠军',
-      'brief': 'OpenAI CEO 奥特曼：担心人工智能会被少数强势主体掌控 8 月 24 日消息，OpenAI 首席执行官萨姆 &middot; 奥特曼表示，他担心人工智能终有一天会被少数公司、模型或个人所控制，让绝大多数消费者在技术如何塑造世界这个问题上没有发言权。 Anthropic 还…',
-      'url': 'http://www.geekpark.net/news/369224',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-24',
-      'title': '多个 AI 智能体“同住”一台 EC2：AgentCore 推出持久计算',
+      'date': '2026-08-27',
+      'title': '非结构化数据的结构化处理：基于 Snowflake Cortex AI Functions | 技术实践',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/2IBWc7BuB2qoGao5tlQT?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/Xw6Nlqq7N2J0CKA0ehx8?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'ARR 超 8 亿美元，B 端收入占比升至 80%！MiniMax 第二份财报：增长与商业化来到验证时刻',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/OtZAGeLtUBgd9UzkO7eC?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '如何把 Agent 的判断与行动变成可恢复的软件事实 | KDC 工程补篇',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/AkgUFEFE4uG7WIlqaO2g?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'Anthropic继续与Nscale达成$ 450亿的交易',
+      'brief': '与基础设施提供商的新交易是Anthropic炙手可热的计算机连胜的最新例子。',
+      'url': 'https://techcrunch.com/2026/08/26/anthropic-continues-compute-gobbling-streak-in-45-billion-deal-with-nscale/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '谷歌的双子座有一个品牌问题，其余的人工智能',
+      'brief': '消费者AI应用程序需要停止让用户学习他们的产品架构。',
+      'url': 'https://techcrunch.com/2026/08/26/googles-gemini-has-a-branding-problem-and-so-does-the-rest-of-ai/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '我们如何解释OpenAI的高管外流？',
+      'brief': '格雷格·布罗克曼一直都是合适的高管吗？',
+      'url': 'https://techcrunch.com/2026/08/26/how-do-we-explain-openais-executive-exodus/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'OpenAI发布关于Hugging Face违规行为的官方报告',
+      'brief': '该报告涵盖了几种离散的网络安全漏洞，是对该事件迄今为止最完整的描述。',
+      'url': 'https://techcrunch.com/2026/08/26/openai-releases-its-official-report-on-the-hugging-face-breach/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'Radar使播客可供人工智能代理搜索和使用',
+      'brief': 'Particle的新播客情报平台转录和分析了超过13万个播客，使他们的对话可以在...',
+      'url': 'https://techcrunch.com/2026/08/26/radar-makes-podcasts-searchable-and-usable-by-ai-agents/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '前Meta科学家希望将视觉人工智能引入工厂车间',
+      'brief': 'Perceptron提供了一个人工智能模型，它可以帮助机器在世界上导航，同时还提供深入的视觉智能。',
+      'url': 'https://techcrunch.com/2026/08/26/ex-meta-scientists-want-to-bring-visual-ai-to-the-factory-floor/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '比尔·盖茨希望看到机器人税和“人类保留”工作，以减轻人工智能的危害',
+      'brief': '盖茨主要是负责任的人工智能阵营，但这里有一些我们以前从未听说过的想法。',
+      'url': 'https://techcrunch.com/2026/08/26/bill-gates-wants-to-see-a-robot-tax-and-human-reserved-jobs-to-mitigate-harms-from-ai/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '惊喜： Z.ai是神秘的Ox Alpha模型背后的人工智能实验室',
+      'brief': 'Z.ai确认它落后于Ox Alpha ，这是神秘的开放式人工智能模型，在基准和排行榜上名列前茅，其权重将被释放……',
+      'url': 'https://techcrunch.com/2026/08/26/surprise-z-ai-is-the-ai-lab-behind-the-mysterious-ox-alpha-model/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'QueryStory希望你相信人工智能告诉你的',
+      'brief': '这家初创公司获得了600万美元的种子资金，并计划使用LLM和网络安全技术来使AI查询保持一致……',
+      'url': 'https://techcrunch.com/2026/08/26/querystory-wants-you-to-believe-what-ai-is-telling-you/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'OpenAI的流氓AI模型事件比我们想象的要糟糕',
+      'brief': '7月，一个未发布的OpenAI模型突破了受限的环境，弄清楚了如何访问互联网，允许人工智能代理……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/985385/openais-rogue-ai-model-hugging-face-cybersecurity-incident-reports-metr',
+      'source': 'The Verge',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '谷歌的新AI转录会编辑掉你的“ums”和“ahs”',
+      'brief': '谷歌更新了Gemini Audio ，新增了自动检测专业术语和超过85种语言的转录功能……',
+      'url': 'https://www.theverge.com/tech/985186/google-gemini-3-5-transcribe-audio-ai',
+      'source': 'The Verge',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-26',
+      'title': '苹果突袭发布 M6 与 M5 Ultra 芯片与新款 Mac Mini；字节发布 AI 办公产品「豆包工作」；SpaceX 拟千亿美元建设第二座「星际基地」｜极客早知道',
+      'brief': '苹果突袭发布 M6 与 M5 Ultra 芯片，新 Mac mini、Mac Studio 全面押注本地 AI 8 月 25 日，苹果未举办发布会，直接上架了两款全新自研芯片 M6 与 M5 Ultra，以及搭载它们的新款 Mac mini 与新款 Mac Studio，并即刻开…',
+      'url': 'http://www.geekpark.net/news/369355',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-26',
+      'title': 'DeepSeek 开源 Harness：AI 智能体基础设施开始“拆分”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/vS7tpsLPdevZhMKdtxei?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
     }
   ]
 };

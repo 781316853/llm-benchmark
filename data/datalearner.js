@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-08-25)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-08-27)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-08-25',
+  'updated': '2026-08-27',
   'models': [
     {
       'name': 'GPT-5.6 Sol',
@@ -88,6 +88,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'GLM-5.3-Flash',
+      'score': 63.4,
+      'mode': '最高（工具）',
+      'date': '2026-08-26',
+      'params': '3200亿',
+      'license': '免费商用'
+    },
+    {
       'name': 'DeepSeek-V4-Pro',
       'score': 62.7,
       'mode': '极高强度思考（工具）',
@@ -118,6 +126,14 @@ window.DATALEARNER = {
       'date': '2026-05-28',
       'params': '未知',
       'license': '闭源'
+    },
+    {
+      'name': 'Qwen3.8-Flash-Next',
+      'score': 58.7,
+      'mode': '极高强度思考（工具）',
+      'date': '2026-08-26',
+      'params': '1250亿',
+      'license': '免费商用'
     },
     {
       'name': 'Qwen3.8-Max',
