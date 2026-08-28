@@ -14,6 +14,38 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-28',
+      'title': 'Neocloud Lambda获得$ 10亿债务以购买更多芯片',
+      'brief': 'Neocloud Lambda筹集了10亿美元的私人债务，用于购买Nvidia AI芯片并将其租赁给微软。这是一系列贷款中的最新贷款，而且……',
+      'url': 'https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-28',
+      'title': '一位人类学研究人员刚刚向我们展示了自我改进的人工智能',
+      'brief': '针对特定未对齐行为的10个基准，自动化系统能够提高每个基准的性能，而无需……',
+      'url': 'https://techcrunch.com/2026/08/28/an-anthropic-researcher-just-gave-us-a-peek-at-self-improving-ai/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-28',
+      'title': '开放式人工智能公司是硅谷最热门的收购目标',
+      'brief': '有很多资金涌入了赠送模型的业务。',
+      'url': 'https://techcrunch.com/2026/08/28/open-weight-ai-companies-are-the-valleys-hottest-acquisition-targets/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-28',
+      'title': 'Anthropic首次赢得五角大楼供应链风险标签的法庭胜利',
+      'brief': '一名联邦法官裁定特朗普政府非法将Anthropic标记为供应链风险，并将这家AI公司的胜利视为其安全措施。',
+      'url': 'https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-28',
       'title': 'Meta高管离开OpenAI ，因为这家社交媒体巨头在印度面临越来越多的审查',
       'brief': 'Sandhya Devanathan将担任新职务，负责监督OpenAI在东南亚和澳大利亚的一些业务。',
       'url': 'https://techcrunch.com/2026/08/28/meta-executive-leaves-for-openai-as-the-social-media-giant-faces-growing-scrutiny-in-india/',
@@ -30,9 +62,49 @@ window.NEWS = {
     },
     {
       'date': '2026-08-28',
+      'title': 'The Analytical AI Handbook',
+      'brief': 'The Analytical AI Handbook',
+      'url': 'https://handbook.sutro.sh',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-28',
+      'title': '如何使用AI进行设计',
+      'brief': '如何使用AI进行设计',
+      'url': 'https://ref.tools/blog/how-i-design-with-ai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-28',
+      'title': '英伟达坚持认为它可以继续印钞票为AI热潮提供资金',
+      'brief': '英伟达坚持认为它可以继续印钞票为AI热潮提供资金',
+      'url': 'https://www.wsj.com/tech/ai/nvidia-insists-it-can-keep-printing-money-to-fund-the-ai-boom-195e7d5e',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-28',
+      'title': 'GLM-5.3现已开放',
+      'brief': 'GLM-5.3现已开放',
+      'url': 'https://huggingface.co/zai-org/GLM-5.3',
+      'source': 'Hacker News',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-08-28',
       'title': 'AI Agent有根',
       'brief': 'AI Agent有根',
       'url': 'https://infernalcode.com/posts/your-ai-agent-has-root/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-28',
+      'title': '您的AGENTS.md文件不执行任何操作',
+      'brief': '您的AGENTS.md文件不执行任何操作',
+      'url': 'https://pivot-to-ai.com/2026/08/27/your-agents-md-file-doesnt-actually-do-anything/',
       'source': 'Hacker News',
       'type': '技术研究'
     },
@@ -46,27 +118,19 @@ window.NEWS = {
     },
     {
       'date': '2026-08-28',
-      'title': '请停止使用AI SLOP淹没我们的项目以提供您的简历',
-      'brief': '请停止使用AI SLOP淹没我们的项目以提供您的简历',
-      'url': 'https://neilalexander.dev/2026/06/30/flooding-contributions',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '随着人工智能账单攀升， Alphabet股票下跌7000亿美元$',
-      'brief': '随着人工智能账单攀升， Alphabet股票下跌7000亿美元$',
-      'url': 'https://www.semafor.com/article/08/27/2026/alphabet-stock-sheds-700b-as-ai-bills-climb',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-28',
       'title': 'Terminal-Bench-Science ：在科研工作流程中评估人工智能代理',
       'brief': 'Terminal-Bench-Science ：在科研工作流程中评估人工智能代理',
       'url': 'https://www.terminal-bench-science.ai/announcement',
       'source': 'Hacker News',
       'type': '技术研究'
+    },
+    {
+      'date': '2026-08-28',
+      'title': 'Coding 自由之后，人开始成为最大的瓶颈',
+      'brief': '过去，一个人有了一个产品想法，首先遇到的问题可能是：我会不会编程？我要不要组一个团队？甚至，要不要先去融一笔钱？ 但 AI Coding 正在改变这条路径。 在 TRAE AI 创造力大赛现场，极客公园创始人张鹏和科技创作者小狮日记、参赛选手不憨，以及 TRAE 核心开发者天猪坐…',
+      'url': 'http://www.geekpark.net/news/369547',
+      'source': '极客公园',
+      'type': '公司动态'
     },
     {
       'date': '2026-08-28',
@@ -86,35 +150,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-28',
-      'title': '大模型和硬件之间，长出了一层新生意',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/IROW9KWVs4zSCByU8wQE?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-28',
       'title': '规模化 AI 代码审查：LinkedIn 的多智能体方案',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/A0CMcU7UVsMQreKPcKOw?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'Cloudflare 发布 Kitesurf，一款面向 AI 智能智能体的浏览器引擎',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/JDYKJmiY9vTRSw47t15a?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '你的 Agent 已经上线生产环境，下一步怎么办？ | 技术实践',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/mKFB15kPm6Uw8fNG4Y7e?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     },
     {
       'date': '2026-08-28',
@@ -126,35 +166,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-27',
-      'title': '思考机器联合创始人Barret Zoph在加入OpenAI之前被赶下台，现在在谷歌工作',
-      'brief': 'Zoph与Mira Murati共同创立了Thinking Machines Lab ，并担任该创业公司的首席技术官，他在OpenAI领导了一段短暂的工作，没有...',
-      'url': 'https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-27',
       'title': 'OpenAI、Anthropic、Google和其他100家公司呼吁采取行动防御流氓AI',
       'brief': '一些世界上最大的科技公司和人工智能初创公司聚集在一起，谴责当前的网络安全状况，并宣传……',
       'url': 'https://techcrunch.com/2026/08/27/openai-anthropic-google-and-100-other-companies-call-for-action-to-defend-against-rogue-ai/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-27',
-      'title': 'Hugging Face正在出售一款可爱的399 $开源鸭子机器人Microduck',
-      'brief': 'Hugging Face首席执行官Clem Delangue表示， Microduck是一个“可以通过强化学习教授新技巧的开源机器人”。',
-      'url': 'https://techcrunch.com/2026/08/27/hugging-face-is-selling-a-cute-399-open-source-duck-robot-microduck/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-27',
-      'title': '英伟达完成对Hugging Face的收购',
-      'brief': '据报道，英伟达已同意以129亿美元的价格收购流行的开源人工智能中心Hugging Face ，此举将让英伟达同时支持……',
-      'url': 'https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
     },
     {
       'date': '2026-08-27',

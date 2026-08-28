@@ -207,7 +207,7 @@ window.ARTIFICIAL_ANALYSIS = {
   {
     'slug': 'k-exaone-2-0-0803',
     'name': 'K-EXAONE 2.0',
-    'full': 'K-EXAONE 2.0 0803',
+    'full': 'K-EXAONE 2.0',
     'vendor': 'LG AI Research',
     'base': 'K-EXAONE 2.0',
     'score': 30.98
