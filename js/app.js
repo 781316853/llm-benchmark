@@ -515,7 +515,12 @@
     Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (b) {
       b.addEventListener("click", function () { showTab(b.dataset.tab); });
     });
-    document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / Vibe " + (D.src.vibe ? D.src.vibe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth);
+    // 刷新时间节点:refreshedAt 为定长 "YYYY-MM-DD HH:mm",字典序即时间序,取三源最新;旧数据缺字段时不显示
+    var refreshedAt = [D.src.deepswe, D.src.vibe, D.src.llm]
+      .map(function (s) { return s && s.refreshedAt; })
+      .filter(Boolean).sort().pop();
+    document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / Vibe " + (D.src.vibe ? D.src.vibe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
+      + (refreshedAt ? " · 刷新于 " + refreshedAt + "(北京时间)" : "");
     // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行重渲染并移除指示器
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {

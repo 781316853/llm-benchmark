@@ -101,7 +101,7 @@ class VibeCodeSource extends BaseSource {
   }
   writeContent(parsed) {
     // 严格复刻原脚本输出模板(字节等价):外层双引号,models 数组单引号
-    const T = CONFIG.TODAY;
+    const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT;
     const body = JSON.stringify(parsed.rows, null, 2).replace(/"/g, "'");
     return `// 数据源2:Vibe Code Bench 基准快照(云端抓取)
 // 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 ${T})
@@ -112,6 +112,7 @@ window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "${T}",
+  refreshedAt: "${R}",
   version: "v1.1",
   totalSystems: ${parsed.totalSystems},
   note: "共 ${parsed.totalSystems} 系统,展示 overall 视图全部 ${parsed.rows.length} 个有记录系统",

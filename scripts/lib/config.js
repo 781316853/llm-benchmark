@@ -10,11 +10,16 @@ const SOURCES_DIR = path.join(ROOT, "scripts", "sources");
 // 今日日期(UTC,与原脚本一致)
 const TODAY = new Date().toISOString().slice(0, 10);
 
+// 本次抓取时间戳(北京时间 UTC+8,精确到分),写入 data/*.js 的 refreshedAt
+const REFRESHED_AT = new Date(Date.now() + 8 * 3600 * 1000)
+  .toISOString().slice(0, 16).replace("T", " ");
+
 module.exports = {
   ROOT: ROOT,
   DATA_DIR: DATA_DIR,
   SOURCES_DIR: SOURCES_DIR,
   TODAY: TODAY,
+  REFRESHED_AT: REFRESHED_AT,
 
   // ===== 传输层参数 =====
   transport: {

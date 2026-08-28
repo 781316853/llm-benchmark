@@ -193,7 +193,7 @@ class Llm2014Source extends BaseSource {
   }
   writeContent(parsed) {
     // 严格复刻原脚本输出模板(字节等价):外层双引号,months 单引号
-    const T = CONFIG.TODAY;
+    const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT;
     const monthKeys = Object.keys(parsed.months).sort();
     const latest = monthKeys[monthKeys.length - 1];
     const body = JSON.stringify(parsed.months, null, 2).replace(/"/g, "'");
@@ -211,6 +211,7 @@ window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C${latest}%7C0",
   updated: "${T}",
+  refreshedAt: "${R}",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: ${notes},

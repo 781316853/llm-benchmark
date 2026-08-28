@@ -106,7 +106,7 @@ class DeepSweV11Source extends DeepSweBase {
   }
   writeContent(parsed) {
     // 严格复刻原脚本 v1.1 输出模板(字节等价):外层双引号,models 数组单引号
-    const T = CONFIG.TODAY, v = this.cfg.version, n = parsed.models.length;
+    const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT, v = this.cfg.version, n = parsed.models.length;
     const body = JSON.stringify(parsed.models, null, 2).replace(/"/g, "'");
     return `// 数据源1:DeepSWE 基准快照(云端抓取)
 // 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 ${T})
@@ -117,6 +117,7 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   updated: "${T}",
+  refreshedAt: "${R}",
   version: "${v}",
   stats: { tasks: ${parsed.nTasks}, repos: 91, languages: 5, models: ${n} },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
