@@ -68,7 +68,7 @@ window.DATALEARNER = {
       'score': 66.9,
       'mode': '最高（工具）',
       'date': '2026-08-14',
-      'params': '7533.3亿',
+      'params': '7440亿',
       'license': ''
     },
     {
@@ -86,6 +86,14 @@ window.DATALEARNER = {
       'date': '2026-08-13',
       'params': '未知',
       'license': '闭源'
+    },
+    {
+      'name': 'Hy4 preview',
+      'score': 64.3,
+      'mode': '思考模式 High（工具）',
+      'date': '2026-08-28',
+      'params': '7700亿',
+      'license': '免费商用'
     },
     {
       'name': 'GLM-5.3-Flash',
@@ -238,14 +246,6 @@ window.DATALEARNER = {
       'date': '2026-07-06',
       'params': '2950亿',
       'license': '免费商用'
-    },
-    {
-      'name': 'Gemini 3.1 Pro Preview',
-      'score': 12,
-      'mode': '思考模式 High（工具）',
-      'date': '2026-02-20',
-      'params': '未知',
-      'license': '闭源'
     }
   ]
 };

@@ -43,7 +43,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 31,
+      'modelCount': 32,
       'updated': '2026-08-28',
       'ageDays': 0,
       'completeness': 1,
@@ -312,6 +312,24 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
+      'canonId': 'Gemini 3.1 Pro Preview',
+      'name': 'gemini-3-1-pro-preview',
+      'vendor': 'Google',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 12,
+        'deepswe_v10': 10,
+        'vibecode': 32.03
+      },
+      'mean': 18,
+      'stddev': 9.95,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'DeepSeek V4 Flash 0731',
       'name': 'DeepSeek-V4-Flash',
       'vendor': 'DeepSeek',
@@ -427,26 +445,6 @@ window.QUALITY = {
       },
       'mean': 70.3,
       'stddev': 9.18,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Gemini 3.1 Pro Preview',
-      'name': 'Gemini 3.1 Pro Preview',
-      'vendor': 'Google',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 12,
-        'deepswe_v11': 12,
-        'deepswe_v10': 10,
-        'vibecode': 32.03
-      },
-      'mean': 16.5,
-      'stddev': 9,
       'flag': 'warn'
     },
     {
@@ -868,6 +866,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Hy4 preview',
+      'name': 'Hy4 preview',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 64.3,
+        'deepswe_v11': 64.3
+      },
+      'mean': 64.3,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'DeepSeek-V4-Flash-Vision-Exp',
       'name': 'DeepSeek-V4-Flash-Vision-Exp',
       'vendor': '其他',
@@ -943,9 +957,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 31,
-      'complete': 31,
-      'modelCount': 31,
+      'total': 32,
+      'complete': 32,
+      'modelCount': 32,
       'missingFields': {},
       'flag': 'ok'
     },

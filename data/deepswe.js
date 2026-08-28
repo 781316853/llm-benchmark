@@ -7,9 +7,9 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-08-28",
-  refreshedAt: "2026-08-28 10:15",
+  refreshedAt: "2026-08-28 20:32",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 31 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 32 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -101,6 +101,16 @@ window.DEEPSWE = {
     'cost': 2.03,
     'outTok': 93991,
     'steps': 117
+  },
+  {
+    'name': 'Hy4 preview',
+    'effort': '思考模式 High（工具）',
+    'pass1': 64.3,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
   },
   {
     'name': 'glm-5-3-flash',
