@@ -110,6 +110,70 @@ window.NEWS = {
     },
     {
       'date': '2026-08-27',
+      'title': '思考机器联合创始人Barret Zoph在加入OpenAI之前被赶下台，现在在谷歌工作',
+      'brief': 'Zoph与Mira Murati共同创立了Thinking Machines Lab ，并担任该创业公司的首席技术官，他在OpenAI领导了一段短暂的工作，没有...',
+      'url': 'https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'OpenAI、Anthropic、Google和其他100家公司呼吁采取行动防御流氓AI',
+      'brief': '一些世界上最大的科技公司和人工智能初创公司聚集在一起，谴责当前的网络安全状况，并宣传……',
+      'url': 'https://techcrunch.com/2026/08/27/openai-anthropic-google-and-100-other-companies-call-for-action-to-defend-against-rogue-ai/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '谷歌的AI模式现在可以跟踪机票价格，帮助预订酒店等',
+      'brief': '这些更新表明，谷歌正在寻求将AI Mode定位为某种程度上的AI旅行社，因为它正在超越简单地帮助用户…',
+      'url': 'https://techcrunch.com/2026/08/27/googles-ai-mode-can-now-track-flight-prices-help-book-hotels-and-more/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'Hugging Face正在出售一款可爱的399 $开源鸭子机器人Microduck',
+      'brief': 'Hugging Face首席执行官Clem Delangue表示， Microduck是一个“可以通过强化学习教授新技巧的开源机器人”。',
+      'url': 'https://techcrunch.com/2026/08/27/hugging-face-is-selling-a-cute-399-open-source-duck-robot-microduck/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '针对Android应用程序的AI内存紧缩即将到来',
+      'brief': '谷歌正在为Android应用程序设定新的内存使用限制，因为人工智能数据中心导致硬件短缺，这可能会导致更低成本的...',
+      'url': 'https://techcrunch.com/2026/08/27/ais-memory-crunch-is-coming-for-android-apps/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '以下是人工智能流氓并入侵其他公司的所有时间',
+      'brief': '概述了Anthropic、Meta和OpenAI制造的涉及LLM的所有事件，这些事件流氓并攻击了真实的公司和个人……',
+      'url': 'https://techcrunch.com/2026/08/27/heres-all-the-times-ai-has-gone-rogue-and-hacked-other-companies/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'Plaud的新耳机配备了支持eSIM的外壳，用于与人工智能代理交谈',
+      'brief': '它们被称为Plaud One ，采用苹果AirPods的简单简约风格，可以录制通话，而它们的案例可用于录制……',
+      'url': 'https://techcrunch.com/2026/08/27/plauds-new-earphones-come-with-an-esim-enabled-case-for-talking-to-ai-agents/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-27',
+      'title': 'OpenAI开始在印度的ChatGPT免费和Go会员等级上展示广告',
+      'brief': 'OpenAI在印度每周有超过1亿活跃的ChatGPT用户，其中很大一部分是免费或价格较低的围棋用户。',
+      'url': 'https://techcrunch.com/2026/08/27/openai-to-start-showing-ads-on-chatgpts-free-and-go-tiers-in-india/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-27',
       'title': '英伟达完成对Hugging Face的收购',
       'brief': '据报道，英伟达已同意以129亿美元的价格收购流行的开源人工智能中心Hugging Face ，此举将让英伟达同时支持……',
       'url': 'https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/',
@@ -137,6 +201,22 @@ window.NEWS = {
       'title': '六个月独家与代理商一起编写代码',
       'brief': '六个月独家与代理商一起编写代码',
       'url': 'https://blog.exe.dev/engineering-with-ai',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '六个月独家与代理商一起编写代码',
+      'brief': '六个月独家与代理商一起编写代码',
+      'url': 'https://blog.exe.dev/engineering-with-ai',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-08-27',
+      'title': '麻省理工学院人工智能用于教学、学习和研究培训特设委员会',
+      'brief': '麻省理工学院人工智能用于教学、学习和研究培训特设委员会',
+      'url': 'https://aiandeducation.mit.edu/report/',
       'source': 'Hacker News',
       'type': '技术研究'
     },
