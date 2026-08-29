@@ -14,6 +14,30 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-29',
+      'title': '英伟达的人工智能优势正在超越GPU',
+      'brief': '新一代数据中心系统通过更智能的流量控制而不仅仅是更多的处理器周期来提高效率。',
+      'url': 'https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-29',
+      'title': '音乐家出身的侦探正在寻找人工智能骗子',
+      'brief': '随着以音频为中心的生成工具和平台变得越来越复杂，互联网越来越充斥着人工智能生成的……',
+      'url': 'https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-29',
+      'title': 'Debian投票允许“负责任地使用生成式AI”',
+      'brief': 'Debian投票允许“负责任地使用生成式AI”',
+      'url': 'https://lwn.net/Articles/1091231/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-29',
       'title': '在我们将古董书籍扫描到我们公司的人工智能中后，我就是那个销毁它们的家伙',
       'brief': '在我们将古董书籍扫描到我们公司的人工智能中后，我就是那个销毁它们的家伙',
       'url': 'https://www.mcsweeneys.net/articles/im-the-guy-who-destroys-antique-books-after-we-scan-them-into-our-companys-insatiable-ai-platform',
@@ -22,9 +46,9 @@ window.NEWS = {
     },
     {
       'date': '2026-08-29',
-      'title': 'StemDeck ，一个免费、开源和本地的AI STEM分离器',
-      'brief': 'StemDeck ，一个免费、开源和本地的AI STEM分离器',
-      'url': 'https://github.com/stemdeckapp/stemdeck',
+      'title': 'OpenAI和Anthropic正在毁掉旧金山',
+      'brief': 'OpenAI和Anthropic正在毁掉旧金山',
+      'url': 'https://www.sfgate.com/local/article/open-ai-anthropic-ruining-sf-22404657.php?link_source=ta_first_comment&taid=6a91be8eb9a1130001896fd8&fbclid=IwY2xjawT_Fs1wZG9mA2V4dG4DYWVtAjExAHNydGMGYXBwX2lkDzQwOTk2MjYyMzA4NTYwOQABHvfPHyGSByYNR7Cmkzc-oVqd31kuJy3YUIMwJB5LlB84Hi71zSB_6e5NVbld_aem_L8Ysu4gjQinZHOeaZObNKA',
       'source': 'Hacker News',
       'type': '行业动态'
     },
@@ -43,14 +67,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/369549',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '一句话找图，低清图再增强：HarmonyOS7 视觉 AI 如何走进真实应用',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/3R8f57Bow3B4kEBkPv5J?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-29',
@@ -94,27 +110,11 @@ window.NEWS = {
     },
     {
       'date': '2026-08-28',
-      'title': 'Meta高管离开OpenAI ，因为这家社交媒体巨头在印度面临越来越多的审查',
-      'brief': 'Sandhya Devanathan将担任新职务，负责监督OpenAI在东南亚和澳大利亚的一些业务。',
-      'url': 'https://techcrunch.com/2026/08/28/meta-executive-leaves-for-openai-as-the-social-media-giant-faces-growing-scrutiny-in-india/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-28',
       'title': 'Anthropic被特朗普政府非法列入黑名单，法院规则',
       'brief': '周四，一名法官裁定，五角大楼今年早些时候将人类列入黑名单是违宪的，这给人工智能实验室带来了胜利……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling',
       'source': 'The Verge',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '使用人工智能识别假冒化妆品',
-      'brief': '使用人工智能识别假冒化妆品',
-      'url': 'https://groverlab.org/hnbfpr/2026-08-26-ai-counterfeit-cosmetics.html',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-28',
