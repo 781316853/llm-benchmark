@@ -1,5 +1,5 @@
 // 数据源:Artificial Analysis Intelligence Index 快照(免 Key 网页抓取)
-// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-08-28)
+// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-08-29)
 // 字段说明:name=模型短名;full=官方全名;base=去变体后的基础名;
 //          vendor=厂商;score=Intelligence Index(v4.1.1,越高越好)
 // 注:通用智能指数(含知识/推理/数学等评测),非编码专项;覆盖页面默认入选的 30 个主流模型;
@@ -7,7 +7,7 @@
 window.ARTIFICIAL_ANALYSIS = {
   source: "Artificial Analysis Intelligence Index",
   url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-  updated: "2026-08-28",
+  updated: "2026-08-29",
   version: "4.1.1",
   note: "通用智能指数 · 覆盖 30 个主流模型 · 独立榜单,不计入综合分",
   desc: "Artificial Analysis 独立评测的通用智能指数 v4.1.1,汇总 GDPval-AA/τ³-Banking/Terminal-Bench/HLE/GPQA Diamond 等多项评测。",
