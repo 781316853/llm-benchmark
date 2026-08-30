@@ -14,6 +14,62 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-30',
+      'title': '卡特彼勒正在将从自动化挖矿中学到的知识引入人工智能部署',
+      'brief': '卡特彼勒花费了数十年的时间，让自动机器在偏远的采矿地点工作。现在，它正在将这种体验带入人工智能部署……',
+      'url': 'https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '德克萨斯州州长雅培阻止为更多Flock相机提供资金',
+      'brief': '随着对Flock人工智能监控摄像头的强烈反对，德克萨斯州州长格雷格·阿博特（ Greg Abbott ）冻结了州政府在这些摄像头上的支出。此举只是呵呵……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/986541/texas-governor-abbott-flock-cameras',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '星期五没有人工智能',
+      'brief': '星期五没有人工智能',
+      'url': 'https://noaifridays.com/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '公平工作委员会谴责“明显错误”的人工智能法律建议',
+      'brief': '公平工作委员会谴责“明显错误”的人工智能法律建议',
+      'url': 'https://www.abc.net.au/news/2026-08-29/fair-work-commission-condemns-ai-legal-advice/107089766',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '互联网档案馆的复古人工智能收藏',
+      'brief': '互联网档案馆的复古人工智能收藏',
+      'url': 'https://archive.org/details/vintageai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '造物 100 #04｜AI 为爱做「鸭」、PLAUD 又推新作、字节 TRAE 造了个数字工牌',
+      'brief': '如果给模型安装个身体？你会选择什么。 这道题过去只属于硬件创业者，这个八月，它摆到了所有软件公司桌上。Hugging Face 交卷一只走路摇摇晃晃的鸭子，OpenAI 正在造自己的智能音箱，字节跳动旗下 TRAE 联名 FoloToy 开始改造自己挂在胸口的工牌。 很明显，软件…',
+      'url': 'http://www.geekpark.net/news/369556',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': 'OpenAI 芯片实测跑分揭晓，「为模型造芯片」时代来了',
+      'brief': '9 个月之后，OpenAI 的首款芯片成绩单终于揭晓了。 8 月 25 日，在 Hot Chips 大会上，OpenAI 硬件负责人 Richard Ho 站上讲台，公布了 Jalape&ntilde;o 芯片的第一份公开跑分。 在 SemiAnalysis 的 Inferenc…',
+      'url': 'http://www.geekpark.net/news/369555',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
       'title': 'OpenAI 终止与 Cursor 合作；雷军：2600名小米车主行程超 10 万公里；华纳与索尼起诉 Anthropic，索赔数十亿美元',
       'brief': 'OpenAI 终止与 Cursor 合作 8 月 29 日消息，OpenAI 以「无法信任 SpaceX 遵守服务条款」为由，终止向已被 SpaceX 收购的 AI 编程工具 Cursor 提供模型支持。Cursor 对 OpenAI 模型的直接访问权限将于 11 月 12 日终…',
       'url': 'http://www.geekpark.net/news/369551',
@@ -27,46 +83,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '“我们每年不下30个赌注” ： Vijay Pande在a16z下注40亿美元后下了小赌注$',
-      'brief': '维贾伊·潘德（ Vijay Pande ）去年离开了a16z约40亿美元的生物技术业务，开始了规模小得多的人工智能原生VZVC ，他谈到了为什么生物……',
-      'url': 'https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '英伟达的人工智能优势正在超越GPU',
-      'brief': '新一代数据中心系统通过更智能的流量控制而不仅仅是更多的处理器周期来提高效率。',
-      'url': 'https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '索尼音乐和华纳查普尔起诉Anthropic',
-      'brief': '索尼音乐和华纳·查普尔（ Warner Chappell ）已向美国加利福尼亚州北区地方法院提起诉讼，要求...',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '音乐家出身的侦探正在寻找人工智能骗子',
-      'brief': '随着以音频为中心的生成工具和平台变得越来越复杂，互联网越来越充斥着人工智能生成的……',
-      'url': 'https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': 'LLM让我失去了精明',
-      'brief': 'LLM让我失去了精明',
-      'url': 'https://pgaleone.eu/ai/2026/08/29/losing-savviness/',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-29',
