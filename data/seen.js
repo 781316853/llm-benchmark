@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-08-29',
+  'updated': '2026-08-30',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -262,6 +262,17 @@ window.SEEN = {
     'llm|GLM-5.3-Flash (max)': '2026-08-27',
     'vibe|DeepSeek V4 Pro 0813': '2026-08-28',
     'deepswe|Hy4 preview': '2026-08-28',
-    'datalearner|Hy4 preview': '2026-08-28'
+    'datalearner|Hy4 preview': '2026-08-28',
+    'llm|Opus 4.8 (high)': '2026-08-30',
+    'llm|Opus 4.6': '2026-08-30',
+    'llm|Opus 4.5': '2026-08-30',
+    'llm|Sonnet 5 (high)': '2026-08-30',
+    'llm|Hy3 (high)': '2026-08-30',
+    'llm|Sonnet 4.6 (high)': '2026-08-30',
+    'llm|Hy3 Preview': '2026-08-30',
+    'llm|Qwen3.6-Plus (Think)': '2026-08-30',
+    'llm|Seed-2.0-Code (high)': '2026-08-30',
+    'llm|Fable 5 (high)': '2026-08-30',
+    'llm|Opus 5 (max)': '2026-08-30'
   }
 };

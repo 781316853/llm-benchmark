@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-08-29',
+  'updated': '2026-08-30',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,11 +13,43 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-08-30',
+      'title': 'OpenAI 终止与 Cursor 合作；雷军：2600名小米车主行程超 10 万公里；华纳与索尼起诉 Anthropic，索赔数十亿美元',
+      'brief': 'OpenAI 终止与 Cursor 合作 8 月 29 日消息，OpenAI 以「无法信任 SpaceX 遵守服务条款」为由，终止向已被 SpaceX 收购的 AI 编程工具 Cursor 提供模型支持。Cursor 对 OpenAI 模型的直接访问权限将于 11 月 12 日终…',
+      'url': 'http://www.geekpark.net/news/369551',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-29',
+      'title': '索尼音乐、华纳起诉Anthropic ，指控其“肆无忌惮地窃取知识产权”',
+      'brief': '这起最新的诉讼尤其广泛，涉及非法盗版的指控。',
+      'url': 'https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-08-29',
+      'title': '“我们每年不下30个赌注” ： Vijay Pande在a16z下注40亿美元后下了小赌注$',
+      'brief': '维贾伊·潘德（ Vijay Pande ）去年离开了a16z约40亿美元的生物技术业务，开始了规模小得多的人工智能原生VZVC ，他谈到了为什么生物……',
+      'url': 'https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
       'date': '2026-08-29',
       'title': '英伟达的人工智能优势正在超越GPU',
       'brief': '新一代数据中心系统通过更智能的流量控制而不仅仅是更多的处理器周期来提高效率。',
       'url': 'https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/',
       'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-29',
+      'title': '索尼音乐和华纳查普尔起诉Anthropic',
+      'brief': '索尼音乐和华纳·查普尔（ Warner Chappell ）已向美国加利福尼亚州北区地方法院提起诉讼，要求...',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright',
+      'source': 'The Verge',
       'type': '行业动态'
     },
     {
@@ -30,25 +62,9 @@ window.NEWS = {
     },
     {
       'date': '2026-08-29',
-      'title': 'Debian投票允许“负责任地使用生成式AI”',
-      'brief': 'Debian投票允许“负责任地使用生成式AI”',
-      'url': 'https://lwn.net/Articles/1091231/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '在我们将古董书籍扫描到我们公司的人工智能中后，我就是那个销毁它们的家伙',
-      'brief': '在我们将古董书籍扫描到我们公司的人工智能中后，我就是那个销毁它们的家伙',
-      'url': 'https://www.mcsweeneys.net/articles/im-the-guy-who-destroys-antique-books-after-we-scan-them-into-our-companys-insatiable-ai-platform',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': 'OpenAI和Anthropic正在毁掉旧金山',
-      'brief': 'OpenAI和Anthropic正在毁掉旧金山',
-      'url': 'https://www.sfgate.com/local/article/open-ai-anthropic-ruining-sf-22404657.php?link_source=ta_first_comment&taid=6a91be8eb9a1130001896fd8&fbclid=IwY2xjawT_Fs1wZG9mA2V4dG4DYWVtAjExAHNydGMGYXBwX2lkDzQwOTk2MjYyMzA4NTYwOQABHvfPHyGSByYNR7Cmkzc-oVqd31kuJy3YUIMwJB5LlB84Hi71zSB_6e5NVbld_aem_L8Ysu4gjQinZHOeaZObNKA',
+      'title': 'LLM让我失去了精明',
+      'brief': 'LLM让我失去了精明',
+      'url': 'https://pgaleone.eu/ai/2026/08/29/losing-savviness/',
       'source': 'Hacker News',
       'type': '行业动态'
     },
@@ -75,110 +91,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/KbbHdAQFxQM7AJIYMLqR?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'Neocloud Lambda获得$ 10亿债务以购买更多芯片',
-      'brief': 'Neocloud Lambda筹集了10亿美元的私人债务，用于购买Nvidia AI芯片并将其租赁给微软。这是一系列贷款中的最新贷款，而且……',
-      'url': 'https://techcrunch.com/2026/08/28/neocloud-lambda-secures-1b-in-debt-to-buy-more-chips/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '一位人类学研究人员刚刚向我们展示了自我改进的人工智能',
-      'brief': '针对特定未对齐行为的10个基准，自动化系统能够提高每个基准的性能，而无需……',
-      'url': 'https://techcrunch.com/2026/08/28/an-anthropic-researcher-just-gave-us-a-peek-at-self-improving-ai/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '开放式人工智能公司是硅谷最热门的收购目标',
-      'brief': '有很多资金涌入了赠送模型的业务。',
-      'url': 'https://techcrunch.com/2026/08/28/open-weight-ai-companies-are-the-valleys-hottest-acquisition-targets/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'Anthropic首次赢得五角大楼供应链风险标签的法庭胜利',
-      'brief': '一名联邦法官裁定特朗普政府非法将Anthropic标记为供应链风险，并将这家AI公司的胜利视为其安全措施。',
-      'url': 'https://techcrunch.com/2026/08/28/anthropic-gets-its-first-court-win-over-the-pentagons-supply-chain-risk-label/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'Anthropic被特朗普政府非法列入黑名单，法院规则',
-      'brief': '周四，一名法官裁定，五角大楼今年早些时候将人类列入黑名单是违宪的，这给人工智能实验室带来了胜利……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'GLM-5.3现已开放',
-      'brief': 'GLM-5.3现已开放',
-      'url': 'https://huggingface.co/zai-org/GLM-5.3',
-      'source': 'Hacker News',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'AI Agent有根',
-      'brief': 'AI Agent有根',
-      'url': 'https://infernalcode.com/posts/your-ai-agent-has-root/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '您的AGENTS.md文件不执行任何操作',
-      'brief': '您的AGENTS.md文件不执行任何操作',
-      'url': 'https://pivot-to-ai.com/2026/08/27/your-agents-md-file-doesnt-actually-do-anything/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'Terminal-Bench-Science ：在科研工作流程中评估人工智能代理',
-      'brief': 'Terminal-Bench-Science ：在科研工作流程中评估人工智能代理',
-      'url': 'https://www.terminal-bench-science.ai/announcement',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-28',
-      'title': 'Coding 自由之后，人开始成为最大的瓶颈',
-      'brief': '过去，一个人有了一个产品想法，首先遇到的问题可能是：我会不会编程？我要不要组一个团队？甚至，要不要先去融一笔钱？ 但 AI Coding 正在改变这条路径。 在 TRAE AI 创造力大赛现场，极客公园创始人张鹏和科技创作者小狮日记、参赛选手不憨，以及 TRAE 核心开发者天猪坐…',
-      'url': 'http://www.geekpark.net/news/369547',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '特努斯时代首秀，苹果发布会定档 9 月 10 日；116 家公司联名信：重视 AI 时代网络安全；英伟达预计三季度营收破千亿美元 | 极客早知道',
-      'brief': '特努斯首秀开启 iPhone 18 Pro / Ultra 系列新篇章，苹果发布会官宣定档 9 月 10 日 8 月 27 日消息，苹果官方宣布将于当地时间 9 月 9 日（北京时间 9 月 10 日凌晨 1 点）举行秋季新品发布会，主题为「惊喜闪耀」（Surprise and…',
-      'url': 'http://www.geekpark.net/news/369481',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '规模化 AI 代码审查：LinkedIn 的多智能体方案',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/A0CMcU7UVsMQreKPcKOw?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-28',
-      'title': '曝英伟达129 亿美元收购Hugging Face！黄仁勋：我只后悔没有更早、更多投资OpenAI、Anthropic',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Z9bIWfsMCIA9yiLUSDvJ?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     }
   ]
 };

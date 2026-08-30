@@ -9,9 +9,9 @@
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
   source: "llm2014 Agentic",
-  url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-08%7C0",
-  updated: "2026-08-29",
-  refreshedAt: "2026-08-30 01:00",
+  url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-09%7C0",
+  updated: "2026-08-30",
+  refreshedAt: "2026-08-30 14:17",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -62,11 +62,11 @@ window.LLM2014 = {
     },
     {
       'k': 'F',
-      't': 'Godot + Physics'
+      't': 'Godot + 物理算法'
     },
     {
       'k': 'H',
-      't': 'Web + 3D Modeling'
+      't': 'Web + 3D 建模'
     },
     {
       'k': 'I',
@@ -74,11 +74,11 @@ window.LLM2014 = {
     },
     {
       'k': 'J',
-      't': 'Web + 2D Animation'
+      't': 'Web + 2D 动画'
     },
     {
       'k': 'K',
-      't': 'Harmony OS App + C++ Native'
+      't': '鸿蒙 App + C++ 本地插件'
     }
   ]
 },
@@ -107,7 +107,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Opus 4.8 (high)',
+        'model': 'Opus 4.8 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -120,7 +120,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'GLM-5.2(max)',
+        'model': 'GLM-5.2 (max)',
         'cells': [
           '16/B+',
           '6/A',
@@ -146,7 +146,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Opus 4.6',
+        'model': 'Opus 4.6',
         'cells': [
           '9/A',
           '11/A',
@@ -159,7 +159,7 @@ window.LLM2014 = {
         'think': 0
       },
       {
-        'model': 'Claude Opus 4.5',
+        'model': 'Opus 4.5',
         'cells': [
           '9/B',
           '14/B',
@@ -172,7 +172,7 @@ window.LLM2014 = {
         'think': 0
       },
       {
-        'model': 'Claude Sonnet 5 (high)',
+        'model': 'Sonnet 5 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -185,7 +185,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Tencent Hy3 (high)',
+        'model': 'Hy3 (high)',
         'cells': [
           '11/B',
           '12/B',
@@ -198,7 +198,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Sonnet 4.6 (high)',
+        'model': 'Sonnet 4.6 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -315,7 +315,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Tencent Hy3 Preview',
+        'model': 'Hy3 Preview',
         'cells': [
           '42/D',
           '27/C',
@@ -341,7 +341,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Qwen3.6-Plus(Think)',
+        'model': 'Qwen3.6-Plus (Think)',
         'cells': [
           'Failed(5/12)',
           '16/C',
@@ -354,7 +354,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Doubao-Seed-2.0-Code  (high)',
+        'model': 'Seed-2.0-Code (high)',
         'cells': [
           'Failed(7/12)',
           '40/C',
@@ -406,7 +406,7 @@ window.LLM2014 = {
     ],
     'rows': [
       {
-        'model': 'Fable-5 (high)',
+        'model': 'Fable 5 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -421,7 +421,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'GPT-5.6-Sol (max)',
+        'model': 'GPT-5.6 Sol (max)',
         'cells': [
           'Pass',
           'Pass',
@@ -436,7 +436,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Opus 5 (max)',
+        'model': 'Opus 5 (max)',
         'cells': [
           'Pass',
           'Pass',
@@ -481,7 +481,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Opus 4.8 (high)',
+        'model': 'Opus 4.8 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -511,7 +511,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'GLM-5.2(max)',
+        'model': 'GLM-5.2 (max)',
         'cells': [
           '16/B',
           '6/A',
@@ -526,7 +526,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Opus 4.6',
+        'model': 'Opus 4.6',
         'cells': [
           '9/A',
           '11/A',
@@ -541,7 +541,7 @@ window.LLM2014 = {
         'think': 0
       },
       {
-        'model': 'Claude Sonnet 5 (high)',
+        'model': 'Sonnet 5 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -556,7 +556,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Tencent Hy3 (high)',
+        'model': 'Hy3 (high)',
         'cells': [
           '11/B',
           '12/B',
@@ -661,7 +661,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Qwen3.6-Plus(Think)',
+        'model': 'Qwen3.6-Plus (Think)',
         'cells': [
           'Failed(5/12)',
           '16/C',
@@ -676,7 +676,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Doubao-Seed-2.0-Code  (high)',
+        'model': 'Seed-2.0-Code (high)',
         'cells': [
           'Failed(7/12)',
           '40/C',
@@ -716,11 +716,12 @@ window.LLM2014 = {
       'Simple Model(H)',
       'iOS+Server(I)',
       'Animation(J)',
-      'Data Process(K)'
+      'Data Process(K)',
+      'Metal(L)'
     ],
     'rows': [
       {
-        'model': 'Claude Fable 5 (high)',
+        'model': 'Fable 5 (high)',
         'cells': [
           'Pass',
           'Pass',
@@ -729,6 +730,7 @@ window.LLM2014 = {
           '2/A+(90.52)',
           '3/A+(103.95)',
           '7/A(59.02)',
+          'Pending',
           'Pending'
         ],
         'unprompted': 1,
@@ -736,18 +738,19 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Claude Opus 5 (max)',
+        'model': 'Opus 5 (max)',
         'cells': [
           'Pass',
-          'Pending',
+          'Skip',
           'Pass',
           'Pending',
           '4/A(123.94)',
           '1/A+(122.57)',
           '12/B+(573.18)',
-          '16/D(304.84)'
+          '16/D(304.84)',
+          '18/C(233.48)'
         ],
-        'unprompted': 3,
+        'unprompted': 4,
         'ide': 'Claude Code',
         'think': 1
       },
@@ -761,9 +764,10 @@ window.LLM2014 = {
           '4/A(63.86)',
           '8/A(26.97)',
           '23/B(97.98)',
-          '8/B(770.41)'
+          '8/B(770.41)',
+          '13/C(125.51)'
         ],
-        'unprompted': 2,
+        'unprompted': 3,
         'ide': 'Codex App',
         'think': 1
       },
@@ -777,7 +781,8 @@ window.LLM2014 = {
           '6/A(29.59)',
           '5/A(43.22)',
           '22/B(43.23)',
-          '28/D+(383.49)'
+          '28/D+(383.49)',
+          '25/D(193.42)'
         ],
         'unprompted': 2,
         'ide': 'Claude Code',
@@ -789,11 +794,12 @@ window.LLM2014 = {
           'Skip',
           'Pass',
           'Pass',
-          'Pending',
+          'Skip',
           '8/B+(11.48)',
           '7/A(25.25)',
           '20/C+(90.76)',
-          '30/D(83.29)'
+          '30/D(83.29)',
+          '24/D(343.68)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -809,6 +815,7 @@ window.LLM2014 = {
           '11/B(33.16)',
           '10/B(50.86)',
           '15/B(48.94)',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -825,7 +832,8 @@ window.LLM2014 = {
           '14/B(9.38)',
           '8/B(16.84)',
           '14/B(14.28)',
-          '34/D(28.93)'
+          '34/D(28.93)',
+          'Skip'
         ],
         'unprompted': 4,
         'ide': 'OpenCode CLI',
@@ -841,6 +849,7 @@ window.LLM2014 = {
           '16/C+(17.67)',
           '7/B+(18.69)',
           '20/C+(23.19)',
+          'Skip',
           'Skip'
         ],
         'unprompted': 1,
@@ -857,6 +866,7 @@ window.LLM2014 = {
           '9/B(2.11)',
           '13/B(3.31)',
           'Failed',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -873,6 +883,7 @@ window.LLM2014 = {
           '16/B(23.12)',
           '7/B+(15.98)',
           'Failed',
+          'Skip',
           'Skip'
         ],
         'unprompted': 1,
@@ -889,6 +900,7 @@ window.LLM2014 = {
           '14/B(10.75)',
           '15/C+(28.61)',
           '30/C(26.76)',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -905,7 +917,8 @@ window.LLM2014 = {
           '14/B(13.46)',
           '16/C(12.73)',
           'Failed',
-          '16/B(18.64)'
+          '16/B(18.64)',
+          '27/D(69.58)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -921,6 +934,7 @@ window.LLM2014 = {
           '26/C(15.82)',
           '11/B(17.76)',
           'Failed',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -937,14 +951,15 @@ window.LLM2014 = {
           '17/B(7.38)',
           '24/D+(4.79)',
           'Failed',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 2,
         'ide': 'Claude Code',
         'think': 1
       },
       {
-        'model': 'Claude Sonnet 5 (high)',
+        'model': 'Sonnet 5 (high)',
         'cells': [
           'Skip',
           '18/B(192.63)',
@@ -953,6 +968,7 @@ window.LLM2014 = {
           '22/C(154.97)',
           '16/C+(72.34)',
           'Failed',
+          'Skip',
           'Skip'
         ],
         'unprompted': 1,
@@ -960,7 +976,7 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Tencent Hy3 (high)',
+        'model': 'Hy3 (high)',
         'cells': [
           '11/B(8.06)',
           '12/B(8.68)',
@@ -969,7 +985,8 @@ window.LLM2014 = {
           '10/B(2.01)',
           '20/C+(13.29)',
           'Failed',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -985,6 +1002,7 @@ window.LLM2014 = {
           '27/C(3.84)',
           '21/C(4.90)',
           'Failed',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -1001,6 +1019,7 @@ window.LLM2014 = {
           'Skip',
           'Skip',
           'Skip',
+          'Skip',
           'Skip'
         ],
         'unprompted': 3,
@@ -1013,6 +1032,226 @@ window.LLM2014 = {
           'Skip',
           '51/D+',
           'Skip',
+          'Skip',
+          'Skip',
+          'Skip',
+          'Skip',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      }
+    ]
+  },
+  '2026-09': {
+    'projects': [
+      'Simple Model(H)',
+      'iOS+Server(I)',
+      'Animation(J)',
+      'Data Process(K)',
+      'Metal(L)'
+    ],
+    'rows': [
+      {
+        'model': 'Fable 5 (high)',
+        'cells': [
+          '2/A+(90.52)',
+          '3/A+(103.95)',
+          '7/A(59.02)',
+          'Pending',
+          'Pending'
+        ],
+        'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Opus 5 (max)',
+        'cells': [
+          '4/A(123.94)',
+          '1/A+(122.57)',
+          '12/B+(573.18)',
+          '16/D(304.84)',
+          '18/C(233.48)'
+        ],
+        'unprompted': 4,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-5.6 Sol (max)',
+        'cells': [
+          '4/A(63.86)',
+          '8/A(26.97)',
+          '23/B(97.98)',
+          '8/B(770.41)',
+          '13/C(125.51)'
+        ],
+        'unprompted': 3,
+        'ide': 'Codex App',
+        'think': 1
+      },
+      {
+        'model': 'Kimi-K3 (max)',
+        'cells': [
+          '6/A(29.59)',
+          '5/A(43.22)',
+          '22/B(43.23)',
+          '28/D+(383.49)',
+          '25/D(193.42)'
+        ],
+        'unprompted': 2,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GLM-5.3 (max)',
+        'cells': [
+          '8/B+(11.48)',
+          '7/A(25.25)',
+          '20/C+(90.76)',
+          '30/D(83.29)',
+          '24/D(343.68)'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Qwen3.8-Max (max)',
+        'cells': [
+          '11/B(33.16)',
+          '10/B(50.86)',
+          '15/B(48.94)',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Gemini 3.7 Flash (high)',
+        'cells': [
+          '14/B(9.38)',
+          '8/B(16.84)',
+          '14/B(14.28)',
+          '34/D(28.93)',
+          'Skip'
+        ],
+        'unprompted': 4,
+        'ide': 'OpenCode CLI',
+        'think': 1
+      },
+      {
+        'model': 'Grok 4.6 (high)',
+        'cells': [
+          '16/C+(17.67)',
+          '7/B+(18.69)',
+          '20/C+(23.19)',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Grok Build',
+        'think': 1
+      },
+      {
+        'model': 'GLM-5.3-Flash (max)',
+        'cells': [
+          '9/B(2.11)',
+          '13/B(3.31)',
+          'Failed',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'DeepSeek V4 Pro 0813 (max)',
+        'cells': [
+          '14/B(13.46)',
+          '16/C(12.73)',
+          'Failed',
+          '16/B(18.64)',
+          '27/D(69.58)'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Muse Spark 1.2 (xhigh)',
+        'cells': [
+          '26/C(15.82)',
+          '11/B(17.76)',
+          'Failed',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'DeepSeek V4 Flash 0731 (max)',
+        'cells': [
+          '17/B(7.38)',
+          '24/D+(4.79)',
+          'Failed',
+          'Failed',
+          'Skip'
+        ],
+        'unprompted': 2,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Sonnet 5 (high)',
+        'cells': [
+          '22/C(154.97)',
+          '16/C+(72.34)',
+          'Failed',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Hy3 (high)',
+        'cells': [
+          '10/B(2.01)',
+          '20/C+(13.29)',
+          'Failed',
+          'Failed',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-5.6 Luna (max)',
+        'cells': [
+          '27/C(3.84)',
+          '21/C(4.90)',
+          'Failed',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Codex',
+        'think': 1
+      },
+      {
+        'model': 'MiniMax-M3',
+        'cells': [
           'Skip',
           'Skip',
           'Skip',
