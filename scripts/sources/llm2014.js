@@ -30,16 +30,18 @@ const NOTES_FALLBACK = {
     { k: "C", t: "MacOS App + OpenGL" },
     { k: "E", t: "Web + WASM" },
     { k: "F", t: "Godot + Physics" },
+    { k: "G", t: "Rust App" },
     { k: "H", t: "Web + 3D Modeling" },
     { k: "I", t: "iOS App + Rust Server" },
     { k: "J", t: "Web + 2D Animation" },
-    { k: "K", t: "Harmony OS App + C++ Native" }
+    { k: "K", t: "Harmony OS App + C++ Native" },
+    { k: "L", t: "Metal + 图形算法优化" }
   ]
 };
 const I18N_PATH = "assets/i18n.js";
 const I18N_GRADE_KEYS = [["A", "gradeA"], ["B", "gradeB"], ["C", "gradeC"], ["D", "gradeD"],
   ["Failed", "failed"], ["Pass", "pass"], ["Skip", "skip"], ["Pending", "pending"]];
-const I18N_PROJECT_KEYS = ["C", "E", "F", "H", "I", "J", "K"];
+const I18N_PROJECT_KEYS = ["C", "E", "F", "H", "I", "J", "K", "L"];
 
 // 从 i18n.js 源文本提取指定 key 的 zh-CN 文案;key 形如 "codev3Note.gradeA" / "meta.codev3CellFormat"
 function pickI18n(text, key) {
@@ -66,6 +68,11 @@ function parseI18nNotes(text) {
     if (!t) return null;
     // 源站文案自带字母前缀(如 "C: MacOS App + OpenGL"),归一化去掉,由展示层用 k 拼装
     projects.push({ k: k, t: t.replace(/^[A-Z]\s*[:：]\s*/, "") });
+  }
+  // 源站 i18n 无 projectG(Rust App)文案,但 2026-08 CSV 含该列;补内嵌兜底保持列说明完整,
+  // 插在 F 之后以贴合 CSV 字母序。注意不能把 G 加入 I18N_PROJECT_KEYS,否则 pickI18n 拿不到会整体回退兜底。
+  if (!projects.some(function (p) { return p.k === "G"; })) {
+    projects.splice(3, 0, { k: "G", t: "Rust App" });
   }
   return { cellFormat: cellFormat, grades: grades, halfGrade: halfGrade, projects: projects };
 }
@@ -149,6 +156,7 @@ class Llm2014Source extends BaseSource {
       for (let r = 1; r < rows.length; r++) {
         const cells = rows[r];
         if (!cells[0] || cells[0] === "Model") continue;
+        // 末 3 列为 Unprompted / Scaffold(原称 IDE,即所用编码 CLI/脚手架,如 Claude Code/Codex)/ Think,按位置取值
         dataRows.push({
           model: cells[0].trim(),
           cells: cells.slice(1, 1 + projCount),
@@ -203,7 +211,8 @@ class Llm2014Source extends BaseSource {
 // 源站已把该类别显示为 "Agentic";档位/项目说明文案来自源站 docs/assets/i18n.js(每日刷新时同步)。
 // 单元格原始值形如 "7/A"(扣分数 / 字母等级,数字越小越好),或 Pass / Failed(n/m) / Skip / Pending;
 // 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
-// 项目列表名保留源站字母代号(如 "MacOS App(C)"),对应 notes.projects 的项目说明。
+// 项目列表名保留源站字母代号(如 "MacOS App(C)"),对应 notes.projects 的项目说明;
+// 2026-08 起项目含新增 "Metal(L)" 与 "Rust App(G)",模型名可能不带厂商前缀(如 "Opus 5 (max)")。
 // 数值化规则在 js/data.js 中统一处理。
 // 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
