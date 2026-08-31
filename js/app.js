@@ -268,6 +268,10 @@
     document.getElementById("deepsweDesc").textContent = src.desc || "";
     // 柱状(pass1 升序,使最高在上);模型名后缀版本简标便于区分数据来源
     var sorted = ms.slice().sort(function (a, b) { return a.pass1 - b.pass1; });
+    // Pass@1 排行按模型数量动态加高,避免行距过小导致模型名/数值文字重叠
+    var dsH = Math.min(760, Math.max(380, ms.length * 26 + 90));
+    var dsBarEl = document.getElementById("dsBar");
+    if (dsBarEl) { dsBarEl.style.height = dsH + "px"; var dsInst = CH.inst("dsBar"); if (dsInst) dsInst.resize(); }
     CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
       sorted.map(function (m) { return m.pass1; }), "#2D9D78", "%", { max: 80 }));
     // 散点:成本 vs pass1,气泡=步数;tooltip 名称带版本后缀
