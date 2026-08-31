@@ -14,6 +14,30 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-08-30',
+      'title': '卡特彼勒正在将从自动化挖矿中学到的知识引入人工智能部署',
+      'brief': '卡特彼勒花费了数十年的时间，让自动机器在偏远的采矿地点工作。现在，它正在将这种体验带入人工智能部署……',
+      'url': 'https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '德克萨斯州州长雅培阻止为更多Flock相机提供资金',
+      'brief': '随着对Flock人工智能监控摄像头的强烈反对，德克萨斯州州长格雷格·阿博特（ Greg Abbott ）冻结了州政府在这些摄像头上的支出。此举只是呵呵……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/986541/texas-governor-abbott-flock-cameras',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-08-30',
+      'title': '星期五没有人工智能',
+      'brief': '星期五没有人工智能',
+      'url': 'https://noaifridays.com/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-08-30',
       'title': '公平工作委员会谴责“明显错误”的人工智能法律建议',
       'brief': '公平工作委员会谴责“明显错误”的人工智能法律建议',
       'url': 'https://www.abc.net.au/news/2026-08-29/fair-work-commission-condemns-ai-legal-advice/107089766',
@@ -59,22 +83,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '“我们每年不下30个赌注” ： Vijay Pande在a16z下注40亿美元后下了小赌注$',
-      'brief': '维贾伊·潘德（ Vijay Pande ）去年离开了a16z约40亿美元的生物技术业务，开始了规模小得多的人工智能原生VZVC ，他谈到了为什么生物……',
-      'url': 'https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-29',
-      'title': '英伟达的人工智能优势正在超越GPU',
-      'brief': '新一代数据中心系统通过更智能的流量控制而不仅仅是更多的处理器周期来提高效率。',
-      'url': 'https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-29',
