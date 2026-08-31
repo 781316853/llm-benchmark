@@ -199,7 +199,7 @@
       var vcCost = (r.vibe && typeof r.vibe.cost === "number" && r.vibe.cost > 0)
         ? ' <span class="cell-cost">$' + r.vibe.cost + '</span>' : "";
       var vc = r.vibe ? r.vibe.score + "%" + vcCost : "—";
-      var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(1) : "-";
+      var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(2) : "-";
       // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci,后附折算综合分(norm 0-100)
       var wd = r.webdev ? r.webdev.score : null;
       var wdCi = (r.webdev && typeof r.webdev.ci === "number")
@@ -350,7 +350,7 @@
     // 综合分柱(百分制:含完成率折扣,跳过任务过多的小样本均值会被拉低)
     var bsorted = rows.slice().sort(function (a, b) { return (a.norm || 0) - (b.norm || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
-      bsorted.map(function (r) { return r.norm == null ? 0 : Number(r.norm.toFixed(1)); }), "#2D9D78", "", { max: 100 }));
+      bsorted.map(function (r) { return r.norm == null ? 0 : Number(r.norm.toFixed(2)); }), "#2D9D78", "", { max: 100 }));
 
     // 明细表
     var html = rows.map(function (r, i) {
@@ -359,7 +359,7 @@
       r.cells.forEach(function (c) {
         tds += '<td class="num">' + lmCellHtml(c) + '</td>';
       });
-      tds += '<td class="num">' + (r.norm != null ? r.norm.toFixed(1) : "-") + '</td>';
+      tds += '<td class="num">' + (r.norm != null ? r.norm.toFixed(2) : "-") + '</td>';
       tds += '<td>' + esc(r.ide) + '</td><td class="num">' + (r.think ? "是" : "否") + '</td>';
       return '<tr class="' + (nw ? "row-new" : "") + '">' + tds + '</tr>';
     });
@@ -403,9 +403,9 @@
       noteParts.push({ k: "项目说明", v: projectLines.concat(["表格列名括号内的字母代号(如 \"MacOS App(C)\")对应上述项目"]) });
     }
     noteParts.push({ k: "综合分", v: [
-      "按源数据排序赋值:源 CSV 行序即原站排名",
-      "项目评测等级结果相似的模型同分(相邻模型中等级均值 0.5 档相同者视为相似)",
-      "组间按排名等距 0-100 递减(第一名 100,最后一名 0)"
+      "以各已测项目等级均值(A+=4.0、A=3.5 … D=0.5,Pass=4.0,Failed=0)为基数,不归并档位",
+      "月内归一化:均值最高 100 分、最低 0 分,中间按等级差距线性分布",
+      "均值完全相同的模型按源站排名先后微调区分(每退一名 -0.01),保证人人不同分"
     ] });
     // 单条说明渲染:字符串内容单行跟随标签;数组内容套 note-body 逐行展示,折行对齐
     var noteLineHtml = function (p) {

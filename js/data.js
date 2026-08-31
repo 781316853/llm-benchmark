@@ -157,9 +157,12 @@
   }
 
   // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, norm, rank}]} =====
-  // 综合分(norm,0-100)按源数据排序赋值:源 CSV 行序即原站排名(rank 0=第一名);
-  // "项目评测等级结果相似纳入公式":相邻模型中等级均值(0.5 档)相同的视为相似,同分;
-  // 组严格按源行序编号,组间等距 0-100 递减(第一名 100,最后一名 0),保证综合分随源排序单调;
+  // 综合分(norm,0-100)按等级均值连续映射,同月人人不同分:
+  // 1) 基数 = 各已测项目等级均值(A+=4.0..D=0.5,Pass=4.0,Failed=0),不做档位归并;
+  // 2) 月内 min-max 归一化:均值最高 100、最低 0,中间按等级差距线性分布(与 WebDev 榜一致);
+  // 3) 均值完全相同的模型同组,组内按源排名(rank 0=第一)每退一名递减 0.01;
+  // 4) 组顶受上一组最低分压制(天花板链),保证跨组不倒挂、全员互异;
+  // 5) 全 Skip/Pending(mean=null)不计分,综合分显示 "-"。
   // 综合分与明细单元格等级着色解耦。
   function llmMonth(month) {
     var src = window.LLM2014 || { months: {} };
@@ -167,27 +170,39 @@
     if (!mo) return null;
     var rows = mo.rows.map(function (r, idx) {
       var cells = r.cells.map(parseCell);
-      // 等级均值(仅计已测等级项),四舍五入到 0.5 档:用于"等级结果相似"的归并
+      // 精确等级均值(仅计已测等级项),不归并档位
       var nums = cells.map(function (c) { return c.num; }).filter(function (n) { return n != null; });
       var mean = nums.length ? nums.reduce(function (a, b) { return a + b; }, 0) / nums.length : null;
       return { model: r.model, canon: canon(r.model), cells: cells, ide: r.ide, think: r.think,
-        rank: idx, gLevel: mean == null ? null : Math.round(mean * 2) / 2 };
+        rank: idx, mean: mean };
     });
-    // 相邻归并:等级均值 0.5 档相同的相邻模型并入同一组(同分);组按源行序编号,保持单调
-    var groups = [], prevLevel = undefined;
-    rows.forEach(function (r) {
-      if (groups.length && r.gLevel === prevLevel) {
-        groups[groups.length - 1].ranks.push(r.rank);
-      } else {
-        groups.push({ gLevel: r.gLevel, ranks: [r.rank] });
-      }
-      prevLevel = r.gLevel;
-    });
-    var m = groups.length;
-    groups.forEach(function (g, gi) {
-      var norm = m <= 1 ? 100 : Math.round(100 * (1 - gi / (m - 1)) * 10) / 10;
-      g.ranks.forEach(function (ri) { rows[ri].norm = norm; });
-    });
+    // 赋分全程用整数"百分点"(1 点 = 0.01 分),避免浮点误差造成显示层同分
+    var scored = rows.filter(function (r) { return r.mean != null; });
+    if (scored.length) {
+      var min = scored.reduce(function (a, r) { return Math.min(a, r.mean); }, Infinity);
+      var max = scored.reduce(function (a, r) { return Math.max(a, r.mean); }, -Infinity);
+      var span = max - min;
+      var order = scored.slice().sort(function (a, b) {
+        return b.mean - a.mean || a.rank - b.rank;
+      });
+      // 按均值精确相等分组(均值降序、同组按源排名)
+      var groups = [];
+      order.forEach(function (r) {
+        var g = groups[groups.length - 1];
+        if (g && g[0].mean === r.mean) g.push(r); else groups.push([r]);
+      });
+      var ceiling = 10000; // 上一组最低分 - 1(百分点),防跨组倒挂
+      groups.forEach(function (g) {
+        var base = span > 0 ? Math.round((g[0].mean - min) / span * 10000) : 10000;
+        var head = Math.min(base + (g.length - 1), ceiling);
+        g.forEach(function (r, j) { r._cents = head - j; });
+        ceiling = head - g.length;
+      });
+      // 兜底:极端拥挤月份若被天花板链压出负分,整体平移补差(保持互异)
+      var lowest = Math.min.apply(null, order.map(function (r) { return r._cents; }));
+      if (lowest < 0) order.forEach(function (r) { r._cents -= lowest; });
+      order.forEach(function (r) { r.norm = r._cents / 100; });
+    }
     return { projects: mo.projects, rows: rows };
   }
   function llmMonths() { return Object.keys((window.LLM2014 && window.LLM2014.months) || {}).sort(); }
@@ -260,7 +275,7 @@
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
-    // llm2014 头名 = 源排序第一名(rank 0),综合分即排序赋值后的 norm
+    // llm2014 头名 = 源排序第一名(rank 0),展示其综合分(按等级均值归一化,未必恰为 100)
     var lmTop = lmRows[0] || {};
     var lmTopScore = lmTop.norm != null ? lmTop.norm : null;
     return [
@@ -272,7 +287,7 @@
         top: vcTop.name + " · " + vcTop.score + "%" },
       { key: "llm2014", name: "llm2014 Agentic", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
-        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + "/100" : "—") },
+        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/100" : "—") },
       { key: "webdev", name: "Code Arena · WebDev", tag: "前端 Web 应用开发", url: wd.officialUrl || wd.url, updated: wd.updated,
         stats: [{ l: "模型", v: (wd.models || []).length }, { l: "Elo", v: (wdTop.score != null ? wdTop.score : "—") }],
         top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") }
