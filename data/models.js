@@ -5,7 +5,7 @@ window.MODEL_MAP = {
     { id: "Claude Fable 5",   vendor: "Anthropic", color: "#D97757", aliases: ["claude-fable-5", "Claude Fable 5", "Fable-5 (high)", "Fable-5", "Claude 5 Fable"] },
     { id: "Claude Mythos Preview", vendor: "Anthropic", color: "#C66040", aliases: ["Claude Mythos Preview", "Claude Mythos 5"] },
     { id: "Claude Opus 4.8",  vendor: "Anthropic", color: "#E29060", aliases: ["claude-opus-4.8", "Claude Opus 4.8", "Claude Opus 4.8 (high)", "claude-opus-4-8"] },
-    { id: "Claude Sonnet 5",  vendor: "Anthropic", color: "#C58A6B", aliases: ["claude-sonnet-5", "Claude Sonnet 5", "Claude Sonnet 5 (high)"] },
+    { id: "Claude Sonnet 5",  vendor: "Anthropic", color: "#C58A6B", aliases: ["claude-sonnet-5", "Claude Sonnet 5", "Claude Sonnet 5 (high)", "Sonnet 5", "Sonnet 5 (high)", "sonnet-5", "sonnet-5-high"] },
     { id: "Claude Opus 4.7",  vendor: "Anthropic", color: "#B07B5C", aliases: ["Claude Opus 4.7", "claude-opus-4-7"] },
     { id: "Claude Opus 4.6",  vendor: "Anthropic", color: "#A06E51", aliases: ["Claude Opus 4.6", "claude-opus-4-6 (thinking)", "claude-opus-4-6"] },
     { id: "Claude Sonnet 4.6",vendor: "Anthropic", color: "#90614A", aliases: ["claude-sonnet-4.6", "Claude Sonnet 4.6", "Claude Sonnet 4.6 (high)", "Sonnet 4.6"] },
@@ -72,7 +72,7 @@ window.MODEL_MAP = {
     { id: "GPT-OSS 120B",     vendor: "OpenAI",    color: "#50D4C8", aliases: ["gpt-oss-120b"] },
     { id: "North Mini Code 1.0", vendor: "North",  color: "#8A8F98", aliases: ["North Mini Code 1.0"] },
     // ===== Code Arena · WebDev(LMArena)上榜补充的纯前端方向新模型(2026-08) =====
-    { id: "Claude Opus 5",    vendor: "Anthropic", color: "#B3603F", aliases: ["Claude Opus 5", "claude-opus-5-max", "claude-opus-5-high", "claude-opus-5"] },
+    { id: "Claude Opus 5",    vendor: "Anthropic", color: "#B3603F", aliases: ["Claude Opus 5", "claude-opus-5-max", "claude-opus-5-high", "claude-opus-5", "Opus 5", "Opus 5 (max)", "opus-5", "opus-5-max"] },
     { id: "Qwen3.8-Max",      vendor: "Alibaba",   color: "#FF6A00", aliases: ["Qwen3.8-Max", "qwen3.8-max"] },
     { id: "Qwen3.8-27B",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-27B", "qwen3.8-27b"] },
     { id: "Grok 4.6",         vendor: "xAI",       color: "#9099A4", aliases: ["Grok 4.6", "grok-4.6-high", "grok-4.6"] },

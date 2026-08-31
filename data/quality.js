@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-08-28;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-08-30;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-08-28',
+  'generatedAt': '2026-08-30',
   'overallScore': 0.857,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
       'modelCount': 118,
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -22,7 +22,7 @@ window.QUALITY = {
       'name': 'Artificial Analysis II',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -33,7 +33,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -43,8 +43,8 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 31,
-      'updated': '2026-08-28',
+      'modelCount': 32,
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -55,7 +55,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -65,8 +65,8 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 62,
-      'updated': '2026-08-28',
+      'modelCount': 78,
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -77,7 +77,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 83,
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -312,6 +312,24 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
+      'canonId': 'Gemini 3.1 Pro Preview',
+      'name': 'gemini-3-1-pro-preview',
+      'vendor': 'Google',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 12,
+        'deepswe_v10': 10,
+        'vibecode': 32.03
+      },
+      'mean': 18,
+      'stddev': 9.95,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'DeepSeek V4 Flash 0731',
       'name': 'DeepSeek-V4-Flash',
       'vendor': 'DeepSeek',
@@ -427,26 +445,6 @@ window.QUALITY = {
       },
       'mean': 70.3,
       'stddev': 9.18,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Gemini 3.1 Pro Preview',
-      'name': 'Gemini 3.1 Pro Preview',
-      'vendor': 'Google',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 12,
-        'deepswe_v11': 12,
-        'deepswe_v10': 10,
-        'vibecode': 32.03
-      },
-      'mean': 16.5,
-      'stddev': 9,
       'flag': 'warn'
     },
     {
@@ -868,6 +866,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Hy4 preview',
+      'name': 'Hy4 preview',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 64.3,
+        'deepswe_v11': 64.3
+      },
+      'mean': 64.3,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'DeepSeek-V4-Flash-Vision-Exp',
       'name': 'DeepSeek-V4-Flash-Vision-Exp',
       'vendor': '其他',
@@ -943,9 +957,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 31,
-      'complete': 31,
-      'modelCount': 31,
+      'total': 32,
+      'complete': 32,
+      'modelCount': 32,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -959,11 +973,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 62,
+      'total': 78,
       'complete': 0,
-      'modelCount': 62,
+      'modelCount': 78,
       'missingFields': {
-        'score': 62
+        'score': 78
       },
       'flag': 'warn'
     },
@@ -978,37 +992,37 @@ window.QUALITY = {
   },
   'timeliness': {
     'arena_webdev': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     },
     'artificial_analysis': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     },
     'datalearner': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-08-28',
+      'updated': '2026-08-30',
       'ageDays': 0,
       'flag': 'ok'
     }
