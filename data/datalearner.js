@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-08-30)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-08-31)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-08-30',
+  'updated': '2026-08-31',
   'models': [
     {
       'name': 'GPT-5.6 Sol',
@@ -45,7 +45,7 @@ window.DATALEARNER = {
       'mode': '最高（工具）',
       'date': '2026-07-16',
       'params': '28000亿',
-      'license': '免费商用'
+      'license': '有条件商用'
     },
     {
       'name': 'GPT-5.6 Luna',
@@ -69,7 +69,7 @@ window.DATALEARNER = {
       'mode': '最高（工具）',
       'date': '2026-08-14',
       'params': '7440亿',
-      'license': ''
+      'license': '有条件商用'
     },
     {
       'name': 'Grok 4.6',
@@ -141,7 +141,7 @@ window.DATALEARNER = {
       'mode': '极高强度思考（工具）',
       'date': '2026-08-26',
       'params': '1250亿',
-      'license': '免费商用'
+      'license': '有条件商用'
     },
     {
       'name': 'Qwen3.8-Max',
@@ -149,7 +149,7 @@ window.DATALEARNER = {
       'mode': '极高强度思考（工具）',
       'date': '2026-08-03',
       'params': '24000亿',
-      'license': '免费商用'
+      'license': '有条件商用'
     },
     {
       'name': 'DeepSeek-V4-Flash',
