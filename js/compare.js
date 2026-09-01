@@ -7,27 +7,53 @@
 
   // 综合分容差:差距 < 此值的模型视为"同档",同档内按次级指标排序
   var SCORE_TOLERANCE = 1.5;
-  // 双榜模型排序依据:命中榜单归一化分(norm,0-100)的均值——不计算综合分,
-  // 直接以各自榜单成绩确定其在矩阵中的合理位置(norm 与综合分同尺度,可与排名行混排)
-  function boardMean(e) {
-    var vs = [];
-    if (e.deepswe) vs.push(e.deepswe.norm);
-    if (e.vibe) vs.push(e.vibe.norm);
-    if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
-    if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
-    if (!vs.length) return 0;
-    return vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
+  // 各榜成绩取值(与矩阵列一致,值越大越好);双榜模型逐榜比对时使用
+  var BOARD_VALS = {
+    deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
+    vibe:    function (e) { return e.vibe ? e.vibe.score : null; },
+    llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
+    webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; }
+  };
+  // 双榜模型命中的榜 key 列表(以实际有数据为准)
+  function hitBoards(e) {
+    var boards = [];
+    if (e.deepswe) boards.push("deepswe");
+    if (e.vibe) boards.push("vibe");
+    if (e.llm && e.llm.norm != null) boards.push("llm");
+    if (e.webdev && e.webdev.score != null) boards.push("webdev");
+    return boards;
   }
-  // 矩阵统一排序键:双榜模型(benchCount===2)用榜单成绩均值,其余用综合分
-  function rankScore(e) {
-    return e.benchCount === 2 ? boardMean(e) : composite(e);
+  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,取均值。
+  // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前),不计算综合分
+  function dualPosition(e, ranked) {
+    var boards = hitBoards(e);
+    if (!boards.length) return ranked.length;
+    var sum = 0;
+    boards.forEach(function (b) {
+      var val = BOARD_VALS[b](e);
+      var above = 0;
+      ranked.forEach(function (r) {
+        var rv = BOARD_VALS[b](r);
+        if (rv != null && rv > val) above++;
+      });
+      sum += above;
+    });
+    return sum / boards.length;
   }
-  // 交叉矩阵:按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性 排序
+  // 交叉矩阵排序:
+  // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
+  //    并依次编号 _posKey = 0,1,2…;
+  // ② 双榜模型不计算综合分,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
+  //    恰好落在两个排名行的间隔中;多个双榜模型同间隔时按位置值先后排列;
+  // ③ 合并后按 _posKey 升序;命中不足 2 榜的模型追加在末尾,仅"显示全部"可见
   function matrix(llmMonthKey) {
     var map = D.unified(llmMonthKey);
-    var rows = Object.keys(map).map(function (k) { return map[k]; });
-    rows.sort(function (a, b) {
-      var ca = rankScore(a), cb = rankScore(b);
+    var all = Object.keys(map).map(function (k) { return map[k]; });
+    var ranked = all.filter(function (e) { return e.benchCount >= 3; });
+    var dual = all.filter(function (e) { return e.benchCount === 2; });
+    var rest = all.filter(function (e) { return e.benchCount < 2; });
+    ranked.sort(function (a, b) {
+      var ca = composite(a), cb = composite(b);
       // 差距 ≥ 容差:严格按综合分降序
       if (cb - ca >= SCORE_TOLERANCE) return 1;
       if (ca - cb >= SCORE_TOLERANCE) return -1;
@@ -38,6 +64,17 @@
       // 命中数相同:一致性升序(标准差小=各榜均衡=优先)
       return variance(a) - variance(b);
     });
+    ranked.forEach(function (e, i) { e._posKey = i; });
+    dual.forEach(function (e) {
+      var key = dualPosition(e, ranked) - 0.5;
+      // 位置恰为 x.5 时键会与排名行整数键重合,微移保证双榜键严格落在两个排名行之间,
+      // 避免默认渲染与表头排序(升序后反转)对重合键的先后不一致
+      if (Math.abs(key - Math.round(key)) < 1e-9) key += 1e-6;
+      e._posKey = key;
+    });
+    rest.forEach(function (e, i) { e._posKey = ranked.length + i; });
+    var rows = ranked.concat(dual, rest);
+    rows.sort(function (a, b) { return a._posKey - b._posKey; });
     return rows;
   }
   // 主基准组权重:DeepSWE 40%、Vibe Code 20%、llm2014 10%、WebDev 20%
@@ -179,7 +216,7 @@
 
   window.CMP = {
     matrix: matrix, avgNorm: avgNorm, composite: composite,
-    boardMean: boardMean, rankScore: rankScore,
+    dualPosition: dualPosition,
     assignTiers: assignTiers,
     variance: variance,
     radarSeries: radarSeries, metricCards: metricCards,

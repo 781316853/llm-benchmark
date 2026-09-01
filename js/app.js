@@ -79,8 +79,9 @@
     { key: "model",   label: "模型", type: "text", bench: false, val: function (r) { return r.id; } },
     { key: "vendor",  label: "厂商", type: "text", bench: false, val: function (r) { return r.vendor; } },
     // 梯队:综合分按金字塔权重动态分档(S+~E);作为默认排序主键,bench=false 表示排序时不过滤无值行
-    // 排序取值用 rankScore:排名行按综合分、双榜行按命中榜单成绩均值,与默认序一致
-    { key: "composite", label: "梯队", type: "num", bench: false, val: function (r) { return CMP.rankScore(r); } },
+    // 排序取值用 -_posKey 取负:posKey 越小越好,取负后"降序=更好在前",与默认序一致;无 _posKey 时兜底综合分
+    { key: "composite", label: "梯队", type: "num", bench: false,
+      val: function (r) { return -(r._posKey != null ? r._posKey : CMP.composite(r)); } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
@@ -185,10 +186,10 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:先分配梯队(基于全量模型,按原始综合分),再选取展示行:按排序键(排名行综合分/
-    // 双榜行榜单成绩均值)序遍历,命中≥3榜的取排名前30;恰好命中两榜的「双榜」模型仅在前30区间内
-    // 混排计入(不计算综合分、序号计「—」,不占前30名额),第 30 个排名行之后的行(含双榜)一律截断;
-    // 勾选"显示全部"则展示所有模型
+    // 矩阵表:先分配梯队(基于全量模型,按原始综合分),再选取展示行:排名行(命中≥3榜)按综合分
+    // 排序取前30;恰好命中两榜的「双榜」模型不计算综合分,按各榜成绩与排名行模型比对落入相应
+    // 名次间隔,仅在前30区间内混排计入(序号计「—」,不占前30名额),第 30 个排名行之后的行
+    // (含双榜)一律截断;勾选"显示全部"则展示所有模型
     var matrixRows = CMP.matrix(state.llmMonth);
     CMP.assignTiers(matrixRows);
     var allRows = sortedMatrixRows(matrixRows);
@@ -230,7 +231,7 @@
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
       var cls = (r.benchCount >= 3 ? "row-hit " : "") + (dual ? "row-two " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
-      var dualBadge = dual ? ' <span class="badge-two" title="仅命中两榜:按各自命中榜单成绩均值排位,不计算综合分、不计排名;仅前30区间内显示">双榜</span>' : "";
+      var dualBadge = dual ? ' <span class="badge-two" title="仅命中两榜:按各榜成绩与排名模型比对落入相应名次区间,不计算综合分、不计排名;仅前30区间内显示">双榜</span>' : "";
       // 序号列:参与排名的行按出现顺序编号;双榜行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (dual ? "—" : ++rankNo) + '</td>' +
@@ -277,7 +278,7 @@
     } else {
       var dualCnt = rows.filter(function (r) { return r.benchCount === 2; }).length;
       note = '当前显示命中≥3个基准组且排名前 ' + (rows.length - dualCnt) + ' 的模型,以及 ' + dualCnt +
-        ' 个跻身前30区间的「双榜」模型(按各自命中榜单成绩均值混排,不计算综合分、不计排名,序号计「—」;其余双榜模型可勾选下方"显示全部"查看)。';
+        ' 个跻身前30区间的「双榜」模型(按各榜成绩与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余双榜模型可勾选下方"显示全部"查看)。';
     }
     // 国产高亮开启时,追加国产模型数量提示
     if (state.highlightDomestic) {
