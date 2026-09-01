@@ -14,11 +14,59 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-01',
+      'title': 'AIR筹集了5000万美元，以帮助公司审查AI代理使用的技能和附加组件',
+      'brief': 'AIR的平台可以发现在公司运行的代理，不断审查他们使用的任何技能和附加组件，并阻止任何不必要的行为……',
+      'url': 'https://techcrunch.com/2026/09/01/air-raises-50m-to-help-companies-vet-the-skills-and-add-ons-ai-agents-use/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-01',
+      'title': 'Fambot为家庭推出“AI办公厅主任”',
+      'brief': 'Fambot正在建立一个人工智能“幕僚长” ，以帮助家庭管理电子邮件、日历、学校更新、体育赛事时间表和其他物流……',
+      'url': 'https://techcrunch.com/2026/09/01/fambot-introduces-an-ai-chief-of-staff-for-families/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-01',
       'title': '苹果分享“令人震惊的证据” ，指控前员工为OpenAI窃取公司数据',
       'brief': '苹果公司表示，有证据表明，一名前员工在得知自己正在接受调查后，销毁了数据被盗的证据。',
       'url': 'https://techcrunch.com/2026/08/31/apple-shares-shocking-evidence-against-former-employee-accused-of-stealing-company-data-for-openai/',
       'source': 'TechCrunch',
       'type': '公司动态'
+    },
+    {
+      'date': '2026-09-01',
+      'title': '约翰迪尔为农民推出了人工智能聊天机器人',
+      'brief': 'John Deere正在测试一种新的“JD”人工智能助手，该助手可以帮助农民赚更多的钱，并提供有关最佳实践和历史的答案……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/987486/john-deere-jd-ai-chatbot',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-01',
+      'title': 'Google Pics类似于Canva ，但具有更多的人工智能',
+      'brief': 'Google为Workspace用户提供了一套名为Google Pics的新创意设计工具，旨在进行编辑和生成“专业…',
+      'url': 'https://www.theverge.com/tech/987423/google-pics-ai-image-editor-generator',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-01',
+      'title': '英伟达备受争议的DLSS 5将于9月3日上市，需要强大的GPU马力',
+      'brief': 'Nvidia本周正式推出DLSS 5 ，此前在3月份的一次分裂性公告中，我们将人工智能升级技术比作“真正的…',
+      'url': 'https://www.theverge.com/tech/986378/nvidia-dlss-5-launch-nba-2k27',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-01',
+      'title': '矮人堡垒的创造者说，这个行业在人工智能上混乱不堪',
+      'brief': '矮人堡垒的创造者说，这个行业在人工智能上混乱不堪',
+      'url': 'https://www.pcgamer.com/gaming-industry/dwarf-fortress-creator-says-the-industrys-in-shambles-over-ai-and-layoff-happy-ceos-everyone-i-know-their-bosses-are-slowly-getting-psychosis/',
+      'source': 'Hacker News',
+      'type': '行业动态'
     },
     {
       'date': '2026-09-01',
@@ -30,19 +78,27 @@ window.NEWS = {
     },
     {
       'date': '2026-09-01',
-      'title': '从2999份作品出发：GOAI四大赛道的AI创新观察',
+      'title': '云原生弹性的能力，迁移成为 Agent 时代的数据基座能力之一？',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/fovhGGuNSwa7tG44WBFm?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/video/QflJXpVJK5DqeoOgsY3D?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-01',
-      'title': 'Expedia和Airbnb引入LLM生成的GraphQL模拟数据，不过规范相对滞后',
+      'title': '3名开发者做出来的副业项目，半年冲进 4万人！亚马逊云科技把内部 Agent 工作台开源了',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Su2betkPUhxX0JTVazBi?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/Um4rVTweSFXAiwdGLFVB?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-01',
+      'title': '1200个 Agent 秘密交流，700个集体攻击Hugging Face，OpenAI 模型完成了一次没有剧本的集体暴走',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/s8dvlxO3lh3CEDgcsUEi?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-01',
@@ -51,22 +107,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/WGj2Jx0K2sbP3dhUXeC5?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-08-31',
-      'title': '五角大楼现在有自己的ChatGPT和Grok版本',
-      'brief': 'OpenAI的ChatGPT和SpaceXAI的Grok版本将加入谷歌的Gemini ，成为五角大楼人工智能工具的中央门户。',
-      'url': 'https://techcrunch.com/2026/08/31/the-pentagon-now-has-its-own-version-of-chatgpt-and-grok/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-31',
-      'title': 'Instagram对未披露的人工智能配置文件施加了新的限制',
-      'brief': '随着对人工智能影响者的沮丧情绪不断增长， Instagram正在限制未公开的人工智能个人资料的覆盖范围。',
-      'url': 'https://techcrunch.com/2026/08/31/instagram-puts-new-limits-on-undisclosed-ai-profiles/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-08-31',
@@ -94,14 +134,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-31',
-      'title': '美国正在围绕无人机和机器人建造壁垒，但中国有足够的规模来绕过它们',
-      'brief': '美国正在关闭更多外国制造的无人机和机器人。中国的规模意味着全球竞争可能会转移到其他地方。',
-      'url': 'https://techcrunch.com/2026/08/30/the-u-s-is-building-barriers-around-drones-and-robots-china-still-has-scale/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-08-31',
       'title': 'ChatGPT将面临欧盟更严格的监管',
       'brief': 'OpenAI将很快被追究责任，以减轻与ChatGPT对未成年人、用户心理健康和非法传播的影响相关的风险。',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/986682/openai-chatgpt-eu-dsa',
@@ -126,14 +158,6 @@ window.NEWS = {
     },
     {
       'date': '2026-08-31',
-      'title': '流量红利退潮，快手想用 AI 和老友们破局',
-      'brief': '头图来源：快手 8 月 29 日，在 2026 快手光合创作者大会上，快手科技创始人、董事长兼 CEO 程一笑公布了一组数据：快手每天发布的作品超过 5800 万，近一年有超过 2.7 亿用户发布过作品，持续发布作品超过 10 年的创作者则超过 1700 万。 大会上，快手用这些…',
-      'url': 'http://www.geekpark.net/news/369631',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-08-31',
       'title': '399 美元的小黄鸭，藏着 Hugging Face 最大的野心',
       'brief': '作者｜ 宇航猿 编辑｜ 靖宇 很少有机器人，能让你第一眼就笑出来。 8 月 27 日，Hugging Face 旗下的 Pollen Robotics，开放了 Microduck 的预购。 一只 25 厘米高、不到 800 克重的双足机器鸭，四种配色，399 美元，圣诞节前发货…',
       'url': 'http://www.geekpark.net/news/369608',
@@ -153,30 +177,6 @@ window.NEWS = {
       'title': 'AI 写代码飞快，为何交付没有变快？小红书 Muse 的 Agentic 架构实践',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/l88X1azz8wfwphDyECoP?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-31',
-      'title': 'AI Coding 之后，如何让 Agent 进入企业研发全链路？得物推荐的 Harness 实践',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/sDyQxrWR6zDPJuLX4FA8?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-08-31',
-      'title': 'OpenClaw 从意外爆红到“无人问津”：一个开源 AI Agent 的八个月过山车',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/4KQHJC49t8J8FPqaEVLv?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-08-31',
-      'title': '坚决不用行业标准AGENTS.md，Claude Code惹来“封杀令”：Anthropic终于回应了，但开发者更气了',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/GuFWNd24Ww5AFlrXxTBo?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
     }

@@ -870,7 +870,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Hy4 preview',
+      'canonId': 'hy4-preview',
       'name': 'Hy4 preview',
       'vendor': '其他',
       'sources': [
@@ -902,7 +902,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Qwen3.8-Flash-Next',
+      'canonId': 'qwen3.8-flash-next',
       'name': 'Qwen3.8-Flash-Next',
       'vendor': '其他',
       'sources': [
