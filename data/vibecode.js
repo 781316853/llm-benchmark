@@ -7,10 +7,10 @@ window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "2026-08-31",
-  refreshedAt: "2026-08-31 14:44",
+  refreshedAt: "2026-09-01 03:24",
   version: "v1.1",
-  totalSystems: 86,
-  note: "共 86 系统,展示 overall 视图全部 83 个有记录系统",
+  totalSystems: 88,
+  note: "共 88 系统,展示 overall 视图全部 85 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -76,6 +76,14 @@ window.VIBECODE = {
     'ci': 3.31,
     'cost': 1.53,
     'latencyS': 1195
+  },
+  {
+    'name': 'Glm 5.3 [新]',
+    'harness': 'OpenHands',
+    'score': 78.13,
+    'ci': 3.94,
+    'cost': 12.45,
+    'latencyS': 3847
   },
   {
     'name': 'Claude Opus 4.8',
@@ -380,6 +388,14 @@ window.VIBECODE = {
     'ci': 4.55,
     'cost': 2.89,
     'latencyS': 2015
+  },
+  {
+    'name': 'Glm 5.3 flash [新]',
+    'harness': 'OpenHands',
+    'score': 30.76,
+    'ci': 5.28,
+    'cost': 2.35,
+    'latencyS': 5027
   },
   {
     'name': 'GPT 5.4 Nano',

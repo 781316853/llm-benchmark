@@ -273,6 +273,8 @@ window.SEEN = {
     'llm|Qwen3.6-Plus (Think)': '2026-08-30',
     'llm|Seed-2.0-Code (high)': '2026-08-30',
     'llm|Fable 5 (high)': '2026-08-30',
-    'llm|Opus 5 (max)': '2026-08-30'
+    'llm|Opus 5 (max)': '2026-08-30',
+    'vibe|Glm 5.3 [新]': '2026-08-31',
+    'vibe|Glm 5.3 flash [新]': '2026-08-31'
   }
 };

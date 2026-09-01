@@ -116,8 +116,8 @@ window.DATALEARNER = {
       'score': 59.3,
       'mode': '最高（工具）',
       'date': '2026-08-21',
-      'params': '未知',
-      'license': ''
+      'params': '3050亿',
+      'license': '免费商用'
     },
     {
       'name': 'Muse Spark 1.2',

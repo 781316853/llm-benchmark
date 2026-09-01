@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'vibecode',
       'name': 'Vibe Code',
       'status': 'ok',
-      'modelCount': 83,
+      'modelCount': 85,
       'updated': '2026-08-31',
       'ageDays': 0,
       'completeness': 1,
@@ -169,6 +169,26 @@ window.QUALITY = {
       },
       'mean': 16.6,
       'stddev': 13.75,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GLM-5.3-Flash',
+      'name': 'GLM-5.3-Flash',
+      'vendor': 'zAI',
+      'sources': [
+        'artificial_analysis',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'artificial_analysis': 57.46,
+        'datalearner': 63.4,
+        'deepswe_v11': 63,
+        'vibecode': 30.76
+      },
+      'mean': 53.7,
+      'stddev': 13.43,
       'flag': 'alert'
     },
     {
@@ -682,6 +702,26 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
+      'canonId': 'GLM-5.3',
+      'name': 'GLM-5.3 (max)',
+      'vendor': 'zAI',
+      'sources': [
+        'artificial_analysis',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'artificial_analysis': 59.51,
+        'datalearner': 66.9,
+        'deepswe_v11': 69,
+        'vibecode': 78.13
+      },
+      'mean': 68.4,
+      'stddev': 6.64,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'Grok 4.6',
       'name': 'Grok 4.6 (high)',
       'vendor': 'xAI',
@@ -722,24 +762,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'GLM-5.3',
-      'name': 'GLM-5.3 (max)',
-      'vendor': 'zAI',
-      'sources': [
-        'artificial_analysis',
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'artificial_analysis': 59.51,
-        'datalearner': 66.9,
-        'deepswe_v11': 69
-      },
-      'mean': 65.1,
-      'stddev': 4.07,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'Qwen3.8-Max',
       'name': 'Qwen3.8-Max',
       'vendor': 'Alibaba',
@@ -773,24 +795,6 @@ window.QUALITY = {
       },
       'mean': 50.7,
       'stddev': 3.41,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'GLM-5.3-Flash',
-      'name': 'GLM-5.3-Flash',
-      'vendor': 'zAI',
-      'sources': [
-        'artificial_analysis',
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'artificial_analysis': 57.46,
-        'datalearner': 63.4,
-        'deepswe_v11': 63
-      },
-      'mean': 61.3,
-      'stddev': 2.71,
       'flag': 'ok'
     },
     {
@@ -983,9 +987,9 @@ window.QUALITY = {
     },
     'vibecode': {
       'rate': 1,
-      'total': 83,
-      'complete': 83,
-      'modelCount': 83,
+      'total': 85,
+      'complete': 85,
+      'modelCount': 85,
       'missingFields': {},
       'flag': 'ok'
     }
@@ -1063,6 +1067,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'artificial_analysis,vibecode',
       'message': 'Mistral Medium 3.5 跨源分数标准差 13.75(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'artificial_analysis,datalearner,deepswe_v11,vibecode',
+      'message': 'GLM-5.3-Flash 跨源分数标准差 13.43(>10)'
     },
     {
       'level': 'error',
