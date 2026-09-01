@@ -184,11 +184,11 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:先分配梯队(基于全量模型),再过滤命中≥3的模型,取排名前20;勾选"显示全部"则展示所有
+    // 矩阵表:先分配梯队(基于全量模型),再过滤命中≥3的模型,取排名前30;勾选"显示全部"则展示所有
     var matrixRows = CMP.matrix(state.llmMonth);
     CMP.assignTiers(matrixRows);
     var allRows = sortedMatrixRows(matrixRows);
-    var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 3; }).slice(0, 20);
+    var rows = state.showAll.overview ? allRows : allRows.filter(function (r) { return r.benchCount >= 3; }).slice(0, 30);
     if (!rows.length) rows = allRows;
     var html = rows.map(function (r, i) {
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
