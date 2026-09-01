@@ -7,20 +7,27 @@
 
   // 综合分容差:差距 < 此值的模型视为"同档",同档内按次级指标排序
   var SCORE_TOLERANCE = 1.5;
-  // 双榜模型覆盖折减:仅命中 2 个基准组的数据覆盖不足,综合分按 90% 折算,
-  // 使其在矩阵排序与展示中低于数据更全面的模型(只影响总览页,榜单原始分数不变)
-  var DUAL_DISCOUNT = 0.9;
-  // 排序/展示用综合分:双榜模型(benchCount===2)打 9 折,其余原分
-  function dualAdjusted(e) {
-    var c = composite(e);
-    return e.benchCount === 2 ? c * DUAL_DISCOUNT : c;
+  // 双榜模型排序依据:命中榜单归一化分(norm,0-100)的均值——不计算综合分,
+  // 直接以各自榜单成绩确定其在矩阵中的合理位置(norm 与综合分同尺度,可与排名行混排)
+  function boardMean(e) {
+    var vs = [];
+    if (e.deepswe) vs.push(e.deepswe.norm);
+    if (e.vibe) vs.push(e.vibe.norm);
+    if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
+    if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
+    if (!vs.length) return 0;
+    return vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
+  }
+  // 矩阵统一排序键:双榜模型(benchCount===2)用榜单成绩均值,其余用综合分
+  function rankScore(e) {
+    return e.benchCount === 2 ? boardMean(e) : composite(e);
   }
   // 交叉矩阵:按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性 排序
   function matrix(llmMonthKey) {
     var map = D.unified(llmMonthKey);
     var rows = Object.keys(map).map(function (k) { return map[k]; });
     rows.sort(function (a, b) {
-      var ca = dualAdjusted(a), cb = dualAdjusted(b);
+      var ca = rankScore(a), cb = rankScore(b);
       // 差距 ≥ 容差:严格按综合分降序
       if (cb - ca >= SCORE_TOLERANCE) return 1;
       if (ca - cb >= SCORE_TOLERANCE) return -1;
@@ -172,7 +179,7 @@
 
   window.CMP = {
     matrix: matrix, avgNorm: avgNorm, composite: composite,
-    dualAdjusted: dualAdjusted, DUAL_DISCOUNT: DUAL_DISCOUNT,
+    boardMean: boardMean, rankScore: rankScore,
     assignTiers: assignTiers,
     variance: variance,
     radarSeries: radarSeries, metricCards: metricCards,
