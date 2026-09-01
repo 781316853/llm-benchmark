@@ -274,7 +274,7 @@
     // 动态行数提示(显示全部模型开关状态;默认视图含混排的双榜模型,排名数与双榜数分开统计)
     var note;
     if (state.showAll.overview) {
-      note = '当前显示全部 ' + rows.length + ' 个模型';
+      note = '当前显示全部 ' + rows.length + ' 个命中≥2榜的模型(仅命中一榜的模型不在总览矩阵展示,详见各榜单页)';
     } else {
       var dualCnt = rows.filter(function (r) { return r.benchCount === 2; }).length;
       note = '当前显示命中≥3个基准组且排名前 ' + (rows.length - dualCnt) + ' 的模型,以及 ' + dualCnt +

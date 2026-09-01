@@ -40,18 +40,18 @@
     });
     return sum / boards.length;
   }
-  // 交叉矩阵排序:
+  // 交叉矩阵排序(仅含命中≥2榜的模型,仅命中一榜的模型不进入总览矩阵,详见各榜单页):
   // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
   //    并依次编号 _posKey = 0,1,2…;
   // ② 双榜模型不计算综合分,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
   //    恰好落在两个排名行的间隔中;多个双榜模型同间隔时按位置值先后排列;
-  // ③ 合并后按 _posKey 升序;命中不足 2 榜的模型追加在末尾,仅"显示全部"可见
+  // ③ 合并后按 _posKey 升序
   function matrix(llmMonthKey) {
     var map = D.unified(llmMonthKey);
-    var all = Object.keys(map).map(function (k) { return map[k]; });
+    var all = Object.keys(map).map(function (k) { return map[k]; })
+      .filter(function (e) { return e.benchCount >= 2; });
     var ranked = all.filter(function (e) { return e.benchCount >= 3; });
     var dual = all.filter(function (e) { return e.benchCount === 2; });
-    var rest = all.filter(function (e) { return e.benchCount < 2; });
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);
       // 差距 ≥ 容差:严格按综合分降序
@@ -72,8 +72,7 @@
       if (Math.abs(key - Math.round(key)) < 1e-9) key += 1e-6;
       e._posKey = key;
     });
-    rest.forEach(function (e, i) { e._posKey = ranked.length + i; });
-    var rows = ranked.concat(dual, rest);
+    var rows = ranked.concat(dual);
     rows.sort(function (a, b) { return a._posKey - b._posKey; });
     return rows;
   }
