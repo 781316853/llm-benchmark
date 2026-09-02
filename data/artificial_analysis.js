@@ -1,17 +1,33 @@
 // 数据源:Artificial Analysis Intelligence Index 快照(免 Key 网页抓取)
-// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-09-01)
+// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-09-02)
 // 字段说明:name=模型短名;full=官方全名;base=去变体后的基础名;
 //          vendor=厂商;score=Intelligence Index(v4.1.1,越高越好)
-// 注:通用智能指数(含知识/推理/数学等评测),非编码专项;覆盖页面默认入选的 30 个主流模型;
+// 注:通用智能指数(含知识/推理/数学等评测),非编码专项;覆盖页面默认入选的 28 个主流模型;
 //     仅用于独立榜单展示,不计入综合分。
 window.ARTIFICIAL_ANALYSIS = {
   source: "Artificial Analysis Intelligence Index",
   url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-  updated: "2026-09-01",
+  updated: "2026-09-02",
   version: "4.1.1",
-  note: "通用智能指数 · 覆盖 30 个主流模型 · 独立榜单,不计入综合分",
+  note: "通用智能指数 · 覆盖 28 个主流模型 · 独立榜单,不计入综合分",
   desc: "Artificial Analysis 独立评测的通用智能指数 v4.1.1,汇总 GDPval-AA/τ³-Banking/Terminal-Bench/HLE/GPQA Diamond 等多项评测。",
   models: [
+  {
+    'slug': 'claude-fable-5-1',
+    'name': 'Claude Fable 5.1 (max with fallback)',
+    'full': 'Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)',
+    'vendor': 'Anthropic',
+    'base': 'Claude Fable 5.1',
+    'score': 65.65
+  },
+  {
+    'slug': 'claude-fable-5-1-xhigh',
+    'name': 'Claude Fable 5.1 (xhigh with fallback)',
+    'full': 'Claude Fable 5.1 (Adaptive Reasoning, Xhigh Effort, Default Fallback)',
+    'vendor': 'Anthropic',
+    'base': 'Claude Fable 5.1',
+    'score': 64.8
+  },
   {
     'slug': 'claude-opus-5',
     'name': 'Claude Opus 5 (max)',
@@ -29,20 +45,20 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 62.52
   },
   {
+    'slug': 'claude-fable-5-1-high',
+    'name': 'Claude Fable 5.1 (high with fallback)',
+    'full': 'Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback)',
+    'vendor': 'Anthropic',
+    'base': 'Claude Fable 5.1',
+    'score': 62.48
+  },
+  {
     'slug': 'claude-fable-5',
     'name': 'Claude Fable 5 (with fallback)',
     'full': 'Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)',
     'vendor': 'Anthropic',
     'base': 'Claude Fable 5',
     'score': 62.07
-  },
-  {
-    'slug': 'claude-opus-5-high',
-    'name': 'Claude Opus 5 (high)',
-    'full': 'Claude Opus 5 (Adaptive Reasoning, High Effort)',
-    'vendor': 'Anthropic',
-    'base': 'Claude Opus 5',
-    'score': 61.48
   },
   {
     'slug': 'gpt-5-6-sol',
@@ -141,14 +157,6 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 52.02
   },
   {
-    'slug': 'motif-3',
-    'name': 'Motif 3',
-    'full': 'Motif 3',
-    'vendor': 'Motif Technologies',
-    'base': 'Motif 3',
-    'score': 47.36
-  },
-  {
     'slug': 'minimax-m3',
     'name': 'MiniMax-M3',
     'full': 'MiniMax-M3',
@@ -181,36 +189,12 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 37.44
   },
   {
-    'slug': 'solar-open2-250b',
-    'name': 'Solar Open2 250B',
-    'full': 'Solar Open2 250B',
-    'vendor': 'Upstage',
-    'base': 'Solar Open2 250B',
-    'score': 37.43
-  },
-  {
     'slug': 'muse-glimmer',
     'name': 'Muse Glimmer (high)',
     'full': 'Muse Glimmer (high)',
     'vendor': 'Meta',
     'base': 'Muse Glimmer',
     'score': 35.06
-  },
-  {
-    'slug': 'a-x-k2',
-    'name': 'A.X-K2',
-    'full': 'A.X-K2',
-    'vendor': 'SK Telecom',
-    'base': 'A.X-K2',
-    'score': 35.01
-  },
-  {
-    'slug': 'k-exaone-2-0-0803',
-    'name': 'K-EXAONE 2.0',
-    'full': 'K-EXAONE 2.0',
-    'vendor': 'LG AI Research',
-    'base': 'K-EXAONE 2.0',
-    'score': 30.98
   },
   {
     'slug': 'mistral-medium-3-5',

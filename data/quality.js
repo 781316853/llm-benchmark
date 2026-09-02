@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-09-01;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-09-02;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-09-01',
+  'generatedAt': '2026-09-02',
   'overallScore': 0.857,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
       'modelCount': 121,
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -21,8 +21,8 @@ window.QUALITY = {
       'id': 'artificial_analysis',
       'name': 'Artificial Analysis II',
       'status': 'ok',
-      'modelCount': 30,
-      'updated': '2026-09-01',
+      'modelCount': 28,
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -33,7 +33,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -44,7 +44,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.1',
       'status': 'ok',
       'modelCount': 32,
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -55,7 +55,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -66,7 +66,7 @@ window.QUALITY = {
       'name': 'llm2014',
       'status': 'ok',
       'modelCount': 78,
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -76,8 +76,8 @@ window.QUALITY = {
       'id': 'vibecode',
       'name': 'Vibe Code',
       'status': 'ok',
-      'modelCount': 85,
-      'updated': '2026-09-01',
+      'modelCount': 86,
+      'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -189,6 +189,22 @@ window.QUALITY = {
       },
       'mean': 53.7,
       'stddev': 13.43,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Claude Fable 5.1',
+      'name': 'Claude Fable 5.1 (max with fallback)',
+      'vendor': '其他',
+      'sources': [
+        'artificial_analysis',
+        'vibecode'
+      ],
+      'scores': {
+        'artificial_analysis': 64.31,
+        'vibecode': 90.26
+      },
+      'mean': 77.3,
+      'stddev': 12.98,
       'flag': 'alert'
     },
     {
@@ -398,13 +414,13 @@ window.QUALITY = {
         'vibecode'
       ],
       'scores': {
-        'artificial_analysis': 62.35,
+        'artificial_analysis': 62.79,
         'datalearner': 68.8,
         'deepswe_v11': 74,
         'vibecode': 88.4
       },
-      'mean': 73.4,
-      'stddev': 9.6,
+      'mean': 73.5,
+      'stddev': 9.48,
       'flag': 'warn'
     },
     {
@@ -870,7 +886,23 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'hy4-preview',
+      'canonId': 'Qwen3.8-Max-0902',
+      'name': 'Qwen3.8-Max-0902',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 69.3,
+        'deepswe_v11': 69.3
+      },
+      'mean': 69.3,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Hy4 preview',
       'name': 'Hy4 preview',
       'vendor': '其他',
       'sources': [
@@ -902,7 +934,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'qwen3.8-flash-next',
+      'canonId': 'Qwen3.8-Flash-Next',
       'name': 'Qwen3.8-Flash-Next',
       'vendor': '其他',
       'sources': [
@@ -914,22 +946,6 @@ window.QUALITY = {
         'deepswe_v11': 58.7
       },
       'mean': 58.7,
-      'stddev': 0,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'Tencent Hy3',
-      'name': 'Hy3',
-      'vendor': 'Tencent',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 28,
-        'deepswe_v11': 28
-      },
-      'mean': 28,
       'stddev': 0,
       'flag': 'ok'
     }
@@ -945,9 +961,9 @@ window.QUALITY = {
     },
     'artificial_analysis': {
       'rate': 1,
-      'total': 30,
-      'complete': 30,
-      'modelCount': 30,
+      'total': 28,
+      'complete': 28,
+      'modelCount': 28,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -987,46 +1003,46 @@ window.QUALITY = {
     },
     'vibecode': {
       'rate': 1,
-      'total': 85,
-      'complete': 85,
-      'modelCount': 85,
+      'total': 86,
+      'complete': 86,
+      'modelCount': 86,
       'missingFields': {},
       'flag': 'ok'
     }
   },
   'timeliness': {
     'arena_webdev': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     },
     'artificial_analysis': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     },
     'datalearner': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-09-01',
+      'updated': '2026-09-02',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -1073,6 +1089,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'artificial_analysis,datalearner,deepswe_v11,vibecode',
       'message': 'GLM-5.3-Flash 跨源分数标准差 13.43(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'artificial_analysis,vibecode',
+      'message': 'Claude Fable 5.1 (max with fallback) 跨源分数标准差 12.98(>10)'
     },
     {
       'level': 'error',
