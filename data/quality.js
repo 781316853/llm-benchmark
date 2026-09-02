@@ -43,7 +43,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 32,
+      'modelCount': 33,
       'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'vibecode',
       'name': 'Vibe Code',
       'status': 'ok',
-      'modelCount': 86,
+      'modelCount': 87,
       'updated': '2026-09-02',
       'ageDays': 0,
       'completeness': 1,
@@ -308,6 +308,24 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'Claude Sonnet 4.6',
+      'name': 'claude-sonnet-4-6',
+      'vendor': 'Anthropic',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 30,
+        'deepswe_v10': 32,
+        'vibecode': 53.63
+      },
+      'mean': 38.5,
+      'stddev': 10.7,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'Claude Fable 5',
       'name': 'Claude Fable 5 (with fallback)',
       'vendor': 'Anthropic',
@@ -326,26 +344,6 @@ window.QUALITY = {
       'mean': 73.1,
       'stddev': 10.47,
       'flag': 'alert'
-    },
-    {
-      'canonId': 'Claude Sonnet 4.6',
-      'name': 'Claude Sonnet 4.6',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 30,
-        'deepswe_v11': 30,
-        'deepswe_v10': 32,
-        'vibecode': 53.63
-      },
-      'mean': 36.4,
-      'stddev': 9.97,
-      'flag': 'warn'
     },
     {
       'canonId': 'Gemini 3.1 Pro Preview',
@@ -608,6 +606,26 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
+      'canonId': 'Gemini 3.8 Flash',
+      'name': 'Gemini 3.8 Flash (high)',
+      'vendor': '其他',
+      'sources': [
+        'artificial_analysis',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'artificial_analysis': 58.68,
+        'datalearner': 73.7,
+        'deepswe_v11': 74,
+        'vibecode': 78.65
+      },
+      'mean': 71.3,
+      'stddev': 7.52,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'Gemini 3.5 Flash',
       'name': 'Gemini 3.5 Flash',
       'vendor': 'Google',
@@ -758,26 +776,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Gemini 3.7 Flash',
-      'name': 'Gemini 3.7 Flash (high)',
-      'vendor': 'Google',
-      'sources': [
-        'artificial_analysis',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'artificial_analysis': 56.03,
-        'datalearner': 65.3,
-        'deepswe_v11': 65,
-        'vibecode': 70.4
-      },
-      'mean': 64.2,
-      'stddev': 5.17,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Qwen3.8-Max',
       'name': 'Qwen3.8-Max',
       'vendor': 'Alibaba',
@@ -831,6 +829,24 @@ window.QUALITY = {
       },
       'mean': 54.5,
       'stddev': 2.58,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Gemini 3.7 Flash',
+      'name': 'Gemini 3.7 Flash',
+      'vendor': 'Google',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 65.3,
+        'deepswe_v11': 65,
+        'vibecode': 70.4
+      },
+      'mean': 66.9,
+      'stddev': 2.48,
       'flag': 'ok'
     },
     {
@@ -902,7 +918,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Hy4 preview',
+      'canonId': 'hy4-preview',
       'name': 'Hy4 preview',
       'vendor': '其他',
       'sources': [
@@ -934,7 +950,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Qwen3.8-Flash-Next',
+      'canonId': 'qwen3.8-flash-next',
       'name': 'Qwen3.8-Flash-Next',
       'vendor': '其他',
       'sources': [
@@ -977,9 +993,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 32,
-      'complete': 32,
-      'modelCount': 32,
+      'total': 33,
+      'complete': 33,
+      'modelCount': 33,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1003,9 +1019,9 @@ window.QUALITY = {
     },
     'vibecode': {
       'rate': 1,
-      'total': 86,
-      'complete': 86,
-      'modelCount': 86,
+      'total': 87,
+      'complete': 87,
+      'modelCount': 87,
       'missingFields': {},
       'flag': 'ok'
     }
@@ -1131,6 +1147,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'deepswe_v10,vibecode',
       'message': 'qwen3-6-plus 跨源分数标准差 11.29(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'deepswe_v11,deepswe_v10,vibecode',
+      'message': 'claude-sonnet-4-6 跨源分数标准差 10.7(>10)'
     },
     {
       'level': 'error',

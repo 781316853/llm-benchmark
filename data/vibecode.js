@@ -7,10 +7,10 @@ window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "2026-09-02",
-  refreshedAt: "2026-09-02 13:30",
+  refreshedAt: "2026-09-03 01:02",
   version: "v1.1",
-  totalSystems: 89,
-  note: "共 89 系统,展示 overall 视图全部 86 个有记录系统",
+  totalSystems: 90,
+  note: "共 90 系统,展示 overall 视图全部 87 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -84,6 +84,14 @@ window.VIBECODE = {
     'ci': 3.31,
     'cost': 1.53,
     'latencyS': 1195
+  },
+  {
+    'name': 'Gemini 3.8 flash [新]',
+    'harness': 'OpenHands',
+    'score': 78.65,
+    'ci': 3.88,
+    'cost': 6.87,
+    'latencyS': 519
   },
   {
     'name': 'Glm 5.3 [新]',

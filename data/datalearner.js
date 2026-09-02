@@ -8,6 +8,14 @@ window.DATALEARNER = {
   'updated': '2026-09-02',
   'models': [
     {
+      'name': 'Gemini 3.8 Flash',
+      'score': 73.7,
+      'mode': '思考模式（工具）',
+      'date': '2026-09-02',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'GPT-5.6 Sol',
       'score': 72.7,
       'mode': '极高强度思考（工具）',
@@ -238,14 +246,6 @@ window.DATALEARNER = {
       'date': '2026-06-12',
       'params': '10000亿',
       'license': '免费商用'
-    },
-    {
-      'name': 'Claude Sonnet 4.6',
-      'score': 30,
-      'mode': '思考模式 High（工具）',
-      'date': '2026-02-17',
-      'params': '未知',
-      'license': '闭源'
     }
   ]
 };

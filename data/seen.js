@@ -278,6 +278,9 @@ window.SEEN = {
     'vibe|Glm 5.3 flash [新]': '2026-08-31',
     'deepswe|Qwen3.8-Max-0902': '2026-09-02',
     'vibe|Claude fable 5 1 [新]': '2026-09-02',
-    'datalearner|Qwen3.8-Max-0902': '2026-09-02'
+    'datalearner|Qwen3.8-Max-0902': '2026-09-02',
+    'deepswe|gemini-3-8-flash': '2026-09-02',
+    'vibe|Gemini 3.8 flash [新]': '2026-09-02',
+    'datalearner|Gemini 3.8 Flash': '2026-09-02'
   }
 };

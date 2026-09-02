@@ -93,6 +93,14 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 59.51
   },
   {
+    'slug': 'gemini-3-8-flash',
+    'name': 'Gemini 3.8 Flash (high)',
+    'full': 'Gemini 3.8 Flash (high)',
+    'vendor': 'Google',
+    'base': 'Gemini 3.8 Flash',
+    'score': 58.68
+  },
+  {
     'slug': 'qwen3-8-2-4t-a95b',
     'name': 'Qwen3.8 2.4T A95B',
     'full': 'Qwen3.8 2.4T A95B',
@@ -123,14 +131,6 @@ window.ARTIFICIAL_ANALYSIS = {
     'vendor': 'OpenAI',
     'base': 'GPT-5.6 Terra',
     'score': 56.58
-  },
-  {
-    'slug': 'gemini-3-7-flash',
-    'name': 'Gemini 3.7 Flash (high)',
-    'full': 'Gemini 3.7 Flash (high)',
-    'vendor': 'Google',
-    'base': 'Gemini 3.7 Flash',
-    'score': 56.03
   },
   {
     'slug': 'deepseek-v4-pro',
