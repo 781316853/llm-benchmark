@@ -1,15 +1,15 @@
 // 数据源:Artificial Analysis Intelligence Index 快照(免 Key 网页抓取)
-// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-09-02)
+// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-09-03)
 // 字段说明:name=模型短名;full=官方全名;base=去变体后的基础名;
 //          vendor=厂商;score=Intelligence Index(v4.1.1,越高越好)
-// 注:通用智能指数(含知识/推理/数学等评测),非编码专项;覆盖页面默认入选的 28 个主流模型;
+// 注:通用智能指数(含知识/推理/数学等评测),非编码专项;覆盖页面默认入选的 31 个主流模型;
 //     仅用于独立榜单展示,不计入综合分。
 window.ARTIFICIAL_ANALYSIS = {
   source: "Artificial Analysis Intelligence Index",
   url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-  updated: "2026-09-02",
+  updated: "2026-09-03",
   version: "4.1.1",
-  note: "通用智能指数 · 覆盖 28 个主流模型 · 独立榜单,不计入综合分",
+  note: "通用智能指数 · 覆盖 31 个主流模型 · 独立榜单,不计入综合分",
   desc: "Artificial Analysis 独立评测的通用智能指数 v4.1.1,汇总 GDPval-AA/τ³-Banking/Terminal-Bench/HLE/GPQA Diamond 等多项评测。",
   models: [
   {
@@ -53,12 +53,28 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 62.48
   },
   {
+    'slug': 'muse-spark-1-3',
+    'name': 'Muse Spark 1.3 (max)',
+    'full': 'Muse Spark 1.3 (max)',
+    'vendor': 'Meta',
+    'base': 'Muse Spark 1.3',
+    'score': 62.09
+  },
+  {
     'slug': 'claude-fable-5',
     'name': 'Claude Fable 5 (with fallback)',
     'full': 'Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)',
     'vendor': 'Anthropic',
     'base': 'Claude Fable 5',
     'score': 62.07
+  },
+  {
+    'slug': 'claude-opus-5-high',
+    'name': 'Claude Opus 5 (high)',
+    'full': 'Claude Opus 5 (Adaptive Reasoning, High Effort)',
+    'vendor': 'Anthropic',
+    'base': 'Claude Opus 5',
+    'score': 61.48
   },
   {
     'slug': 'gpt-5-6-sol',
@@ -75,6 +91,22 @@ window.ARTIFICIAL_ANALYSIS = {
     'vendor': 'SpaceXAI',
     'base': 'Grok 4.6',
     'score': 60.92
+  },
+  {
+    'slug': 'muse-spark-1-3-xhigh',
+    'name': 'Muse Spark 1.3 (xhigh)',
+    'full': 'Muse Spark 1.3 (xhigh)',
+    'vendor': 'Meta',
+    'base': 'Muse Spark 1.3',
+    'score': 60.78
+  },
+  {
+    'slug': 'claude-fable-5-1-medium',
+    'name': 'Claude Fable 5.1 (medium with fallback)',
+    'full': 'Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)',
+    'vendor': 'Anthropic',
+    'base': 'Claude Fable 5.1',
+    'score': 60.48
   },
   {
     'slug': 'kimi-k3',
@@ -115,14 +147,6 @@ window.ARTIFICIAL_ANALYSIS = {
     'vendor': 'Z AI',
     'base': 'GLM-5.3-Flash',
     'score': 57.46
-  },
-  {
-    'slug': 'muse-spark-1-2',
-    'name': 'Muse Spark 1.2 (xhigh)',
-    'full': 'Muse Spark 1.2 (xhigh)',
-    'vendor': 'Meta',
-    'base': 'Muse Spark 1.2',
-    'score': 56.76
   },
   {
     'slug': 'gpt-5-6-terra',

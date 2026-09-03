@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-02',
+  'updated': '2026-09-03',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -12,6 +12,86 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-09-03',
+      'title': '晋大师在历史性的人类胜利中击败AI KataGo',
+      'brief': '晋大师在历史性的人类胜利中击败AI KataGo',
+      'url': 'https://www.kedglobal.com/artificial-intelligence/newsView/ked202607210007',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '当 AI 开始理解「人不是标签」：阿里妈妈如何重构广告定向',
+      'brief': '作者｜Cynthia 编辑｜郑玄 2026 年夏天，林氏家居想卖一张布艺床。 然后，阿里妈妈万相点睛给它找到了一群电竞玩家。并建议他们投放那些搜索过「电竞房布置」「游戏房改造」「RGB 灯带」「二次元痛房」的用户。 对于林氏家居这样一家诞生于互联网、长期依赖数据经营的头部品牌来说…',
+      'url': 'http://www.geekpark.net/news/369777',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': 'AI 下一场竞争：谁能成为 Agent 的「上下文操作系统」',
+      'brief': '头图来源：视觉中国 前段时间，Anthropic 发布了 Model Hardware Standard，尝试给 AI Agent 建立一套与硬件沟通的通用语言。接入这套标准后，显微镜、机械臂等不同厂商、不同接口的设备，可以被 Agent 发现、理解和调用。 这件事指向了 AI…',
+      'url': 'http://www.geekpark.net/news/369767',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '马斯克：火箭再炸一次，SpaceX 就没了；小米「阔折叠」全球首秀；豆包工作支持多 Agent 和屏幕操作 | 极客早知道',
+      'brief': '谷歌 Gemini 3.8 Flash 模型上线，适用软件工程、智能体任务等场景 9 月 2 日消息，谷歌在 Google DeepMind 网站低调上线了 Gemini 3.8 Flash 模型。其基于 Gemini 3.7 Flash，拥有在软件工程和智能体知识工作流方面的性…',
+      'url': 'http://www.geekpark.net/news/369745',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-02',
+      'title': '消息人士称， Palo Alto Networks为Thrive支持的控制台支付了5亿$',
+      'brief': '行业观察人士认为，此次收购还使红杉支持的Serval成为人工智能IT服务自动化领域事实上的创业领导者。',
+      'url': 'https://techcrunch.com/2026/09/02/palo-alto-networks-paid-500m-for-thrive-backed-console-sources-say/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-02',
+      'title': 'TechCrunch Disrupt 2026全新真实世界人工智能舞台，搭载英伟达、机器人和已灭绝的动物',
+      'brief': '在我们新的真实世界人工智能舞台上，我们将专注于数字和物理之间的交集，以及我们将继续采取的所有方式……',
+      'url': 'https://techcrunch.com/2026/09/02/techcrunch-disrupt-2026s-new-real-world-ai-stage-features-nvidia-robots-and-extinct-animals/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-02',
+      'title': 'OpenAI的新推理技巧向人工智能安全专家发出警报',
+      'brief': 'OpenAI的新Astra模型将使用“循环深度” ，这种技术允许模型在顺序思维之外进行操作，',
+      'url': 'https://techcrunch.com/2026/09/02/openais-new-reasoning-technique-alarms-ai-safety-experts/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-02',
+      'title': 'Pangram的Max Spero解释为什么人工智能检测比“真假”更难',
+      'brief': '互联网存在信任问题，这不仅仅是因为社交媒体订阅源充斥着人工智能。人工智能生成的文本和图像是……',
+      'url': 'https://techcrunch.com/video/pangrams-max-spero-on-why-ai-detection-is-harder-than-real-or-fake/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-02',
+      'title': 'Pangram的首席执行官表示，我们“危险地接近”死亡的互联网理论',
+      'brief': '互联网存在信任问题，这不仅仅是因为社交媒体订阅源充斥着人工智能。人工智能生成的文本和图像是……',
+      'url': 'https://techcrunch.com/podcast/were-dangerously-close-to-dead-internet-theory-says-pangrams-ceo/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-02',
+      'title': '美国政府与OpenAI就版权材料培训LLM的问题进行合作',
+      'brief': '“美国对继续发展一个强大且具有竞争力的人工智能产业有着浓厚的兴趣，该产业将……',
+      'url': 'https://techcrunch.com/2026/09/02/u-s-government-sides-with-openai-on-issue-of-training-llms-on-copyrighted-material/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
     {
       'date': '2026-09-02',
       'title': '印度首富现在希望将老旧的计算机转变为AI就绪的个人电脑',
@@ -30,14 +110,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-02',
-      'title': 'PSA ：亚马逊的购物AI现在可以告诉您该消息是否是骗局',
-      'brief': '亚马逊正在为Alexa for Shopping添加一项诈骗检测功能，该功能可以验证可疑的电子邮件、短信和其他消息是否……',
-      'url': 'https://techcrunch.com/2026/09/02/psa-amazons-shopping-ai-can-now-tell-you-if-that-message-is-a-scam/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-02',
       'title': 'Adobe收购印度市场情报初创公司Rilo',
       'brief': '这是Adobe继2023年Rephrase.ai之后第二次从印度收购',
       'url': 'https://techcrunch.com/2026/09/02/adobe-acquires-indian-market-intelligence-startup-rilo/',
@@ -51,6 +123,14 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/02/openai-faces-30-more-lawsuits-tied-to-tumbler-ridge-shooting/',
       'source': 'TechCrunch',
       'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-02',
+      'title': '谷歌表示，其新的Gemini 3.8 Flash型号“更加努力” ，但可能会花费更多',
+      'brief': '谷歌推出了Gemini 3.8 Flash ，仅比其前身晚了几周。该公司声称新型号比Gemi “更努力” ……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/988742/google-gemini-3-8-flash',
+      'source': 'The Verge',
+      'type': '模型发布'
     },
     {
       'date': '2026-09-02',
@@ -78,35 +158,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-02',
-      'title': 'OpenAI被指控在数十起新诉讼中“协助和教唆” Tumbler Ridge大规模枪击事件',
-      'brief': 'OpenAI及其首席执行官Sam Altman面临30起新的诉讼，指控他们向SUS提供“实质性的帮助和鼓励” ……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/988261/openai-tumbler-ridge-shooting-lawsuit-aiding-abetting',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'Gemini 3.8 Flash和3.8 Flash Cyber',
-      'brief': 'Gemini 3.8 Flash和3.8 Flash Cyber',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/',
+      'title': '人工智能代理和永远不会发生的重构',
+      'brief': '人工智能代理和永远不会发生的重构',
+      'url': 'https://www.rosenfeld.page/articles/programming/2026_09_02_ai_agents_and_the_refactoring_that_never_happens/',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'WebLLM ：高性能浏览器内LLM推理引擎',
-      'brief': 'WebLLM ：高性能浏览器内LLM推理引擎',
-      'url': 'https://github.com/mlc-ai/web-llm',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '三个网站制作了215,128个AI “最佳软件”页面。Perplexity引用了它们',
-      'brief': '三个网站制作了215,128个AI “最佳软件”页面。Perplexity引用了它们',
-      'url': 'https://trellner.com/reports/manufactured-sources-behind-ai-recommendations/',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-02',
@@ -126,14 +182,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-02',
-      'title': '硬件加强版「WorkBuddy」，拿下数亿融资，瞄向你的终极上下文',
-      'brief': '作者｜苏子华 编辑｜靖宇 现场体验过 Violoop 之后，很多关于未来的「AI 助手」该长什么样、能做些什么、能力的极限究竟在哪的困惑，可能都会迎刃而解。 因为 Violoop 已经把它们变成了现实。 Violoop 实物图｜图片来源：Violoop Violoop 是一款巴掌…',
-      'url': 'http://www.geekpark.net/news/369718',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-02',
       'title': '苹果新 CEO 首次「发声」；网传抖音发生「推荐算法错乱」；Claude Fable 5.1 正式上线',
       'brief': '​ 苹果新任 CEO 约翰&middot;特努斯在 X 平台发布首条动态向关注者问好 苹果首席执行官约翰&middot;特努斯正式加入社交平台 X，并发布了个人账号的首条动态。正如外界预料的那样，这条仅有「hello」五个字母的简短消息迅速获得大量关注。苹果历任首席执行官通常都具…',
       'url': 'http://www.geekpark.net/news/369690',
@@ -147,70 +195,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/ztbou1CqjAdzrT6GNSKV?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'Fable 5.1 正式发布：性能翻倍、Agent成本下降45%，Anthropic 把顶级模型送进真实世界',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/K8OwgoWM1gHNi2i4yLkU?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-01',
-      'title': '据报道， AfterQuery成为Y Combinator有史以来最快的独角兽，目前估值为$ 32亿',
-      'brief': '据报道，人工智能模型培训初创公司AfterQuery筹集了一轮融资，估值为$ 32亿，仅在宣布其$ 30...',
-      'url': 'https://techcrunch.com/2026/09/01/afterquery-reportedly-becomes-y-combinators-fastest-ever-unicorn-now-valued-at-3-2b/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-01',
-      'title': '谷歌的Android更新可解决晕车、无障碍等问题',
-      'brief': '虽然其中一些功能让谷歌赶上了苹果，苹果已经为iPhone用户提供了类似的功能，但其他功能具体来说……',
-      'url': 'https://techcrunch.com/2026/09/01/googles-android-update-tackles-motion-sickness-accessibility-and-more/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-01',
-      'title': 'Anthropic推出了Claude Fable 5.1 ，并表示代理工作的成本降低了45 ％',
-      'brief': 'Anthropic表示，其最新的人工智能模型Fable 5.1和Mythos 5.1解决了客户对价格、数据保留和过度热情的批评……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/987830/anthropic-claude-fable-mythos-5-1',
-      'source': 'The Verge',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-01',
-      'title': '面向真实工程师的AI编码代理技能',
-      'brief': '面向真实工程师的AI编码代理技能',
-      'url': 'https://github.com/mattpocock/skills',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-01',
-      'title': '云原生弹性的能力，迁移成为 Agent 时代的数据基座能力之一？',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/video/QflJXpVJK5DqeoOgsY3D?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-01',
-      'title': '3名开发者做出来的副业项目，半年冲进 4万人！亚马逊云科技把内部 Agent 工作台开源了',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Um4rVTweSFXAiwdGLFVB?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-01',
-      'title': '智能体请求暴增9.4倍，token账单却没涨：Uber 公开AI软件工厂省钱方法',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/WGj2Jx0K2sbP3dhUXeC5?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     }
   ]
 };
