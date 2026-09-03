@@ -3,6 +3,7 @@
 window.MODEL_MAP = {
   canonical: [
     { id: "Claude Fable 5",   vendor: "Anthropic", color: "#D97757", aliases: ["claude-fable-5", "Claude Fable 5", "Fable-5 (high)", "Fable-5", "Claude 5 Fable"] },
+    { id: "Claude Fable 5.1", vendor: "Anthropic", color: "#E0977B", aliases: ["claude-fable-5.1", "claude-fable-5-1", "Claude Fable 5.1", "Claude Fable 5.1 (high)", "Fable-5.1", "Fable-5.1 (high)", "Fable 5.1", "Claude 5.1 Fable"] },
     { id: "Claude Mythos Preview", vendor: "Anthropic", color: "#C66040", aliases: ["Claude Mythos Preview", "Claude Mythos 5"] },
     { id: "Claude Opus 4.8",  vendor: "Anthropic", color: "#E29060", aliases: ["claude-opus-4.8", "Claude Opus 4.8", "Claude Opus 4.8 (high)", "claude-opus-4-8"] },
     { id: "Claude Sonnet 5",  vendor: "Anthropic", color: "#C58A6B", aliases: ["claude-sonnet-5", "Claude Sonnet 5", "Claude Sonnet 5 (high)", "Sonnet 5", "Sonnet 5 (high)", "sonnet-5", "sonnet-5-high"] },

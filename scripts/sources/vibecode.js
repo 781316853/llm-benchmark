@@ -12,8 +12,9 @@ const CONFIG = require("../lib/config");
 
 // slug(真实 provider 前缀)-> 显示名(迁移自原脚本 VIBE_NAMES,保持完整一致)
 const VIBE_NAMES = {
-  "anthropic/claude-fable-5": "Claude Fable 5", "anthropic/claude-opus-4-8": "Claude Opus 4.8",
-  "anthropic/claude-opus-4-8-claude-code": "Claude Opus 4.8", "anthropic/claude-opus-4-7": "Claude Opus 4.7",
+  "anthropic/claude-fable-5": "Claude Fable 5", "anthropic/claude-fable-5-1": "Claude Fable 5.1",
+  "anthropic/claude-fable-5-1-thinking": "Claude Fable 5.1", "anthropic/claude-fable-5-1-claude-code": "Claude Fable 5.1",
+  "anthropic/claude-opus-4-8": "Claude Opus 4.8", "anthropic/claude-opus-4-8-claude-code": "Claude Opus 4.8", "anthropic/claude-opus-4-7": "Claude Opus 4.7",
   "anthropic/claude-opus-4-6": "Claude Opus 4.6", "anthropic/claude-opus-4-6-thinking": "Claude Opus 4.6",
   "anthropic/claude-opus-4-5-20251101-thinking": "Claude Opus 4.5", "anthropic/claude-sonnet-5": "Claude Sonnet 5",
   "anthropic/claude-sonnet-4-6": "Claude Sonnet 4.6", "anthropic/claude-sonnet-4-6-claude-code": "Claude Sonnet 4.6",
