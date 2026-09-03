@@ -10,7 +10,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 121,
+      'modelCount': 124,
       'updated': '2026-09-03',
       'ageDays': 0,
       'completeness': 1,
@@ -537,20 +537,18 @@ window.QUALITY = {
     },
     {
       'canonId': 'Kimi-K2.7-Code',
-      'name': 'Kimi K2.7 Code',
+      'name': 'kimi-k2-7-code',
       'vendor': 'Moonshot',
       'sources': [
-        'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'datalearner': 31,
         'deepswe_v11': 31,
         'vibecode': 47.21
       },
-      'mean': 36.4,
-      'stddev': 7.64,
+      'mean': 39.1,
+      'stddev': 8.11,
       'flag': 'warn'
     },
     {
@@ -682,22 +680,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Muse Spark 1.3',
-      'name': 'Muse Spark 1.3 (max)',
-      'vendor': '其他',
-      'sources': [
-        'artificial_analysis',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'artificial_analysis': 61.44,
-        'deepswe_v11': 75.4
-      },
-      'mean': 68.4,
-      'stddev': 6.98,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Kimi-K2.6',
       'name': 'kimi-k2-6',
       'vendor': 'Moonshot',
@@ -767,6 +749,24 @@ window.QUALITY = {
       },
       'mean': 68.4,
       'stddev': 6.64,
+      'flag': 'warn'
+    },
+    {
+      'canonId': 'Muse Spark 1.3',
+      'name': 'Muse Spark 1.3 (max)',
+      'vendor': '其他',
+      'sources': [
+        'artificial_analysis',
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'artificial_analysis': 61.44,
+        'datalearner': 75.4,
+        'deepswe_v11': 75.4
+      },
+      'mean': 70.7,
+      'stddev': 6.58,
       'flag': 'warn'
     },
     {
@@ -967,9 +967,9 @@ window.QUALITY = {
   'completeness': {
     'arena_webdev': {
       'rate': 1,
-      'total': 121,
-      'complete': 121,
-      'modelCount': 121,
+      'total': 124,
+      'complete': 124,
+      'modelCount': 124,
       'missingFields': {},
       'flag': 'ok'
     },

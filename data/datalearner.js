@@ -8,6 +8,14 @@ window.DATALEARNER = {
   'updated': '2026-09-03',
   'models': [
     {
+      'name': 'Muse Spark 1.3',
+      'score': 75.4,
+      'mode': '最高（工具）',
+      'date': '2026-09-02',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'Gemini 3.8 Flash',
       'score': 73.7,
       'mode': '思考模式（工具）',
@@ -238,14 +246,6 @@ window.DATALEARNER = {
       'date': '2026-06-20',
       'params': '未知',
       'license': '闭源'
-    },
-    {
-      'name': 'Kimi K2.7 Code',
-      'score': 31,
-      'mode': '常规模式（工具）',
-      'date': '2026-06-12',
-      'params': '10000亿',
-      'license': '免费商用'
     }
   ]
 };

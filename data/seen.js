@@ -284,6 +284,7 @@ window.SEEN = {
     'datalearner|Gemini 3.8 Flash': '2026-09-02',
     'deepswe|Muse Spark 1.3': '2026-09-03',
     'vibe|Claude Fable 5.1': '2026-09-03',
-    'llm|Qwen3.8-Max-0902 (max)': '2026-09-03'
+    'llm|Qwen3.8-Max-0902 (max)': '2026-09-03',
+    'datalearner|Muse Spark 1.3': '2026-09-03'
   }
 };

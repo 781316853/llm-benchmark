@@ -14,11 +14,67 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-03',
-      'title': '晋大师在历史性的人类胜利中击败AI KataGo',
-      'brief': '晋大师在历史性的人类胜利中击败AI KataGo',
-      'url': 'https://www.kedglobal.com/artificial-intelligence/newsView/ked202607210007',
+      'title': 'Ollie押注其对隐私的关注可以帮助它赢得AI助手竞赛',
+      'brief': '这款以家庭为中心的人工智能助手希望了解您日常生活的细节，但表示不会使用这些数据来训练人工智能模型或……',
+      'url': 'https://techcrunch.com/2026/09/03/ollie-is-betting-privacy-can-win-the-ai-assistant-race/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '谷歌最新的人工智能天气模型让您没有借口忘记带雨伞',
+      'brief': 'WeatherNext 3是深度学习技术带来的最新一波气象变化。谷歌表示，它将开始喂养我……',
+      'url': 'https://techcrunch.com/2026/09/03/googles-latest-ai-weather-model-gives-you-no-excuse-to-forget-your-umbrella/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '英伟达确认将以129亿美元收购Hugging Face',
+      'brief': '英伟达表示， Hugging Face拥有超过300万个型号，并被超过1800万开发人员使用。',
+      'url': 'https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '英伟达以近130亿美元收购Hugging Face',
+      'brief': '英伟达已同意以129.3亿美元的价格收购Hugging Face ，为开源人工智能模型、数据...带来最受欢迎的托管平台之一。',
+      'url': 'https://www.theverge.com/tech/985474/nvidia-buying-hugging-face-deal',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '问HN ：为什么OpenAI、Claude和Grok同时倒下？巧合吗？',
+      'brief': '问HN ：为什么OpenAI、Claude和Grok同时倒下？巧合吗？',
+      'url': 'https://news.ycombinator.com/item?id=49551096',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '逛完 WRC，我们发现机器人行业最该回答的 5 个问题',
+      'brief': '8 月 19 日，北京亦庄的空气里飘着一种奇怪的兴奋，这是 2026 世界机器人大会开幕的日子。300 多家企业、2000 多件展品，几乎把具身智能行业能拿出的东西都搬到了这里：大模型、本体、关键零部件、数据，应有尽有。 开幕当天，宇树科技敲钟上市，盘中市值一度冲破 4000 亿…',
+      'url': 'http://www.geekpark.net/news/369388',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '成立不到一年连融三轮，这个睡眠 AI 产品「火」了',
+      'brief': '头图来源：Fullive.ai 一家成立几个月、第一款产品即将量产的 AI 硬件公司，已经连续融了三轮：高瓴连续三轮加注，智元机器人等机构先后进入股东名单；到了今年 7 月，招商局创投又领投了它的新一轮融资。 这家公司叫 Fullive.ai，创始人郑昊本科就读于清华数学系，此后…',
+      'url': 'http://www.geekpark.net/news/369768',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '智谱和 MiniMax，把大模型做成了两种生意',
+      'brief': '头图来源：视觉中国 两家中国大模型公司，在五天里先后交出了上市后的首份中报。 MiniMax 先出：上半年收入 1.17 亿美元，同比增长 283%；8 月 ARR 超过 8 亿美元。智谱随后公布：上半年收入 9.54 亿元人民币，同比增长近 400%；8 月 ARR 达到 16…',
+      'url': 'http://www.geekpark.net/news/369775',
+      'source': '极客公园',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-03',
@@ -45,20 +101,36 @@ window.NEWS = {
       'type': '模型发布'
     },
     {
+      'date': '2026-09-03',
+      'title': '当 Agent 走出 App：WorkBuddy 的朋友圈开始向外生长',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/vogOaCpOeNfe0hjAXfzy?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '当Agent开始“吃数据”，传统湖仓不够用了：华为云重构数据基础设施',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/IE4CYYwbLYYKSbg7lXfx?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-03',
+      'title': 'Diagrid Catalyst 2.0 发布，为 AI 智能体新增持久化、可验证的执行能力',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/ofYabQL5uvxdaIY7B31f?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
       'date': '2026-09-02',
       'title': '消息人士称， Palo Alto Networks为Thrive支持的控制台支付了5亿$',
       'brief': '行业观察人士认为，此次收购还使红杉支持的Serval成为人工智能IT服务自动化领域事实上的创业领导者。',
       'url': 'https://techcrunch.com/2026/09/02/palo-alto-networks-paid-500m-for-thrive-backed-console-sources-say/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'TechCrunch Disrupt 2026全新真实世界人工智能舞台，搭载英伟达、机器人和已灭绝的动物',
-      'brief': '在我们新的真实世界人工智能舞台上，我们将专注于数字和物理之间的交集，以及我们将继续采取的所有方式……',
-      'url': 'https://techcrunch.com/2026/09/02/techcrunch-disrupt-2026s-new-real-world-ai-stage-features-nvidia-robots-and-extinct-animals/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-02',
@@ -70,51 +142,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-02',
-      'title': 'Pangram的Max Spero解释为什么人工智能检测比“真假”更难',
-      'brief': '互联网存在信任问题，这不仅仅是因为社交媒体订阅源充斥着人工智能。人工智能生成的文本和图像是……',
-      'url': 'https://techcrunch.com/video/pangrams-max-spero-on-why-ai-detection-is-harder-than-real-or-fake/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'Pangram的首席执行官表示，我们“危险地接近”死亡的互联网理论',
-      'brief': '互联网存在信任问题，这不仅仅是因为社交媒体订阅源充斥着人工智能。人工智能生成的文本和图像是……',
-      'url': 'https://techcrunch.com/podcast/were-dangerously-close-to-dead-internet-theory-says-pangrams-ceo/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '美国政府与OpenAI就版权材料培训LLM的问题进行合作',
-      'brief': '“美国对继续发展一个强大且具有竞争力的人工智能产业有着浓厚的兴趣，该产业将……',
-      'url': 'https://techcrunch.com/2026/09/02/u-s-government-sides-with-openai-on-issue-of-training-llms-on-copyrighted-material/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '印度首富现在希望将老旧的计算机转变为AI就绪的个人电脑',
-      'brief': 'Jio打赌，它可以在两个月内将一台老化的电脑变成一台只需11 $的人工智能电脑。',
-      'url': 'https://techcrunch.com/2026/09/02/indias-richest-man-now-wants-to-turn-aging-computers-into-ai-ready-pcs/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-02',
       'title': '随着企业急于保护其人工智能部署， HiddenLayer抢走了1亿美元',
       'brief': '安全公司正在争先恐后地构建不仅可以监控代理，还可以监控他们使用的工具和附加组件的产品。',
       'url': 'https://techcrunch.com/2026/09/02/hiddenlayer-nabs-100m-as-enterprises-rush-to-secure-their-ai-deployments/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'Adobe收购印度市场情报初创公司Rilo',
-      'brief': '这是Adobe继2023年Rephrase.ai之后第二次从印度收购',
-      'url': 'https://techcrunch.com/2026/09/02/adobe-acquires-indian-market-intelligence-startup-rilo/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
     },
     {
       'date': '2026-09-02',
@@ -150,14 +182,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-02',
-      'title': '谷歌正在将MrBeast送入荒野，配备人工智能',
-      'brief': '作为与谷歌多年合作伙伴关系的一部分， MrBeast将在即将推出的视频中展示Gemini、Google Health和Fitbit Air。这笔交易……',
-      'url': 'https://www.theverge.com/tech/988355/mrbeast-google-partnership-gemini-fitbit',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-02',
       'title': '人工智能代理和永远不会发生的重构',
       'brief': '人工智能代理和永远不会发生的重构',
       'url': 'https://www.rosenfeld.page/articles/programming/2026_09_02_ai_agents_and_the_refactoring_that_never_happens/',
@@ -171,14 +195,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/369724',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '从几百元，涨到一万元，婴儿床正在被「具身智能」重新定价',
-      'brief': '作者｜苏子华 编辑｜靖宇 极客公园最近发现，婴儿床这个品类正在被 AI，或者说被「具身智能」重新定价。 从一张几百元的价格，直接抬升到一万元。 婴儿床是少有的被技术「忽略」的家居品类。100 年来，它的形态几乎没有变过。四根立柱、一圈围栏、一张床垫。 关键变化发生在过去五年。 传…',
-      'url': 'http://www.geekpark.net/news/369719',
-      'source': '极客公园',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-02',
