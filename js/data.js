@@ -95,6 +95,7 @@
 
   // ===== DeepSWE:v1.1(每日刷新)与 v1.0(历史静态快照)合并 =====
   // 策略:v1.1 优先,同名模型按 canonical 去重只保留 v1.1;v1.0 独有的模型追加进来。
+  // v1.1 内同 canonical 的多版本变体(如 Qwen3.8-Max 与其 0902 版)取最高 Pass@1 合为一条。
   // 每条附带 version 字段("v1.1"/"v1.0"),供前端挂版本徽章;最终按 pass1 降序。
   function deepSwe() {
     var v11Src = window.DEEPSWE || { models: [] };
@@ -113,8 +114,14 @@
         seen[c.id] = true;
       }
     });
+    // 同 canonical 只保留最高 Pass@1 的一条
+    var best = {};
+    merged.forEach(function (m) {
+      if (!best[m.canon.id] || m.pass1 > best[m.canon.id].pass1) best[m.canon.id] = m;
+    });
     // 按 Pass@1 降序,保证表格排名可靠
-    return merged.sort(function (a, b) { return b.pass1 - a.pass1; });
+    return Object.keys(best).map(function (k) { return best[k]; })
+      .sort(function (a, b) { return b.pass1 - a.pass1; });
   }
 
   // 版本构成计数:返回合并集中 v1.1 / v1.0 独有的模型数,供脚注展示

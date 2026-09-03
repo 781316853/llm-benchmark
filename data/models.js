@@ -74,7 +74,7 @@ window.MODEL_MAP = {
     { id: "North Mini Code 1.0", vendor: "North",  color: "#8A8F98", aliases: ["North Mini Code 1.0"] },
     // ===== Code Arena · WebDev(LMArena)上榜补充的纯前端方向新模型(2026-08) =====
     { id: "Claude Opus 5",    vendor: "Anthropic", color: "#B3603F", aliases: ["Claude Opus 5", "claude-opus-5-max", "claude-opus-5-high", "claude-opus-5", "Opus 5", "Opus 5 (max)", "opus-5", "opus-5-max"] },
-    { id: "Qwen3.8-Max",      vendor: "Alibaba",   color: "#FF6A00", aliases: ["Qwen3.8-Max", "qwen3.8-max"] },
+    { id: "Qwen3.8-Max",      vendor: "Alibaba",   color: "#FF6A00", aliases: ["Qwen3.8-Max", "qwen3.8-max", "Qwen3.8-Max-0902", "qwen3.8-max-0902", "Qwen3.8-Max (0902)", "Qwen3.8 Max 0902"] },
     { id: "Qwen3.8-27B",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-27B", "qwen3.8-27b"] },
     { id: "Grok 4.6",         vendor: "xAI",       color: "#9099A4", aliases: ["Grok 4.6", "grok-4.6-high", "grok-4.6"] },
     { id: "GLM-5.3",          vendor: "zAI",       color: "#5B6CFF", aliases: ["GLM-5.3", "glm-5.3-max", "GLM-5.3(max)"] },
