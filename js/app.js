@@ -249,7 +249,7 @@
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
       var cls = (r.benchCount >= 3 ? "row-hit " : "") + (dual ? "row-two " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
-      var dualBadge = dual ? ' <span class="badge-two" title="仅命中两榜:按各榜成绩与排名模型比对落入相应名次区间,不计算综合分、不计排名;仅前30区间内显示">双榜</span>' : "";
+      var dualBadge = dual ? ' <span class="badge-two" title="仅命中两榜:按各榜成绩与排名模型比对落入相应名次区间,不计算综合分、不计排名;仅前30区间内显示">仅双榜</span>' : "";
       // 序号列:参与排名的行按出现顺序编号;双榜行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (dual ? "—" : ++rankNo) + '</td>' +
