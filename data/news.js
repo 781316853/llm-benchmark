@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-03',
+  'updated': '2026-09-04',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,44 +13,100 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-09-03',
-      'title': 'Ollie押注其对隐私的关注可以帮助它赢得AI助手竞赛',
-      'brief': '这款以家庭为中心的人工智能助手希望了解您日常生活的细节，但表示不会使用这些数据来训练人工智能模型或……',
-      'url': 'https://techcrunch.com/2026/09/03/ollie-is-betting-privacy-can-win-the-ai-assistant-race/',
+      'date': '2026-09-04',
+      'title': '这些令人讨厌的人工智能生成的菜单背后的相同性问题',
+      'brief': '虽然餐厅老板可能会将生成式人工智能作为美化菜单的捷径，但顾客可以发自内心地感觉到……',
+      'url': 'https://techcrunch.com/2026/09/03/the-sameness-problem-behind-those-unappetizing-ai-generated-menus/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
-      'date': '2026-09-03',
-      'title': '谷歌最新的人工智能天气模型让您没有借口忘记带雨伞',
-      'brief': 'WeatherNext 3是深度学习技术带来的最新一波气象变化。谷歌表示，它将开始喂养我……',
-      'url': 'https://techcrunch.com/2026/09/03/googles-latest-ai-weather-model-gives-you-no-excuse-to-forget-your-umbrella/',
-      'source': 'TechCrunch',
+      'date': '2026-09-04',
+      'title': 'OpenAI 曝光 GPT-6，能力超群；微信公关总监回应「好友超 1 万可查看单删好友」；联合国：超强而厄尔尼诺将冲击全球经济 ｜ 极客早知道',
+      'brief': 'GPT-6 曝光，OpenAI 总裁说：AGI 来了 当地时间 9 月 3 日，GPT-6 Astra 正式发布。OpenAI 总裁 Greg Brockman 在发布会结束后，说了一句在 AI 行业极为罕见的话：「我个人认为，我们可能已经到达 AGI 了，我觉得就是这个模型。」…',
+      'url': 'http://www.geekpark.net/news/369801',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-04',
+      'title': 'GPT-6 Astra 正式登场：烧了 10万块 GPU、多项跑分逼近满分，OpenAI 开启“AGI时代”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/mKGb7ZiPRlAiFDZCWK0v?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
       'type': '行业动态'
     },
     {
-      'date': '2026-09-03',
-      'title': '英伟达确认将以129亿美元收购Hugging Face',
-      'brief': '英伟达表示， Hugging Face拥有超过300万个型号，并被超过1800万开发人员使用。',
-      'url': 'https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion/',
-      'source': 'TechCrunch',
+      'date': '2026-09-04',
+      'title': 'AI 浪潮里，听见一线的声音｜AICon 深圳 2026 优秀出品人 & 明星讲师名单揭晓',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/6EYVBX5UD2Cb0PWYsPCq?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
       'type': '行业动态'
     },
     {
+      'date': '2026-09-04',
+      'title': '人人都能整个“自己的DeepSeek Harness”，那我们为啥还在给Claude Code们充会员？',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/6Jc130IN2OaXqsPDIzmJ?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-04',
+      'title': '“美国大豆包”Gemini翻身：输出速度碾压同行、智能水平重回第一梯队',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/M792kCZ4FIzk7YHe4WhT?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-04',
+      'title': '谷歌云发布 AI 智能体，简化数据库生命周期管理',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/iV0rsPyO5XZDJ7797hLJ?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
       'date': '2026-09-03',
-      'title': '英伟达以近130亿美元收购Hugging Face',
-      'brief': '英伟达已同意以129.3亿美元的价格收购Hugging Face ，为开源人工智能模型、数据...带来最受欢迎的托管平台之一。',
-      'url': 'https://www.theverge.com/tech/985474/nvidia-buying-hugging-face-deal',
+      'title': 'Meta正在付费查看您如何使用他们最新的人工智能模型',
+      'brief': '对于其用于运营编码和其他代理的新Muse Spark模型， Meta提供显式折扣，平均约为9…',
+      'url': 'https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-03',
+      'title': 'OpenAI的下一个大型AI模型已经“进入AGI时代”',
+      'brief': 'OpenAI的下一个大型模型在这里： GPT-6 Astra。该公司称之为网络安全等领域的“能力的一代飞跃” ，声称......',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release',
       'source': 'The Verge',
-      'type': '行业动态'
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-03',
-      'title': '问HN ：为什么OpenAI、Claude和Grok同时倒下？巧合吗？',
-      'brief': '问HN ：为什么OpenAI、Claude和Grok同时倒下？巧合吗？',
-      'url': 'https://news.ycombinator.com/item?id=49551096',
+      'title': 'GPT-6 Astra在人工分析编码代理指数方面取得了重大进展',
+      'brief': 'GPT-6 Astra在人工分析编码代理指数方面取得了重大进展',
+      'url': 'https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-03',
+      'title': '推出HN ： Mireye (YC S26) –物理世界人工智能代理的基础设施',
+      'brief': '推出HN ： Mireye (YC S26) –物理世界人工智能代理的基础设施',
+      'url': 'https://news.ycombinator.com/item?id=49552616',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-03',
+      'title': 'GPT-6 曝光， OpenAI 总裁说：AGI 来了',
+      'brief': '头图来源：OpenAI 作者｜桦林舞王 编辑｜靖宇 2026 年 9 月 3 日，OpenAI 总裁 Greg Brockman 在发布会结束后，说了一句在 AI 行业极为罕见的话：「我个人认为，我们可能已经到达 AGI 了，我觉得就是这个模型。」 他措辞很谨慎，用的是第一人称…',
+      'url': 'http://www.geekpark.net/news/369800',
+      'source': '极客公园',
+      'type': '模型发布'
     },
     {
       'date': '2026-09-03',
@@ -107,110 +163,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/vogOaCpOeNfe0hjAXfzy?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-03',
-      'title': '当Agent开始“吃数据”，传统湖仓不够用了：华为云重构数据基础设施',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/IE4CYYwbLYYKSbg7lXfx?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-03',
-      'title': 'Diagrid Catalyst 2.0 发布，为 AI 智能体新增持久化、可验证的执行能力',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/ofYabQL5uvxdaIY7B31f?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '消息人士称， Palo Alto Networks为Thrive支持的控制台支付了5亿$',
-      'brief': '行业观察人士认为，此次收购还使红杉支持的Serval成为人工智能IT服务自动化领域事实上的创业领导者。',
-      'url': 'https://techcrunch.com/2026/09/02/palo-alto-networks-paid-500m-for-thrive-backed-console-sources-say/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'OpenAI的新推理技巧向人工智能安全专家发出警报',
-      'brief': 'OpenAI的新Astra模型将使用“循环深度” ，这种技术允许模型在顺序思维之外进行操作，',
-      'url': 'https://techcrunch.com/2026/09/02/openais-new-reasoning-technique-alarms-ai-safety-experts/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '随着企业急于保护其人工智能部署， HiddenLayer抢走了1亿美元',
-      'brief': '安全公司正在争先恐后地构建不仅可以监控代理，还可以监控他们使用的工具和附加组件的产品。',
-      'url': 'https://techcrunch.com/2026/09/02/hiddenlayer-nabs-100m-as-enterprises-rush-to-secure-their-ai-deployments/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'OpenAI面临30多起与Tumbler Ridge枪击案有关的诉讼',
-      'brief': 'Edelson PC正在就Tumbler Ridge枪击事件对OpenAI提起30起新的诉讼，不断升级对协助、教唆和命名Chr…',
-      'url': 'https://techcrunch.com/2026/09/02/openai-faces-30-more-lawsuits-tied-to-tumbler-ridge-shooting/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '谷歌表示，其新的Gemini 3.8 Flash型号“更加努力” ，但可能会花费更多',
-      'brief': '谷歌推出了Gemini 3.8 Flash ，仅比其前身晚了几周。该公司声称新型号比Gemi “更努力” ……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/988742/google-gemini-3-8-flash',
-      'source': 'The Verge',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '研究人员在OpenAI发布Astra之前担心安全灾难',
-      'brief': 'OpenAI即将发布其迄今为止最强大的人工智能模型Astra ，此前数周的延迟是为了支持安全协议。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/988334/openai-astra-ai-monitoring-safety',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '特朗普政府正在纽约时报版权诉讼中支持OpenAI',
-      'brief': '特朗普政府干预了《纽约时报》对OpenAI的版权诉讼，提出了一个有利于人工智能实验室的论点……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/988344/trump-administration-new-york-times-openai-lawsuit',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '人工智能代理和永远不会发生的重构',
-      'brief': '人工智能代理和永远不会发生的重构',
-      'url': 'https://www.rosenfeld.page/articles/programming/2026_09_02_ai_agents_and_the_refactoring_that_never_happens/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '对话黄青虬：成立半年估值 70 亿，阿里腾讯联投，交出了能「长程执行」的第一个自研模型',
-      'brief': '作者｜苏子华 编辑｜靖宇 机器人行业现在最关心的一个问题：它能干完一整件事吗？ 几十秒的抓取物品的视频已经撑不起估值了。把一件事从头干到尾，成了最新的考题，行业里叫它「长程任务」。 8 月 19 日，世界机器人大会，一台机器人首次亮相，用 15 分钟回答了这道题：收拾客厅，检查冰…',
-      'url': 'http://www.geekpark.net/news/369724',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-02',
-      'title': '苹果新 CEO 首次「发声」；网传抖音发生「推荐算法错乱」；Claude Fable 5.1 正式上线',
-      'brief': '​ 苹果新任 CEO 约翰&middot;特努斯在 X 平台发布首条动态向关注者问好 苹果首席执行官约翰&middot;特努斯正式加入社交平台 X，并发布了个人账号的首条动态。正如外界预料的那样，这条仅有「hello」五个字母的简短消息迅速获得大量关注。苹果历任首席执行官通常都具…',
-      'url': 'http://www.geekpark.net/news/369690',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-02',
-      'title': 'Cloudflare OS：Cloudflare 基于能力模型构建的开源企业级 AI 平台',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/ztbou1CqjAdzrT6GNSKV?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
     }
   ]
 };

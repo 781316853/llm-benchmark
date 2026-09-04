@@ -1,5 +1,5 @@
 // 数据源:Artificial Analysis Intelligence Index 快照(免 Key 网页抓取)
-// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-09-03)
+// 来源:https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index  (更新于 2026-09-04)
 // 字段说明:name=模型短名;full=官方全名;base=去变体后的基础名;
 //          vendor=厂商;score=Intelligence Index(v4.1.1,越高越好)
 // 注:通用智能指数(含知识/推理/数学等评测),非编码专项;覆盖页面默认入选的 31 个主流模型;
@@ -7,7 +7,7 @@
 window.ARTIFICIAL_ANALYSIS = {
   source: "Artificial Analysis Intelligence Index",
   url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-  updated: "2026-09-03",
+  updated: "2026-09-04",
   version: "4.1.1",
   note: "通用智能指数 · 覆盖 31 个主流模型 · 独立榜单,不计入综合分",
   desc: "Artificial Analysis 独立评测的通用智能指数 v4.1.1,汇总 GDPval-AA/τ³-Banking/Terminal-Bench/HLE/GPQA Diamond 等多项评测。",
@@ -77,6 +77,22 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 61.48
   },
   {
+    'slug': 'gpt-6-astra',
+    'name': 'GPT-6 Astra (max)',
+    'full': 'GPT-6 Astra (max)',
+    'vendor': 'OpenAI',
+    'base': 'GPT-6 Astra',
+    'score': 61.22
+  },
+  {
+    'slug': 'gpt-6-astra-xhigh',
+    'name': 'GPT-6 Astra (xhigh)',
+    'full': 'GPT-6 Astra (xhigh)',
+    'vendor': 'OpenAI',
+    'base': 'GPT-6 Astra',
+    'score': 60.99
+  },
+  {
     'slug': 'gpt-5-6-sol',
     'name': 'GPT-5.6 Sol (max)',
     'full': 'GPT-5.6 Sol (max)',
@@ -99,14 +115,6 @@ window.ARTIFICIAL_ANALYSIS = {
     'vendor': 'Meta',
     'base': 'Muse Spark 1.3',
     'score': 60.78
-  },
-  {
-    'slug': 'claude-fable-5-1-medium',
-    'name': 'Claude Fable 5.1 (medium with fallback)',
-    'full': 'Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)',
-    'vendor': 'Anthropic',
-    'base': 'Claude Fable 5.1',
-    'score': 60.48
   },
   {
     'slug': 'kimi-k3',
@@ -181,6 +189,14 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 52.02
   },
   {
+    'slug': 'k2-horizon-375b-a23b',
+    'name': 'K2 Horizon 375B A23B',
+    'full': 'K2 Horizon 375B A23B',
+    'vendor': 'MBZUAI Institute of Foundation Models',
+    'base': 'K2 Horizon 375B A23B',
+    'score': 47.28
+  },
+  {
     'slug': 'minimax-m3',
     'name': 'MiniMax-M3',
     'full': 'MiniMax-M3',
@@ -229,28 +245,12 @@ window.ARTIFICIAL_ANALYSIS = {
     'score': 30.39
   },
   {
-    'slug': 'claude-4-5-haiku-reasoning',
-    'name': 'Claude 4.5 Haiku',
-    'full': 'Claude 4.5 Haiku (Reasoning)',
-    'vendor': 'Anthropic',
-    'base': 'Claude 4.5 Haiku',
-    'score': 29.89
-  },
-  {
     'slug': 'gpt-oss-120b',
     'name': 'gpt-oss-120b (high)',
     'full': 'gpt-oss-120b (high)',
     'vendor': 'OpenAI',
     'base': 'gpt-oss-120b',
     'score': 24.13
-  },
-  {
-    'slug': 'nemotron-3-5-lightning',
-    'name': 'Nemotron 3.5 Lightning',
-    'full': 'Nemotron 3.5 Lightning',
-    'vendor': 'NVIDIA',
-    'base': 'Nemotron 3.5 Lightning',
-    'score': 23.61
   },
   {
     'slug': 'command-a-plus',

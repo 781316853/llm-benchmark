@@ -1,15 +1,15 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-09-03)
+// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-09-04)
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
-  updated: "2026-09-03",
-  refreshedAt: "2026-09-04 00:57",
+  updated: "2026-09-04",
+  refreshedAt: "2026-09-04 13:35",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 34 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 35 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -21,6 +21,15 @@ window.DEEPSWE = {
     'outTok': null,
     'steps': null,
     'source': 'datalearner'
+  },
+  {
+    'name': 'gpt-6-astra',
+    'effort': 'xhigh',
+    'pass1': 74,
+    'ci': 3,
+    'cost': 6.52,
+    'outTok': 29557,
+    'steps': 29
   },
   {
     'name': 'gemini-3-8-flash',

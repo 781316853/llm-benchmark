@@ -1,16 +1,16 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-09-03)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-09-04)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-09-03",
-  refreshedAt: "2026-09-04 00:57",
+  updated: "2026-09-04",
+  refreshedAt: "2026-09-04 13:35",
   version: "v1.1",
-  totalSystems: 90,
-  note: "共 90 系统,展示 overall 视图全部 87 个有记录系统",
+  totalSystems: 91,
+  note: "共 91 系统,展示 overall 视图全部 88 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -28,6 +28,14 @@ window.VIBECODE = {
     'ci': 1.57,
     'cost': 33.37,
     'latencyS': 3460
+  },
+  {
+    'name': 'Gpt 6 astra [新]',
+    'harness': 'OpenHands',
+    'score': 89.59,
+    'ci': 2.17,
+    'cost': 38.51,
+    'latencyS': 2344
   },
   {
     'name': 'Claude opus 5 [新]',
