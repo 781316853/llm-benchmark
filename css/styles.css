@@ -198,6 +198,11 @@ a:hover { text-decoration: underline; }
 .tier-na { color: var(--text-tertiary); margin-right: 2px; }
 /* 矩阵表单元格内的成本辅助标注:小号、降饱和,让分数保持视觉主体 */
 .cell-cost { font-size: 11px; color: var(--text-tertiary); margin-left: 3px; font-variant-numeric: tabular-nums; }
+/* AI 能力方向分:前端/后端同字号并列(如 96.5 / 96),以不同颜色区分方向 */
+.ac-fe, .ac-be { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ac-fe { color: #C05621; } /* 前端 - 暖橙 */
+.ac-be { color: #0E7490; } /* 后端 - 深青 */
+.ac-sep { color: var(--text-tertiary); font-size: 11px; margin: 0 2px; }
 /* 各梯队配色:从 S+(紫)到 E(深红)渐变 */
 .tier-Sp { background: linear-gradient(135deg, #7C3AED, #6D28D9); }
 .tier-S  { background: linear-gradient(135deg, #D4943A, #C27D24); }

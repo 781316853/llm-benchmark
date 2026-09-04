@@ -215,14 +215,17 @@
     if (!rows.length) rows = allRows;
     // 排名计数器:仅对参与排名的行(命中≥3榜)递增;双榜行不参与排名,序号列固定「—」
     var rankNo = 0;
-    // AI 能力单元格:前端/后端方向分并列显示(如 96.5/96),任一侧缺失则只显示另一侧
+    // AI 能力单元格:前端/后端方向分同字号并列(如 96.5 / 96),以不同颜色区分,
+    // 任一侧缺失则只显示另一侧(颜色保留,便于区分方向)
     var aicapCell = function (r) {
       var fe = r.aicapFe ? r.aicapFe.score : null;
       var be = r.aicapBe ? r.aicapBe.score : null;
       if (fe == null && be == null) return "—";
-      if (fe == null) return String(be);
-      if (be == null) return String(fe);
-      return fe + '<span class="cell-cost"> / ' + be + '</span>';
+      if (fe == null) return '<span class="ac-be">' + be + '</span>';
+      if (be == null) return '<span class="ac-fe">' + fe + '</span>';
+      return '<span class="ac-fe" title="前端">' + fe + '</span>' +
+        '<span class="ac-sep"> / </span>' +
+        '<span class="ac-be" title="后端">' + be + '</span>';
     };
     var html = rows.map(function (r) {
       // 双榜行:恰好命中 2 个基准组,按综合分混排展示但不计排名、不计入前30限制
