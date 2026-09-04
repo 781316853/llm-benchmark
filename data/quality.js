@@ -141,6 +141,24 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'Qwen3.8-Flash',
+      'name': 'qwen3.8-flash',
+      'vendor': 'Alibaba',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'ai_capability': 92.55,
+        'datalearner': 58.7,
+        'deepswe_v11': 58.7
+      },
+      'mean': 70,
+      'stddev': 15.96,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'Nemotron 3 Ultra',
       'name': 'Nemotron 3 Ultra',
       'vendor': 'NVIDIA',
@@ -1001,22 +1019,6 @@ window.QUALITY = {
       'mean': 59.3,
       'stddev': 0,
       'flag': 'ok'
-    },
-    {
-      'canonId': 'Qwen3.8-Flash-Next',
-      'name': 'Qwen3.8-Flash-Next',
-      'vendor': '其他',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 58.7,
-        'deepswe_v11': 58.7
-      },
-      'mean': 58.7,
-      'stddev': 0,
-      'flag': 'ok'
     }
   ],
   'completeness': {
@@ -1147,6 +1149,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'ai_capability,artificial_analysis,datalearner,deepswe_v11,vibecode',
       'message': 'glm-5.3-flash 跨源分数标准差 16.89(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11',
+      'message': 'qwen3.8-flash 跨源分数标准差 15.96(>10)'
     },
     {
       'level': 'error',

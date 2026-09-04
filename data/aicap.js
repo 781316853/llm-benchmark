@@ -7,7 +7,7 @@ window.AICAP = {
   'url': 'https://atmeplz.github.io/ai-test-prompt/data/site.json',
   'boardUrl': 'https://atmeplz.github.io/ai-test-prompt/board-04.html',
   'updated': '2026-09-03',
-  'refreshedAt': '2026-09-04 13:35',
+  'refreshedAt': '2026-09-05 00:46',
   'runCount': 26,
   'desc': 'AI 能力专项测试四方向榜:文字/前端/后端/知识四个方向独立排名,方向分由成员题按既定权重合成。门户仅收录前端与后端两个编码方向,独立榜单展示,不计入综合分。',
   'directions': {
