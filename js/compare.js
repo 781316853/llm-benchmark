@@ -31,12 +31,13 @@
     if (e.aicapFe || e.aicapBe) boards.push("aicap");
     return boards;
   }
-  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,取均值。
+  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,取最大值(以较弱榜为准),
+  // 避免强榜把弱榜拉高而使落位偏前。
   // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前),不计算综合分
   function dualPosition(e, ranked) {
     var boards = hitBoards(e);
     if (!boards.length) return ranked.length;
-    var sum = 0;
+    var worst = -1; // 名次最靠后的榜(above 最大)为准
     boards.forEach(function (b) {
       var val = BOARD_VALS[b](e);
       var above = 0;
@@ -44,9 +45,9 @@
         var rv = BOARD_VALS[b](r);
         if (rv != null && rv > val) above++;
       });
-      sum += above;
+      if (above > worst) worst = above;
     });
-    return sum / boards.length;
+    return worst;
   }
   // 交叉矩阵排序(仅含命中≥2榜的模型,仅命中一榜的模型不进入总览矩阵,详见各榜单页):
   // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
