@@ -13,7 +13,7 @@ window.MODEL_MAP = {
     { id: "Claude Sonnet 4.5",vendor: "Anthropic", color: "#A07050", aliases: ["claude-4-5-Sonnet", "Claude Sonnet 4.5"] },
     { id: "Claude Haiku 4.5", vendor: "Anthropic", color: "#704936", aliases: ["claude-haiku-4-5", "claude-haiku-4.5", "Claude Haiku 4.5", "claude-4-5-haiku"] },
     { id: "Claude Opus 4.5",  vendor: "Anthropic", color: "#805443", aliases: ["Claude Opus 4.5", "Opus 4.5", "claude-opus-4-5-20251101"] },
-    { id: "GPT-5.6 Sol",      vendor: "OpenAI",    color: "#0A8F6A", aliases: ["gpt-5-6-sol", "GPT 5.6 Sol"] },
+    { id: "GPT-5.6 Sol",      vendor: "OpenAI",    color: "#0A8F6A", aliases: ["gpt-5-6-sol", "gpt-5.6-sol-0829", "GPT 5.6 Sol"] },
     { id: "GPT-5.6 Terra",    vendor: "OpenAI",    color: "#0FA37E", aliases: ["gpt-5-6-terra", "GPT 5.6 Terra"] },
     { id: "GPT-5.6 Luna",     vendor: "OpenAI",    color: "#15B893", aliases: ["gpt-5-6-luna", "GPT 5.6 Luna"] },
     { id: "GPT-5.5",          vendor: "OpenAI",    color: "#10A37F", aliases: ["gpt-5.5", "GPT 5.5", "GPT-5.5 (high)", "GPT-5.5(high)"] },
@@ -80,7 +80,7 @@ window.MODEL_MAP = {
     { id: "GLM-5.3",          vendor: "zAI",       color: "#5B6CFF", aliases: ["GLM-5.3", "glm-5.3-max", "GLM-5.3(max)"] },
     { id: "Gemini 3.7 Flash", vendor: "Google",    color: "#4285F4", aliases: ["Gemini 3.7 Flash", "gemini-3.7-flash-high"] },
     { id: "Gemini 3.6 Flash", vendor: "Google",    color: "#5A95F5", aliases: ["Gemini 3.6 Flash", "gemini-3.6-flash-high"] },
-    { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)"] },
+    { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)", "muse-spark-1.2-contributor"] },
     { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview"] },
     // ===== Artificial Analysis Intelligence Index 上榜补充的新模型(2026-08) =====
     { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },
@@ -95,7 +95,15 @@ window.MODEL_MAP = {
     { id: "K-EXAONE 2.0",     vendor: "LG AI Research", color: "#A14233", aliases: ["K-EXAONE 2.0", "k-exaone-2-0-0803", "K-EXAONE 2.0 (0803)"] },
     { id: "Mistral Medium 3.5", vendor: "Mistral", color: "#FF8053", aliases: ["Mistral Medium 3.5", "mistral-medium-3-5"] },
     { id: "Nemotron 3.5 Lightning", vendor: "NVIDIA", color: "#86C40A", aliases: ["Nemotron 3.5 Lightning", "nemotron-3-5-lightning"] },
-    { id: "Command A+",       vendor: "Cohere",    color: "#39594D", aliases: ["Command A+", "command-a-plus"] }
+    { id: "Command A+",       vendor: "Cohere",    color: "#39594D", aliases: ["Command A+", "command-a-plus"] },
+    // ===== AI 能力专项测试(atmeplz)前端/后端方向榜补充的新模型(2026-09) =====
+    { id: "Gemini 3.8 Flash", vendor: "Google",    color: "#4E8BF0", aliases: ["Gemini 3.8 Flash", "gemini-3.8-flash", "gemini-3.8-flash-high"] },
+    { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash"] },
+    { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview"] },
+    { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
+    { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev"] },
+    { id: "DeepSeek V4 Pro 0821 灰测", vendor: "DeepSeek", color: "#6B86FE", aliases: ["DeepSeek V4 Pro 0821 凌晨灰测", "deepseek-v4-pro-0821凌晨灰测"] },
+    { id: "DSV4F-VE-ocgo",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["DSV4F-VE-ocgo"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   vendorDefaultColor: "#8A8F98",

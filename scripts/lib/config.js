@@ -77,6 +77,13 @@ module.exports = {
       // 静态页仅内嵌约 20-30 个主流模型(默认入选图表集),全量 ~175 模型为客户端加载,不在抓取范围。
       url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
       host: "artificialanalysis.ai"
+    },
+    ai_capability: {
+      // AI 能力专项测试(atmeplz)四方向榜:静态站,直接抓取渲染用 JSON。
+      // 只取前端(FRONTEND)/后端(BACKEND)两个方向的方向分(0-100)。
+      url: "https://atmeplz.github.io/ai-test-prompt/data/site.json",
+      boardUrl: "https://atmeplz.github.io/ai-test-prompt/board-04.html",
+      host: "atmeplz.github.io"
     }
   },
 

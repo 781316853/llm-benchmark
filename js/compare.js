@@ -8,19 +8,27 @@
   // 综合分容差:差距 < 此值的模型视为"同档",同档内按次级指标排序
   var SCORE_TOLERANCE = 1.5;
   // 各榜成绩取值(与矩阵列一致,值越大越好);双榜模型逐榜比对时使用
+  // 「AI 能力」作为单一基准参与定位:取前端/后端在场方向分的均值
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     vibe:    function (e) { return e.vibe ? e.vibe.score : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
-    webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; }
+    webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
+    aicap:   function (e) {
+      var vals = [];
+      if (e.aicapFe) vals.push(e.aicapFe.score);
+      if (e.aicapBe) vals.push(e.aicapBe.score);
+      return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
+    }
   };
-  // 双榜模型命中的榜 key 列表(以实际有数据为准)
+  // 双榜模型命中的榜 key 列表(以实际有数据为准;AI 能力前端/后端合并为单一命中)
   function hitBoards(e) {
     var boards = [];
     if (e.deepswe) boards.push("deepswe");
     if (e.vibe) boards.push("vibe");
     if (e.llm && e.llm.norm != null) boards.push("llm");
     if (e.webdev && e.webdev.score != null) boards.push("webdev");
+    if (e.aicapFe || e.aicapBe) boards.push("aicap");
     return boards;
   }
   // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,取均值。
@@ -76,17 +84,19 @@
     rows.sort(function (a, b) { return a._posKey - b._posKey; });
     return rows;
   }
-  // 主基准组权重:DeepSWE 40%、Vibe Code 20%、llm2014 10%、WebDev 20%
-  // (llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准,2026-08-27 起权重由 20% 降至 10%;
-  //  WebDev 与 Vibe 同属前端,合计权重 40%;avgNorm 按在场基准权重归一化,缺失权重自动回流)
-  var OLD_WEIGHTS = { deepswe: 0.4, vibe: 0.2, llm: 0.1, webdev: 0.2 };
+  // 主基准组权重:DeepSWE 35%、Vibe Code 15%、llm2014 10%、WebDev 15%、AI 能力·前端 10%、AI 能力·后端 10%
+  // (llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准,权重 10%;
+  //  AI 能力同为个人专项测试口径,前端/后端各 10%;名义总和 95%,avgNorm 按在场权重归一化,缺失权重自动回流)
+  var WEIGHTS = { deepswe: 0.35, vibe: 0.15, llm: 0.10, webdev: 0.15, aicapFe: 0.10, aicapBe: 0.10 };
   function avgNorm(e) {
     var sum = 0, wsum = 0;
     // 按权重加权平均;缺失基准的权重自动回流至已有基准(归一化)
-    if (e.deepswe) { sum += e.deepswe.norm * OLD_WEIGHTS.deepswe; wsum += OLD_WEIGHTS.deepswe; }
-    if (e.vibe)    { sum += e.vibe.norm    * OLD_WEIGHTS.vibe;    wsum += OLD_WEIGHTS.vibe; }
-    if (e.llm && e.llm.norm != null) { sum += e.llm.norm * OLD_WEIGHTS.llm; wsum += OLD_WEIGHTS.llm; }
-    if (e.webdev && e.webdev.norm != null) { sum += e.webdev.norm * OLD_WEIGHTS.webdev; wsum += OLD_WEIGHTS.webdev; }
+    if (e.deepswe) { sum += e.deepswe.norm * WEIGHTS.deepswe; wsum += WEIGHTS.deepswe; }
+    if (e.vibe)    { sum += e.vibe.norm    * WEIGHTS.vibe;    wsum += WEIGHTS.vibe; }
+    if (e.llm && e.llm.norm != null) { sum += e.llm.norm * WEIGHTS.llm; wsum += WEIGHTS.llm; }
+    if (e.webdev && e.webdev.norm != null) { sum += e.webdev.norm * WEIGHTS.webdev; wsum += WEIGHTS.webdev; }
+    if (e.aicapFe && e.aicapFe.norm != null) { sum += e.aicapFe.norm * WEIGHTS.aicapFe; wsum += WEIGHTS.aicapFe; }
+    if (e.aicapBe && e.aicapBe.norm != null) { sum += e.aicapBe.norm * WEIGHTS.aicapBe; wsum += WEIGHTS.aicapBe; }
     return wsum > 0 ? sum / wsum : 0;
   }
   // 跨榜一致性(标准差):各基准 norm 值的离散程度
@@ -97,6 +107,8 @@
     if (e.vibe) vs.push(e.vibe.norm);
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
     if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
+    if (e.aicapFe && e.aicapFe.norm != null) vs.push(e.aicapFe.norm);
+    if (e.aicapBe && e.aicapBe.norm != null) vs.push(e.aicapBe.norm);
     if (vs.length < 2) return 0;
     var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
     var sumSq = vs.reduce(function (s, v) { var d = v - mean; return s + d * d; }, 0);
@@ -105,7 +117,7 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:主基准组加权平均(DeepSWE 40%/Vibe Code 20%/llm2014 10%/WebDev 20%)减去一致性折减
+  // 综合分:主基准组加权平均(DeepSWE 35%/Vibe 15%/llm2014 10%/WebDev 15%/AI·前端 10%/AI·后端 10%)减去一致性折减
   function composite(e) {
     var base = avgNorm(e);
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);

@@ -28,7 +28,8 @@
     deepswe: "长程软件工程任务评测,覆盖真实 GitHub issue 到 PR 的完整解决链路",
     vibecode: "从零构建 Web 应用的端到端评测,衡量模型独立完成项目的能力",
     llm2014: "个人私有题库的档位制评测,从零构建实际应用并按通过情况评级(含单任务测试成本)",
-    webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力"
+    webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力",
+    aicap: "atmeplz 四方向榜:前端(中式建筑/体素山水/前端网页/黑洞模拟)与后端(超级 MES)方向分,各占综合分权重 10%"
   };
 
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
@@ -88,6 +89,14 @@
     // Code Arena · WebDev 单值列(Elo 原值):排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true,
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
+    // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
+    { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true,
+      val: function (r) {
+        var vals = [];
+        if (r.aicapFe) vals.push(r.aicapFe.score);
+        if (r.aicapBe) vals.push(r.aicapBe.score);
+        return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
+      } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -206,6 +215,15 @@
     if (!rows.length) rows = allRows;
     // 排名计数器:仅对参与排名的行(命中≥3榜)递增;双榜行不参与排名,序号列固定「—」
     var rankNo = 0;
+    // AI 能力单元格:前端/后端方向分并列显示(如 96.5/96),任一侧缺失则只显示另一侧
+    var aicapCell = function (r) {
+      var fe = r.aicapFe ? r.aicapFe.score : null;
+      var be = r.aicapBe ? r.aicapBe.score : null;
+      if (fe == null && be == null) return "—";
+      if (fe == null) return String(be);
+      if (be == null) return String(fe);
+      return fe + '<span class="cell-cost"> / ' + be + '</span>';
+    };
     var html = rows.map(function (r) {
       // 双榜行:恰好命中 2 个基准组,按综合分混排展示但不计排名、不计入前30限制
       var dual = r.benchCount === 2;
@@ -253,7 +271,8 @@
         '<td class="num">' + vc + '</td>' +
         '<td class="num">' + lm + '</td>' +
         '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
-        '<td class="num">' + r.benchCount + '/4</td></tr>';
+        '<td class="num">' + aicapCell(r) + '</td>' +
+        '<td class="num">' + r.benchCount + '/5</td></tr>';
     });
     // 表头:可点击,激活列显示方向指示符;数值列追加 num 类以与数据居中对齐
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
@@ -479,6 +498,51 @@
       '<div class="note-line"><b>说明</b>通用智能指数(含知识/推理/数学等评测),非编码专项;与站内编码基准不同纲,不计入综合分。同一模型的不同推理强度变体分别计分。</div>';
   }
 
+  // ===== 7) AI 能力专项测试(四方向榜 · 前端/后端,独立榜单不计入综合分) =====
+  function renderAICap() {
+    var src = D.src.aicap || {};
+    var data = D.aicap();
+    document.getElementById("aicapDesc").textContent = (src.desc || "") +
+      (src.runCount ? " · " + src.runCount + " 次完整运行" : "") +
+      (src.updated ? " · 更新 " + src.updated : "");
+    // 柱状:前端/后端各一张,升序使最高在上;最多展示 Top 25 防止标签拥挤
+    [["capFeBar", data.frontend], ["capBeBar", data.backend]].forEach(function (pair) {
+      var el = document.getElementById(pair[0]);
+      if (!el) return;
+      var ms = pair[1];
+      var sorted = ms.slice().sort(function (a, b) { return a.score - b.score; }).slice(-25);
+      var h = Math.min(760, Math.max(380, ms.length * 26 + 90));
+      el.style.height = h + "px";
+      var inst0 = CH.inst(pair[0]);
+      if (inst0) inst0.resize();
+      CH.apply(pair[0], CH.barOption(sorted.map(function (m) { return m.name; }),
+        sorted.map(function (m) { return m.score; }), "#2D9D78", "%", { max: 100, left: 190, labelSize: 11 }));
+    });
+    // 表格:模型名(厂商色圆点 + effort·platform 次要信息)/ 厂商 / 方向分 / 参考
+    function dirTable(id, models) {
+      var html = models.map(function (m, i) {
+        var sub = [m.effort, m.platform].filter(Boolean).join(" · ");
+        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) +
+          (sub ? ' <span class="cell-cost">' + esc(sub) + '</span>' : "") + '</td>' +
+          '<td>' + esc(m.vendorDisplay || m.vendor) + '</td><td class="num">' + m.score + '</td>' +
+          '<td class="num">' + (m.pct != null ? m.pct + "%" : "—") + '</td></tr>';
+      });
+      fillTable(id, ["#", "模型", "厂商", "方向分", "参考"], html, ["", "", "", "num", "num"]);
+    }
+    dirTable("capFeTable", data.frontend);
+    dirTable("capBeTable", data.backend);
+    // 脚注:来源 + 方向权重说明
+    var wfmt = function (w) { return (w || []).map(function (x) { return x[0] + " " + x[1]; }).join(" + "); };
+    var fe = (src.directions && src.directions.frontend) || {};
+    var be = (src.directions && src.directions.backend) || {};
+    document.getElementById("aicapNote").innerHTML =
+      '<div class="note-line"><b>来源</b><a href="' + esc(src.boardUrl || "") + '" target="_blank" rel="noopener">' + esc(src.boardUrl || "") + ' ↗</a></div>' +
+      '<div class="note-line"><b>更新</b>' + esc(src.updated || "") + ' · ' + esc(src.runCount || 0) + ' 次完整运行</div>' +
+      '<div class="note-line"><b>前端方向分</b>' + esc(wfmt(fe.weight)) + '</div>' +
+      '<div class="note-line"><b>后端方向分</b>' + esc(wfmt(be.weight)) + '</div>' +
+      '<div class="note-line"><b>说明</b>已计入综合分(前端/后端各 10%)并进入总览交叉矩阵(合并单列、前后端方向分并列展示);方向分 0-100,越高越好。</div>';
+  }
+
   // ===== 标签切换 =====
   function showTab(name) {
     state.tab = name;
@@ -492,6 +556,7 @@
     else if (name === "deepswe") renderDeepSwe();
     else if (name === "vibecode") renderVibeCode();
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
+    else if (name === "aicap") renderAICap();
     else if (name === "aa") renderAA();
     // 切换后重绘图表以适配可见尺寸
     setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);

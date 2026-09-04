@@ -229,12 +229,28 @@
       .sort(function (a, b) { return b.score - a.score; });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev} 用于矩阵/雷达 =====
-  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高
+  // ===== AI 能力专项测试(atmeplz)四方向榜:前端/后端方向分 =====
+  // 独立榜单展示,不计入综合分;按 score 降序,并附加 canonical 与颜色
+  function aicap() {
+    var src = window.AICAP || { directions: {} };
+    var out = { frontend: [], backend: [] };
+    ["frontend", "backend"].forEach(function (key) {
+      var dir = (src.directions && src.directions[key]) || {};
+      (dir.models || []).forEach(function (m) {
+        out[key].push(Object.assign({}, m, { canon: canon(m.name) }));
+      });
+      out[key].sort(function (a, b) { return b.score - a.score; });
+    });
+    return out;
+  }
+
+  // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev, aicapFe, aicapBe} 用于矩阵/雷达 =====
+  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
+  // aicap:前端/后端方向分分别取最高(0-100,直接作 norm);跨榜命中合并为「AI 能力」单一基准计数
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, webdev: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, webdev: null, aicapFe: null, aicapBe: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -263,20 +279,34 @@
       var e = ensure(m.canon);
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
     });
-    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / WebDev 共 4 榜
+    // AI 能力专项测试:前端/后端方向分(0-100,直接作 norm);前端/后端各自同名取最高
+    var ac = aicap();
+    ac.frontend.forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.aicapFe || m.score > e.aicapFe.score)
+        e.aicapFe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
+    });
+    ac.backend.forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.aicapBe || m.score > e.aicapBe.score)
+        e.aicapBe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
+    });
+    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / WebDev 共 4 榜;
+    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 5),矩阵中仍分别两列展示
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.webdev) e.benchCount++;
+      if (e.aicapFe || e.aicapBe) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息 =====
+  // ===== 汇总卡片信息(DeepSWE / Vibe / llm2014 / WebDev / AI 能力 共 5 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {};
+    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {};
     var dsTop = (ds.models || [])[0] || {};
     var vcTop = (vc.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
@@ -285,6 +315,11 @@
     // llm2014 头名 = 源排序第一名(rank 0),展示其综合分(按等级均值归一化,未必恰为 100)
     var lmTop = lmRows[0] || {};
     var lmTopScore = lmTop.norm != null ? lmTop.norm : null;
+    // AI 能力:前端/后端方向分头名(各方向按 score 降序取首)
+    var acFe = (ac.directions && ac.directions.frontend) || {};
+    var acBe = (ac.directions && ac.directions.backend) || {};
+    var acFeTop = (acFe.models || [])[0] || {};
+    var acBeTop = (acBe.models || [])[0] || {};
     return [
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
@@ -297,7 +332,10 @@
         top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/100" : "—") },
       { key: "webdev", name: "Code Arena · WebDev", tag: "前端 Web 应用开发", url: wd.officialUrl || wd.url, updated: wd.updated,
         stats: [{ l: "模型", v: (wd.models || []).length }, { l: "Elo", v: (wdTop.score != null ? wdTop.score : "—") }],
-        top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") }
+        top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") },
+      { key: "aicap", name: "AI 能力专项测试", tag: "前端/后端方向分", url: ac.boardUrl || ac.url || "", updated: ac.updated,
+        stats: [{ l: "方向", v: 2 }, { l: "模型", v: ac.runCount != null ? ac.runCount : 0 }],
+        top: [acFeTop.name, acBeTop.name].filter(Boolean).join(" / ") }
     ];
   }
 
@@ -347,6 +385,7 @@
     vibeCode: vibeCode,
     webdev: webdev,
     artificialAnalysis: artificialAnalysis,
+    aicap: aicap,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
     unified: unified,
@@ -357,6 +396,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aa: window.ARTIFICIAL_ANALYSIS }
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aa: window.ARTIFICIAL_ANALYSIS, aicap: window.AICAP }
   };
 })();

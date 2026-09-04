@@ -99,6 +99,6 @@ jobs:
         env:
           BR: ${{ github.ref_name }}
         run: |
-          for f in index.html data/deepswe.js data/deepswe_v10.js data/vibecode.js data/llm2014.js data/arena_webdev.js data/models.js data/seen.js data/quality.js data/datalearner.js data/news.js; do
+          for f in index.html data/deepswe.js data/deepswe_v10.js data/vibecode.js data/llm2014.js data/arena_webdev.js data/models.js data/seen.js data/quality.js data/datalearner.js data/news.js data/aicap.js; do
             curl -fsSL "https://purge.jsdelivr.net/gh/${{ github.repository }}@${BR}/$f" || true
           done
