@@ -170,7 +170,8 @@
   // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, norm, rank}]} =====
   // 综合分(norm,0-100)按等级均值连续映射,同月人人不同分:
   // 1) 基数 = 各已测项目等级均值(A+=4.0..D=0.5,Pass=4.0,Failed=0),不做档位归并;
-  // 2) 月内 min-max 归一化:均值最高 100、最低 0,中间按等级差距线性分布(与 WebDev 榜一致);
+  // 2) 绝对等级映射(mean/4.0×100):直接按满分4.0线性折算,跨月可比;
+  //    不再做月内 min-max 归一化(避免当月极端高分撑大区间、把低分段挤到零点造成失真);
   // 3) 均值完全相同的模型同组,组内按源排名(rank 0=第一)每退一名递减 0.01;
   // 4) 组顶受上一组最低分压制(天花板链),保证跨组不倒挂、全员互异;
   // 5) 全 Skip/Pending(mean=null)不计分,综合分显示 "-"。
@@ -190,9 +191,6 @@
     // 赋分全程用整数"百分点"(1 点 = 0.01 分),避免浮点误差造成显示层同分
     var scored = rows.filter(function (r) { return r.mean != null; });
     if (scored.length) {
-      var min = scored.reduce(function (a, r) { return Math.min(a, r.mean); }, Infinity);
-      var max = scored.reduce(function (a, r) { return Math.max(a, r.mean); }, -Infinity);
-      var span = max - min;
       var order = scored.slice().sort(function (a, b) {
         return b.mean - a.mean || a.rank - b.rank;
       });
@@ -204,7 +202,8 @@
       });
       var ceiling = 10000; // 上一组最低分 - 1(百分点),防跨组倒挂
       groups.forEach(function (g) {
-        var base = span > 0 ? Math.round((g[0].mean - min) / span * 10000) : 10000;
+        // 绝对等级映射:mean/满分4.0×100,与当月其它模型分数无关,跨月稳定可比
+        var base = Math.round(g[0].mean / MAX_GRADE * 10000);
         var head = Math.min(base + (g.length - 1), ceiling);
         g.forEach(function (r, j) { r._cents = head - j; });
         ceiling = head - g.length;
