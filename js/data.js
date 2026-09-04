@@ -136,10 +136,14 @@
   // ===== Vibe Code:同名 canonical 取最高 score(Claude Opus 4.8 多 harness) =====
   function vibeCode() {
     var src = window.VIBECODE || { models: [] };
-    // 按准确率降序,保证表格排名可靠
-    return src.models.slice().sort(function (a, b) { return b.score - a.score; }).map(function (m) {
-      return Object.assign({}, m, { canon: canon(m.name) });
-    });
+    return src.models.slice()
+      // 剔除 GLM-5.3-Flash:其 Vibe 分数(30.76)与同源其它榜(≈57-63)明显失真,
+      // 不计入综合分,总览矩阵该模型 Vibe 单元格显示「—」
+      .filter(function (m) { return canon(m.name).id !== "GLM-5.3-Flash"; })
+      // 按准确率降序,保证表格排名可靠
+      .sort(function (a, b) { return b.score - a.score; }).map(function (m) {
+        return Object.assign({}, m, { canon: canon(m.name) });
+      });
   }
 
   // ===== Code Arena · WebDev(LMArena):每 canonical 模型取最高 Elo,并做快照内 min-max 归一化到 0-100 =====
