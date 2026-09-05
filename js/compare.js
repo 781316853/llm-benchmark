@@ -31,23 +31,29 @@
     if (e.aicapFe || e.aicapBe) boards.push("aicap");
     return boards;
   }
-  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,取最大值(以较弱榜为准),
-  // 避免强榜把弱榜拉高而使落位偏前。
+  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,按覆盖率折算到全部
+  // 排名行后取最大值(以较弱榜为准),避免强榜把弱榜拉高而使落位偏前。
+  // 直接数"高于它的模型数"会在覆盖稀疏的榜上低估弱势(如 AI 能力仅少数排名行有成绩,
+  // 全部高于它也只计少数几个),故按 高于数/有成绩数 的比例折算排名行总数。
   // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前),不计算综合分
   function dualPosition(e, ranked) {
     var boards = hitBoards(e);
     if (!boards.length) return ranked.length;
-    var worst = -1; // 名次最靠后的榜(above 最大)为准
+    var worst = -1; // 名次最靠后的榜(折算位置最大)为准
     boards.forEach(function (b) {
       var val = BOARD_VALS[b](e);
-      var above = 0;
+      var above = 0, withData = 0;
       ranked.forEach(function (r) {
         var rv = BOARD_VALS[b](r);
-        if (rv != null && rv > val) above++;
+        if (rv == null) return;
+        withData++;
+        if (rv > val) above++;
       });
-      if (above > worst) worst = above;
+      if (!withData) return; // 该榜排名行无覆盖,无比对信号,跳过
+      var est = Math.round(above / withData * ranked.length);
+      if (est > worst) worst = est;
     });
-    return worst;
+    return worst < 0 ? ranked.length : worst;
   }
   // 交叉矩阵排序(仅含命中≥2榜的模型,仅命中一榜的模型不进入总览矩阵,详见各榜单页):
   // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
