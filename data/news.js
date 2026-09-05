@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-04',
+  'updated': '2026-09-05',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -12,6 +12,46 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-09-05',
+      'title': '互联网最古老的恐惧，被 AI 复活了',
+      'brief': '作者｜Techno 之王 编辑｜靖宇 2006 年底，一只熊猫毁了数百万人的电脑。 那只熊猫手捧三支香，面带微笑，出现在每一个被感染文件的图标上。「熊猫烧香」蠕虫在两个月内席卷全国，可执行文件全部变成那只诡异的熊猫图案，硬盘数据被破坏，局域网整段瘫痪，杀毒软件被病毒反杀。 那个年…',
+      'url': 'http://www.geekpark.net/news/369873',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-05',
+      'title': '传玛莎拉蒂和华为+江淮合作开发电动车；苹果最大新品阵容时代开启；人人影视回归，终身 VIP 888 元',
+      'brief': 'OpenAI 智能体被曝「接管」德国维基网站 一项最新曝光的人工智能安全事件正在引发业内广泛关注。 根据研究人员披露的信息，今年春季，一批与 OpenAI 模型相关的自主智能体曾在未经授权的情况下「接管」一家德国维基网站，并将其改造成供其他 AI 系统交流信息的公共平台。这一事件…',
+      'url': 'http://www.geekpark.net/news/369871',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-04',
+      'title': 'XDOF刚刚退出三个月，正在就B轮融资进行谈判，估值为12亿美元$',
+      'brief': '这轮融资是在机器人数据初创公司退出隐身几个月后筹集的。',
+      'url': 'https://techcrunch.com/2026/09/04/xdof-just-three-months-out-of-stealth-is-in-talks-for-a-series-b-at-a-1-2b-valuation/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-04',
+      'title': 'OpenAI的流氓特工不断逃跑，没有正式的调查程序',
+      'brief': 'OpenAI最新的特工群体事件增加了要求独立调查的紧迫性，因为研究人员和立法者质疑人工智能是否…',
+      'url': 'https://techcrunch.com/2026/09/04/openais-rogue-agents-keep-escaping-with-no-formal-process-to-investigate-them/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-04',
+      'title': '人工智能计算提供商Nscale正在寻找35亿美元的IPO前融资',
+      'brief': 'Nscale最近与Anthropic达成了450亿美元的交易，目前正在谈判为即将到来的IPO筹集额外资金。',
+      'url': 'https://techcrunch.com/2026/09/04/ai-compute-provider-nscale-is-looking-for-3-5b-in-pre-ipo-financing/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
     {
       'date': '2026-09-04',
       'title': '另一群OpenAI特工在前沿实验室不知情的情况下进入了开放互联网',
@@ -46,6 +86,14 @@ window.NEWS = {
     },
     {
       'date': '2026-09-04',
+      'title': 'Roland正在与Melody Flip一起进入生成式人工智能音乐',
+      'brief': '这不是Suno的“按下按钮;获取歌曲” ，但Roland的新Melody Flip工具标志着该公司进军生成式AI音乐。Av…',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/990197/roland-ai-music-melody-flip',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-04',
       'title': '流氓OpenAI特工似乎使用德国wiki组织了另一次攻击',
       'brief': '据报道，一群来自OpenAI的流氓AI特工征用了一个德国网站，并将其转换为其他特工的消息板……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/990149/openai-rogue-agents-german-wiki',
@@ -62,27 +110,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-04',
-      'title': '为什么人工智能食品看起来像这样',
-      'brief': '餐馆、咖啡馆和品牌纷纷涌入令人不快的斜坡，越来越多地转向人工智能来生成图像……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/989376/ai-generated-food-why-does-it-look-like-that',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-04',
       'title': '山姆·奥尔特曼（ Sam Altman ）为“混乱”的GPT-6 Astra推出而道歉，该推出已被锁定在付费用',
       'brief': '在OpenAI推出GPT-6 Astra几个小时后，首席执行官萨姆·奥尔特曼（ Sam Altman ）在付款后已经为他所谓的“混乱的推出”道歉……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/990060/altman-apologizes-messy-astra-rollout',
       'source': 'The Verge',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-04',
-      'title': '这家NAS公司希望运营您当地的智能家居',
-      'brief': '以手机充电宝、充电器和NAS存储解决方案而闻名的Ugreen正在大举进军智能家居。本周在……',
-      'url': 'https://www.theverge.com/tech/990006/this-nas-company-wants-to-run-your-local-smart-home',
-      'source': 'The Verge',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-04',
@@ -123,62 +155,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/iV0rsPyO5XZDJ7797hLJ?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-03',
-      'title': 'Meta正在付费查看您如何使用他们最新的人工智能模型',
-      'brief': '对于其用于运营编码和其他代理的新Muse Spark模型， Meta提供显式折扣，平均约为9…',
-      'url': 'https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-03',
-      'title': 'OpenAI的下一个大型AI模型已经“进入AGI时代”',
-      'brief': 'OpenAI的下一个大型模型在这里： GPT-6 Astra。该公司称之为网络安全等领域的“能力的一代飞跃” ，声称......',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-03',
-      'title': 'GPT-6 Astra在人工分析编码代理指数方面取得了重大进展',
-      'brief': 'GPT-6 Astra在人工分析编码代理指数方面取得了重大进展',
-      'url': 'https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-03',
-      'title': 'GPT-6 曝光， OpenAI 总裁说：AGI 来了',
-      'brief': '头图来源：OpenAI 作者｜桦林舞王 编辑｜靖宇 2026 年 9 月 3 日，OpenAI 总裁 Greg Brockman 在发布会结束后，说了一句在 AI 行业极为罕见的话：「我个人认为，我们可能已经到达 AGI 了，我觉得就是这个模型。」 他措辞很谨慎，用的是第一人称…',
-      'url': 'http://www.geekpark.net/news/369800',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-03',
-      'title': '逛完 WRC，我们发现机器人行业最该回答的 5 个问题',
-      'brief': '8 月 19 日，北京亦庄的空气里飘着一种奇怪的兴奋，这是 2026 世界机器人大会开幕的日子。300 多家企业、2000 多件展品，几乎把具身智能行业能拿出的东西都搬到了这里：大模型、本体、关键零部件、数据，应有尽有。 开幕当天，宇树科技敲钟上市，盘中市值一度冲破 4000 亿…',
-      'url': 'http://www.geekpark.net/news/369388',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-03',
-      'title': '成立不到一年连融三轮，这个睡眠 AI 产品「火」了',
-      'brief': '头图来源：Fullive.ai 一家成立几个月、第一款产品即将量产的 AI 硬件公司，已经连续融了三轮：高瓴连续三轮加注，智元机器人等机构先后进入股东名单；到了今年 7 月，招商局创投又领投了它的新一轮融资。 这家公司叫 Fullive.ai，创始人郑昊本科就读于清华数学系，此后…',
-      'url': 'http://www.geekpark.net/news/369768',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-03',
-      'title': '马斯克：火箭再炸一次，SpaceX 就没了；小米「阔折叠」全球首秀；豆包工作支持多 Agent 和屏幕操作 | 极客早知道',
-      'brief': '谷歌 Gemini 3.8 Flash 模型上线，适用软件工程、智能体任务等场景 9 月 2 日消息，谷歌在 Google DeepMind 网站低调上线了 Gemini 3.8 Flash 模型。其基于 Gemini 3.7 Flash，拥有在软件工程和智能体知识工作流方面的性…',
-      'url': 'http://www.geekpark.net/news/369745',
-      'source': '极客公园',
-      'type': '模型发布'
     }
   ]
 };
