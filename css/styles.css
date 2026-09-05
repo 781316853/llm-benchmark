@@ -149,6 +149,12 @@ a:hover { text-decoration: underline; }
 .data-table th, .data-table td { padding: 11px 14px; text-align: left; white-space: nowrap; }
 .data-table thead th { position: sticky; top: 0; background: var(--panel-2); color: var(--text-dim);
   border-bottom: 1px solid var(--border); font-weight: 600; }
+/* 两级表头:第 1 行为分组行(榜单基准/实测)与非评测列的 rowspan 纵跨格,第 2 行为评测列列名 */
+.data-table thead tr.grp-row th { text-align: center; }
+.data-table thead th.th-grp { letter-spacing: 4px; font-weight: 500; cursor: default; }
+/* 总览矩阵分组区隔:仅分组边界(榜单基准|实测)用深色竖线框出两组,单元格内不加网格线 */
+#matrixTable thead th.th-grp, #matrixTable thead tr.col-row th:nth-child(1), #matrixTable thead tr.col-row th:nth-child(4),
+#matrixTable tbody td:nth-child(5), #matrixTable tbody td:nth-child(8) { border-left: 2px solid #333; }
 /* 可排序表头:点击排序交互 */
 .data-table thead th[data-key] { cursor: pointer; user-select: none; transition: color .15s; }
 .data-table thead th[data-key]:hover { color: var(--accent); }

@@ -52,13 +52,12 @@
     }).join("") + "</tr></thead>";
     t.innerHTML = head + "<tbody>" + rowsHtml.join("") + "</tbody>";
   }
-  // 仅设置表头(用于含 data-key/排序指示符的自定义表头);tbody 单独填充
+  // 仅设置表头(用于含 data-key/排序指示符的自定义表头);headHtml 为完整的一个或多个 <tr>;tbody 单独填充
   function fillTableHead(id, headHtml) {
     var t = document.getElementById(id);
     var thead = t.querySelector("thead");
-    var html = "<tr>" + headHtml + "</tr>";
-    if (thead) thead.innerHTML = html;
-    else t.insertAdjacentHTML("afterbegin", "<thead>" + html + "</thead>");
+    if (thead) thead.innerHTML = headHtml;
+    else t.insertAdjacentHTML("afterbegin", "<thead>" + headHtml + "</thead>");
     if (!t.querySelector("tbody")) t.insertAdjacentHTML("beforeend", "<tbody></tbody>");
   }
 
@@ -75,7 +74,8 @@
     return "";
   }
 
-  // 总览矩阵表的列定义:key=排序键;val=取值函数;type=数据类型;bench=是否评测列(排序时过滤无值)
+  // 总览矩阵表的列定义:key=排序键;val=取值函数;type=数据类型;bench=是否评测列(排序时过滤无值);
+  // grp=分组表头归属(bench 列须按 grp 连续排列,供两级表头 colspan 合并:"基准"=第三方公开榜单,"实测"=站主实测)
   var MATRIX_COLS = [
     { key: "model",   label: "模型", type: "text", bench: false, val: function (r) { return r.id; } },
     { key: "vendor",  label: "厂商", type: "text", bench: false, val: function (r) { return r.vendor; } },
@@ -83,14 +83,14 @@
     // 排序取值用 -_posKey 取负:posKey 越小越好,取负后"降序=更好在前",与默认序一致;无 _posKey 时兜底综合分
     { key: "composite", label: "梯队", type: "num", bench: false,
       val: function (r) { return -(r._posKey != null ? r._posKey : CMP.composite(r)); } },
-    { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true,  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
-    { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, val: function (r) { return r.vibe ? r.vibe.score : null; } },
-    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
+    { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "基准",  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
+    { key: "vibe",    label: "Vibe Code (准确率)", type: "num", bench: true, grp: "基准", val: function (r) { return r.vibe ? r.vibe.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):排序时仅显示有值的模型
-    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true,
+    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "基准",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
+    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "实测", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
-    { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true,
+    { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true, grp: "实测",
       val: function (r) {
         var vals = [];
         if (r.aicapFe) vals.push(r.aicapFe.score);
@@ -272,15 +272,19 @@
         })() +
         '<td class="num">' + ds + '</td>' +
         '<td class="num">' + vc + '</td>' +
-        '<td class="num">' + lm + '</td>' +
         '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
+        '<td class="num">' + lm + '</td>' +
         '<td class="num">' + aicapCell(r) + '</td>' +
         '<td class="num">' + r.benchCount + '/5</td></tr>';
     });
-    // 表头:可点击,激活列显示方向指示符;数值列追加 num 类以与数据居中对齐
+    // 两级表头:第 1 行为分组行(「榜单基准」「实测」colspan 合并)与非评测列的 rowspan 纵跨格;
+    // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
-    // 序号列表头(不参与排序,无 data-key)
-    var head = '<th class="num">#</th>' + MATRIX_COLS.map(function (c) {
+    var GROUP_TITLES = {
+      "基准": "榜单基准:第三方公开基准榜单(DeepSWE / Vibe Code / WebDev)",
+      "实测": "实测:站主实测口径(llm2014 私有题库 / AI 能力专项测试)"
+    };
+    function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
       var active = state.sortKey === c.key || isDefaultComposite;
       var dir = state.sortKey === null ? "desc" : state.sortDir;
@@ -288,10 +292,26 @@
       var classes = [];
       if (active) classes.push("sort-active");
       if (c.type === "num") classes.push("num");
+      if (extra) classes.push(extra);
       var cls = classes.length ? ' class="' + classes.join(" ") + '"' : "";
       return '<th data-key="' + c.key + '"' + cls + ' title="点击按此列排序">' + c.label + ind + '</th>';
-    }).join("");
-    fillTableHead("matrixTable", head);
+    }
+    // 第 1 行:非评测列 rowspan=2 纵跨两行(可排序);评测列按 grp 连续段输出分组格(colspan=组内列数)
+    var grpRow = '<th class="num" rowspan="2">#</th>', subRow = "";
+    MATRIX_COLS.forEach(function (c, i) {
+      if (!c.bench) {
+        grpRow += thAttr(c).replace("<th ", '<th rowspan="2" ');
+        return;
+      }
+      var span = 1;
+      while (i + span < MATRIX_COLS.length && MATRIX_COLS[i + span].grp === c.grp) span++;
+      if (i === 0 || MATRIX_COLS[i - 1].grp !== c.grp) {
+        grpRow += '<th class="th-grp" colspan="' + span + '" title="' + GROUP_TITLES[c.grp] + '">' +
+          (c.grp === "基准" ? "榜单基准" : "实测") + '</th>';
+      }
+      subRow += thAttr(c, "th-sub");
+    });
+    fillTableHead("matrixTable", '<tr class="grp-row">' + grpRow + '</tr><tr class="col-row">' + subRow + '</tr>');
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     // 动态行数提示(显示全部模型开关状态;默认视图含混排的双榜模型,排名数与双榜数分开统计)
     var note;
