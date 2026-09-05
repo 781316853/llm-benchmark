@@ -16,14 +16,6 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
-      'name': 'GPT-6 Astra',
-      'score': 74.1,
-      'mode': '最高（工具）',
-      'date': '2026-09-03',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
       'name': 'Gemini 3.8 Flash',
       'score': 73.7,
       'mode': '思考模式（工具）',
@@ -246,6 +238,14 @@ window.DATALEARNER = {
       'date': '2026-08-14',
       'params': '270亿',
       'license': '免费商用'
+    },
+    {
+      'name': 'Gemini 3.5 Flash',
+      'score': 37,
+      'mode': '思考模式 Medium（工具）',
+      'date': '2026-06-20',
+      'params': '未知',
+      'license': '闭源'
     }
   ]
 };

@@ -178,7 +178,7 @@ window.ARTIFICIAL_ANALYSIS = {
     'full': 'Qwen3.8 27B (xhigh)',
     'vendor': 'Alibaba',
     'base': 'Qwen3.8 27B',
-    'score': 41.65
+    'score': 41.41
   },
   {
     'slug': 'k2-horizon-375b-a23b',
@@ -202,7 +202,7 @@ window.ARTIFICIAL_ANALYSIS = {
     'full': 'Inkling (xhigh)',
     'vendor': 'Thinking Machines',
     'base': 'Inkling',
-    'score': 32.19
+    'score': 32.17
   },
   {
     'slug': 'gemini-3-5-flash-lite',

@@ -14,6 +14,30 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-05',
+      'title': 'OpenAI承认德国维基“事件”',
+      'brief': 'OpenAI表示，它需要彻底改革AI模型攻击真实世界目标的方式和时间。致谢是在……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/990773/openai-german-wiki-incident',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-05',
+      'title': '人工智能处理事件，工程师与系统失去联系',
+      'brief': '人工智能处理事件，工程师与系统失去联系',
+      'url': 'https://www.sylvainkalache.com/blog/ai-handles-incidents-engineers-lose-touch-with-their-systems',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-05',
+      'title': 'GPT-6 Astra在代码审查中：收益、隐私和成本',
+      'brief': 'GPT-6 Astra在代码审查中：收益、隐私和成本',
+      'url': 'https://www.coderabbit.ai/blog/gpt-6-astra-code-review-evaluation',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-05',
       'title': '互联网最古老的恐惧，被 AI 复活了',
       'brief': '作者｜Techno 之王 编辑｜靖宇 2006 年底，一只熊猫毁了数百万人的电脑。 那只熊猫手捧三支香，面带微笑，出现在每一个被感染文件的图标上。「熊猫烧香」蠕虫在两个月内席卷全国，可执行文件全部变成那只诡异的熊猫图案，硬盘数据被破坏，局域网整段瘫痪，杀毒软件被病毒反杀。 那个年…',
       'url': 'http://www.geekpark.net/news/369873',
@@ -78,35 +102,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-04',
-      'title': '这些令人讨厌的人工智能生成的菜单背后的相同性问题',
-      'brief': '虽然餐厅老板可能会将生成式人工智能作为美化菜单的捷径，但顾客可以发自内心地感觉到……',
-      'url': 'https://techcrunch.com/2026/09/03/the-sameness-problem-behind-those-unappetizing-ai-generated-menus/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-04',
-      'title': 'Roland正在与Melody Flip一起进入生成式人工智能音乐',
-      'brief': '这不是Suno的“按下按钮;获取歌曲” ，但Roland的新Melody Flip工具标志着该公司进军生成式AI音乐。Av…',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/990197/roland-ai-music-melody-flip',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-04',
       'title': '流氓OpenAI特工似乎使用德国wiki组织了另一次攻击',
       'brief': '据报道，一群来自OpenAI的流氓AI特工征用了一个德国网站，并将其转换为其他特工的消息板……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/990149/openai-rogue-agents-german-wiki',
       'source': 'The Verge',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-04',
-      'title': 'Instagram的人工智能检测（再次）一团糟',
-      'brief': 'Instagram的可见AI标签旨在帮助人们一目了然地快速发现合成生成的内容。在过去的几周里……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/989617/instagram-ai-content-label-confusion',
-      'source': 'The Verge',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-04',
