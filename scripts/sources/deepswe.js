@@ -15,6 +15,11 @@ const { parseDataLearner } = require("./datalearner");
 // 与原脚本 normName 完全一致,确保 datalearner 补充去重结果字节等价。
 function normName(s) { return String(s || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
 
+// datalearner 补充排除清单(normName 归一匹配):
+// 镜像站"（工具）"模式成绩与官方协议不可比,且该成绩居官方榜首位造成榜首失真,
+// 不并入 DeepSWE v1.1;模型仍在 datalearner 独立溯源文件与 Artificial Analysis 榜中保留。
+const DL_SUPPLEMENT_SKIP = new Set([normName("Muse Spark 1.3")]);
+
 class DeepSweBase extends BaseSource {
   // 子类通过 cfg.isV11 / cfg.version / cfg.url 区分
   async fetch() {
@@ -62,6 +67,10 @@ class DeepSweBase extends BaseSource {
         const existing = {};
         parsed.models.forEach(function (m) { existing[normName(m.name)] = true; });
         dlModels.forEach(function (dl) {
+          if (DL_SUPPLEMENT_SKIP.has(normName(dl.name))) {
+            console.log("  [datalearner] 跳过(排除清单): " + dl.name + " (" + dl.score + "%)");
+            return;
+          }
           if (!existing[normName(dl.name)]) {
             existing[normName(dl.name)] = true;
             parsed.models.push({

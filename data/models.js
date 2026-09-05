@@ -81,6 +81,7 @@ window.MODEL_MAP = {
     { id: "Gemini 3.7 Flash", vendor: "Google",    color: "#4285F4", aliases: ["Gemini 3.7 Flash", "gemini-3.7-flash-high"] },
     { id: "Gemini 3.6 Flash", vendor: "Google",    color: "#5A95F5", aliases: ["Gemini 3.6 Flash", "gemini-3.6-flash-high"] },
     { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)", "muse-spark-1.2-contributor"] },
+    { id: "Muse Spark 1.3",     vendor: "Meta",    color: "#0878FF", aliases: ["Muse Spark 1.3", "muse-spark-1-3", "muse-spark-1-3-xhigh", "Muse Spark 1.3 (max)", "Muse Spark 1.3 (xhigh)"] },
     { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview"] },
     // ===== Artificial Analysis Intelligence Index 上榜补充的新模型(2026-08) =====
     { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },

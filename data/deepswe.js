@@ -13,16 +13,6 @@ window.DEEPSWE = {
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
-    'name': 'Muse Spark 1.3',
-    'effort': '最高（工具）',
-    'pass1': 75.4,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
-  },
-  {
     'name': 'gpt-6-astra',
     'effort': 'xhigh',
     'pass1': 74,
