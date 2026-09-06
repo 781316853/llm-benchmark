@@ -1,13 +1,13 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-09-05)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-09-06)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-09-05",
-  refreshedAt: "2026-09-05 23:50",
+  updated: "2026-09-06",
+  refreshedAt: "2026-09-06 13:35",
   version: "v1.1",
   totalSystems: 92,
   note: "共 92 系统,展示 overall 视图全部 89 个有记录系统",

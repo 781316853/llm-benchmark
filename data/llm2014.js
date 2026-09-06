@@ -11,8 +11,8 @@
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-09%7C0",
-  updated: "2026-09-05",
-  refreshedAt: "2026-09-05 23:50",
+  updated: "2026-09-06",
+  refreshedAt: "2026-09-06 13:35",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1063,6 +1063,19 @@ window.LLM2014 = {
       'Metal(L)'
     ],
     'rows': [
+      {
+        'model': 'GPT-6 Astra (max)',
+        'cells': [
+          '5/A+(41.53)',
+          '3/A+(64.74)',
+          '4/A+(75.84)',
+          '5/A(61.32)',
+          'Pending'
+        ],
+        'unprompted': 4,
+        'ide': 'Codex CLI',
+        'think': 1
+      },
       {
         'model': 'Fable 5 (high)',
         'cells': [

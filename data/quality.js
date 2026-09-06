@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-09-05;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-09-06;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-09-05',
+  'generatedAt': '2026-09-06',
   'overallScore': 0.875,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'AI 能力专项测试',
       'status': 'ok',
       'modelCount': 52,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -21,8 +21,8 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 124,
-      'updated': '2026-09-05',
+      'modelCount': 125,
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -33,7 +33,7 @@ window.QUALITY = {
       'name': 'Artificial Analysis II',
       'status': 'ok',
       'modelCount': 27,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -44,7 +44,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -55,7 +55,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.1',
       'status': 'ok',
       'modelCount': 34,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -66,7 +66,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -76,8 +76,8 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 79,
-      'updated': '2026-09-05',
+      'modelCount': 80,
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -88,7 +88,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 89,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -1000,9 +1000,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 124,
-      'complete': 124,
-      'modelCount': 124,
+      'total': 125,
+      'complete': 125,
+      'modelCount': 125,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1040,11 +1040,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 79,
+      'total': 80,
       'complete': 0,
-      'modelCount': 79,
+      'modelCount': 80,
       'missingFields': {
-        'score': 79
+        'score': 80
       },
       'flag': 'warn'
     },
@@ -1059,42 +1059,42 @@ window.QUALITY = {
   },
   'timeliness': {
     'ai_capability': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'arena_webdev': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'artificial_analysis': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'datalearner': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     }
