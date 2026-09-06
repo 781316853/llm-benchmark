@@ -1,9 +1,9 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-09-05;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-09-06;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-09-05',
+  'generatedAt': '2026-09-06',
   'overallScore': 0.875,
   'sources': [
     {
@@ -11,7 +11,7 @@ window.QUALITY = {
       'name': 'AI 能力专项测试',
       'status': 'ok',
       'modelCount': 52,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -21,8 +21,8 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 124,
-      'updated': '2026-09-05',
+      'modelCount': 125,
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -33,7 +33,7 @@ window.QUALITY = {
       'name': 'Artificial Analysis II',
       'status': 'ok',
       'modelCount': 27,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -44,7 +44,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -54,8 +54,8 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 35,
-      'updated': '2026-09-05',
+      'modelCount': 34,
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -66,7 +66,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -76,8 +76,8 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 79,
-      'updated': '2026-09-05',
+      'modelCount': 80,
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -88,7 +88,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 89,
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -213,6 +213,24 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'GPT-6 Astra',
+      'name': 'GPT-6 Astra (max)',
+      'vendor': '其他',
+      'sources': [
+        'artificial_analysis',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'artificial_analysis': 53.65,
+        'deepswe_v11': 74,
+        'vibecode': 89.59
+      },
+      'mean': 72.4,
+      'stddev': 14.72,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'Claude Opus 5',
       'name': 'claude-opus-5',
       'vendor': 'Anthropic',
@@ -291,23 +309,21 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'GPT-6 Astra',
-      'name': 'GPT-6 Astra (max)',
-      'vendor': '其他',
+      'canonId': 'Muse Spark 1.3',
+      'name': 'Muse Spark 1.3 (max)',
+      'vendor': 'Meta',
       'sources': [
         'artificial_analysis',
         'datalearner',
-        'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'artificial_analysis': 53.65,
-        'datalearner': 74.1,
-        'deepswe_v11': 74,
-        'vibecode': 89.59
+        'artificial_analysis': 52.95,
+        'datalearner': 75.4,
+        'vibecode': 82.86
       },
-      'mean': 72.8,
-      'stddev': 12.77,
+      'mean': 70.4,
+      'stddev': 12.71,
       'flag': 'alert'
     },
     {
@@ -401,7 +417,7 @@ window.QUALITY = {
       ],
       'scores': {
         'ai_capability': 48.25,
-        'artificial_analysis': 32.19,
+        'artificial_analysis': 32.17,
         'vibecode': 19.21
       },
       'mean': 33.2,
@@ -444,26 +460,6 @@ window.QUALITY = {
       },
       'mean': 14.3,
       'stddev': 11.29,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'Muse Spark 1.3',
-      'name': 'Muse Spark 1.3 (max)',
-      'vendor': '其他',
-      'sources': [
-        'artificial_analysis',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'artificial_analysis': 52.95,
-        'datalearner': 75.4,
-        'deepswe_v11': 75.4,
-        'vibecode': 82.86
-      },
-      'mean': 71.7,
-      'stddev': 11.22,
       'flag': 'alert'
     },
     {
@@ -603,6 +599,26 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
+      'canonId': 'Qwen3.8-27B',
+      'name': 'Qwen3.8 27B (xhigh)',
+      'vendor': 'Alibaba',
+      'sources': [
+        'artificial_analysis',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'artificial_analysis': 41.41,
+        'datalearner': 42.2,
+        'deepswe_v11': 42.2,
+        'vibecode': 64.85
+      },
+      'mean': 47.7,
+      'stddev': 9.93,
+      'flag': 'warn'
+    },
+    {
       'canonId': 'DeepSeek V4 Flash 0731',
       'name': 'DeepSeek-V4-Flash',
       'vendor': 'DeepSeek',
@@ -618,26 +634,6 @@ window.QUALITY = {
       },
       'mean': 60.7,
       'stddev': 9.93,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Qwen3.8-27B',
-      'name': 'Qwen3.8 27B (xhigh)',
-      'vendor': 'Alibaba',
-      'sources': [
-        'artificial_analysis',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'artificial_analysis': 41.65,
-        'datalearner': 42.2,
-        'deepswe_v11': 42.2,
-        'vibecode': 64.85
-      },
-      'mean': 47.7,
-      'stddev': 9.89,
       'flag': 'warn'
     },
     {
@@ -678,24 +674,6 @@ window.QUALITY = {
       },
       'mean': 48.5,
       'stddev': 8.97,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Gemini 3.5 Flash',
-      'name': 'gemini-3-5-flash',
-      'vendor': 'Google',
-      'sources': [
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'deepswe_v11': 36,
-        'deepswe_v10': 28,
-        'vibecode': 48.68
-      },
-      'mean': 37.6,
-      'stddev': 8.51,
       'flag': 'warn'
     },
     {
@@ -816,6 +794,26 @@ window.QUALITY = {
       },
       'mean': 71,
       'stddev': 7.48,
+      'flag': 'warn'
+    },
+    {
+      'canonId': 'Gemini 3.5 Flash',
+      'name': 'Gemini 3.5 Flash',
+      'vendor': 'Google',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'deepswe_v10',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 37,
+        'deepswe_v11': 36,
+        'deepswe_v10': 28,
+        'vibecode': 48.68
+      },
+      'mean': 37.4,
+      'stddev': 7.38,
       'flag': 'warn'
     },
     {
@@ -1002,9 +1000,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 124,
-      'complete': 124,
-      'modelCount': 124,
+      'total': 125,
+      'complete': 125,
+      'modelCount': 125,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1026,9 +1024,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 35,
-      'complete': 35,
-      'modelCount': 35,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1042,11 +1040,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 79,
+      'total': 80,
       'complete': 0,
-      'modelCount': 79,
+      'modelCount': 80,
       'missingFields': {
-        'score': 79
+        'score': 80
       },
       'flag': 'warn'
     },
@@ -1061,42 +1059,42 @@ window.QUALITY = {
   },
   'timeliness': {
     'ai_capability': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'arena_webdev': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'artificial_analysis': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'datalearner': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-09-05',
+      'updated': '2026-09-06',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -1147,6 +1145,12 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
+      'sourceId': 'artificial_analysis,deepswe_v11,vibecode',
+      'message': 'GPT-6 Astra (max) 跨源分数标准差 14.72(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
       'sourceId': 'ai_capability,artificial_analysis,datalearner,deepswe_v11,vibecode',
       'message': 'claude-opus-5 跨源分数标准差 13.98(>10)'
     },
@@ -1171,8 +1175,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'artificial_analysis,datalearner,deepswe_v11,vibecode',
-      'message': 'GPT-6 Astra (max) 跨源分数标准差 12.77(>10)'
+      'sourceId': 'artificial_analysis,datalearner,vibecode',
+      'message': 'Muse Spark 1.3 (max) 跨源分数标准差 12.71(>10)'
     },
     {
       'level': 'error',
@@ -1215,12 +1219,6 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'deepswe_v10,vibecode',
       'message': 'qwen3-6-plus 跨源分数标准差 11.29(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'artificial_analysis,datalearner,deepswe_v11,vibecode',
-      'message': 'Muse Spark 1.3 (max) 跨源分数标准差 11.22(>10)'
     },
     {
       'level': 'error',
