@@ -14,6 +14,22 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-06',
+      'title': '我对人工智能有感觉',
+      'brief': '我对人工智能有感觉',
+      'url': 'https://beza1e1.tuxen.de/ai_feelings.html',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-06',
+      'title': '人工智能、工具和转型',
+      'brief': '人工智能、工具和转型',
+      'url': 'https://www.ben-evans.com/benedictevans/2026/9/3/ai-tools-and-transformation',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-06',
       'title': '传 iPhone 18 Pro 仅涨价 100 美元；Kimi、MiniMax 将在天猫开店；OpenAI 回应 Agent 攻击德国网站',
       'brief': '大模型厂商纷纷「卖 Token」，消息称 Kimi、MiniMax 等即将在天猫开店 上海证券报 9 月 5 日独家获悉，Kimi、MiniMax、阶跃星辰等多家大模型厂商也都在与天猫接洽中，未来将入驻天猫开设官方旗舰店，开售 Token 订阅套餐产品。 本月 2 日，国产 AI…',
       'url': 'http://www.geekpark.net/news/369875',
@@ -59,22 +75,6 @@ window.NEWS = {
       'url': 'https://github.com/okf-memory/okf-agent-memory',
       'source': 'Hacker News',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-05',
-      'title': '美国最大的两个学区实施人工智能禁令',
-      'brief': '美国最大的两个学区实施人工智能禁令',
-      'url': 'https://www.techpolicy.press/americas-two-largest-school-districts-impose-ai-moratoriums/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-05',
-      'title': '人工智能如何打破英国国家',
-      'brief': '人工智能如何打破英国国家',
-      'url': 'https://www.economist.com/leaders/2026/08/06/how-ai-is-breaking-the-british-state',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-05',
