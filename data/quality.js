@@ -262,6 +262,26 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'DeepSeek V4 Flash 0731',
+      'name': 'DSV4F0731',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 77.05,
+        'datalearner': 54.4,
+        'deepswe_v11': 53,
+        'vibecode': 74.74
+      },
+      'mean': 64.8,
+      'stddev': 11.14,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'Claude Sonnet 4.6',
       'name': 'claude-sonnet-4-6',
       'vendor': 'Anthropic',
@@ -371,24 +391,6 @@ window.QUALITY = {
       },
       'mean': 18,
       'stddev': 9.95,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'DeepSeek V4 Flash 0731',
-      'name': 'DeepSeek-V4-Flash',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 54.4,
-        'deepswe_v11': 53,
-        'vibecode': 74.74
-      },
-      'mean': 60.7,
-      'stddev': 9.93,
       'flag': 'warn'
     },
     {
@@ -1063,6 +1065,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'deepswe_v10,vibecode',
       'message': 'qwen3-6-plus 跨源分数标准差 11.29(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,vibecode',
+      'message': 'DSV4F0731 跨源分数标准差 11.14(>10)'
     },
     {
       'level': 'error',

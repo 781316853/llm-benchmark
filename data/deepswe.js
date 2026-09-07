@@ -7,7 +7,7 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-09-06",
-  refreshedAt: "2026-09-06 13:35",
+  refreshedAt: "2026-09-07 00:00",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 34 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
