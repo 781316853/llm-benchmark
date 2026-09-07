@@ -217,21 +217,6 @@
   }
   function llmMonths() { return Object.keys((window.LLM2014 && window.LLM2014.months) || {}).sort(); }
 
-  // ===== Artificial Analysis Intelligence Index:通用智能指数(独立榜单,不计入综合分) =====
-  // 每 canonical 模型取最高分;附带 vendor(源自页面 creator)与 version 供展示
-  function artificialAnalysis() {
-    var src = window.ARTIFICIAL_ANALYSIS || { models: [] };
-    var best = {};
-    (src.models || []).slice().sort(function (a, b) { return b.score - a.score; }).forEach(function (m) {
-      var c = canon(m.name);
-      if (!best[c.id] || m.score > best[c.id].score) {
-        best[c.id] = Object.assign({}, m, { canon: c, vendorAA: m.vendor || c.vendor });
-      }
-    });
-    return Object.keys(best).map(function (k) { return best[k]; })
-      .sort(function (a, b) { return b.score - a.score; });
-  }
-
   // ===== AI 能力专项测试(atmeplz)四方向榜:前端/后端方向分 =====
   // 独立榜单展示,不计入综合分;按 score 降序,并附加 canonical 与颜色
   function aicap() {
@@ -387,7 +372,6 @@
     deepSweVersionCounts: deepSweVersionCounts,
     vibeCode: vibeCode,
     webdev: webdev,
-    artificialAnalysis: artificialAnalysis,
     aicap: aicap,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
@@ -399,6 +383,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aa: window.ARTIFICIAL_ANALYSIS, aicap: window.AICAP }
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP }
   };
 })();

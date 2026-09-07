@@ -83,7 +83,7 @@ window.MODEL_MAP = {
     { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)", "muse-spark-1.2-contributor"] },
     { id: "Muse Spark 1.3",     vendor: "Meta",    color: "#0878FF", aliases: ["Muse Spark 1.3", "muse-spark-1-3", "muse-spark-1-3-xhigh", "Muse Spark 1.3 (max)", "Muse Spark 1.3 (xhigh)"] },
     { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview"] },
-    // ===== Artificial Analysis Intelligence Index 上榜补充的新模型(2026-08) =====
+    // ===== 各源新上榜补充登记的模型(2026-08) =====
     { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },
     { id: "GLM-5.3-Flash",    vendor: "zAI",       color: "#6C7DFF", aliases: ["GLM-5.3-Flash", "glm-5-3-flash", "GLM 5.3 Flash", "GLM5.3 Flash", "GLM5.3Flash"] },
     { id: "Motif 3",          vendor: "Motif Technologies", color: "#8A8F98", aliases: ["Motif 3", "motif-3"] },
