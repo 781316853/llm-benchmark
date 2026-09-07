@@ -232,13 +232,72 @@
     return out;
   }
 
-  // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev, aicapFe, aicapBe} 用于矩阵/雷达 =====
+  // ===== Terminal-Bench 4.0:每 canonical 模型取最高解决率(跨 agent/effort) =====
+  // 供总览矩阵/综合分使用;权威页完整展示用 tbenchAll()。
+  function tbench() {
+    var src = window.TBENCH || { models: [] };
+    var best = {};
+    src.models.forEach(function (m) {
+      var c = canon(m.model);
+      if (!best[c.id] || m.score > best[c.id].score) {
+        best[c.id] = Object.assign({}, m, { canon: c });
+      }
+    });
+    return Object.keys(best).map(function (k) { return best[k]; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+
+  // Terminal-Bench 4.0 原始条目(agent×model,权威页完整表格用)
+  function tbenchAll() {
+    var src = window.TBENCH || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+
+  // ===== 权威基准测试(仅展示,不计入综合分/命中):TB-Science / OSWorld / ALE / ARC-AGI-3 / BenchCAD =====
+  function tbScience() {
+    var src = window.TBSCIENCE || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function osworld() {
+    var src = window.OSWORLD || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.system) }); });
+  }
+  function lastExam() {
+    var src = window.LASTEXAM || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.pass - a.pass; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function arcagi3() {
+    var src = window.ARCAGI3 || { models: [] };
+    return src.models.slice().sort(function (a, b) { return a.rank - b.rank; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function benchcad() {
+    var src = window.BENCHCAD || { tasks: {} };
+    var out = {};
+    ["vision2code", "visionqa", "codeqa"].forEach(function (k) {
+      var t = src.tasks[k] || {};
+      out[k] = {
+        label: t.label || k,
+        blurb: t.blurb || "",
+        primary: t.primary || "total",
+        rows: (t.rows || []).map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); })
+      };
+    });
+    return out;
+  }
+
+  // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev, tbench, aicapFe, aicapBe} 用于矩阵/雷达 =====
   // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
+  // tbench:同名取最高(计入综合分与命中数);benchcad 等其余权威基准仅展示不进统一视图;
   // aicap:前端/后端方向分分别取最高(0-100,直接作 norm);跨榜命中合并为「AI 能力」单一基准计数
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, webdev: null, aicapFe: null, aicapBe: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -267,6 +326,11 @@
       var e = ensure(m.canon);
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
     });
+    // Terminal-Bench 4.0:同名取最高解决率(跨 agent/effort),计入综合分与命中数
+    tbench().forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, ci: m.ci, agent: m.agent, effort: m.effort, name: m.model, norm: m.score };
+    });
     // AI 能力专项测试:前端/后端方向分(0-100,直接作 norm);前端/后端各自同名取最高
     var ac = aicap();
     ac.frontend.forEach(function (m) {
@@ -279,25 +343,28 @@
       if (!e.aicapBe || m.score > e.aicapBe.score)
         e.aicapBe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
     });
-    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / WebDev 共 4 榜;
-    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 5),矩阵中仍分别两列展示
+    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / WebDev / Terminal-Bench 共 5 榜;
+    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 6),矩阵中仍分别两列展示;
+    // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.webdev) e.benchCount++;
+      if (e.tbench) e.benchCount++;
       if (e.aicapFe || e.aicapBe) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / Vibe / llm2014 / WebDev / AI 能力 共 5 张) =====
+  // ===== 汇总卡片信息(DeepSWE / Vibe / llm2014 / WebDev / AI 能力 / Terminal-Bench 共 6 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {};
+    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {};
     var dsTop = (ds.models || [])[0] || {};
     var vcTop = (vc.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
+    var tbTop = (tb.models || [])[0] || {};
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
     // llm2014 头名 = 源排序第一名(rank 0),展示其综合分(按等级均值归一化,未必恰为 100)
@@ -323,7 +390,10 @@
         top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") },
       { key: "aicap", name: "AI 能力专项测试", tag: "前端/后端方向分", url: ac.boardUrl || ac.url || "", updated: ac.updated,
         stats: [{ l: "方向", v: 2 }, { l: "模型", v: ac.runCount != null ? ac.runCount : 0 }],
-        top: [acFeTop.name, acBeTop.name].filter(Boolean).join(" / ") }
+        top: [acFeTop.name, acBeTop.name].filter(Boolean).join(" / ") },
+      { key: "tbench", name: "Terminal-Bench 4.0", tag: "终端命令行任务", url: tb.url, updated: tb.updated,
+        stats: [{ l: "任务", v: tb.stats && tb.stats.tasks }, { l: "条目", v: (tb.models || []).length }],
+        top: tbTop.model + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") }
     ];
   }
 
@@ -351,11 +421,12 @@
     var d = dayDiff(firstSeen, seen.updated);
     return d >= 0 && d <= SEEN_WINDOW;
   }
-  // 矩阵行判定:模型在已有基准上"新"即为真
-  function isNewAny(dsName, vcName, llmName) {
+  // 矩阵行判定:模型在已有基准上"新"即为真(DeepSWE / Vibe / llm2014 / Terminal-Bench 4.0)
+  function isNewAny(dsName, vcName, llmName, tbName) {
     if (dsName && isNewRaw("deepswe", dsName)) return true;
     if (vcName && isNewRaw("vibe", vcName)) return true;
     if (llmName && isNewRaw("llm", llmName)) return true;
+    if (tbName && isNewRaw("tbench", tbName)) return true;
     return false;
   }
 
@@ -375,6 +446,13 @@
     aicap: aicap,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
+    tbench: tbench,
+    tbenchAll: tbenchAll,
+    tbScience: tbScience,
+    osworld: osworld,
+    lastExam: lastExam,
+    arcagi3: arcagi3,
+    benchcad: benchcad,
     unified: unified,
     hitCount: hitCount,
     benchSummary: benchSummary,
@@ -382,7 +460,9 @@
     isNewRaw: isNewRaw,
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
-    // DeepSWE/Vibe 原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP }
+    // 各源原始对象(供渲染脚注)
+    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
+      tbench: window.TBENCH, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
+      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD }
   };
 })();

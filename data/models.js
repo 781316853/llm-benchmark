@@ -5,7 +5,7 @@ window.MODEL_MAP = {
     { id: "Claude Fable 5",   vendor: "Anthropic", color: "#D97757", aliases: ["claude-fable-5", "Claude Fable 5", "Fable-5 (high)", "Fable-5", "Claude 5 Fable"] },
     { id: "Claude Fable 5.1", vendor: "Anthropic", color: "#E0977B", aliases: ["claude-fable-5.1", "claude-fable-5-1", "Claude Fable 5.1", "Claude Fable 5.1 (high)", "Fable-5.1", "Fable-5.1 (high)", "Fable 5.1", "Claude 5.1 Fable"] },
     { id: "Claude Mythos Preview", vendor: "Anthropic", color: "#C66040", aliases: ["Claude Mythos Preview", "Claude Mythos 5"] },
-    { id: "Claude Opus 4.8",  vendor: "Anthropic", color: "#E29060", aliases: ["claude-opus-4.8", "Claude Opus 4.8", "Claude Opus 4.8 (high)", "claude-opus-4-8"] },
+    { id: "Claude Opus 4.8",  vendor: "Anthropic", color: "#E29060", aliases: ["claude-opus-4.8", "Claude Opus 4.8", "Claude Opus 4.8 (high)", "claude-opus-4-8", "Opus 4.8", "Opus 4.8 (max)"] },
     { id: "Claude Sonnet 5",  vendor: "Anthropic", color: "#C58A6B", aliases: ["claude-sonnet-5", "Claude Sonnet 5", "Claude Sonnet 5 (high)", "Sonnet 5", "Sonnet 5 (high)", "sonnet-5", "sonnet-5-high"] },
     { id: "Claude Opus 4.7",  vendor: "Anthropic", color: "#B07B5C", aliases: ["Claude Opus 4.7", "claude-opus-4-7"] },
     { id: "Claude Opus 4.6",  vendor: "Anthropic", color: "#A06E51", aliases: ["Claude Opus 4.6", "claude-opus-4-6 (thinking)", "claude-opus-4-6"] },
@@ -77,7 +77,7 @@ window.MODEL_MAP = {
     { id: "Qwen3.8-Max",      vendor: "Alibaba",   color: "#FF6A00", aliases: ["Qwen3.8-Max", "qwen3.8-max", "Qwen3.8-Max-0902", "qwen3.8-max-0902", "Qwen3.8-Max (0902)", "Qwen3.8 Max 0902"] },
     { id: "Qwen3.8-27B",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-27B", "qwen3.8-27b"] },
     { id: "Grok 4.6",         vendor: "xAI",       color: "#9099A4", aliases: ["Grok 4.6", "grok-4.6-high", "grok-4.6"] },
-    { id: "GLM-5.3",          vendor: "zAI",       color: "#5B6CFF", aliases: ["GLM-5.3", "glm-5.3-max", "GLM-5.3(max)"] },
+    { id: "GLM-5.3",          vendor: "zAI",       color: "#5B6CFF", aliases: ["GLM-5.3", "glm-5.3-max", "GLM-5.3(max)", "GLM 5.3"] },
     { id: "Gemini 3.7 Flash", vendor: "Google",    color: "#4285F4", aliases: ["Gemini 3.7 Flash", "gemini-3.7-flash-high"] },
     { id: "Gemini 3.6 Flash", vendor: "Google",    color: "#5A95F5", aliases: ["Gemini 3.6 Flash", "gemini-3.6-flash-high"] },
     { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)", "muse-spark-1.2-contributor"] },
@@ -104,7 +104,15 @@ window.MODEL_MAP = {
     { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
     { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev"] },
     { id: "DeepSeek V4 Pro 0821 灰测", vendor: "DeepSeek", color: "#6B86FE", aliases: ["DeepSeek V4 Pro 0821 凌晨灰测", "deepseek-v4-pro-0821凌晨灰测"] },
-    { id: "DSV4F-VE-ocgo",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["DSV4F-VE-ocgo"] }
+    { id: "DSV4F-VE-ocgo",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["DSV4F-VE-ocgo"] },
+    // ===== 权威基准测试(2026-09)补充登记的模型 =====
+    { id: "GPT-6 Astra",      vendor: "OpenAI",    color: "#0A8F6A", aliases: ["GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra (max)"] },
+    { id: "GPT-5.3",          vendor: "OpenAI",    color: "#1FB892", aliases: ["GPT-5.3", "gpt-5.3"] },
+    { id: "OpenAI o3",        vendor: "OpenAI",    color: "#3FC9A6", aliases: ["OpenAI o3", "o3", "OpenAI o3 (thinking)"] },
+    { id: "GPT-4o",           vendor: "OpenAI",    color: "#5FD4C8", aliases: ["GPT-4o", "gpt-4o"] },
+    { id: "Moonshot v1-128k", vendor: "Moonshot",  color: "#A08FFF", aliases: ["Moonshot v1-128k", "moonshot-v1-128k"] },
+    { id: "Moonshot v1-8k",   vendor: "Moonshot",  color: "#B0A0FF", aliases: ["Moonshot v1-8k", "moonshot-v1-8k"] },
+    { id: "Qwen3-VL-2B",      vendor: "Qwen",      color: "#FF8A3D", aliases: ["Qwen3-VL-2B", "Qwen3-VL-2B (baseline)", "qwen3-vl-2b"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   vendorDefaultColor: "#8A8F98",

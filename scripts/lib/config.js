@@ -76,6 +76,53 @@ module.exports = {
       url: "https://atmeplz.github.io/ai-test-prompt/data/site.json",
       boardUrl: "https://atmeplz.github.io/ai-test-prompt/board-04.html",
       host: "atmeplz.github.io"
+    },
+    // ===== 权威基准测试(「权威基准测试」标签页,6 源)=====
+    // 仅 Terminal-Bench 4.0 计入总览/综合分/命中数,其余 5 源仅在权威页展示。
+    tbench: {
+      // Terminal-Bench 4.0(斯坦福/Laude):终端命令行 Agent 评测,66 任务。
+      // 服务端渲染 HTML 表格(rank/model+effort/agent/解决率±CI/日期/tokens/成本)。
+      url: "https://www.tbench.ai/leaderboard/terminal-bench/4.0",
+      version: "4.0", host: "www.tbench.ai"
+    },
+    tbscience: {
+      // Terminal-Bench-Science 0.1:科研工作流 70 任务。
+      // 官方/harbor 榜单为客户端渲染(原始 HTML 无数据、无公开 API),以 explainx 博客镜像表为主
+      // (Model | Harness | Resolution rate,与官方公告 0.1 数值一致)。
+      url: "https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026",
+      version: "0.1", host: "www.explainx.ai",
+      announcementUrl: "https://www.terminal-bench-science.ai/announcement"
+    },
+    osworld: {
+      // OSWorld 2.0(xlang-ai):长时程桌面计算机使用 108 任务。
+      // 官方站 os-world-v2.xlang.ai 会跳转论文,以 leaderboard.steel.dev 镜像为主
+      // (服务端渲染 HTML 表格:System/Submission|Score|Organization|Reported|Source,按部分得分 partial 排序)。
+      url: "https://leaderboard.steel.dev/leaderboards/osworld-2/",
+      host: "leaderboard.steel.dev",
+      officialUrl: "https://osworld-v2.xlang.ai/"
+    },
+    lastexam: {
+      // Agents' Last Exam(UC Berkeley RDI):真实专业工作流 1500+ 任务。
+      // 官方榜单 agents-last-exam.org/leaderboard 为 Next.js 客户端渲染(原始 HTML 无数据),
+      // 以 llm-stats 聚合表为主(服务端渲染:#|Model|Score(0-1)|Size|Context|Cost|License)。
+      url: "https://llm-stats.com/benchmarks/agents-last-exam",
+      host: "llm-stats.com",
+      officialUrl: "https://agents-last-exam.org/leaderboard"
+    },
+    arcagi3: {
+      // ARC-AGI-3(ARC Prize):交互式智能体推理,135 环境,RHAE 评分。
+      // 官网 arcprize.org/leaderboard 默认表缺 2026-07 后新成绩,以 llm-stats 聚合表为主(0-1→×100)。
+      url: "https://llm-stats.com/benchmarks/arc-agi-3",
+      host: "llm-stats.com",
+      officialUrl: "https://arcprize.org/leaderboard"
+    },
+    benchcad: {
+      // BenchCAD:程序化 CAD 生成基准(17,900 个 CadQuery 程序 / 106 类工业零件 / 47 项工程标准)。
+      // 结构化 JSON:leaderboard.json,三任务 vision2code/visionqa/codeqa,主指标 Vision2Code total(0-1)。
+      url: "https://raw.githubusercontent.com/BenchCAD/BenchCAD-main/main/leaderboard.json",
+      repoUrl: "https://github.com/BenchCAD/BenchCAD-main",
+      boardUrl: "https://benchcad.com/",
+      host: "raw.githubusercontent.com"
     }
   },
 
@@ -88,7 +135,10 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      excludedSources: ["arena_webdev"]
+      // 权威基准 6 源(tbench/tbscience/osworld/lastexam/arcagi3/benchcad)同样排除:
+      //   tbench/tbscience 解决率整体偏低(顶级 ~58%/30%),与 DeepSWE/Vibe 混算产生假告警;
+      //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示。
+      excludedSources: ["arena_webdev", "tbench", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad"]
     },
     completeness: {
       // 每条记录必填字段

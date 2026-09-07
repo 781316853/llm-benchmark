@@ -48,8 +48,11 @@ function loadSeen() {
 
 // 写出 window.X = <obj>; 文件的便捷构造器
 // 自动把 JSON 中的双引号替换为单引号(与原脚本输出一致,避免在 window.X = 赋值上下文的语法问题)
+// 注:替换前先转义内容中的单引号,避免 "Agents' Last Exam" 等撇号破坏单引号字符串语法
 function windowVarTemplate(windowVar, headerComment, obj) {
-  const body = JSON.stringify(obj, null, 2).replace(/"/g, "'");
+  const body = JSON.stringify(obj, null, 2)
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "'");
   return (headerComment || "") + "window." + windowVar + " = " + body + ";\n";
 }
 

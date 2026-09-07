@@ -26,7 +26,9 @@ function updateSeen() {
     { file: "deepswe.js", varName: "DEEPSWE", bench: "deepswe", field: "models", nameField: "name" },
     { file: "deepswe_v10.js", varName: "DEEPSWE_V10", bench: "deepswe", field: "models", nameField: "name" },
     { file: "vibecode.js", varName: "VIBECODE", bench: "vibe", field: "models", nameField: "name" },
-    { file: "datalearner.js", varName: "DATALEARNER", bench: "datalearner", field: "models", nameField: "name" }
+    { file: "datalearner.js", varName: "DATALEARNER", bench: "datalearner", field: "models", nameField: "name" },
+    // Terminal-Bench 4.0 计入总览命中数,纳入首次上榜追踪;其余权威基准(仅展示)不追踪
+    { file: "tbench.js", varName: "TBENCH", bench: "tbench", field: "models", nameField: "model" }
   ];
   map.forEach(function (m) {
     var data = writers.loadJsGlobal(m.file, m.varName);

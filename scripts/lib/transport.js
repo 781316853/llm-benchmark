@@ -137,10 +137,30 @@ function htmlDecode(s) {
     .replace(/&#39;/g, "'");
 }
 
+// 通用 HTML 表格解析:返回行数组,每行为 { text:[单元格文本], html:[单元格原始HTML] }
+// 用于各权威基准源(服务端渲染 HTML 表格)的行提取;text 已去标签/实体/压缩空白。
+function parseTableRows(html) {
+  const rows = [];
+  const trRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
+  let m;
+  while ((m = trRe.exec(html)) !== null) {
+    const text = [], raw = [];
+    const tdRe = /<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi;
+    let c;
+    while ((c = tdRe.exec(m[1])) !== null) {
+      raw.push(c[1]);
+      text.push(htmlDecode(c[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()));
+    }
+    rows.push({ text: text, html: raw });
+  }
+  return rows;
+}
+
 module.exports = {
   fetchWithRetry: fetchWithRetry,
   fetchOnce: fetchOnce,
   htmlDecode: htmlDecode,
+  parseTableRows: parseTableRows,
   // 暴露限流内部(仅用于测试/调试)
   _hostNextReady: hostNextReady,
   _globalLimit: globalLimit

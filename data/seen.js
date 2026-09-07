@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-09-06',
+  'updated': '2026-09-07',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -287,6 +287,21 @@ window.SEEN = {
     'vibe|Gpt 6 astra [新]': '2026-09-04',
     'datalearner|GPT-6 Astra': '2026-09-04',
     'vibe|Muse_spark_1_3 [新]': '2026-09-05',
-    'llm|GPT-6 Astra (max)': '2026-09-06'
+    'llm|GPT-6 Astra (max)': '2026-09-06',
+    'vibe|Muse_spark_1_3_max [新]': '2026-09-07',
+    'tbench|GPT-6 Astra': '2026-09-07',
+    'tbench|Fable 5.1': '2026-09-07',
+    'tbench|Opus 5': '2026-09-07',
+    'tbench|Fable 5': '2026-09-07',
+    'tbench|GLM-5.3': '2026-09-07',
+    'tbench|GPT-5.6 Sol': '2026-09-07',
+    'tbench|Opus 4.8': '2026-09-07',
+    'tbench|GPT-5.6 Terra': '2026-09-07',
+    'tbench|Grok 4.6': '2026-09-07',
+    'tbench|Gemini 3.8 Flash': '2026-09-07',
+    'tbench|GPT-5.6 Luna': '2026-09-07',
+    'tbench|Grok 4.5': '2026-09-07',
+    'tbench|Sonnet 5': '2026-09-07',
+    'tbench|Gemini 3.7 Flash': '2026-09-07'
   }
 };
