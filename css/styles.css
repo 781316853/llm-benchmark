@@ -82,7 +82,7 @@ a:hover { text-decoration: underline; }
 .tab.active:hover { background: var(--accent-hover); color: #fff; }
 
 /* ===== 主体内容 ===== */
-.content { padding: 28px 28px 60px; max-width: 1320px; margin: 0 auto; }
+.content { padding: 28px 28px 60px; max-width: 1760px; margin: 0 auto; }
 .page { display: none; animation: fade .25s ease; }
 .page.active { display: block; }
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
