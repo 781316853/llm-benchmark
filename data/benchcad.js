@@ -1,4 +1,4 @@
-// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 2026-09-07)
+// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 2026-09-08)
 // 来源:https://github.com/BenchCAD/BenchCAD-main(leaderboard.json;榜单页:https://benchcad.com/)
 // 字段说明:vision2code=图像→CadQuery 代码生成(主指标 total=64³ 体素 IoU×exec%,0-1);
 //          visionqa/codeqa=数值几何推理(2,400 题,L1-L4 四能力等级 + total)
@@ -7,8 +7,8 @@ window.BENCHCAD = {
   'source': 'BenchCAD',
   'url': 'https://github.com/BenchCAD/BenchCAD-main',
   'boardUrl': 'https://benchcad.com/',
-  'updated': '2026-09-07',
-  'refreshedAt': '2026-09-08 02:08',
+  'updated': '2026-09-08',
+  'refreshedAt': '2026-09-08 13:39',
   'stats': {
     'partFamilies': 106,
     'programs': 17900,

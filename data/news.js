@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-07',
+  'updated': '2026-09-08',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,42 +13,58 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-08',
+      'title': '传字节开发实时空间视频生成模型，张一鸣亲自督导；微信内测「AI 社交」功能；华为小米同天发布折叠屏手机',
+      'brief': '消息称字节正开发实时空间视频生成 AI 模型：张一鸣亲自督导，最快下个月发布 9 月 7 日消息，据彭博社报道，字节跳动正准备推出一款实时空间视频生成 AI 模型。创始人张一鸣正亲自督导这款新模型的研发工作，该模型计划最早于下月发布。 知情人士透露，张一鸣近期一直在协调公司各业务…',
+      'url': 'http://www.geekpark.net/news/369965',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'OpenAI 详解 GPT-Live 架构如何实现了连续的有状态语音交互',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/rdESg5icYIZ71J7xb69K?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'AI Coding 在大型客户端工程中的落地实践——从通才模型到专才 Agent｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/zmiQaFpdA993WFozmTt3?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
       'date': '2026-09-07',
-      'title': '工作启示录被推迟了。人工智能就业热潮来了',
-      'brief': '工作启示录被推迟了。人工智能就业热潮来了',
-      'url': 'https://www.economist.com/finance-and-economics/2026/09/04/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here',
+      'title': '不透明的复发，以及您可能应该知道的其他人工智能术语',
+      'brief': '人工智能的崛起带来了大量的新术语和俚语。以下是一份术语表，其中包含一些最重要的词汇的定义，以及……',
+      'url': 'https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-07',
+      'title': '适用于本地LLM的最小边缘AI设备',
+      'brief': '适用于本地LLM的最小边缘AI设备',
+      'url': 'https://tiiny.ai/',
       'source': 'Hacker News',
       'type': '行业动态'
     },
     {
       'date': '2026-09-07',
-      'title': '英伟达的Jensen Huang表示“AGI已经到来”并祝贺OpenAI',
-      'brief': '英伟达的Jensen Huang表示“AGI已经到来”并祝贺OpenAI',
-      'url': 'https://www.businessinsider.com/nvidia-jensen-huang-agi-openai-astra-ai-2026-9',
+      'title': 'AI冷水淋浴',
+      'brief': 'AI冷水淋浴',
+      'url': 'https://allan.reyes.sh/posts/ai-cold-showers/',
       'source': 'Hacker News',
       'type': '行业动态'
     },
     {
       'date': '2026-09-07',
-      'title': 'Show HN: Engrim -适用于AI CLI的通用本地优先SQLite内存引擎',
-      'brief': 'Show HN: Engrim -适用于AI CLI的通用本地优先SQLite内存引擎',
-      'url': 'https://github.com/timgordontg/engrim',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '我拒绝训练可以取代我的人工智能',
-      'brief': '我拒绝训练可以取代我的人工智能',
-      'url': 'https://restofworld.org/2026/ai-training-jobs-expert-replacement/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '随着人工智能耗尽芯片供应， “RAMageddon”打击消费电子产品',
-      'brief': '随着人工智能耗尽芯片供应， “RAMageddon”打击消费电子产品',
-      'url': 'https://www.ft.com/content/ea9a9dcc-b1df-49b0-b80c-f320161b9efa',
+      'title': '人工智能模型经营真实业务：他们发送了$ 12,431的伪造发票，损失了$ 3,200',
+      'brief': '人工智能模型经营真实业务：他们发送了$ 12,431的伪造发票，损失了$ 3,200',
+      'url': 'https://www.bottlenecklabs.com/blog/benchmarking-7-autonomous-businesses',
       'source': 'Hacker News',
       'type': '行业动态'
     },
@@ -102,27 +118,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-07',
-      'title': '“薄 Agent Loop，厚 Control Plane”：TiDB 用数据库思维重做 Harness',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/38uc758e24YV4LUpAs77?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
       'title': '成立 12 年，快看漫画重做 AI 时代的内容产品',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/kAHvBCLrI3sdMyONOveM?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-06',
-      'title': '传 iPhone 18 Pro 仅涨价 100 美元；Kimi、MiniMax 将在天猫开店；OpenAI 回应 Agent 攻击德国网站',
-      'brief': '大模型厂商纷纷「卖 Token」，消息称 Kimi、MiniMax 等即将在天猫开店 上海证券报 9 月 5 日独家获悉，Kimi、MiniMax、阶跃星辰等多家大模型厂商也都在与天猫接洽中，未来将入驻天猫开设官方旗舰店，开售 Token 订阅套餐产品。 本月 2 日，国产 AI…',
-      'url': 'http://www.geekpark.net/news/369875',
-      'source': '极客公园',
-      'type': '政策与安全'
     }
   ]
 };
