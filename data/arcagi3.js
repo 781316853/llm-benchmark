@@ -7,7 +7,7 @@ window.ARCAGI3 = {
   'url': 'https://llm-stats.com/benchmarks/arc-agi-3',
   'officialUrl': 'https://arcprize.org/leaderboard',
   'updated': '2026-09-07',
-  'refreshedAt': '2026-09-07 12:47',
+  'refreshedAt': '2026-09-08 02:08',
   'stats': {
     'environments': 135,
     'entries': 5
