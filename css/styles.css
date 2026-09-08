@@ -189,6 +189,19 @@ a:hover { text-decoration: underline; }
 .badge-v10 { display: inline-block; font-size: 10px; font-weight: 700; color: #8a5a16;
   background: #fbeccd; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid #ecd49a; }
+/* Terminal-Bench 版本徽标:标注总览矩阵该值取自的榜单版本(优先级 4.0>3.0>2.1) */
+.badge-tb40 { display: inline-block; font-size: 10px; font-weight: 700; color: #2f6db5;
+  background: #dfeffd; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #b7d5f5; }
+.badge-tb30 { display: inline-block; font-size: 10px; font-weight: 700; color: #1f6f54;
+  background: #d8f0e7; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #b3ddc9; }
+.badge-tb21 { display: inline-block; font-size: 10px; font-weight: 700; color: #8a5a16;
+  background: #fbeccd; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #ecd49a; }
+.badge-tb20 { display: inline-block; font-size: 10px; font-weight: 700; color: #6b4fa0;
+  background: #eee6fb; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #d4c4ee; }
 /* 「双榜」徽标:恰好命中 2 个基准组的模型,灰蓝色调,与双榜行高亮配套 */
 .badge-two { display: inline-block; font-size: 10px; font-weight: 700; color: #4A6076;
   background: #E2E9F0; padding: 1px 6px; border-radius: 999px; margin-left: 6px;

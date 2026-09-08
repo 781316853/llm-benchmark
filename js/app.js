@@ -22,6 +22,12 @@
   var verBadge = function (v) {
     return v === "v1.0" ? ' <span class="badge-v10">v1.0</span>' : ' <span class="badge-v11">v1.1</span>';
   };
+  // Terminal-Bench 版本徽标:标注该值取自的榜单版本(优先级 4.0>3.0>2.1>2.0)
+  var tbVerBadge = function (v) {
+    if (!v) return "";
+    var cls = v === "4.0" ? "badge-tb40" : (v === "3.0" ? "badge-tb30" : (v === "2.1" ? "badge-tb21" : "badge-tb20"));
+    return ' <span class="' + cls + '" title="榜单版本 v' + esc(v) + '">v' + esc(v) + '</span>';
+  };
 
   // 三基准描述文案(对齐设计稿卡片信息层级);按 benchSummary 的 key 索引
   var BENCH_DESC = {
@@ -89,7 +95,7 @@
     // Code Arena · WebDev 单值列(Elo 原值):排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "基准",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
-    // Terminal-Bench 4.0 单值列(解决率 %,计入综合分与命中数;完整条目见「权威基准测试」页)
+    // Terminal-Bench 多版本(4.0/3.0/2.1/2.0)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1>2.0);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "基准",
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "实测", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
@@ -248,11 +254,14 @@
       var wdCi = (r.webdev && typeof r.webdev.ci === "number")
         ? '<span class="cell-cost">±' + r.webdev.ci + '</span>' : "";
       var wdNorm = (r.webdev && r.webdev.norm != null) ? r.webdev.norm.toFixed(1) : null;
-      // Terminal-Bench 单元格:解决率% + agent/effort 小字(title 悬浮);悬停显示 Agent 与强度
-      var tbTitle = (r.tbench && (r.tbench.agent || r.tbench.effort))
-        ? ' title="' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join(" · ")) + '"' : "";
+      // Terminal-Bench 单元格:解决率% + 版本徽标 + agent/effort 小字(title 悬浮);悬停显示版本/Agent 与强度
+      var tbMeta = [];
+      if (r.tbench && r.tbench.version) tbMeta.push("v" + r.tbench.version);
+      if (r.tbench && r.tbench.agent) tbMeta.push(r.tbench.agent);
+      if (r.tbench && r.tbench.effort) tbMeta.push(r.tbench.effort);
+      var tbTitle = tbMeta.length ? ' title="' + esc(tbMeta.join(" · ")) + '"' : "";
       var tbHtml = r.tbench
-        ? '<span' + tbTitle + '>' + r.tbench.score + '%</span>' +
+        ? '<span' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
           ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
         : "—";
       // NEW 判定:基于 DeepSWE/Vibe/llm2014/Terminal-Bench 四基准
@@ -293,7 +302,7 @@
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     var GROUP_TITLES = {
-      "基准": "榜单基准:第三方公开基准榜单(DeepSWE / Vibe Code / WebDev / Terminal-Bench 4.0)",
+      "基准": "榜单基准:第三方公开基准榜单(DeepSWE / Vibe Code / WebDev / Terminal-Bench 4.0/3.0/2.1/2.0)",
       "实测": "实测:站主实测口径(llm2014 私有题库 / AI 能力专项测试)"
     };
     function thAttr(c, extra) {
@@ -339,8 +348,8 @@
       var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
       note += ' · 当前高亮 ' + domCnt + ' 个国产模型。';
     }
-    // Terminal-Bench 4.0 计入综合分与命中数;其余权威基准(见「权威基准测试」页)仅展示不计入
-    note += ' Terminal-Bench 4.0 计入综合分(权重 10%)与命中数,取各模型最优 Agent 解决率;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD 仅在「权威基准测试」页展示。';
+    // Terminal-Bench(4.0/3.0/2.1/2.0)合并为一个基准组计入综合分与命中数;其余权威基准(见「权威基准测试」页)仅展示不计入
+    note += ' Terminal-Bench 4.0/3.0/2.1/2.0 四版合并为一个基准组计入综合分(权重 10%)与命中数,优先以最高版本为代表(4.0>3.0>2.1>2.0,版本内取各模型最优成绩),单元数字旁附版本标签;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD 仅在「权威基准测试」页展示。';
     document.getElementById("overviewNote").textContent = note;
   }
 
@@ -552,7 +561,7 @@
   }
 
   // ===== 7) 权威基准测试(6 大权威基准) =====
-  // 仅 Terminal-Bench 4.0 计入总览/综合分/命中数;其余 5 源(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)仅本页展示
+  // Terminal-Bench(4.0/3.0/2.1/2.0)合并为一个基准组计入总览/综合分/命中数;其余 5 源(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)仅本页展示
   function authSectionHtml(head, tag, url, tableHtml, noteHtml) {
     return '<section class="auth-block">' +
       '<h3 class="auth-title">' + esc(head) + ' <span class="tag">' + esc(tag) + '</span>' +
@@ -564,21 +573,33 @@
   function renderAuthority() {
     var S = D.src;
     var html = "";
-    // 1) Terminal-Bench 4.0(计入总览)
-    var tb = S.tbench || {};
-    var tbMs = D.tbenchAll();
-    var tbRows = tbMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
-        (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
-        '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</td>' +
-        '<td class="num">' + esc(m.date || "—") + '</td><td class="num">' + esc(m.tokens || "—") + '</td>' +
-        '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
+    // 1) Terminal-Bench 多版本(4.0/3.0/2.1/2.0):合并为一个基准组计入总览,优先以最高版本为代表
+    var tbVersions = [
+      { ver: "4.0", tag: "计入总览 · 当前主榜", url: (S.tbench || {}).url || "", tasks: "66 个任务(校准资源并移除饱和任务),当前主站 agent×model 榜单" },
+      { ver: "3.0", tag: "计入总览 · 备选参考", url: "https://www.tbench.ai/news/terminal-bench-3-0", tasks: "74 个任务(含更长周期/多容器/GPU 环境),全网权威快照(agent×model)" },
+      { ver: "2.1", tag: "计入总览 · 历史版本", url: "https://llm-stats.com/benchmarks/terminal-bench-2.1", tasks: "89 个任务;llm-stats 模型级 0-1 归一化自报分(换算为%)" },
+      { ver: "2.0", tag: "计入总览 · 历史版本", url: "https://www.datalearner.com/leaderboards/category/agent?benchmark=Terminal+Bench+2.0", tasks: "89 个任务;datalearner 模型级解决率快照" }
+    ];
+    var tbRowsByVer = {}, tbMs = D.tbenchByVersion("4.0");
+    tbVersions.forEach(function (t) {
+      var ms = D.tbenchByVersion(t.ver);
+      tbRowsByVer[t.ver] = ms.map(function (m, i) {
+        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
+          (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
+          '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</td>' +
+          '<td class="num">' + esc(m.date || "—") + '</td><td class="num">' + esc(m.tokens || "—") + '</td>' +
+          '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
+      });
+      var is4 = t.ver === "4.0";
+      var chartHtml = is4
+        ? '<div class="chart-box"><h3>解决率排行(agent×model 全条目)</h3><div id="authTBBar" class="chart"></div></div>'
+        : "";
+      var tableHtml = '<div class="table-wrap"><table id="authTB' + (is4 ? "" : t.ver.replace(".", "")) + 'Table" class="data-table"></table></div>';
+      html += authSectionHtml("Terminal-Bench " + t.ver, "终端命令行任务 · " + t.tag, t.url,
+        chartHtml + tableHtml,
+        '来源:' + esc(t.url) + ' · 更新 ' + esc((S.tbench || {}).updated || "") +
+        ' · ' + t.tasks + ',得分越高越好。四版合并为一个基准组计入总览综合分与命中数,优先以最高版本为代表(4.0>3.0>2.1>2.0);其中 2.1 为归一化自报分、2.0 为模型级解决率,口径见上方来源注。');
     });
-    html += authSectionHtml("Terminal-Bench 4.0", "终端命令行任务 · 已计入总览", tb.url,
-      '<div class="chart-box"><h3>解决率排行(agent×model 全条目)</h3><div id="authTBBar" class="chart"></div></div>' +
-      '<div class="table-wrap"><table id="authTBTable" class="data-table"></table></div>',
-      '来源:' + esc(tb.url || "") + ' · 版本 ' + esc(tb.version || "") + ' · 更新 ' + esc(tb.updated || "") +
-      ' · 66 个终端任务,解决率越高越好。本榜计入总览页综合分(权重 10%)与命中数。');
     // 2) Terminal-Bench-Science 0.1
     var tbs = S.tbscience || {};
     var tbsMs = D.tbScience();
@@ -651,7 +672,11 @@
     // 渲染 + 图表 + 表格
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
-    fillTable("authTBTable", ["#", "模型", "Agent", "解决率±CI", "发布日期", "Tokens", "成本"], tbRows, ["", "", "", "num", "num", "num", "num"]);
+    tbVersions.forEach(function (t) {
+      fillTable("authTB" + (t.ver === "4.0" ? "" : t.ver.replace(".", "")) + "Table",
+        ["#", "模型", "Agent", "解决率±CI", "发布日期", "Tokens", "成本"],
+        tbRowsByVer[t.ver], ["", "", "", "num", "num", "num", "num"]);
+    });
     fillTable("authTBScienceTable", ["#", "模型", "Agent", "解决率"], tbsRows, ["", "", "", "num"]);
     fillTable("authOSWorldTable", ["#", "系统(模型·配置)", "部分得分", "厂商", "上报时间", "来源"], osRows, ["", "", "num", "", "num", ""]);
     fillTable("authLastExamTable", ["#", "模型", "厂商", "Pass@1", "参数量", "上下文"], aleRows, ["", "", "", "num", "num", "num"]);
@@ -673,7 +698,7 @@
       ));
     }
     document.getElementById("authDesc").textContent =
-      "以下为第三方权威基准测试快照,仅作参考展示;其中仅 Terminal-Bench 4.0 计入总览页综合分与命中数,其余均为展示型参考数据。";
+      "以下为第三方权威基准测试快照,仅作参考展示;其中 Terminal-Bench(4.0/3.0/2.1/2.0)合并为一个基准组计入总览综合分与命中数(优先以最高版本为代表,其中 2.1 为归一化自报分、2.0 为模型级解决率),其余为展示型参考数据。";
   }
 
   // ===== 标签切换 =====
