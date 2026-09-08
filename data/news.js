@@ -14,6 +14,70 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-08',
+      'title': '谷歌云与埃森哲达成协议，争相追赶人工智能部署大战',
+      'brief': '谷歌云通过埃森哲扩展其企业人工智能，押注于前沿部署的工程师，以推动采用并克服部署……',
+      'url': 'https://techcrunch.com/2026/09/08/google-cloud-races-to-catch-up-in-the-ai-deployment-wars-with-accenture-deal/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': '随着人工智能改变安全格局， Chrome浏览器现在每两周发布一次更新',
+      'brief': '谷歌正在加快Chrome浏览器的发布时间表，以更快地发布安全补丁和新功能。',
+      'url': 'https://techcrunch.com/2026/09/08/chrome-is-now-shipping-updates-every-2-weeks-as-ai-changes-the-security-landscape/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-08',
+      'title': '随着主权人工智能成为大企业， Mistral筹集了30亿美元€',
+      'brief': '这家法国人工智能实验室在由三星、Scaleup Europe和PSG Equity牵头的D轮融资中以210亿欧元的估值筹集了30亿欧元。',
+      'url': 'https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': '谷歌的人类基因组图谱可以为新的治疗方法铺平道路',
+      'brief': '谷歌DeepMind推出了一款人工智能工具，其科学家声称该工具可以帮助解开人类基因组的奥秘，并改变我们的...',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/991180/google-launches-alpha-genome-atlas',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'Adobe正试图在Premiere中使其AI生成器防白痴',
+      'brief': 'Adobe正在彻底改变编辑人员在其Premiere专业视频编辑软件中与人工智能交互的方式。其新的生成媒体工具使我……',
+      'url': 'https://www.theverge.com/tech/991133/adobe-is-trying-to-make-its-ai-generators-idiot-proof-in-premiere',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'LibreOffice在宣布没有人工智能功能后打破了下载记录',
+      'brief': 'LibreOffice在宣布没有人工智能功能后打破了下载记录',
+      'url': 'https://manualdousuario.net/en/libreoffice-download-record-no-ai/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': '我们必须回到办公室亲自使用人工智能',
+      'brief': '我们必须回到办公室亲自使用人工智能',
+      'url': 'https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'Mistral筹集了€ 3B',
+      'brief': 'Mistral筹集了€ 3B',
+      'url': 'https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-08',
       'title': '传字节开发实时空间视频生成模型，张一鸣亲自督导；微信内测「AI 社交」功能；华为小米同天发布折叠屏手机',
       'brief': '消息称字节正开发实时空间视频生成 AI 模型：张一鸣亲自督导，最快下个月发布 9 月 7 日消息，据彭博社报道，字节跳动正准备推出一款实时空间视频生成 AI 模型。创始人张一鸣正亲自督导这款新模型的研发工作，该模型计划最早于下月发布。 知情人士透露，张一鸣近期一直在协调公司各业务…',
       'url': 'http://www.geekpark.net/news/369965',
@@ -22,11 +86,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-08',
-      'title': 'OpenAI 详解 GPT-Live 架构如何实现了连续的有状态语音交互',
+      'title': 'OpenAI首曝“AI造AI”内部数据，2028年冲击AI研究员！黄仁勋高调祝贺：AGI已到来',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/rdESg5icYIZ71J7xb69K?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/TkVMcVFzAgixGb70kUr9?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-08',
@@ -35,38 +99,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/zmiQaFpdA993WFozmTt3?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '不透明的复发，以及您可能应该知道的其他人工智能术语',
-      'brief': '人工智能的崛起带来了大量的新术语和俚语。以下是一份术语表，其中包含一些最重要的词汇的定义，以及……',
-      'url': 'https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '适用于本地LLM的最小边缘AI设备',
-      'brief': '适用于本地LLM的最小边缘AI设备',
-      'url': 'https://tiiny.ai/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': 'AI冷水淋浴',
-      'brief': 'AI冷水淋浴',
-      'url': 'https://allan.reyes.sh/posts/ai-cold-showers/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '人工智能模型经营真实业务：他们发送了$ 12,431的伪造发票，损失了$ 3,200',
-      'brief': '人工智能模型经营真实业务：他们发送了$ 12,431的伪造发票，损失了$ 3,200',
-      'url': 'https://www.bottlenecklabs.com/blog/benchmarking-7-autonomous-businesses',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-07',
@@ -105,14 +137,6 @@ window.NEWS = {
       'title': 'AWS 开源 Kiro Crew，让 Coding Agent 异步跑起来',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/uTRvjxweSGdp2kzlhPiV?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
-      'title': 'TikTok SRE 技术负责人：AI Agents 说到底就是分布式系统',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/atCusTaSOmddUx1vvJba?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
     },

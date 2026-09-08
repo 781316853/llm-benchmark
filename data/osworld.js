@@ -7,7 +7,7 @@ window.OSWORLD = {
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'updated': '2026-09-08',
-  'refreshedAt': '2026-09-08 13:39',
+  'refreshedAt': '2026-09-09 01:05',
   'stats': {
     'tasks': 108,
     'entries': 22

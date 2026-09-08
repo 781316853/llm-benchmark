@@ -7,7 +7,7 @@ window.LASTEXAM = {
   'url': 'https://llm-stats.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'updated': '2026-09-08',
-  'refreshedAt': '2026-09-08 13:39',
+  'refreshedAt': '2026-09-09 01:05',
   'stats': {
     'tasks': 1490,
     'entries': 16
@@ -84,7 +84,7 @@ window.LASTEXAM = {
       'score': 42.9,
       'size': '28B',
       'context': '262K',
-      'cost': '—'
+      'cost': '$ 0.40 / $ 3.00'
     },
     {
       'rank': 9,
@@ -102,7 +102,7 @@ window.LASTEXAM = {
       'score': 28.5,
       'size': '753B',
       'context': '1.0M',
-      'cost': '$ 1.40 / $ 4.40'
+      'cost': '$ 1.20 / $ 4.00'
     },
     {
       'rank': 11,
@@ -147,7 +147,7 @@ window.LASTEXAM = {
       'score': 25.2,
       'size': '304B',
       'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18'
+      'cost': '$ 0.06 / $ 0.18'
     },
     {
       'rank': 16,

@@ -8,7 +8,7 @@ window.TBSCIENCE = {
   'announcementUrl': 'https://www.terminal-bench-science.ai/announcement',
   'version': '0.1',
   'updated': '2026-09-08',
-  'refreshedAt': '2026-09-08 13:39',
+  'refreshedAt': '2026-09-09 01:05',
   'stats': {
     'tasks': 70,
     'entries': 9
