@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-08',
+  'updated': '2026-09-09',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -12,6 +12,70 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-09-09',
+      'title': 'AI责任– OpenAI和Anthropic',
+      'brief': 'AI责任– OpenAI和Anthropic',
+      'url': 'https://twitter.com/hilbertspaess/status/2097476196791709843',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '折叠屏 iPhone 初期产量受限，每日仅数百部；环比增长 379%，腾讯 HY4 登顶全球大模型调用榜；特斯拉时隔 19 个月再降价｜极客早知道',
+      'brief': '消息称苹果折叠屏 iPhone 初期产量受限，每日仅数百部 9 月 8 日，据日经中文网报道，根据多位知情人士指出，市场期待已久的首部苹果折叠 iPhone，由于苹果极为严格的质量管控标准，初期生产量每天仅有「数百部」，而苹果及其供货商正全力加快产量爬坡。 熟悉情况的供应链主管向…',
+      'url': 'http://www.geekpark.net/news/370026',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '招商银行统一近万张AI加速卡：利用率从35%提至60%+、每百万Token推理成本降低60%',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/UN2Gt8aKT40ed5z52WuL?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-09',
+      'title': 'Open Code Review：百万真实任务验证的确定性工程与 Agent 协同｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/owxMsObP9h1wFcRqW000?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-08',
+      'title': '黑客正在从订阅者那里窃取Claude令牌',
+      'brief': '上个月，一位Claude用户注意到他的帐户正在使用代币，即使他没有工作。此后， Anthropic警告用户注意HAC……',
+      'url': 'https://techcrunch.com/2026/09/08/hackers-are-stealing-claude-tokens-from-subscribers/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'Cognition的估值达到480亿美元，表明投资者认为人工智能编码远未成为赢家通吃的市场',
+      'brief': 'Cognition的估值倍数高于Cursor在出售给SpaceX之前的估值倍数。',
+      'url': 'https://techcrunch.com/2026/09/08/cognition-hits-48b-valuation-signaling-investors-believe-ai-coding-is-far-from-a-winner-take-all-market/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'Meta首次推出其Muse AI代理。消费者会信任它吗？',
+      'brief': 'Meta新的个人人工智能代理Muse希望访问用户的电子邮件、日历、付款、医疗服务等，这使该公司成为最大的……',
+      'url': 'https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-08',
+      'title': '纽约大学数学家说， OpenAI在职业生涯中的数学问题上进行了肮脏的斗争',
+      'brief': '第一个为Navier-Stokes的存在和平滑性问题提供解决方案的人将获得100万$的奖金。',
+      'url': 'https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
     {
       'date': '2026-09-08',
       'title': '谷歌云与埃森哲达成协议，争相追赶人工智能部署大战',
@@ -38,35 +102,27 @@ window.NEWS = {
     },
     {
       'date': '2026-09-08',
-      'title': '谷歌的人类基因组图谱可以为新的治疗方法铺平道路',
-      'brief': '谷歌DeepMind推出了一款人工智能工具，其科学家声称该工具可以帮助解开人类基因组的奥秘，并改变我们的...',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/991180/google-launches-alpha-genome-atlas',
+      'title': '戏剧围绕OpenAI的传奇数学里程碑旋转',
+      'brief': 'OpenAI表示，正如《纽约时报》早些时候报道的那样，它找到了一个主要数学问题的解决方案，这个问题已经悬而未决了大约90年……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/991710/openai-navier-stokes-solution',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-08',
+      'title': 'ChatGPT Sketch将不良图纸转化为详细的人工智能图像',
+      'brief': 'OpenAI于周二发布了ChatGPT Images 2.5 ，并添加了一种新的方式来告诉ChatGPT您希望它制作什么图像：通过绘制一个操作……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/991727/openai-chatgpt-images-2-5-sketch',
       'source': 'The Verge',
       'type': '行业动态'
     },
     {
       'date': '2026-09-08',
-      'title': 'Adobe正试图在Premiere中使其AI生成器防白痴',
-      'brief': 'Adobe正在彻底改变编辑人员在其Premiere专业视频编辑软件中与人工智能交互的方式。其新的生成媒体工具使我……',
-      'url': 'https://www.theverge.com/tech/991133/adobe-is-trying-to-make-its-ai-generators-idiot-proof-in-premiere',
+      'title': '元押注AI特工Muse在人工智能竞赛中迎头赶上',
+      'brief': 'Meta正在通过Muse再次推动将人工智能带给大众， Muse是一名个人助理，据说可以让人工智能掌握在……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/991216/meta-bets-on-ai-agent-muse-to-catch-up-in-ai-race',
       'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-08',
-      'title': 'LibreOffice在宣布没有人工智能功能后打破了下载记录',
-      'brief': 'LibreOffice在宣布没有人工智能功能后打破了下载记录',
-      'url': 'https://manualdousuario.net/en/libreoffice-download-record-no-ai/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-08',
-      'title': '我们必须回到办公室亲自使用人工智能',
-      'brief': '我们必须回到办公室亲自使用人工智能',
-      'url': 'https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-08',
@@ -83,70 +139,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/369965',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-08',
-      'title': 'OpenAI首曝“AI造AI”内部数据，2028年冲击AI研究员！黄仁勋高调祝贺：AGI已到来',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/TkVMcVFzAgixGb70kUr9?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-08',
-      'title': 'AI Coding 在大型客户端工程中的落地实践——从通才模型到专才 Agent｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/zmiQaFpdA993WFozmTt3?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '判断用不用你的软件，Agent 只需 500 个 Token',
-      'brief': '作者｜宇航猿 编辑｜靖宇 现在几乎每个开发者都在用 AI Agent 干活。Cursor、Claude Code、Windsurf、Gemini CLI，各种 Coding Agent 已经深度嵌入了日常工作流。一个普遍的体验是，让 Agent 去调某些 API 或者集成某个服务…',
-      'url': 'http://www.geekpark.net/news/369960',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '麒麟 9050 Pro 现身、余承东秀英文，华为新三折叠太有活了',
-      'brief': '「Super Intelligent！Super cool！」 你很难想到，华为终端 BG 董事长 余承东，会在正式场合突然充满自信的飙英文。 余承东在发布会上展示华为 Mate XT2 非凡大师三折叠手机｜图片来源：极客公园 9 月 7 日的华为秋季全场景发布会上，余承东在介绍…',
-      'url': 'http://www.geekpark.net/news/369954',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '雷军：小米汽车销量突破 80 万；苹果元老辞职，传不满激进 AppStore 增收方案；韩国推出首档人机 AI 恋综 | 极客早知道',
-      'brief': '雷军：小米汽车累计交付量超过 80 万辆 9 月 7 日消息，小米创办人、董事长兼 CEO 雷军刚刚宣布， 小米汽车累计交付量超过 80 万辆 。 据本月早些时候报道，2026 年 8 月，小米汽车交付量持续超过 30,000 台。小米汽车表示， 正全力为小米澎程上市交付做准备…',
-      'url': 'http://www.geekpark.net/news/369884',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '从 Harness 到 Loop：阿福 Agent 小队如何处理持续涌入的线上 Badcase｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/5Xy6jTfq7Si98XvXAJCp?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
-      'title': 'AWS 开源 Kiro Crew，让 Coding Agent 异步跑起来',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/uTRvjxweSGdp2kzlhPiV?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-07',
-      'title': '成立 12 年，快看漫画重做 AI 时代的内容产品',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/kAHvBCLrI3sdMyONOveM?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     }
   ]
 };

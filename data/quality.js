@@ -1,17 +1,17 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-09-08;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-09-09;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-09-08',
+  'generatedAt': '2026-09-09',
   'overallScore': 0.91,
   'sources': [
     {
       'id': 'ai_capability',
       'name': 'AI 能力专项测试',
       'status': 'ok',
-      'modelCount': 52,
-      'updated': '2026-09-08',
+      'modelCount': 62,
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -22,7 +22,7 @@ window.QUALITY = {
       'name': 'ARC-AGI-3',
       'status': 'ok',
       'modelCount': 5,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -33,7 +33,7 @@ window.QUALITY = {
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
       'modelCount': 126,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -44,7 +44,7 @@ window.QUALITY = {
       'name': 'BenchCAD',
       'status': 'ok',
       'modelCount': 17,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 0.824,
       'fetchAttempts': 1,
@@ -55,7 +55,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -66,7 +66,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.1',
       'status': 'ok',
       'modelCount': 34,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -77,7 +77,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -88,7 +88,7 @@ window.QUALITY = {
       'name': 'Agents\' Last Exam',
       'status': 'ok',
       'modelCount': 16,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -99,7 +99,7 @@ window.QUALITY = {
       'name': 'llm2014',
       'status': 'ok',
       'modelCount': 80,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -110,7 +110,7 @@ window.QUALITY = {
       'name': 'OSWorld 2.0',
       'status': 'ok',
       'modelCount': 22,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -121,7 +121,7 @@ window.QUALITY = {
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
       'modelCount': 18,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -132,7 +132,7 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -143,7 +143,7 @@ window.QUALITY = {
       'name': 'Vibe Code',
       'status': 'ok',
       'modelCount': 90,
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -309,6 +309,26 @@ window.QUALITY = {
       },
       'mean': 81.7,
       'stddev': 11.84,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GPT-6 Astra',
+      'name': 'gpt-6-astra',
+      'vendor': 'OpenAI',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 100.85,
+        'datalearner': 74.1,
+        'deepswe_v11': 74,
+        'vibecode': 89.59
+      },
+      'mean': 84.6,
+      'stddev': 11.31,
       'flag': 'alert'
     },
     {
@@ -682,24 +702,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'GPT-6 Astra',
-      'name': 'GPT-6 Astra',
-      'vendor': 'OpenAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 74.1,
-        'deepswe_v11': 74,
-        'vibecode': 89.59
-      },
-      'mean': 79.2,
-      'stddev': 7.33,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Grok 4.5',
       'name': 'Grok 4.5',
       'vendor': 'xAI',
@@ -824,22 +826,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Muse Spark 1.3',
-      'name': 'Muse Spark 1.3',
-      'vendor': 'Meta',
-      'sources': [
-        'datalearner',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 75.4,
-        'vibecode': 84.36
-      },
-      'mean': 79.9,
-      'stddev': 4.48,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'Gemini 3.8 Flash',
       'name': 'gemini-3.8-flash',
       'vendor': 'Google',
@@ -857,6 +843,24 @@ window.QUALITY = {
       },
       'mean': 77.4,
       'stddev': 3.89,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Muse Spark 1.3',
+      'name': 'muse-spark-1.3',
+      'vendor': 'Meta',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 80.75,
+        'datalearner': 75.4,
+        'vibecode': 84.36
+      },
+      'mean': 80.2,
+      'stddev': 3.68,
       'flag': 'ok'
     },
     {
@@ -971,9 +975,9 @@ window.QUALITY = {
   'completeness': {
     'ai_capability': {
       'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
+      'total': 62,
+      'complete': 62,
+      'modelCount': 62,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1080,67 +1084,67 @@ window.QUALITY = {
   },
   'timeliness': {
     'ai_capability': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'arcagi3': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'arena_webdev': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'benchcad': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'datalearner': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'lastexam': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'osworld': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'tbench': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'tbscience': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     },
     'vibecode': {
-      'updated': '2026-09-08',
+      'updated': '2026-09-09',
       'ageDays': 0,
       'flag': 'ok'
     }
@@ -1205,6 +1209,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'ai_capability,datalearner,deepswe_v11,vibecode',
       'message': 'claude-fable-5 跨源分数标准差 11.84(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,vibecode',
+      'message': 'gpt-6-astra 跨源分数标准差 11.31(>10)'
     },
     {
       'level': 'error',

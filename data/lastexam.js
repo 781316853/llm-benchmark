@@ -1,4 +1,4 @@
-// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-09-08)
+// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-09-09)
 // 来源:https://llm-stats.com/benchmarks/agents-last-exam(官方:https://agents-last-exam.org/leaderboard)
 // 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
@@ -6,8 +6,8 @@ window.LASTEXAM = {
   'source': 'Agents\' Last Exam',
   'url': 'https://llm-stats.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
-  'updated': '2026-09-08',
-  'refreshedAt': '2026-09-09 01:05',
+  'updated': '2026-09-09',
+  'refreshedAt': '2026-09-09 13:45',
   'stats': {
     'tasks': 1490,
     'entries': 16
