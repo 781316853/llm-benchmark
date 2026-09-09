@@ -336,9 +336,15 @@
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
-    deepSwe().forEach(function (m) {
+    // 综合分口径:按合并快照内 min-max 归一到 0-100(norm),与 tbench 等 0-100 基准同量纲,
+    // 不再直接用 Pass@1 原始值(头名约 74,量纲低于 0-100)。矩阵 DeepSWE 列展示仍用 pass1 原始值。
+    var dsAll = deepSwe();
+    var dsMin = Infinity, dsMax = -Infinity;
+    dsAll.forEach(function (m) { if (m.pass1 < dsMin) dsMin = m.pass1; if (m.pass1 > dsMax) dsMax = m.pass1; });
+    var dsSpan = (dsMax - dsMin) || 1;
+    dsAll.forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, version: m.version, norm: m.pass1 };
+      if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, version: m.version, norm: (m.pass1 - dsMin) / dsSpan * 100 };
     });
     // Vibe Code
     vibeCode().forEach(function (m) {

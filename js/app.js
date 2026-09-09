@@ -205,12 +205,12 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:先分配梯队(基于全量模型,按原始综合分),再选取展示行:排名行(命中≥3榜)按综合分
+    // 矩阵表:先分配梯队(基于全量排名行(命中≥3榜),按原始综合分),再选取展示行:排名行按综合分
     // 排序取前30;恰好命中两榜的「双榜」模型不计算综合分,按各榜成绩与排名行模型比对落入相应
     // 名次间隔,仅在前30区间内混排计入(序号计「—」,不占前30名额),第 30 个排名行之后的行
     // (含双榜)一律截断;勾选"显示全部"则展示所有模型
     var matrixRows = CMP.matrix(state.llmMonth);
-    CMP.assignTiers(matrixRows);
+    CMP.assignTiers(matrixRows.filter(function (r) { return r.benchCount >= 3; }));
     var allRows = sortedMatrixRows(matrixRows);
     var rows = allRows;
     if (!state.showAll.overview) {
@@ -238,8 +238,8 @@
         '<span class="ac-be" title="后端">' + be + '</span>';
     };
     var html = rows.map(function (r) {
-      // 双榜行:恰好命中 2 个基准组,按综合分混排展示但不计排名、不计入前30限制
-      var dual = r.benchCount === 2;
+      // 双榜行:恰好命中 2 个基准组,按综合分混排插入展示但不计排名、不计入前30限制
+      var inserted = r.benchCount === 2;
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
       var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
@@ -270,19 +270,19 @@
       var dom = state.highlightDomestic && DOMESTIC[r.vendor];
       // row-hit(跨榜命中)、row-new(新上榜)、row-domestic(国产高亮)可并存;
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
-      var cls = (r.benchCount >= 3 ? "row-hit " : "") + (dual ? "row-two " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
+      var cls = (r.benchCount >= 3 ? "row-hit " : "") + (inserted ? "row-two " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
-      var dualBadge = dual ? ' <span class="badge-two" title="仅命中两榜:按各榜成绩与排名模型比对落入相应名次区间,不计算综合分、不计排名;仅前30区间内显示">仅双榜</span>' : "";
+      var insertedBadge = inserted ? ' <span class="badge-two" title="仅命中两榜:按各榜成绩与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;仅前30区间内显示">仅双榜</span>' : "";
       // 序号列:参与排名的行按出现顺序编号;双榜行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
-        '<td class="num">' + (dual ? "—" : ++rankNo) + '</td>' +
-        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + dualBadge + '</td>' +
+        '<td class="num">' + (inserted ? "—" : ++rankNo) + '</td>' +
+        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + insertedBadge + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
         // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
         // 双榜行不作梯队分档展示:梯队列显示「—」并直接给出综合分数字(综合分仍按同一口径计算)
         (function () {
           // 双榜行不计算综合分:梯队列仅显示「—」
-          if (dual) return '<td class="num"><span class="tier-na">—</span></td>';
+          if (inserted) return '<td class="num"><span class="tier-na">—</span></td>';
           var score = CMP.composite(r).toFixed(1);
           var t = r.tier || "E";
           var tc = t.replace("+", "p"); // S+ -> Sp,用作 CSS 类名
@@ -341,7 +341,7 @@
     } else {
       var dualCnt = rows.filter(function (r) { return r.benchCount === 2; }).length;
       note = '当前显示命中≥3个基准组且排名前 ' + (rows.length - dualCnt) + ' 的模型,以及 ' + dualCnt +
-        ' 个跻身前30区间的「双榜」模型(按各榜成绩与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余双榜模型可勾选下方"显示全部"查看)。';
+        ' 个跻身前30区间的「双榜」模型(恰好命中 2 个基准组,按各榜成绩与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余双榜模型可勾选下方"显示全部"查看)。';
     }
     // 国产高亮开启时,追加国产模型数量提示
     if (state.highlightDomestic) {

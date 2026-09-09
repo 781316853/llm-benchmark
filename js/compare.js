@@ -34,8 +34,8 @@
     if (e.aicapFe || e.aicapBe) boards.push("aicap");
     return boards;
   }
-  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,按覆盖率折算到全部
-  // 排名行后取最大值(以较弱榜为准),避免强榜把弱榜拉高而使落位偏前。
+  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,
+  // 按覆盖率折算到全部排名行后取最大值(以较弱榜为准),避免强榜把弱榜拉高而使落位偏前。
   // 直接数"高于它的模型数"会在覆盖稀疏的榜上低估弱势(如 AI 能力仅少数排名行有成绩,
   // 全部高于它也只计少数几个),故按 高于数/有成绩数 的比例折算排名行总数。
   // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前),不计算综合分
@@ -61,15 +61,15 @@
   // 交叉矩阵排序(仅含命中≥2榜的模型,仅命中一榜的模型不进入总览矩阵,详见各榜单页):
   // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
   //    并依次编号 _posKey = 0,1,2…;
-  // ② 双榜模型不计算综合分,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
-  //    恰好落在两个排名行的间隔中;多个双榜模型同间隔时按位置值先后排列;
+  // ② 双榜行(命中=2)不计算综合分,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
+  //    恰好落在两个排名行的间隔中;多个双榜行同间隔时按位置值先后排列;
   // ③ 合并后按 _posKey 升序
   function matrix(llmMonthKey) {
     var map = D.unified(llmMonthKey);
     var all = Object.keys(map).map(function (k) { return map[k]; })
       .filter(function (e) { return e.benchCount >= 2; });
     var ranked = all.filter(function (e) { return e.benchCount >= 3; });
-    var dual = all.filter(function (e) { return e.benchCount === 2; });
+    var inserted = all.filter(function (e) { return e.benchCount === 2; }); // 双榜:不参与名次、不计算综合分
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);
       // 差距 ≥ 容差:严格按综合分降序
@@ -83,22 +83,23 @@
       return variance(a) - variance(b);
     });
     ranked.forEach(function (e, i) { e._posKey = i; });
-    dual.forEach(function (e) {
+    inserted.forEach(function (e) {
       var key = dualPosition(e, ranked) - 0.5;
       // 位置恰为 x.5 时键会与排名行整数键重合,微移保证双榜键严格落在两个排名行之间,
       // 避免默认渲染与表头排序(升序后反转)对重合键的先后不一致
       if (Math.abs(key - Math.round(key)) < 1e-9) key += 1e-6;
       e._posKey = key;
     });
-    var rows = ranked.concat(dual);
+    var rows = ranked.concat(inserted);
     rows.sort(function (a, b) { return a._posKey - b._posKey; });
     return rows;
   }
-  // 主基准组权重:DeepSWE 35%、Vibe Code 15%、llm2014 10%、WebDev 15%、AI 能力·前端 10%、AI 能力·后端 10%、Terminal-Bench 10%
-  // (llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准,权重 10%;
-  //  AI 能力同为个人专项测试口径,前端/后端各 10%;Terminal-Bench 4.0 为权威终端编码榜,权重 10%;
-  //  名义总和 105%,avgNorm 按在场权重归一化,缺失权重自动回流)
-  var WEIGHTS = { deepswe: 0.35, vibe: 0.15, llm: 0.10, webdev: 0.15, aicapFe: 0.10, aicapBe: 0.10, tbench: 0.10 };
+  // 主基准组权重:DeepSWE 20%、Vibe Code 18%、llm2014 12%、WebDev 18%、AI 能力·前端 12%、AI 能力·后端 12%、Terminal-Bench 12%
+  // (DeepSWE 由 35% 下调为 20%,并已按合并快照内 min-max 归一到 0-100 计入综合分,削弱单一基准主导;
+  //  llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准,权重 12%;
+  //  AI 能力同为个人专项测试口径,前端/后端各 12%;Terminal-Bench 4.0 为权威终端编码榜,权重 12%;
+  //  名义总和 104%,avgNorm 按在场权重归一化,缺失权重自动回流)
+  var WEIGHTS = { deepswe: 0.20, vibe: 0.18, llm: 0.12, webdev: 0.18, aicapFe: 0.12, aicapBe: 0.12, tbench: 0.12 };
   function avgNorm(e) {
     var sum = 0, wsum = 0;
     // 按权重加权平均;缺失基准的权重自动回流至已有基准(归一化)
@@ -130,7 +131,7 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:主基准组加权平均(DeepSWE 35%/Vibe 15%/llm2014 10%/WebDev 15%/AI·前端 10%/AI·后端 10%/TB 10%)减去一致性折减
+  // 综合分:主基准组加权平均(DeepSWE 20%/Vibe 18%/llm2014 12%/WebDev 18%/AI·前端 12%/AI·后端 12%/TB 12%)减去一致性折减
   function composite(e) {
     var base = avgNorm(e);
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);
