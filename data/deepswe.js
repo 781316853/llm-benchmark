@@ -7,7 +7,7 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   updated: "2026-09-09",
-  refreshedAt: "2026-09-09 13:45",
+  refreshedAt: "2026-09-10 01:03",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 34 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
@@ -93,6 +93,16 @@ window.DEEPSWE = {
     'cost': 4.65,
     'outTok': 81500,
     'steps': 98
+  },
+  {
+    'name': 'Claude Fable 5.1',
+    'effort': '最高（工具）',
+    'pass1': 67.4,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'source': 'datalearner'
   },
   {
     'name': 'grok-4-6',
@@ -277,16 +287,6 @@ window.DEEPSWE = {
     'cost': 3.92,
     'outTok': 78175,
     'steps': 129
-  },
-  {
-    'name': 'Qwen3.8-27B',
-    'effort': '思考模式（工具）',
-    'pass1': 42.2,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'source': 'datalearner'
   },
   {
     'name': 'gemini-3-5-flash',

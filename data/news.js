@@ -14,43 +14,147 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-09',
-      'title': 'AI责任– OpenAI和Anthropic',
-      'brief': 'AI责任– OpenAI和Anthropic',
-      'url': 'https://twitter.com/hilbertspaess/status/2097476196791709843',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'title': '超级智能即将到来，我们应该让它去吗？',
+      'brief': '人工智能公司一直在谈论超级智能人工智能，就像它是不可避免的，但最近的安全事件，如OpenAI的Hugging Face漏洞……',
+      'url': 'https://techcrunch.com/video/superintelligence-is-coming-should-we-let-it/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-09',
-      'title': '折叠屏 iPhone 初期产量受限，每日仅数百部；环比增长 379%，腾讯 HY4 登顶全球大模型调用榜；特斯拉时隔 19 个月再降价｜极客早知道',
-      'brief': '消息称苹果折叠屏 iPhone 初期产量受限，每日仅数百部 9 月 8 日，据日经中文网报道，根据多位知情人士指出，市场期待已久的首部苹果折叠 iPhone，由于苹果极为严格的质量管控标准，初期生产量每天仅有「数百部」，而苹果及其供货商正全力加快产量爬坡。 熟悉情况的供应链主管向…',
-      'url': 'http://www.geekpark.net/news/370026',
-      'source': '极客公园',
-      'type': '行业动态'
+      'title': 'ControlAI的Connor Leahy谈为什么超级智能“不是武器，而是对手”',
+      'brief': '人工智能公司一直在谈论超级智能人工智能，就像它是不可避免的，但最近的安全事件，如OpenAI的Hugging Face漏洞……',
+      'url': 'https://techcrunch.com/podcast/controlais-connor-leahy-on-why-superintelligence-is-not-a-weapon-its-an-adversary/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-09',
-      'title': '招商银行统一近万张AI加速卡：利用率从35%提至60%+、每百万Token推理成本降低60%',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/UN2Gt8aKT40ed5z52WuL?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
+      'title': '病毒式人工智能助理Instinct现在有自己的电子邮件地址',
+      'brief': 'Instinct的新电子邮件功能允许人工智能代理创建和管理帐户、联系企业、处理支持请求以及对用户执行更多操作……',
+      'url': 'https://techcrunch.com/2026/09/09/viral-ai-assistant-instinct-now-has-its-own-email-address/',
+      'source': 'TechCrunch',
       'type': '技术研究'
     },
     {
       'date': '2026-09-09',
-      'title': 'Open Code Review：百万真实任务验证的确定性工程与 Agent 协同｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/owxMsObP9h1wFcRqW000?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
+      'title': '“用我们的生命赌博” ：人类学研究人员辞职，警告不要自我完善的人工智能',
+      'brief': '人类学研究员雅各布·考克森（ Jacob Coxon ）因担心人工智能灭绝而辞职，呼吁实验室之间达成起搏协议。',
+      'url': 'https://techcrunch.com/2026/09/09/gambling-with-our-lives-anthropic-researcher-quits-warns-against-self-improving-ai/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
     },
     {
-      'date': '2026-09-08',
-      'title': '黑客正在从订阅者那里窃取Claude令牌',
-      'brief': '上个月，一位Claude用户注意到他的帐户正在使用代币，即使他没有工作。此后， Anthropic警告用户注意HAC……',
-      'url': 'https://techcrunch.com/2026/09/08/hackers-are-stealing-claude-tokens-from-subscribers/',
+      'date': '2026-09-09',
+      'title': 'Shipt成为配备人工智能购物助手的最新派送应用',
+      'brief': '用户可以要求助理做一些事情，例如“为我的周六尾门创建一个可容纳25人的购物车，并包括一些早午餐项目”或“建造……',
+      'url': 'https://techcrunch.com/2026/09/09/shipt-becomes-the-latest-delivery-app-with-an-ai-shopping-assistant/',
       'source': 'TechCrunch',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '8月份顶级公司每名员工的人工智能支出大幅下降—夏季低迷还是警告信号？',
+      'brief': '代币成本下降，型号更便宜，每位员工的支出更少-人工智能的采用并没有像超大规模企业所希望的那样发挥作用。',
+      'url': 'https://techcrunch.com/2026/09/09/ai-spend-per-employee-slumped-at-top-firms-in-august-summer-doldrums-or-a-warning-sign/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '红杉在Cymphony上加倍努力，因为人工智能代理商创造了新的企业安全风险',
+      'brief': '在红杉和SMBC Fin Atlas Beyond Fund共同牵头的2500万美元A轮融资中， Cymphony的估值超过1亿美元。',
+      'url': 'https://techcrunch.com/2026/09/09/sequoia-doubles-down-on-cymphony-as-ai-agents-create-new-enterprise-security-risks/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-09',
+      'title': 'Instacart推出名为Clementine的人工智能杂货店购物助理',
+      'brief': 'Instacart是将对话式人工智能助手引入其平台的最新应用程序。',
+      'url': 'https://techcrunch.com/2026/09/09/instacart-launches-an-ai-grocery-shopping-assistant-called-clementine/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '随着版权诉讼的堆积， Suno将其人工智能模型替换为经过授权音乐培训的新模型',
+      'brief': 'Suno表示，在应对一系列诉讼时，其新型号Suno v6并未使用音乐进行训练，该音乐用于训练之前版本的T...',
+      'url': 'https://techcrunch.com/2026/09/09/suno-replaces-its-ai-models-with-a-new-one-trained-on-licensed-music-as-copyright-suits-pile-up/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '亚马逊Prime Video的新人工智能技术将LIPS与配音音频相匹配',
+      'brief': '亚马逊的Prime Video正在推出一项新的人工智能功能，该功能将演员的嘴巴与“人工配音”音频对齐。功能仅为ava……',
+      'url': 'https://www.theverge.com/tech/991809/amazon-prime-video-ai-lip-sync-dubbing',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '使用人工智能的学生在学校的成绩通常较差',
+      'brief': '根据全球经合组织教育机构的数据，使用人工智能帮助他们学习的学生在学校的表现往往比那些不使用人工智能的学生更糟糕。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/991956/student-ai-use-scores-oecd-pisa',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '担忧的人类学研究人员警告说，人工智能“可能会杀死所有人类”',
+      'brief': '一位高级人类安全研究员表示，人工智能“可能杀死所有人类”的可能性超过10 ％。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/991927/anthropic-ai-kill-all-humans',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '人类学研究人员表示，人工智能“可能杀死所有人类”的可能性超过10 ％',
+      'brief': '人类学研究人员表示，人工智能“可能杀死所有人类”的可能性超过10 ％',
+      'url': 'https://www.cbsnews.com/news/ai-kill-humans-anthropic-researcher-more-than-ten-percent-chance/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-09',
+      'title': 'Show HN: Geiger –查看机器上的每个AI代理以及它可以触摸的内容',
+      'brief': 'Show HN: Geiger –查看机器上的每个AI代理以及它可以触摸的内容',
+      'url': 'https://github.com/Atomburstofficial/geiger',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '人类学研究人员认为，人工智能“可以杀死所有人类”的可能性超过10 ％',
+      'brief': '人类学研究人员认为，人工智能“可以杀死所有人类”的可能性超过10 ％',
+      'url': 'https://www.bbc.co.uk/news/articles/ckgwy1k42w4o',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '人工智能数学突破如何引发争议',
+      'brief': '人工智能数学突破如何引发争议',
+      'url': 'https://www.science.org/content/article/how-ai-math-breakthrough-ignited-controversy',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-09',
+      'title': '千问办公发布多人工作台，重写企业软件的最后一公里',
+      'brief': '作者｜Cynthia 编辑｜郑玄 2026 年 2 月 3 日，由 Anthropic 带头，华尔街替 SaaS 写好了讣告。 几天前，Anthropic 正式官宣把 Claude Cowork 的插件能力扩展到法律、销售、金融等知识工作。与普通聊天机器人不同，这些插件可以携带部…',
+      'url': 'http://www.geekpark.net/news/370061',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-09',
+      'title': 'Shopify 推出 Gisting 新技术：将大模型系统提示词压缩为主旨词元',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/WlJkEfJxMgaK9o91ow2Z?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
     },
     {
       'date': '2026-09-08',
@@ -59,38 +163,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/08/cognition-hits-48b-valuation-signaling-investors-believe-ai-coding-is-far-from-a-winner-take-all-market/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-08',
-      'title': 'Meta首次推出其Muse AI代理。消费者会信任它吗？',
-      'brief': 'Meta新的个人人工智能代理Muse希望访问用户的电子邮件、日历、付款、医疗服务等，这使该公司成为最大的……',
-      'url': 'https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-08',
-      'title': '纽约大学数学家说， OpenAI在职业生涯中的数学问题上进行了肮脏的斗争',
-      'brief': '第一个为Navier-Stokes的存在和平滑性问题提供解决方案的人将获得100万$的奖金。',
-      'url': 'https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-08',
-      'title': '谷歌云与埃森哲达成协议，争相追赶人工智能部署大战',
-      'brief': '谷歌云通过埃森哲扩展其企业人工智能，押注于前沿部署的工程师，以推动采用并克服部署……',
-      'url': 'https://techcrunch.com/2026/09/08/google-cloud-races-to-catch-up-in-the-ai-deployment-wars-with-accenture-deal/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-08',
-      'title': '随着人工智能改变安全格局， Chrome浏览器现在每两周发布一次更新',
-      'brief': '谷歌正在加快Chrome浏览器的发布时间表，以更快地发布安全补丁和新功能。',
-      'url': 'https://techcrunch.com/2026/09/08/chrome-is-now-shipping-updates-every-2-weeks-as-ai-changes-the-security-landscape/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
     },
     {
       'date': '2026-09-08',
@@ -107,22 +179,6 @@ window.NEWS = {
       'url': 'https://www.theverge.com/ai-artificial-intelligence/991710/openai-navier-stokes-solution',
       'source': 'The Verge',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-08',
-      'title': 'ChatGPT Sketch将不良图纸转化为详细的人工智能图像',
-      'brief': 'OpenAI于周二发布了ChatGPT Images 2.5 ，并添加了一种新的方式来告诉ChatGPT您希望它制作什么图像：通过绘制一个操作……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/991727/openai-chatgpt-images-2-5-sketch',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-08',
-      'title': '元押注AI特工Muse在人工智能竞赛中迎头赶上',
-      'brief': 'Meta正在通过Muse再次推动将人工智能带给大众， Muse是一名个人助理，据说可以让人工智能掌握在……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/991216/meta-bets-on-ai-agent-muse-to-catch-up-in-ai-race',
-      'source': 'The Verge',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-08',

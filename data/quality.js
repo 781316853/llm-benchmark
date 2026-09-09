@@ -368,6 +368,24 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'Claude Fable 5.1',
+      'name': 'Claude Fable 5.1',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 67.4,
+        'deepswe_v11': 67.4,
+        'vibecode': 90.26
+      },
+      'mean': 75,
+      'stddev': 10.78,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'Claude Sonnet 4.6',
       'name': 'claude-sonnet-4-6',
       'vendor': 'Anthropic',
@@ -383,24 +401,6 @@ window.QUALITY = {
       },
       'mean': 38.5,
       'stddev': 10.7,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'Qwen3.8-27B',
-      'name': 'Qwen3.8-27B',
-      'vendor': 'Alibaba',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 42.2,
-        'deepswe_v11': 42.2,
-        'vibecode': 64.85
-      },
-      'mean': 49.8,
-      'stddev': 10.68,
       'flag': 'alert'
     },
     {
@@ -1231,14 +1231,14 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'deepswe_v11,deepswe_v10,vibecode',
-      'message': 'claude-sonnet-4-6 跨源分数标准差 10.7(>10)'
+      'sourceId': 'datalearner,deepswe_v11,vibecode',
+      'message': 'Claude Fable 5.1 跨源分数标准差 10.78(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'datalearner,deepswe_v11,vibecode',
-      'message': 'Qwen3.8-27B 跨源分数标准差 10.68(>10)'
+      'sourceId': 'deepswe_v11,deepswe_v10,vibecode',
+      'message': 'claude-sonnet-4-6 跨源分数标准差 10.7(>10)'
     },
     {
       'level': 'error',

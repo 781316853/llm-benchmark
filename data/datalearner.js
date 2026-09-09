@@ -80,6 +80,14 @@ window.DATALEARNER = {
       'license': '有条件商用'
     },
     {
+      'name': 'Claude Fable 5.1',
+      'score': 67.4,
+      'mode': '最高（工具）',
+      'date': '2026-09-01',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'GPT-5.6 Luna',
       'score': 67.2,
       'mode': '极高强度思考（工具）',
@@ -237,14 +245,6 @@ window.DATALEARNER = {
       'mode': '深度思考模式（工具）',
       'date': '2026-06-13',
       'params': '7533.3亿',
-      'license': '免费商用'
-    },
-    {
-      'name': 'Qwen3.8-27B',
-      'score': 42.2,
-      'mode': '思考模式（工具）',
-      'date': '2026-08-14',
-      'params': '270亿',
       'license': '免费商用'
     }
   ]

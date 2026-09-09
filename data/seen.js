@@ -302,6 +302,8 @@ window.SEEN = {
     'tbench|GPT-5.6 Luna': '2026-09-07',
     'tbench|Grok 4.5': '2026-09-07',
     'tbench|Sonnet 5': '2026-09-07',
-    'tbench|Gemini 3.7 Flash': '2026-09-07'
+    'tbench|Gemini 3.7 Flash': '2026-09-07',
+    'deepswe|Claude Fable 5.1': '2026-09-09',
+    'datalearner|Claude Fable 5.1': '2026-09-09'
   }
 };

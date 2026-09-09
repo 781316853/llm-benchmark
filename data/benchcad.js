@@ -8,7 +8,7 @@ window.BENCHCAD = {
   'url': 'https://github.com/BenchCAD/BenchCAD-main',
   'boardUrl': 'https://benchcad.com/',
   'updated': '2026-09-09',
-  'refreshedAt': '2026-09-09 13:45',
+  'refreshedAt': '2026-09-10 01:03',
   'stats': {
     'partFamilies': 106,
     'programs': 17900,
