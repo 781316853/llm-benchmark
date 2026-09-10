@@ -7,7 +7,7 @@ window.LASTEXAM = {
   'url': 'https://llm-stats.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'updated': '2026-09-10',
-  'refreshedAt': '2026-09-10 13:40',
+  'refreshedAt': '2026-09-11 00:54',
   'stats': {
     'tasks': 1490,
     'entries': 16

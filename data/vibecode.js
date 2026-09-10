@@ -7,7 +7,7 @@ window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
   updated: "2026-09-10",
-  refreshedAt: "2026-09-10 13:40",
+  refreshedAt: "2026-09-11 00:54",
   version: "v1.1",
   totalSystems: 93,
   note: "共 93 系统,展示 overall 视图全部 90 个有记录系统",

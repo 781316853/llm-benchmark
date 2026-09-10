@@ -14,11 +14,67 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-10',
+      'title': '人工智能代理正在用新的请求淹没公共服务',
+      'brief': '这位研究人员告诉TechCr ： “我们发现的绝大多数案例都是有权要求某样东西的人，要求那样东西。”',
+      'url': 'https://techcrunch.com/2026/09/10/ai-agents-are-flooding-public-services-with-new-requests/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-10',
+      'title': 'Maven Robotics想要窃取您的机器人部署交易',
+      'brief': 'Maven Robotics今天从隐形中脱颖而出，获得了1亿美元的A轮融资和积极的部署。',
+      'url': 'https://techcrunch.com/2026/09/10/maven-robotics-wants-to-steal-your-robot-deployment-deal/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-10',
       'title': '人工智能研究初创公司Listen Labs为Salesforce会谈筹集了15亿美元资金',
       'brief': '消息人士称， Listen Labs放弃了Menlo Ventures签署的C系列条款表。',
       'url': 'https://techcrunch.com/2026/09/09/ai-research-startup-listen-labs-scrubbed-a-1-5b-funding-round-for-salesforce-talks/',
       'source': 'TechCrunch',
       'type': '公司动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '环球音乐与ElevenLabs合作推出人工智能音乐平台',
+      'brief': '环球音乐集团正在推出一个新的人工智能平台，允许用户从其许可音乐目录中提取歌曲……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': 'Meta的Muse AI让我毛骨悚然',
+      'brief': 'Meta推出了新的Muse助手，标志着该公司首次真正涉足人工智能驱动的生产力工具。该公司表示，其人工智能……',
+      'url': 'https://www.theverge.com/tech/993391/meta-muse-ai-hands-on',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '数学家想要证明OpenAI没有使用他们的工作',
+      'brief': '另一位研究人员正在挑战OpenAI ，关于推动其日益令人印象深刻的数学发现的数据。就在几天后……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/993263/where-does-openai-get-mathematics-training-data',
+      'source': 'The Verge',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '一次辞职将人工智能恐惧的余烬变成了一场野火',
+      'brief': '一次辞职将人工智能恐惧的余烬变成了一场野火',
+      'url': 'https://www.interconnects.ai/p/one-resignation-turned-the-embers',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': 'DeepSeek v4.1闪存',
+      'brief': 'DeepSeek v4.1闪存',
+      'url': 'https://twitter.com/deepseek_ai/status/2097930608790167907',
+      'source': 'Hacker News',
+      'type': '行业动态'
     },
     {
       'date': '2026-09-10',
@@ -30,11 +86,27 @@ window.NEWS = {
     },
     {
       'date': '2026-09-10',
-      'title': '对不起，你不会死于人工智能超级病毒',
-      'brief': '对不起，你不会死于人工智能超级病毒',
-      'url': 'https://blog.genesmindsmachines.com/p/im-sorry-youre-not-going-to-die-from',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'title': '走出聊天框，Agent 开始进入现实世界',
+      'brief': '头图来源：小度 Agent 正在寻找自己的「身体」。 过去一年，智能体的主要工作对象是文件、网页和软件。它们可以搜索资料、分析数据、制作 PPT，也可以打开浏览器、调用工具，把一句需求推进成一份可供交付的结果。衡量一个 Agent 能力的方式，也集中在任务能不能做完、执行路径是否…',
+      'url': 'http://www.geekpark.net/news/370064',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '微信，悄悄迈出 AI 社交的第一步',
+      'brief': '头图来源：视觉中国、ChatGPT 生成 最近，微信开始小范围测试一项新的「小微 AI 社交」功能。 用户如果想联系一位朋友，可以先把诉求告诉自己的「小微」。小微找到对方的小微后，会说明此次沟通的话题，并向对方本人请求授权。获得同意后，两个小微先行交流；遇到需要用户作出选择或者确…',
+      'url': 'http://www.geekpark.net/news/370155',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '对话极壳创始人孙宽：年出货 3 万台后，外骨骼「全班第一」的成长和焦虑',
+      'brief': '在刚刚结束的 IFA 柏林国际消费电子展上，几乎每家机器人公司的展台上，都会摆上一台可穿戴外骨骼设备。就像 10 年前，很多互联网新锐创业者都喜欢在办公桌上摆一台无人机。这既是对这个品类「前沿」的认可，也表露出某种对市场增长的看好。 2025 年被认为是「消费级外骨骼元年」。今年…',
+      'url': 'http://www.geekpark.net/news/370150',
+      'source': '极客公园',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-10',
@@ -46,50 +118,18 @@ window.NEWS = {
     },
     {
       'date': '2026-09-10',
-      'title': '14岁清华天才、普林斯顿最年轻终身教授王梦迪：AI 尚未发现新的基础科学｜附完整演讲',
+      'title': 'PayPal谈 Agentic Commerce：AI智能体将如何进入跨境支付场景？',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/d0NzJlH20aPXVmsZHdjW?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '诺奖得主阿吉翁：AI时代，比以往任何时候都更需要重视手工劳动和软技能',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/bvqQk8MoIlx291HfB7pQ?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'OpenAI抄袭、威胁数学家？“AI攻克千禧难题”秀，终成 OpenAI 和 Anthropic 的大战',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Yv5sAmejcLyOYSSRdwI2?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/8t2vJHOc5srUyQqSlO9m?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
     },
     {
       'date': '2026-09-10',
-      'title': '中科院江小涓谈 AI 新经济：AI正在改写中国企业“先国内、再出海”的老路径',
+      'title': '推理成为新中心、Agent把生产级问题提前：AI Infra 的边界正在被重写',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/7xE0eQlCGCSoM0wbmAoM?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/YBvKfhWu90StYj4SJVIV?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '边创作，边评估：纳逗 PRO·剧本空间的多 Agent 实践｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/I0qWiIGTkCqG8H1hAoJb?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-09',
-      'title': 'OpenAI为其董事会增加了一个突出的人工智能末日',
-      'brief': '保罗·克里斯蒂安诺（ Paul Christiano ）是一位专注于调整的有影响力的人工智能研究人员，他将加入OpenAI基金会，成为其董事会成员。',
-      'url': 'https://techcrunch.com/2026/09/09/openai-adds-a-prominent-ai-doomer-to-its-board-of-directors/',
-      'source': 'TechCrunch',
       'type': '技术研究'
     },
     {
@@ -97,14 +137,6 @@ window.NEWS = {
       'title': 'Apple Watch的新人工智能功能正在使技术始终在倾听的观念正常化',
       'brief': '苹果表示，其新款手表不会保存原始音频，但可以转录最近的语音和总结周围对话的功能会增加……',
       'url': 'https://techcrunch.com/2026/09/09/apple-watchs-new-ai-features-are-normalizing-the-idea-that-technology-is-always-listening/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '苹果首席执行官约翰·特纳斯（ John Ternus ）表示，最好的人工智能设备仍然',
-      'brief': '该公司还认为，其设备型号为消费者提供了更多隐私。',
-      'url': 'https://techcrunch.com/2026/09/09/apple-ceo-john-ternus-says-the-best-ai-device-is-still-the-iphone/',
       'source': 'TechCrunch',
       'type': '公司动态'
     },
@@ -126,35 +158,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-09',
-      'title': '病毒式人工智能助理Instinct现在有自己的电子邮件地址',
-      'brief': 'Instinct的新电子邮件功能允许人工智能代理创建和管理帐户、联系企业、处理支持请求以及对用户执行更多操作……',
-      'url': 'https://techcrunch.com/2026/09/09/viral-ai-assistant-instinct-now-has-its-own-email-address/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '“用我们的生命赌博” ：人类学研究人员辞职，警告不要自我完善的人工智能',
-      'brief': '人类学研究员雅各布·考克森（ Jacob Coxon ）因担心人工智能灭绝而辞职，呼吁实验室之间达成起搏协议。',
-      'url': 'https://techcrunch.com/2026/09/09/gambling-with-our-lives-anthropic-researcher-quits-warns-against-self-improving-ai/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-09',
       'title': '红杉在Cymphony上加倍努力，因为人工智能代理商创造了新的企业安全风险',
       'brief': '在红杉和SMBC Fin Atlas Beyond Fund共同牵头的2500万美元A轮融资中， Cymphony的估值超过1亿美元。',
       'url': 'https://techcrunch.com/2026/09/09/sequoia-doubles-down-on-cymphony-as-ai-agents-create-new-enterprise-security-risks/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': 'OpenAI狡猾的数学突破给学术界带来寒意',
-      'brief': 'OpenAI周二宣布，它已经解决了数学界传奇性的千年奖问题之一，这应该是一个胜利的时刻……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/992953/openai-math-millennium-prize-navier-stokes',
-      'source': 'The Verge',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-09',
@@ -166,19 +174,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-09',
-      'title': '担忧的人类学研究人员警告说，人工智能“可能会杀死所有人类”',
-      'brief': '一位高级人类安全研究员表示，人工智能“可能杀死所有人类”的可能性超过10 ％。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/991927/anthropic-ai-kill-all-humans',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '显示HN ：部门的自托管公司操作系统、Claude Code和Codex代理',
-      'brief': '显示HN ：部门的自托管公司操作系统、Claude Code和Codex代理',
-      'url': 'https://github.com/OtoDock/oto-dock',
+      'title': 'Jacob Coxon辞职似乎是人工智能监管的公关噱头',
+      'brief': 'Jacob Coxon辞职似乎是人工智能监管的公关噱头',
+      'url': 'https://twitter.com/ParkerThayer/status/2097759699626328575',
       'source': 'Hacker News',
-      'type': '公司动态'
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-09',

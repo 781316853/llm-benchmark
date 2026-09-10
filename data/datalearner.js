@@ -16,6 +16,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'DeepSeek-V4.1-Flash',
+      'score': 74.2,
+      'mode': '最高（工具）',
+      'date': '2026-09-10',
+      'params': '5520亿',
+      'license': '免费商用'
+    },
+    {
       'name': 'GPT-6 Astra',
       'score': 74.1,
       'mode': '最高（工具）',
@@ -24,10 +32,26 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'Claude Opus 5',
+      'score': 74,
+      'mode': '最高（工具）',
+      'date': '2026-07-24',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'Gemini 3.8 Flash',
       'score': 73.7,
       'mode': '思考模式（工具）',
       'date': '2026-09-02',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
+      'name': 'GPT-5.6 Sol',
+      'score': 73,
+      'mode': '最高（工具）',
+      'date': '2026-06-26',
       'params': '未知',
       'license': '闭源'
     },
@@ -61,14 +85,6 @@ window.DATALEARNER = {
       'mode': '极高强度思考（工具）',
       'date': '2026-09-02',
       'params': '24000亿',
-      'license': '闭源'
-    },
-    {
-      'name': 'Claude Opus 5',
-      'score': 68.8,
-      'mode': '最高（工具）',
-      'date': '2026-07-24',
-      'params': '未知',
       'license': '闭源'
     },
     {
@@ -152,20 +168,20 @@ window.DATALEARNER = {
       'license': '免费商用'
     },
     {
-      'name': 'DeepSeek-V4-Flash-Vision-Exp',
-      'score': 59.3,
-      'mode': '最高（工具）',
-      'date': '2026-08-21',
-      'params': '3050亿',
-      'license': '免费商用'
-    },
-    {
       'name': 'Muse Spark 1.2',
       'score': 59.3,
       'mode': '极高强度思考（工具）',
       'date': '2026-08-05',
       'params': '未知',
       'license': '闭源'
+    },
+    {
+      'name': 'DeepSeek-V4-Flash-Vision-Exp',
+      'score': 59.3,
+      'mode': '最高（工具）',
+      'date': '2026-08-21',
+      'params': '3050亿',
+      'license': '免费商用'
     },
     {
       'name': 'Claude Opus 4.8',
@@ -230,22 +246,6 @@ window.DATALEARNER = {
       'date': '2026-03-05',
       'params': '未知',
       'license': '闭源'
-    },
-    {
-      'name': 'Gemini 3.6 Flash',
-      'score': 49,
-      'mode': '思考模式（工具）',
-      'date': '2026-07-21',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GLM-5.2',
-      'score': 44,
-      'mode': '深度思考模式（工具）',
-      'date': '2026-06-13',
-      'params': '7533.3亿',
-      'license': '免费商用'
     }
   ]
 };

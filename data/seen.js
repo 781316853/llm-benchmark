@@ -304,6 +304,9 @@ window.SEEN = {
     'tbench|Sonnet 5': '2026-09-07',
     'tbench|Gemini 3.7 Flash': '2026-09-07',
     'deepswe|Claude Fable 5.1': '2026-09-09',
-    'datalearner|Claude Fable 5.1': '2026-09-09'
+    'datalearner|Claude Fable 5.1': '2026-09-09',
+    'deepswe|DeepSeek-V4.1-Flash': '2026-09-10',
+    'datalearner|DeepSeek-V4.1-Flash': '2026-09-10',
+    'llm|DeepSeek V4.1 Flash (max)': '2026-09-10'
   }
 };

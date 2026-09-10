@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 126,
+      'modelCount': 127,
       'updated': '2026-09-10',
       'ageDays': 0,
       'completeness': 1,
@@ -65,7 +65,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 34,
+      'modelCount': 35,
       'updated': '2026-09-10',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 80,
+      'modelCount': 81,
       'updated': '2026-09-10',
       'ageDays': 0,
       'completeness': 0,
@@ -447,18 +447,16 @@ window.QUALITY = {
       'vendor': 'Google',
       'sources': [
         'ai_capability',
-        'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
         'ai_capability': 71.9,
-        'datalearner': 49,
         'deepswe_v11': 47,
         'vibecode': 64.01
       },
-      'mean': 58,
-      'stddev': 10.38,
+      'mean': 61,
+      'stddev': 10.39,
       'flag': 'alert'
     },
     {
@@ -480,23 +478,21 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Claude Opus 5',
-      'name': 'claude-opus-5',
-      'vendor': 'Anthropic',
+      'canonId': 'GLM-5.2',
+      'name': 'glm-5-2',
+      'vendor': 'zAI',
       'sources': [
-        'ai_capability',
-        'datalearner',
         'deepswe_v11',
+        'deepswe_v10',
         'vibecode'
       ],
       'scores': {
-        'ai_capability': 92.5,
-        'datalearner': 68.8,
-        'deepswe_v11': 74,
-        'vibecode': 88.4
+        'deepswe_v11': 44,
+        'deepswe_v10': 42,
+        'vibecode': 63.96
       },
-      'mean': 80.9,
-      'stddev': 9.81,
+      'mean': 50,
+      'stddev': 9.91,
       'flag': 'warn'
     },
     {
@@ -540,26 +536,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'GLM-5.2',
-      'name': 'GLM-5.2',
-      'vendor': 'zAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 44,
-        'deepswe_v11': 44,
-        'deepswe_v10': 42,
-        'vibecode': 63.96
-      },
-      'mean': 48.5,
-      'stddev': 8.97,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Gemini 3.5 Flash',
       'name': 'gemini-3-5-flash',
       'vendor': 'Google',
@@ -591,6 +567,26 @@ window.QUALITY = {
       },
       'mean': 62.5,
       'stddev': 8.5,
+      'flag': 'warn'
+    },
+    {
+      'canonId': 'Claude Opus 5',
+      'name': 'claude-opus-5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 92.5,
+        'datalearner': 74,
+        'deepswe_v11': 74,
+        'vibecode': 88.4
+      },
+      'mean': 82.2,
+      'stddev': 8.35,
       'flag': 'warn'
     },
     {
@@ -799,13 +795,13 @@ window.QUALITY = {
       ],
       'scores': {
         'ai_capability': 84.45,
-        'datalearner': 72.7,
+        'datalearner': 72.85,
         'deepswe_v11': 73,
         'vibecode': 80.5
       },
       'mean': 77.7,
-      'stddev': 5.01,
-      'flag': 'warn'
+      'stddev': 4.98,
+      'flag': 'ok'
     },
     {
       'canonId': 'GPT-5.6 Luna',
@@ -956,6 +952,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'DeepSeek-V4.1-Flash',
+      'name': 'DeepSeek-V4.1-Flash',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 74.2,
+        'deepswe_v11': 74.2
+      },
+      'mean': 74.2,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'DeepSeek-V4-Flash-Vision-Exp',
       'name': 'DeepSeek-V4-Flash-Vision-Exp',
       'vendor': '其他',
@@ -991,9 +1003,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 126,
-      'complete': 126,
-      'modelCount': 126,
+      'total': 127,
+      'complete': 127,
+      'modelCount': 127,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1017,9 +1029,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 34,
-      'complete': 34,
-      'modelCount': 34,
+      'total': 35,
+      'complete': 35,
+      'modelCount': 35,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1041,11 +1053,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 80,
+      'total': 81,
       'complete': 0,
-      'modelCount': 80,
+      'modelCount': 81,
       'missingFields': {
-        'score': 80
+        'score': 81
       },
       'flag': 'warn'
     },
@@ -1255,8 +1267,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'ai_capability,datalearner,deepswe_v11,vibecode',
-      'message': 'gemini-3.6-flash 跨源分数标准差 10.38(>10)'
+      'sourceId': 'ai_capability,deepswe_v11,vibecode',
+      'message': 'gemini-3.6-flash 跨源分数标准差 10.39(>10)'
     }
   ]
 };
