@@ -1,4 +1,4 @@
-// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-09-09)
+// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-09-10)
 // 来源:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/)
 // 字段说明:system=系统/提交(模型+工具策略);score=部分得分 partial(%);org=厂商;reported=上报时间;url=来源链接
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
@@ -6,8 +6,8 @@ window.OSWORLD = {
   'source': 'OSWorld 2.0',
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
-  'updated': '2026-09-09',
-  'refreshedAt': '2026-09-10 01:03',
+  'updated': '2026-09-10',
+  'refreshedAt': '2026-09-10 13:40',
   'stats': {
     'tasks': 108,
     'entries': 22

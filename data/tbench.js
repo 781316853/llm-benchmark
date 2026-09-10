@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-09)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-10)
 // 来源:https://www.tbench.ai/leaderboard/terminal-bench/4.0
 // 字段说明:model=模型名;effort=推理强度(max/high 等);agent=Agent 框架(Codex/Claude Code 等);
 //          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($)
@@ -7,8 +7,8 @@ window.TBENCH = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'version': '4.0',
-  'updated': '2026-09-09',
-  'refreshedAt': '2026-09-10 01:03',
+  'updated': '2026-09-10',
+  'refreshedAt': '2026-09-10 13:40',
   'stats': {
     'tasks': 66,
     'entries': 18
