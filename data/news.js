@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-10',
+  'updated': '2026-09-11',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,20 +13,92 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-11',
+      'title': '我的学生对人工智能的看法',
+      'brief': '我的学生对人工智能的看法',
+      'url': 'https://www.lesswrong.com/posts/ySXuvJcqRindQwAk7/how-my-students-think-about-ai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'DeepSeek V4.1 Flash 发布；罗永浩狂喷苹果折叠屏：全是抄的；马斯克「无聊公司」融资 30 亿美元｜极客早知道',
+      'brief': 'DeepSeek V4.1 Flash 模型正式发布：全面超越 V4 Pro、原生多模态视觉理解，最高降价 60% 9 月 10 日消息，深度求索今日正式发布 DeepSeek V4.1 Flash 模型 。这是其全新模型结构系列中的最小尺寸的模型，具备原生多模态视觉理解能力…',
+      'url': 'http://www.geekpark.net/news/370157',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '刘震云对话马毅谈AI：我写不出来、想不到的作品，AI模仿不了｜附完整对话',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/Z5ddgQ63RixMXCVzqgq7?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'AMD 发布锐龙AI Max PRO 400 系列，端侧智能体走向多模型协同',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/NizuOkFpcOPgbeClC4uL?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '从「构建 AI」到「驾驭 AI」，如何搞定 AI 深水区的 6 个工程问题？',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/PyUlLla6MWSSoRLiDKbu?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '由于Astra的需求， OpenAI暂停了Pro订阅',
+      'brief': '该公司表示， Pro订阅对其系统造成的压力最大，因此它暂停了注册，同时增加了更多容量。',
+      'url': 'https://techcrunch.com/2026/09/10/openai-puts-pro-subscriptions-on-hold-due-to-astra-demand/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-10',
+      'title': 'Anthropic详细介绍了阿里巴巴、Moonshot AI和DeepSeek的蒸馏活动',
+      'brief': 'Anthropic周四发布的一份新报告称，总部位于中国的人工智能公司持续不断的蒸馏攻击已经升级。',
+      'url': 'https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek/',
+      'source': 'TechCrunch',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-10',
+      'title': 'Meta的人工智能代理Muse现在是美国排名第二的应用程序',
+      'brief': 'Meta的最新应用程序Muse的开始速度比该公司的其他应用程序（如Meta AI或Threads ）慢。',
+      'url': 'https://techcrunch.com/2026/09/10/metas-ai-agent-muse-is-now-the-no-2-app-in-the-us/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-10',
+      'title': 'Anthropic揭示了流氓AI代理和你一样讨厌CAPTCHA',
+      'brief': '进入机器人的大脑，试图说服互联网这是人类。',
+      'url': 'https://techcrunch.com/2026/09/10/anthropic-reveals-rogue-ai-agents-hate-captchas-just-like-you/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-10',
+      'title': '印度的Pocket FM将收入增长一倍至5亿$ ，因为AI为93 ％的音频内容提供了动力',
+      'brief': 'Pocket FM使用人工智能制作99%的新内容，使内容制作成本降低约80倍。',
+      'url': 'https://techcrunch.com/2026/09/10/indias-pocket-fm-doubles-revenue-run-rate-to-500m-as-ai-powers-93-of-audio-content/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
       'date': '2026-09-10',
       'title': '人工智能代理正在用新的请求淹没公共服务',
       'brief': '这位研究人员告诉TechCr ： “我们发现的绝大多数案例都是有权要求某样东西的人，要求那样东西。”',
       'url': 'https://techcrunch.com/2026/09/10/ai-agents-are-flooding-public-services-with-new-requests/',
       'source': 'TechCrunch',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'Maven Robotics想要窃取您的机器人部署交易',
-      'brief': 'Maven Robotics今天从隐形中脱颖而出，获得了1亿美元的A轮融资和积极的部署。',
-      'url': 'https://techcrunch.com/2026/09/10/maven-robotics-wants-to-steal-your-robot-deployment-deal/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-10',
@@ -38,22 +110,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-10',
-      'title': '环球音乐与ElevenLabs合作推出人工智能音乐平台',
-      'brief': '环球音乐集团正在推出一个新的人工智能平台，允许用户从其许可音乐目录中提取歌曲……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'Meta的Muse AI让我毛骨悚然',
-      'brief': 'Meta推出了新的Muse助手，标志着该公司首次真正涉足人工智能驱动的生产力工具。该公司表示，其人工智能……',
-      'url': 'https://www.theverge.com/tech/993391/meta-muse-ai-hands-on',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
       'title': '数学家想要证明OpenAI没有使用他们的工作',
       'brief': '另一位研究人员正在挑战OpenAI ，关于推动其日益令人印象深刻的数学发现的数据。就在几天后……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/993263/where-does-openai-get-mathematics-training-data',
@@ -62,27 +118,19 @@ window.NEWS = {
     },
     {
       'date': '2026-09-10',
-      'title': '一次辞职将人工智能恐惧的余烬变成了一场野火',
-      'brief': '一次辞职将人工智能恐惧的余烬变成了一场野火',
-      'url': 'https://www.interconnects.ai/p/one-resignation-turned-the-embers',
+      'title': 'Anthropic首席执行官的妻子曾经要求爱泼斯坦资助色情企业–现在引导克劳德',
+      'brief': 'Anthropic首席执行官的妻子曾经要求爱泼斯坦资助色情企业–现在引导克劳德',
+      'url': 'https://nypost.com/2026/08/14/business/anthropic-ceos-wife-once-asked-jeffrey-epstein-to-fund-porn-venture-now-she-helps-steer-the-claude-ai-empire/',
       'source': 'Hacker News',
       'type': '公司动态'
     },
     {
       'date': '2026-09-10',
-      'title': 'DeepSeek v4.1闪存',
-      'brief': 'DeepSeek v4.1闪存',
-      'url': 'https://twitter.com/deepseek_ai/status/2097930608790167907',
+      'title': '一次辞职将人工智能恐惧的余烬变成了一场野火',
+      'brief': '一次辞职将人工智能恐惧的余烬变成了一场野火',
+      'url': 'https://www.interconnects.ai/p/one-resignation-turned-the-embers',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '我们通过查看规格游戏来了解AI对齐的愚蠢想法',
-      'brief': '我们通过查看规格游戏来了解AI对齐的愚蠢想法',
-      'url': 'https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '公司动态'
     },
     {
       'date': '2026-09-10',
@@ -114,86 +162,6 @@ window.NEWS = {
       'brief': '苹果首款折叠 iPhone Duo 亮相，国行 15999 元起 北京时间 9 月 10 日凌晨，苹果发布首款折叠手机 iPhone Duo，国行 15999 元起，10 月 16 日开启预售，23 日正式发售。同场推出 iPhone 18 Pro 系列，9999 元起；标准版…',
       'url': 'http://www.geekpark.net/news/370089',
       'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'PayPal谈 Agentic Commerce：AI智能体将如何进入跨境支付场景？',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/8t2vJHOc5srUyQqSlO9m?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '推理成为新中心、Agent把生产级问题提前：AI Infra 的边界正在被重写',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/YBvKfhWu90StYj4SJVIV?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-09',
-      'title': 'Apple Watch的新人工智能功能正在使技术始终在倾听的观念正常化',
-      'brief': '苹果表示，其新款手表不会保存原始音频，但可以转录最近的语音和总结周围对话的功能会增加……',
-      'url': 'https://techcrunch.com/2026/09/09/apple-watchs-new-ai-features-are-normalizing-the-idea-that-technology-is-always-listening/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '超级智能即将到来，我们应该让它去吗？',
-      'brief': '人工智能公司一直在谈论超级智能人工智能，就像它是不可避免的，但最近的安全事件，如OpenAI的Hugging Face漏洞……',
-      'url': 'https://techcrunch.com/video/superintelligence-is-coming-should-we-let-it/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': 'ControlAI的Connor Leahy谈为什么超级智能“不是武器，而是对手”',
-      'brief': '人工智能公司一直在谈论超级智能人工智能，就像它是不可避免的，但最近的安全事件，如OpenAI的Hugging Face漏洞……',
-      'url': 'https://techcrunch.com/podcast/controlais-connor-leahy-on-why-superintelligence-is-not-a-weapon-its-an-adversary/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '红杉在Cymphony上加倍努力，因为人工智能代理商创造了新的企业安全风险',
-      'brief': '在红杉和SMBC Fin Atlas Beyond Fund共同牵头的2500万美元A轮融资中， Cymphony的估值超过1亿美元。',
-      'url': 'https://techcrunch.com/2026/09/09/sequoia-doubles-down-on-cymphony-as-ai-agents-create-new-enterprise-security-risks/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '微软为学校制定了新的人工智能隐私规则',
-      'brief': '在两所主要学校系统宣布禁止学生入学一周后，微软同意了一套学校人工智能安全和隐私原则。',
-      'url': 'https://www.theverge.com/policy/992359/microsoft-aft-schools-ai-privacy',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': 'Jacob Coxon辞职似乎是人工智能监管的公关噱头',
-      'brief': 'Jacob Coxon辞职似乎是人工智能监管的公关噱头',
-      'url': 'https://twitter.com/ParkerThayer/status/2097759699626328575',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-09',
-      'title': '千问办公发布多人工作台，重写企业软件的最后一公里',
-      'brief': '作者｜Cynthia 编辑｜郑玄 2026 年 2 月 3 日，由 Anthropic 带头，华尔街替 SaaS 写好了讣告。 几天前，Anthropic 正式官宣把 Claude Cowork 的插件能力扩展到法律、销售、金融等知识工作。与普通聊天机器人不同，这些插件可以携带部…',
-      'url': 'http://www.geekpark.net/news/370061',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-09',
-      'title': 'Shopify 推出 Gisting 新技术：将大模型系统提示词压缩为主旨词元',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/WlJkEfJxMgaK9o91ow2Z?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
       'type': '模型发布'
     }
   ]

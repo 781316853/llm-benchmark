@@ -1,4 +1,4 @@
-// 数据源:ARC-AGI-3(ARC Prize 交互式智能体推理评测,更新于 2026-09-10)
+// 数据源:ARC-AGI-3(ARC Prize 交互式智能体推理评测,更新于 2026-09-11)
 // 来源:https://llm-stats.com/benchmarks/arc-agi-3(官方:https://arcprize.org/leaderboard)
 // 字段说明:model=模型名;score=RHAE 相对人类行动效率(%);size=参数量;context=上下文;cost=API 价格;license=许可
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
@@ -6,8 +6,8 @@ window.ARCAGI3 = {
   'source': 'ARC-AGI-3',
   'url': 'https://llm-stats.com/benchmarks/arc-agi-3',
   'officialUrl': 'https://arcprize.org/leaderboard',
-  'updated': '2026-09-10',
-  'refreshedAt': '2026-09-11 00:54',
+  'updated': '2026-09-11',
+  'refreshedAt': '2026-09-11 13:39',
   'stats': {
     'environments': 135,
     'entries': 5

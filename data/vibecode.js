@@ -1,16 +1,16 @@
 // 数据源2:Vibe Code Bench 基准快照(云端抓取)
-// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-09-10)
+// 来源:https://www.vals.ai/benchmarks/vibe-code  (更新于 2026-09-11)
 // 字段说明:name=模型显示名;harness=运行框架;score=整体准确率(%);ci=置信区间(±);
 //          cost=单测成本($);latencyS=延迟(秒)
 // 注:解析页面内嵌 RSC payload 的 tasks.overall 块;显示名经 slug->名称表映射。
 window.VIBECODE = {
   source: "Vibe Code Bench",
   url: "https://www.vals.ai/benchmarks/vibe-code",
-  updated: "2026-09-10",
-  refreshedAt: "2026-09-11 00:54",
+  updated: "2026-09-11",
+  refreshedAt: "2026-09-11 13:39",
   version: "v1.1",
-  totalSystems: 93,
-  note: "共 93 系统,展示 overall 视图全部 90 个有记录系统",
+  totalSystems: 94,
+  note: "共 94 系统,展示 overall 视图全部 91 个有记录系统",
   desc: "评测模型能否从零构建完整 Web 应用,通过点对点测试衡量端到端可用性。",
   models: [
   {
@@ -60,6 +60,14 @@ window.VIBECODE = {
     'ci': 2.69,
     'cost': 17.59,
     'latencyS': 5203
+  },
+  {
+    'name': 'Deepseek v4.1 flash [新]',
+    'harness': 'OpenHands',
+    'score': 84.74,
+    'ci': 2.89,
+    'cost': 0.41,
+    'latencyS': 928
   },
   {
     'name': 'Muse_spark_1_3 [新]',
@@ -710,6 +718,14 @@ window.VIBECODE = {
     'latencyS': 573
   },
   {
+    'name': 'Nemotron lightning 3p5 30b a3b [新]',
+    'harness': 'OpenHands',
+    'score': 0,
+    'ci': 0,
+    'cost': 0.13,
+    'latencyS': 960
+  },
+  {
     'name': 'Grok 4 Fast',
     'harness': 'OpenHands',
     'score': 0,
@@ -724,14 +740,6 @@ window.VIBECODE = {
     'ci': 0,
     'cost': 6.47,
     'latencyS': 1815
-  },
-  {
-    'name': 'Nemotron lightning 3p5 30b a3b [新]',
-    'harness': 'OpenHands',
-    'score': 0,
-    'ci': 0,
-    'cost': 0.13,
-    'latencyS': 2224
   }
 ]
 };
