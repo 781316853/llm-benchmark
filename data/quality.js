@@ -627,22 +627,20 @@ window.QUALITY = {
     },
     {
       'canonId': 'Kimi K3',
-      'name': 'kimi-k3',
+      'name': 'Kimi K3',
       'vendor': 'Moonshot',
       'sources': [
-        'ai_capability',
         'datalearner',
         'deepswe_v11',
         'vibecode'
       ],
       'scores': {
-        'ai_capability': 82.55,
         'datalearner': 67.5,
         'deepswe_v11': 69,
         'vibecode': 84.96
       },
-      'mean': 76,
-      'stddev': 7.82,
+      'mean': 73.8,
+      'stddev': 7.9,
       'flag': 'warn'
     },
     {

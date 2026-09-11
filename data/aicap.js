@@ -1,13 +1,13 @@
 // 数据源:AI 能力专项测试(atmeplz)四方向榜 · 前端/后端方向分(0-100)
-// 站点:https://atmeplz.github.io/ai-test-prompt/board-04.html  (更新于 2026-09-08)
+// 站点:https://atmeplz.github.io/ai-test-prompt/board-04.html  (更新于 2026-09-11)
 // 字段说明:score=方向分(天然以 100 为参考,越高越好);rank=源站方向内排名;weight=方向分成员题权重
 // 用途:门户「AI 能力」独立榜单页(前端/后端两个方向),独立榜单不计入综合分。
 window.AICAP = {
   'source': 'AI 能力专项测试 (atmeplz)',
   'url': 'https://atmeplz.github.io/ai-test-prompt/data/site.json',
   'boardUrl': 'https://atmeplz.github.io/ai-test-prompt/board-04.html',
-  'updated': '2026-09-08',
-  'refreshedAt': '2026-09-11 13:39',
+  'updated': '2026-09-11',
+  'refreshedAt': '2026-09-12 00:56',
   'runCount': 31,
   'desc': 'AI 能力专项测试四方向榜:文字/前端/后端/知识四个方向独立排名,方向分由成员题按既定权重合成。门户仅收录前端与后端两个编码方向,独立榜单展示,不计入综合分。',
   'directions': {
@@ -166,17 +166,6 @@ window.AICAP = {
           'pct': 88.7
         },
         {
-          'name': 'kimi-k3',
-          'vendor': 'moonshot',
-          'vendorDisplay': 'KIMI',
-          'effort': 'max',
-          'platform': 'kimicode',
-          'tested': '2026-08-17',
-          'score': 87.1,
-          'rank': 13,
-          'pct': 88.4
-        },
-        {
           'name': 'glm-5.3-flash',
           'vendor': 'zhipu',
           'vendorDisplay': '智谱',
@@ -184,7 +173,7 @@ window.AICAP = {
           'platform': 'zcode',
           'tested': '2026-08-30',
           'score': 85.7,
-          'rank': 14,
+          'rank': 13,
           'pct': 86.9
         },
         {
@@ -195,7 +184,7 @@ window.AICAP = {
           'platform': 'zcode',
           'tested': '2026-08-16',
           'score': 85.6,
-          'rank': 15,
+          'rank': 14,
           'pct': 86.9
         },
         {
@@ -206,7 +195,7 @@ window.AICAP = {
           'platform': 'qoder',
           'tested': '2026-08-15',
           'score': 85.6,
-          'rank': 16,
+          'rank': 15,
           'pct': 86.8
         },
         {
@@ -217,8 +206,19 @@ window.AICAP = {
           'platform': 'cursor',
           'tested': '2026-08-15',
           'score': 85.2,
-          'rank': 17,
+          'rank': 16,
           'pct': 86.4
+        },
+        {
+          'name': 'kimi-k2.8-preview',
+          'vendor': 'moonshot',
+          'vendorDisplay': 'KIMI',
+          'effort': 'max',
+          'platform': 'kimicode',
+          'tested': '2026-09-11',
+          'score': 84.5,
+          'rank': 17,
+          'pct': 85.8
         },
         {
           'name': 'glm-5.3',
@@ -464,6 +464,17 @@ window.AICAP = {
           'pct': 87.3
         },
         {
+          'name': 'kimi-k2.8-preview',
+          'vendor': 'moonshot',
+          'vendorDisplay': 'KIMI',
+          'effort': 'max',
+          'platform': 'kimicode',
+          'tested': '2026-09-11',
+          'score': 90,
+          'rank': 7,
+          'pct': 87.3
+        },
+        {
           'name': 'muse-spark-1.3',
           'vendor': 'meta',
           'vendorDisplay': 'META',
@@ -471,7 +482,7 @@ window.AICAP = {
           'platform': 'opencode',
           'tested': '2026-09-03',
           'score': 83.1,
-          'rank': 8,
+          'rank': 9,
           'pct': 80.6
         },
         {
@@ -482,7 +493,7 @@ window.AICAP = {
           'platform': 'opencode',
           'tested': '2026-08-22',
           'score': 82,
-          'rank': 9,
+          'rank': 10,
           'pct': 79.5
         },
         {
@@ -493,7 +504,7 @@ window.AICAP = {
           'platform': 'zcode',
           'tested': '2026-08-30',
           'score': 81,
-          'rank': 10,
+          'rank': 11,
           'pct': 78.6
         },
         {
@@ -504,7 +515,7 @@ window.AICAP = {
           'platform': 'qoder',
           'tested': '2026-09-02',
           'score': 80,
-          'rank': 11,
+          'rank': 12,
           'pct': 77.6
         },
         {
@@ -515,7 +526,7 @@ window.AICAP = {
           'platform': 'opencode',
           'tested': '2026-09-07',
           'score': 80,
-          'rank': 11,
+          'rank': 12,
           'pct': 77.6
         },
         {
@@ -526,7 +537,7 @@ window.AICAP = {
           'platform': 'codex',
           'tested': '2026-08-29',
           'score': 80,
-          'rank': 11,
+          'rank': 12,
           'pct': 77.6
         },
         {
@@ -537,7 +548,7 @@ window.AICAP = {
           'platform': 'codex',
           'tested': '2026-09-04',
           'score': 80,
-          'rank': 11,
+          'rank': 12,
           'pct': 77.6
         },
         {
@@ -548,7 +559,7 @@ window.AICAP = {
           'platform': 'dsh',
           'tested': '2026-09-08',
           'score': 79.5,
-          'rank': 15,
+          'rank': 16,
           'pct': 77.1
         },
         {
@@ -559,7 +570,7 @@ window.AICAP = {
           'platform': 'workbuddy',
           'tested': '2026-08-28',
           'score': 79,
-          'rank': 16,
+          'rank': 17,
           'pct': 76.6
         },
         {
@@ -570,7 +581,7 @@ window.AICAP = {
           'platform': 'antigravity',
           'tested': '2026-08-20',
           'score': 79,
-          'rank': 16,
+          'rank': 17,
           'pct': 76.6
         },
         {
@@ -581,19 +592,8 @@ window.AICAP = {
           'platform': 'cursor',
           'tested': '2026-08-15',
           'score': 79,
-          'rank': 16,
+          'rank': 17,
           'pct': 76.6
-        },
-        {
-          'name': 'kimi-k3',
-          'vendor': 'moonshot',
-          'vendorDisplay': 'KIMI',
-          'effort': 'max',
-          'platform': 'kimicode',
-          'tested': '2026-08-17',
-          'score': 78,
-          'rank': 19,
-          'pct': 75.7
         },
         {
           'name': 'gemini-3.8-flash',

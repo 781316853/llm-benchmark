@@ -14,9 +14,65 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-11',
-      'title': '我的学生对人工智能的看法',
-      'brief': '我的学生对人工智能的看法',
-      'url': 'https://www.lesswrong.com/posts/ySXuvJcqRindQwAk7/how-my-students-think-about-ai',
+      'title': 'Nscale在潜在的IPO之前将前OpenAI高管Fidji Simo加入其董事会',
+      'brief': 'OpenAI排名第二的高管也在2023年带领Instacart完成了首次公开募股。',
+      'url': 'https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'Anthropic本周在网络安全的热水中度过',
+      'brief': '在今年早些时候承认其人工智能模型曾多次入侵其他公司的系统后， Anthropic发布了一个新的……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994064/anthropic-spent-this-week-in-hot-water-over-cybersecurity',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'Meta表示，在提出侵入性的个人问题后，它正在改变AI建议',
+      'brief': 'Meta表示，在病毒视频显示其正在挖掘个人信息后，它正在对其AI聊天机器人建议的提示进行更改……',
+      'url': 'https://www.theverge.com/tech/993974/meta-ai-prompt-invasive-suggestions',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '对人工智能驱动内容优先级较低的黑客新闻',
+      'brief': '对人工智能驱动内容优先级较低的黑客新闻',
+      'url': 'https://sprinklz.io/public/pdwt4dve5uai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'Show HN ：没有人工智能的黑客新闻',
+      'brief': 'Show HN ：没有人工智能的黑客新闻',
+      'url': 'https://hcker.news/?ai=exclude',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '问HN ：我们可以限制人工智能新闻泛滥吗？',
+      'brief': '问HN ：我们可以限制人工智能新闻泛滥吗？',
+      'url': 'https://news.ycombinator.com/item?id=49657850',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'Waymo效应：人工智能如何悄悄地降低研究协作性',
+      'brief': 'Waymo效应：人工智能如何悄悄地降低研究协作性',
+      'url': 'https://www.researchagenda.news/articles/the-waymo-effect.html',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '抵制“AI”',
+      'brief': '抵制“AI”',
+      'url': 'https://ronjeffries.com/articles/-v026/x/t/',
       'source': 'Hacker News',
       'type': '行业动态'
     },
@@ -30,35 +86,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-11',
-      'title': '刘震云对话马毅谈AI：我写不出来、想不到的作品，AI模仿不了｜附完整对话',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Z5ddgQ63RixMXCVzqgq7?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-11',
       'title': 'AMD 发布锐龙AI Max PRO 400 系列，端侧智能体走向多模型协同',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/NizuOkFpcOPgbeClC4uL?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '从「构建 AI」到「驾驭 AI」，如何搞定 AI 深水区的 6 个工程问题？',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/PyUlLla6MWSSoRLiDKbu?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '由于Astra的需求， OpenAI暂停了Pro订阅',
-      'brief': '该公司表示， Pro订阅对其系统造成的压力最大，因此它暂停了注册，同时增加了更多容量。',
-      'url': 'https://techcrunch.com/2026/09/10/openai-puts-pro-subscriptions-on-hold-due-to-astra-demand/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-10',
@@ -83,14 +115,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/10/anthropic-reveals-rogue-ai-agents-hate-captchas-just-like-you/',
       'source': 'TechCrunch',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '印度的Pocket FM将收入增长一倍至5亿$ ，因为AI为93 ％的音频内容提供了动力',
-      'brief': 'Pocket FM使用人工智能制作99%的新内容，使内容制作成本降低约80倍。',
-      'url': 'https://techcrunch.com/2026/09/10/indias-pocket-fm-doubles-revenue-run-rate-to-500m-as-ai-powers-93-of-audio-content/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-10',
@@ -134,25 +158,9 @@ window.NEWS = {
     },
     {
       'date': '2026-09-10',
-      'title': '走出聊天框，Agent 开始进入现实世界',
-      'brief': '头图来源：小度 Agent 正在寻找自己的「身体」。 过去一年，智能体的主要工作对象是文件、网页和软件。它们可以搜索资料、分析数据、制作 PPT，也可以打开浏览器、调用工具，把一句需求推进成一份可供交付的结果。衡量一个 Agent 能力的方式，也集中在任务能不能做完、执行路径是否…',
-      'url': 'http://www.geekpark.net/news/370064',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
       'title': '微信，悄悄迈出 AI 社交的第一步',
       'brief': '头图来源：视觉中国、ChatGPT 生成 最近，微信开始小范围测试一项新的「小微 AI 社交」功能。 用户如果想联系一位朋友，可以先把诉求告诉自己的「小微」。小微找到对方的小微后，会说明此次沟通的话题，并向对方本人请求授权。获得同意后，两个小微先行交流；遇到需要用户作出选择或者确…',
       'url': 'http://www.geekpark.net/news/370155',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '对话极壳创始人孙宽：年出货 3 万台后，外骨骼「全班第一」的成长和焦虑',
-      'brief': '在刚刚结束的 IFA 柏林国际消费电子展上，几乎每家机器人公司的展台上，都会摆上一台可穿戴外骨骼设备。就像 10 年前，很多互联网新锐创业者都喜欢在办公桌上摆一台无人机。这既是对这个品类「前沿」的认可，也表露出某种对市场增长的看好。 2025 年被认为是「消费级外骨骼元年」。今年…',
-      'url': 'http://www.geekpark.net/news/370150',
       'source': '极客公园',
       'type': '公司动态'
     },
