@@ -39,16 +39,33 @@
       .replace(/[^a-z0-9]+/g, "-")  // 连续非字母数字 -> 单个连字符
       .replace(/^-+|-+$/g, "");      // 去除首尾连字符
   }
+  // 去掉括号注解:括号内容为日期/构建号(如 0731、2025-08-07)时保留,
+  // 其余括号注解 (high)/(max)/(with fallback) 等剥离;且 preview 是真实变体名
+  // (如 "DeepSeek V4 Flash preview")不再剥离。
+  function stripParen(s) {
+    return String(s || "").replace(/\(([^)]*)\)/g, function (m, inner) {
+      return /^[\d\s\-/.年月日]+$/.test(inner.trim()) ? m : "";
+    });
+  }
+  // 剥离"结尾"的 effort 标记(high/max/xhigh/thinking 等)。
+  // 只在结尾且前方有分隔符时剥离 —— 早期实现用全局子串替换
+  // (/(high|max|medium|xhigh|low|think)/gi),会把 "Qwen3.8-Max-0902" 里属于模型名的
+  // Max 一并吃掉,并把 "minimax-m3-thinking" 削成 "minimax-m3-ing",
+  // 导致同一模型被拆成两条、ProgramBench/NL2Repo 的数据落不到正确模型上。
+  // 末尾 \s* 用于吸收「去括号注解后残留的尾随空格」(如 "gpt-5.4-medium (codex-harness)"),
+  // 否则 $ 锚点会失效、effort 标记剥不掉。
+  function stripTailEffort(s) {
+    return String(s || "").replace(/[\s\-_/.]+(?:xhigh|high|max|medium|low|thinking|think)\s*$/i, "");
+  }
   // 剥离 effort 后缀后再归一(兜底匹配,用于别名命中后的宽松匹配)
-  // 注:括号内容为日期/构建号(如 0731、2025-08-07)时保留,其余括号注解 (high)/(with fallback) 等剥离;
-  // 且 preview 是真实变体名(如 "DeepSeek V4 Flash preview")不再剥离。
   function normLight(s) {
-    return String(s || "")
-      .replace(/\(([^)]*)\)/g, function (m, inner) {
-        return /^[\d\s\-/.年月日]+$/.test(inner.trim()) ? m : "";
-      })
-      .replace(/(high|max|medium|xhigh|low|think)/gi, "")
-      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    return norm(stripTailEffort(stripParen(s)));
+  }
+  // 匹配候选键:同一原始名的多种写法策略取并集,任一命中别名索引即视为同一模型。
+  // 依次为:原样归一 / 去括号+去尾部 effort / 仅去括号 / 去括号后再去尾部 effort。
+  function keyCandidates(raw) {
+    var base = stripParen(raw);
+    return [norm(raw), normLight(raw), norm(base), norm(stripTailEffort(base))];
   }
 
   // 构建别名索引
@@ -80,16 +97,13 @@
 
   // 根据原始模型名解析 canonical;未命中别名索引则按归一键自动归并
   function canon(raw) {
-    var c = aliasIndex[norm(raw)] || aliasIndex[normLight(raw)];
-    if (c) return c;
-    // 自动匹配:先按精确归一键,再按剥离 effort 注解的宽松键归并
-    var k = norm(raw);
-    var fb = autoIndex[k] || autoIndex[normLight(raw)];
-    if (fb) return fb;
-    // 首次出现:清洗后的原始名作为显示名,双键建档供后续任意写法命中
-    fb = { id: cleanDisplay(raw), vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
-    autoIndex[k] = fb;
-    autoIndex[normLight(raw)] = fb;
+    var cs = keyCandidates(raw), i, c;
+    for (i = 0; i < cs.length; i++) { c = cs[i] && aliasIndex[cs[i]]; if (c) return c; }
+    // 自动匹配:逐个候选键查已建档的未登记模型
+    for (i = 0; i < cs.length; i++) { c = cs[i] && autoIndex[cs[i]]; if (c) return c; }
+    // 首次出现:清洗后的原始名作为显示名,全候选键建档供后续任意写法命中
+    var fb = { id: cleanDisplay(raw), vendor: "其他", color: (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98" };
+    cs.forEach(function (k) { if (k) autoIndex[k] = fb; });
     return fb;
   }
 
@@ -131,19 +145,6 @@
       if (m.version === "v1.0") counts.v10++; else counts.v11++;
     });
     return counts;
-  }
-
-  // ===== Vibe Code:同名 canonical 取最高 score(Claude Opus 4.8 多 harness) =====
-  function vibeCode() {
-    var src = window.VIBECODE || { models: [] };
-    return src.models.slice()
-      // 剔除 GLM-5.3-Flash:其 Vibe 分数(30.76)与同源其它榜(≈57-63)明显失真,
-      // 不计入综合分,总览矩阵该模型 Vibe 单元格显示「—」
-      .filter(function (m) { return canon(m.name).id !== "GLM-5.3-Flash"; })
-      // 按准确率降序,保证表格排名可靠
-      .sort(function (a, b) { return b.score - a.score; }).map(function (m) {
-        return Object.assign({}, m, { canon: canon(m.name) });
-      });
   }
 
   // ===== Code Arena · WebDev(LMArena):每 canonical 模型取最高 Elo,并做快照内 min-max 归一化到 0-100 =====
@@ -346,14 +347,15 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev, tbench, aicapFe, aicapBe} 用于矩阵/雷达 =====
-  // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
-  // tbench:同名取最高(计入综合分与命中数);benchcad 等其余权威基准仅展示不进统一视图;
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, nl2repo, programbench} 用于矩阵/雷达 =====
+  // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
+  // tbench:同名取最高(计入综合分与命中数);nl2repo/programbench:同名取最高(2026-09 起计入综合分与命中数);
+  // benchcad 等其余权威基准仅展示不进统一视图;
   // aicap:前端/后端方向分分别取最高(0-100,直接作 norm);跨榜命中合并为「AI 能力」单一基准计数
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, vibe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, nl2repo: null, programbench: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -366,11 +368,6 @@
     dsAll.forEach(function (m) {
       var e = ensure(m.canon);
       if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, version: m.version, norm: (m.pass1 - dsMin) / dsSpan * 100 };
-    });
-    // Vibe Code
-    vibeCode().forEach(function (m) {
-      var e = ensure(m.canon);
-      if (!e.vibe || m.score > e.vibe.score) e.vibe = { score: m.score, ci: m.ci, cost: m.cost, latencyS: m.latencyS, harness: m.harness, name: m.name, norm: m.score };
     });
     // llm2014
     var lm = llmMonth(llmMonthKey || llmMonths()[llmMonths().length - 1]);
@@ -388,10 +385,10 @@
       var e = ensure(m.canon);
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
     });
-    // Terminal-Bench 多版本:统一视图中仅 TB 4.0(当前官方标准)计入综合分与命中数;
-    // 旧版本(3.0/2.1)放弃,仅供「权威基准测试」页 tbenchByVersion() 完整展示(跨版本难度不可比,避免旧版虚高 norm 干扰排位)。
+    // Terminal-Bench 多版本(4.0/3.0/2.1):合并为一个基准组,优先以最高版本为代表(4.0>3.0>2.1);
+    // 计入综合分与命中数。归一口径用「版本内 min-max 到 0-100」(版本难度不同,直接比较原始分会失真:
+    // 版本越高越难、原始分越低),故各版本最优模型都接近 100、跨版本可比;矩阵展示的仍是代表版本原始分。
     tbench().forEach(function (m) {
-      if (m.version !== "4.0") return; // 仅 4.0 计入综合分/命中
       var e = ensure(m.canon);
       if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, ci: m.ci, version: m.version, agent: m.agent, effort: m.effort, name: m.model, norm: m.norm };
     });
@@ -407,28 +404,50 @@
       if (!e.aicapBe || m.score > e.aicapBe.score)
         e.aicapBe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
     });
-    // 统计跨榜命中数:DeepSWE / Vibe Code / llm2014 / WebDev / Terminal-Bench 共 5 榜;
-    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 6),矩阵中仍分别两列展示;
-    // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)仅展示不计命中。
+    // NL2Repo-Bench:快照内 min-max 归一化到 0-100(独立量纲,与 DeepSWE/TB 一致),矩阵列展示原始 Score%
+    var n2All = nl2repo();
+    var n2Min = Infinity, n2Max = -Infinity;
+    n2All.forEach(function (m) { if (m.score < n2Min) n2Min = m.score; if (m.score > n2Max) n2Max = m.score; });
+    var n2Span = (n2Max - n2Min) || 1;
+    n2All.forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.nl2repo || m.score > e.nl2repo.score)
+        e.nl2repo = { score: m.score, norm: Math.round((m.score - n2Min) / n2Span * 1000) / 10, name: m.model, org: m.org };
+    });
+    // ProgramBench:主指标 Fully Resolved%(官方与 vals 镜像统一口径),快照内归一化;Almost/Raw Pass Rate 辅助
+    var pbAll = programbench();
+    var pbMin = Infinity, pbMax = -Infinity;
+    pbAll.forEach(function (m) { if (m.score < pbMin) pbMin = m.score; if (m.score > pbMax) pbMax = m.score; });
+    var pbSpan = (pbMax - pbMin) || 1;
+    pbAll.forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.programbench || m.score > e.programbench.score)
+        e.programbench = { score: m.score, norm: Math.round((m.score - pbMin) / pbSpan * 1000) / 10, name: m.model, almost: m.almost, rawPassRate: m.rawPassRate };
+    });
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / NL2Repo / ProgramBench 共 6 基准组;
+    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 7),矩阵中仍分别两列展示;
+    // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
-      if (e.vibe) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.webdev) e.benchCount++;
       if (e.tbench) e.benchCount++;
       if (e.aicapFe || e.aicapBe) e.benchCount++;
+      if (e.nl2repo) e.benchCount++;
+      if (e.programbench) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / Vibe / llm2014 / WebDev / AI 能力 / Terminal-Bench 共 6 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / NL2Repo / ProgramBench 共 7 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, vc = window.VIBECODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, n2 = window.NL2REPO || {}, pb = window.PROGRAMBENCH || {};
     var dsTop = (ds.models || [])[0] || {};
-    var vcTop = (vc.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
+    var n2Top = (n2.models || [])[0] || {};
+    var pbTop = (pb.models || [])[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
@@ -444,9 +463,6 @@
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
         top: dsTop.name + " · " + dsTop.pass1 + "%" },
-      { key: "vibecode", name: "Vibe Code Bench", tag: "从零构建 Web 应用", url: vc.url, updated: vc.updated,
-        stats: [{ l: "系统", v: vc.totalSystems }, { l: "展示", v: (vc.models || []).length }],
-        top: vcTop.name + " · " + vcTop.score + "%" },
       { key: "llm2014", name: "llm2014 Agentic", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
         top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/100" : "—") },
@@ -458,11 +474,17 @@
         top: [acFeTop.name, acBeTop.name].filter(Boolean).join(" / ") },
       { key: "tbench", name: "Terminal-Bench", tag: "终端命令行任务 · 4.0/3.0/2.1", url: tb.url, updated: tb.updated,
         stats: [{ l: "版本", v: "4.0/3.0/2.1" }, { l: "条目", v: tbN }],
-        top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") }
+        top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") },
+      { key: "nl2repo", name: "NL2Repo-Bench", tag: "长程仓库生成", url: n2.officialUrl || n2.url, updated: n2.updated,
+        stats: [{ l: "任务", v: n2.stats && n2.stats.tasks }, { l: "模型", v: (n2.models || []).length }],
+        top: n2Top.model + " · " + (n2Top.score != null ? n2Top.score + "%" : "—") },
+      { key: "programbench", name: "ProgramBench", tag: "cleanroom 程序重建", url: pb.officialUrl || pb.url, updated: pb.updated,
+        stats: [{ l: "任务", v: pb.stats && pb.stats.tasks }, { l: "模型", v: (pb.models || []).length }],
+        top: pbTop.model + " · " + (pbTop.score != null ? pbTop.score + "%" : "—") }
     ];
   }
 
-  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-3);用于"仅跨榜模型"过滤
+  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-8);用于"仅跨榜模型"过滤
   function hitCount(canonId, llmMonthKey) {
     var u = unified(llmMonthKey);
     var e = u[canonId];
@@ -486,10 +508,9 @@
     var d = dayDiff(firstSeen, seen.updated);
     return d >= 0 && d <= SEEN_WINDOW;
   }
-  // 矩阵行判定:模型在已有基准上"新"即为真(DeepSWE / Vibe / llm2014 / Terminal-Bench 4.0)
-  function isNewAny(dsName, vcName, llmName, tbName) {
+  // 矩阵行判定:模型在已有基准上"新"即为真(DeepSWE / llm2014 / Terminal-Bench 4.0)
+  function isNewAny(dsName, llmName, tbName) {
     if (dsName && isNewRaw("deepswe", dsName)) return true;
-    if (vcName && isNewRaw("vibe", vcName)) return true;
     if (llmName && isNewRaw("llm", llmName)) return true;
     if (tbName && isNewRaw("tbench", tbName)) return true;
     return false;
@@ -506,7 +527,6 @@
     canon: canon,
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
-    vibeCode: vibeCode,
     webdev: webdev,
     aicap: aicap,
     llmMonth: llmMonth,
@@ -531,7 +551,7 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // 各源原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
+    src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
       tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
       arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH }
   };

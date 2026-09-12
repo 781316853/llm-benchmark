@@ -175,6 +175,11 @@ a:hover { text-decoration: underline; }
    置于 row-new 之后、row-domestic 之前,确保用户主动开启的国产高亮仍获得视觉优先 */
 .data-table tr.row-two { background: rgba(123,140,168,.13); }
 .data-table tr.row-two:hover { background: rgba(123,140,168,.21); }
+/* 「单榜」行(仅命中 1 个基准组):仅在「显示全部模型」时出现,统一排在末尾,不排名、不计算综合分;
+   用更淡的灰底,与双榜行区分,且视觉上弱于跨榜行 */
+.data-table tr.row-one { background: rgba(123,140,168,.06); }
+.data-table tr.row-one:hover { background: rgba(123,140,168,.14); }
+.data-table tr.row-one td { color: var(--text-tertiary); }
 /* 国产模型高亮行(用户主动开启「高亮国产模型」开关时生效);
    置于 row-hit/row-new 之后,确保用户主动开启时国产高亮获得视觉优先 */
 .data-table tr.row-domestic { background: rgba(208,76,76,.13); }
@@ -206,6 +211,10 @@ a:hover { text-decoration: underline; }
 .badge-two { display: inline-block; font-size: 10px; font-weight: 700; color: #4A6076;
   background: #E2E9F0; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid #BCCBDA; }
+/* 「单榜」徽标:仅命中 1 个基准组,仅在「显示全部模型」时出现,灰调弱化 */
+.badge-one { display: inline-block; font-size: 10px; font-weight: 700; color: #6B7784;
+  background: #F0F3F6; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #D7DEE5; }
 /* 国产模型徽标:红色调,与国产行高亮配套(仅「高亮国产模型」开关开启时出现) */
 .badge-domestic { display: inline-block; font-size: 10px; font-weight: 700; color: #fff;
   background: linear-gradient(135deg, #D04C4C, #B8384A); padding: 1px 6px; border-radius: 999px;
@@ -427,11 +436,73 @@ a:hover { text-decoration: underline; }
   gap: 16px; align-content: start;
 }
 
+/* ===== 权威基准页:左侧「大纲预览」+ 快速跳转 =====
+   桌面端大纲在左栏粘性吸附(顶部让位粘性标签栏),随页面滚动高亮当前基准章节;
+   点击条目平滑跳转,落点已扣除标签栏高度。窄屏由下方媒体查询收起为顶部横向胶囊条。 */
+.auth-layout { display: grid; grid-template-columns: 248px minmax(0, 1fr); gap: 24px;
+  align-items: start; margin-top: 18px; }
+.auth-main { min-width: 0; }
+.auth-outline {
+  position: sticky; top: 82px; align-self: start; min-width: 0;
+  max-height: calc(100vh - 104px); overflow-y: auto; overscroll-behavior: contain;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 12px;
+  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+}
+.auth-outline::-webkit-scrollbar { width: 6px; }
+.auth-outline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.auth-outline::-webkit-scrollbar-thumb:hover { background: var(--brand-muted); }
+.auth-outline-title { display: flex; align-items: center; gap: 6px; margin: 0 0 10px;
+  padding: 0 6px 8px; font-size: 13px; font-weight: 700; color: var(--text);
+  border-bottom: 1px solid var(--border-subtle); }
+.auth-outline-count { margin-left: auto; font-size: 11px; font-weight: 500;
+  color: var(--text-tertiary); background: var(--bg-soft); border-radius: 999px; padding: 1px 7px; }
+.auth-outline-list { display: flex; flex-direction: column; gap: 2px; }
+.auth-outline-empty { font-size: 12px; color: var(--text-tertiary); padding: 6px; }
+.auth-outline-item {
+  display: flex; align-items: center; gap: 8px; padding: 7px 8px;
+  border-radius: var(--radius-sm); border-left: 2px solid transparent;
+  color: var(--text-dim); text-decoration: none; font-size: 12.5px; line-height: 1.35;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.auth-outline-item:hover { background: var(--bg-soft); color: var(--accent); text-decoration: none; }
+.auth-outline-item.active { background: var(--brand-light); color: var(--accent);
+  border-left-color: var(--accent); font-weight: 600; }
+.auth-outline-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.ao-idx { flex: none; width: 18px; text-align: center; font-size: 11px;
+  color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+.auth-outline-item.active .ao-idx { color: var(--accent); font-weight: 700; }
+.ao-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.ao-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ao-sub { font-size: 11px; color: var(--text-tertiary);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.auth-outline-item.active .ao-sub { color: var(--accent); opacity: .85; }
+/* 「计」标:该基准并入总览综合分与命中数(其余为展示型参考数据) */
+.ao-badge { flex: none; font-size: 10px; font-weight: 700; line-height: 15px; padding: 0 5px;
+  color: #1f6f54; background: #d8f0e7; border: 1px solid #b3ddc9; border-radius: 999px; }
+/* 章节容器:统一间距,并为锚点落点预留标签栏高度 */
+.auth-block { margin-bottom: 34px; scroll-margin-top: 80px; }
+.auth-block:last-child { margin-bottom: 0; }
+
 /* ===== 响应式 ===== */
 /* 中窄屏:两栏回落为上下堆叠(避免卡片被压成单列) */
 @media (max-width: 1100px) {
   .overview-top { grid-template-columns: 1fr; gap: 24px; }
   .overview-top .news-ticker { min-height: 260px; }
+}
+/* 权威基准大纲:窄于 1280px 时回落为顶部横向胶囊条,为宽表格让出整行宽度 */
+@media (max-width: 1279px) {
+  .auth-layout { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .auth-outline { position: static; max-height: none; overflow: visible; padding: 10px 10px 8px; }
+  .auth-outline-list { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; gap: 8px;
+    padding-bottom: 4px; scrollbar-width: thin; }
+  .auth-outline-item { flex: 0 0 auto; border: 1px solid var(--border);
+    border-radius: 999px; padding: 5px 12px; }
+  .auth-outline-item:hover { border-color: var(--brand-muted); }
+  .auth-outline-item.active { border-color: var(--accent); }
+  .ao-body { flex-direction: row; align-items: baseline; gap: 6px; }
+  .ao-idx { width: auto; }
+  .ao-sub { display: none; }
 }
 @media (max-width: 960px) {
   .metric-cards { grid-template-columns: 1fr; }

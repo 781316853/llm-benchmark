@@ -140,17 +140,37 @@ module.exports = {
     },
     nl2repo: {
       // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench,
-      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构)。
+      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构);benchlm.ai 为补充镜像源
+      // (收录 Ornith 系列 / Claude Opus 4.5 / Qwen3.6 Max preview 等 llm-stats 缺失模型),由
+      // scripts/sources/nl2repo.js 双源合并取最高。
       url: "https://llm-stats.com/benchmarks/nl2repo",
       host: "llm-stats.com",
       officialUrl: "https://github.com/multimodal-art-projection/NL2RepoBench"
     },
+    nl2repo_benchlm: {
+      // NL2Repo 补充源:benchlm.ai 镜像(SSG 服务端渲染,rank|model(vendor·closed)|score%),同模型分数与 llm-stats 一致。
+      url: "https://www.benchlm.ai/benchmarks/nl2repo",
+      host: "www.benchlm.ai"
+    },
     programbench: {
       // ProgramBench(cleanroom 程序重建·编码 Agent,200 任务):官方 programbench.com 服务端渲染
-      // HTML 表格(rank/model(+effort)/agent/Resolved%/Almost%)。
+      // HTML 表格(rank/model(+effort)/agent/Resolved%/Almost%);vals.ai 为补充镜像源
+      // (45 模型,含 Raw Pass Rate / Almost / Fully 三指标),由 scripts/sources/programbench.js 双源合并取最高。
       url: "https://programbench.com/",
       host: "programbench.com",
       officialUrl: "https://programbench.com/"
+    },
+    programbench_vals: {
+      // ProgramBench 补充源:vals.ai 官方镜像(2026-09-04 快照,45 模型,客户端渲染,需解析 RSC payload)。
+      url: "https://www.vals.ai/benchmarks/programbench",
+      host: "www.vals.ai"
+    },
+    tbench_v3: {
+      // Terminal-Bench 3.0(斯坦福/Laude,74 任务):线上 tbench.ai 3.0 路由已并入 4.0,
+      // 以 snorkel.ai 全量 12 条 agent×model 榜单为主(服务端渲染 HTML 表格)。
+      url: "https://snorkel.ai/leaderboard/terminal-bench-3-0/",
+      host: "snorkel.ai",
+      version: "3.0"
     }
   },
 
@@ -163,11 +183,13 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 10 源(tbench/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
-      //   tbench/tbscience 解决率整体偏低(顶级 ~58%/30%),与 DeepSWE/Vibe 混算产生假告警;
+      // 权威基准 10 源(tbench/tbench_v3/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
+      //   tbench/tbench_v3/tbscience 解决率整体偏低(顶级 ~58%/42%/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
-      //   gpqa/hle/nl2repo/programbench 为知识/仓库生成/重建等异构口径,仅权威页展示。
-      excludedSources: ["arena_webdev", "tbench", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench"]
+      //   gpqa/hle 为知识类口径,仅权威页展示;
+      //   nl2repo/programbench 虽已计入综合分与命中数(2026-09 起),但独立量纲且整体偏低(0-64 / 0-7),
+      //     与主基准混算仍会产生假告警,故保持排除。
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench"]
     },
     completeness: {
       // 每条记录必填字段

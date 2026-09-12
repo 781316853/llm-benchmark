@@ -9,13 +9,14 @@
   var SCORE_TOLERANCE = 1.5;
   // 各榜成绩取值(与矩阵列一致,值越大越好);双榜模型逐榜比对时使用
   // 「AI 能力」作为单一基准参与定位:取前端/后端在场方向分的均值
-  // Terminal-Bench 计入综合分与命中;其余权威基准(仅展示)不参与任何定位
+  // Terminal-Bench / NL2Repo / ProgramBench 计入综合分与命中;其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
-    vibe:    function (e) { return e.vibe ? e.vibe.score : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
     tbench:  function (e) { return e.tbench ? e.tbench.score : null; },
+    nl2repo: function (e) { return e.nl2repo ? e.nl2repo.score : null; },
+    programbench: function (e) { return e.programbench ? e.programbench.score : null; },
     aicap:   function (e) {
       var vals = [];
       if (e.aicapFe) vals.push(e.aicapFe.score);
@@ -27,10 +28,11 @@
   function hitBoards(e) {
     var boards = [];
     if (e.deepswe) boards.push("deepswe");
-    if (e.vibe) boards.push("vibe");
     if (e.llm && e.llm.norm != null) boards.push("llm");
     if (e.webdev && e.webdev.score != null) boards.push("webdev");
     if (e.tbench) boards.push("tbench");
+    if (e.nl2repo) boards.push("nl2repo");
+    if (e.programbench) boards.push("programbench");
     if (e.aicapFe || e.aicapBe) boards.push("aicap");
     return boards;
   }
@@ -58,18 +60,22 @@
     });
     return worst < 0 ? ranked.length : worst;
   }
-  // 交叉矩阵排序(仅含命中≥2榜的模型,仅命中一榜的模型不进入总览矩阵,详见各榜单页):
+  // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上):
   // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
   //    并依次编号 _posKey = 0,1,2…;
   // ② 双榜行(命中=2)不计算综合分,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
   //    恰好落在两个排名行的间隔中;多个双榜行同间隔时按位置值先后排列;
-  // ③ 合并后按 _posKey 升序
-  function matrix(llmMonthKey) {
+  // ③ 单榜行(命中=1)不计算综合分、无可比对区间,统一排在全部 ①② 之后(_posKey > ranked.length),
+  //    既不占用前 30 名额,也不扰乱跨榜模型的名次间隔;
+  // ④ 合并后按 _posKey 升序
+  function matrix(llmMonthKey, minHits) {
+    var floor = minHits == null ? 2 : minHits;
     var map = D.unified(llmMonthKey);
     var all = Object.keys(map).map(function (k) { return map[k]; })
-      .filter(function (e) { return e.benchCount >= 2; });
+      .filter(function (e) { return e.benchCount >= floor; });
     var ranked = all.filter(function (e) { return e.benchCount >= 3; });
     var inserted = all.filter(function (e) { return e.benchCount === 2; }); // 双榜:不参与名次、不计算综合分
+    var single = all.filter(function (e) { return e.benchCount === 1; });   // 单榜:仅「显示全部」时出现
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);
       // 差距 ≥ 容差:严格按综合分降序
@@ -90,24 +96,40 @@
       if (Math.abs(key - Math.round(key)) < 1e-9) key += 1e-6;
       e._posKey = key;
     });
-    var rows = ranked.concat(inserted);
+    // 单榜行统一排在双榜之后:按在场榜单成绩降序(不同榜量纲不可比,仅作为稳定次序)
+    single.forEach(function (e) { e._posKey = ranked.length + 0.5; });
+    single.sort(function (a, b) { return bestBoardVal(b) - bestBoardVal(a); });
+    single.forEach(function (e, i) { e._posKey = ranked.length + 0.5 + i * 1e-6; });
+    var rows = ranked.concat(inserted, single);
     rows.sort(function (a, b) { return a._posKey - b._posKey; });
     return rows;
   }
-  // 主基准组权重:DeepSWE 20%、Vibe Code 18%、llm2014 12%、WebDev 18%、AI 能力·前端 12%、AI 能力·后端 12%、Terminal-Bench 12%
-  // (DeepSWE 由 35% 下调为 20%,并已按合并快照内 min-max 归一到 0-100 计入综合分,削弱单一基准主导;
-  //  llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准,权重 12%;
-  //  AI 能力同为个人专项测试口径,前端/后端各 12%;Terminal-Bench 4.0 为权威终端编码榜,权重 12%;
-  //  名义总和 104%,avgNorm 按在场权重归一化,缺失权重自动回流)
-  var WEIGHTS = { deepswe: 0.20, vibe: 0.18, llm: 0.12, webdev: 0.18, aicapFe: 0.12, aicapBe: 0.12, tbench: 0.12 };
+  // 单榜行的"最好成绩":取该模型在场所命中榜单上的原始分(用于排序;量纲不同,仅作稳定次序)
+  function bestBoardVal(e) {
+    var best = -Infinity;
+    Object.keys(BOARD_VALS).forEach(function (k) {
+      var v = BOARD_VALS[k](e);
+      if (v != null && v > best) best = v;
+    });
+    return best === -Infinity ? 0 : best;
+  }
+  // 主基准组权重:DeepSWE 18%、WebDev 16%、llm2014 12%、AI 能力·前端 12%、AI 能力·后端 12%、Terminal-Bench 12%、NL2Repo 9%、ProgramBench 9%
+  // (2026-09 起移除 Vibe Code Bench,其 14% 按比例回流至其余基准并取整;
+  //  DeepSWE/WebDev 为权威第三方编码榜,权重最高;
+  //  llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准;
+  //  AI 能力同为个人专项测试口径,前端/后端各 12%;Terminal-Bench(4.0/3.0/2.1 合并)为权威终端编码榜;
+  //  NL2Repo / ProgramBench 为 2026-09 新引入的权威编码基准;
+  //  名义总和 100%,avgNorm 按在场权重归一化,缺失权重自动回流)
+  var WEIGHTS = { deepswe: 0.18, webdev: 0.16, llm: 0.12, aicapFe: 0.12, aicapBe: 0.12, tbench: 0.12, nl2repo: 0.09, programbench: 0.09 };
   function avgNorm(e) {
     var sum = 0, wsum = 0;
     // 按权重加权平均;缺失基准的权重自动回流至已有基准(归一化)
     if (e.deepswe) { sum += e.deepswe.norm * WEIGHTS.deepswe; wsum += WEIGHTS.deepswe; }
-    if (e.vibe)    { sum += e.vibe.norm    * WEIGHTS.vibe;    wsum += WEIGHTS.vibe; }
     if (e.llm && e.llm.norm != null) { sum += e.llm.norm * WEIGHTS.llm; wsum += WEIGHTS.llm; }
     if (e.webdev && e.webdev.norm != null) { sum += e.webdev.norm * WEIGHTS.webdev; wsum += WEIGHTS.webdev; }
     if (e.tbench && e.tbench.norm != null) { sum += e.tbench.norm * WEIGHTS.tbench; wsum += WEIGHTS.tbench; }
+    if (e.nl2repo && e.nl2repo.norm != null) { sum += e.nl2repo.norm * WEIGHTS.nl2repo; wsum += WEIGHTS.nl2repo; }
+    if (e.programbench && e.programbench.norm != null) { sum += e.programbench.norm * WEIGHTS.programbench; wsum += WEIGHTS.programbench; }
     if (e.aicapFe && e.aicapFe.norm != null) { sum += e.aicapFe.norm * WEIGHTS.aicapFe; wsum += WEIGHTS.aicapFe; }
     if (e.aicapBe && e.aicapBe.norm != null) { sum += e.aicapBe.norm * WEIGHTS.aicapBe; wsum += WEIGHTS.aicapBe; }
     return wsum > 0 ? sum / wsum : 0;
@@ -117,10 +139,11 @@
   function variance(e) {
     var vs = [];
     if (e.deepswe) vs.push(e.deepswe.norm);
-    if (e.vibe) vs.push(e.vibe.norm);
     if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
     if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
     if (e.tbench && e.tbench.norm != null) vs.push(e.tbench.norm);
+    if (e.nl2repo && e.nl2repo.norm != null) vs.push(e.nl2repo.norm);
+    if (e.programbench && e.programbench.norm != null) vs.push(e.programbench.norm);
     if (e.aicapFe && e.aicapFe.norm != null) vs.push(e.aicapFe.norm);
     if (e.aicapBe && e.aicapBe.norm != null) vs.push(e.aicapBe.norm);
     if (vs.length < 2) return 0;
@@ -131,7 +154,7 @@
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:主基准组加权平均(DeepSWE 20%/Vibe 18%/llm2014 12%/WebDev 18%/AI·前端 12%/AI·后端 12%/TB 12%)减去一致性折减
+  // 综合分:主基准组加权平均(DeepSWE 18%/WebDev 16%/llm2014 12%/AI·前端 12%/AI·后端 12%/TB 12%/NL2Repo 9%/ProgramBench 9%)减去一致性折减
   function composite(e) {
     var base = avgNorm(e);
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);
@@ -176,7 +199,7 @@
   // 雷达:三轴归一化 0-100
   var INDICATORS = [
     { name: "DeepSWE", max: 100 },
-    { name: "Vibe Code", max: 100 },
+    { name: "WebDev", max: 100 },
     { name: "llm2014", max: 100 }
   ];
   function radarSeries(ids, llmMonthKey) {
@@ -187,7 +210,7 @@
         name: id,
         value: [
           e.deepswe ? e.deepswe.norm : 0,
-          e.vibe ? e.vibe.norm : 0,
+          (e.webdev && e.webdev.norm != null) ? e.webdev.norm : 0,
           (e.llm && e.llm.norm != null) ? e.llm.norm : 0
         ],
         lineStyle: { color: e.color || undefined },
@@ -206,23 +229,22 @@
       return {
         id: id, color: e.color, vendor: e.vendor,
         deepswe: e.deepswe ? (e.deepswe.pass1 + "% · $" + e.deepswe.cost + " · " + e.deepswe.steps + "步") : "—",
-        vibe: e.vibe ? (e.vibe.score + "% · $" + e.vibe.cost + " · " + Math.round(e.vibe.latencyS / 60) + "分") : "—",
+        webdev: (e.webdev && e.webdev.score != null) ? (e.webdev.score + " Elo · " + e.webdev.votes + " 票") : "—",
         llm: e.llm && e.llm.norm != null ? (e.llm.norm.toFixed(2) + " / 100") : "-"
       };
     });
   }
 
-  // 成本对比:DeepSWE cost 与 Vibe cost(分组柱)
+  // 成本对比:DeepSWE 单次任务平均成本(单序列;WebDev 为 Elo 投票榜,无成本口径)
   function costSeries(ids, llmMonthKey) {
     var map = D.unified(llmMonthKey);
-    var cats = [], ds = [], vc = [];
+    var cats = [], ds = [];
     ids.forEach(function (id) {
       var e = map[id] || {};
       cats.push(id);
       ds.push(e.deepswe ? e.deepswe.cost : 0);
-      vc.push(e.vibe ? e.vibe.cost : 0);
     });
-    return { cats: cats, deepswe: ds, vibe: vc };
+    return { cats: cats, deepswe: ds };
   }
 
   // 默认选中:三榜全命中的头部模型(取前 4 个)
