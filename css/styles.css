@@ -410,7 +410,29 @@ a:hover { text-decoration: underline; }
 .news-link { flex: 0 0 auto; font-size: 12px; white-space: nowrap; }
 .news-empty { color: var(--text-tertiary); font-size: 13px; padding: 14px 4px; text-align: center; }
 
+/* ===== 总览首屏两栏:左「AI 热点总结」| 右「核心基准速览」 =====
+   横向并排,两栏顶/底对齐;左栏面板拉伸至与右栏卡片列等高,内部保持独立滚动。 */
+.overview-top {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 20px; align-items: stretch; margin-top: 26px;
+}
+.overview-top .section-title { margin-top: 0; }
+/* 左栏:新闻面板纵向 flex,滚动区 flex:1 撑满剩余高度 */
+.overview-top .news-section { margin: 0; min-width: 0; display: flex; flex-direction: column; }
+.overview-top .news-ticker { flex: 1 1 auto; height: auto; min-height: 300px; }
+/* 右栏:卡片列(窄列内收敛为 3 列 × 2 行)与顶部对齐,不随行高拉伸留白 */
+.overview-top .bench-section { min-width: 0; display: flex; flex-direction: column; }
+.overview-top .bench-cards {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px; align-content: start;
+}
+
 /* ===== 响应式 ===== */
+/* 中窄屏:两栏回落为上下堆叠(避免卡片被压成单列) */
+@media (max-width: 1100px) {
+  .overview-top { grid-template-columns: 1fr; gap: 24px; }
+  .overview-top .news-ticker { min-height: 260px; }
+}
 @media (max-width: 960px) {
   .metric-cards { grid-template-columns: 1fr; }
   .bench-cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
@@ -430,6 +452,7 @@ a:hover { text-decoration: underline; }
   /* 新闻滚动:隐藏来源标记避免挤压标题,适当降低高度 */
   .news-source { display: none; }
   .news-ticker { padding: 4px 12px; height: 240px; }
+  .overview-top .news-ticker { min-height: 240px; }
 }
 
 /* ===== 动效降级:尊重系统"减少动态效果"偏好 ===== */
