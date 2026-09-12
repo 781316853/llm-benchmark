@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 127,
+      'modelCount': 128,
       'updated': '2026-09-12',
       'ageDays': 0,
       'completeness': 1,
@@ -1047,9 +1047,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 127,
-      'complete': 127,
-      'modelCount': 127,
+      'total': 128,
+      'complete': 128,
+      'modelCount': 128,
       'missingFields': {},
       'flag': 'ok'
     },

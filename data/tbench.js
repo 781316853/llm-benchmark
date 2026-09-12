@@ -8,7 +8,7 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'version': '4.0',
   'updated': '2026-09-12',
-  'refreshedAt': '2026-09-12 13:27',
+  'refreshedAt': '2026-09-13 00:02',
   'stats': {
     'tasks': 66,
     'entries': 18

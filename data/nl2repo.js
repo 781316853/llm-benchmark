@@ -7,7 +7,7 @@ window.NL2REPO = {
   'url': 'https://llm-stats.com/benchmarks/nl2repo',
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'updated': '2026-09-12',
-  'refreshedAt': '2026-09-12 13:27',
+  'refreshedAt': '2026-09-13 00:02',
   'stats': {
     'tasks': 103,
     'entries': 23
