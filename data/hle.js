@@ -7,7 +7,7 @@ window.HLE = {
   'url': 'https://llm-stats.com/benchmarks/humanity%27s-last-exam',
   'officialUrl': 'https://lastexam.ai/',
   'updated': '2026-09-12',
-  'refreshedAt': '2026-09-12 10:45',
+  'refreshedAt': '2026-09-12 13:27',
   'stats': {
     'tasks': 2500,
     'entries': 50

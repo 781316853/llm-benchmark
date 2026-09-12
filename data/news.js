@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-11',
+  'updated': '2026-09-12',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,12 +13,100 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-12',
+      'title': '伯尼的人工智能法案提议判处人工智能开发人员20年徒刑',
+      'brief': '伯尼的人工智能法案提议判处人工智能开发人员20年徒刑',
+      'url': 'https://twitter.com/venturetwins/status/2098456905526211026',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': '两个 Token 就让 Kimi“变成”Claude？前Google DeepMind研究员意外撞上大模型的蒸馏疑云',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/GhA2VWxo6JTGyKIb7KdT?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-12',
+      'title': '模型一模一样，Token 却相差 70 倍？三项实测揭开 AI 编程工具的成本黑洞',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/oPSaLpULlAxGxTbYXlXO?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'V4.1 Flash全面超越，开发者为何还在喷 DeepSeek：缺的不是能力，是软件工程思维',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/G7cublzVyXFOUX3vpz1t?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-12',
+      'title': '从沙箱到执行边界：蚂蚁 AI Agent 的大规模企业级实践｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/hk3WB50fAOMDg55YVaaW?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '在急于获取机器人训练数据之际， Mecka AI对红杉领导的交易的估值接近5亿美元',
+      'brief': '这家成立两年的初创公司的融资是在Mecka宣布其A轮融资的几个月后进行的。',
+      'url': 'https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'Y Combinator的Garry Tan希望美国开放式人工智能实验室也能“提炼”前沿模型',
+      'brief': 'Tan希望规模较小的美国开放式人工智能实验室在美国前沿人工智能实验室上使用相同的培训技术，为美国带来……',
+      'url': 'https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'OpenAI与数学家的不和只会升级',
+      'brief': '25位领先的数学家签署了一封公开信，声称人工智能实验室正在威胁他们的智力工作。',
+      'url': 'https://techcrunch.com/2026/09/11/openais-feud-with-mathematicians-is-only-escalating/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-11',
+      'title': 'Kimi制造商Moonshot AI的年收入目标为$ 2B',
+      'brief': '虽然K3的使用数据在最近几个月略有下降，但OpenRouter的数据显示，目前有多达3000亿个代币正在生成……',
+      'url': 'https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '人类学研究者的世界末日警告发生在一个非常有趣的时刻',
+      'brief': '一位人类学研究人员本周辞职，并在X上的一篇帖子中警告说，该公司正在“直奔自我提升的超级智能……',
+      'url': 'https://techcrunch.com/podcast/an-anthropic-researchers-doomsday-warning-comes-at-a-very-interesting-time/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
       'date': '2026-09-11',
       'title': 'Nscale在潜在的IPO之前将前OpenAI高管Fidji Simo加入其董事会',
       'brief': 'OpenAI排名第二的高管也在2023年带领Instacart完成了首次公开募股。',
       'url': 'https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo/',
       'source': 'TechCrunch',
       'type': '公司动态'
+    },
+    {
+      'date': '2026-09-11',
+      'title': '律师在一起谋杀案中因人工智能幻觉证人被罚款5000 $',
+      'brief': '新墨西哥州最高法院正在惩罚一名律师，因为他将人工智能捏造的证人和伪造的警方证词纳入其客户的上诉中……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994207/chatgpt-new-mexico-lawyer-fined-murder-appeal',
+      'source': 'The Verge',
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-11',
@@ -38,43 +126,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-11',
-      'title': '对人工智能驱动内容优先级较低的黑客新闻',
-      'brief': '对人工智能驱动内容优先级较低的黑客新闻',
-      'url': 'https://sprinklz.io/public/pdwt4dve5uai',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Show HN ：没有人工智能的黑客新闻',
-      'brief': 'Show HN ：没有人工智能的黑客新闻',
-      'url': 'https://hcker.news/?ai=exclude',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '问HN ：我们可以限制人工智能新闻泛滥吗？',
-      'brief': '问HN ：我们可以限制人工智能新闻泛滥吗？',
-      'url': 'https://news.ycombinator.com/item?id=49657850',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Waymo效应：人工智能如何悄悄地降低研究协作性',
-      'brief': 'Waymo效应：人工智能如何悄悄地降低研究协作性',
-      'url': 'https://www.researchagenda.news/articles/the-waymo-effect.html',
+      'title': '如何构建人工智能软件工厂：打开、查看和合并PR的代理',
+      'brief': '如何构建人工智能软件工厂：打开、查看和合并PR的代理',
+      'url': 'https://www.firecrawl.dev/blog/ai-software-factory',
       'source': 'Hacker News',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '抵制“AI”',
-      'brief': '抵制“AI”',
-      'url': 'https://ronjeffries.com/articles/-v026/x/t/',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-11',
@@ -90,86 +146,6 @@ window.NEWS = {
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/NizuOkFpcOPgbeClC4uL?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'Anthropic详细介绍了阿里巴巴、Moonshot AI和DeepSeek的蒸馏活动',
-      'brief': 'Anthropic周四发布的一份新报告称，总部位于中国的人工智能公司持续不断的蒸馏攻击已经升级。',
-      'url': 'https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'Meta的人工智能代理Muse现在是美国排名第二的应用程序',
-      'brief': 'Meta的最新应用程序Muse的开始速度比该公司的其他应用程序（如Meta AI或Threads ）慢。',
-      'url': 'https://techcrunch.com/2026/09/10/metas-ai-agent-muse-is-now-the-no-2-app-in-the-us/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'Anthropic揭示了流氓AI代理和你一样讨厌CAPTCHA',
-      'brief': '进入机器人的大脑，试图说服互联网这是人类。',
-      'url': 'https://techcrunch.com/2026/09/10/anthropic-reveals-rogue-ai-agents-hate-captchas-just-like-you/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '人工智能代理正在用新的请求淹没公共服务',
-      'brief': '这位研究人员告诉TechCr ： “我们发现的绝大多数案例都是有权要求某样东西的人，要求那样东西。”',
-      'url': 'https://techcrunch.com/2026/09/10/ai-agents-are-flooding-public-services-with-new-requests/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '人工智能研究初创公司Listen Labs为Salesforce会谈筹集了15亿美元资金',
-      'brief': '消息人士称， Listen Labs放弃了Menlo Ventures签署的C系列条款表。',
-      'url': 'https://techcrunch.com/2026/09/09/ai-research-startup-listen-labs-scrubbed-a-1-5b-funding-round-for-salesforce-talks/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '数学家想要证明OpenAI没有使用他们的工作',
-      'brief': '另一位研究人员正在挑战OpenAI ，关于推动其日益令人印象深刻的数学发现的数据。就在几天后……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/993263/where-does-openai-get-mathematics-training-data',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-10',
-      'title': 'Anthropic首席执行官的妻子曾经要求爱泼斯坦资助色情企业–现在引导克劳德',
-      'brief': 'Anthropic首席执行官的妻子曾经要求爱泼斯坦资助色情企业–现在引导克劳德',
-      'url': 'https://nypost.com/2026/08/14/business/anthropic-ceos-wife-once-asked-jeffrey-epstein-to-fund-porn-venture-now-she-helps-steer-the-claude-ai-empire/',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '一次辞职将人工智能恐惧的余烬变成了一场野火',
-      'brief': '一次辞职将人工智能恐惧的余烬变成了一场野火',
-      'url': 'https://www.interconnects.ai/p/one-resignation-turned-the-embers',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '微信，悄悄迈出 AI 社交的第一步',
-      'brief': '头图来源：视觉中国、ChatGPT 生成 最近，微信开始小范围测试一项新的「小微 AI 社交」功能。 用户如果想联系一位朋友，可以先把诉求告诉自己的「小微」。小微找到对方的小微后，会说明此次沟通的话题，并向对方本人请求授权。获得同意后，两个小微先行交流；遇到需要用户作出选择或者确…',
-      'url': 'http://www.geekpark.net/news/370155',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-10',
-      'title': '苹果进入特努斯时代，首发 15999 元折叠屏 iPhone；Deepseek 被曝备战科创板 IPO；谷歌埃森哲组建千人 FDE 团队 | 极客早知道',
-      'brief': '苹果首款折叠 iPhone Duo 亮相，国行 15999 元起 北京时间 9 月 10 日凌晨，苹果发布首款折叠手机 iPhone Duo，国行 15999 元起，10 月 16 日开启预售，23 日正式发售。同场推出 iPhone 18 Pro 系列，9999 元起；标准版…',
-      'url': 'http://www.geekpark.net/news/370089',
-      'source': '极客公园',
       'type': '模型发布'
     }
   ]
