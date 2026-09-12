@@ -232,14 +232,13 @@
     return out;
   }
 
-  // ===== Terminal-Bench 多版本(4.0/3.0/2.1/2.0):每 canonical 模型按版本优先级取最高版本解决率 =====
-  // 优先级:4.0 > 3.0 > 2.1 > 2.0;同版本内有多个 agent/effort 条目时取最高解决率。
-  // 供总览矩阵/综合分使用(四版合并为一个基准组);权威页完整展示用 tbenchByVersion(ver)。
+  // ===== Terminal-Bench 多版本(4.0/3.0/2.1):每 canonical 模型按版本优先级取最高版本解决率 =====
+  // 优先级:4.0 > 3.0 > 2.1;同版本内有多个 agent/effort 条目时取最高解决率。
+  // 供总览矩阵/综合分使用(多版本合并为一个基准组);权威页完整展示用 tbenchByVersion(ver)。
   var TB_VERSIONS = [
     { ver: "4.0", src: function () { return window.TBENCH || { models: [] }; } },
     { ver: "3.0", src: function () { return window.TBENCH_V3 || { models: [] }; } },
-    { ver: "2.1", src: function () { return window.TBENCH_V21 || { models: [] }; } },
-    { ver: "2.0", src: function () { return window.TBENCH_V20 || { models: [] }; } }
+    { ver: "2.1", src: function () { return window.TBENCH_V21 || { models: [] }; } }
   ];
 
   // 指定版本原始条目(agent×model,权威页完整表格用),附 version
@@ -256,7 +255,7 @@
     return tbenchByVersion("4.0");
   }
 
-  // 聚合:每 canonical 模型以「最高版本」为代表(版本优先级 4.0>3.0>2.1>2.0)
+  // 聚合:每 canonical 模型以「最高版本」为代表(版本优先级 4.0>3.0>2.1)
   // 版本内取该模型最优原始分,并做版本内 min-max 归一化到 0-100(norm)作为综合分口径。
   // 原因:不同版本难度不同(版本越高越难,原始分越低),按版本内归一化消除难度差异,使各版本最优模型都接近 100、跨版本可比。
   function tbench() {
@@ -325,6 +324,28 @@
     return out;
   }
 
+  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench =====
+  function gpqa() {
+    var src = window.GPQA || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function hle() {
+    var src = window.HLE || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function nl2repo() {
+    var src = window.NL2REPO || { models: [] };
+    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function programbench() {
+    var src = window.PROGRAMBENCH || { models: [] };
+    return src.models.slice().sort(function (a, b) { return (b.score - a.score) || (b.almost - a.almost); })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+
   // ===== 统一视图:canonical -> {deepswe, vibe, llm, webdev, tbench, aicapFe, aicapBe} 用于矩阵/雷达 =====
   // deepswe/vibe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
   // tbench:同名取最高(计入综合分与命中数);benchcad 等其余权威基准仅展示不进统一视图;
@@ -368,7 +389,7 @@
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
     });
     // Terminal-Bench 多版本:统一视图中仅 TB 4.0(当前官方标准)计入综合分与命中数;
-    // 旧版本(3.0/2.1/2.0)放弃,仅供「权威基准测试」页 tbenchByVersion() 完整展示(跨版本难度不可比,避免旧版虚高 norm 干扰排位)。
+    // 旧版本(3.0/2.1)放弃,仅供「权威基准测试」页 tbenchByVersion() 完整展示(跨版本难度不可比,避免旧版虚高 norm 干扰排位)。
     tbench().forEach(function (m) {
       if (m.version !== "4.0") return; // 仅 4.0 计入综合分/命中
       var e = ensure(m.canon);
@@ -408,7 +429,7 @@
     var vcTop = (vc.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
-    var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length + ((window.TBENCH_V20 || {}).models || []).length;
+    var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
     // llm2014 头名 = 源排序第一名(rank 0),展示其综合分(按等级均值归一化,未必恰为 100)
@@ -435,8 +456,8 @@
       { key: "aicap", name: "AI 能力专项测试", tag: "前端/后端方向分", url: ac.boardUrl || ac.url || "", updated: ac.updated,
         stats: [{ l: "方向", v: 2 }, { l: "模型", v: ac.runCount != null ? ac.runCount : 0 }],
         top: [acFeTop.name, acBeTop.name].filter(Boolean).join(" / ") },
-      { key: "tbench", name: "Terminal-Bench", tag: "终端命令行任务 · 4.0/3.0/2.1/2.0", url: tb.url, updated: tb.updated,
-        stats: [{ l: "版本", v: "4.0/3.0/2.1/2.0" }, { l: "条目", v: tbN }],
+      { key: "tbench", name: "Terminal-Bench", tag: "终端命令行任务 · 4.0/3.0/2.1", url: tb.url, updated: tb.updated,
+        stats: [{ l: "版本", v: "4.0/3.0/2.1" }, { l: "条目", v: tbN }],
         top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") }
     ];
   }
@@ -498,6 +519,10 @@
     lastExam: lastExam,
     arcagi3: arcagi3,
     benchcad: benchcad,
+    gpqa: gpqa,
+    hle: hle,
+    nl2repo: nl2repo,
+    programbench: programbench,
     unified: unified,
     hitCount: hitCount,
     benchSummary: benchSummary,
@@ -507,7 +532,7 @@
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // 各源原始对象(供渲染脚注)
     src: { deepswe: window.DEEPSWE, vibe: window.VIBECODE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
-      tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbenchV20: window.TBENCH_V20, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
-      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD }
+      tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
+      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH }
   };
 })();

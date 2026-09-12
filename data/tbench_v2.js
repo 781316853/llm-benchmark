@@ -1,7 +1,7 @@
 // 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(全网权威数据汇总,快照于 2026-09-07)
 // 来源:https://llm-stats.com/benchmarks/terminal-bench-2.1
 // 字段说明:model=模型名;score=得分(%);agent=Agent 框架;effort=推理强度;ci=95% 置信区间;date=发布日期;tokens=总 tokens;cost=成本($)
-// 用途:计入总览页综合分与命中数(与 4.0/3.0/2.0 合并为一个基准组,取值优先级 4.0>3.0>2.1>2.0);「权威基准测试」页完整展示。
+// 用途:计入总览页综合分与命中数(与 4.0/3.0 合并为一个基准组,取值优先级 4.0>3.0>2.1);「权威基准测试」页完整展示。
 // 注:此处采用 llm-stats 的 2.1 榜单(33 个模型级条目),为 0-1 归一化**自报分数**,已换算为百分比,
 //    与官方 agent×model 解决率口径不同;agent/effort/date/tokens/cost 源站未给出,置空。
 window.TBENCH_V21 = {

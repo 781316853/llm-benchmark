@@ -123,6 +123,34 @@ module.exports = {
       repoUrl: "https://github.com/BenchCAD/BenchCAD-main",
       boardUrl: "https://benchcad.com/",
       host: "raw.githubusercontent.com"
+    },
+    gpqa: {
+      // GPQA Diamond(研究生级科学问答·知识推理,198 题):官方 epoch.ai/benchmarks/gpqa-diamond,
+      // 以 llm-stats 聚合表为主(服务端渲染:#|Model|Score(0-1)|Size|Context|Cost|License)。
+      url: "https://llm-stats.com/benchmarks/gpqa",
+      host: "llm-stats.com",
+      officialUrl: "https://epoch.ai/benchmarks/gpqa-diamond"
+    },
+    hle: {
+      // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI),
+      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构)。
+      url: "https://llm-stats.com/benchmarks/humanity%27s-last-exam",
+      host: "llm-stats.com",
+      officialUrl: "https://lastexam.ai/"
+    },
+    nl2repo: {
+      // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench,
+      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构)。
+      url: "https://llm-stats.com/benchmarks/nl2repo",
+      host: "llm-stats.com",
+      officialUrl: "https://github.com/multimodal-art-projection/NL2RepoBench"
+    },
+    programbench: {
+      // ProgramBench(cleanroom 程序重建·编码 Agent,200 任务):官方 programbench.com 服务端渲染
+      // HTML 表格(rank/model(+effort)/agent/Resolved%/Almost%)。
+      url: "https://programbench.com/",
+      host: "programbench.com",
+      officialUrl: "https://programbench.com/"
     }
   },
 
@@ -135,10 +163,11 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 6 源(tbench/tbscience/osworld/lastexam/arcagi3/benchcad)同样排除:
+      // 权威基准 10 源(tbench/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
       //   tbench/tbscience 解决率整体偏低(顶级 ~58%/30%),与 DeepSWE/Vibe 混算产生假告警;
-      //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示。
-      excludedSources: ["arena_webdev", "tbench", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad"]
+      //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
+      //   gpqa/hle/nl2repo/programbench 为知识/仓库生成/重建等异构口径,仅权威页展示。
+      excludedSources: ["arena_webdev", "tbench", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench"]
     },
     completeness: {
       // 每条记录必填字段
