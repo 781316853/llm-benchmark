@@ -15,3 +15,6 @@ Thumbs.db
 
 # ZCode 本地会话/计划文件
 .zcode/
+
+# WorkBuddy 本地工作记录(项目 memory 等)
+.workbuddy/
