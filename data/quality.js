@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-09-12',
-  'overallScore': 0.931,
+  'overallScore': 0.935,
   'sources': [
     {
       'id': 'ai_capability',
@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
-      'modelCount': 23,
+      'modelCount': 32,
       'updated': '2026-09-12',
       'ageDays': 0,
       'completeness': 1,
@@ -153,7 +153,7 @@ window.QUALITY = {
       'id': 'programbench',
       'name': 'ProgramBench',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 52,
       'updated': '2026-09-12',
       'ageDays': 0,
       'completeness': 1,
@@ -165,6 +165,17 @@ window.QUALITY = {
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
       'modelCount': 18,
+      'updated': '2026-09-12',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'tbench_v3',
+      'name': 'Terminal-Bench 3.0',
+      'status': 'ok',
+      'modelCount': 12,
       'updated': '2026-09-12',
       'ageDays': 0,
       'completeness': 1,
@@ -196,6 +207,26 @@ window.QUALITY = {
   ],
   'consistency': [
     {
+      'canonId': 'GPT-5.6 Luna',
+      'name': 'GPT-5.6 Luna',
+      'vendor': 'OpenAI',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 67.2,
+        'deepswe_v11': 67,
+        'tbench_v3': 14.3,
+        'vibecode': 77.06
+      },
+      'mean': 56.4,
+      'stddev': 24.64,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'DeepSeek V4 Pro 0813',
       'name': 'DeepSeek-V4-Pro',
       'vendor': 'DeepSeek',
@@ -216,6 +247,174 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'Claude Sonnet 5',
+      'name': 'Claude Sonnet 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 54,
+        'deepswe_v11': 54,
+        'tbench_v3': 14.6,
+        'vibecode': 81.33
+      },
+      'mean': 51,
+      'stddev': 23.78,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GPT-5.6 Terra',
+      'name': 'GPT-5.6 Terra',
+      'vendor': 'OpenAI',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 69.6,
+        'deepswe_v11': 70,
+        'tbench_v3': 20.8,
+        'vibecode': 74.59
+      },
+      'mean': 58.7,
+      'stddev': 22,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Claude Fable 5',
+      'name': 'claude-fable-5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 96.25,
+        'datalearner': 70,
+        'deepswe_v11': 70,
+        'tbench_v3': 34.1,
+        'vibecode': 90.35
+      },
+      'mean': 72.1,
+      'stddev': 21.77,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GLM-5.2',
+      'name': 'glm-5-2',
+      'vendor': 'zAI',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'deepswe_v11': 44,
+        'deepswe_v10': 42,
+        'tbench_v3': 4.6,
+        'vibecode': 63.96
+      },
+      'mean': 38.6,
+      'stddev': 21.45,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Grok 4.5',
+      'name': 'Grok 4.5',
+      'vendor': 'xAI',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 53,
+        'deepswe_v11': 54,
+        'tbench_v3': 15.7,
+        'vibecode': 69
+      },
+      'mean': 47.9,
+      'stddev': 19.65,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Grok 4.6',
+      'name': 'grok-4.6',
+      'vendor': 'xAI',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 82.1,
+        'datalearner': 65.9,
+        'deepswe_v11': 67,
+        'tbench_v3': 26.5,
+        'vibecode': 76.24
+      },
+      'mean': 63.5,
+      'stddev': 19.47,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GLM-5.3',
+      'name': 'glm-5.3',
+      'vendor': 'zAI',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 89.93,
+        'datalearner': 66.9,
+        'deepswe_v11': 69,
+        'tbench_v3': 32.4,
+        'vibecode': 78.13
+      },
+      'mean': 67.3,
+      'stddev': 19.24,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Claude Opus 4.8',
+      'name': 'Claude Opus 4.8',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'deepswe_v10',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'datalearner': 59,
+        'deepswe_v11': 59,
+        'deepswe_v10': 58,
+        'tbench_v3': 21.1,
+        'vibecode': 80.11
+      },
+      'mean': 55.4,
+      'stddev': 19.08,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'GLM-5.3-Flash',
       'name': 'glm-5.3-flash',
       'vendor': 'zAI',
@@ -233,6 +432,50 @@ window.QUALITY = {
       },
       'mean': 60.1,
       'stddev': 18.85,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GPT-5.6 Sol',
+      'name': 'gpt-5.6-sol-0829',
+      'vendor': 'OpenAI',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 84.45,
+        'datalearner': 72.85,
+        'deepswe_v11': 73,
+        'tbench_v3': 34.6,
+        'vibecode': 80.5
+      },
+      'mean': 69.1,
+      'stddev': 17.81,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Claude Opus 5',
+      'name': 'claude-opus-5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'ai_capability',
+        'datalearner',
+        'deepswe_v11',
+        'tbench_v3',
+        'vibecode'
+      ],
+      'scores': {
+        'ai_capability': 92.5,
+        'datalearner': 74,
+        'deepswe_v11': 74,
+        'tbench_v3': 42.7,
+        'vibecode': 88.4
+      },
+      'mean': 74.3,
+      'stddev': 17.49,
       'flag': 'alert'
     },
     {
@@ -302,24 +545,6 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'Claude Sonnet 5',
-      'name': 'Claude Sonnet 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 54,
-        'deepswe_v11': 54,
-        'vibecode': 81.33
-      },
-      'mean': 63.1,
-      'stddev': 12.88,
-      'flag': 'alert'
-    },
-    {
       'canonId': 'GPT-5.4 Mini',
       'name': 'gpt-5-4-mini',
       'vendor': 'OpenAI',
@@ -333,26 +558,6 @@ window.QUALITY = {
       },
       'mean': 36,
       'stddev': 11.99,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'Claude Fable 5',
-      'name': 'claude-fable-5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'ai_capability',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'ai_capability': 96.25,
-        'datalearner': 70,
-        'deepswe_v11': 70,
-        'vibecode': 90.35
-      },
-      'mean': 81.7,
-      'stddev': 11.84,
       'flag': 'alert'
     },
     {
@@ -522,64 +727,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'GLM-5.2',
-      'name': 'glm-5-2',
-      'vendor': 'zAI',
-      'sources': [
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'deepswe_v11': 44,
-        'deepswe_v10': 42,
-        'vibecode': 63.96
-      },
-      'mean': 50,
-      'stddev': 9.91,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Claude Opus 4.8',
-      'name': 'Claude Opus 4.8',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 59,
-        'deepswe_v11': 59,
-        'deepswe_v10': 58,
-        'vibecode': 80.11
-      },
-      'mean': 64,
-      'stddev': 9.29,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'GLM-5.3',
-      'name': 'glm-5.3',
-      'vendor': 'zAI',
-      'sources': [
-        'ai_capability',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'ai_capability': 89.93,
-        'datalearner': 66.9,
-        'deepswe_v11': 69,
-        'vibecode': 78.13
-      },
-      'mean': 76,
-      'stddev': 9.09,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Gemini 3.5 Flash',
       'name': 'gemini-3-5-flash',
       'vendor': 'Google',
@@ -611,26 +758,6 @@ window.QUALITY = {
       },
       'mean': 62.5,
       'stddev': 8.5,
-      'flag': 'warn'
-    },
-    {
-      'canonId': 'Claude Opus 5',
-      'name': 'claude-opus-5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'ai_capability',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'ai_capability': 92.5,
-        'datalearner': 74,
-        'deepswe_v11': 74,
-        'vibecode': 88.4
-      },
-      'mean': 82.2,
-      'stddev': 8.35,
       'flag': 'warn'
     },
     {
@@ -740,24 +867,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Grok 4.5',
-      'name': 'Grok 4.5',
-      'vendor': 'xAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 53,
-        'deepswe_v11': 54,
-        'vibecode': 69
-      },
-      'mean': 58.7,
-      'stddev': 7.32,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Kimi-K2.6',
       'name': 'kimi-k2-6',
       'vendor': 'Moonshot',
@@ -790,26 +899,6 @@ window.QUALITY = {
       'flag': 'warn'
     },
     {
-      'canonId': 'Grok 4.6',
-      'name': 'grok-4.6',
-      'vendor': 'xAI',
-      'sources': [
-        'ai_capability',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'ai_capability': 82.1,
-        'datalearner': 65.9,
-        'deepswe_v11': 67,
-        'vibecode': 76.24
-      },
-      'mean': 72.8,
-      'stddev': 6.7,
-      'flag': 'warn'
-    },
-    {
       'canonId': 'Claude Haiku 4.5',
       'name': 'claude-haiku-4-5',
       'vendor': 'Anthropic',
@@ -824,26 +913,6 @@ window.QUALITY = {
       'mean': 5.7,
       'stddev': 5.7,
       'flag': 'warn'
-    },
-    {
-      'canonId': 'GPT-5.6 Sol',
-      'name': 'gpt-5.6-sol-0829',
-      'vendor': 'OpenAI',
-      'sources': [
-        'ai_capability',
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'ai_capability': 84.45,
-        'datalearner': 72.85,
-        'deepswe_v11': 73,
-        'vibecode': 80.5
-      },
-      'mean': 77.7,
-      'stddev': 4.98,
-      'flag': 'ok'
     },
     {
       'canonId': 'DeepSeek-V4.1-Flash',
@@ -861,24 +930,6 @@ window.QUALITY = {
       },
       'mean': 77.7,
       'stddev': 4.97,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'GPT-5.6 Luna',
-      'name': 'GPT-5.6 Luna',
-      'vendor': 'OpenAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 67.2,
-        'deepswe_v11': 67,
-        'vibecode': 77.06
-      },
-      'mean': 70.4,
-      'stddev': 4.7,
       'flag': 'ok'
     },
     {
@@ -955,24 +1006,6 @@ window.QUALITY = {
       },
       'mean': 54.5,
       'stddev': 2.58,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'GPT-5.6 Terra',
-      'name': 'GPT-5.6 Terra',
-      'vendor': 'OpenAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'vibecode'
-      ],
-      'scores': {
-        'datalearner': 69.6,
-        'deepswe_v11': 70,
-        'vibecode': 74.59
-      },
-      'mean': 71.4,
-      'stddev': 2.26,
       'flag': 'ok'
     },
     {
@@ -1123,9 +1156,9 @@ window.QUALITY = {
     },
     'nl2repo': {
       'rate': 1,
-      'total': 23,
-      'complete': 23,
-      'modelCount': 23,
+      'total': 32,
+      'complete': 32,
+      'modelCount': 32,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1139,9 +1172,9 @@ window.QUALITY = {
     },
     'programbench': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 52,
+      'complete': 52,
+      'modelCount': 52,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1150,6 +1183,14 @@ window.QUALITY = {
       'total': 18,
       'complete': 18,
       'modelCount': 18,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'tbench_v3': {
+      'rate': 1,
+      'total': 12,
+      'complete': 12,
+      'modelCount': 12,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1246,6 +1287,11 @@ window.QUALITY = {
       'ageDays': 0,
       'flag': 'ok'
     },
+    'tbench_v3': {
+      'updated': '2026-09-12',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
     'tbscience': {
       'updated': '2026-09-12',
       'ageDays': 0,
@@ -1267,14 +1313,80 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
+      'sourceId': 'datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'GPT-5.6 Luna 跨源分数标准差 24.64(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
       'sourceId': 'datalearner,deepswe_v11,deepswe_v10,vibecode',
       'message': 'DeepSeek-V4-Pro 跨源分数标准差 24.24(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
+      'sourceId': 'datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'Claude Sonnet 5 跨源分数标准差 23.78(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'GPT-5.6 Terra 跨源分数标准差 22(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'claude-fable-5 跨源分数标准差 21.77(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'deepswe_v11,deepswe_v10,tbench_v3,vibecode',
+      'message': 'glm-5-2 跨源分数标准差 21.45(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'Grok 4.5 跨源分数标准差 19.65(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'grok-4.6 跨源分数标准差 19.47(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'glm-5.3 跨源分数标准差 19.24(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,deepswe_v11,deepswe_v10,tbench_v3,vibecode',
+      'message': 'Claude Opus 4.8 跨源分数标准差 19.08(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
       'sourceId': 'ai_capability,datalearner,deepswe_v11,vibecode',
       'message': 'glm-5.3-flash 跨源分数标准差 18.85(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'gpt-5.6-sol-0829 跨源分数标准差 17.81(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,datalearner,deepswe_v11,tbench_v3,vibecode',
+      'message': 'claude-opus-5 跨源分数标准差 17.49(>10)'
     },
     {
       'level': 'error',
@@ -1303,20 +1415,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'datalearner,deepswe_v11,vibecode',
-      'message': 'Claude Sonnet 5 跨源分数标准差 12.88(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
       'sourceId': 'deepswe_v10,vibecode',
       'message': 'gpt-5-4-mini 跨源分数标准差 11.99(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'ai_capability,datalearner,deepswe_v11,vibecode',
-      'message': 'claude-fable-5 跨源分数标准差 11.84(>10)'
     },
     {
       'level': 'error',
