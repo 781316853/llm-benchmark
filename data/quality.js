@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-09-13',
-  'overallScore': 0.938,
+  'overallScore': 0.935,
   'sources': [
     {
       'id': 'ai_capability',
@@ -143,17 +143,6 @@ window.QUALITY = {
       'name': 'OSWorld 2.0',
       'status': 'ok',
       'modelCount': 22,
-      'updated': '2026-09-13',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
-      'id': 'programbench',
-      'name': 'ProgramBench',
-      'status': 'ok',
-      'modelCount': 52,
       'updated': '2026-09-13',
       'ageDays': 0,
       'completeness': 1,
@@ -1161,14 +1150,6 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
-    'programbench': {
-      'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
-      'missingFields': {},
-      'flag': 'ok'
-    },
     'tbench': {
       'rate': 1,
       'total': 21,
@@ -1272,11 +1253,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'osworld': {
-      'updated': '2026-09-13',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
-    'programbench': {
       'updated': '2026-09-13',
       'ageDays': 0,
       'flag': 'ok'

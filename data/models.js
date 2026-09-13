@@ -113,7 +113,7 @@ window.MODEL_MAP = {
     { id: "Moonshot v1-128k", vendor: "Moonshot",  color: "#A08FFF", aliases: ["Moonshot v1-128k", "moonshot-v1-128k"] },
     { id: "Moonshot v1-8k",   vendor: "Moonshot",  color: "#B0A0FF", aliases: ["Moonshot v1-8k", "moonshot-v1-8k"] },
     { id: "Qwen3-VL-2B",      vendor: "Qwen",      color: "#FF8A3D", aliases: ["Qwen3-VL-2B", "Qwen3-VL-2B (baseline)", "qwen3-vl-2b"] },
-    // ===== NL2Repo / ProgramBench / AI 能力 榜上此前未登记(被自动建档为「其他」厂商)的模型(2026-09) =====
+    // ===== NL2Repo / AI 能力 榜上此前未登记(被自动建档为「其他」厂商)的模型(2026-09) =====
     { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910"] },
     { id: "DeepSeek V4 Flash Vision Exp", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek-V4-Flash-Vision-Exp", "DeepSeek V4 Flash Vision Exp", "deepseek-v4-flash-vision-exp"] },
     { id: "Gemini 3.1 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite", "Gemini 3.1 Flash Lite Preview", "gemini-3.1-flash-lite-preview"] },

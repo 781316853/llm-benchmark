@@ -51,7 +51,7 @@
   // 只在结尾且前方有分隔符时剥离 —— 早期实现用全局子串替换
   // (/(high|max|medium|xhigh|low|think)/gi),会把 "Qwen3.8-Max-0902" 里属于模型名的
   // Max 一并吃掉,并把 "minimax-m3-thinking" 削成 "minimax-m3-ing",
-  // 导致同一模型被拆成两条、ProgramBench/NL2Repo 的数据落不到正确模型上。
+  // 导致同一模型被拆成两条、NL2Repo 的数据落不到正确模型上。
   // 末尾 \s* 用于吸收「去括号注解后残留的尾随空格」(如 "gpt-5.4-medium (codex-harness)"),
   // 否则 $ 锚点会失效、effort 标记剥不掉。
   function stripTailEffort(s) {
@@ -325,7 +325,7 @@
     return out;
   }
 
-  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench =====
+  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):GPQA Diamond / HLE / NL2Repo-Bench =====
   function gpqa() {
     var src = window.GPQA || { models: [] };
     return src.models.slice().sort(function (a, b) { return b.score - a.score; })
@@ -341,21 +341,16 @@
     return src.models.slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
-  function programbench() {
-    var src = window.PROGRAMBENCH || { models: [] };
-    return src.models.slice().sort(function (a, b) { return (b.score - a.score) || (b.almost - a.almost); })
-      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
-  }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, nl2repo, programbench} 用于矩阵/雷达 =====
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, nl2repo} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
-  // tbench:同名取最高(计入综合分与命中数);nl2repo/programbench:同名取最高(2026-09 起计入综合分与命中数);
+  // tbench:同名取最高(计入综合分与命中数);nl2repo:同名取最高(2026-09 起计入综合分与命中数);
   // benchcad 等其余权威基准仅展示不进统一视图;
   // aicap:前端/后端方向分分别取最高(0-100,直接作 norm);跨榜命中合并为「AI 能力」单一基准计数
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, nl2repo: null, programbench: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, nl2repo: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -414,18 +409,8 @@
       if (!e.nl2repo || m.score > e.nl2repo.score)
         e.nl2repo = { score: m.score, norm: Math.round((m.score - n2Min) / n2Span * 1000) / 10, name: m.model, org: m.org };
     });
-    // ProgramBench:主指标 Fully Resolved%(官方与 vals 镜像统一口径),快照内归一化;Almost/Raw Pass Rate 辅助
-    var pbAll = programbench();
-    var pbMin = Infinity, pbMax = -Infinity;
-    pbAll.forEach(function (m) { if (m.score < pbMin) pbMin = m.score; if (m.score > pbMax) pbMax = m.score; });
-    var pbSpan = (pbMax - pbMin) || 1;
-    pbAll.forEach(function (m) {
-      var e = ensure(m.canon);
-      if (!e.programbench || m.score > e.programbench.score)
-        e.programbench = { score: m.score, norm: Math.round((m.score - pbMin) / pbSpan * 1000) / 10, name: m.model, almost: m.almost, rawPassRate: m.rawPassRate };
-    });
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / NL2Repo / ProgramBench 共 6 基准组;
-    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 7),矩阵中仍分别两列展示;
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / NL2Repo 共 5 基准组;
+    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 6),矩阵中仍分别两列展示;
     // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
@@ -435,19 +420,17 @@
       if (e.tbench) e.benchCount++;
       if (e.aicapFe || e.aicapBe) e.benchCount++;
       if (e.nl2repo) e.benchCount++;
-      if (e.programbench) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / NL2Repo / ProgramBench 共 7 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / NL2Repo 共 6 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, n2 = window.NL2REPO || {}, pb = window.PROGRAMBENCH || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, n2 = window.NL2REPO || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
     var n2Top = (n2.models || [])[0] || {};
-    var pbTop = (pb.models || [])[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
@@ -477,14 +460,11 @@
         top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") },
       { key: "nl2repo", name: "NL2Repo-Bench", tag: "长程仓库生成", url: n2.officialUrl || n2.url, updated: n2.updated,
         stats: [{ l: "任务", v: n2.stats && n2.stats.tasks }, { l: "模型", v: (n2.models || []).length }],
-        top: n2Top.model + " · " + (n2Top.score != null ? n2Top.score + "%" : "—") },
-      { key: "programbench", name: "ProgramBench", tag: "cleanroom 程序重建", url: pb.officialUrl || pb.url, updated: pb.updated,
-        stats: [{ l: "任务", v: pb.stats && pb.stats.tasks }, { l: "模型", v: (pb.models || []).length }],
-        top: pbTop.model + " · " + (pbTop.score != null ? pbTop.score + "%" : "—") }
+        top: n2Top.model + " · " + (n2Top.score != null ? n2Top.score + "%" : "—") }
     ];
   }
 
-  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-8);用于"仅跨榜模型"过滤
+  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-6);用于"仅跨榜模型"过滤
   function hitCount(canonId, llmMonthKey) {
     var u = unified(llmMonthKey);
     var e = u[canonId];
@@ -542,7 +522,6 @@
     gpqa: gpqa,
     hle: hle,
     nl2repo: nl2repo,
-    programbench: programbench,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
     unified: unified,
@@ -555,6 +534,6 @@
     // 各源原始对象(供渲染脚注)
     src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
       tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
-      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH }
+      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO }
   };
 })();

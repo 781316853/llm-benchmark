@@ -77,8 +77,8 @@ module.exports = {
       boardUrl: "https://atmeplz.github.io/ai-test-prompt/board-04.html",
       host: "atmeplz.github.io"
     },
-    // ===== 权威基准测试(「权威基准测试」标签页,6 源)=====
-    // 仅 Terminal-Bench 4.0 计入总览/综合分/命中数,其余 5 源仅在权威页展示。
+    // ===== 权威基准测试(「权威基准测试」标签页)=====
+    // Terminal-Bench(4.0/3.0/2.1)与 NL2Repo 计入总览/综合分/命中数,其余仅在权威页展示。
     tbench: {
       // Terminal-Bench 4.0(斯坦福/Laude):终端命令行 Agent 评测,66 任务。
       // 服务端渲染 HTML 表格(rank/model+effort/agent/解决率±CI/日期/tokens/成本)。
@@ -164,19 +164,6 @@ module.exports = {
       url: "https://www.benchlm.ai/benchmarks/nl2repo",
       host: "www.benchlm.ai"
     },
-    programbench: {
-      // ProgramBench(cleanroom 程序重建·编码 Agent,200 任务):官方 programbench.com 服务端渲染
-      // HTML 表格(rank/model(+effort)/agent/Resolved%/Almost%);vals.ai 为补充镜像源
-      // (45 模型,含 Raw Pass Rate / Almost / Fully 三指标),由 scripts/sources/programbench.js 双源合并取最高。
-      url: "https://programbench.com/",
-      host: "programbench.com",
-      officialUrl: "https://programbench.com/"
-    },
-    programbench_vals: {
-      // ProgramBench 补充源:vals.ai 官方镜像(2026-09-04 快照,45 模型,客户端渲染,需解析 RSC payload)。
-      url: "https://www.vals.ai/benchmarks/programbench",
-      host: "www.vals.ai"
-    },
     tbench_v3: {
       // Terminal-Bench 3.0(斯坦福/Laude,74 任务):线上 tbench.ai 3.0 路由已并入 4.0,
       // 以 snorkel.ai 全量 12 条 agent×model 榜单为主(服务端渲染 HTML 表格)。
@@ -213,13 +200,13 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 11 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
+      // 权威基准 10 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo)同样排除:
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
       //   gpqa/hle 为知识类口径,仅权威页展示;
-      //   nl2repo/programbench 虽已计入综合分与命中数(2026-09 起),但独立量纲且整体偏低(0-64 / 0-7),
+      //   nl2repo 虽已计入综合分与命中数(2026-09 起),但独立量纲且整体偏低(0-75),
       //     与主基准混算仍会产生假告警,故保持排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench"]
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo"]
     },
     completeness: {
       // 每条记录必填字段

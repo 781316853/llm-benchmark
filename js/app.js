@@ -37,8 +37,7 @@
     webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力,计入综合分权重 16%",
     aicap: "atmeplz 四方向榜:前端(中式建筑/体素山水/前端网页/黑洞模拟)与后端(超级 MES)方向分,各占综合分权重 12%",
     tbench: "斯坦福/Laude 终端命令行 Agent 评测,在真实 Shell 环境中解决编译/配置/运维等长程任务,三版合并计入综合分权重 12%",
-    nl2repo: "字节 Seed/M-A-P 长程仓库生成基准,给定需求文档从零生成可安装 Python 库,按 test-pass-rate 计分,计入综合分权重 9%",
-    programbench: "cleanroom 程序重建:仅给二进制与文档,从零重建完整代码库,以 Fully Resolved 计分(Almost/Raw Pass Rate 辅助),计入综合分权重 9%"
+    nl2repo: "字节 Seed/M-A-P 长程仓库生成基准,给定需求文档从零生成可安装 Python 库,按 test-pass-rate 计分,计入综合分权重 9%"
   };
 
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
@@ -99,12 +98,9 @@
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "基准",
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
-    // NL2Repo-Bench 单值列:test-pass-rate(%);双源(llm-stats + benchlm)合并取最高;计入综合分与命中数
+    // NL2Repo-Bench 单值列:test-pass-rate(%);多源(llm-stats + benchlm + 论文 + datalearner)合并取最高;计入综合分与命中数
     { key: "nl2repo", label: "NL2Repo (Score%)", type: "num", bench: true, grp: "基准",
       val: function (r) { return r.nl2repo ? r.nl2repo.score : null; } },
-    // ProgramBench 单值列:Fully Resolved(%);官方 + vals 镜像双源合并取最高;计入综合分与命中数;Almost/Raw Pass Rate 悬浮提示
-    { key: "programbench", label: "ProgramBench (Resolved%)", type: "num", bench: true, grp: "基准",
-      val: function (r) { return r.programbench ? r.programbench.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "实测", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
     { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true, grp: "实测",
@@ -277,14 +273,6 @@
       var n2Html = r.nl2repo
         ? '<span' + n2Title + '>' + r.nl2repo.score + '%</span>'
         : "—";
-      // ProgramBench 单元格:Fully Resolved%,悬浮显示 Almost / Raw Pass Rate 辅助指标
-      var pbMeta = [];
-      if (r.programbench && r.programbench.almost != null) pbMeta.push("Almost " + r.programbench.almost + "%");
-      if (r.programbench && r.programbench.rawPassRate != null) pbMeta.push("Raw " + r.programbench.rawPassRate + "%");
-      var pbTitle = pbMeta.length ? ' title="' + esc(pbMeta.join(" · ")) + '"' : "";
-      var pbHtml = r.programbench
-        ? '<span' + pbTitle + '>' + r.programbench.score + '%</span>'
-        : "—";
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
@@ -315,16 +303,15 @@
         '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
         '<td class="num">' + tbHtml + '</td>' +
         '<td class="num">' + n2Html + '</td>' +
-        '<td class="num">' + pbHtml + '</td>' +
         '<td class="num">' + lm + '</td>' +
         '<td class="num">' + aicapCell(r) + '</td>' +
-        '<td class="num">' + r.benchCount + '/7</td></tr>';
+        '<td class="num">' + r.benchCount + '/6</td></tr>';
     });
     // 两级表头:第 1 行为分组行(「榜单基准」「实测」colspan 合并)与非评测列的 rowspan 纵跨格;
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     var GROUP_TITLES = {
-      "基准": "榜单基准:第三方公开基准榜单(DeepSWE / WebDev / Terminal-Bench 4.0/3.0/2.1 / NL2Repo / ProgramBench)",
+      "基准": "榜单基准:第三方公开基准榜单(DeepSWE / WebDev / Terminal-Bench 4.0/3.0/2.1 / NL2Repo)",
       "实测": "实测:站主实测口径(llm2014 私有题库 / AI 能力专项测试)"
     };
     function thAttr(c, extra) {
@@ -374,8 +361,8 @@
       var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
       note += ' · 当前高亮 ' + domCnt + ' 个国产模型。';
     }
-    // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入综合分与命中数;NL2Repo / ProgramBench 亦计入(2026-09 起);其余权威基准仅展示
-    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 12%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;NL2Repo-Bench(权重 9%)与 ProgramBench(权重 9%,Fully Resolved 口径)为多源合并快照,亦计入综合分与命中数;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE 仅在「权威基准测试」页展示。';
+    // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入综合分与命中数;NL2Repo 亦计入(2026-09 起);其余权威基准仅展示
+    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 12%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;NL2Repo-Bench(权重 9%)为多源合并快照,亦计入综合分与命中数;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE 仅在「权威基准测试」页展示。';
     document.getElementById("overviewNote").textContent = note;
   }
 
@@ -556,9 +543,9 @@
       '<div class="note-line"><b>说明</b>已计入综合分(前端/后端各 10%)并进入总览交叉矩阵(合并单列、前后端方向分并列展示);方向分 0-100,越高越好。</div>';
   }
 
-  // ===== 6) 权威基准测试(10 大权威基准) =====
-  // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入总览/综合分/命中数;NL2Repo / ProgramBench(双源合并)亦计入;
-  // 其余 7 源(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE)仅本页展示
+  // ===== 6) 权威基准测试(权威基准) =====
+  // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入总览/综合分/命中数;NL2Repo(多源合并)亦计入;
+  // 其余源(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE)仅本页展示
   // ----- 大纲预览相关状态 -----
   var authSecSeq = 0;        // 章节锚点序号:每次重渲染自 0 起,保证 id 稳定可复用
   var authNavItems = [];     // 当前大纲对应的章节元素(与大纲项同序一一对应)
@@ -806,21 +793,7 @@
     html += authSectionHtml("NL2Repo-Bench", "长程仓库生成 · 计入综合分", n2.officialUrl || n2.url,
       '<div class="table-wrap"><table id="authNl2repoTable" class="data-table"></table></div>',
       '来源:' + esc(n2.url || "") + '(官方:' + esc(n2.officialUrl || "") + ') · 补充镜像 benchlm.ai · 更新 ' + esc(n2.updated || "") +
-      ' · 给定单一 NL 需求文档从零生成可安装 Python 库(约 103 个任务),test-pass-rate 越高越好;双源(llm-stats + benchlm)合并去重取最高,已计入总览综合分(权重 9%)与命中数。');
-    // 10) ProgramBench(官方 + vals 镜像合并,主指标 Fully Resolved,Almost/Raw Pass Rate 辅助)
-    var pb = S.programbench || {};
-    var pbMs = D.programbench();
-    var pbRows = pbMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
-        (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
-        '<td>' + esc(m.agent || "—") + '</td><td class="num">' + m.score + '%</td>' +
-        '<td class="num">' + (m.almost != null ? m.almost + '%' : "—") + '</td>' +
-        '<td class="num">' + (m.rawPassRate != null ? m.rawPassRate + '%' : "—") + '</td></tr>';
-    });
-    html += authSectionHtml("ProgramBench", "cleanroom 程序重建 · 计入综合分", pb.officialUrl || pb.url,
-      '<div class="table-wrap"><table id="authProgrambenchTable" class="data-table"></table></div>',
-      '来源:' + esc(pb.url || "") + '(官方:' + esc(pb.officialUrl || "") + ') · 补充镜像 https://www.vals.ai/benchmarks/programbench · 更新 ' + esc(pb.updated || "") +
-      ' · 200 个从零重建任务(仅给编译后二进制与文档,行为级隐藏测试,不联网/禁反编译);Fully Resolved 为主指标、Almost(≥95% 行为测试通过)与 Raw Pass Rate(vals 镜像独有)为辅助,均越高越好;官方与 vals.ai 镜像(45 模型)双源合并取最高,已计入总览综合分(权重 9%)与命中数。');
+      ' · 给定单一 NL 需求文档从零生成可安装 Python 库(约 103 个任务),test-pass-rate 越高越好;多源(llm-stats + benchlm + 官方论文评测表 + datalearner 厂商发布)合并去重取最高,已计入总览综合分(权重 9%)与命中数。');
     // 渲染 + 图表 + 表格
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
@@ -840,7 +813,6 @@
     fillTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
     fillTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
     fillTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
-    fillTable("authProgrambenchTable", ["#", "模型", "Agent", "Resolved", "Almost", "Raw Pass Rate"], pbRows, ["", "", "", "num", "num", "num"]);
     // TB 柱状图(升序使最高在上)
     // 延后到首帧之后再初始化:ECharts 首次 init 约 100ms,留在同步渲染里会让首次进入明显卡顿;
     // 容器高度已在上方同步设定,故延后不影响大纲/表格的布局测量结果。
@@ -859,7 +831,7 @@
       }); });
     }
     document.getElementById("authDesc").textContent =
-      "以下为第三方权威基准测试快照,仅作参考展示;其中 Terminal-Bench(4.0/3.0/2.1)合并为一个基准组、NL2Repo-Bench 与 ProgramBench(均为多源合并快照)分别计入总览综合分与命中数(优先以最高版本为代表,其中 TB 2.1 为归一化自报分),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
+      "以下为第三方权威基准测试快照,仅作参考展示;其中 Terminal-Bench(4.0/3.0/2.1)合并为一个基准组、NL2Repo-Bench(多源合并快照)计入总览综合分与命中数(优先以最高版本为代表,其中 TB 2.1 为归一化自报分),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
 
@@ -1019,7 +991,7 @@
     });
     // 刷新时间节点:refreshedAt 为定长 "YYYY-MM-DD HH:mm",字典序即时间序,取各源最新;旧数据缺字段时不显示
     var refreshedAt = [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
-      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo, D.src.programbench]
+      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
     document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)

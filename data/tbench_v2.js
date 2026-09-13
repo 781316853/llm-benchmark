@@ -11,7 +11,7 @@ window.TBENCH_V21 = {
   'officialUrl': 'https://www.tbench.ai/news/terminal-bench-2-1',
   'version': '2.1',
   'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 13:10',
+  'refreshedAt': '2026-09-13 13:59',
   'stats': {
     'tasks': 89,
     'entries': 43
