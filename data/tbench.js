@@ -1,17 +1,18 @@
 // 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-13)
-// 来源:https://www.tbench.ai/leaderboard/terminal-bench/4.0
+// 来源:https://www.tbench.ai/leaderboard/terminal-bench/4.0 · 补充镜像 https://www.datalearner.com/benchmarks/terminal-bench-4-0(只补缺,官方口径优先)
 // 字段说明:model=模型名;effort=推理强度(max/high 等);agent=Agent 框架(Codex/Claude Code 等);
-//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($)
+//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);
+//          source=datalearner 表示为补充镜像条目(官方榜未收录,无 agent/ci/cost)
 // 用途:计入总览页综合分(权重 10%)与命中数;「权威基准测试」页完整展示 agent×model 条目。
 window.TBENCH = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'version': '4.0',
   'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 13:43',
+  'refreshedAt': '2026-09-13 12:27',
   'stats': {
     'tasks': 66,
-    'entries': 18
+    'entries': 21
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -212,6 +213,42 @@ window.TBENCH = {
       'date': 'Aug 13, 2026',
       'tokens': '11.1B',
       'cost': '$1.3k'
+    },
+    {
+      'rank': null,
+      'model': 'DeepSeek-V4.1-Flash',
+      'agent': null,
+      'effort': '最高（工具）',
+      'score': 31.2,
+      'ci': null,
+      'date': '2026-09-10',
+      'tokens': null,
+      'cost': null,
+      'source': 'datalearner'
+    },
+    {
+      'rank': null,
+      'model': 'Kimi K3',
+      'agent': null,
+      'effort': '最高（工具）',
+      'score': 12.6,
+      'ci': null,
+      'date': '2026-07-16',
+      'tokens': null,
+      'cost': null,
+      'source': 'datalearner'
+    },
+    {
+      'rank': null,
+      'model': 'DeepSeek-V4-Flash',
+      'agent': null,
+      'effort': '最高（工具）',
+      'score': 7,
+      'ci': null,
+      'date': '2026-04-24',
+      'tokens': null,
+      'cost': null,
+      'source': 'datalearner'
     }
   ]
 };

@@ -2,6 +2,8 @@
 // 迁移自原 fetch_all.js 的 fetchDataLearner。
 // 用途:作为 DeepSWE v1.1 的补充数据源,合并主源未收录的模型;
 //       同时作为独立注册源,产出 data/datalearner.js(window.DATALEARNER)供溯源。
+// 另提供 parseDataLearnerBench:基准详情页(如 terminal-bench-2-1)结构化数据解析,
+//       供 tbench(TB 4.0 补充)与 tbench_v21(TB 2.1 双源)复用。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
 const registry = require("../lib/registry");
@@ -32,6 +34,62 @@ function parseDataLearner(html) {
     });
   });
   if (!models.length) throw new Error("datalearner 未解析到任何模型");
+  return models;
+}
+
+// 解码 Next.js RSC 流字符串转义(与 tbench.js 同规则):\" -> "、\\ -> \、\n/\r/\t、\uXXXX
+function unescapeStream(s) {
+  var out = "", i = 0;
+  while (i < s.length) {
+    var c = s[i];
+    if (c !== "\\") { out += c; i++; continue; }
+    var n = s[i + 1];
+    if (n === '"') { out += '"'; i += 2; }
+    else if (n === "\\") { out += "\\"; i += 2; }
+    else if (n === "n") { out += "\n"; i += 2; }
+    else if (n === "r" || n === "t") { i += 2; }
+    else if (n === "u") { out += String.fromCharCode(parseInt(s.substr(i + 2, 4), 16)); i += 6; }
+    else { out += n; i += 2; }
+  }
+  return out;
+}
+
+// 基准详情页解析器(通用):
+// 页面数据以内嵌 JSON 藏于 Next.js RSC 流(\"results\":[...]),每条含
+//   modelCode/modelAbbrName/evalResult/modelMode/publishTime/parameterSize(亿)/orgName/commercialUsage。
+// 输出:[{name, mode, score, date, params, org, license}]
+function parseDataLearnerBench(html) {
+  var marker = '\\"results\\":[';
+  var idx = html.indexOf(marker);
+  if (idx < 0) throw new Error("datalearner 详情页未找到 results 数组(站点结构变更)");
+  var i = idx + marker.length;
+  var depth = 1, start = i;
+  while (i < html.length && depth > 0) {
+    var c = html[i];
+    if (c === "\\") { i += 2; continue; }   // 转义序列(如 \")跳过
+    if (c === "[" || c === "{") depth++;
+    else if (c === "]" || c === "}") depth--;
+    i++;
+  }
+  if (depth !== 0) throw new Error("datalearner results 数组未闭合");
+  var rows;
+  try { rows = JSON.parse(unescapeStream("[" + html.slice(start, i - 1) + "]")); }
+  catch (e) { throw new Error("datalearner results JSON 解析失败: " + e.message); }
+  if (!Array.isArray(rows) || !rows.length) throw new Error("datalearner results 数组为空");
+  var models = [];
+  rows.forEach(function (r) {
+    if (!r || !r.modelAbbrName || r.evalResult == null) return;
+    models.push({
+      name: String(r.modelAbbrName).trim(),
+      score: Math.round(parseFloat(r.evalResult) * 100) / 100,
+      mode: r.modelMode ? String(r.modelMode).trim() : "",
+      date: r.publishTime || null,
+      params: r.parameterSize != null ? String(r.parameterSize) : null,
+      org: r.orgName || null,
+      license: r.commercialUsage || null
+    });
+  });
+  if (!models.length) throw new Error("datalearner 详情页未解析到任何模型条目");
   return models;
 }
 
@@ -79,5 +137,6 @@ class DataLearnerSource extends BaseSource {
 
 module.exports = {
   DataLearnerSource: registry.register(DataLearnerSource),
-  parseDataLearner: parseDataLearner
+  parseDataLearner: parseDataLearner,
+  parseDataLearnerBench: parseDataLearnerBench
 };

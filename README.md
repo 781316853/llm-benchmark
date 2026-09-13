@@ -42,7 +42,7 @@ js/charts.js            ECharts 封装
 js/compare.js           跨基准矩阵/雷达/指标卡
 js/app.js               标签路由与渲染(含"仅跨榜"过滤)
 data/                   多源数据快照(deepswe/vibecode/llm2014/arena_webdev/models/aicap/
-                         tbench/tbench_v3/tbench_v2/tbscience/osworld/lastexam/arcagi3/benchcad/
+                         tbench/tbench_v3/tbench_v2(实时双源)/tbscience/osworld/lastexam/arcagi3/benchcad/
                          gpqa/hle/nl2repo/programbench/news/codingplan)
 scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用)
 .github/workflows/refresh.yml  每日定时刷新数据并提交
@@ -57,9 +57,9 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 - **DeepSWE**:解析 datacurve.ai 内嵌 run 对象,按"每模型最高 Pass\@1"选榜。
 - **Code Arena · WebDev**:抓取权威镜像 m.aitntnews.com/arena/code/(官方 arena.ai 有 Cloudflare 防护,其 ld+json 声明 creator=LM Arena、isBasedOn=arena.ai/leaderboard/code),解析 `<tr>` 行的 Elo/CI/投票。
 - **AI 能力专项测试**:抓取 atmeplz 静态站渲染用 JSON(`data/site.json`),提取「前端处理能力」与「后端处理能力」两个方向的方向分(0-100),写入 `data/aicap.js`;计入综合分(前端/后端各 10%)并进入总览矩阵(单列并列展示),总览另设 AI 能力卡片。
-- **Terminal-Bench 4.0**:解析 tbench.ai 服务端渲染 HTML 表格(agent×model 组合条目,66 任务);计入综合分(权重 10%)与命中数。
+- **Terminal-Bench 4.0**:解析 tbench.ai 服务端渲染 HTML 表格(agent×model 组合条目,66 任务),并以 datalearner 详情页(内嵌 results JSON)为补充源——只补缺、不覆盖官方条目(官方口径优先,当前补充 DeepSeek-V4.1-Flash / Kimi K3 / DeepSeek-V4-Flash);计入综合分(权重 10%)与命中数。
 - **Terminal-Bench 3.0**:线上 tbench.ai 的 3.0 路由已并入 4.0,改为每日抓取 snorkel.ai 全量 12 条 agent×model 榜单(74 任务);与 4.0 合并为一个基准组计入综合分与命中数(优先级 4.0>3.0>2.1)。
-- **Terminal-Bench 2.1**:llm-stats 静态快照(33 模型级条目,0-1 归一化自报分换算为%),与 4.0/3.0 合并为一个基准组;不随 `fetch_all.js` 每日重写。
+- **Terminal-Bench 2.1**:llm-stats 聚合表(0-1 归一化自报分换算为%)+ datalearner 详情页(模式/发布时间/参数量)双源合并取最高(~43 模型级条目),与 4.0/3.0 合并为一个基准组;随 `fetch_all.js` 每日重写。注:datalearner 的 NL2Repo 数据与现有 llm-stats 条目重复、ProgramBench 厂商自报口径(如 Kimi K3 77.8)已被官方 harness 榜覆盖,故两者均不引入该源。
 - **NL2Repo-Bench**:主源 llm-stats.com 聚合表 + 补充源 benchlm.ai 镜像(SSG 卡片式 HTML,收录 Ornith 系列 / Claude Opus 4.5 等)双源合并去重取最高(103 任务);计入综合分(权重 8%)与命中数。
 - **ProgramBench**:主源 programbench.com 官方表格(Resolved/Almost) + 补充源 vals.ai 镜像(Astro props 内嵌 45 模型 Fully Resolved%,Results summary 表含前 5 名 Almost/Raw Pass Rate)双源合并取最高;计入综合分(权重 8%)与命中数。
 - **权威基准测试(展示型)**:Terminal-Bench-Science 0.1(harbor 榜单 HTML)、OSWorld 2.0(steel.dev 镜像,部分得分)、Agents' Last Exam(官方榜单 HTML,Pass Rate)、ARC-AGI-3(llm-stats 聚合表,RHAE)、BenchCAD(GitHub leaderboard.json,主指标 Vision2Code total)、GPQA Diamond / HLE(llm-stats 聚合表);均仅展示,不计入综合分。

@@ -171,6 +171,24 @@ module.exports = {
       url: "https://snorkel.ai/leaderboard/terminal-bench-3-0/",
       host: "snorkel.ai",
       version: "3.0"
+    },
+    tbench_v21: {
+      // Terminal-Bench 2.1(斯坦福/Laude,89 任务):主源为 llm-stats 聚合表(0-1 自报分,服务端渲染);
+      // 补充源为 datalearner 详情页(内嵌 results JSON,含模式/发布时间/参数量),
+      // 由 scripts/sources/tbench_v21.js 双源合并取最高。
+      url: "https://llm-stats.com/benchmarks/terminal-bench-2.1",
+      host: "llm-stats.com",
+      officialUrl: "https://www.tbench.ai/news/terminal-bench-2-1"
+    },
+    datalearner_tbench40: {
+      // datalearner TB 4.0 详情页:作为 tbench.ai 官方榜的补充源,只补缺、不覆盖官方条目。
+      url: "https://www.datalearner.com/benchmarks/terminal-bench-4-0",
+      host: "www.datalearner.com"
+    },
+    datalearner_tbench21: {
+      // datalearner TB 2.1 详情页:作为 tbench_v21 源的补充(与 llm-stats 合并取最高)。
+      url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1",
+      host: "www.datalearner.com"
     }
   },
 
@@ -183,13 +201,13 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 10 源(tbench/tbench_v3/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
-      //   tbench/tbench_v3/tbscience 解决率整体偏低(顶级 ~58%/42%/30%),与 DeepSWE/Vibe 混算产生假告警;
+      // 权威基准 11 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
+      //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
       //   gpqa/hle 为知识类口径,仅权威页展示;
       //   nl2repo/programbench 虽已计入综合分与命中数(2026-09 起),但独立量纲且整体偏低(0-64 / 0-7),
       //     与主基准混算仍会产生假告警,故保持排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench"]
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench"]
     },
     completeness: {
       // 每条记录必填字段

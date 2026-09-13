@@ -18,9 +18,9 @@
   <script defer src="data/arena_webdev.js?v=20260824a"></script>
   <script defer src="data/aicap.js?v=20260904a"></script>
   <!-- 权威基准测试(10 源;其中 Terminal-Bench 4.0/3.0/2.1 多版本合并、NL2Repo / ProgramBench 双源合并,均计入总览) -->
-  <script defer src="data/tbench.js?v=20260912a"></script>
+  <script defer src="data/tbench.js?v=20260913a"></script>
   <script defer src="data/tbench_v3.js?v=20260912b"></script>
-  <script defer src="data/tbench_v2.js?v=20260912a"></script>
+  <script defer src="data/tbench_v2.js?v=20260913a"></script>
   <script defer src="data/tbscience.js?v=20260912a"></script>
   <script defer src="data/osworld.js?v=20260912a"></script>
   <script defer src="data/lastexam.js?v=20260912a"></script>
@@ -102,7 +102,7 @@
           <li>DeepSWE 为百分比,分数后的「$X」为该模型在 DeepSWE 的单次任务平均成本(美元);
 llm2014 为按各项目等级均值归一化的综合分(0-100,月内均值最高 100、最低 0,中间按等级差距线性分布;均值完全相同的模型按源站排名先后微调区分,保证人人不同分),其明细单元格为「扣分数/档位」,2026-08 起等级单元格可含单任务测试成本(如「7/A+(90.52)」表示扣 7 分、A 档、成本 ¥90.52);
 Code Arena · WebDev 为 LMArena 前端竞技场的 Elo 评分(社区匿名盲测投票,分值越高越好,矩阵列显示原始 Elo),参与综合分主基准组时按快照内 min-max 归一化到 0-100;
-Terminal-Bench 4.0/3.0/2.1 为终端命令行 Agent 评测成绩(多版本合并为一个基准组,**优先以最高版本为代表**:即 4.0>3.0>2.1,版本内取该模型最优成绩),计入综合分(权重 12%)与命中数,单元数字旁附版本标签(v4.0/v3.0/v2.1);由于不同版本难度不同(版本越高越难、原始分越低),综合分按「各版本内 min-max 归一化到 0-100」的口径计入(以该模型代表版本的版本内归一化分),使各版本最优模型都接近 100、跨版本可比,列表展示的仍是该代表版本的**原始分**,难度差异一目了然;口径提醒:4.0/3.0 为 agent×model 解决率、2.1 为 llm-stats 归一化自报分(已换算为%),完整条目见「权威基准测试」页(按版本分列);
+Terminal-Bench 4.0/3.0/2.1 为终端命令行 Agent 评测成绩(多版本合并为一个基准组,**优先以最高版本为代表**:即 4.0>3.0>2.1,版本内取该模型最优成绩),计入综合分(权重 12%)与命中数,单元数字旁附版本标签(v4.0/v3.0/v2.1);由于不同版本难度不同(版本越高越难、原始分越低),综合分按「各版本内 min-max 归一化到 0-100」的口径计入(以该模型代表版本的版本内归一化分),使各版本最优模型都接近 100、跨版本可比,列表展示的仍是该代表版本的**原始分**,难度差异一目了然;口径提醒:4.0/3.0 为 agent×model 解决率、2.1 为 llm-stats 归一化自报分(已换算为%),4.0 与 2.1 另有 datalearner 镜像补充官方未收录模型(只补缺、不覆盖官方口径),完整条目见「权威基准测试」页(按版本分列);
 AI 能力·前端/后端为 atmeplz 四方向榜的方向分(0-100,天然以 100 为参考,越高越好),前端=中式建筑 25%+体素山水 25%+前端网页 40%+黑洞模拟 10%,后端=超级 MES 100%;
 NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安装 Python 库),矩阵列显示 test-pass-rate(%),双源(llm-stats + benchlm.ai)合并取最高,计入综合分(权重 9%)与命中数;
 ProgramBench 为 cleanroom 程序重建基准,矩阵列显示 Fully Resolved(%,仅给二进制与文档从零重建),官方 + vals.ai 镜像双源合并取最高,悬浮可见 Almost / Raw Pass Rate 辅助指标,计入综合分(权重 9%)与命中数。</li>

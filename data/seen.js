@@ -308,6 +308,9 @@ window.SEEN = {
     'deepswe|DeepSeek-V4.1-Flash': '2026-09-10',
     'datalearner|DeepSeek-V4.1-Flash': '2026-09-10',
     'llm|DeepSeek V4.1 Flash (max)': '2026-09-10',
-    'vibe|Deepseek v4.1 flash [新]': '2026-09-11'
+    'vibe|Deepseek v4.1 flash [新]': '2026-09-11',
+    'tbench|DeepSeek-V4.1-Flash': '2026-09-13',
+    'tbench|Kimi K3': '2026-09-13',
+    'tbench|DeepSeek-V4-Flash': '2026-09-13'
   }
 };

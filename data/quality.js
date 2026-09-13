@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-09-13',
-  'overallScore': 0.935,
+  'overallScore': 0.938,
   'sources': [
     {
       'id': 'ai_capability',
@@ -164,7 +164,18 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 18,
+      'modelCount': 21,
+      'updated': '2026-09-13',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'tbench_v21',
+      'name': 'Terminal-Bench 2.1',
+      'status': 'ok',
+      'modelCount': 43,
       'updated': '2026-09-13',
       'ageDays': 0,
       'completeness': 1,
@@ -1160,9 +1171,17 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 18,
-      'complete': 18,
-      'modelCount': 18,
+      'total': 21,
+      'complete': 21,
+      'modelCount': 21,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'tbench_v21': {
+      'rate': 1,
+      'total': 43,
+      'complete': 43,
+      'modelCount': 43,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1263,6 +1282,11 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'tbench': {
+      'updated': '2026-09-13',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
+    'tbench_v21': {
       'updated': '2026-09-13',
       'ageDays': 0,
       'flag': 'ok'
