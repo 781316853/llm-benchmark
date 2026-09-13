@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-12',
+  'updated': '2026-09-13',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,11 +13,83 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-13',
+      'title': 'Apple希望对您的私人个人数据进行人工智能培训',
+      'brief': 'Apple希望对您的私人个人数据进行人工智能培训',
+      'url': 'https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': '除了我，每个人都应该放慢人工智能发展的速度',
+      'brief': '除了我，每个人都应该放慢人工智能发展的速度',
+      'url': 'https://xeiaso.net/notes/2026/everyone-slowdown-but-me/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': 'OpenAI、Anthropic 再次发出「AI 末日」警告；小米澎程今日全国交付；Deepseek 灰度测试 AI 语音对话',
+      'brief': 'OpenAI 首席执行官：今年不会上市，不能冒哪怕 10% 杀死所有人的风险 OpenAI 首席执行官 Sam Altman 在接受采访时表示，这家人工智能公司专注于解决围绕 AI 技术的安全担忧，今年不会上市。 Altman 表示，今年进行首次公开募股「时机不合适」，公司要到明…',
+      'url': 'http://www.geekpark.net/news/370228',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': 'Figma 如何利用 AI 代理提升安全性',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/eS4M9XEPmLbkxksCyAye?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': 'Read, Don\'t Write: 重塑大模型评价体系，构建全自动、可进化的“探测式”评测管线｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/0kYhxXxhOXhxGATe64ec?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'OpenAI的Sam Altman表示，在2026年上市将是“不明智的”',
+      'brief': '首席执行官萨姆·奥尔特曼（ Sam Altman ）表示，虽然OpenAI已秘密申请IPO ，但该公司今年不会上市。',
+      'url': 'https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
       'date': '2026-09-12',
       'title': 'Anthropic首席执行官概述了“加快前沿步伐”的计划',
       'brief': '“跟上前沿步伐”实际上会是什么样子？',
       'url': 'https://techcrunch.com/2026/09/12/anthropic-ceo-outlines-plan-to-pace-the-frontier/',
       'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'OpenAI的流氓AI在5月份试图入侵另一家公司',
+      'brief': '5月，数百个恶意和垃圾邮件包被上传到RubyGems ，给房东造成了严重中断。现在独立研究……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994383/openais-rogue-ai-rubygems-hack',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'Sam Altman表示， 2026年OpenAI上市将是“不明智的”',
+      'brief': 'OpenAI首席执行官Sam Altman在接受《财富》杂志采访时证实， 2026年不会有OpenAI的IPO。在45分钟的时间里， A…',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994384/sam-altman-no-openai-ipo-ill-advised',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'Anthropic首席执行官表示，是时候对人工智能进行刹车了',
+      'brief': 'Anthropic首席执行官Dario Amodei表示，现在是减缓人工智能开发的时候了，并将使METR等第三方评估人员能够访问其...',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994337/anthropic-ceo-slow-down-ai-development',
+      'source': 'The Verge',
       'type': '公司动态'
     },
     {
@@ -38,27 +110,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-12',
-      'title': '英伟达是人工智能的中央银行',
-      'brief': '英伟达是人工智能的中央银行',
-      'url': 'https://www.economist.com/interactive/briefing/2026/09/03/nvidia-is-the-central-bank-of-ai',
+      'title': 'Real-SWE ：在私有、真实世界的企业代码库上对人工智能模型进行基准测试',
+      'brief': 'Real-SWE ：在私有、真实世界的企业代码库上对人工智能模型进行基准测试',
+      'url': 'https://withspecific.com/benchmarks/real-swe',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'LLM是真的， AI是假的',
-      'brief': 'LLM是真的， AI是假的',
-      'url': 'https://pluralistic.net/2026/09/12/god-in-the-box/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'Altman告诉员工OpenAI对减缓人工智能发展持开放态度',
-      'brief': 'Altman告诉员工OpenAI对减缓人工智能发展持开放态度',
-      'url': 'https://www.reuters.com/business/altman-tells-staff-openai-is-open-slowing-ai-development-bloomberg-news-reports-2026-09-11/',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-12',
@@ -70,27 +126,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-12',
-      'title': '伯尼的人工智能法案提议判处人工智能开发人员20年徒刑',
-      'brief': '伯尼的人工智能法案提议判处人工智能开发人员20年徒刑',
-      'url': 'https://twitter.com/venturetwins/status/2098456905526211026',
+      'title': '人工智能强大到足以解决我们最难的数学问题，并杀死我们所有人',
+      'brief': '人工智能强大到足以解决我们最难的数学问题，并杀死我们所有人',
+      'url': 'https://www.wsj.com/tech/ai/ai-math-millennium-prize-safety-openai-anthropic-05179825',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'AI 时代的「4399」，可把我玩嗨了｜AI 上新',
-      'brief': '打开 Pocket 的前十分钟，我以为自己打开了一个 Instagram 版的 4399。 不久前，Meta 在美国正式推出了 Pocket。Pocket 的玩法很好理解，用户不用写代码，只要告诉 AI「我想做一个什么东西」，几十秒后就能得到一个可以直接操作的小游戏、小工具或者互…',
-      'url': 'http://www.geekpark.net/news/370227',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'AI的新用法，被这群 Builder 带到了外滩大会开发者日',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/i1FJsYNhNM4wwV78ANhL?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-12',
@@ -99,78 +139,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/GhA2VWxo6JTGyKIb7KdT?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'V4.1 Flash全面超越，开发者为何还在喷 DeepSeek：缺的不是能力，是软件工程思维',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/G7cublzVyXFOUX3vpz1t?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-12',
-      'title': '从沙箱到执行边界：蚂蚁 AI Agent 的大规模企业级实践｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/hk3WB50fAOMDg55YVaaW?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '在急于获取机器人训练数据之际， Mecka AI对红杉领导的交易的估值接近5亿美元',
-      'brief': '这家成立两年的初创公司的融资是在Mecka宣布其A轮融资的几个月后进行的。',
-      'url': 'https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '人类学研究者的世界末日警告发生在一个非常有趣的时刻',
-      'brief': '一位人类学研究人员本周辞职，并在X上的一篇帖子中警告说，该公司正在“直奔自我提升的超级智能……',
-      'url': 'https://techcrunch.com/podcast/an-anthropic-researchers-doomsday-warning-comes-at-a-very-interesting-time/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Nscale在潜在的IPO之前将前OpenAI高管Fidji Simo加入其董事会',
-      'brief': 'OpenAI排名第二的高管也在2023年带领Instacart完成了首次公开募股。',
-      'url': 'https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '律师在一起谋杀案中因人工智能幻觉证人被罚款5000 $',
-      'brief': '新墨西哥州最高法院正在惩罚一名律师，因为他将人工智能捏造的证人和伪造的警方证词纳入其客户的上诉中……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/994207/chatgpt-new-mexico-lawyer-fined-murder-appeal',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Anthropic本周在网络安全的热水中度过',
-      'brief': '在今年早些时候承认其人工智能模型曾多次入侵其他公司的系统后， Anthropic发布了一个新的……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/994064/anthropic-spent-this-week-in-hot-water-over-cybersecurity',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'DeepSeek V4.1 Flash 发布；罗永浩狂喷苹果折叠屏：全是抄的；马斯克「无聊公司」融资 30 亿美元｜极客早知道',
-      'brief': 'DeepSeek V4.1 Flash 模型正式发布：全面超越 V4 Pro、原生多模态视觉理解，最高降价 60% 9 月 10 日消息，深度求索今日正式发布 DeepSeek V4.1 Flash 模型 。这是其全新模型结构系列中的最小尺寸的模型，具备原生多模态视觉理解能力…',
-      'url': 'http://www.geekpark.net/news/370157',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'AMD 发布锐龙AI Max PRO 400 系列，端侧智能体走向多模型协同',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/NizuOkFpcOPgbeClC4uL?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
     }
   ]
 };
