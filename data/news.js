@@ -14,11 +14,27 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-13',
+      'title': '人工智能特工为什么要撒谎、欺骗和协调？',
+      'brief': '人工智能特工为什么要撒谎、欺骗和协调？',
+      'url': 'https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-13',
       'title': 'Apple希望对您的私人个人数据进行人工智能培训',
       'brief': 'Apple希望对您的私人个人数据进行人工智能培训',
       'url': 'https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': '将人工智能和数学结合到其他方面',
+      'brief': '将人工智能和数学结合到其他方面',
+      'url': 'https://liorpachter.wordpress.com/2026/09/12/align-ai-and-mathematics-to-something-else/',
+      'source': 'Hacker News',
+      'type': '技术研究'
     },
     {
       'date': '2026-09-13',
@@ -86,14 +102,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-12',
-      'title': 'Anthropic首席执行官表示，是时候对人工智能进行刹车了',
-      'brief': 'Anthropic首席执行官Dario Amodei表示，现在是减缓人工智能开发的时候了，并将使METR等第三方评估人员能够访问其...',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/994337/anthropic-ceo-slow-down-ai-development',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-12',
       'title': '特朗普正在向数据中心提供污染通行证',
       'brief': '唐纳德·特朗普总统正在削弱环境法规，以加快人工智能数据中心的建设，提高健康水平……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/994112/ai-data-center-pollution-health-epa',
@@ -110,6 +118,14 @@ window.NEWS = {
     },
     {
       'date': '2026-09-12',
+      'title': 'AgentsDock ：专为代理AI研究而设计的IDE',
+      'brief': 'AgentsDock ：专为代理AI研究而设计的IDE',
+      'url': 'https://agentsdock.net/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-12',
       'title': 'Real-SWE ：在私有、真实世界的企业代码库上对人工智能模型进行基准测试',
       'brief': 'Real-SWE ：在私有、真实世界的企业代码库上对人工智能模型进行基准测试',
       'url': 'https://withspecific.com/benchmarks/real-swe',
@@ -122,22 +138,6 @@ window.NEWS = {
       'brief': '最糟糕的垃圾邮件：深入了解iLands的AI Agent Hustle',
       'url': 'https://tedium.co/2026/09/11/ilands-agents-email-spam-kaixin-tang/',
       'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-12',
-      'title': '人工智能强大到足以解决我们最难的数学问题，并杀死我们所有人',
-      'brief': '人工智能强大到足以解决我们最难的数学问题，并杀死我们所有人',
-      'url': 'https://www.wsj.com/tech/ai/ai-math-millennium-prize-safety-openai-anthropic-05179825',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-12',
-      'title': '两个 Token 就让 Kimi“变成”Claude？前Google DeepMind研究员意外撞上大模型的蒸馏疑云',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/GhA2VWxo6JTGyKIb7KdT?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
       'type': '技术研究'
     }
   ]

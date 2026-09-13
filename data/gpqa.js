@@ -7,7 +7,7 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 10:34',
+  'refreshedAt': '2026-09-13 13:43',
   'stats': {
     'tasks': 198,
     'entries': 50
@@ -26,22 +26,22 @@ window.GPQA = {
     },
     {
       'rank': 2,
-      'model': 'Claude Mythos Preview',
-      'org': 'Anthropic',
-      'score': 94.6,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 2,
       'model': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 94.6,
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
+      'license': null
+    },
+    {
+      'rank': 2,
+      'model': 'Claude Mythos Preview',
+      'org': 'Anthropic',
+      'score': 94.6,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'license': null
     },
     {
@@ -146,22 +146,22 @@ window.GPQA = {
     },
     {
       'rank': 14,
-      'model': 'GPT-5.2',
-      'org': 'OpenAI',
-      'score': 92.4,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.75 / $ 14.00',
-      'license': null
-    },
-    {
-      'rank': 14,
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 92.4,
       'size': '—',
       'context': '1.0M',
       'cost': '$ 1.25 / $ 3.75',
+      'license': null
+    },
+    {
+      'rank': 14,
+      'model': 'GPT-5.2',
+      'org': 'OpenAI',
+      'score': 92.4,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.75 / $ 14.00',
       'license': null
     },
     {
@@ -196,22 +196,22 @@ window.GPQA = {
     },
     {
       'rank': 19,
-      'model': 'Qwen3.8-Flash-Next',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 91.7,
-      'size': '125B',
-      'context': '—',
-      'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 19,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 91.7,
       'size': '125B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.47',
+      'license': null
+    },
+    {
+      'rank': 19,
+      'model': 'Qwen3.8-Flash-Next',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 91.7,
+      'size': '125B',
+      'context': '—',
+      'cost': '—',
       'license': null
     },
     {
@@ -266,8 +266,8 @@ window.GPQA = {
     },
     {
       'rank': 25,
-      'model': 'Gemini 3 Flash',
-      'org': 'Google',
+      'model': 'Qwen3.6 Plus',
+      'org': 'Alibaba Cloud / Qwen Team',
       'score': 90.4,
       'size': '—',
       'context': '1.0M',
@@ -276,8 +276,8 @@ window.GPQA = {
     },
     {
       'rank': 25,
-      'model': 'Qwen3.6 Plus',
-      'org': 'Alibaba Cloud / Qwen Team',
+      'model': 'Gemini 3 Flash',
+      'org': 'Google',
       'score': 90.4,
       'size': '—',
       'context': '1.0M',
@@ -386,16 +386,6 @@ window.GPQA = {
     },
     {
       'rank': 38,
-      'model': 'GPT-5.1 High',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 38,
       'model': 'GPT-5.1',
       'org': 'OpenAI',
       'score': 88.1,
@@ -406,27 +396,7 @@ window.GPQA = {
     },
     {
       'rank': 38,
-      'model': 'DeepSeek-V4-Flash-Max',
-      'org': 'DeepSeek',
-      'score': 88.1,
-      'size': '284B',
-      'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18',
-      'license': null
-    },
-    {
-      'rank': 38,
-      'model': 'GPT-5.1 Thinking',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 38,
-      'model': 'GPT-5 Medium',
+      'model': 'GPT-5.1 High',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -442,6 +412,36 @@ window.GPQA = {
       'size': '—',
       'context': '400K',
       'cost': '$ 1.25 / $ 10.00',
+      'license': null
+    },
+    {
+      'rank': 38,
+      'model': 'GPT-5 Medium',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
+      'license': null
+    },
+    {
+      'rank': 38,
+      'model': 'GPT-5.1 Thinking',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
+      'license': null
+    },
+    {
+      'rank': 38,
+      'model': 'DeepSeek-V4-Flash-Max',
+      'org': 'DeepSeek',
+      'score': 88.1,
+      'size': '284B',
+      'context': '1.0M',
+      'cost': '$ 0.09 / $ 0.18',
       'license': null
     },
     {
