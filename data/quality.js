@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
-      'modelCount': 32,
+      'modelCount': 48,
       'updated': '2026-09-13',
       'ageDays': 0,
       'completeness': 1,
@@ -1147,9 +1147,9 @@ window.QUALITY = {
     },
     'nl2repo': {
       'rate': 1,
-      'total': 32,
-      'complete': 32,
-      'modelCount': 32,
+      'total': 48,
+      'complete': 48,
+      'modelCount': 48,
       'missingFields': {},
       'flag': 'ok'
     },

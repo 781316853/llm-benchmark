@@ -139,14 +139,6 @@ window.NEWS = {
       'url': 'https://tedium.co/2026/09/11/ilands-agents-email-spam-kaixin-tang/',
       'source': 'Hacker News',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-12',
-      'title': '人工智能强大到足以解决我们最难的数学问题，并杀死我们所有人',
-      'brief': '人工智能强大到足以解决我们最难的数学问题，并杀死我们所有人',
-      'url': 'https://www.wsj.com/tech/ai/ai-math-millennium-prize-safety-openai-anthropic-05179825',
-      'source': 'Hacker News',
-      'type': '技术研究'
     }
   ]
 };

@@ -141,11 +141,23 @@ module.exports = {
     nl2repo: {
       // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench,
       // 以 llm-stats 聚合表为主(服务端渲染:同上表结构);benchlm.ai 为补充镜像源
-      // (收录 Ornith 系列 / Claude Opus 4.5 / Qwen3.6 Max preview 等 llm-stats 缺失模型),由
-      // scripts/sources/nl2repo.js 双源合并取最高。
+      // (收录 Ornith 系列 / Claude Opus 4.5 / Qwen3.6 Max preview 等 llm-stats 缺失模型);另有
+      //   1) 官方论文评测表(arxiv 2512.12730v2 Table 2,基准作者官方 OpenHands 协议,12 条上一代模型);
+      //   2) datalearner 详情页(厂商官方发布成绩,如 DeepSeek-V4-Flash 54.2)
+      // 两路补充,由 scripts/sources/nl2repo.js 多源合并取最高。
       url: "https://llm-stats.com/benchmarks/nl2repo",
       host: "llm-stats.com",
       officialUrl: "https://github.com/multimodal-art-projection/NL2RepoBench"
+    },
+    nl2repo_paper: {
+      // NL2Repo 官方论文评测表(arxiv HTML 版 Table 2,Overall Pass@1 %)。
+      url: "https://arxiv.org/html/2512.12730v2",
+      host: "arxiv.org"
+    },
+    datalearner_nl2repo: {
+      // datalearner NL2Repo-Bench 详情页(厂商官方发布成绩;当前与 llm-stats 条目重复,作前向补充)。
+      url: "https://www.datalearner.com/benchmarks/nl2repo-bench",
+      host: "www.datalearner.com"
     },
     nl2repo_benchlm: {
       // NL2Repo 补充源:benchlm.ai 镜像(SSG 服务端渲染,rank|model(vendor·closed)|score%),同模型分数与 llm-stats 一致。
