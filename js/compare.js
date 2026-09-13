@@ -7,7 +7,7 @@
 
   // 综合分容差:差距 < 此值的模型视为"同档",同档内按次级指标排序
   var SCORE_TOLERANCE = 1.5;
-  // 各榜成绩取值(与矩阵列一致,值越大越好);双榜模型逐榜比对时使用
+  // 各榜成绩取值(与矩阵列一致,值越大越好);参考模型(命中 2-3 榜)逐榜比对时使用
   // 「AI 能力」作为单一基准参与定位:取前端/后端在场方向分的均值
   // Terminal-Bench / NL2Repo 计入综合分与命中;其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
@@ -23,7 +23,7 @@
       return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
     }
   };
-  // 双榜模型命中的榜 key 列表(以实际有数据为准;AI 能力前端/后端合并为单一命中)
+  // 参考模型(命中 2-3 榜)命中的榜 key 列表(以实际有数据为准;AI 能力前端/后端合并为单一命中)
   function hitBoards(e) {
     var boards = [];
     if (e.deepswe) boards.push("deepswe");
@@ -34,7 +34,7 @@
     if (e.aicapFe || e.aicapBe) boards.push("aicap");
     return boards;
   }
-  // 双榜模型的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,
+  // 参考模型(命中 2-3 榜)的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,
   // 按覆盖率折算到全部排名行后取最大值(以较弱榜为准),避免强榜把弱榜拉高而使落位偏前。
   // 直接数"高于它的模型数"会在覆盖稀疏的榜上低估弱势(如 AI 能力仅少数排名行有成绩,
   // 全部高于它也只计少数几个),故按 高于数/有成绩数 的比例折算排名行总数。
@@ -59,10 +59,10 @@
     return worst < 0 ? ranked.length : worst;
   }
   // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上):
-  // ① 排名行(命中≥3榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
+  // ① 排名行(命中≥4榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
   //    并依次编号 _posKey = 0,1,2…;
-  // ② 双榜行(命中=2)不计算综合分,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
-  //    恰好落在两个排名行的间隔中;多个双榜行同间隔时按位置值先后排列;
+  // ② 参考行(命中=2 或 3)不计算综合分、不参与排名,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
+  //    恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);多个参考行同间隔时按位置值先后排列;
   // ③ 单榜行(命中=1)不计算综合分、无可比对区间,统一排在全部 ①② 之后(_posKey > ranked.length),
   //    既不占用前 30 名额,也不扰乱跨榜模型的名次间隔;
   // ④ 合并后按 _posKey 升序
@@ -71,8 +71,8 @@
     var map = D.unified(llmMonthKey);
     var all = Object.keys(map).map(function (k) { return map[k]; })
       .filter(function (e) { return e.benchCount >= floor; });
-    var ranked = all.filter(function (e) { return e.benchCount >= 3; });
-    var inserted = all.filter(function (e) { return e.benchCount === 2; }); // 双榜:不参与名次、不计算综合分
+    var ranked = all.filter(function (e) { return e.benchCount >= 4; });
+    var inserted = all.filter(function (e) { return e.benchCount >= 2 && e.benchCount <= 3; }); // 命中 2-3 榜:不参与名次、不计算综合分
     var single = all.filter(function (e) { return e.benchCount === 1; });   // 单榜:仅「显示全部」时出现
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);
@@ -89,12 +89,12 @@
     ranked.forEach(function (e, i) { e._posKey = i; });
     inserted.forEach(function (e) {
       var key = dualPosition(e, ranked) - 0.5;
-      // 位置恰为 x.5 时键会与排名行整数键重合,微移保证双榜键严格落在两个排名行之间,
+      // 位置恰为 x.5 时键会与排名行整数键重合,微移保证参考行键严格落在两个排名行之间,
       // 避免默认渲染与表头排序(升序后反转)对重合键的先后不一致
       if (Math.abs(key - Math.round(key)) < 1e-9) key += 1e-6;
       e._posKey = key;
     });
-    // 单榜行统一排在双榜之后:按在场榜单成绩降序(不同榜量纲不可比,仅作为稳定次序)
+    // 单榜行统一排在参考行之后:按在场榜单成绩降序(不同榜量纲不可比,仅作为稳定次序)
     single.forEach(function (e) { e._posKey = ranked.length + 0.5; });
     single.sort(function (a, b) { return bestBoardVal(b) - bestBoardVal(a); });
     single.forEach(function (e, i) { e._posKey = ranked.length + 0.5 + i * 1e-6; });

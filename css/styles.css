@@ -171,12 +171,12 @@ a:hover { text-decoration: underline; }
 /* "近 7 天新上榜" 行高亮(琥珀底色);置于 row-hit 之后,确保两类高亮并存时新上榜视觉优先 */
 .data-table tr.row-new { background: rgba(212,148,58,.14); }
 .data-table tr.row-new:hover { background: rgba(212,148,58,.22); }
-/* 「双榜」行(恰好命中 2 个基准组):灰蓝底色,按综合分混排展示但不计排名、不计入前30限制;
+/* 「参考」行(命中 2-3 个基准组):灰蓝底色,按各榜成绩比对混排展示但不计排名、不计算综合分、不计入前30限制;
    置于 row-new 之后、row-domestic 之前,确保用户主动开启的国产高亮仍获得视觉优先 */
 .data-table tr.row-two { background: rgba(123,140,168,.13); }
 .data-table tr.row-two:hover { background: rgba(123,140,168,.21); }
 /* 「单榜」行(仅命中 1 个基准组):仅在「显示全部模型」时出现,统一排在末尾,不排名、不计算综合分;
-   用更淡的灰底,与双榜行区分,且视觉上弱于跨榜行 */
+   用更淡的灰底,与参考行区分,且视觉上弱于跨榜行 */
 .data-table tr.row-one { background: rgba(123,140,168,.06); }
 .data-table tr.row-one:hover { background: rgba(123,140,168,.14); }
 .data-table tr.row-one td { color: var(--text-tertiary); }
@@ -207,7 +207,7 @@ a:hover { text-decoration: underline; }
 .badge-tb20 { display: inline-block; font-size: 10px; font-weight: 700; color: #6b4fa0;
   background: #eee6fb; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid #d4c4ee; }
-/* 「双榜」徽标:恰好命中 2 个基准组的模型,灰蓝色调,与双榜行高亮配套 */
+/* 「参考」徽标:命中 2-3 个基准组的模型,灰蓝色调,与参考行高亮配套 */
 .badge-two { display: inline-block; font-size: 10px; font-weight: 700; color: #4A6076;
   background: #E2E9F0; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid #BCCBDA; }
@@ -224,7 +224,7 @@ a:hover { text-decoration: underline; }
   padding: 2px 8px; border-radius: 4px; min-width: 28px; text-align: center; letter-spacing: .3px; }
 /* 「显示综合分」开关开启时,梯队徽标旁的数值 */
 .tier-score { font-size: 12px; color: var(--text-dim); margin-left: 4px; font-variant-numeric: tabular-nums; }
-/* 双榜行梯队列的「—」占位:表示不作梯队分档展示(综合分数字跟在其后) */
+/* 参考行梯队列的「—」占位:表示不作梯队分档展示(综合分数字跟在其后) */
 .tier-na { color: var(--text-tertiary); margin-right: 2px; }
 /* 矩阵表单元格内的成本辅助标注:小号、降饱和,让分数保持视觉主体 */
 .cell-cost { font-size: 11px; color: var(--text-tertiary); margin-left: 3px; font-variant-numeric: tabular-nums; }
