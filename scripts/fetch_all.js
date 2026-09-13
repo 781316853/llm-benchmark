@@ -13,6 +13,7 @@ const CONFIG = require("./lib/config");
 const pipeline = require("./lib/pipeline");
 const seen = require("./lib/seen");
 const news = require("./lib/news");
+const codingplan = require("./lib/codingplan");
 
 (async () => {
   if (!fs.existsSync(CONFIG.DATA_DIR)) fs.mkdirSync(CONFIG.DATA_DIR, { recursive: true });
@@ -24,5 +25,8 @@ const news = require("./lib/news");
   // 3) 维护 AI 热点新闻(仅保留最近 N 天;fail-soft,失败保留旧文件)
   try { await news.updateNews(); }
   catch (e) { console.log("[news] 维护失败:" + e.message); }
+  // 4) 维护 Coding Plan 套餐快速对比(codingplan.fyi 推荐分组;fail-soft,失败保留旧文件)
+  try { await codingplan.updateCodingplan(); }
+  catch (e) { console.log("[codingplan] 维护失败:" + e.message); }
   console.log("完成 @ " + CONFIG.TODAY);
 })();

@@ -262,5 +262,25 @@ module.exports = {
         { url: "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&de=llm-benchmark-refresh%40users.noreply.github.com&q=" }
       ]
     }
+  },
+
+  // ===== Coding Plan 套餐快速对比(scripts/lib/codingplan.js 使用,不进基准管线) =====
+  // 数据源 codingplan.fyi(V2 静态站)「额度/价格对比」视图的快速对比板块,按模型分列比价:
+  //   model-comparison-presets.json 固定精选模型分组(单模型列 + 甜品级/SOTA 多模型列);
+  //   plans.json(套餐:月价/币种/billingMode)+ plan-models.json(套餐×模型:综合单价 unitPriceCnyPerM、
+  //   实测月用量 monthlyTokenInM、timeTier 谷/峰)+ models.json(slug→显示名)+ platforms.json(平台名);
+  //   config.json 提供美元汇率 usdToCnyRate。
+  // 仿 news 模式:在 fetch_all.js 旁路调用,不进 registry/校验器,仅「套餐对比」页展示。
+  codingplan: {
+    host: "www.codingplan.fyi",
+    officialUrl: "https://www.codingplan.fyi/?view=usage",
+    configUrl: "https://www.codingplan.fyi/config.json",
+    plansUrl: "https://www.codingplan.fyi/plans.json",
+    platformsUrl: "https://www.codingplan.fyi/platforms.json",
+    modelsUrl: "https://www.codingplan.fyi/models.json",
+    planModelsUrl: "https://www.codingplan.fyi/plan-models.json",
+    presetsUrl: "https://www.codingplan.fyi/model-comparison-presets.json",
+    outFile: "codingplan.js",
+    windowVar: "CODINGPLAN"
   }
 };

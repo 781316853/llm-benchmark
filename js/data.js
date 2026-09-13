@@ -543,6 +543,8 @@
     hle: hle,
     nl2repo: nl2repo,
     programbench: programbench,
+    // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
+    codingplan: function () { return window.CODINGPLAN || null; },
     unified: unified,
     hitCount: hitCount,
     benchSummary: benchSummary,

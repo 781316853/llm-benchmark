@@ -7,7 +7,7 @@
   <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
-  <link rel="stylesheet" href="css/styles.css?v=20260912c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260913b" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
@@ -32,11 +32,13 @@
   <script defer src="data/programbench.js?v=20260912b"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260824a"></script>
+  <!-- Coding Plan 套餐快速对比(codingplan.fyi 额度/价格对比·按模型分列比价,不进基准管线) -->
+  <script defer src="data/codingplan.js?v=20260913b"></script>
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20260912e"></script>
+  <script defer src="js/data.js?v=20260913a"></script>
   <script defer src="js/charts.js?v=20260824a"></script>
   <script defer src="js/compare.js?v=20260912e"></script>
-  <script defer src="js/app.js?v=20260912f"></script>
+  <script defer src="js/app.js?v=20260913b"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -57,6 +59,7 @@
     <button class="tab" data-tab="llm2014">llm2014</button>
     <button class="tab" data-tab="aicap">AI 能力</button>
     <button class="tab" data-tab="authority">权威基准测试</button>
+    <button class="tab" data-tab="plans">套餐对比</button>
   </nav>
 
   <main class="content">
@@ -176,6 +179,22 @@ ProgramBench 为 cleanroom 程序重建基准,矩阵列显示 Fully Resolved(%,�
         </aside>
         <div class="auth-main"><div id="authWrap"></div></div>
       </div>
+    </section>
+
+    <!-- 7) 套餐对比(codingplan.fyi「额度/价格对比」快速对比快照,按模型分列比价,独立展示不计入综合分) -->
+    <section class="page" id="page-plans">
+      <div class="page-head"><h2>订阅套餐 · 额度/价格快速对比 <span class="tag">来源 codingplan.fyi</span></h2><p id="plansDesc" class="page-desc"></p></div>
+      <div id="plansWrap"></div>
+      <p class="source-note" id="plansNote"></p>
+      <section class="notes-section">
+        <p class="note-title">阅读说明</p>
+        <ul style="white-space: pre-wrap;">
+          <li>本页数据来自 <b>Coding Plan 对比</b>(codingplan.fyi)「额度/价格对比」视图的<b>快速对比</b>板块快照:按固定精选模型分列(DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna,以及甜品级、SOTA 两组多模型对比),每列按<b>综合单价升序</b>排列各平台套餐,随全站数据每日自动刷新。</li>
+          <li>综合单价(¥/亿 Token)与月用量为源站<b>实测/计算口径</b>(统一构造 95% 缓存命中率、0.5% 输出占比;有具体输入/输出/缓存价格的按标价计算,其余为实测);月价为连续包月价,美元按源站汇率折算人民币,按量调用行显示「按量」且无月用量。</li>
+          <li>行内 <b>[谷]/[峰]</b> 为错峰/高峰时段档位标签,[高速] 为高速服务档;「仅显示精选平台」默认勾选(与源站一致,覆盖阿里·百炼/智谱/字节·方舟/Codex/Claude/DeepSeek/Kimi/MiniMax/OpenCode 九家),切换「显示所有平台」可展开全部。</li>
+          <li>源站推广跳转链接已去除,购买入口与完整套餐筛选(价格区间/请求数/模型筛选等)请前往 <a href="https://www.codingplan.fyi/?view=usage" target="_blank" rel="noopener">codingplan.fyi ↗</a>;价格为快照口径,可能滞后于平台官网。</li>
+        </ul>
+      </section>
     </section>
   </main>
 

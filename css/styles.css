@@ -436,6 +436,51 @@ a:hover { text-decoration: underline; }
   gap: 16px; align-content: start;
 }
 
+/* ===== 套餐对比(codingplan.fyi 快速对比:按模型分列比价) ===== */
+.qc-note {
+  background: var(--brand-light); border: 1px solid var(--brand-muted); border-radius: var(--radius-sm);
+  padding: 9px 14px; font-size: 13px; color: var(--text-dim); margin: 14px 0 18px;
+}
+.qc-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 4px 0 14px; }
+.qc-title { font-size: 18px; font-weight: 700; margin: 0; }
+.qc-desc { color: var(--text-tertiary); font-size: 13px; margin: 2px 0 0; }
+.qc-scope { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--panel); }
+.qc-scope-btn {
+  appearance: none; border: 0; background: transparent; color: var(--text-dim);
+  padding: 6px 14px; font-size: 12.5px; cursor: pointer; transition: all .15s ease; white-space: nowrap;
+}
+.qc-scope-btn:hover { color: var(--accent); }
+.qc-scope-btn.is-active { background: var(--text); color: #fff; font-weight: 600; }
+.qc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; align-items: start; }
+.qc-grid--multi { margin-top: 16px; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+.qc-card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px 12px; box-shadow: var(--shadow); min-width: 0;
+}
+.qc-card header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.qc-card h4 { margin: 0; font-size: 15px; font-weight: 700; }
+.qc-card header p { margin: 3px 0 0; font-size: 12px; color: var(--text-tertiary); line-height: 1.5; }
+.qc-count { flex: none; font-size: 11px; font-weight: 600; color: var(--accent); background: var(--brand-light); border-radius: 999px; padding: 2px 9px; }
+.qc-table-scroll { overflow-x: auto; }
+.qc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.qc-table th {
+  text-align: left; font-weight: 600; color: var(--text-tertiary); font-size: 12px;
+  padding: 7px 8px; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.qc-table td { padding: 9px 8px; border-bottom: 1px dashed var(--border-subtle); vertical-align: top; }
+.qc-table tbody tr:last-child td { border-bottom: 0; }
+.qc-identity { min-width: 0; }
+.qc-primary { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.qc-primary b { font-size: 13.5px; }
+.qc-model { font-size: 12px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qc-price { flex: none; font-size: 12.5px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+.qc-secondary { margin-top: 2px; font-size: 12px; color: var(--text-tertiary); }
+.qc-tier { font-style: normal; color: var(--warn); font-size: 11px; }
+.qc-metrics { width: 42%; text-align: right; white-space: nowrap; }
+.qc-unit { font-weight: 700; font-size: 13.5px; color: var(--text); font-variant-numeric: tabular-nums; }
+.qc-usage { margin-top: 2px; font-size: 12px; color: var(--text-tertiary); display: flex; justify-content: flex-end; gap: 6px; font-variant-numeric: tabular-nums; }
+.qc-empty { text-align: center; color: var(--text-tertiary); font-size: 12.5px; padding: 18px 8px !important; }
+
 /* ===== 权威基准页:左侧「大纲预览」+ 快速跳转 =====
    桌面端大纲在左栏粘性吸附(顶部让位粘性标签栏),随页面滚动高亮当前基准章节;
    点击条目平滑跳转,落点已扣除标签栏高度。窄屏由下方媒体查询收起为顶部横向胶囊条。 */

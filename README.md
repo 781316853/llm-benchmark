@@ -17,6 +17,7 @@
 - **NL2Repo-Bench**(长程仓库生成):给定单一 NL 需求文档从零生成可安装 Python 库(103 任务),矩阵列显示 test-pass-rate(%);主源 llm-stats + 补充源 benchlm.ai 镜像**双源合并取最高**,计入综合分(权重 8%)与命中数
 - **ProgramBench**(cleanroom 程序重建):仅给编译后二进制与文档,从零重建完整代码库(200 任务),矩阵列显示 Fully Resolved(%);官方 programbench.com + vals.ai 镜像(45 模型)**双源合并取最高**,Almost / Raw Pass Rate 辅助展示,计入综合分(权重 8%)与命中数
 - **权威基准测试**(新标签页,展示型参考):Terminal-Bench(4.0/3.0/2.1,按版本分列,三版合并计入总览)、Terminal-Bench-Science 0.1(科研工作流)、OSWorld 2.0(长时程桌面计算机使用)、Agents' Last Exam(真实专业工作流)、ARC-AGI-3(交互式智能体推理 RHAE)、BenchCAD(程序化 CAD 生成)、GPQA Diamond(研究生级科学问答)、HLE(前沿知识广度);除 Terminal-Bench 三版合并、NL2Repo / ProgramBench 双源合并的基准组外均不计入综合分与命中数
+- **套餐对比**(新标签页,展示型参考):接入 codingplan.fyi「额度/价格对比」视图的**快速对比**板块——按固定精选模型分列(DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna + 甜品级、SOTA 两组多模型对比),每列按综合单价升序比价各平台套餐(折算月价 / 综合单价 ¥/亿 / 实测月用量,含 谷/峰 档位),支持「仅显示精选平台 / 显示所有平台」切换;已去除源站推广跳转链接,完整套餐筛选请前往源站
 
 每页提供「仅跨榜模型 / 显示全部」开关:默认收起仅出现在单一榜单的模型(总览页为命中不足 3 个榜单),聚焦跨基准可比性。
 
@@ -34,7 +35,7 @@
 ## 目录结构
 
 ```
-index.html              门户入口(7 标签:总览/DeepSWE/Vibe/llm2014/AI能力/权威基准测试)
+index.html              门户入口(6 标签:总览/DeepSWE/llm2014/AI能力/权威基准测试/套餐对比)
 css/styles.css          深色科技风样式
 js/data.js              数据归一(canonical 命中映射、unified 视图、hitCount)
 js/charts.js            ECharts 封装
@@ -42,7 +43,7 @@ js/compare.js           跨基准矩阵/雷达/指标卡
 js/app.js               标签路由与渲染(含"仅跨榜"过滤)
 data/                   多源数据快照(deepswe/vibecode/llm2014/arena_webdev/models/aicap/
                          tbench/tbench_v3/tbench_v2/tbscience/osworld/lastexam/arcagi3/benchcad/
-                         gpqa/hle/nl2repo/programbench)
+                         gpqa/hle/nl2repo/programbench/news/codingplan)
 scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用)
 .github/workflows/refresh.yml  每日定时刷新数据并提交
 ```
@@ -62,5 +63,6 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 - **NL2Repo-Bench**:主源 llm-stats.com 聚合表 + 补充源 benchlm.ai 镜像(SSG 卡片式 HTML,收录 Ornith 系列 / Claude Opus 4.5 等)双源合并去重取最高(103 任务);计入综合分(权重 8%)与命中数。
 - **ProgramBench**:主源 programbench.com 官方表格(Resolved/Almost) + 补充源 vals.ai 镜像(Astro props 内嵌 45 模型 Fully Resolved%,Results summary 表含前 5 名 Almost/Raw Pass Rate)双源合并取最高;计入综合分(权重 8%)与命中数。
 - **权威基准测试(展示型)**:Terminal-Bench-Science 0.1(harbor 榜单 HTML)、OSWorld 2.0(steel.dev 镜像,部分得分)、Agents' Last Exam(官方榜单 HTML,Pass Rate)、ARC-AGI-3(llm-stats 聚合表,RHAE)、BenchCAD(GitHub leaderboard.json,主指标 Vision2Code total)、GPQA Diamond / HLE(llm-stats 聚合表);均仅展示,不计入综合分。
+- **套餐快速对比(展示型)**:codingplan.fyi 静态 JSON(model-comparison-presets.json 固定精选模型分组 + plans.json 套餐月价/币种 + plan-models.json 套餐×模型综合单价与实测月用量 + models.json/platforms.json 名称映射 + config.json 美元汇率),抓取端完整复刻源站 entity-data 的比价算法(美元按汇率折算、按量行取综合单价、订阅行取折算月价+实测月用量),按综合单价升序输出;仿 news 模式在 `fetch_all.js` 旁路调用(不进基准管线/校验器),写入 `data/codingplan.js`;已丢弃源站推广跳转链接。
 
 任一源抓取失败则保留旧文件(站点不崩)。

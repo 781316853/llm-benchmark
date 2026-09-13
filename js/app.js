@@ -6,6 +6,7 @@
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
+    plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
     // 总览默认收起(聚焦跨榜命中),其余两页默认展开全部模型
     showAll: { overview: false, deepswe: true, llm: true } };
@@ -862,6 +863,74 @@
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
 
+  // ===== 7) 套餐对比(codingplan.fyi「额度/价格对比」快速对比,按模型分列比价) =====
+  // 行数据已在抓取端按综合单价升序排好,这里仅做平台范围过滤(featured=精选平台)与渲染
+  function qcCardHtml(g, scope) {
+    var rows = g.rows.filter(function (r) { return scope === "all" || r.featured; });
+    var multi = g.kind === "multi";
+    var body = rows.map(function (r) {
+      // 主行:平台(+多模型列附模型名)+ 月价;副行:套餐(+单模型列附 谷/峰 等档位标签)
+      var primary = '<b>' + esc(r.platform) + '</b>' +
+        (multi ? '<span class="qc-model">' + esc(r.model) + '</span>' : "") +
+        '<span class="qc-price">' + esc(r.price) + '</span>';
+      var secondary = esc(r.plan) +
+        (!multi && r.qualifier ? ' <i class="qc-tier">' + esc(r.qualifier) + '</i>' : "");
+      return '<tr><td class="qc-identity"><div class="qc-primary">' + primary + '</div>' +
+        '<div class="qc-secondary">' + secondary + '</div></td>' +
+        '<td class="qc-metrics"><div class="qc-unit">' + esc(r.unit) + '</div>' +
+        '<div class="qc-usage"><span>月用量</span><span>' + esc(r.usage) + '</span></div></td></tr>';
+    }).join("");
+    return '<article class="qc-card">' +
+      '<header><div><h4>' + esc(g.title) + '</h4>' +
+      (g.desc ? '<p>' + esc(g.desc) + '</p>' : "") + '</div>' +
+      '<span class="qc-count">' + rows.length + ' 条</span></header>' +
+      '<div class="qc-table-scroll"><table class="qc-table"><thead><tr><th>' +
+      (multi ? "平台 / 模型 / 套餐" : "平台 / 套餐") + '</th><th>综合单价 / 月用量</th></tr></thead>' +
+      '<tbody>' + (body || '<tr><td colspan="2" class="qc-empty">当前暂无可比较的套餐。</td></tr>') +
+      '</tbody></table></div></article>';
+  }
+  function renderPlans() {
+    var wrap = document.getElementById("plansWrap");
+    if (!wrap) return;
+    var data = D.codingplan();
+    document.getElementById("plansDesc").textContent = data
+      ? ((data.desc || "") + (data.siteUpdated ? " · 源站更新 " + data.siteUpdated : ""))
+      : "暂无数据:抓取失败或尚未生成 data/codingplan.js(待下次每日刷新后恢复)。";
+    if (!data || !Array.isArray(data.groups) || !data.groups.length) {
+      wrap.innerHTML = "";
+      document.getElementById("plansNote").innerHTML = "";
+      return;
+    }
+    var scope = state.plansScope === "all" ? "all" : "featured";
+    var scopeBtn = function (value, label) {
+      return '<button type="button" class="qc-scope-btn' + (scope === value ? " is-active" : "") +
+        '" data-qc-scope="' + value + '" aria-pressed="' + (scope === value) + '">' + label + '</button>';
+    };
+    var singles = data.groups.filter(function (g) { return g.kind === "single"; });
+    var multis = data.groups.filter(function (g) { return g.kind === "multi"; });
+    wrap.innerHTML =
+      (data.caliberNote ? '<div class="qc-note">' + esc(data.caliberNote) + '</div>' : "") +
+      '<div class="qc-head"><div><h3 class="qc-title">' + esc(data.presetTitle || "快速对比") + '</h3>' +
+      (data.presetDesc ? '<p class="qc-desc">' + esc(data.presetDesc) + '</p>' : "") + '</div>' +
+      '<div class="qc-scope" role="group" aria-label="对比平台范围">' +
+      scopeBtn("featured", "仅显示精选平台") + scopeBtn("all", "显示所有平台") +
+      '</div></div>' +
+      '<div class="qc-grid qc-grid--single">' + singles.map(function (g) { return qcCardHtml(g, scope); }).join("") + '</div>' +
+      '<div class="qc-grid qc-grid--multi">' + multis.map(function (g) { return qcCardHtml(g, scope); }).join("") + '</div>';
+    // 平台范围切换(事件委托,重渲染后仍生效)
+    wrap.onclick = function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest("[data-qc-scope]") : null;
+      if (!btn) return;
+      state.plansScope = btn.getAttribute("data-qc-scope");
+      renderPlans();
+    };
+    document.getElementById("plansNote").innerHTML =
+      '<div class="note-line"><b>来源</b><a href="' + esc(data.officialUrl || "") + '" target="_blank" rel="noopener">codingplan.fyi · 额度/价格对比 ↗</a></div>' +
+      '<div class="note-line"><b>更新</b>源站 ' + esc(data.siteUpdated || "—") + ' · 本站抓取 ' + esc(data.refreshedAt || data.updated || "—") + ' · 美元按汇率 ' + esc(data.usdToCnyRate) + ' 折算人民币</div>' +
+      '<div class="note-line"><b>口径</b>' + esc(data.caliberNote || "") + '</div>' +
+      '<div class="note-line"><b>说明</b>综合单价(¥/亿 Token)与月用量为源站实测/计算值,按综合单价升序排列;完整套餐筛选与购买入口请前往源站查看。</div>';
+  }
+
   // ===== 标签切换 =====
   function showTab(name) {
     state.tab = name;
@@ -876,6 +945,7 @@
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
     else if (name === "aicap") renderAICap();
     else if (name === "authority") renderAuthority();
+    else if (name === "plans") renderPlans();
     // 切换后重绘图表以适配可见尺寸
     setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
   }
