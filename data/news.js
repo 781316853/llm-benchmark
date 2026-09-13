@@ -14,10 +14,82 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-12',
+      'title': 'Anthropic首席执行官概述了“加快前沿步伐”的计划',
+      'brief': '“跟上前沿步伐”实际上会是什么样子？',
+      'url': 'https://techcrunch.com/2026/09/12/anthropic-ceo-outlines-plan-to-pace-the-frontier/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': '特朗普正在向数据中心提供污染通行证',
+      'brief': '唐纳德·特朗普总统正在削弱环境法规，以加快人工智能数据中心的建设，提高健康水平……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994112/ai-data-center-pollution-health-epa',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'OpenAI只想赢',
+      'brief': 'OpenAI在过去几年中一直在日益困难的数学领域种植旗帜。本周，它声称其中一个……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/994255/openai-millennium-prize-problem-tristan-buckmaster-competition',
+      'source': 'The Verge',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-12',
+      'title': '英伟达是人工智能的中央银行',
+      'brief': '英伟达是人工智能的中央银行',
+      'url': 'https://www.economist.com/interactive/briefing/2026/09/03/nvidia-is-the-central-bank-of-ai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'LLM是真的， AI是假的',
+      'brief': 'LLM是真的， AI是假的',
+      'url': 'https://pluralistic.net/2026/09/12/god-in-the-box/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'Altman告诉员工OpenAI对减缓人工智能发展持开放态度',
+      'brief': 'Altman告诉员工OpenAI对减缓人工智能发展持开放态度',
+      'url': 'https://www.reuters.com/business/altman-tells-staff-openai-is-open-slowing-ai-development-bloomberg-news-reports-2026-09-11/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': '最糟糕的垃圾邮件：深入了解iLands的AI Agent Hustle',
+      'brief': '最糟糕的垃圾邮件：深入了解iLands的AI Agent Hustle',
+      'url': 'https://tedium.co/2026/09/11/ilands-agents-email-spam-kaixin-tang/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-12',
       'title': '伯尼的人工智能法案提议判处人工智能开发人员20年徒刑',
       'brief': '伯尼的人工智能法案提议判处人工智能开发人员20年徒刑',
       'url': 'https://twitter.com/venturetwins/status/2098456905526211026',
       'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'AI 时代的「4399」，可把我玩嗨了｜AI 上新',
+      'brief': '打开 Pocket 的前十分钟，我以为自己打开了一个 Instagram 版的 4399。 不久前，Meta 在美国正式推出了 Pocket。Pocket 的玩法很好理解，用户不用写代码，只要告诉 AI「我想做一个什么东西」，几十秒后就能得到一个可以直接操作的小游戏、小工具或者互…',
+      'url': 'http://www.geekpark.net/news/370227',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-12',
+      'title': 'AI的新用法，被这群 Builder 带到了外滩大会开发者日',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/i1FJsYNhNM4wwV78ANhL?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
       'type': '行业动态'
     },
     {
@@ -27,14 +99,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/GhA2VWxo6JTGyKIb7KdT?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-12',
-      'title': '模型一模一样，Token 却相差 70 倍？三项实测揭开 AI 编程工具的成本黑洞',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/oPSaLpULlAxGxTbYXlXO?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-12',
@@ -59,30 +123,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/',
       'source': 'TechCrunch',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Y Combinator的Garry Tan希望美国开放式人工智能实验室也能“提炼”前沿模型',
-      'brief': 'Tan希望规模较小的美国开放式人工智能实验室在美国前沿人工智能实验室上使用相同的培训技术，为美国带来……',
-      'url': 'https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'OpenAI与数学家的不和只会升级',
-      'brief': '25位领先的数学家签署了一封公开信，声称人工智能实验室正在威胁他们的智力工作。',
-      'url': 'https://techcrunch.com/2026/09/11/openais-feud-with-mathematicians-is-only-escalating/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Kimi制造商Moonshot AI的年收入目标为$ 2B',
-      'brief': '虽然K3的使用数据在最近几个月略有下降，但OpenRouter的数据显示，目前有多达3000亿个代币正在生成……',
-      'url': 'https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-11',
@@ -115,22 +155,6 @@ window.NEWS = {
       'url': 'https://www.theverge.com/ai-artificial-intelligence/994064/anthropic-spent-this-week-in-hot-water-over-cybersecurity',
       'source': 'The Verge',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-11',
-      'title': 'Meta表示，在提出侵入性的个人问题后，它正在改变AI建议',
-      'brief': 'Meta表示，在病毒视频显示其正在挖掘个人信息后，它正在对其AI聊天机器人建议的提示进行更改……',
-      'url': 'https://www.theverge.com/tech/993974/meta-ai-prompt-invasive-suggestions',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-11',
-      'title': '如何构建人工智能软件工厂：打开、查看和合并PR的代理',
-      'brief': '如何构建人工智能软件工厂：打开、查看和合并PR的代理',
-      'url': 'https://www.firecrawl.dev/blog/ai-software-factory',
-      'source': 'Hacker News',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-11',
