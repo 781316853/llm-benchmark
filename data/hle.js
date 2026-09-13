@@ -8,7 +8,7 @@ window.HLE = {
   'url': 'https://llm-stats.com/benchmarks/humanity%27s-last-exam',
   'officialUrl': 'https://lastexam.ai/',
   'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 14:33',
+  'refreshedAt': '2026-09-14 00:51',
   'stats': {
     'tasks': 2500,
     'entries': 84
@@ -28,23 +28,23 @@ window.HLE = {
     },
     {
       'rank': 2,
-      'model': 'Claude Opus 5',
-      'org': 'Anthropic',
-      'score': 64.7,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 5.00 / $ 25.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 3,
       'model': 'Claude Mythos Preview',
       'org': 'Anthropic',
       'score': 64.7,
       'size': '—',
       'context': '—',
       'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 3,
+      'model': 'Claude Opus 5',
+      'org': 'Anthropic',
+      'score': 64.7,
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 5.00 / $ 25.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -237,23 +237,23 @@ window.HLE = {
     },
     {
       'rank': 21,
-      'model': 'GLM-5.2',
-      'org': 'Zhipu AI',
-      'score': 54.7,
-      'size': '753B',
-      'context': '1.0M',
-      'cost': '$ 0.75 / $ 2.40',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 22,
       'model': 'Claude Opus 4.7',
       'org': 'Anthropic',
       'score': 54.7,
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 22,
+      'model': 'GLM-5.2',
+      'org': 'Zhipu AI',
+      'score': 54.7,
+      'size': '753B',
+      'context': '1.0M',
+      'cost': '$ 0.75 / $ 2.40',
       'license': null,
       'src': 'llm-stats'
     },
@@ -688,23 +688,23 @@ window.HLE = {
     },
     {
       'rank': 62,
-      'model': 'Qwen3.8-Flash-Next',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 35.9,
-      'size': '125B',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 63,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 35.9,
       'size': '125B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.47',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 63,
+      'model': 'Qwen3.8-Flash-Next',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 35.9,
+      'size': '125B',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },

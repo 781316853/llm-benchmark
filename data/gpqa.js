@@ -7,7 +7,7 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 14:33',
+  'refreshedAt': '2026-09-14 00:51',
   'stats': {
     'tasks': 198,
     'entries': 50
@@ -256,6 +256,16 @@ window.GPQA = {
     },
     {
       'rank': 25,
+      'model': 'Gemini 3 Flash',
+      'org': 'Google',
+      'score': 90.4,
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 0.50 / $ 3.00',
+      'license': null
+    },
+    {
+      'rank': 25,
       'model': 'Hy3',
       'org': 'Tencent',
       'score': 90.4,
@@ -268,16 +278,6 @@ window.GPQA = {
       'rank': 25,
       'model': 'Qwen3.6 Plus',
       'org': 'Alibaba Cloud / Qwen Team',
-      'score': 90.4,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 0.50 / $ 3.00',
-      'license': null
-    },
-    {
-      'rank': 25,
-      'model': 'Gemini 3 Flash',
-      'org': 'Google',
       'score': 90.4,
       'size': '—',
       'context': '1.0M',
@@ -386,17 +386,17 @@ window.GPQA = {
     },
     {
       'rank': 38,
-      'model': 'GPT-5.1',
-      'org': 'OpenAI',
+      'model': 'DeepSeek-V4-Flash-Max',
+      'org': 'DeepSeek',
       'score': 88.1,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.25 / $ 10.00',
+      'size': '284B',
+      'context': '1.0M',
+      'cost': '$ 0.09 / $ 0.18',
       'license': null
     },
     {
       'rank': 38,
-      'model': 'GPT-5.1 High',
+      'model': 'GPT-5.1 Thinking',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -406,7 +406,7 @@ window.GPQA = {
     },
     {
       'rank': 38,
-      'model': 'GPT-5.1 Instant',
+      'model': 'GPT-5.1',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -426,22 +426,22 @@ window.GPQA = {
     },
     {
       'rank': 38,
-      'model': 'GPT-5.1 Thinking',
+      'model': 'GPT-5.1 Instant',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.25 / $ 10.00',
+      'license': null
+    },
+    {
+      'rank': 38,
+      'model': 'GPT-5.1 High',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 38,
-      'model': 'DeepSeek-V4-Flash-Max',
-      'org': 'DeepSeek',
-      'score': 88.1,
-      'size': '284B',
-      'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18',
       'license': null
     },
     {

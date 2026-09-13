@@ -14,6 +14,38 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-13',
+      'title': '人工智能模型不会杀人–人会杀人',
+      'brief': '人工智能模型不会杀人–人会杀人',
+      'url': 'https://www.theregister.com/ai-and-ml/2026/09/09/ai-models-dont-kill-people-people-kill-people/5295368',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': '关于人工智能的戏剧性内部警告与硅谷的一些警告持平',
+      'brief': '关于人工智能的戏剧性内部警告与硅谷的一些警告持平',
+      'url': 'https://www.bbc.co.uk/news/articles/cq635037g18o',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-13',
+      'title': '为什么这么多人工智能研究人员认为机器可以杀死所有人',
+      'brief': '为什么这么多人工智能研究人员认为机器可以杀死所有人',
+      'url': 'https://www.wired.com/story/why-so-many-ai-researchers-think-the-machines-could-kill-everyone/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-13',
+      'title': 'Anthropic首席执行官表示， AI群体可能会在6-12个月内“接管互联网”',
+      'brief': 'Anthropic首席执行官表示， AI群体可能会在6-12个月内“接管互联网”',
+      'url': 'https://venturebeat.com/security/anthropic-ceo-says-ai-swarm-could-take-over-the-entire-internet-in-6-12-months-commits-to-ai-slowdown-plan',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-13',
       'title': '人工智能特工为什么要撒谎、欺骗和协调？',
       'brief': '人工智能特工为什么要撒谎、欺骗和协调？',
       'url': 'https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating',
@@ -61,14 +93,6 @@ window.NEWS = {
       'type': '行业动态'
     },
     {
-      'date': '2026-09-13',
-      'title': 'Read, Don\'t Write: 重塑大模型评价体系，构建全自动、可进化的“探测式”评测管线｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/0kYhxXxhOXhxGATe64ec?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '行业动态'
-    },
-    {
       'date': '2026-09-12',
       'title': 'OpenAI的Sam Altman表示，在2026年上市将是“不明智的”',
       'brief': '首席执行官萨姆·奥尔特曼（ Sam Altman ）表示，虽然OpenAI已秘密申请IPO ，但该公司今年不会上市。',
@@ -82,22 +106,6 @@ window.NEWS = {
       'brief': '“跟上前沿步伐”实际上会是什么样子？',
       'url': 'https://techcrunch.com/2026/09/12/anthropic-ceo-outlines-plan-to-pace-the-frontier/',
       'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'OpenAI的流氓AI在5月份试图入侵另一家公司',
-      'brief': '5月，数百个恶意和垃圾邮件包被上传到RubyGems ，给房东造成了严重中断。现在独立研究……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/994383/openais-rogue-ai-rubygems-hack',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-12',
-      'title': 'Sam Altman表示， 2026年OpenAI上市将是“不明智的”',
-      'brief': 'OpenAI首席执行官Sam Altman在接受《财富》杂志采访时证实， 2026年不会有OpenAI的IPO。在45分钟的时间里， A…',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/994384/sam-altman-no-openai-ipo-ill-advised',
-      'source': 'The Verge',
       'type': '公司动态'
     },
     {
@@ -134,11 +142,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-12',
-      'title': '最糟糕的垃圾邮件：深入了解iLands的AI Agent Hustle',
-      'brief': '最糟糕的垃圾邮件：深入了解iLands的AI Agent Hustle',
-      'url': 'https://tedium.co/2026/09/11/ilands-agents-email-spam-kaixin-tang/',
+      'title': '因AI政策纠纷导致Linux维护者孤立100个软件包失效',
+      'brief': '因AI政策纠纷导致Linux维护者孤立100个软件包失效',
+      'url': 'https://www.phoronix.com/news/Void-Linux-AI-Policy-Orphan',
       'source': 'Hacker News',
-      'type': '技术研究'
+      'type': '政策与安全'
     }
   ]
 };
