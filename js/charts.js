@@ -104,9 +104,15 @@
     };
   }
 
-  // 窗口自适应
+  // 窗口自适应;容器不可见(所在页 display:none,offsetParent 为 null)的图表跳过:
+  // 隐藏图表保留上次可见时的正确尺寸,待其所在页再次显示时由 showTab 派发的 resize 兜底适配;
+  // 这样每次切页广播的 resize 只处理当前可见页的图表,不会逐个 resize 隐藏页大图拖慢切页。
   window.addEventListener("resize", function () {
-    Object.keys(registry).forEach(function (id) { registry[id].resize(); });
+    Object.keys(registry).forEach(function (id) {
+      var dom = document.getElementById(id);
+      if (!dom || dom.offsetParent === null) return;
+      registry[id].resize();
+    });
   });
 
   window.CH = {

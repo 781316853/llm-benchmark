@@ -649,14 +649,51 @@
   function scheduleAuthNavSync() {
     requestAnimationFrame(function () { requestAnimationFrame(syncAuthNav); });
   }
+  // TB 柱状图(升序使最高在上)延后到首帧之后再初始化:ECharts 首次 init 约 100ms,
+  // 留在同步渲染里会让进入该页明显卡顿;容器高度已在 renderAuthority 同步设定,延后不影响布局测量。
+  // 回调时若该页仍在后台(空闲预渲染场景,display:none)则不 init——对 0 尺寸容器 init 只会得到空图,
+  // authChartDone 保持 false,等下次进入该页时由 renderAuthority 早退分支补挂。
+  function scheduleAuthChart() {
+    if (authChartQueued || !authTbMs.length) return;
+    authChartQueued = true;
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      authChartQueued = false;
+      var page = document.getElementById("page-authority");
+      if (!page || page.offsetParent === null) return;
+      authChartDone = true;
+      var tbSorted = authTbMs.slice().sort(function (a, b) { return a.score - b.score; });
+      CH.apply("authTBBar", CH.barOption(
+        tbSorted.map(function (m) { return m.model + "·" + m.agent + (m.effort ? "(" + m.effort + ")" : ""); }),
+        tbSorted.map(function (m) { return m.score; }),
+        "#2D9D78", "%", { max: 100, left: 200, labelSize: 11 }
+      ));
+    }); });
+  }
+  // 空闲时预渲染权威基准页:该页构建约 3200 个 DOM 节点,留到用户点击时同步做会卡住切页反馈。
+  // requestIdleCallback 带 timeout 上限,避免页面长期忙碌时一直排不上;不支持时退化为 setTimeout。
+  function scheduleAuthPrerender() {
+    var go = function () {
+      if (!authRendered && state.tab !== "authority") renderAuthority();
+    };
+    if (window.requestIdleCallback) window.requestIdleCallback(go, { timeout: 3000 });
+    else setTimeout(go, 800);
+  }
   // 权威基准页一次性渲染并缓存:
   // 1) 该页约 3200 个 DOM 节点,每次切页重建会造成可见卡顿(首次同步约 200ms);
   // 2) 更关键的是 wrap.innerHTML 会销毁 #authTBBar,而 CH 的实例注册表仍指向旧节点,
   //    导致 ECharts 实例与容器失联、第二次进入起图表空白。渲染一次并复用可同时修掉两者。
+  // 首次渲染通常由 init 在空闲时后台预执行(见 scheduleAuthPrerender):在 display:none 的
+  // 后台页构建只有解析成本、无布局/绘制成本,用户点击时内容已就绪,切页只剩正常显示布局。
   // 数据为页面加载时固定的快照(无运行时刷新),缓存安全;视口变化由 showTab 派发的 resize 事件兜底。
   var authRendered = false;
+  // TB 柱状图初始化状态:DOM 已就绪但图表未必已画(后台预渲染时无法对 0 尺寸容器 init)
+  var authChartDone = false, authChartQueued = false, authTbMs = [];
   function renderAuthority() {
-    if (authRendered) { scheduleAuthNavSync(); return; }
+    if (authRendered) {
+      if (!authChartDone) scheduleAuthChart();
+      scheduleAuthNavSync();
+      return;
+    }
     var S = D.src;
     var html = "";
     authSecSeq = 0;
@@ -813,22 +850,12 @@
     fillTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
     fillTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
     fillTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
-    // TB 柱状图(升序使最高在上)
-    // 延后到首帧之后再初始化:ECharts 首次 init 约 100ms,留在同步渲染里会让首次进入明显卡顿;
-    // 容器高度已在上方同步设定,故延后不影响大纲/表格的布局测量结果。
+    // TB 柱状图:容器高度同步设定,初始化延后(见 scheduleAuthChart)
     var tbBarEl = document.getElementById("authTBBar");
     if (tbBarEl && tbMs.length) {
-      var tbSorted = tbMs.slice().sort(function (a, b) { return a.score - b.score; });
       tbBarEl.style.height = Math.min(520, Math.max(280, tbMs.length * 30 + 90)) + "px";
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        var tbInst = CH.inst("authTBBar");
-        if (tbInst) tbInst.resize();
-        CH.apply("authTBBar", CH.barOption(
-          tbSorted.map(function (m) { return m.model + "·" + m.agent + (m.effort ? "(" + m.effort + ")" : ""); }),
-          tbSorted.map(function (m) { return m.score; }),
-          "#2D9D78", "%", { max: 100, left: 200, labelSize: 11 }
-        ));
-      }); });
+      authTbMs = tbMs;
+      scheduleAuthChart();
     }
     document.getElementById("authDesc").textContent =
       "以下为第三方权威基准测试快照,仅作参考展示;其中 Terminal-Bench(4.0/3.0/2.1)合并为一个基准组、NL2Repo-Bench(多源合并快照)计入总览综合分与命中数(优先以最高版本为代表,其中 TB 2.1 为归一化自报分),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
@@ -1002,6 +1029,7 @@
         showTab("overview");
         var loading = document.getElementById("appLoading");
         if (loading) loading.remove();
+        scheduleAuthPrerender(); // 首屏就绪后,空闲时后台预构建权威基准页
       });
     });
   }
