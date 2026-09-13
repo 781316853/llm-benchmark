@@ -17,6 +17,7 @@ const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const parseLlmStats = require("../lib/parseLlmStats");
+const { parseBenchlm } = require("../lib/parseBenchlm");
 const { parseDataLearnerBench } = require("./datalearner");
 const CONFIG = require("../lib/config");
 
@@ -32,33 +33,6 @@ const KEY_ALIASES = {
   "deepseek-v4-pro": "deepseek-v4-pro-0813"
 };
 function aliasKey(k) { return KEY_ALIASES[k] || k; }
-
-// 解析 benchlm.ai 镜像页(SSG,无 <table>,每行为卡片式 div):
-//   <a class="block truncate text-sm font-semibold ..." href="/models/slug">Model Name</a>
-//   + <span class="block truncate text-xs text-muted-foreground">Vendor · Open weight</span>
-//   + <span class="text-xs font-mono ... text-foreground">65.4%</span>
-function parseBenchlm(html) {
-  const models = [];
-  const parts = html.split('<a class="block truncate text-sm font-semibold');
-  for (let i = 1; i < parts.length; i++) {
-    const seg = parts[i];
-    const nameM = seg.match(/^[^>]*>([^<]+)<\/a>/);
-    if (!nameM) continue;
-    const scoreM = seg.match(/text-foreground">([\d.]+)%<\/span>/);
-    if (!scoreM) continue;
-    const score = Number(scoreM[1]);
-    if (!isFinite(score)) continue;
-    let vendor = "";
-    const orgM = seg.match(/text-muted-foreground">([\s\S]*?)<\/span>/);
-    if (orgM) {
-      vendor = orgM[1].replace(/<!--[\s\S]*?-->/g, "").trim();
-      const v = vendor.match(/^([^·]+)/);
-      vendor = v ? v[1].trim() : vendor;
-    }
-    models.push({ model: nameM[1].trim(), org: vendor || null, score: score });
-  }
-  return models;
-}
 
 // 解析官方论文评测表(arxiv HTML Table 2:Model|Overall Pass@1(%)|Count|Easy|Medium|Hard):
 //   前两行为表头(multirow),模型行形如 <td>Claude-Sonnet-4.5 (Claude Code)</td><td>40.2</td><td>3</td>...

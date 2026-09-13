@@ -779,8 +779,8 @@
     });
     html += authSectionHtml("Humanity's Last Exam", "前沿知识广度 · 仅展示", hl.officialUrl || hl.url,
       '<div class="table-wrap"><table id="authHleTable" class="data-table"></table></div>',
-      '来源:' + esc(hl.url || "") + '(官方:' + esc(hl.officialUrl || "") + ') · 更新 ' + esc(hl.updated || "") +
-      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好。本榜仅展示,不计入综合分。');
+      '来源:' + esc(hl.url || "") + '(官方:' + esc(hl.officialUrl || "") + ') · 补充镜像 benchlm.ai 与 datalearner(厂商官方发布) · 更新 ' + esc(hl.updated || "") +
+      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;三源合并去重取最高。本榜仅展示,不计入综合分。');
     // 9) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();

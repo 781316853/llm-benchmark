@@ -60,7 +60,7 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 - **Terminal-Bench 3.0**:线上 tbench.ai 的 3.0 路由已并入 4.0,改为每日抓取 snorkel.ai 全量 12 条 agent×model 榜单(74 任务);与 4.0 合并为一个基准组计入综合分与命中数(优先级 4.0>3.0>2.1)。
 - **Terminal-Bench 2.1**:llm-stats 聚合表(0-1 归一化自报分换算为%)+ datalearner 详情页(模式/发布时间/参数量)双源合并取最高(~43 模型级条目),与 4.0/3.0 合并为一个基准组;随 `fetch_all.js` 每日重写。
 - **NL2Repo-Bench**:主源 llm-stats.com 聚合表 + 三路补充(benchlm.ai 镜像 / 官方论文评测表 arxiv 2512.12730v2 Table 2(基准作者 OpenHands 官方协议,12 条上一代模型) / datalearner 厂商官方发布成绩)多源合并去重取最高(~48 模型级条目,src 字段标注来源);计入综合分(权重 8%)与命中数。
-- **权威基准测试(展示型)**:Terminal-Bench-Science 0.1(harbor 榜单 HTML)、OSWorld 2.0(steel.dev 镜像,部分得分)、Agents' Last Exam(官方榜单 HTML,Pass Rate)、ARC-AGI-3(llm-stats 聚合表,RHAE)、BenchCAD(GitHub leaderboard.json,主指标 Vision2Code total)、GPQA Diamond / HLE(llm-stats 聚合表);均仅展示,不计入综合分。
+- **权威基准测试(展示型)**:Terminal-Bench-Science 0.1(harbor 榜单 HTML)、OSWorld 2.0(steel.dev 镜像,部分得分)、Agents' Last Exam(官方榜单 HTML,Pass Rate)、ARC-AGI-3(llm-stats 聚合表,RHAE)、BenchCAD(GitHub leaderboard.json,主指标 Vision2Code total)、GPQA Diamond(llm-stats 聚合表)、HLE(llm-stats 主源 + benchlm.ai 镜像 + datalearner 厂商发布三源合并取最高,~84 模型级条目);均仅展示,不计入综合分。
 - **套餐快速对比(展示型)**:codingplan.fyi 静态 JSON(model-comparison-presets.json 固定精选模型分组 + plans.json 套餐月价/币种 + plan-models.json 套餐×模型综合单价与实测月用量 + models.json/platforms.json 名称映射 + config.json 美元汇率),抓取端完整复刻源站 entity-data 的比价算法(美元按汇率折算、按量行取综合单价、订阅行取折算月价+实测月用量),按综合单价升序输出;仿 news 模式在 `fetch_all.js` 旁路调用(不进基准管线/校验器),写入 `data/codingplan.js`;已丢弃源站推广跳转链接。
 
 任一源抓取失败则保留旧文件(站点不崩)。

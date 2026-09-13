@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 50,
+      'modelCount': 84,
       'updated': '2026-09-13',
       'ageDays': 0,
       'completeness': 1,
@@ -1110,9 +1110,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 50,
-      'complete': 50,
-      'modelCount': 50,
+      'total': 84,
+      'complete': 84,
+      'modelCount': 84,
       'missingFields': {},
       'flag': 'ok'
     },

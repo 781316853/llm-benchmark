@@ -133,10 +133,22 @@ module.exports = {
     },
     hle: {
       // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI),
-      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构)。
+      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构);补充源 benchlm.ai 镜像(55 模型,
+      // 收录 GPT-5.4 Pro / Apodex 1.1 / GLM-5 / Inkling / Gemma 4 等)与 datalearner 详情页
+      // (厂商官方发布),由 scripts/sources/hle.js 多源合并取最高。
       url: "https://llm-stats.com/benchmarks/humanity%27s-last-exam",
       host: "llm-stats.com",
       officialUrl: "https://lastexam.ai/"
+    },
+    hle_benchlm: {
+      // HLE 补充源:benchlm.ai 镜像(SSG 服务端渲染,55 模型)。注意源站 www 会 308 跳转至裸域。
+      url: "https://benchlm.ai/benchmarks/hle",
+      host: "benchlm.ai"
+    },
+    datalearner_hle: {
+      // HLE 补充源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
+      url: "https://www.datalearner.com/benchmarks/hle",
+      host: "www.datalearner.com"
     },
     nl2repo: {
       // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench,

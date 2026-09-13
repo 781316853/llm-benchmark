@@ -7,7 +7,7 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 13:59',
+  'refreshedAt': '2026-09-13 14:33',
   'stats': {
     'tasks': 198,
     'entries': 50
