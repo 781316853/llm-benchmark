@@ -95,31 +95,37 @@
   //  AI 能力同为个人专项测试口径,前端/后端各 12%;Terminal-Bench(4.0/3.0/2.1 合并)为权威终端编码榜;
   //  NL2Repo 为 2026-09 新引入的权威编码基准;
   //  ProgramBench 已于 2026-09 移除(官方 harness 口径 Fully Resolved 整体 0-7 分,区分度极低);
-  //  avgNorm 按在场权重归一化,缺失基准的权重自动回流,故上列权重无需凑满 100%)
+  //  avgNorm 按在场权重归一化(豁免最弱一组后),缺失基准的权重自动回流,故上列权重无需凑满 100%)
   var WEIGHTS = { deepswe: 0.18, webdev: 0.16, llm: 0.12, aicapFe: 0.12, aicapBe: 0.12, tbench: 0.12, nl2repo: 0.09 };
+  // 在场基准组列表(7 个计分组,键与 WEIGHTS 一致;norm 为各组 0-100 归一化分)
+  function presentGroups(e) {
+    var gs = [];
+    if (e.deepswe) gs.push({ key: "deepswe", w: WEIGHTS.deepswe, v: e.deepswe.norm });
+    if (e.llm && e.llm.norm != null) gs.push({ key: "llm", w: WEIGHTS.llm, v: e.llm.norm });
+    if (e.webdev && e.webdev.norm != null) gs.push({ key: "webdev", w: WEIGHTS.webdev, v: e.webdev.norm });
+    if (e.tbench && e.tbench.norm != null) gs.push({ key: "tbench", w: WEIGHTS.tbench, v: e.tbench.norm });
+    if (e.nl2repo && e.nl2repo.norm != null) gs.push({ key: "nl2repo", w: WEIGHTS.nl2repo, v: e.nl2repo.norm });
+    if (e.aicapFe && e.aicapFe.norm != null) gs.push({ key: "aicapFe", w: WEIGHTS.aicapFe, v: e.aicapFe.norm });
+    if (e.aicapBe && e.aicapBe.norm != null) gs.push({ key: "aicapBe", w: WEIGHTS.aicapBe, v: e.aicapBe.norm });
+    return gs;
+  }
+  // 一榜豁免:在场组按 norm 升序后剔除最弱一组(单组在场则不豁免),缓解"单榜失常拖垮整体"
+  function exemptedGroups(e) {
+    var gs = presentGroups(e).slice().sort(function (a, b) { return a.v - b.v; });
+    if (gs.length > 1) gs.shift();
+    return gs;
+  }
+  // 豁免后的加权平均:缺失基准的权重仍自动回流至在场组(豁免组的权重一并剔除)
   function avgNorm(e) {
+    var gs = exemptedGroups(e);
     var sum = 0, wsum = 0;
-    // 按权重加权平均;缺失基准的权重自动回流至已有基准(归一化)
-    if (e.deepswe) { sum += e.deepswe.norm * WEIGHTS.deepswe; wsum += WEIGHTS.deepswe; }
-    if (e.llm && e.llm.norm != null) { sum += e.llm.norm * WEIGHTS.llm; wsum += WEIGHTS.llm; }
-    if (e.webdev && e.webdev.norm != null) { sum += e.webdev.norm * WEIGHTS.webdev; wsum += WEIGHTS.webdev; }
-    if (e.tbench && e.tbench.norm != null) { sum += e.tbench.norm * WEIGHTS.tbench; wsum += WEIGHTS.tbench; }
-    if (e.nl2repo && e.nl2repo.norm != null) { sum += e.nl2repo.norm * WEIGHTS.nl2repo; wsum += WEIGHTS.nl2repo; }
-    if (e.aicapFe && e.aicapFe.norm != null) { sum += e.aicapFe.norm * WEIGHTS.aicapFe; wsum += WEIGHTS.aicapFe; }
-    if (e.aicapBe && e.aicapBe.norm != null) { sum += e.aicapBe.norm * WEIGHTS.aicapBe; wsum += WEIGHTS.aicapBe; }
+    gs.forEach(function (g) { sum += g.v * g.w; wsum += g.w; });
     return wsum > 0 ? sum / wsum : 0;
   }
-  // 跨榜一致性(标准差):各基准 norm 值的离散程度
-  // 数据不足 2 个基准时返回 0,避免单榜模型被误判为"最均衡"
+  // 跨榜一致性(标准差):对豁免后剩余各组的 norm 计算离散程度
+  // 数据不足 2 组时返回 0,避免单组模型被误判为"最均衡"
   function variance(e) {
-    var vs = [];
-    if (e.deepswe) vs.push(e.deepswe.norm);
-    if (e.llm && e.llm.norm != null) vs.push(e.llm.norm);
-    if (e.webdev && e.webdev.norm != null) vs.push(e.webdev.norm);
-    if (e.tbench && e.tbench.norm != null) vs.push(e.tbench.norm);
-    if (e.nl2repo && e.nl2repo.norm != null) vs.push(e.nl2repo.norm);
-    if (e.aicapFe && e.aicapFe.norm != null) vs.push(e.aicapFe.norm);
-    if (e.aicapBe && e.aicapBe.norm != null) vs.push(e.aicapBe.norm);
+    var vs = exemptedGroups(e).map(function (g) { return g.v; });
     if (vs.length < 2) return 0;
     var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
     var sumSq = vs.reduce(function (s, v) { var d = v - mean; return s + d * d; }, 0);
@@ -127,12 +133,21 @@
   }
   // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
-  var MAX_PENALTY = 2.0;      // 折减上限 2 分,避免过度惩罚
-  // 综合分:主基准组加权平均(DeepSWE 18%/WebDev 16%/llm2014 12%/AI·前端 12%/AI·后端 12%/TB 12%/NL2Repo 9%)减去一致性折减
+  var MAX_PENALTY = 1.0;      // 折减上限 1 分(2026-09-14 由 2 分下调:单榜失常已由豁免位兜底,不再双重惩罚)
+  // 完整度奖励:按 7 个计分组的在场数给分(奖励补全数据,而非惩罚缺榜)
+  var BONUS_FULL = 3.0;   // 7 组全勤
+  var BONUS_SIX = 1.5;    // 在场 6 组
+  function coverageBonus(presentCount) {
+    return presentCount >= 7 ? BONUS_FULL : (presentCount === 6 ? BONUS_SIX : 0);
+  }
+  // 综合分 = 豁免后加权均值 + 完整度奖励 − 一致性折减(封顶 100,保持百分制量纲)
+  // (DeepSWE 18%/WebDev 16%/llm2014 12%/AI·前端 12%/AI·后端 12%/TB 12%/NL2Repo 9%;
+  //  2026-09-14 起新口径:一榜豁免 + 全勤奖励,折减上限 1 分)
   function composite(e) {
     var base = avgNorm(e);
+    var bonus = coverageBonus(presentGroups(e).length);
     var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);
-    return base - penalty;
+    return Math.min(100, base + bonus - penalty);
   }
 
   // 梯队标签(从高到低):用于总览页展示,替代数值综合分
