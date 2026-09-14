@@ -673,7 +673,7 @@
     requestAnimationFrame(function () { requestAnimationFrame(syncAuthNav); });
   }
   // TB 柱状图(升序使最高在上)延后到首帧之后再初始化:ECharts 首次 init 约 100ms,
-  // 留在同步渲染里会让进入该页明显卡顿;容器高度已在 renderAuthority 同步设定,延后不影响布局测量。
+  // 留在同步渲染里会让进入该页明显卡顿;容器高度已在 setAuthTbVer 同步设定,延后不影响布局测量。
   // 回调时若该页仍在后台(空闲预渲染场景,display:none)则不 init——对 0 尺寸容器 init 只会得到空图,
   // authChartDone 保持 false,等下次进入该页时由 renderAuthority 早退分支补挂。
   function scheduleAuthChart() {
@@ -684,9 +684,9 @@
       var page = document.getElementById("page-authority");
       if (!page || page.offsetParent === null) return;
       authChartDone = true;
-      var tbSorted = authTbMs.slice().sort(function (a, b) { return a.score - b.score; });
+      var tbSorted = authTbMs.slice().sort(function (a, b) { return a.score - b.score; }).slice(-25);
       CH.apply("authTBBar", CH.barOption(
-        tbSorted.map(function (m) { return m.model + "·" + m.agent + (m.effort ? "(" + m.effort + ")" : ""); }),
+        tbSorted.map(tbBarLabel),
         tbSorted.map(function (m) { return m.score; }),
         "#2D9D78", "%", { max: 100, left: 200, labelSize: 11 }
       ));
@@ -711,6 +711,97 @@
   var authRendered = false;
   // TB 柱状图初始化状态:DOM 已就绪但图表未必已画(后台预渲染时无法对 0 尺寸容器 init)
   var authChartDone = false, authChartQueued = false, authTbMs = [];
+  // ----- Terminal-Bench 版本切换 -----
+  // 会话内记住所选版本,页面刷新回默认 4.0(当前主榜);章节 DOM 一次渲染,切换只重填内容不重建
+  var authTbVer = "4.0";
+  // 各版本元数据:srcKey 对应 D.src 键以取各自的更新日期;dynUrl=展示链接优先取数据文件 url(4.0 随抓取更新);
+  // tasks 文案描述各版任务规模与口径,抓取端调整主源时需同步
+  var TB_VER_META = [
+    { ver: "4.0", label: "4.0 主榜", srcKey: "tbench", dynUrl: true,
+      url: "https://www.tbench.ai/leaderboard/terminal-bench/4.0",
+      tasks: "66 个任务(校准资源并移除饱和任务),当前主站 agent×model 榜单" },
+    { ver: "3.0", label: "3.0 备选", srcKey: "tbenchV3",
+      url: "https://snorkel.ai/leaderboard/terminal-bench-3-0/",
+      tasks: "74 个任务(含更长周期/多容器/GPU 环境),snorkel.ai 权威镜像,每日自动抓取(agent×model)" },
+    { ver: "2.1", label: "2.1 历史", srcKey: "tbenchV21",
+      url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1",
+      tasks: "89 个任务;datalearner 厂商官方发布成绩为主源,llm-stats 归一化自报分为补充" }
+  ];
+  function tbMeta(ver) {
+    for (var i = 0; i < TB_VER_META.length; i++) if (TB_VER_META[i].ver === ver) return TB_VER_META[i];
+    return TB_VER_META[0];
+  }
+  function tbVerUrl(meta) {
+    var s = D.src[meta.srcKey] || {};
+    return (meta.dynUrl && s.url) ? s.url : meta.url;
+  }
+  // 版本来源注:版本特定段(来源/更新日期/任务规模与口径)+ 公共段(多版本合并计分规则)
+  function tbNoteHtml(meta) {
+    var s = D.src[meta.srcKey] || {};
+    return '来源:' + esc(tbVerUrl(meta)) + ' · 更新 ' + esc(s.updated || "") + ' · ' + meta.tasks +
+      ',得分越高越好。三版合并为一个基准组计入总览综合分与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
+      '其中 2.1 为厂商发布/归一化自报分口径,与 4.0/3.0 的官方 agent×model 解决率不同。';
+  }
+  // 柱状图条目标签:2.1 为模型级数据无 agent 字段,以「—」占位
+  function tbBarLabel(m) {
+    return m.model + "·" + (m.agent || "—") + (m.effort ? "(" + m.effort + ")" : "");
+  }
+  // 指定版本表格行(条目已按解决率降序;混合多渠道时逐行标注来源徽标)
+  function buildTbRows(ms) {
+    var mixed = mixedSrc(ms);
+    return ms.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
+        (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + (mixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + esc(m.agent || "—") + '</td><td class="num">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</td>' +
+        '<td class="num">' + esc(m.date || "—") + '</td><td class="num">' + esc(m.tokens || "—") + '</td>' +
+        '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
+    });
+  }
+  // 版本切换按钮组(复用套餐页胶囊按钮组样式)
+  function tbSwitchHtml() {
+    return '<div class="tb-ver-switch"><span class="tb-ver-label">版本</span>' +
+      '<div class="qc-scope" id="authTbSwitch" role="group" aria-label="Terminal-Bench 版本切换">' +
+      TB_VER_META.map(function (t) {
+        var act = t.ver === authTbVer;
+        return '<button type="button" class="qc-scope-btn' + (act ? " is-active" : "") +
+          '" data-tb-ver="' + t.ver + '" aria-pressed="' + act + '">' + t.label + '</button>';
+      }).join("") + '</div></div>';
+  }
+  // 版本切换单一入口:只重填表格/来源注/原站链接/柱状图,不重建章节 DOM(ECharts 实例安全)。
+  // 柱状图 >25 条取 Top 25(2.1 全量 43 条,避免高度上限内挤压);已 init 则直接重画,
+  // 否则(后台预渲染、图表未挂)走 scheduleAuthChart 延后补挂。
+  function setAuthTbVer(ver) {
+    var meta = tbMeta(ver);
+    authTbVer = meta.ver;
+    var ms = D.tbenchByVersion(authTbVer);
+    fillTable("authTBTable", ["#", "模型", "Agent", "解决率±CI", "发布日期", "Tokens", "成本"],
+      buildTbRows(ms), ["", "", "", "num", "num", "num", "num"]);
+    var note = document.getElementById("authTBNote");
+    if (note) note.innerHTML = tbNoteHtml(meta);
+    var link = document.getElementById("authTBLink");
+    if (link) link.href = tbVerUrl(meta);
+    var sw = document.getElementById("authTbSwitch");
+    if (sw) Array.prototype.forEach.call(sw.querySelectorAll("[data-tb-ver]"), function (b) {
+      var act = b.getAttribute("data-tb-ver") === authTbVer;
+      b.classList.toggle("is-active", act);
+      b.setAttribute("aria-pressed", act ? "true" : "false");
+    });
+    authTbMs = ms;
+    var tbBarEl = document.getElementById("authTBBar");
+    if (tbBarEl && ms.length) {
+      var shown = ms.slice().sort(function (a, b) { return a.score - b.score; }).slice(-25);
+      tbBarEl.style.height = Math.min(760, Math.max(280, shown.length * 30 + 90)) + "px";
+      var h3 = document.getElementById("authTBBarTitle");
+      if (h3) h3.textContent = "Terminal-Bench " + authTbVer + " 解决率排行(agent×model Top 25)";
+      if (authChartDone) {
+        CH.apply("authTBBar", CH.barOption(
+          shown.map(tbBarLabel),
+          shown.map(function (m) { return m.score; }),
+          "#2D9D78", "%", { max: 100, left: 200, labelSize: 11 }
+        ));
+      } else scheduleAuthChart();
+    }
+  }
   function renderAuthority() {
     if (authRendered) {
       if (!authChartDone) scheduleAuthChart();
@@ -738,33 +829,13 @@
       ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
       (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
       '。本榜计入总览综合分(权重 18%)与命中数。');
-    // 1) Terminal-Bench 多版本(4.0/3.0/2.1):合并为一个基准组计入总览,优先以最高版本为代表
-    var tbVersions = [
-      { ver: "4.0", tag: "计入总览 · 当前主榜", url: (S.tbench || {}).url || "", tasks: "66 个任务(校准资源并移除饱和任务),当前主站 agent×model 榜单" },
-      { ver: "3.0", tag: "计入总览 · 备选参考", url: "https://snorkel.ai/leaderboard/terminal-bench-3-0/", tasks: "74 个任务(含更长周期/多容器/GPU 环境),snorkel.ai 权威镜像 12 条,每日自动抓取(agent×model)" },
-      { ver: "2.1", tag: "计入总览 · 历史版本", url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1", tasks: "89 个任务;datalearner 厂商官方发布成绩为主源,llm-stats 归一化自报分为补充" }
-    ];
-    var tbRowsByVer = {}, tbMs = D.tbenchByVersion("4.0");
-    tbVersions.forEach(function (t) {
-      var ms = D.tbenchByVersion(t.ver);
-      var mixed = mixedSrc(ms);
-      tbRowsByVer[t.ver] = ms.map(function (m, i) {
-        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
-          (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + (mixed ? srcBadge(m.src) : "") + '</td>' +
-          '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</td>' +
-          '<td class="num">' + esc(m.date || "—") + '</td><td class="num">' + esc(m.tokens || "—") + '</td>' +
-          '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
-      });
-      var is4 = t.ver === "4.0";
-      var chartHtml = is4
-        ? '<div class="chart-box"><h3>解决率排行(agent×model 全条目)</h3><div id="authTBBar" class="chart"></div></div>'
-        : "";
-      var tableHtml = '<div class="table-wrap"><table id="authTB' + (is4 ? "" : t.ver.replace(".", "")) + 'Table" class="data-table"></table></div>';
-      html += authSectionHtml("Terminal-Bench " + t.ver, "终端命令行任务 · " + t.tag, t.url,
-        chartHtml + tableHtml,
-        '来源:' + esc(t.url) + ' · 更新 ' + esc((S.tbench || {}).updated || "") +
-        ' · ' + t.tasks + ',得分越高越好。三版合并为一个基准组计入总览综合分与命中数,优先以最高版本为代表(4.0>3.0>2.1);其中 2.1 为归一化自报分,口径见上方来源注。');
-    });
+    // 1) Terminal-Bench 多版本(4.0/3.0/2.1):合并为单一章节,章节内切换版本查看(默认 4.0 主榜);
+    //    多版本仍合并为一个基准组计入总览,优先以最高版本为代表
+    html += authSectionHtml("Terminal-Bench", "终端命令行任务 · 计入总览 · 版本切换", tbVerUrl(tbMeta(authTbVer)),
+      tbSwitchHtml() +
+      '<div class="chart-box"><h3 id="authTBBarTitle">Terminal-Bench ' + authTbVer + ' 解决率排行(agent×model Top 25)</h3><div id="authTBBar" class="chart"></div></div>' +
+      '<div class="table-wrap"><table id="authTBTable" class="data-table"></table></div>',
+      tbNoteHtml(tbMeta(authTbVer)));
     // 2) Terminal-Bench-Science 0.1
     var tbs = S.tbscience || {};
     var tbsMs = D.tbScience();
@@ -883,11 +954,20 @@
     if (wrap) wrap.innerHTML = html;
     renderAuthOutline(); // 由已渲染章节生成左侧大纲预览
     fillTable("authDeepSweTable", ["#", "模型", "强度", "Pass@1±CI", "平均成本", "输出tokens", "步数"], dsAuthRows, ["", "", "", "num", "num", "num", "num"]);
-    tbVersions.forEach(function (t) {
-      fillTable("authTB" + (t.ver === "4.0" ? "" : t.ver.replace(".", "")) + "Table",
-        ["#", "模型", "Agent", "解决率±CI", "发布日期", "Tokens", "成本"],
-        tbRowsByVer[t.ver], ["", "", "", "num", "num", "num", "num"]);
-    });
+    // TB 章节:定位章节容器,给来源注与标题原站链接补 id(authSectionHtml 不支持自定义 id),供版本切换时更新
+    var tbTableEl = document.getElementById("authTBTable");
+    var tbSec = tbTableEl ? tbTableEl.closest(".auth-block") : null;
+    if (tbSec) {
+      var tbNoteEl = tbSec.querySelector(".source-note"); if (tbNoteEl) tbNoteEl.id = "authTBNote";
+      var tbLinkEl = tbSec.querySelector(".auth-link"); if (tbLinkEl) tbLinkEl.id = "authTBLink";
+    }
+    setAuthTbVer(authTbVer); // 按当前版本填表 + 来源注 + 柱状图(默认 4.0)
+    // 版本切换(事件委托绑在按钮组容器上;重填不重建 DOM,ECharts 实例安全)
+    var tbSw = document.getElementById("authTbSwitch");
+    if (tbSw) tbSw.onclick = function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest("[data-tb-ver]") : null;
+      if (btn) setAuthTbVer(btn.getAttribute("data-tb-ver"));
+    };
     fillTable("authTBScienceTable", ["#", "模型", "Agent", "解决率"], tbsRows, ["", "", "", "num"]);
     fillTable("authOSWorldTable", ["#", "系统(模型·配置)", "部分得分", "厂商", "上报时间", "来源"], osRows, ["", "", "num", "", "num", ""]);
     fillTable("authLastExamTable", ["#", "模型", "厂商", "Pass@1", "参数量", "上下文"], aleRows, ["", "", "", "num", "num", "num"]);
@@ -898,15 +978,8 @@
     fillTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
     fillTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
     fillTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
-    // TB 柱状图:容器高度同步设定,初始化延后(见 scheduleAuthChart)
-    var tbBarEl = document.getElementById("authTBBar");
-    if (tbBarEl && tbMs.length) {
-      tbBarEl.style.height = Math.min(520, Math.max(280, tbMs.length * 30 + 90)) + "px";
-      authTbMs = tbMs;
-      scheduleAuthChart();
-    }
     document.getElementById("authDesc").textContent =
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
 

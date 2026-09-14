@@ -532,6 +532,10 @@ a:hover { text-decoration: underline; }
 /* 章节容器:统一间距,并为锚点落点预留标签栏高度 */
 .auth-block { margin-bottom: 34px; scroll-margin-top: 80px; }
 .auth-block:last-child { margin-bottom: 0; }
+/* Terminal-Bench 版本切换:复用套餐页胶囊按钮组(qc-scope),行内化避免占满整行 */
+.tb-ver-switch { display: flex; align-items: center; gap: 8px; margin: 4px 0 12px; }
+.tb-ver-label { color: var(--text-tertiary); font-size: 12.5px; }
+.tb-ver-switch .qc-scope { display: inline-flex; }
 
 /* ===== 响应式 ===== */
 /* 中窄屏:两栏回落为上下堆叠(避免卡片被压成单列) */
