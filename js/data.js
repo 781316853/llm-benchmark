@@ -256,37 +256,70 @@
     return tbenchByVersion("4.0");
   }
 
-  // 聚合:每 canonical 模型以「最高版本」为代表(版本优先级 4.0>3.0>2.1)
-  // 版本内取该模型最优原始分,并做版本内 min-max 归一化到 0-100(norm)作为综合分口径。
-  // 原因:不同版本难度不同(版本越高越难,原始分越低),按版本内归一化消除难度差异,使各版本最优模型都接近 100、跨版本可比。
+  // 聚合:每 canonical 模型以「最高版本」为代表(版本优先级 4.0>3.0>2.1),版本内取该模型最优原始分。
+  // 归一口径:以最新 4.0 为基准做跨版本难度折算 —— 非基准版本 X 的难度系数
+  //   k_X = Σ(共有模型在 4.0 的分) / Σ(共有模型在 X 的分),共有 = 与 4.0 同 canonical 都有成绩,
+  // 该版分数 × k_X 即「4.0 等效分」(clamp 0-100);全池等效分统一 min-max 到 0-100 作 norm。
+  // 原因:各版本难度与口径不同(如 2.1 为厂商自报分,88 分只相当于 4.0 官方 26 分左右),
+  // 版本内 min-max 会让低难度版本的虚高分追平 4.0 头名;按共有模型折算后跨版本才可比。
+  // 兜底:若 X 与 4.0 直接共有模型不足 3 个,则与低一档版本求系数并乘以该档累计系数(链式折算);
+  //       实在无法折算时系数记 1(等效分 = 原始分)。
   function tbench() {
-    var best = {}, seen = {};
+    var REF = "4.0";
+    // 每版本按 canonical 取最优分
+    var byVer = {};
     TB_VERSIONS.forEach(function (v) {
       var byModel = {};
       v.src().models.forEach(function (m) {
         var c = canon(m.model);
         if (!byModel[c.id] || m.score > byModel[c.id].score) byModel[c.id] = m;
       });
-      var keys = Object.keys(byModel);
-      var min = Infinity, max = -Infinity, i;
-      for (i = 0; i < keys.length; i++) {
-        var s = byModel[keys[i]].score;
-        if (s < min) min = s;
-        if (s > max) max = s;
-      }
-      for (i = 0; i < keys.length; i++) {
-        var k = keys[i];
-        if (!seen[k]) {
-          var m = byModel[k];
-          var norm = (max > min) ? ((m.score - min) / (max - min)) * 100 : 100;
-          // 已登记过的模型(更高版本)不再覆盖
-          best[k] = Object.assign({}, m, { version: v.ver, norm: norm, canon: canon(m.model) });
-          seen[k] = true;
-        }
-      }
+      byVer[v.ver] = byModel;
     });
-    return Object.keys(best).map(function (k) { return best[k]; })
-      .sort(function (a, b) { return b.score - a.score; });
+    // 版本难度系数:4.0 恒为 1,其余对基准(或链式对低一档)按共有模型分和之比折算
+    function sharedRatio(a, b) {
+      var sumA = 0, sumB = 0, n = 0;
+      Object.keys(byVer[a]).forEach(function (id) {
+        if (byVer[b][id]) { sumA += byVer[a][id].score; sumB += byVer[b][id].score; n++; }
+      });
+      return (n >= 3 && sumA > 0) ? { k: sumB / sumA, n: n } : null;
+    }
+    var coef = {}, coefN = {};
+    TB_VERSIONS.forEach(function (v, vi) {
+      if (v.ver === REF) { coef[v.ver] = 1; coefN[v.ver] = byVer[v.ver] ? Object.keys(byVer[v.ver]).length : 0; return; }
+      var r = sharedRatio(v.ver, REF), k = null, n = 0;
+      if (r) { k = r.k; n = r.n; }
+      else if (vi > 1) {
+        var lower = TB_VERSIONS[vi - 1].ver;
+        var rl = sharedRatio(v.ver, lower);
+        if (rl && coef[lower] != null) { k = rl.k * coef[lower]; n = rl.n; }
+      }
+      coef[v.ver] = (k != null) ? k : 1;
+      coefN[v.ver] = n;
+    });
+    // 每模型代表:最高版本优先(已登记更高版本不覆盖);等效分 = 原始分 × 所在版本难度系数
+    var best = {};
+    TB_VERSIONS.forEach(function (v) {
+      var byModel = byVer[v.ver];
+      Object.keys(byModel).forEach(function (id) {
+        if (best[id]) return;
+        var m = byModel[id];
+        var equiv = Math.max(0, Math.min(100, m.score * coef[v.ver]));
+        best[id] = Object.assign({}, m, { version: v.ver, equiv: equiv, coef: coef[v.ver], coefN: coefN[v.ver], canon: canon(m.model) });
+      });
+    });
+    // 全池等效分 min-max → 0-100
+    var keys = Object.keys(best), min = Infinity, max = -Infinity, i;
+    for (i = 0; i < keys.length; i++) {
+      var s = best[keys[i]].equiv;
+      if (s < min) min = s;
+      if (s > max) max = s;
+    }
+    keys.forEach(function (id) {
+      best[id].norm = (max > min) ? ((best[id].equiv - min) / (max - min)) * 100 : 100;
+    });
+    return keys.map(function (id) { return best[id]; })
+      .sort(function (a, b) { return b.equiv - a.equiv; });
   }
 
   // ===== 权威基准测试(仅展示,不计入综合分/命中):TB-Science / OSWorld / ALE / ARC-AGI-3 / BenchCAD =====
@@ -381,8 +414,8 @@
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
     });
     // Terminal-Bench 多版本(4.0/3.0/2.1):合并为一个基准组,优先以最高版本为代表(4.0>3.0>2.1);
-    // 计入综合分与命中数。归一口径用「版本内 min-max 到 0-100」(版本难度不同,直接比较原始分会失真:
-    // 版本越高越难、原始分越低),故各版本最优模型都接近 100、跨版本可比;矩阵展示的仍是代表版本原始分。
+    // 计入综合分与命中数。归一口径:以 4.0 为基准,3.0/2.1 按共有模型折算难度系数得「4.0 等效分」
+    // (如 2.1 自报分 88 ≈ 4.0 官方 26 分),再全池统一 min-max 到 0-100;矩阵展示的仍是代表版本原始分。
     tbench().forEach(function (m) {
       var e = ensure(m.canon);
       if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, ci: m.ci, version: m.version, agent: m.agent, effort: m.effort, name: m.model, norm: m.norm };

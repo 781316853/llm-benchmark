@@ -7,14 +7,16 @@
 
   // 综合分容差:差距 < 此值的模型视为"同档",同档内按次级指标排序
   var SCORE_TOLERANCE = 1.5;
-  // 各榜成绩取值(与矩阵列一致,值越大越好);参考模型(命中 2-3 榜)逐榜比对时使用
-  // 「AI 能力」作为单一基准参与定位:取前端/后端在场方向分的均值
+  // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
+  // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
+  // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
+  // 「AI 能力」作为单一基准参与:取前端/后端在场方向分的均值
   // Terminal-Bench / NL2Repo 计入综合分与命中;其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
-    tbench:  function (e) { return e.tbench ? e.tbench.score : null; },
+    tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
     nl2repo: function (e) { return e.nl2repo ? e.nl2repo.score : null; },
     aicap:   function (e) {
       var vals = [];
@@ -23,46 +25,24 @@
       return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
     }
   };
-  // 参考模型(命中 2-3 榜)命中的榜 key 列表(以实际有数据为准;AI 能力前端/后端合并为单一命中)
-  function hitBoards(e) {
-    var boards = [];
-    if (e.deepswe) boards.push("deepswe");
-    if (e.llm && e.llm.norm != null) boards.push("llm");
-    if (e.webdev && e.webdev.score != null) boards.push("webdev");
-    if (e.tbench) boards.push("tbench");
-    if (e.nl2repo) boards.push("nl2repo");
-    if (e.aicapFe || e.aicapBe) boards.push("aicap");
-    return boards;
+  // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
+  // 参考综合分与排名行同口径(即 composite:一榜豁免 + 完整度奖励 − 一致性折减;参考行最多 4 组,
+  // 无完整度奖励,但同样享受一榜豁免,落位口径偏乐观),仅用于落入名次间隔,展示上仍不显示综合分、不计排名。
+  // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前)。
+  // 原因:旧的「逐榜数高于它的排名行、以最弱榜为准」口径会把单榜偏弱的整体强参考行过度下压
+  // (如 Claude Fable 5.1 的 DeepSWE 中游抹平了 WebDev 第 2 / TB 校准分第 2,被压到第 10 间隔),
+  // 与各榜加权后的整体水平不符;按加权综合分比对与排名行的排序依据一致,缺失榜由权重回流自然处理。
+  function refPosition(e, ranked) {
+    var c = composite(e), above = 0;
+    ranked.forEach(function (r) { if (composite(r) > c) above++; });
+    return above;
   }
-  // 参考模型(命中 2-3 榜)的区间位置:对其命中的每个榜,统计该榜成绩高于它的排名行模型数,
-  // 按覆盖率折算到全部排名行后取最大值(以较弱榜为准),避免强榜把弱榜拉高而使落位偏前。
-  // 直接数"高于它的模型数"会在覆盖稀疏的榜上低估弱势(如 AI 能力仅少数排名行有成绩,
-  // 全部高于它也只计少数几个),故按 高于数/有成绩数 的比例折算排名行总数。
-  // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前),不计算综合分
-  function dualPosition(e, ranked) {
-    var boards = hitBoards(e);
-    if (!boards.length) return ranked.length;
-    var worst = -1; // 名次最靠后的榜(折算位置最大)为准
-    boards.forEach(function (b) {
-      var val = BOARD_VALS[b](e);
-      var above = 0, withData = 0;
-      ranked.forEach(function (r) {
-        var rv = BOARD_VALS[b](r);
-        if (rv == null) return;
-        withData++;
-        if (rv > val) above++;
-      });
-      if (!withData) return; // 该榜排名行无覆盖,无比对信号,跳过
-      var est = Math.round(above / withData * ranked.length);
-      if (est > worst) worst = est;
-    });
-    return worst < 0 ? ranked.length : worst;
-  }
-  // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上):
+  // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上;总览页传 3 仅收命中≥3榜):
   // ① 排名行(命中≥4榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
   //    并依次编号 _posKey = 0,1,2…;
-  // ② 参考行(命中=2 或 3)不计算综合分、不参与排名,按逐榜比对落入相应名次间隔,_posKey = dualPosition − 0.5,
-  //    恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);多个参考行同间隔时按位置值先后排列;
+  // ② 参考行(命中=3)不计算综合分、不参与排名,按「参考综合分」在排名行综合分序列的应处名次落入
+  //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
+  //    同一间隔内多个参考行按参考综合分降序先后排列;
   // ③ 单榜行(命中=1)不计算综合分、无可比对区间,统一排在全部 ①② 之后(_posKey > ranked.length),
   //    既不占用前 30 名额,也不扰乱跨榜模型的名次间隔;
   // ④ 合并后按 _posKey 升序
@@ -87,13 +67,10 @@
       return variance(a) - variance(b);
     });
     ranked.forEach(function (e, i) { e._posKey = i; });
-    inserted.forEach(function (e) {
-      var key = dualPosition(e, ranked) - 0.5;
-      // 位置恰为 x.5 时键会与排名行整数键重合,微移保证参考行键严格落在两个排名行之间,
-      // 避免默认渲染与表头排序(升序后反转)对重合键的先后不一致
-      if (Math.abs(key - Math.round(key)) < 1e-9) key += 1e-6;
-      e._posKey = key;
-    });
+    // 参考行按参考综合分降序预排,再落入各自间隔:同间隔内的先后即综合分先后,
+    // i*1e-6 仅作同间隔内次序微移(间隔半宽 0.5,微移不会跨间隔)
+    inserted.sort(function (a, b) { return composite(b) - composite(a); });
+    inserted.forEach(function (e, i) { e._posKey = refPosition(e, ranked) - 0.5 + i * 1e-6; });
     // 单榜行统一排在参考行之后:按在场榜单成绩降序(不同榜量纲不可比,仅作为稳定次序)
     single.forEach(function (e) { e._posKey = ranked.length + 0.5; });
     single.sort(function (a, b) { return bestBoardVal(b) - bestBoardVal(a); });
@@ -260,7 +237,7 @@
 
   window.CMP = {
     matrix: matrix, avgNorm: avgNorm, composite: composite,
-    dualPosition: dualPosition,
+    refPosition: refPosition,
     assignTiers: assignTiers,
     variance: variance,
     radarSeries: radarSeries, metricCards: metricCards,
