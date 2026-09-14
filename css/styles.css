@@ -207,6 +207,10 @@ a:hover { text-decoration: underline; }
 .badge-tb20 { display: inline-block; font-size: 10px; font-weight: 700; color: #6b4fa0;
   background: #eee6fb; padding: 1px 6px; border-radius: 999px; margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid #d4c4ee; }
+/* 数据来源渠道徽标:官方榜(蓝)/厂商发布(绿)/第三方(灰),低饱和小字,悬浮显示完整层级 */
+.badge-src { display: inline-block; font-size: 10px; font-weight: 600; color: #6B7784;
+  background: #F0F3F6; padding: 1px 5px; border-radius: 999px; margin-left: 5px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid #D7DEE5; cursor: help; }
 /* 「参考」徽标:命中 2-3 个基准组的模型,灰蓝色调,与参考行高亮配套 */
 .badge-two { display: inline-block; font-size: 10px; font-weight: 700; color: #4A6076;
   background: #E2E9F0; padding: 1px 6px; border-radius: 999px; margin-left: 6px;

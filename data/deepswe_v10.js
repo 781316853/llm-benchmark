@@ -17,7 +17,8 @@ window.DEEPSWE_V10 = {
     'ci': 3,
     'cost': 6.61,
     'outTok': 46977,
-    'steps': 79
+    'steps': 79,
+    'src': 'official'
   },
   {
     'name': 'claude-opus-4-8',
@@ -26,7 +27,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 12.58,
     'outTok': 136262,
-    'steps': 108
+    'steps': 108,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-4',
@@ -35,7 +37,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 4.38,
     'outTok': 71060,
-    'steps': 69
+    'steps': 69,
+    'src': 'official'
   },
   {
     'name': 'claude-opus-4-7',
@@ -44,7 +47,8 @@ window.DEEPSWE_V10 = {
     'ci': 5,
     'cost': 18.19,
     'outTok': 103428,
-    'steps': 203
+    'steps': 203,
+    'src': 'official'
   },
   {
     'name': 'glm-5-2',
@@ -53,7 +57,8 @@ window.DEEPSWE_V10 = {
     'ci': 3,
     'cost': 3.95,
     'outTok': 81513,
-    'steps': 125
+    'steps': 125,
+    'src': 'official'
   },
   {
     'name': 'claude-sonnet-4-6',
@@ -62,7 +67,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 5.52,
     'outTok': 76182,
-    'steps': 129
+    'steps': 129,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-5-flash',
@@ -71,7 +77,8 @@ window.DEEPSWE_V10 = {
     'ci': 4,
     'cost': 7.42,
     'outTok': 189024,
-    'steps': 75
+    'steps': 75,
+    'src': 'official'
   },
   {
     'name': 'claude-opus-4-6',
@@ -80,7 +87,8 @@ window.DEEPSWE_V10 = {
     'ci': 4,
     'cost': 5.39,
     'outTok': 44481,
-    'steps': 103
+    'steps': 103,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-4-mini',
@@ -89,7 +97,8 @@ window.DEEPSWE_V10 = {
     'ci': 3,
     'cost': 2.08,
     'outTok': 134516,
-    'steps': 86
+    'steps': 86,
+    'src': 'official'
   },
   {
     'name': 'kimi-k2-6',
@@ -98,7 +107,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 3.16,
     'outTok': 84416,
-    'steps': 147
+    'steps': 147,
+    'src': 'official'
   },
   {
     'name': 'minimax-m3',
@@ -107,7 +117,8 @@ window.DEEPSWE_V10 = {
     'ci': 4,
     'cost': 5.57,
     'outTok': 97542,
-    'steps': 314
+    'steps': 314,
+    'src': 'official'
   },
   {
     'name': 'mimo-v2-5-pro',
@@ -116,7 +127,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 1.99,
     'outTok': 49321,
-    'steps': 121
+    'steps': 121,
+    'src': 'official'
   },
   {
     'name': 'qwen3-7-max',
@@ -125,7 +137,8 @@ window.DEEPSWE_V10 = {
     'ci': 1,
     'cost': 2.12,
     'outTok': 42447,
-    'steps': 110
+    'steps': 110,
+    'src': 'official'
   },
   {
     'name': 'glm-5-1',
@@ -134,7 +147,8 @@ window.DEEPSWE_V10 = {
     'ci': 1,
     'cost': 7.46,
     'outTok': 49157,
-    'steps': 177
+    'steps': 177,
+    'src': 'official'
   },
   {
     'name': 'grok-build-0-1',
@@ -143,7 +157,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 6.6,
     'outTok': 51896,
-    'steps': 176
+    'steps': 176,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-1-pro-preview',
@@ -152,7 +167,8 @@ window.DEEPSWE_V10 = {
     'ci': 3,
     'cost': 1.84,
     'outTok': 52991,
-    'steps': 74
+    'steps': 74,
+    'src': 'official'
   },
   {
     'name': 'deepseek-v4-pro',
@@ -161,7 +177,8 @@ window.DEEPSWE_V10 = {
     'ci': 3,
     'cost': 4.22,
     'outTok': 49949,
-    'steps': 111
+    'steps': 111,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-flash-preview',
@@ -170,7 +187,8 @@ window.DEEPSWE_V10 = {
     'ci': 2,
     'cost': 1.53,
     'outTok': 233062,
-    'steps': 71
+    'steps': 71,
+    'src': 'official'
   },
   {
     'name': 'qwen3-6-plus',
@@ -179,7 +197,8 @@ window.DEEPSWE_V10 = {
     'ci': 1,
     'cost': 4.25,
     'outTok': 66893,
-    'steps': 164
+    'steps': 164,
+    'src': 'official'
   },
   {
     'name': 'claude-haiku-4-5',
@@ -188,7 +207,8 @@ window.DEEPSWE_V10 = {
     'ci': 0,
     'cost': 0.84,
     'outTok': 39188,
-    'steps': 109
+    'steps': 109,
+    'src': 'official'
   },
   {
     'name': 'minimax-m2-7',
@@ -197,7 +217,8 @@ window.DEEPSWE_V10 = {
     'ci': 0,
     'cost': 0.7,
     'outTok': 60023,
-    'steps': 136
+    'steps': 136,
+    'src': 'official'
   }
 ]
 };

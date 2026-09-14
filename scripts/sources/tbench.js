@@ -2,7 +2,8 @@
 // 站点:https://www.tbench.ai/leaderboard/terminal-bench/4.0
 // 数据形态:Next.js App Router 页面,榜单数据以 JSON 内嵌于 self.__next_f RSC 流
 //   (形如 \"rows\":[{...}],引号已转义;页面可见的 <tr> 仅为骨架屏)。
-// 补充源:datalearner.com/benchmarks/terminal-bench-4-0(内嵌 results JSON),
+// 渠道层级:主源 tbench.ai 官方实测榜 = T1(最高优先级);
+//   补充源 datalearner.com/benchmarks/terminal-bench-4-0(内嵌 results JSON,厂商官方发布)= T2,
 //   按"只补缺、不覆盖官方条目"策略合并官方榜未收录模型(官方口径优先)。
 // 性质:agent×model 组合条目(66 终端任务);计入总览页综合分(权重 10%)与命中数。
 // 输出:data/tbench.js(window.TBENCH),供「权威基准测试」页完整展示与总览矩阵。
@@ -94,7 +95,8 @@ class TBenchSource extends BaseSource {
         ci: mt.accuracy_ci95_half_width != null ? Math.round(mt.accuracy_ci95_half_width * 10) / 10 : null,
         date: md.display_date || md.date || null,
         tokens: mt.display_total_tokens || null,
-        cost: cleanCost(mt.display_cost)
+        cost: cleanCost(mt.display_cost),
+        src: "official"
       };
     }).filter(function (m) { return m.model && m.score != null; });
     if (!models.length) throw new Error("未解析到任何 TB 4.0 条目");
@@ -123,7 +125,7 @@ class TBenchSource extends BaseSource {
         date: dl.date,
         tokens: null,
         cost: null,
-        source: "datalearner"
+        src: "datalearner"
       });
       console.log("  [datalearner] 补充: " + dl.name + " (" + dl.score + "%)");
     });
@@ -145,14 +147,17 @@ class TBenchSource extends BaseSource {
     const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT, v = this.cfg.version, n = parsed.models.length;
     return writers.windowVarTemplate("TBENCH",
       "// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 " + T + ")\n" +
-      "// 来源:" + this.cfg.url + " · 补充镜像 https://www.datalearner.com/benchmarks/terminal-bench-4-0(只补缺,官方口径优先)\n" +
-      "// 字段说明:model=模型名;effort=推理强度(max/high 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
+      "// 主渠道:" + this.cfg.url + "(官方实测榜 T1)\n" +
+      "// 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)\n" +
+      "// " + CONFIG.channelPolicy + "\n" +
+      "// 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
       "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);\n" +
-      "//          source=datalearner 表示为补充镜像条目(官方榜未收录,无 agent/ci/cost)\n" +
+      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目,官方榜未收录,无 agent/ci/cost)\n" +
       "// 用途:计入总览页综合分(权重 10%)与命中数;「权威基准测试」页完整展示 agent×model 条目。\n",
       {
         source: "Terminal-Bench",
         url: this.cfg.url,
+        channelPolicy: CONFIG.channelPolicy,
         version: v,
         updated: T,
         refreshedAt: R,

@@ -29,6 +29,28 @@
     var cls = v === "4.0" ? "badge-tb40" : (v === "3.0" ? "badge-tb30" : "badge-tb21");
     return ' <span class="' + cls + '" title="榜单版本 v' + esc(v) + '">v' + esc(v) + '</span>';
   };
+  // 数据来源渠道徽标:official/selftest=官方榜/实测;paper/datalearner=厂商官方发布;其余=第三方
+  var SRC_LABELS = {
+    official: ["官方榜", "基准官方实测榜(T1)"],
+    selftest: ["官方榜", "官方竞技场/站主实测(T1)"],
+    paper: ["厂商发布", "基准作者论文评测表(T2)"],
+    datalearner: ["厂商发布", "厂商官方发布成绩转录(T2)"],
+    "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
+    benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
+    mirror: ["第三方", "第三方镜像(T3)"],
+    aggregate: ["第三方", "第三方评测机构(T3)"]
+  };
+  var srcBadge = function (src) {
+    var l = SRC_LABELS[src];
+    if (!l) return "";
+    return ' <span class="badge-src" title="数据来源:' + esc(l[1]) + '">' + esc(l[0]) + '</span>';
+  };
+  // 仅当该表混合多个数据渠道时逐行标注来源徽标(单渠道表在脚注说明即可,避免视觉噪音)
+  function mixedSrc(list) {
+    var seen = {};
+    (list || []).forEach(function (m) { if (m.src) seen[m.src] = 1; });
+    return Object.keys(seen).length > 1;
+  }
 
   // 基准描述文案(对齐设计稿卡片信息层级);按 benchSummary 的 key 索引
   var BENCH_DESC = {
@@ -92,15 +114,15 @@
     { key: "composite", label: "梯队", type: "num", bench: false,
       val: function (r) { return -(r._posKey != null ? r._posKey : CMP.composite(r)); } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "基准",  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
-    // Code Arena · WebDev 单值列(Elo 原值):排序时仅显示有值的模型
-    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "基准",
-      val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "基准",
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
-    // NL2Repo-Bench 单值列:test-pass-rate(%);多源(llm-stats + benchlm + 论文 + datalearner)合并取最高;计入综合分与命中数
+    // NL2Repo-Bench 单值列:test-pass-rate(%);多源按渠道优先级合并;计入综合分与命中数
     { key: "nl2repo", label: "NL2Repo (Score%)", type: "num", bench: true, grp: "基准",
       val: function (r) { return r.nl2repo ? r.nl2repo.score : null; } },
+    // Code Arena · WebDev 单值列(Elo 原值):归入「实测」组(社区盲测竞技场);排序时仅显示有值的模型
+    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "实测",
+      val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "实测", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
     { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true, grp: "实测",
@@ -268,7 +290,7 @@
         ? '<span' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
           ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
         : "—";
-      // NL2Repo 单元格:test-pass-rate%(双源合并取最高),悬浮显示来源模型名
+      // NL2Repo 单元格:test-pass-rate%(多源按渠道优先级合并),悬浮显示来源模型名
       var n2Title = r.nl2repo ? ' title="' + esc(r.nl2repo.name + (r.nl2repo.org ? " · " + r.nl2repo.org : "")) + '"' : "";
       var n2Html = r.nl2repo
         ? '<span' + n2Title + '>' + r.nl2repo.score + '%</span>'
@@ -300,9 +322,9 @@
           return '<td class="num">' + badge + num + '</td>';
         })() +
         '<td class="num">' + ds + '</td>' +
-        '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
         '<td class="num">' + tbHtml + '</td>' +
         '<td class="num">' + n2Html + '</td>' +
+        '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
         '<td class="num">' + lm + '</td>' +
         '<td class="num">' + aicapCell(r) + '</td>' +
         '<td class="num">' + r.benchCount + '/6</td></tr>';
@@ -311,8 +333,8 @@
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     var GROUP_TITLES = {
-      "基准": "榜单基准:第三方公开基准榜单(DeepSWE / WebDev / Terminal-Bench 4.0/3.0/2.1 / NL2Repo)",
-      "实测": "实测:站主实测口径(llm2014 私有题库 / AI 能力专项测试)"
+      "基准": "榜单基准:基准官方实测榜(DeepSWE / Terminal-Bench 4.0/3.0/2.1 / NL2Repo),数据按渠道优先级合并(官方实测榜 > 厂商官方发布 > 第三方聚合)",
+      "实测": "实测与竞技场:社区盲测 Elo(Code Arena · WebDev)与站主实测(llm2014 私有题库 / AI 能力专项测试)"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -363,6 +385,7 @@
     }
     // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入综合分与命中数;NL2Repo 亦计入(2026-09 起);其余权威基准仅展示
     note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 12%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;NL2Repo-Bench(权重 9%)为多源合并快照,亦计入综合分与命中数;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE 仅在「权威基准测试」页展示。';
+    note += ' 榜单数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖高层级分数。';
     document.getElementById("overviewNote").textContent = note;
   }
 
@@ -697,18 +720,37 @@
     var S = D.src;
     var html = "";
     authSecSeq = 0;
+    // 0) DeepSWE(主基准,官方实测榜 T1 + datalearner 厂商发布 T2 只补缺;v1.1 每日刷新 + v1.0 历史快照)
+    var ds = S.deepswe || {};
+    var dsMs = D.deepSwe();
+    var dsMixed = mixedSrc(dsMs);
+    var dsAuthRows = dsMs.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + verBadge(m.version) + (dsMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + esc(m.effort || "—") + '</td><td class="num">' + m.pass1 + (m.ci != null ? '±' + m.ci : "") + '%</td>' +
+        '<td class="num">' + (m.cost != null ? '$' + m.cost : "—") + '</td>' +
+        '<td class="num">' + (m.outTok != null ? fmtK(m.outTok) : "—") + '</td>' +
+        '<td class="num">' + (m.steps != null ? m.steps : "—") + '</td></tr>';
+    });
+    var dsvc = D.deepSweVersionCounts();
+    html += authSectionHtml("DeepSWE", "长程软件工程 · 计入总览 · 主基准", ds.url,
+      '<div class="table-wrap"><table id="authDeepSweTable" class="data-table"></table></div>',
+      '主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)· 补充:datalearner(厂商官方发布 T2,只补缺) · v1.1 更新 ' + esc(ds.updated || "") +
+      ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
+      (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
+      '。本榜计入总览综合分(权重 18%)与命中数。');
     // 1) Terminal-Bench 多版本(4.0/3.0/2.1):合并为一个基准组计入总览,优先以最高版本为代表
     var tbVersions = [
       { ver: "4.0", tag: "计入总览 · 当前主榜", url: (S.tbench || {}).url || "", tasks: "66 个任务(校准资源并移除饱和任务),当前主站 agent×model 榜单" },
       { ver: "3.0", tag: "计入总览 · 备选参考", url: "https://snorkel.ai/leaderboard/terminal-bench-3-0/", tasks: "74 个任务(含更长周期/多容器/GPU 环境),snorkel.ai 权威镜像 12 条,每日自动抓取(agent×model)" },
-      { ver: "2.1", tag: "计入总览 · 历史版本", url: "https://llm-stats.com/benchmarks/terminal-bench-2.1", tasks: "89 个任务;llm-stats 模型级 0-1 归一化自报分(换算为%)" }
+      { ver: "2.1", tag: "计入总览 · 历史版本", url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1", tasks: "89 个任务;datalearner 厂商官方发布成绩为主源,llm-stats 归一化自报分为补充" }
     ];
     var tbRowsByVer = {}, tbMs = D.tbenchByVersion("4.0");
     tbVersions.forEach(function (t) {
       var ms = D.tbenchByVersion(t.ver);
+      var mixed = mixedSrc(ms);
       tbRowsByVer[t.ver] = ms.map(function (m, i) {
         return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
-          (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
+          (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + (mixed ? srcBadge(m.src) : "") + '</td>' +
           '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</td>' +
           '<td class="num">' + esc(m.date || "—") + '</td><td class="num">' + esc(m.tokens || "—") + '</td>' +
           '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
@@ -733,44 +775,47 @@
     html += authSectionHtml("Terminal-Bench-Science 0.1", "科研工作流 · 仅展示", tbs.announcementUrl || tbs.url,
       '<div class="table-wrap"><table id="authTBScienceTable" class="data-table"></table></div>',
       '来源:' + esc(tbs.url || "") + '(官方:' + esc(tbs.announcementUrl || "") + ') · 版本 ' + esc(tbs.version || "") + ' · 更新 ' + esc(tbs.updated || "") +
-      ' · 70 个来自真实科研流程的任务(每任务 3 次独立试验),解决率越高越好。本榜仅展示,不计入综合分。');
+      ' · 70 个来自真实科研流程的任务(每任务 3 次独立试验),解决率越高越好。' + esc(tbs.channelPolicy || "") + '(本榜无更高优先级渠道)。本榜仅展示,不计入综合分。');
     // 3) OSWorld 2.0
     var os = S.osworld || {};
     var osMs = D.osworld();
+    var osMixed = mixedSrc(osMs);
     var osRows = osMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td' + (m.note ? ' title="' + esc(m.note) + '"' : "") + '>' + dot(m.canon.color) + esc(m.system) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td' + (m.note ? ' title="' + esc(m.note) + '"' : "") + '>' + dot(m.canon.color) + esc(m.system) + (osMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td class="num">' + m.score + '%</td><td>' + esc(m.org || "—") + '</td>' +
         '<td class="num">' + esc(m.reported || "—") + '</td>' +
         '<td>' + (m.url ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">来源 ↗</a>' : "—") + '</td></tr>';
     });
     html += authSectionHtml("OSWorld 2.0", "长时程桌面计算机使用 · 仅展示", os.officialUrl || os.url,
       '<div class="table-wrap"><table id="authOSWorldTable" class="data-table"></table></div>',
-      '来源:' + esc(os.url || "") + ' · 更新 ' + esc(os.updated || "") +
-      ' · 108 个长时程桌面工作流(人类中位耗时约 1.6 小时),部分得分(检查点达成比例)越高越好;二进制完成率极低,故按部分得分排序。本榜仅展示,不计入综合分。');
+      '主渠道:datalearner(厂商官方发布 partial 口径)· 补充:' + esc(os.url || "") + '(官方:' + esc(os.officialUrl || "") + ',系统级条目仅追加) · 更新 ' + esc(os.updated || "") +
+      ' · 108 个长时程桌面工作流(人类中位耗时约 1.6 小时),部分得分(检查点达成比例)越高越好;二进制完成率极低,故按部分得分排序。' + esc(os.channelPolicy || "") + '。本榜仅展示,不计入综合分。');
     // 4) Agents' Last Exam
     var ale = S.lastexam || {};
     var aleMs = D.lastExam();
+    var aleMixed = mixedSrc(aleMs);
     var aleRows = aleMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (aleMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td></tr>';
     });
     html += authSectionHtml("Agents' Last Exam", "真实专业工作流 · 仅展示", ale.officialUrl || ale.url,
       '<div class="table-wrap"><table id="authLastExamTable" class="data-table"></table></div>',
-      '来源:' + esc(ale.url || "") + '(官方:' + esc(ale.officialUrl || "") + ') · 更新 ' + esc(ale.updated || "") +
-      ' · 1500+ 个真实专业工作流任务(55 子行业),Pass@1 为完美得分运行占比,越高越好。本榜仅展示,不计入综合分。');
+      '主渠道:datalearner(厂商官方发布)· 补充:' + esc(ale.url || "") + '(官方:' + esc(ale.officialUrl || "") + ') · 更新 ' + esc(ale.updated || "") +
+      ' · 1500+ 个真实专业工作流任务(55 子行业),Pass@1 为完美得分运行占比,越高越好。' + esc(ale.channelPolicy || "") + '。本榜仅展示,不计入综合分。');
     // 5) ARC-AGI-3
     var ar = S.arcagi3 || {};
     var arMs = D.arcagi3();
+    var arMixed = mixedSrc(arMs);
     var arRows = arMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (arMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td class="num">' + m.score + '%</td><td class="num">' + esc(m.size || "—") + '</td>' +
         '<td class="num">' + esc(m.context || "—") + '</td><td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
     html += authSectionHtml("ARC-AGI-3", "交互式智能体推理 · 仅展示", ar.officialUrl || ar.url,
       '<div class="table-wrap"><table id="authARCAGI3Table" class="data-table"></table></div>',
-      '来源:' + esc(ar.url || "") + '(官方:' + esc(ar.officialUrl || "") + ') · 更新 ' + esc(ar.updated || "") +
-      ' · 135 个交互式游戏环境,RHAE(相对人类行动效率,人类基线 100%)越高越好。本榜仅展示,不计入综合分。');
+      '主渠道:datalearner(厂商官方发布,Standard harness 口径)· 补充:' + esc(ar.url || "") + '(官方:' + esc(ar.officialUrl || "") + ') · 更新 ' + esc(ar.updated || "") +
+      ' · 135 个交互式游戏环境,RHAE(相对人类行动效率,人类基线 100%)越高越好。' + esc(ar.channelPolicy || "") + '。本榜仅展示,不计入综合分。');
     // 6) BenchCAD
     var bc = S.benchcad || {};
     var bcData = D.benchcad();
@@ -804,37 +849,40 @@
     html += authSectionHtml("GPQA Diamond", "研究生级科学问答 · 仅展示", gp.officialUrl || gp.url,
       '<div class="table-wrap"><table id="authGpqaTable" class="data-table"></table></div>',
       '来源:' + esc(gp.url || "") + '(官方:' + esc(gp.officialUrl || "") + ') · 更新 ' + esc(gp.updated || "") +
-      ' · 研究生级科学多选问答(GPQA 最难 198 题子集,生物/物理/化学),Accuracy 越高越好、领域专家约 65%、随机基线 25%。本榜仅展示,不计入综合分。');
+      ' · 研究生级科学多选问答(GPQA 最难 198 题子集,生物/物理/化学),Accuracy 越高越好、领域专家约 65%、随机基线 25%。' + esc(gp.channelPolicy || "") + '(datalearner GPQA 为 448 题全量集,口径不同未并入,取 llm-stats 单源)。本榜仅展示,不计入综合分。');
     // 8) HLE(Humanity's Last Exam)
     var hl = S.hle || {};
     var hlMs = D.hle();
+    var hlMixed = mixedSrc(hlMs);
     var hlRows = hlMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (hlMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
     html += authSectionHtml("Humanity's Last Exam", "前沿知识广度 · 仅展示", hl.officialUrl || hl.url,
       '<div class="table-wrap"><table id="authHleTable" class="data-table"></table></div>',
-      '来源:' + esc(hl.url || "") + '(官方:' + esc(hl.officialUrl || "") + ') · 补充镜像 benchlm.ai 与 datalearner(厂商官方发布) · 更新 ' + esc(hl.updated || "") +
-      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;三源合并去重取最高。本榜仅展示,不计入综合分。');
+      '主渠道:datalearner(厂商官方发布)· 补充:llm-stats 聚合表与 benchlm.ai 镜像 · 更新 ' + esc(hl.updated || "") +
+      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;' + esc(hl.channelPolicy || "") + '。本榜仅展示,不计入综合分。');
     // 9) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();
+    var n2Mixed = mixedSrc(n2Ms);
     var n2Rows = n2Ms.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (n2Mixed ? srcBadge(m.src) : "") + '</td>' +
         '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
     html += authSectionHtml("NL2Repo-Bench", "长程仓库生成 · 计入综合分", n2.officialUrl || n2.url,
       '<div class="table-wrap"><table id="authNl2repoTable" class="data-table"></table></div>',
-      '来源:' + esc(n2.url || "") + '(官方:' + esc(n2.officialUrl || "") + ') · 补充镜像 benchlm.ai · 更新 ' + esc(n2.updated || "") +
-      ' · 给定单一 NL 需求文档从零生成可安装 Python 库(约 103 个任务),test-pass-rate 越高越好;多源(llm-stats + benchlm + 官方论文评测表 + datalearner 厂商发布)合并去重取最高,已计入总览综合分(权重 9%)与命中数。');
+      '主渠道:官方论文评测表(arxiv)与 datalearner(厂商官方发布)· 补充:llm-stats 聚合表与 benchlm.ai 镜像 · 更新 ' + esc(n2.updated || "") +
+      ' · 给定单一 NL 需求文档从零生成可安装 Python 库(约 103 个任务),test-pass-rate 越高越好;' + esc(n2.channelPolicy || "") + ',已计入总览综合分(权重 9%)与命中数。');
     // 渲染 + 图表 + 表格
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
     renderAuthOutline(); // 由已渲染章节生成左侧大纲预览
+    fillTable("authDeepSweTable", ["#", "模型", "强度", "Pass@1±CI", "平均成本", "输出tokens", "步数"], dsAuthRows, ["", "", "", "num", "num", "num", "num"]);
     tbVersions.forEach(function (t) {
       fillTable("authTB" + (t.ver === "4.0" ? "" : t.ver.replace(".", "")) + "Table",
         ["#", "模型", "Agent", "解决率±CI", "发布日期", "Tokens", "成本"],
@@ -858,7 +906,7 @@
       scheduleAuthChart();
     }
     document.getElementById("authDesc").textContent =
-      "以下为第三方权威基准测试快照,仅作参考展示;其中 Terminal-Bench(4.0/3.0/2.1)合并为一个基准组、NL2Repo-Bench(多源合并快照)计入总览综合分与命中数(优先以最高版本为代表,其中 TB 2.1 为归一化自报分),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
 

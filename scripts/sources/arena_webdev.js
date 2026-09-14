@@ -44,7 +44,8 @@ function parseArenaWebdev(html) {
       org: orgM ? orgM[1].trim() : "",
       score: Math.round(parseFloat(scoreM[1]) * 1000) / 1000,   // 保留原精度,Elo 整数
       ci: ciM ? parseFloat(ciM[1]) : null,
-      votes: votes
+      votes: votes,
+      src: "selftest"
     });
   });
   if (!models.length) throw new Error("镜像页未解析到 main-row 数据(站点结构变更)");

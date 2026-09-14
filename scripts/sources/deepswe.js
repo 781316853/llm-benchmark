@@ -37,7 +37,8 @@ class DeepSweBase extends BaseSource {
         ci: Math.round(r.ci_half * 100),
         cost: Math.round(r.mean_cost_usd * 100) / 100,
         outTok: Math.round(r.mean_output_tokens),
-        steps: Math.round(r.mean_agent_steps)
+        steps: Math.round(r.mean_agent_steps),
+        src: "official"
       };
     });
     if (!runs.length) throw new Error("未解析到任何 run");
@@ -75,7 +76,7 @@ class DeepSweBase extends BaseSource {
             existing[normName(dl.name)] = true;
             parsed.models.push({
               name: dl.name, effort: dl.mode || "-", pass1: dl.score,
-              ci: null, cost: null, outTok: null, steps: null, source: "datalearner"
+              ci: null, cost: null, outTok: null, steps: null, src: "datalearner"
             });
             console.log("  [datalearner] 补充: " + dl.name + " (" + dl.score + "%)");
           }
@@ -118,13 +119,17 @@ class DeepSweV11Source extends DeepSweBase {
     const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT, v = this.cfg.version, n = parsed.models.length;
     const body = JSON.stringify(parsed.models, null, 2).replace(/"/g, "'");
     return `// 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 ${T})
+// 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
+// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 ${T})
+// ${CONFIG.channelPolicy}
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
-//          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
+//          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目)
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
+  channelPolicy: "${CONFIG.channelPolicy}",
   updated: "${T}",
   refreshedAt: "${R}",
   version: "${v}",

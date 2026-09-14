@@ -35,30 +35,51 @@ module.exports = {
   // 'serial' 全串行 / 'parallel' 全并行(忽略 host,仅受 concurrency 限制)
   pipelineMode: "host-parallel",
 
+  // ===== 渠道优先级(数值越小越权威;合并时高层级分数不被低层级覆盖) =====
+  // T1 = 基准官方实测榜 / 站主实测;T2 = 厂商官方发布(论文 / 发布页,经转录);T3 = 第三方聚合站与镜像
+  // 每个 src 标签对应一个层级;各源合并时按标签查此表定级(见 scripts/lib/mergeByTier.js)。
+  srcTiers: {
+    official: 1,     // 基准官方榜(tbench.ai / datacurve.ai / benchcad GitHub leaderboard.json)
+    selftest: 1,     // 站主实测(llm2014)与官方竞技场/静态站(arena_webdev / ai_capability)
+    paper: 2,        // 基准作者论文评测表(arxiv)
+    datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON)
+    "llm-stats": 3,  // 第三方聚合站 llm-stats.com
+    benchlm: 3,      // 第三方镜像 benchlm.ai
+    mirror: 3,       // 第三方镜像(snorkel.ai / explainx.ai / steel.dev / aitntnews 等)
+    aggregate: 3     // 其余第三方聚合
+  },
+  // 合并时同模型跨层级分差超过此值(百分制)在控制台记录,便于人工核对口径差异
+  tierConflictDelta: 5,
+  // 渠道优先级说明:写入各 data/*.js 的 channelPolicy 字段,供前端脚注引用
+  channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
+
   // ===== 数据源定义 =====
   // 每源的 URL、host 分组(限流用)、传输参数覆盖
   sources: {
     deepswe_v11: {
       url: "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
-      version: "v1.1", host: "deepswe.datacurve.ai"
+      version: "v1.1", host: "deepswe.datacurve.ai", src: "official"
     },
     deepswe_v10: {
       url: "https://deepswe.datacurve.ai/artifacts/v1/leaderboard-live.json",
-      version: "v1.0", host: "deepswe.datacurve.ai"
+      version: "v1.0", host: "deepswe.datacurve.ai", src: "official"
     },
     datalearner: {
+      // DeepSWE v1.1 补充源(T2 厂商官方发布):只补缺、不覆盖官方榜条目。
       url: "https://www.datalearner.com/benchmarks/deepswe",
-      host: "www.datalearner.com"
+      host: "www.datalearner.com", src: "datalearner"
     },
     vibecode: {
+      // Vibe Code:vals.ai 为唯一可用渠道(T3 第三方评测机构),无官方/厂商发布渠道。
       url: "https://www.vals.ai/benchmarks/vibe-code",
-      host: "www.vals.ai"
+      host: "www.vals.ai", src: "aggregate"
     },
     llm2014: {
+      // llm2014:站主私有题库实测(T1 同级口径),无外部渠道。
       baseCdn: "https://cdn.jsdelivr.net/gh/llm2014/llm_benchmark@main/docs/",
       baseRaw: "https://raw.githubusercontent.com/llm2014/llm_benchmark/main/docs/",
       metaPath: "data/datasets.json",
-      host: "cdn.jsdelivr.net"
+      host: "cdn.jsdelivr.net", src: "selftest"
     },
     arena_webdev: {
       // Code Arena | WebDev(LMArena):前端 Web 开发权威竞技场,Elo 评分。
@@ -66,16 +87,18 @@ module.exports = {
       // 故以权威镜像 m.aitntnews.com/arena/code/ 为主(其 ld+json 声明:
       //   creator=LM Arena、isBasedOn=https://arena.ai/leaderboard/code,每日快照官方数据)。
       // 解析镜像页 <tr data-name/... data-score/... data-org/...> 行,含 Elo/CI/投票。
+      // 渠道:官方站不可抓取,该镜像为官方数据每日快照,按 T1 口径处理(无厂商发布渠道)。
       url: "https://m.aitntnews.com/arena/code/",
       officialUrl: "https://arena.ai/leaderboard/code",
-      host: "m.aitntnews.com"
+      host: "m.aitntnews.com", src: "selftest"
     },
     ai_capability: {
       // AI 能力专项测试(atmeplz)四方向榜:静态站,直接抓取渲染用 JSON。
       // 只取前端(FRONTEND)/后端(BACKEND)两个方向的方向分(0-100)。
+      // 渠道:源站即该基准唯一官方榜(T1),无厂商发布渠道。
       url: "https://atmeplz.github.io/ai-test-prompt/data/site.json",
       boardUrl: "https://atmeplz.github.io/ai-test-prompt/board-04.html",
-      host: "atmeplz.github.io"
+      host: "atmeplz.github.io", src: "selftest"
     },
     // ===== 权威基准测试(「权威基准测试」标签页)=====
     // Terminal-Bench(4.0/3.0/2.1)与 NL2Repo 计入总览/综合分/命中数,其余仅在权威页展示。
@@ -83,123 +106,144 @@ module.exports = {
       // Terminal-Bench 4.0(斯坦福/Laude):终端命令行 Agent 评测,66 任务。
       // 服务端渲染 HTML 表格(rank/model+effort/agent/解决率±CI/日期/tokens/成本)。
       url: "https://www.tbench.ai/leaderboard/terminal-bench/4.0",
-      version: "4.0", host: "www.tbench.ai"
+      version: "4.0", host: "www.tbench.ai", src: "official"
     },
     tbscience: {
       // Terminal-Bench-Science 0.1:科研工作流 70 任务。
       // 官方/harbor 榜单为客户端渲染(原始 HTML 无数据、无公开 API),以 explainx 博客镜像表为主
       // (Model | Harness | Resolution rate,与官方公告 0.1 数值一致)。
+      // 渠道:无可用官方/厂商发布渠道,explainx 为唯一 T3 镜像。
       url: "https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026",
-      version: "0.1", host: "www.explainx.ai",
+      version: "0.1", host: "www.explainx.ai", src: "mirror",
       announcementUrl: "https://www.terminal-bench-science.ai/announcement"
     },
     osworld: {
       // OSWorld 2.0(xlang-ai):长时程桌面计算机使用 108 任务。
-      // 官方站 os-world-v2.xlang.ai 会跳转论文,以 leaderboard.steel.dev 镜像为主
-      // (服务端渲染 HTML 表格:System/Submission|Score|Organization|Reported|Source,按部分得分 partial 排序)。
+      // 主源 datalearner 详情页(T2 厂商官方发布,partial score 口径);
+      // 官方站 os-world-v2.xlang.ai 会跳转论文,以 leaderboard.steel.dev 镜像(T3)为补充,
+      // 镜像条目为「系统级(模型+工具策略)」粒度,单独追加、不与主源同键合并。
       url: "https://leaderboard.steel.dev/leaderboards/osworld-2/",
-      host: "leaderboard.steel.dev",
+      host: "leaderboard.steel.dev", src: "mirror",
       officialUrl: "https://osworld-v2.xlang.ai/"
+    },
+    datalearner_osworld: {
+      // OSWorld 2.0 主源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩,partial 口径)。
+      url: "https://www.datalearner.com/benchmarks/osworld-2",
+      host: "www.datalearner.com", src: "datalearner"
     },
     lastexam: {
       // Agents' Last Exam(UC Berkeley RDI):真实专业工作流 1500+ 任务。
       // 官方榜单 agents-last-exam.org/leaderboard 为 Next.js 客户端渲染(原始 HTML 无数据),
-      // 以 llm-stats 聚合表为主(服务端渲染:#|Model|Score(0-1)|Size|Context|Cost|License)。
+      // 主源 datalearner 详情页(T2 厂商官方发布),llm-stats 聚合表(T3)为补充。
       url: "https://llm-stats.com/benchmarks/agents-last-exam",
-      host: "llm-stats.com",
+      host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://agents-last-exam.org/leaderboard"
+    },
+    datalearner_lastexam: {
+      // ALE 主源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
+      url: "https://www.datalearner.com/benchmarks/agents-last-exam",
+      host: "www.datalearner.com", src: "datalearner"
     },
     arcagi3: {
       // ARC-AGI-3(ARC Prize):交互式智能体推理,135 环境,RHAE 评分。
-      // 官网 arcprize.org/leaderboard 默认表缺 2026-07 后新成绩,以 llm-stats 聚合表为主(0-1→×100)。
+      // 官网 arcprize.org/leaderboard 默认表缺 2026-07 后新成绩;
+      // 主源 datalearner 详情页(T2 厂商官方发布,Standard harness 口径),llm-stats 聚合表(T3)为补充。
       url: "https://llm-stats.com/benchmarks/arc-agi-3",
-      host: "llm-stats.com",
+      host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://arcprize.org/leaderboard"
+    },
+    datalearner_arcagi3: {
+      // ARC-AGI-3 主源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩,Standard harness 口径)。
+      url: "https://www.datalearner.com/benchmarks/arc-agi-3",
+      host: "www.datalearner.com", src: "datalearner"
     },
     benchcad: {
       // BenchCAD:程序化 CAD 生成基准(17,900 个 CadQuery 程序 / 106 类工业零件 / 47 项工程标准)。
       // 结构化 JSON:leaderboard.json,三任务 vision2code/visionqa/codeqa,主指标 Vision2Code total(0-1)。
+      // 渠道:官方 GitHub 榜 = T1,无更高优先级渠道。
       url: "https://raw.githubusercontent.com/BenchCAD/BenchCAD-main/main/leaderboard.json",
       repoUrl: "https://github.com/BenchCAD/BenchCAD-main",
       boardUrl: "https://benchcad.com/",
-      host: "raw.githubusercontent.com"
+      host: "raw.githubusercontent.com", src: "official"
     },
     gpqa: {
-      // GPQA Diamond(研究生级科学问答·知识推理,198 题):官方 epoch.ai/benchmarks/gpqa-diamond,
-      // 以 llm-stats 聚合表为主(服务端渲染:#|Model|Score(0-1)|Size|Context|Cost|License)。
+      // GPQA Diamond(研究生级科学问答·知识推理,198 题):官方 epoch.ai/benchmarks/gpqa-diamond。
+      // 以 llm-stats 聚合表(T3)为主。注:datalearner 的 /benchmarks/gpqa 为 448 题 GPQA 全量集
+      // (榜首 Nemotron 87、含 Qwen3-8B 等小模型),与本基准 198 题 Diamond 子集口径不同,不并入。
       url: "https://llm-stats.com/benchmarks/gpqa",
-      host: "llm-stats.com",
+      host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://epoch.ai/benchmarks/gpqa-diamond"
     },
     hle: {
-      // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI),
-      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构);补充源 benchlm.ai 镜像(55 模型,
-      // 收录 GPT-5.4 Pro / Apodex 1.1 / GLM-5 / Inkling / Gemma 4 等)与 datalearner 详情页
-      // (厂商官方发布),由 scripts/sources/hle.js 多源合并取最高。
+      // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI)。
+      // 渠道优先级(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页(厂商官方发布成绩),
+      // llm-stats 聚合表与 benchlm.ai 镜像为补充源(补缺模型/回填字段,不覆盖厂商发布分),
+      // 由 scripts/sources/hle.js 按渠道层级合并。
       url: "https://llm-stats.com/benchmarks/humanity%27s-last-exam",
-      host: "llm-stats.com",
+      host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://lastexam.ai/"
     },
     hle_benchlm: {
-      // HLE 补充源:benchlm.ai 镜像(SSG 服务端渲染,55 模型)。注意源站 www 会 308 跳转至裸域。
+      // HLE 补充源:benchlm.ai 镜像(T3;SSG 服务端渲染,55 模型)。注意源站 www 会 308 跳转至裸域。
       url: "https://benchlm.ai/benchmarks/hle",
-      host: "benchlm.ai"
+      host: "benchlm.ai", src: "benchlm"
     },
     datalearner_hle: {
-      // HLE 补充源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
+      // HLE 主源(T2):datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
       url: "https://www.datalearner.com/benchmarks/hle",
-      host: "www.datalearner.com"
+      host: "www.datalearner.com", src: "datalearner"
     },
     nl2repo: {
-      // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench,
-      // 以 llm-stats 聚合表为主(服务端渲染:同上表结构);benchlm.ai 为补充镜像源
-      // (收录 Ornith 系列 / Claude Opus 4.5 / Qwen3.6 Max preview 等 llm-stats 缺失模型);另有
-      //   1) 官方论文评测表(arxiv 2512.12730v2 Table 2,基准作者官方 OpenHands 协议,12 条上一代模型);
-      //   2) datalearner 详情页(厂商官方发布成绩,如 DeepSeek-V4-Flash 54.2)
-      // 两路补充,由 scripts/sources/nl2repo.js 多源合并取最高。
+      // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench。
+      // 渠道优先级(T2 厂商官方发布 > T3 第三方聚合):主源为官方论文评测表
+      //   (arxiv 2512.12730v2 Table 2,基准作者官方 OpenHands 协议)与 datalearner 详情页
+      //   (厂商官方发布成绩,如 DeepSeek-V4-Flash 54.2);
+      // llm-stats 聚合表与 benchlm.ai 镜像(收录 Ornith 系列 / Claude Opus 4.5 / Qwen3.6 Max preview 等)
+      //   为补充源,由 scripts/sources/nl2repo.js 按渠道层级合并。
       url: "https://llm-stats.com/benchmarks/nl2repo",
-      host: "llm-stats.com",
+      host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://github.com/multimodal-art-projection/NL2RepoBench"
     },
     nl2repo_paper: {
-      // NL2Repo 官方论文评测表(arxiv HTML 版 Table 2,Overall Pass@1 %)。
+      // NL2Repo 官方论文评测表(T2;arxiv HTML 版 Table 2,Overall Pass@1 %)。
       url: "https://arxiv.org/html/2512.12730v2",
-      host: "arxiv.org"
+      host: "arxiv.org", src: "paper"
     },
     datalearner_nl2repo: {
-      // datalearner NL2Repo-Bench 详情页(厂商官方发布成绩;当前与 llm-stats 条目重复,作前向补充)。
+      // datalearner NL2Repo-Bench 详情页(T2 厂商官方发布成绩;当前与 llm-stats 条目重复,作前向补充)。
       url: "https://www.datalearner.com/benchmarks/nl2repo-bench",
-      host: "www.datalearner.com"
+      host: "www.datalearner.com", src: "datalearner"
     },
     nl2repo_benchlm: {
-      // NL2Repo 补充源:benchlm.ai 镜像(SSG 服务端渲染,rank|model(vendor·closed)|score%),同模型分数与 llm-stats 一致。
+      // NL2Repo 补充源(T3):benchlm.ai 镜像(SSG 服务端渲染,rank|model(vendor·closed)|score%)。
       url: "https://www.benchlm.ai/benchmarks/nl2repo",
-      host: "www.benchlm.ai"
+      host: "www.benchlm.ai", src: "benchlm"
     },
     tbench_v3: {
       // Terminal-Bench 3.0(斯坦福/Laude,74 任务):线上 tbench.ai 3.0 路由已并入 4.0,
       // 以 snorkel.ai 全量 12 条 agent×model 榜单为主(服务端渲染 HTML 表格)。
+      // 渠道:官方 3.0 榜已下线,snorkel.ai 为唯一可用 T3 镜像(无厂商发布渠道)。
       url: "https://snorkel.ai/leaderboard/terminal-bench-3-0/",
-      host: "snorkel.ai",
+      host: "snorkel.ai", src: "mirror",
       version: "3.0"
     },
     tbench_v21: {
-      // Terminal-Bench 2.1(斯坦福/Laude,89 任务):主源为 llm-stats 聚合表(0-1 自报分,服务端渲染);
-      // 补充源为 datalearner 详情页(内嵌 results JSON,含模式/发布时间/参数量),
-      // 由 scripts/sources/tbench_v21.js 双源合并取最高。
+      // Terminal-Bench 2.1(斯坦福/Laude,89 任务):主源为 datalearner 详情页(T2 厂商官方发布,
+      // 内嵌 results JSON,含模式/发布时间/参数量);llm-stats 聚合表(T3,0-1 自报分)为补充,
+      // 由 scripts/sources/tbench_v21.js 按渠道层级合并。
       url: "https://llm-stats.com/benchmarks/terminal-bench-2.1",
-      host: "llm-stats.com",
+      host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://www.tbench.ai/news/terminal-bench-2-1"
     },
     datalearner_tbench40: {
-      // datalearner TB 4.0 详情页:作为 tbench.ai 官方榜的补充源,只补缺、不覆盖官方条目。
+      // datalearner TB 4.0 详情页(T2):作为 tbench.ai 官方榜(T1)的补充源,只补缺、不覆盖官方条目。
       url: "https://www.datalearner.com/benchmarks/terminal-bench-4-0",
-      host: "www.datalearner.com"
+      host: "www.datalearner.com", src: "datalearner"
     },
     datalearner_tbench21: {
-      // datalearner TB 2.1 详情页:作为 tbench_v21 源的补充(与 llm-stats 合并取最高)。
+      // datalearner TB 2.1 详情页(T2 厂商官方发布):tbench_v21 主源(llm-stats 为 T3 补充)。
       url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1",
-      host: "www.datalearner.com"
+      host: "www.datalearner.com", src: "datalearner"
     }
   },
 

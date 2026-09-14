@@ -1,6 +1,7 @@
 // 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测)
 // 站点:官方 https://www.terminal-bench-science.ai/(榜单为 SVG 图/客户端渲染,不可解析),
 //       以 explainx 博客镜像表为主(Model | Harness | Resolution rate,数值与官方公告 0.1 一致)。
+// 渠道:无可用官方实测榜/厂商发布渠道,explainx 为唯一 T3 镜像。
 // 性质:agent×model 组合条目(70 科研任务);仅「权威基准测试」页展示,不计入综合分/命中。
 // 输出:data/tbscience.js(window.TBSCIENCE)。
 "use strict";
@@ -52,7 +53,7 @@ class TBScienceSource extends BaseSource {
       if (!scoreM) continue;
       const model = cells[0], harness = cells[1];
       if (!model || !harness) continue;
-      models.push({ model: model, agent: harness, score: Number(scoreM[1]) });
+      models.push({ model: model, agent: harness, score: Number(scoreM[1]), src: "mirror" });
     }
     if (!models.length) throw new Error("未解析到任何 Terminal-Bench-Science 行");
     // 官方榜单按解决率降序
@@ -77,12 +78,14 @@ class TBScienceSource extends BaseSource {
     return writers.windowVarTemplate("TBSCIENCE",
       "// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 " + T + ")\n" +
       "// 来源:" + this.cfg.url + "(官方:" + this.cfg.announcementUrl + ")\n" +
-      "// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%)\n" +
+      "// " + CONFIG.channelPolicy + "(本榜无更高优先级渠道,explainx 为唯一 T3 镜像)\n" +
+      "// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "Terminal-Bench-Science",
         url: this.cfg.url,
         announcementUrl: this.cfg.announcementUrl,
+        channelPolicy: CONFIG.channelPolicy,
         version: v,
         updated: T,
         refreshedAt: R,

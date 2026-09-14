@@ -1,14 +1,17 @@
-// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-09-14)
+// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-09-13)
 // 来源:https://llm-stats.com/benchmarks/nl2repo(官方:https://github.com/multimodal-art-projection/NL2RepoBench)
-// 补充:https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像) · 官方论文评测表 https://arxiv.org/html/2512.12730v2(Table 2) · https://www.datalearner.com/benchmarks/nl2repo-bench(厂商官方发布)
-// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源(llm-stats/benchlm/paper/datalearner)
+// 主渠道:官方论文评测表 https://arxiv.org/html/2512.12730v2(Table 2) · https://www.datalearner.com/benchmarks/nl2repo-bench(厂商官方发布)
+// 补充:llm-stats 聚合表 · https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像)
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
+// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(paper/datalearner/llm-stats/benchlm)
 // 用途:已计入总览综合分(权重 8%)与命中数;「权威基准测试」页完整展示。
 window.NL2REPO = {
   'source': 'NL2Repo-Bench',
   'url': 'https://llm-stats.com/benchmarks/nl2repo',
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
-  'updated': '2026-09-14',
-  'refreshedAt': '2026-09-14 13:52',
+  'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
+  'updated': '2026-09-13',
+  'refreshedAt': '2026-09-13 22:39',
   'stats': {
     'tasks': 103,
     'entries': 48
@@ -16,200 +19,176 @@ window.NL2REPO = {
   'desc': 'NL2Repo-Bench:自然语言到完整代码仓库的长程生成基准(字节 Seed / M-A-P 等),给定单一 NL 需求文档与空工作区,智能体需自主设计架构、管理依赖、实现多模块并产出可安装的 Python 库,以测试通过率衡量;得越高越好。',
   'models': [
     {
-      'rank': 1,
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
       'score': 75.3,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'datalearner'
+      'license': '不开源',
+      'src': 'datalearner',
+      'rank': 1
     },
     {
-      'rank': 2,
-      'model': 'DeepSeek V4.1 Flash',
-      'org': 'DeepSeek',
+      'model': 'DeepSeek-V4.1-Flash',
+      'org': 'DeepSeek-AI',
       'score': 65.4,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.22 / $ 0.66',
-      'license': null,
-      'src': 'benchlm'
+      'rank': 2
     },
     {
-      'rank': 3,
       'model': 'Qwen3.8-Max-0902',
       'org': '阿里巴巴',
       'score': 64.9,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'datalearner'
+      'license': '不开源',
+      'src': 'datalearner',
+      'rank': 3
     },
     {
-      'rank': 4,
       'model': 'DeepSeek-V4-Pro-0813',
-      'org': 'DeepSeek',
+      'org': 'DeepSeek-AI',
       'score': 61.5,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 0.43 / $ 0.87',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 4
     },
     {
-      'rank': 5,
       'model': 'Ornith-1.5-397B',
       'org': 'Ornith AI',
       'score': 59.5,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 5
     },
     {
-      'rank': 6,
       'model': 'Hy4 preview',
-      'org': 'Tencent',
+      'org': '腾讯AI实验室',
       'score': 58.9,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 6
     },
     {
-      'rank': 7,
-      'model': 'GLM-5.3',
-      'org': 'Zhipu AI',
-      'score': 58,
-      'size': '753B',
-      'context': '1.0M',
-      'cost': '$ 1.20 / $ 4.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 8,
       'model': 'Kimi K3',
       'org': 'Moonshot AI',
       'score': 58,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'datalearner'
+      'license': '有条件免费商用授权',
+      'src': 'datalearner',
+      'rank': 7
     },
     {
-      'rank': 9,
+      'model': 'GLM-5.3',
+      'org': '智谱AI',
+      'score': 58,
+      'license': '有条件免费商用授权',
+      'src': 'datalearner',
+      'size': '753B',
+      'context': '1.0M',
+      'cost': '$ 1.20 / $ 4.00',
+      'rank': 8
+    },
+    {
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
-      'org': 'DeepSeek',
+      'org': 'DeepSeek-AI',
       'score': 57.7,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 9
     },
     {
-      'rank': 10,
       'model': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 56.8,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'datalearner'
+      'license': '不开源',
+      'src': 'datalearner',
+      'rank': 10
     },
     {
-      'rank': 11,
       'model': 'GLM-5.3-Flash',
-      'org': 'Zhipu AI',
+      'org': '智谱AI',
       'score': 56.3,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 11
     },
     {
-      'rank': 12,
-      'model': 'Qwen3.8 Max',
-      'org': 'Alibaba Cloud / Qwen Team',
+      'model': 'Qwen3.8-Max',
+      'org': '阿里巴巴',
       'score': 55.9,
+      'license': '有条件免费商用授权',
+      'src': 'datalearner',
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 12
     },
     {
-      'rank': 13,
       'model': 'DeepSeek-V4-Flash-0731',
-      'org': 'DeepSeek',
+      'org': 'DeepSeek-AI',
       'score': 54.2,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 13
     },
     {
-      'rank': 14,
       'model': 'dots3-note Preview',
       'org': 'Dots Studio',
       'score': 49.8,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 14
     },
     {
-      'rank': 15,
       'model': 'GLM-5.2',
-      'org': 'Zhipu AI',
+      'org': '智谱AI',
       'score': 48.9,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 2.40',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 15
     },
     {
-      'rank': 16,
       'model': 'Ornith-1.0-397B',
       'org': 'DeepReinforce AI',
       'score': 48.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 16
     },
     {
-      'rank': 17,
+      'model': 'Qwen3.8-Flash-Next',
+      'org': '阿里巴巴',
+      'score': 48.1,
+      'license': '有条件免费商用授权',
+      'src': 'datalearner',
+      'size': '125B',
+      'context': '—',
+      'cost': '—',
+      'rank': 17
+    },
+    {
+      'rank': 18,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 48.1,
       'size': '125B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.47',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 18,
-      'model': 'Qwen3.8-Flash-Next',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 48.1,
-      'size': '125B',
-      'context': '—',
-      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },
@@ -236,15 +215,11 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 21,
       'model': 'Ornith-1.5-35B-A3B',
       'org': 'Ornith AI',
       'score': 46.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 21
     },
     {
       'rank': 22,
@@ -269,26 +244,18 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 24,
       'model': 'Claude Opus 4.5',
       'org': 'Anthropic',
       'score': 43.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 24
     },
     {
-      'rank': 25,
       'model': 'Qwen 3.6 Max (preview)',
       'org': 'Alibaba',
       'score': 42.9,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 25
     },
     {
       'rank': 26,
@@ -302,15 +269,15 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 27,
       'model': 'Qwen3.8-27B',
-      'org': 'Alibaba Cloud / Qwen Team',
+      'org': '阿里巴巴',
       'score': 42.3,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 27
     },
     {
       'rank': 28,
@@ -335,48 +302,36 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 30,
       'model': 'Claude-Sonnet-4.5 (Claude Code)',
       'org': null,
       'score': 40.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 30
     },
     {
-      'rank': 31,
       'model': 'Claude-Sonnet-4.5',
       'org': null,
       'score': 39.9,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 31
     },
     {
-      'rank': 32,
-      'model': 'MiniMax M2.7',
-      'org': 'MiniMax',
+      'model': 'MiniMax-M2.7',
+      'org': 'MiniMaxAI',
       'score': 39.8,
+      'license': '不可以商用',
+      'src': 'datalearner',
       'size': '—',
       'context': '205K',
       'cost': '$ 0.30 / $ 1.20',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 32
     },
     {
-      'rank': 33,
       'model': 'Claude-Sonnet-4.5 (Cursor)',
       'org': null,
       'score': 39.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 33
     },
     {
       'rank': 34,
@@ -390,15 +345,11 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 35,
       'model': 'Claude-Sonnet-4',
       'org': null,
       'score': 37,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 35
     },
     {
       'rank': 36,
@@ -412,37 +363,25 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 37,
       'model': 'Ornith-1.0-35B',
       'org': 'DeepReinforce AI',
       'score': 34.6,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 37
     },
     {
-      'rank': 38,
       'model': 'Gemini-3-pro (Cursor)',
       'org': null,
       'score': 34.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 38
     },
     {
-      'rank': 39,
       'model': 'Ornith-1.5-9B',
       'org': 'Ornith AI',
       'score': 32.4,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 39
     },
     {
       'rank': 40,
@@ -456,92 +395,60 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 41,
       'model': 'DeepSeek-V3.2',
       'org': null,
       'score': 27.6,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 41
     },
     {
-      'rank': 42,
       'model': 'Ornith-1.0-9B',
       'org': 'DeepReinforce AI',
       'score': 27.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'benchlm'
+      'src': 'benchlm',
+      'rank': 42
     },
     {
-      'rank': 43,
       'model': 'Kimi-k2',
       'org': null,
       'score': 22.7,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 43
     },
     {
-      'rank': 44,
       'model': 'DeepSeek-V3.1',
       'org': null,
       'score': 22.2,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 44
     },
     {
-      'rank': 45,
       'model': 'GPT-5',
       'org': null,
       'score': 21.7,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 45
     },
     {
-      'rank': 46,
       'model': 'Qwen3-Instruct',
       'org': null,
       'score': 17.9,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 46
     },
     {
-      'rank': 47,
       'model': 'GLM-4.6',
       'org': null,
       'score': 17.5,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 47
     },
     {
-      'rank': 48,
       'model': 'Qwen3-thinking',
       'org': null,
       'score': 13.8,
-      'size': null,
-      'context': null,
-      'cost': null,
-      'license': null,
-      'src': 'paper'
+      'src': 'paper',
+      'rank': 48
     }
   ]
 };

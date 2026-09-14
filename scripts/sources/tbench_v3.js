@@ -1,5 +1,6 @@
 // 数据源:Terminal-Bench 3.0(斯坦福/Laude 终端命令行 Agent 评测)
 // 站点:https://snorkel.ai/leaderboard/terminal-bench-3-0/(线上 tbench.ai 3.0 路由已并入 4.0)
+// 渠道:官方 3.0 榜已下线、无厂商发布渠道,snorkel.ai 为唯一可用 T3 镜像。
 // 数据形态:服务端渲染 HTML 表格(Rank | Model(+effort) | Agent | Resolution±CI | Date | Tokens | Cost)。
 // 性质:agent×model 组合条目(74 终端任务);与 4.0/2.1 合并为一个基准组计入总览综合分与命中数
 //       (取值优先级 4.0>3.0>2.1),「权威基准测试」页完整展示。
@@ -57,7 +58,8 @@ class TBenchV3Source extends BaseSource {
         ci: ci,
         date: cells[4] || null,
         tokens: cells[5] || null,
-        cost: cells[6] || null
+        cost: cells[6] || null,
+        src: "mirror"
       });
     });
     if (!models.length) throw new Error("未解析到任何 TB 3.0 行");
@@ -81,12 +83,14 @@ class TBenchV3Source extends BaseSource {
     return writers.windowVarTemplate("TBENCH_V3",
       "// 数据源:Terminal-Bench 3.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 " + T + ")\n" +
       "// 来源:" + this.cfg.url + "(线上 tbench.ai 3.0 路由已并入 4.0,以 snorkel.ai 权威镜像为主,每日自动抓取)\n" +
+      "// " + CONFIG.channelPolicy + "(本榜无更高优先级渠道,snorkel.ai 为唯一可用镜像)\n" +
       "// 字段说明:model=模型名;effort=推理强度(max/high/xhigh 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
-      "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($)\n" +
+      "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);src=数据来源渠道(mirror)\n" +
       "// 用途:计入总览页综合分与命中数(与 4.0 合并为一个基准组,取值优先级 4.0>3.0>2.1);「权威基准测试」页完整展示。\n",
       {
         source: "Terminal-Bench",
         url: "https://www.tbench.ai/leaderboard/terminal-bench/3.0",
+        channelPolicy: CONFIG.channelPolicy,
         version: v,
         updated: T,
         refreshedAt: R,

@@ -1,14 +1,16 @@
-// 数据源:Terminal-Bench 3.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-14)
+// 数据源:Terminal-Bench 3.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-13)
 // 来源:https://snorkel.ai/leaderboard/terminal-bench-3-0/(线上 tbench.ai 3.0 路由已并入 4.0,以 snorkel.ai 权威镜像为主,每日自动抓取)
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数(本榜无更高优先级渠道,snorkel.ai 为唯一可用镜像)
 // 字段说明:model=模型名;effort=推理强度(max/high/xhigh 等);agent=Agent 框架(Codex/Claude Code 等);
-//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($)
+//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);src=数据来源渠道(mirror)
 // 用途:计入总览页综合分与命中数(与 4.0 合并为一个基准组,取值优先级 4.0>3.0>2.1);「权威基准测试」页完整展示。
 window.TBENCH_V3 = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/3.0',
+  'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '3.0',
-  'updated': '2026-09-14',
-  'refreshedAt': '2026-09-14 13:52',
+  'updated': '2026-09-13',
+  'refreshedAt': '2026-09-13 22:39',
   'stats': {
     'tasks': 74,
     'entries': 12
@@ -24,7 +26,8 @@ window.TBENCH_V3 = {
       'ci': 1.6,
       'date': '2026-07-24',
       'tokens': '7.3B',
-      'cost': '$5.8k'
+      'cost': '$5.8k',
+      'src': 'mirror'
     },
     {
       'rank': 2,
@@ -35,7 +38,8 @@ window.TBENCH_V3 = {
       'ci': 1.6,
       'date': '2026-07-09',
       'tokens': '5.8B',
-      'cost': '$4.0k'
+      'cost': '$4.0k',
+      'src': 'mirror'
     },
     {
       'rank': 3,
@@ -46,7 +50,8 @@ window.TBENCH_V3 = {
       'ci': 1.7,
       'date': '2026-06-09',
       'tokens': '3.6B',
-      'cost': '$6.5k'
+      'cost': '$6.5k',
+      'src': 'mirror'
     },
     {
       'rank': 4,
@@ -57,7 +62,8 @@ window.TBENCH_V3 = {
       'ci': 1.5,
       'date': '2026-08-14',
       'tokens': '5.6B',
-      'cost': '$1.8k'
+      'cost': '$1.8k',
+      'src': 'mirror'
     },
     {
       'rank': 5,
@@ -68,7 +74,8 @@ window.TBENCH_V3 = {
       'ci': 1.5,
       'date': '2026-08-12',
       'tokens': '2.9B',
-      'cost': '$2.1k'
+      'cost': '$2.1k',
+      'src': 'mirror'
     },
     {
       'rank': 6,
@@ -79,7 +86,8 @@ window.TBENCH_V3 = {
       'ci': 1.6,
       'date': '2026-05-28',
       'tokens': '5.2B',
-      'cost': '$5.2k'
+      'cost': '$5.2k',
+      'src': 'mirror'
     },
     {
       'rank': 7,
@@ -90,7 +98,8 @@ window.TBENCH_V3 = {
       'ci': 1.4,
       'date': '2026-07-09',
       'tokens': '7.0B',
-      'cost': '$2.5k'
+      'cost': '$2.5k',
+      'src': 'mirror'
     },
     {
       'rank': 8,
@@ -101,7 +110,8 @@ window.TBENCH_V3 = {
       'ci': 1.5,
       'date': '2026-07-08',
       'tokens': '3.6B',
-      'cost': '$7.2k'
+      'cost': '$7.2k',
+      'src': 'mirror'
     },
     {
       'rank': 9,
@@ -112,7 +122,8 @@ window.TBENCH_V3 = {
       'ci': 1.5,
       'date': '2026-07-08',
       'tokens': '1.2B',
-      'cost': '$766.02'
+      'cost': '$766.02',
+      'src': 'mirror'
     },
     {
       'rank': 10,
@@ -123,7 +134,8 @@ window.TBENCH_V3 = {
       'ci': 1.5,
       'date': '2026-06-30',
       'tokens': '17.9B',
-      'cost': '$6.9k'
+      'cost': '$6.9k',
+      'src': 'mirror'
     },
     {
       'rank': 11,
@@ -134,7 +146,8 @@ window.TBENCH_V3 = {
       'ci': 1.3,
       'date': '2026-07-09',
       'tokens': '11.9B',
-      'cost': '$1.6k'
+      'cost': '$1.6k',
+      'src': 'mirror'
     },
     {
       'rank': 12,
@@ -145,7 +158,8 @@ window.TBENCH_V3 = {
       'ci': 1,
       'date': '2026-06-13',
       'tokens': '3.3B',
-      'cost': '$3.4k'
+      'cost': '$3.4k',
+      'src': 'mirror'
     }
   ]
 };

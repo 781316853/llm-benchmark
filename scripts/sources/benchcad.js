@@ -1,5 +1,6 @@
 // 数据源:BenchCAD(程序化 CAD 生成基准)
 // 站点:https://github.com/BenchCAD/BenchCAD-main(leaderboard.json 结构化 JSON)
+// 渠道:官方 GitHub 榜 = T1(最高优先级),无更高优先级渠道。
 // 数据形态:JSON { meta, tasks: { vision2code, visionqa, codeqa } }。
 // 规模:17,900 个执行验证的 CadQuery 程序 / 106 类工业零件 / 47 项工程标准(ISO/DIN/EN/ASME/IEC)。
 // 性质:Vision2Code 主指标 total(0-1,64³ 体素 IoU×exec%);仅「权威基准测试」页展示。
@@ -35,7 +36,9 @@ class BenchCADSource extends BaseSource {
         label: t.label || k,
         blurb: t.blurb || "",
         primary: t.primary || "total",
-        rows: Array.isArray(t.rows) ? t.rows : []
+        rows: (Array.isArray(t.rows) ? t.rows : []).map(function (r) {
+          return Object.assign({ src: "official" }, r);
+        })
       };
     });
     if (!tasks.vision2code.rows.length) throw new Error("Vision2Code 未解析到任何行");
@@ -63,13 +66,15 @@ class BenchCADSource extends BaseSource {
     return writers.windowVarTemplate("BENCHCAD",
       "// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 " + T + ")\n" +
       "// 来源:" + this.cfg.repoUrl + "(leaderboard.json;榜单页:" + this.cfg.boardUrl + ")\n" +
+      "// " + CONFIG.channelPolicy + "(本榜取官方 GitHub 榜 T1,无更高优先级渠道)\n" +
       "// 字段说明:vision2code=图像→CadQuery 代码生成(主指标 total=64³ 体素 IoU×exec%,0-1);\n" +
-      "//          visionqa/codeqa=数值几何推理(2,400 题,L1-L4 四能力等级 + total)\n" +
+      "//          visionqa/codeqa=数值几何推理(2,400 题,L1-L4 四能力等级 + total);src=数据来源渠道(official)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "BenchCAD",
         url: this.cfg.repoUrl,
         boardUrl: this.cfg.boardUrl,
+        channelPolicy: CONFIG.channelPolicy,
         updated: T,
         refreshedAt: R,
         stats: { partFamilies: 106, programs: 17900, standards: 47 },

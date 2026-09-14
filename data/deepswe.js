@@ -1,13 +1,17 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
-// 来源:https://deepswe.datacurve.ai/ + https://www.datalearner.com/benchmarks/deepswe (更新于 2026-09-14)
+// 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
+// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-09-13)
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
-//          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数
+//          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目)
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
-  updated: "2026-09-14",
-  refreshedAt: "2026-09-14 13:52",
+  channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
+  updated: "2026-09-13",
+  refreshedAt: "2026-09-13 22:39",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 35 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
@@ -20,7 +24,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'gpt-6-astra',
@@ -29,7 +33,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 6.52,
     'outTok': 29557,
-    'steps': 29
+    'steps': 29,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-8-flash',
@@ -38,7 +43,8 @@ window.DEEPSWE = {
     'ci': 1,
     'cost': 2.36,
     'outTok': 143243,
-    'steps': 166
+    'steps': 166,
+    'src': 'official'
   },
   {
     'name': 'claude-opus-5',
@@ -47,7 +53,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 11.84,
     'outTok': 117566,
-    'steps': 99
+    'steps': 99,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-6-sol',
@@ -56,7 +63,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 8.39,
     'outTok': 60014,
-    'steps': 61
+    'steps': 61,
+    'src': 'official'
   },
   {
     'name': 'claude-fable-5',
@@ -65,7 +73,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 13.41,
     'outTok': 80352,
-    'steps': 68
+    'steps': 68,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-6-terra',
@@ -74,7 +83,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 4.95,
     'outTok': 71939,
-    'steps': 76
+    'steps': 76,
+    'src': 'official'
   },
   {
     'name': 'Qwen3.8-Max-0902',
@@ -84,7 +94,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'glm-5-3',
@@ -93,7 +103,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 3.99,
     'outTok': 80436,
-    'steps': 124
+    'steps': 124,
+    'src': 'official'
   },
   {
     'name': 'kimi-k3',
@@ -102,7 +113,8 @@ window.DEEPSWE = {
     'ci': 5,
     'cost': 4.65,
     'outTok': 81500,
-    'steps': 98
+    'steps': 98,
+    'src': 'official'
   },
   {
     'name': 'Claude Fable 5.1',
@@ -112,7 +124,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'grok-4-6',
@@ -121,7 +133,8 @@ window.DEEPSWE = {
     'ci': 2,
     'cost': 3.45,
     'outTok': 49764,
-    'steps': 70
+    'steps': 70,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-6-luna',
@@ -130,7 +143,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 3.03,
     'outTok': 73400,
-    'steps': 102
+    'steps': 102,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-5',
@@ -139,7 +153,8 @@ window.DEEPSWE = {
     'ci': 6,
     'cost': 7.23,
     'outTok': 46295,
-    'steps': 82
+    'steps': 82,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-7-flash',
@@ -148,7 +163,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 2.03,
     'outTok': 93991,
-    'steps': 117
+    'steps': 117,
+    'src': 'official'
   },
   {
     'name': 'Hy4 preview',
@@ -158,7 +174,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'glm-5-3-flash',
@@ -167,7 +183,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 0.48,
     'outTok': 72830,
-    'steps': 123
+    'steps': 123,
+    'src': 'official'
   },
   {
     'name': 'DeepSeek V4 Pro 0813',
@@ -176,7 +193,8 @@ window.DEEPSWE = {
     'ci': 6,
     'cost': 0.24,
     'outTok': 105999,
-    'steps': 155
+    'steps': 155,
+    'src': 'official'
   },
   {
     'name': 'DeepSeek-V4-Pro',
@@ -186,7 +204,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'DeepSeek-V4-Flash-Vision-Exp',
@@ -196,7 +214,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'claude-opus-4-8',
@@ -205,7 +223,8 @@ window.DEEPSWE = {
     'ci': 2,
     'cost': 13.22,
     'outTok': 135032,
-    'steps': 120
+    'steps': 120,
+    'src': 'official'
   },
   {
     'name': 'Qwen3.8-Flash-Next',
@@ -215,7 +234,7 @@ window.DEEPSWE = {
     'cost': null,
     'outTok': null,
     'steps': null,
-    'source': 'datalearner'
+    'src': 'datalearner'
   },
   {
     'name': 'qwen3-8-max',
@@ -224,7 +243,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 3.73,
     'outTok': 95075,
-    'steps': 111
+    'steps': 111,
+    'src': 'official'
   },
   {
     'name': 'muse-spark-1-2',
@@ -233,7 +253,8 @@ window.DEEPSWE = {
     'ci': 2,
     'cost': 3.7,
     'outTok': 99226,
-    'steps': 101
+    'steps': 101,
+    'src': 'official'
   },
   {
     'name': 'claude-sonnet-5',
@@ -242,7 +263,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 26.4,
     'outTok': 214118,
-    'steps': 268
+    'steps': 268,
+    'src': 'official'
   },
   {
     'name': 'grok-4-5',
@@ -251,7 +273,8 @@ window.DEEPSWE = {
     'ci': 2,
     'cost': 2.42,
     'outTok': 35525,
-    'steps': 61
+    'steps': 61,
+    'src': 'official'
   },
   {
     'name': 'deepseek-v4-flash',
@@ -260,7 +283,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 0.1,
     'outTok': 107687,
-    'steps': 153
+    'steps': 153,
+    'src': 'official'
   },
   {
     'name': 'muse-spark-1-1',
@@ -269,7 +293,8 @@ window.DEEPSWE = {
     'ci': 3,
     'cost': 2.36,
     'outTok': 74008,
-    'steps': 96
+    'steps': 96,
+    'src': 'official'
   },
   {
     'name': 'gpt-5-4',
@@ -278,7 +303,8 @@ window.DEEPSWE = {
     'ci': 2,
     'cost': 5.65,
     'outTok': 71409,
-    'steps': 70
+    'steps': 70,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-6-flash',
@@ -287,7 +313,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 4.42,
     'outTok': 95845,
-    'steps': 117
+    'steps': 117,
+    'src': 'official'
   },
   {
     'name': 'glm-5-2',
@@ -296,7 +323,8 @@ window.DEEPSWE = {
     'ci': 2,
     'cost': 3.92,
     'outTok': 78175,
-    'steps': 129
+    'steps': 129,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-5-flash',
@@ -305,7 +333,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 3.45,
     'outTok': 75730,
-    'steps': 105
+    'steps': 105,
+    'src': 'official'
   },
   {
     'name': 'kimi-k2-7-code',
@@ -314,7 +343,8 @@ window.DEEPSWE = {
     'ci': 1,
     'cost': 2.82,
     'outTok': 59297,
-    'steps': 149
+    'steps': 149,
+    'src': 'official'
   },
   {
     'name': 'claude-sonnet-4-6',
@@ -323,7 +353,8 @@ window.DEEPSWE = {
     'ci': 4,
     'cost': 5.52,
     'outTok': 76160,
-    'steps': 134
+    'steps': 134,
+    'src': 'official'
   },
   {
     'name': 'gemini-3-1-pro-preview',
@@ -332,7 +363,8 @@ window.DEEPSWE = {
     'ci': 1,
     'cost': 2.14,
     'outTok': 28369,
-    'steps': 76
+    'steps': 76,
+    'src': 'official'
   }
 ]
 };

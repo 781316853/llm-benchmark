@@ -1,14 +1,16 @@
-// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 2026-09-14)
+// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 2026-09-13)
 // 来源:https://github.com/BenchCAD/BenchCAD-main(leaderboard.json;榜单页:https://benchcad.com/)
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数(本榜取官方 GitHub 榜 T1,无更高优先级渠道)
 // 字段说明:vision2code=图像→CadQuery 代码生成(主指标 total=64³ 体素 IoU×exec%,0-1);
-//          visionqa/codeqa=数值几何推理(2,400 题,L1-L4 四能力等级 + total)
+//          visionqa/codeqa=数值几何推理(2,400 题,L1-L4 四能力等级 + total);src=数据来源渠道(official)
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
 window.BENCHCAD = {
   'source': 'BenchCAD',
   'url': 'https://github.com/BenchCAD/BenchCAD-main',
   'boardUrl': 'https://benchcad.com/',
-  'updated': '2026-09-14',
-  'refreshedAt': '2026-09-14 13:52',
+  'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
+  'updated': '2026-09-13',
+  'refreshedAt': '2026-09-13 22:39',
   'stats': {
     'partFamilies': 106,
     'programs': 17900,
@@ -22,6 +24,7 @@ window.BENCHCAD = {
       'primary': 'total',
       'rows': [
         {
+          'src': 'official',
           'model': 'GPT-4o',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -32,6 +35,7 @@ window.BENCHCAD = {
           'iou_score': 0.1823
         },
         {
+          'src': 'official',
           'model': 'GPT-5.3',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -42,6 +46,7 @@ window.BENCHCAD = {
           'iou_score': 0.1873
         },
         {
+          'src': 'official',
           'model': 'GPT-5.3',
           'think': 'thinking',
           'org': 'OpenAI',
@@ -53,6 +58,7 @@ window.BENCHCAD = {
           'iou_score': 0.1793
         },
         {
+          'src': 'official',
           'model': 'Claude Sonnet 4.6',
           'org': 'Anthropic',
           'class': 'proprietary',
@@ -63,6 +69,7 @@ window.BENCHCAD = {
           'iou_score': 0.192
         },
         {
+          'src': 'official',
           'model': 'Claude Sonnet 4.6',
           'think': 'thinking-high',
           'org': 'Anthropic',
@@ -74,6 +81,7 @@ window.BENCHCAD = {
           'iou_score': 0.222
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.7',
           'org': 'Anthropic',
           'class': 'proprietary',
@@ -84,6 +92,7 @@ window.BENCHCAD = {
           'iou_score': 0.2617
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.7',
           'think': 'thinking',
           'org': 'Anthropic',
@@ -95,6 +104,7 @@ window.BENCHCAD = {
           'iou_score': 0.2692
         },
         {
+          'src': 'official',
           'model': 'Gemini 3.1 Pro',
           'org': 'Google',
           'class': 'proprietary',
@@ -105,6 +115,7 @@ window.BENCHCAD = {
           'iou_score': 0.2779
         },
         {
+          'src': 'official',
           'model': 'Gemini 3.1 Pro',
           'think': 'thinking',
           'org': 'Google',
@@ -116,6 +127,7 @@ window.BENCHCAD = {
           'iou_score': 0.289
         },
         {
+          'src': 'official',
           'model': 'OpenAI o3',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -126,6 +138,7 @@ window.BENCHCAD = {
           'iou_score': 0.1218
         },
         {
+          'src': 'official',
           'model': 'Moonshot v1-128k',
           'org': 'Moonshot',
           'class': 'open',
@@ -136,6 +149,7 @@ window.BENCHCAD = {
           'iou_score': 0.016
         },
         {
+          'src': 'official',
           'model': 'Moonshot v1-8k',
           'org': 'Moonshot',
           'class': 'open',
@@ -146,6 +160,7 @@ window.BENCHCAD = {
           'iou_score': 0.0127
         },
         {
+          'src': 'official',
           'model': 'Qwen3-VL-2B (baseline)',
           'org': 'Qwen',
           'class': 'open',
@@ -156,6 +171,7 @@ window.BENCHCAD = {
           'iou_score': 0.0005
         },
         {
+          'src': 'official',
           'model': 'GPT-4o',
           'think': 'blank img',
           'org': 'OpenAI',
@@ -167,6 +183,7 @@ window.BENCHCAD = {
           'iou_score': 0.0698
         },
         {
+          'src': 'official',
           'model': 'Claude Mythos 5',
           'think': 'thinking',
           'org': 'Anthropic',
@@ -179,6 +196,7 @@ window.BENCHCAD = {
           'self_reported': true
         },
         {
+          'src': 'official',
           'model': 'Claude Mythos Preview',
           'think': 'thinking',
           'org': 'Anthropic',
@@ -191,6 +209,7 @@ window.BENCHCAD = {
           'self_reported': true
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.8',
           'think': 'thinking',
           'org': 'Anthropic',
@@ -210,6 +229,7 @@ window.BENCHCAD = {
       'primary': 'total',
       'rows': [
         {
+          'src': 'official',
           'model': 'Gemini 3.1 Pro',
           'org': 'Google',
           'class': 'proprietary',
@@ -222,6 +242,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Gemini 3.1 Pro',
           'think': 'thinking',
           'org': 'Google',
@@ -235,6 +256,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.7',
           'think': 'thinking',
           'org': 'Anthropic',
@@ -248,6 +270,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.7',
           'org': 'Anthropic',
           'class': 'proprietary',
@@ -260,6 +283,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'GPT-5.3',
           'think': 'thinking',
           'org': 'OpenAI',
@@ -273,6 +297,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'GPT-5.3',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -285,6 +310,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'GPT-4o',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -297,6 +323,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Moonshot v1-8k',
           'org': 'Moonshot',
           'class': 'open',
@@ -309,6 +336,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Moonshot v1-128k',
           'org': 'Moonshot',
           'class': 'open',
@@ -321,6 +349,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'OpenAI o3',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -333,6 +362,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'blank-image baseline',
           'org': '—',
           'class': 'control',
@@ -352,6 +382,7 @@ window.BENCHCAD = {
       'primary': 'total',
       'rows': [
         {
+          'src': 'official',
           'model': 'Gemini 3.1 Pro',
           'think': 'thinking',
           'org': 'Google',
@@ -365,6 +396,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Gemini 3.1 Pro',
           'org': 'Google',
           'class': 'proprietary',
@@ -377,6 +409,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.7',
           'think': 'thinking',
           'org': 'Anthropic',
@@ -390,6 +423,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'GPT-5.3',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -402,6 +436,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'GPT-5.3',
           'think': 'thinking',
           'org': 'OpenAI',
@@ -415,6 +450,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Claude Opus 4.7',
           'org': 'Anthropic',
           'class': 'proprietary',
@@ -427,6 +463,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'GPT-4o',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -439,6 +476,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'OpenAI o3',
           'org': 'OpenAI',
           'class': 'proprietary',
@@ -451,6 +489,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Moonshot v1-128k',
           'org': 'Moonshot',
           'class': 'open',
@@ -463,6 +502,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'gpt-oss-120b',
           'org': 'OpenAI',
           'class': 'open',
@@ -475,6 +515,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Nemotron-3 120B',
           'org': 'NVIDIA',
           'class': 'open',
@@ -487,6 +528,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Gemma-4-31B-it',
           'org': 'Google',
           'class': 'open',
@@ -499,6 +541,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'Moonshot v1-8k',
           'org': 'Moonshot',
           'class': 'open',
@@ -511,6 +554,7 @@ window.BENCHCAD = {
           'tested': '2026-05'
         },
         {
+          'src': 'official',
           'model': 'blank-code baseline',
           'org': '—',
           'class': 'control',

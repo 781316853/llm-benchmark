@@ -1,13 +1,16 @@
-// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-14)
+// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-13)
 // 来源:https://llm-stats.com/benchmarks/gpqa(官方:https://epoch.ai/benchmarks/gpqa-diamond)
-// 字段说明:model=模型名;score=Accuracy(%);org=厂商;size=参数量;context=上下文;cost=API 价格
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
+// 注:datalearner GPQA 为 448 题全量集(口径不同于 198 题 Diamond 子集),不并入;本榜取 llm-stats 单源。
+// 字段说明:model=模型名;score=Accuracy(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(llm-stats)
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
 window.GPQA = {
   'source': 'GPQA Diamond',
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
-  'updated': '2026-09-14',
-  'refreshedAt': '2026-09-14 13:52',
+  'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
+  'updated': '2026-09-13',
+  'refreshedAt': '2026-09-13 22:39',
   'stats': {
     'tasks': 198,
     'entries': 50
@@ -22,17 +25,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 10.00 / $ 50.00',
-      'license': null
-    },
-    {
-      'rank': 2,
-      'model': 'Claude Mythos Preview',
-      'org': 'Anthropic',
-      'score': 94.6,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 2,
@@ -42,7 +36,19 @@ window.GPQA = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 2,
+      'model': 'Claude Mythos Preview',
+      'org': 'Anthropic',
+      'score': 94.6,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 4,
@@ -52,7 +58,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 12.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 5,
@@ -62,7 +69,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 6,
@@ -72,7 +80,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 6,
@@ -82,7 +91,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 8,
@@ -92,7 +102,8 @@ window.GPQA = {
       'size': '2.8T',
       'context': '1.0M',
       'cost': '$ 2.85 / $ 14.25',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 9,
@@ -102,7 +113,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 10,
@@ -112,7 +124,8 @@ window.GPQA = {
       'size': '—',
       'context': '500K',
       'cost': '$ 2.00 / $ 6.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 11,
@@ -122,7 +135,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 12.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 12,
@@ -132,7 +146,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.50 / $ 15.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 13,
@@ -142,7 +157,8 @@ window.GPQA = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 14,
@@ -152,7 +168,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 1.25 / $ 3.75',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 14,
@@ -162,7 +179,8 @@ window.GPQA = {
       'size': '—',
       'context': '400K',
       'cost': '$ 1.75 / $ 14.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 16,
@@ -172,7 +190,8 @@ window.GPQA = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 16,
@@ -182,7 +201,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 18,
@@ -192,17 +212,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 19,
-      'model': 'Qwen3.8-Flash-Next',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 91.7,
-      'size': '125B',
-      'context': '—',
-      'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 19,
@@ -212,7 +223,19 @@ window.GPQA = {
       'size': '125B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.47',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 19,
+      'model': 'Qwen3.8-Flash-Next',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 91.7,
+      'size': '125B',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 21,
@@ -222,7 +245,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 22,
@@ -232,7 +256,8 @@ window.GPQA = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 2.40',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 23,
@@ -242,7 +267,8 @@ window.GPQA = {
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.22 / $ 0.66',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 24,
@@ -252,7 +278,8 @@ window.GPQA = {
       'size': '1.0T',
       'context': '262K',
       'cost': '$ 0.75 / $ 3.50',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 25,
@@ -262,7 +289,8 @@ window.GPQA = {
       'size': '295B',
       'context': '262K',
       'cost': '$ 0.14 / $ 0.58',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 25,
@@ -272,7 +300,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.50 / $ 3.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 25,
@@ -282,7 +311,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.50 / $ 3.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 28,
@@ -292,7 +322,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 29,
@@ -302,7 +333,8 @@ window.GPQA = {
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 30,
@@ -312,17 +344,8 @@ window.GPQA = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 3.00 / $ 15.00',
-      'license': null
-    },
-    {
-      'rank': 31,
-      'model': 'Muse Spark',
-      'org': 'Meta',
-      'score': 89.5,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 31,
@@ -332,7 +355,19 @@ window.GPQA = {
       'size': '276B',
       'context': '524K',
       'cost': '$ 0.30 / $ 1.20',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 31,
+      'model': 'Muse Spark',
+      'org': 'Meta',
+      'score': 89.5,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 33,
@@ -342,7 +377,8 @@ window.GPQA = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 34,
@@ -352,7 +388,8 @@ window.GPQA = {
       'size': '—',
       'context': '524K',
       'cost': '$ 0.30 / $ 1.20',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 35,
@@ -362,7 +399,8 @@ window.GPQA = {
       'size': '—',
       'context': '256K',
       'cost': '$ 0.50 / $ 3.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 36,
@@ -372,7 +410,8 @@ window.GPQA = {
       'size': '397B',
       'context': '262K',
       'cost': '$ 0.45 / $ 3.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 36,
@@ -382,7 +421,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 38,
@@ -392,27 +432,8 @@ window.GPQA = {
       'size': '—',
       'context': '400K',
       'cost': '$ 1.25 / $ 10.00',
-      'license': null
-    },
-    {
-      'rank': 38,
-      'model': 'DeepSeek-V4-Flash-Max',
-      'org': 'DeepSeek',
-      'score': 88.1,
-      'size': '284B',
-      'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18',
-      'license': null
-    },
-    {
-      'rank': 38,
-      'model': 'GPT-5.1 Instant',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.25 / $ 10.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 38,
@@ -422,7 +443,19 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 38,
+      'model': 'GPT-5.1 Instant',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.25 / $ 10.00',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 38,
@@ -432,7 +465,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 38,
@@ -442,7 +476,19 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 38,
+      'model': 'DeepSeek-V4-Flash-Max',
+      'org': 'DeepSeek',
+      'score': 88.1,
+      'size': '284B',
+      'context': '1.0M',
+      'cost': '$ 0.09 / $ 0.18',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 44,
@@ -452,7 +498,8 @@ window.GPQA = {
       'size': '—',
       'context': '400K',
       'cost': '$ 0.75 / $ 4.50',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 45,
@@ -462,7 +509,8 @@ window.GPQA = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.32 / $ 3.20',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 46,
@@ -472,7 +520,8 @@ window.GPQA = {
       'size': '1.0T',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 47,
@@ -482,17 +531,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
-    },
-    {
-      'rank': 48,
-      'model': 'DeepSeek-V4-Flash-0423',
-      'org': 'DeepSeek',
-      'score': 87.4,
-      'size': '284B',
-      'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 48,
@@ -502,7 +542,19 @@ window.GPQA = {
       'size': '1.0T',
       'context': '256K',
       'cost': '$ 1.20 / $ 6.00',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 48,
+      'model': 'DeepSeek-V4-Flash-0423',
+      'org': 'DeepSeek',
+      'score': 87.4,
+      'size': '284B',
+      'context': '1.0M',
+      'cost': '$ 0.09 / $ 0.18',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'rank': 50,
@@ -512,7 +564,8 @@ window.GPQA = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'license': null
+      'license': null,
+      'src': 'llm-stats'
     }
   ]
 };

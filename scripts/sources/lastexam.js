@@ -1,6 +1,9 @@
 // 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测)
-// 站点:官方 agents-last-exam.org/leaderboard 为 Next.js 客户端渲染(原始 HTML 无数据),
-//       以 llm-stats 聚合表为主(#|Model|Score(0-1)|Size|Context|Cost|License)。
+// 站点:官方 agents-last-exam.org/leaderboard 为 Next.js 客户端渲染(原始 HTML 无数据)。
+// 渠道层级(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页
+//   (内嵌 results JSON,厂商官方发布成绩);补充源 llm-stats 聚合表
+//   (#|Model|Score(0-1)|Size|Context|Cost|License)。
+// 合并策略:见 scripts/lib/mergeByTier.js——高层级分数不被低层级覆盖,低层级仅补缺失模型与字段。
 // 性质:模型级条目(1500+ 任务、55 子行业,Pass@1 口径);仅「权威基准测试」页展示。
 // 输出:data/lastexam.js(window.LASTEXAM)。
 "use strict";
@@ -9,10 +12,10 @@ const registry = require("../lib/registry");
 const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
+const { parseDataLearnerBench } = require("./datalearner");
+const parseLlmStats = require("../lib/parseLlmStats");
+const { createTierMerger } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
-
-// 正则转义(用于从模型单元格文本中剥离厂商名)
-function escapeRegExp(s) { return String(s || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 
 class LastExamSource extends BaseSource {
   constructor() {
@@ -24,37 +27,23 @@ class LastExamSource extends BaseSource {
     });
   }
   async fetch() {
-    return transport.fetchWithRetry(this.cfg.url);
+    // 主源(datalearner 厂商官方发布)+ 补充源(llm-stats)并行抓取
+    const [vendor, primary] = await Promise.all([
+      transport.fetchWithRetry(CONFIG.sources.datalearner_lastexam.url),
+      transport.fetchWithRetry(this.cfg.url)
+    ]);
+    return { primary: primary, vendor: vendor };
   }
   parse(raw) {
-    const models = [];
-    transport.parseTableRows(raw).forEach(function (row) {
-      const cells = row.text;
-      if (cells.length < 3) return;
-      const rank = Number(cells[0]);
-      if (!isFinite(rank)) return;              // 表头行跳过
-      const score01 = Number(cells[2]);
-      if (!isFinite(score01)) return;
-      // 模型单元格形如 "GPT-6 Astra New OpenAI"(模型名 + New 徽标 + 厂商名);厂商取 <img alt>
-      const orgM = (row.html[1] || "").match(/<img[^>]*alt="([^"]*)"/);
-      const org = orgM ? transport.htmlDecode(orgM[1]) : null;
-      let model = String(cells[1] || "").trim();
-      // 先剥离末尾厂商名,再剥离 "New" 徽标(次序:org 在 New 之后)
-      if (org) model = model.replace(new RegExp("\\s*" + escapeRegExp(org) + "\\s*$"), "");
-      model = model.replace(/\s*New\s*$/i, "").trim();
-      if (!model) return;
-      models.push({
-        rank: rank,
-        model: model,
-        org: org,
-        score: Math.round(score01 * 1000) / 10,  // 0-1 -> 0-100
-        size: cells[3] || null,
-        context: cells[4] || null,
-        cost: cells[5] || null
-      });
+    const primary = parseLlmStats.parse(raw.primary, { name: "Agents' Last Exam", tasks: 1490 }).models;
+    const vendor = parseDataLearnerBench(raw.vendor).map(function (m) {
+      return { model: m.name, org: m.org, score: m.score, license: m.license, effort: m.mode || null, date: m.date || null };
     });
-    if (!models.length) throw new Error("未解析到任何 Agents' Last Exam 行");
-    models.sort(function (a, b) { return b.score - a.score; });
+    // 按渠道层级合并:主源(T2 厂商发布)优先入表,llm-stats(T3)仅补缺与回填字段
+    const merger = createTierMerger({});
+    merger.add(vendor, "datalearner");
+    merger.add(primary, "llm-stats");
+    const models = merger.values();
     return { tasks: 1490, models: models };
   }
   toStandard(parsed) {
@@ -65,7 +54,7 @@ class LastExamSource extends BaseSource {
         rank: idx,
         updated: CONFIG.TODAY,
         metrics: {},
-        meta: { org: m.org }
+        meta: { org: m.org, src: m.src }
       };
     });
   }
@@ -73,13 +62,16 @@ class LastExamSource extends BaseSource {
     const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT, n = parsed.models.length;
     return writers.windowVarTemplate("LASTEXAM",
       "// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 " + T + ")\n" +
-      "// 来源:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
-      "// 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格\n" +
+      "// 主渠道:https://www.datalearner.com/benchmarks/agents-last-exam(厂商官方发布成绩转录)\n" +
+      "// 补充:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
+      "// " + CONFIG.channelPolicy + "\n" +
+      "// 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/llm-stats)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "Agents' Last Exam",
         url: this.cfg.url,
         officialUrl: this.cfg.officialUrl,
+        channelPolicy: CONFIG.channelPolicy,
         updated: T,
         refreshedAt: R,
         stats: { tasks: parsed.tasks, entries: n },

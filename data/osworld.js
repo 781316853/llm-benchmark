@@ -1,26 +1,30 @@
-// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-09-14)
-// 来源:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/)
-// 字段说明:system=系统/提交(模型+工具策略);score=部分得分 partial(%);org=厂商;reported=上报时间;url=来源链接
+// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-09-13)
+// 主渠道:https://www.datalearner.com/benchmarks/osworld-2(厂商官方发布成绩,partial 口径)
+// 补充:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/,系统级条目仅追加主源未收录者)
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
+// 字段说明:system=系统/提交(模型+工具策略);score=部分得分 partial(%);org=厂商;reported=上报时间;url=来源链接;src=数据来源渠道(datalearner/mirror)
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
 window.OSWORLD = {
   'source': 'OSWorld 2.0',
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
-  'updated': '2026-09-14',
-  'refreshedAt': '2026-09-14 13:52',
+  'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
+  'updated': '2026-09-13',
+  'refreshedAt': '2026-09-13 22:39',
   'stats': {
     'tasks': 108,
-    'entries': 22
+    'entries': 26
   },
   'desc': 'OSWorld 2.0:108 个长时程、端到端的桌面计算机使用工作流(人类中位耗时约 1.6 小时,平均约 318 次工具调用),按二进制完成率与部分得分(检查点达成比例)双口径计分;因二进制完成率极低,榜单按部分得分排序。',
   'models': [
     {
       'system': 'Claude Fable 5.1',
-      'note': 'Partial score (41.7% strict) on the 2026.08.08 release at 1080p, 500 steps, Opus 4.8 grader; the card states this run modified tasks and grading, so it is not directly comparable to official-settings rows. Self-reported.',
+      'note': '最高（工具）',
       'score': 77.9,
       'org': 'Anthropic',
-      'reported': 'Sep 2026',
-      'url': 'https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf'
+      'reported': '2026-09-01',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Simular Sai',
@@ -28,23 +32,26 @@ window.OSWORLD = {
       'score': 73,
       'org': 'Simular AI',
       'reported': 'Aug 2026',
-      'url': 'https://www.simular.ai/articles/sai-tops-osworld-2-0'
+      'url': 'https://www.simular.ai/articles/sai-tops-osworld-2-0',
+      'src': 'mirror'
     },
     {
       'system': 'GPT-6 Astra',
-      'note': 'Partial score on the 2026.08.08 offline subset under a latency simulation at roughly 40 minutes per task; maximum at any effort. Self-reported at launch.',
+      'note': '最高（工具）',
       'score': 72.6,
       'org': 'OpenAI',
-      'reported': 'Sep 2026',
-      'url': 'https://openai.com/index/gpt-6-astra/'
+      'reported': '2026-09-03',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Opus 5',
-      'note': 'Partial score (five-run first-attempt average at 1080p, 500 steps, Opus 4.8 grader); OpenAI\'s launch table separately lists 70.2% for its author-reproduced run on the offline subset. Self-reported.',
-      'score': 70.6,
+      'note': '最高（工具）',
+      'score': 70.57,
       'org': 'Anthropic',
-      'reported': 'Jul 2026',
-      'url': 'https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf'
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Opus 5 (Snorkel run)',
@@ -52,15 +59,17 @@ window.OSWORLD = {
       'score': 68.31,
       'org': 'Snorkel AI',
       'reported': 'Sep 2026',
-      'url': 'https://snorkel.ai/leaderboard/os-world-2-0/'
+      'url': 'https://snorkel.ai/leaderboard/os-world-2-0/',
+      'src': 'mirror'
     },
     {
       'system': 'Muse Spark 1.3',
-      'note': 'Partial score (32.0% binary) at max reasoning effort on benchmark version 08.08 in Meta\'s GUI computer-control harness on a full Ubuntu desktop VM. Self-reported on the launch scorecard.',
+      'note': '最高（工具）',
       'score': 66.9,
-      'org': 'Meta',
-      'reported': 'Sep 2026',
-      'url': 'https://research.meta.ai/blog/introducing-muse-spark-1-3'
+      'org': 'Facebook AI研究实验室',
+      'reported': '2026-09-02',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Fable 5',
@@ -68,7 +77,17 @@ window.OSWORLD = {
       'score': 66.1,
       'org': 'Anthropic',
       'reported': 'Jul 2026',
-      'url': 'https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf'
+      'url': 'https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf',
+      'src': 'mirror'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '官方报告最高值（具体推理档位未注明）',
+      'score': 65.7,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'GPT-5.6 Sol (offline subset)',
@@ -76,7 +95,8 @@ window.OSWORLD = {
       'score': 65.7,
       'org': 'OpenAI',
       'reported': 'Sep 2026',
-      'url': 'https://openai.com/index/gpt-6-astra/'
+      'url': 'https://openai.com/index/gpt-6-astra/',
+      'src': 'mirror'
     },
     {
       'system': 'GPT-5.6 Sol (Snorkel run)',
@@ -84,15 +104,35 @@ window.OSWORLD = {
       'score': 62.72,
       'org': 'Snorkel AI',
       'reported': 'Sep 2026',
-      'url': 'https://snorkel.ai/leaderboard/os-world-2-0/'
+      'url': 'https://snorkel.ai/leaderboard/os-world-2-0/',
+      'src': 'mirror'
     },
     {
       'system': 'GPT-5.6 Sol',
-      'note': 'OpenAI self-reported at the GPT-5.6 launch; single-agent Sol (ultra multi-agent not reported on OSWorld 2.0). Partial score; binary completion not published.',
+      'note': '极高强度思考（工具）',
       'score': 62.6,
       'org': 'OpenAI',
-      'reported': 'Jul 2026',
-      'url': 'https://openai.com/index/gpt-5-6/'
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Gemini 3.8 Flash',
+      'note': '思考模式（工具）',
+      'score': 59,
+      'org': 'Google Deep Mind',
+      'reported': '2026-09-02',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Kimi K3',
+      'note': '最高（工具）',
+      'score': 58.3,
+      'org': 'Moonshot AI',
+      'reported': '2026-07-16',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Opus 4.8 (Opus 5 card table)',
@@ -100,7 +140,8 @@ window.OSWORLD = {
       'score': 55.7,
       'org': 'Anthropic',
       'reported': 'Jul 2026',
-      'url': 'https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf'
+      'url': 'https://www-cdn.anthropic.com/ceaf5c7ff2783855203fde8208ec311252dced5b/Claude%20Opus%205%20System%20Card.pdf',
+      'src': 'mirror'
     },
     {
       'system': 'Claude Opus 4.8 (batched tools)',
@@ -108,15 +149,17 @@ window.OSWORLD = {
       'score': 54.8,
       'org': 'Anthropic',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Qwen3.8-Flash-Next',
-      'note': 'Partial score (19.4% binary) under the card\'s partial/binary reporting; benchmark release version not stated. Self-reported on the model card.',
+      'note': '极高强度思考（工具）',
       'score': 52.3,
-      'org': 'Alibaba',
-      'reported': 'Aug 2026',
-      'url': 'https://huggingface.co/Qwen/Qwen3.8-Flash-Next'
+      'org': '阿里巴巴',
+      'reported': '2026-08-26',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'GPT-5.5 (batched tools)',
@@ -124,7 +167,8 @@ window.OSWORLD = {
       'score': 49.5,
       'org': 'OpenAI',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Claude Opus 4.8',
@@ -132,7 +176,8 @@ window.OSWORLD = {
       'score': 49.33,
       'org': 'Anthropic',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Claude Opus 4.7',
@@ -140,7 +185,8 @@ window.OSWORLD = {
       'score': 49.1,
       'org': 'Anthropic',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Claude Opus 4.7 (batched tools)',
@@ -148,7 +194,17 @@ window.OSWORLD = {
       'score': 48.91,
       'org': 'Anthropic',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
+    },
+    {
+      'system': 'Gemini 3.7 Flash',
+      'note': '思考模式 Medium（工具）',
+      'score': 47.9,
+      'org': 'Google Deep Mind',
+      'reported': '2026-08-13',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Sonnet 4.6 (max thinking)',
@@ -156,7 +212,8 @@ window.OSWORLD = {
       'score': 41.5,
       'org': 'Anthropic',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Claude Sonnet 4.6 (medium thinking)',
@@ -164,7 +221,8 @@ window.OSWORLD = {
       'score': 33.9,
       'org': 'Anthropic',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'MiniMax M3',
@@ -172,7 +230,8 @@ window.OSWORLD = {
       'score': 22.3,
       'org': 'MiniMax',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Kimi 2.6',
@@ -180,7 +239,8 @@ window.OSWORLD = {
       'score': 22.1,
       'org': 'Moonshot AI',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     },
     {
       'system': 'Qwen 3.7-Plus',
@@ -188,7 +248,8 @@ window.OSWORLD = {
       'score': 21.5,
       'org': 'Alibaba',
       'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/'
+      'url': 'https://osworld-v2.xlang.ai/',
+      'src': 'mirror'
     }
   ]
 };

@@ -1,10 +1,12 @@
 // 数据源:Terminal-Bench 2.1(斯坦福/Laude 终端命令行 Agent 评测,89 任务)
 // 站点:官方 https://www.tbench.ai/news/terminal-bench-2-1(线上无独立 2.1 榜单路由);
-//       主源为 llm-stats.com 聚合表(服务端渲染,0-1 归一化自报分,35 模型),
-//       补充源为 datalearner 详情页(内嵌 results JSON,含模式/发布时间/参数量,~30 条)。
-// 数据形态:主源 #|Model|Score(0-1)|Size|Context|Cost|License;补充源 results JSON。
+//   按渠道层级合并(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页
+//   (内嵌 results JSON,厂商官方发布成绩,含模式/发布时间/参数量,~30 条);
+//   补充源 llm-stats.com 聚合表(服务端渲染,0-1 归一化自报分,35 模型)。
+// 数据形态:datalearner results JSON;llm-stats #|Model|Score(0-1)|Size|Context|Cost|License。
+// 合并策略:见 scripts/lib/mergeByTier.js——高层级分数不被低层级覆盖,低层级仅补缺失模型与字段。
 // 性质:模型级条目,0-1 自报分已换算为百分比,与官方 agent×model 解决率口径不同;
-//       双源合并去重取最高(llm-stats 字段优先),与 4.0/3.0 合并为一个基准组计入总览综合分。
+//       与 4.0/3.0 合并为一个基准组计入总览综合分。
 // 输出:data/tbench_v2.js(window.TBENCH_V21),供「权威基准测试」页完整展示与总览矩阵。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -14,19 +16,14 @@ const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const parseLlmStats = require("../lib/parseLlmStats");
 const { parseDataLearnerBench } = require("./datalearner");
+const { createTierMerger } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
-
-// 模型名归一键(与 js/data.js / model-map.js 同规则):小写 + 非字母数字折叠为连字符
-function normKey(s) {
-  return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-}
 
 // 跨源别名归并:两源对同一模型命名不同时归并到同一键(避免重复条目)
 const KEY_ALIASES = {
   "deepseek-v4-pro": "deepseek-v4-pro-0813",
   "deepseek-v4-flash": "deepseek-v4-flash-0731"
 };
-function aliasKey(k) { return KEY_ALIASES[k] || k; }
 
 class TBenchV21Source extends BaseSource {
   constructor() {
@@ -39,48 +36,29 @@ class TBenchV21Source extends BaseSource {
     });
   }
   async fetch() {
-    // 主源(llm-stats)+ 补充源(datalearner)并行抓取
-    const [primary, extra] = await Promise.all([
-      transport.fetchWithRetry(this.cfg.url),
-      transport.fetchWithRetry(CONFIG.sources.datalearner_tbench21.url)
+    // 主源(datalearner 厂商官方发布)+ 补充源(llm-stats)并行抓取
+    const [extra, primary] = await Promise.all([
+      transport.fetchWithRetry(CONFIG.sources.datalearner_tbench21.url),
+      transport.fetchWithRetry(this.cfg.url)
     ]);
     return { primary: primary, extra: extra };
   }
   parse(raw) {
     const primary = parseLlmStats.parse(raw.primary, { name: "Terminal-Bench 2.1", tasks: 89 });
-    const extra = parseDataLearnerBench(raw.extra);
-    // 双源合并:按归一键去重,同模型取最高 score;主源字段(org/size/context/cost)优先
-    const map = {};
-    primary.models.forEach(function (m) {
-      map[aliasKey(normKey(m.model))] = {
-        model: m.model, org: m.org, score: m.score,
-        size: m.size, context: m.context, cost: m.cost, license: m.license, src: "llm-stats"
-      };
+    const extra = parseDataLearnerBench(raw.extra).map(function (dl) {
+      return { model: dl.name, org: dl.org, score: dl.score, license: dl.license, effort: dl.mode || null, date: dl.date || null };
     });
-    extra.forEach(function (dl) {
-      const k = aliasKey(normKey(dl.name));
-      const e = map[k];
-      if (!e) {
-        map[k] = { model: dl.name, org: dl.org, score: dl.score, size: null, context: null, cost: null, license: dl.license, src: "datalearner" };
-      } else if (dl.score > e.score) {
-        e.score = dl.score;
-        e.model = dl.name;
-        e.org = dl.org || e.org;
-      }
-      // datalearner 独有字段回填:模式 -> effort,发布时间 -> date
-      if (dl.mode) map[k].effort = dl.mode;
-      if (dl.date) map[k].date = dl.date;
-    });
-    const models = Object.keys(map).map(function (k) {
-      const m = map[k];
+    // 按渠道层级合并:主源(T2 厂商发布)优先入表,llm-stats(T3)仅补缺与回填字段
+    const merger = createTierMerger({ aliases: KEY_ALIASES });
+    merger.add(extra, "datalearner");
+    merger.add(primary.models, "llm-stats");
+    const models = merger.values().map(function (m) {
       return {
-        model: m.model, agent: null, effort: m.effort || null,
+        rank: m.rank, model: m.model, agent: null, effort: m.effort || null,
         score: m.score, ci: null, date: m.date || null, tokens: null, cost: m.cost || null,
         org: m.org, size: m.size, src: m.src
       };
     });
-    models.sort(function (a, b) { return b.score - a.score; });
-    models.forEach(function (m, i) { m.rank = i + 1; });
     return { tasks: 89, models: models };
   }
   toStandard(parsed) {
@@ -99,21 +77,25 @@ class TBenchV21Source extends BaseSource {
     const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT, n = parsed.models.length;
     return writers.windowVarTemplate("TBENCH_V21",
       "// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 " + T + ")\n" +
-      "// 来源:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ") · 补充镜像 https://www.datalearner.com/benchmarks/terminal-bench-2-1\n" +
+      "// 来源:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
+      "// 主渠道:https://www.datalearner.com/benchmarks/terminal-bench-2-1(厂商官方发布成绩转录)\n" +
+      "// 补充:llm-stats 聚合表(0-1 归一化自报分)\n" +
+      "// " + CONFIG.channelPolicy + "\n" +
       "// 字段说明:model=模型名;effort=推理模式(datalearner 提供,如 最高(工具));agent=Agent 框架(源站未给出,置空);\n" +
-      "//          score=得分(%);ci=95% 置信区间;date=模型发布日期;cost=API 价格(llm-stats);org/size 为厂商/参数量\n" +
+      "//          score=得分(%);ci=95% 置信区间;date=模型发布日期;cost=API 价格(llm-stats);org/size 为厂商/参数量;\n" +
+      "//          src=数据来源渠道(datalearner/llm-stats)\n" +
       "// 用途:计入总览页综合分与命中数(与 4.0/3.0 合并为一个基准组,取值优先级 4.0>3.0>2.1);「权威基准测试」页完整展示。\n" +
-      "// 注:采用 llm-stats 的 2.1 榜单(0-1 归一化自报分,已换算为百分比)+ datalearner 补充合并取最高,\n" +
-      "//    与官方 agent×model 解决率口径不同;阅读时请注意口径差异。\n",
+      "// 注:采用 datalearner 厂商发布成绩为主 + llm-stats 自报分补充,与官方 agent×model 解决率口径不同;阅读时请注意口径差异。\n",
       {
         source: "Terminal-Bench",
         url: this.cfg.url,
         officialUrl: this.cfg.officialUrl,
+        channelPolicy: CONFIG.channelPolicy,
         version: "2.1",
         updated: T,
         refreshedAt: R,
         stats: { tasks: parsed.tasks, entries: n },
-        desc: "Terminal-Bench 2.1:在真实命令行环境中评测编码 Agent(89 个任务,修复 2.0 中 28 个任务问题)。本快照采用 llm-stats 模型级 0-1 归一化自报分(换算为百分比)与 datalearner 补充双源合并取最高,越高越好。",
+        desc: "Terminal-Bench 2.1:在真实命令行环境中评测编码 Agent(89 个任务,修复 2.0 中 28 个任务问题)。本快照以 datalearner 厂商官方发布成绩为主源、llm-stats 模型级 0-1 归一化自报分(换算为百分比)为补充源,按渠道层级合并,越高越好。",
         models: parsed.models
       }
     );
