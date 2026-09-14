@@ -231,10 +231,12 @@
     }).join("");
 
     // 矩阵表:先分配梯队(基于全量排名行(命中≥4榜),按原始综合分),再选取展示行:排名行按综合分
-    // 排序取前30;命中 2-3 榜的「参考」模型不计算综合分,按各榜成绩与排名行模型比对落入相应
     // 名次间隔,仅在前30区间内混排计入(序号计「—」,不占前30名额),第 30 个排名行之后的行
-    // (含参考行)一律截断;勾选"显示全部"则展示所有模型
-    var matrixRows = CMP.matrix(state.llmMonth, state.showAll.overview ? 1 : 2);
+    // 排序取前30;命中 3 榜的「参考」模型不计算综合分(展示为「—」),按在场基准的加权综合水平
+    // (序号计「—」,不占前30名额),第 30 个排名行之后的行(含参考行)一律截断;
+    // 勾选"显示全部"则展开排名30之后的模型。
+    // 命中 ≤2 榜的模型一律不在总览展示(默认与"显示全部"均要求命中≥3榜),请前往对应单项榜单页查看。
+    var matrixRows = CMP.matrix(state.llmMonth, 3);
     CMP.assignTiers(matrixRows.filter(function (r) { return r.benchCount >= 4; }));
     var allRows = sortedMatrixRows(matrixRows);
     var rows = allRows;
@@ -244,11 +246,11 @@
       for (var ri = 0; ri < allRows.length && ranked < 30; ri++) {
         var r0 = allRows[ri];
         if (r0.benchCount >= 4) { rows.push(r0); ranked++; }
-        else if (r0.benchCount >= 2) rows.push(r0);
+        else if (r0.benchCount >= 3) rows.push(r0);
       }
     }
     if (!rows.length) rows = allRows;
-    // 排名计数器:仅对参与排名的行(命中≥4榜)递增;参考行(命中 2-3 榜)不参与排名,序号列固定「—」
+    // 排名计数器:仅对参与排名的行(命中≥4榜)递增;参考行(命中 3 榜)不参与排名,序号列固定「—」
     var rankNo = 0;
     // AI 能力单元格:前端/后端方向分同字号并列(如 96.5 / 96),以不同颜色区分,
     // 任一侧缺失则只显示另一侧(颜色保留,便于区分方向)
@@ -263,12 +265,11 @@
         '<span class="ac-be" title="后端">' + be + '</span>';
     };
     var html = rows.map(function (r) {
-      // 参考行:命中 2-3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
-      var inserted = r.benchCount >= 2 && r.benchCount <= 3;
-      // 单榜行:仅命中 1 个基准组,只在「显示全部模型」时出现,统一排在最后,不排名、不计算综合分
-      var single = r.benchCount === 1;
+      // 参考行:命中 3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
+      // (命中 ≤2 榜的模型不在总览展示,行集已按命中≥3榜过滤)
+      var inserted = r.benchCount === 3;
       // 不参与排名的行(命中<4榜):梯队列与序号列均显示「—」
-      var unranked = inserted || single;
+      var unranked = inserted;
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
       var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
@@ -301,17 +302,16 @@
       var dom = state.highlightDomestic && DOMESTIC[r.vendor];
       // row-hit(跨榜命中)、row-new(新上榜)、row-domestic(国产高亮)可并存;
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
-      var cls = (r.benchCount >= 4 ? "row-hit " : "") + (inserted ? "row-two " : "") + (single ? "row-one " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
+      var cls = (r.benchCount >= 4 ? "row-hit " : "") + (inserted ? "row-two " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
-      var insertedBadge = inserted ? ' <span class="badge-two" title="命中 2-3 榜:按各榜成绩与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;仅前30区间内显示">参考</span>' : "";
       var singleBadge = single ? ' <span class="badge-one" title="仅命中一榜:不计算综合分、不计排名,统一排在末尾;勾选下方「显示全部模型」可见">仅单榜</span>' : "";
-      // 序号列:参与排名的行(命中≥4榜)按出现顺序编号;参考行 / 单榜行固定「—」,不参与排序
+      // 序号列:参与排名的行(命中≥4榜)按出现顺序编号;参考行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (unranked ? "—" : ++rankNo) + '</td>' +
-        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + insertedBadge + singleBadge + '</td>' +
+        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + insertedBadge + '</td>' +
         '<td>' + esc(r.vendor) + '</td>' +
         // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
-        // 参考 / 单榜行不作梯队分档展示:梯队列显示「—」
+        // 参考行不作梯队分档展示:梯队列显示「—」
         (function () {
           if (unranked) return '<td class="num"><span class="tier-na">—</span></td>';
           var score = CMP.composite(r).toFixed(1);
@@ -369,14 +369,13 @@
     var note;
     if (state.showAll.overview) {
       var rCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
-      var dCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
-      var sCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
-      note = '当前显示全部 ' + rows.length + ' 个在任一基准组有成绩的模型(排名行 ' + rCnt + ' 个 + 「参考」' + dCnt +
-        ' 个 + 「单榜」' + sCnt + ' 个)。命中 3 个及以下的模型不计算综合分、不参与排名、序号与梯队列均显示「—」,仅展示各榜数据。';
+      var dCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
+      note = '当前显示全部 ' + rows.length + ' 个命中≥3个基准组的模型(排名行 ' + rCnt + ' 个 + 「参考」' + dCnt +
+        ' 个)。命中 3 榜的参考行不计算综合分、不参与排名、序号与梯队列均显示「—」,仅展示各榜数据;命中 ≤2 榜的模型不在总览展示,请前往对应榜单页查看。';
     } else {
-      var dualCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
+      var dualCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
       note = '当前显示命中≥4个基准组且排名前 ' + (rows.length - dualCnt) + ' 的模型,以及 ' + dualCnt +
-        ' 个跻身前30区间的「参考」模型(命中 2-3 个基准组,按各榜成绩与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余参考模型可勾选下方"显示全部"查看)。';
+        ' 个跻身前30区间的「参考」模型(命中 3 个基准组,按在场基准加权综合水平与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余 3 榜参考模型可勾选下方"显示全部"查看,命中 ≤2 榜的模型不在总览展示)。';
     }
     // 国产高亮开启时,追加国产模型数量提示
     if (state.highlightDomestic) {
