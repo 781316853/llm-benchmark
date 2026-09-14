@@ -311,6 +311,9 @@ window.SEEN = {
     'vibe|Deepseek v4.1 flash [新]': '2026-09-11',
     'tbench|DeepSeek-V4.1-Flash': '2026-09-13',
     'tbench|Kimi K3': '2026-09-13',
-    'tbench|DeepSeek-V4-Flash': '2026-09-13'
+    'tbench|DeepSeek-V4-Flash': '2026-09-13',
+    'tbench|Muse Spark 1.3': '2026-09-14',
+    'tbench|GLM-5.3-Flash': '2026-09-14',
+    'tbench|Qwen3.8-Flash-Next': '2026-09-14'
   }
 };

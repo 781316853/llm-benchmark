@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 2026-09-13)
+// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 2026-09-14)
 // 来源:https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026(官方:https://www.terminal-bench-science.ai/announcement)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数(本榜无更高优先级渠道,explainx 为唯一 T3 镜像)
 // 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror)
@@ -9,8 +9,8 @@ window.TBSCIENCE = {
   'announcementUrl': 'https://www.terminal-bench-science.ai/announcement',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '0.1',
-  'updated': '2026-09-13',
-  'refreshedAt': '2026-09-13 22:39',
+  'updated': '2026-09-14',
+  'refreshedAt': '2026-09-15 02:22',
   'stats': {
     'tasks': 70,
     'entries': 9
