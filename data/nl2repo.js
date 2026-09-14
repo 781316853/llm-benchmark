@@ -1,4 +1,4 @@
-// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-09-13)
+// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-09-14)
 // 来源:https://llm-stats.com/benchmarks/nl2repo(官方:https://github.com/multimodal-art-projection/NL2RepoBench)
 // 补充:https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像) · 官方论文评测表 https://arxiv.org/html/2512.12730v2(Table 2) · https://www.datalearner.com/benchmarks/nl2repo-bench(厂商官方发布)
 // 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源(llm-stats/benchlm/paper/datalearner)
@@ -7,8 +7,8 @@ window.NL2REPO = {
   'source': 'NL2Repo-Bench',
   'url': 'https://llm-stats.com/benchmarks/nl2repo',
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
-  'updated': '2026-09-13',
-  'refreshedAt': '2026-09-14 00:51',
+  'updated': '2026-09-14',
+  'refreshedAt': '2026-09-14 13:52',
   'stats': {
     'tasks': 103,
     'entries': 48

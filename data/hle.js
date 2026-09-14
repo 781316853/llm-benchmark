@@ -1,4 +1,4 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-09-13)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-09-14)
 // 来源:https://llm-stats.com/benchmarks/humanity%27s-last-exam(官方:https://lastexam.ai/)
 // 补充:https://benchlm.ai/benchmarks/hle(benchlm 镜像) · https://www.datalearner.com/benchmarks/hle(厂商官方发布)
 // 字段说明:model=模型名;score=闭卷得分(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源(llm-stats/benchlm/datalearner)
@@ -7,8 +7,8 @@ window.HLE = {
   'source': 'Humanity\'s Last Exam',
   'url': 'https://llm-stats.com/benchmarks/humanity%27s-last-exam',
   'officialUrl': 'https://lastexam.ai/',
-  'updated': '2026-09-13',
-  'refreshedAt': '2026-09-14 00:51',
+  'updated': '2026-09-14',
+  'refreshedAt': '2026-09-14 13:52',
   'stats': {
     'tasks': 2500,
     'entries': 84
@@ -28,23 +28,23 @@ window.HLE = {
     },
     {
       'rank': 2,
-      'model': 'Claude Mythos Preview',
-      'org': 'Anthropic',
-      'score': 64.7,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 3,
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
       'score': 64.7,
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 3,
+      'model': 'Claude Mythos Preview',
+      'org': 'Anthropic',
+      'score': 64.7,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },

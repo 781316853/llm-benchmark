@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-13)
+// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-14)
 // 来源:https://llm-stats.com/benchmarks/terminal-bench-2.1(官方:https://www.tbench.ai/news/terminal-bench-2-1) · 补充镜像 https://www.datalearner.com/benchmarks/terminal-bench-2-1
 // 字段说明:model=模型名;effort=推理模式(datalearner 提供,如 最高(工具));agent=Agent 框架(源站未给出,置空);
 //          score=得分(%);ci=95% 置信区间;date=模型发布日期;cost=API 价格(llm-stats);org/size 为厂商/参数量
@@ -10,8 +10,8 @@ window.TBENCH_V21 = {
   'url': 'https://llm-stats.com/benchmarks/terminal-bench-2.1',
   'officialUrl': 'https://www.tbench.ai/news/terminal-bench-2-1',
   'version': '2.1',
-  'updated': '2026-09-13',
-  'refreshedAt': '2026-09-14 00:51',
+  'updated': '2026-09-14',
+  'refreshedAt': '2026-09-14 13:52',
   'stats': {
     'tasks': 89,
     'entries': 43

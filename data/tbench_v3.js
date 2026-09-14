@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 3.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-13)
+// 数据源:Terminal-Bench 3.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-14)
 // 来源:https://snorkel.ai/leaderboard/terminal-bench-3-0/(线上 tbench.ai 3.0 路由已并入 4.0,以 snorkel.ai 权威镜像为主,每日自动抓取)
 // 字段说明:model=模型名;effort=推理强度(max/high/xhigh 等);agent=Agent 框架(Codex/Claude Code 等);
 //          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($)
@@ -7,8 +7,8 @@ window.TBENCH_V3 = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/3.0',
   'version': '3.0',
-  'updated': '2026-09-13',
-  'refreshedAt': '2026-09-14 00:51',
+  'updated': '2026-09-14',
+  'refreshedAt': '2026-09-14 13:52',
   'stats': {
     'tasks': 74,
     'entries': 12
