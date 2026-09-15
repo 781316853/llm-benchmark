@@ -1,6 +1,6 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
 // 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
-// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-09-13)
+// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-09-15)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
@@ -10,10 +10,10 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
-  updated: "2026-09-13",
-  refreshedAt: "2026-09-13 22:39",
+  updated: "2026-09-15",
+  refreshedAt: "2026-09-15 13:55",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 35 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 31 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -167,16 +167,6 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
-    'name': 'Hy4 preview',
-    'effort': '思考模式 High（工具）',
-    'pass1': 64.3,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'datalearner'
-  },
-  {
     'name': 'glm-5-3-flash',
     'effort': 'max',
     'pass1': 63,
@@ -197,26 +187,6 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
-    'name': 'DeepSeek-V4-Pro',
-    'effort': '极高强度思考（工具）',
-    'pass1': 62.7,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'datalearner'
-  },
-  {
-    'name': 'DeepSeek-V4-Flash-Vision-Exp',
-    'effort': '最高（工具）',
-    'pass1': 59.3,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'datalearner'
-  },
-  {
     'name': 'claude-opus-4-8',
     'effort': 'max',
     'pass1': 59,
@@ -225,16 +195,6 @@ window.DEEPSWE = {
     'outTok': 135032,
     'steps': 120,
     'src': 'official'
-  },
-  {
-    'name': 'Qwen3.8-Flash-Next',
-    'effort': '极高强度思考（工具）',
-    'pass1': 58.7,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'datalearner'
   },
   {
     'name': 'qwen3-8-max',
