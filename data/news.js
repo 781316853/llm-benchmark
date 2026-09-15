@@ -14,11 +14,99 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-15',
-      'title': '显示HN ：沉没成本–当地LLM钻井平台需要多长时间才能收回成本？',
-      'brief': '显示HN ：沉没成本–当地LLM钻井平台需要多长时间才能收回成本？',
-      'url': 'https://sunkcost.ai/',
+      'title': 'Meta通过以人工智能为重点的新计划扩展订阅推送',
+      'brief': 'Meta One通过Facebook、Instagram和WhatsApp的高级功能捆绑了公司人工智能工具的扩展访问权限。',
+      'url': 'https://techcrunch.com/2026/09/15/meta-expands-subscription-push-with-new-ai-focused-plans/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': 'OpenAI、Anthropic和谷歌已经就人工智能安全问题进行了数周的谈判',
+      'brief': 'OpenAI确认与Anthropic和谷歌DeepMind进行了数周的人工智能安全谈判，因为特朗普的团队驳斥了安全问题，并推动保持...',
+      'url': 'https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '前TikTok高管构建了一个应用程序，该应用程序使用人工智能来教您如何为照片摆姿势',
+      'brief': '本质上是一个相机应用程序， Superpose使用人工智能分析自拍或照片并生成四个潜在的姿势。',
+      'url': 'https://techcrunch.com/2026/09/15/former-tiktok-execs-built-an-app-that-uses-ai-to-teach-you-how-to-pose-for-a-photo/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '早期的Anthropic招聘，前METR首席运营官已经找到了控制流氓AI特工的方法',
+      'brief': '他们的初创公司人工智能承销公司（ AIUC ）在由Ribbit Capital牵头的A轮融资中筹集了4000万美元（ $ ）。',
+      'url': 'https://techcrunch.com/2026/09/15/early-anthropic-hire-former-metr-coo-have-found-a-way-to-rein-in-rogue-ai-agents/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': 'Salesforce和Nvidia的新推理模型是人工智能实验室应该害怕的一切',
+      'brief': 'Salesforce Koa基于Nvidia的开放式Nemotron模型构建，经过培训，可执行销售、营销和客户支持任务。',
+      'url': 'https://techcrunch.com/2026/09/15/salesforce-and-nvidias-new-reasoning-model-is-everything-the-ai-labs-should-fear/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-15',
+      'title': 'Meta的新One订阅为社交媒体和人工智能定价',
+      'brief': '在推出新的万能AI助手Muse后不久， Meta推出了订阅捆绑包，与其独立的应用程序订阅配对……',
+      'url': 'https://www.theverge.com/tech/995453/meta-one-subscriptions-ai',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '这款门铃摄像头可以让人类保安监视您的前门',
+      'brief': 'DIY家庭安全公司SimpliSafe正在将人工智能驱动的主动式安全功能带到前门。全新SimpliSafe视频门……',
+      'url': 'https://www.theverge.com/tech/995365/simplisafe-video-doorbell-series-2-virtual-guard-price-specs',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '人工智能特工很有可能正在毁掉互联网',
+      'brief': '人工智能特工很有可能正在毁掉互联网',
+      'url': 'https://www.404media.co/theres-a-100-chance-ai-agents-are-already-ruining-the-internet/',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '笛卡尔–用于设计的人工智能3D建模',
+      'brief': '笛卡尔–用于设计的人工智能3D建模',
+      'url': 'https://www.formas.ai/cartesian',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '人工智能正在打破我们的专业知识代理',
+      'brief': '人工智能正在打破我们的专业知识代理',
+      'url': 'https://www.seangoedecke.com/ai-is-breaking-our-proxies-for-expertise/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '人工智能监管作为人类的商业模式',
+      'brief': '人工智能监管作为人类的商业模式',
+      'url': 'https://twitter.com/kevinnbass/status/2099621874279817638',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '1Password的人工智能修补基准具有误导性',
+      'brief': '1Password的人工智能修补基准具有误导性',
+      'url': 'https://blog.trailofbits.com/2026/09/15/1passwords-ai-patching-benchmark-is-misleading/',
+      'source': 'Hacker News',
+      'type': '技术研究'
     },
     {
       'date': '2026-09-15',
@@ -30,11 +118,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-15',
-      'title': '造物 100 #06｜自动驾驶上轮椅了，口袋相机学会飞行，AI 教练上了雪场',
-      'brief': '硬件创新力正在消失。 9 月 10 日，苹果发布了筹备多年的首款折叠屏 iPhone Duo，又是一款集大成之作，困扰多年的折叠屏折痕有了「苹果」解法。但我们明显发现硬件创新的品类迭代速度开始变得缓慢，这两年「原来还能有这种东西」的哇塞时刻越来越少。大家似乎默认，下一个时代级的硬…',
-      'url': 'http://www.geekpark.net/news/370325',
+      'title': '对话小宇宙 kyth：播客的护城河是真实，AI 无法取代的是人的立场',
+      'brief': '头图来源：小宇宙 过去一年，播客被推到了内容行业的聚光灯下。 B 站拿出 10 亿元流量扶持视频播客，罗永浩、鲁豫等名人带着数小时的长对谈进入市场。小红书也在持续补齐视频与音频播客能力，抖音精选则通过自制节目试水长对谈。那些原本只在播客听众中流动的内容，被剪成短视频切片，登上热搜…',
+      'url': 'http://www.geekpark.net/news/370345',
       'source': '极客公园',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-15',
@@ -46,19 +134,35 @@ window.NEWS = {
     },
     {
       'date': '2026-09-15',
-      'title': '从 Trace 到规模化实时评估：面向生产流量的 Agent 可观测实践｜QCon上海',
+      'title': 'Agent开始调用基础设施，Kubernetes准备好了吗？',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/556HrGKWUqWSg7NM3YT3?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/jGTsO1DrV87muOqyDPGS?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
     },
     {
       'date': '2026-09-15',
-      'title': 'AI 负责创造，人来干脏活，这事儿能否停一下？',
+      'title': '飞书与豆包工作合体后首亮相：Agent 能进群，还能帮你写周报、做PPT',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/CKzbmAxb1lLuu4geZuHy?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/aCRVupdyEAHtENIiIDwq?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-15',
+      'title': 'OpenAI 发布适用于编程和计算机应用的 GPT-6 Astra',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/IfxYoy1PPkFQUpjWVBVr?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '月之暗面：网传创始人及员工信息系恶意造谣；OpenAI 放弃今年上市；iPhone Duo炒到9万，黄牛贷款欲囤货｜AI周报',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/HEN8icBvRCoKVvo2dSNA?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-14',
@@ -78,22 +182,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-14',
-      'title': '微软新的人工智能“行为准则”告诉模型不要攻击系统或欺骗人类',
-      'brief': '行为准则列出了微软人工智能模型应该坚持的一般原则--支持人类，而不是取代人类，因为……',
-      'url': 'https://techcrunch.com/2026/09/14/microsofts-new-ai-code-of-conduct-tells-models-not-to-hack-systems-or-trick-humans/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '仅在TechCrunch Disrupt 2026上：当OpenAI发布您的路线图时会发生什么？',
-      'brief': '如果你正在建立一家人工智能公司，问题不在于基础模型是否会继续发展。问题在于您的公司是否会继续……',
-      'url': 'https://techcrunch.com/2026/09/14/only-at-techcrunch-disrupt-2026-what-happens-when-openai-ships-your-roadmap/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-14',
       'title': '大型科技公司的人工智能减速是安全协议还是卡特尔？',
       'brief': '当OpenAI首席执行官Sam Altman、Anthropic首席执行官Dario Amodei、Google DeepMind联合创始人Demis Hassabis和SpaceX负责人Elon Musk大致同意……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel',
@@ -110,75 +198,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-14',
-      'title': 'Jensen Huang将特朗普放在扬声器上，宣布机器人不会接管世界',
-      'brief': 'Nvidia首席执行官Jensen Huang周一在All-In Podcast的All-In Summit上接听了特朗普总统的电话。这不是第一次……',
-      'url': 'https://www.theverge.com/tech/995079/president-donald-trump-calls-nvidia-ceo-jensen-huang-all-in-summit',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '出于安全考虑，微软表示“人比人工智能更重要”',
-      'brief': '微软今天发布了一份长达37页的“人文主义人工智能行为准则” ，人们对人工智能模型进展的安全担忧与日俱增。Anthropic首席执行官Da…',
-      'url': 'https://www.theverge.com/news/994566/microsoft-humanist-ai-code-of-conduct',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '黑客AI客服人员',
-      'brief': '黑客AI客服人员',
-      'url': 'https://www.intigriti.com/researchers/blog/hacking-tools/hacking-ai-customer-service-agents',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '麻省理工学院创建强制人工智能遵守安全规则的方法',
-      'brief': '麻省理工学院创建强制人工智能遵守安全规则的方法',
-      'url': 'https://theframenews.org/en/hardflow-safety-critical-ai/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '中国监管机构瞄准“AI男友”',
-      'brief': '中国监管机构瞄准“AI男友”',
-      'url': 'https://spectrum.ieee.org/china-ai-chatbot-regulation',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-14',
-      'title': 'Transitions.dev ： AI代理的用户界面转换',
-      'brief': 'Transitions.dev ： AI代理的用户界面转换',
-      'url': 'https://transitions.dev/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '专访爆火「机器鸭」背后的硬件推手：这是个信号，未来推动新故事的并非硬件',
-      'brief': '最近这两周，一只「 机器鸭 」在 X 上刷屏了。 这只叫 Microduck 的机器鸭，由 Hugging Face 旗下的 Pollen Robotics 设计，售价 399 美元。 高峰期平均每 4 秒卖出一台，五天后预售破万台，销售额突破 500 万美元，目前订单已经排到明…',
-      'url': 'http://www.geekpark.net/news/370269',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-14',
       'title': 'Arm 推出 AI Portal：当 AI 应用从“模型可用”走向“平台可用”',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/xD9oWbebhcjwgHz1oEfa?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-14',
-      'title': 'openJiuwen 首发双维度 RSI 框架，AI 自修改，落地办公智能体，算力亲和助力又快又省',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/JghIFNXBNVSAfbgbR4S9?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     }
   ]
 };

@@ -11,7 +11,7 @@ window.NL2REPO = {
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-15',
-  'refreshedAt': '2026-09-15 13:55',
+  'refreshedAt': '2026-09-16 01:30',
   'stats': {
     'tasks': 103,
     'entries': 48
