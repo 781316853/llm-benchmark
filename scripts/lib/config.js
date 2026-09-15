@@ -45,6 +45,7 @@ module.exports = {
     datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON)
     "llm-stats": 3,  // 第三方聚合站 llm-stats.com
     benchlm: 3,      // 第三方镜像 benchlm.ai
+    aa: 3,           // Artificial Analysis 复测口径(benchlm 静态镜像页,分数为 AA 自测、系统性异于官方口径)
     mirror: 3,       // 第三方镜像(snorkel.ai / explainx.ai / steel.dev / aitntnews 等)
     aggregate: 3     // 其余第三方聚合
   },
@@ -174,6 +175,22 @@ module.exports = {
       host: "llm-stats.com", src: "llm-stats",
       officialUrl: "https://epoch.ai/benchmarks/gpqa-diamond"
     },
+    gpqa_benchlm: {
+      // GPQA Diamond 补充源(T3):benchlm.ai 镜像(82 模型,SSG 服务端渲染)。
+      // 口径核对:页面简介文案写"448 题"系照抄 GPQA 原论文描述,但分数与 llm-stats Diamond 完全
+      // 吻合(榜首 GPT-6 Astra 96 / GPT-5.6 Sol 94.6),按 Diamond 口径并入;datalearner 448 题全量集
+      // (榜首 87)仍排除。同层合并取最高,分差超阈值打日志。
+      url: "https://benchlm.ai/benchmarks/gpqa",
+      host: "benchlm.ai", src: "benchlm"
+    },
+    gpqa_aa: {
+      // GPQA Diamond 补充源(T3):Artificial Analysis 复测口径的 benchlm 静态镜像页(181 模型)。
+      // AA 为自家 harness 复测,与官方公开分数偏差 ±1 内(GPT-6 Astra 96.1 vs llm-stats 96),
+      // 覆盖 llm-stats 缺失的新前沿模型(Gemini 3.8 Flash / Grok 4.6 / GPT-5.6 Terra / Muse Spark 1.3 等);
+      // src=aa 徽标区分。
+      url: "https://benchlm.ai/benchmarks/aagpqadiamond",
+      host: "benchlm.ai", src: "aa"
+    },
     hle: {
       // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI)。
       // 渠道优先级(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页(厂商官方发布成绩),
@@ -192,6 +209,15 @@ module.exports = {
       // HLE 主源(T2):datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
       url: "https://www.datalearner.com/benchmarks/hle",
       host: "www.datalearner.com", src: "datalearner"
+    },
+    hle_aa: {
+      // HLE 补充源(T3):Artificial Analysis 复测口径的 benchlm 静态镜像页(181 模型)。
+      // 口径注意:AA 为自家 harness 复测(接近无工具口径),分数系统性低于官方口径约 5 分
+      // (头部 Fable 5.1 59.1 vs 官方口径 65);仅用于补官方渠道未收录的缺失模型
+      // (GPT-5.6 Terra/Luna、Grok 4.6、Gemini 3.8/3.7 Flash、Muse Spark 1.3 等),
+      // src=aa 徽标区分;同层取最高,重叠模型保留现有高分,不被 AA 低分覆盖。
+      url: "https://benchlm.ai/benchmarks/aahle",
+      host: "benchlm.ai", src: "aa"
     },
     nl2repo: {
       // NL2Repo-Bench(长程仓库生成·编码 Agent,103 任务):官方 multimodal-art-projection/NL2RepoBench。
