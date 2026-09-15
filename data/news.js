@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-14',
+  'updated': '2026-09-15',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -14,11 +14,67 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-15',
+      'title': '显示HN ：沉没成本–当地LLM钻井平台需要多长时间才能收回成本？',
+      'brief': '显示HN ：沉没成本–当地LLM钻井平台需要多长时间才能收回成本？',
+      'url': 'https://sunkcost.ai/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '前联邦贸易委员会老板汗：为人工智能首席执行官戴上手铐，引用1934年的先例',
+      'brief': '前联邦贸易委员会老板汗：为人工智能首席执行官戴上手铐，引用1934年的先例',
+      'url': 'https://www.theregister.com/ai-and-ml/2026/09/14/ex-ftc-boss-khan-urges-uncle-sam-to-break-out-the-handcuffs-for-ai-ceos-citing-1934-precedent/5296325',
+      'source': 'Hacker News',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '造物 100 #06｜自动驾驶上轮椅了，口袋相机学会飞行，AI 教练上了雪场',
+      'brief': '硬件创新力正在消失。 9 月 10 日，苹果发布了筹备多年的首款折叠屏 iPhone Duo，又是一款集大成之作，困扰多年的折叠屏折痕有了「苹果」解法。但我们明显发现硬件创新的品类迭代速度开始变得缓慢，这两年「原来还能有这种东西」的哇塞时刻越来越少。大家似乎默认，下一个时代级的硬…',
+      'url': 'http://www.geekpark.net/news/370325',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': 'iOS 27、MacOS 27 正式发布；豆包手机助手消费者版亮相；李想：「大车」趋势一定会结束',
+      'brief': '特朗普抨击 Anthropic CEO：AI 发展不能踩刹车，美国有「高智商总统」就足够 特朗普周一在社交媒体发文，明确表示其不认可 AI 数据中心引发的民众反弹及外界对前沿模型的忧虑。他写道：「AI 所需的唯一『护栏』，就是一位强悍而聪明（高智商！）的总统，而美国恰好拥有这样的…',
+      'url': 'http://www.geekpark.net/news/370306',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '从 Trace 到规模化实时评估：面向生产流量的 Agent 可观测实践｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/556HrGKWUqWSg7NM3YT3?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-15',
       'title': 'AI 负责创造，人来干脏活，这事儿能否停一下？',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/CKzbmAxb1lLuu4geZuHy?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-14',
+      'title': '英伟达首席执行官Jensen Huang告诉特朗普“我们不会让[人工智能放缓]发生”',
+      'brief': '尽管埃隆·马斯克（ Elon Musk ）和山姆·奥尔特曼（ Sam Altman ）支持达里奥·阿莫代（ Dario Amodei ）关于减缓人工智能发展步伐的呼吁，但黄延',
+      'url': 'https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-14',
+      'title': '报告称， OpenAI以3亿美元收购智能手机相机制造商Glass Imaging',
+      'brief': 'Glass Imaging由两位前苹果工程师创立，他们曾领导开发苹果肖像模式的团队。',
+      'url': 'https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-14',
@@ -38,11 +94,27 @@ window.NEWS = {
     },
     {
       'date': '2026-09-14',
-      'title': '在TechCrunch Disrupt 2026上聆听人工智能如何设计大自然的回归',
-      'brief': '不久前，让灭绝的物种复活属于科幻小说。如今，这是一家价值数十亿美元的初创公司的使命。Joi…',
-      'url': 'https://techcrunch.com/2026/09/14/hear-how-ai-can-engineer-natures-comeback-at-techcrunch-disrupt-2026/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
+      'title': '大型科技公司的人工智能减速是安全协议还是卡特尔？',
+      'brief': '当OpenAI首席执行官Sam Altman、Anthropic首席执行官Dario Amodei、Google DeepMind联合创始人Demis Hassabis和SpaceX负责人Elon Musk大致同意……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-14',
+      'title': '高管和政界人士对减缓人工智能发展的看法',
+      'brief': 'Dario Amodei在过去几天发表了一篇题为“We Must Pace the Fro…',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/995141/ai-executives-politicians-safety-regulation-anthropic-dario-amodei',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-14',
+      'title': 'Jensen Huang将特朗普放在扬声器上，宣布机器人不会接管世界',
+      'brief': 'Nvidia首席执行官Jensen Huang周一在All-In Podcast的All-In Summit上接听了特朗普总统的电话。这不是第一次……',
+      'url': 'https://www.theverge.com/tech/995079/president-donald-trump-calls-nvidia-ceo-jensen-huang-all-in-summit',
+      'source': 'The Verge',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-14',
@@ -70,14 +142,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-14',
-      'title': '对人工智能领导者来说，《毁灭战士》是一种炒作',
-      'brief': '对人工智能领导者来说，《毁灭战士》是一种炒作',
-      'url': 'https://erkansaka.net/2026/09/10/ai-doom-rhetoric-safety-hype/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-14',
       'title': '中国监管机构瞄准“AI男友”',
       'brief': '中国监管机构瞄准“AI男友”',
       'url': 'https://spectrum.ieee.org/china-ai-chatbot-regulation',
@@ -86,11 +150,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-14',
-      'title': '大型人工智能制定了监管捕获的条款',
-      'brief': '大型人工智能制定了监管捕获的条款',
-      'url': 'https://www.theregister.com/ai-and-ml/2026/09/14/big-ai-sets-out-its-terms-for-regulatory-capture-and-calls-it-pace-the-frontier/5296067',
+      'title': 'Transitions.dev ： AI代理的用户界面转换',
+      'brief': 'Transitions.dev ： AI代理的用户界面转换',
+      'url': 'https://transitions.dev/',
       'source': 'Hacker News',
-      'type': '政策与安全'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-14',
@@ -115,38 +179,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/JghIFNXBNVSAfbgbR4S9?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-13',
-      'title': '特朗普和迈克·约翰逊认为人工智能行业反应过度',
-      'brief': '昨天， Anthropic首席执行官Dario Amodei发表了一封冗长的公开信，称是时候“加快前沿步伐”并减缓人工智能的发展……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/994441/trump-mike-johnson-ai-industry-overreacting',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-13',
-      'title': '海湾合作委员会AI政策公告',
-      'brief': '海湾合作委员会AI政策公告',
-      'url': 'https://gcc.gnu.org/pipermail/gcc/2026-July/248628.html',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-13',
-      'title': '为什么这么多人工智能研究人员认为机器可以杀死所有人',
-      'brief': '为什么这么多人工智能研究人员认为机器可以杀死所有人',
-      'url': 'https://www.wired.com/story/why-so-many-ai-researchers-think-the-machines-could-kill-everyone/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-13',
-      'title': 'OpenAI、Anthropic 再次发出「AI 末日」警告；小米澎程今日全国交付；Deepseek 灰度测试 AI 语音对话',
-      'brief': 'OpenAI 首席执行官：今年不会上市，不能冒哪怕 10% 杀死所有人的风险 OpenAI 首席执行官 Sam Altman 在接受采访时表示，这家人工智能公司专注于解决围绕 AI 技术的安全担忧，今年不会上市。 Altman 表示，今年进行首次公开募股「时机不合适」，公司要到明…',
-      'url': 'http://www.geekpark.net/news/370228',
-      'source': '极客公园',
-      'type': '公司动态'
     }
   ]
 };
