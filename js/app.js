@@ -37,6 +37,7 @@
     datalearner: ["厂商发布", "厂商官方发布成绩转录(T2)"],
     "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
+    aa: ["AA 复测", "Artificial Analysis 复测口径(T3,第三方自家 harness,分数口径偏严,仅供参考)"],
     mirror: ["第三方", "第三方镜像(T3)"],
     aggregate: ["第三方", "第三方评测机构(T3)"]
   };
@@ -104,6 +105,17 @@
     return "";
   }
 
+  // HLE/GPQA 仅参考查找表:{ canonId -> 条目 }:这两个权威基准在总览矩阵只作参考列展示,
+  // 不进 unified、不计综合分与命中数(compare.js/命中计数零改动);数据为加载时快照,建表一次缓存
+  var REF_IDX = null;
+  function refIndex() {
+    if (REF_IDX) return REF_IDX;
+    REF_IDX = { hle: {}, gpqa: {} };
+    D.hle().forEach(function (m) { if (REF_IDX.hle[m.canon.id] == null) REF_IDX.hle[m.canon.id] = m; });
+    D.gpqa().forEach(function (m) { if (REF_IDX.gpqa[m.canon.id] == null) REF_IDX.gpqa[m.canon.id] = m; });
+    return REF_IDX;
+  }
+
   // 总览矩阵表的列定义:key=排序键;val=取值函数;type=数据类型;bench=是否评测列(排序时过滤无值);
   // grp=分组表头归属(bench 列须按 grp 连续排列,供两级表头 colspan 合并:"基准"=第三方公开榜单,"实测"=站主实测)
   var MATRIX_COLS = [
@@ -120,6 +132,15 @@
     // NL2Repo-Bench 单值列:test-pass-rate(%);多源按渠道优先级合并;计入综合分与命中数
     { key: "nl2repo", label: "NL2Repo (Score%)", type: "num", bench: true, grp: "基准",
       val: function (r) { return r.nl2repo ? r.nl2repo.score : null; } },
+    // HLE / GPQA:权威知识·科学问答基准,在「榜单基准」组尾以仅参考列展示(refKey 同时驱动
+    // 表头紧凑类与取值;短列头控宽,口径与「仅参考」说明放 th 悬浮提示);不进 unified、
+    // 不计综合分与命中数,完整榜单见「权威基准测试」页
+    { key: "hle", label: "HLE", type: "num", bench: true, grp: "基准", refKey: "hle",
+      tip: "Humanity's Last Exam 闭卷得分(%):2500 道专家撰写、无联网可检索解的前沿题,越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页;点击按此列排序",
+      val: function (r) { var m = refIndex().hle[r.id]; return m ? m.score : null; } },
+    { key: "gpqa", label: "GPQA", type: "num", bench: true, grp: "基准", refKey: "gpqa",
+      tip: "GPQA Diamond Accuracy(%):研究生级科学多选问答(198 题最难子集,生物/物理/化学),越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页;点击按此列排序",
+      val: function (r) { var m = refIndex().gpqa[r.id]; return m ? m.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):归入「实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "实测",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
@@ -270,6 +291,14 @@
       var inserted = r.benchCount === 3;
       // 不参与排名的行(命中<4榜):梯队列与序号列均显示「—」
       var unranked = inserted;
+      // HLE/GPQA 仅参考单元格:分数 + 悬浮(排名与「仅参考」口径说明);无数据显示「—」
+      var refCell = function (key, label) {
+        var m = refIndex()[key][r.id];
+        if (!m) return "—";
+        var meta = [label + " 权威基准 · 仅参考,不计入综合分与命中数"];
+        if (m.rank != null) meta.push("排名 #" + m.rank);
+        return '<span title="' + esc(meta.join(" · ")) + '">' + m.score + '%</span>';
+      };
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
       var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
@@ -321,10 +350,14 @@
           var num = state.showScore ? ' <span class="tier-score">' + score + '</span>' : "";
           return '<td class="num">' + badge + num + '</td>';
         })() +
-        '<td class="num">' + ds + '</td>' +
+        // ds=基准组起点、wd=实测组起点:grp-start 竖线与表头 th-grp 左边框对齐,须随 MATRIX_COLS 分组调整同步
+        '<td class="num grp-start">' + ds + '</td>' +
         '<td class="num">' + tbHtml + '</td>' +
         '<td class="num">' + n2Html + '</td>' +
-        '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
+        // HLE/GPQA 仅参考列:属「榜单基准」组中部,组起点竖线(ds/wd)不变
+        '<td class="num ref">' + refCell("hle", "HLE") + '</td>' +
+        '<td class="num ref">' + refCell("gpqa", "GPQA") + '</td>' +
+        '<td class="num grp-start">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
         '<td class="num">' + lm + '</td>' +
         '<td class="num">' + aicapCell(r) + '</td>' +
         '<td class="num">' + r.benchCount + '/6</td></tr>';
@@ -333,7 +366,7 @@
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     var GROUP_TITLES = {
-      "基准": "榜单基准:基准官方实测榜(DeepSWE / Terminal-Bench 4.0/3.0/2.1 / NL2Repo),数据按渠道优先级合并(官方实测榜 > 厂商官方发布 > 第三方聚合)",
+      "基准": "榜单基准:基准官方实测榜(DeepSWE / Terminal-Bench 4.0/3.0/2.1 / NL2Repo 计入综合分与命中数;组尾 HLE / GPQA 为权威基准仅参考列,不计入综合分与命中数),数据按渠道优先级合并(官方实测榜 > 厂商官方发布 > 第三方聚合)",
       "实测": "实测与竞技场:社区盲测 Elo(Code Arena · WebDev)与站主实测(llm2014 私有题库 / AI 能力专项测试)"
     };
     function thAttr(c, extra) {
@@ -344,9 +377,11 @@
       var classes = [];
       if (active) classes.push("sort-active");
       if (c.type === "num") classes.push("num");
+      if (c.refKey) classes.push("ref"); // HLE/GPQA 仅参考列:紧凑单元格样式
       if (extra) classes.push(extra);
       var cls = classes.length ? ' class="' + classes.join(" ") + '"' : "";
-      return '<th data-key="' + c.key + '"' + cls + ' title="点击按此列排序">' + c.label + ind + '</th>';
+      var tip = (c.tip ? esc(c.tip) + " " : "") + "点击按此列排序";
+      return '<th data-key="' + c.key + '"' + cls + ' title="' + tip + '">' + c.label + ind + '</th>';
     }
     // 第 1 行:非评测列 rowspan=2 纵跨两行(可排序);评测列按 grp 连续段输出分组格(colspan=组内列数)
     var grpRow = '<th class="num" rowspan="2">#</th>', subRow = "";
@@ -357,11 +392,13 @@
       }
       var span = 1;
       while (i + span < MATRIX_COLS.length && MATRIX_COLS[i + span].grp === c.grp) span++;
-      if (i === 0 || MATRIX_COLS[i - 1].grp !== c.grp) {
+      var grpStart = i === 0 || MATRIX_COLS[i - 1].grp !== c.grp;
+      if (grpStart) {
         grpRow += '<th class="th-grp" colspan="' + span + '" title="' + GROUP_TITLES[c.grp] + '">' +
           (c.grp === "基准" ? "榜单基准" : "实测") + '</th>';
       }
-      subRow += thAttr(c, "th-sub");
+      // grp-start 与 th-grp 同列:分组区隔竖线 CSS 按类选择,不依赖列号,见 styles.css
+      subRow += thAttr(c, grpStart ? "th-sub grp-start" : "th-sub");
     });
     fillTableHead("matrixTable", '<tr class="grp-row">' + grpRow + '</tr><tr class="col-row">' + subRow + '</tr>');
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
@@ -383,7 +420,7 @@
       note += ' · 当前高亮 ' + domCnt + ' 个国产模型。';
     }
     // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入综合分与命中数;NL2Repo 亦计入(2026-09 起);其余权威基准仅展示
-    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 12%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;综合分按「4.0 等效分」口径折算(3.0/2.1 按跨版本共有模型折算难度系数,如 2.1 自报分 88≈4.0 官方 26),低难度版本虚高分不再追平 4.0 头名;NL2Repo-Bench(权重 9%)为多源合并快照,亦计入综合分与命中数;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE 仅在「权威基准测试」页展示。';
+    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 12%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;综合分按「4.0 等效分」口径折算(3.0/2.1 按跨版本共有模型折算难度系数,如 2.1 自报分 88≈4.0 官方 26),低难度版本虚高分不再追平 4.0 头名;NL2Repo-Bench(权重 9%)为多源合并快照,亦计入综合分与命中数;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD 仅在「权威基准测试」页展示;GPQA Diamond / HLE 在「榜单基准」组尾以仅参考列展示(不计入综合分与命中数,「—」表示未收录于对应权威榜),完整榜单见「权威基准测试」页。';
     note += ' 榜单数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖高层级分数。';
     document.getElementById("overviewNote").textContent = note;
   }
@@ -626,6 +663,7 @@
   function jumpToAuthSection(id) {
     var el = document.getElementById(id);
     if (!el) return;
+    flushAuthLazy(); // 先补齐下方章节表格,滚动落点基于最终布局(见 flushAuthLazy 注释)
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var top = el.getBoundingClientRect().top + window.pageYOffset - authAnchorTop() - AUTH_GAP;
     // 无动效偏好时动画瞬时完成,无需锁定;否则锁定至落位或最长 3s
@@ -693,11 +731,13 @@
   }
   // 空闲时预渲染权威基准页:该页构建约 3200 个 DOM 节点,留到用户点击时同步做会卡住切页反馈。
   // requestIdleCallback 带 timeout 上限,避免页面长期忙碌时一直排不上;不支持时退化为 setTimeout。
+  // 下方章节表格已改为滚动临近才填表(见 authDeferTable),预渲染本身已很轻,timeout 取短值
+  // 尽量赶在用户首次点击前完成,点击时只剩首屏两个章节的同步构建。
   function scheduleAuthPrerender() {
     var go = function () {
       if (!authRendered && state.tab !== "authority") renderAuthority();
     };
-    if (window.requestIdleCallback) window.requestIdleCallback(go, { timeout: 3000 });
+    if (window.requestIdleCallback) window.requestIdleCallback(go, { timeout: 1200 });
     else setTimeout(go, 800);
   }
   // 权威基准页一次性渲染并缓存:
@@ -710,6 +750,39 @@
   var authRendered = false;
   // TB 柱状图初始化状态:DOM 已就绪但图表未必已画(后台预渲染时无法对 0 尺寸容器 init)
   var authChartDone = false, authChartQueued = false, authTbMs = [];
+  // 下方章节表格懒填表:进页/预渲染只建章节骨架,表格滚动临近可视区(提前约 200px)才填充,
+  // 显著降低每次进页的节点构建与布局/绘制开销(下方章节表格占整页约 3200 节点的大半);
+  // 每表填充一次后即注销观察。不支持 IntersectionObserver 的环境由 authDeferTable 回退为立即填充。
+  var authLazyMap = new Map(), authLazyObs = null;
+  function authDeferTable(id, headers, rowsHtml, headerClasses) {
+    var t = document.getElementById(id);
+    if (!t) return;
+    if (!("IntersectionObserver" in window)) { fillTable(id, headers, rowsHtml, headerClasses); return; }
+    if (!authLazyObs) {
+      authLazyObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var spec = authLazyMap.get(en.target);
+          if (!spec) return;
+          authLazyObs.unobserve(en.target);
+          authLazyMap.delete(en.target);
+          fillTable(en.target.id, spec.headers, spec.rowsHtml, spec.headerClasses);
+        });
+      }, { rootMargin: "200px 0px" });
+    }
+    authLazyMap.set(t, { headers: headers, rowsHtml: rowsHtml, headerClasses: headerClasses });
+    authLazyObs.observe(t);
+  }
+  // 冲刷全部待填表格(大纲跳转前调用):跳转落点按点击时刻的布局计算,若平滑滚动途中逐表
+  // 填充,章节高度陆续变化会让目标位置漂移;先补齐全部表格再滚动,落点与滚动高亮都基于最终布局
+  function flushAuthLazy() {
+    if (!authLazyMap.size) return;
+    if (authLazyObs) authLazyObs.disconnect();
+    authLazyMap.forEach(function (spec, t) {
+      fillTable(t.id, spec.headers, spec.rowsHtml, spec.headerClasses);
+    });
+    authLazyMap.clear();
+  }
   // ----- Terminal-Bench 版本切换 -----
   // 会话内记住所选版本,页面刷新回默认 4.0(当前主榜);章节 DOM 一次渲染,切换只重填内容不重建
   var authTbVer = "4.0";
@@ -895,7 +968,8 @@
           (m.think ? ' <span class="cell-cost">' + esc(m.think) + '</span>' : "") + '</td><td>' + esc(m.org || "—") + '</td>' +
           cols.map(function (c) { return '<td class="num">' + (m[c] != null ? m[c] : "—") + '</td>'; }).join("") + '</tr>';
       });
-      fillTable(id, ["#", "模型", "厂商"].concat(cols), body, ["", "", ""].concat(headCls));
+      // 下方章节表格走懒填表(滚动临近才建 DOM),首屏章节(DeepSWE/TB)仍同步填
+      authDeferTable(id, ["#", "模型", "厂商"].concat(cols), body, ["", "", ""].concat(headCls));
     }
     var v2cRows = bcData.vision2code.rows.slice().sort(function (a, b) { return b.total - a.total; });
     var vqaRows = bcData.visionqa.rows.slice().sort(function (a, b) { return b.total - a.total; });
@@ -910,8 +984,9 @@
     // 7) GPQA Diamond
     var gp = S.gpqa || {};
     var gpMs = D.gpqa();
+    var gpMixed = mixedSrc(gpMs);
     var gpRows = gpMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (gpMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
@@ -919,7 +994,7 @@
     html += authSectionHtml("GPQA Diamond", "研究生级科学问答 · 仅展示", gp.officialUrl || gp.url,
       '<div class="table-wrap"><table id="authGpqaTable" class="data-table"></table></div>',
       '来源:' + esc(gp.url || "") + '(官方:' + esc(gp.officialUrl || "") + ') · 更新 ' + esc(gp.updated || "") +
-      ' · 研究生级科学多选问答(GPQA 最难 198 题子集,生物/物理/化学),Accuracy 越高越好、领域专家约 65%、随机基线 25%。' + esc(gp.channelPolicy || "") + '(datalearner GPQA 为 448 题全量集,口径不同未并入,取 llm-stats 单源)。本榜仅展示,不计入综合分。');
+      ' · 研究生级科学多选问答(GPQA 最难 198 题子集,生物/物理/化学),Accuracy 越高越好、领域专家约 65%、随机基线 25%。' + esc(gp.channelPolicy || "") + '(datalearner GPQA 为 448 题全量集,口径不同未并入;补充 benchlm 镜像与 AA 复测口径两源,AA 为第三方自家 harness、分数偏差 ±1 内,行级来源徽标区分)。本榜仅展示,不计入综合分。');
     // 8) HLE(Humanity's Last Exam)
     var hl = S.hle || {};
     var hlMs = D.hle();
@@ -932,8 +1007,9 @@
     });
     html += authSectionHtml("Humanity's Last Exam", "前沿知识广度 · 仅展示", hl.officialUrl || hl.url,
       '<div class="table-wrap"><table id="authHleTable" class="data-table"></table></div>',
-      '主渠道:datalearner(厂商官方发布)· 补充:llm-stats 聚合表与 benchlm.ai 镜像 · 更新 ' + esc(hl.updated || "") +
-      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;' + esc(hl.channelPolicy || "") + '。本榜仅展示,不计入综合分。');
+      '主渠道:datalearner(厂商官方发布)· 补充:llm-stats 聚合表、benchlm.ai 镜像与 AA 复测口径 · 更新 ' + esc(hl.updated || "") +
+      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;' + esc(hl.channelPolicy || "") +
+      '。口径注:AA 复测为第三方自家 harness(接近无工具口径),分数系统性低于官方口径约 5 分,仅补官方渠道未收录的模型,行级「AA 复测」徽标区分;重叠模型保留现有高分。本榜仅展示,不计入综合分。');
     // 9) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();
@@ -967,18 +1043,20 @@
       var btn = e.target && e.target.closest ? e.target.closest("[data-tb-ver]") : null;
       if (btn) setAuthTbVer(btn.getAttribute("data-tb-ver"));
     };
-    fillTable("authTBScienceTable", ["#", "模型", "Agent", "解决率"], tbsRows, ["", "", "", "num"]);
-    fillTable("authOSWorldTable", ["#", "系统(模型·配置)", "部分得分", "厂商", "上报时间", "来源"], osRows, ["", "", "num", "", "num", ""]);
-    fillTable("authLastExamTable", ["#", "模型", "厂商", "Pass@1", "参数量", "上下文"], aleRows, ["", "", "", "num", "num", "num"]);
-    fillTable("authARCAGI3Table", ["#", "模型", "RHAE", "参数量", "上下文", "API 价格"], arRows, ["", "", "num", "num", "num", "num"]);
+    // 首屏以下章节表格统一懒填表(见 authDeferTable 注释):进页只构建章节骨架,
+    // 滚动临近时才填充,降低每次进页的构建与布局开销;不支持时自动回退为立即填充
+    authDeferTable("authTBScienceTable", ["#", "模型", "Agent", "解决率"], tbsRows, ["", "", "", "num"]);
+    authDeferTable("authOSWorldTable", ["#", "系统(模型·配置)", "部分得分", "厂商", "上报时间", "来源"], osRows, ["", "", "num", "", "num", ""]);
+    authDeferTable("authLastExamTable", ["#", "模型", "厂商", "Pass@1", "参数量", "上下文"], aleRows, ["", "", "", "num", "num", "num"]);
+    authDeferTable("authARCAGI3Table", ["#", "模型", "RHAE", "参数量", "上下文", "API 价格"], arRows, ["", "", "num", "num", "num", "num"]);
     bcTable("authBCV2CTable", v2cRows, ["exec", "IoU-score", "total"], ["num", "num", "num"]);
     bcTable("authBCVQATable", vqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
     bcTable("authBCCQATable", cqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
-    fillTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
-    fillTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
-    fillTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
+    authDeferTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
+    authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
+    authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
     document.getElementById("authDesc").textContent =
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据。";
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数)。";
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
 

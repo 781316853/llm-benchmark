@@ -153,10 +153,17 @@ a:hover { text-decoration: underline; }
 .data-table thead tr.grp-row th { text-align: center; }
 .data-table thead th.th-grp { letter-spacing: 4px; font-weight: 500; cursor: default; }
 /* 总览矩阵分组区隔:仅分组边界(榜单基准|实测)用深色竖线框出两组,单元格内不加网格线
-   列号以当前 MATRIX_COLS 为准:col-row 第 1 子列=DeepSWE(榜单基准起点)、第 5 子列=llm2014(实测起点);
-   tbody 第 5 列=DeepSWE、第 9 列=llm2014(与 app.js MATRIX_COLS 顺序同步,新增/调整列时需同步) */
-#matrixTable thead th.th-grp, #matrixTable thead tr.col-row th:nth-child(1), #matrixTable thead tr.col-row th:nth-child(5),
-#matrixTable tbody td:nth-child(5), #matrixTable tbody td:nth-child(9) { border-left: 2px solid #333; }
+   分组起点由 app.js 标注 grp-start 类,与 th-grp 左边框同列对齐;不用 nth-child 列号,
+   新增/调整列时表头自动跟随 MATRIX_COLS 分组,仅需同步表体起点单元格的 grp-start 标注 */
+#matrixTable thead th.th-grp, #matrixTable thead tr.col-row th.grp-start,
+#matrixTable tbody td.grp-start { border-left: 2px solid #333; }
+/* 总览矩阵 HLE/GPQA 仅参考列:紧凑单元格(收窄 padding、小字号)吸收新增列宽;
+   列口径与仅参考说明见 th 悬浮提示 */
+#matrixTable thead th.ref, #matrixTable tbody td.ref { padding-left: 7px; padding-right: 7px; font-size: 12px; }
+/* 总览矩阵整体收紧:列多(13 列)且单元格 nowrap,收窄水平 padding、允许列名两行折行,
+   压低表格最小宽度,保持整表随容器自适应、避免横向滚动条(仅作用于总览矩阵) */
+#matrixTable th, #matrixTable td { padding-left: 8px; padding-right: 8px; }
+#matrixTable thead tr.col-row th { white-space: normal; line-height: 1.3; }
 /* 可排序表头:点击排序交互 */
 .data-table thead th[data-key] { cursor: pointer; user-select: none; transition: color .15s; }
 .data-table thead th[data-key]:hover { color: var(--accent); }
