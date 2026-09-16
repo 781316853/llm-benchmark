@@ -10,7 +10,7 @@ window.TBSCIENCE = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '0.1',
   'updated': '2026-09-16',
-  'refreshedAt': '2026-09-16 13:41',
+  'refreshedAt': '2026-09-17 01:30',
   'stats': {
     'tasks': 70,
     'entries': 9
