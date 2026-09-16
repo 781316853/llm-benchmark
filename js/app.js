@@ -52,6 +52,21 @@
     (list || []).forEach(function (m) { if (m.src) seen[m.src] = 1; });
     return Object.keys(seen).length > 1;
   }
+  // 各源 refreshedAt(定长 "YYYY-MM-DD HH:mm",字典序即时间序)取最新,作为"本站抓取"时间点;
+  // 旧数据缺字段时返回 undefined,调用方须兜底不显示
+  function maxRefreshedAt() {
+    return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
+      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo]
+      .map(function (s) { return s && s.refreshedAt; })
+      .filter(Boolean).sort().pop();
+  }
+  // 长说明按句读(。;;,全半角)分行:每句一行、保留原标点,用于页头 desc 等大段落
+  // 必须先分行后 esc:先转义会把 &gt; 等实体里的半角分号误当句读;产出 HTML,调用方用 innerHTML 写入
+  var paraHtml = function (text) {
+    if (!text) return "";
+    return String(text).replace(/([。;;])\s*/g, "$1\n").split("\n")
+      .filter(function (l) { return l.trim(); }).map(esc).join("<br>");
+  };
 
   // 基准描述文案(对齐设计稿卡片信息层级);按 benchSummary 的 key 索引
   var BENCH_DESC = {
@@ -561,9 +576,12 @@
   function renderAICap() {
     var src = D.src.aicap || {};
     var data = D.aicap();
-    document.getElementById("aicapDesc").textContent = (src.desc || "") +
-      (src.runCount ? " · " + src.runCount + " 次完整运行" : "") +
-      (src.updated ? " · 更新 " + src.updated : "");
+    document.getElementById("aicapDesc").innerHTML = paraHtml(src.desc || "") +
+      ((src.runCount || src.updated || src.refreshedAt) ? "<br>" +
+        [(src.runCount ? esc(src.runCount) + " 次完整运行" : ""),
+          (src.updated ? "源站更新 " + esc(src.updated) : ""),
+          (src.refreshedAt ? "本站抓取 " + esc(src.refreshedAt) : "")]
+          .filter(Boolean).join(" · ") : "");
     // 柱状:前端/后端各一张,升序使最高在上;最多展示 Top 25 防止标签拥挤
     [["capFeBar", data.frontend], ["capBeBar", data.backend]].forEach(function (pair) {
       var el = document.getElementById(pair[0]);
@@ -596,7 +614,9 @@
     var be = (src.directions && src.directions.backend) || {};
     document.getElementById("aicapNote").innerHTML =
       '<div class="note-line"><b>来源</b><a href="' + esc(src.boardUrl || "") + '" target="_blank" rel="noopener">' + esc(src.boardUrl || "") + ' ↗</a></div>' +
-      '<div class="note-line"><b>更新</b>' + esc(src.updated || "") + ' · ' + esc(src.runCount || 0) + ' 次完整运行</div>' +
+      '<div class="note-line"><b>更新</b>源站 ' + esc(src.updated || "—") +
+      (src.refreshedAt ? ' · 本站抓取 ' + esc(src.refreshedAt) : "") +
+      ' · ' + esc(src.runCount || 0) + ' 次完整运行</div>' +
       '<div class="note-line"><b>前端方向分</b>' + esc(wfmt(fe.weight)) + '</div>' +
       '<div class="note-line"><b>后端方向分</b>' + esc(wfmt(be.weight)) + '</div>' +
       '<div class="note-line"><b>说明</b>已计入综合分(前端/后端各 10%)并进入总览交叉矩阵(合并单列、前后端方向分并列展示);方向分 0-100,越高越好。</div>';
@@ -1055,8 +1075,10 @@
     authDeferTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
-    document.getElementById("authDesc").textContent =
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数)。";
+    var authRefAt = maxRefreshedAt();
+    document.getElementById("authDesc").innerHTML = paraHtml(
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 NL2Repo-Bench 计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径),其余(GPQA Diamond / HLE 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数)。各基准由本站每日两次自动抓取合并,当前快照刷新于 " +
+      (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
 
@@ -1090,8 +1112,12 @@
     var wrap = document.getElementById("plansWrap");
     if (!wrap) return;
     var data = D.codingplan();
-    document.getElementById("plansDesc").textContent = data
-      ? ((data.desc || "") + (data.siteUpdated ? " · 源站更新 " + data.siteUpdated : ""))
+    document.getElementById("plansDesc").innerHTML = data
+      ? (paraHtml(data.desc || "") +
+        ((data.siteUpdated || data.refreshedAt) ? "<br>" +
+          [(data.siteUpdated ? "源站更新 " + esc(data.siteUpdated) : ""),
+            (data.refreshedAt ? "本站抓取 " + esc(data.refreshedAt) : "")]
+            .filter(Boolean).join(" · ") : ""))
       : "暂无数据:抓取失败或尚未生成 data/codingplan.js(待下次每日刷新后恢复)。";
     if (!data || !Array.isArray(data.groups) || !data.groups.length) {
       wrap.innerHTML = "";
@@ -1214,11 +1240,8 @@
     ["wheel", "touchstart", "keydown"].forEach(function (ev) {
       window.addEventListener(ev, function () { authPendingTarget = null; }, { passive: true });
     });
-    // 刷新时间节点:refreshedAt 为定长 "YYYY-MM-DD HH:mm",字典序即时间序,取各源最新;旧数据缺字段时不显示
-    var refreshedAt = [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
-      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo]
-      .map(function (s) { return s && s.refreshedAt; })
-      .filter(Boolean).sort().pop();
+    // 刷新时间节点:取各源 refreshedAt 最新值;旧数据缺字段时不显示
+    var refreshedAt = maxRefreshedAt();
     document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
       + (refreshedAt ? " · 刷新于 " + refreshedAt + "(北京时间)" : "");
     // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行重渲染并移除指示器
