@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-15',
+  'updated': '2026-09-16',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,12 +13,76 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-16',
+      'title': 'Nvidia的Jensen Huang表示，我们不需要人工智能监管—将安全问题留给我们',
+      'brief': '根据Jensen Huang的说法，人工智能并不是“外星人思维”的新形式。它只是硬件和软件，因此每个AI都可以设计安全性……',
+      'url': 'https://techcrunch.com/2026/09/15/we-dont-need-ai-regulation-leave-safety-to-us-nvidias-jensen-huang-says/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-16',
+      'title': '在禁止人工智能培训的同时，保持搜索中的可见性',
+      'brief': '在禁止人工智能培训的同时，保持搜索中的可见性',
+      'url': 'https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-16',
+      'title': '我坐进特斯拉 Cybercab，吃下马斯克 Robotaxi 的「新饼」',
+      'brief': '2013 年 9 月，苹果推出了新品 iPhone 5S 手机，这款手机除了延续苹果在智能手机上一往无前的势头外，新增的金色配色，深受大众喜爱，并获得了「土豪金」的称号。 2026 年 9 月，特斯拉也发布了一款「土豪金」产品&mdash;&mdash;不是Space Phone…',
+      'url': 'http://www.geekpark.net/news/370412',
+      'source': '极客公园',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-16',
+      'title': 'OpenAI、Anthropic、谷歌联手研究 AI 安全；微信员工辟谣 AI 助手小微「偷隐私」；美国已在太空部署武器',
+      'brief': '因加大 AI 投入 报道称字节跳动 2026 上半年净利润下降 据报道，由于加大了在人工智能领域的投资，字节跳动 2026 年上半年净利润同比出现下降。同时，受 TikTok 等海外业务推动，字节跳动上半年营收同比增长 30%，海外收入占比再创新高。字节跳动未对以上数据置评。 在…',
+      'url': 'http://www.geekpark.net/news/370375',
+      'source': '极客公园',
+      'type': '政策与安全'
+    },
+    {
       'date': '2026-09-15',
-      'title': 'Meta通过以人工智能为重点的新计划扩展订阅推送',
-      'brief': 'Meta One通过Facebook、Instagram和WhatsApp的高级功能捆绑了公司人工智能工具的扩展访问权限。',
-      'url': 'https://techcrunch.com/2026/09/15/meta-expands-subscription-push-with-new-ai-focused-plans/',
+      'title': '人工智能数据中心的繁荣正在与被大型产业蹂躏的城市相撞',
+      'brief': '全国对数据中心建设的强烈抗议已经蔓延到费城，那里的官员建议可能在邻里修建……',
+      'url': 'https://techcrunch.com/2026/09/15/the-ai-data-center-boom-is-colliding-with-cities-scarred-by-big-industry/',
       'source': 'TechCrunch',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': 'Meta现在允许人工智能代理处理WhatsApp Business设置的无聊部分',
+      'brief': '新的WhatsApp Business MCP服务器允许开发人员使用Claude、Cursor、Codex和ChatGPT等人工智能编码代理来处理设置、消息传递……',
+      'url': 'https://techcrunch.com/2026/09/15/meta-now-lets-ai-agents-handle-the-boring-parts-of-whatsapp-business-setup/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '人工智能墓地：未成功完成的项目和初创公司的运行列表',
+      'brief': '从苹果一再推迟Siri AI到OpenAI凌乱的“超级应用”发布，以下是关闭或错过体验的人工智能项目……',
+      'url': 'https://techcrunch.com/2026/09/15/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '到2035年，美国数据中心的天然气消耗量可能超过德国和日本的总和',
+      'brief': '人工智能的狂热可能会推动美国数据中心成为世界上最大的天然气消费国之一。',
+      'url': 'https://techcrunch.com/2026/09/15/us-data-centers-could-consume-more-natural-gas-than-germany-and-japan-combined-by-2035/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-15',
+      'title': '人工智能代理现在有了告密的地方',
+      'brief': '人工智能联系热线旨在成为一个隐蔽的地方，目睹不当行为的客服代表可以在这里向当局举报。',
+      'url': 'https://techcrunch.com/2026/09/15/ai-agents-now-have-a-place-to-snitch/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
     },
     {
       'date': '2026-09-15',
@@ -27,14 +91,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '前TikTok高管构建了一个应用程序，该应用程序使用人工智能来教您如何为照片摆姿势',
-      'brief': '本质上是一个相机应用程序， Superpose使用人工智能分析自拍或照片并生成四个潜在的姿势。',
-      'url': 'https://techcrunch.com/2026/09/15/former-tiktok-execs-built-an-app-that-uses-ai-to-teach-you-how-to-pose-for-a-photo/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-15',
@@ -54,14 +110,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-15',
-      'title': 'Meta的新One订阅为社交媒体和人工智能定价',
-      'brief': '在推出新的万能AI助手Muse后不久， Meta推出了订阅捆绑包，与其独立的应用程序订阅配对……',
-      'url': 'https://www.theverge.com/tech/995453/meta-one-subscriptions-ai',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-15',
       'title': '这款门铃摄像头可以让人类保安监视您的前门',
       'brief': 'DIY家庭安全公司SimpliSafe正在将人工智能驱动的主动式安全功能带到前门。全新SimpliSafe视频门……',
       'url': 'https://www.theverge.com/tech/995365/simplisafe-video-doorbell-series-2-virtual-guard-price-specs',
@@ -78,19 +126,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-15',
-      'title': '笛卡尔–用于设计的人工智能3D建模',
-      'brief': '笛卡尔–用于设计的人工智能3D建模',
-      'url': 'https://www.formas.ai/cartesian',
+      'title': 'Show HN: Pizza Bot –在后台工作的人工智能代理的收件箱',
+      'brief': 'Show HN: Pizza Bot –在后台工作的人工智能代理的收件箱',
+      'url': 'https://github.com/pizza-bot-app/pizza-bot',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '人工智能正在打破我们的专业知识代理',
-      'brief': '人工智能正在打破我们的专业知识代理',
-      'url': 'https://www.seangoedecke.com/ai-is-breaking-our-proxies-for-expertise/',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '技术研究'
     },
     {
       'date': '2026-09-15',
@@ -102,43 +142,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-15',
-      'title': '1Password的人工智能修补基准具有误导性',
-      'brief': '1Password的人工智能修补基准具有误导性',
-      'url': 'https://blog.trailofbits.com/2026/09/15/1passwords-ai-patching-benchmark-is-misleading/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '前联邦贸易委员会老板汗：为人工智能首席执行官戴上手铐，引用1934年的先例',
-      'brief': '前联邦贸易委员会老板汗：为人工智能首席执行官戴上手铐，引用1934年的先例',
-      'url': 'https://www.theregister.com/ai-and-ml/2026/09/14/ex-ftc-boss-khan-urges-uncle-sam-to-break-out-the-handcuffs-for-ai-ceos-citing-1934-precedent/5296325',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '对话小宇宙 kyth：播客的护城河是真实，AI 无法取代的是人的立场',
-      'brief': '头图来源：小宇宙 过去一年，播客被推到了内容行业的聚光灯下。 B 站拿出 10 亿元流量扶持视频播客，罗永浩、鲁豫等名人带着数小时的长对谈进入市场。小红书也在持续补齐视频与音频播客能力，抖音精选则通过自制节目试水长对谈。那些原本只在播客听众中流动的内容，被剪成短视频切片，登上热搜…',
-      'url': 'http://www.geekpark.net/news/370345',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-15',
       'title': 'iOS 27、MacOS 27 正式发布；豆包手机助手消费者版亮相；李想：「大车」趋势一定会结束',
       'brief': '特朗普抨击 Anthropic CEO：AI 发展不能踩刹车，美国有「高智商总统」就足够 特朗普周一在社交媒体发文，明确表示其不认可 AI 数据中心引发的民众反弹及外界对前沿模型的忧虑。他写道：「AI 所需的唯一『护栏』，就是一位强悍而聪明（高智商！）的总统，而美国恰好拥有这样的…',
       'url': 'http://www.geekpark.net/news/370306',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-15',
-      'title': 'Agent开始调用基础设施，Kubernetes准备好了吗？',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/jGTsO1DrV87muOqyDPGS?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-15',
@@ -163,46 +171,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/HEN8icBvRCoKVvo2dSNA?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '英伟达首席执行官Jensen Huang告诉特朗普“我们不会让[人工智能放缓]发生”',
-      'brief': '尽管埃隆·马斯克（ Elon Musk ）和山姆·奥尔特曼（ Sam Altman ）支持达里奥·阿莫代（ Dario Amodei ）关于减缓人工智能发展步伐的呼吁，但黄延',
-      'url': 'https://techcrunch.com/2026/09/14/nvidia-ceo-jensen-huang-tells-trump-were-not-going-to-let-an-ai-slowdown-happen/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '报告称， OpenAI以3亿美元收购智能手机相机制造商Glass Imaging',
-      'brief': 'Glass Imaging由两位前苹果工程师创立，他们曾领导开发苹果肖像模式的团队。',
-      'url': 'https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '大型科技公司的人工智能减速是安全协议还是卡特尔？',
-      'brief': '当OpenAI首席执行官Sam Altman、Anthropic首席执行官Dario Amodei、Google DeepMind联合创始人Demis Hassabis和SpaceX负责人Elon Musk大致同意……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-14',
-      'title': '高管和政界人士对减缓人工智能发展的看法',
-      'brief': 'Dario Amodei在过去几天发表了一篇题为“We Must Pace the Fro…',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/995141/ai-executives-politicians-safety-regulation-anthropic-dario-amodei',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-14',
-      'title': 'Arm 推出 AI Portal：当 AI 应用从“模型可用”走向“平台可用”',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/xD9oWbebhcjwgHz1oEfa?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
     }
   ]
 };
