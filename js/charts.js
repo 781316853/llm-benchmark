@@ -104,29 +104,64 @@
     };
   }
 
-  // ===== 散点(成本 vs 成绩;可带气泡大小与颜色) =====
-  function scatterOption(points, opts) {
+  // ===== 散点(成本 vs 成绩;气泡大小编码第三个量,实心/空心区分系列) =====
+  // groups: [{ name, points: [[x, y, bubble, label], ...], style: "solid"|"hollow" }]
+  // 点数多时下面三件事缺一不可:x 轴对数刻度展开密集区间、hideOverlap 只画放得下的标签、
+  // 气泡按面积(而非直径)编码;否则数十个标签必然糊成一团,并压到坐标轴文字上。
+  function scatterOption(groups, opts) {
     opts = opts || {};
     var C = palette(), A = axisStyle();
-    return {
-      grid: { left: 60, right: 30, top: 30, bottom: 56 },
+    // 标签描边取面板底色作光晕:标签压在其他气泡或网格线上时仍能读清
+    var halo = tok("--panel", "#fff");
+    var series = groups.map(function (g) {
+      var hollow = g.style === "hollow";
+      return {
+        name: g.name, type: "scatter", data: g.points,
+        // 面积∝气泡值 => 直径取平方根;上下限避免小值看不清、大值吞并邻居
+        symbolSize: opts.bubble === false ? 12 : function (d) {
+          return Math.max(6, Math.min(24, Math.sqrt(d[2]) * (opts.bubbleScale || 1.6)));
+        },
+        itemStyle: hollow
+          ? { color: "transparent", borderColor: C.textDim, borderWidth: 1.4, opacity: 0.9 }
+          : { color: C.brand, opacity: 0.78 },
+        // label 只画互不重叠的那些;被挤掉的点靠 tooltip 辨认。
+        // 取舍由 ECharts 按标签矩形的位置贪心决定,与数据顺序无关(实测把数据完全倒序结果一致)。
+        label: { show: opts.label !== false, position: "top", distance: 5,
+          formatter: function (p) { return p.data[3]; },
+          color: C.textDim, fontSize: 10.5, textBorderColor: halo, textBorderWidth: 2.5 },
+        labelLayout: { hideOverlap: true },
+        // 悬停反馈:该点套一圈正文色描边并把标签提亮到正文色。
+        // 不用 emphasis.scale —— 实测在这里(符号尺寸由函数决定)不会改变气泡大小。
+        // 被 hideOverlap 隐藏的标签无法这样拉回来,靠 tooltip 兜底(名称在第一行)。
+        emphasis: { itemStyle: { opacity: 1, borderColor: C.text, borderWidth: 2 },
+          label: { show: true, color: C.text } }
+      };
+    });
+    var option = {
+      // top 给图例与 Y 轴标题让位,right 给最右侧高成本点的标签留余量
+      grid: { left: 64, right: 56, top: groups.length > 1 ? 48 : 34, bottom: 60 },
       tooltip: { formatter: function (p) {
-        var d = p.data; return d[3] + "<br/>" + (opts.xName || "X") + ": " + d[0] + "<br/>" + (opts.yName || "Y") + ": " + d[1]; } },
-      xAxis: Object.assign({ type: "value", name: opts.xName, nameLocation: "middle", nameGap: 30,
+        var d = p.data;
+        return "<b>" + d[3] + "</b>" + (p.seriesName ? " · " + p.seriesName : "") +
+          "<br/>" + (opts.xName || "X") + ": " + d[0] +
+          "<br/>" + (opts.yName || "Y") + ": " + d[1] +
+          (d[2] == null ? "" : "<br/>平均步数: " + d[2]); } },
+      // 对数轴的 min 取到数据最小值之下,避免最左的点正好压在 Y 轴上(居中标签会溢出到刻度区)
+      xAxis: Object.assign({ type: opts.xLog ? "log" : "value", logBase: 10,
+        min: opts.xMin, max: opts.xMax, minorTick: { show: true },
+        name: opts.xName, nameLocation: "middle", nameGap: 30,
         nameTextStyle: { color: C.textTertiary } }, A),
-      yAxis: Object.assign({ type: "value", name: opts.yName, nameTextStyle: { color: C.textTertiary },
-        max: opts.yMax, min: opts.yMin }, A),
-      series: [{
-        type: "scatter", data: points,
-        // 气泡模式按 d[2] 缩放;上限调小(26)避免高延迟/多步数时圆点过大互相遮挡
-        symbolSize: function (d) { return opts.bubble ? Math.max(6, Math.min(26, d[2] / (opts.bubbleDiv || 6))) : 12; },
-        // 统一品牌色;半透明以区分重叠点
-        itemStyle: { color: C.brand, opacity: 0.8 },
-        // label 默认显示;数据量大时调用方可传 opts.label=false 关闭以免重叠
-        label: { show: opts.label !== false, formatter: function (p) { return p.data[3]; },
-          position: "top", color: C.textTertiary, fontSize: 10 }
-      }]
+      // 轴名移到轴顶端外侧:默认位置落在绘图区内,会和数据标签叠在一起
+      yAxis: Object.assign({ type: "value", max: opts.yMax, min: opts.yMin,
+        name: opts.yName, nameLocation: "end", nameGap: 14,
+        nameTextStyle: { color: C.textTertiary, align: "left" } }, A),
+      series: series
     };
+    if (groups.length > 1) {
+      option.legend = { top: 6, right: 8, itemWidth: 10, itemHeight: 10, itemGap: 16,
+        textStyle: { color: C.textDim, fontSize: 11 } };
+    }
+    return option;
   }
 
   // 窗口自适应;容器不可见(所在页 display:none,offsetParent 为 null)的图表跳过:

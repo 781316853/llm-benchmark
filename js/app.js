@@ -455,10 +455,21 @@
     if (dsBarEl) { dsBarEl.style.height = dsH + "px"; var dsInst = CH.inst("dsBar"); if (dsInst) dsInst.resize(); }
     CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
       sorted.map(function (m) { return m.pass1; }), CH.brand(), "%", { max: 80 }));
-    // 散点:成本 vs pass1,气泡=步数;tooltip 名称带版本后缀
-    CH.apply("dsScatter", CH.scatterOption(
-      ms.map(function (m) { return [m.cost, m.pass1, m.steps, m.name + "(" + (m.version || "v1.1") + ")"]; }),
-      { xName: "平均成本($)", yName: "Pass@1(%)", bubble: true, bubbleDiv: 6, yMax: 80 }));
+    // 散点:成本 vs pass1,气泡面积=步数;v1.1(实心)与 v1.0(空心)分两个系列,
+    // 版本由图例承担,标签里不再挂 "(v1.0)" 后缀 —— 数十个点的标签空间有限,先省掉这段冗余文字。
+    // 注意:标签该显示哪些由 hideOverlap 按矩形位置决定,与传点顺序无关(实测倒序结果一致),
+    // 所以这里保持 pass1 降序只是为了与上表/柱状图同序,别指望它能给高分模型加权。
+    var groups = [
+      { name: "v1.1", points: [] },
+      { name: "v1.0", points: [], style: "hollow" }
+    ];
+    ms.forEach(function (m) {
+      var g = m.version === "v1.0" ? groups[1] : groups[0];
+      g.points.push([m.cost, m.pass1, m.steps, m.name]);
+    });
+    CH.apply("dsScatter", CH.scatterOption(groups.filter(function (g) { return g.points.length; }), {
+      xName: "平均成本($)", yName: "Pass@1(%)", bubble: true,
+      xLog: true, xMin: 0.05, xMax: 30, yMin: 0, yMax: 80 }));
     // 表格:模型名后挂版本徽章(v1.1/v1.0);NEW 徽标在其后
     var html = ms.map(function (m, i) {
       var nw = D.isNewRaw("deepswe", m.name);

@@ -242,11 +242,15 @@ a:hover { text-decoration: underline; }
 
 /* ===== 图表与卡片容器(border-led,无重阴影) ===== */
 .chart-row, .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+/* 单图独占整行:默认两列网格下单张图只占左半边,标签密集的图需要全部横向空间 */
+.chart-row.single { grid-template-columns: 1fr; }
 .chart-box {
   background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px;
 }
 .chart-box h3 { margin: 0 0 8px; font-size: var(--fs-sm); color: var(--text-dim); font-weight: 600; }
 .chart { width: 100%; height: 360px; }
+/* 散点图:数十个点带标签,画布更矮时标签必然互压,故单独加高 */
+.chart-scatter { height: 480px; }
 
 /* ===== 控件 ===== */
 .controls { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 8px 0 4px; }
@@ -733,6 +737,7 @@ a:hover { text-decoration: underline; }
   .chart-row, .compare-grid { grid-template-columns: 1fr; }
   .multi-select { min-width: 100%; }
   .chart { height: 300px; }
+  .chart-scatter { height: 380px; }
   .topbar h1 { font-size: var(--fs-2xl); }
   .section-title, .page-head h2 { font-size: var(--fs-xl); }
 }
