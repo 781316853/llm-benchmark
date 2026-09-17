@@ -454,7 +454,7 @@
     var dsBarEl = document.getElementById("dsBar");
     if (dsBarEl) { dsBarEl.style.height = dsH + "px"; var dsInst = CH.inst("dsBar"); if (dsInst) dsInst.resize(); }
     CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
-      sorted.map(function (m) { return m.pass1; }), "#2D9D78", "%", { max: 80 }));
+      sorted.map(function (m) { return m.pass1; }), CH.brand(), "%", { max: 80 }));
     // 散点:成本 vs pass1,气泡=步数;tooltip 名称带版本后缀
     CH.apply("dsScatter", CH.scatterOption(
       ms.map(function (m) { return [m.cost, m.pass1, m.steps, m.name + "(" + (m.version || "v1.1") + ")"]; }),
@@ -501,7 +501,7 @@
     // 综合分柱(百分制:等级均值为基础分,按源站名次保序收敛,公式见底部「综合分」说明)
     var bsorted = rows.slice().sort(function (a, b) { return (a.norm || 0) - (b.norm || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
-      bsorted.map(function (r) { return r.norm == null ? 0 : Number(r.norm.toFixed(2)); }), "#2D9D78", "", { max: 100 }));
+      bsorted.map(function (r) { return r.norm == null ? 0 : Number(r.norm.toFixed(2)); }), CH.brand(), "", { max: 100 }));
 
     // 明细表
     var html = rows.map(function (r, i) {
@@ -593,7 +593,7 @@
       var inst0 = CH.inst(pair[0]);
       if (inst0) inst0.resize();
       CH.apply(pair[0], CH.barOption(sorted.map(function (m) { return m.name; }),
-        sorted.map(function (m) { return m.score; }), "#2D9D78", "%", { max: 100, left: 190, labelSize: 11 }));
+        sorted.map(function (m) { return m.score; }), CH.brand(), "%", { max: 100, left: 190, labelSize: 11 }));
     });
     // 表格:模型名(厂商色圆点 + effort·platform 次要信息)/ 厂商 / 方向分 / 参考
     function dirTable(id, models) {
@@ -745,7 +745,7 @@
       CH.apply("authTBBar", CH.barOption(
         tbSorted.map(tbBarLabel),
         tbSorted.map(function (m) { return m.score; }),
-        "#2D9D78", "%", { max: 100, left: 200, labelSize: 11 }
+        CH.brand(), "%", { max: 100, left: 200, labelSize: 11 }
       ));
     }); });
   }
@@ -889,7 +889,7 @@
         CH.apply("authTBBar", CH.barOption(
           shown.map(tbBarLabel),
           shown.map(function (m) { return m.score; }),
-          "#2D9D78", "%", { max: 100, left: 200, labelSize: 11 }
+          CH.brand(), "%", { max: 100, left: 200, labelSize: 11 }
         ));
       } else scheduleAuthChart();
     }
@@ -1154,6 +1154,60 @@
       '<div class="note-line"><b>说明</b>综合单价(¥/亿 Token)与月用量为源站实测/计算值,按综合单价升序排列;完整套餐筛选与购买入口请前往源站查看。</div>';
   }
 
+  // ===== 滚动与排序的轻微反馈(克制动效) =====
+  // 粘性标签栏:滚动离顶后加一层抬升阴影,让"内容在其下滚动"这件事有视觉交代。
+  // 与下面权威基准页的滚动高亮各用各的 rAF 节流变量,互不干扰。
+  var stuckRaf = 0;
+  function syncTabsStuck() {
+    stuckRaf = 0;
+    var t = document.getElementById("tabs");
+    if (t) t.classList.toggle("is-stuck", (window.pageYOffset || 0) > 8);
+  }
+  function onScrollStuck() { if (!stuckRaf) stuckRaf = requestAnimationFrame(syncTabsStuck); }
+
+  // 排序后给该列一次短暂的底色扫过,让"表格被重排了"这件事可见。
+  // 总览矩阵是双行表头:非评测列 rowspan=2 纵跨、评测列被 colspan 分组,且「命中」列同样
+  // 是 rowspan 却排在两个分组之后 —— 列号必须按表头结构逐格模拟累加。用「rowspan 格总数 +
+  // col-row 内序号」这类简化公式会把分组之后的评测列整体错开一位(实测 WebDev 会被算到 llm2014)。
+  // 时机:点击时 app.js 会 renderOverview 重建表头,手上那个 th 随即脱离文档,故同步阶段
+  // 只取 data-key,待重渲染后再按 key 从新表头找回列号。
+  function matrixBodyCol(tbl, key) {
+    var grpRow = tbl.querySelector("thead tr.grp-row");
+    if (!grpRow) return -1;
+    var colRow = tbl.querySelector("thead tr.col-row");
+    var evalThs = colRow ? Array.prototype.slice.call(colRow.children) : [];
+    var col = 0, evalPos = 0, answer = -1;
+    Array.prototype.forEach.call(grpRow.children, function (cell) {
+      if (cell.hasAttribute("rowspan")) {
+        if (cell.getAttribute("data-key") === key) answer = col;
+        col += 1;
+        return;
+      }
+      var cs = parseInt(cell.getAttribute("colspan") || "1", 10);
+      for (var i = 0; i < cs; i++) {
+        var t = evalThs[evalPos + i];
+        if (t && t.getAttribute("data-key") === key) answer = col + i;
+      }
+      evalPos += cs;
+      col += cs;
+    });
+    return answer;
+  }
+  function flashSortedColumn(key) {
+    var tbl = document.getElementById("matrixTable");
+    if (!tbl) return;
+    var col = matrixBodyCol(tbl, key);
+    if (col < 0) return;
+    var tds = [];
+    Array.prototype.forEach.call(tbl.querySelectorAll("tbody tr"), function (tr) {
+      if (tr.children[col]) tds.push(tr.children[col]);
+    });
+    if (!tds.length) return;
+    tds.forEach(function (td) { td.classList.remove("col-flash"); });
+    void tbl.offsetWidth; // 单次强制重排即可让动画重放(逐格读 offsetWidth 会触发 N 次重排)
+    tds.forEach(function (td) { td.classList.add("col-flash"); });
+  }
+
   // ===== 标签切换 =====
   function showTab(name) {
     state.tab = name;
@@ -1193,6 +1247,8 @@
       state.sortDir = nextSortDir(key);
       state.sortKey = key;
       renderOverview();
+      // 渲染完成后扫一次该列(表头已重建,故按 key 重新定位列号)
+      requestAnimationFrame(function () { flashSortedColumn(key); });
     });
     // 各页"仅跨榜模型/显示全部"开关
     [
@@ -1236,6 +1292,9 @@
       if (authSpyRaf) return;
       authSpyRaf = requestAnimationFrame(function () { authSpyRaf = 0; syncAuthNav(); });
     }, { passive: true });
+    // 粘性标签栏的抬升阴影(任何页面都生效)
+    window.addEventListener("scroll", onScrollStuck, { passive: true });
+    syncTabsStuck();
     // 用户主动滚动/按键时立即解除跳转锁定,恢复实时高亮
     ["wheel", "touchstart", "keydown"].forEach(function (ev) {
       window.addEventListener(ev, function () { authPendingTarget = null; }, { passive: true });
