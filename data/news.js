@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-16',
+  'updated': '2026-09-17',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -12,6 +12,78 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-09-17',
+      'title': '总部位于冰岛的Treble为其语音模拟平台筹集了1800万美元$',
+      'brief': '高音的语音模拟平台被语音AI模型开发商、AI可穿戴设备和机器人公司使用',
+      'url': 'https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '您的创业公司的下一个队友可能是人工智能代理： Gusto、Insight Partners和Leland向您解释Tech的变化……',
+      'brief': '本课程将探讨早期公司如何构建人类和人工智能代理并肩工作的团队，以及如何创建……',
+      'url': 'https://techcrunch.com/2026/09/16/your-startups-next-teammate-might-be-an-ai-agent-gusto-insight-partners-and-leland-explain-what-that-changes-at-techcrunch-disrupt-2026/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'Pangram –文本和图像的人工智能检测器',
+      'brief': 'Pangram –文本和图像的人工智能检测器',
+      'url': 'https://www.pangram.com',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'OpenAI披露六个新的人工智能安全事件',
+      'brief': 'OpenAI披露六个新的人工智能安全事件',
+      'url': 'https://www.axios.com/2026/09/16/openai-testing-safety-incidents-disclosure',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '追觅四大赛道 IFA 首秀：一套技术，四个出口',
+      'brief': '追觅在 IFA 上展出的不是四条产品线，是一套技术的四个出口。 作者｜张勇毅 编辑｜郑玄 去年一年，全球扫地机器人的出货量约 2412 万台。同一年，全球人形机器人的出货量约 1.8 万台。两个数字都来自 IDC，中间差了 1300 多倍。 带着这两个数字走进今年柏林的 IFA…',
+      'url': 'http://www.geekpark.net/news/370506',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'vivo 把 Agent 做进操作系统：6000 多项原子技能开放调用，AgentOS 预览版亮相',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/hbZAEa6iQbq5rcUWbUi4?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-16',
+      'title': '阿尔·戈尔说，真正的人工智能风险不是数据中心',
+      'brief': '在接受TechCrunch采访时，阿尔·戈尔（ Al Gore ）表示，他并没有因为人工智能数据中心的排放而失眠--他更担心人工智能的影响……',
+      'url': 'https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-16',
+      'title': 'Anthropic和OpenAI希望嵌入安全评估人员。他们真的会独立吗？',
+      'brief': 'Anthropic和OpenAI希望在其人工智能实验室中嵌入独立的安全评估人员。研究人员欢迎前所未有的准入，但战争……',
+      'url': 'https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-16',
+      'title': '人工智能实验室需要内部审核员—但也许他们应该先关上前门',
+      'brief': '对于躲在显而易见的地方的流氓特工，可能有更简单、更有效的解决方案。',
+      'url': 'https://techcrunch.com/2026/09/16/ai-labs-want-in-house-auditors-but-maybe-they-should-shut-the-front-door-first/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
     {
       'date': '2026-09-16',
       'title': '您的AI代理现在可以控制您的Google Home设备',
@@ -54,35 +126,35 @@ window.NEWS = {
     },
     {
       'date': '2026-09-16',
+      'title': 'Snap正在推出一款新的Specs AI工具，即将在iOS和Mac上推出',
+      'brief': 'Snap推出了“Specs Intelligence” ，这是一种新的人工智能助手，可以连接其他数字帐户，帮助您完成工作任务等……',
+      'url': 'https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-16',
+      'title': '这部2.5小时的人工智能电影《奥德赛》太长了2.5小时',
+      'brief': '克里斯托弗·诺兰（ Christopher Nolan ）对《奥德赛》（ The Odyssey ）的引人入胜的看法在票房中占据主导地位，并激发了人们对经典文学的新兴趣。',
+      'url': 'https://www.theverge.com/entertainment/996499/ai-odyssey-movie-review',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-16',
+      'title': '谷歌现在将让任何人工智能代理运行您的智能家居',
+      'brief': '谷歌正在向人工智能代理开放其智能家居，让Claude和Open Claw等工具访问和控制您的连接设备和肛门……',
+      'url': 'https://www.theverge.com/tech/996310/google-home-mcp-integration-agentic-ai-smart-home-price-release-date',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-16',
       'title': '性感的人工智能约会应用程序诈骗就在这里',
       'brief': '安全研究员Matthew “Zigula” Gore-Kormanik正在分析一个名为Dora的欺诈性约会应用程序，当时他收到一条弹出消息说他......',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/995348/ai-dating-app-scams',
       'source': 'The Verge',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '人工智能高管呼吁监管的简要历史',
-      'brief': '在过去的几天里，很多能够从人工智能中赚很多钱的人都公开同意，是时候让每个人都慢下来了……',
-      'url': 'https://www.theverge.com/policy/995534/a-brief-history-of-ai-executives-calling-for-regulation',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '微软称人工智能竞争对手Anthropic可能对人类产生“灾难性影响”',
-      'brief': '微软称人工智能竞争对手Anthropic可能对人类产生“灾难性影响”',
-      'url': 'https://www.bbc.co.uk/news/articles/c6n07ypqz8kzo',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '关于“模范福利”的警告',
-      'brief': '关于“模范福利”的警告',
-      'url': 'https://mustafa-suleyman.ai/a-warning-about-model-welfare',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-16',
@@ -94,43 +166,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-16',
-      'title': 'Show HN ：你的人工智能有多陈旧？ 20个型号的发布年龄和培训截止时间',
-      'brief': 'Show HN ：你的人工智能有多陈旧？ 20个型号的发布年龄和培训截止时间',
-      'url': 'https://stale.jock.pl/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'ImpactGate ：对AI添加的结构衰减进行评分的合并门',
-      'brief': 'ImpactGate ：对AI添加的结构衰减进行评分的合并门',
-      'url': 'https://github.com/officefloor/ImpactGate',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '在飞书的上下文底座上，豆包开工了',
-      'brief': '今年，不少公司的工作群里，将会多一些「新同事」。 它们是 AI，但可以像普通员工一样被拉进群聊，阅读此前的讨论和文档，参与会议、承接任务，并调用不同的业务工具完成工作。你甚至可以看到 Agent 在群里 @ 另一个 Agent，共同推进一项复杂工作。 当 Agent 从个人助手变…',
-      'url': 'http://www.geekpark.net/news/370460',
+      'title': '马斯克再暗示合并特斯拉和 SpaceX；传 iPhone 18 Pro 系列卖爆；大疆 Pocket 4P「珠光白」3799 开售｜极客早知道',
+      'brief': '全球首款 AI 智能体手机努比亚 NaviX Ultra 上市：5999 元起，首销销售额「一秒破亿」 9 月 16 日，中兴旗下努比亚今日下午正式发布 NaviX Ultra，官方称其为「全球首款 AI 智能体手机」，也被外界称为「第二代豆包手机」，标志着 AI 智能体手机从工…',
+      'url': 'http://www.geekpark.net/news/370472',
       'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'Token 之后，谁来组织 AI 计算？Arm 寻找下一代计算的答案',
-      'brief': '如果说今年 3 月，Arm 推出首款自研 CPU 芯片，是这家公司向市场释放的一个信号，它开始尝试突破过去「只提供底层架构授权」的角色边界。那么在上海举办的 Arm Everywhere China 活动上，Arm 想传递的信息更加明确，不要再用过去「CPU IP 供应商」的方式…',
-      'url': 'http://www.geekpark.net/news/370453',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '当智能体开始替人花钱，如何证明「它是谁」？',
-      'brief': '在蚂蚁集团，负责 AI 支付安全的陈树鹏是个深度的智能体使用者。日常写代码、梳理汇报、提炼会议纪要，AI 几乎接管了他工作流里的大部分环节。 这种高度依赖背后，却存在着一个清晰的分水岭。一旦任务涉及真金白银，比如调用付费数据接口、购买素材或预订服务，绝大多数人都会本能地把权限卡死…',
-      'url': 'http://www.geekpark.net/news/370440',
-      'source': '极客公园',
-      'type': '技术研究'
+      'type': '模型发布'
     },
     {
       'date': '2026-09-16',
@@ -139,54 +179,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/370431',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'OpenAI、Anthropic、谷歌联手研究 AI 安全；微信员工辟谣 AI 助手小微「偷隐私」；美国已在太空部署武器',
-      'brief': '因加大 AI 投入 报道称字节跳动 2026 上半年净利润下降 据报道，由于加大了在人工智能领域的投资，字节跳动 2026 年上半年净利润同比出现下降。同时，受 TikTok 等海外业务推动，字节跳动上半年营收同比增长 30%，海外收入占比再创新高。字节跳动未对以上数据置评。 在…',
-      'url': 'http://www.geekpark.net/news/370375',
-      'source': '极客公园',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-15',
-      'title': 'OpenAI、Anthropic和谷歌已经就人工智能安全问题进行了数周的谈判',
-      'brief': 'OpenAI确认与Anthropic和谷歌DeepMind进行了数周的人工智能安全谈判，因为特朗普的团队驳斥了安全问题，并推动保持...',
-      'url': 'https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-15',
-      'title': 'iOS 27、MacOS 27 正式发布；豆包手机助手消费者版亮相；李想：「大车」趋势一定会结束',
-      'brief': '特朗普抨击 Anthropic CEO：AI 发展不能踩刹车，美国有「高智商总统」就足够 特朗普周一在社交媒体发文，明确表示其不认可 AI 数据中心引发的民众反弹及外界对前沿模型的忧虑。他写道：「AI 所需的唯一『护栏』，就是一位强悍而聪明（高智商！）的总统，而美国恰好拥有这样的…',
-      'url': 'http://www.geekpark.net/news/370306',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '飞书与豆包工作合体后首亮相：Agent 能进群，还能帮你写周报、做PPT',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/aCRVupdyEAHtENIiIDwq?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '早期的Anthropic招聘，前METR首席运营官已经找到了控制流氓AI特工的方法',
-      'brief': '他们的初创公司人工智能承销公司（ AIUC ）在由Ribbit Capital牵头的A轮融资中筹集了4000万美元（ $ ）。',
-      'url': 'https://techcrunch.com/2026/09/15/early-anthropic-hire-former-metr-coo-have-found-a-way-to-rein-in-rogue-ai-agents/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-15',
-      'title': '月之暗面：网传创始人及员工信息系恶意造谣；OpenAI 放弃今年上市；iPhone Duo炒到9万，黄牛贷款欲囤货｜AI周报',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/HEN8icBvRCoKVvo2dSNA?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     }
   ]
 };
