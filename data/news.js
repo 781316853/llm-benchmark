@@ -14,6 +14,46 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-17',
+      'title': 'Base Labs与Hugging Face和Goodfire推出开放式人工智能安全合作伙伴关系',
+      'brief': 'Baseten今年早些时候成立的研究小组Base Labs将开发和发布用于训练和监控开放模型的方法。',
+      'url': 'https://techcrunch.com/2026/09/17/base-labs-launches-an-open-weight-ai-safety-partnership-with-hugging-face-and-goodfire/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'Pinterest推出了全新的“Restyle”功能，让您可以使用人工智能重新设计您的房间',
+      'brief': 'Pinterest正在测试Restyle ，这是一项新的人工智能功能，可让用户在照片中可视化家具、装饰、照明和其他变化。',
+      'url': 'https://techcrunch.com/2026/09/17/pinterest-teases-a-new-restyle-feature-that-lets-you-redesign-your-room-with-ai/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '华为计划在2027年第一季度推出新的AI芯片，因为它需要Nvidia',
+      'brief': '华为正在加速推出下一代Ascend 960DT AI芯片，以推动与英伟达的竞争，并关闭中国的人工智能计算市场。',
+      'url': 'https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '竞争对手人工智能代理Instinct和Meta\'s Muse都增加了拨打电话的能力',
+      'brief': '用户可以使用这些助手预订餐厅并取消订阅。',
+      'url': 'https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'Google、Nvidia和Anthropic希望Emerald AI在电网上为更多数据中心寻找空间',
+      'brief': '包括谷歌、英伟达、Anthropic和Emerald AI在内的新联盟希望为新数据中心找到100吉瓦的电网容量。',
+      'url': 'https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
       'title': '总部位于冰岛的Treble为其语音模拟平台筹集了1800万美元$',
       'brief': '高音的语音模拟平台被语音AI模型开发商、AI可穿戴设备和机器人公司使用',
       'url': 'https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/',
@@ -30,11 +70,59 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
-      'title': 'Pangram –文本和图像的人工智能检测器',
-      'brief': 'Pangram –文本和图像的人工智能检测器',
-      'url': 'https://www.pangram.com',
+      'title': '微软人工智能首席执行官表示，人工智能威胁是真实的，而Anthropic正在使情况变得更糟',
+      'brief': '今天，我正在与微软人工智能首席执行官穆斯塔法·苏莱曼（ Mustafa Suleyman ）交谈。毫无疑问，众所周知，目前科技行业最大的新闻是……',
+      'url': 'https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude',
+      'source': 'The Verge',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '人工智能作为工作的破坏者在全球范围内受到恐惧',
+      'brief': '皮尤研究中心（ Pew Research ）发布了一项新的全球调查，揭示了人们如何看待人工智能，包括其对工作、生活和……的影响。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/996775/ai-is-feared-globally-as-the-destroyer-of-jobs',
+      'source': 'The Verge',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '在突然爆炸的人工智能安全世界里',
+      'brief': '在加利福尼亚州伯克利的一个阳光明媚的七月天，该国顶尖的人工智能安全研究人员聚集在一栋未标记建筑的未标记楼层……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/996563/ai-safety-research-metr-redwood-openai-anthropic',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'OpenAI的错位框架：抢占全球人工智能治理的战术尝试',
+      'brief': 'OpenAI的错位框架：抢占全球人工智能治理的战术尝试',
+      'url': 'https://asiaai.fyi/openai-misalignment-framework-global-governance/',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'Show HN ：分享您的人工智能设置，向他人学习',
+      'brief': 'Show HN ：分享您的人工智能设置，向他人学习',
+      'url': 'https://mysetup.ai/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '人工智能安全主要是一种性崇拜',
+      'brief': '人工智能安全主要是一种性崇拜',
+      'url': 'https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '比特工接管互联网更可怕的是什么？首席执行官卡特尔试图接管人工智能',
+      'brief': '比特工接管互联网更可怕的是什么？首席执行官卡特尔试图接管人工智能',
+      'url': 'https://fractalsofchange.substack.com/p/q-whats-scarier-than-a-swarm-of-ai',
+      'source': 'Hacker News',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-17',
@@ -46,6 +134,14 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
+      'title': '京东押注物理 AI，冲在前面的是一群 95 后',
+      'brief': '去年，AI 行业最热闹的是模型榜单、推理能力和多模态生成。所有人都在问：这个模型有多强？ 但到了 2026 年，问题变了。人们开始追问：它到底能干什么？ 这个问题，京东在今年的 JDD 大会上，给出了自己的答案。 京东把这届大会的主题定为「JoyAI &middot; 跃迁物理世…',
+      'url': 'http://www.geekpark.net/news/370519',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-17',
       'title': '追觅四大赛道 IFA 首秀：一套技术，四个出口',
       'brief': '追觅在 IFA 上展出的不是四条产品线，是一套技术的四个出口。 作者｜张勇毅 编辑｜郑玄 去年一年，全球扫地机器人的出货量约 2412 万台。同一年，全球人形机器人的出货量约 1.8 万台。两个数字都来自 IDC，中间差了 1300 多倍。 带着这两个数字走进今年柏林的 IFA…',
       'url': 'http://www.geekpark.net/news/370506',
@@ -54,19 +150,27 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
-      'title': 'vivo 把 Agent 做进操作系统：6000 多项原子技能开放调用，AgentOS 预览版亮相',
+      'title': '百度智能云首发产业智能体操作系统，要实现 AI 的商业和技术飞轮',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/hbZAEa6iQbq5rcUWbUi4?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/jXliIdDVTYDAtm73EoSU?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
     },
     {
-      'date': '2026-09-16',
-      'title': '阿尔·戈尔说，真正的人工智能风险不是数据中心',
-      'brief': '在接受TechCrunch采访时，阿尔·戈尔（ Al Gore ）表示，他并没有因为人工智能数据中心的排放而失眠--他更担心人工智能的影响……',
-      'url': 'https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
+      'date': '2026-09-17',
+      'title': '阶跃发布全新语音大模型 StepAudio 3系列：覆盖语音识别、生成、实时交互与音乐创作',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/paoGkkFVHV3gbhG3GEdC?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'Linux Foundation CEO：AI史上最大投资潮背后，真正托底的是开源',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/VRgVJvwcVrkzWTIa2ecF?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-16',
@@ -75,14 +179,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '人工智能实验室需要内部审核员—但也许他们应该先关上前门',
-      'brief': '对于躲在显而易见的地方的流氓特工，可能有更简单、更有效的解决方案。',
-      'url': 'https://techcrunch.com/2026/09/16/ai-labs-want-in-house-auditors-but-maybe-they-should-shut-the-front-door-first/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-16',
@@ -99,70 +195,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/',
       'source': 'TechCrunch',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '机器人正在等待ChatGPT时刻：英伟达的Les Karpas在TechCrunch Disrupt 2026上解释了原因',
-      'brief': '机器人行业仍在等待它们在日常生活中的突破。英伟达的Les Karpas回答了为什么在TechCrunc……',
-      'url': 'https://techcrunch.com/2026/09/16/robots-are-waiting-for-a-chatgpt-moment-nvidias-les-karpas-explains-why-at-techcrunch-disrupt-2026/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '前Infosys首席执行官的人工智能初创公司又获得了5300万美元的$',
-      'brief': '这家帕洛阿尔托初创公司表示，它已经在推出后的几个月内获得了多份七位数的企业合同。',
-      'url': 'https://techcrunch.com/2026/09/16/former-infosys-chiefs-ai-startup-adds-50m-to-seed-weeks-after-initial-raise/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'Nvidia的Jensen Huang表示，我们不需要人工智能监管—将安全问题留给我们',
-      'brief': '根据Jensen Huang的说法，人工智能并不是“外星人思维”的新形式。它只是硬件和软件，因此每个AI都可以设计安全性……',
-      'url': 'https://techcrunch.com/2026/09/15/we-dont-need-ai-regulation-leave-safety-to-us-nvidias-jensen-huang-says/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'Snap正在推出一款新的Specs AI工具，即将在iOS和Mac上推出',
-      'brief': 'Snap推出了“Specs Intelligence” ，这是一种新的人工智能助手，可以连接其他数字帐户，帮助您完成工作任务等……',
-      'url': 'https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '这部2.5小时的人工智能电影《奥德赛》太长了2.5小时',
-      'brief': '克里斯托弗·诺兰（ Christopher Nolan ）对《奥德赛》（ The Odyssey ）的引人入胜的看法在票房中占据主导地位，并激发了人们对经典文学的新兴趣。',
-      'url': 'https://www.theverge.com/entertainment/996499/ai-odyssey-movie-review',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '谷歌现在将让任何人工智能代理运行您的智能家居',
-      'brief': '谷歌正在向人工智能代理开放其智能家居，让Claude和Open Claw等工具访问和控制您的连接设备和肛门……',
-      'url': 'https://www.theverge.com/tech/996310/google-home-mcp-integration-agentic-ai-smart-home-price-release-date',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '性感的人工智能约会应用程序诈骗就在这里',
-      'brief': '安全研究员Matthew “Zigula” Gore-Kormanik正在分析一个名为Dora的欺诈性约会应用程序，当时他收到一条弹出消息说他......',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/995348/ai-dating-app-scams',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'OpenAI与赞助商合作拓展ChatGPT广告',
-      'brief': 'OpenAI与赞助商合作拓展ChatGPT广告',
-      'url': 'https://openai.com/index/reimagining-advertising-with-ai/',
-      'source': 'Hacker News',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-16',

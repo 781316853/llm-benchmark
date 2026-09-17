@@ -11,11 +11,21 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
   updated: "2026-09-17",
-  refreshedAt: "2026-09-17 13:50",
+  refreshedAt: "2026-09-18 01:31",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 28 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 31 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
+  {
+    'name': 'DeepSeek-V4.1-Flash',
+    'effort': '最高（工具）',
+    'pass1': 74.2,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'datalearner'
+  },
   {
     'name': 'gpt-6-astra',
     'effort': 'xhigh',
@@ -77,6 +87,16 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
+    'name': 'Qwen3.8-Max-0902',
+    'effort': '极高强度思考（工具）',
+    'pass1': 69.3,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'datalearner'
+  },
+  {
     'name': 'glm-5-3',
     'effort': 'max',
     'pass1': 69,
@@ -95,6 +115,16 @@ window.DEEPSWE = {
     'outTok': 81500,
     'steps': 98,
     'src': 'official'
+  },
+  {
+    'name': 'Claude Fable 5.1',
+    'effort': '最高（工具）',
+    'pass1': 67.4,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'datalearner'
   },
   {
     'name': 'grok-4-6',
