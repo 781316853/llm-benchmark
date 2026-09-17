@@ -169,13 +169,16 @@
   }
 
   // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, norm, rank}]} =====
-  // 综合分(norm,0-100)按等级均值连续映射,同月人人不同分:
-  // 1) 基数 = 各已测项目等级均值(A+=4.0..D=0.5,Pass=4.0,Failed=0),不做档位归并;
+  // 综合分(norm,0-100)= 等级均值基础分 + 按源站行序的保序收敛:
+  // 1) 基础分 = 各已测项目等级均值(A+=4.0..D=0.5,Pass=4.0,Failed=0),不做档位归并;
   // 2) 绝对等级映射(mean/4.0×100):直接按满分4.0线性折算,跨月可比;
-  //    不再做月内 min-max 归一化(避免当月极端高分撑大区间、把低分段挤到零点造成失真);
+  //    不做月内 min-max 归一化(避免当月极端高分撑大区间、把低分段挤到零点造成失真);
   // 3) 均值完全相同的模型同组,组内按源排名(rank 0=第一)每退一名递减 0.01;
-  // 4) 组顶受上一组最低分压制(天花板链),保证跨组不倒挂、全员互异;
-  // 5) 全 Skip/Pending(mean=null)不计分,综合分显示 "-"。
+  // 4) 组顶受上一组最低分压制(天花板链),保证基础分跨组不倒挂、全员互异;
+  // 5) 全 Skip/Pending(mean=null)不计分,综合分显示 "-";
+  // 6) 保序收敛(2026-09-15):以源站行序为准,对基础分求「沿名次严格递减、相邻至少差
+  //    1 分」的最小二乘解(PAVA),消除「名次靠前但分数低」的倒挂;
+  //    未被合并的模型保持基础分不变,矛盾处相邻合并取均值后按名次拉开 1 分/名。
   // 综合分与明细单元格等级着色解耦。
   function llmMonth(month) {
     var src = window.LLM2014 || { months: {} };
@@ -212,7 +215,31 @@
       // 兜底:极端拥挤月份若被天花板链压出负分,整体平移补差(保持互异)
       var lowest = Math.min.apply(null, order.map(function (r) { return r._cents; }));
       if (lowest < 0) order.forEach(function (r) { r._cents -= lowest; });
-      order.forEach(function (r) { r.norm = r._cents / 100; });
+      // ===== 保序收敛:源站行序为准,消除「名次靠前但分数低」的倒挂 =====
+      // 以上述均值分为基础分,求「沿名次严格递减、相邻至少差 RANK_GAP」的最小二乘解:
+      // 反序变换 y_i = 基础分 − RANK_GAP·i 后做非递减 PAVA(相邻违反者合并取加权均值),
+      // 再回变换 c_i = y + RANK_GAP·i;未被合并的模型保持基础分不变,合并块内每退一名 −1 分。
+      var RANK_GAP = 100; // 相邻名次最小分差(百分点,即 1 分)
+      var byRank = order.slice().sort(function (a, b) { return a.rank - b.rank; });
+      var nR = byRank.length, ys = [];
+      for (var ri = 0; ri < nR; ri++) ys.push(byRank[nR - 1 - ri]._cents - RANK_GAP * ri);
+      var stack = [];
+      for (var ri = 0; ri < nR; ri++) {
+        stack.push({ sum: ys[ri], n: 1 });
+        while (stack.length > 1) {
+          var pa = stack[stack.length - 2], pb = stack[stack.length - 1];
+          if (pb.sum / pb.n < pa.sum / pa.n) { pa.sum += pb.sum; pa.n += pb.n; stack.pop(); } else break;
+        }
+      }
+      var fin = new Array(nR), fi = 0;
+      stack.forEach(function (blk) {
+        var mean = Math.round(blk.sum / blk.n);
+        for (var j = 0; j < blk.n; j++, fi++) fin[fi] = mean + RANK_GAP * fi;
+      });
+      // 兜底:极端拥挤月份若被保序压出负分,整体平移补差(保持顺序与间隔)
+      var minFin = Math.min.apply(null, fin);
+      if (minFin < 0) for (var ri = 0; ri < nR; ri++) fin[ri] -= minFin;
+      for (var ri = 0; ri < nR; ri++) byRank[nR - 1 - ri].norm = fin[ri] / 100;
     }
     return { projects: mo.projects, rows: rows };
   }

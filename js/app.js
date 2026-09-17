@@ -498,7 +498,7 @@
       if (inst) inst.resize();
     });
 
-    // 综合分柱(百分制:含完成率折扣,跳过任务过多的小样本均值会被拉低)
+    // 综合分柱(百分制:等级均值为基础分,按源站名次保序收敛,公式见底部「综合分」说明)
     var bsorted = rows.slice().sort(function (a, b) { return (a.norm || 0) - (b.norm || 0); });
     CH.apply("lmBar", CH.barOption(bsorted.map(function (r) { return r.model; }),
       bsorted.map(function (r) { return r.norm == null ? 0 : Number(r.norm.toFixed(2)); }), "#2D9D78", "", { max: 100 }));
@@ -554,9 +554,9 @@
       noteParts.push({ k: "项目说明", v: projectLines.concat(["表格列名括号内的字母代号(如 \"MacOS App(C)\")对应上述项目"]) });
     }
     noteParts.push({ k: "综合分", v: [
-      "以各已测项目等级均值(A+=4.0、A=3.5 … D=0.5,Pass=4.0,Failed=0)为基数,不归并档位",
-      "月内归一化:均值最高 100 分、最低 0 分,中间按等级差距线性分布",
-      "均值完全相同的模型按源站排名先后微调区分(每退一名 -0.01),保证人人不同分"
+      "以各已测项目等级均值(A+=4.0、A=3.5 … D=0.5,Pass=4.0,Failed=0)为基础分,不归并档位",
+      "保序口径:按源站排名强制分数严格递减、相邻名次至少差 1 分,消除「名次靠前但分数低」的倒挂",
+      "与名次矛盾处相邻模型合并取均值后按名次拉开 1 分/名;未受影响的模型保持基础分不变"
     ] });
     // 单条说明渲染:字符串内容单行跟随标签;数组内容套 note-body 逐行展示,折行对齐
     var noteLineHtml = function (p) {
