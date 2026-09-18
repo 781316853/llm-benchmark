@@ -315,6 +315,7 @@ window.SEEN = {
     'tbench|Muse Spark 1.3': '2026-09-14',
     'tbench|GLM-5.3-Flash': '2026-09-14',
     'tbench|Qwen3.8-Flash-Next': '2026-09-14',
-    'vibe|Mercury 2.5 [新]': '2026-09-15'
+    'vibe|Mercury 2.5 [新]': '2026-09-15',
+    'llm|Seed-2.1-Pro 0915 (high)': '2026-09-18'
   }
 };

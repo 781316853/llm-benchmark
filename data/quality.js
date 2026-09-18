@@ -120,7 +120,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 81,
+      'modelCount': 82,
       'updated': '2026-09-18',
       'ageDays': 0,
       'completeness': 0,
@@ -744,11 +744,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 81,
+      'total': 82,
       'complete': 0,
-      'modelCount': 81,
+      'modelCount': 82,
       'missingFields': {
-        'score': 81
+        'score': 82
       },
       'flag': 'warn'
     },

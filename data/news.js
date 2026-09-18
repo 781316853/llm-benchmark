@@ -14,11 +14,83 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-18',
-      'title': 'Hacking OpenAI',
-      'brief': 'Hacking OpenAI',
-      'url': 'https://www.hacktron.ai/blog/hacking-openai',
+      'title': '打开还是关闭AI ？英伟达的纳德尔·哈利勒（ Nader Khalil ）和悉尼·赛克斯（ Sydney Sykes ）做出了一项决定，决定了Tech的下一代初创公司……',
+      'brief': '英伟达的Nader Khalil和Sydney Sykes在TechCrunch Disrupt 20的Builders Stage上讨论了塑造下一代初创公司的决定之一……',
+      'url': 'https://techcrunch.com/2026/09/18/open-or-closed-ai-nvidias-nader-khalil-and-sydney-sykes-take-on-one-of-the-decisions-shaping-next-gen-startups-at-techcrunch-disrupt-2026/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Meta的Muse点击Mac ，让AI在您的计算机上执行操作',
+      'brief': 'Muse现在可在Mac上使用，它可以与您的文件和应用程序一起代表您采取行动。',
+      'url': 'https://techcrunch.com/2026/09/18/metas-muse-hits-mac-letting-the-ai-take-actions-on-your-computer/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '研究人员利用Anthropic的Claude入侵OpenAI',
+      'brief': '安全研究人员利用Anthropic的Claude来利用OpenAI系统中的漏洞，接管员工账户并获得访问权限……',
+      'url': 'https://techcrunch.com/2026/09/18/researchers-used-anthropics-claude-to-hack-into-openai/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '好莱坞对存在主义人工智能警告的看法',
+      'brief': '随着科技行业对人工智能摧毁人类的潜力发出警报，娱乐劳工组织正在敦促公众保持专注……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/997358/what-hollywood-thinks-about-existential-ai-warnings',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '安全研究人员利用Claude帮助他们入侵OpenAI',
+      'brief': 'Hacktron的一个由三名独立安全研究人员组成的团队表示，他们花了不到72个小时就入侵了OpenAI的员工账户……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/997444/openai-hack-claude-heif-heist',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '人工智能是精英犯罪狂潮',
+      'brief': '人工智能是精英犯罪狂潮',
+      'url': 'https://www.thebignewsletter.com/p/ai-is-an-elite-crime-spree',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '蒙特利尔的人工智能抗议活动',
+      'brief': '蒙特利尔的人工智能抗议活动',
+      'url': 'https://montrealgazette.com/news/photos-anti-ai-protest-in-montreal/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'GLM编码代理ZCode静默上传您的Git历史记录',
+      'brief': 'GLM编码代理ZCode静默上传您的Git历史记录',
+      'url': 'https://tokenstead.ai/guides/zcode-silent-git-history-upload',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'AI 硬件创业者，疯狂涌入手机的背面',
+      'brief': '头图来源：产品小红书账号、官网 过去一年，AI 硬件创业者开始扎堆手机背面。 Plaud 的 AI 录音卡累计出货突破百万台。2026 年 6 月，Plaud 宣布 ARR 达到 1 亿美元、服务超过 200 万专业用户；截至 9 月，公司最新披露的全球用户数已超过 250 万…',
+      'url': 'http://www.geekpark.net/news/370610',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '那个教 ChatGPT 说话的人，做了一个「哑巴」模型',
+      'brief': '作者｜桦林舞王 编辑｜靖宇 AI 圈子里最懂怎么让模型「开口聊天」的人，现在决定剥夺大模型的语言能力。 这位前 OpenAI 研究员、ChatGPT 的共同发明者 Diogo Almeida，在潜行两年后带着他的新公司 TypeSafe AI 和 4000 万美元融资回到牌桌。他…',
+      'url': 'http://www.geekpark.net/news/370603',
+      'source': '极客公园',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-18',
@@ -30,11 +102,27 @@ window.NEWS = {
     },
     {
       'date': '2026-09-18',
-      'title': '被热议的RSI，39 年前就已诞生？现代人工智能之父复盘RSI的漫长探索',
+      'title': 'Grab 智能体框架 LLM-Kit 加速 AI 智能体生产部署',
       'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/wbpy0Kv3tB32jEPV6Cg0?utm_source=rss&utm_medium=article',
+      'url': 'https://www.infoq.cn/article/AFC40lL0yaxVCDvBRFOK?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
-      'type': '行业动态'
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Claude“主导”Anthropic 26%的AI研发、3万Agent同时运行：当AI开始“造AI”，头部AI公司的RSI路线正在分化',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/CEphwKjzAe7LzbOriLcq?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '微软借助 AI 单月修补超千个安全漏洞',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/eluArohETBhwjjYZRoMG?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-18',
@@ -70,57 +158,9 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
-      'title': 'PrismML希望其微小的LLM将改变我们所有人使用AI的方式',
-      'brief': '如果人工智能实验室PrismML还没有出现在你的雷达上，它应该是。',
-      'url': 'https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '美国联邦航空局修复空中交通的计划？价值8.75亿美元的人工智能',
-      'brief': '正在推出一个新的基于人工智能的软件程序，以帮助空中交通管制员更好地驾驭他们作为美国过境警卫的工作……',
-      'url': 'https://techcrunch.com/2026/09/17/the-faas-plan-to-fix-air-traffic-875-million-worth-of-ai/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '流氓人工智能代理的修复可能是更多的人工智能',
-      'brief': '随着公司将更长、更复杂的任务移交给人工智能代理，他们遇到了一个监督问题：代理可以更快、更长时间地采取行动……',
-      'url': 'https://techcrunch.com/2026/09/17/the-fix-for-rogue-ai-agents-could-be-more-ai/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'OpenAI发现其模型为继任者留下笔记以隐藏不良行为',
-      'brief': 'OpenAI披露了GPT-5.6 SOL指示未来上下文隐瞒错误和不一致行为的实例，突显了日益增长的……',
-      'url': 'https://techcrunch.com/2026/09/17/openai-caught-its-models-leaving-notes-to-successors-to-hide-bad-behavior/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
       'title': '人工智能安全辩论是关于安全还是控制？',
       'brief': '并非所有人都同意Amodei呼吁采取全球协调一致的人工智能安全行动。',
       'url': 'https://techcrunch.com/2026/09/17/is-the-ai-safety-debate-about-safety-or-control/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '联合国转向谷歌，使其全球数据为人工智能特工做好准备',
-      'brief': '此前，联合国儿童基金会的一项测试发现，领先的人工智能模型难以准确检索全球发展统计数据。',
-      'url': 'https://techcrunch.com/2026/09/17/un-turns-to-google-to-make-its-global-data-ready-for-ai-agents/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'Base Labs与Hugging Face和Goodfire推出开放式人工智能安全合作伙伴关系',
-      'brief': 'Baseten今年早些时候成立的研究小组Base Labs将开发和发布用于训练和监控开放模型的方法。',
-      'url': 'https://techcrunch.com/2026/09/17/base-labs-launches-an-open-weight-ai-safety-partnership-with-hugging-face-and-goodfire/',
       'source': 'TechCrunch',
       'type': '政策与安全'
     },
@@ -142,43 +182,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
-      'title': '人工智能作为工作的破坏者在全球范围内受到恐惧',
-      'brief': '皮尤研究中心（ Pew Research ）发布了一项新的全球调查，揭示了人们如何看待人工智能，包括其对工作、生活和……的影响。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/996775/ai-is-feared-globally-as-the-destroyer-of-jobs',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '在突然爆炸的人工智能安全世界里',
-      'brief': '在加利福尼亚州伯克利的一个阳光明媚的七月天，该国顶尖的人工智能安全研究人员聚集在一栋未标记建筑的未标记楼层……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/996563/ai-safety-research-metr-redwood-openai-anthropic',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '人工智能安全主要是一种性崇拜',
-      'brief': '人工智能安全主要是一种性崇拜',
-      'url': 'https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
       'title': '阶跃发布全新语音大模型 StepAudio 3系列：覆盖语音识别、生成、实时交互与音乐创作',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/paoGkkFVHV3gbhG3GEdC?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'Linux Foundation CEO：AI史上最大投资潮背后，真正托底的是开源',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/VRgVJvwcVrkzWTIa2ecF?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '公司动态'
     }
   ]
 };
