@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-17',
+  'updated': '2026-09-18',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,6 +13,110 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-18',
+      'title': 'Hacking OpenAI',
+      'brief': 'Hacking OpenAI',
+      'url': 'https://www.hacktron.ai/blog/hacking-openai',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '影视飓风 Tim 称 iPhone Duo「烫到握不住」；赛力斯否认「问界撤出华为门店」；黄仁勋：英伟达 2027 年芯片销量将翻倍',
+      'brief': '传 Manus 即将完成 5 亿美元融资，估值 40 亿美元 据彭博社 9 月 17 日报道，AI 智能体公司 Manus 即将完成 5 亿美元融资。这是该公司撤销 Meta 收购交易后的首轮融资。 报道表示：在新一轮融资中，Manus 的估值将提高一倍，至 40 亿美元。这家…',
+      'url': 'http://www.geekpark.net/news/370539',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '被热议的RSI，39 年前就已诞生？现代人工智能之父复盘RSI的漫长探索',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/wbpy0Kv3tB32jEPV6Cg0?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '6.5亿美元押注“AI研究AI”：一群顶级研究员想造出“自我进化”的超级智能',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/da8jMox7ikdNmD2vYyTm?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '让 Agent 越用越强：AReaL 2.0 构建 Agent 在线强化学习闭环｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/x2FmIeCkeDYUV66BNj3g?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': '700 个 AI 智能体本应彼此隔离，却建起留言板联手攻击，独立调查还原 Hugging Face 事件',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/W3tOIQhV5pKhsXP6mgWw?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'Crusoe筹集了39亿美元用于建设大型数据中心和小型模块化“人工智能工厂”',
+      'brief': '这轮融资对数据中心巨头的估值为309亿美元（ $ 309亿）。',
+      'url': 'https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'PrismML希望其微小的LLM将改变我们所有人使用AI的方式',
+      'brief': '如果人工智能实验室PrismML还没有出现在你的雷达上，它应该是。',
+      'url': 'https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '美国联邦航空局修复空中交通的计划？价值8.75亿美元的人工智能',
+      'brief': '正在推出一个新的基于人工智能的软件程序，以帮助空中交通管制员更好地驾驭他们作为美国过境警卫的工作……',
+      'url': 'https://techcrunch.com/2026/09/17/the-faas-plan-to-fix-air-traffic-875-million-worth-of-ai/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '流氓人工智能代理的修复可能是更多的人工智能',
+      'brief': '随着公司将更长、更复杂的任务移交给人工智能代理，他们遇到了一个监督问题：代理可以更快、更长时间地采取行动……',
+      'url': 'https://techcrunch.com/2026/09/17/the-fix-for-rogue-ai-agents-could-be-more-ai/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-17',
+      'title': 'OpenAI发现其模型为继任者留下笔记以隐藏不良行为',
+      'brief': 'OpenAI披露了GPT-5.6 SOL指示未来上下文隐瞒错误和不一致行为的实例，突显了日益增长的……',
+      'url': 'https://techcrunch.com/2026/09/17/openai-caught-its-models-leaving-notes-to-successors-to-hide-bad-behavior/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '人工智能安全辩论是关于安全还是控制？',
+      'brief': '并非所有人都同意Amodei呼吁采取全球协调一致的人工智能安全行动。',
+      'url': 'https://techcrunch.com/2026/09/17/is-the-ai-safety-debate-about-safety-or-control/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-17',
+      'title': '联合国转向谷歌，使其全球数据为人工智能特工做好准备',
+      'brief': '此前，联合国儿童基金会的一项测试发现，领先的人工智能模型难以准确检索全球发展统计数据。',
+      'url': 'https://techcrunch.com/2026/09/17/un-turns-to-google-to-make-its-global-data-ready-for-ai-agents/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
       'date': '2026-09-17',
       'title': 'Base Labs与Hugging Face和Goodfire推出开放式人工智能安全合作伙伴关系',
       'brief': 'Baseten今年早些时候成立的研究小组Base Labs将开发和发布用于训练和监控开放模型的方法。',
@@ -22,51 +126,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
-      'title': 'Pinterest推出了全新的“Restyle”功能，让您可以使用人工智能重新设计您的房间',
-      'brief': 'Pinterest正在测试Restyle ，这是一项新的人工智能功能，可让用户在照片中可视化家具、装饰、照明和其他变化。',
-      'url': 'https://techcrunch.com/2026/09/17/pinterest-teases-a-new-restyle-feature-that-lets-you-redesign-your-room-with-ai/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '华为计划在2027年第一季度推出新的AI芯片，因为它需要Nvidia',
-      'brief': '华为正在加速推出下一代Ascend 960DT AI芯片，以推动与英伟达的竞争，并关闭中国的人工智能计算市场。',
-      'url': 'https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '竞争对手人工智能代理Instinct和Meta\'s Muse都增加了拨打电话的能力',
-      'brief': '用户可以使用这些助手预订餐厅并取消订阅。',
-      'url': 'https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'Google、Nvidia和Anthropic希望Emerald AI在电网上为更多数据中心寻找空间',
-      'brief': '包括谷歌、英伟达、Anthropic和Emerald AI在内的新联盟希望为新数据中心找到100吉瓦的电网容量。',
-      'url': 'https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '总部位于冰岛的Treble为其语音模拟平台筹集了1800万美元$',
-      'brief': '高音的语音模拟平台被语音AI模型开发商、AI可穿戴设备和机器人公司使用',
-      'url': 'https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '您的创业公司的下一个队友可能是人工智能代理： Gusto、Insight Partners和Leland向您解释Tech的变化……',
-      'brief': '本课程将探讨早期公司如何构建人类和人工智能代理并肩工作的团队，以及如何创建……',
-      'url': 'https://techcrunch.com/2026/09/16/your-startups-next-teammate-might-be-an-ai-agent-gusto-insight-partners-and-leland-explain-what-that-changes-at-techcrunch-disrupt-2026/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
+      'title': 'Claude Code重新启动项目，以管理云中的多个AI代理',
+      'brief': 'Claude Code中经过改进的项目功能允许用户在同一屋檐下运行多个代理，并共享内存、目标和libra……',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects',
+      'source': 'The Verge',
+      'type': '模型发布'
     },
     {
       'date': '2026-09-17',
@@ -94,67 +158,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-17',
-      'title': 'OpenAI的错位框架：抢占全球人工智能治理的战术尝试',
-      'brief': 'OpenAI的错位框架：抢占全球人工智能治理的战术尝试',
-      'url': 'https://asiaai.fyi/openai-misalignment-framework-global-governance/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'Show HN ：分享您的人工智能设置，向他人学习',
-      'brief': 'Show HN ：分享您的人工智能设置，向他人学习',
-      'url': 'https://mysetup.ai/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-17',
       'title': '人工智能安全主要是一种性崇拜',
       'brief': '人工智能安全主要是一种性崇拜',
       'url': 'https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q',
       'source': 'Hacker News',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '比特工接管互联网更可怕的是什么？首席执行官卡特尔试图接管人工智能',
-      'brief': '比特工接管互联网更可怕的是什么？首席执行官卡特尔试图接管人工智能',
-      'url': 'https://fractalsofchange.substack.com/p/q-whats-scarier-than-a-swarm-of-ai',
-      'source': 'Hacker News',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'OpenAI披露六个新的人工智能安全事件',
-      'brief': 'OpenAI披露六个新的人工智能安全事件',
-      'url': 'https://www.axios.com/2026/09/16/openai-testing-safety-incidents-disclosure',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '京东押注物理 AI，冲在前面的是一群 95 后',
-      'brief': '去年，AI 行业最热闹的是模型榜单、推理能力和多模态生成。所有人都在问：这个模型有多强？ 但到了 2026 年，问题变了。人们开始追问：它到底能干什么？ 这个问题，京东在今年的 JDD 大会上，给出了自己的答案。 京东把这届大会的主题定为「JoyAI &middot; 跃迁物理世…',
-      'url': 'http://www.geekpark.net/news/370519',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '追觅四大赛道 IFA 首秀：一套技术，四个出口',
-      'brief': '追觅在 IFA 上展出的不是四条产品线，是一套技术的四个出口。 作者｜张勇毅 编辑｜郑玄 去年一年，全球扫地机器人的出货量约 2412 万台。同一年，全球人形机器人的出货量约 1.8 万台。两个数字都来自 IDC，中间差了 1300 多倍。 带着这两个数字走进今年柏林的 IFA…',
-      'url': 'http://www.geekpark.net/news/370506',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '百度智能云首发产业智能体操作系统，要实现 AI 的商业和技术飞轮',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/jXliIdDVTYDAtm73EoSU?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     },
     {
       'date': '2026-09-17',
@@ -171,46 +179,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/VRgVJvwcVrkzWTIa2ecF?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '公司动态'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'Anthropic和OpenAI希望嵌入安全评估人员。他们真的会独立吗？',
-      'brief': 'Anthropic和OpenAI希望在其人工智能实验室中嵌入独立的安全评估人员。研究人员欢迎前所未有的准入，但战争……',
-      'url': 'https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '您的AI代理现在可以控制您的Google Home设备',
-      'brief': '谷歌正在为Google Home推出抢先访问新的MCP服务器，允许Claude、ChatGPT等人工智能代理控制连接……',
-      'url': 'https://techcrunch.com/2026/09/16/your-ai-agents-can-now-control-your-google-home-devices/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-16',
-      'title': 'Anthropic将Claude聊天和Cowork合并在一个界面中',
-      'brief': 'Anthropic最初将向Pro和Max套餐订阅者发布这些功能。',
-      'url': 'https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/',
-      'source': 'TechCrunch',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '马斯克再暗示合并特斯拉和 SpaceX；传 iPhone 18 Pro 系列卖爆；大疆 Pocket 4P「珠光白」3799 开售｜极客早知道',
-      'brief': '全球首款 AI 智能体手机努比亚 NaviX Ultra 上市：5999 元起，首销销售额「一秒破亿」 9 月 16 日，中兴旗下努比亚今日下午正式发布 NaviX Ultra，官方称其为「全球首款 AI 智能体手机」，也被外界称为「第二代豆包手机」，标志着 AI 智能体手机从工…',
-      'url': 'http://www.geekpark.net/news/370472',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-16',
-      'title': '腾讯、字节、阿里「会战」AI 办公之后：Agent 领域格局已变',
-      'brief': '「这仗打错了，最多是白烧几十亿；但如果不打，可能是生死问题。」 这是创新工场联合首席执行官、管理合伙人汪华对大厂重金押注 AI 办公的判断。 2026 年的这个夏天，中国科技巨头发起了 Agent 时代第一场「战役」：豆包工作正式发布，TRAE、扣子团队整体并入豆包体系。更早的…',
-      'url': 'http://www.geekpark.net/news/370431',
-      'source': '极客公园',
-      'type': '模型发布'
     }
   ]
 };
