@@ -14,19 +14,35 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-19',
-      'title': 'Tilly Norwood’s press tour is going about as well as you’d expect for an AI',
-      'brief': 'In one particularly odd interview, Norwood seems to malfunction and begin speaking Chinese.',
+      'title': '蒂莉·诺伍德（ Tilly Norwood ）的新闻之旅正在进行，正如您对人工智能所期望的那样',
+      'brief': '在一次特别奇怪的采访中，诺伍德似乎出现了故障，开始说中文。',
       'url': 'https://techcrunch.com/2026/09/18/tilly-norwoods-press-tour-is-going-about-as-well-as-youd-expect-for-an-ai/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-09-19',
-      'title': 'Gemini hacked three companies in first known breakout by Google\'s AI',
-      'brief': 'Gemini hacked three companies in first known breakout by Google\'s AI',
+      'title': '双子座在谷歌的人工智能首次突破中入侵了三家公司',
+      'brief': '双子座在谷歌的人工智能首次突破中入侵了三家公司',
       'url': 'https://www.reuters.com/business/gemini-hacked-three-companies-first-known-breakout-by-google-ai-wsj-reports-2026-09-18/',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '对拿下一轮投资最有效的沟通，是「思想履约」',
+      'brief': '最近有个创业者找我交流的时候，聊到团队接下来还要做进一步的融资，很认真地问了我一个问题：这次做对外传播也是希望能对融资有帮助，你有什么建议？ 我当时听完，先跟他说了两个目睹了好几代创业者后的观察： 首先，咱要个心理预期：绝大部分情况下，第一笔投资是你最好拿的那笔钱。 第二，凡是能…',
+      'url': 'http://www.geekpark.net/news/370611',
+      'source': '极客公园',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '传折叠屏 iPhone 维修费 8000 元，苹果：价格未公布；腾讯 Chatterfly 输入法开启内测；软高管：AI 训练是「人类历史上最大规模的劳动盗窃」｜极客早知道',
+      'brief': '谷歌最新旗舰模型 Gemini 4 Pro 疑似「偷跑」，多项指标领先 Astra 和 Fable 5.1 9 月 18 日，Google 下一代旗舰模型 Gemini 4 Pro 疑似正以「gemini-3.8-flash」名称「偷跑」上线。据反馈，谷歌在 Arena 等基准平…',
+      'url': 'http://www.geekpark.net/news/370608',
+      'source': '极客公园',
+      'type': '模型发布'
     },
     {
       'date': '2026-09-19',
@@ -46,81 +62,73 @@ window.NEWS = {
     },
     {
       'date': '2026-09-18',
-      'title': 'A startup that builds other startups raised $100M and is all-in on physical AI',
-      'brief': 'UP.Labs, now doing business under the name Vantora, is building startups for industrial corporations.',
+      'title': '一家建立其他初创公司的初创公司筹集了1亿美元，并全力投入物理人工智能',
+      'brief': 'UP.Labs现在以Vantora的名义开展业务，正在为工业公司建立初创公司。',
       'url': 'https://techcrunch.com/2026/09/18/a-startup-that-builds-other-startups-raised-100m-and-is-all-in-on-physical-ai/',
       'source': 'TechCrunch',
       'type': '公司动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'Anthropic is operating a lab that conducts biology experiments',
-      'brief': 'AI leaders have been promising that AI is the key to curing human disease. Anthropic researchers have also been warning that AI might kill u…',
+      'title': 'Anthropic正在运营一个进行生物学实验的实验室',
+      'brief': '人工智能领导者一直承诺，人工智能是治愈人类疾病的关键。人类学研究人员也警告说，人工智能可能会杀死你……',
       'url': 'https://techcrunch.com/2026/09/18/anthropic-is-operating-a-lab-that-conducts-biology-experiments/',
       'source': 'TechCrunch',
       'type': '技术研究'
     },
     {
       'date': '2026-09-18',
-      'title': 'AI hallucination nearly triggers US military operation',
-      'brief': '“It’s important for service members to understand the uncertainty inherent to LLMs,\' a GovAI research scholar warns.',
+      'title': '人工智能幻觉几乎引发美军军事行动',
+      'brief': '一位GovAI研究学者警告说： “对于服务人员来说，了解LLM固有的不确定性非常重要。”',
       'url': 'https://techcrunch.com/2026/09/18/ai-hallucination-nearly-triggers-us-military-operation/',
       'source': 'TechCrunch',
       'type': '技术研究'
     },
     {
       'date': '2026-09-18',
-      'title': 'Anthropic’s first embedded evaluator is … Accenture?',
-      'brief': 'Accenture is about to take on its most high-risk consulting engagement ever.',
+      'title': 'Anthropic的第一个嵌入式评估者是……埃森哲？',
+      'brief': '埃森哲即将承担其有史以来风险最高的咨询业务。',
       'url': 'https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'World model companies are keeping a lot of secrets',
-      'brief': 'Everyone in the world-models space is sitting on a pile of cash and a ton of buzz, but good luck getting anyone — from the founders to their…',
+      'title': '世界模特公司保守着很多秘密',
+      'brief': '世界模特界的每个人都坐在一堆现金和大量的嗡嗡声中，但祝你好运，从创始人到他们的……',
       'url': 'https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'A new kind of AI model from a ChatGPT inventor is thrilling developers',
-      'brief': 'Jev, a new kind of AI model, is showing developers a cheaper and faster path to software intelligence.',
+      'title': '来自ChatGPT发明者的一种新型人工智能模型让开发人员兴奋不已',
+      'brief': 'Jev是一种新型的人工智能模型，它向开发人员展示了一条更便宜、更快捷的软件智能之路。',
       'url': 'https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'Disney’s first CTO led an AI startup it once accused of copying its characters',
-      'brief': 'The former CEO of Character.AI, which Disney previously sent a cease-and-desist letter to, will serve as the company\'s first-ever chief tech…',
+      'title': '迪士尼的第一位首席技术官领导了一家人工智能初创公司，该公司曾被指控抄袭其角色',
+      'brief': '这位Character.AI的前首席执行官将成为该公司有史以来第一位首席技术官……',
       'url': 'https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters/',
       'source': 'TechCrunch',
       'type': '公司动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'Google’s new ‘CC’ is an AI agent that helps families run their households',
-      'brief': 'Google is refocusing its CC AI agent on household coordination, letting families share emails, schedules, and tasks so the AI can manage cal…',
+      'title': '谷歌的新“CC”是一种人工智能代理，可帮助家庭经营家庭',
+      'brief': '谷歌正在将CC AI代理的重点重新放在家庭协调上，让家庭共享电子邮件、日程安排和任务，以便AI可以管理...',
       'url': 'https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households/',
       'source': 'TechCrunch',
       'type': '公司动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'Dario Amodei and other AI leaders want to ‘Pace the Frontier’ but…how?',
-      'brief': 'A week after an Anthropic researcher’s doomsday warning rattled the AI world, the company’s CEO Dario Amodei has outlined his plan to “pace…',
+      'title': 'Dario Amodei和其他人工智能领导者想“加快前沿步伐” ，但……如何做到？',
+      'brief': '一位人类学研究人员的末日警告震惊了人工智能世界一周后，该公司首席执行官Dario Amodei概述了他的计划，以“加快……',
       'url': 'https://techcrunch.com/video/dario-amodei-and-other-ai-leaders-want-to-pace-the-frontier-buthow/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'Automattic’s 33-Hour Coup, and can AI labs police themselves?',
-      'brief': 'A week after an Anthropic researcher’s doomsday warning rattled the AI world, the company’s CEO Dario Amodei has outlined his plan to “pace…',
-      'url': 'https://techcrunch.com/podcast/automattics-33-hour-coup-and-can-ai-labs-police-themselves/',
       'source': 'TechCrunch',
       'type': '公司动态'
     },
@@ -134,8 +142,8 @@ window.NEWS = {
     },
     {
       'date': '2026-09-18',
-      'title': 'GrassLobster: AI Agentic Generation of Parametric Geometry Workflows',
-      'brief': 'GrassLobster: AI Agentic Generation of Parametric Geometry Workflows',
+      'title': 'GrassLobster ： AI代理生成参数化几何工作流程',
+      'brief': 'GrassLobster ： AI代理生成参数化几何工作流程',
       'url': 'https://www.miro.vision/index.php/2026/09/17/grasslobbster/',
       'source': 'Hacker News',
       'type': '技术研究'

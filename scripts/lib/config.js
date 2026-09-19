@@ -363,12 +363,21 @@ module.exports = {
         url: "https://www.infoq.cn/feed" }
     ],
 
-    // 英文新闻翻译为中文(免费接口,无需 Key;主源失败自动切换备源,全部失败保留原文)
-    // MyMemory:匿名 5000 字符/天,附带 de 邮箱参数可提升至 50000 字符/天;quotaFinished 时停止请求
+    // 英文新闻翻译为中文(免费接口,无需 Key;端点间按顺序失败转移,全部失败保留原文)
+    // MyMemory 官方限额:匿名 5000 字符/天;提供有效可达的 de 联系邮箱可提升至 50000 字符/天。
+    // de 必须是真实可达地址——原先用的 ...@users.noreply.github.com 是设计上不可达的中转域名,
+    // 很可能一直被按 5000 匿名档计费,而本站单轮抓取约 2600 字符、每天 2 轮 ≈ 5200 字符,正好压在线上,
+    // 2026-09-19 起英文条目大面积未翻译即由此引发。此处改用仓库版权方(=提交者)的真实邮箱。
     translate: {
       enabled: true,
+      // 单轮翻译的字符预算(熔断值,不是节流阀):正常负载约 2600 字符/轮,远达不到;
+      // 只在条目暴涨(如某天 60 条)时挡住"一轮打光整档额度",剩余条目留给下一轮重试
+      // (每日 2 轮 × 保留 2 天 = 每条最多 4 次机会)。设为 0 表示不限制。
+      maxCharsPerRun: 8000,
+      // 单端点连续失败多少次后判定本轮不可用(通常是接口宕了或被限流),避免对着死端点耗光预算
+      maxFailStreak: 3,
       endpoints: [
-        { url: "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&de=llm-benchmark-refresh%40users.noreply.github.com&q=" }
+        { name: "MyMemory", url: "https://api.mymemory.translated.net/get?langpair=en%7Czh-CN&de=781316853%40qq.com&q=" }
       ]
     }
   },

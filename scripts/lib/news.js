@@ -152,21 +152,47 @@ async function fetchSource(src, today) {
 // 是否已含中文字符(CJK 统一表意文字);含中文则无需翻译
 function hasCJK(s) { return /[\u4e00-\u9fff]/.test(String(s || "")); }
 
-// 调用免费翻译接口(依次尝试 config.news.translate.endpoints);
-// 成功返回译文;失败或配额耗尽返回 null(由调用方保留原文)
+// 端点健康状态(仅单轮 updateNews 内有效,开轮时由 resetEndpointState 重置):
+// 配额耗尽的端点或连续失败达阈值的端点,本轮后续条目直接跳过。
+// 修掉旧实现的浪费——以前 quotaFinished 只让"当前这一次"返回 null,循环会拿同一个
+// 已耗尽的端点把后面每一条都重打一遍,一轮白打十几发请求。
+var endpointState = { exhausted: {}, failStreak: {} };
+
+function resetEndpointState() {
+  endpointState = { exhausted: {}, failStreak: {} };
+}
+
+// 调用免费翻译接口(按 config.news.translate.endpoints 顺序失败转移);
+// 成功返回译文;全部端点不可用或配额耗尽返回 null(由调用方保留原文)
 async function translateToZh(text) {
   var cfg = CONFIG.news.translate || {};
   var q = encodeURIComponent(text);
-  for (var i = 0; i < (cfg.endpoints || []).length; i++) {
+  var maxStreak = cfg.maxFailStreak == null ? 3 : cfg.maxFailStreak;
+  var endpoints = cfg.endpoints || [];
+  for (var i = 0; i < endpoints.length; i++) {
+    var ep = endpoints[i];
+    var name = ep.name || ("#" + (i + 1));
+    if (endpointState.exhausted[i]) continue; // 本轮已判定不可用,跳过
     try {
-      var resp = await transport.fetchWithRetry(cfg.endpoints[i].url + q, { retries: 1 });
+      var resp = await transport.fetchWithRetry(ep.url + q, { retries: 1 });
       var data = JSON.parse(resp);
-      if (data && data.quotaFinished === true) return null; // 配额耗尽,停止尝试
+      if (data && data.quotaFinished === true) {
+        endpointState.exhausted[i] = "配额耗尽";
+        console.log("[news] 翻译端点 " + name + " 配额耗尽,本轮跳过其剩余请求");
+        continue; // 交给下一个端点
+      }
       if (data && data.responseData && data.responseData.translatedText) {
         var out = cleanText(data.responseData.translatedText);
-        if (out) return out;
+        if (out) { endpointState.failStreak[i] = 0; return out; }
       }
-    } catch (e) { /* 接口失败,尝试下一个 */ }
+      endpointState.failStreak[i] = (endpointState.failStreak[i] || 0) + 1;
+    } catch (e) {
+      endpointState.failStreak[i] = (endpointState.failStreak[i] || 0) + 1;
+    }
+    if (endpointState.failStreak[i] >= maxStreak) {
+      endpointState.exhausted[i] = "连续失败 " + endpointState.failStreak[i] + " 次";
+      console.log("[news] 翻译端点 " + name + " " + endpointState.exhausted[i] + ",本轮跳过");
+    }
   }
   return null;
 }
@@ -228,9 +254,14 @@ async function updateNews() {
   if (merged.length > cfg.maxTotal) merged = merged.slice(0, cfg.maxTotal);
 
   // 6) 英文条目翻译为中文(复用旧文件已翻译文本,减少配额;失败保留原文)
+  // 预算熔断:正常负载远达不到 maxCharsPerRun,它只在条目暴涨时挡住"一轮打光整档额度";
+  // 被跳过的条目留给下一轮(每日 2 轮 × 保留 2 天 = 每条最多 4 次机会)。
+  // 条目按「标题+摘要」整体成败:任一步失败就整条保留英文,不产生中文标题+英文摘要的混合态。
   var translateCfg = cfg.translate || {};
-  var transCount = 0, reuseCount = 0, failCount = 0;
+  var transCount = 0, reuseCount = 0, failCount = 0, budgetSkip = 0, usedChars = 0;
   if (translateCfg.enabled && merged.length) {
+    resetEndpointState();
+    var charBudget = translateCfg.maxCharsPerRun > 0 ? translateCfg.maxCharsPerRun : Infinity;
     // 旧文件中已含中文的条目按 URL 建索引,同 URL 新条目直接复用其译文
     var oldMap = {};
     oldItems.forEach(function (it) { if (hasCJK(it.title)) oldMap[it.url] = it; });
@@ -240,18 +271,30 @@ async function updateNews() {
       var cached = oldMap[it.url];
       if (cached) { it.title = cached.title; it.brief = cached.brief; reuseCount++; continue; }
       var origTitle = it.title, origBrief = it.brief;
+      var needChars = origTitle.length + ((origBrief && origBrief !== origTitle) ? origBrief.length : 0);
+      if (usedChars + needChars > charBudget) { budgetSkip++; continue; }
       var tTitle = await translateToZh(origTitle);
       if (!tTitle) { failCount++; continue; }
+      usedChars += origTitle.length;
       it.title = tTitle;
       if (origBrief && origBrief !== origTitle) {
         var tBrief = await translateToZh(origBrief);
+        if (tBrief) usedChars += origBrief.length;
         it.brief = tBrief || origBrief; // 摘要翻译失败时保留原文摘要
       } else {
         it.brief = tTitle; // 无独立摘要(如 Hacker News),直接用标题译文
       }
       transCount++;
     }
-    console.log("[news] 翻译:" + transCount + " 条成功,复用 " + reuseCount + " 条,失败 " + failCount + " 条");
+    // 端点健康摘要:这行日志是判断"额度耗尽 vs IP 被限流"的关键证据
+    var downList = Object.keys(endpointState.exhausted).map(function (k) {
+      var ep = (translateCfg.endpoints || [])[Number(k)] || {};
+      return (ep.name || ("#" + (Number(k) + 1))) + "(" + endpointState.exhausted[k] + ")";
+    });
+    console.log("[news] 翻译:成功 " + transCount + " 条,复用 " + reuseCount + " 条,失败 " + failCount +
+      " 条,预算跳过 " + budgetSkip + " 条,已用 " + usedChars + "/" +
+      (charBudget === Infinity ? "∞" : charBudget) + " 字符" +
+      (downList.length ? ",本轮不可用端点: " + downList.join("、") : ""));
   }
 
   // 7) 差异写入(内容不变时不提交)
@@ -283,6 +326,7 @@ module.exports = {
   buildKeywordRegex: buildKeywordRegex,
   hasCJK: hasCJK,
   translateToZh: translateToZh,
+  resetEndpointState: resetEndpointState,
   classifyType: classifyType,
   applyTypeCaps: applyTypeCaps
 };
