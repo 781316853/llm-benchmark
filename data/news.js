@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-18',
+  'updated': '2026-09-19',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,36 +13,116 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-19',
+      'title': 'Tilly Norwood’s press tour is going about as well as you’d expect for an AI',
+      'brief': 'In one particularly odd interview, Norwood seems to malfunction and begin speaking Chinese.',
+      'url': 'https://techcrunch.com/2026/09/18/tilly-norwoods-press-tour-is-going-about-as-well-as-youd-expect-for-an-ai/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': 'Gemini hacked three companies in first known breakout by Google\'s AI',
+      'brief': 'Gemini hacked three companies in first known breakout by Google\'s AI',
+      'url': 'https://www.reuters.com/business/gemini-hacked-three-companies-first-known-breakout-by-google-ai-wsj-reports-2026-09-18/',
+      'source': 'Hacker News',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '单个机柜到底能跑多少个 Agent？答案不在 GPU 身上',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/brH7TRcHB9evl32KQJkY?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '从算子调优到推理自治：构建 MaaS 场景下的 AI Inference 自动优化闭环｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/G4tlQvg2IsabE0v1RDOE?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
       'date': '2026-09-18',
-      'title': '打开还是关闭AI ？英伟达的纳德尔·哈利勒（ Nader Khalil ）和悉尼·赛克斯（ Sydney Sykes ）做出了一项决定，决定了Tech的下一代初创公司……',
-      'brief': '英伟达的Nader Khalil和Sydney Sykes在TechCrunch Disrupt 20的Builders Stage上讨论了塑造下一代初创公司的决定之一……',
-      'url': 'https://techcrunch.com/2026/09/18/open-or-closed-ai-nvidias-nader-khalil-and-sydney-sykes-take-on-one-of-the-decisions-shaping-next-gen-startups-at-techcrunch-disrupt-2026/',
+      'title': 'A startup that builds other startups raised $100M and is all-in on physical AI',
+      'brief': 'UP.Labs, now doing business under the name Vantora, is building startups for industrial corporations.',
+      'url': 'https://techcrunch.com/2026/09/18/a-startup-that-builds-other-startups-raised-100m-and-is-all-in-on-physical-ai/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Anthropic is operating a lab that conducts biology experiments',
+      'brief': 'AI leaders have been promising that AI is the key to curing human disease. Anthropic researchers have also been warning that AI might kill u…',
+      'url': 'https://techcrunch.com/2026/09/18/anthropic-is-operating-a-lab-that-conducts-biology-experiments/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'AI hallucination nearly triggers US military operation',
+      'brief': '“It’s important for service members to understand the uncertainty inherent to LLMs,\' a GovAI research scholar warns.',
+      'url': 'https://techcrunch.com/2026/09/18/ai-hallucination-nearly-triggers-us-military-operation/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Anthropic’s first embedded evaluator is … Accenture?',
+      'brief': 'Accenture is about to take on its most high-risk consulting engagement ever.',
+      'url': 'https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-09-18',
-      'title': 'Meta的Muse点击Mac ，让AI在您的计算机上执行操作',
-      'brief': 'Muse现在可在Mac上使用，它可以与您的文件和应用程序一起代表您采取行动。',
-      'url': 'https://techcrunch.com/2026/09/18/metas-muse-hits-mac-letting-the-ai-take-actions-on-your-computer/',
+      'title': 'World model companies are keeping a lot of secrets',
+      'brief': 'Everyone in the world-models space is sitting on a pile of cash and a ton of buzz, but good luck getting anyone — from the founders to their…',
+      'url': 'https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets/',
       'source': 'TechCrunch',
       'type': '行业动态'
     },
     {
       'date': '2026-09-18',
-      'title': '研究人员利用Anthropic的Claude入侵OpenAI',
-      'brief': '安全研究人员利用Anthropic的Claude来利用OpenAI系统中的漏洞，接管员工账户并获得访问权限……',
-      'url': 'https://techcrunch.com/2026/09/18/researchers-used-anthropics-claude-to-hack-into-openai/',
+      'title': 'A new kind of AI model from a ChatGPT inventor is thrilling developers',
+      'brief': 'Jev, a new kind of AI model, is showing developers a cheaper and faster path to software intelligence.',
+      'url': 'https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/',
       'source': 'TechCrunch',
-      'type': '政策与安全'
+      'type': '行业动态'
     },
     {
       'date': '2026-09-18',
-      'title': '好莱坞对存在主义人工智能警告的看法',
-      'brief': '随着科技行业对人工智能摧毁人类的潜力发出警报，娱乐劳工组织正在敦促公众保持专注……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997358/what-hollywood-thinks-about-existential-ai-warnings',
-      'source': 'The Verge',
-      'type': '行业动态'
+      'title': 'Disney’s first CTO led an AI startup it once accused of copying its characters',
+      'brief': 'The former CEO of Character.AI, which Disney previously sent a cease-and-desist letter to, will serve as the company\'s first-ever chief tech…',
+      'url': 'https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Google’s new ‘CC’ is an AI agent that helps families run their households',
+      'brief': 'Google is refocusing its CC AI agent on household coordination, letting families share emails, schedules, and tasks so the AI can manage cal…',
+      'url': 'https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Dario Amodei and other AI leaders want to ‘Pace the Frontier’ but…how?',
+      'brief': 'A week after an Anthropic researcher’s doomsday warning rattled the AI world, the company’s CEO Dario Amodei has outlined his plan to “pace…',
+      'url': 'https://techcrunch.com/video/dario-amodei-and-other-ai-leaders-want-to-pace-the-frontier-buthow/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
+    },
+    {
+      'date': '2026-09-18',
+      'title': 'Automattic’s 33-Hour Coup, and can AI labs police themselves?',
+      'brief': 'A week after an Anthropic researcher’s doomsday warning rattled the AI world, the company’s CEO Dario Amodei has outlined his plan to “pace…',
+      'url': 'https://techcrunch.com/podcast/automattics-33-hour-coup-and-can-ai-labs-police-themselves/',
+      'source': 'TechCrunch',
+      'type': '公司动态'
     },
     {
       'date': '2026-09-18',
@@ -54,66 +134,10 @@ window.NEWS = {
     },
     {
       'date': '2026-09-18',
-      'title': '人工智能是精英犯罪狂潮',
-      'brief': '人工智能是精英犯罪狂潮',
-      'url': 'https://www.thebignewsletter.com/p/ai-is-an-elite-crime-spree',
+      'title': 'GrassLobster: AI Agentic Generation of Parametric Geometry Workflows',
+      'brief': 'GrassLobster: AI Agentic Generation of Parametric Geometry Workflows',
+      'url': 'https://www.miro.vision/index.php/2026/09/17/grasslobbster/',
       'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '蒙特利尔的人工智能抗议活动',
-      'brief': '蒙特利尔的人工智能抗议活动',
-      'url': 'https://montrealgazette.com/news/photos-anti-ai-protest-in-montreal/',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'GLM编码代理ZCode静默上传您的Git历史记录',
-      'brief': 'GLM编码代理ZCode静默上传您的Git历史记录',
-      'url': 'https://tokenstead.ai/guides/zcode-silent-git-history-upload',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'AI 硬件创业者，疯狂涌入手机的背面',
-      'brief': '头图来源：产品小红书账号、官网 过去一年，AI 硬件创业者开始扎堆手机背面。 Plaud 的 AI 录音卡累计出货突破百万台。2026 年 6 月，Plaud 宣布 ARR 达到 1 亿美元、服务超过 200 万专业用户；截至 9 月，公司最新披露的全球用户数已超过 250 万…',
-      'url': 'http://www.geekpark.net/news/370610',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '那个教 ChatGPT 说话的人，做了一个「哑巴」模型',
-      'brief': '作者｜桦林舞王 编辑｜靖宇 AI 圈子里最懂怎么让模型「开口聊天」的人，现在决定剥夺大模型的语言能力。 这位前 OpenAI 研究员、ChatGPT 的共同发明者 Diogo Almeida，在潜行两年后带着他的新公司 TypeSafe AI 和 4000 万美元融资回到牌桌。他…',
-      'url': 'http://www.geekpark.net/news/370603',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '影视飓风 Tim 称 iPhone Duo「烫到握不住」；赛力斯否认「问界撤出华为门店」；黄仁勋：英伟达 2027 年芯片销量将翻倍',
-      'brief': '传 Manus 即将完成 5 亿美元融资，估值 40 亿美元 据彭博社 9 月 17 日报道，AI 智能体公司 Manus 即将完成 5 亿美元融资。这是该公司撤销 Meta 收购交易后的首轮融资。 报道表示：在新一轮融资中，Manus 的估值将提高一倍，至 40 亿美元。这家…',
-      'url': 'http://www.geekpark.net/news/370539',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'Grab 智能体框架 LLM-Kit 加速 AI 智能体生产部署',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/AFC40lL0yaxVCDvBRFOK?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'Claude“主导”Anthropic 26%的AI研发、3万Agent同时运行：当AI开始“造AI”，头部AI公司的RSI路线正在分化',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/CEphwKjzAe7LzbOriLcq?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
       'type': '技术研究'
     },
     {
@@ -126,67 +150,11 @@ window.NEWS = {
     },
     {
       'date': '2026-09-18',
-      'title': '6.5亿美元押注“AI研究AI”：一群顶级研究员想造出“自我进化”的超级智能',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/da8jMox7ikdNmD2vYyTm?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '让 Agent 越用越强：AReaL 2.0 构建 Agent 在线强化学习闭环｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/x2FmIeCkeDYUV66BNj3g?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
       'title': '700 个 AI 智能体本应彼此隔离，却建起留言板联手攻击，独立调查还原 Hugging Face 事件',
       'brief': '点击查看原文>',
       'url': 'https://www.infoq.cn/article/W3tOIQhV5pKhsXP6mgWw?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'Crusoe筹集了39亿美元用于建设大型数据中心和小型模块化“人工智能工厂”',
-      'brief': '这轮融资对数据中心巨头的估值为309亿美元（ $ 309亿）。',
-      'url': 'https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '人工智能安全辩论是关于安全还是控制？',
-      'brief': '并非所有人都同意Amodei呼吁采取全球协调一致的人工智能安全行动。',
-      'url': 'https://techcrunch.com/2026/09/17/is-the-ai-safety-debate-about-safety-or-control/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-17',
-      'title': 'Claude Code重新启动项目，以管理云中的多个AI代理',
-      'brief': 'Claude Code中经过改进的项目功能允许用户在同一屋檐下运行多个代理，并共享内存、目标和libra……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects',
-      'source': 'The Verge',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '微软人工智能首席执行官表示，人工智能威胁是真实的，而Anthropic正在使情况变得更糟',
-      'brief': '今天，我正在与微软人工智能首席执行官穆斯塔法·苏莱曼（ Mustafa Suleyman ）交谈。毫无疑问，众所周知，目前科技行业最大的新闻是……',
-      'url': 'https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude',
-      'source': 'The Verge',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-17',
-      'title': '阶跃发布全新语音大模型 StepAudio 3系列：覆盖语音识别、生成、实时交互与音乐创作',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/paoGkkFVHV3gbhG3GEdC?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '模型发布'
     }
   ]
 };
