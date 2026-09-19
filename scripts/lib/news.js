@@ -256,8 +256,11 @@ async function updateNews() {
   // 6) 英文条目翻译为中文(复用旧文件已翻译文本,减少配额;失败保留原文)
   // 预算熔断:正常负载远达不到 maxCharsPerRun,它只在条目暴涨时挡住"一轮打光整档额度";
   // 被跳过的条目留给下一轮(每日 2 轮 × 保留 2 天 = 每条最多 4 次机会)。
-  // 条目按「标题+摘要」整体成败:任一步失败就整条保留英文,不产生中文标题+英文摘要的混合态。
+  // 条目按「标题(+摘要)」整体成败:翻译失败就整条保留英文,不产生中文标题+英文摘要的混合态。
+  // 摘要译文默认关闭(translateBrief=false):额度按字符计费,摘要让单轮消耗翻倍,而新闻区
+  // 单行 nowrap+ellipsis 下摘要常被裁掉;此时 brief 直接置为标题译文,由前端去重不渲染。
   var translateCfg = cfg.translate || {};
+  var doBrief = translateCfg.translateBrief === true;
   var transCount = 0, reuseCount = 0, failCount = 0, budgetSkip = 0, usedChars = 0;
   if (translateCfg.enabled && merged.length) {
     resetEndpointState();
@@ -271,18 +274,21 @@ async function updateNews() {
       var cached = oldMap[it.url];
       if (cached) { it.title = cached.title; it.brief = cached.brief; reuseCount++; continue; }
       var origTitle = it.title, origBrief = it.brief;
-      var needChars = origTitle.length + ((origBrief && origBrief !== origTitle) ? origBrief.length : 0);
+      var needBrief = doBrief && origBrief && origBrief !== origTitle;
+      var needChars = origTitle.length + (needBrief ? origBrief.length : 0);
       if (usedChars + needChars > charBudget) { budgetSkip++; continue; }
       var tTitle = await translateToZh(origTitle);
       if (!tTitle) { failCount++; continue; }
       usedChars += origTitle.length;
       it.title = tTitle;
-      if (origBrief && origBrief !== origTitle) {
+      if (needBrief) {
         var tBrief = await translateToZh(origBrief);
         if (tBrief) usedChars += origBrief.length;
         it.brief = tBrief || origBrief; // 摘要翻译失败时保留原文摘要
       } else {
-        it.brief = tTitle; // 无独立摘要(如 Hacker News),直接用标题译文
+        // 无独立摘要(Hacker News 本来就是标题),或已关闭摘要翻译:
+        // brief 置为标题译文,前端 (brief !== title) 会自动不渲染重复摘要
+        it.brief = tTitle;
       }
       transCount++;
     }
@@ -291,7 +297,7 @@ async function updateNews() {
       var ep = (translateCfg.endpoints || [])[Number(k)] || {};
       return (ep.name || ("#" + (Number(k) + 1))) + "(" + endpointState.exhausted[k] + ")";
     });
-    console.log("[news] 翻译:成功 " + transCount + " 条,复用 " + reuseCount + " 条,失败 " + failCount +
+    console.log("[news] 翻译" + (doBrief ? "(标题+摘要)" : "(仅标题)") + ":成功 " + transCount + " 条,复用 " + reuseCount + " 条,失败 " + failCount +
       " 条,预算跳过 " + budgetSkip + " 条,已用 " + usedChars + "/" +
       (charBudget === Infinity ? "∞" : charBudget) + " 字符" +
       (downList.length ? ",本轮不可用端点: " + downList.join("、") : ""));
