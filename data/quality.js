@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'arcagi3',
       'name': 'ARC-AGI-3',
       'status': 'ok',
-      'modelCount': 12,
+      'modelCount': 11,
       'updated': '2026-09-19',
       'ageDays': 0,
       'completeness': 1,
@@ -128,6 +128,17 @@ window.QUALITY = {
       'errors': []
     },
     {
+      'id': 'modeldial',
+      'name': 'ModelDial 雷达',
+      'status': 'ok',
+      'modelCount': 23,
+      'updated': '2026-09-19',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
@@ -187,17 +198,6 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
-      'updated': '2026-09-19',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
-      'id': 'vibecode',
-      'name': 'Vibe Code',
-      'status': 'ok',
-      'modelCount': 11,
       'updated': '2026-09-19',
       'ageDays': 0,
       'completeness': 1,
@@ -678,9 +678,9 @@ window.QUALITY = {
     },
     'arcagi3': {
       'rate': 1,
-      'total': 12,
-      'complete': 12,
-      'modelCount': 12,
+      'total': 11,
+      'complete': 11,
+      'modelCount': 11,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -752,6 +752,14 @@ window.QUALITY = {
       },
       'flag': 'warn'
     },
+    'modeldial': {
+      'rate': 1,
+      'total': 23,
+      'complete': 23,
+      'modelCount': 23,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'nl2repo': {
       'rate': 1,
       'total': 49,
@@ -797,14 +805,6 @@ window.QUALITY = {
       'total': 9,
       'complete': 9,
       'modelCount': 9,
-      'missingFields': {},
-      'flag': 'ok'
-    },
-    'vibecode': {
-      'rate': 1,
-      'total': 11,
-      'complete': 11,
-      'modelCount': 11,
       'missingFields': {},
       'flag': 'ok'
     }
@@ -865,6 +865,11 @@ window.QUALITY = {
       'ageDays': 0,
       'flag': 'ok'
     },
+    'modeldial': {
+      'updated': '2026-09-19',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
     'nl2repo': {
       'updated': '2026-09-19',
       'ageDays': 0,
@@ -891,11 +896,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'tbscience': {
-      'updated': '2026-09-19',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
-    'vibecode': {
       'updated': '2026-09-19',
       'ageDays': 0,
       'flag': 'ok'

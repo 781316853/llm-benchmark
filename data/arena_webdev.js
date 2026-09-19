@@ -2,7 +2,7 @@
 // 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:
 //     https://m.aitntnews.com/arena/code/ (更新于 2026-09-19)
 // 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)
-// 用途:总览页第 5 个基准,与 Vibe Code 同等地位参与综合分主基准组;前端按 canonical 取最高分归入。
+// 用途:总览页「实测」组基准,计入综合分与命中数(权重 16%);前端按 canonical 取最高分归入。
 window.ARENA_WEBDEV = {
   'source': 'Code Arena WebDev (LMArena)',
   'officialUrl': 'https://arena.ai/leaderboard/code',
