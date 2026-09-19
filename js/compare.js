@@ -11,13 +11,13 @@
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
   // 「AI 能力」作为单一基准参与:取前端/后端在场方向分的均值
-  // Terminal-Bench / NL2Repo 计入综合分与命中;其余权威基准(仅展示)不参与任何定位
+  // Terminal-Bench / ModelDial 计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
     tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
-    nl2repo: function (e) { return e.nl2repo ? e.nl2repo.score : null; },
+    modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
     aicap:   function (e) {
       var vals = [];
       if (e.aicapFe) vals.push(e.aicapFe.score);
@@ -40,6 +40,7 @@
   // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上;总览页传 3 仅收命中≥3榜):
   // ① 排名行(命中≥4榜)按"综合分容差分组"降序,同档内依次按 综合分微差→命中数→一致性,
   //    并依次编号 _posKey = 0,1,2…;
+  //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),门槛仍取 4,保持与历史排名的可比性;
   // ② 参考行(命中=3)不计算综合分、不参与排名,按「参考综合分」在排名行综合分序列的应处名次落入
   //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
   //    同一间隔内多个参考行按参考综合分降序先后排列;
@@ -88,15 +89,16 @@
     });
     return best === -Infinity ? 0 : best;
   }
-  // 主基准组权重:DeepSWE 18%、WebDev 16%、llm2014 12%、AI 能力·前端 12%、AI 能力·后端 12%、Terminal-Bench 12%、NL2Repo 9%
+  // 主基准组权重:DeepSWE 18%、WebDev 16%、llm2014 12%、AI 能力·前端 12%、AI 能力·后端 12%、Terminal-Bench 12%、ModelDial 12%
   // (2026-09 起移除 Vibe Code Bench,其 14% 按比例回流至其余基准并取整;
   //  DeepSWE/WebDev 为权威第三方编码榜,权重最高;
   //  llm2014 为个人私有题库、等级折算制,代表性弱于第三方基准;
   //  AI 能力同为个人专项测试口径,前端/后端各 12%;Terminal-Bench(4.0/3.0/2.1 合并)为权威终端编码榜;
-  //  NL2Repo 为 2026-09 新引入的权威编码基准;
+  //  ModelDial 为 2026-09 新引入的第三方独立实测综合能力榜(后端 40%/前端 30%/知识 30% 合成分);
   //  ProgramBench 已于 2026-09 移除(官方 harness 口径 Fully Resolved 整体 0-7 分,区分度极低);
+  //  NL2Repo-Bench(原权重 9%)已于 2026-09-19 移出综合分与命中数,改为「权威基准测试」页仅展示;
   //  avgNorm 按在场权重归一化(豁免最弱一组后),缺失基准的权重自动回流,故上列权重无需凑满 100%)
-  var WEIGHTS = { deepswe: 0.18, webdev: 0.16, llm: 0.12, aicapFe: 0.12, aicapBe: 0.12, tbench: 0.12, nl2repo: 0.09 };
+  var WEIGHTS = { deepswe: 0.18, webdev: 0.16, llm: 0.12, aicapFe: 0.12, aicapBe: 0.12, tbench: 0.12, modeldial: 0.12 };
   // 在场基准组列表(7 个计分组,键与 WEIGHTS 一致;norm 为各组 0-100 归一化分)
   function presentGroups(e) {
     var gs = [];
@@ -104,9 +106,9 @@
     if (e.llm && e.llm.norm != null) gs.push({ key: "llm", w: WEIGHTS.llm, v: e.llm.norm });
     if (e.webdev && e.webdev.norm != null) gs.push({ key: "webdev", w: WEIGHTS.webdev, v: e.webdev.norm });
     if (e.tbench && e.tbench.norm != null) gs.push({ key: "tbench", w: WEIGHTS.tbench, v: e.tbench.norm });
-    if (e.nl2repo && e.nl2repo.norm != null) gs.push({ key: "nl2repo", w: WEIGHTS.nl2repo, v: e.nl2repo.norm });
     if (e.aicapFe && e.aicapFe.norm != null) gs.push({ key: "aicapFe", w: WEIGHTS.aicapFe, v: e.aicapFe.norm });
     if (e.aicapBe && e.aicapBe.norm != null) gs.push({ key: "aicapBe", w: WEIGHTS.aicapBe, v: e.aicapBe.norm });
+    if (e.modeldial && e.modeldial.norm != null) gs.push({ key: "modeldial", w: WEIGHTS.modeldial, v: e.modeldial.norm });
     return gs;
   }
   // 一榜豁免:在场组按 norm 升序后剔除最弱一组(单组在场则不豁免),缓解"单榜失常拖垮整体"
@@ -135,14 +137,15 @@
   var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
   var MAX_PENALTY = 1.0;      // 折减上限 1 分(2026-09-14 由 2 分下调:单榜失常已由豁免位兜底,不再双重惩罚)
   // 完整度奖励:按 7 个计分组的在场数给分(奖励补全数据,而非惩罚缺榜)
-  var BONUS_FULL = 3.0;   // 7 组全勤
-  var BONUS_SIX = 1.5;    // 在场 6 组
+  var BONUS_FULL = 3.0;     // 7 组全勤
+  var BONUS_SIX = 1.5;      // 在场 6 组
   function coverageBonus(presentCount) {
     return presentCount >= 7 ? BONUS_FULL : (presentCount === 6 ? BONUS_SIX : 0);
   }
   // 综合分 = 豁免后加权均值 + 完整度奖励 − 一致性折减(封顶 100,保持百分制量纲)
-  // (DeepSWE 18%/WebDev 16%/llm2014 12%/AI·前端 12%/AI·后端 12%/TB 12%/NL2Repo 9%;
-  //  2026-09-14 起新口径:一榜豁免 + 全勤奖励,折减上限 1 分)
+  // (DeepSWE 18%/WebDev 16%/llm2014 12%/AI·前端 12%/AI·后端 12%/TB 12%/ModelDial 12%;
+  //  2026-09-14 起:一榜豁免 + 全勤奖励,折减上限 1 分;
+  //  2026-09-19:NL2Repo 移出计分组(7 组),ModelDial 加入,全勤阈值回到 7/6)
   function composite(e) {
     var base = avgNorm(e);
     var bonus = coverageBonus(presentGroups(e).length);

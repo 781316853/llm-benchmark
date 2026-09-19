@@ -10,7 +10,8 @@
 //   llm-stats #|Model|Score(0-1)|Size|Context|Cost|License;benchlm rank|Model(Vendor)|Score%。
 // 合并策略:见 scripts/lib/mergeByTier.js——高层级分数不被低层级覆盖,低层级仅补缺失模型与字段。
 // 性质:模型级条目(103 个 Python 库从零生成任务,test-pass-rate 口径);
-//       已计入总览综合分(权重 8%)与命中数。
+//       自 2026-09-19 起不再计入总览综合分与命中数(原权重 9%,已移出总览矩阵),
+//       改为仅在「权威基准测试」页展示;抓取与写入照旧。
 // 输出:data/nl2repo.js(window.NL2REPO)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -104,7 +105,7 @@ class Nl2RepoSource extends BaseSource {
       "// 补充:llm-stats 聚合表 · https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
       "// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(paper/datalearner/llm-stats/benchlm)\n" +
-      "// 用途:已计入总览综合分(权重 8%)与命中数;「权威基准测试」页完整展示。\n",
+      "// 用途:自 2026-09-19 起不再计入总览综合分与命中数,仅「权威基准测试」页完整展示。\n",
       {
         source: "NL2Repo-Bench",
         url: this.cfg.url,

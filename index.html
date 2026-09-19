@@ -7,7 +7,7 @@
   <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
-  <link rel="stylesheet" href="css/styles.css?v=20260917d" />
+  <link rel="stylesheet" href="css/styles.css?v=20260919b" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
@@ -17,7 +17,7 @@
   <script defer src="data/llm2014.js?v=20260824a"></script>
   <script defer src="data/arena_webdev.js?v=20260824a"></script>
   <script defer src="data/aicap.js?v=20260904a"></script>
-  <!-- 权威基准测试(其中 Terminal-Bench 4.0/3.0/2.1 多版本合并、NL2Repo 多源合并,均计入总览) -->
+  <!-- 权威基准测试(其中 Terminal-Bench 4.0/3.0/2.1 多版本合并计入总览;NL2Repo 多源合并,自 2026-09-19 起仅展示) -->
   <script defer src="data/tbench.js?v=20260913a"></script>
   <script defer src="data/tbench_v3.js?v=20260912b"></script>
   <script defer src="data/tbench_v2.js?v=20260913a"></script>
@@ -29,15 +29,17 @@
   <script defer src="data/gpqa.js?v=20260915a"></script>
   <script defer src="data/hle.js?v=20260915a"></script>
   <script defer src="data/nl2repo.js?v=20260913a"></script>
+  <!-- ModelDial 雷达(第三方独立实测综合能力榜,计入总览综合分(第 7 个计分组,权重 12%)与命中数) -->
+  <script defer src="data/modeldial.js?v=20260919a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260824a"></script>
   <!-- Coding Plan 套餐快速对比(codingplan.fyi 额度/价格对比·按模型分列比价,不进基准管线) -->
   <script defer src="data/codingplan.js?v=20260913b"></script>
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20260915a"></script>
-  <script defer src="js/charts.js?v=20260917d"></script>
-  <script defer src="js/compare.js?v=20260914c"></script>
-  <script defer src="js/app.js?v=20260917d"></script>
+  <script defer src="js/data.js?v=20260919b"></script>
+  <script defer src="js/charts.js?v=20260919a"></script>
+  <script defer src="js/compare.js?v=20260919b"></script>
+  <script defer src="js/app.js?v=20260919d"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -46,7 +48,7 @@
   <header class="topbar">
     <div class="brand">
       <h1>大模型编码基准整合门户</h1>
-      <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Terminal-Bench(4.0/3.0/2.1) · NL2Repo-Bench 等编码评测,聚焦跨基准模型对比</p>
+      <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Terminal-Bench(4.0/3.0/2.1) · NL2Repo-Bench · ModelDial 雷达 等编码评测,聚焦跨基准模型对比</p>
     </div>
     <div class="topbar-meta" id="topMeta">数据为快照,详见各页脚注</div>
   </header>
@@ -57,6 +59,7 @@
     <button class="tab" data-tab="deepswe">DeepSWE</button>
     <button class="tab" data-tab="llm2014">llm2014</button>
     <button class="tab" data-tab="aicap">AI 能力</button>
+    <button class="tab" data-tab="modeldial">ModelDial</button>
     <button class="tab" data-tab="authority">权威基准测试</button>
     <button class="tab" data-tab="plans">套餐对比</button>
   </nav>
@@ -78,14 +81,14 @@
             <div class="news-ticker-inner" id="newsTickerInner"></div>
           </div>
         </section>
-        <!-- 核心基准速览:8 张基准榜单卡片(由 app.js 注入,新增标题分组) -->
+        <!-- 核心基准速览:6 张基准榜单卡片(由 app.js 注入,新增标题分组) -->
         <section class="bench-section">
           <h2 class="section-title">核心基准速览 <span class="hint">6 大基准榜单关键指标</span></h2>
           <div class="bench-cards" id="benchCards"></div>
         </section>
       </div>
       <h2 class="section-title">交叉模型矩阵</h2>
-      <p class="section-desc">同一模型在多项基准中的成绩(高亮表示多榜命中);默认按综合分降序,仅命中≥4 榜的模型参与排名并编号;命中 3 榜的「参考」模型按各榜成绩与排名模型比对落入相应名次区间(不计算综合分,序号计「—」,仅显示数据);命中 ≤2 榜的模型不在总览展示;「榜单基准」组尾的 HLE / GPQA 两列为权威基准参考分,仅展示、不计入综合分与命中数;点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</p>
+      <p class="section-desc">同一模型在多项基准中的成绩(高亮表示多榜命中);默认按综合分降序,仅命中≥4 榜的模型参与排名并编号;命中 3 榜的「参考」模型按各榜成绩与排名模型比对落入相应名次区间(不计算综合分,序号计「—」,仅显示数据);命中 ≤2 榜的模型不在总览展示;「榜单基准」组尾的 HLE / GPQA 两列为权威基准参考分,仅展示、不计入综合分与命中数;「实测」组首的 ModelDial 列为第三方独立实测的综合能力分(后端 40% + 前端 30% + 知识 30%);点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</p>
       <div class="table-wrap"><table id="matrixTable" class="data-table"></table></div>
       <div class="overview-switches">
         <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型(命中3榜,按各榜成绩比对落入区间,仅显示数据不排名);勾选可展开全部命中≥3个基准组的模型(含排名30之后);命中≤2榜的模型不在总览展示"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
@@ -97,17 +100,18 @@
       <section class="notes-section">
         <p class="note-title">阅读说明</p>
         <ul style="white-space: pre-wrap;">
-          <li><b class="note-term">「梯队」</b>根据上榜模型数量与综合分分布动态分档(金字塔分档),将全部模型按综合分降序,以 S+=1、S=3、A+=5、A=7、B+=9、B=11、C+=13、C=15、D+=17、D=19、E+=21、E=剩余 的金字塔权重分配至 S+ / S / A+ / A / B+ / B / C+ / C / D+ / D / E+ / E 共 12 级。高档少、低档多,梯队边界随数据变化动态浮动,不设固定阈值。鼠标悬停梯队标签可查看精确综合分;勾选「显示综合分」可在梯队旁直接显示数值。综合分计算方式:先执行「一榜豁免」——剔除模型在场基准组中最弱的一组(单榜失常不全盘否决),其余按权重加权平均(DeepSWE 18%/Code Arena·WebDev 16%/llm2014 12%/AI 能力·前端 12%/AI 能力·后端 12%/Terminal-Bench 12%/NL2Repo-Bench 9%,llm2014 与 AI 能力同为个人专项测试口径,缺失榜单的权重自动回流至在场榜单);再按 7 个计分组的在场数给予完整度奖励(全勤 7 组 +3 分、6 组 +1.5 分、≤5 组不计,奖励补全数据而非惩罚缺榜);最后减一致性折减(跨榜标准差越大折减越多,每点σ扣0.15分,上限1分)。列表默认按综合分容差分组排序:差距<1.5分的模型视为同档,同档内优先排列命中数多、跨榜一致性高的模型。</li>
-          <li><b class="note-term">「命中」</b>表示该模型在对应基准组中进入榜单,6/6 表示六项基准(DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0/3.0/2.1) / AI 能力 / NL2Repo-Bench)均有排名;HLE / GPQA 权威基准仅作参考列展示,不计入命中数。</li>
+          <li><b class="note-term">「梯队」</b>根据上榜模型数量与综合分分布动态分档(金字塔分档),将全部模型按综合分降序,以 S+=1、S=3、A+=5、A=7、B+=9、B=11、C+=13、C=15、D+=17、D=19、E+=21、E=剩余 的金字塔权重分配至 S+ / S / A+ / A / B+ / B / C+ / C / D+ / D / E+ / E 共 12 级。高档少、低档多,梯队边界随数据变化动态浮动,不设固定阈值。鼠标悬停梯队标签可查看精确综合分;勾选「显示综合分」可在梯队旁直接显示数值。综合分计算方式:先执行「一榜豁免」——剔除模型在场基准组中最弱的一组(单榜失常不全盘否决),其余按权重加权平均(DeepSWE 18%/Code Arena·WebDev 16%/llm2014 12%/AI 能力·前端 12%/AI 能力·后端 12%/Terminal-Bench 12%/ModelDial 12%,llm2014 与 AI 能力同为个人专项测试口径,缺失榜单的权重自动回流至在场榜单);再按 7 个计分组的在场数给予完整度奖励(全勤 7 组 +3 分、6 组 +1.5 分、≤5 组不计,奖励补全数据而非惩罚缺榜);最后减一致性折减(跨榜标准差越大折减越多,每点σ扣0.15分,上限1分)。列表默认按综合分容差分组排序:差距<1.5分的模型视为同档,同档内优先排列命中数多、跨榜一致性高的模型。</li>
+          <li><b class="note-term">「命中」</b>表示该模型在对应基准组中进入榜单,6/6 表示六项基准(DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0/3.0/2.1) / AI 能力 / ModelDial)均有排名;HLE / GPQA 权威基准仅作参考列展示,不计入命中数。</li>
           <li>DeepSWE 为百分比,分数后的「$X」为该模型在 DeepSWE 的单次任务平均成本(美元);
 llm2014 为按各项目等级均值归一化的综合分(0-100,月内均值最高 100、最低 0,中间按等级差距线性分布;均值完全相同的模型按源站排名先后微调区分,保证人人不同分),其明细单元格为「扣分数/档位」,2026-08 起等级单元格可含单任务测试成本(如「7/A+(90.52)」表示扣 7 分、A 档、成本 ¥90.52);
 Code Arena · WebDev 为 LMArena 前端竞技场的 Elo 评分(社区匿名盲测投票,分值越高越好,矩阵列显示原始 Elo),参与综合分主基准组时按快照内 min-max 归一化到 0-100;
 Terminal-Bench 4.0/3.0/2.1 为终端命令行 Agent 评测成绩(多版本合并为一个基准组,**优先以最高版本为代表**:即 4.0>3.0>2.1,版本内取该模型最优成绩),计入综合分(权重 12%)与命中数,单元数字旁附版本标签(v4.0/v3.0/v2.1);由于不同版本难度与口径不同(如 2.1 为厂商自报分,分数普遍虚高于 4.0 官方实测),综合分按「以 4.0 为基准折算难度系数」的口径计入:3.0/2.1 的分数按跨版本共有模型折算为**4.0 等效分**(难度系数每日随数据自动重算,当前约 3.0×1.1、2.1×0.3,即 2.1 的 88 分约相当于 4.0 官方 26 分),全池统一 min-max 归一化到 0-100,低难度版本的虚高分不再追平 4.0 头名;列表展示的仍是该代表版本的**原始分**,难度差异一目了然;口径提醒:4.0/3.0 为 agent×model 解决率、2.1 为 llm-stats 归一化自报分(已换算为%),4.0 与 2.1 另有 datalearner 镜像补充官方未收录模型(只补缺、不覆盖官方口径),完整条目见「权威基准测试」页(Terminal-Bench 单章节内切换版本查看,默认 4.0);
 AI 能力·前端/后端为 atmeplz 四方向榜的方向分(0-100,天然以 100 为参考,越高越好),前端=中式建筑 25%+体素山水 25%+前端网页 40%+黑洞模拟 10%,后端=超级 MES 100%;
-NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安装 Python 库),矩阵列显示 test-pass-rate(%),多源(llm-stats + benchlm.ai + 官方论文评测表 + datalearner 厂商发布)合并取最高,计入综合分(权重 9%)与命中数。</li>
+NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安装 Python 库),test-pass-rate(%)由多源(llm-stats + benchlm.ai + 官方论文评测表 + datalearner 厂商发布)合并取最高;**自 2026-09-19 起不再计入综合分与命中数,已移出总览矩阵**(原权重 9%),改为仅在「权威基准测试」页展示;
+ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其综合分(0-100,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权),同一模型按推理强度分档多次测试后取最高分配置入榜,计入综合分(权重 12%)与命中数;格内悬浮可查看三分项与耗时/费用,完整主榜与 52 条 config 明细见「ModelDial」页(费用与耗时为源站后端单轴口径,故低于源站主榜显示值)。</li>
           <li><b class="note-term">「—」</b>表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充);HLE / GPQA 列「—」表示未收录于对应权威榜,列分数悬浮可查看排名,两列仅展示、不计入综合分与命中数。</li>
           <li>浅绿底色行表示跨榜命中数 ≥ 4 的排名模型;灰蓝底色行 + 「参考」徽标表示命中 3 个基准组的模型:按在场各榜加权后的综合水平(一榜豁免后加权,与排名模型综合分同口径)与排名模型比对,落入与自身水平相符的名次区间,不计算综合分,梯队列仅显示「—」,序号列计「—」,不参与排名、不占用前30名额,仅显示各榜数据,仅跻身前30区间内时显示;命中 ≤2 个基准组的模型不在总览矩阵展示,请前往对应榜单页查看;模型名后 NEW 表示近 7 天内首次上榜(基于 DeepSWE/llm2014/Terminal-Bench 三基准判定)。</li>
-          <li><b class="note-term">「权威基准测试」</b>页收录 Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看,默认 4.0) / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench 等权威基准,其中 Terminal-Bench 三版合并为单一基准组、NL2Repo-Bench(多源合并)计入总览综合分与命中数,其余为展示型参考数据;GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以参考列展示(仅展示,不计入综合分与命中数)。</li>
+          <li><b class="note-term">「权威基准测试」</b>页收录 Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看,默认 4.0) / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench 等权威基准,其中 Terminal-Bench 三版合并为单一基准组计入总览综合分与命中数,其余为展示型参考数据(其中 NL2Repo-Bench 自 2026-09-19 起由「计入综合分」改为仅展示);GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以参考列展示(仅展示,不计入综合分与命中数)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>
           <li><b class="note-term">「显示全部模型」</b>开关可展开全部命中≥3榜的模型(包含排名30之后的模型);总览矩阵不展示命中≤2榜的模型,请前往对应榜单页查看。
 默认显示命中≥4个基准组且排名前30的模型,以及跻身前30区间的「参考」模型(命中 3 个基准组,按各榜成绩比对落入区间,不计算综合分、不参与排名,仅显示数据)。</li>
@@ -162,13 +166,38 @@ NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安�
         <ul style="white-space: pre-wrap;">
           <li>本页数据来自 <b>AI 能力专项测试</b>(atmeplz)四方向榜:文字、前端、后端、知识四个方向独立排名,方向分由成员题按既定权重合成,天然以 100 为参考(0-100,越高越好)。门户仅收录<b>前端处理能力(FRONTEND)</b>与<b>后端处理能力(BACKEND)</b>两个编码方向。</li>
           <li>前端处理能力方向分 = 中式建筑 25% + 体素山水 25% + 前端网页 40% + 黑洞模拟 10%;后端处理能力方向分 = 超级 MES 100%。</li>
-          <li>该榜单与站内其它编码基准<b>同纲计入综合分</b>:前端/后端方向分各占综合分权重 10%(合计 20%),并进入总览交叉矩阵(合并单列、前后端方向分并列展示)。</li>
+          <li>该榜单与站内其它编码基准<b>同纲计入综合分</b>:前端/后端方向分各占综合分权重 12%(合计 24%),并进入总览交叉矩阵(合并单列、前后端方向分并列展示)。</li>
           <li>数据为快照,不代表对各模型能力的绝对评价;同一模型在不同平台/推理强度下分别计分。</li>
         </ul>
       </section>
     </section>
 
-    <!-- 6) 权威基准测试(11 大权威基准;DeepSWE / Terminal-Bench 4.0/3.0/2.1 合并计入总览) -->
+    <!-- 6) ModelDial 雷达(第三方独立实测综合能力榜,计入综合分(第 7 个计分组,权重 12%)与命中数) -->
+    <section class="page" id="page-modeldial">
+      <div class="page-head"><h2>ModelDial 雷达 <span class="tag">第三方独立实测 · 综合能力分</span></h2><p id="mdDesc" class="page-desc"></p></div>
+      <div class="chart-row single">
+        <div class="chart-box"><h3>成本 vs 综合分(气泡=耗时 · 费用为后端轴口径)</h3><div id="mdScatter" class="chart chart-scatter"></div></div>
+      </div>
+      <div class="table-wrap"><table id="mdTable" class="data-table"></table></div>
+      <p class="source-note" id="mdNote"></p>
+      <!-- 配置明细:模型 × 推理强度,默认折叠 -->
+      <details class="md-details">
+        <summary>全部配置明细 <span class="hint" id="mdCfgCount"></span></summary>
+        <div class="table-wrap"><table id="mdCfgTable" class="data-table"></table></div>
+      </details>
+      <section class="notes-section">
+        <p class="note-title">阅读说明</p>
+        <ul style="white-space: pre-wrap;">
+          <li>本页数据来自 <b>ModelDial 雷达</b>(modeldial.com/radar),第三方独立实测的编码智能体能力榜:分<b>后端与测试</b>、<b>前端与交互</b>、<b>知识与推理</b>三类能力分别评测,综合分按后端 40% + 前端 30% + 知识 30% 加权(三分项均 0-100)。</li>
+          <li>同一模型按<b>推理强度</b>分档(如 xhigh / max / high)多次测试,主榜取该模型的<b>最高分配置</b>入榜(与源站主榜一致),「配置」列即该模型在源站已有的配置条数;展开下方「全部配置明细」可查看全部 52 条 config 的逐条成绩。</li>
+          <li>该榜与站内其它编码基准<b>同纲计入综合分</b>(权重 12%),并进入总览交叉矩阵(单列展示综合分)。该权重由同期移出计分组的 NL2Repo-Bench(原 9%)席位调整而来:计分组仍为 7 组(DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench / AI 能力·前端 / AI 能力·后端 / ModelDial),权重合计由 0.91 变为 0.94;完整度奖励阈值不变(7 组全勤 +3 分、6 组 +1.5 分),命中数分母仍为 6(六项基准,aicapFe/aicapBe 合并计为一次)。</li>
+          <li><b>成本与耗时口径提醒</b>:本页费用(<b>参考费用</b>)与耗时取自源站<b>后端(coding)单轴</b>的实测值,而源站主榜显示的是三轴汇总值,因此本页数值低于源站页面显示值(如 MiniMax-M3:本页约 $0.31、源站主榜约 $0.62)。本页各模型之间口径一致、可直接横向比较;源站的紧凑 feed 未提供费用完整度字段,故不做「≥ / 部分费用」标记。散点图 X 轴为参考费用(对数刻度),气泡面积编码总耗时。</li>
+          <li>数据授权 CC BY 4.0,为快照,不代表对各模型能力的绝对评价。</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- 7) 权威基准测试(11 大权威基准;DeepSWE / Terminal-Bench 4.0/3.0/2.1 合并计入总览) -->
     <section class="page" id="page-authority">
       <div class="page-head"><h2>权威基准测试 <span class="tag">11 大权威基准</span></h2><p id="authDesc" class="page-desc"></p></div>
       <!-- 左侧大纲预览:桌面端粘性吸附,滚动时高亮当前基准章节;点击可快速跳转;窄屏自动收为顶部横向胶囊条 -->
@@ -201,7 +230,6 @@ NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安�
   <footer class="footer">
     <span>仅用于学习与对比展示 · 数据版权归原作者 · </span>
     <a href="https://deepswe.datacurve.ai/" target="_blank" rel="noopener">DeepSWE</a> ·
-    <a href="https://www.vals.ai/benchmarks/vibe-code" target="_blank" rel="noopener">Vibe Code</a> ·
     <a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014</a> ·
     <a href="https://www.codingplan.fyi/" target="_blank" rel="noopener">AI Coding Plan</a> ·
     <a href="https://atmeplz.github.io/ai-test-prompt/board-04.html" target="_blank" rel="noopener">AI 能力</a> ·
@@ -212,7 +240,8 @@ NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安�
     <a href="https://benchcad.com/" target="_blank" rel="noopener">BenchCAD</a> ·
     <a href="https://epoch.ai/benchmarks/gpqa-diamond" target="_blank" rel="noopener">GPQA Diamond</a> ·
     <a href="https://lastexam.ai/" target="_blank" rel="noopener">Humanity's Last Exam</a> ·
-    <a href="https://github.com/multimodal-art-projection/NL2RepoBench" target="_blank" rel="noopener">NL2Repo-Bench</a>
+    <a href="https://github.com/multimodal-art-projection/NL2RepoBench" target="_blank" rel="noopener">NL2Repo-Bench</a> ·
+    <a href="https://modeldial.com/radar" target="_blank" rel="noopener">ModelDial</a>
   </footer>
 
   <!-- 意见反馈浮动按钮 -->

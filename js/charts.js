@@ -104,6 +104,18 @@
     };
   }
 
+  // 对数轴刻度格式化:极值端会直接以传入的 min/max 作为刻度,默认按原始值显示全精度
+  // (如 0.010781、28.09321),与中间刻度(0.1 / 1 / 10)风格不一致。
+  // 这里统一收敛到 ≤3 位有效数字;超出常规量程才退回科学计数。
+  function fmtLogTick(v) {
+    var n = Number(v);
+    if (!isFinite(n) || n === 0) return String(v);
+    var a = Math.abs(n);
+    if (a >= 10000 || a < 0.001) return n.toExponential(1);
+    var digits = a >= 10 ? 1 : a >= 1 ? 2 : a >= 0.1 ? 3 : a >= 0.01 ? 4 : 5;
+    return String(Number(n.toFixed(digits)));
+  }
+
   // ===== 散点(成本 vs 成绩;气泡大小编码第三个量,实心/空心区分系列) =====
   // groups: [{ name, points: [[x, y, bubble, label], ...], style: "solid"|"hollow" }]
   // 点数多时下面三件事缺一不可:x 轴对数刻度展开密集区间、hideOverlap 只画放得下的标签、
@@ -142,13 +154,18 @@
       grid: { left: 64, right: 56, top: groups.length > 1 ? 48 : 34, bottom: 60 },
       tooltip: { formatter: function (p) {
         var d = p.data;
+        // 三轴数值均可由调用方格式化:xFormat/yFormat 控制坐标读数,bubbleFormat 控制气泡量
+        // (气泡值本身常经过缩放,只适合用于面积,故显示一律走 bubbleFormat)
         return "<b>" + d[3] + "</b>" + (p.seriesName ? " · " + p.seriesName : "") +
-          "<br/>" + (opts.xName || "X") + ": " + d[0] +
-          "<br/>" + (opts.yName || "Y") + ": " + d[1] +
-          (d[2] == null ? "" : "<br/>平均步数: " + d[2]); } },
+          "<br/>" + (opts.xName || "X") + ": " + (opts.xFormat ? opts.xFormat(d[0]) : d[0]) +
+          "<br/>" + (opts.yName || "Y") + ": " + (opts.yFormat ? opts.yFormat(d[1]) : d[1]) +
+        // 气泡量纲由调用方决定(DeepSWE 为平均步数,ModelDial 为耗时)
+          (d[2] == null ? "" : "<br/>" + (opts.bubbleName || "平均步数") + ": " +
+            (opts.bubbleFormat ? opts.bubbleFormat(d[2]) : d[2])); } },
       // 对数轴的 min 取到数据最小值之下,避免最左的点正好压在 Y 轴上(居中标签会溢出到刻度区)
       xAxis: Object.assign({ type: opts.xLog ? "log" : "value", logBase: 10,
         min: opts.xMin, max: opts.xMax, minorTick: { show: true },
+        axisLabel: opts.xLog ? { formatter: fmtLogTick } : {},
         name: opts.xName, nameLocation: "middle", nameGap: 30,
         nameTextStyle: { color: C.textTertiary } }, A),
       // 轴名移到轴顶端外侧:默认位置落在绘图区内,会和数据标签叠在一起

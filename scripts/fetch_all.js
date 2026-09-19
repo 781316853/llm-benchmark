@@ -1,8 +1,9 @@
 // 云端抓取多源数据,重写 data/*.js + 生成 data/quality.js(GitHub Actions 每日刷新用)
 // 架构(详见 .trae/documents/数据抓取优化与交叉验证体系建设.md):
 //   scripts/lib/        传输层 / 基类 / 注册表 / 标准化 / 校验 / 质量报告 / 编排器
-//   scripts/sources/    各数据源(自注册):deepswe / vibecode / llm2014 /
-//                        datalearner(补充源)+ swebench / aider / livecode(新增)
+//   scripts/sources/    各数据源(自注册):deepswe(含 v1.1/v1.0) / llm2014 / arena_webdev /
+//                        ai_capability / tbench(4.0/3.0/2.1) / nl2repo / modeldial / 各权威基准
+//                        / datalearner(DeepSWE 补充源)
 // 传输:p-limit 全局并发 + p-retry 指数退避 + per-host 限流
 // 校验:一致性(跨源分数标准差)/ 完整性(必填字段)/ 时效性(数据新鲜度)
 // 运行:node scripts/fetch_all.js  (在仓库根目录)

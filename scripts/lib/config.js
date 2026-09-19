@@ -70,11 +70,6 @@ module.exports = {
       url: "https://www.datalearner.com/benchmarks/deepswe",
       host: "www.datalearner.com", src: "datalearner"
     },
-    vibecode: {
-      // Vibe Code:vals.ai 为唯一可用渠道(T3 第三方评测机构),无官方/厂商发布渠道。
-      url: "https://www.vals.ai/benchmarks/vibe-code",
-      host: "www.vals.ai", src: "aggregate"
-    },
     llm2014: {
       // llm2014:站主私有题库实测(T1 同级口径),无外部渠道。
       baseCdn: "https://cdn.jsdelivr.net/gh/llm2014/llm_benchmark@main/docs/",
@@ -270,6 +265,19 @@ module.exports = {
       // datalearner TB 2.1 详情页(T2 厂商官方发布):tbench_v21 主源(llm-stats 为 T3 补充)。
       url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1",
       host: "www.datalearner.com", src: "datalearner"
+    },
+    // ===== ModelDial 雷达(独立标签页;计入总览综合分第 8 组与命中数)=====
+    modeldial: {
+      // ModelDial 雷达(modeldial.com):第三方独立实测的编码智能体能力榜,config 粒度(model×推理强度)。
+      // 官方 JSON feed(OpenAPI /openapi-v1.json 收录,CC BY 4.0),单请求即得全榜 52 条 config 与综合分;
+      // 综合分 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%。
+      // 渠道:该站自建 harness 自测,无更高优先级渠道可合并,按 T3 第三方评测处理(src=aggregate)。
+      // 注:feed 内的成本/耗时为后端单轴口径(官网主榜显示三轴汇总值),分轴与 overall 档案均无成本字段
+      //     且批次号与 latest.json 不对齐,无法无损还原,详见 scripts/sources/modeldial.js 头部说明。
+      url: "https://modeldial.com/api/v1/radar/latest.json",
+      host: "modeldial.com", src: "aggregate",
+      radarUrl: "https://modeldial.com/radar",
+      methodUrl: "https://modeldial.com/method"
     }
   },
 
@@ -286,9 +294,11 @@ module.exports = {
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
       //   gpqa/hle 为知识类口径,仅权威页展示;
-      //   nl2repo 虽已计入综合分与命中数(2026-09 起),但独立量纲且整体偏低(0-75),
-      //     与主基准混算仍会产生假告警,故保持排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo"]
+      //   nl2repo 自 2026-09-19 起不再计入综合分与命中数(改为「权威基准测试」页仅展示),
+      //     但独立量纲且整体偏低(0-75),仍保持排除;
+      //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
+      //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除。
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "modeldial"]
     },
     completeness: {
       // 每条记录必填字段

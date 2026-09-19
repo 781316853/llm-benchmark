@@ -402,15 +402,31 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, nl2repo} 用于矩阵/雷达 =====
+  // ===== ModelDial 雷达(独立页;计入综合分(第 7 个计分组,权重 12%)与命中数) =====
+  // 主榜为模型级条目:每条取该模型最高分 config(与源站主榜一致),按综合分降序;
+  // 综合分口径 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项 0-100)。
+  // 源站模型标识为 slug(如 qwen3.8-flash),经 canon() 归一到 canonical 显示名。
+  function modeldial() {
+    var src = window.MODELDIAL || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.overall - a.overall; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  // config 明细(model × 推理强度,共 52 条):按源站排名升序,供「ModelDial」页明细表展示
+  function modeldialConfigs() {
+    var src = window.MODELDIAL || { configs: [] };
+    return (src.configs || []).slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); })
+      .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
+  }
+
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, modeldial} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
-  // tbench:同名取最高(计入综合分与命中数);nl2repo:同名取最高(2026-09 起计入综合分与命中数);
-  // benchcad 等其余权威基准仅展示不进统一视图;
+  // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
+  // nl2repo 自 2026-09-19 起与 benchcad 等其余权威基准一样仅展示、不进统一视图;
   // aicap:前端/后端方向分分别取最高(0-100,直接作 norm);跨榜命中合并为「AI 能力」单一基准计数
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, nl2repo: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, modeldial: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -459,19 +475,23 @@
       if (!e.aicapBe || m.score > e.aicapBe.score)
         e.aicapBe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
     });
-    // NL2Repo-Bench:快照内 min-max 归一化到 0-100(独立量纲,与 DeepSWE/TB 一致),矩阵列展示原始 Score%
-    var n2All = nl2repo();
-    var n2Min = Infinity, n2Max = -Infinity;
-    n2All.forEach(function (m) { if (m.score < n2Min) n2Min = m.score; if (m.score > n2Max) n2Max = m.score; });
-    var n2Span = (n2Max - n2Min) || 1;
-    n2All.forEach(function (m) {
+    // NL2Repo-Bench 自 2026-09-19 起移出统一视图(不再计入综合分与命中数、不再进总览矩阵),
+    // 仅在「权威基准测试」页经 D.nl2repo() 直接展示,故此处不再写入。
+    // ModelDial 雷达:综合分(0-100,直接作 norm,同 AI 能力口径);同名取最高分 config
+    modeldial().forEach(function (m) {
+      if (m.overall == null) return;
       var e = ensure(m.canon);
-      if (!e.nl2repo || m.score > e.nl2repo.score)
-        e.nl2repo = { score: m.score, norm: Math.round((m.score - n2Min) / n2Span * 1000) / 10, name: m.model, org: m.org };
+      if (!e.modeldial || m.overall > e.modeldial.overall)
+        e.modeldial = {
+          score: m.overall, norm: m.overall, overall: m.overall,
+          backend: m.backend, frontend: m.frontend, knowledge: m.knowledge,
+          elapsedMs: m.elapsedMs, costUsd: m.costUsd, configs: m.configs,
+          name: m.model, effort: m.effort, provider: m.provider
+        };
     });
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / NL2Repo 共 5 基准组;
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / AI 能力 / ModelDial 共 6 基准组;
     // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 6),矩阵中仍分别两列展示;
-    // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE)仅展示不计命中。
+    // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE/NL2Repo)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
@@ -479,18 +499,18 @@
       if (e.webdev) e.benchCount++;
       if (e.tbench) e.benchCount++;
       if (e.aicapFe || e.aicapBe) e.benchCount++;
-      if (e.nl2repo) e.benchCount++;
+      if (e.modeldial) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / NL2Repo 共 6 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / ModelDial 共 6 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, n2 = window.NL2REPO || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
-    var n2Top = (n2.models || [])[0] || {};
+    var mdTop = modeldial()[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
@@ -518,9 +538,10 @@
       { key: "tbench", name: "Terminal-Bench", tag: "终端命令行任务 · 4.0/3.0/2.1", url: tb.url, updated: tb.updated,
         stats: [{ l: "版本", v: "4.0/3.0/2.1" }, { l: "条目", v: tbN }],
         top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") },
-      { key: "nl2repo", name: "NL2Repo-Bench", tag: "长程仓库生成", url: n2.officialUrl || n2.url, updated: n2.updated,
-        stats: [{ l: "任务", v: n2.stats && n2.stats.tasks }, { l: "模型", v: (n2.models || []).length }],
-        top: n2Top.model + " · " + (n2Top.score != null ? n2Top.score + "%" : "—") }
+      // ModelDial 的模型标识是 slug,卡片展示用 canon() 归一后的显示名(与矩阵一致)
+      { key: "modeldial", name: "ModelDial 雷达", tag: "后端 40% / 前端 30% / 知识 30%", url: md.url, updated: md.updated,
+        stats: [{ l: "模型", v: (md.models || []).length }, { l: "配置", v: (md.configs || []).length }],
+        top: (mdTop.canon ? mdTop.canon.id : mdTop.model) + " · " + (mdTop.overall != null ? mdTop.overall + " / 100" : "—") }
     ];
   }
 
@@ -582,6 +603,8 @@
     gpqa: gpqa,
     hle: hle,
     nl2repo: nl2repo,
+    modeldial: modeldial,
+    modeldialConfigs: modeldialConfigs,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
     unified: unified,
@@ -594,6 +617,6 @@
     // 各源原始对象(供渲染脚注)
     src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
       tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
-      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO }
+      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, modeldial: window.MODELDIAL }
   };
 })();

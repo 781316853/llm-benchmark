@@ -445,6 +445,17 @@ a:hover { text-decoration: underline; }
 /* 条首「术语」标签:便于在数千字说明里快速定位条目 */
 .note-term { color: var(--text); font-weight: var(--fw-semibold); }
 
+/* ModelDial 页「全部配置明细」折叠块:默认收起,展开后表格与上表同宽 */
+.md-details { margin: 16px 0 0; background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; }
+.md-details > summary { cursor: pointer; padding: 12px 18px; font-size: var(--fs-md); font-weight: 600;
+  color: var(--text-dim); list-style: none; display: flex; align-items: center; gap: 8px; }
+.md-details > summary::-webkit-details-marker { display: none; }
+.md-details > summary::before { content: "▸"; color: var(--brand-muted); transition: transform .15s ease; }
+.md-details[open] > summary::before { transform: rotate(90deg); }
+.md-details > summary:hover { color: var(--text); }
+.md-details > .table-wrap { margin: 0; border: 0; border-top: 1px solid var(--border); border-radius: 0; }
+
 /* "仅跨榜/显示全部" 开关(滑块 + 品牌轨道) */
 .switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
   font-size: var(--fs-md); color: var(--text-dim); }

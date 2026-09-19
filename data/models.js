@@ -38,7 +38,7 @@ window.MODEL_MAP = {
     { id: "Kimi-K2.6",        vendor: "Moonshot",  color: "#8E6EFF", aliases: ["Kimi-K2.6 (Think)", "Kimi K2.6"] },
     { id: "Kimi K2.6 Code Preview", vendor: "Moonshot", color: "#9C82FF", aliases: ["K2.6-code-preview", "Kimi K2.6 Code Preview"] },
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
-    { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)"] },
+    { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)", "k3"] },
     { id: "DeepSeek V4 Pro 0813", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4 Pro", "DeepSeek V4 Pro (max)", "DeepSeek V4 Pro (high)", "DeepSeek-V4-Pro-Max", "deepseek-v4-pro", "deepseek-v4-pro-high-20260813", "DeepSeek V4 Pro preview", "DeepSeek V4 Pro preview(max)", "deepseek-v4-pro-high-preview", "DeepSeek V4 Pro 0813", "DeepSeek V4 Pro 0813 (max)", "DeepSeek-V4-Pro-0813", "DeepSeek-V4-Pro-0813-Max", "deepseek-v4-pro-0813"] },
     { id: "DeepSeek V4 Flash 0731", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek V4 Flash", "DeepSeek V4 Flash (max)", "DeepSeek-V4-Flash-Max", "deepseek-v4-flash", "deepseek-v4-flash-high", "DeepSeek V4 Flash preview", "DeepSeek-V4-Flash-Preview", "deepseek-v4-flash-high-preview", "DeepSeek V4 Flash 0731", "DeepSeek V4 Flash (0731)", "DeepSeek-V4-Flash-0731", "DSV4F0731"] },
     { id: "DeepSeek V3.2",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["deepseek-v3p2"] },
@@ -114,7 +114,7 @@ window.MODEL_MAP = {
     { id: "Moonshot v1-8k",   vendor: "Moonshot",  color: "#B0A0FF", aliases: ["Moonshot v1-8k", "moonshot-v1-8k"] },
     { id: "Qwen3-VL-2B",      vendor: "Qwen",      color: "#FF8A3D", aliases: ["Qwen3-VL-2B", "Qwen3-VL-2B (baseline)", "qwen3-vl-2b"] },
     // ===== NL2Repo / AI 能力 榜上此前未登记(被自动建档为「其他」厂商)的模型(2026-09) =====
-    { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910"] },
+    { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910", "deepseek-v4.1-flash-expires-on-0910"] },
     { id: "DeepSeek V4 Flash Vision Exp", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek-V4-Flash-Vision-Exp", "DeepSeek V4 Flash Vision Exp", "deepseek-v4-flash-vision-exp"] },
     { id: "Gemini 3.1 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite", "Gemini 3.1 Flash Lite Preview", "gemini-3.1-flash-lite-preview"] },
     { id: "GPT-5.1",          vendor: "OpenAI",    color: "#28BFA8", aliases: ["GPT 5.1", "gpt-5.1"] },
@@ -124,7 +124,11 @@ window.MODEL_MAP = {
     { id: "GLM 5",            vendor: "zAI",       color: "#7485FF", aliases: ["GLM 5", "glm-5"] },
     { id: "Kimi-K2.8-Preview", vendor: "Moonshot", color: "#7C5CFF", aliases: ["Kimi-K2.8-Preview", "kimi-k2.8-preview"] },
     { id: "Inkling Small",    vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling Small", "Inkling small", "inkling-small"] },
-    { id: "omen-alpha",       vendor: "STEALTH",   color: "#6C7DFF", aliases: ["omen-alpha", "OMEN-ALPHA"] }
+    { id: "omen-alpha",       vendor: "STEALTH",   color: "#6C7DFF", aliases: ["omen-alpha", "OMEN-ALPHA"] },
+    { id: "union-alpha",      vendor: "STEALTH",   color: "#7C8CFF", aliases: ["union-alpha", "UNION-ALPHA"] },
+    // ModelDial 榜中的 "kimi-for-coding" 与该站的 "k3" 并列且分数不同(64.2 vs 72.5),
+    // 是否同一底层模型未证实,故单独建档,不并入 Kimi K3。
+    { id: "kimi-for-coding",  vendor: "Moonshot",  color: "#8B72FF", aliases: ["kimi-for-coding"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   vendorDefaultColor: "#8A8F98",
