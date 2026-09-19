@@ -294,6 +294,16 @@ a:hover { text-decoration: underline; }
    压低表格最小宽度,保持整表随容器自适应、避免横向滚动条(仅作用于总览矩阵) */
 #matrixTable th, #matrixTable td { padding-left: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px; }
 #matrixTable thead tr.col-row th { white-space: normal; line-height: 1.3; }
+/* 总览矩阵数值列左对齐:数值、版本徽标与其后小字自同一左起点排布,与该列列名同起点,
+   便于逐行纵向比对(列名本就左对齐,数值居中会让两者错开)
+   序号列(#)是行计数器,与其居中的列名配套,单独保持居中 */
+#matrixTable thead tr.col-row th.num, #matrixTable tbody td.num { text-align: left; }
+#matrixTable tbody td.num:first-child { text-align: center; }
+/* 数值占固定宽度轨道:数值位数不一(74% / 69.3%)会让其后内容逐行漂移,
+   给出统一轨道后版本徽标才能落在整列同一 x 上;ch 随字号与窄屏缩放,窄屏(11.5px)自动收窄 */
+#matrixTable tbody td.num .cell-val { display: inline-block; min-width: 5ch; }
+/* 版本徽标内数字等宽:同一列内 v1.0/v1.1、v4.0/v2.1 宽度一致,徽标后的小字起点随之对齐 */
+#matrixTable tbody td.num [class^="badge-"] { font-variant-numeric: tabular-nums; }
 /* 可排序表头:点击排序交互 */
 .data-table thead th[data-key] { cursor: pointer; user-select: none; transition: color var(--dur-fast); }
 .data-table thead th[data-key]:hover { color: var(--accent); }

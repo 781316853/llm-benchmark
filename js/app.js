@@ -332,9 +332,11 @@
       };
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
+      // 分数包一层 .cell-val 固定宽度轨道:分数位数不同(74% / 69.3%)时,版本徽标仍落在整列同一 x 上
       var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
         ? ' <span class="cell-cost">$' + r.deepswe.cost + '</span>' : "";
-      var ds = r.deepswe ? r.deepswe.pass1 + "%" + verBadge(r.deepswe.version) + dsCost : "—";
+      var ds = r.deepswe
+        ? '<span class="cell-val">' + r.deepswe.pass1 + '%</span>' + verBadge(r.deepswe.version) + dsCost : "—";
       var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(2) : "-";
       // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci,后附折算综合分(norm 0-100)
       var wd = r.webdev ? r.webdev.score : null;
@@ -348,7 +350,7 @@
       if (r.tbench && r.tbench.effort) tbMeta.push(r.tbench.effort);
       var tbTitle = tbMeta.length ? ' title="' + esc(tbMeta.join(" · ")) + '"' : "";
       var tbHtml = r.tbench
-        ? '<span' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
+        ? '<span class="cell-val"' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
           ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
         : "—";
       // ModelDial 单元格:综合分(0-100);悬浮显示三分项/推理强度/耗时/费用
