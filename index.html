@@ -7,7 +7,7 @@
   <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
-  <link rel="stylesheet" href="css/styles.css?v=20260919c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260919d" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
@@ -91,9 +91,9 @@
       <p class="section-desc">同一模型在多项基准中的成绩(高亮表示多榜命中);默认按综合分降序,仅命中≥4 榜的模型参与排名并编号;命中 3 榜的「参考」模型按各榜成绩与排名模型比对落入相应名次区间(不计算综合分,序号计「—」,仅显示数据);命中 ≤2 榜的模型不在总览展示;「榜单基准」组尾的 HLE / GPQA 两列为权威基准参考分,仅展示、不计入综合分与命中数;「实测」组首的 ModelDial 列为第三方独立实测的综合能力分(后端 40% + 前端 30% + 知识 30%);点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</p>
       <div class="table-wrap"><table id="matrixTable" class="data-table"></table></div>
       <div class="overview-switches">
-        <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型(命中3榜,按各榜成绩比对落入区间,仅显示数据不排名);勾选可展开全部命中≥3个基准组的模型(含排名30之后);命中≤2榜的模型不在总览展示"><input type="checkbox" id="ovShowAll"><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
-        <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"></span><span class="switch-text">高亮国产模型</span></label>
-        <label class="switch switch-lg" title="默认仅显示梯队,勾选后在梯队旁显示精确综合分"><input type="checkbox" id="ovShowScore"><span class="switch-track"></span><span class="switch-text">显示综合分</span></label>
+        <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型(命中3榜,按各榜成绩比对落入区间,仅显示数据不排名);勾选可展开全部命中≥3个基准组的模型(含排名30之后);命中≤2榜的模型不在总览展示"><input type="checkbox" id="ovShowAll"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
+        <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">高亮国产模型</span></label>
+        <label class="switch switch-lg" title="默认仅显示梯队,勾选后在梯队旁显示精确综合分"><input type="checkbox" id="ovShowScore"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
       </div>
       <p class="source-note" id="overviewNote"></p>
       <!-- 阅读说明:总览页概念指引 -->
@@ -123,7 +123,7 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
 
     <!-- 2) DeepSWE -->
     <section class="page" id="page-deepswe">
-      <div class="page-head"><h2>DeepSWE <span class="tag">长程软件工程任务</span></h2><label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="dsShowAll" checked><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label><p id="deepsweDesc" class="page-desc"></p></div>
+      <div class="page-head"><h2>DeepSWE <span class="tag">长程软件工程任务</span></h2><label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="dsShowAll" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label><p id="deepsweDesc" class="page-desc"></p></div>
       <div class="chart-row single">
         <div class="chart-box"><h3>Pass@1 排行</h3><div id="dsBar" class="chart"></div></div>
       </div>
@@ -142,7 +142,7 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
           <label>月份:
             <select id="llmMonth" class="select"></select>
           </label>
-          <label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="lmShowAll" checked><span class="switch-track"></span><span class="switch-text">显示全部模型</span></label>
+          <label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="lmShowAll" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
         </div>
         <p id="lmDesc" class="page-desc"></p>
       </div>

@@ -8,6 +8,9 @@
   /* 品牌 */
   --accent: #2DD4BF;
   --accent-hover: #5EEAD4;
+  /* 开关开启态轨道:品牌青绿的中间调。满亮度的 --accent 太浅,白滑块压在上面只有 1.58:1,
+     开启态最该看清的滑块反而最弱;压到中间调后滑块对比升到 3.34:1(见下方开关区块的契约) */
+  --accent-mid: #218F83;
   --brand-light: rgba(45, 212, 191, .14);
   --brand-muted: rgba(45, 212, 191, .42);
   --on-accent: #04211D;
@@ -20,6 +23,10 @@
   --nav-bg: rgba(11, 15, 20, .9);
   --overlay: rgba(0, 0, 0, .66);
   --knob: #E6EDF3;
+  /* 开关(switch)专用:关闭态轨道填充,以及画在滑块上的状态图标色。
+     图标色用独立 token 而不是复用 --bg —— 两者只是当前取值相同,语义上无关联 */
+  --switch-off: #333F4B;
+  --knob-fg: #0B0F14;
 
   /* 文字 */
   --text: #E6EDF3;
@@ -470,22 +477,67 @@ a:hover { text-decoration: underline; }
 .switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
   font-size: var(--fs-md); color: var(--text-dim); }
 .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
-.switch-track { position: relative; width: 40px; height: 22px; border-radius: var(--radius-pill);
-  background: var(--border); transition: background var(--dur-fast) var(--ease-out); flex: none; }
-.switch-track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px;
-  border-radius: 50%; background: var(--knob); transition: transform var(--dur-fast) var(--ease-out); }
-.switch input:checked + .switch-track { background: var(--accent); }
-.switch input:checked + .switch-track::after { transform: translateX(18px); }
+/* 开关对比度契约(对页面底色 --bg 实测,2026-09-19 校准):
+     关闭 轨道/底色 1.79、滑块/轨道 4.48;开启 轨道/底色 4.87、滑块/轨道 3.34
+   旧实现是反的——关闭态轨道只有 1.36(几乎看不见)而滑块高达 11.97(全行最抢眼),
+   开启态最该看清的滑块反而只有 1.58。扶正后四个量都落在「看得清但不刺眼」区间。
+   轨道圆角改用真胶囊而不是 5px 的 --radius-pill:内部滑块是正圆,5px 圆角会让两者不贴合。
+   边框宽度恒为 1px(开启态只是把描边染成与填充同色),这样两态的滑块位移量不变。 */
+.switch-track { position: relative; width: 46px; height: 24px; border-radius: 999px; flex: none;
+  background: var(--switch-off); border: 1px solid var(--border-strong);
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); }/* 滑块:关闭态用中灰(--text-dim),不再用近白色 —— 近白滑块压在本就低对比的关闭态轨道上,
+   会变成整行最抢眼的元素(旧实现 11.97),把注意力引到"未开启"的那一项上。
+   开启态才提亮到 --knob,让"亮"成为开启的专属信号 */
+.switch-track::after { content: ""; position: absolute; top: 1px; left: 1px; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--text-dim); transition: transform var(--dur-fast) var(--ease-out); }
+.switch input:checked + .switch-track::after { background: var(--knob); }
+/* 状态图标:关闭态一道横杠、开启态一个对勾,画在滑块上随之位移。
+   用真实元素而非伪元素,因为滑块已经占用 ::after、轨道自身的位置语义也不适合再挂第二个伪元素;
+   图标box 与滑块同尺寸同位,所以 :checked 的位移必须与上面 ::after 保持一致,否则图标会和滑块脱开。
+   ::before 用 translate(-50%,-50%) 居中,两态盒子尺寸不同也自动居中,不必手调 margin。
+   必须给 z-index —— 伪元素 ::after 在绘制顺序上位于真实子元素之后,不加就会把图标盖住(图标只剩形状不见)。 */
+.switch-glyph { position: absolute; top: 1px; left: 1px; width: 20px; height: 20px; z-index: 1;
+  pointer-events: none; transition: transform var(--dur-fast) var(--ease-out); }
+.switch-glyph::before { content: ""; position: absolute; left: 50%; top: 50%;
+  width: 9px; height: 2px; border-radius: 1px; background: var(--knob-fg);
+  transform: translate(-50%, -50%); }
+.switch input:checked + .switch-track { background: var(--accent-mid); border-color: var(--accent-mid); }
+.switch input:checked + .switch-track::after { transform: translateX(22px); }
+.switch input:checked + .switch-track .switch-glyph { transform: translateX(22px); }
+.switch input:checked + .switch-track .switch-glyph::before {
+  width: 5px; height: 9px; background: none; border-radius: 0;
+  border-right: 2px solid var(--knob-fg); border-bottom: 2px solid var(--knob-fg);
+  /* margin-top 抵消旋转带来的重心偏移:border-box 下 L 形(右+下描边)绕盒中心转 45° 后,
+     笔画包围盒在 y 方向是 [-2.5, +4.6],重心比盒中心低约 1px,不上移会显得对勾"坐"在滑块里 */
+  margin-top: -1px;
+  transform: translate(-50%, -50%) rotate(45deg); }
 .switch input:focus-visible + .switch-track { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* 选中态的标签文字一并提亮,让状态不只依赖滑块颜色 */
+.switch input:checked ~ .switch-text { color: var(--text); }
+.switch:hover .switch-track { border-color: var(--brand-muted); }
 .switch:hover .switch-text { color: var(--text); }
+/* 按下反馈:滑块与图标同步轻微回缩(indicator 一起缩,避免图标溢出滑块边缘) */
+.switch:active .switch-track::after, .switch:active .switch-glyph { transform: scale(.9); }
+.switch input:checked:active + .switch-track::after,
+.switch input:checked:active + .switch-track .switch-glyph { transform: translateX(22px) scale(.9); }
 .switch-text { white-space: nowrap; }
 
 /* 总览页"显示全部模型"开关:加大居中 */
 .switch-lg { display: flex; justify-content: center; align-items: center;
   gap: 10px; font-size: var(--fs-lg); margin: 16px 0; }
-.switch-lg .switch-track { width: 48px; height: 26px; border-radius: var(--radius-pill); }
-.switch-lg .switch-track::after { top: 3px; left: 3px; width: 20px; height: 20px; }
-.switch-lg .switch input:checked + .switch-track::after { transform: translateX(22px); }
+.switch-lg .switch-track { width: 52px; height: 28px; }
+.switch-lg .switch-track::after { top: 2px; left: 2px; width: 22px; height: 22px; }
+.switch-lg .switch-glyph { top: 2px; left: 2px; width: 22px; height: 22px; }
+.switch-lg .switch-glyph::before { width: 10px; height: 2px; }
+/* 注意:标签本身同时带 switch 与 switch-lg 两个类,写 .switch-lg input 而不是
+   .switch-lg .switch input —— 后者要求"后代"里再有一个 .switch,永不匹配。
+   原实现正是踩了这个坑,导致 .switch-lg 的位移覆盖失效、退回基础档 18px,
+   开启时滑块比轨道右缘短 4px(2026-09-19 修)。 */
+.switch-lg input:checked + .switch-track::after,
+.switch-lg input:checked + .switch-track .switch-glyph { transform: translateX(24px); }
+.switch-lg input:checked:active + .switch-track::after,
+.switch-lg input:checked:active + .switch-track .switch-glyph { transform: translateX(24px) scale(.9); }
+.switch-lg input:checked + .switch-track .switch-glyph::before { width: 6px; height: 10px; }
 /* 总览页开关组容器:并排居中展示多个开关 */
 .overview-switches { display: flex; justify-content: center; align-items: center;
   gap: 28px; flex-wrap: wrap; margin: 16px 0; }
@@ -793,9 +845,11 @@ a:hover { text-decoration: underline; }
   .tab, .tabs,
   .data-table thead th[data-key],
   .auth-outline-item, .qc-scope-btn,
-  .switch-track, .switch-track::after { transition-duration: var(--dur-fast) !important; }
+  .switch-track, .switch-track::after, .switch-glyph { transition-duration: var(--dur-fast) !important; }
   /* 位移类过渡整体关闭 */
   .switch input:checked + .switch-track::after,
-  .switch-lg .switch input:checked + .switch-track::after { transition: none !important; }
+  .switch input:checked + .switch-track .switch-glyph,
+  .switch-lg input:checked + .switch-track::after,
+  .switch-lg input:checked + .switch-track .switch-glyph { transition: none !important; }
   .feedback-dialog, .feedback-overlay { animation: none !important; }
 }
