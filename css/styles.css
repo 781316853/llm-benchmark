@@ -602,6 +602,11 @@ a:hover { text-decoration: underline; }
   text-overflow: ellipsis; white-space: nowrap; color: var(--text-dim); }
 .news-title { font-weight: 600; color: var(--text); }
 .news-brief { color: var(--text-dim); }
+/* 翻译降级标注:英文源条目自动翻译未成功时标出「原文」(app.js 按"标题无中文"判定);
+   作为 flex 兄弟节点置于 .news-text 之外,标题再长也挤不掉它 */
+.news-orig { flex: 0 0 auto; font-size: var(--fs-2xs); font-weight: 600; white-space: nowrap;
+  color: var(--bd-warn-fg); background: var(--bd-warn-bg); border: 1px solid var(--bd-warn-bd);
+  border-radius: var(--radius-pill); padding: 0 6px; letter-spacing: .3px; }
 .news-source { flex: 0 0 auto; font-size: var(--fs-xs); color: var(--text-tertiary);
   background: var(--panel-2); padding: 1px 7px; border-radius: var(--radius-sm); white-space: nowrap; }
 .news-link { flex: 0 0 auto; font-size: var(--fs-sm); white-space: nowrap; }

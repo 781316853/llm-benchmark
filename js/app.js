@@ -251,9 +251,16 @@
     var row = function (it) {
       var date = (it.date || "").slice(5); // YYYY-MM-DD -> MM-DD
       var brief = (it.brief && it.brief !== it.title) ? ' <span class="news-brief">' + esc(it.brief) + '</span>' : "";
+      // 翻译降级标注:标题里一个中文字符都没有,说明这条自动翻译没成功(英文源),
+      // 标出「原文」让读者知道是翻译失败而非本站漏译。判定只看标题有没有中文、不维护英文源白名单,
+      // 这样任何源翻不出来都会被标出。徽标作为 flex 兄弟节点放在 .news-text 之外,
+      // 避免标题过长时被 .news-text 的单行省略号连同标题一起裁掉。
+      var orig = /[\u4e00-\u9fff]/.test(it.title || "") ? ""
+        : '<span class="news-orig" title="自动翻译未成功,此处为英文原文">原文</span>';
       return '<div class="news-item">' +
         '<span class="news-date">' + esc(date) + '</span>' +
         '<span class="news-text" title="' + esc(it.title) + '"><b class="news-title">' + esc(it.title) + '</b>' + brief + '</span>' +
+        orig +
         (it.source ? '<span class="news-source">' + esc(it.source) + '</span>' : "") +
         '<a class="news-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">详情 ↗</a>' +
         '</div>';
