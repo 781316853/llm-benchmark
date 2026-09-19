@@ -1,4 +1,4 @@
-// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-17)
+// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-19)
 // 来源:https://llm-stats.com/benchmarks/gpqa(官方:https://epoch.ai/benchmarks/gpqa-diamond)
 // 补充:https://benchlm.ai/benchmarks/gpqa(benchlm 镜像,分数与 Diamond 口径一致)· https://benchlm.ai/benchmarks/aagpqadiamond(AA 复测口径)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -10,11 +10,11 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-09-17',
-  'refreshedAt': '2026-09-17 13:50',
+  'updated': '2026-09-19',
+  'refreshedAt': '2026-09-19 13:31',
   'stats': {
     'tasks': 198,
-    'entries': 233
+    'entries': 234
   },
   'desc': 'GPQA Diamond:研究生级科学多选问答(GPQA 中最难、质量最高的 198 题子集,覆盖生物/物理/化学),领域专家正确率~65%、随机基线 25%;Accuracy 越高越好。多源合并:llm-stats 与 benchlm 镜像为公开口径,AA 复测为第三方自家 harness(分数偏差 ±1 内,src=aa 区分)。',
   'models': [
@@ -124,23 +124,23 @@ window.GPQA = {
     },
     {
       'rank': 13,
-      'model': 'GPT-5.5',
-      'org': 'OpenAI',
-      'score': 93.6,
-      'size': '—',
-      'context': '1.1M',
-      'cost': '$ 5.00 / $ 30.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 14,
       'model': 'Claude Opus 4.8',
       'org': 'Anthropic',
       'score': 93.6,
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 14,
+      'model': 'GPT-5.5',
+      'org': 'OpenAI',
+      'score': 93.6,
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 5.00 / $ 30.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -244,7 +244,7 @@ window.GPQA = {
     {
       'model': 'Qwen3.8 Max Preview',
       'org': 'Alibaba',
-      'score': 92.7,
+      'score': 92.8,
       'src': 'aa',
       'rank': 26
     },
@@ -268,17 +268,6 @@ window.GPQA = {
     },
     {
       'rank': 29,
-      'model': 'GPT-5.2',
-      'org': 'OpenAI',
-      'score': 92.4,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.75 / $ 14.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 30,
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 92.4,
@@ -289,24 +278,35 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 31,
-      'model': 'Hy4 preview',
-      'org': 'Tencent',
-      'score': 92.3,
-      'size': '770B',
-      'context': '—',
-      'cost': '—',
+      'rank': 30,
+      'model': 'GPT-5.2',
+      'org': 'OpenAI',
+      'score': 92.4,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.75 / $ 14.00',
       'license': null,
       'src': 'llm-stats'
     },
     {
-      'rank': 32,
+      'rank': 31,
       'model': 'GPT-5.6 Luna',
       'org': 'OpenAI',
       'score': 92.3,
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 32,
+      'model': 'Hy4 preview',
+      'org': 'Tencent',
+      'score': 92.3,
+      'size': '770B',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },
@@ -419,7 +419,14 @@ window.GPQA = {
       'rank': 44
     },
     {
-      'rank': 45,
+      'model': 'Qwen3.8-Omni-Flash',
+      'org': 'Alibaba',
+      'score': 91,
+      'src': 'benchlm',
+      'rank': 45
+    },
+    {
+      'rank': 46,
       'model': 'DeepSeek-V4.1-Flash',
       'org': 'DeepSeek',
       'score': 90.9,
@@ -434,10 +441,10 @@ window.GPQA = {
       'org': 'DeepSeek',
       'score': 90.8,
       'src': 'aa',
-      'rank': 46
+      'rank': 47
     },
     {
-      'rank': 47,
+      'rank': 48,
       'model': 'Qwen3.8-27B',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 90.5,
@@ -446,17 +453,6 @@ window.GPQA = {
       'cost': '$ 0.40 / $ 3.00',
       'license': null,
       'src': 'aa'
-    },
-    {
-      'rank': 48,
-      'model': 'Qwen3.6 Plus',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 90.4,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 0.50 / $ 3.00',
-      'license': null,
-      'src': 'llm-stats'
     },
     {
       'rank': 49,
@@ -481,14 +477,25 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 51,
+      'model': 'Qwen3.6 Plus',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 90.4,
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 0.50 / $ 3.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'model': 'Muse Spark 1.2',
       'org': 'Meta',
       'score': 90.4,
       'src': 'aa',
-      'rank': 51
+      'rank': 52
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'Qwen3.7-Plus',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 90.3,
@@ -499,7 +506,7 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 53,
+      'rank': 54,
       'model': 'DeepSeek-V4-Pro-Max',
       'org': 'DeepSeek',
       'score': 90.1,
@@ -514,10 +521,10 @@ window.GPQA = {
       'org': 'xAI',
       'score': 90.1,
       'src': 'benchlm',
-      'rank': 54
+      'rank': 55
     },
     {
-      'rank': 55,
+      'rank': 56,
       'model': 'Claude Sonnet 4.6',
       'org': 'Anthropic',
       'score': 89.9,
@@ -532,53 +539,42 @@ window.GPQA = {
       'org': 'Interfaze',
       'score': 89.9,
       'src': 'benchlm',
-      'rank': 56
+      'rank': 57
     },
     {
       'model': 'GPT-5.2-Codex',
       'org': 'OpenAI',
       'score': 89.9,
       'src': 'aa',
-      'rank': 57
+      'rank': 58
     },
     {
       'model': 'Muse Spark 1.1',
       'org': 'Meta',
       'score': 89.8,
       'src': 'aa',
-      'rank': 58
+      'rank': 59
     },
     {
       'model': 'Hy3 Preview',
       'org': 'Tencent',
       'score': 89.7,
       'src': 'aa',
-      'rank': 59
+      'rank': 60
     },
     {
       'model': 'Kimi K2.7 Code',
       'org': 'Moonshot AI',
       'score': 89.6,
       'src': 'aa',
-      'rank': 60
+      'rank': 61
     },
     {
       'model': 'Claude Opus 4.6 (Adaptive)',
       'org': 'Anthropic',
       'score': 89.6,
       'src': 'aa',
-      'rank': 61
-    },
-    {
-      'rank': 62,
-      'model': 'Muse Spark',
-      'org': 'Meta',
-      'score': 89.5,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 62
     },
     {
       'rank': 63,
@@ -592,14 +588,25 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 64,
+      'model': 'Muse Spark',
+      'org': 'Meta',
+      'score': 89.5,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'model': 'Ornith-1.5-35B-A3B',
       'org': 'Ornith AI',
       'score': 89.2,
       'src': 'benchlm',
-      'rank': 64
+      'rank': 65
     },
     {
-      'rank': 65,
+      'rank': 66,
       'model': 'Solar Pro 4',
       'org': 'Upstage',
       'score': 89.1,
@@ -610,7 +617,7 @@ window.GPQA = {
       'src': 'aa'
     },
     {
-      'rank': 66,
+      'rank': 67,
       'model': 'Seed 2.0 Pro',
       'org': 'ByteDance',
       'score': 88.9,
@@ -625,18 +632,7 @@ window.GPQA = {
       'org': 'Alibaba',
       'score': 88.8,
       'src': 'aa',
-      'rank': 67
-    },
-    {
-      'rank': 68,
-      'model': 'Qwen3.5-397B-A17B',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 88.4,
-      'size': '397B',
-      'context': '262K',
-      'cost': '$ 0.45 / $ 3.00',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 68
     },
     {
       'rank': 69,
@@ -650,22 +646,22 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 70,
+      'model': 'Qwen3.5-397B-A17B',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 88.4,
+      'size': '397B',
+      'context': '262K',
+      'cost': '$ 0.45 / $ 3.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'model': 'Qwen3.5 397B',
       'org': 'Alibaba',
       'score': 88.4,
       'src': 'benchlm',
-      'rank': 70
-    },
-    {
-      'rank': 71,
-      'model': 'GPT-5.1 High',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 71
     },
     {
       'rank': 72,
@@ -691,17 +687,6 @@ window.GPQA = {
     },
     {
       'rank': 74,
-      'model': 'DeepSeek-V4-Flash-Max',
-      'org': 'DeepSeek',
-      'score': 88.1,
-      'size': '284B',
-      'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 75,
       'model': 'GPT-5.1 Thinking',
       'org': 'OpenAI',
       'score': 88.1,
@@ -712,7 +697,29 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 75,
+      'model': 'GPT-5.1 High',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'rank': 76,
+      'model': 'DeepSeek-V4-Flash-Max',
+      'org': 'DeepSeek',
+      'score': 88.1,
+      'size': '284B',
+      'context': '1.0M',
+      'cost': '$ 0.09 / $ 0.18',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 77,
       'model': 'GPT-5.1 Instant',
       'org': 'OpenAI',
       'score': 88.1,
@@ -723,7 +730,7 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 77,
+      'rank': 78,
       'model': 'GPT-5.4 mini',
       'org': 'OpenAI',
       'score': 88,
@@ -734,7 +741,7 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 78,
+      'rank': 79,
       'model': 'Kimi K2.5',
       'org': 'Moonshot AI',
       'score': 87.9,
@@ -749,17 +756,17 @@ window.GPQA = {
       'org': 'Thinking Machines Lab',
       'score': 87.9,
       'src': 'benchlm',
-      'rank': 79
+      'rank': 80
     },
     {
       'model': 'Kimi K2.5 (Reasoning)',
       'org': 'Moonshot AI',
       'score': 87.9,
       'src': 'aa',
-      'rank': 80
+      'rank': 81
     },
     {
-      'rank': 81,
+      'rank': 82,
       'model': 'Qwen3.6-27B',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 87.8,
@@ -770,7 +777,7 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 82,
+      'rank': 83,
       'model': 'Grok 4',
       'org': 'xAI',
       'score': 87.7,
@@ -779,17 +786,6 @@ window.GPQA = {
       'cost': '—',
       'license': null,
       'src': 'aa'
-    },
-    {
-      'rank': 83,
-      'model': 'DeepSeek-V4-Flash-0423',
-      'org': 'DeepSeek',
-      'score': 87.4,
-      'size': '284B',
-      'context': '1.0M',
-      'cost': '$ 0.09 / $ 0.18',
-      'license': null,
-      'src': 'llm-stats'
     },
     {
       'rank': 84,
@@ -803,14 +799,25 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 85,
+      'model': 'DeepSeek-V4-Flash-0423',
+      'org': 'DeepSeek',
+      'score': 87.4,
+      'size': '284B',
+      'context': '1.0M',
+      'cost': '$ 0.09 / $ 0.18',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'model': 'MiniMax M2.7',
       'org': 'MiniMax',
       'score': 87.4,
       'src': 'aa',
-      'rank': 85
+      'rank': 86
     },
     {
-      'rank': 86,
+      'rank': 87,
       'model': 'GPT-5 High',
       'org': 'OpenAI',
       'score': 87.3,
@@ -825,1029 +832,1029 @@ window.GPQA = {
       'org': 'Anthropic',
       'score': 87,
       'src': 'benchlm',
-      'rank': 87
+      'rank': 88
     },
     {
       'model': 'Nemotron 3 Ultra',
       'org': 'NVIDIA',
       'score': 87,
       'src': 'benchlm',
-      'rank': 88
+      'rank': 89
     },
     {
       'model': 'MiMo-V2-Pro',
       'org': 'Xiaomi',
       'score': 87,
       'src': 'aa',
-      'rank': 89
+      'rank': 90
     },
     {
       'model': 'GLM-5.1',
       'org': 'Z.AI',
       'score': 86.8,
       'src': 'aa',
-      'rank': 90
+      'rank': 91
     },
     {
       'model': 'Qwen3.5-122B-A10B',
       'org': 'Alibaba',
       'score': 86.6,
       'src': 'benchlm',
-      'rank': 91
+      'rank': 92
     },
     {
       'model': 'Claude Opus 4.5 Thinking',
       'org': 'Anthropic',
       'score': 86.6,
       'src': 'aa',
-      'rank': 92
+      'rank': 93
     },
     {
       'model': 'MiMo-V2.5-Pro',
       'org': 'Xiaomi',
       'score': 86.6,
       'src': 'aa',
-      'rank': 93
+      'rank': 94
     },
     {
       'model': 'Ornith-1.5-9B',
       'org': 'Ornith AI',
       'score': 86.4,
       'src': 'benchlm',
-      'rank': 94
+      'rank': 95
     },
     {
       'model': 'Apodex 1.1',
       'org': 'Apodex',
       'score': 86.4,
       'src': 'aa',
-      'rank': 95
+      'rank': 96
     },
     {
       'model': 'Apodex 1.1 Mini',
       'org': 'Apodex',
       'score': 86.4,
       'src': 'aa',
-      'rank': 96
+      'rank': 97
     },
     {
       'model': 'Ling 3.0 Flash VL',
       'org': 'InclusionAI',
       'score': 86.2,
       'src': 'aa',
-      'rank': 97
+      'rank': 98
     },
     {
       'model': 'Qwen3.5 397B (Reasoning)',
       'org': 'Alibaba',
       'score': 86.1,
       'src': 'aa',
-      'rank': 98
+      'rank': 99
     },
     {
       'model': 'GLM-5',
       'org': 'Z.AI',
       'score': 86,
       'src': 'benchlm',
-      'rank': 99
+      'rank': 100
     },
     {
       'model': 'Qwen3.6-35B-A3B',
       'org': 'Alibaba',
       'score': 86,
       'src': 'benchlm',
-      'rank': 100
+      'rank': 101
     },
     {
       'model': 'GPT-5.1-Codex',
       'org': 'OpenAI',
       'score': 86,
       'src': 'aa',
-      'rank': 101
+      'rank': 102
     },
     {
       'model': 'GPT-5.1-Codex-Max',
       'org': 'OpenAI',
       'score': 86,
       'src': 'aa',
-      'rank': 102
+      'rank': 103
     },
     {
       'model': 'GLM-4.7',
       'org': 'Z.AI',
       'score': 85.9,
       'src': 'aa',
-      'rank': 103
+      'rank': 104
+    },
+    {
+      'model': 'Ternary Bonsai 2 27B',
+      'org': 'Prism ML',
+      'score': 85.8,
+      'src': 'benchlm',
+      'rank': 105
     },
     {
       'model': 'Qwen3.5-27B',
       'org': 'Alibaba',
       'score': 85.8,
       'src': 'aa',
-      'rank': 104
+      'rank': 106
     },
     {
       'model': 'Gemma 4 31B',
       'org': 'Google',
       'score': 85.7,
       'src': 'aa',
-      'rank': 105
+      'rank': 107
     },
     {
       'model': 'A.X K2',
       'org': 'SK Telecom',
       'score': 85.7,
       'src': 'aa',
-      'rank': 106
+      'rank': 108
     },
     {
       'model': 'Ling 3.0 Flash',
       'org': 'InclusionAI',
       'score': 85.5,
       'src': 'aa',
-      'rank': 107
+      'rank': 109
     },
     {
       'model': 'Ling 3.0 Flash FP8',
       'org': 'InclusionAI',
       'score': 85.5,
       'src': 'aa',
-      'rank': 108
+      'rank': 110
     },
     {
       'model': 'Grok 4.1 Fast (Reasoning)',
       'org': 'xAI',
       'score': 85.3,
       'src': 'aa',
-      'rank': 109
+      'rank': 111
     },
     {
       'model': 'MiniMax M2.5',
       'org': 'MiniMax',
       'score': 84.8,
       'src': 'aa',
-      'rank': 110
+      'rank': 112
     },
     {
       'model': 'GLM-5-Turbo',
       'org': 'Z.AI',
       'score': 84.7,
       'src': 'aa',
-      'rank': 111
+      'rank': 113
     },
     {
       'model': 'Grok 4 Fast (Reasoning)',
       'org': 'xAI',
       'score': 84.7,
       'src': 'aa',
-      'rank': 112
+      'rank': 114
     },
     {
       'model': 'Qwen3.5-35B-A3B',
       'org': 'Alibaba',
       'score': 84.5,
       'src': 'aa',
-      'rank': 113
+      'rank': 115
     },
     {
       'model': 'o3-pro',
       'org': 'OpenAI',
       'score': 84.5,
       'src': 'aa',
-      'rank': 114
+      'rank': 116
     },
     {
       'model': 'Gemini 2.5 Pro',
       'org': 'Google',
       'score': 84.4,
       'src': 'aa',
-      'rank': 115
+      'rank': 117
     },
     {
       'model': 'MAI-Thinking-1',
       'org': 'Microsoft',
       'score': 84.2,
       'src': 'benchlm',
-      'rank': 116
+      'rank': 118
     },
     {
       'model': 'Gemini 3.5 Flash-Lite',
       'org': 'Google',
       'score': 83.8,
       'src': 'aa',
-      'rank': 117
+      'rank': 119
     },
     {
       'model': 'MiMo-V2-Flash',
       'org': 'Xiaomi',
       'score': 83.7,
       'src': 'benchlm',
-      'rank': 118
+      'rank': 120
     },
     {
       'model': 'Muse Glimmer 30B',
       'org': 'Meta',
       'score': 83.5,
       'src': 'aa',
-      'rank': 119
+      'rank': 121
     },
     {
       'model': 'Claude Sonnet 4.5',
       'org': 'Anthropic',
       'score': 83.4,
       'src': 'benchlm',
-      'rank': 120
+      'rank': 122
     },
     {
       'model': 'K-EXAONE 2.0',
       'org': 'LG AI Research',
       'score': 82.9,
       'src': 'aa',
-      'rank': 121
+      'rank': 123
     },
     {
       'model': 'GPT-5.4 nano',
       'org': 'OpenAI',
       'score': 82.8,
       'src': 'benchlm',
-      'rank': 122
+      'rank': 124
     },
     {
       'model': 'MiMo-V2-Omni',
       'org': 'Xiaomi',
       'score': 82.8,
       'src': 'aa',
-      'rank': 123
+      'rank': 125
     },
     {
       'model': 'GPT-5 mini',
       'org': 'OpenAI',
       'score': 82.8,
       'src': 'aa',
-      'rank': 124
+      'rank': 126
     },
     {
       'model': 'o3',
       'org': 'OpenAI',
       'score': 82.7,
       'src': 'aa',
-      'rank': 125
+      'rank': 127
     },
     {
       'model': 'Step 3.5 Flash',
       'org': 'StepFun',
       'score': 82.6,
       'src': 'aa',
-      'rank': 126
+      'rank': 128
     },
     {
       'model': 'DeepSeek-R1',
       'org': 'DeepSeek',
       'score': 81.3,
       'src': 'aa',
-      'rank': 127
+      'rank': 129
     },
     {
       'model': 'Claude 4.1 Opus Thinking',
       'org': 'Anthropic',
       'score': 80.9,
       'src': 'aa',
-      'rank': 128
+      'rank': 130
     },
     {
       'model': 'GLM-5V-Turbo',
       'org': 'Z.AI',
       'score': 80.9,
       'src': 'aa',
-      'rank': 129
+      'rank': 131
     },
     {
       'model': 'Step 3.7 Flash',
       'org': 'StepFun',
       'score': 80.9,
       'src': 'aa',
-      'rank': 130
+      'rank': 132
     },
     {
       'model': 'Nemotron 3 Super 100B',
       'org': 'NVIDIA',
       'score': 80,
       'src': 'aa',
-      'rank': 131
+      'rank': 133
     },
     {
       'model': 'Nemotron 3 Super 120B A12B',
       'org': 'NVIDIA',
       'score': 80,
       'src': 'aa',
-      'rank': 132
+      'rank': 134
     },
     {
       'model': 'Gemma 4 26B A4B',
       'org': 'Google',
       'score': 79.2,
       'src': 'aa',
-      'rank': 133
+      'rank': 135
     },
     {
       'model': 'o1-pro',
       'org': 'OpenAI',
       'score': 79,
       'src': 'benchlm',
-      'rank': 134
+      'rank': 136
     },
     {
       'model': 'Gemma 4 12B',
       'org': 'Google',
       'score': 78.8,
       'src': 'benchlm',
-      'rank': 135
+      'rank': 137
     },
     {
       'model': 'K-Exaone',
       'org': 'LG AI Research',
       'score': 78.3,
       'src': 'aa',
-      'rank': 136
+      'rank': 138
     },
     {
       'model': 'GPT-OSS 120B',
       'org': 'OpenAI',
       'score': 78.2,
       'src': 'aa',
-      'rank': 137
+      'rank': 139
     },
     {
       'model': 'DeepSeek V3.1 (Reasoning)',
       'org': 'DeepSeek',
       'score': 77.9,
       'src': 'aa',
-      'rank': 138
+      'rank': 140
     },
     {
       'model': 'Qwen3 235B 2507',
       'org': 'Alibaba',
       'score': 77.5,
       'src': 'benchlm',
-      'rank': 139
+      'rank': 141
     },
     {
       'model': 'o3-mini',
       'org': 'OpenAI',
       'score': 77.2,
       'src': 'benchlm',
-      'rank': 140
+      'rank': 142
     },
     {
       'model': 'Mercury 2',
       'org': 'Inception',
       'score': 77,
       'src': 'aa',
-      'rank': 141
+      'rank': 143
     },
     {
       'model': 'Mistral Small 4',
       'org': 'Mistral',
       'score': 76.9,
       'src': 'aa',
-      'rank': 142
+      'rank': 144
     },
     {
       'model': 'Mistral Small 4 (Reasoning)',
       'org': 'Mistral',
       'score': 76.9,
       'src': 'aa',
-      'rank': 143
+      'rank': 145
     },
     {
       'model': 'Kimi K2',
       'org': 'Moonshot AI',
       'score': 76.6,
       'src': 'aa',
-      'rank': 144
+      'rank': 146
     },
     {
       'model': 'o1-preview',
       'org': 'OpenAI',
       'score': 76.5,
       'src': 'aa',
-      'rank': 145
+      'rank': 147
     },
     {
       'model': 'Qwen3 Max',
       'org': 'Alibaba',
       'score': 76.4,
       'src': 'aa',
-      'rank': 146
+      'rank': 148
     },
     {
       'model': 'Command A+',
       'org': 'Cohere',
       'score': 76.1,
       'src': 'aa',
-      'rank': 147
+      'rank': 149
     },
     {
       'model': 'o1',
       'org': 'OpenAI',
       'score': 75.7,
       'src': 'benchlm',
-      'rank': 148
+      'rank': 150
     },
     {
       'model': 'Nemotron 3 Nano 30B',
       'org': 'NVIDIA',
       'score': 75.7,
       'src': 'aa',
-      'rank': 149
+      'rank': 151
     },
     {
       'model': 'North Mini Code',
       'org': 'Cohere',
       'score': 75.7,
       'src': 'aa',
-      'rank': 150
+      'rank': 152
     },
     {
       'model': 'Nemotron 3.5 Lightning 30B A3B NVFP4',
       'org': 'NVIDIA',
       'score': 75.6,
       'src': 'benchlm',
-      'rank': 151
+      'rank': 153
     },
     {
       'model': 'Trinity-Large-Thinking',
       'org': 'Arcee AI',
       'score': 75.2,
       'src': 'aa',
-      'rank': 152
+      'rank': 154
     },
     {
       'model': 'Trinity-Large-Preview',
       'org': 'Arcee AI',
       'score': 75.2,
       'src': 'aa',
-      'rank': 153
+      'rank': 155
     },
     {
       'model': 'DeepSeek V3.2',
       'org': 'DeepSeek',
       'score': 75.1,
       'src': 'aa',
-      'rank': 154
+      'rank': 156
     },
     {
       'model': 'Mistral Medium 3.5 128B',
       'org': 'Mistral',
       'score': 74.8,
       'src': 'aa',
-      'rank': 155
+      'rank': 157
     },
     {
       'model': 'Sarvam 105B',
       'org': 'Sarvam',
       'score': 73.8,
       'src': 'aa',
-      'rank': 156
+      'rank': 158
     },
     {
       'model': 'DeepSeek V3.1',
       'org': 'DeepSeek',
       'score': 73.5,
       'src': 'aa',
-      'rank': 157
+      'rank': 159
     },
     {
       'model': 'Ling 3.0 Tiny',
       'org': 'InclusionAI',
       'score': 73.4,
       'src': 'aa',
-      'rank': 158
+      'rank': 160
     },
     {
       'model': 'GLM-4.5-Air',
       'org': 'Z.AI',
       'score': 73.3,
       'src': 'aa',
-      'rank': 159
+      'rank': 161
     },
     {
       'model': 'Quasar 438B',
       'org': 'Multiverse Computing',
       'score': 73.2,
       'src': 'aa',
-      'rank': 160
+      'rank': 162
     },
     {
       'model': 'Nemotron Ultra 253B',
       'org': 'NVIDIA',
       'score': 72.8,
       'src': 'aa',
-      'rank': 161
+      'rank': 163
     },
     {
       'model': 'Grok Code Fast 1',
       'org': 'xAI',
       'score': 72.7,
       'src': 'aa',
-      'rank': 162
+      'rank': 164
     },
     {
       'model': 'Qwen3-Omni-30B-A3B-Thinking',
       'org': 'Alibaba',
       'score': 72.6,
       'src': 'aa',
-      'rank': 163
+      'rank': 165
     },
     {
       'model': 'Solar Pro 3',
       'org': 'Upstage',
       'score': 72.4,
       'src': 'aa',
-      'rank': 164
+      'rank': 166
     },
     {
       'model': 'Nemotron 3 Nano Omni 30B A3B',
       'org': 'NVIDIA',
       'score': 72.2,
       'src': 'benchlm',
-      'rank': 165
+      'rank': 167
     },
     {
       'model': 'GPT-5 nano',
       'org': 'OpenAI',
       'score': 71.2,
       'src': 'benchlm',
-      'rank': 166
+      'rank': 168
     },
     {
       'model': 'ZAYA1-8B',
       'org': 'Zyphra',
       'score': 71,
       'src': 'benchlm',
-      'rank': 167
+      'rank': 169
     },
     {
       'model': 'MiniCPM5-2B',
       'org': 'OpenBMB',
       'score': 70.2,
       'src': 'aa',
-      'rank': 168
+      'rank': 170
     },
     {
       'model': 'MiniMax M1 80k',
       'org': 'MiniMax',
       'score': 69.7,
       'src': 'aa',
-      'rank': 169
+      'rank': 171
     },
     {
       'model': 'GPT-OSS 20B',
       'org': 'OpenAI',
       'score': 68.8,
       'src': 'aa',
-      'rank': 170
+      'rank': 172
     },
     {
       'model': 'Claude 4 Sonnet',
       'org': 'Anthropic',
       'score': 68.3,
       'src': 'aa',
-      'rank': 171
+      'rank': 173
     },
     {
       'model': 'Gemini 2.5 Flash',
       'org': 'Google',
       'score': 68.3,
       'src': 'aa',
-      'rank': 172
+      'rank': 174
     },
     {
       'model': 'Mistral Large 3',
       'org': 'Mistral',
       'score': 68,
       'src': 'aa',
-      'rank': 173
+      'rank': 175
     },
     {
       'model': 'Llama 4 Maverick',
       'org': 'Meta',
       'score': 67.1,
       'src': 'aa',
-      'rank': 174
+      'rank': 176
     },
     {
       'model': 'GPT-4.1',
       'org': 'OpenAI',
       'score': 66.6,
       'src': 'aa',
-      'rank': 175
+      'rank': 177
     },
     {
       'model': 'Granite 4.2 30B',
       'org': 'IBM',
       'score': 66.4,
       'src': 'benchlm',
-      'rank': 176
+      'rank': 178
     },
     {
       'model': 'GPT-4.1 mini',
       'org': 'OpenAI',
       'score': 66.4,
       'src': 'aa',
-      'rank': 177
+      'rank': 179
     },
     {
       'model': 'Granite 4.2 8B',
       'org': 'IBM',
       'score': 64.1,
       'src': 'benchlm',
-      'rank': 178
+      'rank': 180
     },
     {
       'model': 'Grok 4.1 Fast',
       'org': 'xAI',
       'score': 63.7,
       'src': 'aa',
-      'rank': 179
+      'rank': 181
     },
     {
       'model': 'Sarvam 30B',
       'org': 'Sarvam',
       'score': 63.3,
       'src': 'aa',
-      'rank': 180
+      'rank': 182
     },
     {
       'model': 'GLM-4.6',
       'org': 'Z.AI',
       'score': 63.2,
       'src': 'aa',
-      'rank': 181
+      'rank': 183
     },
     {
       'model': 'Celeris-1',
       'org': 'Celeris',
       'score': 63.1,
       'src': 'aa',
-      'rank': 182
+      'rank': 184
     },
     {
       'model': 'Exaone 4.0 32B',
       'org': 'LG AI Research',
       'score': 62.8,
       'src': 'aa',
-      'rank': 183
+      'rank': 185
     },
     {
       'model': 'Qwen3-Omni-30B-A3B-Instruct',
       'org': 'Alibaba',
       'score': 62,
       'src': 'aa',
-      'rank': 184
+      'rank': 186
     },
     {
       'model': 'DeepSeek R1 Distill Qwen 32B',
       'org': 'DeepSeek',
       'score': 61.5,
       'src': 'aa',
-      'rank': 185
+      'rank': 187
     },
     {
       'model': 'Claude 3.5 Sonnet',
       'org': 'Anthropic',
       'score': 59.4,
       'src': 'benchlm',
-      'rank': 186
+      'rank': 188
     },
     {
       'model': 'Ling 2.6 Flash',
       'org': 'InclusionAI',
       'score': 59.3,
       'src': 'aa',
-      'rank': 187
+      'rank': 189
     },
     {
       'model': 'DeepSeek V3',
       'org': 'DeepSeek',
       'score': 59.1,
       'src': 'benchlm',
-      'rank': 188
+      'rank': 190
     },
     {
       'model': 'Gemini 1.5 Pro',
       'org': 'Google',
       'score': 58.9,
       'src': 'aa',
-      'rank': 189
+      'rank': 191
     },
     {
       'model': 'Llama 4 Scout',
       'org': 'Meta',
       'score': 58.7,
       'src': 'aa',
-      'rank': 190
+      'rank': 192
     },
     {
       'model': 'Gemma 4 E4B',
       'org': 'Google',
       'score': 58.6,
       'src': 'benchlm',
-      'rank': 191
+      'rank': 193
     },
     {
       'model': 'GLM-4.7-Flash',
       'org': 'Z.AI',
       'score': 58.1,
       'src': 'aa',
-      'rank': 192
+      'rank': 194
     },
     {
       'model': 'Mistral Medium 3',
       'org': 'Mistral',
       'score': 57.8,
       'src': 'aa',
-      'rank': 193
+      'rank': 195
     },
     {
       'model': 'Mellum2-12B-A2.5B-Thinking',
       'org': 'JetBrains',
       'score': 57.6,
       'src': 'benchlm',
-      'rank': 194
+      'rank': 196
     },
     {
       'model': 'Phi-4',
       'org': 'Microsoft',
       'score': 57.5,
       'src': 'aa',
-      'rank': 195
+      'rank': 197
     },
     {
       'model': 'ZAYA1-74B-Preview',
       'org': 'Zyphra',
       'score': 57.3,
       'src': 'benchlm',
-      'rank': 196
+      'rank': 198
     },
     {
       'model': 'Ministral 3 14B (Reasoning)',
       'org': 'Mistral',
       'score': 57.2,
       'src': 'aa',
-      'rank': 197
+      'rank': 199
     },
     {
       'model': 'Ministral 3 14B',
       'org': 'Mistral',
       'score': 57.2,
       'src': 'aa',
-      'rank': 198
+      'rank': 200
     },
     {
       'model': 'Solar Pro 2',
       'org': 'Upstage',
       'score': 56.1,
       'src': 'aa',
-      'rank': 199
+      'rank': 201
     },
     {
       'model': 'Granite 4.2 3B',
       'org': 'IBM',
       'score': 55.9,
       'src': 'aa',
-      'rank': 200
+      'rank': 202
     },
     {
       'model': 'LFM2.5-2.6B',
       'org': 'LiquidAI',
       'score': 55.8,
       'src': 'aa',
-      'rank': 201
+      'rank': 203
     },
     {
       'model': 'GPT-4o',
       'org': 'OpenAI',
       'score': 54.3,
       'src': 'aa',
-      'rank': 202
+      'rank': 204
     },
     {
       'model': 'Llama 3.1 405B',
       'org': 'Meta',
       'score': 51.5,
       'src': 'aa',
-      'rank': 203
+      'rank': 205
     },
     {
       'model': 'LFM2.5-8B-A1B',
       'org': 'LiquidAI',
       'score': 51.3,
       'src': 'aa',
-      'rank': 204
+      'rank': 206
     },
     {
       'model': 'GPT-4.1 nano',
       'org': 'OpenAI',
       'score': 51.2,
       'src': 'aa',
-      'rank': 205
+      'rank': 207
     },
     {
       'model': 'Nova Pro',
       'org': 'Amazon',
       'score': 49.9,
       'src': 'aa',
-      'rank': 206
+      'rank': 208
     },
     {
       'model': 'Ultravox v0.6 Llama 3.3 70B',
       'org': 'Fixie AI',
       'score': 49.8,
       'src': 'aa',
-      'rank': 207
+      'rank': 209
     },
     {
       'model': 'Claude 3 Opus',
       'org': 'Anthropic',
       'score': 48.9,
       'src': 'aa',
-      'rank': 208
+      'rank': 210
     },
     {
       'model': 'Mistral Large 2',
       'org': 'Mistral',
       'score': 48.6,
       'src': 'aa',
-      'rank': 209
+      'rank': 211
     },
     {
       'model': 'LFM2-24B-A2B',
       'org': 'LiquidAI',
       'score': 47.4,
       'src': 'aa',
-      'rank': 210
+      'rank': 212
     },
     {
       'model': 'Ministral 3 8B (Reasoning)',
       'org': 'Mistral',
       'score': 47.1,
       'src': 'aa',
-      'rank': 211
+      'rank': 213
     },
     {
       'model': 'Ministral 3 8B',
       'org': 'Mistral',
       'score': 47.1,
       'src': 'aa',
-      'rank': 212
+      'rank': 214
     },
     {
       'model': 'Soofi S 30B-A3B',
       'org': 'Soofi Project',
       'score': 43.4,
       'src': 'benchlm',
-      'rank': 213
+      'rank': 215
     },
     {
       'model': 'Gemma 4 E2B',
       'org': 'Google',
       'score': 43.4,
       'src': 'benchlm',
-      'rank': 214
+      'rank': 216
     },
     {
       'model': 'Gemma 3 27B',
       'org': 'Google',
       'score': 42.8,
       'src': 'aa',
-      'rank': 215
+      'rank': 217
     },
     {
       'model': 'GPT-4o mini',
       'org': 'OpenAI',
       'score': 42.6,
       'src': 'aa',
-      'rank': 216
+      'rank': 218
     },
     {
       'model': 'Exaone 4.0 1.2B',
       'org': 'LG AI Research',
       'score': 42.4,
       'src': 'aa',
-      'rank': 217
+      'rank': 219
     },
     {
       'model': 'Qwen2.5 Coder 32B Instruct',
       'org': 'Alibaba',
       'score': 41.7,
       'src': 'aa',
-      'rank': 218
+      'rank': 220
     },
     {
       'model': 'Mellum2-12B-A2.5B-Instruct',
       'org': 'JetBrains',
       'score': 40.9,
       'src': 'benchlm',
-      'rank': 219
+      'rank': 221
     },
     {
       'model': 'Claude 3 Haiku',
       'org': 'Anthropic',
       'score': 37.4,
       'src': 'aa',
-      'rank': 220
+      'rank': 222
     },
     {
       'model': 'Ministral 3 3B (Reasoning)',
       'org': 'Mistral',
       'score': 35.8,
       'src': 'aa',
-      'rank': 221
+      'rank': 223
     },
     {
       'model': 'Ministral 3 3B',
       'org': 'Mistral',
       'score': 35.8,
       'src': 'aa',
-      'rank': 222
+      'rank': 224
     },
     {
       'model': 'LFM2.5-1.2B-Thinking',
       'org': 'LiquidAI',
       'score': 33.9,
       'src': 'aa',
-      'rank': 223
+      'rank': 225
     },
     {
       'model': 'LFM2.5-1.2B-Instruct',
       'org': 'LiquidAI',
       'score': 32.6,
       'src': 'aa',
-      'rank': 224
+      'rank': 226
     },
     {
       'model': 'Phi-4 Multimodal Instruct',
       'org': 'Microsoft',
       'score': 31.5,
       'src': 'aa',
-      'rank': 225
+      'rank': 227
     },
     {
       'model': 'LFM2.5-VL-1.6B-Extract',
       'org': 'LiquidAI',
       'score': 28.9,
       'src': 'aa',
-      'rank': 226
-    },
-    {
-      'model': 'Granite-4.0-1B',
-      'org': 'IBM',
-      'score': 28.1,
-      'src': 'aa',
-      'rank': 227
+      'rank': 228
     },
     {
       'model': 'Gemini 1.0 Pro',
       'org': 'Google',
       'score': 27.7,
       'src': 'aa',
-      'rank': 228
+      'rank': 229
     },
     {
       'model': 'Granite-4.0-H-1B',
       'org': 'IBM',
       'score': 26.3,
       'src': 'aa',
-      'rank': 229
+      'rank': 230
     },
     {
       'model': 'Granite-4.0-350M',
       'org': 'IBM',
       'score': 26.1,
       'src': 'aa',
-      'rank': 230
+      'rank': 231
     },
     {
       'model': 'LFM2.5-VL-450M',
       'org': 'LiquidAI',
       'score': 25.7,
       'src': 'benchlm',
-      'rank': 231
+      'rank': 232
     },
     {
       'model': 'Granite-4.0-H-350M',
       'org': 'IBM',
       'score': 25.7,
       'src': 'aa',
-      'rank': 232
+      'rank': 233
     },
     {
       'model': 'LFM2.5-230M',
       'org': 'LiquidAI',
       'score': 25.4,
       'src': 'benchlm',
-      'rank': 233
+      'rank': 234
     }
   ]
 };
