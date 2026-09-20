@@ -139,6 +139,44 @@ window.MODEL_MAP = {
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   vendorDefaultColor: "#8A8F98",
+  // 厂商色:表格里的模型色点与「厂商」列文字共用同一色,使同一厂商的模型与厂商名颜色一致。
+  // 与上面逐模型的 color 分工不同 —— color 是模型身份色(图表/雷达按模型区分曲线时仍用它),
+  // vendorColors 是厂商身份色(只用于表格里的色点与厂商列)。新增厂商时在此补一行即可,漏补则落 vendorDefaultColor 灰。
+  // 两条约束:
+  // 1) 全部取值按文字色标准取对比度 —— 因为厂商色会用在小号文字上,不能沿用只当色点用的深色。
+  //    实测(暗底下最小对比度):常态六种底(表格底 / 表头底 / 四种行状态底色)全部 ≥4.5:1;
+  //    悬停行底色(alpha .26)会把任何彩色文字的上限压到约 4,故悬停态守 3:1(瞬时态 + 行首 3px 竖条定位)。
+  //    改这些色值前先按同一口径核算,尤其是深色品牌色(如 Cohere #39594D 当文字只有 2.2:1,必须提亮);
+  // 2) 26 家厂商无法两两色相独立(蓝系天然 7 家),同一色相带内按明度分档;
+  //    色点始终紧贴厂商文字,近似色不影响识别,颜色承担的是扫视归类与跨列呼应。
+  vendorColors: {
+    "OpenAI": "#35C7A4",            // 品牌青绿提亮
+    "Anthropic": "#E0855F",         // 品牌陶橙提亮
+    "Google": "#6BA5F7",            // 品牌蓝提亮
+    "Alibaba": "#FF9A3D",           // 品牌橙提亮
+    "DeepSeek": "#6E8CFF",          // 品牌蓝提亮
+    "Moonshot": "#B79CFF",          // 紫罗兰提亮
+    "zAI": "#818DE7",               // 靛蓝:压深一档与 DeepSeek 浅蓝区分;再提亮至常态 ≥4.5:1
+    "ByteDance": "#C77DFF",         // 品紫:自蓝系移出色相带,避开 7 家蓝系撞色
+    "MiniMax": "#FF6F9E",           // 品牌粉
+    "Tencent": "#23C6E6",           // 品牌青
+    "Microsoft": "#3FA8F0",         // 品牌天蓝提亮
+    "Meta": "#6791F2",              // 钴蓝:提亮至常态 ≥4.5:1
+    "xAI": "#B4BCC8",               // 中性浅灰(与品牌调性一致,且亮于未登记厂商的兜底灰)
+    "NVIDIA": "#9FD12C",            // 品牌黄绿提亮
+    "Mistral": "#FF8A66",           // 暖橙红:与 Anthropic 错开明度
+    "Xiaomi": "#FFB84D",            // 亮琥珀橙:与 Alibaba 同带错明度
+    "Cohere": "#4FC08D",            // 品牌深绿提亮
+    "LG AI Research": "#E67070",    // 砖红:提亮至常态 ≥4.5:1
+    "Dots": "#EF7A5C",              // 珊瑚橙红
+    "Qwen": "#FF9A3D",              // 与 Alibaba 同色:该 vendor 实为阿里模型(qwen3-vl-2b)单独建档所致
+    "STEALTH": "#9AA0C8",           // 匿名实验室:中性板岩紫,不主张品牌识别
+    "Thinking Machines": "#9FB4C4", // 板岩青灰
+    "North": "#A8B0BC",             // 灰
+    "Motif Technologies": "#C08FE0", // 淡紫
+    "Upstage": "#6FBFB0",           // 灰绿
+    "SK Telecom": "#EA6C81"         // 玫红:提亮至常态 ≥4.5:1
+  },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
   domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi"]
 };

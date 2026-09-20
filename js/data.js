@@ -107,6 +107,14 @@
     return fb;
   }
 
+  // 厂商身份色(表格里的模型色点与「厂商」列文字共用):取 MODEL_MAP.vendorColors,
+  // 未登记的厂商(含自动建档的「其他」)落 vendorDefaultColor。与 canon().color 分工不同 ——
+  // 后者是模型身份色,仍由图表按模型区分曲线时使用。
+  function vendorColor(vendor) {
+    var map = (window.MODEL_MAP && window.MODEL_MAP.vendorColors) || {};
+    return map[vendor] || (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98";
+  }
+
   // ===== DeepSWE:v1.1(每日刷新)与 v1.0(历史静态快照)合并 =====
   // 策略:v1.1 优先,同名模型按 canonical 去重只保留 v1.1;v1.0 独有的模型追加进来。
   // v1.1 内同 canonical 的多版本变体(如 Qwen3.8-Max 与其 0902 版)取最高 Pass@1 合为一条。
@@ -586,6 +594,7 @@
     to100: function (s) { return s == null ? null : s / MAX_GRADE * 100; },
     parseCell: parseCell,
     canon: canon,
+    vendorColor: vendorColor,
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
     webdev: webdev,

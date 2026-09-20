@@ -17,6 +17,26 @@
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>\"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" }[c]; }); };
   var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
+  // 表格里的模型色点 / 厂商列文字:统一取厂商身份色,使同一厂商的模型与其厂商名同色(便于按厂商扫视归类)。
+  // 模型名本身不上色(避免整表变成彩色文字墙);图表按模型区分曲线时仍用 canon.color,不走这两个助手。
+  // vname 的着色键固定用 canonical 厂商(与色点同一个键),第二参给实际显示的文案 ——
+  // 权威基准页的部分列表格显示来源侧 org 文案,用它当着色键会取不到色、与左侧色点脱节,故二者分离。
+  var vdot = function (vendor) { return dot(D.vendorColor(vendor)); };
+  var vname = function (vendor, label) {
+    return '<span style="color:' + D.vendorColor(vendor) + '">' + esc(label || vendor) + '</span>';
+  };
+  // 榜色数值包装(榜色类见 styles.css 的 .bv-*):v 为空时返回原色占位「—」——
+  // 占位符代表"该榜无此模型数据",上色会读成"这里有个值"
+  var bvSpan = function (tone, v) {
+    return v == null ? "—" : '<span class="bv bv-' + tone + '">' + v + '</span>';
+  };
+  // 给表头类数组的 [from, to] 列追加榜色类,使表头列名与格内数值同色(表头与数值共用 .bv-<tone> 绑定的 --bv-color)
+  var headTone = function (headerClasses, from, to, tone) {
+    for (var i = from; i <= to; i++) {
+      headerClasses[i] = (headerClasses[i] ? headerClasses[i] + " " : "") + "bv bv-" + tone;
+    }
+    return headerClasses;
+  };
   // "NEW" 徽标(近 7 天内首次上榜的模型);仅对判定为新的模型追加在模型名后
   var newBadge = function () { return ' <span class="badge-new">NEW</span>'; };
   // 版本徽标:区分 DeepSWE v1.1(默认每日刷新)与 v1.0(历史快照)数据来源
@@ -143,7 +163,9 @@
   }
 
   // 总览矩阵表的列定义:key=排序键;val=取值函数;type=数据类型;bench=是否评测列(排序时过滤无值);
-  // grp=分组表头归属(bench 列须按 grp 连续排列,供两级表头 colspan 合并:"基准"=第三方公开榜单,"实测"=站主实测)
+  // grp=分组表头归属(bench 列须按 grp 连续排列,供两级表头 colspan 合并:"基准"=第三方公开榜单,"实测"=站主实测);
+  // tone=该榜的数据色类后缀(bv-<tone>),表头列名与格内数值同色,色值见 styles.css 的 --bench-* ——
+  // 只给评测列标注,让同一列的数值颜色与列名对应,读者能一眼确认这个数出自哪个榜
   var MATRIX_COLS = [
     { key: "model",   label: "模型", type: "text", bench: false, val: function (r) { return r.id; } },
     { key: "vendor",  label: "厂商", type: "text", bench: false, val: function (r) { return r.vendor; } },
@@ -151,33 +173,34 @@
     // 排序取值用 -_posKey 取负:posKey 越小越好,取负后"降序=更好在前",与默认序一致;无 _posKey 时兜底综合分
     { key: "composite", label: "梯队", type: "num", bench: false,
       val: function (r) { return -(r._posKey != null ? r._posKey : CMP.composite(r)); } },
-    { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "基准",  val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
+    { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "基准", tone: "deepswe", val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
-    { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "基准",
+    { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "基准", tone: "tbench",
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
     // NL2Repo-Bench 自 2026-09-19 起移出总览矩阵(不再计入综合分与命中数),改由
     // 「权威基准测试」页仅展示;数据仍加载(data/nl2repo.js)供该页使用。
     // HLE / GPQA:权威知识·科学问答基准,在「榜单基准」组尾以仅参考列展示(refKey 同时驱动
     // 表头紧凑类与取值;短列头控宽,口径与「仅参考」说明放 th 悬浮提示);不进 unified、
     // 不计综合分与命中数,完整榜单见「权威基准测试」页
-    { key: "hle", label: "HLE", type: "num", bench: true, grp: "基准", refKey: "hle",
+    { key: "hle", label: "HLE", type: "num", bench: true, grp: "基准", refKey: "hle", tone: "hle",
       tip: "Humanity's Last Exam 闭卷得分(%):2500 道专家撰写、无联网可检索解的前沿题,越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页",
       val: function (r) { var m = refIndex().hle[r.id]; return m ? m.score : null; } },
-    { key: "gpqa", label: "GPQA", type: "num", bench: true, grp: "基准", refKey: "gpqa",
+    { key: "gpqa", label: "GPQA", type: "num", bench: true, grp: "基准", refKey: "gpqa", tone: "gpqa",
       tip: "GPQA Diamond Accuracy(%):研究生级科学多选问答(198 题最难子集,生物/物理/化学),越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页",
       val: function (r) { var m = refIndex().gpqa[r.id]; return m ? m.score : null; } },
     // ModelDial 雷达单值列(归入「实测」组首位):第三方独立实测的综合能力分
     // (0-100,后端 40%/前端 30%/知识 30% 加权);计入综合分与命中数;
     // 格内为综合分,口径与分项/耗时/费用放 th 悬浮提示;完整榜见「ModelDial」页
-    { key: "modeldial", label: "ModelDial (综合分)", type: "num", bench: true, grp: "实测",
+    { key: "modeldial", label: "ModelDial (综合分)", type: "num", bench: true, grp: "实测", tone: "modeldial",
       tip: "ModelDial 雷达综合分(0-100):第三方独立实测,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;计入综合分(权重 12%)与命中数",
       val: function (r) { return r.modeldial ? r.modeldial.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):归入「实测」组(社区盲测竞技场);排序时仅显示有值的模型
-    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "实测",
+    { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
-    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "实测", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
+    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "实测", tone: "llm", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
-    { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true, grp: "实测",
+    // 该列的 tone 只作用于表头 —— 格内两个方向分沿用 .ac-fe/.ac-be 方向色(方向信息优先于榜色)
+    { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true, grp: "实测", tone: "aicap",
       val: function (r) {
         var vals = [];
         if (r.aicapFe) vals.push(r.aicapFe.score);
@@ -330,20 +353,23 @@
       // 不参与排名的行(命中<4榜):梯队列与序号列均显示「—」
       var unranked = inserted;
       // HLE/GPQA 仅参考单元格:分数 + 悬浮(排名与「仅参考」口径说明);无数据显示「—」
-      var refCell = function (key, label) {
+      // 分数按所在榜的数据色(bv-<tone>)着色,与表头列名同色
+      var refCell = function (key, label, tone) {
         var m = refIndex()[key][r.id];
         if (!m) return "—";
         var meta = [label + " 权威基准 · 仅参考,不计入综合分与命中数"];
         if (m.rank != null) meta.push("排名 #" + m.rank);
-        return '<span title="' + esc(meta.join(" · ")) + '">' + m.score + '%</span>';
+        return '<span class="bv bv-' + tone + '" title="' + esc(meta.join(" · ")) + '">' + m.score + '%</span>';
       };
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
       // 分数包一层 .cell-val 固定宽度轨道:分数位数不同(74% / 69.3%)时,版本徽标仍落在整列同一 x 上
       var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
         ? ' <span class="cell-cost">$' + r.deepswe.cost + '</span>' : "";
+      // 数值主体用 bv bv-<tone> 上该榜的数据色;±ci / $成本 / 版本徽标等辅助小字保持 .cell-cost 灰,
+      // 让"榜色标数值主体、灰字标元数据"这条分工在 13 列宽表里稳定成立
       var ds = r.deepswe
-        ? '<span class="cell-val">' + r.deepswe.pass1 + '%</span>' + verBadge(r.deepswe.version) + dsCost : "—";
+        ? '<span class="cell-val bv bv-deepswe">' + r.deepswe.pass1 + '%</span>' + verBadge(r.deepswe.version) + dsCost : "—";
       var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(2) : "-";
       // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci,后附折算综合分(norm 0-100)
       var wd = r.webdev ? r.webdev.score : null;
@@ -357,7 +383,7 @@
       if (r.tbench && r.tbench.effort) tbMeta.push(r.tbench.effort);
       var tbTitle = tbMeta.length ? ' title="' + esc(tbMeta.join(" · ")) + '"' : "";
       var tbHtml = r.tbench
-        ? '<span class="cell-val"' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
+        ? '<span class="cell-val bv bv-tbench"' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
           ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
         : "—";
       // ModelDial 单元格:综合分(0-100);悬浮显示三分项/推理强度/耗时/费用
@@ -372,7 +398,7 @@
         if (r.modeldial.elapsedMs != null) mdParts.push("耗时 " + fmtDur(r.modeldial.elapsedMs));
         if (r.modeldial.costUsd != null) mdParts.push("费用 " + fmtUsd(r.modeldial.costUsd) + "(后端轴口径)");
         if (r.modeldial.configs) mdParts.push(r.modeldial.configs + " 个配置取最高");
-        mdHtml = '<span title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
+        mdHtml = '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
       }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
@@ -386,8 +412,8 @@
       // 序号列:参与排名的行(命中≥4榜)按出现顺序编号;参考行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (unranked ? "—" : ++rankNo) + '</td>' +
-        '<td>' + dot(r.color) + esc(r.id) + (nw ? newBadge() : "") + domBadge + insertedBadge + '</td>' +
-        '<td>' + esc(r.vendor) + '</td>' +
+        '<td>' + vdot(r.vendor) + esc(r.id) + (nw ? newBadge() : "") + domBadge + insertedBadge + '</td>' +
+        '<td>' + vname(r.vendor) + '</td>' +
         // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
         // 参考行不作梯队分档展示:梯队列显示「—」
         (function () {
@@ -403,13 +429,15 @@
         '<td class="num grp-start">' + ds + '</td>' +
         '<td class="num">' + tbHtml + '</td>' +
         // HLE/GPQA 仅参考列:属「榜单基准」组尾,组起点竖线 ds 不变
-        '<td class="num ref">' + refCell("hle", "HLE") + '</td>' +
-        '<td class="num ref">' + refCell("gpqa", "GPQA") + '</td>' +
+        '<td class="num ref">' + refCell("hle", "HLE", "hle") + '</td>' +
+        '<td class="num ref">' + refCell("gpqa", "GPQA", "gpqa") + '</td>' +
         // ModelDial 列:实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
         // 后续 WebDev/llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
-        '<td class="num">' + (wd != null ? wd + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
-        '<td class="num">' + lm + '</td>' +
+        // WebDev 仅给 Elo 原值上色,其后的 ±ci 与折算综合分属元数据,保持灰
+        '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
+        '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
+        // AI 能力列:格内两个方向分沿用自己的方向色(ac-fe 橙 / ac-be 蓝),不用该榜的榜色 —— 方向信息优先
         '<td class="num">' + aicapCell(r) + '</td>' +
         '<td class="num">' + r.benchCount + '/6</td></tr>';
     });
@@ -429,6 +457,8 @@
       if (active) classes.push("sort-active");
       if (c.type === "num") classes.push("num");
       if (c.refKey) classes.push("ref"); // HLE/GPQA 仅参考列:紧凑单元格样式
+      // 榜色:表头列名与格内数值同色,便于把颜色对回榜单(色值见 styles.css 的 --bench-*)
+      if (c.tone) { classes.push("bv", "bv-" + c.tone); }
       if (extra) classes.push(extra);
       var cls = classes.length ? ' class="' + classes.join(" ") + '"' : "";
       var tip = (c.tip ? esc(c.tip) + " " : "") + "点击按此列排序";
@@ -509,12 +539,12 @@
     // 表格:模型名后挂版本徽章(v1.1/v1.0);NEW 徽标在其后
     var html = ms.map(function (m, i) {
       var nw = D.isNewRaw("deepswe", m.name);
-      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + verBadge(m.version) + (nw ? newBadge() : "") + '</td>' +
-        '<td>' + esc(m.effort) + '</td><td class="num">' + m.pass1 + '±' + m.ci + '%</td>' +
+      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.name) + verBadge(m.version) + (nw ? newBadge() : "") + '</td>' +
+        '<td>' + esc(m.effort) + '</td><td class="num"><span class="bv bv-deepswe">' + m.pass1 + '±' + m.ci + '%</span></td>' +
         '<td class="num">$' + m.cost + '</td><td class="num">' + fmtK(m.outTok) + '</td><td class="num">' + m.steps + '</td></tr>';
     });
     fillTable("dsTable", ["#", "模型", "强度", "Pass@1", "平均成本", "输出tokens", "步数"], html,
-      ["", "", "", "num", "num", "num", "num"]);
+      ["", "", "", "num bv bv-deepswe", "num", "num", "num"]);
     // 脚注:说明 v1.1(每日刷新)+ v1.0(历史快照)的构成与计数
     var dsvc = D.deepSweVersionCounts();
     document.getElementById("dsNote").textContent = "来源:" + src.url + " · v1.1 更新 " + (src.updated || "") + " · v1.0 历史快照(" + ((window.DEEPSWE_V10 && window.DEEPSWE_V10.captured) || "") + ") · " +
@@ -553,17 +583,18 @@
     // 明细表
     var html = rows.map(function (r, i) {
       var nw = D.isNewRaw("llm", r.model);
-      var tds = '<td class="rank">' + (i + 1) + '</td><td>' + dot(r.canon.color) + esc(r.model) + (nw ? newBadge() : "") + '</td>';
+      var tds = '<td class="rank">' + (i + 1) + '</td><td>' + vdot(r.canon.vendor) + esc(r.model) + (nw ? newBadge() : "") + '</td>';
       r.cells.forEach(function (c) {
         tds += '<td class="num">' + lmCellHtml(c) + '</td>';
       });
-      tds += '<td class="num">' + (r.norm != null ? r.norm.toFixed(2) : "-") + '</td>';
+      tds += '<td class="num"><span class="bv bv-llm">' + (r.norm != null ? r.norm.toFixed(2) : "-") + '</span></td>';
       tds += '<td>' + esc(r.ide) + '</td><td class="num">' + (r.think ? "是" : "否") + '</td>';
       return '<tr class="' + (nw ? "row-new" : "") + '">' + tds + '</tr>';
     });
     // 表头:各 project 列与综合分/思考为数值列,加 num 类居中;#、模型、IDE/CLI 为文本列
+    // 综合分列与格内数值同色(bv bv-llm);各 project 列保持源站的等级色(g-A/g-B/…),不覆盖为榜色
     var lmHeaders = ["#", "模型"].concat(xLabels).concat(["综合分(/100)", "IDE/CLI", "思考"]);
-    var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num", "", "num"]);
+    var lmHeadCls = ["", ""].concat(xLabels.map(function () { return "num"; })).concat(["num bv bv-llm", "", "num"]);
     fillTable("lmTable", lmHeaders, html, lmHeadCls);
     // 底部说明按结构分块:标签固定在左,内容为数组时逐行展示(档位/项目等长文案分行更易读)
     // 档位/项目说明优先用数据快照携带的源站官方文案(notes,随每日刷新同步);
@@ -643,15 +674,18 @@
         sorted.map(function (m) { return m.score; }), CH.brand(), "%", { max: 100, left: 190, labelSize: 11 }));
     });
     // 表格:模型名(厂商色圆点 + effort·platform 次要信息)/ 厂商 / 方向分 / 参考
+    // 方向分沿用 .ac-fe / .ac-be 方向色(与总览矩阵格内一致),不另引入该榜的榜色 —— 方向信息优先于榜色
     function dirTable(id, models) {
+      var dirCls = id === "capBeTable" ? "ac-be" : "ac-fe";
       var html = models.map(function (m, i) {
         var sub = [m.effort, m.platform].filter(Boolean).join(" · ");
-        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) +
+        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.name) +
           (sub ? ' <span class="cell-cost">' + esc(sub) + '</span>' : "") + '</td>' +
-          '<td>' + esc(m.vendorDisplay || m.vendor) + '</td><td class="num">' + m.score + '</td>' +
+          '<td>' + vname(m.canon.vendor, m.vendorDisplay || m.vendor) + '</td>' +
+          '<td class="num"><span class="' + dirCls + '">' + m.score + '</span></td>' +
           '<td class="num">' + (m.pct != null ? m.pct + "%" : "—") + '</td></tr>';
       });
-      fillTable(id, ["#", "模型", "厂商", "方向分", "参考"], html, ["", "", "", "num", "num"]);
+      fillTable(id, ["#", "模型", "厂商", "方向分", "参考"], html, ["", "", "", "num " + dirCls, "num"]);
     }
     dirTable("capFeTable", data.frontend);
     dirTable("capBeTable", data.backend);
@@ -709,40 +743,41 @@
     // 源站决策标记转中文(源站为英文枚举 recommended/value/speed/lightweight)
     var TAG_CN = { recommended: "推荐", value: "高性价比", speed: "快速", lightweight: "轻量" };
     // 主榜表:排名 / 模型(厂商色点) / 厂商 / 综合分 / 后端 / 前端 / 知识 / 耗时 / 费用 / 配置数
+    // 综合分与三个分项都是 ModelDial 自己的数值,统一上该榜数据色;耗时/费用属元数据,不上色
     var rows = ms.map(function (m) {
       var tagList = (m.tags || []).map(function (t) { return TAG_CN[t] || t; });
       var tag = tagList.length ? ' <span class="badge-two" title="源站标记">' + esc(tagList.join("/")) + '</span>' : "";
       return '<tr><td class="rank">' + m.rank + '</td>' +
-        '<td>' + dot(m.canon.color) + esc(m.canon.id) + tag +
+        '<td>' + vdot(m.canon.vendor) + esc(m.canon.id) + tag +
           (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
-        '<td>' + esc(m.canon.vendor) + '</td>' +
-        '<td class="num">' + m.overall.toFixed(1) + '</td>' +
-        '<td class="num">' + (m.backend != null ? m.backend : "—") + '</td>' +
-        '<td class="num">' + (m.frontend != null ? m.frontend : "—") + '</td>' +
-        '<td class="num">' + (m.knowledge != null ? m.knowledge : "—") + '</td>' +
+        '<td>' + vname(m.canon.vendor) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", m.overall.toFixed(1)) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", m.backend != null ? m.backend : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", m.frontend != null ? m.frontend : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", m.knowledge != null ? m.knowledge : null) + '</td>' +
         '<td class="num">' + fmtDur(m.elapsedMs) + '</td>' +
         '<td class="num">' + fmtUsd(m.costUsd) + '</td>' +
         '<td class="num">' + (m.configs || 1) + '</td></tr>';
     });
     fillTable("mdTable",
       ["#", "模型", "厂商", "综合分", "后端", "前端", "知识", "耗时", "费用", "配置"],
-      rows, ["", "", "", "num", "num", "num", "num", "num", "num", "num"]);
+      rows, headTone(["", "", "", "num", "num", "num", "num", "num", "num", "num"], 3, 6, "modeldial"));
     // config 明细:模型 × 推理强度,按源站 config 排名升序
     var cfgRows = cfgs.map(function (c) {
       return '<tr><td class="rank">' + (c.rank != null ? c.rank : "—") + '</td>' +
-        '<td>' + dot(c.canon.color) + esc(c.canon.id) +
+        '<td>' + vdot(c.canon.vendor) + esc(c.canon.id) +
           (c.effort ? ' <span class="cell-cost">' + esc(c.effort) + '</span>' : "") + '</td>' +
-        '<td>' + esc(c.canon.vendor) + '</td>' +
-        '<td class="num">' + (c.overall != null ? c.overall.toFixed(1) : "—") + '</td>' +
-        '<td class="num">' + (c.backend != null ? c.backend : "—") + '</td>' +
-        '<td class="num">' + (c.frontend != null ? c.frontend : "—") + '</td>' +
-        '<td class="num">' + (c.knowledge != null ? c.knowledge : "—") + '</td>' +
+        '<td>' + vname(c.canon.vendor) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", c.overall != null ? c.overall.toFixed(1) : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", c.backend != null ? c.backend : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", c.frontend != null ? c.frontend : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", c.knowledge != null ? c.knowledge : null) + '</td>' +
         '<td class="num">' + fmtDur(c.elapsedMs) + '</td>' +
         '<td class="num">' + fmtUsd(c.costUsd) + '</td></tr>';
     });
     fillTable("mdCfgTable",
       ["config #", "模型", "厂商", "综合分", "后端", "前端", "知识", "耗时", "费用"],
-      cfgRows, ["", "", "", "num", "num", "num", "num", "num", "num"]);
+      cfgRows, headTone(["", "", "", "num", "num", "num", "num", "num", "num"], 3, 6, "modeldial"));
     document.getElementById("mdCfgCount").textContent = "共 " + cfgs.length + " 条 config(模型 × 推理强度)";
     // 脚注:口径说明 + 成本口径提醒 + 来源
     document.getElementById("mdNote").innerHTML =
@@ -980,9 +1015,9 @@
   function buildTbRows(ms) {
     var mixed = mixedSrc(ms);
     return ms.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) +
         (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + (mixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.agent || "—") + '</td><td class="num">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</td>' +
+        '<td>' + esc(m.agent || "—") + '</td><td class="num"><span class="bv bv-tbench">' + m.score + '±' + (m.ci != null ? m.ci : "—") + '%</span></td>' +
         '<td class="num">' + esc(m.date || "—") + '</td><td class="num">' + esc(m.tokens || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
@@ -1005,7 +1040,7 @@
     authTbVer = meta.ver;
     var ms = D.tbenchByVersion(authTbVer);
     fillTable("authTBTable", ["#", "模型", "Agent", "解决率±CI", "发布日期", "Tokens", "成本"],
-      buildTbRows(ms), ["", "", "", "num", "num", "num", "num"]);
+      buildTbRows(ms), ["", "", "", "num bv bv-tbench", "num", "num", "num"]);
     var note = document.getElementById("authTBNote");
     if (note) note.innerHTML = tbNoteHtml(meta);
     var link = document.getElementById("authTBLink");
@@ -1046,8 +1081,8 @@
     var dsMs = D.deepSwe();
     var dsMixed = mixedSrc(dsMs);
     var dsAuthRows = dsMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.name) + verBadge(m.version) + (dsMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.effort || "—") + '</td><td class="num">' + m.pass1 + (m.ci != null ? '±' + m.ci : "") + '%</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.name) + verBadge(m.version) + (dsMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + esc(m.effort || "—") + '</td><td class="num"><span class="bv bv-deepswe">' + m.pass1 + (m.ci != null ? '±' + m.ci : "") + '%</span></td>' +
         '<td class="num">' + (m.cost != null ? '$' + m.cost : "—") + '</td>' +
         '<td class="num">' + (m.outTok != null ? fmtK(m.outTok) : "—") + '</td>' +
         '<td class="num">' + (m.steps != null ? m.steps : "—") + '</td></tr>';
@@ -1070,7 +1105,7 @@
     var tbs = S.tbscience || {};
     var tbsMs = D.tbScience();
     var tbsRows = tbsMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + '</td>' +
         '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + (m.ci != null ? '±' + m.ci + '%' : "%") + '</td></tr>';
     });
     html += authSectionHtml("Terminal-Bench-Science 0.1", "科研工作流 · 仅展示", tbs.announcementUrl || tbs.url,
@@ -1082,8 +1117,8 @@
     var osMs = D.osworld();
     var osMixed = mixedSrc(osMs);
     var osRows = osMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td' + (m.note ? ' title="' + esc(m.note) + '"' : "") + '>' + dot(m.canon.color) + esc(m.system) + (osMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td class="num">' + m.score + '%</td><td>' + esc(m.org || "—") + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td' + (m.note ? ' title="' + esc(m.note) + '"' : "") + '>' + vdot(m.canon.vendor) + esc(m.system) + (osMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td class="num">' + m.score + '%</td><td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
         '<td class="num">' + esc(m.reported || "—") + '</td>' +
         '<td>' + (m.url ? '<a href="' + esc(m.url) + '" target="_blank" rel="noopener">来源 ↗</a>' : "—") + '</td></tr>';
     });
@@ -1096,8 +1131,8 @@
     var aleMs = D.lastExam();
     var aleMixed = mixedSrc(aleMs);
     var aleRows = aleMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (aleMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (aleMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td><td class="num">' + m.score + '%</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td></tr>';
     });
     html += authSectionHtml("Agents' Last Exam", "真实专业工作流 · 仅展示", ale.officialUrl || ale.url,
@@ -1109,7 +1144,7 @@
     var arMs = D.arcagi3();
     var arMixed = mixedSrc(arMs);
     var arRows = arMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (arMixed ? srcBadge(m.src) : "") + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (arMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td class="num">' + m.score + '%</td><td class="num">' + esc(m.size || "—") + '</td>' +
         '<td class="num">' + esc(m.context || "—") + '</td><td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
@@ -1122,8 +1157,8 @@
     var bcData = D.benchcad();
     function bcTable(id, rows, cols, headCls) {
       var body = rows.map(function (m, i) {
-        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) +
-          (m.think ? ' <span class="cell-cost">' + esc(m.think) + '</span>' : "") + '</td><td>' + esc(m.org || "—") + '</td>' +
+        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) +
+          (m.think ? ' <span class="cell-cost">' + esc(m.think) + '</span>' : "") + '</td><td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
           cols.map(function (c) { return '<td class="num">' + (m[c] != null ? m[c] : "—") + '</td>'; }).join("") + '</tr>';
       });
       // 下方章节表格走懒填表(滚动临近才建 DOM),首屏章节(DeepSWE/TB)仍同步填
@@ -1144,8 +1179,8 @@
     var gpMs = D.gpqa();
     var gpMixed = mixedSrc(gpMs);
     var gpRows = gpMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (gpMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (gpMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td><td class="num">' + bvSpan("gpqa", m.score + '%') + '</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
@@ -1158,8 +1193,8 @@
     var hlMs = D.hle();
     var hlMixed = mixedSrc(hlMs);
     var hlRows = hlMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (hlMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (hlMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td><td class="num">' + bvSpan("hle", m.score + '%') + '</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
@@ -1173,8 +1208,8 @@
     var n2Ms = D.nl2repo();
     var n2Mixed = mixedSrc(n2Ms);
     var n2Rows = n2Ms.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + dot(m.canon.color) + esc(m.model) + (n2Mixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.org || "—") + '</td><td class="num">' + m.score + '%</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (n2Mixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td><td class="num">' + m.score + '%</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
@@ -1187,7 +1222,7 @@
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
     renderAuthOutline(); // 由已渲染章节生成左侧大纲预览
-    fillTable("authDeepSweTable", ["#", "模型", "强度", "Pass@1±CI", "平均成本", "输出tokens", "步数"], dsAuthRows, ["", "", "", "num", "num", "num", "num"]);
+    fillTable("authDeepSweTable", ["#", "模型", "强度", "Pass@1±CI", "平均成本", "输出tokens", "步数"], dsAuthRows, ["", "", "", "num bv bv-deepswe", "num", "num", "num"]);
     // TB 章节:定位章节容器,给来源注与标题原站链接补 id(authSectionHtml 不支持自定义 id),供版本切换时更新
     var tbTableEl = document.getElementById("authTBTable");
     var tbSec = tbTableEl ? tbTableEl.closest(".auth-block") : null;
@@ -1211,8 +1246,8 @@
     bcTable("authBCV2CTable", v2cRows, ["exec", "IoU-score", "total"], ["num", "num", "num"]);
     bcTable("authBCVQATable", vqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
     bcTable("authBCCQATable", cqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
-    authDeferTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num", "num", "num", "num"]);
-    authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num", "num", "num", "num"]);
+    authDeferTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num bv bv-gpqa", "num", "num", "num"]);
+    authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num bv bv-hle", "num", "num", "num"]);
     authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(

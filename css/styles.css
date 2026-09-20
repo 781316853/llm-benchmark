@@ -56,18 +56,20 @@
   --fab-shadow: 0 4px 16px rgba(45, 212, 191, .28);
   --fab-shadow-hover: 0 6px 22px rgba(45, 212, 191, .42);
 
-  /* 行状态底色(常态 / 悬停) */
+  /* 行状态底色(常态 / 悬停)
+     悬停一律取 alpha .26:总览矩阵 13 列宽、行高仅 8px 余,悬停若只在常态底色上做小幅 alpha 微调,
+     指针落在哪一行根本看不出来。四个参与悬停的状态取同一强度,换行时「当前行」的视觉重量不随语义色相变化 */
   --row-hover: rgba(45, 212, 191, .07);
   --row-hit: rgba(45, 212, 191, .1);
-  --row-hit-hover: rgba(45, 212, 191, .16);
+  --row-hit-hover: rgba(45, 212, 191, .26);
   --row-new: rgba(251, 191, 36, .11);
-  --row-new-hover: rgba(251, 191, 36, .18);
+  --row-new-hover: rgba(251, 191, 36, .26);
   --row-two: rgba(148, 163, 184, .1);
-  --row-two-hover: rgba(148, 163, 184, .16);
+  --row-two-hover: rgba(148, 163, 184, .26);
   --row-one: rgba(148, 163, 184, .05);
   --row-one-hover: rgba(148, 163, 184, .1);
   --row-domestic: rgba(248, 113, 113, .11);
-  --row-domestic-hover: rgba(248, 113, 113, .18);
+  --row-domestic-hover: rgba(248, 113, 113, .26);
 
   /* 徽标:前景 / 底色 / 描边三元组 */
   --bd-new-fg: #1A1206;
@@ -108,6 +110,19 @@
   --tier-D-a: #C08457; --tier-D-b: #A76C42;
   --tier-Ep-a: #F87171; --tier-Ep-b: #E05A5A;
   --tier-E-a: #DC5A5A; --tier-E-b: #BE4444;
+
+  /* 榜单数据色(每榜一色):总览矩阵与各榜单页的分数列用同色,表头列名与格内数值一致,
+     便于把颜色对回榜单。取值按"会当文字色用"的标准取 —— 实测常态六种底(表格底/表头底/四种行状态底色)
+     最小对比度 ≥4.5:1;悬停行底色(alpha .26)会把任何彩色文字的上限压到约 4,故悬停态守 3:1
+     (瞬时态 + 行首 3px 竖条定位)。只染数值主体,±ci / $成本 / 版本徽标等元数据不上榜色,保持 .cell-cost 灰 */
+  --bench-deepswe: #5EB8F0;
+  --bench-tbench: #B98CF5;
+  --bench-hle: #F08CC8;
+  --bench-gpqa: #6FD8A8;
+  --bench-modeldial: #E8B34D;
+  --bench-webdev: #F58C6E;
+  --bench-llm: #8E9BFF;
+  --bench-aicap: #4FD1D9;
 
   /* 图表配色:js/charts.js 从这些变量读取,保证图表与页面同主题 */
   --chart-text: #E6EDF3;
@@ -311,6 +326,23 @@ a:hover { text-decoration: underline; }
 #matrixTable tbody td.num .cell-val { display: inline-block; min-width: 5ch; }
 /* 版本徽标内数字等宽:同一列内 v1.0/v1.1、v4.0/v2.1 宽度一致,徽标后的小字起点随之对齐 */
 #matrixTable tbody td.num [class^="badge-"] { font-variant-numeric: tabular-nums; }
+/* ===== 榜单数据色:表头列名与格内数值同色 =====
+   每个榜一个类,类里只把该榜 token 绑到 --bv-color,再由统一的 .bv 落到 color ——
+   于是"数值"与"表头列名"共用同一条颜色规则,新增榜只需加一行 --bv-color 绑定。
+   表头那条必须带 #matrixTable:矩阵有二级表头,.data-table thead tr.col-row th 的 --text 特异性更高;
+   整块置于下方"可排序表头"之前 —— 与 .sort-active 特异性打平时按书写顺序让排序激活态胜出,
+   保证列头点击排序的反馈不被榜色吞掉。
+   .bv 的 var() 兜底 inherit:万一漏配 bv-<榜> 类,文字退回继承色,不会变成"无效值" */
+.bv-deepswe { --bv-color: var(--bench-deepswe); }
+.bv-tbench { --bv-color: var(--bench-tbench); }
+.bv-hle { --bv-color: var(--bench-hle); }
+.bv-gpqa { --bv-color: var(--bench-gpqa); }
+.bv-modeldial { --bv-color: var(--bench-modeldial); }
+.bv-webdev { --bv-color: var(--bench-webdev); }
+.bv-llm { --bv-color: var(--bench-llm); }
+.bv-aicap { --bv-color: var(--bench-aicap); }
+.bv { color: var(--bv-color, inherit); }
+#matrixTable thead th.bv, .data-table thead th.bv { color: var(--bv-color, inherit); }
 /* 可排序表头:点击排序交互 */
 .data-table thead th[data-key] { cursor: pointer; user-select: none; transition: color var(--dur-fast); }
 .data-table thead th[data-key]:hover { color: var(--accent); }
@@ -342,6 +374,15 @@ a:hover { text-decoration: underline; }
    置于 row-hit/row-new 之后,确保用户主动开启时国产高亮获得视觉优先 */
 .data-table tr.row-domestic { background: var(--row-domestic); }
 .data-table tr.row-domestic:hover { background: var(--row-domestic-hover); }
+/* 总览矩阵悬停行:在各行语义底色加强之外,行首再挂一条 3px 品牌色竖条 —— 13 列宽表里底色变化
+   不足以锁定指针所在行,竖条给出与列位置无关的定位锚点,且颜色不随行的语义色相变化,
+   跨榜/参考/新上榜/国产行的定位感一致。
+   用 tr 的 background-image 而非单元格 border:border-collapse 下加边框会改变单元格内容盒,
+   悬停瞬间整行横向抖动;渐变层不占布局,也不影响末列的单元格底色(列扫描高亮打在 td 上,层在其下)。
+   ID 选择器是为了压过上面 .row-*:hover 的 background 简写(简写会把 background-image 重置为 none),
+   不依赖两条规则的书写顺序。仅总览矩阵需要,其他表列少,只保留底色悬停 */
+#matrixTable tbody tr:hover {
+  background-image: linear-gradient(90deg, var(--accent) 0 3px, transparent 3px); }
 /* 排序后列扫描高亮:点击表头排序时给该列单元格一次短暂的底色扫过(app.js 打 .col-flash) */
 .col-flash { animation: colFlash 340ms var(--ease-out); }
 @keyframes colFlash {
@@ -404,6 +445,10 @@ a:hover { text-decoration: underline; }
   font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
 .ac-fe { color: var(--ac-fe); }
 .ac-be { color: var(--ac-be); }
+/* 方向色用在表头列名上时(AI 能力榜的「方向分」列):需带 .data-table thead 压过 thead th 的 --text-dim,
+   否则表头仍是灰字、与格内的方向色脱节,列名与数值同色这条约定就在该榜断掉了 */
+.data-table thead th.ac-fe { color: var(--ac-fe); }
+.data-table thead th.ac-be { color: var(--ac-be); }
 .ac-sep { color: var(--text-tertiary); font-size: var(--fs-2xs); margin: 0 2px; }
 .tier-Sp { background: linear-gradient(135deg, var(--tier-Sp-a), var(--tier-Sp-b)); }
 .tier-S  { background: linear-gradient(135deg, var(--tier-S-a),  var(--tier-S-b)); }
