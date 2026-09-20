@@ -10,10 +10,10 @@ window.LASTEXAM = {
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-20',
-  'refreshedAt': '2026-09-20 13:48',
+  'refreshedAt': '2026-09-21 00:42',
   'stats': {
     'tasks': 1490,
-    'entries': 21
+    'entries': 22
   },
   'desc': 'Agents\' Last Exam(ALE):UC Berkeley 主导的覆盖最广的专业工作流评测(1500+ 任务、55 子行业、300+ 领域专家共建),Pass@1 越高越好。',
   'models': [
@@ -105,6 +105,16 @@ window.LASTEXAM = {
       'rank': 7
     },
     {
+      'model': 'Step 5 Preview',
+      'org': 'StepFunAI',
+      'score': 29.5,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-09-20',
+      'src': 'datalearner',
+      'rank': 8
+    },
+    {
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
       'score': 28.6,
@@ -112,7 +122,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-07-24',
       'src': 'datalearner',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'GLM-5.3',
@@ -125,7 +135,7 @@ window.LASTEXAM = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'Kimi K3',
@@ -135,7 +145,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-07-16',
       'src': 'datalearner',
-      'rank': 10
+      'rank': 11
     },
     {
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
@@ -148,7 +158,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'rank': 11
+      'rank': 12
     },
     {
       'model': 'Qwen3.8-Max',
@@ -161,7 +171,7 @@ window.LASTEXAM = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -174,7 +184,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 3.75',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'GLM-5.3-Flash',
@@ -187,7 +197,7 @@ window.LASTEXAM = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'DeepSeek-V4-Pro',
@@ -197,16 +207,16 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-08-13',
       'src': 'datalearner',
-      'rank': 15
+      'rank': 16
     },
     {
-      'rank': 16,
+      'rank': 17,
       'model': 'DeepSeek-V4-Pro-0813',
       'org': 'DeepSeek',
       'score': 25.7,
       'size': '1.6T',
       'context': '1.0M',
-      'cost': '$ 0.43 / $ 0.87',
+      'cost': '$ 1.30 / $ 2.60',
       'license': null,
       'src': 'llm-stats'
     },
@@ -218,10 +228,10 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-04-24',
       'src': 'datalearner',
-      'rank': 17
+      'rank': 18
     },
     {
-      'rank': 18,
+      'rank': 19,
       'model': 'DeepSeek-V4-Flash-0731',
       'org': 'DeepSeek',
       'score': 25.2,
@@ -242,7 +252,7 @@ window.LASTEXAM = {
       'size': '125B',
       'context': '—',
       'cost': '—',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'Hy4 preview',
@@ -255,7 +265,7 @@ window.LASTEXAM = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'Qwen3.8-27B',
@@ -268,7 +278,7 @@ window.LASTEXAM = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
-      'rank': 21
+      'rank': 22
     }
   ]
 };

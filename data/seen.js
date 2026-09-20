@@ -225,6 +225,9 @@ window.SEEN = {
     'tbench|GLM-5.3-Flash': '2026-09-14',
     'tbench|Qwen3.8-Flash-Next': '2026-09-14',
     'llm|Seed-2.1-Pro 0915 (high)': '2026-09-18',
-    'tbench|SWE-2': '2026-09-19'
+    'tbench|SWE-2': '2026-09-19',
+    'deepswe|Step 5 Preview': '2026-09-20',
+    'datalearner|Step 5 Preview': '2026-09-20',
+    'tbench|Step 5 Preview': '2026-09-20'
   }
 };

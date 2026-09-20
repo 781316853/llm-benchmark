@@ -200,6 +200,14 @@ window.DATALEARNER = {
       'license': '有条件商用'
     },
     {
+      'name': 'Step 5 Preview',
+      'score': 67.7,
+      'mode': '思考模式 High（工具）',
+      'date': '2026-09-20',
+      'params': '6000亿',
+      'license': '闭源'
+    },
+    {
       'name': 'Grok 4.6',
       'score': 67.5,
       'mode': '思考模式 Medium（工具）',
@@ -236,14 +244,6 @@ window.DATALEARNER = {
       'score': 67,
       'mode': '极高强度思考（工具）',
       'date': '2026-04-23',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-6 Astra',
-      'score': 67,
-      'mode': '思考模式 Low（工具）',
-      'date': '2026-09-03',
       'params': '未知',
       'license': '闭源'
     }

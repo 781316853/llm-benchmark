@@ -11,9 +11,9 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
   updated: "2026-09-20",
-  refreshedAt: "2026-09-20 13:48",
+  refreshedAt: "2026-09-21 00:42",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 31 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 32 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -115,6 +115,16 @@ window.DEEPSWE = {
     'outTok': 81500,
     'steps': 98,
     'src': 'official'
+  },
+  {
+    'name': 'Step 5 Preview',
+    'effort': '思考模式 High（工具）',
+    'pass1': 67.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'datalearner'
   },
   {
     'name': 'Claude Fable 5.1',

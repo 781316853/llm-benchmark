@@ -15,7 +15,7 @@ window.TBENCH_V21 = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2.1',
   'updated': '2026-09-20',
-  'refreshedAt': '2026-09-20 13:48',
+  'refreshedAt': '2026-09-21 00:42',
   'stats': {
     'tasks': 89,
     'entries': 46
@@ -181,7 +181,7 @@ window.TBENCH_V21 = {
       'ci': null,
       'date': '2026-08-13',
       'tokens': null,
-      'cost': '$ 0.43 / $ 0.87',
+      'cost': '$ 1.30 / $ 2.60',
       'org': 'DeepSeek-AI',
       'size': '1.6T',
       'src': 'datalearner'

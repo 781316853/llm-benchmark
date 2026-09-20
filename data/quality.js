@@ -65,7 +65,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 31,
+      'modelCount': 32,
       'updated': '2026-09-20',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 220,
+      'modelCount': 221,
       'updated': '2026-09-20',
       'ageDays': 0,
       'completeness': 1,
@@ -109,7 +109,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 22,
       'updated': '2026-09-20',
       'ageDays': 0,
       'completeness': 1,
@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 23,
+      'modelCount': 24,
       'updated': '2026-09-20',
       'ageDays': 0,
       'completeness': 1,
@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 31,
+      'modelCount': 32,
       'updated': '2026-09-20',
       'ageDays': 0,
       'completeness': 1,
@@ -249,11 +249,11 @@ window.QUALITY = {
       ],
       'scores': {
         'ai_capability': 100.85,
-        'datalearner': 72.24,
+        'datalearner': 73.55,
         'deepswe_v11': 74
       },
-      'mean': 82.4,
-      'stddev': 13.09,
+      'mean': 82.8,
+      'stddev': 12.76,
       'flag': 'alert'
     },
     {
@@ -659,6 +659,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Step 5 Preview',
+      'name': 'Step 5 Preview',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 67.7,
+        'deepswe_v11': 67.7
+      },
+      'mean': 67.7,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Claude Fable 5.1',
       'name': 'Claude Fable 5.1',
       'vendor': 'Anthropic',
@@ -720,9 +736,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 31,
-      'complete': 31,
-      'modelCount': 31,
+      'total': 32,
+      'complete': 32,
+      'modelCount': 32,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -744,17 +760,17 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 220,
-      'complete': 220,
-      'modelCount': 220,
+      'total': 221,
+      'complete': 221,
+      'modelCount': 221,
       'missingFields': {},
       'flag': 'ok'
     },
     'lastexam': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 22,
+      'complete': 22,
+      'modelCount': 22,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -770,9 +786,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 23,
-      'complete': 23,
-      'modelCount': 23,
+      'total': 24,
+      'complete': 24,
+      'modelCount': 24,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -794,9 +810,9 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 31,
-      'complete': 31,
-      'modelCount': 31,
+      'total': 32,
+      'complete': 32,
+      'modelCount': 32,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -940,7 +956,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'ai_capability,datalearner,deepswe_v11',
-      'message': 'gpt-6-astra 跨源分数标准差 13.09(>10)'
+      'message': 'gpt-6-astra 跨源分数标准差 12.76(>10)'
     },
     {
       'level': 'error',
