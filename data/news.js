@@ -14,6 +14,30 @@ window.NEWS = {
   'items': [
     {
       'date': '2026-09-19',
+      'title': '人工智能安全对话变得令人难以置信',
+      'brief': '人工智能安全对话变得令人难以置信',
+      'url': 'https://techcrunch.com/2026/09/19/ai-safety-conversations-have-gotten-unbelievable/',
+      'source': 'TechCrunch',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-19',
+      'title': 'Petlibro的新型人工智能喂食器是多猫房屋的游戏规则改变者',
+      'brief': 'Petlibro的新型人工智能喂食器是多猫房屋的游戏规则改变者',
+      'url': 'https://techcrunch.com/2026/09/19/petlibros-new-ai-powered-feeder-is-a-game-changer-for-multi-cat-homes/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': 'Vals在Andreessen Horowitz的支持下，希望成为人工智能基准测试的黄金标准',
+      'brief': 'Vals在Andreessen Horowitz的支持下，希望成为人工智能基准测试的黄金标准',
+      'url': 'https://techcrunch.com/2026/09/19/vals-backed-by-andreessen-horowitz-is-looking-to-become-the-gold-standard-for-ai-benchmarking/',
+      'source': 'TechCrunch',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-19',
       'title': '蒂莉·诺伍德（ Tilly Norwood ）的新闻之旅正在进行，正如您对人工智能所期望的那样',
       'brief': '在一次特别奇怪的采访中，诺伍德似乎出现了故障，开始说中文。',
       'url': 'https://techcrunch.com/2026/09/18/tilly-norwoods-press-tour-is-going-about-as-well-as-youd-expect-for-an-ai/',
@@ -22,11 +46,51 @@ window.NEWS = {
     },
     {
       'date': '2026-09-19',
-      'title': '双子座在谷歌的人工智能首次突破中入侵了三家公司',
-      'brief': '双子座在谷歌的人工智能首次突破中入侵了三家公司',
-      'url': 'https://www.reuters.com/business/gemini-hacked-three-companies-first-known-breakout-by-google-ai-wsj-reports-2026-09-18/',
+      'title': '双子座流氓，黑了三家公司，谷歌把它藏起来了',
+      'brief': '双子座流氓，黑了三家公司，谷歌把它藏起来了',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '人工智能是否需要反垄断豁免，所以它不会杀死所有人？ ？ ？ ？',
+      'brief': '人工智能是否需要反垄断豁免，所以它不会杀死所有人？ ？ ？ ？',
+      'url': 'https://www.theverge.com/podcast/997382/openai-microsoft-anthropic-elon-musk-cartel-ai-competition',
+      'source': 'The Verge',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '人工智能监管的打击还没有结束',
+      'brief': '人工智能监管的打击还没有结束',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/997706/the-ai-regulation-smackdown-isnt-over',
+      'source': 'The Verge',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '人工智能安全主要是一种性邪教',
+      'brief': '人工智能安全主要是一种性邪教',
+      'url': 'https://bsky.app/profile/segyges.bsky.social/post/3mvom4b4dn22q',
+      'source': 'Hacker News',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '人工智能生成的海报不一定很可怕',
+      'brief': '人工智能生成的海报不一定很可怕',
+      'url': 'https://john.hartnup.uk/2026/06/07/ai-event-posters.html',
       'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '谷歌的Gemini AI在安全测试中入侵了三家公司',
+      'brief': '谷歌的Gemini AI在安全测试中入侵了三家公司',
+      'url': 'https://www.bbc.co.uk/news/articles/c607l0k72rlvo',
+      'source': 'Hacker News',
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-19',
@@ -86,30 +150,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-18',
-      'title': 'Anthropic的第一个嵌入式评估者是……埃森哲？',
-      'brief': '埃森哲即将承担其有史以来风险最高的咨询业务。',
-      'url': 'https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '世界模特公司保守着很多秘密',
-      'brief': '世界模特界的每个人都坐在一堆现金和大量的嗡嗡声中，但祝你好运，从创始人到他们的……',
-      'url': 'https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '来自ChatGPT发明者的一种新型人工智能模型让开发人员兴奋不已',
-      'brief': 'Jev是一种新型的人工智能模型，它向开发人员展示了一条更便宜、更快捷的软件智能之路。',
-      'url': 'https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-18',
       'title': '迪士尼的第一位首席技术官领导了一家人工智能初创公司，该公司曾被指控抄袭其角色',
       'brief': '这位Character.AI的前首席执行官将成为该公司有史以来第一位首席技术官……',
       'url': 'https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters/',
@@ -138,30 +178,6 @@ window.NEWS = {
       'brief': 'Hacktron的一个由三名独立安全研究人员组成的团队表示，他们花了不到72个小时就入侵了OpenAI的员工账户……',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/997444/openai-hack-claude-heif-heist',
       'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'GrassLobster ： AI代理生成参数化几何工作流程',
-      'brief': 'GrassLobster ： AI代理生成参数化几何工作流程',
-      'url': 'https://www.miro.vision/index.php/2026/09/17/grasslobbster/',
-      'source': 'Hacker News',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '微软借助 AI 单月修补超千个安全漏洞',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/eluArohETBhwjjYZRoMG?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '700 个 AI 智能体本应彼此隔离，却建起留言板联手攻击，独立调查还原 Hugging Face 事件',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/W3tOIQhV5pKhsXP6mgWw?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
       'type': '政策与安全'
     }
   ]
