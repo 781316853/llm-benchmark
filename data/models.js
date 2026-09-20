@@ -138,7 +138,9 @@ window.MODEL_MAP = {
     { id: "kimi-for-coding",  vendor: "Moonshot",  color: "#8B72FF", aliases: ["kimi-for-coding"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
-  vendorDefaultColor: "#8A8F98",
+  // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1
+  // (提亮自 #8A8F98:原值当文字在行状态底色上只有 4.31:1);同时保持"未登记 < North < xAI"的灰阶次序
+  vendorDefaultColor: "#9298A1",
   // 厂商色:表格里的模型色点与「厂商」列文字共用同一色,使同一厂商的模型与厂商名颜色一致。
   // 与上面逐模型的 color 分工不同 —— color 是模型身份色(图表/雷达按模型区分曲线时仍用它),
   // vendorColors 是厂商身份色(只用于表格里的色点与厂商列)。新增厂商时在此补一行即可,漏补则落 vendorDefaultColor 灰。
