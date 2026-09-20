@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-19',
+  'updated': '2026-09-20',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,20 +13,68 @@ window.NEWS = {
   ],
   'items': [
     {
+      'date': '2026-09-20',
+      'title': 'Meta 个人助手登顶美国 App Store；张雪机车发 5 款新车，最贵 13.8 万；淘宝闪购「制服」获法国设计最高奖，马云深度参与',
+      'brief': '传 Anthropic 计划在 IPO 前夕推出新一代 AI 模型助力资本市场信心 据路透社援引多名知情人士消息透露，全球顶尖人工智能初创企业 Anthropic 正考虑在公开首次募股（IPO）之前，正式发布其最新的旗舰级人工智能模型。这一战略举措旨在进一步巩固其在生成式 AI…',
+      'url': 'http://www.geekpark.net/news/370615',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-20',
+      'title': '“只剩一群用 LLM 的菜鸟”：顶级黑客怒退 PS5 Linux 项目，几个月心血全打水漂',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/kCUJZby0B8SZ6kIlULQD?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'React Native 的黄金时代，在 AI 手里结束了',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/wKbZ8JlwJX26gTsW8r2o?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'AI 时代架构往哪走？快手 AI 时代的架构演进思路｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/YoUBefokMC6MFP0otviQ?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': '九问 ScienceDiscovery：从纳米抗体到大飞机，AI 如何从“给答案”走向“做研究”',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/7V4eTBr4WwyJbQp7RTOK?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '特朗普表示，是时候用一个新名字重塑人工智能了--他也在创建一支人工智能部队',
+      'brief': '特朗普表示，是时候用一个新名字重塑人工智能了--他也在创建一支人工智能部队',
+      'url': 'https://techcrunch.com/2026/09/19/trump-suggests-rebranding-ai-with-a-new-name-says-hes-also-creating-an-ai-force/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-19',
+      'title': '谷歌的Gemini是攻击其他公司的最新AI模型',
+      'brief': '谷歌的Gemini是攻击其他公司的最新AI模型',
+      'url': 'https://techcrunch.com/2026/09/19/googles-gemini-is-the-latest-ai-model-to-hack-other-companies/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
       'date': '2026-09-19',
       'title': '人工智能安全对话变得令人难以置信',
       'brief': '人工智能安全对话变得令人难以置信',
       'url': 'https://techcrunch.com/2026/09/19/ai-safety-conversations-have-gotten-unbelievable/',
       'source': 'TechCrunch',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-19',
-      'title': 'Petlibro的新型人工智能喂食器是多猫房屋的游戏规则改变者',
-      'brief': 'Petlibro的新型人工智能喂食器是多猫房屋的游戏规则改变者',
-      'url': 'https://techcrunch.com/2026/09/19/petlibros-new-ai-powered-feeder-is-a-game-changer-for-multi-cat-homes/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-19',
@@ -38,30 +86,6 @@ window.NEWS = {
     },
     {
       'date': '2026-09-19',
-      'title': '蒂莉·诺伍德（ Tilly Norwood ）的新闻之旅正在进行，正如您对人工智能所期望的那样',
-      'brief': '在一次特别奇怪的采访中，诺伍德似乎出现了故障，开始说中文。',
-      'url': 'https://techcrunch.com/2026/09/18/tilly-norwoods-press-tour-is-going-about-as-well-as-youd-expect-for-an-ai/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '双子座流氓，黑了三家公司，谷歌把它藏起来了',
-      'brief': '双子座流氓，黑了三家公司，谷歌把它藏起来了',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '人工智能是否需要反垄断豁免，所以它不会杀死所有人？ ？ ？ ？',
-      'brief': '人工智能是否需要反垄断豁免，所以它不会杀死所有人？ ？ ？ ？',
-      'url': 'https://www.theverge.com/podcast/997382/openai-microsoft-anthropic-elon-musk-cartel-ai-competition',
-      'source': 'The Verge',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-19',
       'title': '人工智能监管的打击还没有结束',
       'brief': '人工智能监管的打击还没有结束',
       'url': 'https://www.theverge.com/ai-artificial-intelligence/997706/the-ai-regulation-smackdown-isnt-over',
@@ -70,25 +94,25 @@ window.NEWS = {
     },
     {
       'date': '2026-09-19',
-      'title': '人工智能安全主要是一种性邪教',
-      'brief': '人工智能安全主要是一种性邪教',
-      'url': 'https://bsky.app/profile/segyges.bsky.social/post/3mvom4b4dn22q',
+      'title': 'OpenAI和Anthropic超卖人工智能安全漏洞',
+      'brief': 'OpenAI和Anthropic超卖人工智能安全漏洞',
+      'url': 'https://nypost.com/2026/09/19/us-news/openai-anthropic-oversold-security-breaches-to-pressure-feds-into-protecting-turf-insiders/',
       'source': 'Hacker News',
       'type': '政策与安全'
     },
     {
       'date': '2026-09-19',
-      'title': '人工智能生成的海报不一定很可怕',
-      'brief': '人工智能生成的海报不一定很可怕',
-      'url': 'https://john.hartnup.uk/2026/06/07/ai-event-posters.html',
+      'title': '诉讼称， Anthropic、OpenAI和其他公司就人工智能放缓达成非法协议',
+      'brief': '诉讼称， Anthropic、OpenAI和其他公司就人工智能放缓达成非法协议',
+      'url': 'https://apnews.com/article/antitrust-lawsuit-ai-slowdown-anthropic-openai-spacexai-google-960af4308161eaf4ed13c383b0ce1c1b',
       'source': 'Hacker News',
-      'type': '行业动态'
+      'type': '政策与安全'
     },
     {
       'date': '2026-09-19',
-      'title': '谷歌的Gemini AI在安全测试中入侵了三家公司',
-      'brief': '谷歌的Gemini AI在安全测试中入侵了三家公司',
-      'url': 'https://www.bbc.co.uk/news/articles/c607l0k72rlvo',
+      'title': '人工智能安全主要是一种性邪教',
+      'brief': '人工智能安全主要是一种性邪教',
+      'url': 'https://bsky.app/profile/segyges.bsky.social/post/3mvom4b4dn22q',
       'source': 'Hacker News',
       'type': '政策与安全'
     },
@@ -123,62 +147,6 @@ window.NEWS = {
       'url': 'https://www.infoq.cn/article/G4tlQvg2IsabE0v1RDOE?utm_source=rss&utm_medium=article',
       'source': 'InfoQ',
       'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '一家建立其他初创公司的初创公司筹集了1亿美元，并全力投入物理人工智能',
-      'brief': 'UP.Labs现在以Vantora的名义开展业务，正在为工业公司建立初创公司。',
-      'url': 'https://techcrunch.com/2026/09/18/a-startup-that-builds-other-startups-raised-100m-and-is-all-in-on-physical-ai/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'Anthropic正在运营一个进行生物学实验的实验室',
-      'brief': '人工智能领导者一直承诺，人工智能是治愈人类疾病的关键。人类学研究人员也警告说，人工智能可能会杀死你……',
-      'url': 'https://techcrunch.com/2026/09/18/anthropic-is-operating-a-lab-that-conducts-biology-experiments/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '人工智能幻觉几乎引发美军军事行动',
-      'brief': '一位GovAI研究学者警告说： “对于服务人员来说，了解LLM固有的不确定性非常重要。”',
-      'url': 'https://techcrunch.com/2026/09/18/ai-hallucination-nearly-triggers-us-military-operation/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '迪士尼的第一位首席技术官领导了一家人工智能初创公司，该公司曾被指控抄袭其角色',
-      'brief': '这位Character.AI的前首席执行官将成为该公司有史以来第一位首席技术官……',
-      'url': 'https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '谷歌的新“CC”是一种人工智能代理，可帮助家庭经营家庭',
-      'brief': '谷歌正在将CC AI代理的重点重新放在家庭协调上，让家庭共享电子邮件、日程安排和任务，以便AI可以管理...',
-      'url': 'https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': 'Dario Amodei和其他人工智能领导者想“加快前沿步伐” ，但……如何做到？',
-      'brief': '一位人类学研究人员的末日警告震惊了人工智能世界一周后，该公司首席执行官Dario Amodei概述了他的计划，以“加快……',
-      'url': 'https://techcrunch.com/video/dario-amodei-and-other-ai-leaders-want-to-pace-the-frontier-buthow/',
-      'source': 'TechCrunch',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-18',
-      'title': '安全研究人员利用Claude帮助他们入侵OpenAI',
-      'brief': 'Hacktron的一个由三名独立安全研究人员组成的团队表示，他们花了不到72个小时就入侵了OpenAI的员工账户……',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997444/openai-hack-claude-heif-heist',
-      'source': 'The Verge',
-      'type': '政策与安全'
     }
   ]
 };

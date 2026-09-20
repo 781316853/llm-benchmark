@@ -1,4 +1,4 @@
-// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-19)
+// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-20)
 // 来源:https://llm-stats.com/benchmarks/gpqa(官方:https://epoch.ai/benchmarks/gpqa-diamond)
 // 补充:https://benchlm.ai/benchmarks/gpqa(benchlm 镜像,分数与 Diamond 口径一致)· https://benchlm.ai/benchmarks/aagpqadiamond(AA 复测口径)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -10,8 +10,8 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-09-19',
-  'refreshedAt': '2026-09-20 00:17',
+  'updated': '2026-09-20',
+  'refreshedAt': '2026-09-20 13:48',
   'stats': {
     'tasks': 198,
     'entries': 234
@@ -59,23 +59,23 @@ window.GPQA = {
     },
     {
       'rank': 6,
-      'model': 'GPT-5.6 Sol',
-      'org': 'OpenAI',
-      'score': 94.6,
-      'size': '—',
-      'context': '1.1M',
-      'cost': '$ 5.00 / $ 30.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 7,
       'model': 'Claude Mythos Preview',
       'org': 'Anthropic',
       'score': 94.6,
       'size': '—',
       'context': '—',
       'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 7,
+      'model': 'GPT-5.6 Sol',
+      'org': 'OpenAI',
+      'score': 94.6,
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 5.00 / $ 30.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -268,17 +268,6 @@ window.GPQA = {
     },
     {
       'rank': 29,
-      'model': 'GPT-5.2',
-      'org': 'OpenAI',
-      'score': 92.4,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.75 / $ 14.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 30,
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 92.4,
@@ -289,24 +278,35 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 31,
-      'model': 'GPT-5.6 Luna',
+      'rank': 30,
+      'model': 'GPT-5.2',
       'org': 'OpenAI',
-      'score': 92.3,
+      'score': 92.4,
       'size': '—',
-      'context': '1.1M',
-      'cost': '$ 0.20 / $ 1.20',
+      'context': '400K',
+      'cost': '$ 1.75 / $ 14.00',
       'license': null,
       'src': 'llm-stats'
     },
     {
-      'rank': 32,
+      'rank': 31,
       'model': 'Hy4 preview',
       'org': 'Tencent',
       'score': 92.3,
       'size': '770B',
       'context': '—',
       'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 32,
+      'model': 'GPT-5.6 Luna',
+      'org': 'OpenAI',
+      'score': 92.3,
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 0.20 / $ 1.20',
       'license': null,
       'src': 'llm-stats'
     },
@@ -456,12 +456,12 @@ window.GPQA = {
     },
     {
       'rank': 49,
-      'model': 'Qwen3.6 Plus',
-      'org': 'Alibaba Cloud / Qwen Team',
+      'model': 'Hy3',
+      'org': 'Tencent',
       'score': 90.4,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 0.50 / $ 3.00',
+      'size': '295B',
+      'context': '262K',
+      'cost': '$ 0.14 / $ 0.58',
       'license': null,
       'src': 'llm-stats'
     },
@@ -478,12 +478,12 @@ window.GPQA = {
     },
     {
       'rank': 51,
-      'model': 'Hy3',
-      'org': 'Tencent',
+      'model': 'Qwen3.6 Plus',
+      'org': 'Alibaba Cloud / Qwen Team',
       'score': 90.4,
-      'size': '295B',
-      'context': '262K',
-      'cost': '$ 0.14 / $ 0.58',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 0.50 / $ 3.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -578,23 +578,23 @@ window.GPQA = {
     },
     {
       'rank': 63,
-      'model': 'Muse Spark',
-      'org': 'Meta',
-      'score': 89.5,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 64,
       'model': 'Inkling-Small',
       'org': 'Thinking Machines Lab',
       'score': 89.5,
       'size': '276B',
       'context': '524K',
       'cost': '$ 0.30 / $ 1.20',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 64,
+      'model': 'Muse Spark',
+      'org': 'Meta',
+      'score': 89.5,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },
@@ -636,23 +636,23 @@ window.GPQA = {
     },
     {
       'rank': 69,
-      'model': 'Qwen3.5-397B-A17B',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 88.4,
-      'size': '397B',
-      'context': '262K',
-      'cost': '$ 0.45 / $ 3.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 70,
       'model': 'Grok-4 Heavy',
       'org': 'xAI',
       'score': 88.4,
       'size': '—',
       'context': '—',
       'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 70,
+      'model': 'Qwen3.5-397B-A17B',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 88.4,
+      'size': '397B',
+      'context': '262K',
+      'cost': '$ 0.45 / $ 3.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -665,23 +665,23 @@ window.GPQA = {
     },
     {
       'rank': 72,
-      'model': 'GPT-5 Medium',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 73,
-      'model': 'GPT-5.1 Instant',
+      'model': 'GPT-5.1',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
       'context': '400K',
       'cost': '$ 1.25 / $ 10.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 73,
+      'model': 'GPT-5.1 High',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },
@@ -698,18 +698,7 @@ window.GPQA = {
     },
     {
       'rank': 75,
-      'model': 'GPT-5.1',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.25 / $ 10.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 76,
-      'model': 'GPT-5.1 Thinking',
+      'model': 'GPT-5 Medium',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -719,8 +708,19 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 76,
+      'model': 'GPT-5.1 Instant',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.25 / $ 10.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'rank': 77,
-      'model': 'GPT-5.1 High',
+      'model': 'GPT-5.1 Thinking',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -789,23 +789,23 @@ window.GPQA = {
     },
     {
       'rank': 84,
-      'model': 'Qwen3 Max Thinking',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 87.4,
-      'size': '1.0T',
-      'context': '256K',
-      'cost': '$ 1.20 / $ 6.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 85,
       'model': 'DeepSeek-V4-Flash-0423',
       'org': 'DeepSeek',
       'score': 87.4,
       'size': '284B',
       'context': '1.0M',
       'cost': '$ 0.09 / $ 0.18',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 85,
+      'model': 'Qwen3 Max Thinking',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 87.4,
+      'size': '1.0T',
+      'context': '256K',
+      'cost': '$ 1.20 / $ 6.00',
       'license': null,
       'src': 'llm-stats'
     },
