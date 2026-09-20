@@ -1,11 +1,27 @@
 // 集中配置:数据源 URL / 传输参数 / 校验阈值
 // 所有硬编码常量收口于此,便于维护与调参。
 "use strict";
+const fs = require("fs");
 const path = require("path");
 
-const ROOT = process.cwd();
+// 项目根目录 = 本文件所在位置推导(scripts/lib/config.js 上溯两级)。
+// ⚠ 不可改回 process.cwd():根目录是「代码放在哪」的属性,不是「从哪启动」的属性。
+// 用启动目录推导时,只要从项目根之外运行任何脚本,DATA_DIR/SOURCES_DIR 就整体错位,而且失败是静默的:
+//   ① 别名表找不到 -> 所有模型退化成 vendor=「其他」的自动建档条目(交叉验证拿幽灵条目互比,不报错)
+//   ② 源目录找不到 -> 管线注册到 0 个源,却照样打印「完成 0/0 源成功」并写出空的质量报告
+//   ③ 写文件时跑到当前目录下新建的 data/(fetch_all.js 还会 mkdirSync 出来)
+const ROOT = path.resolve(__dirname, "..", "..");
 const DATA_DIR = path.join(ROOT, "data");
 const SOURCES_DIR = path.join(ROOT, "scripts", "sources");
+
+// 根目录自检:标志物缺失说明上溯推导错了,立刻报错,不要带着错位路径继续跑。
+// 只取管线自身必需的 data/ 与 scripts/(不把 index.html 算进来,避免精简检出时误报)
+const ROOT_MARKERS = ["data", "scripts"];
+const missingMarkers = ROOT_MARKERS.filter(function (m) { return !fs.existsSync(path.join(ROOT, m)); });
+if (missingMarkers.length) {
+  throw new Error("项目根目录推导失败:" + ROOT + " 缺少 " + missingMarkers.join(" / ") +
+    "(config.js 应位于 <项目根>/scripts/lib/)");
+};
 
 // 今日日期(UTC,与原脚本一致)
 const TODAY = new Date().toISOString().slice(0, 10);

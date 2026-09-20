@@ -10,9 +10,14 @@ const qualityReport = require("./quality-report");
 const writers = require("./writers");
 
 // 加载所有 sources/*.js(触发自注册)。require 的副作用即注册。
+// ⚠ 源目录缺失时抛错,不静默返回:静默会让注册表为空,管线照样打印「完成 0/0 源成功」
+// 并写出空的质量报告,而所有榜单文件一个都没更新。
 function loadSources() {
   const dir = CONFIG.SOURCES_DIR;
-  if (!fs.existsSync(dir)) return;
+  if (!fs.existsSync(dir)) {
+    throw new Error("[pipeline] 源目录不存在:" + dir +
+      "(CONFIG.SOURCES_DIR 是否错位?根目录应由 scripts/lib/config.js 位置推导,不随启动目录变化)");
+  }
   fs.readdirSync(dir).forEach(function (f) {
     if (!/\.js$/.test(f) || f.startsWith("_")) return;
     require(path.join(dir, f));
@@ -71,6 +76,10 @@ async function runPipeline(opts) {
   var mode = opts.mode || CONFIG.pipelineMode;
   loadSources();
   var entries = registry.enabled();
+  // 0 源 = 配置错位或注册失败,拒绝继续(否则会写出「0 源成功」的空质量报告并跳过全部榜单)
+  if (!entries.length) {
+    throw new Error("[pipeline] 未注册到任何启用源,拒绝继续(源目录:" + CONFIG.SOURCES_DIR + ")");
+  }
   console.log("[pipeline] 模式=" + mode + ";启用源 " + entries.length + " 个:" +
     entries.map(function (e) { return e.id; }).join(", "));
 

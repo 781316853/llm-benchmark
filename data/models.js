@@ -35,10 +35,17 @@ window.MODEL_MAP = {
     { id: "Gemini 3 Pro",     vendor: "Google",    color: "#7AB0F8", aliases: ["Gemini 3 Pro"] },
     { id: "Gemini 3 Pro Preview", vendor: "Google", color: "#7BB5F5", aliases: ["gemini-3-pro-preview", "Gemini 3 Pro Preview"] },
     { id: "Kimi-K2.7-Code",   vendor: "Moonshot",  color: "#7C5CFF", aliases: ["kimi-k2.7-code", "Kimi-K2.7-Code"] },
-    { id: "Kimi-K2.6",        vendor: "Moonshot",  color: "#8E6EFF", aliases: ["Kimi-K2.6 (Think)", "Kimi K2.6"] },
+    { id: "Kimi-K2.6",        vendor: "Moonshot",  color: "#8E6EFF", aliases: ["Kimi-K2.6 (Think)", "Kimi K2.6", "Kimi 2.6"] },
     { id: "Kimi K2.6 Code Preview", vendor: "Moonshot", color: "#9C82FF", aliases: ["K2.6-code-preview", "Kimi K2.6 Code Preview"] },
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
     { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)", "k3"] },
+    // Kimi K2 世代的历史变体:原先未建档,由 canon() 兜底自动建档(厂商被记为「其他」、颜色取默认灰),
+    // 且 id 会随加载顺序漂移(如同一个「Kimi K2」可能被登记为 "Kimi K2" 或 "Kimi-k2")。
+    // 四个变体按独立模型建档 —— 沿用 kimi-for-coding 的判断原则:未证实的同一性不合并。
+    { id: "Kimi K2",          vendor: "Moonshot",  color: "#B3A6FF", aliases: ["Kimi K2", "kimi-k2", "Kimi-k2"] },
+    { id: "Kimi K2-Thinking-0905", vendor: "Moonshot", color: "#BCB0FF", aliases: ["Kimi K2-Thinking-0905"] },
+    { id: "Kimi-K2-Thinking-Turbo", vendor: "Moonshot", color: "#C5BAFF", aliases: ["kimi-k2-thinking-turbo", "Kimi-K2-Thinking-Turbo"] },
+    { id: "Kimi-K2.5-Instant", vendor: "Moonshot", color: "#AFA0FF", aliases: ["kimi-k2.5-instant", "Kimi-K2.5-Instant"] },
     { id: "DeepSeek V4 Pro 0813", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4 Pro", "DeepSeek V4 Pro (max)", "DeepSeek V4 Pro (high)", "DeepSeek-V4-Pro-Max", "deepseek-v4-pro", "deepseek-v4-pro-high-20260813", "DeepSeek V4 Pro preview", "DeepSeek V4 Pro preview(max)", "deepseek-v4-pro-high-preview", "DeepSeek V4 Pro 0813", "DeepSeek V4 Pro 0813 (max)", "DeepSeek-V4-Pro-0813", "DeepSeek-V4-Pro-0813-Max", "deepseek-v4-pro-0813"] },
     { id: "DeepSeek V4 Flash 0731", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek V4 Flash", "DeepSeek V4 Flash (max)", "DeepSeek-V4-Flash-Max", "deepseek-v4-flash", "deepseek-v4-flash-high", "DeepSeek V4 Flash preview", "DeepSeek-V4-Flash-Preview", "deepseek-v4-flash-high-preview", "DeepSeek V4 Flash 0731", "DeepSeek V4 Flash (0731)", "DeepSeek-V4-Flash-0731", "DSV4F0731"] },
     { id: "DeepSeek V3.2",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["deepseek-v3p2"] },
