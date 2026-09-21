@@ -663,62 +663,74 @@ a:hover { text-decoration: underline; }
   font-weight: 600; }
 .feedback-submit:hover { background: var(--accent-hover); color: var(--on-accent); border-color: transparent; }
 
-/* ===== AI 热点总结(按类型分组,手动滚动) ===== */
+/* ===== AI 热点总结(仿「AI 早报」:概览目录 + 详情卡片,面板内滚动) ===== */
 .news-section { margin: 26px 0 4px; }
 .news-section .section-title { margin-top: 0; }
 .news-ticker {
   background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-  box-shadow: var(--shadow); padding: 4px 16px; height: 300px;
+  box-shadow: var(--shadow); padding: 6px 14px; height: 300px;
   overflow-y: auto; overscroll-behavior: contain;
   scrollbar-width: thin; scrollbar-color: var(--border) transparent;
 }
 .news-ticker::-webkit-scrollbar { width: 6px; }
 .news-ticker::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 .news-ticker::-webkit-scrollbar-thumb:hover { background: var(--brand-muted); }
-/* 类型分组 */
-.news-group { margin: 2px 0 6px; }
-.news-group-head {
-  display: flex; align-items: center; gap: 8px; font-size: var(--fs-md); font-weight: 600;
-  color: var(--accent); padding: 9px 2px 5px; border-bottom: 1px solid var(--border-subtle);
-  position: sticky; top: 0; background: var(--panel); z-index: 1;
+/* 概览目录:按类型分组,每行 #N + 单行省略标题,点击跳到下方详情卡片 */
+.news-toc { padding-bottom: 10px; margin-bottom: 2px; border-bottom: 1px solid var(--border); }
+.news-toc-group { margin: 2px 0 8px; }
+.news-toc-head {
+  display: flex; align-items: center; gap: 8px; font-size: var(--fs-sm); font-weight: 600;
+  color: var(--accent); padding: 6px 2px 4px;
 }
-.news-group-count { font-size: var(--fs-2xs); font-weight: 500; color: var(--text-tertiary);
+.news-toc-count { font-size: var(--fs-2xs); font-weight: 500; color: var(--text-tertiary);
   background: var(--brand-light); border-radius: var(--radius-pill); padding: 0 8px;
   font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
-.news-item {
-  display: flex; align-items: center; gap: 10px; padding: 8px 2px;
-  border-bottom: 1px dashed var(--border-subtle); font-size: var(--fs-md); min-width: 0;
-  line-height: var(--lh-base);
+.news-toc-link {
+  display: flex; align-items: baseline; gap: 8px; padding: 3px 4px; cursor: pointer; min-width: 0;
+  border-radius: var(--radius-sm); text-decoration: none; color: var(--text-dim);
 }
-.news-date {
-  flex: 0 0 auto; font-size: var(--fs-xs); font-weight: 600; color: var(--accent);
-  background: var(--brand-light); padding: 2px 7px; border-radius: var(--radius-sm);
-  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; letter-spacing: .02em;
-}
-.news-text { flex: 1 1 auto; min-width: 0; overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap; color: var(--text-dim); }
-.news-title { font-weight: 600; color: var(--text); }
-.news-brief { color: var(--text-dim); }
-/* 翻译降级标注:英文源条目自动翻译未成功时标出「原文」(app.js 按"标题无中文"判定);
-   作为 flex 兄弟节点置于 .news-text 之外,标题再长也挤不掉它 */
+.news-toc-link:hover { background: var(--row-hover); color: var(--text); }
+.news-toc-rank { flex: 0 0 auto; min-width: 28px; text-align: center; font-size: var(--fs-2xs); font-weight: 700;
+  color: var(--accent); background: var(--brand-light); border-radius: var(--radius-pill); padding: 1px 6px;
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.news-toc-title { flex: 1 1 auto; min-width: 0; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; font-size: var(--fs-md); }
+/* 详情卡片:标题可换行 + 完整摘要(关键词加粗)+ 来源/日期/原文链接 */
+.news-card { padding: 12px 2px; border-bottom: 1px dashed var(--border-subtle); scroll-margin-top: 6px; }
+.news-card:last-child { border-bottom: none; }
+.news-card-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.news-card-rank { flex: 0 0 auto; font-size: var(--fs-xs); font-weight: 700; color: var(--accent);
+  background: var(--brand-light); border-radius: var(--radius-pill); padding: 1px 7px;
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.news-card-title { flex: 1 1 200px; min-width: 0; margin: 0; font-size: var(--fs-lg); font-weight: 700;
+  color: var(--text); line-height: var(--lh-snug); text-wrap: pretty; }
+.news-card-brief { margin: 8px 0 0; font-size: var(--fs-md); color: var(--text-dim);
+  line-height: var(--lh-base); text-wrap: pretty; }
+/* 关键术语高亮:模型名/版本号/带单位数字/缩写(app.js 的 hl() 包 <b class="news-kw">) */
+.news-kw { font-weight: 700; color: var(--text); }
+.news-card-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 9px; }
+.news-card-source { font-size: var(--fs-xs); color: var(--text-tertiary);
+  background: var(--panel-2); padding: 1px 7px; border-radius: var(--radius-sm); }
+.news-card-date { font-size: var(--fs-xs); color: var(--text-tertiary);
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.news-card-link { font-size: var(--fs-sm); white-space: nowrap; margin-left: auto; }
+/* 翻译降级标注:英文源条目自动翻译未成功时标出「原文」(app.js 按"标题无中文"判定) */
 .news-orig { flex: 0 0 auto; font-size: var(--fs-2xs); font-weight: 600; white-space: nowrap;
   color: var(--bd-warn-fg); background: var(--bd-warn-bg); border: 1px solid var(--bd-warn-bd);
   border-radius: var(--radius-pill); padding: 0 6px; letter-spacing: .3px; }
-.news-source { flex: 0 0 auto; font-size: var(--fs-xs); color: var(--text-tertiary);
-  background: var(--panel-2); padding: 1px 7px; border-radius: var(--radius-sm); white-space: nowrap; }
-.news-link { flex: 0 0 auto; font-size: var(--fs-sm); white-space: nowrap; }
 .news-empty { color: var(--text-tertiary); font-size: var(--fs-md); padding: 14px 4px; text-align: center; }
 
 /* ===== 总览首屏两栏:左「AI 热点总结」| 右「核心基准速览」 =====
-   横向并排,两栏顶/底对齐;左栏面板拉伸至与右栏卡片列等高,内部保持独立滚动。 */
+   横向并排,两栏等高、底对齐;左栏滚动区不撑高行高(height:0 + flex:1),由右栏卡片列决定整行高度。 */
 .overview-top {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   gap: 20px; align-items: stretch; margin-top: 26px;
 }
 .overview-top .section-title { margin-top: 0; }
-/* 左栏:新闻面板纵向 flex,滚动区 flex:1 撑满剩余高度 */
+/* 左栏:面板纵向 flex 撑满行高;滚动区 height:0/flex:1 —— 内容不参与行高计算,故不会把板块撑到几千像素,
+   而是被右栏卡片列的高度约束、底部与之对齐,超出部分内部滚动。 */
 .overview-top .news-section { margin: 0; min-width: 0; display: flex; flex-direction: column; }
-.overview-top .news-ticker { flex: 1 1 auto; height: auto; min-height: 300px; }
+.overview-top .news-ticker { flex: 1 1 auto; height: 0; min-height: 0; }
 /* 右栏:卡片列(窄列内收敛为 3 列 × 2 行)与顶部对齐,不随行高拉伸留白 */
 .overview-top .bench-section { min-width: 0; display: flex; flex-direction: column; }
 .overview-top .bench-cards {
@@ -838,7 +850,7 @@ a:hover { text-decoration: underline; }
 /* 中窄屏:两栏回落为上下堆叠(避免卡片被压成单列) */
 @media (max-width: 1100px) {
   .overview-top { grid-template-columns: 1fr; gap: 24px; }
-  .overview-top .news-ticker { min-height: 260px; }
+  .overview-top .news-ticker { height: 240px; min-height: 0; }
 }
 /* 权威基准大纲:窄于 1280px 时回落为顶部横向胶囊条,为宽表格让出整行宽度 */
 @media (max-width: 1279px) {
@@ -872,10 +884,10 @@ a:hover { text-decoration: underline; }
   /* 反馈弹窗:移动端占满宽度,浮动按钮缩小 */
   .feedback-dialog { max-width: calc(100% - 32px); padding: 22px 18px 18px; }
   .feedback-fab { padding: 10px 16px; bottom: 20px; right: 20px; }
-  /* 新闻滚动:隐藏来源标记避免挤压标题,适当降低高度 */
-  .news-source { display: none; }
-  .news-ticker { padding: 4px 12px; height: 240px; }
-  .overview-top .news-ticker { min-height: 240px; }
+  /* 新闻卡片:窄屏隐藏来源标记避免挤压标题,适当降低高度 */
+  .news-card-source { display: none; }
+  .news-ticker { padding: 4px 12px; height: 200px; }
+  .overview-top .news-ticker { height: 200px; min-height: 0; }
   .notes-section { padding: 16px; }
   .notes-section ul { padding-left: 1.1em; }
 }

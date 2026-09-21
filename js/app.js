@@ -249,8 +249,17 @@
     return kept.length ? kept : list;
   }
 
-  // ===== 总览页 AI 热点总结(按类型分组,手动滚动) =====
-  // 从 window.NEWS 读取近 2 天新闻;按类型分组展示(每类型≤5 条),容器 overflow-y 滚动由 CSS 控制
+  // ===== 总览页 AI 热点总结(仿「AI 早报」:概览目录 + 详情卡片,面板内滚动) =====
+  // 从 window.NEWS 读取近 2 天新闻;按类型分组编号 #1..#N,顶部目录可跳到下方详情卡片。
+  // 关键术语高亮:对已 esc 的文本单遍包 <b>,只加标签不重解释(转义实体为小写,不会被下列规则误命中)。
+  // 覆盖:百分比 / 模型版本号(字母+数字,如 Qwen-Image-2.1、Step 5)/ 带单位数字(600B、5美元、100万 Token)/ 全大写缩写。
+  var KW_STOP = { AI: 1 }; // 停用词:避免整屏「AI」都加粗
+  var KW_RE = /(\d+(?:\.\d+)?%|[A-Za-z][\w.\-]*\d[\w.\-]*|\d+(?:\.\d+)?\s*(?:B|K|M|亿|万|美元|元|tokens?|层|个|组|条|人|倍)|[A-Z]{2,})/g;
+  function hl(escaped) {
+    return String(escaped).replace(KW_RE, function (m) {
+      return KW_STOP[m.trim()] ? m : '<b class="news-kw">' + m + '</b>';
+    });
+  }
   function renderNews() {
     var inner = document.getElementById("newsTickerInner");
     if (!inner) return;
@@ -272,30 +281,45 @@
     var order = NEWS.types || ["模型发布", "公司动态", "技术研究", "政策与安全", "行业动态"];
     var groups = {};
     items.forEach(function (it) { (groups[it.type] = groups[it.type] || []).push(it); });
-    var row = function (it) {
-      var date = (it.date || "").slice(5); // YYYY-MM-DD -> MM-DD
-      var brief = (it.brief && it.brief !== it.title) ? ' <span class="news-brief">' + esc(it.brief) + '</span>' : "";
-      // 翻译降级标注:标题里一个中文字符都没有,说明这条自动翻译没成功(英文源),
-      // 标出「原文」让读者知道是翻译失败而非本站漏译。判定只看标题有没有中文、不维护英文源白名单,
-      // 这样任何源翻不出来都会被标出。徽标作为 flex 兄弟节点放在 .news-text 之外,
-      // 避免标题过长时被 .news-text 的单行省略号连同标题一起裁掉。
-      var orig = /[\u4e00-\u9fff]/.test(it.title || "") ? ""
+    // 展平成「分类顺序」的一维列表并赋全局排名 #1..#N(目录与详情卡片共用同一 rank)
+    var flat = [], inFlat = {};
+    var push = function (it) { if (inFlat[it.url]) return; inFlat[it.url] = 1; it._rank = flat.length + 1; flat.push(it); };
+    order.forEach(function (t) { (groups[t] || []).forEach(push); });
+    items.forEach(push); // 兜底:types 未覆盖到的类型条目追加在末尾
+    // 翻译降级标注:标题里一个中文字符都没有,说明自动翻译没成功(英文源),标出「原文」。
+    var origBadge = function (it) {
+      return /[\u4e00-\u9fff]/.test(it.title || "") ? ""
         : '<span class="news-orig" title="自动翻译未成功,此处为英文原文">原文</span>';
-      return '<div class="news-item">' +
-        '<span class="news-date">' + esc(date) + '</span>' +
-        '<span class="news-text" title="' + esc(it.title) + '"><b class="news-title">' + esc(it.title) + '</b>' + brief + '</span>' +
-        orig +
-        (it.source ? '<span class="news-source">' + esc(it.source) + '</span>' : "") +
-        '<a class="news-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">详情 ↗</a>' +
-        '</div>';
     };
-    var html = order.filter(function (t) { return groups[t] && groups[t].length; }).map(function (t) {
-      return '<div class="news-group">' +
-        '<div class="news-group-head">' + esc(t) + '<span class="news-group-count">' + groups[t].length + ' 条</span></div>' +
-        groups[t].map(row).join("") +
-        '</div>';
+    // 1) 概览目录:按类型分组,每行 #N + 标题(单行省略),点击跳到详情卡片
+    var tocHtml = order.filter(function (t) { return groups[t] && groups[t].length; }).map(function (t) {
+      var links = groups[t].map(function (it) {
+        return '<a class="news-toc-link" data-rank="' + it._rank + '" title="' + esc(it.title) + '">' +
+          '<span class="news-toc-rank">#' + it._rank + '</span>' +
+          '<span class="news-toc-title">' + esc(it.title) + '</span></a>';
+      }).join("");
+      return '<div class="news-toc-group">' +
+        '<div class="news-toc-head">' + esc(t) + '<span class="news-toc-count">' + groups[t].length + ' 条</span></div>' +
+        links + '</div>';
     }).join("");
-    inner.innerHTML = html; // 手动滚动,无自动动画
+    // 2) 详情卡片:按 rank 平铺,标题可换行 + 完整摘要(关键词加粗)+ 来源/日期/原文链接
+    var cardsHtml = flat.map(function (it) {
+      var date = (it.date || "").slice(5); // YYYY-MM-DD -> MM-DD
+      var showBrief = it.brief && it.brief !== it.title; // HN 等无独立摘要时不重复标题
+      return '<article class="news-card" id="news-card-' + it._rank + '">' +
+        '<header class="news-card-head">' +
+          '<span class="news-card-rank">#' + it._rank + '</span>' +
+          '<h3 class="news-card-title">' + esc(it.title) + '</h3>' + origBadge(it) +
+        '</header>' +
+        (showBrief ? '<p class="news-card-brief">' + hl(esc(it.brief)) + '</p>' : "") +
+        '<div class="news-card-meta">' +
+          (it.source ? '<span class="news-card-source">' + esc(it.source) + '</span>' : "") +
+          (date ? '<span class="news-card-date">' + esc(date) + '</span>' : "") +
+          '<a class="news-card-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">原文 ↗</a>' +
+        '</div>' +
+        '</article>';
+    }).join("");
+    inner.innerHTML = '<div class="news-toc">' + tocHtml + '</div><div class="news-cards">' + cardsHtml + '</div>';
   }
 
   // ===== 1) 总览 =====
@@ -1462,6 +1486,15 @@
       if (!a) return;
       e.preventDefault();
       jumpToAuthSection(a.getAttribute("data-target"));
+    });
+    // AI 热点总结:点击概览目录跳到对应详情卡片(事件委托,面板为最近的可滚动祖先)
+    var newsInner = document.getElementById("newsTickerInner");
+    if (newsInner) newsInner.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest(".news-toc-link[data-rank]") : null;
+      if (!a) return;
+      e.preventDefault();
+      var card = document.getElementById("news-card-" + a.getAttribute("data-rank"));
+      if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     // 滚动时高亮当前基准章节(以 rAF 节流,仅在权威基准页生效)
     window.addEventListener("scroll", function () {

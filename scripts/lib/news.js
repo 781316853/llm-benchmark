@@ -120,11 +120,65 @@ function applyPerDayCaps(items) {
   });
 }
 
+// ===== 「橘鸦AI早报」每日 RSS 解析(scripts/lib/news.js 唯一数据源) =====
+// RSS 每个 <item> = 一天一整篇早报,content:encoded 内嵌完整 HTML(实体转义)。
+// 正文结构:<h2>分类</h2> → <h3><a href=源>标题</a></h3> → <p>摘要…</p>(首个 <p> 为摘要,遇「相关链接」停止)。
+// 顶部「概览」区用 <h3>分类名</h3>(无 <a>)+ <li> 索引;只认「带 <a> 的 <h3>」为条目,天然跳过概览,不重复计数。
+function decodeEntities(s) {
+  return String(s)
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#(\d+);/g, function (m, d) { return String.fromCodePoint(Number(d)); })
+    .replace(/&amp;/g, "&");
+}
+function parseJuyaDaily(xmlText, srcName) {
+  var fallback = CONFIG.news.fallbackType || "行业动态";
+  var out = [];
+  var itemRe = /<item>([\s\S]*?)<\/item>/g, im;
+  while ((im = itemRe.exec(xmlText))) {
+    var block = im[1];
+    var dm = block.match(/<title>([\s\S]*?)<\/title>/);
+    var date = dm ? cleanText(decodeEntities(dm[1])).slice(0, 10) : "";
+    var ce = block.match(/<content:encoded>([\s\S]*?)<\/content:encoded>/);
+    if (!ce || !date) continue;
+    var html = decodeEntities(ce[1]);
+    var tagRe = /<(h2|h3|p)\b[^>]*>([\s\S]*?)<\/\1>/g, t, curCat = "", cur = null;
+    var flush = function () { if (cur && cur.title) out.push(cur); cur = null; };
+    while ((t = tagRe.exec(html))) {
+      var tag = t[1], inner = t[2];
+      if (tag === "h2") {
+        flush();
+        var cat = cleanText(inner);
+        if (cat && cat !== "概览") curCat = cat; // 概览区标题不改变当前分类
+      } else if (tag === "h3") {
+        var a = inner.match(/<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/);
+        if (!a) continue; // 概览区的分类 <h3>(无链接)跳过
+        flush();
+        cur = { date: date, title: truncate(cleanText(a[2]), 120),
+          brief: "", url: a[1], source: srcName, type: curCat || fallback };
+      } else if (tag === "p" && cur && !cur.brief) {
+        var txt = cleanText(inner);
+        if (txt && !/^相关链接/.test(txt)) cur.brief = truncate(txt, 220);
+      }
+    }
+    flush();
+  }
+  return out;
+}
+
 // ===== 单源抓取 =====
 // 返回 { name, total, kept, items };内部 try/catch,失败不影响其余源
 async function fetchSource(src, today) {
   try {
     var text = await transport.fetchWithRetry(src.url, { retries: 2 });
+    // 早报源:整篇 RSS 拆成逐条,内容已中文已分类,跳过关键词过滤与后续翻译
+    if (src.type === "juya") {
+      var ji = parseJuyaDaily(text, src.name);
+      console.log("  [news][" + src.name + "] 拆分 " + ji.length + " 条(每日早报)");
+      return { name: src.name, items: ji };
+    }
     var parsed = src.type === "hn" ? parseHN(text) : parseFeed(text, src.type);
     var re = buildKeywordRegex();
     var items = [];
@@ -248,8 +302,9 @@ async function updateNews() {
   merged.sort(function (a, b) { return a.date === b.date ? 0 : (a.date > b.date ? -1 : 1); });
   merged = applyPerDayCaps(merged);
 
-  // 5) 类型分类(在翻译前对原文分类,减少待翻译条目) -> 每类型上限 -> 总量兜底
-  merged.forEach(function (it) { it.type = classifyType(it); });
+  // 5) 类型分类:早报源条目自带 type(正文分类),不覆盖;仅对无 type 的条目(其它源)按关键词兜底分类
+  //    -> 每类型上限 -> 总量兜底
+  merged.forEach(function (it) { if (!it.type) it.type = classifyType(it); });
   merged = applyTypeCaps(merged, cfg.maxPerType);
   if (merged.length > cfg.maxTotal) merged = merged.slice(0, cfg.maxTotal);
 
@@ -304,16 +359,22 @@ async function updateNews() {
   }
 
   // 7) 差异写入(内容不变时不提交)
+  // types:优先按 typeDisplayOrder 排,再追加数据里出现但未列出的分类,保证前端每个分组都有归属(不漏卡片)。
+  var presentTypes = [];
+  merged.forEach(function (it) { if (it.type && presentTypes.indexOf(it.type) < 0) presentTypes.push(it.type); });
+  var pref = cfg.typeDisplayOrder || [];
+  var orderedTypes = pref.filter(function (t) { return presentTypes.indexOf(t) >= 0; })
+    .concat(presentTypes.filter(function (t) { return pref.indexOf(t) < 0; }));
   var payload = {
     updated: today,
     retentionDays: cfg.retentionDays,
-    types: (cfg.typeDisplayOrder || []).slice(), // 前端按此顺序分类型展示
+    types: orderedTypes, // 前端按此顺序分类型展示
     items: merged
   };
   var header =
     "// AI 热点新闻快照(由 scripts/lib/news.js 每日抓取维护,每日 2 次)\n" +
-    "// 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 " + cfg.retentionDays + " 天\n" +
-    "// 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型\n";
+    "// 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 " + cfg.retentionDays + " 天\n" +
+    "// 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)\n";
   // 单引号序列化:先转义值内撇号再替换双引号,保证 "OpenAI's ..." 等标题语法安全
   var body = JSON.stringify(payload, null, 2).replace(/'/g, "\\'").replace(/"/g, "'");
   writers.writeWindowVar(cfg.outFile, cfg.windowVar, header + "window." + cfg.windowVar + " = " + body + ";\n");
@@ -329,6 +390,7 @@ module.exports = {
   normalizeDate: normalizeDate,
   parseFeed: parseFeed,
   parseHN: parseHN,
+  parseJuyaDaily: parseJuyaDaily,
   buildKeywordRegex: buildKeywordRegex,
   hasCJK: hasCJK,
   translateToZh: translateToZh,

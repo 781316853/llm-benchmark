@@ -333,9 +333,10 @@ module.exports = {
   },
 
   // ===== AI 热点新闻(scripts/lib/news.js 使用,不进基准管线) =====
-  // 每日抓取多源 AI 新闻,合并去重后仅保留最近 retentionDays 天,差异写入 data/news.js。
-  // 源:TechCrunch AI / The Verge AI / Hacker News Algolia / 极客公园 / InfoQ(均已实测可访问,无需 API Key)。
-  // 注:36氪 RSS 对纯 Node 客户端返回反爬挑战页,已弃用;机器之心 RSS 已停更,同样弃用。
+  // 唯一数据源:「橘鸦AI早报」官方 RSS(https://daily.juya.uk/rss.xml,GitHub Pages 静态,无需 UA/Key)。
+  // 该 RSS 每个 <item> = 一天一整篇早报(content:encoded 内嵌完整 HTML),news.js 的 parseJuyaDaily
+  // 再把当天早报按 <h2>分类 / <h3><a>条目 / <p>摘要 拆成逐条新闻写入 data/news.js。
+  // 原多源(TechCrunch/Verge/HN/极客公园/InfoQ)已整体下线:改由早报单一来源,内容已中文、已分类,无需关键词过滤与翻译。
   news: {
     retentionDays: 2,        // 保留最近 N 个自然日(含今天;每日更新 2 次)
     maxPerDayPerSource: 12,  // 每源每天最多保留条数
@@ -351,42 +352,21 @@ module.exports = {
       "minimax", "agent", "model", "robot", "具身智能", "人形机器人",
       "人工智能", "大模型", "智谱", "豆包", "算力", "机器学习", "深度学习"
     ],
-    // 新闻类型分类(按数组顺序优先匹配,未命中归入 fallbackType)
-    // model 类型需同时命中 modelHints(模型特征词),避免把普通产品发布误判为"模型发布"
-    types: [
-      { id: "policy", label: "政策与安全",
-        keywords: "监管|法规|合规|水印|版权|隐私|审查|法案|deepfake|深伪|漏洞|攻击|AI\\s*Act|regulation|regulat|policy|watermark|safety|security|law|legal" },
-      { id: "model", label: "模型发布",
-        keywords: "发布|推出|上线|首发|亮相|开源|open[-\\s]source|open[-\\s]weight|unveil|debut|launch|releas|introduc|新模型|新版本",
-        modelHints: "gpt|claude|gemini|deepseek|qwen|kimi|glm|llama|mistral|minimax|模型|智谱|豆包|通义|书生|manus|sora" },
-      { id: "company", label: "公司动态",
-        keywords: "融资|领投|收购|投资|离职|上任|并购|IPO|上市|财报|营收|创办|成立|估值|用户|月活|招股|合作|创始|acqui|funding|fundrais|raise|invest|hires|resign|depart|CEO|COO|milestone|billion\\s*users|surges|tender|offer|\\bround\\b|\\bled\\b|\\bleads\\b|partner" },
-      { id: "research", label: "技术研究",
-        keywords: "研究|论文|数学|推理|基准|突破|进步|能力|智能体|机器人|具身|research|paper|reasoning|math|benchmark|breakthrough|progress|capabilit|agent" }
-    ],
+    // 新闻类型:早报正文自带分类(<h2>要闻/开发生态/模型发布/技术与洞察/行业动态),由 parseJuyaDaily 直接写入 item.type,
+    // 不再走关键词分类(classifyType 仅对无 type 的条目兜底)。types 留空即可。
+    types: [],
     fallbackType: "行业动态",  // 未命中任何类型时的兜底
-    typeDisplayOrder: ["模型发布", "公司动态", "技术研究", "政策与安全", "行业动态"], // 前端展示顺序
-    // 各源定义:type = rss(RSS 2.0)/ atom(Atom)/ hn(Hacker News Algolia JSON)
+    typeDisplayOrder: ["要闻", "开发生态", "模型发布", "技术与洞察", "前瞻与传闻", "产品应用", "行业动态", "其他"], // 前端展示优先顺序(早报分类;实际以数据里出现的类型为准)
+    // 各源定义:type = rss(RSS 2.0)/ atom(Atom)/ hn(Hacker News Algolia JSON)/ juya(每日早报,拆分为逐条)
     sources: [
-      { id: "techcrunch", name: "TechCrunch", type: "rss", host: "techcrunch.com",
-        url: "https://techcrunch.com/category/artificial-intelligence/feed/" },
-      { id: "verge", name: "The Verge", type: "atom", host: "www.theverge.com",
-        url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" },
-      { id: "hn", name: "Hacker News", type: "hn", host: "hn.algolia.com",
-        url: "https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&hitsPerPage=30&numericFilters=points%3E20" },
-      { id: "geekpark", name: "极客公园", type: "rss", host: "www.geekpark.net",
-        url: "https://www.geekpark.net/rss" },
-      { id: "infoq", name: "InfoQ", type: "rss", host: "www.infoq.cn",
-        url: "https://www.infoq.cn/feed" }
+      { id: "juya", name: "橘鸦AI早报", type: "juya", host: "daily.juya.uk",
+        url: "https://daily.juya.uk/rss.xml" }
     ],
 
-    // 英文新闻翻译为中文(免费接口,无需 Key;端点间按顺序失败转移,全部失败保留原文)
+    // 英文新闻翻译为中文:早报源内容本就是中文,翻译整体关闭(留配置便于将来接英文源时复用)。
     // MyMemory 官方限额:匿名 5000 字符/天;提供有效可达的 de 联系邮箱可提升至 50000 字符/天。
-    // de 必须是真实可达地址——原先用的 ...@users.noreply.github.com 是设计上不可达的中转域名,
-    // 很可能一直被按 5000 匿名档计费,而本站单轮抓取约 2600 字符、每天 2 轮 ≈ 5200 字符,正好压在线上,
-    // 2026-09-19 起英文条目大面积未翻译即由此引发。此处改用仓库版权方(=提交者)的真实邮箱。
     translate: {
-      enabled: true,
+      enabled: false,
       // 单轮翻译的字符预算(熔断值,不是节流阀):正常负载约 2600 字符/轮,远达不到;
       // 只在条目暴涨(如某天 60 条)时挡住"一轮打光整档额度",剩余条目留给下一轮重试
       // (每日 2 轮 × 保留 2 天 = 每条最多 4 次机会)。设为 0 表示不限制。

@@ -1,128 +1,169 @@
 // AI 热点新闻快照(由 scripts/lib/news.js 每日抓取维护,每日 2 次)
-// 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
-// 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
+// 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
+// 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
   'updated': '2026-09-21',
   'retentionDays': 2,
   'types': [
+    '要闻',
+    '开发生态',
     '模型发布',
-    '公司动态',
-    '技术研究',
-    '政策与安全',
+    '技术与洞察',
+    '前瞻与传闻',
     '行业动态'
   ],
   'items': [
     {
       'date': '2026-09-21',
-      'title': '人工智能聊天机器人“大多数时候”对金融查询给出错误的答案',
-      'brief': '人工智能聊天机器人“大多数时候”对金融查询给出错误的答案',
-      'url': 'https://www.ft.com/content/c0cd359d-df84-4208-a789-ffa864b43666',
-      'source': 'Hacker News',
-      'type': '行业动态'
+      'title': 'Qwen开源图形生成与编辑模型Qwen-Image-2.1',
+      'brief': 'Qwen 发布 Qwen-Image-2.1 ，并开放模型权重。新版本把 文生图 和 图像编辑 整合到同一模型，视觉生成部分为 7B 参数、 32 层 Single-Stream DiT ；主要变化包括更轻量的推理架构、原生透明图像能力、更完整的图像编辑，以及文字和人物视觉表现的提升。',
+      'url': 'https://qwen.ai/blog?id=qwen-image-2.1',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
     },
     {
       'date': '2026-09-21',
-      'title': '我可以让我的AI代理在安息日运行吗？',
-      'brief': '我可以让我的AI代理在安息日运行吗？',
-      'url': 'https://www.chabad.org/library/article_cdo/aid/7288064/jewish/Can-I-Let-My-AI-Agent-Run-on-Shabbat.htm',
-      'source': 'Hacker News',
-      'type': '技术研究'
+      'title': '阶跃发布 Step 5 Preview，目前已全量开放',
+      'brief': '阶跃星辰 正式发布面向真实世界 Agentic 任务的旗舰基座模型 Step 5 Preview ，重点覆盖 AI 编程、软件工程、专业知识工作和金融等场景。',
+      'url': 'https://www.stepfun.com/step-5-preview',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
     },
     {
       'date': '2026-09-21',
-      'title': '对话桥介数物：机器人运动的下一步是让任何机器人半小时内学会跳特定的舞',
-      'brief': '具身智能 现在太吵了。 行业里的人各自笃定，声音大的先被听见。最响的那些声音，往往离真实的进展最远。 真正在往前推的人，看的是谁在践行非共识，什么在真的往前走，以及谁心里有一张完整的图，而不是走一步看一步。 这些东西不会上热搜，但它们决定这个行业的下一步。 我们一直探寻这些。 如…',
-      'url': 'http://www.geekpark.net/news/370717',
-      'source': '极客公园',
-      'type': '技术研究'
+      'title': 'TypeSafe AI向所有用户开放Jev，新用户获赠5美元额度',
+      'brief': 'TypeSafe AI 目前已通过其在线控制台向所有用户开放 Jev ，用户无需加入候补名单即可开始使用。所有用户初始均可获得 5美元 额度， TypeSafe AI 称该额度约可支持 1.2亿 token 。此次调整取消了此前的访问等待限制。',
+      'url': 'https://console.typesafe.ai',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-09-21',
-      'title': 'Figure AI 宣称找到了机器人版 scaling law，同行却说它其实根本不会泛化',
-      'brief': '作者｜Li Yuan 390 亿美元的 Figure AI 已经把机器人送进 30 个陌生家庭，同行却说失败一半还谈不上会干活 「这是 Figure AI 成立以来最重要的项目。」 在 Helix 2.5 的发布视频里，Figure AI 创始人 Brett Adcock 把话说…',
-      'url': 'http://www.geekpark.net/news/370607',
-      'source': '极客公园',
-      'type': '政策与安全'
+      'title': 'Google开源Agentic编排器AX，支持有状态任务暂停与恢复',
+      'brief': 'Google 目前已在 GitHub 开源 AX ，用于在 Kubernetes 集群中声明式编排有状态的自主 Agent 工作负载。 AX 基于 Agent Substrate 执行沙箱化任务，通过 Task 、 Workspace 、 Gateway 和 Model 配置运行环境、资源、网络与模型，并支持暂停、恢复和调试。',
+      'url': 'https://github.com/google/ax',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-09-21',
-      'title': '卢伟冰谈小米18 Pro涨价：大家会觉得合理；剪映发布 Hub 及 AI 助手「小映」；苹果或 10 月推出智能家居设备｜极客早知道',
-      'brief': 'B 站上线 AI 无限竞技场测评榜：GPT-6 Astra 现居榜首 9 月 20 日，B 站宣布上线「AI 无限竞技场」大模型测评榜，并同步公布了首轮模型排行榜。据 B 站介绍，「AI 无限竞技场」是一个汇集了 B 站 UP 主 AI 大模型测评的竞技广场，由各领域 UP 主对…',
-      'url': 'http://www.geekpark.net/news/370681',
-      'source': '极客公园',
+      'title': '腾讯开源端到端文档解析模型WeVisDoc',
+      'brief': '腾讯 目前已在 GitHub 和 Hugging Face 开放端到端文档解析模型 WeVisDoc 的 2B、4B 权重以及代码和教程，用于在不同版式与采集条件下将页面图像直接转换为结构化Markdown。',
+      'url': 'https://tencent.github.io/WeVisDoc/',
+      'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
       'date': '2026-09-21',
-      'title': 'Altum：蚂蚁集团新一代大模型训练数据处理系统设计与实践｜QCon上海',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/AGIRRRtM1lBDFIvwWuRX?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
+      'title': 'WebCraftBench以真实交互和代码覆盖率评估AI网页应用',
+      'brief': '腾讯混元团队 联合 清华大学 、 北京大学 研究者提出 WebCraftBench ，用于评估 AI 生成网页应用的美观度、易用性和需求符合度。',
+      'url': 'https://arxiv.org/abs/2609.15387',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-09-21',
+      'title': '硅基流动完成B+轮二期和C轮融资',
+      'brief': '硅基流动 近日宣布完成B+轮二期和C轮融资， 2026年度 累计股权融资额近 29亿元 ，投资方包括 中国互联网投资基金 、 国新基金 、 中国移动链长基金 等机构，部分老股东追加投资。融资资金将通过增加 推理引擎 、 异构算力调度 、 模型与芯片适配 等研发投入，强化 Token 供应平台并拓展全球市场。',
+      'url': 'https://mp.weixin.qq.com/s/Y0X4FqYFYQDsTLGyLl0dzQ',
+      'source': '橘鸦AI早报',
       'type': '行业动态'
     },
     {
       'date': '2026-09-21',
-      'title': '人工智能时代的代码正在变为只写且可丢弃的',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/Z3RA77AHmLro8zmY7Sl3?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
+      'title': '智谱MaaS平台将上线数据内容不留存功能',
+      'brief': '智谱 MaaS平台 近期将上线数据内容不留存功能，为企业和开发者用户提供更严格的数据隐私保护。',
+      'url': 'https://mp.weixin.qq.com/s/e7kLxQKhkOrLdsmgyF5U0Q',
+      'source': '橘鸦AI早报',
       'type': '行业动态'
     },
     {
       'date': '2026-09-20',
-      'title': '世界模特公司保守着很多秘密',
-      'brief': '世界模特公司保守着很多秘密',
-      'url': 'https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
+      'title': 'DeepSeek API明确节假日及调休周末全天按空闲时段计费',
+      'brief': 'DeepSeek API 平台近日发布公告横幅明确，调休上班的周末及中国法定节假日全天均按空闲时段计费。即使周末因调休成为工作日，也适用这一计费时段规则。该规则面向使用 DeepSeek 官方 API 的用户。',
+      'url': 'https://platform.deepseek.com/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-09-20',
-      'title': '人工智能行业真的准备好放缓了吗？',
-      'brief': '人工智能行业真的准备好放缓了吗？',
-      'url': 'https://techcrunch.com/2026/09/20/is-the-ai-industry-really-ready-to-slow-down/',
-      'source': 'TechCrunch',
-      'type': '行业动态'
+      'title': 'Tibo疑似暗示Codex banked reset',
+      'brief': '有用户发帖称 OpenAI 本周没有推出此前预期的更新，因此向 Codex 负责人 Tibo 喊话：“you owe us a banked reset sorry i don’t make the rules”。 Tibo 随后回复：“OK fine. But it’s also still coming in Tuesday ”。',
+      'url': 'https://x.com/thsottiaux/status/2101352781219258527',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-09-20',
-      'title': 'Nvidia的Jensen Huang认为人工智能的恐惧被夸大了，这并不令人惊讶。',
-      'brief': 'Nvidia的Jensen Huang认为人工智能的恐惧被夸大了，这并不令人惊讶。',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997936/nvidia-jensen-huang-ai-fears-overblown',
-      'source': 'The Verge',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '人类，而不是流氓人工智能，仍然是能源系统面临的最大网络安全风险',
-      'brief': '人类，而不是流氓人工智能，仍然是能源系统面临的最大网络安全风险',
-      'url': 'https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '三体还没降临，是因为叶文洁没用上千问办公吗？',
-      'brief': '天文观测，或许大概是最容易让普通人产生浪漫想象的一类科学。 巨大的穹顶缓缓打开，镜筒转向几亿光年之外，一束用从宇宙深处赶来的微光落到探测器上。然后告诉人类，这里几百万年曾经出现过超新星、伽马暴、中子星合并&hellip;&hellip;研究的问题也从微观的重元素从何而来，覆盖到恒…',
-      'url': 'http://www.geekpark.net/news/370667',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '机器人如何自进化，乐享科技走了一条新路',
-      'brief': '作者｜Li Yuan 编辑｜郑玄 最近，乐享科技因为一个颇大胆的 claim，引发了不少关注：它提出，其具身智能模型以太大模型能够在部署和执行过程中持续更新，并将这种能力概括为「自进化」，是全球首个能自进化的具身智能模型。 自进化是一个容易引起争议的说法。「进化」究竟是模型参数发…',
-      'url': 'http://www.geekpark.net/news/370665',
-      'source': '极客公园',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-20',
-      'title': 'Meta 个人助手登顶美国 App Store；张雪机车发 5 款新车，最贵 13.8 万；淘宝闪购「制服」获法国设计最高奖，马云深度参与',
-      'brief': '传 Anthropic 计划在 IPO 前夕推出新一代 AI 模型助力资本市场信心 据路透社援引多名知情人士消息透露，全球顶尖人工智能初创企业 Anthropic 正考虑在公开首次募股（IPO）之前，正式发布其最新的旗舰级人工智能模型。这一战略举措旨在进一步巩固其在生成式 AI…',
-      'url': 'http://www.geekpark.net/news/370615',
-      'source': '极客公园',
+      'title': 'Step 5 Preview现身Artificial Analysis网站',
+      'brief': 'Artificial Analysis 收录 阶跃星辰 的 Step 5 Preview ，并完成独立评测，部分 Step Plan 用户也称已能看到并调用该模型。',
+      'url': 'https://artificialanalysis.ai/models/step-5',
+      'source': '橘鸦AI早报',
       'type': '模型发布'
+    },
+    {
+      'date': '2026-09-20',
+      'title': '千问发布Qwen3.8-LiveTranslate',
+      'brief': '千问 目前已正式发布同声传译大模型 Qwen3.8-LiveTranslate ，面向真实对话提供 60种语言 的实时翻译。',
+      'url': 'https://mp.weixin.qq.com/s/Rc3CKdHAtA_NdVRN2RLuAg',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-20',
+      'title': '阿里巴巴达摩院开源腹部CT诊断模型RADAR，论文发表于Science',
+      'brief': '阿里巴巴达摩院 在 GitHub 开源了腹部 CT 诊断通用视觉语言模型 RADAR （ Rapid Abdominal Diagnosis with AI and Radiology ），相关研究论文发表于 Science 。',
+      'url': 'https://github.com/alibaba-damo-academy/damo-radar',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'Cua开源小型表单填写模型cua-s1-forms',
+      'brief': 'Cua 开源面向表单填写的轻量模型 cua-s1-forms 。',
+      'url': 'https://huggingface.co/cua-ai/cua-s1-forms',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'Android Developers推出Android Bench 2.0',
+      'brief': 'Android Developers 推出 Android Bench 2.0 ，用于评估 AI 处理真实、多日的 Android 工程任务的表现。',
+      'url': 'https://x.com/AndroidDev/status/2100622197253398669',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'OpenAI等四家公司遭付费用户提起反垄断诉讼',
+      'brief': '一批付费订阅用户目前在加州北区联邦地区法院起诉 Anthropic PBC 、 OpenAI OPCO LLC 、 SpaceXAI 和 Google LLC ，指控四家公司通过协调限制 AI 产品改进速度，违反 《谢尔曼反托拉斯法》第1条 。原告称，相关协调源于多名公司高管公开赞同一篇主张限制未经约束的 AI 发展速度、呼吁行业协调的文章，导致订阅者以相同价格获得改进更慢的产品。',
+      'url': 'https://news.bloomberglaw.com/litigation/openai-anthropic-google-spacexai-hit-with-antitrust-lawsuit',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'Anthropic 或将发布发布新模型应对Astra在企业市场的竞争',
+      'brief': '路透社援引三名消息人士称， Anthropic 正考虑推出新模型，以应对 OpenAI GPT-6 Astra 获得的企业市场关注，但公司仍在评估下一款模型的安全性，尚未确定是否及何时发布。',
+      'url': 'https://www.reuters.com/business/anthropic-considers-releasing-new-ai-model-ahead-ipo-sources-say-2026-09-19/',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'OpenAI 或将发布 GPT-6 Sol 和 GPT-6 Luna',
+      'brief': 'OpenAI 或将在下周推出新的 GPT-6 系列模型。',
+      'url': 'https://x.com/thsottiaux/status/2101157729037586694',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'Google 或将发布 Gemini 4 Pro',
+      'brief': '多名第三方测试者和平台此前称， Gemini 4 Pro 正在Arena以其他模型名称进行隐藏测试，并通过代码生成、图像任务展现出优异能力；另有一张已被鉴定为使用 GPT-Image 生成的基准测试图流传。目前 Google 尚未确认 Gemini 4 Pro 的型号、内部代号、测试成绩、价格和公开开放时间。',
+      'url': 'https://x.com/god_of_ai7/status/2101237972633063922',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
     }
   ]
 };
