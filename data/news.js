@@ -2,7 +2,7 @@
 // 来源:TechCrunch AI / The Verge AI / Hacker News / 极客公园 / InfoQ;仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型
 window.NEWS = {
-  'updated': '2026-09-20',
+  'updated': '2026-09-21',
   'retentionDays': 2,
   'types': [
     '模型发布',
@@ -13,12 +13,84 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-09-20',
-      'title': '特朗普现在表示他想组建一支“人工智能部队”',
-      'brief': '特朗普现在表示他想组建一支“人工智能部队”',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997867/trump-ai-force-ai-czar',
-      'source': 'The Verge',
+      'date': '2026-09-21',
+      'title': '人工智能聊天机器人“大多数时候”对金融查询给出错误的答案',
+      'brief': '人工智能聊天机器人“大多数时候”对金融查询给出错误的答案',
+      'url': 'https://www.ft.com/content/c0cd359d-df84-4208-a789-ffa864b43666',
+      'source': 'Hacker News',
       'type': '行业动态'
+    },
+    {
+      'date': '2026-09-21',
+      'title': '我可以让我的AI代理在安息日运行吗？',
+      'brief': '我可以让我的AI代理在安息日运行吗？',
+      'url': 'https://www.chabad.org/library/article_cdo/aid/7288064/jewish/Can-I-Let-My-AI-Agent-Run-on-Shabbat.htm',
+      'source': 'Hacker News',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-21',
+      'title': '对话桥介数物：机器人运动的下一步是让任何机器人半小时内学会跳特定的舞',
+      'brief': '具身智能 现在太吵了。 行业里的人各自笃定，声音大的先被听见。最响的那些声音，往往离真实的进展最远。 真正在往前推的人，看的是谁在践行非共识，什么在真的往前走，以及谁心里有一张完整的图，而不是走一步看一步。 这些东西不会上热搜，但它们决定这个行业的下一步。 我们一直探寻这些。 如…',
+      'url': 'http://www.geekpark.net/news/370717',
+      'source': '极客公园',
+      'type': '技术研究'
+    },
+    {
+      'date': '2026-09-21',
+      'title': 'Figure AI 宣称找到了机器人版 scaling law，同行却说它其实根本不会泛化',
+      'brief': '作者｜Li Yuan 390 亿美元的 Figure AI 已经把机器人送进 30 个陌生家庭，同行却说失败一半还谈不上会干活 「这是 Figure AI 成立以来最重要的项目。」 在 Helix 2.5 的发布视频里，Figure AI 创始人 Brett Adcock 把话说…',
+      'url': 'http://www.geekpark.net/news/370607',
+      'source': '极客公园',
+      'type': '政策与安全'
+    },
+    {
+      'date': '2026-09-21',
+      'title': '卢伟冰谈小米18 Pro涨价：大家会觉得合理；剪映发布 Hub 及 AI 助手「小映」；苹果或 10 月推出智能家居设备｜极客早知道',
+      'brief': 'B 站上线 AI 无限竞技场测评榜：GPT-6 Astra 现居榜首 9 月 20 日，B 站宣布上线「AI 无限竞技场」大模型测评榜，并同步公布了首轮模型排行榜。据 B 站介绍，「AI 无限竞技场」是一个汇集了 B 站 UP 主 AI 大模型测评的竞技广场，由各领域 UP 主对…',
+      'url': 'http://www.geekpark.net/news/370681',
+      'source': '极客公园',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-21',
+      'title': 'Altum：蚂蚁集团新一代大模型训练数据处理系统设计与实践｜QCon上海',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/AGIRRRtM1lBDFIvwWuRX?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-21',
+      'title': '人工智能时代的代码正在变为只写且可丢弃的',
+      'brief': '点击查看原文>',
+      'url': 'https://www.infoq.cn/article/Z3RA77AHmLro8zmY7Sl3?utm_source=rss&utm_medium=article',
+      'source': 'InfoQ',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': '世界模特公司保守着很多秘密',
+      'brief': '世界模特公司保守着很多秘密',
+      'url': 'https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': '人工智能行业真的准备好放缓了吗？',
+      'brief': '人工智能行业真的准备好放缓了吗？',
+      'url': 'https://techcrunch.com/2026/09/20/is-the-ai-industry-really-ready-to-slow-down/',
+      'source': 'TechCrunch',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-20',
+      'title': 'Nvidia的Jensen Huang认为人工智能的恐惧被夸大了，这并不令人惊讶。',
+      'brief': 'Nvidia的Jensen Huang认为人工智能的恐惧被夸大了，这并不令人惊讶。',
+      'url': 'https://www.theverge.com/ai-artificial-intelligence/997936/nvidia-jensen-huang-ai-fears-overblown',
+      'source': 'The Verge',
+      'type': '技术研究'
     },
     {
       'date': '2026-09-20',
@@ -27,38 +99,6 @@ window.NEWS = {
       'url': 'https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure',
       'source': 'The Verge',
       'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-20',
-      'title': 'Qwen-Image-2.1 ：紧凑、高效、统一的图像创建',
-      'brief': 'Qwen-Image-2.1 ：紧凑、高效、统一的图像创建',
-      'url': 'https://qwen.ai/blog?id=qwen-image-2.1',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '大型科技公司使用担保将3000亿美元的人工智能敞口保持在资产负债表之外',
-      'brief': '大型科技公司使用担保将3000亿美元的人工智能敞口保持在资产负债表之外',
-      'url': 'https://www.ft.com/content/7f11afae-c4e3-4054-a65b-873f3647f563',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '如果人工智能编码降低了您的代码质量，那么您就无法正确管理质量',
-      'brief': '如果人工智能编码降低了您的代码质量，那么您就无法正确管理质量',
-      'url': 'https://www.i-kh.net/p/if-ai-coding-is-lowering-your-code',
-      'source': 'Hacker News',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '我厌倦了AI语气',
-      'brief': '我厌倦了AI语气',
-      'url': 'https://sagivo.com/blog/im-tired-of-the-ai-tone',
-      'source': 'Hacker News',
-      'type': '行业动态'
     },
     {
       'date': '2026-09-20',
@@ -83,78 +123,6 @@ window.NEWS = {
       'url': 'http://www.geekpark.net/news/370615',
       'source': '极客公园',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-09-20',
-      'title': '最新桌面 Agent，AI 工作流解码办公效率提升',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/EBIZhgc8pLujPiIum6Yt?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '人工智能安全对话变得令人难以置信',
-      'brief': '人工智能安全对话变得令人难以置信',
-      'url': 'https://techcrunch.com/2026/09/19/ai-safety-conversations-have-gotten-unbelievable/',
-      'source': 'TechCrunch',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-19',
-      'title': 'Vals在Andreessen Horowitz的支持下，希望成为人工智能基准测试的黄金标准',
-      'brief': 'Vals在Andreessen Horowitz的支持下，希望成为人工智能基准测试的黄金标准',
-      'url': 'https://techcrunch.com/2026/09/19/vals-backed-by-andreessen-horowitz-is-looking-to-become-the-gold-standard-for-ai-benchmarking/',
-      'source': 'TechCrunch',
-      'type': '技术研究'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '人工智能监管的打击还没有结束',
-      'brief': '人工智能监管的打击还没有结束',
-      'url': 'https://www.theverge.com/ai-artificial-intelligence/997706/the-ai-regulation-smackdown-isnt-over',
-      'source': 'The Verge',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-19',
-      'title': 'OpenAI和Anthropic超卖人工智能安全漏洞',
-      'brief': 'OpenAI和Anthropic超卖人工智能安全漏洞',
-      'url': 'https://nypost.com/2026/09/19/us-news/openai-anthropic-oversold-security-breaches-to-pressure-feds-into-protecting-turf-insiders/',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '诉讼称， Anthropic、OpenAI和其他公司就人工智能放缓达成非法协议',
-      'brief': '诉讼称， Anthropic、OpenAI和其他公司就人工智能放缓达成非法协议',
-      'url': 'https://apnews.com/article/antitrust-lawsuit-ai-slowdown-anthropic-openai-spacexai-google-960af4308161eaf4ed13c383b0ce1c1b',
-      'source': 'Hacker News',
-      'type': '政策与安全'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '对拿下一轮投资最有效的沟通，是「思想履约」',
-      'brief': '最近有个创业者找我交流的时候，聊到团队接下来还要做进一步的融资，很认真地问了我一个问题：这次做对外传播也是希望能对融资有帮助，你有什么建议？ 我当时听完，先跟他说了两个目睹了好几代创业者后的观察： 首先，咱要个心理预期：绝大部分情况下，第一笔投资是你最好拿的那笔钱。 第二，凡是能…',
-      'url': 'http://www.geekpark.net/news/370611',
-      'source': '极客公园',
-      'type': '公司动态'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '传折叠屏 iPhone 维修费 8000 元，苹果：价格未公布；腾讯 Chatterfly 输入法开启内测；软高管：AI 训练是「人类历史上最大规模的劳动盗窃」｜极客早知道',
-      'brief': '谷歌最新旗舰模型 Gemini 4 Pro 疑似「偷跑」，多项指标领先 Astra 和 Fable 5.1 9 月 18 日，Google 下一代旗舰模型 Gemini 4 Pro 疑似正以「gemini-3.8-flash」名称「偷跑」上线。据反馈，谷歌在 Arena 等基准平…',
-      'url': 'http://www.geekpark.net/news/370608',
-      'source': '极客公园',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-19',
-      'title': '单个机柜到底能跑多少个 Agent？答案不在 GPU 身上',
-      'brief': '点击查看原文>',
-      'url': 'https://www.infoq.cn/article/brH7TRcHB9evl32KQJkY?utm_source=rss&utm_medium=article',
-      'source': 'InfoQ',
-      'type': '技术研究'
     }
   ]
 };
