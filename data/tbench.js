@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-20)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-21)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -11,11 +11,11 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-09-20',
-  'refreshedAt': '2026-09-20 13:48',
+  'updated': '2026-09-21',
+  'refreshedAt': '2026-09-21 13:57',
   'stats': {
     'tasks': 66,
-    'entries': 31
+    'entries': 32
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -339,6 +339,18 @@ window.TBENCH = {
       'score': 33.3,
       'ci': null,
       'date': '2026-09-02',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
+      'model': 'Step 5 Preview',
+      'agent': null,
+      'effort': '思考模式 High（工具）',
+      'score': 33.3,
+      'ci': null,
+      'date': '2026-09-20',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'

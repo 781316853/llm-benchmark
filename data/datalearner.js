@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-09-20)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-09-21)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-09-20',
+  'updated': '2026-09-21',
   'models': [
     {
       'name': 'Muse Spark 1.3',
@@ -200,6 +200,14 @@ window.DATALEARNER = {
       'license': '有条件商用'
     },
     {
+      'name': 'Step 5 Preview',
+      'score': 67.7,
+      'mode': '思考模式 High（工具）',
+      'date': '2026-09-20',
+      'params': '6000亿',
+      'license': '闭源'
+    },
+    {
       'name': 'Grok 4.6',
       'score': 67.5,
       'mode': '思考模式 Medium（工具）',
@@ -236,14 +244,6 @@ window.DATALEARNER = {
       'score': 67,
       'mode': '极高强度思考（工具）',
       'date': '2026-04-23',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-6 Astra',
-      'score': 67,
-      'mode': '思考模式 Low（工具）',
-      'date': '2026-09-03',
       'params': '未知',
       'license': '闭源'
     }

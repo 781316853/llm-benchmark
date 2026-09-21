@@ -1,4 +1,4 @@
-// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-09-20
+// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-09-21
 // 来源:https://www.codingplan.fyi/model-comparison-presets.json + plans.json + plan-models.json + models.json + platforms.json(官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:groups[]=固定精选模型分组(kind single=单模型列/multi=多模型列);row=比价行
 //   (platform 平台/plan 套餐/qualifier 谷峰等档位标签/price 折算人民币月价按量行计「按量」/
@@ -9,9 +9,9 @@ window.CODINGPLAN = {
   'source': 'Coding Plan 对比(codingplan.fyi)',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-09-20',
+  'updated': '2026-09-21',
   'siteUpdated': '2026.9.11',
-  'refreshedAt': '2026-09-20 13:48',
+  'refreshedAt': '2026-09-21 13:57',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 6,
