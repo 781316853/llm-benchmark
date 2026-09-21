@@ -228,6 +228,7 @@ window.SEEN = {
     'tbench|SWE-2': '2026-09-19',
     'deepswe|Step 5 Preview': '2026-09-20',
     'datalearner|Step 5 Preview': '2026-09-20',
-    'tbench|Step 5 Preview': '2026-09-20'
+    'tbench|Step 5 Preview': '2026-09-20',
+    'deepswe|Qwen3.8-Flash': '2026-09-21'
   }
 };

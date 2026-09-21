@@ -65,7 +65,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 32,
+      'modelCount': 33,
       'updated': '2026-09-21',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 221,
+      'modelCount': 222,
       'updated': '2026-09-21',
       'ageDays': 0,
       'completeness': 1,
@@ -236,6 +236,22 @@ window.QUALITY = {
       },
       'mean': 42.1,
       'stddev': 22.08,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Qwen3.8-Flash',
+      'name': 'qwen3.8-flash',
+      'vendor': 'Alibaba',
+      'sources': [
+        'ai_capability',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'ai_capability': 92.55,
+        'deepswe_v11': 58.7
+      },
+      'mean': 75.6,
+      'stddev': 16.92,
       'flag': 'alert'
     },
     {
@@ -736,9 +752,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 32,
-      'complete': 32,
-      'modelCount': 32,
+      'total': 33,
+      'complete': 33,
+      'modelCount': 33,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -760,9 +776,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 221,
-      'complete': 221,
-      'modelCount': 221,
+      'total': 222,
+      'complete': 222,
+      'modelCount': 222,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -951,6 +967,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'ai_capability,deepswe_v10',
       'message': 'minimax-m3-thinking 跨源分数标准差 22.08(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'ai_capability,deepswe_v11',
+      'message': 'qwen3.8-flash 跨源分数标准差 16.92(>10)'
     },
     {
       'level': 'error',

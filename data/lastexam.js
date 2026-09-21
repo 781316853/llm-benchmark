@@ -1,8 +1,9 @@
 // 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-09-21)
 // 主渠道:https://www.datalearner.com/benchmarks/agents-last-exam(厂商官方发布成绩转录)
 // 补充:https://llm-stats.com/benchmarks/agents-last-exam(官方:https://agents-last-exam.org/leaderboard)
+// 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
-// 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/llm-stats)
+// 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/llm-stats/qwen-official)
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
 window.LASTEXAM = {
   'source': 'Agents\' Last Exam',
@@ -10,7 +11,7 @@ window.LASTEXAM = {
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-21',
-  'refreshedAt': '2026-09-21 13:57',
+  'refreshedAt': '2026-09-22 02:30',
   'stats': {
     'tasks': 1490,
     'entries': 22

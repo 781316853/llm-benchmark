@@ -2,8 +2,9 @@
 // 来源:https://llm-stats.com/benchmarks/nl2repo(官方:https://github.com/multimodal-art-projection/NL2RepoBench)
 // 主渠道:官方论文评测表 https://arxiv.org/html/2512.12730v2(Table 2) · https://www.datalearner.com/benchmarks/nl2repo-bench(厂商官方发布)
 // 补充:llm-stats 聚合表 · https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像)
+// 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
-// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(paper/datalearner/llm-stats/benchlm)
+// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(paper/datalearner/qwen-official/llm-stats/benchlm)
 // 用途:自 2026-09-19 起不再计入总览综合分与命中数,仅「权威基准测试」页完整展示。
 window.NL2REPO = {
   'source': 'NL2Repo-Bench',
@@ -11,7 +12,7 @@ window.NL2REPO = {
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-21',
-  'refreshedAt': '2026-09-21 13:57',
+  'refreshedAt': '2026-09-22 02:30',
   'stats': {
     'tasks': 103,
     'entries': 49
