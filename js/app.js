@@ -49,12 +49,13 @@
     var cls = v === "4.0" ? "badge-tb40" : (v === "3.0" ? "badge-tb30" : "badge-tb21");
     return ' <span class="' + cls + '" title="榜单版本 v' + esc(v) + '">v' + esc(v) + '</span>';
   };
-  // 数据来源渠道徽标:official/selftest=官方榜/实测;paper/datalearner=厂商官方发布;其余=第三方
+  // 数据来源渠道徽标:official/selftest=官方榜/实测;paper/datalearner/qwen-official=厂商官方发布;其余=第三方
   var SRC_LABELS = {
     official: ["官方榜", "基准官方实测榜(T1)"],
     selftest: ["官方榜", "官方竞技场/站主实测(T1)"],
     paper: ["厂商发布", "基准作者论文评测表(T2)"],
     datalearner: ["厂商发布", "厂商官方发布成绩转录(T2)"],
+    "qwen-official": ["厂商发布", "Qwen 官方博客/模型卡转录(T2)·effort 未标注、协议与官方实测榜不可比,仅补缺失模型,仅供参考"],
     "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
     aa: ["AA 复测", "Artificial Analysis 复测口径(T3,第三方自家 harness,分数口径偏严,仅供参考)"],
@@ -1090,7 +1091,7 @@
     var dsvc = D.deepSweVersionCounts();
     html += authSectionHtml("DeepSWE", "长程软件工程 · 计入总览 · 主基准", ds.url,
       '<div class="table-wrap"><table id="authDeepSweTable" class="data-table"></table></div>',
-      '主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)· 补充:datalearner(厂商官方发布 T2,只补缺) · v1.1 更新 ' + esc(ds.updated || "") +
+      '主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)· 补充:datalearner(厂商官方发布 T2,只补缺)· Qwen 官方博客/模型卡(T2 厂商发布,仅补缺,effort 未标注·协议不可比·仅供参考) · v1.1 更新 ' + esc(ds.updated || "") +
       ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
       (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
       '。本榜计入总览综合分(权重 20%)与命中数。');
@@ -1137,7 +1138,7 @@
     });
     html += authSectionHtml("Agents' Last Exam", "真实专业工作流 · 仅展示", ale.officialUrl || ale.url,
       '<div class="table-wrap"><table id="authLastExamTable" class="data-table"></table></div>',
-      '主渠道:datalearner(厂商官方发布)· 补充:' + esc(ale.url || "") + '(官方:' + esc(ale.officialUrl || "") + ') · 更新 ' + esc(ale.updated || "") +
+      '主渠道:datalearner(厂商官方发布)· 补充:' + esc(ale.url || "") + '(官方:' + esc(ale.officialUrl || "") + ',Qwen 官方发布 T2 仅补缺) · 更新 ' + esc(ale.updated || "") +
       ' · 1500+ 个真实专业工作流任务(55 子行业),Pass@1 为完美得分运行占比,越高越好。' + esc(ale.channelPolicy || "") + '。本榜仅展示,不计入综合分。');
     // 5) ARC-AGI-3
     var ar = S.arcagi3 || {};
@@ -1215,7 +1216,7 @@
     });
     html += authSectionHtml("NL2Repo-Bench", "长程仓库生成 · 仅展示", n2.officialUrl || n2.url,
       '<div class="table-wrap"><table id="authNl2repoTable" class="data-table"></table></div>',
-      '主渠道:官方论文评测表(arxiv)与 datalearner(厂商官方发布)· 补充:llm-stats 聚合表与 benchlm.ai 镜像 · 更新 ' + esc(n2.updated || "") +
+      '主渠道:官方论文评测表(arxiv)与 datalearner(厂商官方发布)· 补充:llm-stats 聚合表与 benchlm.ai 镜像、Qwen 官方发布(T2,仅补缺) · 更新 ' + esc(n2.updated || "") +
       ' · 给定单一 NL 需求文档从零生成可安装 Python 库(约 103 个任务),test-pass-rate 越高越好;' + esc(n2.channelPolicy || "") +
       ',自 2026-09-19 起不再计入总览综合分与命中数(原权重 9%),本榜仅展示。');
     // 渲染 + 图表 + 表格

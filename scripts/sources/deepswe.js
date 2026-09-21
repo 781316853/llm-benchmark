@@ -9,6 +9,7 @@ const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
+const officialSeeds = require("../lib/official-seeds");
 const { parseDataLearner } = require("./datalearner");
 
 // 模型名归一化(跨源去重匹配):转小写并移除非字母数字字符
@@ -85,6 +86,24 @@ class DeepSweBase extends BaseSource {
       } catch (e) {
         console.log("  [datalearner] DeepSWE 补充失败: " + e.message);
       }
+      // Qwen 官方发布成绩种子层(T2):仅补缺失模型,不覆盖官方榜/datalearner 已收录条目。
+      try {
+        const seeds = officialSeeds.forBenchmark("deepswe_v11");
+        const have = {};
+        parsed.models.forEach(function (m) { have[normName(m.name)] = true; });
+        seeds.forEach(function (s) {
+          if (have[normName(s.name)]) { console.log("  [qwen-official] 已收录,跳过: " + s.name); return; }
+          have[normName(s.name)] = true;
+          parsed.models.push({
+            name: s.name, effort: s.effort || "-", pass1: s.score,
+            ci: null, cost: null, outTok: null, steps: null, src: "qwen-official"
+          });
+          console.log("  [qwen-official] 补缺: " + s.name + " (" + s.score + "%)");
+        });
+        parsed.models.sort(function (a, b) { return b.pass1 - a.pass1; });
+      } catch (e) {
+        console.log("  [qwen-official] DeepSWE 补充失败: " + e.message);
+      }
     }
     if (!parsed.models.length) throw new Error(this.cfg.name + " 未解析到任何数据");
     const standard = this.toStandard(parsed);
@@ -121,10 +140,11 @@ class DeepSweV11Source extends DeepSweBase {
     return `// 数据源1:DeepSWE 基准快照(云端抓取)
 // 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 ${T})
+// 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,只补缺失模型,协议不可比仅供参考;见 https://developer.aliyun.com/article/1763215)
 // ${CONFIG.channelPolicy}
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
-//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目)
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official=Qwen 官方发布转录补充条目)
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
