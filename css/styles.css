@@ -301,10 +301,10 @@ a:hover { text-decoration: underline; }
 .data-table th, .data-table td { padding: 9px var(--sp-3); text-align: left; white-space: nowrap; }
 .data-table thead th { position: sticky; top: 0; background: var(--panel-2); color: var(--text-dim);
   border-bottom: 1px solid var(--border); font-weight: 600; font-size: var(--fs-xs); letter-spacing: .02em; }
-/* 两级表头:第 1 行为分组行(榜单基准/实测)与非评测列的 rowspan 纵跨格,第 2 行为评测列列名 */
+/* 两级表头:第 1 行为分组行(榜单基准/第三方实测)与非评测列的 rowspan 纵跨格,第 2 行为评测列列名 */
 .data-table thead tr.grp-row th { text-align: center; letter-spacing: 2px; font-weight: 500; }
 .data-table thead tr.col-row th { font-weight: var(--fw-semibold); color: var(--text); }
-/* 总览矩阵分组区隔:仅分组边界(榜单基准|实测)用深色竖线框出两组,单元格内不加网格线
+/* 总览矩阵分组区隔:仅分组边界(榜单基准|第三方实测)用深色竖线框出两组,单元格内不加网格线
    分组起点由 app.js 标注 grp-start 类,与 th-grp 左边框同列对齐;不用 nth-child 列号,
    新增/调整列时表头自动跟随 MATRIX_COLS 分组,仅需同步表体起点单元格的 grp-start 标注 */
 #matrixTable thead th.th-grp, #matrixTable thead tr.col-row th.grp-start,

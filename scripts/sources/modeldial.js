@@ -12,7 +12,7 @@
 //   跨模型内部一致可比,但低于官网主榜显示值,前端列名/图轴已标注「后端轴」。
 //   分轴档案(/data/benchmark-snapshots/*)与 overall 档案均不含成本字段,且批次号与 latest.json 不对齐,
 //   无法无损还原官网的三轴汇总值,故不做汇总。该 feed 亦无 cost_coverage 字段,不做「≥/部分费用」标记。
-// 性质:已计入总览综合分(第 8 组,权重 12%)与命中数(命中分母 6 → 7)。
+// 性质:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(命中分母 6)。
 // 输出:data/modeldial.js(window.MODELDIAL)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -151,7 +151,7 @@ class ModeldialSource extends BaseSource {
       "//          backend/frontend/knowledge=三分项分;elapsedMs=耗时(毫秒);costUsd=参考费用(美元);\n" +
       "//          configs=该模型在源码中的 config 条数;tags=源站标记(recommended/value/speed/lightweight)\n" +
       "// 结构:models=模型级主榜(每条取该模型最高分 config,与官网主榜一致);configs=全部 config 明细\n" +
-      "// 用途:已计入总览综合分(第 8 组,权重 12%)与命中数(分母 7);「ModelDial」页完整展示。\n",
+      "// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 6);「ModelDial」页完整展示。\n",
       {
         source: "ModelDial",
         url: "https://modeldial.com/radar",

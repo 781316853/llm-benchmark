@@ -9,7 +9,7 @@
 //          backend/frontend/knowledge=三分项分;elapsedMs=耗时(毫秒);costUsd=参考费用(美元);
 //          configs=该模型在源码中的 config 条数;tags=源站标记(recommended/value/speed/lightweight)
 // 结构:models=模型级主榜(每条取该模型最高分 config,与官网主榜一致);configs=全部 config 明细
-// 用途:已计入总览综合分(第 8 组,权重 12%)与命中数(分母 7);「ModelDial」页完整展示。
+// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 6);「ModelDial」页完整展示。
 window.MODELDIAL = {
   'source': 'ModelDial',
   'url': 'https://modeldial.com/radar',

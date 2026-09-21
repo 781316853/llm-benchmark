@@ -5,7 +5,7 @@
 // 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);
 //          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);
 //          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目,官方榜未收录,无 agent/ci/cost)
-// 用途:计入总览页综合分(权重 10%)与命中数;「权威基准测试」页完整展示 agent×model 条目。
+// 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。
 window.TBENCH = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',

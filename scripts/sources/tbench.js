@@ -5,7 +5,7 @@
 // 渠道层级:主源 tbench.ai 官方实测榜 = T1(最高优先级);
 //   补充源 datalearner.com/benchmarks/terminal-bench-4-0(内嵌 results JSON,厂商官方发布)= T2,
 //   按"只补缺、不覆盖官方条目"策略合并官方榜未收录模型(官方口径优先)。
-// 性质:agent×model 组合条目(66 终端任务);计入总览页综合分(权重 10%)与命中数。
+// 性质:agent×model 组合条目(66 终端任务);与 3.0/2.1 合并为单一基准组计入总览页综合分(权重 11%)与命中数。
 // 输出:data/tbench.js(window.TBENCH),供「权威基准测试」页完整展示与总览矩阵。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -153,7 +153,7 @@ class TBenchSource extends BaseSource {
       "// 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
       "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);\n" +
       "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目,官方榜未收录,无 agent/ci/cost)\n" +
-      "// 用途:计入总览页综合分(权重 10%)与命中数;「权威基准测试」页完整展示 agent×model 条目。\n",
+      "// 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。\n",
       {
         source: "Terminal-Bench",
         url: this.cfg.url,

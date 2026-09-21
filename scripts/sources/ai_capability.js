@@ -108,7 +108,7 @@ class AiCapabilitySource extends BaseSource {
         updated: parsed.updated,
         refreshedAt: CONFIG.REFRESHED_AT,
         runCount: parsed.meta.N_complete != null ? parsed.meta.N_complete : null,
-        desc: "AI 能力专项测试四方向榜:文字/前端/后端/知识四个方向独立排名,方向分由成员题按既定权重合成。门户仅收录前端与后端两个编码方向,独立榜单展示,不计入综合分。",
+        desc: "AI 能力专项测试四方向榜:文字/前端/后端/知识四个方向独立排名,方向分由成员题按既定权重合成。门户仅收录前端与后端两个编码方向,两方向分合并为单个计分组计入总览综合分(权重 12%,属「第三方实测」组)。",
         directions: parsed.directions
       }
     );
