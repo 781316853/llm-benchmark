@@ -11,8 +11,8 @@
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-09%7C0",
-  updated: "2026-09-21",
-  refreshedAt: "2026-09-22 02:30",
+  updated: "2026-09-22",
+  refreshedAt: "2026-09-22 21:11",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1163,17 +1163,17 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Qwen3.8-Max (max)',
+        'model': 'Grok 4.7 (high)',
         'cells': [
-          '11/B(33.16)',
-          '10/B(50.86)',
-          '15/B(48.94)',
-          'Skip',
+          '8/B(53.87)',
+          '3/A+(15.68)',
+          '14/C+(32.91)',
+          'Pending',
           'Skip',
           'Skip'
         ],
         'unprompted': 0,
-        'ide': 'Claude Code',
+        'ide': 'Grok Build',
         'think': 1
       },
       {
@@ -1188,6 +1188,20 @@ window.LLM2014 = {
         ],
         'unprompted': 4,
         'ide': 'OpenCode CLI',
+        'think': 1
+      },
+      {
+        'model': 'MiMo-V2.6-Pro (high)',
+        'cells': [
+          '16/C(10.11)',
+          '5/B+(1.55)',
+          '14/B(7.23)',
+          'Failed',
+          'Skip',
+          'Failed'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
         'think': 1
       },
       {

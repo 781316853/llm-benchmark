@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-21)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-22)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -11,11 +11,11 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-09-21',
-  'refreshedAt': '2026-09-22 02:30',
+  'updated': '2026-09-22',
+  'refreshedAt': '2026-09-22 21:11',
   'stats': {
     'tasks': 66,
-    'entries': 32
+    'entries': 35
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -213,6 +213,18 @@ window.TBENCH = {
     },
     {
       'rank': 17,
+      'model': 'Grok 4.7',
+      'agent': 'Grok Build',
+      'effort': 'xhigh',
+      'score': 37.6,
+      'ci': 3.5,
+      'date': 'Sep 21, 2026',
+      'tokens': '5.5B',
+      'cost': '$3.68k (partial: 324/330)',
+      'src': 'official'
+    },
+    {
+      'rank': 18,
       'model': 'GPT-5.6 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -224,7 +236,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 18,
+      'rank': 19,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'low',
@@ -236,7 +248,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 19,
+      'rank': 20,
       'model': 'Opus 4.8',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -248,7 +260,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 20,
+      'rank': 21,
       'model': 'GPT-5.6 Terra',
       'agent': 'Codex',
       'effort': 'max',
@@ -260,7 +272,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 21,
+      'rank': 22,
       'model': 'Grok 4.6',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -272,7 +284,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 22,
+      'rank': 23,
       'model': 'Gemini 3.8 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -284,7 +296,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 23,
+      'rank': 24,
       'model': 'GPT-5.6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -296,7 +308,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 24,
+      'rank': 25,
       'model': 'Grok 4.5',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -308,7 +320,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 24,
+      'rank': 25,
       'model': 'Sonnet 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -320,7 +332,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'Gemini 3.7 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -330,6 +342,18 @@ window.TBENCH = {
       'tokens': '11.1B',
       'cost': '$1.3k',
       'src': 'official'
+    },
+    {
+      'rank': null,
+      'model': 'MiMo-V2.6-Pro',
+      'agent': null,
+      'effort': '思考模式（工具）',
+      'score': 34.9,
+      'ci': null,
+      'date': '2026-09-22',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
     },
     {
       'rank': null,
@@ -363,6 +387,18 @@ window.TBENCH = {
       'score': 32.8,
       'ci': null,
       'date': '2026-08-26',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
+      'model': 'MiMo-V2.6-Flash',
+      'agent': null,
+      'effort': '思考模式（工具）',
+      'score': 28.8,
+      'ci': null,
+      'date': '2026-09-22',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'

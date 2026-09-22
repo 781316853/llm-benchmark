@@ -1,4 +1,4 @@
-// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-09-21
+// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-09-22
 // 来源:https://www.codingplan.fyi/model-comparison-presets.json + plans.json + plan-models.json + models.json + platforms.json(官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:groups[]=固定精选模型分组(kind single=单模型列/multi=多模型列);row=比价行
 //   (platform 平台/plan 套餐/qualifier 谷峰等档位标签/price 折算人民币月价按量行计「按量」/
@@ -9,14 +9,14 @@ window.CODINGPLAN = {
   'source': 'Coding Plan 对比(codingplan.fyi)',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-09-21',
-  'siteUpdated': '2026.9.11',
-  'refreshedAt': '2026-09-22 02:30',
+  'updated': '2026-09-22',
+  'siteUpdated': '2026.9.22',
+  'refreshedAt': '2026-09-22 21:11',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 6,
-    'rows': 169,
-    'points': 403
+    'rows': 159,
+    'points': 398
   },
   'presetTitle': '快速对比',
   'presetDesc': '固定精选常用模型与套餐，帮助快速找到值得进一步比较的选项。',
@@ -33,7 +33,7 @@ window.CODINGPLAN = {
           'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Go',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥6.8 / 月',
           'unit': '¥1.428 / 亿',
           'usage': '4.79亿',
@@ -43,27 +43,17 @@ window.CODINGPLAN = {
           'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'GOAT',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥68 / 月',
           'unit': '¥2.38 / 亿',
           'usage': '28.8亿',
           'featured': false
         },
         {
-          'platform': 'Command Code',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'Go',
-          'qualifier': '[峰]',
-          'price': '¥6.8 / 月',
-          'unit': '¥2.856 / 亿',
-          'usage': '2.4亿',
-          'featured': false
-        },
-        {
           'platform': 'OpenCode',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Go',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥68 / 月',
           'unit': '¥2.992 / 亿',
           'usage': '22.6亿',
@@ -73,31 +63,11 @@ window.CODINGPLAN = {
           'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Pro',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥136 / 月',
           'unit': '¥4.08 / 亿',
           'usage': '33.6亿',
           'featured': false
-        },
-        {
-          'platform': 'Command Code',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'GOAT',
-          'qualifier': '[峰]',
-          'price': '¥68 / 月',
-          'unit': '¥4.76 / 亿',
-          'usage': '14.4亿',
-          'featured': false
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'Go',
-          'qualifier': '[峰]',
-          'price': '¥68 / 月',
-          'unit': '¥6.052 / 亿',
-          'usage': '11.3亿',
-          'featured': true
         },
         {
           'platform': '字节·方舟 Coding Plan',
@@ -118,16 +88,6 @@ window.CODINGPLAN = {
           'unit': '¥6.67 / 亿',
           'usage': '30亿',
           'featured': true
-        },
-        {
-          'platform': 'Command Code',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'Pro',
-          'qualifier': '[峰]',
-          'price': '¥136 / 月',
-          'unit': '¥8.092 / 亿',
-          'usage': '16.8亿',
-          'featured': false
         },
         {
           'platform': '字节·方舟 Agent Plan',
@@ -301,20 +261,10 @@ window.CODINGPLAN = {
           'platform': 'OpenCode',
           'model': 'DeepSeek-V4.1-Flash',
           'plan': 'Go',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥68 / 月',
           'unit': '¥1.496 / 亿',
           'usage': '45.1亿',
-          'featured': true
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'DeepSeek-V4.1-Flash',
-          'plan': 'Go',
-          'qualifier': '[峰]',
-          'price': '¥68 / 月',
-          'unit': '¥2.992 / 亿',
-          'usage': '22.6亿',
           'featured': true
         },
         {
@@ -685,7 +635,7 @@ window.CODINGPLAN = {
           'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Go',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥6.8 / 月',
           'unit': '¥1.428 / 亿',
           'usage': '4.79亿',
@@ -695,7 +645,7 @@ window.CODINGPLAN = {
           'platform': 'OpenCode',
           'model': 'DeepSeek-V4.1-Flash',
           'plan': 'Go',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥68 / 月',
           'unit': '¥1.496 / 亿',
           'usage': '45.1亿',
@@ -715,7 +665,7 @@ window.CODINGPLAN = {
           'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'GOAT',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥68 / 月',
           'unit': '¥2.38 / 亿',
           'usage': '28.8亿',
@@ -752,30 +702,10 @@ window.CODINGPLAN = {
           'featured': true
         },
         {
-          'platform': 'Command Code',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'Go',
-          'qualifier': '[峰]',
-          'price': '¥6.8 / 月',
-          'unit': '¥2.856 / 亿',
-          'usage': '2.4亿',
-          'featured': false
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'DeepSeek-V4.1-Flash',
-          'plan': 'Go',
-          'qualifier': '[峰]',
-          'price': '¥68 / 月',
-          'unit': '¥2.992 / 亿',
-          'usage': '22.6亿',
-          'featured': true
-        },
-        {
           'platform': 'OpenCode',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Go',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥68 / 月',
           'unit': '¥2.992 / 亿',
           'usage': '22.6亿',
@@ -805,7 +735,7 @@ window.CODINGPLAN = {
           'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Pro',
-          'qualifier': '[谷]',
+          'qualifier': '',
           'price': '¥136 / 月',
           'unit': '¥4.08 / 亿',
           'usage': '33.6亿',
@@ -820,16 +750,6 @@ window.CODINGPLAN = {
           'unit': '¥4.352 / 亿',
           'usage': '15.7亿',
           'featured': true
-        },
-        {
-          'platform': 'Command Code',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'GOAT',
-          'qualifier': '[峰]',
-          'price': '¥68 / 月',
-          'unit': '¥4.76 / 亿',
-          'usage': '14.4亿',
-          'featured': false
         },
         {
           'platform': '字节·方舟 Agent Plan',
@@ -870,16 +790,6 @@ window.CODINGPLAN = {
           'unit': '¥5 / 亿',
           'usage': '200亿',
           'featured': false
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'Go',
-          'qualifier': '[峰]',
-          'price': '¥68 / 月',
-          'unit': '¥6.052 / 亿',
-          'usage': '11.3亿',
-          'featured': true
         },
         {
           'platform': 'Command Code',
@@ -949,16 +859,6 @@ window.CODINGPLAN = {
           'price': '¥544 / 月',
           'unit': '¥7.752 / 亿',
           'usage': '70.2亿',
-          'featured': false
-        },
-        {
-          'platform': 'Command Code',
-          'model': 'DeepSeek-V4-Flash-0731',
-          'plan': 'Pro',
-          'qualifier': '[峰]',
-          'price': '¥136 / 月',
-          'unit': '¥8.092 / 亿',
-          'usage': '16.8亿',
           'featured': false
         },
         {

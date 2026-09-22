@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-21)
+// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-22)
 // 来源:https://llm-stats.com/benchmarks/terminal-bench-2.1(官方:https://www.tbench.ai/news/terminal-bench-2-1)
 // 主渠道:https://www.datalearner.com/benchmarks/terminal-bench-2-1(厂商官方发布成绩转录)
 // 补充:llm-stats 聚合表(0-1 归一化自报分)
@@ -14,11 +14,11 @@ window.TBENCH_V21 = {
   'officialUrl': 'https://www.tbench.ai/news/terminal-bench-2-1',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2.1',
-  'updated': '2026-09-21',
-  'refreshedAt': '2026-09-22 02:30',
+  'updated': '2026-09-22',
+  'refreshedAt': '2026-09-22 21:11',
   'stats': {
     'tasks': 89,
-    'entries': 46
+    'entries': 48
   },
   'desc': 'Terminal-Bench 2.1:在真实命令行环境中评测编码 Agent(89 个任务,修复 2.0 中 28 个任务问题)。本快照以 datalearner 厂商官方发布成绩为主源、llm-stats 模型级 0-1 归一化自报分(换算为百分比)为补充源,按渠道层级合并,越高越好。',
   'models': [
@@ -64,6 +64,20 @@ window.TBENCH_V21 = {
     },
     {
       'rank': 4,
+      'model': 'MiMo-V2.6-Pro',
+      'agent': null,
+      'effort': '思考模式（工具）',
+      'score': 89.9,
+      'ci': null,
+      'date': '2026-09-22',
+      'tokens': null,
+      'cost': '$ 0.43 / $ 0.87',
+      'org': '小米',
+      'size': '1.0T',
+      'src': 'datalearner'
+    },
+    {
+      'rank': 5,
       'model': 'GPT-5.6 Sol',
       'agent': null,
       'effort': '极高强度思考（工具）',
@@ -77,7 +91,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 5,
+      'rank': 6,
       'model': 'Gemini 3.8 Flash',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -91,7 +105,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 6,
+      'rank': 7,
       'model': 'Claude Opus 5',
       'agent': null,
       'effort': '最高（工具）',
@@ -104,7 +118,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 7,
+      'rank': 8,
       'model': 'Muse Spark 1.3',
       'agent': null,
       'effort': null,
@@ -118,7 +132,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 8,
+      'rank': 9,
       'model': 'Grok 4.6',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -131,7 +145,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 9,
+      'rank': 10,
       'model': 'Kimi K3',
       'agent': null,
       'effort': null,
@@ -145,7 +159,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 10,
+      'rank': 11,
       'model': 'GLM-5.3',
       'agent': null,
       'effort': null,
@@ -159,7 +173,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 11,
+      'rank': 12,
       'model': 'Claude Fable 5',
       'agent': null,
       'effort': '深度思考模式（工具）',
@@ -173,7 +187,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 12,
+      'rank': 13,
       'model': 'DeepSeek-V4-Pro-0813',
       'agent': null,
       'effort': '极高强度思考（工具）',
@@ -187,7 +201,21 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 13,
+      'rank': 14,
+      'model': 'MiMo-V2.6-Flash',
+      'agent': null,
+      'effort': '思考模式（工具）',
+      'score': 87.6,
+      'ci': null,
+      'date': '2026-09-22',
+      'tokens': null,
+      'cost': '$ 0.14 / $ 0.28',
+      'org': '小米',
+      'size': '309B',
+      'src': 'datalearner'
+    },
+    {
+      'rank': 15,
       'model': 'GPT-6 Astra',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -200,7 +228,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 14,
+      'rank': 16,
       'model': 'GPT-5.6 Terra',
       'agent': null,
       'effort': '最高（无工具）',
@@ -214,7 +242,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 15,
+      'rank': 17,
       'model': 'Qwen3.8-Max',
       'agent': null,
       'effort': '极高强度思考（工具）',
@@ -228,7 +256,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 16,
+      'rank': 18,
       'model': 'Qwen3.8-Flash-Next',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -241,21 +269,21 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 17,
+      'rank': 19,
       'model': 'Gemini 3.7 Flash',
       'agent': null,
-      'effort': '思考模式（工具）',
+      'effort': null,
       'score': 85.8,
       'ci': null,
-      'date': '2026-08-13',
+      'date': null,
       'tokens': null,
       'cost': '$ 0.75 / $ 3.75',
-      'org': 'Google DeepMind',
+      'org': 'Google',
       'size': '—',
-      'src': 'datalearner'
+      'src': 'llm-stats'
     },
     {
-      'rank': 18,
+      'rank': 20,
       'model': 'Hy4 preview',
       'agent': null,
       'effort': null,
@@ -269,7 +297,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 19,
+      'rank': 21,
       'model': 'GPT-5.6 Luna',
       'agent': null,
       'effort': null,
@@ -283,7 +311,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 20,
+      'rank': 22,
       'model': 'GLM-5.3-Flash',
       'agent': null,
       'effort': null,
@@ -297,7 +325,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 21,
+      'rank': 23,
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
       'agent': null,
       'effort': null,
@@ -311,7 +339,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 22,
+      'rank': 24,
       'model': 'Grok 4.5',
       'agent': null,
       'effort': null,
@@ -325,7 +353,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 23,
+      'rank': 25,
       'model': 'Muse Spark 1.2',
       'agent': null,
       'effort': null,
@@ -339,21 +367,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 24,
-      'model': 'DeepSeek-V4-Flash-0731',
-      'agent': null,
-      'effort': null,
-      'score': 82.7,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': '$ 0.06 / $ 0.18',
-      'org': 'DeepSeek',
-      'size': '304B',
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 25,
+      'rank': 26,
       'model': 'GLM-5.2',
       'agent': null,
       'effort': null,
@@ -367,7 +381,21 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 26,
+      'rank': 27,
+      'model': 'DeepSeek-V4-Flash-0731',
+      'agent': null,
+      'effort': null,
+      'score': 82.7,
+      'ci': null,
+      'date': null,
+      'tokens': null,
+      'cost': '$ 0.06 / $ 0.18',
+      'org': 'DeepSeek',
+      'size': '304B',
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 28,
       'model': 'Muse Spark 1.1',
       'agent': null,
       'effort': null,
@@ -381,7 +409,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 27,
+      'rank': 29,
       'model': 'Atria Dawn Preview',
       'agent': null,
       'effort': null,
@@ -395,7 +423,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 28,
+      'rank': 30,
       'model': 'Gemini 3.6 Flash',
       'agent': null,
       'effort': null,
@@ -409,7 +437,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 29,
+      'rank': 31,
       'model': 'Qwen3.8-27B',
       'agent': null,
       'effort': null,
@@ -423,7 +451,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 30,
+      'rank': 32,
       'model': 'Hy3',
       'agent': null,
       'effort': null,
@@ -437,7 +465,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 31,
+      'rank': 33,
       'model': 'Seed 2.1 Pro',
       'agent': null,
       'effort': null,
@@ -451,7 +479,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 32,
+      'rank': 34,
       'model': 'Laguna S 2.1',
       'agent': null,
       'effort': null,
@@ -465,7 +493,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 33,
+      'rank': 35,
       'model': 'Seed 2.1 Turbo',
       'agent': null,
       'effort': null,
@@ -479,7 +507,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 34,
+      'rank': 36,
       'model': 'MiniMax M3',
       'agent': null,
       'effort': null,
@@ -493,7 +521,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 35,
+      'rank': 37,
       'model': 'Inkling-Small',
       'agent': null,
       'effort': null,
@@ -507,7 +535,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 36,
+      'rank': 38,
       'model': 'Inkling',
       'agent': null,
       'effort': null,
@@ -521,7 +549,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 37,
+      'rank': 39,
       'model': 'MAI-Code-1.1-Flash',
       'agent': null,
       'effort': null,
@@ -535,7 +563,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 38,
+      'rank': 40,
       'model': 'Step 3.7 Flash',
       'agent': null,
       'effort': null,
@@ -549,7 +577,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 39,
+      'rank': 41,
       'model': 'Ling 3.0 Flash',
       'agent': null,
       'effort': null,
@@ -563,7 +591,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 40,
+      'rank': 42,
       'model': 'Solar Pro 4',
       'agent': null,
       'effort': null,
@@ -577,7 +605,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 41,
+      'rank': 43,
       'model': 'Nemotron 3 Ultra (550B A55B)',
       'agent': null,
       'effort': null,
@@ -591,7 +619,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 42,
+      'rank': 44,
       'model': 'Gemini 3.5 Flash-Lite',
       'agent': null,
       'effort': null,
@@ -605,7 +633,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 43,
+      'rank': 45,
       'model': 'Muse Glimmer-30B',
       'agent': null,
       'effort': null,
@@ -619,7 +647,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 44,
+      'rank': 46,
       'model': 'IBM Granite 4.2 30B',
       'agent': null,
       'effort': null,
@@ -633,7 +661,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 45,
+      'rank': 47,
       'model': 'Nemotron 3.5 Lightning (30B A3B)',
       'agent': null,
       'effort': null,
@@ -647,7 +675,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 46,
+      'rank': 48,
       'model': 'IBM Granite 4.2 8B',
       'agent': null,
       'effort': null,

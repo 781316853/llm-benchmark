@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-09-21',
+  'updated': '2026-09-22',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -229,6 +229,17 @@ window.SEEN = {
     'deepswe|Step 5 Preview': '2026-09-20',
     'datalearner|Step 5 Preview': '2026-09-20',
     'tbench|Step 5 Preview': '2026-09-20',
-    'deepswe|Qwen3.8-Flash': '2026-09-21'
+    'deepswe|Qwen3.8-Flash': '2026-09-21',
+    'deepswe|MiMo-V2.6-Pro': '2026-09-22',
+    'deepswe|Grok 4.7': '2026-09-22',
+    'deepswe|MiMo-V2.6-Flash': '2026-09-22',
+    'datalearner|MiMo-V2.6-Pro': '2026-09-22',
+    'datalearner|Grok 4.7': '2026-09-22',
+    'datalearner|MiMo-V2.6-Flash': '2026-09-22',
+    'tbench|Grok 4.7': '2026-09-22',
+    'tbench|MiMo-V2.6-Pro': '2026-09-22',
+    'tbench|MiMo-V2.6-Flash': '2026-09-22',
+    'llm|Grok 4.7 (high)': '2026-09-22',
+    'llm|MiMo-V2.6-Pro (high)': '2026-09-22'
   }
 };
