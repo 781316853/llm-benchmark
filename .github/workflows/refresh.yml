@@ -1,7 +1,7 @@
 name: 每日数据刷新与部署
 on:
   schedule:
-    - cron: "0 1,13 * * *"   # UTC 01:00 / 13:00 = 北京 09:00 / 21:00(每日两次)
+    - cron: "30 1,9 * * *"   # UTC 01:30 / 09:30 = 北京 09:30 / 17:30(每日两次)
   workflow_dispatch:       # 支持手动触发验证
   push:                    # 推送代码变更时触发部署
     branches: [main]       # 仅监听 main 分支

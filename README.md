@@ -50,7 +50,7 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 
 ## 每日数据刷新
 
-由 `.github/workflows/refresh.yml` 每天 UTC 01:00/13:00(≈北京 09:00/21:00)运行 `scripts/fetch_all.js`,抓取多源并重写 `data/*.js` 后提交回仓库。**渠道优先级**:各基准数据统一按「基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像」合并(`scripts/lib/mergeByTier.js` + `config.srcTiers`),高层级分数不被低层级覆盖,低层级仅补缺失模型与回填字段;每条记录带 `src` 渠道标签。主要源:
+由 `.github/workflows/refresh.yml` 每天 UTC 01:30/09:30(北京 09:30/17:30)运行 `scripts/fetch_all.js`,抓取多源并重写 `data/*.js` 后提交回仓库。**渠道优先级**:各基准数据统一按「基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像」合并(`scripts/lib/mergeByTier.js` + `config.srcTiers`),高层级分数不被低层级覆盖,低层级仅补缺失模型与回填字段;每条记录带 `src` 渠道标签。主要源:
 
 - **llm2014**:GitHub raw CSV,结构化解析;源站已将该类别显示为 Agentic,项目名保留表头字母代号,并同步抓取 i18n.js 中的官方档位/项目说明文案。
 - **DeepSWE**:解析 datacurve.ai 内嵌 run 对象(官方实测榜 T1),按"每模型最高 Pass\@1"选榜;datalearner 详情页(厂商官方发布 T2)只补缺、不覆盖官方条目。另以 Qwen 官方博客/模型卡/技术报告人工转录为 T2 种子层(`scripts/lib/official-seeds.js`,src=`qwen-official`,出处 developer.aliyun.com/article/1763215),仅补官方榜未收录的模型(如 Qwen3.8-Flash),绝不覆盖既有分数;协议不可比、effort 未标注,前端逐行挂"厂商发布"徽标标注仅供参考。同一机制亦接入 NL2Repo / Agents' Last Exam 作前向兜底。
