@@ -13,7 +13,7 @@ window.HLE = {
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-22',
-  'refreshedAt': '2026-09-22 21:11',
+  'refreshedAt': '2026-09-22 22:06',
   'stats': {
     'tasks': 2500,
     'entries': 222
