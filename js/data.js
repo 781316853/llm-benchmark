@@ -469,7 +469,7 @@
     // (如 2.1 自报分 88 ≈ 4.0 官方 26 分),再全池统一 min-max 到 0-100;矩阵展示的仍是代表版本原始分。
     tbench().forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, ci: m.ci, version: m.version, agent: m.agent, effort: m.effort, name: m.model, norm: m.norm };
+      if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, ci: m.ci, version: m.version, agent: m.agent, effort: m.effort, equiv: m.equiv, name: m.model, norm: m.norm };
     });
     // AI 能力专项测试:前端/后端方向分(0-100,直接作 norm);前端/后端各自同名取最高
     var ac = aicap();

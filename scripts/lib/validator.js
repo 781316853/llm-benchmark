@@ -6,7 +6,9 @@
 const CONFIG = require("./config");
 
 // ===== 一致性:同 canonical 模型跨源 score 标准差 =====
-// 移植自 js/compare.js variance() 的标准差算法;仅对 score 非 null 且命中 ≥2 源的模型计算。
+// 独立实现的总体标准差(与 js/compare.js 无耦合:compare.js 的 variance() 已于 2026-09-22
+// 随综合分口径改造移除,本函数仍供跨源数据校验使用)。
+// 仅对 score 非 null 且命中 ≥2 源的模型计算。
 // 注:仅比百分制分数。量纲不同的源(如 arena_webdev 的 Elo 分)按 CONFIG 排除;
 //     同一源内同一模型的重复记录(原始名变体)先按源取均值,再参与跨源比对。
 function consistency(recordsBySource) {

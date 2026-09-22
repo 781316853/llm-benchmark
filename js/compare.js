@@ -5,11 +5,27 @@
 
   var D = window.D;
 
-  // 综合分容差(同档跨度上限):同一「档」内任意两个模型的综合分差距都 < 此值,档内最大跨度被封顶;
-  // 档内不再按综合分微差排,改为按次级指标(命中数 → 一致性)排。
-  // 不用「成对比较器」实现:成对比较器非传递,会把 76.83 与 79.32 这类差距 2.5 分的模型
-  // 经相邻链(1.2 + 0.15 + 0.04 + 1.10)串成同一档,档宽随数据分布不可控。
-  var SCORE_TOLERANCE = 1.5;
+  // ===== 综合分口径(2026-09-22 起:各榜榜内稳健标准分加权)=====
+  // 旧口径直接加权平均各榜归一分(norm),有两个结构性缺陷:
+  //  ① 各榜 norm 量纲不可比 —— 榜内标准差 DeepSWE 约 32 分、ModelDial 仅约 11 分,
+  //     同样「领先 5 分」在两个榜上完全不是一回事;
+  //  ② 缺测一榜等于白占一个高分位 —— 缺席不进加权(权重回流),于是「只被测到强项」的模型
+  //     加权均值反而更高(2026-09 快照:Kimi K3 在四个共同榜全部高于 Qwen3.8-Flash,
+  //     却因独占的 llm2014 只有 54 绝对分而被压到其后)。
+  // 新口径:每榜先在「全池在场该榜的模型」内做稳健标准化(中位数 + 1.4826×MAD),
+  // 再按权重对在场榜归一。缺榜即等价于「按该模型自身水平填补」,不再因未测而占便宜。
+  var Z_DISPLAY_SCALE = 15;   // 1 个加权标准分 = 15 显示分;50 分 = 全池中位
+  var Z_CLIP = 3;             // 单榜相对分截断 ±3 个稳健标准差,防长尾噪声主导加权均值
+  // 容差档宽(同档跨度上限)= 0.10 个加权标准分,即「两模型相差不到 1/10 个榜内标准差」视为同档。
+  // 写成 Z_DISPLAY_SCALE × TOL_Z 而非裸数字,是为了让档宽语义不随显示缩放漂移。
+  // 划档仍用「与档内首名比」而非成对比较器:成对比较器非传递,会把相邻小差距串成失控宽档。
+  var TOL_Z = 0.10;
+  var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
+  var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
+  var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
+  // 6 个计分组的键(与 WEIGHTS、总览矩阵列一致)
+  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "aicap"];
+
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
@@ -24,8 +40,8 @@
     aicap:   function (e) { return aicapNorm(e); }
   };
   // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
-  // 参考综合分与排名行同口径(即 composite:一榜豁免 − 一致性折减;参考行最多 4 组,
-  // 同样享受一榜豁免,落位口径偏乐观),仅用于落入名次间隔,展示上仍不显示综合分、不计排名。
+  // 参考综合分与排名行完全同口径(各榜榜内稳健标准分按在场权重归一,无豁免、无折减),
+  // 仅用于落入名次间隔,展示上仍不显示综合分、不计排名。
   // 结果为 n 表示应落入第 n 与第 n+1 个排名行之间的间隔(0 = 首名之前)。
   // 原因:旧的「逐榜数高于它的排名行、以最弱榜为准」口径会把单榜偏弱的整体强参考行过度下压
   // (如 Claude Fable 5.1 的 DeepSWE 中游抹平了 WebDev 第 2 / TB 校准分第 2,被压到第 10 间隔),
@@ -37,7 +53,7 @@
   }
   // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上;总览页传 3 仅收命中≥3榜):
   // ① 排名行(命中≥4榜)先按综合分降序取基准序,再按「同档跨度 < 容差」划档(每行与档内首名比,
-  //    故档内跨度恒 < 1.5),档内依次按 命中数 → 一致性 → 综合分 排序,最后依次编号 _posKey = 0,1,2…;
+  //    故档内跨度恒 < 1.5),档内依次按 命中数 → 共榜净胜 → 综合分 → id 排序,最后编号 _posKey = 0,1,2…;
   //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),门槛仍取 4,保持与历史排名的可比性;
   // ② 参考行(命中=3)不计算综合分、不参与排名,按「参考综合分」在排名行综合分序列的应处名次落入
   //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
@@ -47,18 +63,18 @@
   // ④ 合并后按 _posKey 升序
   function matrix(llmMonthKey, minHits) {
     var floor = minHits == null ? 2 : minHits;
-    var map = D.unified(llmMonthKey);
+    var map = scoreTable(llmMonthKey).map;
     var all = Object.keys(map).map(function (k) { return map[k]; })
       .filter(function (e) { return e.benchCount >= floor; });
     var ranked = all.filter(function (e) { return e.benchCount >= 4; });
     var inserted = all.filter(function (e) { return e.benchCount >= 2 && e.benchCount <= 3; }); // 命中 2-3 榜:不参与名次、不计算综合分
     var single = all.filter(function (e) { return e.benchCount === 1; });   // 单榜:仅「显示全部」时出现
-    // 基准序:综合分降序(同分依次 命中数降序 → 一致性升序),作为划档输入
+    // 基准序:综合分降序(同分依次 命中数降序 → id 升序兜底确定性),作为划档输入
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);
       if (ca !== cb) return cb - ca;
       if (a.benchCount !== b.benchCount) return b.benchCount - a.benchCount;
-      return variance(a) - variance(b);
+      return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
     });
     // 划档:与档内首名(本档最高分)差距 ≥ 容差即另起一档 —— 档内跨度因此恒 < SCORE_TOLERANCE
     var tiers = [], curTier = null;
@@ -67,16 +83,18 @@
       if (!curTier || (curTier.anchor - c) >= SCORE_TOLERANCE) { curTier = { anchor: c, items: [] }; tiers.push(curTier); }
       curTier.items.push(e);
     });
-    // 档内重排:命中数降序(数据更全面者优先)→ 一致性升序(各榜更均衡者优先)→ 综合分降序(兜底确定性)
+    // 档内重排:先按「共榜支配关系」做拓扑分层(在双方共同在场的榜上**全部更高**者,必须排在前面),
+    // 同层内再依次按 命中数降序 → 共榜净胜降序 → 综合分降序 → id 升序。
+    // 为什么要显式拓扑分层,而不是只把净胜当排序键:净胜是对档内所有对手的平均,
+    // A 全面压住 B 却可能因对其它对手赢得少而平均更低 —— 那样就还是会出现"全赢者排后面"。
+    // 成对胜负本身非传递(实测存在 A>B>C>A 的环),不能直接交给 sort;分层法保证无环时无解可依,
+    // 真出现环时(不同共榜子集才可能)整层退回优先级键排序,仍是全序、结果可复现。
+    // 注:该保证的边界是「同一容差档内」—— 跨档(相差 >= 0.1 个加权标准分)仍以加权综合分为主序,
+    //     那里"哪个榜被测过"的差异会真实进入分数,不再由成对胜负覆盖。
     var ordered = [];
     tiers.forEach(function (t) {
-      t.items.sort(function (a, b) {
-        if (a.benchCount !== b.benchCount) return b.benchCount - a.benchCount;
-        var d = variance(a) - variance(b);
-        if (d) return d;
-        return composite(b) - composite(a);
-      });
-      ordered = ordered.concat(t.items);
+      t.items.forEach(function (e) { e._pw = pairBalance(e, t.items); });
+      ordered = ordered.concat(tierOrder(t.items));
     });
     ordered.forEach(function (e, i) { e._posKey = i; });
     // 参考行按参考综合分降序预排,再落入各自间隔:同间隔内的先后即综合分先后,
@@ -118,7 +136,10 @@
   //  llm2014 10→12%、AI 能力 10→12%;②「榜单基准」组同步减权 —— DeepSWE 20→16%、Terminal-Bench 14→11%。
   //  实测组合计 0.50→0.62、基准组 0.34→0.27,实测组占综合分由 59.5% 升至 69.7%,理由:第三方实测与
   //  社区盲测口径更贴近模型真实使用表现,官方基准榜的 agent×model 解决率与题库通过率区分度趋于饱和。
-  //  avgNorm 按在场权重归一化(豁免最弱一组后),缺失基准的权重自动回流,故上列权重无需凑满 100%
+  //  2026-09-22 起:综合分改为「各榜榜内稳健标准分(z)按在场权重归一」(见文件头口径说明),
+  //  同时取消一榜豁免与一致性折减;上列权重百分比未变。
+  //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
+  //  故上列权重无需凑满 100%(6 组之和 0.89)。
   var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, llm: 0.12, aicap: 0.12 };
   // AI 能力方向分合并:取前端/后端在场方向分的均值(仅测一侧则取该侧);
   // 与 BOARD_VALS.aicap 及 data.js 的 benchCount「合并计一次」口径一致
@@ -128,50 +149,146 @@
     if (e.aicapBe && e.aicapBe.norm != null) vals.push(e.aicapBe.norm);
     return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
   }
-  // 在场基准组列表(6 个计分组,键与 WEIGHTS 一致;norm 为各组 0-100 归一化分)
-  function presentGroups(e) {
-    var gs = [];
-    if (e.deepswe) gs.push({ key: "deepswe", w: WEIGHTS.deepswe, v: e.deepswe.norm });
-    if (e.llm && e.llm.norm != null) gs.push({ key: "llm", w: WEIGHTS.llm, v: e.llm.norm });
-    if (e.webdev && e.webdev.norm != null) gs.push({ key: "webdev", w: WEIGHTS.webdev, v: e.webdev.norm });
-    if (e.tbench && e.tbench.norm != null) gs.push({ key: "tbench", w: WEIGHTS.tbench, v: e.tbench.norm });
-    var ac = aicapNorm(e);
-    if (ac != null) gs.push({ key: "aicap", w: WEIGHTS.aicap, v: ac });
-    if (e.modeldial && e.modeldial.norm != null) gs.push({ key: "modeldial", w: WEIGHTS.modeldial, v: e.modeldial.norm });
-    return gs;
+  // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
+  // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
+  //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
+  //   modeldial 源站 40/30/30 综合分    llm  等级映射综合分    aicap  前/后端方向分均值
+  var BOARD_RAW = {
+    deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
+    webdev: function (e) { return e.webdev ? e.webdev.score : null; },
+    tbench: function (e) { return e.tbench ? e.tbench.equiv : null; },
+    modeldial: function (e) { return e.modeldial ? e.modeldial.overall : null; },
+    llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
+    aicap: function (e) { return aicapNorm(e); }
+  };
+  // 中位数(调用方传入已升序数组;偶数长度取两中均值 —— 朴素取下中位数会让统计量随样本 ±1 跳档)
+  function median(sorted) {
+    var n = sorted.length, h = n >> 1;
+    return n % 2 ? sorted[h] : (sorted[h - 1] + sorted[h]) / 2;
   }
-  // 一榜豁免:在场组按 norm 升序后剔除最弱一组(单组在场则不豁免),缓解"单榜失常拖垮整体"
-  function exemptedGroups(e) {
-    var gs = presentGroups(e).slice().sort(function (a, b) { return a.v - b.v; });
-    if (gs.length > 1) gs.shift();
-    return gs;
+  function numSort(a, b) { return a - b; }
+  // 榜内稳健统计:中心 = 中位数,尺度 = 1.4826×MAD(正态下等价于标准差,但不被长尾拉偏)。
+  // 尺度退化时分层回退 MAD → IQR/1.349 → 总体标准差;仍为 0 或在场样本 < N_MIN 则该榜本轮不计分
+  // (stats[g] = null,不参与任何模型的加权 —— 与其用一个失真的尺度把整榜噪声放大,不如暂不采信)。
+  // ⚠️ 统计池必须是 unified() 的**全量条目**(含仅命中 1 榜的模型):
+  // 只数参与排名的模型会把 MADσ 缩小约 2.7 倍、把 ±3 截断率从 2% 抬到 23%,头部模型的相对分被压平。
+  function boardStats(entries) {
+    var st = {};
+    GROUPS.forEach(function (g) {
+      var xs = [];
+      entries.forEach(function (e) {
+        var x = BOARD_RAW[g](e);
+        if (x != null && isFinite(x)) xs.push(x);
+      });
+      if (xs.length < N_MIN) { st[g] = null; return; }
+      xs.sort(numSort);
+      var med = median(xs);
+      var devs = xs.map(function (x) { return Math.abs(x - med); }).sort(numSort);
+      var scale = median(devs) * 1.4826, src = "mad";
+      if (!(scale > 0)) {
+        var pick = function (p) { return xs[Math.max(0, Math.min(xs.length - 1, Math.round((xs.length - 1) * p)))]; };
+        scale = (pick(0.75) - pick(0.25)) / 1.349; src = "iqr";
+      }
+      if (!(scale > 0)) {
+        var mean = xs.reduce(function (a, b) { return a + b; }, 0) / xs.length;
+        scale = Math.sqrt(xs.reduce(function (s, x) { var d = x - mean; return s + d * d; }, 0) / xs.length);
+        src = "sd";
+      }
+      st[g] = (scale > 0) ? { n: xs.length, center: med, scale: scale, src: src } : null;
+    });
+    return st;
   }
-  // 豁免后的加权平均:缺失基准的权重仍自动回流至在场组(豁免组的权重一并剔除)
-  function avgNorm(e) {
-    var gs = exemptedGroups(e);
+  // 按 llm 月份缓存整张评分表:榜内统计与每模型的显示分只算一次。
+  // matrix()/refPosition()/assignTiers() 的比较器会以 O(n²) 频次调用 composite(),
+  // 若在 composite 内现算 unified() + 榜内排序统计,单次渲染就要重建几十次全池。
+  var scoreCache = {};
+  function scoreTable(llmMonthKey) {
+    var ck = String(llmMonthKey == null ? "*" : llmMonthKey);
+    if (scoreCache[ck]) return scoreCache[ck];
+    var map = D.unified(llmMonthKey);
+    var entries = Object.keys(map).map(function (k) { return map[k]; });
+    var stats = boardStats(entries);
+    entries.forEach(function (e) {
+      var zs = {}, sum = 0, wsum = 0;
+      GROUPS.forEach(function (g) {
+        if (!stats[g]) return;
+        var x = BOARD_RAW[g](e);
+        if (x == null || !isFinite(x)) return;
+        var z = (x - stats[g].center) / stats[g].scale;
+        z = Math.max(-Z_CLIP, Math.min(Z_CLIP, z));
+        zs[g] = z;
+        sum += z * WEIGHTS[g];
+        wsum += WEIGHTS[g];
+      });
+      e._z = zs;
+      // 显示分 = 50 + 15×加权标准分,夹到 0-100:50 即全池中位,每 15 分差 = 1 个榜内稳健标准差
+      e._disp = wsum > 0 ? Math.max(0, Math.min(100, 50 + Z_DISPLAY_SCALE * (sum / wsum))) : null;
+    });
+    scoreCache[ck] = { map: map, entries: entries, stats: stats };
+    return scoreCache[ck];
+  }
+  // 综合分(显示分 0-100)。行对象须来自 matrix()/scoreTable()(已写入 _disp);
+  // 未在任何有效榜上解决的模型(全 Skip/未收录)记 0,不参与排名展示。
+  // 2026-09-22 起不再含「一榜豁免」与「一致性折减」:前者与「缺榜按自身水平填补」是同一动机的
+  // 两次实现,叠加会把只挑强项参赛的模型持续抬分;后者在新量纲下(σ_z 中位约 0.7)折减不足
+  // 0.2 分,已属噪声,而「各榜更均衡者优先」的语义改由档内 tie-break 明确承担。
+  function composite(e) { return e._disp == null ? 0 : e._disp; }
+  // 共榜成对净胜(0..1):只在双方都在场的榜上比标准分,分差经 logistic 软化以保留「赢多少」;
+  // 无共榜返回 null。缺测的榜既不当 0 分也不当满分 —— 没有任何证据,就不做假设。
+  function headToHead(a, b) {
     var sum = 0, wsum = 0;
-    gs.forEach(function (g) { sum += g.v * g.w; wsum += g.w; });
-    return wsum > 0 ? sum / wsum : 0;
+    GROUPS.forEach(function (g) {
+      var x = a._z && a._z[g], y = b._z && b._z[g];
+      if (x == null || y == null) return;
+      sum += WEIGHTS[g] / (1 + Math.exp(-(x - y) / H2H_TAU));
+      wsum += WEIGHTS[g];
+    });
+    return wsum > 0 ? sum / wsum : null;
   }
-  // 跨榜一致性(标准差):对豁免后剩余各组的 norm 计算离散程度
-  // 数据不足 2 组时返回 0,避免单组模型被误判为"最均衡"
-  function variance(e) {
-    var vs = exemptedGroups(e).map(function (g) { return g.v; });
-    if (vs.length < 2) return 0;
-    var mean = vs.reduce(function (a, b) { return a + b; }, 0) / vs.length;
-    var sumSq = vs.reduce(function (s, v) { var d = v - mean; return s + d * d; }, 0);
-    return Math.sqrt(sumSq / vs.length);
+  // 把成对胜负标量化:对 peers 内所有对手的共榜净胜求平均(无共榜对手记 0)
+  function pairBalance(e, peers) {
+    var sum = 0, n = 0;
+    peers.forEach(function (o) {
+      if (o === e) return;
+      var v = headToHead(e, o);
+      if (v != null) { sum += v; n++; }
+    });
+    return n ? sum / n : 0;
   }
-  // 一致性折减参数:标准差越大折减越多,让各榜均衡的模型获得微优势
-  var VARIANCE_WEIGHT = 0.15; // 每点标准差折减 0.15 分
-  var MAX_PENALTY = 1.0;      // 折减上限 1 分(2026-09-14 由 2 分下调:单榜失常已由豁免位兜底,不再双重惩罚)
-  // 综合分 = 豁免最弱一组后的加权均值 − 一致性折减(封顶 100,保持百分制量纲)
-  // 2026-09-20 起取消完整度奖励:在场组数不再额外加减分,「多一榜」只通过
-  // 「一榜豁免 + 缺失权重回流」体现(缺一榜的模型不再被扣两次)
-  function composite(e) {
-    var base = avgNorm(e);
-    var penalty = Math.min(variance(e) * VARIANCE_WEIGHT, MAX_PENALTY);
-    return Math.min(100, base - penalty);
+  // 共榜严格支配:两模型各自在场的榜取交集,交集上每一榜都严格更高(至少 1 个共榜)即成立。
+  // 支配是双向定义(共榜集合对 both 相同),故不会出现 A、B 互相支配。
+  function dominatesStrict(a, b) {
+    var shared = 0, i, g, x, y;
+    for (i = 0; i < GROUPS.length; i++) {
+      g = GROUPS[i];
+      x = a._z && a._z[g]; y = b._z && b._z[g];
+      if (x == null || y == null) continue;
+      shared++;
+      if (x <= y) return false;
+    }
+    return shared > 0;
+  }
+  // 档内全序:先按支配关系拓扑分层(被档内任一剩余模型支配者不得出层 → 支配者必然排在前面),
+  // 同层内再按 命中数降序 → 共榜净胜降序 → 综合分降序 → id 升序。
+  // 分层而非比较器是必须的:成对胜负非传递,交给 Array.sort 会得到依赖输入序、跨引擎不一致的结果。
+  function tierOrder(items) {
+    var out = [], rest = items.slice();
+    while (rest.length) {
+      var layer = rest.filter(function (e) {
+        return !rest.some(function (o) { return o !== e && dominatesStrict(o, e); });
+      });
+      if (!layer.length) layer = rest.slice(); // 兜底:支配成环(仅在不同共榜子集交叉时可能)则整批按优先级键排
+      layer.sort(function (a, b) {
+        if (a.benchCount !== b.benchCount) return b.benchCount - a.benchCount;
+        if (a._pw !== b._pw) return b._pw - a._pw;
+        var d = composite(b) - composite(a);
+        if (d) return d;
+        return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
+      });
+      out = out.concat(layer);
+      rest = rest.filter(function (e) { return layer.indexOf(e) < 0; });
+    }
+    return out;
   }
 
   // 梯队标签(从高到低):用于总览页展示,替代数值综合分
@@ -179,15 +296,14 @@
   // 金字塔权重:S+ 最少(1),逐层递增(+2),E 最多(23);总和 144
   var TIER_WEIGHTS = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];
 
-  // 金字塔分档:按综合分严格降序排列后,按权重比例分配各梯队模型数
+  // 金字塔分档:按传入的**可见序**(matrix 产出的 _posKey 序)依次分配各梯队模型数
   // S+ 固定 1 个(冠军),其余按 round(n×w/144) 分配,E 吸收剩余
   function assignTiers(rows) {
     var n = rows.length;
     if (!n) return;
-    // matrix() 的容差排序可能在同档内按命中数二次排序,此处按纯综合分重排
-    var sorted = rows.slice().sort(function (a, b) {
-      return composite(b) - composite(a);
-    });
+    // 直接沿用传入顺序,不再按综合分重排:matrix() 已把容差档内的次序按 命中数 → 共榜净胜 定好,
+    // 这里若重排,梯队边界就可能从同一个容差档中间劈开(表内第 k 行拿到的梯队比第 k+1 行差)。
+    var sorted = rows;
     var totalW = TIER_WEIGHTS.reduce(function (s, w) { return s + w; }, 0); // 144
     var pos = 0;
     for (var i = 0; i < 12; i++) {
@@ -275,13 +391,16 @@
   }
 
   window.CMP = {
-    matrix: matrix, avgNorm: avgNorm, composite: composite,
+    matrix: matrix, composite: composite,
     refPosition: refPosition,
     assignTiers: assignTiers,
-    variance: variance,
+    // scoreTable/headToHead/boardStats 供渲染与名次口径校验脚本复用(同一份实现,避免口径漂移)
+    scoreTable: scoreTable, headToHead: headToHead, boardStats: boardStats,
+    dominatesStrict: dominatesStrict,
     radarSeries: radarSeries, metricCards: metricCards,
     costSeries: costSeries, defaultSelection: defaultSelection, options: options,
     INDICATORS: INDICATORS,
+    GROUPS: GROUPS, WEIGHTS: WEIGHTS, Z_DISPLAY_SCALE: Z_DISPLAY_SCALE, TOL_Z: TOL_Z,
     SCORE_TOLERANCE: SCORE_TOLERANCE
   };
 })();

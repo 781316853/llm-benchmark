@@ -338,9 +338,9 @@
         '</div>';
     }).join("");
 
-    // 矩阵表:先分配梯队(基于全量排名行(命中≥4榜),按原始综合分),再选取展示行:排名行按综合分
-    // 排序取前30;命中 3 榜的「参考」模型不计算综合分(展示为「—」),按在场基准的加权综合水平
-    // (一榜豁免后加权,与排名行综合分同口径)比对落入相应名次间隔,仅在前30区间内混排计入
+    // 矩阵表:先分配梯队(基于全量排名行(命中≥4榜),按 matrix 的可见序),再选取展示行:排名行按综合分
+    // 排序取前30;命中 3 榜的「参考」模型不计算综合分(展示为「—」),按在场各榜的榜内稳健标准分
+    // 加权(与排名行综合分完全同口径:无豁免、无折减)比对落入相应名次间隔,仅在前30区间内混排计入
     // (序号计「—」,不占前30名额),第 30 个排名行之后的行(含参考行)一律截断;
     // 勾选"显示全部"则展开排名30之后的模型。
     // 命中 ≤2 榜的模型一律不在总览展示(默认与"显示全部"均要求命中≥3榜),请前往对应单项榜单页查看。
@@ -397,11 +397,12 @@
       var ds = r.deepswe
         ? '<span class="cell-val bv bv-deepswe">' + r.deepswe.pass1 + '%</span>' + verBadge(r.deepswe.version) + dsCost : "—";
       var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(2) : "-";
-      // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci,后附折算综合分(norm 0-100)
+      // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci
+      // (不再追加 norm 折算分小字:2026-09-22 起综合分改用各榜榜内稳健标准分,快照内 min-max
+      //  norm 不再参与任何计算,留着只会让人误以为它是综合分输入)
       var wd = r.webdev ? r.webdev.score : null;
       var wdCi = (r.webdev && typeof r.webdev.ci === "number")
         ? '<span class="cell-cost">±' + r.webdev.ci + '</span>' : "";
-      var wdNorm = (r.webdev && r.webdev.norm != null) ? r.webdev.norm.toFixed(1) : null;
       // Terminal-Bench 单元格:解决率% + 版本徽标 + agent/effort 小字(title 悬浮);悬停显示版本/Agent 与强度
       var tbMeta = [];
       if (r.tbench && r.tbench.version) tbMeta.push("v" + r.tbench.version);
@@ -434,7 +435,7 @@
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
       var cls = (r.benchCount >= 4 ? "row-hit " : "") + (inserted ? "row-two " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
-      var insertedBadge = inserted ? ' <span class="badge-two" title="命中 3 榜:按在场基准加权综合水平(豁免最弱一组)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;仅前30区间内显示">参考</span>' : "";
+      var insertedBadge = inserted ? ' <span class="badge-two" title="命中 3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;仅前30区间内显示">参考</span>' : "";
       // 序号列:参与排名的行(命中≥4榜)按出现顺序编号;参考行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (unranked ? "—" : ++rankNo) + '</td>' +
@@ -447,7 +448,7 @@
           var score = CMP.composite(r).toFixed(1);
           var t = r.tier || "E";
           var tc = t.replace("+", "p"); // S+ -> Sp,用作 CSS 类名
-          var badge = '<span class="tier-badge tier-' + tc + '" title="综合分 ' + score + '">' + t + '</span>';
+          var badge = '<span class="tier-badge tier-' + tc + '" title="综合分 ' + score + '(榜内相对分:50 = 全池中位,每 15 分 = 1 个榜内稳健标准差;不可跨日直接比较)">' + t + '</span>';
           var num = state.showScore ? ' <span class="tier-score">' + score + '</span>' : "";
           return '<td class="num">' + badge + num + '</td>';
         })() +
@@ -460,8 +461,8 @@
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
         // 后续 WebDev/llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
-        // WebDev 仅给 Elo 原值上色,其后的 ±ci 与折算综合分属元数据,保持灰
-        '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi + (wdNorm != null ? '<span class="cell-cost"> / ' + wdNorm + '</span>' : "") : "—") + '</td>' +
+        // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
+        '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
         '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
         // AI 能力列:格内两个方向分沿用自己的方向色(ac-fe 橙 / ac-be 蓝),不用该榜的榜色 —— 方向信息优先
         '<td class="num">' + aicapCell(r) + '</td>' +
@@ -472,8 +473,8 @@
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
-      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 16% / Terminal-Bench 4.0/3.0/2.1 11%)计入综合分与命中数;组尾 HLE / GPQA 为权威基准仅参考列,不计入综合分与命中数;数据按渠道层级合并(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);四组同纲计入综合分与命中数,合计占权重约 70%"
+      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 16% / Terminal-Bench 4.0/3.0/2.1 11%)计入综合分与命中数;组尾 HLE / GPQA 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);四组同纲计入综合分与命中数,合计占权重约 70%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -520,7 +521,7 @@
     } else {
       var dualCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
       note = '当前显示命中≥4个基准组且排名前 ' + (rows.length - dualCnt) + ' 的模型,以及 ' + dualCnt +
-        ' 个跻身前30区间的「参考」模型(命中 3 个基准组,按在场基准加权综合水平与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余 3 榜参考模型可勾选下方"显示全部"查看,命中 ≤2 榜的模型不在总览展示)。';
+        ' 个跻身前30区间的「参考」模型(命中 3 个基准组,按各榜榜内稳健标准分加权后的同口径水平与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余 3 榜参考模型可勾选下方"显示全部"查看,命中 ≤2 榜的模型不在总览展示)。';
     }
     // 国产高亮开启时,追加国产模型数量提示
     if (state.highlightDomestic) {
