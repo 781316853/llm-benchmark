@@ -245,6 +245,7 @@ window.SEEN = {
     'datalearner|GPT-6 Sol': '2026-09-23',
     'tbench|Claude Opus 5.5': '2026-09-23',
     'llm|GPT-6 Sol (max)': '2026-09-23',
-    'llm|Opus 5.5 (max)': '2026-09-23'
+    'llm|Opus 5.5 (max)': '2026-09-23',
+    'tbench|GPT-6 Sol': '2026-09-23'
   }
 };

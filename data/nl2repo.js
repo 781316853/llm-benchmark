@@ -12,10 +12,10 @@ window.NL2REPO = {
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-23',
-  'refreshedAt': '2026-09-23 14:13',
+  'refreshedAt': '2026-09-23 22:18',
   'stats': {
     'tasks': 103,
-    'entries': 49
+    'entries': 39
   },
   'desc': 'NL2Repo-Bench:自然语言到完整代码仓库的长程生成基准(字节 Seed / M-A-P 等),给定单一 NL 需求文档与空工作区,智能体需自主设计架构、管理依赖、实现多模块并产出可安装的 Python 库,以测试通过率衡量;得越高越好。',
   'models': [
@@ -58,13 +58,6 @@ window.NL2REPO = {
       'rank': 4
     },
     {
-      'model': 'Ornith-1.5-397B',
-      'org': 'Ornith AI',
-      'score': 59.5,
-      'src': 'benchlm',
-      'rank': 5
-    },
-    {
       'model': 'Hy4 preview',
       'org': '腾讯AI实验室',
       'score': 58.9,
@@ -73,7 +66,7 @@ window.NL2REPO = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 6
+      'rank': 5
     },
     {
       'model': 'Kimi K3',
@@ -81,7 +74,7 @@ window.NL2REPO = {
       'score': 58,
       'license': '有条件免费商用授权',
       'src': 'datalearner',
-      'rank': 7
+      'rank': 6
     },
     {
       'model': 'GLM-5.3',
@@ -92,7 +85,7 @@ window.NL2REPO = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 8
+      'rank': 7
     },
     {
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
@@ -103,7 +96,7 @@ window.NL2REPO = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'rank': 9
+      'rank': 8
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -111,7 +104,7 @@ window.NL2REPO = {
       'score': 56.8,
       'license': '不开源',
       'src': 'datalearner',
-      'rank': 10
+      'rank': 9
     },
     {
       'model': 'GLM-5.3-Flash',
@@ -122,7 +115,7 @@ window.NL2REPO = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 11
+      'rank': 10
     },
     {
       'model': 'Qwen3.8-Max',
@@ -133,7 +126,7 @@ window.NL2REPO = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 12
+      'rank': 11
     },
     {
       'model': 'DeepSeek-V4-Flash-0731',
@@ -144,14 +137,7 @@ window.NL2REPO = {
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'rank': 13
-    },
-    {
-      'model': 'dots3-note Preview',
-      'org': 'Dots Studio',
-      'score': 49.8,
-      'src': 'benchlm',
-      'rank': 14
+      'rank': 12
     },
     {
       'model': 'GLM-5.2',
@@ -162,21 +148,7 @@ window.NL2REPO = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 2.40',
-      'rank': 15
-    },
-    {
-      'model': 'Qwen3.8-Omni-Flash',
-      'org': 'Alibaba',
-      'score': 48.9,
-      'src': 'benchlm',
-      'rank': 16
-    },
-    {
-      'model': 'Ornith-1.0-397B',
-      'org': 'DeepReinforce AI',
-      'score': 48.2,
-      'src': 'benchlm',
-      'rank': 17
+      'rank': 13
     },
     {
       'model': 'Qwen3.8-Flash-Next',
@@ -187,10 +159,10 @@ window.NL2REPO = {
       'size': '125B',
       'context': '—',
       'cost': '—',
-      'rank': 18
+      'rank': 14
     },
     {
-      'rank': 19,
+      'rank': 15,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 48.1,
@@ -201,7 +173,7 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 20,
+      'rank': 16,
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 47.2,
@@ -212,7 +184,7 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 21,
+      'rank': 17,
       'model': 'Seed 2.1 Pro',
       'org': 'ByteDance',
       'score': 47,
@@ -223,14 +195,7 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'model': 'Ornith-1.5-35B-A3B',
-      'org': 'Ornith AI',
-      'score': 46.2,
-      'src': 'benchlm',
-      'rank': 22
-    },
-    {
-      'rank': 23,
+      'rank': 18,
       'model': 'Hy3',
       'org': 'Tencent',
       'score': 45.6,
@@ -241,7 +206,7 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 24,
+      'rank': 19,
       'model': 'Seed 2.1 Turbo',
       'org': 'ByteDance',
       'score': 43.7,
@@ -252,21 +217,7 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'model': 'Claude Opus 4.5',
-      'org': 'Anthropic',
-      'score': 43.2,
-      'src': 'benchlm',
-      'rank': 25
-    },
-    {
-      'model': 'Qwen 3.6 Max (preview)',
-      'org': 'Alibaba',
-      'score': 42.9,
-      'src': 'benchlm',
-      'rank': 26
-    },
-    {
-      'rank': 27,
+      'rank': 20,
       'model': 'GLM-5.1',
       'org': 'Zhipu AI',
       'score': 42.7,
@@ -285,10 +236,10 @@ window.NL2REPO = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
-      'rank': 28
+      'rank': 21
     },
     {
-      'rank': 29,
+      'rank': 22,
       'model': 'MiniMax M3',
       'org': 'MiniMax',
       'score': 42.1,
@@ -299,7 +250,7 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'rank': 30,
+      'rank': 23,
       'model': 'Qwen3.7-Plus',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 41.1,
@@ -314,14 +265,14 @@ window.NL2REPO = {
       'org': null,
       'score': 40.2,
       'src': 'paper',
-      'rank': 31
+      'rank': 24
     },
     {
       'model': 'Claude-Sonnet-4.5',
       'org': null,
       'score': 39.9,
       'src': 'paper',
-      'rank': 32
+      'rank': 25
     },
     {
       'model': 'MiniMax-M2.7',
@@ -332,17 +283,17 @@ window.NL2REPO = {
       'size': '—',
       'context': '205K',
       'cost': '$ 0.30 / $ 1.20',
-      'rank': 33
+      'rank': 26
     },
     {
       'model': 'Claude-Sonnet-4.5 (Cursor)',
       'org': null,
       'score': 39.2,
       'src': 'paper',
-      'rank': 34
+      'rank': 27
     },
     {
-      'rank': 35,
+      'rank': 28,
       'model': 'Qwen3.6 Plus',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 37.9,
@@ -357,10 +308,10 @@ window.NL2REPO = {
       'org': null,
       'score': 37,
       'src': 'paper',
-      'rank': 36
+      'rank': 29
     },
     {
-      'rank': 37,
+      'rank': 30,
       'model': 'Qwen3.6-27B',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 36.2,
@@ -371,28 +322,14 @@ window.NL2REPO = {
       'src': 'llm-stats'
     },
     {
-      'model': 'Ornith-1.0-35B',
-      'org': 'DeepReinforce AI',
-      'score': 34.6,
-      'src': 'benchlm',
-      'rank': 38
-    },
-    {
       'model': 'Gemini-3-pro (Cursor)',
       'org': null,
       'score': 34.2,
       'src': 'paper',
-      'rank': 39
+      'rank': 31
     },
     {
-      'model': 'Ornith-1.5-9B',
-      'org': 'Ornith AI',
-      'score': 32.4,
-      'src': 'benchlm',
-      'rank': 40
-    },
-    {
-      'rank': 41,
+      'rank': 32,
       'model': 'Qwen3.6-35B-A3B',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 29.4,
@@ -407,56 +344,49 @@ window.NL2REPO = {
       'org': null,
       'score': 27.6,
       'src': 'paper',
-      'rank': 42
-    },
-    {
-      'model': 'Ornith-1.0-9B',
-      'org': 'DeepReinforce AI',
-      'score': 27.2,
-      'src': 'benchlm',
-      'rank': 43
+      'rank': 33
     },
     {
       'model': 'Kimi-k2',
       'org': null,
       'score': 22.7,
       'src': 'paper',
-      'rank': 44
+      'rank': 34
     },
     {
       'model': 'DeepSeek-V3.1',
       'org': null,
       'score': 22.2,
       'src': 'paper',
-      'rank': 45
+      'rank': 35
     },
     {
       'model': 'GPT-5',
       'org': null,
       'score': 21.7,
       'src': 'paper',
-      'rank': 46
+      'rank': 36
     },
     {
       'model': 'Qwen3-Instruct',
       'org': null,
       'score': 17.9,
       'src': 'paper',
-      'rank': 47
+      'rank': 37
     },
     {
       'model': 'GLM-4.6',
       'org': null,
       'score': 17.5,
       'src': 'paper',
-      'rank': 48
+      'rank': 38
     },
     {
       'model': 'Qwen3-thinking',
       'org': null,
       'score': 13.8,
       'src': 'paper',
-      'rank': 49
+      'rank': 39
     }
   ]
 };

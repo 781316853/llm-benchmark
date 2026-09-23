@@ -10,7 +10,7 @@ window.ARCAGI3 = {
   'officialUrl': 'https://arcprize.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-09-23',
-  'refreshedAt': '2026-09-23 14:13',
+  'refreshedAt': '2026-09-23 22:18',
   'stats': {
     'environments': 135,
     'entries': 11
@@ -103,6 +103,16 @@ window.ARCAGI3 = {
       'rank': 7
     },
     {
+      'model': 'GPT-6 Luna',
+      'org': 'OpenAI',
+      'score': 0.19,
+      'license': '不开源',
+      'effort': '思考模式 Medium（无工具）',
+      'date': '2026-09-22',
+      'src': 'datalearner',
+      'rank': 8
+    },
+    {
       'model': 'Claude Opus 4.6',
       'org': 'Anthropic',
       'score': 0,
@@ -110,7 +120,7 @@ window.ARCAGI3 = {
       'effort': '最高（无工具）',
       'date': '2026-02-05',
       'src': 'datalearner',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'GPT-5.5',
@@ -120,7 +130,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-04-23',
       'src': 'datalearner',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'Gemini 3.1 Pro Preview',
@@ -129,16 +139,6 @@ window.ARCAGI3 = {
       'license': '不开源',
       'effort': '思考模式 High（无工具）',
       'date': '2026-02-20',
-      'src': 'datalearner',
-      'rank': 10
-    },
-    {
-      'model': 'GPT-5.4',
-      'org': 'OpenAI',
-      'score': 0,
-      'license': '不开源',
-      'effort': '思考模式 High（无工具）',
-      'date': '2026-03-05',
       'src': 'datalearner',
       'rank': 11
     }

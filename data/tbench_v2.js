@@ -15,7 +15,7 @@ window.TBENCH_V21 = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2.1',
   'updated': '2026-09-23',
-  'refreshedAt': '2026-09-23 14:13',
+  'refreshedAt': '2026-09-23 22:18',
   'stats': {
     'tasks': 89,
     'entries': 48
@@ -202,6 +202,19 @@ window.TBENCH_V21 = {
     },
     {
       'rank': 14,
+      'model': 'Claude Opus 5.5',
+      'agent': null,
+      'effort': '思考模式 High（工具）',
+      'score': 87.64,
+      'ci': null,
+      'date': '2026-09-22',
+      'tokens': null,
+      'cost': null,
+      'org': 'Anthropic',
+      'src': 'datalearner'
+    },
+    {
+      'rank': 15,
       'model': 'MiMo-V2.6-Flash',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -215,7 +228,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 15,
+      'rank': 16,
       'model': 'GPT-6 Astra',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -228,7 +241,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 16,
+      'rank': 17,
       'model': 'GPT-5.6 Terra',
       'agent': null,
       'effort': '最高（无工具）',
@@ -242,7 +255,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 17,
+      'rank': 18,
       'model': 'Qwen3.8-Max',
       'agent': null,
       'effort': '极高强度思考（工具）',
@@ -253,19 +266,6 @@ window.TBENCH_V21 = {
       'cost': '$ 1.65 / $ 4.95',
       'org': '阿里巴巴',
       'size': '2.4T',
-      'src': 'datalearner'
-    },
-    {
-      'rank': 18,
-      'model': 'Qwen3.8-Flash-Next',
-      'agent': null,
-      'effort': '思考模式（工具）',
-      'score': 86.1,
-      'ci': null,
-      'date': '2026-08-26',
-      'tokens': null,
-      'cost': null,
-      'org': '阿里巴巴',
       'src': 'datalearner'
     },
     {
