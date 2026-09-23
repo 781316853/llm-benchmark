@@ -1,6 +1,6 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
 // 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
-// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-09-22)
+// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-09-23)
 // 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,只补缺失模型,协议不可比仅供参考;见 https://developer.aliyun.com/article/1763215)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
@@ -11,8 +11,8 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
-  updated: "2026-09-22",
-  refreshedAt: "2026-09-22 22:06",
+  updated: "2026-09-23",
+  refreshedAt: "2026-09-23 14:13",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 36 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
@@ -138,6 +138,16 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
+    'name': 'GPT-6 Sol',
+    'effort': '最高（工具）',
+    'pass1': 68.8,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'datalearner'
+  },
+  {
     'name': 'MiMo-V2.6-Flash',
     'effort': '思考模式（工具）',
     'pass1': 67.9,
@@ -151,16 +161,6 @@ window.DEEPSWE = {
     'name': 'Step 5 Preview',
     'effort': '思考模式 High（工具）',
     'pass1': 67.7,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'datalearner'
-  },
-  {
-    'name': 'Claude Fable 5.1',
-    'effort': '最高（工具）',
-    'pass1': 67.4,
     'ci': null,
     'cost': null,
     'outTok': null,

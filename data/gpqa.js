@@ -1,4 +1,4 @@
-// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-22)
+// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-09-23)
 // 来源:https://llm-stats.com/benchmarks/gpqa(官方:https://epoch.ai/benchmarks/gpqa-diamond)
 // 补充:https://benchlm.ai/benchmarks/gpqa(benchlm 镜像,分数与 Diamond 口径一致)· https://benchlm.ai/benchmarks/aagpqadiamond(AA 复测口径)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -10,8 +10,8 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-09-22',
-  'refreshedAt': '2026-09-22 22:06',
+  'updated': '2026-09-23',
+  'refreshedAt': '2026-09-23 14:13',
   'stats': {
     'tasks': 198,
     'entries': 234
@@ -268,23 +268,23 @@ window.GPQA = {
     },
     {
       'rank': 29,
-      'model': 'GPT-5.2',
-      'org': 'OpenAI',
-      'score': 92.4,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.75 / $ 14.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 30,
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 92.4,
       'size': '—',
       'context': '1.0M',
       'cost': '$ 1.25 / $ 3.75',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 30,
+      'model': 'GPT-5.2',
+      'org': 'OpenAI',
+      'score': 92.4,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.75 / $ 14.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -456,23 +456,23 @@ window.GPQA = {
     },
     {
       'rank': 49,
-      'model': 'Qwen3.6 Plus',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 90.4,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 0.50 / $ 3.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 50,
       'model': 'Hy3',
       'org': 'Tencent',
       'score': 90.4,
       'size': '295B',
       'context': '262K',
       'cost': '$ 0.14 / $ 0.58',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 50,
+      'model': 'Qwen3.6 Plus',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 90.4,
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 0.50 / $ 3.00',
       'license': null,
       'src': 'llm-stats'
     },
@@ -578,23 +578,23 @@ window.GPQA = {
     },
     {
       'rank': 63,
-      'model': 'Muse Spark',
-      'org': 'Meta',
-      'score': 89.5,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 64,
       'model': 'Inkling-Small',
       'org': 'Thinking Machines Lab',
       'score': 89.5,
       'size': '276B',
       'context': '524K',
       'cost': '$ 0.30 / $ 1.20',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 64,
+      'model': 'Muse Spark',
+      'org': 'Meta',
+      'score': 89.5,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },
@@ -665,17 +665,6 @@ window.GPQA = {
     },
     {
       'rank': 72,
-      'model': 'GPT-5.1',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '400K',
-      'cost': '$ 1.25 / $ 10.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 73,
       'model': 'GPT-5.1 Instant',
       'org': 'OpenAI',
       'score': 88.1,
@@ -686,8 +675,19 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
+      'rank': 73,
+      'model': 'GPT-5.1',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '400K',
+      'cost': '$ 1.25 / $ 10.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
       'rank': 74,
-      'model': 'GPT-5.1 Thinking',
+      'model': 'GPT-5.1 High',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -698,7 +698,7 @@ window.GPQA = {
     },
     {
       'rank': 75,
-      'model': 'GPT-5 Medium',
+      'model': 'GPT-5.1 Thinking',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
@@ -709,7 +709,7 @@ window.GPQA = {
     },
     {
       'rank': 76,
-      'model': 'GPT-5.1 High',
+      'model': 'GPT-5 Medium',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',

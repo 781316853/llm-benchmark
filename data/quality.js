@@ -1,17 +1,17 @@
 // 数据质量报告(由 scripts/lib/quality-report.js 生成)
 // 三维交叉验证:一致性(跨源分数标准差)/ 完整性(必填字段齐全率)/ 时效性(数据新鲜度)
-// generatedAt=2026-09-22;overallScore 为各源完整性均权(0-1)
+// generatedAt=2026-09-23;overallScore 为各源完整性均权(0-1)
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
-  'generatedAt': '2026-09-22',
-  'overallScore': 0.935,
+  'generatedAt': '2026-09-23',
+  'overallScore': 0.938,
   'sources': [
     {
       'id': 'ai_capability',
       'name': 'AI 能力专项测试',
       'status': 'ok',
       'modelCount': 62,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -22,7 +22,7 @@ window.QUALITY = {
       'name': 'datalearner DeepSWE 榜',
       'status': 'ok',
       'modelCount': 30,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -33,7 +33,7 @@ window.QUALITY = {
       'name': 'ARC-AGI-3',
       'status': 'ok',
       'modelCount': 11,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -44,7 +44,7 @@ window.QUALITY = {
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
       'modelCount': 128,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -55,7 +55,7 @@ window.QUALITY = {
       'name': 'BenchCAD',
       'status': 'ok',
       'modelCount': 17,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 0.824,
       'fetchAttempts': 1,
@@ -66,7 +66,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.1',
       'status': 'ok',
       'modelCount': 36,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -77,7 +77,7 @@ window.QUALITY = {
       'name': 'DeepSWE v1.0',
       'status': 'ok',
       'modelCount': 21,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -88,7 +88,7 @@ window.QUALITY = {
       'name': 'GPQA Diamond',
       'status': 'ok',
       'modelCount': 234,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -98,8 +98,8 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 222,
-      'updated': '2026-09-22',
+      'modelCount': 226,
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -109,8 +109,8 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 24,
-      'updated': '2026-09-22',
+      'modelCount': 26,
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -120,8 +120,8 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 83,
-      'updated': '2026-09-22',
+      'modelCount': 85,
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 0,
       'fetchAttempts': 1,
@@ -131,8 +131,8 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 25,
-      'updated': '2026-09-22',
+      'modelCount': 27,
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -143,7 +143,7 @@ window.QUALITY = {
       'name': 'NL2Repo-Bench',
       'status': 'ok',
       'modelCount': 49,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -153,8 +153,19 @@ window.QUALITY = {
       'id': 'osworld',
       'name': 'OSWorld 2.0',
       'status': 'ok',
-      'modelCount': 26,
-      'updated': '2026-09-22',
+      'modelCount': 29,
+      'updated': '2026-09-23',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'programbench',
+      'name': 'ProgramBench',
+      'status': 'ok',
+      'modelCount': 56,
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -164,8 +175,8 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 35,
-      'updated': '2026-09-22',
+      'modelCount': 36,
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -176,7 +187,7 @@ window.QUALITY = {
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
       'modelCount': 48,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -187,7 +198,7 @@ window.QUALITY = {
       'name': 'Terminal-Bench 3.0',
       'status': 'ok',
       'modelCount': 12,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -198,7 +209,7 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'completeness': 1,
       'fetchAttempts': 1,
@@ -689,6 +700,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'GPT-6 Sol',
+      'name': 'GPT-6 Sol',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 68.8,
+        'deepswe_v11': 68.8
+      },
+      'mean': 68.8,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'MiMo-V2.6-Flash',
       'name': 'MiMo-V2.6-Flash',
       'vendor': '其他',
@@ -717,22 +744,6 @@ window.QUALITY = {
         'deepswe_v11': 67.7
       },
       'mean': 67.7,
-      'stddev': 0,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'Claude Fable 5.1',
-      'name': 'Claude Fable 5.1',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 67.4,
-        'deepswe_v11': 67.4
-      },
-      'mean': 67.4,
       'stddev': 0,
       'flag': 'ok'
     }
@@ -806,35 +817,35 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 222,
-      'complete': 222,
-      'modelCount': 222,
+      'total': 226,
+      'complete': 226,
+      'modelCount': 226,
       'missingFields': {},
       'flag': 'ok'
     },
     'lastexam': {
       'rate': 1,
-      'total': 24,
-      'complete': 24,
-      'modelCount': 24,
+      'total': 26,
+      'complete': 26,
+      'modelCount': 26,
       'missingFields': {},
       'flag': 'ok'
     },
     'llm2014': {
       'rate': 0,
-      'total': 83,
+      'total': 85,
       'complete': 0,
-      'modelCount': 83,
+      'modelCount': 85,
       'missingFields': {
-        'score': 83
+        'score': 85
       },
       'flag': 'warn'
     },
     'modeldial': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 27,
+      'complete': 27,
+      'modelCount': 27,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -848,17 +859,25 @@ window.QUALITY = {
     },
     'osworld': {
       'rate': 1,
-      'total': 26,
-      'complete': 26,
-      'modelCount': 26,
+      'total': 29,
+      'complete': 29,
+      'modelCount': 29,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'programbench': {
+      'rate': 1,
+      'total': 56,
+      'complete': 56,
+      'modelCount': 56,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench': {
       'rate': 1,
-      'total': 35,
-      'complete': 35,
-      'modelCount': 35,
+      'total': 36,
+      'complete': 36,
+      'modelCount': 36,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -889,92 +908,97 @@ window.QUALITY = {
   },
   'timeliness': {
     'ai_capability': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'datalearner': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'arcagi3': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'arena_webdev': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'benchcad': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v11': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'deepswe_v10': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'gpqa': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'hle': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'lastexam': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'llm2014': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'modeldial': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'nl2repo': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'osworld': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
+    'programbench': {
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'tbench': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'tbench_v21': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'tbench_v3': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     },
     'tbscience': {
-      'updated': '2026-09-22',
+      'updated': '2026-09-23',
       'ageDays': 0,
       'flag': 'ok'
     }

@@ -1,4 +1,4 @@
-// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-09-22)
+// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-09-23)
 // 主渠道:https://www.datalearner.com/benchmarks/osworld-2(厂商官方发布成绩,partial 口径)
 // 补充:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/,系统级条目仅追加主源未收录者)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -9,14 +9,23 @@ window.OSWORLD = {
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-09-22',
-  'refreshedAt': '2026-09-22 22:06',
+  'updated': '2026-09-23',
+  'refreshedAt': '2026-09-23 14:13',
   'stats': {
     'tasks': 108,
-    'entries': 26
+    'entries': 29
   },
   'desc': 'OSWorld 2.0:108 个长时程、端到端的桌面计算机使用工作流(人类中位耗时约 1.6 小时,平均约 318 次工具调用),按二进制完成率与部分得分(检查点达成比例)双口径计分;因二进制完成率极低,榜单按部分得分排序。',
   'models': [
+    {
+      'system': 'Claude Opus 5.5',
+      'note': '最高（工具）',
+      'score': 81.8,
+      'org': 'Anthropic',
+      'reported': '2026-09-22',
+      'url': null,
+      'src': 'datalearner'
+    },
     {
       'system': 'Claude Fable 5.1',
       'note': '最高（工具）',
@@ -99,6 +108,15 @@ window.OSWORLD = {
       'src': 'mirror'
     },
     {
+      'system': 'GPT-6 Sol',
+      'note': '最高（工具）',
+      'score': 64.4,
+      'org': 'OpenAI',
+      'reported': '2026-09-22',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'GPT-5.6 Sol (Snorkel run)',
       'note': 'Partial score (27.34% binary) in Snorkel\'s independent run under the 500-step budget; Snorkel is a benchmark co-author.',
       'score': 62.72,
@@ -151,6 +169,15 @@ window.OSWORLD = {
       'reported': 'Jun 2026',
       'url': 'https://osworld-v2.xlang.ai/',
       'src': 'mirror'
+    },
+    {
+      'system': 'GPT-6 Luna',
+      'note': '最高（工具）',
+      'score': 52.7,
+      'org': 'OpenAI',
+      'reported': '2026-09-22',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Qwen3.8-Flash-Next',

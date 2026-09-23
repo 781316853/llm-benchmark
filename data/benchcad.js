@@ -1,4 +1,4 @@
-// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 2026-09-22)
+// 数据源:BenchCAD(程序化 CAD 生成基准,抓取于 2026-09-23)
 // 来源:https://github.com/BenchCAD/BenchCAD-main(leaderboard.json;榜单页:https://benchcad.com/)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数(本榜取官方 GitHub 榜 T1,无更高优先级渠道)
 // 字段说明:vision2code=图像→CadQuery 代码生成(主指标 total=64³ 体素 IoU×exec%,0-1);
@@ -9,8 +9,8 @@ window.BENCHCAD = {
   'url': 'https://github.com/BenchCAD/BenchCAD-main',
   'boardUrl': 'https://benchcad.com/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-09-22',
-  'refreshedAt': '2026-09-22 22:06',
+  'updated': '2026-09-23',
+  'refreshedAt': '2026-09-23 14:13',
   'stats': {
     'partFamilies': 106,
     'programs': 17900,

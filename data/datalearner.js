@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-09-22)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-09-23)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-09-22',
+  'updated': '2026-09-23',
   'models': [
     {
       'name': 'Muse Spark 1.3',
@@ -200,6 +200,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'GPT-6 Sol',
+      'score': 68.8,
+      'mode': '最高（工具）',
+      'date': '2026-09-22',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'Claude Fable 5',
       'score': 68.6,
       'mode': '思考模式 High（工具）',
@@ -236,14 +244,6 @@ window.DATALEARNER = {
       'score': 67.5,
       'mode': '思考模式 Medium（工具）',
       'date': '2026-08-12',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'Claude Fable 5.1',
-      'score': 67.4,
-      'mode': '最高（工具）',
-      'date': '2026-09-01',
       'params': '未知',
       'license': '闭源'
     }
