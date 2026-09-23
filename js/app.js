@@ -60,6 +60,7 @@
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
     aa: ["AA 复测", "Artificial Analysis 复测口径(T3,第三方自家 harness,分数口径偏严,仅供参考)"],
     mirror: ["第三方", "第三方镜像(T3)"],
+    vals: ["vals 镜像", "vals.ai 官方镜像榜(T3)"],
     aggregate: ["第三方", "第三方评测机构(T3)"]
   };
   var srcBadge = function (src) {
@@ -77,7 +78,7 @@
   // 旧数据缺字段时返回 undefined,调用方须兜底不显示
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
-      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo]
+      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo, D.src.programbench]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -1246,6 +1247,22 @@
       '主渠道:官方论文评测表(arxiv)与 datalearner(厂商官方发布)· 补充:llm-stats 聚合表与 benchlm.ai 镜像、Qwen 官方发布(T2,仅补缺) · 更新 ' + esc(n2.updated || "") +
       ' · 给定单一 NL 需求文档从零生成可安装 Python 库(约 103 个任务),test-pass-rate 越高越好;' + esc(n2.channelPolicy || "") +
       ',自 2026-09-19 起不再计入总览综合分与命中数(原权重 9%),本榜仅展示。');
+    // 10) ProgramBench
+    var pb = S.programbench || {};
+    var pbMs = D.programbench();
+    var pbMixed = mixedSrc(pbMs);
+    var pbRows = pbMs.map(function (m, i) {
+      // 显示名用 canon.id:vals 镜像的 slug 转名(如 "Claude Fable 5 1")经别名归一后回显规范名
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.canon.id || m.model) +
+        (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + (pbMixed ? srcBadge(m.src) : "") + '</td>' +
+        '<td>' + esc(m.agent || "—") + '</td><td class="num">' + bvSpan("programbench", m.score + '%') + '</td>' +
+        '<td class="num">' + (m.almost != null ? m.almost + '%' : "—") + '</td>' +
+        '<td class="num">' + (m.rawPassRate != null ? m.rawPassRate + '%' : "—") + '</td></tr>';
+    });
+    html += authSectionHtml("ProgramBench", "cleanroom 程序重建 · 仅展示", pb.officialUrl || pb.url,
+      '<div class="table-wrap"><table id="authProgrambenchTable" class="data-table"></table></div>',
+      '来源:' + esc(pb.url || "") + '(官方:' + esc(pb.officialUrl || "") + ',Meta Superintelligence Labs · Stanford · Harvard)· 补充镜像 vals.ai · 双源按模型合并取最高 · 更新 ' + esc(pb.updated || "") +
+      ' · 仅给编译后二进制与文档,智能体从零重建 200 个真实开源项目并复现原程序行为(行为级隐藏测试,不联网、禁止反编译);Fully Resolved 为主指标,Almost(≥95% 行为测试通过)与 Raw Pass Rate(vals 镜像)为辅助,均越高越好。本榜仅展示,不计入综合分与命中数(主指标整体 0-7 分,区分度极低)。');
     // 渲染 + 图表 + 表格
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
@@ -1277,9 +1294,10 @@
     authDeferTable("authGpqaTable", ["#", "模型", "厂商", "Accuracy", "参数量", "上下文", "API 价格"], gpRows, ["", "", "", "num bv bv-gpqa", "num", "num", "num"]);
     authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num bv bv-hle", "num", "num", "num"]);
     authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
+    authDeferTable("authProgrambenchTable", ["#", "模型", "Agent", "Fully Resolved", "Almost", "Raw Pass Rate"], pbRows, ["", "", "", "num bv bv-programbench", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(GPQPA Diamond / HLE / NL2Repo-Bench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每日两次自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(GPQPA Diamond / HLE / NL2Repo-Bench / ProgramBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每日两次自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }

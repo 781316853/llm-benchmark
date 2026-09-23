@@ -257,6 +257,19 @@ module.exports = {
       url: "https://www.benchlm.ai/benchmarks/nl2repo",
       host: "www.benchlm.ai", src: "benchlm"
     },
+    programbench: {
+      // ProgramBench(cleanroom 程序重建·编码 Agent,200 任务):官方 programbench.com 服务端渲染
+      // HTML 表格(rank/model(+effort)/agent/Resolved%/Almost%);vals.ai 为补充镜像源
+      // (45 模型,含 Raw Pass Rate / Almost / Fully 三指标),由 scripts/sources/programbench.js 双源合并取最高。
+      url: "https://programbench.com/",
+      host: "programbench.com",
+      officialUrl: "https://programbench.com/"
+    },
+    programbench_vals: {
+      // ProgramBench 补充源:vals.ai 镜像(Astro 服务端渲染 props 内嵌 benchmarkView JSON)。
+      url: "https://www.vals.ai/benchmarks/programbench",
+      host: "www.vals.ai"
+    },
     tbench_v3: {
       // Terminal-Bench 3.0(斯坦福/Laude,74 任务):线上 tbench.ai 3.0 路由已并入 4.0,
       // 以 snorkel.ai 全量 12 条 agent×model 榜单为主(服务端渲染 HTML 表格)。
@@ -307,15 +320,16 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 10 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo)同样排除:
+      // 权威基准 11 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
       //   gpqa/hle 为知识类口径,仅权威页展示;
       //   nl2repo 自 2026-09-19 起不再计入综合分与命中数(改为「权威基准测试」页仅展示),
       //     但独立量纲且整体偏低(0-75),仍保持排除;
+      //   programbench 仅展示,主指标 Fully Resolved 整体 0-7 分,与主基准混算会产生假告警;
       //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "modeldial"]
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench", "modeldial"]
     },
     completeness: {
       // 每条记录必填字段

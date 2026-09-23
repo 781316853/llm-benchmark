@@ -393,7 +393,7 @@
     return out;
   }
 
-  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):GPQA Diamond / HLE / NL2Repo-Bench =====
+  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench =====
   function gpqa() {
     var src = window.GPQA || { models: [] };
     return src.models.slice().sort(function (a, b) { return b.score - a.score; })
@@ -407,6 +407,11 @@
   function nl2repo() {
     var src = window.NL2REPO || { models: [] };
     return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  function programbench() {
+    var src = window.PROGRAMBENCH || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score || (b.almost || 0) - (a.almost || 0); })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
@@ -612,6 +617,7 @@
     gpqa: gpqa,
     hle: hle,
     nl2repo: nl2repo,
+    programbench: programbench,
     modeldial: modeldial,
     modeldialConfigs: modeldialConfigs,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
@@ -626,6 +632,6 @@
     // 各源原始对象(供渲染脚注)
     src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
       tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
-      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, modeldial: window.MODELDIAL }
+      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH, modeldial: window.MODELDIAL }
   };
 })();

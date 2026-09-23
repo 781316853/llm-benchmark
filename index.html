@@ -7,7 +7,7 @@
   <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
-  <link rel="stylesheet" href="css/styles.css?v=20260921a" />
+  <link rel="stylesheet" href="css/styles.css?v=20260922a" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
@@ -17,7 +17,7 @@
   <script defer src="data/llm2014.js?v=20260824a"></script>
   <script defer src="data/arena_webdev.js?v=20260824a"></script>
   <script defer src="data/aicap.js?v=20260904a"></script>
-  <!-- 权威基准测试(其中 Terminal-Bench 4.0/3.0/2.1 多版本合并计入总览;NL2Repo 多源合并,自 2026-09-19 起仅展示) -->
+  <!-- 权威基准测试(其中 Terminal-Bench 4.0/3.0/2.1 多版本合并计入总览;NL2Repo 多源合并,自 2026-09-19 起仅展示;ProgramBench 2026-09-22 起恢复收录、仅展示) -->
   <script defer src="data/tbench.js?v=20260913a"></script>
   <script defer src="data/tbench_v3.js?v=20260912b"></script>
   <script defer src="data/tbench_v2.js?v=20260913a"></script>
@@ -29,6 +29,7 @@
   <script defer src="data/gpqa.js?v=20260915a"></script>
   <script defer src="data/hle.js?v=20260915a"></script>
   <script defer src="data/nl2repo.js?v=20260913a"></script>
+  <script defer src="data/programbench.js?v=20260922a"></script>
   <!-- ModelDial 雷达(第三方独立实测综合能力榜,计入总览综合分(权重 16%)与命中数) -->
   <script defer src="data/modeldial.js?v=20260919a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
@@ -36,10 +37,10 @@
   <!-- Coding Plan 套餐快速对比(codingplan.fyi 额度/价格对比·按模型分列比价,不进基准管线) -->
   <script defer src="data/codingplan.js?v=20260913b"></script>
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20260922a"></script>
+  <script defer src="js/data.js?v=20260922b"></script>
   <script defer src="js/charts.js?v=20260919a"></script>
-  <script defer src="js/compare.js?v=20260922a"></script>
-  <script defer src="js/app.js?v=20260922a"></script>
+  <script defer src="js/compare.js?v=20260922b"></script>
+  <script defer src="js/app.js?v=20260922b"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -111,7 +112,7 @@ NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安�
 ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其综合分(0-100,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权),同一模型按推理强度分档多次测试后取最高分配置入榜,计入综合分(权重 16%)与命中数;格内悬浮可查看三分项与耗时/费用,完整主榜与 52 条 config 明细见「ModelDial」页(费用与耗时为源站后端单轴口径,故低于源站主榜显示值)。</li>
           <li><b class="note-term">「—」</b>表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充);HLE / GPQA 列「—」表示未收录于对应权威榜,列分数悬浮可查看排名,两列仅展示、不计入综合分与命中数。</li>
           <li>浅绿底色行表示跨榜命中数 ≥ 4 的排名模型;灰蓝底色行 + 「参考」徽标表示命中 3 个基准组的模型:按在场各榜的榜内稳健标准分加权后的同口径水平(与排名模型完全同式,无豁免、无折减)与排名模型比对,落入与自身水平相符的名次区间,不计算综合分,梯队列仅显示「—」,序号列计「—」,不参与排名、不占用前30名额,仅显示各榜数据,仅跻身前30区间内时显示;命中 ≤2 个基准组的模型不在总览矩阵展示,请前往对应榜单页查看;模型名后 NEW 表示近 7 天内首次上榜(基于 DeepSWE/llm2014/Terminal-Bench 三基准判定)。</li>
-          <li><b class="note-term">「权威基准测试」</b>页收录 Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看,默认 4.0) / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench 等权威基准,其中 Terminal-Bench 三版合并为单一基准组计入总览综合分与命中数,其余为展示型参考数据(其中 NL2Repo-Bench 自 2026-09-19 起由「计入综合分」改为仅展示);GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以参考列展示(仅展示,不计入综合分与命中数)。</li>
+          <li><b class="note-term">「权威基准测试」</b>页收录 Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看,默认 4.0) / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench 等权威基准,其中 Terminal-Bench 三版合并为单一基准组计入总览综合分与命中数,其余为展示型参考数据(其中 NL2Repo-Bench 自 2026-09-19 起由「计入综合分」改为仅展示);GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以参考列展示(仅展示,不计入综合分与命中数)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>
           <li><b class="note-term">「显示全部模型」</b>开关可展开全部命中≥3榜的模型(包含排名30之后的模型);总览矩阵不展示命中≤2榜的模型,请前往对应榜单页查看。
 默认显示命中≥4个基准组且排名前30的模型,以及跻身前30区间的「参考」模型(命中 3 个基准组,按各榜成绩比对落入区间,不计算综合分、不参与排名,仅显示数据)。</li>
@@ -197,9 +198,9 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
       </section>
     </section>
 
-    <!-- 7) 权威基准测试(11 大权威基准;DeepSWE / Terminal-Bench 4.0/3.0/2.1 合并计入总览) -->
+    <!-- 7) 权威基准测试(12 大权威基准;DeepSWE / Terminal-Bench 4.0/3.0/2.1 合并计入总览) -->
     <section class="page" id="page-authority">
-      <div class="page-head"><h2>权威基准测试 <span class="tag">11 大权威基准</span></h2><p id="authDesc" class="page-desc"></p></div>
+      <div class="page-head"><h2>权威基准测试 <span class="tag">12 大权威基准</span></h2><p id="authDesc" class="page-desc"></p></div>
       <!-- 左侧大纲预览:桌面端粘性吸附,滚动时高亮当前基准章节;点击可快速跳转;窄屏自动收为顶部横向胶囊条 -->
       <div class="auth-layout">
         <aside class="auth-outline" id="authOutline" aria-label="权威基准大纲预览">
@@ -241,6 +242,7 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
     <a href="https://epoch.ai/benchmarks/gpqa-diamond" target="_blank" rel="noopener">GPQA Diamond</a> ·
     <a href="https://lastexam.ai/" target="_blank" rel="noopener">Humanity's Last Exam</a> ·
     <a href="https://github.com/multimodal-art-projection/NL2RepoBench" target="_blank" rel="noopener">NL2Repo-Bench</a> ·
+    <a href="https://programbench.com/" target="_blank" rel="noopener">ProgramBench</a> ·
     <a href="https://modeldial.com/radar" target="_blank" rel="noopener">ModelDial</a>
   </footer>
 

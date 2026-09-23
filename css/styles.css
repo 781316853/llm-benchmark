@@ -123,6 +123,7 @@
   --bench-webdev: #F58C6E;
   --bench-llm: #8E9BFF;
   --bench-aicap: #4FD1D9;
+  --bench-programbench: #A8E063;
 
   /* 图表配色:js/charts.js 从这些变量读取,保证图表与页面同主题 */
   --chart-text: #E6EDF3;
@@ -341,6 +342,7 @@ a:hover { text-decoration: underline; }
 .bv-webdev { --bv-color: var(--bench-webdev); }
 .bv-llm { --bv-color: var(--bench-llm); }
 .bv-aicap { --bv-color: var(--bench-aicap); }
+.bv-programbench { --bv-color: var(--bench-programbench); }
 .bv { color: var(--bv-color, inherit); }
 #matrixTable thead th.bv, .data-table thead th.bv { color: var(--bv-color, inherit); }
 /* 可排序表头:点击排序交互 */
