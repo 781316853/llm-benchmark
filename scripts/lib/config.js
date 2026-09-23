@@ -270,6 +270,33 @@ module.exports = {
       url: "https://www.vals.ai/benchmarks/programbench",
       host: "www.vals.ai"
     },
+    cursorbench: {
+      // CursorBench 4.0(Cursor 官方):在 Cursor 自家 agent harness 上评测「来自真实 Cursor 会话的
+      // 模糊、跨文件任务」,52 条 model×推理档位配置(2026-09 起为 4.0 版任务集)。
+      // 官方页服务端渲染 HTML 表格(Model | Score% | Cost/task | Tokens/task | Steps/task),
+      // 单请求即得全表;页面散点图为模型级视图(每模型取最优档),与表格是同一批数据的两种视图。
+      // 渠道:唯一官方榜(T1),无更高优先级渠道可合并。仅展示,不计入综合分与命中数
+      // (口径绑定 Cursor 自家 harness,与站内其他基准的 harness/协议不可比)。
+      url: "https://cursor.com/cursorbench",
+      host: "cursor.com",
+      version: "4.0",
+      officialUrl: "https://cursor.com/cursorbench"
+    },
+    frontiercode: {
+      // FrontierCode 1.1(Cognition 官方):生产级代码质量评测,任务由 20+ 资深开发者制作
+      // (每任务投入 40+ 小时),评估端到端代码质量(correctness/test quality/scope discipline/
+      // style/codebase standards 的 mergeability)。
+      // 榜单页为客户端渲染(原始 HTML 仅 ld+json 吐 Top10),真实数据在同域静态 JSON:
+      // 单请求即得 v1/v1.1 两版全部 40 个模型 × 各 effort × main(100 题)/extended(150 题)子集,
+      // 每条含 new_score/correct/cost/tokens/steps 等。主榜单口径已逐条反推校验:
+      //   score = main 子集下各 effort 的 new_score 取最大(对官方 Top10 精确命中 10/10)。
+      // 渠道:唯一官方榜(T1)。仅展示,不计入综合分与命中数(harness 绑定各厂商自家 CLI,口径不可比)。
+      url: "https://cognition.com/data/frontiercode-leaderboard/data.json",
+      host: "cognition.com",
+      version: "1.1",
+      officialUrl: "https://cognition.com/frontiercode",
+      boardUrl: "https://cognition.com/frontiercode"
+    },
     tbench_v3: {
       // Terminal-Bench 3.0(斯坦福/Laude,74 任务):线上 tbench.ai 3.0 路由已并入 4.0,
       // 以 snorkel.ai 全量 12 条 agent×model 榜单为主(服务端渲染 HTML 表格)。
@@ -327,9 +354,12 @@ module.exports = {
       //   nl2repo 自 2026-09-19 起不再计入综合分与命中数(改为「权威基准测试」页仅展示),
       //     但独立量纲且整体偏低(0-75),仍保持排除;
       //   programbench 仅展示,主指标 Fully Resolved 整体 0-7 分,与主基准混算会产生假告警;
+      //   cursorbench/frontiercode 同样仅展示:前者口径绑定 Cursor 自家 agent harness
+      //     (模型级头名约 58 分、配置级 52 条),后者分数为 mergeability 端到端质量分(0-100 但整体偏低),
+      //     均与主基准的原生量纲不可比;
       //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench", "modeldial"]
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial"]
     },
     completeness: {
       // 每条记录必填字段

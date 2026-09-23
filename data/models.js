@@ -50,7 +50,7 @@ window.MODEL_MAP = {
     { id: "DeepSeek V4 Flash 0731", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek V4 Flash", "DeepSeek V4 Flash (max)", "DeepSeek-V4-Flash-Max", "deepseek-v4-flash", "deepseek-v4-flash-high", "DeepSeek V4 Flash preview", "DeepSeek-V4-Flash-Preview", "deepseek-v4-flash-high-preview", "DeepSeek V4 Flash 0731", "DeepSeek V4 Flash (0731)", "DeepSeek-V4-Flash-0731", "DSV4F0731"] },
     { id: "DeepSeek V3.2",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["deepseek-v3p2"] },
     { id: "Qwen3.7-Max",      vendor: "Alibaba",   color: "#FF6A00", aliases: ["Qwen3.7-Max", "Qwen3.7 Max", "qwen3.7-max-20260517"] },
-    { id: "Qwen3.7-Plus",     vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.7-Plus"] },
+    { id: "Qwen3.7-Plus",     vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.7-Plus", "Qwen 3.7 Plus", "qwen-3.7-plus"] },
     { id: "Qwen3.6-Plus",     vendor: "Alibaba",   color: "#FF8533", aliases: ["Qwen3.6-Plus(Think)", "Qwen3.6-Plus", "Qwen3.6 Plus"] },
     { id: "Qwen3.6-27B",      vendor: "Alibaba",   color: "#FF9547", aliases: ["Qwen3.6-27B"] },
     { id: "Qwen3.6-35B-A3B",  vendor: "Alibaba",   color: "#FFA05A", aliases: ["Qwen3.6-35B-A3B"] },
@@ -135,7 +135,21 @@ window.MODEL_MAP = {
     { id: "union-alpha",      vendor: "STEALTH",   color: "#7C8CFF", aliases: ["union-alpha", "UNION-ALPHA"] },
     // ModelDial 榜中的 "kimi-for-coding" 与该站的 "k3" 并列且分数不同(64.2 vs 72.5),
     // 是否同一底层模型未证实,故单独建档,不并入 Kimi K3。
-    { id: "kimi-for-coding",  vendor: "Moonshot",  color: "#8B72FF", aliases: ["kimi-for-coding"] }
+    { id: "kimi-for-coding",  vendor: "Moonshot",  color: "#8B72FF", aliases: ["kimi-for-coding"] },
+    // ===== CursorBench / FrontierCode 两榜补充登记的模型(2026-09) =====
+    // CursorBench 页把推理档位并入模型名(如 "Opus 5.5 Max"),源解析端已剥离档位,
+    // 故此处只需登记「不带档位」的基础名(以及各厂商可能出现的带厂商前缀写法)。
+    { id: "Claude Opus 5.5",  vendor: "Anthropic", color: "#CE6D4A", aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"] },
+    { id: "Grok 4.7",         vendor: "xAI",       color: "#878F9A", aliases: ["Grok 4.7", "grok-4.7", "grok-4.7-high", "grok-4.7-xhigh"] },
+    { id: "GPT-6 Sol",        vendor: "OpenAI",    color: "#0A8F6A", aliases: ["GPT-6 Sol", "gpt-6-sol"] },
+    { id: "GPT-6 Luna",       vendor: "OpenAI",    color: "#15B893", aliases: ["GPT-6 Luna", "gpt-6-luna"] },
+    { id: "Composer 2.5",     vendor: "Cursor",    color: "#F44E00", aliases: ["Composer 2.5", "composer-2.5", "composer-2-5"] },
+    // SWE-1.x/2 为 Cognition(Devin)自研编码模型,harness 分别为 chisel/devin
+    { id: "SWE-2",            vendor: "Cognition", color: "#C4703C", aliases: ["SWE-2", "swe-2"] },
+    { id: "SWE-1.7",          vendor: "Cognition", color: "#D07C46", aliases: ["SWE-1.7", "swe-1-7", "swe-1.7"] },
+    { id: "SWE-1.6",          vendor: "Cognition", color: "#D98850", aliases: ["SWE-1.6", "swe-1-6", "swe-1.6"] },
+    { id: "Kimi K2.7",        vendor: "Moonshot",  color: "#7C5CFF", aliases: ["Kimi K2.7", "kimi-k2.7", "Kimi-K2.7"] },
+    { id: "Mistral 3.5 Medium", vendor: "Mistral", color: "#FF8A66", aliases: ["Mistral 3.5 Medium", "mistral-3.5-medium", "Mistral-Medium-3.5"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1
@@ -177,7 +191,9 @@ window.MODEL_MAP = {
     "North": "#A8B0BC",             // 灰
     "Motif Technologies": "#C08FE0", // 淡紫
     "Upstage": "#6FBFB0",           // 灰绿
-    "SK Telecom": "#EA6C81"         // 玫红:提亮至常态 ≥4.5:1
+    "SK Telecom": "#EA6C81",        // 玫红:提亮至常态 ≥4.5:1
+    "Cursor": "#FF7A45",            // 品牌橙红(Composer 系列):与 Anthropic/Mistral 错开明度
+    "Cognition": "#D8915C"          // 陶土橙(Devin / SWE 系列):与 Anthropic 同带错明度
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
   domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi"]

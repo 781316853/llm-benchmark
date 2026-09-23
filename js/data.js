@@ -414,6 +414,24 @@
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score || (b.almost || 0) - (a.almost || 0); })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
+  // CursorBench:模型级主榜(每模型取最优档位),按分数降序
+  function cursorbench() {
+    var src = window.CURSORBENCH || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  // CursorBench 配置明细(model × 推理档位,共 52 条):按源站排名升序,供章节内展开查看
+  function cursorbenchConfigs() {
+    var src = window.CURSORBENCH || { configs: [] };
+    return (src.configs || []).slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); })
+      .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
+  }
+  // FrontierCode:模型级主榜(main 子集下各档位最优),按分数降序
+  function frontiercode() {
+    var src = window.FRONTIERCODE || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
 
   // ===== ModelDial 雷达(独立页;计入综合分(「第三方实测」组计分组之一,权重 16%)与命中数) =====
   // 主榜为模型级条目:每条取该模型最高分 config(与源站主榜一致),按综合分降序;
@@ -618,6 +636,9 @@
     hle: hle,
     nl2repo: nl2repo,
     programbench: programbench,
+    cursorbench: cursorbench,
+    cursorbenchConfigs: cursorbenchConfigs,
+    frontiercode: frontiercode,
     modeldial: modeldial,
     modeldialConfigs: modeldialConfigs,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
@@ -632,6 +653,7 @@
     // 各源原始对象(供渲染脚注)
     src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
       tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
-      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH, modeldial: window.MODELDIAL }
+      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH,
+      cursorbench: window.CURSORBENCH, frontiercode: window.FRONTIERCODE, modeldial: window.MODELDIAL }
   };
 })();
