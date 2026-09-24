@@ -23,7 +23,7 @@
 - **权威基准测试**(新标签页,14 大权威基准):DeepSWE(长程软件工程,同时保留独立标签页)、Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看、默认 4.0,三版合并计入总览)、Terminal-Bench-Science 0.1(科研工作流)、OSWorld 2.0(长时程桌面计算机使用)、Agents' Last Exam(真实专业工作流)、ARC-AGI-3(交互式智能体推理 RHAE)、BenchCAD(程序化 CAD 生成)、GPQA Diamond(研究生级科学问答)、HLE(前沿知识广度)、NL2Repo-Bench(长程仓库生成)、ProgramBench(cleanroom 程序重建)、CursorBench(Cursor 官方编码 Agent 实测)、FrontierCode(Cognition 生产级代码质量);除 DeepSWE / Terminal-Bench 三版合并外均不计入综合分与命中数(NL2Repo-Bench 自 2026-09-19 起由「计入」改为仅展示;ProgramBench 2026-09-22 恢复收录,仅展示;CursorBench / FrontierCode 2026-09-23 新增,harness 口径不可比故仅展示);各表模型名后按渠道挂「官方榜 / 厂商发布 / 第三方」来源徽标(仅多渠道表逐行标注)
 - **套餐对比**(新标签页,展示型参考):接入 codingplan.fyi「额度/价格对比」视图的**快速对比**板块——按固定精选模型分列(DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna + 甜品级、SOTA 两组多模型对比),每列按综合单价升序比价各平台套餐(折算月价 / 综合单价 ¥/亿 / 实测月用量,含 谷/峰 档位),支持「仅显示精选平台 / 显示所有平台」切换;已去除源站推广跳转链接,完整套餐筛选请前往源站
 
-- **编程工具更新日志**(新标签页,非分数数据):汇总 **Codex / Claude Code / OpenCode / Kimi Code / Qoder / Trae / ZCode / CodeBuddy / WorkBuddy** 九个 AI 编程工具的官方 changelog,**每个工具只显示最近一次更新**,正文保留源站**完整内容**(不摘要),支持跳转源站原文,英文条目自动机器翻译成中文(未译出的标「原文」保留英文);数据文件仍存全量历史,14 天 / 30 天 / 全部切换的是「这次更新算不算新」的门槛。只收**正式发布版本**(alpha/beta/rc/nightly 不入库)。仿 news/codingplan 模式旁路抓取,不进基准管线、不计入综合分与命中数
+- **Agent工具更新日志**(新标签页,非分数数据):汇总 **Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy** 十一个 Agent 工具的官方 changelog,**每个工具只显示最近一次更新**,正文保留源站**完整内容**(不摘要),支持跳转源站原文,英文条目自动机器翻译成中文(未译出的标「原文」保留英文);数据文件仍存全量历史,14 天 / 30 天 / 全部切换的是「这次更新算不算新」的门槛。只收**正式发布版本**(alpha/beta/rc/nightly 不入库)。仿 news/codingplan 模式旁路抓取,不进基准管线、不计入综合分与命中数
 
 每页提供「仅跨榜模型 / 显示全部」开关:默认收起仅出现在单一榜单的模型(总览页为命中不足 3 个榜单),聚焦跨基准可比性。
 
@@ -41,7 +41,7 @@
 ## 目录结构
 
 ```
-index.html              门户入口(9 标签:总览/DeepSWE/llm2014/AI能力/ModelDial/无机酸实测/权威基准测试/套餐对比/编程工具更新日志)
+index.html              门户入口(9 标签:总览/DeepSWE/llm2014/AI能力/ModelDial/无机酸实测/权威基准测试/套餐对比/Agent工具更新日志)
 css/styles.css          深色科技风样式
 js/data.js              数据归一(canonical 命中映射、unified 视图、hitCount)
 js/charts.js            ECharts 封装
@@ -51,7 +51,7 @@ data/                   多源数据快照(deepswe/deepswe_v10/llm2014/arena_web
                          tbench/tbench_v3/tbench_v2(实时双源)/tbscience/osworld/lastexam/arcagi3/benchcad/
                          gpqa/hle/nl2repo/programbench/cursorbench/frontiercode/modeldial/wujisuan/news/codingplan/changelog)
 scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用)
-                         其中 lib/changelog.js 为 9 个 AI 编程工具的更新日志旁路抓取模块
+                         其中 lib/changelog.js 为 11 个 Agent 工具的更新日志旁路抓取模块
 .github/workflows/refresh.yml  每日定时刷新数据并提交
 ```
 
@@ -75,6 +75,6 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 - **权威基准测试(展示型)**:DeepSWE(官方榜 T1 + datalearner T2 只补缺)、Terminal-Bench-Science 0.1(explainx 博客镜像,唯一 T3 渠道)、OSWorld 2.0(datalearner 厂商发布 partial 口径为主源 T2,steel.dev 系统级镜像 T3 仅追加未收录条目)、Agents' Last Exam(datalearner 厂商发布 T2 主源 + llm-stats T3 补充)、ARC-AGI-3(datalearner 厂商发布 Standard harness T2 主源 + llm-stats T3 补充,RHAE 百分制直采)、BenchCAD(GitHub leaderboard.json 官方榜 T1,主指标 Vision2Code total)、GPQA Diamond(llm-stats 聚合表;datalearner GPQA 为 448 题全量集、口径不同于 198 题 Diamond 子集,未并入,取单源)、HLE(datalearner 厂商发布 T2 主源 + llm-stats/benchlm T3 补充按层级合并,~84 模型级条目)、CursorBench(Cursor 官方 HTML 表格单源 T1)、FrontierCode(Cognition 官方静态 JSON 单源 T1);除 DeepSWE / TB 三版合并 / NL2Repo 外均仅展示,不计入综合分。
 - **套餐快速对比(展示型)**:codingplan.fyi 静态 JSON(model-comparison-presets.json 固定精选模型分组 + plans.json 套餐月价/币种 + plan-models.json 套餐×模型综合单价与实测月用量 + models.json/platforms.json 名称映射 + config.json 美元汇率),抓取端完整复刻源站 entity-data 的比价算法(美元按汇率折算、按量行取综合单价、订阅行取折算月价+实测月用量),按综合单价升序输出;仿 news 模式在 `fetch_all.js` 旁路调用(不进基准管线/校验器),写入 `data/codingplan.js`;已丢弃源站推广跳转链接。
 
-- **AI 编程工具更新日志(非分数数据)**:9 个工具的官方 changelog,由 `scripts/lib/changelog.js` 抓取写入 `data/changelog.js`,仿 news/codingplan 在 `fetch_all.js` 旁路调用(不进基准管线/校验器,不计入综合分与命中数)。**源站分两类**:① Codex / Claude Code / OpenCode / Kimi Code 走 GitHub Releases REST API 分页(**不能用 `releases.atom` 单独作为源** —— Atom 固定只回 10 条,Codex 最新 10 条只跨 1.5 天,撑不起两周窗口;但 API 列表按 release 的 `created_at` 排序,会把「建得早、发得晚」的版本整条漏掉,实测 anomalyco/opencode 的 v2.0.x 不在首页 100 条内,故 **API + Atom 双路合并**)。Kimi 官方文档站的「最新动态」是 VitePress 客户端渲染、HTML 内 0 个日期,故亦走 GitHub。② Qoder(`docs.qoder.cn/product-overview/qoder-update-log`,服务端渲染、正文本身中文,版本线与国际版 qoder.com 是两套编号)/ Trae(`trae.cn/changelog` 服务端渲染,飞书 block 树为备源)/ ZCode(`zcode.z.ai/changelog`,日期为中文「2026年9月22日」)/ CodeBuddy + WorkBuddy(`codebuddy.cn/docs` 文档页,标题自带 id 可做版本级深链,两站共用解析器)。**口径**:仅正式版(不收 alpha/beta/rc/nightly);存全量历史、**前端每个工具只渲染最近一次更新**(14/30/全部 切换的是「这次更新算不算新」的门槛,不是条目条数)。**中文翻译**:英文条目走 news.js 同一套 MyMemory 通道(`news.translateToZh(text, cfg)` 注入 `changelog.translate` 配置),**只译各工具当前显示的那一条**(最多 9 条,页面不再渲染的旧条目不花额度);正文按行分块(单请求 ≤450 字符)、译文行数与原文不一致则整条放弃(不产出错位正文),条目级预算熔断且本轮第一条总是放行(否则 2 万字符的超长条目永远挤不进预算);原文哈希存于条目 `h` 字段,同一份发布说明终身只请求一次,失败/未译条目由前端标「原文」并保留英文(该接口按 IP 限流,本机连续压上百个请求会收到 HTTP 429;429 属 4xx 不重试,单包失败即放弃整条、连续 3 次失败熔断本轮,留给下一次刷新补齐)。**该文件约 3MB,不进首屏脚本清单**,由「编程工具更新日志」页首次打开时按需注入。**依赖**:`refresh.yml` 注入 `GH_TOKEN`(工作流自带 `secrets.GITHUB_TOKEN`)—— 未鉴权只有 60 次/小时且 Actions runner 共享出口 IP,实测本机探测几轮即撞 403。单源失败仅使该工具标 `stale` 并沿用上次条目(页面保留源站跳转入口);每路抓取带墙钟硬超时(API 150s / Atom 60s / 国内页 45s),防止连接挂死把整轮刷新拖走(故 refresh job 超时 15→20 分钟)。
+- **Agent 工具更新日志(非分数数据)**:11 个工具的官方 changelog,由 `scripts/lib/changelog.js` 抓取写入 `data/changelog.js`,仿 news/codingplan 在 `fetch_all.js` 旁路调用(不进基准管线/校验器,不计入综合分与命中数)。**源站分两类**:① Codex / Claude Code / OpenCode / Kimi Code 走 GitHub Releases REST API 分页(**不能用 `releases.atom` 单独作为源** —— Atom 固定只回 10 条,Codex 最新 10 条只跨 1.5 天,撑不起两周窗口;但 API 列表按 release 的 `created_at` 排序,会把「建得早、发得晚」的版本整条漏掉,实测 anomalyco/opencode 的 v2.0.x 不在首页 100 条内,故 **API + Atom 双路合并**)。Kimi 官方文档站的「最新动态」是 VitePress 客户端渲染、HTML 内 0 个日期,故亦走 GitHub。② Qoder CN(`docs.qoder.cn/product-overview/qoder-update-log`,服务端渲染、正文本身中文,版本线 0.4.x)与 Qoder CN IDE(`docs.qoder.cn/product-overview/qoder-cn-ide-update-log`,版本线 1.32.x)各一页、两张卡,标记相同共用解析器 / TraeCode + TraeWork(同取 `trae.cn/changelog` 服务端渲染,飞书 block 树为备源;页面按每条自带的产品线标签拆卡,未列出的产品线如 TRAE APP 整条丢弃)/ ZCode(`zcode.z.ai/changelog`,日期为中文「2026年9月22日」)/ CodeBuddy + WorkBuddy(`codebuddy.cn/docs` 文档页,标题自带 id 可做版本级深链,两站共用解析器)。**口径**:仅正式版(不收 alpha/beta/rc/nightly);存全量历史、**前端每个工具只渲染最近一次更新**(14/30/全部 切换的是「这次更新算不算新」的门槛,不是条目条数)。**中文翻译**:英文条目走 news.js 同一套 MyMemory 通道(`news.translateToZh(text, cfg)` 注入 `changelog.translate` 配置),**只译各工具当前显示的那一条**(最多 11 条,页面不再渲染的旧条目不花额度);正文按行分块(单请求 ≤450 字符)、译文行数与原文不一致则整条放弃(不产出错位正文),条目级预算熔断且本轮第一条总是放行(否则 2 万字符的超长条目永远挤不进预算);原文哈希存于条目 `h` 字段,同一份发布说明终身只请求一次,失败/未译条目由前端标「原文」并保留英文(该接口按 IP 限流,本机连续压上百个请求会收到 HTTP 429;429 属 4xx 不重试,单包失败即放弃整条、连续 3 次失败熔断本轮,留给下一次刷新补齐)。**该文件约 2.2MB,不进首屏脚本清单**,由「Agent工具更新日志」页首次打开时按需注入。**依赖**:`refresh.yml` 注入 `GH_TOKEN`(工作流自带 `secrets.GITHUB_TOKEN`)—— 未鉴权只有 60 次/小时且 Actions runner 共享出口 IP,实测本机探测几轮即撞 403。单源失败仅使该工具标 `stale` 并沿用上次条目(页面保留源站跳转入口);每路抓取带墙钟硬超时(API 150s / Atom 60s / 国内页 45s),防止连接挂死把整轮刷新拖走(故 refresh job 超时 15→20 分钟)。
 
 任一源抓取失败则保留旧文件(站点不崩)。

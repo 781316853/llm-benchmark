@@ -1,5 +1,5 @@
-// AI 编程工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)
-// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;Qoder 取 docs.qoder.cn 更新日志页;Trae/ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
+// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)
+// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode / TraeWork 同取 trae.cn/changelog 并按产品线拆分;ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
 // 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,展示窗口由前端控制
 // 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新
 //   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期
@@ -9,7 +9,7 @@ window.CHANGELOG = {
   'updated': '2026-09-24',
   'refreshedAt': '2026-09-24 22:16',
   'uiWindowDays': 14,
-  'desc': '9 个 AI 编程工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新,「最近一次更新」超出 14 天时不显示卡片',
+  'desc': '11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新,「最近一次更新」超出 14 天时不显示卡片',
   'tools': [
     {
       'id': 'codex',
@@ -8354,8 +8354,8 @@ window.CHANGELOG = {
       ]
     },
     {
-      'id': 'qoder',
-      'name': 'Qoder',
+      'id': 'qoder-cn',
+      'name': 'Qoder CN',
       'vendor': '阿里巴巴',
       'kind': 'qoder',
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
@@ -8580,8 +8580,579 @@ window.CHANGELOG = {
       ]
     },
     {
-      'id': 'trae',
-      'name': 'Trae',
+      'id': 'qoder-cn-ide',
+      'name': 'Qoder CN IDE',
+      'vendor': '阿里巴巴',
+      'kind': 'qoder',
+      'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+      'status': 'ok',
+      'error': '',
+      'lastOkAt': '2026-09-24 23:13',
+      'entries': [
+        {
+          'version': '1.32.0',
+          'title': '日常优化',
+          'date': '2026-09-23',
+          'dateRaw': '2026年09月23日',
+          'tags': [
+            '日常优化',
+            '优化',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '日常优化\n优化\n- 优化子 Agent 历史加载，改为按需加载以提升性能\n- 降低大文件读取与 Git 统计的资源占用，缓解长期使用的内存压力\n修复\n- 修复大型项目初始化长时间卡顿问题\n- 修复回答末尾丢字、异常换行及后台文件修改中断 Diff 审查问题\n- 修复重连后文件写入超时、工具卡片缺失及断连后持续等待问题\n- 修复 macOS 更新安装失败及 Windows 跨盘升级后快捷方式指向旧版本问题\n2026年09月22日'
+        },
+        {
+          'version': '1.31.2',
+          'title': '日常优化',
+          'date': '2026-09-22',
+          'dateRaw': '2026年09月22日',
+          'tags': [
+            '日常优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '日常优化\n- 优化 @ 引用文件夹时的搜索体验，输入内容即时筛选\n- 首次打开项目时新增代码库索引创建说明\n- 修复查看历史 diff 时新增代码无法加入会话提问的问题\n- 修复更新日志弹窗链接跳转问题\n2026年09月18日'
+        },
+        {
+          'version': '1.31.0',
+          'title': '日常优化',
+          'date': '2026-09-18',
+          'dateRaw': '2026年09月18日',
+          'tags': [
+            '日常优化',
+            '优化',
+            '启动与响应更快',
+            '长会话内存占用更低',
+            '自动重试过程可见',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '日常优化\n优化\n- Editor 视窗增加 Experts 入口 ：支持在 Editor 视窗使用 Experts 专家团模式。\n- 启动与响应更快 ：减少 Shell 环境的重复采集与本地连接等待，Skill 监听不再阻塞新建会话；冷启动先展示对话面板，历史记录在后台恢复。\n- 长会话内存占用更低 ：及时回收闲置的文件编辑资源，清理 Markdown、终端标签与消息流的冗余持有，并完善图片预览的资源限制与关闭逻辑。\n- 自动重试过程可见 ：模型请求失败或繁忙时会自动重试，同时透出重试状态，便于随时了解进度。\n修复\n- 修复短暂断连后聊天记录无法自动恢复的问题，并优化重开历史提问的续跑逻辑。\n- 修复登录回跳与跨窗口更新重启的异常，减少因可恢复的等待任务而触发的退出确认。\n- 修复子 Agent 命令在特定场景下被误路由的问题。\n- 修复 Windows 终端输出乱码与文件重复显示的问题。\n2026年09月15日'
+        },
+        {
+          'version': '1.30.1',
+          'title': '日常优化',
+          'date': '2026-09-15',
+          'dateRaw': '2026年09月15日',
+          'tags': [
+            '日常优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '日常优化\n- 优化长会话页面性能。\n- Qoder CN IDE 启动时默认进入 Editor 视窗。\n- 优化 Agent 响应前的准备流程，减少无效等待，提升首次响应速度与会话流畅度。\n- 优化首包超时时的提示信息，让等待原因与后续操作更清晰易懂。\n- 提升 WSL 启动速度与连接稳定性。\n2026年09月08日'
+        },
+        {
+          'version': '1.29.0',
+          'title': 'Qoder Security 企业安全治理升级',
+          'date': '2026-09-08',
+          'dateRaw': '2026年09月08日',
+          'tags': [
+            '特性',
+            '分组管理与自定义规则',
+            '云端全量扫描与漏洞看板',
+            '优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Qoder Security 企业安全治理升级\n特性\n- 分组管理与自定义规则 ：管理员可按分组进行管理，并自定义 L1 正则规则及 L2、L3 扫描提示词，让扫描更贴合企业安全规范。\n- 云端全量扫描与漏洞看板 ：L4 全量扫描升级为云端异步执行，突破一万行代码限制；企业漏洞看板帮助管理员快速掌握整体安全风险。\n优化\n- 安全插件依赖包改为异步下载，减少对操作的阻塞。\n- 改进数据库恢复后的向量记忆写入流程，记忆创建更稳定。\n2026年09月01日'
+        },
+        {
+          'version': '1.28.0',
+          'title': '企业专属版新增私域智控能力',
+          'date': '2026-09-01',
+          'dateRaw': '2026年09月01日',
+          'tags': [],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '企业专属版新增私域智控能力\n- Qoder CN 企业专属版新增私域智控能力（PDC）： 让Qoder 在客户 VPC 内将散落各处的出公网能力统一收敛到「安全」模块下「私域智控」之中，实现出网集中管控、企业按需放行、全程可审计。支持隔离级/受控级/增强级三级模式一键切换与逐项微调，策略经端侧强制下发、用户不可覆盖。目前该能力仅支持企业定向开启，详情请参阅 私域智控帮助文档 。\n2026年08月29日'
+        },
+        {
+          'version': '1.27.0',
+          'title': '优化与改进',
+          'date': '2026-08-29',
+          'dateRaw': '2026年08月29日',
+          'tags': [
+            '优化与改进'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '优化与改进\n- 支持企业禁用内置浏览器的外网访问，满足组织级安全与运维管控要求。\n2026年08月25日'
+        },
+        {
+          'version': '1.26.0',
+          'title': '安装目录与主程序名称调整',
+          'date': '2026-08-25',
+          'dateRaw': '2026年08月25日',
+          'tags': [
+            '安装目录与主程序名称调整',
+            'macOS：',
+            'Windows：',
+            'Linux：'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '安装目录与主程序名称调整\n安装目录与主程序名称调整： Qoder CN 桌面应用更名为 Qoder CN IDE 后，安装目录与主程序名称相应调整：\n- macOS： 应用路径由 Qoder CN.app/Contents/MacOS/Electron 调整为 Qoder CN IDE.app/Contents/MacOS/Qoder CN 。\n- Windows： 安装目录由 QoderCN 调整为 Qoder CN IDE ，主程序由 QoderCN.exe 调整为 Qoder CN IDE.exe 。\n- Linux： 软件包名称由 qoder-cn 调整为 qoder-cn-ide ，主程序路径由 /usr/share/qoder-cn/qoder-cn 调整为 /usr/share/qoder-cn-ide/qoder-cn-ide 。\n2026年08月19日'
+        },
+        {
+          'version': '1.25.1',
+          'title': 'Windows 端应用窗口快照上线',
+          'date': '2026-08-19',
+          'dateRaw': '2026年08月19日',
+          'tags': [
+            '功能',
+            '优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Windows 端应用窗口快照上线\n功能\n- Windows 支持应用窗口快照： 双击 Ctrl 快速截取当前最前应用窗口，或在实时语音中提及屏幕内容时自动读取前台应用，将画面作为上下文提供给智能体，助其更快理解你正在查看的内容。\n- Marketplace 中文适配： Marketplace 支持中文界面，插件浏览、搜索与使用在中文场景下更友好。\n优化\n- Qoder CN IDE 客户端新增信息上报，帮助企业统一管理成员客户端明细。\n2026年08月14日'
+        },
+        {
+          'version': '1.24.2',
+          'title': 'Qoder CN 应用名称调整为 Qoder CN IDE',
+          'date': '2026-08-14',
+          'dateRaw': '2026年08月14日',
+          'tags': [
+            '公告',
+            'Qoder CN',
+            'Qoder CN IDE',
+            'macOS：',
+            'Windows：',
+            'Linux：'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Qoder CN 应用名称调整为 Qoder CN IDE\n公告\n作为 Qoder 家族品牌升级的一部分，现有产品 Qoder CN 更名为 Qoder CN IDE ，以更清晰地体现其 IDE 产品定位。 仅名称变更，功能、数据、账号、服务均不受影响。 自 2026 年 8 月 14 日起，应用展示名称随 1.24.2 版本由 Qoder CN 调整为 Qoder CN IDE。 【预告】自 2026 年 8 月 21 日起，应用安装目录及相关路径名称将随 1.26.0 版本进行以下调整：\n- macOS： 应用路径由 Qoder CN.app/Contents/MacOS/Electron 调整为 Qoder CN IDE.app/Contents/MacOS/Qoder CN 。\n- Windows： 安装目录由 QoderCN 调整为 Qoder CN IDE ，主程序由 QoderCN.exe 调整为 Qoder CN IDE.exe 。\n- Linux： 软件包名称由 qoder-cn 调整为 qoder-cn-ide ，主程序路径由 /usr/share/qoder-cn/qoder-cn 调整为 /usr/share/qoder-cn-ide/qoder-cn-ide 。\n优化\n- 一键提示词优化按钮默认展示悬浮提示，不再区分输入字数，降低使用门槛。\n- 知识卡默认开启预取，内容加载更流畅，减少等待时间。\n2026年08月12日'
+        },
+        {
+          'version': '1.24.1',
+          'title': '对话级代码评审与 Spec 体验优化',
+          'date': '2026-08-12',
+          'dateRaw': '2026年08月12日',
+          'tags': [
+            '功能',
+            'Spec 使用体验优化：',
+            '优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '对话级代码评审与 Spec 体验优化\n功能\n- 代码评审默认范围调整为对话级： 通过内置指令触发评审时，默认评审当前会话相关改动。\n- Spec 使用体验优化： 支持复制内容、便捷打开所在路径，并可跳转至下载后的路径。\n优化\n- 优化多仓库工作区下的知识检索能力，跨仓查找信息更高效。\n- 提升提示词增强能力，支持通过 Slash Command 更快捷地触发相关操作。\n- Hook 执行支持传入参数，增强自动化流程的灵活性与可配置性。\n- 完善潜在危险命令识别能力，覆盖更多高风险 Git 子命令并增强执行前提醒。\n2026年08月06日'
+        },
+        {
+          'version': '1.23.0',
+          'title': '实时语音协作与定时任务升级｜Qoder CN IDE 与 Qoder IDE 能力对齐',
+          'date': '2026-08-06',
+          'dateRaw': '2026年08月06日',
+          'tags': [
+            '功能更新',
+            '实时语音支持声纹识别：',
+            '支持侧边任务：',
+            '定时任务能力全面升级：',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '实时语音协作与定时任务升级｜Qoder CN IDE 与 Qoder IDE 能力对齐\n功能更新\n- Quest Live Voice 支持绑定工作区： 发起实时语音时支持选择所属工作区，语音任务将自动带入对应工程上下文，并归档到正确位置。\n- 实时语音支持声纹识别： 在“设置 > 语音 > 实时语音”中开启声纹识别，可以在多人或嘈杂环境中更精准地识别当前用户的声音。\n- 支持侧边任务： 针对主任务中的细节或衍生问题，可发起关联侧边任务同步处理，不打断主线任务，提升处理效率。\n- 定时任务能力全面升级： 支持通过会话或手动配置快速创建任务，支持更多定时任务类型；新增统一管理模块，让任务查看与管理更高效便捷。\n- 支持通过 Deeplink 一键安装插件： 打开链接即可发起安装，插件的共享与分发更便捷。\n- 支持 HTTP Hooks： 在工具调用、会话等关键节点，自动将事件发送到已配置的 HTTP 接口，并依据返回结果放行、拦截或注入上下文，便于集中实施安全策略、审计与外部集成。\n体验优化\n- 修复 WSL 偶现断开的问题。\n- 优化目标驱动执行的默认最大轮次限制。\n- 优化新建流程的响应速度，缩短创建任务与打开相关界面的等待时间。\n- Search Agent 提示内容优化为 Markdown 结构，结果呈现更清晰易读。\n2026年08月03日'
+        },
+        {
+          'version': '1.10.0',
+          'title': '1.10.0',
+          'date': '2026-08-03',
+          'dateRaw': '2026年08月03日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 优化用量面板用户权益展示。\n2026年08月01日'
+        },
+        {
+          'version': '1.9.1',
+          'title': '1.9.1',
+          'date': '2026-08-01',
+          'dateRaw': '2026年08月01日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复已知问题。\n2026年07月31日'
+        },
+        {
+          'version': '1.9.0',
+          'title': 'Qoder Voice 实时语音互动、Quest 支持插件市场、Better Harness 工程实践与企业级能力更新',
+          'date': '2026-07-31',
+          'dateRaw': '2026年07月31日',
+          'tags': [
+            '功能更新',
+            '企业版能力更新：',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Qoder Voice 实时语音互动、Quest 支持插件市场、Better Harness 工程实践与企业级能力更新\n功能更新\n- Qoder Voice —— 国内首个上线实时语音交互功能的 Agentic platform：\n- 动口即开工：把想法直接说出来，直接转化为任务并持续推进，省去逐字输入的繁琐。\n- 跨屏幕工作：悬浮球始终伴随在任何应用之上，可以把你正在看的内容变成上下文，让 Qoder 看见你的工作现场。\n- 像聊天一样推进：通过自然的对话讨论想法、梳理思路、澄清需求，轻盈不打断心流。\n- Quest 模式支持插件市场管理： 新增插件分类、下载量等详情展示，支持按用户级或项目级设置安装范围，并提供启用、禁用管理能力。同时支持创建和导入自定义插件，帮助用户更高效地发现、管理和使用插件。\n- Better Harness 能力上线，打造更好的 harness 工程： 新增 Better Harness 能力，可从多个维度检查项目中的 harness 工程实践并提供针对性改进建议。支持一键发起修复，由 Agent 自动分析问题并生成修复方案。\n- Canvas 支持分享和标注： 新增 Canvas 企业内分享能力，可便捷地将画布内容在企业内分享。同时新增 Canvas 标注能力，方便直接在画布内容上进行修改和优化。\n- Markdown 文件预览态支持编辑： 在 Quest 视窗中，预览 Markdown 文件时支持直接编辑，操作更便捷。\n- 企业版能力更新： Qoder CN（全家桶）企业标准版/企业专属版还新增以下特性：\n- 企业级 MCP 统一管控：企业管理员可统一管控成员对 MCP Server 的访问，保障企业数据安全。\n- 企业私有插件市场：支持浏览、安装和使用企业私有插件，实现企业内部插件的共享与分发。\n- Qoder CN（全家桶）企业专属版新增支持 QoderWake CN 和 Qoder CN Mobile。\n体验优化\n- 对话回退操作更清晰：优化 Revert 触发后的交互反馈，帮助用户更直观地理解回退范围与当前状态。\n2026年07月22日'
+        },
+        {
+          'version': '1.8.1',
+          'title': '1.8.1',
+          'date': '2026-07-22',
+          'dateRaw': '2026年07月22日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复终端执行偶现超时问题。\n2026年07月21日'
+        },
+        {
+          'version': '1.8.0',
+          'title': 'Qoder Security 正式发布，新增行为推荐卡片',
+          'date': '2026-07-21',
+          'dateRaw': '2026年07月21日',
+          'tags': [
+            '功能更新',
+            '新增行为推荐卡片：'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Qoder Security 正式发布，新增行为推荐卡片\n功能更新\n- Qoder Security 正式发布： 聚焦 AI 编码时代的安全能力。支持 L1 / L2 / L3 三层渐进式扫描，将安全审查嵌入代码生成、对话、提交的每个环节，并支持一键快捷修复，让每行代码提交即安全。\n- 新增行为推荐卡片： 根据当前使用场景智能提供下一步行为推荐建议，提升操作效率与使用体验。\n2026年07月17日'
+        },
+        {
+          'version': '1.7.1',
+          'title': '1.7.1',
+          'date': '2026-07-17',
+          'dateRaw': '2026年07月17日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 优化 Qoder CN（原灵码）升级体验。\n2026年07月15日'
+        },
+        {
+          'version': '1.7.0',
+          'title': '新增 Enterprise 版本与浏览器可视化标注，Hook 能力全面升级',
+          'date': '2026-07-15',
+          'dateRaw': '2026年07月15日',
+          'tags': [
+            '功能更新',
+            'Hook 能力全面升级：',
+            '浏览器可视化标注：',
+            '新增语音输入：',
+            '优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '新增 Enterprise 版本与浏览器可视化标注，Hook 能力全面升级\n功能更新\n- Hook 能力全面升级： 新增 SessionStart、SessionEnd、SubagentStart、SubagentStop、Notification 五类事件；新增 Hook 异步唤醒能力（asyncRewake）；工具事件支持 if 条件匹配指定工具。\n- 浏览器可视化标注： 浏览器操作过程中支持直接选中元素、圈选标注，辅助页面可视化调试与调整。\n- 新增语音输入： 语音转文字后可自动优化口语化表达，让输入内容更清晰、自然，提升与智能体的对话质量。\n- Workspace 支持添加文件夹： Quest 支持将多个文件夹添加到同一 Workspace，方便在一个工作区内灵活组织和管理多目录内容。\n- 支持 Qoder CN（全家桶）Enterprise 版订阅： Qoder CN（全家桶）Enterprise 版，包含 Teams 全部功能，还增加了基于群组的权限和计费管理、多维度模型策略管控、插件分享与下发管控、企业私有能力市场、操作审计、优先服务支持。同时，支持 Qoder CN（原灵码）企业标准版迁移到 Qoder CN（全家桶）Teams 版和 Enterprise 版，升级后企业成员登录新账号可将原实例账号下的 AI 数据（如会话历史、规则、记忆、智能体、代码索引）等迁移到新账号，历史记录不会丢失。\n优化\n- 优化 Experts 任务派发策略，避免重复派发同名 Experts，并减少执行中任务的冲突。\n- 优化知识卡生成与检索效率，提升相关内容的组织与查找体验。\n2026年07月07日'
+        },
+        {
+          'version': '1.6.0',
+          'title': '长程任务驱动、Fork 分支与Quest 视窗全方位体验升级',
+          'date': '2026-07-07',
+          'dateRaw': '2026年07月07日',
+          'tags': [
+            '单次定时任务',
+            'Spec 设为目标执行',
+            '插话（Steer）',
+            '任务侧栏升级',
+            'Worktree 协作',
+            '浏览器状态复用'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '长程任务驱动、Fork 分支与Quest 视窗全方位体验升级\n模型上下文与思考模式配置：\n内置模型和 BYOK 自定义模型支持调整 Context（上下文窗口）和 Thinking Effort（思考强度）参数，灵活适配不同任务场景。 目标驱动与定时执行，让长程任务更可靠：\n聚焦长程任务的执行体验与效果提升。你可以使用 Spec 组织执行计划，或通过目标 (Goal) 明确预期结果，再结合定时任务，将任务安排在合适的时间自动启动——无需在线等待，任务将按计划持续推进并最终交付结果。配合 Qoder CN Off-Peak 折扣活动，在非高峰时段执行长程任务可进一步降低 Credits 消耗。\n- 目标 (Goal) 驱动任务执行 ：支持在 Quest 视窗中设定目标，智能体将围绕目标持续执行，直至任务完成。\n- 单次定时任务 ：支持将目标（Goal）或 Spec 设置为单次定时任务，在指定时间启动执行。\n- Spec 设为目标执行 ：生成 Spec 后，可直接将其设为目标发起执行。\n- 插话（Steer） ：任务执行过程中可随时补充方向或修正要求，减少中断和重复开始。\nQuest 视窗支持移动端远程控制：\n新增远程控制开关能力，支持在工作区或全局层面一键开启/关闭移动端远程控制。开启后，用户可通过移动端随时随地查看和处理 Quest 任务；关闭后立刻断开远程开关。开关配置变更后快速生效，无需重启或等待同步周期。 对话级 Fork，灵活分支追问：\n支持在 Quest 任务中从任意一轮对话处发起 Fork，创建新的 Quest 任务分支并继续追问，让探索性任务的多方向延展更加自由。 Quest 核心体验全面升级：\n- 任务侧栏升级 ：新增分组、排序、显隐自定义组件，提升多任务查看和切换效率。\n- Worktree 协作 ：新增未提交变更处理与工作树清理能力，让任务分支管理更清晰、更可控。优化协作链路，支持 handoff 能力。\n- 浏览器状态复用 ：同一工作区内切换会话时可复用浏览器状态，减少重复打开与重新加载。\n- HTML 文件预览 ：支持在 Quest 场景中直接预览 HTML 文件，查看页面效果更便捷。\n- Quest 批注可直接加入上下文： 支持在 Spec、代码与 Diff 视图中针对具体内容添加批注，并将反馈直接交给智能体，帮助其准确理解修改要求。\n- 文件操作与交互： 丰富文件树右键菜单操作能力，常用文件操作更集中。支持拖拽等方式向文件树添加外部文件。\n- 文件树样式： 优化文件树整体样式，与编辑区风格保持统一。\n- 文本文件处理： 优化手动引入文本文件的处理方式，避免内容截断与理解偏差。\n- 知识卡导出： 优化知识卡导出结构，提升导出结果的清晰度与使用体验。\n- Canvas 识别： 优化 Canvas 对项目配置的识别能力，提升代码理解与诊断准确性。\nAI 会话体验优化：\n- 优化输入框超出字数上限时的交互，超出部分将自动转换为文件附件。\n- 支持更高效地折叠冗长会话流。\n- 优化触发同步时的压缩策略，减少额外开销并提升处理效率。\n- 优化新会话首次发送消息的等待时间，提升首次交互响应速度。\n记忆系统自进化：\n上下文理解更精准、长期记忆更持久；优化记忆生命周期管理与多维追踪，个性化响应更连贯。 性能与稳定性：\n- 桌面端架构 ：提升兼容性与运行稳定性。\n- Remote SSH 网络 ：优化网络代理路径，提升远程连接场景下的传输稳定性。\n2026年06月30日'
+        },
+        {
+          'version': '1.5.0',
+          'title': '1.5.0',
+          'date': '2026-06-30',
+          'dateRaw': '2026年06月30日',
+          'tags': [
+            '功能更新'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 新增 Qoder CN 企业专属版 支持一个账号登录 Qoder CN IDE、Qoder CN CLI、QoderWork CN。\n- 专家团新增支持 Qwen 3.7-Max 和 GLM-5.2。\n- Computer Use 支持 Windows ：在 Windows 设备上支持 Computer Use 能力。\n- RepoWiki 生成更可控： RepoWiki 生成支持前置干预，生成 RepoWiki 前可先指定分析范围与关注视角，支持对话交互式生成知识生成的计划文件，指导 RepoWiki 生成，支持人机结合的知识生成、修改和重写。\n- Quest 支持无工作区会话 ：无需预先打开工作区也可直接发起会话，适合快速提问与轻量任务。\n- Quest 任务支持快速定位对话 ：Quest 视窗新增侧边定位能力，方便快速跳转到目标对话片段。\n2026年06月27日'
+        },
+        {
+          'version': '1.4.2',
+          'title': '1.4.2',
+          'date': '2026-06-27',
+          'dateRaw': '2026年06月27日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 优化 Qoder CN IDE 登录提示，自动记忆上次登录入口。\n2026年06月25日'
+        },
+        {
+          'version': '1.4.1',
+          'title': '1.4.1',
+          'date': '2026-06-25',
+          'dateRaw': '2026年06月25日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 优化 Qoder CN IDE 登录引导。\n2026年06月23日'
+        },
+        {
+          'version': '1.4.0',
+          'title': '1.4.0',
+          'date': '2026-06-23',
+          'dateRaw': '2026年06月23日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 优化模型选择器，新增模型描述。\n- 优化个人订阅升级至 Qoder CN（全家桶）的页面提示。\n2026年06月20日'
+        },
+        {
+          'version': '1.3.0',
+          'title': '一份订阅，全产品通用 ： Qoder CN 个人版统一 Credits 体系正式上线',
+          'date': '2026-06-20',
+          'dateRaw': '2026年06月20日',
+          'tags': [
+            '新增',
+            '限时模型福利',
+            'AI 数据完整保留',
+            '变更',
+            '登录入口切换',
+            'VSC 插件停止支持'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '一份订阅，全产品通用 ： Qoder CN 个人版统一 Credits 体系正式上线\nQoder CN 全产品矩阵现已面向个人用户实现 Credits 跨产品统一计量。无论您在 Qoder CN IDE 中完成 AI 辅助编码，还是在 QoderWork CN 中进行桌面端智能协作，都可以消耗同一份 Credits 额度——不再需要为不同产品分别订阅、分别管理。 新增\n- 一号通用 Qoder CN（全家桶） ： 一个 Qoder CN 账号无缝登录 IDE / JetBrains 插件、QoderWork CN（桌面端）、Qoder CN CLI（终端）、QoderWake CN（数字员工）、Qoder CN Mobile（移动端）及 Cloud Agents（云端 Agent），无需分别注册。\n- Credits 资源池统一 ： 原账号的 Credits 余额将以 1:1 等价转换至新全家桶账号，且有效期自升级当日起重新计算为一个月。\n- 限时模型福利 ： 升级后的用户可享受 Qwen3.7-Max 每日 200 次免费调用的限时活动（结束时间以官网公告为准）。\n- AI 数据完整保留 ： 历史会话记录、个性化规则、记忆、技能、智能体、代码索引及插件通用设置等，均无损迁移至新账号。\n变更\n- 登录入口切换 ：通过「阿里云账号登录」入口自动升级 ， 升级成功后请使用「Qoder CN 账号登录」入口登录，原登录方式不再可用。\n- VSC 插件停止支持 ：原 Qoder CN（原灵码）VSC 插件已标记为 Deprecated，不再纳入全家桶产品矩阵。建议切换至 Qoder CN IDE。\n- 订单自动退款 ：升级后原订阅的下个周期及之后费用将自动按原支付路径退款，自动续费订单同步取消，无需主动申请。\n其他特性\n- 内置专家智能体支持自定义提示词： 内置专家智能体现已支持配置自定义提示词，让专家能力更贴合团队规范与个人使用习惯。\n- 自定义子智能体支持模型配置： 创建自定义子智能体时可按需指定模型，方便为不同任务选择更匹配的模型能力。\n2026年06月10日'
+        },
+        {
+          'version': '1.2.0',
+          'title': '1.2.0',
+          'date': '2026-06-10',
+          'dateRaw': '2026年06月10日',
+          'tags': [
+            '功能更新',
+            '专家团支持自定义模型',
+            '代码评审能力增强'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- Quest 视窗支持自定义布局和「My Quests」任务看板 ：Quest 视窗支持拖拽拆分窗格以并行处理多任务，并新增「My Quests」看板按状态汇总全部 Quest，进展一览无余。\n- 专家团支持自定义模型 ：灵活配置专家团及子智能体所使用的模型，可切换内置模型或使用自定义模型，适配更多任务场景。\n- Mac 端上线 Computer Use 与窗口快照能力： 授权后 Agent 可在 macOS 调用计算机操作、后台操控 App 完成复杂自动化任务；双击 ⌘ Command 即可将最前窗口截图作为上下文交给智能体，理解更精准（仅支持 macOS）。\n- 支持在 SSH Remote 中使用 Dev Container ：在 SSH Remote 场景下新增 Dev Container 支持，同时支持 attach 到任意 Docker 容器，提升远程开发环境的灵活性与一致性。\n- 代码评审能力增强 ：新增支持 /ultra review，提升代码评审的分析深度与建议质量，帮助你更快发现潜在问题并改进实现。\n2026年05月30日'
+        },
+        {
+          'version': '0.11.2',
+          'title': '0.11.2',
+          'date': '2026-06-10',
+          'dateRaw': '2026年06月10日',
+          'tags': [
+            '功能更新',
+            '无缝迁移，无需担心。'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 支持 Lingma IDE 升级到 Qoder CN IDE：\n- 升级至 Qoder CN ，解锁全新体验。 Quest 独立视窗：沉浸式对话，工作流更专注。Editor 全面焕新：更流畅的人机协同编码体验。面向 Credits 订阅用户，新增Experts 专家团与GLM-5.1、Kimi-K2.6 等模型。\n- 无缝迁移，无需担心。 您的历史会话、规则、记忆、智能体及代码索引将自动保留。\n2026年05月11日'
+        },
+        {
+          'version': '1.1.1',
+          'title': '1.1.1',
+          'date': '2026-05-30',
+          'dateRaw': '2026年05月30日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复已知问题\n2026年05月30日'
+        },
+        {
+          'version': '1.1.0',
+          'title': '1.1.0',
+          'date': '2026-05-30',
+          'dateRaw': '2026年05月30日',
+          'tags': [
+            '功能更新',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 新增 /canvas 可视化生成能力：支持通过 /canvas 触发生成可交互的 Canvas 视图，让内容整理、报告展示与分析更直观。\n- 代码评审能力增强：新增支持 /ultra-review，提升代码评审的分析深度与建议质量，帮助你更快发现潜在问题并改进实现。\n- 为 Credits 的计费体系的企业标准订阅，增加资源包。同时支持企业管理员为成员配置资源包使用上限。\n修复\n- 修复已知问题\n2026年05月25日'
+        },
+        {
+          'version': '1.0.2',
+          'title': '1.0.2',
+          'date': '2026-05-25',
+          'dateRaw': '2026年05月25日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复已知问题\n2026年05月22日'
+        },
+        {
+          'version': '1.0.1',
+          'title': '1.0.1',
+          'date': '2026-05-22',
+          'dateRaw': '2026年05月22日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复 credits 用量展示与刷新问题\n2026年05月20日'
+        },
+        {
+          'version': '1.0.0',
+          'title': '灵码升级为 Qoder CN',
+          'date': '2026-05-20',
+          'dateRaw': '2026年05月20日',
+          'tags': [
+            '功能更新',
+            '计费与权益变更'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '灵码升级为 Qoder CN\n功能更新\n- Quest 独立视窗 & Editor 全面焕新 ：Quest 从 IDE 内模式升级为独立窗口，成为 Agent First 工作范式的指挥台，支持多个 Workspace 同时运行不同项目的 Agent 任务，统一面板实时追踪全局动态，任务完成后自动生成交付清单；Editor 视窗全面升级，带来更流畅的人机协同编码体验\n- Experts 专家团模式正式开放 ：多专家并行，高质量交付，覆盖从方案设计、编码、质量检查全链路，支持从方案设计到代码交付的端到端流水线；自演进 AI 团队，越用越懂你，持续学习你的代码风格，积累专属协作经验；规划、调研、编码、审查、测试五类专家正式入驻 Quest，以流水线方式完成端到端交付；支持自定义专家——配置领域知识、技能与工具，打造贴合业务场景的专属 Agent 团队\n- 新增 GLM-5.1、Kimi-K2.6 等模型支持 ：为智能问答和智能体模式提供更多模型选择\n计费与权益变更\n- Qoder CN（原灵码）升级为基于 Credits 的计费体系，所有版本订阅计划按实际使用量抵扣 Credits。详情请参考 计费说明 。\n- 企业版存量订阅在当前合同周期内按原价格与权益执行，新增席位或续费按新定价执行\n2026年06月10日'
+        },
+        {
+          'version': '0.11.1',
+          'title': '0.11.1',
+          'date': '2026-05-11',
+          'dateRaw': '2026年05月11日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复已知缺陷\n2026年04月28日'
+        },
+        {
+          'version': '0.11.0',
+          'title': '0.11.0',
+          'date': '2026-04-28',
+          'dateRaw': '2026年04月28日',
+          'tags': [
+            '功能更新',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- Code Review 智能体：支持 /code-review，内置 Code Review 智能体，在智能体模式下可在会话内触发指定范围内的代码评审\n- Browser 智能体：支持 /browser，内置 Browser 智能体，在智能体模式下通过 /browser 命令访问网页、读取在线文档\n- Hook 机制：Agent 执行流引入全新 Hook 机制，允许在智能体执行的关键节点插入自定义逻辑，支持 UserPromptSubmit（用户提交）、PreToolUse（工具调用前）、PostToolUse（工具调用后）、PostToolUseFailure（工具调用失败）以及 Stop（停止）等事件\n体验优化\n- 对话回退操作更清晰：优化 Revert 触发后的交互反馈，帮助用户更直观地理解回退范围与当前状态\n2026年04月16日'
+        },
+        {
+          'version': '0.10.1',
+          'title': '0.10.1',
+          'date': '2026-04-16',
+          'dateRaw': '2026年04月16日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复已知问题\n2026年04月14日'
+        },
+        {
+          'version': '0.10.0',
+          'title': '0.10.0',
+          'date': '2026-04-14',
+          'dateRaw': '2026年04月14日',
+          'tags': [
+            '功能更新',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- DevContainer 支持：新增开发容器（DevContainer）能力，支持通过 .devcontainer/devcontainer.json 配置文件定义标准化开发环境，帮助团队实现一致的开发体验\n- Agent 模式支持 Windows 终端沙箱：Agent 执行的命令现已支持在安全沙箱中运行，有效隔离潜在风险操作\n体验优化\n- Extension Host 进程隔离：优化内置 AI 编码相关扩展的进程隔离能力，将 AI 扩展运行在独立的 Extension Host 进程中，提升运行时稳定性与整体使用体验\n2026年04月09日'
+        },
+        {
+          'version': '0.9.0',
+          'title': '0.9.0',
+          'date': '2026-04-09',
+          'dateRaw': '2026年04月09日',
+          'tags': [
+            '功能更新'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- Agent 会话支持独立窗口打开：支持将 Agent 会话以新窗口形式打开，便于在多会话并行场景下更高效地处理任务，进一步提升使用体验\n- Quest 模式支持已发送消息二次编辑：在 Quest 模式下，现已支持对已发送消息进行再次编辑，方便随时调整对话内容，提升交互灵活性\n- Qoder CN IDE 新增 AKSK 认证方式：支持通过 Access Key/Secret Key 登录\n- Spec/plan 预览面板新增文件检索功能，支持快速定位目标文件\n2026年03月31日'
+        },
+        {
+          'version': '0.8.0',
+          'title': '0.8.0',
+          'date': '2026-03-31',
+          'dateRaw': '2026年03月31日',
+          'tags': [
+            '功能更新',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- Skill UI 动态界面生成能力上线：Agent 执行 Skill 时可在对话中实时渲染交互式 HTML 组件，支持表单、图表、配置面板等富交互场景（首次使用时需要让 Agent 为对应 Skill 创建界面）\n体验优化\n- Quest 模式产物区导航升级：优化产物区导航栏及文件树层级及交互体验\n- 优化 Quest 模式在未打开项目时的体验，更易于查找历史任务\n- Repowiki 优化错误码提示\n2026年03月25日'
+        },
+        {
+          'version': '0.7.1',
+          'title': '0.7.1',
+          'date': '2026-03-25',
+          'dateRaw': '2026年03月25日',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '修复\n- 修复问题上报的相关缺陷\n2026年03月25日'
+        },
+        {
+          'version': '0.7.0',
+          'title': '0.7.0',
+          'date': '2026-03-25',
+          'dateRaw': '2026年03月25日',
+          'tags': [
+            '功能更新',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- Quest 模式产物区内文件支持通过 Add to chat 精细修改，选中部分内容，添加到对话；对代码文件和 Spec 文件都生效\n体验优化\n- Quest 模式优化任务列表排序，按最近对话倒序排列\n- Qoder CN 专属企业版优化 IDE 插件市场网络连通性\n2026年03月19日'
+        },
+        {
+          'version': '0.6.1',
+          'title': '0.6.1',
+          'date': '2026-03-19',
+          'dateRaw': '2026年03月19日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 在模型选择器中，增加 BYOK 配置三方模型入口\n2026年03月18日'
+        },
+        {
+          'version': '0.6.0',
+          'title': '0.6.0',
+          'date': '2026-03-18',
+          'dateRaw': '2026年03月18日',
+          'tags': [
+            '功能更新',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 支持自定义模型：Qoder CN 个人专业版支持通过 API 密钥接入阿里云百炼、智谱、Kimi、MiniMax 供应商的 Coding Plan，以使用第三方模型\n- Agent 模式支持 Workspace 跨不同工程检索和文件编辑\n- VS Code 内核升级至 1.106.3\n- Repo wiki 升级：\n- 核心体验升级：生成进度可视化、操作引导优化区分生成和更新、双向同步增加导入导出说明、增加自动导出能力\n- 溯源更高效：关联 Git 的项目生成后自动展示 Commit ID、参考来源标注增加行号\n- 新用户活动透出：展示剩余免费生成次数（说明：目前 Repo Wiki 面向企业版开放 Beta 体验）\n体验优化\n- 输入框允许添加最多 20 个图片及 20 个文件\n- Quest 模式文件树支持右键操作：添加到上下文、复制相对路径、在文件夹中打开\n- 智能体模式下空工程对话交互优化\n2026年03月10日'
+        },
+        {
+          'version': '0.5.0',
+          'title': '0.5.0',
+          'date': '2026-03-10',
+          'dateRaw': '2026年03月10日',
+          'tags': [
+            '功能更新',
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 技能、自定义智能体支持可视化管理：提供面向技能、自定义智能体与指令的可视化管理界面，支持自动创建、导入等管理操作\n体验优化\n- 自定义智能体配置项扩展，支持为其配置技能\n- 优化 Quest 模式产物区打开代码文件的体验\n2026年03月05日'
+        },
+        {
+          'version': '0.4.0',
+          'title': '0.4.0',
+          'date': '2026-03-05',
+          'dateRaw': '2026年03月05日',
+          'tags': [
+            '功能更新',
+            '体验优化',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 内置 create-skill 和 create-agent 技能，以引导和简化用户创建技能和自定义 Agent。同时支持通过 / 快速唤起并使用 skills、subagents\n- Quest 模式增加文件树，提升当前项目中文件查阅能力，可便捷添加到上下文\n- Quest 模式支持通过对话唤起 Vercel Skill，可快速部署应用上线\n体验优化\n- 一键优化提示词：优化对提示词内包含 @上下文场景的处理\n- 支持 .agents/skills 目录：现已支持从 .agents/skills 读取技能，遵循行业统一标准\n- 自定义 Subagent 执行详情支持展开浮窗查看\n- NEXT 支持读取剪贴板历史\n- 增强 Quest 任务中 Agent 调用 Skills 能力\n- 优化 Quest 模式页面中新建任务、工具栏折叠的体验\n- 更新 Quest 模式首页案例内容\n- 登录稳定性优化：提升登录稳定性（如升级后遇到登录、权限等问题，请尝试退出并重新登录）\n修复\n- 修复偶现系统异常问题\n- 修复偶现编辑文件卡住问题\n- 修复上下文带图可能会导致 IDE 崩溃问题\n2026年02月26日'
+        },
+        {
+          'version': '0.3.1',
+          'title': '0.3.1',
+          'date': '2026-02-26',
+          'dateRaw': '2026年02月26日',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '体验优化\n- 优化智能问答（Ask）模式下未启用工具时的处理逻辑\n2026年02月05日'
+        },
+        {
+          'version': '0.3.0',
+          'title': '0.3.0',
+          'date': '2026-02-05',
+          'dateRaw': '2026年02月05日',
+          'tags': [
+            '功能更新'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\n上一页\nQoder CN JetBrains 插件更新日志\n下一页\nQoder CN\n立即体验 Qoder\nQoder 移动端\n集成 Qoder Agent\nAgent SDK Cloud Agents\nAI 员工\nQoderWake\n条款\n服务条款 隐私政策\n其他使用方式\nIDE JetBrains 插件 CLI\n立即获取\n企业版 价格 下载\n资源\n能力市场 活动 文档 博客 常见问题 更新日志\n联系我们\n联系我们 论坛 千问AI平台\n© 2026 通义云启（杭州）信息技术有限公司　浙ICP备2023034206号-81\nQoder CN home page\nzh\nQoder CN 系列\n网站\n论坛\n博客\n产品概述\n- 什么是 Qoder CN 系列\n- 账号与订阅\n- 客户案例\n快速入门\n- Qoder CN IDE 快速入门\n- 个人版快速入门\n- Qoder CN（全家桶）企业 VPC 版入门指南\n动态与公告\n- Qoder CN 系列更新日志\n- Qoder CN 更新日志\n- Qoder CN IDE 更新日志\n- Qoder CN JetBrains 插件更新日志\n- Qoder CN CLI 更新日志\n- Agent SDK 更新日志\n- Cloud Agents CN 更新日志\n- QoderWake CN 更新日志\n- QoderWork CN 更新日志\n- Qoder CN VS Code 插件更新日志\n- Visual Studio 端更新日志\n- 产品公告\n计费\n- 计费说明\n- Credits\n- 续费说明\n- 变配说明\n- 订单到期影响\n- 退费说明\n- 账单查询\n事件\n- Qwen 系列模型特惠折扣\n- 每日领取 100 Credits\n- Qwen3.8-Flash 限时免费使用\n- 9 月开通专业版 / 高级版，首月 Credits 翻倍，续费加赠 1,000\n- 全新 Qoder 正式上线：限时福利\n- Qoder 一周年 × Qwen3.8-Max 正式上线：多重好礼限时领\nself.__next_f.push([1,\'3:[\\\'$\\\',\\\'$L14\\\',null,{\\\'theme\\\':\\\'mint\\\',\\\'config\\\':{\\\'$schema\\\':\\\'https://mintlify.com/docs.json\\\',\\\'name\\\':\\\'Qoder CN\\\',\\\'description\\\':\\\'Qoder CN 官方文档站点 - Agentic 编码平台\\\',\\\'favicon\\\':\\\'/favicon.png\\\',\\\'logo\\\':{\\\'light\\\':\\\'/logo/qoder-cn-logo-light.png\\\',\\\'dark\\\':\\\'/logo/qoder-cn-logo-dark.png\\\',\\\'href\\\':\\\'https://qoder.cn/\\\'},\\\'redirects\\\':[{\\\'source\\\':\\\'/user-guide\\\',\\\'destination\\\':\\\'/user-guide/codebase-indexing\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/user-guide/index\\\',\\\'destination\\\':\\\'/user-guide/codebase-indexing\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide\\\',\\\'destination\\\':\\\'/en/user-guide/codebase-indexing\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide/index\\\',\\\'destination\\\':\\\'/en/user-guide/codebase-indexing\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/product-overview/enterprise-users\\\',\\\'destination\\\':\\\'/account/teams/get-started\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/product-overview/enterprise-users\\\',\\\'destination\\\':\\\'/en/account/teams/get-started\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/\\\',\\\'destination\\\':\\\'/product-overview/introduction-of-qodercn\\\',\\\'permanent\\\':false},{\\\'source\\\':\\\'/index\\\',\\\'destination\\\':\\\'/product-overview/introduction-of-qodercn\\\',\\\'permanent\\\':false},{\\\'source\\\':\\\'/en\\\',\\\'destination\\\':\\\'/en/product-overview/introduction-of-qodercn\\\',\\\'permanent\\\':false},{\\\'source\\\':\\\'/en/index\\\',\\\'destination\\\':\\\'/en/product-overview/introduction-of-qodercn\\\',\\\'permanent\\\':false},{\\\'source\\\':\\\'/user-guide/qodercn-quest-overview\\\',\\\'destination\\\':\\\'/user-guide/quest/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/user-guide/qodercn-quest-quickstart\\\',\\\'destination\\\':\\\'/user-guide/quest/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/user-guide/qodercn-quest-spec\\\',\\\'destination\\\':\\\'/user-guide/quest/spec-driven\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/user-guide/qodercn-quest-vibe\\\',\\\'destination\\\':\\\'/user-guide/quest/agent-mode\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/user-guide/qodercn-quest-voice\\\',\\\'destination\\\':\\\'/user-guide/quest/qoder-voice\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide/qodercn-quest-overview\\\',\\\'destination\\\':\\\'/en/user-guide/quest/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide/qodercn-quest-quickstart\\\',\\\'destination\\\':\\\'/en/user-guide/quest/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide/qodercn-quest-spec\\\',\\\'destination\\\':\\\'/en/user-guide/quest/spec-driven\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide/qodercn-quest-vibe\\\',\\\'destination\\\':\\\'/en/user-guide/quest/agent-mode\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/user-guide/qodercn-quest-voice\\\',\\\'destination\\\':\\\'/en/user-guide/quest/qoder-voice\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/zh/qoder-plugins\\\',\\\'destination\\\':\\\'/qoder-plugins\\\',\\\'permanent\\\':false},{\\\'source\\\':\\\'/cli/what-is-qoder-cli-cn\\\',\\\'destination\\\':\\\'/cli/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/what-is-qoder-cli-cn\\\',\\\'destination\\\':\\\'/en/cli/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/qoder-cli-cn-get-started-quickly\\\',\\\'destination\\\':\\\'/cli/quickstart\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/qoder-cli-cn-get-started-quickly\\\',\\\'destination\\\':\\\'/en/cli/quickstart\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/using-the-cli\\\',\\\'destination\\\':\\\'/cli/run-tasks\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/using-the-cli\\\',\\\'destination\\\':\\\'/en/cli/run-tasks\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/model\\\',\\\'destination\\\':\\\'/cli/models\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/model\\\',\\\'destination\\\':\\\'/en/cli/models\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/command\\\',\\\'destination\\\':\\\'/cli/commands\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/command\\\',\\\'destination\\\':\\\'/en/cli/commands\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/subagent\\\',\\\'destination\\\':\\\'/cli/built-ins\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/subagent\\\',\\\'destination\\\':\\\'/en/cli/built-ins\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/plugins\\\',\\\'destination\\\':\\\'/cli/plugins-reference\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/plugins\\\',\\\'destination\\\':\\\'/en/cli/plugins-reference\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/mcp-servers\\\',\\\'destination\\\':\\\'/cli/mcp-reference\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/mcp-servers\\\',\\\'destination\\\':\\\'/en/cli/mcp-reference\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/skills\\\',\\\'destination\\\':\\\'/cli/built-ins\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/skills\\\',\\\'destination\\\':\\\'/en/cli/built-ins\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cli/hook\\\',\\\'destination\\\':\\\'/cli/hooks-reference\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cli/hook\\\',\\\'destination\\\':\\\'/en/cli/hooks-reference\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/qoderwake/get-started-quickly\\\',\\\'destination\\\':\\\'/cloud-agents/quickstart\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/qoderwake/get-started-quickly\\\',\\\'destination\\\':\\\'/en/cloud-agents/quickstart\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-list-events\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/events/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-send-event\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/events/send\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-stream-events\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/events/stream\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/events-stream\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/events/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-add-resource\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/resources/add\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/list-session-resources-new\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/resources/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-get-resource\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/resources/get\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-update-resource\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/resources/update\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-delete-resource\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/resources/delete\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-github-repositories\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/resources/github-repositories\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-list-threads\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/threads/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-get-thread\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/threads/get\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-archive-thread\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/threads/archive\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-list-thread-events\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/threads/events/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/cloud-agents/sessions-stream-thread-events\\\',\\\'destination\\\':\\\'/cloud-agents/api/sessions/threads/events/stream\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-list-events\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/events/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-send-event\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/events/send\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-stream-events\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/events/stream\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/events-stream\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/events/overview\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-add-resource\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/resources/add\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/list-session-resources-new\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/resources/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-get-resource\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/resources/get\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-update-resource\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/resources/update\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-delete-resource\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/resources/delete\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-github-repositories\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/resources/github-repositories\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-list-threads\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/threads/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-get-thread\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/threads/get\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-archive-thread\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/threads/archive\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-list-thread-events\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/threads/events/list\\\',\\\'permanent\\\':true},{\\\'source\\\':\\\'/en/cloud-agents/sessions-stream-thread-events\\\',\\\'destination\\\':\\\'/en/cloud-agents/api/sessions/threads/events/stream\\\',\\\'permanent\\\':true}],\\\'appearance\\\':{\\\'colorScheme\\\':{\\\'primary\\\':\\\'#27BD51\\\',\\\'light\\\':\\\'#27BD51\\\',\\\'dark\\\':\\\'#27BD51\\\',\\\'default\\\':\\\'light\\\'},\\\'theme\\\':\\\'mint\\\',\\\'icons\\\':{\\\'library\\\':\\\'lucide\\\'},\\\'codeblocks\\\':\\\'system\\\'},\\\'navigation\\\':{\\\'languages\\\':[{\\\'language\\\':\\\'zh\\\',\\\'navbar\\\':{\\\'primary\\\':{\\\'type\\\':\\\'button\\\',\\\'label\\\':\\\'下载\\\',\\\'href\\\':\\\'https://qoder.cn/download\\\'}},\\\'anchors\\\':[{\\\'anchor\\\':\\\'网站\\\',\\\'icon\\\':\\\'globe\\\',\\\'href\\\':\\\'https://qoder.cn/\\\'},{\\\'anchor\\\':\\\'论坛\\\',\\\'icon\\\':\\\'messages-square\\\',\\\'href\\\':\\\'https://developer.aliyun.com/lingma?spm=5176.28644950.0.0.30d03ea8iCIwBP\\\'},{\\\'anchor\\\':\\\'博客\\\',\\\'icon\\\':\\\'newspaper\\\',\\\'href\\\':\\\'https://developer.aliyun.com/lingma/article\\\'}],\\\'tabs\\\':[{\\\'tab\\\':\\\'Qoder CN 系列\\\',\\\'groups\\\':[{\\\'group\\\':\\\'产品概述\\\',\\\'pages\\\':[\\\'product-overview/introduction-of-qodercn\\\',{\\\'group\\\':\\\'账号与订阅\\\',\\\'pages\\\':[\\\'product-overview/qoder-cn-ide-jetbrains\\\',\\\'product-overview/account-and-subscription\\\',{\\\'group\\\':\\\'Qoder CN （原灵码）账号与订阅\\\',\\\'pages\\\':[\\\'product-overview/qoder-cn-account-and-subscription\\\',\\\'product-overview/qoder-cn-qoder-cn\\\',\\\'product-overview/qoder-cn-enterprise-vpc\\\',\\\'product-overview/qoder-cn-original-spirit-code-enterprise-standard-edition-upgrade-guide\\\',\\\'product-overview/comparison-between-original-lingma-and-qoder-cn-for-enterprise\\\']},\\\'product-overview/account-subscription-faq\\\']},{\\\'group\\\':\\\'客户案例\\\',\\\'pages\\\':[\\\'product-overview/customer-case\\\',\\\'product-overview/60-percent-of-developers-use-qoder-cn-in-china-insurance\\\',\\\'product-overview/30-percent-of-code-is-generated-by-ai-in-icbu\\\',\\\'product-overview/hello-group-fully-connected-to-qoder-cn\\\',\\\'product-overview/ai-driven-r-d-mode-upgrade-in-landray\\\',\\\'product-overview/hundreds-of-developers-use-qoder-cn-33-percent-code-by-ai-finv\\\',\\\'product-overview/over-90-percent-of-developers-in-gaiaworks-use-qoder-cn\\\',\\\'product-overview/together-we-pioneer-ai-and-embrace-the-new-era\\\',\\\'product-overview/uncover-how-ai-developer-boosts-live-streaming-efficiency\\\',\\\'product-overview/fudian-bank-from-go-digital-to-all-in-ai\\\',\\\'product-overview/nio-qoder-cn-boosts-engineering-efficiency-with-70-code-generated-by-ai\\\',\\\'product-overview/yonyou-technology\\\',\\\'product-overview/icbc-joins-hands-with-ali-tong-yi-ling-code-to\\\',\\\'product-overview/support-15000-engineers-ping-an-group-s-self-developed-ai-coding-tool-introduced-tongyi-spirit-code-to-enhance-continuation-function\\\',\\\'product-overview/guangdong-wen-s-group-s-research-and-development-efficiency-increase-10-times-12-new-storage-code-ai-generation-58-adoption-rate\\\']}]},{\\\'group\\\':\\\'快速入门\\\',\\\'pages\\\':[\\\'getting-started/qodercn-ide-get-started\\\',\\\'getting-started/individual-edition-quick-start\\\',\\\'getting-started/qoder-cn-vpc\\\']},{\\\'group\\\':\\\'动态与公告\\\',\\\'pages\\\':[\\\'product-overview/qoder-cn-update-log\\\',\\\'product-overview/qoder-update-log\\\',\\\'product-overview/qoder-cn-ide-update-log\\\',\\\'product-overview/changelogs-jetbrains\\\',\\\'product-overview/qoder-cn-cli\\\',\\\'product-overview/qoder-agent-sdk-update-log\\\',\\\'product-overview/cloud-agents-cn-update-log\\\',\\\'product-overview/qoderwake-cn-update-log\\\',\\\'product-overview/qoderwork-cn-update-log\\\',\\\'product-overview/qoder-cn-vscode-update-log\\\',\\\'product-overview/visual-studio-side-update-log\\\',{\\\'group\\\':\\\'产品公告\\\',\\\'pages\\\':[\\\'product-overview/model-consumption-reference-update\\\',\\\'product-overview/quest-retirement-notice\\\',\\\'product-overview/qoder-cn-windows-7-windows-8-windows-8-1\\\']}]},{\\\'group\\\':\\\'计费\\\',\\\'pages\\\':[\\\'product-overview/billing-description\\\',\\\'product-overview/credits\\\',\\\'product-overview/renewal-description\\\',\\\'product-overview/change-description\\\',\\\'product-overview/order-expiration-impact\\\',\\\'product-overview/refund-description\\\',\\\'product-overview/bill-query\\\']},{\\\'group\\\':\\\'事件\\\',\\\'pages\\\':[\\\'product-overview/qwen-3-7-series-model-staggering-discount\\\',\\\'events/100credits\\\',\\\'events/flashoffer\\\',\\\'events/bogo\\\',\\\'events/newqoderlaunch\\\',\\\'events/qwen-max\\\',\\\'events/qwen-max-preview\\\',\\\'product-overview/qwen3-7-max-limited-time-offer\\\',\\\'product-overview/daily-check-in-100-credits-reward-program-terms\\\',\\\'product-overview/qoderwork-cn-new-user-credits-claim-and-referral-reward-program-terms-and-conditions\\\']}]},{\\\'tab\\\':\\\'Qoder CN\\\',\\\'groups\\\':[{\\\'group\\\':\\\'入门指南\\\',\\\'pages\\\':[\\\'qoder/overview\\\',{\\\'group\\\':\\\'安装指南\\\',\\\'pages\\\':[\\\'qoder/install-macos\\\',\\\'qoder/install-windows\\\']},\\\'qoder/quickstart\\\',\\\'qoder/vpc\\\']},{\\\'group\\\':\\\'功能说明\\\',\\\'pages\\\':[\\\'qoder/new-task\\\',{\\\'group\\\':\\\'模型选择\\\',\\\'pages\\\':[\\\'qoder/model-selector\\\',\\\'qoder/custom-models\\\']},\\\'qoder/task-management\\\',\\\'qoder/data-import\\\',{\\\'group\\\':\\\'对话与输入\\\',\\\'pages\\\':[\\\'qoder/voice-input\\\',\\\'qoder/approval-and-sandbox\\\',\\\'qoder/context-compaction\\\']},{\\\'group\\\':\\\'工具与操作\\\',\\\'pages\\\':[\\\'qoder/browser\\\',\\\'qoder/review-and-commit\\\',\\\'qoder/terminal-and-sandbox\\\',\\\'qoder/computer-use\\\',\\\'qoder/app-snapshots\\\']},{\\\'group\\\':\\\'安全与授权\\\',\\\'pages\\\':[\\\'qoder/security-and-authorization\\\']},{\\\'group\\\':\\\'环境与执行\\\',\\\'pages\\\':[\\\'qoder/execution-environments\\\',\\\'qoder/plan-driven\\\',\\\'qoder/goal-driven\\\']},\\\'qoder/automations\\\',\\\'qoder/sites\\\',\\\'qoder/presentations\\\',{\\\'group\\\':\\\'知识中心\\\',\\\'pages\\\':[\\\'qoder/repo-wiki\\\',\\\'qoder/knowledge-base\\\']},\\\'qoder/memory\\\',\\\'qoder/desktop-pet\\\',\\\'qoder/code-security\\\',\\\'qoder/better-harness\\\',\\\'qoder/china-mobile-edition\\\']},{\\\'group\\\':\\\'协作\\\',\\\'pages\\\':[\\\'qoder/projects\\\',\\\'qoder/discussions\\\']},{\\\'group\\\':\\\'扩展能力\\\',\\\'pages\\\':[\\\'qoder/skills\\\',\\\'qoder/plugins\\\',\\\'qoder/connectors\\\',\\\'qoder/hooks\\\',\\\'qoder/subagents\\\',\\\'qoder/custom-agents\\\',\\\'qoder/custom-agent-teams\\\',\\\'qoder/extension-publishing\\\']},{\\\'group\\\':\\\'配置\\\',\\\'pages\\\':[\\\'qoder/settings\\\',\\\'qoder/keyboard-shortcuts\\\',\\\'qoder/network-proxy\\\']},{\\\'group\\\':\\\'支持\\\',\\\'pages\\\':[\\\'qoder/faq\\\',\\\'qoder/troubleshooting\\\',\\\'qoder/feedback\\\']}]},{\\\'tab\\\':\\\'Qoder CN IDE\\\',\\\'groups\\\':[{\\\'group\\\':\\\'产品概述\\\',\\\'pages\\\':[\\\'user-guide/what-is-qoder-cn\\\']},{\\\'group\\\':\\\'快速入门\\\',\\\'pages\\\':[\\\'user-guide/installation-and-login-guide\\\',\\\'user-guide/compatible-ide-and-system\\\',\\\'user-guide/installation-guide\\\']},{\\\'group\\\':\\\'用户指南\\\',\\\'pages\\\':[{\\\'group\\\':\\\'模型\\\',\\\'pages\\\':[\\\'user-guide/model-selector\\\',\\\'user-guide/custom-model\\\']},{\\\'group\\\':\\\'Editor\\\',\\\'pages\\\':[\\\'user-guide/overview-of-chat\\\',\\\'user-guide/ask\\\',\\\'user-guide/agent\\\',\\\'user-guide/next-edit-suggestion\\\',\\\'user-guide/inline-chat\\\',\\\'user-guide/tools\\\',\\\'user-guide/ai-completion-guidlines\\\']},{\\\'group\\\':\\\'Quest\\\',\\\'pages\\\':[\\\'user-guide/quest/overview\\\',\\\'user-guide/quest/agent-mode\\\',\\\'user-guide/quest/experts-mode\\\',\\\'user-guide/quest/goal-driven\\\',\\\'user-guide/quest/spec-driven\\\',\\\'user-guide/quest/scheduled-tasks\\\',\\\'user-guide/quest/review-and-commit\\\',\\\'user-guide/quest/terminal-and-sandbox\\\',\\\'user-guide/quest/task-management\\\',\\\'user-guide/quest/execution-environments\\\',\\\'user-guide/quest/supabase\\\',\\\'user-guide/quest/qoder-voice\\\']},{\\\'group\\\':\\\'知识中心\\\',\\\'pages\\\':[\\\'user-guide/knowledge-engine/overview\\\',\\\'user-guide/repo-wiki\\\',\\\'user-guide/knowledge-engine/knowledge-cards\\\',\\\'user-guide/knowledge-engine/memory\\\']},{\\\'group\\\':\\\'代码安全\\\',\\\'pages\\\':[\\\'ide/security\\\',\\\'qoder-security-guide\\\',\\\'qoder-case-security\\\']},\\\'user-guide/knowledge-engine/better-harness\\\']},{\\\'group\\\':\\\'上下文\\\',\\\'pages\\\':[{\\\'group\\\':\\\'输入增强\\\',\\\'pages\\\':[\\\'user-guide/context\\\',\\\'user-guide/context/voice-input\\\',\\\'user-guide/context/optimize-prompt\\\']},\\\'user-guide/codebase-indexing\\\',\\\'user-guide/rules\\\']},{\\\'group\\\':\\\'扩展能力\\\',\\\'pages\\\':[{\\\'group\\\':\\\'内置智能体\\\',\\\'pages\\\':[\\\'user-guide/browser-agent\\\',\\\'user-guide/qodercn-planning-agent\\\',\\\'user-guide/code-review-agent\\\',\\\'user-guide/computer-use-agent\\\']},\\\'user-guide/custom-agent\\\',\\\'user-guide/skills\\\',\\\'qoder-plugins\\\',\\\'user-guide/guide-for-using-mcp\\\',\\\'user-guide/hooks\\\',\\\'user-guide/deeplinks\\\',\\\'user-guide/canvas\\\',\\\'user-guide/custom-commands\\\']},{\\\'group\\\':\\\'配置\\\',\\\'pages\\\':[\\\'user-guide/plug-in-configuration-guide\\\',\\\'user-guide/network-proxy-configuration\\\']},{\\\'group\\\':\\\'服务支持\\\',\\\'pages\\\':[\\\'support/faq\\\',\\\'support/troubleshooting-guide\\\',\\\'support/description-of-terminal-execution-exception\\\',\\\'support/faq-mcp\\\',\\\'support/service-agreement-and-privacy-policy\\\']}]},{\\\'tab\\\':\\\'Qoder CN CLI\\\',\\\'groups\\\':[{\\\'group\\\':\\\'开始使用\\\',\\\'pages\\\':[\\\'cli/overview\\\',\\\'cli/installation\\\',\\\'cli/authentication\\\',\\\'cli/quickstart\\\']},{\\\'group\\\':\\\'核心概念\\\',\\\'pages\\\':[\\\'cli/how-it-works\\\',\\\'cli/working-modes\\\',\\\'cli/config-scope\\\',\\\'cli/how-memory-works\\\',\\\'cli/models\\\']},{\\\'group\\\':\\\'使用 Qoder CLI\\\',\\\'pages\\\':[{\\\'group\\\':\\\'开始一个任务\\\',\\\'pages\\\':[\\\'cli/run-tasks\\\',\\\'cli/common-tasks\\\',\\\'cli/plan-mode\\\',\\\'cli/repo-wiki\\\']},{\\\'group\\\':\\\'任务自动化\\\',\\\'pages\\\':[\\\'cli/goal\\\',\\\'cli/scheduled-tasks\\\',\\\'cli/loop\\\',\\\'cli/run-in-scripts\\\']},{\\\'group\\\':\\\'并行协作\\\',\\\'pages\\\':[\\\'cli/parallel-tasks\\\',\\\'cli/agent-teams\\\',\\\'cli/cross-session-messaging\\\',\\\'cli/workflows\\\']},{\\\'group\\\':\\\'管理会话和改动\\\',\\\'pages\\\':[\\\'cli/sessions\\\',\\\'cli/review-changes\\\',\\\'cli/undo-restore\\\']},{\\\'group\\\':\\\'优化使用体验\\\',\\\'pages\\\':[\\\'cli/best-practices\\\',\\\'cli/usage\\\',\\\'cli/insights\\\']}]},{\\\'group\\\':\\\'扩展 Qoder CLI\\\',\\\'pages\\\':[\\\'cli/built-ins\\\',\\\'cli/tools\\\',\\\'cli/memory\\\',\\\'cli/commands\\\',\\\'cli/knowledge-base\\\']},{\\\'group\\\':\\\'集成与远程\\\',\\\'pages\\\':[\\\'cli/acp\\\',\\\'cli/qoder-action\\\',\\\'cli/cloud-mode\\\',\\\'cli/remote-control\\\']},{\\\'group\\\':\\\'配置与安全\\\',\\\'pages\\\':[\\\'cli/settings\\\',\\\'cli/permissions\\\',\\\'cli/network\\\',\\\'cli/vpc\\\',\\\'cli/custom-models\\\',\\\'cli/interface\\\',\\\'cli/output-styles\\\',\\\'cli/security\\\']},{\\\'group\\\':\\\'参考\\\',\\\'pages\\\':[\\\'cli/cli-reference\\\',\\\'cli/slash-reference\\\',\\\'cli/settings-reference\\\',\\\'cli/mcp-reference\\\',\\\'cli/plugins-reference\\\',\\\'cli/hooks-reference\\\',\\\'cli/builtins-reference\\\',\\\'cli/goal-reference\\\',\\\'cli/loop-reference\\\',\\\'cli/scheduled-reference\\\',\\\'cli/glossary\\\']},{\\\'group\\\':\\\'故障排查\\\',\\\'pages\\\':[\\\'cli/troubleshoot-install\\\',\\\'cli/troubleshoot-auth\\\',\\\'cli/troubleshoot-network\\\',\\\'cli/troubleshoot-performance\\\',\\\'cli/troubleshoot-loading\\\',\\\'cli/troubleshoot-config\\\',\\\'cli/troubleshoot-extensions\\\',\\\'cli/troubleshoot-faq\\\']}]},{\\\'tab\\\':\\\'Agent SDK\\\',\\\'groups\\\':[{\\\'group\\\':\\\'快速开始\\\',\\\'pages\\\':[\\\'cli/sdk/overview\\\',\\\'cli/sdk/quick-start\\\',\\\'cli/sdk/integration-scenarios\\\']},{\\\'group\\\':\\\'核心概念\\\',\\\'pages\\\':[\\\'cli/sdk/how-it-works\\\',\\\'cli/sdk/authentication\\\']},{\\\'group\\\':\\\'对话与会话\\\',\\\'pages\\\':[\\\'cli/sdk/multi-turn-conversation\\\',\\\'cli/sdk/streaming-output\\\',\\\'cli/sdk/session-control\\\',\\\'cli/sdk/session-storage\\\',\\\'cli/sdk/checkpoint\\\',\\\'cli/sdk/memory\\\']},{\\\'group\\\':\\\'工具与扩展\\\',\\\'pages\\\':[\\\'cli/sdk/system-prompt\\\',\\\'cli/sdk/tools\\\',\\\'cli/sdk/mcp\\\',\\\'cli/sdk/agents\\\',\\\'cli/sdk/skills\\\',\\\'cli/sdk/plugins\\\']},{\\\'group\\\':\\\'控制与安全\\\',\\\'pages\\\':[\\\'cli/sdk/permissions\\\',\\\'cli/sdk/security-scan\\\',\\\'cli/sdk/hooks\\\',\\\'cli/sdk/model-policy\\\',\\\'cli/sdk/cost-usage\\\']},{\\\'group\\\':\\\'参考\\\',\\\'pages\\\':[\\\'cli/sdk/troubleshooting\\\',\\\'cli/sdk/errors\\\',\\\'cli/sdk/references\\\',\\\'cli/sdk/references-typescript\\\',\\\'cli/sdk/references-python\\\']}]},{\\\'tab\\\':\\\'Cloud Agents CN\\\',\\\'groups\\\':[{\\\'group\\\':\\\'快速入门\\\',\\\'pages\\\':[\\\'cloud-agents/overview\\\',\\\'cloud-agents/api/overview\\\',\\\'cloud-agents/quickstart\\\']},{\\\'group\\\':\\\'构建 Agent\\\',\\\'pages\\\':[\\\'cloud-agents/define-agent\\\',\\\'cloud-agents/agent-tools\\\',\\\'cloud-agents/agent-skills\\\',\\\'cloud-agents/permission-policies\\\']},{\\\'group\\\':\\\'配置 Agent 环境\\\',\\\'pages\\\':[\\\'cloud-agents/environments\\\',\\\'cloud-agents/container-reference\\\',\\\'cloud-agents/ip-addresses\\\']},{\\\'group\\\':\\\'委派任务给 Agent\\\',\\\'pages\\\':[\\\'cloud-agents/sessions\\\',\\\'cloud-agents/vaults\\\',\\\'cloud-agents/multi-agents\\\']},{\\\'group\\\':\\\'集成 Agent\\\',\\\'pages\\\':[\\\'cloud-agents/natural-language-schedule-management\\\',\\\'cloud-agents/message-channel-integration\\\',\\\'cloud-agents/webhooks\\\']},{\\\'group\\\':\\\'管理 Agent 上下文\\\',\\\'pages\\\':[\\\'cloud-agents/files\\\',\\\'cloud-agents/memory-stores\\\',\\\'cloud-agents/dreams\\\']},{\\\'group\\\':\\\'账户\\\',\\\'pages\\\':[\\\'cloud-agents/billing\\\',\\\'cloud-agents/personal-and-enterprise-spaces\\\']},{\\\'group\\\':\\\'最佳实践\\\',\\\'pages\\\':[\\\'cloud-agents/best-practices/cloud-use\\\']},{\\\'group\\\':\\\'公告\\\',\\\'pages\\\':[\\\'cloud-agents/sse-initial-connection-behavior-change\\\']},{\\\'group\\\':\\\'API 参考\\\',\\\'pages\\\':[{\\\'group\\\':\\\'通用约定\\\',\\\'pages\\\':[\\\'cloud-agents/api-overview\\\',\\\'cloud-agents/api-authentication\\\',\\\'cloud-agents/api-pagination\\\',\\\'cloud-agents/generic-data-structure\\\',\\\'cloud-agents/api-errors\\\']},{\\\'group\\\':\\\'Forward Mode\\\',\\\'pages\\\':[\\\'cloud-agents/forward-mode-overview\\\',{\\\'group\\\':\\\'Templates\\\',\\\'pages\\\':[\\\'cloud-agents/create-template\\\',\\\'cloud-agents/list-templates\\\',\\\'cloud-agents/obtain-template-details\\\',\\\'cloud-agents/update-template-merge-patch\\\',\\\'cloud-agents/archive-template\\\',\\\'cloud-agents/clone-template\\\']},{\\\'group\\\':\\\'Identities\\\',\\\'pages\\\':[\\\'cloud-agents/create-identity\\\',\\\'cloud-agents/list-identity\\\',\\\'cloud-agents/get-identity\\\',\\\'cloud-agents/update-identity\\\',\\\'cloud-agents/delete-identity-soft-delete\\\',\\\'cloud-agents/clear-identity\\\',\\\'cloud-agents/disable-identity\\\',\\\'cloud-agents/enable-identity\\\',\\\'cloud-agents/ensure-admin-identity\\\',\\\'cloud-agents/get-identity-stats\\\',\\\'cloud-agents/list-identity-templates\\\',\\\'cloud-agents/query-all-template-configurations-under-this-identity\\\',\\\'cloud-agents/create-update-identity-config\\\',\\\'cloud-agents/get-identity-config\\\',\\\'cloud-agents/query-effective-config-composite-results\\\']},{\\\'group\\\':\\\'Service Account Tokens\\\',\\\'pages\\\':[\\\'cloud-agents/api/service-account-tokens/create\\\',\\\'cloud-agents/api/service-account-tokens/create-identity\\\',\\\'cloud-agents/api/service-account-tokens/revoke\\\']},{\\\'group\\\':\\\'Sessions\\\',\\\'pages\\\':[\\\'cloud-agents/session-and-event-data-structure\\\',\\\'cloud-agents/create-session\\\',\\\'cloud-agents/get-session-details\\\',\\\'cloud-agents/list-session\\\',\\\'cloud-agents/update-session\\\',\\\'cloud-agents/add-session-resource\\\',\\\'cloud-agents/archive-session\\\',\\\'cloud-agents/cancel-the-current-turn\\\',{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'cloud-agents/send-a-session-event\\\',\\\'cloud-agents/query-event-history\\\',\\\'cloud-agents/subscribe-to-event-sse\\\']},{\\\'group\\\':\\\'Threads\\\',\\\'pages\\\':[\\\'cloud-agents/list-session-threads\\\',\\\'cloud-agents/get-session-thread\\\',\\\'cloud-agents/archive-session-thread\\\',\\\'cloud-agents/list-session-thread-events\\\',\\\'cloud-agents/stream-session-thread-events\\\']}]},{\\\'group\\\':\\\'Batches\\\',\\\'pages\\\':[\\\'cloud-agents/batches-create\\\',\\\'cloud-agents/batches-list\\\',\\\'cloud-agents/batches-get\\\',\\\'cloud-agents/batches-list-tasks\\\',\\\'cloud-agents/batches-cancel\\\',\\\'cloud-agents/batches-get-output\\\',\\\'cloud-agents/batches-get-error\\\']},{\\\'group\\\':\\\'Schedules\\\',\\\'pages\\\':[\\\'cloud-agents/schedule-schemas\\\',\\\'cloud-agents/create-schedule\\\',\\\'cloud-agents/list-schedule\\\',\\\'cloud-agents/get-schedule\\\',\\\'cloud-agents/update-schedule\\\',\\\'cloud-agents/archive-schedule\\\',\\\'cloud-agents/archive-schedules\\\',\\\'cloud-agents/pause-1\\\',\\\'cloud-agents/restore-1\\\',\\\'cloud-agents/execute-immediately\\\',\\\'cloud-agents/list-all-run-histories\\\',\\\'cloud-agents/get-a-single-run\\\']},{\\\'group\\\':\\\'Webhooks\\\',\\\'pages\\\':[\\\'cloud-agents/api/webhooks/overview\\\',\\\'cloud-agents/api/webhooks/create\\\',\\\'cloud-agents/api/webhooks/list\\\',\\\'cloud-agents/api/webhooks/get\\\',\\\'cloud-agents/api/webhooks/update\\\',\\\'cloud-agents/api/webhooks/delete\\\',\\\'cloud-agents/api/webhooks/enable\\\',\\\'cloud-agents/api/webhooks/disable\\\',\\\'cloud-agents/api/webhooks/test\\\',\\\'cloud-agents/api/webhooks/receive\\\']},{\\\'group\\\':\\\'Channels\\\',\\\'pages\\\':[\\\'cloud-agents/create-a-channel\\\',\\\'cloud-agents/list-channels\\\',\\\'cloud-agents/get-channel\\\',\\\'cloud-agents/update-channel\\\',\\\'cloud-agents/delete-channel\\\',\\\'cloud-agents/create-scan-authorization-session\\\',\\\'cloud-agents/query-scan-session-status\\\',\\\'cloud-agents/list-channel-pairings\\\',\\\'cloud-agents/get-channel-pairing\\\',\\\'cloud-agents/update-channel-pairing\\\',\\\'cloud-agents/pair-channel\\\',\\\'cloud-agents/unpair-channel\\\']},{\\\'group\\\':\\\'Environments\\\',\\\'pages\\\':[\\\'cloud-agents/forward-environments-list\\\',\\\'cloud-agents/forward-environments-search\\\',\\\'cloud-agents/forward-environments-create\\\',\\\'cloud-agents/forward-environments-get\\\',\\\'cloud-agents/forward-environments-update\\\',\\\'cloud-agents/forward-environments-delete\\\',\\\'cloud-agents/forward-environments-schemas\\\']},{\\\'group\\\':\\\'Skills\\\',\\\'pages\\\':[\\\'cloud-agents/forward-skills-list\\\',\\\'cloud-agents/forward-skills-search\\\',\\\'cloud-agents/forward-skills-create\\\',\\\'cloud-agents/forward-skills-get\\\',\\\'cloud-agents/forward-skills-update\\\',\\\'cloud-agents/forward-skills-delete\\\',\\\'cloud-agents/forward-skills-schemas\\\',{\\\'group\\\':\\\'Versions\\\',\\\'pages\\\':[\\\'cloud-agents/forward-skills-versions-create\\\',\\\'cloud-agents/forward-skills-versions-list\\\',\\\'cloud-agents/forward-skills-versions-download\\\',\\\'cloud-agents/forward-skills-versions-get\\\',\\\'cloud-agents/forward-skills-versions-delete\\\']}]},{\\\'group\\\':\\\'Vaults\\\',\\\'pages\\\':[\\\'cloud-agents/forward-vaults-list\\\',\\\'cloud-agents/forward-vaults-search\\\',\\\'cloud-agents/forward-vaults-create\\\',\\\'cloud-agents/forward-vaults-get\\\',\\\'cloud-agents/forward-vaults-delete\\\',\\\'cloud-agents/forward-vaults-schemas\\\',{\\\'group\\\':\\\'Credentials\\\',\\\'pages\\\':[\\\'cloud-agents/forward-credentials-list\\\',\\\'cloud-agents/forward-credentials-create\\\',\\\'cloud-agents/forward-credentials-get\\\',\\\'cloud-agents/forward-credentials-update\\\',\\\'cloud-agents/forward-credentials-delete\\\',\\\'cloud-agents/forward-credentials-schemas\\\']}]},{\\\'group\\\':\\\'Files\\\',\\\'pages\\\':[\\\'cloud-agents/forward-files-list\\\',\\\'cloud-agents/forward-files-search\\\',\\\'cloud-agents/forward-files-upload\\\',\\\'cloud-agents/forward-files-get\\\',\\\'cloud-agents/forward-files-download\\\',\\\'cloud-agents/forward-files-delete\\\',\\\'cloud-agents/forward-files-schemas\\\']},{\\\'group\\\':\\\'Drives\\\',\\\'pages\\\':[\\\'cloud-agents/forward-drives-overview\\\',\\\'cloud-agents/forward-drives-list-entries\\\',\\\'cloud-agents/forward-drives-upload-url\\\',\\\'cloud-agents/forward-drives-download-url\\\',\\\'cloud-agents/forward-drives-delete-entry\\\',\\\'cloud-agents/forward-drives-clear\\\']},{\\\'group\\\':\\\'Memory Stores\\\',\\\'pages\\\':[\\\'cloud-agents/forward-memory-stores-schemas\\\',\\\'cloud-agents/forward-memory-stores-list\\\',\\\'cloud-agents/forward-memory-stores-create\\\',\\\'cloud-agents/forward-memory-stores-get\\\',\\\'cloud-agents/forward-memory-stores-update\\\',\\\'cloud-agents/forward-memory-stores-archive\\\',\\\'cloud-agents/forward-memory-stores-delete\\\',\\\'cloud-agents/forward-memory-stores-list-mounts\\\',\\\'cloud-agents/forward-memory-stores-mount\\\',\\\'cloud-agents/forward-memory-stores-detach\\\',{\\\'group\\\':\\\'Memories\\\',\\\'pages\\\':[\\\'cloud-agents/forward-memory-stores-list-memories\\\',\\\'cloud-agents/forward-memory-stores-create-memory\\\',\\\'cloud-agents/forward-memory-stores-get-memory\\\',\\\'cloud-agents/forward-memory-stores-update-memory\\\',\\\'cloud-agents/forward-memory-stores-delete-memory\\\']},{\\\'group\\\':\\\'Memory Versions\\\',\\\'pages\\\':[\\\'cloud-agents/forward-memory-stores-list-versions\\\',\\\'cloud-agents/forward-memory-stores-get-version\\\',\\\'cloud-agents/forward-memory-stores-redact-version\\\']}]},{\\\'group\\\':\\\'Dreams\\\',\\\'pages\\\':[\\\'cloud-agents/forward-dreams-schemas\\\',\\\'cloud-agents/forward-dreams-create\\\',\\\'cloud-agents/forward-dreams-list\\\',\\\'cloud-agents/forward-dreams-get\\\',\\\'cloud-agents/forward-dreams-cancel\\\',\\\'cloud-agents/forward-dreams-archive\\\']},{\\\'group\\\':\\\'Models\\\',\\\'pages\\\':[\\\'cloud-agents/forward-models-list\\\']},{\\\'group\\\':\\\'Realtime\\\',\\\'pages\\\':[\\\'cloud-agents/forward-realtime-create-conversation\\\',\\\'cloud-agents/forward-realtime-connect\\\']},{\\\'group\\\':\\\'Usage\\\',\\\'pages\\\':[\\\'cloud-agents/list-identity-usage\\\',\\\'cloud-agents/list-template-usage\\\']}]},{\\\'group\\\':\\\'Managed Mode\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Agents\\\',\\\'pages\\\':[\\\'cloud-agents/agents-list\\\',\\\'cloud-agents/agents-search\\\',\\\'cloud-agents/agents-create\\\',\\\'cloud-agents/agents-get\\\',\\\'cloud-agents/agents-update\\\',\\\'cloud-agents/agents-archive\\\',\\\'cloud-agents/agents-list-versions\\\',\\\'cloud-agents/agents-schemas\\\']},{\\\'group\\\':\\\'Sessions\\\',\\\'pages\\\':[\\\'cloud-agents/sessions-create\\\',\\\'cloud-agents/sessions-list\\\',\\\'cloud-agents/sessions-get\\\',\\\'cloud-agents/sessions-update\\\',\\\'cloud-agents/sessions-delete\\\',\\\'cloud-agents/sessions-archive\\\',\\\'cloud-agents/sessions-search\\\',\\\'cloud-agents/sessions-cancel\\\',\\\'cloud-agents/session-schemas\\\',{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'cloud-agents/api/sessions/events/list\\\',\\\'cloud-agents/api/sessions/events/send\\\',\\\'cloud-agents/api/sessions/events/stream\\\',\\\'cloud-agents/api/sessions/events/overview\\\']},{\\\'group\\\':\\\'Resources\\\',\\\'pages\\\':[\\\'cloud-agents/api/sessions/resources/add\\\',\\\'cloud-agents/api/sessions/resources/list\\\',\\\'cloud-agents/api/sessions/resources/get\\\',\\\'cloud-agents/api/sessions/resources/update\\\',\\\'cloud-agents/api/sessions/resources/delete\\\',\\\'cloud-agents/api/sessions/resources/github-repositories\\\']},{\\\'group\\\':\\\'Threads\\\',\\\'pages\\\':[\\\'cloud-agents/api/sessions/threads/list\\\',\\\'cloud-agents/api/sessions/threads/get\\\',\\\'cloud-agents/api/sessions/threads/archive\\\',{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'cloud-agents/api/sessions/threads/events/list\\\',\\\'cloud-agents/api/sessions/threads/events/stream\\\']}]}]},{\\\'group\\\':\\\'Deployments\\\',\\\'pages\\\':[\\\'cloud-agents/list-deployment\\\',\\\'cloud-agents/deployments-search\\\',\\\'cloud-agents/create-deployment-cron-manual\\\',\\\'cloud-agents/get-deployment\\\',\\\'cloud-agents/update-deployment\\\',\\\'cloud-agents/archive-stop-all-dispatches\\\',\\\'cloud-agents/api/deployments/pause\\\',\\\'cloud-agents/restore\\\',\\\'cloud-agents/trigger-once-manually\\\',\\\'cloud-agents/list-the-runs-for-this-deployment\\\',\\\'cloud-agents/get-single-run\\\',\\\'cloud-agents/list-all-runs-globally\\\',\\\'cloud-agents/global-acquisition-single-run\\\']},{\\\'group\\\':\\\'Dreams\\\',\\\'pages\\\':[\\\'cloud-agents/list-the-dream\\\',\\\'cloud-agents/create-a-dream\\\',\\\'cloud-agents/get-dream-status\\\',\\\'cloud-agents/cancel-pending-running\\\',\\\'cloud-agents/archiving-completed\\\',\\\'cloud-agents/dreams-schemas\\\']},{\\\'group\\\':\\\'Environments\\\',\\\'pages\\\':[\\\'cloud-agents/environments-list\\\',\\\'cloud-agents/environments-search\\\',\\\'cloud-agents/environments-create\\\',\\\'cloud-agents/environments-get\\\',\\\'cloud-agents/environments-update\\\',\\\'cloud-agents/environments-archive\\\',\\\'cloud-agents/environments-delete\\\',\\\'cloud-agents/environments-schemas\\\',{\\\'group\\\':\\\'Work\\\',\\\'pages\\\':[\\\'cloud-agents/pull-work-item-poll-new\\\',\\\'cloud-agents/environments-work-ack\\\',\\\'cloud-agents/environments-work-heartbeat\\\',\\\'cloud-agents/environments-work-update-metadata\\\',\\\'cloud-agents/environments-work-stop\\\',\\\'cloud-agents/environments-work-get\\\',\\\'cloud-agents/environments-work-list\\\',\\\'cloud-agents/environments-work-stats\\\',\\\'cloud-agents/environments-work-schemas\\\']}]},{\\\'group\\\':\\\'Skills\\\',\\\'pages\\\':[\\\'cloud-agents/skills-create\\\',\\\'cloud-agents/skills-list\\\',\\\'cloud-agents/skills-search\\\',\\\'cloud-agents/skills-get\\\',\\\'cloud-agents/skills-update\\\',\\\'cloud-agents/skills-delete\\\',{\\\'group\\\':\\\'Versions\\\',\\\'pages\\\':[\\\'cloud-agents/skills-create-version\\\',\\\'cloud-agents/skills-list-versions\\\',\\\'cloud-agents/skills-get-version-content\\\',\\\'cloud-agents/skills-get-version\\\',\\\'cloud-agents/skills-delete-version\\\']},\\\'cloud-agents/skills-schemas\\\']},{\\\'group\\\':\\\'Vaults\\\',\\\'pages\\\':[\\\'cloud-agents/vaults-list\\\',\\\'cloud-agents/vaults-search\\\',\\\'cloud-agents/vaults-create\\\',\\\'cloud-agents/vaults-get\\\',\\\'cloud-agents/vaults-archive\\\',\\\'cloud-agents/vaults-delete\\\',\\\'cloud-agents/vaults-archive-credential\\\',\\\'cloud-agents/vaults-get-credential\\\',\\\'cloud-agents/vaults-delete-credential\\\',\\\'cloud-agents/vaults-list-credentials\\\',\\\'cloud-agents/vaults-create-credential\\\',\\\'cloud-agents/vaults-update-credential\\\',\\\'cloud-agents/vaults-validate-credential\\\',\\\'cloud-agents/vaults-start-oauth\\\',\\\'cloud-agents/vaults-schemas\\\']},{\\\'group\\\':\\\'Files\\\',\\\'pages\\\':[\\\'cloud-agents/files-list\\\',\\\'cloud-agents/files-search\\\',\\\'cloud-agents/files-upload\\\',\\\'cloud-agents/files-get\\\',\\\'cloud-agents/files-download\\\',\\\'cloud-agents/files-delete\\\',\\\'cloud-agents/files-schemas\\\']},{\\\'group\\\':\\\'Memory Stores\\\',\\\'pages\\\':[\\\'cloud-agents/memory-stores-list\\\',\\\'cloud-agents/memory-stores-search\\\',\\\'cloud-agents/memory-stores-create\\\',\\\'cloud-agents/memory-stores-get\\\',\\\'cloud-agents/memory-stores-update\\\',\\\'cloud-agents/memory-stores-archive\\\',\\\'cloud-agents/memory-stores-delete\\\',\\\'cloud-agents/memory-stores-list-entries\\\',\\\'cloud-agents/memory-stores-create-entry\\\',\\\'cloud-agents/memory-stores-get-entry\\\',\\\'cloud-agents/memory-stores-update-entry\\\',\\\'cloud-agents/memory-stores-delete-entry\\\',\\\'cloud-agents/memory-stores-list-versions\\\',\\\'cloud-agents/memory-stores-get-version\\\',\\\'cloud-agents/memory-stores-redact-version\\\',\\\'cloud-agents/memory-stores-schemas\\\']},{\\\'group\\\':\\\'Models\\\',\\\'pages\\\':[\\\'cloud-agents/list-models-new\\\',\\\'cloud-agents/models-schemas\\\']}]}]}]},{\\\'tab\\\':\\\'移动端\\u0026网页版\\\',\\\'groups\\\':[{\\\'group\\\':\\\'移动端\\\',\\\'pages\\\':[\\\'mobile/app/remote-control\\\',\\\'mobile/app/cloud-tasks\\\',\\\'mobile/app/download\\\']},{\\\'group\\\':\\\'网页版\\\',\\\'pages\\\':[\\\'mobile/web/remote-control\\\',\\\'mobile/web/cloud-tasks\\\']},{\\\'group\\\':\\\'眼镜版\\\',\\\'pages\\\':[\\\'mobile/glasses/qwen-ai-glasses\\\',\\\'mobile/glasses/rokid-ai-glasses\\\']}]},{\\\'tab\\\':\\\'QoderWake CN\\\',\\\'groups\\\':[{\\\'group\\\':\\\'快速上手\\\',\\\'pages\\\':[\\\'qoderwake/overview\\\',\\\'qoderwake/installation\\\']},{\\\'group\\\':\\\'工作管理\\\',\\\'pages\\\':[\\\'qoderwake/conversation-tasks\\\',\\\'qoderwake/task-board\\\',\\\'qoderwake/im-configuration\\\',\\\'qoderwake/automated-tasks\\\']},{\\\'group\\\':\\\'员工资源\\\',\\\'pages\\\':[\\\'qoderwake/manage-wakers\\\',\\\'qoderwake/personal-avatar\\\',\\\'qoderwake/skills-and-integrations\\\',\\\'qoderwake/knowledge-base\\\',\\\'qoderwake/wakerflow\\\',\\\'qoderwake/projects\\\',\\\'qoderwake/memory\\\']},{\\\'group\\\':\\\'最佳实践\\\',\\\'pages\\\':[\\\'qoderwake/data-analyst-story-01\\\',\\\'qoderwake/business-collaboration-story-02\\\',\\\'qoderwake/development-relay-story-03\\\',\\\'qoderwake/github-devops\\\']},{\\\'group\\\':\\\'操作配置\\\',\\\'pages\\\':[\\\'qoderwake/ecs-deployment\\\',\\\'qoderwake/customer-service-best-practices\\\',\\\'qoderwake/at-waker-im-best-practices\\\',\\\'qoderwake/at-waker-experts-best-practices\\\',\\\'qoderwake/best-practices\\\',\\\'qoderwake/settings\\\']},{\\\'group\\\':\\\'云电脑\\\',\\\'pages\\\':[\\\'qoderwake/cloud-computer\\\']},{\\\'group\\\':\\\'命令行工具\\\',\\\'pages\\\':[\\\'qoderwake/cli-reference\\\']},{\\\'group\\\':\\\'支持\\\',\\\'pages\\\':[\\\'qoderwake/troubleshooting\\\']}]},{\\\'tab\\\':\\\'企业版\\\',\\\'groups\\\':[{\\\'group\\\':\\\'快速入门\\\',\\\'pages\\\':[\\\'account/teams/get-started\\\']},{\\\'group\\\':\\\'组织管理\\\',\\\'pages\\\':[\\\'account/teams/members-and-roles\\\',\\\'account/enterprise/user-group-and-billing-group\\\',\\\'product-overview/domain-verification\\\',\\\'product-overview/single-point-verification\\\',\\\'account/enterprise/dingtalk-identity-source\\\',\\\'product-overview/email-invitation\\\',\\\'product-overview/qoder-cn-ram-oauth-ram\\\',\\\'account/teams/analysis\\\',\\\'account/enterprise/knowledge-base\\\',\\\'user-guide/enterprise-knowledge-base-q-a\\\',\\\'account/enterprise/qmind\\\',\\\'user-guide/extensions-management\\\',\\\'account/teams/im-channel-controls\\\',\\\'user-guide/servicerole-for-qodercn-enterprise-vpc\\\',\\\'enterprise/service-account\\\']},{\\\'group\\\':\\\'安全\\\',\\\'pages\\\':[\\\'account/enterprise/mcp\\\',\\\'account/enterprise/audit-log\\\',\\\'user-guide/firewall-configuration\\\',\\\'user-guide/network-configuration\\\',\\\'user-guide/private-domain-control\\\']},{\\\'group\\\':\\\'购买与计费\\\',\\\'pages\\\':[\\\'product-overview/billing-description\\\',\\\'account/enterprise/credits-sharing\\\',\\\'account/enterprise/add-seats\\\']},{\\\'group\\\':\\\'OpenAPI\\\',\\\'pages\\\':[\\\'enterprise/teams-openapi\\\',\\\'enterprise/conventions\\\',\\\'enterprise/obtain-api-key\\\',\\\'enterprise/api-key-security\\\',\\\'enterprise/member-api\\\',\\\'enterprise/group-api\\\',\\\'enterprise/billing-group-api\\\',\\\'enterprise/usage-api\\\',\\\'enterprise/ai-code-metrics\\\']},{\\\'group\\\':\\\'解决方案\\\',\\\'pages\\\':[\\\'enterprise/solutions/ai-native-product-development-workflow\\\',\\\'enterprise/solutions/end-to-end-security\\\',\\\'enterprise/solutions/personalized-ai-agents\\\',\\\'enterprise/solutions/enterprise-ai-platforms\\\',\\\'enterprise/solutions/ai-employees\\\']}]}],\\\'footer\\\':{\\\'copyright\\\':\\\'© 2026 通义云启（杭州）信息技术有限公司　浙ICP备2023034206号-81\\\',\\\'links\\\':[{\\\'header\\\':\\\'立即体验 Qoder\\\',\\\'items\\\':[{\\\'label\\\':\\\'Qoder\\\',\\\'href\\\':\\\'https://qoder.cn/qoder\\\'},{\\\'label\\\':\\\'移动端\\\',\\\'href\\\':\\\'https://qoder.cn/mobile\\\'}]},{\\\'header\\\':\\\'集成 Qoder Agent\\\',\\\'items\\\':[{\\\'label\\\':\\\'Agent SDK\\\',\\\'href\\\':\\\'https://qoder.cn/agent-sdk\\\'},{\\\'label\\\':\\\'Cloud Agents\\\',\\\'href\\\':\\\'https://qoder.cn/cloud-agents\\\'}]},{\\\'header\\\':\\\'AI 员工\\\',\\\'items\\\':[{\\\'label\\\':\\\'QoderWake\\\',\\\'href\\\':\\\'https://qoder.cn/qoderwake\\\'}]},{\\\'header\\\':\\\'条款\\\',\\\'items\\\':[{\\\'label\\\':\\\'服务条款\\\',\\\'href\\\':\\\'https://terms.alicdn.com/legal-agreement/terms/c_platform_service_agreement/20231023213402278/20231023213402278.html\\\'},{\\\'label\\\':\\\'隐私政策\\\',\\\'href\\\':\\\'https://terms.alicdn.com/legal-agreement/terms/privacy_policy_full/20231023213159724/20231023213159724.html\\\'}]},{\\\'header\\\':\\\'其他使用方式\\\',\\\'items\\\':[{\\\'label\\\':\\\'IDE\\\',\\\'href\\\':\\\'https://qoder.cn/ide\\\'},{\\\'label\\\':\\\'JetBrains 插件\\\',\\\'href\\\':\\\'https://qoder.cn/jetbrains\\\'},{\\\'label\\\':\\\'CLI\\\',\\\'href\\\':\\\'https://qoder.cn/cli\\\'}]},{\\\'header\\\':\\\'立即获取\\\',\\\'items\\\':[{\\\'label\\\':\\\'企业版\\\',\\\'href\\\':\\\'https://qoder.cn/enterprise\\\'},{\\\'label\\\':\\\'价格\\\',\\\'href\\\':\\\'https://qoder.cn/pricing\\\'},{\\\'label\\\':\\\'下载\\\',\\\'href\\\':\\\'https://qoder.cn/download\\\'}]},{\\\'header\\\':\\\'资源\\\',\\\'items\\\':[{\\\'label\\\':\\\'能力市场\\\',\\\'href\\\':\\\'https://qoder.cn/marketplace\\\'},{\\\'label\\\':\\\'活动\\\',\\\'href\\\':\\\'https://qoder.cn/activities\\\'},{\\\'label\\\':\\\'文档\\\',\\\'href\\\':\\\'https://docs.qoder.cn/product-overview/introduction-of-qodercn\\\'},{\\\'label\\\':\\\'博客\\\',\\\'href\\\':\\\'https://developer.aliyun.com/lingma/article\\\'},{\\\'label\\\':\\\'常见问题\\\',\\\'href\\\':\\\'https://docs.qoder.cn/support/faq\\\'},{\\\'label\\\':\\\'更新日志\\\',\\\'href\\\':\\\'https://docs.qoder.cn/product-overview/qoder-cn-update-log\\\'}]},{\\\'header\\\':\\\'联系我们\\\',\\\'items\\\':[{\\\'label\\\':\\\'联系我们\\\',\\\'href\\\':\\\'mailto:qoder@service.aliyun.com\\\'},{\\\'label\\\':\\\'论坛\\\',\\\'href\\\':\\\'https://developer.aliyun.com/lingma\\\'},{\\\'label\\\':\\\'千问AI平台\\\',\\\'href\\\':\\\'https://www.qianwenai.com/\\\'}]}]}},{\\\'language\\\':\\\'en\\\',\\\'navbar\\\':{\\\'primary\\\':{\\\'type\\\':\\\'button\\\',\\\'label\\\':\\\'Download\\\',\\\'href\\\':\\\'https://qoder.cn/download\\\'}},\\\'anchors\\\':[{\\\'anchor\\\':\\\'Website\\\',\\\'icon\\\':\\\'globe\\\',\\\'href\\\':\\\'https://qoder.cn/\\\'},{\\\'anchor\\\':\\\'Forum\\\',\\\'icon\\\':\\\'messages-square\\\',\\\'href\\\':\\\'https://developer.aliyun.com/lingma?spm=5176.28644950.0.0.30d03ea8iCIwBP\\\'},{\\\'anchor\\\':\\\'Blog\\\',\\\'icon\\\':\\\'newspaper\\\',\\\'href\\\':\\\'https://developer.aliyun.com/lingma/article\\\'}],\\\'tabs\\\':[{\\\'tab\\\':\\\'Qoder CN Series\\\',\\\'groups\\\':[{\\\'group\\\':\\\'Overview\\\',\\\'pages\\\':[\\\'en/product-overview/introduction-of-qodercn\\\',{\\\'group\\\':\\\'Account \\u0026 Subscription\\\',\\\'pages\\\':[\\\'en/product-overview/qoder-cn-ide-jetbrains\\\',\\\'en/product-overview/account-and-subscription\\\',{\\\'group\\\':\\\'Qoder CN (Original Lingma) Account \\u0026 Subscription\\\',\\\'pages\\\':[\\\'en/product-overview/qoder-cn-account-and-subscription\\\',\\\'en/product-overview/qoder-cn-qoder-cn\\\',\\\'en/product-overview/qoder-cn-enterprise-vpc\\\',\\\'en/product-overview/qoder-cn-original-spirit-code-enterprise-standard-edition-upgrade-guide\\\',\\\'en/product-overview/comparison-between-original-lingma-and-qoder-cn-for-enterprise\\\']},\\\'en/product-overview/account-subscription-faq\\\']},{\\\'group\\\':\\\'Customer Cases\\\',\\\'pages\\\':[\\\'en/product-overview/customer-case\\\',\\\'en/product-overview/60-percent-of-developers-use-qoder-cn-in-china-insurance\\\',\\\'en/product-overview/30-percent-of-code-is-generated-by-ai-in-icbu\\\',\\\'en/product-overview/hello-group-fully-connected-to-qoder-cn\\\',\\\'en/product-overview/ai-driven-r-d-mode-upgrade-in-landray\\\',\\\'en/product-overview/hundreds-of-developers-use-qoder-cn-33-percent-code-by-ai-finv\\\',\\\'en/product-overview/over-90-percent-of-developers-in-gaiaworks-use-qoder-cn\\\',\\\'en/product-overview/together-we-pioneer-ai-and-embrace-the-new-era\\\',\\\'en/product-overview/uncover-how-ai-developer-boosts-live-streaming-efficiency\\\',\\\'en/product-overview/fudian-bank-from-go-digital-to-all-in-ai\\\',\\\'en/product-overview/nio-qoder-cn-boosts-engineering-efficiency-with-70-code-generated-by-ai\\\',\\\'en/product-overview/yonyou-technology\\\',\\\'en/product-overview/icbc-joins-hands-with-ali-tong-yi-ling-code-to\\\',\\\'en/product-overview/support-15000-engineers-ping-an-group-s-self-developed-ai-coding-tool-introduced-tongyi-spirit-code-to-enhance-continuation-function\\\',\\\'en/product-overview/guangdong-wen-s-group-s-research-and-development-efficiency-increase-10-times-12-new-storage-code-ai-generation-58-adoption-rate\\\']}]},{\\\'group\\\':\\\'Getting Started\\\',\\\'pages\\\':[\\\'en/getting-started/qodercn-ide-get-started\\\',\\\'en/getting-started/individual-edition-quick-start\\\',\\\'en/getting-started/qoder-cn-vpc\\\']},{\\\'group\\\':\\\'News \\u0026 Announcements\\\',\\\'pages\\\':[\\\'en/product-overview/qoder-cn-update-log\\\',\\\'en/product-overview/qoder-update-log\\\',\\\'en/product-overview/qoder-cn-ide-update-log\\\',\\\'en/product-overview/changelogs-jetbrains\\\',\\\'en/product-overview/qoder-cn-cli\\\',\\\'en/product-overview/qoder-agent-sdk-update-log\\\',\\\'en/product-overview/cloud-agents-cn-update-log\\\',\\\'en/product-overview/qoderwake-cn-update-log\\\',\\\'en/product-overview/qoderwork-cn-update-log\\\',\\\'en/product-overview/qoder-cn-vscode-update-log\\\',\\\'en/product-overview/visual-studio-side-update-log\\\',{\\\'group\\\':\\\'Product Announcements\\\',\\\'pages\\\':[\\\'en/product-overview/model-consumption-reference-update\\\',\\\'en/product-overview/quest-retirement-notice\\\',\\\'en/product-overview/qoder-cn-windows-7-windows-8-windows-8-1\\\']}]},{\\\'group\\\':\\\'Billing\\\',\\\'pages\\\':[\\\'en/product-overview/billing-description\\\',\\\'en/product-overview/credits\\\',\\\'en/product-overview/renewal-description\\\',\\\'en/product-overview/change-description\\\',\\\'en/product-overview/order-expiration-impact\\\',\\\'en/product-overview/refund-description\\\',\\\'en/product-overview/bill-query\\\']},{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'en/product-overview/qwen-3-7-series-model-staggering-discount\\\',\\\'en/events/100credits\\\',\\\'en/events/flashoffer\\\',\\\'en/events/bogo\\\',\\\'en/events/newqoderlaunch\\\',\\\'en/events/qwen-max\\\',\\\'en/events/qwen-max-preview\\\',\\\'en/product-overview/qwen3-7-max-limited-time-offer\\\',\\\'en/product-overview/daily-check-in-100-credits-reward-program-terms\\\',\\\'en/product-overview/qoderwork-cn-new-user-credits-claim-and-referral-reward-program-terms-and-conditions\\\']}]},{\\\'tab\\\':\\\'Qoder CN\\\',\\\'groups\\\':[{\\\'group\\\':\\\'Get Started\\\',\\\'pages\\\':[\\\'en/qoder/overview\\\',{\\\'group\\\':\\\'Installation\\\',\\\'pages\\\':[\\\'en/qoder/install-macos\\\',\\\'en/qoder/install-windows\\\']},\\\'en/qoder/quickstart\\\',\\\'en/qoder/vpc\\\']},{\\\'group\\\':\\\'Features\\\',\\\'pages\\\':[\\\'en/qoder/new-task\\\',{\\\'group\\\':\\\'Model Selection\\\',\\\'pages\\\':[\\\'en/qoder/model-selector\\\',\\\'en/qoder/custom-models\\\']},\\\'en/qoder/task-management\\\',\\\'en/qoder/data-import\\\',{\\\'group\\\':\\\'Conversation and Input\\\',\\\'pages\\\':[\\\'en/qoder/voice-input\\\',\\\'en/qoder/approval-and-sandbox\\\',\\\'en/qoder/context-compaction\\\']},{\\\'group\\\':\\\'Tools and Actions\\\',\\\'pages\\\':[\\\'en/qoder/browser\\\',\\\'en/qoder/review-and-commit\\\',\\\'en/qoder/terminal-and-sandbox\\\',\\\'en/qoder/computer-use\\\',\\\'en/qoder/app-snapshots\\\']},{\\\'group\\\':\\\'Security and Access\\\',\\\'pages\\\':[\\\'en/qoder/security-and-authorization\\\']},{\\\'group\\\':\\\'Environment and Execution\\\',\\\'pages\\\':[\\\'en/qoder/execution-environments\\\',\\\'en/qoder/plan-driven\\\',\\\'en/qoder/goal-driven\\\']},\\\'en/qoder/automations\\\',\\\'en/qoder/sites\\\',\\\'en/qoder/presentations\\\',{\\\'group\\\':\\\'Knowledge Center\\\',\\\'pages\\\':[\\\'en/qoder/repo-wiki\\\',\\\'en/qoder/knowledge-base\\\']},\\\'en/qoder/memory\\\',\\\'en/qoder/desktop-pet\\\',\\\'en/qoder/code-security\\\',\\\'en/qoder/better-harness\\\',\\\'en/qoder/china-mobile-edition\\\']},{\\\'group\\\':\\\'Collaboration\\\',\\\'pages\\\':[\\\'en/qoder/projects\\\',\\\'en/qoder/discussions\\\']},{\\\'group\\\':\\\'Extensions\\\',\\\'pages\\\':[\\\'en/qoder/skills\\\',\\\'en/qoder/plugins\\\',\\\'en/qoder/connectors\\\',\\\'en/qoder/hooks\\\',\\\'en/qoder/subagents\\\',\\\'en/qoder/custom-agents\\\',\\\'en/qoder/custom-agent-teams\\\',\\\'en/qoder/extension-publishing\\\']},{\\\'group\\\':\\\'Configuration\\\',\\\'pages\\\':[\\\'en/qoder/settings\\\',\\\'en/qoder/keyboard-shortcuts\\\',\\\'en/qoder/network-proxy\\\']},{\\\'group\\\':\\\'Support\\\',\\\'pages\\\':[\\\'en/qoder/faq\\\',\\\'en/qoder/troubleshooting\\\',\\\'en/qoder/feedback\\\']}]},{\\\'tab\\\':\\\'Qoder CN IDE\\\',\\\'groups\\\':[{\\\'group\\\':\\\'Overview\\\',\\\'pages\\\':[\\\'en/user-guide/what-is-qoder-cn\\\']},{\\\'group\\\':\\\'Get Started\\\',\\\'pages\\\':[\\\'en/user-guide/installation-and-login-guide\\\',\\\'en/user-guide/compatible-ide-and-system\\\',\\\'en/user-guide/installation-guide\\\']},{\\\'group\\\':\\\'User Guide\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Models\\\',\\\'pages\\\':[\\\'en/user-guide/model-selector\\\',\\\'en/user-guide/custom-model\\\']},{\\\'group\\\':\\\'Editor\\\',\\\'pages\\\':[\\\'en/user-guide/overview-of-chat\\\',\\\'en/user-guide/ask\\\',\\\'en/user-guide/agent\\\',\\\'en/user-guide/next-edit-suggestion\\\',\\\'en/user-guide/inline-chat\\\',\\\'en/user-guide/tools\\\',\\\'en/user-guide/ai-completion-guidlines\\\']},{\\\'group\\\':\\\'Quest\\\',\\\'pages\\\':[\\\'en/user-guide/quest/overview\\\',\\\'en/user-guide/quest/agent-mode\\\',\\\'en/user-guide/quest/experts-mode\\\',\\\'en/user-guide/quest/goal-driven\\\',\\\'en/user-guide/quest/spec-driven\\\',\\\'en/user-guide/quest/scheduled-tasks\\\',\\\'en/user-guide/quest/review-and-commit\\\',\\\'en/user-guide/quest/terminal-and-sandbox\\\',\\\'en/user-guide/quest/task-management\\\',\\\'en/user-guide/quest/execution-environments\\\',\\\'en/user-guide/quest/supabase\\\',\\\'en/user-guide/quest/qoder-voice\\\']},{\\\'group\\\':\\\'Knowledge Center\\\',\\\'pages\\\':[\\\'en/user-guide/knowledge-engine/overview\\\',\\\'en/user-guide/repo-wiki\\\',\\\'en/user-guide/knowledge-engine/knowledge-cards\\\',\\\'en/user-guide/knowledge-engine/memory\\\']},{\\\'group\\\':\\\'Code Security\\\',\\\'pages\\\':[\\\'en/ide/security\\\',\\\'en/qoder-security-guide\\\',\\\'en/qoder-case-security\\\']},\\\'en/user-guide/knowledge-engine/better-harness\\\']},{\\\'group\\\':\\\'Context\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Input Enhancement\\\',\\\'pages\\\':[\\\'en/user-guide/context\\\',\\\'en/user-guide/context/voice-input\\\',\\\'en/user-guide/context/optimize-prompt\\\']},\\\'en/user-guide/codebase-indexing\\\',\\\'en/user-guide/rules\\\']},{\\\'group\\\':\\\'Extensions\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Built-in Agents\\\',\\\'pages\\\':[\\\'en/user-guide/browser-agent\\\',\\\'en/user-guide/qodercn-planning-agent\\\',\\\'en/user-guide/code-review-agent\\\',\\\'en/user-guide/computer-use-agent\\\']},\\\'en/user-guide/custom-agent\\\',\\\'en/user-guide/skills\\\',\\\'en/qoder-plugins\\\',\\\'en/user-guide/guide-for-using-mcp\\\',\\\'en/user-guide/hooks\\\',\\\'en/user-guide/deeplinks\\\',\\\'en/user-guide/canvas\\\',\\\'en/user-guide/custom-commands\\\']},{\\\'group\\\':\\\'Configuration\\\',\\\'pages\\\':[\\\'en/user-guide/plug-in-configuration-guide\\\',\\\'en/user-guide/network-proxy-configuration\\\']},{\\\'group\\\':\\\'Support\\\',\\\'pages\\\':[\\\'en/support/faq\\\',\\\'en/support/troubleshooting-guide\\\',\\\'en/support/description-of-terminal-execution-exception\\\',\\\'en/support/faq-mcp\\\',\\\'en/support/service-agreement-and-privacy-policy\\\']}]},{\\\'tab\\\':\\\'Qoder CN CLI\\\',\\\'groups\\\':[{\\\'group\\\':\\\'Getting started\\\',\\\'pages\\\':[\\\'en/cli/overview\\\',\\\'en/cli/installation\\\',\\\'en/cli/authentication\\\',\\\'en/cli/quickstart\\\']},{\\\'group\\\':\\\'Core concepts\\\',\\\'pages\\\':[\\\'en/cli/how-it-works\\\',\\\'en/cli/working-modes\\\',\\\'en/cli/config-scope\\\',\\\'en/cli/how-memory-works\\\',\\\'en/cli/models\\\']},{\\\'group\\\':\\\'Using Qoder CLI\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Starting a task\\\',\\\'pages\\\':[\\\'en/cli/run-tasks\\\',\\\'en/cli/common-tasks\\\',\\\'en/cli/plan-mode\\\',\\\'en/cli/repo-wiki\\\']},{\\\'group\\\':\\\'Task automation\\\',\\\'pages\\\':[\\\'en/cli/goal\\\',\\\'en/cli/scheduled-tasks\\\',\\\'en/cli/loop\\\',\\\'en/cli/run-in-scripts\\\']},{\\\'group\\\':\\\'Parallel collaboration\\\',\\\'pages\\\':[\\\'en/cli/parallel-tasks\\\',\\\'en/cli/agent-teams\\\',\\\'en/cli/cross-session-messaging\\\',\\\'en/cli/workflows\\\']},{\\\'group\\\':\\\'Managing sessions and changes\\\',\\\'pages\\\':[\\\'en/cli/sessions\\\',\\\'en/cli/review-changes\\\',\\\'en/cli/undo-restore\\\']},{\\\'group\\\':\\\'Optimizing usage\\\',\\\'pages\\\':[\\\'en/cli/best-practices\\\',\\\'en/cli/usage\\\',\\\'en/cli/insights\\\']}]},{\\\'group\\\':\\\'Extending Qoder CLI\\\',\\\'pages\\\':[\\\'en/cli/built-ins\\\',\\\'en/cli/tools\\\',\\\'en/cli/memory\\\',\\\'en/cli/commands\\\',\\\'en/cli/knowledge-base\\\']},{\\\'group\\\':\\\'Integrations and remote\\\',\\\'pages\\\':[\\\'en/cli/acp\\\',\\\'en/cli/qoder-action\\\',\\\'en/cli/cloud-mode\\\',\\\'en/cli/remote-control\\\']},{\\\'group\\\':\\\'Configuration and security\\\',\\\'pages\\\':[\\\'en/cli/settings\\\',\\\'en/cli/permissions\\\',\\\'en/cli/network\\\',\\\'en/cli/vpc\\\',\\\'en/cli/custom-models\\\',\\\'en/cli/interface\\\',\\\'en/cli/output-styles\\\',\\\'en/cli/security\\\']},{\\\'group\\\':\\\'Reference\\\',\\\'pages\\\':[\\\'en/cli/cli-reference\\\',\\\'en/cli/slash-reference\\\',\\\'en/cli/settings-reference\\\',\\\'en/cli/mcp-reference\\\',\\\'en/cli/plugins-reference\\\',\\\'en/cli/hooks-reference\\\',\\\'en/cli/builtins-reference\\\',\\\'en/cli/goal-reference\\\',\\\'en/cli/loop-reference\\\',\\\'en/cli/scheduled-reference\\\',\\\'en/cli/glossary\\\']},{\\\'group\\\':\\\'Troubleshooting\\\',\\\'pages\\\':[\\\'en/cli/troubleshoot-install\\\',\\\'en/cli/troubleshoot-auth\\\',\\\'en/cli/troubleshoot-network\\\',\\\'en/cli/troubleshoot-performance\\\',\\\'en/cli/troubleshoot-loading\\\',\\\'en/cli/troubleshoot-config\\\',\\\'en/cli/troubleshoot-extensions\\\',\\\'en/cli/troubleshoot-faq\\\']}]},{\\\'tab\\\':\\\'Agent SDK\\\',\\\'groups\\\':[{\\\'group\\\':\\\'Getting Started\\\',\\\'pages\\\':[\\\'en/cli/sdk/overview\\\',\\\'en/cli/sdk/quick-start\\\',\\\'en/cli/sdk/integration-scenarios\\\']},{\\\'group\\\':\\\'Core Concepts\\\',\\\'pages\\\':[\\\'en/cli/sdk/how-it-works\\\',\\\'en/cli/sdk/authentication\\\']},{\\\'group\\\':\\\'Conversations \\u0026 Sessions\\\',\\\'pages\\\':[\\\'en/cli/sdk/multi-turn-conversation\\\',\\\'en/cli/sdk/streaming-output\\\',\\\'en/cli/sdk/session-control\\\',\\\'en/cli/sdk/session-storage\\\',\\\'en/cli/sdk/checkpoint\\\',\\\'en/cli/sdk/memory\\\']},{\\\'group\\\':\\\'Tools \\u0026 Extensions\\\',\\\'pages\\\':[\\\'en/cli/sdk/system-prompt\\\',\\\'en/cli/sdk/tools\\\',\\\'en/cli/sdk/mcp\\\',\\\'en/cli/sdk/agents\\\',\\\'en/cli/sdk/skills\\\',\\\'en/cli/sdk/plugins\\\']},{\\\'group\\\':\\\'Control \\u0026 Safety\\\',\\\'pages\\\':[\\\'en/cli/sdk/permissions\\\',\\\'en/cli/sdk/security-scan\\\',\\\'en/cli/sdk/hooks\\\',\\\'en/cli/sdk/model-policy\\\',\\\'en/cli/sdk/cost-usage\\\']},{\\\'group\\\':\\\'Reference\\\',\\\'pages\\\':[\\\'en/cli/sdk/troubleshooting\\\',\\\'en/cli/sdk/errors\\\',\\\'en/cli/sdk/references\\\',\\\'en/cli/sdk/references-typescript\\\',\\\'en/cli/sdk/references-python\\\']}]},{\\\'tab\\\':\\\'Cloud Agents CN\\\',\\\'groups\\\':[{\\\'group\\\':\\\'First steps\\\',\\\'pages\\\':[\\\'en/cloud-agents/overview\\\',\\\'en/cloud-agents/api/overview\\\',\\\'en/cloud-agents/quickstart\\\']},{\\\'group\\\':\\\'Define your agent\\\',\\\'pages\\\':[\\\'en/cloud-agents/define-agent\\\',\\\'en/cloud-agents/agent-tools\\\',\\\'en/cloud-agents/agent-skills\\\',\\\'en/cloud-agents/permission-policies\\\']},{\\\'group\\\':\\\'Configure agent environment\\\',\\\'pages\\\':[\\\'en/cloud-agents/environments\\\',\\\'en/cloud-agents/container-reference\\\',\\\'en/cloud-agents/ip-addresses\\\']},{\\\'group\\\':\\\'Delegate work to your agent\\\',\\\'pages\\\':[\\\'en/cloud-agents/sessions\\\',\\\'en/cloud-agents/vaults\\\',\\\'en/cloud-agents/multi-agents\\\']},{\\\'group\\\':\\\'Agent integrations\\\',\\\'pages\\\':[\\\'en/cloud-agents/natural-language-schedule-management\\\',\\\'en/cloud-agents/message-channel-integration\\\',\\\'en/cloud-agents/webhooks\\\']},{\\\'group\\\':\\\'Manage agent context\\\',\\\'pages\\\':[\\\'en/cloud-agents/files\\\',\\\'en/cloud-agents/memory-stores\\\',\\\'en/cloud-agents/dreams\\\']},{\\\'group\\\':\\\'Account\\\',\\\'pages\\\':[\\\'en/cloud-agents/billing\\\',\\\'en/cloud-agents/personal-and-enterprise-spaces\\\']},{\\\'group\\\':\\\'Best Practices\\\',\\\'pages\\\':[\\\'en/cloud-agents/best-practices/cloud-use\\\']},{\\\'group\\\':\\\'Announcements\\\',\\\'pages\\\':[\\\'en/cloud-agents/sse-initial-connection-behavior-change\\\']},{\\\'group\\\':\\\'API reference\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Conventions\\\',\\\'pages\\\':[\\\'en/cloud-agents/api-overview\\\',\\\'en/cloud-agents/api-authentication\\\',\\\'en/cloud-agents/api-pagination\\\',\\\'en/cloud-agents/generic-data-structure\\\',\\\'en/cloud-agents/api-errors\\\']},{\\\'group\\\':\\\'Forward Mode\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-mode-overview\\\',{\\\'group\\\':\\\'Templates\\\',\\\'pages\\\':[\\\'en/cloud-agents/create-template\\\',\\\'en/cloud-agents/list-templates\\\',\\\'en/cloud-agents/obtain-template-details\\\',\\\'en/cloud-agents/update-template-merge-patch\\\',\\\'en/cloud-agents/archive-template\\\',\\\'en/cloud-agents/clone-template\\\']},{\\\'group\\\':\\\'Identities\\\',\\\'pages\\\':[\\\'en/cloud-agents/create-identity\\\',\\\'en/cloud-agents/list-identity\\\',\\\'en/cloud-agents/get-identity\\\',\\\'en/cloud-agents/update-identity\\\',\\\'en/cloud-agents/delete-identity-soft-delete\\\',\\\'en/cloud-agents/clear-identity\\\',\\\'en/cloud-agents/disable-identity\\\',\\\'en/cloud-agents/enable-identity\\\',\\\'en/cloud-agents/ensure-admin-identity\\\',\\\'en/cloud-agents/get-identity-stats\\\',\\\'en/cloud-agents/list-identity-templates\\\',\\\'en/cloud-agents/query-all-template-configurations-under-this-identity\\\',\\\'en/cloud-agents/create-update-identity-config\\\',\\\'en/cloud-agents/get-identity-config\\\',\\\'en/cloud-agents/query-effective-config-composite-results\\\']},{\\\'group\\\':\\\'Service Account Tokens\\\',\\\'pages\\\':[\\\'en/cloud-agents/api/service-account-tokens/create\\\',\\\'en/cloud-agents/api/service-account-tokens/create-identity\\\',\\\'en/cloud-agents/api/service-account-tokens/revoke\\\']},{\\\'group\\\':\\\'Sessions\\\',\\\'pages\\\':[\\\'en/cloud-agents/session-and-event-data-structure\\\',\\\'en/cloud-agents/create-session\\\',\\\'en/cloud-agents/get-session-details\\\',\\\'en/cloud-agents/list-session\\\',\\\'en/cloud-agents/update-session\\\',\\\'en/cloud-agents/add-session-resource\\\',\\\'en/cloud-agents/archive-session\\\',\\\'en/cloud-agents/cancel-the-current-turn\\\',{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'en/cloud-agents/send-a-session-event\\\',\\\'en/cloud-agents/query-event-history\\\',\\\'en/cloud-agents/subscribe-to-event-sse\\\']},{\\\'group\\\':\\\'Threads\\\',\\\'pages\\\':[\\\'en/cloud-agents/list-session-threads\\\',\\\'en/cloud-agents/get-session-thread\\\',\\\'en/cloud-agents/archive-session-thread\\\',\\\'en/cloud-agents/list-session-thread-events\\\',\\\'en/cloud-agents/stream-session-thread-events\\\']}]},{\\\'group\\\':\\\'Batches\\\',\\\'pages\\\':[\\\'en/cloud-agents/batches-create\\\',\\\'en/cloud-agents/batches-list\\\',\\\'en/cloud-agents/batches-get\\\',\\\'en/cloud-agents/batches-list-tasks\\\',\\\'en/cloud-agents/batches-cancel\\\',\\\'en/cloud-agents/batches-get-output\\\',\\\'en/cloud-agents/batches-get-error\\\']},{\\\'group\\\':\\\'Schedules\\\',\\\'pages\\\':[\\\'en/cloud-agents/schedule-schemas\\\',\\\'en/cloud-agents/create-schedule\\\',\\\'en/cloud-agents/list-schedule\\\',\\\'en/cloud-agents/get-schedule\\\',\\\'en/cloud-agents/update-schedule\\\',\\\'en/cloud-agents/archive-schedule\\\',\\\'en/cloud-agents/archive-schedules\\\',\\\'en/cloud-agents/pause-1\\\',\\\'en/cloud-agents/restore-1\\\',\\\'en/cloud-agents/execute-immediately\\\',\\\'en/cloud-agents/list-all-run-histories\\\',\\\'en/cloud-agents/get-a-single-run\\\']},{\\\'group\\\':\\\'Webhooks\\\',\\\'pages\\\':[\\\'en/cloud-agents/api/webhooks/overview\\\',\\\'en/cloud-agents/api/webhooks/create\\\',\\\'en/cloud-agents/api/webhooks/list\\\',\\\'en/cloud-agents/api/webhooks/get\\\',\\\'en/cloud-agents/api/webhooks/update\\\',\\\'en/cloud-agents/api/webhooks/delete\\\',\\\'en/cloud-agents/api/webhooks/enable\\\',\\\'en/cloud-agents/api/webhooks/disable\\\',\\\'en/cloud-agents/api/webhooks/test\\\',\\\'en/cloud-agents/api/webhooks/receive\\\']},{\\\'group\\\':\\\'Channels\\\',\\\'pages\\\':[\\\'en/cloud-agents/create-a-channel\\\',\\\'en/cloud-agents/list-channels\\\',\\\'en/cloud-agents/get-channel\\\',\\\'en/cloud-agents/update-channel\\\',\\\'en/cloud-agents/delete-channel\\\',\\\'en/cloud-agents/create-scan-authorization-session\\\',\\\'en/cloud-agents/query-scan-session-status\\\',\\\'en/cloud-agents/list-channel-pairings\\\',\\\'en/cloud-agents/get-channel-pairing\\\',\\\'en/cloud-agents/update-channel-pairing\\\',\\\'en/cloud-agents/pair-channel\\\',\\\'en/cloud-agents/unpair-channel\\\']},{\\\'group\\\':\\\'Environments\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-environments-list\\\',\\\'en/cloud-agents/forward-environments-search\\\',\\\'en/cloud-agents/forward-environments-create\\\',\\\'en/cloud-agents/forward-environments-get\\\',\\\'en/cloud-agents/forward-environments-update\\\',\\\'en/cloud-agents/forward-environments-delete\\\',\\\'en/cloud-agents/forward-environments-schemas\\\']},{\\\'group\\\':\\\'Skills\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-skills-list\\\',\\\'en/cloud-agents/forward-skills-search\\\',\\\'en/cloud-agents/forward-skills-create\\\',\\\'en/cloud-agents/forward-skills-get\\\',\\\'en/cloud-agents/forward-skills-update\\\',\\\'en/cloud-agents/forward-skills-delete\\\',\\\'en/cloud-agents/forward-skills-schemas\\\',{\\\'group\\\':\\\'Versions\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-skills-versions-create\\\',\\\'en/cloud-agents/forward-skills-versions-list\\\',\\\'en/cloud-agents/forward-skills-versions-download\\\',\\\'en/cloud-agents/forward-skills-versions-get\\\',\\\'en/cloud-agents/forward-skills-versions-delete\\\']}]},{\\\'group\\\':\\\'Vaults\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-vaults-list\\\',\\\'en/cloud-agents/forward-vaults-search\\\',\\\'en/cloud-agents/forward-vaults-create\\\',\\\'en/cloud-agents/forward-vaults-get\\\',\\\'en/cloud-agents/forward-vaults-delete\\\',\\\'en/cloud-agents/forward-vaults-schemas\\\',{\\\'group\\\':\\\'Credentials\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-credentials-list\\\',\\\'en/cloud-agents/forward-credentials-create\\\',\\\'en/cloud-agents/forward-credentials-get\\\',\\\'en/cloud-agents/forward-credentials-update\\\',\\\'en/cloud-agents/forward-credentials-delete\\\',\\\'en/cloud-agents/forward-credentials-schemas\\\']}]},{\\\'group\\\':\\\'Files\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-files-list\\\',\\\'en/cloud-agents/forward-files-search\\\',\\\'en/cloud-agents/forward-files-upload\\\',\\\'en/cloud-agents/forward-files-get\\\',\\\'en/cloud-agents/forward-files-download\\\',\\\'en/cloud-agents/forward-files-delete\\\',\\\'en/cloud-agents/forward-files-schemas\\\']},{\\\'group\\\':\\\'Drives\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-drives-overview\\\',\\\'en/cloud-agents/forward-drives-list-entries\\\',\\\'en/cloud-agents/forward-drives-upload-url\\\',\\\'en/cloud-agents/forward-drives-download-url\\\',\\\'en/cloud-agents/forward-drives-delete-entry\\\',\\\'en/cloud-agents/forward-drives-clear\\\']},{\\\'group\\\':\\\'Memory Stores\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-memory-stores-schemas\\\',\\\'en/cloud-agents/forward-memory-stores-list\\\',\\\'en/cloud-agents/forward-memory-stores-create\\\',\\\'en/cloud-agents/forward-memory-stores-get\\\',\\\'en/cloud-agents/forward-memory-stores-update\\\',\\\'en/cloud-agents/forward-memory-stores-archive\\\',\\\'en/cloud-agents/forward-memory-stores-delete\\\',\\\'en/cloud-agents/forward-memory-stores-list-mounts\\\',\\\'en/cloud-agents/forward-memory-stores-mount\\\',\\\'en/cloud-agents/forward-memory-stores-detach\\\',{\\\'group\\\':\\\'Memories\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-memory-stores-list-memories\\\',\\\'en/cloud-agents/forward-memory-stores-create-memory\\\',\\\'en/cloud-agents/forward-memory-stores-get-memory\\\',\\\'en/cloud-agents/forward-memory-stores-update-memory\\\',\\\'en/cloud-agents/forward-memory-stores-delete-memory\\\']},{\\\'group\\\':\\\'Memory Versions\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-memory-stores-list-versions\\\',\\\'en/cloud-agents/forward-memory-stores-get-version\\\',\\\'en/cloud-agents/forward-memory-stores-redact-version\\\']}]},{\\\'group\\\':\\\'Dreams\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-dreams-schemas\\\',\\\'en/cloud-agents/forward-dreams-create\\\',\\\'en/cloud-agents/forward-dreams-list\\\',\\\'en/cloud-agents/forward-dreams-get\\\',\\\'en/cloud-agents/forward-dreams-cancel\\\',\\\'en/cloud-agents/forward-dreams-archive\\\']},{\\\'group\\\':\\\'Models\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-models-list\\\']},{\\\'group\\\':\\\'Realtime\\\',\\\'pages\\\':[\\\'en/cloud-agents/forward-realtime-create-conversation\\\',\\\'en/cloud-agents/forward-realtime-connect\\\']},{\\\'group\\\':\\\'Usage\\\',\\\'pages\\\':[\\\'en/cloud-agents/list-identity-usage\\\',\\\'en/cloud-agents/list-template-usage\\\']}]},{\\\'group\\\':\\\'Managed Mode\\\',\\\'pages\\\':[{\\\'group\\\':\\\'Agents\\\',\\\'pages\\\':[\\\'en/cloud-agents/agents-list\\\',\\\'en/cloud-agents/agents-search\\\',\\\'en/cloud-agents/agents-create\\\',\\\'en/cloud-agents/agents-get\\\',\\\'en/cloud-agents/agents-update\\\',\\\'en/cloud-agents/agents-archive\\\',\\\'en/cloud-agents/agents-list-versions\\\',\\\'en/cloud-agents/agents-schemas\\\']},{\\\'group\\\':\\\'Sessions\\\',\\\'pages\\\':[\\\'en/cloud-agents/sessions-create\\\',\\\'en/cloud-agents/sessions-list\\\',\\\'en/cloud-agents/sessions-get\\\',\\\'en/cloud-agents/sessions-update\\\',\\\'en/cloud-agents/sessions-delete\\\',\\\'en/cloud-agents/sessions-archive\\\',\\\'en/cloud-agents/sessions-search\\\',\\\'en/cloud-agents/sessions-cancel\\\',\\\'en/cloud-agents/session-schemas\\\',{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'en/cloud-agents/api/sessions/events/list\\\',\\\'en/cloud-agents/api/sessions/events/send\\\',\\\'en/cloud-agents/api/sessions/events/stream\\\',\\\'en/cloud-agents/api/sessions/events/overview\\\']},{\\\'group\\\':\\\'Resources\\\',\\\'pages\\\':[\\\'en/cloud-agents/api/sessions/resources/add\\\',\\\'en/cloud-agents/api/sessions/resources/list\\\',\\\'en/cloud-agents/api/sessions/resources/get\\\',\\\'en/cloud-agents/api/sessions/resources/update\\\',\\\'en/cloud-agents/api/sessions/resources/delete\\\',\\\'en/cloud-agents/api/sessions/resources/github-repositories\\\']},{\\\'group\\\':\\\'Threads\\\',\\\'pages\\\':[\\\'en/cloud-agents/api/sessions/threads/list\\\',\\\'en/cloud-agents/api/sessions/threads/get\\\',\\\'en/cloud-agents/api/sessions/threads/archive\\\',{\\\'group\\\':\\\'Events\\\',\\\'pages\\\':[\\\'en/cloud-agents/api/sessions/threads/events/list\\\',\\\'en/cloud-agents/api/sessions/threads/events/stream\\\']}]}]},{\\\'group\\\':\\\'Deployments\\\',\\\'pages\\\':[\\\'en/cloud-agents/list-deployment\\\',\\\'en/cloud-agents/deployments-search\\\',\\\'en/cloud-agents/create-deployment-cron-manual\\\',\\\'en/cloud-agents/get-deployment\\\',\\\'en/cloud-agents/update-deployment\\\',\\\'en/cloud-agents/archive-stop-all-dispatches\\\',\\\'en/cloud-agents/api/deployments/pause\\\',\\\'en/cloud-agents/restore\\\',\\\'en/cloud-agents/trigger-once-manually\\\',\\\'en/cloud-agents/list-the-runs-for-this-deployment\\\',\\\'en/cloud-agents/get-single-run\\\',\\\'en/cloud-agents/list-all-runs-globally\\\',\\\'en/cloud-agents/global-acquisition-single-run\\\']},{\\\'group\\\':\\\'Dreams\\\',\\\'pages\\\':[\\\'en/cloud-agents/list-the-dream\\\',\\\'en/cloud-agents/create-a-dream\\\',\\\'en/cloud-agents/get-dream-status\\\',\\\'en/cloud-agents/cancel-pending-running\\\',\\\'en/cloud-agents/archiving-completed\\\',\\\'en/cloud-agents/dreams-schemas\\\']},{\\\'group\\\':\\\'Environments\\\',\\\'pages\\\':[\\\'en/cloud-agents/environments-list\\\',\\\'en/cloud-agents/environments-search\\\',\\\'en/cloud-agents/environments-create\\\',\\\'en/cloud-agents/environments-get\\\',\\\'en/cloud-agents/environments-update\\\',\\\'en/cloud-agents/environments-archive\\\',\\\'en/cloud-agents/environments-delete\\\',\\\'en/cloud-agents/environments-schemas\\\',{\\\'group\\\':\\\'Work\\\',\\\'pages\\\':[\\\'en/cloud-agents/pull-work-item-poll-new\\\',\\\'en/cloud-agents/environments-work-ack\\\',\\\'en/cloud-agents/environments-work-heartbeat\\\',\\\'en/cloud-agents/environments-work-update-metadata\\\',\\\'en/cloud-agents/environments-work-stop\\\',\\\'en/cloud-agents/environments-work-get\\\',\\\'en/cloud-agents/environments-work-list\\\',\\\'en/cloud-agents/environments-work-stats\\\',\\\'en/cloud-agents/environments-work-schemas\\\']}]},{\\\'group\\\':\\\'Skills\\\',\\\'pages\\\':[\\\'en/cloud-agents/skills-create\\\',\\\'en/cloud-agents/skills-list\\\',\\\'en/cloud-agents/skills-search\\\',\\\'en/cloud-agents/skills-get\\\',\\\'en/cloud-agents/skills-update\\\',\\\'en/cloud-agents/skills-delete\\\',{\\\'group\\\':\\\'Versions\\\',\\\'pages\\\':[\\\'en/cloud-agents/skills-create-version\\\',\\\'en/cloud-agents/skills-list-versions\\\',\\\'en/cloud-agents/skills-get-version-content\\\',\\\'en/cloud-agents/skills-get-version\\\',\\\'en/cloud-agents/skills-delete-version\\\']},\\\'en/cloud-agents/skills-schemas\\\']},{\\\'group\\\':\\\'Vaults\\\',\\\'pages\\\':[\\\'en/cloud-agents/vaults-list\\\',\\\'en/cloud-agents/vaults-search\\\',\\\'en/cloud-agents/vaults-create\\\',\\\'en/cloud-agents/vaults-get\\\',\\\'en/cloud-agents/vaults-archive\\\',\\\'en/cloud-agents/vaults-delete\\\',\\\'en/cloud-agents/vaults-archive-credential\\\',\\\'en/cloud-agents/vaults-get-credential\\\',\\\'en/cloud-agents/vaults-delete-credential\\\',\\\'en/cloud-agents/vaults-list-credentials\\\',\\\'en/cloud-agents/vaults-create-credential\\\',\\\'en/cloud-agents/vaults-update-credential\\\',\\\'en/cloud-agents/vaults-validate-credential\\\',\\\'en/cloud-agents/vaults-start-oauth\\\',\\'
+        }
+      ]
+    },
+    {
+      'id': 'traecode',
+      'name': 'TraeCode',
       'vendor': '字节跳动',
       'kind': 'trae',
       'changelogUrl': 'https://www.trae.cn/changelog',
@@ -8594,86 +9165,25 @@ window.CHANGELOG = {
           'title': 'v3.3.93-96',
           'date': '2026-09-01',
           'dateRaw': '2026-09-01',
-          'tags': [
-            'TraeCode'
-          ],
+          'tags': [],
           'url': 'https://www.trae.cn/changelog',
           'body': '- Solo Agent 智能体和 Agent 智能体将合并为 Agent 智能体，支持在 IDE、SOLO 模式使用。Agent 智能体包含原Solo Agent 智能体、 Agent 智能体的能力集合，包括：支持 /goal、/plan、/spec 等内置命令，支持根据模型选择是否开启 Max 模式，支持选择是否使用 Auto Mode 模型，支持调用自定义智能体等。【仅企业版】\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.49-52',
-          'title': 'v0.1.49-52',
-          'date': '2026-08-21',
-          'dateRaw': '2026-08-21',
-          'tags': [
-            'TraeWork'
-          ],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 上线「电脑控制」功能。\n- Design 模式支持图片编辑。\n- 对话框可一键最小化为悬浮窗小标。\n- 修复了已知问题。'
         },
         {
           'version': '3.3.87-92',
           'title': 'v3.3.87-92',
           'date': '2026-08-20',
           'dateRaw': '2026-08-20',
-          'tags': [
-            'TraeCode'
-          ],
+          'tags': [],
           'url': 'https://www.trae.cn/changelog',
           'body': '- 支持 TRAE 移动端连接 TraeCode。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.0.17-0.0.18',
-          'title': 'v0.0.17-0.0.18',
-          'date': '2026-08-18',
-          'dateRaw': '2026-08-18',
-          'tags': [
-            'TRAE APP'
-          ],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 首页增加了「我的文件」入口，可查看新对话里生成的图片、视频、html 产物，可查看所有飞书文档\n- 通过 “+”入口，引用“当前项目文件”、“我的文件”、“飞书文档”。快速找到你在当前项目、TRAE 所有任务、飞书中的文件产物\n- 发送任务时，可以不选择文件夹直接发送任务\n- 支持会话分享：分享方式包括链接，二维码，长图，系统分享等\n- 新增反馈入口：可以在设置页中，找到「帮助与反馈」，点击即可提交你对 TRAE 的使用体验与产品建议'
-        },
-        {
-          'version': '0.1.47-48',
-          'title': 'v0.1.47-48',
-          'date': '2026-08-11',
-          'dateRaw': '2026-08-11',
-          'tags': [
-            'TraeWork'
-          ],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 上线我的文件功能。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.44-46',
-          'title': 'v0.1.44-46',
-          'date': '2026-08-07',
-          'dateRaw': '2026-08-07',
-          'tags': [
-            'TraeWork'
-          ],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 支持对话分享功能\n- 灰度上线插件自动推荐功能\n- 输入框 / 、附件上传按钮整合进「+」按钮\n- 上线办公助理功能'
-        },
-        {
-          'version': '0.0.16',
-          'title': 'v0.0.16',
-          'date': '2026-08-07',
-          'dateRaw': '2026-08-07',
-          'tags': [
-            'TRAE APP'
-          ],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 视频产物支持对话流内预览：生成的视频现在支持在对话中直接预览，点击卡片即可播放'
         },
         {
           'version': '3.3.84-86',
           'title': 'v3.3.84-86',
           'date': '2026-08-07',
           'dateRaw': '2026-08-07',
-          'tags': [
-            'TraeCode'
-          ],
+          'tags': [],
           'url': 'https://www.trae.cn/changelog',
           'body': '- 模型选择上线 Max 模式。\n- 对话流新交互新增 Query 跳转。\n- 修复了已知问题。'
         },
@@ -8682,20 +9192,55 @@ window.CHANGELOG = {
           'title': 'v3.3.80-83',
           'date': '2026-07-31',
           'dateRaw': '2026-07-31',
-          'tags': [
-            'TraeCode'
-          ],
+          'tags': [],
           'url': 'https://www.trae.cn/changelog',
           'body': '- 全新积分体系，用量更透明、积分更充足、奖励更丰富。\n- 修复了已知问题。'
+        }
+      ]
+    },
+    {
+      'id': 'traework',
+      'name': 'TraeWork',
+      'vendor': '字节跳动',
+      'kind': 'trae',
+      'changelogUrl': 'https://www.trae.cn/changelog',
+      'status': 'stale',
+      'error': 'HTTP 403 https://www.trae.cn/changelog',
+      'lastOkAt': '2026-09-24 18:00',
+      'entries': [
+        {
+          'version': '0.1.49-52',
+          'title': 'v0.1.49-52',
+          'date': '2026-08-21',
+          'dateRaw': '2026-08-21',
+          'tags': [],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '- 上线「电脑控制」功能。\n- Design 模式支持图片编辑。\n- 对话框可一键最小化为悬浮窗小标。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.47-48',
+          'title': 'v0.1.47-48',
+          'date': '2026-08-11',
+          'dateRaw': '2026-08-11',
+          'tags': [],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '- 上线我的文件功能。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.44-46',
+          'title': 'v0.1.44-46',
+          'date': '2026-08-07',
+          'dateRaw': '2026-08-07',
+          'tags': [],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '- 支持对话分享功能\n- 灰度上线插件自动推荐功能\n- 输入框 / 、附件上传按钮整合进「+」按钮\n- 上线办公助理功能'
         },
         {
           'version': '0.1.40-43',
           'title': 'v0.1.40-43',
           'date': '2026-07-31',
           'dateRaw': '2026-07-31',
-          'tags': [
-            'TraeWork'
-          ],
+          'tags': [],
           'url': 'https://www.trae.cn/changelog',
           'body': '- 全新积分体系，用量更透明、积分更充足、奖励更丰富。\n- TRAE Work 上线模版库。\n- 修复了已知问题。'
         }

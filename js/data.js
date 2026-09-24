@@ -636,7 +636,7 @@
     return false;
   }
 
-  // ===== AI 编程工具更新日志(「编程工具更新日志」页;非分数数据,不参与综合分与命中数) =====
+  // ===== Agent 工具更新日志(「Agent工具更新日志」页;非分数数据,不参与综合分与命中数) =====
   // 抓取端在 data/changelog.js 存各源可得的全量条目,页面**每个工具只渲染最近一次更新**;
   // days 是「这次更新是否还算新」的门槛(前端 14/30/全部 切换),不是条目条数的裁剪。
   // days<=0 表示不限。窗口基准取真实的今天而非 data 的 updated:
@@ -703,7 +703,7 @@
     wujisuan: wujisuan,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
-    // AI 编程工具更新日志(「编程工具更新日志」页;无数据文件时返回 null)
+    // Agent 工具更新日志(「Agent工具更新日志」页;无数据文件时返回 null)
     changelog: changelog,
     unified: unified,
     hitCount: hitCount,

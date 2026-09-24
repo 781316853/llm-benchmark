@@ -1,6 +1,7 @@
-// AI 编程工具更新日志汇总(data/changelog.js)
-// 汇总 9 个 AI 编程工具(codex / Claude Code / OpenCode / Kimi Code / Qoder / Trae / ZCode /
-// CodeBuddy / WorkBuddy)的官方 changelog,按工具分组展示,每条保留源站完整正文(不摘要)。
+// AI Agent 工具更新日志汇总(data/changelog.js)
+// 汇总 11 个 Agent 工具(Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE /
+// TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy)的官方 changelog,按工具分组展示,
+// 每条保留源站完整正文(不摘要)。
 // 与 news.js / codingplan.js 同模式:在 fetch_all.js 末尾旁路调用,不进基准 registry
 // (避免被 validator.js 当基准源校验、污染 quality.js 与综合分口径 —— 本模块是非分数数据)。
 //
@@ -8,9 +9,11 @@
 //   github    双路合并:Releases REST API 分页(按 created_at 排,给深度历史)+ releases.atom
 //             (按发布时间排,固定最新 10 条,补 API 排序漏掉的「建得早、发得晚」版本线)。
 //             单独用 Atom 不行:它只回 10 条,openai/codex 最新 10 条只跨 1.5 天,撑不起两周窗口。
-//   qoder     qoder.com/changelog 的 Next.js RSC payload(self.__next_f)内嵌 JSON 条目。
+//   qoder     docs.qoder.cn 更新日志页服务端渲染的 update-label/description/content 区块;
+//             Qoder CN(0.4.x)与 Qoder CN IDE(1.32.x)是两套版本编号,各占一页、各成一张卡。
 //   trae      trae.cn/changelog 服务端渲染的 versionEntry 区块;备源 trae.ai/api/changelog
-//             (飞书文档 block 树,带分页),仅主源解析出 0 条时启用。
+//             (飞书文档 block 树,带分页),仅主源解析出 0 条时启用。单页混排 TraeCode /
+//             TraeWork / TRAE APP 三种产品线标签,按 tool.products 拆卡、未列出者丢弃。
 //   zcode     zcode.z.ai/changelog 服务端渲染;日期是中文「2026年9月22日」。
 //   codebuddy codebuddy.cn/docs 文档页(Docusaurus / VitePress)的服务端渲染标题区块,
 //             标题自带 id 锚点 -> 可做版本级深链;CodeBuddy 与 WorkBuddy 共用此解析器。
@@ -245,12 +248,12 @@ function parseQoder(html, tool) {
   return out;
 }
 
-// ===== 解析器:Qoder CN 更新日志(docs.qoder.cn/product-overview/qoder-update-log) =====
+// ===== 解析器:Qoder CN 更新日志(docs.qoder.cn/product-overview/{qoder,qoder-cn-ide}-update-log) =====
 // 文档站的更新块带稳定的 data-component-part 标记,且正文本身是中文:
 //   <div data-component-part="update-label">2026年09月24日</div>
 //   <div data-component-part="update-description">Qoder 0.4.2</div>
 //   <div data-component-part="update-content"><h3>日常优化</h3><h4>优化</h4><ul><li>…</li></ul></div>
-// 注意这是 Qoder **CN** 版汇总(版本线 0.4.x),与国际版 qoder.com 的 1.31.x 是两套编号。
+// CN 桌面端(0.4.x)与 CN IDE(1.32.x)各占一页、两套编号,两页标记相同故共用本解析器。
 function parseQoderCn(html, tool) {
   var s = String(html || "");
   // 先按 update-label 切成「一段 = 一次更新」:description/update-content 都在本段内,
@@ -284,8 +287,14 @@ function parseQoderCn(html, tool) {
 //   <section class="versionEntry-XXX">
 //     <div class="metaItem-XXX date-XXX">2026-09-01</div>
 //     <div class="metaItem-XXX version-XXX">v<!-- -->3.3.93-96</div>   <- React 注释分片
-//     <span class="metaItem-XXX type-XXX">TraeCode</span>              <- 产品线,收进 tags
+//     <span class="metaItem-XXX type-XXX">TraeCode</span>              <- 产品线,用于拆卡
 //     <div class="versionContent-XXX"><ul><li>…</li></ul></div>
+// 一条页面混排 TraeCode / TraeWork / TRAE APP 三条产品线,故按 tool.products 分卡:
+// 列出的产品线才收(未列出的含 TRAE APP 一律丢弃),标签本身不再重复输出 —— 卡片标题已是产品线。
+function traeProduct(tool, product) {
+  return !tool.products || tool.products.indexOf(product) >= 0;
+}
+
 function parseTraeCn(html, tool) {
   var out = [];
   var re = /<section\b[^>]*class="[^"]*versionEntry-[^"]*"[^>]*>([\s\S]*?)<\/section>/gi, s;
@@ -295,13 +304,14 @@ function parseTraeCn(html, tool) {
       var m = block.match(new RegExp('class="[^"]*' + cls + '-[^"]*"[^>]*>([\\s\\S]*?)<(?:/div|/span)>', "i"));
       return m ? inlineText(m[1].replace(/<!--[\s\S]*?-->/g, "")) : "";
     }
-    var version = field("version"), dateRaw = field("date");
+    var version = field("version"), dateRaw = field("date"), product = field("type");
+    if (!traeProduct(tool, product)) continue;
     var content = block.match(/<div\b[^>]*class="[^"]*versionContent-[^"]*"([^>]*)>([\s\S]*)$/i);
     var it = mkEntry(tool, {
       version: version.replace(/^[vV]/, ""),
       title: version || tool.name,
       dateRaw: dateRaw,
-      tags: [field("type")].filter(Boolean),
+      tags: tool.products ? [] : [product].filter(Boolean),
       url: tool.changelogUrl,
       body: content ? htmlToBody(content[2]) : ""
     });
@@ -335,15 +345,18 @@ function parseTraeBlocks(jsonText, tool) {
   var out = [], cur = null;
   function flush() {
     if (!cur) return;
-    var it = mkEntry(tool, {
-      version: cur.version.replace(/^[vV]/, ""),
-      title: cur.version || tool.name,
-      dateRaw: cur.dateRaw,
-      tags: cur.tags,
-      url: tool.changelogUrl,
-      body: cur.lines.join("\n").trim()
-    });
-    if (it) out.push(it);
+    var product = cur.tags[0] || "";      // 表格 tag 列即产品线,同 parseTraeCn 的 type 字段
+    if (traeProduct(tool, product)) {
+      var it = mkEntry(tool, {
+        version: cur.version.replace(/^[vV]/, ""),
+        title: cur.version || tool.name,
+        dateRaw: cur.dateRaw,
+        tags: tool.products ? cur.tags.slice(1) : cur.tags,
+        url: tool.changelogUrl,
+        body: cur.lines.join("\n").trim()
+      });
+      if (it) out.push(it);
+    }
     cur = null;
   }
   blocks.forEach(function (b) {
@@ -727,7 +740,7 @@ async function applyTranslations(tools, oldIndex) {
 // ===== 主入口 =====
 async function updateChangelog() {
   var cfg = CONFIG.changelog, today = CONFIG.TODAY;
-  console.log("[changelog] 抓取 AI 编程工具更新日志 data/" + cfg.outFile);
+  console.log("[changelog] 抓取 Agent 工具更新日志 data/" + cfg.outFile);
 
   var results = await Promise.all(cfg.tools.map(function (t) { return fetchTool(t); }));
 
@@ -776,14 +789,16 @@ async function updateChangelog() {
     updated: today,
     refreshedAt: CONFIG.REFRESHED_AT,
     uiWindowDays: cfg.uiWindowDays,
-    desc: "9 个 AI 编程工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新," +
+    desc: "11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新," +
       "「最近一次更新」超出 " + cfg.uiWindowDays + " 天时不显示卡片",
     tools: tools
   };
   var header =
-    "// AI 编程工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)\n" +
-    "// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;Qoder 取 docs.qoder.cn 更新日志页;" +
-    "Trae/ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +
+    "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)\n" +
+    "// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;" +
+    "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
+    "TraeCode / TraeWork 同取 trae.cn/changelog 并按产品线拆分;" +
+    "ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +
     "// 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,展示窗口由前端控制\n" +
     "// 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新\n" +
     "//   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期\n" +

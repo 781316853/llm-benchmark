@@ -472,9 +472,9 @@ module.exports = {
     windowVar: "CODINGPLAN"
   },
 
-  // ===== AI 编程工具更新日志(scripts/lib/changelog.js 使用,不进基准管线) =====
-  // 汇总 9 个 AI 编程工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
-  // 不进 registry/校验器,仅「编程工具更新日志」页展示。
+  // ===== AI Agent 工具更新日志(scripts/lib/changelog.js 使用,不进基准管线) =====
+  // 汇总 11 个 Agent 工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
+  // 不进 registry/校验器,仅「Agent工具更新日志」页展示。
   // 口径(2026-09-24 与需求方确认):
   //   ① 只收正式版 —— prerelease/draft 与 tag 尾缀 -alpha/-beta/-rc 一律不入库。
   //      实测依据:openai/codex 最新 10 个 release 只跨 1.5 天且多为 rust-v0.158.0-alpha.8,
@@ -503,8 +503,9 @@ module.exports = {
     pageTimeoutMs: 45000,
     // 工具定义。kind:
     //   github   —— GitHub Releases REST API 分页(4 家;Atom feed 只回 10 条,跨不过两周,不可用)
-    //   qoder    —— qoder.com/changelog 的 Next.js RSC payload 内嵌 JSON
-    //   trae     —— trae.cn/changelog 服务端渲染 HTML(备源 trae.ai/api/changelog 飞书 block 树)
+    //   qoder    —— docs.qoder.cn 更新日志页服务端渲染(Qoder CN 与 Qoder CN IDE 各一页)
+    //   trae     —— trae.cn/changelog 服务端渲染 HTML(备源 trae.ai/api/changelog 飞书 block 树);
+    //               单页混排多条产品线,由 tools[].products 按标签拆成多张卡
     //   zcode    —— zcode.z.ai/changelog 服务端渲染(日期为中文「2026年9月22日」)
     //   codebuddy—— codebuddy.cn/docs 文档页服务端渲染(CodeBuddy 与 WorkBuddy 同框架共用)
     // 各家源站可用性均于 2026-09-24 实测确认;Kimi 官方文档站是 VitePress 客户端渲染
@@ -523,15 +524,26 @@ module.exports = {
       { id: "kimi-code", name: "Kimi Code", vendor: "Moonshot AI", kind: "github",
         repo: "MoonshotAI/kimi-code",
         changelogUrl: "https://github.com/MoonshotAI/kimi-code/releases" },
-      { id: "qoder", name: "Qoder", vendor: "阿里巴巴", kind: "qoder",
-        // Qoder CN 文档站「更新日志」(2026-09-24 按需求方指定改用此源站,原为 qoder.com/changelog)。
-        // 该页汇总 Qoder CN 的更新记录、正文本身是中文,版本线 0.4.x 与国际版 qoder.com 的 1.31.x 是两套编号。
+      // Qoder 两条产品线的版本编号互不相干,各占一张卡(2026-09-24 按需求方指定分家):
+      //   CN 桌面端 0.4.x 与 IDE 1.32.x,两页都是 docs.qoder.cn 服务端渲染的同一套 update-* 标记。
+      { id: "qoder-cn", name: "Qoder CN", vendor: "阿里巴巴", kind: "qoder",
         url: "https://docs.qoder.cn/product-overview/qoder-update-log",
         changelogUrl: "https://docs.qoder.cn/product-overview/qoder-update-log" },
-      { id: "trae", name: "Trae", vendor: "字节跳动", kind: "trae",
+      { id: "qoder-cn-ide", name: "Qoder CN IDE", vendor: "阿里巴巴", kind: "qoder",
+        url: "https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log",
+        changelogUrl: "https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log" },
+      // Trae 官方日志是单页混排,每条自带产品线标签(实测 TraeCode / TraeWork / TRAE APP 三种);
+      // 按 products 拆成两张卡,未列出的产品线(含 TRAE APP)整条丢弃。
+      { id: "traecode", name: "TraeCode", vendor: "字节跳动", kind: "trae",
         url: "https://www.trae.cn/changelog",
         changelogUrl: "https://www.trae.cn/changelog",
-        fallbackUrl: "https://www.trae.ai/api/changelog" },
+        fallbackUrl: "https://www.trae.ai/api/changelog",
+        products: ["TraeCode"] },
+      { id: "traework", name: "TraeWork", vendor: "字节跳动", kind: "trae",
+        url: "https://www.trae.cn/changelog",
+        changelogUrl: "https://www.trae.cn/changelog",
+        fallbackUrl: "https://www.trae.ai/api/changelog",
+        products: ["TraeWork"] },
       { id: "zcode", name: "ZCode", vendor: "智谱", kind: "zcode",
         url: "https://zcode.z.ai/changelog",
         changelogUrl: "https://zcode.z.ai/changelog" },
@@ -544,7 +556,7 @@ module.exports = {
     ],
 
     // ===== 中文翻译(英文条目译成中文;复用 news.translate 的端点与熔断实现) =====
-    // 只译各工具「当前显示的那一条」(最近一次更新,最多 9 条) —— 页面已改为每工具只渲染一条,
+    // 只译各工具「当前显示的那一条」(最近一次更新,最多 11 条) —— 页面已改为每工具只渲染一条,
     // 给不再显示的旧条目花额度没有收益。端点/失败转移沿用 news.translate(单一出处),
     // 此处只覆盖本模块需要的旋钮。
     translate: {

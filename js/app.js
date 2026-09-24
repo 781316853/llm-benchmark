@@ -1591,14 +1591,17 @@
       '<div class="note-line"><b>说明</b>综合单价(¥/亿 Token)与月用量为源站实测/计算值,按综合单价升序排列;完整套餐筛选与购买入口请前往源站查看。</div>';
   }
 
-  // ===== 9) 更新日志(9 个 AI 编程工具的官方 changelog;非分数数据,不参与综合分) =====
+  // ===== 9) 更新日志(11 个 Agent 工具的官方 changelog;非分数数据,不参与综合分) =====
   // 抓取端存全量条目,D.changelog(days) 按滚动窗口过滤;本页只做目录 + 卡片渲染。
   // 正文一律完整输出到 DOM(需求要求"保留全部更新日志"),仅在超长(>900 字)时默认折叠,
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
-  // data/changelog.js 含 9 个工具的全量历史(实测约 2.7MB),不进首屏脚本清单:
+  // data/changelog.js 含 11 个工具的全量历史(实测约 2.2MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
-  var CL_DATA_SRC = "data/changelog.js?v=20260924e";
+  var CL_DATA_SRC = "data/changelog.js?v=20260924f";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
+  // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
+  // 换戳重注入即可原地恢复,不必刷整页。
+  var clRetryStamp = "";
   var CL_FOLD_CHARS = 900;
   function clStatusBadge(t) {
     if (t.status === "stale") {
@@ -1644,7 +1647,7 @@
       if (clLoadState === "idle") {
         clLoadState = "loading";
         var s = document.createElement("script");
-        s.src = CL_DATA_SRC;
+        s.src = CL_DATA_SRC + clRetryStamp;
         s.onload = function () { clLoadState = "ready"; renderChangelog(); };
         s.onerror = function () { clLoadState = "failed"; renderChangelog(); };
         document.head.appendChild(s);
@@ -1656,7 +1659,8 @@
           ? "更新日志数据加载失败(网络或 data/changelog.js 缺失),重试本页或等待下次每日刷新。"
           : "暂无数据:抓取失败或尚未生成 data/changelog.js(待下次每日刷新后恢复)。";
       }
-      wrap.innerHTML = '<div class="cl-empty-page">' + esc(descEl ? descEl.textContent : "暂无更新日志数据。") + '</div>';
+      wrap.innerHTML = '<div class="cl-empty-page">' + esc(descEl ? descEl.textContent : "暂无更新日志数据。") +
+        ' <button type="button" class="qc-scope-btn" data-cl-retry>重新加载数据</button></div>';
       var out0 = document.getElementById("clOutlineList");
       if (out0) out0.innerHTML = "";
       var cnt0 = document.getElementById("clOutlineCount");
@@ -1856,6 +1860,13 @@
     // 标签点击
     Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (b) {
       b.addEventListener("click", function () { showTab(b.dataset.tab); });
+      // 双击标签回到页首:总览矩阵与更新日志页都很长,滚到中段后双击比滚轮快得多。
+      // 前一次 click 已切过页,这里只管滚动;preventDefault 掐掉双击选词(否则标签文字会被选中)。
+      b.addEventListener("dblclick", function (e) {
+        e.preventDefault();
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      });
     });
     // 权威基准页大纲:点击条目快速跳转(事件委托挂在稳定父级 nav 上)
     var outlineList = document.getElementById("authOutlineList");
@@ -1882,9 +1893,16 @@
       state.changelogDays = parseInt(b.getAttribute("data-cl-days"), 10) || 0;
       renderChangelog();
     });
-    // 更新日志页:超长正文的展开/收起(事件委托 —— 卡片随窗口切换重建)
+    // 更新日志页:超长正文的展开/收起 + 数据脚本加载失败后的原地重试(事件委托 —— 卡片随窗口切换重建)
     var clWrap = document.getElementById("clWrap");
     if (clWrap) clWrap.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("[data-cl-retry]")) {
+        // 换戳重注入:同一 URL 的失败结果可能被浏览器直接回吐,不带新戳等于重试无效
+        clRetryStamp = "&retry=" + Date.now();
+        clLoadState = "idle";
+        renderChangelog();
+        return;
+      }
       var b = e.target.closest ? e.target.closest("[data-cl-fold]") : null;
       if (!b) return;
       var body = b.parentNode && b.parentNode.querySelector(".cl-body");
