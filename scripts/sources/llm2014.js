@@ -35,13 +35,14 @@ const NOTES_FALLBACK = {
     { k: "I", t: "iOS App + Rust Server" },
     { k: "J", t: "Web + 2D Animation" },
     { k: "K", t: "Harmony OS App + C++ Native" },
-    { k: "L", t: "Metal + 图形算法优化" }
+    { k: "L", t: "Metal + 图形算法优化" },
+    { k: "M", t: "科学细节的教学可视化展示" }
   ]
 };
 const I18N_PATH = "assets/i18n.js";
 const I18N_GRADE_KEYS = [["A", "gradeA"], ["B", "gradeB"], ["C", "gradeC"], ["D", "gradeD"],
   ["Failed", "failed"], ["Pass", "pass"], ["Skip", "skip"], ["Pending", "pending"]];
-const I18N_PROJECT_KEYS = ["C", "E", "F", "H", "I", "J", "K", "L"];
+const I18N_PROJECT_KEYS = ["C", "E", "F", "H", "I", "J", "K", "L", "M"];
 
 // 从 i18n.js 源文本提取指定 key 的 zh-CN 文案;key 形如 "codev3Note.gradeA" / "meta.codev3CellFormat"
 function pickI18n(text, key) {
@@ -213,6 +214,7 @@ class Llm2014Source extends BaseSource {
 // 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
 // 项目列表名保留源站字母代号(如 "MacOS App(C)"),对应 notes.projects 的项目说明;
 // 2026-08 起项目含新增 "Metal(L)" 与 "Rust App(G)",模型名可能不带厂商前缀(如 "Opus 5 (max)")。
+// 2026-09 起新增 "Science(M)"(科学细节的教学可视化展示)列;
 // 数值化规则在 js/data.js 中统一处理。
 // 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。

@@ -5,14 +5,15 @@
 // 2026-08 起等级单元格可带单任务测试成本括号,如 "7/A+(90.52)"(成本 ¥)。
 // 项目列表名保留源站字母代号(如 "MacOS App(C)"),对应 notes.projects 的项目说明;
 // 2026-08 起项目含新增 "Metal(L)" 与 "Rust App(G)",模型名可能不带厂商前缀(如 "Opus 5 (max)")。
+// 2026-09 起新增 "Science(M)"(科学细节的教学可视化展示)列;
 // 数值化规则在 js/data.js 中统一处理。
 // 注:月份键为报告月(reportDate),与新版站点数据集键一致;2026-04 报告月(csv 2026-01)
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-09%7C0",
-  updated: "2026-09-23",
-  refreshedAt: "2026-09-23 22:18",
+  updated: "2026-09-24",
+  refreshedAt: "2026-09-24 08:33",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -88,6 +89,10 @@ window.LLM2014 = {
     {
       'k': 'L',
       't': 'Metal + 图形算法优化'
+    },
+    {
+      'k': 'M',
+      't': '科学细节的教学可视化展示'
     }
   ]
 },
