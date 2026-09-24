@@ -1,4 +1,4 @@
-// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 2026-09-23)
+// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 2026-09-24)
 // 来源:https://cognition.com/data/frontiercode-leaderboard/data.json(榜单页:https://cognition.com/frontiercode)
 // 字段:score=标准分(%,main 子集下各档位最优);passRate=原始正确率(%);harness=评测所用厂商 CLI;
 //      costUsd/tokens/steps=该最优档位下的每任务平均成本/tokens/步数;flaggedRate=被判定不公平联网的运行比例(%)
@@ -9,8 +9,8 @@ window.FRONTIERCODE = {
   'boardUrl': 'https://cognition.com/frontiercode',
   'officialUrl': 'https://cognition.com/frontiercode',
   'version': '1.1',
-  'updated': '2026-09-23',
-  'refreshedAt': '2026-09-23 22:18',
+  'updated': '2026-09-24',
+  'refreshedAt': '2026-09-24 14:23',
   'stats': {
     'tasks': 100,
     'entries': 40

@@ -1,4 +1,4 @@
-// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-09-23
+// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-09-24
 // 来源:https://www.codingplan.fyi/model-comparison-presets.json + plans.json + plan-models.json + models.json + platforms.json(官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:groups[]=固定精选模型分组(kind single=单模型列/multi=多模型列);row=比价行
 //   (platform 平台/plan 套餐/qualifier 谷峰等档位标签/price 折算人民币月价按量行计「按量」/
@@ -9,14 +9,14 @@ window.CODINGPLAN = {
   'source': 'Coding Plan 对比(codingplan.fyi)',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-09-23',
-  'siteUpdated': '2026.9.22',
-  'refreshedAt': '2026-09-23 22:18',
+  'updated': '2026-09-24',
+  'siteUpdated': '2026.9.24',
+  'refreshedAt': '2026-09-24 14:23',
   'usdToCnyRate': 6.8,
   'stats': {
-    'groups': 6,
-    'rows': 159,
-    'points': 398
+    'groups': 7,
+    'rows': 150,
+    'points': 404
   },
   'presetTitle': '快速对比',
   'presetDesc': '固定精选常用模型与套餐，帮助快速找到值得进一步比较的选项。',
@@ -528,89 +528,77 @@ window.CODINGPLAN = {
       ]
     },
     {
-      'id': 'gpt-5-6-luna',
-      'title': 'GPT 5.6 Luna',
+      'id': 'gpt-6-sol',
+      'title': 'GPT 6 Sol',
       'kind': 'single',
       'desc': '',
       'rows': [
         {
           'platform': 'Codex',
-          'model': 'GPT-5.6-Luna',
+          'model': 'GPT-6-Sol',
           'plan': 'Pro *20',
           'qualifier': '',
           'price': '¥1,360 / 月',
-          'unit': '¥1.428 / 亿',
-          'usage': '960亿',
+          'unit': '¥7.072 / 亿',
+          'usage': '192亿',
           'featured': true
         },
         {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Go',
-          'qualifier': '',
-          'price': '¥6.8 / 月',
-          'unit': '¥2.38 / 亿',
-          'usage': '2.87亿',
-          'featured': false
-        },
-        {
           'platform': 'Codex',
-          'model': 'GPT-5.6-Luna',
+          'model': 'GPT-6-Sol',
           'plan': 'Plus',
           'qualifier': '',
           'price': '¥136 / 月',
-          'unit': '¥2.856 / 亿',
-          'usage': '48亿',
+          'unit': '¥14.144 / 亿',
+          'usage': '9.6亿',
           'featured': true
         },
         {
           'platform': 'Codex',
-          'model': 'GPT-5.6-Luna',
+          'model': 'GPT-6-Sol',
           'plan': 'Pro *5',
           'qualifier': '',
           'price': '¥680 / 月',
-          'unit': '¥2.856 / 亿',
-          'usage': '240亿',
+          'unit': '¥14.144 / 亿',
+          'usage': '48亿',
+          'featured': true
+        }
+      ]
+    },
+    {
+      'id': 'gpt-6-luna',
+      'title': 'GPT 6 Luna',
+      'kind': 'single',
+      'desc': '',
+      'rows': [
+        {
+          'platform': 'Codex',
+          'model': 'GPT-6-Luna',
+          'plan': 'Pro *20',
+          'qualifier': '',
+          'price': '¥1,360 / 月',
+          'unit': '¥0.68 / 亿',
+          'usage': '1,920亿',
           'featured': true
         },
         {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'GOAT',
-          'qualifier': '',
-          'price': '¥68 / 月',
-          'unit': '¥11.832 / 亿',
-          'usage': '5.74亿',
-          'featured': false
-        },
-        {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Pro',
+          'platform': 'Codex',
+          'model': 'GPT-6-Luna',
+          'plan': 'Plus',
           'qualifier': '',
           'price': '¥136 / 月',
-          'unit': '¥15.776 / 亿',
-          'usage': '8.61亿',
-          'featured': false
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Go',
-          'qualifier': '[272K]',
-          'price': '¥68 / 月',
-          'unit': '¥15.776 / 亿',
-          'usage': '4.3亿',
+          'unit': '¥1.428 / 亿',
+          'usage': '96亿',
           'featured': true
         },
         {
-          'platform': 'OpenCode',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Go',
+          'platform': 'Codex',
+          'model': 'GPT-6-Luna',
+          'plan': 'Pro *5',
           'qualifier': '',
-          'price': '¥68 / 月',
-          'unit': '¥30.26 / 亿',
-          'usage': '2.25亿',
+          'price': '¥680 / 月',
+          'unit': '¥1.428 / 亿',
+          'usage': '480亿',
           'featured': true
         }
       ]
@@ -619,16 +607,36 @@ window.CODINGPLAN = {
       'id': 'high-volume-models',
       'title': '甜品级模型对比',
       'kind': 'multi',
-      'desc': '包含：DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、GPT-5.6-Luna',
+      'desc': '包含：DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、GPT-6-Luna',
       'rows': [
         {
           'platform': 'Codex',
-          'model': 'GPT-5.6-Luna',
+          'model': 'GPT-6-Luna',
           'plan': 'Pro *20',
           'qualifier': '',
           'price': '¥1,360 / 月',
+          'unit': '¥0.68 / 亿',
+          'usage': '1,920亿',
+          'featured': true
+        },
+        {
+          'platform': 'Codex',
+          'model': 'GPT-6-Luna',
+          'plan': 'Plus',
+          'qualifier': '',
+          'price': '¥136 / 月',
           'unit': '¥1.428 / 亿',
-          'usage': '960亿',
+          'usage': '96亿',
+          'featured': true
+        },
+        {
+          'platform': 'Codex',
+          'model': 'GPT-6-Luna',
+          'plan': 'Pro *5',
+          'qualifier': '',
+          'price': '¥680 / 月',
+          'unit': '¥1.428 / 亿',
+          'usage': '480亿',
           'featured': true
         },
         {
@@ -653,16 +661,6 @@ window.CODINGPLAN = {
         },
         {
           'platform': 'Command Code',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Go',
-          'qualifier': '',
-          'price': '¥6.8 / 月',
-          'unit': '¥2.38 / 亿',
-          'usage': '2.87亿',
-          'featured': false
-        },
-        {
-          'platform': 'Command Code',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'GOAT',
           'qualifier': '',
@@ -680,26 +678,6 @@ window.CODINGPLAN = {
           'unit': '¥2.584 / 亿',
           'usage': '2.61亿',
           'featured': false
-        },
-        {
-          'platform': 'Codex',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Plus',
-          'qualifier': '',
-          'price': '¥136 / 月',
-          'unit': '¥2.856 / 亿',
-          'usage': '48亿',
-          'featured': true
-        },
-        {
-          'platform': 'Codex',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Pro *5',
-          'qualifier': '',
-          'price': '¥680 / 月',
-          'unit': '¥2.856 / 亿',
-          'usage': '240亿',
-          'featured': true
         },
         {
           'platform': 'OpenCode',
@@ -952,16 +930,6 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'GOAT',
-          'qualifier': '',
-          'price': '¥68 / 月',
-          'unit': '¥11.832 / 亿',
-          'usage': '5.74亿',
-          'featured': false
-        },
-        {
           'platform': '阿里·百炼 Token Plan',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Pro',
@@ -1032,26 +1000,6 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Pro',
-          'qualifier': '',
-          'price': '¥136 / 月',
-          'unit': '¥15.776 / 亿',
-          'usage': '8.61亿',
-          'featured': false
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Go',
-          'qualifier': '[272K]',
-          'price': '¥68 / 月',
-          'unit': '¥15.776 / 亿',
-          'usage': '4.3亿',
-          'featured': true
-        },
-        {
           'platform': 'DeepSeek',
           'model': 'DeepSeek-V4.1-Flash',
           'plan': '按量 API',
@@ -1109,16 +1057,6 @@ window.CODINGPLAN = {
           'price': '¥39 / 月',
           'unit': '¥29.69 / 亿',
           'usage': '1.31亿',
-          'featured': true
-        },
-        {
-          'platform': 'OpenCode',
-          'model': 'GPT-5.6-Luna',
-          'plan': 'Go',
-          'qualifier': '',
-          'price': '¥68 / 月',
-          'unit': '¥30.26 / 亿',
-          'usage': '2.25亿',
           'featured': true
         },
         {
@@ -1187,16 +1125,36 @@ window.CODINGPLAN = {
       'id': 'sota-models',
       'title': 'SOTA模型对比',
       'kind': 'multi',
-      'desc': '包含：GPT-6-Astra、Claude Opus 5、GPT-5.6-Sol、GLM-5.3、Kimi-K3',
+      'desc': '包含：GPT-6-Astra、GPT-6-Sol、Claude Opus 5、GLM-5.3、Kimi-K3',
       'rows': [
         {
           'platform': 'Codex',
-          'model': 'GPT-5.6-Sol',
+          'model': 'GPT-6-Sol',
           'plan': 'Pro *20',
           'qualifier': '',
           'price': '¥1,360 / 月',
+          'unit': '¥7.072 / 亿',
+          'usage': '192亿',
+          'featured': true
+        },
+        {
+          'platform': 'Codex',
+          'model': 'GPT-6-Sol',
+          'plan': 'Plus',
+          'qualifier': '',
+          'price': '¥136 / 月',
           'unit': '¥14.144 / 亿',
-          'usage': '96亿',
+          'usage': '9.6亿',
+          'featured': true
+        },
+        {
+          'platform': 'Codex',
+          'model': 'GPT-6-Sol',
+          'plan': 'Pro *5',
+          'qualifier': '',
+          'price': '¥680 / 月',
+          'unit': '¥14.144 / 亿',
+          'usage': '48亿',
           'featured': true
         },
         {
@@ -1278,26 +1236,6 @@ window.CODINGPLAN = {
           'unit': '¥23.46 / 亿',
           'usage': '23.2亿',
           'featured': false
-        },
-        {
-          'platform': 'Codex',
-          'model': 'GPT-5.6-Sol',
-          'plan': 'Plus',
-          'qualifier': '',
-          'price': '¥136 / 月',
-          'unit': '¥28.356 / 亿',
-          'usage': '4.8亿',
-          'featured': true
-        },
-        {
-          'platform': 'Codex',
-          'model': 'GPT-5.6-Sol',
-          'plan': 'Pro *5',
-          'qualifier': '',
-          'price': '¥680 / 月',
-          'unit': '¥28.356 / 亿',
-          'usage': '24亿',
-          'featured': true
         },
         {
           'platform': 'Kimi',
@@ -1460,16 +1398,6 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Sol',
-          'plan': 'GOAT',
-          'qualifier': '',
-          'price': '¥68 / 月',
-          'unit': '¥84.66 / 亿',
-          'usage': '0.803亿',
-          'featured': false
-        },
-        {
           'platform': 'Codex',
           'model': 'GPT-6-Astra',
           'plan': 'Plus',
@@ -1548,16 +1476,6 @@ window.CODINGPLAN = {
           'unit': '¥117.86 / 亿',
           'usage': '0.84亿',
           'featured': true
-        },
-        {
-          'platform': 'Command Code',
-          'model': 'GPT-5.6-Sol',
-          'plan': 'Pro',
-          'qualifier': '',
-          'price': '¥136 / 月',
-          'unit': '¥148.104 / 亿',
-          'usage': '0.918亿',
-          'featured': false
         },
         {
           'platform': 'Command Code',
