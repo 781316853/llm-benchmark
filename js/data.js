@@ -449,7 +449,18 @@
       .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, modeldial} 用于矩阵/雷达 =====
+  // ===== 无机酸 · AI 前端实测(独立页;计入综合分(「第三方实测」组计分组之一,权重 10%)与命中数) =====
+  // 主榜为模型级条目(源站按两任务总分排名);score = 两任务分之和,单任务 0-100,故量纲 0-200。
+  // 每模型跑在其「自家 agent harness」(agent 字段:cc/codex/zcode/qoder/cursor/antigravity/devin)下,
+  // n=1 单次实测;lo/hi 为源站人工标注的不确定区间(非置信区间)。模型名源站已是纯展示名(不含档位),
+  // 直接喂 canon()。
+  function wujisuan() {
+    var src = window.WUJISUAN || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.name) }); });
+  }
+
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, modeldial, wujisuan} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起与 benchcad 等其余权威基准一样仅展示、不进统一视图;
@@ -457,7 +468,7 @@
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, modeldial: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, modeldial: null, wujisuan: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -520,8 +531,19 @@
           name: m.model, effort: m.effort, provider: m.provider
         };
     });
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / AI 能力 / ModelDial 共 6 基准组;
-    // AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 6),矩阵中仍分别两列展示;
+    // 无机酸 · AI 前端实测:两任务总分(0-200)。综合分自 2026-09-22 起走「榜内稳健 z 分」(尺度不变),
+    // 故此处不折算成百分制(同 webdev 列直接取 Elo 原值的先例);同名取最高分条目。
+    wujisuan().forEach(function (m) {
+      if (m.score == null) return;
+      var e = ensure(m.canon);
+      if (!e.wujisuan || m.score > e.wujisuan.score)
+        e.wujisuan = {
+          score: m.score, lo: m.lo, hi: m.hi, rank: m.rank,
+          agent: m.agent, effort: m.effort, name: m.name, date: m.date
+        };
+    });
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / AI 能力 / ModelDial / 无机酸前端实测
+    // 共 7 基准组;AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 7),矩阵中仍分别两列展示;
     // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE/NL2Repo)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
@@ -531,17 +553,19 @@
       if (e.tbench) e.benchCount++;
       if (e.aicapFe || e.aicapBe) e.benchCount++;
       if (e.modeldial) e.benchCount++;
+      if (e.wujisuan) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / ModelDial 共 6 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / ModelDial / 无机酸前端实测 共 7 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, wj = window.WUJISUAN || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
     var mdTop = modeldial()[0] || {};
+    var wjTop = wujisuan()[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
@@ -572,11 +596,15 @@
       // ModelDial 的模型标识是 slug,卡片展示用 canon() 归一后的显示名(与矩阵一致)
       { key: "modeldial", name: "ModelDial 雷达", tag: "后端 40% / 前端 30% / 知识 30%", url: md.url, updated: md.updated,
         stats: [{ l: "模型", v: (md.models || []).length }, { l: "配置", v: (md.configs || []).length }],
-        top: (mdTop.canon ? mdTop.canon.id : mdTop.model) + " · " + (mdTop.overall != null ? mdTop.overall + " / 100" : "—") }
+        top: (mdTop.canon ? mdTop.canon.id : mdTop.model) + " · " + (mdTop.overall != null ? mdTop.overall + " / 100" : "—") },
+      // 无机酸前端实测:总分 = 两任务分之和(每任务 0-100),卡片标注实测所用 harness
+      { key: "wujisuan", name: "无机酸 · AI 前端实测", tag: "两个真实前端任务 · 总分 0-200", url: wj.url, updated: wj.updated,
+        stats: [{ l: "模型", v: (wj.models || []).length }, { l: "任务", v: (wj.tasks || []).length }],
+        top: (wjTop.canon ? wjTop.canon.id : wjTop.name) + " · " + (wjTop.score != null ? wjTop.score + " / 200" : "—") }
     ];
   }
 
-  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-6);用于"仅跨榜模型"过滤
+  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-7);用于"仅跨榜模型"过滤
   function hitCount(canonId, llmMonthKey) {
     var u = unified(llmMonthKey);
     var e = u[canonId];
@@ -606,6 +634,37 @@
     if (llmName && isNewRaw("llm", llmName)) return true;
     if (tbName && isNewRaw("tbench", tbName)) return true;
     return false;
+  }
+
+  // ===== AI 编程工具更新日志(「编程工具更新日志」页;非分数数据,不参与综合分与命中数) =====
+  // 抓取端在 data/changelog.js 存各源可得的全量条目,页面**每个工具只渲染最近一次更新**;
+  // days 是「这次更新是否还算新」的门槛(前端 14/30/全部 切换),不是条目条数的裁剪。
+  // days<=0 表示不限。窗口基准取真实的今天而非 data 的 updated:
+  // 否则 CI 连续几天不落地时,窗口会跟着数据一起滞后,把早已过期的条目算进窗口内。
+  function dayOffset(dateStr, delta) {
+    var t = parseDay(dateStr) + delta * 86400000;
+    return isFinite(t) ? new Date(t).toISOString().slice(0, 10) : "";
+  }
+  function changelog(days) {
+    var src = window.CHANGELOG;
+    if (!src || !Array.isArray(src.tools)) return null;
+    var win = days == null ? (src.uiWindowDays || 14) : Number(days);
+    var cutoff = win > 0 ? dayOffset(new Date().toISOString().slice(0, 10), -(win - 1)) : "";
+    var tools = src.tools.map(function (t) {
+      // 条目在抓取端已按日期降序排好,首条即该工具最近一次更新
+      var all = t.entries || [];
+      var latest = all[0] || null;
+      var inWindow = latest && (!cutoff || latest.date >= cutoff);
+      return Object.assign({}, t, {
+        entries: inWindow ? [latest] : [],
+        total: all.length,
+        latestDate: latest ? latest.date : ""
+      });
+    });
+    return {
+      updated: src.updated, refreshedAt: src.refreshedAt, desc: src.desc,
+      uiWindowDays: src.uiWindowDays || 14, windowDays: win, cutoff: cutoff, tools: tools
+    };
   }
 
   // 暴露
@@ -641,8 +700,11 @@
     frontiercode: frontiercode,
     modeldial: modeldial,
     modeldialConfigs: modeldialConfigs,
+    wujisuan: wujisuan,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
+    // AI 编程工具更新日志(「编程工具更新日志」页;无数据文件时返回 null)
+    changelog: changelog,
     unified: unified,
     hitCount: hitCount,
     benchSummary: benchSummary,
@@ -654,6 +716,6 @@
     src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
       tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
       arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH,
-      cursorbench: window.CURSORBENCH, frontiercode: window.FRONTIERCODE, modeldial: window.MODELDIAL }
+      cursorbench: window.CURSORBENCH, frontiercode: window.FRONTIERCODE, modeldial: window.MODELDIAL, wujisuan: window.WUJISUAN }
   };
 })();

@@ -206,20 +206,44 @@ async function fetchSource(src, today) {
 // 是否已含中文字符(CJK 统一表意文字);含中文则无需翻译
 function hasCJK(s) { return /[\u4e00-\u9fff]/.test(String(s || "")); }
 
-// 端点健康状态(仅单轮 updateNews 内有效,开轮时由 resetEndpointState 重置):
+// 端点健康状态(仅单轮抓取内有效,开轮时由 resetEndpointState 重置):
 // 配额耗尽的端点或连续失败达阈值的端点,本轮后续条目直接跳过。
 // 修掉旧实现的浪费——以前 quotaFinished 只让"当前这一次"返回 null,循环会拿同一个
 // 已耗尽的端点把后面每一条都重打一遍,一轮白打十几发请求。
+// 该状态为模块级共享:news 与 changelog 同进程先后翻译,一个源探到配额耗尽另一个也不再空打。
 var endpointState = { exhausted: {}, failStreak: {} };
 
 function resetEndpointState() {
   endpointState = { exhausted: {}, failStreak: {} };
 }
 
-// 调用免费翻译接口(按 config.news.translate.endpoints 顺序失败转移);
+// 译文清洗:解 HTML 实体、去零宽字符、压缩行内空白,但**保留换行**。
+// 不能直接用 cleanText —— 它会把 \n 一并压成空格。news 传进来的都是单行标题/摘要,压不压无差别;
+// 而 changelog 把长正文按行分成多包一次请求多行,换行是「译文与原文行一一对应」的唯一依据,
+// 压掉之后行数校验必然失败,长条目就一条也译不出来(实测:177 行的条目 81 个请求全成功仍被判失败)。
+function cleanTranslation(s) {
+  return String(s || "")
+    .replace(/\r\n?/g, "\n")
+    .replace(/&#x([0-9a-fA-F]+);/g, function (m, h) { return String.fromCodePoint(parseInt(h, 16)); })
+    .replace(/&#(\d+);/g, function (m, d) { return String.fromCodePoint(Number(d)); })
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/[\u200b-\u200d\ufeff]/g, "")
+    .split("\n").map(function (l) { return l.replace(/[ \t]+/g, " ").trim(); }).join("\n")
+    .trim();
+}
+
+// 调用免费翻译接口(按 cfg.endpoints 顺序失败转移);cfg 默认取 config.news.translate,
+// 其他模块(如 changelog)传入自己的 translate 段即可复用这套端点转移 + 熔断逻辑。
 // 成功返回译文;全部端点不可用或配额耗尽返回 null(由调用方保留原文)
-async function translateToZh(text) {
-  var cfg = CONFIG.news.translate || {};
+async function translateToZh(text, cfgOverride) {
+  var cfg = cfgOverride || CONFIG.news.translate || {};
+  var logTag = cfg.logTag || "news";
   var q = encodeURIComponent(text);
   var maxStreak = cfg.maxFailStreak == null ? 3 : cfg.maxFailStreak;
   var endpoints = cfg.endpoints || [];
@@ -232,11 +256,11 @@ async function translateToZh(text) {
       var data = JSON.parse(resp);
       if (data && data.quotaFinished === true) {
         endpointState.exhausted[i] = "配额耗尽";
-        console.log("[news] 翻译端点 " + name + " 配额耗尽,本轮跳过其剩余请求");
+        console.log("[" + logTag + "] 翻译端点 " + name + " 配额耗尽,本轮跳过其剩余请求");
         continue; // 交给下一个端点
       }
       if (data && data.responseData && data.responseData.translatedText) {
-        var out = cleanText(data.responseData.translatedText);
+        var out = cleanTranslation(data.responseData.translatedText);
         if (out) { endpointState.failStreak[i] = 0; return out; }
       }
       endpointState.failStreak[i] = (endpointState.failStreak[i] || 0) + 1;
@@ -245,7 +269,7 @@ async function translateToZh(text) {
     }
     if (endpointState.failStreak[i] >= maxStreak) {
       endpointState.exhausted[i] = "连续失败 " + endpointState.failStreak[i] + " 次";
-      console.log("[news] 翻译端点 " + name + " " + endpointState.exhausted[i] + ",本轮跳过");
+      console.log("[" + logTag + "] 翻译端点 " + name + " " + endpointState.exhausted[i] + ",本轮跳过");
     }
   }
   return null;
@@ -386,6 +410,7 @@ module.exports = {
   updateNews: updateNews,
   // 导出解析工具,便于单测
   cleanText: cleanText,
+  cleanTranslation: cleanTranslation,   // 译文专用清洗(保留换行);changelog 多行分包依赖该不变量
   truncate: truncate,
   normalizeDate: normalizeDate,
   parseFeed: parseFeed,

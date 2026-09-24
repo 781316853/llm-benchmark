@@ -335,6 +335,28 @@ module.exports = {
       host: "modeldial.com", src: "aggregate",
       radarUrl: "https://modeldial.com/radar",
       methodUrl: "https://modeldial.com/method"
+    },
+    // ===== 无机酸 · AI 前端实测(B 站独立第三方实测,第三方实测组计分组之一)=====
+    wujisuan: {
+      // 「无机酸 · AI 前端实测」(B 站 UP 主 @无机酸-_-):真实前端任务端到端实测榜,
+      // 12 模型 × 2 任务(SupernovAI 品牌站 / 云山巨城体素场景)× 短/长提示 × 首轮/最终。
+      // 站点形态:展示页 https://www.bilibili.com/toy/wujisuan-ai-test/index.html 是 B 站 toy
+      //   「外壳页」(仅 8KB,内嵌一个跨域 sandbox iframe,自身不含任何分数);
+      //   iframe src 为 https://www.bilibilitoy.com/toy/wujisuan-ai-test/<toyId>-<版本号>/index.html,
+      //   其中 <toyId>-<版本号>(如 36188744578048-v17769)随每次上传变化,故须先抓外壳页提取当期路径。
+      //   内层页为静态 SPA(app.js 内唯一取数调用 fetch("./data/site.json")),
+      //   真实数据即该同域静态 JSON:单请求即得全榜 12 模型、72 条 task×round×prompt 明细、
+      //   2 个任务定义(含提示词全文)与长提示增益表,无需浏览器渲染。
+      // 量纲:单任务分 0-100,models[].total = 两任务分之和(源站自报 scoreRange [0,200]),
+      //   非百分制;综合分走榜内稳健 z 分(尺度不变),故不折算(同 arena_webdev Elo 先例)。
+      // 渠道:该榜唯一渠道即源站自身(独立个人实测,无厂商发布口径),按 T3 第三方评测处理(src=aggregate)。
+      // 口径提示:每模型跑在其「自家 agent harness」(cc/codex/zcode/qoder/cursor/antigravity/devin)下,
+      //   分数混杂模型与 harness 两者质量,且 n=1、仅有源站人工标注的 lo/hi 不确定区间。
+      url: "https://www.bilibili.com/toy/wujisuan-ai-test/index.html",
+      dataPath: "/data/site.json",
+      host: "www.bilibilitoy.com", src: "aggregate",
+      boardUrl: "https://www.bilibili.com/toy/wujisuan-ai-test/index.html",
+      methodUrl: "https://space.bilibili.com/521186488/channel/collectiondetail?sid=8786711"
     }
   },
 
@@ -359,7 +381,8 @@ module.exports = {
       //     均与主基准的原生量纲不可比;
       //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial"]
+      //   wujisuan(无机酸前端实测)为「两任务分之和」(每任务 0-100,合计 0-200),量纲同上不可比,故排除。
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "wujisuan"]
     },
     completeness: {
       // 每条记录必填字段
@@ -447,5 +470,88 @@ module.exports = {
     presetsUrl: "https://www.codingplan.fyi/model-comparison-presets.json",
     outFile: "codingplan.js",
     windowVar: "CODINGPLAN"
+  },
+
+  // ===== AI 编程工具更新日志(scripts/lib/changelog.js 使用,不进基准管线) =====
+  // 汇总 9 个 AI 编程工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
+  // 不进 registry/校验器,仅「编程工具更新日志」页展示。
+  // 口径(2026-09-24 与需求方确认):
+  //   ① 只收正式版 —— prerelease/draft 与 tag 尾缀 -alpha/-beta/-rc 一律不入库。
+  //      实测依据:openai/codex 最新 10 个 release 只跨 1.5 天且多为 rust-v0.158.0-alpha.8,
+  //      全收会让一个工具淹没整个标签页。
+  //   ② 全量入库、前端每个工具只渲染「最近一次更新」—— 本文件仍存各源可得的全部条目,
+  //      uiWindowDays 只是「这次更新算不算新」的门槛(前端可切 14/30/全部),不是条目条数的裁剪。
+  changelog: {
+    outFile: "changelog.js",
+    windowVar: "CHANGELOG",
+    uiWindowDays: 14,          // 「最近一次更新」的显示门槛(天):超出则该工具不显示卡片;前端可切 30 天/全部
+    includePrerelease: false,  // 是否收录预发布版(见上文口径 ①)
+    // 每工具条目上限:防 codex/opencode 这类高频发版工具把文件撑爆(全量入库下的护栏)
+    maxEntriesPerTool: 500,
+    // GitHub Releases API:未鉴权 60 次/小时且 Actions runner 共享 IP 易耗尽,
+    // 故在 refresh.yml 注入 GH_TOKEN(secrets.GITHUB_TOKEN,5000 次/小时)。
+    ghTokenEnvs: ["GH_TOKEN", "GITHUB_TOKEN"],
+    ghApiBase: "https://api.github.com",
+    ghPerPage: 100,
+    ghMaxPages: 5,             // 每仓库最多翻 5 页 = 500 个 release
+    // 单工具墙钟硬超时(ms),两路分开计时(见 changelog.js fetchGithubReleases):
+    // API 一路最多 150s、Atom 一路最多 60s,合计 210s 是 GitHub 完全不可达时的最坏耗时;
+    // 外层 toolDeadlineMs 300s 只是总闸。国内页面源 45s 足够。超时按该源失败处理(标 stale)。
+    ghApiTimeoutMs: 150000,
+    ghAtomTimeoutMs: 60000,
+    ghTimeoutMs: 300000,
+    pageTimeoutMs: 45000,
+    // 工具定义。kind:
+    //   github   —— GitHub Releases REST API 分页(4 家;Atom feed 只回 10 条,跨不过两周,不可用)
+    //   qoder    —— qoder.com/changelog 的 Next.js RSC payload 内嵌 JSON
+    //   trae     —— trae.cn/changelog 服务端渲染 HTML(备源 trae.ai/api/changelog 飞书 block 树)
+    //   zcode    —— zcode.z.ai/changelog 服务端渲染(日期为中文「2026年9月22日」)
+    //   codebuddy—— codebuddy.cn/docs 文档页服务端渲染(CodeBuddy 与 WorkBuddy 同框架共用)
+    // 各家源站可用性均于 2026-09-24 实测确认;Kimi 官方文档站是 VitePress 客户端渲染
+    // (HTML 内 0 个日期),故 Kimi Code 走 GitHub 而非文档站。
+    tools: [
+      { id: "codex", name: "Codex", vendor: "OpenAI", kind: "github",
+        repo: "openai/codex",
+        changelogUrl: "https://github.com/openai/codex/releases" },
+      { id: "claude-code", name: "Claude Code", vendor: "Anthropic", kind: "github",
+        repo: "anthropics/claude-code",
+        changelogUrl: "https://github.com/anthropics/claude-code/releases" },
+      { id: "opencode", name: "OpenCode", vendor: "Anomaly (原 SST)", kind: "github",
+        // sst/opencode 已 301 改名为 anomalyco/opencode
+        repo: "anomalyco/opencode",
+        changelogUrl: "https://github.com/anomalyco/opencode/releases" },
+      { id: "kimi-code", name: "Kimi Code", vendor: "Moonshot AI", kind: "github",
+        repo: "MoonshotAI/kimi-code",
+        changelogUrl: "https://github.com/MoonshotAI/kimi-code/releases" },
+      { id: "qoder", name: "Qoder", vendor: "阿里巴巴", kind: "qoder",
+        // Qoder CN 文档站「更新日志」(2026-09-24 按需求方指定改用此源站,原为 qoder.com/changelog)。
+        // 该页汇总 Qoder CN 的更新记录、正文本身是中文,版本线 0.4.x 与国际版 qoder.com 的 1.31.x 是两套编号。
+        url: "https://docs.qoder.cn/product-overview/qoder-update-log",
+        changelogUrl: "https://docs.qoder.cn/product-overview/qoder-update-log" },
+      { id: "trae", name: "Trae", vendor: "字节跳动", kind: "trae",
+        url: "https://www.trae.cn/changelog",
+        changelogUrl: "https://www.trae.cn/changelog",
+        fallbackUrl: "https://www.trae.ai/api/changelog" },
+      { id: "zcode", name: "ZCode", vendor: "智谱", kind: "zcode",
+        url: "https://zcode.z.ai/changelog",
+        changelogUrl: "https://zcode.z.ai/changelog" },
+      { id: "codebuddy", name: "CodeBuddy", vendor: "腾讯云", kind: "codebuddy",
+        url: "https://www.codebuddy.cn/docs/ide/release-notes/release-notes",
+        changelogUrl: "https://www.codebuddy.cn/docs/ide/release-notes/release-notes" },
+      { id: "workbuddy", name: "WorkBuddy", vendor: "腾讯云", kind: "codebuddy",
+        url: "https://www.codebuddy.cn/docs/workbuddy/Changelog",
+        changelogUrl: "https://www.codebuddy.cn/docs/workbuddy/Changelog" }
+    ],
+
+    // ===== 中文翻译(英文条目译成中文;复用 news.translate 的端点与熔断实现) =====
+    // 只译各工具「当前显示的那一条」(最近一次更新,最多 9 条) —— 页面已改为每工具只渲染一条,
+    // 给不再显示的旧条目花额度没有收益。端点/失败转移沿用 news.translate(单一出处),
+    // 此处只覆盖本模块需要的旋钮。
+    translate: {
+      enabled: true,
+      maxCharsPerRun: 25000,   // 单轮字符预算:MyMemory 配了联系邮箱为 5 万字符/天,每日 2 轮各 2.5 万
+      chunkMaxChars: 450,      // 单次请求字符上限(MyMemory 匿名接口约 500 字符/请求,长文须按行分块)
+      logTag: "changelog"      // 端点熔断日志前缀
+    }
   }
 };

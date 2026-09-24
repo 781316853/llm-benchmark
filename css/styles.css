@@ -126,6 +126,8 @@
   --bench-programbench: #A8E063;
   --bench-cursorbench: #6FC3FF;
   --bench-frontiercode: #E6A16B;
+  /* 无机酸 · AI 前端实测:黄绿(色相 65°,与 modeldial 金 37°、programbench 绿 95° 各距 ≥22°) */
+  --bench-wujisuan: #D6E05E;
 
   /* 图表配色:js/charts.js 从这些变量读取,保证图表与页面同主题 */
   --chart-text: #E6EDF3;
@@ -276,6 +278,8 @@ a:hover { text-decoration: underline; }
 .chart { width: 100%; height: 360px; }
 /* 散点图:数十个点带标签,画布更矮时标签必然互压,故单独加高 */
 .chart-scatter { height: 480px; }
+/* 横向条形图类目较多(如 12 个模型排行):矮画布会让条形与标签挤成一团 */
+.chart-tall { height: 520px; }
 
 /* ===== 控件 ===== */
 .controls { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 8px 0 4px; }
@@ -347,6 +351,7 @@ a:hover { text-decoration: underline; }
 .bv-programbench { --bv-color: var(--bench-programbench); }
 .bv-cursorbench { --bv-color: var(--bench-cursorbench); }
 .bv-frontiercode { --bv-color: var(--bench-frontiercode); }
+.bv-wujisuan { --bv-color: var(--bench-wujisuan); }
 .bv { color: var(--bv-color, inherit); }
 #matrixTable thead th.bv, .data-table thead th.bv { color: var(--bv-color, inherit); }
 /* 可排序表头:点击排序交互 */
@@ -523,6 +528,22 @@ a:hover { text-decoration: underline; }
 .md-details[open] > summary::before { transform: rotate(90deg); }
 .md-details > summary:hover { color: var(--text); }
 .md-details > .table-wrap { margin: 0; border: 0; border-top: 1px solid var(--border); border-radius: 0; }
+
+/* 无机酸实测页:区块小标题与任务卡(两列网格复用 .chart-row 的栅格) */
+.wj-sub-title { margin: 22px 0 8px; font-size: var(--fs-lg); font-weight: var(--fw-semibold); color: var(--text); }
+.wj-task { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+.wj-task-head { margin: 0; display: flex; align-items: baseline; gap: 8px; font-size: var(--fs-lg); }
+.wj-task-no { font-family: var(--font-num); color: var(--bench-wujisuan); font-size: var(--fs-sm); }
+.wj-task-sub { margin: 6px 0 0; color: var(--text-dim); font-size: var(--fs-sm); }
+.wj-task-desc { margin: 4px 0 0; color: var(--text-tertiary); font-size: var(--fs-sm); }
+.wj-task-prompt { margin: 10px 0 0; padding: 10px 12px; background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); white-space: pre-wrap; font-size: var(--fs-sm); line-height: var(--lh-snug); color: var(--text-dim); }
+.wj-task-long { margin-top: 8px; }
+.wj-task-long > summary { cursor: pointer; color: var(--text-tertiary); font-size: var(--fs-sm); }
+.wj-pre { margin: 8px 0 0; padding: 10px 12px; background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); white-space: pre-wrap; word-break: break-word;
+  font-family: var(--font-body); font-size: var(--fs-sm); line-height: var(--lh-base); color: var(--text-dim);
+  max-height: 360px; overflow-y: auto; }
 
 /* "仅跨榜/显示全部" 开关(滑块 + 品牌轨道) */
 .switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
@@ -851,6 +872,61 @@ a:hover { text-decoration: underline; }
 .tb-ver-switch { display: flex; align-items: center; gap: 8px; margin: 4px 0 12px; }
 .tb-ver-label { color: var(--text-tertiary); font-size: 12.5px; }
 .tb-ver-switch .qc-scope { display: inline-flex; }
+
+/* ===== 更新日志页(9 个 AI 编程工具的官方 changelog) =====
+   复用权威基准页的 .auth-layout 左目录骨架与套餐页的 .qc-scope 胶囊按钮组。
+   正文完整输出到 DOM,仅在 .is-clamped 时视觉上折叠(不删字,配合卡片下方的展开按钮)。 */
+.cl-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; margin: 0 0 16px; }
+.cl-toolbar .qc-scope { display: inline-flex; }
+.cl-hint { margin: 0; font-size: var(--fs-xs); color: var(--text-tertiary); }
+.cl-ol-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: var(--fs-sm); }
+.cl-ol-name.is-stale { color: var(--bd-warn-fg); }
+.cl-tool { margin-bottom: 30px; scroll-margin-top: 80px; }
+.cl-tool:last-child { margin-bottom: 0; }
+.cl-tool-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 0 0 8px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+.cl-tool-name { margin: 0; font-size: var(--fs-xl); font-weight: 700; line-height: var(--lh-tight); }
+.cl-tool-vendor { font-size: var(--fs-xs); color: var(--text-tertiary); }
+.cl-tool-count { font-size: var(--fs-2xs); font-weight: 600; color: var(--accent);
+  background: var(--brand-light); border-radius: var(--radius-pill); padding: 2px 9px;
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.cl-tool-src { margin-left: auto; font-size: var(--fs-sm); white-space: nowrap; }
+.cl-badge { font-size: var(--fs-2xs); font-weight: 600; border-radius: var(--radius-pill);
+  padding: 1px 7px; letter-spacing: .3px; white-space: nowrap; }
+.cl-badge--stale { color: var(--bd-warn-fg); background: var(--bd-warn-bg); border: 1px solid var(--bd-warn-bd); }
+.cl-badge--error { color: var(--bad); background: var(--panel-2); border: 1px solid var(--border); }
+/* 尚未译出的条目(免费额度按天分批补,或超出两周窗口):正文保留源站英文原文 */
+.cl-badge--orig { color: var(--text-tertiary); background: var(--bg-soft); border: 1px solid var(--border-subtle);
+  cursor: help; }
+.cl-entries { display: flex; flex-direction: column; gap: 12px; }
+.cl-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 13px 16px 11px; min-width: 0; }
+.cl-card-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cl-ver { font-size: var(--fs-lg); font-weight: 700; color: var(--text); line-height: var(--lh-tight);
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.cl-title { flex: 1 1 180px; min-width: 0; font-size: var(--fs-md); color: var(--text-dim);
+  line-height: var(--lh-snug); text-wrap: pretty; }
+.cl-date { margin-left: auto; font-size: var(--fs-xs); color: var(--text-tertiary); white-space: nowrap;
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.cl-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 7px; }
+.cl-tag { font-size: var(--fs-2xs); font-weight: 600; color: var(--text-tertiary); background: var(--bg-soft);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 0 7px; white-space: nowrap; }
+/* 正文:纯文本原样呈现(抓取端已把各家列表/表格压成 "- " 行),不截断、不摘要 */
+.cl-body { margin: 10px 0 0; font-size: var(--fs-sm); color: var(--text-dim); line-height: var(--lh-base);
+  white-space: pre-wrap; overflow-wrap: anywhere; text-wrap: pretty; }
+.cl-body.is-clamped { max-height: 108px; overflow: hidden; position: relative;
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent); }
+.cl-fold { appearance: none; border: 0; background: transparent; padding: 6px 0 0; cursor: pointer;
+  font-size: var(--fs-xs); color: var(--accent); }
+.cl-fold:hover { text-decoration: underline; }
+.cl-card-foot { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.cl-src { font-size: var(--fs-sm); white-space: nowrap; }
+.cl-empty { margin: 0; padding: 12px 14px; font-size: var(--fs-md); color: var(--text-tertiary);
+  background: var(--panel-2); border: 1px dashed var(--border); border-radius: var(--radius-sm); }
+.cl-empty-page { padding: 24px; text-align: center; color: var(--text-tertiary); font-size: var(--fs-md); }
 
 /* ===== 响应式 ===== */
 /* 中窄屏:两栏回落为上下堆叠(避免卡片被压成单列) */

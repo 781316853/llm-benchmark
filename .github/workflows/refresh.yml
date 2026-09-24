@@ -25,7 +25,10 @@ jobs:
     # 仅定时/手动触发时抓取数据;push 事件跳过(只部署,不重复刷新)
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
-    timeout-minutes: 15   # 兜底:防止数据抓取卡死而长期占用并发锁
+    timeout-minutes: 20   # 兜底:防止数据抓取卡死而长期占用并发锁
+    # 15 -> 20:「更新日志」源(scripts/lib/changelog.js)最坏情况要等满单工具墙钟超时
+    # (GitHub 四源 5 分钟,9 个工具并发取最大值),留足余量,免得整轮刷新被 kill 导致
+    # 所有源的改动一起丢掉(提交步骤在抓取之后)。
     # refresh 单独成组:只限制多个刷新之间串行(避免并发改写 data/*),
     # 新的刷新会抢占旧的卡死 run,确保锁不会无限期被占用。
     concurrency:
@@ -46,6 +49,12 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: 抓取多源数据并重写 data/*.js
+        # GH_TOKEN 供 scripts/lib/changelog.js 调 GitHub Releases API 用:未鉴权只有 60 次/小时,
+        # 而 Actions runner 是共享出口 IP,极易被同 IP 的其他使用者打满;用工作流自带的
+        # secrets.GITHUB_TOKEN(5000 次/小时)才能稳定取到 4 个仓库的分页发布记录。
+        # 变量名用 GH_TOKEN 而非 GITHUB_TOKEN,避免与 Actions 自动注入的同名 git 凭据混淆。
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/fetch_all.js
 
       - name: 提交变更(若有)
@@ -99,6 +108,6 @@ jobs:
         env:
           BR: ${{ github.ref_name }}
         run: |
-          for f in index.html data/deepswe.js data/deepswe_v10.js data/llm2014.js data/arena_webdev.js data/models.js data/seen.js data/quality.js data/datalearner.js data/news.js data/codingplan.js data/aicap.js data/tbench.js data/tbench_v3.js data/tbench_v2.js data/tbscience.js data/osworld.js data/lastexam.js data/arcagi3.js data/benchcad.js data/gpqa.js data/hle.js data/nl2repo.js data/programbench.js data/cursorbench.js data/frontiercode.js data/modeldial.js; do
+          for f in index.html data/deepswe.js data/deepswe_v10.js data/llm2014.js data/arena_webdev.js data/models.js data/seen.js data/quality.js data/datalearner.js data/news.js data/codingplan.js data/changelog.js data/aicap.js data/tbench.js data/tbench_v3.js data/tbench_v2.js data/tbscience.js data/osworld.js data/lastexam.js data/arcagi3.js data/benchcad.js data/gpqa.js data/hle.js data/nl2repo.js data/programbench.js data/cursorbench.js data/frontiercode.js data/modeldial.js data/wujisuan.js; do
             curl -fsSL "https://purge.jsdelivr.net/gh/${{ github.repository }}@${BR}/$f" || true
           done

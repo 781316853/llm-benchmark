@@ -4,10 +4,12 @@
 //   - per-host 限流:同域名请求最小间隔,不同 host 互不阻塞(自定义轻量实现,避免引入 p-queue)
 //   - 全局并发:p-limit 包裹所有出站请求(默认 5),防瞬时打满 socket
 //   - 重定向:递归跟随 3xx(迁移自原 fetchText)
-// 运行:Node 内置 https/http,无额外依赖(p-limit/p-retry 除外)
+//   - 解压:按响应头 content-encoding 自行 gunzip / brotli / inflate(Node 内置 http 不解压)
+// 运行:Node 内置 https/http/zlib,无额外依赖(p-limit/p-retry 除外)
 "use strict";
 const http = require("http");
 const https = require("https");
+const zlib = require("zlib");
 const pLimit = require("p-limit");
 const pRetry = require("p-retry");
 
@@ -46,16 +48,17 @@ function acquireHost(host) {
 
 // ===== 底层单次抓取(无重试,迁移自原 fetchText) =====
 // 30s 超时 + 3xx 重定向跟随 + 非 200 抛错(供 p-retry 判定是否重试)
+// opts.headers 覆盖默认请求头(按源注入 Authorization / 浏览器 UA 等)
 function fetchOnce(url, opts) {
   opts = opts || {};
   const timeoutMs = opts.timeoutMs || CONFIG.transport.timeoutMs;
   const client = url.startsWith("https") ? https : http;
   return new Promise(function (resolve, reject) {
     const req = client.get(url, {
-      headers: {
+      headers: Object.assign({
         "User-Agent": CONFIG.transport.userAgent,
         "Accept": "*/*"
-      }
+      }, opts.headers || {})
     }, function (res) {
       // 3xx 重定向:递归跟随(最多由外层 p-retry 的总尝试次数兜底)
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
@@ -69,9 +72,17 @@ function fetchOnce(url, opts) {
         return reject(new Error("HTTP " + res.statusCode + " " + url));
       }
       var buf = "";
-      res.setEncoding("utf8");
-      res.on("data", function (d) { buf += d; });
-      res.on("end", function () { resolve(buf); });
+      // Node 内置 http 不自动解压;部分 CDN(如 B 站 WebCDN)无论是否声明 Accept-Encoding
+      // 都固定回 gzip,不处理会得到二进制乱码(表现为"抓到内容却匹配不到任何模式")。
+      const enc = String(res.headers["content-encoding"] || "").toLowerCase();
+      let body = res;
+      if (enc === "gzip" || enc === "x-gzip") body = res.pipe(zlib.createGunzip());
+      else if (enc === "br") body = res.pipe(zlib.createBrotliDecompress());
+      else if (enc === "deflate") body = res.pipe(zlib.createInflate());
+      body.setEncoding("utf8");
+      body.on("data", function (d) { buf += d; });
+      body.on("end", function () { resolve(buf); });
+      body.on("error", reject);
     });
     req.on("error", reject);
     req.setTimeout(timeoutMs, function () {
@@ -86,6 +97,7 @@ function fetchOnce(url, opts) {
 //   retries        重试次数(默认 config.retries)
 //   timeoutMs      单次超时
 //   rateLimitMs    覆盖同 host 最小间隔(可选)
+//   headers        覆盖默认请求头(可选;如 GitHub API 的 Authorization)
 //   onFailedAttempt p-retry 钩子,用于日志
 //   shouldRetry    自定义重试条件函数(err) => bool(可选,默认 4xx 不重试)
 // 注:为兼容 p-retry v4(无 shouldRetry 选项),不可重试的错误直接抛 AbortError 终止。

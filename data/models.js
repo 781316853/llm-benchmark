@@ -68,8 +68,10 @@ window.MODEL_MAP = {
     { id: "Seed 2.1 Pro",     vendor: "ByteDance", color: "#3C8CFF", aliases: ["Seed 2.1 Pro", "seed-2.1-pro-preview"] },
     { id: "Seed 2.1 Turbo",   vendor: "ByteDance", color: "#5A9DFF", aliases: ["Seed 2.1 Turbo"] },
     { id: "Doubao-Seed-2.0-Code", vendor: "ByteDance", color: "#3C8CFF", aliases: ["Doubao-Seed-2.0-Code (high)", "Seed-2.0-Code(high)"] },
+    { id: "MiMo-V2.6-Pro",    vendor: "Xiaomi",    color: "#FF5C00", aliases: ["MiMo-V2.6-Pro", "mimo-v2.6-pro", "MiMo V2.6 Pro"] },
     { id: "MiMo-V2.5-Pro",    vendor: "Xiaomi",    color: "#FF6900", aliases: ["MiMo-V2.5-Pro"] },
     { id: "MiMo-V2.5",        vendor: "Xiaomi",    color: "#FF831A", aliases: ["MiMo-V2.5"] },
+    { id: "Step 5 Preview",   vendor: "StepFun",   color: "#7E5BEA", aliases: ["Step 5 Preview", "step-5-preview", "Step 5", "StepFun-Step-5-Preview"] },
     { id: "Meta Muse Spark 1.1",  vendor: "Meta",      color: "#0866FF", aliases: ["Muse Spark", "meta/muse_spark", "Muse Spark 1.1", "Meta Muse Spark", "Meta Muse Spark 1.1"] },
     { id: "MAI-Thinking-1",   vendor: "Microsoft", color: "#0078D4", aliases: ["MAI-Thinking-1"] },
     { id: "MAI-Code-1-Flash", vendor: "Microsoft", color: "#2A9DE8", aliases: ["MAI-Code-1-Flash"] },
@@ -193,8 +195,9 @@ window.MODEL_MAP = {
     "Upstage": "#6FBFB0",           // 灰绿
     "SK Telecom": "#EA6C81",        // 玫红:提亮至常态 ≥4.5:1
     "Cursor": "#FF7A45",            // 品牌橙红(Composer 系列):与 Anthropic/Mistral 错开明度
-    "Cognition": "#D8915C"          // 陶土橙(Devin / SWE 系列):与 Anthropic 同带错明度
+    "Cognition": "#D8915C",         // 陶土橙(Devin / SWE 系列):与 Anthropic 同带错明度
+    "StepFun": "#6C4AB6"            // 靛紫(阶跃星辰)
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
-  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi"]
+  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun"]
 };

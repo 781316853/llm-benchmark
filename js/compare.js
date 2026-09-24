@@ -23,8 +23,8 @@
   var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
-  // 6 个计分组的键(与 WEIGHTS、总览矩阵列一致)
-  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "aicap"];
+  // 7 个计分组的键(与 WEIGHTS、总览矩阵列一致)
+  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "wujisuan", "llm", "aicap"];
 
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
@@ -37,6 +37,7 @@
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
     tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
+    wujisuan: function (e) { return e.wujisuan ? e.wujisuan.score : null; },
     aicap:   function (e) { return aicapNorm(e); }
   };
   // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
@@ -54,7 +55,8 @@
   // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上;总览页传 3 仅收命中≥3榜):
   // ① 排名行(命中≥4榜)先按综合分降序取基准序,再按「同档跨度 < 容差」划档(每行与档内首名比,
   //    故档内跨度恒 < 1.5),档内依次按 命中数 → 共榜净胜 → 综合分 → id 排序,最后编号 _posKey = 0,1,2…;
-  //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),门槛仍取 4,保持与历史排名的可比性;
+  //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),2026-09-24 起为 7(无机酸前端实测加入),
+  //    门槛仍取 4,保持与历史排名的可比性;
   // ② 参考行(命中=3)不计算综合分、不参与排名,按「参考综合分」在排名行综合分序列的应处名次落入
   //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
   //    同一间隔内多个参考行按参考综合分降序先后排列;
@@ -123,6 +125,7 @@
   //  Code Arena·WebDev 22%(权威第三方,社区匿名盲测投票;实测组权重最高)
   //  Terminal-Bench 11%(权威第三方终端 Agent 榜,4.0/3.0/2.1 多版本合并为一组)
   //  ModelDial 16%(第三方独立实测综合能力榜,后端 40%/前端 30%/知识 30% 合成分)
+  //  无机酸 · AI 前端实测 10%(独立第三方两个真实前端任务端到端实测,总分为两任务分之和 0-200)
   //  llm2014 12%(个人私有题库、等级折算制,代表性弱于第三方基准)
   //  AI 能力 12%(个人专项自测口径;前端/后端方向分合并为**单个**计分组,取在场方向均值)
   // 历史沿革:2026-09 移除 Vibe Code Bench(其 14% 按比例回流至其余基准);
@@ -139,9 +142,13 @@
   //  社区盲测口径更贴近模型真实使用表现,官方基准榜的 agent×model 解决率与题库通过率区分度趋于饱和。
   //  2026-09-22 起:综合分改为「各榜榜内稳健标准分(z)按在场权重归一」(见文件头口径说明),
   //  同时取消一榜豁免与一致性折减;上列权重百分比未变。
+  //  2026-09-24 起:新增「无机酸 · AI 前端实测」计分组 10% —— 独立第三方用两个真实前端任务(品牌站 +
+  //  体素三维场景)做的端到端实测,总分为两任务分之和(0-200)。取 10%(低于同为前端的 WebDev 22%):
+  //  一是与 WebDev 同属前端维度,避免重复计量;二是每模型仅 n=1 单次实测、且跑在其自家 agent harness 下,
+  //  样本强度与口径纯净度均低于社区盲测榜。榜内 z 分尺度不变,故 0-200 原值直接入池(同 WebDev 的 Elo)。
   //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
-  //  故上列权重无需凑满 100%(6 组之和 0.89)。
-  var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, llm: 0.12, aicap: 0.12 };
+  //  故上列权重无需凑满 100%(7 组之和 0.99)。
+  var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, wujisuan: 0.10, llm: 0.12, aicap: 0.12 };
   // AI 能力方向分合并:取前端/后端在场方向分的均值(仅测一侧则取该侧);
   // 与 BOARD_VALS.aicap 及 data.js 的 benchCount「合并计一次」口径一致
   function aicapNorm(e) {
@@ -154,11 +161,13 @@
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
   //   modeldial 源站 40/30/30 综合分    llm  等级映射综合分    aicap  前/后端方向分均值
+  //   wujisuan  两任务分之和(0-200,源站原生量纲,不折算)
   var BOARD_RAW = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     webdev: function (e) { return e.webdev ? e.webdev.score : null; },
     tbench: function (e) { return e.tbench ? e.tbench.equiv : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.overall : null; },
+    wujisuan: function (e) { return e.wujisuan ? e.wujisuan.score : null; },
     llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     aicap: function (e) { return aicapNorm(e); }
   };
@@ -181,7 +190,15 @@
         var x = BOARD_RAW[g](e);
         if (x != null && isFinite(x)) xs.push(x);
       });
-      if (xs.length < N_MIN) { st[g] = null; return; }
+      if (xs.length < N_MIN) {
+        // 在场样本不足则整榜不采信(权重回流给其余榜)。这一步原本是静默的:
+        // 某榜只要掉到 N_MIN 以下(源站少发模型、或模型名归一失败导致条目被合并),
+        // 综合分就会悄悄少一个组,而页面上看不出任何异常。
+        if (xs.length > 0) {
+          console.warn("[compare] 计分组「" + g + "」在场模型 " + xs.length + " < N_MIN(" + N_MIN + "),本轮不计分");
+        }
+        st[g] = null; return;
+      }
       xs.sort(numSort);
       var med = median(xs);
       var devs = xs.map(function (x) { return Math.abs(x - med); }).sort(numSort);

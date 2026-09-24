@@ -7,6 +7,7 @@
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
     plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
+    changelogDays: 14, // 更新日志页时间窗口(天):14(默认)/30/0=不限
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
     // 总览默认收起(聚焦跨榜命中),其余两页默认展开全部模型
     showAll: { overview: false, deepswe: true, llm: true } };
@@ -17,6 +18,12 @@
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>\"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" }[c]; }); };
   var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
+  // 外链协议白名单:更新日志的 url/锚点取自各源站页面,不信任非 http(s) 协议(如 javascript:),
+  // 不合法就退回该工具自己的日志页地址 —— 跳转入口不能因为源站被篡改而变成可执行脚本。
+  function safeUrl(u, fallback) {
+    var s = String(u || "").trim();
+    return /^(https?:)?\/\//i.test(s) ? s : String(fallback || "");
+  }
   // 表格里的模型色点 / 厂商列文字:统一取厂商身份色,使同一厂商的模型与其厂商名同色(便于按厂商扫视归类)。
   // 模型名本身不上色(避免整表变成彩色文字墙);图表按模型区分曲线时仍用 canon.color,不走这两个助手。
   // vname 的着色键固定用 canonical 厂商(与色点同一个键),第二参给实际显示的文案 ——
@@ -79,7 +86,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.gpqa, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode]
+      D.src.cursorbench, D.src.frontiercode, D.src.wujisuan]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -98,7 +105,8 @@
     webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力,计入综合分权重 22%",
     aicap: "atmeplz 四方向榜:前端(中式建筑/体素山水/前端网页/黑洞模拟)与后端(超级 MES)方向分,前后端合并为单个计分组(取在场方向均值),合计计入综合分权重 12%",
     tbench: "斯坦福/Laude 终端命令行 Agent 评测,在真实 Shell 环境中解决编译/配置/运维等长程任务,三版合并计入综合分权重 11%",
-    modeldial: "modeldial.com 第三方独立实测的编码智能体能力榜,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权综合分,计入综合分权重 16%"
+    modeldial: "modeldial.com 第三方独立实测的编码智能体能力榜,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权综合分,计入综合分权重 16%",
+    wujisuan: "B 站 @无机酸-_- 的第三方独立前端实测:两个真实前端任务(虚构 AI 品牌站 / 体素三维场景)各按 0-100 打分后求和(0-200),每模型用其自家 agent harness 单次实测,计入综合分权重 10%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -201,6 +209,11 @@
     // Code Arena · WebDev 单值列(Elo 原值):归入「第三方实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
+    // 无机酸 · AI 前端实测单值列(0-200 = 两任务分之和):第三方实测组;格内显示总分,
+    // harness/档位/不确定区间/实测日期放悬浮提示;完整榜见「无机酸实测」页
+    { key: "wujisuan", label: "无机酸实测 (0-200)", type: "num", bench: true, grp: "第三方实测", tone: "wujisuan",
+      tip: "无机酸 · AI 前端实测总分(0-200):独立第三方把两个真实前端任务(虚构 AI 品牌站 + 体素三维场景)各按 0-100 打分后求和;每模型用其自家 agent harness 单次实测,不计重试;计入综合分(权重 10%)与命中数",
+      val: function (r) { return (r.wujisuan && r.wujisuan.score != null) ? r.wujisuan.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
     // 该列的 tone 只作用于表头 —— 格内两个方向分沿用 .ac-fe/.ac-be 方向色(方向信息优先于榜色)
@@ -429,6 +442,18 @@
         if (r.modeldial.configs) mdParts.push(r.modeldial.configs + " 个配置取最高");
         mdHtml = '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
       }
+      // 无机酸前端实测单元格:两任务总分(0-200);悬浮显示实测 harness / 推理档位 / 不确定区间 / 实测日期
+      // (区间为源站人工标注,非置信区间;每模型 n=1,故不显示 ±)
+      var wjHtml = "—";
+      if (r.wujisuan) {
+        var wjParts = [];
+        if (r.wujisuan.agent) wjParts.push("harness " + r.wujisuan.agent);
+        if (r.wujisuan.effort) wjParts.push("档位 " + r.wujisuan.effort);
+        if (r.wujisuan.lo != null && r.wujisuan.hi != null) wjParts.push("不确定区间 " + r.wujisuan.lo + "–" + r.wujisuan.hi);
+        if (r.wujisuan.date) wjParts.push("实测 " + r.wujisuan.date);
+        wjParts.push("两任务分之和(每任务 0-100)");
+        wjHtml = '<span class="bv bv-wujisuan" title="' + esc(wjParts.join(" · ")) + '">' + r.wujisuan.score.toFixed(2) + '</span>';
+      }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
@@ -461,14 +486,15 @@
         '<td class="num ref">' + refCell("hle", "HLE", "hle") + '</td>' +
         '<td class="num ref">' + refCell("gpqa", "GPQA", "gpqa") + '</td>' +
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
-        // 后续 WebDev/llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
+        // 后续无机酸实测/llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
         // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
         '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
+        '<td class="num">' + wjHtml + '</td>' +
         '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
         // AI 能力列:格内两个方向分沿用自己的方向色(ac-fe 橙 / ac-be 蓝),不用该榜的榜色 —— 方向信息优先
         '<td class="num">' + aicapCell(r) + '</td>' +
-        '<td class="num">' + r.benchCount + '/6</td></tr>';
+        '<td class="num">' + r.benchCount + '/7</td></tr>';
     });
     // 两级表头:第 1 行为分组行(「榜单基准」「第三方实测」colspan 合并)与非评测列的 rowspan 纵跨格;
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
@@ -476,7 +502,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 16% / Terminal-Bench 4.0/3.0/2.1 11%)计入综合分与命中数;组尾 HLE / GPQA 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);四组同纲计入综合分与命中数,合计占权重约 70%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%;无机酸 · AI 前端实测,两个真实前端任务分之和 0-200,权重 10%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);五组同纲计入综合分与命中数,合计占权重约 73%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -816,12 +842,150 @@
         '%(三分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
         '源站主榜显示的是三轴汇总值,故此处数值低于源站显示值;本页各模型之间口径一致、可直接横向比较。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母仍为 6(六项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母为 7(七项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
         ms.length + ' 条,下方为全部 config 明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
         (src.methodUrl ? ' · <a href="' + esc(src.methodUrl) + '" target="_blank" rel="noopener">口径说明 ↗</a>' : "") +
         (src.license ? ' · ' + esc(src.license) : "") + '</div>';
+  }
+
+  // ===== 7) 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测;计入综合分(权重 10%)与命中数) =====
+  // 分数为「两个真实前端任务分之和」(每任务 0-100,合计 0-200);每模型用其自家 agent harness 单次实测。
+  var PROMPT_CN = { short: "短提示", long: "长提示" };
+  var ROUND_CN = { oneshot: "首轮", final: "最终" };
+  function renderWujisuan() {
+    var src = D.src.wujisuan || {};
+    var ms = D.wujisuan();
+    var tasks = src.tasks || [];
+    document.getElementById("wjDesc").innerHTML = paraHtml(src.desc || "") +
+      ((src.updated || src.refreshedAt) ? "<br>" +
+        [(src.updated ? "源站发布 " + esc(src.updated) : ""),
+          (src.refreshedAt ? "本站抓取 " + esc(src.refreshedAt) : ""),
+          (src.siteVersion ? "源站版本 v" + esc(src.siteVersion) : ""),
+          (src.author ? "实测者 " + esc(src.author) : "")]
+          .filter(Boolean).join(" · ") : "");
+    if (!ms.length) {
+      document.getElementById("wjNote").innerHTML =
+        '<div class="note-line"><b>暂无数据</b>抓取失败或尚未生成 data/wujisuan.js(待下次每日刷新后恢复)。</div>';
+      return;
+    }
+    // 主榜柱状图:类目=模型(按总分升序喂入,使最高分落在顶部),值=两任务总分
+    var scaleMax = (src.scale && src.scale.max) || 200;
+    CH.apply("wjBar", CH.barOption(
+      ms.map(function (m) { return m.canon.id; }).slice().reverse(),
+      ms.map(function (m) { return m.score; }).slice().reverse(),
+      null, "", { max: scaleMax }));
+    // 主榜表:# / 模型 / 厂商 / Harness / 总分 / 不确定区间 / 实测日期 / 实测视频
+    var rows = ms.map(function (m) {
+      var range = (m.lo != null && m.hi != null)
+        ? m.lo + "–" + m.hi + ((m.loUncertain || m.hiUncertain) ? ' <span class="cell-cost">含人工估</span>' : "")
+        : "—";
+      var video = m.videoUrl
+        ? '<a href="' + esc(m.videoUrl) + '" target="_blank" rel="noopener">' + esc(m.bvid || "视频") + ' ↗</a>' : "—";
+      return '<tr><td class="rank">' + (m.rank != null ? m.rank : "—") + '</td>' +
+        '<td>' + vdot(m.canon.vendor) + esc(m.canon.id) +
+          (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
+        '<td>' + vname(m.canon.vendor) + '</td>' +
+        '<td>' + esc(m.agent || "—") + (m.platform ? ' <span class="cell-cost">' + esc(m.platform) + '</span>' : "") + '</td>' +
+        '<td class="num">' + bvSpan("wujisuan", m.score.toFixed(2)) + '</td>' +
+        '<td class="num">' + range + '</td>' +
+        '<td class="num">' + esc(m.date || "—") + '</td>' +
+        '<td>' + video + '</td></tr>';
+    });
+    fillTable("wjTable",
+      ["#", "模型", "厂商", "Harness", "总分", "不确定区间", "实测日期", "实测视频"],
+      rows, headTone(["", "", "", "", "num", "num", "num", ""], 4, 4, "wujisuan"));
+    // 任务卡:两期实测任务的题名、体裁与提示词(长提示词全文折叠)
+    document.getElementById("wjTasks").innerHTML = tasks.map(function (t) {
+      return '<div class="wj-task">' +
+        '<p class="wj-task-head"><span class="wj-task-no">' + esc(t.number || "") + '</span>' +
+          '<b>' + esc(t.name) + '</b>' +
+          (t.kind ? ' <span class="tag">' + esc(t.kind) + '</span>' : "") + '</p>' +
+        (t.subtitle ? '<p class="wj-task-sub">' + esc(t.subtitle) + '</p>' : "") +
+        (t.description ? '<p class="wj-task-desc">' + esc(t.description) + '</p>' : "") +
+        (t.promptShort ? '<p class="wj-task-prompt">' + esc(t.promptShort) + '</p>' : "") +
+        (t.promptLong ? '<details class="wj-task-long"><summary>完整提示词全文</summary>' +
+          '<pre class="wj-pre">' + esc(t.promptLong) + '</pre></details>' : "") +
+        '</div>';
+    }).join("");
+    // 逐条明细:模型 × 任务 × (提示词长度 × 轮次);列组合由源站 papers 实际出现的取值动态生成
+    var byId = {};
+    (src.papers || []).forEach(function (p) {
+      var k = p.prompt + ":" + p.round;
+      (byId[p.identity] || (byId[p.identity] = {}))[p.taskId + "|" + k] = p.score;
+    });
+    // 列序按语义排(短提示在前、首轮在最终前),不用字典序(否则「长提示」会排在「短提示」前)
+    var comboRank = function (k) {
+      var pr = k.split(":")[0], rd = k.split(":")[1];
+      return (pr === "short" ? 0 : pr === "long" ? 1 : 2) * 10 + (rd === "oneshot" ? 0 : rd === "final" ? 1 : 2);
+    };
+    var byRank = function (a, b) { return comboRank(a) - comboRank(b); };
+    var combos = {};
+    (src.papers || []).forEach(function (p) {
+      var k = p.prompt + ":" + p.round;
+      var arr = combos[p.taskId] || (combos[p.taskId] = []);
+      if (arr.indexOf(k) < 0) arr.push(k);
+    });
+    var labels = ["模型"];
+    tasks.forEach(function (t) {
+      (combos[t.id] || []).sort(byRank).forEach(function (k) {
+        var pr = k.split(":")[0], rd = k.split(":")[1];
+        labels.push(esc(t.name) + " " + (PROMPT_CN[pr] || esc(pr)) + "·" + (ROUND_CN[rd] || esc(rd)));
+      });
+    });
+    var pRows = ms.map(function (m) {
+      var rec = byId[m.identity] || {};
+      var cells = "";
+      tasks.forEach(function (t) {
+        (combos[t.id] || []).sort(byRank).forEach(function (k) {
+          var v = rec[t.id + "|" + k];
+          cells += '<td class="num">' + (v != null ? bvSpan("wujisuan", v) : "—") + '</td>';
+        });
+      });
+      return '<tr><td>' + vdot(m.canon.vendor) + esc(m.canon.id) + '</td>' + cells + '</tr>';
+    });
+    fillTable("wjPaperTable", labels, pRows,
+      labels.map(function (h, i) { return i === 0 ? "" : "num bv bv-wujisuan"; }));
+    document.getElementById("wjPaperCount").textContent =
+      "共 " + (src.papers || []).length + " 条(模型 × 任务 × 提示词长度 × 轮次;缺项为该期未测)";
+    // 长提示增益表:基准 = 各任务的「短提示最终/首轮」之和,变化 = 长提示对应项之和
+    var gain = src.gain || {};
+    var gRows = (gain.rows || []).map(function (r) {
+      var m = ms.filter(function (x) { return x.identity === r.identity; })[0];
+      var cells = "";
+      tasks.forEach(function (t) {
+        var bt = (r.byTask || {})[t.id] || {};
+        cells += '<td class="num">' + (bt.short != null ? bt.short : "—") + '</td>' +
+                 '<td class="num">' + (bt.long != null ? bt.long : "—") + '</td>';
+      });
+      var g = r.gain;
+      var gTxt = g == null ? "—" : (g > 0 ? "+" : "") + g + "%";
+      return '<tr><td>' + (m ? vdot(m.canon.vendor) + esc(m.canon.id) : esc(r.identity)) +
+          (r.agent ? ' <span class="cell-cost">' + esc(r.agent) + '</span>' : "") + '</td>' +
+        cells +
+        '<td class="num">' + (r.baseline != null ? r.baseline : "—") + '</td>' +
+        '<td class="num">' + (r.improved != null ? r.improved : "—") + '</td>' +
+        '<td class="num">' + gTxt + '</td></tr>';
+    });
+    var gLabels = ["模型"];
+    tasks.forEach(function (t) { gLabels.push(esc(t.name) + " 短", esc(t.name) + " 长"); });
+    gLabels.push("基准合计", "长提示合计", "增益率");
+    if (gRows.length) fillTable("wjGainTable", gLabels, gRows,
+      gLabels.map(function (h, i) { return i === 0 ? "" : "num"; }));
+    // 脚注:量纲与口径 + 计分说明 + 来源
+    document.getElementById("wjNote").innerHTML =
+      '<div class="note-line"><b>量纲</b>单任务分 0-100,主榜「总分」为' + esc((src.scale && src.scale.unit) || "两任务分之和") +
+        ',源站自报量程 ' + esc((src.scoreRange || []).join(" – ") || "0 – " + scaleMax) + '。</div>' +
+      '<div class="note-line"><b>口径提醒</b>每个模型跑在其<b>自家 agent harness</b>(Harness 列,如 cc / codex / zcode / qoder / cursor)下,' +
+        '分数同时反映模型与该脚手架的质量;每模型仅一次完整实测(n=1),「不确定区间」为源站人工标注的可达分数范围,<b>不是统计置信区间</b>。</div>' +
+      (gain.formula ? '<div class="note-line"><b>增益率口径</b>' + esc(gain.metric || "") + ' = ' + esc(gain.formula || "") + '</div>' : "") +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」组计分组之一,权重 10%)与命中数(分母 7);' +
+        '因量纲(两任务分之和)与主基准原生分不可比,已排除在跨源一致性校验之外。主榜 ' + ms.length + ' 个模型,逐条明细 ' + (src.papers || []).length + ' 条。</div>' +
+      '<div class="note-line"><b>来源</b>' +
+        '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
+        (src.methodUrl ? ' · <a href="' + esc(src.methodUrl) + '" target="_blank" rel="noopener">实测视频合集 ↗</a>' : "") +
+        (src.author ? ' · ' + esc(src.author) : '') + '</div>';
   }
 
   // ===== 7) 权威基准测试(权威基准) =====
@@ -1427,6 +1591,144 @@
       '<div class="note-line"><b>说明</b>综合单价(¥/亿 Token)与月用量为源站实测/计算值,按综合单价升序排列;完整套餐筛选与购买入口请前往源站查看。</div>';
   }
 
+  // ===== 9) 更新日志(9 个 AI 编程工具的官方 changelog;非分数数据,不参与综合分) =====
+  // 抓取端存全量条目,D.changelog(days) 按滚动窗口过滤;本页只做目录 + 卡片渲染。
+  // 正文一律完整输出到 DOM(需求要求"保留全部更新日志"),仅在超长(>900 字)时默认折叠,
+  // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
+  // data/changelog.js 含 9 个工具的全量历史(实测约 2.7MB),不进首屏脚本清单:
+  // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
+  var CL_DATA_SRC = "data/changelog.js?v=20260924e";
+  var clLoadState = "idle"; // idle -> loading -> ready | failed
+  var CL_FOLD_CHARS = 900;
+  function clStatusBadge(t) {
+    if (t.status === "stale") {
+      return '<span class="cl-badge cl-badge--stale" title="本轮抓取失败,以下为上一次成功抓到的条目">' +
+        '数据滞后' + (t.lastOkAt ? ' · ' + esc(t.lastOkAt) : '') + '</span>';
+    }
+    if (t.status === "empty") return '<span class="cl-badge cl-badge--error">抓取失败</span>';
+    return "";
+  }
+  function clCardHtml(t, e) {
+    var body = e.body || "";
+    var long = body.length > CL_FOLD_CHARS;
+    // 免费翻译额度按天分批补,窗口内会有尚未译出的条目;切「全部」时窗口外历史一律原文。
+    // 这两种情况标出来,免得读者以为页面把英文更新漏掉了。
+    var orig = (body || e.title) && !/[\u4e00-\u9fff]/.test(body + (e.title || ""));
+    // 标题与版本号只差一个 v 前缀时(GitHub Atom 的 release 名常就等于 tag)不重复显示
+    var showTitle = !!(e.version && e.title) &&
+      String(e.title).replace(/^v/i, "") !== String(e.version).replace(/^v/i, "");
+    return '<article class="cl-card">' +
+      '<header class="cl-card-head">' +
+        '<span class="cl-ver">' + esc(e.version ? "v" + e.version : e.title) + '</span>' +
+        (showTitle ? '<span class="cl-title">' + esc(e.title) + '</span>' : "") +
+        (orig ? '<span class="cl-badge cl-badge--orig" title="该条尚未译出(免费翻译额度按天分批补,或超出两周窗口),此处为源站原文">原文</span>' : "") +
+        '<span class="cl-date"' + (e.dateRaw ? ' title="源站原文:' + esc(e.dateRaw) + '"' : "") + '>' + esc((e.date || "").slice(5)) + '</span>' +
+      '</header>' +
+      (e.tags && e.tags.length ? '<div class="cl-tags">' + e.tags.map(function (g) {
+        return '<span class="cl-tag">' + esc(g) + '</span>';
+      }).join("") + '</div>' : "") +
+      (body ? '<div class="cl-body' + (long ? " is-clamped" : "") + '">' + esc(body) + '</div>' : "") +
+      (long ? '<button type="button" class="cl-fold" data-cl-fold aria-expanded="false">展开全文(' +
+        body.length + ' 字)</button>' : "") +
+      '<footer class="cl-card-foot"><a class="cl-src" href="' + esc(safeUrl(e.url, t.changelogUrl)) +
+        '" target="_blank" rel="noopener">查看源站 ↗</a></footer>' +
+      '</article>';
+  }
+  function renderChangelog() {
+    var wrap = document.getElementById("clWrap");
+    if (!wrap) return;
+    var data = D.changelog(state.changelogDays);
+    var descEl = document.getElementById("clDesc");
+    if (!data) {
+      // 首次进入:注入数据脚本,加载完成再渲染(失败只试一次,不反复重试)
+      if (clLoadState === "idle") {
+        clLoadState = "loading";
+        var s = document.createElement("script");
+        s.src = CL_DATA_SRC;
+        s.onload = function () { clLoadState = "ready"; renderChangelog(); };
+        s.onerror = function () { clLoadState = "failed"; renderChangelog(); };
+        document.head.appendChild(s);
+        wrap.innerHTML = '<div class="cl-empty-page">正在加载更新日志数据…</div>';
+        return;
+      }
+      if (descEl) {
+        descEl.textContent = clLoadState === "failed"
+          ? "更新日志数据加载失败(网络或 data/changelog.js 缺失),重试本页或等待下次每日刷新。"
+          : "暂无数据:抓取失败或尚未生成 data/changelog.js(待下次每日刷新后恢复)。";
+      }
+      wrap.innerHTML = '<div class="cl-empty-page">' + esc(descEl ? descEl.textContent : "暂无更新日志数据。") + '</div>';
+      var out0 = document.getElementById("clOutlineList");
+      if (out0) out0.innerHTML = "";
+      var cnt0 = document.getElementById("clOutlineCount");
+      if (cnt0) cnt0.textContent = "";
+      return;
+    }
+    // 生效窗口取 state.changelogDays(点按钮即改它再重渲染);
+    // D.changelog() 只在收到 null 时才回落到数据文件的 uiWindowDays,这里始终传数字,
+    // 若改读 data.uiWindowDays 会让按钮选中态与提示文案停在默认值上。
+    var days = state.changelogDays;
+    var badCount = data.tools.filter(function (t) { return t.status !== "ok"; }).length;
+    var shownTools = data.tools.filter(function (t) { return t.entries.length; }).length;
+    if (descEl) {
+      descEl.innerHTML = esc(data.desc || "") + "<br>" +
+        [ "更新于 " + esc(data.updated || ""),
+          data.refreshedAt ? "本站抓取 " + esc(data.refreshedAt) + "(北京时间)" : "",
+          shownTools + " / " + data.tools.length + " 个工具在窗口内有新版本" ]
+        .filter(Boolean).join(" · ");
+    }
+    // 时间范围切换:决定「最近一次更新」算不算新 —— 超出范围的工具不渲染卡片,只提示其最新一版日期
+    var btns = document.getElementById("clRangeBtns");
+    if (btns) {
+      btns.innerHTML = [[14, "近 14 天"], [30, "近 30 天"], [0, "全部"]].map(function (o) {
+        var on = days === o[0];
+        return '<button type="button" class="qc-scope-btn' + (on ? " is-active" : "") +
+          '" data-cl-days="' + o[0] + '" aria-pressed="' + on + '">' + o[1] + '</button>';
+      }).join("");
+    }
+    var hint = document.getElementById("clHint");
+    if (hint) {
+      hint.textContent = "每个工具只显示最近一次更新 · 每日刷新 2 次" +
+        (days > 0 ? " · 仅计最近 " + days + " 天内的更新" : " · 当前不限时间") +
+        (badCount ? " · 异常源 " + badCount + " 个(沿用上次数据并标注)" : "");
+    }
+    var cnt = document.getElementById("clOutlineCount");
+    if (cnt) cnt.textContent = data.tools.length + " 个工具";
+    // 左目录:每个工具一行(名称 + 最近一次更新日期 + 滞后标记),点击跳到该工具区块
+    var out = document.getElementById("clOutlineList");
+    if (out) {
+      out.innerHTML = data.tools.map(function (t) {
+        return '<a class="auth-outline-item" data-cl-target="cl-tool-' + esc(t.id) + '" href="#cl-tool-' + esc(t.id) + '" title="' +
+          esc(t.name + "(" + t.vendor + ")· 最近一次更新 " + (t.latestDate || "—")) + '">' +
+          '<span class="cl-ol-name' + (t.status !== "ok" ? " is-stale" : "") + '">' + esc(t.name) + '</span>' +
+          '<span class="auth-outline-count">' + (t.entries.length ? esc(t.latestDate.slice(5)) : "—") + '</span></a>';
+      }).join("");
+    }
+    // 右主体:每工具一个区块,只渲染最近一次更新(数据文件仍存全量历史)
+    wrap.innerHTML = data.tools.map(function (t) {
+      var cards = t.entries.map(function (e) { return clCardHtml(t, e); }).join("");
+      var emptyLine = "";
+      if (!t.entries.length) {
+        emptyLine = '<p class="cl-empty">' +
+          (t.status !== "ok"
+            ? "抓取失败:" + esc(t.error || "未知原因") + "。"
+            : (t.latestDate ? "最近一次更新在 " + esc(t.latestDate) + ",超出当前时间范围。" : "暂无可用更新条目。")) +
+          ' <a class="cl-src" href="' + esc(t.changelogUrl) + '" target="_blank" rel="noopener">查看源站 ↗</a></p>';
+      }
+      return '<section class="cl-tool" id="cl-tool-' + esc(t.id) + '">' +
+        '<header class="cl-tool-head">' +
+          '<h3 class="cl-tool-name">' + esc(t.name) + '</h3>' +
+          '<span class="cl-tool-vendor">' + esc(t.vendor) + '</span>' +
+          clStatusBadge(t) +
+          '<span class="cl-tool-count">' + (t.total > 1
+            ? "全量 " + t.total + " 条 · 仅显示最近一次"
+            : (t.entries.length ? "1 条更新" : "暂无更新记录")) + '</span>' +
+          '<a class="cl-src cl-tool-src" href="' + esc(t.changelogUrl) + '" target="_blank" rel="noopener">更新日志源站 ↗</a>' +
+        '</header>' +
+        '<div class="cl-entries">' + cards + emptyLine + '</div>' +
+        '</section>';
+    }).join("");
+  }
+
   // ===== 滚动与排序的轻微反馈(克制动效) =====
   // 粘性标签栏:滚动离顶后加一层抬升阴影,让"内容在其下滚动"这件事有视觉交代。
   // 与下面权威基准页的滚动高亮各用各的 rAF 节流变量,互不干扰。
@@ -1495,8 +1797,10 @@
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
     else if (name === "aicap") renderAICap();
     else if (name === "modeldial") renderModeldial();
+    else if (name === "wujisuan") renderWujisuan();
     else if (name === "authority") renderAuthority();
     else if (name === "plans") renderPlans();
+    else if (name === "changelog") renderChangelog();
     // 切换后重绘图表以适配可见尺寸
     setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
   }
@@ -1569,6 +1873,34 @@
       e.preventDefault();
       var card = document.getElementById("news-card-" + a.getAttribute("data-rank"));
       if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    // 更新日志页:时间窗口切换(14/30/全部)
+    var clBtns = document.getElementById("clRangeBtns");
+    if (clBtns) clBtns.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest("[data-cl-days]") : null;
+      if (!b) return;
+      state.changelogDays = parseInt(b.getAttribute("data-cl-days"), 10) || 0;
+      renderChangelog();
+    });
+    // 更新日志页:超长正文的展开/收起(事件委托 —— 卡片随窗口切换重建)
+    var clWrap = document.getElementById("clWrap");
+    if (clWrap) clWrap.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest("[data-cl-fold]") : null;
+      if (!b) return;
+      var body = b.parentNode && b.parentNode.querySelector(".cl-body");
+      if (!body) return;
+      var open = body.classList.toggle("is-clamped") === false;
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      b.textContent = open ? "收起" : "展开全文(" + (body.textContent || "").length + " 字)";
+    });
+    // 更新日志页:左侧工具目录跳到对应工具区块
+    var clOutline = document.getElementById("clOutlineList");
+    if (clOutline) clOutline.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("a[data-cl-target]") : null;
+      if (!a) return;
+      e.preventDefault();
+      var sec = document.getElementById(a.getAttribute("data-cl-target"));
+      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     // 滚动时高亮当前基准章节(以 rAF 节流,仅在权威基准页生效)
     window.addEventListener("scroll", function () {

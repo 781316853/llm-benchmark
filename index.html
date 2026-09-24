@@ -7,11 +7,11 @@
   <!-- 资源预热:提前建立 CDN 连接 + 预加载 ECharts,与 HTML 解析并行 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
-  <link rel="stylesheet" href="css/styles.css?v=20260923a" />
+  <link rel="stylesheet" href="css/styles.css?v=20260924d" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
-  <script defer src="data/models.js?v=20260920c"></script>
+  <script defer src="data/models.js?v=20260924a"></script>
   <script defer src="data/deepswe.js?v=20260905a"></script>
   <script defer src="data/deepswe_v10.js?v=20260824a"></script>
   <script defer src="data/llm2014.js?v=20260824a"></script>
@@ -34,15 +34,20 @@
   <script defer src="data/frontiercode.js?v=20260923a"></script>
   <!-- ModelDial 雷达(第三方独立实测综合能力榜,计入总览综合分(权重 16%)与命中数) -->
   <script defer src="data/modeldial.js?v=20260919a"></script>
+  <!-- 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测,计入总览综合分(权重 10%)与命中数) -->
+  <script defer src="data/wujisuan.js?v=20260924a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260921a"></script>
   <!-- Coding Plan 套餐快速对比(codingplan.fyi 额度/价格对比·按模型分列比价,不进基准管线) -->
   <script defer src="data/codingplan.js?v=20260913b"></script>
+  <!-- AI 编程工具更新日志(9 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
+       不进首屏脚本清单:该文件保存各源全量历史(实测约 2.7MB),而标签页是低频入口,
+       故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20260923a"></script>
+  <script defer src="js/data.js?v=20260924e"></script>
   <script defer src="js/charts.js?v=20260919a"></script>
-  <script defer src="js/compare.js?v=20260922b"></script>
-  <script defer src="js/app.js?v=20260923a"></script>
+  <script defer src="js/compare.js?v=20260924a"></script>
+  <script defer src="js/app.js?v=20260924g"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -51,7 +56,7 @@
   <header class="topbar">
     <div class="brand">
       <h1>大模型编码基准整合门户</h1>
-      <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Terminal-Bench(4.0/3.0/2.1) · NL2Repo-Bench · CursorBench · FrontierCode · ModelDial 雷达 等编码评测,聚焦跨基准模型对比</p>
+      <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Terminal-Bench(4.0/3.0/2.1) · NL2Repo-Bench · CursorBench · FrontierCode · ModelDial 雷达 · 无机酸前端实测 等编码评测,聚焦跨基准模型对比</p>
     </div>
     <div class="topbar-meta" id="topMeta">数据为快照,详见各页脚注</div>
   </header>
@@ -63,8 +68,10 @@
     <button class="tab" data-tab="llm2014">llm2014</button>
     <button class="tab" data-tab="aicap">AI 能力</button>
     <button class="tab" data-tab="modeldial">ModelDial</button>
+    <button class="tab" data-tab="wujisuan">无机酸实测</button>
     <button class="tab" data-tab="authority">权威基准测试</button>
     <button class="tab" data-tab="plans">套餐对比</button>
+    <button class="tab" data-tab="changelog">编程工具更新日志</button>
   </nav>
 
   <main class="content">
@@ -103,8 +110,8 @@
       <section class="notes-section">
         <p class="note-title">阅读说明</p>
         <ul style="white-space: pre-wrap;">
-          <li><b class="note-term">「梯队」</b>根据上榜模型数量与综合分分布动态分档(金字塔分档),沿总览表的可见序(以综合分降序为主序,同容差档内按 共榜支配 → 命中数 → 净胜 重排)依次分配,以 S+=1、S=3、A+=5、A=7、B+=9、B=11、C+=13、C=15、D+=17、D=19、E+=21、E=剩余 的金字塔权重分配至 S+ / S / A+ / A / B+ / B / C+ / C / D+ / D / E+ / E 共 12 级。高档少、低档多,梯队边界随数据变化动态浮动,不设固定阈值。鼠标悬停梯队标签可查看精确综合分;勾选「显示综合分」可在梯队旁直接显示数值。综合分计算方式(2026-09-22 起改为「各榜榜内稳健标准分」口径,与历史名次不可直接对比):① 各榜取其<b>原生分</b>(DeepSWE Pass@1 %、Code Arena·WebDev Elo、Terminal-Bench 4.0 等效解决率 %、ModelDial 综合分、llm2014 等级映射分、AI 能力前/后端方向分均值);② 每榜先在「全池在场该榜的全部模型」内做<b>稳健标准化</b>:z =(原生分 − 榜内中位数)÷(1.4826 × 榜内平均绝对偏差),并截断到 ±3 —— 各榜量纲根本不可比(榜内标准差 DeepSWE 约 32 分、ModelDial 仅约 11 分),直接加权会把一个榜的 5 分当成另一个榜的 5 分;③ 按权重对<b>在场</b>榜归一(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / llm2014 12% / AI 能力 12%,六组权重之和 0.89,无需凑满 100%;其中 llm2014 与 AI 能力为个人专项测试口径故权重较低,「第三方实测」四组合计约 70%、「榜单基准」两组约 30%),缺测的榜权重自动回流,等价于<b>按该模型自身水平填补空缺</b>——「没被测到」既不奖励也不惩罚;④ 线性映射为显示分 = 50 + 15 × 加权标准分(50 = 全池中位,相差 15 分 = 1 个榜内稳健标准差;clamp 到 0-100),它是<b>相对分</b>而非能力绝对分,不可跨日直接比较。<b>不再执行「一榜豁免」与「一致性折减」</b>:前者与「缺榜按自身水平填补」是同一动机的重复实现,叠加会持续抬高「只挑强项参赛」的模型;后者在新量纲下折减不足 0.2 分属噪声,且它会让各榜更不均衡的模型反而获得靠前名次。列表默认按综合分容差分组排序:相差不到 1.5 分(= 0.1 个加权标准分)的模型视为同档;同档内先按<b>共榜支配关系</b>分层(在双方都在场的榜上全部更高者必须排在前面),再依次按 命中数 → 共榜加权净胜 → 综合分 排列。计分基准组共 6 个,不设「完整度奖励」(2026-09-20 取消):在场榜单多少只由权重回流体现,缺榜不被重复扣分。</li>
-          <li><b class="note-term">「命中」</b>表示该模型在对应基准组中进入榜单,6/6 表示六项基准(DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0/3.0/2.1) / AI 能力 / ModelDial)均有排名;HLE / GPQA 权威基准仅作参考列展示,不计入命中数。</li>
+          <li><b class="note-term">「梯队」</b>根据上榜模型数量与综合分分布动态分档(金字塔分档),沿总览表的可见序(以综合分降序为主序,同容差档内按 共榜支配 → 命中数 → 净胜 重排)依次分配,以 S+=1、S=3、A+=5、A=7、B+=9、B=11、C+=13、C=15、D+=17、D=19、E+=21、E=剩余 的金字塔权重分配至 S+ / S / A+ / A / B+ / B / C+ / C / D+ / D / E+ / E 共 12 级。高档少、低档多,梯队边界随数据变化动态浮动,不设固定阈值。鼠标悬停梯队标签可查看精确综合分;勾选「显示综合分」可在梯队旁直接显示数值。综合分计算方式(2026-09-22 起改为「各榜榜内稳健标准分」口径,与历史名次不可直接对比):① 各榜取其<b>原生分</b>(DeepSWE Pass@1 %、Code Arena·WebDev Elo、Terminal-Bench 4.0 等效解决率 %、ModelDial 综合分、无机酸实测两任务总分(0-200)、llm2014 等级映射分、AI 能力前/后端方向分均值);② 每榜先在「全池在场该榜的全部模型」内做<b>稳健标准化</b>:z =(原生分 − 榜内中位数)÷(1.4826 × 榜内平均绝对偏差),并截断到 ±3 —— 各榜量纲根本不可比(榜内标准差 DeepSWE 约 32 分、ModelDial 仅约 11 分),直接加权会把一个榜的 5 分当成另一个榜的 5 分;③ 按权重对<b>在场</b>榜归一(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / 无机酸实测 10% / llm2014 12% / AI 能力 12%,七组权重之和 0.99,无需凑满 100%;其中 llm2014 与 AI 能力为个人专项测试口径故权重较低,无机酸实测因每模型仅一次实测且与 WebDev 同属前端维度而取 10%,「第三方实测」五组合计约 73%、「榜单基准」两组约 27%),缺测的榜权重自动回流,等价于<b>按该模型自身水平填补空缺</b>——「没被测到」既不奖励也不惩罚;④ 线性映射为显示分 = 50 + 15 × 加权标准分(50 = 全池中位,相差 15 分 = 1 个榜内稳健标准差;clamp 到 0-100),它是<b>相对分</b>而非能力绝对分,不可跨日直接比较。<b>不再执行「一榜豁免」与「一致性折减」</b>:前者与「缺榜按自身水平填补」是同一动机的重复实现,叠加会持续抬高「只挑强项参赛」的模型;后者在新量纲下折减不足 0.2 分属噪声,且它会让各榜更不均衡的模型反而获得靠前名次。列表默认按综合分容差分组排序:相差不到 1.5 分(= 0.1 个加权标准分)的模型视为同档;同档内先按<b>共榜支配关系</b>分层(在双方都在场的榜上全部更高者必须排在前面),再依次按 命中数 → 共榜加权净胜 → 综合分 排列。计分基准组共 7 个,不设「完整度奖励」(2026-09-20 取消):在场榜单多少只由权重回流体现,缺榜不被重复扣分。</li>
+          <li><b class="note-term">「命中」</b>表示该模型在对应基准组中进入榜单,7/7 表示七项基准(DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0/3.0/2.1) / AI 能力 / ModelDial / 无机酸实测)均有排名;HLE / GPQA 权威基准仅作参考列展示,不计入命中数。</li>
           <li>DeepSWE 为百分比,分数后的「$X」为该模型在 DeepSWE 的单次任务平均成本(美元);
 llm2014 为按各项目等级均值归一化的综合分(0-100,月内均值最高 100、最低 0,中间按等级差距线性分布;均值完全相同的模型按源站排名先后微调区分,保证人人不同分),其明细单元格为「扣分数/档位」,2026-08 起等级单元格可含单任务测试成本(如「7/A+(90.52)」表示扣 7 分、A 档、成本 ¥90.52);
 Code Arena · WebDev 为 LMArena 前端竞技场的 Elo 评分(社区匿名盲测投票,分值越高越好,矩阵列显示原始 Elo);计入综合分时直接取 Elo 原值做<b>榜内稳健标准化</b>(快照内 min-max 归一分仅用于图表展示,不再参与综合分);
@@ -193,9 +200,40 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
         <ul style="white-space: pre-wrap;">
           <li>本页数据来自 <b>ModelDial 雷达</b>(modeldial.com/radar),第三方独立实测的编码智能体能力榜:分<b>后端与测试</b>、<b>前端与交互</b>、<b>知识与推理</b>三类能力分别评测,综合分按后端 40% + 前端 30% + 知识 30% 加权(三分项均 0-100)。</li>
           <li>同一模型按<b>推理强度</b>分档(如 xhigh / max / high)多次测试,主榜取该模型的<b>最高分配置</b>入榜(与源站主榜一致),「配置」列即该模型在源站已有的配置条数;展开下方「全部配置明细」可查看全部 52 条 config 的逐条成绩。</li>
-          <li>该榜与站内其它编码基准<b>同纲计入综合分</b>(权重 16%),并进入总览交叉矩阵(单列展示综合分,属「第三方实测」组)。该权重席位由同期移出计分组的 NL2Repo-Bench(原 9%)调整而来,并于 <b>2026-09-21</b> 随「第三方实测」组整体加权上调(12%→16%)、「榜单基准」组同步减权;计分组现为 6 组(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / llm2014 12% / AI 能力 12%,AI 能力前后端已合并为单组;其中「第三方实测」四组合计占权重约 70%,「榜单基准」两组约 30%);自 2026-09-20 起取消完整度奖励(原 7 组全勤 +3 分、6 组 +1.5 分),在场榜单多少仅通过「一榜豁免 + 缺失权重回流」体现。命中数分母仍为 6(六项基准,aicapFe/aicapBe 合并计为一次)。</li>
+          <li>该榜与站内其它编码基准<b>同纲计入综合分</b>(权重 16%),并进入总览交叉矩阵(单列展示综合分,属「第三方实测」组)。该权重席位由同期移出计分组的 NL2Repo-Bench(原 9%)调整而来,并于 <b>2026-09-21</b> 随「第三方实测」组整体加权上调(12%→16%)、「榜单基准」组同步减权;计分组现为 7 组(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / 无机酸实测 10% / llm2014 12% / AI 能力 12%,AI 能力前后端已合并为单组;其中「第三方实测」五组合计占权重约 73%,「榜单基准」两组约 27%);自 2026-09-20 起取消完整度奖励(原 7 组全勤 +3 分、6 组 +1.5 分),在场榜单多少仅通过「一榜豁免 + 缺失权重回流」体现。命中数分母为 7(七项基准,aicapFe/aicapBe 合并计为一次)。</li>
           <li><b>成本与耗时口径提醒</b>:本页费用(<b>参考费用</b>)与耗时取自源站<b>后端(coding)单轴</b>的实测值,而源站主榜显示的是三轴汇总值,因此本页数值低于源站页面显示值(如 MiniMax-M3:本页约 $0.31、源站主榜约 $0.62)。本页各模型之间口径一致、可直接横向比较;源站的紧凑 feed 未提供费用完整度字段,故不做「≥ / 部分费用」标记。散点图 X 轴为参考费用(对数刻度),气泡面积编码总耗时。</li>
           <li>数据授权 CC BY 4.0,为快照,不代表对各模型能力的绝对评价。</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- 6b) 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测,属总览「第三方实测」组,计入综合分(权重 10%)与命中数) -->
+    <section class="page" id="page-wujisuan">
+      <div class="page-head"><h2>无机酸 · AI 前端实测 <span class="tag">独立第三方实测 · 两个真实前端任务 · 总分 0-200</span></h2><p id="wjDesc" class="page-desc"></p></div>
+      <div class="chart-row single">
+        <div class="chart-box"><h3>两任务总分排行(每任务 0-100,合计 0-200)</h3><div id="wjBar" class="chart chart-tall"></div></div>
+      </div>
+      <div class="table-wrap"><table id="wjTable" class="data-table"></table></div>
+      <p class="source-note" id="wjNote"></p>
+      <!-- 实测任务:题名、体裁与提示词(长提示词全文折叠) -->
+      <h3 class="wj-sub-title">实测任务</h3>
+      <div class="chart-row" id="wjTasks"></div>
+      <!-- 逐条明细:模型 × 任务 × 提示词长度 × 轮次,默认折叠 -->
+      <details class="md-details">
+        <summary>逐条实测明细 <span class="hint" id="wjPaperCount"></span></summary>
+        <div class="table-wrap"><table id="wjPaperTable" class="data-table"></table></div>
+      </details>
+      <!-- 长提示增益:短提示基准分与长提示分对照 -->
+      <h3 class="wj-sub-title">长提示增益</h3>
+      <div class="table-wrap"><table id="wjGainTable" class="data-table"></table></div>
+      <section class="notes-section">
+        <p class="note-title">阅读说明</p>
+        <ul style="white-space: pre-wrap;">
+          <li>本页数据来自 B 站 UP 主 <b>@无机酸-_-</b> 的「AI 前端实测」:同一道题目交给各模型的<b>原生 agent 脚手架</b>(Claude Code / Codex / ZCode / Qoder / Cursor / Antigravity / Devin)在真实环境里端到端做完,按任务分别给 0-100 分,主榜总分为<b>两个任务分之和</b>(0-200),因此不能与站内其它百分制基准直接横向比价。</li>
+          <li>两个任务各跑<b>短提示</b>与<b>长提示</b>两种交代方式,并区分<b>首轮</b>(一次成型)与<b>最终</b>(允许继续修)两种口径,逐条成绩见「逐条实测明细」;「长提示增益」列出的增益率口径为(长提示合计 − 短提示基准)÷ 基准 × 100%,用于观察「把要求写细」对各模型的实际帮助幅度。</li>
+          <li><b>不确定区间</b>是源站人工标注的「该模型本可得到的分数范围」(如某次交付未覆盖到的加分项),<b>不是统计置信区间</b>;带「含人工估」标记的端点为源站标注的估计值。每个模型只有一次完整实测(n=1),区间只用于提示可读性,不参与综合分计算。</li>
+          <li>该榜<b>计入总览综合分</b>(「第三方实测」组计分组之一,权重 10%)与命中数(分母 7),并在总览交叉矩阵单列展示。权重取 10% 低于同为前端维度的 Code Arena·WebDev(22%):一是避免与 WebDev 重复计量前端能力,二是本榜每模型 n=1、且分数混杂模型与其自家 harness 的质量,口径纯净度低于社区盲测榜。计分组现为 7 组(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / 无机酸实测 10% / llm2014 12% / AI 能力 12%,合计 0.99);各榜先按榜内稳健标准分定标再加权,故本榜 0-200 的原生量纲无需折算。</li>
+          <li>源站展示页为 B 站 toy 页面(内嵌跨域 iframe,路径带每期变化的版本号),本站抓取其同域静态数据文件 <code>data/site.json</code>;每期实测均有对应 B 站视频佐证,见主榜「实测视频」列与页脚合集链接。数据为快照,不代表对各模型能力的绝对评价。</li>
         </ul>
       </section>
     </section>
@@ -228,6 +266,36 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
         </ul>
       </section>
     </section>
+
+    <!-- 9) 编程工具更新日志(9 个 AI 编程工具的官方 changelog 汇总;非分数数据,不计入综合分与命中数) -->
+    <section class="page" id="page-changelog">
+      <div class="page-head"><h2>编程工具更新日志 <span class="tag">9 个工具官方 changelog · 只显示各工具最近一次更新</span></h2><p id="clDesc" class="page-desc"></p></div>
+      <!-- 左侧工具目录:点击跳到该工具的最新版本卡片;窄屏自动收为顶部横向胶囊条 -->
+      <div class="auth-layout">
+        <aside class="auth-outline" aria-label="更新日志工具目录">
+          <p class="auth-outline-title">工具 <span class="auth-outline-count" id="clOutlineCount"></span></p>
+          <nav class="auth-outline-list" id="clOutlineList"></nav>
+        </aside>
+        <div class="auth-main">
+          <div class="cl-toolbar">
+            <div class="qc-scope" id="clRangeBtns" role="group" aria-label="时间窗口"></div>
+            <p class="cl-hint" id="clHint"></p>
+          </div>
+          <div id="clWrap"></div>
+        </div>
+      </div>
+      <section class="notes-section">
+        <p class="note-title">阅读说明</p>
+        <ul style="white-space: pre-wrap;">
+          <li>本页汇总 <b>Codex / Claude Code / OpenCode / Kimi Code / Qoder / Trae / ZCode / CodeBuddy / WorkBuddy</b> 九个 AI 编程工具的<b>官方更新日志</b>,每个工具<b>只显示最近一次更新</b>,正文保留源站完整内容(不摘要),右上角「查看源站 ↗」跳到该条更新在源站的原文。</li>
+          <li>数据文件仍保存各源可得的<b>全量历史</b>;上方的近 14 天 / 近 30 天 / 全部切换的是「最近一次更新要多久以内才算新」—— 超出范围的工具不显示卡片,改为提示其最近一版发布于何时。窗口按自然日从今天往前推算,与数据是否刷新成功无关。</li>
+          <li>英文条目由免费机器翻译接口(MyMemory)自动译成中文,与全站数据一样每日刷新 2 次。只译各工具<b>当前显示的那一条</b>(最多 9 条,其中 Claude Code 单条发布说明可达 2 万字符,需分轮补齐),同一份发布说明只译一次、之后长期复用不再请求;尚未译出的条目标注「原文」并保留英文。</li>
+          <li>只收录<b>正式发布版本</b>:alpha / beta / rc / nightly 等预发布版一律不入库(实测 Codex 单次抓取的最新 10 个 release 有 9 个是 alpha 预发布版,全收会淹没整页)。</li>
+          <li>Codex / Claude Code / OpenCode / Kimi Code 取自各自 <b>GitHub Releases 官方接口</b>(Kimi 官方文档站的更新日志是客户端渲染、抓不到内容);Qoder 取自 <b>Qoder CN 文档站的更新日志</b>(其版本线与国际版 qoder.com 是两套编号);Trae / ZCode / CodeBuddy / WorkBuddy 取自<b>各官网更新日志页</b>。条目上的标签是源站自带的分类或产品线(如 TraeCode / TraeWork)。</li>
+          <li>随全站数据<b>每日自动刷新 2 次</b>。某个源改版或抓取失败时,该工具卡片会标注「数据滞后」并沿用上一次成功抓到的条目,同时保留跳转源站的入口;若显示「最近一次更新在 X,超出当前时间范围」,表示源站确实在那之后没有发布新版本(例如 Trae 最近一版在 9 月初)。</li>
+        </ul>
+      </section>
+    </section>
   </main>
 
   <footer class="footer">
@@ -247,7 +315,17 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
     <a href="https://programbench.com/" target="_blank" rel="noopener">ProgramBench</a> ·
     <a href="https://cursor.com/cursorbench" target="_blank" rel="noopener">CursorBench</a> ·
     <a href="https://cognition.com/frontiercode" target="_blank" rel="noopener">FrontierCode</a> ·
-    <a href="https://modeldial.com/radar" target="_blank" rel="noopener">ModelDial</a>
+    <a href="https://modeldial.com/radar" target="_blank" rel="noopener">ModelDial</a> ·
+    <a href="https://www.bilibili.com/toy/wujisuan-ai-test/index.html" target="_blank" rel="noopener">无机酸 · AI 前端实测</a> ·
+    <a href="https://github.com/openai/codex/releases" target="_blank" rel="noopener">Codex</a> ·
+    <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">Claude Code</a> ·
+    <a href="https://github.com/anomalyco/opencode/releases" target="_blank" rel="noopener">OpenCode</a> ·
+    <a href="https://github.com/MoonshotAI/kimi-code/releases" target="_blank" rel="noopener">Kimi Code</a> ·
+    <a href="https://docs.qoder.cn/product-overview/qoder-update-log" target="_blank" rel="noopener">Qoder</a> ·
+    <a href="https://www.trae.cn/changelog" target="_blank" rel="noopener">Trae</a> ·
+    <a href="https://zcode.z.ai/changelog" target="_blank" rel="noopener">ZCode</a> ·
+    <a href="https://www.codebuddy.cn/docs/ide/release-notes/release-notes" target="_blank" rel="noopener">CodeBuddy</a> ·
+    <a href="https://www.codebuddy.cn/docs/workbuddy/Changelog" target="_blank" rel="noopener">WorkBuddy</a>
   </footer>
 
   <!-- 意见反馈浮动按钮 -->
