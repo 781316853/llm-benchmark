@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-09-24',
-  'overallScore': 0.944,
+  'overallScore': 0.947,
   'sources': [
     {
       'id': 'ai_capability',
@@ -231,6 +231,17 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
+      'updated': '2026-09-24',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'wujisuan',
+      'name': '无机酸 · AI 前端实测',
+      'status': 'ok',
+      'modelCount': 12,
       'updated': '2026-09-24',
       'ageDays': 0,
       'completeness': 1,
@@ -692,7 +703,7 @@ window.QUALITY = {
     {
       'canonId': 'MiMo-V2.6-Pro',
       'name': 'MiMo-V2.6-Pro',
-      'vendor': '其他',
+      'vendor': 'Xiaomi',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -756,7 +767,7 @@ window.QUALITY = {
     {
       'canonId': 'Step 5 Preview',
       'name': 'Step 5 Preview',
-      'vendor': '其他',
+      'vendor': 'StepFun',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -942,6 +953,14 @@ window.QUALITY = {
       'modelCount': 9,
       'missingFields': {},
       'flag': 'ok'
+    },
+    'wujisuan': {
+      'rate': 1,
+      'total': 12,
+      'complete': 12,
+      'modelCount': 12,
+      'missingFields': {},
+      'flag': 'ok'
     }
   },
   'timeliness': {
@@ -1046,6 +1065,11 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'tbscience': {
+      'updated': '2026-09-24',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
+    'wujisuan': {
       'updated': '2026-09-24',
       'ageDays': 0,
       'flag': 'ok'
