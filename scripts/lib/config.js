@@ -504,8 +504,8 @@ module.exports = {
     // 工具定义。kind:
     //   github   —— GitHub Releases REST API 分页(4 家;Atom feed 只回 10 条,跨不过两周,不可用)
     //   qoder    —— docs.qoder.cn 更新日志页服务端渲染(Qoder CN 与 Qoder CN IDE 各一页)
-    //   trae     —— trae.cn/changelog 服务端渲染 HTML(备源 trae.ai/api/changelog 飞书 block 树);
-    //               单页混排多条产品线,由 tools[].products 按标签拆成多张卡
+    //   trae     —— docs.trae.cn 各产品线独立日志页(备源 trae.ai/api/changelog 飞书 block 树);
+    //               备源是多产品线混排,由 tools[].products 按标签挑出本卡要收的那条线
     //   zcode    —— zcode.z.ai/changelog 服务端渲染(日期为中文「2026年9月22日」)
     //   codebuddy—— codebuddy.cn/docs 文档页服务端渲染(CodeBuddy 与 WorkBuddy 同框架共用)
     // 各家源站可用性均于 2026-09-24 实测确认;Kimi 官方文档站是 VitePress 客户端渲染
@@ -532,16 +532,18 @@ module.exports = {
       { id: "qoder-cn-ide", name: "Qoder CN IDE", vendor: "阿里巴巴", kind: "qoder",
         url: "https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log",
         changelogUrl: "https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log" },
-      // Trae 官方日志是单页混排,每条自带产品线标签(实测 TraeCode / TraeWork / TRAE APP 三种);
-      // 按 products 拆成两张卡,未列出的产品线(含 TRAE APP)整条丢弃。
+      // Trae 按产品线各一张卡,主源是官方文档站的独立日志页(2026-09-24 按需求方指定改用):
+      // 一次发布一个日期标题、版本号在正文首段、带稳定 id 锚点可深链。
+      // 备源 trae.ai 是国际站的混排文档(含 TraeCode / TraeWork / TRAE APP 三种产品线标签),
+      // 故仍按 products 挑出本卡的产品线,未列出者(含 TRAE APP)丢弃。
       { id: "traecode", name: "TraeCode", vendor: "字节跳动", kind: "trae",
-        url: "https://www.trae.cn/changelog",
-        changelogUrl: "https://www.trae.cn/changelog",
+        url: "https://docs.trae.cn/ide_changelog",
+        changelogUrl: "https://docs.trae.cn/ide_changelog",
         fallbackUrl: "https://www.trae.ai/api/changelog",
         products: ["TraeCode"] },
       { id: "traework", name: "TraeWork", vendor: "字节跳动", kind: "trae",
-        url: "https://www.trae.cn/changelog",
-        changelogUrl: "https://www.trae.cn/changelog",
+        url: "https://docs.trae.cn/work_changelog",
+        changelogUrl: "https://docs.trae.cn/work_changelog",
         fallbackUrl: "https://www.trae.ai/api/changelog",
         products: ["TraeWork"] },
       { id: "zcode", name: "ZCode", vendor: "智谱", kind: "zcode",

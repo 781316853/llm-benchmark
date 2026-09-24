@@ -1,5 +1,5 @@
 // AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)
-// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode / TraeWork 同取 trae.cn/changelog 并按产品线拆分;ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
+// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);
 // 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,展示窗口由前端控制
 // 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新
 //   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期
@@ -9155,46 +9155,1903 @@ window.CHANGELOG = {
       'name': 'TraeCode',
       'vendor': '字节跳动',
       'kind': 'trae',
-      'changelogUrl': 'https://www.trae.cn/changelog',
-      'status': 'stale',
-      'error': 'HTTP 403 https://www.trae.cn/changelog',
-      'lastOkAt': '2026-09-24 18:00',
+      'changelogUrl': 'https://docs.trae.cn/ide_changelog',
+      'status': 'ok',
+      'error': '',
+      'lastOkAt': '2026-09-24 23:32',
       'entries': [
         {
-          'version': '3.3.93-96',
-          'title': 'v3.3.93-96',
+          'version': '3.3.101',
+          'title': '2026 年 09 月 15 日（Hotfix）',
+          'date': '2026-09-15',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hPycnm2pH',
+          'body': 'TraeCode v3.3.101 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.100',
+          'title': '2026 年 09 月 11 日（Hotfix）',
+          'date': '2026-09-11',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hHoPdakho',
+          'body': 'TraeCode v3.3.100 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.99',
+          'title': '2026 年 09 月 08 日（功能发布）',
+          'date': '2026-09-08',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hPlEpNAhD',
+          'body': 'TraeCode v3.3.99 版本正式发布。以下是变更细节：\n- 支持分享对话。详情参考 分享对话 。\n- 支持配置网络代理。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.98',
+          'title': '2026 年 09 月 04 日（Hotfix）',
+          'date': '2026-09-04',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hKpJvigt7',
+          'body': 'TraeCode v3.3.98 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.97',
+          'title': '2026 年 09 月 03 日（功能发布）',
+          'date': '2026-09-03',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hrSrUjAfV',
+          'body': 'TraeCode v3.3.97 版本正式发布。以下是变更细节：\n- 【仅个人版】支持插件市场。详情参考 插件市场 。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.93',
+          'title': '2026 年 09 月 01 日（功能发布）',
           'date': '2026-09-01',
-          'dateRaw': '2026-09-01',
-          'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- Solo Agent 智能体和 Agent 智能体将合并为 Agent 智能体，支持在 IDE、SOLO 模式使用。Agent 智能体包含原Solo Agent 智能体、 Agent 智能体的能力集合，包括：支持 /goal、/plan、/spec 等内置命令，支持根据模型选择是否开启 Max 模式，支持选择是否使用 Auto Mode 模型，支持调用自定义智能体等。【仅企业版】\n- 修复了已知问题。'
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hWzhuLItv',
+          'body': 'TraeCode v3.3.93 - 3.3.96 版本正式发布。以下是变更细节：\n- 【仅企业版】Solo Agent 智能体和 Agent 智能体将合并为 Agent 智能体，支持在 IDE、SOLO 模式使用。Agent 智能体包含原 Solo Agent 智能体、 Agent 智能体的能力集合，包括：支持 /goal、/plan、/spec 等内置命令，支持根据模型选择是否开启 Max 模式，支持选择是否使用 Auto Mode 模型，支持调用自定义智能体等。\n- 修复了已知问题。'
         },
         {
-          'version': '3.3.87-92',
-          'title': 'v3.3.87-92',
+          'version': '3.3.92',
+          'title': '2026 年 08 月 20 日（功能发布）',
           'date': '2026-08-20',
-          'dateRaw': '2026-08-20',
-          'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 支持 TRAE 移动端连接 TraeCode。\n- 修复了已知问题。'
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hJa2GNwDS',
+          'body': 'TraeCode v3.3.92 版本正式发布。以下是变更细节：\n- 支持 TRAE 移动端连接 TraeCode。详情参考 连接 TRAE 移动端 。\n- 修复了已知问题。'
         },
         {
-          'version': '3.3.84-86',
-          'title': 'v3.3.84-86',
+          'version': '3.3.89-3.3.91',
+          'title': '2026 年 08 月 19 日（Hotfix）',
+          'date': '2026-08-19',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hIAlIBYSa',
+          'body': 'TraeCode v3.3.89 ～ 3.3.91 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.88',
+          'title': '2026 年 08 月 12 日（功能发布）',
+          'date': '2026-08-12',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hiReFjHMP',
+          'body': 'TraeCode v3.3.88 版本正式发布。以下是变更细节：\n- 【仅个人版】支持电脑控制（Computer Use）功能。详情参考 电脑控制（Computer Use） 。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.87',
+          'title': '2026 年 08 月 10 日（Hotfix）',
+          'date': '2026-08-10',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hHa7ohV8n',
+          'body': 'TraeCode v3.3.87 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.84-3.3.86',
+          'title': '2026 年 08 月 07 日（功能发布）',
           'date': '2026-08-07',
-          'dateRaw': '2026-08-07',
-          'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 模型选择上线 Max 模式。\n- 对话流新交互新增 Query 跳转。\n- 修复了已知问题。'
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hiJ6qEYxg',
+          'body': 'TraeCode v3.3.84 ～ 3.3.86 版本正式发布。以下是变更细节：\n- 支持为部分模型开启 Max 模式。详情参考 Max 模式 。\n- 支持跳转至对话流中的任一 Query，通过对话面板左侧的对话缩略导航实现。\n- 修复了已知问题。'
         },
         {
-          'version': '3.3.80-83',
-          'title': 'v3.3.80-83',
-          'date': '2026-07-31',
-          'dateRaw': '2026-07-31',
+          'version': '3.3.81-3.3.83',
+          'title': '2026 年 07 月 30 日（功能发布）',
+          'date': '2026-07-30',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hnyMozPOX',
+          'body': 'TRAE CN v3.3.81 ～ 3.3.83 版本正式发布。以下是变更细节：\n- 上线以积分为核心的计费模式。详情参考 套餐与计费 。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.79-3.3.80',
+          'title': '2026 年 07 月 23 日（功能发布）',
+          'date': '2026-07-23',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hdI1aTC0Y',
+          'body': 'TRAE CN v3.3.79 ～ 3.3.80 版本正式发布。以下是变更细节：\n- 【仅个人版】Windows 系统支持智能体通过 Browser Use 调用外部浏览器。\n- 修复安全相关问题并优化安全能力。\n- 修复了其余已知问题。'
+        },
+        {
+          'version': '3.3.77-3.3.78',
+          'title': '2026 年 07 月 17 日（Hotfix）',
+          'date': '2026-07-17',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hh6kWcQpn',
+          'body': 'TRAE CN v3.3.77 ～ 3.3.78 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.76',
+          'title': '2026 年 07 月 16 日（Hotfix）',
+          'date': '2026-07-16',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hy6GszAg3',
+          'body': 'TRAE CN v3.3.76 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.75',
+          'title': '2026 年 07 月 13 日（Hotfix）',
+          'date': '2026-07-13',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hnyDzMGrD',
+          'body': 'TRAE CN v3.3.75 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.74',
+          'title': '2026 年 07 月 08 日（功能发布）',
+          'date': '2026-07-08',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#haIRQBULj',
+          'body': 'TRAE CN v3.3.74 版本正式发布。以下是变更细节：\n- 【仅个人版】设置中新增 “浏览器” 配置页。详情参考 浏览器控制 。\n- 【仅个人版】Windows 接入 MSSDK。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.73',
+          'title': '2026 年 07 月 06 日（Hotfix）',
+          'date': '2026-07-06',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hikZ7J4KO',
+          'body': 'TRAE CN v3.3.73 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.72',
+          'title': '2026 年 07 月 02 日（Hotfix）',
+          'date': '2026-07-02',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hUvoY91pD',
+          'body': 'TRAE CN v3.3.72 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.70-3.3.71',
+          'title': '2026 年 06 月 29 日（功能发布）',
+          'date': '2026-06-29',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hv7gFgp0q',
+          'body': 'TRAE CN v3.3.70 ～ 3.3.71 版本正式发布。以下是变更细节：\n- 【仅个人版】Browser Use 部分卡片增加截图展示。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.69',
+          'title': '2026 年 06 月 23 日（Hotfix）',
+          'date': '2026-06-23',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hRaWiMD60',
+          'body': 'TRAE CN v3.3.69 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.68',
+          'title': '2026 年 06 月 18 日（Hotfix）',
+          'date': '2026-06-18',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#2026-年-06-月-18-日（hotfix）',
+          'body': 'TRAE CN v3.3.68 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.67',
+          'title': '2026 年 06 月 17 日（功能发布）',
+          'date': '2026-06-17',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hd4mqLS15',
+          'body': 'TRAE CN v3.3.67 版本正式发布。以下是变更细节：\n- 支持加载 .trae/agents 目录下的 Subagents 定义文件。需先在 Beta 功能设置页开启 “启用 Subagents 目录“ 开关。\n- 针对 -1 或 3003 这类可重试的错误，在端上自动发起重试，并撤回未执行的工具卡片。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.66',
+          'title': '2026 年 06 月 10 日（功能发布）',
+          'date': '2026-06-10',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hhHAijYmA',
+          'body': 'TRAE CN v3.3.66 版本正式发布。以下是变更细节：\n- 支持钩子（Hook）功能。通过 Hook，你可以在智能体执行过程中的特定事件节点运行自定义 Shell 命令，详情参考 钩子 。\n- 逐步灰度 Agent 删除工具的自动执行，其删除的文件可以在系统回收站/废纸篓中找到。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.64-3.3.65',
+          'title': '2026 年 06 月 09 日（功能发布）',
+          'date': '2026-06-09',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6f435690',
+          'body': 'TRAE CN v3.3.64 ～ 3.3.65 版本正式发布。以下是变更细节：\n- 【仅企业版】支持在客户端中一键上传日志。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.63',
+          'title': '2026 年 06 月 04 日（功能发布）',
+          'date': '2026-06-04',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#70a158ea',
+          'body': 'TRAE CN v3.3.63 版本正式发布。以下是变更细节：\n- 【仅个人版】TRAE CN 与 TRAE 国际版的全局技能目录相互兼容。\n- 解决了特殊场景下，Subagent 卡片不支持展开或折叠的问题。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.61-3.3.62',
+          'title': '2026 年 05 月 29 日（Hotfix）',
+          'date': '2026-05-29',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#cdff0690',
+          'body': 'TRAE CN v3.3.61 ～ 3.3.62 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.59-3.3.60',
+          'title': '2026 年 05 月 21 日（功能优化）',
+          'date': '2026-05-21',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#681ec474',
+          'body': 'TRAE CN v3.3.59 ～ 3.3.60 版本正式发布。以下是变更细节：\n- 提升了终端命令执行的稳定性与兼容性。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.58',
+          'title': '2026 年 05 月 15 日（功能发布）',
+          'date': '2026-05-15',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#f2364b13',
+          'body': 'TRAE CN v3.3.58 版本正式发布。以下是变更细节：\n- Kimi K2.5 / K2.6 模型新增视频读取能力。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.57',
+          'title': '2026 年 05 月 11 日（Hotfix）',
+          'date': '2026-05-11',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#136e7d41',
+          'body': 'TRAE CN v3.3.57 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.56',
+          'title': '2026 年 05 月 08 日（功能发布）',
+          'date': '2026-05-08',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#c574bcc6',
+          'body': 'TRAE CN v3.3.56 版本正式发布。以下是变更细节：\n- 将 Builder 和 Builder with MCP 智能体合并为 Agent，并将 SOLO Coder 更名为 SOLO Agent。\n- .trae/commands/ 下的项目命令文件支持最多 3 层目录嵌套。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.55',
+          'title': '2026 年 04 月 30 日（Hotfix）',
+          'date': '2026-04-30',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6b382448',
+          'body': 'TRAE CN v3.3.55 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.54',
+          'title': '2026 年 04 月 28 日（功能发布）',
+          'date': '2026-04-28',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6313f354',
+          'body': 'TRAE CN v3.3.54 版本正式发布。以下是变更细节：\n- 新增斜杠命令功能。通过创建自定义命令，你可以将常用的指令或操作封装起来，从而简化工作流程，提高与 AI 协作的效率。详情参考 命令 。\n- 优化了设置面板：将上下文相关的功能归类为 ”索引与文档“、”技能与命令“ 和 ”规则“。'
+        },
+        {
+          'version': '3.3.53',
+          'title': '2026 年 04 月 20 日（Hotfix）',
+          'date': '2026-04-20',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#c5b04654',
+          'body': 'TRAE CN v3.3.53 版本正式发布。以下是变更细节：\n- 修复了部分场景下 CPU 占用过高、界面卡顿的问题。'
+        },
+        {
+          'version': '3.3.52',
+          'title': '2026 年 04 月 15 日（Hotfix）',
+          'date': '2026-04-15',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b8eeb0f1',
+          'body': 'TRAE CN v3.3.52 版本正式发布。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.51',
+          'title': '2026 年 04 月 14 日（功能发布）',
+          'date': '2026-04-14',
+          'dateRaw': '',
+          'tags': [
+            '功能发布',
+            '支持规则嵌套',
+            '支持为子目录创建规则'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6e32cbbd',
+          'body': 'TRAE CN v3.3.51 版本正式发布。以下是变更细节：\n- 优化了 RunCommand 工具的执行。\n- 优化了规则功能：\n- 支持规则嵌套 ：你可以在 .trae/rules/ 目录下创建子文件夹来对规则进行分类。系统会自动递归读取最多 3 层的规则目录。详情参考 关于多层规则嵌套 。\n- 支持为子目录创建规则 ：你可以在项目内任一子目录下创建 .trae/rules/ 文件夹，以便为该模块配置专属规则。当你在对话中提及该目录下的文件，或 AI 读取这些文件时，系统将自动应用这些规则。详情参考 关于为子目录创建规则 。\n- 增加 Git Commit Message 生成规则的配置入口：\n- 在 “源代码管理” 面板的下拉菜单中，点击 “配置提交信息生成规则” 后可打开规则文件，你可以在该文件中配置 Git Commit Message 生成规则。\n- 首次使用 AI 生成 Git Commit Message 功能时，系统会弹出规则配置提示。\n详情参考 为提交内容（Git Commit Message）设置规则 。\n- MCP Server 支持完整的 OAuth 授权流程，包括授权、运行、调用和解除授权。\n- 支持为自定义模型配置自定义请求地址。'
+        },
+        {
+          'version': '3.3.50',
+          'title': '2026 年 04 月 14 日（Hotfix）',
+          'date': '2026-04-14',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#92839c62',
+          'body': 'TRAE CN v3.3.50 版本正式发布。以下是变更细节：\n- 修复了已知问题'
+        },
+        {
+          'version': '3.3.47',
+          'title': '2026 年 04 月 09 日（功能发布）',
+          'date': '2026-04-09',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#50ae0718',
+          'body': 'TRAE CN v3.3.47 版本正式发布。以下是变更细节：\n- 对话流设置新增 “执行命令时自动打开终端” 配置。开启后，智能体执行终端命令时可自动展示对应终端。\n- 修复了已知问题'
+        },
+        {
+          'version': '3.3.44',
+          'title': '2026 年 04 月 02 日（功能发布）',
+          'date': '2026-04-02',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#41b511cd',
+          'body': 'TRAE CN v3.3.44 版本正式发布。以下是变更细节：\n- 支持从 .agents/skills 目录自动加载技能。详情参考 使用 .agents 技能目录 。\n- 支持为 AI 生成的 Git Commit Message 设置规则。详情参考 为提交内容（Git Commit Message）设置规则 。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.43',
+          'title': '2026 年 03 月 31 日（Hotfix）',
+          'date': '2026-03-31',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#8f7a9f8d',
+          'body': 'TRAE CN v3.3.43 版本正式发布。以下是变更细节：\n- 修复了 TraeCode 无法正常启动的问题。'
+        },
+        {
+          'version': '3.3.42',
+          'title': '2026 年 03 月 28 日（Hotfix）',
+          'date': '2026-03-28',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#936255e3',
+          'body': 'TRAE CN v3.3.42 版本正式发布。以下是变更细节：\n- 修复了部分依赖 Worker 能力的插件无法启动或功能异常的问题。\n- 【企业版】修复了专属域名访问不通、账号切换相关等几个已知问题。'
+        },
+        {
+          'version': '3.3.41',
+          'title': '2026 年 03 月 26 日（功能发布）',
+          'date': '2026-03-26',
+          'dateRaw': '',
+          'tags': [
+            '功能发布',
+            '设置',
+            '对话流',
+            '终端工具偏好'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#55504df7',
+          'body': 'TRAE CN v3.3.41 版本正式发布。以下是变更细节：\n- 支持引用历史对话：IDE 和 SOLO 模式下，在输入框内使用 # 即可引用历史对话。\n- 支持导出历史对话：SOLO 模式可在多任务面板导出，IDE 模式点击历史对话旁按钮即可导出。\n- 【本功能逐步灰度中】Agent 运行终端底层重构为只读模式：提升了性能与稳定性，引入交互更精简的命令卡片，后台命令运行岛台可以管理当前对话启动的长命令。如果遇到执行问题，可在 设置 > 对话流 > 终端工具偏好 中恢复旧版执行机制。\n- 修复了对话中大量终端卡片导致的闪动问题。\n- 修复了其他已知问题。'
+        },
+        {
+          'version': '3.3.40',
+          'title': '2026 年 03 月 24 日（功能发布）',
+          'date': '2026-03-24',
+          'dateRaw': '',
+          'tags': [
+            '功能发布',
+            '设置',
+            '对话流',
+            '终端工具偏好'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#a3df6b7a',
+          'body': 'TRAE CN v3.3.40 版本正式发布。以下是变更细节：\n- 【本功能逐步灰度中】Agent 运行终端底层重构为只读模式：提升了性能与稳定性，引入交互更精简的命令卡片，后台命令运行岛台可以管理当前对话启动的长命令。如果遇到执行问题，可在 设置 > 对话流 > 终端工具偏好 中恢复旧版执行机制。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.39',
+          'title': '2026 年 03 月 21 日（功能发布）',
+          'date': '2026-03-21',
+          'dateRaw': '',
+          'tags': [
+            '功能发布',
+            '设置',
+            '对话流',
+            '终端工具偏好'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b561faa1',
+          'body': 'TRAE CN v3.3.39 版本正式发布。以下是变更细节：\n- 进程资源管理器新增 CPU 和内存 AI 诊断。\n- 【本功能逐步灰度中】Agent 运行终端底层重构为只读模式：提升了性能与稳定性，引入交互更精简的命令卡片，后台命令运行岛台可以管理当前对话启动的长命令。如果遇到执行问题，可在 设置 > 对话流 > 终端工具偏好 中恢复旧版执行机制。\n- 修复了已知问题。'
+        },
+        {
+          'version': '3.3.38',
+          'title': '2026 年 03 月 14 日（Hotfix）',
+          'date': '2026-03-14',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#3b76a469',
+          'body': 'TRAE CN v3.3.38 版本正式发布。以下是变更细节：\n- 修复了 Windows 终端沙箱问题。\n- 修复了其他已知问题。'
+        },
+        {
+          'version': '3.3.37',
+          'title': '2026 年 03 月 11 日（功能发布）',
+          'date': '2026-03-11',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#58203b4b',
+          'body': 'TRAE CN v3.3.37 版本正式发布。以下是变更细节：\n- SOLO 模式下，打开 Markdown 文件时将默认进入可实时编辑的预览视图。你可以在普通 “预览” 模式和 “Markdown” 模式间自由切换 ，还可以在通用设置中设置 Markdown 文件的默认展示方式。\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.36',
+          'title': '2026 年 03 月 09 日（Hotfix）',
+          'date': '2026-03-09',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6fbf5336',
+          'body': 'TRAE CN v3.3.36 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.35',
+          'title': '2026 年 03 月 05 日（功能发布）',
+          'date': '2026-03-05',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#4d45cfb8',
+          'body': 'TRAE CN v3.3.35 版本正式发布。以下是变更细节：\n- 支持在编辑器内直接预览 Markdown 文件。你可以在普通 ”预览“ 模式和 ”Markdown“ 模式间自由切换 ，还可以在通用设置中设置 Markdown 文件的默认展示方式。\n- 智能体执行命令时，不再自动打开原始终端，你可以手动点击终端卡片按钮来将其打开。\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.34',
+          'title': '2026 年 02 月 28 日（Hotfix）',
+          'date': '2026-02-28',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#de1de396',
+          'body': 'TRAE CN v3.3.34 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.33',
+          'title': '2026 年 02 月 26 日（功能发布）',
+          'date': '2026-02-26',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#ee837a8d',
+          'body': 'TRAE CN v3.3.33 版本正式发布。以下是变更细节：\n- 支持配置多个规则。详情参考 规则（Rule） 。\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.32',
+          'title': '2026 年 02 月 14 日（Hotfix）',
+          'date': '2026-02-14',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#761cbdf0',
+          'body': 'TRAE CN v3.3.32 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.31',
+          'title': '2026 年 02 月 12 日（功能发布）',
+          'date': '2026-02-12',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#a4e96165',
+          'body': 'TRAE CN v3.3.31 版本正式发布。以下是变更细节：\n- 新增 Spec 模式，可在 SOLO Coder 中使用。详情参考 Spec 模式 。\n- 移除 SOLO Coder 的 Plan 模式开关，新增 /plan 和 /spec 两个内置的模式切换指令。\n- 优化了终端工具。\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.30',
+          'title': '2026 年 02 月 09 日（Hotfix）',
+          'date': '2026-02-09',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#0c5cb6a3',
+          'body': 'TRAE CN v3.3.30 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '',
+          'title': '2026 年 02 月 06 日（功能发布）',
+          'date': '2026-02-06',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#2734f94b',
+          'body': 'TRAE CN 企业版的变更细节如下：\n- 焕新订阅套餐，提供基础版、团队版、旗舰版。详情参考 套餐类型 。\n- 支持配置企业专属智能体。详情参考 企业智能体 。\n- 支持配置企业内置文档集，作为 AI 对话的上下文。详情参考 企业文档集 。\n- 支持 SOLO 模式。详情参考 SOLO 模式概览 。\n- 支持将常用指令、规范与最佳实践等封装为可复用的技能。详情参考 技能（Skill） 。\n- 支持配置项目级 MCP Server。详情参考 项目级 MCP Server 。\n- 支持按模型或人均维度，为内置模型与自定义模型配置 Token 用量限额。详情参考 配置用量限额 。'
+        },
+        {
+          'version': '3.3.29',
+          'title': '2026 年 02 月 04 日（Hotfix）',
+          'date': '2026-02-04',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#79f7a4da',
+          'body': 'TRAE CN v3.3.29 版本正式发布。以下是变更细节：\n- 修复了线上问题。\n- Skills 功能优化及问题修复 。'
+        },
+        {
+          'version': '3.3.27',
+          'title': '2026 年 02 月 02 日（Hotfix）',
+          'date': '2026-02-02',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#1fadf16f',
+          'body': 'TRAE CN v3.3.27 & 3.3.28 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.26',
+          'title': '2026 年 01 月 30 日（功能优化）',
+          'date': '2026-01-30',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#69496a07',
+          'body': 'TRAE CN v3.3.26 版本正式发布。以下是变更细节：\n- 提升终端的命令执行体验。\n- 优化对话流体验：支持用户在任务执行过程中对当前消息进行复制、删除、回退。'
+        },
+        {
+          'version': '3.3.24',
+          'title': '2026 年 01 月 23 日（功能发布）',
+          'date': '2026-01-23',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#52719d17',
+          'body': 'TRAE CN v3.3.24 & v3.3.25 版本正式发布。以下是变更细节：\n- 升级 “技能” 功能：\n- 支持全局技能和项目技能；\n- 支持手动开启或关闭技能；\n- 支持在 IDE 模式和自定义智能体中使用技能。\n详情参考 技能（Skill） 。\n- 优化沙箱的使用体验，支持自动为 Windows (WSL 2) 和 Linux 完成环境配置，降低使用门槛。详情参考 沙箱 。\n- 支持项目级 MCP。详情参考 添加 MCP Server 。\n- AI 执行终端命令时，命令不记录在终端的历史中。\n- 支持渲染 AI 对话流中输出的 LaTeX 公式。\n- Mac 版 TRAE 新增状态栏功能。\n- 引导页和设置项增加 IntelliJ 快捷键支持。\n- 优化部分使用场景下的用户体验。'
+        },
+        {
+          'version': '3.3.23',
+          'title': '2026 年 01 月 19 日（Hotfix）',
+          'date': '2026-01-19',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#45108a39',
+          'body': 'TRAE CN v3.3.23 版本正式发布。以下是变更细节：\n- 修复了代码索引失败的问题。'
+        },
+        {
+          'version': '3.3.21',
+          'title': '2026 年 01 月 13 日（功能发布）',
+          'date': '2026-01-13',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#c48666de',
+          'body': 'TRAE CN v3.3.21 版本正式发布。以下是变更细节：\n- 支持创建技能并在 SOLO 模式中使用：\n- 支持用户手动上传及添加技能；\n- 支持通过对话自动创建技能。\n详情参考 技能（Skill） 。\n- Browser 增加 devtools 打开入口。\n- 优化了 SOLO 模式下 DocView 中的 Mermaid 展示。\n- 优化了部分场景的用户体验。'
+        },
+        {
+          'version': '3.3.20',
+          'title': '2026 年 01 月 13 日（Hotfix）',
+          'date': '2026-01-13',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#1effc980',
+          'body': 'TRAE CN v3.3.20 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.19',
+          'title': '2026 年 01 月 13 日（Hotfix）',
+          'date': '2026-01-13',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b2a8cc42',
+          'body': 'TRAE CN v3.3.19 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.18',
+          'title': '2026 年 01 月 06 日（功能发布）',
+          'date': '2026-01-06',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#8a00ca46',
+          'body': 'TRAE CN v3.3.18 版本正式发布。以下是变更细节：\n- 支持在对话流中展示消息的发送时间。\n- 支持将 “问题“ 面板中的单条问题添加至 AI 对话。\n- 优化了 #Web 的信息检索能力。\n- 优化了 AI 对话框的使用体验。'
+        },
+        {
+          'version': '3.3.16',
+          'title': '2025 年 12 月 31 日（功能优化）',
+          'date': '2025-12-31',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#8cdf7100',
+          'body': 'TRAE CN v3.3.16 & 3.3.17 版本正式发布。以下是变更细节：\n- 优化了部分场景的用户体验。'
+        },
+        {
+          'version': '3.3.14',
+          'title': '2025 年 12 月 29 日（Hotfix）',
+          'date': '2025-12-29',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#416436b8',
+          'body': 'TRAE CN v3.3.14 & 3.3.15 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.13',
+          'title': '2025 年 12 月 26 日（功能优化）',
+          'date': '2025-12-26',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#455d5860',
+          'body': 'TRAE CN v3.3.13 版本正式发布。以下是变更细节：\n- 优化了部分场景的用户体验。'
+        },
+        {
+          'version': '3.3.12',
+          'title': '2025 年 12 月 26 日（功能发布）',
+          'date': '2025-12-26',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#75293566',
+          'body': 'TRAE CN v3.3.12 版本正式发布。以下是变更细节：\n- SOLO 支持 Auto 模式。该模式下，系统会综合考虑问答速度、性能与资源占用情况，智能调用合适的模型，提供更流畅的 AI 问答体验。\n- SOLO 支持切换模型及添加自定义模型。'
+        },
+        {
+          'version': '3.3.11',
+          'title': '2025 年 12 月 25 日（Hotfix）',
+          'date': '2025-12-25',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#cd0e6311',
+          'body': 'TRAE CN v3.3.11 版本正式发布。以下是变更细节：\n- 修复了部分场景下 AI 对话框中无法选择文件作为上下文的问题。'
+        },
+        {
+          'version': '3.3.10',
+          'title': '2025 年 12 月 24 日（功能发布）',
+          'date': '2025-12-24',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#7bf69802',
+          'body': 'TRAE CN v3.3.10 版本正式发布。以下是变更细节：\n- 支持从对话流中跳转至代码文件/目录。'
+        },
+        {
+          'version': '3.3.9',
+          'title': '2025 年 12 月 22 日（Hotfix）',
+          'date': '2025-12-22',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b9557398',
+          'body': 'TRAE CN v3.3.9 版本正式发布。以下是变更细节：\n- 修复了部分场景下使用 Remote SSH 或 WSL 时，AI 面板无法打开的问题。'
+        },
+        {
+          'version': '3.3.6-3.3.8',
+          'title': '2025 年 12 月 20 日（Hotfix）',
+          'date': '2025-12-20',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#12c39ba0',
+          'body': 'TRAE CN v3.3.6 ～ 3.3.8 版本正式发布。以下是变更细节：\n- 修复了部分场景下使用 Remote SSH 或 WSL 时，AI 面板无法打开的问题。'
+        },
+        {
+          'version': '3.3.5',
+          'title': '2025 年 12 月 18 日（Hotfix）',
+          'date': '2025-12-18',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#216da207',
+          'body': 'TRAE CN v3.3.5 版本正式发布。以下是变更细节：\n- 修复了部分设备上 TRAE 异常退出的问题。'
+        },
+        {
+          'version': '3.3.4',
+          'title': '2025 年 12 月 18 日（Hotfix）',
+          'date': '2025-12-18',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#189df39e',
+          'body': 'TRAE CN v3.3.4 版本正式发布。以下是变更细节：\n- 修复了部分插件无法搜索文件的问题。\n- 修复了 WSL 连接慢的问题。'
+        },
+        {
+          'version': '3.3.2',
+          'title': '2025 年 12 月 17 日（Hotfix）',
+          'date': '2025-12-17',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#359a7d86',
+          'body': 'TRAE CN v3.3.2 及 3.3.3 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.3.1',
+          'title': '2025 年 12 月 17 日（Hotfix）',
+          'date': '2025-12-17',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#28e2cdd2',
+          'body': 'TRAE CN v3.3.1 版本正式发布。以下是变更细节：\n- 修复了部分场景下插件无法使用的问题。\n- 修复了对话面板中终端无法渲染的问题。'
+        },
+        {
+          'version': '3.3.0',
+          'title': '2025 年 12 月 17 日（功能发布）',
+          'date': '2025-12-17',
+          'dateRaw': '',
+          'tags': [
+            '功能发布',
+            '沙箱运行（支持白名单）',
+            '手动运行',
+            '自动运行'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#2a8b6517',
+          'body': 'TRAE CN v3.3.0 版本正式发布。以下是变更细节：\n- 升级了 AI 生成命令行的运行方式，确保命令行的运行更安全。提供三种运行模式供选择（功能灰度中）：\n- 沙箱运行（支持白名单） ：该模式默认启用。命令在安全沙箱中自动运行并判定风险，设置的白名单命令无需经过沙箱，可直接运行。详情参考 沙箱 。\n- 手动运行 ：所有命令需手动确认后执行。\n- 自动运行 ：所有命令自动在沙箱外执行\n- 支持在对话流中展示代码流程图。\n- 企业版相关：\n- TraeCode 内新增企业版登录入口。\n- IDE 模式下新增 Max 模式，为长文本分析、多轮复杂对话等复杂任务场景提供高效、增强的模型能力。详情参考 Max 模式 。'
+        },
+        {
+          'version': '3.2.3',
+          'title': '2025 年 12 月 12 日（Hotfix）',
+          'date': '2025-12-12',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#e49531db',
+          'body': 'TRAE CN v3.2.3 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.2.2',
+          'title': '2025 年 12 月 11 日（Hotfix）',
+          'date': '2025-12-11',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#e35edead',
+          'body': 'TRAE CN v3.2.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.2.1',
+          'title': '2025 年 12 月 10 日（Hotfix）',
+          'date': '2025-12-10',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#76f375a5',
+          'body': 'TRAE CN v3.2.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.2.0',
+          'title': '2025 年 12 月 10 日（功能优化）',
+          'date': '2025-12-10',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#f79a6f2e',
+          'body': 'TRAE CN v3.2.0 版本正式发布。以下是变更细节：\n- 优化了 AI 对话输入框的使用体验。\n- 优化了 “代码审查” 功能的使用体验。\n- 提升了 Remote SSH 的连接成功率。'
+        },
+        {
+          'version': '3.1.2',
+          'title': '2025 年 12 月 04 日（Hotfix）',
+          'date': '2025-12-04',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#3a2e32f6',
+          'body': 'TRAE CN v3.1.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.1.1',
+          'title': '2025 年 12 月 03 日（Hotfix）',
+          'date': '2025-12-03',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#e254d153',
+          'body': 'TRAE CN v3.1.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.1.0',
+          'title': '2025 年 12 月 03 日（功能发布）',
+          'date': '2025-12-03',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b22de56f',
+          'body': 'TRAE CN v3.1.0 版本正式发布。以下是变更细节：\n- 将 “自动接受文件变更” 功能升级为 “代码审查”，提供三种审查方式，可根据需求灵活控制 AI 的代码变更处理方式。详情参考 TraeCode 设置总览 。\n- 支持使用快捷键为（macOS： Option + P ；Windows： Alt + P ）SOLO Coder 开启 Plan 模式。详情参考 SOLO Agent 。'
+        },
+        {
+          'version': '3.0.2',
+          'title': '2025 年 11 月 26 日（Hotfix）',
+          'date': '2025-11-26',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b236302d',
+          'body': 'TRAE CN v3.0.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.0.1',
+          'title': '2025 年 11 月 25 日（Hotfix）',
+          'date': '2025-11-25',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#f3d15a2a',
+          'body': 'TRAE CN v3.0.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '3.0.0',
+          'title': '2025 年 11 月 25 日（功能发布）',
+          'date': '2025-11-25',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#8d1f2d3c',
+          'body': 'TRAE CN v3.0.0 版本正式发布，SOLO 模式免费使用，按照加入等待名单的顺序逐步开放使用权限。\n- 内置智能体 SOLO Coder，支持复杂编程项目。\n- 开启 Plan 模式，从清晰的规划开始，让任务精准推进执行。\n- 智能调用自定义智能体，让专业的智能体完成专业的任务。\n详情参考 SOLO Agent 。\n- 支持多任务并行，告别单线程限制，提高工作效率。详情参考 多任务并行 。\n- 拆解任务并标记完成情况，已完成的任务将自动折叠并生成摘要。\n- 支持管理上下文，包括上下文使用率展示及上下文压缩。\n- 新增代码变更工具，集中展示代码变更历史。'
+        },
+        {
+          'version': '2.12.3',
+          'title': '2025 年 11 月 19 日（Hotfix）',
+          'date': '2025-11-19',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#c845676b',
+          'body': 'TRAE CN v2.12.3 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.12.2',
+          'title': '2025 年 11 月 14 日（Hotfix）',
+          'date': '2025-11-14',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b6b397c5',
+          'body': 'TRAE CN v2.12.2 版本正式发布。以下是变更细节：\n- 修复了部分场景下文件写入乱码的问题。'
+        },
+        {
+          'version': '2.12.1',
+          'title': '2025 年 11 月 12 日（Hotfix）',
+          'date': '2025-11-12',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#8948d7a2',
+          'body': 'TRAE CN v2.12.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.12.0',
+          'title': '2025 年 11 月 11 日（功能发布）',
+          'date': '2025-11-11',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#ccf06286',
+          'body': 'TRAE CN v2.12.0 版本正式发布。以下是变更细节：\n- 优化设置功能，支持全局搜索，快速定位所需配置项。\n- 支持编辑对话流中 AI 生成的命令。\n- 对话流中展示终端卡片，并支持交互。'
+        },
+        {
+          'version': '2.11.1',
+          'title': '2025 年 11 月 07 日（Hotfix）',
+          'date': '2025-11-07',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b8d22a08',
+          'body': 'TRAE CN v2.11.1 版本正式发布。以下是变更细节：\n- 修复了 AI 输出过程中卡住的问题。'
+        },
+        {
+          'version': '2.11.0',
+          'title': '2025 年 11 月 05 日（功能发布）',
+          'date': '2025-11-05',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#98bb48c3',
+          'body': 'TRAE CN v2.11.0 版本正式发布。以下是变更细节：\n- 新增 xAI 作为自定义模型服务商。\n- 提供多种命令执行模式：始终手动运行、使用黑名单、使用白名单、始终自动运行；且支持高风险命令的自动检测，增强防护与提示，确保重要文件免受意外操作影响。'
+        },
+        {
+          'version': '2.10.2',
+          'title': '2025 年 11 月 04 日（Hotfix）',
+          'date': '2025-11-04',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#96ed65e5',
+          'body': 'TRAE CN v2.10.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.10.1',
+          'title': '2025 年 10 月 30 日（功能优化）',
+          'date': '2025-10-30',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#36c420f0',
+          'body': 'TRAE CN v2.10.1 版本正式发布。以下是变更细节：\n- 优化了用户体验。'
+        },
+        {
+          'version': '2.10.0',
+          'title': '2025 年 10 月 29 日（功能发布）',
+          'date': '2025-10-29',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#82b079e5',
+          'body': 'TRAE CN v2.10.0 版本正式发布。以下是变更细节：\n- Remote-SSH 使用时支持连接 Linux ARM 设备。\n- 插件市场的 UI 替换为 VS Code 原生插件市场的 UI。'
+        },
+        {
+          'version': '2.9.4',
+          'title': '2025 年 10 月 25 日（Hotfix）',
+          'date': '2025-10-25',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#729c7356',
+          'body': 'TRAE CN v2.9.4 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.9.3',
+          'title': '2025 年 10 月 24 日（Hotfix）',
+          'date': '2025-10-24',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b4aba6f1',
+          'body': 'TRAE CN v2.9.3 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.9.2',
+          'title': '2025 年 10 月 21 日（Hotfix）',
+          'date': '2025-10-21',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6498f325',
+          'body': 'TRAE CN v2.9.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.9.1',
+          'title': '2025 年 10 月 21 日（Hotfix）',
+          'date': '2025-10-21',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#3f497081',
+          'body': 'TRAE CN v2.9.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.9.0',
+          'title': '2025 年 10 月 21 日（功能优化）',
+          'date': '2025-10-21',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#8b2876ed',
+          'body': 'TRAE CN v2.9.0 版本正式发布。以下是变更细节：\n- 支持修改 CUE 的预览功能的快捷键。详情参考 超级代码补全：CUE 。\n- IDE 模式下，支持为 Builder、Builder with MCP 和自定义智能体设置 “自动接受变更”。开启该功能后，文件变更无需手动确认。\n- IDE 模式下，在每轮对话末尾，支持查看本轮对话完整的代码变更。\n- 减少 “提示词优化” 功能中的中英文混用问题的出现频率。\n- 其他功能体验优化，让 AI 使用更流畅。'
+        },
+        {
+          'version': '2.8.4',
+          'title': '2025 年 10 月 18 日（Hotfix）',
+          'date': '2025-10-18',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b74850a9',
+          'body': 'TRAE CN v2.8.4 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.8.3',
+          'title': '2025 年 10 月 17 日（Hotfix）',
+          'date': '2025-10-17',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#a19eccc3',
+          'body': 'TRAE CN v2.8.3 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.8.2',
+          'title': '2025 年 10 月 16 日（Hotfix）',
+          'date': '2025-10-16',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#28c8e080',
+          'body': 'TRAE CN v2.8.2 版本正式发布。以下是变更细节：\n- 修复了从插件市场安装插件失败，旧版 Windows 的兼容性等问题。'
+        },
+        {
+          'version': '2.8.1',
+          'title': '2025 年 10 月 14 日（Hotfix）',
+          'date': '2025-10-14',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#51138f1c',
+          'body': 'TRAE CN v2.8.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.8.0',
+          'title': '2025 年 10 月 14 日（功能发布）',
+          'date': '2025-10-14',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#5b8795fe',
+          'body': 'TRAE CN v2.8.0 版本正式发布。以下是变更细节：\n- 升级 CUE (Context Understanding Engine) 的交互：\n- 更清晰地展示编辑建议；\n- 支持查看编辑摘要；\n- 支持连续的编辑预测和 Tab。\n- 升级 VSCode 内核至 1.104。'
+        },
+        {
+          'version': '2.7.4',
+          'title': '2025 年 10 月 10 日（功能优化）',
+          'date': '2025-10-10',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#d92d49ef',
+          'body': 'TRAE CN v2.7.4 版本正式发布。以下是变更细节：\n- 提升了部分场景下模型的稳定性。'
+        },
+        {
+          'version': '2.7.3',
+          'title': '2025 年 10 月 09 日（Hotfix）',
+          'date': '2025-10-09',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#88072c9a',
+          'body': 'TRAE CN v2.7.3 版本正式发布。以下是变更细节：\n- 修复部分场景下的登录失败问题。'
+        },
+        {
+          'version': '2.7.2',
+          'title': '2025 年 09 月 30 日（功能优化）',
+          'date': '2025-09-30',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#80d3c95c',
+          'body': 'TRAE CN v2.7.2 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.7.1',
+          'title': '2025 年 09 月 29 日（功能发布）',
+          'date': '2025-09-29',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#b397ce48',
+          'body': 'TRAE CN v2.7.1 版本正式发布。以下是变更细节：\n- 支持开启或关闭对话中的 “自动修复” 功能。'
+        },
+        {
+          'version': '2.7.0',
+          'title': '2025 年 09 月 28 日（功能优化）',
+          'date': '2025-09-28',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#28775659',
+          'body': 'TRAE CN v2.7.0 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.6.2',
+          'title': '2025 年 09 月 26 日（Hotfix）',
+          'date': '2025-09-26',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#697f0897',
+          'body': 'TRAE CN v2.6.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.6.1',
+          'title': '2025 年 09 月 25 日（功能优化）',
+          'date': '2025-09-25',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#5ac0861f',
+          'body': 'TRAE CN v2.6.1 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.6.0',
+          'title': '2025 年 09 月 23 日（功能发布）',
+          'date': '2025-09-23',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#ef8a3e28',
+          'body': 'TRAE CN v2.6.0 版本正式发布。以下是变更细节：\n- 支持为任务状态通知设置自定义音效。'
+        },
+        {
+          'version': '2.5.1',
+          'title': '2025 年 09 月 19 日（功能优化）',
+          'date': '2025-09-19',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#43c61597',
+          'body': 'TRAE CN v2.5.1 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.5.0',
+          'title': '2025 年 09 月 17 日（功能发布）',
+          'date': '2025-09-17',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#cb646272',
+          'body': 'TRAE CN v2.5.0 版本正式发布。以下是变更细节：\n- 优化 “Auto-Run” 功能：开启 “Auto-Run” 后，只有用户添加至黑名单的命令需要手动运行，其他命令均自动运行。\n- 支持通过 # 符号将 Problems 引用为上下文。'
+        },
+        {
+          'version': '2.4.4',
+          'title': '2025 年 09 月 15 日（Hotfix）',
+          'date': '2025-09-15',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#4a1754f0',
+          'body': 'TRAE CN v2.4.4 和 2.4.5 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.4.3',
+          'title': '2025 年 09 月 12 日（功能优化）',
+          'date': '2025-09-12',
+          'dateRaw': '',
+          'tags': [
+            '功能优化'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#9a490c27',
+          'body': 'TRAE CN v2.4.3 版本正式发布。以下是变更细节：\n- 优化了 cue 功能的使用体验。'
+        },
+        {
+          'version': '2.4.2',
+          'title': '2025 年 09 月 10 日（Hotfix）',
+          'date': '2025-09-10',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#49fe8bdb',
+          'body': 'TRAE CN v2.4.2 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.4.1',
+          'title': '2025 年 09 月 09 日（Hotfix）',
+          'date': '2025-09-09',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#15a5b72e',
+          'body': 'TRAE CN v2.4.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.4.0',
+          'title': '2025 年 09 月 09 日（功能发布）',
+          'date': '2025-09-09',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#9de45881',
+          'body': 'TRAE CN v2.4.0 版本正式发布。以下是变更细节：\n- 在创建智能体的过程中添加 MCP Server 时，支持自主勾选/取消勾选工具。\n- 修复了部分已知的性能问题。'
+        },
+        {
+          'version': '2.3.0',
+          'title': '2025 年 09 月 02 日（功能发布）',
+          'date': '2025-09-02',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#a6d57ff0',
+          'body': 'TRAE CN v2.3.0 版本正式发布。以下是变更细节：\n- 修复了部分 Streamable HTTP 类型的 MCP Server 连接失败的问题。'
+        },
+        {
+          'version': '2.2.3',
+          'title': '2025 年 09 月 01 日（Hotfix）',
+          'date': '2025-09-01',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#27209011',
+          'body': 'TRAE CN v2.2.3 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.2.2',
+          'title': '2025 年 08 月 28 日（Hotfix）',
+          'date': '2025-08-28',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#6643cd2b',
+          'body': 'TRAE CN v2.2.2 版本正式发布。以下是变更细节：\n- 修复了部分场景下 AI 面板无法打开的问题。'
+        },
+        {
+          'version': '2.2.1',
+          'title': '2025 年 08 月 27 日（Hotfix）',
+          'date': '2025-08-27',
+          'dateRaw': '',
+          'tags': [
+            'Hotfix'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#03b6b5ab',
+          'body': 'TRAE CN v2.2.1 版本正式发布。以下是变更细节：\n- 修复了线上问题。'
+        },
+        {
+          'version': '2.2.0',
+          'title': '2025 年 08 月 27 日（功能发布）',
+          'date': '2025-08-27',
+          'dateRaw': '',
+          'tags': [
+            '功能发布'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#c16ee2d4',
+          'body': 'TRAE CN v2.2.0 版本正式发布。以下是变更细节：\n- 新增任务完成与中断提醒：实时感知任务状态变化，减少无效等待时间。\n- 优化 Chat 与 Builder 模式的切换交互。Chat 也可以作为智能体使用，支持用户通过 @ 进行选择。\n- 新增内置模型 DeepSeek-V3.1。'
+        },
+        {
+          'version': '2.1.2',
+          'title': '2025 年 08 月 23 日',
+          'date': '2025-08-23',
+          'dateRaw': '',
           'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 全新积分体系，用量更透明、积分更充足、奖励更丰富。\n- 修复了已知问题。'
+          'url': 'https://docs.trae.cn/ide_changelog#2eb987f3',
+          'body': 'TRAE CN v2.1.2 版本正式发布。以下是变更细节：\n- 修复了部分问题。'
+        },
+        {
+          'version': '2.1.1',
+          'title': '2025 年 08 月 22 日',
+          'date': '2025-08-22',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#0a44665d',
+          'body': 'TRAE CN v2.1.1 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.1.0',
+          'title': '2025 年 08 月 21 日',
+          'date': '2025-08-21',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#2eecefc5',
+          'body': 'TRAE CN v2.1.0 版本正式发布。以下是变更细节：\n- 新增隐私模式，加强隐私保护。你可以在 “账号设置” 处开启或关闭该模式。详情参考 隐私模式 。'
+        },
+        {
+          'version': '2.0.13',
+          'title': '2025 年 08 月 15 日',
+          'date': '2025-08-15',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#a7dc514d',
+          'body': 'TRAE CN v2.0.13 版本正式发布。以下是变更细节：\n- 优化了一键应用的使用体验：应用速度更快，Diff 展示更明显，应用成功或失败的提示更清晰。\n- 优化了进程资源管理器的使用体验。'
+        },
+        {
+          'version': '2.0.12',
+          'title': '2025 年 08 月 13 日',
+          'date': '2025-08-13',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#7485c0fb',
+          'body': 'TRAE CN v2.0.12 版本正式发布。以下是变更细节：\n- 新增任务列表，智能拆解任务并标记完成情况。\n- 支持对输入内容进行智能优化。'
+        },
+        {
+          'version': '2.0.11',
+          'title': '2025 年 08 月 11 日',
+          'date': '2025-08-11',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#1f54a739',
+          'body': 'TRAE CN v2.0.11 版本正式发布。以下是变更细节\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.0.10',
+          'title': '2025 年 08 月 08 日',
+          'date': '2025-08-08',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#e3ca4eee',
+          'body': 'TRAE CN v2.0.10 版本正式发布。以下是变更细节：\n- Cue 更新如下：\n- 新增智能导入功能，支持在 Python、TypeScript 和 Golang 项目中智能识别并导入依赖模块。\n- 新增智能重命名功能，支持在 Python、TypeScript 和 Golang 项目中智能识别并提供变量和函数名称修改建议，支持跨文件级别。\n详情参考 超级代码补全：CUE 。\n- 预览工具和浏览器中的控制台日志新增 Console Warnings 和 Console Info 类型，并支持筛选日志类型。\n- 预览工具和浏览器支持管理多个标签页。\n- 优化了部分场景下智能体读取文件的性能表现。'
+        },
+        {
+          'version': '2.0.9',
+          'title': '2025 年 08 月 05 日',
+          'date': '2025-08-05',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#2130f5c8',
+          'body': 'TRAE CN v2.0.9 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.0.8',
+          'title': '2025 年 08 月 04 日',
+          'date': '2025-08-04',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#5b282574',
+          'body': 'TRAE CN v2.0.8 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '2.0.7',
+          'title': '2025 年 08 月 01 日',
+          'date': '2025-08-01',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#6048e0d3',
+          'body': 'TRAE CN v2.0.7 版本正式发布。以下是变更细节：\n- 优化了部分场景下，耗电和 CPU 资源占用高的问题。\n- 优化了长对话场景 AI 终端复用效果。\n- 优化了 Windows 场景 AI 运行终端命令效果。\n- 修复了多编辑器混用时，未接受的代码有一定概率被覆盖的问题。\n- 修复了 $ 字符导致对话中断的问题。'
+        },
+        {
+          'version': '2.0.5',
+          'title': '2025 年 07 月 30 日',
+          'date': '2025-07-30',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#d420e00b',
+          'body': 'TRAE CN v2.0.5 版本正式发布。以下是变更细节：\n- 优化了一些边界条件下的性能问题。'
+        },
+        {
+          'version': '2.0.4',
+          'title': '2025 年 07 月 25 日',
+          'date': '2025-07-25',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#ac513626',
+          'body': 'TRAE CN v2.0.4 版本正式发布。以下是变更细节：\n- 支持暂时禁用 Tab-Cue，可随时重新开启。详情参考 超级代码补全：CUE 。\n- 新增 Kimi-K2 和 Qwen3-Coder 模型。\n- 支持在插件市场选择插件版本。\n- 优化了 Tab-Cue 的交互体验。\n- 优化了部分功能。\n- 解决了部分场景下内存 和 CPU 资源占用偏多的问题。'
+        },
+        {
+          'version': '2.0.2',
+          'title': '2025 年 07 月 21 日',
+          'date': '2025-07-21',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#29993687',
+          'body': 'TRAE CN v2.0.2 版本正式发布。以下是变更细节：\n- 优化了交互体验。'
+        },
+        {
+          'version': '2.0.1',
+          'title': '2025 年 07 月 19 日',
+          'date': '2025-07-19',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#4bd9cfa2',
+          'body': 'TRAE CN v2.0.1 版本正式发布。以下是变更细节：\n- 修复了部分主题下 UI 不兼容的问题。'
+        },
+        {
+          'version': '2.0.0',
+          'title': '2025 年 07 月 18 日',
+          'date': '2025-07-18',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#b9addc65',
+          'body': 'TRAE CN v2.0.0 版本正式发布。以下是变更细节：\n- 提供全新视觉设计，打造更沉浸的智能开发体验。\n- 支持在 AI 对话中使用语音输入。\n- 支持为自定义智能体生成随机头像。\n- 支持将预览窗口中的信息作为上下文。\n- 新增数据看板，用于追踪你的 AI 编程数据。\n- 全新 SOLO 模式（开放等待名单）：\n- AI 自动分析和梳理需求，生成可编辑的产品需求文档。\n- AI 灵活调度编辑器、浏览器、终端、文档等工具，适配各种开发场景。\n- 通过 SOLO Builder **** 智能体快速搭建美观的前端应用，实现便捷的端到端开发流程。\n- 实时跟随 AI 操作，自动切换工具面板，清晰展示开发环节和产物。'
+        },
+        {
+          'version': '0.6.18',
+          'title': '2025 年 07 月 15 日',
+          'date': '2025-07-15',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#3ce788c0',
+          'body': 'Trae CN v0.6.18 版本正式发布。以下是变更细节：\n- 优化了部分场景下 AI 对话中 MarkDown 渲染嵌套代码块的问题。\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.6.17',
+          'title': '2025 年 07 月 09 日',
+          'date': '2025-07-09',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#dee5a0ef',
+          'body': 'Trae CN v0.6.17 版本正式发布。以下是变更细节：\n- 支持管理 Preview 工具使用的服务权限，包括麦克风、摄像头和地图等。\n- 支持在部分场景下跳过终端中正在执行的命令。\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.6.16',
+          'title': '2025 年 07 月 08 日',
+          'date': '2025-07-08',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#c462fa32',
+          'body': 'Trae CN v0.6.16 版本正式发布。以下是变更细节：\n- 修复了部分场景下插件激活失败的问题。'
+        },
+        {
+          'version': '0.6.15',
+          'title': '2025 年 07 月 07 日',
+          'date': '2025-07-07',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#9f2d52bf',
+          'body': 'Trae CN v0.6.15 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.6.14',
+          'title': '2025 年 07 月 04 日',
+          'date': '2025-07-04',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#4a986e92',
+          'body': 'Trae CN v0.6.14 版本正式发布。以下是变更细节：\n- 修复了部分场景下 MCP 的兼容性问题。\n- 优化了创建智能体的交互体验。'
+        },
+        {
+          'version': '0.6.13',
+          'title': '2025 年 07 月 02 日',
+          'date': '2025-07-02',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#2e488f58',
+          'body': 'Trae CN v0.6.13 版本正式发布。以下是变更细节：\n- 新增消息通知功能。'
+        },
+        {
+          'version': '0.6.12',
+          'title': '2025 年 07 月 01 日',
+          'date': '2025-07-01',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#e1315560',
+          'body': 'Trae CN v0.6.12 版本正式发布。以下是变更细节：\n- 修复了 Intel 芯片在部分场景下可能导致 AI 进程 CPU 占用过高的问题。\n- 修复了部分场景中下拉框无法点击的问题。'
+        },
+        {
+          'version': '0.6.11',
+          'title': '2025 年 06 月 30 日',
+          'date': '2025-06-30',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#b6f0f9cd',
+          'body': 'Trae CN v0.6.11 版本正式发布。以下是变更细节：\n- 修复了 AI 终端在 Windows PowerShell 中的兼容性问题。'
+        },
+        {
+          'version': '0.6.10',
+          'title': '2025 年 06 月 27 日',
+          'date': '2025-06-27',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#ea8386ce',
+          'body': 'Trae CN v0.6.10 版本正式发布。以下是变更细节：\n- 新增 OpenAI 作为自定义模型服务商。\n- 新增进程资源管理器，用于实时查看 TraeCode 资源使用和网络状态，管理进程资源。详情参考 进程资源管理器 。\n- 新增适用于 MCP 的 NPX 和 UVX 环境配置引导。\n- 优化部分场景下 cue 的推荐和展示逻辑。\n- 修复了部分场景下 AI 无法检测到终端命令状态的问题。'
+        },
+        {
+          'version': '0.6.8',
+          'title': '2025 年 06 月 24 日',
+          'date': '2025-06-24',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#7cb1cbf1',
+          'body': 'Trae CN v0.6.8 版本正式发布。以下是变更细节：\n- 支持以工作区维度来启用和禁用插件。\n- 升级 VSCode 内核版本至 1.100.3。\n- 优化了部分功能。\n- 提升了稳定性。'
+        },
+        {
+          'version': '0.6.4',
+          'title': '2025 年 06 月 17 日',
+          'date': '2025-06-17',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#0f0e32c6',
+          'body': 'Trae CN v0.6.4 版本正式发布。以下是变更细节：\n- 修复了 WSL 远程开发部分场景下 AI 面板无法正常使用的问题。'
+        },
+        {
+          'version': '0.6.3',
+          'title': '2025 年 06 月 13 日',
+          'date': '2025-06-13',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#55acc91d',
+          'body': 'Trae CN v0.6.3 版本正式发布。以下是变更细节：\n- 新增 Doubao-Seed-1.6 模型。\n- 模型服务商新增 Gemini。\n- 修复了部分场景下 AI 对话一直显示 “Loading” 的问题。'
+        },
+        {
+          'version': '0.6.2',
+          'title': '2025 年 06 月 11 日',
+          'date': '2025-06-11',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#bb291d5e',
+          'body': 'Trae CN v0.6.2 版本正式发布。以下是变更细节：\n- 新增智能编程工具 cue：\n- 优化了模型的能力，自动补全的代码准确性更高。\n- 支持多行修改、修改点预测、修改点跳转功能。详情参考 超级代码补全：CUE 。\n- 简化了为智能体添加 MCP Server 的流程。\n- 移除了内置的 Vue - Official 插件。你可以在插件市场中下载。\n- 修复了部分场景下连续提示 “输出过长，请输入继续后获得更多结果” 的问题。'
+        },
+        {
+          'version': '0.6.1',
+          'title': '2025 年 06 月 05 日',
+          'date': '2025-06-05',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#946de5e4',
+          'body': 'Trae CN v0.6.1 版本正式发布。以下是变更细节：\n- Trae MCP 市场接入 火山引擎 MCP 市场 中的资源：\n- 新增超过 100 个优质 MCP Server 并支持快捷配置。\n- 支持通过在 TraeCode 内添加火山引擎 MCP Server 的方式来接入其云服务，包括计算、存储、网络等服务。\n- MCP 功能升级：\n- 支持 Streamable HTTP 传输方式。\n- 支持为 Streamable HTTP 和 SSE 传输方式配置 header 字段。'
+        },
+        {
+          'version': '0.6.0',
+          'title': '2025 年 05 月 27 日',
+          'date': '2025-05-27',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#e36562be',
+          'body': 'Trae CN v0.6.0 版本正式发布。以下是变更细节：\n- 优化 AI 对话的流程和质量，具体如下：\n- 取消了 Builder 智能体的固定的前置 Proposal，由 AI 根据上下文自主决策，从而发挥出更智能、更灵活的效果。\n- 扩充了 AI 可自主调用的工具集，减少了编程过程中的人工干预，使得编程体验更流畅、更高效。\n- 提升了多轮对话中的上下文连贯性，并支持通过 “继续” 指令无缝衔接和执行问答，使得问答过程更流畅。\n- 支持将智能体分享到社交平台，同时支持通过点击他人分享的智能体链接，一键将智能体导入至 TraeCode，实现对提示词和 MCP Server 配置的快速复用。详情参考 创建并管理智能体 。\n- 新增对 Python、Java、Go 等语言的环境配置引导。'
+        },
+        {
+          'version': '0.5.10',
+          'title': '2025 年 05 月 21 日',
+          'date': '2025-05-21',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#af61d36f',
+          'body': 'Trae CN v0.5.10 版本正式发布。以下是变更细节：\n- Remote SSH 支持 Linux Debian 10 发行版。\n- 支持通过导入本地 VSIX 文件的方式来安装插件。详情参考 插件 。'
+        },
+        {
+          'version': '0.5.9',
+          'title': '2025 年 05 月 16 日',
+          'date': '2025-05-16',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#9adf774b',
+          'body': 'Trae CN v0.5.9 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.5.8',
+          'title': '2025 年 05 月 13 日',
+          'date': '2025-05-13',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#c5e7b546',
+          'body': 'Trae CN v0.5.8 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.5.7',
+          'title': '2025 年 05 月 09 日',
+          'date': '2025-05-09',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#09068f62',
+          'body': 'Trae CN v0.5.7 版本正式发布。以下是变更细节：\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.5.5',
+          'title': '2025 年 04 月 28 日',
+          'date': '2025-04-28',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#4a540bc3',
+          'body': 'Trae CN v0.5.5 版本正式发布。以下是变更细节：\n- 提升了插件市场的使用稳定性。\n- 优化了智能体相关界面。'
+        },
+        {
+          'version': '0.5.4',
+          'title': '2025 年 04 月 27 日',
+          'date': '2025-04-27',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#63b5e282',
+          'body': 'Trae CN v0.5.4 版本正式发布。以下是变更细节：\n- 提升了稳定性。'
+        },
+        {
+          'version': '0.5.3',
+          'title': '2025 年 04 月 25 日',
+          'date': '2025-04-25',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#52a2b19b',
+          'body': 'Trae CN v0.5.3 版本正式发布。以下是变更细节：\n- 支持自定义智能体的头像。\n- 支持配置插件市场源。\n- 优化了部分功能。'
+        },
+        {
+          'version': '0.5.2',
+          'title': '2025 年 04 月 23 日',
+          'date': '2025-04-23',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#b942b02b',
+          'body': 'Trae CN v0.5.2 版本正式发布。以下是变更细节：\n- 提升了稳定性。'
+        },
+        {
+          'version': '0.5.1',
+          'title': '2025 年 04 月 22 日',
+          'date': '2025-04-22',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#aaf6d971',
+          'body': 'Trae CN v0.5.1 版本正式发布。以下是变更细节：\n- 提升了稳定性。\n- 合并 Chat 与 Builder 面板。你可以通过 @Builder 方式将 Builder 作为智能体使用。详情参考 智能体概述 。\n- 支持将文档内容和网页内容作为上下文：\n- #Web：支持联网搜索，AI 会自动提取网页内的相关内容作为上下文。\n- #Doc：支持通过 URL 或上传 .md/.txt 文件的方式添加文档集。\n详情参考 通过 # 符号引用上下文 。\n- 支持通过配置规则来规范 AI 的行为，包括：\n- 个人规则：根据个人偏好创建适用于所有项目的规则。\n- 项目规则： 创建仅适用于当前项目的规则。\n详情参考 规则（Rule） 。\n- 升级智能体（Agent）能力：\n- 支持创建自定义智能体。你可以自定义智能体的提示词和工具集。\n- 提供两个内置智能体：Builder 和 Builder with MCP。\n- 支持为智能体开启 “自动运行” 模式，使智能体自动执行命令和调用工具，同时支持配置命令黑名单。\n详情参考 自动运行 & 安全性 。\n- 支持模型上下文协议（MCP）：\n- 提供内置 MCP 市场，支持快速添加第三方 MCP Servers。\n- 支持将 MCP Server 添加到智能体进行使用，从而丰富智能体的能力。\n详情参考 MCP 概览 。'
+        },
+        {
+          'version': '0.3.11',
+          'title': '2025 年 04 月 16 日',
+          'date': '2025-04-16',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#05ec2b0a',
+          'body': 'Trae CN v0.3.11 版本正式发布。以下是变更细节：\n- 提升了 C 语言的编程体验。'
+        },
+        {
+          'version': '0.3.10',
+          'title': '2025 年 04 月 15 日',
+          'date': '2025-04-15',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#b6a41acf',
+          'body': 'Trae CN v0.3.10 版本正式发布。以下是变更细节：\n- 提升了网络连接的稳定性。\n- 支持在 ”报告问题“ 窗口中提供联系方式。'
+        },
+        {
+          'version': '0.3.9',
+          'title': '2025 年 04 月 11 日',
+          'date': '2025-04-11',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#3daafa6a',
+          'body': 'Trae CN v0.3.9 版本正式发布。以下是变更细节：\n- 新增 “报告问题” 窗口，可以使用快捷键打开（macOS：Command + K Command + R；Windows：Ctrl + K Ctrl + R）。'
+        },
+        {
+          'version': '0.3.7',
+          'title': '2025 年 04 月 03 日',
+          'date': '2025-04-03',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#34932c7d',
+          'body': 'Trae CN v0.3.7 版本正式发布。以下是变更细节：\n- 修复了部分插件的兼容性问题。\n- 修复了 Remote SSH 在一些场景下无法连接的问题。'
+        },
+        {
+          'version': '0.3.6',
+          'title': '2025 年 04 月 02 日',
+          'date': '2025-04-02',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#e8edcde1',
+          'body': 'Trae CN v0.3.6 版本正式发布。以下是变更细节：\n- 修复了部分场景下 Trae AI 一直显示 “思考中” 的问题。\n- 修复 Tooltip 和模型选择下拉框的样式问题。'
+        },
+        {
+          'version': '0.3.5',
+          'title': '2025 年 04 月 01 日',
+          'date': '2025-04-01',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#ee4aef0a',
+          'body': 'Trae CN v0.3.5 版本正式发布。以下是变更细节：\n- 升级 VS Code 内核至 1.98.2 版本。\n- 优化 Remote SSH 功能的远程连接速度。\n- 新增自动生成 Git Commit 指令的快捷键（macOS：Command + G；Windows：Ctrl + G）。\n- 增强 Preview 插件：支持输入自定义 URL 进行预览。\n- 支持自动识别 Golang 和 Python 项目并安装对应的语言服务插件。'
+        },
+        {
+          'version': '0.3.4',
+          'title': '2025 年 03 月 28 日',
+          'date': '2025-03-28',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#03233982',
+          'body': 'Trae CN v0.3.4 版本正式发布。以下是变更细节：\n- 修复了若干样式问题。'
+        },
+        {
+          'version': '0.3.3',
+          'title': '2025 年 03 月 27 日',
+          'date': '2025-03-27',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#e3755dc3',
+          'body': 'Trae CN v0.3.3 版本正式发布。以下是变更细节：\n- 修复了若干和通知功能相关的问题。'
+        },
+        {
+          'version': '0.3.2',
+          'title': '2025 年 03 月 26 日',
+          'date': '2025-03-26',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#3dce79b2',
+          'body': 'Trae CN v0.3.2 版本正式发布。以下是变更细节：\n- 支持 DeepSeek-V3-0324。\n- 支持接入 OpenRouter 提供的 AI 模型。详情参考 自定义模型 。\n- 支持连接 Windows Subsystem for Linux（WSL）进行开发。详情参考 使用 WSL 进行远程开发 。\n- 优化了预览插件：新增设备工具栏，支持灵活调整页面尺寸，并提供响应式布局以及针对移动端设备的自适应布局。\n- 优化了通知中心：新增 “勿扰模式” 并支持按插件管理消息推送。'
+        },
+        {
+          'version': '0.3.1',
+          'title': '2025 年 03 月 19 日',
+          'date': '2025-03-19',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#2eeb4b69',
+          'body': 'Trae CN v0.3.1 版本正式发布。以下是变更细节：\n- 优化了代码合并逻辑，避免代码因长度过长而被截断，从而确保合并后代码的完整性。\n- 优化了 AI 生成的 Git Commit 消息，提升其准确性和可读性。\n- 修复了若干自定义主题的兼容性问题。'
+        },
+        {
+          'version': '0.3.0',
+          'title': '2025 年 03 月 17 日',
+          'date': '2025-03-17',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#9d9d8b0b',
+          'body': 'Trae CN v0.3.0 版本正式发布。以下是变更细节：\n- 新增日语作为用户界面语言。\n- 支持安装来自插件市场的主题。\n- 支持使用 AI 生成 Git Commit 消息。详情参考 源代码管理 。\n- 新增插件运行时内存占用过高的通知。\n- 修复了 Webview 插件 IPv4、IPv6 端口占用冲突的问题。'
+        },
+        {
+          'version': '0.2.2',
+          'title': '2025 年 03 月 13 日',
+          'date': '2025-03-13',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#f30e3338',
+          'body': 'Trae CN v0.2.2 版本正式发布。以下是变更细节：\n- 优化了浅色主题的代码颜色。'
+        },
+        {
+          'version': '0.2.1',
+          'title': '2025 年 03 月 12 日',
+          'date': '2025-03-12',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#5c60cd9a',
+          'body': 'Trae CN v0.2.1 版本正式发布。以下是变更细节：\n- 优化了 Builder 模式的推理效果。\n- 优化了 AI 快照功能。'
+        },
+        {
+          'version': '0.2.0',
+          'title': '2025 年 03 月 11 日',
+          'date': '2025-03-11',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#afa8534b',
+          'body': 'Trae CN v0.2.0 版本正式发布。以下是变更细节：\n- 支持自定义模型。你可以通过 API 密钥接入自有模型资源。详情参考 自定义模型 。\n- 新增远程资源管理器（Remote SSH），支持连接操作系统为 Debian 11+ 或 Ubuntu 20+ 的远程主机。更多操作系统和版本将在后续更新中陆续提供。详情参考 使用 SSH 进行远程开发 。'
+        },
+        {
+          'version': '0.1.2',
+          'title': '2025 年 03 月 05 日',
+          'date': '2025-03-05',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#6a5ee9b7',
+          'body': 'Trae CN v0.1.2 版本正式发布。以下是变更细节：\n- Builder 模式支持新模型 Doubao-1.5-pro。\n- 优化了 Acitivity Bar 的交互体验。\n- 修复了编辑器中代码提示可能失效的问题。'
+        },
+        {
+          'version': '0.1.1',
+          'title': '2025 年 03 月 04 日',
+          'date': '2025-03-04',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#22a67093',
+          'body': 'Trae CN v0.1.1 版本正式发布。以下是变更细节：\n- 优化了 Chat / Builder 的报错提示。\n- 修复了代码补全偶尔无法触发的问题。'
+        },
+        {
+          'version': '0.1.0',
+          'title': '2025 年 03 月 03 日',
+          'date': '2025-03-03',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/ide_changelog#2551211f',
+          'body': 'Trae CN v0.1.0 正式发布。以下是有关此版本的详细信息：\n- 提供 Builder 模式，支持开发需求的自动分析、规划和执行，并提供实时预览功能。\n- 支持通过多轮对话生成项目级代码。\n- 支持快速应用代码变更、代码审查、Diff 查看和版本回退等功能。\n- 支持丰富的上下文类型（如代码片段、文件、文件夹、工作区和终端日志），从而提高问答准确性。\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n设备数量限制\n下一篇\nTRAE Editor for Unity：让 AI 融入 Unity 开发工作流\n2026 年 09 月 15 日（Hotfix）\n2026 年 09 月 11 日（Hotfix）\n2026 年 09 月 08 日（功能发布）\n2026 年 09 月 04 日（Hotfix）\n2026 年 09 月 03 日（功能发布）\n2026 年 09 月 01 日（功能发布）\n2026 年 08 月 20 日（功能发布）\n2026 年 08 月 19 日（Hotfix）\n2026 年 08 月 12 日（功能发布）\n2026 年 08 月 10 日（Hotfix）\n2026 年 08 月 07 日（功能发布）\n2026 年 07 月 30 日（功能发布）\n2026 年 07 月 23 日（功能发布）\n2026 年 07 月 17 日（Hotfix）\n2026 年 07 月 16 日（Hotfix）\n2026 年 07 月 13 日（Hotfix）\n2026 年 07 月 08 日（功能发布）\n2026 年 07 月 06 日（Hotfix）\n2026 年 07 月 02 日（Hotfix）\n2026 年 06 月 29 日（功能发布）\n2026 年 06 月 23 日（Hotfix）\n2026 年 06 月 18 日（Hotfix）\n2026 年 06 月 17 日（功能发布）\n2026 年 06 月 10 日（功能发布）\n2026 年 06 月 09 日（功能发布）\n2026 年 06 月 04 日（功能发布）\n2026 年 05 月 29 日（Hotfix）\n2026 年 05 月 21 日（功能优化）\n2026 年 05 月 15 日（功能发布）\n2026 年 05 月 11 日（Hotfix）\n2026 年 05 月 08 日（功能发布）\n2026 年 04 月 30 日（Hotfix）\n2026 年 04 月 28 日（功能发布）\n2026 年 04 月 20 日（Hotfix）\n2026 年 04 月 15 日（Hotfix）\n2026 年 04 月 14 日（功能发布）\n2026 年 04 月 14 日（Hotfix）\n2026 年 04 月 09 日（功能发布）\n2026 年 04 月 02 日（功能发布）\n2026 年 03 月 31 日（Hotfix）\n2026 年 03 月 28 日（Hotfix）\n2026 年 03 月 26 日（功能发布）\n2026 年 03 月 24 日（功能发布）\n2026 年 03 月 21 日（功能发布）\n2026 年 03 月 14 日（Hotfix）\n2026 年 03 月 11 日（功能发布）\n2026 年 03 月 09 日（Hotfix）\n2026 年 03 月 05 日（功能发布）\n2026 年 02 月 28 日（Hotfix）\n2026 年 02 月 26 日（功能发布）\n2026 年 02 月 14 日（Hotfix）\n2026 年 02 月 12 日（功能发布）\n2026 年 02 月 09 日（Hotfix）\n2026 年 02 月 06 日（功能发布）\n2026 年 02 月 04 日（Hotfix）\n2026 年 02 月 02 日（Hotfix）\n2026 年 01 月 30 日（功能优化）\n2026 年 01 月 23 日（功能发布）\n2026 年 01 月 19 日（Hotfix）\n2026 年 01 月 13 日（功能发布）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 06 日（功能发布）\n2025 年 12 月 31 日（功能优化）\n2025 年 12 月 29 日（Hotfix）\n2025 年 12 月 26 日（功能优化）\n2025 年 12 月 26 日（功能发布）\n2025 年 12 月 25 日（Hotfix）\n2025 年 12 月 24 日（功能发布）\n2025 年 12 月 22 日（Hotfix）\n2025 年 12 月 20 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（功能发布）\n2025 年 12 月 12 日（Hotfix）\n2025 年 12 月 11 日（Hotfix）\n2025 年 12 月 10 日（Hotfix）\n2025 年 12 月 10 日（功能优化）\n2025 年 12 月 04 日（Hotfix）\n2025 年 12 月 03 日（Hotfix）\n2025 年 12 月 03 日（功能发布）\n2025 年 11 月 26 日（Hotfix）\n2025 年 11 月 25 日（Hotfix）\n2025 年 11 月 25 日（功能发布）\n2025 年 11 月 19 日（Hotfix）\n2025 年 11 月 14 日（Hotfix）\n2025 年 11 月 12 日（Hotfix）\n2025 年 11 月 11 日（功能发布）\n2025 年 11 月 07 日（Hotfix）\n2025 年 11 月 05 日（功能发布）\n2025 年 11 月 04 日（Hotfix）\n2025 年 10 月 30 日（功能优化）\n2025 年 10 月 29 日（功能发布）\n2025 年 10 月 25 日（Hotfix）\n2025 年 10 月 24 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（功能优化）\n2025 年 10 月 18 日（Hotfix）\n2025 年 10 月 17 日（Hotfix）\n2025 年 10 月 16 日（Hotfix）\n2025 年 10 月 14 日（Hotfix）\n2025 年 10 月 14 日（功能发布）\n2025 年 10 月 10 日（功能优化）\n2025 年 10 月 09 日（Hotfix）\n2025 年 09 月 30 日（功能优化）\n2025 年 09 月 29 日（功能发布）\n2025 年 09 月 28 日（功能优化）\n2025 年 09 月 26 日（Hotfix）\n2025 年 09 月 25 日（功能优化）\n2025 年 09 月 23 日（功能发布）\n2025 年 09 月 19 日（功能优化）\n2025 年 09 月 17 日（功能发布）\n2025 年 09 月 15 日（Hotfix）\n2025 年 09 月 12 日（功能优化）\n2025 年 09 月 10 日（Hotfix）\n2025 年 09 月 09 日（Hotfix）\n2025 年 09 月 09 日（功能发布）\n2025 年 09 月 02 日（功能发布）\n2025 年 09 月 01 日（Hotfix）\n2025 年 08 月 28 日（Hotfix）\n2025 年 08 月 27 日（Hotfix）\n2025 年 08 月 27 日（功能发布）\n2025 年 08 月 23 日\n2025 年 08 月 22 日\n2025 年 08 月 21 日\n2025 年 08 月 15 日\n2025 年 08 月 13 日\n2025 年 08 月 11 日\n2025 年 08 月 08 日\n2025 年 08 月 05 日\n2025 年 08 月 04 日\n2025 年 08 月 01 日\n2025 年 07 月 30 日\n2025 年 07 月 25 日\n2025 年 07 月 21 日\n2025 年 07 月 19 日\n2025 年 07 月 18 日\n2025 年 07 月 15 日\n2025 年 07 月 09 日\n2025 年 07 月 08 日\n2025 年 07 月 07 日\n2025 年 07 月 04 日\n2025 年 07 月 02 日\n2025 年 07 月 01 日\n2025 年 06 月 30 日\n2025 年 06 月 27 日\n2025 年 06 月 24 日\n2025 年 06 月 17 日\n2025 年 06 月 13 日\n2025 年 06 月 11 日\n2025 年 06 月 05 日\n2025 年 05 月 27 日\n2025 年 05 月 21 日\n2025 年 05 月 16 日\n2025 年 05 月 13 日\n2025 年 05 月 09 日\n2025 年 04 月 28 日\n2025 年 04 月 27 日\n2025 年 04 月 25 日\n2025 年 04 月 23 日\n2025 年 04 月 22 日\n2025 年 04 月 16 日\n2025 年 04 月 15 日\n2025 年 04 月 11 日\n2025 年 04 月 03 日\n2025 年 04 月 02 日\n2025 年 04 月 01 日\n2025 年 03 月 28 日\n2025 年 03 月 27 日\n2025 年 03 月 26 日\n2025 年 03 月 19 日\n2025 年 03 月 17 日\n2025 年 03 月 13 日\n2025 年 03 月 12 日\n2025 年 03 月 11 日\n2025 年 03 月 05 日\n2025 年 03 月 04 日\n2025 年 03 月 03 日\nwindow._ROUTER_DATA = {\'loaderData\':{\'layout\':{\'prefectLang\':\'zh\',\'url\':\'http:\\u002F\\u002Fdocs.trae.cn\\u002Fide_changelog\',\'env\':\'prod\'},\'$\':{\'code\':0,\'data\':{\'basePath\':\'\\u002F\',\'doc\':{\'tab_id\':\'67a5b43a9ae5aa03545c7a07\',\'path\':\'ide_changelog\',\'_id\':\'6aaca069ea5ffd01b7359fd9\',\'title\':\'更新日志\',\'content\':\'本文记录 TraeCode 的变更情况。\\n\\n## 2026 年 09 月 15 日（Hotfix） {#hPycnm2pH}\\n\\nTraeCode v3.3.101 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 09 月 11 日（Hotfix） {#hHoPdakho}\\n\\nTraeCode v3.3.100 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 09 月 08 日（功能发布） {#hPlEpNAhD}\\n\\nTraeCode v3.3.99 版本正式发布。以下是变更细节：\\n\\n* 支持分享对话。详情参考[分享对话](\\u002Fide_chat#hYf8wChBZ)。\\n* 支持配置网络代理。\\n* 修复了已知问题。\\n\\n## 2026 年 09 月 04 日（Hotfix） {#hKpJvigt7}\\n\\nTraeCode v3.3.98 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 09 月 03 日（功能发布） {#hrSrUjAfV}\\n\\nTraeCode v3.3.97 版本正式发布。以下是变更细节：\\n\\n* 【仅个人版】支持插件市场。详情参考[插件市场](\\u002Fide_marketplace)。\\n* 修复了已知问题。\\n\\n## 2026 年 09 月 01 日（功能发布） {#hWzhuLItv}\\n\\nTraeCode v3.3.93 - 3.3.96 版本正式发布。以下是变更细节：\\n\\n* 【仅企业版】Solo Agent 智能体和 Agent 智能体将合并为 Agent 智能体，支持在 IDE、SOLO 模式使用。Agent 智能体包含原 Solo Agent 智能体、 Agent 智能体的能力集合，包括：支持 \\u002Fgoal、\\u002Fplan、\\u002Fspec 等内置命令，支持根据模型选择是否开启 Max 模式，支持选择是否使用 Auto Mode 模型，支持调用自定义智能体等。\\n* 修复了已知问题。\\n\\n## 2026 年 08 月 20 日（功能发布） {#hJa2GNwDS}\\n\\nTraeCode v3.3.92 版本正式发布。以下是变更细节：\\n\\n* 支持 TRAE 移动端连接 TraeCode。详情参考[连接 TRAE 移动端](\\u002Fide_connect-traecode-to-traework)。\\n* 修复了已知问题。\\n\\n## 2026 年 08 月 19 日（Hotfix） {#hIAlIBYSa}\\n\\nTraeCode v3.3.89 ～ 3.3.91 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 08 月 12 日（功能发布） {#hiReFjHMP}\\n\\nTraeCode v3.3.88 版本正式发布。以下是变更细节：\\n\\n* 【仅个人版】支持电脑控制（Computer Use）功能。详情参考[电脑控制（Computer Use）](\\u002Fide_computer-use)。\\n* 修复了已知问题。\\n\\n## 2026 年 08 月 10 日（Hotfix） {#hHa7ohV8n}\\n\\nTraeCode v3.3.87 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 08 月 07 日（功能发布） {#hiJ6qEYxg}\\n\\nTraeCode v3.3.84 ～ 3.3.86 版本正式发布。以下是变更细节：\\n\\n* 支持为部分模型开启 Max 模式。详情参考 [Max 模式](\\u002Fide_max-mode)。\\n* 支持跳转至对话流中的任一 Query，通过对话面板左侧的对话缩略导航实现。\\n* 修复了已知问题。\\n\\n## 2026 年 07 月 30 日（功能发布） {#hnyMozPOX}\\n\\nTRAE CN v3.3.81 ～ 3.3.83 版本正式发布。以下是变更细节：\\n\\n* 上线以积分为核心的计费模式。详情参考[套餐与计费](\\u002Fide_plans-and-billing)。\\n* 修复了已知问题。\\n\\n## 2026 年 07 月 23 日（功能发布） {#hdI1aTC0Y}\\n\\nTRAE CN v3.3.79 ～ 3.3.80 版本正式发布。以下是变更细节：\\n\\n* 【仅个人版】Windows 系统支持智能体通过 Browser Use 调用外部浏览器。\\n* 修复安全相关问题并优化安全能力。\\n* 修复了其余已知问题。\\n\\n## 2026 年 07 月 17 日（Hotfix） {#hh6kWcQpn}\\n\\nTRAE CN v3.3.77 ～ 3.3.78 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 07 月 16 日（Hotfix） {#hy6GszAg3}\\n\\nTRAE CN v3.3.76 版本正式发布。以下是变更细节：\\n\\n* 修复了已知问题。\\n\\n## 2026 年 07 月 13 日（Hotfix） {#hnyDzMGr'
         }
       ]
     },
@@ -9203,46 +11060,185 @@ window.CHANGELOG = {
       'name': 'TraeWork',
       'vendor': '字节跳动',
       'kind': 'trae',
-      'changelogUrl': 'https://www.trae.cn/changelog',
-      'status': 'stale',
-      'error': 'HTTP 403 https://www.trae.cn/changelog',
-      'lastOkAt': '2026-09-24 18:00',
+      'changelogUrl': 'https://docs.trae.cn/work_changelog',
+      'status': 'ok',
+      'error': '',
+      'lastOkAt': '2026-09-24 23:32',
       'entries': [
         {
-          'version': '0.1.49-52',
-          'title': 'v0.1.49-52',
+          'version': '0.1.49-0.1.52',
+          'title': '2026 年 08 月 21 日',
           'date': '2026-08-21',
-          'dateRaw': '2026-08-21',
+          'dateRaw': '',
           'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 上线「电脑控制」功能。\n- Design 模式支持图片编辑。\n- 对话框可一键最小化为悬浮窗小标。\n- 修复了已知问题。'
+          'url': 'https://docs.trae.cn/work_changelog#huaPTCHgy',
+          'body': 'TraeWork 桌面版 v0.1.49 ~ 0.1.52 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 支持 “电脑控制” 功能。详情参考 电脑控制（Computer Use） 。\n- 支持编辑 Design 模式中生成的图片。详情参考 在画布中预览并管理设计成果 。\n- 支持将对话框最小化为悬浮窗小标。\n- 修复了已知问题。'
         },
         {
-          'version': '0.1.47-48',
-          'title': 'v0.1.47-48',
+          'version': '0.1.47-0.1.48',
+          'title': '2026 年 08 月 11 日',
           'date': '2026-08-11',
-          'dateRaw': '2026-08-11',
+          'dateRaw': '',
           'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 上线我的文件功能。\n- 修复了已知问题。'
+          'url': 'https://docs.trae.cn/work_changelog#hsg4AFDKF',
+          'body': 'TraeWork 桌面版 v0.1.47 ~ 0.1.48 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 上线 “我的文件” 功能。详情参考 产物空间 。\n- 修复了已知问题。'
         },
         {
-          'version': '0.1.44-46',
-          'title': 'v0.1.44-46',
+          'version': '0.1.44-0.1.46',
+          'title': '2026 年 08 月 07 日',
           'date': '2026-08-07',
-          'dateRaw': '2026-08-07',
+          'dateRaw': '',
           'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 支持对话分享功能\n- 灰度上线插件自动推荐功能\n- 输入框 / 、附件上传按钮整合进「+」按钮\n- 上线办公助理功能'
+          'url': 'https://docs.trae.cn/work_changelog#hFhvF7rlU',
+          'body': 'TraeWork 桌面版 v0.1.44 ~ 0.1.46 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 支持对话分享功能。详情参考 分享对话 。\n- 灰度上线插件自动推荐功能。\n- 输入框 / 、附件上传按钮整合进「+」按钮。\n- 上线办公助理功能。详情参考 办公助理 。\nTRAE 移动端 App v0.0.16 版本正式发布。以下是变更细节：\n- 支持直接在对话流内预览视频产物。点击视频卡片即可预览。'
         },
         {
-          'version': '0.1.40-43',
-          'title': 'v0.1.40-43',
+          'version': '0.1.40-0.1.43',
+          'title': '2026 年 07 月 31 日',
           'date': '2026-07-31',
-          'dateRaw': '2026-07-31',
+          'dateRaw': '',
           'tags': [],
-          'url': 'https://www.trae.cn/changelog',
-          'body': '- 全新积分体系，用量更透明、积分更充足、奖励更丰富。\n- TRAE Work 上线模版库。\n- 修复了已知问题。'
+          'url': 'https://docs.trae.cn/work_changelog#hHM6DzqFE',
+          'body': 'TraeWork 桌面版 v0.1.40 ~ 0.1.43 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 上线以积分为核心的计费模式。详情参考 套餐与计费 。\n- 上线模板库。详情参考 模板库 。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.0.15',
+          'title': '2026 年 07 月 27 日',
+          'date': '2026-07-27',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hUPS5pApu',
+          'body': 'TRAE 移动端 App v0.0.15 版本正式发布：\n- 支持在对话输入框中选择插件来调用。'
+        },
+        {
+          'version': '0.1.35-0.1.39',
+          'title': '2026 年 07 月 21 日',
+          'date': '2026-07-21',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hCNS4V0EK',
+          'body': 'TraeWork 桌面版 v0.1.35 ~ 0.1.39 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 上线插件市场。详情参考 插件 。\n- 支持视频生成能力。\n- 修复了已知问题。\nTRAE 移动端 App v0.0.14 版本正式发布：\n- 新增 “一键到底” 按钮：当向上阅读离开底部时，会出现该按钮，点击后可立即回到最新内容。'
+        },
+        {
+          'version': '0.1.24-0.1.34',
+          'title': '2026 年 07 月 14 日',
+          'date': '2026-07-14',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hRDQcmOpU',
+          'body': 'TraeWork 桌面版 v0.1.24 ~ 0.1.34 版本、TRAE 移动端 App v0.0.12 ～ 0.0.13 版本正式发布。TraeWork 网页版同步更新。以下是变更细节：\n- 支持预览 TRAE 移动端 App 对话流中的图片：对话流及语音讨论记录中的图片支持缩略图预览与大图查看切换，支持左右滑翻阅。\n- 支持分享 HTML 格式的产物。\n- 优化任务搜索与置顶：支持按任务标题和发出的对话内容，搜索历史任务/对话信息，支持将任务置顶或取消置顶。\n- 新增站内信消息通知：官方活动、重要通知等，可通过站内信获悉。'
+        },
+        {
+          'version': '0.0.10-0.0.11',
+          'title': '2026 年 07 月 07 日',
+          'date': '2026-07-07',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hkPh6Df8j',
+          'body': 'TRAE 移动端 App v0.0.10 ～ 0.0.11 版本正式发布。以下是变更细节：\n- 语音讨论过程支持最小化对话页，恢复后即可继续对话。\n- 语音讨论过程支持拍照，上传附件或图片。\n- 支持通过抖音登录。'
+        },
+        {
+          'version': '0.1.21-0.1.23',
+          'title': '2026 年 06 月 24 日',
+          'date': '2026-06-24',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hAo3a6Sf4',
+          'body': '- TraeWork 桌面版 v0.1.21 ~ 0.1.23 版本正式发布，网页版同步更新。以下是变更细节：\n- 发布 Design 模式。Design 模式是 TraeWork 中专用于生成和迭代界面设计的工作模式。你可以输入设计需求、上传参考图或选择设计系统，让 AI 生成页面原型或高保真设计。详情参考《 Design 模式 》和《 设计系统 》。\n- 优化语音讨论功能：支持联网搜索、读取调用项目级记忆等。\n- 支持记忆。你可以将对后续协作有价值的偏好与规则保存为记忆。详情参考《 记忆 》。\n- TRAE 移动端 App v0.0.9 版本正式发布。以下是变更细节：\n- 支持仓库检索、分支检索。\n- 产物默认为 HTML 格式。'
+        },
+        {
+          'version': '0.1.19-0.1.20',
+          'title': '2026 年 06 月 18 日',
+          'date': '2026-06-18',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hQbNiilHJ',
+          'body': 'TraeWork 桌面版 v0.1.19 ~ 0.1.20 版本正式发布，网页版同步更新。以下是变更细节：\n- 逐步灰度 Agent 删除工具的自动执行，其删除的文件，可以在系统回收站/废纸篓中找到。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.18',
+          'title': '2026 年 06 月 09 日',
+          'date': '2026-06-09',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hPmTQyR5k',
+          'body': 'TraeWork 桌面版 v0.1.18 版本正式发布，网页版同步更新。以下是变更细节：\n- TRAE SOLO 升级为 TraeWork。\n- TraeWork 支持企业版账号登录。'
+        },
+        {
+          'version': '0.1.16-0.1.17',
+          'title': '2026 年 06 月 08 日',
+          'date': '2026-06-08',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hSPdFGGpW',
+          'body': 'TRAE SOLO 桌面版 v0.1.16 ~ 0.1.17 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.13-0.1.15',
+          'title': '2026 年 06 月 01 日',
+          'date': '2026-06-01',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#hqqBbnz4W',
+          'body': 'TRAE SOLO 桌面版 v0.1.13 ~ 0.1.15 版本正式发布，网页版同步更新。以下是变更细节：\n- TRAE SOLO 桌面版支持在内置浏览器选中元素，并添加到对话/评论。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.10-0.1.12',
+          'title': '2026 年 05 月 25 日',
+          'date': '2026-05-25',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#731285ca',
+          'body': 'TRAE SOLO 桌面版 v0.1.10 ~ 0.1.12 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.8-0.1.9',
+          'title': '2026 年 05 月 05 日',
+          'date': '2026-05-05',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#019b3fe7',
+          'body': 'TRAE SOLO 桌面版 v0.1.8 ~ 0.1.9 版本正式发布，网页版同步更新。以下是变更细节：\n- TRAE SOLO 移动版上线，支持多端设备互联、远程操控电脑端、实时查看任务进度等。详情参考 TraeWork 移动版 。\n- 支持工作树（Worktree）功能，让不同的任务在相互隔离的 Git 环境中执行。它为每个任务创建一个独立的目录，其中包含专属的文件、依赖项和代码变更，从而确保你的主工作目录保持整洁且不受干扰。详情参考 工作树 。\n- 支持语音讨论功能。你可以通过语音与 AI 进行交互式讨论，适用于需求设计、问题分析、想法梳理等需要反复沟通的协作场景。详情参考 语音讨论 。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.6-0.1.7',
+          'title': '2026 年 04 月 30 日',
+          'date': '2026-04-30',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#b5ef0b6e',
+          'body': 'TRAE SOLO 桌面版 v0.1.6 ~ 0.1.7 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.5',
+          'title': '2026 年 04 月 16 日',
+          'date': '2026-04-16',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#3cedade6',
+          'body': 'TRAE SOLO 桌面版 v0.1.5 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.1-0.1.4',
+          'title': '2026 年 04 月 14 日',
+          'date': '2026-04-14',
+          'dateRaw': '',
+          'tags': [],
+          'url': 'https://docs.trae.cn/work_changelog#6340e821',
+          'body': 'TRAE SOLO 桌面版 v0.1.1 ~ 0.1.4 版本正式发布，网页版同步更新。以下是变更细节：\n- 上线优速通抽奖活动。\n- 修复了已知问题。'
+        },
+        {
+          'version': '0.1.0',
+          'title': '2026 年 03 月 31 日',
+          'date': '2026-03-31',
+          'dateRaw': '',
+          'tags': [
+            '双端协同',
+            '丝滑交互',
+            '双模式'
+          ],
+          'url': 'https://docs.trae.cn/work_changelog#00b100d6',
+          'body': 'TRAE SOLO 桌面版 v0.1.0 版本与网页版正式发布。\nTRAE SOLO 以智能体为核心，打造与 AI 协作的全新方式：AI 不再局限于响应指令，而是能够主动理解、拆解并执行复杂任务。\n- 双端协同 ：网页版与桌面版可协同使用，确保你的任务不中断，随时随地都能查看进度、处理工作。\n- 丝滑交互 ：全新的三栏式工作区，让你能够集中管理项目文件、实时查看任务进度、轻松集成 Skill 等工具。你只需通过对话描述需求，AI 便会自动调用所需工具来执行任务并交付结果。\n- 双模式 ：支持在通用任务（Work 模式）和开发场景（Code 模式）之间自由切换。无论是写方案、做分析还是写代码，都可以一站式完成，为开发工程师、产品经理、数据分析师等不同角色的工作提供便利。\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n快速开始：TRAE 移动端\n下一篇\n办公助理使用场景示例\n2026 年 08 月 21 日\n2026 年 08 月 11 日\n2026 年 08 月 07 日\n2026 年 07 月 31 日\n2026 年 07 月 27 日\n2026 年 07 月 21 日\n2026 年 07 月 14 日\n2026 年 07 月 07 日\n2026 年 06 月 24 日\n2026 年 06 月 18 日\n2026 年 06 月 09 日\n2026 年 06 月 08 日\n2026 年 06 月 01 日\n2026 年 05 月 25 日\n2026 年 05 月 05 日\n2026 年 04 月 30 日\n2026 年 04 月 16 日\n2026 年 04 月 14 日\n2026 年 03 月 31 日'
         }
       ]
     },
@@ -10838,5 +12834,6 @@ window.CHANGELOG = {
         }
       ]
     }
-  ]
+  ],
+  'header': null
 };
