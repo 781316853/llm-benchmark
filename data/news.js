@@ -2,45 +2,92 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-09-24',
+  'updated': '2026-09-25',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
     '产品应用'
   ],
   'items': [
     {
-      'date': '2026-09-24',
-      'title': '“stealth”模型 Space Bunny Alpha 现身 OpenRouter与OpenCode',
-      'brief': 'Space Bunny Alpha 已同时上线 OpenRouter 和 OpenCode ，并提供 一周 免费使用。该模型目前以匿名/ stealth 模型身份提供，支持快速推理、可调节 reasoning 、 100 万 token 上下文窗口，以及文本、图片和视频等多模态输入， OpenRouter 还提到其具备较强的代码能力。',
-      'url': 'https://openrouter.ai/stealth/space-bunny-alpha',
+      'date': '2026-09-25',
+      'title': 'ChatGPT 或新增每月 500 美元的 Pro Max 订阅方案',
+      'brief': '据报道，尚未发布的 ChatGPT 订阅信息中出现了 Pro Max 套餐，标价每月 500 美元 ；有页面显示 600 美元 ，报道解释称差额来自增值税。',
+      'url': 'https://x.com/testingcatalog/status/2103259620592542102',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-09-24',
-      'title': '谷歌发布 Gemini 3.8 Flash TTS 和 Gemini 3.8 Flash-Lite TTS',
-      'brief': '谷歌 推出 Gemini 3.8 Flash TTS 和 Gemini 3.8 Flash-Lite TTS 两款文本转语音模型，面向创作者、开发者和企业制作音频内容。两款模型支持在 一百多种 语言中定制声音，也可选用 两千多种 现成声音；用户能够逐句指导对白表现，并加入笑声等自然语音提示。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech/',
+      'date': '2026-09-25',
+      'title': '豆包再送30天免费订阅权益，电脑版用户可领取',
+      'brief': '豆包 在此前赠送一个月订阅权益的活动基础上，再加送 30天 免费订阅。',
+      'url': 'https://mp.weixin.qq.com/s/o9pcVdE06AFVyuJefmemYA',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-09-24',
-      'title': 'OpenAI升级ChatGPT Voice，支持插件及GPT-6系列模型',
-      'brief': 'OpenAI 宣布升级 ChatGPT Voice ，功能正通过最新版应用在全球推出。用户现在可在语音对话中调用邮件、日历、 Slack 等插件；语音功能也可由 GPT-6 Astra 、 Sol 和 Luna 提供支持。',
-      'url': 'https://x.com/OpenAI/status/2102808325742322002',
+      'date': '2026-09-25',
+      'title': '谷歌将 Colab 高级权益纳入 Google AI 订阅方案',
+      'brief': '谷歌 宣布， Google AI 订阅用户将获得 Colab 高级权益，可优先使用更快的加速器和性能更高的机器。',
+      'url': 'https://developers.googleblog.com/colab-is-now-part-of-your-google-ai-plan/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-09-24',
-      'title': 'Claude Code云端会话功能正式开放，订阅用户可领试用额度',
-      'brief': 'ClaudeDevs 宣布， Claude Code 云端会话结束研究预览，现已正式开放。会话运行在 Anthropic 托管的基础设施上，因此用户合上电脑或关闭电脑后，任务仍可继续。',
-      'url': 'https://x.com/ClaudeDevs/status/2102871550974427462',
+      'date': '2026-09-25',
+      'title': 'WorkBuddy上线微信小程序生成与发布能力',
+      'brief': 'WorkBuddy 新增微信小程序生成与发布能力，PC端升级至 5.6.1 及以上版本即可体验。',
+      'url': 'https://mp.weixin.qq.com/s/27g4HBkMqfPGn40_rYBmKA',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-09-25',
+      'title': 'DeepSeek Harness Desktop 版安装包被发现',
+      'brief': 'DeepSeek Harness 的桌面端安装包已经可以直接下载，目前最新可见版本为 0.1.7-rc.2 ，提供 Windows x64 和 macOS arm64 版本，文件托管在 DeepSeek 自有的 download.deepseek.com 域名。官方 GitHub 仓库中也已经出现 Desktop 相关代码和版本更新记录。',
+      'url': 'https://github.com/deepseek-ai/deepseek-harness/releases',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-09-25',
+      'title': '硅基流动上线三款开源快速决策模型 API，10 月 8 日前免费调用',
+      'brief': '硅基流动 上线 Kev-4B 、 SemIf 和 DiffusionGemma 三款开源快速决策模型，做成 Serverless 服务，通过 API 开放调用，并在 2026 年 10 月 8 日 前提供免费调用。三款模型采用不同技术路径，面向需要快速获得结构化判断的应用场景。',
+      'url': 'https://mp.weixin.qq.com/s/HPbVrM8kevJXAETXbjC6ug',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-25',
+      'title': '博查发布Bocha Jev决策模型，API限时免费测试',
+      'brief': '博查 发布面向结构化决策任务的 Bocha Jev 模型，并开放API限时免费测试。开发者可使用已有的 博查 API Key接入，按当前状态、任务指令和候选项发起请求，让模型完成动作选择、内容评分或条件判断，再由业务程序读取结果并执行后续操作。',
+      'url': 'https://mp.weixin.qq.com/s/P21_6xJLwFAvgziHeoxnhw',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-25',
+      'title': 'Anthropic恢复对三类回复前拦截请求收费',
+      'brief': 'Anthropic 宣布，恢复对 Claude 作出回复前被安全机制拦截的部分请求收费。此次仅涉及误判率较低的 生物学 、 蒸馏攻击 和 前沿大模型开发 三类请求。 Anthropic 称，近几周其系统遭遇一些协同攻击，恢复收费是防御措施之一。',
+      'url': 'https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-25',
+      'title': 'Claude Code Projects新增本地支持，线程可在用户电脑运行',
+      'brief': 'ClaudeDevs 宣布， Claude Code 的 Projects 已加入本地支持，项目线程现在可以在用户自己的电脑上运行。',
+      'url': 'https://x.com/ClaudeDevs/status/2102893178273874102',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-25',
+      'title': 'OpenRouter推出服务器工具市场，提供搜索、命令行等工具',
+      'brief': 'OpenRouter 推出服务器工具市场，让开发者通过同一 API，为不同模型调用网页搜索、网页抓取、图像生成和命令行等工具，其中既有免费选项，也有付费选项。',
+      'url': 'https://openrouter.ai/tools',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
@@ -91,70 +138,6 @@ window.NEWS = {
       'url': 'https://x.com/RobertJBye/status/2102455638643388631',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-09-23',
-      'title': 'Anthropic 发布 Claude Opus 5.5：同步调整价格与订阅额度',
-      'brief': 'Anthropic 发布 Claude Opus 5.5 ，这是 Claude 5.5 系列首个模型。',
-      'url': 'https://www.anthropic.com/claude-opus-5-5',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-23',
-      'title': 'OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna，下调 API 价格并改进缓存',
-      'brief': 'OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna ，进一步扩充 GPT-6 产品线。',
-      'url': 'https://openai.com/index/introducing-gpt-6-sol-and-luna/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-23',
-      'title': '智谱推出GLM Coding Plan双节畅享活动',
-      'brief': '智谱 推出 GLM Coding Plan 双节畅享活动， 9月25日至10月7日 期间所有套餐全天按照 非高峰期倍率 消耗额度。',
-      'url': 'https://mp.weixin.qq.com/s/RQ3AAN5Z65wroZqx4Hw9EA',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-09-23',
-      'title': 'OpenRouter推出Batch API，70多款模型支持异步批处理',
-      'brief': 'OpenRouter 推出 Batch API ，面向无需即时返回结果的批量任务，现支持 70 多款模型。',
-      'url': 'https://openrouter.ai/blog/announcements/batch-api/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-09-23',
-      'title': '阶跃星辰正式开源 Step Code v0.1.0',
-      'brief': '阶跃星辰 宣布开源面向真实开发任务的 Step Code v0.1.0 ，开发者可使用该工具在终端内完成代码阅读、编写、修改、调试、执行、测试验证与交付。',
-      'url': 'https://mp.weixin.qq.com/s/SEykVMq4GzK_EMMdSV61YA',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-09-23',
-      'title': 'Kimi Browser Extension 上线，可录制网页操作为 skill',
-      'brief': 'Kimi 发布 Kimi Browser Extension ，原名 Kimi WebBridge ，现已在产品官网和 Chrome Web Store 上线。',
-      'url': 'https://www.kimi.ai/products/kimi-browser-extension',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-09-23',
-      'title': '火山引擎推出 Seedance 2.5 Draft 模式',
-      'brief': '火山引擎 为 Seedance 2.5 API 推出 Draft（样片）模式 ，面向需要反复尝试镜头的企业和创作者。',
-      'url': 'https://mp.weixin.qq.com/s/Cq42y7dJgy92LtXevulXlA',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-09-23',
-      'title': 'Artificial Analysis 新增九种语言语音合成榜单',
-      'brief': 'Artificial Analysis 新增九种语言的 语音合成模型榜单 ，普通话榜单由 Inworld 的 Realtime TTS-2 以 1185 Elo 排名第一， Cartesia 的 Sonic 3.6 以 1146 Elo 排名第二， StepFun 的 StepAudio 2.5 TTS 以 1130 Elo 排名第三。',
-      'url': 'https://x.com/ArtificialAnlys/status/2102490353098260895',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
     }
   ]
 };
