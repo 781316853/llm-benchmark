@@ -98,10 +98,10 @@
         </section>
       </div>
       <h2 class="section-title">交叉模型矩阵</h2>
-      <p class="section-desc">同一模型在多项基准中的成绩(高亮表示多榜命中);默认按综合分降序,仅命中≥4 榜的模型参与排名并编号;命中 3 榜的「参考」模型按各榜成绩与排名模型比对落入相应名次区间(不计算综合分,序号计「—」,仅显示数据);命中 ≤2 榜的模型不在总览展示;「榜单基准」组尾的 HLE / GPQA 两列为权威基准参考分,仅展示、不计入综合分与命中数;「第三方实测」组首的 ModelDial 列为第三方独立实测的综合能力分(后端 40% + 前端 30% + 知识 30%);点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</p>
+      <p class="section-desc">同一模型在多项基准中的成绩(高亮表示多榜命中);默认按综合分降序,仅命中≥4 榜的模型参与排名并编号;命中 3 榜的「参考」模型按各榜成绩与排名模型比对落入相应名次区间(不计算综合分,序号计「—」,仅显示数据);命中 ≤2 榜的模型默认不展示,勾选「显示全部模型」可见;「榜单基准」组尾的 HLE / GPQA 两列为权威基准参考分,仅展示、不计入综合分与命中数;「第三方实测」组首的 ModelDial 列为第三方独立实测的综合能力分(后端 40% + 前端 30% + 知识 30%);点击表头可切换排序,按某评测排序时仅显示该评测有数据的模型</p>
       <div class="table-wrap"><table id="matrixTable" class="data-table"></table></div>
       <div class="overview-switches">
-        <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型(命中3榜,按各榜成绩比对落入区间,仅显示数据不排名);勾选可展开全部命中≥3个基准组的模型(含排名30之后);命中≤2榜的模型不在总览展示"><input type="checkbox" id="ovShowAll"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
+        <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型(命中3榜,按各榜成绩比对落入区间,仅显示数据不排名);勾选可展开全部在任一基准组有成绩的模型——排名30之后的排名行、全部「参考」行(命中2-3榜),以及命中1榜的「仅单榜」行(不排名、不计算综合分,统一排在末尾)"><input type="checkbox" id="ovShowAll"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
         <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">高亮国产模型</span></label>
         <label class="switch switch-lg" title="默认仅显示梯队,勾选后在梯队旁显示精确综合分(榜内相对分:50 = 全池中位,15 分差 = 1 个榜内稳健标准差,不可跨日比较)"><input type="checkbox" id="ovShowScore"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
       </div>
@@ -120,11 +120,11 @@ AI 能力·前端/后端为 atmeplz 四方向榜的方向分(0-100,天然以 100
 NL2Repo-Bench 为长程仓库生成基准(给定需求文档从零生成可安装 Python 库),test-pass-rate(%)由多源(llm-stats + benchlm.ai + 官方论文评测表 + datalearner 厂商发布)合并取最高;**自 2026-09-19 起不再计入综合分与命中数,已移出总览矩阵**(原权重 9%),改为仅在「权威基准测试」页展示;
 ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其综合分(0-100,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权),同一模型按推理强度分档多次测试后取最高分配置入榜,计入综合分(权重 16%)与命中数;格内悬浮可查看三分项与耗时/费用,完整主榜与 52 条 config 明细见「ModelDial」页(费用与耗时为源站后端单轴口径,故低于源站主榜显示值)。</li>
           <li><b class="note-term">「—」</b>表示该榜未收录此模型。DeepSWE 列分数后的 v1.1/v1.0 标识表示数据来源版本(v1.1=当前每日刷新,v1.0=历史榜单补充);HLE / GPQA 列「—」表示未收录于对应权威榜,列分数悬浮可查看排名,两列仅展示、不计入综合分与命中数。</li>
-          <li>浅绿底色行表示跨榜命中数 ≥ 4 的排名模型;灰蓝底色行 + 「参考」徽标表示命中 3 个基准组的模型:按在场各榜的榜内稳健标准分加权后的同口径水平(与排名模型完全同式,无豁免、无折减)与排名模型比对,落入与自身水平相符的名次区间,不计算综合分,梯队列仅显示「—」,序号列计「—」,不参与排名、不占用前30名额,仅显示各榜数据,仅跻身前30区间内时显示;命中 ≤2 个基准组的模型不在总览矩阵展示,请前往对应榜单页查看;模型名后 NEW 表示近 7 天内首次上榜(基于 DeepSWE/llm2014/Terminal-Bench 三基准判定)。</li>
+          <li>浅绿底色行表示跨榜命中数 ≥ 4 的排名模型;灰蓝底色行 + 「参考」徽标表示命中 2-3 个基准组的模型:按在场各榜的榜内稳健标准分加权后的同口径水平(与排名模型完全同式,无豁免、无折减)与排名模型比对,落入与自身水平相符的名次区间,不计算综合分,梯队列仅显示「—」,序号列计「—」,不参与排名、不占用前30名额,仅显示各榜数据,默认仅跻身前30区间内时显示;更淡的灰底行 + 「仅单榜」徽标表示仅命中 1 个基准组的模型:无共榜可比区间,不计算综合分、不参与排名(梯队列与序号列均显示「—」),统一排在全部跨榜模型之后,仅在勾选「显示全部模型」时出现,用于确认"榜上有数据、总览也能看到";模型名后 NEW 表示近 7 天内首次上榜(基于 DeepSWE/llm2014/Terminal-Bench 三基准判定)。</li>
           <li><b class="note-term">「权威基准测试」</b>页收录 Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看,默认 4.0) / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode 等权威基准,其中 Terminal-Bench 三版合并为单一基准组计入总览综合分与命中数,其余为展示型参考数据(其中 NL2Repo-Bench 自 2026-09-19 起由「计入综合分」改为仅展示;CursorBench / FrontierCode 口径绑定各自厂商的 agent harness,亦仅展示);GPQA Diamond 与 HLE 亦在总览矩阵「榜单基准」组尾以参考列展示(仅展示,不计入综合分与命中数)。</li>
           <li>点击表头可按该列排序(按某评测排序时仅显示该评测有数据的模型)。</li>
-          <li><b class="note-term">「显示全部模型」</b>开关可展开全部命中≥3榜的模型(包含排名30之后的模型);总览矩阵不展示命中≤2榜的模型,请前往对应榜单页查看。
-默认显示命中≥4个基准组且排名前30的模型,以及跻身前30区间的「参考」模型(命中 3 个基准组,按各榜成绩比对落入区间,不计算综合分、不参与排名,仅显示数据)。</li>
+          <li><b class="note-term">「显示全部模型」</b>开关可展开全部在任一基准组有成绩的模型(包含排名30之后的排名行、全部「参考」行,以及命中 1 榜的「仅单榜」行)。
+默认显示命中≥4个基准组且排名前30的模型,以及跻身前30区间的「参考」模型(命中 2-3 个基准组,按各榜成绩比对落入区间,不计算综合分、不参与排名,仅显示数据)。</li>
           <li><b class="note-term">「高亮国产模型」</b>开关开启后,国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型行将以红色底色高亮,并在模型名后标注「国产」徽标,便于快速定位国产模型成绩。</li>
           <li>本页仅用于学习与对比展示,数据为快照,不代表对各模型能力的绝对评价。</li>
         </ul>
