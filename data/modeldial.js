@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-09-25 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-09-26 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-11dc751759525c91cd00819c)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-8b47ec8d0f9dccc9d19d0972)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -17,11 +17,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-11dc751759525c91cd00819c',
-  'batchRevision': 258,
-  'batchPublishedAt': '2026-09-24T22:16:49.537Z',
-  'updated': '2026-09-25',
-  'refreshedAt': '2026-09-25 22:40',
+  'batchId': 'overall-8b47ec8d0f9dccc9d19d0972',
+  'batchRevision': 260,
+  'batchPublishedAt': '2026-09-25T22:13:55.039Z',
+  'updated': '2026-09-26',
+  'refreshedAt': '2026-09-26 14:17',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -299,14 +299,14 @@ window.MODELDIAL = {
     {
       'model': 'glm-5.3',
       'provider': 'glm',
-      'effort': 'high',
-      'displayName': 'glm-5.3 / High',
+      'effort': 'max',
+      'displayName': 'glm-5.3 / Max',
       'overall': 65.2,
-      'backend': 64,
-      'frontend': 82,
-      'knowledge': 50,
-      'elapsedMs': 928861,
-      'costUsd': 0.534364,
+      'backend': 52,
+      'frontend': 78,
+      'knowledge': 70,
+      'elapsedMs': 1127921,
+      'costUsd': 0.420605,
       'tags': [],
       'configs': 2,
       'rank': 18
@@ -1009,20 +1009,6 @@ window.MODELDIAL = {
       'rank': 37,
       'provider': 'glm',
       'model': 'glm-5.3',
-      'effort': 'high',
-      'displayName': 'glm-5.3 / High',
-      'overall': 65.2,
-      'backend': 64,
-      'frontend': 82,
-      'knowledge': 50,
-      'elapsedMs': 928861,
-      'costUsd': 0.534364,
-      'tags': []
-    },
-    {
-      'rank': 37,
-      'provider': 'glm',
-      'model': 'glm-5.3',
       'effort': 'max',
       'displayName': 'glm-5.3 / Max',
       'overall': 65.2,
@@ -1034,7 +1020,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 39,
+      'rank': 38,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-sol',
       'effort': 'low',
@@ -1048,7 +1034,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 40,
+      'rank': 39,
       'provider': 'kimi',
       'model': 'kimi-for-coding',
       'effort': 'high',
@@ -1062,7 +1048,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 41,
+      'rank': 40,
       'provider': 'deepseek',
       'model': 'deepseek-v4-pro',
       'effort': 'max',
@@ -1076,7 +1062,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 42,
+      'rank': 41,
       'provider': 'GEMINI',
       'model': 'gemini-3.8-flash-high',
       'effort': 'default',
@@ -1090,7 +1076,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 42,
+      'rank': 41,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'xhigh',
@@ -1104,7 +1090,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 44,
+      'rank': 43,
       'provider': 'deepseek',
       'model': 'deepseek-v4-pro',
       'effort': 'high',
@@ -1118,7 +1104,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 45,
+      'rank': 44,
       'provider': 'Claude',
       'model': 'claude-opus-4-8',
       'effort': 'high',
@@ -1129,6 +1115,20 @@ window.MODELDIAL = {
       'knowledge': 75,
       'elapsedMs': 1096813,
       'costUsd': 1.73732,
+      'tags': []
+    },
+    {
+      'rank': 45,
+      'provider': 'glm',
+      'model': 'glm-5.3',
+      'effort': 'high',
+      'displayName': 'glm-5.3 / High',
+      'overall': 60.8,
+      'backend': 53,
+      'frontend': 82,
+      'knowledge': 50,
+      'elapsedMs': 643649,
+      'costUsd': 0.439835,
       'tags': []
     },
     {
@@ -1315,6 +1315,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 59,
+      'provider': 'glm',
+      'model': 'glm-5.3-flash',
+      'effort': 'high',
+      'displayName': 'glm-5.3-flash / High',
+      'overall': 50,
+      'backend': 53,
+      'frontend': 76,
+      'knowledge': 20,
+      'elapsedMs': 677440,
+      'costUsd': 0.021711,
+      'tags': []
+    },
+    {
+      'rank': 60,
       'provider': 'deepseek',
       'model': 'deepseek-v4-flash-vision-exp',
       'effort': 'max',
@@ -1328,21 +1342,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 60,
-      'provider': 'glm',
-      'model': 'glm-5.3-flash',
-      'effort': 'high',
-      'displayName': 'glm-5.3-flash / High',
-      'overall': 48.4,
-      'backend': 49,
-      'frontend': 76,
-      'knowledge': 20,
-      'elapsedMs': 791774,
-      'costUsd': 0.024411,
-      'tags': []
-    },
-    {
-      'rank': 60,
+      'rank': 61,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'medium',

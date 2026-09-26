@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-25)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-09-26)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -11,8 +11,8 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-09-25',
-  'refreshedAt': '2026-09-25 22:40',
+  'updated': '2026-09-26',
+  'refreshedAt': '2026-09-26 14:17',
   'stats': {
     'tasks': 66,
     'entries': 37
