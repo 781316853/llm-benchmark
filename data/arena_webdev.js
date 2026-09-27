@@ -12,55 +12,55 @@ window.ARENA_WEBDEV = {
   'metric': 'Elo score',
   'desc': 'LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。',
   'stats': {
-    'models': 133
+    'models': 134
   },
   'models': [
     {
       'name': 'claude-opus-5.5-max',
       'org': 'Anthropic',
-      'score': 1818,
-      'ci': 21,
-      'votes': 1200,
+      'score': 1827,
+      'ci': 18,
+      'votes': 1600,
       'src': 'selftest'
     },
     {
       'name': 'gpt-6-astra-max',
       'org': 'OpenAI',
       'score': 1792,
-      'ci': 12,
-      'votes': 4300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'claude-fable-5.1-max',
-      'org': 'Anthropic',
-      'score': 1755,
       'ci': 11,
       'votes': 4900,
       'src': 'selftest'
     },
     {
+      'name': 'claude-fable-5.1-max',
+      'org': 'Anthropic',
+      'score': 1751,
+      'ci': 10,
+      'votes': 5300,
+      'src': 'selftest'
+    },
+    {
       'name': 'claude-opus-5-max',
       'org': 'Anthropic',
-      'score': 1692,
+      'score': 1693,
       'ci': 7,
-      'votes': 14400,
+      'votes': 15600,
       'src': 'selftest'
     },
     {
       'name': 'gpt-6-sol-max',
       'org': 'OpenAI',
-      'score': 1686,
-      'ci': 17,
-      'votes': 1500,
+      'score': 1681,
+      'ci': 15,
+      'votes': 2000,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.8-max',
       'org': 'Alibaba',
-      'score': 1671,
+      'score': 1672,
       'ci': 12,
-      'votes': 3200,
+      'votes': 3500,
       'src': 'selftest'
     },
     {
@@ -68,15 +68,15 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1662,
       'ci': 6,
-      'votes': 17100,
+      'votes': 18900,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.8-max-0902',
       'org': 'Alibaba',
-      'score': 1661,
+      'score': 1662,
       'ci': 9,
-      'votes': 5500,
+      'votes': 6200,
       'src': 'selftest'
     },
     {
@@ -84,15 +84,15 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1660,
       'ci': 7,
-      'votes': 13300,
+      'votes': 14700,
       'src': 'selftest'
     },
     {
       'name': 'muse-spark-1.3-max',
       'org': 'Meta',
-      'score': 1658,
-      'ci': 10,
-      'votes': 5300,
+      'score': 1656,
+      'ci': 9,
+      'votes': 5900,
       'src': 'selftest'
     },
     {
@@ -100,15 +100,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1636,
       'ci': 10,
-      'votes': 4400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok-4.7-xhigh',
-      'org': 'SpaceXAI',
-      'score': 1632,
-      'ci': 16,
-      'votes': 1600,
+      'votes': 5000,
       'src': 'selftest'
     },
     {
@@ -116,7 +108,15 @@ window.ARENA_WEBDEV = {
       'org': 'Tencent',
       'score': 1631,
       'ci': 10,
-      'votes': 4400,
+      'votes': 5000,
+      'src': 'selftest'
+    },
+    {
+      'name': 'grok-4.7-xhigh',
+      'org': 'SpaceXAI',
+      'score': 1629,
+      'ci': 14,
+      'votes': 2000,
       'src': 'selftest'
     },
     {
@@ -124,47 +124,47 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1627,
       'ci': 7,
-      'votes': 11900,
+      'votes': 13100,
       'src': 'selftest'
     },
     {
       'name': 'muse-spark-1.3 (xhigh)',
       'org': 'Meta',
       'score': 1626,
-      'ci': 10,
-      'votes': 4400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok-4.6-high',
-      'org': 'SpaceXAI',
-      'score': 1624,
       'ci': 9,
-      'votes': 6400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'glm-5.3-max',
-      'org': 'Z.ai',
-      'score': 1622,
-      'ci': 9,
-      'votes': 5800,
+      'votes': 5000,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v4.1-flash-max',
       'org': 'DeepSeek',
-      'score': 1620,
+      'score': 1621,
       'ci': 11,
-      'votes': 3300,
+      'votes': 3800,
+      'src': 'selftest'
+    },
+    {
+      'name': 'grok-4.6-high',
+      'org': 'SpaceXAI',
+      'score': 1621,
+      'ci': 8,
+      'votes': 7000,
+      'src': 'selftest'
+    },
+    {
+      'name': 'glm-5.3-max',
+      'org': 'Z.ai',
+      'score': 1619,
+      'ci': 9,
+      'votes': 6400,
       'src': 'selftest'
     },
     {
       'name': 'mimo-v2.6-pro',
       'org': 'Xiaomi',
-      'score': 1619,
-      'ci': 14,
-      'votes': 2200,
+      'score': 1618,
+      'ci': 13,
+      'votes': 2600,
       'src': 'selftest'
     },
     {
@@ -172,87 +172,95 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1617,
       'ci': 6,
-      'votes': 14400,
+      'votes': 15800,
       'src': 'selftest'
     },
     {
       'name': 'glm-5.3-flash',
       'org': 'Z.ai',
-      'score': 1612,
+      'score': 1613,
       'ci': 9,
-      'votes': 6000,
+      'votes': 6700,
       'src': 'selftest'
     },
     {
       'name': 'glm-5.2-max',
       'org': 'Z.ai',
-      'score': 1600,
+      'score': 1602,
       'ci': 7,
-      'votes': 12400,
+      'votes': 13600,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.7-flash-high',
       'org': 'Google',
-      'score': 1595,
+      'score': 1593,
       'ci': 8,
-      'votes': 7200,
+      'votes': 8100,
       'src': 'selftest'
     },
     {
       'name': 'gpt-6-luna-max',
       'org': 'OpenAI',
       'score': 1593,
-      'ci': 19,
-      'votes': 1000,
+      'ci': 14,
+      'votes': 1900,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.8-27b',
       'org': 'Alibaba',
       'score': 1591,
-      'ci': 8,
-      'votes': 9200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini-3.8-flash-high',
-      'org': 'Google',
-      'score': 1584,
-      'ci': 9,
-      'votes': 6600,
+      'ci': 7,
+      'votes': 10200,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v4-pro-high-20260813',
       'org': 'DeepSeek',
-      'score': 1581,
-      'ci': 10,
-      'votes': 4600,
+      'score': 1582,
+      'ci': 9,
+      'votes': 4900,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v4-flash-high',
       'org': 'DeepSeek',
-      'score': 1579,
-      'ci': 10,
-      'votes': 4700,
+      'score': 1581,
+      'ci': 9,
+      'votes': 5100,
       'src': 'selftest'
     },
     {
-      'name': 'claude-opus-4-7',
-      'org': 'Anthropic',
-      'score': 1557,
-      'ci': 6,
-      'votes': 15900,
+      'name': 'gemini-3.8-flash-high',
+      'org': 'Google',
+      'score': 1580,
+      'ci': 8,
+      'votes': 7300,
+      'src': 'selftest'
+    },
+    {
+      'name': 'step-5-preview-high',
+      'org': 'StepFun',
+      'score': 1565,
+      'ci': 17,
+      'votes': 1200,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-4-7-high',
       'org': 'Anthropic',
+      'score': 1557,
+      'ci': 6,
+      'votes': 17500,
+      'src': 'selftest'
+    },
+    {
+      'name': 'claude-opus-4-7',
+      'org': 'Anthropic',
       'score': 1556,
       'ci': 6,
-      'votes': 16400,
+      'votes': 16900,
       'src': 'selftest'
     },
     {
@@ -260,7 +268,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1555,
       'ci': 6,
-      'votes': 16200,
+      'votes': 17600,
       'src': 'selftest'
     },
     {
@@ -268,31 +276,31 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1552,
       'ci': 7,
-      'votes': 10300,
+      'votes': 11300,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-4-6-high',
       'org': 'Anthropic',
-      'score': 1547,
-      'ci': 6,
-      'votes': 18300,
+      'score': 1546,
+      'ci': 5,
+      'votes': 19500,
       'src': 'selftest'
     },
     {
       'name': 'muse-spark-1.1',
       'org': 'Meta',
-      'score': 1542,
+      'score': 1541,
       'ci': 8,
-      'votes': 7500,
+      'votes': 8100,
       'src': 'selftest'
     },
     {
       'name': 'claude-sonnet-5-high',
       'org': 'Anthropic',
-      'score': 1538,
-      'ci': 7,
-      'votes': 11600,
+      'score': 1539,
+      'ci': 6,
+      'votes': 12900,
       'src': 'selftest'
     },
     {
@@ -300,31 +308,31 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1537,
       'ci': 5,
-      'votes': 19500,
+      'votes': 20800,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.6-flash-high',
       'org': 'Google',
-      'score': 1537,
-      'ci': 8,
-      'votes': 8200,
+      'score': 1536,
+      'ci': 7,
+      'votes': 8900,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-4-8',
       'org': 'Anthropic',
-      'score': 1537,
+      'score': 1535,
       'ci': 6,
-      'votes': 15100,
+      'votes': 16600,
       'src': 'selftest'
     },
     {
       'name': 'muse-spark-1.2 (xhigh)',
       'org': 'Meta',
-      'score': 1534,
+      'score': 1531,
       'ci': 14,
-      'votes': 2100,
+      'votes': 2200,
       'src': 'selftest'
     },
     {
@@ -332,47 +340,47 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1521,
       'ci': 5,
-      'votes': 21600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.6-luna-xhigh (codex-harness)',
-      'org': 'OpenAI',
-      'score': 1519,
-      'ci': 7,
-      'votes': 10200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'seed-2.1-pro-preview',
-      'org': 'Bytedance',
-      'score': 1519,
-      'ci': 7,
-      'votes': 11300,
+      'votes': 23000,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.6-terra-xhigh (codex-harness)',
       'org': 'OpenAI',
-      'score': 1519,
+      'score': 1521,
       'ci': 7,
-      'votes': 10100,
+      'votes': 11200,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.6-luna-xhigh (codex-harness)',
+      'org': 'OpenAI',
+      'score': 1520,
+      'ci': 7,
+      'votes': 11400,
+      'src': 'selftest'
+    },
+    {
+      'name': 'seed-2.1-pro-preview',
+      'org': 'Bytedance',
+      'score': 1518,
+      'ci': 6,
+      'votes': 12300,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.7-max-20260517',
       'org': 'Alibaba',
-      'score': 1517,
-      'ci': 8,
-      'votes': 8400,
+      'score': 1515,
+      'ci': 7,
+      'votes': 8900,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.5-xhigh (codex-harness)',
       'org': 'OpenAI',
-      'score': 1510,
+      'score': 1512,
       'ci': 6,
-      'votes': 14900,
+      'votes': 15900,
       'src': 'selftest'
     },
     {
@@ -380,7 +388,7 @@ window.ARENA_WEBDEV = {
       'org': 'Tencent',
       'score': 1509,
       'ci': 9,
-      'votes': 4800,
+      'votes': 5300,
       'src': 'selftest'
     },
     {
@@ -388,7 +396,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1509,
       'ci': 7,
-      'votes': 9600,
+      'votes': 10200,
       'src': 'selftest'
     },
     {
@@ -396,71 +404,71 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1508,
       'ci': 7,
-      'votes': 10200,
+      'votes': 10800,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.5-flash-high',
       'org': 'Google',
-      'score': 1500,
+      'score': 1499,
       'ci': 7,
-      'votes': 8900,
+      'votes': 9500,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-4-5-20251101-high-32k',
       'org': 'Anthropic',
-      'score': 1495,
+      'score': 1493,
       'ci': 8,
-      'votes': 10600,
+      'votes': 11000,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.5-flash-medium',
       'org': 'Google',
-      'score': 1491,
+      'score': 1490,
       'ci': 7,
-      'votes': 11400,
+      'votes': 12300,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.5-high (codex-harness)',
       'org': 'OpenAI',
-      'score': 1486,
+      'score': 1487,
       'ci': 6,
-      'votes': 17000,
+      'votes': 18200,
       'src': 'selftest'
     },
     {
       'name': 'minimax-m3',
       'org': 'MiniMax',
-      'score': 1485,
+      'score': 1483,
       'ci': 6,
-      'votes': 15000,
+      'votes': 16300,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.6-max-preview',
       'org': 'Alibaba',
-      'score': 1479,
+      'score': 1481,
       'ci': 13,
-      'votes': 2600,
+      'votes': 2700,
       'src': 'selftest'
     },
     {
       'name': 'mimo-v2.5-pro',
       'org': 'Xiaomi',
-      'score': 1476,
-      'ci': 6,
-      'votes': 18000,
+      'score': 1477,
+      'ci': 5,
+      'votes': 19400,
       'src': 'selftest'
     },
     {
       'name': 'kimi-k2.7-code',
       'org': 'Moonshot',
-      'score': 1472,
-      'ci': 10,
-      'votes': 4700,
+      'score': 1473,
+      'ci': 9,
+      'votes': 5000,
       'src': 'selftest'
     },
     {
@@ -468,23 +476,23 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1468,
       'ci': 7,
-      'votes': 12900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'deepseek-v4-pro-high-preview',
-      'org': 'DeepSeek',
-      'score': 1464,
-      'ci': 6,
-      'votes': 12400,
+      'votes': 13400,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.4-high (codex-harness)',
       'org': 'OpenAI',
-      'score': 1463,
+      'score': 1466,
       'ci': 19,
-      'votes': 1300,
+      'votes': 1400,
+      'src': 'selftest'
+    },
+    {
+      'name': 'deepseek-v4-pro-high-preview',
+      'org': 'DeepSeek',
+      'score': 1463,
+      'ci': 6,
+      'votes': 13200,
       'src': 'selftest'
     },
     {
@@ -492,71 +500,71 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1461,
       'ci': 6,
-      'votes': 17600,
+      'votes': 18700,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.5 (codex-harness)',
       'org': 'OpenAI',
-      'score': 1458,
+      'score': 1455,
       'ci': 6,
-      'votes': 15000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini-3.5-flash-lite',
-      'org': 'Google',
-      'score': 1447,
-      'ci': 43,
-      'votes': 228,
+      'votes': 16100,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.1-pro-preview',
       'org': 'Google',
-      'score': 1447,
+      'score': 1446,
       'ci': 5,
-      'votes': 22900,
+      'votes': 24400,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v4-pro',
       'org': 'DeepSeek',
-      'score': 1445,
+      'score': 1446,
       'ci': 6,
-      'votes': 13200,
+      'votes': 14100,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.4-medium (codex-harness)',
       'org': 'OpenAI',
-      'score': 1443,
-      'ci': 19,
-      'votes': 1300,
+      'score': 1444,
+      'ci': 18,
+      'votes': 1400,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gemini-3.5-flash-lite',
+      'org': 'Google',
+      'score': 1439,
+      'ci': 41,
+      'votes': 242,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3-pro',
       'org': 'Google',
       'score': 1439,
-      'ci': 9,
-      'votes': 13600,
+      'ci': 8,
+      'votes': 14100,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3-flash',
       'org': 'Google',
-      'score': 1438,
+      'score': 1439,
       'ci': 9,
-      'votes': 10500,
+      'votes': 10900,
       'src': 'selftest'
     },
     {
       'name': 'mimo-v2.5',
       'org': 'Xiaomi',
-      'score': 1437,
+      'score': 1438,
       'ci': 6,
-      'votes': 14100,
+      'votes': 15000,
       'src': 'selftest'
     },
     {
@@ -564,15 +572,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1436,
       'ci': 5,
-      'votes': 19100,
-      'src': 'selftest'
-    },
-    {
-      'name': 'glm-5',
-      'org': 'Z.ai',
-      'score': 1436,
-      'ci': 8,
-      'votes': 7100,
+      'votes': 20200,
       'src': 'selftest'
     },
     {
@@ -580,95 +580,95 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1435,
       'ci': 12,
-      'votes': 3800,
+      'votes': 4000,
+      'src': 'selftest'
+    },
+    {
+      'name': 'glm-5',
+      'org': 'Z.ai',
+      'score': 1434,
+      'ci': 8,
+      'votes': 7500,
       'src': 'selftest'
     },
     {
       'name': 'mimo-v2-pro',
       'org': 'Xiaomi',
-      'score': 1434,
+      'score': 1433,
       'ci': 8,
-      'votes': 7000,
+      'votes': 7200,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v4-flash-high-preview',
       'org': 'DeepSeek',
-      'score': 1431,
+      'score': 1430,
       'ci': 7,
-      'votes': 9500,
+      'votes': 10200,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5-medium',
       'org': 'OpenAI',
-      'score': 1420,
+      'score': 1418,
       'ci': 16,
-      'votes': 3000,
+      'votes': 3100,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.2',
       'org': 'OpenAI',
-      'score': 1417,
-      'ci': 23,
+      'score': 1415,
+      'ci': 22,
       'votes': 1100,
       'src': 'selftest'
     },
     {
       'name': 'inkling',
       'org': 'Thinky',
-      'score': 1412,
+      'score': 1411,
       'ci': 7,
-      'votes': 11300,
+      'votes': 12500,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.3-codex (codex-harness)',
       'org': 'OpenAI',
-      'score': 1409,
+      'score': 1408,
       'ci': 14,
-      'votes': 2500,
+      'votes': 2600,
       'src': 'selftest'
     },
     {
       'name': 'inkling small',
       'org': 'Thinky',
-      'score': 1407,
+      'score': 1408,
       'ci': 9,
-      'votes': 5000,
+      'votes': 5400,
       'src': 'selftest'
     },
     {
       'name': 'kimi-k2.5-instant',
       'org': 'Moonshot',
-      'score': 1406,
+      'score': 1404,
       'ci': 12,
-      'votes': 3100,
+      'votes': 3300,
       'src': 'selftest'
     },
     {
       'name': 'glm-5v-turbo',
       'org': 'Z.ai',
       'score': 1400,
-      'ci': 14,
-      'votes': 2200,
+      'ci': 13,
+      'votes': 2400,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.5-397b-a17b',
       'org': 'Alibaba',
-      'score': 1399,
+      'score': 1400,
       'ci': 5,
-      'votes': 19900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'minimax-m2.7',
-      'org': 'MiniMax',
-      'score': 1397,
-      'ci': 6,
-      'votes': 15200,
+      'votes': 21300,
       'src': 'selftest'
     },
     {
@@ -676,7 +676,31 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1397,
       'ci': 7,
-      'votes': 11300,
+      'votes': 12000,
+      'src': 'selftest'
+    },
+    {
+      'name': 'minimax-m2.7',
+      'org': 'MiniMax',
+      'score': 1397,
+      'ci': 6,
+      'votes': 16100,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.1-medium',
+      'org': 'OpenAI',
+      'score': 1394,
+      'ci': 11,
+      'votes': 4900,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.4',
+      'org': 'OpenAI',
+      'score': 1394,
+      'ci': 11,
+      'votes': 3500,
       'src': 'selftest'
     },
     {
@@ -684,135 +708,111 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1393,
       'ci': 8,
-      'votes': 12800,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.4',
-      'org': 'OpenAI',
-      'score': 1392,
-      'ci': 12,
-      'votes': 3200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.1-medium',
-      'org': 'OpenAI',
-      'score': 1392,
-      'ci': 12,
-      'votes': 4800,
+      'votes': 13300,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-4-1-20250805',
       'org': 'Anthropic',
-      'score': 1389,
+      'score': 1390,
       'ci': 11,
-      'votes': 6800,
-      'src': 'selftest'
-    },
-    {
-      'name': 'minimax-m2.1-preview',
-      'org': 'MiniMax',
-      'score': 1387,
-      'ci': 10,
-      'votes': 7300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'claude-sonnet-4-5-20250929',
-      'org': 'Anthropic',
-      'score': 1385,
-      'ci': 7,
-      'votes': 15200,
+      'votes': 6900,
       'src': 'selftest'
     },
     {
       'name': 'minimax-m2.5',
       'org': 'MiniMax',
-      'score': 1384,
+      'score': 1386,
       'ci': 8,
-      'votes': 7200,
+      'votes': 7600,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3-flash (thinking-minimal)',
       'org': 'Google',
-      'score': 1383,
+      'score': 1384,
       'ci': 5,
-      'votes': 20900,
+      'votes': 22200,
+      'src': 'selftest'
+    },
+    {
+      'name': 'claude-sonnet-4-5-20250929',
+      'org': 'Anthropic',
+      'score': 1384,
+      'ci': 7,
+      'votes': 15700,
+      'src': 'selftest'
+    },
+    {
+      'name': 'minimax-m2.1-preview',
+      'org': 'MiniMax',
+      'score': 1384,
+      'ci': 10,
+      'votes': 7600,
       'src': 'selftest'
     },
     {
       'name': 'grok-4.20-beta-0309-reasoning',
       'org': 'SpaceXAI',
-      'score': 1373,
+      'score': 1374,
       'ci': 6,
-      'votes': 14600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.3-codex (codex-harness)',
-      'org': 'OpenAI',
-      'score': 1369,
-      'ci': 12,
-      'votes': 3500,
+      'votes': 15500,
       'src': 'selftest'
     },
     {
       'name': 'solar-pro4',
       'org': 'Upstage',
-      'score': 1368,
+      'score': 1372,
+      'ci': 10,
+      'votes': 4800,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.3-codex (codex-harness)',
+      'org': 'OpenAI',
+      'score': 1371,
       'ci': 11,
-      'votes': 4300,
+      'votes': 3700,
       'src': 'selftest'
     },
     {
       'name': 'gemma-4-31b',
       'org': 'Google',
-      'score': 1364,
+      'score': 1363,
       'ci': 7,
-      'votes': 11600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemma-4-26b-a4b',
-      'org': 'Google',
-      'score': 1362,
-      'ci': 17,
-      'votes': 1400,
+      'votes': 12500,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v3.2-thinking',
       'org': 'DeepSeek',
-      'score': 1361,
+      'score': 1362,
       'ci': 9,
-      'votes': 6600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'muse-glimmer',
-      'org': 'Meta',
-      'score': 1360,
-      'ci': 16,
-      'votes': 1500,
+      'votes': 6900,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.5-122b-a10b',
       'org': 'Alibaba',
-      'score': 1358,
+      'score': 1360,
       'ci': 8,
-      'votes': 7900,
+      'votes': 8200,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gemma-4-26b-a4b',
+      'org': 'Google',
+      'score': 1358,
+      'ci': 17,
+      'votes': 1500,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.5-27b',
       'org': 'Alibaba',
-      'score': 1358,
+      'score': 1357,
       'ci': 8,
-      'votes': 7400,
+      'votes': 7800,
       'src': 'selftest'
     },
     {
@@ -820,39 +820,47 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1357,
       'ci': 6,
-      'votes': 14200,
+      'votes': 15100,
+      'src': 'selftest'
+    },
+    {
+      'name': 'muse-glimmer',
+      'org': 'Meta',
+      'score': 1355,
+      'ci': 16,
+      'votes': 1700,
       'src': 'selftest'
     },
     {
       'name': 'hunyuan-hy3-preview',
       'org': 'Tencent',
-      'score': 1357,
-      'ci': 18,
-      'votes': 1400,
+      'score': 1355,
+      'ci': 17,
+      'votes': 1500,
       'src': 'selftest'
     },
     {
       'name': 'laguna-m.1',
       'org': 'Poolside',
-      'score': 1347,
-      'ci': 10,
-      'votes': 5100,
+      'score': 1348,
+      'ci': 9,
+      'votes': 5400,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.1',
       'org': 'OpenAI',
       'score': 1341,
-      'ci': 9,
-      'votes': 10300,
+      'ci': 8,
+      'votes': 10700,
       'src': 'selftest'
     },
     {
       'name': 'glm-4.6',
       'org': 'Z.ai',
-      'score': 1341,
+      'score': 1339,
       'ci': 11,
-      'votes': 6600,
+      'votes': 6800,
       'src': 'selftest'
     },
     {
@@ -860,15 +868,15 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1339,
       'ci': 9,
-      'votes': 6400,
+      'votes': 6700,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.1-codex',
       'org': 'OpenAI',
-      'score': 1336,
+      'score': 1337,
       'ci': 12,
-      'votes': 4900,
+      'votes': 5000,
       'src': 'selftest'
     },
     {
@@ -876,15 +884,15 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1330,
       'ci': 10,
-      'votes': 5400,
+      'votes': 5700,
       'src': 'selftest'
     },
     {
       'name': 'claude-haiku-4-5-20251001',
       'org': 'Anthropic',
-      'score': 1329,
+      'score': 1330,
       'ci': 5,
-      'votes': 27800,
+      'votes': 29200,
       'src': 'selftest'
     },
     {
@@ -892,15 +900,15 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1325,
       'ci': 8,
-      'votes': 9000,
+      'votes': 9400,
       'src': 'selftest'
     },
     {
       'name': 'kimi-k2-thinking-turbo',
       'org': 'Moonshot',
-      'score': 1323,
-      'ci': 8,
-      'votes': 12700,
+      'score': 1322,
+      'ci': 7,
+      'votes': 13100,
       'src': 'selftest'
     },
     {
@@ -908,22 +916,22 @@ window.ARENA_WEBDEV = {
       'org': 'Poolside',
       'score': 1302,
       'ci': 11,
-      'votes': 3900,
+      'votes': 4200,
       'src': 'selftest'
     },
     {
       'name': 'minimax-m2',
       'org': 'MiniMax',
-      'score': 1298,
+      'score': 1297,
       'ci': 11,
-      'votes': 6500,
+      'votes': 6700,
       'src': 'selftest'
     },
     {
       'name': 'mimo-v2-flash (thinking)',
       'org': 'Xiaomi',
-      'score': 1293,
-      'ci': 17,
+      'score': 1292,
+      'ci': 16,
       'votes': 1700,
       'src': 'selftest'
     },
@@ -932,47 +940,47 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1274,
       'ci': 8,
-      'votes': 12300,
+      'votes': 12700,
       'src': 'selftest'
     },
     {
       'name': 'deepseek-v3.2-exp',
       'org': 'DeepSeek',
       'score': 1272,
-      'ci': 14,
-      'votes': 3900,
+      'ci': 13,
+      'votes': 4000,
       'src': 'selftest'
     },
     {
       'name': 'mistral-medium-3.5',
       'org': 'Mistral',
-      'score': 1265,
+      'score': 1263,
       'ci': 15,
-      'votes': 2200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'kat-coder-pro-v1',
-      'org': '',
-      'score': 1254,
-      'ci': 20,
-      'votes': 1500,
+      'votes': 2300,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.1-flash-lite-preview',
       'org': 'Google',
-      'score': 1254,
+      'score': 1256,
       'ci': 7,
-      'votes': 13700,
+      'votes': 14400,
+      'src': 'selftest'
+    },
+    {
+      'name': 'kat-coder-pro-v1',
+      'org': '',
+      'score': 1256,
+      'ci': 19,
+      'votes': 1500,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.5-35b-a3b',
       'org': 'Alibaba',
-      'score': 1250,
-      'ci': 18,
-      'votes': 1500,
+      'score': 1254,
+      'ci': 17,
+      'votes': 1600,
       'src': 'selftest'
     },
     {
@@ -980,45 +988,45 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1244,
       'ci': 22,
-      'votes': 1100,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok-4-1-fast-reasoning',
-      'org': 'SpaceXAI',
-      'score': 1241,
-      'ci': 11,
-      'votes': 5300,
+      'votes': 1200,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.5-flash',
       'org': 'Alibaba',
-      'score': 1239,
+      'score': 1243,
       'ci': 20,
       'votes': 1300,
       'src': 'selftest'
     },
     {
+      'name': 'grok-4-1-fast-reasoning',
+      'org': 'SpaceXAI',
+      'score': 1242,
+      'ci': 11,
+      'votes': 5500,
+      'src': 'selftest'
+    },
+    {
       'name': 'trinity-large-thinking',
       'org': '',
-      'score': 1237,
-      'ci': 21,
-      'votes': 1300,
+      'score': 1238,
+      'ci': 20,
+      'votes': 1400,
       'src': 'selftest'
     },
     {
       'name': 'mistral-large-3',
       'org': 'Mistral',
-      'score': 1229,
-      'ci': 26,
-      'votes': 811,
+      'score': 1230,
+      'ci': 25,
+      'votes': 840,
       'src': 'selftest'
     },
     {
       'name': 'gemini-2.5-pro',
       'org': 'Google',
-      'score': 1226,
+      'score': 1227,
       'ci': 16,
       'votes': 2700,
       'src': 'selftest'
@@ -1026,57 +1034,57 @@ window.ARENA_WEBDEV = {
     {
       'name': 'grok-4.1-thinking',
       'org': 'SpaceXAI',
-      'score': 1211,
+      'score': 1214,
       'ci': 25,
-      'votes': 939,
+      'votes': 961,
       'src': 'selftest'
     },
     {
       'name': 'devstral-2',
       'org': 'Mistral',
-      'score': 1194,
+      'score': 1196,
       'ci': 21,
-      'votes': 1100,
+      'votes': 1200,
       'src': 'selftest'
     },
     {
       'name': 'granite-4.1-8b',
       'org': 'IBM',
-      'score': 1192,
+      'score': 1191,
       'ci': 19,
-      'votes': 1700,
+      'votes': 1800,
       'src': 'selftest'
     },
     {
       'name': 'mercury-2',
       'org': 'Inception AI',
-      'score': 1167,
-      'ci': 25,
-      'votes': 905,
+      'score': 1170,
+      'ci': 24,
+      'votes': 955,
       'src': 'selftest'
     },
     {
       'name': 'grok-code-fast-1',
       'org': 'SpaceXAI',
-      'score': 1165,
+      'score': 1167,
       'ci': 28,
-      'votes': 783,
+      'votes': 789,
       'src': 'selftest'
     },
     {
       'name': 'grok-4-fast-reasoning',
       'org': 'SpaceXAI',
-      'score': 1162,
-      'ci': 28,
-      'votes': 732,
+      'score': 1160,
+      'ci': 27,
+      'votes': 743,
       'src': 'selftest'
     },
     {
       'name': 'devstral-medium-2507',
       'org': 'Mistral',
-      'score': 1081,
+      'score': 1075,
       'ci': 31,
-      'votes': 831,
+      'votes': 842,
       'src': 'selftest'
     }
   ]
