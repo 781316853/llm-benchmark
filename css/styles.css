@@ -64,9 +64,9 @@
   --row-hit-hover: rgba(45, 212, 191, .26);
   --row-new: rgba(251, 191, 36, .11);
   --row-new-hover: rgba(251, 191, 36, .26);
-  --row-two: rgba(148, 163, 184, .1);
+  --row-two: rgba(148, 163, 184, .06);
   --row-two-hover: rgba(148, 163, 184, .26);
-  --row-one: rgba(148, 163, 184, .05);
+  --row-one: rgba(148, 163, 184, .03);
   --row-one-hover: rgba(148, 163, 184, .1);
   --row-domestic: rgba(248, 113, 113, .11);
   --row-domestic-hover: rgba(248, 113, 113, .26);
@@ -382,7 +382,12 @@ a:hover { text-decoration: underline; }
    用更淡的灰底,与参考行区分,且视觉上弱于跨榜行 */
 .data-table tr.row-one { background: var(--row-one); }
 .data-table tr.row-one:hover { background: var(--row-one-hover); }
-.data-table tr.row-one td { color: var(--text-tertiary); }
+/* 不参与排名的两类行(参考 / 仅单榜)统一弱化为「次级」质感:整行文字降为 --text-tertiary,
+   底色也压到近透明(参考 α.06 / 单榜 α.03 —— 参与排名的 row-hit 为 α.1),让它们退到背景层,
+   一眼区别于跨榜排名行。分数不受影响 —— 各榜数值走 .bv 榜色(见上)、厂商列走内联厂商色,
+   都没被行级 td 色覆盖,最终呈现「分数主体亮(榜色)、其余退灰」。两档底色差保留:参考行是
+   与排名行混排的名次缝隙行(留得更明显以便在名次之间被看见),单榜行统一排在末尾(压得更淡) */
+.data-table tr.row-two td, .data-table tr.row-one td { color: var(--text-tertiary); }
 /* 国产模型高亮行(用户主动开启「高亮国产模型」开关时生效);
    置于 row-hit/row-new 之后,确保用户主动开启时国产高亮获得视觉优先 */
 .data-table tr.row-domestic { background: var(--row-domestic); }
