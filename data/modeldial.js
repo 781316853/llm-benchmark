@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-09-26 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-09-27 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-8b47ec8d0f9dccc9d19d0972)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-dab87b657964e14e90d63f26)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -17,11 +17,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-8b47ec8d0f9dccc9d19d0972',
-  'batchRevision': 260,
-  'batchPublishedAt': '2026-09-25T22:13:55.039Z',
-  'updated': '2026-09-26',
-  'refreshedAt': '2026-09-26 21:48',
+  'batchId': 'overall-dab87b657964e14e90d63f26',
+  'batchRevision': 263,
+  'batchPublishedAt': '2026-09-27T00:21:05.711Z',
+  'updated': '2026-09-27',
+  'refreshedAt': '2026-09-27 14:46',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -30,8 +30,8 @@ window.MODELDIAL = {
   'costBasis': 'backend',
   'costBasisNote': '成本与耗时为后端(coding)单轴口径;官网主榜显示的是三轴汇总值,故本站数值低于官网显示值。',
   'stats': {
-    'configs': 69,
-    'models': 30
+    'configs': 70,
+    'models': 31
   },
   'desc': 'ModelDial Radar:第三方独立实测的编码智能体能力榜,分后端与测试(40%)、前端与交互(30%)、知识与推理(30%)三类能力,同一模型按推理强度分档多次测试后取最高分配置入榜;综合分越高越好。',
   'models': [
@@ -237,6 +237,21 @@ window.MODELDIAL = {
       'rank': 13
     },
     {
+      'model': 'space-bunny-free',
+      'provider': 'opencode',
+      'effort': 'default',
+      'displayName': 'space-bunny-free / Auto',
+      'overall': 69.3,
+      'backend': 57,
+      'frontend': 80,
+      'knowledge': 75,
+      'elapsedMs': 1173135,
+      'costUsd': 0,
+      'tags': [],
+      'configs': 1,
+      'rank': 14
+    },
+    {
       'model': 'hy4-preview',
       'provider': 'hy',
       'effort': 'high',
@@ -249,7 +264,7 @@ window.MODELDIAL = {
       'costUsd': 0.404662,
       'tags': [],
       'configs': 1,
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'deepseek-v4.1-flash-expires-on-0910',
@@ -264,7 +279,7 @@ window.MODELDIAL = {
       'costUsd': 0.103916,
       'tags': [],
       'configs': 2,
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'qwen3.8-flash',
@@ -279,7 +294,22 @@ window.MODELDIAL = {
       'costUsd': 0.116322,
       'tags': [],
       'configs': 1,
-      'rank': 16
+      'rank': 17
+    },
+    {
+      'model': 'glm-5.3',
+      'provider': 'glm',
+      'effort': 'high',
+      'displayName': 'glm-5.3 / High',
+      'overall': 66.4,
+      'backend': 67,
+      'frontend': 82,
+      'knowledge': 50,
+      'elapsedMs': 738338,
+      'costUsd': 0.52105,
+      'tags': [],
+      'configs': 2,
+      'rank': 18
     },
     {
       'model': 'step-5-preview',
@@ -294,22 +324,7 @@ window.MODELDIAL = {
       'costUsd': 0.341953,
       'tags': [],
       'configs': 1,
-      'rank': 17
-    },
-    {
-      'model': 'glm-5.3',
-      'provider': 'glm',
-      'effort': 'max',
-      'displayName': 'glm-5.3 / Max',
-      'overall': 65.2,
-      'backend': 52,
-      'frontend': 78,
-      'knowledge': 70,
-      'elapsedMs': 1127921,
-      'costUsd': 0.420605,
-      'tags': [],
-      'configs': 2,
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'kimi-for-coding',
@@ -324,7 +339,7 @@ window.MODELDIAL = {
       'costUsd': 0.211338,
       'tags': [],
       'configs': 1,
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'deepseek-v4-pro',
@@ -339,7 +354,7 @@ window.MODELDIAL = {
       'costUsd': 0.44305,
       'tags': [],
       'configs': 2,
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'gemini-3.8-flash-high',
@@ -354,7 +369,7 @@ window.MODELDIAL = {
       'costUsd': 0.060607,
       'tags': [],
       'configs': 1,
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'gpt-6-luna',
@@ -369,7 +384,7 @@ window.MODELDIAL = {
       'costUsd': 0.022862,
       'tags': [],
       'configs': 5,
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'deepseek-v4-flash',
@@ -384,7 +399,7 @@ window.MODELDIAL = {
       'costUsd': 0.090057,
       'tags': [],
       'configs': 2,
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'qwen3.8-max',
@@ -399,7 +414,7 @@ window.MODELDIAL = {
       'costUsd': 1.069636,
       'tags': [],
       'configs': 1,
-      'rank': 24
+      'rank': 25
     },
     {
       'model': 'deepseek-v4-flash-vision-exp',
@@ -414,7 +429,7 @@ window.MODELDIAL = {
       'costUsd': 0.101964,
       'tags': [],
       'configs': 2,
-      'rank': 24
+      'rank': 25
     },
     {
       'model': 'mimo-v2.6-flash',
@@ -429,7 +444,7 @@ window.MODELDIAL = {
       'costUsd': 0.043126,
       'tags': [],
       'configs': 1,
-      'rank': 26
+      'rank': 27
     },
     {
       'model': 'gpt-5.6-luna',
@@ -444,7 +459,7 @@ window.MODELDIAL = {
       'costUsd': 0.171555,
       'tags': [],
       'configs': 5,
-      'rank': 27
+      'rank': 28
     },
     {
       'model': 'glm-5.3-flash',
@@ -459,7 +474,7 @@ window.MODELDIAL = {
       'costUsd': 0.02121,
       'tags': [],
       'configs': 2,
-      'rank': 27
+      'rank': 28
     },
     {
       'model': 'gemini-3.7-flash-high',
@@ -474,7 +489,7 @@ window.MODELDIAL = {
       'costUsd': 0.068797,
       'tags': [],
       'configs': 1,
-      'rank': 29
+      'rank': 30
     },
     {
       'model': 'MiniMax-M3',
@@ -489,7 +504,7 @@ window.MODELDIAL = {
       'costUsd': 0.313887,
       'tags': [],
       'configs': 1,
-      'rank': 30
+      'rank': 31
     }
   ],
   'configs': [
@@ -937,6 +952,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 32,
+      'provider': 'opencode',
+      'model': 'space-bunny-free',
+      'effort': 'default',
+      'displayName': 'space-bunny-free / Auto',
+      'overall': 69.3,
+      'backend': 57,
+      'frontend': 80,
+      'knowledge': 75,
+      'elapsedMs': 1173135,
+      'costUsd': 0,
+      'tags': []
+    },
+    {
+      'rank': 33,
       'provider': 'hy',
       'model': 'hy4-preview',
       'effort': 'high',
@@ -950,7 +979,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 33,
+      'rank': 34,
       'provider': 'deepseek',
       'model': 'deepseek-v4.1-flash-expires-on-0910',
       'effort': 'max',
@@ -964,7 +993,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 34,
+      'rank': 35,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-sol',
       'effort': 'low',
@@ -978,7 +1007,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 35,
+      'rank': 36,
       'provider': 'qwen',
       'model': 'qwen3.8-flash',
       'effort': 'default',
@@ -992,7 +1021,21 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 36,
+      'rank': 37,
+      'provider': 'glm',
+      'model': 'glm-5.3',
+      'effort': 'high',
+      'displayName': 'glm-5.3 / High',
+      'overall': 66.4,
+      'backend': 67,
+      'frontend': 82,
+      'knowledge': 50,
+      'elapsedMs': 738338,
+      'costUsd': 0.52105,
+      'tags': []
+    },
+    {
+      'rank': 38,
       'provider': 'stepfun',
       'model': 'step-5-preview',
       'effort': 'default',
@@ -1006,7 +1049,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 37,
+      'rank': 39,
       'provider': 'glm',
       'model': 'glm-5.3',
       'effort': 'max',
@@ -1020,7 +1063,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 38,
+      'rank': 40,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-sol',
       'effort': 'low',
@@ -1034,7 +1077,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 39,
+      'rank': 41,
       'provider': 'kimi',
       'model': 'kimi-for-coding',
       'effort': 'high',
@@ -1048,7 +1091,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 40,
+      'rank': 42,
       'provider': 'deepseek',
       'model': 'deepseek-v4-pro',
       'effort': 'max',
@@ -1062,7 +1105,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 41,
+      'rank': 43,
       'provider': 'GEMINI',
       'model': 'gemini-3.8-flash-high',
       'effort': 'default',
@@ -1076,7 +1119,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 41,
+      'rank': 43,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'xhigh',
@@ -1090,7 +1133,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 43,
+      'rank': 45,
       'provider': 'deepseek',
       'model': 'deepseek-v4-pro',
       'effort': 'high',
@@ -1104,7 +1147,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 44,
+      'rank': 46,
       'provider': 'Claude',
       'model': 'claude-opus-4-8',
       'effort': 'high',
@@ -1118,21 +1161,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 45,
-      'provider': 'glm',
-      'model': 'glm-5.3',
-      'effort': 'high',
-      'displayName': 'glm-5.3 / High',
-      'overall': 60.8,
-      'backend': 53,
-      'frontend': 82,
-      'knowledge': 50,
-      'elapsedMs': 643649,
-      'costUsd': 0.439835,
-      'tags': []
-    },
-    {
-      'rank': 46,
+      'rank': 47,
       'provider': 'deepseek',
       'model': 'deepseek-v4-flash',
       'effort': 'high',
@@ -1146,7 +1175,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 47,
+      'rank': 48,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'high',
@@ -1160,7 +1189,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 48,
+      'rank': 49,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'xhigh',
@@ -1174,7 +1203,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 49,
+      'rank': 50,
       'provider': 'qwen',
       'model': 'qwen3.8-max',
       'effort': 'default',
@@ -1188,7 +1217,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 49,
+      'rank': 50,
       'provider': 'deepseek',
       'model': 'deepseek-v4-flash-vision-exp',
       'effort': 'high',
@@ -1202,7 +1231,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 51,
+      'rank': 52,
       'provider': 'xiaomi',
       'model': 'mimo-v2.6-flash',
       'effort': 'default',
@@ -1216,7 +1245,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 51,
+      'rank': 52,
       'provider': 'deepseek',
       'model': 'deepseek-v4-flash',
       'effort': 'max',
@@ -1230,7 +1259,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 53,
+      'rank': 54,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'max',
@@ -1244,7 +1273,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 53,
+      'rank': 54,
       'provider': 'glm',
       'model': 'glm-5.3-flash',
       'effort': 'max',
@@ -1258,7 +1287,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 55,
+      'rank': 56,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'max',
@@ -1272,7 +1301,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 56,
+      'rank': 57,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'xhigh',
@@ -1286,7 +1315,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 57,
+      'rank': 58,
       'provider': 'GEMINI',
       'model': 'gemini-3.7-flash-high',
       'effort': 'default',
@@ -1300,7 +1329,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 58,
+      'rank': 59,
       'provider': 'minimax',
       'model': 'MiniMax-M3',
       'effort': 'high',
@@ -1311,20 +1340,6 @@ window.MODELDIAL = {
       'knowledge': 50,
       'elapsedMs': 1325984,
       'costUsd': 0.313887,
-      'tags': []
-    },
-    {
-      'rank': 59,
-      'provider': 'glm',
-      'model': 'glm-5.3-flash',
-      'effort': 'high',
-      'displayName': 'glm-5.3-flash / High',
-      'overall': 50,
-      'backend': 53,
-      'frontend': 76,
-      'knowledge': 20,
-      'elapsedMs': 677440,
-      'costUsd': 0.021711,
       'tags': []
     },
     {
@@ -1343,6 +1358,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 61,
+      'provider': 'glm',
+      'model': 'glm-5.3-flash',
+      'effort': 'high',
+      'displayName': 'glm-5.3-flash / High',
+      'overall': 48.8,
+      'backend': 50,
+      'frontend': 76,
+      'knowledge': 20,
+      'elapsedMs': 782297,
+      'costUsd': 0.020879,
+      'tags': []
+    },
+    {
+      'rank': 62,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'medium',
@@ -1356,7 +1385,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 62,
+      'rank': 63,
       'provider': 'deepseek',
       'model': 'deepseek-v4.1-flash-expires-on-0910',
       'effort': 'high',
@@ -1370,7 +1399,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 63,
+      'rank': 64,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'high',
@@ -1384,7 +1413,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 64,
+      'rank': 65,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'high',
@@ -1398,7 +1427,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 65,
+      'rank': 66,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'low',
@@ -1412,7 +1441,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 66,
+      'rank': 67,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'medium',
@@ -1426,7 +1455,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 67,
+      'rank': 68,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'low',
@@ -1440,7 +1469,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 68,
+      'rank': 69,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'medium',
@@ -1454,7 +1483,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 69,
+      'rank': 70,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'low',
