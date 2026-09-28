@@ -12,8 +12,8 @@
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-09%7C0",
-  updated: "2026-09-27",
-  refreshedAt: "2026-09-27 22:45",
+  updated: "2026-09-28",
+  refreshedAt: "2026-09-28 15:11",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1076,7 +1076,7 @@ window.LLM2014 = {
           'Pass',
           '4/A+(341.72)',
           'Perfect(211.83)',
-          'Pending',
+          '6/A(290.08)',
           '2/A+(1365.55)'
         ],
         'unprompted': 5,

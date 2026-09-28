@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-09-27',
+  'updated': '2026-09-28',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -10,9 +10,91 @@ window.NEWS = {
     '模型发布',
     '技术与洞察',
     '前瞻与传闻',
-    '产品应用'
+    '产品应用',
+    '行业动态',
+    '其他'
   ],
   'items': [
+    {
+      'date': '2026-09-28',
+      'title': 'MiniMax 上线 M3.1-Flash-Preview',
+      'brief': 'MiniMax 已推出 M3.1-Flash-Preview ，模型首发上线 MiniMax Code ，同时已加入 Token Plan 。该模型支持 1M 上下文、多档思考深度和包括视频在内的多模态输入，官方将其描述为更快、更轻量，面向高吞吐、低延迟工作负载。',
+      'url': 'https://x.com/MiniMax_AI/status/2104256406786547800',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'OpenAI 修复 GPT-6 Sol 与 Luna 识图缺陷',
+      'brief': 'OpenAI 开发者账号 @OpenAIDevs 宣布，已修复一个导致图像理解能力下降的 bug ，受影响模型为 GPT-6 Sol 和 GPT-6 Luna ，修复后 API 和 Codex 中的视觉任务（包括 computer use ）应能看到更好的结果。',
+      'url': 'https://x.com/OpenAIDevs/status/2104252306447544447',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'Command Code 宣布调整 DeepSeek V4.1 Flash 用量',
+      'brief': 'Command Code 通过其官方账号宣布，将 GOAT 订阅方案中 DeepSeek V4.1 Flash 的 60 美元 用量由限时优惠转为永久提供。',
+      'url': 'https://x.com/CommandCodeAI/status/2104229776210919460',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'TypeSafe AI 宣布 Jev 重新开放注册',
+      'brief': 'TypeSafe AI 宣布，在其模型 Jev 扩充容量后，已重新全面开放API注册通道，用户可通过 console.typesafe.ai 注册使用。',
+      'url': 'https://x.com/typesafeai/status/2104337822350221795',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'ChatGPT 调整 Pro 档位名称并删除原有plus用量说明',
+      'brief': '据社区用户发现， ChatGPT 定价介绍页面近日调整了 Pro 方案的档位名称：原有 5x 和 20x 分别改为“ pro standard ”和“ pro more ”，页面同时删除此前关于 5x plus 用量和 20x plus 用量的表述。相关变化目前体现在定价介绍页面的名称及用量文案中。',
+      'url': 'https://linux.do/t/topic/2957030',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'Qwen Studio 上线积分与订阅体系',
+      'brief': '据社区用户发现， Qwen Studio 已上线订阅与积分机制，网页版用户登录 chat.qwen.ai 后，可在“用量与账单”页面查看积分使用及记录。',
+      'url': 'https://chat.qwen.ai/?memberPlan=true',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'Grok Bot推出Finance集成，可连接银行和投资账户',
+      'brief': 'Grok Bot 推出新的 Finance 集成，用户可将银行、银行卡和投资账户连接至 Grok Bot ，并就支出管理、投资等事项向其提问。',
+      'url': 'https://x.com/bot/status/2103936247995752705',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'NaiveAI 开源 Naive-N0.5-Flash',
+      'brief': 'NaiveAI 发布开源模型 Naive-N0.5-Flash 。这是一个总参数 309B 、激活参数 15.5B 的 MoE 模型，面向编码和 AI 研发，原生支持 1M token 上下文，全网络不含全注意力层，由滑动窗口注意力（ SWA ）与 DeepSeek Sparse Attention （ DSA ）以约 5:1 的比例混合构成。',
+      'url': 'https://naive.ai/en/research/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-09-28',
+      'title': '澳大利亚参议院AI调查要求OpenAI和Anthropic CEO出席听证',
+      'brief': '据 路透社 和《卫报》报道，澳大利亚参议院一项关于 AI 与数据中心的调查已向 OpenAI CEO Sam Altman 和 Anthropic CEO Dario Amodei 发出书面请求，要求两人出席听证。调查由澳大利亚绿党参议员 Sarah Hanson-Young 主持，公开听证定于 10月1日（周四） 在堪培拉恢复举行。',
+      'url': 'https://www.reuters.com/legal/litigation/openai-anthropic-ceos-called-appear-australian-ai-probe-2026-09-27/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-09-28',
+      'title': 'Axios：特朗普白宫宴请 Anthropic CEO Dario Amodei',
+      'brief': 'Axios 于当地时间 9 月 27 日 援引知情人士报道， 特朗普 计划当晚在白宫与 Anthropic CEO Dario Amodei 私下共进晚餐。',
+      'url': 'https://www.axios.com/2026/09/27/anthropic-trump-dario-amodei-dinner-invite',
+      'source': '橘鸦AI早报',
+      'type': '其他'
+    },
     {
       'date': '2026-09-27',
       'title': 'OpenAI 暂停最强模型涉及工具调用的训练、评估和推理',
@@ -42,14 +124,6 @@ window.NEWS = {
       'title': 'Antigravity 2.0 上线 /plan 规划模式',
       'brief': '谷歌 Antigravity 宣布， Antigravity 2.0 现已提供与 Antigravity CLI 一致的专属规划模式。用户在输入框中键入 /plan 并附上任务目标后，agent 会先退后思考，探索工作区、检查依赖关系并开展研究，随后生成一份结构化的实现计划（Implementation Plan）供用户审阅，并在获得批准后才进入执行阶段。',
       'url': 'https://x.com/antigravity/status/2103611698800140697',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-09-27',
-      'title': 'DeepSeek Harness 负责人推荐社区插件 dsh-TUI',
-      'brief': 'DeepSeek Harness （ DSH ）负责人 Tianyi Cui （ 崔天翼 ）在 X 平台发帖，推荐从 DSH 内测期间就持续开发的社区插件 dsh-TUI ，称其补齐了 DSH 缺失的终端界面（ TUI ），并持续随 DSH 版本更新打磨功能。',
-      'url': 'https://github.com/ccch1mneyyy/dsh-TUI',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
@@ -108,70 +182,6 @@ window.NEWS = {
       'url': 'https://x.com/theinformation/status/2103839519019569371',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-09-26',
-      'title': '美团LongCat发布LongCat-2.5-Preview',
-      'brief': '美团 LongCat 发布 LongCat-2.5-Preview 模型。',
-      'url': 'https://longcat.chat/platform/docs/zh/change-log',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-26',
-      'title': 'Pixel Canary 上线 Cline 与 Vercel AI Gateway',
-      'brief': '模型 Pixel Canary 以 stealth 方式发布，现已在 Cline 和 Vercel AI Gateway 两个平台开放，模型 ID 为 𝚜𝚝𝚎𝚊𝚕𝚝𝚑/𝚙𝚒𝚡𝚎𝚕-𝚌𝚊𝚗𝚊𝚛𝚢 。该模型面向 Agentic 编程和移动应用开发。',
-      'url': 'https://x.com/cline/status/2103636639038026093',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-26',
-      'title': 'OpenAI 确认 Codex 全面中断已修复，将为付费用户重置使用限额',
-      'brief': 'OpenAI 旗下 AI 编程工具 Codex 在北京时间 9 月 26 日 早间出现全面服务中断，桌面端、 CLI 等入口的用户遭遇大面积 401 Unauthorized / Incorrect API key 报错。',
-      'url': 'https://status.openai.com/incidents/01M3DCNWMW57HYK8FJ5FBFPA39',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-26',
-      'title': 'DeepSeek Harness团队承诺减少插件API破坏性更新',
-      'brief': 'DeepSeek Harness 团队负责人在 X 平台发文，援引 DeepSeek 官方 API 统计数据称，约有 60% 的 DeepSeek Harness 用户使用了至少一个第三方插件。',
-      'url': 'https://x.com/tianyi/status/2103534313463783831',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-09-26',
-      'title': 'Anthropic 上线 Claude 插件提交门户',
-      'brief': 'Anthropic 为 Claude 推出全新的插件目录提交门户，开发者可通过它向 Claude 目录提交插件并跟踪审核进度。插件可打包 MCP 连接器、 Agent Skills 或两者组合，是第三方为 Claude 构建扩展的主要方式。',
-      'url': 'https://claude.com/blog/build-plugins-for-claude',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-09-26',
-      'title': 'OpenAI向用户逐步推出ChatGPT网页端新版界面',
-      'brief': 'ChatGPT 桌面版和网页版近期都有用户陆续收到新版界面更新。',
-      'url': 'https://x.com/testingcatalog/status/2103605626731389426',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-09-26',
-      'title': '微软发布 Copilot 更新：Home、Code、Autopilot 集于一体',
-      'brief': '微软宣布对 Microsoft Copilot 进行迄今最大规模的更新，将其定位为跨越所有模型、设备形态和任务类型的“工作新操作系统”。',
-      'url': 'https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-09-26',
-      'title': 'Anthropic：Claude 以数千美元成本算出 N=4 super Yang-Mills 九圈振幅',
-      'brief': '物理学者、科学作家 Matt von Hippel 上月在博客向 AI 公司发起挑战：能否用学术界可负担的计算资源，把 幅学 领域中“玩具模型”理论 planar N=4 super Yang-Mills 的散射振幅计算推进到 九圈 。',
-      'url': 'https://www.anthropic.com/research/yes-claude-can-do-nine-loops',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
     }
   ]
 };
