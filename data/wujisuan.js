@@ -1,6 +1,6 @@
-// 数据源:无机酸 · AI 前端实测(2026-09-24 更新;@无机酸-_-,B 站 UP 主前端端到端实测榜)
+// 数据源:无机酸 · AI 前端实测(2026-09-29 更新;@无机酸-_-,B 站 UP 主前端端到端实测榜)
 // 站点:https://www.bilibili.com/toy/wujisuan-ai-test/index.html
-// 接口:https://www.bilibilitoy.com/toy/wujisuan-ai-test/36188744578048-v17769/data/site.json(外壳页内嵌 iframe 的 <toyId>-<版本号> 路径每期变化,本源先抓外壳页提取)
+// 接口:https://www.bilibilitoy.com/toy/wujisuan-ai-test/36188744578048-v20147/data/site.json(外壳页内嵌 iframe 的 <toyId>-<版本号> 路径每期变化,本源先抓外壳页提取)
 // 实测视频合集:https://space.bilibili.com/521186488/channel/collectiondetail?sid=8786711
 // 量纲:单任务分 0-100;models[].score = 两任务分之和(源站自报区间 0-200),非百分制
 // ⚠️ 口径:每模型跑在其自家 agent harness(agent 字段,如 cc/codex/zcode/qoder/cursor)下,
@@ -15,12 +15,12 @@
 window.WUJISUAN = {
   'source': '无机酸 · AI 前端实测',
   'url': 'https://www.bilibili.com/toy/wujisuan-ai-test/index.html',
-  'apiUrl': 'https://www.bilibilitoy.com/toy/wujisuan-ai-test/36188744578048-v17769/data/site.json',
+  'apiUrl': 'https://www.bilibilitoy.com/toy/wujisuan-ai-test/36188744578048-v20147/data/site.json',
   'methodUrl': 'https://space.bilibili.com/521186488/channel/collectiondetail?sid=8786711',
   'author': '@无机酸-_-',
   'siteVersion': '2.1',
-  'updated': '2026-09-24',
-  'refreshedAt': '2026-09-30 00:01',
+  'updated': '2026-09-29',
+  'refreshedAt': '2026-09-30 14:59',
   'scale': {
     'min': 0,
     'max': 200,
@@ -31,15 +31,15 @@ window.WUJISUAN = {
     200
   ],
   'dateRange': [
-    '2026-08-01',
+    '2026-07-01',
     '2026-10-05'
   ],
-  'currentIdentity': 'gpt-6-luna:max:codex',
+  'currentIdentity': 'claude-sonnet-5-5:max:cc',
   'stats': {
-    'models': 12,
-    'papers': 72,
+    'models': 16,
+    'papers': 92,
     'tasks': 2,
-    'gainRows': 12
+    'gainRows': 16
   },
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'desc': 'B 站 UP 主 @无机酸-_- 的第三方独立前端实测:每个模型用其原生 agent harness 在两个真实前端任务(虚构 AI 品牌站 SupernovAI、体素三维场景《云山巨城》)上端到端交付,按短提示与长提示各跑首轮与最终,任务分 0-100、总分为两任务之和;另有长提示相对基准的增益率。分数混杂模型与 harness 质量,且每模型仅一次实测。',
@@ -66,6 +66,26 @@ window.WUJISUAN = {
     },
     {
       'rank': 2,
+      'identity': 'claude-sonnet-5-5(cc)',
+      'name': 'Claude Sonnet 5.5',
+      'model': 'claude-sonnet-5-5',
+      'effort': 'max',
+      'agent': 'cc',
+      'vendor': 'anthropic',
+      'score': 172.44,
+      'lo': 168,
+      'hi': 180,
+      'loUncertain': true,
+      'hiUncertain': true,
+      'date': '2026-09-29',
+      'releaseDate': '2026-09-28',
+      'bvid': 'BV1rYaW6SEGg',
+      'videoUrl': 'https://www.bilibili.com/video/BV1rYaW6SEGg/',
+      'platform': 'Claude Code',
+      'series': '前端专项'
+    },
+    {
+      'rank': 3,
       'identity': 'gpt-6-astra(codex)',
       'name': 'GPT-6 Astra',
       'model': 'gpt-6-astra',
@@ -85,7 +105,7 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 3,
+      'rank': 4,
       'identity': 'gpt-6-sol(codex)',
       'name': 'GPT-6 Sol',
       'model': 'gpt-6-sol',
@@ -105,7 +125,27 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 4,
+      'rank': 5,
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'name': 'DeepSeek V4.1 Flash',
+      'model': 'deepseek-v4.1-flash',
+      'effort': 'max',
+      'agent': 'dsh',
+      'vendor': 'deepseek',
+      'score': 130.97,
+      'lo': 110,
+      'hi': 170,
+      'loUncertain': true,
+      'hiUncertain': true,
+      'date': '2026-09-24',
+      'releaseDate': '2026-09-10',
+      'bvid': 'BV1zEYJ6qEVs',
+      'videoUrl': 'https://www.bilibili.com/video/BV1zEYJ6qEVs/',
+      'platform': 'Windows 11 + DeepSeek Harness 无插件',
+      'series': '各项能力测试'
+    },
+    {
+      'rank': 6,
       'identity': 'swe-2(devin)',
       'name': 'SWE-2',
       'model': 'swe-2',
@@ -125,7 +165,27 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 5,
+      'rank': 7,
+      'identity': 'kimi-k3(kimicode)',
+      'name': 'Kimi K3',
+      'model': 'kimi-k3',
+      'effort': 'max',
+      'agent': 'kimicode',
+      'vendor': 'moonshot',
+      'score': 124.09,
+      'lo': 120,
+      'hi': 130,
+      'loUncertain': false,
+      'hiUncertain': false,
+      'date': '2026-09-29',
+      'releaseDate': '2026-07-16',
+      'bvid': 'BV1jobe6PEbg',
+      'videoUrl': 'https://www.bilibili.com/video/BV1jobe6PEbg/',
+      'platform': 'Windows 11 + Kimi Code',
+      'series': '六项能力测试'
+    },
+    {
+      'rank': 8,
       'identity': 'mimo-v2.6-pro(zcode)',
       'name': 'MiMo V2.6 Pro',
       'model': 'mimo-v2.6-pro',
@@ -145,7 +205,7 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 6,
+      'rank': 9,
       'identity': 'qwen3.8-flash(qoder)',
       'name': 'Qwen3.8-Flash',
       'model': 'qwen3.8-flash',
@@ -165,7 +225,7 @@ window.WUJISUAN = {
       'series': '六项能力测试'
     },
     {
-      'rank': 7,
+      'rank': 10,
       'identity': 'gemini-3.8-flash(antigravity)',
       'name': 'Gemini 3.8 Flash',
       'model': 'gemini-3.8-flash',
@@ -178,14 +238,14 @@ window.WUJISUAN = {
       'loUncertain': false,
       'hiUncertain': true,
       'date': '2026-09-21',
-      'releaseDate': '',
+      'releaseDate': '2026-09-02',
       'bvid': 'BV1attD6PET4',
       'videoUrl': 'https://www.bilibili.com/video/BV1attD6PET4/',
       'platform': 'Windows 11 + Antigravity',
       'series': '六项能力测试'
     },
     {
-      'rank': 8,
+      'rank': 11,
       'identity': 'glm-5.3(zcode)',
       'name': 'GLM-5.3',
       'model': 'glm-5.3',
@@ -205,7 +265,7 @@ window.WUJISUAN = {
       'series': '六项能力测试'
     },
     {
-      'rank': 9,
+      'rank': 12,
       'identity': 'step-5-preview(zcode)',
       'name': 'Step 5 Preview',
       'model': 'step-5-preview',
@@ -225,7 +285,7 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 10,
+      'rank': 13,
       'identity': 'gpt-6-luna(codex)',
       'name': 'GPT-6 Luna',
       'model': 'gpt-6-luna',
@@ -245,7 +305,7 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 11,
+      'rank': 14,
       'identity': 'grok-4.7(cursor)',
       'name': 'Grok 4.7',
       'model': 'grok-4.7',
@@ -265,11 +325,11 @@ window.WUJISUAN = {
       'series': '前端专项'
     },
     {
-      'rank': 12,
+      'rank': 15,
       'identity': 'dots3-note-prev(zcode)',
       'name': 'Dots3-note-prev',
       'model': 'dots3-note-prev',
-      'effort': null,
+      'effort': 'max',
       'agent': 'zcode',
       'vendor': 'dots',
       'score': 45.46,
@@ -283,6 +343,26 @@ window.WUJISUAN = {
       'videoUrl': 'https://www.bilibili.com/video/BV15T8F6YETm/',
       'platform': 'Windows 11 + ZCode + 官 API',
       'series': '六项能力测试'
+    },
+    {
+      'rank': null,
+      'identity': 'space-bunny-alpha(opencodev2)',
+      'name': 'Space Bunny Alpha',
+      'model': 'space-bunny-alpha',
+      'effort': 'max',
+      'agent': 'opencodev2',
+      'vendor': 'unknown',
+      'score': 0,
+      'lo': null,
+      'hi': null,
+      'loUncertain': false,
+      'hiUncertain': false,
+      'date': '2026-09-25',
+      'releaseDate': '',
+      'bvid': '',
+      'videoUrl': '',
+      'platform': '',
+      'series': ''
     }
   ],
   'tasks': [
@@ -308,6 +388,14 @@ window.WUJISUAN = {
     }
   ],
   'papers': [
+    {
+      'identity': 'claude-sonnet-5-5(cc)',
+      'taskId': 'supernovai',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 89
+    },
     {
       'identity': 'claude-opus-5-5(cc)',
       'taskId': 'supernovai',
@@ -341,12 +429,28 @@ window.WUJISUAN = {
       'score': 69.7
     },
     {
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'taskId': 'supernovai',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-24',
+      'score': 65.84
+    },
+    {
       'identity': 'gemini-3.8-flash(antigravity)',
       'taskId': 'supernovai',
       'prompt': 'short',
       'round': 'final',
       'dated': '2026-09-20',
       'score': 64.8
+    },
+    {
+      'identity': 'kimi-k3(kimicode)',
+      'taskId': 'supernovai',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 64.7
     },
     {
       'identity': 'mimo-v2.6-pro(zcode)',
@@ -421,6 +525,14 @@ window.WUJISUAN = {
       'score': 85.26
     },
     {
+      'identity': 'claude-sonnet-5-5(cc)',
+      'taskId': 'supernovai',
+      'prompt': 'long',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 82.33
+    },
+    {
       'identity': 'gpt-6-sol(codex)',
       'taskId': 'supernovai',
       'prompt': 'long',
@@ -435,6 +547,22 @@ window.WUJISUAN = {
       'round': 'final',
       'dated': '2026-09-24',
       'score': 69.85
+    },
+    {
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'taskId': 'supernovai',
+      'prompt': 'long',
+      'round': 'final',
+      'dated': '2026-09-24',
+      'score': 68.72
+    },
+    {
+      'identity': 'kimi-k3(kimicode)',
+      'taskId': 'supernovai',
+      'prompt': 'long',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 65.21
     },
     {
       'identity': 'gemini-3.8-flash(antigravity)',
@@ -509,6 +637,14 @@ window.WUJISUAN = {
       'score': 89.82
     },
     {
+      'identity': 'claude-sonnet-5-5(cc)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'oneshot',
+      'dated': '2026-09-29',
+      'score': 86.25
+    },
+    {
       'identity': 'gpt-6-astra(codex)',
       'taskId': 'yunshan',
       'prompt': 'short',
@@ -541,6 +677,22 @@ window.WUJISUAN = {
       'score': 59.57
     },
     {
+      'identity': 'kimi-k3(kimicode)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'oneshot',
+      'dated': '2026-09-29',
+      'score': 58.2
+    },
+    {
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'oneshot',
+      'dated': '2026-09-24',
+      'score': 58.16
+    },
+    {
       'identity': 'glm-5.3(zcode)',
       'taskId': 'yunshan',
       'prompt': 'short',
@@ -563,6 +715,14 @@ window.WUJISUAN = {
       'round': 'oneshot',
       'dated': '2026-09-21',
       'score': 41.69
+    },
+    {
+      'identity': 'space-bunny-alpha(opencodev2)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'oneshot',
+      'dated': '2026-09-25',
+      'score': 40.03
     },
     {
       'identity': 'qwen3.8-flash(qoder)',
@@ -605,6 +765,14 @@ window.WUJISUAN = {
       'score': 90.31
     },
     {
+      'identity': 'claude-sonnet-5-5(cc)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 86.3
+    },
+    {
       'identity': 'gpt-6-astra(codex)',
       'taskId': 'yunshan',
       'prompt': 'short',
@@ -637,6 +805,22 @@ window.WUJISUAN = {
       'score': 60.28
     },
     {
+      'identity': 'kimi-k3(kimicode)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 60.15
+    },
+    {
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-24',
+      'score': 59.2
+    },
+    {
       'identity': 'glm-5.3(zcode)',
       'taskId': 'yunshan',
       'prompt': 'short',
@@ -659,6 +843,14 @@ window.WUJISUAN = {
       'round': 'final',
       'dated': '2026-09-17',
       'score': 43.3
+    },
+    {
+      'identity': 'space-bunny-alpha(opencodev2)',
+      'taskId': 'yunshan',
+      'prompt': 'short',
+      'round': 'final',
+      'dated': '2026-09-25',
+      'score': 42.03
     },
     {
       'identity': 'step-5-preview(zcode)',
@@ -701,6 +893,14 @@ window.WUJISUAN = {
       'score': 91.47
     },
     {
+      'identity': 'claude-sonnet-5-5(cc)',
+      'taskId': 'yunshan',
+      'prompt': 'long',
+      'round': 'oneshot',
+      'dated': '2026-09-29',
+      'score': 87.14
+    },
+    {
       'identity': 'gpt-6-astra(codex)',
       'taskId': 'yunshan',
       'prompt': 'long',
@@ -715,6 +915,14 @@ window.WUJISUAN = {
       'round': 'oneshot',
       'dated': '2026-09-19',
       'score': 72.06
+    },
+    {
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'taskId': 'yunshan',
+      'prompt': 'long',
+      'round': 'oneshot',
+      'dated': '2026-09-24',
+      'score': 68
     },
     {
       'identity': 'qwen3.8-flash(qoder)',
@@ -739,6 +947,14 @@ window.WUJISUAN = {
       'round': 'oneshot',
       'dated': '2026-09-21',
       'score': 58.32
+    },
+    {
+      'identity': 'kimi-k3(kimicode)',
+      'taskId': 'yunshan',
+      'prompt': 'long',
+      'round': 'oneshot',
+      'dated': '2026-09-29',
+      'score': 58
     },
     {
       'identity': 'mimo-v2.6-pro(zcode)',
@@ -797,6 +1013,14 @@ window.WUJISUAN = {
       'score': 91.9
     },
     {
+      'identity': 'claude-sonnet-5-5(cc)',
+      'taskId': 'yunshan',
+      'prompt': 'long',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 87.39
+    },
+    {
       'identity': 'gpt-6-astra(codex)',
       'taskId': 'yunshan',
       'prompt': 'long',
@@ -813,6 +1037,14 @@ window.WUJISUAN = {
       'score': 72.06
     },
     {
+      'identity': 'deepseek-v4.1-flash(dsh)',
+      'taskId': 'yunshan',
+      'prompt': 'long',
+      'round': 'final',
+      'dated': '2026-09-24',
+      'score': 69.4
+    },
+    {
       'identity': 'qwen3.8-flash(qoder)',
       'taskId': 'yunshan',
       'prompt': 'long',
@@ -827,6 +1059,14 @@ window.WUJISUAN = {
       'round': 'final',
       'dated': '2026-09-23',
       'score': 64.04
+    },
+    {
+      'identity': 'kimi-k3(kimicode)',
+      'taskId': 'yunshan',
+      'prompt': 'long',
+      'round': 'final',
+      'dated': '2026-09-29',
+      'score': 60.16
     },
     {
       'identity': 'mimo-v2.6-pro(zcode)',
@@ -948,6 +1188,25 @@ window.WUJISUAN = {
         'status': 'complete'
       },
       {
+        'identity': 'deepseek-v4.1-flash(dsh)',
+        'effort': 'max',
+        'agent': 'dsh',
+        'byTask': {
+          'supernovai': {
+            'short': 65.84,
+            'long': 68.72
+          },
+          'yunshan': {
+            'short': 58.16,
+            'long': 68
+          }
+        },
+        'baseline': 124,
+        'improved': 136.72,
+        'gain': 10.26,
+        'status': 'complete'
+      },
+      {
         'identity': 'swe-2(devin)',
         'effort': 'max',
         'agent': 'devin',
@@ -1006,7 +1265,7 @@ window.WUJISUAN = {
       },
       {
         'identity': 'dots3-note-prev(zcode)',
-        'effort': null,
+        'effort': 'max',
         'agent': 'zcode',
         'byTask': {
           'supernovai': {
@@ -1040,6 +1299,25 @@ window.WUJISUAN = {
         'baseline': 166.49,
         'improved': 175.95,
         'gain': 5.68,
+        'status': 'complete'
+      },
+      {
+        'identity': 'kimi-k3(kimicode)',
+        'effort': 'max',
+        'agent': 'kimicode',
+        'byTask': {
+          'supernovai': {
+            'short': 64.7,
+            'long': 65.21
+          },
+          'yunshan': {
+            'short': 58.2,
+            'long': 58
+          }
+        },
+        'baseline': 122.9,
+        'improved': 123.21,
+        'gain': 0.25,
         'status': 'complete'
       },
       {
@@ -1100,6 +1378,25 @@ window.WUJISUAN = {
         'status': 'complete'
       },
       {
+        'identity': 'claude-sonnet-5-5(cc)',
+        'effort': 'max',
+        'agent': 'cc',
+        'byTask': {
+          'supernovai': {
+            'short': 89,
+            'long': 82.33
+          },
+          'yunshan': {
+            'short': 86.25,
+            'long': 87.14
+          }
+        },
+        'baseline': 175.25,
+        'improved': 169.47,
+        'gain': -3.3,
+        'status': 'complete'
+      },
+      {
         'identity': 'glm-5.3(zcode)',
         'effort': 'max',
         'agent': 'zcode',
@@ -1117,6 +1414,25 @@ window.WUJISUAN = {
         'improved': 103.74,
         'gain': -10.7,
         'status': 'complete'
+      },
+      {
+        'identity': 'space-bunny-alpha(opencodev2)',
+        'effort': 'max',
+        'agent': 'opencodev2',
+        'byTask': {
+          'supernovai': {
+            'short': 0,
+            'long': 0
+          },
+          'yunshan': {
+            'short': 40.03,
+            'long': 0
+          }
+        },
+        'baseline': 0,
+        'improved': 0,
+        'gain': 0,
+        'status': 'missing'
       }
     ]
   }

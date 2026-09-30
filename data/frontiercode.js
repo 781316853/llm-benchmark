@@ -1,4 +1,4 @@
-// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 2026-09-29)
+// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 2026-09-30)
 // 来源:https://cognition.com/data/frontiercode-leaderboard/data.json(榜单页:https://cognition.com/frontiercode)
 // 字段:score=标准分(%,main 子集下各档位最优);passRate=原始正确率(%);harness=评测所用厂商 CLI;
 //      costUsd/tokens/steps=该最优档位下的每任务平均成本/tokens/步数;flaggedRate=被判定不公平联网的运行比例(%)
@@ -9,11 +9,11 @@ window.FRONTIERCODE = {
   'boardUrl': 'https://cognition.com/frontiercode',
   'officialUrl': 'https://cognition.com/frontiercode',
   'version': '1.1',
-  'updated': '2026-09-29',
-  'refreshedAt': '2026-09-30 00:01',
+  'updated': '2026-09-30',
+  'refreshedAt': '2026-09-30 14:59',
   'stats': {
     'tasks': 100,
-    'entries': 41
+    'entries': 42
   },
   'desc': 'FrontierCode 1.1(Cognition 官方):任务由 20+ 资深开发者制作(每个任务投入 40+ 小时),不只看代码能否跑通,而是按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」;分 main(100 题)与 extended(150 题)两个子集,本页取 main 口径、各推理档位最优;分数越高越好。',
   'models': [
@@ -96,6 +96,19 @@ window.FRONTIERCODE = {
       'rank': 6
     },
     {
+      'model': 'GPT-6.1 Sol',
+      'effort': 'medium',
+      'harness': 'codex',
+      'score': 50.2,
+      'passRate': 55.8,
+      'costUsd': 0.36,
+      'tokens': 11365,
+      'steps': null,
+      'flaggedRate': 0.6,
+      'src': 'official',
+      'rank': 7
+    },
+    {
       'model': 'SWE-2',
       'effort': 'max',
       'harness': 'devin',
@@ -106,7 +119,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 7
+      'rank': 8
     },
     {
       'model': 'GPT-6 Sol',
@@ -119,7 +132,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'Grok 4.6',
@@ -132,7 +145,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.7,
       'src': 'official',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'Grok 4.7',
@@ -145,7 +158,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 1.3,
       'src': 'official',
-      'rank': 10
+      'rank': 11
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -158,7 +171,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 11
+      'rank': 12
     },
     {
       'model': 'Claude Opus 4.8',
@@ -171,7 +184,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.8,
       'src': 'official',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'Kimi K3',
@@ -184,7 +197,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -197,7 +210,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'GPT-5.5',
@@ -210,7 +223,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.4,
       'src': 'official',
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'Claude Sonnet 5',
@@ -223,7 +236,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.5,
       'src': 'official',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'GPT-6 Luna',
@@ -236,7 +249,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'Grok 4.5',
@@ -249,7 +262,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'SWE-1.7',
@@ -262,7 +275,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 1.2,
       'src': 'official',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'GPT-5.6 Terra',
@@ -275,7 +288,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.1,
       'src': 'official',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'Gemini 3.8 Flash',
@@ -288,7 +301,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'GLM 5.3',
@@ -301,7 +314,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 22
+      'rank': 23
     },
     {
       'model': 'GPT-5.6 Luna',
@@ -314,7 +327,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.1,
       'src': 'official',
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'Claude Opus 4.7',
@@ -327,7 +340,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.4,
       'src': 'official',
-      'rank': 24
+      'rank': 25
     },
     {
       'model': 'Gemini 3.6 Flash',
@@ -340,7 +353,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 25
+      'rank': 26
     },
     {
       'model': 'GLM 5.3 Flash',
@@ -353,7 +366,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 26
+      'rank': 27
     },
     {
       'model': 'Kimi K2.7',
@@ -366,7 +379,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 27
+      'rank': 28
     },
     {
       'model': 'DeepSeek V4 Pro 0813',
@@ -379,7 +392,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 10.6,
       'src': 'official',
-      'rank': 28
+      'rank': 29
     },
     {
       'model': 'GPT-5.4-mini',
@@ -392,7 +405,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.1,
       'src': 'official',
-      'rank': 29
+      'rank': 30
     },
     {
       'model': 'Claude Opus 4.6',
@@ -405,7 +418,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.3,
       'src': 'official',
-      'rank': 30
+      'rank': 31
     },
     {
       'model': 'Composer 2.5',
@@ -418,7 +431,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 2.4,
       'src': 'official',
-      'rank': 31
+      'rank': 32
     },
     {
       'model': 'GLM 5.2',
@@ -431,7 +444,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 32
+      'rank': 33
     },
     {
       'model': 'Claude Sonnet 4.6',
@@ -444,7 +457,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 33
+      'rank': 34
     },
     {
       'model': 'DeepSeek V4 Flash 0731',
@@ -457,7 +470,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 25.5,
       'src': 'official',
-      'rank': 34
+      'rank': 35
     },
     {
       'model': 'DeepSeek V4 Pro',
@@ -470,7 +483,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 1,
       'src': 'official',
-      'rank': 35
+      'rank': 36
     },
     {
       'model': 'MiniMax M3',
@@ -483,7 +496,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 1.5,
       'src': 'official',
-      'rank': 36
+      'rank': 37
     },
     {
       'model': 'Inkling',
@@ -496,7 +509,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 7.6,
       'src': 'official',
-      'rank': 37
+      'rank': 38
     },
     {
       'model': 'Nemotron 3 Ultra',
@@ -509,7 +522,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 38
+      'rank': 39
     },
     {
       'model': 'Qwen 3.7 Plus',
@@ -522,7 +535,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.9,
       'src': 'official',
-      'rank': 39
+      'rank': 40
     },
     {
       'model': 'SWE-1.6',
@@ -535,7 +548,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 40
+      'rank': 41
     },
     {
       'model': 'Mistral 3.5 Medium',
@@ -548,7 +561,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.6,
       'src': 'official',
-      'rank': 41
+      'rank': 42
     }
   ]
 };
