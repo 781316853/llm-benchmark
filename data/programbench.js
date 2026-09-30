@@ -7,10 +7,10 @@ window.PROGRAMBENCH = {
   'url': 'https://programbench.com/',
   'officialUrl': 'https://programbench.com/',
   'updated': '2026-09-30',
-  'refreshedAt': '2026-09-30 14:59',
+  'refreshedAt': '2026-10-01 00:01',
   'stats': {
     'tasks': 200,
-    'entries': 60
+    'entries': 62
   },
   'desc': 'ProgramBench:仅给编译后二进制与文档,智能体需从零重建完整代码库并复现原程序行为(200 个真实开源项目任务,行为级隐藏测试,不联网、禁止反编译);Fully Resolved 为主指标、Almost(≥95% 行为测试通过)与 Raw Pass Rate(vals 镜像)为辅助,均越高越好。',
   'models': [
@@ -58,6 +58,16 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
+      'rank': 5,
+      'model': 'Muse Spark 1.3',
+      'effort': 'max',
+      'agent': 'mini-SWE-agent',
+      'score': 2.5,
+      'almost': 25,
+      'rawPassRate': null,
+      'src': 'official'
+    },
+    {
       'model': 'Gpt 6 Sol',
       'org': null,
       'agent': 'mini-SWE-agent',
@@ -66,7 +76,7 @@ window.PROGRAMBENCH = {
       'almost': 32.5,
       'rawPassRate': 81.9,
       'src': 'vals',
-      'rank': 5
+      'rank': 6
     },
     {
       'model': 'Claude Fable 5',
@@ -77,7 +87,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 6
+      'rank': 7
     },
     {
       'model': 'Kimi K3',
@@ -88,10 +98,10 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 7
+      'rank': 8
     },
     {
-      'rank': 8,
+      'rank': 9,
       'model': 'GPT-5.6 Sol',
       'effort': 'xhigh',
       'agent': 'mini-SWE-agent',
@@ -109,10 +119,10 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 9
+      'rank': 10
     },
     {
-      'rank': 10,
+      'rank': 11,
       'model': 'Claude Opus 4.8',
       'effort': 'xhigh',
       'agent': 'mini-SWE-agent',
@@ -130,10 +140,10 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 11
+      'rank': 12
     },
     {
-      'rank': 12,
+      'rank': 13,
       'model': 'GPT 5.5',
       'effort': 'xhigh',
       'agent': 'mini-SWE-agent',
@@ -143,7 +153,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 13,
+      'rank': 14,
       'model': 'GLM-5.2',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -153,7 +163,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 14,
+      'rank': 15,
       'model': 'Gemini 3.6 Flash',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -163,7 +173,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 15,
+      'rank': 16,
       'model': 'Claude Sonnet 4.6',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -181,7 +191,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'Mimo V2.6 Flash',
@@ -192,7 +202,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'Gpt 5.6 Terra',
@@ -203,7 +213,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'Mimo V2.6 Pro',
@@ -214,7 +224,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'Gpt 6 Luna',
@@ -225,7 +235,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'Gpt 5.4 2026 03 05 High',
@@ -236,7 +246,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'Inkling Small',
@@ -247,10 +257,10 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 22
+      'rank': 23
     },
     {
-      'rank': 23,
+      'rank': 24,
       'model': 'Gemini 3.7 Flash',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -260,7 +270,17 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 24,
+      'rank': 25,
+      'model': 'Muse Spark 1.2',
+      'effort': 'xhigh',
+      'agent': 'mini-SWE-agent',
+      'score': 0,
+      'almost': 4.5,
+      'rawPassRate': null,
+      'src': 'official'
+    },
+    {
+      'rank': 26,
       'model': 'Claude Opus 4.7',
       'effort': 'xhigh',
       'agent': 'mini-SWE-agent',
@@ -270,7 +290,17 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 25,
+      'rank': 27,
+      'model': 'Muse Spark 1.1',
+      'effort': 'xhigh',
+      'agent': 'mini-SWE-agent',
+      'score': 0,
+      'almost': 4,
+      'rawPassRate': null,
+      'src': 'official'
+    },
+    {
+      'rank': 28,
       'model': 'Gemini 3.5 Flash',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -280,7 +310,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 26,
+      'rank': 29,
       'model': 'Claude Opus 4.6',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -290,7 +320,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 27,
+      'rank': 30,
       'model': 'GPT 5.4',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -300,7 +330,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 28,
+      'rank': 31,
       'model': 'Gemini 3.1 Pro',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -310,7 +340,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 29,
+      'rank': 32,
       'model': 'Gemini 3 Flash',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -320,7 +350,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 30,
+      'rank': 33,
       'model': 'Claude Haiku 4.5',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -330,7 +360,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 31,
+      'rank': 34,
       'model': 'GPT 5.4 mini',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -340,7 +370,7 @@ window.PROGRAMBENCH = {
       'src': 'official'
     },
     {
-      'rank': 32,
+      'rank': 35,
       'model': 'GPT 5 mini',
       'effort': null,
       'agent': 'mini-SWE-agent',
@@ -358,7 +388,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 33
+      'rank': 36
     },
     {
       'model': 'Deepseek V4 Pro 0813',
@@ -369,7 +399,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 34
+      'rank': 37
     },
     {
       'model': 'Claude Sonnet 5',
@@ -380,7 +410,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 35
+      'rank': 38
     },
     {
       'model': 'Qwen3.8 Max',
@@ -391,7 +421,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 36
+      'rank': 39
     },
     {
       'model': 'Gpt 5.6 Luna',
@@ -402,7 +432,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 37
+      'rank': 40
     },
     {
       'model': 'Deepseek V4 Flash 0731',
@@ -413,7 +443,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 38
+      'rank': 41
     },
     {
       'model': 'Gpt 5.4 2026 03 05',
@@ -424,7 +454,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 39
+      'rank': 42
     },
     {
       'model': 'Glm 5.3 Flash',
@@ -435,7 +465,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 40
+      'rank': 43
     },
     {
       'model': 'Grok 4.5',
@@ -446,7 +476,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 41
+      'rank': 44
     },
     {
       'model': 'Gpt 5.4 Mini 2026 03 17',
@@ -457,18 +487,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 42
-    },
-    {
-      'model': 'Muse Spark 1 1',
-      'org': null,
-      'agent': 'mini-SWE-agent',
-      'effort': null,
-      'score': 0,
-      'almost': null,
-      'rawPassRate': null,
-      'src': 'vals',
-      'rank': 43
+      'rank': 45
     },
     {
       'model': 'Glm 5.1',
@@ -479,7 +498,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 44
+      'rank': 46
     },
     {
       'model': 'Gemini 3.1 Pro Preview',
@@ -490,7 +509,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 45
+      'rank': 47
     },
     {
       'model': 'Qwen3.6 Plus',
@@ -501,7 +520,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 46
+      'rank': 48
     },
     {
       'model': 'Qwen3.8 27b',
@@ -512,7 +531,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 47
+      'rank': 49
     },
     {
       'model': 'Kimi K2.7 Code',
@@ -523,7 +542,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 48
+      'rank': 50
     },
     {
       'model': 'Kimi K2.6',
@@ -534,7 +553,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 49
+      'rank': 51
     },
     {
       'model': 'Nemotron 3 Ultra 550b A55b',
@@ -545,7 +564,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 50
+      'rank': 52
     },
     {
       'model': 'Deepseek V4 Pro',
@@ -556,7 +575,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 51
+      'rank': 53
     },
     {
       'model': 'Gemini 3 Flash Preview',
@@ -567,7 +586,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 52
+      'rank': 54
     },
     {
       'model': 'Gemini 3.5 Flash Lite',
@@ -578,7 +597,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 53
+      'rank': 55
     },
     {
       'model': 'Claude Haiku 4 5 20251001 Thinking',
@@ -589,7 +608,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 54
+      'rank': 56
     },
     {
       'model': 'Grok 4.3',
@@ -600,7 +619,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 55
+      'rank': 57
     },
     {
       'model': 'Laguna Xs.2',
@@ -611,7 +630,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 56
+      'rank': 58
     },
     {
       'model': 'Inkling',
@@ -622,7 +641,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 57
+      'rank': 59
     },
     {
       'model': 'Laguna M.1',
@@ -633,7 +652,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 58
+      'rank': 60
     },
     {
       'model': 'Gemini 3.1 Flash Lite Preview',
@@ -644,7 +663,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 59
+      'rank': 61
     },
     {
       'model': 'MiniMax M2.7',
@@ -655,7 +674,7 @@ window.PROGRAMBENCH = {
       'almost': null,
       'rawPassRate': null,
       'src': 'vals',
-      'rank': 60
+      'rank': 62
     }
   ]
 };
