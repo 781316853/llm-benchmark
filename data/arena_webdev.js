@@ -12,55 +12,71 @@ window.ARENA_WEBDEV = {
   'metric': 'Elo score',
   'desc': 'LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。',
   'stats': {
-    'models': 135
+    'models': 137
   },
   'models': [
     {
       'name': 'claude-opus-5.5-max',
       'org': 'Anthropic',
-      'score': 1820,
+      'score': 1818,
       'ci': 17,
-      'votes': 1900,
+      'votes': 2000,
       'src': 'selftest'
     },
     {
       'name': 'gpt-6-astra-max',
       'org': 'OpenAI',
-      'score': 1792,
-      'ci': 11,
-      'votes': 5800,
+      'score': 1789,
+      'ci': 10,
+      'votes': 5900,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-6.1-sol-max',
+      'org': 'OpenAI',
+      'score': 1759,
+      'ci': 19,
+      'votes': 1300,
       'src': 'selftest'
     },
     {
       'name': 'claude-fable-5.1-max',
       'org': 'Anthropic',
-      'score': 1753,
+      'score': 1751,
       'ci': 10,
-      'votes': 6000,
+      'votes': 6100,
       'src': 'selftest'
     },
     {
       'name': 'claude-sonnet-5.5-high',
       'org': 'Anthropic',
-      'score': 1699,
-      'ci': 19,
-      'votes': 1200,
+      'score': 1709,
+      'ci': 16,
+      'votes': 1800,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-5-max',
       'org': 'Anthropic',
       'score': 1694,
-      'ci': 7,
-      'votes': 16600,
+      'ci': 6,
+      'votes': 16700,
       'src': 'selftest'
     },
     {
       'name': 'gpt-6-sol-max',
       'org': 'OpenAI',
-      'score': 1692,
+      'score': 1689,
       'ci': 12,
-      'votes': 3000,
+      'votes': 3200,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gemini-4-argon-high',
+      'org': 'Google',
+      'score': 1679,
+      'ci': 14,
+      'votes': 2200,
       'src': 'selftest'
     },
     {
@@ -74,9 +90,9 @@ window.ARENA_WEBDEV = {
     {
       'name': 'qwen3.8-max-0902',
       'org': 'Alibaba',
-      'score': 1671,
+      'score': 1670,
       'ci': 8,
-      'votes': 8500,
+      'votes': 8900,
       'src': 'selftest'
     },
     {
@@ -84,15 +100,15 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1660,
       'ci': 6,
-      'votes': 20800,
+      'votes': 21100,
       'src': 'selftest'
     },
     {
       'name': 'kimi-k3-max',
       'org': 'Moonshot',
-      'score': 1659,
+      'score': 1658,
       'ci': 6,
-      'votes': 16000,
+      'votes': 16200,
       'src': 'selftest'
     },
     {
@@ -100,15 +116,15 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1655,
       'ci': 9,
-      'votes': 6800,
+      'votes': 7000,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.8-flash-next',
       'org': 'Alibaba',
-      'score': 1637,
+      'score': 1638,
       'ci': 9,
-      'votes': 5800,
+      'votes': 6000,
       'src': 'selftest'
     },
     {
@@ -116,7 +132,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1636,
       'ci': 12,
-      'votes': 2900,
+      'votes': 3100,
       'src': 'selftest'
     },
     {
@@ -132,7 +148,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1626,
       'ci': 6,
-      'votes': 13800,
+      'votes': 14000,
       'src': 'selftest'
     },
     {
@@ -140,15 +156,23 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1623,
       'ci': 9,
-      'votes': 5900,
+      'votes': 6100,
       'src': 'selftest'
     },
     {
       'name': 'glm-5.3-max',
       'org': 'Z.ai',
-      'score': 1623,
+      'score': 1622,
       'ci': 8,
-      'votes': 7300,
+      'votes': 7500,
+      'src': 'selftest'
+    },
+    {
+      'name': 'grok-4.6-high',
+      'org': 'SpaceXAI',
+      'score': 1620,
+      'ci': 8,
+      'votes': 8100,
       'src': 'selftest'
     },
     {
@@ -160,25 +184,17 @@ window.ARENA_WEBDEV = {
       'src': 'selftest'
     },
     {
-      'name': 'grok-4.6-high',
-      'org': 'SpaceXAI',
-      'score': 1620,
-      'ci': 8,
-      'votes': 7900,
-      'src': 'selftest'
-    },
-    {
       'name': 'gpt-5.6-sol-xhigh (codex-harness)',
       'org': 'OpenAI',
       'score': 1619,
       'ci': 6,
-      'votes': 16700,
+      'votes': 16900,
       'src': 'selftest'
     },
     {
       'name': 'mimo-v2.6-pro',
       'org': 'Xiaomi',
-      'score': 1618,
+      'score': 1619,
       'ci': 12,
       'votes': 2700,
       'src': 'selftest'
@@ -186,41 +202,41 @@ window.ARENA_WEBDEV = {
     {
       'name': 'glm-5.3-flash',
       'org': 'Z.ai',
-      'score': 1614,
+      'score': 1615,
       'ci': 8,
-      'votes': 9200,
+      'votes': 9600,
       'src': 'selftest'
     },
     {
       'name': 'glm-5.2-max',
       'org': 'Z.ai',
-      'score': 1604,
+      'score': 1605,
       'ci': 6,
-      'votes': 14400,
+      'votes': 14500,
       'src': 'selftest'
     },
     {
       'name': 'gemini-3.7-flash-high',
       'org': 'Google',
-      'score': 1593,
+      'score': 1592,
       'ci': 7,
-      'votes': 9200,
+      'votes': 9400,
       'src': 'selftest'
     },
     {
       'name': 'qwen3.8-27b',
       'org': 'Alibaba',
-      'score': 1592,
+      'score': 1590,
       'ci': 7,
-      'votes': 11800,
+      'votes': 12000,
       'src': 'selftest'
     },
     {
-      'name': 'gpt-6-luna-max',
-      'org': 'OpenAI',
+      'name': 'gemini-3.8-flash-high',
+      'org': 'Google',
       'score': 1583,
-      'ci': 9,
-      'votes': 5000,
+      'ci': 8,
+      'votes': 8400,
       'src': 'selftest'
     },
     {
@@ -232,11 +248,11 @@ window.ARENA_WEBDEV = {
       'src': 'selftest'
     },
     {
-      'name': 'gemini-3.8-flash-high',
-      'org': 'Google',
-      'score': 1581,
-      'ci': 8,
-      'votes': 8200,
+      'name': 'gpt-6-luna-max',
+      'org': 'OpenAI',
+      'score': 1582,
+      'ci': 9,
+      'votes': 5600,
       'src': 'selftest'
     },
     {
@@ -244,15 +260,15 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1581,
       'ci': 9,
-      'votes': 5100,
+      'votes': 5000,
       'src': 'selftest'
     },
     {
       'name': 'step-5-preview-high',
       'org': 'StepFun',
-      'score': 1569,
-      'ci': 14,
-      'votes': 2100,
+      'score': 1570,
+      'ci': 13,
+      'votes': 2300,
       'src': 'selftest'
     },
     {
@@ -260,7 +276,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1557,
       'ci': 6,
-      'votes': 17600,
+      'votes': 17800,
       'src': 'selftest'
     },
     {
@@ -268,15 +284,15 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1556,
       'ci': 6,
-      'votes': 17000,
+      'votes': 17500,
       'src': 'selftest'
     },
     {
       'name': 'claude-opus-4-8-high',
       'org': 'Anthropic',
-      'score': 1555,
+      'score': 1556,
       'ci': 6,
-      'votes': 18500,
+      'votes': 18700,
       'src': 'selftest'
     },
     {
@@ -308,7 +324,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1540,
       'ci': 6,
-      'votes': 13700,
+      'votes': 13900,
       'src': 'selftest'
     },
     {
@@ -330,9 +346,9 @@ window.ARENA_WEBDEV = {
     {
       'name': 'claude-opus-4-8',
       'org': 'Anthropic',
-      'score': 1535,
+      'score': 1534,
       'ci': 6,
-      'votes': 17500,
+      'votes': 17600,
       'src': 'selftest'
     },
     {
@@ -346,17 +362,25 @@ window.ARENA_WEBDEV = {
     {
       'name': 'claude-sonnet-4-6',
       'org': 'Anthropic',
-      'score': 1521,
+      'score': 1522,
       'ci': 5,
-      'votes': 23000,
+      'votes': 22900,
       'src': 'selftest'
     },
     {
       'name': 'gpt-5.6-terra-xhigh (codex-harness)',
       'org': 'OpenAI',
-      'score': 1520,
+      'score': 1519,
       'ci': 7,
-      'votes': 12100,
+      'votes': 12300,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.6-luna-xhigh (codex-harness)',
+      'org': 'OpenAI',
+      'score': 1518,
+      'ci': 6,
+      'votes': 12500,
       'src': 'selftest'
     },
     {
@@ -364,15 +388,7 @@ window.ARENA_WEBDEV = {
       'org': 'Bytedance',
       'score': 1517,
       'ci': 6,
-      'votes': 13000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.6-luna-xhigh (codex-harness)',
-      'org': 'OpenAI',
-      'score': 1517,
-      'ci': 6,
-      'votes': 12400,
+      'votes': 13100,
       'src': 'selftest'
     },
     {
@@ -400,19 +416,19 @@ window.ARENA_WEBDEV = {
       'src': 'selftest'
     },
     {
-      'name': 'hy3',
-      'org': 'Tencent',
-      'score': 1509,
-      'ci': 9,
-      'votes': 5700,
+      'name': 'glm-5.1',
+      'org': 'Z.ai',
+      'score': 1508,
+      'ci': 7,
+      'votes': 10800,
       'src': 'selftest'
     },
     {
-      'name': 'glm-5.1',
-      'org': 'Z.ai',
-      'score': 1509,
-      'ci': 7,
-      'votes': 10800,
+      'name': 'hy3',
+      'org': 'Tencent',
+      'score': 1508,
+      'ci': 9,
+      'votes': 5700,
       'src': 'selftest'
     },
     {
@@ -452,7 +468,7 @@ window.ARENA_WEBDEV = {
       'org': 'MiniMax',
       'score': 1482,
       'ci': 6,
-      'votes': 17200,
+      'votes': 17400,
       'src': 'selftest'
     },
     {
@@ -468,7 +484,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1477,
       'ci': 5,
-      'votes': 20000,
+      'votes': 20100,
       'src': 'selftest'
     },
     {
@@ -514,9 +530,9 @@ window.ARENA_WEBDEV = {
     {
       'name': 'gpt-5.5 (codex-harness)',
       'org': 'OpenAI',
-      'score': 1456,
+      'score': 1455,
       'ci': 6,
-      'votes': 16100,
+      'votes': 16000,
       'src': 'selftest'
     },
     {
@@ -524,7 +540,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1446,
       'ci': 5,
-      'votes': 24400,
+      'votes': 24300,
       'src': 'selftest'
     },
     {
@@ -532,7 +548,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1446,
       'ci': 6,
-      'votes': 14100,
+      'votes': 14000,
       'src': 'selftest'
     },
     {
@@ -580,7 +596,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1436,
       'ci': 5,
-      'votes': 20200,
+      'votes': 20100,
       'src': 'selftest'
     },
     {
@@ -604,7 +620,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1433,
       'ci': 8,
-      'votes': 7300,
+      'votes': 7200,
       'src': 'selftest'
     },
     {
@@ -626,7 +642,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'gpt-5.2',
       'org': 'OpenAI',
-      'score': 1415,
+      'score': 1416,
       'ci': 22,
       'votes': 1100,
       'src': 'selftest'
@@ -636,15 +652,7 @@ window.ARENA_WEBDEV = {
       'org': 'Thinky',
       'score': 1412,
       'ci': 6,
-      'votes': 13300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.3-codex (codex-harness)',
-      'org': 'OpenAI',
-      'score': 1408,
-      'ci': 14,
-      'votes': 2600,
+      'votes': 13500,
       'src': 'selftest'
     },
     {
@@ -653,6 +661,14 @@ window.ARENA_WEBDEV = {
       'score': 1408,
       'ci': 9,
       'votes': 5400,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.3-codex (codex-harness)',
+      'org': 'OpenAI',
+      'score': 1408,
+      'ci': 14,
+      'votes': 2600,
       'src': 'selftest'
     },
     {
@@ -680,19 +696,19 @@ window.ARENA_WEBDEV = {
       'src': 'selftest'
     },
     {
-      'name': 'gpt-5.4-mini-high',
-      'org': 'OpenAI',
-      'score': 1397,
-      'ci': 7,
-      'votes': 12000,
-      'src': 'selftest'
-    },
-    {
       'name': 'minimax-m2.7',
       'org': 'MiniMax',
       'score': 1397,
       'ci': 6,
       'votes': 16100,
+      'src': 'selftest'
+    },
+    {
+      'name': 'gpt-5.4-mini-high',
+      'org': 'OpenAI',
+      'score': 1397,
+      'ci': 7,
+      'votes': 12000,
       'src': 'selftest'
     },
     {
@@ -778,17 +794,17 @@ window.ARENA_WEBDEV = {
     {
       'name': 'solar-pro4',
       'org': 'Upstage',
-      'score': 1371,
+      'score': 1370,
       'ci': 10,
-      'votes': 5000,
+      'votes': 4900,
       'src': 'selftest'
     },
     {
       'name': 'gemma-4-31b',
       'org': 'Google',
-      'score': 1364,
+      'score': 1365,
       'ci': 6,
-      'votes': 13100,
+      'votes': 13200,
       'src': 'selftest'
     },
     {
@@ -804,7 +820,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1360,
       'ci': 8,
-      'votes': 8300,
+      'votes': 8200,
       'src': 'selftest'
     },
     {
@@ -828,7 +844,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1357,
       'ci': 6,
-      'votes': 15100,
+      'votes': 15000,
       'src': 'selftest'
     },
     {
@@ -836,7 +852,7 @@ window.ARENA_WEBDEV = {
       'org': 'Tencent',
       'score': 1356,
       'ci': 17,
-      'votes': 1500,
+      'votes': 1400,
       'src': 'selftest'
     },
     {
@@ -898,7 +914,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'claude-haiku-4-5-20251001',
       'org': 'Anthropic',
-      'score': 1330,
+      'score': 1329,
       'ci': 5,
       'votes': 29200,
       'src': 'selftest'
@@ -914,7 +930,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'kimi-k2-thinking-turbo',
       'org': 'Moonshot',
-      'score': 1322,
+      'score': 1321,
       'ci': 7,
       'votes': 13100,
       'src': 'selftest'
@@ -978,7 +994,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'kat-coder-pro-v1',
       'org': '',
-      'score': 1256,
+      'score': 1255,
       'ci': 19,
       'votes': 1500,
       'src': 'selftest'
@@ -1018,7 +1034,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'trinity-large-thinking',
       'org': '',
-      'score': 1237,
+      'score': 1238,
       'ci': 20,
       'votes': 1400,
       'src': 'selftest'
@@ -1058,7 +1074,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'granite-4.1-8b',
       'org': 'IBM',
-      'score': 1190,
+      'score': 1191,
       'ci': 18,
       'votes': 1800,
       'src': 'selftest'
@@ -1082,7 +1098,7 @@ window.ARENA_WEBDEV = {
     {
       'name': 'grok-4-fast-reasoning',
       'org': 'SpaceXAI',
-      'score': 1160,
+      'score': 1159,
       'ci': 27,
       'votes': 743,
       'src': 'selftest'

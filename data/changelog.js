@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-10-01',
-  'refreshedAt': '2026-10-01 15:24',
+  'refreshedAt': '2026-10-02 00:35',
   'uiWindowDays': 14,
   'desc': '11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新,「最近一次更新」超出 14 天时不显示卡片',
   'tools': [
@@ -19,7 +19,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '0.160.0-alpha.6.2',
@@ -990,7 +990,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '2.1.286',
@@ -3082,7 +3082,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '1.18.34',
@@ -8531,7 +8531,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '2.1.1',
@@ -9362,7 +9362,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '0.4.3',
@@ -9600,7 +9600,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '1.32.0',
@@ -10171,7 +10171,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '3.3.101',
@@ -12076,7 +12076,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -12263,7 +12263,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '3.14.4',
@@ -12369,7 +12369,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '4.12.1',
@@ -13204,7 +13204,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-01 15:24',
+      'lastOkAt': '2026-10-02 00:35',
       'entries': [
         {
           'version': '5.6.2',
