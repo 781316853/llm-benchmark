@@ -11,9 +11,9 @@
 // 为旧评分制(原始分钟数 + "总扣分",无字母等级),口径不兼容,已排除。
 window.LLM2014 = {
   source: "llm2014 Agentic",
-  url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-09%7C0",
-  updated: "2026-09-30",
-  refreshedAt: "2026-10-01 00:01",
+  url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-10%7C0",
+  updated: "2026-10-01",
+  refreshedAt: "2026-10-01 15:24",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1346,6 +1346,284 @@ window.LLM2014 = {
           'Skip'
         ],
         'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Hy3 (high)',
+        'cells': [
+          '10/B(2.01)',
+          '20/C+(13.29)',
+          'Failed',
+          'Failed',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-5.6 Luna (max)',
+        'cells': [
+          '27/C(3.84)',
+          '21/C(4.90)',
+          'Failed',
+          'Skip',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Codex',
+        'think': 1
+      },
+      {
+        'model': 'MiniMax-M3',
+        'cells': [
+          '30/D(2.42)',
+          '17/C+(8.28)',
+          'Failed',
+          'Skip',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      }
+    ]
+  },
+  '2026-10': {
+    'projects': [
+      'Simple Model(H)',
+      'iOS+Server(I)',
+      'Animation(J)',
+      'Data Process(K)',
+      'Metal(L)',
+      'Science(M)'
+    ],
+    'rows': [
+      {
+        'model': 'Opus 5.5 (max)',
+        'cells': [
+          'Pass',
+          'Pass',
+          '4/A+(341.72)',
+          'Perfect(211.83)',
+          '6/A(290.08)',
+          '2/A+(1365.55)'
+        ],
+        'unprompted': 5,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-6 Astra (max)',
+        'cells': [
+          '5/A+(41.53)',
+          '3/A+(64.74)',
+          '4/A+(75.84)',
+          '5/A(61.32)',
+          '8/B+(114.59)',
+          '10/A(91.22)'
+        ],
+        'unprompted': 4,
+        'ide': 'Codex CLI',
+        'think': 1
+      },
+      {
+        'model': 'GPT-6.1 Sol (max)',
+        'cells': [
+          'Pass',
+          'Pass',
+          '10/A(16.90)',
+          '6/A(46.00)',
+          'Pending',
+          '9/A(18.70)'
+        ],
+        'unprompted': 0,
+        'ide': 'Codex CLI',
+        'think': 1
+      },
+      {
+        'model': 'Fable 5 (high)',
+        'cells': [
+          '2/A+(90.52)',
+          '3/A+(103.95)',
+          '7/A(59.02)',
+          'Skip',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 1,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-6 Sol (max)',
+        'cells': [
+          'Pass',
+          'Pass',
+          '16/B(27.74)',
+          '12/C(90.31)',
+          'Skip',
+          '14/B(42.82)'
+        ],
+        'unprompted': 1,
+        'ide': 'Codex CLI',
+        'think': 1
+      },
+      {
+        'model': 'Kimi-K3 (max)',
+        'cells': [
+          '6/A(29.59)',
+          '5/A(43.22)',
+          '22/B(43.23)',
+          '28/D+(383.49)',
+          '25/D(193.42)',
+          '26/C+(267.49)'
+        ],
+        'unprompted': 2,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Grok 4.7 (high)',
+        'cells': [
+          '8/B(53.87)',
+          '3/A+(15.68)',
+          '14/C+(32.91)',
+          '12/C+(139.47)',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Grok Build',
+        'think': 1
+      },
+      {
+        'model': 'GLM-5.3 (max)',
+        'cells': [
+          '8/B+(11.48)',
+          '7/A(25.25)',
+          '20/C+(90.76)',
+          '30/D(83.29)',
+          '24/D(343.68)',
+          'Failed'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Qwen3.8-Max-0902 (max)',
+        'cells': [
+          '8/B(28.26)',
+          '7/A(109.76)',
+          '21/C(102.71)',
+          '13/D(211.18)',
+          'Skip',
+          '26/D(347.42)'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Gemini 3.7 Flash (high)',
+        'cells': [
+          '14/B(9.38)',
+          '8/B(16.84)',
+          '14/B(14.28)',
+          '34/D(28.93)',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 4,
+        'ide': 'OpenCode CLI',
+        'think': 1
+      },
+      {
+        'model': 'MiMo-V2.6-Pro (high)',
+        'cells': [
+          '16/C(10.11)',
+          '5/B+(1.55)',
+          '14/B(7.23)',
+          'Failed',
+          'Skip',
+          'Failed'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Seed-2.1-Pro 0915 (high)',
+        'cells': [
+          '11/B(20.89)',
+          '5/A(50.68)',
+          'Failed',
+          '30/D(71.77)',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'DeepSeek V4.1 Flash (max)',
+        'cells': [
+          '12/B(2.79)',
+          '7/B(2.92)',
+          'Failed',
+          '20/C(5.88)',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GLM-5.3-Flash (max)',
+        'cells': [
+          '9/B(4.21)',
+          '13/B(6.63)',
+          'Failed',
+          'Skip',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'DeepSeek V4 Pro 0813 (max)',
+        'cells': [
+          '14/B(13.46)',
+          '16/C(12.73)',
+          'Failed',
+          '16/B(18.64)',
+          '27/D(69.58)',
+          'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'Muse Spark 1.2 (xhigh)',
+        'cells': [
+          '26/C(15.82)',
+          '11/B(17.76)',
+          'Failed',
+          'Skip',
+          'Skip',
+          'Skip'
+        ],
+        'unprompted': 0,
         'ide': 'Claude Code',
         'think': 1
       },
