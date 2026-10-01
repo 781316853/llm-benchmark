@@ -765,7 +765,7 @@
   }
 
   // ===== 6) ModelDial 雷达(第三方独立实测的综合能力榜;计入综合分(计分组之一,权重 16%)与命中数) =====
-  // 主榜为模型级条目(每条取该模型最高分 config,与源站主榜一致),config 明细另附折叠表(52 条)。
+  // 主榜为模型级条目(每条取该模型最高分 config,与源站主榜一致),config 明细另附折叠表(条数取源站快照)。
   function renderModeldial() {
     var src = D.src.modeldial || {};
     var ms = D.modeldial();
@@ -1127,7 +1127,12 @@
   // 尽量赶在用户首次点击前完成,点击时只剩首屏两个章节的同步构建。
   function scheduleAuthPrerender() {
     var go = function () {
-      if (!authRendered && state.tab !== "authority") renderAuthority();
+      if (authRendered || state.tab === "authority") return;
+      // 本页数据已移至按需注入:先取数据再预构建,否则只会建出空表且把 authRendered 置真。
+      // 空闲期取数据不影响首屏,却能让首次点击该页仍走「复用已构建好的 DOM」这条快路径。
+      ensureData(TAB_DATA.authority, function () {
+        if (!authRendered && state.tab !== "authority") renderAuthority();
+      });
     };
     if (window.requestIdleCallback) window.requestIdleCallback(go, { timeout: 1200 });
     else setTimeout(go, 800);
@@ -1792,6 +1797,77 @@
     tds.forEach(function (td) { td.classList.add("col-flash"); });
   }
 
+  // ===== 按需注入的数据脚本 =====
+  // 「权威基准测试」页的 9 个仅展示榜与「套餐对比」页的 codingplan,只在这两页被读取,
+  // 且都不参与总览综合分与命中数。与下方 changelog 同策略:不进首屏脚本清单 —— 它们同样是
+  // defer 脚本,会在 DOMContentLoaded 之前挤进首屏请求队列并逐个执行;改为首次需要时才注入。
+  // Terminal-Bench 4.0/3.0/2.1 三版已合并进总览(unified),不在此列,仍属首屏。
+  // 缓存戳与 index.html 的首屏脚本一致维护(?v= 变更时同步)。
+  var DATA_SRC = {
+    tbscience: { src: "data/tbscience.js?v=20260912a", global: "TBSCIENCE" },
+    osworld: { src: "data/osworld.js?v=20260912a", global: "OSWORLD" },
+    lastexam: { src: "data/lastexam.js?v=20260912a", global: "LASTEXAM" },
+    arcagi3: { src: "data/arcagi3.js?v=20260912a", global: "ARCAGI3" },
+    benchcad: { src: "data/benchcad.js?v=20260912a", global: "BENCHCAD" },
+    nl2repo: { src: "data/nl2repo.js?v=20260913a", global: "NL2REPO" },
+    programbench: { src: "data/programbench.js?v=20260922a", global: "PROGRAMBENCH" },
+    cursorbench: { src: "data/cursorbench.js?v=20260923a", global: "CURSORBENCH" },
+    frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },
+    codingplan: { src: "data/codingplan.js?v=20260913b", global: "CODINGPLAN" }
+  };
+  // 各标签页渲染前必须就绪的数据
+  var TAB_DATA = {
+    authority: ["tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "nl2repo", "programbench", "cursorbench", "frontiercode"],
+    plans: ["codingplan"]
+  };
+  var dataState = {};    // key -> "loading" | "ready" | "failed"
+  var dataWaiters = {};  // key -> 待回调队列
+  function dataLoaded(key) {
+    var d = DATA_SRC[key];
+    return !d || window[d.global] !== undefined;
+  }
+  function settleData(key) {
+    var ws = dataWaiters[key] || [];
+    dataWaiters[key] = [];
+    ws.forEach(function (f) { f(); });
+  }
+  // 确保 keys 全部就绪后回调 done;并发调用对同一 key 合并等待,不重复注入
+  function ensureData(keys, done) {
+    var need = keys.filter(function (k) { return !dataLoaded(k) && dataState[k] !== "failed"; });
+    if (!need.length) { done(); return; }
+    var left = need.length;
+    var one = function () { if (--left <= 0) done(); };
+    need.forEach(function (k) {
+      dataWaiters[k] = dataWaiters[k] || [];
+      dataWaiters[k].push(one);
+      if (dataState[k] === "loading") return;
+      dataState[k] = "loading";
+      var s = document.createElement("script");
+      s.src = DATA_SRC[k].src;
+      // 失败只降级不重试:按「该源缺数据」渲染(各 D.* 对缺数据已返回空集),避免每次进页重打请求
+      s.onload = function () { dataState[k] = "ready"; settleData(k); };
+      s.onerror = function () { dataState[k] = "failed"; settleData(k); };
+      document.head.appendChild(s);
+    });
+  }
+  // 数据未就绪时的页面占位,待 ensureData 回调后由 renderTab 覆盖
+  function setPagePending(name) {
+    var hint = '<div class="cl-empty-page">正在加载数据…</div>';
+    if (name === "authority") {
+      var w = document.getElementById("authWrap");
+      if (w) w.innerHTML = hint;
+      var o = document.getElementById("authOutlineList");
+      if (o) o.innerHTML = "";
+      var c = document.getElementById("authOutlineCount");
+      if (c) c.textContent = "";
+      var d = document.getElementById("authDesc");
+      if (d) d.textContent = "正在加载权威基准数据…";
+    } else if (name === "plans") {
+      var pw = document.getElementById("plansWrap");
+      if (pw) pw.innerHTML = hint;
+    }
+  }
+
   // ===== 标签切换 =====
   function showTab(name) {
     state.tab = name;
@@ -1801,6 +1877,20 @@
     Array.prototype.forEach.call(document.querySelectorAll(".page"), function (p) {
       p.classList.toggle("active", p.id === "page-" + name);
     });
+    var needData = TAB_DATA[name];
+    if (needData && !needData.every(dataLoaded)) {
+      // 数据未就绪:先切页 + 占位,注入完成后补渲染(期间离开本页则不再补,下次进入自然渲染)
+      setPagePending(name);
+      ensureData(needData, function () { if (state.tab === name) renderTab(name); });
+    } else {
+      renderTab(name);
+    }
+    // 回放因所在页不可见而暂缓的图表绘制(队列为空时零开销)
+    if (window.CH && CH.flush) CH.flush();
+    // 切换后重绘图表以适配可见尺寸
+    setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
+  }
+  function renderTab(name) {
     if (name === "overview") renderOverview();
     else if (name === "deepswe") renderDeepSwe();
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
@@ -1810,8 +1900,6 @@
     else if (name === "authority") renderAuthority();
     else if (name === "plans") renderPlans();
     else if (name === "changelog") renderChangelog();
-    // 切换后重绘图表以适配可见尺寸
-    setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
   }
 
   // ===== 初始化 =====
@@ -1948,6 +2036,10 @@
         var loading = document.getElementById("appLoading");
         if (loading) loading.remove();
         scheduleAuthPrerender(); // 首屏就绪后,空闲时后台预构建权威基准页
+        // ECharts 按需加载(约 1MB):首屏不需要图表库,故移到首屏渲染之后空闲时预热。
+        // 放在 scheduleAuthPrerender 之后注册,让体积小的权威基准数据先取到。
+        if (window.requestIdleCallback) window.requestIdleCallback(function () { CH.warmup(); }, { timeout: 2000 });
+        else setTimeout(function () { CH.warmup(); }, 1200);
       });
     });
   }

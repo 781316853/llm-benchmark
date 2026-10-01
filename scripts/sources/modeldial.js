@@ -1,18 +1,20 @@
 // 数据源:ModelDial 雷达(modeldial.com/radar,第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method;官方 OpenAPI /openapi-v1.json)
 // 接口:https://modeldial.com/api/v1/radar/latest.json(HTTP 200 / application/json,无鉴权、无需特殊 UA,
-//   单请求即得全榜 52 条 config 与综合分;授权 CC BY 4.0)。
+//   单请求即得全榜 config 与综合分(条数随源站扩榜而变;授权 CC BY 4.0)。
 // 数据形态:JSON。overallRankings 为 config 粒度(model × reasoningEffort),字段:
 //   rank/backendRank、id(provider:model:effort)、provider(接入渠道,非模型厂商)、model(slug)、
 //   displayName、reasoningEffort、backendScore/frontendScore/knowledgeScore/overallScore(均 0-100)、
 //   elapsedMs、estimatedReferenceCostUsd、decisionTags。
+//   model 偶有带厂商命名空间的写法(经 OpenRouter 等渠道接入,如 "anthropic/claude-sonnet-5.5"),
+//   本源统一剥掉 "<vendor>/" 前缀后再入榜(见 bareSlug),否则别名表命中不到、跨源归并会拆成两条。
 // 综合分口径(源站 /method):后端与测试 40% + 前端与交互 30% + 知识与推理 30%(已逐条核对与官网一致)。
 // ⚠️ 成本/耗时口径:latest.json 的 elapsedMs 与 estimatedReferenceCostUsd 取自后端(coding)单轴,
 //   官网主榜显示的是三轴汇总值(如 MiniMax-M3 此处 $0.3139、官网 $0.62)。本站按后端轴单轴口径使用,
 //   跨模型内部一致可比,但低于官网主榜显示值,前端列名/图轴已标注「后端轴」。
 //   分轴档案(/data/benchmark-snapshots/*)与 overall 档案均不含成本字段,且批次号与 latest.json 不对齐,
 //   无法无损还原官网的三轴汇总值,故不做汇总。该 feed 亦无 cost_coverage 字段,不做「≥/部分费用」标记。
-// 性质:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(命中分母 6)。
+// 性质:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(命中分母 7)。
 // 输出:data/modeldial.js(window.MODELDIAL)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -26,6 +28,17 @@ const CONFIG = require("../lib/config");
 function num(v) {
   const n = Number(v);
   return isFinite(n) ? Math.round(n * 1e6) / 1e6 : null;
+}
+
+// 剥离源站 slug 的厂商命名空间前缀(如 "anthropic/claude-sonnet-5.5" -> "claude-sonnet-5.5")
+// ⚠️ 必须剥:本站以模型名作为跨源归并与别名表的查找键,带前缀的写法归一后是
+//    "anthropic-claude-sonnet-5-5",命中不了别名表,会在「其他」下建出一条与
+//    无机酸榜「Claude Sonnet 5.5」并排的幽灵模型。前缀只是渠道侧的命名空间,
+//    厂商信息本就由 provider/别名的 canonical 承担,丢掉不损失可比性。
+// 只认紧邻斜杠的开头段(displayName 的档位分隔是 " / XHigh" 带空格,不能被误伤)。
+const NAMESPACE_RE = /^[A-Za-z0-9._+-]+\//;
+function bareSlug(s) {
+  return String(s || "").replace(NAMESPACE_RE, "");
 }
 
 // UTC ISO 时间戳 -> 北京日期(YYYY-MM-DD);官网页头「更新于」按北京时间显示,此处与其对齐
@@ -54,9 +67,9 @@ function pickConfig(e) {
   return {
     rank: e.rank != null ? e.rank : null,
     provider: e.provider || "",
-    model: e.model || "",
+    model: bareSlug(e.model),
     effort: e.reasoningEffort || "default",
-    displayName: e.displayName || "",
+    displayName: bareSlug(e.displayName),
     overall: num(e.overallScore),
     backend: num(e.backendScore),
     frontend: num(e.frontendScore),
@@ -126,7 +139,7 @@ class ModeldialSource extends BaseSource {
     const T = parsed.updated || CONFIG.TODAY;
     return normalizer.fromArray(this.cfg.id, parsed.models, function (m, idx) {
       return {
-        // name 用原始 slug(如 qwen3.8-flash):交给别名表归一。
+        // name 用剥离厂商前缀后的 slug(如 qwen3.8-flash):交给别名表归一。
         // 不拼接 effort 后缀,避免被 effort 剥离规则误伤。
         name: m.model, score: m.overall, rank: idx, updated: T,
         metrics: {
@@ -147,11 +160,12 @@ class ModeldialSource extends BaseSource {
       "// 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)\n" +
       "// ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值\n" +
       "//   (如 MiniMax-M3 此处 $0.3139、官网 $0.62)。本站统一用后端轴口径,跨模型内部可比但低于官网显示值。\n" +
-      "// 字段说明:model=模型 slug;provider=接入渠道(非模型厂商);effort=推理强度;overall=综合分;\n" +
+      "// 字段说明:model=模型 slug(已剥掉源站偶发的 \"<vendor>/\" 命名空间前缀,如 anthropic/claude-sonnet-5.5);\n" +
+      "//          provider=接入渠道(非模型厂商);effort=推理强度;overall=综合分;\n" +
       "//          backend/frontend/knowledge=三分项分;elapsedMs=耗时(毫秒);costUsd=参考费用(美元);\n" +
       "//          configs=该模型在源码中的 config 条数;tags=源站标记(recommended/value/speed/lightweight)\n" +
       "// 结构:models=模型级主榜(每条取该模型最高分 config,与官网主榜一致);configs=全部 config 明细\n" +
-      "// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 6);「ModelDial」页完整展示。\n",
+      "// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 7);「ModelDial」页完整展示。\n",
       {
         source: "ModelDial",
         url: "https://modeldial.com/radar",

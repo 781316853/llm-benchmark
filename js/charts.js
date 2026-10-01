@@ -4,7 +4,58 @@
 // 都不需要改这个文件,只改 :root 里的 --chart-* 即可。
 (function () {
   "use strict";
-  if (!window.echarts) { console.warn("ECharts 未加载,图表功能降级"); }
+
+  // ===== ECharts 按需加载 =====
+  // 默认打开的「总览」页只有表格,一张图都没有,但 ECharts 约 1MB。若把它列进首屏脚本清单,
+  // 因为 defer 脚本要全部执行完才触发 DOMContentLoaded,而 app.js 的 init 挂在 DOMContentLoaded 上,
+  // 首屏就被这个第三方 CDN 拖住(实测 jsDelivr 取回约 5s,首屏渲染 5.7s)。故改为按需:
+  // app.js 首屏渲染后空闲时预热(见 CH.warmup),或首次真正要画图时即时加载;
+  // 加载期间的绘制请求排队,库就绪后按序回放。主源 npmmirror(国内快),失败回退 jsDelivr。
+  var EC_SOURCES = [
+    "https://registry.npmmirror.com/echarts/5/files/dist/echarts.min.js",
+    "https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"
+  ];
+  var ecState = "idle"; // idle -> loading -> ready | failed
+  var ecPending = {};   // 容器 id -> 待绘制 option(同一容器后到者覆盖先到者)
+  var ecOrder = [];     // 待绘制顺序(仅保留每个 id 首次出现的位置)
+  function loadEcharts() {
+    if (ecState === "loading" || ecState === "ready") return;
+    ecState = "loading";
+    var i = 0;
+    (function next() {
+      if (i >= EC_SOURCES.length) {
+        // 所有源都失败:图表功能降级(与旧版 CDN 不可用时的表现一致),不留半截实例
+        ecState = "failed";
+        ecPending = {}; ecOrder = [];
+        console.warn("[charts] ECharts 加载失败(所有源均不可用),图表功能降级");
+        return;
+      }
+      var s = document.createElement("script");
+      s.src = EC_SOURCES[i++];
+      s.async = true;
+      s.onload = function () { ecState = "ready"; flushPending(); };
+      s.onerror = function () { s.parentNode && s.parentNode.removeChild(s); next(); };
+      document.head.appendChild(s);
+    })();
+  }
+  // 回放排队请求。两个前提不满足就不能排空队列,否则请求会被 paint 早退丢掉:
+  // ① 库本身已就绪(apply 会把请求排进来,flush 也可能在库到位前被 showTab 调到);
+  // ② 所在页可见 —— display:none 时 offsetParent 为 null,对 0 尺寸容器 init 只会得到空图。
+  function flushPending() {
+    if (!window.echarts || !ecOrder.length) return;
+    var ids = ecOrder, pend = ecPending;
+    ecOrder = []; ecPending = {};
+    ids.forEach(function (id) {
+      var dom = document.getElementById(id);
+      if (!dom) return;                                  // 容器已被重建/移除:丢弃这次请求
+      if (dom.offsetParent === null) {                   // 所在页不可见:留到可见时再画
+        if (ecPending[id] == null) ecOrder.push(id);
+        ecPending[id] = pend[id];
+        return;
+      }
+      paint(id, pend[id]);
+    });
+  }
 
   // 读取主题变量;取不到时回落到浅色默认值,保证样式表异常时图表仍可读
   function tok(name, fallback) {
@@ -39,8 +90,26 @@
     return registry[id];
   }
 
-  // 应用 option(合并主题样式 + tooltip)
+  // 绘制入口:ECharts 就绪则立即画,否则排队并在库就绪后回放(见 flushPending)
   function apply(id, option) {
+    if (!window.echarts) {
+      if (ecState === "failed") return;   // 所有源均已失败:不再排队重试,图表按降级处理
+      if (ecPending[id] == null) ecOrder.push(id);
+      ecPending[id] = option;
+      loadEcharts();
+      return;
+    }
+    // 已就绪:直接画,并撤掉该容器此前排队的请求 —— 否则稍后 flush 会用旧 option 覆盖这张新图
+    if (ecPending[id] != null) {
+      delete ecPending[id];
+      var at = ecOrder.indexOf(id);
+      if (at >= 0) ecOrder.splice(at, 1);
+    }
+    paint(id, option);
+  }
+
+  // 应用 option(合并主题样式 + tooltip)
+  function paint(id, option) {
     var c = inst(id);
     if (!c) return;
     var C = palette();
@@ -196,6 +265,10 @@
     apply: apply, inst: inst,
     barOption: barOption, radarOption: radarOption,
     scatterOption: scatterOption,
+    // 预热:首屏渲染完成后由 app.js 在空闲时调用,避免访客切到图表页时才现下
+    warmup: loadEcharts,
+    // 回放因所在页不可见而暂缓的绘制请求;showTab 每次切页后调用(队列为空时零开销)
+    flush: flushPending,
     // 供 app/compare 取当前主题的品牌色,避免把色值写死在调用方
     brand: function () { return palette().brand; }
   };

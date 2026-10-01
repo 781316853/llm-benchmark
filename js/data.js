@@ -442,7 +442,7 @@
     return (src.models || []).slice().sort(function (a, b) { return b.overall - a.overall; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
-  // config 明细(model × 推理强度,共 52 条):按源站排名升序,供「ModelDial」页明细表展示
+  // config 明细(model × 推理强度,条数随源站扩榜而变):按源站排名升序,供「ModelDial」页明细表展示
   function modeldialConfigs() {
     var src = window.MODELDIAL || { configs: [] };
     return (src.configs || []).slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); })
@@ -667,6 +667,24 @@
     };
   }
 
+  // 各源原始对象(供渲染脚注)的取值视图。用取值器而非直接快照 window.*:
+  // 「权威基准测试」页的 9 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
+  // 若在解析期就取 window.*,这些键会永远停在 undefined。
+  var SRC_GLOBALS = {
+    deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", aicap: "AICAP",
+    tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
+    osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
+    gpqa: "GPQA", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
+    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", modeldial: "MODELDIAL", wujisuan: "WUJISUAN"
+  };
+  var srcView = {};
+  Object.keys(SRC_GLOBALS).forEach(function (k) {
+    Object.defineProperty(srcView, k, {
+      enumerable: true,
+      get: function () { return window[SRC_GLOBALS[k]]; }
+    });
+  });
+
   // 暴露
   window.D = {
     MAX_GRADE: MAX_GRADE,
@@ -713,9 +731,6 @@
     isNewAny: isNewAny,
     seenRef: function () { return window.SEEN || { since: null, updated: null, entries: null }; },
     // 各源原始对象(供渲染脚注)
-    src: { deepswe: window.DEEPSWE, llm: window.LLM2014, webdev: window.ARENA_WEBDEV, aicap: window.AICAP,
-      tbench: window.TBENCH, tbenchV3: window.TBENCH_V3, tbenchV21: window.TBENCH_V21, tbscience: window.TBSCIENCE, osworld: window.OSWORLD, lastexam: window.LASTEXAM,
-      arcagi3: window.ARCAGI3, benchcad: window.BENCHCAD, gpqa: window.GPQA, hle: window.HLE, nl2repo: window.NL2REPO, programbench: window.PROGRAMBENCH,
-      cursorbench: window.CURSORBENCH, frontiercode: window.FRONTIERCODE, modeldial: window.MODELDIAL, wujisuan: window.WUJISUAN }
+    src: srcView
   };
 })();

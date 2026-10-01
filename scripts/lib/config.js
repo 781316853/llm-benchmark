@@ -326,7 +326,8 @@ module.exports = {
     // ===== ModelDial 雷达(独立标签页;计入总览综合分第 8 组与命中数)=====
     modeldial: {
       // ModelDial 雷达(modeldial.com):第三方独立实测的编码智能体能力榜,config 粒度(model×推理强度)。
-      // 官方 JSON feed(OpenAPI /openapi-v1.json 收录,CC BY 4.0),单请求即得全榜 52 条 config 与综合分;
+      // 官方 JSON feed(OpenAPI /openapi-v1.json 收录,CC BY 4.0),单请求即得全榜 config 与综合分
+      // (条数随源站扩榜而变,不在注释与文案里写死);
       // 综合分 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%。
       // 渠道:该站自建 harness 自测,无更高优先级渠道可合并,按 T3 第三方评测处理(src=aggregate)。
       // 注:feed 内的成本/耗时为后端单轴口径(官网主榜显示三轴汇总值),分轴与 overall 档案均无成本字段
@@ -339,13 +340,13 @@ module.exports = {
     // ===== 无机酸 · AI 前端实测(B 站独立第三方实测,第三方实测组计分组之一)=====
     wujisuan: {
       // 「无机酸 · AI 前端实测」(B 站 UP 主 @无机酸-_-):真实前端任务端到端实测榜,
-      // 12 模型 × 2 任务(SupernovAI 品牌站 / 云山巨城体素场景)× 短/长提示 × 首轮/最终。
+      // 全榜模型 × 2 任务(SupernovAI 品牌站 / 云山巨城体素场景)× 短/长提示 × 首轮/最终。
       // 站点形态:展示页 https://www.bilibili.com/toy/wujisuan-ai-test/index.html 是 B 站 toy
       //   「外壳页」(仅 8KB,内嵌一个跨域 sandbox iframe,自身不含任何分数);
       //   iframe src 为 https://www.bilibilitoy.com/toy/wujisuan-ai-test/<toyId>-<版本号>/index.html,
       //   其中 <toyId>-<版本号>(如 36188744578048-v17769)随每次上传变化,故须先抓外壳页提取当期路径。
       //   内层页为静态 SPA(app.js 内唯一取数调用 fetch("./data/site.json")),
-      //   真实数据即该同域静态 JSON:单请求即得全榜 12 模型、72 条 task×round×prompt 明细、
+      //   真实数据即该同域静态 JSON:单请求即得全榜模型、全部 task×round×prompt 明细、
       //   2 个任务定义(含提示词全文)与长提示增益表,无需浏览器渲染。
       // 量纲:单任务分 0-100,models[].total = 两任务分之和(源站自报 scoreRange [0,200]),
       //   非百分制;综合分走榜内稳健 z 分(尺度不变),故不折算(同 arena_webdev Elo 先例)。
@@ -473,12 +474,12 @@ module.exports = {
   },
 
   // ===== AI Agent 工具更新日志(scripts/lib/changelog.js 使用,不进基准管线) =====
-  // 汇总 11 个 Agent 工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
+  // 汇总 10 个 Agent 工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
   // 不进 registry/校验器,仅「Agent工具更新日志」页展示。
   // 口径(2026-09-24 与需求方确认):
   //   ① 只收正式版 —— prerelease/draft 与 tag 尾缀 -alpha/-beta/-rc 一律不入库。
-  //      实测依据:openai/codex 最新 10 个 release 只跨 1.5 天且多为 rust-v0.158.0-alpha.8,
-  //      全收会让一个工具淹没整个标签页。
+  //      实测依据(2026-09-24,来自当时收录的 openai/codex):最新 10 个 release 只跨 1.5 天且
+  //      多为 rust-v0.158.0-alpha.8,全收会让一个工具淹没整个标签页。
   //   ② 全量入库、前端每个工具只渲染「最近一次更新」—— 本文件仍存各源可得的全部条目,
   //      uiWindowDays 只是「这次更新算不算新」的门槛(前端可切 14/30/全部),不是条目条数的裁剪。
   changelog: {

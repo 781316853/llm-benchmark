@@ -5,11 +5,12 @@
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
 //   (如 MiniMax-M3 此处 $0.3139、官网 $0.62)。本站统一用后端轴口径,跨模型内部可比但低于官网显示值。
-// 字段说明:model=模型 slug;provider=接入渠道(非模型厂商);effort=推理强度;overall=综合分;
+// 字段说明:model=模型 slug(已剥掉源站偶发的 "<vendor>/" 命名空间前缀,如 anthropic/claude-sonnet-5.5);
+//          provider=接入渠道(非模型厂商);effort=推理强度;overall=综合分;
 //          backend/frontend/knowledge=三分项分;elapsedMs=耗时(毫秒);costUsd=参考费用(美元);
 //          configs=该模型在源码中的 config 条数;tags=源站标记(recommended/value/speed/lightweight)
 // 结构:models=模型级主榜(每条取该模型最高分 config,与官网主榜一致);configs=全部 config 明细
-// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 6);「ModelDial」页完整展示。
+// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 7);「ModelDial」页完整展示。
 window.MODELDIAL = {
   'source': 'ModelDial',
   'url': 'https://modeldial.com/radar',
@@ -98,10 +99,10 @@ window.MODELDIAL = {
       'rank': 4
     },
     {
-      'model': 'anthropic/claude-sonnet-5.5',
+      'model': 'claude-sonnet-5.5',
       'provider': 'openrouter-opus55',
       'effort': 'xhigh',
-      'displayName': 'anthropic/claude-sonnet-5.5 / XHigh',
+      'displayName': 'claude-sonnet-5.5 / XHigh',
       'overall': 85.8,
       'backend': 84,
       'frontend': 89,
@@ -756,9 +757,9 @@ window.MODELDIAL = {
     {
       'rank': 15,
       'provider': 'openrouter-opus55',
-      'model': 'anthropic/claude-sonnet-5.5',
+      'model': 'claude-sonnet-5.5',
       'effort': 'xhigh',
-      'displayName': 'anthropic/claude-sonnet-5.5 / XHigh',
+      'displayName': 'claude-sonnet-5.5 / XHigh',
       'overall': 85.8,
       'backend': 84,
       'frontend': 89,

@@ -62,6 +62,7 @@ window.MODEL_MAP = {
     { id: "Tencent Hy3",      vendor: "Tencent",   color: "#12B7F5", aliases: ["Tencent Hy3 (high)", "Hy3"] },
     { id: "Tencent Hy3 Preview", vendor: "Tencent", color: "#1FC4FF", aliases: ["Tencent Hy3 Preview"] },
     { id: "MiniMax-M3",       vendor: "MiniMax",   color: "#FF5C8A", aliases: ["MiniMax-M3", "minimax-m3", "MiniMax M3"] },
+    { id: "MiniMax M3.1 Flash Preview", vendor: "MiniMax", color: "#F2668E", aliases: ["MiniMax M3.1 Flash Preview", "MiniMax-M3.1-Flash-Preview", "minimax-m3.1-flash-preview"] },
     { id: "MiniMax-M2.7",     vendor: "MiniMax",   color: "#FF7DA3", aliases: ["minimax-m2-7", "MiniMax-M2.7", "MiniMax M2.7"] },
     { id: "MiniMax M2.5",     vendor: "MiniMax",   color: "#FF9EBB", aliases: ["MiniMax M2.5", "minimax-m2-5"] },
     { id: "MiniMax M2.1",     vendor: "MiniMax",   color: "#FFB0CC", aliases: ["minimax-2.1"] },
@@ -142,8 +143,11 @@ window.MODEL_MAP = {
     // CursorBench 页把推理档位并入模型名(如 "Opus 5.5 Max"),源解析端已剥离档位,
     // 故此处只需登记「不带档位」的基础名(以及各厂商可能出现的带厂商前缀写法)。
     { id: "Claude Opus 5.5",  vendor: "Anthropic", color: "#CE6D4A", aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"] },
+    // 无机酸榜与 ModelDial 榜 2026-09-29 起同时收录(ModelDial 的 slug 写作 "anthropic/claude-sonnet-5.5",抓取端剥前缀)
+    { id: "Claude Sonnet 5.5", vendor: "Anthropic", color: "#D2825A", aliases: ["Claude Sonnet 5.5", "Sonnet 5.5", "claude-sonnet-5-5", "claude-sonnet-5.5"] },
     { id: "Grok 4.7",         vendor: "xAI",       color: "#878F9A", aliases: ["Grok 4.7", "grok-4.7", "grok-4.7-high", "grok-4.7-xhigh"] },
     { id: "GPT-6 Sol",        vendor: "OpenAI",    color: "#0A8F6A", aliases: ["GPT-6 Sol", "gpt-6-sol"] },
+    { id: "GPT-6.1 Sol",      vendor: "OpenAI",    color: "#0C8560", aliases: ["GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol"] },
     { id: "GPT-6 Luna",       vendor: "OpenAI",    color: "#15B893", aliases: ["GPT-6 Luna", "gpt-6-luna"] },
     { id: "Composer 2.5",     vendor: "Cursor",    color: "#F44E00", aliases: ["Composer 2.5", "composer-2.5", "composer-2-5"] },
     // SWE-1.x/2 为 Cognition(Devin)自研编码模型,harness 分别为 chisel/devin
