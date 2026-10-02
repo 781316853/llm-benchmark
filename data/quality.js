@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 26,
+      'modelCount': 33,
       'updated': '2026-10-02',
       'ageDays': 0,
       'completeness': 1,
@@ -699,7 +699,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Gemini 4 Argon',
+      'canonId': 'gemini-4-argon-high',
       'name': 'Gemini 4 Argon',
       'vendor': '其他',
       'sources': [
@@ -888,9 +888,9 @@ window.QUALITY = {
     },
     'lastexam': {
       'rate': 1,
-      'total': 26,
-      'complete': 26,
-      'modelCount': 26,
+      'total': 33,
+      'complete': 33,
+      'modelCount': 33,
       'missingFields': {},
       'flag': 'ok'
     },

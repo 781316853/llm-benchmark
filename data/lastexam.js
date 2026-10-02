@@ -11,13 +11,23 @@ window.LASTEXAM = {
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-02',
-  'refreshedAt': '2026-10-02 15:11',
+  'refreshedAt': '2026-10-02 23:54',
   'stats': {
     'tasks': 1490,
-    'entries': 26
+    'entries': 33
   },
   'desc': 'Agents\' Last Exam(ALE):UC Berkeley 主导的覆盖最广的专业工作流评测(1500+ 任务、55 子行业、300+ 领域专家共建),Pass@1 越高越好。',
   'models': [
+    {
+      'model': 'Claude Opus 5.5',
+      'org': 'Anthropic',
+      'score': 63.2,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-09-22',
+      'src': 'datalearner',
+      'rank': 1
+    },
     {
       'model': 'GPT-6 Astra',
       'org': 'OpenAI',
@@ -29,12 +39,12 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 10.00 / $ 50.00',
-      'rank': 1
+      'rank': 2
     },
     {
       'model': 'GPT-6 Sol',
       'org': 'OpenAI',
-      'score': 56.4,
+      'score': 56.5,
       'license': '不开源',
       'effort': '最高（工具）',
       'date': '2026-09-22',
@@ -42,7 +52,17 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 2
+      'rank': 3
+    },
+    {
+      'model': 'Muse Spark 1.3',
+      'org': 'Facebook AI研究实验室',
+      'score': 55.8,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-09-02',
+      'src': 'datalearner',
+      'rank': 4
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -55,10 +75,10 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
-      'rank': 3
+      'rank': 5
     },
     {
-      'rank': 4,
+      'rank': 6,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 51.2,
@@ -79,7 +99,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.10 / $ 0.50',
-      'rank': 5
+      'rank': 7
     },
     {
       'model': 'GPT-5.6 Terra',
@@ -92,7 +112,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 12.00',
-      'rank': 6
+      'rank': 8
     },
     {
       'model': 'GPT-5.6 Luna',
@@ -105,10 +125,10 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'rank': 7
+      'rank': 9
     },
     {
-      'rank': 8,
+      'rank': 10,
       'model': 'Seed 2.1 Pro',
       'org': 'ByteDance',
       'score': 41.4,
@@ -117,6 +137,26 @@ window.LASTEXAM = {
       'cost': '—',
       'license': null,
       'src': 'llm-stats'
+    },
+    {
+      'model': 'Gemini 4 Argon',
+      'org': 'Google DeepMind',
+      'score': 39.5,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-09-30',
+      'src': 'datalearner',
+      'rank': 11
+    },
+    {
+      'model': 'Claude Opus 5',
+      'org': 'Anthropic',
+      'score': 32.2,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-07-24',
+      'src': 'datalearner',
+      'rank': 12
     },
     {
       'model': 'DeepSeek-V4.1-Flash',
@@ -129,7 +169,7 @@ window.LASTEXAM = {
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.22 / $ 0.66',
-      'rank': 9
+      'rank': 13
     },
     {
       'model': 'MiMo-V2.6-Pro',
@@ -142,7 +182,7 @@ window.LASTEXAM = {
       'size': '1.0T',
       'context': '1.0M',
       'cost': '$ 0.43 / $ 0.87',
-      'rank': 10
+      'rank': 14
     },
     {
       'model': 'Step 5 Preview',
@@ -152,17 +192,7 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-09-20',
       'src': 'datalearner',
-      'rank': 11
-    },
-    {
-      'model': 'Claude Opus 5',
-      'org': 'Anthropic',
-      'score': 28.6,
-      'license': '不开源',
-      'effort': '最高（工具）',
-      'date': '2026-07-24',
-      'src': 'datalearner',
-      'rank': 12
+      'rank': 15
     },
     {
       'model': 'GLM-5.3',
@@ -175,17 +205,17 @@ window.LASTEXAM = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 13
+      'rank': 16
     },
     {
       'model': 'Kimi K3',
       'org': 'Moonshot AI',
-      'score': 27.6,
+      'score': 28.3,
       'license': '有条件免费商用授权',
       'effort': '最高（工具）',
       'date': '2026-07-16',
       'src': 'datalearner',
-      'rank': 14
+      'rank': 17
     },
     {
       'model': 'MiMo-V2.6-Flash',
@@ -198,7 +228,7 @@ window.LASTEXAM = {
       'size': '309B',
       'context': '1.0M',
       'cost': '$ 0.14 / $ 0.28',
-      'rank': 15
+      'rank': 18
     },
     {
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
@@ -211,7 +241,27 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'rank': 16
+      'rank': 19
+    },
+    {
+      'model': 'Claude Opus 4.8',
+      'org': 'Anthropic',
+      'score': 27,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-05-28',
+      'src': 'datalearner',
+      'rank': 20
+    },
+    {
+      'model': 'Grok 4.5',
+      'org': 'xAI',
+      'score': 27,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-07-08',
+      'src': 'datalearner',
+      'rank': 21
     },
     {
       'model': 'Qwen3.8-Max',
@@ -224,7 +274,17 @@ window.LASTEXAM = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 17
+      'rank': 22
+    },
+    {
+      'model': 'GPT-5.5',
+      'org': 'OpenAI',
+      'score': 26.6,
+      'license': '不开源',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-04-23',
+      'src': 'datalearner',
+      'rank': 23
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -237,7 +297,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 3.75',
-      'rank': 18
+      'rank': 24
     },
     {
       'model': 'GLM-5.3-Flash',
@@ -250,7 +310,7 @@ window.LASTEXAM = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 19
+      'rank': 25
     },
     {
       'model': 'DeepSeek-V4-Pro',
@@ -260,10 +320,20 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-08-13',
       'src': 'datalearner',
-      'rank': 20
+      'rank': 26
     },
     {
-      'rank': 21,
+      'model': 'Claude Fable 5',
+      'org': 'Anthropic',
+      'score': 25.7,
+      'license': '不开源',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-06-09',
+      'src': 'datalearner',
+      'rank': 27
+    },
+    {
+      'rank': 28,
       'model': 'DeepSeek-V4-Pro-0813',
       'org': 'DeepSeek',
       'score': 25.7,
@@ -281,10 +351,10 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-04-24',
       'src': 'datalearner',
-      'rank': 22
+      'rank': 29
     },
     {
-      'rank': 23,
+      'rank': 30,
       'model': 'DeepSeek-V4-Flash-0731',
       'org': 'DeepSeek',
       'score': 25.2,
@@ -305,7 +375,7 @@ window.LASTEXAM = {
       'size': '125B',
       'context': '—',
       'cost': '—',
-      'rank': 24
+      'rank': 31
     },
     {
       'model': 'Hy4 preview',
@@ -318,7 +388,7 @@ window.LASTEXAM = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 25
+      'rank': 32
     },
     {
       'model': 'Qwen3.8-27B',
@@ -331,7 +401,7 @@ window.LASTEXAM = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
-      'rank': 26
+      'rank': 33
     }
   ]
 };

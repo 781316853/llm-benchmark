@@ -10,22 +10,13 @@ window.OSWORLD = {
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-02',
-  'refreshedAt': '2026-10-02 15:11',
+  'refreshedAt': '2026-10-02 23:54',
   'stats': {
     'tasks': 108,
     'entries': 31
   },
   'desc': 'OSWorld 2.0:108 个长时程、端到端的桌面计算机使用工作流(人类中位耗时约 1.6 小时,平均约 318 次工具调用),按二进制完成率与部分得分(检查点达成比例)双口径计分;因二进制完成率极低,榜单按部分得分排序。',
   'models': [
-    {
-      'system': 'Claude Opus 5.5',
-      'note': '最高（工具）',
-      'score': 81.8,
-      'org': 'Anthropic',
-      'reported': '2026-09-22',
-      'url': null,
-      'src': 'datalearner'
-    },
     {
       'system': 'Claude Fable 5.1',
       'note': '最高（工具）',
@@ -149,6 +140,15 @@ window.OSWORLD = {
       'score': 62.6,
       'org': 'OpenAI',
       'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-6 Sol',
+      'note': '极高强度思考（工具）',
+      'score': 60.5,
+      'org': 'OpenAI',
+      'reported': '2026-09-22',
       'url': null,
       'src': 'datalearner'
     },
