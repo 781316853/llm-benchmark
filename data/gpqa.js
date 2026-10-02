@@ -1,4 +1,4 @@
-// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-10-01)
+// 数据源:GPQA Diamond(研究生级科学问答·知识推理,更新于 2026-10-02)
 // 来源:https://llm-stats.com/benchmarks/gpqa(官方:https://epoch.ai/benchmarks/gpqa-diamond)
 // 补充:https://benchlm.ai/benchmarks/gpqa(benchlm 镜像,分数与 Diamond 口径一致)· https://benchlm.ai/benchmarks/aagpqadiamond(AA 复测口径)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -10,8 +10,8 @@ window.GPQA = {
   'url': 'https://llm-stats.com/benchmarks/gpqa',
   'officialUrl': 'https://epoch.ai/benchmarks/gpqa-diamond',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-01',
-  'refreshedAt': '2026-10-02 00:35',
+  'updated': '2026-10-02',
+  'refreshedAt': '2026-10-02 15:11',
   'stats': {
     'tasks': 198,
     'entries': 50
@@ -284,17 +284,6 @@ window.GPQA = {
     },
     {
       'rank': 25,
-      'model': 'Hy3',
-      'org': 'Tencent',
-      'score': 90.4,
-      'size': '295B',
-      'context': '262K',
-      'cost': '$ 0.14 / $ 0.58',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 26,
       'model': 'Gemini 3 Flash',
       'org': 'Google',
       'score': 90.4,
@@ -305,13 +294,24 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 27,
+      'rank': 26,
       'model': 'Qwen3.6 Plus',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 90.4,
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.50 / $ 3.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 27,
+      'model': 'Hy3',
+      'org': 'Tencent',
+      'score': 90.4,
+      'size': '295B',
+      'context': '262K',
+      'cost': '$ 0.14 / $ 0.58',
       'license': null,
       'src': 'llm-stats'
     },
@@ -405,17 +405,6 @@ window.GPQA = {
     },
     {
       'rank': 36,
-      'model': 'Qwen3.5-397B-A17B',
-      'org': 'Alibaba Cloud / Qwen Team',
-      'score': 88.4,
-      'size': '397B',
-      'context': '262K',
-      'cost': '$ 0.45 / $ 3.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 37,
       'model': 'Grok-4 Heavy',
       'org': 'xAI',
       'score': 88.4,
@@ -426,18 +415,18 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 38,
-      'model': 'GPT-5.1 High',
-      'org': 'OpenAI',
-      'score': 88.1,
-      'size': '—',
-      'context': '—',
-      'cost': '—',
+      'rank': 37,
+      'model': 'Qwen3.5-397B-A17B',
+      'org': 'Alibaba Cloud / Qwen Team',
+      'score': 88.4,
+      'size': '397B',
+      'context': '262K',
+      'cost': '$ 0.45 / $ 3.00',
       'license': null,
       'src': 'llm-stats'
     },
     {
-      'rank': 39,
+      'rank': 38,
       'model': 'GPT-5.1',
       'org': 'OpenAI',
       'score': 88.1,
@@ -448,13 +437,24 @@ window.GPQA = {
       'src': 'llm-stats'
     },
     {
-      'rank': 40,
-      'model': 'GPT-5.1 Instant',
+      'rank': 39,
+      'model': 'GPT-5.1 Thinking',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
-      'context': '400K',
-      'cost': '$ 1.25 / $ 10.00',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 40,
+      'model': 'GPT-5 Medium',
+      'org': 'OpenAI',
+      'score': 88.1,
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'license': null,
       'src': 'llm-stats'
     },
@@ -471,18 +471,18 @@ window.GPQA = {
     },
     {
       'rank': 42,
-      'model': 'GPT-5 Medium',
+      'model': 'GPT-5.1 Instant',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',
-      'context': '—',
-      'cost': '—',
+      'context': '400K',
+      'cost': '$ 1.25 / $ 10.00',
       'license': null,
       'src': 'llm-stats'
     },
     {
       'rank': 43,
-      'model': 'GPT-5.1 Thinking',
+      'model': 'GPT-5.1 High',
       'org': 'OpenAI',
       'score': 88.1,
       'size': '—',

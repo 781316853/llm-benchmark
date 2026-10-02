@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-01',
+  'updated': '2026-10-02',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -11,6 +11,102 @@ window.NEWS = {
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-02',
+      'title': 'OpenAI 扩容 GPT-6.1 Sol，速度将接近翻倍',
+      'brief': 'OpenAI 员工 Tibo 近期表示， GPT-6.1 Sol 是 OpenAI 迄今为止在 API 和订阅端需求量最大的模型。',
+      'url': 'https://x.com/thsottiaux/status/2105464274747527543',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Claude Code 开放 mods，代码定制行为与界面',
+      'brief': 'Anthropic 为 Claude Code 推出 mods ，用少量 TypeScript 代码就能改变 Claude Code 的行为和界面，也可以直接让 Claude Code 自己写一个。',
+      'url': 'https://claude.com/blog/claude-code-mods',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Earendil 发布 Pi 1.0 正式版与实验包 Pi Durable',
+      'brief': 'Earendil 正式发布 Pi 1.0 ，将其定位为经过长期打磨、保持极简且可扩展的 agent harness 。',
+      'url': 'https://earendil.com/posts/pi-1-0/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'GitHub 推出 gh-secure 一键加固公开仓库',
+      'brief': 'GitHub Security Lab 推出 gh-secure ，帮助维护者在 两分钟 内为公开仓库开启安全功能。',
+      'url': 'https://gh.io/gh-secure',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Stitch by Google 推出 Stitch CLI 命令行工具',
+      'brief': 'Stitch by Google 发布 Stitch CLI 命令行工具，包名为 @google/stitch ，目前可以通过官方链接获取。它支持在终端里连接本地编程 Agent ，生成界面和设计系统，并把本地开发服务器的快照发送给 Stitch，也可以交给 Antigravity 这类 harness 调用。',
+      'url': 'https://x.com/stitchbygoogle/status/2105695155164741984',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Black Forest Labs 正式发布 FLUX 3 Image 图像模型',
+      'brief': 'Black Forest Labs 正式发布图像生成与编辑模型 FLUX 3 Image ，已经通过 BFL API 和 Playground 提供。',
+      'url': 'https://bfl.ai/models/flux-3-image',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Microsoft AI 发布 3 款 MAI 语音模型',
+      'brief': 'Microsoft AI 发布流式转写模型 MAI-Transcribe-2-Streaming ，同时推出两款语音合成模型 MAI-Voice-2.1 和 MAI-Voice-2.1-Flash 。',
+      'url': 'https://microsoft.ai/news/our-first-streaming-transcription-model/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Cloudflare 发布并开源 Clef 与 Clef-flash 决策模型',
+      'brief': 'Cloudflare 发布 Clef 和 Clef-flash 两款决策模型，托管在 Workers AI 上提供 API，权重以 Apache 2.0 许可开源。',
+      'url': 'https://blog.cloudflare.com/clef-decision-models',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Perplexity 推出 Decisions API 并开源 27B 决策模型',
+      'brief': 'Perplexity 推出 Decisions API ，由多模态决策模型 pplx-decider-v1-27b 驱动，模型权重已开源。它不输出文本，而是对一组固定答案给出概率分布，官方称其在各项基准上得分 85.71% 。',
+      'url': 'https://x.com/perplexitydevs/status/2105725598882832414',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Tavus 发布 Griffin 实时视频交互模型',
+      'brief': 'Tavus 发布 Griffin ，官方称这是首个 Human Interaction Model ，一个能在视频通话中实时感知并回应人类行为的全双工 video-to-video 模型。',
+      'url': 'https://www.tavus.io/griffin',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'Claude 推出 Artifact 用量减半限时优惠',
+      'brief': 'Anthropic 为 Claude 推出限时两周的 Artifact 用量优惠：在对话中创建或编辑文档、幻灯片或设计后，接下来的 10 条消息 只按一半额度计入 5 小时 会话上限，每周用量上限不变。',
+      'url': 'https://support.claude.com/en/articles/17274727-artifact-usage-promotion',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-02',
+      'title': 'ChatGPT 手机相机新增扫描合成 PDF功能',
+      'brief': 'OpenAI 在 ChatGPT 手机端的相机中加入了扫描功能，用来把笔记和文档更方便地带进对话。用户可以连续拍摄多个页面， ChatGPT 会自动把它们合成一个 PDF ，供上传到聊天中使用。',
+      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-10-01',
       'title': 'Google 发布 Gemini 4 Argon',
@@ -37,46 +133,6 @@ window.NEWS = {
     },
     {
       'date': '2026-10-01',
-      'title': 'MiniMax 上线 M Plan 订阅，Token Plan 停止新购',
-      'brief': 'MiniMax 推出 M Plan 订阅方案，分为 Go 、 Explore 和 Build 三档，承接并拓展 Token Plan 的订阅能力，套餐价格与文本额度保持不变。三档均支持文本、图像和音频等能力， Explore 、 Build 还支持 H3 视频模型， Go 不含视频；各模态共用套餐额度。',
-      'url': 'https://platform.minimax.cn/docs/token-plan/announcements',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'Space Bunny Alpha 匿名测试期延长至 10 月 5 日',
-      'brief': 'OpenRouter 更新 Space Bunny Alpha 的测试进展，服务方已经推出速度和可靠性方面的改进。',
-      'url': 'https://openrouter.ai/stealth/space-bunny-alpha',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'Anthropic 宣布上线开发者新站点 Claude.dev',
-      'brief': 'Anthropic 的开发者账号 ClaudeDevs 宣布，Claude.dev 成为面向用 Claude 做开发的人群的新站点。',
-      'url': 'https://Claude.dev',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'Pi v0.99.0 加入 MCP 与 ChatGPT 订阅登录功能',
-      'brief': 'Pi 发布 v0.99.0 ，把 MCP 支持加入核心，而团队此前曾在官网和播客中明确宣称 Pi 不支持 MCP 。',
-      'url': 'https://earendil.com/posts/you-said-no-mcp/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'Grok Bot 更新软件开发能力，可移交任务给 Cursor',
-      'brief': 'Grok Bot 更新了构建软件的能力， Bot 现在可以把编码任务交给 Cursor 执行，用 GitHub 和 Origin 插件管理 PR ，并分享所构建成果的视频演示。',
-      'url': 'https://x.com/bot/status/2105373767568621895',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-01',
       'title': 'WorkBuddy 两项限免延期至 10 月 31 日',
       'brief': '混元大模型 官方公告，接入 WorkBuddy 的 Hy3 模型限免和 Hy4 preview 夜间限免均延期至 10 月 31 日 。',
       'url': 'https://mp.weixin.qq.com/s/G_v9I1jO-cfJFsH4CGhX6A',
@@ -98,38 +154,6 @@ window.NEWS = {
       'url': 'https://x.com/GeminiApp/status/2105327839054835886',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-09-30',
-      'title': 'OpenAI 发布 GPT-6.1 Sol，能力逼近 Astra',
-      'brief': 'OpenAI 发布 GPT-6 Sol 的升级版 GPT-6.1 Sol ，官方称其智能接近 GPT-6 Astra ，标准 API 价格约为 Astra 的五分之一。',
-      'url': 'https://openai.com/index/introducing-gpt-6-1-sol/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-30',
-      'title': 'OpenAI 发布常驻 Agent 产品 dots，全天候替用户工作',
-      'brief': 'OpenAI 发布常驻型 Agent 产品 dots ，由 GPT-6 Astra 驱动，拥有自己的云端计算机，可通过插件连接超过 4000 个应用。',
-      'url': 'https://openai.com/index/introducing-dots/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-09-30',
-      'title': '至知创新研究院发布并开源 IQuest-Q1',
-      'brief': '至知创新研究院 发布并开源 IQuest-Q1 ，这是一款面向 CLI 的开源智能体基座模型，权重已在 Hugging Face 开放下载。',
-      'url': 'https://iquestlab.github.io/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-09-30',
-      'title': 'Liquid AI 发布首款决策模型 d1 并开放 API',
-      'brief': 'Liquid AI 发布首款决策模型 d1 ，目前已通过 Liquid API 开放使用。',
-      'url': 'https://x.com/liquidai/status/2105003472332693869',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };
