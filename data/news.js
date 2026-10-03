@@ -2,54 +2,103 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-02',
+  'updated': '2026-10-03',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
+    '技术与洞察',
     '产品应用'
   ],
   'items': [
     {
-      'date': '2026-10-02',
-      'title': 'OpenAI 扩容 GPT-6.1 Sol，速度将接近翻倍',
-      'brief': 'OpenAI 员工 Tibo 近期表示， GPT-6.1 Sol 是 OpenAI 迄今为止在 API 和订阅端需求量最大的模型。',
-      'url': 'https://x.com/thsottiaux/status/2105464274747527543',
+      'date': '2026-10-03',
+      'title': 'Tibo 已为所有付费 ChatGPT 账户进行重置',
+      'brief': 'Codex 负责人 Tibo 表示，面向所有付费 ChatGPT 账户的全局重置已全部生效。他此前预告这项重置将于 10 月 2 日上午 10 时 （ PST ）落地，并为 GPT-6.1 Sol 发布后最初两天因负载激增运行缓慢致歉。他表示，该模型目前已恢复至预期速度。',
+      'url': 'https://x.com/thsottiaux/status/2106131810921136451',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-03',
+      'title': 'Gemini 未订阅用户将仅可用 Flash-Lite',
+      'brief': 'Google 在 Gemini 应用帮助文档中说明，自 2026 年 10 月 起，个人账号访问 Gemini 应用时的模型可用情况将变更，未订阅 AI 方案的用户自 10 月 9 日 起仅可使用 Flash-Lite 。',
+      'url': 'https://support.google.com/gemini/answer/17004136',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-03',
+      'title': 'Andrej Karpathy 分享理解语言模型输出的技巧',
+      'brief': 'Andrej Karpathy 在 X 发文表示，随着语言模型能力提升，人们会花多得多的时间理解模型的输出，工作重心也会更多地转向监督和理解这些结果。',
+      'url': 'https://x.com/karpathy/status/2105819303471976479',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-03',
+      'title': 'Claude Code 新增 You should Know 插件',
+      'brief': 'Anthropic 开发者账号 ClaudeDevs 宣布为 Claude Code 添加新插件 You should Know 。',
+      'url': 'https://x.com/ClaudeDevs/status/2106118517447876618',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-02',
-      'title': 'Claude Code 开放 mods，代码定制行为与界面',
-      'brief': 'Anthropic 为 Claude Code 推出 mods ，用少量 TypeScript 代码就能改变 Claude Code 的行为和界面，也可以直接让 Claude Code 自己写一个。',
-      'url': 'https://claude.com/blog/claude-code-mods',
+      'date': '2026-10-03',
+      'title': 'CodeBuddy 国内独家接入 Space Bunny',
+      'brief': '据微信公众号文章介绍， CodeBuddy 与 WorkBuddy 在国内独家接入 Space Bunny ，将其作为内置模型提供。',
+      'url': 'https://mp.weixin.qq.com/s/0DXff_YiPMc6lxp96mvbWg',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-02',
-      'title': 'Earendil 发布 Pi 1.0 正式版与实验包 Pi Durable',
-      'brief': 'Earendil 正式发布 Pi 1.0 ，将其定位为经过长期打磨、保持极简且可扩展的 agent harness 。',
-      'url': 'https://earendil.com/posts/pi-1-0/',
+      'date': '2026-10-03',
+      'title': 'OpenCode 宣布 Ling-3.1-flash 免费开放',
+      'brief': 'OpenCode 宣布， inclusionAI 的模型 Ling-3.1-flash 现已在 OpenCode 上免费提供。 OpenCode 介绍，这是 inclusionAI 的最新模型。',
+      'url': 'https://x.com/opencode/status/2106059771162087587',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-02',
-      'title': 'GitHub 推出 gh-secure 一键加固公开仓库',
-      'brief': 'GitHub Security Lab 推出 gh-secure ，帮助维护者在 两分钟 内为公开仓库开启安全功能。',
-      'url': 'https://gh.io/gh-secure',
+      'date': '2026-10-03',
+      'title': 'Cua Spaces 上线 macOS：供 AI agent 操作的沙箱应用',
+      'brief': 'Cua 在 X 上宣布推出桌面应用 Cua Spaces ，当天在 macOS 上线，可从官网下载，免费且源码可用。',
+      'url': 'https://x.com/trycua/status/2106057192285548763',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-02',
-      'title': 'Stitch by Google 推出 Stitch CLI 命令行工具',
-      'brief': 'Stitch by Google 发布 Stitch CLI 命令行工具，包名为 @google/stitch ，目前可以通过官方链接获取。它支持在终端里连接本地编程 Agent ，生成界面和设计系统，并把本地开发服务器的快照发送给 Stitch，也可以交给 Antigravity 这类 harness 调用。',
-      'url': 'https://x.com/stitchbygoogle/status/2105695155164741984',
+      'date': '2026-10-03',
+      'title': 'Meta 开源 Muse Gadgets 硬件项目',
+      'brief': 'Meta 推出开源项目 Muse Gadgets ，提供 ESP32 与 Linux 设备 SDK 及配套固件，让开发者自制接入个人 AI 助手 Muse 的硬件，把 Muse 连接到显示屏、按键、传感器和执行器上。',
+      'url': 'https://gadgets.muse.ai/',
       'source': '橘鸦AI早报',
       'type': '开发生态'
+    },
+    {
+      'date': '2026-10-03',
+      'title': 'ChatGPT Finances 功能向美国 Free 和 Go 用户推出',
+      'brief': 'ChatGPT 宣布 Finances in ChatGPT 功能正在向美国的 Free 和 Go 用户推出。用户可以通过 Plaid 和 Experian 安全连接账户， ChatGPT 会基于用户自身的财务信息，帮助其理解资金和信用状况。',
+      'url': 'https://x.com/ChatGPT/status/2106083592522932320',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-03',
+      'title': 'Grok Bot 宣布重置所有用户的使用限制',
+      'brief': '10 月 2 日 ， Grok Bot 发文宣布，已经重置所有 Grok Bot 用户的使用限制，并附言让用户尽情使用。',
+      'url': 'https://x.com/bot/status/2106083136002310193',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-03',
+      'title': '剑桥 CASP 发布研究：评估智能爆炸的证据与政策应对',
+      'brief': '剑桥大学 AI 科学与政策项目 CASP 发布研究文章，评估自动化 AI 研发 触发智能爆炸的证据、潜在影响与政策应对，署名作者包括 Geoffrey Hinton 、 Yoshua Bengio 、 Dawn Song 等人。',
+      'url': 'https://aigovernancecam.lovable.app/reports/intelligence-explosion',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
     },
     {
       'date': '2026-10-02',
@@ -104,54 +153,6 @@ window.NEWS = {
       'title': 'ChatGPT 手机相机新增扫描合成 PDF功能',
       'brief': 'OpenAI 在 ChatGPT 手机端的相机中加入了扫描功能，用来把笔记和文档更方便地带进对话。用户可以连续拍摄多个页面， ChatGPT 会自动把它们合成一个 PDF ，供上传到聊天中使用。',
       'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'Google 发布 Gemini 4 Argon',
-      'brief': 'Google 发布新一代前沿模型 Gemini 4 Argon ，目前首批通过 Fairwind Program 向一批受信任的网络安全防御者开放，并正参与美国政府的模型发布前自愿访问流程。 Google 表示，在继续收集早期测试反馈并完善安全防护后，将尽快把 Argon 扩展至开发者、企业和消费者，后续开放将从付费 API 客户和 Google AI Ultra 订阅用户开始。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-01',
-      'title': '哔哩哔哩发布并开源 Index-Translate 多语言翻译模型系列',
-      'brief': '哔哩哔哩 发布并开源 Index-Translate 多语言翻译模型，目前已经开放文本模型权重、在线 Demo 和技术报告。',
-      'url': 'https://index-translate.bilibili.com/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-01',
-      'title': '蚂蚁百灵发布 Ling-3.1-flash，开放两周免费体验',
-      'brief': '百灵推出 Ling-3.1-flash ，总参数约 560B ，每个 Token 激活约 25B ，上下文窗口上限为 1M 。',
-      'url': 'https://chat.ant-ling.com/chat',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'WorkBuddy 两项限免延期至 10 月 31 日',
-      'brief': '混元大模型 官方公告，接入 WorkBuddy 的 Hy3 模型限免和 Hy4 preview 夜间限免均延期至 10 月 31 日 。',
-      'url': 'https://mp.weixin.qq.com/s/G_v9I1jO-cfJFsH4CGhX6A',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'ChatGPT Sites 现已支持托管 MCP 服务器可转成插件',
-      'brief': 'OpenAI 开发者账号转发了工作人员 Max Stoiber 的宣布： ChatGPT Sites 现已支持托管 MCP 服务器，包括插件扩展。',
-      'url': 'https://x.com/OpenAIDevs/status/2105440399531577675',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-01',
-      'title': 'Google 为 Gemini 推出 skills 功能',
-      'brief': 'Google 在 Gemini 中推出 skills 功能，把用户为特定任务写好的指令保存下来，之后可以直接复用，目前已经面向全球用户推出， Workspace 商业、企业、非营利组织和教育客户将在未来数周内获得该功能。',
-      'url': 'https://x.com/GeminiApp/status/2105327839054835886',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     }

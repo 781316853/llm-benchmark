@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-02 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-03 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-0590190b0d2bde32d2925f72)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-24900079dd782be1c762ed5a)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-0590190b0d2bde32d2925f72',
-  'batchRevision': 309,
-  'batchPublishedAt': '2026-10-01T22:27:07.951Z',
-  'updated': '2026-10-02',
-  'refreshedAt': '2026-10-02 23:54',
+  'batchId': 'overall-24900079dd782be1c762ed5a',
+  'batchRevision': 310,
+  'batchPublishedAt': '2026-10-02T22:18:05.565Z',
+  'updated': '2026-10-03',
+  'refreshedAt': '2026-10-03 14:44',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -1458,6 +1458,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 65,
+      'provider': 'glm',
+      'model': 'glm-5.3-flash',
+      'effort': 'high',
+      'displayName': 'glm-5.3-flash / High',
+      'overall': 54.4,
+      'backend': 64,
+      'frontend': 76,
+      'knowledge': 20,
+      'elapsedMs': 1043106,
+      'costUsd': 0.018252,
+      'tags': []
+    },
+    {
+      'rank': 66,
       'provider': 'GEMINI',
       'model': 'gemini-3.7-flash-high',
       'effort': 'default',
@@ -1471,7 +1485,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 66,
+      'rank': 67,
       'provider': 'minimax',
       'model': 'MiniMax-M3',
       'effort': 'high',
@@ -1482,20 +1496,6 @@ window.MODELDIAL = {
       'knowledge': 50,
       'elapsedMs': 1325984,
       'costUsd': 0.313887,
-      'tags': []
-    },
-    {
-      'rank': 67,
-      'provider': 'glm',
-      'model': 'glm-5.3-flash',
-      'effort': 'high',
-      'displayName': 'glm-5.3-flash / High',
-      'overall': 52.8,
-      'backend': 60,
-      'frontend': 76,
-      'knowledge': 20,
-      'elapsedMs': 1374971,
-      'costUsd': 0.026029,
       'tags': []
     },
     {

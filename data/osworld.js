@@ -1,4 +1,4 @@
-// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-10-02)
+// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-10-03)
 // 主渠道:https://www.datalearner.com/benchmarks/osworld-2(厂商官方发布成绩,partial 口径)
 // 补充:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/,系统级条目仅追加主源未收录者)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -9,8 +9,8 @@ window.OSWORLD = {
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-02',
-  'refreshedAt': '2026-10-02 23:54',
+  'updated': '2026-10-03',
+  'refreshedAt': '2026-10-03 14:44',
   'stats': {
     'tasks': 108,
     'entries': 31
@@ -45,6 +45,15 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'GPT-6.1 Sol',
+      'note': '最高（工具）',
+      'score': 71.4,
+      'org': 'OpenAI',
+      'reported': '2026-09-29',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'Claude Opus 5',
       'note': '最高（工具）',
       'score': 70.57,
@@ -52,15 +61,6 @@ window.OSWORLD = {
       'reported': '2026-07-24',
       'url': null,
       'src': 'datalearner'
-    },
-    {
-      'system': 'GPT-6.1 Sol',
-      'note': 'Partial score on the v2026.08.08 offline subset at maximum reasoning effort. Derived from the launch statement that Sol is 2.1 percentage points below Astra (72.6%); self-reported by OpenAI. Not directly comparable to combined online/offline scores.',
-      'score': 70.5,
-      'org': 'OpenAI',
-      'reported': 'Sep 2026',
-      'url': 'https://openai.com/index/introducing-gpt-6-1-sol/',
-      'src': 'mirror'
     },
     {
       'system': 'Gemini 4 Argon',
