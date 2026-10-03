@@ -43,7 +43,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 137,
+      'modelCount': 138,
       'updated': '2026-10-03',
       'ageDays': 0,
       'completeness': 1,
@@ -699,7 +699,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Gemini 4 Argon',
+      'canonId': 'gemini-4-argon-high',
       'name': 'Gemini 4 Argon',
       'vendor': '其他',
       'sources': [
@@ -822,9 +822,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 137,
-      'complete': 137,
-      'modelCount': 137,
+      'total': 138,
+      'complete': 138,
+      'modelCount': 138,
       'missingFields': {},
       'flag': 'ok'
     },
