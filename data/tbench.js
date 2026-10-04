@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-03)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-04)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -11,8 +11,8 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-10-03',
-  'refreshedAt': '2026-10-03 22:21',
+  'updated': '2026-10-04',
+  'refreshedAt': '2026-10-04 15:07',
   'stats': {
     'tasks': 66,
     'entries': 36
@@ -369,6 +369,18 @@ window.TBENCH = {
     },
     {
       'rank': null,
+      'model': 'Claude Mythos 5.1',
+      'agent': null,
+      'effort': '最高（工具）',
+      'score': 60.9,
+      'ci': null,
+      'date': '2026-09-01',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
       'model': 'Gemini 4 Argon',
       'agent': null,
       'effort': '最高（工具）',
@@ -405,6 +417,18 @@ window.TBENCH = {
     },
     {
       'rank': null,
+      'model': 'Qwen3.8-Max-0902',
+      'agent': null,
+      'effort': '思考模式（工具）',
+      'score': 38.89,
+      'ci': null,
+      'date': '2026-09-02',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
       'model': 'MiMo-V2.6-Pro',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -423,30 +447,6 @@ window.TBENCH = {
       'score': 33.3,
       'ci': null,
       'date': '2026-09-02',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'Step 5 Preview',
-      'agent': null,
-      'effort': '思考模式 High（工具）',
-      'score': 33.3,
-      'ci': null,
-      'date': '2026-09-20',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'GLM-5.3-Flash',
-      'agent': null,
-      'effort': '思考模式（工具）',
-      'score': 32.8,
-      'ci': null,
-      'date': '2026-08-26',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'

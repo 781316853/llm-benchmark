@@ -1,4 +1,4 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-10-03)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-10-04)
 // 来源:https://llm-stats.com/benchmarks/humanity%27s-last-exam(官方:https://lastexam.ai/)
 // 主渠道:https://www.datalearner.com/benchmarks/hle(厂商官方发布成绩转录)
 // 补充:llm-stats 聚合表 · https://benchlm.ai/benchmarks/hle(benchlm 镜像) · https://benchlm.ai/benchmarks/aahle(AA 复测口径)
@@ -12,8 +12,8 @@ window.HLE = {
   'url': 'https://llm-stats.com/benchmarks/humanity%27s-last-exam',
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-03',
-  'refreshedAt': '2026-10-03 22:21',
+  'updated': '2026-10-04',
+  'refreshedAt': '2026-10-04 15:07',
   'stats': {
     'tasks': 2500,
     'entries': 56
@@ -103,15 +103,15 @@ window.HLE = {
       'rank': 8
     },
     {
-      'rank': 9,
-      'model': 'DeepSeek-V4-Pro-0813',
-      'org': 'DeepSeek',
+      'model': 'DeepSeek V4 Pro 0813',
+      'org': 'DeepSeek-AI',
       'score': 60,
+      'license': '免费商用授权',
+      'src': 'datalearner',
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 9
     },
     {
       'model': 'Kimi K3',

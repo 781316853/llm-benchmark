@@ -1,4 +1,4 @@
-// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-10-03)
+// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-10-04)
 // 主渠道:https://www.datalearner.com/benchmarks/agents-last-exam(厂商官方发布成绩转录)
 // 补充:https://llm-stats.com/benchmarks/agents-last-exam(官方:https://agents-last-exam.org/leaderboard)
 // 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)
@@ -10,8 +10,8 @@ window.LASTEXAM = {
   'url': 'https://llm-stats.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-03',
-  'refreshedAt': '2026-10-03 22:21',
+  'updated': '2026-10-04',
+  'refreshedAt': '2026-10-04 15:07',
   'stats': {
     'tasks': 1490,
     'entries': 33
@@ -313,16 +313,6 @@ window.LASTEXAM = {
       'rank': 25
     },
     {
-      'model': 'DeepSeek-V4-Pro',
-      'org': 'DeepSeek-AI',
-      'score': 25.7,
-      'license': '免费商用授权',
-      'effort': '极高强度思考（工具）',
-      'date': '2026-08-13',
-      'src': 'datalearner',
-      'rank': 26
-    },
-    {
       'model': 'Claude Fable 5',
       'org': 'Anthropic',
       'score': 25.7,
@@ -330,39 +320,33 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-06-09',
       'src': 'datalearner',
-      'rank': 27
+      'rank': 26
     },
     {
-      'rank': 28,
-      'model': 'DeepSeek-V4-Pro-0813',
-      'org': 'DeepSeek',
+      'model': 'DeepSeek V4 Pro 0813',
+      'org': 'DeepSeek-AI',
       'score': 25.7,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-08-13',
+      'src': 'datalearner',
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 27
     },
     {
-      'model': 'DeepSeek-V4-Flash',
+      'model': 'DeepSeek V4 Flash 0731',
       'org': 'DeepSeek-AI',
       'score': 25.2,
       'license': '免费商用授权',
       'effort': '最高（工具）',
-      'date': '2026-04-24',
+      'date': '2026-07-31',
       'src': 'datalearner',
-      'rank': 29
-    },
-    {
-      'rank': 30,
-      'model': 'DeepSeek-V4-Flash-0731',
-      'org': 'DeepSeek',
-      'score': 25.2,
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 28
     },
     {
       'model': 'Qwen3.8-Flash-Next',
@@ -375,7 +359,7 @@ window.LASTEXAM = {
       'size': '125B',
       'context': '—',
       'cost': '—',
-      'rank': 31
+      'rank': 29
     },
     {
       'model': 'Hy4 preview',
@@ -388,7 +372,7 @@ window.LASTEXAM = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 32
+      'rank': 30
     },
     {
       'model': 'Qwen3.8-27B',
@@ -401,6 +385,26 @@ window.LASTEXAM = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
+      'rank': 31
+    },
+    {
+      'model': 'DeepSeek-V4-Pro',
+      'org': 'DeepSeek-AI',
+      'score': 16.5,
+      'license': '免费商用授权',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-08-13',
+      'src': 'datalearner',
+      'rank': 32
+    },
+    {
+      'model': 'DeepSeek-V4-Flash',
+      'org': 'DeepSeek-AI',
+      'score': 15.8,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-04-24',
+      'src': 'datalearner',
       'rank': 33
     }
   ]

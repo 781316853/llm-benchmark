@@ -1,4 +1,4 @@
-// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-10-03)
+// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-10-04)
 // 来源:https://llm-stats.com/benchmarks/nl2repo(官方:https://github.com/multimodal-art-projection/NL2RepoBench)
 // 主渠道:官方论文评测表 https://arxiv.org/html/2512.12730v2(Table 2) · https://www.datalearner.com/benchmarks/nl2repo-bench(厂商官方发布)
 // 补充:llm-stats 聚合表 · https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像)
@@ -11,8 +11,8 @@ window.NL2REPO = {
   'url': 'https://llm-stats.com/benchmarks/nl2repo',
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-03',
-  'refreshedAt': '2026-10-03 22:21',
+  'updated': '2026-10-04',
+  'refreshedAt': '2026-10-04 15:07',
   'stats': {
     'tasks': 103,
     'entries': 39
@@ -47,7 +47,7 @@ window.NL2REPO = {
       'rank': 3
     },
     {
-      'model': 'DeepSeek-V4-Pro-0813',
+      'model': 'DeepSeek V4 Pro 0813',
       'org': 'DeepSeek-AI',
       'score': 61.5,
       'license': '免费商用授权',
@@ -129,7 +129,7 @@ window.NL2REPO = {
       'rank': 11
     },
     {
-      'model': 'DeepSeek-V4-Flash-0731',
+      'model': 'DeepSeek V4 Flash 0731',
       'org': 'DeepSeek-AI',
       'score': 54.2,
       'license': '免费商用授权',
