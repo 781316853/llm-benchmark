@@ -10,7 +10,7 @@ window.OSWORLD = {
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-05',
-  'refreshedAt': '2026-10-05 15:19',
+  'refreshedAt': '2026-10-06 02:40',
   'stats': {
     'tasks': 108,
     'entries': 31
@@ -136,7 +136,7 @@ window.OSWORLD = {
     },
     {
       'system': 'GPT-5.6 Sol',
-      'note': '极高强度思考（工具）',
+      'note': '最高（工具）',
       'score': 62.6,
       'org': 'OpenAI',
       'reported': '2026-06-26',

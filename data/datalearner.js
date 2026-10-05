@@ -48,14 +48,6 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
-      'name': 'GPT-6 Astra',
-      'score': 74.1,
-      'mode': '最高（工具）',
-      'date': '2026-09-03',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
       'name': 'Gemini 3.8 Flash',
       'score': 73.8,
       'mode': '思考模式 High（工具）',
@@ -76,6 +68,14 @@ window.DATALEARNER = {
       'score': 73.7,
       'mode': '最高（工具）',
       'date': '2026-07-24',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
+      'name': 'GPT-6 Astra',
+      'score': 73.2,
+      'mode': '最高（工具）',
+      'date': '2026-09-03',
       'params': '未知',
       'license': '闭源'
     },
@@ -108,14 +108,6 @@ window.DATALEARNER = {
       'score': 72.8,
       'mode': '思考模式 Medium（工具）',
       'date': '2026-09-03',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-5.6 Sol',
-      'score': 72.7,
-      'mode': '极高强度思考（工具）',
-      'date': '2026-06-26',
       'params': '未知',
       'license': '闭源'
     },
@@ -160,9 +152,17 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'GPT-5.6 Sol',
+      'score': 70.7,
+      'mode': '极高强度思考（工具）',
+      'date': '2026-06-26',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'Claude Fable 5',
       'score': 69.9,
-      'mode': '深度思考模式（工具）',
+      'mode': '极高强度思考（工具）',
       'date': '2026-06-09',
       'params': '未知',
       'license': '闭源'
@@ -179,14 +179,6 @@ window.DATALEARNER = {
       'name': 'GPT-5.6 Terra',
       'score': 69.6,
       'mode': '最高（工具）',
-      'date': '2026-06-26',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-5.6 Terra',
-      'score': 69.6,
-      'mode': '极高强度思考（工具）',
       'date': '2026-06-26',
       'params': '未知',
       'license': '闭源'
@@ -246,6 +238,14 @@ window.DATALEARNER = {
       'date': '2026-07-16',
       'params': '28000亿',
       'license': '有条件商用'
+    },
+    {
+      'name': 'MiMo-V2.6-Flash',
+      'score': 67.9,
+      'mode': '思考模式（工具）',
+      'date': '2026-09-22',
+      'params': '3090亿',
+      'license': '免费商用'
     }
   ]
 };

@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 37,
+      'modelCount': 38,
       'updated': '2026-10-05',
       'ageDays': 0,
       'completeness': 1,
@@ -197,7 +197,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 36,
+      'modelCount': 37,
       'updated': '2026-10-05',
       'ageDays': 0,
       'completeness': 1,
@@ -309,11 +309,11 @@ window.QUALITY = {
       ],
       'scores': {
         'ai_capability': 100.85,
-        'datalearner': 73.55,
+        'datalearner': 73.33,
         'deepswe_v11': 74
       },
-      'mean': 82.8,
-      'stddev': 12.76,
+      'mean': 82.7,
+      'stddev': 12.82,
       'flag': 'alert'
     },
     {
@@ -495,11 +495,11 @@ window.QUALITY = {
       ],
       'scores': {
         'ai_capability': 84.45,
-        'datalearner': 71.6,
+        'datalearner': 70.93,
         'deepswe_v11': 73
       },
-      'mean': 76.4,
-      'stddev': 5.76,
+      'mean': 76.1,
+      'stddev': 5.94,
       'flag': 'warn'
     },
     {
@@ -793,6 +793,22 @@ window.QUALITY = {
       'mean': 68.8,
       'stddev': 0,
       'flag': 'ok'
+    },
+    {
+      'canonId': 'MiMo-V2.6-Flash',
+      'name': 'MiMo-V2.6-Flash',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 67.9,
+        'deepswe_v11': 67.9
+      },
+      'mean': 67.9,
+      'stddev': 0,
+      'flag': 'ok'
     }
   ],
   'completeness': {
@@ -848,9 +864,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 37,
-      'complete': 37,
-      'modelCount': 37,
+      'total': 38,
+      'complete': 38,
+      'modelCount': 38,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -938,9 +954,9 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 36,
-      'complete': 36,
-      'modelCount': 36,
+      'total': 37,
+      'complete': 37,
+      'modelCount': 37,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1118,7 +1134,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'ai_capability,datalearner,deepswe_v11',
-      'message': 'gpt-6-astra 跨源分数标准差 12.76(>10)'
+      'message': 'gpt-6-astra 跨源分数标准差 12.82(>10)'
     },
     {
       'level': 'error',
