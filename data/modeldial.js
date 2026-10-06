@@ -22,7 +22,7 @@ window.MODELDIAL = {
   'batchRevision': 312,
   'batchPublishedAt': '2026-10-04T22:20:53.475Z',
   'updated': '2026-10-05',
-  'refreshedAt': '2026-10-06 02:40',
+  'refreshedAt': '2026-10-06 15:46',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
