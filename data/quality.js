@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'arcagi3',
       'name': 'ARC-AGI-3',
       'status': 'ok',
-      'modelCount': 18,
+      'modelCount': 19,
       'updated': '2026-10-06',
       'ageDays': 0,
       'completeness': 1,
@@ -699,7 +699,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'gemini-4-argon-high',
+      'canonId': 'Gemini 4 Argon',
       'name': 'Gemini 4 Argon',
       'vendor': '其他',
       'sources': [
@@ -830,9 +830,9 @@ window.QUALITY = {
     },
     'arcagi3': {
       'rate': 1,
-      'total': 18,
-      'complete': 18,
-      'modelCount': 18,
+      'total': 19,
+      'complete': 19,
+      'modelCount': 19,
       'missingFields': {},
       'flag': 'ok'
     },
