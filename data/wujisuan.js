@@ -20,7 +20,7 @@ window.WUJISUAN = {
   'author': '@无机酸-_-',
   'siteVersion': '2.1',
   'updated': '2026-09-29',
-  'refreshedAt': '2026-10-07 15:26',
+  'refreshedAt': '2026-10-08 00:44',
   'scale': {
     'min': 0,
     'max': 200,
