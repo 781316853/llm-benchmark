@@ -265,7 +265,7 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
 
     <!-- 9) Agent 工具更新日志(11 个 Agent 工具的官方 changelog 汇总;非分数数据,不计入综合分与命中数) -->
     <section class="page" id="page-changelog">
-      <div class="page-head"><h2>Agent工具更新日志 <span class="tag">11 个工具官方 changelog · 只显示各工具最近一次更新</span></h2><p id="clDesc" class="page-desc"></p></div>
+      <div class="page-head"><h2>Agent工具更新日志 <span class="tag">11 个工具官方 changelog · 每个工具显示最近 2 条更新</span></h2><p id="clDesc" class="page-desc"></p></div>
       <!-- 左侧工具目录:点击跳到该工具的最新版本卡片;窄屏自动收为顶部横向胶囊条 -->
       <div class="auth-layout">
         <aside class="auth-outline" aria-label="更新日志工具目录">
@@ -283,12 +283,12 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
       <section class="notes-section">
         <p class="note-title">阅读说明</p>
         <ul style="white-space: pre-wrap;">
-          <li>本页汇总 <b>Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy</b> 十一个 Agent 工具的<b>官方更新日志</b>,每个工具<b>只显示最近一次更新</b>,正文保留源站完整内容(不摘要),右上角「查看源站 ↗」跳到该条更新在源站的原文。</li>
-          <li>数据文件仍保存各源可得的<b>全量历史</b>;上方的近 14 天 / 近 30 天 / 全部切换的是「最近一次更新要多久以内才算新」—— 超出范围的工具不显示卡片,改为提示其最近一版发布于何时。窗口按自然日从今天往前推算,与数据是否刷新成功无关。</li>
-          <li>英文条目由免费机器翻译接口(MyMemory)自动译成中文,与全站数据一样每日刷新 2 次。只译各工具<b>当前显示的那一条</b>(最多 11 条,其中 Claude Code 单条发布说明可达 2 万字符,需分轮补齐),同一份发布说明只译一次、之后长期复用不再请求;尚未译出的条目标注「原文」并保留英文。</li>
+          <li>本页汇总 <b>Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy</b> 十一个 Agent 工具的<b>官方更新日志</b>,每个工具<b>显示最近 2 条更新</b>,正文保留源站完整内容(不摘要),每张卡片的「查看源站 ↗」跳到该条更新在源站的原文。</li>
+          <li>数据文件仍保存各源可得的<b>全量历史</b>;上方的近 14 天 / 近 30 天 / 全部切换的是「更新要多久以内才算新」—— 每个工具显示的条数固定为最近 2 条、不受窗口影响,早于窗口的条目仍会展示,只是标注「超出窗口」。窗口按自然日从今天往前推算,与数据是否刷新成功无关。</li>
+          <li>英文条目由免费机器翻译接口(MyMemory)自动译成中文,与全站数据一样每日刷新 2 次。只译各工具<b>当前显示的两条</b>(最多 22 条,其中 Claude Code 单条发布说明可达 2 万字符,需分轮补齐),同一份发布说明只译一次、之后长期复用不再请求;尚未译出的条目标注「原文」并保留英文。</li>
           <li>只收录<b>正式发布版本</b>:alpha / beta / rc / nightly 等预发布版一律不入库(实测 Codex 单次抓取的最新 10 个 release 有 9 个是 alpha 预发布版,全收会淹没整页)。</li>
           <li>Codex / Claude Code / OpenCode / Kimi Code 取自各自 <b>GitHub Releases 官方接口</b>(Kimi 官方文档站的更新日志是客户端渲染、抓不到内容);Qoder CN 与 Qoder CN IDE 取自 <b>Qoder CN 文档站的两张更新日志页</b>(桌面端 0.4.x 与 IDE 1.32.x 是两套编号,故分两卡);TraeCode / TraeWork 各取 <b>Trae 文档站的独立日志页</b>(docs.trae.cn 的 ide_changelog / work_changelog,一次发布一个日期标题、可深链到那次发布;抓不到时转国际站 trae.ai 备源 —— 备源是多产品线混排,按标签挑出本卡那条线,TRAE APP 一类不收录);ZCode / CodeBuddy / WorkBuddy 取自<b>各官网更新日志页</b>。条目上的标签是源站自带的分类。</li>
-          <li>随全站数据<b>每日自动刷新 2 次</b>。某个源改版或抓取失败时,该工具卡片会标注「数据滞后」并沿用上一次成功抓到的条目,同时保留跳转源站的入口;若显示「最近一次更新在 X,超出当前时间范围」,表示源站确实在那之后没有发布新版本(例如 TraeWork 最近一版在 8 月 21 日)。</li>
+          <li>随全站数据<b>每日自动刷新 2 次</b>。某个源改版或抓取失败时,该工具卡片会标注「数据滞后」并沿用上一次成功抓到的条目,同时保留跳转源站的入口;若某张卡片标注「超出窗口」,表示该条早于所选时间范围(例如 TraeWork 最近一版在 8 月 21 日),它仍会展示、不会被隐藏。</li>
         </ul>
       </section>
     </section>

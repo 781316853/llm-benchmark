@@ -637,10 +637,13 @@
   }
 
   // ===== Agent 工具更新日志(「Agent工具更新日志」页;非分数数据,不参与综合分与命中数) =====
-  // 抓取端在 data/changelog.js 存各源可得的全量条目,页面**每个工具只渲染最近一次更新**;
-  // days 是「这次更新是否还算新」的门槛(前端 14/30/全部 切换),不是条目条数的裁剪。
+  // 抓取端在 data/changelog.js 存各源可得的全量条目;页面**每个工具固定渲染最近 CL_RECENT_COUNT 条**。
+  // days 是「这条更新是否还算新」的门槛(前端 14/30/全部 切换),不是条目条数的裁剪 ——
+  // 条数与窗口无关,早于窗口的条目不会消失,只是标 outOfWindow、由页面加「超出窗口」徽标。
   // days<=0 表示不限。窗口基准取真实的今天而非 data 的 updated:
   // 否则 CI 连续几天不落地时,窗口会跟着数据一起滞后,把早已过期的条目算进窗口内。
+  // 与 scripts/lib/changelog.js 的展示条数口径一致(改一处要同步另一处)。
+  var CL_RECENT_COUNT = 2;
   function dayOffset(dateStr, delta) {
     var t = parseDay(dateStr) + delta * 86400000;
     return isFinite(t) ? new Date(t).toISOString().slice(0, 10) : "";
@@ -654,9 +657,15 @@
       // 条目在抓取端已按日期降序排好,首条即该工具最近一次更新
       var all = t.entries || [];
       var latest = all[0] || null;
-      var inWindow = latest && (!cutoff || latest.date >= cutoff);
+      var inWindow = !!(latest && (!cutoff || latest.date >= cutoff));
+      // 固定取最近 CL_RECENT_COUNT 条(总条数不足则全取);窗口只决定每条算不算「新」,
+      // 不影响它显不显示 —— 早于窗口的条目仍展示,标 outOfWindow 供页面加徽标,避免留白。
+      var entries = all.slice(0, CL_RECENT_COUNT).map(function (e) {
+        return Object.assign({}, e, { outOfWindow: !!(cutoff && e.date < cutoff) });
+      });
       return Object.assign({}, t, {
-        entries: inWindow ? [latest] : [],
+        entries: entries,
+        inWindow: inWindow,
         total: all.length,
         latestDate: latest ? latest.date : ""
       });

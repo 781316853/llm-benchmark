@@ -1602,7 +1602,8 @@
   }
 
   // ===== 9) 更新日志(11 个 Agent 工具的官方 changelog;非分数数据,不参与综合分) =====
-  // 抓取端存全量条目,D.changelog(days) 按滚动窗口过滤;本页只做目录 + 卡片渲染。
+  // 抓取端存全量条目;D.changelog(days) 固定取每个工具最近 2 条,并按窗口给每条标 outOfWindow。
+  // 本页只做目录 + 卡片渲染。
   // 正文一律完整输出到 DOM(需求要求"保留全部更新日志"),仅在超长(>900 字)时默认折叠,
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
   // data/changelog.js 含 11 个工具的全量历史(实测约 2.2MB),不进首屏脚本清单:
@@ -1624,8 +1625,8 @@
   function clCardHtml(t, e) {
     var body = e.body || "";
     var long = body.length > CL_FOLD_CHARS;
-    // 免费翻译额度按天分批补,窗口内会有尚未译出的条目;切「全部」时窗口外历史一律原文。
-    // 这两种情况标出来,免得读者以为页面把英文更新漏掉了。
+    // 免费翻译额度按天分批补,页面渲染的条目(每工具最近 2 条)仍可能有尚未译出的。
+    // 这种情况标出来,免得读者以为页面把英文更新漏掉了。
     var orig = (body || e.title) && !/[\u4e00-\u9fff]/.test(body + (e.title || ""));
     // 标题与版本号只差一个 v 前缀时(GitHub Atom 的 release 名常就等于 tag)不重复显示
     var showTitle = !!(e.version && e.title) &&
@@ -1634,7 +1635,8 @@
       '<header class="cl-card-head">' +
         '<span class="cl-ver">' + esc(e.version ? "v" + e.version : e.title) + '</span>' +
         (showTitle ? '<span class="cl-title">' + esc(e.title) + '</span>' : "") +
-        (orig ? '<span class="cl-badge cl-badge--orig" title="该条尚未译出(免费翻译额度按天分批补,或超出两周窗口),此处为源站原文">原文</span>' : "") +
+        (orig ? '<span class="cl-badge cl-badge--orig" title="该条尚未译出(免费翻译额度按天分批补),此处为源站原文">原文</span>' : "") +
+        (e.outOfWindow ? '<span class="cl-badge cl-badge--window" title="该条早于所选时间窗口,不算新;仍保留展示">超出窗口</span>' : "") +
         '<span class="cl-date"' + (e.dateRaw ? ' title="源站原文:' + esc(e.dateRaw) + '"' : "") + '>' + esc((e.date || "").slice(5)) + '</span>' +
       '</header>' +
       (e.tags && e.tags.length ? '<div class="cl-tags">' + e.tags.map(function (g) {
@@ -1682,15 +1684,18 @@
     // 若改读 data.uiWindowDays 会让按钮选中态与提示文案停在默认值上。
     var days = state.changelogDays;
     var badCount = data.tools.filter(function (t) { return t.status !== "ok"; }).length;
-    var shownTools = data.tools.filter(function (t) { return t.entries.length; }).length;
+    // 条数固定为每工具 2 条,窗口不再影响「有没有卡片」,只决定哪些条目算新 ——
+    // 故此处按 inWindow(最近一条在窗口内)统计,而非「有卡片的工具数」。
+    var inWindowTools = data.tools.filter(function (t) { return t.inWindow; }).length;
     if (descEl) {
       descEl.innerHTML = esc(data.desc || "") + "<br>" +
         [ "更新于 " + esc(data.updated || ""),
           data.refreshedAt ? "本站抓取 " + esc(data.refreshedAt) + "(北京时间)" : "",
-          shownTools + " / " + data.tools.length + " 个工具在窗口内有新版本" ]
+          inWindowTools + " / " + data.tools.length + " 个工具在窗口内有新版本" ]
         .filter(Boolean).join(" · ");
     }
-    // 时间范围切换:决定「最近一次更新」算不算新 —— 超出范围的工具不渲染卡片,只提示其最新一版日期
+    // 时间范围切换:决定「这条更新算不算新」—— 条数固定(每工具最近 2 条),
+    // 超出范围的条目不隐藏,只加「超出窗口」徽标
     var btns = document.getElementById("clRangeBtns");
     if (btns) {
       btns.innerHTML = [[14, "近 14 天"], [30, "近 30 天"], [0, "全部"]].map(function (o) {
@@ -1701,8 +1706,8 @@
     }
     var hint = document.getElementById("clHint");
     if (hint) {
-      hint.textContent = "每个工具只显示最近一次更新 · 每日刷新 2 次" +
-        (days > 0 ? " · 仅计最近 " + days + " 天内的更新" : " · 当前不限时间") +
+      hint.textContent = "每个工具显示最近 2 条更新 · 每日刷新 2 次" +
+        (days > 0 ? " · 早于最近 " + days + " 天的条目标注「超出窗口」" : " · 当前不限时间") +
         (badCount ? " · 异常源 " + badCount + " 个(沿用上次数据并标注)" : "");
     }
     var cnt = document.getElementById("clOutlineCount");
@@ -1717,15 +1722,13 @@
           '<span class="auth-outline-count">' + (t.entries.length ? esc(t.latestDate.slice(5)) : "—") + '</span></a>';
       }).join("");
     }
-    // 右主体:每工具一个区块,只渲染最近一次更新(数据文件仍存全量历史)
+    // 右主体:每工具一个区块,只渲染最近 2 条更新(数据文件仍存全量历史)
     wrap.innerHTML = data.tools.map(function (t) {
       var cards = t.entries.map(function (e) { return clCardHtml(t, e); }).join("");
       var emptyLine = "";
       if (!t.entries.length) {
         emptyLine = '<p class="cl-empty">' +
-          (t.status !== "ok"
-            ? "抓取失败:" + esc(t.error || "未知原因") + "。"
-            : (t.latestDate ? "最近一次更新在 " + esc(t.latestDate) + ",超出当前时间范围。" : "暂无可用更新条目。")) +
+          (t.status !== "ok" ? "抓取失败:" + esc(t.error || "未知原因") + "。" : "暂无可用更新条目。") +
           ' <a class="cl-src" href="' + esc(t.changelogUrl) + '" target="_blank" rel="noopener">查看源站 ↗</a></p>';
       }
       return '<section class="cl-tool" id="cl-tool-' + esc(t.id) + '">' +
@@ -1733,9 +1736,9 @@
           '<h3 class="cl-tool-name">' + esc(t.name) + '</h3>' +
           '<span class="cl-tool-vendor">' + esc(t.vendor) + '</span>' +
           clStatusBadge(t) +
-          '<span class="cl-tool-count">' + (t.total > 1
-            ? "全量 " + t.total + " 条 · 仅显示最近一次"
-            : (t.entries.length ? "1 条更新" : "暂无更新记录")) + '</span>' +
+          '<span class="cl-tool-count">' + (t.total > t.entries.length
+            ? "全量 " + t.total + " 条 · 显示最近 " + t.entries.length + " 条"
+            : (t.entries.length ? t.entries.length + " 条更新" : "暂无更新记录")) + '</span>' +
           '<a class="cl-src cl-tool-src" href="' + esc(t.changelogUrl) + '" target="_blank" rel="noopener">更新日志源站 ↗</a>' +
         '</header>' +
         '<div class="cl-entries">' + cards + emptyLine + '</div>' +

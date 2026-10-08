@@ -904,8 +904,11 @@ a:hover { text-decoration: underline; }
   padding: 1px 7px; letter-spacing: .3px; white-space: nowrap; }
 .cl-badge--stale { color: var(--bd-warn-fg); background: var(--bd-warn-bg); border: 1px solid var(--bd-warn-bd); }
 .cl-badge--error { color: var(--bad); background: var(--panel-2); border: 1px solid var(--border); }
-/* 尚未译出的条目(免费额度按天分批补,或超出两周窗口):正文保留源站英文原文 */
+/* 尚未译出的条目(免费额度按天分批补):正文保留源站英文原文 */
 .cl-badge--orig { color: var(--text-tertiary); background: var(--bg-soft); border: 1px solid var(--border-subtle);
+  cursor: help; }
+/* 早于所选时间窗口的条目:仍保留展示,仅标注「不算新」(区别于 --stale 的抓取滞后) */
+.cl-badge--window { color: var(--text-tertiary); background: var(--panel-2); border: 1px solid var(--border);
   cursor: help; }
 .cl-entries { display: flex; flex-direction: column; gap: 12px; }
 .cl-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);

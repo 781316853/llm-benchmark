@@ -29,6 +29,10 @@ const news = require("./news");   // 复用 normalizeDate / hasCJK / translateTo
 
 const ZERO_WIDTH = /[\u200b-\u200d\ufeff]/g;
 
+// 页面每个工具渲染的条目数(与前端 js/data.js 的 CL_RECENT_COUNT 一致;改一处要同步另一处)。
+// 翻译对象即「页面真正会显示的条目」—— 只有这 N 条值得花免费额度。
+const DISPLAY_ENTRIES = 2;
+
 // ===== 通用文本处理 =====
 
 // HTML 实体反转义(顺序同 news.decodeEntities:& 最后处理,避免 &amp;lt; 二次解码)
@@ -713,9 +717,9 @@ async function translateEntry(entry, cfg, budgetLeft) {
   return { ok: true, used: cost, title: out.title, body: out.body };
 }
 
-// 只译「前端真正会显示的那一条」= 每个工具最近一次更新(entries 已按日期降序,首条即最新)。
-// 页面改成每工具只展示最近一次更新后,窗口内的其余条目不再渲染,给它们花额度毫无收益;
-// 且不加日期门槛 —— 某工具最近一版若在三个月前,「全部」视图仍会显示它,那时就该是中文。
+// 只译「前端真正会显示的那些条目」= 每个工具最近 DISPLAY_ENTRIES 条(entries 已按日期降序,前 N 条即最新)。
+// 页面每个工具只渲染这 N 条,再往前的旧条目不再渲染,给它们花额度毫无收益;
+// 且不加日期门槛 —— 某工具最近一版若在三个月前,页面仍会显示它,那时就该是中文。
 async function applyTranslations(tools, oldIndex) {
   var cfg = Object.assign({}, CONFIG.news.translate || {}, CONFIG.changelog.translate || {});
   if (!cfg.enabled) return;
@@ -724,7 +728,9 @@ async function applyTranslations(tools, oldIndex) {
   var used = 0, hit = 0, done = 0, fail = 0, skipped = 0;
 
   var targets = [];
-  tools.forEach(function (t) { if (t.entries && t.entries.length) targets.push(t.entries[0]); });
+  tools.forEach(function (t) {
+    if (t.entries && t.entries.length) targets = targets.concat(t.entries.slice(0, DISPLAY_ENTRIES));
+  });
   // 从新到旧:本轮第一条总是放行(单条可达 2 万字符),要放的是最新版本而非某个固定工具
   targets.sort(function (a, b) { return a.date === b.date ? 0 : (a.date > b.date ? -1 : 1); });
 
@@ -805,15 +811,15 @@ async function updateChangelog() {
     };
   });
 
-  // 英文条目译成中文(只译各工具当前显示的那一条;命中缓存不重复请求,失败保留原文)
+  // 英文条目译成中文(只译各工具当前显示的那两条;命中缓存不重复请求,失败保留原文)
   await applyTranslations(tools, oldIndex);
 
   var payload = {
     updated: today,
     refreshedAt: CONFIG.REFRESHED_AT,
     uiWindowDays: cfg.uiWindowDays,
-    desc: "11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新," +
-      "「最近一次更新」超出 " + cfg.uiWindowDays + " 天时不显示卡片",
+    desc: "11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具展示最近 " + DISPLAY_ENTRIES + " 条更新," +
+      "早于 " + cfg.uiWindowDays + " 天的条目仍保留并标注「超出窗口」",
     tools: tools
   };
   var header =
@@ -822,7 +828,7 @@ async function updateChangelog() {
     "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
     "TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);" +
     "ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +
-    "// 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,展示窗口由前端控制\n" +
+    "// 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,前端每工具展示最近 " + DISPLAY_ENTRIES + " 条(时间窗口只作「超出窗口」标注)\n" +
     "// 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新\n" +
     "//   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期\n" +
     "//   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)\n" +

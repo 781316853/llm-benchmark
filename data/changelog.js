@@ -1,6 +1,6 @@
 // AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)
 // 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
-// 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,展示窗口由前端控制
+// 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,前端每工具展示最近 2 条(时间窗口只作「超出窗口」标注)
 // 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新
 //   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期
 //   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)
@@ -9,7 +9,7 @@ window.CHANGELOG = {
   'updated': '2026-10-08',
   'refreshedAt': '2026-10-08 15:42',
   'uiWindowDays': 14,
-  'desc': '11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具只展示最近一次更新,「最近一次更新」超出 14 天时不显示卡片',
+  'desc': '11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
     {
       'id': 'codex',
