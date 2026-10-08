@@ -2,88 +2,101 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-07',
+  'updated': '2026-10-08',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '模型发布',
-    '技术与洞察',
-    '产品应用',
-    '行业动态'
+    '模型发布'
   ],
   'items': [
     {
-      'date': '2026-10-07',
-      'title': 'Mistral Large 4 上线，月底开放权重',
-      'brief': 'Mistral AI 发布 Mistral Large 4 公开预览版，昵称 Le Chonk ，即日起通过 API 向所有用户开放，开源权重计划本月底放出， Hugging Face 页面显示预计 10 月 31 日 上线。',
-      'url': 'https://mistral.ai/news/mistral-large-4/',
+      'date': '2026-10-08',
+      'title': 'Anthropic 发布 Claude Haiku 5.5：平均成本降约 75%',
+      'brief': 'Anthropic 发布 Claude Haiku 5.5 ，定位高吞吐、成本敏感和低延迟任务，包括摘要、分类、数据库查询、实时客服、浏览器操作，以及作为 Opus 5.5 、 Sonnet 5.5 的编程子智能体。',
+      'url': 'https://www.anthropic.com/claude-haiku-5-5',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-07',
-      'title': 'Google 发布 Nano Banana 2.1，图像生成与编辑全面升级',
-      'brief': 'Google 发布图像生成与对话式编辑模型 Nano Banana 2.1 ，模型代码 gemini-nano-banana-2.1 ，已在 Gemini API 正式可用，并陆续推送到 Gemini 应用、搜索 AI Mode 、 Google AI Studio 、 Flow 等产品。该模型是 Nano Banana 2 的升级版，官方称在视觉质量、提示词遵循、多轮角色一致性和文本渲染上显著改进，输出覆盖 1K 、 2K 、 4K…',
-      'url': 'https://deepmind.google/models/gemini-image/flash/',
+      'date': '2026-10-08',
+      'title': 'OpenAI 向全员推送 GPT-6，上线智能交互界面',
+      'brief': 'OpenAI 开始在 ChatGPT 推出 GPT-6 和 Intelligent UI 。',
+      'url': 'https://openai.com/index/gpt-6-for-everyone/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-07',
-      'title': '谷歌开源 EmbeddingGemma 2 多模态嵌入模型',
-      'brief': '谷歌 DeepMind 发布开源嵌入模型 EmbeddingGemma 2 ，将上一代的纯文本能力扩展为原生多模态，把文本、代码、图像、视频和音频统一映射到 768 维向量空间 。',
-      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/',
+      'date': '2026-10-08',
+      'title': 'Codex 昨日按投票重置额度，今日再送手动重置次数',
+      'brief': 'OpenAI Codex 负责人 Tibo 在 28 天更新活动第二天上线四项更新后，发起是否需要重置用量额度的投票， 76% 的投票者选择重置。',
+      'url': 'https://x.com/thsottiaux/status/2107913674593644711',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-07',
-      'title': 'OpenAI 公开内部前沿模型的一批数学研究成果',
-      'brief': 'OpenAI 发布一批由内部前沿模型产出的新数学成果， 722 份手稿按 372 个成果族整理后公开在 GitHub 仓库，并附论文修订与引用协议。',
-      'url': 'https://openai.com/index/sharing-ai-progress-in-mathematics/',
+      'date': '2026-10-08',
+      'title': 'Claude Sonnet 5.5 缓存读取价格减半',
+      'brief': 'Anthropic 宣布把 Claude Sonnet 5.5 的缓存读取价格减半，降至每百万 tokens 0.10 美元 。',
+      'url': 'https://x.com/claudeai/status/2107894060229034197',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-07',
-      'title': 'OpenAI 免费开放 Auto-review，不占订阅额度',
-      'brief': 'OpenAI 负责 Codex 与 ChatGPT 的 Tibo 宣布， Auto-review 现在对所有通过 ChatGPT 账号登录的用户免费开放，且不消耗订阅方案的用量，可在设置 → 权限 → auto-review 中开启。',
-      'url': 'https://x.com/thsottiaux/status/2107368734981517634',
+      'date': '2026-10-08',
+      'title': 'Claude 为 Max 和 Team 订阅用户发放月度 API 额度',
+      'brief': 'Anthropic 开始向 Claude Max 和 Team 订阅用户按月发放 Claude Platform API 额度，正分批推出。',
+      'url': 'https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-08',
+      'title': 'Claude Code 团队成员推出 html-plan skill，开放试用',
+      'brief': 'Anthropic Claude Code 团队成员 Thariq 在 X 上宣布，他开发了一个让 Claude Code 生成更好的 HTML plan 的 skill ，现已通过社区插件市场开放安装。',
+      'url': 'https://x.com/trq212/status/2107192901537329354',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-07',
-      'title': 'OpenAI 向所有开发者开放 Decisions API 公测',
-      'brief': 'OpenAI 宣布 Decisions API 进入公开测试，向所有开发者开放，用于让应用在近实时条件下选择合适的模型、工具或动作。该接口由 GPT-6 Luna 驱动，接受文本和图像输入，支持三类输出： Predicates 估算陈述为真的概率， Choices 从预定义选项中选择并给出置信度， Scores 按数值区间评估输入。',
-      'url': 'https://x.com/OpenAIDevs/status/2107573382229188645',
+      'date': '2026-10-08',
+      'title': 'Claude SDK 内置 computer use 与 browser use 工具集',
+      'brief': 'Anthropic 宣布， computer use 和 browser use 工具集现已内置到 Claude 的 Python 和 TypeScript SDK 。',
+      'url': 'https://github.com/anthropics/claude-quickstarts/tree/main/computer-toolset',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-07',
-      'title': 'OpenAI 将 API 付费层级从五档精简为三档',
-      'brief': 'OpenAI 宣布降低获取更高 API 速率限制的门槛，五个付费用量层级合并为 Build、Launch 和 Grow 三档。新的最高层级 Grow 只需累计 500 美元 API 付款即可获得资格，此前最高层级的要求是 1000 美元 。已在付费层级上的组织会自动迁移到对应的新层级，无需手动操作。各层级的资格条件与速率限制详情发布在 OpenAI 平台的组织限制设置页。',
-      'url': 'https://x.com/OpenAIDevs/status/2107539647392096384',
+      'date': '2026-10-08',
+      'title': 'OpenRouter 上线 ElevenLabs 全线语音模型，限时 5 折',
+      'brief': 'OpenRouter 宣布 ElevenLabs 正式入驻其平台，一次性上线 9 个文字转语音模型和 2 个语音转文字模型。',
+      'url': 'https://openrouter.ai/blog/announcements/elevenlabs-on-openrouter/',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-07',
-      'title': 'Space Bunny 免费期将结束，OpenCode 赞助再免费几天',
-      'brief': 'Space Bunny 模型的免费期即将结束。开源编程 Agent OpenCode 在 X 上宣布，将在自家免费档位中赞助 Space Bunny ，让它再免费提供几天。 OpenCode 同时透露，这款模型正在调优，正式亮相之前还会继续调整。',
-      'url': 'https://x.com/opencode/status/2107398361733104102',
+      'date': '2026-10-08',
+      'title': 'GitHub Copilot 开放本地沙箱，混合推理将于月底预览',
+      'brief': 'GitHub Copilot 本地沙箱正式可用，覆盖 CLI 、 Copilot 应用 和 VS Code 。',
+      'url': 'https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-07',
-      'title': 'Anthropic扩展CVP：三档开放高级网络能力',
-      'brief': 'Anthropic 发布扩展版 Cyber Verification Program （ CVP ），把此前并行运行的 Project Glasswing 与 CVP 整合为一个项目，向通过审核的安全从业者分三档开放，各档均可用 Claude Opus 5.5 、 Claude Sonnet 5.5 、 Claude Mythos 5.1 及后续新模型。',
-      'url': 'https://www.anthropic.com/news/cyber-verification-program',
+      'date': '2026-10-08',
+      'title': '微软 MXC 正式可用，为 AI 智能体划定执行权限',
+      'brief': '微软 宣布 Microsoft Execution Containers（MXC） 在 Windows 11 正式可用，为 AI 智能体提供受控的执行环境。',
+      'url': 'https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/',
       'source': '橘鸦AI早报',
       'type': '开发生态'
+    },
+    {
+      'date': '2026-10-08',
+      'title': 'Liquid AI 开源决策模型 d1-3B 和 d1-omni-600M',
+      'brief': 'Liquid AI 开源 d1 决策模型家族 的两款模型 d1-3B 和 d1-omni-600M ，权重已在 Hugging Face 提供。',
+      'url': 'https://www.liquid.ai/blog/d1-open',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
     },
     {
       'date': '2026-10-07',
@@ -108,94 +121,6 @@ window.NEWS = {
       'url': 'https://x.com/AravSrinivas/status/2107573198145663233',
       'source': '橘鸦AI早报',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'OpenAI 宣布提速 GPT-6 Astra 和 GPT-6.1 Sol',
-      'brief': 'OpenAI 团队表示，已优化 GPT-6 Astra 和 GPT-6.1 Sol 的默认速度，两款模型整体约提速 50% 。此次优化覆盖订阅服务中的相关使用场景，以及通过 Sign in with ChatGPT 接入的产品和合作伙伴，包括 OpenCode 、 Pi 、 Amp 、 Devin 等；用户无需进行任何操作，更新将逐步生效。',
-      'url': 'https://x.com/thsottiaux/status/2107158998495748264',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'Reflection 介绍 501B 开放模型 Beam',
-      'brief': 'Reflection 官宣首款开放权重模型 Beam ，采用 稀疏混合专家架构 ，总参数 501B ，激活参数 23B ，面向编码、推理和 agentic 工作负载。',
-      'url': 'https://reflection.ai/blog/introducing-beam',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'Reka AI 发布全能模型 Rho-1 研究预览',
-      'brief': 'Reka AI 发布 190 亿参数 全能模型 Rho-1 的研究预览版， Rho-1 在单一神经网络中理解并生成文本、图像和视频，并输出机器人控制动作。',
-      'url': 'https://reka.ai/news/rho-1-collapsing-the-multimodal-stack',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'Claude Cowork 新任务 10 月 6 日起全面转向云端',
-      'brief': 'Anthropic 宣布， 2026 年 10 月 6 日 起， Pro 和 Max 订阅方案上的新 Claude Cowork 任务将在云端运行，设置中的“仅在你的计算机上”选项将被移除，用户无需进行任何设置。',
-      'url': 'https://support.claude.com/zh-CN/articles/15520349-%E5%9C%A8%E7%BD%91%E9%A1%B5-%E6%A1%8C%E9%9D%A2%E5%92%8C%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E4%B8%8A%E4%BD%BF%E7%94%A8-claude-cowork',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'Claude Projects 云端会话可按需读写本地文件夹',
-      'brief': 'Anthropic 员工 Dan Fein 表示， Claude Projects 的云端会话现在可以连接用户在电脑上批准的文件夹。',
-      'url': 'https://x.com/dfeinition/status/2107174121213722661',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'GitHub 开源代码评审基准 ReviewBench',
-      'brief': 'GitHub 推出面向代码评审 agent 的开放离线评测基准 ReviewBench ，研究预览版现已开放。',
-      'url': 'https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review/',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-10-06',
-      'title': '华为与高通达成多年期宽范围专利交叉许可协议',
-      'brief': '华为 与 高通 宣布达成一项多年期、覆盖广泛的专利许可协议，双方将在 5G 、计算、 AI 、网络等技术领域交叉许可各自的专利组合； 高通 还将购买 华为 在美国持有的部分计算、 AI 、网络及其他技术领域专利，相关交易将在获得必要监管批准后完成。',
-      'url': 'https://www.huawei.com/en/news/2026/10/qualcomm-broad-patent-agreement',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'OpenAI 推出 ChatGPT 图像生成视觉广告',
-      'brief': 'OpenAI 宣布在 ChatGPT 中推出新的视觉广告格式，通过展示产品灵感、使用场景或体验的图片帮助用户了解产品。',
-      'url': 'https://openai.com/index/new-chatgpt-ads-format-and-measurement/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'OpenAI 推出文本水印，应对欧盟 AI 法案',
-      'brief': 'OpenAI 宣布将内容溯源扩展到文本，推出水印技术 textGrain ，以响应欧盟 AI 法案。',
-      'url': 'https://openai.com/index/eu-text-provenance/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-06',
-      'title': 'Sam Altman：AI 带来的收益值得社会接受一定风险',
-      'brief': 'Sam Altman 在接受 POLITICO 采访时表示， OpenAI 与 Anthropic 在 AI 监管上的核心分歧仍然明显：他认为，为了获得 AI 带来的收益，并让公众保有使用这项技术的自主权，社会需要接受一定程度的负面后果。',
-      'url': 'https://www.politico.com/news/2026/10/04/sam-altman-decoded-interview-ai-01106217',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-06',
-      'title': '维基媒体基金会称平台发现 OpenAI 失控 agent 活动',
-      'brief': '维基媒体基金会公布调查结果，确认在维基媒体平台上发现了其认为由 OpenAI 运营的失控 AI agent 的活动。',
-      'url': 'https://diff.wikimedia.org/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
     }
   ]
 };

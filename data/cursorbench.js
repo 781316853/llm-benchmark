@@ -1,4 +1,4 @@
-// 数据源:CursorBench(Cursor 官方 · 编码 Agent 实测,更新于 2026-10-07)
+// 数据源:CursorBench(Cursor 官方 · 编码 Agent 实测,更新于 2026-10-08)
 // 来源:https://cursor.com/cursorbench(官方:https://cursor.com/cursorbench)
 // 字段:models[]=模型级主榜(每模型取最优档位);configs[]=源站全表 model×档位配置
 //      score=CursorBench 4.0 分(%);costUsd=平均每任务成本(USD);tokens/steps=每任务平均
@@ -8,11 +8,11 @@ window.CURSORBENCH = {
   'url': 'https://cursor.com/cursorbench',
   'officialUrl': 'https://cursor.com/cursorbench',
   'version': '4.0',
-  'updated': '2026-10-07',
-  'refreshedAt': '2026-10-08 00:44',
+  'updated': '2026-10-08',
+  'refreshedAt': '2026-10-08 15:42',
   'stats': {
-    'entries': 63,
-    'models': 15
+    'entries': 68,
+    'models': 16
   },
   'desc': 'CursorBench 4.0(Cursor 官方):在 Cursor 自家 agent harness 上评测来自真实 Cursor 会话的模糊、跨文件任务(编辑/重构/排查/意图理解/长任务管理/设计一致性),agentic grader 判定、允许多种正确答案;分数越高越好,成本/耗时越低越优。',
   'models': [
@@ -31,7 +31,7 @@ window.CURSORBENCH = {
       'model': 'Sonnet 5.5',
       'effort': 'Max',
       'score': 55.5,
-      'costUsd': 9.67,
+      'costUsd': 7.05,
       'tokens': 271920,
       'steps': 170,
       'configs': 5,
@@ -50,6 +50,17 @@ window.CURSORBENCH = {
       'rank': 3
     },
     {
+      'model': 'Haiku 5.5',
+      'effort': 'Max',
+      'score': 48.4,
+      'costUsd': 1.12,
+      'tokens': 325934,
+      'steps': 163,
+      'configs': 5,
+      'src': 'official',
+      'rank': 4
+    },
+    {
       'model': 'Opus 5',
       'effort': 'Max',
       'score': 46.6,
@@ -58,7 +69,7 @@ window.CURSORBENCH = {
       'steps': 106,
       'configs': 5,
       'src': 'official',
-      'rank': 4
+      'rank': 5
     },
     {
       'model': 'Grok 4.7',
@@ -69,7 +80,7 @@ window.CURSORBENCH = {
       'steps': 88,
       'configs': 4,
       'src': 'official',
-      'rank': 5
+      'rank': 6
     },
     {
       'model': 'GLM 5.3',
@@ -80,7 +91,7 @@ window.CURSORBENCH = {
       'steps': 166,
       'configs': 3,
       'src': 'official',
-      'rank': 6
+      'rank': 7
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -91,7 +102,7 @@ window.CURSORBENCH = {
       'steps': 99,
       'configs': 5,
       'src': 'official',
-      'rank': 7
+      'rank': 8
     },
     {
       'model': 'Muse Spark 1.3',
@@ -102,7 +113,7 @@ window.CURSORBENCH = {
       'steps': 98,
       'configs': 6,
       'src': 'official',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'Grok 4.6',
@@ -113,7 +124,7 @@ window.CURSORBENCH = {
       'steps': 56,
       'configs': 4,
       'src': 'official',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'GPT-5.6 Terra',
@@ -124,7 +135,7 @@ window.CURSORBENCH = {
       'steps': 107,
       'configs': 5,
       'src': 'official',
-      'rank': 10
+      'rank': 11
     },
     {
       'model': 'Gemini 3.8 Flash',
@@ -135,7 +146,7 @@ window.CURSORBENCH = {
       'steps': 324,
       'configs': 2,
       'src': 'official',
-      'rank': 11
+      'rank': 12
     },
     {
       'model': 'GLM 5.3 Flash',
@@ -146,7 +157,7 @@ window.CURSORBENCH = {
       'steps': 118,
       'configs': 3,
       'src': 'official',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'GPT-5.6 Luna',
@@ -157,7 +168,7 @@ window.CURSORBENCH = {
       'steps': 208,
       'configs': 5,
       'src': 'official',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'Sonnet 5',
@@ -168,7 +179,7 @@ window.CURSORBENCH = {
       'steps': 140,
       'configs': 5,
       'src': 'official',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'Composer 2.5',
@@ -179,7 +190,7 @@ window.CURSORBENCH = {
       'steps': 41,
       'configs': 1,
       'src': 'official',
-      'rank': 15
+      'rank': 16
     }
   ],
   'configs': [
@@ -218,7 +229,7 @@ window.CURSORBENCH = {
       'model': 'Sonnet 5.5',
       'effort': 'Max',
       'score': 55.5,
-      'costUsd': 9.67,
+      'costUsd': 7.05,
       'tokens': 271920,
       'steps': 170,
       'src': 'official'
@@ -228,7 +239,7 @@ window.CURSORBENCH = {
       'model': 'Sonnet 5.5',
       'effort': 'Extra High',
       'score': 53.1,
-      'costUsd': 3.88,
+      'costUsd': 2.81,
       'tokens': 100158,
       'steps': 78,
       'src': 'official'
@@ -275,16 +286,26 @@ window.CURSORBENCH = {
     },
     {
       'rank': 10,
+      'model': 'Haiku 5.5',
+      'effort': 'Max',
+      'score': 48.4,
+      'costUsd': 1.12,
+      'tokens': 325934,
+      'steps': 163,
+      'src': 'official'
+    },
+    {
+      'rank': 11,
       'model': 'Sonnet 5.5',
       'effort': 'High',
       'score': 47.8,
-      'costUsd': 1.67,
+      'costUsd': 1.2,
       'tokens': 37391,
       'steps': 41,
       'src': 'official'
     },
     {
-      'rank': 11,
+      'rank': 12,
       'model': 'Fable 5.1',
       'effort': 'Medium',
       'score': 46.8,
@@ -294,7 +315,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 12,
+      'rank': 13,
       'model': 'Opus 5',
       'effort': 'Max',
       'score': 46.6,
@@ -304,7 +325,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 13,
+      'rank': 14,
       'model': 'Grok 4.7',
       'effort': 'Extra High',
       'score': 46.3,
@@ -314,7 +335,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 14,
+      'rank': 15,
       'model': 'Opus 5',
       'effort': 'Extra High',
       'score': 46.1,
@@ -324,7 +345,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 15,
+      'rank': 16,
       'model': 'Fable 5.1',
       'effort': 'Low',
       'score': 45.1,
@@ -334,7 +355,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 16,
+      'rank': 17,
       'model': 'Opus 5',
       'effort': 'High',
       'score': 44.7,
@@ -344,7 +365,17 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 17,
+      'rank': 18,
+      'model': 'Haiku 5.5',
+      'effort': 'Extra High',
+      'score': 44.3,
+      'costUsd': 0.56,
+      'tokens': 143813,
+      'steps': 93,
+      'src': 'official'
+    },
+    {
+      'rank': 19,
       'model': 'Grok 4.7',
       'effort': 'High',
       'score': 43.9,
@@ -354,7 +385,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 18,
+      'rank': 20,
       'model': 'Opus 5.5',
       'effort': 'Low',
       'score': 43.7,
@@ -364,7 +395,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 19,
+      'rank': 21,
       'model': 'Opus 5',
       'effort': 'Medium',
       'score': 43.3,
@@ -374,7 +405,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 20,
+      'rank': 22,
       'model': 'GLM 5.3',
       'effort': 'Max',
       'score': 42.6,
@@ -384,7 +415,17 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 21,
+      'rank': 23,
+      'model': 'Haiku 5.5',
+      'effort': 'High',
+      'score': 42.3,
+      'costUsd': 0.32,
+      'tokens': 77057,
+      'steps': 59,
+      'src': 'official'
+    },
+    {
+      'rank': 24,
       'model': 'GPT-5.6 Sol',
       'effort': 'Max',
       'score': 41.7,
@@ -394,7 +435,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 22,
+      'rank': 25,
       'model': 'Grok 4.7',
       'effort': 'Medium',
       'score': 41.6,
@@ -404,7 +445,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 23,
+      'rank': 26,
       'model': 'Muse Spark 1.3',
       'effort': 'Max',
       'score': 41.6,
@@ -414,7 +455,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 24,
+      'rank': 27,
       'model': 'Grok 4.6',
       'effort': 'Extra High',
       'score': 41.4,
@@ -424,7 +465,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 25,
+      'rank': 28,
       'model': 'GPT-5.6 Terra',
       'effort': 'Max',
       'score': 41.3,
@@ -434,7 +475,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 26,
+      'rank': 29,
       'model': 'Opus 5',
       'effort': 'Low',
       'score': 40.7,
@@ -444,7 +485,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 27,
+      'rank': 30,
       'model': 'Grok 4.6',
       'effort': 'High',
       'score': 40.4,
@@ -454,7 +495,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 28,
+      'rank': 31,
       'model': 'Gemini 3.8 Flash',
       'effort': 'High',
       'score': 39.6,
@@ -464,17 +505,17 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 29,
+      'rank': 32,
       'model': 'Sonnet 5.5',
       'effort': 'Medium',
       'score': 39.2,
-      'costUsd': 0.7,
+      'costUsd': 0.52,
       'tokens': 16036,
       'steps': 22,
       'src': 'official'
     },
     {
-      'rank': 30,
+      'rank': 33,
       'model': 'GLM 5.3',
       'effort': 'High',
       'score': 38,
@@ -484,7 +525,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 31,
+      'rank': 34,
       'model': 'GPT-5.6 Sol',
       'effort': 'Extra High',
       'score': 37.7,
@@ -494,7 +535,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 32,
+      'rank': 35,
       'model': 'Muse Spark 1.3',
       'effort': 'Extra High',
       'score': 37.5,
@@ -504,7 +545,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 33,
+      'rank': 36,
       'model': 'Gemini 3.8 Flash',
       'effort': 'Medium',
       'score': 37.3,
@@ -514,7 +555,17 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 34,
+      'rank': 37,
+      'model': 'Haiku 5.5',
+      'effort': 'Medium',
+      'score': 36.9,
+      'costUsd': 0.17,
+      'tokens': 42659,
+      'steps': 39,
+      'src': 'official'
+    },
+    {
+      'rank': 38,
       'model': 'GLM 5.3 Flash',
       'effort': 'Max',
       'score': 36.8,
@@ -524,7 +575,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 35,
+      'rank': 39,
       'model': 'Grok 4.6',
       'effort': 'Medium',
       'score': 36.1,
@@ -534,7 +585,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 36,
+      'rank': 40,
       'model': 'GPT-5.6 Luna',
       'effort': 'Max',
       'score': 35.9,
@@ -544,17 +595,17 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 37,
+      'rank': 41,
       'model': 'Sonnet 5.5',
       'effort': 'Low',
       'score': 35.8,
-      'costUsd': 0.5,
+      'costUsd': 0.37,
       'tokens': 11668,
       'steps': 18,
       'src': 'official'
     },
     {
-      'rank': 38,
+      'rank': 42,
       'model': 'GPT-5.6 Sol',
       'effort': 'High',
       'score': 35.7,
@@ -564,7 +615,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 39,
+      'rank': 43,
       'model': 'Sonnet 5',
       'effort': 'Max',
       'score': 34.1,
@@ -574,7 +625,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 40,
+      'rank': 44,
       'model': 'GPT-5.6 Terra',
       'effort': 'Extra High',
       'score': 33.6,
@@ -584,7 +635,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 41,
+      'rank': 45,
       'model': 'Grok 4.6',
       'effort': 'Low',
       'score': 33.4,
@@ -594,7 +645,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 42,
+      'rank': 46,
       'model': 'Muse Spark 1.3',
       'effort': 'High',
       'score': 33.4,
@@ -604,7 +655,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 43,
+      'rank': 47,
       'model': 'GLM 5.3',
       'effort': 'Low',
       'score': 33.3,
@@ -614,7 +665,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 44,
+      'rank': 48,
       'model': 'Grok 4.7',
       'effort': 'Low',
       'score': 33.1,
@@ -624,7 +675,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 45,
+      'rank': 49,
       'model': 'GPT-5.6 Luna',
       'effort': 'Extra High',
       'score': 33,
@@ -634,7 +685,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 46,
+      'rank': 50,
       'model': 'Muse Spark 1.3',
       'effort': 'Medium',
       'score': 32.6,
@@ -644,7 +695,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 47,
+      'rank': 51,
       'model': 'Sonnet 5',
       'effort': 'Extra High',
       'score': 32,
@@ -654,7 +705,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 48,
+      'rank': 52,
       'model': 'GPT-5.6 Sol',
       'effort': 'Medium',
       'score': 31.1,
@@ -664,7 +715,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 49,
+      'rank': 53,
       'model': 'GLM 5.3 Flash',
       'effort': 'High',
       'score': 31.1,
@@ -674,7 +725,17 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 50,
+      'rank': 54,
+      'model': 'Haiku 5.5',
+      'effort': 'Low',
+      'score': 30.9,
+      'costUsd': 0.08,
+      'tokens': 23382,
+      'steps': 25,
+      'src': 'official'
+    },
+    {
+      'rank': 55,
       'model': 'Sonnet 5',
       'effort': 'High',
       'score': 30.8,
@@ -684,7 +745,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 51,
+      'rank': 56,
       'model': 'GPT-5.6 Terra',
       'effort': 'High',
       'score': 30.7,
@@ -694,7 +755,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 52,
+      'rank': 57,
       'model': 'GPT-5.6 Luna',
       'effort': 'High',
       'score': 29.4,
@@ -704,7 +765,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 53,
+      'rank': 58,
       'model': 'Muse Spark 1.3',
       'effort': 'Low',
       'score': 29.3,
@@ -714,7 +775,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 54,
+      'rank': 59,
       'model': 'Sonnet 5',
       'effort': 'Medium',
       'score': 28,
@@ -724,7 +785,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 55,
+      'rank': 60,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 27.7,
@@ -734,7 +795,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 56,
+      'rank': 61,
       'model': 'GPT-5.6 Terra',
       'effort': 'Medium',
       'score': 27.6,
@@ -744,7 +805,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 57,
+      'rank': 62,
       'model': 'GLM 5.3 Flash',
       'effort': 'Low',
       'score': 26.9,
@@ -754,7 +815,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 58,
+      'rank': 63,
       'model': 'GPT-5.6 Terra',
       'effort': 'Low',
       'score': 25.2,
@@ -764,7 +825,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 59,
+      'rank': 64,
       'model': 'GPT-5.6 Sol',
       'effort': 'Low',
       'score': 24.6,
@@ -774,7 +835,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 60,
+      'rank': 65,
       'model': 'Muse Spark 1.3',
       'effort': 'Minimal',
       'score': 24.3,
@@ -784,7 +845,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 61,
+      'rank': 66,
       'model': 'Sonnet 5',
       'effort': 'Low',
       'score': 24.1,
@@ -794,7 +855,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 62,
+      'rank': 67,
       'model': 'GPT-5.6 Luna',
       'effort': 'Medium',
       'score': 22.2,
@@ -804,7 +865,7 @@ window.CURSORBENCH = {
       'src': 'official'
     },
     {
-      'rank': 63,
+      'rank': 68,
       'model': 'GPT-5.6 Luna',
       'effort': 'Low',
       'score': 16,

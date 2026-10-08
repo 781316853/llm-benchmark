@@ -12,8 +12,8 @@
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-10%7C0",
-  updated: "2026-10-07",
-  refreshedAt: "2026-10-08 00:44",
+  updated: "2026-10-08",
+  refreshedAt: "2026-10-08 15:42",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1558,12 +1558,12 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'Seed-2.1-Pro 0915 (high)',
+        'model': 'DeepSeek V4.1 Flash (max)',
         'cells': [
-          '11/B(20.89)',
-          '5/A(50.68)',
+          '12/B(2.79)',
+          '7/B(2.92)',
           'Failed',
-          '30/D(71.77)',
+          '20/C(5.88)',
           'Skip',
           'Skip'
         ],
@@ -1572,12 +1572,12 @@ window.LLM2014 = {
         'think': 1
       },
       {
-        'model': 'DeepSeek V4.1 Flash (max)',
+        'model': 'Seed-2.1-Pro 0915 (high)',
         'cells': [
-          '12/B(2.79)',
-          '7/B(2.92)',
+          '11/B(20.89)',
+          '5/A(50.68)',
           'Failed',
-          '20/C(5.88)',
+          '30/D(71.77)',
           'Skip',
           'Skip'
         ],
@@ -1593,20 +1593,6 @@ window.LLM2014 = {
           'Failed',
           'Skip',
           'Skip',
-          'Skip'
-        ],
-        'unprompted': 0,
-        'ide': 'Claude Code',
-        'think': 1
-      },
-      {
-        'model': 'DeepSeek V4 Pro 0813 (max)',
-        'cells': [
-          '14/B(13.46)',
-          '16/C(12.73)',
-          'Failed',
-          '16/B(18.64)',
-          '27/D(69.58)',
           'Skip'
         ],
         'unprompted': 0,
