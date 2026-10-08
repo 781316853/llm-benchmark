@@ -120,7 +120,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 56,
+      'modelCount': 57,
       'updated': '2026-10-08',
       'ageDays': 0,
       'completeness': 1,
@@ -699,7 +699,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'gemini-4-argon-high',
+      'canonId': 'Gemini 4 Argon',
       'name': 'Gemini 4 Argon',
       'vendor': '其他',
       'sources': [
@@ -795,7 +795,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'mimo-v2.6-flash',
+      'canonId': 'MiMo-V2.6-Flash',
       'name': 'MiMo-V2.6-Flash',
       'vendor': '其他',
       'sources': [
@@ -896,9 +896,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 56,
-      'complete': 56,
-      'modelCount': 56,
+      'total': 57,
+      'complete': 57,
+      'modelCount': 57,
       'missingFields': {},
       'flag': 'ok'
     },

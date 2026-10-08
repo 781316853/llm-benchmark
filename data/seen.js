@@ -261,6 +261,7 @@ window.SEEN = {
     'tbench|Qwen3.8-Max-0902': '2026-10-04',
     'tbench|Opus 5.5': '2026-10-06',
     'tbench|Sonnet 5.5': '2026-10-06',
-    'tbench|GPT-6 Luna': '2026-10-06'
+    'tbench|GPT-6 Luna': '2026-10-06',
+    'tbench|Claude Haiku 5.5': '2026-10-08'
   }
 };

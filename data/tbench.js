@@ -12,7 +12,7 @@ window.TBENCH = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
   'updated': '2026-10-08',
-  'refreshedAt': '2026-10-08 15:42',
+  'refreshedAt': '2026-10-09 00:42',
   'stats': {
     'tasks': 66,
     'entries': 39
@@ -465,24 +465,24 @@ window.TBENCH = {
     },
     {
       'rank': null,
-      'model': 'MiMo-V2.6-Pro',
+      'model': 'Claude Haiku 5.5',
       'agent': null,
-      'effort': '思考模式（工具）',
-      'score': 34.85,
+      'effort': '最高（工具）',
+      'score': 39.2,
       'ci': null,
-      'date': '2026-09-22',
+      'date': '2026-10-07',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'
     },
     {
       'rank': null,
-      'model': 'Step 5 Preview',
+      'model': 'MiMo-V2.6-Pro',
       'agent': null,
-      'effort': '思考模式 High（工具）',
-      'score': 33.3,
+      'effort': '思考模式（工具）',
+      'score': 34.85,
       'ci': null,
-      'date': '2026-09-20',
+      'date': '2026-09-22',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'
