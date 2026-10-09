@@ -2,14 +2,111 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-08',
+  'updated': '2026-10-09',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '模型发布'
+    '模型发布',
+    '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-09',
+      'title': 'OpenAI 为 GPT-6.1 Sol 推出 Ultrafast 模式',
+      'brief': 'OpenAI 宣布为 GPT-6.1 Sol 推出 Ultrafast 模式，正在 API 、 Codex 和 ChatGPT Work 上线。官方称该模式速度最高可达 Sol Standard 的 8 倍 ，智能水平接近 Astra 。',
+      'url': 'https://x.com/OpenAIDevs/status/2108262812489531498',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'OpenAI 为桌面应用中的 Codex 推出更快的 steering',
+      'brief': 'OpenAI 正在 ChatGPT 桌面应用中为 Codex 推出更快的 steering ，用户在任务运行时发送追加消息， Codex 能更快响应这些调整。',
+      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-09',
+      'title': '阶跃星辰：Step 5 Preview 多平台免费一周',
+      'brief': '阶跃星辰 StepFun 宣布 Step 5 Preview 上线 OpenRouter ， OpenCode 、 Cline 、 NousResearch 、 KiloCode 等平台当天起陆续开放为期一周的免费访问。官方称这款模型面向 agentic 与专业工作提供旗舰级智能，任务成本显著更低。',
+      'url': 'https://x.com/StepFun_ai/status/2108182763002278158',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'Vercel AI Gateway 上线 Glyph Cluster，匿名期免费',
+      'brief': 'Vercel 宣布推理模型 Glyph Cluster 以匿名模型的形式登陆 AI Gateway，面向已购买 AI Gateway 额度的 Pro 和 Enterprise 订阅方案团队，隐身期内免费使用。',
+      'url': 'https://vercel.com/changelog/glyph-cluster-is-now-available-in-stealth-for-free-on-ai-gateway',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'Claude 推出 Dashboards 和 Motion 两项测试功能',
+      'brief': 'Anthropic 为 Claude 推出 Claude Dashboards 和 Claude Motion 两项 beta 功能。',
+      'url': 'https://claude.com/resources/articles/dashboards-and-motion',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'Google Cloud 发布 Gemini 工作智能体',
+      'brief': 'Google Cloud 发布面向工作的通用 “ Gemini agent ”，把问答、知识工作、图像与媒体创作、编写和运行代码整合进同一个 Agent 和同一套 API ，用户委派目标后等待交付结果。',
+      'url': 'https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-09',
+      'title': '腾讯 WorkBuddy 上线独立文件浏览器',
+      'brief': '腾讯 宣布旗下 AI 办公产品 WorkBuddy 正式上线独立文件浏览器。用户在文件资源管理器或 Finder 中右键选择 WorkBuddy 打开本地文件，或将其设为默认打开方式后双击，即可在独立窗口中查看文件，并通过右侧对话栏调用 Buddy 分析、修改。',
+      'url': 'https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/File-Browser',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'JetBrains 开源 Mellum2.1，强化学习主打编程 Agent',
+      'brief': 'JetBrains 发布编程模型 Mellum2.1 ，模型权重已上架 Hugging Face ，采用 Apache 2.0 许可。 Mellum2.1 架构与此前开源的 Mellum2 相同，总参数 12B 、每 token 激活 2.5B ，改动集中在后训练，强化学习从收尾阶段变为训练主体，模型在带 shell 和文件编辑工具的真实代码仓库中训练，测试通过才获得奖励。',
+      'url': 'https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'Hugging Face 开源基因注释模型 Carbon-A',
+      'brief': 'Hugging Face 生物学研究团队 HuggingFaceBio 开源基因注释模型 Carbon-A ，并同步发布用 Carbon-A 构建的注释数据库 Carbon Annotation Database 。 Carbon-A 有 12 亿 参数，直接从 DNA 序列预测真核生物的蛋白编码区，单一模型覆盖哺乳动物、植物、真菌和原生生物等类群；官方称在 42 个基准基因组上宏平均核苷酸 F1 达 0.944 ，在核苷酸、外显子和基…',
+      'url': 'https://huggingface.co/blog/HuggingFaceBio/carbon-annotator-genbank-genome-annotation',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'LightOnAI 开源 LightOnOCR-3',
+      'brief': 'LightOn 发布端到端 OCR 模型系列 LightOnOCR-3 ，提供 0.8B、1B、4B 三个尺寸，采用 Apache 2.0 许可，可用于研究和商业用途。',
+      'url': 'https://www.lighton.ai/research/lightonocr-3',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'Odyssey 发布世界模型 Odyssey-3',
+      'brief': 'Odyssey 发布基础世界模型 Odyssey-3 ，称其为迄今最强大的世界模型，研究预览现已免费开放体验。',
+      'url': 'https://odyssey.systems/meet-odyssey-3',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-09',
+      'title': 'Grok Imagine Video 1.5 Lite 上线，1080p 每秒 0.14 美元',
+      'brief': 'Grok Imagine 宣布，视频生成模型 Video 1.5 Lite 已在 Grok Imagine API 上线，用于文本生成视频和图像生成视频。价格按分辨率按秒计费： 480p 每秒 0.02 美元 ， 720p 每秒 0.03 美元 ， 1080p 每秒 0.14 美元 。',
+      'url': 'https://x.com/imagine/status/2108280250673352929',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
     {
       'date': '2026-10-08',
       'title': 'Anthropic 发布 Claude Haiku 5.5：平均成本降约 75%',
@@ -57,70 +154,6 @@ window.NEWS = {
       'url': 'https://x.com/trq212/status/2107192901537329354',
       'source': '橘鸦AI早报',
       'type': '开发生态'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Claude SDK 内置 computer use 与 browser use 工具集',
-      'brief': 'Anthropic 宣布， computer use 和 browser use 工具集现已内置到 Claude 的 Python 和 TypeScript SDK 。',
-      'url': 'https://github.com/anthropics/claude-quickstarts/tree/main/computer-toolset',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'OpenRouter 上线 ElevenLabs 全线语音模型，限时 5 折',
-      'brief': 'OpenRouter 宣布 ElevenLabs 正式入驻其平台，一次性上线 9 个文字转语音模型和 2 个语音转文字模型。',
-      'url': 'https://openrouter.ai/blog/announcements/elevenlabs-on-openrouter/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'GitHub Copilot 开放本地沙箱，混合推理将于月底预览',
-      'brief': 'GitHub Copilot 本地沙箱正式可用，覆盖 CLI 、 Copilot 应用 和 VS Code 。',
-      'url': 'https://commandline.microsoft.com/local-models-sandboxed-tools-github-windows/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-08',
-      'title': '微软 MXC 正式可用，为 AI 智能体划定执行权限',
-      'brief': '微软 宣布 Microsoft Execution Containers（MXC） 在 Windows 11 正式可用，为 AI 智能体提供受控的执行环境。',
-      'url': 'https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Liquid AI 开源决策模型 d1-3B 和 d1-omni-600M',
-      'brief': 'Liquid AI 开源 d1 决策模型家族 的两款模型 d1-3B 和 d1-omni-600M ，权重已在 Hugging Face 提供。',
-      'url': 'https://www.liquid.ai/blog/d1-open',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-07',
-      'title': '复旦腾讯浙大开源 Prism，原生 2K 音视频联合生成',
-      'brief': '复旦大学 、 腾讯混元 与 浙江大学 团队开源了 Prism ，一个用于原生 2K 音视频联合生成的动态稀疏注意力框架，技术报告、训练与推理代码和预览权重同步放出，许可证为 MIT 。',
-      'url': 'https://francis-rings.github.io/Prism',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-07',
-      'title': '亚马逊 AGI 团队开源发布 ALoDLM-8B',
-      'brief': '亚马逊 AGI 团队发布扩散语言模型 ALoDLM ，在 Hugging Face 公开 ALoDLM-1.7B 与 ALoDLM-8B 权重，并在 GitHub 开源训练与推理代码。',
-      'url': 'https://alo-dlm.github.io/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-07',
-      'title': 'Perplexity 发布决策模型 pplx-decider 新版本',
-      'brief': 'Perplexity 宣布，更新的开放权重多模态决策模型 pplx-decider-v1.1-27b 现已可用，官方称其在新版 Hugging Face Decision Index 0.3 基准上得分最高，Decision API 定价降为 v1 的一半，每百万输入 token 收 0.02 美元 。',
-      'url': 'https://x.com/AravSrinivas/status/2107573198145663233',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };

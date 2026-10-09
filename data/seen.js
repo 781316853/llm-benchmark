@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-10-08',
+  'updated': '2026-10-09',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -262,6 +262,7 @@ window.SEEN = {
     'tbench|Opus 5.5': '2026-10-06',
     'tbench|Sonnet 5.5': '2026-10-06',
     'tbench|GPT-6 Luna': '2026-10-06',
-    'tbench|Claude Haiku 5.5': '2026-10-08'
+    'tbench|Claude Haiku 5.5': '2026-10-08',
+    'llm|Haiku 5.5 (xhigh)': '2026-10-09'
   }
 };
