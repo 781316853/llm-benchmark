@@ -13,7 +13,7 @@ window.HLE = {
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-09',
-  'refreshedAt': '2026-10-09 15:38',
+  'refreshedAt': '2026-10-10 00:24',
   'stats': {
     'tasks': 2500,
     'entries': 57
@@ -212,6 +212,14 @@ window.HLE = {
       'rank': 19
     },
     {
+      'model': 'Gemini 4 Argon',
+      'org': 'Google DeepMind',
+      'score': 57.09,
+      'license': '不开源',
+      'src': 'datalearner',
+      'rank': 20
+    },
+    {
       'model': 'Qwen3.8-Max',
       'org': '阿里巴巴',
       'score': 56.2,
@@ -220,10 +228,10 @@ window.HLE = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 20
+      'rank': 21
     },
     {
-      'rank': 21,
+      'rank': 22,
       'model': 'Seed 2.1 Pro',
       'org': 'ByteDance',
       'score': 55.7,
@@ -232,14 +240,6 @@ window.HLE = {
       'cost': '—',
       'license': null,
       'src': 'llm-stats'
-    },
-    {
-      'model': 'Hy4 preview',
-      'org': '腾讯AI实验室',
-      'score': 55.4,
-      'license': '免费商用授权',
-      'src': 'datalearner',
-      'rank': 22
     },
     {
       'rank': 23,
