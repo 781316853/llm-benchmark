@@ -699,7 +699,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'gemini-4-argon-high',
+      'canonId': 'Gemini 4 Argon',
       'name': 'Gemini 4 Argon',
       'vendor': '其他',
       'sources': [
@@ -795,7 +795,7 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'mimo-v2.6-flash',
+      'canonId': 'MiMo-V2.6-Flash',
       'name': 'MiMo-V2.6-Flash',
       'vendor': '其他',
       'sources': [
