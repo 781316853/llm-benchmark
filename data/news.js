@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-09',
+  'updated': '2026-10-10',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -12,58 +12,90 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-10-09',
-      'title': 'OpenAI 为 GPT-6.1 Sol 推出 Ultrafast 模式',
-      'brief': 'OpenAI 宣布为 GPT-6.1 Sol 推出 Ultrafast 模式，正在 API 、 Codex 和 ChatGPT Work 上线。官方称该模式速度最高可达 Sol Standard 的 8 倍 ，智能水平接近 Astra 。',
-      'url': 'https://x.com/OpenAIDevs/status/2108262812489531498',
+      'date': '2026-10-10',
+      'title': 'OpenAI dot 更新：手机端可创建并接管 Codex',
+      'brief': 'OpenAI 为 ChatGPT 中的 dot 带来一批更新：用户现在可以在 ChatGPT 手机应用（iOS 和 Android）中直接创建 dot ，包括命名、自定义外观和连接插件。',
+      'url': 'https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-10',
+      'title': 'OpenAI 为 Codex 推出下一条消息预测测试版',
+      'brief': 'OpenAI 宣布 Codex 的 composer predictions 功能进入测试版。 Codex 回复结束后，输入框会根据当前对话和用户的表达方式建议下一条消息，按 Tab 采纳后可编辑再发送，也可忽略建议自行输入。',
+      'url': 'https://help.openai.com/en/articles/20001601-composer-predictions-in-codex',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-09',
-      'title': 'OpenAI 为桌面应用中的 Codex 推出更快的 steering',
-      'brief': 'OpenAI 正在 ChatGPT 桌面应用中为 Codex 推出更快的 steering ，用户在任务运行时发送追加消息， Codex 能更快响应这些调整。',
-      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'date': '2026-10-10',
+      'title': 'TraeWork 与 TraeCode 统一为 TRAE',
+      'brief': 'Trae 官方宣布， TraeWork 与 TraeCode 已融合升级为统一的 TRAE ：新入口覆盖桌面端、Web 端和移动端，支持在面向任务推进的 Agent 模式与面向深度编码调试的 IDE 模式之间无缝切换。',
+      'url': 'https://docs.trae.cn/ide_traework-to-traecode-data-migration',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-09',
-      'title': '阶跃星辰：Step 5 Preview 多平台免费一周',
-      'brief': '阶跃星辰 StepFun 宣布 Step 5 Preview 上线 OpenRouter ， OpenCode 、 Cline 、 NousResearch 、 KiloCode 等平台当天起陆续开放为期一周的免费访问。官方称这款模型面向 agentic 与专业工作提供旗舰级智能，任务成本显著更低。',
-      'url': 'https://x.com/StepFun_ai/status/2108182763002278158',
+      'date': '2026-10-10',
+      'title': '阶跃星辰将增加 Step Plan 供应并调整权益',
+      'brief': '阶跃星辰 宣布，自 2026 年 10 月 14 日 起增加 Step Plan 供应，官方称 Step 5 Preview 推出后订阅需求超出预期，此前曾采取限售措施。',
+      'url': 'https://linux.do/t/topic/3000890',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-09',
-      'title': 'Vercel AI Gateway 上线 Glyph Cluster，匿名期免费',
-      'brief': 'Vercel 宣布推理模型 Glyph Cluster 以匿名模型的形式登陆 AI Gateway，面向已购买 AI Gateway 额度的 Pro 和 Enterprise 订阅方案团队，隐身期内免费使用。',
-      'url': 'https://vercel.com/changelog/glyph-cluster-is-now-available-in-stealth-for-free-on-ai-gateway',
+      'date': '2026-10-10',
+      'title': 'Claude Code Projects 候补用户全部获准加入',
+      'brief': 'Anthropic 宣布， Claude Code Projects 候补名单上的 Pro 和 Max 用户已全部获准加入。该功能仍处于公开测试阶段，官方将按容量继续放行新报名用户， Team 和 Enterprise 订阅方案暂不可用。',
+      'url': 'https://x.com/ClaudeDevs/status/2108621476538781878',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-09',
-      'title': 'Claude 推出 Dashboards 和 Motion 两项测试功能',
-      'brief': 'Anthropic 为 Claude 推出 Claude Dashboards 和 Claude Motion 两项 beta 功能。',
-      'url': 'https://claude.com/resources/articles/dashboards-and-motion',
+      'date': '2026-10-10',
+      'title': 'Claude Design独立版站点12月14日关闭',
+      'brief': 'Anthropic 设计团队成员 Nate Parrott 表示，用户对集成在 Claude 内的 Design 和 Slides 使用更频繁，团队将集中投入集成版，独立版 Claude Design 站点将于 2026 年 12 月 14 日 关闭，在此之前仍可正常使用，之后原网址会跳转至 Claude 。',
+      'url': 'https://support.claude.com/en/articles/17440474-migrate-from-standalone-claude-design-to-claude',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-10',
+      'title': 'Grok Bot 推出用户专属邮箱',
+      'brief': 'SpaceXAI 为 Grok Bot 推出专属邮箱，官方称 Bot 可用它代用户注册服务、联系商家以及安排日程。',
+      'url': 'https://x.com/bot/status/2108607640318206037',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     },
     {
-      'date': '2026-10-09',
-      'title': 'Google Cloud 发布 Gemini 工作智能体',
-      'brief': 'Google Cloud 发布面向工作的通用 “ Gemini agent ”，把问答、知识工作、图像与媒体创作、编写和运行代码整合进同一个 Agent 和同一套 API ，用户委派目标后等待交付结果。',
-      'url': 'https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026',
+      'date': '2026-10-10',
+      'title': '豆包新增生活缴费：语音打字即可唤出缴费卡片',
+      'brief': '据《读佳》报道， 豆包 App 新增“生活缴费”功能，用户语音或打字下达缴电费、交水费等指令后，豆包会弹出对应服务卡片，跳转至专属缴费页面。',
+      'url': 'https://mp.weixin.qq.com/s/L3YD7w1CB3qk1QzS7UEuYQ',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     },
     {
-      'date': '2026-10-09',
-      'title': '腾讯 WorkBuddy 上线独立文件浏览器',
-      'brief': '腾讯 宣布旗下 AI 办公产品 WorkBuddy 正式上线独立文件浏览器。用户在文件资源管理器或 Finder 中右键选择 WorkBuddy 打开本地文件，或将其设为默认打开方式后双击，即可在独立窗口中查看文件，并通过右侧对话栏调用 Buddy 分析、修改。',
-      'url': 'https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/File-Browser',
+      'date': '2026-10-10',
+      'title': '豆包工作新增画布功能，同步更新两款模型',
+      'brief': '豆包工作 宣布任务模式新增画布功能，素材、方案和创作成果可铺在同一张无限画布上，随时查看、对比和整理，生成之后还能继续调整文字、配色与布局。',
+      'url': 'https://mp.weixin.qq.com/s/5gAQiVgI2WQs9vlh-SpVzw',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-10',
+      'title': 'Perplexity 上线免费百科网站 Alexandria',
+      'brief': 'Perplexity CEO Aravind Srinivas 宣布推出免费百科网站 Alexandria ，网站定位为“一部可以追溯来源的百科”，条目中的每句话都能点开查看出处。 Alexandria 由 Perplexity 的 AI 产品 Computer 扫描并整合 348,980 个来源生成，发布时共收录 66,574 个附带来源的条目。 Srinivas 称整个项目耗资 25,000 美元（250 万 credits） ，后…',
+      'url': 'https://alexandria.pplx.app',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-10',
+      'title': 'LM Studio 发布新版提供决策模型 API',
+      'brief': 'LM Studio 发布 0.4.26 版本，新增兼容 Jev （ TypeSafe AI ）的 /v1/systemone 端点和兼容 OpenAI 的 /v1/decisions 端点。',
+      'url': 'https://lmstudio.ai/changelog/lmstudio/lmstudio-v0.4.26',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     },
@@ -106,54 +138,6 @@ window.NEWS = {
       'url': 'https://x.com/imagine/status/2108280250673352929',
       'source': '橘鸦AI早报',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Anthropic 发布 Claude Haiku 5.5：平均成本降约 75%',
-      'brief': 'Anthropic 发布 Claude Haiku 5.5 ，定位高吞吐、成本敏感和低延迟任务，包括摘要、分类、数据库查询、实时客服、浏览器操作，以及作为 Opus 5.5 、 Sonnet 5.5 的编程子智能体。',
-      'url': 'https://www.anthropic.com/claude-haiku-5-5',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'OpenAI 向全员推送 GPT-6，上线智能交互界面',
-      'brief': 'OpenAI 开始在 ChatGPT 推出 GPT-6 和 Intelligent UI 。',
-      'url': 'https://openai.com/index/gpt-6-for-everyone/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Codex 昨日按投票重置额度，今日再送手动重置次数',
-      'brief': 'OpenAI Codex 负责人 Tibo 在 28 天更新活动第二天上线四项更新后，发起是否需要重置用量额度的投票， 76% 的投票者选择重置。',
-      'url': 'https://x.com/thsottiaux/status/2107913674593644711',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Claude Sonnet 5.5 缓存读取价格减半',
-      'brief': 'Anthropic 宣布把 Claude Sonnet 5.5 的缓存读取价格减半，降至每百万 tokens 0.10 美元 。',
-      'url': 'https://x.com/claudeai/status/2107894060229034197',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Claude 为 Max 和 Team 订阅用户发放月度 API 额度',
-      'brief': 'Anthropic 开始向 Claude Max 和 Team 订阅用户按月发放 Claude Platform API 额度，正分批推出。',
-      'url': 'https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-08',
-      'title': 'Claude Code 团队成员推出 html-plan skill，开放试用',
-      'brief': 'Anthropic Claude Code 团队成员 Thariq 在 X 上宣布，他开发了一个让 Claude Code 生成更好的 HTML plan 的 skill ，现已通过社区插件市场开放安装。',
-      'url': 'https://x.com/trq212/status/2107192901537329354',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     }
   ]
 };
