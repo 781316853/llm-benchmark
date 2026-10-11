@@ -11,7 +11,7 @@ window.CODINGPLAN = {
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-10-11',
   'siteUpdated': '2026.9.24',
-  'refreshedAt': '2026-10-11 15:29',
+  'refreshedAt': '2026-10-11 23:51',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 7,

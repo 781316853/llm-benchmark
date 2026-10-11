@@ -11,7 +11,7 @@ window.LASTEXAM = {
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-11',
-  'refreshedAt': '2026-10-11 15:29',
+  'refreshedAt': '2026-10-11 23:51',
   'stats': {
     'tasks': 1490,
     'entries': 33
@@ -69,7 +69,7 @@ window.LASTEXAM = {
       'org': 'OpenAI',
       'score': 53.6,
       'license': '不开源',
-      'effort': '官方报告最高值（具体推理档位未注明）',
+      'effort': '极高强度思考（工具）',
       'date': '2026-06-26',
       'src': 'datalearner',
       'size': '—',
@@ -78,7 +78,33 @@ window.LASTEXAM = {
       'rank': 5
     },
     {
-      'rank': 6,
+      'model': 'Qwen3.8-Max',
+      'org': '阿里巴巴',
+      'score': 52.4,
+      'license': '有条件免费商用授权',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-08-03',
+      'src': 'datalearner',
+      'size': '2.4T',
+      'context': '1.0M',
+      'cost': '$ 1.65 / $ 4.95',
+      'rank': 6
+    },
+    {
+      'model': 'Qwen3.8-Flash-Next',
+      'org': '阿里巴巴',
+      'score': 51.2,
+      'license': '有条件免费商用授权',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-08-26',
+      'src': 'datalearner',
+      'size': '125B',
+      'context': '—',
+      'cost': '—',
+      'rank': 7
+    },
+    {
+      'rank': 8,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 51.2,
@@ -99,36 +125,49 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.10 / $ 0.50',
-      'rank': 7
+      'rank': 9
     },
     {
       'model': 'GPT-5.6 Terra',
       'org': 'OpenAI',
       'score': 50.4,
       'license': '不开源',
-      'effort': '极高强度思考（工具）',
+      'effort': '最高（工具）',
       'date': '2026-06-26',
       'src': 'datalearner',
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 12.00',
-      'rank': 8
+      'rank': 10
     },
     {
       'model': 'GPT-5.6 Luna',
       'org': 'OpenAI',
       'score': 50.3,
       'license': '不开源',
-      'effort': '极高强度思考（工具）',
+      'effort': '最高（工具）',
       'date': '2026-06-26',
       'src': 'datalearner',
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'rank': 9
+      'rank': 11
     },
     {
-      'rank': 10,
+      'model': 'Qwen3.8-27B',
+      'org': '阿里巴巴',
+      'score': 42.9,
+      'license': '免费商用授权',
+      'effort': '思考模式（工具）',
+      'date': '2026-08-14',
+      'src': 'datalearner',
+      'size': '28B',
+      'context': '262K',
+      'cost': '$ 0.40 / $ 3.00',
+      'rank': 12
+    },
+    {
+      'rank': 13,
       'model': 'Seed 2.1 Pro',
       'org': 'ByteDance',
       'score': 41.4,
@@ -149,7 +188,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '—',
       'cost': '—',
-      'rank': 11
+      'rank': 14
     },
     {
       'model': 'Claude Opus 5',
@@ -159,7 +198,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-07-24',
       'src': 'datalearner',
-      'rank': 12
+      'rank': 15
     },
     {
       'model': 'DeepSeek-V4.1-Flash',
@@ -172,7 +211,7 @@ window.LASTEXAM = {
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.22 / $ 0.66',
-      'rank': 13
+      'rank': 16
     },
     {
       'model': 'MiMo-V2.6-Pro',
@@ -185,7 +224,7 @@ window.LASTEXAM = {
       'size': '1.0T',
       'context': '1.0M',
       'cost': '$ 0.43 / $ 0.87',
-      'rank': 14
+      'rank': 17
     },
     {
       'model': 'Step 5 Preview',
@@ -195,7 +234,7 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-09-20',
       'src': 'datalearner',
-      'rank': 15
+      'rank': 18
     },
     {
       'model': 'GLM-5.3',
@@ -208,7 +247,7 @@ window.LASTEXAM = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 16
+      'rank': 19
     },
     {
       'model': 'Kimi K3',
@@ -218,7 +257,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-07-16',
       'src': 'datalearner',
-      'rank': 17
+      'rank': 20
     },
     {
       'model': 'MiMo-V2.6-Flash',
@@ -231,7 +270,7 @@ window.LASTEXAM = {
       'size': '309B',
       'context': '1.0M',
       'cost': '$ 0.14 / $ 0.28',
-      'rank': 18
+      'rank': 21
     },
     {
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
@@ -244,7 +283,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'rank': 19
+      'rank': 22
     },
     {
       'model': 'Claude Opus 4.8',
@@ -254,7 +293,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-05-28',
       'src': 'datalearner',
-      'rank': 20
+      'rank': 23
     },
     {
       'model': 'Grok 4.5',
@@ -264,20 +303,7 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-07-08',
       'src': 'datalearner',
-      'rank': 21
-    },
-    {
-      'model': 'Qwen3.8-Max',
-      'org': '阿里巴巴',
-      'score': 27,
-      'license': '有条件免费商用授权',
-      'effort': '极高强度思考（工具）',
-      'date': '2026-08-03',
-      'src': 'datalearner',
-      'size': '2.4T',
-      'context': '1.0M',
-      'cost': '$ 1.65 / $ 4.95',
-      'rank': 22
+      'rank': 24
     },
     {
       'model': 'GPT-5.5',
@@ -287,7 +313,7 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-04-23',
       'src': 'datalearner',
-      'rank': 23
+      'rank': 25
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -300,7 +326,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 3.75',
-      'rank': 24
+      'rank': 26
     },
     {
       'model': 'GLM-5.3-Flash',
@@ -313,7 +339,7 @@ window.LASTEXAM = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 25
+      'rank': 27
     },
     {
       'model': 'Claude Fable 5',
@@ -323,7 +349,7 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-06-09',
       'src': 'datalearner',
-      'rank': 26
+      'rank': 28
     },
     {
       'model': 'DeepSeek V4 Pro 0813',
@@ -336,7 +362,7 @@ window.LASTEXAM = {
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'rank': 27
+      'rank': 29
     },
     {
       'model': 'DeepSeek V4 Flash 0731',
@@ -349,20 +375,7 @@ window.LASTEXAM = {
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'rank': 28
-    },
-    {
-      'model': 'Qwen3.8-Flash-Next',
-      'org': '阿里巴巴',
-      'score': 24.3,
-      'license': '有条件免费商用授权',
-      'effort': '极高强度思考（工具）',
-      'date': '2026-08-26',
-      'src': 'datalearner',
-      'size': '125B',
-      'context': '—',
-      'cost': '—',
-      'rank': 29
+      'rank': 30
     },
     {
       'model': 'Hy4 preview',
@@ -375,19 +388,6 @@ window.LASTEXAM = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 30
-    },
-    {
-      'model': 'Qwen3.8-27B',
-      'org': '阿里巴巴',
-      'score': 20.4,
-      'license': '免费商用授权',
-      'effort': '思考模式（工具）',
-      'date': '2026-08-14',
-      'src': 'datalearner',
-      'size': '28B',
-      'context': '262K',
-      'cost': '$ 0.40 / $ 3.00',
       'rank': 31
     },
     {

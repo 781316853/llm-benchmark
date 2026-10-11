@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-09 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-11 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-3413e8cba469ea2b14d027c1)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-bd259454de3bce3c9c99e960)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-3413e8cba469ea2b14d027c1',
-  'batchRevision': 321,
-  'batchPublishedAt': '2026-10-09T11:55:19.831Z',
-  'updated': '2026-10-09',
-  'refreshedAt': '2026-10-11 15:29',
+  'batchId': 'overall-bd259454de3bce3c9c99e960',
+  'batchRevision': 326,
+  'batchPublishedAt': '2026-10-11T15:13:44.372Z',
+  'updated': '2026-10-11',
+  'refreshedAt': '2026-10-11 23:51',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -31,8 +31,8 @@ window.MODELDIAL = {
   'costBasis': 'backend',
   'costBasisNote': '成本与耗时为后端(coding)单轴口径;官网主榜显示的是三轴汇总值,故本站数值低于官网显示值。',
   'stats': {
-    'configs': 79,
-    'models': 36
+    'configs': 80,
+    'models': 37
   },
   'desc': 'ModelDial Radar:第三方独立实测的编码智能体能力榜,分后端与测试(40%)、前端与交互(30%)、知识与推理(30%)三类能力,同一模型按推理强度分档多次测试后取最高分配置入榜;综合分越高越好。',
   'models': [
@@ -580,6 +580,21 @@ window.MODELDIAL = {
       'tags': [],
       'configs': 1,
       'rank': 36
+    },
+    {
+      'model': 'nemotron-3-ultra-550b-a55b:free',
+      'provider': 'openrouter',
+      'effort': 'default',
+      'displayName': 'nemotron-3-ultra-550b-a55b:free / Auto',
+      'overall': 40.4,
+      'backend': 41,
+      'frontend': 40,
+      'knowledge': 40,
+      'elapsedMs': 1678317,
+      'costUsd': 0,
+      'tags': [],
+      'configs': 1,
+      'rank': 37
     }
   ],
   'configs': [
@@ -1614,6 +1629,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 74,
+      'provider': 'openrouter',
+      'model': 'nemotron-3-ultra-550b-a55b:free',
+      'effort': 'default',
+      'displayName': 'nemotron-3-ultra-550b-a55b:free / Auto',
+      'overall': 40.4,
+      'backend': 41,
+      'frontend': 40,
+      'knowledge': 40,
+      'elapsedMs': 1678317,
+      'costUsd': 0,
+      'tags': []
+    },
+    {
+      'rank': 75,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'high',
@@ -1627,7 +1656,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 75,
+      'rank': 76,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'low',
@@ -1641,7 +1670,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 76,
+      'rank': 77,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'medium',
@@ -1655,7 +1684,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 77,
+      'rank': 78,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'medium',
@@ -1669,7 +1698,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 78,
+      'rank': 79,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'low',
@@ -1683,7 +1712,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 79,
+      'rank': 80,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'low',

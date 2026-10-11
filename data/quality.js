@@ -153,7 +153,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 36,
+      'modelCount': 37,
       'updated': '2026-10-11',
       'ageDays': 0,
       'completeness': 1,
@@ -922,9 +922,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 36,
-      'complete': 36,
-      'modelCount': 36,
+      'total': 37,
+      'complete': 37,
+      'modelCount': 37,
       'missingFields': {},
       'flag': 'ok'
     },
