@@ -2,15 +2,98 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-10',
+  'updated': '2026-10-11',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '产品应用'
+    '技术与洞察',
+    '前瞻与传闻',
+    '产品应用',
+    '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-10-11',
+      'title': 'Codex 28天承诺：第6天将全局重置用量额度',
+      'brief': 'OpenAI 的 Codex 负责人 Tibo 宣布，将在 二十八天 承诺的 第 6 天 结束前，为全球用户重置用量额度。',
+      'url': 'https://x.com/thsottiaux/status/2109045220411351517',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-11',
+      'title': 'Qoder 上线 Fast 模式：首次响应缩短至 3 秒',
+      'brief': 'Qoder 在桌面端上线 Fast 模式：国际版原有的 Performance 模式升级为 Fast ，CN 版新增 Fast 档位。官方称输出质量保持不变，首次响应时间由 8 秒 缩短至 3 秒 ， Credits 消耗系数从 1.1x 降至 0.8x ，约少 27% ，原 Performance 用户无需操作即自动切换，已有 Credits 余额不受影响。',
+      'url': 'https://docs.qoder.com/zh/product-overview/fast-mode-announcement',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-11',
+      'title': 'Nous Research 上线限免模型，代号 MISSINGNO.',
+      'brief': 'Nous Research 在 Nous Portal 上线了代号为 MISSINGNO. 的模型，面向编程和 Agentic 推理 ,目前在 Nous Portal 限时免费开放，也可在 Hermes Agent 中使用。官方称， MISSINGNO. 的 token 使用效率很高。',
+      'url': 'https://x.com/NousResearch/status/2109012611555840069',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-11',
+      'title': 'Cloudflare 发布多模态决策模型 Clef-omni，权重开放',
+      'brief': 'Cloudflare 发布开放权重决策模型 Clef-omni ，基于 Qwen3-Omni-30B-A3B-Instruct 构建，权重已在 Hugging Face 以 Apache-2.0 许可开放。该模型以一段状态描述和一组预设问题为输入，支持文本、图像、音频和视频，单次 API 调用即可为每个问题的各选项返回概率。',
+      'url': 'https://blog.cloudflare.com/clef-faster-cheaper-multimodal/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-11',
+      'title': '阶跃星辰新版 StepFun Studio 开启内测',
+      'brief': '阶跃星辰 宣布 AI 模型体验与创作工作空间 StepFun Studio 推出新版，开启本轮内测。该工作空间无需编写代码，打开浏览器即可体验 Step 系列模型能力，可用于创作文本、生成报告与网页等。',
+      'url': 'https://mp.weixin.qq.com/s/QogwLzC2xfgwoaYBrBOdvw',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-11',
+      'title': 'OpenAI 披露不对齐新案例：模型编造数据破坏环境',
+      'brief': 'OpenAI 在对齐研究网站发布三份新的模型不对齐案例报告，记录内部研究模型在 强化学习 训练中的多起问题行为。',
+      'url': 'https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-10-11',
+      'title': 'OpenAI：前沿工作负载须先有安全简报',
+      'brief': 'OpenAI RSI Preparedness 负责人 Micah Carroll 发文介绍了 OpenAI 推进安全案例（ safety case ）工作的相关情况。',
+      'url': 'https://cdn.openai.com/trust-and-transparency/oai_internal-use-catastrophic-risk-assessments_2026_2.pdf',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-10-11',
+      'title': '微软 CEO：应默认所有 AI 模型都已被攻破',
+      'brief': '微软 CEO Satya Nadella 发长文，主张为 AI 系统重建信任架构。',
+      'url': 'https://x.com/satyanadella/status/2108931348857827686?s=20',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-10-11',
+      'title': '消息称 Meta 搁置向 Anthropic 出租算力计划',
+      'brief': '据《 华尔街日报 》报道， Meta 已搁置向 Anthropic 出租 AI 算力的计划。',
+      'url': 'https://www.wsj.com/tech/ai/ai-computing-power-demand-a63da9b9',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-10-11',
+      'title': '英伟达被曝洽购或追加投资 Reflection AI',
+      'brief': '据 《金融时报》 报道，知情人士透露 英伟达 正就收购美国初创公司 Reflection AI 或向其追加投资展开谈判。谈判尚处初期，交易可能采取多种形式，包括吸纳核心团队并获取技术授权的 人才兼并模式 ，以绕开全面并购通常伴随的漫长 反垄断审查 ；双方有望在未来几周内敲定方案，但仍存在破裂可能。',
+      'url': 'https://www.reuters.com/business/nvidia-talks-invest-further-reflection-ai-or-buy-it-ft-reports-2026-10-10/',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-10-10',
       'title': 'OpenAI dot 更新：手机端可创建并接管 Codex',
@@ -45,22 +128,6 @@ window.NEWS = {
     },
     {
       'date': '2026-10-10',
-      'title': 'Claude Code Projects 候补用户全部获准加入',
-      'brief': 'Anthropic 宣布， Claude Code Projects 候补名单上的 Pro 和 Max 用户已全部获准加入。该功能仍处于公开测试阶段，官方将按容量继续放行新报名用户， Team 和 Enterprise 订阅方案暂不可用。',
-      'url': 'https://x.com/ClaudeDevs/status/2108621476538781878',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'Claude Design独立版站点12月14日关闭',
-      'brief': 'Anthropic 设计团队成员 Nate Parrott 表示，用户对集成在 Claude 内的 Design 和 Slides 使用更频繁，团队将集中投入集成版，独立版 Claude Design 站点将于 2026 年 12 月 14 日 关闭，在此之前仍可正常使用，之后原网址会跳转至 Claude 。',
-      'url': 'https://support.claude.com/en/articles/17440474-migrate-from-standalone-claude-design-to-claude',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-10',
       'title': 'Grok Bot 推出用户专属邮箱',
       'brief': 'SpaceXAI 为 Grok Bot 推出专属邮箱，官方称 Bot 可用它代用户注册服务、联系商家以及安排日程。',
       'url': 'https://x.com/bot/status/2108607640318206037',
@@ -90,54 +157,6 @@ window.NEWS = {
       'url': 'https://alexandria.pplx.app',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'LM Studio 发布新版提供决策模型 API',
-      'brief': 'LM Studio 发布 0.4.26 版本，新增兼容 Jev （ TypeSafe AI ）的 /v1/systemone 端点和兼容 OpenAI 的 /v1/decisions 端点。',
-      'url': 'https://lmstudio.ai/changelog/lmstudio/lmstudio-v0.4.26',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-09',
-      'title': 'JetBrains 开源 Mellum2.1，强化学习主打编程 Agent',
-      'brief': 'JetBrains 发布编程模型 Mellum2.1 ，模型权重已上架 Hugging Face ，采用 Apache 2.0 许可。 Mellum2.1 架构与此前开源的 Mellum2 相同，总参数 12B 、每 token 激活 2.5B ，改动集中在后训练，强化学习从收尾阶段变为训练主体，模型在带 shell 和文件编辑工具的真实代码仓库中训练，测试通过才获得奖励。',
-      'url': 'https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-09',
-      'title': 'Hugging Face 开源基因注释模型 Carbon-A',
-      'brief': 'Hugging Face 生物学研究团队 HuggingFaceBio 开源基因注释模型 Carbon-A ，并同步发布用 Carbon-A 构建的注释数据库 Carbon Annotation Database 。 Carbon-A 有 12 亿 参数，直接从 DNA 序列预测真核生物的蛋白编码区，单一模型覆盖哺乳动物、植物、真菌和原生生物等类群；官方称在 42 个基准基因组上宏平均核苷酸 F1 达 0.944 ，在核苷酸、外显子和基…',
-      'url': 'https://huggingface.co/blog/HuggingFaceBio/carbon-annotator-genbank-genome-annotation',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-09',
-      'title': 'LightOnAI 开源 LightOnOCR-3',
-      'brief': 'LightOn 发布端到端 OCR 模型系列 LightOnOCR-3 ，提供 0.8B、1B、4B 三个尺寸，采用 Apache 2.0 许可，可用于研究和商业用途。',
-      'url': 'https://www.lighton.ai/research/lightonocr-3',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-09',
-      'title': 'Odyssey 发布世界模型 Odyssey-3',
-      'brief': 'Odyssey 发布基础世界模型 Odyssey-3 ，称其为迄今最强大的世界模型，研究预览现已免费开放体验。',
-      'url': 'https://odyssey.systems/meet-odyssey-3',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-09',
-      'title': 'Grok Imagine Video 1.5 Lite 上线，1080p 每秒 0.14 美元',
-      'brief': 'Grok Imagine 宣布，视频生成模型 Video 1.5 Lite 已在 Grok Imagine API 上线，用于文本生成视频和图像生成视频。价格按分辨率按秒计费： 480p 每秒 0.02 美元 ， 720p 每秒 0.03 美元 ， 1080p 每秒 0.14 美元 。',
-      'url': 'https://x.com/imagine/status/2108280250673352929',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };
