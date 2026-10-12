@@ -11,7 +11,7 @@
 //          platform=源站记录的运行环境;series=源站视频专栏
 // 结构:models=主榜;tasks=任务定义(含短/长提示词全文);papers=模型×任务×短长提示×首轮/最终明细;
 //        gain=长提示相对基准的增减益(byTask 按任务 id 给出 short/long 四项子分)
-// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 10%)与命中数(分母 7);「无机酸实测」页完整展示。
+// 用途:仅「无机酸实测」页展示;2026-10-12 起已由「第三方实测」计分组移出,不计入总览综合分与命中数(数据仍每日抓取)。
 window.WUJISUAN = {
   'source': '无机酸 · AI 前端实测',
   'url': 'https://www.bilibili.com/toy/wujisuan-ai-test/index.html',

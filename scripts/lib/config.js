@@ -337,7 +337,7 @@ module.exports = {
       radarUrl: "https://modeldial.com/radar",
       methodUrl: "https://modeldial.com/method"
     },
-    // ===== 无机酸 · AI 前端实测(B 站独立第三方实测,第三方实测组计分组之一)=====
+    // ===== 无机酸 · AI 前端实测(B 站独立第三方实测;2026-10-12 起仅独立页展示,不计综合分与命中数)=====
     wujisuan: {
       // 「无机酸 · AI 前端实测」(B 站 UP 主 @无机酸-_-):真实前端任务端到端实测榜,
       // 全榜模型 × 2 任务(SupernovAI 品牌站 / 云山巨城体素场景)× 短/长提示 × 首轮/最终。

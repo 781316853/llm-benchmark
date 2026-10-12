@@ -105,8 +105,7 @@
     webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力,计入综合分权重 22%",
     aicap: "atmeplz 四方向榜:前端(中式建筑/体素山水/前端网页/黑洞模拟)与后端(超级 MES)方向分,前后端合并为单个计分组(取在场方向均值),合计计入综合分权重 12%",
     tbench: "斯坦福/Laude 终端命令行 Agent 评测,在真实 Shell 环境中解决编译/配置/运维等长程任务,三版合并计入综合分权重 11%",
-    modeldial: "modeldial.com 第三方独立实测的编码智能体能力榜,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权综合分,计入综合分权重 16%",
-    wujisuan: "B 站 @无机酸-_- 的第三方独立前端实测:两个真实前端任务(虚构 AI 品牌站 / 体素三维场景)各按 0-100 打分后求和(0-200),每模型用其自家 agent harness 单次实测,计入综合分权重 10%"
+    modeldial: "modeldial.com 第三方独立实测的编码智能体能力榜,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权综合分,计入综合分权重 16%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -209,11 +208,6 @@
     // Code Arena · WebDev 单值列(Elo 原值):归入「第三方实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
-    // 无机酸 · AI 前端实测单值列(0-200 = 两任务分之和):第三方实测组;格内显示总分,
-    // harness/档位/不确定区间/实测日期放悬浮提示;完整榜见「无机酸实测」页
-    { key: "wujisuan", label: "无机酸实测 (0-200)", type: "num", bench: true, grp: "第三方实测", tone: "wujisuan",
-      tip: "无机酸 · AI 前端实测总分(0-200):独立第三方把两个真实前端任务(虚构 AI 品牌站 + 体素三维场景)各按 0-100 打分后求和;每模型用其自家 agent harness 单次实测,不计重试;计入综合分(权重 10%)与命中数",
-      val: function (r) { return (r.wujisuan && r.wujisuan.score != null) ? r.wujisuan.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
     // 该列的 tone 只作用于表头 —— 格内两个方向分沿用 .ac-fe/.ac-be 方向色(方向信息优先于榜色)
@@ -444,18 +438,6 @@
         if (r.modeldial.configs) mdParts.push(r.modeldial.configs + " 个配置取最高");
         mdHtml = '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
       }
-      // 无机酸前端实测单元格:两任务总分(0-200);悬浮显示实测 harness / 推理档位 / 不确定区间 / 实测日期
-      // (区间为源站人工标注,非置信区间;每模型 n=1,故不显示 ±)
-      var wjHtml = "—";
-      if (r.wujisuan) {
-        var wjParts = [];
-        if (r.wujisuan.agent) wjParts.push("harness " + r.wujisuan.agent);
-        if (r.wujisuan.effort) wjParts.push("档位 " + r.wujisuan.effort);
-        if (r.wujisuan.lo != null && r.wujisuan.hi != null) wjParts.push("不确定区间 " + r.wujisuan.lo + "–" + r.wujisuan.hi);
-        if (r.wujisuan.date) wjParts.push("实测 " + r.wujisuan.date);
-        wjParts.push("两任务分之和(每任务 0-100)");
-        wjHtml = '<span class="bv bv-wujisuan" title="' + esc(wjParts.join(" · ")) + '">' + r.wujisuan.score.toFixed(2) + '</span>';
-      }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
@@ -489,15 +471,14 @@
         '<td class="num ref">' + refCell("hle", "HLE", "hle") + '</td>' +
         '<td class="num ref">' + refCell("gpqa", "GPQA", "gpqa") + '</td>' +
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
-        // 后续无机酸实测/llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
+        // 后续 llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
         // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
         '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
-        '<td class="num">' + wjHtml + '</td>' +
         '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
         // AI 能力列:格内两个方向分沿用自己的方向色(ac-fe 橙 / ac-be 蓝),不用该榜的榜色 —— 方向信息优先
         '<td class="num">' + aicapCell(r) + '</td>' +
-        '<td class="num">' + r.benchCount + '/7</td></tr>';
+        '<td class="num">' + r.benchCount + '/6</td></tr>';
     });
     // 两级表头:第 1 行为分组行(「榜单基准」「第三方实测」colspan 合并)与非评测列的 rowspan 纵跨格;
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
@@ -505,7 +486,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 16% / Terminal-Bench 4.0/3.0/2.1 11%)计入综合分与命中数;组尾 HLE / GPQA 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%;无机酸 · AI 前端实测,两个真实前端任务分之和 0-200,权重 10%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);五组同纲计入综合分与命中数,合计占权重约 73%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);四组同纲计入综合分与命中数,合计占权重约 70%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -847,7 +828,7 @@
         '%(三分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
         '源站主榜显示的是三轴汇总值,故此处数值低于源站显示值;本页各模型之间口径一致、可直接横向比较。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母为 7(七项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母为 6(六项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
         ms.length + ' 条,下方为全部 config 明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -855,7 +836,7 @@
         (src.license ? ' · ' + esc(src.license) : "") + '</div>';
   }
 
-  // ===== 7) 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测;计入综合分(权重 10%)与命中数) =====
+  // ===== 7) 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测;2026-10-12 起仅本页展示,不计综合分与命中数) =====
   // 分数为「两个真实前端任务分之和」(每任务 0-100,合计 0-200);每模型用其自家 agent harness 单次实测。
   var PROMPT_CN = { short: "短提示", long: "长提示" };
   var ROUND_CN = { oneshot: "首轮", final: "最终" };
@@ -985,8 +966,7 @@
       '<div class="note-line"><b>口径提醒</b>每个模型跑在其<b>自家 agent harness</b>(Harness 列,如 cc / codex / zcode / qoder / cursor)下,' +
         '分数同时反映模型与该脚手架的质量;每模型仅一次完整实测(n=1),「不确定区间」为源站人工标注的可达分数范围,<b>不是统计置信区间</b>。</div>' +
       (gain.formula ? '<div class="note-line"><b>增益率口径</b>' + esc(gain.metric || "") + ' = ' + esc(gain.formula || "") + '</div>' : "") +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」组计分组之一,权重 10%)与命中数(分母 7);' +
-        '因量纲(两任务分之和)与主基准原生分不可比,已排除在跨源一致性校验之外。主榜 ' + ms.length + ' 个模型,逐条明细 ' + (src.papers || []).length + ' 条。</div>' +
+      '<div class="note-line"><b>说明</b>本页<b>仅展示</b>,<b>不计入总览综合分与命中数</b>(2026-10-12 起由计分组移出):每模型仅一次完整实测(n=1)、且分数混杂模型与其自家 harness 质量,样本强度与口径纯净度均低于计分组要求,故与 CursorBench / FrontierCode 同属「仅展示」;因量纲(两任务分之和)与主基准原生分不可比,亦排除在跨源一致性校验之外。主榜 ' + ms.length + ' 个模型,逐条明细 ' + (src.papers || []).length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
         (src.methodUrl ? ' · <a href="' + esc(src.methodUrl) + '" target="_blank" rel="noopener">实测视频合集 ↗</a>' : "") +

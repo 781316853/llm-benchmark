@@ -14,7 +14,8 @@
 // ⚠️ 口径:每个模型跑在其「自家 agent harness」(cc/codex/zcode/qoder/cursor/antigravity/devin)下,
 //   分数混杂模型与 harness 两者质量;且每模型 n=1、仅有源站人工标注的 lo/hi 不确定区间(非置信区间)。
 //   effort 字段的「无」在源站是字符串 "null" 而非缺字段,本源统一清洗为 null。
-// 性质:已计入总览综合分(「第三方实测」组计分组之一,权重 10%)与命中数(命中分母 7);
+// 性质:2026-10-12 起由「第三方实测」计分组移出,改仅「无机酸实测」页展示,不计入总览综合分与命中数
+//   (每模型 n=1、分数混杂模型与 harness 质量,口径纯净度不足以进计分组;数据仍每日抓取);
 //   因量纲与主基准不可比,已列入 validation.consistency.excludedSources。
 // 输出:data/wujisuan.js(window.WUJISUAN)。
 "use strict";
@@ -204,7 +205,7 @@ class WujisuanSource extends BaseSource {
       "//          platform=源站记录的运行环境;series=源站视频专栏\n" +
       "// 结构:models=主榜;tasks=任务定义(含短/长提示词全文);papers=模型×任务×短长提示×首轮/最终明细;\n" +
       "//        gain=长提示相对基准的增减益(byTask 按任务 id 给出 short/long 四项子分)\n" +
-      "// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 10%)与命中数(分母 7);「无机酸实测」页完整展示。\n",
+      "// 用途:仅「无机酸实测」页展示;2026-10-12 起已由「第三方实测」计分组移出,不计入总览综合分与命中数(数据仍每日抓取)。\n",
       {
         source: "无机酸 · AI 前端实测",
         url: CFG.boardUrl,
