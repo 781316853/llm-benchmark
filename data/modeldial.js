@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-11 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-12 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-bd259454de3bce3c9c99e960)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-11278ad24f260f5b0612991d)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-bd259454de3bce3c9c99e960',
-  'batchRevision': 326,
-  'batchPublishedAt': '2026-10-11T15:13:44.372Z',
-  'updated': '2026-10-11',
-  'refreshedAt': '2026-10-11 23:51',
+  'batchId': 'overall-11278ad24f260f5b0612991d',
+  'batchRevision': 333,
+  'batchPublishedAt': '2026-10-11T22:27:05.815Z',
+  'updated': '2026-10-12',
+  'refreshedAt': '2026-10-12 15:37',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -586,11 +586,11 @@ window.MODELDIAL = {
       'provider': 'openrouter',
       'effort': 'default',
       'displayName': 'nemotron-3-ultra-550b-a55b:free / Auto',
-      'overall': 40.4,
-      'backend': 41,
+      'overall': 42.4,
+      'backend': 46,
       'frontend': 40,
       'knowledge': 40,
-      'elapsedMs': 1678317,
+      'elapsedMs': 1023164,
       'costUsd': 0,
       'tags': [],
       'configs': 1,
@@ -1633,11 +1633,11 @@ window.MODELDIAL = {
       'model': 'nemotron-3-ultra-550b-a55b:free',
       'effort': 'default',
       'displayName': 'nemotron-3-ultra-550b-a55b:free / Auto',
-      'overall': 40.4,
-      'backend': 41,
+      'overall': 42.4,
+      'backend': 46,
       'frontend': 40,
       'knowledge': 40,
-      'elapsedMs': 1678317,
+      'elapsedMs': 1023164,
       'costUsd': 0,
       'tags': []
     },

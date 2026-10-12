@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-11',
+  'updated': '2026-10-12',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -14,6 +14,46 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-10-12',
+      'title': 'GPT-6.1 Sol 在 Codex 中的默认上下文升至 500k',
+      'brief': 'OpenAI Codex 负责人 Tibo 表示， GPT-6.1 Sol 通过 Codex 和 Work 使用时的默认上下文长度已从 272k 提升至 500k ，增幅约八成。他表示更长默认值能减少 compaction 的出现，更好支撑需要长时间保留大量上下文和细节的任务，该数值经过仔细测试，适合大多数用户。用户仍可自行调高或调低， GPT-6.1 Sol 最大上下文长度为 1M 。他还表示，此次调整后从订阅额度扣费时， GPT-6…',
+      'url': 'https://x.com/thsottiaux/status/2109430343346581527',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-12',
+      'title': 'Tibo 调查 Pro 用户用量偏好：周额度翻倍或取消 5 小时限制',
+      'brief': 'OpenAI Codex 负责人 Tibo 在社交平台针对 ChatGPT Pro 订阅用户发起公开投票，征求配额调整方案的偏好。一种方案是保留现行的 每五小时 限制，但将 每周总用量翻倍 ；另一种方案则是彻底取消 每五小时 的频次限制，维持现有 每周总用量不变 。',
+      'url': 'https://x.com/thsottiaux/status/2109152716954222849',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-12',
+      'title': 'Claude 为部分付费用户发放 100 美元 Projects 初始额度',
+      'brief': 'Claude 近日向已通过 Projects 测试申请的订阅用户账户发放了最高 一百美元 的 Projects 初始使用额度。',
+      'url': 'https://x.com/ziwenxu_/status/2108994420398051815',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-12',
+      'title': '马斯克展示 SpaceX 人工智能部门更名为 SpaceXSI',
+      'brief': '马斯克 在社交平台 X 上公开了一张已获得官方认证的主页截图，图片显示 SpaceX 的人工智能部门平台在 X 上的 ID 改为了 SpaceXSI ，名称改为 SpaceX Super Intelligence 。该认证账号已带有企业金色认证标识，标志着新名称正式启用。',
+      'url': 'https://x.com/elonmusk/status/2109012639049244981',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-10-12',
+      'title': '谷歌灰度测试新模型 Gemini 4 Argon',
+      'brief': '据用户反馈， 谷歌 已在 Gemini 网页端和 Antigravity 悄然开启下一代旗舰模型 Gemini 4 Argon 的灰度测试。',
+      'url': 'https://linux.do/t/topic/3008137',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-10-11',
       'title': 'Codex 28天承诺：第6天将全局重置用量额度',
@@ -93,70 +133,6 @@ window.NEWS = {
       'url': 'https://www.reuters.com/business/nvidia-talks-invest-further-reflection-ai-or-buy-it-ft-reports-2026-10-10/',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'OpenAI dot 更新：手机端可创建并接管 Codex',
-      'brief': 'OpenAI 为 ChatGPT 中的 dot 带来一批更新：用户现在可以在 ChatGPT 手机应用（iOS 和 Android）中直接创建 dot ，包括命名、自定义外观和连接插件。',
-      'url': 'https://learn.chatgpt.com/docs/whats-new/dots-october-9-2026',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'OpenAI 为 Codex 推出下一条消息预测测试版',
-      'brief': 'OpenAI 宣布 Codex 的 composer predictions 功能进入测试版。 Codex 回复结束后，输入框会根据当前对话和用户的表达方式建议下一条消息，按 Tab 采纳后可编辑再发送，也可忽略建议自行输入。',
-      'url': 'https://help.openai.com/en/articles/20001601-composer-predictions-in-codex',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'TraeWork 与 TraeCode 统一为 TRAE',
-      'brief': 'Trae 官方宣布， TraeWork 与 TraeCode 已融合升级为统一的 TRAE ：新入口覆盖桌面端、Web 端和移动端，支持在面向任务推进的 Agent 模式与面向深度编码调试的 IDE 模式之间无缝切换。',
-      'url': 'https://docs.trae.cn/ide_traework-to-traecode-data-migration',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-10',
-      'title': '阶跃星辰将增加 Step Plan 供应并调整权益',
-      'brief': '阶跃星辰 宣布，自 2026 年 10 月 14 日 起增加 Step Plan 供应，官方称 Step 5 Preview 推出后订阅需求超出预期，此前曾采取限售措施。',
-      'url': 'https://linux.do/t/topic/3000890',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'Grok Bot 推出用户专属邮箱',
-      'brief': 'SpaceXAI 为 Grok Bot 推出专属邮箱，官方称 Bot 可用它代用户注册服务、联系商家以及安排日程。',
-      'url': 'https://x.com/bot/status/2108607640318206037',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-10',
-      'title': '豆包新增生活缴费：语音打字即可唤出缴费卡片',
-      'brief': '据《读佳》报道， 豆包 App 新增“生活缴费”功能，用户语音或打字下达缴电费、交水费等指令后，豆包会弹出对应服务卡片，跳转至专属缴费页面。',
-      'url': 'https://mp.weixin.qq.com/s/L3YD7w1CB3qk1QzS7UEuYQ',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-10',
-      'title': '豆包工作新增画布功能，同步更新两款模型',
-      'brief': '豆包工作 宣布任务模式新增画布功能，素材、方案和创作成果可铺在同一张无限画布上，随时查看、对比和整理，生成之后还能继续调整文字、配色与布局。',
-      'url': 'https://mp.weixin.qq.com/s/5gAQiVgI2WQs9vlh-SpVzw',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-10',
-      'title': 'Perplexity 上线免费百科网站 Alexandria',
-      'brief': 'Perplexity CEO Aravind Srinivas 宣布推出免费百科网站 Alexandria ，网站定位为“一部可以追溯来源的百科”，条目中的每句话都能点开查看出处。 Alexandria 由 Perplexity 的 AI 产品 Computer 扫描并整合 348,980 个来源生成，发布时共收录 66,574 个附带来源的条目。 Srinivas 称整个项目耗资 25,000 美元（250 万 credits） ，后…',
-      'url': 'https://alexandria.pplx.app',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
     }
   ]
 };
