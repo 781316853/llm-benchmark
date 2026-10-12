@@ -153,7 +153,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 37,
+      'modelCount': 38,
       'updated': '2026-10-12',
       'ageDays': 0,
       'completeness': 1,
@@ -186,7 +186,7 @@ window.QUALITY = {
       'id': 'programbench',
       'name': 'ProgramBench',
       'status': 'ok',
-      'modelCount': 70,
+      'modelCount': 71,
       'updated': '2026-10-12',
       'ageDays': 0,
       'completeness': 1,
@@ -922,9 +922,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 37,
-      'complete': 37,
-      'modelCount': 37,
+      'total': 38,
+      'complete': 38,
+      'modelCount': 38,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -946,9 +946,9 @@ window.QUALITY = {
     },
     'programbench': {
       'rate': 1,
-      'total': 70,
-      'complete': 70,
-      'modelCount': 70,
+      'total': 71,
+      'complete': 71,
+      'modelCount': 71,
       'missingFields': {},
       'flag': 'ok'
     },
