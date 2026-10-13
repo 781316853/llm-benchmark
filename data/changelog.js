@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-10-13',
-  'refreshedAt': '2026-10-13 15:57',
+  'refreshedAt': '2026-10-14 01:02',
   'uiWindowDays': 14,
   'desc': '11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,27 +19,33 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '0.162.1',
           'title': '0.162.1',
           'date': '2026-10-09',
-          'dateRaw': '2026-10-09T19:47:24Z',
-          'tags': [],
+          'dateRaw': '2026-10-09T19:44:51Z',
+          'tags': [
+            'Bug Fixes'
+          ],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.162.1',
-          'body': '错误修复\n- 修复了异步问题包含多行、保留换行符和完整超链接目标时TUI崩溃的问题。(# 51866)\n- 修复了由于正在运行的后台服务器的功能设置和CLI默认值之间的差异而导致的启动失败。 兼容性检查现在仅适用于显式命令行功能重写。（ # 52648 ）\n完整更新日志： rust-v0.162.0... rust-v0.162.1',
-          'h': '965fb32c'
+          'body': '## 错误修复\n\n- 修复了异步问题包含多行、保留换行符和完整超链接目标时TUI崩溃的问题。(# 51866)\n- 修复了由于正在运行的后台服务器的功能设置和CLI默认值之间的差异而导致的启动失败。 兼容性检查现在仅适用于显式命令行功能重写。（ # 52648 ）\n\n完整更新日志： https://github.com/openai/codex/compare/rust-v0.162.0... rust-v0.162.1',
+          'h': '449a1b'
         },
         {
           'version': '0.162.0',
           'title': '0.162.0',
           'date': '2026-10-08',
-          'dateRaw': '2026-10-08T18:58:03Z',
-          'tags': [],
+          'dateRaw': '2026-10-08T18:55:59Z',
+          'tags': [
+            'New Features',
+            'Bug Fixes',
+            'Chores',
+            'Changelog'
+          ],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.162.0',
-          'body': '新功能\n- 启用工作树功能后，添加用于从受信任的本地项目创建和列出托管Git工作树的工具。(# 50148)\n- 使用p在代理命令中心中固定任务，并在服务器支持时将其保留在共享固定组中。(# 51500)\n- 使用/copy导航和复制成绩单块，使用Ctrl + Insert复制所选内容，并使用tui.mouse_scroll_speed调整鼠标滚轮滚动。(# 50434, # 50215, # 50209)\n- 使URL在审批标题、问题、MCP提示、警告、横幅和验证提示中可单击，包括当链接跨行换行时。 (# 51439, # 51449, # 51450, # 51451, # 51452, # 51458)\n- 为自定义响应兼容的模型提供程序配置实时Web访问和远程压缩功能。(# 50459)\n- 在承诺结果结算时为流式传输承诺结果添加JavaScript助手，以及在代码模式下选择加入排名的工具搜索。(# 51126, # 51209)\n错误修复\n- 尊重新TUI线程的服务器模型和推理-总结默认值，同时保留显式启动覆盖。(# 50013, # 50811, # 50913)\n- 在APPLY_PATCH更新中保留现有的CRLF行尾，而无需选择加入。(# 51203)\n- 修复包含多个被拒绝文件的Linux沙盒启动，拒绝可写沙盒构造可执行文件，并防止ripgrep配置削弱deny-glob掩码。 (# 50059, # 51211, # 51407, # 51527)\n- 在Windows 10上恢复普通驱动器号文件访问权限，并将Windows沙盒临时权限与子进程环境匹配。(# 51511, # 51512)\n- 荣耀服务器重试-可重试响应和WebSocket故障后建议。(# 50418, # 51440)\n- 修复了在PowerShell 7模块路径存在的情况下通过Windows PowerShell安装时的存档校验和验证问题。(# 51257)\n家务\n- 使用Windows版本发布已签名的PowerShell安装程序。(# 51158)\n- 防止旧的稳定版本和预发行版替换较新的稳定下载目标或安装程序别名。(# 51186, # 51425)\n更新日志\n完整更新日志： rust-v0.161.0... rust-v0.162.0\n- # 50013启动全新TUI线程@ etraut-openai时，荣耀服务器型号默认\n- # 50018对可执行文件测试夹具使用描述符安全的助手@ jif-oai\n- # 50019保护监护人决策API密钥免受环境转发@ swastik-oai\n- # 50026在Guardian handoff context @ jif-oai中保留用户限制\n- # 50035在旧协议模式下按照MCP工具分页@ jif-oai\n- # 50039保持成绩单关闭查询@ fcoury-oai后查找结果可读\n- # 50045保持成绩单查找当前匹配范围的扩展@ fcoury-oai\n- # 50046跨工具重新安装稳定Windows语音构建缓存键@ anp-oai\n- # 50050保持插件和技能快照的范围到每个步骤@ sayan-oai\n- # 50052在恢复的TUI答案草稿中保留问题上下文@ imac-oai\n- # 50054直接在跟踪订阅者@ tamird上检查令牌预估过滤\n- # 50058将Windows绑定升级到windows-sys 0.61.2 @ tamird\n- # 50059修复Linux沙盒启动存在多个拒绝文件的问题@ yuzhu-oai\n- # 50066为Guardian比较分类添加有界决策传输@ swastik-oai\n- # 50082为新鲜V2子代理启用动态工具继承@ ke-oai\n- # 50083为线程附件添加分页反向查找@ joeytrasatti-openai\n- # 50087跨会话逐出保留排队的代理邮件@ jif-oai\n- # 50093防止共享指令提供者委托给自己@ bryanashley\n- # 50094将附件所有者查找添加到应用服务器@ joeytrasatti-openai\n- # 50099添加Guardian V2 @ swastik-oai的选择加入决策比较\n- # 50105合并footer_state @ imac-oai中的聊天撰写器页脚逻辑\n- # 50109保持全屏提示有界且可滚动@ imac-oai\n- # 50112集中TUI加载字形和帧调度@ imac-oai\n- # 50113为云线程resume添加本机gRPC客户端并attach @ bc-openai\n- # 50128曝光为跑弯下一步选中的模型@ sayan-oai\n- # 50129保留远程MCP服务器@ aidanv-oai的Windows环境变量\n- # 50131为TCP隧道@ richardopenai添加可选的JSON诊断\n- # 50140使用TUI权限快捷方式的服务器权限目录@ etraut-openai\n- # 50148将托管工作树工具添加到TUI @ bc-openai\n- # 50162绑定的in-flight文件在exec-server @ anp-oai中打开\n- # 50166将年龄升级到0.12.1并删除过时的建议例外@ michaelm-openai\n- # 50177在exec-server @ anp-oai中启用可写文件流\n- # 50183添加点以发布标签器指南@ etraut-openai\n- # 50189将Figma OAuth异常替换为Mercado Pago @ mzeng-openai\n- # 50199账号更新后在/status中恢复账号邮箱@ etraut-openai\n- # 50200在codex doctor @ etraut-openai中报告配置的TUI模式\n- # 50207在流式传输@ etraut-openai期间将稳定的Markdown表释放到滚动回去\n- # 50209使转录鼠标滚动速度可配置@ etraut-openai\n- # 50215支持Ctrl + Insert复制TUI选择@ etraut-openai\n- # 50216使用共享文本编辑器进行命令中心任务重命名@ bc-openai\n- # 50219将tmux选项探针绑定到一秒钟@ etraut-openai\n- # 50273记录Guardian V2决策协议和延迟指标@ swastik-oai\n- # 50339为MCP沙盒状态强制@ bolinfest添加端到端覆盖\n- # 50345保持子代理选取器与线程存档状态一致@ etraut-openai\n- # 50348退出自动遥控重新连接抖动@ cooper-oai\n- # 50354在配置别名规范化期间跳过不相关的子树@ btraut-openai\n- # 50359在TUI hook系统消息中渲染ANSI样式@ etraut-openai\n- # 50360从会话配置事件中删除初始消息@ owenlin0\n- # 50375在GNU Screen @ imac-oai下使用可打印的ASCII终端标题\n- # 50380修复MCP启动时断线后线程卸载@ yuzhu-oai\n- # 50384允许选择16 KiB ARM64代码页用于macOS签名@ chess-oai\n- # 50389荣耀配置成绩单导航前键绑定@ etraut-openai\n- # 50396转录页键的荣誉页绑定@ bc-openai\n- # 50402整合命令执行输出为aggregated_output @ owenlin0\n- # 50416明确新建和分叉对话的Git工作树选择@ bc-openai\n- # 50418失败响应事件中的Honor Retry-After标头@ anp-oai\n- # 50427在64KiB @ owenlin0处分页历史记录中的Cap持久化命令输出\n- # 50431在agent overview previews @ bc-openai中保留终端超链接\n- # 50433允许API密钥帐户在TUI @ etraut-openai中使用Daybreak\n- # 50434将键盘副本选择添加到拥有的成绩单@ bc-openai\n- # 50435在推出历史中保留额外的工具定义@ pakrym-oai\n- # 50437添加CLI命令卸载旧版Windows沙盒@ chess-oai\n- # 50441支持世界状态上下文更新中排序的响应项@ pakrym-oai\n- # 50442在线程使用响应@ asohrabi-oai中保留本地美元金额\n- # 50443稳定暂停时间代码模式服务测试@ seanh-oai\n- # 50445断言只有直接工具调用才会发出计时事件@ seanh-oai\n- # 50446将附件捆绑到gzip tar存档中@ dkovalenko-oai\n- # 50447删除tool namespaces @ pakrym-oai的提供商功能门\n- # 50454测量推出持久性大小缩减@ owenlin0\n- # 50458截断超大MCP结果，分页线程历史记录@ owenlin0\n- # 50459为自定义模型提供者@ celia-oai添加功能覆盖\n- # 50462从委派的任务输入中填充线程预览@ bc-openai\n- # 50464添加INCREMENTAL_TOOLS功能标志@ pakrym-oai\n- # 50465重试注册表身份验证中断和抖动执行器重新连接@ apanasenko-oai\n- # 50467在保留丰富的HTML @ fcoury-oai的同时，将成绩单选择复制为文字文本\n- # 50470截断MCP工具结果时考虑JSON开销@ owenlin0\n- # 50472为Amazon Bedrock Astra型号@ celia-oai启用超快服务层\n- # 50477对TUI工作区命令@ etraut-openai使用app-server默认输出CAP\n- # 50480跳过已注册Windows沙箱的托管配置加载刷新@ zm-oai\n- # 50499在守护进程更新失败中包含安装程序stderr @ etraut-openai\n- # 50503使用Enter接受成绩单查找结果并Escape取消@ fcoury-oai\n- # 50504在保留的背景上中心TUI确认@ bc-openai\n- # 50505任务移除后保持命令中心选择相邻@ bc-openai\n- # 50507记录Windows沙盒服务停止诊断@ zm-oai\n- # 50510基岩设置后需要GovCloud指导确认@ jackz100\n- # 50516为远程/紧凑上下文保存@ pakrym-oai添加场景覆盖率\n- # 50525在严格的配置验证中拒绝未知的TUI密钥@ etraut-openai\n- # 50531关闭前坚持实时转录尾巴，无需推理@ guinness-oai\n- # 50536在Code Mode exec descriptions @ aibrahim-oai中保持共享MCP类型稳定\n- # 50540在Responses Lite @ pakrym-oai中发送增量工具目录更新\n- # 50546在代码模式@ aibrahim-oai下保持MCP资源助手可用\n- # 50555跳过后台程序自动启动Windows安装的WSL家庭@ etraut-openai\n- # 50558解析绝对路径@ etraut-openai时避免读取当前目录\n- # 50559区分守护程序释放标识和可执行内容@ etraut-openai\n- # 50562在目录更改中保持代码模式工具发现指导稳定@ aibrahim-oai\n- # 50564允许在底部模态打开时选择和复制成绩单@ etraut-openai\n- # 50687仅在严格代码模式下保留第三方工具@ aibrahim-oai\n- # 50695保留TUI @ bc-openai中的本地Markdown链接标签\n- # 50700让传输创建Windows远程控制套接字目录@ etraut-openai\n- # 50720解码Windows终端的映射Shift + Enter序列@ bc-openai\n- # 50727在任务详细信息顶部附近显示模型和推理工作@ etraut-openai\n- # 50741在准备情况更改中保持环境支持的工具曝光@ won-openai\n- # 50756在side conversations @ bc-openai中搜索时显示不可用的斜杠命令\n- # 50764转弯运行时允许/归档@ bc-openai\n- # 50781将TUI MCP启动通知限制为拥有的线程@ etraut-openai\n- # 50782重试Windows daemon release publish on transient file locks @ etraut-openai\n- # 50786记住命令中心跨启动分组@ bc-openai\n- # 50788在Vim Normal模式下从空草稿打开斜杠命令@ bc-openai\n- # 50802当Windows后台程序连接更新被拒绝时，回退到mklink @ etraut-openai\n- # 50803使用托管守护程序进行符合条件的远程控制启动@ etraut-openai\n- # 50804失败时保留评论生命周期排序@ etraut-openai\n- # 50808修剪TUI快照并整合行为测试@ etraut-openai\n- # 50811新TUI线程中荣耀服务器推理摘要默认@ etraut-openai\n- # 50913使用服务器型号默认值连接TUI刷新启动@ etraut-openai\n- # 50940安全恢复格式错误的Windows拒绝读取ACL状态@ zm-oai\n- # 50962功能标志@ aibrahim-oai后面的大门稳定环境工具曝光\n- # 50964跟踪推理工具变更进而分析@ aibrahim-oai\n- # 50977在严格的第三方工具延迟测试中隔离追踪@ alishobeiri-oai\n- # 51061门卫继续测试分类器请求捕获@ jif-oai\n- # 51063在启动Codex delegates @ jif-oai之前，请事先取消预订\n- # 51064在代理概述测试中忽略过时的刷新响应@ jif-oai\n- # 51065 Scope Guardian V2对快照采样的响应时间@ swastik-oai\n- # 51067使用发布步骤上下文进行Guardian MCP引发评论@ jif-oai\n- # 51070在Guardian Decisions请求中保留可信工具上下文@ swastik-oai\n- # 51117在压实更换历史中安装完整上下文@ pakrym-oai\n- # 51119澄清Responses Lite @ akira-oai中的增量工具命名空间更新\n- # 51126将promise settlement streaming helper添加到code mode @ cconger\n- # 51133允许监护人决策退回到OPENAI_API_KEY @ swastik-oai\n- # 51137从家长检查站恢复监护人评论@ felixxia-oai\n- # 51139强制FRESH Guardian会话用于父检查点恢复@ felixxia-oai\n- # 51140每次审核尝试隔离Guardian检查点恢复标记@ felixxia-oai\n- # 51156发送基本指令作为回复输入消息@ pakrym-oai\n- # 51157在模型推断@ anp-oai之前强制执行所需的环境技能\n- # 51158在Windows发行版@ chess-oai中签名PowerShell安装程序\n- # 51184从tests @ felixxia-oai中删除过时的Guardian thread-context enable\n- # 51185重试暂态gRPC代码模式会话录入失败@ cassirer-openai\n- # 51186防止稳定发布指针向后移动@ andrewgu-oai\n- # 51188在增量工具历史记录中记录基本指令@ pakrym-oai\n- # 51191清理Unix app-server control-socket启动锁定文件@ etraut-openai\n- # 51192恢复TUI @ etraut-openai时等待SIGCONT\n- # 51193第一次转弯前测试线程存档@ btraut-openai\n- # 51194将浏览器扩展请求标头添加到配置要求@ jn-openai\n- # 51198序列化出版物@ andrewgu-oai时允许并发版本构建\n- # 51200将Bazel升级到9.2.0并刷新模块lockfile @ anp-oai\n- # 51202在增量工具更新中区分命名空间删除@ akira-oai\n- # 51203使apply_patch无条件保留行尾@ charliemarsh-oai\n- # 51206已恢复子代理的记录初始化分析@ peilin-openai\n- # 51207选择加入功能@ julee-oai背后的Gate CLI黎明控制和选择\n- # 51209将排名工具发现添加到JavaScript代码模式@ zamoshchin-openai\n- # 51211拒绝来自PATH @ viyatb-oai的沙盒可写bubblewrap可执行文件\n- # 51215遥测测量原始MCP工具目录大小@ owenlin0\n- # 51217保留评审目标和范围错位延续元数据@ yunhan-wei\n- # 51220尊重OTLP指标时间偏好@ daniel-oai\n- # 51221从运行时选择中分离环境请求@ anp-oai\n- # 51223删除遗留个性模板元数据@ rhan-oai\n- # 51230使会话查找分页稳定并报告列表失败@ etraut-openai\n- # 51235从TUI模型选择器中删除默认模型标签@ etraut-openai\n- # 51241添加部分应答消息阶段@ rb-oai\n- # 51249跨客服代表工作流程一致地处理部分答案@ rb-oai\n- # 51253独立执行快速和超快速政策@ dpatel-oai\n- # 51256注册Core setup @ zm-oai期间启动Windows沙盒服务\n- # 51257修复Windows PowerShell @ zm-oai下的安装程序校验和验证\n- # 51260处理实时路由和线程搜索中的部分答案@ rb-oai\n- # 51329删除部分历史子代理分叉@ jif-oai\n- # 51330测量监护人审批决策总持续时间@ jif-oai\n- # 51331跟踪子代理结果交付结果@ jif-oai\n- # 51332按结果记录多Agent等待时间@ jif-oai\n- # 51333依次录制多Agent版本analytics @ jif-oai\n- # 51334 Count Guardian denial-limit interruptions in telemetry @ jif-oai\n- # 51335更新全历史分叉指令@ jif-oai的协作快照\n- # 51347每个命令测量shell快照使用和等待时间@ jif-oai\n- # 51350从文件@ jif-oai重播时允许更大的shell快照\n- # 51355为agent spawn failures @ jif-oai添加边界诊断\n- # 51378保持Guardian v2 WebSocket池温暖，同时补充@ jif-oai\n- # 51391在异步问题标题中制作网址，可点击@ charliemarsh-oai\n- # 51396让后期低风险分数完成待处理的Guardian评论@ jif-oai\n- # 51400防止后来的守护分数发布更早的待定评论@ jif-oai\n- # 51402在恢复和压缩中保留转弯归因@ eddie-openai\n- # 51407在Linux沙盒构建期间保护ripgrep查找@ viyatb-oai\n- # 51411在传统终端@ etraut-openai中抑制重复的图像粘贴印刷\n- # 51415在应用服务器@ eddie-openai上公开并坚持TURN谱系\n- # 51419当排队邮件唤醒持久睡眠@ eddie-openai时，保留回合归因\n- # 51420慢速关机后完成空闲线程卸载@ jif-oai\n- # 51421在主机自有的Apps工具调用中包含root turn ID @ eddie-openai\n- # 51422接受线程环境请求，翻转设置边界@ anp-oai\n- # 51425跳过预发布@ zsol-openai的稳定安装程序别名发布\n- # 51426删除Windows ARM64语音build @ anp-oai的Bazel JVM覆盖\n- # 51427防止失效的唤醒开始转弯@ jif-oai\n- # 51433在hooks浏览器中将hook状态消息显示为标题@ abhinav-oai\n- # 51439保留TUI审批标头中的可点击网址@ charliemarsh-oai\n- # 51440 Honor Retry-After in WebSocket error events @ anp-oai\n- # 51441修复针对更新的TURN API @ anp-oai的核心集成测试\n- # 51449在TUI用户输入问题中使URL可点击@ charliemarsh-oai\n- # 51450在MCP引发提示@ charliemarsh-oai中使URL可点击\n- # 51451在TUI警告查看器中创建URL ，可点击@ charliemarsh-oai\n- # 51452使横幅网址在包装线上可点击@ charliemarsh-oai\n- # 51457 URL包装@ charliemarsh-oai时保留状态使用超链接\n- # 51458在用户验证提示@ charliemarsh-oai中使URL可点击\n- # 51459在Windows沙盒提示@ charliemarsh-oai中保留包装的帮助链接\n- # 51460在现有调用激活@ bullman-oai时重试实时边带附件\n- # 51463在分代理活动@ sdcoffey中记录已解析的模型和推理工作\n- # 51465为Guardian @ felixxia-oai添加可选的JSON转录格式\n- # 51466通过预算回收保持Guardian成绩单记录结构@ felixxia-oai\n- # 51467保持提交日志有用而不暴露payloads @ chess-oai\n- # 51470提高Unix @ etraut-openai的托管应用服务器文件描述符限制\n- # 51471保留待定输入预览中的可点击URL @ charliemarsh-oai\n- # 51472保留TUI选择行中的可点击网址@ charliemarsh-oai\n- # 51473在包装的钩子详细信息中保留URL目标@ charliemarsh-oai\n- # 51480在恢复的上下文窗口中保留工具声明模式@ pakrym-oai\n- # 51482使用PathUri进行技能身份和路径匹配@ anp-oai\n- # 51483添加相关的无凭据会合连接诊断@ alexi-openai\n- # 51491独立于解析@ stevenlee-oai对执行者能力根所有权进行分类\n- # 51492从持久转弯上下文中删除过时的字段@ pakrym-oai\n- # 51493将功能根绑定到环境选择@ anp-oai\n- # 51499在单个阻塞worker @ charliemarsh-oai上加载推出历史记录\n- # 51500向agent command center @ etraut-openai添加共享任务pinning\n- # 51502在阻塞写入期间绑定中继连接尝试和处理pong @ alexi-openai\n- # 51503将所选环境暴露给MCP贡献者@ mtsui-oai\n- # 51510配置重新加载失败时保留实时TUI设置@ imac-oai\n- # 51511修复Windows 10驱动器号打开无跟踪文件系统操作@ zm-oai\n- # 51512将Windows沙盒临时权限与子环境@ zm-oai对齐\n- # 51515公开详细的代理树关闭失败报告@ keitht-openai\n- # 51517将线程持久化意图传递给附件uploads @ kchainani-oai\n- # 51525在executor config reads @ zm-oai中保留CLI MXC首选项\n- # 51527展开沙盒deny globs @ viyatb-oai时忽略ripgrep配置',
-          'h': 'fea857d0'
+          'body': '## New Features\n\n- Add tools for creating and listing managed Git worktrees from trusted local projects when the worktrees feature is enabled. (#50148)\n- Pin tasks in the agent Command Center with `p` and keep them in a shared Pinned group when supported by the server. (#51500)\n- Navigate and copy transcript blocks with `/copy`, use `Ctrl+Insert` to copy selections, and tune mouse-wheel scrolling with `tui.mouse_scroll_speed`. (#50434, #50215, #50209)\n- Make URLs clickable in approval headers, questions, MCP prompts, warnings, banners, and verification prompts, including when links wrap across lines. (#51439, #51449, #51450, #51451, #51452, #51458)\n- Configure live web access and remote compaction capabilities for custom Responses-compatible model providers. (#50459)\n- Add JavaScript helpers for streaming promise results as they settle, plus opt-in ranked tool search in Code Mode. (#51126, #51209)\n\n## Bug Fixes\n\n- Respect server model and reasoning-summary defaults for new TUI threads while retaining explicit launch overrides. (#50013, #50811, #50913)\n- Preserve existing CRLF line endings in `apply_patch` updates without requiring an opt-in. (#51203)\n- Fix Linux sandbox startup with multiple denied files, reject writable sandbox-construction executables, and keep ripgrep configuration from weakening deny-glob masks. (#50059, #51211, #51407, #51527)\n- Restore ordinary drive-letter file access on Windows 10 and match Windows sandbox temp permissions to the child process environment. (#51511, #51512)\n- Honor server `Retry-After` advice for retryable Responses and WebSocket failures. (#50418, #51440)\n- Fix archive checksum verification when installing through Windows PowerShell with PowerShell 7 module paths present. (#51257)\n\n## Chores\n\n- Publish a signed PowerShell installer with Windows releases. (#51158)\n- Keep older stable releases and prereleases from replacing newer stable download targets or installer aliases. (#51186, #51425)\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.161.0...rust-v0.162.0\n\n- #50013 Honor server model defaults when starting fresh TUI threads @etraut-openai\n- #50018 Use descriptor-safe helpers for executable test fixtures @jif-oai\n- #50019 Protect the guardian decisions API key from environment forwarding @swastik-oai\n- #50026 Preserve user restrictions in Guardian handoff context @jif-oai\n- #50035 Follow MCP tool pagination in legacy protocol mode @jif-oai\n- #50039 Keep transcript Find results readable after closing the query @fcoury-oai\n- #50045 Keep transcript Find expansion scoped to the current match @fcoury-oai\n- #50046 Stabilize Windows voice build cache keys across tool reinstalls @anp-oai\n- #50050 Keep plugin and skill snapshots scoped to each step @sayan-oai\n- #50052 Preserve question context in recovered TUI answer drafts @imac-oai\n- #50054 Check token estimate filtering directly on the tracing subscriber @tamird\n- #50058 Upgrade Windows bindings to `windows-sys` 0.61.2 @tamird\n- #50059 Fix Linux sandbox startup with multiple denied files @yuzhu-oai\n- #50066 Add a bounded Decisions transport for Guardian comparison classification @swastik-oai\n- #50082 Enable dynamic tool inheritance for fresh V2 subagents @ke-oai\n- #50083 Add paginated reverse lookup for thread attachments @joeytrasatti-openai\n- #50087 Preserve queued agent mail across session eviction @jif-oai\n- #50093 Prevent shared instruction providers from delegating to themselves @bryanashley\n- #50094 Add attachment owner lookup to the app-server @joeytrasatti-openai\n- #50099 Add opt-in Decisions comparison for Guardian V2 @swastik-oai\n- #50105 Consolidate chat composer footer logic in `footer_state` @imac-oai\n- #50109 Keep fullscreen prompts bounded and scrollable @imac-oai\n- #50112 Centralize TUI loading glyphs and frame scheduling @imac-oai\n- #50113 Add a native gRPC client for cloud thread resume and attach @bc-openai\n- #50128 Expose the model selected for a running turn\'s next step @sayan-oai\n- #50129 Preserve Windows environment variables for remote MCP servers @aidanv-oai\n- #50131 Add opt-in JSON diagnostics for TCP tunnels @richardopenai\n- #50140 Use the server permission catalog for TUI permission shortcuts @etraut-openai\n- #50148 Add managed worktree tools to the TUI @bc-openai\n- #50162 Bound in-flight file opens in exec-server @anp-oai\n- #50166 Upgrade `age` to 0.12.1 and remove the obsolete advisory exception @michaelm-openai\n- #50177 Enable writable file streaming in exec-server @anp-oai\n- #50183 Add `dots` to issue labeler guidance @etraut-openai\n- #50189 Replace the Figma OAuth exception with Mercado Pago @mzeng-openai\n- #50199 Restore the account email in `/status` after account updates @etraut-openai\n- #50200 Report the configured TUI mode in `codex doctor` @etraut-openai\n- #50207 Release stable Markdown tables into scrollback during streaming @etraut-openai\n- #50209 Make transcript mouse scroll speed configurable @etraut-openai\n- #50215 Support Ctrl+Insert for copying TUI selections @etraut-openai\n- #50216 Use the shared text editor for command-center task renaming @bc-openai\n- #50219 Bound tmux option probes to one second @etraut-openai\n- #50273 Record Guardian V2 Decisions agreement and latency metrics @swastik-oai\n- #50339 Add end-to-end coverage for MCP sandbox state enforcement @bolinfest\n- #50345 Keep the subagent picker consistent with thread archive state @etraut-openai\n- #50348 Back off automatic remote control reconnects with jitter @cooper-oai\n- #50354 Skip unrelated subtrees during config alias normalization @btraut-openai\n- #50359 Render ANSI styles in TUI hook system messages @etraut-openai\n- #50360 Remove initial messages from session configuration events @owenlin0\n- #50375 Use printable ASCII terminal titles under GNU Screen @imac-oai\n- #50380 Fix thread unloading after disconnect during MCP startup @yuzhu-oai\n- #50384 Allow opting into 16 KiB ARM64 code pages for macOS signing @chess-oai\n- #50389 Honor configured keybindings before transcript navigation @etraut-openai\n- #50396 Honor pager bindings for transcript page keys @bc-openai\n- #50402 Consolidate command execution output into `aggregated_output` @owenlin0\n- #50416 Clarify Git worktree choices for new and forked conversations @bc-openai\n- #50418 Honor Retry-After headers in failed Responses events @anp-oai\n- #50427 Cap persisted command output in paginated history at 64 KiB @owenlin0\n- #50431 Preserve terminal hyperlinks in agents overview previews @bc-openai\n- #50433 Allow API-key accounts to use Daybreak in the TUI @etraut-openai\n- #50434 Add keyboard copy selection to the owned transcript @bc-openai\n- #50435 Persist additional tool definitions in rollout history @pakrym-oai\n- #50437 Add a CLI command to uninstall the legacy Windows sandbox @chess-oai\n- #50441 Support ordered response items in world-state context updates @pakrym-oai\n- #50442 Preserve native USD amounts in thread usage responses @asohrabi-oai\n- #50443 Stabilize paused-time code-mode service tests @seanh-oai\n- #50445 Assert that only direct tool calls emit timing events @seanh-oai\n- #50446 Bundle rollout attachments into a gzip tar archive @dkovalenko-oai\n- #50447 Remove the provider capability gate for tool namespaces @pakrym-oai\n- #50454 Measure rollout persistence size reductions @owenlin0\n- #50458 Truncate oversized MCP results in paginated thread history @owenlin0\n- #50459 Add capability overrides for custom model providers @celia-oai\n- #50462 Populate thread previews from delegated task inputs @bc-openai\n- #50464 Add the `incremental_tools` feature flag @pakrym-oai\n- #50465 Retry registry authentication outages and jitter executor reconnects @apanasenko-oai\n- #50467 Copy transcript selections as literal text while preserving rich HTML @fcoury-oai\n- #50470 Account for JSON overhead when truncating MCP tool results @owenlin0\n- #50472 Enable Ultrafast service tiers for Amazon Bedrock Astra models @celia-oai\n- #50477 Use the app-server default output cap for TUI workspace commands @etraut-openai\n- #50480 Skip managed config loading for registered Windows sandbox refreshes @zm-oai\n- #50499 Include installer stderr in daemon update failures @etraut-openai\n- #50503 Use Enter to accept transcript Find results and Escape to cancel @fcoury-oai\n- #50504 Center TUI confirmations over their retained backdrop @bc-openai\n- #50505 Keep Command Center selection adjacent after task removal @bc-openai\n- #50507 Record Windows sandbox service stop diagnostics @zm-oai\n- #50510 Require GovCloud guidance acknowledgment after Bedrock setup @jackz100\n- #50516 Add scenario coverage for remote `/compact` context preservation @pakrym-oai\n- #50525 Reject unknown TUI keys in strict config validation @etraut-openai\n- #50531 Persist realtime transcript tails before closure without inference @guinness-oai\n- #50536 Keep shared MCP types stable in Code Mode exec descriptions @aibrahim-oai\n- #50540 Send incremental tool catalog updates in Responses Lite @pakrym-oai\n- #50546 Keep MCP resource helpers available in code mode @aibrahim-oai\n- #50555 Skip daemon auto-start for Windows-mounted WSL homes @etraut-openai\n- #50558 Avoid reading the current directory when resolving absolute paths @etraut-openai\n- #50559 Distinguish daemon release identity from executable contents @etraut-openai\n- #50562 Keep Code Mode tool discovery guidance stable across catalog changes @aibrahim-oai\n- #50564 Allow transcript selection and copying while bottom modals are open @etraut-openai\n- #50687 Keep third-party tools deferred in strict Code Mode Only @aibrahim-oai\n- #50695 Preserve local Markdown link labels in the TUI @bc-openai\n- #50700 Let the transport create the Windows remote-control socket directory @etraut-openai\n- #50720 Decode Windows Terminal\'s mapped Shift+Enter sequence @bc-openai\n- #50727 Show model and reasoning effort near the top of task details @etraut-openai\n- #50741 Keep environment-backed tools exposed across readiness changes @won-openai\n- #50756 Show unavailable slash commands when searched in side conversations @bc-openai\n- #50764 Allow `/archive` while a turn is running @bc-openai\n- #50781 Restrict TUI MCP startup notifications to owned threads @etraut-openai\n- #50782 Retry Windows daemon release publication on transient file locks @etraut-openai\n- #50786 Remember Command Center grouping across launches @bc-openai\n- #50788 Open slash commands from empty drafts in Vim Normal mode @bc-openai\n- #50802 Fall back to mklink when Windows daemon junction updates are denied @etraut-openai\n- #50803 Use the managed daemon for eligible remote-control launches @etraut-openai\n- #50804 Preserve review lifecycle ordering on failure @etraut-openai\n- #50808 Prune TUI snapshots and consolidate behavior tests @etraut-openai\n- #50811 Honor server reasoning summary defaults in new TUI threads @etraut-openai\n- #50913 Use server model defaults for connected TUI fresh starts @etraut-openai\n- #50940 Recover malformed Windows deny-read ACL state safely @zm-oai\n- #50962 Gate stable environment tool exposure behind a feature flag @aibrahim-oai\n- #50964 Track inference tool changes in turn analytics @aibrahim-oai\n- #50977 Isolate tracing in the strict third-party tool deferral test @alishobeiri-oai\n- #51061 Gate Guardian continuation tests on classifier request capture @jif-oai\n- #51063 Honor prior cancellation before starting Codex delegates @jif-oai\n- #51064 Ignore stale refresh responses in agents overview tests @jif-oai\n- #51065 Scope Guardian V2 response timing to snapshot sampling @swastik-oai\n- #51067 Use issuing-step context for Guardian MCP elicitation reviews @jif-oai\n- #51070 Preserve trusted-tool context in Guardian Decisions requests @swastik-oai\n- #51117 Install full context in compaction replacement history @pakrym-oai\n- #51119 Clarify incremental tool namespace updates in Responses Lite @akira-oai\n- #51126 Add promise settlement streaming helpers to code mode @cconger\n- #51133 Allow Guardian Decisions to fall back to `OPENAI_API_KEY` @swastik-oai\n- #51137 Recover Guardian reviews from parent checkpoints @felixxia-oai\n- #51139 Force fresh Guardian sessions for parent-checkpoint recovery @felixxia-oai\n- #51140 Isolate Guardian checkpoint recovery flags per review attempt @felixxia-oai\n- #51156 Send base instructions as Responses input messages @pakrym-oai\n- #51157 Enforce required environment skills before model inference @anp-oai\n- #51158 Sign the PowerShell installer in Windows releases @chess-oai\n- #51184 Remove obsolete Guardian thread-context enables from tests @felixxia-oai\n- #51185 Retry transient gRPC code-mode session admission failures @cassirer-openai\n- #51186 Prevent stable release pointers from moving backward @andrewgu-oai\n- #51188 Record base instructions in incremental tool history @pakrym-oai\n- #51191 Clean up Unix app-server control-socket startup lock files @etraut-openai\n- #51192 Wait for SIGCONT when resuming the TUI @etraut-openai\n- #51193 Test thread archiving before the first turn @btraut-openai\n- #51194 Add browser extension request headers to config requirements @jn-openai\n- #51198 Allow concurrent release builds while serializing publication @andrewgu-oai\n- #51200 Upgrade Bazel to 9.2.0 and refresh the module lockfile @anp-oai\n- #51202 Distinguish namespace removals in incremental tool updates @akira-oai\n- #51203 Make apply_patch preserve line endings unconditionally @charliemarsh-oai\n- #51206 Record initialization analytics for resumed subagents @peilin-openai\n- #51207 Gate CLI Daybreak controls and selection behind an opt-in feature @julee-oai\n- #51209 Add ranked tool discovery to JavaScript code mode @zamoshchin-openai\n- #51211 Reject sandbox-writable bubblewrap executables from PATH @viyatb-oai\n- #51215 Measure raw MCP tool catalog sizes in telemetry @owenlin0\n- #51217 Preserve review targets and scope misalignment continuation metadata @yunhan-wei\n- #51220 Honor the OTLP metrics temporality preference @daniel-oai\n- #51221 Separate environment requests from runtime selections @anp-oai\n- #51223 Remove legacy personality template metadata @rhan-oai\n- #51230 Make session lookup pagination stable and report listing failures @etraut-openai\n- #51235 Remove default model labels from TUI model pickers @etraut-openai\n- #51241 Add a partial answer message phase @rb-oai\n- #51249 Handle partial answers consistently across agent workflows @rb-oai\n- #51253 Enforce Fast and Ultra Fast policies independently @dpatel-oai\n- #51256 Start the Windows sandbox service during registered Core setup @zm-oai\n- #51257 Fix installer checksum verification under Windows PowerShell @zm-oai\n- #51260 Handle partial answers in realtime routing and thread search @rb-oai\n- #51329 Remove partial-history subagent forks @jif-oai\n- #51330 Measure total Guardian approval decision duration @jif-oai\n- #51331 Track sub-agent result delivery outcomes @jif-oai\n- #51332 Record multi-agent wait duration by outcome @jif-oai\n- #51333 Record the multi-agent version in turn analytics @jif-oai\n- #51334 Count Guardian denial-limit interruptions in telemetry @jif-oai\n- #51335 Update collaboration snapshots for full-history fork instructions @jif-oai\n- #51347 Measure shell snapshot use and wait time per command @jif-oai\n- #51350 Allow larger shell snapshots when replaying from a file @jif-oai\n- #51355 Add bounded diagnostics for agent spawn failures @jif-oai\n- #51378 Keep Guardian v2 WebSocket pools warm with concurrent replenishment @jif-oai\n- #51391 Make URLs in asynchronous question titles clickable @charliemarsh-oai\n- #51396 Let late low-risk scores complete pending Guardian reviews @jif-oai\n- #51400 Prevent later Guardian scores from releasing earlier pending reviews @jif-oai\n- #51402 Preserve turn attribution across recovery and compaction @eddie-openai\n- #51407 Protect ripgrep lookup during Linux sandbox construction @viyatb-oai\n- #51411 Suppress repeated image paste presses in legacy terminals @etraut-openai\n- #51415 Expose and persist turn lineage across the app server @eddie-openai\n- #51419 Preserve turn attribution when queued mail wakes durable sleep @eddie-openai\n- #51420 Finish idle thread unloads after slow shutdown @jif-oai\n- #51421 Include root turn IDs in host-owned Apps tool calls @eddie-openai\n- #51422 Accept environment requests at thread and turn settings boundaries @anp-oai\n- #51425 Skip stable installer alias publishing for prereleases @zsol-openai\n- #51426 Remove the Bazel JVM override for Windows ARM64 voice builds @anp-oai\n- #51427 Prevent invalidated wakeups from starting a turn @jif-oai\n- #51433 Show hook status messages as titles in the hooks browser @abhinav-oai\n- #51439 Preserve clickable URLs in TUI approval headers @charliemarsh-oai\n- #51440 Honor Retry-After in WebSocket error events @anp-oai\n- #51441 Fix core integration tests for updated turn APIs @anp-oai\n- #51449 Make URLs clickable in TUI user input questions @charliemarsh-oai\n- #51450 Make URLs clickable in MCP elicitation prompts @charliemarsh-oai\n- #51451 Make URLs in the TUI warnings viewer clickable @charliemarsh-oai\n- #51452 Make banner URLs clickable across wrapped lines @charliemarsh-oai\n- #51457 Preserve status usage hyperlinks when the URL wraps @charliemarsh-oai\n- #51458 Make URLs clickable in user verification prompts @charliemarsh-oai\n- #51459 Preserve wrapped help links in Windows sandbox prompts @charliemarsh-oai\n- #51460 Retry realtime sideband attachment while an existing call activates @bullman-oai\n- #51463 Record resolved model and reasoning effort in sub-agent activity @sdcoffey\n- #51465 Add an optional JSON transcript format for Guardian @felixxia-oai\n- #51466 Keep Guardian transcript records structured through budget recovery @felixxia-oai\n- #51467 Keep submission logs useful without exposing payloads @chess-oai\n- #51470 Raise the managed app-server file descriptor limit on Unix @etraut-openai\n- #51471 Preserve clickable URLs in pending input previews @charliemarsh-oai\n- #51472 Preserve clickable URLs in TUI selection rows @charliemarsh-oai\n- #51473 Preserve URL destinations in wrapped hook details @charliemarsh-oai\n- #51480 Preserve tool declaration mode across resumed context windows @pakrym-oai\n- #51482 Use PathUri for skill identity and path matching @anp-oai\n- #51483 Add correlated, credential-free rendezvous connection diagnostics @alexi-openai\n- #51491 Classify executor capability root ownership independently of parsing @stevenlee-oai\n- #51492 Remove obsolete fields from persisted turn context @pakrym-oai\n- #51493 Bind capability roots to environment selections @anp-oai\n- #51499 Load rollout history on a single blocking worker @charliemarsh-oai\n- #51500 Add shared task pinning to the agent command center @etraut-openai\n- #51502 Bound relay connection attempts and handle pongs during blocked writes @alexi-openai\n- #51503 Expose selected environments to MCP contributors @mtsui-oai\n- #51510 Preserve live TUI settings when configuration reloads fail @imac-oai\n- #51511 Fix Windows 10 drive-letter opens for no-follow filesystem operations @zm-oai\n- #51512 Align Windows sandbox temp permissions with the child environment @zm-oai\n- #51515 Expose detailed agent tree shutdown failure reports @keitht-openai\n- #51517 Pass thread persistence intent to attachment uploads @kchainani-oai\n- #51525 Preserve the CLI MXC preference in executor config reads @zm-oai\n- #51527 Ignore ripgrep configuration when expanding sandbox deny globs @viyatb-oai'
         },
         {
           'version': '0.162.0-alpha.18.1',
@@ -1096,7 +1102,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '2.1.296',
@@ -3279,8 +3285,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
+        {
+          'version': '2.0.28',
+          'title': 'v2.0.28',
+          'date': '2026-10-13',
+          'dateRaw': '2026-10-13T08:17:38Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.0.28',
+          'body': '版本： v2.0.28',
+          'h': '83c88cf2'
+        },
         {
           'version': '1.0.0: fix(vscode): launch the V2 CLI without --port (#49084)',
           'title': 'vscode-v1.0.0: fix (vscode):启动不带--port的V2 CLI (# 49084)',
@@ -3298,8 +3314,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-10-12T04:16:59Z',
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.0.27',
-          'body': '版本： v2.0.27',
-          'h': '9ea5c754'
+          'body': 'release: v2.0.27'
         },
         {
           'version': '1.19.0',
@@ -8718,15 +8733,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.11.8',
           'body': '- disable aggressive config validation'
-        },
-        {
-          'version': '0.11.7',
-          'title': 'v0.11.7',
-          'date': '2025-09-26',
-          'dateRaw': '2025-09-26T11:19:24Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.11.7',
-          'body': '- core: add themes to allowed config directories\n- fix(tui): cursor position'
         }
       ]
     },
@@ -8738,7 +8744,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '2.1.1',
@@ -9570,7 +9576,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '0.4.4',
@@ -9821,8 +9827,17 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
+        {
+          'version': '1.33.0',
+          'title': 'Fast 模型：更快响应，更少等待',
+          'date': '2026-10-13',
+          'dateRaw': '2026年10月13日',
+          'tags': [],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Fast 模型：更快响应，更少等待\n功能\n- Fast 模型：以更快的响应速度缩短等待时间，带来更流畅的对话体验。\n优化\n- 增加 Quest 视窗即将下线提示。\n- 会话流问答面板可按需展开或折叠，提升会话流交互体验。\n- 优化长会话和大量文件修改时的性能，减少卡顿和崩溃。\n- 优化 SSH 远程连接体验，连接和安装更稳定。\n- 优化模型请求传输方式，大体积请求在弱网环境下的发送效率更高、响应更稳定。\n- 优化自动增量索引触发节奏，减少高频索引带来的资源占用。\n2026年09月23日'
+        },
         {
           'version': '1.32.0',
           'title': '日常优化',
@@ -10392,7 +10407,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '3.4.0',
@@ -12319,7 +12334,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -12506,8 +12521,22 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
+        {
+          'version': '3.15.3',
+          'title': '3.15.3',
+          'date': '2026-10-13',
+          'dateRaw': '发布于 2026年10月13日',
+          'tags': [
+            'macOS',
+            'ZCode → 强制退出',
+            'Linux',
+            '问题修复'
+          ],
+          'url': 'https://zcode.z.ai/changelog',
+          'body': '⚠️ ZCode 3.15.1 更新异常及恢复说明 ⚠️\nZCode 3.15.3 已修复更新时应用无法正常退出的问题， 请优先选择前往 ZCode 官网 下载最新版完整安装包。\n从 3.15.1 升级时，仍可能因旧版本问题出现卡住：\n- macOS ：按 ⌥⌘Esc ，选择 ZCode → 强制退出 ，等待更新完成并自动打开。\n- Linux ：通过系统监视器结束 ZCode 进程，然后重新启动应用。\n强制退出会中断运行中的任务。\n对此造成的不便，我们非常抱歉。\n问题修复\n- 修复部分场景下登录身份验证可能失败的问题, 此问题导致设置页面连接套餐失败，需要重新登录。\n- 修复已完成或跳过新手引导的用户被重复弹出引导的问题。\n- 网络较慢时不再因引导判断被卡住，可以及时进入主界面。\n- 修复多个 Agent 并行执行或连续调用模型时，部分请求异常失败的问题，提升并行任务的稳定性。'
+        },
         {
           'version': '3.15.1',
           'title': '3.15.1',
@@ -12635,7 +12664,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '4.12.1',
@@ -13470,7 +13499,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-13 15:57',
+      'lastOkAt': '2026-10-14 01:02',
       'entries': [
         {
           'version': '5.7.7',

@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-10-13',
-  'overallScore': 0.944,
+  'overallScore': 0.947,
   'sources': [
     {
       'id': 'ai_capability',
@@ -42,15 +42,13 @@ window.QUALITY = {
     {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
-      'status': 'error',
+      'status': 'ok',
       'modelCount': 142,
-      'updated': '2026-10-12',
-      'ageDays': 1,
-      'completeness': null,
+      'updated': '2026-10-13',
+      'ageDays': 0,
+      'completeness': 1,
       'fetchAttempts': 1,
-      'errors': [
-        '镜像页未解析到 main-row 数据(站点结构变更)'
-      ]
+      'errors': []
     },
     {
       'id': 'benchcad',
@@ -67,7 +65,7 @@ window.QUALITY = {
       'id': 'cursorbench',
       'name': 'CursorBench',
       'status': 'ok',
-      'modelCount': 16,
+      'modelCount': 17,
       'updated': '2026-10-13',
       'ageDays': 0,
       'completeness': 1,
@@ -100,7 +98,7 @@ window.QUALITY = {
       'id': 'frontiercode',
       'name': 'FrontierCode',
       'status': 'ok',
-      'modelCount': 43,
+      'modelCount': 44,
       'updated': '2026-10-13',
       'ageDays': 0,
       'completeness': 1,
@@ -155,7 +153,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 39,
+      'modelCount': 34,
       'updated': '2026-10-13',
       'ageDays': 0,
       'completeness': 1,
@@ -838,6 +836,14 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
+    'arena_webdev': {
+      'rate': 1,
+      'total': 142,
+      'complete': 142,
+      'modelCount': 142,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'benchcad': {
       'rate': 0.824,
       'total': 17,
@@ -850,9 +856,9 @@ window.QUALITY = {
     },
     'cursorbench': {
       'rate': 1,
-      'total': 16,
-      'complete': 16,
-      'modelCount': 16,
+      'total': 17,
+      'complete': 17,
+      'modelCount': 17,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -874,9 +880,9 @@ window.QUALITY = {
     },
     'frontiercode': {
       'rate': 1,
-      'total': 43,
-      'complete': 43,
-      'modelCount': 43,
+      'total': 44,
+      'complete': 44,
+      'modelCount': 44,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -916,9 +922,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 39,
-      'complete': 39,
-      'modelCount': 39,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1004,8 +1010,8 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'arena_webdev': {
-      'updated': '2026-10-12',
-      'ageDays': 1,
+      'updated': '2026-10-13',
+      'ageDays': 0,
       'flag': 'ok'
     },
     'benchcad': {
