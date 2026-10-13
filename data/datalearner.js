@@ -1,12 +1,28 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-10-12)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-10-13)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-10-12',
+  'updated': '2026-10-13',
   'models': [
+    {
+      'name': 'Muse Wonder Full',
+      'score': 79,
+      'mode': '最高（工具）',
+      'date': '2026-10-12',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
+      'name': 'Muse Wonder',
+      'score': 78.8,
+      'mode': '最高（工具）',
+      'date': '2026-10-12',
+      'params': '未知',
+      'license': '闭源'
+    },
     {
       'name': 'Gemini 4 Argon',
       'score': 77.9,
@@ -230,22 +246,6 @@ window.DATALEARNER = {
       'date': '2026-06-09',
       'params': '未知',
       'license': '闭源'
-    },
-    {
-      'name': 'Kimi K3',
-      'score': 68.5,
-      'mode': '最高（工具）',
-      'date': '2026-07-16',
-      'params': '28000亿',
-      'license': '有条件商用'
-    },
-    {
-      'name': 'MiMo-V2.6-Flash',
-      'score': 67.9,
-      'mode': '思考模式（工具）',
-      'date': '2026-09-22',
-      'params': '3090亿',
-      'license': '免费商用'
     }
   ]
 };
