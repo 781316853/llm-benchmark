@@ -1,4 +1,4 @@
-// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-10-13)
+// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-10-14)
 // 主渠道:https://www.datalearner.com/benchmarks/osworld-2(厂商官方发布成绩,partial 口径)
 // 补充:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/,系统级条目仅追加主源未收录者)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -9,8 +9,8 @@ window.OSWORLD = {
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-13',
-  'refreshedAt': '2026-10-14 01:02',
+  'updated': '2026-10-14',
+  'refreshedAt': '2026-10-14 14:23',
   'stats': {
     'tasks': 108,
     'entries': 31
@@ -67,7 +67,7 @@ window.OSWORLD = {
       'note': '最高（工具）',
       'score': 69.2,
       'org': 'Google DeepMind',
-      'reported': '2026-09-30',
+      'reported': '2026-10-13',
       'url': null,
       'src': 'datalearner'
     },

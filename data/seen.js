@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-10-13',
+  'updated': '2026-10-14',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -269,6 +269,7 @@ window.SEEN = {
     'datalearner|Muse Wonder Full': '2026-10-13',
     'datalearner|Muse Wonder': '2026-10-13',
     'tbench|Muse Wonder Full': '2026-10-13',
-    'tbench|Muse Wonder': '2026-10-13'
+    'tbench|Muse Wonder': '2026-10-13',
+    'llm|Gemini 4 Argon (high)': '2026-10-14'
   }
 };
