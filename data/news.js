@@ -2,16 +2,111 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-14',
+  'updated': '2026-10-15',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-15',
+      'title': 'Claude Code 桌面版更新优化多会话体验',
+      'brief': 'Anthropic 更新 Claude Code 桌面应用，围绕多会话并行改进会话启动、工作拆分和状态查看。',
+      'url': 'https://x.com/ClaudeDevs/status/2110445844675838148',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'Claude Code 新增闲置会话自动压缩',
+      'brief': 'Anthropic 为 Claude Code 终端加入闲置会话自动压缩功能：默认达到 200K token 的对话闲置约 54 分钟 后，会在 1 小时 的 prompt cache 过期前压缩为摘要。',
+      'url': 'https://x.com/lydiahallie/status/2110484840256819380',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'TypeSafe AI 更新 Jev，开放图像与长上下文功能',
+      'brief': 'TypeSafe AI 发布 Jev 1.14.0 ，通过 jev-preview 提供，并开放图像输入、 box 类型和长上下文等实验性功能，需通过 API 请求头中的 danger zone 标记主动开启，官方尚不建议用于生产场景。',
+      'url': 'https://typesafe.ai/blog/jev-1-14',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'SpaceXSI 发布端到端语音模型 Grok Voice 3.0',
+      'brief': 'SpaceXSI 发布 Grok Voice 3.0 端到端语音模型，已通过 Voice Agent API 开放，维持前代每分钟 0.08 美元 的价格，使用 grok-voice-latest 的应用已自动切换。',
+      'url': 'https://x.ai/news/grok-voice-3',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-15',
+      'title': '蚂蚁百灵开源 Ling-3.1-flash 模型',
+      'brief': '蚂蚁百灵 宣布开源 Ling-3.1-flash ，总参数约 5600 亿 ，每个 token 激活约 250 亿参数 ，支持最高 100 万 token 上下文。权重与文档已在 Hugging Face 和 ModelScope 提供。',
+      'url': 'https://x.com/AntLingAGI/status/2110390124743970952',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-15',
+      'title': '昆仑万维发布并开源 Matrix-Game 4.0',
+      'brief': '昆仑万维 发布并开源 Matrix-Game 4.0 ，由 游戏引擎 维护状态和交互规则， 视频模型 将简化的几何画面实时转化为精细画面。官方称，系统可在单张 NVIDIA RTX 5090 上以 480p 、 60 FPS 运行，按键到首帧响应的端到端延迟低于 150 毫秒 。',
+      'url': 'https://matrix-game-v4-0.github.io/page/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'OpenCode Go 上线 Gemini 4 Argon',
+      'brief': 'OpenCode Go 已上线 Gemini 4 Argon Contributor ，月费 10 美元 的 Go 订阅方案可获得该模型价值 60 美元 的月度使用额度。该额度由 30 美元 限时翻倍，活动截至 11 月 30 日 。使用仍受分时限额约束，每 5 小时 和每周分别可使用月度额度的 20% 和 50% 。官方文档注明，用户提示词和模型回复可能用于训练未来的 Google 模型，且该版本不提供零数据保留。',
+      'url': 'https://x.com/opencode/status/2110274311043072352',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'Qoder 国际版极致档位推出夜间 2 折优惠',
+      'brief': 'Qoder 国际版的「极致」模型档位加入夜间折扣， 10 月 14 日至 30 日 ，每天北京时间 22:00 至次日 08:00 ， Credits 消耗倍率从 2 倍 降至 0.4 倍 ，即原价的 2 折 。 Pro Trial 试用及付费用户可享受，选择该档位后自动生效， Service Account 的优惠时段另有规定。',
+      'url': 'http://docs.qoder.com/events/offpeakrate',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'OpenAI 公布部分 GPT-4 模型退役安排',
+      'brief': 'OpenAI 更新模型的 API 下线安排， GPT-4o 、 GPT-4o mini 、 GPT-4.1 和 GPT-4.1 mini 将于 2027 年 1 月 14 日 停用，并推荐迁移到替代模型 gpt-6-luna 。这些模型的微调版本也将随基础模型同步停用。',
+      'url': 'https://developers.openai.com/api/docs/deprecations',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-15',
+      'title': 'Claude Platform 支持导出 OpenTelemetry 追踪',
+      'brief': 'Anthropic 宣布， Claude Platform 的 OpenTelemetry 追踪功能进入公开测试，支持从 Messages API 、 Claude Managed Agents 和 Claude SDK 向用户已有的可观测性系统发送追踪数据。',
+      'url': 'https://claude.com/resources/articles/agent-observability-on-the-claude-platform',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-15',
+      'title': '企业微信接入 WorkBuddy，侧边栏可领用',
+      'brief': '企业微信 与 WorkBuddy 联合推出新版本，升级至 企业微信 5.0.12 后，可在侧边栏领用 WorkBuddy 机器人，通过聊天下达任务并查看结果。',
+      'url': 'https://work.weixin.qq.com/nl/index/workbuddy',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-15',
+      'title': '豆包手机助手将逐步开放第三方应用自动化操作',
+      'brief': '豆包手机助手 宣布，《屏幕自动化操作声明协议》（ SAEP ）的 30 天 公示期已结束，将逐步放开第三方应用的屏幕自动化操作权限。该协议允许应用开发者声明接受或禁止 Agent 操作的范围，已明确拒绝的应用不会被操作。',
+      'url': 'https://o.doubao.com/developer',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-10-14',
       'title': 'Google 全球开放 Gemini 4 Argon',
@@ -38,49 +133,9 @@ window.NEWS = {
     },
     {
       'date': '2026-10-14',
-      'title': 'Fish Audio 发布 Drama 3，开放模型权重',
-      'brief': 'Fish Audio 发布开放权重文本转语音模型 Drama 3 ，支持用自然语言控制情绪、节奏和声音，并将耳语、强调等表达限定到单个词。模型支持 83 种语言 ，已上线网页端、iOS、Android 和 API。',
-      'url': 'https://fish.audio/blog/fish-audio-drama-3/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Liquid AI 发布 LFM2.5-24B-A2B',
-      'brief': 'Liquid AI 发布开放权重推理模型 LFM2.5-24B-A2B ，面向端侧 Agent 的工具调用和多步任务，总参数为 240 亿 ，每个 token 激活 20 亿 参数。相比前代，上下文窗口从 32,768 扩至 131,072 个 token ，模型会在最终回答前输出显式推理过程。',
-      'url': 'https://www.liquid.ai/blog/lfm2-5-24b-a2b',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-14',
       'title': 'Command Code 推出 GOAT 限时额度优惠',
       'brief': 'Command Code 宣布，GOAT 订阅方案中的 DeepSeek V4.1 Flash 在为期 3 天 的优惠期间提供 100 美元 使用额度，之后该模型额度将调整为 80 美元 。GOAT 订阅价格为每月 10 美元 ，支持超过 30 个 开放及闭源模型，额度因模型而异。',
       'url': 'https://x.com/CommandCodeAI/status/2110023209416630626',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'MiniMax 入驻天猫，开售三档订阅方案',
-      'brief': 'MiniMax 已入驻天猫，开设首家品牌官方旗舰店，销售面向个人的 M Plan AI 订阅方案。目前店铺上架 Go 、 Explore 、 Build 3 个档位，均支持按月或按年购买。月卡首单限时 5 折 ，起售价为 24.5 元 ，优惠持续至 10 月 14 日 。',
-      'url': 'https://mp.weixin.qq.com/s/fYK1sb1E8c2jVYf3lZ85Jw',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Antigravity 最高档向科研人员开放免费申请',
-      'brief': 'Google 宣布，科学家和研究人员可申请获得 Antigravity 最高使用档位的 6 个月 免费使用机会。网络安全防御人员可通过 Fairwind Program 申请，该计划为符合条件的防御方提供先进模型的早期访问权限。',
-      'url': 'https://x.com/Google/status/2110041308257493356',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Cursor 的 Origin 支持逾 20 项集成',
-      'brief': 'Cursor 宣布，其代码托管平台 Origin 现已支持 20 多项集成，涵盖 CI 、部署、代码审查、安全、监控和项目管理。',
-      'url': 'https://x.com/cursor_ai/status/2110075611633074295',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
@@ -107,70 +162,6 @@ window.NEWS = {
       'url': 'https://arena.ai/blog/max-router-tops-agent-arena',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'Meta 发布 Muse Wonder 模型系列',
-      'brief': 'Meta 发布 Muse Wonder 和 Muse Wonder Full 两款模型，称其在个人和专业 Agent 任务上达到领先水平。',
-      'url': 'https://research.meta.ai/blog/muse-wonder',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'The X Subscription 推出：整合Grok、Cursor 和 X Premium',
-      'brief': 'SpaceX Super Intelligence 推出 The X Subscription ，将 Grok 、 Cursor 和 X Premium 合并为同一订阅、工作空间和账单。',
-      'url': 'https://docs.x.ai/x-subscription/overview',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'Codex 第 8 天安排：重置用量额度',
-      'brief': 'Codex 负责人 Tibo 表示，28 天安排的第 8 天将进行用量额度重置。他随后称，全局重置将在太平洋标准时间 10 月 12 日结束前完成。此前，Tibo 表示，团队将在未来 28 天内，每天为多数 Codex 和 Work 用户推出一项有实际价值的明显改进，或完整重置一次用量额度。',
-      'url': 'https://x.com/thsottiaux/status/2109812216212099456',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-13',
-      'title': '智谱推出法律模型 GLM-Legal，开放测试申请',
-      'brief': '智谱 推出基于 GLM-5.3-Flash 的法律模型 GLM-Legal ，面向合同审查、证据分析和合规等工作流。',
-      'url': 'https://z.ai/blog/glm-legal',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'OpenBMB 发布 MiniCPM-V 4.7 系列两款模型',
-      'brief': 'OpenBMB 发布并开源 MiniCPM-V 4.7 ，包含 35B-A3B 和 1B 两个型号，支持单图、多图、文档和视频理解。',
-      'url': 'https://github.com/openbmb/MiniCPM-V',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'OpenCode Go 提供 80 美元 V4.1 Flash 额度',
-      'brief': 'OpenCode 宣布推出 Operation Cheepseek 第三阶段，现在 OpenCode Go 订阅提供价值 80 美元 的 DeepSeek V4.1 Flash 使用额度。',
-      'url': 'https://x.com/opencode/status/2109573342584058065',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'Karpathy：LLM 能力认知差距正在扩大',
-      'brief': 'Andrej Karpathy 表示，人们对 LLM 能力的认知差距正在扩大，已不只是两群人互不理解，而是形成逐层收窄的漏斗。',
-      'url': 'https://x.com/karpathy/status/2109361546505966046',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-10-13',
-      'title': 'Anthropic：小模型或数月内能实现自我复制',
-      'brief': 'Anthropic 发布 AI 自我复制 研究，认为小型模型可能在数月内具备在商用 物联网 设备上自主部署和传播的能力。',
-      'url': 'https://www.anthropic.com/research/self-replicating-ai',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
     }
   ]
 };
