@@ -172,6 +172,24 @@
     return REF_IDX;
   }
 
+  // 模型 API 标价查找表:{ canonId -> pricing 条目 }(data/pricing.js,由 scripts/lib/pricing.js 生成)。
+  // 「性价比」列用:每百万 token 综合成本(costPerM,¥/M)与三档单价;数据缺文件时为空表,该列全显示「—」
+  var PRICE_IDX = null;
+  function priceIndex() {
+    if (PRICE_IDX) return PRICE_IDX;
+    PRICE_IDX = {};
+    var P = D.pricing();
+    ((P && P.models) || []).forEach(function (m) { if (!PRICE_IDX[m.id]) PRICE_IDX[m.id] = m; });
+    return PRICE_IDX;
+  }
+  function priceOf(id) { return priceIndex()[id] || null; }
+  // 每百万 token 成本(¥)按量级保留小数:避免「¥0.05」与「¥11.22」在同一列里宽度跳动
+  function fmtCostPerM(v) {
+    if (v == null || !isFinite(v)) return "—";
+    var d = v < 1 ? 3 : (v < 100 ? 2 : 1);
+    return "¥" + Number(v).toFixed(d);
+  }
+
   // 总览矩阵表的列定义:key=排序键;val=取值函数;type=数据类型;bench=是否评测列(排序时过滤无值);
   // grp=分组表头归属(bench 列须按 grp 连续排列,供两级表头 colspan 合并;grp 值即分组表头显示名:
   // "榜单基准"=权威基准榜,"第三方实测"=第三方独立实测/社区盲测与站主自测);
@@ -184,6 +202,19 @@
     // 排序取值用 -_posKey 取负:posKey 越小越好,取负后"降序=更好在前",与默认序一致;无 _posKey 时兜底综合分
     { key: "composite", label: "梯队", type: "num", bench: false,
       val: function (r) { return -(r._posKey != null ? r._posKey : CMP.composite(r)); } },
+    // 性价比:综合分 ÷ 每百万 token 综合成本(data/pricing.js 的 costPerM,口径 95% 缓存输入
+    // + 4.5% 未缓存输入 + 0.5% 输出,单价取 codingplan.fyi 模型 API 标价)。
+    // bench:false → 渲染为纵跨两级表头的非评测列(不占用「榜单基准/第三方实测」分组);
+    // 取值与格内显示严格一致:仅参与排名的行(命中≥4榜)才有值,「参考」「仅单榜」行一律 null
+    //   (它们格内显示「—」,若这里仍返回数,排序时会把它们按比值插进排名行之间 —— 排序依据与
+    //    看到的内容就对不上了);nullLast 再把 null 行恒定沉底,不随升/降序翻转跑到最前
+    { key: "value", label: "性价比", type: "num", bench: false, nullLast: true,
+      tip: "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价为 codingplan.fyi 模型 API 标价(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见输入/缓存输入/输出三档单价",
+      val: function (r) {
+        if (r.benchCount < 4) return null;   // 参考行/单榜行不参与排名,该列显示「—」,排序时沉底
+        var p = priceOf(r.id);
+        return p ? CMP.composite(r) / p.costPerM : null;
+      } },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "榜单基准", tone: "deepswe", val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "榜单基准", tone: "tbench",
@@ -241,6 +272,13 @@
       return (va == null ? -1 : va) - (vb == null ? -1 : vb); // 默认升序(低→高)
     });
     if (state.sortDir === "desc") list.reverse(); // 降序(高→低):反转升序结果
+    // 无值行恒定沉底:只有声明了 nullLast 的列(性价比)需要 —— 升序时 null 已被排到最前,
+    // 降序 reverse 后又跑到最前,两种方向都得挪到末尾;评测列已过滤无值行、其余非评测列不返回 null,故此处对其为 no-op
+    if (col.nullLast) {
+      var withV = [], withoutV = [];
+      list.forEach(function (r) { (col.val(r) == null ? withoutV : withV).push(r); });
+      list = withV.concat(withoutV);
+    }
     return list;
   }
 
@@ -463,6 +501,21 @@
           var badge = '<span class="tier-badge tier-' + tc + '" title="综合分 ' + score + '(榜内相对分:50 = 全池中位,每 15 分 = 1 个榜内稳健标准差;不可跨日直接比较)">' + t + '</span>';
           var num = state.showScore ? ' <span class="tier-score">' + score + '</span>' : "";
           return '<td class="num">' + badge + num + '</td>';
+        })() +
+        // 性价比列:综合分 ÷ 每百万 token 综合成本。仅参与排名的行(命中≥4榜)且匹配到 API 标价的模型计算,
+        // 参考行 / 单榜行 / 上游未收录标价的模型显示「—」(与梯队列同款占位,不参与排序,见 nullLast)。
+        // 主值 = 性价比指数,次行小灰字 = 每百万 token 综合成本;三档单价与公式放悬浮提示
+        (function () {
+          if (unranked) return '<td class="num"><span class="tier-na">—</span></td>';
+          var p = priceOf(r.id);
+          if (!p) return '<td class="num"><span class="tier-na" title="未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
+          var score = CMP.composite(r);
+          var idx = score / p.costPerM;
+          var tip = "性价比 " + idx.toFixed(1) + " = 综合分 " + score.toFixed(1) + " ÷ " + fmtCostPerM(p.costPerM) + "/M · " +
+            "输入 ¥" + p.inputCnyPerM + " / 缓存输入 ¥" + p.cacheCnyPerM + " / 输出 ¥" + p.outputCnyPerM + "(¥/百万 token)· " +
+            "综合成本 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出(按 1M token 实际编程比例折算);单价来源 codingplan.fyi 模型 API 标价";
+          return '<td class="num"><span class="bv bv-value" title="' + esc(tip) + '">' + idx.toFixed(1) + '</span>' +
+            '<br><span class="cell-cost">' + fmtCostPerM(p.costPerM) + '/M</span></td>';
         })() +
         // ds=榜单基准组起点、wd=第三方实测组起点:grp-start 竖线与表头 th-grp 左边框对齐,须随 MATRIX_COLS 分组调整同步
         '<td class="num grp-start">' + ds + '</td>' +

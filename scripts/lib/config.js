@@ -473,6 +473,28 @@ module.exports = {
     windowVar: "CODINGPLAN"
   },
 
+  // ===== 模型 API 标价(scripts/lib/pricing.js 使用,不进基准管线) =====
+  // 与 codingplan 同站、不同视图:那里是「订阅套餐月价」比价,这里是 plan-models.json 里
+  // 每个 plan×model 的 pricing 字段(输入 / 缓存输入 / 输出三档单价,均 $/百万 token)。
+  // 供总览矩阵「性价比」列使用:按 1M token 实际编程比例(95% 缓存输入 + 4.5% 未缓存输入
+  // + 0.5% 输出)折算「每百万 token 综合成本」,再与综合分相除得性价比指数。
+  // 仿 news/codingplan 模式:在 fetch_all.js 旁路调用,不进 registry/校验器。
+  pricing: {
+    host: "www.codingplan.fyi",
+    officialUrl: "https://www.codingplan.fyi/?view=usage",
+    configUrl: "https://www.codingplan.fyi/config.json",
+    planModelsUrl: "https://www.codingplan.fyi/plan-models.json",
+    outFile: "pricing.js",
+    windowVar: "PRICING",
+    // config.json 取不到汇率时的兜底(与 codingplan.js 一致)
+    fallbackUsdToCny: 6.8,
+    // 源站 workload 取不到时的兜底折算系数(正常情况以 plan-models.json 的 workload 为准)
+    fallbackCacheHitRate: 0.95,
+    fallbackOutputRatio: 0.005,
+    // 「每百万 token 综合成本」合理性哨兵(¥/M):超过即认为积分/额度类档位漏过滤,打印告警
+    costPerMSanityLimit: 5000
+  },
+
   // ===== AI Agent 工具更新日志(scripts/lib/changelog.js 使用,不进基准管线) =====
   // 汇总 10 个 Agent 工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
   // 不进 registry/校验器,仅「Agent工具更新日志」页展示。

@@ -128,6 +128,8 @@
   --bench-frontiercode: #E6A16B;
   /* 无机酸 · AI 前端实测:黄绿(色相 65°,与 modeldial 金 37°、programbench 绿 95° 各距 ≥22°) */
   --bench-wujisuan: #D6E05E;
+  /* 性价比(综合分 ÷ 每百万 token 成本):非评测列,取自 codingplan.fyi 模型标价;青绿以示"非榜单分" */
+  --bench-value: #6FD8C0;
 
   /* 图表配色:js/charts.js 从这些变量读取,保证图表与页面同主题 */
   --chart-text: #E6EDF3;
@@ -354,6 +356,7 @@ a:hover { text-decoration: underline; }
 .bv-cursorbench { --bv-color: var(--bench-cursorbench); }
 .bv-frontiercode { --bv-color: var(--bench-frontiercode); }
 .bv-wujisuan { --bv-color: var(--bench-wujisuan); }
+.bv-value { --bv-color: var(--bench-value); }
 .bv { color: var(--bv-color, inherit); }
 #matrixTable thead th.bv, .data-table thead th.bv { color: var(--bv-color, inherit); }
 /* 可排序表头:点击排序交互 */
