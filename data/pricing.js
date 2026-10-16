@@ -13,7 +13,7 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-10-16',
-  'refreshedAt': '2026-10-16 16:26',
+  'refreshedAt': '2026-10-16 22:05',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -374,7 +374,7 @@ window.PRICING = {
       'costPerM': 1.496
     },
     {
-      'id': 'mistral-large-4',
+      'id': 'Mistral Large 4',
       'slug': 'mistral-large-4',
       'inputCnyPerM': 9.248,
       'cacheCnyPerM': 0.952,
@@ -534,7 +534,7 @@ window.PRICING = {
       'costPerM': 0.3706
     },
     {
-      'id': 'step-3-7-flash',
+      'id': 'Step 3.7 Flash',
       'slug': 'step-3-7-flash',
       'inputCnyPerM': 1.36,
       'cacheCnyPerM': 0.272,
@@ -614,7 +614,7 @@ window.PRICING = {
       'costPerM': 0.2312
     },
     {
-      'id': 'mai-code-1-1-flash',
+      'id': 'MAI-Code-1.1-Flash',
       'slug': 'mai-code-1-1-flash',
       'inputCnyPerM': 1.36,
       'cacheCnyPerM': 0.136,
@@ -702,16 +702,16 @@ window.PRICING = {
       'costPerM': 0.12189
     },
     {
-      'id': 'GPT-6 Luna',
-      'slug': 'gpt-6-luna',
+      'id': 'Claude Haiku 5.5',
+      'slug': 'claude-haiku-5-5',
       'inputCnyPerM': 0.68,
       'cacheCnyPerM': 0.068,
       'outputCnyPerM': 3.4,
       'costPerM': 0.1122
     },
     {
-      'id': 'claude-haiku-5-5',
-      'slug': 'claude-haiku-5-5',
+      'id': 'GPT-6 Luna',
+      'slug': 'gpt-6-luna',
       'inputCnyPerM': 0.68,
       'cacheCnyPerM': 0.068,
       'outputCnyPerM': 3.4,
