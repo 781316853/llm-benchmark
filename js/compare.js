@@ -24,20 +24,20 @@
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
   // 6 个计分组的键(与 WEIGHTS 一致)
-  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "aicap"];
+  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias"];
 
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
-  // 「AI 能力」作为单一基准参与:取前端/后端在场方向分的均值
-  // Terminal-Bench / ModelDial 计入综合分与命中;NL2Repo、无机酸前端实测与其余权威基准(仅展示)不参与任何定位
+  // 亿模亿样取 Elo 原值(源站已是每模型最高分档)
+  // Terminal-Bench / ModelDial / 亿模亿样计入综合分与命中;NL2Repo、无机酸前端实测与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
     tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
-    aicap:   function (e) { return aicapNorm(e); }
+    arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; }
   };
   // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
   // 参考综合分与排名行完全同口径(各榜榜内稳健标准分按在场权重归一,无豁免、无折减),
@@ -126,7 +126,7 @@
   //  Terminal-Bench 11%(权威第三方终端 Agent 榜,4.0/3.0/2.1 多版本合并为一组)
   //  ModelDial 16%(第三方独立实测综合能力榜,后端 40%/前端 30%/知识 30% 合成分)
   //  llm2014 12%(个人私有题库、等级折算制,代表性弱于第三方基准)
-  //  AI 能力 12%(个人专项自测口径;前端/后端方向分合并为**单个**计分组,取在场方向均值)
+  //  亿模亿样 12%(前端作品社区盲评 Elo 竞技场;2026-10-16 起接替原 AI 能力专项测试的权重席位)
   // 历史沿革:2026-09 移除 Vibe Code Bench(其 14% 按比例回流至其余基准);
   //  ProgramBench(原权重 8%)2026-09 移出综合分与命中数(官方 harness 口径 Fully Resolved 整体
   //  0-7 分,区分度极低);2026-09-22 恢复收录于「权威基准测试」页,维持仅展示、不再计分;
@@ -146,28 +146,22 @@
   //  2026-10-12 起:该榜退出计分与命中数,改为仅在「无机酸实测」独立页展示(数据仍每日抓取) ——
   //  每模型仅 n=1 单次实测、且跑在其自家 agent harness 下,样本强度与口径纯净度不足以进计分组
   //  (与 CursorBench / FrontierCode 同属「仅展示」处理)。计分组回到 6 组。
+  //  2026-10-16 起:AI 能力专项测试(atmeplz,原 12%)整体下线,由「亿模亿样 · 模型效果对比」
+  //  (gallery.arenaofbias.icu 前端作品社区盲评 Elo)接替其席位;权重仍为 12%,计分组维持 6 组。
   //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
   //  故上列权重无需凑满 100%(6 组之和 0.89)。
-  var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, llm: 0.12, aicap: 0.12 };
-  // AI 能力方向分合并:取前端/后端在场方向分的均值(仅测一侧则取该侧);
-  // 与 BOARD_VALS.aicap 及 data.js 的 benchCount「合并计一次」口径一致
-  function aicapNorm(e) {
-    var vals = [];
-    if (e.aicapFe && e.aicapFe.norm != null) vals.push(e.aicapFe.norm);
-    if (e.aicapBe && e.aicapBe.norm != null) vals.push(e.aicapBe.norm);
-    return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
-  }
+  var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, llm: 0.12, arenaofbias: 0.12 };
   // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
-  //   modeldial 源站 40/30/30 综合分    llm  等级映射综合分    aicap  前/后端方向分均值
+  //   modeldial 源站 40/30/30 综合分    llm  等级映射综合分    arenaofbias  Elo 原值(每模型最高分档)
   var BOARD_RAW = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     webdev: function (e) { return e.webdev ? e.webdev.score : null; },
     tbench: function (e) { return e.tbench ? e.tbench.equiv : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.overall : null; },
     llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
-    aicap: function (e) { return aicapNorm(e); }
+    arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; }
   };
   // 中位数(调用方传入已升序数组;偶数长度取两中均值 —— 朴素取下中位数会让统计量随样本 ±1 跳档)
   function median(sorted) {

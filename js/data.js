@@ -253,19 +253,18 @@
   }
   function llmMonths() { return Object.keys((window.LLM2014 && window.LLM2014.months) || {}).sort(); }
 
-  // ===== AI 能力专项测试(atmeplz)四方向榜:前端/后端方向分 =====
-  // 独立榜单展示,不计入综合分;按 score 降序,并附加 canonical 与颜色
-  function aicap() {
-    var src = window.AICAP || { directions: {} };
-    var out = { frontend: [], backend: [] };
-    ["frontend", "backend"].forEach(function (key) {
-      var dir = (src.directions && src.directions[key]) || {};
-      (dir.models || []).forEach(function (m) {
-        out[key].push(Object.assign({}, m, { canon: canon(m.name) }));
-      });
-      out[key].sort(function (a, b) { return b.score - a.score; });
+  // ===== 亿模亿样 · 模型效果对比(gallery.arenaofbias.icu)前端作品社区盲评 Elo 榜 =====
+  // 每 canonical 模型取最高 Elo(源站按推理强度分档多次测试,快照内已是每模型最高分档);
+  // 计入综合分(「第三方实测」组计分组之一,权重 12%,接替原 AI 能力专项测试)与命中数。
+  function arenaofbias() {
+    var src = window.ARENAOFBIAS || { models: [] };
+    var best = {};
+    (src.models || []).forEach(function (m) {
+      var c = canon(m.name);
+      if (!best[c.id] || m.score > best[c.id].score) best[c.id] = Object.assign({}, m, { canon: c });
     });
-    return out;
+    return Object.keys(best).map(function (k) { return best[k]; })
+      .sort(function (a, b) { return b.score - a.score; });
   }
 
   // ===== Terminal-Bench 多版本(4.0/3.0/2.1):每 canonical 模型按版本优先级取最高版本解决率 =====
@@ -460,15 +459,15 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.name) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, aicapFe, aicapBe, modeldial} 用于矩阵/雷达 =====
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, arenaofbias, modeldial} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起、wujisuan 自 2026-10-12 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
-  // aicap:前端/后端方向分分别取最高(0-100,直接作 norm);跨榜命中合并为「AI 能力」单一基准计数
+  // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数)
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, aicapFe: null, aicapBe: null, modeldial: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, arenaofbias: null, modeldial: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -505,17 +504,13 @@
       var e = ensure(m.canon);
       if (!e.tbench || m.score > e.tbench.score) e.tbench = { score: m.score, ci: m.ci, version: m.version, agent: m.agent, effort: m.effort, equiv: m.equiv, name: m.model, norm: m.norm };
     });
-    // AI 能力专项测试:前端/后端方向分(0-100,直接作 norm);前端/后端各自同名取最高
-    var ac = aicap();
-    ac.frontend.forEach(function (m) {
+    // 亿模亿样(前端作品社区盲评 Elo):同名取最高 Elo;Elo 原值供综合分做榜内稳健标准化
+    arenaofbias().forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.aicapFe || m.score > e.aicapFe.score)
-        e.aicapFe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
-    });
-    ac.backend.forEach(function (m) {
-      var e = ensure(m.canon);
-      if (!e.aicapBe || m.score > e.aicapBe.score)
-        e.aicapBe = { score: m.score, norm: m.score, name: m.name, platform: m.platform, effort: m.effort, vendor: m.vendor };
+      if (!e.arenaofbias || m.score > e.arenaofbias.score)
+        e.arenaofbias = { score: m.score, interval: m.interval, effort: m.effort, games: m.games,
+          winRate: m.winRate, tasks: m.tasks, provisional: m.provisional, configs: m.configs,
+          rank: m.rank, name: m.name };
     });
     // NL2Repo-Bench 自 2026-09-19 起移出统一视图(不再计入综合分与命中数、不再进总览矩阵),
     // 仅在「权威基准测试」页经 D.nl2repo() 直接展示,故此处不再写入。
@@ -533,24 +528,23 @@
     });
     // 无机酸 · AI 前端实测自 2026-10-12 起退出统一视图(不计综合分与命中数、不进总览矩阵),
     // 仅在「无机酸实测」页经 D.wujisuan() 直接展示,故此处不再写入。
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / AI 能力 / ModelDial
-    // 共 6 基准组;AI 能力前端/后端合并为「AI 能力」单一基准计数(上限 6),矩阵中仍分别两列展示;
-    // 其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE/NL2Repo)仅展示不计命中。
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / 亿模亿样 / ModelDial
+    // 共 6 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE/NL2Repo)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.webdev) e.benchCount++;
       if (e.tbench) e.benchCount++;
-      if (e.aicapFe || e.aicapBe) e.benchCount++;
+      if (e.arenaofbias) e.benchCount++;
       if (e.modeldial) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / AI 能力 / Terminal-Bench / ModelDial 共 6 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / 亿模亿样 / Terminal-Bench / ModelDial 共 6 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ac = window.AICAP || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
@@ -561,11 +555,8 @@
     // llm2014 头名 = 源排序第一名(rank 0),展示其综合分(按等级均值归一化,未必恰为 100)
     var lmTop = lmRows[0] || {};
     var lmTopScore = lmTop.norm != null ? lmTop.norm : null;
-    // AI 能力:前端/后端方向分头名(各方向按 score 降序取首)
-    var acFe = (ac.directions && ac.directions.frontend) || {};
-    var acBe = (ac.directions && ac.directions.backend) || {};
-    var acFeTop = (acFe.models || [])[0] || {};
-    var acBeTop = (acBe.models || [])[0] || {};
+    // 亿模亿样:Elo 头名(按 score 降序取首)
+    var abTop = arenaofbias()[0] || {};
     return [
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
@@ -576,9 +567,9 @@
       { key: "webdev", name: "Code Arena · WebDev", tag: "前端 Web 应用开发", url: wd.officialUrl || wd.url, updated: wd.updated,
         stats: [{ l: "模型", v: (wd.models || []).length }, { l: "Elo", v: (wdTop.score != null ? wdTop.score : "—") }],
         top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") },
-      { key: "aicap", name: "AI 能力专项测试", tag: "前端/后端方向分", url: ac.boardUrl || ac.url || "", updated: ac.updated,
-        stats: [{ l: "方向", v: 2 }, { l: "模型", v: ac.runCount != null ? ac.runCount : 0 }],
-        top: [acFeTop.name, acBeTop.name].filter(Boolean).join(" / ") },
+      { key: "arenaofbias", name: "亿模亿样 · 模型效果对比", tag: "前端作品社区盲评 Elo", url: ab.boardUrl || ab.url || "", updated: ab.updated,
+        stats: [{ l: "模型", v: (ab.models || []).length }, { l: "有效比较", v: (ab.stats && ab.stats.votes != null) ? ab.stats.votes : "—" }],
+        top: (abTop.name || "—") + " · " + (abTop.score != null ? abTop.score + " Elo" : "") },
       { key: "tbench", name: "Terminal-Bench", tag: "终端命令行任务 · 4.0/3.0/2.1", url: tb.url, updated: tb.updated,
         stats: [{ l: "版本", v: "4.0/3.0/2.1" }, { l: "条目", v: tbN }],
         top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") },
@@ -665,7 +656,7 @@
   // 「权威基准测试」页的 9 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
   // 若在解析期就取 window.*,这些键会永远停在 undefined。
   var SRC_GLOBALS = {
-    deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", aicap: "AICAP",
+    deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
     gpqa: "GPQA", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
@@ -692,7 +683,7 @@
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
     webdev: webdev,
-    aicap: aicap,
+    arenaofbias: arenaofbias,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
     tbench: tbench,

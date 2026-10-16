@@ -62,7 +62,7 @@ window.MODEL_MAP = {
     { id: "Tencent Hy3",      vendor: "Tencent",   color: "#12B7F5", aliases: ["Tencent Hy3 (high)", "Hy3"] },
     { id: "Tencent Hy3 Preview", vendor: "Tencent", color: "#1FC4FF", aliases: ["Tencent Hy3 Preview"] },
     { id: "MiniMax-M3",       vendor: "MiniMax",   color: "#FF5C8A", aliases: ["MiniMax-M3", "minimax-m3", "MiniMax M3"] },
-    { id: "MiniMax M3.1 Flash Preview", vendor: "MiniMax", color: "#F2668E", aliases: ["MiniMax M3.1 Flash Preview", "MiniMax-M3.1-Flash-Preview", "minimax-m3.1-flash-preview"] },
+    { id: "MiniMax M3.1 Flash Preview", vendor: "MiniMax", color: "#F2668E", aliases: ["MiniMax M3.1 Flash Preview", "MiniMax-M3.1-Flash-Preview", "minimax-m3.1-flash-preview", "MiniMax M3.1", "minimax-m3.1"] },
     { id: "MiniMax-M2.7",     vendor: "MiniMax",   color: "#FF7DA3", aliases: ["minimax-m2-7", "MiniMax-M2.7", "MiniMax M2.7"] },
     { id: "MiniMax M2.5",     vendor: "MiniMax",   color: "#FF9EBB", aliases: ["MiniMax M2.5", "minimax-m2-5"] },
     { id: "MiniMax M2.1",     vendor: "MiniMax",   color: "#FFB0CC", aliases: ["minimax-2.1"] },
@@ -108,12 +108,12 @@ window.MODEL_MAP = {
     { id: "Mistral Medium 3.5", vendor: "Mistral", color: "#FF8053", aliases: ["Mistral Medium 3.5", "mistral-medium-3-5"] },
     { id: "Nemotron 3.5 Lightning", vendor: "NVIDIA", color: "#86C40A", aliases: ["Nemotron 3.5 Lightning", "nemotron-3-5-lightning"] },
     { id: "Command A+",       vendor: "Cohere",    color: "#39594D", aliases: ["Command A+", "command-a-plus"] },
-    // ===== AI 能力专项测试(atmeplz)前端/后端方向榜补充的新模型(2026-09) =====
+    // ===== AI 能力专项测试(atmeplz,2026-10-16 下线)方向榜补充的新模型(2026-09) =====
     { id: "Gemini 3.8 Flash", vendor: "Google",    color: "#4E8BF0", aliases: ["Gemini 3.8 Flash", "gemini-3.8-flash", "gemini-3.8-flash-high"] },
     { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash", "Qwen3.8-Flash-Next", "qwen3.8-flash-next", "Qwen3.8 Flash Next", "qwen-3-8-flash-next"] },
     { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview"] },
     { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
-    { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev", "dots3-note Preview", "dots3-note-preview"] },
+    { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev", "dots3-note Preview", "dots3-note-preview", "Dots3-Note-Preview", "dots3-note"] },
     { id: "DeepSeek V4 Pro 0821 灰测", vendor: "DeepSeek", color: "#6B86FE", aliases: ["DeepSeek V4 Pro 0821 凌晨灰测", "deepseek-v4-pro-0821凌晨灰测"] },
     { id: "DSV4F-VE-ocgo",    vendor: "DeepSeek",  color: "#7A92FE", aliases: ["DSV4F-VE-ocgo"] },
     // ===== 权威基准测试(2026-09)补充登记的模型 =====
@@ -124,7 +124,7 @@ window.MODEL_MAP = {
     { id: "Moonshot v1-128k", vendor: "Moonshot",  color: "#A08FFF", aliases: ["Moonshot v1-128k", "moonshot-v1-128k"] },
     { id: "Moonshot v1-8k",   vendor: "Moonshot",  color: "#B0A0FF", aliases: ["Moonshot v1-8k", "moonshot-v1-8k"] },
     { id: "Qwen3-VL-2B",      vendor: "Qwen",      color: "#FF8A3D", aliases: ["Qwen3-VL-2B", "Qwen3-VL-2B (baseline)", "qwen3-vl-2b"] },
-    // ===== NL2Repo / AI 能力 榜上此前未登记(被自动建档为「其他」厂商)的模型(2026-09) =====
+    // ===== NL2Repo 与已下线的 AI 能力榜上此前未登记(被自动建档为「其他」厂商)的模型(2026-09) =====
     { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910", "deepseek-v4.1-flash-expires-on-0910"] },
     { id: "DeepSeek V4 Flash Vision Exp", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek-V4-Flash-Vision-Exp", "DeepSeek V4 Flash Vision Exp", "deepseek-v4-flash-vision-exp"] },
     { id: "Gemini 3.1 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite", "Gemini 3.1 Flash Lite Preview", "gemini-3.1-flash-lite-preview"] },
@@ -156,7 +156,27 @@ window.MODEL_MAP = {
     { id: "SWE-1.7",          vendor: "Cognition", color: "#D07C46", aliases: ["SWE-1.7", "swe-1-7", "swe-1.7"] },
     { id: "SWE-1.6",          vendor: "Cognition", color: "#D98850", aliases: ["SWE-1.6", "swe-1-6", "swe-1.6"] },
     { id: "Kimi K2.7",        vendor: "Moonshot",  color: "#7C5CFF", aliases: ["Kimi K2.7", "kimi-k2.7", "Kimi-K2.7"] },
-    { id: "Mistral 3.5 Medium", vendor: "Mistral", color: "#FF8A66", aliases: ["Mistral 3.5 Medium", "mistral-3.5-medium", "Mistral-Medium-3.5"] }
+    { id: "Mistral 3.5 Medium", vendor: "Mistral", color: "#FF8A66", aliases: ["Mistral 3.5 Medium", "mistral-3.5-medium", "Mistral-Medium-3.5"] },
+    // ===== 亿模亿样(gallery.arenaofbias.icu)前端盲评榜补充登记的模型(2026-10-16) =====
+    // 源站模型标识为 slug(如 qwen3.8-27b),模型展示名为 modelName;两者都登记为别名,
+    // 使该榜与其它榜的写法自动合流,避免被自动建档成「其他」而把同一模型拆成两条。
+    { id: "Qwen Latest Series Invite 2609", vendor: "Alibaba", color: "#FF9A3D", aliases: ["Qwen Latest Series Invite 2609", "qwen-latest-series-invite-2609"] },
+    { id: "GPT-6 Astra Pro",  vendor: "OpenAI",    color: "#12A77C", aliases: ["GPT-6 Astra Pro", "gpt-6-astra-pro", "astra-pro"] },
+    { id: "Gemini 4 Argon",   vendor: "Google",    color: "#5C99F2", aliases: ["Gemini 4 Argon", "gemini-4-argon"] },
+    { id: "Gemini 2.5 Pro",   vendor: "Google",    color: "#78AEF8", aliases: ["Gemini 2.5 Pro", "gemini-2.5-pro"] },
+    { id: "Claude Haiku 5.5", vendor: "Anthropic", color: "#7C5240", aliases: ["Claude Haiku 5.5", "claude-haiku-5.5"] },
+    { id: "DeepSeek R1",      vendor: "DeepSeek",  color: "#7B94FF", aliases: ["DeepSeek R1", "deepseek-r1"] },
+    { id: "Space Bunny",      vendor: "MiniMax",   color: "#F585AC", aliases: ["Space Bunny", "Space-bunny", "space-bunny"] },
+    { id: "GLM 5.3 Flash X",  vendor: "zAI",       color: "#96A0EC", aliases: ["GLM 5.3 Flash X", "GLM-5.3-Flash-X", "glm-5.3-flash-x"] },
+    { id: "Doubao Seed Evolving", vendor: "ByteDance", color: "#BC6FF5", aliases: ["Doubao Seed Evolving", "doubao-seed-evolving"] },
+    { id: "Seed 2.1 Lite",    vendor: "ByteDance", color: "#6FAEFF", aliases: ["Seed 2.1 Lite", "seed-2.1-lite"] },
+    { id: "Qwen3.5-Plus",     vendor: "Alibaba",   color: "#FF8A2B", aliases: ["Qwen3.5-Plus", "Qwen3.5 Plus", "qwen3.5-plus"] },
+    { id: "LongCat 2.5",      vendor: "Meituan",   color: "#DFC24E", aliases: ["LongCat 2.5", "LongCat-2.5", "longcat-2.5"] },
+    { id: "Solar Pro 4",      vendor: "Upstage",   color: "#7FCBBE", aliases: ["Solar Pro 4", "solar-pro-4"] },
+    { id: "SenseNova 6.8 Flash Lite", vendor: "SenseTime", color: "#5CC7D6", aliases: ["SenseNova 6.8 Flash Lite", "sensenova-6.8-flash-lite"] },
+    { id: "Atria Dawn Preview", vendor: "Shanghai AI Lab", color: "#5FC2A6", aliases: ["Atria Dawn Preview", "atria-dawn-preview"] },
+    { id: "Xing4.0-29B-A4B",  vendor: "China Telecom", color: "#63A6F2", aliases: ["Xing4.0-29B-A4B", "xing4.0-29b-a4b"] },
+    { id: "Ling-3.1-Flash",   vendor: "inclusionAI", color: "#8FD97A", aliases: ["Ling-3.1-Flash", "Ling 3.1 Flash", "ling-3.1-flash"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1
@@ -201,8 +221,13 @@ window.MODEL_MAP = {
     "SK Telecom": "#EA6C81",        // 玫红:提亮至常态 ≥4.5:1
     "Cursor": "#FF7A45",            // 品牌橙红(Composer 系列):与 Anthropic/Mistral 错开明度
     "Cognition": "#D8915C",         // 陶土橙(Devin / SWE 系列):与 Anthropic 同带错明度
-    "StepFun": "#6C4AB6"            // 靛紫(阶跃星辰)
+    "StepFun": "#6C4AB6",           // 靛紫(阶跃星辰)
+    "SenseTime": "#5CC7D6",         // 品牌青蓝(商汤)
+    "Shanghai AI Lab": "#5FC2A6",   // 薄荷绿(上海人工智能实验室)
+    "China Telecom": "#63A6F2",     // 品牌蓝(中国电信)
+    "Meituan": "#DFC24E",           // 芥末黄(美团):与 NVIDIA / Xiaomi 错开色相带
+    "inclusionAI": "#8FD97A",       // 品牌绿(蚂蚁 inclusionAI / Ling 系列)
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
-  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun"]
+  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI"]
 };

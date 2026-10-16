@@ -1,6 +1,6 @@
 # 大模型编码基准整合门户
 
-聚合 **DeepSWE** · **llm2014 Agentic**(原 code_v3) · **Code Arena · WebDev** 三大编码评测、**AI 能力专项测试**(前端/后端方向分)、**Terminal-Bench(4.0/3.0/2.1)**、**ModelDial 雷达** 与 **无机酸 · AI 前端实测**(B 站独立第三方前端端到端实测),并设「权威基准测试」页收纳 **DeepSWE / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode** 等权威基准,聚焦跨基准模型对比。榜单数据统一按**渠道优先级**合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺失模型与字段、不覆盖高层级分数。
+聚合 **DeepSWE** · **llm2014 Agentic**(原 code_v3) · **Code Arena · WebDev** 三大编码评测、**亿模亿样**(前端作品社区盲评 Elo)、**Terminal-Bench(4.0/3.0/2.1)**、**ModelDial 雷达** 与 **无机酸 · AI 前端实测**(B 站独立第三方前端端到端实测),并设「权威基准测试」页收纳 **DeepSWE / Terminal-Bench-Science 0.1 / OSWorld 2.0 / Agents' Last Exam / ARC-AGI-3 / BenchCAD / GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode** 等权威基准,聚焦跨基准模型对比。榜单数据统一按**渠道优先级**合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺失模型与字段、不覆盖高层级分数。
 
 ## 在线访问
 
@@ -8,10 +8,10 @@
 
 ## 功能
 
-- **总览矩阵**:同一模型在多项基准中的成绩并排对比(含 AI 能力前端/后端方向分,合并单列、前后端并列展示;以及 Terminal-Bench 4.0/3.0/2.1 合并单列);两级表头分「榜单基准」(DeepSWE / Terminal-Bench,基准官方实测榜口径)与「第三方实测」(ModelDial 第三方独立实测 / Code Arena · WebDev 社区盲测 Elo / llm2014 私有题库 / AI 能力专项测试)两组;**仅命中≥4 个榜单的模型参与排名并编号**,命中 3 个及以下的模型不计算综合分、不显示排名序号(序号与梯队列均为「—」),仅展示各榜数据——其中命中 2-3 榜的「参考」模型按各榜成绩与排名模型比对,插入到排名行之间的合理位置(默认仅前30区间内显示);勾选「显示全部」则展开**全部在任一基准组有成绩的模型**——排名30之后的排名行、全部「参考」行,以及命中=1 的「单榜」行(不计算综合分、不参与排名,梯队列与序号列均显示「—」,统一排在末尾并标注「仅单榜」),保证"榜上有数据、总览也能看到";**梯队右侧另有「性价比」列**(综合分 ÷ 每百万 token 综合成本,成本按 1M token 实际编程比例 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,单价取 codingplan.fyi 模型 API 标价),仅对参与排名的模型(命中 ≥4 榜)计算,可点击列头排序
-- **DeepSWE**:长程软件工程任务 Pass\@1 排行 / 成本-成绩散点
+- **总览矩阵**:同一模型在多项基准中的成绩并排对比(含 亿模亿样 前端作品社区盲评 Elo;以及 Terminal-Bench 4.0/3.0/2.1 合并单列);两级表头分「榜单基准」(DeepSWE / Terminal-Bench,基准官方实测榜口径)与「第三方实测」(ModelDial 第三方独立实测 / Code Arena · WebDev 社区盲测 Elo / llm2014 私有题库 / 亿模亿样 社区盲评 Elo)两组;**仅命中≥4 个榜单的模型参与排名并编号**,命中 3 个及以下的模型不计算综合分、不显示排名序号(序号与梯队列均为「—」),仅展示各榜数据——其中命中 2-3 榜的「参考」模型按各榜成绩与排名模型比对,插入到排名行之间的合理位置(默认仅前30区间内显示);勾选「显示全部」则展开**全部在任一基准组有成绩的模型**——排名30之后的排名行、全部「参考」行,以及命中=1 的「单榜」行(不计算综合分、不参与排名,梯队列与序号列均显示「—」,统一排在末尾并标注「仅单榜」),保证"榜上有数据、总览也能看到";**梯队右侧另有「性价比」列**(综合分 ÷ 每百万 token 综合成本,成本按 1M token 实际编程比例 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,单价取 codingplan.fyi 模型 API 标价),仅对参与排名的模型(命中 ≥4 榜)计算,可点击列头排序
+- **DeepSWE**(长程软件工程任务 Pass\@1 排行 / 成本-成绩散点):**2026-10-16 起取消独立标签页**,数据与两张图表合入「权威基准测试」页的 DeepSWE 章节(该章节含 Pass\@1 排行、成本-成绩散点与明细表)
 - **llm2014 Agentic**:综合分(支持按月份切换);页面脚注引入源站官方「档位说明」与「项目说明」
-- **AI 能力专项测试**(atmeplz 四方向榜):门户收录「前端处理能力」与「后端处理能力」两个编码方向的方向分(0-100);前端/后端方向分**合并为单个计分组**(取在场方向均值)占综合分权重 12%,并在总览交叉矩阵以单列并列展示(属「第三方实测」组);总览页另设 AI 能力卡片,可经卡片「原站 ↗」与页脚链接跳转源站
+- **亿模亿样 · 模型效果对比**(gallery.arenaofbias.icu,前端作品社区盲评 Elo 竞技场):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度并折算到 Elo 刻度(1000 为平均水平),含 ±95% 不确定区间;同一模型按推理强度分档多次测试,**取最高分档**入榜,占综合分权重 12%,并在总览交叉矩阵以单列展示(属「第三方实测」组);总览页另设 亿模亿样 卡片,可经卡片「原站 ↗」与页脚链接跳转源站。该席位由 2026-10-16 下线的 AI 能力专项测试(atmeplz)让出
 - **Terminal-Bench(4.0/3.0/2.1)**(斯坦福/Laude):终端命令行 Agent 评测成绩;多版本**合并为一个基准组**计入综合分(权重 11%,属「榜单基准」组)与命中数,总览矩阵设单列展示——**优先以最高版本为代表**(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签(v4.0/v3.0/v2.1);由于各版本难度不同(版本越高越难、原始分越低),计入综合分时按**跨版本难度系数折算为「4.0 等效分」**的口径:3.0/2.1 的分数按与 4.0 共有模型的分之和求系数(k = Σ4.0 分 ÷ Σ该版分,每日随数据自动重算,当前约 3.0×1.1、2.1×0.3,即 2.1 的 88 分约相当于 4.0 官方 26 分)折成等效分,综合分**直接以该等效分参与榜内稳健标准化**(见「综合分口径」),低难度版本的虚高分不再追平 4.0 头名;等效分之后再做的全池 min-max 归一(`norm`)仅供图表与参考展示,不再进入综合分;列表展示的仍是该代表版本的原始分;口径:4.0/3.0 为官方 agent×model 解决率(4.0 每日抓取 tbench.ai、3.0 每日抓取 snorkel.ai 全量 12 条),2.1 为 datalearner 厂商官方发布成绩(主源)+ llm-stats 归一化自报分(补充)按渠道层级合并
 - **NL2Repo-Bench**(长程仓库生成,自 2026-09-19 起**仅展示**):给定单一 NL 需求文档从零生成可安装 Python 库(103 任务),test-pass-rate(%);主源官方论文评测表(arxiv)与 datalearner 厂商官方发布 + 补充源 llm-stats 聚合表与 benchlm.ai 镜像**按渠道优先级合并**。原为计分组之一(权重 9%),2026-09-19 已从综合分与命中数移出、并移出总览矩阵,改为仅在「权威基准测试」页展示
 - **ModelDial 雷达**(新标签页,第三方独立实测):modeldial.com 的编码智能体能力榜,分后端与测试、前端与交互、知识与推理三类能力分别评测,综合分按**后端 40% + 前端 30% + 知识 30%** 加权(三分项均 0-100);同一模型按**推理强度**分档多次测试,主榜取该模型**最高分配置**入榜(34 个模型 / 77 条 config)。门户以官方 JSON feed 单请求抓取,计入综合分(**权重 16%**,属总览「第三方实测」组)与命中数(命中分母 6);页面含成本×综合分散点与可展开的全部 config 明细。⚠️ 费用与耗时取自源站**后端单轴**口径,低于源站主榜显示的三轴汇总值(源站紧凑 feed 无费用完整度字段,故不做「≥ / 部分费用」标记)
@@ -19,13 +19,13 @@
 - **ProgramBench**(cleanroom 程序重建,2026-09-22 起**恢复收录、仅展示**):仅给编译后二进制与文档,智能体从零重建完整代码库(200 个真实开源项目任务,行为级隐藏测试,不联网、禁止反编译),主指标 Fully Resolved(%);官方 programbench.com + vals.ai 镜像**双源合并取最高**,Almost(≥95% 行为测试通过)/ Raw Pass Rate 辅助展示。2026-09 曾为计分组之一(权重 8%),因官方 harness 口径 Fully Resolved 整体 0-7 分、区分度极低移出计分;2026-09-22 起重新收录,仅在「权威基准测试」页展示,不计入综合分与命中数
 - **CursorBench 4.0**(Cursor 官方,2026-09-23 起收录、**仅展示**):在 Cursor 自家 agent harness 上评测来自真实 Cursor 会话的「模糊、跨文件」任务(编辑/重构/排查/意图理解/长任务管理/设计一致性),agentic grader 判定、允许多种正确答案。官方页为服务端渲染 HTML 表格,单请求即得 **52 条 model×推理档位配置**(Score% / Cost/task / Tokens/task / Steps/task);门户展示**模型级主榜 12 条**(每模型取最优档位,与官方散点图同口径)+ 可展开的全部档位明细。仅展示,不计入综合分与命中数(harness 绑定 Cursor 自家 agent,口径与其他基准不可比)
 - **FrontierCode 1.1**(Cognition 官方,2026-09-23 起收录、**仅展示**):任务由 20+ 资深开发者制作(每个任务投入 40+ 小时),不只看代码能否跑通,而是按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」。榜单页为客户端渲染(原始 HTML 仅 `ld+json` 吐 Top10 摘要),真实数据取同域静态 JSON(`data/frontiercode-leaderboard/data.json`,单请求得 v1/v1.1 全部 40 个模型 × 各档位 × main(100 题)/extended(150 题)子集)。**主榜口径经逐条反推校验**:`score` = main 子集下各推理档位 `new_score` 取最大(对官方 Top10 精确命中 10/10,且与前端组件的聚合逻辑一致);门户另展示 harness(各厂商自家 CLI:devin/claude-code/codex 等)、原始 Pass Rate、成本/tokens/步数。仅展示,不计入综合分与命中数(harness 口径不可比)
-- **综合分口径**(6 个计分组,**2026-09-22 起为「各榜榜内稳健标准分」**):① 各榜取原生分(DeepSWE Pass@1 % / Code Arena·WebDev Elo / Terminal-Bench 4.0 等效解决率 % / ModelDial 综合分 / llm2014 等级映射分 / AI 能力前后端方向分均值);② 每榜在全池在场该榜的模型内做稳健标准化 z =(值 − 榜内中位数)÷(1.4826×MAD),截断 ±3;③ 按权重对**在场**榜归一(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / llm2014 12% / AI 能力 12%,六组之和 0.89,缺榜权重自动回流 = 按该模型自身水平填补);④ 显示分 = 50 + 15×加权 z(clamp 0-100,50 即全池中位,**属相对分、不可跨日直接比较**)。列表按容差档分组(相差 < 1.5 分 = 0.1 个加权标准视为同档),档内先按**共榜支配关系**拓扑分层(双方共同在场的榜上全部更高者必排前)、再按 命中数 → 共榜加权净胜 → 综合分 排序。**本次同时取消「一榜豁免」与「一致性折减」**——旧口径直接加权各榜 min-max 归一分,而各榜量纲不可比(榜内标准差 DeepSWE 约 32、ModelDial 仅约 11),且缺测一榜等于白占一个高分位(2026-09 快照:Kimi K3 在四个共同榜全部高于 Qwen3.8-Flash 却被排在其后);豁免与「缺榜按自身水平填补」是同一动机的重复实现,折减在 z 量纲下不足 0.2 分属噪声。历史沿革保留:自 **2026-09-21** 起「实测」组更名为**「第三方实测」**并整体加权(WebDev 18→22%、ModelDial 12→16%、llm2014 10→12%、AI 能力 10→12%),同时「榜单基准」组减权(DeepSWE 20→16%、Terminal-Bench 14→11%),实测组合计 0.50→0.62、基准组 0.34→0.27(权重百分比自本次起未再调整);自 **2026-09-20** 起取消「完整度奖励」(原 7 组全勤 +3 分、6 组 +1.5 分),在场榜单多少仅由权重回流体现,缺榜不再被重复扣分。自 **2026-10-12** 起「无机酸 · AI 前端实测」(原 10%)由计分组移出、改为仅展示,计分组回到 **6 组**(权重清单相应变为六组之和 0.89)。
-- **权威基准测试**(新标签页,14 大权威基准):DeepSWE(长程软件工程,同时保留独立标签页)、Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看、默认 4.0,三版合并计入总览)、Terminal-Bench-Science 0.1(科研工作流)、OSWorld 2.0(长时程桌面计算机使用)、Agents' Last Exam(真实专业工作流)、ARC-AGI-3(交互式智能体推理 RHAE)、BenchCAD(程序化 CAD 生成)、GPQA Diamond(研究生级科学问答)、HLE(前沿知识广度)、NL2Repo-Bench(长程仓库生成)、ProgramBench(cleanroom 程序重建)、CursorBench(Cursor 官方编码 Agent 实测)、FrontierCode(Cognition 生产级代码质量);除 DeepSWE / Terminal-Bench 三版合并外均不计入综合分与命中数(NL2Repo-Bench 自 2026-09-19 起由「计入」改为仅展示;ProgramBench 2026-09-22 恢复收录,仅展示;CursorBench / FrontierCode 2026-09-23 新增,harness 口径不可比故仅展示);各表模型名后按渠道挂「官方榜 / 厂商发布 / 第三方」来源徽标(仅多渠道表逐行标注)
+- **综合分口径**(6 个计分组,**2026-09-22 起为「各榜榜内稳健标准分」**):① 各榜取原生分(DeepSWE Pass@1 % / Code Arena·WebDev Elo / Terminal-Bench 4.0 等效解决率 % / ModelDial 综合分 / llm2014 等级映射分 / 亿模亿样 Elo);② 每榜在全池在场该榜的模型内做稳健标准化 z =(值 − 榜内中位数)÷(1.4826×MAD),截断 ±3;③ 按权重对**在场**榜归一(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / llm2014 12% / 亿模亿样 12%,六组之和 0.89,缺榜权重自动回流 = 按该模型自身水平填补);④ 显示分 = 50 + 15×加权 z(clamp 0-100,50 即全池中位,**属相对分、不可跨日直接比较**)。列表按容差档分组(相差 < 1.5 分 = 0.1 个加权标准视为同档),档内先按**共榜支配关系**拓扑分层(双方共同在场的榜上全部更高者必排前)、再按 命中数 → 共榜加权净胜 → 综合分 排序。**本次同时取消「一榜豁免」与「一致性折减」**——旧口径直接加权各榜 min-max 归一分,而各榜量纲不可比(榜内标准差 DeepSWE 约 32、ModelDial 仅约 11),且缺测一榜等于白占一个高分位(2026-09 快照:Kimi K3 在四个共同榜全部高于 Qwen3.8-Flash 却被排在其后);豁免与「缺榜按自身水平填补」是同一动机的重复实现,折减在 z 量纲下不足 0.2 分属噪声。历史沿革保留:自 **2026-09-21** 起「实测」组更名为**「第三方实测」**并整体加权(WebDev 18→22%、ModelDial 12→16%、llm2014 10→12%、AI 能力 10→12%),同时「榜单基准」组减权(DeepSWE 20→16%、Terminal-Bench 14→11%),实测组合计 0.50→0.62、基准组 0.34→0.27(权重百分比自本次起未再调整);自 **2026-09-20** 起取消「完整度奖励」(原 7 组全勤 +3 分、6 组 +1.5 分),在场榜单多少仅由权重回流体现,缺榜不再被重复扣分。自 **2026-10-12** 起「无机酸 · AI 前端实测」(原 10%)由计分组移出、改为仅展示;自 **2026-10-16** 起「AI 能力专项测试」(原 12%)整体下线,由「亿模亿样 · 模型效果对比」接替其席位(权重仍为 12%),计分组保持 **6 组**(权重清单仍为六组之和 0.89)。
+- **权威基准测试**(新标签页,14 大权威基准):DeepSWE(长程软件工程,自带 Pass\@1 排行 / 成本-成绩散点双图与明细表)、Terminal-Bench(4.0/3.0/2.1,单章节内切换版本查看、默认 4.0,三版合并计入总览)、Terminal-Bench-Science 0.1(科研工作流)、OSWorld 2.0(长时程桌面计算机使用)、Agents' Last Exam(真实专业工作流)、ARC-AGI-3(交互式智能体推理 RHAE)、BenchCAD(程序化 CAD 生成)、GPQA Diamond(研究生级科学问答)、HLE(前沿知识广度)、NL2Repo-Bench(长程仓库生成)、ProgramBench(cleanroom 程序重建)、CursorBench(Cursor 官方编码 Agent 实测)、FrontierCode(Cognition 生产级代码质量);除 DeepSWE / Terminal-Bench 三版合并外均不计入综合分与命中数(NL2Repo-Bench 自 2026-09-19 起由「计入」改为仅展示;ProgramBench 2026-09-22 恢复收录,仅展示;CursorBench / FrontierCode 2026-09-23 新增,harness 口径不可比故仅展示);各表模型名后按渠道挂「官方榜 / 厂商发布 / 第三方」来源徽标(仅多渠道表逐行标注)
 - **套餐对比**(新标签页,展示型参考):接入 codingplan.fyi「额度/价格对比」视图的**快速对比**板块——按固定精选模型分列(DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna + 甜品级、SOTA 两组多模型对比),每列按综合单价升序比价各平台套餐(折算月价 / 综合单价 ¥/亿 / 实测月用量,含 谷/峰 档位),支持「仅显示精选平台 / 显示所有平台」切换;已去除源站推广跳转链接,完整套餐筛选请前往源站
 
 - **Agent工具更新日志**(新标签页,非分数数据):汇总 **Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy** 十一个 Agent 工具的官方 changelog,**每个工具显示最近 2 条更新**,正文保留源站**完整内容**(不摘要),支持跳转源站原文,英文条目自动机器翻译成中文(未译出的标「原文」保留英文);数据文件仍存全量历史,14 天 / 30 天 / 全部切换的是「更新算不算新」的门槛(条数固定 2 条,早于窗口的条目仍展示并标注「超出窗口」)。只收**正式发布版本**(alpha/beta/rc/nightly 不入库)。仿 news/codingplan 模式旁路抓取,不进基准管线、不计入综合分与命中数
 
-每页提供「仅跨榜模型 / 显示全部」开关:默认收起仅出现在单一榜单的模型,聚焦跨基准可比性。总览页的「显示全部模型」门槛为命中 1 榜(展开全部在任一基准组有成绩的模型,含「参考」与「仅单榜」两类不参与排名的行)。
+总览页与 llm2014 页提供「仅跨榜模型 / 显示全部」开关:默认收起仅出现在单一榜单的模型,聚焦跨基准可比性。总览页的「显示全部模型」门槛为命中 1 榜(展开全部在任一基准组有成绩的模型,含「参考」与「仅单榜」两类不参与排名的行)。「权威基准测试」页的 DeepSWE 章节与其余章节一致,始终展示全量上榜模型,不再设该开关(原「DeepSWE」标签页的开关随标签页一并移除)。
 
 ### 模型名归一(canonical)约定
 
@@ -41,13 +41,13 @@
 ## 目录结构
 
 ```
-index.html              门户入口(9 标签:总览/DeepSWE/llm2014/AI能力/ModelDial/无机酸实测/权威基准测试/套餐对比/Agent工具更新日志)
+index.html              门户入口(8 标签:总览/llm2014/AI能力/ModelDial/无机酸实测/权威基准测试/套餐对比/Agent工具更新日志)
 css/styles.css          深色科技风样式
 js/data.js              数据归一(canonical 命中映射、unified 视图、hitCount)
 js/charts.js            ECharts 封装
 js/compare.js           跨基准矩阵/雷达/指标卡
 js/app.js               标签路由与渲染(含"仅跨榜"过滤)
-data/                   多源数据快照(deepswe/deepswe_v10/llm2014/arena_webdev/models/aicap/
+data/                   多源数据快照(deepswe/deepswe_v10/llm2014/arena_webdev/arenaofbias/models/
                          tbench/tbench_v3/tbench_v2(实时双源)/tbscience/osworld/lastexam/arcagi3/benchcad/
                          gpqa/hle/nl2repo/programbench/cursorbench/frontiercode/modeldial/wujisuan/news/codingplan/pricing/changelog)
 scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用)
@@ -60,7 +60,7 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 
 首屏(默认打开的「总览」页)与后续标签页按需分工,避免低频页面的体积进入关键路径:
 
-- **首屏脚本清单**(`index.html` 的 `defer` 列表)只含总览及各榜单页真正读取的数据:`models` / `deepswe`(+`deepswe_v10`)/ `llm2014` / `arena_webdev` / `aicap` / `tbench`(+`tbench_v3` / `tbench_v2`,三版合并为一个基准组计入总览)/ `modeldial` / `wujisuan` / `gpqa` / `hle`(后两者只在权威页列表展示,但分数被总览矩阵「仅参考」列引用)/ `seen` / `news`。
+- **首屏脚本清单**(`index.html` 的 `defer` 列表)只含总览及各榜单页真正读取的数据:`models` / `deepswe`(+`deepswe_v10`)/ `llm2014` / `arena_webdev` / `arenaofbias` / `tbench`(+`tbench_v3` / `tbench_v2`,三版合并为一个基准组计入总览)/ `modeldial` / `wujisuan` / `gpqa` / `hle`(后两者只在权威页列表展示,但分数被总览矩阵「仅参考」列引用)/ `seen` / `news`。
 - **按需注入**:仅权威基准页使用的 9 个仅展示榜(`tbscience` / `osworld` / `lastexam` / `arcagi3` / `benchcad` / `nl2repo` / `programbench` / `cursorbench` / `frontiercode`)与套餐对比页的 `codingplan`,由 `js/app.js` 的 `DATA_SRC` + `ensureData()` 在首次需要时注入(权威页仍在首屏后空闲时预取并预构建);`data/changelog.js`(约 3MB)同理,见 `renderChangelog()`。注:`D.src` 因此改为取值器而非解析期快照(`js/data.js`),否则按需源永远是 `undefined`。
 - **ECharts 按需加载**:图表库约 1MB 且默认页一张图都没有,故不进首屏脚本清单 —— 它是 `defer` 脚本,会让 `DOMContentLoaded`(进而 `init`)等它下载完。改由 `js/charts.js` 自己注入:首屏渲染后空闲时预热(`CH.warmup`),或首次真正要画图时即时加载,加载期间的 `CH.apply` 请求排队、就绪后回放(所在页不可见时留到可见再画,见 `CH.flush`)。主源 npmmirror、失败回退 jsDelivr(与 `index.html` 的 `preconnect` 一致)。
 
@@ -73,7 +73,7 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
 - **llm2014**:GitHub raw CSV,结构化解析;源站已将该类别显示为 Agentic,项目名保留表头字母代号,并同步抓取 i18n.js 中的官方档位/项目说明文案。
 - **DeepSWE**:解析 datacurve.ai 内嵌 run 对象(官方实测榜 T1),按"每模型最高 Pass\@1"选榜;datalearner 详情页(厂商官方发布 T2)只补缺、不覆盖官方条目。另以 Qwen 官方博客/模型卡/技术报告人工转录为 T2 种子层(`scripts/lib/official-seeds.js`,src=`qwen-official`,出处 developer.aliyun.com/article/1763215),仅补官方榜未收录的模型(如 Qwen3.8-Flash),绝不覆盖既有分数;协议不可比、effort 未标注,前端逐行挂"厂商发布"徽标标注仅供参考。同一机制亦接入 NL2Repo / Agents' Last Exam 作前向兜底。
 - **Code Arena · WebDev**:抓取权威镜像 m.aitntnews.com/arena/code/(官方 arena.ai 有 Cloudflare 防护,其 ld+json 声明 creator=LM Arena、isBasedOn=arena.ai/leaderboard/code,属官方数据每日快照),解析 `<tr>` 行的 Elo/CI/投票。
-- **AI 能力专项测试**:抓取 atmeplz 静态站渲染用 JSON(`data/site.json`),提取「前端处理能力」与「后端处理能力」两个方向的方向分(0-100),写入 `data/aicap.js`;计入综合分(前端/后端方向分合并为**单个计分组**,合计占 12%,取在场方向均值)并进入总览矩阵(单列并列展示),总览另设 AI 能力卡片。
+- **亿模亿样 · 模型效果对比**:抓取源站公开 API(`api.arenaofbias.icu/api/leaderboard?by=config`,`data/arenaofbias.js`),剔除源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)后按模型取**最高分档**的 Elo(含 ±95% 区间/强度/比较场次/胜率);计入综合分(权重 12%,**单个计分组**)并进入总览矩阵(单列展示),总览另设 亿模亿样 卡片。
 - **Terminal-Bench 4.0**:解析 tbench.ai 服务端渲染 HTML 表格(agent×model 组合条目,66 任务,官方实测榜 T1),并以 datalearner 详情页(内嵌 results JSON,厂商官方发布 T2)为补充源——只补缺、不覆盖官方条目(官方口径优先);与 3.0/2.1 合并为单一基准组计入综合分(权重 11%)与命中数。
 - **Terminal-Bench 3.0**:线上 tbench.ai 的 3.0 路由已并入 4.0,改为每日抓取 snorkel.ai 全量 12 条 agent×model 榜单(74 任务,官方 3.0 榜已下线、snorkel 为唯一 T3 镜像);与 4.0 合并为一个基准组计入综合分与命中数(优先级 4.0>3.0>2.1)。
 - **Terminal-Bench 2.1**:主源 datalearner 详情页(厂商官方发布成绩 T2,含模式/发布时间/参数量)+ 补充源 llm-stats 聚合表(0-1 归一化自报分换算为%,T3)按渠道层级合并(~43 模型级条目),与 4.0/3.0 合并为一个基准组;随 `fetch_all.js` 每日重写。

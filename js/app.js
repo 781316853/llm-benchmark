@@ -9,8 +9,8 @@
     plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
     changelogDays: 14, // 更新日志页时间窗口(天):14(默认)/30/0=不限
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
-    // 总览默认收起(聚焦跨榜命中),其余两页默认展开全部模型
-    showAll: { overview: false, deepswe: true, llm: true } };
+    // 总览默认收起(聚焦跨榜命中),llm2014 页默认展开全部模型
+    showAll: { overview: false, llm: true } };
   // 国产厂商集合(来自 MODEL_MAP.domesticVendors):用于总览页判定模型是否为国产
   var DOMESTIC = {};
   ((window.MODEL_MAP && window.MODEL_MAP.domesticVendors) || []).forEach(function (v) { DOMESTIC[v] = 1; });
@@ -103,7 +103,7 @@
     deepswe: "长程软件工程任务评测,覆盖真实 GitHub issue 到 PR 的完整解决链路,计入综合分权重 16%",
     llm2014: "个人私有题库的档位制评测,从零构建实际应用并按通过情况评级(含单任务测试成本),计入综合分权重 12%",
     webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力,计入综合分权重 22%",
-    aicap: "atmeplz 四方向榜:前端(中式建筑/体素山水/前端网页/黑洞模拟)与后端(超级 MES)方向分,前后端合并为单个计分组(取在场方向均值),合计计入综合分权重 12%",
+    arenaofbias: "亿模亿样(gallery.arenaofbias.icu)前端作品社区盲评 Elo 竞技场:同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度折算为 Elo(1000 为平均水平),同一模型按推理强度分档多次测试取最高分档,计入综合分权重 12%",
     tbench: "斯坦福/Laude 终端命令行 Agent 评测,在真实 Shell 环境中解决编译/配置/运维等长程任务,三版合并计入综合分权重 11%",
     modeldial: "modeldial.com 第三方独立实测的编码智能体能力榜,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权综合分,计入综合分权重 16%"
   };
@@ -240,15 +240,10 @@
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
-    // AI 能力专项测试:前端/后端方向分合并单列展示,单元格并列两个方向分;排序用在场均值
-    // 该列的 tone 只作用于表头 —— 格内两个方向分沿用 .ac-fe/.ac-be 方向色(方向信息优先于榜色)
-    { key: "aicap", label: "AI 能力 (前/后端)", type: "num", bench: true, grp: "第三方实测", tone: "aicap",
-      val: function (r) {
-        var vals = [];
-        if (r.aicapFe) vals.push(r.aicapFe.score);
-        if (r.aicapBe) vals.push(r.aicapBe.score);
-        return vals.length ? vals.reduce(function (a, b) { return a + b; }, 0) / vals.length : null;
-      } },
+    // 亿模亿样:前端作品社区盲评 Elo 原值(每模型取最高分档);计入综合分与命中数
+    { key: "arenaofbias", label: "亿模亿样 (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "arenaofbias",
+      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 12%)与命中数",
+      val: function (r) { return (r.arenaofbias && r.arenaofbias.score != null) ? r.arenaofbias.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -408,17 +403,19 @@
     if (!rows.length) rows = allRows;
     // 排名计数器:仅对参与排名的行(命中≥4榜)递增;参考行(命中 2-3 榜)不参与排名,序号列固定「—」
     var rankNo = 0;
-    // AI 能力单元格:前端/后端方向分同字号并列(如 96.5 / 96),以不同颜色区分,
-    // 任一侧缺失则只显示另一侧(颜色保留,便于区分方向)
-    var aicapCell = function (r) {
-      var fe = r.aicapFe ? r.aicapFe.score : null;
-      var be = r.aicapBe ? r.aicapBe.score : null;
-      if (fe == null && be == null) return "—";
-      if (fe == null) return '<span class="ac-be">' + be + '</span>';
-      if (be == null) return '<span class="ac-fe">' + fe + '</span>';
-      return '<span class="ac-fe" title="前端">' + fe + '</span>' +
-        '<span class="ac-sep"> / </span>' +
-        '<span class="ac-be" title="后端">' + be + '</span>';
+    // 亿模亿样单元格:Elo 原值上该榜数据色 + ±95% 区间(灰字元数据,与 WebDev 列同款分工);
+    // 悬浮补排名/推理强度/比较场次/胜率/档位数与源站「暂定」标记
+    var biasCell = function (r) {
+      var m = r.arenaofbias;
+      if (!m || m.score == null) return "—";
+      var meta = ["排名 #" + m.rank];
+      if (m.effort) meta.push("强度 " + m.effort);
+      if (m.games != null) meta.push(m.games + " 场有效比较");
+      if (m.winRate != null) meta.push("胜率 " + (Math.round(m.winRate * 1000) / 10) + "%");
+      if (m.configs) meta.push(m.configs + " 个档位取最高");
+      if (m.provisional) meta.push("源站标「暂定」(有效比较 < 30 次)");
+      return '<span class="bv bv-arenaofbias" title="' + esc(meta.join(" · ")) + '">' + m.score + '</span>' +
+        (typeof m.interval === "number" ? '<span class="cell-cost">±' + m.interval + '</span>' : "");
     };
     var html = rows.map(function (r) {
       // 参考行:命中 2-3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
@@ -524,13 +521,13 @@
         '<td class="num ref">' + refCell("hle", "HLE", "hle") + '</td>' +
         '<td class="num ref">' + refCell("gpqa", "GPQA", "gpqa") + '</td>' +
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
-        // 后续 llm2014/AI 能力 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
+        // 后续 llm2014/亿模亿样 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
         // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
         '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
         '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
-        // AI 能力列:格内两个方向分沿用自己的方向色(ac-fe 橙 / ac-be 蓝),不用该榜的榜色 —— 方向信息优先
-        '<td class="num">' + aicapCell(r) + '</td>' +
+        // 亿模亿样列:Elo 原值上该榜数据色,后随 ±95% 区间(灰字)
+        '<td class="num">' + biasCell(r) + '</td>' +
         '<td class="num">' + r.benchCount + '/6</td></tr>';
     });
     // 两级表头:第 1 行为分组行(「榜单基准」「第三方实测」colspan 合并)与非评测列的 rowspan 纵跨格;
@@ -539,7 +536,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 16% / Terminal-Bench 4.0/3.0/2.1 11%)计入综合分与命中数;组尾 HLE / GPQA 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲测 Elo(Code Arena · WebDev,权重 22%)与站主实测口径(llm2014 私有题库 12% / AI 能力专项测试 12%,前后端合并为单个计分组);四组同纲计入综合分与命中数,合计占权重约 70%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲评 Elo(Code Arena · WebDev 22% / 亿模亿样 12%)与站主实测口径(llm2014 私有题库 12%);四组同纲计入综合分与命中数,合计占权重约 70%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -596,25 +593,23 @@
       note += ' · 当前高亮 ' + domCnt + ' 个国产模型。';
     }
     // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入综合分与命中数;NL2Repo 自 2026-09-19 起移出、改仅展示;其余权威基准仅展示
-    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 11%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;综合分按「4.0 等效分」口径折算(3.0/2.1 按跨版本共有模型折算难度系数,如 2.1 自报分 88≈4.0 官方 26),低难度版本虚高分不再追平 4.0 头名;ModelDial 雷达(权重 16%)为第三方独立实测,综合分 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%,同一模型按推理强度分档多次测试后取最高分配置入榜(格内为综合分,悬浮可见三分项与耗时/费用),亦计入综合分与命中数;NL2Repo-Bench 自 2026-09-19 起不再计入综合分与命中数,改为仅在「权威基准测试」页展示;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD 亦仅在「权威基准测试」页展示;GPQA Diamond / HLE 在「榜单基准」组尾以仅参考列展示(不计入综合分与命中数,「—」表示未收录于对应权威榜),完整榜单见「权威基准测试」页。';
+    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 11%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;综合分按「4.0 等效分」口径折算(3.0/2.1 按跨版本共有模型折算难度系数,如 2.1 自报分 88≈4.0 官方 26),低难度版本虚高分不再追平 4.0 头名;ModelDial 雷达(权重 16%)为第三方独立实测,综合分 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%,同一模型按推理强度分档多次测试后取最高分配置入榜(格内为综合分,悬浮可见三分项与耗时/费用),亦计入综合分与命中数;亿模亿样(权重 12%)为前端作品社区盲评 Elo 竞技场,同一模型按推理强度分档多次测试后取最高分档入榜(格内为 Elo 原值,悬浮可见排名/强度/比较场次/胜率),亦计入综合分与命中数,该席位由 2026-10-16 下线的 AI 能力专项测试让出;NL2Repo-Bench 自 2026-09-19 起不再计入综合分与命中数,改为仅在「权威基准测试」页展示;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD 亦仅在「权威基准测试」页展示;GPQA Diamond / HLE 在「榜单基准」组尾以仅参考列展示(不计入综合分与命中数,「—」表示未收录于对应权威榜),完整榜单见「权威基准测试」页。';
     note += ' 榜单数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖高层级分数。';
     document.getElementById("overviewNote").textContent = note;
   }
 
-  // ===== 2) DeepSWE =====
-  function renderDeepSwe() {
-    var src = D.src.deepswe || {};
-    // 仅跨榜模型过滤(命中<2榜默认收起;勾选"显示全部"恢复)
-    var ms = filterHits(D.deepSwe(), function (m) { return m.canon.id; }, state.showAll.deepswe);
-    var total = D.deepSwe().length;
-    document.getElementById("deepsweDesc").textContent = src.desc || "";
+  // ===== DeepSWE 双图(Pass@1 排行 + 成本-成绩散点)=====
+  // 原为独立「DeepSWE」标签页,2026-10-16 起取消该标签页,数据与图表合入「权威基准测试」页的 DeepSWE 章节。
+  // 本函数只画两张图(容器 id 由权威页提供:authDsBar / authDsScatter),渲染时机交给 scheduleAuthChart。
+  function paintDsCharts(ms) {
+    if (!ms || !ms.length) return;
     // 柱状(pass1 升序,使最高在上);模型名后缀版本简标便于区分数据来源
     var sorted = ms.slice().sort(function (a, b) { return a.pass1 - b.pass1; });
     // Pass@1 排行按模型数量动态加高,避免行距过小导致模型名/数值文字重叠
     var dsH = Math.min(760, Math.max(380, ms.length * 26 + 90));
-    var dsBarEl = document.getElementById("dsBar");
-    if (dsBarEl) { dsBarEl.style.height = dsH + "px"; var dsInst = CH.inst("dsBar"); if (dsInst) dsInst.resize(); }
-    CH.apply("dsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
+    var dsBarEl = document.getElementById("authDsBar");
+    if (dsBarEl) { dsBarEl.style.height = dsH + "px"; var dsInst = CH.inst("authDsBar"); if (dsInst) dsInst.resize(); }
+    CH.apply("authDsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
       sorted.map(function (m) { return m.pass1; }), CH.brand(), "%", { max: 80 }));
     // 散点:成本 vs pass1,气泡面积=步数;v1.1(实心)与 v1.0(空心)分两个系列,
     // 版本由图例承担,标签里不再挂 "(v1.0)" 后缀 —— 数十个点的标签空间有限,先省掉这段冗余文字。
@@ -628,23 +623,9 @@
       var g = m.version === "v1.0" ? groups[1] : groups[0];
       g.points.push([m.cost, m.pass1, m.steps, m.name]);
     });
-    CH.apply("dsScatter", CH.scatterOption(groups.filter(function (g) { return g.points.length; }), {
+    CH.apply("authDsScatter", CH.scatterOption(groups.filter(function (g) { return g.points.length; }), {
       xName: "平均成本($)", yName: "Pass@1(%)", bubble: true,
       xLog: true, xMin: 0.05, xMax: 30, yMin: 0, yMax: 80 }));
-    // 表格:模型名后挂版本徽章(v1.1/v1.0);NEW 徽标在其后
-    var html = ms.map(function (m, i) {
-      var nw = D.isNewRaw("deepswe", m.name);
-      return '<tr class="' + (nw ? "row-new" : "") + '"><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.name) + verBadge(m.version) + (nw ? newBadge() : "") + '</td>' +
-        '<td>' + esc(m.effort) + '</td><td class="num"><span class="bv bv-deepswe">' + m.pass1 + '±' + m.ci + '%</span></td>' +
-        '<td class="num">$' + m.cost + '</td><td class="num">' + fmtK(m.outTok) + '</td><td class="num">' + m.steps + '</td></tr>';
-    });
-    fillTable("dsTable", ["#", "模型", "强度", "Pass@1", "平均成本", "输出tokens", "步数"], html,
-      ["", "", "", "num bv bv-deepswe", "num", "num", "num"]);
-    // 脚注:说明 v1.1(每日刷新)+ v1.0(历史快照)的构成与计数
-    var dsvc = D.deepSweVersionCounts();
-    document.getElementById("dsNote").textContent = "来源:" + src.url + " · v1.1 更新 " + (src.updated || "") + " · v1.0 历史快照(" + ((window.DEEPSWE_V10 && window.DEEPSWE_V10.captured) || "") + ") · " +
-      "共 " + total + " 个模型(v1.1: " + dsvc.v11 + " / v1.0 独有: " + dsvc.v10 + ")" + (src.stats ? " · v1.1 " + src.stats.tasks + " 任务 / " + src.stats.repos + " 仓库" : "") +
-      (state.showAll.deepswe ? "" : " · 仅显示命中≥2榜的 " + ms.length + "/" + total + " 个模型");
   }
 
   // ===== 4) llm2014 =====
@@ -743,59 +724,6 @@
       noteHtml += '<div class="note-line note-sub">仅显示命中≥2榜的 ' + rows.length + '/' + allRows.length + ' 个模型(勾选「显示全部模型」可展开)。</div>';
     }
     document.getElementById("lmNote").innerHTML = noteHtml;
-  }
-
-  // ===== 5) AI 能力专项测试(四方向榜 · 前端/后端,前后端方向分合并为单个计分组计入综合分) =====
-  function renderAICap() {
-    var src = D.src.aicap || {};
-    var data = D.aicap();
-    document.getElementById("aicapDesc").innerHTML = paraHtml(src.desc || "") +
-      ((src.runCount || src.updated || src.refreshedAt) ? "<br>" +
-        [(src.runCount ? esc(src.runCount) + " 次完整运行" : ""),
-          (src.updated ? "源站更新 " + esc(src.updated) : ""),
-          (src.refreshedAt ? "本站抓取 " + esc(src.refreshedAt) : "")]
-          .filter(Boolean).join(" · ") : "");
-    // 柱状:前端/后端各一张,升序使最高在上;最多展示 Top 25 防止标签拥挤
-    [["capFeBar", data.frontend], ["capBeBar", data.backend]].forEach(function (pair) {
-      var el = document.getElementById(pair[0]);
-      if (!el) return;
-      var ms = pair[1];
-      var sorted = ms.slice().sort(function (a, b) { return a.score - b.score; }).slice(-25);
-      var h = Math.min(760, Math.max(380, ms.length * 26 + 90));
-      el.style.height = h + "px";
-      var inst0 = CH.inst(pair[0]);
-      if (inst0) inst0.resize();
-      CH.apply(pair[0], CH.barOption(sorted.map(function (m) { return m.name; }),
-        sorted.map(function (m) { return m.score; }), CH.brand(), "%", { max: 100, left: 190, labelSize: 11 }));
-    });
-    // 表格:模型名(厂商色圆点 + effort·platform 次要信息)/ 厂商 / 方向分 / 参考
-    // 方向分沿用 .ac-fe / .ac-be 方向色(与总览矩阵格内一致),不另引入该榜的榜色 —— 方向信息优先于榜色
-    function dirTable(id, models) {
-      var dirCls = id === "capBeTable" ? "ac-be" : "ac-fe";
-      var html = models.map(function (m, i) {
-        var sub = [m.effort, m.platform].filter(Boolean).join(" · ");
-        return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.name) +
-          (sub ? ' <span class="cell-cost">' + esc(sub) + '</span>' : "") + '</td>' +
-          '<td>' + vname(m.canon.vendor, m.vendorDisplay || m.vendor) + '</td>' +
-          '<td class="num"><span class="' + dirCls + '">' + m.score + '</span></td>' +
-          '<td class="num">' + (m.pct != null ? m.pct + "%" : "—") + '</td></tr>';
-      });
-      fillTable(id, ["#", "模型", "厂商", "方向分", "参考"], html, ["", "", "", "num " + dirCls, "num"]);
-    }
-    dirTable("capFeTable", data.frontend);
-    dirTable("capBeTable", data.backend);
-    // 脚注:来源 + 方向权重说明
-    var wfmt = function (w) { return (w || []).map(function (x) { return x[0] + " " + x[1]; }).join(" + "); };
-    var fe = (src.directions && src.directions.frontend) || {};
-    var be = (src.directions && src.directions.backend) || {};
-    document.getElementById("aicapNote").innerHTML =
-      '<div class="note-line"><b>来源</b><a href="' + esc(src.boardUrl || "") + '" target="_blank" rel="noopener">' + esc(src.boardUrl || "") + ' ↗</a></div>' +
-      '<div class="note-line"><b>更新</b>源站 ' + esc(src.updated || "—") +
-      (src.refreshedAt ? ' · 本站抓取 ' + esc(src.refreshedAt) : "") +
-      ' · ' + esc(src.runCount || 0) + ' 次完整运行</div>' +
-      '<div class="note-line"><b>前端方向分</b>' + esc(wfmt(fe.weight)) + '</div>' +
-      '<div class="note-line"><b>后端方向分</b>' + esc(wfmt(be.weight)) + '</div>' +
-      '<div class="note-line"><b>说明</b>已计入综合分(前端/后端方向分合并为<b>单个计分组</b>,取在场方向均值,合计占权重 12%)并进入总览交叉矩阵(合并单列、前后端方向分并列展示);方向分 0-100,越高越好。</div>';
   }
 
   // ===== 6) ModelDial 雷达(第三方独立实测的综合能力榜;计入综合分(计分组之一,权重 16%)与命中数) =====
@@ -1134,24 +1062,29 @@
   function scheduleAuthNavSync() {
     requestAnimationFrame(function () { requestAnimationFrame(syncAuthNav); });
   }
-  // TB 柱状图(升序使最高在上)延后到首帧之后再初始化:ECharts 首次 init 约 100ms,
-  // 留在同步渲染里会让进入该页明显卡顿;容器高度已在 setAuthTbVer 同步设定,延后不影响布局测量。
+  // TB 柱状图(升序使最高在上):容器高度已在 setAuthTbVer 同步设定,仅重画数据
+  function paintAuthTbChart() {
+    var tbSorted = authTbMs.slice().sort(function (a, b) { return a.score - b.score; }).slice(-25);
+    CH.apply("authTBBar", CH.barOption(
+      tbSorted.map(tbBarLabel),
+      tbSorted.map(function (m) { return m.score; }),
+      CH.brand(), "%", { max: 100, left: 200, labelSize: 11 }
+    ));
+  }
+  // 权威页图表统一延后到首帧之后再初始化:ECharts 首次 init 约 100ms,留在同步渲染里会让进入该页明显卡顿。
   // 回调时若该页仍在后台(空闲预渲染场景,display:none)则不 init——对 0 尺寸容器 init 只会得到空图,
   // authChartDone 保持 false,等下次进入该页时由 renderAuthority 早退分支补挂。
+  // 覆盖:DeepSWE 双图(原独立标签页合入)+ Terminal-Bench 柱状图。
   function scheduleAuthChart() {
-    if (authChartQueued || !authTbMs.length) return;
+    if (authChartQueued || (!authTbMs.length && !authDsMs.length)) return;
     authChartQueued = true;
     requestAnimationFrame(function () { requestAnimationFrame(function () {
       authChartQueued = false;
       var page = document.getElementById("page-authority");
       if (!page || page.offsetParent === null) return;
       authChartDone = true;
-      var tbSorted = authTbMs.slice().sort(function (a, b) { return a.score - b.score; }).slice(-25);
-      CH.apply("authTBBar", CH.barOption(
-        tbSorted.map(tbBarLabel),
-        tbSorted.map(function (m) { return m.score; }),
-        CH.brand(), "%", { max: 100, left: 200, labelSize: 11 }
-      ));
+      paintDsCharts(authDsMs);
+      paintAuthTbChart();
     }); });
   }
   // 空闲时预渲染权威基准页:该页构建约 3200 个 DOM 节点,留到用户点击时同步做会卡住切页反馈。
@@ -1178,8 +1111,9 @@
   // 后台页构建只有解析成本、无布局/绘制成本,用户点击时内容已就绪,切页只剩正常显示布局。
   // 数据为页面加载时固定的快照(无运行时刷新),缓存安全;视口变化由 showTab 派发的 resize 事件兜底。
   var authRendered = false;
-  // TB 柱状图初始化状态:DOM 已就绪但图表未必已画(后台预渲染时无法对 0 尺寸容器 init)
-  var authChartDone = false, authChartQueued = false, authTbMs = [];
+  // 图表初始化状态:DOM 已就绪但图表未必已画(后台预渲染时无法对 0 尺寸容器 init);
+  // authDsMs=DeepSWE 条目(双图),authTbMs=当前所选 TB 版本条目(柱状图)
+  var authChartDone = false, authChartQueued = false, authTbMs = [], authDsMs = [];
   // 下方章节表格懒填表:进页/预渲染只建章节骨架,表格滚动临近可视区(提前约 200px)才填充,
   // 显著降低每次进页的节点构建与布局/绘制开销(下方章节表格占整页约 3200 节点的大半);
   // 每表填充一次后即注销观察。不支持 IntersectionObserver 的环境由 authDeferTable 回退为立即填充。
@@ -1295,13 +1229,8 @@
       tbBarEl.style.height = Math.min(760, Math.max(280, shown.length * 30 + 90)) + "px";
       var h3 = document.getElementById("authTBBarTitle");
       if (h3) h3.textContent = "Terminal-Bench " + authTbVer + " 解决率排行(agent×model Top 25)";
-      if (authChartDone) {
-        CH.apply("authTBBar", CH.barOption(
-          shown.map(tbBarLabel),
-          shown.map(function (m) { return m.score; }),
-          CH.brand(), "%", { max: 100, left: 200, labelSize: 11 }
-        ));
-      } else scheduleAuthChart();
+      if (authChartDone) paintAuthTbChart();
+      else scheduleAuthChart();
     }
   }
   function renderAuthority() {
@@ -1325,9 +1254,15 @@
         '<td class="num">' + (m.steps != null ? m.steps : "—") + '</td></tr>';
     });
     var dsvc = D.deepSweVersionCounts();
+    var v10At = (window.DEEPSWE_V10 && window.DEEPSWE_V10.captured) || "";
+    authDsMs = dsMs; // 供 scheduleAuthChart 在首帧后绘制下方双图
     html += authSectionHtml("DeepSWE", "长程软件工程 · 计入总览 · 主基准", ds.url,
+      '<div class="chart-row single"><div class="chart-box"><h3>Pass@1 排行</h3><div id="authDsBar" class="chart"></div></div></div>' +
+      '<div class="chart-row single"><div class="chart-box"><h3>成本 vs 成绩(气泡=步数)</h3><div id="authDsScatter" class="chart chart-scatter"></div></div></div>' +
       '<div class="table-wrap"><table id="authDeepSweTable" class="data-table"></table></div>',
+      (ds.desc ? esc(ds.desc) + ' ' : '') +
       '主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)· 补充:datalearner(厂商官方发布 T2,只补缺)· Qwen 官方博客/模型卡(T2 厂商发布,仅补缺,effort 未标注·协议不可比·仅供参考) · v1.1 更新 ' + esc(ds.updated || "") +
+      (v10At ? ' · v1.0 历史快照(' + esc(v10At) + ')' : '') +
       ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
       (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
       '。本榜属「榜单基准」组,计入总览综合分(权重 16%)与命中数。');
@@ -1928,9 +1863,7 @@
   }
   function renderTab(name) {
     if (name === "overview") renderOverview();
-    else if (name === "deepswe") renderDeepSwe();
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
-    else if (name === "aicap") renderAICap();
     else if (name === "modeldial") renderModeldial();
     else if (name === "wujisuan") renderWujisuan();
     else if (name === "authority") renderAuthority();
@@ -1964,7 +1897,6 @@
     // 各页"仅跨榜模型/显示全部"开关
     [
       { id: "ovShowAll", key: "overview", render: function () { renderOverview(); } },
-      { id: "dsShowAll", key: "deepswe", render: function () { renderDeepSwe(); } },
       { id: "lmShowAll", key: "llm", render: function () { renderLlm2014(state.llmMonth); } }
     ].forEach(function (sw) {
       var el = document.getElementById(sw.id);

@@ -56,7 +56,7 @@ module.exports = {
   // 每个 src 标签对应一个层级;各源合并时按标签查此表定级(见 scripts/lib/mergeByTier.js)。
   srcTiers: {
     official: 1,     // 基准官方榜(tbench.ai / datacurve.ai / benchcad GitHub leaderboard.json)
-    selftest: 1,     // 站主实测(llm2014)与官方竞技场/静态站(arena_webdev / ai_capability)
+    selftest: 1,     // 站主实测(llm2014)与官方竞技场/静态站(arena_webdev / arenaofbias)
     paper: 2,        // 基准作者论文评测表(arxiv)
     datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON)
     "qwen-official": 2, // Qwen 官方博客/模型卡/技术报告人工转录(种子层,仅补缺,见 scripts/lib/official-seeds.js)
@@ -105,13 +105,14 @@ module.exports = {
       officialUrl: "https://arena.ai/leaderboard/code",
       host: "m.aitntnews.com", src: "selftest"
     },
-    ai_capability: {
-      // AI 能力专项测试(atmeplz)四方向榜:静态站,直接抓取渲染用 JSON。
-      // 只取前端(FRONTEND)/后端(BACKEND)两个方向的方向分(0-100)。
-      // 渠道:源站即该基准唯一官方榜(T1),无厂商发布渠道。
-      url: "https://atmeplz.github.io/ai-test-prompt/data/site.json",
-      boardUrl: "https://atmeplz.github.io/ai-test-prompt/board-04.html",
-      host: "atmeplz.github.io", src: "selftest"
+    arenaofbias: {
+      // 亿模亿样 · 模型效果对比(gallery.arenaofbias.icu):前端作品社区盲评 Elo 竞技场。
+      // 站点为客户端渲染的静态站,本源直接抓其页面运行时调用的公开 API。
+      // by=config 为「按配置」榜(每行 = 模型 × 推理强度一档),由本源按模型取最高分档汇总。
+      // 渠道:源站即该竞技场唯一官方榜(T1 口径,社区盲评无厂商发布渠道)。
+      url: "https://api.arenaofbias.icu/api/leaderboard?by=config",
+      boardUrl: "https://gallery.arenaofbias.icu/#/leaderboard",
+      host: "api.arenaofbias.icu", src: "selftest"
     },
     // ===== 权威基准测试(「权威基准测试」标签页)=====
     // Terminal-Bench(4.0/3.0/2.1)与 NL2Repo 计入总览/综合分/命中数,其余仅在权威页展示。

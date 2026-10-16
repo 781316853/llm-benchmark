@@ -43,8 +43,6 @@
   --warn: #FBBF24;
   --bad: #F87171;
   --g-b: #7DD87F;
-  --ac-fe: #FB923C;
-  --ac-be: #38BDF8;
 
   /* 圆角与阴影 */
   --radius: 6px;
@@ -122,7 +120,7 @@
   --bench-modeldial: #E8B34D;
   --bench-webdev: #F58C6E;
   --bench-llm: #8E9BFF;
-  --bench-aicap: #4FD1D9;
+  --bench-arenaofbias: #4FD1D9;
   --bench-programbench: #A8E063;
   --bench-cursorbench: #6FC3FF;
   --bench-frontiercode: #E6A16B;
@@ -351,7 +349,7 @@ a:hover { text-decoration: underline; }
 .bv-modeldial { --bv-color: var(--bench-modeldial); }
 .bv-webdev { --bv-color: var(--bench-webdev); }
 .bv-llm { --bv-color: var(--bench-llm); }
-.bv-aicap { --bv-color: var(--bench-aicap); }
+.bv-arenaofbias { --bv-color: var(--bench-arenaofbias); }
 .bv-programbench { --bv-color: var(--bench-programbench); }
 .bv-cursorbench { --bv-color: var(--bench-cursorbench); }
 .bv-frontiercode { --bv-color: var(--bench-frontiercode); }
@@ -461,16 +459,6 @@ a:hover { text-decoration: underline; }
 /* 矩阵表单元格内的成本辅助标注:小号、降饱和,让分数保持视觉主体 */
 .cell-cost { font-size: var(--fs-2xs); color: var(--text-tertiary); margin-left: 3px;
   font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
-/* AI 能力方向分:前端/后端同字号并列(如 96.5 / 96),以不同颜色区分方向 */
-.ac-fe, .ac-be { font-size: var(--fs-xs); font-weight: 600;
-  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
-.ac-fe { color: var(--ac-fe); }
-.ac-be { color: var(--ac-be); }
-/* 方向色用在表头列名上时(AI 能力榜的「方向分」列):需带 .data-table thead 压过 thead th 的 --text-dim,
-   否则表头仍是灰字、与格内的方向色脱节,列名与数值同色这条约定就在该榜断掉了 */
-.data-table thead th.ac-fe { color: var(--ac-fe); }
-.data-table thead th.ac-be { color: var(--ac-be); }
-.ac-sep { color: var(--text-tertiary); font-size: var(--fs-2xs); margin: 0 2px; }
 .tier-Sp { background: linear-gradient(135deg, var(--tier-Sp-a), var(--tier-Sp-b)); }
 .tier-S  { background: linear-gradient(135deg, var(--tier-S-a),  var(--tier-S-b)); }
 .tier-Ap { background: linear-gradient(135deg, var(--tier-Ap-a), var(--tier-Ap-b)); }
