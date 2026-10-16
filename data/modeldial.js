@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-15 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-16 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-a368f9a0d838c4084476cc44)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-18fedb41d31aa1688927d528)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-a368f9a0d838c4084476cc44',
-  'batchRevision': 354,
-  'batchPublishedAt': '2026-10-15T05:43:51.078Z',
-  'updated': '2026-10-15',
-  'refreshedAt': '2026-10-15 22:16',
+  'batchId': 'overall-18fedb41d31aa1688927d528',
+  'batchRevision': 356,
+  'batchPublishedAt': '2026-10-15T22:17:42.003Z',
+  'updated': '2026-10-16',
+  'refreshedAt': '2026-10-16 14:02',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -447,21 +447,6 @@ window.MODELDIAL = {
       'rank': 27
     },
     {
-      'model': 'doubao-seed-2-1-pro-260915',
-      'provider': 'seedance',
-      'effort': 'default',
-      'displayName': 'doubao-seed-2-1-pro-260915 / Auto',
-      'overall': 64.1,
-      'backend': 68,
-      'frontend': 68,
-      'knowledge': 55,
-      'elapsedMs': 1182888,
-      'costUsd': 0.445384,
-      'tags': [],
-      'configs': 1,
-      'rank': 28
-    },
-    {
       'model': 'gpt-6-luna',
       'provider': 'cloudflare-reference',
       'effort': 'xhigh',
@@ -474,7 +459,7 @@ window.MODELDIAL = {
       'costUsd': 0.022862,
       'tags': [],
       'configs': 5,
-      'rank': 29
+      'rank': 28
     },
     {
       'model': 'gemini-3.8-flash-high',
@@ -489,7 +474,7 @@ window.MODELDIAL = {
       'costUsd': 0.060607,
       'tags': [],
       'configs': 1,
-      'rank': 30
+      'rank': 29
     },
     {
       'model': 'deepseek-v4-flash',
@@ -504,6 +489,21 @@ window.MODELDIAL = {
       'costUsd': 0.090057,
       'tags': [],
       'configs': 2,
+      'rank': 30
+    },
+    {
+      'model': 'doubao-seed-2-1-pro-260915',
+      'provider': 'seedance',
+      'effort': 'default',
+      'displayName': 'doubao-seed-2-1-pro-260915 / Auto',
+      'overall': 60.9,
+      'backend': 60,
+      'frontend': 68,
+      'knowledge': 55,
+      'elapsedMs': 1039464,
+      'costUsd': 0.497731,
+      'tags': [],
+      'configs': 1,
       'rank': 31
     },
     {
@@ -1422,20 +1422,6 @@ window.MODELDIAL = {
     },
     {
       'rank': 56,
-      'provider': 'seedance',
-      'model': 'doubao-seed-2-1-pro-260915',
-      'effort': 'default',
-      'displayName': 'doubao-seed-2-1-pro-260915 / Auto',
-      'overall': 64.1,
-      'backend': 68,
-      'frontend': 68,
-      'knowledge': 55,
-      'elapsedMs': 1182888,
-      'costUsd': 0.445384,
-      'tags': []
-    },
-    {
-      'rank': 57,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'xhigh',
@@ -1449,7 +1435,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 58,
+      'rank': 57,
       'provider': 'GEMINI',
       'model': 'gemini-3.8-flash-high',
       'effort': 'default',
@@ -1463,7 +1449,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 59,
+      'rank': 58,
       'provider': 'Claude',
       'model': 'claude-opus-4-8',
       'effort': 'high',
@@ -1477,7 +1463,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 60,
+      'rank': 59,
       'provider': 'deepseek',
       'model': 'deepseek-v4-pro',
       'effort': 'high',
@@ -1491,7 +1477,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 61,
+      'rank': 60,
       'provider': 'deepseek',
       'model': 'deepseek-v4-flash',
       'effort': 'high',
@@ -1502,6 +1488,20 @@ window.MODELDIAL = {
       'knowledge': 55,
       'elapsedMs': 695955,
       'costUsd': 0.090057,
+      'tags': []
+    },
+    {
+      'rank': 61,
+      'provider': 'seedance',
+      'model': 'doubao-seed-2-1-pro-260915',
+      'effort': 'default',
+      'displayName': 'doubao-seed-2-1-pro-260915 / Auto',
+      'overall': 60.9,
+      'backend': 60,
+      'frontend': 68,
+      'knowledge': 55,
+      'elapsedMs': 1039464,
+      'costUsd': 0.497731,
       'tags': []
     },
     {

@@ -12,8 +12,8 @@
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-10%7C0",
-  updated: "2026-10-15",
-  refreshedAt: "2026-10-15 22:16",
+  updated: "2026-10-16",
+  refreshedAt: "2026-10-16 14:02",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1400,7 +1400,8 @@ window.LLM2014 = {
       'Animation(J)',
       'Data Process(K)',
       'Metal(L)',
-      'Science(M)'
+      'Science(M)',
+      'Rust App(N)'
     ],
     'rows': [
       {
@@ -1411,7 +1412,8 @@ window.LLM2014 = {
           '4/A+(341.72)',
           'Perfect(211.83)',
           '6/A(290.08)',
-          '2/A+(1365.55)'
+          '2/A+(1365.55)',
+          'Pending'
         ],
         'unprompted': 5,
         'ide': 'Claude Code',
@@ -1425,7 +1427,8 @@ window.LLM2014 = {
           '4/A+(75.84)',
           '5/A(61.32)',
           '8/B+(114.59)',
-          '10/A(91.22)'
+          '10/A(91.22)',
+          'Skip'
         ],
         'unprompted': 4,
         'ide': 'Codex CLI',
@@ -1439,7 +1442,8 @@ window.LLM2014 = {
           '10/A(16.90)',
           '6/A(46.00)',
           'Pending',
-          '9/A(18.70)'
+          '9/A(18.70)',
+          '16/B(70.74)'
         ],
         'unprompted': 0,
         'ide': 'Codex CLI',
@@ -1451,6 +1455,7 @@ window.LLM2014 = {
           '2/A+(90.52)',
           '3/A+(103.95)',
           '7/A(59.02)',
+          'Skip',
           'Skip',
           'Skip',
           'Skip'
@@ -1467,7 +1472,8 @@ window.LLM2014 = {
           '11/B(8.46)',
           '5/A(20.88)',
           '13/C+(33.58)',
-          'Pending'
+          'Pending',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'OpenCode CLI',
@@ -1481,7 +1487,8 @@ window.LLM2014 = {
           '22/B(43.23)',
           '28/D+(383.49)',
           '25/D(193.42)',
-          '26/C+(267.49)'
+          '26/C+(267.49)',
+          'Failed'
         ],
         'unprompted': 2,
         'ide': 'Claude Code',
@@ -1494,6 +1501,7 @@ window.LLM2014 = {
           '3/A+(15.68)',
           '14/C+(32.91)',
           '12/C+(139.47)',
+          'Skip',
           'Skip',
           'Skip'
         ],
@@ -1509,7 +1517,8 @@ window.LLM2014 = {
           '20/C+(90.76)',
           '30/D(83.29)',
           '24/D(343.68)',
-          'Failed'
+          'Failed',
+          '34/C(252.10)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -1523,7 +1532,8 @@ window.LLM2014 = {
           '21/C(102.71)',
           '13/D(211.18)',
           'Skip',
-          '26/D(347.42)'
+          '26/D(347.42)',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -1536,6 +1546,7 @@ window.LLM2014 = {
           '8/B(16.84)',
           '14/B(14.28)',
           '34/D(28.93)',
+          'Skip',
           'Skip',
           'Skip'
         ],
@@ -1551,7 +1562,8 @@ window.LLM2014 = {
           '14/B(7.23)',
           'Failed',
           'Skip',
-          'Failed'
+          'Failed',
+          'Skip'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -1565,7 +1577,8 @@ window.LLM2014 = {
           'Failed',
           '20/C(5.88)',
           'Skip',
-          'Skip'
+          'Skip',
+          '26/C(13.56)'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
@@ -1578,6 +1591,7 @@ window.LLM2014 = {
           '1/A+(18.81)',
           'Failed',
           '28/D+(24.43)',
+          'Skip',
           'Skip',
           'Skip'
         ],
@@ -1593,6 +1607,7 @@ window.LLM2014 = {
           'Failed',
           '30/D(71.77)',
           'Skip',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -1605,6 +1620,7 @@ window.LLM2014 = {
           '9/B(4.21)',
           '13/B(6.63)',
           'Failed',
+          'Skip',
           'Skip',
           'Skip',
           'Skip'
@@ -1621,6 +1637,7 @@ window.LLM2014 = {
           'Failed',
           'Skip',
           'Skip',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -1634,6 +1651,7 @@ window.LLM2014 = {
           '20/C+(13.29)',
           'Failed',
           'Failed',
+          'Skip',
           'Skip',
           'Skip'
         ],
@@ -1649,6 +1667,7 @@ window.LLM2014 = {
           'Failed',
           'Skip',
           'Skip',
+          'Skip',
           'Skip'
         ],
         'unprompted': 0,
@@ -1661,6 +1680,7 @@ window.LLM2014 = {
           '30/D(2.42)',
           '17/C+(8.28)',
           'Failed',
+          'Skip',
           'Skip',
           'Skip',
           'Skip'

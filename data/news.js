@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-15',
+  'updated': '2026-10-16',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -12,50 +12,82 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-10-15',
-      'title': 'Claude Code 桌面版更新优化多会话体验',
-      'brief': 'Anthropic 更新 Claude Code 桌面应用，围绕多会话并行改进会话启动、工作拆分和状态查看。',
-      'url': 'https://x.com/ClaudeDevs/status/2110445844675838148',
+      'date': '2026-10-16',
+      'title': 'Codex 28 天活动：重置额度，增加算力投入',
+      'brief': 'OpenAI Codex 负责人 Tibo 此前宣布，未来 28 天 里，团队每天要么上线一项对多数 Codex 和 Work 用户有明显价值的改进，要么完整重置一次用量额度。',
+      'url': 'https://x.com/thsottiaux/status/2110750421367287996',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-15',
-      'title': 'Claude Code 新增闲置会话自动压缩',
-      'brief': 'Anthropic 为 Claude Code 终端加入闲置会话自动压缩功能：默认达到 200K token 的对话闲置约 54 分钟 后，会在 1 小时 的 prompt cache 过期前压缩为摘要。',
-      'url': 'https://x.com/lydiahallie/status/2110484840256819380',
+      'date': '2026-10-16',
+      'title': 'DeepSeek 恢复服务，赠金形式补偿 API 用户',
+      'brief': 'DeepSeek 网页与 API 服务于 10月15日上午 发生故障导致服务中断约 5个小时 ，官方在当日下午恢复了相关服务，向用户致歉并宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还。',
+      'url': 'https://status.deepseek.com/incidents/7086651324287',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-15',
-      'title': 'TypeSafe AI 更新 Jev，开放图像与长上下文功能',
-      'brief': 'TypeSafe AI 发布 Jev 1.14.0 ，通过 jev-preview 提供，并开放图像输入、 box 类型和长上下文等实验性功能，需通过 API 请求头中的 danger zone 标记主动开启，官方尚不建议用于生产场景。',
-      'url': 'https://typesafe.ai/blog/jev-1-14',
+      'date': '2026-10-16',
+      'title': 'Gemini 4 Argon 向正价付费 Google AI Pro 用户开放',
+      'brief': 'Google 正在 AI 编程工具 Antigravity 中向付费 Google AI Pro 订阅用户逐步推出 Gemini 4 Argon 。 Pro 用户新增独立的 Argon 每周配额，与现有 Gemini 3.8 Flash 额度分开计算。官方文档明确， Pro 优惠试用用户、免费用户和 Google AI Plus 用户不在开放范围内。 Argon 可在 Antigravity 桌面 App、 CLI 和 IDE 扩展中使…',
+      'url': 'https://x.com/antigravity/status/2110866531932316011',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-16',
+      'title': 'Meta 发布多模态开放权重模型 Muse Spark Open',
+      'brief': 'Meta 发布开放权重模型 Muse Spark Open ，面向编程和 Agent 任务，并称其为迄今能力最强的美国开放权重模型。该模型总参数量为 8160 亿 ，每个 token 激活约 420 亿 参数，支持最高 100 万 token 上下文，可接收文字、图片、视频和音频输入，输出文字。',
+      'url': 'https://research.meta.ai/blog/muse-spark-open',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-16',
+      'title': 'ChatGPT Chrome 扩展升级，可读取并控制标签页',
+      'brief': 'ChatGPT 推出 Chrome 扩展升级，把 computer use 能力带入浏览器。',
+      'url': 'https://learn.chatgpt.com/docs/chrome-extension',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-16',
+      'title': 'FLUX 3 Image Klein 发布并开放权重',
+      'brief': 'Black Forest Labs 发布 FLUX 3 Image Klein ，基础版和蒸馏版的权重已在 Hugging Face 提供，分别面向微调训练和低延迟生成。该模型的 图像 Transformer 为 56 亿 参数，不含独立的文本编码器，支持原生 4K 生成、最多 10 张 参考图和边界框布局控制。',
+      'url': 'https://bfl.ai/blog/flux-3-image-klein',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-10-15',
-      'title': 'SpaceXSI 发布端到端语音模型 Grok Voice 3.0',
-      'brief': 'SpaceXSI 发布 Grok Voice 3.0 端到端语音模型，已通过 Voice Agent API 开放，维持前代每分钟 0.08 美元 的价格，使用 grok-voice-latest 的应用已自动切换。',
-      'url': 'https://x.ai/news/grok-voice-3',
+      'date': '2026-10-16',
+      'title': '微软宣布 MAI-Base-2 完成预训练，2.8T总参数',
+      'brief': '微软 AI 已完成 MAI-Base-2 的预训练，该自研 MoE 基础模型拥有 2.8 万亿 总参数、 800 亿 激活参数，并原生采用视觉与语言结合的 VLM 架构。',
+      'url': 'https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-10-15',
-      'title': '蚂蚁百灵开源 Ling-3.1-flash 模型',
-      'brief': '蚂蚁百灵 宣布开源 Ling-3.1-flash ，总参数约 5600 亿 ，每个 token 激活约 250 亿参数 ，支持最高 100 万 token 上下文。权重与文档已在 Hugging Face 和 ModelScope 提供。',
-      'url': 'https://x.com/AntLingAGI/status/2110390124743970952',
+      'date': '2026-10-16',
+      'title': '可灵 Kling 4.0 全量上线，接入 MCP 和 CLI',
+      'brief': '可灵 AI 已全量上线 Kling 4.0 ，同步升级创作页面，并接入 MCP 和 CLI 。该版本支持生成 3—30 秒 的视频，最多输入 10 张 关键帧图像，单次生成可组合使用最多 15 项 参考素材。',
+      'url': 'https://mp.weixin.qq.com/s?__biz=MzU5NTkwNDU2OA==&amp;mid=2247497194&amp;idx=1&amp;sn=5ad686eba90d8332d7c49025ab39468f&amp;chksm=ff6d7094465595fa40ad92cba41a893249d223c00036fc9c097d540169441abb1aba8da7ddfc#rd',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-10-15',
-      'title': '昆仑万维发布并开源 Matrix-Game 4.0',
-      'brief': '昆仑万维 发布并开源 Matrix-Game 4.0 ，由 游戏引擎 维护状态和交互规则， 视频模型 将简化的几何画面实时转化为精细画面。官方称，系统可在单张 NVIDIA RTX 5090 上以 480p 、 60 FPS 运行，按键到首帧响应的端到端延迟低于 150 毫秒 。',
-      'url': 'https://matrix-game-v4-0.github.io/page/',
+      'date': '2026-10-16',
+      'title': '阶跃 Step 5 Preview 开放模型权重',
+      'brief': '阶跃 宣布已开放 Step 5 Preview 的 BF16 和 FP8 权重，可在 Hugging Face 与 ModelScope 获取，并同步公开技术博客。',
+      'url': 'https://github.com/stepfun-ai/Step-5-Preview',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-16',
+      'title': 'PrismML 发布 Bonsai 2 系列小模型',
+      'brief': 'PrismML 发布基于 Qwen3.5 的 Ternary Bonsai 2 2B、4B 和 9B ，支持推理、视觉理解和工具调用，模型权重以 Apache 2.0 许可开放。',
+      'url': 'https://prismml.com/news/bonsai-2-family',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
@@ -104,62 +136,6 @@ window.NEWS = {
       'title': '豆包手机助手将逐步开放第三方应用自动化操作',
       'brief': '豆包手机助手 宣布，《屏幕自动化操作声明协议》（ SAEP ）的 30 天 公示期已结束，将逐步放开第三方应用的屏幕自动化操作权限。该协议允许应用开发者声明接受或禁止 Agent 操作的范围，已明确拒绝的应用不会被操作。',
       'url': 'https://o.doubao.com/developer',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Google 全球开放 Gemini 4 Argon',
-      'brief': 'Google 已向全球开放 Gemini 4 Argon 。',
-      'url': 'https://deepmind.google/blog/introducing-gemini-4-argon/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'OpenAI 优化 ChatGPT 桌面应用存储占用',
-      'brief': 'OpenAI 的 ChatGPT 与 Codex 团队成员 Tibo 表示， ChatGPT 桌面应用已优化状态数据在磁盘上的存储方式。他预计，这项调整可将该应用在磁盘上的存储量减少 60% 。此次优化回应了重度用户关于磁盘空间不足的反馈。',
-      'url': 'https://x.com/thsottiaux/status/2110151780478927344',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Cat Jam 匿名编程模型免费上线 OpenCode',
-      'brief': 'OpenCode 宣布上线匿名模型 Cat Jam ，用户目前可在 OpenCode 中免费使用。',
-      'url': 'https://x.com/opencode/status/2110068008945381853',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Command Code 推出 GOAT 限时额度优惠',
-      'brief': 'Command Code 宣布，GOAT 订阅方案中的 DeepSeek V4.1 Flash 在为期 3 天 的优惠期间提供 100 美元 使用额度，之后该模型额度将调整为 80 美元 。GOAT 订阅价格为每月 10 美元 ，支持超过 30 个 开放及闭源模型，额度因模型而异。',
-      'url': 'https://x.com/CommandCodeAI/status/2110023209416630626',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Google Play 新增私人应用功能',
-      'brief': 'Google Play 新增私人应用功能，用户可通过 Google AI Studio 用 AI 创建自定义 Android 应用，再用普通 Google 账户 在自己的设备上运行，无需开发者账户。',
-      'url': 'https://blog.google/products-and-platforms/platforms/google-play/google-play-updates-october-2026/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'llama.cpp 推出 Windows 桌面应用 Llama Windows',
-      'brief': 'llama.cpp 推出 Windows 11 原生配套应用 Llama Windows ，用户无需使用命令行，即可下载并在本地运行模型。应用支持从 Hugging Face Hub 浏览和下载推荐模型，通过系统托盘访问模型，或按 Alt+Space 与已加载的模型聊天。目前提供 x64 和 ARM64 安装包，官方项目说明称， 提示词 和 推理 均留在本机，应用不发送遥测数据。 NVIDIA 表示，该应用已针对 RTX Spark 进…',
-      'url': 'https://huggingface.co/blog/huggingface/llama-windows',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-14',
-      'title': 'Arena 推出 Agent 版 Max 模型路由器',
-      'brief': 'Arena 推出 Agent 版 Max 模型路由器 ，基于超过 250 万次 真实 Agent Arena 会话，按任务复杂度、类型和成本动态选择模型，覆盖聊天、工作和编程任务。 Arena 称， Max 在实测期间位列 Agent Arena 第 1 ，每项任务的成本中位数为 3.27 美元 ，相比当时排名第 1 的公开模型 Fable 5.1（Max） ，表现高出 0.3% ，成本降低 37.5% 。目前，采用 Fable 5.1…',
-      'url': 'https://arena.ai/blog/max-router-tops-agent-arena',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     }
