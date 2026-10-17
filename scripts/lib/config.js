@@ -488,12 +488,14 @@ module.exports = {
   },
 
   // ===== AI Agent 工具更新日志(scripts/lib/changelog.js 使用,不进基准管线) =====
-  // 汇总 10 个 Agent 工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
+  // 汇总 12 个 Agent 工具的官方 changelog,仿 news/codingplan 模式在 fetch_all.js 旁路调用,
   // 不进 registry/校验器,仅「Agent工具更新日志」页展示。
   // 口径(2026-09-24 与需求方确认):
   //   ① 只收正式版 —— prerelease/draft 与 tag 尾缀 -alpha/-beta/-rc 一律不入库。
   //      实测依据(2026-09-24,来自当时收录的 openai/codex):最新 10 个 release 只跨 1.5 天且
   //      多为 rust-v0.158.0-alpha.8,全收会让一个工具淹没整个标签页。
+  //      例外:DeepSeek Harness 自开源起只发预发布(见该工具条目注释),按全局口径整卡为空,
+  //      故用 tool.includePrerelease 单工具放开,其余工具仍只收正式版。
   //   ② 全量入库、前端每个工具只渲染「最近 2 条更新」—— 本文件仍存各源可得的全部条目,
   //      uiWindowDays 只是「更新算不算新」的门槛(前端可切 14/30/全部),不是条目条数的裁剪;
   //      早于窗口的条目仍会展示,前端标「超出窗口」。
@@ -518,7 +520,7 @@ module.exports = {
     ghTimeoutMs: 300000,
     pageTimeoutMs: 45000,
     // 工具定义。kind:
-    //   github   —— GitHub Releases REST API 分页(4 家;Atom feed 只回 10 条,跨不过两周,不可用)
+    //   github   —— GitHub Releases REST API 分页(5 家;Atom feed 只回 10 条,跨不过两周,不可用)
     //   qoder    —— docs.qoder.cn 更新日志页服务端渲染(Qoder CN 与 Qoder CN IDE 各一页)
     //   trae     —— docs.trae.cn 各产品线独立日志页(备源 trae.ai/api/changelog 飞书 block 树);
     //               备源是多产品线混排,由 tools[].products 按标签挑出本卡要收的那条线
@@ -540,6 +542,17 @@ module.exports = {
       { id: "kimi-code", name: "Kimi Code", vendor: "Moonshot AI", kind: "github",
         repo: "MoonshotAI/kimi-code",
         changelogUrl: "https://github.com/MoonshotAI/kimi-code/releases" },
+      // DeepSeek Harness(dsh)是开发者预览版:2026-08-13 开源至 2026-10-17 共 31 个 release,
+      // 全部带 -alpha/-rc 尾缀且 API 均标 prerelease,npm 的 latest 也是 0.2.0-rc.2,
+      // 按全局「仅正式版」口径会一条都收不到、整卡为空 —— 单工具放开预发布。
+      // tag 形如 dsh-v0.2.1-rc.2,cleanVersion 会剥掉 dsh- 前缀。
+      { id: "deepseek-harness", name: "DeepSeek Harness", vendor: "DeepSeek", kind: "github",
+        repo: "deepseek-ai/deepseek-harness",
+        changelogUrl: "https://github.com/deepseek-ai/deepseek-harness/releases",
+        includePrerelease: true,
+        // Release 说明是 HTML 标题 + Markdown 列表混排(且中英双语各一份),
+        // 前端按纯文本转义渲染,须先转纯文本,否则 <h3 id="..."> 会原样显示
+        bodyHtml: true },
       // Qoder 两条产品线的版本编号互不相干,各占一张卡(2026-09-24 按需求方指定分家):
       //   CN 桌面端 0.4.x 与 IDE 1.32.x,两页都是 docs.qoder.cn 服务端渲染的同一套 update-* 标记。
       { id: "qoder-cn", name: "Qoder CN", vendor: "阿里巴巴", kind: "qoder",

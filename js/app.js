@@ -1508,14 +1508,14 @@
       '<div class="note-line"><b>说明</b>综合单价(¥/亿 Token)与月用量为源站实测/计算值,按综合单价升序排列;完整套餐筛选与购买入口请前往源站查看。</div>';
   }
 
-  // ===== 9) 更新日志(11 个 Agent 工具的官方 changelog;非分数数据,不参与综合分) =====
+  // ===== 9) 更新日志(12 个 Agent 工具的官方 changelog;非分数数据,不参与综合分) =====
   // 抓取端存全量条目;D.changelog(days) 固定取每个工具最近 2 条,并按窗口给每条标 outOfWindow。
   // 本页只做目录 + 卡片渲染。
   // 正文一律完整输出到 DOM(需求要求"保留全部更新日志"),仅在超长(>900 字)时默认折叠,
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
-  // data/changelog.js 含 11 个工具的全量历史(实测约 2.2MB),不进首屏脚本清单:
+  // data/changelog.js 含 12 个工具的全量历史(实测约 3.4MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
-  var CL_DATA_SRC = "data/changelog.js?v=20260924f";
+  var CL_DATA_SRC = "data/changelog.js?v=20261017a";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
   // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
   // 换戳重注入即可原地恢复,不必刷整页。

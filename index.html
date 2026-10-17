@@ -38,8 +38,8 @@
   <script defer src="data/modeldial.js?v=20260930a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260921a"></script>
-  <!-- AI Agent 工具更新日志(11 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
-       不进首屏脚本清单:该文件保存各源全量历史(实测约 2.7MB),而标签页是低频入口,
+  <!-- AI Agent 工具更新日志(12 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
+       不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
   <script defer src="js/data.js?v=20261017a"></script>
@@ -227,19 +227,12 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
       </section>
     </section>
 
-    <!-- 9) Agent 工具更新日志(11 个 Agent 工具的官方 changelog 汇总;非分数数据,不计入综合分与命中数) -->
+    <!-- 9) Agent 工具更新日志(12 个 Agent 工具的官方 changelog 汇总;非分数数据,不计入综合分与命中数) -->
     <section class="page" id="page-changelog">
-      <div class="page-head"><h2>Agent工具更新日志 <span class="tag">11 个工具官方 changelog · 每个工具显示最近 2 条更新</span></h2><p id="clDesc" class="page-desc"></p></div>
+      <div class="page-head"><h2>Agent工具更新日志 <span class="tag">12 个工具官方 changelog · 每个工具显示最近 2 条更新</span></h2><p id="clDesc" class="page-desc"></p></div>
       <!-- 左侧工具目录:点击跳到该工具的最新版本卡片;窄屏自动收为顶部横向胶囊条 -->
       <div class="auth-layout">
         <aside class="auth-outline" aria-label="更新日志工具目录">
-        <details class="notes-more">
-          <summary>展开抓取方式与区间说明</summary>
-          <ul>
-            <li><b class="note-term">抓取</b>源站为客户端渲染的静态站,本站直接读取其公开接口 <code>api.arenaofbias.icu/api/leaderboard?by=config</code>,按模型聚合后每日刷新。</li>
-            <li><b class="note-term">区间</b>Elo 与 ±95% 不确定区间均来自源站;主榜为配置聚合后的最高分档,「档位」列为该模型在源站的配置条数。</li>
-          </ul>
-        </details>
           <p class="auth-outline-title">工具 <span class="auth-outline-count" id="clOutlineCount"></span></p>
           <nav class="auth-outline-list" id="clOutlineList"></nav>
         </aside>
@@ -252,15 +245,23 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
         </div>
       </div>
       <section class="notes-section">
-        <p class="note-title">阅读说明</p>
-        <ul style="white-space: pre-wrap;">
-          <li>本页汇总 <b>Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy</b> 十一个 Agent 工具的<b>官方更新日志</b>,每个工具<b>显示最近 2 条更新</b>,正文保留源站完整内容(不摘要),每张卡片的「查看源站 ↗」跳到该条更新在源站的原文。</li>
-          <li>数据文件仍保存各源可得的<b>全量历史</b>;上方的近 14 天 / 近 30 天 / 全部切换的是「更新要多久以内才算新」—— 每个工具显示的条数固定为最近 2 条、不受窗口影响,早于窗口的条目仍会展示,只是标注「超出窗口」。窗口按自然日从今天往前推算,与数据是否刷新成功无关。</li>
-          <li>英文条目由免费机器翻译接口(MyMemory)自动译成中文,与全站数据一样每日刷新 2 次。只译各工具<b>当前显示的两条</b>(最多 22 条,其中 Claude Code 单条发布说明可达 2 万字符,需分轮补齐),同一份发布说明只译一次、之后长期复用不再请求;尚未译出的条目标注「原文」并保留英文。</li>
-          <li>只收录<b>正式发布版本</b>:alpha / beta / rc / nightly 等预发布版一律不入库(实测 Codex 单次抓取的最新 10 个 release 有 9 个是 alpha 预发布版,全收会淹没整页)。</li>
-          <li>Codex / Claude Code / OpenCode / Kimi Code 取自各自 <b>GitHub Releases 官方接口</b>(Kimi 官方文档站的更新日志是客户端渲染、抓不到内容);Qoder CN 与 Qoder CN IDE 取自 <b>Qoder CN 文档站的两张更新日志页</b>(桌面端 0.4.x 与 IDE 1.32.x 是两套编号,故分两卡);TraeCode / TraeWork 各取 <b>Trae 文档站的独立日志页</b>(docs.trae.cn 的 ide_changelog / work_changelog,一次发布一个日期标题、可深链到那次发布;抓不到时转国际站 trae.ai 备源 —— 备源是多产品线混排,按标签挑出本卡那条线,TRAE APP 一类不收录);ZCode / CodeBuddy / WorkBuddy 取自<b>各官网更新日志页</b>。条目上的标签是源站自带的分类。</li>
-          <li>随全站数据<b>每日自动刷新 2 次</b>。某个源改版或抓取失败时,该工具卡片会标注「数据滞后」并沿用上一次成功抓到的条目,同时保留跳转源站的入口;若某张卡片标注「超出窗口」,表示该条早于所选时间范围(例如 TraeWork 最近一版在 8 月 21 日),它仍会展示、不会被隐藏。</li>
+        <div class="notes-head">
+          <p class="note-title">阅读说明</p>
+          <span class="notes-hint">要点速览 · 版本筛选与来源可展开</span>
+        </div>
+        <ul>
+          <li><b class="note-term">范围</b>12 个 Agent 工具的官方更新日志;每卡固定显示最近 2 条,正文保留源站完整内容,「查看源站 ↗」直达原文。</li>
+          <li><b class="note-term">时间窗口</b>近 14 天 / 近 30 天 / 全部只决定「新」的判定,不改变每卡显示条数;早于窗口的条目仍展示,并标注「超出窗口」。</li>
+          <li><b class="note-term">翻译</b>英文条目由 MyMemory 自动翻译;尚未译出的条目保留英文并标注「原文」。</li>
+          <li><b class="note-term">刷新与容错</b>每日自动刷新 2 次;某源抓取失败时标「数据滞后」并沿用上一次成功结果。</li>
         </ul>
+        <details class="notes-more">
+          <summary>展开版本筛选与数据来源</summary>
+          <ul>
+            <li><b class="note-term">版本筛选</b>只收录正式发布版本,alpha / beta / rc / nightly 等预发布版一律不入库;唯一例外是仍处开发者预览期的 DeepSeek Harness(官方尚无正式版,按其 Release 收录)。条目标签为源站自带分类。</li>
+            <li><b class="note-term">来源</b>Codex / Claude Code / OpenCode / Kimi Code / DeepSeek Harness 取 GitHub Releases;Qoder CN 与 Qoder CN IDE 取 Qoder CN 文档站的两张日志页;TraeCode / TraeWork 取 Trae 文档站独立日志页(失败时转国际站备源,TRAE APP 不收);ZCode / CodeBuddy / WorkBuddy 取各官网更新日志页。</li>
+          </ul>
+        </details>
       </section>
     </section>
   </main>

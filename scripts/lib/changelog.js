@@ -1,6 +1,6 @@
 // AI Agent 工具更新日志汇总(data/changelog.js)
-// 汇总 11 个 Agent 工具(Codex / Claude Code / OpenCode / Kimi Code / Qoder CN / Qoder CN IDE /
-// TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy)的官方 changelog,按工具分组展示,
+// 汇总 12 个 Agent 工具(Codex / Claude Code / OpenCode / Kimi Code / DeepSeek Harness /
+// Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy)的官方 changelog,按工具分组展示,
 // 每条保留源站完整正文(不摘要)。
 // 与 news.js / codingplan.js 同模式:在 fetch_all.js 末尾旁路调用,不进基准 registry
 // (避免被 validator.js 当基准源校验、污染 quality.js 与综合分口径 —— 本模块是非分数数据)。
@@ -165,17 +165,48 @@ function isPrerelease(tag, flag) {
   return !!flag || /[-.](alpha|beta|rc|canary|nightly|preview|dev)([.\-_]?\d*)?$/i.test(String(tag || ""));
 }
 
+// 全局口径 + 单工具例外(DeepSeek Harness 只发预发布,见 config.changelog.tools)
+function prereleaseAllowed(tool) {
+  return !!(CONFIG.changelog.includePrerelease || (tool && tool.includePrerelease));
+}
+
+// Release 正文转纯文本:多数项目是 Markdown,原样保留;tool.bodyHtml 的(DeepSeek Harness)
+// 是 HTML 标题 + Markdown 列表混排,前端按纯文本转义渲染,必须先把标签剥掉。
+// decoded:调用方已解过 HTML 实体(Atom 的 <content> 是转义后的 HTML,须先解再剥标签)
+function releaseBodyText(tool, raw, decoded) {
+  var s = String(raw || "").replace(/\r\n?/g, "\n").trim();
+  if (!tool.bodyHtml) return s;
+  // 首行「[中文](#cn-…) | [English](#en-…)」是页内语言切换导航,不是正文
+  s = s.split("\n").filter(function (l) {
+    return !/^\s*\[中文\]\(#[^)]*\)\s*\|\s*\[English\]\(#[^)]*\)\s*$/.test(l);
+  }).join("\n");
+  // 行内代码里的 `<pid>` 这类字面量先摘出来,免得被当 HTML 标签剥掉
+  var codes = [];
+  s = s.replace(/`[^`\n]*`/g, function (m) { codes.push(m); return "\u0000" + (codes.length - 1) + "\u0000"; });
+  s = s.replace(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi, function (m, lv, t) { return "\n" + t + "\n"; })
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, "");
+  if (!decoded) s = decodeEnt(s);
+  s = s.replace(ZERO_WIDTH, " ");
+  s = s.replace(/\u0000(\d+)\u0000/g, function (m, i) { return codes[Number(i)]; });
+  // 纯文本下 markdown 链接只剩方括号噪音,保留文字与地址
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, "$1 ($2)");
+  return s.split("\n").map(function (l) { return l.replace(/[ \t]+$/, ""); })
+    .join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 function parseGithubReleases(tool, releases) {
   var out = [];
   (releases || []).forEach(function (r) {
     if (!r || r.draft) return;
-    if (!CONFIG.changelog.includePrerelease && isPrerelease(r.tag_name, r.prerelease)) return;
-    var body = String(r.body || "").replace(/\r\n?/g, "\n").trim();
+    if (!prereleaseAllowed(tool) && isPrerelease(r.tag_name, r.prerelease)) return;
+    var raw = String(r.body || "");
+    var body = releaseBodyText(tool, raw);
     out.push(mkEntry(tool, {
       version: cleanVersion(r.tag_name),
       title: inlineText(r.name || r.tag_name || ""),
       dateRaw: r.published_at || r.created_at,
-      tags: sectionTags(body),
+      tags: sectionTags(raw),
       url: r.html_url,
       body: body
     }));
@@ -469,7 +500,7 @@ function parseGithubAtom(tool, xml) {
       || (b.match(/<updated>([^<]*)<\/updated>/) || [])[1] || "";
     if (!tag || !link) continue;
     // Atom 不带 prerelease 标记,只能靠 tag 尾缀判预发布(rust-v0.158.0-alpha.8 这类仍挡得住)
-    if (!CONFIG.changelog.includePrerelease && isPrerelease(tag, false)) continue;
+    if (!prereleaseAllowed(tool) && isPrerelease(tag, false)) continue;
     var content = (b.match(/<content[^>]*>([\s\S]*?)<\/content>/) || [])[1] || "";
     content = content.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
     out.push(mkEntry(tool, {
@@ -478,7 +509,7 @@ function parseGithubAtom(tool, xml) {
       dateRaw: dateRaw,
       tags: [],
       url: transport.htmlDecode(link),
-      body: htmlToBody(decodeEnt(content))
+      body: tool.bodyHtml ? releaseBodyText(tool, decodeEnt(content), true) : htmlToBody(decodeEnt(content))
     }));
   }
   return out.filter(Boolean);
@@ -818,17 +849,19 @@ async function updateChangelog() {
     updated: today,
     refreshedAt: CONFIG.REFRESHED_AT,
     uiWindowDays: cfg.uiWindowDays,
-    desc: "11 个 Agent 工具的官方更新日志汇总(仅正式版);每个工具展示最近 " + DISPLAY_ENTRIES + " 条更新," +
+    desc: "12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期," +
+      "按官方 Release 收录预发布版);每个工具展示最近 " + DISPLAY_ENTRIES + " 条更新," +
       "早于 " + cfg.uiWindowDays + " 天的条目仍保留并标注「超出窗口」",
     tools: tools
   };
   var header =
     "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)\n" +
-    "// 来源:Codex/Claude Code/OpenCode/Kimi Code 取 GitHub Releases;" +
+    "// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;" +
     "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
     "TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);" +
     "ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +
-    "// 口径:仅正式版(不收 alpha/beta/rc);本文件存各源可得的全量条目,前端每工具展示最近 " + DISPLAY_ENTRIES + " 条(时间窗口只作「超出窗口」标注)\n" +
+    "// 口径:仅正式版(不收 alpha/beta/rc);DeepSeek Harness 只发预览版,为唯一例外(收官方 Release 的预发布);" +
+    "本文件存各源可得的全量条目,前端每工具展示最近 " + DISPLAY_ENTRIES + " 条(时间窗口只作「超出窗口」标注)\n" +
     "// 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新\n" +
     "//   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期\n" +
     "//   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)\n" +
