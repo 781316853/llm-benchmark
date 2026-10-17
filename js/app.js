@@ -56,13 +56,14 @@
     var cls = v === "4.0" ? "badge-tb40" : (v === "3.0" ? "badge-tb30" : "badge-tb21");
     return ' <span class="' + cls + '" title="榜单版本 v' + esc(v) + '">v' + esc(v) + '</span>';
   };
-  // 数据来源渠道徽标:official/selftest=官方榜/实测;paper/datalearner/qwen-official=厂商官方发布;其余=第三方
+  // 数据来源渠道徽标:official/selftest=官方榜/实测;paper/datalearner/qwen-official/deepseek-official=厂商官方发布;其余=第三方
   var SRC_LABELS = {
     official: ["官方榜", "基准官方实测榜(T1)"],
     selftest: ["官方榜", "官方竞技场/站主实测(T1)"],
     paper: ["厂商发布", "基准作者论文评测表(T2)"],
     datalearner: ["厂商发布", "厂商官方发布成绩转录(T2)"],
     "qwen-official": ["厂商发布", "Qwen 官方博客/模型卡转录(T2)·effort 未标注、协议与官方实测榜不可比,仅补缺失模型,仅供参考"],
+    "deepseek-official": ["厂商发布", "DeepSeek 官方更新页自测转录(T2)·官方标注 harness(TB 用 Claude Code、DeepSWE 用 Mini-SWE-V2),与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
     aa: ["AA 复测", "Artificial Analysis 复测口径(T3,第三方自家 harness,分数口径偏严,仅供参考)"],
@@ -1777,10 +1778,10 @@
   var DATA_SRC = {
     tbscience: { src: "data/tbscience.js?v=20260912a", global: "TBSCIENCE" },
     osworld: { src: "data/osworld.js?v=20260912a", global: "OSWORLD" },
-    lastexam: { src: "data/lastexam.js?v=20260912a", global: "LASTEXAM" },
+    lastexam: { src: "data/lastexam.js?v=20261017a", global: "LASTEXAM" },
     arcagi3: { src: "data/arcagi3.js?v=20260912a", global: "ARCAGI3" },
     benchcad: { src: "data/benchcad.js?v=20260912a", global: "BENCHCAD" },
-    nl2repo: { src: "data/nl2repo.js?v=20260913a", global: "NL2REPO" },
+    nl2repo: { src: "data/nl2repo.js?v=20261017a", global: "NL2REPO" },
     programbench: { src: "data/programbench.js?v=20260922a", global: "PROGRAMBENCH" },
     cursorbench: { src: "data/cursorbench.js?v=20260923a", global: "CURSORBENCH" },
     frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },

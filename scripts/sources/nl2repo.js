@@ -108,7 +108,7 @@ class Nl2RepoSource extends BaseSource {
       "// 补充:llm-stats 聚合表 · https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像)\n" +
       "// 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
-      "// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(paper/datalearner/qwen-official/llm-stats/benchlm)\n" +
+      "// 字段说明:model=模型名;score=test-pass-rate(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(paper/datalearner/qwen-official/deepseek-official/llm-stats/benchlm)\n" +
       "// 用途:自 2026-09-19 起不再计入总览综合分与命中数,仅「权威基准测试」页完整展示。\n",
       {
         source: "NL2Repo-Bench",

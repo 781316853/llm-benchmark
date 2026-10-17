@@ -13,6 +13,7 @@ const registry = require("../lib/registry");
 const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
+const officialSeeds = require("../lib/official-seeds");
 const { parseDataLearnerBench } = require("./datalearner");
 const CONFIG = require("../lib/config");
 
@@ -129,6 +130,26 @@ class TBenchSource extends BaseSource {
       });
       console.log("  [datalearner] 补充: " + dl.name + " (" + dl.score + "%)");
     });
+    // 厂商官方发布成绩种子层(T2):官方榜与 datalearner 都没有该模型时补入(如 DeepSeek 更新页自测分)。
+    // TB 4.0 是 agent×model 官方榜,补充条目不占官方名次:rank 保持 null,绝不重排既有 rank。
+    officialSeeds.forBenchmark("tbench_v40").forEach(function (s) {
+      const tag = officialSeeds.srcOf(s);
+      if (isKnown(s.name)) { console.log("  [" + tag + "] 已收录,跳过: " + s.name); return; }
+      officialNames.push(normName(s.name));
+      models.push({
+        rank: null,
+        model: s.name,
+        agent: s.agent || null,
+        effort: s.effort || null,
+        score: s.score,
+        ci: null,
+        date: s.date || null,
+        tokens: null,
+        cost: null,
+        src: tag
+      });
+      console.log("  [" + tag + "] 补充: " + s.name + " (" + s.score + "%)");
+    });
     return { tasks: 66, models: models };
   }
   toStandard(parsed) {
@@ -149,10 +170,11 @@ class TBenchSource extends BaseSource {
       "// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 " + T + ")\n" +
       "// 主渠道:" + this.cfg.url + "(官方实测榜 T1)\n" +
       "// 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)\n" +
+      "// 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
       "// 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
       "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);\n" +
-      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目,官方榜未收录,无 agent/ci/cost)\n" +
+      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost)\n" +
       "// 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。\n",
       {
         source: "Terminal-Bench",

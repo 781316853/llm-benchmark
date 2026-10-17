@@ -69,7 +69,7 @@ class LastExamSource extends BaseSource {
       "// 补充:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
       "// 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
-      "// 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/llm-stats/qwen-official)\n" +
+      "// 字段说明:model=模型名;score=Pass@1(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/llm-stats/qwen-official/deepseek-official)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "Agents' Last Exam",

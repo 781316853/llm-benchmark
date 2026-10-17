@@ -92,7 +92,7 @@ window.MODEL_MAP = {
     { id: "Gemini 3.7 Flash", vendor: "Google",    color: "#4285F4", aliases: ["Gemini 3.7 Flash", "gemini-3.7-flash-high"] },
     { id: "Gemini 3.6 Flash", vendor: "Google",    color: "#5A95F5", aliases: ["Gemini 3.6 Flash", "gemini-3.6-flash-high"] },
     { id: "Meta Muse Spark 1.2", vendor: "Meta",   color: "#0870FF", aliases: ["Meta Muse Spark 1.2", "muse-spark-1.2", "muse-spark-1.2 (xhigh)", "muse-spark-1.2-contributor"] },
-    { id: "Muse Spark 1.3",     vendor: "Meta",    color: "#0878FF", aliases: ["Muse Spark 1.3", "muse-spark-1-3", "muse-spark-1-3-xhigh", "Muse Spark 1.3 (max)", "Muse Spark 1.3 (xhigh)"] },
+    { id: "Muse Spark 1.3",     vendor: "Meta",    color: "#0878FF", aliases: ["Muse Spark 1.3", "muse-spark-1-3", "muse-spark-1-3-xhigh", "Muse Spark 1.3 (max)", "Muse Spark 1.3 (xhigh)", "muse-spark-1.3-contributor"] },
     { id: "Qwen3.6-Max",      vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.6-Max", "Qwen3.6-Max Preview", "qwen3.6-max-preview", "Qwen 3.6 Max", "Qwen 3.6 Max (preview)"] },
     // ===== 各源新上榜补充登记的模型(2026-08) =====
     { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },
@@ -102,7 +102,7 @@ window.MODEL_MAP = {
     { id: "Nemotron 3 Ultra", vendor: "NVIDIA",    color: "#76B900", aliases: ["Nemotron 3 Ultra", "nvidia-nemotron-3-ultra-550b-a55b", "Nemotron 3 Ultra 550B", "Nemotron 3 Ultra 550b A55b", "Nemotron 3 Ultra (550B A55B)"] },
     { id: "Gemini 3.5 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.5 Flash-Lite", "gemini-3-5-flash-lite", "Gemini 3.5 Flash Lite"] },
     { id: "Solar Open2 250B", vendor: "Upstage",   color: "#8A8F98", aliases: ["Solar Open2 250B", "solar-open2-250b"] },
-    { id: "Muse Glimmer",     vendor: "Meta",      color: "#2E90FF", aliases: ["Muse Glimmer", "muse-glimmer", "Muse Glimmer (high)"] },
+    { id: "Muse Glimmer",     vendor: "Meta",      color: "#2E90FF", aliases: ["Muse Glimmer", "muse-glimmer", "Muse Glimmer (high)", "Muse Glimmer-30B", "muse-glimmer-30b"] },
     { id: "A.X-K2",           vendor: "SK Telecom", color: "#8A8F98", aliases: ["A.X-K2", "a-x-k2", "A.X K2"] },
     { id: "K-EXAONE 2.0",     vendor: "LG AI Research", color: "#A14233", aliases: ["K-EXAONE 2.0", "k-exaone-2-0-0803", "K-EXAONE 2.0 (0803)"] },
     { id: "Mistral Medium 3.5", vendor: "Mistral", color: "#FF8053", aliases: ["Mistral Medium 3.5", "mistral-medium-3-5"] },
@@ -125,7 +125,14 @@ window.MODEL_MAP = {
     { id: "Moonshot v1-8k",   vendor: "Moonshot",  color: "#B0A0FF", aliases: ["Moonshot v1-8k", "moonshot-v1-8k"] },
     { id: "Qwen3-VL-2B",      vendor: "Qwen",      color: "#FF8A3D", aliases: ["Qwen3-VL-2B", "Qwen3-VL-2B (baseline)", "qwen3-vl-2b"] },
     // ===== NL2Repo 与已下线的 AI 能力榜上此前未登记(被自动建档为「其他」厂商)的模型(2026-09) =====
+    // 官网 2026-10-17 发布新构建 DeepSeek-V4.1-Flash-1017(旧 API 名继续指向它、按 Flash 计价)。
+    // 日期构建号是**不同模型**、各自建档(用户确认,与 V4 Pro 0813 / V4 Flash 0731 同口径),
+    // 所以 1017 的写法不能并进上面不带日期的 V4.1 Flash 行。
+    // norm 会折叠分隔符,故一条 1017 别名即覆盖 "DeepSeek-V4.1-Flash-1017" /
+    // "DeepSeek V4.1 Flash 1017" / "deepseek_v4_1_flash_1017" 等全部写法。
+    // 刻意不登记官网的滚动 API 名 "deepseek-flash" —— 它不带构建号、跨代指向不同模型。
     { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910", "deepseek-v4.1-flash-expires-on-0910"] },
+    { id: "DeepSeek V4.1 Flash 1017", vendor: "DeepSeek", color: "#82A6FE", aliases: ["DeepSeek V4.1 Flash 1017", "DeepSeek-V4.1-Flash-1017", "deepseek-v4.1-flash-1017"] },
     { id: "DeepSeek V4 Flash Vision Exp", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek-V4-Flash-Vision-Exp", "DeepSeek V4 Flash Vision Exp", "deepseek-v4-flash-vision-exp"] },
     { id: "Gemini 3.1 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite", "Gemini 3.1 Flash Lite Preview", "gemini-3.1-flash-lite-preview"] },
     { id: "GPT-5.1",          vendor: "OpenAI",    color: "#28BFA8", aliases: ["GPT 5.1", "gpt-5.1"] },
@@ -176,7 +183,17 @@ window.MODEL_MAP = {
     { id: "SenseNova 6.8 Flash Lite", vendor: "SenseTime", color: "#5CC7D6", aliases: ["SenseNova 6.8 Flash Lite", "sensenova-6.8-flash-lite"] },
     { id: "Atria Dawn Preview", vendor: "Shanghai AI Lab", color: "#5FC2A6", aliases: ["Atria Dawn Preview", "atria-dawn-preview"] },
     { id: "Xing4.0-29B-A4B",  vendor: "China Telecom", color: "#63A6F2", aliases: ["Xing4.0-29B-A4B", "xing4.0-29b-a4b"] },
-    { id: "Ling-3.1-Flash",   vendor: "inclusionAI", color: "#8FD97A", aliases: ["Ling-3.1-Flash", "Ling 3.1 Flash", "ling-3.1-flash"] }
+    { id: "Ling-3.1-Flash",   vendor: "inclusionAI", color: "#8FD97A", aliases: ["Ling-3.1-Flash", "Ling 3.1 Flash", "ling-3.1-flash"] },
+    // ===== Muse Wonder / Muse Spark Open 系列(2026-10-17 补登记)=====
+    // "Muse Wonder Full" 与 "Muse Wonder" 是两个模型(用户确认;源站亦并列给分:
+    // DeepSWE 79 / 78.8、Terminal-Bench 57.1 / 52,ProgramBench 只收 Full),故分别建档。
+    // 各源写法:muse-wonder(ModelDial slug)/ muse-wonder-max(Code Arena)/ Muse Wonder(其余榜);
+    // 尾部 effort 由 normLight 剥离,故 Max/XHigh 档位写法自动并入基础名,不必逐个登记。
+    { id: "Muse Wonder",      vendor: "Meta", color: "#1280FF", aliases: ["Muse Wonder", "muse-wonder", "muse-wonder-max"] },
+    { id: "Muse Wonder Full", vendor: "Meta", color: "#58A6FF", aliases: ["Muse Wonder Full", "muse-wonder-full"] },
+    // HLE 把 "Muse Spark Open"(61) 与 "Muse Spark 1.1"(62.1)、"Muse Spark"(58.4) 三条并列出分,
+    // 开放权重版是独立模型,不并入 Spark 1.1;各源写法仅 Muse Spark Open / muse-spark-open。
+    { id: "Muse Spark Open",  vendor: "Meta", color: "#82B8FF", aliases: ["Muse Spark Open", "muse-spark-open", "meta/muse-spark-open"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1

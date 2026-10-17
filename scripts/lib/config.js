@@ -60,6 +60,7 @@ module.exports = {
     paper: 2,        // 基准作者论文评测表(arxiv)
     datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON)
     "qwen-official": 2, // Qwen 官方博客/模型卡/技术报告人工转录(种子层,仅补缺,见 scripts/lib/official-seeds.js)
+    "deepseek-official": 2, // DeepSeek 官方更新页自测分人工转录(种子层,仅补缺,见 https://api-docs.deepseek.com/zh-cn/updates)
     "llm-stats": 3,  // 第三方聚合站 llm-stats.com
     benchlm: 3,      // 第三方镜像 benchlm.ai
     aa: 3,           // Artificial Analysis 复测口径(benchlm 静态镜像页,分数为 AA 自测、系统性异于官方口径)
