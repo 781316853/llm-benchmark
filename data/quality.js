@@ -43,7 +43,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 72,
+      'modelCount': 73,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 39,
+      'modelCount': 40,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 33,
+      'modelCount': 34,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -153,7 +153,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 40,
+      'modelCount': 41,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
-      'modelCount': 39,
+      'modelCount': 40,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -197,7 +197,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 40,
+      'modelCount': 41,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -259,11 +259,11 @@ window.QUALITY = {
         'deepswe_v11'
       ],
       'scores': {
-        'arenaofbias': 1337,
+        'arenaofbias': 1333,
         'deepswe_v11': 54
       },
-      'mean': 695.5,
-      'stddev': 641.5,
+      'mean': 693.5,
+      'stddev': 639.5,
       'flag': 'alert'
     },
     {
@@ -277,11 +277,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 71,
-        'arenaofbias': 1320,
+        'arenaofbias': 1313,
         'deepswe_v11': 71
       },
-      'mean': 487.3,
-      'stddev': 588.78,
+      'mean': 485,
+      'stddev': 585.48,
       'flag': 'alert'
     },
     {
@@ -293,11 +293,11 @@ window.QUALITY = {
         'deepswe_v11'
       ],
       'scores': {
-        'arenaofbias': 1193,
+        'arenaofbias': 1194,
         'deepswe_v11': 58.7
       },
-      'mean': 625.9,
-      'stddev': 567.15,
+      'mean': 626.4,
+      'stddev': 567.65,
       'flag': 'alert'
     },
     {
@@ -317,6 +317,24 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'DeepSeek V4.1 Flash 1017',
+      'name': 'DeepSeek-V4.1-Flash-1017',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'datalearner',
+        'arenaofbias',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 77,
+        'arenaofbias': 1241,
+        'deepswe_v11': 77
+      },
+      'mean': 465,
+      'stddev': 548.71,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'GPT-6 Astra',
       'name': 'GPT-6 Astra',
       'vendor': 'OpenAI',
@@ -327,11 +345,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 73.33,
-        'arenaofbias': 1209,
+        'arenaofbias': 1204,
         'deepswe_v11': 74
       },
-      'mean': 452.1,
-      'stddev': 535.2,
+      'mean': 450.4,
+      'stddev': 532.85,
       'flag': 'alert'
     },
     {
@@ -344,12 +362,12 @@ window.QUALITY = {
         'deepswe_v10'
       ],
       'scores': {
-        'arenaofbias': 1157,
+        'arenaofbias': 1154,
         'deepswe_v11': 30,
         'deepswe_v10': 32
       },
-      'mean': 406.3,
-      'stddev': 530.8,
+      'mean': 405.3,
+      'stddev': 529.39,
       'flag': 'alert'
     },
     {
@@ -363,11 +381,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 75.2,
-        'arenaofbias': 1196,
+        'arenaofbias': 1192,
         'deepswe_v11': 75.2
       },
-      'mean': 448.8,
-      'stddev': 528.35,
+      'mean': 447.5,
+      'stddev': 526.46,
       'flag': 'alert'
     },
     {
@@ -381,29 +399,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 69.3,
-        'arenaofbias': 1181,
+        'arenaofbias': 1179,
         'deepswe_v11': 63.15
       },
-      'mean': 437.8,
-      'stddev': 525.52,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'Gemini 3.8 Flash',
-      'name': 'Gemini 3.8 Flash',
-      'vendor': 'Google',
-      'sources': [
-        'datalearner',
-        'arenaofbias',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 72.83,
-        'arenaofbias': 1175,
-        'deepswe_v11': 74
-      },
-      'mean': 440.6,
-      'stddev': 519.29,
+      'mean': 437.2,
+      'stddev': 524.57,
       'flag': 'alert'
     },
     {
@@ -417,11 +417,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 77.9,
-        'arenaofbias': 1172,
+        'arenaofbias': 1169,
         'deepswe_v11': 77.9
       },
-      'mean': 442.6,
-      'stddev': 515.76,
+      'mean': 441.6,
+      'stddev': 514.35,
       'flag': 'alert'
     },
     {
@@ -433,11 +433,11 @@ window.QUALITY = {
         'deepswe_v11'
       ],
       'scores': {
-        'arenaofbias': 1089,
+        'arenaofbias': 1088,
         'deepswe_v11': 67
       },
-      'mean': 578,
-      'stddev': 511,
+      'mean': 577.5,
+      'stddev': 510.5,
       'flag': 'alert'
     },
     {
@@ -449,83 +449,29 @@ window.QUALITY = {
         'deepswe_v11'
       ],
       'scores': {
-        'arenaofbias': 1069,
+        'arenaofbias': 1068,
         'deepswe_v11': 47
       },
-      'mean': 558,
-      'stddev': 511,
+      'mean': 557.5,
+      'stddev': 510.5,
       'flag': 'alert'
     },
     {
-      'canonId': 'Grok 4.7',
-      'name': 'Grok 4.7',
-      'vendor': 'xAI',
+      'canonId': 'Gemini 3.8 Flash',
+      'name': 'Gemini 3.8 Flash',
+      'vendor': 'Google',
       'sources': [
         'datalearner',
         'arenaofbias',
         'deepswe_v11'
       ],
       'scores': {
-        'datalearner': 71,
-        'arenaofbias': 1112,
-        'deepswe_v11': 71
-      },
-      'mean': 418,
-      'stddev': 490.73,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'MiMo-V2.6-Pro',
-      'name': 'MiMo-V2.6-Pro',
-      'vendor': 'Xiaomi',
-      'sources': [
-        'datalearner',
-        'arenaofbias',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 71.9,
-        'arenaofbias': 1112,
-        'deepswe_v11': 71.9
-      },
-      'mean': 418.6,
-      'stddev': 490.31,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'GPT-6 Sol',
-      'name': 'GPT-6 Sol',
-      'vendor': 'OpenAI',
-      'sources': [
-        'datalearner',
-        'arenaofbias',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 68.8,
-        'arenaofbias': 1107,
-        'deepswe_v11': 68.8
-      },
-      'mean': 414.9,
-      'stddev': 489.41,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'Claude Opus 5',
-      'name': 'Claude Opus 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'arenaofbias',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 72.15,
-        'arenaofbias': 1111,
+        'datalearner': 72.83,
+        'arenaofbias': 1149,
         'deepswe_v11': 74
       },
-      'mean': 419.1,
-      'stddev': 489.28,
+      'mean': 431.9,
+      'stddev': 507.04,
       'flag': 'alert'
     },
     {
@@ -539,11 +485,65 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 74.2,
-        'arenaofbias': 1112,
+        'arenaofbias': 1119,
         'deepswe_v11': 74.2
       },
-      'mean': 420.1,
-      'stddev': 489.22,
+      'mean': 422.5,
+      'stddev': 492.52,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'MiMo-V2.6-Pro',
+      'name': 'MiMo-V2.6-Pro',
+      'vendor': 'Xiaomi',
+      'sources': [
+        'datalearner',
+        'arenaofbias',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 71.9,
+        'arenaofbias': 1111,
+        'deepswe_v11': 71.9
+      },
+      'mean': 418.3,
+      'stddev': 489.84,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'GPT-6 Sol',
+      'name': 'GPT-6 Sol',
+      'vendor': 'OpenAI',
+      'sources': [
+        'datalearner',
+        'arenaofbias',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 68.8,
+        'arenaofbias': 1106,
+        'deepswe_v11': 68.8
+      },
+      'mean': 414.5,
+      'stddev': 488.94,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Claude Opus 5',
+      'name': 'Claude Opus 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'arenaofbias',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 72.15,
+        'arenaofbias': 1110,
+        'deepswe_v11': 74
+      },
+      'mean': 418.7,
+      'stddev': 488.81,
       'flag': 'alert'
     },
     {
@@ -579,6 +579,24 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'Grok 4.7',
+      'name': 'Grok 4.7',
+      'vendor': 'xAI',
+      'sources': [
+        'datalearner',
+        'arenaofbias',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 71,
+        'arenaofbias': 1091,
+        'deepswe_v11': 71
+      },
+      'mean': 411,
+      'stddev': 480.83,
+      'flag': 'alert'
+    },
+    {
       'canonId': 'GPT-5.6 Sol',
       'name': 'GPT-5.6 Sol',
       'vendor': 'OpenAI',
@@ -589,29 +607,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 70.93,
-        'arenaofbias': 1068,
+        'arenaofbias': 1073,
         'deepswe_v11': 73
       },
-      'mean': 404,
-      'stddev': 469.54,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'DeepSeek V4 Pro 0813',
-      'name': 'deepseek-v4-pro',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'arenaofbias',
-        'deepswe_v11',
-        'deepswe_v10'
-      ],
-      'scores': {
-        'arenaofbias': 1018,
-        'deepswe_v11': 63,
-        'deepswe_v10': 8
-      },
-      'mean': 363,
-      'stddev': 463.7,
+      'mean': 405.6,
+      'stddev': 471.89,
       'flag': 'alert'
     },
     {
@@ -625,11 +625,29 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 69,
-        'arenaofbias': 1044,
+        'arenaofbias': 1043,
         'deepswe_v11': 69
       },
-      'mean': 394,
-      'stddev': 459.62,
+      'mean': 393.7,
+      'stddev': 459.15,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'DeepSeek V4 Pro 0813',
+      'name': 'deepseek-v4-pro',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'arenaofbias',
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'arenaofbias': 1004,
+        'deepswe_v11': 63,
+        'deepswe_v10': 8
+      },
+      'mean': 358.3,
+      'stddev': 457.11,
       'flag': 'alert'
     },
     {
@@ -641,11 +659,27 @@ window.QUALITY = {
         'deepswe_v11'
       ],
       'scores': {
-        'arenaofbias': 988,
+        'arenaofbias': 980,
         'deepswe_v11': 69
       },
-      'mean': 528.5,
-      'stddev': 459.5,
+      'mean': 524.5,
+      'stddev': 455.5,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Grok 4.6',
+      'name': 'grok-4.6',
+      'vendor': 'xAI',
+      'sources': [
+        'arenaofbias',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'arenaofbias': 976,
+        'deepswe_v11': 67
+      },
+      'mean': 521.5,
+      'stddev': 454.5,
       'flag': 'alert'
     },
     {
@@ -659,33 +693,17 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 69.6,
-        'arenaofbias': 1028,
+        'arenaofbias': 1026,
         'deepswe_v11': 70
       },
-      'mean': 389.2,
-      'stddev': 451.7,
+      'mean': 388.5,
+      'stddev': 450.76,
       'flag': 'alert'
     },
     {
-      'canonId': 'Grok 4.6',
-      'name': 'grok-4.6',
-      'vendor': 'xAI',
-      'sources': [
-        'arenaofbias',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'arenaofbias': 962,
-        'deepswe_v11': 67
-      },
-      'mean': 514.5,
-      'stddev': 447.5,
-      'flag': 'alert'
-    },
-    {
-      'canonId': 'muse-wonder-full',
+      'canonId': 'Muse Wonder Full',
       'name': 'Muse Wonder Full',
-      'vendor': '其他',
+      'vendor': 'Meta',
       'sources': [
         'datalearner',
         'arenaofbias',
@@ -693,11 +711,11 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 79,
-        'arenaofbias': 946,
+        'arenaofbias': 958,
         'deepswe_v11': 79
       },
-      'mean': 368,
-      'stddev': 408.71,
+      'mean': 372,
+      'stddev': 414.36,
       'flag': 'alert'
     },
     {
@@ -710,10 +728,10 @@ window.QUALITY = {
       ],
       'scores': {
         'datalearner': 75.4,
-        'arenaofbias': 889
+        'arenaofbias': 890
       },
-      'mean': 482.2,
-      'stddev': 406.8,
+      'mean': 482.7,
+      'stddev': 407.3,
       'flag': 'alert'
     },
     {
@@ -725,27 +743,29 @@ window.QUALITY = {
         'deepswe_v10'
       ],
       'scores': {
-        'arenaofbias': 826,
+        'arenaofbias': 828,
         'deepswe_v10': 20
       },
-      'mean': 423,
-      'stddev': 403,
+      'mean': 424,
+      'stddev': 404,
       'flag': 'alert'
     },
     {
-      'canonId': 'Grok 4.5',
-      'name': 'grok-4.5',
-      'vendor': 'xAI',
+      'canonId': 'GPT-5.5',
+      'name': 'gpt-5.5',
+      'vendor': 'OpenAI',
       'sources': [
         'arenaofbias',
-        'deepswe_v11'
+        'deepswe_v11',
+        'deepswe_v10'
       ],
       'scores': {
-        'arenaofbias': 824,
-        'deepswe_v11': 54
+        'arenaofbias': 914,
+        'deepswe_v11': 67,
+        'deepswe_v10': 70
       },
-      'mean': 439,
-      'stddev': 385,
+      'mean': 350.3,
+      'stddev': 398.57,
       'flag': 'alert'
     },
     {
@@ -765,21 +785,19 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'GPT-5.5',
-      'name': 'gpt-5.5',
-      'vendor': 'OpenAI',
+      'canonId': 'Grok 4.5',
+      'name': 'grok-4.5',
+      'vendor': 'xAI',
       'sources': [
         'arenaofbias',
-        'deepswe_v11',
-        'deepswe_v10'
+        'deepswe_v11'
       ],
       'scores': {
-        'arenaofbias': 818,
-        'deepswe_v11': 67,
-        'deepswe_v10': 70
+        'arenaofbias': 820,
+        'deepswe_v11': 54
       },
-      'mean': 318.3,
-      'stddev': 353.32,
+      'mean': 437,
+      'stddev': 383,
       'flag': 'alert'
     },
     {
@@ -871,17 +889,17 @@ window.QUALITY = {
         'deepswe_v11'
       ],
       'scores': {
-        'datalearner': 69.4,
+        'datalearner': 69.8,
         'deepswe_v11': 70
       },
-      'mean': 69.7,
-      'stddev': 0.3,
+      'mean': 69.9,
+      'stddev': 0.1,
       'flag': 'ok'
     },
     {
       'canonId': 'Muse Wonder',
       'name': 'Muse Wonder',
-      'vendor': '其他',
+      'vendor': 'Meta',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -922,9 +940,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 72,
-      'complete': 72,
-      'modelCount': 72,
+      'total': 73,
+      'complete': 73,
+      'modelCount': 73,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -948,9 +966,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 39,
-      'complete': 39,
-      'modelCount': 39,
+      'total': 40,
+      'complete': 40,
+      'modelCount': 40,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -988,9 +1006,9 @@ window.QUALITY = {
     },
     'lastexam': {
       'rate': 1,
-      'total': 33,
-      'complete': 33,
-      'modelCount': 33,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1006,17 +1024,17 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 40,
-      'complete': 40,
-      'modelCount': 40,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
     'nl2repo': {
       'rate': 1,
-      'total': 39,
-      'complete': 39,
-      'modelCount': 39,
+      'total': 40,
+      'complete': 40,
+      'modelCount': 40,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1038,9 +1056,9 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 40,
-      'complete': 40,
-      'modelCount': 40,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1200,19 +1218,19 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'claude-sonnet-5 跨源分数标准差 641.5(>10)'
+      'message': 'claude-sonnet-5 跨源分数标准差 639.5(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Claude Sonnet 5.5 跨源分数标准差 588.78(>10)'
+      'message': 'Claude Sonnet 5.5 跨源分数标准差 585.48(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'qwen3.8-flash-next 跨源分数标准差 567.15(>10)'
+      'message': 'qwen3.8-flash-next 跨源分数标准差 567.65(>10)'
     },
     {
       'level': 'error',
@@ -1224,79 +1242,79 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'GPT-6 Astra 跨源分数标准差 535.2(>10)'
+      'message': 'DeepSeek-V4.1-Flash-1017 跨源分数标准差 548.71(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
+      'message': 'GPT-6 Astra 跨源分数标准差 532.85(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11,deepswe_v10',
-      'message': 'claude-sonnet-4.6 跨源分数标准差 530.8(>10)'
+      'message': 'claude-sonnet-4.6 跨源分数标准差 529.39(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'GPT-6.1 Sol 跨源分数标准差 528.35(>10)'
+      'message': 'GPT-6.1 Sol 跨源分数标准差 526.46(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Qwen3.8-Max-0902 跨源分数标准差 525.52(>10)'
+      'message': 'Qwen3.8-Max-0902 跨源分数标准差 524.57(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Gemini 3.8 Flash 跨源分数标准差 519.29(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Gemini 4 Argon 跨源分数标准差 515.76(>10)'
+      'message': 'Gemini 4 Argon 跨源分数标准差 514.35(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'gpt-5.6-luna 跨源分数标准差 511(>10)'
+      'message': 'gpt-5.6-luna 跨源分数标准差 510.5(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'gemini-3.6-flash 跨源分数标准差 511(>10)'
+      'message': 'gemini-3.6-flash 跨源分数标准差 510.5(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Grok 4.7 跨源分数标准差 490.73(>10)'
+      'message': 'Gemini 3.8 Flash 跨源分数标准差 507.04(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'MiMo-V2.6-Pro 跨源分数标准差 490.31(>10)'
+      'message': 'DeepSeek-V4.1-Flash 跨源分数标准差 492.52(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'GPT-6 Sol 跨源分数标准差 489.41(>10)'
+      'message': 'MiMo-V2.6-Pro 跨源分数标准差 489.84(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Claude Opus 5 跨源分数标准差 489.28(>10)'
+      'message': 'GPT-6 Sol 跨源分数标准差 488.94(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'DeepSeek-V4.1-Flash 跨源分数标准差 489.22(>10)'
+      'message': 'Claude Opus 5 跨源分数标准差 488.81(>10)'
     },
     {
       'level': 'error',
@@ -1314,61 +1332,67 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'GPT-5.6 Sol 跨源分数标准差 469.54(>10)'
+      'message': 'Grok 4.7 跨源分数标准差 480.83(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
+      'message': 'GPT-5.6 Sol 跨源分数标准差 471.89(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
+      'message': 'GLM-5.3 跨源分数标准差 459.15(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11,deepswe_v10',
-      'message': 'deepseek-v4-pro 跨源分数标准差 463.7(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'GLM-5.3 跨源分数标准差 459.62(>10)'
+      'message': 'deepseek-v4-pro 跨源分数标准差 457.11(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'kimi-k3 跨源分数标准差 459.5(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'GPT-5.6 Terra 跨源分数标准差 451.7(>10)'
+      'message': 'kimi-k3 跨源分数标准差 455.5(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'grok-4.6 跨源分数标准差 447.5(>10)'
+      'message': 'grok-4.6 跨源分数标准差 454.5(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias,deepswe_v11',
-      'message': 'Muse Wonder Full 跨源分数标准差 408.71(>10)'
+      'message': 'GPT-5.6 Terra 跨源分数标准差 450.76(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'datalearner,arenaofbias,deepswe_v11',
+      'message': 'Muse Wonder Full 跨源分数标准差 414.36(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'datalearner,arenaofbias',
-      'message': 'Muse Spark 1.3 跨源分数标准差 406.8(>10)'
+      'message': 'Muse Spark 1.3 跨源分数标准差 407.3(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'arenaofbias,deepswe_v10',
-      'message': 'minimax-m3 跨源分数标准差 403(>10)'
+      'message': 'minimax-m3 跨源分数标准差 404(>10)'
     },
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'arenaofbias,deepswe_v11',
-      'message': 'grok-4.5 跨源分数标准差 385(>10)'
+      'sourceId': 'arenaofbias,deepswe_v11,deepswe_v10',
+      'message': 'gpt-5.5 跨源分数标准差 398.57(>10)'
     },
     {
       'level': 'error',
@@ -1379,8 +1403,8 @@ window.QUALITY = {
     {
       'level': 'error',
       'dimension': 'consistency',
-      'sourceId': 'arenaofbias,deepswe_v11,deepswe_v10',
-      'message': 'gpt-5.5 跨源分数标准差 353.32(>10)'
+      'sourceId': 'arenaofbias,deepswe_v11',
+      'message': 'grok-4.5 跨源分数标准差 383(>10)'
     }
   ]
 };

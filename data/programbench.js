@@ -7,7 +7,7 @@ window.PROGRAMBENCH = {
   'url': 'https://programbench.com/',
   'officialUrl': 'https://programbench.com/',
   'updated': '2026-10-17',
-  'refreshedAt': '2026-10-17 13:49',
+  'refreshedAt': '2026-10-17 21:04',
   'stats': {
     'tasks': 200,
     'entries': 71
