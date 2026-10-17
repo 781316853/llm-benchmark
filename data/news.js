@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-16',
+  'updated': '2026-10-17',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -12,44 +12,100 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-10-16',
-      'title': 'Codex 28 天活动：重置额度，增加算力投入',
-      'brief': 'OpenAI Codex 负责人 Tibo 此前宣布，未来 28 天 里，团队每天要么上线一项对多数 Codex 和 Work 用户有明显价值的改进，要么完整重置一次用量额度。',
-      'url': 'https://x.com/thsottiaux/status/2110750421367287996',
+      'date': '2026-10-17',
+      'title': '有关部门拟增列AI技术进入出口管制目录',
+      'brief': '有关部门发布公告，就修订《中国禁止出口限制出口技术目录》公开征求意见，拟增列人工智能、生物医药、光伏三个领域共 40 项 技术，其中人工智能 23 项 ，涵盖大模型、 Agent 、算力集群和信息处理，意见征集截至 11 月 15 日 。',
+      'url': 'https://aqygzj.mofcom.gov.cn/flzc/gzjgfxwj/art/2026/art_c99f95ca0cd043829ac9991495fc283c.html',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-16',
-      'title': 'DeepSeek 恢复服务，赠金形式补偿 API 用户',
-      'brief': 'DeepSeek 网页与 API 服务于 10月15日上午 发生故障导致服务中断约 5个小时 ，官方在当日下午恢复了相关服务，向用户致歉并宣布将 API 用户此前 7天 的消耗金额以赠金形式全额返还。',
-      'url': 'https://status.deepseek.com/incidents/7086651324287',
+      'date': '2026-10-17',
+      'title': 'OpenAI 宣布优化 Codex 提升用户有效使用量',
+      'brief': 'OpenAI 的 Codex 负责人 Tibo 表示， Codex 和 Work 已完成改进，提高用户可获得的有效使用量。具体措施包括在子 Agent 之间复用上下文、延长上下文缓存时间，以及优化请求路由以提高缓存命中率。这些改进主要围绕上下文复用和提高缓存命中率展开',
+      'url': 'https://x.com/thsottiaux/status/2111244596131111253',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-16',
-      'title': 'Gemini 4 Argon 向正价付费 Google AI Pro 用户开放',
-      'brief': 'Google 正在 AI 编程工具 Antigravity 中向付费 Google AI Pro 订阅用户逐步推出 Gemini 4 Argon 。 Pro 用户新增独立的 Argon 每周配额，与现有 Gemini 3.8 Flash 额度分开计算。官方文档明确， Pro 优惠试用用户、免费用户和 Google AI Plus 用户不在开放范围内。 Argon 可在 Antigravity 桌面 App、 CLI 和 IDE 扩展中使…',
-      'url': 'https://x.com/antigravity/status/2110866531932316011',
+      'date': '2026-10-17',
+      'title': 'DeepSeek 整合多支团队成立产品部',
+      'brief': '据“赛博禅心”报道， DeepSeek 最近将 Harness、Web、App、Platform 团队整合为产品部，负责公司所有产品、设计和研发工作，由 崔添翼 担任负责人。 崔添翼 已向澎湃新闻确认这一消息属实。',
+      'url': 'https://mp.weixin.qq.com/s/oHvOQB8QfOS_FKieyPgQAg',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-16',
-      'title': 'Meta 发布多模态开放权重模型 Muse Spark Open',
-      'brief': 'Meta 发布开放权重模型 Muse Spark Open ，面向编程和 Agent 任务，并称其为迄今能力最强的美国开放权重模型。该模型总参数量为 8160 亿 ，每个 token 激活约 420 亿 参数，支持最高 100 万 token 上下文，可接收文字、图片、视频和音频输入，输出文字。',
-      'url': 'https://research.meta.ai/blog/muse-spark-open',
+      'date': '2026-10-17',
+      'title': 'DeepSeek 新增搜索与抓取 API 并按次收费',
+      'brief': 'DeepSeek 为网页搜索和抓取提供独立的 Search 、 Fetch API ，按搜索、抓取请求次数计算费用。',
+      'url': 'https://api-docs.deepseek.com/zh-cn/guides/search/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-16',
-      'title': 'ChatGPT Chrome 扩展升级，可读取并控制标签页',
-      'brief': 'ChatGPT 推出 Chrome 扩展升级，把 computer use 能力带入浏览器。',
-      'url': 'https://learn.chatgpt.com/docs/chrome-extension',
+      'date': '2026-10-17',
+      'title': 'Google AI Studio 向 Pro 订阅用户开放 Gemini 4 Argon',
+      'brief': 'Google 已在 AI Studio 向 Google AI Pro 订阅者开放 Gemini 4 Argon ，支持在 AI Studio 的 Build 和 Playground 中使用。官方文档显示， Pro 和 Ultra 订阅方案均可访问该模型，免费方案不提供访问权限。',
+      'url': 'https://x.com/GoogleAIStudio/status/2111240722426802258',
       'source': '橘鸦AI早报',
       'type': '要闻'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'WorkBuddy 公布 DeepSeek 故障补偿',
+      'brief': 'WorkBuddy 针对 DeepSeek 服务故障公布积分返还及赠送方案，此前该故障导致端内 DeepSeek 模型无法正常使用，部分用户受到影响。',
+      'url': 'https://mp.weixin.qq.com/s/dGd6Nz03MF4-1ua1CMmZxA',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'Antigravity 为全体用户重置模型用量限额',
+      'brief': 'Google Antigravity 团队成员 Varun Mohan 在 X 上表示，Antigravity 正为所有用户重置 Argon 和 Gemini 模型用量，并鼓励用户在周末继续使用。',
+      'url': 'https://x.com/_mohansolo/status/2111220356178751860',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'ChatGPT 为 dot 推出 iOS 小组件与快捷指令支持',
+      'brief': 'ChatGPT 在 iOS 上为 dot 推出主屏幕小组件，并支持通过苹果快捷指令和操作按钮打开对话或通话。',
+      'url': 'https://x.com/ChatGPT/status/2111210005617889406',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'OpenAI 上线 ChatGPT Slides',
+      'brief': 'OpenAI 开始在 ChatGPT 网页版和桌面 App 中逐步推出 Slides 功能，面向符合条件且可使用 Space 的 Pro 、 Business 和 Enterprise 用户。',
+      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'OpenCode 免费提供 GLM 5.3 Flash',
+      'brief': 'OpenCode 宣布， GLM 5.3 Flash 模型现已在其平台免费提供。',
+      'url': 'https://x.com/opencode/status/2110986357539754114',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'Claude Code 压缩对话，缩短响应等待',
+      'brief': 'Anthropic 优化了 Claude Code 的响应等待时间：每轮发送的对话内容现在会经过 gzip 压缩，云端会话也会在用户开始输入时启动。',
+      'url': 'https://x.com/ClaudeDevs/status/2111209208012210409',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-17',
+      'title': 'Qoder CN 大使计划开放申请',
+      'brief': 'Qoder CN 大使计划焕新升级，现已开放申请，面向愿意持续使用 Qoder CN 、分享真实体验并参与社区共创的用户。',
+      'url': 'https://mp.weixin.qq.com/s/_vVPGBW-6AJmT0D2JcAilA',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-10-16',
@@ -90,54 +146,6 @@ window.NEWS = {
       'url': 'https://prismml.com/news/bonsai-2-family',
       'source': '橘鸦AI早报',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-10-15',
-      'title': 'OpenCode Go 上线 Gemini 4 Argon',
-      'brief': 'OpenCode Go 已上线 Gemini 4 Argon Contributor ，月费 10 美元 的 Go 订阅方案可获得该模型价值 60 美元 的月度使用额度。该额度由 30 美元 限时翻倍，活动截至 11 月 30 日 。使用仍受分时限额约束，每 5 小时 和每周分别可使用月度额度的 20% 和 50% 。官方文档注明，用户提示词和模型回复可能用于训练未来的 Google 模型，且该版本不提供零数据保留。',
-      'url': 'https://x.com/opencode/status/2110274311043072352',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-15',
-      'title': 'Qoder 国际版极致档位推出夜间 2 折优惠',
-      'brief': 'Qoder 国际版的「极致」模型档位加入夜间折扣， 10 月 14 日至 30 日 ，每天北京时间 22:00 至次日 08:00 ， Credits 消耗倍率从 2 倍 降至 0.4 倍 ，即原价的 2 折 。 Pro Trial 试用及付费用户可享受，选择该档位后自动生效， Service Account 的优惠时段另有规定。',
-      'url': 'http://docs.qoder.com/events/offpeakrate',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-15',
-      'title': 'OpenAI 公布部分 GPT-4 模型退役安排',
-      'brief': 'OpenAI 更新模型的 API 下线安排， GPT-4o 、 GPT-4o mini 、 GPT-4.1 和 GPT-4.1 mini 将于 2027 年 1 月 14 日 停用，并推荐迁移到替代模型 gpt-6-luna 。这些模型的微调版本也将随基础模型同步停用。',
-      'url': 'https://developers.openai.com/api/docs/deprecations',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-15',
-      'title': 'Claude Platform 支持导出 OpenTelemetry 追踪',
-      'brief': 'Anthropic 宣布， Claude Platform 的 OpenTelemetry 追踪功能进入公开测试，支持从 Messages API 、 Claude Managed Agents 和 Claude SDK 向用户已有的可观测性系统发送追踪数据。',
-      'url': 'https://claude.com/resources/articles/agent-observability-on-the-claude-platform',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-15',
-      'title': '企业微信接入 WorkBuddy，侧边栏可领用',
-      'brief': '企业微信 与 WorkBuddy 联合推出新版本，升级至 企业微信 5.0.12 后，可在侧边栏领用 WorkBuddy 机器人，通过聊天下达任务并查看结果。',
-      'url': 'https://work.weixin.qq.com/nl/index/workbuddy',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-15',
-      'title': '豆包手机助手将逐步开放第三方应用自动化操作',
-      'brief': '豆包手机助手 宣布，《屏幕自动化操作声明协议》（ SAEP ）的 30 天 公示期已结束，将逐步放开第三方应用的屏幕自动化操作权限。该协议允许应用开发者声明接受或禁止 Agent 操作的范围，已明确拒绝的应用不会被操作。',
-      'url': 'https://o.doubao.com/developer',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
     }
   ]
 };

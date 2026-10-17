@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价(codingplan.fyi plan-models.json 的 pricing 字段),更新于 2026-10-16
+// 数据源:模型 API 标价(codingplan.fyi plan-models.json 的 pricing 字段),更新于 2026-10-17
 // 来源:https://www.codingplan.fyi/plan-models.json + config.json(汇率;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站 slug/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -12,8 +12,8 @@ window.PRICING = {
   'source': 'Coding Plan 对比(codingplan.fyi)',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-10-16',
-  'refreshedAt': '2026-10-16 22:05',
+  'updated': '2026-10-17',
+  'refreshedAt': '2026-10-17 13:49',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -25,7 +25,7 @@ window.PRICING = {
     'withPricing': 1465,
     'comparable': 1000,
     'models': 93,
-    'unresolved': 19
+    'unresolved': 17
   },
   'desc': 'codingplan.fyi plan-models.json 的模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。',
   'models': [
@@ -374,7 +374,7 @@ window.PRICING = {
       'costPerM': 1.496
     },
     {
-      'id': 'Mistral Large 4',
+      'id': 'mistral-large-4',
       'slug': 'mistral-large-4',
       'inputCnyPerM': 9.248,
       'cacheCnyPerM': 0.952,
@@ -574,7 +574,7 @@ window.PRICING = {
       'costPerM': 0.28866
     },
     {
-      'id': 'space-bunny',
+      'id': 'Space Bunny',
       'slug': 'space-bunny',
       'inputCnyPerM': 1.02,
       'cacheCnyPerM': 0.204,
