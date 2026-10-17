@@ -100,14 +100,18 @@
       .filter(function (l) { return l.trim(); }).map(esc).join("<br>");
   };
 
-  // 基准描述文案(对齐设计稿卡片信息层级);按 benchSummary 的 key 索引
+  // 基准概览行文案与权重;按 benchSummary 的 key 索引
   var BENCH_DESC = {
-    deepswe: "长程软件工程任务评测,覆盖真实 GitHub issue 到 PR 的完整解决链路,计入综合分权重 16%",
-    llm2014: "个人私有题库的档位制评测,从零构建实际应用并按通过情况评级(含单任务测试成本),计入综合分权重 12%",
-    webdev: "LMArena Code Arena 前端竞技场,社区匿名盲测 Elo,衡量模型生成可交互 Web 应用的能力,计入综合分权重 22%",
-    arenaofbias: "亿模亿样(gallery.arenaofbias.icu)前端作品社区盲评 Elo 竞技场:同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度折算为 Elo(1000 为平均水平),同一模型按推理强度分档多次测试取最高分档,计入综合分权重 12%",
-    tbench: "斯坦福/Laude 终端命令行 Agent 评测,在真实 Shell 环境中解决编译/配置/运维等长程任务,三版合并计入综合分权重 11%",
-    modeldial: "modeldial.com 第三方独立实测的编码智能体能力榜,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权综合分,计入综合分权重 16%"
+    deepswe: "真实 GitHub issue → PR 的长程软件工程评测",
+    llm2014: "私有题库档位制评测,含单任务测试成本",
+    webdev: "LMArena 前端竞技场 · 匿名盲测 Elo",
+    arenaofbias: "前端作品社区盲评 Elo 竞技场",
+    tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
+    modeldial: "第三方实测 · 后端 40 / 前端 30 / 知识 30"
+  };
+  var BENCH_WEIGHT = {
+    deepswe: "16%", llm2014: "12%", webdev: "22%",
+    arenaofbias: "12%", tbench: "11%", modeldial: "16%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -366,17 +370,26 @@
   // ===== 1) 总览 =====
   function renderOverview() {
     renderNews();
-    // 卡片
+    // 核心基准速览:紧凑榜单行(序号 / 名称与描述 / 权重与规模 / 头名)
     var sum = D.benchSummary();
-    document.getElementById("benchCards").innerHTML = sum.map(function (b) {
-      return '<div class="bench-card">' +
-        '<h3>' + esc(b.name) + ' <span class="bc-tag">' + esc(b.tag) + '</span></h3>' +
-        '<p class="bc-desc">' + esc(BENCH_DESC[b.key] || "") + '</p>' +
-        '<div class="bc-stats">' + b.stats.map(function (s) { return '<div class="bc-stat"><b>' + esc(s.v) + '</b><span> ' + esc(s.l) + '</span></div>'; }).join("") + '</div>' +
-        '<div class="bc-top">头名:' + esc(b.top) + '</div>' +
-        '<div class="bc-tag">更新 ' + esc(b.updated) + ' · <a href="' + b.url + '" target="_blank" rel="noopener">原站 ↗</a></div>' +
-        '</div>';
-    }).join("");
+    document.getElementById("benchCards").innerHTML = '<div class="bench-list">' + sum.map(function (b, i) {
+      var idx = i + 1 < 10 ? "0" + (i + 1) : String(i + 1);
+      var stats = b.stats.map(function (s) {
+        return '<span><b>' + esc(s.v) + '</b>' + esc(s.l) + '</span>';
+      }).join("");
+      return '<a class="bench-item" href="' + esc(b.url || "") + '" target="_blank" rel="noopener">' +
+        '<span class="bi-idx">' + idx + '</span>' +
+        '<span class="bi-content">' +
+          '<span class="bi-head"><span class="bi-name">' + esc(b.name) + '</span>' +
+            '<span class="bc-tag">' + esc(b.tag) + '</span></span>' +
+          '<span class="bi-desc">' + esc(BENCH_DESC[b.key] || "") + '</span>' +
+          '<span class="bi-meta"><span><b>' + (BENCH_WEIGHT[b.key] || "—") + '</b>权重</span>' + stats +
+            '<span>更新 ' + esc(b.updated || "—") + '</span></span>' +
+        '</span>' +
+        '<span class="bi-top"><span class="bi-top-label">头名</span>' +
+          '<span class="bi-top-value">' + esc(b.top) + '</span></span>' +
+        '</a>';
+    }).join("") + '</div>';
 
     // 矩阵表:先分配梯队(基于全量排名行(命中≥4榜),按 matrix 的可见序),再选取展示行。
     // 默认:排名行按综合分排序取前30;命中 2-3 榜的「参考」模型不计算综合分(展示为「—」),按在场各榜
@@ -570,28 +583,33 @@
     });
     fillTableHead("matrixTable", '<tr class="grp-row">' + grpRow + '</tr><tr class="col-row">' + subRow + '</tr>');
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
-    // 动态行数提示(显示全部模型开关状态;默认视图含混排的参考模型,排名数与参考数分开统计)
-    var note;
+    // 动态行数提示与工具区摘要(默认视图含混排的参考模型,排名数与参考数分开统计)
+    var note, rankedCnt, refCnt, singleCnt = 0;
     if (state.showAll.overview) {
-      var rCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
-      var dCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
-      var sCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
-      note = '当前显示全部 ' + rows.length + ' 个在任一基准组有成绩的模型(排名行 ' + rCnt + ' 个 + 「参考」' + dCnt +
-        ' 个 + 「仅单榜」' + sCnt + ' 个)。命中 3 个及以下的模型不计算综合分、不参与排名,序号与梯队列均显示「—」,仅展示各榜数据;' +
-        '其中命中 2-3 榜的参考行按各榜成绩混排入排名行之间,命中 1 榜的单榜行统一排在末尾。';
+      rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
+      refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
+      singleCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
+      note = '当前显示全部 ' + rows.length + ' 个有成绩的模型:排名 ' + rankedCnt + ' · 参考 ' + refCnt + ' · 单榜 ' + singleCnt + '。\n' +
+        '命中 ≤3 榜的模型不计算综合分、不参与排名;参考行混排,单榜行置末。';
     } else {
-      var dualCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
-      note = '当前显示命中≥4个基准组且排名前 ' + (rows.length - dualCnt) + ' 的模型,以及 ' + dualCnt +
-        ' 个跻身前30区间的「参考」模型(命中 3 个基准组,按各榜榜内稳健标准分加权后的同口径水平与排名模型比对落入相应区间,不计算综合分、不计排名,序号计「—」;其余 3 榜参考模型与命中 ≤2 榜的模型可勾选下方"显示全部"查看)。';
+      refCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
+      rankedCnt = rows.length - refCnt;
+      note = '当前显示排名前 ' + rankedCnt + ' 的模型,以及 ' + refCnt + ' 个跻身前 30 区间的「参考」模型(命中 3 榜,不计算综合分、不排名)。\n' +
+        '其余参考模型与命中 ≤2 榜的模型,勾选「显示全部模型」查看。';
     }
-    // 国产高亮开启时,追加国产模型数量提示
+    var statsEl = document.getElementById("matrixStats");
+    if (statsEl) {
+      statsEl.innerHTML = '<span>排名 <b>' + rankedCnt + '</b></span>' +
+        '<span>参考 <b>' + refCnt + '</b></span>' +
+        (state.showAll.overview ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
+        '<span class="ms-rule">命中 ≥4 榜计分</span>';
+    }
     if (state.highlightDomestic) {
       var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
-      note += ' · 当前高亮 ' + domCnt + ' 个国产模型。';
+      note += '\n当前高亮 ' + domCnt + ' 个国产模型。';
     }
-    // Terminal-Bench(4.0/3.0/2.1)合并为一个基准组计入综合分与命中数;NL2Repo 自 2026-09-19 起移出、改仅展示;其余权威基准仅展示
-    note += ' Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入综合分(权重 11%)与命中数,优先以最高版本为代表(4.0>3.0>2.1,版本内取各模型最优成绩),单元数字旁附版本标签;综合分按「4.0 等效分」口径折算(3.0/2.1 按跨版本共有模型折算难度系数,如 2.1 自报分 88≈4.0 官方 26),低难度版本虚高分不再追平 4.0 头名;ModelDial 雷达(权重 16%)为第三方独立实测,综合分 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%,同一模型按推理强度分档多次测试后取最高分配置入榜(格内为综合分,悬浮可见三分项与耗时/费用),亦计入综合分与命中数;亿模亿样(权重 12%)为前端作品社区盲评 Elo 竞技场,同一模型按推理强度分档多次测试后取最高分档入榜(格内为 Elo 原值,悬浮可见排名/强度/比较场次/胜率),亦计入综合分与命中数,该席位由 2026-10-16 下线的 AI 能力专项测试让出;NL2Repo-Bench 自 2026-09-19 起不再计入综合分与命中数,改为仅在「权威基准测试」页展示;TB-Science / OSWorld / Agents\' Last Exam / ARC-AGI-3 / BenchCAD 亦仅在「权威基准测试」页展示;GPQA Diamond / HLE 在「榜单基准」组尾以仅参考列展示(不计入综合分与命中数,「—」表示未收录于对应权威榜),完整榜单见「权威基准测试」页。';
-    note += ' 榜单数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖高层级分数。';
+    // 口径细节统一收进下方「阅读说明」
+    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样为第三方实测;HLE 及其余权威基准仅参考。';
     document.getElementById("overviewNote").textContent = note;
   }
 
