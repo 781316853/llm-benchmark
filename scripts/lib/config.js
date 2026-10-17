@@ -359,7 +359,7 @@ module.exports = {
       okMaxStddev: 5,
       warnMaxStddev: 10,
       // > warnMaxStddev -> alert
-      // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
+      // 不参与跨源一致性比对的源:arena_webdev 与 arenaofbias(亿模亿样)均为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
       // 权威基准 12 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/apex/hle/nl2repo/programbench)同样排除:
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
@@ -375,7 +375,7 @@ module.exports = {
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
       //     与主基准的原生量纲不可比,同样排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench"]
+      excludedSources: ["arena_webdev", "arenaofbias", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench"]
     },
     completeness: {
       // 每条记录必填字段
