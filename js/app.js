@@ -1405,6 +1405,7 @@
     authDeferTable("authTBScienceTable", ["#", "模型", "Agent", "解决率"], tbsRows, ["", "", "", "num"]);
     authDeferTable("authOSWorldTable", ["#", "系统(模型·配置)", "部分得分", "厂商", "上报时间", "来源"], osRows, ["", "", "num", "", "num", ""]);
     authDeferTable("authLastExamTable", ["#", "模型", "厂商", "Pass@1", "参数量", "上下文"], aleRows, ["", "", "", "num", "num", "num"]);
+    authDeferTable("authAutomationBenchTable", ["#", "模型", "厂商", "得分", "参数量", "上下文"], abzRows, ["", "", "", "num", "num", "num"]);
     authDeferTable("authARCAGI3Table", ["#", "模型", "RHAE", "参数量", "上下文", "API 价格"], arRows, ["", "", "num", "num", "num", "num"]);
     bcTable("authBCV2CTable", v2cRows, ["exec", "IoU-score", "total"], ["num", "num", "num"]);
     bcTable("authBCVQATable", vqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
@@ -1423,7 +1424,6 @@
         '<td class="num">' + (c.tokens != null ? fmtK(c.tokens) : "—") + '</td>' +
         '<td class="num">' + (c.steps != null ? c.steps : "—") + '</td></tr>';
     });
-    authDeferTable("authAutomationBenchTable", ["#", "模型", "厂商", "得分", "参数量", "上下文"], abzRows, ["", "", "", "num", "num", "num"]);
     var cbCfgCnt = document.getElementById("cbCfgCount");
     if (cbCfgCnt) cbCfgCnt.textContent = "共 " + cbCfgMs.length + " 条";
     // 档位明细在折叠的 <details> 内,折叠态无布局、IntersectionObserver 不会触发,故直接同步填充
@@ -1719,10 +1719,12 @@
     lastexam: { src: "data/lastexam.js?v=20261017a", global: "LASTEXAM" },
     arcagi3: { src: "data/arcagi3.js?v=20260912a", global: "ARCAGI3" },
     benchcad: { src: "data/benchcad.js?v=20260912a", global: "BENCHCAD" },
+    apex: { src: "data/apex.js?v=20261017a", global: "APEX" },
     nl2repo: { src: "data/nl2repo.js?v=20261017a", global: "NL2REPO" },
     programbench: { src: "data/programbench.js?v=20260922a", global: "PROGRAMBENCH" },
     cursorbench: { src: "data/cursorbench.js?v=20260923a", global: "CURSORBENCH" },
     frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },
+    automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },
     codingplan: { src: "data/codingplan.js?v=20260913b", global: "CODINGPLAN" }
   };
   // 各标签页渲染前必须就绪的数据
@@ -1737,12 +1739,10 @@
     return !d || window[d.global] !== undefined;
   }
   function settleData(key) {
-    apex: { src: "data/apex.js?v=20261017a", global: "APEX" },
     var ws = dataWaiters[key] || [];
     dataWaiters[key] = [];
     ws.forEach(function (f) { f(); });
   }
-    automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },
   // 确保 keys 全部就绪后回调 done;并发调用对同一 key 合并等待,不重复注入
   function ensureData(keys, done) {
     var need = keys.filter(function (k) { return !dataLoaded(k) && dataState[k] !== "failed"; });
