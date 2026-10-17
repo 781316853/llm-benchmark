@@ -52,20 +52,23 @@ module.exports = {
   pipelineMode: "host-parallel",
 
   // ===== 渠道优先级(数值越小越权威;合并时高层级分数不被低层级覆盖) =====
-  // T1 = 基准官方实测榜 / 站主实测;T2 = 厂商官方发布(论文 / 发布页,经转录);T3 = 第三方聚合站与镜像
+  // T1 = 基准官方实测榜 / 站主实测;T2 = 厂商官方发布(论文 / 发布页,经转录);T3 = 第三方聚合站与镜像;
+  // T4 = 无出处的转录行(datalearner 详情页部分成绩的 evidence 缺 sourceUrl,无法回溯口径):
+  //      按最低层级处理 —— 只补缺失模型,绝不覆盖任何有出处的数据(2026-10-17 取证,见 sources/automationbench.js)。
   // 每个 src 标签对应一个层级;各源合并时按标签查此表定级(见 scripts/lib/mergeByTier.js)。
   srcTiers: {
     official: 1,     // 基准官方榜(tbench.ai / datacurve.ai / benchcad GitHub leaderboard.json)
     selftest: 1,     // 站主实测(llm2014)与官方竞技场/静态站(arena_webdev / arenaofbias)
     paper: 2,        // 基准作者论文评测表(arxiv)
-    datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON)
+    datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON,evidence 带出处)
     "qwen-official": 2, // Qwen 官方博客/模型卡/技术报告人工转录(种子层,仅补缺,见 scripts/lib/official-seeds.js)
     "deepseek-official": 2, // DeepSeek 官方更新页自测分人工转录(种子层,仅补缺,见 https://api-docs.deepseek.com/zh-cn/updates)
     "llm-stats": 3,  // 第三方聚合站 llm-stats.com
     benchlm: 3,      // 第三方镜像 benchlm.ai
     aa: 3,           // Artificial Analysis 复测口径(benchlm 静态镜像页,分数为 AA 自测、系统性异于官方口径)
     mirror: 3,       // 第三方镜像(snorkel.ai / explainx.ai / steel.dev / aitntnews 等)
-    aggregate: 3     // 其余第三方聚合
+    aggregate: 3,    // 其余第三方聚合
+    "datalearner-unsourced": 4 // datalearner 转录但无出处(evidence 缺 sourceUrl):仅补缺,不覆盖有出处数据
   },
   // 合并时同模型跨层级分差超过此值(百分制)在控制台记录,便于人工核对口径差异
   tierConflictDelta: 5,
@@ -159,6 +162,28 @@ module.exports = {
       url: "https://www.datalearner.com/benchmarks/agents-last-exam",
       host: "www.datalearner.com", src: "datalearner"
     },
+    automationbench: {
+      // AutomationBench(Zapier):跨应用业务工作流智能体基准,600 个公开任务 / 47 个模拟 SaaS 工具 /
+      //   6 个业务域(销售/营销/运营/客服/财务/HR),按最终环境状态的确定性断言计分(非 LLM-as-judge)。
+      // 官方 zapier.com/benchmarks 原始 HTML 只服务端渲染 Top 10(其余行由前端「See 85 more」展开),
+      //   且官方主榜另用未公开的 held-out 私有任务集,单请求取不到全表 → 官方页仅作来源链接。
+      // 故按渠道层级合并:datalearner 详情页(T2 厂商官方发布成绩转录)为主源,
+      //   llm-stats 聚合表(T3)与 benchlm.ai 镜像(T3)为补充源。
+      url: "https://llm-stats.com/benchmarks/automationbench",
+      host: "llm-stats.com", src: "llm-stats",
+      officialUrl: "https://zapier.com/benchmarks",
+      repoUrl: "https://github.com/zapier/AutomationBench"
+    },
+    datalearner_automationbench: {
+      // AutomationBench 主源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩转录)。
+      url: "https://www.datalearner.com/benchmarks/automation-bench",
+      host: "www.datalearner.com", src: "datalearner"
+    },
+    automationbench_benchlm: {
+      // AutomationBench 补充源(T3):benchlm.ai 镜像(内嵌 __NEXT_DATA__ JSON)。
+      url: "https://benchlm.ai/benchmarks/automationbench",
+      host: "benchlm.ai", src: "benchlm"
+    },
     arcagi3: {
       // ARC-AGI-3(ARC Prize):交互式智能体推理,135 环境,RHAE 评分。
       // 官网 arcprize.org/leaderboard 默认表缺 2026-07 后新成绩;
@@ -181,29 +206,15 @@ module.exports = {
       boardUrl: "https://benchcad.com/",
       host: "raw.githubusercontent.com", src: "official"
     },
-    gpqa: {
-      // GPQA Diamond(研究生级科学问答·知识推理,198 题):官方 epoch.ai/benchmarks/gpqa-diamond。
-      // 以 llm-stats 聚合表(T3)为主。注:datalearner 的 /benchmarks/gpqa 为 448 题 GPQA 全量集
-      // (榜首 Nemotron 87、含 Qwen3-8B 等小模型),与本基准 198 题 Diamond 子集口径不同,不并入。
-      url: "https://llm-stats.com/benchmarks/gpqa",
-      host: "llm-stats.com", src: "llm-stats",
-      officialUrl: "https://epoch.ai/benchmarks/gpqa-diamond"
-    },
-    gpqa_benchlm: {
-      // GPQA Diamond 补充源(T3):benchlm.ai 镜像(82 模型,SSG 服务端渲染)。
-      // 口径核对:页面简介文案写"448 题"系照抄 GPQA 原论文描述,但分数与 llm-stats Diamond 完全
-      // 吻合(榜首 GPT-6 Astra 96 / GPT-5.6 Sol 94.6),按 Diamond 口径并入;datalearner 448 题全量集
-      // (榜首 87)仍排除。同层合并取最高,分差超阈值打日志。
-      url: "https://benchlm.ai/benchmarks/gpqa",
-      host: "benchlm.ai", src: "benchlm"
-    },
-    gpqa_aa: {
-      // GPQA Diamond 补充源(T3):Artificial Analysis 复测口径的 benchlm 静态镜像页(181 模型)。
-      // AA 为自家 harness 复测,与官方公开分数偏差 ±1 内(GPT-6 Astra 96.1 vs llm-stats 96),
-      // 覆盖 llm-stats 缺失的新前沿模型(Gemini 3.8 Flash / Grok 4.6 / GPT-5.6 Terra / Muse Spark 1.3 等);
-      // src=aa 徽标区分。
-      url: "https://benchlm.ai/benchmarks/aagpqadiamond",
-      host: "benchlm.ai", src: "aa"
+    apex: {
+      // APEX-1(AI Productivity Index,Mercor):官方榜为 Next.js 页面,
+      // 榜单数据在 __NEXT_DATA__.props.pageProps.leaderboardData(见 scripts/sources/apex.js)。
+      // 隐藏 held-out 集 400 题(投行/咨询/律所/全科医生各 100),每题每模型 8 次,
+      // 专家 rubric + LM judge 评分;Mean Score 为主排序指标,Pass@1 为单次尝试满分率。
+      // 仅「权威基准测试」页展示,不计入综合分与命中数。
+      url: "https://www.mercor.com/apex/apex-v1-leaderboard/",
+      host: "www.mercor.com", src: "official",
+      officialUrl: "https://www.mercor.com/apex/apex-v1-leaderboard/"
     },
     hle: {
       // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI)。
@@ -215,7 +226,7 @@ module.exports = {
       officialUrl: "https://lastexam.ai/"
     },
     hle_benchlm: {
-      // HLE 补充源:benchlm.ai 镜像(T3;SSG 服务端渲染,55 模型)。注意源站 www 会 308 跳转至裸域。
+      // HLE 补充源:benchlm.ai 镜像(T3;内嵌 __NEXT_DATA__ JSON,76 模型)。注意源站 www 会 308 跳转至裸域。
       url: "https://benchlm.ai/benchmarks/hle",
       host: "benchlm.ai", src: "benchlm"
     },
@@ -225,7 +236,7 @@ module.exports = {
       host: "www.datalearner.com", src: "datalearner"
     },
     hle_aa: {
-      // HLE 补充源(T3):Artificial Analysis 复测口径的 benchlm 静态镜像页(181 模型)。
+      // HLE 补充源(T3):Artificial Analysis 复测口径的 benchlm 镜像页(内嵌 JSON,236 模型)。
       // 口径注意:AA 为自家 harness 复测(接近无工具口径),分数系统性低于官方口径约 5 分
       // (头部 Fable 5.1 59.1 vs 官方口径 65);仅用于补官方渠道未收录的缺失模型
       // (GPT-5.6 Terra/Luna、Grok 4.6、Gemini 3.8/3.7 Flash、Muse Spark 1.3 等),
@@ -255,7 +266,7 @@ module.exports = {
       host: "www.datalearner.com", src: "datalearner"
     },
     nl2repo_benchlm: {
-      // NL2Repo 补充源(T3):benchlm.ai 镜像(SSG 服务端渲染,rank|model(vendor·closed)|score%)。
+      // NL2Repo 补充源(T3):benchlm.ai 镜像(内嵌 __NEXT_DATA__ JSON,33 模型)。
       url: "https://www.benchlm.ai/benchmarks/nl2repo",
       host: "www.benchlm.ai", src: "benchlm"
     },
@@ -338,28 +349,6 @@ module.exports = {
       host: "modeldial.com", src: "aggregate",
       radarUrl: "https://modeldial.com/radar",
       methodUrl: "https://modeldial.com/method"
-    },
-    // ===== 无机酸 · AI 前端实测(B 站独立第三方实测;2026-10-12 起仅独立页展示,不计综合分与命中数)=====
-    wujisuan: {
-      // 「无机酸 · AI 前端实测」(B 站 UP 主 @无机酸-_-):真实前端任务端到端实测榜,
-      // 全榜模型 × 2 任务(SupernovAI 品牌站 / 云山巨城体素场景)× 短/长提示 × 首轮/最终。
-      // 站点形态:展示页 https://www.bilibili.com/toy/wujisuan-ai-test/index.html 是 B 站 toy
-      //   「外壳页」(仅 8KB,内嵌一个跨域 sandbox iframe,自身不含任何分数);
-      //   iframe src 为 https://www.bilibilitoy.com/toy/wujisuan-ai-test/<toyId>-<版本号>/index.html,
-      //   其中 <toyId>-<版本号>(如 36188744578048-v17769)随每次上传变化,故须先抓外壳页提取当期路径。
-      //   内层页为静态 SPA(app.js 内唯一取数调用 fetch("./data/site.json")),
-      //   真实数据即该同域静态 JSON:单请求即得全榜模型、全部 task×round×prompt 明细、
-      //   2 个任务定义(含提示词全文)与长提示增益表,无需浏览器渲染。
-      // 量纲:单任务分 0-100,models[].total = 两任务分之和(源站自报 scoreRange [0,200]),
-      //   非百分制;综合分走榜内稳健 z 分(尺度不变),故不折算(同 arena_webdev Elo 先例)。
-      // 渠道:该榜唯一渠道即源站自身(独立个人实测,无厂商发布口径),按 T3 第三方评测处理(src=aggregate)。
-      // 口径提示:每模型跑在其「自家 agent harness」(cc/codex/zcode/qoder/cursor/antigravity/devin)下,
-      //   分数混杂模型与 harness 两者质量,且 n=1、仅有源站人工标注的 lo/hi 不确定区间。
-      url: "https://www.bilibili.com/toy/wujisuan-ai-test/index.html",
-      dataPath: "/data/site.json",
-      host: "www.bilibilitoy.com", src: "aggregate",
-      boardUrl: "https://www.bilibili.com/toy/wujisuan-ai-test/index.html",
-      methodUrl: "https://space.bilibili.com/521186488/channel/collectiondetail?sid=8786711"
     }
   },
 
@@ -372,10 +361,10 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 11 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/gpqa/hle/nl2repo/programbench)同样排除:
+      // 权威基准 12 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/apex/hle/nl2repo/programbench)同样排除:
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
-      //   gpqa/hle 为知识类口径,仅权威页展示;
+      //   apex 为专业工作产出评分(Mean Score),与编码基准原生生量纲不可比;hle 为知识类口径,仅权威页展示;
       //   nl2repo 自 2026-09-19 起不再计入综合分与命中数(改为「权威基准测试」页仅展示),
       //     但独立量纲且整体偏低(0-75),仍保持排除;
       //   programbench 仅展示,主指标 Fully Resolved 整体 0-7 分,与主基准混算会产生假告警;
@@ -383,9 +372,10 @@ module.exports = {
       //     (模型级头名约 58 分、配置级 52 条),后者分数为 mergeability 端到端质量分(0-100 但整体偏低),
       //     均与主基准的原生量纲不可比;
       //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
-      //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除。
-      //   wujisuan(无机酸前端实测)为「两任务分之和」(每任务 0-100,合计 0-200),量纲同上不可比,故排除。
-      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "gpqa", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "wujisuan"]
+      //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
+      //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
+      //     与主基准的原生量纲不可比,同样排除。
+      excludedSources: ["arena_webdev", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench"]
     },
     completeness: {
       // 每条记录必填字段

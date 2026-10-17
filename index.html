@@ -22,30 +22,27 @@
   <script defer src="data/llm2014.js?v=20260824a"></script>
   <script defer src="data/arena_webdev.js?v=20260824a"></script>
   <!-- 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(权重 12%)与命中数,
-       2026-10-16 起接替原 AI 能力专项测试的计分席位) -->
+       2026-10-16 起接替原 AI 能力专项测试的计分席位;并作为「亿模亿样」独立标签页的数据源) -->
   <script defer src="data/arenaofbias.js?v=20261016a"></script>
   <!-- 权威基准测试中首屏真正需要的三件事:
        ① Terminal-Bench 4.0/3.0/2.1 三版合并为一个基准组计入总览综合分与命中数,故 4.0(tbench)与
           3.0 / 2.1(tbench_v3 / tbench_v2)必须首屏加载;
-       ② GPQA / HLE 虽只在权威页列表里展示,但其分数被总览矩阵的「仅参考」列引用(见 app.js 的 refIndex)。
-       其余仅展示榜(tbscience / osworld / lastexam / arcagi3 / benchcad / nl2repo / programbench /
-       cursorbench / frontiercode)与 codingplan 不进首屏,由 js/app.js 的 DATA_SRC 按需注入。 -->
+       ② HLE 虽只在权威页列表里展示,但其分数被总览矩阵的「仅参考」列引用(见 app.js 的 refIndex)。
+       其余仅展示榜(tbscience / osworld / lastexam / automationbench / arcagi3 / benchcad / apex / nl2repo /
+       programbench / cursorbench / frontiercode)与 codingplan 不进首屏,由 js/app.js 的 DATA_SRC 按需注入。 -->
   <script defer src="data/tbench.js?v=20261017a"></script>
   <script defer src="data/tbench_v3.js?v=20260912b"></script>
   <script defer src="data/tbench_v2.js?v=20260913a"></script>
-  <script defer src="data/gpqa.js?v=20260915a"></script>
-  <script defer src="data/hle.js?v=20260915a"></script>
+  <script defer src="data/hle.js?v=20261017b"></script>
   <!-- ModelDial 雷达(第三方独立实测综合能力榜,计入总览综合分(权重 16%)与命中数) -->
   <script defer src="data/modeldial.js?v=20260930a"></script>
-  <!-- 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测;2026-10-12 起仅独立页展示,不计总览综合分与命中数) -->
-  <script defer src="data/wujisuan.js?v=20260930a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260921a"></script>
   <!-- AI Agent 工具更新日志(11 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
        不进首屏脚本清单:该文件保存各源全量历史(实测约 2.7MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261016b"></script>
+  <script defer src="js/data.js?v=20261017a"></script>
   <script defer src="js/charts.js?v=20260930a"></script>
   <script defer src="js/compare.js?v=20261016b"></script>
   <script defer src="js/app.js?v=20261017a"></script>
@@ -64,13 +61,15 @@
 
   <!-- 标签导航 -->
   <nav class="tabs" id="tabs">
-    <button class="tab active" data-tab="overview">总览</button>
-    <button class="tab" data-tab="llm2014">llm2014</button>
-    <button class="tab" data-tab="modeldial">ModelDial</button>
-    <button class="tab" data-tab="wujisuan">无机酸实测</button>
-    <button class="tab" data-tab="authority">权威基准测试</button>
-    <button class="tab" data-tab="plans">套餐对比</button>
-    <button class="tab" data-tab="changelog">Agent工具更新日志</button>
+    <div class="tabs-inner">
+      <button class="tab active" data-tab="overview">总览</button>
+      <button class="tab" data-tab="llm2014">llm2014</button>
+      <button class="tab" data-tab="modeldial">ModelDial</button>
+      <button class="tab" data-tab="arenaofbias">亿模亿样</button>
+      <button class="tab" data-tab="authority">权威基准测试</button>
+      <button class="tab" data-tab="plans">套餐对比</button>
+      <button class="tab" data-tab="changelog">Agent工具更新日志</button>
+    </div>
   </nav>
 
   <main class="content">
@@ -173,33 +172,28 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
       </section>
     </section>
 
-    <!-- 6b) 无机酸 · AI 前端实测(B 站独立第三方前端端到端实测;2026-10-12 起仅本页展示,退出「第三方实测」计分组,不计综合分与命中数) -->
-    <section class="page" id="page-wujisuan">
-      <div class="page-head"><h2>无机酸 · AI 前端实测 <span class="tag">独立第三方实测 · 两个真实前端任务 · 总分 0-200</span></h2><p id="wjDesc" class="page-desc"></p></div>
-      <div class="chart-row single">
-        <div class="chart-box"><h3>两任务总分排行(每任务 0-100,合计 0-200)</h3><div id="wjBar" class="chart chart-tall"></div></div>
+    <!-- 6b) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(权重 12%)与命中数) -->
+    <section class="page" id="page-arenaofbias">
+      <div class="page-head">
+        <p class="page-kicker">Community Blind Test · Elo</p>
+        <div class="page-head-row"><h2>亿模亿样 · 模型效果对比 <span class="tag">前端作品社区盲评 Elo · 计入综合分 12%</span></h2></div>
+        <p id="abDesc" class="page-desc"></p>
       </div>
-      <div class="table-wrap"><table id="wjTable" class="data-table"></table></div>
-      <p class="source-note" id="wjNote"></p>
-      <!-- 实测任务:题名、体裁与提示词(长提示词全文折叠) -->
-      <h3 class="wj-sub-title">实测任务</h3>
-      <div class="chart-row" id="wjTasks"></div>
-      <!-- 逐条明细:模型 × 任务 × 提示词长度 × 轮次,默认折叠 -->
-      <details class="md-details">
-        <summary>逐条实测明细 <span class="hint" id="wjPaperCount"></span></summary>
-        <div class="table-wrap"><table id="wjPaperTable" class="data-table"></table></div>
-      </details>
-      <!-- 长提示增益:短提示基准分与长提示分对照 -->
-      <h3 class="wj-sub-title">长提示增益</h3>
-      <div class="table-wrap"><table id="wjGainTable" class="data-table"></table></div>
+      <div class="chart-row single">
+        <div class="chart-box"><h3>Elo 排行(前 20,完整榜单见下表;1000 为平均水平)</h3><div id="abBar" class="chart chart-tall"></div></div>
+      </div>
+      <div class="table-wrap"><table id="abTable" class="data-table"></table></div>
+      <p class="source-note" id="abNote"></p>
       <section class="notes-section">
-        <p class="note-title">阅读说明</p>
-        <ul style="white-space: pre-wrap;">
-          <li>本页数据来自 B 站 UP 主 <b>@无机酸-_-</b> 的「AI 前端实测」:同一道题目交给各模型的<b>原生 agent 脚手架</b>(Claude Code / Codex / ZCode / Qoder / Cursor / Antigravity / Devin)在真实环境里端到端做完,按任务分别给 0-100 分,主榜总分为<b>两个任务分之和</b>(0-200),因此不能与站内其它百分制基准直接横向比价。</li>
-          <li>两个任务各跑<b>短提示</b>与<b>长提示</b>两种交代方式,并区分<b>首轮</b>(一次成型)与<b>最终</b>(允许继续修)两种口径,逐条成绩见「逐条实测明细」;「长提示增益」列出的增益率口径为(长提示合计 − 短提示基准)÷ 基准 × 100%,用于观察「把要求写细」对各模型的实际帮助幅度。</li>
-          <li><b>不确定区间</b>是源站人工标注的「该模型本可得到的分数范围」(如某次交付未覆盖到的加分项),<b>不是统计置信区间</b>;带「含人工估」标记的端点为源站标注的估计值。每个模型只有一次完整实测(n=1),区间只用于提示可读性,不参与综合分计算。</li>
-          <li>该榜<b>仅在本页展示</b>,<b>不计入总览综合分与命中数</b>(2026-10-12 起由「第三方实测」计分组移出,总览交叉矩阵亦不再单列):每模型仅一次完整实测(n=1)、且分数混杂模型与其自家 harness 的质量,样本强度与口径纯净度均低于计分组要求,故与 CursorBench / FrontierCode 同属「仅展示」。移出后计分组为 6 组(DeepSWE 16% / Code Arena·WebDev 22% / Terminal-Bench 11% / ModelDial 16% / llm2014 12% / 亿模亿样 12%,合计 0.89);本榜 0-200 的原生量纲不参与任何加权折算。</li>
-          <li>源站展示页为 B 站 toy 页面(内嵌跨域 iframe,路径带每期变化的版本号),本站抓取其同域静态数据文件 <code>data/site.json</code>;每期实测均有对应 B 站视频佐证,见主榜「实测视频」列与页脚合集链接。数据为快照,不代表对各模型能力的绝对评价。</li>
+        <div class="notes-head">
+          <p class="note-title">阅读说明</p>
+          <span class="notes-hint">要点速览 · 抓取方式可展开</span>
+        </div>
+        <ul>
+          <li><b class="note-term">来源</b>亿模亿样前端作品社区盲评:同题两件作品匿名盲评,按 Bradley-Terry 估计偏好强度折算 Elo(1000 为平均,高 400 分约等于被偏好机会高十倍),并给出 ±95% 区间。</li>
+          <li><b class="note-term">分档</b>同一模型按推理强度分档多次测试,主榜取最高分档;源站「非官方」条目(量化/改版权重、第三方 harness)已剔除。</li>
+          <li><b class="note-term">指标</b>有效比较为投票场次;胜率 = 胜场 ÷ 有效比较;覆盖任务为参与题数;有效比较不足 30 次标注「暂定」。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 12%)与命中数(分母 6),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
         </ul>
       </section>
     </section>
@@ -239,6 +233,13 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
       <!-- 左侧工具目录:点击跳到该工具的最新版本卡片;窄屏自动收为顶部横向胶囊条 -->
       <div class="auth-layout">
         <aside class="auth-outline" aria-label="更新日志工具目录">
+        <details class="notes-more">
+          <summary>展开抓取方式与区间说明</summary>
+          <ul>
+            <li><b class="note-term">抓取</b>源站为客户端渲染的静态站,本站直接读取其公开接口 <code>api.arenaofbias.icu/api/leaderboard?by=config</code>,按模型聚合后每日刷新。</li>
+            <li><b class="note-term">区间</b>Elo 与 ±95% 不确定区间均来自源站;主榜为配置聚合后的最高分档,「档位」列为该模型在源站的配置条数。</li>
+          </ul>
+        </details>
           <p class="auth-outline-title">工具 <span class="auth-outline-count" id="clOutlineCount"></span></p>
           <nav class="auth-outline-list" id="clOutlineList"></nav>
         </aside>
@@ -265,35 +266,40 @@ ModelDial 为第三方独立实测的编码智能体能力榜,矩阵列显示其
   </main>
 
   <footer class="footer">
-    <span>仅用于学习与对比展示 · 数据版权归原作者 · </span>
-    <a href="https://deepswe.datacurve.ai/" target="_blank" rel="noopener">DeepSWE</a> ·
-    <a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014</a> ·
-    <a href="https://www.codingplan.fyi/" target="_blank" rel="noopener">AI Coding Plan</a> ·
-    <a href="https://gallery.arenaofbias.icu/#/leaderboard" target="_blank" rel="noopener">亿模亿样</a> ·
-    <a href="https://www.tbench.ai/" target="_blank" rel="noopener">Terminal-Bench</a> ·
-    <a href="https://arcprize.org/leaderboard" target="_blank" rel="noopener">ARC-AGI-3</a> ·
-    <a href="https://agents-last-exam.org/" target="_blank" rel="noopener">Agents' Last Exam</a> ·
-    <a href="https://osworld-v2.xlang.ai/" target="_blank" rel="noopener">OSWorld 2.0</a> ·
-    <a href="https://benchcad.com/" target="_blank" rel="noopener">BenchCAD</a> ·
-    <a href="https://epoch.ai/benchmarks/gpqa-diamond" target="_blank" rel="noopener">GPQA Diamond</a> ·
-    <a href="https://lastexam.ai/" target="_blank" rel="noopener">Humanity's Last Exam</a> ·
-    <a href="https://github.com/multimodal-art-projection/NL2RepoBench" target="_blank" rel="noopener">NL2Repo-Bench</a> ·
-    <a href="https://programbench.com/" target="_blank" rel="noopener">ProgramBench</a> ·
-    <a href="https://cursor.com/cursorbench" target="_blank" rel="noopener">CursorBench</a> ·
-    <a href="https://cognition.com/frontiercode" target="_blank" rel="noopener">FrontierCode</a> ·
-    <a href="https://modeldial.com/radar" target="_blank" rel="noopener">ModelDial</a> ·
-    <a href="https://www.bilibili.com/toy/wujisuan-ai-test/index.html" target="_blank" rel="noopener">无机酸 · AI 前端实测</a> ·
-    <a href="https://github.com/openai/codex/releases" target="_blank" rel="noopener">Codex</a> ·
-    <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">Claude Code</a> ·
-    <a href="https://github.com/anomalyco/opencode/releases" target="_blank" rel="noopener">OpenCode</a> ·
-    <a href="https://github.com/MoonshotAI/kimi-code/releases" target="_blank" rel="noopener">Kimi Code</a> ·
-    <a href="https://docs.qoder.cn/product-overview/qoder-update-log" target="_blank" rel="noopener">Qoder CN</a> ·
-    <a href="https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log" target="_blank" rel="noopener">Qoder CN IDE</a> ·
-    <a href="https://docs.trae.cn/ide_changelog" target="_blank" rel="noopener">TraeCode</a> ·
-    <a href="https://docs.trae.cn/work_changelog" target="_blank" rel="noopener">TraeWork</a> ·
-    <a href="https://zcode.z.ai/changelog" target="_blank" rel="noopener">ZCode</a> ·
-    <a href="https://www.codebuddy.cn/docs/ide/release-notes/release-notes" target="_blank" rel="noopener">CodeBuddy</a> ·
-    <a href="https://www.codebuddy.cn/docs/workbuddy/Changelog" target="_blank" rel="noopener">WorkBuddy</a>
+    <div class="footer-inner">
+      <p class="footer-brand">大模型编码基准整合门户</p>
+      <p class="footer-note">仅用于学习与对比展示 · 数据版权归原作者 · 各榜单数据以其官方页面为准</p>
+      <div class="footer-links">
+        <a href="https://deepswe.datacurve.ai/" target="_blank" rel="noopener">DeepSWE</a>
+        <a href="https://llm2014.github.io/llm_benchmark/" target="_blank" rel="noopener">llm2014</a>
+        <a href="https://www.codingplan.fyi/" target="_blank" rel="noopener">AI Coding Plan</a>
+        <a href="https://gallery.arenaofbias.icu/#/leaderboard" target="_blank" rel="noopener">亿模亿样</a>
+        <a href="https://www.tbench.ai/" target="_blank" rel="noopener">Terminal-Bench</a>
+        <a href="https://arcprize.org/leaderboard" target="_blank" rel="noopener">ARC-AGI-3</a>
+        <a href="https://agents-last-exam.org/" target="_blank" rel="noopener">Agents' Last Exam</a>
+        <a href="https://osworld-v2.xlang.ai/" target="_blank" rel="noopener">OSWorld 2.0</a>
+        <a href="https://benchcad.com/" target="_blank" rel="noopener">BenchCAD</a>
+        <a href="https://www.mercor.com/apex/apex-v1-leaderboard/" target="_blank" rel="noopener">APEX-1</a>
+        <a href="https://lastexam.ai/" target="_blank" rel="noopener">Humanity's Last Exam</a>
+        <a href="https://github.com/multimodal-art-projection/NL2RepoBench" target="_blank" rel="noopener">NL2Repo-Bench</a>
+        <a href="https://programbench.com/" target="_blank" rel="noopener">ProgramBench</a>
+        <a href="https://cursor.com/cursorbench" target="_blank" rel="noopener">CursorBench</a>
+        <a href="https://cognition.com/frontiercode" target="_blank" rel="noopener">FrontierCode</a>
+        <a href="https://modeldial.com/radar" target="_blank" rel="noopener">ModelDial</a>
+        <a href="https://github.com/openai/codex/releases" target="_blank" rel="noopener">Codex</a>
+        <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">Claude Code</a>
+        <a href="https://github.com/anomalyco/opencode/releases" target="_blank" rel="noopener">OpenCode</a>
+        <a href="https://github.com/MoonshotAI/kimi-code/releases" target="_blank" rel="noopener">Kimi Code</a>
+        <a href="https://github.com/deepseek-ai/deepseek-harness/releases" target="_blank" rel="noopener">DeepSeek Harness</a>
+        <a href="https://docs.qoder.cn/product-overview/qoder-update-log" target="_blank" rel="noopener">Qoder CN</a>
+        <a href="https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log" target="_blank" rel="noopener">Qoder CN IDE</a>
+        <a href="https://docs.trae.cn/ide_changelog" target="_blank" rel="noopener">TraeCode</a>
+        <a href="https://docs.trae.cn/work_changelog" target="_blank" rel="noopener">TraeWork</a>
+        <a href="https://zcode.z.ai/changelog" target="_blank" rel="noopener">ZCode</a>
+        <a href="https://www.codebuddy.cn/docs/ide/release-notes/release-notes" target="_blank" rel="noopener">CodeBuddy</a>
+        <a href="https://www.codebuddy.cn/docs/workbuddy/Changelog" target="_blank" rel="noopener">WorkBuddy</a>
+      </div>
+    </div>
   </footer>
 
   <!-- 意见反馈浮动按钮 -->

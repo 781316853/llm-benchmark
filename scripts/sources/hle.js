@@ -2,13 +2,13 @@
 // 站点:官方 lastexam.ai(CAIS/Scale AI);本榜无可用官方实测榜,按渠道层级合并:
 //   T2 厂商官方发布 > T3 第三方聚合。主源 datalearner 详情页(内嵌 results JSON,转录厂商官方发布成绩,
 //   含 GPT-6 Astra / Hy4 preview 等);补充源 llm-stats 聚合表(服务端渲染)、benchlm.ai 镜像
-//   (SSG 卡片式 HTML,55 模型)与 AA 复测口径 benchlm 镜像页(181 模型,src=aa)。
+//   (内嵌 __NEXT_DATA__ JSON,76 模型)与 AA 复测口径 benchlm 镜像页(内嵌 JSON,236 模型,src=aa)。
 // AA 口径注意:AA 为 Artificial Analysis 自家 harness 复测(接近无工具口径),分数系统性低于
 //   官方口径约 5 分(头部 Fable 5.1 59.1 vs 官方口径 65);仅补官方渠道未收录的缺失模型
 //   (GPT-5.6 Terra/Luna、Grok 4.6、Gemini 3.8/3.7 Flash、Muse Spark 1.3 等),src=aa 徽标区分;
 //   同层取最高,重叠模型保留现有高分,不被 AA 低分覆盖。
 // 数据形态:datalearner results JSON(name/mode/score/date/params/org/license);
-//   llm-stats #|Model|Score(0-1)|Size|Context|Cost|License;benchlm/AA 页卡片式 div。
+//   llm-stats #|Model|Score(0-1)|Size|Context|Cost|License;benchlm/AA 页内嵌 __NEXT_DATA__ JSON(旧卡片式兜底)。
 // 合并策略:见 scripts/lib/mergeByTier.js——高层级分数不被低层级覆盖,低层级仅补缺失模型与字段。
 // 性质:模型级条目(2500 题,数学/科学/人文学科,闭卷得分口径);
 //       仅「权威基准测试」页与总览参考列展示,不计入综合分/命中数。
@@ -59,6 +59,12 @@ class HleSource extends BaseSource {
     const vendor = parseDataLearnerBench(raw.vendor).map(function (m) {
       return { model: m.name, org: m.org, score: m.score, license: m.license };
     });
+    // 任一渠道解析为空 = 页面结构大概率又变了。必须让本源失败并保留旧文件,
+    // 否则合并会静默丢数(2026-09-23 benchlm 改版导致 HLE 从 226 条掉到 55 条且一直无人发现)。
+    if (!vendor.length) throw new Error("HLE datalearner 主源未解析到任何数据(页面结构可能已变化)");
+    if (!primary.models.length) throw new Error("HLE llm-stats 主源未解析到任何数据(页面结构可能已变化)");
+    if (!bench.length) throw new Error("HLE benchlm 补充源未解析到任何数据(页面结构可能已变化)");
+    if (!aa.length) throw new Error("HLE AA 复测补充源未解析到任何数据(页面结构可能已变化)");
     // 按渠道层级合并:主源(T2)优先入表,补充源(T3)仅补缺与回填字段;AA 低分不覆盖已有条目
     const merger = createTierMerger({ aliases: KEY_ALIASES });
     merger.add(vendor, "datalearner");

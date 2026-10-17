@@ -392,10 +392,10 @@
     return out;
   }
 
-  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):GPQA Diamond / HLE / NL2Repo-Bench / ProgramBench =====
-  function gpqa() {
-    var src = window.GPQA || { models: [] };
-    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):APEX-1 / HLE / NL2Repo-Bench / ProgramBench =====
+  function apex() {
+    var src = window.APEX || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score || (b.pass1 || 0) - (a.pass1 || 0); })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
   function hle() {
@@ -431,6 +431,13 @@
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
+  // AutomationBench(Zapier 跨应用业务工作流智能体基准):模型级严格全通过率(task_completed_correctly,%),
+  // 主源 datalearner(T2 厂商官方发布成绩转录)+ llm-stats / benchlm.ai(T3 补充)按渠道层级合并;仅展示。
+  function automationbench() {
+    var src = window.AUTOMATIONBENCH || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
 
   // ===== ModelDial 雷达(独立页;计入综合分(「第三方实测」组计分组之一,权重 16%)与命中数) =====
   // 主榜为模型级条目:每条取该模型最高分 config(与源站主榜一致),按综合分降序;
@@ -448,21 +455,10 @@
       .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
   }
 
-  // ===== 无机酸 · AI 前端实测(独立页;2026-10-12 起退出综合分与命中数,仅本页展示) =====
-  // 主榜为模型级条目(源站按两任务总分排名);score = 两任务分之和,单任务 0-100,故量纲 0-200。
-  // 每模型跑在其「自家 agent harness」(agent 字段:cc/codex/zcode/qoder/cursor/antigravity/devin)下,
-  // n=1 单次实测;lo/hi 为源站人工标注的不确定区间(非置信区间)。模型名源站已是纯展示名(不含档位),
-  // 直接喂 canon()。不进 unified():区别于计分组,与 CursorBench / FrontierCode 同属「仅展示」。
-  function wujisuan() {
-    var src = window.WUJISUAN || { models: [] };
-    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
-      .map(function (m) { return Object.assign({}, m, { canon: canon(m.name) }); });
-  }
-
   // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, arenaofbias, modeldial} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
-  // nl2repo 自 2026-09-19 起、wujisuan 自 2026-10-12 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
+  // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
   // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数)
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
@@ -526,10 +522,8 @@
           name: m.model, effort: m.effort, provider: m.provider
         };
     });
-    // 无机酸 · AI 前端实测自 2026-10-12 起退出统一视图(不计综合分与命中数、不进总览矩阵),
-    // 仅在「无机酸实测」页经 D.wujisuan() 直接展示,故此处不再写入。
     // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / 亿模亿样 / ModelDial
-    // 共 6 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/GPQA/HLE/NL2Repo)仅展示不计命中。
+    // 共 6 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/NL2Repo)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
@@ -653,14 +647,14 @@
   }
 
   // 各源原始对象(供渲染脚注)的取值视图。用取值器而非直接快照 window.*:
-  // 「权威基准测试」页的 9 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
+  // 「权威基准测试」页的 11 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
   // 若在解析期就取 window.*,这些键会永远停在 undefined。
   var SRC_GLOBALS = {
     deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
-    gpqa: "GPQA", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
-    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", modeldial: "MODELDIAL", wujisuan: "WUJISUAN"
+    apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
+    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL"
   };
   var srcView = {};
   Object.keys(SRC_GLOBALS).forEach(function (k) {
@@ -694,16 +688,16 @@
     lastExam: lastExam,
     arcagi3: arcagi3,
     benchcad: benchcad,
-    gpqa: gpqa,
+    apex: apex,
     hle: hle,
     nl2repo: nl2repo,
     programbench: programbench,
     cursorbench: cursorbench,
     cursorbenchConfigs: cursorbenchConfigs,
     frontiercode: frontiercode,
+    automationbench: automationbench,
     modeldial: modeldial,
     modeldialConfigs: modeldialConfigs,
-    wujisuan: wujisuan,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
     // codingplan.fyi 模型 API 标价快照(总览矩阵「性价比」列;文件缺失/加载失败时返回 null)

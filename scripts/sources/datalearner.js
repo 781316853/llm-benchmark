@@ -56,9 +56,13 @@ function unescapeStream(s) {
 
 // 基准详情页解析器(通用):
 // 页面数据以内嵌 JSON 藏于 Next.js RSC 流(\"results\":[...]),每条含
-//   modelCode/modelAbbrName/evalResult/modelMode/publishTime/parameterSize(亿)/orgName/commercialUsage。
+//   modelCode/modelAbbrName/evalResult/modelMode/publishTime/parameterSize(亿)/orgName/commercialUsage/evidence。
 // 输出:[{name, mode, score, date, params, org, license}]
-function parseDataLearnerBench(html) {
+// opts.withEvidence=true 时额外带 evidence:{sourceUrl,sourceTier,evaluationMethod,sourceName}:
+//   供调用方按「该条有无出处」分流(datalearner 部分行的 evidence 缺 sourceUrl,无据可回溯口径,
+//   见 scripts/sources/automationbench.js 的取证说明)。默认不带,保持既有调用方行为不变。
+function parseDataLearnerBench(html, opts) {
+  var withEvidence = !!(opts && opts.withEvidence);
   var marker = '\\"results\\":[';
   var idx = html.indexOf(marker);
   if (idx < 0) throw new Error("datalearner 详情页未找到 results 数组(站点结构变更)");
@@ -79,7 +83,7 @@ function parseDataLearnerBench(html) {
   var models = [];
   rows.forEach(function (r) {
     if (!r || !r.modelAbbrName || r.evalResult == null) return;
-    models.push({
+    var rec = {
       name: String(r.modelAbbrName).trim(),
       score: Math.round(parseFloat(r.evalResult) * 100) / 100,
       mode: r.modelMode ? String(r.modelMode).trim() : "",
@@ -87,7 +91,17 @@ function parseDataLearnerBench(html) {
       params: r.parameterSize != null ? String(r.parameterSize) : null,
       org: r.orgName || null,
       license: r.commercialUsage || null
-    });
+    };
+    if (withEvidence) {
+      var ev = r.evidence || {};
+      rec.evidence = {
+        sourceUrl: ev.sourceUrl || null,
+        sourceTier: ev.sourceTier || null,
+        evaluationMethod: ev.evaluationMethod || null,
+        sourceName: ev.sourceName || null
+      };
+    }
+    models.push(rec);
   });
   if (!models.length) throw new Error("datalearner 详情页未解析到任何模型条目");
   return models;

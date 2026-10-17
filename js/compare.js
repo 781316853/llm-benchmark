@@ -30,7 +30,7 @@
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
   // 亿模亿样取 Elo 原值(源站已是每模型最高分档)
-  // Terminal-Bench / ModelDial / 亿模亿样计入综合分与命中;NL2Repo、无机酸前端实测与其余权威基准(仅展示)不参与任何定位
+  // Terminal-Bench / ModelDial / 亿模亿样计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
@@ -148,6 +148,8 @@
   //  (与 CursorBench / FrontierCode 同属「仅展示」处理)。计分组回到 6 组。
   //  2026-10-16 起:AI 能力专项测试(atmeplz,原 12%)整体下线,由「亿模亿样 · 模型效果对比」
   //  (gallery.arenaofbias.icu 前端作品社区盲评 Elo)接替其席位;权重仍为 12%,计分组维持 6 组。
+  //  2026-10-17 起:「无机酸实测」标签页下线,由「亿模亿样」标签页接替;
+  //  仅调整页面与数据展示,计分口径与权重不变。
   //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
   //  故上列权重无需凑满 100%(6 组之和 0.89)。
   var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, llm: 0.12, arenaofbias: 0.12 };

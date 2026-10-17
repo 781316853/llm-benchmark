@@ -67,7 +67,7 @@ function appendMissingSeed(models, benchKey, nameOf) {
     if (have[normName(s.name)]) { console.log("  [" + srcOf(s) + "] 已收录,跳过: " + s.name); return; }
     have[normName(s.name)] = true;
     const rec = { model: s.name, score: s.score, src: srcOf(s) };
-    ["org", "effort", "agent", "date"].forEach(function (k) { if (s[k] != null) rec[k] = s[k]; });
+    ["org", "effort", "agent", "date", "size", "context", "cost", "license"].forEach(function (k) { if (s[k] != null) rec[k] = s[k]; });
     models.push(rec);
     added++;
     console.log("  [" + srcOf(s) + "] 补缺: " + s.name + " (" + s.score + ")");

@@ -33,7 +33,7 @@ function num(v) {
 // 剥离源站 slug 的厂商命名空间前缀(如 "anthropic/claude-sonnet-5.5" -> "claude-sonnet-5.5")
 // ⚠️ 必须剥:本站以模型名作为跨源归并与别名表的查找键,带前缀的写法归一后是
 //    "anthropic-claude-sonnet-5-5",命中不了别名表,会在「其他」下建出一条与
-//    无机酸榜「Claude Sonnet 5.5」并排的幽灵模型。前缀只是渠道侧的命名空间,
+//    亿模亿样榜「Claude Sonnet 5.5」并排的幽灵模型。前缀只是渠道侧的命名空间,
 //    厂商信息本就由 provider/别名的 canonical 承担,丢掉不损失可比性。
 // 只认紧邻斜杠的开头段(displayName 的档位分隔是 " / XHigh" 带空格,不能被误伤)。
 const NAMESPACE_RE = /^[A-Za-z0-9._+-]+\//;

@@ -1,5 +1,5 @@
 // llm-stats.com 聚合表共享解析器
-// 首页(如 /benchmarks/gpqa、/benchmarks/humanity%27s-last-exam、/benchmarks/nl2repo)
+// 首页(如 /benchmarks/humanity%27s-last-exam、/benchmarks/nl2repo)
 // 均为服务端渲染 HTML,表头形如:#|Model|Score(0-1)|Size|Context|Cost|License。
 // 与 lastexam.js / arcagi3.js 的解析逻辑一致,抽出共享,供多个权威源复用。
 // 输出:{ models:[{rank, model, org, score(0-100), size, context, cost, license}], tasks }

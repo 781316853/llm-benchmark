@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-10-17',
-  'overallScore': 0.947,
+  'overallScore': 0.944,
   'sources': [
     {
       'id': 'datalearner',
@@ -99,17 +99,6 @@ window.QUALITY = {
       'name': 'FrontierCode',
       'status': 'ok',
       'modelCount': 46,
-      'updated': '2026-10-17',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
-      'id': 'gpqa',
-      'name': 'GPQA Diamond',
-      'status': 'ok',
-      'modelCount': 50,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -231,17 +220,6 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
-      'updated': '2026-10-17',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
-      'id': 'wujisuan',
-      'name': '无机酸 · AI 前端实测',
-      'status': 'ok',
-      'modelCount': 16,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -970,14 +948,6 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
-    'gpqa': {
-      'rate': 1,
-      'total': 50,
-      'complete': 50,
-      'modelCount': 50,
-      'missingFields': {},
-      'flag': 'ok'
-    },
     'hle': {
       'rate': 1,
       'total': 58,
@@ -1067,14 +1037,6 @@ window.QUALITY = {
       'modelCount': 9,
       'missingFields': {},
       'flag': 'ok'
-    },
-    'wujisuan': {
-      'rate': 1,
-      'total': 16,
-      'complete': 16,
-      'modelCount': 16,
-      'missingFields': {},
-      'flag': 'ok'
     }
   },
   'timeliness': {
@@ -1119,11 +1081,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'frontiercode': {
-      'updated': '2026-10-17',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
-    'gpqa': {
       'updated': '2026-10-17',
       'ageDays': 0,
       'flag': 'ok'
@@ -1179,11 +1136,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'tbscience': {
-      'updated': '2026-10-17',
-      'ageDays': 0,
-      'flag': 'ok'
-    },
-    'wujisuan': {
       'updated': '2026-10-17',
       'ageDays': 0,
       'flag': 'ok'
