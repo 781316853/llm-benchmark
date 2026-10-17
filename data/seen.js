@@ -270,6 +270,9 @@ window.SEEN = {
     'datalearner|Muse Wonder': '2026-10-13',
     'tbench|Muse Wonder Full': '2026-10-13',
     'tbench|Muse Wonder': '2026-10-13',
-    'llm|Gemini 4 Argon (high)': '2026-10-14'
+    'llm|Gemini 4 Argon (high)': '2026-10-14',
+    'deepswe|DeepSeek-V4.1-Flash-1017': '2026-10-17',
+    'datalearner|DeepSeek-V4.1-Flash-1017': '2026-10-17',
+    'tbench|DeepSeek-V4.1-Flash-1017': '2026-10-17'
   }
 };

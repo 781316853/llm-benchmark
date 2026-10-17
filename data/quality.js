@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-10-17',
-  'overallScore': 0.944,
+  'overallScore': 0.947,
   'sources': [
     {
       'id': 'datalearner',
@@ -43,7 +43,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 72,
+      'modelCount': 73,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 39,
+      'modelCount': 40,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -106,6 +106,17 @@ window.QUALITY = {
       'errors': []
     },
     {
+      'id': 'gpqa',
+      'name': 'GPQA Diamond',
+      'status': 'ok',
+      'modelCount': 50,
+      'updated': '2026-10-17',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
@@ -120,7 +131,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 33,
+      'modelCount': 34,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -142,7 +153,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 40,
+      'modelCount': 41,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -153,7 +164,7 @@ window.QUALITY = {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
-      'modelCount': 39,
+      'modelCount': 40,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -186,7 +197,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 40,
+      'modelCount': 41,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -220,6 +231,17 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
+      'updated': '2026-10-17',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'wujisuan',
+      'name': '无机酸 · AI 前端实测',
+      'status': 'ok',
+      'modelCount': 16,
       'updated': '2026-10-17',
       'ageDays': 0,
       'completeness': 1,
@@ -437,22 +459,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Claude Fable 5',
-      'name': 'Claude Fable 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'deepswe_v11',
-        'datalearner'
-      ],
-      'scores': {
-        'deepswe_v11': 70,
-        'datalearner': 69.4
-      },
-      'mean': 69.7,
-      'stddev': 0.3,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'GPT-5.6 Terra',
       'name': 'GPT-5.6 Terra',
       'vendor': 'OpenAI',
@@ -469,6 +475,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Claude Fable 5',
+      'name': 'Claude Fable 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'deepswe_v11',
+        'datalearner'
+      ],
+      'scores': {
+        'deepswe_v11': 70,
+        'datalearner': 69.8
+      },
+      'mean': 69.9,
+      'stddev': 0.1,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Claude Sonnet 5.5',
       'name': 'Claude Sonnet 5.5',
       'vendor': 'Anthropic',
@@ -481,6 +503,22 @@ window.QUALITY = {
         'datalearner': 71
       },
       'mean': 71,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'DeepSeek V4.1 Flash 1017',
+      'name': 'DeepSeek-V4.1-Flash-1017',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'deepswe_v11',
+        'datalearner'
+      ],
+      'scores': {
+        'deepswe_v11': 77,
+        'datalearner': 77
+      },
+      'mean': 77,
       'stddev': 0,
       'flag': 'ok'
     },
@@ -517,18 +555,18 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Grok 4.7',
-      'name': 'Grok 4.7',
-      'vendor': 'xAI',
+      'canonId': 'DeepSeek V4.1 Flash',
+      'name': 'DeepSeek-V4.1-Flash',
+      'vendor': 'DeepSeek',
       'sources': [
         'deepswe_v11',
         'datalearner'
       ],
       'scores': {
-        'deepswe_v11': 71,
-        'datalearner': 71
+        'deepswe_v11': 74.2,
+        'datalearner': 74.2
       },
-      'mean': 71,
+      'mean': 74.2,
       'stddev': 0,
       'flag': 'ok'
     },
@@ -565,18 +603,18 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'DeepSeek V4.1 Flash',
-      'name': 'DeepSeek-V4.1-Flash',
-      'vendor': 'DeepSeek',
+      'canonId': 'Grok 4.7',
+      'name': 'Grok 4.7',
+      'vendor': 'xAI',
       'sources': [
         'deepswe_v11',
         'datalearner'
       ],
       'scores': {
-        'deepswe_v11': 74.2,
-        'datalearner': 74.2
+        'deepswe_v11': 71,
+        'datalearner': 71
       },
-      'mean': 74.2,
+      'mean': 71,
       'stddev': 0,
       'flag': 'ok'
     },
@@ -597,9 +635,9 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'muse-wonder-full',
+      'canonId': 'Muse Wonder Full',
       'name': 'Muse Wonder Full',
-      'vendor': '其他',
+      'vendor': 'Meta',
       'sources': [
         'deepswe_v11',
         'datalearner'
@@ -615,7 +653,7 @@ window.QUALITY = {
     {
       'canonId': 'Muse Wonder',
       'name': 'Muse Wonder',
-      'vendor': '其他',
+      'vendor': 'Meta',
       'sources': [
         'deepswe_v11',
         'datalearner'
@@ -656,9 +694,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 72,
-      'complete': 72,
-      'modelCount': 72,
+      'total': 73,
+      'complete': 73,
+      'modelCount': 73,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -682,9 +720,9 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 39,
-      'complete': 39,
-      'modelCount': 39,
+      'total': 40,
+      'complete': 40,
+      'modelCount': 40,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -704,6 +742,14 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
+    'gpqa': {
+      'rate': 1,
+      'total': 50,
+      'complete': 50,
+      'modelCount': 50,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'hle': {
       'rate': 1,
       'total': 58,
@@ -714,9 +760,9 @@ window.QUALITY = {
     },
     'lastexam': {
       'rate': 1,
-      'total': 33,
-      'complete': 33,
-      'modelCount': 33,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -732,17 +778,17 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 40,
-      'complete': 40,
-      'modelCount': 40,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
     'nl2repo': {
       'rate': 1,
-      'total': 39,
-      'complete': 39,
-      'modelCount': 39,
+      'total': 40,
+      'complete': 40,
+      'modelCount': 40,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -764,9 +810,9 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 40,
-      'complete': 40,
-      'modelCount': 40,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -791,6 +837,14 @@ window.QUALITY = {
       'total': 9,
       'complete': 9,
       'modelCount': 9,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'wujisuan': {
+      'rate': 1,
+      'total': 16,
+      'complete': 16,
+      'modelCount': 16,
       'missingFields': {},
       'flag': 'ok'
     }
@@ -841,6 +895,11 @@ window.QUALITY = {
       'ageDays': 0,
       'flag': 'ok'
     },
+    'gpqa': {
+      'updated': '2026-10-17',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
     'hle': {
       'updated': '2026-10-17',
       'ageDays': 0,
@@ -892,6 +951,11 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'tbscience': {
+      'updated': '2026-10-17',
+      'ageDays': 0,
+      'flag': 'ok'
+    },
+    'wujisuan': {
       'updated': '2026-10-17',
       'ageDays': 0,
       'flag': 'ok'
