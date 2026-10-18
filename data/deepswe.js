@@ -1,6 +1,6 @@
 // 数据源1:DeepSWE 基准快照(云端抓取)
 // 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
-// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-10-17)
+// 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 2026-10-18)
 // 补充:厂商官方发布(博客/模型卡/更新页 T2,人工转录种子层,只补缺失模型,协议不可比仅供参考;Qwen 见 https://developer.aliyun.com/article/1763215,DeepSeek 见 https://api-docs.deepseek.com/zh-cn/updates)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
@@ -11,8 +11,8 @@ window.DEEPSWE = {
   source: "DeepSWE",
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
-  updated: "2026-10-17",
-  refreshedAt: "2026-10-17 21:04",
+  updated: "2026-10-18",
+  refreshedAt: "2026-10-18 14:13",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 40 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
