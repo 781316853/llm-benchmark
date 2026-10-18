@@ -2,15 +2,54 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-17',
+  'updated': '2026-10-18',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '模型发布',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-18',
+      'title': 'DeepSeek 更新 V4.1 Flash 模型并开放搜索接口',
+      'brief': '10月17日 ， DeepSeek 发布并开源 DeepSeek-V4.1-Flash-1017 ，官方网页端、App 与 API 已同步切换到新版本， API 调用方式和价格不变，继续使用 deepseek-flash 即可访问。',
+      'url': 'https://api-docs.deepseek.com/zh-cn/news/news261017',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-18',
+      'title': 'OpenCode 披露安全事件，部分用户受影响',
+      'brief': 'OpenCode 披露一起安全事件。',
+      'url': 'https://x.com/opencode/status/2111519637049319818',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-18',
+      'title': 'Codex 28 天活动第 13 天完整重置用量',
+      'brief': 'OpenAI Codex 负责人 Tibo 宣布，在此前启动的 28 天 活动第 13 天 ，完整重置用量限制。此次重置已于北京时间 10 月 18 日 早上约 5 点 完成。',
+      'url': 'https://x.com/thsottiaux/status/2111566005684289735',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-18',
+      'title': 'Tibo 回应产品改进建议：其中两项在做',
+      'brief': 'OpenAI Codex 负责人 Tibo 在 X 上回复用户 AI Fun 的产品改进建议，称其中两项正在开发，但没有说明是哪两项。 AI Fun 提出的 5 项建议包括： Plus 取消 5 小时限制、向 Plus 用户开放 dot 、将 ultrafast 改为提升 15 倍速度， Pro20x 用量翻倍，以及将 6.1 Sol 的 TPS 至少提升至 50 。',
+      'url': 'https://x.com/thsottiaux/status/2111339932614861298',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-18',
+      'title': 'WorkBuddy 国际版接入最新 DeepSeek 模型，限时免费',
+      'brief': 'WorkBuddy 宣布， WorkBuddy 国际版已更新至最新的 DeepSeek 模型，并免费开放至 10 月 31 日 。 DeepSeek 发布模型时表示，此次新版 DeepSeek-V4.1-Flash-1017 模型专门针对 WorkBuddy 等平台进行了优化。',
+      'url': 'https://x.com/WorkBuddy_AI/status/2111404103402430558',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-10-17',
       'title': '有关部门拟增列AI技术进入出口管制目录',
@@ -32,22 +71,6 @@ window.NEWS = {
       'title': 'DeepSeek 整合多支团队成立产品部',
       'brief': '据“赛博禅心”报道， DeepSeek 最近将 Harness、Web、App、Platform 团队整合为产品部，负责公司所有产品、设计和研发工作，由 崔添翼 担任负责人。 崔添翼 已向澎湃新闻确认这一消息属实。',
       'url': 'https://mp.weixin.qq.com/s/oHvOQB8QfOS_FKieyPgQAg',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'DeepSeek 新增搜索与抓取 API 并按次收费',
-      'brief': 'DeepSeek 为网页搜索和抓取提供独立的 Search 、 Fetch API ，按搜索、抓取请求次数计算费用。',
-      'url': 'https://api-docs.deepseek.com/zh-cn/guides/search/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'Google AI Studio 向 Pro 订阅用户开放 Gemini 4 Argon',
-      'brief': 'Google 已在 AI Studio 向 Google AI Pro 订阅者开放 Gemini 4 Argon ，支持在 AI Studio 的 Build 和 Playground 中使用。官方文档显示， Pro 和 Ultra 订阅方案均可访问该模型，免费方案不提供访问权限。',
-      'url': 'https://x.com/GoogleAIStudio/status/2111240722426802258',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
@@ -106,46 +129,6 @@ window.NEWS = {
       'url': 'https://mp.weixin.qq.com/s/_vVPGBW-6AJmT0D2JcAilA',
       'source': '橘鸦AI早报',
       'type': '开发生态'
-    },
-    {
-      'date': '2026-10-16',
-      'title': 'FLUX 3 Image Klein 发布并开放权重',
-      'brief': 'Black Forest Labs 发布 FLUX 3 Image Klein ，基础版和蒸馏版的权重已在 Hugging Face 提供，分别面向微调训练和低延迟生成。该模型的 图像 Transformer 为 56 亿 参数，不含独立的文本编码器，支持原生 4K 生成、最多 10 张 参考图和边界框布局控制。',
-      'url': 'https://bfl.ai/blog/flux-3-image-klein',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-16',
-      'title': '微软宣布 MAI-Base-2 完成预训练，2.8T总参数',
-      'brief': '微软 AI 已完成 MAI-Base-2 的预训练，该自研 MoE 基础模型拥有 2.8 万亿 总参数、 800 亿 激活参数，并原生采用视觉与语言结合的 VLM 架构。',
-      'url': 'https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-16',
-      'title': '可灵 Kling 4.0 全量上线，接入 MCP 和 CLI',
-      'brief': '可灵 AI 已全量上线 Kling 4.0 ，同步升级创作页面，并接入 MCP 和 CLI 。该版本支持生成 3—30 秒 的视频，最多输入 10 张 关键帧图像，单次生成可组合使用最多 15 项 参考素材。',
-      'url': 'https://mp.weixin.qq.com/s?__biz=MzU5NTkwNDU2OA==&amp;mid=2247497194&amp;idx=1&amp;sn=5ad686eba90d8332d7c49025ab39468f&amp;chksm=ff6d7094465595fa40ad92cba41a893249d223c00036fc9c097d540169441abb1aba8da7ddfc#rd',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-16',
-      'title': '阶跃 Step 5 Preview 开放模型权重',
-      'brief': '阶跃 宣布已开放 Step 5 Preview 的 BF16 和 FP8 权重，可在 Hugging Face 与 ModelScope 获取，并同步公开技术博客。',
-      'url': 'https://github.com/stepfun-ai/Step-5-Preview',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-16',
-      'title': 'PrismML 发布 Bonsai 2 系列小模型',
-      'brief': 'PrismML 发布基于 Qwen3.5 的 Ternary Bonsai 2 2B、4B 和 9B ，支持推理、视觉理解和工具调用，模型权重以 Apache 2.0 许可开放。',
-      'url': 'https://prismml.com/news/bonsai-2-family',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };

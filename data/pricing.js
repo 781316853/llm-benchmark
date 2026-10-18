@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价(codingplan.fyi plan-models.json 的 pricing 字段),更新于 2026-10-17
+// 数据源:模型 API 标价(codingplan.fyi plan-models.json 的 pricing 字段),更新于 2026-10-18
 // 来源:https://www.codingplan.fyi/plan-models.json + config.json(汇率;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站 slug/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -12,8 +12,8 @@ window.PRICING = {
   'source': 'Coding Plan 对比(codingplan.fyi)',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-10-17',
-  'refreshedAt': '2026-10-17 21:04',
+  'updated': '2026-10-18',
+  'refreshedAt': '2026-10-18 14:13',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -25,7 +25,7 @@ window.PRICING = {
     'withPricing': 1465,
     'comparable': 1000,
     'models': 93,
-    'unresolved': 17
+    'unresolved': 16
   },
   'desc': 'codingplan.fyi plan-models.json 的模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。',
   'models': [
@@ -374,7 +374,7 @@ window.PRICING = {
       'costPerM': 1.496
     },
     {
-      'id': 'mistral-large-4',
+      'id': 'mistral large 4',
       'slug': 'mistral-large-4',
       'inputCnyPerM': 9.248,
       'cacheCnyPerM': 0.952,
@@ -518,7 +518,7 @@ window.PRICING = {
       'costPerM': 0.4828
     },
     {
-      'id': 'gemma-4-31b',
+      'id': 'Gemma 4 31B',
       'slug': 'gemma-4-31b',
       'inputCnyPerM': 0.952,
       'cacheCnyPerM': 0.34,
@@ -582,7 +582,7 @@ window.PRICING = {
       'costPerM': 0.2601
     },
     {
-      'id': 'gpt-oss-20b',
+      'id': 'GPT-OSS 20B',
       'slug': 'gpt-oss-20b',
       'inputCnyPerM': 0.476,
       'cacheCnyPerM': 0.238,
@@ -662,7 +662,7 @@ window.PRICING = {
       'costPerM': 0.1683
     },
     {
-      'id': 'step-3-5-flash',
+      'id': 'Step 3.5 Flash',
       'slug': 'step-3-5-flash',
       'inputCnyPerM': 0.612,
       'cacheCnyPerM': 0.136,
