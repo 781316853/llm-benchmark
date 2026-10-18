@@ -17,7 +17,7 @@
   var fmtK = function (n) { return n >= 1000 ? (n / 1000).toFixed(0) + "k" : n; };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>\"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" }[c]; }); };
-  var dot = function (c) { return '<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
+  var dot = function (c) { return '<span class="vdot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
   // 外链协议白名单:更新日志的 url/锚点取自各源站页面,不信任非 http(s) 协议(如 javascript:),
   // 不合法就退回该工具自己的日志页地址 —— 跳转入口不能因为源站被篡改而变成可执行脚本。
   function safeUrl(u, fallback) {
@@ -30,7 +30,7 @@
   // 权威基准页的部分列表格显示来源侧 org 文案,用它当着色键会取不到色、与左侧色点脱节,故二者分离。
   var vdot = function (vendor) { return dot(D.vendorColor(vendor)); };
   var vname = function (vendor, label) {
-    return '<span style="color:' + D.vendorColor(vendor) + '">' + esc(label || vendor) + '</span>';
+    return '<span class="vname" style="color:' + D.vendorColor(vendor) + '">' + esc(label || vendor) + '</span>';
   };
   // 榜色数值包装(榜色类见 styles.css 的 .bv-*):v 为空时返回原色占位「—」——
   // 占位符代表"该榜无此模型数据",上色会读成"这里有个值"
@@ -1321,8 +1321,13 @@
     var hlMs = D.hle();
     var hlMixed = mixedSrc(hlMs);
     var hlRows = hlMs.map(function (m, i) {
+      var proto = m.protocol || "未标注";
+      var protoCls = proto === "工具" ? "is-tool" : proto === "无工具" ? "is-notool" : "is-unknown";
+      var protoHtml = '<span class="hle-proto ' + protoCls + '" title="' +
+        esc(m.protocolNote || "源站未提供逐行评测协议") + '">' + esc(proto) + '</span>';
       return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (hlMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td><td class="num">' + bvSpan("hle", m.score + '%') + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td><td>' + protoHtml + '</td>' +
+        '<td class="num">' + bvSpan("hle", m.score + '%') + '</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
@@ -1330,7 +1335,8 @@
       '<div class="table-wrap"><table id="authHleTable" class="data-table"></table></div>',
       '主渠道:datalearner(厂商官方发布)· 补充:llm-stats 聚合表、benchlm.ai 镜像与 AA 复测口径 · 更新 ' + esc(hl.updated || "") +
       ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;' + esc(hl.channelPolicy || "") +
-      '。口径注:AA 复测为第三方自家 harness(接近无工具口径),分数系统性低于官方口径约 5 分,仅补官方渠道未收录的模型,行级「AA 复测」徽标区分;重叠模型保留现有高分。本榜仅展示,不计入综合分。');
+      '。工具口径列:工具=源站声明带工具(含联网/并行),无工具=源站声明闭卷,未标注=源站未提供逐行协议(聚合/镜像混合口径);跨口径分数不可直接比较。' +
+      'AA 复测为第三方自家 harness(接近无工具口径),分数系统性低于官方口径约 5 分,仅补官方渠道未收录的模型,行级「AA 复测」徽标区分;重叠模型保留现有高分。本榜仅展示,不计入综合分。');
     // 10) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();
@@ -1429,7 +1435,7 @@
     bcTable("authBCVQATable", vqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
     bcTable("authBCCQATable", cqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
     authDeferTable("authApexTable", ["#", "模型", "厂商", "Mean Score", "Pass@1", "强度", "样本数"], apRows, ["", "", "", "num bv bv-apex", "num", "num", "num"]);
-    authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num bv bv-hle", "num", "num", "num"]);
+    authDeferTable("authHleTable", ["#", "模型", "厂商", "工具口径", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "", "num bv bv-hle", "num", "num", "num"]);
     authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authProgrambenchTable", ["#", "模型", "Agent", "Fully Resolved", "Almost", "Raw Pass Rate"], pbRows, ["", "", "", "num bv bv-programbench", "num", "num"]);
     authDeferTable("authCursorbenchTable", ["#", "模型", "档位", "CursorBench 4.0", "成本/任务", "Tokens/任务", "步数/任务"], cbRows, ["", "", "", "num bv bv-cursorbench", "num", "num", "num"]);

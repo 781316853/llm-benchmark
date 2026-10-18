@@ -144,7 +144,7 @@
         formatter: function (p) { return p[0].name + "<br/><b>" + p[0].value + (unit || "") + "</b>"; } },
       series: [{
         type: "bar", data: values.map(function (v) {
-          return { value: v, itemStyle: { color: color || C.brand, borderRadius: [0, 4, 4, 0] } };
+          return { value: v, itemStyle: { color: color || C.brand, borderRadius: [0, 0, 0, 0] } };
         }),
         barWidth: "48%",
         label: { show: true, position: "right", color: A.axisLabel.color,
