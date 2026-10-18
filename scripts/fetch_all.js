@@ -35,7 +35,8 @@ const changelog = require("./lib/changelog");
   //    fail-soft 在 updateChangelog 内部逐工具处理,单源失败沿用旧条目并标 stale)
   try { await changelog.updateChangelog(); }
   catch (e) { console.log("[changelog] 维护失败:" + e.message); }
-  // 6) 维护模型 API 标价(codingplan.fyi plan-models.json;供总览「性价比」列;fail-soft,失败保留旧文件)
+  // 6) 维护模型 API 标价(codingplan.fyi 主源 + models.dev 排名模型缺价补齐;供总览「性价比」列;
+  //    fail-soft,失败保留旧文件;补价源不可用时沿用上次补价)
   try { await pricing.updatePricing(); }
   catch (e) { console.log("[pricing] 维护失败:" + e.message); }
   console.log("完成 @ " + CONFIG.TODAY);

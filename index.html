@@ -16,8 +16,9 @@
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="data/models.js?v=20261017a"></script>
   <!-- 模型 API 标价(输入/缓存输入/输出三档单价 → 每百万 token 综合成本):总览矩阵「性价比」列要用,
-       而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。数据源 codingplan.fyi plan-models.json -->
-  <script defer src="data/pricing.js?v=20261016a"></script>
+       而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。
+       主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
+  <script defer src="data/pricing.js?v=20261018a"></script>
   <script defer src="data/deepswe.js?v=20261017a"></script>
   <script defer src="data/deepswe_v10.js?v=20260824a"></script>
   <script defer src="data/llm2014.js?v=20260824a"></script>
@@ -43,10 +44,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261017a"></script>
+  <script defer src="js/data.js?v=20261018a"></script>
   <script defer src="js/charts.js?v=20261018a"></script>
   <script defer src="js/compare.js?v=20261016b"></script>
-  <script defer src="js/app.js?v=20261018e"></script>
+  <script defer src="js/app.js?v=20261018f"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -135,7 +136,7 @@
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
             <li><b class="note-term">命中</b>6 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样;HLE 仅参考,不计分。</li>
             <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
-            <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格取自 codingplan.fyi);仅对命中 ≥4 榜的排名模型计算。</li>
+            <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
             <li><b class="note-term">行与徽标</b>绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,勾选「显示全部模型」才出现;NEW 为近 7 天首次上榜。</li>
           </ul>
           <details class="notes-more">
@@ -144,7 +145,7 @@
               <li><b class="note-term">权重</b>DeepSWE 16% · Code Arena·WebDev 22% · Terminal-Bench 11% · ModelDial 16% · llm2014 12% · 亿模亿样 12%(合计 0.89,按在场榜归一;缺测权重回流)。</li>
               <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为后端 40% + 前端 30% + 知识 30%;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平)。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
-              <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币;指数与综合分同源,不可跨日/跨快照比较。</li>
+              <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);指数与综合分同源,不可跨日/跨快照比较。</li>
               <li><b class="note-term">数据来源</b>按 官方实测 &gt; 厂商发布 &gt; 第三方聚合 的优先级合并,低层级只补缺;数据为快照,仅用于学习与对比展示,不代表绝对评价。</li>
             </ul>
           </details>

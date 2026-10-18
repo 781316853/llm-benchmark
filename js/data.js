@@ -700,7 +700,8 @@
     modeldialConfigs: modeldialConfigs,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
-    // codingplan.fyi 模型 API 标价快照(总览矩阵「性价比」列;文件缺失/加载失败时返回 null)
+    // 模型 API 标价快照(主源 codingplan.fyi,排名模型缺价由 models.dev 补齐;
+    // 总览矩阵「性价比」列;文件缺失/加载失败时返回 null)
     pricing: function () { return window.PRICING || null; },
     // Agent 工具更新日志(「Agent工具更新日志」页;无数据文件时返回 null)
     changelog: changelog,

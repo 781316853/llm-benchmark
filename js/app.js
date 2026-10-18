@@ -214,7 +214,7 @@
     //   (它们格内显示「—」,若这里仍返回数,排序时会把它们按比值插进排名行之间 —— 排序依据与
     //    看到的内容就对不上了);nullLast 再把 null 行恒定沉底,不随升/降序翻转跑到最前
     { key: "value", label: "性价比", type: "num", bench: false, nullLast: true,
-      tip: "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价为 codingplan.fyi 模型 API 标价(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见输入/缓存输入/输出三档单价",
+      tip: "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价优先取 codingplan.fyi,排名模型缺价时由 models.dev 补齐(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见来源与输入/缓存输入/输出三档单价",
       val: function (r) {
         if (r.benchCount < 4) return null;   // 参考行/单榜行不参与排名,该列显示「—」,排序时沉底
         var p = priceOf(r.id);
@@ -516,12 +516,13 @@
         (function () {
           if (unranked) return '<td class="num"><span class="tier-na">—</span></td>';
           var p = priceOf(r.id);
-          if (!p) return '<td class="num"><span class="tier-na" title="未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
+          if (!p) return '<td class="num"><span class="tier-na" title="codingplan.fyi 与 models.dev 均未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
           var score = CMP.composite(r);
           var idx = score / p.costPerM;
           var tip = "性价比 " + idx.toFixed(1) + " = 综合分 " + score.toFixed(1) + " ÷ " + fmtCostPerM(p.costPerM) + "/M · " +
             "输入 ¥" + p.inputCnyPerM + " / 缓存输入 ¥" + p.cacheCnyPerM + " / 输出 ¥" + p.outputCnyPerM + "(¥/百万 token)· " +
-            "综合成本 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出(按 1M token 实际编程比例折算);单价来源 codingplan.fyi 模型 API 标价";
+            "综合成本 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出(按 1M token 实际编程比例折算);单价来源 " +
+            (p.priceSource || "codingplan.fyi");
           return '<td class="num"><span class="bv bv-value" title="' + esc(tip) + '">' + idx.toFixed(1) + '</span>' +
             '<br><span class="cell-cost">' + fmtCostPerM(p.costPerM) + '/M</span></td>';
         })() +

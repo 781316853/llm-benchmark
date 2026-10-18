@@ -470,12 +470,25 @@ module.exports = {
   // 每个 plan×model 的 pricing 字段(输入 / 缓存输入 / 输出三档单价,均 $/百万 token)。
   // 供总览矩阵「性价比」列使用:按 1M token 实际编程比例(95% 缓存输入 + 4.5% 未缓存输入
   // + 0.5% 输出)折算「每百万 token 综合成本」,再与综合分相除得性价比指数。
+  // 主源 codingplan.fyi 未收录的新模型,由 models.dev 只补「排名模型(命中≥4榜)」的空缺,
+  //   不覆盖主源已有价格;每条价格带 priceSource,前端悬浮提示按来源显示。
   // 仿 news/codingplan 模式:在 fetch_all.js 旁路调用,不进 registry/校验器。
   pricing: {
     host: "www.codingplan.fyi",
     officialUrl: "https://www.codingplan.fyi/?view=usage",
     configUrl: "https://www.codingplan.fyi/config.json",
     planModelsUrl: "https://www.codingplan.fyi/plan-models.json",
+    // 缺价补齐源:models.dev 公开目录(USD/百万 token,input/output/cache_read)。
+    // 只用于主源没有的排名模型;抓取失败时 fail-soft,仍写出主源结果。
+    modelsDevUrl: "https://models.dev/api.json",
+    // provider 优先级(数值越靠前越优先):官方 provider 优先,openrouter 汇总价兜底。
+    // 官方 provider 的 model key 与 canonical 名通常可精确归一匹配;openrouter 的
+    // "vendor/model" 键在匹配时取末段。
+    modelsDevProviderPriority: [
+      "google", "google-vertex", "deepseek", "openai", "anthropic", "xai",
+      "alibaba", "alibaba-cn", "moonshotai", "moonshotai-cn", "zhipuai",
+      "minimax", "meta", "mistral", "openrouter"
+    ],
     outFile: "pricing.js",
     windowVar: "PRICING",
     // config.json 取不到汇率时的兜底(与 codingplan.js 一致)
