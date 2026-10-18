@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-17 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-18 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-0bb90a9da1ebd0f05d1764c9)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-accd740e2c6411a747376b52)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-0bb90a9da1ebd0f05d1764c9',
+  'batchId': 'overall-accd740e2c6411a747376b52',
   'batchRevision': 363,
-  'batchPublishedAt': '2026-10-17T12:21:36.942Z',
-  'updated': '2026-10-17',
-  'refreshedAt': '2026-10-18 14:13',
+  'batchPublishedAt': '2026-10-18T06:58:23.401Z',
+  'updated': '2026-10-18',
+  'refreshedAt': '2026-10-18 21:24',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -73,9 +73,9 @@ window.MODELDIAL = {
       'provider': 'Claude',
       'effort': 'max',
       'displayName': 'claude-opus-5-5 / Max',
-      'overall': 90.3,
+      'overall': 92.7,
       'backend': 84,
-      'frontend': 89,
+      'frontend': 97,
       'knowledge': 100,
       'elapsedMs': 568802,
       'costUsd': 1.048669,
@@ -704,6 +704,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 4,
+      'provider': 'Claude',
+      'model': 'claude-opus-5-5',
+      'effort': 'max',
+      'displayName': 'claude-opus-5-5 / Max',
+      'overall': 92.7,
+      'backend': 84,
+      'frontend': 97,
+      'knowledge': 100,
+      'elapsedMs': 568802,
+      'costUsd': 1.048669,
+      'tags': []
+    },
+    {
+      'rank': 5,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-astra',
       'effort': 'high',
@@ -717,7 +731,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 5,
+      'rank': 6,
       'provider': 'codex-local',
       'model': 'gpt-6.1-sol',
       'effort': 'high',
@@ -728,20 +742,6 @@ window.MODELDIAL = {
       'knowledge': 85,
       'elapsedMs': 1091140,
       'costUsd': 0.653799,
-      'tags': []
-    },
-    {
-      'rank': 6,
-      'provider': 'Claude',
-      'model': 'claude-opus-5-5',
-      'effort': 'max',
-      'displayName': 'claude-opus-5-5 / Max',
-      'overall': 90.3,
-      'backend': 84,
-      'frontend': 89,
-      'knowledge': 100,
-      'elapsedMs': 568802,
-      'costUsd': 1.048669,
       'tags': []
     },
     {
