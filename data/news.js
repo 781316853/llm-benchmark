@@ -2,14 +2,48 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-18',
+  'updated': '2026-10-19',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
+    '技术与洞察',
+    '前瞻与传闻',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-19',
+      'title': 'Anthropic 设公益基金，先投 5% 股份',
+      'brief': 'Anthropic 宣布设立全资的 Anthropic Public Benefit Fund ，作为随公司成长而扩大持股的公益实体。基金初始投入公司 5% 的股份，须经股东批准；此后公司估值每较设定基准增长 50% ，董事会可酌情追加 2% ，据 Reuters 报道该基准尚未披露。',
+      'url': 'https://www.anthropic.com/news/public-benefit-fund',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-19',
+      'title': '开源模型背后的训练算力：Wolf 估算累计已近 10 亿美元',
+      'brief': 'Hugging Face 联合创始人 Thomas Wolf 公布了一份粗略估算： Meta 、 NVIDIA 、 阿里巴巴 、 DeepSeek 、 Moonshot 、 Mistral 等约 35 家机构在 Hugging Face Hub 上开源了模型，训练这些模型消耗的算力按当前 GPU 租用价格折算，累计价值接近 10 亿美元 ，而这些模型全部免费下载； 2023 年底 这一数字还不到 4000 万美元 。',
+      'url': 'https://x.com/Thom_Wolf/status/2111828314851598745',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-10-19',
+      'title': 'OpenAI 据称出现 3 个新模型 ID',
+      'brief': '多位 X 用户发现， OpenAI API 中短暂出现 aurora-red-alpha 、 aurora-green-alpha 和 aurora-blue-alpha 这 3 个新模型ID。 TestingCatalog 称，这些模型引用随后已从 API 中移除。',
+      'url': 'https://x.com/testingcatalog/status/2111724606927028578',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
+    {
+      'date': '2026-10-19',
+      'title': '报道称 Anthropic 正与律所商讨 AI 谈判规范',
+      'brief': '据《金融时报》报道， Anthropic 正与律所等法律机构磋商，为代表用户砍价、处理纠纷或协商薪酬的 AI Agent 研究谈判规范。消息人士称，该公司希望了解律师如何在代表客户利益的同时兼顾公平结果。',
+      'url': 'https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-10-18',
       'title': 'DeepSeek 更新 V4.1 Flash 模型并开放搜索接口',
@@ -49,86 +83,6 @@ window.NEWS = {
       'url': 'https://x.com/WorkBuddy_AI/status/2111404103402430558',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-10-17',
-      'title': '有关部门拟增列AI技术进入出口管制目录',
-      'brief': '有关部门发布公告，就修订《中国禁止出口限制出口技术目录》公开征求意见，拟增列人工智能、生物医药、光伏三个领域共 40 项 技术，其中人工智能 23 项 ，涵盖大模型、 Agent 、算力集群和信息处理，意见征集截至 11 月 15 日 。',
-      'url': 'https://aqygzj.mofcom.gov.cn/flzc/gzjgfxwj/art/2026/art_c99f95ca0cd043829ac9991495fc283c.html',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'OpenAI 宣布优化 Codex 提升用户有效使用量',
-      'brief': 'OpenAI 的 Codex 负责人 Tibo 表示， Codex 和 Work 已完成改进，提高用户可获得的有效使用量。具体措施包括在子 Agent 之间复用上下文、延长上下文缓存时间，以及优化请求路由以提高缓存命中率。这些改进主要围绕上下文复用和提高缓存命中率展开',
-      'url': 'https://x.com/thsottiaux/status/2111244596131111253',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'DeepSeek 整合多支团队成立产品部',
-      'brief': '据“赛博禅心”报道， DeepSeek 最近将 Harness、Web、App、Platform 团队整合为产品部，负责公司所有产品、设计和研发工作，由 崔添翼 担任负责人。 崔添翼 已向澎湃新闻确认这一消息属实。',
-      'url': 'https://mp.weixin.qq.com/s/oHvOQB8QfOS_FKieyPgQAg',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'WorkBuddy 公布 DeepSeek 故障补偿',
-      'brief': 'WorkBuddy 针对 DeepSeek 服务故障公布积分返还及赠送方案，此前该故障导致端内 DeepSeek 模型无法正常使用，部分用户受到影响。',
-      'url': 'https://mp.weixin.qq.com/s/dGd6Nz03MF4-1ua1CMmZxA',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'Antigravity 为全体用户重置模型用量限额',
-      'brief': 'Google Antigravity 团队成员 Varun Mohan 在 X 上表示，Antigravity 正为所有用户重置 Argon 和 Gemini 模型用量，并鼓励用户在周末继续使用。',
-      'url': 'https://x.com/_mohansolo/status/2111220356178751860',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'ChatGPT 为 dot 推出 iOS 小组件与快捷指令支持',
-      'brief': 'ChatGPT 在 iOS 上为 dot 推出主屏幕小组件，并支持通过苹果快捷指令和操作按钮打开对话或通话。',
-      'url': 'https://x.com/ChatGPT/status/2111210005617889406',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'OpenAI 上线 ChatGPT Slides',
-      'brief': 'OpenAI 开始在 ChatGPT 网页版和桌面 App 中逐步推出 Slides 功能，面向符合条件且可使用 Space 的 Pro 、 Business 和 Enterprise 用户。',
-      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'OpenCode 免费提供 GLM 5.3 Flash',
-      'brief': 'OpenCode 宣布， GLM 5.3 Flash 模型现已在其平台免费提供。',
-      'url': 'https://x.com/opencode/status/2110986357539754114',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'Claude Code 压缩对话，缩短响应等待',
-      'brief': 'Anthropic 优化了 Claude Code 的响应等待时间：每轮发送的对话内容现在会经过 gzip 压缩，云端会话也会在用户开始输入时启动。',
-      'url': 'https://x.com/ClaudeDevs/status/2111209208012210409',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-17',
-      'title': 'Qoder CN 大使计划开放申请',
-      'brief': 'Qoder CN 大使计划焕新升级，现已开放申请，面向愿意持续使用 Qoder CN 、分享真实体验并参与社区共创的用户。',
-      'url': 'https://mp.weixin.qq.com/s/_vVPGBW-6AJmT0D2JcAilA',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     }
   ]
 };

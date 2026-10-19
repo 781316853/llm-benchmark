@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 2026-10-18
+// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 2026-10-19
 // 来源:https://www.codingplan.fyi/plan-models.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -16,8 +16,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-10-18',
-  'refreshedAt': '2026-10-18 22:52',
+  'updated': '2026-10-19',
+  'refreshedAt': '2026-10-19 14:26',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -624,7 +624,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'step-3-7-flash',
+      'id': 'Step 3.7 Flash',
       'slug': 'step-3-7-flash',
       'inputCnyPerM': 1.36,
       'cacheCnyPerM': 0.272,
@@ -678,7 +678,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'gpt-oss-20b',
+      'id': 'GPT-OSS 20B',
       'slug': 'gpt-oss-20b',
       'inputCnyPerM': 0.476,
       'cacheCnyPerM': 0.238,
@@ -714,7 +714,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'mai-code-1-1-flash',
+      'id': 'MAI-Code-1.1-Flash',
       'slug': 'mai-code-1-1-flash',
       'inputCnyPerM': 1.36,
       'cacheCnyPerM': 0.136,
@@ -768,7 +768,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'step-3-5-flash',
+      'id': 'Step 3.5 Flash',
       'slug': 'step-3-5-flash',
       'inputCnyPerM': 0.612,
       'cacheCnyPerM': 0.136,
