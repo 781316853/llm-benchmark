@@ -17,7 +17,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-10-19',
-  'refreshedAt': '2026-10-19 14:26',
+  'refreshedAt': '2026-10-20 00:34',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -444,7 +444,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'mistral-large-4',
+      'id': 'mistral large 4',
       'slug': 'mistral-large-4',
       'inputCnyPerM': 9.248,
       'cacheCnyPerM': 0.952,

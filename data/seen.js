@@ -274,6 +274,9 @@ window.SEEN = {
     'deepswe|DeepSeek-V4.1-Flash-1017': '2026-10-17',
     'datalearner|DeepSeek-V4.1-Flash-1017': '2026-10-17',
     'tbench|DeepSeek-V4.1-Flash-1017': '2026-10-17',
-    'llm|DeepSeek V4.1 Flash 1017 (max)': '2026-10-18'
+    'llm|DeepSeek V4.1 Flash 1017 (max)': '2026-10-18',
+    'deepswe|MiniMax M3.1 Flash': '2026-10-19',
+    'datalearner|MiniMax M3.1 Flash': '2026-10-19',
+    'tbench|MiniMax M3.1 Flash': '2026-10-19'
   }
 };

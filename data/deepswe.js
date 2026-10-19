@@ -12,7 +12,7 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
   updated: "2026-10-19",
-  refreshedAt: "2026-10-19 14:26",
+  refreshedAt: "2026-10-20 00:34",
   version: "v1.1",
   stats: { tasks: 113, repos: 91, languages: 5, models: 40 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
@@ -108,6 +108,16 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
+    'name': 'MiniMax M3.1 Flash',
+    'effort': '最高（工具）',
+    'pass1': 73.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'datalearner'
+  },
+  {
     'name': 'gpt-5-6-sol',
     'effort': 'max',
     'pass1': 73,
@@ -196,16 +206,6 @@ window.DEEPSWE = {
     'outTok': 81500,
     'steps': 98,
     'src': 'official'
-  },
-  {
-    'name': 'GPT-6 Sol',
-    'effort': '最高（工具）',
-    'pass1': 68.8,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'datalearner'
   },
   {
     'name': 'grok-4-6',

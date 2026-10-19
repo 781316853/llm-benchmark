@@ -10,10 +10,10 @@ window.OSWORLD = {
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-19',
-  'refreshedAt': '2026-10-19 14:26',
+  'refreshedAt': '2026-10-20 00:34',
   'stats': {
     'tasks': 108,
-    'entries': 31
+    'entries': 32
   },
   'desc': 'OSWorld 2.0:108 个长时程、端到端的桌面计算机使用工作流(人类中位耗时约 1.6 小时,平均约 318 次工具调用),按二进制完成率与部分得分(检查点达成比例)双口径计分;因二进制完成率极低,榜单按部分得分排序。',
   'models': [
@@ -140,6 +140,15 @@ window.OSWORLD = {
       'score': 62.6,
       'org': 'OpenAI',
       'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'MiniMax M3.1 Flash',
+      'note': '思考档位未公开（工具）',
+      'score': 61.7,
+      'org': 'MiniMaxAI',
+      'reported': '2026-10-19',
       'url': null,
       'src': 'datalearner'
     },

@@ -65,7 +65,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 38,
+      'modelCount': 37,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 265,
+      'modelCount': 267,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -142,7 +142,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 34,
+      'modelCount': 35,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 41,
+      'modelCount': 42,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -175,7 +175,7 @@ window.QUALITY = {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
-      'modelCount': 53,
+      'modelCount': 54,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -186,7 +186,7 @@ window.QUALITY = {
       'id': 'osworld',
       'name': 'OSWorld 2.0',
       'status': 'ok',
-      'modelCount': 31,
+      'modelCount': 32,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -208,7 +208,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 41,
+      'modelCount': 42,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -219,7 +219,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 49,
+      'modelCount': 53,
       'updated': '2026-10-19',
       'ageDays': 0,
       'completeness': 1,
@@ -395,22 +395,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Claude Opus 5',
-      'name': 'Claude Opus 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 72.15,
-        'deepswe_v11': 74
-      },
-      'mean': 73.1,
-      'stddev': 0.92,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'Gemini 3.8 Flash',
       'name': 'Gemini 3.8 Flash',
       'vendor': 'Google',
@@ -440,6 +424,38 @@ window.QUALITY = {
       },
       'mean': 58.5,
       'stddev': 0.5,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'MiniMax M3.1 Flash',
+      'name': 'MiniMax M3.1 Flash',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 72.9,
+        'deepswe_v11': 73.7
+      },
+      'mean': 73.3,
+      'stddev': 0.4,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Claude Opus 5',
+      'name': 'Claude Opus 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 73.23,
+        'deepswe_v11': 74
+      },
+      'mean': 73.6,
+      'stddev': 0.38,
       'flag': 'ok'
     },
     {
@@ -649,22 +665,6 @@ window.QUALITY = {
       'mean': 69,
       'stddev': 0,
       'flag': 'ok'
-    },
-    {
-      'canonId': 'GPT-6 Sol',
-      'name': 'GPT-6 Sol',
-      'vendor': 'OpenAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 68.8,
-        'deepswe_v11': 68.8
-      },
-      'mean': 68.8,
-      'stddev': 0,
-      'flag': 'ok'
     }
   ],
   'completeness': {
@@ -710,9 +710,9 @@ window.QUALITY = {
     },
     'automationbench': {
       'rate': 1,
-      'total': 38,
-      'complete': 38,
-      'modelCount': 38,
+      'total': 37,
+      'complete': 37,
+      'modelCount': 37,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -760,17 +760,17 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 265,
-      'complete': 265,
-      'modelCount': 265,
+      'total': 267,
+      'complete': 267,
+      'modelCount': 267,
       'missingFields': {},
       'flag': 'ok'
     },
     'lastexam': {
       'rate': 1,
-      'total': 34,
-      'complete': 34,
-      'modelCount': 34,
+      'total': 35,
+      'complete': 35,
+      'modelCount': 35,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -786,25 +786,25 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 41,
-      'complete': 41,
-      'modelCount': 41,
+      'total': 42,
+      'complete': 42,
+      'modelCount': 42,
       'missingFields': {},
       'flag': 'ok'
     },
     'nl2repo': {
       'rate': 1,
-      'total': 53,
-      'complete': 53,
-      'modelCount': 53,
+      'total': 54,
+      'complete': 54,
+      'modelCount': 54,
       'missingFields': {},
       'flag': 'ok'
     },
     'osworld': {
       'rate': 1,
-      'total': 31,
-      'complete': 31,
-      'modelCount': 31,
+      'total': 32,
+      'complete': 32,
+      'modelCount': 32,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -818,17 +818,17 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 41,
-      'complete': 41,
-      'modelCount': 41,
+      'total': 42,
+      'complete': 42,
+      'modelCount': 42,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 49,
-      'complete': 49,
-      'modelCount': 49,
+      'total': 53,
+      'complete': 53,
+      'modelCount': 53,
       'missingFields': {},
       'flag': 'ok'
     },

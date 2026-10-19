@@ -15,16 +15,26 @@ window.AUTOMATIONBENCH = {
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-19',
-  'refreshedAt': '2026-10-19 14:26',
+  'refreshedAt': '2026-10-20 00:34',
   'stats': {
     'tasks': 600,
     'domains': 6,
     'tools': 47,
-    'entries': 38,
-    'unsourced': 7
+    'entries': 37,
+    'unsourced': 6
   },
   'desc': 'AutomationBench(Zapier):跨应用业务工作流智能体基准,600 个公开任务分布在 47 个模拟 SaaS 工具、6 个业务域(销售/营销/运营/客服/财务/HR),把一个真实运营请求交给智能体、再按最终环境状态做确定性断言打分(不看回复文本、无 LLM-as-judge);主指标为严格全通过率 task_completed_correctly,越高越好。分数普遍偏低,主因是「宣称完成但环境状态错误」的假自信。',
   'models': [
+    {
+      'model': 'MiniMax M3.1 Flash',
+      'org': 'MiniMaxAI',
+      'score': 62.8,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-10-19',
+      'src': 'datalearner',
+      'rank': 1
+    },
     {
       'model': 'DeepSeek-V4.1-Flash-1017',
       'org': 'DeepSeek-AI',
@@ -33,10 +43,13 @@ window.AUTOMATIONBENCH = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-10-17',
       'src': 'datalearner',
-      'rank': 1
+      'size': '763B',
+      'context': '1.0M',
+      'cost': '$ 0.30 / $ 1.20',
+      'rank': 2
     },
     {
-      'rank': 2,
+      'rank': 3,
       'model': 'Mistral Large 4',
       'org': 'Mistral AI',
       'score': 59.9,
@@ -57,14 +70,14 @@ window.AUTOMATIONBENCH = {
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.22 / $ 0.66',
-      'rank': 3
+      'rank': 4
     },
     {
       'model': 'Atria Dawn Preview',
       'org': 'Shanghai Artificial Intelligence Laboratory',
       'score': 53.8,
       'src': 'benchlm',
-      'rank': 4
+      'rank': 5
     },
     {
       'model': 'MiMo-V2.6-Pro',
@@ -74,14 +87,14 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式（工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 5
+      'rank': 6
     },
     {
       'model': 'Ling 3.1 Flash',
       'org': 'InclusionAI',
       'score': 52.5,
       'src': 'benchlm',
-      'rank': 6
+      'rank': 7
     },
     {
       'model': 'MiMo-V2.6-Flash',
@@ -91,7 +104,7 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式（工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 7
+      'rank': 8
     },
     {
       'model': 'Gemini 4 Argon',
@@ -102,9 +115,9 @@ window.AUTOMATIONBENCH = {
       'date': '2026-10-13',
       'src': 'datalearner',
       'size': '—',
-      'context': '—',
-      'cost': '—',
-      'rank': 8
+      'context': '1.0M',
+      'cost': '$ 2.00 / $ 10.00',
+      'rank': 9
     },
     {
       'model': 'Qwen3.8-Max-0902',
@@ -114,17 +127,17 @@ window.AUTOMATIONBENCH = {
       'effort': '极高强度思考（工具）',
       'date': '2026-09-02',
       'src': 'datalearner-unsourced',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'Ultramarine 1 Flash',
       'org': 'Paper Instruments',
       'score': 50.2,
       'src': 'benchlm',
-      'rank': 10
+      'rank': 11
     },
     {
-      'rank': 11,
+      'rank': 12,
       'model': 'Muse Spark 1.3',
       'org': 'Meta',
       'score': 49.4,
@@ -147,7 +160,7 @@ window.AUTOMATIONBENCH = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'GLM-5.3',
@@ -160,7 +173,7 @@ window.AUTOMATIONBENCH = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'Claude Sonnet 5.5',
@@ -173,7 +186,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'Step 5 Preview',
@@ -183,7 +196,7 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式 High（工具）',
       'date': '2026-09-20',
       'src': 'datalearner',
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'GPT-6 Astra',
@@ -196,7 +209,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 10.00 / $ 50.00',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'Claude Opus 5.5',
@@ -209,7 +222,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 4.00 / $ 20.00',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'DeepSeek-V4-Flash',
@@ -219,7 +232,7 @@ window.AUTOMATIONBENCH = {
       'effort': '最高（工具）',
       'date': '2026-04-24',
       'src': 'datalearner-unsourced',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'Beam',
@@ -229,7 +242,7 @@ window.AUTOMATIONBENCH = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-10-05',
       'src': 'datalearner',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'GPT-6 Sol',
@@ -239,7 +252,7 @@ window.AUTOMATIONBENCH = {
       'effort': '极高强度思考（工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'Hy4 preview',
@@ -252,7 +265,7 @@ window.AUTOMATIONBENCH = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'DeepSeek V4 Pro 0813',
@@ -265,7 +278,7 @@ window.AUTOMATIONBENCH = {
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'rank': 22
+      'rank': 23
     },
     {
       'model': 'GPT-6.1 Sol',
@@ -275,7 +288,7 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式 Medium（工具）',
       'date': '2026-09-29',
       'src': 'datalearner',
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'Claude Fable 5.1',
@@ -288,10 +301,10 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 10.00 / $ 50.00',
-      'rank': 24
+      'rank': 25
     },
     {
-      'rank': 25,
+      'rank': 26,
       'model': 'Kimi K3',
       'org': 'Moonshot AI',
       'score': 30.8,
@@ -314,14 +327,14 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 3.75',
-      'rank': 26
+      'rank': 27
     },
     {
       'model': 'LFM2.5-24B-A2B',
       'org': 'LiquidAI',
       'score': 27.69,
       'src': 'benchlm',
-      'rank': 27
+      'rank': 28
     },
     {
       'model': 'Qwen3.8-Max',
@@ -334,10 +347,10 @@ window.AUTOMATIONBENCH = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 28
+      'rank': 29
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
       'score': 26,
@@ -350,53 +363,39 @@ window.AUTOMATIONBENCH = {
       'date': '2026-07-24'
     },
     {
+      'rank': 31,
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
-      'org': 'DeepSeek-AI',
+      'org': 'DeepSeek',
       'score': 25.7,
-      'license': '免费商用授权',
-      'effort': '最高（工具）',
-      'date': '2026-08-21',
-      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'rank': 30
+      'license': null,
+      'src': 'llm-stats'
     },
     {
-      'model': 'DeepSeek V4 Flash 0731',
-      'org': 'DeepSeek-AI',
+      'rank': 32,
+      'model': 'DeepSeek-V4-Flash-0731',
+      'org': 'DeepSeek',
       'score': 25.1,
-      'license': '免费商用授权',
-      'effort': '最高（工具）',
-      'date': '2026-07-31',
-      'src': 'datalearner',
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'rank': 31
+      'license': null,
+      'src': 'llm-stats'
     },
     {
-      'model': 'GPT-6 Luna',
-      'org': 'OpenAI',
-      'score': 20.7,
-      'license': '不开源',
-      'effort': '最高（工具）',
-      'date': '2026-09-22',
-      'src': 'datalearner-unsourced',
-      'rank': 32
-    },
-    {
+      'rank': 33,
       'model': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 18.1,
-      'license': '不开源',
-      'effort': '官方报告最高值（具体推理档位未注明）',
-      'date': '2026-06-26',
-      'src': 'datalearner',
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
-      'rank': 33
+      'license': '不开源',
+      'src': 'llm-stats',
+      'effort': '最高（工具）',
+      'date': '2026-06-26'
     },
     {
       'rank': 34,
@@ -441,16 +440,6 @@ window.AUTOMATIONBENCH = {
       'cost': '$ 2.00 / $ 10.00',
       'license': null,
       'src': 'llm-stats'
-    },
-    {
-      'model': 'DeepSeek-V4-Pro',
-      'org': 'DeepSeek-AI',
-      'score': 12.8,
-      'license': '免费商用授权',
-      'effort': '极高强度思考（工具）',
-      'date': '2026-08-13',
-      'src': 'datalearner',
-      'rank': 38
     }
   ]
 };

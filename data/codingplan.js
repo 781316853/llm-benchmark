@@ -11,7 +11,7 @@ window.CODINGPLAN = {
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-10-19',
   'siteUpdated': '2026.10.13',
-  'refreshedAt': '2026-10-19 14:26',
+  'refreshedAt': '2026-10-20 00:34',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 2,
@@ -2013,7 +2013,7 @@ window.CODINGPLAN = {
     },
     {
       'id': 'sota-models',
-      'title': '前沿模型',
+      'title': '头部级模型',
       'kind': 'multi',
       'desc': '包含：GPT-6-Astra、GPT-6.1-Sol、Claude Opus 5.5、GLM-5.3、Kimi-K3',
       'rows': [
