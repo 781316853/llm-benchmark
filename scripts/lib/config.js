@@ -218,29 +218,17 @@ module.exports = {
     },
     hle: {
       // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI)。
-      // 渠道优先级(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页(厂商官方发布成绩),
-      // llm-stats 聚合表与 benchlm.ai 镜像为补充源(补缺模型/回填字段,不覆盖厂商发布分),
-      // 由 scripts/sources/hle.js 按渠道层级合并。
-      url: "https://llm-stats.com/benchmarks/humanity%27s-last-exam",
-      host: "llm-stats.com", src: "llm-stats",
+      // 统一无工具(闭卷)口径:主源 datalearner 详情页只取「无工具」行(T2 厂商官方发布),
+      // AA 无工具复测镜像为补充源(T3,仅补缺);由 scripts/sources/hle.js 按渠道层级合并。
+      url: "https://www.datalearner.com/benchmarks/hle",
+      host: "www.datalearner.com", src: "datalearner",
       officialUrl: "https://lastexam.ai/"
     },
-    hle_benchlm: {
-      // HLE 补充源:benchlm.ai 镜像(T3;内嵌 __NEXT_DATA__ JSON,76 模型)。注意源站 www 会 308 跳转至裸域。
-      url: "https://benchlm.ai/benchmarks/hle",
-      host: "benchlm.ai", src: "benchlm"
-    },
-    datalearner_hle: {
-      // HLE 主源(T2):datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
-      url: "https://www.datalearner.com/benchmarks/hle",
-      host: "www.datalearner.com", src: "datalearner"
-    },
     hle_aa: {
-      // HLE 补充源(T3):Artificial Analysis 复测口径的 benchlm 镜像页(内嵌 JSON,236 模型)。
-      // 口径注意:AA 为自家 harness 复测(接近无工具口径),分数系统性低于官方口径约 5 分
-      // (头部 Fable 5.1 59.1 vs 官方口径 65);仅用于补官方渠道未收录的缺失模型
+      // HLE 补充源(T3):Artificial Analysis 无工具复测口径的 benchlm 镜像页(内嵌 JSON,236 模型)。
+      // AA 为自家 harness 复测,分数系统性低于厂商官方口径约 5 分;仅用于补官方渠道未收录的模型
       // (GPT-5.6 Terra/Luna、Grok 4.6、Gemini 3.8/3.7 Flash、Muse Spark 1.3 等),
-      // src=aa 徽标区分;同层取最高,重叠模型保留现有高分,不被 AA 低分覆盖。
+      // src=aa 徽标区分;重叠模型由 T2 厂商分覆盖。
       url: "https://benchlm.ai/benchmarks/aahle",
       host: "benchlm.ai", src: "aa"
     },

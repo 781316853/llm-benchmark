@@ -1,14 +1,13 @@
 // 数据源:Humanity's Last Exam(HLE,前沿知识广度)
 // 站点:官方 lastexam.ai(CAIS/Scale AI);本榜无可用官方实测榜,按渠道层级合并:
-//   T2 厂商官方发布 > T3 第三方聚合。主源 datalearner 详情页(内嵌 results JSON,转录厂商官方发布成绩,
-//   含 GPT-6 Astra / Hy4 preview 等);补充源 llm-stats 聚合表(服务端渲染)、benchlm.ai 镜像
-//   (内嵌 __NEXT_DATA__ JSON,76 模型)与 AA 复测口径 benchlm 镜像页(内嵌 JSON,236 模型,src=aa)。
-// AA 口径注意:AA 为 Artificial Analysis 自家 harness 复测(接近无工具口径),分数系统性低于
-//   官方口径约 5 分(头部 Fable 5.1 59.1 vs 官方口径 65);仅补官方渠道未收录的缺失模型
-//   (GPT-5.6 Terra/Luna、Grok 4.6、Gemini 3.8/3.7 Flash、Muse Spark 1.3 等),src=aa 徽标区分;
-//   同层取最高,重叠模型保留现有高分,不被 AA 低分覆盖。
+//   T2 厂商官方发布 > T3 第三方。主源 datalearner 详情页(内嵌 results JSON,转录厂商官方发布成绩);
+//   官方种子层补充厂商文档明确标注 w/o tools 的成绩(见 official-seeds.js);
+//   补充源 AA 无工具复测 benchlm 镜像页(内嵌 JSON,236 模型,src=aa)。
+// 口径:统一无工具(闭卷)。datalearner 同一模型常有多条评测模式,只取「无工具」行(多条取最高);
+//   AA 复测为第三方无工具 harness,仅补官方渠道未收录的模型,src=aa 徽标区分。
+//   仅带工具分或未声明协议的条目一律不收录——旧版混入工具/未标注口径,表内分数不可直接比较。
 // 数据形态:datalearner results JSON(name/mode/score/date/params/org/license);
-//   llm-stats #|Model|Score(0-1)|Size|Context|Cost|License;benchlm/AA 页内嵌 __NEXT_DATA__ JSON(旧卡片式兜底)。
+//   benchlm/AA 页内嵌 __NEXT_DATA__ JSON。
 // 合并策略:见 scripts/lib/mergeByTier.js——高层级分数不被低层级覆盖,低层级仅补缺失模型与字段。
 // 性质:模型级条目(2500 题,数学/科学/人文学科,闭卷得分口径);
 //       仅「权威基准测试」页与总览参考列展示,不计入综合分/命中数。
@@ -19,30 +18,19 @@ const registry = require("../lib/registry");
 const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
-const parseLlmStats = require("../lib/parseLlmStats");
 const { parseBenchlm } = require("../lib/parseBenchlm");
 const { parseDataLearnerBench } = require("./datalearner");
+const officialSeeds = require("../lib/official-seeds");
 const { createTierMerger, normKey } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
 
 // 跨源别名归并:两源对同一模型命名不同时归并到同一键(避免重复条目)
 const KEY_ALIASES = {
-  // benchlm "Claude Mythos 5" 与 llm-stats "Claude Mythos Preview" 为同一模型(64.5 vs 64.7)
+  // benchlm/AA "Claude Mythos 5" 与 datalearner "Claude Mythos Preview" 为同一模型
   "claude-mythos-5": "claude-mythos-preview"
-  // 注:datalearner "DeepSeek-V4-Flash"(51.5, 0424 发布)与 llm-stats "DeepSeek-V4-Flash-0423"
-  //   (40.3)分差过大,疑似 harness 口径不同,不归并——两条并存,src 字段区分来源。
 };
 
-// 已知协议覆盖:来源行未带协议、但官方发布页明确口径的条目(只改标记,不改分数与 src)。
-// DeepSeek V4.1 Flash 1017 官方更新页:HLE (w/o tools) 42.6(纯文本 44.0);benchlm 行数值一致。
-const PROTOCOL_OVERRIDES = {
-  "deepseek-v4-1-flash-1017": {
-    protocol: "无工具",
-    note: "DeepSeek 官方 1017 更新页 HLE (w/o tools) 42.6(纯文本 44.0)"
-  }
-};
-
-// 评测协议标记:工具 / 无工具 / 未标注。
+// 评测协议标记:先从 mode 判定,只有「无工具」的行才进入 HLE 表。
 // datalearner 的 mode 形如 "最高（工具）"、"最高（无工具） · Text only"、
 // "极高强度思考（工具+联网）";必须先判「无工具」,否则会被其中的「工具」二字误判。
 function protocolFromMode(mode) {
@@ -63,58 +51,41 @@ class HleSource extends BaseSource {
     });
   }
   async fetch() {
-    // 主源(datalearner 厂商官方发布)+ 补充源(llm-stats / benchlm.ai / AA 复测镜像)并行抓取
-    const [vendor, primary, bench, aa] = await Promise.all([
-      transport.fetchWithRetry(CONFIG.sources.datalearner_hle.url),
-      transport.fetchWithRetry(this.cfg.url),
-      transport.fetchWithRetry(CONFIG.sources.hle_benchlm.url),
+    // 主源(datalearner 厂商官方发布,仅取无工具行)+ 补充源(AA 无工具复测镜像)并行抓取
+    const [vendor, aa] = await Promise.all([
+      transport.fetchWithRetry(CONFIG.sources.hle.url),
       transport.fetchWithRetry(CONFIG.sources.hle_aa.url)
     ]);
-    return { primary: primary, bench: bench, aa: aa, vendor: vendor };
+    return { aa: aa, vendor: vendor };
   }
   parse(raw) {
-    const primary = parseLlmStats.parse(raw.primary, { name: "Humanity's Last Exam", tasks: 2500 });
-    const bench = parseBenchlm(raw.bench);
     const aa = parseBenchlm(raw.aa);
     const vendor = parseDataLearnerBench(raw.vendor).map(function (m) {
       return { model: m.name, org: m.org, score: m.score, license: m.license,
         mode: m.mode || null, protocol: protocolFromMode(m.mode) };
-    });
+    }).filter(function (m) { return m.protocol === "无工具"; });
     // 任一渠道解析为空 = 页面结构大概率又变了。必须让本源失败并保留旧文件,
-    // 否则合并会静默丢数(2026-09-23 benchlm 改版导致 HLE 从 226 条掉到 55 条且一直无人发现)。
-    if (!vendor.length) throw new Error("HLE datalearner 主源未解析到任何数据(页面结构可能已变化)");
-    if (!primary.models.length) throw new Error("HLE llm-stats 主源未解析到任何数据(页面结构可能已变化)");
-    if (!bench.length) throw new Error("HLE benchlm 补充源未解析到任何数据(页面结构可能已变化)");
-    if (!aa.length) throw new Error("HLE AA 复测补充源未解析到任何数据(页面结构可能已变化)");
-    // llm-stats / benchlm 未提供逐行评测协议,先按未标注入库;AA 复测接近无工具口径。
-    const primaryModels = primary.models.map(function (m) {
-      return Object.assign({}, m, { protocol: "未标注" });
-    });
-    const benchModels = bench.map(function (m) {
-      return Object.assign({}, m, { protocol: "未标注" });
-    });
+    // 否则合并会静默丢数。无工具行消失同样视为源异常。
+    if (!vendor.length) throw new Error("HLE datalearner 主源未解析到任何无工具口径数据(页面结构可能已变化)");
+    if (!aa.length) throw new Error("HLE AA 无工具复测源未解析到任何数据(页面结构可能已变化)");
     const aaModels = aa.map(function (m) {
       return Object.assign({}, m, { protocol: "无工具" });
     });
-    // 按渠道层级合并:主源(T2)优先入表,补充源(T3)仅补缺与回填字段;AA 低分不覆盖已有条目
+    // 按渠道层级合并:T2 厂商行(含官方种子)优先,AA(T3)仅补缺;同层多条无工具模式取最高分
     const merger = createTierMerger({ aliases: KEY_ALIASES });
     merger.add(vendor, "datalearner");
-    merger.add(primaryModels, "llm-stats");
-    merger.add(benchModels, "benchlm");
+    officialSeeds.forBenchmark("hle").forEach(function (s) {
+      merger.add([{ model: s.name, score: s.score, org: s.org, note: s.note, sourceUrl: s.sourceUrl }],
+        officialSeeds.srcOf(s));
+    });
     merger.add(aaModels, "aa");
-    // 协议标记以最终胜出来源为准:厂商行取 mode,AA 复测固定无工具,聚合/镜像未标注。
     const models = merger.values().map(function (m) {
-      var protocol = "未标注", note = "源站未提供逐行评测协议";
-      if (m.src === "datalearner") {
-        protocol = protocolFromMode(m.mode);
-        if (m.mode) note = String(m.mode);
-      } else if (m.src === "aa") {
-        protocol = "无工具";
-        note = "Artificial Analysis 复测,接近无工具口径";
-      }
-      var ov = PROTOCOL_OVERRIDES[normKey(m.model)];
-      if (ov) { protocol = ov.protocol; note = ov.note; }
-      return Object.assign({}, m, { protocol: protocol, protocolNote: note });
+      var note = "Artificial Analysis 无工具复测";
+      if (m.src === "datalearner") note = String(m.mode || "厂商发布(无工具)");
+      else if (m.note) note = String(m.note);
+      var rec = Object.assign({}, m, { protocol: "无工具", protocolNote: note });
+      delete rec.note;
+      return rec;
     });
     return { tasks: 2500, models: models };
   }
@@ -128,15 +99,12 @@ class HleSource extends BaseSource {
     const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT, n = parsed.models.length;
     return writers.windowVarTemplate("HLE",
       "// 数据源:Humanity's Last Exam(前沿知识广度,更新于 " + T + ")\n" +
-      "// 来源:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
-      "// 主渠道:https://www.datalearner.com/benchmarks/hle(厂商官方发布成绩转录)\n" +
-      "// 补充:llm-stats 聚合表 · https://benchlm.ai/benchmarks/hle(benchlm 镜像) · https://benchlm.ai/benchmarks/aahle(AA 复测口径)\n" +
+      "// 来源:" + this.cfg.url + "(主渠道,厂商官方发布无工具成绩) · " + CONFIG.sources.hle_aa.url + "(AA 无工具复测镜像)\n" +
+      "// 官方:" + this.cfg.officialUrl + "\n" +
       "// " + CONFIG.channelPolicy + "\n" +
-      "// 口径注:AA 复测为第三方自家 harness(接近无工具口径),分数系统性低于官方口径约 5 分,\n" +
-      "//   仅补官方渠道未收录的模型,src=aa 区分;重叠模型保留现有高分,不被 AA 低分覆盖。\n" +
-      "// 工具口径:行内 protocol 标记 工具/无工具/未标注——datalearner 取 mode,AA 复测标无工具,\n" +
-      "//   llm-stats/benchlm 未提供逐行协议故标未标注;跨口径分数不可直接比较。\n" +
-      "// 字段说明:model=模型名;score=闭卷得分(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/llm-stats/benchlm/aa);protocol=工具口径;protocolNote=口径原文/说明\n" +
+      "// 口径:统一无工具(闭卷)——datalearner 同模型只取「无工具」行(多条取最高),官方种子补充厂商 w/o tools 成绩,\n" +
+      "//   AA 无工具复测仅补官方渠道未收录的模型;仅带工具分或未声明协议的条目已剔除,表内分数可直接比较。\n" +
+      "// 字段说明:model=模型名;score=闭卷得分(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/deepseek-official/aa);protocol=工具口径(统一为无工具);protocolNote=口径原文/说明\n" +
       "// 用途:「权威基准测试」页展示 + 总览矩阵参考列,仅参考,不计入综合分/命中数。\n",
       {
         source: "Humanity's Last Exam",
@@ -146,7 +114,7 @@ class HleSource extends BaseSource {
         updated: T,
         refreshedAt: R,
         stats: { tasks: parsed.tasks, entries: n },
-        desc: "Humanity's Last Exam(HLE):CAIS 与 Scale AI 推出的前沿知识广度基准,2500 道由各领域专家撰写、无网络可检索解的问题(数学/科学/人文学科等),目的在衡量模型逼近人类专家知识天花板;得分越高越好。多源合并:datalearner/llm-stats/benchlm 为公开口径,AA 复测为第三方自家 harness(接近无工具口径,系统性偏低约 5 分,src=aa 区分,仅补缺失模型)。行内「工具口径」列标注 工具/无工具/未标注,跨口径分数不可直接比较。",
+        desc: "Humanity's Last Exam(HLE):CAIS 与 Scale AI 推出的前沿知识广度基准,2500 道由各领域专家撰写、无网络可检索解的问题(数学/科学/人文学科等),目的在衡量模型逼近人类专家知识天花板;得分越高越好。本表统一为无工具(闭卷)口径:厂商明确标注无工具的条目优先,AA 无工具复测仅补官方渠道未收录的模型;仅带工具分或未声明协议的模型不收录,表内分数可直接比较。",
         models: parsed.models
       }
     );

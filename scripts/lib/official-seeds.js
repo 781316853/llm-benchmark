@@ -24,8 +24,8 @@ const DS_UPDATES_URL = "https://api-docs.deepseek.com/zh-cn/updates";
 const DS_CAVEAT = "DeepSeek 官方发布自测成绩(V4.1-Flash-1017,2026-10-17);官方标注 Terminal-Bench 用 Claude Code 框架、DeepSWE 用 Mini-SWE-V2 框架,协议与基准官方实测榜不保证可比";
 // 官方同页还给了 HLE(w/o tools)42.6、ProgramBench 29.1,以及与站内无榜的 5 项
 // (Automation-Bench v1.0.6 60.5 / Apex Bench v1.1 72.1 / Chartography 83.0 / BabyVision 92.5 /
-//  ZeroBench-main Pass@5 51.0),**刻意不转录**:站内 HLE 该模型来自 datalearner 的闭卷口径是 63.9、
-//  ProgramBench 来自 vals 镜像是 0.5,与官方数字差 21 分和 58 倍,属口径不可比,并列表格只会造假差距。
+//  ZeroBench-main Pass@5 51.0)。HLE 自 2026-10-19 起统一为无工具口径,该 42.6 已作为种子转录;
+//  ProgramBench 来自 vals 镜像是 0.5,与官方 29.1 差 58 倍,属口径不可比,仍不转录。
 
 // 按榜单键组织。score 为统一百分制数值;各源按自身字段映射(deepswe 用 pass1,merger 源用 model/score)。
 const SEEDS = {
@@ -49,6 +49,12 @@ const SEEDS = {
   lastexam: [
     { name: "Qwen3.8-Flash", score: 24.3, org: "Alibaba Cloud / Qwen Team", effort: "未标注", src: "qwen-official", note: CAVEAT, sourceUrl: SOURCE_URL, publishOrigin: PUBLISH_ORIGIN },
     { name: "DeepSeek-V4.1-Flash-1017", score: 35.4, org: "DeepSeek-AI", effort: "未标注", date: "2026-10-17", src: "deepseek-official", note: DS_CAVEAT, sourceUrl: DS_UPDATES_URL }
+  ],
+  // HLE:官方更新页明确标注 w/o tools(42.6);HLE 源统一无工具口径后以 T2 入表,
+  // 覆盖 AA 复测同模型的 39.2,避免官方分被第三方无工具分顶掉。
+  hle: [
+    { name: "DeepSeek-V4.1-Flash-1017", score: 42.6, org: "DeepSeek-AI", src: "deepseek-official",
+      note: "DeepSeek 官方更新页 HLE (w/o tools) 42.6(纯文本 44.0),2026-10-17", sourceUrl: DS_UPDATES_URL }
   ]
 };
 
