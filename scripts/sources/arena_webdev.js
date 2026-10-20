@@ -17,6 +17,36 @@ const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
 
+// Arena 官方公告补充(2026-10-19):镜像每日快照尚未收录的新模型由官方公告人工转录。
+// 仅补缺失模型,不覆盖镜像数据;待镜像收录同名条目后自动去重失效。
+// 公告:DeepSeek-V4.1-Flash-20261017 (Max) 以 1670 分登顶开源模型、总榜 #12
+// (上一版 20260910 的 1618 分即镜像当前的 "deepseek-v4.1-flash (max)" 行)。
+// sourceUrl 取官方榜地址(公告无稳定的单条链接)。
+const ANNOUNCED = [
+  { name: "deepseek-v4.1-flash-20261017 (max)", org: "DeepSeek", score: 1670, ci: null, votes: null,
+    date: "2026-10-19", sourceUrl: "https://arena.ai/leaderboard/code" }
+];
+
+// 去重键:忽略 effort 注解,并把 Arena 的 20261017 写法与本站 1017 写法折叠为同一键
+function seedKey(s) {
+  return String(s || "").toLowerCase()
+    .replace(/\([^)]*\)/g, "")
+    .replace(/[\s\-_/.]+(?:xhigh|high|max|medium|low|thinking|think)\s*$/i, "")
+    .replace(/2026-10-17|20261017/, "1017")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+function mergeAnnounced(models) {
+  const have = {};
+  models.forEach(function (m) { have[seedKey(m.name)] = true; });
+  ANNOUNCED.forEach(function (s) {
+    if (have[seedKey(s.name)]) return;
+    models.push({ name: s.name, org: s.org, score: s.score, ci: s.ci, votes: s.votes,
+      src: "selftest", date: s.date, sourceUrl: s.sourceUrl });
+  });
+  models.sort(function (a, b) { return b.score - a.score; });
+  return models;
+}
+
 // 从镜像页 HTML 解析模型行数组
 // 每行:{name, org, score(整数 Elo), ci(±), votes(去掉 K 后缀的近似整数)}
 function parseArenaWebdev(html) {
@@ -49,9 +79,9 @@ function parseArenaWebdev(html) {
     });
   });
   if (!models.length) throw new Error("镜像页未解析到 main-row 数据(站点结构变更)");
-  // 按 Elo 降序
+  // 按 Elo 降序;官方公告补充行一并参与排序
   models.sort(function (a, b) { return b.score - a.score; });
-  return models;
+  return mergeAnnounced(models);
 }
 
 class ArenaWebdevSource extends BaseSource {
@@ -90,6 +120,8 @@ class ArenaWebdevSource extends BaseSource {
       "// 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)\n" +
       "// 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:\n" +
       "//     " + this.cfg.url + " (更新于 " + CONFIG.TODAY + ")\n" +
+      "// 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分\n" +
+      "//     (总榜 #12、开源第一;上一版 20260910 为镜像现有的 deepseek-v4.1-flash 1618)。镜像收录后自动去重。\n" +
       "// 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)\n" +
       "// 用途:总览页「第三方实测」组基准,计入综合分与命中数(权重 22%);前端按 canonical 取最高分归入。\n",
       {

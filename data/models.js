@@ -10,8 +10,8 @@ window.MODEL_MAP = {
     { id: "Claude Opus 4.7",  vendor: "Anthropic", color: "#B07B5C", aliases: ["Claude Opus 4.7", "claude-opus-4-7", "Opus 4.7"] },
     { id: "Claude Opus 4.6",  vendor: "Anthropic", color: "#A06E51", aliases: ["Claude Opus 4.6", "claude-opus-4-6 (thinking)", "claude-opus-4-6", "Opus 4.6"] },
     { id: "Claude Sonnet 4.6",vendor: "Anthropic", color: "#90614A", aliases: ["claude-sonnet-4.6", "Claude Sonnet 4.6", "Claude Sonnet 4.6 (high)", "Sonnet 4.6"] },
-    { id: "Claude Sonnet 4.5",vendor: "Anthropic", color: "#A07050", aliases: ["claude-4-5-Sonnet", "Claude Sonnet 4.5"] },
-    { id: "Claude Haiku 4.5", vendor: "Anthropic", color: "#704936", aliases: ["claude-haiku-4-5", "claude-haiku-4.5", "Claude Haiku 4.5", "claude-4-5-haiku", "Claude Haiku 4 5 20251001 Thinking"] },
+    { id: "Claude Sonnet 4.5",vendor: "Anthropic", color: "#A07050", aliases: ["claude-4-5-Sonnet", "Claude Sonnet 4.5", "claude-sonnet-4-5-20250929"] },
+    { id: "Claude Haiku 4.5", vendor: "Anthropic", color: "#704936", aliases: ["claude-haiku-4-5", "claude-haiku-4.5", "Claude Haiku 4.5", "claude-4-5-haiku", "Claude Haiku 4 5 20251001 Thinking", "claude-haiku-4-5-20251001"] },
     { id: "Claude Opus 4.5",  vendor: "Anthropic", color: "#805443", aliases: ["Claude Opus 4.5", "Opus 4.5", "claude-opus-4-5-20251101"] },
     { id: "GPT-5.6 Sol",      vendor: "OpenAI",    color: "#0A8F6A", aliases: ["gpt-5-6-sol", "gpt-5.6-sol-0829", "GPT 5.6 Sol"] },
     { id: "GPT-5.6 Terra",    vendor: "OpenAI",    color: "#0FA37E", aliases: ["gpt-5-6-terra", "GPT 5.6 Terra"] },
@@ -54,7 +54,7 @@ window.MODEL_MAP = {
     { id: "Qwen3.6-Plus",     vendor: "Alibaba",   color: "#FF8533", aliases: ["Qwen3.6-Plus(Think)", "Qwen3.6-Plus", "Qwen3.6 Plus", "qwen-3-6-plus"] },
     { id: "Qwen3.6-27B",      vendor: "Alibaba",   color: "#FF9547", aliases: ["Qwen3.6-27B"] },
     { id: "Qwen3.6-35B-A3B",  vendor: "Alibaba",   color: "#FFA05A", aliases: ["Qwen3.6-35B-A3B"] },
-    { id: "Qwen3-Coder 480B", vendor: "Alibaba",   color: "#FF9A4D", aliases: ["qwen3-coder-480b-a35b"] },
+    { id: "Qwen3-Coder 480B", vendor: "Alibaba",   color: "#FF9A4D", aliases: ["qwen3-coder-480b-a35b", "qwen3-coder-480b-a35b-instruct"] },
     { id: "Qwen3 235B",       vendor: "Alibaba",   color: "#FFAC66", aliases: ["qwen3-235b-a22b"] },
     { id: "Grok 4.5",         vendor: "xAI",       color: "#9AA3AF", aliases: ["Grok 4.5", "grok-4.5"] },
     { id: "Grok 4.1",         vendor: "xAI",       color: "#A3ABB6", aliases: ["Grok 4.1", "grok-4.1"] },
@@ -62,13 +62,13 @@ window.MODEL_MAP = {
     { id: "Grok 4.3",         vendor: "xAI",       color: "#AEB5BC", aliases: ["grok-4.3"] },
     { id: "Grok Build",       vendor: "xAI",       color: "#B8BFC6", aliases: ["grok-build-0-1", "grok-build-0.1", "Grok Build"] },
     { id: "Tencent Hy3",      vendor: "Tencent",   color: "#12B7F5", aliases: ["Tencent Hy3 (high)", "Hy3"] },
-    { id: "Tencent Hy3 Preview", vendor: "Tencent", color: "#1FC4FF", aliases: ["Tencent Hy3 Preview"] },
+    { id: "Tencent Hy3 Preview", vendor: "Tencent", color: "#1FC4FF", aliases: ["Tencent Hy3 Preview", "hy3 preview"] },
     { id: "MiniMax-M3",       vendor: "MiniMax",   color: "#FF5C8A", aliases: ["MiniMax-M3", "minimax-m3", "MiniMax M3"] },
     { id: "MiniMax M3.1 Flash Preview", vendor: "MiniMax", color: "#F2668E", aliases: ["MiniMax M3.1 Flash Preview", "MiniMax-M3.1-Flash-Preview", "minimax-m3.1-flash-preview", "MiniMax M3.1", "minimax-m3.1"] },
     { id: "MiniMax-M2.7",     vendor: "MiniMax",   color: "#FF7DA3", aliases: ["minimax-m2-7", "MiniMax-M2.7", "MiniMax M2.7"] },
     { id: "MiniMax M2.5",     vendor: "MiniMax",   color: "#FF9EBB", aliases: ["MiniMax M2.5", "minimax-m2-5"] },
-    { id: "MiniMax M2.1",     vendor: "MiniMax",   color: "#FFB0CC", aliases: ["minimax-2.1"] },
-    { id: "Seed 2.1 Pro",     vendor: "ByteDance", color: "#3C8CFF", aliases: ["Seed 2.1 Pro", "seed-2.1-pro-preview"] },
+    { id: "MiniMax M2.1",     vendor: "MiniMax",   color: "#FFB0CC", aliases: ["minimax-2.1", "minimax-m2.1", "minimax-m2-1-preview"] },
+    { id: "Seed 2.1 Pro",     vendor: "ByteDance", color: "#3C8CFF", aliases: ["Seed 2.1 Pro", "seed-2.1-pro-preview", "Seed-2.1-Pro-0915", "seed2.1 pro preview", "Doubao-Seed-2.1-Pro", "doubao-seed-2-1-pro-260915"] },
     { id: "Seed 2.1 Turbo",   vendor: "ByteDance", color: "#5A9DFF", aliases: ["Seed 2.1 Turbo"] },
     { id: "Doubao-Seed-2.0-Code", vendor: "ByteDance", color: "#3C8CFF", aliases: ["Doubao-Seed-2.0-Code (high)", "Seed-2.0-Code(high)"] },
     { id: "MiMo-V2.6-Pro",    vendor: "Xiaomi",    color: "#FF5C00", aliases: ["MiMo-V2.6-Pro", "mimo-v2.6-pro", "MiMo V2.6 Pro"] },
@@ -102,7 +102,7 @@ window.MODEL_MAP = {
     { id: "GLM-5.3-Flash",    vendor: "zAI",       color: "#6C7DFF", aliases: ["GLM-5.3-Flash", "glm-5-3-flash", "GLM 5.3 Flash", "GLM5.3 Flash", "GLM5.3Flash"] },
     { id: "Motif 3",          vendor: "Motif Technologies", color: "#8A8F98", aliases: ["Motif 3", "motif-3"] },
     { id: "Inkling",          vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling", "inkling"] },
-    { id: "Nemotron 3 Ultra", vendor: "NVIDIA",    color: "#76B900", aliases: ["Nemotron 3 Ultra", "nvidia-nemotron-3-ultra-550b-a55b", "Nemotron 3 Ultra 550B", "Nemotron 3 Ultra 550b A55b", "Nemotron 3 Ultra (550B A55B)"] },
+    { id: "Nemotron 3 Ultra", vendor: "NVIDIA",    color: "#76B900", aliases: ["Nemotron 3 Ultra", "nvidia-nemotron-3-ultra-550b-a55b", "Nemotron 3 Ultra 550B", "Nemotron 3 Ultra 550b A55b", "Nemotron 3 Ultra (550B A55B)", "nemotron-3-ultra-550b-a55b:free"] },
     { id: "Gemini 3.5 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.5 Flash-Lite", "gemini-3-5-flash-lite", "Gemini 3.5 Flash Lite"] },
     { id: "Solar Open2 250B", vendor: "Upstage",   color: "#8A8F98", aliases: ["Solar Open2 250B", "solar-open2-250b"] },
     { id: "Muse Glimmer",     vendor: "Meta",      color: "#2E90FF", aliases: ["Muse Glimmer", "muse-glimmer", "Muse Glimmer (high)", "Muse Glimmer-30B", "muse-glimmer-30b"] },
@@ -132,10 +132,13 @@ window.MODEL_MAP = {
     // 日期构建号是**不同模型**、各自建档(用户确认,与 V4 Pro 0813 / V4 Flash 0731 同口径),
     // 所以 1017 的写法不能并进上面不带日期的 V4.1 Flash 行。
     // norm 会折叠分隔符,故一条 1017 别名即覆盖 "DeepSeek-V4.1-Flash-1017" /
-    // "DeepSeek V4.1 Flash 1017" / "deepseek_v4_1_flash_1017" 等全部写法。
-    // 刻意不登记官网的滚动 API 名 "deepseek-flash" —— 它不带构建号、跨代指向不同模型。
-    { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910", "deepseek-v4.1-flash-expires-on-0910"] },
-    { id: "DeepSeek V4.1 Flash 1017", vendor: "DeepSeek", color: "#82A6FE", aliases: ["DeepSeek V4.1 Flash 1017", "DeepSeek-V4.1-Flash-1017", "deepseek-v4.1-flash-1017"] },
+    // "DeepSeek V4.1 Flash 1017" / "deepseek_v4_1_flash_1017" 等全部写法;
+    // Arena 公告把新旧构建写作 20261017 / 20260910,一并登记,避免镜像改名后拆成幽灵条目。
+    // 滚动 API 名 "deepseek-flash" 自 2026-10-17 起由 1017 提供(官方更新页),归入本行。
+    // ⚠ ModelDial feed 同时单列旧构建(...expires-on-0910),滚动条目即当前 1017;
+    //    下一构建发布时须把该滚动名重新指到新行,否则会把新模型算到 1017 头上。
+    { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910", "deepseek-v4.1-flash-expires-on-0910", "DeepSeek-V4.1-Flash-20260910", "deepseek-v4.1-flash-20260910"] },
+    { id: "DeepSeek V4.1 Flash 1017", vendor: "DeepSeek", color: "#82A6FE", aliases: ["DeepSeek V4.1 Flash 1017", "DeepSeek-V4.1-Flash-1017", "deepseek-v4.1-flash-1017", "DeepSeek-V4.1-Flash-20261017", "deepseek-v4.1-flash-20261017", "deepseek-flash"] },
     { id: "DeepSeek V4 Flash Vision Exp", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek-V4-Flash-Vision-Exp", "DeepSeek V4 Flash Vision Exp", "deepseek-v4-flash-vision-exp"] },
     { id: "Gemini 3.1 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite", "Gemini 3.1 Flash Lite Preview", "gemini-3.1-flash-lite-preview"] },
     { id: "GPT-5.1",          vendor: "OpenAI",    color: "#28BFA8", aliases: ["GPT 5.1", "gpt-5.1"] },
@@ -176,7 +179,7 @@ window.MODEL_MAP = {
     { id: "Gemini 2.5 Pro",   vendor: "Google",    color: "#78AEF8", aliases: ["Gemini 2.5 Pro", "gemini-2.5-pro"] },
     { id: "Claude Haiku 5.5", vendor: "Anthropic", color: "#7C5240", aliases: ["Claude Haiku 5.5", "claude-haiku-5.5", "Haiku 5.5"] },
     { id: "DeepSeek R1",      vendor: "DeepSeek",  color: "#7B94FF", aliases: ["DeepSeek R1", "deepseek-r1"] },
-    { id: "Space Bunny",      vendor: "MiniMax",   color: "#F585AC", aliases: ["Space Bunny", "Space-bunny", "space-bunny"] },
+    { id: "Space Bunny",      vendor: "MiniMax",   color: "#F585AC", aliases: ["Space Bunny", "Space-bunny", "space-bunny", "space-bunny-free"] },
     { id: "GLM 5.3 Flash X",  vendor: "zAI",       color: "#96A0EC", aliases: ["GLM 5.3 Flash X", "GLM-5.3-Flash-X", "glm-5.3-flash-x"] },
     { id: "Doubao Seed Evolving", vendor: "ByteDance", color: "#BC6FF5", aliases: ["Doubao Seed Evolving", "doubao-seed-evolving"] },
     { id: "Seed 2.1 Lite",    vendor: "ByteDance", color: "#6FAEFF", aliases: ["Seed 2.1 Lite", "seed-2.1-lite"] },
