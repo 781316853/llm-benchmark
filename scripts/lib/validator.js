@@ -95,23 +95,28 @@ function dayDiff(a, b) { return Math.floor((parseDay(b) - parseDay(a)) / 8640000
 
 function timeliness(sourceRuns, today) {
   var th = CONFIG.validation.timeliness;
+  var overrides = th.perSource || {};
   var per = {};
   Object.keys(sourceRuns).forEach(function (srcId) {
     var run = sourceRuns[srcId] || {};
     var updated = run.updated;
+    var ov = overrides[srcId] || {};
+    var warnAgeDays = ov.warnAgeDays != null ? ov.warnAgeDays : th.warnAgeDays;
+    var alertAgeDays = ov.alertAgeDays != null ? ov.alertAgeDays : th.alertAgeDays;
     var ageDays = null, flag = "ok";
     if (updated) {
       var d = dayDiff(updated, today);
       if (isFinite(d)) {
         ageDays = d;
-        flag = d > th.alertAgeDays ? "alert" : (d > th.warnAgeDays ? "warn" : "ok");
+        flag = d > alertAgeDays ? "alert" : (d > warnAgeDays ? "warn" : "ok");
       } else {
         flag = "warn";   // 非法日期
       }
     } else {
       flag = "warn";     // 缺 updated 字段
     }
-    per[srcId] = { updated: updated, ageDays: ageDays, flag: flag };
+    per[srcId] = { updated: updated, ageDays: ageDays, flag: flag,
+      warnAgeDays: warnAgeDays, alertAgeDays: alertAgeDays };
   });
   return per;
 }
@@ -122,12 +127,14 @@ function buildAlerts(cons, comp, time, sourceRuns) {
   // 时效性告警
   Object.keys(time).forEach(function (srcId) {
     var t = time[srcId];
+    var warnAgeDays = t.warnAgeDays != null ? t.warnAgeDays : CONFIG.validation.timeliness.warnAgeDays;
+    var alertAgeDays = t.alertAgeDays != null ? t.alertAgeDays : CONFIG.validation.timeliness.alertAgeDays;
     if (t.flag === "alert") {
       alerts.push({ level: "error", dimension: "timeliness", sourceId: srcId,
-        message: "数据已 " + t.ageDays + " 天未更新(>" + CONFIG.validation.timeliness.alertAgeDays + " 天)" });
+        message: "数据已 " + t.ageDays + " 天未更新(>" + alertAgeDays + " 天)" });
     } else if (t.flag === "warn") {
       alerts.push({ level: "warn", dimension: "timeliness", sourceId: srcId,
-        message: "数据已 " + (t.ageDays != null ? t.ageDays + " 天" : "未知时间") + "未更新" });
+        message: "数据已 " + (t.ageDays != null ? t.ageDays + " 天" : "未知时间") + "未更新(>" + warnAgeDays + " 天)" });
     }
   });
   // 完整性告警

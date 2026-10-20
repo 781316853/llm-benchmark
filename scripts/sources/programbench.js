@@ -15,6 +15,7 @@ const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
+const valsLib = require("../lib/vals");
 
 function num(v) {
   const n = Number(String(v || "").replace(/[^\d.]/g, ""));
@@ -26,67 +27,18 @@ function normKey(s) {
   return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
-// vals 模型 ID("vendor/slug") -> 可读显示名(下划线转连字符、单词首字母大写;命中前端 MODEL_MAP 别名时仍会回显规范名)
-function valsName(id) {
-  const slug = String(id || "").split("/").pop();
-  return slug.replace(/_/g, "-").split("-").map(function (w) {
-    if (!w) return w;
-    return /^[0-9]/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1);
-  }).join(" ");
-}
-
-// ===== Astro/devalue 序列化标记解码:[0, v] -> v(原值,可嵌套标记);[1, [items]] -> 数组 =====
-function deval(v) {
-  if (Array.isArray(v) && v.length === 2 && typeof v[0] === "number") {
-    const t = v[0], val = v[1];
-    if (t === 0) return deval(val);
-    if (t === 1) return val.map(deval);
-    return val;
-  }
-  if (v !== null && typeof v === "object") {
-    const out = {};
-    for (const k in v) out[k] = deval(v[k]);
-    return out;
-  }
-  return v;
-}
-
-// 从 vals 页面 HTML 提取首个含 benchmarkView 的 props JSON 并解码
-function extractBenchmarkView(html) {
-  let pos = 0;
-  while ((pos = html.indexOf('props="', pos)) >= 0) {
-    const start = pos + 7;
-    let end = start, depth = 0, inStr = false;
-    for (let i = start; i < html.length; i++) {
-      const c = html[i];
-      if (inStr) { if (c === "\\") { i++; continue; } if (c === '"') inStr = false; continue; }
-      if (c === '"') inStr = true;
-      else if (c === "{") depth++;
-      else if (c === "}") { depth--; if (depth === 0) { end = i + 1; break; } }
-    }
-    const propsJson = html.slice(start, end)
-      .replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&#39;/g, "'");
-    if (propsJson.indexOf("benchmarkView") >= 0) {
-      try {
-        return deval(JSON.parse(propsJson).benchmarkView);
-      } catch (e) { return null; }
-    }
-    pos = end;
-  }
-  return null;
-}
-
 // 解析 vals.ai 镜像:45 模型 Fully Resolved%(tasks.overall.*.accuracy)
 // + Results summary 表格前 5 名 Almost(count)/Raw Pass Rate(%)
+// (devalue 解码与 benchmarkView 提取见 scripts/lib/vals.js,与 vals_vcb / vals_codemigration 共用)
 function parseVals(html) {
-  const view = extractBenchmarkView(html);
+  const view = valsLib.extractBenchmarkView(html);
   if (!view || !view.tasks || !view.tasks.overall) return [];
   const overall = view.tasks.overall;
   const models = Object.keys(overall).map(function (id) {
     const d = overall[id] || {};
     const score = d.accuracy != null ? Math.round(d.accuracy * 100) / 100 : null;
     return {
-      model: valsName(id), org: null, agent: "mini-SWE-agent", effort: null,
+      model: valsLib.valsName(id), org: null, agent: "mini-SWE-agent", effort: null,
       score: score,          // Fully Resolved%
       almost: null,          // Almost 由 summary 表补充
       rawPassRate: null,

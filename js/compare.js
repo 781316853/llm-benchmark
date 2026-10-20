@@ -23,14 +23,14 @@
   var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
-  // 7 个计分组的键(与 WEIGHTS 一致)
-  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily"];
+  // 8 个计分组的键(与 WEIGHTS 一致)
+  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "valsvcb"];
 
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
   // 亿模亿样取 Elo 原值(源站已是每模型最高分档)
-  // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily 计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
+  // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily / VCB-1-100 计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
@@ -38,7 +38,8 @@
     tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
-    aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; }
+    aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
+    valsvcb: function (e) { return e.valsvcb ? e.valsvcb.score : null; }
   };
   // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
   // 参考综合分与排名行完全同口径(各榜榜内稳健标准分按在场权重归一,无豁免、无折减),
@@ -158,14 +159,20 @@
   //  harness(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness)上,
   //  分数混杂「模型 + 脚手架」质量,与同为编码 agent 实测的 ModelDial(16%)存在重复计量,故取 10% 压低
   //  (与 2026-09-24 无机酸前端实测入组时的处理同法);命中数分母回到 7。
+  //  2026-10-20 起:新增第 8 组「Vibe Code Bench 1-100」8%(vals.ai/benchmarks/vcb-1-100,Vals AI)。
+  //  50 个真实 Web 应用迭代场景、全部模型跑在固定 OpenHands harness 上,口径比 AI Coding Daily 干净,
+  //  故按独立第三方实测计分;为保持八组之和 0.99,其余七组按比例下调
+  //  (DeepSWE 16→15、WebDev 22→20、TBench 11→10、ModelDial 16→15、llm2014 12→11、
+  //   亿模亿样 12→11、AI Coding Daily 10→9);命中数分母回到 8。
   //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
-  //  故上列权重无需凑满 100%(7 组之和 0.99)。
-  var WEIGHTS = { deepswe: 0.16, webdev: 0.22, tbench: 0.11, modeldial: 0.16, llm: 0.12, arenaofbias: 0.12, aicodingdaily: 0.10 };
+  //  故上列权重无需凑满 100%(8 组之和 0.99)。
+  var WEIGHTS = { deepswe: 0.15, webdev: 0.20, tbench: 0.10, modeldial: 0.15, llm: 0.11, arenaofbias: 0.11, aicodingdaily: 0.09, valsvcb: 0.08 };
   // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
   //   modeldial 源站 40/30/30 综合分    llm  等级映射综合分    arenaofbias  Elo 原值(每模型最高分档)
   //   aicodingdaily 源站总分(0-70,四轴之和;尺度不变,原生量纲直接进池定标)
+  //   valsvcb 准确率 %(固定 OpenHands harness;尺度不变,原生量纲直接进池定标)
   var BOARD_RAW = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     webdev: function (e) { return e.webdev ? e.webdev.score : null; },
@@ -173,7 +180,8 @@
     modeldial: function (e) { return e.modeldial ? e.modeldial.overall : null; },
     llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
-    aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; }
+    aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
+    valsvcb: function (e) { return e.valsvcb ? e.valsvcb.score : null; }
   };
   // 中位数(调用方传入已升序数组;偶数长度取两中均值 —— 朴素取下中位数会让统计量随样本 ±1 跳档)
   function median(sorted) {
