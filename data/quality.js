@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-10-20',
-  'overallScore': 0.949,
+  'overallScore': 0.953,
   'sources': [
     {
       'id': 'aicodingdaily',
@@ -253,6 +253,28 @@ window.QUALITY = {
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
       'modelCount': 9,
+      'updated': '2026-10-20',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'vals_codemigration',
+      'name': 'Code Migration',
+      'status': 'ok',
+      'modelCount': 79,
+      'updated': '2026-10-20',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'vals_vcb',
+      'name': 'Vibe Code Bench 1-100',
+      'status': 'ok',
+      'modelCount': 25,
       'updated': '2026-10-20',
       'ageDays': 0,
       'completeness': 1,
@@ -866,123 +888,199 @@ window.QUALITY = {
       'modelCount': 9,
       'missingFields': {},
       'flag': 'ok'
+    },
+    'vals_codemigration': {
+      'rate': 1,
+      'total': 79,
+      'complete': 79,
+      'modelCount': 79,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'vals_vcb': {
+      'rate': 1,
+      'total': 25,
+      'complete': 25,
+      'modelCount': 25,
+      'missingFields': {},
+      'flag': 'ok'
     }
   },
   'timeliness': {
     'aicodingdaily': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 7,
+      'alertAgeDays': 14
     },
     'apex': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'datalearner': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'arcagi3': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'arena_webdev': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'arenaofbias': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'automationbench': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'benchcad': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'cursorbench': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'deepswe_v11': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'deepswe_v10': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'frontiercode': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'hle': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'lastexam': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'llm2014': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'modeldial': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'nl2repo': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'osworld': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'programbench': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'tbench': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'tbench_v21': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'tbench_v3': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
     },
     'tbscience': {
       'updated': '2026-10-20',
       'ageDays': 0,
-      'flag': 'ok'
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
+    },
+    'vals_codemigration': {
+      'updated': '2026-10-20',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
+    },
+    'vals_vcb': {
+      'updated': '2026-10-20',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
     }
   },
   'alerts': [

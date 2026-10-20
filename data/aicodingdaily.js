@@ -17,7 +17,7 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-10-20',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-10-20 14:14',
+  'refreshedAt': '2026-10-20 22:24',
   'stats': {
     'entries': 49,
     'models': 34
@@ -32,7 +32,7 @@ window.AICODINGDAILY = {
       'costUsd': 0.83,
       'timeSec': 222,
       'timeStr': '03:42',
-      'harness': '6 hours ago Claude Code',
+      'harness': '14 hours ago Claude Code',
       'laravel': 18.68,
       'reactTs': 19,
       'bugFinding': 9.58,
@@ -578,7 +578,7 @@ window.AICODINGDAILY = {
       'costUsd': 0.83,
       'timeSec': 222,
       'timeStr': '03:42',
-      'harness': '6 hours ago Claude Code',
+      'harness': '14 hours ago Claude Code',
       'laravel': 18.68,
       'reactTs': 19,
       'bugFinding': 9.58,
