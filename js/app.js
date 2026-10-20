@@ -189,6 +189,13 @@
     return PRICE_IDX;
   }
   function priceOf(id) { return priceIndex()[id] || null; }
+  // 性价比指数 = 综合分 ÷ 每百万 token 综合成本;仅参与排名的行(命中≥4榜)且匹配到标价时可算。
+  // 列排序、格内显示与「最佳性价比」标记共用这一处,避免同一口径写三遍后走样
+  function valueIndexOf(r) {
+    if (!r || r.benchCount < 4) return null;
+    var p = priceOf(r.id);
+    return p ? CMP.composite(r) / p.costPerM : null;
+  }
   // 每百万 token 成本(¥)按量级保留小数:避免「¥0.05」与「¥11.22」在同一列里宽度跳动
   function fmtCostPerM(v) {
     if (v == null || !isFinite(v)) return "—";
@@ -216,11 +223,7 @@
     //    看到的内容就对不上了);nullLast 再把 null 行恒定沉底,不随升/降序翻转跑到最前
     { key: "value", label: "性价比", type: "num", bench: false, nullLast: true,
       tip: "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价优先取 codingplan.fyi,排名模型缺价时由 models.dev 补齐(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见来源与输入/缓存输入/输出三档单价",
-      val: function (r) {
-        if (r.benchCount < 4) return null;   // 参考行/单榜行不参与排名,该列显示「—」,排序时沉底
-        var p = priceOf(r.id);
-        return p ? CMP.composite(r) / p.costPerM : null;
-      } },
+      val: valueIndexOf },
     { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "榜单基准", tone: "deepswe", val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "榜单基准", tone: "tbench",
@@ -417,6 +420,15 @@
       }
     }
     if (!rows.length) rows = allRows;
+    // 前20名「最佳性价比」标记:只在排名行(命中≥4榜,不含参考/单榜)里取性价比指数最高者。
+    // 以 matrixRows 的排名序而非当前可见序为准 —— 点其它列排序或勾选「显示全部」时,标记对象保持不变。
+    // 并列时保留排名更靠前者(严格大于,首个最大值即排名最高者)
+    var topRanked = matrixRows.filter(function (r) { return r.benchCount >= 4; }).slice(0, 20);
+    var bestValueRow = null, bestValueIdx = -Infinity;
+    topRanked.forEach(function (r) {
+      var idx = valueIndexOf(r);
+      if (idx != null && idx > bestValueIdx) { bestValueIdx = idx; bestValueRow = r; }
+    });
     // 排名计数器:仅对参与排名的行(命中≥4榜)递增;参考行(命中 2-3 榜)不参与排名,序号列固定「—」
     var rankNo = 0;
     // 亿模亿样单元格:Elo 原值上该榜数据色 + ±95% 区间(灰字元数据,与 WebDev 列同款分工);
@@ -515,10 +527,19 @@
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
       var insertedBadge = inserted ? ' <span class="badge-two" title="命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前30区间内显示,勾选「显示全部模型」可见全部">参考</span>' : "";
       var singleBadge = single ? ' <span class="badge-one" title="仅命中一榜:不计算综合分、不计排名,统一排在末尾;勾选下方「显示全部模型」可见">仅单榜</span>' : "";
+      // 前20名「最佳性价比」标记:只在排名行上出现
+      var bestBadges = "";
+      if (bestValueRow === r) {
+        bestBadges += '<span class="badge-best badge-best-value" title="综合排名前 20 中性价比指数最高:综合分 ' +
+          CMP.composite(r).toFixed(1) + ' ÷ ' + fmtCostPerM(priceOf(r.id).costPerM) + '/M = ' + bestValueIdx.toFixed(1) + '">最佳性价比</span>';
+      }
+      var rowBadges = bestBadges + (nw ? newBadge() : "") + domBadge + insertedBadge + singleBadge;
       // 序号列:参与排名的行(命中≥4榜)按出现顺序编号;参考行 / 单榜行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
         '<td class="num">' + (unranked ? "—" : ++rankNo) + '</td>' +
-        '<td>' + vdot(r.vendor) + esc(r.id) + (nw ? newBadge() : "") + domBadge + insertedBadge + singleBadge + '</td>' +
+        // 模型名与徽标分两行:名称独占一行,徽标在下方 flex 排布,长名称换行时不会把徽标挤进名字中间
+        '<td class="model-cell"><span class="model-name">' + vdot(r.vendor) + esc(r.id) + '</span>' +
+          (rowBadges ? '<span class="model-tags">' + rowBadges + '</span>' : '') + '</td>' +
         '<td>' + vname(r.vendor) + '</td>' +
         // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
         // 参考 / 单榜行不作梯队分档展示:梯队列显示「—」
@@ -539,7 +560,7 @@
           var p = priceOf(r.id);
           if (!p) return '<td class="num"><span class="tier-na" title="codingplan.fyi 与 models.dev 均未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
           var score = CMP.composite(r);
-          var idx = score / p.costPerM;
+          var idx = valueIndexOf(r);
           var tip = "性价比 " + idx.toFixed(1) + " = 综合分 " + score.toFixed(1) + " ÷ " + fmtCostPerM(p.costPerM) + "/M · " +
             "输入 ¥" + p.inputCnyPerM + " / 缓存输入 ¥" + p.cacheCnyPerM + " / 输出 ¥" + p.outputCnyPerM + "(¥/百万 token)· " +
             "综合成本 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出(按 1M token 实际编程比例折算);单价来源 " +

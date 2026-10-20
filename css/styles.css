@@ -243,6 +243,10 @@
   --bd-two-fg: #5E6B62;
   --bd-two-bg: rgba(29, 37, 33, .04);
   --bd-two-bd: rgba(29, 37, 33, .14);
+  /* 前20名「最佳性价比」标记:取墨绿(与主色同色系) */
+  --bd-best-value-fg: #1F5D4A;
+  --bd-best-value-bg: rgba(31, 93, 74, .09);
+  --bd-best-value-bd: rgba(31, 93, 74, .40);
   --on-tier: #FBF8F0;
 
   --tier-Sp-a: #7A5B2E; --tier-Sp-b: #7A5B2E;
@@ -662,6 +666,11 @@ a:hover { text-decoration: underline; }
 .badge-domestic { display: inline-block; font-size: var(--fs-2xs); font-weight: 700; color: var(--bd-dom-fg);
   background: var(--bd-dom-bg); padding: 1px 6px; border-radius: var(--radius-pill);
   margin-left: 6px; vertical-align: 1px; letter-spacing: .3px; }
+/* 前20名「最佳性价比」徽标:描边样式(与参考/仅单榜徽标同构),只靠前景与描边色区分 */
+.badge-best { display: inline-block; font-size: var(--fs-2xs); font-weight: 700;
+  padding: 1px 6px; border-radius: var(--radius-pill); margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid var(--border); }
+.badge-best-value { color: var(--bd-best-value-fg); background: var(--bd-best-value-bg); border-color: var(--bd-best-value-bd); }
 .tier-badge { display: inline-block; font-size: var(--fs-xs); font-weight: 700; color: var(--on-tier);
   padding: 2px 8px; border-radius: var(--radius-sm); min-width: 28px; text-align: center;
   letter-spacing: .3px; font-variant-numeric: tabular-nums slashed-zero; }
@@ -1132,17 +1141,26 @@ body {
 }
 #matrixTable th { line-height: 1.35; }
 #matrixTable th:last-child, #matrixTable td:last-child { min-width: 56px; white-space: nowrap; }
-#matrixTable th:nth-child(2), #matrixTable td:nth-child(2) { min-width: 160px; }
+#matrixTable th:nth-child(2), #matrixTable td:nth-child(2) { min-width: 198px; }
 #matrixTable th:nth-child(3), #matrixTable td:nth-child(3) { min-width: 76px; }
 #matrixTable th:nth-child(4), #matrixTable td:nth-child(4) { min-width: 64px; }
 #matrixTable th:nth-child(5), #matrixTable td:nth-child(5) { min-width: 64px; }
+/* 模型列:名称独占一行,徽标另起一行 flex 排布。
+   此前名称与徽标混排在同一行内,徽标占掉宽度后「DeepSeek V4.1 Flash 1017」会在构建号前
+   断成「…Flash / 1017 NEW 国产」两截;分行后名称可用满列宽,徽标再多也只是整齐换行。 */
+#matrixTable td.model-cell .model-name { display: block; }
+#matrixTable td.model-cell .model-tags { display: flex; flex-wrap: wrap; align-items: center;
+  gap: 4px; margin-top: 4px; }
+#matrixTable td.model-cell .model-tags [class^="badge-"] { margin-left: 0; vertical-align: baseline; }
 /* 双行表头:分组行与列行分别吸附在导航下方,避免滚动时相互覆盖 */
 #matrixTable thead tr.grp-row th { top: var(--tabs-h); }
 #matrixTable thead tr.col-row th { top: calc(var(--tabs-h) + 33px); }
 /* 窄屏列数太多,整表铺开会撑破页面;仅在窄屏保留表内横向滚动作为兜底。
    门槛自 1000px 上调到 1200px:2026-10-19 新增「AI Coding Daily」计分列后,矩阵整表自然宽
-   由 1043px 增至 1126px,而 1100px 视口下容器只有 1036px,铺开会顶出整页横向滚动。 */
-@media (max-width: 1200px) {
+   由 1043px 增至 1126px,而 1100px 视口下容器只有 1036px,铺开会顶出整页横向滚动。
+   2026-10-20 模型列放宽到 198px(名称与徽标分行后,「DeepSeek V4.1 Flash 1017」不再折行),
+   整表自然宽约 1202px,门槛再上调到 1270px,覆盖容器仍未放开的 1201–1266px 区间。 */
+@media (max-width: 1270px) {
   .matrix-section .table-wrap { overflow-x: auto; }
   #matrixTable { font-size: 12px; }
   #matrixTable th, #matrixTable td { padding: 7px; }
