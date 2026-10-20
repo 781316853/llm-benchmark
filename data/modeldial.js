@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-19 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-20 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-55c94e0d7902c3b6d3e7ba24)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-101db7a188260e9228e54756)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-55c94e0d7902c3b6d3e7ba24',
-  'batchRevision': 378,
-  'batchPublishedAt': '2026-10-19T15:54:53.800Z',
-  'updated': '2026-10-19',
-  'refreshedAt': '2026-10-20 00:34',
+  'batchId': 'overall-101db7a188260e9228e54756',
+  'batchRevision': 386,
+  'batchPublishedAt': '2026-10-20T04:45:09.632Z',
+  'updated': '2026-10-20',
+  'refreshedAt': '2026-10-20 14:14',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -1284,6 +1284,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 44,
+      'provider': 'deepseek',
+      'model': 'deepseek-flash',
+      'effort': 'high',
+      'displayName': 'deepseek-flash / High',
+      'overall': 72.1,
+      'backend': 64,
+      'frontend': 85,
+      'knowledge': 70,
+      'elapsedMs': 480019,
+      'costUsd': 0.069235,
+      'tags': []
+    },
+    {
+      'rank': 45,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'max',
@@ -1297,7 +1311,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 45,
+      'rank': 46,
       'provider': 'hy',
       'model': 'hy4-preview',
       'effort': 'high',
@@ -1311,7 +1325,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 46,
+      'rank': 47,
       'provider': 'opencode',
       'model': 'space-bunny-free',
       'effort': 'default',
@@ -1325,7 +1339,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 47,
+      'rank': 48,
       'provider': 'deepseek',
       'model': 'deepseek-v4.1-flash-expires-on-0910',
       'effort': 'max',
@@ -1339,7 +1353,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 47,
+      'rank': 48,
       'provider': 'minimax',
       'model': 'MiniMax-M3.1-Flash',
       'effort': 'high',
@@ -1353,7 +1367,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 49,
+      'rank': 50,
       'provider': 'openrouter',
       'model': 'muse-wonder',
       'effort': 'default',
@@ -1364,20 +1378,6 @@ window.MODELDIAL = {
       'knowledge': 60,
       'elapsedMs': 184982,
       'costUsd': 0.90646,
-      'tags': []
-    },
-    {
-      'rank': 49,
-      'provider': 'deepseek',
-      'model': 'deepseek-flash',
-      'effort': 'high',
-      'displayName': 'deepseek-flash / High',
-      'overall': 70.5,
-      'backend': 48,
-      'frontend': 96,
-      'knowledge': 75,
-      'elapsedMs': 595677,
-      'costUsd': 0.07599,
       'tags': []
     },
     {

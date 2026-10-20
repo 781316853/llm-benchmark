@@ -13,8 +13,8 @@
 window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-10%7C0",
-  updated: "2026-10-19",
-  refreshedAt: "2026-10-20 00:34",
+  updated: "2026-10-20",
+  refreshedAt: "2026-10-20 14:14",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1490,7 +1490,7 @@ window.LLM2014 = {
           '10/B+(5.88)',
           'Skip',
           '17/B(10.77)',
-          'Pending',
+          '4/A+(21.83)',
           '14/C+(12.01)',
           '13/B(6.21)',
           '12/B(12.32)'
@@ -1644,6 +1644,21 @@ window.LLM2014 = {
           'Skip',
           'Skip',
           'Skip'
+        ],
+        'unprompted': 0,
+        'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'MiniMax-M3.1-Flash (max)',
+        'cells': [
+          '15/C(3.84)',
+          'Skip',
+          'Failed',
+          'Skip',
+          'Skip',
+          'Skip',
+          'Failed'
         ],
         'unprompted': 0,
         'ide': 'Claude Code',
