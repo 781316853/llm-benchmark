@@ -112,6 +112,7 @@
   --bench-webdev: #F58C6E;
   --bench-llm: #8E9BFF;
   --bench-arenaofbias: #4FD1D9;
+  --bench-aicodingdaily: #E0A8D8;
   --bench-programbench: #A8E063;
   --bench-cursorbench: #6FC3FF;
   --bench-frontiercode: #E6A16B;
@@ -265,6 +266,8 @@
   --bench-webdev: #A24E2C;
   --bench-llm: #4F5FA8;
   --bench-arenaofbias: #2E7068;
+  /* AI Coding Daily 榜色:紫红 —— 与 HLE 的粉(#9B4F72)、Terminal-Bench 的灰紫(#6B5580)按色相/明度分档 */
+  --bench-aicodingdaily: #6B3A78;
   --bench-programbench: #5F7A2E;
   --bench-cursorbench: #3E6577;
   --bench-frontiercode: #8C5A34;
@@ -590,6 +593,7 @@ a:hover { text-decoration: underline; }
 .bv-webdev { --bv-color: var(--bench-webdev); }
 .bv-llm { --bv-color: var(--bench-llm); }
 .bv-arenaofbias { --bv-color: var(--bench-arenaofbias); }
+.bv-aicodingdaily { --bv-color: var(--bench-aicodingdaily); }
 .bv-programbench { --bv-color: var(--bench-programbench); }
 .bv-cursorbench { --bv-color: var(--bench-cursorbench); }
 .bv-frontiercode { --bv-color: var(--bench-frontiercode); }
@@ -1135,8 +1139,10 @@ body {
 /* 双行表头:分组行与列行分别吸附在导航下方,避免滚动时相互覆盖 */
 #matrixTable thead tr.grp-row th { top: var(--tabs-h); }
 #matrixTable thead tr.col-row th { top: calc(var(--tabs-h) + 33px); }
-/* 窄屏列数太多,整表铺开会撑破页面;仅在窄屏保留表内横向滚动作为兜底 */
-@media (max-width: 1000px) {
+/* 窄屏列数太多,整表铺开会撑破页面;仅在窄屏保留表内横向滚动作为兜底。
+   门槛自 1000px 上调到 1200px:2026-10-19 新增「AI Coding Daily」计分列后,矩阵整表自然宽
+   由 1043px 增至 1126px,而 1100px 视口下容器只有 1036px,铺开会顶出整页横向滚动。 */
+@media (max-width: 1200px) {
   .matrix-section .table-wrap { overflow-x: auto; }
   #matrixTable { font-size: 12px; }
   #matrixTable th, #matrixTable td { padding: 7px; }

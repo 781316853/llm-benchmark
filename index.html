@@ -11,10 +11,10 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261018g" />
+  <link rel="stylesheet" href="css/styles.css?v=20261019a" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
-  <script defer src="data/models.js?v=20261017a"></script>
+  <script defer src="data/models.js?v=20261019a"></script>
   <!-- 模型 API 标价(输入/缓存输入/输出三档单价 → 每百万 token 综合成本):总览矩阵「性价比」列要用,
        而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。
        主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
@@ -38,16 +38,19 @@
   <script defer src="data/hle.js?v=20261017b"></script>
   <!-- ModelDial 雷达(第三方独立实测综合能力榜,计入总览综合分(权重 16%)与命中数) -->
   <script defer src="data/modeldial.js?v=20260930a"></script>
+  <!-- AI Coding Daily 编码榜(aicodingdaily.com 独立第三方实测,计入总览综合分(权重 10%)与命中数,
+       2026-10-19 入组;并作为「AI Coding Daily」独立标签页的数据源) -->
+  <script defer src="data/aicodingdaily.js?v=20261019a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260921a"></script>
   <!-- AI Agent 工具更新日志(12 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261018a"></script>
+  <script defer src="js/data.js?v=20261019a"></script>
   <script defer src="js/charts.js?v=20261018a"></script>
-  <script defer src="js/compare.js?v=20261016b"></script>
-  <script defer src="js/app.js?v=20261018f"></script>
+  <script defer src="js/compare.js?v=20261019a"></script>
+  <script defer src="js/app.js?v=20261019a"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
@@ -58,13 +61,13 @@
       <div class="brand">
         <p class="brand-eyebrow">LLM Benchmark Index</p>
         <h1>大模型编码基准整合门户</h1>
-        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · NL2Repo-Bench · CursorBench · FrontierCode · ModelDial 雷达 等编码评测,聚焦跨基准模型对比</p>
+        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
       </div>
       <div class="topbar-panel">
         <p class="topbar-label">数据快照</p>
         <div class="topbar-meta" id="topMeta">数据为快照,详见各页脚注</div>
         <div class="topbar-facts">
-          <div><b>6</b><span>计分基准</span></div>
+          <div><b>7</b><span>计分基准</span></div>
           <div><b>14</b><span>权威基准</span></div>
           <div><b>2×</b><span>每日刷新</span></div>
         </div>
@@ -79,6 +82,7 @@
       <button class="tab" data-tab="llm2014">llm2014</button>
       <button class="tab" data-tab="modeldial">ModelDial</button>
       <button class="tab" data-tab="arenaofbias">亿模亿样</button>
+      <button class="tab" data-tab="aicodingdaily">AI Coding Daily</button>
       <button class="tab" data-tab="authority">权威基准测试</button>
       <button class="tab" data-tab="plans">套餐对比</button>
       <button class="tab" data-tab="changelog">Agent工具更新日志</button>
@@ -134,7 +138,7 @@
           <ul>
             <li><b class="note-term">梯队</b>按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,勾选「显示综合分」直接显示。</li>
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
-            <li><b class="note-term">命中</b>6 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样;HLE 仅参考,不计分。</li>
+            <li><b class="note-term">命中</b>7 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样 / AI Coding Daily;HLE 仅参考,不计分。</li>
             <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
             <li><b class="note-term">行与徽标</b>绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,勾选「显示全部模型」才出现;NEW 为近 7 天首次上榜。</li>
@@ -199,12 +203,12 @@
           <li><b class="note-term">来源</b>ModelDial 雷达(modeldial.com/radar)第三方独立实测,分后端与测试、前端与交互、知识与推理三类评测,按 40% / 30% / 30% 加权为综合分(各 0-100)。</li>
           <li><b class="note-term">配置口径</b>同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。</li>
           <li><b class="note-term">成本口径</b>本页费用与耗时取源站后端(coding)单轴实测,低于主站三轴汇总值;各模型之间口径一致,可直接横向比较。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 16%)与命中数(分母 6);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 16%)与命中数(分母 7);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与费用说明</summary>
           <ul>
-            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%)、「榜单基准」组同步减权;计分 6 组中第三方实测合计约 70%、榜单基准约 30%。</li>
+            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%)、「榜单基准」组同步减权;计分 7 组中第三方实测合计约 73%、榜单基准约 27%。</li>
             <li><b class="note-term">完整度</b>自 2026-09-20 起取消完整度奖励;在场榜单多少仅通过「缺失权重回流」体现。</li>
             <li><b class="note-term">费用示例</b>MiniMax-M3 本页约 $0.31、源站主榜约 $0.62;源站紧凑 feed 未提供费用完整度字段,故不做「≥ / 部分费用」标记。散点图 X 轴为参考费用(对数刻度),气泡面积编码总耗时。</li>
           </ul>
@@ -233,13 +237,52 @@
           <li><b class="note-term">来源</b>亿模亿样前端作品社区盲评:同题两件作品匿名盲评,按 Bradley-Terry 估计偏好强度折算 Elo(1000 为平均,高 400 分约等于被偏好机会高十倍),并给出 ±95% 区间。</li>
           <li><b class="note-term">分档</b>同一模型按推理强度分档多次测试,主榜取最高分档;源站「非官方」条目(量化/改版权重、第三方 harness)已剔除。</li>
           <li><b class="note-term">指标</b>有效比较为投票场次;胜率 = 胜场 ÷ 有效比较;覆盖任务为参与题数;有效比较不足 30 次标注「暂定」。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 12%)与命中数(分母 6),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 12%)与命中数(分母 7),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开抓取方式与区间说明</summary>
           <ul>
             <li><b class="note-term">抓取</b>源站为客户端渲染的静态站,本站直接读取其公开接口 <code>api.arenaofbias.icu/api/leaderboard?by=config</code>,按模型聚合后每日刷新。</li>
             <li><b class="note-term">区间</b>Elo 与 ±95% 不确定区间均来自源站;主榜为配置聚合后的最高分档,「档位」列为该模型在源站的配置条数。</li>
+          </ul>
+        </details>
+      </section>
+    </section>
+
+    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(权重 10%)与命中数) -->
+    <section class="page" id="page-aicodingdaily">
+      <div class="page-head">
+        <p class="page-kicker">Independent Real-World Test · AI Coding Daily</p>
+        <div class="page-head-row"><h2>AI Coding Daily <span class="tag">独立第三方实测 · 7 项目 27 prompt · 计入综合分 10%</span></h2></div>
+        <p id="acdDesc" class="page-desc"></p>
+      </div>
+      <div class="chart-row single">
+        <div class="chart-box"><h3>成本 vs 总分(气泡=每 prompt 平均耗时)</h3><div id="acdScatter" class="chart chart-scatter"></div></div>
+      </div>
+      <div class="table-wrap"><table id="acdTable" class="data-table"></table></div>
+      <p class="source-note" id="acdNote"></p>
+      <!-- 实测配置明细:模型 × 推理档位 × harness,默认折叠 -->
+      <details class="md-details">
+        <summary>全部实测配置明细 <span class="hint" id="acdCfgCount"></span></summary>
+        <div class="table-wrap"><table id="acdCfgTable" class="data-table"></table></div>
+      </details>
+      <section class="notes-section">
+        <div class="notes-head">
+          <p class="note-title">阅读说明</p>
+          <span class="notes-hint">要点速览 · 计分席位与口径可展开</span>
+        </div>
+        <ul>
+          <li><b class="note-term">来源</b>AI Coding Daily(aicodingdaily.com),主办方为独立开发者 Povilas Korop,不是被评厂商之一;每个模型在 7 个真实项目上跑 27 个 prompt,源站累计 2000+ 次运行。</li>
+          <li><b class="note-term">分数口径</b>总分 0-70 = Laravel 代码质量 20 + React-TS 代码质量 20 + Bug Finding 10 + Edge-case Testing 20;每个 prompt 从项目全新副本起步,模型看不到隐藏测试,无人工反馈。</li>
+          <li><b class="note-term">混口径</b>源站「Tested with」列显示每个模型跑在<b>各自</b>的 agent harness 上(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),分数同时反映模型能力与脚手架质量。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 10%)与命中数(分母 7);数据为快照,不代表绝对评价。</li>
+        </ul>
+        <details class="notes-more">
+          <summary>展开权重席位与成本说明</summary>
+          <ul>
+            <li><b class="note-term">权重席位</b>按站内判据(主办方是否被评厂商自身)独立第三方实测榜计入综合分;因 harness 逐模型混杂、且与同为编码 agent 实测的 ModelDial(16%)存在重复计量,取 10% 压低,与 2026-09-24 无机酸前端实测入组时的处理同法。</li>
+            <li><b class="note-term">成本/耗时</b>均为<b>每 prompt</b> 平均值,不是每模型整轮测试成本;源站对部分模型未给成本(显示「—」),这些条目不进散点图但仍在下表。</li>
+            <li><b class="note-term">更新频率</b>源站按周更新,本页「源站发布」取页面 Last update 标注,「本站抓取」为每日刷新时间。</li>
           </ul>
         </details>
       </section>

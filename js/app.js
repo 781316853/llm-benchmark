@@ -88,7 +88,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode, D.src.arenaofbias]
+      D.src.cursorbench, D.src.frontiercode, D.src.arenaofbias, D.src.aicodingdaily]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -107,11 +107,12 @@
     webdev: "LMArena 前端竞技场 · 匿名盲测 Elo",
     arenaofbias: "前端作品社区盲评 Elo 竞技场",
     tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
-    modeldial: "第三方实测 · 后端 40 / 前端 30 / 知识 30"
+    modeldial: "第三方实测 · 后端 40 / 前端 30 / 知识 30",
+    aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70"
   };
   var BENCH_WEIGHT = {
     deepswe: "16%", llm2014: "12%", webdev: "22%",
-    arenaofbias: "12%", tbench: "11%", modeldial: "16%"
+    arenaofbias: "12%", tbench: "11%", modeldial: "16%", aicodingdaily: "10%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -246,6 +247,10 @@
     { key: "arenaofbias", label: "亿模亿样 (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "arenaofbias",
       tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 12%)与命中数",
       val: function (r) { return (r.arenaofbias && r.arenaofbias.score != null) ? r.arenaofbias.score : null; } },
+    // AI Coding Daily:独立第三方实测编码榜总分(0-70,四轴之和;每模型取最高分 config);计入综合分与命中数
+    { key: "aicodingdaily", label: "AI Coding Daily (总分/70)", type: "num", bench: true, grp: "第三方实测", tone: "aicodingdaily",
+      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 10%)与命中数,完整榜单见「AI Coding Daily」页",
+      val: function (r) { return (r.aicodingdaily && r.aicodingdaily.score != null) ? r.aicodingdaily.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -484,6 +489,22 @@
         if (r.modeldial.configs) mdParts.push(r.modeldial.configs + " 个配置取最高");
         mdHtml = '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
       }
+      // AI Coding Daily 单元格:总分(0-70);悬浮显示四轴分项/推理档位/harness/耗时/费用
+      var acdHtml = "—";
+      if (r.aicodingdaily) {
+        var ac = r.aicodingdaily, acParts = [];
+        if (ac.laravel != null) acParts.push("Laravel " + ac.laravel);
+        if (ac.reactTs != null) acParts.push("React-TS " + ac.reactTs);
+        if (ac.bugFinding != null) acParts.push("Bug Finding " + ac.bugFinding);
+        if (ac.edgeCase != null) acParts.push("Edge-case " + ac.edgeCase);
+        if (ac.harness) acParts.push("harness " + ac.harness);
+        if (ac.effort) acParts.push("档位 " + ac.effort);
+        if (ac.timeSec != null) acParts.push("耗时 " + fmtDur(ac.timeSec * 1000) + "/prompt");
+        if (ac.costUsd != null) acParts.push("费用 " + fmtUsd(ac.costUsd) + "/prompt");
+        if (ac.configs) acParts.push(ac.configs + " 个配置取最高");
+        acdHtml = '<span class="bv bv-aicodingdaily" title="' + esc(acParts.join(" · ")) + '">' + ac.score + '</span>' +
+          (ac.harness ? ' <span class="cell-cost">' + esc(ac.harness) + '</span>' : "");
+      }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
@@ -539,7 +560,9 @@
         '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
         // 亿模亿样列:Elo 原值上该榜数据色,后随 ±95% 区间(灰字)
         '<td class="num">' + biasCell(r) + '</td>' +
-        '<td class="num">' + r.benchCount + '/6</td></tr>';
+        // AI Coding Daily 列(「第三方实测」组尾):总分 0-70 上该榜数据色,后随 harness 小灰字(元数据)
+        '<td class="num">' + acdHtml + '</td>' +
+        '<td class="num">' + r.benchCount + '/' + CMP.GROUPS.length + '</td></tr>';
     });
     // 两级表头:第 1 行为分组行(「榜单基准」「第三方实测」colspan 合并)与非评测列的 rowspan 纵跨格;
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
@@ -547,7 +570,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 16% / Terminal-Bench 4.0/3.0/2.1 11%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%)、社区盲评 Elo(Code Arena · WebDev 22% / 亿模亿样 12%)与站主实测口径(llm2014 私有题库 12%);四组同纲计入综合分与命中数,合计占权重约 70%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 16%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 10%,注:各模型跑在各自 agent harness 上)、社区盲评 Elo(Code Arena · WebDev 22% / 亿模亿样 12%)与站主实测口径(llm2014 私有题库 12%);五组同纲计入综合分与命中数,合计占权重约 73%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -610,7 +633,7 @@
       note += '\n当前高亮 ' + domCnt + ' 个国产模型。';
     }
     // 口径细节统一收进下方「阅读说明」
-    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样为第三方实测;HLE 及其余权威基准仅参考。';
+    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;HLE 及其余权威基准仅参考。';
     document.getElementById("overviewNote").textContent = note;
   }
 
@@ -825,7 +848,7 @@
         '%(三分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
         '源站主榜显示的是三轴汇总值,故此处数值低于源站显示值;本页各模型之间口径一致、可直接横向比较。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母为 6(六项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母为 7(七项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
         ms.length + ' 条,下方为全部 config 明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -888,13 +911,113 @@
         '「档位」= 该模型在源站的配置(推理强度)条数;「暂定」表示源站标注有效比较不足 30 次。</div>' +
       '<div class="note-line"><b>入榜口径</b>同一模型按推理强度分档多次测试,主榜取<b>最高分那一档</b>(与源站主榜一致);' +
         '源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)已剔除。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(权重 12%,「第三方实测」组)与命中数,计分组共 6 组;' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(权重 12%,「第三方实测」组)与命中数,计分组共 7 组;' +
         '本页展示 ' + ms.length + ' 个模型' +
         (st.votes != null ? '、源站快照 ' + esc(st.votes) + ' 次有效比较' : '') +
         (st.tasks != null ? ' / ' + esc(st.tasks) + ' 道题' : '') + '。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.boardUrl || src.url || "") + '" target="_blank" rel="noopener">亿模亿样 · 模型效果对比 ↗</a>' +
         (src.url ? ' · <a href="' + esc(src.url) + '" target="_blank" rel="noopener">公开 API ↗</a>' : '') + '</div>';
+  }
+
+  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 10%) =====
+  // 主榜为模型级条目(每模型取总分最高的「档位 × harness」配置),config 明细另附折叠表。
+  function renderAicodingdaily() {
+    var src = D.src.aicodingdaily || {};
+    var ms = D.aicodingdaily();
+    var cfgs = D.aicodingdailyConfigs();
+    var axes = src.axes || {};
+    var maxPts = src.maxPoints || 70;
+    document.getElementById("acdDesc").innerHTML = paraHtml(src.desc || "") +
+      ((src.updated || src.refreshedAt) ? "<br>" +
+        [(src.updated ? "源站发布 " + esc(src.updated) : ""),
+          (src.refreshedAt ? "本站抓取 " + esc(src.refreshedAt) : ""),
+          ("收录 " + ms.length + " 个模型 / " + cfgs.length + " 条实测配置")]
+          .filter(Boolean).join(" · ") : "");
+    if (!ms.length) {
+      document.getElementById("acdNote").innerHTML =
+        '<div class="note-line"><b>暂无数据</b>抓取失败或尚未生成 data/aicodingdaily.js(待下次每日刷新后恢复)。</div>';
+      return;
+    }
+    // 成本 vs 总分散点:X=每 prompt 平均成本(对数轴)、Y=总分、气泡=平均耗时
+    // 源站对部分模型未给成本(显示 N/A),这些条目不进散点、仍在下表展示
+    var pts = ms.filter(function (m) { return m.costUsd != null && m.score != null; })
+      .map(function (m) { return [m.costUsd, m.score, m.timeSec != null ? m.timeSec / 60 : 1, m.canon.id]; });
+    var costs = pts.map(function (p) { return p[0]; });
+    var scores = pts.map(function (p) { return p[1]; });
+    var span = function (v) { var t = Number(v.toPrecision(1)); return t > 0 ? t : v; };
+    CH.apply("acdScatter", CH.scatterOption([{ name: "模型", points: pts }], {
+      xName: "每 prompt 平均成本($)", yName: "总分(0-" + maxPts + ")",
+      bubble: true, bubbleName: "耗时", bubbleScale: 2.2,
+      bubbleFormat: function (min) { return fmtDur(min * 60000); },
+      xFormat: fmtUsd,
+      xLog: true,
+      xMin: span(Math.min.apply(null, costs) / 2.2),
+      xMax: span(Math.max.apply(null, costs) * 1.8),
+      yMin: Math.max(0, Math.floor((Math.min.apply(null, scores) - 6) / 10) * 10),
+      yMax: Math.min(maxPts, Math.ceil((Math.max.apply(null, scores) + 3) / 10) * 10)
+    }));
+    // 主榜表:# / 模型 / 厂商 / 总分 / 四轴 / harness / 档位 / 耗时 / 成本 / 配置数
+    // 总分与四轴是本榜数值(上 bv-aicodingdaily 色);harness/档位/耗时/成本属元数据,保持灰字
+    var rowHtml = function (m) {
+      return '<tr><td class="rank">' + m.rank + '</td>' +
+        '<td>' + vdot(m.canon.vendor) + esc(m.canon.id) + '</td>' +
+        '<td>' + vname(m.canon.vendor) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", m.score) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", m.laravel) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", m.reactTs) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", m.bugFinding) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", m.edgeCase) + '</td>' +
+        '<td>' + esc(m.harness || "—") + '</td>' +
+        '<td>' + esc(m.effort || "—") + '</td>' +
+        '<td class="num">' + (m.timeSec != null ? fmtDur(m.timeSec * 1000) : "—") + '</td>' +
+        '<td class="num">' + fmtUsd(m.costUsd) + '</td>' +
+        '<td class="num">' + (m.configs || 1) + '</td></tr>';
+    };
+    var acdHeads = ["#", "模型", "厂商", "总分", "Laravel", "React-TS", "Bug Find", "Edge-case", "Harness", "档位", "耗时", "成本", "配置"];
+    // 4 个分项列 + 总分列同色(总分在第 4 列、分项 5~8 列)
+    fillTable("acdTable", acdHeads, ms.map(rowHtml),
+      headTone(["", "", "", "num", "num", "num", "num", "num", "", "", "num", "num", "num"], 3, 7, "aicodingdaily"));
+    var cfgRows = cfgs.map(function (c) {
+      return '<tr><td class="rank">' + (c.rank != null ? c.rank : "—") + '</td>' +
+        '<td>' + vdot(c.canon.vendor) + esc(c.canon.id) + '</td>' +
+        '<td>' + vname(c.canon.vendor) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", c.score) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", c.laravel) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", c.reactTs) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", c.bugFinding) + '</td>' +
+        '<td class="num">' + bvSpan("aicodingdaily", c.edgeCase) + '</td>' +
+        '<td>' + esc(c.harness || "—") + '</td>' +
+        '<td>' + esc(c.effort || "—") + '</td>' +
+        '<td class="num">' + (c.timeSec != null ? fmtDur(c.timeSec * 1000) : "—") + '</td>' +
+        '<td class="num">' + fmtUsd(c.costUsd) + '</td></tr>';
+    });
+    fillTable("acdCfgTable", ["#", "模型", "厂商", "总分", "Laravel", "React-TS", "Bug Find", "Edge-case", "Harness", "档位", "耗时", "成本"],
+      cfgRows, headTone(["", "", "", "num", "num", "num", "num", "num", "", "", "num", "num"], 3, 7, "aicodingdaily"));
+    document.getElementById("acdCfgCount").textContent =
+      "共 " + cfgs.length + " 条实测配置(模型 × 推理档位 × harness)";
+    document.getElementById("acdNote").innerHTML =
+      '<div class="note-line"><b>分数口径</b>总分 0-' + maxPts + ' = Laravel 代码质量 ' + (axes.laravel || 20) +
+        ' + React-TS 代码质量 ' + (axes.reactTs || 20) + ' + Bug Finding ' + (axes.bugFinding || 10) +
+        ' + Edge-case Testing ' + (axes.edgeCase || 20) + ';每个 prompt 从项目全新副本起步、模型看不到隐藏测试、无人工反馈,' +
+        '同一模型按推理档位与 harness 组合多次实测,主榜取最高总分配置。</div>' +
+      '<div class="note-line"><b>混口径提醒</b>源站「Tested with」列显示各模型跑在<b>各自</b>的 agent harness 上' +
+        '(' + harnessList(ms).join(" / ") + '),分数同时反映模型能力与脚手架质量,与站内其他基准不是同一协议;' +
+        '主办方为独立第三方(非被评厂商),故仍计入综合分,但按站内判据压低权重。</div>' +
+      '<div class="note-line"><b>成本/耗时口径</b>均为<b>每 prompt</b> 平均值(非每模型总测试成本);源站对 ' +
+        ms.filter(function (m) { return m.costUsd == null; }).length + ' 个模型未给成本(显示「—」),这些条目不进散点图。</div>' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 10%)与命中数(分母 ' +
+        CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,下方为全部实测配置明细 ' + cfgs.length + ' 条。</div>' +
+      '<div class="note-line"><b>来源</b>' +
+        '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
+        (src.methodUrl ? ' · <a href="' + esc(src.methodUrl) + '" target="_blank" rel="noopener">方法论与计分公式 ↗</a>' : "") +
+        (src.refreshNote ? ' · ' + esc(src.refreshNote) : "") + '</div>';
+  }
+  // 本页出现过的 harness 清单(去重、按首次出现序),用于「混口径提醒」文案
+  function harnessList(ms) {
+    var out = [];
+    ms.forEach(function (m) { if (m.harness && out.indexOf(m.harness) < 0) out.push(m.harness); });
+    return out;
   }
 
   // ===== 7) 权威基准测试(权威基准) =====
@@ -1828,6 +1951,7 @@
     else if (name === "llm2014") renderLlm2014(state.llmMonth);
     else if (name === "modeldial") renderModeldial();
     else if (name === "arenaofbias") renderArenaofbias();
+    else if (name === "aicodingdaily") renderAicodingdaily();
     else if (name === "authority") renderAuthority();
     else if (name === "plans") renderPlans();
     else if (name === "changelog") renderChangelog();

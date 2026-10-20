@@ -455,15 +455,32 @@
       .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, arenaofbias, modeldial} 用于矩阵/雷达 =====
+  // ===== AI Coding Daily 编码榜(独立标签页;计入综合分(「第三方实测」组计分组之一,权重 10%)与命中数) =====
+  // 主榜为模型级条目:每条取该模型总分最高的 config(模型 × 档位 × harness 组合),按总分降序;
+  // 总分 0-70 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20。
+  // 注:harness 逐模型不同(源站「Tested with」列),分数是「模型 + 各家 agent」的产物,故压低权重。
+  function aicodingdaily() {
+    var src = window.AICODINGDAILY || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  // config 明细(模型 × 推理档位 × harness,条数随源站扩榜而变):按源站排名升序,供页内明细表展示
+  function aicodingdailyConfigs() {
+    var src = window.AICODINGDAILY || { configs: [] };
+    return (src.configs || []).slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); })
+      .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
+  }
+
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, arenaofbias, modeldial, aicodingdaily} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
-  // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数)
+  // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数);
+  // aicodingdaily:同名取最高总分(2026-10-19 起计入综合分与命中数,权重 10%)
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, arenaofbias: null, modeldial: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -522,8 +539,20 @@
           name: m.model, effort: m.effort, provider: m.provider
         };
     });
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / 亿模亿样 / ModelDial
-    // 共 6 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/NL2Repo)仅展示不计命中。
+    // AI Coding Daily:总分 0-70(四轴之和);源站 models[] 已是模型级最优 config,
+    // 这里再按 canonical 归并一次(同一模型的不同写法取更高总分)。norm 留空 —— 综合分用原生总分定标。
+    aicodingdaily().forEach(function (m) {
+      if (m.score == null) return;
+      var e = ensure(m.canon);
+      if (!e.aicodingdaily || m.score > e.aicodingdaily.score)
+        e.aicodingdaily = {
+          score: m.score, harness: m.harness, costUsd: m.costUsd, timeSec: m.timeSec,
+          laravel: m.laravel, reactTs: m.reactTs, bugFinding: m.bugFinding, edgeCase: m.edgeCase,
+          configs: m.configs, rank: m.rank, name: m.model, effort: m.effort
+        };
+    });
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / 亿模亿样 / ModelDial / AI Coding Daily
+    // 共 7 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/NL2Repo)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
@@ -532,17 +561,19 @@
       if (e.tbench) e.benchCount++;
       if (e.arenaofbias) e.benchCount++;
       if (e.modeldial) e.benchCount++;
+      if (e.aicodingdaily) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / 亿模亿样 / Terminal-Bench / ModelDial 共 6 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily 共 7 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var tbTop = tbench()[0] || {};
     var mdTop = modeldial()[0] || {};
+    var acdTop = aicodingdaily()[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
@@ -570,7 +601,11 @@
       // ModelDial 的模型标识是 slug,卡片展示用 canon() 归一后的显示名(与矩阵一致)
       { key: "modeldial", name: "ModelDial 雷达", tag: "后端 40% / 前端 30% / 知识 30%", url: md.url, updated: md.updated,
         stats: [{ l: "模型", v: (md.models || []).length }, { l: "配置", v: (md.configs || []).length }],
-        top: (mdTop.canon ? mdTop.canon.id : mdTop.model) + " · " + (mdTop.overall != null ? mdTop.overall + " / 100" : "—") }
+        top: (mdTop.canon ? mdTop.canon.id : mdTop.model) + " · " + (mdTop.overall != null ? mdTop.overall + " / 100" : "—") },
+      // AI Coding Daily:独立第三方实测编码榜(总分 0-70);卡片展示用 canon() 归一后的显示名
+      { key: "aicodingdaily", name: "AI Coding Daily", tag: "独立实测 · 7 项目 / 27 prompt", url: acd.url, updated: acd.updated,
+        stats: [{ l: "模型", v: (acd.models || []).length }, { l: "配置", v: (acd.configs || []).length }],
+        top: (acdTop.canon ? acdTop.canon.id : acdTop.model) + " · " + (acdTop.score != null ? acdTop.score + " / 70" : "—") }
     ];
   }
 
@@ -654,7 +689,8 @@
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
     apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
-    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL"
+    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
+    aicodingdaily: "AICODINGDAILY"
   };
   var srcView = {};
   Object.keys(SRC_GLOBALS).forEach(function (k) {
@@ -698,6 +734,8 @@
     automationbench: automationbench,
     modeldial: modeldial,
     modeldialConfigs: modeldialConfigs,
+    aicodingdaily: aicodingdaily,
+    aicodingdailyConfigs: aicodingdailyConfigs,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
     // 模型 API 标价快照(主源 codingplan.fyi,排名模型缺价由 models.dev 补齐;

@@ -113,7 +113,7 @@ window.MODEL_MAP = {
     { id: "Command A+",       vendor: "Cohere",    color: "#39594D", aliases: ["Command A+", "command-a-plus"] },
     // ===== AI 能力专项测试(atmeplz,2026-10-16 下线)方向榜补充的新模型(2026-09) =====
     { id: "Gemini 3.8 Flash", vendor: "Google",    color: "#4E8BF0", aliases: ["Gemini 3.8 Flash", "gemini-3.8-flash", "gemini-3.8-flash-high"] },
-    { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash", "Qwen3.8-Flash-Next", "qwen3.8-flash-next", "Qwen3.8 Flash Next", "qwen-3-8-flash-next"] },
+    { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash", "Qwen 3.8 Flash", "Qwen3.8-Flash-Next", "qwen3.8-flash-next", "Qwen3.8 Flash Next", "qwen-3-8-flash-next"] },
     { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview"] },
     { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
     { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev", "dots3-note Preview", "dots3-note-preview", "Dots3-Note-Preview", "dots3-note"] },
@@ -197,7 +197,23 @@ window.MODEL_MAP = {
     { id: "Muse Wonder Full", vendor: "Meta", color: "#58A6FF", aliases: ["Muse Wonder Full", "muse-wonder-full"] },
     // HLE 把 "Muse Spark Open"(61) 与 "Muse Spark 1.1"(62.1)、"Muse Spark"(58.4) 三条并列出分,
     // 开放权重版是独立模型,不并入 Spark 1.1;各源写法仅 Muse Spark Open / muse-spark-open。
-    { id: "Muse Spark Open",  vendor: "Meta", color: "#82B8FF", aliases: ["Muse Spark Open", "muse-spark-open", "meta/muse-spark-open"] }
+    { id: "Muse Spark Open",  vendor: "Meta", color: "#82B8FF", aliases: ["Muse Spark Open", "muse-spark-open", "meta/muse-spark-open"] },
+    // ===== AI Coding Daily 榜引入时补登记(2026-10-19)=====
+    // 原则:只补厂商与配色,不改动合并边界 —— 这些原始名此前都落 vendor=「其他」的自动建档幽灵条目,
+    // 且各自的归一结果已决定「合并 / 分立」,登记为同名 canonical 即原样归位。
+    // Mistral Large 4:各源写法 Mistral Large 4 / mistral-large-4 / mistral large 4;
+    //   frontiercode 的 "Mistral Large 4 (Preview)" 走 stripParen 候选并入本条(与登记前行为一致)。
+    { id: "Mistral Large 4",  vendor: "Mistral", color: "#FF9473", aliases: ["Mistral Large 4", "mistral-large-4"] },
+    // Beam:Reflection AI 的模型(arena_webdev 写作 beam-1.0-501b-a23b、arenaofbias 写作 Beam/beam),
+    //   站内同一模型的不同写法,合并到 "Beam"。
+    { id: "Beam",             vendor: "Reflection AI", color: "#8E6BD8", aliases: ["Beam", "beam", "beam-1.0-501b-a23b"] },
+    // LongCat 2.5 Preview:源站把 Preview 与正式版分别列名(aicodingdaily 只收 Preview,arenaofbias 收 2.5),
+    //   按「不同发布阶段分别建档」分立,不并入 LongCat 2.5。
+    { id: "LongCat 2.5 Preview", vendor: "Meituan", color: "#E6CE72", aliases: ["LongCat 2.5 Preview", "LongCat-2.5-Preview", "longcat-2.5-preview"] },
+    // Nemotron 3.5 Super VL:NVIDIA Super 档,与已建档的 3 Ultra / 3.5 Lightning 是不同模型。
+    //   HLE 的 "Nemotron 3.5 Super VL 120B A12B( NVFP4)" 带参数量与量化后缀,登记前即是独立幽灵条目,
+    //   本次不改动其归属(hle 仅参考、不计命中)。
+    { id: "Nemotron 3.5 Super VL", vendor: "NVIDIA", color: "#6B9400", aliases: ["Nemotron 3.5 Super VL", "nemotron-3-5-super-vl"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1
@@ -248,6 +264,7 @@ window.MODEL_MAP = {
     "China Telecom": "#63A6F2",     // 品牌蓝(中国电信)
     "Meituan": "#DFC24E",           // 芥末黄(美团):与 NVIDIA / Xiaomi 错开色相带
     "inclusionAI": "#8FD97A",       // 品牌绿(蚂蚁 inclusionAI / Ling 系列)
+    "Reflection AI": "#8E6BD8",     // 深紫(Beam 系列):与 ByteDance/Moonshot 的浅紫按明度分档
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
   domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI"]

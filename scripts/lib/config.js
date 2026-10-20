@@ -337,6 +337,22 @@ module.exports = {
       host: "modeldial.com", src: "aggregate",
       radarUrl: "https://modeldial.com/radar",
       methodUrl: "https://modeldial.com/method"
+    },
+    // ===== AI Coding Daily 编码榜(独立标签页;计入总览综合分与命中数)=====
+    aicodingdaily: {
+      // AI Coding Daily(aicodingdaily.com,主办方 Povilas Korop):独立第三方个人实测站,主办方不是被评厂商之一。
+      // 每模型 7 个真实项目 / 27 个 prompt(源站方法论页称全站累计 2000+ 次运行),无隐藏测试可见、无人工反馈;
+      // 总分 0-70 = Laravel 代码质量 20 + React-TS 代码质量 20 + Bug Finding 10 + Edge-case Testing 20,
+      // 另记每 prompt 平均成本(USD,部分模型源站未给)与平均耗时(mm:ss)。
+      // 榜单页为服务端渲染单表格,1 次请求得全表(条数随源站扩榜而变,不在注释与文案里写死)。
+      // 渠道:该站自建自测,无更高优先级渠道可合并,按 T3 第三方评测处理(src=aggregate)。
+      // 注:harness 逐模型不同(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),
+      //     分数是「模型 + 各家 agent」的产物 → 计入综合分但权重压低,详见 sources/aicodingdaily.js 头部说明。
+      url: "https://aicodingdaily.com/leaderboard",
+      host: "aicodingdaily.com", src: "aggregate",
+      methodUrl: "https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas",
+      maxPoints: 70,
+      axes: { laravel: 20, reactTs: 20, bugFinding: 10, edgeCase: 20 }
     }
   },
 
@@ -363,7 +379,7 @@ module.exports = {
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
       //     与主基准的原生量纲不可比,同样排除。
-      excludedSources: ["arena_webdev", "arenaofbias", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench"]
+      excludedSources: ["arena_webdev", "arenaofbias", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily"]
     },
     completeness: {
       // 每条记录必填字段
