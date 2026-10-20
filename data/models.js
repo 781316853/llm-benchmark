@@ -65,6 +65,8 @@ window.MODEL_MAP = {
     { id: "Tencent Hy3 Preview", vendor: "Tencent", color: "#1FC4FF", aliases: ["Tencent Hy3 Preview", "hy3 preview"] },
     { id: "MiniMax-M3",       vendor: "MiniMax",   color: "#FF5C8A", aliases: ["MiniMax-M3", "minimax-m3", "MiniMax M3"] },
     { id: "MiniMax M3.1 Flash Preview", vendor: "MiniMax", color: "#F2668E", aliases: ["MiniMax M3.1 Flash Preview", "MiniMax-M3.1-Flash-Preview", "minimax-m3.1-flash-preview", "MiniMax M3.1", "minimax-m3.1"] },
+    // ModelDial 将正式版与 Preview 分列(75.7 vs 69.6),DeepSWE/TB 亦收正式版,故正式版单独建档
+    { id: "MiniMax M3.1 Flash", vendor: "MiniMax", color: "#FF6F9C", aliases: ["MiniMax M3.1 Flash", "MiniMax-M3.1-Flash", "minimax-m3.1-flash"] },
     { id: "MiniMax-M2.7",     vendor: "MiniMax",   color: "#FF7DA3", aliases: ["minimax-m2-7", "MiniMax-M2.7", "MiniMax M2.7"] },
     { id: "MiniMax M2.5",     vendor: "MiniMax",   color: "#FF9EBB", aliases: ["MiniMax M2.5", "minimax-m2-5"] },
     { id: "MiniMax M2.1",     vendor: "MiniMax",   color: "#FFB0CC", aliases: ["minimax-2.1", "minimax-m2.1", "minimax-m2-1-preview"] },
