@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-10-18)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-10-19)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-10-18',
+  'updated': '2026-10-19',
   'models': [
     {
       'name': 'Muse Wonder Full',
@@ -88,6 +88,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'MiniMax M3.1 Flash',
+      'score': 73.7,
+      'mode': '最高（工具）',
+      'date': '2026-10-19',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
       'name': 'Claude Opus 5',
       'score': 73.7,
       'mode': '最高（工具）',
@@ -140,6 +148,14 @@ window.DATALEARNER = {
       'score': 72.7,
       'mode': '最高（工具）',
       'date': '2026-06-26',
+      'params': '未知',
+      'license': '闭源'
+    },
+    {
+      'name': 'MiniMax M3.1 Flash',
+      'score': 72.1,
+      'mode': '极高强度思考（工具）',
+      'date': '2026-10-19',
       'params': '未知',
       'license': '闭源'
     },
@@ -230,22 +246,6 @@ window.DATALEARNER = {
       'date': '2026-08-14',
       'params': '7440亿',
       'license': '有条件商用'
-    },
-    {
-      'name': 'Claude Opus 5',
-      'score': 68.9,
-      'mode': '思考模式 Medium（工具）',
-      'date': '2026-07-24',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-6 Sol',
-      'score': 68.8,
-      'mode': '最高（工具）',
-      'date': '2026-09-22',
-      'params': '未知',
-      'license': '闭源'
     }
   ]
 };
