@@ -2,16 +2,111 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-20',
+  'updated': '2026-10-21',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
-    '前瞻与传闻'
+    '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-21',
+      'title': 'DeepSeek 开源内部推理框架 DeepInfer',
+      'brief': 'DeepSeek 开源内部推理框架 DeepInfer ，并同步开源 Token 编解码组件 deepseek-recipe 。 DeepSeek 称，其 DeepSeek V4.1 Flash 线上服务基于 DeepInfer 运行，单一集群吞吐为每天 155 万亿 token ，按谷价计算每卡每小时收入 38 美元 。',
+      'url': 'https://zhuanlan.zhihu.com/p/2095560295930508953',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'ChatGPT 推出锁定聊天，可用 PIN 保护',
+      'brief': 'OpenAI 正为 ChatGPT 逐步推出 Locked Chats （锁定聊天），覆盖 Free、Go、Plus、Pro、Business、Enterprise 和 Edu 订阅方案。',
+      'url': 'https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'Codex 改进计划第 15 天，Tibo 送上用量重置',
+      'brief': 'OpenAI 的 Tibo 发帖宣布，连续改进计划第 15 天“还在忙活”，并送上一次用量重置。他此前承诺，在接下来的 28 天里，每天要么交付一项对多数 Codex 和 Work 用户有用的明确改进，要么进行一次完全的用量重置。',
+      'url': 'https://x.com/thsottiaux/status/2112432076767289678',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'OpenAI 修复约 4 万账户额度错配问题并补偿',
+      'brief': 'OpenAI 称，周末有部分用户反映使用额度消耗快于预期，经排查约 4 万个账户 的额度计算与其实际所选套餐不一致，问题已修正，受影响用户将获得额度补偿。',
+      'url': 'https://x.com/thsottiaux/status/2112592264686149749',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'OpenAI API 新增 12 小时提示词缓存',
+      'brief': 'OpenAI 为 Responses API 中的 GPT-5.6 及后续模型新增可选的 12 小时 提示词缓存，让间隔数小时的请求仍可复用共享指令、工具和上下文，并按缓存输入费率计费。',
+      'url': 'https://x.com/OpenAIDevs/status/2112603916076781778',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'Google 开源原生 PyTorch 软件栈 TorchTPU',
+      'brief': 'Google 已在 GitHub 开源 TorchTPU ，让现有 PyTorch 工作负载只需少量代码修改即可在 TPU 上原生运行。该软件栈由 Google 与 Meta 的 PyTorch 团队共同开发，支持标准 PyTorch API ，可使用 eager mode 调试，再通过 torch.compile 优化 TPU 利用率并减少内存开销。',
+      'url': 'https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-21',
+      'title': '腾讯元宝搜索对外开放，支持三种接入方式',
+      'brief': '腾讯 宣布， 元宝搜索 正式通过 腾讯云 对外开放，支持 Skill 、 MCP 和 API 三种接入方式，接入可享每月 2000 次免费调用额度。',
+      'url': 'https://mp.weixin.qq.com/s/DHbVEwhHjiggPI5EQ5LgkQ',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'ElevenLabs 发布两款 Eleven Realtime 实时语音模型',
+      'brief': 'ElevenLabs 发布语音到语音模型 Eleven Realtime v1 Mini 和 v1 Max ，分别面向低成本自然对话和复杂任务，每款模型均可作为完整的语音 Agent 使用。',
+      'url': 'https://elevenlabs.io/blog/realtime',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'Mistral AI 发布 Voxtral 3 语音模型系列及语音 Agent SDK',
+      'brief': 'Mistral AI 发布 Voxtral 3 语音模型系列及语音 Agent SDK ，将语音转录、推理、工具调用和语音合成整合为实时流式流程。',
+      'url': 'https://mistral.ai/news/voxtral-3',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'OpenAI 为 ChatGPT 引入多人共管的定期任务',
+      'brief': 'OpenAI 在 ChatGPT 中推出团队任务，可自动执行定期工程工作，例如每周汇总已发布内容和受阻事项，同事可共同查看结果并修改后续任务指令。',
+      'url': 'https://help.openai.com/en/articles/20001540-creating-and-managing-team-tasks-in-chatgpt',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'Google 为 Gemini 推出小企业主新工具',
+      'brief': 'Google 宣布为 Gemini 推出一批面向小企业主的新工具，核心是一个企业落地页，作为集中入口帮助业主打理品牌、财务和客户洞察等日常事务。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-21',
+      'title': 'Google 向安卓车载推出 Gemini 个性化功能',
+      'brief': 'Google 开始在 Android Auto 上推出 Gemini 的 Personal Intelligence ，并计划在未来几个月将其引入搭载 Google built-in 的汽车。',
+      'url': 'https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-10-20',
       'title': 'MiniMax 正式发布 M3.1 Flash',
@@ -27,46 +122,6 @@ window.NEWS = {
       'url': 'https://public-inspection.federalregister.gov/2026-21447.pdf',
       'source': '橘鸦AI早报',
       'type': '要闻'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'OpenCode 更新 DeepSeek V4.1 Flash',
-      'brief': 'OpenCode 宣布， Go 订阅方案和 Free 中的 DeepSeek V4.1 Flash 已更新至 1017 版本，用户无需进行任何操作。',
-      'url': 'https://x.com/opencode/status/2112220734768779441',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'Qoder 限时免费开放 DeepSeek 新模型',
-      'brief': 'Qoder 宣布开启 1024 预热活动，国际版和 CN 版中的 DeepSeek V4.1-Flash-1017 即日起至 10 月 24 日 限时免费，面向个人版免费用户和付费用户同步开放。',
-      'url': 'https://mp.weixin.qq.com/s/ejQ3QP7WhuWcoZswlZlSag',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'Command Code 上线 MiniMax M3.1 Flash',
-      'brief': 'Command Code 已上线代号为 Space Bunny 的 MiniMax M3.1 Flash ，所有订阅方案的用户均可限时免费使用。',
-      'url': 'https://x.com/CommandCodeAI/status/2112188292078952773',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'TRAE 公布程序员节活动，设百万积分大奖',
-      'brief': 'TRAE 宣布推出 1024 程序员节 系列活动，涵盖签到抽奖、社区活动和主题影片。',
-      'url': 'https://mp.weixin.qq.com/s/obNwXPaKKNcr3jQbrsLiiA',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'Devin 推出按使用效率自动提额机制',
-      'brief': 'Cognition 为 Devin 推出 Efficiency Score 、 Devin Coach 和基于效率的自动审批，用于按工程师的使用效率管理 AI 支出。',
-      'url': 'https://devin.ai/blog/efficiency-based-cost-controls',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     },
     {
       'date': '2026-10-20',
@@ -91,54 +146,6 @@ window.NEWS = {
       'url': 'https://www.inceptionlabs.ai/blog/introducing-mercury-3',
       'source': '橘鸦AI早报',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'Decision 3.0 多模态决策模型发布',
-      'brief': 'vLLM Semantic Router 团队推出 Decision 3.0（D3） 多模态决策模型系列，包含 0.6B、0.8B、2B、4B、9B 和 27B 六种规模，全系部署配方已合并至 vLLM Recipes ，目前可使用 vLLM nightly 版本，通过 System One API 在自有基础设施上运行。',
-      'url': 'https://huggingface.co/collections/vllm-sr/decision-30',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'Xing4.0-29B-Intent 开源：同时识别意图与提取参数',
-      'brief': '中电信人工智能科技有限公司 星辰通用人工智能实验室开源 Xing4.0-29B-Intent ，同步开放训练语料和推理 SDK 。该模型总参数约 290 亿 ，每个 token 激活约 40 亿 ，可按预先定义的类别和字段同时识别意图、提取参数，以统一 JSON 格式返回结果，支持中文和英文。',
-      'url': 'https://github.com/XingChen-AGI/Xing4.0-29B-Intent',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-19',
-      'title': 'Anthropic 设公益基金，先投 5% 股份',
-      'brief': 'Anthropic 宣布设立全资的 Anthropic Public Benefit Fund ，作为随公司成长而扩大持股的公益实体。基金初始投入公司 5% 的股份，须经股东批准；此后公司估值每较设定基准增长 50% ，董事会可酌情追加 2% ，据 Reuters 报道该基准尚未披露。',
-      'url': 'https://www.anthropic.com/news/public-benefit-fund',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-19',
-      'title': '开源模型背后的训练算力：Wolf 估算累计已近 10 亿美元',
-      'brief': 'Hugging Face 联合创始人 Thomas Wolf 公布了一份粗略估算： Meta 、 NVIDIA 、 阿里巴巴 、 DeepSeek 、 Moonshot 、 Mistral 等约 35 家机构在 Hugging Face Hub 上开源了模型，训练这些模型消耗的算力按当前 GPU 租用价格折算，累计价值接近 10 亿美元 ，而这些模型全部免费下载； 2023 年底 这一数字还不到 4000 万美元 。',
-      'url': 'https://x.com/Thom_Wolf/status/2111828314851598745',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-10-19',
-      'title': 'OpenAI 据称出现 3 个新模型 ID',
-      'brief': '多位 X 用户发现， OpenAI API 中短暂出现 aurora-red-alpha 、 aurora-green-alpha 和 aurora-blue-alpha 这 3 个新模型ID。 TestingCatalog 称，这些模型引用随后已从 API 中移除。',
-      'url': 'https://x.com/testingcatalog/status/2111724606927028578',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-10-19',
-      'title': '报道称 Anthropic 正与律所商讨 AI 谈判规范',
-      'brief': '据《金融时报》报道， Anthropic 正与律所等法律机构磋商，为代表用户砍价、处理纠纷或协商薪酬的 AI Agent 研究谈判规范。消息人士称，该公司希望了解律师如何在代表客户利益的同时兼顾公平结果。',
-      'url': 'https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
     }
   ]
 };

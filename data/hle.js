@@ -1,4 +1,4 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-10-20)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-10-21)
 // 来源:https://www.datalearner.com/benchmarks/hle(主渠道,厂商官方发布无工具成绩) · https://benchlm.ai/benchmarks/aahle(AA 无工具复测镜像)
 // 官方:https://lastexam.ai/
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -11,8 +11,8 @@ window.HLE = {
   'url': 'https://www.datalearner.com/benchmarks/hle',
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-20',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-21',
+  'refreshedAt': '2026-10-21 14:14',
   'stats': {
     'tasks': 2500,
     'entries': 238
