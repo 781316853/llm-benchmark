@@ -66,6 +66,10 @@ function parseUpdated(html) {
 // 只匹配档位词表(整括号内容即档位),避免把名字里的括注(如版本号说明)误当档位。
 const EFFORT_IN_PAREN = /\s*\((Extra High|Extra Low|Xhigh|Minimal|Max|High|Medium|Low)\)\s*$/i;
 
+// 源站「Tested with」列在 harness 名之上另起一行相对时间(如 "6 hours ago"),取表格文本时会拼到前面;
+// 该时间是站内展示用的更新提示,不是 harness 的一部分,入库前剥掉。
+const AGO_PREFIX = /^(?:\d+\s+(?:minute|hour|day|week|month|year)s?\s+ago|just now|yesterday)\s+/i;
+
 // 模型名归一键(与 js/data.js / model-map.js 同规则)
 function normKey(s) {
   return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
@@ -87,7 +91,7 @@ function parseRows(raw) {
     let model = rawName, effort = null;
     const em = rawName.match(EFFORT_IN_PAREN);
     if (em) { effort = em[1]; model = rawName.slice(0, em.index).trim(); }
-    const harness = String(cells[6] || "").trim() || null;
+    const harness = String(cells[6] || "").replace(AGO_PREFIX, "").trim() || null;
     const key = rank + "|" + normKey(model) + "|" + (effort || "") + "|" + total + "|" + (harness || "");
     if (seen[key]) return;                                    // 防御源站重复渲染同表(桌面/移动两份)
     seen[key] = 1;
