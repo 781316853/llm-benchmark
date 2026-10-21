@@ -1,4 +1,4 @@
-// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-10-20)
+// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-10-21)
 // 来源:https://aicodingdaily.com/leaderboard(方法论:https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas)
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
@@ -15,12 +15,12 @@ window.AICODINGDAILY = {
     'bugFinding': 10,
     'edgeCase': 20
   },
-  'updated': '2026-10-20',
+  'updated': '2026-10-21',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-10-21 14:14',
+  'refreshedAt': '2026-10-21 22:33',
   'stats': {
-    'entries': 50,
-    'models': 35
+    'entries': 51,
+    'models': 36
   },
   'desc': 'AI Coding Daily(Povilas Korop 个人实测站):每个模型在 7 个真实项目上跑 27 个 prompt(全站累计 2000+ 次运行),每个 prompt 从项目全新副本起步、模型看不到隐藏测试、无人工反馈;总分为 Laravel 代码质量(20)+ React-TS 代码质量(20)+ Bug Finding(10)+ Edge-case Testing(20)四轴之和(0-70),另记每 prompt 平均成本与耗时。分数越高越好,成本/耗时越低越优。',
   'models': [
@@ -538,6 +538,22 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 33,
+      'model': 'Mercury 3',
+      'effort': 'High',
+      'score': 41.68,
+      'costUsd': 0.02,
+      'timeSec': 91,
+      'timeStr': '01:31',
+      'harness': 'OpenCode',
+      'laravel': 16.08,
+      'reactTs': 15.83,
+      'bugFinding': 2.92,
+      'edgeCase': 6.85,
+      'src': 'aggregate',
+      'configs': 1
+    },
+    {
+      'rank': 34,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 41.39,
@@ -553,7 +569,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 34,
+      'rank': 35,
       'model': 'Minimax M3',
       'effort': 'High',
       'score': 40.35,
@@ -569,7 +585,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 35,
+      'rank': 36,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 38.61,
@@ -1293,6 +1309,21 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 48,
+      'model': 'Mercury 3',
+      'effort': 'High',
+      'score': 41.68,
+      'costUsd': 0.02,
+      'timeSec': 91,
+      'timeStr': '01:31',
+      'harness': 'OpenCode',
+      'laravel': 16.08,
+      'reactTs': 15.83,
+      'bugFinding': 2.92,
+      'edgeCase': 6.85,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 49,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 41.39,
@@ -1307,7 +1338,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 49,
+      'rank': 50,
       'model': 'Minimax M3',
       'effort': 'High',
       'score': 40.35,
@@ -1322,7 +1353,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 38.61,
