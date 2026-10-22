@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-21)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-22)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
@@ -12,11 +12,11 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-10-21',
-  'refreshedAt': '2026-10-21 22:33',
+  'updated': '2026-10-22',
+  'refreshedAt': '2026-10-22 14:17',
   'stats': {
     'tasks': 66,
-    'entries': 42
+    'entries': 40
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -491,38 +491,14 @@ window.TBENCH = {
     {
       'rank': null,
       'model': 'DeepSeek-V4.1-Flash-1017',
-      'agent': null,
-      'effort': '思考档位未公开（工具）',
+      'agent': 'Claude Code',
+      'effort': null,
       'score': 42.3,
       'ci': null,
       'date': '2026-10-17',
       'tokens': null,
       'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'Claude Haiku 5.5',
-      'agent': null,
-      'effort': '最高（工具）',
-      'score': 39.2,
-      'ci': null,
-      'date': '2026-10-07',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'MiniMax M3.1 Flash',
-      'agent': null,
-      'effort': '思考档位未公开（工具）',
-      'score': 38.1,
-      'ci': null,
-      'date': '2026-10-19',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
+      'src': 'deepseek-official'
     }
   ]
 };

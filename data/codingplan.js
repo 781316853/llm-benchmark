@@ -1,4 +1,4 @@
-// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-10-20
+// 数据源:Coding Plan 对比(codingplan.fyi)「额度/价格对比」快速对比,更新于 2026-10-22
 // 来源:https://www.codingplan.fyi/model-comparison-presets.json + plans.json + plan-models.json + models.json + platforms.json(官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:groups[]=固定精选模型分组(kind single=单模型列/multi=多模型列);row=比价行
 //   (platform 平台/plan 套餐/qualifier 谷峰等档位标签/price 折算人民币月价按量行计「按量」/
@@ -9,9 +9,9 @@ window.CODINGPLAN = {
   'source': 'Coding Plan 对比(codingplan.fyi)',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-10-20',
-  'siteUpdated': '2026.10.13',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-22',
+  'siteUpdated': '2026.10.21',
+  'refreshedAt': '2026-10-22 14:17',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 2,
@@ -1840,7 +1840,7 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '天翼云',
+          'platform': '天翼云 · 旧 Token 套餐',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Token 680M（存量续订）',
           'qualifier': '',
@@ -1870,7 +1870,7 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '天翼云',
+          'platform': '天翼云 · 旧 Token 套餐',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Token 380M（存量续订）',
           'qualifier': '',
@@ -1880,7 +1880,7 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '天翼云',
+          'platform': '天翼云 · 旧 Token 套餐',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Token 180M（存量续订）',
           'qualifier': '',
@@ -1890,7 +1890,7 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '天翼云',
+          'platform': '天翼云 · 旧 Token 套餐',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Token 80M（存量续订）',
           'qualifier': '',
@@ -1930,7 +1930,7 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '天翼云',
+          'platform': '天翼云 · 旧 Token 套餐',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': 'Token 25M（存量续订）',
           'qualifier': '',

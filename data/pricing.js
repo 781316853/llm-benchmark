@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 2026-10-20
+// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 2026-10-22
 // 来源:https://www.codingplan.fyi/plan-models.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -16,8 +16,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-10-20',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-22',
+  'refreshedAt': '2026-10-22 14:17',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -28,10 +28,10 @@ window.PRICING = {
     'planModels': 2281,
     'withPricing': 1465,
     'comparable': 1000,
-    'models': 97,
+    'models': 96,
     'unresolved': 15,
-    'ranked': 43,
-    'supplemented': 4,
+    'ranked': 42,
+    'supplemented': 3,
     'carriedOver': 0,
     'missingRanked': 1
   },
@@ -786,15 +786,6 @@ window.PRICING = {
       'outputCnyPerM': 3.196,
       'costPerM': 0.16524,
       'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'MiniMax M3.1 Flash',
-      'slug': 'MiniMax-M3.1-Flash',
-      'inputCnyPerM': 1.02,
-      'cacheCnyPerM': 0.102,
-      'outputCnyPerM': 4.08,
-      'costPerM': 0.1632,
-      'priceSource': 'models.dev:minimax'
     },
     {
       'id': 'GPT-OSS 120B',

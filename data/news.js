@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-21',
+  'updated': '2026-10-22',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -11,6 +11,86 @@ window.NEWS = {
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-22',
+      'title': 'Claude Duet 开放研究预览，主动提醒并在后台办事',
+      'brief': 'Anthropic 开放 Claude Duet 研究预览。这款基于 Claude Opus 5.5 的主动式 Agent 应用面向专业人士和小企业主，每天早晨汇总已连接应用中最重要的事项，此后每隔几小时检查一次，只在需要用户关注时发消息；用户可用文字或语音交办安排会议、制作仪表盘、财务预测等任务，它在自带浏览器的云端虚拟机中执行，手机和电脑无需开机。',
+      'url': 'https://claude.com/resources/articles/claude-duet',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'Tibo 称 Codex 登录用户缓存永久保留',
+      'brief': 'OpenAI Codex 连续 28 天 改进计划进入第 16 天 。',
+      'url': 'https://developers.openai.com/api/docs/guides/prompt-caching',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'PHP 两项严重漏洞获修复，OpenAI 协助发现与修复',
+      'brief': 'OpenAI 披露，其 Patch the Planet 计划协助研究人员发现 PHP 严重安全漏洞，并参与了持续约 2 个月 的协调修复。',
+      'url': 'https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'eMudhra 因弱密钥撤销 8 枚中间证书',
+      'brief': 'eMudhra 披露， 8 枚中间 CA 证书因密钥生成缺陷被撤销； Mozilla 的调查显示，相关私钥均为小于 256 的整数，可被轻易恢复，其中 6 枚证书用于 TLS 、 2 枚用于代码签名。',
+      'url': 'https://emudhra.com/en/post/certificate-security-incident',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'LiteLLM 遭供应链攻击，恶意版本下架',
+      'brief': 'LiteLLM 披露发布流水线遭供应链攻击，攻击者发布了含恶意代码的 1.107.0 版本，目前事件得到控制，调查仍在进行。受影响的 PyPI 软件包在线约 2 小时 后被撤下， Docker Hub 和 GHCR 上涉及 v1.107.0 、 latest 、 main-latest 、 main-stable 标签的恶意镜像也被撤下或替换。',
+      'url': 'https://docs.litellm.ai/blog/security-incident-oct-21-2026',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'Qoder 国际版新增 Lite 档，续费按档位加赠',
+      'brief': 'Qoder 国际版推出 Lite 订阅方案，每月 10 美元 含 1,000 Credits ，面向按需使用、用量不大的用户，保留全系产品功能，但可用模型范围和每月用量与其他付费档位不同。',
+      'url': 'https://docs.qoder.cn/events/bogo',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'Claude API 推出自 2023 年以来首个正式新版',
+      'brief': 'Anthropic 发布 Claude API 2026-10-21 版本，称这是其自 2023 年以来首次正式发布 API 版本，并计划提高发布频率，让开发者在新模型要求变更前处理不兼容变化； 2023-06-01 版本仍未弃用。',
+      'url': 'https://platform.claude.com/docs/en/release-notes/overview',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'Recursive 发布开源编码模型 Flint',
+      'brief': 'AI 创业公司 Recursive 发布面向本地编码 Agent 的开源模型 Flint ，权重以 Apache 2.0 许可证开放，支持 llama.cpp 等工具和框架。',
+      'url': 'https://recursive.com/updates/introducing-recursive-flint',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'Baseten 发布并开源两款决策模型',
+      'brief': 'Baseten 发布并开源决策模型 mammoth-1 和 elephant-1 ，参数量分别为 270 亿 和 90 亿 。两款模型不生成文本，而是返回各候选答案的概率，可用于工单分流、垃圾邮件和钓鱼检测等任务。',
+      'url': 'https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-22',
+      'title': 'IBM 发布 20 亿参数语音新模型',
+      'brief': 'IBM 在 Hugging Face 发布 20 亿参数 语音模型 granite-speech-5.0-2b ，并更新系列中的 Turbo CTC 和 4.1 2B Plus 模型，均采用 Apache 2.0 许可证。',
+      'url': 'https://huggingface.co/blog/ibm-granite/granite-speech-5',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
     {
       'date': '2026-10-21',
       'title': 'DeepSeek 开源内部推理框架 DeepInfer',
@@ -26,46 +106,6 @@ window.NEWS = {
       'url': 'https://help.openai.com/en/articles/20001411-using-locked-chats-in-chatgpt',
       'source': '橘鸦AI早报',
       'type': '要闻'
-    },
-    {
-      'date': '2026-10-21',
-      'title': 'Codex 改进计划第 15 天，Tibo 送上用量重置',
-      'brief': 'OpenAI 的 Tibo 发帖宣布，连续改进计划第 15 天“还在忙活”，并送上一次用量重置。他此前承诺，在接下来的 28 天里，每天要么交付一项对多数 Codex 和 Work 用户有用的明确改进，要么进行一次完全的用量重置。',
-      'url': 'https://x.com/thsottiaux/status/2112432076767289678',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-21',
-      'title': 'OpenAI 修复约 4 万账户额度错配问题并补偿',
-      'brief': 'OpenAI 称，周末有部分用户反映使用额度消耗快于预期，经排查约 4 万个账户 的额度计算与其实际所选套餐不一致，问题已修正，受影响用户将获得额度补偿。',
-      'url': 'https://x.com/thsottiaux/status/2112592264686149749',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-21',
-      'title': 'OpenAI API 新增 12 小时提示词缓存',
-      'brief': 'OpenAI 为 Responses API 中的 GPT-5.6 及后续模型新增可选的 12 小时 提示词缓存，让间隔数小时的请求仍可复用共享指令、工具和上下文，并按缓存输入费率计费。',
-      'url': 'https://x.com/OpenAIDevs/status/2112603916076781778',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-21',
-      'title': 'Google 开源原生 PyTorch 软件栈 TorchTPU',
-      'brief': 'Google 已在 GitHub 开源 TorchTPU ，让现有 PyTorch 工作负载只需少量代码修改即可在 TPU 上原生运行。该软件栈由 Google 与 Meta 的 PyTorch 团队共同开发，支持标准 PyTorch API ，可使用 eager mode 调试，再通过 torch.compile 优化 TPU 利用率并减少内存开销。',
-      'url': 'https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-21',
-      'title': '腾讯元宝搜索对外开放，支持三种接入方式',
-      'brief': '腾讯 宣布， 元宝搜索 正式通过 腾讯云 对外开放，支持 Skill 、 MCP 和 API 三种接入方式，接入可享每月 2000 次免费调用额度。',
-      'url': 'https://mp.weixin.qq.com/s/DHbVEwhHjiggPI5EQ5LgkQ',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     },
     {
       'date': '2026-10-21',
@@ -106,46 +146,6 @@ window.NEWS = {
       'url': 'https://blog.google/products-and-platforms/platforms/android/android-auto-cars-with-google-built-in-gemini-personal-intelligence/',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'MiniMax 正式发布 M3.1 Flash',
-      'brief': 'MiniMax 正式更新 M3.1 Flash ，确认此前以匿名身份处理超过 200 万亿 token 的 Space Bunny 是该模型的早期版本。',
-      'url': 'https://x.com/MiniMax_AI/status/2112150867868541221',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-20',
-      'title': '美国下令联邦文职机构禁购并移除 DeepSeek',
-      'brief': '美国国土安全部 10 月 19 日 公布命令通知，部长在审阅联邦采购安全委员会的建议及相关证据后，依据《 2018 年联邦采购供应链安全法 》下令：联邦文职机构不得采购杭州深度求索（ DeepSeek ）及其关联实体开发的信息技术产品和服务；文职机构的信息技术系统须移除所有 DeepSeek 及其关联实体的产品，以及使用 DeepSeek 实现方案开发的第三方产品和服务。',
-      'url': 'https://public-inspection.federalregister.gov/2026-21447.pdf',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-20',
-      'title': '蚂蚁百灵开源 5 款 Ming-3.0 语音模型',
-      'brief': '蚂蚁百灵 开源 5 款 Ming-3.0 模型，覆盖 TTS 语音生成、音频理解和 ASR 语音识别，已在 Hugging Face 和 ModelScope 提供下载。',
-      'url': 'https://x.com/AntLingAGI/status/2112210811997540475',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'fal 上线视频模型 FLUX 3 Max',
-      'brief': 'fal 与 Black Forest Labs 合作推出视频模型 FLUX 3 Max ，已在 fal 上线，支持 720p 文生视频和图生视频。该模型基于 FLUX 3 继续训练，fal 称其在 Artificial Analysis 图生视频初步评测中获得 1,139 Elo ，并列第一。',
-      'url': 'https://fal.ai/flux-3-max',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-20',
-      'title': 'Inception 发布扩散模型 Mercury 3',
-      'brief': 'Inception 发布扩散语言模型 Mercury 3 ，已上线 Inception API 、 OpenRouter 、 Baseten 和 Vercel ，兼容 OpenAI API 。',
-      'url': 'https://www.inceptionlabs.ai/blog/introducing-mercury-3',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };
