@@ -208,7 +208,7 @@ window.QUALITY = {
       'id': 'programbench',
       'name': 'ProgramBench',
       'status': 'ok',
-      'modelCount': 71,
+      'modelCount': 72,
       'updated': '2026-10-22',
       'ageDays': 0,
       'completeness': 1,
@@ -851,9 +851,9 @@ window.QUALITY = {
     },
     'programbench': {
       'rate': 1,
-      'total': 71,
-      'complete': 71,
-      'modelCount': 71,
+      'total': 72,
+      'complete': 72,
+      'modelCount': 72,
       'missingFields': {},
       'flag': 'ok'
     },
