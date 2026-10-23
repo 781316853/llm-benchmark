@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-10-20 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-10-23 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-101db7a188260e9228e54756)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-879581d5b6bf2c4ee8850779)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-101db7a188260e9228e54756',
-  'batchRevision': 386,
-  'batchPublishedAt': '2026-10-20T04:45:09.632Z',
-  'updated': '2026-10-20',
-  'refreshedAt': '2026-10-23 14:11',
+  'batchId': 'overall-879581d5b6bf2c4ee8850779',
+  'batchRevision': 387,
+  'batchPublishedAt': '2026-10-23T09:38:36.514Z',
+  'updated': '2026-10-23',
+  'refreshedAt': '2026-10-23 22:19',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -31,7 +31,7 @@ window.MODELDIAL = {
   'costBasis': 'backend',
   'costBasisNote': '成本与耗时为后端(coding)单轴口径;官网主榜显示的是三轴汇总值,故本站数值低于官网显示值。',
   'stats': {
-    'configs': 92,
+    'configs': 93,
     'models': 42
   },
   'desc': 'ModelDial Radar:第三方独立实测的编码智能体能力榜,分后端与测试(40%)、前端与交互(30%)、知识与推理(30%)三类能力,同一模型按推理强度分档多次测试后取最高分配置入榜;综合分越高越好。',
@@ -488,7 +488,7 @@ window.MODELDIAL = {
       'elapsedMs': 1073565,
       'costUsd': 0.022862,
       'tags': [],
-      'configs': 5,
+      'configs': 6,
       'rank': 30
     },
     {
@@ -1956,6 +1956,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 92,
+      'provider': 'codex-local',
+      'model': 'gpt-6-luna',
+      'effort': 'medium',
+      'displayName': 'gpt-6-luna / Medium',
+      'overall': 29.3,
+      'backend': 29,
+      'frontend': 34,
+      'knowledge': 25,
+      'elapsedMs': 105099,
+      'costUsd': 0.014008,
+      'tags': []
+    },
+    {
+      'rank': 93,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-luna',
       'effort': 'low',

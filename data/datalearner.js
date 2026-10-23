@@ -92,8 +92,8 @@ window.DATALEARNER = {
       'score': 73.7,
       'mode': '最高（工具）',
       'date': '2026-10-19',
-      'params': '未知',
-      'license': '闭源'
+      'params': '4280亿',
+      'license': '有条件商用'
     },
     {
       'name': 'Claude Opus 5',
@@ -156,8 +156,8 @@ window.DATALEARNER = {
       'score': 72.1,
       'mode': '极高强度思考（工具）',
       'date': '2026-10-19',
-      'params': '未知',
-      'license': '闭源'
+      'params': '4280亿',
+      'license': '有条件商用'
     },
     {
       'name': 'MiMo-V2.6-Pro',

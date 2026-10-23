@@ -15,7 +15,7 @@ window.AUTOMATIONBENCH = {
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-23',
-  'refreshedAt': '2026-10-23 14:11',
+  'refreshedAt': '2026-10-23 22:19',
   'stats': {
     'tasks': 600,
     'domains': 6,
@@ -29,7 +29,7 @@ window.AUTOMATIONBENCH = {
       'model': 'MiniMax M3.1 Flash',
       'org': 'MiniMaxAI',
       'score': 62.8,
-      'license': '不开源',
+      'license': '有条件免费商用授权',
       'effort': '最高（工具）',
       'date': '2026-10-19',
       'src': 'datalearner',
