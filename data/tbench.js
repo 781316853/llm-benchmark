@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-22)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-23)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
@@ -12,8 +12,8 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-10-22',
-  'refreshedAt': '2026-10-22 22:35',
+  'updated': '2026-10-23',
+  'refreshedAt': '2026-10-23 14:11',
   'stats': {
     'tasks': 66,
     'entries': 40
@@ -293,7 +293,7 @@ window.TBENCH = {
       'ci': 3.5,
       'date': 'Aug 26, 2026',
       'tokens': '2.9B',
-      'cost': '$2.9k',
+      'cost': '$118.74',
       'src': 'official'
     },
     {
