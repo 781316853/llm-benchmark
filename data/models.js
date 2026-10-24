@@ -212,14 +212,29 @@ window.MODEL_MAP = {
     { id: "Mistral Large 4",  vendor: "Mistral", color: "#FF9473", aliases: ["Mistral Large 4", "mistral-large-4"] },
     // Beam:Reflection AI 的模型(arena_webdev 写作 beam-1.0-501b-a23b、arenaofbias 写作 Beam/beam),
     //   站内同一模型的不同写法,合并到 "Beam"。
-    { id: "Beam",             vendor: "Reflection AI", color: "#8E6BD8", aliases: ["Beam", "beam", "beam-1.0-501b-a23b"] },
+    { id: "Beam",             vendor: "Reflection AI", color: "#8E6BD8", aliases: ["Beam", "beam", "beam-1.0-501b-a23b", "Beam 1.0", "beam-1.0", "reflection/Beam-1.0"] },
     // LongCat 2.5 Preview:源站把 Preview 与正式版分别列名(aicodingdaily 只收 Preview,arenaofbias 收 2.5),
     //   按「不同发布阶段分别建档」分立,不并入 LongCat 2.5。
     { id: "LongCat 2.5 Preview", vendor: "Meituan", color: "#E6CE72", aliases: ["LongCat 2.5 Preview", "LongCat-2.5-Preview", "longcat-2.5-preview"] },
     // Nemotron 3.5 Super VL:NVIDIA Super 档,与已建档的 3 Ultra / 3.5 Lightning 是不同模型。
     //   HLE 的 "Nemotron 3.5 Super VL 120B A12B( NVFP4)" 带参数量与量化后缀,登记前即是独立幽灵条目,
     //   本次不改动其归属(hle 仅参考、不计命中)。
-    { id: "Nemotron 3.5 Super VL", vendor: "NVIDIA", color: "#6B9400", aliases: ["Nemotron 3.5 Super VL", "nemotron-3-5-super-vl"] }
+    { id: "Nemotron 3.5 Super VL", vendor: "NVIDIA", color: "#6B9400", aliases: ["Nemotron 3.5 Super VL", "nemotron-3-5-super-vl"] },
+    // ===== Vibe Code Bench v1.1 引入时补登记(2026-10-24)=====
+    // 同 2026-10-19 原则:只补厂商与配色,不改合并边界。以下原始名此前落 vendor=「其他」,
+    // 其中 laguna / grok fast / Ember / Beam / Mercury 已随本榜成为命中 2 榜的「参考」行,
+    // 不登记会在总览出现「其他」幽灵行。
+    { id: "Laguna M.1",       vendor: "Poolside",   color: "#7E9BB3", aliases: ["Laguna M.1", "laguna-m.1", "laguna m.1", "poolside/laguna-m.1"] },
+    { id: "Laguna XS.2",      vendor: "Poolside",   color: "#93B0C7", aliases: ["Laguna XS.2", "laguna-xs.2", "laguna xs.2", "poolside/laguna-xs.2"] },
+    { id: "Ember 1",          vendor: "Fireworks",  color: "#F29A4C", aliases: ["Ember 1", "ember-1", "fireworks/ember-1"] },
+    { id: "Mercury 2.5",      vendor: "Inception",  color: "#6FB3D9", aliases: ["Mercury 2.5", "mercury-2.5", "inception/mercury-2.5"] },
+    { id: "Mercury 3",        vendor: "Inception",  color: "#8FC8E6", aliases: ["Mercury 3", "mercury-3", "inception/mercury-3"] },
+    { id: "Grok 4.1 Fast",    vendor: "xAI",        color: "#A3ABB6", aliases: ["Grok 4.1 Fast", "grok-4.1-fast", "grok-4-1-fast-reasoning", "grok 4.1 fast (reasoning)", "grok/grok-4-1-fast-reasoning"] },
+    { id: "Grok 4 Fast",      vendor: "xAI",        color: "#B0B7C0", aliases: ["Grok 4 Fast", "grok-4-fast", "grok-4-fast-reasoning", "grok 4 fast (reasoning)"] },
+    { id: "Qwen3.8-Max Internal", vendor: "Alibaba", color: "#FF7A2B", aliases: ["Qwen3.8-Max Internal", "Qwen3.8 Max Internal", "qwen3.8-max-internal", "alibaba/qwen3.8-max-internal"] },
+    { id: "Qwen3-Max",        vendor: "Alibaba",   color: "#FF8B3D", aliases: ["Qwen3-Max", "Qwen3 Max", "qwen3-max", "alibaba/qwen3-max"] },
+    { id: "Ling-3.0-Flash",   vendor: "inclusionAI", color: "#A3E07F", aliases: ["Ling-3.0-Flash", "Ling 3.0 Flash", "ling-3.0-flash", "Ling 3.0 Flash 2607", "ling-3.0-flash-2607", "Ling 3.0 Flash Af Rc3", "ling-3.0-flash-af-rc3"] },
+    { id: "Mistral Small 2603", vendor: "Mistral", color: "#FFA07A", aliases: ["Mistral Small 2603", "mistral-small-2603", "mistralai/mistral-small-2603"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1
@@ -271,6 +286,9 @@ window.MODEL_MAP = {
     "Meituan": "#DFC24E",           // 芥末黄(美团):与 NVIDIA / Xiaomi 错开色相带
     "inclusionAI": "#8FD97A",       // 品牌绿(蚂蚁 inclusionAI / Ling 系列)
     "Reflection AI": "#8E6BD8",     // 深紫(Beam 系列):与 ByteDance/Moonshot 的浅紫按明度分档
+    "Poolside": "#8FA8BE",          // 板岩蓝灰(Laguna 系列)
+    "Fireworks": "#F0A35C",         // 暖琥珀(Fireworks 托管模型)
+    "Inception": "#7FC3E0"          // 天青(Mercury 系列)
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
   domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI"]

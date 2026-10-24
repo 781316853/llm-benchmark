@@ -273,13 +273,26 @@ module.exports = {
       url: "https://www.vals.ai/benchmarks/programbench",
       host: "www.vals.ai"
     },
+    vals_vibe_code: {
+      // Vibe Code Bench v1.1(Vals AI):从零构建 Web 应用的真实编码 Agent 实测,每份规格配
+      // 20-60 条自动化测试,隐藏测试判定;主指标准确率(%),另记每测试平均成本($)与平均耗时(s)。
+      // 页面为 Astro 服务端渲染 props 内嵌 benchmarkView JSON(metadata.benchmark_id=vibe_code_bench),
+      // 单请求即得全表。多数条目跑在 OpenHands harness,源站另含少量 Claude Code / Codex / Factory /
+      // Cursor CLI 等 harness 条目,逐行记录于 harness 字段。
+      // 渠道:该榜即 Vals AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
+      // 用途:计入总览综合分(「第三方实测」计分组,权重 8%)与命中数。
+      url: "https://www.vals.ai/benchmarks/vibe-code",
+      host: "www.vals.ai", src: "official",
+      officialUrl: "https://www.vals.ai/benchmarks/vibe-code"
+    },
     vals_vcb: {
       // Vibe Code Bench 1-100(Vals AI):50 个真实 Web 应用迭代场景(从可运行的 Vibe Code Bench v1.1
       // 应用起步、最多追加 10 轮产品请求),全部模型跑在固定 OpenHands harness 上(apples-to-apples);
       // 主指标准确率(%),另记每测试平均成本($)与平均耗时(s)。页面为 Astro 服务端渲染 props 内嵌
       // benchmarkView JSON,单请求即得全表(与 programbench 镜像同法解析)。
       // 渠道:该榜即 Vals AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
-      // 用途:计入总览综合分(「第三方实测」计分组,权重 8%)与命中数;完整榜见「VCB-1-100」页。
+      // 用途:自 2026-10-24 起仅作为「VCB-1-100」独立标签页数据源,不再计入总览综合分与命中数;
+      //      总览对应席位改用 vals_vibe_code。
       url: "https://www.vals.ai/benchmarks/vcb-1-100",
       host: "www.vals.ai", src: "official",
       officialUrl: "https://www.vals.ai/benchmarks/vcb-1-100"
@@ -423,7 +436,7 @@ module.exports = {
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
       //     与主基准的原生量纲不可比,同样排除。
-      excludedSources: ["arena_webdev", "arenaofbias", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "vals_vcb", "vals_codemigration"]
+      excludedSources: ["arena_webdev", "arenaofbias", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "vals_vibe_code", "vals_vcb", "vals_codemigration"]
     },
     completeness: {
       // 每条记录必填字段
@@ -439,9 +452,11 @@ module.exports = {
       alertAgeDays: 7,
       // 按源放宽阈值:周更源 7 天不更新属正常,不能套日更阈值。
       // AI Coding Daily 源站按周更新:超过 7 天 warn、超过 14 天 alert。
-      // Vals AI 两个榜按新模型批次更新(非每日),留更宽缓冲:超过 14 天 warn、超过 30 天 alert。
+      // Vals AI 三个榜(Vibe Code / VCB-1-100 / Code Migration)按新模型批次更新(非每日),
+      // 留更宽缓冲:超过 14 天 warn、超过 30 天 alert。
       perSource: {
         aicodingdaily: { warnAgeDays: 7, alertAgeDays: 14 },
+        vals_vibe_code: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_vcb: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 }
       }

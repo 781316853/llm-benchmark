@@ -2,7 +2,7 @@
 // 站点为 Astro 服务端渲染:每页 HTML 的 props 属性里内嵌 devalue 序列化的 benchmarkView,
 // 结构为 { metadata, tasks: { overall: { "<vendor>/<slug>": { accuracy, cost_per_test, latency, harness, ... } } } }。
 // 本文件只做"HTML -> benchmarkView -> 模型数组"的纯解析,不含任何网络请求与写文件逻辑。
-// 已被 programbench(镜像源)与 vals_vcb / vals_codemigration 三个源共用。
+// 已被 programbench(镜像源)与 vals_vibe_code / vals_vcb / vals_codemigration 四个源共用。
 "use strict";
 
 // ===== Astro/devalue 序列化标记解码:[0, v] -> v(原值,可嵌套标记);[1, [items]] -> 数组 =====

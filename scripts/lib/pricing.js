@@ -88,7 +88,8 @@ var RANKED_SOURCE_FILES = [
   "data/deepswe.js", "data/deepswe_v10.js",
   "data/llm2014.js", "data/arena_webdev.js",
   "data/tbench.js", "data/tbench_v3.js", "data/tbench_v2.js",
-  "data/arenaofbias.js", "data/modeldial.js",
+  "data/arenaofbias.js", "data/modeldial.js", "data/aicodingdaily.js",
+  "data/vals_vibe_code.js",
   "js/data.js"
 ];
 

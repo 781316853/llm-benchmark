@@ -90,7 +90,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode, D.src.arenaofbias, D.src.aicodingdaily, D.src.vals_vcb]
+      D.src.cursorbench, D.src.frontiercode, D.src.arenaofbias, D.src.aicodingdaily, D.src.vals_vibe_code, D.src.vals_vcb]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -111,11 +111,11 @@
     tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
     modeldial: "第三方实测 · 后端 40 / 前端 30 / 知识 30",
     aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70",
-    valsvcb: "独立第三方实测 · 固定 OpenHands · 准确率"
+    vibecode: "独立第三方实测 · 从零构建 Web 应用 · 准确率"
   };
   var BENCH_WEIGHT = {
     deepswe: "15%", llm2014: "11%", webdev: "20%",
-    arenaofbias: "11%", tbench: "10%", modeldial: "15%", aicodingdaily: "9%", valsvcb: "8%"
+    arenaofbias: "11%", tbench: "10%", modeldial: "15%", aicodingdaily: "9%", vibecode: "8%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -255,12 +255,12 @@
       val: function (r) { return (r.arenaofbias && r.arenaofbias.score != null) ? r.arenaofbias.score : null; } },
     // AI Coding Daily:独立第三方实测编码榜总分(0-70,四轴之和;每模型取最高分 config);计入综合分与命中数
     { key: "aicodingdaily", label: "AI Coding Daily (总分/70)", type: "num", bench: true, grp: "第三方实测", tone: "aicodingdaily",
-      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 10%)与命中数,完整榜单见「AI Coding Daily」页",
+      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 9%)与命中数,完整榜单见「AI Coding Daily」页",
       val: function (r) { return (r.aicodingdaily && r.aicodingdaily.score != null) ? r.aicodingdaily.score : null; } },
-    // VCB-1-100:Vals AI 固定 OpenHands harness 的编码 Agent 实测(准确率 %;每模型取最高条目);计入综合分与命中数
-    { key: "valsvcb", label: "VCB-1-100 (准确率)", type: "num", bench: true, grp: "第三方实测", tone: "valsvcb",
-      tip: "Vibe Code Bench 1-100(Vals AI)准确率(%):50 个真实 Web 应用迭代场景,从可运行应用起步、最多追加 10 轮产品请求;全部模型跑在固定 OpenHands harness 上,另记每测试平均成本与耗时;计入综合分(权重 8%)与命中数,完整榜单见「VCB-1-100」页",
-      val: function (r) { return (r.valsvcb && r.valsvcb.score != null) ? r.valsvcb.score : null; } },
+    // Vibe Code v1.1:Vals AI 从零构建 Web 应用的编码 Agent 实测(准确率 %;每模型取最高条目);计入综合分与命中数
+    { key: "vibecode", label: "Vibe Code (准确率)", type: "num", bench: true, grp: "第三方实测", tone: "vibecode",
+      tip: "Vibe Code Bench v1.1(Vals AI)准确率(%):从零构建 Web 应用,每份规格配 20-60 条隐藏自动化测试;多数模型跑在 OpenHands harness 上,源站另含少量 Claude Code / Codex / Factory 等 harness 条目;另记每测试平均成本与耗时;计入综合分(权重 8%)与命中数",
+      val: function (r) { return (r.vibecode && r.vibecode.score != null) ? r.vibecode.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -524,14 +524,14 @@
         acdHtml = '<span class="bv bv-aicodingdaily" title="' + esc(acParts.join(" · ")) + '">' + ac.score + '</span>' +
           (ac.harness ? ' <span class="cell-cost">' + esc(ac.harness) + '</span>' : "");
       }
-      // VCB-1-100 单元格:准确率 %(全部模型固定 OpenHands harness);悬浮显示 harness/每测试成本/耗时
-      var vcbHtml = "—";
-      if (r.valsvcb) {
-        var vc = r.valsvcb, vcParts = [];
+      // Vibe Code 单元格:准确率 %(以 OpenHands harness 为主);悬浮显示 harness/每测试成本/耗时
+      var vcHtml = "—";
+      if (r.vibecode) {
+        var vc = r.vibecode, vcParts = [];
         if (vc.harness) vcParts.push("harness " + vc.harness);
         if (vc.costPerTest != null) vcParts.push("成本 " + fmtUsd(vc.costPerTest) + "/测试");
         if (vc.latencyS != null) vcParts.push("耗时 " + fmtDur(vc.latencyS * 1000) + "/测试");
-        vcbHtml = '<span class="bv bv-valsvcb" title="' + esc(vcParts.join(" · ")) + '">' + vc.score + '</span>';
+        vcHtml = '<span class="bv bv-vibecode" title="' + esc(vcParts.join(" · ")) + '">' + vc.score + '</span>';
       }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
@@ -599,8 +599,8 @@
         '<td class="num">' + biasCell(r) + '</td>' +
         // AI Coding Daily 列(「第三方实测」组):总分 0-70 上该榜数据色,后随 harness 小灰字(元数据)
         '<td class="num">' + acdHtml + '</td>' +
-        // VCB-1-100 列(「第三方实测」组尾):准确率 上该榜数据色
-        '<td class="num">' + vcbHtml + '</td>' +
+        // Vibe Code 列(「第三方实测」组尾):准确率 上该榜数据色
+        '<td class="num">' + vcHtml + '</td>' +
         '<td class="num">' + r.benchCount + '/' + CMP.GROUPS.length + '</td></tr>';
     });
     // 两级表头:第 1 行为分组行(「榜单基准」「第三方实测」colspan 合并)与非评测列的 rowspan 纵跨格;
@@ -609,7 +609,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 15% / Terminal-Bench 4.0/3.0/2.1 10%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 15%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 9%,注:各模型跑在各自 agent harness 上;VCB-1-100,50 个 Web 应用迭代场景、固定 OpenHands harness、准确率,权重 8%)、社区盲评 Elo(Code Arena · WebDev 20% / 亿模亿样 11%)与站主实测口径(llm2014 私有题库 11%);六组同纲计入综合分与命中数,合计占权重约 74%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 15%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 9%,注:各模型跑在各自 agent harness 上;Vibe Code v1.1,从零构建 Web 应用、隐藏测试判定、以 OpenHands harness 为主,权重 8%)、社区盲评 Elo(Code Arena · WebDev 20% / 亿模亿样 11%)与站主实测口径(llm2014 私有题库 11%);六组同纲计入综合分与命中数,合计占权重约 74%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -959,7 +959,7 @@
         (src.url ? ' · <a href="' + esc(src.url) + '" target="_blank" rel="noopener">公开 API ↗</a>' : '') + '</div>';
   }
 
-  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 10%) =====
+  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 9%) =====
   // 主榜为模型级条目(每模型取总分最高的「档位 × harness」配置),config 明细另附折叠表。
   function renderAicodingdaily() {
     var src = D.src.aicodingdaily || {};
@@ -1045,7 +1045,7 @@
         '主办方为独立第三方(非被评厂商),故仍计入综合分,但按站内判据压低权重。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>均为<b>每 prompt</b> 平均值(非每模型总测试成本);源站对 ' +
         ms.filter(function (m) { return m.costUsd == null; }).length + ' 个模型未给成本(显示「—」),这些条目不进散点图。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 10%)与命中数(分母 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 9%)与命中数(分母 ' +
         CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,下方为全部实测配置明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -1110,8 +1110,8 @@
       '<div class="note-line"><b>口径优势</b>全部模型跑在<b>固定</b> OpenHands harness 上(' +
         (harnesses.join(" / ") || "OpenHands") + '),与 AI Coding Daily 的逐模型 harness 不同,跨模型可比性更好。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>均为<b>每测试</b>平均值(美元 / 秒);源站对部分模型未给成本(显示「—」),这些条目不进散点图。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 8%)与命中数(分母 ' +
-        CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条。</div>' +
+      '<div class="note-line"><b>说明</b>本页为独立展示,不计入总览综合分与命中数(总览对应计分组已换为 Vibe Code Bench v1.1;两者是不同基准:' +
+        '本榜为「在可运行应用上连续改需求」,v1.1 为「从零构建 Web 应用」);上表为模型级 ' + ms.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a></div>';
   }
