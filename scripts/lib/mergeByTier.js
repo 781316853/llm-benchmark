@@ -8,6 +8,8 @@
 //   4. 来源层级更低 -> 不改 score,仅回填高层级为 null 的字段;
 //   5. 规则 2/4 触发且跨层级分差 > CONFIG.tierConflictDelta -> 控制台记录口径冲突,便于人工核对;
 //   6. 保留双向后缀(≥5 字符)匹配以处理短名/全名差异;values() 按 score 降序并重编 rank。
+// opts.fillOnly:纯补缺渠道(如 AI Release Tracker 聚合榜)——只新增缺失模型,
+//   已存在的模型一律不动(不覆盖分数、也不回填字段),避免聚合值改动主渠道数据。
 // 约定:调用方在 add() 前把各源记录映射为统一字段(model/score 必填,其余可选),
 //       合并器原样保留额外字段(effort/date/agent/tokens 等)。
 "use strict";
@@ -63,8 +65,10 @@ function createTierMerger(opts) {
   }
 
   // 加入一路数据源:records 需已含 model/score;src 为渠道标签(据此定级)
-  function add(records, src) {
+  // opts.fillOnly=true 时只补缺失模型,已存在条目原样保留
+  function add(records, src, opts) {
     var tier = tierOf(src);
+    var fillOnly = !!(opts && opts.fillOnly);
     (records || []).forEach(function (m) {
       var name = String(m.model != null ? m.model : m.name).trim();
       if (!name) return;
@@ -78,6 +82,7 @@ function createTierMerger(opts) {
         entries[aliasKey(nk)] = { rec: rec, tier: tier, src: src };
         return;
       }
+      if (fillOnly) return;
       var ex = entries[k];
       if (tier < ex.tier) {
         // 高层级覆盖:改 score,模型名取更长者,回填缺失字段,升级 src/tier

@@ -5,7 +5,8 @@
 // 渠道层级(T2 厂商官方发布 > T3 第三方聚合 > T4 无出处转录):主源 datalearner 详情页
 //   (内嵌 results JSON,厂商官方发布成绩转录,含评测模式/发布时间/参数量/许可/evidence 出处);
 //   补充源 llm-stats 聚合表(#|Model|Score(0-1)|Size|Context|Cost|License)与
-//   benchlm.ai 镜像页(内嵌 __NEXT_DATA__ JSON)。
+//   benchlm.ai 镜像页(内嵌 __NEXT_DATA__ JSON);
+//   AI Release Tracker 聚合榜(T3)只补缺失模型,不覆盖以上渠道分数。
 // 出处校验(2026-10-17 取证):datalearner 该页部分行 evidence 缺 sourceUrl(无出处、口径不可回溯),
 //   其中 3 行与两条相互一致的 T3 值冲突 16~28 分(详见 parse() 内注释)。此类行一律按最低层级
 //   src=datalearner-unsourced 入库 —— 仅补缺失模型、不覆盖有出处数据,行级「无出处」徽标区分。
@@ -24,6 +25,7 @@ const writers = require("../lib/writers");
 const parseLlmStats = require("../lib/parseLlmStats");
 const { parseBenchlm } = require("../lib/parseBenchlm");
 const { parseDataLearnerBench } = require("./datalearner");
+const art = require("../lib/aireleasetracker");
 const { createTierMerger } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
 
@@ -38,12 +40,13 @@ class AutomationBenchSource extends BaseSource {
   }
   async fetch() {
     // 主源(datalearner 厂商官方发布)+ 补充源(llm-stats / benchlm.ai)并行抓取
-    const [vendor, primary, bench] = await Promise.all([
+    const [vendor, primary, bench, artData] = await Promise.all([
       transport.fetchWithRetry(CONFIG.sources.datalearner_automationbench.url),
       transport.fetchWithRetry(this.cfg.url),
-      transport.fetchWithRetry(CONFIG.sources.automationbench_benchlm.url)
+      transport.fetchWithRetry(CONFIG.sources.automationbench_benchlm.url),
+      art.fetchModelsSafe("automationbench")
     ]);
-    return { primary: primary, bench: bench, vendor: vendor };
+    return { art: artData, primary: primary, bench: bench, vendor: vendor };
   }
   parse(raw) {
     const primary = parseLlmStats.parse(raw.primary, { name: "AutomationBench", tasks: 600 });
@@ -79,6 +82,11 @@ class AutomationBenchSource extends BaseSource {
     merger.add(primary.models, "llm-stats");
     merger.add(bench, "benchlm");
     merger.add(unsourced, "datalearner-unsourced");
+    // AI Release Tracker(T3)只补缺失模型:以上渠道已收录的模型一律不改分
+    const artModels = (raw.art ? raw.art.models : []).map(function (m) {
+      return { model: m.model, score: m.score, org: null };
+    });
+    merger.add(artModels, "aireleasetracker", { fillOnly: true });
     const models = merger.values();
     return { tasks: 600, models: models, unsourced: unsourced.length };
   }
@@ -94,10 +102,11 @@ class AutomationBenchSource extends BaseSource {
       "// 主渠道:https://www.datalearner.com/benchmarks/automation-bench(厂商官方发布成绩转录)\n" +
       "// 补充:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
       "// 补充:https://benchlm.ai/benchmarks/automationbench(benchlm 镜像)\n" +
+      "// 补充:https://aireleasetracker.com/benchmark/automationbench(第三方聚合 T3,只补缺失模型)\n" +
       "// 官方榜说明:zapier.com/benchmarks 原始 HTML 只渲染 Top 10(其余行由前端展开),且主榜用私有 held-out 集,故仅作来源链接\n" +
       "// 出处校验:datalearner 转录行中 evidence 缺 sourceUrl 的按最低层级处理(src=datalearner-unsourced,仅补缺、不覆盖有出处数据)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
-      "// 字段说明:model=模型名;score=严格全通过率 task_completed_correctly(%);org=厂商;size=参数量;context=上下文;cost=API 价格;effort=评测模式;date=发布日期;src=数据来源渠道(datalearner/datalearner-unsourced/llm-stats/benchlm)\n" +
+      "// 字段说明:model=模型名;score=严格全通过率 task_completed_correctly(%);org=厂商;size=参数量;context=上下文;cost=API 价格;effort=评测模式;date=发布日期;src=数据来源渠道(datalearner/datalearner-unsourced/llm-stats/benchlm/aireleasetracker)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "AutomationBench",

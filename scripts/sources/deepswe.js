@@ -10,6 +10,7 @@ const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
 const officialSeeds = require("../lib/official-seeds");
+const art = require("../lib/aireleasetracker");
 const { parseDataLearner } = require("./datalearner");
 
 // 模型名归一化(跨源去重匹配):转小写并移除非字母数字字符
@@ -106,6 +107,32 @@ class DeepSweBase extends BaseSource {
         console.log("  [official-seed] DeepSWE 补充失败: " + e.message);
       }
     }
+    // AI Release Tracker(T3)只补缺失模型:官方榜 / datalearner / 种子层已收录的模型一律不改分
+    try {
+      const isV11 = this.cfg.isV11;
+      const artData = await art.fetchModelsSafe(isV11 ? "deepswe_v11" : "deepswe_v10");
+      if (artData) {
+        const have = {};
+        parsed.models.forEach(function (m) { have[normName(m.name)] = true; });
+        artData.models.forEach(function (m) {
+          if (have[normName(m.model)]) return;
+          // 与 datalearner 同一排除清单:Muse Spark 1.3 的「(工具)」成绩与官方协议不可比
+          if (isV11 && DL_SUPPLEMENT_SKIP.has(normName(m.model))) {
+            console.log("  [aireleasetracker] 跳过(排除清单): " + m.model + " (" + m.score + "%)");
+            return;
+          }
+          have[normName(m.model)] = true;
+          parsed.models.push({
+            name: m.model, effort: "-", pass1: m.score,
+            ci: null, cost: null, outTok: null, steps: null, src: "aireleasetracker"
+          });
+          console.log("  [aireleasetracker] 补充: " + m.model + " (" + m.score + "%)");
+        });
+        parsed.models.sort(function (a, b) { return b.pass1 - a.pass1; });
+      }
+    } catch (e) {
+      console.log("  [aireleasetracker] DeepSWE 补充失败: " + e.message);
+    }
     if (!parsed.models.length) throw new Error(this.cfg.name + " 未解析到任何数据");
     const standard = this.toStandard(parsed);
     await this.write(parsed, standard);
@@ -142,10 +169,11 @@ class DeepSweV11Source extends DeepSweBase {
 // 主渠道:https://deepswe.datacurve.ai/(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 ${T})
 // 补充:厂商官方发布(博客/模型卡/更新页 T2,人工转录种子层,只补缺失模型,协议不可比仅供参考;Qwen 见 https://developer.aliyun.com/article/1763215,DeepSeek 见 https://api-docs.deepseek.com/zh-cn/updates)
+// 补充:https://aireleasetracker.com/benchmark/deepswe-1.1(第三方聚合 T3,只补缺失模型)
 // ${CONFIG.channelPolicy}
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
-//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布转录补充条目)
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布转录补充条目;aireleasetracker=第三方聚合补缺)
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
@@ -178,6 +206,7 @@ class DeepSweV10Source extends DeepSweBase {
     return `// 数据源1b:DeepSWE v1.0 历史榜单快照(每日刷新)
 // 来源:https://deepswe.datacurve.ai/ 榜单 "v1" 切换器
 // 抓取方式:/artifacts/v1/leaderboard-live.json(结构化 JSON,由站点榜单 v1 视图在客户端请求)。
+// 补充:https://aireleasetracker.com/benchmark/deepswe-1.0(第三方聚合 T3,只补缺失模型)
 // 字段同 deepswe.js;effort 为 null 记为 "-"。与 v1.1 由 js/data.js 的 deepSwe() 合并展示。
 window.DEEPSWE_V10 = {
   source: "DeepSWE",

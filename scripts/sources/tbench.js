@@ -14,6 +14,7 @@ const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const officialSeeds = require("../lib/official-seeds");
+const art = require("../lib/aireleasetracker");
 const { parseDataLearnerBench } = require("./datalearner");
 const CONFIG = require("../lib/config");
 
@@ -72,11 +73,12 @@ class TBenchSource extends BaseSource {
   }
   async fetch() {
     // 主源(tbench.ai 官方 RSC 流)+ 补充源(datalearner TB 4.0 详情页)并行抓取
-    const [primary, extra] = await Promise.all([
+    const [primary, extra, artData] = await Promise.all([
       transport.fetchWithRetry(this.cfg.url),
-      transport.fetchWithRetry(CONFIG.sources.datalearner_tbench40.url)
+      transport.fetchWithRetry(CONFIG.sources.datalearner_tbench40.url),
+      art.fetchModelsSafe("tbench")
     ]);
-    return { primary: primary, extra: extra };
+    return { art: artData, primary: primary, extra: extra };
   }
   parse(raw) {
     const json = extractRowsArray(raw.primary);
@@ -150,6 +152,17 @@ class TBenchSource extends BaseSource {
       });
       console.log("  [" + tag + "] 补充: " + s.name + " (" + s.score + "%)");
     });
+    // AI Release Tracker(T3)只补以上渠道都未收录的模型;agent/effort 源站未给出,置空
+    (raw.art ? raw.art.models : []).forEach(function (m) {
+      if (isKnown(m.model)) return;
+      officialNames.push(normName(m.model));
+      models.push({
+        rank: null, model: m.model, agent: null, effort: null,
+        score: m.score, ci: null, date: null, tokens: null, cost: null,
+        src: "aireleasetracker"
+      });
+      console.log("  [aireleasetracker] 补充: " + m.model + " (" + m.score + "%)");
+    });
     return { tasks: 66, models: models };
   }
   toStandard(parsed) {
@@ -171,10 +184,11 @@ class TBenchSource extends BaseSource {
       "// 主渠道:" + this.cfg.url + "(官方实测榜 T1)\n" +
       "// 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)\n" +
       "// 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)\n" +
+      "// 补充:https://aireleasetracker.com/benchmark/terminal-bench-4.0(第三方聚合 T3,只补缺失模型)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
       "// 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
       "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);\n" +
-      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost)\n" +
+      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost;aireleasetracker=第三方聚合补缺)\n" +
       "// 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。\n",
       {
         source: "Terminal-Bench",

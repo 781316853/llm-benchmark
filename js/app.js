@@ -65,7 +65,9 @@
     "datalearner-unsourced": ["无出处", "datalearner 转录行缺出处(evidence 无 sourceUrl)· 按最低层级仅补缺,不覆盖有出处数据"],
     "qwen-official": ["厂商发布", "Qwen 官方博客/模型卡转录(T2)·effort 未标注、协议与官方实测榜不可比,仅补缺失模型,仅供参考"],
     "deepseek-official": ["厂商发布", "DeepSeek 官方更新页自测转录(T2)·官方标注 harness(TB 用 Claude Code、DeepSWE 用 Mini-SWE-V2),与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
+    "moonshot-official": ["厂商发布", "Kimi 官方发布博客自测转录(T2)·reasoning effort=max、temperature=1.0/top-p=0.95,TB 4.0 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
+    aireleasetracker: ["ART 聚合", "AI Release Tracker 第三方聚合站(T3)·分数取自各实验室公开报告、不自行复测;仅补缺失模型,不覆盖主渠道分数"],
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
     aa: ["AA 复测", "Artificial Analysis 复测口径(T3,第三方自家 harness,分数口径偏严,仅供参考)"],
     mirror: ["第三方", "第三方镜像(T3)"],
@@ -1436,14 +1438,16 @@
     // 2) Terminal-Bench-Science 0.1
     var tbs = S.tbscience || {};
     var tbsMs = D.tbScience();
+    var tbsMixed = mixedSrc(tbsMs);
     var tbsRows = tbsMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (tbsMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + (m.ci != null ? '±' + m.ci + '%' : "%") + '</td></tr>';
     });
     html += authSectionHtml("Terminal-Bench-Science 0.1", "科研工作流 · 仅展示", tbs.announcementUrl || tbs.url,
       '<div class="table-wrap"><table id="authTBScienceTable" class="data-table"></table></div>',
       '来源:' + esc(tbs.url || "") + '(官方:' + esc(tbs.announcementUrl || "") + ') · 版本 ' + esc(tbs.version || "") + ' · 更新 ' + esc(tbs.updated || "") +
-      ' · 70 个来自真实科研流程的任务(每任务 3 次独立试验),解决率越高越好。' + esc(tbs.channelPolicy || "") + '(本榜无更高优先级渠道)。本榜仅展示,不计入综合分。');
+      ' · 70 个来自真实科研流程的任务(每任务 3 次独立试验),解决率越高越好。' + esc(tbs.channelPolicy || "") +
+      '(主源 explainx 为 T3 镜像;厂商官方发布自测分 T2 仅补镜像未收录的模型)。本榜仅展示,不计入综合分。');
     // 3) OSWorld 2.0
     var os = S.osworld || {};
     var osMs = D.osworld();
@@ -1572,9 +1576,9 @@
     var pbMixed = mixedSrc(pbMs);
     var pbRows = pbMs.map(function (m, i) {
       // 显示名用 canon.id:vals 镜像的 slug 转名(如 "Claude Fable 5 1")经别名归一后回显规范名
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.canon.id || m.model) +
+      return '<tr><td class="rank">' + (m.score != null ? i + 1 : "—") + '</td><td>' + vdot(m.canon.vendor) + esc(m.canon.id || m.model) +
         (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + (pbMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.agent || "—") + '</td><td class="num">' + bvSpan("programbench", m.score + '%') + '</td>' +
+        '<td>' + esc(m.agent || "—") + '</td><td class="num">' + (m.score != null ? bvSpan("programbench", m.score + '%') : "—") + '</td>' +
         '<td class="num">' + (m.almost != null ? m.almost + '%' : "—") + '</td>' +
         '<td class="num">' + (m.rawPassRate != null ? m.rawPassRate + '%' : "—") + '</td></tr>';
     });
@@ -1684,7 +1688,7 @@
     authDeferTable("authFrontiercodeTable", ["#", "模型", "Harness", "档位", "标准分", "Pass Rate", "成本/任务", "Tokens/任务"], fcRows, ["", "", "", "", "num bv bv-frontiercode", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每日两次自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每日两次自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
@@ -1967,14 +1971,14 @@
   // Terminal-Bench 4.0/3.0/2.1 三版已合并进总览(unified),不在此列,仍属首屏。
   // 缓存戳与 index.html 的首屏脚本一致维护(?v= 变更时同步)。
   var DATA_SRC = {
-    tbscience: { src: "data/tbscience.js?v=20260912a", global: "TBSCIENCE" },
+    tbscience: { src: "data/tbscience.js?v=20261024a", global: "TBSCIENCE" },
     osworld: { src: "data/osworld.js?v=20260912a", global: "OSWORLD" },
     lastexam: { src: "data/lastexam.js?v=20261017a", global: "LASTEXAM" },
     arcagi3: { src: "data/arcagi3.js?v=20260912a", global: "ARCAGI3" },
     benchcad: { src: "data/benchcad.js?v=20260912a", global: "BENCHCAD" },
     apex: { src: "data/apex.js?v=20261017a", global: "APEX" },
     nl2repo: { src: "data/nl2repo.js?v=20261017a", global: "NL2REPO" },
-    programbench: { src: "data/programbench.js?v=20260922a", global: "PROGRAMBENCH" },
+    programbench: { src: "data/programbench.js?v=20261024a", global: "PROGRAMBENCH" },
     cursorbench: { src: "data/cursorbench.js?v=20260923a", global: "CURSORBENCH" },
     frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },
     automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },

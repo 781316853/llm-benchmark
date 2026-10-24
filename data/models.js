@@ -39,6 +39,7 @@ window.MODEL_MAP = {
     { id: "Kimi K2.6 Code Preview", vendor: "Moonshot", color: "#9C82FF", aliases: ["K2.6-code-preview", "Kimi K2.6 Code Preview"] },
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
     { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)", "k3"] },
+    { id: "Kimi K3.1 Pro",    vendor: "Moonshot",  color: "#5A3DF5", aliases: ["Kimi K3.1 Pro", "kimi-k3-1-pro", "Kimi-K3.1-Pro", "kimi-k3.1-pro", "Kimi K3.1", "kimi-k3.1"] },
     // Kimi K2 世代的历史变体:原先未建档,由 canon() 兜底自动建档(厂商被记为「其他」、颜色取默认灰),
     // 且 id 会随加载顺序漂移(如同一个「Kimi K2」可能被登记为 "Kimi K2" 或 "Kimi-k2")。
     // 四个变体按独立模型建档 —— 沿用 kimi-for-coding 的判断原则:未证实的同一性不合并。

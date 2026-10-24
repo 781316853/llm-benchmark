@@ -3,7 +3,9 @@
 //       补充源 vals.ai 镜像(https://www.vals.ai/benchmarks/programbench,45 模型,
 //       Astro 服务端渲染 props 内嵌 Fully Resolved%,Results summary 表含前 5 名 Almost/Raw Pass Rate)。
 // 数据形态:官方 HTML 表格(Rank | Model(+effort) | Agent | Resolved% | Almost%);
-//          vals 为 props JSON(benchmarkView.tasks.overall.<id>.accuracy)。
+//          vals 为 props JSON(benchmarkView.tasks.overall.<id>.accuracy);
+//          AI Release Tracker 聚合榜(T3)只补两源都未收录的模型,不覆盖既有分数;
+//          厂商官方发布种子(T2)可只补 Almost 行(Fully Resolved 留空,排在有主指标的行之后)。
 // 性质:agent×model 条目(200 个从零重建任务,行为级隐藏测试),主指标 Fully Resolved%(两源统一口径),
 //       Almost(≥95% 隐藏测试通过)/Raw Pass Rate(vals 独有)为辅助;双源合并去重取最高,
 //       仅展示(不计入综合分与命中数:官方口径 Fully Resolved 整体 0-7 分,区分度极低)。
@@ -16,6 +18,8 @@ const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
 const valsLib = require("../lib/vals");
+const art = require("../lib/aireleasetracker");
+const officialSeeds = require("../lib/official-seeds");
 
 function num(v) {
   const n = Number(String(v || "").replace(/[^\d.]/g, ""));
@@ -104,12 +108,13 @@ class ProgramBenchSource extends BaseSource {
     });
   }
   async fetch() {
-    // 主源(官方)+ 补充源(vals.ai 镜像)并行抓取
-    const [primary, extra] = await Promise.all([
+    // 主源(官方)+ 补充源(vals.ai 镜像)+ AI Release Tracker 聚合(只补缺)并行抓取
+    const [primary, extra, artData] = await Promise.all([
       transport.fetchWithRetry(this.cfg.url),
-      transport.fetchWithRetry(CONFIG.sources.programbench_vals.url)
+      transport.fetchWithRetry(CONFIG.sources.programbench_vals.url),
+      art.fetchModelsSafe("programbench")
     ]);
-    return { primary: primary, extra: extra };
+    return { art: artData, primary: primary, extra: extra };
   }
   parse(raw) {
     const official = parseOfficial(raw.primary);
@@ -134,9 +139,38 @@ class ProgramBenchSource extends BaseSource {
         if (!e.agent) e.agent = m.agent;
       }
     });
+    // AI Release Tracker(T3)只补官方/vals 都没有的模型;0 分不补(无区分度)
+    (raw.art ? raw.art.models : []).forEach(function (m) {
+      if (m.score <= 0) return;
+      const k = normKey(m.model);
+      if (map[k]) return;
+      map[k] = {
+        rank: 0, model: m.model, effort: null, agent: "mini-SWE-agent",
+        score: m.score, almost: null, rawPassRate: null, src: "aireleasetracker"
+      };
+      console.log("  [aireleasetracker] 补充: " + m.model + " (" + m.score + "%)");
+    });
+    // 厂商官方发布种子(T2):支持仅 Almost 的行(score=null),只补缺失模型
+    officialSeeds.forBenchmark("programbench").forEach(function (s) {
+      const tag = officialSeeds.srcOf(s);
+      const k = normKey(s.name);
+      if (map[k]) { console.log("  [" + tag + "] 已收录,跳过: " + s.name); return; }
+      map[k] = {
+        rank: null, model: s.name, effort: s.effort || null, agent: s.agent || null,
+        score: s.score != null ? s.score : null,
+        almost: s.almost != null ? s.almost : null,
+        rawPassRate: null, src: tag
+      };
+      console.log("  [" + tag + "] 补缺: " + s.name + " (Almost " + s.almost + "%)");
+    });
     const models = Object.keys(map).map(function (k) { return map[k]; });
-    models.sort(function (a, b) { return b.score - a.score || (b.almost - a.almost) || (b.rawPassRate - a.rawPassRate); });
-    models.forEach(function (m, i) { m.rank = i + 1; });
+    // 仅有 Almost 的行排在有 Fully Resolved 的行之后,rank 留空、不参与主指标名次
+    models.sort(function (a, b) {
+      if (a.score == null && b.score != null) return 1;
+      if (b.score == null && a.score != null) return -1;
+      return b.score - a.score || (b.almost - a.almost) || (b.rawPassRate - a.rawPassRate);
+    });
+    models.forEach(function (m, i) { if (m.score != null) m.rank = i + 1; });
     if (!models.length) throw new Error("未解析到任何 ProgramBench 行");
     return { tasks: 200, models: models };
   }
@@ -150,7 +184,9 @@ class ProgramBenchSource extends BaseSource {
     return writers.windowVarTemplate("PROGRAMBENCH",
       "// 数据源:ProgramBench(cleanroom 程序重建·编码 Agent,更新于 " + T + ")\n" +
       "// 来源:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ") · 补充镜像 https://www.vals.ai/benchmarks/programbench\n" +
-      "// 字段说明:model=模型名;effort=推理档位;agent=代理;score=Fully Resolved 完全解决率(%);almost=Almost(≥95% 行为测试通过率,%);rawPassRate=隐藏测试平均通过率(vals 独有,%)\n" +
+      "// 补充:https://aireleasetracker.com/benchmark/programbench(第三方聚合 T3,只补缺失模型)\n" +
+      "// 字段说明:model=模型名;effort=推理档位;agent=代理;score=Fully Resolved 完全解决率(%);almost=Almost(≥95% 行为测试通过率,%);rawPassRate=隐藏测试平均通过率(vals 独有,%);src=数据来源渠道(official/vals/aireleasetracker/moonshot-official)\n" +
+      "// 注:score=null 表示厂商只公布了 Almost,前端 Fully Resolved 显示「—」、不参与主指标名次。\n" +
       "// 用途:「权威基准测试」页完整展示;仅展示,不计入综合分与命中数(区分度极低)。\n",
       {
         source: "ProgramBench",

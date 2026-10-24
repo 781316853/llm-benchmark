@@ -1,7 +1,8 @@
 // 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测)
 // 站点:官方 https://www.terminal-bench-science.ai/(榜单为 SVG 图/客户端渲染,不可解析),
 //       以 explainx 博客镜像表为主(Model | Harness | Resolution rate,数值与官方公告 0.1 一致)。
-// 渠道:无可用官方实测榜/厂商发布渠道,explainx 为唯一 T3 镜像。
+// 渠道:explainx 为 T3 镜像;另接厂商官方发布种子(T2)与 AI Release Tracker 聚合榜(T3),
+//   两者都只补镜像未收录的模型。
 // 性质:agent×model 组合条目(70 科研任务);仅「权威基准测试」页展示,不计入综合分/命中。
 // 输出:data/tbscience.js(window.TBSCIENCE)。
 "use strict";
@@ -10,6 +11,9 @@ const registry = require("../lib/registry");
 const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
+const officialSeeds = require("../lib/official-seeds");
+const art = require("../lib/aireleasetracker");
+const { normKey } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
 
 class TBScienceSource extends BaseSource {
@@ -23,11 +27,15 @@ class TBScienceSource extends BaseSource {
     });
   }
   async fetch() {
-    return transport.fetchWithRetry(this.cfg.url);
+    const [primary, artData] = await Promise.all([
+      transport.fetchWithRetry(this.cfg.url),
+      art.fetchModelsSafe("tbscience")
+    ]);
+    return { art: artData, primary: primary };
   }
   parse(raw) {
     // 定位表头含 Harness + Resolution rate 的表格,取其后 模型|Harness|解决率 行
-    const tables = (raw.match(/<table[\s\S]*?<\/table>/gi) || []);
+    const tables = (raw.primary.match(/<table[\s\S]*?<\/table>/gi) || []);
     let target = null;
     tables.forEach(function (t) {
       if (target) return;
@@ -59,6 +67,30 @@ class TBScienceSource extends BaseSource {
     // 官方榜单按解决率降序
     models.sort(function (a, b) { return b.score - a.score; });
     models.forEach(function (m, i) { m.rank = i + 1; });
+    // 厂商官方发布种子(T2):仅补镜像未收录的模型,rank 留空、不重排镜像名次
+    officialSeeds.forBenchmark("tbscience").forEach(function (s) {
+      const tag = officialSeeds.srcOf(s);
+      const key = officialSeeds.normName(s.name);
+      if (models.some(function (m) { return officialSeeds.normName(m.model) === key; })) {
+        console.log("  [" + tag + "] 已收录,跳过: " + s.name); return;
+      }
+      models.push({ model: s.name, agent: s.agent || null, score: s.score, src: tag, rank: null });
+      console.log("  [" + tag + "] 补缺: " + s.name + " (" + s.score + "%)");
+    });
+    // AI Release Tracker(T3)最后补缺:厂商种子(T2)优先,已收录的模型一律不改分
+    const known = models.map(function (m) { return normKey(m.model); });
+    function isKnown(name) {
+      const n = normKey(name);
+      return known.some(function (k) {
+        return k === n || (k.length >= 5 && n.endsWith(k)) || (n.length >= 5 && k.endsWith(n));
+      });
+    }
+    (raw.art ? raw.art.models : []).forEach(function (m) {
+      if (isKnown(m.model)) return;
+      known.push(normKey(m.model));
+      models.push({ model: m.model, agent: null, score: m.score, src: "aireleasetracker", rank: null });
+      console.log("  [aireleasetracker] 补充: " + m.model + " (" + m.score + "%)");
+    });
     return { tasks: 70, models: models };
   }
   toStandard(parsed) {
@@ -78,8 +110,9 @@ class TBScienceSource extends BaseSource {
     return writers.windowVarTemplate("TBSCIENCE",
       "// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 " + T + ")\n" +
       "// 来源:" + this.cfg.url + "(官方:" + this.cfg.announcementUrl + ")\n" +
-      "// " + CONFIG.channelPolicy + "(本榜无更高优先级渠道,explainx 为唯一 T3 镜像)\n" +
-      "// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror)\n" +
+      "// 补充:https://aireleasetracker.com/benchmark/terminal-bench-science-0.1(第三方聚合 T3,只补缺失模型)\n" +
+      "// " + CONFIG.channelPolicy + "(主源 explainx 为 T3 镜像;厂商官方发布自测分走种子层 T2,仅补缺)\n" +
+      "// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror/moonshot-official/aireleasetracker)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "Terminal-Bench-Science",

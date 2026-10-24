@@ -2,7 +2,8 @@
 // 站点:官方 https://www.tbench.ai/news/terminal-bench-2-1(线上无独立 2.1 榜单路由);
 //   按渠道层级合并(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页
 //   (内嵌 results JSON,厂商官方发布成绩,含模式/发布时间/参数量,~30 条);
-//   补充源 llm-stats.com 聚合表(服务端渲染,0-1 归一化自报分,35 模型)。
+//   补充源 llm-stats.com 聚合表(服务端渲染,0-1 归一化自报分,35 模型);
+//   补充 AI Release Tracker 聚合榜(T3,只补缺失模型)。
 // 数据形态:datalearner results JSON;llm-stats #|Model|Score(0-1)|Size|Context|Cost|License。
 // 合并策略:见 scripts/lib/mergeByTier.js——高层级分数不被低层级覆盖,低层级仅补缺失模型与字段。
 // 性质:模型级条目,0-1 自报分已换算为百分比,与官方 agent×model 解决率口径不同;
@@ -16,6 +17,7 @@ const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const parseLlmStats = require("../lib/parseLlmStats");
 const { parseDataLearnerBench } = require("./datalearner");
+const art = require("../lib/aireleasetracker");
 const { createTierMerger } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
 
@@ -37,11 +39,12 @@ class TBenchV21Source extends BaseSource {
   }
   async fetch() {
     // 主源(datalearner 厂商官方发布)+ 补充源(llm-stats)并行抓取
-    const [extra, primary] = await Promise.all([
+    const [extra, primary, artData] = await Promise.all([
       transport.fetchWithRetry(CONFIG.sources.datalearner_tbench21.url),
-      transport.fetchWithRetry(this.cfg.url)
+      transport.fetchWithRetry(this.cfg.url),
+      art.fetchModelsSafe("tbench_v21")
     ]);
-    return { primary: primary, extra: extra };
+    return { art: artData, primary: primary, extra: extra };
   }
   parse(raw) {
     const primary = parseLlmStats.parse(raw.primary, { name: "Terminal-Bench 2.1", tasks: 89 });
@@ -52,6 +55,11 @@ class TBenchV21Source extends BaseSource {
     const merger = createTierMerger({ aliases: KEY_ALIASES });
     merger.add(extra, "datalearner");
     merger.add(primary.models, "llm-stats");
+    // AI Release Tracker(T3)只补缺失模型:不覆盖 datalearner / llm-stats 已有分数
+    const artModels = (raw.art ? raw.art.models : []).map(function (m) {
+      return { model: m.model, score: m.score, effort: null, date: null };
+    });
+    merger.add(artModels, "aireleasetracker", { fillOnly: true });
     const models = merger.values().map(function (m) {
       return {
         rank: m.rank, model: m.model, agent: null, effort: m.effort || null,
@@ -80,10 +88,11 @@ class TBenchV21Source extends BaseSource {
       "// 来源:" + this.cfg.url + "(官方:" + this.cfg.officialUrl + ")\n" +
       "// 主渠道:https://www.datalearner.com/benchmarks/terminal-bench-2-1(厂商官方发布成绩转录)\n" +
       "// 补充:llm-stats 聚合表(0-1 归一化自报分)\n" +
+      "// 补充:https://aireleasetracker.com/benchmark/terminal-bench-2.1(第三方聚合 T3,只补缺失模型)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
       "// 字段说明:model=模型名;effort=推理模式(datalearner 提供,如 最高(工具));agent=Agent 框架(源站未给出,置空);\n" +
       "//          score=得分(%);ci=95% 置信区间;date=模型发布日期;cost=API 价格(llm-stats);org/size 为厂商/参数量;\n" +
-      "//          src=数据来源渠道(datalearner/llm-stats)\n" +
+      "//          src=数据来源渠道(datalearner/llm-stats/aireleasetracker)\n" +
       "// 用途:计入总览页综合分与命中数(与 4.0/3.0 合并为一个基准组,取值优先级 4.0>3.0>2.1);「权威基准测试」页完整展示。\n" +
       "// 注:采用 datalearner 厂商发布成绩为主 + llm-stats 自报分补充,与官方 agent×model 解决率口径不同;阅读时请注意口径差异。\n",
       {

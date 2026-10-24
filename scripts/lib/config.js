@@ -63,11 +63,13 @@ module.exports = {
     datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON,evidence 带出处)
     "qwen-official": 2, // Qwen 官方博客/模型卡/技术报告人工转录(种子层,仅补缺,见 scripts/lib/official-seeds.js)
     "deepseek-official": 2, // DeepSeek 官方更新页自测分人工转录(种子层,仅补缺,见 https://api-docs.deepseek.com/zh-cn/updates)
+    "moonshot-official": 2, // Kimi 官方发布博客自测分人工转录(种子层,仅补缺,见 https://www.kimi.com/en/blog/kimi-k3-1-pro)
     "llm-stats": 3,  // 第三方聚合站 llm-stats.com
     benchlm: 3,      // 第三方镜像 benchlm.ai
     aa: 3,           // Artificial Analysis 复测口径(benchlm 静态镜像页,分数为 AA 自测、系统性异于官方口径)
     mirror: 3,       // 第三方镜像(snorkel.ai / explainx.ai / steel.dev / aitntnews 等)
     aggregate: 3,    // 其余第三方聚合
+    aireleasetracker: 3, // AI Release Tracker 聚合榜(源站只转录公开报告、不复测;仅补缺失模型)
     "datalearner-unsourced": 4 // datalearner 转录但无出处(evidence 缺 sourceUrl):仅补缺,不覆盖有出处数据
   },
   // 合并时同模型跨层级分差超过此值(百分制)在控制台记录,便于人工核对口径差异
@@ -373,6 +375,28 @@ module.exports = {
       methodUrl: "https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas",
       maxPoints: 70,
       axes: { laravel: 20, reactTs: 20, bugFinding: 10, edgeCase: 20 }
+    },
+    // ===== AI Release Tracker 聚合补充源(T3,只补缺)=====
+    // aireleasetracker.com 按基准汇总各实验室公开报告与基准来源的分数,站方明确「不复测」。
+    // 作为站内各基准的 T3 补充渠道:只追加站内主渠道尚未收录的模型,不覆盖任何既有分数。
+    // slugs 把站内源 id 映射到源站 /benchmark/<slug>;未列入的基准不参与本渠道。
+    aireleasetracker: {
+      baseUrl: "https://aireleasetracker.com",
+      pagePath: "/benchmark/",
+      host: "aireleasetracker.com",
+      // Vercel 会按 TLS 指纹做机器人挑战(Node 原生请求 429、curl 放行),该 UA 供 curl 请求头使用
+      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+      slugs: {
+        programbench: "programbench",
+        deepswe_v11: "deepswe-1.1",
+        deepswe_v10: "deepswe-1.0",
+        tbench: "terminal-bench-4.0",
+        tbench_v21: "terminal-bench-2.1",
+        tbench_v3: "terminal-bench-3.0",
+        tbscience: "terminal-bench-science-0.1",
+        automationbench: "automationbench",
+        hle: "hle-no-tools"
+      }
     }
   },
 

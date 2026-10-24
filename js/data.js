@@ -410,7 +410,12 @@
   }
   function programbench() {
     var src = window.PROGRAMBENCH || { models: [] };
-    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score || (b.almost || 0) - (a.almost || 0); })
+    // score=null 的厂商 Almost-only 行排在所有有主指标的行之后
+    return (src.models || []).slice().sort(function (a, b) {
+      if (a.score == null && b.score != null) return 1;
+      if (b.score == null && a.score != null) return -1;
+      return b.score - a.score || (b.almost || 0) - (a.almost || 0);
+    })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
   // CursorBench:模型级主榜(每模型取最优档位),按分数降序
