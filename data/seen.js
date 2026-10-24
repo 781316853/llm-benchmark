@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-10-20',
+  'updated': '2026-10-24',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -278,6 +278,20 @@ window.SEEN = {
     'deepswe|MiniMax M3.1 Flash': '2026-10-19',
     'datalearner|MiniMax M3.1 Flash': '2026-10-19',
     'tbench|MiniMax M3.1 Flash': '2026-10-19',
-    'llm|MiniMax-M3.1-Flash (max)': '2026-10-20'
+    'llm|MiniMax-M3.1-Flash (max)': '2026-10-20',
+    'deepswe|Kimi K3.1 Pro': '2026-10-24',
+    'deepswe|Claude Opus 5.5': '2026-10-24',
+    'deepswe|GPT-6 Luna': '2026-10-24',
+    'deepswe|Mistral Large 4': '2026-10-24',
+    'deepswe|Muse Spark Open': '2026-10-24',
+    'deepswe|Gemini 3.1 Pro': '2026-10-24',
+    'deepswe|Muse Spark': '2026-10-24',
+    'deepswe|Kimi K3': '2026-10-24',
+    'deepswe|Claude Fable 5': '2026-10-24',
+    'deepswe|Composer 2.5': '2026-10-24',
+    'datalearner|Kimi K3.1 Pro': '2026-10-24',
+    'datalearner|Claude Opus 5.5': '2026-10-24',
+    'tbench|Kimi K3.1 Pro': '2026-10-24',
+    'tbench|Mistral Large 4': '2026-10-24'
   }
 };

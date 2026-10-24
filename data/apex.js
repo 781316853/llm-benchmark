@@ -1,4 +1,4 @@
-// 数据源:APEX-1(AI Productivity Index,Mercor,更新于 2026-10-20)
+// 数据源:APEX-1(AI Productivity Index,Mercor,更新于 2026-10-24)
 // 官方榜:https://www.mercor.com/apex/apex-v1-leaderboard/
 // 口径:隐藏 held-out 集 400 题(投行 / 咨询 / 律所 / 全科医生各 100),每题每模型 8 次,
 //   LM judge 按专家 rubric 评分;Mean Score = 所有任务通过标准比例的平均(主排序指标),
@@ -10,11 +10,11 @@ window.APEX = {
   'source': 'APEX-1',
   'url': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
   'officialUrl': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
-  'updated': '2026-10-20',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-24',
+  'refreshedAt': '2026-10-24 14:30',
   'stats': {
     'tasks': 400,
-    'entries': 68
+    'entries': 69
   },
   'benchmarkId': 'apex-v1',
   'harness': 'singleshot_agent',
@@ -296,7 +296,7 @@ window.APEX = {
       'rank': 21
     },
     {
-      'model': 'GPT-5.3-Codex',
+      'model': 'GPT-5.3 Codex',
       'org': 'OpenAI',
       'score': 65.9,
       'pass1': 15.2,
@@ -400,19 +400,6 @@ window.APEX = {
       'rank': 29
     },
     {
-      'model': 'DeepSeek-V4.1-Flash-1017',
-      'org': 'DeepSeek',
-      'score': 64.8,
-      'pass1': 14.1,
-      'meanErr': 2.5,
-      'pass1Err': 2.9,
-      'effort': 'max',
-      'date': null,
-      'n': 1600,
-      'src': 'official',
-      'rank': 30
-    },
-    {
       'model': 'Haiku 5.5',
       'org': 'Anthropic',
       'score': 64.7,
@@ -423,7 +410,7 @@ window.APEX = {
       'date': '2026-10-07',
       'n': 1600,
       'src': 'official',
-      'rank': 31
+      'rank': 30
     },
     {
       'model': 'GPT-5.2',
@@ -436,7 +423,7 @@ window.APEX = {
       'date': '2025-12-11',
       'n': 1599,
       'src': 'official',
-      'rank': 32
+      'rank': 31
     },
     {
       'model': 'DeepSeek-V4-Flash',
@@ -449,7 +436,7 @@ window.APEX = {
       'date': '2026-07-31',
       'n': 1600,
       'src': 'official',
-      'rank': 33
+      'rank': 32
     },
     {
       'model': 'GPT-6 Sol',
@@ -462,20 +449,20 @@ window.APEX = {
       'date': '2026-09-22',
       'n': 1588,
       'src': 'official',
-      'rank': 34
+      'rank': 33
     },
     {
-      'model': 'GPT 5.4',
+      'model': 'GPT-5.4',
       'org': 'OpenAI',
       'score': 63.2,
       'pass1': 12.6,
       'meanErr': 2.4,
       'pass1Err': 2.9,
       'effort': 'high',
-      'date': null,
+      'date': '2026-03-05',
       'n': 1600,
       'src': 'official',
-      'rank': 35
+      'rank': 34
     },
     {
       'model': 'GLM-5.3',
@@ -488,7 +475,7 @@ window.APEX = {
       'date': '2026-08-14',
       'n': 1600,
       'src': 'official',
-      'rank': 36
+      'rank': 35
     },
     {
       'model': 'Opus 4.8',
@@ -501,7 +488,7 @@ window.APEX = {
       'date': '2026-05-28',
       'n': 1600,
       'src': 'official',
-      'rank': 37
+      'rank': 36
     },
     {
       'model': 'Qwen 3.8 27B',
@@ -514,7 +501,7 @@ window.APEX = {
       'date': '2026-08-03',
       'n': 1580,
       'src': 'official',
-      'rank': 38
+      'rank': 37
     },
     {
       'model': 'Gemini 3.5 Flash',
@@ -527,7 +514,7 @@ window.APEX = {
       'date': '2026-05-19',
       'n': 1600,
       'src': 'official',
-      'rank': 39
+      'rank': 38
     },
     {
       'model': 'Opus 4.7',
@@ -540,7 +527,7 @@ window.APEX = {
       'date': '2026-04-16',
       'n': 1600,
       'src': 'official',
-      'rank': 40
+      'rank': 39
     },
     {
       'model': 'GPT-6 Luna',
@@ -553,7 +540,7 @@ window.APEX = {
       'date': '2026-09-22',
       'n': 1600,
       'src': 'official',
-      'rank': 41
+      'rank': 40
     },
     {
       'model': 'Gemini 3.1 Pro',
@@ -566,7 +553,7 @@ window.APEX = {
       'date': '2026-02-19',
       'n': 1599,
       'src': 'official',
-      'rank': 42
+      'rank': 41
     },
     {
       'model': 'Grok 4.5',
@@ -579,7 +566,7 @@ window.APEX = {
       'date': '2026-07-08',
       'n': 1600,
       'src': 'official',
-      'rank': 43
+      'rank': 42
     },
     {
       'model': 'Inkling',
@@ -592,7 +579,7 @@ window.APEX = {
       'date': '2026-07-15',
       'n': 1600,
       'src': 'official',
-      'rank': 44
+      'rank': 43
     },
     {
       'model': 'GLM-5.2',
@@ -605,7 +592,7 @@ window.APEX = {
       'date': '2026-06-16',
       'n': 1600,
       'src': 'official',
-      'rank': 45
+      'rank': 44
     },
     {
       'model': 'Gemini 3 Flash',
@@ -618,7 +605,7 @@ window.APEX = {
       'date': '2025-12-17',
       'n': 1600,
       'src': 'official',
-      'rank': 46
+      'rank': 45
     },
     {
       'model': 'Gemini 3 Pro',
@@ -631,7 +618,7 @@ window.APEX = {
       'date': '2025-11-18',
       'n': 3200,
       'src': 'official',
-      'rank': 47
+      'rank': 46
     },
     {
       'model': 'Beam',
@@ -644,7 +631,7 @@ window.APEX = {
       'date': '2026-10-05',
       'n': 1600,
       'src': 'official',
-      'rank': 48
+      'rank': 47
     },
     {
       'model': 'o3',
@@ -657,7 +644,7 @@ window.APEX = {
       'date': '2025-04-16',
       'n': 1599,
       'src': 'official',
-      'rank': 49
+      'rank': 48
     },
     {
       'model': 'Kimi K2.7 Code',
@@ -670,7 +657,7 @@ window.APEX = {
       'date': null,
       'n': 1596,
       'src': 'official',
-      'rank': 50
+      'rank': 49
     },
     {
       'model': 'MiniMax-M3',
@@ -683,7 +670,7 @@ window.APEX = {
       'date': '2026-06-01',
       'n': 1600,
       'src': 'official',
-      'rank': 51
+      'rank': 50
     },
     {
       'model': 'DeepSeek-V4-Pro',
@@ -695,6 +682,19 @@ window.APEX = {
       'effort': 'max',
       'date': '2026-04-23',
       'n': 1594,
+      'src': 'official',
+      'rank': 51
+    },
+    {
+      'model': 'Mistral Large 4',
+      'org': 'Mistral',
+      'score': 59.6,
+      'pass1': 10.1,
+      'meanErr': 2.5,
+      'pass1Err': 2.5,
+      'effort': 'high',
+      'date': '2026-10-06',
+      'n': 1593,
       'src': 'official',
       'rank': 52
     },
@@ -712,6 +712,19 @@ window.APEX = {
       'rank': 53
     },
     {
+      'model': 'Nemotron 3.5 Super VL',
+      'org': 'NVIDIA',
+      'score': 57.6,
+      'pass1': 9.7,
+      'meanErr': 2.6,
+      'pass1Err': 2.4,
+      'effort': 'high',
+      'date': '2026-10-14',
+      'n': 1600,
+      'src': 'official',
+      'rank': 54
+    },
+    {
       'model': 'Grok 4.1',
       'org': 'xAI',
       'score': 57.5,
@@ -722,7 +735,7 @@ window.APEX = {
       'date': '2025-12-11',
       'n': 1600,
       'src': 'official',
-      'rank': 54
+      'rank': 55
     },
     {
       'model': 'Opus 4.5',
@@ -735,7 +748,7 @@ window.APEX = {
       'date': '2025-11-24',
       'n': 3200,
       'src': 'official',
-      'rank': 55
+      'rank': 56
     },
     {
       'model': 'Grok 4',
@@ -748,7 +761,7 @@ window.APEX = {
       'date': '2025-07-09',
       'n': 1592,
       'src': 'official',
-      'rank': 56
+      'rank': 57
     },
     {
       'model': 'Nemotron 3 Ultra',
@@ -761,7 +774,7 @@ window.APEX = {
       'date': '2026-06-04',
       'n': 1600,
       'src': 'official',
-      'rank': 57
+      'rank': 58
     },
     {
       'model': 'Sonnet 4.6',
@@ -774,7 +787,7 @@ window.APEX = {
       'date': '2026-02-17',
       'n': 1600,
       'src': 'official',
-      'rank': 58
+      'rank': 59
     },
     {
       'model': 'Gemini 3.5 Flash Lite',
@@ -787,7 +800,7 @@ window.APEX = {
       'date': '2026-08-31',
       'n': 1600,
       'src': 'official',
-      'rank': 59
+      'rank': 60
     },
     {
       'model': 'Sonnet 5.5',
@@ -800,7 +813,7 @@ window.APEX = {
       'date': '2026-09-28',
       'n': 1598,
       'src': 'official',
-      'rank': 60
+      'rank': 61
     },
     {
       'model': 'GLM-5.1',
@@ -813,7 +826,7 @@ window.APEX = {
       'date': '2026-03-27',
       'n': 1576,
       'src': 'official',
-      'rank': 61
+      'rank': 62
     },
     {
       'model': 'Kimi K2',
@@ -826,7 +839,7 @@ window.APEX = {
       'date': '2025-11-06',
       'n': 1517,
       'src': 'official',
-      'rank': 62
+      'rank': 63
     },
     {
       'model': 'DeepSeek-V3.2',
@@ -839,7 +852,7 @@ window.APEX = {
       'date': '2025-12-01',
       'n': 1599,
       'src': 'official',
-      'rank': 63
+      'rank': 64
     },
     {
       'model': 'Qwen3.5',
@@ -852,7 +865,7 @@ window.APEX = {
       'date': '2026-02-16',
       'n': 1600,
       'src': 'official',
-      'rank': 64
+      'rank': 65
     },
     {
       'model': 'Sonnet 5',
@@ -865,7 +878,7 @@ window.APEX = {
       'date': '2026-06-30',
       'n': 1600,
       'src': 'official',
-      'rank': 65
+      'rank': 66
     },
     {
       'model': 'Gemma 4 31B',
@@ -878,7 +891,7 @@ window.APEX = {
       'date': '2026-03-31',
       'n': 1574,
       'src': 'official',
-      'rank': 66
+      'rank': 67
     },
     {
       'model': 'GPT-OSS-120B',
@@ -891,7 +904,7 @@ window.APEX = {
       'date': '2025-08-05',
       'n': 1600,
       'src': 'official',
-      'rank': 67
+      'rank': 68
     },
     {
       'model': 'MiniMax-M2.7',
@@ -904,7 +917,7 @@ window.APEX = {
       'date': null,
       'n': 1600,
       'src': 'official',
-      'rank': 68
+      'rank': 69
     }
   ]
 };

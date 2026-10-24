@@ -1,22 +1,23 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-20)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-24)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
+// 补充:https://aireleasetracker.com/benchmark/terminal-bench-4.0(第三方聚合 T3,只补缺失模型)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);
 //          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);
-//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost)
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost;aireleasetracker=第三方聚合补缺)
 // 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。
 window.TBENCH = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-10-20',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-24',
+  'refreshedAt': '2026-10-24 14:30',
   'stats': {
     'tasks': 66,
-    'entries': 42
+    'entries': 44
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -293,7 +294,7 @@ window.TBENCH = {
       'ci': 3.5,
       'date': 'Aug 26, 2026',
       'tokens': '2.9B',
-      'cost': '$2.9k',
+      'cost': '$118.74',
       'src': 'official'
     },
     {
@@ -442,6 +443,18 @@ window.TBENCH = {
     },
     {
       'rank': null,
+      'model': 'Kimi K3.1 Pro',
+      'agent': null,
+      'effort': '最高（工具）',
+      'score': 65.7,
+      'ci': null,
+      'date': '2026-10-24',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
       'model': 'Claude Mythos 5.1',
       'agent': null,
       'effort': '最高（工具）',
@@ -491,38 +504,50 @@ window.TBENCH = {
     {
       'rank': null,
       'model': 'DeepSeek-V4.1-Flash-1017',
-      'agent': null,
-      'effort': '思考档位未公开（工具）',
+      'agent': 'Claude Code',
+      'effort': null,
       'score': 42.3,
       'ci': null,
       'date': '2026-10-17',
       'tokens': null,
       'cost': null,
-      'src': 'datalearner'
+      'src': 'deepseek-official'
     },
     {
       'rank': null,
       'model': 'Claude Haiku 5.5',
       'agent': null,
-      'effort': '最高（工具）',
+      'effort': null,
       'score': 39.2,
       'ci': null,
-      'date': '2026-10-07',
+      'date': null,
       'tokens': null,
       'cost': null,
-      'src': 'datalearner'
+      'src': 'aireleasetracker'
     },
     {
       'rank': null,
-      'model': 'MiniMax M3.1 Flash',
+      'model': 'DeepSeek-V4.1-Flash',
       'agent': null,
-      'effort': '思考档位未公开（工具）',
-      'score': 38.1,
+      'effort': null,
+      'score': 31.2,
       'ci': null,
-      'date': '2026-10-19',
+      'date': null,
       'tokens': null,
       'cost': null,
-      'src': 'datalearner'
+      'src': 'aireleasetracker'
+    },
+    {
+      'rank': null,
+      'model': 'Mistral Large 4',
+      'agent': null,
+      'effort': null,
+      'score': 28.3,
+      'ci': null,
+      'date': null,
+      'tokens': null,
+      'cost': null,
+      'src': 'aireleasetracker'
     }
   ]
 };

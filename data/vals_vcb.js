@@ -1,4 +1,4 @@
-// 数据源:Vibe Code Bench 1-100(Vals AI,源站更新 2026-10-14)
+// 数据源:Vibe Code Bench 1-100(Vals AI,源站更新 2026-10-17)
 // 来源:https://www.vals.ai/benchmarks/vcb-1-100
 // 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);
 //      latencyS=每测试平均耗时(秒);harness=实测所用 harness(本榜全部为 OpenHands)
@@ -8,13 +8,13 @@ window.VALSVCB = {
   'url': 'https://www.vals.ai/benchmarks/vcb-1-100',
   'officialUrl': 'https://www.vals.ai/benchmarks/vcb-1-100',
   'version': '1.0',
-  'updated': '2026-10-14',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-17',
+  'refreshedAt': '2026-10-24 14:30',
   'harnesses': [
     'OpenHands'
   ],
   'stats': {
-    'models': 25
+    'models': 26
   },
   'desc': 'Vibe Code Bench 1-100(Vals AI):让模型从一个能跑的 Web 应用出发,连续接住最多 10 轮产品需求(50 个真实场景);全部模型跑在固定 OpenHands harness 上,主指标为准确率(%),另记每测试平均成本与平均耗时。',
   'models': [
@@ -91,6 +91,18 @@ window.VALSVCB = {
       'src': 'official'
     },
     {
+      'id': 'alibaba/qwen3.8-max-internal',
+      'model': 'Qwen3.8 Max Internal',
+      'accuracy': 24.83,
+      'costPerTest': 11.589207,
+      'latencyS': 9477.164,
+      'harness': 'OpenHands',
+      'avgInputTokens': null,
+      'avgOutputTokens': null,
+      'rank': 7,
+      'src': 'official'
+    },
+    {
       'id': 'openai/gpt-5.6-luna',
       'model': 'Gpt 5.6 Luna',
       'accuracy': 22.59,
@@ -99,7 +111,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 7,
+      'rank': 8,
       'src': 'official'
     },
     {
@@ -111,7 +123,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 8,
+      'rank': 9,
       'src': 'official'
     },
     {
@@ -123,7 +135,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 9,
+      'rank': 10,
       'src': 'official'
     },
     {
@@ -135,7 +147,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 10,
+      'rank': 11,
       'src': 'official'
     },
     {
@@ -147,7 +159,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 11,
+      'rank': 12,
       'src': 'official'
     },
     {
@@ -159,7 +171,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 12,
+      'rank': 13,
       'src': 'official'
     },
     {
@@ -171,7 +183,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 13,
+      'rank': 14,
       'src': 'official'
     },
     {
@@ -183,7 +195,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 14,
+      'rank': 15,
       'src': 'official'
     },
     {
@@ -195,7 +207,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 15,
+      'rank': 16,
       'src': 'official'
     },
     {
@@ -207,7 +219,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 16,
+      'rank': 17,
       'src': 'official'
     },
     {
@@ -219,7 +231,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 17,
+      'rank': 18,
       'src': 'official'
     },
     {
@@ -231,7 +243,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 18,
+      'rank': 19,
       'src': 'official'
     },
     {
@@ -243,7 +255,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 19,
+      'rank': 20,
       'src': 'official'
     },
     {
@@ -255,7 +267,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 20,
+      'rank': 21,
       'src': 'official'
     },
     {
@@ -267,7 +279,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 21,
+      'rank': 22,
       'src': 'official'
     },
     {
@@ -279,7 +291,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 22,
+      'rank': 23,
       'src': 'official'
     },
     {
@@ -291,7 +303,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 23,
+      'rank': 24,
       'src': 'official'
     },
     {
@@ -303,7 +315,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 24,
+      'rank': 25,
       'src': 'official'
     },
     {
@@ -315,7 +327,7 @@ window.VALSVCB = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 25,
+      'rank': 26,
       'src': 'official'
     }
   ]
