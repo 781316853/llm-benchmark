@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 2026-10-20
+// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 2026-10-24
 // 来源:https://www.codingplan.fyi/plan-models.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -16,8 +16,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-10-20',
-  'refreshedAt': '2026-10-20 22:24',
+  'updated': '2026-10-24',
+  'refreshedAt': '2026-10-24 14:06',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,12 +30,13 @@ window.PRICING = {
     'comparable': 1000,
     'models': 97,
     'unresolved': 15,
-    'ranked': 43,
+    'ranked': 44,
     'supplemented': 4,
     'carriedOver': 0,
-    'missingRanked': 1
+    'missingRanked': 2
   },
   'missingRanked': [
+    'Muse Wonder Full',
     'Seed 2.1 Pro'
   ],
   'desc': '模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),主源 codingplan.fyi,排名模型主源缺价时由 models.dev 官方 provider 优先补齐(priceSource 标注来源),按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。',
