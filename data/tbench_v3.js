@@ -11,10 +11,10 @@ window.TBENCH_V3 = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '3.0',
   'updated': '2026-10-24',
-  'refreshedAt': '2026-10-24 14:30',
+  'refreshedAt': '2026-10-24 21:26',
   'stats': {
     'tasks': 74,
-    'entries': 16
+    'entries': 12
   },
   'desc': 'Terminal-Bench 3.0:在真实命令行环境中评测编码 Agent(74 个任务,含更长周期、多容器/GPU 环境与更广泛领域),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -161,54 +161,6 @@ window.TBENCH_V3 = {
       'tokens': '3.3B',
       'cost': '$3.4k',
       'src': 'mirror'
-    },
-    {
-      'rank': null,
-      'model': 'DeepSeek-V4.1-Flash',
-      'agent': null,
-      'effort': null,
-      'score': 30,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
-    },
-    {
-      'rank': null,
-      'model': 'Qwen3.8-Max-0902',
-      'agent': null,
-      'effort': null,
-      'score': 29,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
-    },
-    {
-      'rank': null,
-      'model': 'Gemini 3.7 Flash',
-      'agent': null,
-      'effort': null,
-      'score': 14.9,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
-    },
-    {
-      'rank': null,
-      'model': 'Qwen3.8-Max',
-      'agent': null,
-      'effort': null,
-      'score': 11.3,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
     }
   ]
 };

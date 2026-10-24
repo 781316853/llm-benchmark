@@ -10,7 +10,7 @@ window.ARCAGI3 = {
   'officialUrl': 'https://arcprize.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-24',
-  'refreshedAt': '2026-10-24 14:30',
+  'refreshedAt': '2026-10-24 21:26',
   'stats': {
     'environments': 135,
     'entries': 23
@@ -130,7 +130,7 @@ window.ARCAGI3 = {
       'model': 'Claude Haiku 5.5',
       'org': 'Anthropic',
       'score': 2.82,
-      'license': null,
+      'license': '不开源',
       'effort': '最高（无工具）',
       'date': '2026-10-07',
       'src': 'datalearner',

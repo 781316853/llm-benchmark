@@ -13,9 +13,9 @@ window.DEEPSWE = {
   url: "https://deepswe.datacurve.ai/",
   channelPolicy: "渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数",
   updated: "2026-10-24",
-  refreshedAt: "2026-10-24 14:30",
+  refreshedAt: "2026-10-24 21:26",
   version: "v1.1",
-  stats: { tasks: 113, repos: 91, languages: 5, models: 50 },
+  stats: { tasks: 113, repos: 91, languages: 5, models: 41 },
   desc: "在原创、长程软件工程任务上评测前沿编码 Agent(无污染、91 仓库、5 种语言)。",
   models: [
   {
@@ -199,16 +199,6 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
-    'name': 'Qwen3.8-Max-0902',
-    'effort': '-',
-    'pass1': 69.3,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
     'name': 'glm-5-3',
     'effort': 'max',
     'pass1': 69,
@@ -227,16 +217,6 @@ window.DEEPSWE = {
     'outTok': 81500,
     'steps': 98,
     'src': 'official'
-  },
-  {
-    'name': 'GPT-6 Sol',
-    'effort': '-',
-    'pass1': 68.8,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
   },
   {
     'name': 'grok-4-6',
@@ -269,16 +249,6 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
-    'name': 'GPT-6 Luna',
-    'effort': '-',
-    'pass1': 66.6,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
     'name': 'gemini-3-7-flash',
     'effort': 'medium',
     'pass1': 65,
@@ -309,26 +279,6 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
-    'name': 'Mistral Large 4',
-    'effort': '-',
-    'pass1': 61.7,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
-    'name': 'Muse Spark Open',
-    'effort': '-',
-    'pass1': 60,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
     'name': 'claude-opus-4-8',
     'effort': 'max',
     'pass1': 59,
@@ -347,16 +297,6 @@ window.DEEPSWE = {
     'outTok': null,
     'steps': null,
     'src': 'qwen-official'
-  },
-  {
-    'name': 'Qwen3.8-Flash-Next',
-    'effort': '-',
-    'pass1': 58.7,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
   },
   {
     'name': 'qwen3-8-max',
@@ -449,16 +389,6 @@ window.DEEPSWE = {
     'src': 'official'
   },
   {
-    'name': 'Qwen3.8-27B',
-    'effort': '-',
-    'pass1': 42.2,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
     'name': 'gemini-3-5-flash',
     'effort': 'high',
     'pass1': 36,
@@ -497,26 +427,6 @@ window.DEEPSWE = {
     'outTok': 28369,
     'steps': 76,
     'src': 'official'
-  },
-  {
-    'name': 'Gemini 3.1 Pro',
-    'effort': '-',
-    'pass1': 12,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
-    'name': 'Muse Spark',
-    'effort': '-',
-    'pass1': 10,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
   }
 ]
 };

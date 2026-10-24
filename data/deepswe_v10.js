@@ -8,7 +8,7 @@ window.DEEPSWE_V10 = {
   url: "https://deepswe.datacurve.ai/",
   version: "v1.0",
   captured: "2026-10-24",
-  stats: { models: 25 },
+  stats: { models: 21 },
   desc: "DeepSWE v1.0 历史榜单(测试了更多模型),作为 v1.1 的补充数据合入展示。",
   models: [
   {
@@ -20,36 +20,6 @@ window.DEEPSWE_V10 = {
     'outTok': 46977,
     'steps': 79,
     'src': 'official'
-  },
-  {
-    'name': 'Kimi K3',
-    'effort': '-',
-    'pass1': 67.5,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
-    'name': 'Claude Fable 5',
-    'effort': '-',
-    'pass1': 66.1,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
-  },
-  {
-    'name': 'Grok 4.5',
-    'effort': '-',
-    'pass1': 62,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
   },
   {
     'name': 'claude-opus-4-8',
@@ -180,16 +150,6 @@ window.DEEPSWE_V10 = {
     'outTok': 49157,
     'steps': 177,
     'src': 'official'
-  },
-  {
-    'name': 'Composer 2.5',
-    'effort': '-',
-    'pass1': 18,
-    'ci': null,
-    'cost': null,
-    'outTok': null,
-    'steps': null,
-    'src': 'aireleasetracker'
   },
   {
     'name': 'grok-build-0-1',
