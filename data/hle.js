@@ -1,4 +1,4 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-10-23)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-10-24)
 // 来源:https://www.datalearner.com/benchmarks/hle(主渠道,厂商官方发布无工具成绩) · https://benchlm.ai/benchmarks/aahle(AA 无工具复测镜像)
 // 官方:https://lastexam.ai/
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -11,8 +11,8 @@ window.HLE = {
   'url': 'https://www.datalearner.com/benchmarks/hle',
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-23',
-  'refreshedAt': '2026-10-23 22:19',
+  'updated': '2026-10-24',
+  'refreshedAt': '2026-10-24 14:06',
   'stats': {
     'tasks': 2500,
     'entries': 238
@@ -75,26 +75,13 @@ window.HLE = {
       'protocolNote': '最高（无工具）'
     },
     {
-      'model': 'Claude Mythos Preview',
-      'org': 'Anthropic',
-      'score': 56.8,
-      'license': '不开源',
-      'mode': '扩展（无工具）',
-      'protocol': '无工具',
-      'src': 'datalearner',
-      'rank': 6,
-      'protocolNote': '扩展（无工具）'
-    },
-    {
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
-      'score': 56.3,
-      'license': '不开源',
-      'mode': '最高（无工具）',
+      'score': 54.9,
       'protocol': '无工具',
-      'src': 'datalearner',
-      'rank': 7,
-      'protocolNote': '最高（无工具）'
+      'src': 'aa',
+      'rank': 6,
+      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'GPT-6 Astra',
@@ -102,7 +89,7 @@ window.HLE = {
       'score': 54.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 8,
+      'rank': 7,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -111,13 +98,22 @@ window.HLE = {
       'score': 53.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 9,
+      'rank': 8,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'GPT-6.1 Sol',
       'org': 'OpenAI',
       'score': 52.9,
+      'protocol': '无工具',
+      'src': 'aa',
+      'rank': 9,
+      'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Kimi K3.1 Pro',
+      'org': 'Moonshot AI',
+      'score': 52.5,
       'protocol': '无工具',
       'src': 'aa',
       'rank': 10,
