@@ -6,6 +6,7 @@
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
+    searchQuery: "", // 总览页矩阵搜索:非空时跨全部有成绩的模型筛选,不套用默认前30/参考区间截断
     plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
     changelogDays: 14, // 更新日志页时间窗口(天):14(默认)/30/0=不限
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
@@ -271,22 +272,24 @@
   }
 
   // 对矩阵行执行 过滤(评测列去无值)+ 排序;返回新数组,不改原数据
-  function sortedMatrixRows(rows) {
+  // keepMissing:搜索态下按评测列排序时保留该列无值的行(显示「—」)并沉底 —— 搜到的模型不该
+  // 因为恰好缺这一榜就从结果里消失;非搜索态仍维持「按评测列排序只列有值模型」
+  function sortedMatrixRows(rows, keepMissing) {
     if (!state.sortKey) return rows; // null => 默认综合排序,沿用 CMP.matrix 原序
     var col = MATRIX_COLS.filter(function (c) { return c.key === state.sortKey; })[0];
     if (!col) return rows;
     var list = rows.slice();
-    // 评测列排序时仅保留该列有值的模型
-    if (col.bench) list = list.filter(function (r) { return col.val(r) != null; });
+    // 评测列排序时仅保留该列有值的模型(搜索态除外)
+    if (col.bench && !keepMissing) list = list.filter(function (r) { return col.val(r) != null; });
     list.sort(function (a, b) {
       var va = col.val(a), vb = col.val(b);
       if (col.type === "text") return String(va).localeCompare(String(vb), "zh");
       return (va == null ? -1 : va) - (vb == null ? -1 : vb); // 默认升序(低→高)
     });
     if (state.sortDir === "desc") list.reverse(); // 降序(高→低):反转升序结果
-    // 无值行恒定沉底:只有声明了 nullLast 的列(性价比)需要 —— 升序时 null 已被排到最前,
-    // 降序 reverse 后又跑到最前,两种方向都得挪到末尾;评测列已过滤无值行、其余非评测列不返回 null,故此处对其为 no-op
-    if (col.nullLast) {
+    // 无值行恒定沉底:声明了 nullLast 的列(性价比)与搜索态(保留了缺测行)需要 —— 升序时 null
+    // 已被排到最前,降序 reverse 后又跑到最前,两种方向都得挪到末尾;其余情况此处为 no-op
+    if (col.nullLast || keepMissing) {
       var withV = [], withoutV = [];
       list.forEach(function (r) { (col.val(r) == null ? withoutV : withV).push(r); });
       list = withV.concat(withoutV);
@@ -307,6 +310,43 @@
     var m = hitMap();
     var kept = list.filter(function (it) { return (m[getId(it)] || 0) >= 2; });
     return kept.length ? kept : list;
+  }
+
+  // ===== 总览矩阵模型搜索 =====
+  // 检索范围:canonical 名 + 厂商(含 models.js 的中文别名,如「智谱」「阿里」)+ 各榜登记的
+  // 别名(如 llm2014 的 "Kimi 2.6")。归一形式抹掉大小写、空格与连字符差异,
+  // 输入多个词时要求全部命中(AND)。
+  var SEARCH_HAY = null;
+  var VENDOR_ALIAS = (window.MODEL_MAP && window.MODEL_MAP.vendorAliases) || {};
+  function searchHaystack(r) {
+    if (!SEARCH_HAY) {
+      SEARCH_HAY = {};
+      ((window.MODEL_MAP && window.MODEL_MAP.canonical) || []).forEach(function (m) {
+        SEARCH_HAY[m.id] = [m.id, m.vendor].concat(m.aliases || [], VENDOR_ALIAS[m.vendor] || []).join(" ");
+      });
+    }
+    return SEARCH_HAY[r.id] || (r.id + " " + (r.vendor || "") + " " + (VENDOR_ALIAS[r.vendor] || []).join(" "));
+  }
+  var normSearch = function (s) { return String(s == null ? "" : s).toLowerCase().replace(/[\s\-_·/]+/g, ""); };
+  // 只保留归一后仍有内容的词:纯连字符/空格查询会归一成空串,indexOf("") 命中一切
+  function searchTokens(q) {
+    return String(q == null ? "" : q).trim().split(/\s+/).filter(function (t) { return normSearch(t); });
+  }
+  function matchRow(r, tokens) {
+    if (!tokens.length) return true;
+    var hay = normSearch(searchHaystack(r));
+    return tokens.every(function (t) { return hay.indexOf(normSearch(t)) !== -1; });
+  }
+  // 高亮按用户原始输入匹配:归一形式(去连字符/空格)后的位置对不回原名,故两者分工 ——
+  // 命中判定用归一形式,高亮只用原样片段,匹配不上(如走别名命中)就不加标记
+  var reEscape = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); };
+  function hlSearch(text, tokens) {
+    var s = String(text == null ? "" : text);
+    if (!tokens.length) return esc(s);
+    var re = new RegExp("(" + tokens.map(reEscape).join("|") + ")", "gi");
+    return s.split(re).map(function (seg, i) {
+      return i % 2 ? '<mark class="search-hit">' + esc(seg) + '</mark>' : esc(seg);
+    }).join("");
   }
 
   // ===== 总览页 AI 热点总结(仿「AI 早报」:概览目录 + 详情卡片,面板内滚动) =====
@@ -406,6 +446,12 @@
         '</a>';
     }).join("") + '</div>';
 
+    renderMatrix();
+  }
+
+  // 交叉模型矩阵:搜索、开关与表头排序只重绘这一块,不连带重建新闻目录与基准卡片
+  // (整页重绘会把新闻面板的滚动位置重置回顶部,长列表里每敲一个字都会跳)
+  function renderMatrix() {
     // 矩阵表:先分配梯队(基于全量排名行(命中≥4榜),按 matrix 的可见序),再选取展示行。
     // 默认:排名行按综合分排序取前30;命中 2-3 榜的「参考」模型不计算综合分(展示为「—」),按在场各榜
     // 的榜内稳健标准分加权(与排名行综合分完全同口径:无豁免、无折减)比对落入相应名次间隔,
@@ -413,11 +459,21 @@
     // 勾选「显示全部模型」:行集门槛降到 1 榜,展开全部在任一基准组有成绩的模型 —— 排名30之后的排名行、
     // 全部「参考」行,以及命中 1 榜的「单榜」行(不计算综合分、不参与排名,统一排在末尾)。
     // 单榜行是「显示全部」唯一必然生效的部分:排名行是否超过 30 个随数据浮动,而单榜行始终存在。
-    var matrixRows = CMP.matrix(state.llmMonth, state.showAll.overview ? 1 : 3);
+    // 搜索态:行集门槛同样降到 1 榜(命中 1 榜的模型也要能被搜到),再只保留命中查询的行 ——
+    // 默认视图的前30/参考区间截断不生效,否则默认收起的目标模型搜不到。
+    var query = String(state.searchQuery || "").trim();
+    var tokens = searchTokens(query);
+    var searching = tokens.length > 0;
+    var matrixRows = CMP.matrix(state.llmMonth, (state.showAll.overview || searching) ? 1 : 3);
     CMP.assignTiers(matrixRows.filter(function (r) { return r.benchCount >= 4; }));
-    var allRows = sortedMatrixRows(matrixRows);
+    // 排名序号按 CMP.matrix 的默认排名序取:搜索结果里显示真实名次,而不是「第几个匹配」
+    var rankById = {}, rankSeq = 0;
+    matrixRows.forEach(function (r) { if (r.benchCount >= 4) rankById[r.id] = ++rankSeq; });
+    var allRows = sortedMatrixRows(matrixRows, searching);
     var rows = allRows;
-    if (!state.showAll.overview) {
+    if (searching) {
+      rows = allRows.filter(function (r) { return matchRow(r, tokens); });
+    } else if (!state.showAll.overview) {
       rows = [];
       var ranked = 0;
       for (var ri = 0; ri < allRows.length && ranked < 30; ri++) {
@@ -426,7 +482,7 @@
         else if (r0.benchCount >= 3) rows.push(r0);
       }
     }
-    if (!rows.length) rows = allRows;
+    if (!rows.length && !searching) rows = allRows;
     // 前20名「最佳性价比」标记:只在排名行(命中≥4榜,不含参考/单榜)里取性价比指数最高者。
     // 以 matrixRows 的排名序而非当前可见序为准 —— 点其它列排序或勾选「显示全部」时,标记对象保持不变。
     // 并列时保留排名更靠前者(严格大于,首个最大值即排名最高者)
@@ -436,8 +492,7 @@
       var idx = valueIndexOf(r);
       if (idx != null && idx > bestValueIdx) { bestValueIdx = idx; bestValueRow = r; }
     });
-    // 排名计数器:仅对参与排名的行(命中≥4榜)递增;参考行(命中 2-3 榜)不参与排名,序号列固定「—」
-    var rankNo = 0;
+    // 未参与排名的行(命中 <4 榜)序号列固定「—」;参与排名的行取全量排名序中的真实名次
     // 亿模亿样单元格:Elo 原值上该榜数据色 + ±95% 区间(灰字元数据,与 WebDev 列同款分工);
     // 悬浮补排名/推理强度/比较场次/胜率/档位数与源站「暂定」标记
     var biasCell = function (r) {
@@ -550,13 +605,14 @@
           CMP.composite(r).toFixed(1) + ' ÷ ' + fmtCostPerM(priceOf(r.id).costPerM) + '/M = ' + bestValueIdx.toFixed(1) + '">最佳性价比</span>';
       }
       var rowBadges = bestBadges + (nw ? newBadge() : "") + domBadge + insertedBadge + singleBadge;
-      // 序号列:参与排名的行(命中≥4榜)按出现顺序编号;参考行 / 单榜行固定「—」,不参与排序
+      // 序号列:参与排名的行取全量排名序中的名次;参考行 / 单榜行固定「—」,不参与排序
       return '<tr class="' + cls.trim() + '">' +
-        '<td class="num">' + (unranked ? "—" : ++rankNo) + '</td>' +
+        '<td class="num">' + (unranked ? "—" : (rankById[r.id] || "—")) + '</td>' +
         // 模型名与徽标分两行:名称独占一行,徽标在下方 flex 排布,长名称换行时不会把徽标挤进名字中间
-        '<td class="model-cell"><span class="model-name">' + vdot(r.vendor) + esc(r.id) + '</span>' +
+        // 搜索命中的名称/厂商片段用 <mark> 标出(空查询时 hlSearch 等价于 esc)
+        '<td class="model-cell"><span class="model-name">' + vdot(r.vendor) + hlSearch(r.id, tokens) + '</span>' +
           (rowBadges ? '<span class="model-tags">' + rowBadges + '</span>' : '') + '</td>' +
-        '<td>' + vname(r.vendor) + '</td>' +
+        '<td><span class="vname" style="color:' + D.vendorColor(r.vendor) + '">' + hlSearch(r.vendor, tokens) + '</span></td>' +
         // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
         // 参考 / 单榜行不作梯队分档展示:梯队列显示「—」
         (function () {
@@ -603,6 +659,13 @@
         '<td class="num">' + vcHtml + '</td>' +
         '<td class="num">' + r.benchCount + '/' + CMP.GROUPS.length + '</td></tr>';
     });
+    // 搜索无结果:给出覆盖范围提示,避免误以为搜的是全站(表里只有计分基准组有成绩的模型)
+    if (searching && !rows.length) {
+      html = ['<tr class="matrix-empty"><td colspan="' + (MATRIX_COLS.length + 1) + '">' +
+        '未找到匹配「' + esc(query) + '」的模型' +
+        '<span class="matrix-empty-hint">可试试模型名(Kimi、Qwen、GPT-5.4)或厂商(Moonshot、Alibaba、Anthropic);仅能检索本矩阵已收录计分基准成绩的模型。</span>' +
+        '</td></tr>'];
+    }
     // 两级表头:第 1 行为分组行(「榜单基准」「第三方实测」colspan 合并)与非评测列的 rowspan 纵跨格;
     // 第 2 行仅评测列(bench)的列名。可点击排序逻辑不变,激活列显示方向指示符;
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
@@ -648,7 +711,14 @@
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     // 动态行数提示与工具区摘要(默认视图含混排的参考模型,排名数与参考数分开统计)
     var note, rankedCnt, refCnt, singleCnt = 0;
-    if (state.showAll.overview) {
+    if (searching) {
+      rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
+      refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
+      singleCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
+      note = '搜索「' + query + '」在全部 ' + matrixRows.length + ' 个有成绩的模型中命中 ' + rows.length + ' 个' +
+        (rows.length ? ':排名 ' + rankedCnt + ' · 参考 ' + refCnt + ' · 单榜 ' + singleCnt + '。' : '。') + '\n' +
+        '搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。';
+    } else if (state.showAll.overview) {
       rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
       refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
       singleCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
@@ -662,10 +732,16 @@
     }
     var statsEl = document.getElementById("matrixStats");
     if (statsEl) {
-      statsEl.innerHTML = '<span>排名 <b>' + rankedCnt + '</b></span>' +
-        '<span>参考 <b>' + refCnt + '</b></span>' +
-        (state.showAll.overview ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
-        '<span class="ms-rule">命中 ≥4 榜计分</span>';
+      statsEl.innerHTML = searching
+        ? '<span>匹配 <b>' + rows.length + '</b></span>' +
+          '<span>排名 <b>' + rankedCnt + '</b></span>' +
+          '<span>参考 <b>' + refCnt + '</b></span>' +
+          (singleCnt ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
+          '<span class="ms-rule">跨全部基准搜索</span>'
+        : '<span>排名 <b>' + rankedCnt + '</b></span>' +
+          '<span>参考 <b>' + refCnt + '</b></span>' +
+          (state.showAll.overview ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
+          '<span class="ms-rule">命中 ≥4 榜计分</span>';
     }
     if (state.highlightDomestic) {
       var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
@@ -2091,13 +2167,13 @@
       // 先计算方向再更新 sortKey,否则 nextSortDir 内 state.sortKey 已被覆盖,无法区分新旧列
       state.sortDir = nextSortDir(key);
       state.sortKey = key;
-      renderOverview();
+      renderMatrix();
       // 渲染完成后扫一次该列(表头已重建,故按 key 重新定位列号)
       requestAnimationFrame(function () { flashSortedColumn(key); });
     });
     // 各页"仅跨榜模型/显示全部"开关
     [
-      { id: "ovShowAll", key: "overview", render: function () { renderOverview(); } },
+      { id: "ovShowAll", key: "overview", render: function () { renderMatrix(); } },
       { id: "lmShowAll", key: "llm", render: function () { renderLlm2014(state.llmMonth); } }
     ].forEach(function (sw) {
       var el = document.getElementById(sw.id);
@@ -2111,14 +2187,38 @@
     var hdEl = document.getElementById("ovHighlightDomestic");
     if (hdEl) hdEl.addEventListener("change", function () {
       state.highlightDomestic = hdEl.checked;
-      renderOverview();
+      renderMatrix();
     });
     // 总览页「显示综合分」开关:切换后在梯队徽标旁显示/隐藏精确综合分
     var ssEl = document.getElementById("ovShowScore");
     if (ssEl) ssEl.addEventListener("change", function () {
       state.showScore = ssEl.checked;
-      renderOverview();
+      renderMatrix();
     });
+    // 总览页矩阵搜索:输入即筛(不套用默认视图截断),Esc 或清空按钮恢复当前视图;
+    // 只重绘矩阵,避免连带重建新闻面板与基准卡片
+    var searchEl = document.getElementById("ovSearch");
+    var searchClearEl = document.getElementById("ovSearchClear");
+    if (searchEl) {
+      var syncSearchClear = function () { if (searchClearEl) searchClearEl.hidden = !searchEl.value; };
+      var resetSearch = function (focus) {
+        searchEl.value = "";
+        state.searchQuery = "";
+        syncSearchClear();
+        renderMatrix();
+        if (focus) searchEl.focus();
+      };
+      searchEl.addEventListener("input", function () {
+        state.searchQuery = searchEl.value;
+        syncSearchClear();
+        renderMatrix();
+      });
+      searchEl.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && searchEl.value) { e.preventDefault(); resetSearch(false); }
+      });
+      if (searchClearEl) searchClearEl.addEventListener("click", function () { resetSearch(true); });
+      syncSearchClear();
+    }
     // 标签点击
     Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (b) {
       b.addEventListener("click", function () { showTab(b.dataset.tab); });

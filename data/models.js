@@ -291,5 +291,23 @@ window.MODEL_MAP = {
     "Inception": "#7FC3E0"          // 天青(Mercury 系列)
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
-  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI"]
+  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI"],
+  // 厂商中文别名:仅用于总览矩阵搜索(厂商列仍显示英文 canonical 名),照顾按中文厂商名检索的习惯。
+  // 含模型家族名(通义/混元/豆包)是因为用户往往先想起家族名,而不是厂商英文名。
+  vendorAliases: {
+    "zAI": ["智谱"],
+    "Moonshot": ["月之暗面"],
+    "DeepSeek": ["深度求索"],
+    "Alibaba": ["阿里", "阿里巴巴", "通义"],
+    "Tencent": ["腾讯", "混元"],
+    "MiniMax": ["稀宇"],
+    "ByteDance": ["字节", "字节跳动", "豆包"],
+    "Xiaomi": ["小米"],
+    "StepFun": ["阶跃", "阶跃星辰"],
+    "SenseTime": ["商汤"],
+    "Shanghai AI Lab": ["上海人工智能实验室", "上海AI Lab"],
+    "China Telecom": ["中国电信", "电信"],
+    "Meituan": ["美团"],
+    "inclusionAI": ["蚂蚁", "蚂蚁集团"]
+  }
 };

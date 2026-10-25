@@ -545,6 +545,34 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--panel);
   font-size: var(--fs-sm); }
 .overview-switches .switch-lg:hover { border-color: var(--brand-muted); }
+/* 模型搜索:输入即筛,范围覆盖全部有成绩的模型(含默认视图未展示的参考/单榜行) */
+.matrix-search { display: flex; align-items: center; gap: 7px; width: 300px; max-width: 100%;
+  padding: 0 6px 0 10px; background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); transition: border-color var(--dur-fast) var(--ease-out); }
+.matrix-search:hover { border-color: var(--brand-muted); }
+.matrix-search:focus-within { border-color: var(--accent); }
+.matrix-search-icon { flex: none; width: 14px; height: 14px; color: var(--text-tertiary);
+  fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.matrix-search:focus-within .matrix-search-icon { color: var(--accent); }
+.matrix-search-input { flex: 1 1 auto; min-width: 0; height: 34px; padding: 0;
+  background: transparent; border: 0; outline: none; color: var(--text);
+  font: inherit; font-size: var(--fs-sm); }
+.matrix-search-input::placeholder { color: var(--text-tertiary); }
+.matrix-search-input::-webkit-search-cancel-button,
+.matrix-search-input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.matrix-search-clear { flex: none; display: flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; padding: 0; background: var(--panel-2); border: 0;
+  border-radius: var(--radius-pill); color: var(--text-dim); font-size: 14px; line-height: 1;
+  cursor: pointer; }
+.matrix-search-clear:hover { background: var(--border); color: var(--text); }
+.matrix-search-clear[hidden] { display: none; }
+/* 搜索命中片段与空态:命中只标字,空态整行提示不随行悬停变色 */
+.search-hit { padding: 0 1px; border-radius: 2px; background: var(--brand-light);
+  color: var(--accent); font-weight: 700; }
+#matrixTable tbody tr.matrix-empty:hover { background-color: transparent; background-image: none; }
+#matrixTable tbody tr.matrix-empty td { padding: 24px 12px; color: var(--text-dim);
+  text-align: center; white-space: normal; }
+.matrix-empty-hint { display: block; margin-top: 6px; color: var(--text-tertiary); font-size: var(--fs-sm); }
 
 /* ===== 图表容器 ===== */
 .chart-row, .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0; }
@@ -1309,6 +1337,7 @@ body {
   .bi-desc { white-space: normal; }
   .matrix-head { align-items: flex-start; }
   .matrix-tools { align-items: flex-start; width: 100%; }
+  .matrix-search { width: 100%; }
   .matrix-stats { gap: 12px; }
   .matrix-stats .ms-rule { padding-left: 12px; }
   .overview-switches { width: 100%; }
