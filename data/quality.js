@@ -4,13 +4,13 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-10-24',
-  'overallScore': 0.952,
+  'overallScore': 0.954,
   'sources': [
     {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 45,
+      'modelCount': 47,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -51,17 +51,6 @@ window.QUALITY = {
       'errors': []
     },
     {
-      'id': 'arenaofbias',
-      'name': '亿模亿样 模型效果对比',
-      'status': 'ok',
-      'modelCount': 74,
-      'updated': '2026-10-24',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
@@ -73,10 +62,21 @@ window.QUALITY = {
       'errors': []
     },
     {
+      'id': 'arenaofbias',
+      'name': '亿模亿样 模型效果对比',
+      'status': 'ok',
+      'modelCount': 74,
+      'updated': '2026-10-24',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 40,
+      'modelCount': 38,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -109,7 +109,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 50,
+      'modelCount': 41,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -120,7 +120,7 @@ window.QUALITY = {
       'id': 'deepswe_v10',
       'name': 'DeepSWE v1.0',
       'status': 'ok',
-      'modelCount': 25,
+      'modelCount': 21,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -142,7 +142,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 243,
+      'modelCount': 238,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -219,7 +219,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 44,
+      'modelCount': 41,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -230,7 +230,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 70,
+      'modelCount': 55,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -241,7 +241,7 @@ window.QUALITY = {
       'id': 'tbench_v3',
       'name': 'Terminal-Bench 3.0',
       'status': 'ok',
-      'modelCount': 16,
+      'modelCount': 12,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -252,7 +252,7 @@ window.QUALITY = {
       'id': 'tbscience',
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
-      'modelCount': 15,
+      'modelCount': 10,
       'updated': '2026-10-24',
       'ageDays': 0,
       'completeness': 1,
@@ -280,6 +280,17 @@ window.QUALITY = {
       'completeness': 1,
       'fetchAttempts': 1,
       'errors': []
+    },
+    {
+      'id': 'vals_vibe_code',
+      'name': 'Vibe Code Bench v1.1',
+      'status': 'ok',
+      'modelCount': 118,
+      'updated': '2026-10-24',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
     }
   ],
   'consistency': [
@@ -298,22 +309,6 @@ window.QUALITY = {
       'mean': 35.5,
       'stddev': 27.5,
       'flag': 'alert'
-    },
-    {
-      'canonId': 'Grok 4.5',
-      'name': 'grok-4-5',
-      'vendor': 'xAI',
-      'sources': [
-        'deepswe_v11',
-        'deepswe_v10'
-      ],
-      'scores': {
-        'deepswe_v11': 54,
-        'deepswe_v10': 62
-      },
-      'mean': 58,
-      'stddev': 4,
-      'flag': 'ok'
     },
     {
       'canonId': 'Gemini 3.5 Flash',
@@ -345,24 +340,6 @@ window.QUALITY = {
       },
       'mean': 54,
       'stddev': 2,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'Claude Fable 5',
-      'name': 'Claude Fable 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10'
-      ],
-      'scores': {
-        'datalearner': 69.8,
-        'deepswe_v11': 70,
-        'deepswe_v10': 66.1
-      },
-      'mean': 68.6,
-      'stddev': 1.79,
       'flag': 'ok'
     },
     {
@@ -443,22 +420,6 @@ window.QUALITY = {
       },
       'mean': 11,
       'stddev': 1,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'Kimi K3',
-      'name': 'kimi-k3',
-      'vendor': 'Moonshot',
-      'sources': [
-        'deepswe_v11',
-        'deepswe_v10'
-      ],
-      'scores': {
-        'deepswe_v11': 69,
-        'deepswe_v10': 67.5
-      },
-      'mean': 68.3,
-      'stddev': 0.75,
       'flag': 'ok'
     },
     {
@@ -555,6 +516,22 @@ window.QUALITY = {
       },
       'mean': 69.8,
       'stddev': 0.2,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Claude Fable 5',
+      'name': 'Claude Fable 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 69.8,
+        'deepswe_v11': 70
+      },
+      'mean': 69.9,
+      'stddev': 0.1,
       'flag': 'ok'
     },
     {
@@ -737,9 +714,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 45,
-      'complete': 45,
-      'modelCount': 45,
+      'total': 47,
+      'complete': 47,
+      'modelCount': 47,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -767,14 +744,6 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
-    'arenaofbias': {
-      'rate': 1,
-      'total': 74,
-      'complete': 74,
-      'modelCount': 74,
-      'missingFields': {},
-      'flag': 'ok'
-    },
     'arena_webdev': {
       'rate': 1,
       'total': 150,
@@ -783,11 +752,19 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
+    'arenaofbias': {
+      'rate': 1,
+      'total': 74,
+      'complete': 74,
+      'modelCount': 74,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'automationbench': {
       'rate': 1,
-      'total': 40,
-      'complete': 40,
-      'modelCount': 40,
+      'total': 38,
+      'complete': 38,
+      'modelCount': 38,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -811,17 +788,17 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 50,
-      'complete': 50,
-      'modelCount': 50,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v10': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 21,
+      'complete': 21,
+      'modelCount': 21,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -835,9 +812,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 243,
-      'complete': 243,
-      'modelCount': 243,
+      'total': 238,
+      'complete': 238,
+      'modelCount': 238,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -895,33 +872,33 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 44,
-      'complete': 44,
-      'modelCount': 44,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 70,
-      'complete': 70,
-      'modelCount': 70,
+      'total': 55,
+      'complete': 55,
+      'modelCount': 55,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v3': {
       'rate': 1,
-      'total': 16,
-      'complete': 16,
-      'modelCount': 16,
+      'total': 12,
+      'complete': 12,
+      'modelCount': 12,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbscience': {
       'rate': 1,
-      'total': 15,
-      'complete': 15,
-      'modelCount': 15,
+      'total': 10,
+      'complete': 10,
+      'modelCount': 10,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -938,6 +915,14 @@ window.QUALITY = {
       'total': 26,
       'complete': 26,
       'modelCount': 26,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'vals_vibe_code': {
+      'rate': 1,
+      'total': 118,
+      'complete': 118,
+      'modelCount': 118,
       'missingFields': {},
       'flag': 'ok'
     }
@@ -971,14 +956,14 @@ window.QUALITY = {
       'warnAgeDays': 3,
       'alertAgeDays': 7
     },
-    'arenaofbias': {
+    'arena_webdev': {
       'updated': '2026-10-24',
       'ageDays': 0,
       'flag': 'ok',
       'warnAgeDays': 3,
       'alertAgeDays': 7
     },
-    'arena_webdev': {
+    'arenaofbias': {
       'updated': '2026-10-24',
       'ageDays': 0,
       'flag': 'ok',
@@ -1112,6 +1097,13 @@ window.QUALITY = {
       'alertAgeDays': 30
     },
     'vals_vcb': {
+      'updated': '2026-10-24',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
+    },
+    'vals_vibe_code': {
       'updated': '2026-10-24',
       'ageDays': 0,
       'flag': 'ok',

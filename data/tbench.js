@@ -14,10 +14,10 @@ window.TBENCH = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
   'updated': '2026-10-24',
-  'refreshedAt': '2026-10-24 14:30',
+  'refreshedAt': '2026-10-24 21:26',
   'stats': {
     'tasks': 66,
-    'entries': 44
+    'entries': 41
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -512,42 +512,6 @@ window.TBENCH = {
       'tokens': null,
       'cost': null,
       'src': 'deepseek-official'
-    },
-    {
-      'rank': null,
-      'model': 'Claude Haiku 5.5',
-      'agent': null,
-      'effort': null,
-      'score': 39.2,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
-    },
-    {
-      'rank': null,
-      'model': 'DeepSeek-V4.1-Flash',
-      'agent': null,
-      'effort': null,
-      'score': 31.2,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
-    },
-    {
-      'rank': null,
-      'model': 'Mistral Large 4',
-      'agent': null,
-      'effort': null,
-      'score': 28.3,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
     }
   ]
 };
