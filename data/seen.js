@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-10-24',
+  'updated': '2026-10-25',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -292,6 +292,7 @@ window.SEEN = {
     'datalearner|Kimi K3.1 Pro': '2026-10-24',
     'datalearner|Claude Opus 5.5': '2026-10-24',
     'tbench|Kimi K3.1 Pro': '2026-10-24',
-    'tbench|Mistral Large 4': '2026-10-24'
+    'tbench|Mistral Large 4': '2026-10-24',
+    'llm|Kimi-K3.1-Pro (max)': '2026-10-25'
   }
 };
