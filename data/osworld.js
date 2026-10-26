@@ -1,4 +1,4 @@
-// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-10-24)
+// 数据源:OSWorld 2.0(xlang-ai 长时程桌面计算机使用评测,更新于 2026-10-25)
 // 主渠道:https://www.datalearner.com/benchmarks/osworld-2(厂商官方发布成绩,partial 口径)
 // 补充:https://leaderboard.steel.dev/leaderboards/osworld-2/(官方:https://osworld-v2.xlang.ai/,系统级条目仅追加主源未收录者)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -9,11 +9,11 @@ window.OSWORLD = {
   'url': 'https://leaderboard.steel.dev/leaderboards/osworld-2/',
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-24',
-  'refreshedAt': '2026-10-24 21:26',
+  'updated': '2026-10-25',
+  'refreshedAt': '2026-10-25 21:48',
   'stats': {
     'tasks': 108,
-    'entries': 36
+    'entries': 42
   },
   'desc': 'OSWorld 2.0:108 个长时程、端到端的桌面计算机使用工作流(人类中位耗时约 1.6 小时,平均约 318 次工具调用),按二进制完成率与部分得分(检查点达成比例)双口径计分;因二进制完成率极低,榜单按部分得分排序。',
   'models': [
@@ -54,20 +54,20 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
-      'system': 'Claude Opus 5',
-      'note': '最高（工具）',
-      'score': 70.57,
-      'org': 'Anthropic',
-      'reported': '2026-07-24',
-      'url': null,
-      'src': 'datalearner'
-    },
-    {
       'system': 'Gemini 4 Argon',
       'note': '最高（工具）',
       'score': 69.2,
       'org': 'Google DeepMind',
       'reported': '2026-10-13',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '最高（工具）',
+      'score': 68.31,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
       'url': null,
       'src': 'datalearner'
     },
@@ -144,6 +144,15 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'GPT-5.6 Sol',
+      'note': '最高（工具）',
+      'score': 62.72,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'GPT-5.6 Sol (Snorkel run)',
       'note': 'Partial score (27.34% binary) in Snorkel\'s independent run under the 500-step budget; Snorkel is a benchmark co-author.',
       'score': 62.72,
@@ -151,15 +160,6 @@ window.OSWORLD = {
       'reported': 'Sep 2026',
       'url': 'https://snorkel.ai/leaderboard/os-world-2-0/',
       'src': 'mirror'
-    },
-    {
-      'system': 'GPT-5.6 Sol',
-      'note': '最高（工具）',
-      'score': 62.6,
-      'org': 'OpenAI',
-      'reported': '2026-06-26',
-      'url': null,
-      'src': 'datalearner'
     },
     {
       'system': 'MiniMax M3.1 Flash',
@@ -313,6 +313,60 @@ window.OSWORLD = {
       'reported': 'Jun 2026',
       'url': 'https://osworld-v2.xlang.ai/',
       'src': 'mirror'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '最高（工具）',
+      'score': 31.43,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '极高强度思考（工具）',
+      'score': 30.21,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 High（工具）',
+      'score': 28.98,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '最高（工具）',
+      'score': 27.34,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 Medium（工具）',
+      'score': 25.33,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 Low（工具）',
+      'score': 22.32,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'MiniMax M3',

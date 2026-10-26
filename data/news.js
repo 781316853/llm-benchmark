@@ -2,14 +2,48 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-24',
+  'updated': '2026-10-25',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '模型发布'
+    '模型发布',
+    '产品应用',
+    '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-10-25',
+      'title': 'WorkBuddy 内测技能与专家付费功能',
+      'brief': 'WorkBuddy 推出内测中的「收入变现」功能，开发者可在开放平台开通后发布付费技能和专家，用户购买后方可使用。',
+      'url': 'https://open.workbuddy.cn/docs/monetization',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-25',
+      'title': 'Qoder 为 1024 活动额外开启一轮补给',
+      'brief': 'Qoder 宣布， 1024 Community Boost 活动原定的三轮补给提前全部解锁并发放，因此额外开启一轮，用户再共同完成 100,000 次助力即可解锁神秘补给包，具体内容将在解锁时公布。',
+      'url': 'https://qoder.com/community-boost',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-25',
+      'title': 'Claude Code 团队成员 Thariq、Anthony Morris 分别宣布离职',
+      'brief': 'Anthropic 的 Claude Code 团队成员 Thariq 和 Anthony Morris 分别发文宣布离职。',
+      'url': 'https://x.com/trq212/status/2113844051938054167',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-10-25',
+      'title': '英国公布数亿英镑 AI 投资计划',
+      'brief': '英国公布数亿英镑 AI 投资计划，支持本土产业、应对 AI 风险，并推动就业和增长机会惠及全国。',
+      'url': 'https://www.gov.uk/government/news/chancellor-unveils-britains-ambitious-plan-for-ai',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
     {
       'date': '2026-10-24',
       'title': '月之暗面发布 Kimi K3.1 Pro',
@@ -47,14 +81,6 @@ window.NEWS = {
       'title': 'Google Pro 用户反馈 Antigravity 可用 Argon',
       'brief': '据用户反馈， Antigravity 部分 Pro 用户此前无法使用的 Gemini 4 Argon 和 Claude Opus 5.5 现可选择，相关截图显示两款模型出现在模型菜单中。',
       'url': 'https://antigravity.google/docs/models',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-24',
-      'title': 'Cursor 新增桌面控制能力，可测试开发中的功能',
-      'brief': 'Cursor 宣布新增 Computer Use 能力， Agent 可在桌面应用中点击、输入，操作 iOS Simulator 等应用来测试自己开发的功能，而不只是在浏览器中操作。',
-      'url': 'https://x.com/cursor_ai/status/2113661506634305834',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
