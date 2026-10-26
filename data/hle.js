@@ -13,7 +13,7 @@ window.HLE = {
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-26',
-  'refreshedAt': '2026-10-26 14:36',
+  'refreshedAt': '2026-10-27 04:03',
   'stats': {
     'tasks': 2500,
     'entries': 238
@@ -239,12 +239,21 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
+      'model': 'GPT-6.1 Terra',
+      'org': 'OpenAI',
+      'score': 46.2,
+      'protocol': '无工具',
+      'src': 'aa',
+      'rank': 24,
+      'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
       'model': 'GPT-5.5',
       'org': 'OpenAI',
       'score': 45.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 24,
+      'rank': 25,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -253,7 +262,7 @@ window.HLE = {
       'score': 45.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 25,
+      'rank': 26,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -262,7 +271,7 @@ window.HLE = {
       'score': 44.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 26,
+      'rank': 27,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -271,7 +280,7 @@ window.HLE = {
       'score': 43.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 27,
+      'rank': 28,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -280,7 +289,7 @@ window.HLE = {
       'score': 43.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 28,
+      'rank': 29,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -289,7 +298,7 @@ window.HLE = {
       'score': 43.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 29,
+      'rank': 30,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -298,7 +307,7 @@ window.HLE = {
       'score': 43.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 30,
+      'rank': 31,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -307,7 +316,7 @@ window.HLE = {
       'score': 42.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 31,
+      'rank': 32,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -316,7 +325,7 @@ window.HLE = {
       'score': 42.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 32,
+      'rank': 33,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -325,7 +334,7 @@ window.HLE = {
       'score': 42.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 33,
+      'rank': 34,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -334,7 +343,7 @@ window.HLE = {
       'score': 42.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 34,
+      'rank': 35,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -344,7 +353,7 @@ window.HLE = {
       'sourceUrl': 'https://api-docs.deepseek.com/zh-cn/updates',
       'src': 'deepseek-official',
       'protocol': '无工具',
-      'rank': 35,
+      'rank': 36,
       'protocolNote': 'DeepSeek 官方更新页 HLE (w/o tools) 42.6(纯文本 44.0),2026-10-17'
     },
     {
@@ -353,7 +362,7 @@ window.HLE = {
       'score': 42.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 36,
+      'rank': 37,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -362,7 +371,7 @@ window.HLE = {
       'score': 42.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 37,
+      'rank': 38,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -371,7 +380,7 @@ window.HLE = {
       'score': 42.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 38,
+      'rank': 39,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -380,7 +389,7 @@ window.HLE = {
       'score': 42.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 39,
+      'rank': 40,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -389,7 +398,7 @@ window.HLE = {
       'score': 41.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 40,
+      'rank': 41,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -398,7 +407,7 @@ window.HLE = {
       'score': 41.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 41,
+      'rank': 42,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -407,7 +416,7 @@ window.HLE = {
       'score': 41,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 42,
+      'rank': 43,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -416,7 +425,7 @@ window.HLE = {
       'score': 40.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 43,
+      'rank': 44,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -425,22 +434,13 @@ window.HLE = {
       'score': 40.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 44,
+      'rank': 45,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba',
       'score': 40.5,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 45,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GLM-5.3-Flash',
-      'org': 'Z.AI',
-      'score': 39.9,
       'protocol': '无工具',
       'src': 'aa',
       'rank': 46,

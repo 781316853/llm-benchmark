@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'apex',
       'name': 'APEX-1',
       'status': 'ok',
-      'modelCount': 69,
+      'modelCount': 71,
       'updated': '2026-10-26',
       'ageDays': 0,
       'completeness': 1,
@@ -109,7 +109,7 @@ window.QUALITY = {
       'id': 'cursorbench',
       'name': 'CursorBench',
       'status': 'ok',
-      'modelCount': 18,
+      'modelCount': 19,
       'updated': '2026-10-26',
       'ageDays': 0,
       'completeness': 1,
@@ -175,7 +175,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 107,
+      'modelCount': 108,
       'updated': '2026-10-26',
       'ageDays': 0,
       'completeness': 0,
@@ -733,9 +733,9 @@ window.QUALITY = {
     },
     'apex': {
       'rate': 1,
-      'total': 69,
-      'complete': 69,
-      'modelCount': 69,
+      'total': 71,
+      'complete': 71,
+      'modelCount': 71,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -799,9 +799,9 @@ window.QUALITY = {
     },
     'cursorbench': {
       'rate': 1,
-      'total': 18,
-      'complete': 18,
-      'modelCount': 18,
+      'total': 19,
+      'complete': 19,
+      'modelCount': 19,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -847,11 +847,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 107,
+      'total': 108,
       'complete': 0,
-      'modelCount': 107,
+      'modelCount': 108,
       'missingFields': {
-        'score': 107
+        'score': 108
       },
       'flag': 'warn'
     },
