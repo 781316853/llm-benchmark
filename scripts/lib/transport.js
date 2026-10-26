@@ -71,7 +71,10 @@ function fetchOnce(url, opts) {
         res.resume();
         return reject(new Error("HTTP " + res.statusCode + " " + url));
       }
-      var buf = "";
+      // opts.binary=true 时返回原始 Buffer(parquet 等二进制资源);默认仍按 utf8 文本拼接
+      const binary = !!opts.binary;
+      let buf = binary ? [] : "";
+      let bufLen = 0;
       // Node 内置 http 不自动解压;部分 CDN(如 B 站 WebCDN)无论是否声明 Accept-Encoding
       // 都固定回 gzip,不处理会得到二进制乱码(表现为"抓到内容却匹配不到任何模式")。
       const enc = String(res.headers["content-encoding"] || "").toLowerCase();
@@ -79,9 +82,11 @@ function fetchOnce(url, opts) {
       if (enc === "gzip" || enc === "x-gzip") body = res.pipe(zlib.createGunzip());
       else if (enc === "br") body = res.pipe(zlib.createBrotliDecompress());
       else if (enc === "deflate") body = res.pipe(zlib.createInflate());
-      body.setEncoding("utf8");
-      body.on("data", function (d) { buf += d; });
-      body.on("end", function () { resolve(buf); });
+      if (!binary) body.setEncoding("utf8");
+      body.on("data", function (d) {
+        if (binary) { buf.push(d); bufLen += d.length; } else buf += d;
+      });
+      body.on("end", function () { resolve(binary ? Buffer.concat(buf, bufLen) : buf); });
       body.on("error", reject);
     });
     req.on("error", reject);
@@ -98,6 +103,7 @@ function fetchOnce(url, opts) {
 //   timeoutMs      单次超时
 //   rateLimitMs    覆盖同 host 最小间隔(可选)
 //   headers        覆盖默认请求头(可选;如 GitHub API 的 Authorization)
+//   binary         true 时 resolve 原始 Buffer(默认 utf8 字符串)
 //   onFailedAttempt p-retry 钩子,用于日志
 //   shouldRetry    自定义重试条件函数(err) => bool(可选,默认 4xx 不重试)
 // 注:为兼容 p-retry v4(无 shouldRetry 选项),不可重试的错误直接抛 AbortError 终止。

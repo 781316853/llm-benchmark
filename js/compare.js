@@ -23,18 +23,19 @@
   var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
-  // 8 个计分组的键(与 WEIGHTS 一致)
-  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "vibecode"];
+  // 9 个计分组的键(与 WEIGHTS 一致)
+  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "vibecode", "agentarena"];
 
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
   // 亿模亿样取 Elo 原值(源站已是每模型最高分档)
-  // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily / Vibe Code 计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
+  // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily / Vibe Code / Agent Arena 计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
+    agentarena: function (e) { return (e.agentarena && e.agentarena.score != null) ? e.agentarena.score : null; },
     tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
@@ -58,7 +59,8 @@
   // ① 排名行(命中≥4榜)先按综合分降序取基准序,再按「同档跨度 < 容差」划档(每行与档内首名比,
   //    故档内跨度恒 < 1.5),档内依次按 命中数 → 共榜净胜 → 综合分 → id 排序,最后编号 _posKey = 0,1,2…;
   //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),2026-09-24 起曾为 7(无机酸前端实测加入),
-  //    2026-10-12 起无机酸前端实测退出计分、分母回到 6,2026-10-19 起随 AI Coding Daily 入组再升为 7;
+  //    2026-10-12 起无机酸前端实测退出计分、分母回到 6,2026-10-19 起随 AI Coding Daily 入组再升为 7,
+  //    2026-10-20 起 Vibe Code 入组为 8,2026-10-26 起 Agent Arena 入组为 9;
   //    门槛仍取 4,保持与历史排名的可比性;
   // ② 参考行(命中 2-3 榜)不计算综合分、不参与排名,按「参考综合分」在排名行综合分序列的应处名次落入
   //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
@@ -123,15 +125,16 @@
     });
     return best === -Infinity ? 0 : best;
   }
-  // 计分组权重(2026-10-24 口径):第三方实测组主导、基准组减权
-  //  DeepSWE 15%(权威第三方编码榜,113 任务/91 仓库,基准组旗舰)
-  //  Code Arena·WebDev 20%(权威第三方,社区匿名盲测投票;实测组权重最高)
-  //  Terminal-Bench 10%(权威第三方终端 Agent 榜,4.0/3.0/2.1 多版本合并为一组)
-  //  ModelDial 15%(第三方独立实测综合能力榜,后端 40%/前端 30%/知识 30% 合成分)
-  //  llm2014 11%(个人私有题库、等级折算制,代表性弱于第三方基准)
-  //  亿模亿样 11%(前端作品社区盲评 Elo 竞技场;2026-10-16 起接替原 AI 能力专项测试的权重席位)
-  //  AI Coding Daily 9%(独立第三方实测编码榜,总分 0-70;2026-10-19 入组,理由见下方沿革)
-  //  Vibe Code v1.1 8%(Vals AI 从零构建 Web 应用的编码 Agent 实测;2026-10-24 起接替 VCB-1-100 的权重席位)
+  // 计分组权重(2026-10-26 口径):第三方实测组主导、基准组减权
+  //  DeepSWE 14%(权威第三方编码榜,113 任务/91 仓库,基准组旗舰)
+  //  Code Arena·WebDev 18%(权威第三方,社区匿名盲测投票;实测组权重最高)
+  //  Terminal-Bench 9%(权威第三方终端 Agent 榜,4.0/3.0/2.1 多版本合并为一组)
+  //  ModelDial 14%(第三方独立实测综合能力榜,后端 40%/前端 30%/知识 30% 合成分)
+  //  llm2014 10%(个人私有题库、等级折算制,代表性弱于第三方基准)
+  //  亿模亿样 10%(前端作品社区盲评 Elo 竞技场;2026-10-16 起接替原 AI 能力专项测试的权重席位)
+  //  AI Coding Daily 8%(独立第三方实测编码榜,总分 0-70;2026-10-19 入组,理由见下方沿革)
+  //  Vibe Code v1.1 7%(Vals AI 从零构建 Web 应用的编码 Agent 实测;2026-10-24 起接替 VCB-1-100 的权重席位)
+  //  Agent Arena 9%(LMArena 真实智能体会话净提升;2026-10-26 入组,与 WebDev 同为 LMArena,压低防重复计量)
   // 历史沿革:2026-09 移除 Vibe Code Bench(其 14% 按比例回流至其余基准);
   //  ProgramBench(原权重 8%)2026-09 移出综合分与命中数(官方 harness 口径 Fully Resolved 整体
   //  0-7 分,区分度极低);2026-09-22 恢复收录于「权威基准测试」页,维持仅展示、不再计分;
@@ -169,18 +172,25 @@
   //  (vals.ai/benchmarks/vibe-code,Vals AI 官方榜;从零构建 Web 应用、隐藏测试判定,118 条
   //   model×harness 记录、以 OpenHands 为主),权重仍为 8%、其余七组不变;VCB-1-100 不再计分,
   //  改为仅在「VCB-1-100」独立标签页展示(数据照旧每日抓取)。
+  //  2026-10-26 起:新增第 9 组「Agent Arena」9%(LMArena,真实智能体会话的 IPS 净提升,可为负)。
+  //  主办方 LM Arena 不是被评厂商,按站内判据计入综合分与命中数;因与同为 LMArena 的
+  //  Code Arena·WebDev(18%)及编码 agent 实测存在重复计量风险,取 9%;为保持九组之和 0.99,
+  //  其余八组按比例下调(DeepSWE 15→14、WebDev 20→18、TBench 10→9、ModelDial 15→14、
+  //  llm2014 11→10、亿模亿样 11→10、AI Coding Daily 9→8、Vibe Code 8→7);命中数分母回到 9。
   //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
-  //  故上列权重无需凑满 100%(8 组之和 0.99)。
-  var WEIGHTS = { deepswe: 0.15, webdev: 0.20, tbench: 0.10, modeldial: 0.15, llm: 0.11, arenaofbias: 0.11, aicodingdaily: 0.09, vibecode: 0.08 };
+  //  故上列权重无需凑满 100%(9 组之和 0.99)。
+  var WEIGHTS = { deepswe: 0.14, webdev: 0.18, tbench: 0.09, modeldial: 0.14, llm: 0.10, arenaofbias: 0.10, aicodingdaily: 0.08, vibecode: 0.07, agentarena: 0.09 };
   // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
   //   modeldial 源站 40/30/30 综合分    llm  等级映射综合分    arenaofbias  Elo 原值(每模型最高分档)
   //   aicodingdaily 源站总分(0-70,四轴之和;尺度不变,原生量纲直接进池定标)
   //   vibecode 准确率 %(以 OpenHands harness 为主;尺度不变,原生量纲直接进池定标)
+  //   agentarena 净提升 %(相对 Arena 基线,可为负;尺度不变,原生量纲直接进池定标)
   var BOARD_RAW = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     webdev: function (e) { return e.webdev ? e.webdev.score : null; },
+    agentarena: function (e) { return e.agentarena ? e.agentarena.score : null; },
     tbench: function (e) { return e.tbench ? e.tbench.equiv : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.overall : null; },
     llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },

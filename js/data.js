@@ -176,6 +176,22 @@
     return list.sort(function (a, b) { return b.score - a.score; });
   }
 
+  // ===== Agent Arena(LMArena):每 canonical 模型取最高净提升 =====
+  // 源站按推理强度分档多条上榜(如 GPT-6 Luna Max/Low),与 WebDev / 亿模亿样同法取最高分那一条;
+  // score 为相对 Arena 基线的净提升 %(可为负),CI 为 ±95% 半宽。
+  function arenaAgent() {
+    var src = window.ARENA_AGENT || { models: [] };
+    var best = {};
+    (src.models || []).forEach(function (m) {
+      var c = canon(m.name);
+      if (!best[c.id] || m.score > best[c.id].score) best[c.id] = Object.assign({}, m, { canon: c });
+    });
+    var list = Object.keys(best).map(function (k) { return best[k]; })
+      .sort(function (a, b) { return b.score - a.score; });
+    list.forEach(function (m, i) { m.rank = i + 1; });
+    return list;
+  }
+
   // ===== llm2014:解析指定月份 -> {projects, rows:[{model, canon, cells:[parseCell...], ide, think, norm, rank}]} =====
   // 综合分(norm,0-100)= 等级均值基础分 + 按源站行序的保序收敛:
   // 1) 基础分 = 各已测项目等级均值(A+=4.0..D=0.5,Pass=4.0,Failed=0),不做档位归并;
@@ -502,8 +518,9 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, tbench, arenaofbias, modeldial, aicodingdaily, vibecode} 用于矩阵/雷达 =====
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, agentarena, tbench, arenaofbias, modeldial, aicodingdaily, vibecode} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
+  // agentarena:同名取最高净提升(可为负;2026-10-26 起计入综合分与命中数,权重 9%);
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
   // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数);
@@ -512,7 +529,7 @@
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, vibecode: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, vibecode: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -541,6 +558,13 @@
     webdev().forEach(function (m) {
       var e = ensure(m.canon);
       if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
+    });
+    // Agent Arena:同名取最高净提升(可为负);CI/会话数/观测数/许可供矩阵悬浮
+    arenaAgent().forEach(function (m) {
+      var e = ensure(m.canon);
+      if (!e.agentarena || m.score > e.agentarena.score)
+        e.agentarena = { score: m.score, ci: m.ci, sessions: m.sessions, observations: m.observations,
+          license: m.license, srcRank: m.srcRank, org: m.org, name: m.name, rank: m.rank, date: m.date };
     });
     // Terminal-Bench 多版本(4.0/3.0/2.1):合并为一个基准组,优先以最高版本为代表(4.0>3.0>2.1);
     // 计入综合分与命中数。归一口径:以 4.0 为基准,3.0/2.1 按共有模型折算难度系数得「4.0 等效分」
@@ -594,14 +618,15 @@
           harness: m.harness, rank: m.rank, name: m.model
         };
     });
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Terminal-Bench / 亿模亿样 / ModelDial / AI Coding Daily / Vibe Code
-    // 共 8 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/NL2Repo/Code Migration)与
-    // VCB-1-100 独立页仅展示不计命中。
+    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Agent Arena / Terminal-Bench / 亿模亿样 / ModelDial /
+    // AI Coding Daily / Vibe Code 共 9 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/
+    // NL2Repo/Code Migration)与 VCB-1-100 独立页仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.webdev) e.benchCount++;
+      if (e.agentarena) e.benchCount++;
       if (e.tbench) e.benchCount++;
       if (e.arenaofbias) e.benchCount++;
       if (e.modeldial) e.benchCount++;
@@ -611,11 +636,12 @@
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / Vibe Code 共 8 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / Vibe Code 共 9 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, vc = window.VALSVIBECODE || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, vc = window.VALSVIBECODE || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
+    var aaTop = arenaAgent()[0] || {};
     var tbTop = tbench()[0] || {};
     var mdTop = modeldial()[0] || {};
     var acdTop = aicodingdaily()[0] || {};
@@ -638,6 +664,11 @@
       { key: "webdev", name: "Code Arena · WebDev", tag: "前端 Web 应用开发", url: wd.officialUrl || wd.url, updated: wd.updated,
         stats: [{ l: "模型", v: (wd.models || []).length }, { l: "Elo", v: (wdTop.score != null ? wdTop.score : "—") }],
         top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") },
+      { key: "agentarena", name: "Agent Arena", tag: "真实智能体会话 · 净提升", url: aa.officialUrl || aa.url, updated: aa.updated,
+        stats: [{ l: "模型", v: (aa.models || []).length },
+          { l: "会话", v: (aa.stats && aa.stats.sessions != null) ? (aa.stats.sessions / 1e6).toFixed(2) + "M" : "—" }],
+        top: (aaTop.canon ? aaTop.canon.id : (aaTop.name || "—")) + " · " +
+          (aaTop.score != null ? (aaTop.score > 0 ? "+" : "") + aaTop.score + "%" : "") },
       { key: "arenaofbias", name: "亿模亿样 · 模型效果对比", tag: "前端作品社区盲评 Elo", url: ab.boardUrl || ab.url || "", updated: ab.updated,
         stats: [{ l: "模型", v: (ab.models || []).length }, { l: "有效比较", v: (ab.stats && ab.stats.votes != null) ? ab.stats.votes : "—" }],
         top: (abTop.name || "—") + " · " + (abTop.score != null ? abTop.score + " Elo" : "") },
@@ -659,7 +690,7 @@
     ];
   }
 
-  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-8);用于"仅跨榜模型"过滤
+  // 查某 canonical 模型在指定 llm 月份下的跨榜命中数(0-9);用于"仅跨榜模型"过滤
   function hitCount(canonId, llmMonthKey) {
     var u = unified(llmMonthKey);
     var e = u[canonId];
@@ -735,7 +766,7 @@
   // 「权威基准测试」页的 11 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
   // 若在解析期就取 window.*,这些键会永远停在 undefined。
   var SRC_GLOBALS = {
-    deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arenaofbias: "ARENAOFBIAS",
+    deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arena_agent: "ARENA_AGENT", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
     apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
@@ -764,6 +795,7 @@
     deepSwe: deepSwe,
     deepSweVersionCounts: deepSweVersionCounts,
     webdev: webdev,
+    arenaAgent: arenaAgent,
     arenaofbias: arenaofbias,
     llmMonth: llmMonth,
     llmMonths: llmMonths,

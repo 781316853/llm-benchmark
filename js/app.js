@@ -91,7 +91,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode, D.src.arenaofbias, D.src.aicodingdaily, D.src.vals_vibe_code, D.src.vals_vcb]
+      D.src.cursorbench, D.src.frontiercode, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.vals_vibe_code, D.src.vals_vcb]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -108,6 +108,7 @@
     deepswe: "真实 GitHub issue → PR 的长程软件工程评测",
     llm2014: "私有题库档位制评测,含单任务测试成本",
     webdev: "LMArena 前端竞技场 · 匿名盲测 Elo",
+    agentarena: "LMArena 真实智能体会话 · 净提升",
     arenaofbias: "前端作品社区盲评 Elo 竞技场",
     tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
     modeldial: "第三方实测 · 后端 40 / 前端 30 / 知识 30",
@@ -115,8 +116,8 @@
     vibecode: "独立第三方实测 · 从零构建 Web 应用 · 准确率"
   };
   var BENCH_WEIGHT = {
-    deepswe: "15%", llm2014: "11%", webdev: "20%",
-    arenaofbias: "11%", tbench: "10%", modeldial: "15%", aicodingdaily: "9%", vibecode: "8%"
+    deepswe: "14%", llm2014: "10%", webdev: "18%", agentarena: "9%",
+    arenaofbias: "10%", tbench: "9%", modeldial: "14%", aicodingdaily: "8%", vibecode: "7%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -128,6 +129,13 @@
   // 美元金额(参考费用):小额保留 2 位小数,大额仍保留 2 位以免列宽跳动
   function fmtUsd(v) {
     return (v == null || !isFinite(v)) ? "—" : "$" + Number(v).toFixed(2);
+  }
+  // 带符号百分比(Agent Arena 净提升可为负):保留 1 位小数,正值显式加「+」,0 不显示负号
+  function fmtSignedPct(v) {
+    if (v == null || !isFinite(v)) return "—";
+    var n = Math.round(v * 10) / 10;
+    if (n === 0) n = 0;
+    return (n > 0 ? "+" : "") + n.toFixed(1) + "%";
   }
 
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
@@ -244,23 +252,27 @@
     // (0-100,后端 40%/前端 30%/知识 30% 加权);计入综合分与命中数;
     // 格内为综合分,口径与分项/耗时/费用放 th 悬浮提示;完整榜见「ModelDial」页
     { key: "modeldial", label: "ModelDial (综合分)", type: "num", bench: true, grp: "第三方实测", tone: "modeldial",
-      tip: "ModelDial 雷达综合分(0-100):第三方独立实测,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;计入综合分(权重 16%)与命中数",
+      tip: "ModelDial 雷达综合分(0-100):第三方独立实测,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;计入综合分(权重 14%)与命中数",
       val: function (r) { return r.modeldial ? r.modeldial.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):归入「第三方实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
+    // Agent Arena:真实智能体会话的净提升 %(可为负;同一模型按推理强度取最高分档);计入综合分(权重 9%)与命中数
+    { key: "agentarena", label: "Agent Arena (净提升)", type: "num", bench: true, grp: "第三方实测", tone: "agentarena",
+      tip: "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 9%)与命中数",
+      val: function (r) { return (r.agentarena && r.agentarena.score != null) ? r.agentarena.score : null; } },
     { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // 亿模亿样:前端作品社区盲评 Elo 原值(每模型取最高分档);计入综合分与命中数
     { key: "arenaofbias", label: "亿模亿样 (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "arenaofbias",
-      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 12%)与命中数",
+      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 10%)与命中数",
       val: function (r) { return (r.arenaofbias && r.arenaofbias.score != null) ? r.arenaofbias.score : null; } },
     // AI Coding Daily:独立第三方实测编码榜总分(0-70,四轴之和;每模型取最高分 config);计入综合分与命中数
     { key: "aicodingdaily", label: "AI Coding Daily (总分/70)", type: "num", bench: true, grp: "第三方实测", tone: "aicodingdaily",
-      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 9%)与命中数,完整榜单见「AI Coding Daily」页",
+      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 8%)与命中数,完整榜单见「AI Coding Daily」页",
       val: function (r) { return (r.aicodingdaily && r.aicodingdaily.score != null) ? r.aicodingdaily.score : null; } },
     // Vibe Code v1.1:Vals AI 从零构建 Web 应用的编码 Agent 实测(准确率 %;每模型取最高条目);计入综合分与命中数
     { key: "vibecode", label: "Vibe Code (准确率)", type: "num", bench: true, grp: "第三方实测", tone: "vibecode",
-      tip: "Vibe Code Bench v1.1(Vals AI)准确率(%):从零构建 Web 应用,每份规格配 20-60 条隐藏自动化测试;多数模型跑在 OpenHands harness 上,源站另含少量 Claude Code / Codex / Factory 等 harness 条目;另记每测试平均成本与耗时;计入综合分(权重 8%)与命中数",
+      tip: "Vibe Code Bench v1.1(Vals AI)准确率(%):从零构建 Web 应用,每份规格配 20-60 条隐藏自动化测试;多数模型跑在 OpenHands harness 上,源站另含少量 Claude Code / Codex / Factory 等 harness 条目;另记每测试平均成本与耗时;计入综合分(权重 7%)与命中数",
       val: function (r) { return (r.vibecode && r.vibecode.score != null) ? r.vibecode.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
@@ -539,6 +551,18 @@
       var wd = r.webdev ? r.webdev.score : null;
       var wdCi = (r.webdev && typeof r.webdev.ci === "number")
         ? '<span class="cell-cost">±' + r.webdev.ci + '</span>' : "";
+      // Agent Arena 单元格:净提升 %(带符号,可为负) + ±95% 区间;悬停补官方名次/会话数/观测数/许可
+      var aaHtml = "—";
+      if (r.agentarena) {
+        var aa = r.agentarena, aaParts = [];
+        if (aa.srcRank != null) aaParts.push("官方 #" + aa.srcRank);
+        if (aa.sessions != null) aaParts.push(aa.sessions.toLocaleString("en-US") + " 场独立会话");
+        if (aa.observations != null) aaParts.push(aa.observations.toLocaleString("en-US") + " 次信号观测");
+        if (aa.license) aaParts.push(aa.license);
+        aaParts.push("净提升相对 Arena 基线,可为负;同一模型取最高分档");
+        aaHtml = '<span class="bv bv-agentarena" title="' + esc(aaParts.join(" · ")) + '">' + fmtSignedPct(aa.score) + '</span>' +
+          (typeof aa.ci === "number" ? '<span class="cell-cost">±' + aa.ci + '</span>' : "");
+      }
       // Terminal-Bench 单元格:解决率% + 版本徽标 + agent/effort 小字(title 悬浮);悬停显示版本/Agent 与强度
       var tbMeta = [];
       if (r.tbench && r.tbench.version) tbMeta.push("v" + r.tbench.version);
@@ -650,6 +674,8 @@
         '<td class="num grp-start">' + mdHtml + '</td>' +
         // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
         '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
+        // Agent Arena 列:净提升带符号上该榜数据色,后随 ±95% 半宽(灰字)
+        '<td class="num">' + aaHtml + '</td>' +
         '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
         // 亿模亿样列:Elo 原值上该榜数据色,后随 ±95% 区间(灰字)
         '<td class="num">' + biasCell(r) + '</td>' +
@@ -671,8 +697,8 @@
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
-      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 15% / Terminal-Bench 4.0/3.0/2.1 10%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 15%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 9%,注:各模型跑在各自 agent harness 上;Vibe Code v1.1,从零构建 Web 应用、隐藏测试判定、以 OpenHands harness 为主,权重 8%)、社区盲评 Elo(Code Arena · WebDev 20% / 亿模亿样 11%)与站主实测口径(llm2014 私有题库 11%);六组同纲计入综合分与命中数,合计占权重约 74%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;Vibe Code v1.1,从零构建 Web 应用、隐藏测试判定、以 OpenHands harness 为主,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -748,7 +774,7 @@
       note += '\n当前高亮 ' + domCnt + ' 个国产模型。';
     }
     // 口径细节统一收进下方「阅读说明」
-    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;HLE 及其余权威基准仅参考。';
+    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 及其余权威基准仅参考。';
     document.getElementById("overviewNote").textContent = note;
   }
 
@@ -880,7 +906,7 @@
     document.getElementById("lmNote").innerHTML = noteHtml;
   }
 
-  // ===== 6) ModelDial 雷达(第三方独立实测的综合能力榜;计入综合分(计分组之一,权重 16%)与命中数) =====
+  // ===== 6) ModelDial 雷达(第三方独立实测的综合能力榜;计入综合分(计分组之一,权重 14%)与命中数) =====
   // 主榜为模型级条目(每条取该模型最高分 config,与源站主榜一致),config 明细另附折叠表(条数取源站快照)。
   function renderModeldial() {
     var src = D.src.modeldial || {};
@@ -963,7 +989,7 @@
         '%(三分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
         '源站主榜显示的是三轴汇总值,故此处数值低于源站显示值;本页各模型之间口径一致、可直接横向比较。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 16%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),并于 2026-09-21 随「第三方实测」组整体加权上调(12%→16%);命中数分母为 7(七项基准,AI 能力前后端合并计一次)。上表为模型级 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 14%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;命中数分母为 9(九项基准)。上表为模型级 ' +
         ms.length + ' 条,下方为全部 config 明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -971,7 +997,7 @@
         (src.license ? ' · ' + esc(src.license) : "") + '</div>';
   }
 
-  // ===== 7) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计分组之一,权重 12%) =====
+  // ===== 7) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计分组之一,权重 10%) =====
   // 源站按推理强度分档多次测试;data/arenaofbias.js 已是每模型最高分档,表内展示 Elo 与源站统计字段。
   function renderArenaofbias() {
     var src = D.src.arenaofbias || {};
@@ -1026,7 +1052,7 @@
         '「档位」= 该模型在源站的配置(推理强度)条数;「暂定」表示源站标注有效比较不足 30 次。</div>' +
       '<div class="note-line"><b>入榜口径</b>同一模型按推理强度分档多次测试,主榜取<b>最高分那一档</b>(与源站主榜一致);' +
         '源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)已剔除。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(权重 12%,「第三方实测」组)与命中数,计分组共 7 组;' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(权重 10%,「第三方实测」组)与命中数,计分组共 9 组;' +
         '本页展示 ' + ms.length + ' 个模型' +
         (st.votes != null ? '、源站快照 ' + esc(st.votes) + ' 次有效比较' : '') +
         (st.tasks != null ? ' / ' + esc(st.tasks) + ' 道题' : '') + '。</div>' +
@@ -1035,7 +1061,7 @@
         (src.url ? ' · <a href="' + esc(src.url) + '" target="_blank" rel="noopener">公开 API ↗</a>' : '') + '</div>';
   }
 
-  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 9%) =====
+  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 8%) =====
   // 主榜为模型级条目(每模型取总分最高的「档位 × harness」配置),config 明细另附折叠表。
   function renderAicodingdaily() {
     var src = D.src.aicodingdaily || {};
@@ -1121,7 +1147,7 @@
         '主办方为独立第三方(非被评厂商),故仍计入综合分,但按站内判据压低权重。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>均为<b>每 prompt</b> 平均值(非每模型总测试成本);源站对 ' +
         ms.filter(function (m) { return m.costUsd == null; }).length + ' 个模型未给成本(显示「—」),这些条目不进散点图。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 9%)与命中数(分母 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 8%)与命中数(分母 ' +
         CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,下方为全部实测配置明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -1413,7 +1439,7 @@
   function tbNoteHtml(meta) {
     var s = D.src[meta.srcKey] || {};
     return '来源:' + esc(tbVerUrl(meta)) + ' · 更新 ' + esc(s.updated || "") + ' · ' + meta.tasks +
-      ',得分越高越好。三版合并为一个基准组计入总览综合分(「榜单基准」组,权重 11%)与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
+      ',得分越高越好。三版合并为一个基准组计入总览综合分(「榜单基准」组,权重 9%)与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
       '其中 2.1 为厂商发布/归一化自报分口径,与 4.0/3.0 的官方 agent×model 解决率不同。';
   }
   // 柱状图条目标签:2.1 为模型级数据无 agent 字段,以「—」占位
@@ -1503,7 +1529,7 @@
       (v10At ? ' · v1.0 历史快照(' + esc(v10At) + ')' : '') +
       ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
       (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
-      '。本榜属「榜单基准」组,计入总览综合分(权重 16%)与命中数。');
+      '。本榜属「榜单基准」组,计入总览综合分(权重 14%)与命中数。');
     // 1) Terminal-Bench 多版本(4.0/3.0/2.1):合并为单一章节,章节内切换版本查看(默认 4.0 主榜);
     //    多版本仍合并为一个基准组计入总览,优先以最高版本为代表
     html += authSectionHtml("Terminal-Bench", "终端命令行任务 · 计入总览 · 版本切换", tbVerUrl(tbMeta(authTbVer)),

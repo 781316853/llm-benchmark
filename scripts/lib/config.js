@@ -58,7 +58,7 @@ module.exports = {
   // 每个 src 标签对应一个层级;各源合并时按标签查此表定级(见 scripts/lib/mergeByTier.js)。
   srcTiers: {
     official: 1,     // 基准官方榜(tbench.ai / datacurve.ai / benchcad GitHub leaderboard.json)
-    selftest: 1,     // 站主实测(llm2014)与官方竞技场/静态站(arena_webdev / arenaofbias)
+    selftest: 1,     // 站主实测(llm2014)与官方竞技场/数据集(arena_webdev / arenaofbias / arena_agent)
     paper: 2,        // 基准作者论文评测表(arxiv)
     datalearner: 2,  // 厂商官方发布成绩转录(datalearner 详情页内嵌 results JSON,evidence 带出处)
     "qwen-official": 2, // Qwen 官方博客/模型卡/技术报告人工转录(种子层,仅补缺,见 scripts/lib/official-seeds.js)
@@ -119,6 +119,18 @@ module.exports = {
       url: "https://api.arenaofbias.icu/api/leaderboard?by=config",
       boardUrl: "https://gallery.arenaofbias.icu/#/leaderboard",
       host: "api.arenaofbias.icu", src: "selftest"
+    },
+    arena_agent: {
+      // Agent Arena(LMArena,arena.ai/leaderboard/agent):真实智能体会话的净提升榜。
+      // 官方站有 Cloudflare 防护(直抓 403);官方发布排行榜数据集 lmarena-ai/leaderboard-dataset,
+      // agent 子集为 parquet(IPS 净提升、CI、会话数、观测数),主源取本机可达的 ModelScope 镜像,
+      // HF 同内容备源。⚠ 不用 m.aitntnews.com 的 HTML 快照:它丢失负分符号(见 sources/arena_agent.js)。
+      // 渠道:数据集由榜单主办方 LM Arena 自己发布(T1 口径,无厂商发布渠道)。
+      url: "https://modelscope.cn/api/v1/datasets/lmarena-ai/leaderboard-dataset/resolve/master/agent/latest-00000-of-00001.parquet",
+      fallbackUrl: "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/resolve/main/agent/latest-00000-of-00001.parquet",
+      datasetUrl: "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+      officialUrl: "https://arena.ai/leaderboard/agent",
+      host: "modelscope.cn", src: "selftest"
     },
     // ===== 权威基准测试(「权威基准测试」标签页)=====
     // Terminal-Bench(4.0/3.0/2.1)与 NL2Repo 计入总览/综合分/命中数,其余仅在权威页展示。
@@ -435,8 +447,10 @@ module.exports = {
       //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
-      //     与主基准的原生量纲不可比,同样排除。
-      excludedSources: ["arena_webdev", "arenaofbias", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "vals_vibe_code", "vals_vcb", "vals_codemigration"]
+      //     与主基准的原生量纲不可比,同样排除;
+      //   arena_agent 为相对 Arena 基线的净提升 %(可为负,约 -20~+21),与百分制通过率不同量纲,
+      //     混算会产生假告警,同样排除(仍计入综合分,由榜内稳健标准分定标)。
+      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "vals_vibe_code", "vals_vcb", "vals_codemigration"]
     },
     completeness: {
       // 每条记录必填字段
@@ -454,8 +468,10 @@ module.exports = {
       // AI Coding Daily 源站按周更新:超过 7 天 warn、超过 14 天 alert。
       // Vals AI 三个榜(Vibe Code / VCB-1-100 / Code Migration)按新模型批次更新(非每日),
       // 留更宽缓冲:超过 14 天 warn、超过 30 天 alert。
+      // Agent Arena 官方数据集按批次发布(历史快照间隔 1~8 天),超过 7 天 warn、超过 14 天 alert。
       perSource: {
         aicodingdaily: { warnAgeDays: 7, alertAgeDays: 14 },
+        arena_agent: { warnAgeDays: 7, alertAgeDays: 14 },
         vals_vibe_code: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_vcb: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 }

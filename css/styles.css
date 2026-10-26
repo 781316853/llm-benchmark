@@ -110,6 +110,7 @@
   --bench-apex: #6FD8A8;
   --bench-modeldial: #E8B34D;
   --bench-webdev: #F58C6E;
+  --bench-agentarena: #A3E635;
   --bench-llm: #8E9BFF;
   --bench-arenaofbias: #4FD1D9;
   --bench-aicodingdaily: #E0A8D8;
@@ -271,6 +272,8 @@
   --bench-apex: #2F6B4F;
   --bench-modeldial: #8A6A1F;
   --bench-webdev: #A24E2C;
+  /* Agent Arena 榜色:黄绿 —— 与 WebDev 橙红、Vibe Code 黄、Apex 薄荷绿按色相/明度分档 */
+  --bench-agentarena: #5E7A1E;
   --bench-llm: #4F5FA8;
   --bench-arenaofbias: #2E7068;
   /* AI Coding Daily 榜色:紫红 —— 与 HLE 的粉(#9B4F72)、Terminal-Bench 的灰紫(#6B5580)按色相/明度分档 */
@@ -629,6 +632,7 @@ a:hover { text-decoration: underline; }
 .bv-apex { --bv-color: var(--bench-apex); }
 .bv-modeldial { --bv-color: var(--bench-modeldial); }
 .bv-webdev { --bv-color: var(--bench-webdev); }
+.bv-agentarena { --bv-color: var(--bench-agentarena); }
 .bv-llm { --bv-color: var(--bench-llm); }
 .bv-arenaofbias { --bv-color: var(--bench-arenaofbias); }
 .bv-aicodingdaily { --bv-color: var(--bench-aicodingdaily); }
@@ -1196,8 +1200,10 @@ body {
    门槛自 1000px 上调到 1200px:2026-10-19 新增「AI Coding Daily」计分列后,矩阵整表自然宽
    由 1043px 增至 1126px,而 1100px 视口下容器只有 1036px,铺开会顶出整页横向滚动。
    2026-10-20 模型列放宽到 198px(名称与徽标分行后,「DeepSeek V4.1 Flash 1017」不再折行),
-   整表自然宽约 1202px,门槛再上调到 1270px,覆盖容器仍未放开的 1201–1266px 区间。 */
-@media (max-width: 1270px) {
+   整表自然宽约 1202px,门槛再上调到 1270px,覆盖容器仍未放开的 1201–1266px 区间。
+   2026-10-26 新增「Agent Arena」计分列后,13px 字号下整表自然宽约 1320px,1280–1380px
+   视口容器仍放不开,门槛上调到 1400px(该断点下同时降到 12px 字号/7px 内边距,自然宽约 1290px)。 */
+@media (max-width: 1400px) {
   .matrix-section .table-wrap { overflow-x: auto; }
   #matrixTable { font-size: 12px; }
   #matrixTable th, #matrixTable td { padding: 7px; }
