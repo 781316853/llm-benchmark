@@ -159,11 +159,20 @@
   // Elo 原值(约 1079-1692)存于 score 供矩阵列展示;norm 供综合分主基准组使用。
   function webdev() {
     var src = window.ARENA_WEBDEV || { models: [] };
+    // 榜内名次:源站快照未给 rank 字段,按原始条目(模型 × 推理档位)Elo 降序计算,
+    // 同分并列取最小名次(competition rank);下方按 canonical 取最高分那条,其名次即该模型在该榜的实际序号
+    var rawRank = {}, raws = src.models.map(function (m, i) { return { i: i, score: m.score }; })
+      .sort(function (a, b) { return b.score - a.score; });
+    var prevScore = null, prevRank = 0;
+    raws.forEach(function (x, pos) {
+      var r = (prevScore != null && x.score === prevScore) ? prevRank : pos + 1;
+      rawRank[x.i] = r; prevScore = x.score; prevRank = r;
+    });
     var best = {};
-    src.models.forEach(function (m) {
+    src.models.forEach(function (m, i) {
       var c = canon(m.name);
       if (!best[c.id] || m.score > best[c.id].score) {
-        best[c.id] = Object.assign({}, m, { canon: c });
+        best[c.id] = Object.assign({}, m, { canon: c, rank: rawRank[i] });
       }
     });
     var list = Object.keys(best).map(function (k) { return best[k]; });
@@ -548,16 +557,16 @@
     if (lm) {
       lm.rows.forEach(function (r) {
         var e = ensure(r.canon);
-        // 取首现(CSV 行序最优排名),不再按最高分覆盖
+        // 取首现(CSV 行序最优排名),不再按最高分覆盖;rank 为源站行序名次(0 基,展示时 +1)
         if (!e.llm) {
-          e.llm = { norm: r.norm, name: r.model };
+          e.llm = { norm: r.norm, name: r.model, rank: r.norm != null ? r.rank + 1 : null };
         }
       });
     }
     // Code Arena · WebDev:同名取最高 Elo(前端已做快照内 min-max 归一化到 0-100)
     webdev().forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm };
+      if (!e.webdev || m.score > e.webdev.score) e.webdev = { score: m.score, ci: m.ci, votes: m.votes, org: m.org, name: m.name, norm: m.norm, rank: m.rank };
     });
     // Agent Arena:同名取最高净提升(可为负);CI/会话数/观测数/许可供矩阵悬浮
     arenaAgent().forEach(function (m) {
@@ -592,7 +601,7 @@
           score: m.overall, norm: m.overall, overall: m.overall,
           backend: m.backend, frontend: m.frontend, knowledge: m.knowledge,
           elapsedMs: m.elapsedMs, costUsd: m.costUsd, configs: m.configs,
-          name: m.model, effort: m.effort, provider: m.provider
+          name: m.model, effort: m.effort, provider: m.provider, rank: m.rank
         };
     });
     // AI Coding Daily:总分 0-70(四轴之和);源站 models[] 已是模型级最优 config,

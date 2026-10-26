@@ -720,6 +720,9 @@ a:hover { text-decoration: underline; }
 .tier-na { color: var(--text-tertiary); margin-right: 2px; }
 .cell-cost { font-size: var(--fs-2xs); color: var(--text-tertiary); margin-left: 3px;
   font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+/* 榜内名次徽标:第三方实测各列数值前的小号 #N,灰字让榜色数值仍是主视觉 */
+.cell-rank { font-size: var(--fs-2xs); font-weight: 600; color: var(--text-tertiary); margin-right: 4px;
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
 .tier-Sp { background: linear-gradient(135deg, var(--tier-Sp-a), var(--tier-Sp-b)); }
 .tier-S  { background: linear-gradient(135deg, var(--tier-S-a),  var(--tier-S-b)); }
 .tier-Ap { background: linear-gradient(135deg, var(--tier-Ap-a), var(--tier-Ap-b)); }

@@ -137,6 +137,14 @@
     if (n === 0) n = 0;
     return (n > 0 ? "+" : "") + n.toFixed(1) + "%";
   }
+  // 榜内名次徽标:第三方实测各列在数值前显示该模型在该榜的实际序号(#N)。
+  // 名次取源站榜单序号(WebDev 源站无 rank 字段,按原始条目 Elo 并列计名次);
+  // total 为榜内上榜条目数,放悬浮提示避免挤占窄列
+  function rankBadge(rank, board, total) {
+    if (rank == null || !isFinite(rank)) return "";
+    var tip = board + " 榜内名次 #" + rank + (total ? " / 共 " + total + " 条上榜记录" : "");
+    return '<span class="cell-rank" title="' + esc(tip) + '">#' + rank + '</span>';
+  }
 
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
   function lmCellHtml(c) {
@@ -505,6 +513,18 @@
       if (idx != null && idx > bestValueIdx) { bestValueIdx = idx; bestValueRow = r; }
     });
     // 未参与排名的行(命中 <4 榜)序号列固定「—」;参与排名的行取全量排名序中的真实名次
+    // 第三方实测各榜的上榜条目数:名次徽标(#N)悬浮提示的分母,直接取各源榜单条目数
+    var rsrc = function (k) { return (D.src[k] || {}).models || []; };
+    var llmRows = D.llmMonth(state.llmMonth || D.llmMonths().slice(-1)[0]);
+    var RANK_TOTAL = {
+      modeldial: rsrc("modeldial").length,
+      webdev: rsrc("webdev").length,
+      agentarena: rsrc("arena_agent").length,
+      llm: llmRows ? llmRows.rows.length : 0,
+      arenaofbias: rsrc("arenaofbias").length,
+      aicodingdaily: rsrc("aicodingdaily").length,
+      vibecode: rsrc("vals_vibe_code").length
+    };
     // 亿模亿样单元格:Elo 原值上该榜数据色 + ±95% 区间(灰字元数据,与 WebDev 列同款分工);
     // 悬浮补排名/推理强度/比较场次/胜率/档位数与源站「暂定」标记
     var biasCell = function (r) {
@@ -516,7 +536,8 @@
       if (m.winRate != null) meta.push("胜率 " + (Math.round(m.winRate * 1000) / 10) + "%");
       if (m.configs) meta.push(m.configs + " 个档位取最高");
       if (m.provisional) meta.push("源站标「暂定」(有效比较 < 30 次)");
-      return '<span class="bv bv-arenaofbias" title="' + esc(meta.join(" · ")) + '">' + m.score + '</span>' +
+      return rankBadge(m.rank, "亿模亿样", RANK_TOTAL.arenaofbias) +
+        '<span class="bv bv-arenaofbias" title="' + esc(meta.join(" · ")) + '">' + m.score + '</span>' +
         (typeof m.interval === "number" ? '<span class="cell-cost">±' + m.interval + '</span>' : "");
     };
     var html = rows.map(function (r) {
@@ -551,6 +572,8 @@
       var wd = r.webdev ? r.webdev.score : null;
       var wdCi = (r.webdev && typeof r.webdev.ci === "number")
         ? '<span class="cell-cost">±' + r.webdev.ci + '</span>' : "";
+      var wdRank = (r.webdev && r.webdev.rank != null)
+        ? rankBadge(r.webdev.rank, "Code Arena · WebDev", RANK_TOTAL.webdev) : "";
       // Agent Arena 单元格:净提升 %(带符号,可为负) + ±95% 区间;悬停补官方名次/会话数/观测数/许可
       var aaHtml = "—";
       if (r.agentarena) {
@@ -560,7 +583,8 @@
         if (aa.observations != null) aaParts.push(aa.observations.toLocaleString("en-US") + " 次信号观测");
         if (aa.license) aaParts.push(aa.license);
         aaParts.push("净提升相对 Arena 基线,可为负;同一模型取最高分档");
-        aaHtml = '<span class="bv bv-agentarena" title="' + esc(aaParts.join(" · ")) + '">' + fmtSignedPct(aa.score) + '</span>' +
+        aaHtml = rankBadge(aa.srcRank != null ? aa.srcRank : aa.rank, "Agent Arena", RANK_TOTAL.agentarena) +
+          '<span class="bv bv-agentarena" title="' + esc(aaParts.join(" · ")) + '">' + fmtSignedPct(aa.score) + '</span>' +
           (typeof aa.ci === "number" ? '<span class="cell-cost">±' + aa.ci + '</span>' : "");
       }
       // Terminal-Bench 单元格:解决率% + 版本徽标 + agent/effort 小字(title 悬浮);悬停显示版本/Agent 与强度
@@ -585,7 +609,8 @@
         if (r.modeldial.elapsedMs != null) mdParts.push("耗时 " + fmtDur(r.modeldial.elapsedMs));
         if (r.modeldial.costUsd != null) mdParts.push("费用 " + fmtUsd(r.modeldial.costUsd) + "(后端轴口径)");
         if (r.modeldial.configs) mdParts.push(r.modeldial.configs + " 个配置取最高");
-        mdHtml = '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
+        mdHtml = rankBadge(r.modeldial.rank, "ModelDial", RANK_TOTAL.modeldial) +
+          '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
       }
       // AI Coding Daily 单元格:总分(0-70);悬浮显示四轴分项/推理档位/harness/耗时/费用
       var acdHtml = "—";
@@ -600,7 +625,8 @@
         if (ac.timeSec != null) acParts.push("耗时 " + fmtDur(ac.timeSec * 1000) + "/prompt");
         if (ac.costUsd != null) acParts.push("费用 " + fmtUsd(ac.costUsd) + "/prompt");
         if (ac.configs) acParts.push(ac.configs + " 个配置取最高");
-        acdHtml = '<span class="bv bv-aicodingdaily" title="' + esc(acParts.join(" · ")) + '">' + ac.score + '</span>' +
+        acdHtml = rankBadge(ac.rank, "AI Coding Daily", RANK_TOTAL.aicodingdaily) +
+          '<span class="bv bv-aicodingdaily" title="' + esc(acParts.join(" · ")) + '">' + ac.score + '</span>' +
           (ac.harness ? ' <span class="cell-cost">' + esc(ac.harness) + '</span>' : "");
       }
       // Vibe Code 单元格:准确率 %(以 OpenHands harness 为主);悬浮显示 harness/每测试成本/耗时
@@ -610,7 +636,8 @@
         if (vc.harness) vcParts.push("harness " + vc.harness);
         if (vc.costPerTest != null) vcParts.push("成本 " + fmtUsd(vc.costPerTest) + "/测试");
         if (vc.latencyS != null) vcParts.push("耗时 " + fmtDur(vc.latencyS * 1000) + "/测试");
-        vcHtml = '<span class="bv bv-vibecode" title="' + esc(vcParts.join(" · ")) + '">' + vc.score + '</span>';
+        vcHtml = rankBadge(vc.rank, "Vibe Code", RANK_TOTAL.vibecode) +
+          '<span class="bv bv-vibecode" title="' + esc(vcParts.join(" · ")) + '">' + vc.score + '</span>';
       }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
@@ -673,10 +700,10 @@
         // 后续 llm2014/亿模亿样 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
         // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
-        '<td class="num">' + (wd != null ? '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
+        '<td class="num">' + (wd != null ? wdRank + '<span class="bv bv-webdev">' + wd + '</span>' + wdCi : "—") + '</td>' +
         // Agent Arena 列:净提升带符号上该榜数据色,后随 ±95% 半宽(灰字)
         '<td class="num">' + aaHtml + '</td>' +
-        '<td class="num">' + (lm === "-" ? lm : '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
+        '<td class="num">' + (lm === "-" ? lm : rankBadge(r.llm.rank, "llm2014", RANK_TOTAL.llm) + '<span class="bv bv-llm">' + lm + '</span>') + '</td>' +
         // 亿模亿样列:Elo 原值上该榜数据色,后随 ±95% 区间(灰字)
         '<td class="num">' + biasCell(r) + '</td>' +
         // AI Coding Daily 列(「第三方实测」组):总分 0-70 上该榜数据色,后随 harness 小灰字(元数据)
@@ -698,7 +725,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;Vibe Code v1.1,从零构建 Web 应用、隐藏测试判定、以 OpenHands harness 为主,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;Vibe Code v1.1,从零构建 Web 应用、隐藏测试判定、以 OpenHands harness 为主,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
