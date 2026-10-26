@@ -9,7 +9,7 @@ window.VALSVCB = {
   'officialUrl': 'https://www.vals.ai/benchmarks/vcb-1-100',
   'version': '1.0',
   'updated': '2026-10-17',
-  'refreshedAt': '2026-10-25 21:48',
+  'refreshedAt': '2026-10-26 14:36',
   'harnesses': [
     'OpenHands'
   ],
