@@ -15,7 +15,7 @@ window.ARENA_AGENT = {
   'datasetUrl': 'https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset',
   'url': 'https://modelscope.cn/api/v1/datasets/lmarena-ai/leaderboard-dataset/resolve/master/agent/latest-00000-of-00001.parquet',
   'updated': '2026-10-23',
-  'refreshedAt': '2026-10-27 04:03',
+  'refreshedAt': '2026-10-27 07:59',
   'version': 'overall',
   'metric': 'Net improvement (%)',
   'desc': 'LMArena Agent Arena:以 IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的净提升,可为负;另记 95% 区间、独立会话数与会话内信号观测数。分数为社区真实使用数据,不是固定题库的通过率。',
