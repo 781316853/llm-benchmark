@@ -142,7 +142,7 @@ window.QUALITY = {
       'id': 'frontiercode',
       'name': 'FrontierCode',
       'status': 'ok',
-      'modelCount': 47,
+      'modelCount': 46,
       'updated': '2026-10-27',
       'ageDays': 0,
       'completeness': 1,
@@ -823,9 +823,9 @@ window.QUALITY = {
     },
     'frontiercode': {
       'rate': 1,
-      'total': 47,
-      'complete': 47,
-      'modelCount': 47,
+      'total': 46,
+      'complete': 46,
+      'modelCount': 46,
       'missingFields': {},
       'flag': 'ok'
     },
