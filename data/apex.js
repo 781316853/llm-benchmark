@@ -11,10 +11,10 @@ window.APEX = {
   'url': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
   'officialUrl': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
   'updated': '2026-10-27',
-  'refreshedAt': '2026-10-28 03:33',
+  'refreshedAt': '2026-10-28 07:55',
   'stats': {
     'tasks': 400,
-    'entries': 73
+    'entries': 74
   },
   'benchmarkId': 'apex-v1',
   'harness': 'singleshot_agent',
@@ -868,6 +868,19 @@ window.APEX = {
       'rank': 65
     },
     {
+      'model': 'Nemotron 3.5 Bolt',
+      'org': 'NVIDIA',
+      'score': 52.7,
+      'pass1': 7.5,
+      'meanErr': 2.5,
+      'pass1Err': 2.1,
+      'effort': 'high',
+      'date': null,
+      'n': 1600,
+      'src': 'official',
+      'rank': 66
+    },
+    {
       'model': 'GLM-5.1',
       'org': 'Zhipu',
       'score': 52.4,
@@ -878,7 +891,7 @@ window.APEX = {
       'date': '2026-03-27',
       'n': 1576,
       'src': 'official',
-      'rank': 66
+      'rank': 67
     },
     {
       'model': 'Kimi K2',
@@ -891,7 +904,7 @@ window.APEX = {
       'date': '2025-11-06',
       'n': 1517,
       'src': 'official',
-      'rank': 67
+      'rank': 68
     },
     {
       'model': 'DeepSeek-V3.2',
@@ -904,7 +917,7 @@ window.APEX = {
       'date': '2025-12-01',
       'n': 1599,
       'src': 'official',
-      'rank': 68
+      'rank': 69
     },
     {
       'model': 'Qwen3.5',
@@ -917,7 +930,7 @@ window.APEX = {
       'date': '2026-02-16',
       'n': 1600,
       'src': 'official',
-      'rank': 69
+      'rank': 70
     },
     {
       'model': 'Sonnet 5',
@@ -930,7 +943,7 @@ window.APEX = {
       'date': '2026-06-30',
       'n': 1600,
       'src': 'official',
-      'rank': 70
+      'rank': 71
     },
     {
       'model': 'Gemma 4 31B',
@@ -943,7 +956,7 @@ window.APEX = {
       'date': '2026-03-31',
       'n': 1574,
       'src': 'official',
-      'rank': 71
+      'rank': 72
     },
     {
       'model': 'GPT-OSS-120B',
@@ -956,7 +969,7 @@ window.APEX = {
       'date': '2025-08-05',
       'n': 1600,
       'src': 'official',
-      'rank': 72
+      'rank': 73
     },
     {
       'model': 'MiniMax-M2.7',
@@ -969,7 +982,7 @@ window.APEX = {
       'date': null,
       'n': 1600,
       'src': 'official',
-      'rank': 73
+      'rank': 74
     }
   ]
 };

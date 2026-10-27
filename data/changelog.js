@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-10-27',
-  'refreshedAt': '2026-10-28 03:33',
+  'refreshedAt': '2026-10-28 07:55',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,17 +19,21 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '0.165.0',
-          'title': 'rust-v0.165.0',
+          'title': '0.165.0',
           'date': '2026-10-27',
-          'dateRaw': '2026-10-27T18:19:20Z',
-          'tags': [],
+          'dateRaw': '2026-10-27T20:09:38Z',
+          'tags': [
+            'New Features',
+            'Bug Fixes',
+            'Changelog'
+          ],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.165.0',
-          'body': '版本0.165.0',
-          'h': '82053c10'
+          'body': '## 新功能\n\n- 添加了内置的Google Cloud Vertex AI提供程序，配置为`model_provider = \'gcp\'`。(# 56265)\n- 将GPT-6.1 TERRA添加到型号目录。(# 57337)\n- 将存储库筛选器添加到会话选取器，将目录分组添加到代理命令中心，以便更轻松地在链接的工作树中导航会话。（ # 56308 ）\n- 向应用服务器API添加了实验性附加线程分叉。(# 56351)\n- 默认情况下，对于支持的模型，对话期间启用的推理工作量会发生变化。（ # 56163 ）\n- 默认情况下为全新配置文件启用内存v2 ，并添加了对导入外部代理内存的支持。(# 56211, # 56414)\n\n## 错误修复\n\n- 修复了新的TUI会话，以便在未提供显式覆盖时向服务器的默认审批审核者致敬。(# 56090)\n- 保持TUI首选项可编辑，并在执行设置无效时立即适用。（ # 56091 ）\n- 本地响应期货掉线时取消远程MCP工具请求。（ # 56132 ）\n- 防止排队代理消息在中断或切换到计划模式后重新启动工作。(# 56330)\n- 当提供程序报告找不到模型时，停止重试，保留其错误消息。(# 56445)\n- 弥补了市场URL验证缺口，该缺口可能允许Git连接到与根据允许的模式检查的主机不同的主机。(# 56263)\n\n## 更新日志\n\n完整更新日志： https://github.com/openai/codex/compare/rust-v0.164.0... rust-v0.165.0\n\n- # 56081缓存解密的Codex身份验证和托管机密@ celia-oai\n- # 56090新鲜TUI启动@ etraut-openai上荣耀服务器审批人默认\n- # 56091执行设置无效时保持TUI首选项可编辑@ etraut-openai\n- # 56097准备TUI启动接受多个后端会话@ bc-openai\n- # 56124将Guardian审阅者事件转发给父原始事件订阅者@ jif-oai\n- # 56127避免在账号刷新时阻止EMA身份验证状态检查@ jif-oai\n- # 56132响应期货掉线时取消MCP工具请求@ rhan-oai\n- # 56133最终答案为空后推迟代理邮件@ eknight-oai\n- # 56139修复MCP auth status test的IdP OAuth配置@ jif-oai\n- # 56153保留安全企业MCP认证错误详情@ jif-oai\n- # 56154在允许规则@ olliem-oai之前添加托管网络审查域\n- # 56163默认启用推理工作覆盖@ felixxia-oai\n- # 56182将AWS SigV4签名添加到网络代理MITM hooks @ viyatb-oai\n- # 56210稳定市场分期清理测试@ felixxia-oai\n- # 56211 v2 @ jif-oai默认全新内存配置文件\n- # 56214从WSL DrvFS detection @ felixxia-oai中删除`u64`转换\n- # 56220在Windows沙盒清单测试中使用cargo_bin @ felixxia-oai\n- # 56222将Bazel CI设置整合到`prepare-bazel-ci` @ anp-oai\n- # 56224跨分页简历配置加载重用当前模型上下文@ charliemarsh-oai\n- # 56233使OPUS编码器测试时间戳遵循样本时间@ goodman-oai\n- # 56234仅在钩子接受输入@ abhinav-oai后发出提示遥测\n- # 56236让代码模式yield/resume测试yield在阶段之间显式@ goodman-oai\n- # 56246在Bazel CI设置操作@ anp-oai中将Bazelisk颠簸至1.30.0\n- # 56247在专用测试模块@ dkovalenko-oai下整合Rust单元测试\n- # 56248将CI中的紫外线提升到0.13.5 ，并在anp-oai上发布工作流程\n- # 56250恢复线程时避免重复设置检查点@ owenlin0\n- # 56261隔离V8源代码依赖项及其C + +运行时设置@ seanh-oai\n- # 56263拒绝HTTP (S)市场URL userinfo @ willwang-openai中的反斜杠\n- # 56265添加内置Google Cloud Vertex AI提供商@ celia-oai\n- # 56266跨运行时叠加层保留MCP禁用原因@ mzeng-openai\n- # 56272将Python SDK模型生成升级到datamodel-code-generator 0.64.0 @ anp-oai\n- # 56274在加载器生命周期测试中等待云配置刷新取消@ goodman-oai\n- # 56277在AWS SigV4签名@ viyatb-oai中支持绑定的请求主体\n- # 56278为MCP调用@ viyatb-oai添加协商网络策略元数据支持\n- # 56280将连续成绩单提示分组到一个背景块@ bc-openai\n- # 56284线程发起人@ kennyyi-oai的Scope模型目录和缓存\n- # 56286 Bump `@ modelcontextprotocol/sdk` to `1.32.0` @ anp-oai\n- # 56288引脚Linux工件签名到Cosign v3.1.4 @ anp-oai\n- # 56290使用uv @ anp-oai锁定Python发布构建工具\n- # 56292修复MCP取消测试以使用元数据回调@ anp-oai\n- # 56293在顶点测试中使用固定令牌身份验证夹具@ anp-oai\n- # 56295从ChatGPT authentication @ smurching-oai解耦托管配置加载\n- # 56297标记内置虚拟凭据并加强冲突检查@ viyatb-oai\n- # 56301为MITM SigV4请求@ viyatb-oai添加TLS转发测试\n- # 56302将挂钩配置添加到环境附件@ andrewgu-oai\n- # 56304添加对环境范围托管挂钩@ andrewgu-oai的支持\n- # 56308在TUI @ bc-openai中单独的目录和存储库作用域\n- # 56309支持model-specific writable-root权限措辞@ goodman-oai\n- # 56312在推出跟踪@ cassirer-openai中跟踪接受的对话历史记录\n- # 56313将模型目录覆盖应用于历史记录、笔记和上下文工具@ rhan-oai\n- # 56314为自定义配置服务器@ smurching-oai添加托管配置加载器\n- # 56330让代理消息唤醒尊重中断和计划模式@ alishobeiri-oai\n- # 56342跨请求快照匹配推出跟踪图像内容@ cassirer-openai\n- # 56343在其拥有的executors上运行环境钩子@ andrewgu-oai\n- # 56351添加实验附加螺纹叉@ btraut-openai\n- # 56364允许调用者设置线程源进行采样@ keyz\n- # 56371使Guardian审核超时可配置@ vivi\n- # 56414外部代理内存导入支持内存v2 @ jif-oai\n- # 56439将“ctutils”从0.4.2更新为0.4.5 @ felixxia-oai\n- # 56445将未找到的模型提供程序错误视为终端故障@ charliemarsh-oai\n- # 56453让Realtime V2后台代理转向测试确定性@ felixxia-oai\n- # 56454使沙盒挂载清理测试允许文件描述符重用@ felixxia-oai\n- # 56459添加Guardian V3功能配置@ felixxia-oai\n- # 56460添加Guardian v3本地板助手@ felixxia-oai\n- # 56461为留言板添加无声追加支持@ felixxia-oai\n- # 56462使用合并防止内存导入@ jif-oai\n- # 56465添加实验线程内存摘要读数@ jif-oai\n- # 57337 [0.165.0-alpha.1.2] Backport GPT-6.1 TERRA to the model catalogs @ shijie-oai',
+          'h': '3f3230b8'
         },
         {
           'version': '0.165.0-alpha.1.2',
@@ -1214,8 +1218,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
+        {
+          'version': '2.1.312',
+          'title': 'v2.1.312',
+          'date': '2026-10-27',
+          'dateRaw': '2026-10-27T20:24:20Z',
+          'tags': [],
+          'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.312',
+          'body': '## 有哪些变化\n\n- 将“oidc.user_id_claim”添加到Claude应用程序网关，以通过“sub”以外的id_token声明（例如Microsoft Entra ID的“oid” ）识别人员\n- 添加了单击发送：在全屏幕中，单击队列消息下的“立即发送”提示会立即发送，就像其密钥一样\n- 修复了从VS Code扩展登录后未为会话的其余部分获取托管设置和组织策略的问题\n- 修复了Claude在仅看到子目录的开头后覆盖子目录中非常大的CLAUDE.md、规则文件或@ -included文件的问题；立即编写要求Claude读取所有内容或进行适当的编辑\n- 修复了每个目录和“路径” ：在深入git存储库的Bash “cd”后未找到技能\n- 修复了一个罕见情况，即下次恢复会话时，终端中恢复会话后的第一个回复可能丢失\n- 修复了具有无效名称的命令停止加载所有命令，这可能会使“claude -p”没有输出\n- 修复了在清理旧会话文件的同时运行时， “pdftoppm failed: Could not write image”的PDF页面上的读取工具有时会失败的问题\n- 修复了微调器、OpenTelemetry “投入量”值以及在模型应用之前在任务期间命名新选择的投入量级别的成绩单；它们现在显示有效级别\n- 修复了“/model”和“/effort”缓存警告，即重读等待您的下一条消息； Claude工作时所做的更改可以更快地触发它\n- 修复了当最后一条消息仅提及句子中间有等待您的项目时，某些会话显示为等待您的问题\n- 修复了代理视图在退出前使用Ctrl + C清除后在下次启动时还原输入文本的问题\n- 修复了从空的“!”输入以Ctrl + D退出后，代理视图在shell模式下重新打开的问题\n- 修复了Vim模式`d`、`c`和`y` ，其`gj`或`gk`计数大于左侧删除或复制文本的行数；与Vim一样，它们现在只移动光标\n- 修复了“/verify”在“/help”和“/”命令菜单中显示Claude的长描述，而不是简短的描述\n- 改进了提示的投入量指标：现在，任务中间所做的更改表明它可能会等待您的下一条消息，当它不再适用时，备注会清除\n- 改进了云会话中的WebFetch错误：未解析的主机现在被解释为可能在允许的网络域之外，因此Claude将主机命名为允许\n- 将Bedrock、Vertex、Foundry和Mantle更改为使用Claude Code无法识别的型号名称的较短系统提示，例如自定义部署名称和推断配置文件ARN ，即使它们位于Sonnet或Haiku前面；设置“CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT = 0”以保留完整提示\n- 更改了标记消息后的自动模型切换，以覆盖Claude Code无法识别的模型名称，例如自定义部署名称；设置“CLAUDE_CODE_DISABLE_REFUSAL_FALLBACK = 1”以关闭它们\n- 更改了使用限制消息，将5小时窗口称为“5小时限制” ，而不是“会话限制”\n- 已更改从CLI启动的云会话，以从服务器获取其名称和分支名称\n- 将提示和代理挂钩更改为每个会话每次最多运行24个，包括子代理，加上最多12个等待时间超过事件超时的；低于1秒的“超时”现在计为1秒\n- 更改了子代理的“autoCompactWindow”以降低由“CLAUDE_CODE_AUTO_COMPACT_WINDOW”设置的窗口，在此之前它没有任何效果；它仍然从不提高该窗口\n- 更改了OpenTelemetry `mcp_server.name` ，以报告来自官方Anthropic市场的插件声明的固定URL远程MCP服务器的真实名称，而不是`custom`\n- 已更改Claude Code以停止发送“claude_code.safety_event” OpenTelemetry事件\n- [VSCode]修复了当您的组织的设置无法加载或在启动时被拒绝时，会话以裸退出代码结束的问题；选项卡现在显示原因，并提供重试或重新登录\n- [VSCode]更改后的使用限制重置为显示时钟时间（ “在下午3:10重置” ）并显示“5小时限制”\n- [云会话]在创建或编辑在云中运行的例程时，向模型选择器添加了投入量级别\n- [云会话]在云环境设置中的设置脚本框中添加了带有颜色、行号和复制按钮的Bash编辑器\n- [云会话]改进了Claude将存储库添加到云会话时显示的步骤：现在打开它会显示一个简短的表格，而不是原始JSON\n- [云会话]修复了在云会话中发送失败后重新发送未更改的消息，有时会运行两次\n- [云会话]修复了一个失败的云环境创建，其错误仅显示为打开对话框外的吐司；它现在出现在对话框内\n- [云会话]修复了“例程”页面上例程菜单中的“编辑”在不打开其编辑对话框的情况下转到例程页面的问题\n- [远程控制]修复了未存档的远程控制会话在计算机重新连接之前显示为工作状态；它现在显示为空闲\n- [Claude Tag]改进了Claude Tag在Slack中的重试通知，以命名正在使用的模型，或者说达到了速率限制，而不是通用的API错误\n- [Claude Tag]修复了旧的私人Slack频道公开并获得新ID时， Claude Tag频道的开/关开关和代理设置回退到工作区默认设置的问题\n- [Claude Tag]修复了Slack中的Claude在网络访问权限设置为None的频道中未回复的问题\n- [Claude Tag]修复了Slack中的Claude有时在同一频道的另一个线程中回复时，在错误的线程中发布文件的问题\n- [代码审核]修复了当GitHub延迟交付推送事件时，代码审核审核过期的提交或根本没有提交；它现在审核拉取请求的当前提交',
+          'h': '6ae4240c'
+        },
         {
           'version': '2.1.311',
           'title': 'v2.1.311',
@@ -1233,8 +1247,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-10-23T23:39:00Z',
           'tags': [],
           'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.310',
-          'body': '## 有哪些变化\n\n- 在Bedrock、Vertex和Foundry上添加了监视器工具和插件监视器，以及禁用遥测或非必要流量时；长前景睡眠现在也被阻止\n- 修复了一些网关和兼容服务器拒绝“effort-2025-11-24” beta值或中途会话系统消息后失败的请求； Claude Code现在在没有它们的情况下重试\n- 修复了将“cleanupPeriodDays”设置为非常大的值时删除一些最近文件（如粘贴的图像）的后台清理问题\n- 修复了“Prompt is too long” （提示太长）错误后保持过多密集文本的对话（如base64或SVG ）的压缩，因此下一个请求可能会再次失败\n- 修复了文件读取权限提示不显示符号链接所指向的位置的问题\n- 修复了外部编辑器在长时间编辑后关闭时触发的问题自动继续超时\n- Windows ：修复了PreToolUse和PermissionRequest钩子在缺少Git Bash且钩子的命令仅为引用字符串（如引用路径）时允许工具调用的问题\n- 改进了工作目录之外的第一次读取之前的自动模式提示：它现在表示，当阻止这些读取时，会使shell命令请求权限\n- 当成绩单文件非常大时，改进了压缩期间非交互式会话（ “-p” ， Agent SDK ）的内存使用\n- 改进了带有“allow-passthrough”和“focus-events”的模组“Image” ，在Kitty、Ghostty和iTerm2 3.5+中使用全屏渲染，仅显示其“alt”文本\n- Linux ：改进了“/sandbox”和沙盒启动警告，以命名Ubuntu对用户命名空间的AppArmor限制，以及如何在阻止气泡包装启动沙盒时解除限制\n- 更改了MCP工具调用的错误，该调用在非交互式会话中超时，而服务器的引发未应答：它现在告诉Claude没有应答，并且不重复调用\n- [VSCode]已修复在计划审核卡的“发送反馈并继续计划”按钮上按Enter键批准计划而不是发送您的评论的问题\n- [VSCode]修复了从会话历史记录的Web选项卡打开的云会话上的“切换分支并继续”后显示“出错了”的面板\n- [云会话]为企业自定义角色添加了Claude Code云会话和远程控制权限，因此所有者可以按角色控制对每个角色的访问\n- [云会话]添加了“选择文件”按钮，用于从文件加载云环境的安装脚本\n- 【云会话】修复云环境编辑对话框中保存和归档失败，对话框内未显示错误\n- [云会话]修复了仅显示Toast的失败例程API令牌操作；错误现在显示在例程编辑对话框中\n- 【云会话】改进会话启动核对表，在滚动框中显示云环境的设置脚本输出\n- [云会话]已更改在管理员设置中打开云会话或远程控制，以请求确认并列出具有该权限的自定义角色\n- [云会话]将云环境对话框更改为从行中打开网络访问、设置脚本和环境变量，而不是一次列出每个编辑器\n- [Claude Tag]修复了Claude Tag以粗体、斜体或删除线形式发送时将“! restart”和“! help”等“!”命令视为普通消息的问题\n- [Claude Tag]修复了Claude Tag管理员频道和工作区页面在捆绑包列表的后台刷新失败时被加载错误替换的问题\n- [Claude Tag]修复了Claude Tag在管理员设置中的支出限制页面，报告在频道名称仍在加载时没有与筛选器匹配的频道\n- [代码审查]修复了代码审查管理部分在存储库列表刷新失败后隐藏其存储库和开关的问题\n- [Code Review]改进了Code Review管理员部分，以重试第一次加载，并在仍然失败时显示“重试”横幅',
-          'h': '8878dd50'
+          'body': '## What\'s changed\n\n- Added the Monitor tool and plugin monitors on Bedrock, Vertex, and Foundry, and when telemetry or nonessential traffic is disabled; long foreground sleeps are now blocked there too\n- Fixed requests failing behind some gateways and compatible servers that reject the `effort-2025-11-24` beta value or mid-conversation system messages; Claude Code now retries without them\n- Fixed background cleanup deleting some recent files, such as pasted images, when `cleanupPeriodDays` is set to a very large value\n- Fixed compaction after a \'Prompt is too long\' error keeping too much of a conversation with dense text, such as base64 or SVG, so the next request could fail again\n- Fixed file read permission prompts not showing where a symbolic link leads\n- Fixed a question\'s auto-continue timeout firing the moment the external editor closed after a long edit\n- Windows: Fixed PreToolUse and PermissionRequest hooks letting a tool call through when Git Bash is missing and the hook\'s command is only quoted strings, such as a quoted path\n- Improved auto mode\'s prompt before the first read outside the working directories: it now says when blocking those reads makes shell commands ask for permission\n- Improved memory use of non-interactive sessions (`-p`, Agent SDK) during compaction when the transcript file is very large\n- Improved a mod\'s `Image` to draw inside tmux with `allow-passthrough` and `focus-events` on, in kitty, Ghostty, and iTerm2 3.5+ with fullscreen rendering, where it showed only its `alt` text\n- Linux: Improved `/sandbox` and the sandbox startup warning to name Ubuntu\'s AppArmor restriction on user namespaces, and how to lift it, when it keeps bubblewrap from starting the sandbox\n- Changed the error for an MCP tool call that times out in a non-interactive session while the server\'s elicitation is unanswered: it now tells Claude that no answer came and not to repeat the call\n- [VSCode] Fixed pressing Enter on the plan review card\'s \'Send feedback and keep planning\' button approving the plan instead of sending your comments back\n- [VSCode] Fixed the panel showing \'Something went wrong\' after \'Switch branch & continue\' on a cloud session opened from Session history\'s Web tab\n- [Cloud sessions] Added Claude Code cloud sessions and Remote Control permissions to Enterprise custom roles, so Owners can control access to each by role\n- [Cloud sessions] Added a Choose file button to load a cloud environment\'s setup script from a file\n- [Cloud sessions] Fixed failed saves and archives in the cloud environment edit dialog showing no error inside the dialog\n- [Cloud sessions] Fixed failed routine API token actions showing only a toast; the error now appears in the routine edit dialog\n- [Cloud sessions] Improved the session start checklist to show a cloud environment\'s setup script output in a scrolling box\n- [Cloud sessions] Changed turning on Cloud sessions or Remote Control in admin settings to ask for confirmation and list the custom roles that have that permission\n- [Cloud sessions] Changed the cloud environment dialog to open network access, setup script and environment variables from rows instead of listing every editor at once\n- [Claude Tag] Fixed Claude Tag treating `!` commands such as `!restart` and `!help` as ordinary messages when sent in bold, italic or strikethrough\n- [Claude Tag] Fixed Claude Tag admin channel and workspace pages being replaced by a load error when a background refresh of the bundle list fails\n- [Claude Tag] Fixed Claude Tag\'s spend limits page in admin settings reporting that no channels match a filter while channel names are still loading\n- [Code Review] Fixed the Code Review admin section hiding its repositories and switches after a failed refresh of the repository list\n- [Code Review] Improved the Code Review admin section to retry the first load and show one Try again banner when it still fails'
         },
         {
           'version': '2.1.309',
@@ -3514,7 +3527,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '2.2.0',
@@ -8991,7 +9004,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '2.3.3',
@@ -9913,7 +9926,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '0.2.1-rc.3',
@@ -10425,7 +10438,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '0.4.11',
@@ -10735,7 +10748,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '1.37.0',
@@ -11367,7 +11380,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '3.4.1-3.4.4',
@@ -13308,7 +13321,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -13495,7 +13508,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '3.16.3',
@@ -13662,7 +13675,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '4.12.2',
@@ -14510,7 +14523,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-28 03:33',
+      'lastOkAt': '2026-10-28 07:55',
       'entries': [
         {
           'version': '5.9.3',

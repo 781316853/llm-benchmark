@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-10-27',
-  'overallScore': 0.956,
+  'overallScore': 0.954,
   'sources': [
     {
       'id': 'aicodingdaily',
@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'apex',
       'name': 'APEX-1',
       'status': 'ok',
-      'modelCount': 73,
+      'modelCount': 74,
       'updated': '2026-10-27',
       'ageDays': 0,
       'completeness': 1,
@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 38,
+      'modelCount': 39,
       'updated': '2026-10-27',
       'ageDays': 0,
       'completeness': 1,
@@ -229,13 +229,15 @@ window.QUALITY = {
     {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
-      'status': 'ok',
+      'status': 'error',
       'modelCount': 42,
       'updated': '2026-10-27',
       'ageDays': 0,
-      'completeness': 1,
+      'completeness': null,
       'fetchAttempts': 1,
-      'errors': []
+      'errors': [
+        'RSC 流中未找到 rows 数组(站点结构变更)'
+      ]
     },
     {
       'id': 'tbench_v21',
@@ -733,9 +735,9 @@ window.QUALITY = {
     },
     'apex': {
       'rate': 1,
-      'total': 73,
-      'complete': 73,
-      'modelCount': 73,
+      'total': 74,
+      'complete': 74,
+      'modelCount': 74,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -781,9 +783,9 @@ window.QUALITY = {
     },
     'automationbench': {
       'rate': 1,
-      'total': 38,
-      'complete': 38,
-      'modelCount': 38,
+      'total': 39,
+      'complete': 39,
+      'modelCount': 39,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -887,14 +889,6 @@ window.QUALITY = {
       'missingFields': {
         'score': 1
       },
-      'flag': 'ok'
-    },
-    'tbench': {
-      'rate': 1,
-      'total': 42,
-      'complete': 42,
-      'modelCount': 42,
-      'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v21': {
