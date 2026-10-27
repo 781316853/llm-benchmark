@@ -1,6 +1,6 @@
 // 数据源:ModelDial 雷达(2026-10-27 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-2e3515c0731630947beb0684)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-0f48cb9ead666f3ba7c1deb5)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-2e3515c0731630947beb0684',
-  'batchRevision': 400,
-  'batchPublishedAt': '2026-10-26T23:54:18.983Z',
+  'batchId': 'overall-0f48cb9ead666f3ba7c1deb5',
+  'batchRevision': 404,
+  'batchPublishedAt': '2026-10-27T00:26:42.268Z',
   'updated': '2026-10-27',
-  'refreshedAt': '2026-10-27 07:59',
+  'refreshedAt': '2026-10-27 13:23',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -123,7 +123,7 @@ window.MODELDIAL = {
       'frontend': 84,
       'knowledge': 85,
       'elapsedMs': 475881,
-      'costUsd': 0,
+      'costUsd': 0.375352,
       'tags': [
         'speed'
       ],
@@ -142,7 +142,8 @@ window.MODELDIAL = {
       'elapsedMs': 1196849,
       'costUsd': 0.214663,
       'tags': [
-        'lightweight'
+        'lightweight',
+        'value'
       ],
       'configs': 1,
       'rank': 7
@@ -913,7 +914,7 @@ window.MODELDIAL = {
       'frontend': 84,
       'knowledge': 85,
       'elapsedMs': 475881,
-      'costUsd': 0,
+      'costUsd': 0.375352,
       'tags': [
         'speed'
       ]
@@ -931,7 +932,8 @@ window.MODELDIAL = {
       'elapsedMs': 1196849,
       'costUsd': 0.214663,
       'tags': [
-        'lightweight'
+        'lightweight',
+        'value'
       ]
     },
     {
@@ -1225,7 +1227,7 @@ window.MODELDIAL = {
       'frontend': 81,
       'knowledge': 75,
       'elapsedMs': 194839,
-      'costUsd': 0,
+      'costUsd': 0.160886,
       'tags': []
     },
     {
@@ -1463,7 +1465,7 @@ window.MODELDIAL = {
       'frontend': 80,
       'knowledge': 85,
       'elapsedMs': 128766,
-      'costUsd': 0,
+      'costUsd': 0.138679,
       'tags': []
     },
     {
@@ -1505,7 +1507,7 @@ window.MODELDIAL = {
       'frontend': 85,
       'knowledge': 75,
       'elapsedMs': 145355,
-      'costUsd': 0,
+      'costUsd': 0.114853,
       'tags': []
     },
     {
@@ -1603,7 +1605,7 @@ window.MODELDIAL = {
       'frontend': 83,
       'knowledge': 70,
       'elapsedMs': 134528,
-      'costUsd': 0,
+      'costUsd': 0.138051,
       'tags': []
     },
     {

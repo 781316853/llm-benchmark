@@ -1,6 +1,6 @@
 // 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)
 // 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:
-//     https://m.aitntnews.com/arena/code/ (更新于 2026-10-26)
+//     https://m.aitntnews.com/arena/code/ (更新于 2026-10-27)
 // 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分
 //     (总榜 #12、开源第一;上一版 20260910 为镜像现有的 deepseek-v4.1-flash 1618)。镜像收录后自动去重。
 // 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)
@@ -9,7 +9,7 @@ window.ARENA_WEBDEV = {
   'source': 'Code Arena WebDev (LMArena)',
   'officialUrl': 'https://arena.ai/leaderboard/code',
   'url': 'https://m.aitntnews.com/arena/code/',
-  'updated': '2026-10-26',
+  'updated': '2026-10-27',
   'version': 'overall',
   'metric': 'Elo score',
   'desc': 'LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。',
