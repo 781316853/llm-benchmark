@@ -14,10 +14,10 @@ window.TBENCH = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
   'updated': '2026-10-26',
-  'refreshedAt': '2026-10-26 14:36',
+  'refreshedAt': '2026-10-27 07:59',
   'stats': {
     'tasks': 66,
-    'entries': 41
+    'entries': 42
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -497,6 +497,18 @@ window.TBENCH = {
       'score': 52,
       'ci': null,
       'date': '2026-10-12',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
+      'model': 'GPT-6.1 Terra',
+      'agent': null,
+      'effort': '最高（工具）',
+      'score': 50.3,
+      'ci': null,
+      'date': '2026-10-26',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'
