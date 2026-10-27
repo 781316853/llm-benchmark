@@ -7,7 +7,7 @@
 //      benchmarkView 的 models[] 含全部 118 条 model×harness 记录:多数为 OpenHands,
 //      另有少量 Claude Code / Codex / Factory / Cursor CLI / Grok Build / Devin CLI 条目。
 // 性质:主办方 Vals AI 为独立评测机构(非被评模型厂商),该榜即其自建自测的官方榜(T1)。
-// 用途:计入总览综合分(「第三方实测」第 8 组,权重 8%)与命中数。
+// 用途:保留抓取;自 2026-10-27 起不上榜(总览第 8 组计分席位已换回 VCB-1-100),前端不加载。
 // 输出:data/vals_vibe_code.js(window.VALSVIBECODE)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -65,7 +65,7 @@ class ValsVibeCodeSource extends BaseSource {
       "// 来源:" + this.cfg.url + "\n" +
       "// 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);\n" +
       "//      latencyS=每测试平均耗时(秒);harness=实测所用 harness(源站以 " + (harnesses.join("/") || "未知") + " 为主)\n" +
-      "// 用途:计入总览综合分(「第三方实测」第 8 组,权重 8%)与命中数。\n",
+      "// 用途:保留抓取;2026-10-27 起不上榜,前端不加载(总览第 8 组已换回 VCB-1-100)。\n",
       {
         source: "Vibe Code Bench v1.1",
         url: this.cfg.url,

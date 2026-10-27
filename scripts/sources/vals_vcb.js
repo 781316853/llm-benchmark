@@ -6,8 +6,8 @@
 //      最多追加 10 轮产品请求;全部模型跑在固定 OpenHands harness 上(apples-to-apples);
 //      主指标 accuracy(%),另记 cost_per_test($)与 latency(s)。
 // 性质:主办方 Vals AI 为独立评测机构(非被评模型厂商),该榜即其自建自测的官方榜(T1)。
-// 用途:自 2026-10-24 起仅作为「VCB-1-100」独立标签页数据源,不计入总览综合分与命中数
-//      (总览对应席位改用 Vibe Code Bench v1.1,见 scripts/sources/vals_vibe_code.js)。
+// 用途:计入总览综合分(「第三方实测」第 8 组,权重 7%)与命中数,同时作为「VCB-1-100」
+//      标签页数据源(2026-10-27 起)。
 // 输出:data/vals_vcb.js(window.VALSVCB)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -65,7 +65,7 @@ class ValsVcbSource extends BaseSource {
       "// 来源:" + this.cfg.url + "\n" +
       "// 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);\n" +
       "//      latencyS=每测试平均耗时(秒);harness=实测所用 harness(本榜全部为 " + (harnesses.join("/") || "未知") + ")\n" +
-      "// 用途:仅「VCB-1-100」独立标签页展示,不计入总览综合分与命中数(2026-10-24 起)。\n",
+      "// 用途:计入总览综合分(「第三方实测」第 8 组,权重 7%)与命中数,并用于「VCB-1-100」标签页(2026-10-27 起)。\n",
       {
         source: "Vibe Code Bench 1-100",
         url: this.cfg.url,

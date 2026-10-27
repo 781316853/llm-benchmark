@@ -2,7 +2,7 @@
 // 来源:https://www.vals.ai/benchmarks/vcb-1-100
 // 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);
 //      latencyS=每测试平均耗时(秒);harness=实测所用 harness(本榜全部为 OpenHands)
-// 用途:仅「VCB-1-100」独立标签页展示,不计入总览综合分与命中数(2026-10-24 起)。
+// 用途:计入总览综合分(「第三方实测」第 8 组,权重 7%)与命中数,并用于「VCB-1-100」标签页(2026-10-27 起)。
 window.VALSVCB = {
   'source': 'Vibe Code Bench 1-100',
   'url': 'https://www.vals.ai/benchmarks/vcb-1-100',

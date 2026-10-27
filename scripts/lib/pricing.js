@@ -89,7 +89,7 @@ var RANKED_SOURCE_FILES = [
   "data/llm2014.js", "data/arena_webdev.js",
   "data/tbench.js", "data/tbench_v3.js", "data/tbench_v2.js",
   "data/arenaofbias.js", "data/modeldial.js", "data/aicodingdaily.js",
-  "data/vals_vibe_code.js",
+  "data/vals_vcb.js",
   "js/data.js"
 ];
 

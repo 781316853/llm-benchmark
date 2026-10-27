@@ -501,7 +501,7 @@
       .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
   }
 
-  // ===== Vibe Code Bench 1-100(Vals AI;仅「VCB-1-100」独立标签页展示,不计综合分与命中数) =====
+  // ===== Vibe Code Bench 1-100(Vals AI;计入综合分(「第三方实测」第 8 组,权重 7%)与命中数) =====
   // 50 个真实 Web 应用迭代场景,全部模型跑在固定 OpenHands harness 上;主指标 accuracy(%)。
   // 源站模型标识为 slug(如 anthropic/claude-opus-5-5),经 canon() 归一到 canonical 显示名。
   function valsvcb() {
@@ -510,14 +510,7 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== Vibe Code Bench v1.1(Vals AI;计入综合分(「第三方实测」第 8 组,权重 8%)与命中数) =====
-  // 从零构建 Web 应用的真实编码 Agent 实测,隐藏测试判定;主指标 accuracy(%)。
-  // 多数条目跑在 OpenHands harness,源站另含少量 Claude Code / Codex / Factory 等 harness 条目。
-  function vibecode() {
-    var src = window.VALSVIBECODE || { models: [] };
-    return (src.models || []).slice().sort(function (a, b) { return b.accuracy - a.accuracy; })
-      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
-  }
+  // Vibe Code Bench v1.1 自 2026-10-27 起仅保留抓取(data/vals_vibe_code.js),不上榜、前端不加载。
 
   // ===== Code Migration(Vals AI;「权威基准测试」页展示;仅展示,不计入综合分与命中数) =====
   // 40 个真实仓库(30 CLI + 10 COBOL)跨语言重写,隐藏测试判定;主指标 accuracy(%)。
@@ -527,18 +520,18 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, agentarena, tbench, arenaofbias, modeldial, aicodingdaily, vibecode} 用于矩阵/雷达 =====
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, agentarena, tbench, arenaofbias, modeldial, aicodingdaily, vcb} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
   // agentarena:同名取最高净提升(可为负;2026-10-26 起计入综合分与命中数,权重 9%);
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
   // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数);
   // aicodingdaily:同名取最高总分(2026-10-19 起计入综合分与命中数,权重 9%);
-  // vibecode:同名取最高准确率(2026-10-24 起计入综合分与命中数,权重 8%;VCB-1-100 同日改为仅标签页展示)
+  // vcb:同名取最高准确率(2026-10-27 起由 VCB-1-100 计入综合分与命中数,权重 7%;同期 Vibe Code v1.1 退出)
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, vibecode: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, vcb: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -616,20 +609,20 @@
           configs: m.configs, rank: m.rank, name: m.model, effort: m.effort
         };
     });
-    // Vibe Code v1.1:准确率 %(多数为 OpenHands harness);源站 models[] 已是模型级条目,
+    // VCB-1-100:准确率 %(全部为固定 OpenHands harness);源站 models[] 已是模型级条目,
     // 这里再按 canonical 归并一次(同一模型的不同写法取更高准确率)。
-    vibecode().forEach(function (m) {
+    valsvcb().forEach(function (m) {
       if (m.accuracy == null) return;
       var e = ensure(m.canon);
-      if (!e.vibecode || m.accuracy > e.vibecode.score)
-        e.vibecode = {
+      if (!e.vcb || m.accuracy > e.vcb.score)
+        e.vcb = {
           score: m.accuracy, costPerTest: m.costPerTest, latencyS: m.latencyS,
           harness: m.harness, rank: m.rank, name: m.model
         };
     });
     // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Agent Arena / Terminal-Bench / 亿模亿样 / ModelDial /
-    // AI Coding Daily / Vibe Code 共 9 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/
-    // NL2Repo/Code Migration)与 VCB-1-100 独立页仅展示不计命中。
+    // AI Coding Daily / VCB-1-100 共 9 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/
+    // NL2Repo/Code Migration)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
@@ -640,21 +633,21 @@
       if (e.arenaofbias) e.benchCount++;
       if (e.modeldial) e.benchCount++;
       if (e.aicodingdaily) e.benchCount++;
-      if (e.vibecode) e.benchCount++;
+      if (e.vcb) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / Vibe Code 共 9 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / VCB-1-100 共 9 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, vc = window.VALSVIBECODE || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, vc = window.VALSVCB || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var aaTop = arenaAgent()[0] || {};
     var tbTop = tbench()[0] || {};
     var mdTop = modeldial()[0] || {};
     var acdTop = aicodingdaily()[0] || {};
-    var vcTop = vibecode()[0] || {};
+    var vcTop = valsvcb()[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
     var lmRows = latest ? llmMonth(latest).rows : [];
@@ -692,9 +685,9 @@
       { key: "aicodingdaily", name: "AI Coding Daily", tag: "独立实测 · 7 项目 / 27 prompt", url: acd.url, updated: acd.updated,
         stats: [{ l: "模型", v: (acd.models || []).length }, { l: "配置", v: (acd.configs || []).length }],
         top: (acdTop.canon ? acdTop.canon.id : acdTop.model) + " · " + (acdTop.score != null ? acdTop.score + " / 70" : "—") },
-      // Vibe Code v1.1:Vals AI 从零构建 Web 应用的编码 Agent 实测(准确率 %);卡片展示用 canon() 归一后的显示名
-      { key: "vibecode", name: "Vibe Code Bench v1.1", tag: "独立实测 · 从零构建 Web 应用 · 准确率", url: vc.url, updated: vc.updated,
-        stats: [{ l: "模型", v: (vc.models || []).length }, { l: "版本", v: vc.version || "1.1" }],
+      // VCB-1-100:Vals AI 迭代式编码 Agent 实测(固定 OpenHands;准确率 %);卡片展示用 canon() 归一后的显示名
+      { key: "vcb", name: "VCB-1-100", tag: "独立实测 · 应用迭代 · 固定 OpenHands", url: vc.url, updated: vc.updated,
+        stats: [{ l: "模型", v: (vc.models || []).length }, { l: "场景", v: "50" }],
         top: (vcTop.canon ? vcTop.canon.id : vcTop.model) + " · " + (vcTop.accuracy != null ? vcTop.accuracy + "%" : "—") }
     ];
   }
@@ -781,7 +774,7 @@
     apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
     cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
     aicodingdaily: "AICODINGDAILY",
-    vals_vibe_code: "VALSVIBECODE", vals_vcb: "VALSVCB", vals_codemigration: "VALSCODEMIGRATION"
+    vals_vcb: "VALSVCB", vals_codemigration: "VALSCODEMIGRATION"
   };
   var srcView = {};
   Object.keys(SRC_GLOBALS).forEach(function (k) {
@@ -828,7 +821,6 @@
     modeldialConfigs: modeldialConfigs,
     aicodingdaily: aicodingdaily,
     aicodingdailyConfigs: aicodingdailyConfigs,
-    vibecode: vibecode,
     valsvcb: valsvcb,
     valscodemigration: valscodemigration,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)

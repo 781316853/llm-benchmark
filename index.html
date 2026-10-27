@@ -43,12 +43,9 @@
   <!-- AI Coding Daily 编码榜(aicodingdaily.com 独立第三方实测,计入总览综合分(权重 8%)与命中数,
        2026-10-19 入组;并作为「AI Coding Daily」独立标签页的数据源) -->
   <script defer src="data/aicodingdaily.js?v=20261019a"></script>
-  <!-- Vibe Code Bench v1.1(Vals AI 从零构建 Web 应用的编码 Agent 实测,以 OpenHands harness 为主;
-       2026-10-24 起接替 VCB-1-100 计入总览综合分(权重 7%)与命中数) -->
-  <script defer src="data/vals_vibe_code.js?v=20261024a"></script>
-  <!-- VCB-1-100(Vals AI 迭代式编码 Agent 榜;2026-10-24 起仅作为「VCB-1-100」独立标签页数据源,
-       不再计入总览综合分与命中数) -->
-  <script defer src="data/vals_vcb.js?v=20261024a"></script>
+  <!-- VCB-1-100(Vals AI 应用迭代式编码 Agent 榜,固定 OpenHands harness;
+       2026-10-27 起计入总览综合分(权重 7%)与命中数,并作为「VCB-1-100」标签页数据源) -->
+  <script defer src="data/vals_vcb.js?v=20261027a"></script>
   <script defer src="data/seen.js?v=20260824a"></script>
   <script defer src="data/news.js?v=20260921a"></script>
   <!-- AI Agent 工具更新日志(12 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
@@ -69,7 +66,7 @@
       <div class="brand">
         <p class="brand-eyebrow">LLM Benchmark Index</p>
         <h1>大模型编码基准整合门户</h1>
-        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · Vibe Code v1.1 · VCB-1-100 · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
+        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · VCB-1-100 迭代实测 · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
       </div>
       <div class="topbar-panel">
         <p class="topbar-label">数据快照</p>
@@ -155,7 +152,7 @@
           <ul>
             <li><b class="note-term">梯队</b>按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,勾选「显示综合分」直接显示。</li>
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
-            <li><b class="note-term">命中</b>9 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样 / AI Coding Daily / Vibe Code v1.1;HLE 仅参考,VCB-1-100 为独立标签页展示,均不计分。</li>
+            <li><b class="note-term">命中</b>9 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样 / AI Coding Daily / VCB-1-100;HLE 仅参考,不计分。</li>
             <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
             <li><b class="note-term">榜内名次</b>「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮名次可见榜内上榜条目总数。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
@@ -164,8 +161,8 @@
           <details class="notes-more">
             <summary>展开详细口径与数据来源</summary>
             <ul>
-              <li><b class="note-term">权重</b>DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · Vibe Code 7% · Agent Arena 9%(合计 0.99,按在场榜归一;缺测权重回流)。</li>
-              <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为后端 40% + 前端 30% + 知识 30%;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;Vibe Code 为隐藏测试准确率 %。</li>
+              <li><b class="note-term">权重</b>DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · VCB-1-100 7% · Agent Arena 9%(合计 0.99,按在场榜归一;缺测权重回流)。</li>
+              <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为后端 40% + 前端 30% + 知识 30%;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;VCB-1-100 为隐藏测试准确率 %(固定 OpenHands)。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
               <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);指数与综合分同源,不可跨日/跨快照比较。</li>
               <li><b class="note-term">数据来源</b>按 官方实测 &gt; 厂商发布 &gt; 第三方聚合 的优先级合并,低层级只补缺;数据为快照,仅用于学习与对比展示,不代表绝对评价。</li>
@@ -306,11 +303,11 @@
       </section>
     </section>
 
-    <!-- 6d) VCB-1-100(vals.ai 独立实测编码 Agent 榜;固定 OpenHands harness;仅本页展示,不计综合分与命中数) -->
+    <!-- 6d) VCB-1-100(vals.ai 独立实测编码 Agent 榜;固定 OpenHands harness;计入总览综合分(权重 7%)与命中数) -->
     <section class="page" id="page-valsvcb">
       <div class="page-head">
         <p class="page-kicker">Independent Real-World Test · Vibe Code Bench 1-100</p>
-        <div class="page-head-row"><h2>VCB-1-100 <span class="tag">Vals AI 独立实测 · 固定 OpenHands · 独立页展示</span></h2></div>
+        <div class="page-head-row"><h2>VCB-1-100 <span class="tag">Vals AI 独立实测 · 固定 OpenHands · 计入总览 7%</span></h2></div>
         <p id="vcbDesc" class="page-desc"></p>
       </div>
       <div class="chart-row single">
@@ -327,7 +324,7 @@
           <li><b class="note-term">来源</b>Vibe Code Bench 1-100(vals.ai/benchmarks/vcb-1-100,Vals AI),让模型从一个能跑的 Web 应用出发,连续接住最多 10 轮产品需求,共 50 个真实场景。</li>
           <li><b class="note-term">分数口径</b>准确率(%):每个场景由隐藏测试判定;源站最高分约 34%,分数越低表示越多产品请求未被正确完成。</li>
           <li><b class="note-term">口径优势</b>全部模型跑在<b>固定</b> OpenHands harness 上,与 AI Coding Daily 的逐模型 harness 不同,跨模型可比性更好。</li>
-          <li><b class="note-term">展示范围</b>本页独立展示,不计入总览综合分与命中数(总览同名计分组已换为 Vibe Code Bench v1.1);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">展示范围</b>本榜自 2026-10-27 起计入总览综合分(权重 7%)与命中数;Vibe Code Bench v1.1 保留抓取但不上榜。数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开成本口径与排名说明</summary>

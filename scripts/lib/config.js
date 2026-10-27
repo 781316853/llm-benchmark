@@ -292,7 +292,7 @@ module.exports = {
       // 单请求即得全表。多数条目跑在 OpenHands harness,源站另含少量 Claude Code / Codex / Factory /
       // Cursor CLI 等 harness 条目,逐行记录于 harness 字段。
       // 渠道:该榜即 Vals AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
-      // 用途:计入总览综合分(「第三方实测」计分组,权重 8%)与命中数。
+      // 用途:保留抓取;自 2026-10-27 起不上榜(总览第 8 组计分席位已换回 vals_vcb)。
       url: "https://www.vals.ai/benchmarks/vibe-code",
       host: "www.vals.ai", src: "official",
       officialUrl: "https://www.vals.ai/benchmarks/vibe-code"
@@ -303,8 +303,8 @@ module.exports = {
       // 主指标准确率(%),另记每测试平均成本($)与平均耗时(s)。页面为 Astro 服务端渲染 props 内嵌
       // benchmarkView JSON,单请求即得全表(与 programbench 镜像同法解析)。
       // 渠道:该榜即 Vals AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
-      // 用途:自 2026-10-24 起仅作为「VCB-1-100」独立标签页数据源,不再计入总览综合分与命中数;
-      //      总览对应席位改用 vals_vibe_code。
+      // 用途:计入总览综合分(「第三方实测」第 8 组,权重 7%)与命中数,同时作为「VCB-1-100」
+      //      标签页数据源(2026-10-27 起;此前 10-20~10-26 为仅标签页展示)。
       url: "https://www.vals.ai/benchmarks/vcb-1-100",
       host: "www.vals.ai", src: "official",
       officialUrl: "https://www.vals.ai/benchmarks/vcb-1-100"

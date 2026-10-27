@@ -2,7 +2,7 @@
 // 来源:https://www.vals.ai/benchmarks/vibe-code
 // 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);
 //      latencyS=每测试平均耗时(秒);harness=实测所用 harness(源站以 OpenHands/Claude Code/Factory/Codex/Cursor CLI/Grok Build/Devin CLI 为主)
-// 用途:计入总览综合分(「第三方实测」第 8 组,权重 8%)与命中数。
+// 用途:保留抓取;2026-10-27 起不上榜,前端不加载(总览第 8 组已换回 VCB-1-100)。
 window.VALSVIBECODE = {
   'source': 'Vibe Code Bench v1.1',
   'url': 'https://www.vals.ai/benchmarks/vibe-code',

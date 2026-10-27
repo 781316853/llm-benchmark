@@ -114,7 +114,6 @@
   --bench-llm: #8E9BFF;
   --bench-arenaofbias: #4FD1D9;
   --bench-aicodingdaily: #E0A8D8;
-  --bench-vibecode: #E4C85A;
   --bench-valsvcb: #F3D96B;
   --bench-valscodemigration: #B0E0D0;
   --bench-programbench: #A8E063;
@@ -278,7 +277,6 @@
   --bench-arenaofbias: #2E7068;
   /* AI Coding Daily 榜色:紫红 —— 与 HLE 的粉(#9B4F72)、Terminal-Bench 的灰紫(#6B5580)按色相/明度分档 */
   --bench-aicodingdaily: #6B3A78;
-  --bench-vibecode: #7A6A1B;
   --bench-valsvcb: #8A7A1F;
   --bench-valscodemigration: #2F6B5F;
   --bench-programbench: #5F7A2E;
@@ -636,7 +634,6 @@ a:hover { text-decoration: underline; }
 .bv-llm { --bv-color: var(--bench-llm); }
 .bv-arenaofbias { --bv-color: var(--bench-arenaofbias); }
 .bv-aicodingdaily { --bv-color: var(--bench-aicodingdaily); }
-.bv-vibecode { --bv-color: var(--bench-vibecode); }
 .bv-valsvcb { --bv-color: var(--bench-valsvcb); }
 .bv-valscodemigration { --bv-color: var(--bench-valscodemigration); }
 .bv-programbench { --bv-color: var(--bench-programbench); }
