@@ -401,6 +401,23 @@ module.exports = {
       maxPoints: 70,
       axes: { laravel: 20, reactTs: 20, bugFinding: 10, edgeCase: 20 }
     },
+    // ===== AA Coding Agent Index v2.0(「权威基准测试」页展示;仅展示,不计入综合分与命中数)=====
+    aa_coding_agents: {
+      // Artificial Analysis Coding Agent Index v2.0(artificialanalysis.ai/agents/coding-agents)。
+      // 榜单粒度为 agent × model × 推理档位配置,Index = FrontierCode v1.1(100 题)+
+      // Terminal-Bench 4.0(66 题)+ SWE-Atlas-QnA-AA(124 题)三项等权平均,每项取每题三次尝试的均值。
+      // 页面为 Next.js App Router:榜单行在 RSC 流(self.__next_f.push)里,服务端只直出前 8 行、
+      // 其余行以 rows:N 引用挂同一流中,故抓取端拼接全部 RSC 文本块后按 id 去重取全量(见 sources/aa_coding_agents.js)。
+      // 渠道:AA 为独立第三方评测机构(非被评厂商),无更高优先级渠道可合并,按 T3 第三方评测处理(src=aggregate)。
+      // 用途:按用户口径仅收录到「权威基准测试」页展示,不计入总览综合分与命中数
+      //     (Index 是站内已独立收录的 FrontierCode 与 Terminal-Bench 4.0 的再合成,计入会造成结构重复计量)。
+      url: "https://artificialanalysis.ai/agents/coding-agents",
+      host: "artificialanalysis.ai",
+      version: "v2.0",
+      src: "aggregate",
+      officialUrl: "https://artificialanalysis.ai/agents/coding-agents",
+      methodUrl: "https://artificialanalysis.ai/methodology/coding-agents-benchmarking"
+    },
     // ===== AI Release Tracker 聚合补充源(T3,只补缺)=====
     // aireleasetracker.com 按基准汇总各实验室公开报告与基准来源的分数,站方明确「不复测」。
     // 作为站内各基准的 T3 补充渠道:只追加站内主渠道尚未收录的模型,不覆盖任何既有分数。
@@ -449,8 +466,11 @@ module.exports = {
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
       //     与主基准的原生量纲不可比,同样排除;
       //   arena_agent 为相对 Arena 基线的净提升 %(可为负,约 -20~+21),与百分制通过率不同量纲,
-      //     混算会产生假告警,同样排除(仍计入综合分,由榜内稳健标准分定标)。
-      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "vals_vibe_code", "vals_vcb", "vals_codemigration"]
+      //     混算会产生假告警,同样排除(仍计入综合分,由榜内稳健标准分定标);
+      //   aa_coding_agents(AA Coding Agent Index v2.0)为 agent×model 配置级的 0-100 合成分,
+      //     且 Index 自身就是 FrontierCode v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA 的再合成,
+      //     与站内各原生基准逐条对比会产生结构性假告警,故排除;
+      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "aa_coding_agents", "vals_vibe_code", "vals_vcb", "vals_codemigration"]
     },
     completeness: {
       // 每条记录必填字段

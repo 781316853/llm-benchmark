@@ -165,6 +165,8 @@ window.MODEL_MAP = {
     { id: "Grok 4.7",         vendor: "xAI",       color: "#878F9A", aliases: ["Grok 4.7", "grok-4.7", "grok-4.7-high", "grok-4.7-xhigh"] },
     { id: "GPT-6 Sol",        vendor: "OpenAI",    color: "#0A8F6A", aliases: ["GPT-6 Sol", "gpt-6-sol"] },
     { id: "GPT-6.1 Sol",      vendor: "OpenAI",    color: "#0C8560", aliases: ["GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol"] },
+    // AA Coding Agent Index 2026-10-27 收录 GPT-6.1 Terra 的 max/xhigh/high/medium/low 五档配置
+    { id: "GPT-6.1 Terra",    vendor: "OpenAI",    color: "#12A77C", aliases: ["GPT-6.1 Terra", "gpt-6.1-terra", "gpt-6-1-terra"] },
     { id: "GPT-6 Luna",       vendor: "OpenAI",    color: "#15B893", aliases: ["GPT-6 Luna", "gpt-6-luna"] },
     { id: "Composer 2.5",     vendor: "Cursor",    color: "#F44E00", aliases: ["Composer 2.5", "composer-2.5", "composer-2-5"] },
     // SWE-1.x/2 为 Cognition(Devin)自研编码模型,harness 分别为 chisel/devin

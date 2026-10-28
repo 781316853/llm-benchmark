@@ -485,7 +485,7 @@
       .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
   }
 
-  // ===== AI Coding Daily 编码榜(独立标签页;计入综合分(「第三方实测」组计分组之一,权重 10%)与命中数) =====
+  // ===== AI Coding Daily 编码榜(独立标签页;计入综合分(「第三方实测」组计分组之一,权重 7%)与命中数) =====
   // 主榜为模型级条目:每条取该模型总分最高的 config(模型 × 档位 × harness 组合),按总分降序;
   // 总分 0-70 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20。
   // 注:harness 逐模型不同(源站「Tested with」列),分数是「模型 + 各家 agent」的产物,故压低权重。
@@ -517,6 +517,15 @@
   function valscodemigration() {
     var src = window.VALSCODEMIGRATION || { models: [] };
     return (src.models || []).slice().sort(function (a, b) { return b.accuracy - a.accuracy; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+
+  // ===== AA Coding Agent Index v2.0(「权威基准测试」页展示;仅展示,不计入综合分与命中数) =====
+  // 榜单粒度为 agent × model × 推理档位配置(30 条),Index = FrontierCode v1.1 + Terminal-Bench 4.0
+  // + SWE-Atlas-QnA-AA 三项等权平均;页面按 indexScore 降序展示配置级条目。
+  function aaCodingAgents() {
+    var src = window.AACODING || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.indexScore - a.indexScore; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
@@ -622,7 +631,7 @@
     });
     // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Agent Arena / Terminal-Bench / 亿模亿样 / ModelDial /
     // AI Coding Daily / VCB-1-100 共 9 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/
-    // NL2Repo/Code Migration)仅展示不计命中。
+    // NL2Repo/Code Migration/AA Coding Agent Index)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.deepswe) e.benchCount++;
@@ -774,6 +783,7 @@
     apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
     cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
     aicodingdaily: "AICODINGDAILY",
+    aa_coding_agents: "AACODING",
     vals_vcb: "VALSVCB", vals_codemigration: "VALSCODEMIGRATION"
   };
   var srcView = {};
@@ -821,6 +831,7 @@
     modeldialConfigs: modeldialConfigs,
     aicodingdaily: aicodingdaily,
     aicodingdailyConfigs: aicodingdailyConfigs,
+    aaCodingAgents: aaCodingAgents,
     valsvcb: valsvcb,
     valscodemigration: valscodemigration,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)

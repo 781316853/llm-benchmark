@@ -115,6 +115,8 @@
   --bench-arenaofbias: #4FD1D9;
   --bench-aicodingdaily: #E0A8D8;
   --bench-valsvcb: #F3D96B;
+  /* AA Coding Agent Index 榜色:暖棕 —— 与 WebDev 橙红(#F58C6E)、FrontierCode 浅橙(#E6A16B)按明度分档 */
+  --bench-aacoding: #C08A5C;
   --bench-valscodemigration: #B0E0D0;
   --bench-programbench: #A8E063;
   --bench-cursorbench: #6FC3FF;
@@ -278,6 +280,7 @@
   /* AI Coding Daily 榜色:紫红 —— 与 HLE 的粉(#9B4F72)、Terminal-Bench 的灰紫(#6B5580)按色相/明度分档 */
   --bench-aicodingdaily: #6B3A78;
   --bench-valsvcb: #8A7A1F;
+  --bench-aacoding: #7B5233;
   --bench-valscodemigration: #2F6B5F;
   --bench-programbench: #5F7A2E;
   --bench-cursorbench: #3E6577;
@@ -635,6 +638,7 @@ a:hover { text-decoration: underline; }
 .bv-arenaofbias { --bv-color: var(--bench-arenaofbias); }
 .bv-aicodingdaily { --bv-color: var(--bench-aicodingdaily); }
 .bv-valsvcb { --bv-color: var(--bench-valsvcb); }
+.bv-aacoding { --bv-color: var(--bench-aacoding); }
 .bv-valscodemigration { --bv-color: var(--bench-valscodemigration); }
 .bv-programbench { --bv-color: var(--bench-programbench); }
 .bv-cursorbench { --bv-color: var(--bench-cursorbench); }

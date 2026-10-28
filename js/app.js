@@ -91,7 +91,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.vals_vcb]
+      D.src.cursorbench, D.src.frontiercode, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.vals_vcb, D.src.aa_coding_agents]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -708,7 +708,7 @@
         '<td class="num">' + biasCell(r) + '</td>' +
         // AI Coding Daily 列(「第三方实测」组):总分 0-70 上该榜数据色,后随 harness 小灰字(元数据)
         '<td class="num">' + acdHtml + '</td>' +
-        // VCB-1-100 列(「第三方实测」组尾):准确率上该榜数据色
+        // VCB-1-100 列(「第三方实测」组):准确率上该榜数据色
         '<td class="num">' + vcHtml + '</td>' +
         '<td class="num">' + r.benchCount + '/' + CMP.GROUPS.length + '</td></tr>';
     });
@@ -1766,6 +1766,32 @@
       ' · 更新 ' + esc(fc.updated || "") + ' · 共 ' + fcMs.length + ' 个模型(main ' + (fcTasks != null ? fcTasks : "—") + ' 题口径)' +
       ' · 任务由 20+ 资深开发者制作(每任务投入 40+ 小时),按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」而非仅能否跑通;' +
       '「标准分」为 main 子集下各推理档位最优(与官方主榜口径一致,已逐条校验),Pass Rate 为原始正确率,harness 为各厂商自家 CLI(devin/claude-code/codex 等)。本榜仅展示,不计入综合分与命中数(harness 口径不可比)。');
+    // 14) AA Coding Agent Index v2.0(Artificial Analysis 独立评测 · 配置级合成分)
+    var aac = S.aa_coding_agents || {};
+    var aacMs = D.aaCodingAgents();
+    var aacRows = aacMs.map(function (m, i) {
+      var modelCell = (m.multiModel ? esc(m.model) : esc(m.canon.id || m.model)) +
+        (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") +
+        (m.multiModel ? ' <span class="badge-two" title="多模型组合配置:无法归到单一模型,仅本榜展示">组合</span>' : "");
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + esc(m.agent || "—") + '</td>' +
+        '<td>' + vdot(m.vendor) + modelCell + '</td>' +
+        '<td>' + vname(m.vendor) + '</td>' +
+        '<td class="num">' + bvSpan("aacoding", m.indexScore) + '</td>' +
+        '<td class="num">' + bvSpan("aacoding", m.frontiercode) + '</td>' +
+        '<td class="num">' + bvSpan("aacoding", m.terminalBench) + '</td>' +
+        '<td class="num">' + bvSpan("aacoding", m.sweAtlas) + '</td>' +
+        '<td class="num">' + fmtUsd(m.costUsd) + '</td>' +
+        '<td class="num">' + (m.wallTimeSec != null ? fmtDur(m.wallTimeSec * 1000) : "—") + '</td>' +
+        '<td class="num">' + (m.steps != null ? m.steps : "—") + '</td>' +
+        '<td class="num">' + (m.totalTokens != null ? (m.totalTokens >= 1e6 ? (m.totalTokens / 1e6).toFixed(1) + "M" : fmtK(m.totalTokens)) : "—") + '</td></tr>';
+    });
+    var aacStats = aac.stats || {};
+    html += authSectionHtml("AA Coding Agent Index " + (aac.version || "v2.0"), "编码 Agent 综合指数 · 仅展示", aac.officialUrl || aac.url,
+      '<div class="table-wrap"><table id="authAaCodingTable" class="data-table"></table></div>',
+      '来源:' + esc(aac.url || "") + '(方法学:' + esc(aac.methodUrl || "") + ') · 更新 ' + esc(aac.updated || "") +
+      ' · 共 ' + aacMs.length + ' 条配置' + (aacStats.agents != null ? ' / ' + aacStats.agents + ' 个 Agent' : "") +
+      ' · Index ' + esc(aac.version || "v2.0") + ' = FrontierCode v1.1(100 题)+ Terminal-Bench 4.0(66 题)+ SWE-Atlas-QnA-AA(124 题)三项等权平均,每项取每题三次尝试的均值;' +
+      '榜单粒度为 agent × model × 推理档位,分数同时反映模型能力与 Agent 脚手架;成本/耗时为每任务平均值。本榜仅展示,不计入综合分与命中数。');
     // 渲染 + 图表 + 表格
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
@@ -1815,9 +1841,11 @@
     // 档位明细在折叠的 <details> 内,折叠态无布局、IntersectionObserver 不会触发,故直接同步填充
     fillTable("authCursorbenchCfgTable", ["源站排名", "模型", "档位", "CursorBench 4.0", "成本/任务", "Tokens/任务", "步数/任务"], cbCfgRows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authFrontiercodeTable", ["#", "模型", "Harness", "档位", "标准分", "Pass Rate", "成本/任务", "Tokens/任务"], fcRows, ["", "", "", "", "num bv bv-frontiercode", "num", "num", "num"]);
+    authDeferTable("authAaCodingTable", ["#", "Agent", "模型", "厂商", "Index", "FrontierCode", "TB 4.0", "SWE-Atlas", "成本/任务", "耗时/任务", "步数", "Tokens"], aacRows,
+      ["", "", "", "", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每 2 小时自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每 2 小时自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
@@ -2112,11 +2140,12 @@
     frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },
     automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },
     vals_codemigration: { src: "data/vals_codemigration.js?v=20261020a", global: "VALSCODEMIGRATION" },
+    aa_coding_agents: { src: "data/aa_coding_agents.js?v=20261027a", global: "AACODING" },
     codingplan: { src: "data/codingplan.js?v=20260913b", global: "CODINGPLAN" }
   };
   // 各标签页渲染前必须就绪的数据
   var TAB_DATA = {
-    authority: ["tbscience", "osworld", "lastexam", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "vals_codemigration"],
+    authority: ["tbscience", "osworld", "lastexam", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "vals_codemigration", "aa_coding_agents"],
     plans: ["codingplan"]
   };
   var dataState = {};    // key -> "loading" | "ready" | "failed"
