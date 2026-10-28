@@ -252,7 +252,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 55,
+      'modelCount': 54,
       'updated': '2026-10-28',
       'ageDays': 0,
       'completeness': 1,
@@ -918,9 +918,9 @@ window.QUALITY = {
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 55,
-      'complete': 55,
-      'modelCount': 55,
+      'total': 54,
+      'complete': 54,
+      'modelCount': 54,
       'missingFields': {},
       'flag': 'ok'
     },

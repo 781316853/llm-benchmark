@@ -10,7 +10,7 @@ window.FRONTIERCODE = {
   'officialUrl': 'https://cognition.com/frontiercode',
   'version': '1.1',
   'updated': '2026-10-28',
-  'refreshedAt': '2026-10-28 14:02',
+  'refreshedAt': '2026-10-28 21:21',
   'stats': {
     'tasks': 100,
     'entries': 46
@@ -163,7 +163,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 4 Argon',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 47.6,
       'passRate': 52.8,
       'costUsd': 6.74,
@@ -228,7 +228,7 @@ window.FRONTIERCODE = {
     {
       'model': 'DeepSeek V4.1 Flash',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 43.9,
       'passRate': 48.6,
       'costUsd': 0.62,
@@ -241,7 +241,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 3.7 Flash',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 43.6,
       'passRate': 48.9,
       'costUsd': 1.82,
@@ -306,7 +306,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-1.7',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 42,
       'passRate': 47.4,
       'costUsd': 1.97,
@@ -332,7 +332,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 3.8 Flash',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 41.2,
       'passRate': 46.7,
       'costUsd': 2.6,
@@ -345,7 +345,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GLM 5.3',
       'effort': 'max',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 40.1,
       'passRate': 44.7,
       'costUsd': 16.91,
@@ -371,7 +371,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Mistral Large 4 (Preview)',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 39.4,
       'passRate': 43.5,
       'costUsd': 4.13,
@@ -397,7 +397,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 3.6 Flash',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 34.4,
       'passRate': 38.9,
       'costUsd': 4.04,
@@ -410,7 +410,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GLM 5.3 Flash',
       'effort': 'max',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 31.8,
       'passRate': 35.7,
       'costUsd': 1.15,
@@ -436,7 +436,7 @@ window.FRONTIERCODE = {
     {
       'model': 'DeepSeek V4 Pro 0813',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 28.6,
       'passRate': 31.8,
       'costUsd': 1.81,
@@ -514,7 +514,7 @@ window.FRONTIERCODE = {
     {
       'model': 'DeepSeek V4 Flash 0731',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 18.8,
       'passRate': 21.1,
       'costUsd': 1.53,
@@ -566,7 +566,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Nemotron 3 Ultra',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 13.6,
       'passRate': 15.4,
       'costUsd': 1.47,
@@ -592,7 +592,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-1.6',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 9.4,
       'passRate': 10.5,
       'costUsd': 0.49,
@@ -605,7 +605,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Mistral 3.5 Medium',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 8,
       'passRate': 9,
       'costUsd': 1.35,
