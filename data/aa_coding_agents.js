@@ -12,14 +12,15 @@ window.AACODING = {
   'methodUrl': 'https://artificialanalysis.ai/methodology/coding-agents-benchmarking',
   'version': 'v2.0',
   'updated': '2026-10-28',
-  'refreshedAt': '2026-10-28 21:21',
+  'refreshedAt': '2026-10-29 03:45',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'agents': [
     'Claude Code',
     'Devin Fusion CLI',
+    'GitHub Copilot',
+    'Antigravity CLI',
     'Muse Code',
     'Codex',
-    'Antigravity CLI',
     'Opencode',
     'Grok Build',
     'DeepSeek Harness',
@@ -45,9 +46,9 @@ window.AACODING = {
     }
   ],
   'stats': {
-    'configs': 30,
-    'models': 22,
-    'agents': 11
+    'configs': 32,
+    'models': 24,
+    'agents': 12
   },
   'desc': 'Artificial Analysis Coding Agent Index v2.0:由 FrontierCode v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA-AA 三项等权合成的编码 Agent 综合指数(每项取每题三次尝试的均值);榜单粒度为 agent × model × 推理档位配置,另记每任务平均成本、墙钟耗时、步数与 token。',
   'models': [
@@ -92,6 +93,46 @@ window.AACODING = {
       'rank': 2
     },
     {
+      'id': '24cd2ab21d1cf5161ddd831f0949bff4',
+      'agent': 'GitHub Copilot',
+      'model': 'Copilot Fusion (Max)',
+      'displayLabel': 'GitHub Copilot - Copilot Fusion (Max)',
+      'multiModel': false,
+      'effort': 'max',
+      'provider': 'github',
+      'vendor': 'Anthropic',
+      'indexScore': 59.9,
+      'frontiercode': 51.4,
+      'terminalBench': 71.2,
+      'sweAtlas': 57,
+      'costUsd': 5.59,
+      'wallTimeSec': 2167.3,
+      'steps': 171,
+      'totalTokens': 7339450,
+      'src': 'aggregate',
+      'rank': 3
+    },
+    {
+      'id': '615aa2e21916e4843210a552131d95b7',
+      'agent': 'Antigravity CLI',
+      'model': 'Gemini 4 Carbon (High)',
+      'displayLabel': 'Antigravity CLI - Gemini 4 Carbon (High)',
+      'multiModel': false,
+      'effort': 'high',
+      'provider': 'google',
+      'vendor': 'Google',
+      'indexScore': 59.4,
+      'frontiercode': 50.9,
+      'terminalBench': 63.6,
+      'sweAtlas': 63.7,
+      'costUsd': 7.74,
+      'wallTimeSec': 1789.9,
+      'steps': 177.8,
+      'totalTokens': 12548517,
+      'src': 'aggregate',
+      'rank': 4
+    },
+    {
       'id': '9983e10d68576074ad63407d0ca81e4b',
       'agent': 'Claude Code',
       'model': 'Claude Sonnet 5.5 (Max, Default Fallback)',
@@ -109,7 +150,7 @@ window.AACODING = {
       'steps': 232.9,
       'totalTokens': 24129278,
       'src': 'aggregate',
-      'rank': 3
+      'rank': 5
     },
     {
       'id': '047ef12b001416f72e30e1ad633988e2',
@@ -129,7 +170,7 @@ window.AACODING = {
       'steps': 194.9,
       'totalTokens': 14497965,
       'src': 'aggregate',
-      'rank': 4
+      'rank': 6
     },
     {
       'id': 'fe6df4d0f0b5360790e73d6d8830d7a0',
@@ -149,7 +190,7 @@ window.AACODING = {
       'steps': 92.4,
       'totalTokens': 9809458,
       'src': 'aggregate',
-      'rank': 5
+      'rank': 7
     },
     {
       'id': '5c82a7985b08f35190cc0db574fd1773',
@@ -169,7 +210,7 @@ window.AACODING = {
       'steps': 42.3,
       'totalTokens': 5989152,
       'src': 'aggregate',
-      'rank': 6
+      'rank': 8
     },
     {
       'id': '34e0f78892fac8fd39aff6595d04610e',
@@ -189,7 +230,7 @@ window.AACODING = {
       'steps': 39.4,
       'totalTokens': 3228511,
       'src': 'aggregate',
-      'rank': 7
+      'rank': 9
     },
     {
       'id': '3897d72a57138fd2e2353367570b4b37',
@@ -209,7 +250,7 @@ window.AACODING = {
       'steps': 40.6,
       'totalTokens': 3944223,
       'src': 'aggregate',
-      'rank': 8
+      'rank': 10
     },
     {
       'id': 'ee454ece0aab8dacb7127770643dcb6b',
@@ -224,12 +265,12 @@ window.AACODING = {
       'frontiercode': 48.6,
       'terminalBench': 56.1,
       'sweAtlas': 55.1,
-      'costUsd': 5.86,
+      'costUsd': 11.73,
       'wallTimeSec': 2081.4,
       'steps': 166.1,
       'totalTokens': 13865931,
       'src': 'aggregate',
-      'rank': 9
+      'rank': 11
     },
     {
       'id': 'dabb064c01568bc018ba730cc39c4a96',
@@ -249,7 +290,7 @@ window.AACODING = {
       'steps': 58.9,
       'totalTokens': 3625400,
       'src': 'aggregate',
-      'rank': 10
+      'rank': 12
     },
     {
       'id': '52f72f7f3393c5edf92b32326e7a678d',
@@ -269,7 +310,7 @@ window.AACODING = {
       'steps': 200.9,
       'totalTokens': 14479705,
       'src': 'aggregate',
-      'rank': 11
+      'rank': 13
     },
     {
       'id': '96d7404e06194027474a6cc3bb31c068',
@@ -289,7 +330,7 @@ window.AACODING = {
       'steps': 111.5,
       'totalTokens': 15908435,
       'src': 'aggregate',
-      'rank': 12
+      'rank': 14
     },
     {
       'id': '9b52f0eb016964fb4421a352b9c9518c',
@@ -309,7 +350,7 @@ window.AACODING = {
       'steps': 72,
       'totalTokens': 6886239,
       'src': 'aggregate',
-      'rank': 13
+      'rank': 15
     },
     {
       'id': '5bc9ed9064c8cd589bfd3aaad4bbebf8',
@@ -329,7 +370,7 @@ window.AACODING = {
       'steps': 100.4,
       'totalTokens': 12280717,
       'src': 'aggregate',
-      'rank': 14
+      'rank': 16
     },
     {
       'id': 'ef847aa89b4f0471ffe5275ba2f11771',
@@ -349,7 +390,7 @@ window.AACODING = {
       'steps': 142.9,
       'totalTokens': 27235628,
       'src': 'aggregate',
-      'rank': 15
+      'rank': 17
     },
     {
       'id': 'a92c8b68f37df782f0e978e0e302b023',
@@ -369,27 +410,7 @@ window.AACODING = {
       'steps': 169.9,
       'totalTokens': 15914548,
       'src': 'aggregate',
-      'rank': 16
-    },
-    {
-      'id': '24c98f188d41522a849006ac453fdebe',
-      'agent': 'DeepSeek Harness',
-      'model': 'DeepSeek V4.1 Flash 1017 (Max)',
-      'displayLabel': 'DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max)',
-      'multiModel': false,
-      'effort': 'max',
-      'provider': 'deepseek',
-      'vendor': 'DeepSeek',
-      'indexScore': 46.3,
-      'frontiercode': 46.5,
-      'terminalBench': 30.8,
-      'sweAtlas': 61.6,
-      'costUsd': 0.3,
-      'wallTimeSec': 1284.9,
-      'steps': 101.5,
-      'totalTokens': 16739365,
-      'src': 'aggregate',
-      'rank': 17
+      'rank': 18
     },
     {
       'id': '41bcc9881ff1465f62e417e5a7535e20',
@@ -409,7 +430,27 @@ window.AACODING = {
       'steps': 66.8,
       'totalTokens': 5600134,
       'src': 'aggregate',
-      'rank': 18
+      'rank': 19
+    },
+    {
+      'id': '24c98f188d41522a849006ac453fdebe',
+      'agent': 'DeepSeek Harness',
+      'model': 'DeepSeek V4.1 Flash 1017 (Max)',
+      'displayLabel': 'DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max)',
+      'multiModel': false,
+      'effort': 'max',
+      'provider': 'deepseek',
+      'vendor': 'DeepSeek',
+      'indexScore': 46.3,
+      'frontiercode': 46.5,
+      'terminalBench': 30.8,
+      'sweAtlas': 61.6,
+      'costUsd': 0.3,
+      'wallTimeSec': 1284.9,
+      'steps': 101.5,
+      'totalTokens': 16739365,
+      'src': 'aggregate',
+      'rank': 20
     },
     {
       'id': 'f09fd629724ff1b103982a6158d00183',
@@ -429,7 +470,7 @@ window.AACODING = {
       'steps': 208.3,
       'totalTokens': 17824341,
       'src': 'aggregate',
-      'rank': 19
+      'rank': 21
     },
     {
       'id': '06c2cfad6e3aba9000f2dd5e429d4407',
@@ -449,7 +490,7 @@ window.AACODING = {
       'steps': 142.1,
       'totalTokens': 22141656,
       'src': 'aggregate',
-      'rank': 20
+      'rank': 22
     },
     {
       'id': 'a3eeef492929228973b8da75e051291d',
@@ -469,7 +510,7 @@ window.AACODING = {
       'steps': 58,
       'totalTokens': 4075423,
       'src': 'aggregate',
-      'rank': 21
+      'rank': 23
     },
     {
       'id': '88c83705811535bca8ee000bfd3a256c',
@@ -489,7 +530,7 @@ window.AACODING = {
       'steps': 185.9,
       'totalTokens': 9010346,
       'src': 'aggregate',
-      'rank': 22
+      'rank': 24
     },
     {
       'id': '1630d319b5e4dc5183cb88a2b2af1646',
@@ -509,7 +550,7 @@ window.AACODING = {
       'steps': 114.8,
       'totalTokens': 9153421,
       'src': 'aggregate',
-      'rank': 23
+      'rank': 25
     },
     {
       'id': 'ee13e548b65eeee544cd5b0c6068a4f5',
@@ -529,7 +570,7 @@ window.AACODING = {
       'steps': 81.5,
       'totalTokens': 5776354,
       'src': 'aggregate',
-      'rank': 24
+      'rank': 26
     },
     {
       'id': '2a2fed494e0d1343b14efe96e6bc3669',
@@ -549,7 +590,7 @@ window.AACODING = {
       'steps': 114.3,
       'totalTokens': 16053234,
       'src': 'aggregate',
-      'rank': 25
+      'rank': 27
     },
     {
       'id': 'b54e883be1cff7a6a43a737ee106011c',
@@ -569,7 +610,7 @@ window.AACODING = {
       'steps': 42.7,
       'totalTokens': 1886087,
       'src': 'aggregate',
-      'rank': 26
+      'rank': 28
     },
     {
       'id': 'e17ee3a79eab160154a92f31c6c2b1fa',
@@ -589,7 +630,7 @@ window.AACODING = {
       'steps': 202.5,
       'totalTokens': 14251511,
       'src': 'aggregate',
-      'rank': 27
+      'rank': 29
     },
     {
       'id': 'c54a3c8e7e89d5a784e98211605eaa53',
@@ -609,7 +650,7 @@ window.AACODING = {
       'steps': 81.4,
       'totalTokens': 8885939,
       'src': 'aggregate',
-      'rank': 28
+      'rank': 30
     },
     {
       'id': 'd843fce803ff4f84ababc47040306116',
@@ -629,7 +670,7 @@ window.AACODING = {
       'steps': 161.4,
       'totalTokens': 13336679,
       'src': 'aggregate',
-      'rank': 29
+      'rank': 31
     },
     {
       'id': 'accfbb12d349c0f2c93547ce814534b2',
@@ -649,7 +690,7 @@ window.AACODING = {
       'steps': 93,
       'totalTokens': 4890063,
       'src': 'aggregate',
-      'rank': 30
+      'rank': 32
     }
   ]
 };

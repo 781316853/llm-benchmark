@@ -16,12 +16,12 @@ window.AUTOMATIONBENCH = {
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-28',
-  'refreshedAt': '2026-10-28 21:21',
+  'refreshedAt': '2026-10-29 03:45',
   'stats': {
     'tasks': 600,
     'domains': 6,
     'tools': 47,
-    'entries': 39,
+    'entries': 40,
     'unsourced': 6
   },
   'desc': 'AutomationBench(Zapier):跨应用业务工作流智能体基准,600 个公开任务分布在 47 个模拟 SaaS 工具、6 个业务域(销售/营销/运营/客服/财务/HR),把一个真实运营请求交给智能体、再按最终环境状态做确定性断言打分(不看回复文本、无 LLM-as-judge);主指标为严格全通过率 task_completed_correctly,越高越好。分数普遍偏低,主因是「宣称完成但环境状态错误」的假自信。',
@@ -74,11 +74,18 @@ window.AUTOMATIONBENCH = {
       'rank': 4
     },
     {
+      'model': 'Gemini 4 Carbon',
+      'org': 'Google',
+      'score': 53.9,
+      'src': 'benchlm',
+      'rank': 5
+    },
+    {
       'model': 'Atria Dawn Preview',
       'org': 'Shanghai Artificial Intelligence Laboratory',
       'score': 53.8,
       'src': 'benchlm',
-      'rank': 5
+      'rank': 6
     },
     {
       'model': 'MiMo-V2.6-Pro',
@@ -88,14 +95,14 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式（工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 6
+      'rank': 7
     },
     {
       'model': 'Ling 3.1 Flash',
       'org': 'InclusionAI',
       'score': 52.5,
       'src': 'benchlm',
-      'rank': 7
+      'rank': 8
     },
     {
       'model': 'MiMo-V2.6-Flash',
@@ -105,7 +112,7 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式（工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'Gemini 4 Argon',
@@ -118,7 +125,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'Qwen3.8-Max-0902',
@@ -128,17 +135,17 @@ window.AUTOMATIONBENCH = {
       'effort': '极高强度思考（工具）',
       'date': '2026-09-02',
       'src': 'datalearner-unsourced',
-      'rank': 10
+      'rank': 11
     },
     {
       'model': 'Ultramarine 1 Flash',
       'org': 'Paper Instruments',
       'score': 50.2,
       'src': 'benchlm',
-      'rank': 11
+      'rank': 12
     },
     {
-      'rank': 12,
+      'rank': 13,
       'model': 'Muse Spark 1.3',
       'org': 'Meta',
       'score': 49.4,
@@ -161,7 +168,7 @@ window.AUTOMATIONBENCH = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'GLM-5.3',
@@ -174,7 +181,7 @@ window.AUTOMATIONBENCH = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'Claude Sonnet 5.5',
@@ -187,7 +194,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'Step 5 Preview',
@@ -197,7 +204,7 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式 High（工具）',
       'date': '2026-09-20',
       'src': 'datalearner',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'GPT-6 Astra',
@@ -210,14 +217,14 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 10.00 / $ 50.00',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'LFM3-1.7B',
       'org': 'LiquidAI',
       'score': 41.29,
       'src': 'benchlm',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'Claude Opus 5.5',
@@ -230,10 +237,10 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 4.00 / $ 20.00',
-      'rank': 19
+      'rank': 20
     },
     {
-      'rank': 20,
+      'rank': 21,
       'model': 'Beam 1.0',
       'org': 'Reflection AI',
       'score': 39.3,
@@ -251,7 +258,7 @@ window.AUTOMATIONBENCH = {
       'effort': '最高（工具）',
       'date': '2026-04-24',
       'src': 'datalearner-unsourced',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'Beam',
@@ -261,24 +268,24 @@ window.AUTOMATIONBENCH = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-10-05',
       'src': 'datalearner',
-      'rank': 22
+      'rank': 23
     },
     {
       'model': 'GPT-6.1 Sol',
       'org': 'OpenAI',
       'score': 36.1,
       'src': 'benchlm',
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'GPT-6 Sol',
       'org': 'OpenAI',
       'score': 33.2,
       'src': 'benchlm',
-      'rank': 24
+      'rank': 25
     },
     {
-      'rank': 25,
+      'rank': 26,
       'model': 'Hy4 preview',
       'org': 'Tencent',
       'score': 32.1,
@@ -289,7 +296,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'DeepSeek-V4-Pro-0813',
       'org': 'DeepSeek',
       'score': 31.8,
@@ -300,7 +307,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 27,
+      'rank': 28,
       'model': 'Claude Fable 5.1',
       'org': 'Anthropic',
       'score': 31.4,
@@ -311,7 +318,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 28,
+      'rank': 29,
       'model': 'Kimi K3',
       'org': 'Moonshot AI',
       'score': 30.8,
@@ -324,7 +331,7 @@ window.AUTOMATIONBENCH = {
       'date': '2026-07-16'
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'Gemini 3.7 Flash',
       'org': 'Google',
       'score': 30.4,
@@ -339,10 +346,10 @@ window.AUTOMATIONBENCH = {
       'org': 'LiquidAI',
       'score': 27.69,
       'src': 'benchlm',
-      'rank': 30
+      'rank': 31
     },
     {
-      'rank': 31,
+      'rank': 32,
       'model': 'Qwen3.8 Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 27.3,
@@ -353,7 +360,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 32,
+      'rank': 33,
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
       'score': 26,
@@ -366,7 +373,7 @@ window.AUTOMATIONBENCH = {
       'date': '2026-07-24'
     },
     {
-      'rank': 33,
+      'rank': 34,
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
       'org': 'DeepSeek',
       'score': 25.7,
@@ -377,7 +384,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 34,
+      'rank': 35,
       'model': 'DeepSeek-V4-Flash-0731',
       'org': 'DeepSeek',
       'score': 25.1,
@@ -388,7 +395,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 35,
+      'rank': 36,
       'model': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 18.1,
@@ -401,7 +408,7 @@ window.AUTOMATIONBENCH = {
       'date': '2026-06-26'
     },
     {
-      'rank': 36,
+      'rank': 37,
       'model': 'Claude Fable 5',
       'org': 'Anthropic',
       'score': 17.4,
@@ -412,7 +419,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 37,
+      'rank': 38,
       'model': 'GPT-5.6 Terra',
       'org': 'OpenAI',
       'score': 15.2,
@@ -423,7 +430,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 38,
+      'rank': 39,
       'model': 'GPT-5.6 Luna',
       'org': 'OpenAI',
       'score': 14.9,
@@ -434,7 +441,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 39,
+      'rank': 40,
       'model': 'Claude Sonnet 5',
       'org': 'Anthropic',
       'score': 13.5,
