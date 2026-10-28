@@ -10,7 +10,7 @@
 //      模型看不到隐藏测试,无人工反馈;总分为四轴之和(0-70),分数越高越好。
 // 混口径提醒:harness 逐模型不同(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity /
 //      DeepSeek Harness),分数是「模型 + 各家 agent」的产物,故与 ModelDial / 亿模亿样同为「第三方实测」
-//      计分组、但按站内判据压低权重(综合分权重 10%);主办方非被评厂商,故不属于 CursorBench / FrontierCode
+//      计分组、但按站内判据压低权重(综合分权重 8%);主办方非被评厂商,故不属于 CursorBench / FrontierCode
 //      那类「仅展示」处理。
 // 输出:data/aicodingdaily.js(window.AICODINGDAILY)。
 "use strict";
@@ -161,7 +161,7 @@ class AICodingDailySource extends BaseSource {
       "//      score=总分(0-" + MAX_POINTS + "),四轴 laravel(" + AXES.laravel + ")/reactTs(" + AXES.reactTs +
       ")/bugFinding(" + AXES.bugFinding + ")/edgeCase(" + AXES.edgeCase + ");costUsd=每 prompt 平均成本(USD,源站未给为 null)\n" +
       "//      timeSec=每 prompt 平均耗时(秒);harness=该次实测所用 agent 命令行(逐模型不同)\n" +
-      "// 用途:独立第三方实测(主办方非被评厂商)→ 计入总览综合分(权重 10%)与命中数;完整榜见「AI Coding Daily」页。\n",
+      "// 用途:独立第三方实测(主办方非被评厂商)→ 计入总览综合分(权重 8%)与命中数;完整榜见「AI Coding Daily」页。\n",
       {
         source: "AI Coding Daily",
         url: this.cfg.url,

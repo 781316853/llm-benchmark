@@ -3,7 +3,7 @@
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
 //      timeSec=每 prompt 平均耗时(秒);harness=该次实测所用 agent 命令行(逐模型不同)
-// 用途:独立第三方实测(主办方非被评厂商)→ 计入总览综合分(权重 10%)与命中数;完整榜见「AI Coding Daily」页。
+// 用途:独立第三方实测(主办方非被评厂商)→ 计入总览综合分(权重 8%)与命中数;完整榜见「AI Coding Daily」页。
 window.AICODINGDAILY = {
   'source': 'AI Coding Daily',
   'url': 'https://aicodingdaily.com/leaderboard',
