@@ -1,4 +1,4 @@
-// 数据源:ProgramBench(cleanroom 程序重建·编码 Agent,更新于 2026-10-27)
+// 数据源:ProgramBench(cleanroom 程序重建·编码 Agent,更新于 2026-10-28)
 // 来源:https://programbench.com/(官方:https://programbench.com/) · 补充镜像 https://www.vals.ai/benchmarks/programbench
 // 补充:https://aireleasetracker.com/benchmark/programbench(第三方聚合 T3,只补缺失模型)
 // 字段说明:model=模型名;effort=推理档位;agent=代理;score=Fully Resolved 完全解决率(%);almost=Almost(≥95% 行为测试通过率,%);rawPassRate=隐藏测试平均通过率(vals 独有,%);src=数据来源渠道(official/vals/aireleasetracker/moonshot-official)
@@ -8,8 +8,8 @@ window.PROGRAMBENCH = {
   'source': 'ProgramBench',
   'url': 'https://programbench.com/',
   'officialUrl': 'https://programbench.com/',
-  'updated': '2026-10-27',
-  'refreshedAt': '2026-10-28 07:55',
+  'updated': '2026-10-28',
+  'refreshedAt': '2026-10-28 14:02',
   'stats': {
     'tasks': 200,
     'entries': 73

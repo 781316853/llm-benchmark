@@ -2,17 +2,80 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-27',
+  'updated': '2026-10-28',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
     '技术与洞察',
-    '产品应用',
-    '行业动态'
+    '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-28',
+      'title': 'Google DeepMind 发布世界模型 Genie 4 研究预览，可实时改场景',
+      'brief': 'Google DeepMind 发布新一代世界模型 Genie 4 ，它借助 Gemini Omni 让模拟贴近真实世界的外观和行为，并由其他 Gemini 模型保持模拟的连贯。用户可随时用文字提示改变天气、镜头或加入新的人物和物体，模型能模拟空气动力学、碰撞等物理效果，人物动作自然。',
+      'url': 'https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-28',
+      'title': 'Cursor Design Mode 上线 Annotate 标注功能',
+      'brief': 'Cursor 在 Design Mode 中推出 Annotate 功能，用户可在浏览器中点选元素、在页面上绘图，向 agent 提供视觉提示，并在不同屏幕尺寸下审阅设计。按 Cmd+Shift+D 即可开启。',
+      'url': 'https://cursor.com/docs/agent/design-mode',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-28',
+      'title': 'Google 开始向 Antigravity IDE 用户推送 Gemini 4 Argon',
+      'brief': 'Google Antigravity 团队成员 Rody Davis 表示， Google 正开始向 Antigravity IDE 用户逐步推送 Gemini 4 Argon ，用户可在接下来的 24 小时 内留意更新。',
+      'url': 'https://gemini.google/desktop/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-28',
+      'title': '蚂蚁百灵开源 Ling-3.1-flash-1019 及基座模型',
+      'brief': '蚂蚁百灵 开源了此前发布的 Ling-3.1-flash-1019 ，并开放用于进一步训练的 Ling-3.1-flash-base 基座模型。',
+      'url': 'https://huggingface.co/inclusionAI/Ling-3.1-flash-1019',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-28',
+      'title': '微软发布 MAI-Image-2.7-Preview 图片编辑模型',
+      'brief': 'Microsoft AI 推出图片编辑模型 MAI-Image-2.7-Preview ，接替 8 月 发布的 MAI-Image-2.6 ，目前已在 MAI Playground 上线，仅支持图片编辑，据称文生图功能即将推出。',
+      'url': 'https://microsoft.ai/news/mai-image-2-7-debut/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-28',
+      'title': 'Microsoft 通过 MDASH 发布 MAI Cyber 1.1 Flash 安全模型',
+      'brief': 'Microsoft 通过 MDASH 发布网络安全模型 MAI Cyber 1.1 Flash 。该公司称，在内部 MDASH 漏洞扫描评估集上，新模型与 MAI Cyber 1 Flash 性能相当，单次扫描成本降低 18% 。',
+      'url': 'https://microsoft.ai/news/mai-cyber-1-1-flash',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-28',
+      'title': '商汤开源 SenseNova 6.8 Code2Video 视频模型',
+      'brief': '商汤 开源 SenseNova 6.8 Code2Video ，这是一款由代码驱动的视频创作模型，基于 Qwen3.8-27B 微调，支持 512K 上下文。',
+      'url': 'https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-28',
+      'title': '百度开源 Unlimited OCR 2，支持长文档解析',
+      'brief': '百度 开源长文档解析模型 Unlimited OCR 2 ，模型权重已在 Hugging Face 公开。该模型采用 SR-SWA 机制，将文本与图像之间的注意力交互压缩为固定数量的工作参考，在有限上下文窗口内解析长文档。',
+      'url': 'https://github.com/baidu/Unlimited-OCR',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
     {
       'date': '2026-10-27',
       'title': 'OpenAI 发布 GPT-6.1 Terra，主打电脑操作',
@@ -87,14 +150,6 @@ window.NEWS = {
     },
     {
       'date': '2026-10-27',
-      'title': '腾讯混元发布同声传译模型 Hy-SimulMT',
-      'brief': '腾讯混元 发布实时同声传译大模型 Hy-SimulMT ，支持中文与英文之间的双向语音到语音翻译，模型边听边译，同步给出译文文字与语音，并支持实时音色克隆。',
-      'url': 'https://hy.tencent.com/model/open-source-model/detail?id=hy-simulmt',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-27',
       'title': 'OpenAI 发布 Signals 数据，展示近 100 国 ChatGPT 工作用途',
       'brief': 'OpenAI 经济研究部门发布 OpenAI Signals 数据，涵盖近 100 个国家的 165 项工作活动，按季度记录 2025 年第一季度至 2026 年第三季度 用户用 ChatGPT 处理工作的情况。研究人员可以比较不同国家的使用差异、追踪变化，并与其他经济指标对照。',
       'url': 'https://openai.com/index/chatgpt-expanding-world-of-work',
@@ -108,54 +163,6 @@ window.NEWS = {
       'url': 'https://artificialanalysis.ai/evaluations/code2video-aa',
       'source': '橘鸦AI早报',
       'type': '技术与洞察'
-    },
-    {
-      'date': '2026-10-26',
-      'title': 'Kimi.ai 致歉 K3.1 Pro 限流并重置用量',
-      'brief': 'Kimi.ai 就 K3.1 Pro 订阅方案出现限流及不必要的额度消耗致歉，称这些问题由自身造成，本应更早修复。该公司为所有档位的订阅用户进行一次性用量重置，最多恢复相当于月度额度 25% 的用量；如果已用量低于 25% ，则将已用量重置为零。',
-      'url': 'https://x.com/Kimi_Moonshot/status/2114450610724708492',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-26',
-      'title': 'CapCut 插件将接入 ChatGPT，11 月开放测试',
-      'brief': 'CapCut 宣布，视频编辑和生成插件即将接入 ChatGPT ，计划于 11 月 在移动端、桌面端和网页端开放测试。',
-      'url': 'https://www.capcut.com/tools/capcut-x-codex',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-26',
-      'title': 'OpenCode 披露 DeepSeek 推理机架运行数据',
-      'brief': 'OpenCode 团队成员 dax 披露，新 GPU 机架上的 DeepSeek 推理配置在过去 24 小时 处理了 6.77 万亿 token ， p50 首 token 延迟为 1.16 秒 ， p50 吞吐为每秒 143 token 。',
-      'url': 'https://x.com/thdxr/status/2114211145615626433',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-26',
-      'title': 'Nanbeige 开源 33B 模型 Nanbeige4.3-33B',
-      'brief': 'BOSS 直聘 LLM 团队 Nanbeige 开源 Nanbeige4.3-33B ，模型为 33B 参数的 dense 架构，支持 512K 上下文，采用 Apache-2.0 协议。',
-      'url': 'https://x.com/nanbeige/status/2114328933181333798',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-26',
-      'title': 'Anthropic 建议企业将部分 subagent 并入主 agent 循环',
-      'brief': 'Anthropic 近期在 Claude 博客建议，已在 Claude Platform 上构建多 subagent 的企业，可把路由、规划和领域 subagent 整合进主 agent 循环，通过 Skills 和工具搜索按需加载上下文与工具。',
-      'url': 'https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-10-26',
-      'title': 'Elvis Presley 歌曲权利方起诉 Anthropic，索赔约 4100 万美元',
-      'brief': '据 Billboard 报道， Authentic Brands Group 旗下实体与其他 Elvis Presley （猫王）权利实体起诉 Anthropic ，指控其未经授权使用 274 首歌曲训练 Claude ，侵犯歌曲版权。',
-      'url': 'https://www.billboard.com/pro/elvis-presley-estate-sues-suno-anthropic/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
     }
   ]
 };
