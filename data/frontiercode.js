@@ -1,4 +1,4 @@
-// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 2026-10-27)
+// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 2026-10-29)
 // 来源:https://cognition.com/data/frontiercode-leaderboard/data.json(榜单页:https://cognition.com/frontiercode)
 // 字段:score=标准分(%,main 子集下各档位最优);passRate=原始正确率(%);harness=评测所用厂商 CLI;
 //      costUsd/tokens/steps=该最优档位下的每任务平均成本/tokens/步数;flaggedRate=被判定不公平联网的运行比例(%)
@@ -9,11 +9,11 @@ window.FRONTIERCODE = {
   'boardUrl': 'https://cognition.com/frontiercode',
   'officialUrl': 'https://cognition.com/frontiercode',
   'version': '1.1',
-  'updated': '2026-10-27',
-  'refreshedAt': '2026-10-28 07:55',
+  'updated': '2026-10-29',
+  'refreshedAt': '2026-10-29 14:14',
   'stats': {
     'tasks': 100,
-    'entries': 46
+    'entries': 45
   },
   'desc': 'FrontierCode 1.1(Cognition 官方):任务由 20+ 资深开发者制作(每个任务投入 40+ 小时),不只看代码能否跑通,而是按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」;分 main(100 题)与 extended(150 题)两个子集,本页取 main 口径、各推理档位最优;分数越高越好。',
   'models': [
@@ -163,7 +163,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 4 Argon',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 47.6,
       'passRate': 52.8,
       'costUsd': 6.74,
@@ -228,7 +228,7 @@ window.FRONTIERCODE = {
     {
       'model': 'DeepSeek V4.1 Flash',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 43.9,
       'passRate': 48.6,
       'costUsd': 0.62,
@@ -241,7 +241,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 3.7 Flash',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 43.6,
       'passRate': 48.9,
       'costUsd': 1.82,
@@ -306,7 +306,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-1.7',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 42,
       'passRate': 47.4,
       'costUsd': 1.97,
@@ -332,7 +332,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 3.8 Flash',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 41.2,
       'passRate': 46.7,
       'costUsd': 2.6,
@@ -345,7 +345,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GLM 5.3',
       'effort': 'max',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 40.1,
       'passRate': 44.7,
       'costUsd': 16.91,
@@ -369,19 +369,6 @@ window.FRONTIERCODE = {
       'rank': 27
     },
     {
-      'model': 'Mistral Large 4 (Preview)',
-      'effort': 'high',
-      'harness': 'chisel',
-      'score': 39.4,
-      'passRate': 43.5,
-      'costUsd': 4.13,
-      'tokens': 96846,
-      'steps': 228,
-      'flaggedRate': 3.6,
-      'src': 'official',
-      'rank': 28
-    },
-    {
       'model': 'Claude Opus 4.7',
       'effort': 'max',
       'harness': 'claude-code',
@@ -392,12 +379,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.4,
       'src': 'official',
-      'rank': 29
+      'rank': 28
     },
     {
       'model': 'Gemini 3.6 Flash',
       'effort': 'medium',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 34.4,
       'passRate': 38.9,
       'costUsd': 4.04,
@@ -405,12 +392,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 30
+      'rank': 29
     },
     {
       'model': 'GLM 5.3 Flash',
       'effort': 'max',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 31.8,
       'passRate': 35.7,
       'costUsd': 1.15,
@@ -418,7 +405,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 31
+      'rank': 30
     },
     {
       'model': 'Kimi K2.7',
@@ -431,12 +418,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 32
+      'rank': 31
     },
     {
       'model': 'DeepSeek V4 Pro 0813',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 28.6,
       'passRate': 31.8,
       'costUsd': 1.81,
@@ -444,7 +431,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 10.6,
       'src': 'official',
-      'rank': 33
+      'rank': 32
     },
     {
       'model': 'GPT-5.4-mini',
@@ -457,7 +444,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.1,
       'src': 'official',
-      'rank': 34
+      'rank': 33
     },
     {
       'model': 'Claude Opus 4.6',
@@ -470,7 +457,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.3,
       'src': 'official',
-      'rank': 35
+      'rank': 34
     },
     {
       'model': 'Composer 2.5',
@@ -483,7 +470,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 2.4,
       'src': 'official',
-      'rank': 36
+      'rank': 35
     },
     {
       'model': 'GLM 5.2',
@@ -496,7 +483,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 37
+      'rank': 36
     },
     {
       'model': 'Claude Sonnet 4.6',
@@ -509,12 +496,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 38
+      'rank': 37
     },
     {
       'model': 'DeepSeek V4 Flash 0731',
       'effort': 'high',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 18.8,
       'passRate': 21.1,
       'costUsd': 1.53,
@@ -522,7 +509,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 25.5,
       'src': 'official',
-      'rank': 39
+      'rank': 38
     },
     {
       'model': 'DeepSeek V4 Pro',
@@ -535,7 +522,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 1,
       'src': 'official',
-      'rank': 40
+      'rank': 39
     },
     {
       'model': 'MiniMax M3',
@@ -548,7 +535,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 1.5,
       'src': 'official',
-      'rank': 41
+      'rank': 40
     },
     {
       'model': 'Inkling',
@@ -561,12 +548,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 7.6,
       'src': 'official',
-      'rank': 42
+      'rank': 41
     },
     {
       'model': 'Nemotron 3 Ultra',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 13.6,
       'passRate': 15.4,
       'costUsd': 1.47,
@@ -574,7 +561,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.2,
       'src': 'official',
-      'rank': 43
+      'rank': 42
     },
     {
       'model': 'Qwen 3.7 Plus',
@@ -587,12 +574,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.9,
       'src': 'official',
-      'rank': 44
+      'rank': 43
     },
     {
       'model': 'SWE-1.6',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 9.4,
       'passRate': 10.5,
       'costUsd': 0.49,
@@ -600,12 +587,12 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0,
       'src': 'official',
-      'rank': 45
+      'rank': 44
     },
     {
       'model': 'Mistral 3.5 Medium',
       'effort': 'none',
-      'harness': 'chisel',
+      'harness': 'devin-cli',
       'score': 8,
       'passRate': 9,
       'costUsd': 1.35,
@@ -613,7 +600,7 @@ window.FRONTIERCODE = {
       'steps': null,
       'flaggedRate': 0.6,
       'src': 'official',
-      'rank': 46
+      'rank': 45
     }
   ]
 };
