@@ -14,7 +14,7 @@ window.TBENCH = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-10-29 08:11',
+  'refreshedAt': '2026-10-29 14:14',
   'stats': {
     'tasks': 66,
     'entries': 42
@@ -455,6 +455,18 @@ window.TBENCH = {
     },
     {
       'rank': null,
+      'model': 'Gemini 4 Carbon',
+      'agent': null,
+      'effort': '思考模式 High（工具）',
+      'score': 63.13,
+      'ci': null,
+      'date': '2026-10-28',
+      'tokens': null,
+      'cost': null,
+      'src': 'datalearner'
+    },
+    {
+      'rank': null,
       'model': 'Claude Mythos 5.1',
       'agent': null,
       'effort': '最高（工具）',
@@ -497,18 +509,6 @@ window.TBENCH = {
       'score': 52,
       'ci': null,
       'date': '2026-10-12',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'GPT-6.1 Terra',
-      'agent': null,
-      'effort': '最高（工具）',
-      'score': 50.3,
-      'ci': null,
-      'date': '2026-10-26',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'

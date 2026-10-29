@@ -295,6 +295,7 @@ window.SEEN = {
     'tbench|Mistral Large 4': '2026-10-24',
     'llm|Kimi-K3.1-Pro (max)': '2026-10-25',
     'llm|Hy4 preview (high)': '2026-10-26',
-    'tbench|GPT-6.1 Terra': '2026-10-26'
+    'tbench|GPT-6.1 Terra': '2026-10-26',
+    'tbench|Gemini 4 Carbon': '2026-10-29'
   }
 };
