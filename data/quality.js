@@ -10,7 +10,7 @@ window.QUALITY = {
       'id': 'aa_coding_agents',
       'name': 'AA Coding Agent Index v2.0',
       'status': 'ok',
-      'modelCount': 32,
+      'modelCount': 34,
       'updated': '2026-10-29',
       'ageDays': 0,
       'completeness': 1,
@@ -65,7 +65,7 @@ window.QUALITY = {
       'id': 'arena_agent',
       'name': 'Agent Arena (LMArena)',
       'status': 'ok',
-      'modelCount': 54,
+      'modelCount': 52,
       'updated': '2026-10-29',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 40,
+      'modelCount': 41,
       'updated': '2026-10-29',
       'ageDays': 0,
       'completeness': 1,
@@ -252,7 +252,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 54,
+      'modelCount': 56,
       'updated': '2026-10-29',
       'ageDays': 0,
       'completeness': 1,
@@ -307,7 +307,7 @@ window.QUALITY = {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
-      'modelCount': 121,
+      'modelCount': 122,
       'updated': '2026-10-29',
       'ageDays': 0,
       'completeness': 1,
@@ -736,9 +736,9 @@ window.QUALITY = {
   'completeness': {
     'aa_coding_agents': {
       'rate': 1,
-      'total': 32,
-      'complete': 32,
-      'modelCount': 32,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -776,9 +776,9 @@ window.QUALITY = {
     },
     'arena_agent': {
       'rate': 1,
-      'total': 54,
-      'complete': 54,
-      'modelCount': 54,
+      'total': 52,
+      'complete': 52,
+      'modelCount': 52,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -800,9 +800,9 @@ window.QUALITY = {
     },
     'automationbench': {
       'rate': 1,
-      'total': 40,
-      'complete': 40,
-      'modelCount': 40,
+      'total': 41,
+      'complete': 41,
+      'modelCount': 41,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -918,9 +918,9 @@ window.QUALITY = {
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 54,
-      'complete': 54,
-      'modelCount': 54,
+      'total': 56,
+      'complete': 56,
+      'modelCount': 56,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -958,9 +958,9 @@ window.QUALITY = {
     },
     'vals_vibe_code': {
       'rate': 1,
-      'total': 121,
-      'complete': 121,
-      'modelCount': 121,
+      'total': 122,
+      'complete': 122,
+      'modelCount': 122,
       'missingFields': {},
       'flag': 'ok'
     }

@@ -16,12 +16,12 @@ window.AUTOMATIONBENCH = {
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-10-29 21:31',
+  'refreshedAt': '2026-10-30 03:46',
   'stats': {
     'tasks': 600,
     'domains': 6,
     'tools': 47,
-    'entries': 40,
+    'entries': 41,
     'unsourced': 6
   },
   'desc': 'AutomationBench(Zapier):跨应用业务工作流智能体基准,600 个公开任务分布在 47 个模拟 SaaS 工具、6 个业务域(销售/营销/运营/客服/财务/HR),把一个真实运营请求交给智能体、再按最终环境状态做确定性断言打分(不看回复文本、无 LLM-as-judge);主指标为严格全通过率 task_completed_correctly,越高越好。分数普遍偏低,主因是「宣称完成但环境状态错误」的假自信。',
@@ -56,7 +56,7 @@ window.AUTOMATIONBENCH = {
       'score': 59.9,
       'size': '1.1T',
       'context': '1.0M',
-      'cost': '$ 0.68 / $ 2.09',
+      'cost': '$ 0.70 / $ 2.10',
       'license': null,
       'src': 'llm-stats'
     },
@@ -81,6 +81,9 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式 High（工具）',
       'date': '2026-10-28',
       'src': 'datalearner',
+      'size': '—',
+      'context': '—',
+      'cost': '—',
       'rank': 5
     },
     {
@@ -388,6 +391,17 @@ window.AUTOMATIONBENCH = {
     },
     {
       'rank': 35,
+      'model': 'K2 Horizon 375B-A23B',
+      'org': 'Institute of Foundation Models',
+      'score': 25.3,
+      'size': '375B',
+      'context': '—',
+      'cost': '—',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 36,
       'model': 'DeepSeek-V4-Flash-0731',
       'org': 'DeepSeek',
       'score': 25.1,
@@ -398,7 +412,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 36,
+      'rank': 37,
       'model': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 18.1,
@@ -411,7 +425,7 @@ window.AUTOMATIONBENCH = {
       'date': '2026-06-26'
     },
     {
-      'rank': 37,
+      'rank': 38,
       'model': 'Claude Fable 5',
       'org': 'Anthropic',
       'score': 17.4,
@@ -422,7 +436,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 38,
+      'rank': 39,
       'model': 'GPT-5.6 Terra',
       'org': 'OpenAI',
       'score': 15.2,
@@ -433,7 +447,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 39,
+      'rank': 40,
       'model': 'GPT-5.6 Luna',
       'org': 'OpenAI',
       'score': 14.9,
@@ -444,7 +458,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 40,
+      'rank': 41,
       'model': 'Claude Sonnet 5',
       'org': 'Anthropic',
       'score': 13.5,

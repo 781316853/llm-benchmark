@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-10-29',
-  'refreshedAt': '2026-10-29 21:31',
+  'refreshedAt': '2026-10-30 03:46',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,8 +19,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
+        {
+          'version': '0.166.0',
+          'title': 'rust-v0.166.0',
+          'date': '2026-10-29',
+          'dateRaw': '2026-10-29T17:44:31Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.166.0',
+          'body': '版本0.166.0',
+          'h': 'd1808448'
+        },
         {
           'version': '0.166.0-alpha.5.1',
           'title': '0.166.0-alpha.5.1',
@@ -35,15 +45,10 @@ window.CHANGELOG = {
           'version': '0.165.0',
           'title': '0.165.0',
           'date': '2026-10-27',
-          'dateRaw': '2026-10-27T20:09:38Z',
-          'tags': [
-            'New Features',
-            'Bug Fixes',
-            'Changelog'
-          ],
+          'dateRaw': '2026-10-27T20:11:49Z',
+          'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.165.0',
-          'body': '## 新功能\n\n- 添加了内置的Google Cloud Vertex AI提供程序，配置为`model_provider = \'gcp\'`。(# 56265)\n- 将GPT-6.1 TERRA添加到型号目录。(# 57337)\n- 将存储库筛选器添加到会话选取器，将目录分组添加到代理命令中心，以便更轻松地在链接的工作树中导航会话。（ # 56308 ）\n- 向应用服务器API添加了实验性附加线程分叉。(# 56351)\n- 默认情况下，对于支持的模型，对话期间启用的推理工作量会发生变化。（ # 56163 ）\n- 默认情况下为全新配置文件启用内存v2 ，并添加了对导入外部代理内存的支持。(# 56211, # 56414)\n\n## 错误修复\n\n- 修复了新的TUI会话，以便在未提供显式覆盖时向服务器的默认审批审核者致敬。(# 56090)\n- 保持TUI首选项可编辑，并在执行设置无效时立即适用。（ # 56091 ）\n- 本地响应期货掉线时取消远程MCP工具请求。（ # 56132 ）\n- 防止排队代理消息在中断或切换到计划模式后重新启动工作。(# 56330)\n- 当提供程序报告找不到模型时，停止重试，保留其错误消息。(# 56445)\n- 弥补了市场URL验证缺口，该缺口可能允许Git连接到与根据允许的模式检查的主机不同的主机。(# 56263)\n\n## 更新日志\n\n完整更新日志： https://github.com/openai/codex/compare/rust-v0.164.0... rust-v0.165.0\n\n- # 56081缓存解密的Codex身份验证和托管机密@ celia-oai\n- # 56090新鲜TUI启动@ etraut-openai上荣耀服务器审批人默认\n- # 56091执行设置无效时保持TUI首选项可编辑@ etraut-openai\n- # 56097准备TUI启动接受多个后端会话@ bc-openai\n- # 56124将Guardian审阅者事件转发给父原始事件订阅者@ jif-oai\n- # 56127避免在账号刷新时阻止EMA身份验证状态检查@ jif-oai\n- # 56132响应期货掉线时取消MCP工具请求@ rhan-oai\n- # 56133最终答案为空后推迟代理邮件@ eknight-oai\n- # 56139修复MCP auth status test的IdP OAuth配置@ jif-oai\n- # 56153保留安全企业MCP认证错误详情@ jif-oai\n- # 56154在允许规则@ olliem-oai之前添加托管网络审查域\n- # 56163默认启用推理工作覆盖@ felixxia-oai\n- # 56182将AWS SigV4签名添加到网络代理MITM hooks @ viyatb-oai\n- # 56210稳定市场分期清理测试@ felixxia-oai\n- # 56211 v2 @ jif-oai默认全新内存配置文件\n- # 56214从WSL DrvFS detection @ felixxia-oai中删除`u64`转换\n- # 56220在Windows沙盒清单测试中使用cargo_bin @ felixxia-oai\n- # 56222将Bazel CI设置整合到`prepare-bazel-ci` @ anp-oai\n- # 56224跨分页简历配置加载重用当前模型上下文@ charliemarsh-oai\n- # 56233使OPUS编码器测试时间戳遵循样本时间@ goodman-oai\n- # 56234仅在钩子接受输入@ abhinav-oai后发出提示遥测\n- # 56236让代码模式yield/resume测试yield在阶段之间显式@ goodman-oai\n- # 56246在Bazel CI设置操作@ anp-oai中将Bazelisk颠簸至1.30.0\n- # 56247在专用测试模块@ dkovalenko-oai下整合Rust单元测试\n- # 56248将CI中的紫外线提升到0.13.5 ，并在anp-oai上发布工作流程\n- # 56250恢复线程时避免重复设置检查点@ owenlin0\n- # 56261隔离V8源代码依赖项及其C + +运行时设置@ seanh-oai\n- # 56263拒绝HTTP (S)市场URL userinfo @ willwang-openai中的反斜杠\n- # 56265添加内置Google Cloud Vertex AI提供商@ celia-oai\n- # 56266跨运行时叠加层保留MCP禁用原因@ mzeng-openai\n- # 56272将Python SDK模型生成升级到datamodel-code-generator 0.64.0 @ anp-oai\n- # 56274在加载器生命周期测试中等待云配置刷新取消@ goodman-oai\n- # 56277在AWS SigV4签名@ viyatb-oai中支持绑定的请求主体\n- # 56278为MCP调用@ viyatb-oai添加协商网络策略元数据支持\n- # 56280将连续成绩单提示分组到一个背景块@ bc-openai\n- # 56284线程发起人@ kennyyi-oai的Scope模型目录和缓存\n- # 56286 Bump `@ modelcontextprotocol/sdk` to `1.32.0` @ anp-oai\n- # 56288引脚Linux工件签名到Cosign v3.1.4 @ anp-oai\n- # 56290使用uv @ anp-oai锁定Python发布构建工具\n- # 56292修复MCP取消测试以使用元数据回调@ anp-oai\n- # 56293在顶点测试中使用固定令牌身份验证夹具@ anp-oai\n- # 56295从ChatGPT authentication @ smurching-oai解耦托管配置加载\n- # 56297标记内置虚拟凭据并加强冲突检查@ viyatb-oai\n- # 56301为MITM SigV4请求@ viyatb-oai添加TLS转发测试\n- # 56302将挂钩配置添加到环境附件@ andrewgu-oai\n- # 56304添加对环境范围托管挂钩@ andrewgu-oai的支持\n- # 56308在TUI @ bc-openai中单独的目录和存储库作用域\n- # 56309支持model-specific writable-root权限措辞@ goodman-oai\n- # 56312在推出跟踪@ cassirer-openai中跟踪接受的对话历史记录\n- # 56313将模型目录覆盖应用于历史记录、笔记和上下文工具@ rhan-oai\n- # 56314为自定义配置服务器@ smurching-oai添加托管配置加载器\n- # 56330让代理消息唤醒尊重中断和计划模式@ alishobeiri-oai\n- # 56342跨请求快照匹配推出跟踪图像内容@ cassirer-openai\n- # 56343在其拥有的executors上运行环境钩子@ andrewgu-oai\n- # 56351添加实验附加螺纹叉@ btraut-openai\n- # 56364允许调用者设置线程源进行采样@ keyz\n- # 56371使Guardian审核超时可配置@ vivi\n- # 56414外部代理内存导入支持内存v2 @ jif-oai\n- # 56439将“ctutils”从0.4.2更新为0.4.5 @ felixxia-oai\n- # 56445将未找到的模型提供程序错误视为终端故障@ charliemarsh-oai\n- # 56453让Realtime V2后台代理转向测试确定性@ felixxia-oai\n- # 56454使沙盒挂载清理测试允许文件描述符重用@ felixxia-oai\n- # 56459添加Guardian V3功能配置@ felixxia-oai\n- # 56460添加Guardian v3本地板助手@ felixxia-oai\n- # 56461为留言板添加无声追加支持@ felixxia-oai\n- # 56462使用合并防止内存导入@ jif-oai\n- # 56465添加实验线程内存摘要读数@ jif-oai\n- # 57337 [0.165.0-alpha.1.2] Backport GPT-6.1 TERRA to the model catalogs @ shijie-oai',
-          'h': '3f3230b8'
+          'body': 'New Features\n- Added a built-in Google Cloud Vertex AI provider, configured with model_provider = \'gcp\' . ( #56265 )\n- Added GPT-6.1 Terra to the model catalogs. ( #57337 )\n- Added a repository filter to the session picker and directory grouping to the agent command center, making it easier to navigate sessions across linked worktrees. ( #56308 )\n- Added experimental attached thread forks to the app-server API. ( #56351 )\n- Enabled reasoning effort changes during a conversation by default for supported models. ( #56163 )\n- Enabled memory v2 by default for fresh profiles and added support for importing external-agent memories into it. ( #56211 , #56414 )\nBug Fixes\n- Fixed fresh TUI sessions to honor the server’s default approval reviewer when no explicit override is provided. ( #56090 )\n- Kept TUI preferences editable and immediately applicable when execution settings are invalid. ( #56091 )\n- Cancelled remote MCP tool requests when their local response futures are dropped. ( #56132 )\n- Prevented queued agent messages from restarting work after an interrupt or a switch to Plan mode. ( #56330 )\n- Stopped retrying when a provider reports that a model was not found, preserving its error message. ( #56445 )\n- Closed a marketplace URL validation gap that could allow Git to connect to a different host than the one checked against allowed patterns. ( #56263 )\nChangelog\nFull Changelog: rust-v0.164.0...rust-v0.165.0\n- #56081 Cache decrypted Codex auth and managed secrets @celia-oai\n- #56090 Honor server approval reviewer defaults on fresh TUI startup @etraut-openai\n- #56091 Keep TUI preferences editable when execution settings are invalid @etraut-openai\n- #56097 Prepare TUI startup to accept multiple backend sessions @bc-openai\n- #56124 Forward Guardian reviewer events to parent raw-event subscribers @jif-oai\n- #56127 Avoid blocking EMA auth status checks on account refresh @jif-oai\n- #56132 Cancel MCP tool requests when response futures are dropped @rhan-oai\n- #56133 Defer agent mail after empty final answers @eknight-oai\n- #56139 Fix the MCP auth status test\'s IdP OAuth configuration @jif-oai\n- #56153 Preserve safe enterprise MCP authentication error details @jif-oai\n- #56154 Add managed network review domains before allow rules @olliem-oai\n- #56163 Enable reasoning effort overrides by default @felixxia-oai\n- #56182 Add AWS SigV4 signing to network proxy MITM hooks @viyatb-oai\n- #56210 Stabilize the marketplace staging cleanup test @felixxia-oai\n- #56211 Default fresh memory profiles to v2 @jif-oai\n- #56214 Remove the u64 cast from WSL DrvFS detection @felixxia-oai\n- #56220 Use cargo_bin in the Windows sandbox manifest test @felixxia-oai\n- #56222 Consolidate Bazel CI setup into prepare-bazel-ci @anp-oai\n- #56224 Reuse current model context across paginated resume config loading @charliemarsh-oai\n- #56233 Make Opus encoder test timestamps follow sample time @goodman-oai\n- #56234 Emit prompt telemetry only after hooks accept input @abhinav-oai\n- #56236 Make the code mode yield/resume test yield explicitly between phases @goodman-oai\n- #56246 Bump Bazelisk to 1.30.0 in the Bazel CI setup action @anp-oai\n- #56247 Consolidate Rust unit tests under dedicated test modules @dkovalenko-oai\n- #56248 Bump uv to 0.13.5 in CI and release workflows @anp-oai\n- #56250 Avoid redundant settings checkpoints when resuming threads @owenlin0\n- #56261 Isolate V8 source dependencies and their C++ runtime settings @seanh-oai\n- #56263 Reject backslashes in HTTP(S) marketplace URL userinfo @willwang-openai\n- #56265 Add a built-in Google Cloud Vertex AI provider @celia-oai\n- #56266 Preserve MCP disable reasons across runtime overlays @mzeng-openai\n- #56272 Upgrade Python SDK model generation to datamodel-code-generator 0.64.0 @anp-oai\n- #56274 Wait for cloud config refresh cancellation in loader lifetime tests @goodman-oai\n- #56277 Support bounded request bodies in AWS SigV4 signing @viyatb-oai\n- #56278 Add negotiated network policy metadata support for MCP calls @viyatb-oai\n- #56280 Group consecutive transcript prompts into one background block @bc-openai\n- #56284 Scope model catalogs and caches by thread originator @kennyyi-oai\n- #56286 Bump @modelcontextprotocol/sdk to 1.32.0 @anp-oai\n- #56288 Pin Linux artifact signing to Cosign v3.1.4 @anp-oai\n- #56290 Lock Python release build tools with uv @anp-oai\n- #56292 Fix MCP cancellation tests to use the metadata callback @anp-oai\n- #56293 Use fixed-token auth fixtures in Vertex tests @anp-oai\n- #56295 Decouple managed configuration loading from ChatGPT authentication @smurching-oai\n- #56297 Mark built-in dummy credentials and strengthen collision checks @viyatb-oai\n- #56301 Add TLS forwarding tests for MITM SigV4 requests @viyatb-oai\n- #56302 Add hook configuration to environment attachments @andrewgu-oai\n- #56304 Add support for environment-scoped managed hooks @andrewgu-oai\n- #56308 Separate directory and repository scopes in the TUI @bc-openai\n- #56309 Support model-specific writable-root permission wording @goodman-oai\n- #56312 Track accepted conversation history in rollout traces @cassirer-openai\n- #56313 Apply model catalog overrides to history, notes, and context tools @rhan-oai\n- #56314 Add managed configuration loaders for custom config servers @smurching-oai\n- #56330 Make agent-message wakes respect interrupts and Plan mode @alishobeiri-oai\n- #56342 Match rollout trace image content across request snapshots @cassirer-openai\n- #56343 Run environment hooks on their owning executors @andrewgu-oai\n- #56351 Add experimental attached thread forks @btraut-openai\n- #56364 Allow callers to set the thread source for sampling @keyz\n- #56371 Make the Guardian review timeout configurable @vivi\n- #56414 Support memory v2 in external-agent memory imports @jif-oai\n- #56439 Update ctutils from 0.4.2 to 0.4.5 @felixxia-oai\n- #56445 Treat model-not-found provider errors as terminal failures @charliemarsh-oai\n- #56453 Make the Realtime V2 background-agent steering test deterministic @felixxia-oai\n- #56454 Make sandbox mount cleanup tests tolerate file descriptor reuse @felixxia-oai\n- #56459 Add Guardian V3 feature configuration @felixxia-oai\n- #56460 Add Guardian v3 local board helpers @felixxia-oai\n- #56461 Add silent append support to message boards @felixxia-oai\n- #56462 Prevent memory imports from racing with consolidation @jif-oai\n- #56465 Add experimental thread memory summary reads @jif-oai\n- #57337 [0.165.0-alpha.1.2] Backport GPT-6.1 Terra to the model catalogs @shijie-oai'
         },
         {
           'version': '0.165.0-alpha.1.2',
@@ -1227,7 +1232,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '2.1.312',
@@ -3536,8 +3541,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
+        {
+          'version': '2.2.2',
+          'title': 'v2.2.2',
+          'date': '2026-10-29',
+          'dateRaw': '2026-10-29T18:43:03Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Improvements',
+            'Bug fixes',
+            'TUI',
+            'Desktop'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.2.2',
+          'body': '### Highlights\n\n- **Image Generation by Default**: When a connected provider supports image models, agents can now use `experimental_image_generate` without additional configuration. Set its preferred model through `experimental.image_generate.model`. ([#60258](https://github.com/anomalyco/opencode/pull/60258))\n- **Faster Worktree Selection**: On the new-session screen, click the current Git branch to open that project’s “Run session in” worktree picker directly. ([#60263](https://github.com/anomalyco/opencode/pull/60263))\n- **Unified Quotes and Annotations**: Timeline quotes, terminal quotes, and browser annotations now share a compact optional-comment editor, while source highlights remain attached to local drafts. ([#60164](https://github.com/anomalyco/opencode/pull/60164))\n\n### Core\n\n#### Improvements\n\n- Enabled `experimental_image_generate` by default when an image-capable provider is connected. ([#60258](https://github.com/anomalyco/opencode/pull/60258))\n- Recorded the start time of each session’s latest execution.\n\n#### Bug fixes\n\n- Rejected persistent terminal requests whose working directory no longer exists.\n- Preserved media when sessions are forked or imported.\n- Associated image-generation notices with the correct background job.\n\n### TUI\n\n#### Bug fixes\n\n- Preserved captured attachments and their original source paths. Thanks [@OpeOginni](https://github.com/OpeOginni). ([#60222](https://github.com/anomalyco/opencode/pull/60222))\n- Prevented middle-truncated paths from overflowing at very narrow terminal widths.\n- Improved Go usage-limit messages with the reset time and account page link.\n- Correctly typed and displayed Go and ChatGPT usage-limit errors.\n\n### Desktop\n\n#### Improvements\n\n- Made the Git branch on the new-session screen open the current project’s worktree picker directly. ([#60263](https://github.com/anomalyco/opencode/pull/60263))\n- Unified timeline quotes, terminal quotes, and browser annotations around one optional-comment workflow. ([#60164](https://github.com/anomalyco/opencode/pull/60164))\n- Restored classic question cards by default and added **Settings → Experimental → New question UI** for the redesigned keyboard-oriented dock. ([#59723](https://github.com/anomalyco/opencode/pull/59723))\n- Added a side-panel tab menu and kept close buttons visible when tabs overflow.\n- Moved user-message actions into a compact menu.\n- Redesigned the active todo pill to show the current task and concurrent work more clearly.\n- Added consistent styling for searchable dialogs and composer pills.\n\n#### Bug fixes\n\n- Stopped queued prompts from dropping frames as their content grows.\n- Counted queued quotes and browser annotations as attachments.\n- Reported failures to persist composer attachments through the normal error UI.\n- Made Markdown fragment links scroll to the referenced heading.\n- Kept each tab’s timeline state when switching directories.\n- Ordered the inbox’s **Working** shelf by execution start time.\n- Fixed side-panel launchers and automatic closing when the final tab is removed.\n- Focused the matching navigation arrow while reviewing changes.\n- Preserved pending model labels only when a queued prompt actually changes models.\n- Added reset details, an account link, and a composer tray for Go usage limits.\n\n### SDK\n\n#### Improvements\n\n- Added `if` and `until` inputs for `client.experimental.schedule.create`, plus schedule check results and output fields. ([#60137](https://github.com/anomalyco/opencode/pull/60137))\n- Exposed `SessionInfo.time.busy` for the latest execution’s start time.\n- Added optional source metadata to prompt file attachments.\n\n### Extensions\n\n#### Improvements\n\n- Added optional `title` and `subtitle` fields to composer notes, source-relative quote positioning, and focus options for composer integrations. ([#60164](https://github.com/anomalyco/opencode/pull/60164))\n\n#### Bug fixes\n\n- Corrected visible flowchart edges connected through Merman subgraphs.'
+        },
         {
           'version': '2.2.1',
           'title': 'v2.2.1',
@@ -3555,6 +3576,24 @@ window.CHANGELOG = {
           'body': '### Highlights\n\n- **Keep Working Toward a Goal**: Run `/goal <objective>` in the TUI or Desktop to let the session continue until a reviewer confirms the objective is met. Use `/goal pause`, `/goal resume`, or `/goal clear` to control it. ([#59437](https://github.com/anomalyco/opencode/pull/59437))\n- **Generate Images**: Enable `experimental.image_generate` to let agents create or edit images with the new `image_generate` tool. You can optionally set its default model with `experimental.image_generate.model`. ([#59939](https://github.com/anomalyco/opencode/pull/59939), [#60096](https://github.com/anomalyco/opencode/pull/60096))\n- **Inspect Background Shells**: Click a running shell in the Desktop activity pill to see its live output and stop it without leaving the menu. ([#59496](https://github.com/anomalyco/opencode/pull/59496))\n- **New Default Model Picker**: Search favorites, recent models, providers, and variants from the redesigned model picker, which is now the default in Desktop. ([#59997](https://github.com/anomalyco/opencode/pull/59997))\n\n### Breaking changes\n\n#### `@opencode/ai` provider removals and renames\n\nThese changes affect code that imports `@opencode/ai` directly. They don\'t change the CLI, Desktop, or the HTTP API.\n\n- The fal, Black Forest Labs, Replicate, and Stability providers are removed, along with their `./providers/fal`, `./providers/black-forest-labs`, `./providers/replicate`, and `./providers/stability` entry points. ([#59977](https://github.com/anomalyco/opencode/pull/59977))\n- Five legacy entry points are removed. Import the nested paths instead, which 2.2.0 already exports: `./providers/amazon-bedrock-mantle` → `./providers/amazon-bedrock/mantle`, and `./providers/google-vertex-chat`, `-interactions`, `-mistral`, and `-responses` → `./providers/google-vertex/chat`, `/interactions`, `/mistral`, and `/responses`. ([#59506](https://github.com/anomalyco/opencode/pull/59506))\n- Each provider\'s `configure()` input type is now named `Config`, for example `Groq.LanguageModelOptions` → `Groq.Config`, and `model()` settings are optional when every setting is optional. ([#59765](https://github.com/anomalyco/opencode/pull/59765))\n\n### Core\n\n#### Improvements\n\n- Add `/goal <objective>` with pause, resume, and clear controls, plus automatic progress review until the objective is met. ([#59437](https://github.com/anomalyco/opencode/pull/59437))\n- Add opt-in scheduled prompts through `/schedule`, agent tools, and `experimental.schedules`. ([#59401](https://github.com/anomalyco/opencode/pull/59401), [#59457](https://github.com/anomalyco/opencode/pull/59457))\n- Add the opt-in `image_generate` tool for background image creation and editing, with automatic or configured model selection. ([#59939](https://github.com/anomalyco/opencode/pull/59939), [#60096](https://github.com/anomalyco/opencode/pull/60096))\n- Offer GPT Image 2 after Codex sign-in and add MiniMax and Meta Muse image generation support. ([#60085](https://github.com/anomalyco/opencode/pull/60085), [#59929](https://github.com/anomalyco/opencode/pull/59929), [#60081](https://github.com/anomalyco/opencode/pull/60081))\n- Add Responses API support for OpenRouter, DigitalOcean, and Venice, including freeform tools. ([#59991](https://github.com/anomalyco/opencode/pull/59991), [#59963](https://github.com/anomalyco/opencode/pull/59963))\n- Improve snapshot performance by coalescing captures and avoiding repeated ignore-file work. ([#59419](https://github.com/anomalyco/opencode/pull/59419))\n\n#### Bug fixes\n\n- Preserve more context headroom when fitting tool output into the context window. ([#59934](https://github.com/anomalyco/opencode/pull/59934))\n- Retry provider throttling correctly instead of reporting it as context overflow. ([#59649](https://github.com/anomalyco/opencode/pull/59649))\n- Send image-edit references and image sizes in the formats expected by OpenRouter, Google, and Vercel Grok. ([#60067](https://github.com/anomalyco/opencode/pull/60067), [#59927](https://github.com/anomalyco/opencode/pull/59927))\n- Keep credential metadata and prompt-cache settings out of model settings and variants. ([#60057](https://github.com/anomalyco/opencode/pull/60057), [#59500](https://github.com/anomalyco/opencode/pull/59500))\n- Keep Git snapshots working in repositories that use a split index. ([#59417](https://github.com/anomalyco/opencode/pull/59417))\n- Expose Console web search only when the workspace enables it. ([#59592](https://github.com/anomalyco/opencode/pull/59592))\n- Improve Code Mode diagnostics for parse errors, stalled awaits, and promise-like search results. ([#59834](https://github.com/anomalyco/opencode/pull/59834), [#59749](https://github.com/anomalyco/opencode/pull/59749), [#59981](https://github.com/anomalyco/opencode/pull/59981))\n\n### TUI\n\n#### Improvements\n\n- Show `/goal` status below the prompt and provide a dialog for pausing, resuming, or clearing it. ([#59437](https://github.com/anomalyco/opencode/pull/59437))\n\n#### Bug fixes\n\n- Show execution failures that occur before the first model step. ([#60079](https://github.com/anomalyco/opencode/pull/60079))\n- Keep the activity spinner visible while a continued subagent runs. ([#59950](https://github.com/anomalyco/opencode/pull/59950))\n- Send pasted image and PDF paths correctly when connected to a local server. ([#59833](https://github.com/anomalyco/opencode/pull/59833))\n- Improve spacing in an empty `/usage` dialog. Thanks [@Tarquinen](https://github.com/Tarquinen). ([#59918](https://github.com/anomalyco/opencode/pull/59918))\n\n### Desktop\n\n#### Improvements\n\n- Add `/reload` to reload configuration without restarting. ([#59887](https://github.com/anomalyco/opencode/pull/59887))\n- Make the redesigned searchable model picker the default, with dedicated Favorites and Recent sections and keyboard-accessible provider controls. ([#59997](https://github.com/anomalyco/opencode/pull/59997))\n- Show live output and a Stop action when you select a background shell from the activity pill. ([#59496](https://github.com/anomalyco/opencode/pull/59496))\n- Show `/goal` state and actions in a composer pill. ([#59437](https://github.com/anomalyco/opencode/pull/59437))\n- Redesign the integrations dialog and always include OpenCode free models in the model picker. ([#59976](https://github.com/anomalyco/opencode/pull/59976), [#60047](https://github.com/anomalyco/opencode/pull/60047))\n- Add project, worktree, open-in-app, and terminal actions to the session location menu. ([#59607](https://github.com/anomalyco/opencode/pull/59607))\n- Refine project and worktree selection, command search, prompt-history focus, composer model labels, and artifact preview controls. ([#59397](https://github.com/anomalyco/opencode/pull/59397), [#59604](https://github.com/anomalyco/opencode/pull/59604), [#59626](https://github.com/anomalyco/opencode/pull/59626), [#59735](https://github.com/anomalyco/opencode/pull/59735), [#59657](https://github.com/anomalyco/opencode/pull/59657))\n- Highlight quoted timeline content while you write its first comment. ([#59286](https://github.com/anomalyco/opencode/pull/59286))\n- Keep draft attachment bytes local when using experimental media URIs. ([#59104](https://github.com/anomalyco/opencode/pull/59104))\n\n#### Bug fixes\n\n- Follow each plugin server’s configured endpoint when connecting to its event stream. ([#60087](https://github.com/anomalyco/opencode/pull/60087))\n- Treat the reachable scroll boundary as the end when Desktop zoom is active. ([#60034](https://github.com/anomalyco/opencode/pull/60034))\n- Prevent shell text from showing through copy buttons and avoid restyling the transcript when closing a side panel. ([#59901](https://github.com/anomalyco/opencode/pull/59901), [#59878](https://github.com/anomalyco/opencode/pull/59878))\n- Keep rendering malformed tool metadata instead of crashing the timeline. ([#59736](https://github.com/anomalyco/opencode/pull/59736))\n- Make dropdowns open immediately and keep the new-session location shortcut working after tooltip interactions. ([#59268](https://github.com/anomalyco/opencode/pull/59268), [#59680](https://github.com/anomalyco/opencode/pull/59680))\n- Remove edge halos from macOS application icons. ([#59900](https://github.com/anomalyco/opencode/pull/59900))\n\n### SDK\n\n#### Improvements\n\n- Add `client.experimental.schedule.{create,list,get,pause,resume,delete}` for managing scheduled prompts. ([#59457](https://github.com/anomalyco/opencode/pull/59457))\n- Group experimental generated-client methods under `client.experimental`; previous locations remain as deprecated aliases until the next minor release. ([#59072](https://github.com/anomalyco/opencode/pull/59072))\n- Expose compaction through the Promise AI client. ([#59987](https://github.com/anomalyco/opencode/pull/59987))\n- Add freeform tool support and Responses routes for OpenRouter, DigitalOcean, and Venice. ([#59963](https://github.com/anomalyco/opencode/pull/59963), [#59991](https://github.com/anomalyco/opencode/pull/59991))\n\n### Extensions\n\n#### Improvements\n\n- Add the experimental `experimental.idle` Session hook so plugins can continue work before a session goes idle. ([#59437](https://github.com/anomalyco/opencode/pull/59437))\n- Let Code Mode extension globals return Effects and declare required services. ([#59948](https://github.com/anomalyco/opencode/pull/59948))\n- Add custom composer-pill popovers for GUI plugins. ([#59437](https://github.com/anomalyco/opencode/pull/59437))'
         },
         {
+          'version': 'daemon-v0.3.3',
+          'title': 'process-daemon v0.3.3',
+          'date': '2026-10-29',
+          'dateRaw': '2026-10-29T15:45:41Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.3.3',
+          'body': 'opencode-pty 0.3.3 (protocol 7) from packages/process-daemon, published to npm as @opencode/pty@0.3.3.'
+        },
+        {
+          'version': 'daemon v0.3.3',
+          'title': 'process-daemon v0.3.3',
+          'date': '2026-10-29',
+          'dateRaw': '2026-10-29T15:45:41Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.3.3',
+          'body': 'opencode-pty 0.3.3 (protocol 7) from packages/process-daemon, published to npm as @opencode/pty@0.3.3.'
+        },
+        {
           'version': '1.19.5',
           'title': 'v1.19.5',
           'date': '2026-10-28',
@@ -3564,8 +3603,7 @@ window.CHANGELOG = {
             'Bugfixes'
           ],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v1.19.5',
-          'body': '## 核心\n\n### 错误修复\n- 失败的TUI工作者请求现在返回错误，而不是让呼叫者挂起。（ @ Nowaker ）\n\n* *感谢1位社区贡献者： * *\n- @ Nowaker ：\n- fix (opencode):应答失败的TUI worker请求，而不是挂起(# 54936)',
-          'h': 'aa13d3ac'
+          'body': '## Core\n\n### Bugfixes\n- Failed TUI worker requests now return an error instead of leaving the caller hanging. (@Nowaker)\n\n**Thank you to 1 community contributor:**\n- @Nowaker:\n  - fix(opencode): answer a failed TUI worker request instead of hanging (#54936)'
         },
         {
           'version': 'daemon-v0.3.2',
@@ -8985,33 +9023,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.9',
           'body': '- Added Astro language server support with automatic installation for .astro files\n- Fixed bash tool permission merging issues\n- Fixed snapshot undo functionality bug\n- Removed invalid GitHub Copilot provider option from the interface\n- Improved argument replacement handling in session prompts'
-        },
-        {
-          'version': '0.15.8',
-          'title': 'v0.15.8',
-          'date': '2025-10-18',
-          'dateRaw': '2025-10-18T18:37:01Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.8',
-          'body': '- Made session compaction interruptible\n- Improved error message for common directory typo in config files\n- Added Australia region inference for Bedrock Haiku 4.5 models'
-        },
-        {
-          'version': '0.15.7',
-          'title': 'v0.15.7',
-          'date': '2025-10-17',
-          'dateRaw': '2025-10-17T03:17:15Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.7',
-          'body': '- Added Deno LSP support for enhanced language server functionality\n- Reverted changes that attempted to avoid persisting empty thinking/text blocks'
-        },
-        {
-          'version': '0.15.6',
-          'title': 'v0.15.6',
-          'date': '2025-10-16',
-          'dateRaw': '2025-10-16T23:03:08Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.6',
-          'body': '- Fixed timeout option implementation to properly handle fetch requests with custom timeout values\n- Fixed bash command execution to prevent hanging processes and properly clean up orphaned child processes\n- Fixed connection closed errors in LSP file operations'
         }
       ]
     },
@@ -9023,7 +9034,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '2.4.1-canary.20261029045033-ebe14e1',
@@ -9972,7 +9983,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '0.2.2-alpha.2',
@@ -10513,7 +10524,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '0.4.11',
@@ -10823,7 +10834,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '1.37.0',
@@ -11455,7 +11466,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '3.4.1-3.4.4',
@@ -13396,7 +13407,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -13583,7 +13594,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '3.16.3',
@@ -13750,7 +13761,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '4.12.2',
@@ -14619,7 +14630,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-29 21:31',
+      'lastOkAt': '2026-10-30 03:46',
       'entries': [
         {
           'version': '5.9.3',
