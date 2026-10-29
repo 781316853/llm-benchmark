@@ -6,7 +6,9 @@
   "main": "scripts/fetch_all.js",
   "type": "commonjs",
   "scripts": {
-    "refresh": "node scripts/fetch_all.js"
+    "refresh": "node scripts/fetch_all.js",
+    "pages": "node scripts/build_pages.js",
+    "pages:check": "node scripts/build_pages.js --check"
   },
   "engines": {
     "node": ">=22"

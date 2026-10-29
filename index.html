@@ -4,14 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#F3EFE5" />
-  <title>大模型编码基准整合门户 · DeepSWE / llm2014 / 权威基准测试</title>
+  <title>大模型编码基准整合门户 · 跨基准模型对比</title>
+  <meta name="description" content="聚合 DeepSWE、Terminal-Bench、Code Arena·WebDev、ModelDial、llm2014 等 25 个编码与 Agent 基准,按渠道优先级交叉校验,提供跨基准模型对比、综合分与性价比。每日自动刷新。" />
+  <meta name="author" content="LLM Benchmark Index" />
+  <link rel="canonical" href="https://781316853.github.io/llm-benchmark/" />
+  <!-- 分享卡片:X / 微信 / Discord / Slack 取 OG,X 取 twitter:*;og:image 为 1200×630 封面 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="大模型编码基准整合门户" />
+  <meta property="og:title" content="大模型编码基准整合门户 · 跨基准模型对比" />
+  <meta property="og:description" content="聚合 DeepSWE、Terminal-Bench、Code Arena·WebDev、ModelDial、llm2014 等 25 个编码与 Agent 基准,按渠道优先级交叉校验,提供跨基准模型对比、综合分与性价比。每日自动刷新。" />
+  <meta property="og:url" content="https://781316853.github.io/llm-benchmark/" />
+  <meta property="og:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="大模型编码基准整合门户 · 跨基准模型对比" />
+  <meta name="twitter:description" content="聚合 DeepSWE、Terminal-Bench、Code Arena·WebDev、ModelDial、llm2014 等 25 个编码与 Agent 基准,按渠道优先级交叉校验,提供跨基准模型对比、综合分与性价比。每日自动刷新。" />
+  <meta name="twitter:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg" />
+  <!-- 访问统计:Cloudflare Web Analytics(无 Cookie、不采集个人数据,无需同意弹窗)。
+       在 Cloudflare 控制台 Web Analytics 添加站点后拿到的 token 填进下面引号即可生效;
+       留空则不加载脚本,不会产生无效请求。 -->
+  <script>
+    (function () {
+      var token = "";
+      if (!token) return;
+      var s = document.createElement("script");
+      s.defer = true;
+      s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+      s.setAttribute("data-cf-beacon", JSON.stringify({ token: token }));
+      document.head.appendChild(s);
+    })();
+  </script>
   <!-- 资源预热:提前建立 ECharts CDN 连接(主源 npmmirror、备源 jsDelivr,与 js/charts.js 的 EC_SOURCES 一致)。
        ECharts 已移出首屏脚本清单:它是 defer 脚本,会让 DOMContentLoaded 等它下载完,而默认打开的
        「总览」页一张图都没有 —— 实测 jsDelivr 取回约 1MB 要 5s,首屏渲染被拖到 5.7s。改由 js/charts.js
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261026a" />
+  <link rel="stylesheet" href="css/styles.css?v=20261029b" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="data/models.js?v=20261025a"></script>
@@ -55,11 +86,13 @@
   <script defer src="js/data.js?v=20261026a"></script>
   <script defer src="js/charts.js?v=20261018a"></script>
   <script defer src="js/compare.js?v=20261026a"></script>
-  <script defer src="js/app.js?v=20261026a"></script>
+  <script defer src="js/app.js?v=20261029b"></script>
+  <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
+  <script defer src="js/export.js?v=20261029b"></script>
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
 </head>
-<body>
+<body data-page="overview">
   <!-- 顶部标题区:左侧站名与简介,右侧当前数据快照 -->
   <header class="topbar">
     <div class="topbar-inner">
@@ -80,29 +113,31 @@
     </div>
   </header>
 
-  <!-- 标签导航:粘性分段式导航 -->
+  <!-- 标签导航:粘性分段式导航。每个标签是独立页面的真链接(便于搜索引擎收录与直接分享),
+       当前页由 scripts/build_pages.js 在生成时打上 active/aria-current -->
   <nav class="tabs" id="tabs">
     <div class="tabs-inner">
-      <button class="tab active" data-tab="overview">总览</button>
-      <button class="tab" data-tab="llm2014">llm2014</button>
-      <button class="tab" data-tab="modeldial">ModelDial</button>
-      <button class="tab" data-tab="arenaofbias">亿模亿样</button>
-      <button class="tab" data-tab="aicodingdaily">AI Coding Daily</button>
-      <button class="tab" data-tab="valsvcb">VCB-1-100</button>
-      <button class="tab" data-tab="authority">权威基准测试</button>
-      <button class="tab" data-tab="plans">套餐对比</button>
-      <button class="tab" data-tab="changelog">Agent工具更新日志</button>
+      <a class="tab active" data-tab="overview" href="index.html" aria-current="page">总览</a>
+      <a class="tab" data-tab="llm2014" href="llm2014.html">llm2014</a>
+      <a class="tab" data-tab="modeldial" href="modeldial.html">ModelDial</a>
+      <a class="tab" data-tab="arenaofbias" href="arenaofbias.html">亿模亿样</a>
+      <a class="tab" data-tab="aicodingdaily" href="aicodingdaily.html">AI Coding Daily</a>
+      <a class="tab" data-tab="valsvcb" href="valsvcb.html">VCB-1-100</a>
+      <a class="tab" data-tab="authority" href="authority.html">权威基准测试</a>
+      <a class="tab" data-tab="plans" href="plans.html">套餐对比</a>
+      <a class="tab" data-tab="changelog" href="changelog.html">Agent工具更新日志</a>
     </div>
   </nav>
 
   <main class="content">
+    <!-- 加载指示器:脚本加载完成前显示,由 app.js init() 移除。
+         放在 main 顶层(而非总览页内),使 9 个独立页面(scripts/build_pages.js 生成)都有首屏占位 -->
+    <div id="appLoading" class="app-loading">
+      <div class="app-loading-spinner"></div>
+      <p>正在加载数据...</p>
+    </div>
     <!-- 1) 总览 -->
     <section class="page active" id="page-overview">
-      <!-- 加载指示器:脚本加载完成前显示,由 app.js init() 移除 -->
-      <div id="appLoading" class="app-loading">
-        <div class="app-loading-spinner"></div>
-        <p>正在加载数据...</p>
-      </div>
       <!-- 总览首屏:左「AI 热点总结」与右「核心基准速览」横向两栏并排(窄屏自动回落为上下堆叠) -->
       <div class="overview-top">
         <!-- AI 热点总结:每日抓取,垂直滚动展示(置顶显示) -->
@@ -169,258 +204,6 @@
             </ul>
           </details>
         </section>
-      </section>
-    </section>
-
-    <!-- 2) llm2014 -->
-    <section class="page" id="page-llm2014">
-      <div class="page-head">
-        <p class="page-kicker">Private Suite · llm2014</p>
-        <div class="page-head-row">
-          <h2>llm2014 Agentic 编程榜 <span class="tag">个人私有题库</span></h2>
-          <div class="controls inline">
-            <label>月份:
-              <select id="llmMonth" class="select"></select>
-            </label>
-            <label class="switch" title="默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型"><input type="checkbox" id="lmShowAll" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
-          </div>
-        </div>
-        <p id="lmDesc" class="page-desc"></p>
-      </div>
-      <div class="chart-box"><h3>模型综合分(按源排序)</h3><div id="lmBar" class="chart"></div></div>
-      <div class="table-wrap"><table id="lmTable" class="data-table"></table></div>
-      <p class="source-note" id="lmNote"></p>
-    </section>
-
-    <!-- 6) ModelDial 雷达(第三方独立实测综合能力榜,属总览「第三方实测」组,计入综合分(权重 14%)与命中数) -->
-    <section class="page" id="page-modeldial">
-      <div class="page-head">
-        <p class="page-kicker">Independent Lab · ModelDial</p>
-        <div class="page-head-row"><h2>ModelDial 雷达 <span class="tag">第三方独立实测 · 综合能力分</span></h2></div>
-        <p id="mdDesc" class="page-desc"></p>
-      </div>
-      <div class="chart-row single">
-        <div class="chart-box"><h3>成本 vs 综合分(气泡=耗时 · 费用为后端轴口径)</h3><div id="mdScatter" class="chart chart-scatter"></div></div>
-      </div>
-      <div class="table-wrap"><table id="mdTable" class="data-table"></table></div>
-      <p class="source-note" id="mdNote"></p>
-      <!-- 配置明细:模型 × 推理强度,默认折叠 -->
-      <details class="md-details">
-        <summary>全部配置明细 <span class="hint" id="mdCfgCount"></span></summary>
-        <div class="table-wrap"><table id="mdCfgTable" class="data-table"></table></div>
-      </details>
-      <section class="notes-section">
-        <div class="notes-head">
-          <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 权重与费用口径可展开</span>
-        </div>
-        <ul>
-          <li><b class="note-term">来源</b>ModelDial 雷达(modeldial.com/radar)第三方独立实测,分后端与测试、前端与交互、知识与推理三类评测,按 40% / 30% / 30% 加权为综合分(各 0-100)。</li>
-          <li><b class="note-term">配置口径</b>同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。</li>
-          <li><b class="note-term">成本口径</b>本页费用与耗时取源站后端(coding)单轴实测,低于主站三轴汇总值;各模型之间口径一致,可直接横向比较。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 14%)与命中数(分母 9);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
-        </ul>
-        <details class="notes-more">
-          <summary>展开权重席位与费用说明</summary>
-          <ul>
-            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;9 个计分组中第三方实测合计约 76%、榜单基准约 23%。</li>
-            <li><b class="note-term">完整度</b>自 2026-09-20 起取消完整度奖励;在场榜单多少仅通过「缺失权重回流」体现。</li>
-            <li><b class="note-term">费用示例</b>MiniMax-M3 本页约 $0.31、源站主榜约 $0.62;源站紧凑 feed 未提供费用完整度字段,故不做「≥ / 部分费用」标记。散点图 X 轴为参考费用(对数刻度),气泡面积编码总耗时。</li>
-          </ul>
-        </details>
-      </section>
-    </section>
-
-    <!-- 6b) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(权重 10%)与命中数) -->
-    <section class="page" id="page-arenaofbias">
-      <div class="page-head">
-        <p class="page-kicker">Community Blind Test · Elo</p>
-        <div class="page-head-row"><h2>亿模亿样 · 模型效果对比 <span class="tag">前端作品社区盲评 Elo · 计入综合分 10%</span></h2></div>
-        <p id="abDesc" class="page-desc"></p>
-      </div>
-      <div class="chart-row single">
-        <div class="chart-box"><h3>Elo 排行(前 20,完整榜单见下表;1000 为平均水平)</h3><div id="abBar" class="chart chart-tall"></div></div>
-      </div>
-      <div class="table-wrap"><table id="abTable" class="data-table"></table></div>
-      <p class="source-note" id="abNote"></p>
-      <section class="notes-section">
-        <div class="notes-head">
-          <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 抓取方式可展开</span>
-        </div>
-        <ul>
-          <li><b class="note-term">来源</b>亿模亿样前端作品社区盲评:同题两件作品匿名盲评,按 Bradley-Terry 估计偏好强度折算 Elo(1000 为平均,高 400 分约等于被偏好机会高十倍),并给出 ±95% 区间。</li>
-          <li><b class="note-term">分档</b>同一模型按推理强度分档多次测试,主榜取最高分档;源站「非官方」条目(量化/改版权重、第三方 harness)已剔除。</li>
-          <li><b class="note-term">指标</b>有效比较为投票场次;胜率 = 胜场 ÷ 有效比较;覆盖任务为参与题数;有效比较不足 30 次标注「暂定」。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 10%)与命中数(分母 9),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
-        </ul>
-        <details class="notes-more">
-          <summary>展开抓取方式与区间说明</summary>
-          <ul>
-            <li><b class="note-term">抓取</b>源站为客户端渲染的静态站,本站直接读取其公开接口 <code>api.arenaofbias.icu/api/leaderboard?by=config</code>,按模型聚合后每日刷新。</li>
-            <li><b class="note-term">区间</b>Elo 与 ±95% 不确定区间均来自源站;主榜为配置聚合后的最高分档,「档位」列为该模型在源站的配置条数。</li>
-          </ul>
-        </details>
-      </section>
-    </section>
-
-    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(权重 8%)与命中数) -->
-    <section class="page" id="page-aicodingdaily">
-      <div class="page-head">
-        <p class="page-kicker">Independent Real-World Test · AI Coding Daily</p>
-        <div class="page-head-row"><h2>AI Coding Daily <span class="tag">独立第三方实测 · 7 项目 27 prompt · 计入综合分 8%</span></h2></div>
-        <p id="acdDesc" class="page-desc"></p>
-      </div>
-      <div class="chart-row single">
-        <div class="chart-box"><h3>成本 vs 总分(气泡=每 prompt 平均耗时)</h3><div id="acdScatter" class="chart chart-scatter"></div></div>
-      </div>
-      <div class="table-wrap"><table id="acdTable" class="data-table"></table></div>
-      <p class="source-note" id="acdNote"></p>
-      <!-- 实测配置明细:模型 × 推理档位 × harness,默认折叠 -->
-      <details class="md-details">
-        <summary>全部实测配置明细 <span class="hint" id="acdCfgCount"></span></summary>
-        <div class="table-wrap"><table id="acdCfgTable" class="data-table"></table></div>
-      </details>
-      <section class="notes-section">
-        <div class="notes-head">
-          <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 计分席位与口径可展开</span>
-        </div>
-        <ul>
-          <li><b class="note-term">来源</b>AI Coding Daily(aicodingdaily.com),主办方为独立开发者 Povilas Korop,不是被评厂商之一;每个模型在 7 个真实项目上跑 27 个 prompt,源站累计 2000+ 次运行。</li>
-          <li><b class="note-term">分数口径</b>总分 0-70 = Laravel 代码质量 20 + React-TS 代码质量 20 + Bug Finding 10 + Edge-case Testing 20;每个 prompt 从项目全新副本起步,模型看不到隐藏测试,无人工反馈。</li>
-          <li><b class="note-term">混口径</b>源站「Tested with」列显示每个模型跑在<b>各自</b>的 agent harness 上(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),分数同时反映模型能力与脚手架质量。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 8%)与命中数(分母 9);数据为快照,不代表绝对评价。</li>
-        </ul>
-        <details class="notes-more">
-          <summary>展开权重席位与成本说明</summary>
-          <ul>
-            <li><b class="note-term">权重席位</b>按站内判据(主办方是否被评厂商自身)独立第三方实测榜计入综合分;因 harness 逐模型混杂、且与同为编码 agent 实测的 ModelDial(14%)存在重复计量,取 8% 压低,与 2026-09-24 无机酸前端实测入组时的处理同法。</li>
-            <li><b class="note-term">成本/耗时</b>均为<b>每 prompt</b> 平均值,不是每模型整轮测试成本;源站对部分模型未给成本(显示「—」),这些条目不进散点图但仍在下表。</li>
-            <li><b class="note-term">更新频率</b>源站按周更新,本页「源站发布」取页面 Last update 标注,「本站抓取」为每日刷新时间。</li>
-          </ul>
-        </details>
-      </section>
-    </section>
-
-    <!-- 6d) VCB-1-100(vals.ai 独立实测编码 Agent 榜;固定 OpenHands harness;计入总览综合分(权重 7%)与命中数) -->
-    <section class="page" id="page-valsvcb">
-      <div class="page-head">
-        <p class="page-kicker">Independent Real-World Test · Vibe Code Bench 1-100</p>
-        <div class="page-head-row"><h2>VCB-1-100 <span class="tag">Vals AI 独立实测 · 固定 OpenHands · 计入总览 7%</span></h2></div>
-        <p id="vcbDesc" class="page-desc"></p>
-      </div>
-      <div class="chart-row single">
-        <div class="chart-box"><h3>成本 vs 准确率(气泡=每测试平均耗时)</h3><div id="vcbScatter" class="chart chart-scatter"></div></div>
-      </div>
-      <div class="table-wrap"><table id="vcbTable" class="data-table"></table></div>
-      <p class="source-note" id="vcbNote"></p>
-      <section class="notes-section">
-        <div class="notes-head">
-          <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 计分席位与口径可展开</span>
-        </div>
-        <ul>
-          <li><b class="note-term">来源</b>Vibe Code Bench 1-100(vals.ai/benchmarks/vcb-1-100,Vals AI),让模型从一个能跑的 Web 应用出发,连续接住最多 10 轮产品需求,共 50 个真实场景。</li>
-          <li><b class="note-term">分数口径</b>准确率(%):每个场景由隐藏测试判定;源站最高分约 34%,分数越低表示越多产品请求未被正确完成。</li>
-          <li><b class="note-term">口径优势</b>全部模型跑在<b>固定</b> OpenHands harness 上,与 AI Coding Daily 的逐模型 harness 不同,跨模型可比性更好。</li>
-          <li><b class="note-term">展示范围</b>本榜自 2026-10-27 起计入总览综合分(权重 7%)与命中数;Vibe Code Bench v1.1 保留抓取但不上榜。数据为快照,不代表绝对评价。</li>
-        </ul>
-        <details class="notes-more">
-          <summary>展开成本口径与排名说明</summary>
-          <ul>
-            <li><b class="note-term">成本/耗时</b>为每测试平均值(美元 / 秒);源站对部分模型未给成本(显示「—」),这些条目不进散点图。</li>
-            <li><b class="note-term">排名</b>按准确率降序;源站另有「New request / Regression / Cross-cutting」等类型拆分,本站只收录模型级总分。</li>
-          </ul>
-        </details>
-      </section>
-    </section>
-
-    <!-- 7) 权威基准测试(16 大权威基准;DeepSWE / Terminal-Bench 4.0/3.0/2.1 合并计入总览) -->
-    <section class="page" id="page-authority">
-      <div class="page-head">
-        <p class="page-kicker">Reference Benchmarks</p>
-        <div class="page-head-row"><h2>权威基准测试 <span class="tag">16 大权威基准</span></h2></div>
-        <p id="authDesc" class="page-desc"></p>
-      </div>
-      <!-- 左侧大纲预览:桌面端粘性吸附,滚动时高亮当前基准章节;点击可快速跳转;窄屏自动收为顶部横向胶囊条 -->
-      <div class="auth-layout">
-        <aside class="auth-outline" id="authOutline" aria-label="权威基准大纲预览">
-          <p class="auth-outline-title">大纲预览 <span class="auth-outline-count" id="authOutlineCount"></span></p>
-          <nav class="auth-outline-list" id="authOutlineList"></nav>
-        </aside>
-        <div class="auth-main"><div id="authWrap"></div></div>
-      </div>
-    </section>
-
-    <!-- 7) 套餐对比(codingplan.fyi「额度/价格对比」快速对比快照,按模型分列比价,独立展示不计入综合分) -->
-    <section class="page" id="page-plans">
-      <div class="page-head">
-        <p class="page-kicker">Pricing Snapshot · codingplan.fyi</p>
-        <div class="page-head-row"><h2>订阅套餐 · 额度/价格快速对比 <span class="tag">来源 codingplan.fyi</span></h2></div>
-        <p id="plansDesc" class="page-desc"></p>
-      </div>
-      <div id="plansWrap"></div>
-      <p class="source-note" id="plansNote"></p>
-      <section class="notes-section">
-        <div class="notes-head">
-          <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 精选模型与平台名单可展开</span>
-        </div>
-        <ul>
-          <li><b class="note-term">来源</b>codingplan.fyi「额度/价格对比」的快速对比快照,按精选模型分列、每列按综合单价升序,随全站每日刷新。</li>
-          <li><b class="note-term">口径</b>综合单价为 ¥/亿 Token,统一按 95% 缓存命中 + 0.5% 输出构造;月价为连续包月价,按量调用行无月用量。</li>
-          <li><b class="note-term">标签与范围</b>[谷] / [峰] 为错峰/高峰时段档,[高速] 为高速服务档;默认仅精选平台,可切换显示全部;推广跳转链接已去除。</li>
-        </ul>
-        <details class="notes-more">
-          <summary>展开精选模型与平台名单</summary>
-          <ul>
-            <li><b class="note-term">精选模型</b>DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna,以及甜品级、SOTA 两组多模型对比。</li>
-            <li><b class="note-term">平台范围</b>精选平台覆盖阿里·百炼 / 智谱 / 字节·方舟 / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode 九家。价格为快照口径,可能滞后于平台官网;完整筛选与购买入口请前往 <a href="https://www.codingplan.fyi/?view=usage" target="_blank" rel="noopener">codingplan.fyi ↗</a>。</li>
-          </ul>
-        </details>
-      </section>
-    </section>
-
-    <!-- 9) Agent 工具更新日志(12 个 Agent 工具的官方 changelog 汇总;非分数数据,不计入综合分与命中数) -->
-    <section class="page" id="page-changelog">
-      <div class="page-head">
-        <p class="page-kicker">Release Notes · Agent Tools</p>
-        <div class="page-head-row"><h2>Agent工具更新日志 <span class="tag">12 个工具官方 changelog · 每个工具显示最近 2 条更新</span></h2></div>
-        <p id="clDesc" class="page-desc"></p>
-      </div>
-      <!-- 左侧工具目录:点击跳到该工具的最新版本卡片;窄屏自动收为顶部横向胶囊条 -->
-      <div class="auth-layout">
-        <aside class="auth-outline" aria-label="更新日志工具目录">
-          <p class="auth-outline-title">工具 <span class="auth-outline-count" id="clOutlineCount"></span></p>
-          <nav class="auth-outline-list" id="clOutlineList"></nav>
-        </aside>
-        <div class="auth-main">
-          <div class="cl-toolbar">
-            <div class="qc-scope" id="clRangeBtns" role="group" aria-label="时间窗口"></div>
-            <p class="cl-hint" id="clHint"></p>
-          </div>
-          <div id="clWrap"></div>
-        </div>
-      </div>
-      <section class="notes-section">
-        <div class="notes-head">
-          <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 版本筛选与来源可展开</span>
-        </div>
-        <ul>
-          <li><b class="note-term">范围</b>12 个 Agent 工具的官方更新日志;每卡固定显示最近 2 条,正文保留源站完整内容,「查看源站 ↗」直达原文。</li>
-          <li><b class="note-term">时间窗口</b>近 14 天 / 近 30 天 / 全部只决定「新」的判定,不改变每卡显示条数;早于窗口的条目仍展示,并标注「超出窗口」。</li>
-          <li><b class="note-term">翻译</b>英文条目由 MyMemory 自动翻译;尚未译出的条目保留英文并标注「原文」。</li>
-          <li><b class="note-term">刷新与容错</b>每日自动刷新 2 次;某源抓取失败时标「数据滞后」并沿用上一次成功结果。</li>
-        </ul>
-        <details class="notes-more">
-          <summary>展开版本筛选与数据来源</summary>
-          <ul>
-            <li><b class="note-term">版本筛选</b>只收录正式发布版本,alpha / beta / rc / nightly 等预发布版一律不入库;唯一例外是仍处开发者预览期的 DeepSeek Harness(官方尚无正式版,按其 Release 收录)。条目标签为源站自带分类。</li>
-            <li><b class="note-term">来源</b>Codex / Claude Code / OpenCode / Kimi Code / DeepSeek Harness 取 GitHub Releases;Qoder CN 与 Qoder CN IDE 取 Qoder CN 文档站的两张日志页;TraeCode / TraeWork 取 Trae 文档站独立日志页(失败时转国际站备源,TRAE APP 不收);ZCode / CodeBuddy / WorkBuddy 取各官网更新日志页。</li>
-          </ul>
-        </details>
       </section>
     </section>
   </main>

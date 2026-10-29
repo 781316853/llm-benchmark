@@ -1,8 +1,10 @@
-// 主控:标签路由与五个页面的渲染入口。
+// 主控:九个页面各自的渲染入口(每个 HTML 由 scripts/build_pages.js 从 pages/shell.html 生成)。
 (function () {
   "use strict";
   var D = window.D, CH = window.CH, CMP = window.CMP;
-  var state = { tab: "overview", llmMonth: null,
+  // 当前页由 <body data-page> 指定:每页只渲染自己那一节,页间跳转是普通链接而非页内切 class
+  var CURRENT_TAB = (document.body && document.body.getAttribute("data-page")) || "overview";
+  var state = { tab: CURRENT_TAB, llmMonth: null,
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
@@ -1378,34 +1380,17 @@
       paintAuthTbChart();
     }); });
   }
-  // 空闲时预渲染权威基准页:该页构建约 3200 个 DOM 节点,留到用户点击时同步做会卡住切页反馈。
-  // requestIdleCallback 带 timeout 上限,避免页面长期忙碌时一直排不上;不支持时退化为 setTimeout。
-  // 下方章节表格已改为滚动临近才填表(见 authDeferTable),预渲染本身已很轻,timeout 取短值
-  // 尽量赶在用户首次点击前完成,点击时只剩首屏两个章节的同步构建。
-  function scheduleAuthPrerender() {
-    var go = function () {
-      if (authRendered || state.tab === "authority") return;
-      // 本页数据已移至按需注入:先取数据再预构建,否则只会建出空表且把 authRendered 置真。
-      // 空闲期取数据不影响首屏,却能让首次点击该页仍走「复用已构建好的 DOM」这条快路径。
-      ensureData(TAB_DATA.authority, function () {
-        if (!authRendered && state.tab !== "authority") renderAuthority();
-      });
-    };
-    if (window.requestIdleCallback) window.requestIdleCallback(go, { timeout: 1200 });
-    else setTimeout(go, 800);
-  }
   // 权威基准页一次性渲染并缓存:
-  // 1) 该页约 3200 个 DOM 节点,每次切页重建会造成可见卡顿(首次同步约 200ms);
+  // 1) 该页约 3200 个 DOM 节点,重复重建会造成可见卡顿(首次同步约 200ms);
   // 2) 更关键的是 wrap.innerHTML 会销毁 #authTBBar,而 CH 的实例注册表仍指向旧节点,
-  //    导致 ECharts 实例与容器失联、第二次进入起图表空白。渲染一次并复用可同时修掉两者。
-  // 首次渲染通常由 init 在空闲时后台预执行(见 scheduleAuthPrerender):在 display:none 的
-  // 后台页构建只有解析成本、无布局/绘制成本,用户点击时内容已就绪,切页只剩正常显示布局。
-  // 数据为页面加载时固定的快照(无运行时刷新),缓存安全;视口变化由 showTab 派发的 resize 事件兜底。
+  //    导致 ECharts 实例与容器失联、图表空白。渲染一次并复用可同时修掉两者。
+  // 现在每页独立(本页只在 authority.html 渲染),缓存主要用于内部重渲染兜底;
+  // 数据为页面加载时固定的快照(无运行时刷新),缓存安全;视口变化由 renderPage 派发的 resize 事件兜底。
   var authRendered = false;
-  // 图表初始化状态:DOM 已就绪但图表未必已画(后台预渲染时无法对 0 尺寸容器 init);
+  // 图表初始化状态:DOM 已就绪但图表未必已画(容器不可见 / 0 尺寸时无法 init);
   // authDsMs=DeepSWE 条目(双图),authTbMs=当前所选 TB 版本条目(柱状图)
   var authChartDone = false, authChartQueued = false, authTbMs = [], authDsMs = [];
-  // 下方章节表格懒填表:进页/预渲染只建章节骨架,表格滚动临近可视区(提前约 200px)才填充,
+  // 下方章节表格懒填表:进页只建章节骨架,表格滚动临近可视区(提前约 200px)才填充,
   // 显著降低每次进页的节点构建与布局/绘制开销(下方章节表格占整页约 3200 节点的大半);
   // 每表填充一次后即注销观察。不支持 IntersectionObserver 的环境由 authDeferTable 回退为立即填充。
   var authLazyMap = new Map(), authLazyObs = null;
@@ -2196,26 +2181,31 @@
     }
   }
 
-  // ===== 标签切换 =====
-  function showTab(name) {
-    state.tab = name;
-    Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (b) {
-      b.classList.toggle("active", b.dataset.tab === name);
-    });
-    Array.prototype.forEach.call(document.querySelectorAll(".page"), function (p) {
-      p.classList.toggle("active", p.id === "page-" + name);
-    });
+  // ===== 当前页渲染 =====
+  // 旧的 #page-<tab> 深链(上一版的引用链接、搜索结果可能还带着)改跳独立页面,
+  // 由 init 在渲染前调用;返回 true 表示已发起跳转,本次不再渲染。
+  function redirectLegacyHash() {
+    var m = /^#page-([a-z0-9]+)$/.exec(location.hash || "");
+    if (!m || m[1] === CURRENT_TAB) return false;
+    if (!document.querySelector('.tab[data-tab="' + m[1] + '"]')) return false;
+    location.replace(m[1] === "overview" ? "index.html" : m[1] + ".html");
+    return true;
+  }
+  function renderPage() {
+    var name = CURRENT_TAB;
     var needData = TAB_DATA[name];
     if (needData && !needData.every(dataLoaded)) {
-      // 数据未就绪:先切页 + 占位,注入完成后补渲染(期间离开本页则不再补,下次进入自然渲染)
+      // 数据按需注入:先占位,注入完成后再渲染
       setPagePending(name);
-      ensureData(needData, function () { if (state.tab === name) renderTab(name); });
+      ensureData(needData, renderPage);
     } else {
       renderTab(name);
     }
+    // 补引用/导出控件(表格随渲染重建,由 export.js 幂等装饰)
+    if (window.EXP) EXP.decorate();
     // 回放因所在页不可见而暂缓的图表绘制(队列为空时零开销)
     if (window.CH && CH.flush) CH.flush();
-    // 切换后重绘图表以适配可见尺寸
+    // 渲染后重绘图表以适配可见尺寸
     setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
   }
   function renderTab(name) {
@@ -2232,17 +2222,22 @@
 
   // ===== 初始化 =====
   function init() {
+    if (redirectLegacyHash()) return;
     state.llmMonth = D.llmMonths().slice(-1)[0]; // 默认最新月份
-    // 月份下拉
+    // 月份下拉(仅 llm2014 页存在)
     var ms = D.llmMonths();
-    document.getElementById("llmMonth").innerHTML = ms.map(function (m) {
-      return '<option value="' + m + '"' + (m === state.llmMonth ? " selected" : "") + ">" + m + "</option>";
-    }).join("");
-    document.getElementById("llmMonth").addEventListener("change", function (e) {
-      renderLlm2014(e.target.value);
-    });
-    // 矩阵表头点击排序(事件委托挂在稳定父级 table 上)
-    document.getElementById("matrixTable").addEventListener("click", function (e) {
+    var llmMonthEl = document.getElementById("llmMonth");
+    if (llmMonthEl) {
+      llmMonthEl.innerHTML = ms.map(function (m) {
+        return '<option value="' + m + '"' + (m === state.llmMonth ? " selected" : "") + ">" + m + "</option>";
+      }).join("");
+      llmMonthEl.addEventListener("change", function (e) {
+        renderLlm2014(e.target.value);
+      });
+    }
+    // 矩阵表头点击排序(事件委托挂在稳定父级 table 上;仅总览页存在)
+    var matrixEl = document.getElementById("matrixTable");
+    if (matrixEl) matrixEl.addEventListener("click", function (e) {
       var th = e.target.closest ? e.target.closest("th[data-key]") : null;
       if (!th) return;
       var key = th.getAttribute("data-key");
@@ -2301,15 +2296,20 @@
       if (searchClearEl) searchClearEl.addEventListener("click", function () { resetSearch(true); });
       syncSearchClear();
     }
-    // 标签点击
+    // 导航是真实链接(<a href>):当前页点击不刷新,直接回到页首;
+    // 双击任意标签也回页首 —— 长页面滚到中段后,双击比滚轮快得多。
+    // preventDefault 掐掉双击选词(否则标签文字会被选中)。
+    var scrollPageTop = function () {
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    };
     Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (b) {
-      b.addEventListener("click", function () { showTab(b.dataset.tab); });
-      // 双击标签回到页首:总览矩阵与更新日志页都很长,滚到中段后双击比滚轮快得多。
-      // 前一次 click 已切过页,这里只管滚动;preventDefault 掐掉双击选词(否则标签文字会被选中)。
+      b.addEventListener("click", function (e) {
+        if (b.dataset.tab === CURRENT_TAB) { e.preventDefault(); scrollPageTop(); }
+      });
       b.addEventListener("dblclick", function (e) {
         e.preventDefault();
-        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+        scrollPageTop();
       });
     });
     // 权威基准页大纲:点击条目快速跳转(事件委托挂在稳定父级 nav 上)
@@ -2380,15 +2380,13 @@
     var refreshedAt = maxRefreshedAt();
     document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
       + (refreshedAt ? " · 刷新于 " + refreshedAt + "(北京时间)" : "");
-    // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行重渲染并移除指示器
+    // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行渲染并移除指示器
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        showTab("overview");
+        renderPage();
         var loading = document.getElementById("appLoading");
         if (loading) loading.remove();
-        scheduleAuthPrerender(); // 首屏就绪后,空闲时后台预构建权威基准页
         // ECharts 按需加载(约 1MB):首屏不需要图表库,故移到首屏渲染之后空闲时预热。
-        // 放在 scheduleAuthPrerender 之后注册,让体积小的权威基准数据先取到。
         if (window.requestIdleCallback) window.requestIdleCallback(function () { CH.warmup(); }, { timeout: 2000 });
         else setTimeout(function () { CH.warmup(); }, 1200);
       });

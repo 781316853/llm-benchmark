@@ -395,7 +395,7 @@ a:hover { text-decoration: underline; }
 .tab {
   appearance: none; display: inline-flex; align-items: center; gap: 8px; flex: none;
   border: 1px solid transparent; background: transparent; color: var(--text-tertiary);
-  padding: 8px 14px; border-radius: 8px; cursor: pointer;
+  padding: 8px 14px; border-radius: 8px; cursor: pointer; text-decoration: none;
   font-family: var(--font-body); font-size: var(--fs-sm); font-weight: 600; letter-spacing: .01em;
   white-space: nowrap; user-select: none; -webkit-user-select: none;
   transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
@@ -1365,6 +1365,27 @@ body {
   .overview-top .news-ticker { height: 220px; min-height: 0; }
   .notes-section { padding-left: 0; }
 }
+
+/* ===== 引用 / 导出 ===== */
+.cite-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  justify-content: flex-end; margin: 12px 0 0; }
+.cite-bar-note { margin: 0 auto 0 0; color: var(--text-tertiary); font-size: var(--fs-xs);
+  line-height: var(--lh-base); }
+.cite-btn { padding: 5px 12px; font-size: var(--fs-xs); font-weight: 600; }
+.matrix-head + .cite-bar { margin-bottom: 2px; }
+.tbl-tools { display: flex; justify-content: flex-end; padding: 8px 10px 0; }
+.tbl-csv { appearance: none; -webkit-appearance: none; background: transparent;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-tertiary); padding: 2px 9px; cursor: pointer;
+  font-family: var(--font-num); font-size: var(--fs-2xs); letter-spacing: .06em; }
+.tbl-csv:hover { border-color: var(--accent); color: var(--accent); }
+.cite-modal .feedback-dialog { max-width: 620px; }
+.cite-modal .feedback-label { margin-top: 14px; }
+.cite-text { font-family: var(--font-num); font-size: var(--fs-xs); line-height: 1.6;
+  min-height: auto; }
+.cite-copy-row { display: flex; justify-content: flex-end; margin-top: 8px; }
+.cite-foot { margin: 16px 0 0; font-size: var(--fs-2xs); color: var(--text-tertiary);
+  line-height: var(--lh-base); }
 
 /* ===== 动效降级 ===== */
 @media (prefers-reduced-motion: reduce) {

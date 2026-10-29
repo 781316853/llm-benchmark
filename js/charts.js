@@ -39,7 +39,7 @@
     })();
   }
   // 回放排队请求。两个前提不满足就不能排空队列,否则请求会被 paint 早退丢掉:
-  // ① 库本身已就绪(apply 会把请求排进来,flush 也可能在库到位前被 showTab 调到);
+  // ① 库本身已就绪(apply 会把请求排进来,flush 也可能在库到位前被 renderPage 调到);
   // ② 所在页可见 —— display:none 时 offsetParent 为 null,对 0 尺寸容器 init 只会得到空图。
   function flushPending() {
     if (!window.echarts || !ecOrder.length) return;
@@ -251,7 +251,7 @@
   }
 
   // 窗口自适应;容器不可见(所在页 display:none,offsetParent 为 null)的图表跳过:
-  // 隐藏图表保留上次可见时的正确尺寸,待其所在页再次显示时由 showTab 派发的 resize 兜底适配;
+  // 隐藏图表保留上次可见时的正确尺寸,待其所在页再次显示时由 renderPage 派发的 resize 兜底适配;
   // 这样每次切页广播的 resize 只处理当前可见页的图表,不会逐个 resize 隐藏页大图拖慢切页。
   window.addEventListener("resize", function () {
     Object.keys(registry).forEach(function (id) {
@@ -267,7 +267,7 @@
     scatterOption: scatterOption,
     // 预热:首屏渲染完成后由 app.js 在空闲时调用,避免访客切到图表页时才现下
     warmup: loadEcharts,
-    // 回放因所在页不可见而暂缓的绘制请求;showTab 每次切页后调用(队列为空时零开销)
+    // 回放因所在页不可见而暂缓的绘制请求;renderPage 每次渲染后调用(队列为空时零开销)
     flush: flushPending,
     // 供 app/compare 取当前主题的品牌色,避免把色值写死在调用方
     brand: function () { return palette().brand; }

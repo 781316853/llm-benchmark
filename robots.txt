@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pages/
+
+Sitemap: https://781316853.github.io/llm-benchmark/sitemap.xml

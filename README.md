@@ -46,12 +46,17 @@
 ## 目录结构
 
 ```
-index.html              门户入口(9 标签:总览/llm2014/ModelDial/亿模亿样/AI Coding Daily/VCB-1-100/权威基准测试/套餐对比/Agent工具更新日志)
+index.html + 8 个榜单页   9 个独立页面(index.html / llm2014.html / modeldial.html / arenaofbias.html /
+                         aicodingdaily.html / valsvcb.html / authority.html / plans.html / changelog.html),
+                         由 pages/shell.html 生成,勿直接编辑
+pages/shell.html        全站模板(9 个标签的公共骨架 + 各页 section),改页面结构改这里
+scripts/build_pages.js  把模板拆成 9 个页面并生成 sitemap.xml(npm run pages)
 css/styles.css          纸本研报风样式(暖纸底 / 墨绿 / 铁锈红 / 衬线标题)
 js/data.js              数据归一(canonical 命中映射、unified 视图、hitCount)
 js/charts.js            ECharts 封装
 js/compare.js           跨基准矩阵/雷达/指标卡
-js/app.js               标签路由与渲染(含"仅跨榜"过滤)
+js/app.js               按 <body data-page> 渲染当前页;旧的 #page-<tab> 深链自动跳转到独立页面
+js/export.js            引用/导出:页面级引文(纯文本 + BibTeX)与每表 CSV 导出
 data/                   多源数据快照(deepswe/deepswe_v10/llm2014/arena_webdev/arena_agent/arenaofbias/models/
                          tbench/tbench_v3/tbench_v2(实时双源)/tbscience/osworld/lastexam/automationbench/arcagi3/
                          benchcad/apex/hle/nl2repo/programbench/cursorbench/frontiercode/modeldial/aicodingdaily/
@@ -61,15 +66,28 @@ scripts/fetch_all.js    云端抓取多源并重写 data/*.js(GitHub Actions 用
                          lib/codingplan.js 为套餐快速对比、lib/pricing.js 为模型 API 标价
                          (codingplan.fyi 主源 + models.dev 排名模型缺价补齐)旁路抓取模块
 .github/workflows/refresh.yml  每日定时刷新数据并提交
+assets/og-cover.jpg     分享卡片封面(1200×630,由 promo/cover-16x9.png 居中裁切生成)
+robots.txt / sitemap.xml  爬虫准入与站点地图
 ```
+
+## URL 化 / 分享卡片 / 统计 / 引用导出
+
+- **URL 化**:9 个标签各有独立 URL、`title`、`description` 与 `canonical`(总览是站点根,其余为 `<tab>.html`),导航是真实 `<a>` 链接,页面里只保留自己那一段 DOM(避免 9 份重复内容互相稀释);`sitemap.xml` 同步列出 9 个 URL,`robots.txt` 屏蔽模板目录 `/pages/`。旧版深链 `#page-<tab>` 会在 `js/app.js` 里自动 `location.replace` 到对应页面,老引用链接不失效。
+- **改页面**:改 `pages/shell.html`,然后 `npm run pages` 重新生成 9 个页面与 sitemap;`npm run pages:check` 用于自检产物是否与模板一致(不比对 sitemap 的 `lastmod`)。新增/删除标签时同步改 `scripts/build_pages.js` 的 `PAGES`。
+- **分享卡片**:每页 `<head>` 内置 `description`、`canonical`、OG / Twitter 卡片标签(由 `build_pages.js` 按 `PAGES` 写入),`og:image` 统一指向 `assets/og-cover.jpg`。封面由宣传片封面居中裁切(1920×1080 → 1200×630,JPEG q86 约 72KB):
+  `python -c "from PIL import Image; im=Image.open('promo/cover-16x9.png').convert('RGB'); w,h=im.size; nh=round(w/(1200/630)); t=(h-nh)//2; im.crop((0,t,w,t+nh)).resize((1200,630), Image.LANCZOS).save('assets/og-cover.jpg', quality=86, optimize=True, progressive=True)"`
+- **换域名**:改 `scripts/build_pages.js` 顶部的 `SITE` 常量并重新 `npm run pages`,`canonical` / `og:url` / `sitemap.xml` 会一起更新;`robots.txt` 里的 Sitemap 地址、`js/export.js` 的 `FALLBACK_BASE` 需手动同改,`assets/og-cover.jpg` 的绝对地址(`og:image`)也在模板里。
+- **访问统计**:Cloudflare Web Analytics(无 Cookie、无个人数据,不需要同意弹窗)。在 Cloudflare 控制台 Web Analytics 添加站点后,把 token 填入 `pages/shell.html` `<head>` 内联脚本的 `var token = ""`;留空则不加载脚本、不产生请求。
+- **引用当前榜单**:每个榜单页头部右上角的「引用此榜单」给出纯文本引文与 BibTeX,含页面标题、数据快照日期(取该页所辖数据源 `updated` 的最大值)与该页 `canonical` 链接。
+- **CSV 导出**:每张数据表右上角「CSV」导出**当前排序与筛选后的视图**(与页面所见一致),UTF-8 BOM + CRLF,Excel 直接打开不乱码;文件名 `llm-benchmark_<标签>_<表 id>_<日期>.csv`。表格随渲染反复重建,按钮由 `js/export.js` 的 MutationObserver 自动补挂。
 
 ## 前端加载策略(首屏只留必要资源)
 
 首屏(默认打开的「总览」页)与后续标签页按需分工,避免低频页面的体积进入关键路径:
 
-- **首屏脚本清单**(`index.html` 的 `defer` 列表)只含总览及各榜单页真正读取的数据:`models` / `deepswe`(+`deepswe_v10`)/ `llm2014` / `arena_webdev` / `arena_agent`(Agent Arena 净提升,计入综合分与命中数)/ `arenaofbias` / `tbench`(+`tbench_v3` / `tbench_v2`,三版合并为一个基准组计入总览)/ `modeldial` / `aicodingdaily`(第三方实测编码榜,计入综合分与命中数)/ `vals_vcb`(VCB-1-100,固定 OpenHands,计入综合分与命中数,并供标签页展示)/ `hle`(只在权威页列表展示,但分数被总览矩阵「仅参考」列引用)/ `seen` / `news`。
-- **按需注入**:仅权威基准页使用的 12 个仅展示榜(`tbscience` / `osworld` / `lastexam` / `automationbench` / `arcagi3` / `benchcad` / `apex` / `nl2repo` / `programbench` / `vals_codemigration` / `cursorbench` / `frontiercode` / `aa_coding_agents`(AA Coding Agent Index v2.0,权威页仅展示))与套餐对比页的 `codingplan`,由 `js/app.js` 的 `DATA_SRC` + `ensureData()` 在首次需要时注入(权威页仍在首屏后空闲时预取并预构建);`data/changelog.js`(约 3MB)同理,见 `renderChangelog()`。注:`D.src` 因此改为取值器而非解析期快照(`js/data.js`),否则按需源永远是 `undefined`。
-- **ECharts 按需加载**:图表库约 1MB 且默认页一张图都没有,故不进首屏脚本清单 —— 它是 `defer` 脚本,会让 `DOMContentLoaded`(进而 `init`)等它下载完。改由 `js/charts.js` 自己注入:首屏渲染后空闲时预热(`CH.warmup`),或首次真正要画图时即时加载,加载期间的 `CH.apply` 请求排队、就绪后回放(所在页不可见时留到可见再画,见 `CH.flush`)。主源 npmmirror、失败回退 jsDelivr(与 `index.html` 的 `preconnect` 一致)。
+- **首屏脚本清单**(`pages/shell.html` 的 `defer` 列表,9 个页面共用)只含总览及各榜单页真正读取的数据:`models` / `deepswe`(+`deepswe_v10`)/ `llm2014` / `arena_webdev` / `arena_agent`(Agent Arena 净提升,计入综合分与命中数)/ `arenaofbias` / `tbench`(+`tbench_v3` / `tbench_v2`,三版合并为一个基准组计入总览)/ `modeldial` / `aicodingdaily`(第三方实测编码榜,计入综合分与命中数)/ `vals_vcb`(VCB-1-100,固定 OpenHands,计入综合分与命中数,并供标签页展示)/ `hle`(只在权威页列表展示,但分数被总览矩阵「仅参考」列引用)/ `seen` / `news`。
+- **按需注入**:仅权威基准页使用的 12 个仅展示榜(`tbscience` / `osworld` / `lastexam` / `automationbench` / `arcagi3` / `benchcad` / `apex` / `nl2repo` / `programbench` / `vals_codemigration` / `cursorbench` / `frontiercode` / `aa_coding_agents`(AA Coding Agent Index v2.0,权威页仅展示))与套餐对比页的 `codingplan`,由 `js/app.js` 的 `DATA_SRC` + `ensureData()` 在首次需要时注入;`data/changelog.js`(约 3MB)同理,见 `renderChangelog()`。注:`D.src` 因此改为取值器而非解析期快照(`js/data.js`),否则按需源永远是 `undefined`。
+- **ECharts 按需加载**:图表库约 1MB 且默认页一张图都没有,故不进首屏脚本清单 —— 它是 `defer` 脚本,会让 `DOMContentLoaded`(进而 `init`)等它下载完。改由 `js/charts.js` 自己注入:首屏渲染后空闲时预热(`CH.warmup`),或首次真正要画图时即时加载,加载期间的 `CH.apply` 请求排队、就绪后回放(所在页不可见时留到可见再画,见 `CH.flush`)。主源 npmmirror、失败回退 jsDelivr(与 `pages/shell.html` 的 `preconnect` 一致)。
 
 实测(同机同数据,`jsDelivr` 首屏等 CDN):首屏渲染 2826ms → 281ms、首屏传输 503KB → 154KB;Fast 3G + 4× CPU 节流下 5293ms → 2321ms。
 
