@@ -1,4 +1,4 @@
-// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-10-29)
+// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-10-30)
 // 主渠道:https://www.datalearner.com/benchmarks/agents-last-exam(厂商官方发布成绩转录)
 // 补充:https://llm-stats.com/benchmarks/agents-last-exam(官方:https://agents-last-exam.org/leaderboard)
 // 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)
@@ -10,8 +10,8 @@ window.LASTEXAM = {
   'url': 'https://llm-stats.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-10-29',
-  'refreshedAt': '2026-10-30 03:46',
+  'updated': '2026-10-30',
+  'refreshedAt': '2026-10-30 08:06',
   'stats': {
     'tasks': 1490,
     'entries': 49
@@ -36,6 +36,9 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-10-26',
       'src': 'datalearner',
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 1.00 / $ 5.00',
       'rank': 2
     },
     {
@@ -254,6 +257,9 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-10-24',
       'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 2.00 / $ 10.00',
       'rank': 21
     },
     {

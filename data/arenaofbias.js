@@ -1,5 +1,5 @@
 // 数据源:亿模亿样 · 模型效果对比(gallery.arenaofbias.icu)前端作品社区盲评 Elo 竞技场
-// 接口:https://api.arenaofbias.icu/api/leaderboard?by=config  (源站更新于 2026-10-29)
+// 接口:https://api.arenaofbias.icu/api/leaderboard?by=config  (源站更新于 2026-10-30)
 // 字段说明:score=Elo(1000 为平均水平,越高越好);interval=±95% 不确定区间;effort=最优档推理强度;
 //          games/winRate=该档有效比较数与胜率;configs=该模型在源站的推理强度档位数;provisional=源站「暂定」(比较 <30 次)
 // 汇总口径:同一模型按推理强度分档多次测试,取最高分那一档入榜;源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)已剔除。
@@ -8,8 +8,8 @@ window.ARENAOFBIAS = {
   'source': '亿模亿样 · 模型效果对比',
   'url': 'https://api.arenaofbias.icu/api/leaderboard?by=config',
   'boardUrl': 'https://gallery.arenaofbias.icu/#/leaderboard',
-  'updated': '2026-10-29',
-  'refreshedAt': '2026-10-30 03:46',
+  'updated': '2026-10-30',
+  'refreshedAt': '2026-10-30 08:06',
   'metric': 'Elo',
   'desc': '前端作品社区盲评竞技场:同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度并折算到 Elo 刻度(1000 为平均水平)。同一模型按推理强度分档多次测试,取最高分那一档计入综合分(权重 12%,属「第三方实测」组)。',
   'stats': {
