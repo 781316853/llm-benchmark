@@ -6,9 +6,90 @@ window.NEWS = {
   'retentionDays': 2,
   'types': [
     '要闻',
+    '开发生态',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-10-30',
+      'title': 'OpenAI 将 Pro 各档与 Business Premium 用量翻倍，dots 继续提供单独用量',
+      'brief': 'OpenAI 宣布，即日起 Pro 100 、 Pro 200 、 Pro 500 和 Business Premium 的所有用量上限翻倍。 OpenAI 称听取了用户反馈，不再下调 Pro 200 的用量上限， Work 和 Codex 用量保持不变。',
+      'url': 'https://x.com/thsottiaux/status/2115850175868727621',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Claude Code 命令行工具恢复 ultrathink 功能',
+      'brief': 'Claude Code 命令行工具（ CC CLI ）恢复了 ultrathink 功能。 Adam Wolff 称，团队此前曾暂时关闭它，因为它有些奇怪，也可能造成混淆。他介绍，启用 ultrathink 后，单轮的 effort 会提升到 xhigh ，该轮生成的 subagents 同样以 xhigh 运行，这一轮结束后恢复为此前的设定。 Adam Wolff 还称，该功能很快会登陆 Claude Desktop 。',
+      'url': 'https://x.com/dmwlff/status/2115614417689944066',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Google 宣布异步编程 agent Jules 将关停',
+      'brief': 'Jules 团队在 X 上宣布， Jules 将进入关停流程。',
+      'url': 'https://jules.google/docs/changelog/2026-10-29',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Google Antigravity 推出 Plugin Marketplace',
+      'brief': 'Google Antigravity 推出 Plugin Marketplace，这是一个集中浏览和安装第三方与 Google 构建插件的目录，覆盖 Antigravity App 和 Antigravity CLI。',
+      'url': 'https://antigravity.google/docs/marketplace',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Herdr Labs 推出开源 herdr-core 与桌面应用 herdr-app',
+      'brief': 'Herdr Labs 在 X 上宣布推出开源的 herdr-core ，以及基于它构建的桌面应用 herdr-app 。 Herdr 称，应用内所有内容都是 ~/.config/herdr-app 下的本地文件，其中的 AGENTS.md 会告诉 agent 可以修改什么，用户提出需求即可让 agent 编辑。',
+      'url': 'https://github.com/herdrdev/herdr-app',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Factory 发布 Droid 1.0，默认采用程序化工具调用',
+      'brief': 'Factory 发布 Droid 1.0 ，作为其 agent 的新引擎，面向复杂项目和日常开发。',
+      'url': 'https://factory.com/news/frontier-harness',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Gemini 应用支持在聊天中生成、预览和编辑PDF等文件',
+      'brief': 'Google 宣布， Gemini 应用现在支持在聊天中直接生成、预览和编辑文档、 PDF 、演示文稿、电子表格、 Markdown 文件、 TXT 文件和代码。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Gemini Notebook 新增数百本免费教科书',
+      'brief': 'Google 宣布， Gemini Notebook 新增 数百本 教科书，学生可以免费直接在 Notebook 内浏览、选择，并上传为资料来源，用于准备考试。教科书来自 S Chand Publishing 、 OpenStax 和 Open Textbook Library 等出版方。 Google 在博客中称，用户添加教科书后，可以生成自定义的学习指南和测验。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-notebook/new-access-textbooks/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Claude 移动应用更新：多账号切换、CarPlay 语音',
+      'brief': 'Anthropic 旗下的 Claude 本周更新移动应用。在 iPad 和 iPhone Duo 上， Claude 生成的内容改为在聊天旁侧打开，需要细看时可全屏显示； iOS 和 Android 支持登录多个账号并切换，无需退出登录。应用界面语言新增 24 种，共 33 种，覆盖 web 、桌面端、 iOS 和 Android 。 iOS 和 Android 的语音模式响应更快， iPhone 上的语音模式支持 Apple Car…',
+      'url': 'https://x.com/claudeai/status/2115859377488072879',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-30',
+      'title': 'Anthropic 为 Claude Enterprise 推出智能报告',
+      'brief': 'Anthropic 为 Claude Enterprise 推出智能报告功能，管理者选定团队、最长 28 天 的时间范围和 Claude 产品后，可查看团队的工作流、产出内容、对应开销和常见阻碍。每个组织每月可免费生成 10 份 报告，达到上限后无法新建，需联系客户团队。',
+      'url': 'https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-10-29',
       'title': 'Google 推出 Gemini 4 Carbon，先向部分用户开放',
@@ -46,38 +127,6 @@ window.NEWS = {
       'title': 'Google 将 AI Mode 广告扩展到 10 国',
       'brief': 'Google 宣布， AI Mode 中的广告扩展到澳大利亚、加拿大、印度、Kenya、马来西亚、新西兰、Nigeria、巴基斯坦、菲律宾和新加坡。同时， Google 在美国推出 multi-turn ads ，让用户在 AI Mode 中继续追问时，也能展示广告。 Google 计划在 2026 年第四季度 扩展到巴西、墨西哥和英国等更多地区，广告将明确标注“Sponsored”。 Google 商务负责人 Philipp Schi…',
       'url': 'https://blog.google/products/ads-commerce/ads-in-ai-mode-global/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Gemini Notebook 的 Live Chat 向所有移动端用户开放',
-      'brief': 'Gemini Notebook 宣布， Live Chat 功能此前已向移动端 Ultra 用户 100% 推出，现在已向所有移动端用户开放。该功能支持用户与自己的 notebook 进行实时语音对话，覆盖约 100 种语言。',
-      'url': 'https://x.com/Gemini_Notebook/status/2115582082340860324',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Gemini 应用推出沉浸式探索功能',
-      'brief': 'Google 在 Gemini 应用中推出沉浸式探索功能，提供一个交互式、可视化的内容库，让用户逐层探索话题，主题包括丝绸之路贸易路线、喷气发动机内部和闪电物理等。',
-      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Chrome 增强自动填充可从 Gmail 提取信息',
-      'brief': 'Google 宣布， Chrome 的增强自动填充功能开始支持从 Gmail 中提取信息，并在用户填写网页表单时给出建议。该功能由带 Personal Intelligence 的 Gemini 驱动，可提供订单号、追踪信息和航班预订号等内容。',
-      'url': 'https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Google 与 XREAL 推出 Android XR 眼镜 AURA',
-      'brief': 'Google 与 XREAL 宣布正式推出 XREAL AURA ， Google 称这是首款搭载 Android XR 的有线 XR 眼镜。',
-      'url': 'https://blog.google/products-and-platforms/platforms/android/xreal-aura/',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     }
