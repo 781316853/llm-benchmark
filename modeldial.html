@@ -8,6 +8,9 @@
   <meta name="description" content="ModelDial 第三方独立实测:后端 40% + 前端 30% + 知识 30% 合成的编码智能体综合能力分,含成本×成绩散点与全部配置明细。" />
   <meta name="author" content="LLM Benchmark Index" />
   <link rel="canonical" href="https://781316853.github.io/llm-benchmark/modeldial.html" />
+  <link rel="alternate" hreflang="zh-CN" href="https://781316853.github.io/llm-benchmark/modeldial.html" />
+  <link rel="alternate" hreflang="en" href="https://781316853.github.io/llm-benchmark/en/modeldial.html" />
+  <link rel="alternate" hreflang="x-default" href="https://781316853.github.io/llm-benchmark/modeldial.html" />
   <!-- 分享卡片:X / 微信 / Discord / Slack 取 OG,X 取 twitter:*;og:image 为 1200×630 封面 -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大模型编码基准整合门户" />
@@ -84,9 +87,9 @@
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
   <script defer src="js/data.js?v=20261026a"></script>
-  <script defer src="js/charts.js?v=20261018a"></script>
+  <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261026a"></script>
-  <script defer src="js/app.js?v=20261029b"></script>
+  <script defer src="js/app.js?v=20261030a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261029b"></script>
   <!-- 意见反馈交互 -->
@@ -109,6 +112,8 @@
           <div><b>16</b><span>权威基准</span></div>
           <div><b>2h</b><span>刷新间隔</span></div>
         </div>
+        <!-- 语言切换:中文站 ↔ /en/ 英文站;英文页的链接由 scripts/build_pages.js 反转为「中文」 -->
+        <a class="lang-link" href="en/" hreflang="en" lang="en" aria-label="Switch to English">English</a>
       </div>
     </div>
   </header>

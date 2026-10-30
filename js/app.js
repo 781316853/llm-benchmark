@@ -4,6 +4,16 @@
   var D = window.D, CH = window.CH, CMP = window.CMP;
   // 当前页由 <body data-page> 指定:每页只渲染自己那一节,页间跳转是普通链接而非页内切 class
   var CURRENT_TAB = (document.body && document.body.getAttribute("data-page")) || "overview";
+  // 英文页位于 /en/ 子目录,按需注入的数据脚本要加 ../ 前缀(生成器写入 body[data-base])
+  var SITE_BASE = (document.body && document.body.getAttribute("data-base")) || "";
+  // 图表文字画在 canvas 里,DOM 翻译够不到,故传给 ECharts 之前先用同一张字典译好。
+  // i18n.js 只在 <html lang=en> 下初始化,中文站 T 原样返回。
+  function T(s) {
+    var L = window.I18N && window.I18N.lookup;
+    if (!L || !s) return s;
+    var out = L(s);
+    return out == null ? s : out;
+  }
   var state = { tab: CURRENT_TAB, llmMonth: null,
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
@@ -452,7 +462,7 @@
     document.getElementById("benchCards").innerHTML = '<div class="bench-list">' + sum.map(function (b, i) {
       var idx = i + 1 < 10 ? "0" + (i + 1) : String(i + 1);
       var stats = b.stats.map(function (s) {
-        return '<span><b>' + esc(s.v) + '</b>' + esc(s.l) + '</span>';
+        return '<span data-i18n-ctx="card-stats"><b>' + esc(s.v) + '</b>' + esc(s.l) + '</span>';
       }).join("");
       return '<a class="bench-item" href="' + esc(b.url || "") + '" target="_blank" rel="noopener">' +
         '<span class="bi-idx">' + idx + '</span>' +
@@ -460,7 +470,7 @@
           '<span class="bi-head"><span class="bi-name">' + esc(b.name) + '</span>' +
             '<span class="bc-tag">' + esc(b.tag) + '</span></span>' +
           '<span class="bi-desc">' + esc(BENCH_DESC[b.key] || "") + '</span>' +
-          '<span class="bi-meta"><span><b>' + (BENCH_WEIGHT[b.key] || "—") + '</b>权重</span>' + stats +
+          '<span class="bi-meta"><span data-i18n-ctx="card-weight"><b>' + (BENCH_WEIGHT[b.key] || "—") + '</b>权重</span>' + stats +
             '<span>更新 ' + esc(b.updated || "—") + '</span></span>' +
         '</span>' +
         '<span class="bi-top"><span class="bi-top-label">头名</span>' +
@@ -833,7 +843,7 @@
       g.points.push([m.cost, m.pass1, m.steps, m.name]);
     });
     CH.apply("authDsScatter", CH.scatterOption(groups.filter(function (g) { return g.points.length; }), {
-      xName: "平均成本($)", yName: "Pass@1(%)", bubble: true,
+      xName: T("平均成本($)"), yName: "Pass@1(%)", bubble: true,
       xLog: true, xMin: 0.05, xMax: 30, yMin: 0, yMax: 80 }));
   }
 
@@ -961,9 +971,9 @@
     // 对数轴上下界收敛到 1 位有效数字(如 0.01 / 20):既给端点标签留出宽度,又让刻度读数干净
     // (直接取极值会得到 0.010781 / 28.09321 这类刻度)
     var span = function (v) { var t = Number(v.toPrecision(1)); return t > 0 ? t : v; };
-    CH.apply("mdScatter", CH.scatterOption([{ name: "模型", points: pts }], {
-      xName: "参考费用($" + (src.costBasis === "backend" ? "后端轴" : "") + ")", yName: "综合分",
-      bubble: true, bubbleName: "耗时", bubbleScale: 2.2,
+    CH.apply("mdScatter", CH.scatterOption([{ name: T("模型"), points: pts }], {
+      xName: T("参考费用($" + (src.costBasis === "backend" ? "后端轴" : "") + ")"), yName: T("综合分"),
+      bubble: true, bubbleName: T("耗时"), bubbleScale: 2.2,
       bubbleFormat: function (min) { return fmtDur(min * 60000); },
       xFormat: fmtUsd,
       xLog: true,
@@ -1116,9 +1126,9 @@
     var costs = pts.map(function (p) { return p[0]; });
     var scores = pts.map(function (p) { return p[1]; });
     var span = function (v) { var t = Number(v.toPrecision(1)); return t > 0 ? t : v; };
-    CH.apply("acdScatter", CH.scatterOption([{ name: "模型", points: pts }], {
-      xName: "每 prompt 平均成本($)", yName: "总分(0-" + maxPts + ")",
-      bubble: true, bubbleName: "耗时", bubbleScale: 2.2,
+    CH.apply("acdScatter", CH.scatterOption([{ name: T("模型"), points: pts }], {
+      xName: T("每 prompt 平均成本($)"), yName: T("总分(0-" + maxPts + ")"),
+      bubble: true, bubbleName: T("耗时"), bubbleScale: 2.2,
       bubbleFormat: function (min) { return fmtDur(min * 60000); },
       xFormat: fmtUsd,
       xLog: true,
@@ -1213,9 +1223,9 @@
       var costs = pts.map(function (p) { return p[0]; });
       var accs = pts.map(function (p) { return p[1]; });
       var span = function (v) { var t = Number(v.toPrecision(1)); return t > 0 ? t : v; };
-      CH.apply("vcbScatter", CH.scatterOption([{ name: "模型", points: pts }], {
-        xName: "每测试平均成本($)", yName: "准确率(%)",
-        bubble: true, bubbleName: "耗时", bubbleScale: 2.2,
+      CH.apply("vcbScatter", CH.scatterOption([{ name: T("模型"), points: pts }], {
+        xName: T("每测试平均成本($)"), yName: T("准确率(%)"),
+        bubble: true, bubbleName: T("耗时"), bubbleScale: 2.2,
         bubbleFormat: function (min) { return fmtDur(min * 60000); },
         xFormat: fmtUsd, xLog: true,
         xMin: span(Math.min.apply(null, costs) / 2.2),
@@ -1914,7 +1924,7 @@
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
   // data/changelog.js 含 12 个工具的全量历史(实测约 3.4MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
-  var CL_DATA_SRC = "data/changelog.js?v=20261017a";
+  var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261017a";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
   // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
   // 换戳重注入即可原地恢复,不必刷整页。
@@ -2156,7 +2166,7 @@
       if (dataState[k] === "loading") return;
       dataState[k] = "loading";
       var s = document.createElement("script");
-      s.src = DATA_SRC[k].src;
+      s.src = SITE_BASE + DATA_SRC[k].src;
       // 失败只降级不重试:按「该源缺数据」渲染(各 D.* 对缺数据已返回空集),避免每次进页重打请求
       s.onload = function () { dataState[k] = "ready"; settleData(k); };
       s.onerror = function () { dataState[k] = "failed"; settleData(k); };

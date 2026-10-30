@@ -62,6 +62,13 @@
     var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
     return v || fallback;
   }
+  // 图表内的默认文案(canvas / tooltip)也走运行时字典:i18n.js 仅在英文页初始化
+  function tt(s) {
+    var L = window.I18N && window.I18N.lookup;
+    if (!L) return s;
+    var out = L(s);
+    return out == null ? s : out;
+  }
   function palette() {
     return {
       text: tok("--chart-text", "#1A2332"),
@@ -229,7 +236,7 @@
           "<br/>" + (opts.xName || "X") + ": " + (opts.xFormat ? opts.xFormat(d[0]) : d[0]) +
           "<br/>" + (opts.yName || "Y") + ": " + (opts.yFormat ? opts.yFormat(d[1]) : d[1]) +
         // 气泡量纲由调用方决定(DeepSWE 为平均步数,ModelDial 为耗时)
-          (d[2] == null ? "" : "<br/>" + (opts.bubbleName || "平均步数") + ": " +
+          (d[2] == null ? "" : "<br/>" + (opts.bubbleName || tt("平均步数")) + ": " +
             (opts.bubbleFormat ? opts.bubbleFormat(d[2]) : d[2])); } },
       // 对数轴的 min 取到数据最小值之下,避免最左的点正好压在 Y 轴上(居中标签会溢出到刻度区)
       xAxis: Object.assign({ type: opts.xLog ? "log" : "value", logBase: 10,
