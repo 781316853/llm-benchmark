@@ -22,6 +22,9 @@ Thumbs.db
 # 调试探针脚本与站点副本(以 .tmp_ 开头的临时产物,一律不入库)
 .tmp_*
 
+# 本地视觉核对截图(Playwright 截图,按需重生成)
+.screenshots/
+
 # 本地宣传片素材与设计稿(B站视频/封面约 31MB,不入库)
 promo/
 docs/superpowers/
