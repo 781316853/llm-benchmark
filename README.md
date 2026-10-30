@@ -4,7 +4,8 @@
 
 ## 在线访问
 
-- <https://781316853.github.io/llm-benchmark/>
+- 中文站:<https://781316853.github.io/llm-benchmark/>
+- English:<https://781316853.github.io/llm-benchmark/en/>(8 个榜单页,见「英文站」一节)
 
 ## 功能
 
@@ -49,9 +50,12 @@
 index.html + 8 个榜单页   9 个独立页面(index.html / llm2014.html / modeldial.html / arenaofbias.html /
                          aicodingdaily.html / valsvcb.html / authority.html / plans.html / changelog.html),
                          由 pages/shell.html 生成,勿直接编辑
+en/                      8 个英文页(同上,不含 changelog),同一份模板生成,正文由 js/i18n-en.js 运行时翻译
 pages/shell.html        全站模板(9 个标签的公共骨架 + 各页 section),改页面结构改这里
-scripts/build_pages.js  把模板拆成 9 个页面并生成 sitemap.xml(npm run pages)
+scripts/build_pages.js  把模板拆成 9 个页面 + 8 个英文页并生成 sitemap.xml(npm run pages)
 css/styles.css          纸本研报风样式(暖纸底 / 墨绿 / 铁锈红 / 衬线标题)
+js/i18n.js              英文站运行时翻译引擎(仅 <html lang=en> 生效):dict / html / rules / ctx 四张表
+js/i18n-en.js           英文站翻译字典(中文原文为 key)
 js/data.js              数据归一(canonical 命中映射、unified 视图、hitCount)
 js/charts.js            ECharts 封装
 js/compare.js           跨基准矩阵/雷达/指标卡
@@ -80,6 +84,18 @@ robots.txt / sitemap.xml  爬虫准入与站点地图
 - **访问统计**:Cloudflare Web Analytics(无 Cookie、无个人数据,不需要同意弹窗)。在 Cloudflare 控制台 Web Analytics 添加站点后,把 token 填入 `pages/shell.html` `<head>` 内联脚本的 `var token = ""`;留空则不加载脚本、不产生请求。
 - **引用当前榜单**:每个榜单页头部右上角的「引用此榜单」给出纯文本引文与 BibTeX,含页面标题、数据快照日期(取该页所辖数据源 `updated` 的最大值)与该页 `canonical` 链接。
 - **CSV 导出**:每张数据表右上角「CSV」导出**当前排序与筛选后的视图**(与页面所见一致),UTF-8 BOM + CRLF,Excel 直接打开不乱码;文件名 `llm-benchmark_<标签>_<表 id>_<日期>.csv`。表格随渲染反复重建,按钮由 `js/export.js` 的 MutationObserver 自动补挂。
+
+## 英文站(/en/)
+
+- **范围**:8 个榜单页各有英文版(`en/<tab>.html`),`changelog` 不生成 —— 更新日志正文是抓取时由 MyMemory 中译的,英文原文未入库。英文页与中文页互加 `hreflang` 与 `canonical`,`sitemap.xml` 同时列出 16 个 URL,顶部语言切换按钮回链到对应中文页。
+- **生成方式**:仍是 `npm run pages`,与中文页同一份模板。`scripts/build_pages.js` 的 `buildPageEn()` 只改 `<head>` 元信息、导航文案、`../` 资源前缀与 `body[data-page]` 的 `data-base`,正文 DOM 与中文页完全一致;总览页会去掉中文 AI 热点区块(ECharts 依赖同一套数据脚本,脚本清单不变)。
+- **翻译在渲染后做**(`js/i18n.js` + `js/i18n-en.js`):站点内容主要由 `js/app.js` 动态生成,逐处改源码代价大且易漏。引擎只在 `<html lang="en">` 下生效,中文站零开销;遍历 DOM 后按四张表替换:
+  - `dict` —— 纯文本或单个属性值,按「去掉首尾空白 + 空白折叠」后的原文精确匹配;含数字的键自动做数字占位模糊匹配(快照日期/条数/价格每天变,不必改字典),译文里的数字顺序须与原文一致。
+  - `html` —— 含内联标签的整块文案,key 为块内 `textContent`,命中时整体替换 `innerHTML`。用于「加粗词卡在句子中间」这类逐节点替换会把空格和语序拆坏的地方。
+  - `rules` —— `[正则, 替换串或函数]`,处理带变量的模板文案(日期、名次、条数、来源链接),按声明顺序取第一条匹配。
+  - `ctx` —— 按容器 `data-i18n-ctx` 覆盖同形异义词(如卡片统计里的「模型」是复数 models、表头是单数 Model)。
+- **canvas 内的文字**(图表轴名、tooltip)DOM 翻译够不到,由 `js/app.js` 的 `T()` 与 `js/charts.js` 的 `tt()` 在传给 ECharts 之前查同一张字典。
+- **维护**:新增中文文案后,重跑页面用 Playwright 遍历 `en/*.html` 收集仍含汉字的文本节点与 `title/placeholder/aria-label/alt` 属性,补进 `js/i18n-en.js` 即可;未收录的字符串原样保留(渐进补译),不会报错。改完 `js/i18n-en.js` / `js/i18n.js` 要同步升 `scripts/build_pages.js` 顶部的 `EN_VER`,改 `app.js` / `charts.js` 要升 `pages/shell.html` 里的资源版本号,避免浏览器吃旧缓存。
 
 ## 前端加载策略(首屏只留必要资源)
 
