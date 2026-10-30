@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'apex',
       'name': 'APEX-1',
       'status': 'ok',
-      'modelCount': 74,
+      'modelCount': 75,
       'updated': '2026-10-30',
       'ageDays': 0,
       'completeness': 1,
@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 151,
+      'modelCount': 153,
       'updated': '2026-10-30',
       'ageDays': 0,
       'completeness': 1,
@@ -307,7 +307,7 @@ window.QUALITY = {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
-      'modelCount': 122,
+      'modelCount': 123,
       'updated': '2026-10-30',
       'ageDays': 0,
       'completeness': 1,
@@ -752,9 +752,9 @@ window.QUALITY = {
     },
     'apex': {
       'rate': 1,
-      'total': 74,
-      'complete': 74,
-      'modelCount': 74,
+      'total': 75,
+      'complete': 75,
+      'modelCount': 75,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -784,9 +784,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 151,
-      'complete': 151,
-      'modelCount': 151,
+      'total': 153,
+      'complete': 153,
+      'modelCount': 153,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -958,9 +958,9 @@ window.QUALITY = {
     },
     'vals_vibe_code': {
       'rate': 1,
-      'total': 122,
-      'complete': 122,
-      'modelCount': 122,
+      'total': 123,
+      'complete': 123,
+      'modelCount': 123,
       'missingFields': {},
       'flag': 'ok'
     }

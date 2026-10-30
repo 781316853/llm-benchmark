@@ -9,7 +9,7 @@ window.VALSVIBECODE = {
   'officialUrl': 'https://www.vals.ai/benchmarks/vibe-code',
   'version': '1.1',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-10-30 21:20',
+  'refreshedAt': '2026-10-31 03:36',
   'harnesses': [
     'OpenHands',
     'Claude Code',
@@ -20,7 +20,7 @@ window.VALSVIBECODE = {
     'Devin CLI'
   ],
   'stats': {
-    'models': 122
+    'models': 123
   },
   'desc': 'Vibe Code Bench v1.1(Vals AI):从零构建 Web 应用的真实编码 Agent 实测,每份应用规格配 20-60 条隐藏自动化测试,模型在隔离容器中最多跑 5 小时或 1000 轮;多数模型跑在 OpenHands harness 上,源站另含少量 Claude Code / Codex / Factory 等 harness 条目,主指标为准确率(%),另记每测试平均成本与平均耗时。',
   'models': [
@@ -1357,6 +1357,18 @@ window.VALSVIBECODE = {
       'src': 'official'
     },
     {
+      'id': 'baseten/nemotron-3.5-super-vl-120b-a12b',
+      'model': 'Nemotron 3.5 Super Vl 120b A12b',
+      'accuracy': 3.54,
+      'costPerTest': 0.554112,
+      'latencyS': 273.3,
+      'harness': 'OpenHands',
+      'avgInputTokens': null,
+      'avgOutputTokens': null,
+      'rank': 112,
+      'src': 'official'
+    },
+    {
       'id': 'alibaba/qwen3-max',
       'model': 'Qwen3 Max',
       'accuracy': 3.51,
@@ -1365,7 +1377,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 112,
+      'rank': 113,
       'src': 'official'
     },
     {
@@ -1377,7 +1389,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 113,
+      'rank': 114,
       'src': 'official'
     },
     {
@@ -1389,7 +1401,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 114,
+      'rank': 115,
       'src': 'official'
     },
     {
@@ -1401,7 +1413,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 115,
+      'rank': 116,
       'src': 'official'
     },
     {
@@ -1413,7 +1425,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 116,
+      'rank': 117,
       'src': 'official'
     },
     {
@@ -1425,7 +1437,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 117,
+      'rank': 118,
       'src': 'official'
     },
     {
@@ -1437,7 +1449,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 118,
+      'rank': 119,
       'src': 'official'
     },
     {
@@ -1449,7 +1461,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 119,
+      'rank': 120,
       'src': 'official'
     },
     {
@@ -1461,7 +1473,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 120,
+      'rank': 121,
       'src': 'official'
     },
     {
@@ -1473,7 +1485,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 121,
+      'rank': 122,
       'src': 'official'
     },
     {
@@ -1485,7 +1497,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 122,
+      'rank': 123,
       'src': 'official'
     }
   ]
