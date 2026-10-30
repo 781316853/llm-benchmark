@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-10-30',
-  'refreshedAt': '2026-10-31 03:36',
+  'refreshedAt': '2026-10-31 07:57',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,7 +19,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '0.166.0',
@@ -1232,7 +1232,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '2.1.314',
@@ -3550,8 +3550,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
+        {
+          'version': '2.2.5',
+          'title': 'v2.2.5',
+          'date': '2026-10-30',
+          'dateRaw': '2026-10-30T23:17:23Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Improvements',
+            'Bug fixes',
+            'TUI',
+            'Desktop'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.2.5',
+          'body': '### Highlights\n\n- **Worktree and Shell Mode Shortcuts**: Press `⌘⌥O` on macOS or `Ctrl+Alt+O` on Windows and Linux to choose a worktree, and `⌘⌥B` or `Ctrl+Alt+B` to choose its base branch. `⌘⇧X` or `Ctrl+Shift+X` now toggles shell mode in the composer. ([#60713](https://github.com/anomalyco/opencode/pull/60713))\n- **Send Quotes From the Comment Popup**: Hold `⌘` or `Ctrl` in the quote popup to turn its checkmark into send, or press `⌘Enter` or `Ctrl+Enter`, to send just that quote and comment while leaving the rest of the composer untouched. ([#60640](https://github.com/anomalyco/opencode/pull/60640))\n- **Percentage Compaction Buffer**: Set `\'compaction\': { \'buffer\': \'20%\' }` in `opencode.json` to keep a share of each model\'s context window free, so one setting fits models with small and large windows. Token counts still work. ([#60647](https://github.com/anomalyco/opencode/pull/60647))\n\n### Core\n\n#### Improvements\n\n- `compaction.buffer` accepts a percentage of the model\'s context window, such as `\'20%\'`, in addition to a token count. ([#60647](https://github.com/anomalyco/opencode/pull/60647))\n- When `read` misses because a folder is missing, the error names that folder and the nearest one that exists. ([#60688](https://github.com/anomalyco/opencode/pull/60688))\n- When `edit` can\'t find `oldString`, the error shows the file\'s closest lines, or says the change is already there. ([#60689](https://github.com/anomalyco/opencode/pull/60689))\n- Calls to a tool named `bash` now run as `shell` instead of failing, with the same permissions. A plugin tool actually named `bash` still takes precedence. ([#60687](https://github.com/anomalyco/opencode/pull/60687))\n\n#### Bug fixes\n\n- MCP servers that send stdio messages larger than 10 MiB no longer get disconnected, and large messages are read much faster. ([#60694](https://github.com/anomalyco/opencode/pull/60694))\n- Idle locations no longer restart their MCP servers right after shutting down. ([#60668](https://github.com/anomalyco/opencode/pull/60668))\n- Compaction now caps its prompt at the model\'s context window when the input limit is larger. ([#60660](https://github.com/anomalyco/opencode/pull/60660))\n- LiteLLM context window errors now trigger compaction instead of stopping the session. ([#60692](https://github.com/anomalyco/opencode/pull/60692))\n- Reasoning is no longer turned into plain text when you switch models or resume an interrupted response, which caused request errors on some providers. ([#60498](https://github.com/anomalyco/opencode/pull/60498))\n\n### TUI\n\n#### Bug fixes\n\n- The connect menu no longer lists MCP servers, which are managed in their own place. ([#60675](https://github.com/anomalyco/opencode/pull/60675))\n\n### Desktop\n\n#### Improvements\n\n- Added keyboard shortcuts to choose a worktree and its base branch, shown in tooltips, and a shortcut to toggle shell mode. The worktree path can be selected to copy the full directory. ([#60713](https://github.com/anomalyco/opencode/pull/60713))\n- Hold `⌘` or `Ctrl` in the quote popup to send a quote and its comment directly. ([#60640](https://github.com/anomalyco/opencode/pull/60640))\n- Added flat input surfaces and a compact input size. ([#60598](https://github.com/anomalyco/opencode/pull/60598))\n\n#### Bug fixes\n\n- The connect menu no longer lists MCP servers. ([#60675](https://github.com/anomalyco/opencode/pull/60675))\n- Added the missing top inset to the search field in the recently closed menu. ([#60652](https://github.com/anomalyco/opencode/pull/60652))'
+        },
         {
           'version': '2.2.4',
           'title': 'v2.2.4',
@@ -9037,15 +9053,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.14',
           'body': '- Added model management to ACP sessions, allowing users to manage models within agent sessions\n- Adjusted retry logic so we can surface retries to end user (not surfaced yet)\n- Added experimental turn summarization to compact conversation history, helping manage long conversations\n- Added parent ID tracking to assistant messages for better conversation context\n- Added Amazon Nova models to the us-* prefix requirement list for proper model routing\n- Fixed opencode run command to not print to stderr, improving output handling\n- Improved editor detection with auto-discovery and better error messages\n- Added option to allow agent switches without changing the model'
-        },
-        {
-          'version': '0.15.13',
-          'title': 'v0.15.13',
-          'date': '2025-10-21',
-          'dateRaw': '2025-10-21T20:24:28Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.13',
-          'body': '- Fixed sourcemapping so errors show proper stack trace\n- Refactored ACP (Agent Client Protocol) server command argument handling'
         }
       ]
     },
@@ -9057,7 +9064,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '2.4.1',
@@ -10033,7 +10040,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '0.2.1-rc.5',
@@ -10586,7 +10593,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '0.5.1',
@@ -10912,7 +10919,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '1.38.0',
@@ -11555,7 +11562,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '3.4.1-3.4.4',
@@ -13496,7 +13503,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -13683,7 +13690,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '3.16.3',
@@ -13850,7 +13857,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '4.12.2',
@@ -14719,7 +14726,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-10-31 03:36',
+      'lastOkAt': '2026-10-31 07:57',
       'entries': [
         {
           'version': '5.9.3',
