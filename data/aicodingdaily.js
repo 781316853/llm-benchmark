@@ -1,4 +1,4 @@
-// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-10-27)
+// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-10-31)
 // 来源:https://aicodingdaily.com/leaderboard(方法论:https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas)
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
@@ -15,9 +15,9 @@ window.AICODINGDAILY = {
     'bugFinding': 10,
     'edgeCase': 20
   },
-  'updated': '2026-10-27',
+  'updated': '2026-10-31',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-10-31 14:06',
+  'refreshedAt': '2026-10-31 20:56',
   'stats': {
     'entries': 50,
     'models': 33
@@ -234,22 +234,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 14,
-      'model': 'Mistral Large 4',
-      'effort': 'High',
-      'score': 56.86,
-      'costUsd': 0.34,
-      'timeSec': 873,
-      'timeStr': '14:33',
-      'harness': 'OpenCode',
-      'laravel': 18.13,
-      'reactTs': 19.33,
-      'bugFinding': 3.65,
-      'edgeCase': 15.75,
-      'src': 'aggregate',
-      'configs': 1
-    },
-    {
-      'rank': 15,
       'model': 'Grok 4.6',
       'effort': 'High',
       'score': 56.71,
@@ -265,7 +249,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 16,
+      'rank': 15,
       'model': 'GLM-5.3',
       'effort': 'High',
       'score': 54.82,
@@ -281,7 +265,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 17,
+      'rank': 16,
       'model': 'MiniMax M3.1-Flash',
       'effort': 'Max',
       'score': 54.48,
@@ -297,7 +281,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 18,
+      'rank': 17,
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 53.81,
@@ -313,7 +297,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 19,
+      'rank': 18,
       'model': 'Qwen 3.8 Max (0902)',
       'effort': 'High',
       'score': 53.39,
@@ -329,7 +313,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 20,
+      'rank': 19,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 53.29,
@@ -345,7 +329,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 21,
+      'rank': 20,
       'model': 'Muse Spark 1.3',
       'effort': 'Max',
       'score': 53.01,
@@ -361,7 +345,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 22,
+      'rank': 21,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Max',
       'score': 52.64,
@@ -373,6 +357,22 @@ window.AICODINGDAILY = {
       'reactTs': 17.67,
       'bugFinding': 5.42,
       'edgeCase': 13.2,
+      'src': 'aggregate',
+      'configs': 1
+    },
+    {
+      'rank': 22,
+      'model': 'Mistral Large 4',
+      'effort': 'High',
+      'score': 51.81,
+      'costUsd': 0.18,
+      'timeSec': 330,
+      'timeStr': '05:30',
+      'harness': 'OpenCode',
+      'laravel': 17.78,
+      'reactTs': 18.5,
+      'bugFinding': 3.13,
+      'edgeCase': 12.4,
       'src': 'aggregate',
       'configs': 1
     },
@@ -901,21 +901,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 24,
-      'model': 'Mistral Large 4',
-      'effort': 'High',
-      'score': 56.86,
-      'costUsd': 0.34,
-      'timeSec': 873,
-      'timeStr': '14:33',
-      'harness': 'OpenCode',
-      'laravel': 18.13,
-      'reactTs': 19.33,
-      'bugFinding': 3.65,
-      'edgeCase': 15.75,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 25,
       'model': 'Grok 4.6',
       'effort': 'High',
       'score': 56.71,
@@ -930,7 +915,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 26,
+      'rank': 25,
       'model': 'GPT-6-Luna',
       'effort': 'Xhigh',
       'score': 56.4,
@@ -945,7 +930,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 27,
+      'rank': 26,
       'model': 'Deepseek-V4.1-Flash-1017',
       'effort': 'High',
       'score': 55.21,
@@ -960,7 +945,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 28,
+      'rank': 27,
       'model': 'GLM-5.3',
       'effort': 'High',
       'score': 54.82,
@@ -975,7 +960,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 29,
+      'rank': 28,
       'model': 'GPT-6.1-Terra',
       'effort': 'High',
       'score': 54.82,
@@ -990,7 +975,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 30,
+      'rank': 29,
       'model': 'GPT-6.1-Terra',
       'effort': 'Medium',
       'score': 54.61,
@@ -1005,7 +990,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 31,
+      'rank': 30,
       'model': 'MiniMax M3.1-Flash',
       'effort': 'Max',
       'score': 54.48,
@@ -1020,7 +1005,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 32,
+      'rank': 31,
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 53.81,
@@ -1035,7 +1020,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 33,
+      'rank': 32,
       'model': 'Qwen 3.8 Max (0902)',
       'effort': 'High',
       'score': 53.39,
@@ -1050,7 +1035,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 34,
+      'rank': 33,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 53.29,
@@ -1065,7 +1050,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 35,
+      'rank': 34,
       'model': 'GPT-6-Luna',
       'effort': 'High',
       'score': 53.04,
@@ -1080,7 +1065,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 36,
+      'rank': 35,
       'model': 'Muse Spark 1.3',
       'effort': 'Max',
       'score': 53.01,
@@ -1095,7 +1080,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 37,
+      'rank': 36,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Max',
       'score': 52.64,
@@ -1107,6 +1092,21 @@ window.AICODINGDAILY = {
       'reactTs': 17.67,
       'bugFinding': 5.42,
       'edgeCase': 13.2,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 37,
+      'model': 'Mistral Large 4',
+      'effort': 'High',
+      'score': 51.81,
+      'costUsd': 0.18,
+      'timeSec': 330,
+      'timeStr': '05:30',
+      'harness': 'OpenCode',
+      'laravel': 17.78,
+      'reactTs': 18.5,
+      'bugFinding': 3.13,
+      'edgeCase': 12.4,
       'src': 'aggregate'
     },
     {

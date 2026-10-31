@@ -10,7 +10,7 @@ window.FRONTIERCODE = {
   'officialUrl': 'https://cognition.com/frontiercode',
   'version': '1.1',
   'updated': '2026-10-31',
-  'refreshedAt': '2026-10-31 14:06',
+  'refreshedAt': '2026-10-31 20:56',
   'stats': {
     'tasks': 100,
     'entries': 45

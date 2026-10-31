@@ -296,6 +296,7 @@ window.SEEN = {
     'llm|Kimi-K3.1-Pro (max)': '2026-10-25',
     'llm|Hy4 preview (high)': '2026-10-26',
     'tbench|GPT-6.1 Terra': '2026-10-26',
-    'tbench|Gemini 4 Carbon': '2026-10-29'
+    'tbench|Gemini 4 Carbon': '2026-10-29',
+    'llm|Step 5 Preview': '2026-10-31'
   }
 };
