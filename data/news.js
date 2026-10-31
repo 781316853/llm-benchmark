@@ -2,14 +2,112 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-30',
+  'updated': '2026-10-31',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '产品应用'
+    '模型发布',
+    '产品应用',
+    '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-10-31',
+      'title': 'Anthropic 更名 Claude 订阅方案，逐步取消已验证 Ultra 账户五小时限制',
+      'brief': 'Anthropic 宣布将 Claude Max 5x 更名为 Max、 Max 20x 更名为 Ultra，月费分别维持 100 美元 和 200 美元 。',
+      'url': 'https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'OpenCode Go 为 DeepSeek V4.1 Flash 提供每月 100 美元额度',
+      'brief': 'OpenCode 发布 Operation Cheepseek Phase 4 ，为 OpenCode Go 订阅用户提供 DeepSeek V4.1 Flash 每月 100 美元 的使用额度。',
+      'url': 'https://x.com/opencode/status/2116209960673800474',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'Anthropic 为 Claude Code 加入游戏重制限制',
+      'brief': 'Anthropic 技术团队成员 Addy Osmani 确认， Claude Code 为 Opus 5.5 的提示词加入两句规则，避免重制别人的特定游戏。',
+      'url': 'https://x.com/addyosmani/status/2116213240363729013',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'Cursor 确认扩展市场出现恶意 Claude Code 版本',
+      'brief': 'Cursor 确认，其 VS Code 扩展市场曾提供遭恶意篡改的 Claude Code 扩展 2.1.312 和 2.1.313 版本，影响 Windows 和 macOS。这些版本并非 Anthropic 开发，会收集主机信息并尝试安装持久化 SSH 后门。',
+      'url': 'https://cursor.com/blog/claude-code-extension-security-notice',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'Qoder 支持局域网内多设备互联并分派任务',
+      'brief': 'Qoder 在手机远程控制之后再次升级连接能力，支持同一局域网内的设备互联。用户在常用的 Qoder 客户端里，通过配对码连接其他设备，即可向其分派任务，省去 SSH 配置和远程桌面切换。',
+      'url': 'https://mp.weixin.qq.com/s/4hFWL1RkQ4wWeUzWlddYKg',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'OpenAI Agents API 推出五项功能更新',
+      'brief': 'OpenAI Agents API 团队推出 五项 更新，涵盖命令审核、会话处理和提示缓存。 Auto Review 会在命令执行前检查潜在不当行为，异步压缩则允许压缩在后台进行。实验性时间感知功能让模型感知时间流逝，会话中的工具也可随时更新。系统提示现在会跨会话自动缓存， OpenAI 称这可以节省时间和费用。',
+      'url': 'https://x.com/stevendcoffey/status/2116303789649236048',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': '豆包推出免费福利，新用户可领 30 天订阅体验',
+      'brief': '豆包 于 10 月 30 日 推出免费福利活动，面向新用户和所有用户分别提供权益。',
+      'url': 'https://mp.weixin.qq.com/s/SyRyGyX-5O_v--1z3msLgg',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-10-31',
+      'title': '商汤开源 SenseNova-Loop-9B-Preview 多模态模型',
+      'brief': '商汤 推出并开源多模态模型 SenseNova-Loop-9B-Preview ，面向长上下文和 agent 工作流。',
+      'url': 'https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-10-31',
+      'title': '苹果宣布首批 Apple 智能在中国推出，接入千问',
+      'brief': '苹果 宣布首批 Apple 智能功能将在中国推出，现有 Siri、写作工具和视觉智能将接入 阿里巴巴 的 千问 。',
+      'url': 'https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': '四家 AI 公司支持通用训练偏好标记',
+      'brief': 'OpenAI 、 Google 、 Microsoft 和 Anthropic 宣布支持一种通用训练偏好标记，让网站通过 robots.txt 向多家参与的 AI 服务商表达内容是否可用于训练的偏好。',
+      'url': 'https://openai.com/index/helping-websites-express-ai-training-preferences/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'OpenAI 推出 Private Intelligence，保护商业客户数据',
+      'brief': 'OpenAI 推出 Private Intelligence ，为商业客户处理敏感工作提供数据保护，并让客户控制 agent 的行为。客户拥有包括输入和输出在内的业务数据，可以决定 agent 能访问什么、执行哪些操作，以及何时需要审批。',
+      'url': 'https://openai.com/business/private-intelligence',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-10-31',
+      'title': 'OpenAI 承诺定期发布社区安全报告，首期计划 2027 年初推出',
+      'brief': 'OpenAI 承诺于 2027 年初 发布首期社区安全报告，覆盖 2026 年下半年 ，此后每半年更新。报告将介绍公司如何识别和应对社区安全问题，以及保护措施的效果。 OpenAI 称， 2026 年第三季度 向执法部门提供了 200 余次 线索转介。',
+      'url': 'https://openai.com/index/community-safety-report-and-new-protections-for-teens/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
     {
       'date': '2026-10-30',
       'title': 'OpenAI 将 Pro 各档与 Business Premium 用量翻倍，dots 继续提供单独用量',
@@ -17,46 +115,6 @@ window.NEWS = {
       'url': 'https://x.com/thsottiaux/status/2115850175868727621',
       'source': '橘鸦AI早报',
       'type': '要闻'
-    },
-    {
-      'date': '2026-10-30',
-      'title': 'Claude Code 命令行工具恢复 ultrathink 功能',
-      'brief': 'Claude Code 命令行工具（ CC CLI ）恢复了 ultrathink 功能。 Adam Wolff 称，团队此前曾暂时关闭它，因为它有些奇怪，也可能造成混淆。他介绍，启用 ultrathink 后，单轮的 effort 会提升到 xhigh ，该轮生成的 subagents 同样以 xhigh 运行，这一轮结束后恢复为此前的设定。 Adam Wolff 还称，该功能很快会登陆 Claude Desktop 。',
-      'url': 'https://x.com/dmwlff/status/2115614417689944066',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-30',
-      'title': 'Google 宣布异步编程 agent Jules 将关停',
-      'brief': 'Jules 团队在 X 上宣布， Jules 将进入关停流程。',
-      'url': 'https://jules.google/docs/changelog/2026-10-29',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-30',
-      'title': 'Google Antigravity 推出 Plugin Marketplace',
-      'brief': 'Google Antigravity 推出 Plugin Marketplace，这是一个集中浏览和安装第三方与 Google 构建插件的目录，覆盖 Antigravity App 和 Antigravity CLI。',
-      'url': 'https://antigravity.google/docs/marketplace',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-30',
-      'title': 'Herdr Labs 推出开源 herdr-core 与桌面应用 herdr-app',
-      'brief': 'Herdr Labs 在 X 上宣布推出开源的 herdr-core ，以及基于它构建的桌面应用 herdr-app 。 Herdr 称，应用内所有内容都是 ~/.config/herdr-app 下的本地文件，其中的 AGENTS.md 会告诉 agent 可以修改什么，用户提出需求即可让 agent 编辑。',
-      'url': 'https://github.com/herdrdev/herdr-app',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-30',
-      'title': 'Factory 发布 Droid 1.0，默认采用程序化工具调用',
-      'brief': 'Factory 发布 Droid 1.0 ，作为其 agent 的新引擎，面向复杂项目和日常开发。',
-      'url': 'https://factory.com/news/frontier-harness',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     },
     {
       'date': '2026-10-30',
@@ -87,46 +145,6 @@ window.NEWS = {
       'title': 'Anthropic 为 Claude Enterprise 推出智能报告',
       'brief': 'Anthropic 为 Claude Enterprise 推出智能报告功能，管理者选定团队、最长 28 天 的时间范围和 Claude 产品后，可查看团队的工作流、产出内容、对应开销和常见阻碍。每个组织每月可免费生成 10 份 报告，达到上限后无法新建，需联系客户团队。',
       'url': 'https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Google 推出 Gemini 4 Carbon，先向部分用户开放',
-      'brief': 'Google 发布新一代前沿模型 Gemini 4 Carbon ，称其为目前最强的模型，在网络安全和长时程任务上达到业界最高水平，距 Gemini 4 Argon 发布仅 两周 。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'OpenAI 向 ChatGPT Pro 和 Business 订阅用户发放 API 额度',
-      'brief': 'OpenAI Developers 宣布，符合条件的 ChatGPT Pro 和 Business 订阅用户即日起可领取每月最高 500 美元 的 API 额度，用于开发应用和 agent 。',
-      'url': 'https://x.com/OpenAIDevs/status/2115583698074755078',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'OpenAI 员工：ChatGPT 的 Chat 与 Work 整合今年推出',
-      'brief': 'OpenAI Codex 与 ChatGPT 团队的 Tibo 在 X 上表示，团队正在筹备整合 ChatGPT 中 Chat 与 Work 的能力，但目前尚未推出，并为造成的误解致歉。',
-      'url': 'https://x.com/thsottiaux/status/2115588390414581916',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Tibo：28 天计划第 23 天为重置，已完成',
-      'brief': 'OpenAI 的 Codex 团队成员 Tibo 于昨日表示， 28 天 更新计划第 23 天 的内容是一次重置，该重置已于昨日下午完成。',
-      'url': 'https://x.com/thsottiaux/status/2115330127886463244',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Google 将 AI Mode 广告扩展到 10 国',
-      'brief': 'Google 宣布， AI Mode 中的广告扩展到澳大利亚、加拿大、印度、Kenya、马来西亚、新西兰、Nigeria、巴基斯坦、菲律宾和新加坡。同时， Google 在美国推出 multi-turn ads ，让用户在 AI Mode 中继续追问时，也能展示广告。 Google 计划在 2026 年第四季度 扩展到巴西、墨西哥和英国等更多地区，广告将明确标注“Sponsored”。 Google 商务负责人 Philipp Schi…',
-      'url': 'https://blog.google/products/ads-commerce/ads-in-ai-mode-global/',
       'source': '橘鸦AI早报',
       'type': '产品应用'
     }
