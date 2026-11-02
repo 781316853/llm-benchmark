@@ -1,5 +1,5 @@
 // 数据源:亿模亿样 · 模型效果对比(gallery.arenaofbias.icu)前端作品社区盲评 Elo 竞技场
-// 接口:https://api.arenaofbias.icu/api/leaderboard?by=config  (源站更新于 2026-11-01)
+// 接口:https://api.arenaofbias.icu/api/leaderboard?by=config  (源站更新于 2026-11-02)
 // 字段说明:score=Elo(1000 为平均水平,越高越好);interval=±95% 不确定区间;effort=最优档推理强度;
 //          games/winRate=该档有效比较数与胜率;configs=该模型在源站的推理强度档位数;provisional=源站「暂定」(比较 <30 次)
 // 汇总口径:同一模型按推理强度分档多次测试,取最高分那一档入榜;源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)已剔除。
@@ -8,14 +8,14 @@ window.ARENAOFBIAS = {
   'source': '亿模亿样 · 模型效果对比',
   'url': 'https://api.arenaofbias.icu/api/leaderboard?by=config',
   'boardUrl': 'https://gallery.arenaofbias.icu/#/leaderboard',
-  'updated': '2026-11-01',
-  'refreshedAt': '2026-11-02 04:42',
+  'updated': '2026-11-02',
+  'refreshedAt': '2026-11-02 09:41',
   'metric': 'Elo',
   'desc': '前端作品社区盲评竞技场:同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度并折算到 Elo 刻度(1000 为平均水平)。同一模型按推理强度分档多次测试,取最高分那一档计入综合分(权重 12%,属「第三方实测」组)。',
   'stats': {
     'models': 76,
     'configs': 280,
-    'votes': 37315,
+    'votes': 37318,
     'voters': 1152,
     'tasks': 128
   },
@@ -39,10 +39,10 @@ window.ARENAOFBIAS = {
       'modelName': 'Claude Opus 5.5',
       'vendor': 'Anthropic',
       'effort': 'XHigh',
-      'score': 1320,
+      'score': 1319,
       'interval': 37,
-      'games': 509,
-      'winRate': 0.749,
+      'games': 510,
+      'winRate': 0.748,
       'tasks': 33,
       'provisional': false,
       'configs': 7,
@@ -251,7 +251,7 @@ window.ARENAOFBIAS = {
       'effort': 'Max',
       'score': 1141,
       'interval': 28,
-      'games': 696,
+      'games': 697,
       'winRate': 0.563,
       'tasks': 46,
       'provisional': false,

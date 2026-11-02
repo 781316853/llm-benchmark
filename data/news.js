@@ -2,17 +2,66 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-01',
+  'updated': '2026-11-02',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
     '技术与洞察',
+    '前瞻与传闻',
     '产品应用',
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-02',
+      'title': 'Codex 完成 28 天改进计划，最后 2 天发放手动重置次数',
+      'brief': 'OpenAI 的 Tibo 在 28 天 改进计划的第 26 天 预告，接下来两天将提供可留存的重置次数。',
+      'url': 'https://x.com/thsottiaux/status/2116692529970311254',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-02',
+      'title': '美团发布 1.6 万亿参数模型 LongCat-2.5 正式版',
+      'brief': '美团 发布大模型 LongCat-2.5 正式版，此前已于 9 月 推出预览版。模型总参数量 1.6 万亿 ，每个 token 激活约 480 亿 参数。',
+      'url': 'https://longcat.ai/blog/longcat-2.5/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-02',
+      'title': '初创公司让 AI 智能体给活体小鼠脑部注射药物',
+      'brief': '据 WIRED 报道，生物科技初创公司 Exin Therapeutics 让 AI 智能体 从 19 种 治疗方案中选定一种基因疗法，操控带摄像头的机械臂手术装置，向一只活体癫痫小鼠脑内注入 250 纳升 药物，目标是减少癫痫发作，小鼠目前恢复良好。',
+      'url': 'https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-02',
+      'title': 'Microsoft AI 负责人发文：AI 没有意识，不应训练得像有意识',
+      'brief': 'Microsoft AI 负责人 Mustafa Suleyman 近日在个人网站发表文章，并在 X 上发帖称，AI 没有意识、感受或权利，只是模仿人类表达的系统，开发者不应训练模型表现得如同拥有意识和情感。',
+      'url': 'https://mustafa-suleyman.ai/a-warning-about-model-welfare',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-02',
+      'title': '马斯克称 Grok Bot 服务成本相对收入高得不可持续',
+      'brief': '有 X 用户向 马斯克 询问能否重置 Grok Bot 的使用额度，并称很多人反映这周额度消耗得很快。',
+      'url': 'https://x.com/elonmusk/status/2116992258520064397',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-02',
+      'title': 'Axios：OpenAI 计划选后发起政策和公关宣传',
+      'brief': '据 Axios 报道， OpenAI 计划在美国中期选举结束后发起一轮政策和公关宣传，讨论针对最强大 AI 系统推出强制性安全保障的新想法，并推动国会相关工作。报道列出的其他提议还包括让更多人看到 AI 如何帮助日常生活和工作、推动美国参与塑造基于民主价值观的全球 AI 标准，以及将该公司建设的数据中心称作「 AI 算力园区」，以回应相关建设在全美引发的反对声音。',
+      'url': 'https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-11-01',
       'title': 'OpenAI：12 月起 ChatGPT 与 Codex 共享额度',
@@ -106,78 +155,6 @@ window.NEWS = {
       'title': '报道称 Blackstone 下调对 Anthropic 信用评级预期',
       'brief': '据 Financial Times 报道， Blackstone 告诉投资者，预计 Anthropic 上市后将获得 双 B 档信用评级 ，处于 投机级评级 的较高档次。此前， Blackstone 预计 Anthropic 会在 2027 年前获得 投资级评级 。 Blackstone 是近期一笔 630 亿美元 芯片融资交易的主要投资者。 Anthropic 此前提交了上市申请。',
       'url': 'https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-31',
-      'title': 'Anthropic 更名 Claude 订阅方案，逐步取消已验证 Ultra 账户五小时限制',
-      'brief': 'Anthropic 宣布将 Claude Max 5x 更名为 Max、 Max 20x 更名为 Ultra，月费分别维持 100 美元 和 200 美元 。',
-      'url': 'https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-31',
-      'title': 'OpenCode Go 为 DeepSeek V4.1 Flash 提供每月 100 美元额度',
-      'brief': 'OpenCode 发布 Operation Cheepseek Phase 4 ，为 OpenCode Go 订阅用户提供 DeepSeek V4.1 Flash 每月 100 美元 的使用额度。',
-      'url': 'https://x.com/opencode/status/2116209960673800474',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-31',
-      'title': 'Anthropic 为 Claude Code 加入游戏重制限制',
-      'brief': 'Anthropic 技术团队成员 Addy Osmani 确认， Claude Code 为 Opus 5.5 的提示词加入两句规则，避免重制别人的特定游戏。',
-      'url': 'https://x.com/addyosmani/status/2116213240363729013',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-31',
-      'title': 'Cursor 确认扩展市场出现恶意 Claude Code 版本',
-      'brief': 'Cursor 确认，其 VS Code 扩展市场曾提供遭恶意篡改的 Claude Code 扩展 2.1.312 和 2.1.313 版本，影响 Windows 和 macOS。这些版本并非 Anthropic 开发，会收集主机信息并尝试安装持久化 SSH 后门。',
-      'url': 'https://cursor.com/blog/claude-code-extension-security-notice',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-10-31',
-      'title': '豆包推出免费福利，新用户可领 30 天订阅体验',
-      'brief': '豆包 于 10 月 30 日 推出免费福利活动，面向新用户和所有用户分别提供权益。',
-      'url': 'https://mp.weixin.qq.com/s/SyRyGyX-5O_v--1z3msLgg',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-31',
-      'title': '商汤开源 SenseNova-Loop-9B-Preview 多模态模型',
-      'brief': '商汤 推出并开源多模态模型 SenseNova-Loop-9B-Preview ，面向长上下文和 agent 工作流。',
-      'url': 'https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-10-31',
-      'title': '苹果宣布首批 Apple 智能在中国推出，接入千问',
-      'brief': '苹果 宣布首批 Apple 智能功能将在中国推出，现有 Siri、写作工具和视觉智能将接入 阿里巴巴 的 千问 。',
-      'url': 'https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-31',
-      'title': '四家 AI 公司支持通用训练偏好标记',
-      'brief': 'OpenAI 、 Google 、 Microsoft 和 Anthropic 宣布支持一种通用训练偏好标记，让网站通过 robots.txt 向多家参与的 AI 服务商表达内容是否可用于训练的偏好。',
-      'url': 'https://openai.com/index/helping-websites-express-ai-training-preferences/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-10-31',
-      'title': 'OpenAI 推出 Private Intelligence，保护商业客户数据',
-      'brief': 'OpenAI 推出 Private Intelligence ，为商业客户处理敏感工作提供数据保护，并让客户控制 agent 的行为。客户拥有包括输入和输出在内的业务数据，可以决定 agent 能访问什么、执行哪些操作，以及何时需要审批。',
-      'url': 'https://openai.com/business/private-intelligence',
       'source': '橘鸦AI早报',
       'type': '行业动态'
     }
