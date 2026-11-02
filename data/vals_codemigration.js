@@ -9,7 +9,7 @@ window.VALSCODEMIGRATION = {
   'officialUrl': 'https://www.vals.ai/benchmarks/code-migration',
   'version': '1',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-11-02 17:48',
+  'refreshedAt': '2026-11-03 04:27',
   'stats': {
     'models': 79
   },
@@ -643,7 +643,7 @@ window.VALSCODEMIGRATION = {
       'id': 'zai/glm-5.3-flash',
       'model': 'Glm 5.3 Flash',
       'accuracy': 20.52,
-      'costPerTest': 3.128822,
+      'costPerTest': 6.257643,
       'latencyS': 12331.871,
       'harness': null,
       'avgInputTokens': null,

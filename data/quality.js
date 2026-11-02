@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 77,
+      'modelCount': 80,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -208,7 +208,7 @@ window.QUALITY = {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
       'status': 'ok',
-      'modelCount': 54,
+      'modelCount': 55,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -826,9 +826,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 77,
-      'complete': 77,
-      'modelCount': 77,
+      'total': 80,
+      'complete': 80,
+      'modelCount': 80,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -918,9 +918,9 @@ window.QUALITY = {
     },
     'nl2repo': {
       'rate': 1,
-      'total': 54,
-      'complete': 54,
-      'modelCount': 54,
+      'total': 55,
+      'complete': 55,
+      'modelCount': 55,
       'missingFields': {},
       'flag': 'ok'
     },

@@ -9,7 +9,7 @@ window.VALSVIBECODE = {
   'officialUrl': 'https://www.vals.ai/benchmarks/vibe-code',
   'version': '1.1',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-11-02 17:48',
+  'refreshedAt': '2026-11-03 04:27',
   'harnesses': [
     'OpenHands',
     'Claude Code',
@@ -988,7 +988,7 @@ window.VALSVIBECODE = {
       'id': 'zai/glm-5.3-flash',
       'model': 'Glm 5.3 Flash',
       'accuracy': 30.76,
-      'costPerTest': 2.348805,
+      'costPerTest': 4.69761,
       'latencyS': 5027.281,
       'harness': 'OpenHands',
       'avgInputTokens': null,

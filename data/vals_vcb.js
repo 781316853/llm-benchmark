@@ -9,7 +9,7 @@ window.VALSVCB = {
   'officialUrl': 'https://www.vals.ai/benchmarks/vcb-1-100',
   'version': '1.0',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-11-02 17:48',
+  'refreshedAt': '2026-11-03 04:27',
   'harnesses': [
     'OpenHands'
   ],
@@ -226,7 +226,7 @@ window.VALSVCB = {
       'id': 'zai/glm-5.3-flash',
       'model': 'Glm 5.3 Flash',
       'accuracy': 16.03,
-      'costPerTest': 0.462842,
+      'costPerTest': 0.925685,
       'latencyS': 2343.096,
       'harness': 'OpenHands',
       'avgInputTokens': null,
