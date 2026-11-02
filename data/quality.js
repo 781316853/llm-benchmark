@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 76,
+      'modelCount': 77,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 41,
+      'modelCount': 43,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 41,
+      'modelCount': 50,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -142,7 +142,7 @@ window.QUALITY = {
       'id': 'deepswe_v10',
       'name': 'DeepSWE v1.0',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 25,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 240,
+      'modelCount': 245,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -197,7 +197,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 44,
+      'modelCount': 45,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -241,7 +241,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 42,
+      'modelCount': 46,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -252,7 +252,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 56,
+      'modelCount': 71,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -263,7 +263,7 @@ window.QUALITY = {
       'id': 'tbench_v3',
       'name': 'Terminal-Bench 3.0',
       'status': 'ok',
-      'modelCount': 12,
+      'modelCount': 16,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -274,7 +274,7 @@ window.QUALITY = {
       'id': 'tbscience',
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
-      'modelCount': 10,
+      'modelCount': 17,
       'updated': '2026-11-02',
       'ageDays': 0,
       'completeness': 1,
@@ -333,6 +333,22 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
+      'canonId': 'Grok 4.5',
+      'name': 'grok-4-5',
+      'vendor': 'xAI',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 54,
+        'deepswe_v10': 62
+      },
+      'mean': 58,
+      'stddev': 4,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Gemini 3.5 Flash',
       'name': 'gemini-3-5-flash',
       'vendor': 'Google',
@@ -362,6 +378,24 @@ window.QUALITY = {
       },
       'mean': 54,
       'stddev': 2,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Claude Fable 5',
+      'name': 'Claude Fable 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'datalearner': 69.8,
+        'deepswe_v11': 70,
+        'deepswe_v10': 66.1
+      },
+      'mean': 68.6,
+      'stddev': 1.79,
       'flag': 'ok'
     },
     {
@@ -442,6 +476,22 @@ window.QUALITY = {
       },
       'mean': 11,
       'stddev': 1,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Kimi K3',
+      'name': 'kimi-k3',
+      'vendor': 'Moonshot',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 69,
+        'deepswe_v10': 67.5
+      },
+      'mean': 68.3,
+      'stddev': 0.75,
       'flag': 'ok'
     },
     {
@@ -538,22 +588,6 @@ window.QUALITY = {
       },
       'mean': 69.8,
       'stddev': 0.2,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'Claude Fable 5',
-      'name': 'Claude Fable 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 69.8,
-        'deepswe_v11': 70
-      },
-      'mean': 69.9,
-      'stddev': 0.1,
       'flag': 'ok'
     },
     {
@@ -792,17 +826,17 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 76,
-      'complete': 76,
-      'modelCount': 76,
+      'total': 77,
+      'complete': 77,
+      'modelCount': 77,
       'missingFields': {},
       'flag': 'ok'
     },
     'automationbench': {
       'rate': 1,
-      'total': 41,
-      'complete': 41,
-      'modelCount': 41,
+      'total': 43,
+      'complete': 43,
+      'modelCount': 43,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -826,17 +860,17 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 41,
-      'complete': 41,
-      'modelCount': 41,
+      'total': 50,
+      'complete': 50,
+      'modelCount': 50,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v10': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 25,
+      'complete': 25,
+      'modelCount': 25,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -850,9 +884,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 240,
-      'complete': 240,
-      'modelCount': 240,
+      'total': 245,
+      'complete': 245,
+      'modelCount': 245,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -876,9 +910,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 44,
-      'complete': 44,
-      'modelCount': 44,
+      'total': 45,
+      'complete': 45,
+      'modelCount': 45,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -910,33 +944,33 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 42,
-      'complete': 42,
-      'modelCount': 42,
+      'total': 46,
+      'complete': 46,
+      'modelCount': 46,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 56,
-      'complete': 56,
-      'modelCount': 56,
+      'total': 71,
+      'complete': 71,
+      'modelCount': 71,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v3': {
       'rate': 1,
-      'total': 12,
-      'complete': 12,
-      'modelCount': 12,
+      'total': 16,
+      'complete': 16,
+      'modelCount': 16,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbscience': {
       'rate': 1,
-      'total': 10,
-      'complete': 10,
-      'modelCount': 10,
+      'total': 17,
+      'complete': 17,
+      'modelCount': 17,
       'missingFields': {},
       'flag': 'ok'
     },
