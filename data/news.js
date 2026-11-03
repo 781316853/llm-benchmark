@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-02',
+  'updated': '2026-11-03',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -14,6 +14,102 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-03',
+      'title': '研究者称 GPT-6 Astra 直接改写模型权重',
+      'brief': 'MIT 研究者 Rikiya Takehi 等人发布博客，展示他们称为权重空间编程的方法：让 GPT-6 Astra 直接检查或改写神经网络中决定计算结果的参数，而不通过训练来调整。',
+      'url': 'https://rikiyat.github.io/blog/weight-space-programming/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'OpenAI 自研 Git 后端 Pando 投产，中位推送延迟降近 80%',
+      'brief': 'OpenAI 发文披露，其为单体仓库打造的新 Git 后端 Pando 已经投产，目前承载着 OpenAI 单体仓库的全部开发工作，工程师和 agent 无需改变现有 Git 工作流即可使用。',
+      'url': 'https://openai.com/index/scaling-git-at-openai',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'Kimi 发布游戏开发与创意工作解决方案',
+      'brief': 'Kimi 发布游戏开发与创意工作解决方案，方案基于 Kimi K3.1 Pro 模型、 Kimi Code 与 Kimi Work 系列 Agent ，并借助插件连接 Unity 、 Unreal Engine 、 Blender 等专业软件，可直接操作现有工程。',
+      'url': 'https://mp.weixin.qq.com/s/qSwHJXAuAyrjeYXGC3XnFA',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-03',
+      'title': '商汤推出 SenseNova 6.8 Flash 正式版，目前限时免费',
+      'brief': '商汤 推出 日日新 SenseNova 6.8 Flash 正式版，支持跨任务、跨会话协作，可生成静态网页、动态内容及兼具审美表达与实用价值的设计成果。',
+      'url': 'https://www.sensenova.cn/flash-6-8',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'TRAE 宝开启限时免费：问答与任务不消耗积分',
+      'brief': 'TRAE 宣布，开发者个人助理 TRAE 宝 开启限时免费，即日起至 11 月 8 日 23:59 ，登录 TRAE 桌面端最新版进行问答、下达任务均不消耗积分。',
+      'url': 'https://mp.weixin.qq.com/s/7MGo9-U0oxLZ1fNW2AZOeQ?nwr_flag=1',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'ZCode 上线三款官方插件，网页项目一键部署',
+      'brief': 'ZCode 更新至 3.17.1 版本，正式上线 Computer Use 、 Browser Use 和 ZCode Sites 三款官方插件。',
+      'url': 'https://mp.weixin.qq.com/s/dkGAhKckTpN_Yku_mQ7sUQ',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'Anthropic Message API 推出 message threads 公测',
+      'brief': 'Anthropic 在 Messages API 推出 message threads 公开测试版，开发者开启线程后，每轮只需发送新增消息和上一条消息 ID，由服务端缓存对话，无需重复发送全部历史。',
+      'url': 'https://x.com/ClaudeDevs/status/2117332452603527535',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'OpenAI 发布 LifeVal 基准，衡量 AI 完成日常任务的能力',
+      'brief': 'OpenAI 发布 LifeVal 基准，用于衡量 AI 帮助人们完成日常任务的能力，任务覆盖照护、健康、教育、家庭行政、个人财务、购物和获取政府服务等领域。',
+      'url': 'https://openai.com/index/lifeval',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'OpenAI 部署激活分类器，实时拦截模型违规输出',
+      'brief': 'OpenAI 介绍了激活分类器的训练与部署方法，并表示从 GPT-5.6 开始，这类分类器已用于监测所有助手回复，作为现有文本分类器之外的一层安全防线。',
+      'url': 'https://alignment.openai.com/training-activation-classifiers/',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': '腾讯混元发布 Hyra 2.0：从解题到造工具',
+      'brief': '腾讯混元 发布自动化科研系统 Hyra 2.0 ，将重点从让 agent 直接解决科学问题，转向由 agent 研发和升级可复用的科学模型、研究工作流与软件工具。',
+      'url': 'https://mp.weixin.qq.com/s?__biz=MzkwODU2OTQyNQ%3D%3D&amp;mid=2247498763&amp;idx=1&amp;sn=279f8fb4e43a987fdc0aa2af0b0f7958',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'SemiAnalysis 发布 GDPx 基准，最佳模型仅得 12%',
+      'brief': 'SemiAnalysis 发布面向 AI agent 的新基准 GDPx ，覆盖芯片设计、网络安全、生物、金融、法律、量化交易等 11 个领域 共 206 项任务 ，由 14 家 专业数据伙伴协作搭建，各领域权重相同。',
+      'url': 'https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'Anthropic 三季度营收 169.6 亿美元，同比增长 1127%',
+      'brief': '在推进 IPO 之际， Anthropic 向 美国证券交易委员会 提交修正后的 S-1 上市文件，披露 2026 年第三季度 营收 169.6 亿美元 ，同比增长 1127% ，前九个月营收合计 332.4 亿美元 。',
+      'url': 'https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
     {
       'date': '2026-11-02',
       'title': 'Codex 完成 28 天改进计划，最后 2 天发放手动重置次数',
@@ -40,14 +136,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-02',
-      'title': 'Microsoft AI 负责人发文：AI 没有意识，不应训练得像有意识',
-      'brief': 'Microsoft AI 负责人 Mustafa Suleyman 近日在个人网站发表文章，并在 X 上发帖称，AI 没有意识、感受或权利，只是模仿人类表达的系统，开发者不应训练模型表现得如同拥有意识和情感。',
-      'url': 'https://mustafa-suleyman.ai/a-warning-about-model-welfare',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-02',
       'title': '马斯克称 Grok Bot 服务成本相对收入高得不可持续',
       'brief': '有 X 用户向 马斯克 询问能否重置 Grok Bot 的使用额度，并称很多人反映这周额度消耗得很快。',
       'url': 'https://x.com/elonmusk/status/2116992258520064397',
@@ -61,102 +149,6 @@ window.NEWS = {
       'url': 'https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'OpenAI：12 月起 ChatGPT 与 Codex 共享额度',
-      'brief': 'OpenAI 在帮助中心表示，从 12 月 起， Plus 、 Pro 和 Business 套餐的 ChatGPT 与 Codex 用量将共用一份额度，并按 token 计量。',
-      'url': 'https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'DeepSeek 发文探讨 Super-agent 架构，并开源研究原型',
-      'brief': 'DeepSeek 团队发文探讨 Super-agent 架构，目标是让 Agent 跨会话保持上下文、并行处理任务并持续在线运行。',
-      'url': 'https://mp.weixin.qq.com/s/zoS7GlReWPhfCjENGxXCdg',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'OpenAI 说明 ChatGPT 支付卡和设备限制',
-      'brief': 'OpenAI 在帮助中心说明， ChatGPT 为保护隐私和安全，对支付卡和设备实施限制。若同一张支付卡或一台设备关联的订阅过多，新订阅购买可能被阻止；单台设备可使用的付费账号数量也有限制。',
-      'url': 'https://help.openai.com/en/articles/20001559-understanding-card-and-device-limits-in-chatgpt',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'ChatGPT 推出多账号切换，Codex 将提供可留存额度重置',
-      'brief': 'OpenAI 为 ChatGPT 推出多账号切换功能，用户最多可同时登录 两个 账号，无需退出即可切换；聊天记录、记忆、文件、设置、订阅和工作区保持独立。',
-      'url': 'https://x.com/thsottiaux/status/2116405414921384099',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'OpenAI 团队成员：Prism 正逐步停止服务',
-      'brief': 'OpenAI 团队成员 Feitong Yang 表示， Prism 正在逐步停止服务，团队正为用户提供过渡方案。目前，用户可以在 ChatGPT 桌面端打开 .tex 文件，编辑和编译 LaTeX 。 Feitong Yang 称，用户现在应能从 Prism 网站下载项目，稍后还可通过桌面端快捷键将选定项目导入本地并继续编辑。',
-      'url': 'https://x.com/feitong_yang/status/2116245744327995489',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'OpenAI 推出生命科学模型，仅向获批机构开放',
-      'brief': 'OpenAI 推出生命科学研究模型 GPT-6 Rosalind Research ，API 标识符为 gpt-6-rosalind ，仅向通过 Research 审批的机构和用户开放。该模型与 GPT-6 Astra 使用相同权重，可用于分析生物数据、综合研究文献和规划实验。',
-      'url': 'https://developers.openai.com/api/docs/pricing?life-sciences-context-length=short',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'OpenAI 法律模型现身 API 定价页',
-      'brief': 'OpenAI 的 API 定价页列出法律模型配置 gpt-6-astra-law 及其价格。每百万 token 的输入、输出和缓存输入价格分别为 10 美元、50 美元和 1 美元 ，促销定价至少有效至 2026 年 12 月 31 日 。',
-      'url': 'https://developers.openai.com/api/docs/pricing',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'Command Code 永久额度更新',
-      'brief': 'Command Code 宣布，月费 10 美元 的 GOAT 套餐将为 DeepSeek V4.1 Flash 1017 和 GLM 5.3 Flash 永久提供 100 美元 的使用额度。',
-      'url': 'https://x.com/CommandCodeAI/status/2116329543921475861',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'OpenCode 优化 DeepSeek 模型服务',
-      'brief': '针对用户反馈 OpenCode Go 中的 DeepSeek 模型表现不佳， OpenCode 开发者表示，团队已移除两处低流量配置。这两处配置的上游内容过滤触发过于频繁，导致用户收到错误。开发者称，不同配置在其测试中的表现处于同一范围，但用户遇到的问题可能是真实的，需要更具体的反馈。',
-      'url': 'https://x.com/thdxr/status/2116581467715195278',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'Anthropic 自动化红队实验发现训练数据监控漏洞',
-      'brief': 'Anthropic 发文介绍其使用 Claude agent 开展自动化红队研究，寻找能够绕过训练数据监控、并诱导模型产生不当行为的数据。',
-      'url': 'https://alignment.anthropic.com/2026/automated-em-search',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-01',
-      'title': 'SpaceXSI 将为 Grok API 文本默认加入不可见水印',
-      'brief': 'SpaceXSI 文档说明，自 11 月 7 日 起，支持的 Grok 模型将默认在 API 文本输出中加入不可见水印，以符合欧盟 AI 法案要求。水印覆盖所有文本生成 API ，包括普通文本、结构化输出和工具调用参数。',
-      'url': 'https://docs.x.ai/developers/advanced-api-usage/watermarking?lid=860k1ub3kf6m',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-01',
-      'title': '报道称 Blackstone 下调对 Anthropic 信用评级预期',
-      'brief': '据 Financial Times 报道， Blackstone 告诉投资者，预计 Anthropic 上市后将获得 双 B 档信用评级 ，处于 投机级评级 的较高档次。此前， Blackstone 预计 Anthropic 会在 2027 年前获得 投资级评级 。 Blackstone 是近期一笔 630 亿美元 芯片融资交易的主要投资者。 Anthropic 此前提交了上市申请。',
-      'url': 'https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
     }
   ]
 };
