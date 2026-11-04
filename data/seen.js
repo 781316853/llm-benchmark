@@ -297,6 +297,8 @@ window.SEEN = {
     'llm|Hy4 preview (high)': '2026-10-26',
     'tbench|GPT-6.1 Terra': '2026-10-26',
     'tbench|Gemini 4 Carbon': '2026-10-29',
-    'llm|Step 5 Preview': '2026-10-31'
+    'llm|Step 5 Preview': '2026-10-31',
+    'deepswe|Hy4': '2026-11-04',
+    'datalearner|Hy4': '2026-11-04'
   }
 };

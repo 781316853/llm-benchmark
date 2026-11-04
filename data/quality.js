@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 80,
+      'modelCount': 82,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 43,
+      'modelCount': 42,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -131,7 +131,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 50,
+      'modelCount': 42,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -142,7 +142,7 @@ window.QUALITY = {
       'id': 'deepswe_v10',
       'name': 'DeepSWE v1.0',
       'status': 'ok',
-      'modelCount': 25,
+      'modelCount': 21,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 245,
+      'modelCount': 240,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -197,7 +197,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 45,
+      'modelCount': 47,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -241,7 +241,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 46,
+      'modelCount': 42,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -252,7 +252,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 71,
+      'modelCount': 56,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -263,7 +263,7 @@ window.QUALITY = {
       'id': 'tbench_v3',
       'name': 'Terminal-Bench 3.0',
       'status': 'ok',
-      'modelCount': 16,
+      'modelCount': 12,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -274,7 +274,7 @@ window.QUALITY = {
       'id': 'tbscience',
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
-      'modelCount': 17,
+      'modelCount': 10,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -333,22 +333,6 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'Grok 4.5',
-      'name': 'grok-4-5',
-      'vendor': 'xAI',
-      'sources': [
-        'deepswe_v11',
-        'deepswe_v10'
-      ],
-      'scores': {
-        'deepswe_v11': 54,
-        'deepswe_v10': 62
-      },
-      'mean': 58,
-      'stddev': 4,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'Gemini 3.5 Flash',
       'name': 'gemini-3-5-flash',
       'vendor': 'Google',
@@ -381,24 +365,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Claude Fable 5',
-      'name': 'Claude Fable 5',
-      'vendor': 'Anthropic',
-      'sources': [
-        'datalearner',
-        'deepswe_v11',
-        'deepswe_v10'
-      ],
-      'scores': {
-        'datalearner': 69.8,
-        'deepswe_v11': 70,
-        'deepswe_v10': 66.1
-      },
-      'mean': 68.6,
-      'stddev': 1.79,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'GPT-5.5',
       'name': 'gpt-5-5',
       'vendor': 'OpenAI',
@@ -412,22 +378,6 @@ window.QUALITY = {
       },
       'mean': 68.5,
       'stddev': 1.5,
-      'flag': 'ok'
-    },
-    {
-      'canonId': 'GPT-5.6 Sol',
-      'name': 'GPT-5.6 Sol',
-      'vendor': 'OpenAI',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 70.93,
-        'deepswe_v11': 73
-      },
-      'mean': 72,
-      'stddev': 1.03,
       'flag': 'ok'
     },
     {
@@ -479,19 +429,19 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Kimi K3',
-      'name': 'kimi-k3',
-      'vendor': 'Moonshot',
+      'canonId': 'GPT-5.6 Sol',
+      'name': 'GPT-5.6 Sol',
+      'vendor': 'OpenAI',
       'sources': [
-        'deepswe_v11',
-        'deepswe_v10'
+        'datalearner',
+        'deepswe_v11'
       ],
       'scores': {
-        'deepswe_v11': 69,
-        'deepswe_v10': 67.5
+        'datalearner': 71.7,
+        'deepswe_v11': 73
       },
-      'mean': 68.3,
-      'stddev': 0.75,
+      'mean': 72.4,
+      'stddev': 0.65,
       'flag': 'ok'
     },
     {
@@ -591,6 +541,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'Claude Fable 5',
+      'name': 'Claude Fable 5',
+      'vendor': 'Anthropic',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 69.8,
+        'deepswe_v11': 70
+      },
+      'mean': 69.9,
+      'stddev': 0.1,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Muse Wonder Full',
       'name': 'Muse Wonder Full',
       'vendor': 'Meta',
@@ -683,6 +649,22 @@ window.QUALITY = {
         'deepswe_v11': 75.2
       },
       'mean': 75.2,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Hy4',
+      'name': 'Hy4',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 74.9,
+        'deepswe_v11': 74.9
+      },
+      'mean': 74.9,
       'stddev': 0,
       'flag': 'ok'
     },
@@ -826,17 +808,17 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 80,
-      'complete': 80,
-      'modelCount': 80,
+      'total': 82,
+      'complete': 82,
+      'modelCount': 82,
       'missingFields': {},
       'flag': 'ok'
     },
     'automationbench': {
       'rate': 1,
-      'total': 43,
-      'complete': 43,
-      'modelCount': 43,
+      'total': 42,
+      'complete': 42,
+      'modelCount': 42,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -860,17 +842,17 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 50,
-      'complete': 50,
-      'modelCount': 50,
+      'total': 42,
+      'complete': 42,
+      'modelCount': 42,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v10': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 21,
+      'complete': 21,
+      'modelCount': 21,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -884,9 +866,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 245,
-      'complete': 245,
-      'modelCount': 245,
+      'total': 240,
+      'complete': 240,
+      'modelCount': 240,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -910,9 +892,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 45,
-      'complete': 45,
-      'modelCount': 45,
+      'total': 47,
+      'complete': 47,
+      'modelCount': 47,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -944,33 +926,33 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 46,
-      'complete': 46,
-      'modelCount': 46,
+      'total': 42,
+      'complete': 42,
+      'modelCount': 42,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 71,
-      'complete': 71,
-      'modelCount': 71,
+      'total': 56,
+      'complete': 56,
+      'modelCount': 56,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbench_v3': {
       'rate': 1,
-      'total': 16,
-      'complete': 16,
-      'modelCount': 16,
+      'total': 12,
+      'complete': 12,
+      'modelCount': 12,
       'missingFields': {},
       'flag': 'ok'
     },
     'tbscience': {
       'rate': 1,
-      'total': 17,
-      'complete': 17,
-      'modelCount': 17,
+      'total': 10,
+      'complete': 10,
+      'modelCount': 10,
       'missingFields': {},
       'flag': 'ok'
     },

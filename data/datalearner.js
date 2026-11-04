@@ -64,6 +64,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'Hy4',
+      'score': 74.9,
+      'mode': '思考模式 High（工具）',
+      'date': '2026-11-04',
+      'params': '未知',
+      'license': '已宣布 · 待发布'
+    },
+    {
       'name': 'DeepSeek-V4.1-Flash',
       'score': 74.2,
       'mode': '最高（工具）',
@@ -235,14 +243,6 @@ window.DATALEARNER = {
       'name': 'GPT-5.6 Terra',
       'score': 69.6,
       'mode': '最高（工具）',
-      'date': '2026-06-26',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-5.6 Sol',
-      'score': 69.4,
-      'mode': '思考模式 High（工具）',
       'date': '2026-06-26',
       'params': '未知',
       'license': '闭源'
