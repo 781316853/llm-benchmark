@@ -17,7 +17,7 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-10-31',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-05 02:10',
+  'refreshedAt': '2026-11-05 07:52',
   'stats': {
     'entries': 50,
     'models': 33
@@ -285,7 +285,7 @@ window.AICODINGDAILY = {
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 53.31,
-      'costUsd': 0.09,
+      'costUsd': 0.08,
       'timeSec': 904,
       'timeStr': '15:04',
       'harness': 'OpenCode',
@@ -1009,7 +1009,7 @@ window.AICODINGDAILY = {
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 53.31,
-      'costUsd': 0.09,
+      'costUsd': 0.08,
       'timeSec': 904,
       'timeStr': '15:04',
       'harness': 'OpenCode',

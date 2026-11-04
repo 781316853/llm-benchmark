@@ -32,7 +32,7 @@ window.QUALITY = {
       'id': 'apex',
       'name': 'APEX-1',
       'status': 'ok',
-      'modelCount': 75,
+      'modelCount': 76,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 42,
+      'modelCount': 43,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -307,7 +307,7 @@ window.QUALITY = {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
-      'modelCount': 123,
+      'modelCount': 124,
       'updated': '2026-11-04',
       'ageDays': 0,
       'completeness': 1,
@@ -768,9 +768,9 @@ window.QUALITY = {
     },
     'apex': {
       'rate': 1,
-      'total': 75,
-      'complete': 75,
-      'modelCount': 75,
+      'total': 76,
+      'complete': 76,
+      'modelCount': 76,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -816,9 +816,9 @@ window.QUALITY = {
     },
     'automationbench': {
       'rate': 1,
-      'total': 42,
-      'complete': 42,
-      'modelCount': 42,
+      'total': 43,
+      'complete': 43,
+      'modelCount': 43,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -974,9 +974,9 @@ window.QUALITY = {
     },
     'vals_vibe_code': {
       'rate': 1,
-      'total': 123,
-      'complete': 123,
-      'modelCount': 123,
+      'total': 124,
+      'complete': 124,
+      'modelCount': 124,
       'missingFields': {},
       'flag': 'ok'
     }
