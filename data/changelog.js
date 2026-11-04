@@ -6,8 +6,8 @@
 //   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
-  'updated': '2026-11-03',
-  'refreshedAt': '2026-11-04 03:42',
+  'updated': '2026-11-04',
+  'refreshedAt': '2026-11-04 08:47',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,8 +19,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
+        {
+          'version': 'libcap 2.75 source archive',
+          'title': 'libcap 2.75源存档',
+          'date': '2026-11-03',
+          'dateRaw': '2026-11-03T23:04:31Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/libcap-v2.75',
+          'body': '用于为Codex的Linux musl包构建Bubblewrap的未修改libcap 2.75源存档的镜像。\n- 上游存档\n- Libcap-2.75.tar.xz的SHA-256为de4e7e064c9ba451d5234dd46e897d7c71c96a9ebf9a0c445bc04f4742d83632。',
+          'h': '3f64ce70'
+        },
         {
           'version': '0.166.0',
           'title': '0.166.0',
@@ -38,8 +48,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-10-28T19:25:04Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.166.0-alpha.5.1',
-          'body': '版本0.166.0-alpha.5.1',
-          'h': 'a2634670'
+          'body': 'Release 0.166.0-alpha.5.1'
         },
         {
           'version': '0.165.0',
@@ -1236,8 +1245,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
+        {
+          'version': '2.1.318',
+          'title': 'v2.1.318',
+          'date': '2026-11-04',
+          'dateRaw': '2026-11-04T00:01:03Z',
+          'tags': [],
+          'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.318',
+          'body': '## 有哪些变化\n\n- 当Claude Code要求打开其在会话中编写的mod时，添加了您的答案记录\n- 在Claude应用程序网关的“mantle”上游添加了“assume_role” ，用于另一个AWS帐户中的角色以及每个开发人员的AWS成本归因\n- 为mod的`$ .model.fork`添加了\'effort`选项，因此无论会话使用什么工作量，快速副作业都可以以`low`运行；结果报告发送的工作量\n- 将存储的claude.ai登录结束日期添加到“claude auth status” （ “loginExpiresAt” ）和“claude -p” JSON结果（ “credential_expires_at” ）\n- 为“claude -p”文本输出添加了一行stderr警告，从存储的claude.ai登录结束前10天开始\n- 修复了在格式错误的工具调用重试耗尽后， “--continue”有时会丢失早期对话的问题（ 2.1.314中的回归）\n- 修复了许多正在运行的Bash命令在内存增长时停止的macOS会话\n- 修复了在发送消息后或出现慢速提示之前键入的键回答权限提示的问题\n- 修复了当无法在共享网络主目录上更新配置文件时， “/logout”、“claude auth logout”和“claude mcp remove”报告成功，以及对信任、同意或MCP设置的更改被丢弃而无字的问题\n- 修复了当另一个终端或主机再次登录到同一主页上的同一帐户和组织时，退出“未登录”的作业\n- 修复了“claude mcp add”和“remove”在没有锁定的情况下写入配置的问题：他们现在等待它或退出1 ，尽管另一个作业的保存仍然可以替换已保存的服务器\n- 修复了“claude plugin”命令在保存缓慢令牌刷新之前退出的问题，这可能会导致您在下次运行时注销\n- 修复了“claude插件验证”传递“claude插件市场添加”拒绝的自定义命名市场文件的问题\n- 修复了在每次启动时在版本探测器上退出的stdio MCP服务器被重新探测的问题；由于自身原因而在3秒内死亡的服务器也被固定在旧式握手上7天\n- 修复了启动时会话被同一台机器上的另一个登录存储的“allowedProviders”列表拒绝的问题\n- 已修复将对话替换为不是摘要的回复的闲置压缩\n- 修复了后台子代理运行时大约每30秒重新出现的“现在使用使用积分”通知\n- 修复了失败的自定义斜杠命令，或者只有Claude可以调用的斜杠命令，在“claude -p”和SDK会话中不打印任何内容\n- 修复了当API错误在mod挂钩“turn.step”时切断回复时， “claude -p”和代理SDK会话报告成功的问题\n- 修复了在无头会话中停止后仍在运行的模型更改后立即发送的消息：现在停止取消或停止它，就像队列消息一样\n- 修复了在空闲的非交互式会话退出时使用其最后提示重新创建已删除的会话转录\n- 修复了在更新或版本清理删除仍在运行的进程的二进制文件后， “claude remote-control”主机、后台守护程序和自托管运行程序无法启动新会话（ “spawn ENOENT” ）的问题\n- 修复了正在运行的由另一个用户拥有的Claude Code进程（例如由“sudo claude”留下的进程）被版本清理视为死亡，这可能会删除其二进制文件\n- 已修复在连接失败后将会话显示为可用的“/remote-control”\n- 修复了404请求失败时的“/设计吊销”报告成功问题\n- 修复了在会话的启动文件夹中运行自托管运行程序或云会话重新启动后批准的shell命令，而不是请求该命令的文件夹；如果无法输入该文件夹，则该命令未运行\n- 修复了云会话重新启动后经批准的连接器工具不可用时Claude未被告知的问题\n- 修复了当服务拒绝上传几分钟时，云会话在转弯过程中停止的问题\n- 修复了“设置”挂钩写入“CLAUDE_ENV_FILE”的变量在某些云会话中未到达Bash工具的问题\n- 修复了在工具调用切断响应或删除被拒绝的图像或文档后， iPhone应用程序继续运行时显示云会话已完成的问题\n- 修复了重新启动的会话重新发送因API错误而失败的消息的问题，该问题发生在等待其后面的新消息之前\n- 修复了在Claude读取大图像或重试工具调用后立即重新启动时，重新启动的会话中断的问题\n- 修复了“NODE_EXTRA_CA_CERTS”文件为空（而不是PEM ）或以损坏的证书开头时失败的每个连接：现在使用可读证书，并在stderr上显示警告\n- 修复了在使用限制后恢复时重新运行已完成代理的工作流\n- 修复了模型无法使用的云会话计数工具中的“/mcp” ；服务器的行现在显示其可用工具的数量\n- 修复了Claude在PushNotification调用中离开状态字段时的重复通知\n- 修复了请求中图片太大的错误，该请求中超过20张图片的限制始终为2000px ；现在它显示了API的限制\n- 修复了对话框打开时后台shell详细信息中的运行时未更新的问题\n- 修复了MOD的“turn.step”钩子使停止回复完成，作为无头运行的成功\n- 修复了保留清理离开仅运行“claude -p”且没有“~/.claude.json”备份的主页的问题：现在，在删除最后一个好的备份之前，它需要重新备份\n- 修复了当网络主目录没有数据空间但仍需要新文件时，存储的登录名被空文件替换的问题\n- 修复了当令牌属于允许的组织时，在具有`forceLoginOrgUUID`的计算机上启动时，来自`setup-token\'的令牌被拒绝的问题\n- 修复了用默认值替换无效JSON的`~/.claude.json\'的非交互式启动；现在启动失败，说明如何还原文件，并保持原样（ anthropics/claude-code # 87551 ）\n- 修复了空的`~/.claude.json` ，没有备份被报告为损坏； Claude Code现在像文件丢失时一样启动\n- 修复了为损坏或丢失的`~/.claude.json`命名空备份或截止备份或在只读文件上失败而打印的恢复命令\n- 修复了存储的claude.ai登录达到其时间限制时的登录失败：它现在这样说，并且在“claude -p”名称中为“claude auth login”和“claude setup-token”\n- 改进了“~/.claude.json”、设置文件和存储的登录名如何保存在共享网络主目录中：它们不太经常被删除、短暂清空或替换为近空或较旧的副本\n- 改进了网络文件系统上的会话，以便在配置文件被错误地报告为丢失时再次查看，因此，如果没有MCP服务器和受信任的文件夹，开始会话的数量就会减少\n- 改进的MCP工具错误：加载工具之前进行的调用现在返回其输入架构\n- 当Bash工具运行macOS的内置`/bin/bash`时，提高了git提交和拉取请求创建的可靠性\n- 改进了使用限制菜单中的“向管理员询问更多使用情况”功能，以便一步即可发送请求\n- 改进了远程会话在暂停或睡眠后重新连接的速度\n- 改进您应该知道吐司说“再试一次”而不是“按2” ，这仅适用于终端\n- 提高自动更新的可靠性：验证版本时出现短暂的网络故障，现在立即重试，而不是等待下一次检查\n- 改进了无人值守运行（ `claude -p` ， SDK应用程序） ，以停止在每次运行时重写`~/.claude.json\'\n- 已将Claude代码更改为在IDE终端中启动时不再安装或更新IDE扩展；请从外部终端或编辑器的扩展视图使用“/ide”\n- 当“标记消息时切换模型”设置为“每次询问”时，将子代理更改为停止而不是切换模型\n- 更改了后台子代理，以便在所有提供程序上在3分钟后将shell命令移动到后台，因此提示缓存在运行时不会过期\n- 更改了Bedrock、Vertex、Foundry或遥测关闭状态下的子代理进度摘要：在冷提示缓存上，现在可以最多等待5分钟等待子代理的待定响应\n- 更改了mod在「prompt.submit」中附加的内容，以保留在用户的轮流中，而不是作为系统消息外出\n- 更改了“deniedMcpServers” URL条目，以阻止上游URL匹配的Anthropic提供的服务器，以及云会话和自托管运行程序中的连接器，其中会话被赋予连接器自己的URL ；否则按名称拒绝连接器\n- 已将“/权限”规则详细信息、内置规则和删除确认视图更改为使用标准对话框；按Ctrl + C两次后退或取消而不是退出\n- 更改了`/claude-api managed-agents-onboard` ，以提供新的客服代表内置工具和快速入门模板的MCP工具，默认情况下，与Claude控制台匹配的“自动”权限策略（ “判断风险操作” ） ；说“运行而不询问”以选择退出\n- 删除了在恢复2.1.286或更早版本开始的对话时保留模型早期思维的2.1.288修复；现在可以放弃该思维\n- 网关：当来自联合(`external_account`)凭据文件的Google访问令牌即将过期时，添加了一个日志警告\n- 网关：改进了有关“listen.trusted_proxies”的日志提示：他们现在只列出一个将连接地址添加到“X-Forwarded-For”本身的代理\n- 网关：改进了AWS CountTokens在Amazon Bedrock上发生故障时的警告：它说Claude Code ，而不是网关，在501之后计数，并且仅在AWS拒绝访问时指向IAM\n- 自托管运行器：将“CLAUDE_RUNNER_SPAWN_REASON”添加到编排器的生成运行器钩子环境中：为什么Anthropic发送了请求（例如“RUNNER_LOST” ， “RESUMED” ） ；未发送时未设置\n- 自托管运行器：当“--release-idle-session-min”是没有值的最后一个参数（仍然被忽略）或只有空格的值（仍然读作“0” ）时，添加了启动警告\n- 自托管运行器：更改了编排器的日志行： `ok session = …`现在在stdout （仅限调试， stderr ）上的每个日志级别打印`jti = …`之后的`reason = …` ， `nack session = …`在\'retryable = …`之后以`reason = …`结束其字段；更新匹配`retryable = true:`或`retryable = false:`的脚本\n- 远程控制：修复了会话的工作文件夹丢失时的误导性“生成错误： ENOENT” ；错误现在命名文件夹\n- 远程控制：改进了标题：当应用程序未设置分叉时，创建分叉的终端分叉： “名称（分叉2 ）”\n- [VSCode]修复了登录组织设置拒绝每分钟在后台启动新的Claude Code流程的窗口\n- [VSCode]修复了聊天面板错误横幅中的一个长单词将其关闭按钮推出视图的问题\n- [VSCode]改进登录屏幕，显示登录状态检查失败时Claude Code打印的内容\n- [Cloud sessions]添加了No repository选项： Anthropic托管环境中的云会话现在可以在不选择存储库的情况下启动\n- [Cloud sessions]在云会话中添加了常用的Chrome名称，因此Playwright以外的工具可以通过google-chrome和CHROME_PATH找到内置的Chromium\n- 【云会话】在删除云会话环境时显示的卡片中添加了新会话按钮，其中消息框处于隐藏状态\n- [云会话]修复了读取云会话中的GitHub Actions日志的问题： `gh run view --log`和`gh api`日志请求现在可以在大多数环境中获取日志，而不是无法访问的重定向\n- [云会话]改进了大多数在云和远程控制会话中创建PR失败消息：他们现在给出了GitHub的原因或链接，而不是说重试\n- [云会话]更改了连接器搜索结果，以告诉Claude搜索仅覆盖连接器目录的一部分\n- [远程控制]修复了在环境菜单的“远程控制”行中看起来完全相同的一个存储库的并行签出；现在每个存储库都显示自己的文件夹名称\n- [Claude Tag]修复了Claude Tag管理员设置中的键盘焦点和屏幕阅读器公告；按连接表单中的Escape键不再关闭“添加”对话框\n- [代码审查]改进了代码审查分析页面，以便在服务器或网络出现故障后重试一次，然后显示“重试”横幅而不是空卡',
+          'h': '603664b0'
+        },
         {
           'version': '2.1.317',
           'title': 'v2.1.317',
@@ -1255,8 +1274,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-10-31T01:01:35Z',
           'tags': [],
           'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.316',
-          'body': '## 有哪些变化\n\n- 添加了“CLAUDE_CODE_DISABLE_ULTRATHINK” ，关闭了“ultrathink”关键字\n- 向Claude应用程序网关添加了合并的群组预算：群组的成员在每个成员自己的限制之上共享一个每月预算，并在支出限制管理API上设置“pooled_budget”\n- 添加了“CLAUDE_CODE_DISABLE_LOOPED_CROSS_CERT_DROP” ，以保持在循环中相互认证的系统交叉证书，适用于专用CA需要一个证书的服务器\n- 添加了“CLAUDE_CODE_SUBAGENT_EFFORT” ，以设置在没有其他任何名称时运行的工作量级别子代理，而不是继承会话的\n- 向Claude应用程序网关添加了“managed.policy_mode: layered” ：匹配开发人员的每个策略都适用，每个策略都合并到下面列出的策略上，而不仅仅是第一个\n- 在Claude应用程序网关基岩上游添加了“guardrail.input_tagging” ，它将Amazon基岩护栏的提示攻击过滤器所需的输入标记中的提示包装起来； “all_messages_and_system”也标记了系统提示\n- 截至2026年10月30日， Opus 4.8已弃用快速模式；将于2026年11月30日删除。 移除后， Opus 4.8上的快速模式请求会返回错误，并且不会退回到标准Opus 4.8。 迁移到Opus 5.5以保持加速\n- 修复了当Claude Code自身退出时，例如当凭据被拒绝或云会话被存档时， shell命令在macOS和Linux上保持运行的问题\n- 修复了带换行符的bash别名（ Git Bash除外） ，以及名称以破折号开头的函数，这些函数在Bash工具的shell中被混淆或丢失\n- 修复了导出“SHELLOPTS”时从Bash工具在其第一个命令后停止启动的bash脚本\n- 修复了当命令以类型强制转换、“param”、“using”或属性开头时，退出代码2上的PowerShell挂钩未阻塞的问题\n- 修复了当压缩响应被切断或损坏时某些网络请求挂起的问题\n- 修复了Vertex AI和Amazon Bedrock上的“sonnet”、“opus”和“haiku”在会话中显示错误，而不是在帐户或区域尚未提供最新版本时切换到旧型号的问题\n- 修复了Claude应用程序网关没有根据“availableModels”、“deniedModels”和“models”检查每个模型的请求名称；命名被阻止的模型的请求现在得到一个400命名字段\n- 修复了“claude auth login”拒绝在托管设置需要Claude应用程序网关的情况下运行的问题；在终端中，它现在显示网关登录\n- 修复了“--restricted”会话在读取允许规则覆盖时从工作目录外部上传文件的问题\n- 修复了包含不可见字符的提示，需要第二次输入才能发送；普通提示现在在第一次输入时发送已清除，命令仍在等待审核\n- 固定继承父子代理模型的子代理在后台作业或消息唤醒它们时移动到主模型\n- 修复了托管的`autoMode.allow`列表，其中没有`\'$ defaults\'`从主机应用的`--settings`、在`/permissions\'或`/auto-mode-setup`中添加的第一个规则获取内置异常\n- 修复了自动模式停止转弯时未标记为失败的云会话和云计划任务，因为服务器未返回安全判断\n- 修复了“claude -p”文本输出有时不说明为什么自动模式在后台代理仍在运行时停止转弯的问题\n- 修复了“CLAUDE_CODE_AUTO_MODE_SERVER = 1”在代理或LLM网关后面的主机应用程序（如Claude Desktop ）启动的会话中被忽略，实验测试版已关闭\n- 修复了当凭据命名环境变量设置为开关值（如“1” ）时，插件MCP “headersHelper”脚本接收损坏的“CLAUDE_PLUGIN_ROOT”和服务器URL的问题\n- 修复了SDK “REGISTER_REPO_ROOT”控制请求未加载工作目录外部目录的CLAUDE.md （使用“CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD = 1” ）\n- 修复了制品工具在“自我”级别显示制品数据库访问规则的“?” ，并且当它拒绝重新发布时不会引用这些规则，这会丢弃它们\n- 修复了“/model<id>”在此版本无法识别模型时不发出警告的问题，自动压缩将假设为200K的上下文窗口\n- 修复了“保持发言空间”提示，在一个会话中使用其三个放映，并在一键通未绑定时显示空键\n- 修复了在Windows上看到的搜索过程在超时时终止但未退出时Grep和Glob从不返回的问题\n- 修复了一个罕见的情况，即在仍在保存部分对话时运行“/clear”或“/resume”时，恢复对话未恢复其计划\n- 修复了狭窄终端中从安全说明和终端设置说明中丢弃单词的首次运行设置\n- 修复了企业调查卡在短暂停顿后输入1或0的问题；现在需要输入答案\n- 自托管运行器：修复了Claude正在工作时发送的消息在停止后，即会话流程被替换后被应答的问题\n- 自托管运行器：修复了当会话移动到新机器时， MCP服务器的开/关开关有时会丢失的问题\n- Windows ：修复了当rc文件设置errexit和pipefail且仅定义winpty别名或没有定义winpty别名时， Bash工具在Git Bash中丢失别名和函数的问题\n- 改进的“/code-review”从Claude Desktop或网络上的代码选项卡开始：云和“claude remote-control”会话现在显示调查结果卡，而不是纯文本列表\n- 改进了大型仓库的“/diff” ：每次刷新通常会少运行一个完整仓库的git命令，当git速度较慢时，刷新会间隔开来\n- 改进了“/ultrareview”、云会话或云代理发现没有GitHub remote时显示的消息：他们现在表示要在https://github.com/new上创建存储库，并且“/ultrareview”不再建议“gh”拒绝的“gh”命令\n- 改进的SSL证书错误，以命名可能的原因，其中包括遗漏中间证书的服务器，以及每个\n- 更改了自动模式，以便没有“$ defaults”的“autoMode.allow”列表不再删除计划任务提示符上的内置规则\n- 更改了团队和企业登录的服务器管理设置：从Anthropic的API提取的设置现在在没有批准提示的情况下应用，并且未验证的存储副本被拒绝\n- [VSCode]从聊天面板添加登录到Claude应用程序网关，无需终端\n- [VSCode]将“ultrathink”更改为在“xhigh”努力下运行，并在聊天框中显示彩虹，就像在终端中一样\n- [VSCode]修复了模型设置具有“[1m]”标记（如“opus [1m]” ）时缺少Effort滑块、Ultracode开关和模型名称的问题\n- [VSCode]修复了设置文件有错误时过早删除已保存的“/btw”侧问题历史记录的问题\n- [VSCode]修复了在重新加载或重新启动后以“是，并手动批准编辑”批准其计划时的自动模式返回的对话\n- [云会话]向云会话添加了表单卡，因此您可以填写或拒绝MCP服务器要求的表单，而不是在您看不到的情况下取消请求\n- [云会话]添加了“追赶……”一行，显示您切换回的云或远程控制会话仍在更新其消息\n- [云会话]更改了网络密钥，因此企业成员可以在自己的云环境中添加和删除它们，而不仅仅是查看它们\n- [云会话]改进了云会话的“更改”窗格：有关列表遗漏内容的备注现在是分支名称旁边的徽章，而不是差异上方的行\n- [云会话]修复了云会话“文件”窗格中的文件搜索，将文件夹显示为Claude更改目录后的../..路径；结果现在显示其从项目根目录的路径\n- [Claude Tag]修复了Claude在将画布共享到另一个频道或DM后，拒绝编辑或附加到其在Slack频道中制作的画布的问题\n- [Claude Tag]修复了当两个组织都安装了Claude ， Slack将回复发送到另一个组织的应用程序时， Slack Connect线程中未回复的未标记回复问题\n- [Claude Tag]修复了Slack中云计划任务的实时状态检查表保持半完成状态的问题；运行现在可以编辑运行期间发布的顶级消息\n- [Claude Tag]更改Slack频道的回复会自动切换到频道配置页面和Claude Tag管理员设置中的「Claude如何参与」选项\n- [Code Review]在Code Review分析页面中添加了按严重程度分类的调查结果卡，其中显示了期间的总调查结果、按严重程度堆叠的每日图表以及每个严重程度的计数',
-          'h': 'e10a8c0'
+          'body': '## What\'s changed\n\n- Added `CLAUDE_CODE_DISABLE_ULTRATHINK`, which turns the `ultrathink` keyword off\n- Added pooled group budgets to the Claude apps gateway: one monthly budget that a group\'s members share, on top of each member\'s own limit, set with `pooled_budget` on the spend limits admin API\n- Added `CLAUDE_CODE_DISABLE_LOOPED_CROSS_CERT_DROP` to keep system cross-certificates that certify each other in a loop, for servers whose private CA needs one\n- Added `CLAUDE_CODE_SUBAGENT_EFFORT` to set the effort level subagents run at when nothing else names one, instead of inheriting the session\'s\n- Added `managed.policy_mode: layered` to the Claude apps gateway: every policy that matches a developer applies, each merged over the ones listed below it, not only the first\n- Added `guardrail.input_tagging` on Claude apps gateway Bedrock upstreams, which wraps prompts in the input tags that an Amazon Bedrock guardrail\'s prompt attacks filter needs; `all_messages_and_system` also tags the system prompt\n- Deprecated fast mode for Opus 4.8 as of October 30, 2026; it will be removed on November 30, 2026. After removal, fast mode requests on Opus 4.8 return an error and do not fall back to standard Opus 4.8. Migrate to Opus 5.5 to keep the speedup\n- Fixed shell commands being left running on macOS and Linux when Claude Code exits by itself, for example when credentials are refused or a cloud session is archived\n- Fixed bash aliases with line breaks in their value (except in Git Bash), and functions whose names start with a dash, being garbled or lost in the Bash tool\'s shell\n- Fixed bash scripts started from the Bash tool stopping after their first command when `SHELLOPTS` is exported\n- Fixed PowerShell hooks not blocking on exit code 2 when the command begins with a type cast, `param`, `using` or an attribute\n- Fixed some network requests hanging when a compressed response was cut off or corrupted\n- Fixed `sonnet`, `opus` and `haiku` on Vertex AI and Amazon Bedrock showing an error mid-session instead of switching to an older model when the newest is not yet available to the account or region\n- Fixed the Claude apps gateway not checking every model a request names against `availableModels`, `deniedModels` and `models`; a request that names a blocked model now gets a 400 naming the field\n- Fixed `claude auth login` refusing to run where managed settings require a Claude apps gateway; in a terminal it now shows the gateway sign-in\n- Fixed `--restricted` sessions uploading files from outside the working directories when a Read allow rule covered them\n- Fixed prompts containing invisible characters needing a second Enter to send; plain prompts now send cleaned on the first Enter, and commands still wait for review\n- Fixed sub-agents that inherited a parent sub-agent\'s model moving to the main model when a background job or message woke them\n- Fixed a managed `autoMode.allow` list without `\'$defaults\'` getting the built-in exceptions back from a host app\'s `--settings`, a first rule added in `/permissions`, or `/auto-mode-setup`\n- Fixed cloud sessions and cloud scheduled tasks not being marked as failed when auto mode stopped a turn because the server returned no safety verdict\n- Fixed `claude -p` text output sometimes not saying why auto mode stopped a turn when a background agent was still running\n- Fixed `CLAUDE_CODE_AUTO_MODE_SERVER=1` being ignored in sessions started by a host application (such as Claude Desktop) behind a proxy or LLM gateway with experimental betas turned off\n- Fixed plugin MCP `headersHelper` scripts receiving a corrupted `CLAUDE_PLUGIN_ROOT` and server URL when a credential-named environment variable was set to a switch value such as `1`\n- Fixed the SDK `register_repo_root` control request not loading the CLAUDE.md of a directory outside the working directory (with `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1`)\n- Fixed the Artifact tool showing `?` for artifact database access rules at the `self` level, and not quoting those rules back when it refuses a republish that would drop them\n- Fixed `/model <id>` not warning when the model isn\'t recognized by this version and auto-compact will assume a 200K context window\n- Fixed the \'hold space to speak\' hint using up its three showings in one session, and showing an empty key when push-to-talk is unbound\n- Fixed Grep and Glob never returning when the search process is killed at the timeout but does not exit, seen on Windows\n- Fixed a rare case where resuming a conversation did not restore its plan, when `/clear` or `/resume` had been run while part of that conversation was still being saved\n- Fixed first-run setup dropping words from the security notes and the terminal-setup explanation in narrow terminals\n- Fixed the Enterprise survey card taking a typed 1 or 0 after a short pause; a typed answer now needs Enter\n- Self-hosted runner: Fixed a message sent while Claude was working being answered after a Stop, once the session\'s process had been replaced\n- Self-hosted runner: Fixed an MCP server\'s on/off switch sometimes being lost when a session moved to a new machine\n- Windows: Fixed the Bash tool losing your aliases and functions in Git Bash when the rc file sets errexit and pipefail and only winpty aliases, or none, are defined\n- Improved `/code-review` started from the Code tab in Claude Desktop or on the web: cloud and `claude remote-control` sessions now show the findings card, not a plain-text list\n- Improved `/diff` on large repositories: each refresh usually runs one fewer full-repository git command, and refreshes are spaced out when git is slow\n- Improved the messages shown when `/ultrareview`, a cloud session or a cloud agent finds no GitHub remote: they now say to create a repository at https://github.com/new, and `/ultrareview` no longer suggests a `gh` command that `gh` rejects\n- Improved SSL certificate errors to name the likely causes, among them a server that leaves out an intermediate certificate, and the fix for each\n- Changed auto mode so that an `autoMode.allow` list without `\'$defaults\'` no longer removes the built-in rule on scheduled-task prompts\n- Changed server-managed settings for Team and Enterprise logins: settings fetched from Anthropic\'s API now apply without an approval prompt, and a stored copy that doesn\'t verify is refused\n- [VSCode] Added sign-in to a Claude apps gateway from the chat panel, with no terminal needed\n- [VSCode] Changed `ultrathink` to run its turn at `xhigh` effort and show in a rainbow in the chat box, as in the terminal\n- [VSCode] Fixed the missing Effort slider, Ultracode switch and model name when the model setting has the `[1m]` tag, such as `opus[1m]`\n- [VSCode] Fixed saved `/btw` side-question history being deleted too early while a settings file has errors\n- [VSCode] Fixed a conversation coming back in Auto mode after a reload or restart when its plan was approved with \'Yes, and manually approve edits\'\n- [Cloud sessions] Added a form card to cloud sessions, so you can fill in or decline a form an MCP server asks for instead of the request being canceled without you seeing it\n- [Cloud sessions] Added a \'Catching up…\' line that shows while a cloud or Remote Control session you switch back to is still bringing its messages up to date\n- [Cloud sessions] Changed network secrets so Enterprise members can add and delete them on their own cloud environments, instead of only viewing them\n- [Cloud sessions] Improved the Changes pane for cloud sessions: the note about what the list leaves out is now a badge beside the branch name, not a row above the diff\n- [Cloud sessions] Fixed file search in a cloud session\'s Files pane showing folders as ../.. paths after Claude changed directory; results now show their path from the project\'s root\n- [Claude Tag] Fixed Claude refusing to edit or append to a canvas it made in a Slack channel, from that channel, once the canvas was also shared to another channel or a DM\n- [Claude Tag] Fixed untagged replies going unanswered in a Slack Connect thread when both organizations have installed Claude and Slack delivered the reply to the other organization\'s app\n- [Claude Tag] Fixed a cloud scheduled task\'s live status checklist in Slack staying half-done; a run can now edit the top-level messages it posted during that run\n- [Claude Tag] Changed a Slack channel\'s Respond automatically switch to a \'How Claude participates\' choice on the channel\'s Configure page and in Claude Tag admin settings\n- [Code Review] Added a findings-by-severity card to the Code Review analytics page, showing the period\'s total findings, a daily chart stacked by severity, and each severity\'s count'
         },
         {
           'version': '2.1.314',
@@ -3572,7 +3590,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '2.2.5',
@@ -9086,7 +9104,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '2.5.0-canary.20261102033430-40590f6',
@@ -10071,7 +10089,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '0.2.2-alpha.3',
@@ -10640,7 +10658,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '0.5.3',
@@ -10990,7 +11008,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '1.38.0',
@@ -11633,7 +11651,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '3.4.12',
@@ -13679,7 +13697,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -13866,7 +13884,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '3.17.2',
@@ -14045,7 +14063,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '4.12.3',
@@ -14927,7 +14945,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-04 03:42',
+      'lastOkAt': '2026-11-04 08:47',
       'entries': [
         {
           'version': '5.11.0',

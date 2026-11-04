@@ -1,6 +1,6 @@
 // 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)
 // 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:
-//     https://m.aitntnews.com/arena/code/ (更新于 2026-11-03)
+//     https://m.aitntnews.com/arena/code/ (更新于 2026-11-04)
 // 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分
 //     (总榜 #12、开源第一;上一版 20260910 为镜像现有的 deepseek-v4.1-flash 1618)。镜像收录后自动去重。
 // 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)
@@ -9,7 +9,7 @@ window.ARENA_WEBDEV = {
   'source': 'Code Arena WebDev (LMArena)',
   'officialUrl': 'https://arena.ai/leaderboard/code',
   'url': 'https://m.aitntnews.com/arena/code/',
-  'updated': '2026-11-03',
+  'updated': '2026-11-04',
   'version': 'overall',
   'metric': 'Elo score',
   'desc': 'LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。',
@@ -22,7 +22,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1810,
       'ci': 13,
-      'votes': 3500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -30,7 +30,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1773,
       'ci': 10,
-      'votes': 7200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -38,7 +38,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1770,
       'ci': 11,
-      'votes': 4500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -46,7 +46,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1768,
       'ci': 15,
-      'votes': 2200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -54,7 +54,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1751,
       'ci': 11,
-      'votes': 4100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -62,7 +62,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1746,
       'ci': 9,
-      'votes': 8600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -78,7 +78,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1711,
       'ci': 9,
-      'votes': 6400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -86,7 +86,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1695,
       'ci': 13,
-      'votes': 2700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -94,7 +94,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1691,
       'ci': 6,
-      'votes': 19600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -102,7 +102,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1679,
       'ci': 11,
-      'votes': 3400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -110,7 +110,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1678,
       'ci': 9,
-      'votes': 5700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -118,7 +118,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1676,
       'ci': 7,
-      'votes': 17900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -126,7 +126,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1673,
       'ci': 15,
-      'votes': 1800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -134,7 +134,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1672,
       'ci': 12,
-      'votes': 3400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -142,7 +142,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1665,
       'ci': 8,
-      'votes': 7800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -150,7 +150,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1658,
       'ci': 5,
-      'votes': 26900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -158,7 +158,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1656,
       'ci': 6,
-      'votes': 21300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -166,7 +166,7 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1656,
       'ci': 7,
-      'votes': 10800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -174,7 +174,7 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1652,
       'ci': 11,
-      'votes': 3700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -182,7 +182,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1637,
       'ci': 9,
-      'votes': 6600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -190,7 +190,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1637,
       'ci': 8,
-      'votes': 7100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -198,7 +198,7 @@ window.ARENA_WEBDEV = {
       'org': 'Tencent',
       'score': 1631,
       'ci': 10,
-      'votes': 4800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -206,7 +206,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1628,
       'ci': 8,
-      'votes': 9700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -214,7 +214,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1625,
       'ci': 8,
-      'votes': 6800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -222,7 +222,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1624,
       'ci': 6,
-      'votes': 17000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -230,7 +230,7 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1623,
       'ci': 7,
-      'votes': 11200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -238,7 +238,7 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1620,
       'ci': 7,
-      'votes': 10200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -246,7 +246,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1619,
       'ci': 11,
-      'votes': 3500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -254,7 +254,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1616,
       'ci': 7,
-      'votes': 12000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -262,7 +262,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1616,
       'ci': 6,
-      'votes': 18900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -270,7 +270,7 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1607,
       'ci': 6,
-      'votes': 21600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -278,7 +278,7 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1606,
       'ci': 6,
-      'votes': 17800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -286,7 +286,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1590,
       'ci': 6,
-      'votes': 18800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -294,7 +294,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1590,
       'ci': 6,
-      'votes': 14500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -302,7 +302,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1589,
       'ci': 10,
-      'votes': 4800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -310,7 +310,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1583,
       'ci': 7,
-      'votes': 12300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -318,7 +318,7 @@ window.ARENA_WEBDEV = {
       'org': 'MiniMax',
       'score': 1582,
       'ci': 12,
-      'votes': 3100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -326,7 +326,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1582,
       'ci': 9,
-      'votes': 4700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -334,7 +334,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1582,
       'ci': 9,
-      'votes': 4900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -342,7 +342,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1579,
       'ci': 6,
-      'votes': 27800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -350,7 +350,7 @@ window.ARENA_WEBDEV = {
       'org': 'StepFun',
       'score': 1571,
       'ci': 9,
-      'votes': 6000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -358,7 +358,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1558,
       'ci': 6,
-      'votes': 17900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -366,7 +366,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1556,
       'ci': 6,
-      'votes': 18400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -374,7 +374,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1555,
       'ci': 6,
-      'votes': 18200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -382,7 +382,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1553,
       'ci': 7,
-      'votes': 11000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -390,7 +390,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1546,
       'ci': 5,
-      'votes': 19300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -398,7 +398,7 @@ window.ARENA_WEBDEV = {
       'org': 'Mistral',
       'score': 1544,
       'ci': 11,
-      'votes': 4100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -406,7 +406,7 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1542,
       'ci': 8,
-      'votes': 7900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -414,7 +414,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1540,
       'ci': 6,
-      'votes': 16800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -422,7 +422,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1538,
       'ci': 7,
-      'votes': 8700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -430,7 +430,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1537,
       'ci': 5,
-      'votes': 20600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -438,7 +438,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1536,
       'ci': 6,
-      'votes': 17300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -446,7 +446,7 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1534,
       'ci': 14,
-      'votes': 2200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -454,7 +454,7 @@ window.ARENA_WEBDEV = {
       'org': 'Meta',
       'score': 1526,
       'ci': 15,
-      'votes': 1700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -462,7 +462,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1523,
       'ci': 5,
-      'votes': 22700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -470,7 +470,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1520,
       'ci': 6,
-      'votes': 15400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -478,7 +478,7 @@ window.ARENA_WEBDEV = {
       'org': 'Bytedance',
       'score': 1519,
       'ci': 6,
-      'votes': 16300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -486,7 +486,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1519,
       'ci': 6,
-      'votes': 12500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -494,7 +494,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1515,
       'ci': 7,
-      'votes': 8900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -502,7 +502,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1512,
       'ci': 6,
-      'votes': 15600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -510,7 +510,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1509,
       'ci': 7,
-      'votes': 10100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -518,7 +518,7 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1508,
       'ci': 7,
-      'votes': 10600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -526,7 +526,7 @@ window.ARENA_WEBDEV = {
       'org': 'Tencent',
       'score': 1505,
       'ci': 8,
-      'votes': 6800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -534,7 +534,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1504,
       'ci': 15,
-      'votes': 1900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -542,7 +542,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1499,
       'ci': 7,
-      'votes': 9300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -558,7 +558,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1491,
       'ci': 7,
-      'votes': 12100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -566,7 +566,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1487,
       'ci': 6,
-      'votes': 17900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -574,7 +574,7 @@ window.ARENA_WEBDEV = {
       'org': 'MiniMax',
       'score': 1483,
       'ci': 5,
-      'votes': 21000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -582,7 +582,7 @@ window.ARENA_WEBDEV = {
       'org': 'XHToken',
       'score': 1482,
       'ci': 19,
-      'votes': 1200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -590,7 +590,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1482,
       'ci': 13,
-      'votes': 2700,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -598,7 +598,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1480,
       'ci': 5,
-      'votes': 22600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -606,7 +606,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1474,
       'ci': 9,
-      'votes': 5000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -622,7 +622,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1464,
       'ci': 6,
-      'votes': 13100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -638,7 +638,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1462,
       'ci': 6,
-      'votes': 18500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -646,7 +646,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1456,
       'ci': 6,
-      'votes': 15800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -654,7 +654,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1447,
       'ci': 6,
-      'votes': 13900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -662,7 +662,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1447,
       'ci': 5,
-      'votes': 24100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -694,7 +694,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1438,
       'ci': 6,
-      'votes': 14800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -702,7 +702,7 @@ window.ARENA_WEBDEV = {
       'org': 'Moonshot',
       'score': 1436,
       'ci': 5,
-      'votes': 20000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -734,7 +734,7 @@ window.ARENA_WEBDEV = {
       'org': 'Xiaomi',
       'score': 1434,
       'ci': 8,
-      'votes': 7200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -742,7 +742,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1434,
       'ci': 41,
-      'votes': 236,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -750,7 +750,7 @@ window.ARENA_WEBDEV = {
       'org': 'DeepSeek',
       'score': 1430,
       'ci': 7,
-      'votes': 10100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -774,7 +774,7 @@ window.ARENA_WEBDEV = {
       'org': 'Thinky',
       'score': 1415,
       'ci': 6,
-      'votes': 17100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -782,7 +782,7 @@ window.ARENA_WEBDEV = {
       'org': 'Thinky',
       'score': 1409,
       'ci': 9,
-      'votes': 5300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -814,7 +814,7 @@ window.ARENA_WEBDEV = {
       'org': 'Z.ai',
       'score': 1401,
       'ci': 13,
-      'votes': 2400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -822,7 +822,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1400,
       'ci': 5,
-      'votes': 21100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -838,7 +838,7 @@ window.ARENA_WEBDEV = {
       'org': 'MiniMax',
       'score': 1398,
       'ci': 6,
-      'votes': 15900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -846,7 +846,7 @@ window.ARENA_WEBDEV = {
       'org': 'OpenAI',
       'score': 1397,
       'ci': 7,
-      'votes': 11900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -894,7 +894,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1384,
       'ci': 5,
-      'votes': 22100,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -910,7 +910,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1375,
       'ci': 6,
-      'votes': 15400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -926,7 +926,7 @@ window.ARENA_WEBDEV = {
       'org': 'Upstage',
       'score': 1370,
       'ci': 10,
-      'votes': 4600,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -934,7 +934,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1369,
       'ci': 6,
-      'votes': 15500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -950,7 +950,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1360,
       'ci': 8,
-      'votes': 8200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -958,7 +958,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1359,
       'ci': 17,
-      'votes': 1500,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -966,7 +966,7 @@ window.ARENA_WEBDEV = {
       'org': 'Alibaba',
       'score': 1358,
       'ci': 8,
-      'votes': 7800,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -974,7 +974,7 @@ window.ARENA_WEBDEV = {
       'org': 'SpaceXAI',
       'score': 1358,
       'ci': 6,
-      'votes': 14900,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -982,7 +982,7 @@ window.ARENA_WEBDEV = {
       'org': 'Tencent',
       'score': 1357,
       'ci': 17,
-      'votes': 1400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -998,7 +998,7 @@ window.ARENA_WEBDEV = {
       'org': 'Poolside',
       'score': 1349,
       'ci': 9,
-      'votes': 5400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -1046,7 +1046,7 @@ window.ARENA_WEBDEV = {
       'org': 'Anthropic',
       'score': 1330,
       'ci': 5,
-      'votes': 29000,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -1070,7 +1070,7 @@ window.ARENA_WEBDEV = {
       'org': 'Poolside',
       'score': 1302,
       'ci': 11,
-      'votes': 4200,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -1110,7 +1110,7 @@ window.ARENA_WEBDEV = {
       'org': 'Mistral',
       'score': 1264,
       'ci': 15,
-      'votes': 2300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -1118,7 +1118,7 @@ window.ARENA_WEBDEV = {
       'org': 'Google',
       'score': 1256,
       'ci': 7,
-      'votes': 14300,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -1166,7 +1166,7 @@ window.ARENA_WEBDEV = {
       'org': '',
       'score': 1238,
       'ci': 20,
-      'votes': 1400,
+      'votes': 0,
       'src': 'selftest'
     },
     {
@@ -1206,7 +1206,7 @@ window.ARENA_WEBDEV = {
       'org': 'IBM',
       'score': 1192,
       'ci': 18,
-      'votes': 1800,
+      'votes': 0,
       'src': 'selftest'
     },
     {

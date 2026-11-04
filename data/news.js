@@ -2,14 +2,13 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-03',
+  'updated': '2026-11-04',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
     '技术与洞察',
-    '前瞻与传闻',
     '产品应用',
     '行业动态'
   ],
@@ -109,46 +108,6 @@ window.NEWS = {
       'url': 'https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm',
       'source': '橘鸦AI早报',
       'type': '行业动态'
-    },
-    {
-      'date': '2026-11-02',
-      'title': 'Codex 完成 28 天改进计划，最后 2 天发放手动重置次数',
-      'brief': 'OpenAI 的 Tibo 在 28 天 改进计划的第 26 天 预告，接下来两天将提供可留存的重置次数。',
-      'url': 'https://x.com/thsottiaux/status/2116692529970311254',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-02',
-      'title': '美团发布 1.6 万亿参数模型 LongCat-2.5 正式版',
-      'brief': '美团 发布大模型 LongCat-2.5 正式版，此前已于 9 月 推出预览版。模型总参数量 1.6 万亿 ，每个 token 激活约 480 亿 参数。',
-      'url': 'https://longcat.ai/blog/longcat-2.5/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-02',
-      'title': '初创公司让 AI 智能体给活体小鼠脑部注射药物',
-      'brief': '据 WIRED 报道，生物科技初创公司 Exin Therapeutics 让 AI 智能体 从 19 种 治疗方案中选定一种基因疗法，操控带摄像头的机械臂手术装置，向一只活体癫痫小鼠脑内注入 250 纳升 药物，目标是减少癫痫发作，小鼠目前恢复良好。',
-      'url': 'https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-02',
-      'title': '马斯克称 Grok Bot 服务成本相对收入高得不可持续',
-      'brief': '有 X 用户向 马斯克 询问能否重置 Grok Bot 的使用额度，并称很多人反映这周额度消耗得很快。',
-      'url': 'https://x.com/elonmusk/status/2116992258520064397',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-02',
-      'title': 'Axios：OpenAI 计划选后发起政策和公关宣传',
-      'brief': '据 Axios 报道， OpenAI 计划在美国中期选举结束后发起一轮政策和公关宣传，讨论针对最强大 AI 系统推出强制性安全保障的新想法，并推动国会相关工作。报道列出的其他提议还包括让更多人看到 AI 如何帮助日常生活和工作、推动美国参与塑造基于民主价值观的全球 AI 标准，以及将该公司建设的数据中心称作「 AI 算力园区」，以回应相关建设在全美引发的反对声音。',
-      'url': 'https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
     }
   ]
 };
