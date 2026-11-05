@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-05',
-  'refreshedAt': '2026-11-06 00:39',
+  'refreshedAt': '2026-11-06 07:46',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,8 +19,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
+        {
+          'version': '0.167.0',
+          'title': 'rust-v0.167.0',
+          'date': '2026-11-05',
+          'dateRaw': '2026-11-05T23:31:20Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0',
+          'body': '版本0.167.0',
+          'h': '41778d00'
+        },
         {
           'version': '0.167.0-alpha.3.2',
           'title': '0.167.0-alpha.3.2',
@@ -1263,7 +1273,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '2.1.318',
@@ -3608,8 +3618,28 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
+        {
+          'version': 'daemon-v0.5.0',
+          'title': 'process-daemon v0.5.0',
+          'date': '2026-11-05',
+          'dateRaw': '2026-11-05T17:39:04Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.0',
+          'body': 'openencode-pty 0.5.0 （协议8 ） ，作为@ opencode/pty @ 0.5.0发布到npm。',
+          'h': 'cc93a2d2'
+        },
+        {
+          'version': 'daemon v0.5.0',
+          'title': 'process-daemon v0.5.0',
+          'date': '2026-11-05',
+          'dateRaw': '2026-11-05T17:39:04Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.0',
+          'body': 'openencode-pty 0.5.0 （协议8 ） ，作为@ opencode/pty @ 0.5.0发布到npm。',
+          'h': 'cc93a2d2'
+        },
         {
           'version': '2.2.5',
           'title': 'v2.2.5',
@@ -9093,24 +9123,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.16',
           'body': '- Fixed GPT-5 Codex models to not have reasoning effort set, while maintaining medium reasoning effort for other GPT-5 models\n- Changed reasoning summary from \'detailed\' to \'auto\' for opencode provider with GPT-5 models'
-        },
-        {
-          'version': '0.15.15',
-          'title': 'v0.15.15',
-          'date': '2025-10-24',
-          'dateRaw': '2025-10-24T03:51:27Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.15',
-          'body': '- Fixed Opencode failing with ENOENT posix_spawn \'/usr/bin/rg\' error\n- Added flag wildcard parsing support for bash tool\n- Fixed `zod-to-json-schema` dependency placement\n- Fixed `tool.execute.after` hook to properly modify MCP tool output'
-        },
-        {
-          'version': '0.15.14',
-          'title': 'v0.15.14',
-          'date': '2025-10-23',
-          'dateRaw': '2025-10-23T05:55:36Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.14',
-          'body': '- Added model management to ACP sessions, allowing users to manage models within agent sessions\n- Adjusted retry logic so we can surface retries to end user (not surfaced yet)\n- Added experimental turn summarization to compact conversation history, helping manage long conversations\n- Added parent ID tracking to assistant messages for better conversation context\n- Added Amazon Nova models to the us-* prefix requirement list for proper model routing\n- Fixed opencode run command to not print to stderr, improving output handling\n- Improved editor detection with auto-discovery and better error messages\n- Added option to allow agent switches without changing the model'
         }
       ]
     },
@@ -9122,7 +9134,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '2.5.1',
@@ -10161,7 +10173,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10746,7 +10758,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '0.5.5',
@@ -11112,7 +11124,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '1.38.0',
@@ -11755,7 +11767,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '3.4.12',
@@ -13801,7 +13813,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -13988,7 +14000,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '3.17.2',
@@ -14167,7 +14179,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '4.12.3',
@@ -15049,7 +15061,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 00:39',
+      'lastOkAt': '2026-11-06 07:46',
       'entries': [
         {
           'version': '5.11.0',

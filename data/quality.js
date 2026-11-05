@@ -65,7 +65,7 @@ window.QUALITY = {
       'id': 'arena_agent',
       'name': 'Agent Arena (LMArena)',
       'status': 'ok',
-      'modelCount': 52,
+      'modelCount': 58,
       'updated': '2026-11-05',
       'ageDays': 0,
       'completeness': 1,
@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 240,
+      'modelCount': 238,
       'updated': '2026-11-05',
       'ageDays': 0,
       'completeness': 1,
@@ -792,9 +792,9 @@ window.QUALITY = {
     },
     'arena_agent': {
       'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
+      'total': 58,
+      'complete': 58,
+      'modelCount': 58,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -866,9 +866,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 240,
-      'complete': 240,
-      'modelCount': 240,
+      'total': 238,
+      'complete': 238,
+      'modelCount': 238,
       'missingFields': {},
       'flag': 'ok'
     },
