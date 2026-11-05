@@ -1,6 +1,6 @@
 // 数据源:ModelDial 雷达(2026-11-05 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-f9e89b325e7acda473263b4a)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-190b1272f4f6c495fb47cffc)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-f9e89b325e7acda473263b4a',
-  'batchRevision': 422,
-  'batchPublishedAt': '2026-11-04T22:01:55.280Z',
+  'batchId': 'overall-190b1272f4f6c495fb47cffc',
+  'batchRevision': 423,
+  'batchPublishedAt': '2026-11-05T00:30:53.538Z',
   'updated': '2026-11-05',
-  'refreshedAt': '2026-11-05 07:52',
+  'refreshedAt': '2026-11-05 15:10',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
@@ -704,6 +704,21 @@ window.MODELDIAL = {
       'rank': 44
     },
     {
+      'model': 'crouton-alpha',
+      'provider': 'openrouter',
+      'effort': 'default',
+      'displayName': 'crouton-alpha / Auto',
+      'overall': 50.7,
+      'backend': 45,
+      'frontend': 64,
+      'knowledge': 45,
+      'elapsedMs': 82312,
+      'costUsd': 0,
+      'tags': [],
+      'configs': 1,
+      'rank': 45
+    },
+    {
       'model': 'MiniMax-M3',
       'provider': 'minimax',
       'effort': 'high',
@@ -714,21 +729,6 @@ window.MODELDIAL = {
       'knowledge': 50,
       'elapsedMs': 1325984,
       'costUsd': 0.313887,
-      'tags': [],
-      'configs': 1,
-      'rank': 45
-    },
-    {
-      'model': 'crouton-alpha',
-      'provider': 'openrouter',
-      'effort': 'default',
-      'displayName': 'crouton-alpha / Auto',
-      'overall': 43.9,
-      'backend': 28,
-      'frontend': 64,
-      'knowledge': 45,
-      'elapsedMs': 80022,
-      'costUsd': 0,
       'tags': [],
       'configs': 1,
       'rank': 46
@@ -1993,6 +1993,20 @@ window.MODELDIAL = {
     },
     {
       'rank': 89,
+      'provider': 'openrouter',
+      'model': 'crouton-alpha',
+      'effort': 'default',
+      'displayName': 'crouton-alpha / Auto',
+      'overall': 50.7,
+      'backend': 45,
+      'frontend': 64,
+      'knowledge': 45,
+      'elapsedMs': 82312,
+      'costUsd': 0,
+      'tags': []
+    },
+    {
+      'rank': 90,
       'provider': 'minimax',
       'model': 'MiniMax-M3',
       'effort': 'high',
@@ -2006,7 +2020,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 90,
+      'rank': 91,
       'provider': 'deepseek',
       'model': 'deepseek-v4-flash-vision-exp',
       'effort': 'max',
@@ -2020,7 +2034,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 91,
+      'rank': 92,
       'provider': 'deepseek',
       'model': 'deepseek-v4.1-flash-expires-on-0910',
       'effort': 'high',
@@ -2034,7 +2048,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 92,
+      'rank': 93,
       'provider': 'cloudflare-reference',
       'model': 'gpt-5.6-terra',
       'effort': 'medium',
@@ -2048,7 +2062,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 93,
+      'rank': 94,
       'provider': 'glm',
       'model': 'glm-5.3-flash',
       'effort': 'high',
@@ -2062,7 +2076,7 @@ window.MODELDIAL = {
       'tags': []
     },
     {
-      'rank': 94,
+      'rank': 95,
       'provider': 'cloudflare-reference',
       'model': 'gpt-6-luna',
       'effort': 'high',
@@ -2073,20 +2087,6 @@ window.MODELDIAL = {
       'knowledge': 50,
       'elapsedMs': 705870,
       'costUsd': 0.013051,
-      'tags': []
-    },
-    {
-      'rank': 95,
-      'provider': 'openrouter',
-      'model': 'crouton-alpha',
-      'effort': 'default',
-      'displayName': 'crouton-alpha / Auto',
-      'overall': 43.9,
-      'backend': 28,
-      'frontend': 64,
-      'knowledge': 45,
-      'elapsedMs': 80022,
-      'costUsd': 0,
       'tags': []
     },
     {
