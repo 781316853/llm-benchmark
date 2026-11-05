@@ -1,4 +1,4 @@
-// 数据源:Code Migration(Vals AI,源站更新 2026-10-18)
+// 数据源:Code Migration(Vals AI,源站更新 2026-10-29)
 // 来源:https://www.vals.ai/benchmarks/code-migration
 // 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);
 //      latencyS=每测试平均耗时(秒);harness 源站未公开
@@ -8,8 +8,8 @@ window.VALSCODEMIGRATION = {
   'url': 'https://www.vals.ai/benchmarks/code-migration',
   'officialUrl': 'https://www.vals.ai/benchmarks/code-migration',
   'version': '1',
-  'updated': '2026-10-18',
-  'refreshedAt': '2026-10-29 14:14',
+  'updated': '2026-10-29',
+  'refreshedAt': '2026-11-05 07:52',
   'stats': {
     'models': 79
   },
@@ -511,7 +511,7 @@ window.VALSCODEMIGRATION = {
       'id': 'mistralai/mistral-large-4',
       'model': 'Mistral Large 4',
       'accuracy': 30.56,
-      'costPerTest': 47.890583,
+      'costPerTest': 24.522375,
       'latencyS': 17441.256,
       'harness': null,
       'avgInputTokens': null,
@@ -643,7 +643,7 @@ window.VALSCODEMIGRATION = {
       'id': 'zai/glm-5.3-flash',
       'model': 'Glm 5.3 Flash',
       'accuracy': 20.52,
-      'costPerTest': 3.128822,
+      'costPerTest': 6.257643,
       'latencyS': 12331.871,
       'harness': null,
       'avgInputTokens': null,

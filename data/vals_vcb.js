@@ -1,4 +1,4 @@
-// 数据源:Vibe Code Bench 1-100(Vals AI,源站更新 2026-10-17)
+// 数据源:Vibe Code Bench 1-100(Vals AI,源站更新 2026-10-29)
 // 来源:https://www.vals.ai/benchmarks/vcb-1-100
 // 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);
 //      latencyS=每测试平均耗时(秒);harness=实测所用 harness(本榜全部为 OpenHands)
@@ -8,8 +8,8 @@ window.VALSVCB = {
   'url': 'https://www.vals.ai/benchmarks/vcb-1-100',
   'officialUrl': 'https://www.vals.ai/benchmarks/vcb-1-100',
   'version': '1.0',
-  'updated': '2026-10-17',
-  'refreshedAt': '2026-10-29 14:14',
+  'updated': '2026-10-29',
+  'refreshedAt': '2026-11-05 07:52',
   'harnesses': [
     'OpenHands'
   ],
@@ -226,7 +226,7 @@ window.VALSVCB = {
       'id': 'zai/glm-5.3-flash',
       'model': 'Glm 5.3 Flash',
       'accuracy': 16.03,
-      'costPerTest': 0.462842,
+      'costPerTest': 0.925685,
       'latencyS': 2343.096,
       'harness': 'OpenHands',
       'avgInputTokens': null,
@@ -262,7 +262,7 @@ window.VALSVCB = {
       'id': 'mistralai/mistral-large-4',
       'model': 'Mistral Large 4',
       'accuracy': 14.26,
-      'costPerTest': 6.749045,
+      'costPerTest': 3.435784,
       'latencyS': 3593.189,
       'harness': 'OpenHands',
       'avgInputTokens': null,

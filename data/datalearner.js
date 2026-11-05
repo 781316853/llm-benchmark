@@ -1,11 +1,11 @@
 // 补充数据源:datalearner.com DeepSWE 榜单快照(云端抓取)
-// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-10-29)
+// 来源:https://www.datalearner.com/benchmarks/deepswe  (更新于 2026-11-04)
 // 用途:作为 DeepSWE v1.1 的补充,合并主源未收录模型;同时独立产出供溯源。
 // 字段说明:name=模型名;score=Pass@1(%);mode=评测模式;date=发布日期;params=参数量;license=许可证
 window.DATALEARNER = {
   'source': 'datalearner.com',
   'url': 'https://www.datalearner.com/benchmarks/deepswe',
-  'updated': '2026-10-29',
+  'updated': '2026-11-04',
   'models': [
     {
       'name': 'Muse Wonder Full',
@@ -62,6 +62,14 @@ window.DATALEARNER = {
       'date': '2026-09-29',
       'params': '未知',
       'license': '闭源'
+    },
+    {
+      'name': 'Hy4',
+      'score': 74.9,
+      'mode': '思考模式 High（工具）',
+      'date': '2026-11-04',
+      'params': '未知',
+      'license': '已宣布 · 待发布'
     },
     {
       'name': 'DeepSeek-V4.1-Flash',
@@ -235,14 +243,6 @@ window.DATALEARNER = {
       'name': 'GPT-5.6 Terra',
       'score': 69.6,
       'mode': '最高（工具）',
-      'date': '2026-06-26',
-      'params': '未知',
-      'license': '闭源'
-    },
-    {
-      'name': 'GPT-5.6 Sol',
-      'score': 69.4,
-      'mode': '思考模式 High（工具）',
       'date': '2026-06-26',
       'params': '未知',
       'license': '闭源'

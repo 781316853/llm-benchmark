@@ -2,150 +2,200 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-10-29',
+  'updated': '2026-11-04',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '产品应用'
+    '技术与洞察',
+    '产品应用',
+    '行业动态'
   ],
   'items': [
     {
-      'date': '2026-10-29',
-      'title': 'Google 推出 Gemini 4 Carbon，先向部分用户开放',
-      'brief': 'Google 发布新一代前沿模型 Gemini 4 Carbon ，称其为目前最强的模型，在网络安全和长时程任务上达到业界最高水平，距 Gemini 4 Argon 发布仅 两周 。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/',
+      'date': '2026-11-04',
+      'title': 'Anthropic 开源 FlashProve，验证 AI 回复来自哪个模型',
+      'brief': 'Anthropic 开源可验证推理系统 FlashProve ，目标是让用户确认 AI 回复是否由指定模型生成，同时不公开模型权重。系统分两步运行：提供方先为一组模型权重发布一个简短的加密标识，称为“承诺”，用来固定这组权重，但不公开权重本身。回复生成后，提供方再制作证明文件，证明被检查的输出符合这组权重对用户输入的计算结果。用户拿到标识、输入、回复和证明文件后，可以在自己的 CPU 上检查，无需拿到权重或重新运行整个模型。证明只说明计…',
+      'url': 'https://anthropic.com/research/provable-inference',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-10-29',
-      'title': 'OpenAI 向 ChatGPT Pro 和 Business 订阅用户发放 API 额度',
-      'brief': 'OpenAI Developers 宣布，符合条件的 ChatGPT Pro 和 Business 订阅用户即日起可领取每月最高 500 美元 的 API 额度，用于开发应用和 agent 。',
-      'url': 'https://x.com/OpenAIDevs/status/2115583698074755078',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'OpenAI 员工：ChatGPT 的 Chat 与 Work 整合今年推出',
-      'brief': 'OpenAI Codex 与 ChatGPT 团队的 Tibo 在 X 上表示，团队正在筹备整合 ChatGPT 中 Chat 与 Work 的能力，但目前尚未推出，并为造成的误解致歉。',
-      'url': 'https://x.com/thsottiaux/status/2115588390414581916',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Tibo：28 天计划第 23 天为重置，已完成',
-      'brief': 'OpenAI 的 Codex 团队成员 Tibo 于昨日表示， 28 天 更新计划第 23 天 的内容是一次重置，该重置已于昨日下午完成。',
-      'url': 'https://x.com/thsottiaux/status/2115330127886463244',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Google 将 AI Mode 广告扩展到 10 国',
-      'brief': 'Google 宣布， AI Mode 中的广告扩展到澳大利亚、加拿大、印度、Kenya、马来西亚、新西兰、Nigeria、巴基斯坦、菲律宾和新加坡。同时， Google 在美国推出 multi-turn ads ，让用户在 AI Mode 中继续追问时，也能展示广告。 Google 计划在 2026 年第四季度 扩展到巴西、墨西哥和英国等更多地区，广告将明确标注“Sponsored”。 Google 商务负责人 Philipp Schi…',
-      'url': 'https://blog.google/products/ads-commerce/ads-in-ai-mode-global/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Gemini Notebook 的 Live Chat 向所有移动端用户开放',
-      'brief': 'Gemini Notebook 宣布， Live Chat 功能此前已向移动端 Ultra 用户 100% 推出，现在已向所有移动端用户开放。该功能支持用户与自己的 notebook 进行实时语音对话，覆盖约 100 种语言。',
-      'url': 'https://x.com/Gemini_Notebook/status/2115582082340860324',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Gemini 应用推出沉浸式探索功能',
-      'brief': 'Google 在 Gemini 应用中推出沉浸式探索功能，提供一个交互式、可视化的内容库，让用户逐层探索话题，主题包括丝绸之路贸易路线、喷气发动机内部和闪电物理等。',
-      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Chrome 增强自动填充可从 Gmail 提取信息',
-      'brief': 'Google 宣布， Chrome 的增强自动填充功能开始支持从 Gmail 中提取信息，并在用户填写网页表单时给出建议。该功能由带 Personal Intelligence 的 Gemini 驱动，可提供订单号、追踪信息和航班预订号等内容。',
-      'url': 'https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-29',
-      'title': 'Google 与 XREAL 推出 Android XR 眼镜 AURA',
-      'brief': 'Google 与 XREAL 宣布正式推出 XREAL AURA ， Google 称这是首款搭载 Android XR 的有线 XR 眼镜。',
-      'url': 'https://blog.google/products-and-platforms/platforms/android/xreal-aura/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-10-28',
-      'title': 'Google DeepMind 发布世界模型 Genie 4 研究预览，可实时改场景',
-      'brief': 'Google DeepMind 发布新一代世界模型 Genie 4 ，它借助 Gemini Omni 让模拟贴近真实世界的外观和行为，并由其他 Gemini 模型保持模拟的连贯。用户可随时用文字提示改变天气、镜头或加入新的人物和物体，模型能模拟空气动力学、碰撞等物理效果，人物动作自然。',
-      'url': 'https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-10-28',
-      'title': 'Cursor Design Mode 上线 Annotate 标注功能',
-      'brief': 'Cursor 在 Design Mode 中推出 Annotate 功能，用户可在浏览器中点选元素、在页面上绘图，向 agent 提供视觉提示，并在不同屏幕尺寸下审阅设计。按 Cmd+Shift+D 即可开启。',
-      'url': 'https://cursor.com/docs/agent/design-mode',
+      'date': '2026-11-04',
+      'title': 'ChatGPT Side Chats 不再过期，可长期保存',
+      'brief': 'OpenAI Codex 团队成员 Brent Traut 宣布，ChatGPT 的 Side Chats 不再因重启或更新应用而过期消失。他称这是自己加入 OpenAI 时发现的 Side Chats 用户最大痛点之一，现已修复。',
+      'url': 'https://x.com/btraut/status/2117696510146265089',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-28',
-      'title': 'Google 开始向 Antigravity IDE 用户推送 Gemini 4 Argon',
-      'brief': 'Google Antigravity 团队成员 Rody Davis 表示， Google 正开始向 Antigravity IDE 用户逐步推送 Gemini 4 Argon ，用户可在接下来的 24 小时 内留意更新。',
-      'url': 'https://gemini.google/desktop/',
+      'date': '2026-11-04',
+      'title': '隐身模型 Crouton Alpha 上线 OpenCode 和 OpenRouter，免费一周',
+      'brief': '隐身模型 Crouton Alpha 上线 OpenCode 和 OpenRouter 两个平台。 OpenRouter 页面显示其上下文长度为 1.0M token ，输入输出价格均为每百万 token 0 美元 。 OpenCode 宣布该模型未来一周免费，支持多模态，数据不用于训练，仅限特定地区使用。有分析称，该模型的屏蔽国家列表、特定日文词汇报错和 effort 设置与 Meta 模型特征一致，这一身份关联尚未确认。',
+      'url': 'https://openrouter.ai/stealth/crouton-alpha',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-10-28',
-      'title': '蚂蚁百灵开源 Ling-3.1-flash-1019 及基座模型',
-      'brief': '蚂蚁百灵 开源了此前发布的 Ling-3.1-flash-1019 ，并开放用于进一步训练的 Ling-3.1-flash-base 基座模型。',
-      'url': 'https://huggingface.co/inclusionAI/Ling-3.1-flash-1019',
+      'date': '2026-11-04',
+      'title': 'OpenAI 团队成员：正扩展 dots 的模型组合',
+      'brief': 'OpenAI 团队成员 Tibo 表示，团队正在扩展支持 dots 的模型组合，其中包括 GPT-6 Astra 和 GPT-6.1 Terra ，未来还会加入其他模型。',
+      'url': 'https://x.com/thsottiaux/status/2117283124833055196',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-04',
+      'title': '豆包工作个人用户简单问答免费',
+      'brief': '豆包工作 通过官方公众号宣布，其面向个人用户免费开放日常简单问答服务。官方称，回答日常小问题时，豆包工作比豆包的对话模式更准确、可靠。',
+      'url': 'https://mp.weixin.qq.com/s/n4RUfNxJwfcxsByEWLuhfw',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-04',
+      'title': 'MiniMax 开源 BYOB：用户自带 agent 同桌互动',
+      'brief': 'MiniMax 在 GitHub 开源了名为 BYOB （Bring Your Own Bot）的项目，发布协议规范和一份 TypeScript 参考实现，采用 MIT 许可证。',
+      'url': 'https://github.com/MiniMax-AI/mcode-agent-table?ref=explainx',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-04',
+      'title': 'Claude 团队版和企业版上线插件自动连接功能',
+      'brief': 'Anthropic 宣布为 Claude 团队版和企业版推出插件企业托管授权功能，管理员为整个组织授权一次后，员工首次登录 Claude 即可自动连接公司开通的插件，无需再逐个登录并确认。',
+      'url': 'https://claude.com/docs/connectors/building/enterprise-managed-auth',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-04',
+      'title': 'Google 面向学生账号上线 Guided Learning',
+      'brief': 'Google 宣布在 Google Search 和 Google Classroom 中推出 Guided Learning 功能。该功能面向学生账号，当系统识别到学生在查找某类作业帮助时，会围绕主题或问题一步步讲解，并给出提示促使学生批判性思考，而不是直接给出答案。',
+      'url': 'https://blog.google/products-and-platforms/products/education/guided-learning/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-04',
+      'title': '微信视觉团队开源 WeVisOne-VL 视觉模型',
+      'brief': '腾讯微信视觉团队 开源视觉多模态模型 WeVisOne-VL ，提供 2B 和 4B 两个参数版本，模型权重、推理包、Cookbooks 与评测流程一并发布，腾讯自研代码采用 Apache 2.0 许可证。',
+      'url': 'https://tencent.github.io/WeVisOne-VL/',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-10-28',
-      'title': '微软发布 MAI-Image-2.7-Preview 图片编辑模型',
-      'brief': 'Microsoft AI 推出图片编辑模型 MAI-Image-2.7-Preview ，接替 8 月 发布的 MAI-Image-2.6 ，目前已在 MAI Playground 上线，仅支持图片编辑，据称文生图功能即将推出。',
-      'url': 'https://microsoft.ai/news/mai-image-2-7-debut/',
+      'date': '2026-11-04',
+      'title': 'Claude Code 产品负责人 Cat Wu 宣布离职',
+      'brief': 'Claude Code 产品负责人 Cat Wu 在 X 平台发文宣布离职，周五是她在 Anthropic 的最后一天。',
+      'url': 'https://x.com/_catwu/status/2117731934340337676',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-04',
+      'title': 'OpenAI 聘请 Uber 总裁出任首席企业事务官',
+      'brief': 'OpenAI 宣布， Jill Hazelbaker 将加入公司，出任首席企业事务官，负责全球传播和企业定位。',
+      'url': 'https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-04',
+      'title': 'OpenAI 聘请美国前陆军部长担任国家安全顾问',
+      'brief': 'OpenAI 宣布聘请美国前陆军部长 Dan Driscoll 担任新设的国家安全现代化高级顾问，就利用先进 AI 加强国家和网络安全提供建议。',
+      'url': 'https://openai.com/index/dan-driscoll-joins-openai/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-03',
+      'title': '研究者称 GPT-6 Astra 直接改写模型权重',
+      'brief': 'MIT 研究者 Rikiya Takehi 等人发布博客，展示他们称为权重空间编程的方法：让 GPT-6 Astra 直接检查或改写神经网络中决定计算结果的参数，而不通过训练来调整。',
+      'url': 'https://rikiyat.github.io/blog/weight-space-programming/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'OpenAI 自研 Git 后端 Pando 投产，中位推送延迟降近 80%',
+      'brief': 'OpenAI 发文披露，其为单体仓库打造的新 Git 后端 Pando 已经投产，目前承载着 OpenAI 单体仓库的全部开发工作，工程师和 agent 无需改变现有 Git 工作流即可使用。',
+      'url': 'https://openai.com/index/scaling-git-at-openai',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-03',
+      'title': '商汤推出 SenseNova 6.8 Flash 正式版，目前限时免费',
+      'brief': '商汤 推出 日日新 SenseNova 6.8 Flash 正式版，支持跨任务、跨会话协作，可生成静态网页、动态内容及兼具审美表达与实用价值的设计成果。',
+      'url': 'https://www.sensenova.cn/flash-6-8',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-10-28',
-      'title': 'Microsoft 通过 MDASH 发布 MAI Cyber 1.1 Flash 安全模型',
-      'brief': 'Microsoft 通过 MDASH 发布网络安全模型 MAI Cyber 1.1 Flash 。该公司称，在内部 MDASH 漏洞扫描评估集上，新模型与 MAI Cyber 1 Flash 性能相当，单次扫描成本降低 18% 。',
-      'url': 'https://microsoft.ai/news/mai-cyber-1-1-flash',
+      'date': '2026-11-03',
+      'title': 'TRAE 宝开启限时免费：问答与任务不消耗积分',
+      'brief': 'TRAE 宣布，开发者个人助理 TRAE 宝 开启限时免费，即日起至 11 月 8 日 23:59 ，登录 TRAE 桌面端最新版进行问答、下达任务均不消耗积分。',
+      'url': 'https://mp.weixin.qq.com/s/7MGo9-U0oxLZ1fNW2AZOeQ?nwr_flag=1',
       'source': '橘鸦AI早报',
-      'type': '模型发布'
+      'type': '开发生态'
     },
     {
-      'date': '2026-10-28',
-      'title': '商汤开源 SenseNova 6.8 Code2Video 视频模型',
-      'brief': '商汤 开源 SenseNova 6.8 Code2Video ，这是一款由代码驱动的视频创作模型，基于 Qwen3.8-27B 微调，支持 512K 上下文。',
-      'url': 'https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video',
+      'date': '2026-11-03',
+      'title': 'ZCode 上线三款官方插件，网页项目一键部署',
+      'brief': 'ZCode 更新至 3.17.1 版本，正式上线 Computer Use 、 Browser Use 和 ZCode Sites 三款官方插件。',
+      'url': 'https://mp.weixin.qq.com/s/dkGAhKckTpN_Yku_mQ7sUQ',
       'source': '橘鸦AI早报',
-      'type': '模型发布'
+      'type': '开发生态'
     },
     {
-      'date': '2026-10-28',
-      'title': '百度开源 Unlimited OCR 2，支持长文档解析',
-      'brief': '百度 开源长文档解析模型 Unlimited OCR 2 ，模型权重已在 Hugging Face 公开。该模型采用 SR-SWA 机制，将文本与图像之间的注意力交互压缩为固定数量的工作参考，在有限上下文窗口内解析长文档。',
-      'url': 'https://github.com/baidu/Unlimited-OCR',
+      'date': '2026-11-03',
+      'title': 'Anthropic Message API 推出 message threads 公测',
+      'brief': 'Anthropic 在 Messages API 推出 message threads 公开测试版，开发者开启线程后，每轮只需发送新增消息和上一条消息 ID，由服务端缓存对话，无需重复发送全部历史。',
+      'url': 'https://x.com/ClaudeDevs/status/2117332452603527535',
       'source': '橘鸦AI早报',
-      'type': '模型发布'
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'OpenAI 发布 LifeVal 基准，衡量 AI 完成日常任务的能力',
+      'brief': 'OpenAI 发布 LifeVal 基准，用于衡量 AI 帮助人们完成日常任务的能力，任务覆盖照护、健康、教育、家庭行政、个人财务、购物和获取政府服务等领域。',
+      'url': 'https://openai.com/index/lifeval',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'OpenAI 部署激活分类器，实时拦截模型违规输出',
+      'brief': 'OpenAI 介绍了激活分类器的训练与部署方法，并表示从 GPT-5.6 开始，这类分类器已用于监测所有助手回复，作为现有文本分类器之外的一层安全防线。',
+      'url': 'https://alignment.openai.com/training-activation-classifiers/',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': '腾讯混元发布 Hyra 2.0：从解题到造工具',
+      'brief': '腾讯混元 发布自动化科研系统 Hyra 2.0 ，将重点从让 agent 直接解决科学问题，转向由 agent 研发和升级可复用的科学模型、研究工作流与软件工具。',
+      'url': 'https://mp.weixin.qq.com/s?__biz=MzkwODU2OTQyNQ%3D%3D&amp;mid=2247498763&amp;idx=1&amp;sn=279f8fb4e43a987fdc0aa2af0b0f7958',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'SemiAnalysis 发布 GDPx 基准，最佳模型仅得 12%',
+      'brief': 'SemiAnalysis 发布面向 AI agent 的新基准 GDPx ，覆盖芯片设计、网络安全、生物、金融、法律、量化交易等 11 个领域 共 206 项任务 ，由 14 家 专业数据伙伴协作搭建，各领域权重相同。',
+      'url': 'https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-03',
+      'title': 'Anthropic 三季度营收 169.6 亿美元，同比增长 1127%',
+      'brief': '在推进 IPO 之际， Anthropic 向 美国证券交易委员会 提交修正后的 S-1 上市文件，披露 2026 年第三季度 营收 169.6 亿美元 ，同比增长 1127% ，前九个月营收合计 332.4 亿美元 。',
+      'url': 'https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
     }
   ]
 };

@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-10-29)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-04)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
@@ -6,18 +6,18 @@
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);
 //          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);
-//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost;aireleasetracker=第三方聚合补缺)
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official/tencent-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost;aireleasetracker=第三方聚合补缺)
 // 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。
 window.TBENCH = {
   'source': 'Terminal-Bench',
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-10-29',
-  'refreshedAt': '2026-10-29 14:14',
+  'updated': '2026-11-04',
+  'refreshedAt': '2026-11-05 07:52',
   'stats': {
     'tasks': 66,
-    'entries': 42
+    'entries': 43
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -524,6 +524,18 @@ window.TBENCH = {
       'tokens': null,
       'cost': null,
       'src': 'deepseek-official'
+    },
+    {
+      'rank': null,
+      'model': 'Hy4',
+      'agent': 'Claude Code',
+      'effort': null,
+      'score': 44.4,
+      'ci': null,
+      'date': '2026-11-04',
+      'tokens': null,
+      'cost': null,
+      'src': 'tencent-official'
     }
   ]
 };
