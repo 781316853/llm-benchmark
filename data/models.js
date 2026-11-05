@@ -118,6 +118,8 @@ window.MODEL_MAP = {
     { id: "Gemini 3.8 Flash", vendor: "Google",    color: "#4E8BF0", aliases: ["Gemini 3.8 Flash", "gemini-3.8-flash", "gemini-3.8-flash-high"] },
     { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash", "Qwen 3.8 Flash", "Qwen3.8-Flash-Next", "qwen3.8-flash-next", "Qwen3.8 Flash Next", "qwen-3-8-flash-next"] },
     { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview"] },
+    // 2026-11-04 腾讯混元发布 Hy4 正式版(hy.tencent.com/research/hy4),与 Preview 是不同模型,单独建档。
+    { id: "Tencent Hy4", vendor: "Tencent", color: "#12B7F5", aliases: ["Tencent Hy4", "Hy4", "HY4", "hy4", "Hunyuan Hy4", "hunyuan-hy4", "Tencent-Hy4", "tencent/hy4", "Hy4 正式版", "混元 Hy4"] },
     { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
     { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev", "dots3-note Preview", "dots3-note-preview", "Dots3-Note-Preview", "dots3-note"] },
     { id: "DeepSeek V4 Pro 0821 灰测", vendor: "DeepSeek", color: "#6B86FE", aliases: ["DeepSeek V4 Pro 0821 凌晨灰测", "deepseek-v4-pro-0821凌晨灰测"] },

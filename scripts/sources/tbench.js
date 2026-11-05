@@ -188,7 +188,7 @@ class TBenchSource extends BaseSource {
       "// " + CONFIG.channelPolicy + "\n" +
       "// 字段说明:model=模型名;effort=推理强度(max 等);agent=Agent 框架(Codex/Claude Code 等);\n" +
       "//          score=解决率(%);ci=95% 置信区间;date=模型发布日期;tokens=总 tokens;cost=总成本($);\n" +
-      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost;aireleasetracker=第三方聚合补缺)\n" +
+      "//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official/tencent-official=厂商官方发布自测分种子,官方榜未收录,无 ci/cost;aireleasetracker=第三方聚合补缺)\n" +
       "// 用途:计入总览页综合分(「榜单基准」组,权重 11%)与命中数;「权威基准测试」页完整展示 agent×model 条目。\n",
       {
         source: "Terminal-Bench",

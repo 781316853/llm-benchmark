@@ -173,7 +173,7 @@ class DeepSweV11Source extends DeepSweBase {
 // ${CONFIG.channelPolicy}
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
-//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official=厂商官方发布转录补充条目;aireleasetracker=第三方聚合补缺)
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official/tencent-official=厂商官方发布转录补充条目;aireleasetracker=第三方聚合补缺)
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",

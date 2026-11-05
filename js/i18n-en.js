@@ -865,6 +865,8 @@
         "Source: Qwen official blog/model-card transcript (T2) · effort unlabelled and protocol not comparable with the official leaderboard; fills missing models only, for reference",
       "数据来源:DeepSeek 官方更新页自测转录(T2)·官方标注 harness(TB 用 Claude Code、DeepSWE 用 Mini-SWE-V2),与基准官方实测榜不保证可比,仅补缺失模型,仅供参考":
         "Source: DeepSeek official update-page self-test transcript (T2) · vendor-specified harness (Claude Code for TB, Mini-SWE-V2 for DeepSWE); not guaranteed comparable with the official leaderboard; fills missing models only, for reference",
+      "数据来源:腾讯混元官方发布页自测转录(T2)·DeepSWE 用 mini-SWE-agent,TB 4.0 / TB-Science 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考":
+        "Source: Tencent Hunyuan official release-page self-test transcript (T2) · mini-SWE-agent for DeepSWE, Claude Code for TB 4.0 / TB-Science; not guaranteed comparable with the official leaderboard; fills missing models only, for reference",
 
       // ===== 图表轴名与气泡量纲(canvas 内文字,由 app.js 的 T() 在绘制前查表) =====
       "平均成本($)": "Avg cost ($)",

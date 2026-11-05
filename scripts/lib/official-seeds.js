@@ -39,6 +39,14 @@ const MS_CAVEAT = "Kimi 官方博客自测(K3.1 Pro,2026-10-24);官方标注 rea
 // AutomationBench 均非同一榜单,口径不可比;Kimi Code Bench、Internal Finance、Hallu Bench、
 // xdev-bench-hard、OfficeQA Pro、Frontier Finance、SWE-Marathon、PostTrainBench 等站内无对应榜。
 
+// 腾讯混元官方发布页(Hy4 正式版,2026-11-04):
+//   https://hy.tencent.com/research/hy4  (SPA,正文与自测表需浏览器/接口取,表格为图片)
+// 官方只给出与站内同口径的 DeepSWE v1.1 / TB 4.0 / TB-Science 0.1(及仅 Almost 的 ProgramBench);
+// HLE 仅带工具口径、FrontierCode 2.0 / OSWorld 2.1 与站内版本不同、Agents' Last Exam 为 122 题子集、
+// AutomationBench 为公开 600 题(站内主源为私有 held-out),均不转录。
+const HY4_URL = "https://hy.tencent.com/research/hy4";
+const HY4_CAVEAT = "腾讯混元 Hy4 正式版官方发布自测(2026-11-04);DeepSWE 用 mini-SWE-agent,TB 4.0 / TB-Science 用 Claude Code 框架,ProgramBench 仅公布 Almost,协议与基准官方实测榜不保证可比";
+
 // 按榜单键组织。score 为统一百分制数值;各源按自身字段映射(deepswe 用 pass1,merger 源用 model/score)。
 const SEEDS = {
   // DeepSWE v1.1 官方实测榜无 Qwen3.8-Flash,补之。
@@ -47,24 +55,33 @@ const SEEDS = {
     // DeepSeek 官方 2026-10-17 更新页自测(Mini-SWE-V2 框架);站内该模型的 datalearner 条目属上一版(0910)。
     { name: "DeepSeek-V4.1-Flash-1017", score: 77.0, effort: "—", src: "deepseek-official", note: DS_CAVEAT, sourceUrl: DS_UPDATES_URL },
     // Kimi 发布博客:75.5(Claude Code 框架);官方 datalearner/官方榜均尚无 K3.1 Pro。
-    { name: "Kimi K3.1 Pro", score: 75.5, effort: "max", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL }
+    { name: "Kimi K3.1 Pro", score: 75.5, effort: "max", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
+    // 腾讯混元 Hy4 正式版官方自测 74.9(mini-SWE-agent,官方表主值)。
+    { name: "Hy4", score: 74.9, effort: "—", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL, publishOrigin: HY4_URL }
   ],
   // Terminal-Bench 4.0:官方榜(tbench.ai RSC 流)与 datalearner 补充均无 DeepSeek 条目,由种子补入。
   // 官方标注使用 Claude Code 框架,故带 agent 字段(见 tbench 源的种子钩子)。
   tbench_v40: [
     { name: "DeepSeek-V4.1-Flash-1017", score: 42.3, agent: "Claude Code", date: "2026-10-17", src: "deepseek-official", note: DS_CAVEAT, sourceUrl: DS_UPDATES_URL },
     // Kimi 官方博客 65.7%(Claude Code 框架);tbench.ai 官方榜与 datalearner 均尚无 K3.1 Pro。
-    { name: "Kimi K3.1 Pro", score: 65.7, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL }
+    { name: "Kimi K3.1 Pro", score: 65.7, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
+    // 腾讯混元 Hy4 正式版官方自测 44.4(Claude Code 框架)。
+    { name: "Hy4", score: 44.4, agent: "Claude Code", date: "2026-11-04", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL }
   ],
   // Terminal-Bench-Science 0.1:站内主源为 explainx 博客镜像(仅 9 条旧模型),补 Kimi 官方自测。
   tbscience: [
-    { name: "Kimi K3.1 Pro", score: 38.1, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL }
+    { name: "Kimi K3.1 Pro", score: 38.1, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
+    // 腾讯混元 Hy4 正式版官方自测 19.8(Claude Code 框架,同榜同版本 0.1)。
+    { name: "Hy4", score: 19.8, agent: "Claude Code", date: "2026-11-04", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL }
   ],
   // ProgramBench:博客只报 binary/Almost(≥95%)31.5,未给 Fully Resolved 主指标 → 只补一行 Almost,
   // score 留空(前端 Fully Resolved 显示「—」),不参与主指标排序。
   programbench: [
     { name: "Kimi K3.1 Pro", almost: 31.5, agent: "Claude Code", effort: "max", src: "moonshot-official",
-      note: "Kimi 官方博客 ProgramBench binary score(Almost,≥95%)31.5;未公布 Fully Resolved", sourceUrl: MS_BLOG_URL }
+      note: "Kimi 官方博客 ProgramBench binary score(Almost,≥95%)31.5;未公布 Fully Resolved", sourceUrl: MS_BLOG_URL },
+    // 腾讯混元 Hy4 正式版官方只报 Almost(binary ≥95%)30.0,未公布 Fully Resolved。
+    { name: "Hy4", almost: 30.0, src: "tencent-official",
+      note: "腾讯混元 Hy4 官方发布 ProgramBench Almost(≥95%)30.0;未公布 Fully Resolved", sourceUrl: HY4_URL }
   ],
   // NL2Repo-Bench:官方 datalearner/llm-stats 已收录 Flash,通常命中「已存在跳过」;此条为前向兜底。
   nl2repo: [
