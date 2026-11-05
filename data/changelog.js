@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-05',
-  'refreshedAt': '2026-11-05 15:10',
+  'refreshedAt': '2026-11-06 00:39',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,17 +19,17 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '0.167.0-alpha.3.2',
-          'title': 'rust-v0.167.0-alpha.3.2',
+          'title': '0.167.0-alpha.3.2',
           'date': '2026-11-05',
-          'dateRaw': '2026-11-05T06:26:50Z',
+          'dateRaw': '2026-11-05T13:21:12Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.3.2',
           'body': '版本0.167.0-alpha.3.2',
-          'h': 'a2f2ccf4'
+          'h': '408a4bb8'
         },
         {
           'version': '0.167.0-alpha.3.1',
@@ -1263,7 +1263,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '2.1.318',
@@ -3608,7 +3608,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '2.2.5',
@@ -9122,8 +9122,17 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
+        {
+          'version': '2.5.1',
+          'title': '@moonshot-ai/kimi-code@2.5.1',
+          'date': '2026-11-05',
+          'dateRaw': '2026-11-05T09:53:44Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.1',
+          'body': '### Patch Changes\n\n- [#4687](https://github.com/MoonshotAI/kimi-code/pull/4687) [`2af56d2`](https://github.com/MoonshotAI/kimi-code/commit/2af56d29aec857778705c33d80f23e0eddd63ec5) Thanks [@sailist](https://github.com/sailist)! - Fix repeated HTTP 400 errors in sessions caused by empty system messages for dynamic tool schemas.\n\n- [#4705](https://github.com/MoonshotAI/kimi-code/pull/4705) [`2391a77`](https://github.com/MoonshotAI/kimi-code/commit/2391a77f678d42f179f9f2345d7666d476426cd9) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - web: Fix session titles not being generated automatically after the first turn of a new session.\n\n- [#4705](https://github.com/MoonshotAI/kimi-code/pull/4705) [`2391a77`](https://github.com/MoonshotAI/kimi-code/commit/2391a77f678d42f179f9f2345d7666d476426cd9) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - web: Fix local images not displaying when their paths contain spaces.\n\n- [#4694](https://github.com/MoonshotAI/kimi-code/pull/4694) [`6dad2c8`](https://github.com/MoonshotAI/kimi-code/commit/6dad2c8de42c46f0dc1dc0895dbceba69ae43864) Thanks [@sailist](https://github.com/sailist)! - Fix missing image and video previews in live and reloaded tool results.\n\n- [#4705](https://github.com/MoonshotAI/kimi-code/pull/4705) [`2391a77`](https://github.com/MoonshotAI/kimi-code/commit/2391a77f678d42f179f9f2345d7666d476426cd9) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - web: Fix the session info panel automatically floating over and covering chat messages in narrow layouts.\n\n- [#4678](https://github.com/MoonshotAI/kimi-code/pull/4678) [`b4e4a84`](https://github.com/MoonshotAI/kimi-code/commit/b4e4a84fc7e425d9836187f9f7deb169f47c438c) Thanks [@liruifengv](https://github.com/liruifengv)! - Hide sessions belonging to deleted workspaces from session lists.\n\n- [#4705](https://github.com/MoonshotAI/kimi-code/pull/4705) [`2391a77`](https://github.com/MoonshotAI/kimi-code/commit/2391a77f678d42f179f9f2345d7666d476426cd9) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - web: Hide stale empty implicit workspaces from the workspace list.\n\n- [#4705](https://github.com/MoonshotAI/kimi-code/pull/4705) [`2391a77`](https://github.com/MoonshotAI/kimi-code/commit/2391a77f678d42f179f9f2345d7666d476426cd9) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - web: Fix tool call summaries repeatedly expanding and collapsing while a response is in progress.'
+        },
         {
           'version': '2.6.0-canary.20261105045446-836a82b',
           'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.202615045446-836a82b',
@@ -9133,6 +9142,15 @@ window.CHANGELOG = {
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261105045446-836a82b',
           'body': '更改内容\n- fix (tui):保持由# 4617中的@ Grapedge缩进的Grep和Glob扫视线\n- docs （更新日志） ：在# 4673中由@ kimi-agent-bot从apps/kimi-code/CHANGELOG.md同步2.5.0\n- chore: sync release/2026-11-04通过# 4674中的@ kimi-agent-bot返回主站\n- feat (tui): # 4618中@ Grapedge将工具调用和思考折叠为全屏成绩单组\n- perf (tui) ：在# 4665中由@ Grapedge跨渲染重复使用未更改的工具输出行\n- docs: rewrite remote environment guide for users by @ 7Sageer in # 4693\n- 家务：在# 4685中由@ kimi-agent-bot将web dist与code-app同步\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.5.0-canary.20261104024245-8fc5e22... @ moonshot-ai/kimi-code @ 2.6.0-canary.202611045446-836a82b',
           'h': '854ea160'
+        },
+        {
+          'version': '2.5.1',
+          'title': '@moonshot-ai/kimi-code@2.5.1',
+          'date': '2026-11-05',
+          'dateRaw': '2026-11-05T10:07:51Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.1',
+          'body': 'Patch Changes\n#4687 2af56d2 Thanks @sailist ! - Fix repeated HTTP 400 errors in sessions caused by empty system messages for dynamic tool schemas.\n#4705 2391a77 Thanks @kimi-agent-bot ! - web: Fix session titles not being generated automatically after the first turn of a new session.\n#4705 2391a77 Thanks @kimi-agent-bot ! - web: Fix local images not displaying when their paths contain spaces.\n#4694 6dad2c8 Thanks @sailist ! - Fix missing image and video previews in live and reloaded tool results.\n#4705 2391a77 Thanks @kimi-agent-bot ! - web: Fix the session info panel automatically floating over and covering chat messages in narrow layouts.\n#4678 b4e4a84 Thanks @liruifengv ! - Hide sessions belonging to deleted workspaces from session lists.\n#4705 2391a77 Thanks @kimi-agent-bot ! - web: Hide stale empty implicit workspaces from the workspace list.\n#4705 2391a77 Thanks @kimi-agent-bot ! - web: Fix tool call summaries repeatedly expanding and collapsing while a response is in progress.'
         },
         {
           'version': '2.5.0',
@@ -10143,7 +10161,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10728,8 +10746,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
+        {
+          'version': '0.5.5',
+          'title': '文档与站点，创作更进一步',
+          'date': '2026-11-05',
+          'dateRaw': '2026年11月5日',
+          'tags': [
+            '文档与站点，创作更进一步',
+            '功能',
+            'Word 插件',
+            '站点设计画布',
+            '远程任务使用本机浏览器',
+            '鸿蒙手机碰一碰'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '文档与站点，创作更进一步\n功能\n- Word 插件 ：新增 Word 插件，支持在 Qoder 中打开、编辑和保存 DOCX 文件，并结合对话处理文档内容。\n- 站点设计画布 ：支持在设计画布中调整站点页面内容与布局，结合标注提出修改要求；网站模板以附件加入任务，并可选择设计风格，保留自己输入的要求。\n- 远程任务使用本机浏览器 ：在受支持的远程会话中，可通过授权连接操作控制设备上的 Qoder 内置浏览器，结合远端执行处理网页任务。\n- 鸿蒙手机碰一碰 ：在支持的鸿蒙设备上，可将手机中的图片和 PDF 传入当前本地任务或新任务草稿，也可将本地文件碰传到手机。\n- 企业审批管控 ：支持由企业策略限制“完全访问”和“自动审批”的可用性；相关模式被禁用时，后续操作按可用的审批方式执行。\n优化\n- 智能体团队 ：支持从当前设备、云端和同账号的其他设备选择成员，并在需要时启用协作能力；已连接设备的工作区可使用对应团队。其他设备上的负责人可用于讨论，本地任务仍遵循负责人所在设备的执行限制。\n- 插件创建 ：内置 Plugin Creator，完善通过对话创建、定制和打包插件的流程，支持组合技能、命令、智能体、Hooks 和 MCP 等能力。\n- 本地扩展安装 ：支持拖拽或粘贴文件安装插件与技能；申请 Qoder SDK 访问权限的插件，在安装或权限变化时展示人工授权确认。\n- 计划与目标 ：审阅计划后，可在支持该能力的任务中选择以 Goal 模式执行，继续围绕明确目标推进。\n- SSH 与 WSL ：优化连接管理和工作区创建，支持直接填写 SSH 主机信息、选择认证方式及重新关联连接；手动断开后暂停自动重连，保留工作区与任务记录。\n- 设备连接 ：按账号关系设置首次配对的授权范围，完善连接地址校验与局域网诊断；支持显式确认后停止远端工作并更新设备，也可在本地任务中引用已缓存的离线设备会话内容。\n- 模型选择 ：新任务在确认额度耗尽且存在可用免费官方模型时，可默认选择该模型；补充大上下文用量提示、专属资源包余量提醒和更清晰的限流说明。\n- 诊断与反馈 ：完善 Qoder Helper 的 Hook 耗时诊断及远端设备的问题诊断。\n- 跨设备自动化 ：在已连接设备的会话中，可通过 / 菜单创建自动化任务，由该设备执行和管理；SSH 与 WSL 会话不开放该入口。\n修复\n- 修复长会话向前翻阅停滞、章节导航缺失，以及搜索定位与回到底部相互干扰的问题。\n- 修复派生任务未继承自定义分组、部分分支任务初始化失败后无法继续，以及后台子智能体历史入口丢失的问题。\n- 修复恢复归档工作区中的单条任务时，其他归档任务也被恢复的问题。\n- 修复远端任务的结构化附件、Sites 模板附件及排队附件撤回重发失败，并修复远端 Office 附件预览、保存和生成文件读取异常。\n- 修复跨设备会话模型目录、默认模型和企业模型分类显示不一致的问题。\n- 修复远端最近会话排序、目录订阅中断后的同步恢复及实时语音状态展示异常。\n- 修复远端团队首次交接、后续委派引用、插件智能体协作启用，以及切换账号后团队历史显示异常。\n2026年11月3日'
+        },
         {
           'version': '0.5.3',
           'title': '日常优化',
@@ -11078,7 +11112,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '1.38.0',
@@ -11721,7 +11755,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '3.4.12',
@@ -13755,7 +13789,7 @@ window.CHANGELOG = {
           'dateRaw': '',
           'tags': [],
           'url': 'https://docs.trae.cn/ide_changelog#2551211f',
-          'body': 'Trae CN v0.1.0 正式发布。以下是有关此版本的详细信息：\n- 提供 Builder 模式，支持开发需求的自动分析、规划和执行，并提供实时预览功能。\n- 支持通过多轮对话生成项目级代码。\n- 支持快速应用代码变更、代码审查、Diff 查看和版本回退等功能。\n- 支持丰富的上下文类型（如代码片段、文件、文件夹、工作区和终端日志），从而提高问答准确性。\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n设备数量限制\n下一篇\n从《world.execute(me);》开始，用 TRAE 做 MV\n2026 年 10 月 30 日（功能发布）\n2026 年 10 月 28 日（功能优化）\n2026 年 10 月 27 日（功能发布）\n2026 年 10 月 26 日（功能发布）\n2026 年 10 月 23 日（Hotfix）\n2026 年 10 月 22 日（功能发布）\n2026 年 10 月 21 日（Hotfix）\n2026 年 10 月 20 日（功能发布）\n2026 年 10 月 15 日（功能发布）\n2026 年 10 月 08 日（功能发布）\n2026 年 09 月 17 日（Hotfix）\n2026 年 09 月 15 日（Hotfix）\n2026 年 09 月 11 日（Hotfix）\n2026 年 09 月 08 日（功能发布）\n2026 年 09 月 04 日（Hotfix）\n2026 年 09 月 03 日（功能发布）\n2026 年 09 月 01 日（功能发布）\n2026 年 08 月 20 日（功能发布）\n2026 年 08 月 19 日（Hotfix）\n2026 年 08 月 12 日（功能发布）\n2026 年 08 月 10 日（Hotfix）\n2026 年 08 月 07 日（功能发布）\n2026 年 07 月 30 日（功能发布）\n2026 年 07 月 23 日（功能发布）\n2026 年 07 月 17 日（Hotfix）\n2026 年 07 月 16 日（Hotfix）\n2026 年 07 月 13 日（Hotfix）\n2026 年 07 月 08 日（功能发布）\n2026 年 07 月 06 日（Hotfix）\n2026 年 07 月 02 日（Hotfix）\n2026 年 06 月 29 日（功能发布）\n2026 年 06 月 23 日（Hotfix）\n2026 年 06 月 18 日（Hotfix）\n2026 年 06 月 17 日（功能发布）\n2026 年 06 月 10 日（功能发布）\n2026 年 06 月 09 日（功能发布）\n2026 年 06 月 04 日（功能发布）\n2026 年 05 月 29 日（Hotfix）\n2026 年 05 月 21 日（功能优化）\n2026 年 05 月 15 日（功能发布）\n2026 年 05 月 11 日（Hotfix）\n2026 年 05 月 08 日（功能发布）\n2026 年 04 月 30 日（Hotfix）\n2026 年 04 月 28 日（功能发布）\n2026 年 04 月 20 日（Hotfix）\n2026 年 04 月 15 日（Hotfix）\n2026 年 04 月 14 日（功能发布）\n2026 年 04 月 14 日（Hotfix）\n2026 年 04 月 09 日（功能发布）\n2026 年 04 月 02 日（功能发布）\n2026 年 03 月 31 日（Hotfix）\n2026 年 03 月 28 日（Hotfix）\n2026 年 03 月 26 日（功能发布）\n2026 年 03 月 24 日（功能发布）\n2026 年 03 月 21 日（功能发布）\n2026 年 03 月 14 日（Hotfix）\n2026 年 03 月 11 日（功能发布）\n2026 年 03 月 09 日（Hotfix）\n2026 年 03 月 05 日（功能发布）\n2026 年 02 月 28 日（Hotfix）\n2026 年 02 月 26 日（功能发布）\n2026 年 02 月 14 日（Hotfix）\n2026 年 02 月 12 日（功能发布）\n2026 年 02 月 09 日（Hotfix）\n2026 年 02 月 06 日（功能发布）\n2026 年 02 月 04 日（Hotfix）\n2026 年 02 月 02 日（Hotfix）\n2026 年 01 月 30 日（功能优化）\n2026 年 01 月 23 日（功能发布）\n2026 年 01 月 19 日（Hotfix）\n2026 年 01 月 13 日（功能发布）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 06 日（功能发布）\n2025 年 12 月 31 日（功能优化）\n2025 年 12 月 29 日（Hotfix）\n2025 年 12 月 26 日（功能优化）\n2025 年 12 月 26 日（功能发布）\n2025 年 12 月 25 日（Hotfix）\n2025 年 12 月 24 日（功能发布）\n2025 年 12 月 22 日（Hotfix）\n2025 年 12 月 20 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（功能发布）\n2025 年 12 月 12 日（Hotfix）\n2025 年 12 月 11 日（Hotfix）\n2025 年 12 月 10 日（Hotfix）\n2025 年 12 月 10 日（功能优化）\n2025 年 12 月 04 日（Hotfix）\n2025 年 12 月 03 日（Hotfix）\n2025 年 12 月 03 日（功能发布）\n2025 年 11 月 26 日（Hotfix）\n2025 年 11 月 25 日（Hotfix）\n2025 年 11 月 25 日（功能发布）\n2025 年 11 月 19 日（Hotfix）\n2025 年 11 月 14 日（Hotfix）\n2025 年 11 月 12 日（Hotfix）\n2025 年 11 月 11 日（功能发布）\n2025 年 11 月 07 日（Hotfix）\n2025 年 11 月 05 日（功能发布）\n2025 年 11 月 04 日（Hotfix）\n2025 年 10 月 30 日（功能优化）\n2025 年 10 月 29 日（功能发布）\n2025 年 10 月 25 日（Hotfix）\n2025 年 10 月 24 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（功能优化）\n2025 年 10 月 18 日（Hotfix）\n2025 年 10 月 17 日（Hotfix）\n2025 年 10 月 16 日（Hotfix）\n2025 年 10 月 14 日（Hotfix）\n2025 年 10 月 14 日（功能发布）\n2025 年 10 月 10 日（功能优化）\n2025 年 10 月 09 日（Hotfix）\n2025 年 09 月 30 日（功能优化）\n2025 年 09 月 29 日（功能发布）\n2025 年 09 月 28 日（功能优化）\n2025 年 09 月 26 日（Hotfix）\n2025 年 09 月 25 日（功能优化）\n2025 年 09 月 23 日（功能发布）\n2025 年 09 月 19 日（功能优化）\n2025 年 09 月 17 日（功能发布）\n2025 年 09 月 15 日（Hotfix）\n2025 年 09 月 12 日（功能优化）\n2025 年 09 月 10 日（Hotfix）\n2025 年 09 月 09 日（Hotfix）\n2025 年 09 月 09 日（功能发布）\n2025 年 09 月 02 日（功能发布）\n2025 年 09 月 01 日（Hotfix）\n2025 年 08 月 28 日（Hotfix）\n2025 年 08 月 27 日（Hotfix）\n2025 年 08 月 27 日（功能发布）\n2025 年 08 月 23 日\n2025 年 08 月 22 日\n2025 年 08 月 21 日\n2025 年 08 月 15 日\n2025 年 08 月 13 日\n2025 年 08 月 11 日\n2025 年 08 月 08 日\n2025 年 08 月 05 日\n2025 年 08 月 04 日\n2025 年 08 月 01 日\n2025 年 07 月 30 日\n2025 年 07 月 25 日\n2025 年 07 月 21 日\n2025 年 07 月 19 日\n2025 年 07 月 18 日\n2025 年 07 月 15 日\n2025 年 07 月 09 日\n2025 年 07 月 08 日\n2025 年 07 月 07 日\n2025 年 07 月 04 日\n2025 年 07 月 02 日\n2025 年 07 月 01 日\n2025 年 06 月 30 日\n2025 年 06 月 27 日\n2025 年 06 月 24 日\n2025 年 06 月 17 日\n2025 年 06 月 13 日\n2025 年 06 月 11 日\n2025 年 06 月 05 日\n2025 年 05 月 27 日\n2025 年 05 月 21 日\n2025 年 05 月 16 日\n2025 年 05 月 13 日\n2025 年 05 月 09 日\n2025 年 04 月 28 日\n2025 年 04 月 27 日\n2025 年 04 月 25 日\n2025 年 04 月 23 日\n2025 年 04 月 22 日\n2025 年 04 月 16 日\n2025 年 04 月 15 日\n2025 年 04 月 11 日\n2025 年 04 月 03 日\n2025 年 04 月 02 日\n2025 年 04 月 01 日\n2025 年 03 月 28 日\n2025 年 03 月 27 日\n2025 年 03 月 26 日\n2025 年 03 月 19 日\n2025 年 03 月 17 日\n2025 年 03 月 13 日\n2025 年 03 月 12 日\n2025 年 03 月 11 日\n2025 年 03 月 05 日\n2025 年 03 月 04 日\n2025 年 03 月 03 日\nwindow._ROUTER_DATA = {\'loaderData\':{\'layout\':{\'prefectLang\':\'zh\',\'url\':\'http:\\u002F\\u002Fdocs.trae.cn\\u002Fide_changelog\',\'env\':\'prod\'},\'$\':{\'code\':0,\'data\':{\'basePath\':\'\\u002F\',\'doc\':{\'tab_id\':\'67a5b43a9ae5aa03545c7a07\',\'path\':\'ide_changelog\',\'_id\':\'6ae893c583d4ed01ea0ececd\',\'locale\':\'zh\',\'title\':\'更新日志\',\'content\':\'本文记录 TRAE 的变更情况。\\n\\n## 2026 年 10 月 30 日（功能发布） {#hFRqiuelX}\\n\\nTRAE v3.4.12 版本正式发布。以下是变更细节'
+          'body': 'Trae CN v0.1.0 正式发布。以下是有关此版本的详细信息：\n- 提供 Builder 模式，支持开发需求的自动分析、规划和执行，并提供实时预览功能。\n- 支持通过多轮对话生成项目级代码。\n- 支持快速应用代码变更、代码审查、Diff 查看和版本回退等功能。\n- 支持丰富的上下文类型（如代码片段、文件、文件夹、工作区和终端日志），从而提高问答准确性。\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n设备数量限制\n下一篇\n从《world.execute(me);》开始，用 TRAE 做 MV\n2026 年 10 月 30 日（功能发布）\n2026 年 10 月 28 日（功能优化）\n2026 年 10 月 27 日（功能发布）\n2026 年 10 月 26 日（功能发布）\n2026 年 10 月 23 日（Hotfix）\n2026 年 10 月 22 日（功能发布）\n2026 年 10 月 21 日（Hotfix）\n2026 年 10 月 20 日（功能发布）\n2026 年 10 月 15 日（功能发布）\n2026 年 10 月 08 日（功能发布）\n2026 年 09 月 17 日（Hotfix）\n2026 年 09 月 15 日（Hotfix）\n2026 年 09 月 11 日（Hotfix）\n2026 年 09 月 08 日（功能发布）\n2026 年 09 月 04 日（Hotfix）\n2026 年 09 月 03 日（功能发布）\n2026 年 09 月 01 日（功能发布）\n2026 年 08 月 20 日（功能发布）\n2026 年 08 月 19 日（Hotfix）\n2026 年 08 月 12 日（功能发布）\n2026 年 08 月 10 日（Hotfix）\n2026 年 08 月 07 日（功能发布）\n2026 年 07 月 30 日（功能发布）\n2026 年 07 月 23 日（功能发布）\n2026 年 07 月 17 日（Hotfix）\n2026 年 07 月 16 日（Hotfix）\n2026 年 07 月 13 日（Hotfix）\n2026 年 07 月 08 日（功能发布）\n2026 年 07 月 06 日（Hotfix）\n2026 年 07 月 02 日（Hotfix）\n2026 年 06 月 29 日（功能发布）\n2026 年 06 月 23 日（Hotfix）\n2026 年 06 月 18 日（Hotfix）\n2026 年 06 月 17 日（功能发布）\n2026 年 06 月 10 日（功能发布）\n2026 年 06 月 09 日（功能发布）\n2026 年 06 月 04 日（功能发布）\n2026 年 05 月 29 日（Hotfix）\n2026 年 05 月 21 日（功能优化）\n2026 年 05 月 15 日（功能发布）\n2026 年 05 月 11 日（Hotfix）\n2026 年 05 月 08 日（功能发布）\n2026 年 04 月 30 日（Hotfix）\n2026 年 04 月 28 日（功能发布）\n2026 年 04 月 20 日（Hotfix）\n2026 年 04 月 15 日（Hotfix）\n2026 年 04 月 14 日（功能发布）\n2026 年 04 月 14 日（Hotfix）\n2026 年 04 月 09 日（功能发布）\n2026 年 04 月 02 日（功能发布）\n2026 年 03 月 31 日（Hotfix）\n2026 年 03 月 28 日（Hotfix）\n2026 年 03 月 26 日（功能发布）\n2026 年 03 月 24 日（功能发布）\n2026 年 03 月 21 日（功能发布）\n2026 年 03 月 14 日（Hotfix）\n2026 年 03 月 11 日（功能发布）\n2026 年 03 月 09 日（Hotfix）\n2026 年 03 月 05 日（功能发布）\n2026 年 02 月 28 日（Hotfix）\n2026 年 02 月 26 日（功能发布）\n2026 年 02 月 14 日（Hotfix）\n2026 年 02 月 12 日（功能发布）\n2026 年 02 月 09 日（Hotfix）\n2026 年 02 月 06 日（功能发布）\n2026 年 02 月 04 日（Hotfix）\n2026 年 02 月 02 日（Hotfix）\n2026 年 01 月 30 日（功能优化）\n2026 年 01 月 23 日（功能发布）\n2026 年 01 月 19 日（Hotfix）\n2026 年 01 月 13 日（功能发布）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 06 日（功能发布）\n2025 年 12 月 31 日（功能优化）\n2025 年 12 月 29 日（Hotfix）\n2025 年 12 月 26 日（功能优化）\n2025 年 12 月 26 日（功能发布）\n2025 年 12 月 25 日（Hotfix）\n2025 年 12 月 24 日（功能发布）\n2025 年 12 月 22 日（Hotfix）\n2025 年 12 月 20 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（功能发布）\n2025 年 12 月 12 日（Hotfix）\n2025 年 12 月 11 日（Hotfix）\n2025 年 12 月 10 日（Hotfix）\n2025 年 12 月 10 日（功能优化）\n2025 年 12 月 04 日（Hotfix）\n2025 年 12 月 03 日（Hotfix）\n2025 年 12 月 03 日（功能发布）\n2025 年 11 月 26 日（Hotfix）\n2025 年 11 月 25 日（Hotfix）\n2025 年 11 月 25 日（功能发布）\n2025 年 11 月 19 日（Hotfix）\n2025 年 11 月 14 日（Hotfix）\n2025 年 11 月 12 日（Hotfix）\n2025 年 11 月 11 日（功能发布）\n2025 年 11 月 07 日（Hotfix）\n2025 年 11 月 05 日（功能发布）\n2025 年 11 月 04 日（Hotfix）\n2025 年 10 月 30 日（功能优化）\n2025 年 10 月 29 日（功能发布）\n2025 年 10 月 25 日（Hotfix）\n2025 年 10 月 24 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（功能优化）\n2025 年 10 月 18 日（Hotfix）\n2025 年 10 月 17 日（Hotfix）\n2025 年 10 月 16 日（Hotfix）\n2025 年 10 月 14 日（Hotfix）\n2025 年 10 月 14 日（功能发布）\n2025 年 10 月 10 日（功能优化）\n2025 年 10 月 09 日（Hotfix）\n2025 年 09 月 30 日（功能优化）\n2025 年 09 月 29 日（功能发布）\n2025 年 09 月 28 日（功能优化）\n2025 年 09 月 26 日（Hotfix）\n2025 年 09 月 25 日（功能优化）\n2025 年 09 月 23 日（功能发布）\n2025 年 09 月 19 日（功能优化）\n2025 年 09 月 17 日（功能发布）\n2025 年 09 月 15 日（Hotfix）\n2025 年 09 月 12 日（功能优化）\n2025 年 09 月 10 日（Hotfix）\n2025 年 09 月 09 日（Hotfix）\n2025 年 09 月 09 日（功能发布）\n2025 年 09 月 02 日（功能发布）\n2025 年 09 月 01 日（Hotfix）\n2025 年 08 月 28 日（Hotfix）\n2025 年 08 月 27 日（Hotfix）\n2025 年 08 月 27 日（功能发布）\n2025 年 08 月 23 日\n2025 年 08 月 22 日\n2025 年 08 月 21 日\n2025 年 08 月 15 日\n2025 年 08 月 13 日\n2025 年 08 月 11 日\n2025 年 08 月 08 日\n2025 年 08 月 05 日\n2025 年 08 月 04 日\n2025 年 08 月 01 日\n2025 年 07 月 30 日\n2025 年 07 月 25 日\n2025 年 07 月 21 日\n2025 年 07 月 19 日\n2025 年 07 月 18 日\n2025 年 07 月 15 日\n2025 年 07 月 09 日\n2025 年 07 月 08 日\n2025 年 07 月 07 日\n2025 年 07 月 04 日\n2025 年 07 月 02 日\n2025 年 07 月 01 日\n2025 年 06 月 30 日\n2025 年 06 月 27 日\n2025 年 06 月 24 日\n2025 年 06 月 17 日\n2025 年 06 月 13 日\n2025 年 06 月 11 日\n2025 年 06 月 05 日\n2025 年 05 月 27 日\n2025 年 05 月 21 日\n2025 年 05 月 16 日\n2025 年 05 月 13 日\n2025 年 05 月 09 日\n2025 年 04 月 28 日\n2025 年 04 月 27 日\n2025 年 04 月 25 日\n2025 年 04 月 23 日\n2025 年 04 月 22 日\n2025 年 04 月 16 日\n2025 年 04 月 15 日\n2025 年 04 月 11 日\n2025 年 04 月 03 日\n2025 年 04 月 02 日\n2025 年 04 月 01 日\n2025 年 03 月 28 日\n2025 年 03 月 27 日\n2025 年 03 月 26 日\n2025 年 03 月 19 日\n2025 年 03 月 17 日\n2025 年 03 月 13 日\n2025 年 03 月 12 日\n2025 年 03 月 11 日\n2025 年 03 月 05 日\n2025 年 03 月 04 日\n2025 年 03 月 03 日\nwindow._ROUTER_DATA = {\'loaderData\':{\'layout\':{\'prefectLang\':\'zh\',\'url\':\'http:\\u002F\\u002Fdocs.trae.cn\\u002Fide_changelog\',\'env\':\'prod\'},\'$\':{\'code\':0,\'data\':{\'basePath\':\'\\u002F\',\'doc\':{\'tab_id\':\'67a5b43a9ae5aa03545c7a07\',\'path\':\'ide_changelog\',\'_id\':\'6ae893c583d4ed01ea0ececd\',\'locale\':\'zh\',\'title\':\'更新日志\',\'content\':\'本文记录 TRAE 的变更情况。\\n\\n## 2026 年 10 月 30 日（功能发布） {#hFRqiuelX}\\n\\nTRAE v3.4.12 版本正式发布。以下是变更细节：\\'
         }
       ]
     },
@@ -13767,7 +13801,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -13954,7 +13988,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '3.17.2',
@@ -14133,7 +14167,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '4.12.3',
@@ -15015,7 +15049,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-05 15:10',
+      'lastOkAt': '2026-11-06 00:39',
       'entries': [
         {
           'version': '5.11.0',

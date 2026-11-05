@@ -9,7 +9,7 @@ window.VALSVIBECODE = {
   'officialUrl': 'https://www.vals.ai/benchmarks/vibe-code',
   'version': '1.1',
   'updated': '2026-11-04',
-  'refreshedAt': '2026-11-05 15:10',
+  'refreshedAt': '2026-11-06 00:39',
   'harnesses': [
     'OpenHands',
     'Claude Code',
