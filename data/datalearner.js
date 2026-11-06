@@ -36,7 +36,7 @@ window.DATALEARNER = {
       'score': 77,
       'mode': '思考档位未公开（工具）',
       'date': '2026-10-17',
-      'params': '未知',
+      'params': '5520亿',
       'license': '免费商用'
     },
     {

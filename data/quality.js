@@ -10,7 +10,7 @@ window.QUALITY = {
       'id': 'aa_coding_agents',
       'name': 'AA Coding Agent Index v2.0',
       'status': 'ok',
-      'modelCount': 34,
+      'modelCount': 33,
       'updated': '2026-11-06',
       'ageDays': 0,
       'completeness': 1,
@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 82,
+      'modelCount': 83,
       'updated': '2026-11-06',
       'ageDays': 0,
       'completeness': 1,
@@ -186,7 +186,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 128,
+      'modelCount': 129,
       'updated': '2026-11-06',
       'ageDays': 0,
       'completeness': 0,
@@ -768,9 +768,9 @@ window.QUALITY = {
   'completeness': {
     'aa_coding_agents': {
       'rate': 1,
-      'total': 34,
-      'complete': 34,
-      'modelCount': 34,
+      'total': 33,
+      'complete': 33,
+      'modelCount': 33,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -824,9 +824,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 82,
-      'complete': 82,
-      'modelCount': 82,
+      'total': 83,
+      'complete': 83,
+      'modelCount': 83,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -898,11 +898,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 128,
+      'total': 129,
       'complete': 0,
-      'modelCount': 128,
+      'modelCount': 129,
       'missingFields': {
-        'score': 128
+        'score': 129
       },
       'flag': 'warn'
     },

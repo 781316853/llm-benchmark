@@ -304,6 +304,7 @@ window.SEEN = {
     'datalearner|SWE-2': '2026-11-05',
     'tbench|Hy4': '2026-11-05',
     'deepswe|Inkling 2 Small': '2026-11-06',
-    'datalearner|Inkling 2 Small': '2026-11-06'
+    'datalearner|Inkling 2 Small': '2026-11-06',
+    'llm|Hy4 (high)': '2026-11-06'
   }
 };

@@ -9,15 +9,15 @@ window.ARENAOFBIAS = {
   'url': 'https://api.arenaofbias.icu/api/leaderboard?by=config',
   'boardUrl': 'https://gallery.arenaofbias.icu/#/leaderboard',
   'updated': '2026-11-06',
-  'refreshedAt': '2026-11-06 15:10',
+  'refreshedAt': '2026-11-07 00:07',
   'metric': 'Elo',
   'desc': '前端作品社区盲评竞技场:同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度并折算到 Elo 刻度(1000 为平均水平)。同一模型按推理强度分档多次测试,取最高分那一档计入综合分(权重 12%,属「第三方实测」组)。',
   'stats': {
-    'models': 82,
-    'configs': 293,
-    'votes': 39062,
-    'voters': 1234,
-    'tasks': 136
+    'models': 83,
+    'configs': 296,
+    'votes': 39423,
+    'voters': 1242,
+    'tasks': 137
   },
   'models': [
     {
@@ -41,7 +41,7 @@ window.ARENAOFBIAS = {
       'effort': 'Max',
       'score': 1319,
       'interval': 26,
-      'games': 1117,
+      'games': 1122,
       'winRate': 0.744,
       'tasks': 40,
       'provisional': false,
@@ -49,45 +49,45 @@ window.ARENAOFBIAS = {
       'rank': 2
     },
     {
+      'name': 'hy4',
+      'modelName': 'HY4',
+      'vendor': 'Tencent',
+      'effort': 'Max',
+      'score': 1298,
+      'interval': 227,
+      'games': 7,
+      'winRate': 1,
+      'tasks': 1,
+      'provisional': true,
+      'configs': 3,
+      'rank': 3
+    },
+    {
       'name': 'gemini-4-argon',
       'modelName': 'Gemini 4 Argon',
       'vendor': 'Google',
       'effort': 'Max',
-      'score': 1230,
-      'interval': 135,
-      'games': 28,
-      'winRate': 0.768,
+      'score': 1223,
+      'interval': 126,
+      'games': 32,
+      'winRate': 0.75,
       'tasks': 3,
-      'provisional': true,
+      'provisional': false,
       'configs': 4,
-      'rank': 3
+      'rank': 4
     },
     {
       'name': 'qwen-latest-series-invite-2609',
       'modelName': 'Qwen Latest Series Invite 2609',
       'vendor': 'Alibaba',
       'effort': 'Max',
-      'score': 1222,
+      'score': 1220,
       'interval': 50,
-      'games': 204,
-      'winRate': 0.618,
+      'games': 207,
+      'winRate': 0.614,
       'tasks': 2,
       'provisional': false,
       'configs': 1,
-      'rank': 4
-    },
-    {
-      'name': 'claude-sonnet-5.5',
-      'modelName': 'Claude Sonnet 5.5',
-      'vendor': 'Anthropic',
-      'effort': 'Max',
-      'score': 1207,
-      'interval': 45,
-      'games': 265,
-      'winRate': 0.617,
-      'tasks': 12,
-      'provisional': false,
-      'configs': 5,
       'rank': 5
     },
     {
@@ -95,8 +95,8 @@ window.ARENAOFBIAS = {
       'modelName': 'Qwen3.7 Plus',
       'vendor': 'Alibaba',
       'effort': 'Default',
-      'score': 1198,
-      'interval': 127,
+      'score': 1205,
+      'interval': 126,
       'games': 31,
       'winRate': 0.71,
       'tasks': 1,
@@ -105,45 +105,45 @@ window.ARENAOFBIAS = {
       'rank': 6
     },
     {
+      'name': 'claude-sonnet-5.5',
+      'modelName': 'Claude Sonnet 5.5',
+      'vendor': 'Anthropic',
+      'effort': 'Max',
+      'score': 1203,
+      'interval': 45,
+      'games': 273,
+      'winRate': 0.614,
+      'tasks': 12,
+      'provisional': false,
+      'configs': 5,
+      'rank': 7
+    },
+    {
       'name': 'gpt-6-astra',
       'modelName': 'GPT-6 Astra',
       'vendor': 'OpenAI',
       'effort': 'Max',
       'score': 1196,
       'interval': 15,
-      'games': 4463,
+      'games': 4483,
       'winRate': 0.617,
       'tasks': 81,
       'provisional': false,
       'configs': 7,
-      'rank': 7
-    },
-    {
-      'name': 'hy4',
-      'modelName': 'HY4',
-      'vendor': 'Tencent',
-      'effort': 'Default',
-      'score': 1191,
-      'interval': 144,
-      'games': 21,
-      'winRate': 0.667,
-      'tasks': 6,
-      'provisional': true,
-      'configs': 2,
       'rank': 8
     },
     {
-      'name': 'astra-pro',
-      'modelName': 'GPT-6 Astra Pro',
-      'vendor': 'OpenAI',
-      'effort': 'Default',
+      'name': 'deepseek-v4.1-flash-1017',
+      'modelName': 'DeepSeek V4.1 Flash 1017',
+      'vendor': 'DeepSeek',
+      'effort': 'Low',
       'score': 1177,
-      'interval': 26,
-      'games': 875,
-      'winRate': 0.581,
-      'tasks': 14,
+      'interval': 54,
+      'games': 176,
+      'winRate': 0.631,
+      'tasks': 4,
       'provisional': false,
-      'configs': 1,
+      'configs': 4,
       'rank': 9
     },
     {
@@ -151,14 +151,28 @@ window.ARENAOFBIAS = {
       'modelName': 'Qwen3.8 Flash next',
       'vendor': 'Alibaba',
       'effort': 'High',
-      'score': 1176,
+      'score': 1177,
       'interval': 56,
-      'games': 159,
-      'winRate': 0.579,
+      'games': 160,
+      'winRate': 0.581,
       'tasks': 3,
       'provisional': false,
       'configs': 7,
       'rank': 10
+    },
+    {
+      'name': 'astra-pro',
+      'modelName': 'GPT-6 Astra Pro',
+      'vendor': 'OpenAI',
+      'effort': 'Default',
+      'score': 1176,
+      'interval': 26,
+      'games': 879,
+      'winRate': 0.579,
+      'tasks': 14,
+      'provisional': false,
+      'configs': 1,
+      'rank': 11
     },
     {
       'name': 'claude-sonnet-4.6',
@@ -172,20 +186,6 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 3,
-      'rank': 11
-    },
-    {
-      'name': 'deepseek-v4.1-flash-1017',
-      'modelName': 'DeepSeek V4.1 Flash 1017',
-      'vendor': 'DeepSeek',
-      'effort': 'Low',
-      'score': 1173,
-      'interval': 54,
-      'games': 173,
-      'winRate': 0.624,
-      'tasks': 4,
-      'provisional': false,
-      'configs': 4,
       'rank': 12
     },
     {
@@ -209,8 +209,8 @@ window.ARENAOFBIAS = {
       'effort': 'XHigh',
       'score': 1169,
       'interval': 26,
-      'games': 819,
-      'winRate': 0.569,
+      'games': 839,
+      'winRate': 0.57,
       'tasks': 31,
       'provisional': false,
       'configs': 7,
@@ -235,14 +235,28 @@ window.ARENAOFBIAS = {
       'modelName': 'Claude Fable 5.1',
       'vendor': 'Anthropic',
       'effort': 'XHigh',
-      'score': 1163,
+      'score': 1162,
       'interval': 53,
-      'games': 180,
-      'winRate': 0.589,
+      'games': 182,
+      'winRate': 0.588,
       'tasks': 7,
       'provisional': false,
       'configs': 4,
       'rank': 16
+    },
+    {
+      'name': 'kimi-k3.1-pro',
+      'modelName': 'Kimi K3.1 Pro',
+      'vendor': 'Moonshot AI',
+      'effort': 'Max',
+      'score': 1144,
+      'interval': 26,
+      'games': 846,
+      'winRate': 0.56,
+      'tasks': 51,
+      'provisional': false,
+      'configs': 3,
+      'rank': 17
     },
     {
       'name': 'qwen3.8-omni-flash',
@@ -256,34 +270,20 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': false,
       'configs': 1,
-      'rank': 17
+      'rank': 18
     },
     {
       'name': 'step-5-preview',
       'modelName': 'Step 5 Preview',
       'vendor': 'StepFun',
       'effort': 'Ultra',
-      'score': 1141,
+      'score': 1140,
       'interval': 204,
       'games': 8,
       'winRate': 0.75,
       'tasks': 1,
       'provisional': true,
       'configs': 5,
-      'rank': 18
-    },
-    {
-      'name': 'kimi-k3.1-pro',
-      'modelName': 'Kimi K3.1 Pro',
-      'vendor': 'Moonshot AI',
-      'effort': 'Max',
-      'score': 1140,
-      'interval': 26,
-      'games': 809,
-      'winRate': 0.557,
-      'tasks': 49,
-      'provisional': false,
-      'configs': 3,
       'rank': 19
     },
     {
@@ -291,7 +291,7 @@ window.ARENAOFBIAS = {
       'modelName': 'Claude Opus 5',
       'vendor': 'Anthropic',
       'effort': 'Max',
-      'score': 1137,
+      'score': 1138,
       'interval': 96,
       'games': 52,
       'winRate': 0.615,
@@ -319,7 +319,7 @@ window.ARENAOFBIAS = {
       'modelName': 'MiniMax M3.1 Flash',
       'vendor': 'MiniMax',
       'effort': '',
-      'score': 1135,
+      'score': 1134,
       'interval': 217,
       'games': 7,
       'winRate': 0.714,
@@ -346,13 +346,13 @@ window.ARENAOFBIAS = {
       'name': 'claude-opus-4.6',
       'modelName': 'Claude Opus 4.6',
       'vendor': 'Anthropic',
-      'effort': 'Default',
-      'score': 1115,
-      'interval': 124,
-      'games': 31,
-      'winRate': 0.677,
-      'tasks': 2,
-      'provisional': false,
+      'effort': 'High',
+      'score': 1116,
+      'interval': 163,
+      'games': 15,
+      'winRate': 0.633,
+      'tasks': 1,
+      'provisional': true,
       'configs': 4,
       'rank': 24
     },
@@ -375,10 +375,10 @@ window.ARENAOFBIAS = {
       'modelName': 'GPT-6 Sol',
       'vendor': 'OpenAI',
       'effort': 'Max',
-      'score': 1105,
+      'score': 1104,
       'interval': 21,
-      'games': 1345,
-      'winRate': 0.53,
+      'games': 1353,
+      'winRate': 0.528,
       'tasks': 25,
       'provisional': false,
       'configs': 6,
@@ -390,7 +390,7 @@ window.ARENAOFBIAS = {
       'vendor': 'OpenAI',
       'effort': 'Default',
       'score': 1101,
-      'interval': 288,
+      'interval': 287,
       'games': 2,
       'winRate': 1,
       'tasks': 1,
@@ -399,74 +399,60 @@ window.ARENAOFBIAS = {
       'rank': 27
     },
     {
-      'name': 'muse-wonder-full',
-      'modelName': 'Muse Wonder Full',
-      'vendor': 'Meta',
-      'effort': 'Max',
-      'score': 1101,
-      'interval': 261,
-      'games': 3,
-      'winRate': 0.667,
-      'tasks': 1,
-      'provisional': true,
-      'configs': 2,
-      'rank': 28
-    },
-    {
       'name': 'grok-4.7',
       'modelName': 'Grok 4.7',
       'vendor': 'xAI',
       'effort': 'Default',
-      'score': 1097,
+      'score': 1099,
       'interval': 52,
-      'games': 178,
-      'winRate': 0.553,
+      'games': 179,
+      'winRate': 0.556,
       'tasks': 3,
       'provisional': false,
       'configs': 4,
-      'rank': 29
+      'rank': 28
     },
     {
       'name': 'deepseek-v4.1-flash',
       'modelName': 'DeepSeek V4.1 Flash',
       'vendor': 'DeepSeek',
       'effort': 'XHigh',
-      'score': 1095,
+      'score': 1094,
       'interval': 44,
-      'games': 261,
-      'winRate': 0.552,
+      'games': 265,
+      'winRate': 0.549,
       'tasks': 6,
       'provisional': false,
       'configs': 6,
-      'rank': 30
+      'rank': 29
     },
     {
       'name': 'gpt-5.6-luna',
       'modelName': 'GPT-5.6 Luna',
       'vendor': 'OpenAI',
       'effort': 'Default',
-      'score': 1094,
+      'score': 1093,
       'interval': 175,
       'games': 12,
       'winRate': 0.667,
       'tasks': 1,
       'provisional': true,
       'configs': 6,
-      'rank': 31
+      'rank': 30
     },
     {
       'name': 'mimo-v2.6-flash',
       'modelName': 'MiMo V2.6 Flash',
       'vendor': 'Xiaomi',
       'effort': 'Max',
-      'score': 1093,
+      'score': 1092,
       'interval': 82,
       'games': 71,
       'winRate': 0.57,
       'tasks': 2,
       'provisional': false,
       'configs': 7,
-      'rank': 32
+      'rank': 31
     },
     {
       'name': 'gpt-4.1',
@@ -480,7 +466,7 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 33
+      'rank': 32
     },
     {
       'name': 'deepseek-r1',
@@ -488,55 +474,41 @@ window.ARENAOFBIAS = {
       'vendor': 'DeepSeek',
       'effort': 'Default',
       'score': 1071,
-      'interval': 81,
-      'games': 72,
-      'winRate': 0.528,
+      'interval': 80,
+      'games': 74,
+      'winRate': 0.527,
       'tasks': 9,
       'provisional': false,
       'configs': 1,
-      'rank': 34
+      'rank': 33
     },
     {
       'name': 'seed-2.1-turbo',
       'modelName': 'Seed 2.1 Turbo',
       'vendor': 'ByteDance Seed',
       'effort': 'Default',
-      'score': 1064,
+      'score': 1063,
       'interval': 179,
       'games': 11,
       'winRate': 0.591,
       'tasks': 1,
       'provisional': true,
       'configs': 2,
-      'rank': 35
+      'rank': 34
     },
     {
       'name': 'agnes-3.0-flash',
       'modelName': 'Agnes 3.0 Flash',
       'vendor': 'Sapiens AI',
       'effort': 'Default',
-      'score': 1063,
+      'score': 1062,
       'interval': 139,
       'games': 21,
       'winRate': 0.571,
       'tasks': 1,
       'provisional': true,
       'configs': 2,
-      'rank': 36
-    },
-    {
-      'name': 'gpt-5.6-sol',
-      'modelName': 'GPT-5.6 Sol',
-      'vendor': 'OpenAI',
-      'effort': 'High',
-      'score': 1061,
-      'interval': 59,
-      'games': 146,
-      'winRate': 0.558,
-      'tasks': 13,
-      'provisional': false,
-      'configs': 6,
-      'rank': 37
+      'rank': 35
     },
     {
       'name': 'hy4-preview',
@@ -545,12 +517,26 @@ window.ARENAOFBIAS = {
       'effort': 'Max',
       'score': 1061,
       'interval': 47,
-      'games': 223,
-      'winRate': 0.543,
+      'games': 224,
+      'winRate': 0.545,
       'tasks': 7,
       'provisional': false,
       'configs': 3,
-      'rank': 38
+      'rank': 36
+    },
+    {
+      'name': 'gpt-5.6-sol',
+      'modelName': 'GPT-5.6 Sol',
+      'vendor': 'OpenAI',
+      'effort': 'High',
+      'score': 1060,
+      'interval': 59,
+      'games': 146,
+      'winRate': 0.558,
+      'tasks': 13,
+      'provisional': false,
+      'configs': 6,
+      'rank': 37
     },
     {
       'name': 'glm-5.3-flash-x',
@@ -564,7 +550,7 @@ window.ARENAOFBIAS = {
       'tasks': 3,
       'provisional': false,
       'configs': 2,
-      'rank': 39
+      'rank': 38
     },
     {
       'name': 'gemini-2.5-pro',
@@ -578,7 +564,7 @@ window.ARENAOFBIAS = {
       'tasks': 6,
       'provisional': false,
       'configs': 1,
-      'rank': 40
+      'rank': 39
     },
     {
       'name': 'ling-3.1-flash',
@@ -592,6 +578,20 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 2,
+      'rank': 40
+    },
+    {
+      'name': 'muse-wonder-full',
+      'modelName': 'Muse Wonder Full',
+      'vendor': 'Meta',
+      'effort': 'Max',
+      'score': 1049,
+      'interval': 245,
+      'games': 4,
+      'winRate': 0.5,
+      'tasks': 1,
+      'provisional': true,
+      'configs': 2,
       'rank': 41
     },
     {
@@ -599,14 +599,28 @@ window.ARENAOFBIAS = {
       'modelName': 'Seed 2.1 Pro',
       'vendor': 'ByteDance Seed',
       'effort': 'Default',
-      'score': 1047,
+      'score': 1048,
       'interval': 40,
-      'games': 321,
-      'winRate': 0.512,
+      'games': 322,
+      'winRate': 0.514,
       'tasks': 5,
       'provisional': false,
       'configs': 4,
       'rank': 42
+    },
+    {
+      'name': 'gpt-6.1-terra',
+      'modelName': 'GPT-6.1 Terra',
+      'vendor': 'OpenAI',
+      'effort': 'Max',
+      'score': 1047,
+      'interval': 52,
+      'games': 185,
+      'winRate': 0.484,
+      'tasks': 17,
+      'provisional': false,
+      'configs': 3,
+      'rank': 43
     },
     {
       'name': 'glm-5.3',
@@ -620,20 +634,6 @@ window.ARENAOFBIAS = {
       'tasks': 2,
       'provisional': true,
       'configs': 4,
-      'rank': 43
-    },
-    {
-      'name': 'gpt-6.1-terra',
-      'modelName': 'GPT-6.1 Terra',
-      'vendor': 'OpenAI',
-      'effort': 'Max',
-      'score': 1043,
-      'interval': 53,
-      'games': 178,
-      'winRate': 0.48,
-      'tasks': 17,
-      'provisional': false,
-      'configs': 3,
       'rank': 44
     },
     {
@@ -651,31 +651,31 @@ window.ARENAOFBIAS = {
       'rank': 45
     },
     {
-      'name': 'kimi-k2.8-preview',
-      'modelName': 'Kimi K2.8 Preview',
-      'vendor': 'Moonshot AI',
-      'effort': 'Max',
-      'score': 1040,
-      'interval': 37,
-      'games': 376,
-      'winRate': 0.507,
-      'tasks': 8,
-      'provisional': false,
-      'configs': 3,
-      'rank': 46
-    },
-    {
       'name': 'minimax-m3.1',
       'modelName': 'MiniMax M3.1 Flash Preview',
       'vendor': 'MiniMax',
       'effort': 'Default',
       'score': 1040,
       'interval': 18,
-      'games': 2094,
-      'winRate': 0.455,
+      'games': 2098,
+      'winRate': 0.456,
       'tasks': 40,
       'provisional': false,
       'configs': 2,
+      'rank': 46
+    },
+    {
+      'name': 'kimi-k2.8-preview',
+      'modelName': 'Kimi K2.8 Preview',
+      'vendor': 'Moonshot AI',
+      'effort': 'Max',
+      'score': 1039,
+      'interval': 37,
+      'games': 384,
+      'winRate': 0.508,
+      'tasks': 8,
+      'provisional': false,
+      'configs': 3,
       'rank': 47
     },
     {
@@ -711,7 +711,7 @@ window.ARENAOFBIAS = {
       'modelName': 'GPT-5.6 Terra',
       'vendor': 'OpenAI',
       'effort': 'XHigh',
-      'score': 1034,
+      'score': 1033,
       'interval': 89,
       'games': 59,
       'winRate': 0.475,
@@ -735,6 +735,20 @@ window.ARENAOFBIAS = {
       'rank': 51
     },
     {
+      'name': 'claude-haiku-5.5',
+      'modelName': 'Claude Haiku 5.5',
+      'vendor': 'Anthropic',
+      'effort': 'Max',
+      'score': 1020,
+      'interval': 24,
+      'games': 1029,
+      'winRate': 0.478,
+      'tasks': 28,
+      'provisional': false,
+      'configs': 7,
+      'rank': 52
+    },
+    {
       'name': 'sensenova-6.8-flash',
       'modelName': 'SenseNova 6.8 Flash',
       'vendor': 'SenseTime',
@@ -746,20 +760,6 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 52
-    },
-    {
-      'name': 'claude-haiku-5.5',
-      'modelName': 'Claude Haiku 5.5',
-      'vendor': 'Anthropic',
-      'effort': 'Max',
-      'score': 1018,
-      'interval': 24,
-      'games': 1022,
-      'winRate': 0.474,
-      'tasks': 28,
-      'provisional': false,
-      'configs': 7,
       'rank': 53
     },
     {
@@ -767,10 +767,10 @@ window.ARENAOFBIAS = {
       'modelName': 'SWE-2',
       'vendor': 'Cognition',
       'effort': 'Max',
-      'score': 1016,
-      'interval': 36,
-      'games': 417,
-      'winRate': 0.465,
+      'score': 1012,
+      'interval': 35,
+      'games': 424,
+      'winRate': 0.46,
       'tasks': 11,
       'provisional': false,
       'configs': 4,
@@ -781,10 +781,10 @@ window.ARENAOFBIAS = {
       'modelName': 'DeepSeek V4 Pro',
       'vendor': 'DeepSeek',
       'effort': 'Max',
-      'score': 993,
+      'score': 991,
       'interval': 43,
-      'games': 279,
-      'winRate': 0.47,
+      'games': 280,
+      'winRate': 0.468,
       'tasks': 9,
       'provisional': false,
       'configs': 4,
@@ -809,7 +809,7 @@ window.ARENAOFBIAS = {
       'modelName': 'Xing4.0-29B-A4B',
       'vendor': 'China Telecom',
       'effort': 'Default',
-      'score': 990,
+      'score': 989,
       'interval': 157,
       'games': 16,
       'winRate': 0.5,
@@ -823,7 +823,7 @@ window.ARENAOFBIAS = {
       'modelName': 'Grok 4.6',
       'vendor': 'xAI',
       'effort': 'XHigh',
-      'score': 984,
+      'score': 983,
       'interval': 77,
       'games': 79,
       'winRate': 0.437,
@@ -837,9 +837,9 @@ window.ARENAOFBIAS = {
       'modelName': 'Kimi K3',
       'vendor': 'Moonshot AI',
       'effort': 'Max',
-      'score': 983,
+      'score': 982,
       'interval': 21,
-      'games': 1356,
+      'games': 1360,
       'winRate': 0.444,
       'tasks': 31,
       'provisional': false,
@@ -851,13 +851,13 @@ window.ARENAOFBIAS = {
       'modelName': 'HY3',
       'vendor': 'Tencent',
       'effort': 'Default',
-      'score': 980,
-      'interval': 225,
+      'score': 979,
+      'interval': 224,
       'games': 6,
       'winRate': 0.417,
       'tasks': 1,
       'provisional': true,
-      'configs': 3,
+      'configs': 4,
       'rank': 60
     },
     {
@@ -907,7 +907,7 @@ window.ARENAOFBIAS = {
       'modelName': 'SenseNova 6.8 Flash Lite',
       'vendor': 'SenseTime',
       'effort': 'Max',
-      'score': 955,
+      'score': 954,
       'interval': 70,
       'games': 99,
       'winRate': 0.444,
@@ -917,46 +917,60 @@ window.ARENAOFBIAS = {
       'rank': 64
     },
     {
+      'name': 'longcat-2.5',
+      'modelName': 'LongCat 2.5',
+      'vendor': 'Meituan',
+      'effort': 'Max',
+      'score': 953,
+      'interval': 100,
+      'games': 45,
+      'winRate': 0.444,
+      'tasks': 5,
+      'provisional': false,
+      'configs': 1,
+      'rank': 65
+    },
+    {
       'name': 'muse-spark-1.3',
       'modelName': 'Muse Spark 1.3',
       'vendor': 'Meta',
       'effort': 'Default',
-      'score': 952,
+      'score': 951,
       'interval': 71,
-      'games': 92,
-      'winRate': 0.44,
+      'games': 94,
+      'winRate': 0.441,
       'tasks': 4,
       'provisional': false,
       'configs': 1,
-      'rank': 65
+      'rank': 66
     },
     {
       'name': 'doubao-seed-evolving',
       'modelName': 'Doubao Seed Evolving',
       'vendor': 'ByteDance Seed',
       'effort': 'Max',
-      'score': 942,
+      'score': 941,
       'interval': 116,
       'games': 33,
       'winRate': 0.439,
       'tasks': 2,
       'provisional': false,
       'configs': 3,
-      'rank': 66
+      'rank': 67
     },
     {
-      'name': 'longcat-2.5',
-      'modelName': 'LongCat 2.5',
-      'vendor': 'Meituan',
+      'name': 'ling-3.2-flash',
+      'modelName': 'Ling 3.2 Flash',
+      'vendor': 'inclusionAI',
       'effort': 'Max',
-      'score': 939,
-      'interval': 109,
-      'games': 38,
-      'winRate': 0.421,
-      'tasks': 5,
-      'provisional': false,
+      'score': 920,
+      'interval': 246,
+      'games': 4,
+      'winRate': 0.25,
+      'tasks': 1,
+      'provisional': true,
       'configs': 1,
-      'rank': 67
+      'rank': 68
     },
     {
       'name': 'qwen3.8-27b',
@@ -970,21 +984,21 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': false,
       'configs': 3,
-      'rank': 68
+      'rank': 69
     },
     {
       'name': 'grok-4.5',
       'modelName': 'Grok 4.5',
       'vendor': 'xAI',
       'effort': 'High',
-      'score': 875,
+      'score': 874,
       'interval': 125,
       'games': 28,
       'winRate': 0.393,
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 69
+      'rank': 70
     },
     {
       'name': 'openpangu-2.0-pro',
@@ -998,7 +1012,7 @@ window.ARENAOFBIAS = {
       'tasks': 2,
       'provisional': true,
       'configs': 2,
-      'rank': 70
+      'rank': 71
     },
     {
       'name': 'beam',
@@ -1012,7 +1026,7 @@ window.ARENAOFBIAS = {
       'tasks': 3,
       'provisional': false,
       'configs': 1,
-      'rank': 71
+      'rank': 72
     },
     {
       'name': 'seed-2.1-lite',
@@ -1026,21 +1040,21 @@ window.ARENAOFBIAS = {
       'tasks': 6,
       'provisional': false,
       'configs': 1,
-      'rank': 72
+      'rank': 73
     },
     {
       'name': 'mistral-large-4',
       'modelName': 'Mistral Large 4',
       'vendor': 'Mistral',
       'effort': 'Default',
-      'score': 841,
+      'score': 840,
       'interval': 98,
       'games': 47,
       'winRate': 0.415,
       'tasks': 1,
       'provisional': false,
       'configs': 1,
-      'rank': 73
+      'rank': 74
     },
     {
       'name': 'gpt-4',
@@ -1054,7 +1068,7 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 74
+      'rank': 75
     },
     {
       'name': 'minimax-m3',
@@ -1068,21 +1082,21 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 3,
-      'rank': 75
+      'rank': 76
     },
     {
       'name': 'deepseek-v3.2',
       'modelName': 'DeepSeek V3.2',
       'vendor': 'DeepSeek',
       'effort': 'Default',
-      'score': 830,
+      'score': 828,
       'interval': 155,
       'games': 19,
       'winRate': 0.289,
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 76
+      'rank': 77
     },
     {
       'name': 'composer-2.5',
@@ -1096,7 +1110,7 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 2,
-      'rank': 77
+      'rank': 78
     },
     {
       'name': 'kimi-k2.7-code',
@@ -1110,7 +1124,7 @@ window.ARENAOFBIAS = {
       'tasks': 4,
       'provisional': false,
       'configs': 1,
-      'rank': 78
+      'rank': 79
     },
     {
       'name': 'gpt-oss-120b',
@@ -1124,35 +1138,35 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 79
+      'rank': 80
     },
     {
       'name': 'seed-2.1-pro-preview',
       'modelName': 'Seed 2.1 Pro Preview',
       'vendor': 'ByteDance Seed',
       'effort': 'High',
-      'score': 705,
+      'score': 704,
       'interval': 167,
       'games': 19,
       'winRate': 0.132,
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 80
+      'rank': 81
     },
     {
       'name': 'openpangu-2.0-flash',
       'modelName': 'OpenPangu 2.0 Flash',
       'vendor': 'Huawei',
       'effort': 'Default',
-      'score': 663,
-      'interval': 114,
-      'games': 57,
-      'winRate': 0.14,
+      'score': 665,
+      'interval': 110,
+      'games': 62,
+      'winRate': 0.145,
       'tasks': 15,
       'provisional': false,
       'configs': 1,
-      'rank': 81
+      'rank': 82
     },
     {
       'name': 'solar-pro-4',
@@ -1166,7 +1180,7 @@ window.ARENAOFBIAS = {
       'tasks': 1,
       'provisional': true,
       'configs': 1,
-      'rank': 82
+      'rank': 83
     }
   ]
 };

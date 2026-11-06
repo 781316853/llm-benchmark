@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-06',
-  'refreshedAt': '2026-11-06 15:10',
+  'refreshedAt': '2026-11-07 00:07',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,7 +19,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '0.167.0',
@@ -1283,7 +1283,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '2.1.318',
@@ -3628,7 +3628,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': 'daemon-v0.5.0',
@@ -9144,17 +9144,53 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
+          'version': '2.5.2',
+          'title': '@moonshot-ai/kimi-code@2.5.2',
+          'date': '2026-11-06',
+          'dateRaw': '2026-11-06T07:48:19Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.2',
+          'body': '### Patch Changes\n\n- [#4728](https://github.com/MoonshotAI/kimi-code/pull/4728) [`7b906ea`](https://github.com/MoonshotAI/kimi-code/commit/7b906ea345f40ed44aae3e759f5204d420e58482) Thanks [@sailist](https://github.com/sailist)! - Fix duplicate tool declaration errors in select_tools when MCP tool definitions change.\n\n- [#4731](https://github.com/MoonshotAI/kimi-code/pull/4731) [`ef10107`](https://github.com/MoonshotAI/kimi-code/commit/ef10107dd65ec6112f5b6cc836632fb068c02526) Thanks [@liruifengv](https://github.com/liruifengv)! - web: Fix steered messages being incorrectly queued while a session is running.\n\n- [#4731](https://github.com/MoonshotAI/kimi-code/pull/4731) [`ef10107`](https://github.com/MoonshotAI/kimi-code/commit/ef10107dd65ec6112f5b6cc836632fb068c02526) Thanks [@liruifengv](https://github.com/liruifengv)! - web: Fix project creation when accessing the Web UI over HTTP.'
+        },
+        {
+          'version': '2.6.0-canary.20261106122412-eb2035f',
+          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.20261122412-eb2035f',
+          'date': '2026-11-06',
+          'dateRaw': '2026-11-06T12:54:00Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261106122412-eb2035f',
+          'body': '更改内容\n- 家务：在# 4741中由@ kimi-agent-bot将web dist与code-app同步\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261106115820-bc6fa89... @ moonshot-ai/kimi-code @ 2.6.0-canary.20261122412-eb2035f',
+          'h': 'f7685a58'
+        },
+        {
+          'version': '2.6.0-canary.20261106115820-bc6fa89',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.20261106115820-bc6fa89',
+          'date': '2026-11-06',
+          'dateRaw': '2026-11-06T12:12:41Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261106115820-bc6fa89',
+          'body': 'What\'s Changed\n- feat(kap-server): stream agent conversations as turns and items by @wbxl2000 in #4663\n- fix(kap-server): end streamed items once from the recorded step by @wbxl2000 in #4730\n- docs(changelog): sync 2.5.2 from apps/kimi-code/CHANGELOG.md by @kimi-agent-bot in #4734\n- chore: sync release/2026-11-06 back to main by @kimi-agent-bot in #4733\n- fix: import google-genai providers from custom registries by @7Sageer in #4735\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261106040415-d37c9d2...@moonshot-ai/kimi-code@2.6.0-canary.20261106115820-bc6fa89'
+        },
+        {
           'version': '2.6.0-canary.20261106040415-d37c9d2',
-          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.202616040415-d37c9d2',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.20261106040415-d37c9d2',
           'date': '2026-11-06',
           'dateRaw': '2026-11-06T04:21:11Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261106040415-d37c9d2',
-          'body': '更改内容\n- feat:添加# 4699中@ 7Sageer的会话标题生成遥测\n- 重构： # 4703中@ sailist要求请求者错误的显式可重试性\n- 重构（ agent-core-v2 ） ：在# 4706中由@ sailist删除无线人类目录\n- fix: # 4698中@ 7Sageer通过绑定环境路由会话状态和git数据\n- chore (agent-core-v2) ：删除# 4708中@ RealKai42的同一文件编辑限制和重读要求\n- docs （更新日志） ：在# 4707中由@ kimi-agent-bot从apps/kimi-code/CHANGELOG.md同步2.5.1\n- chore: sync release/2026-11-05通过# 4709中的@ kimi-agent-bot返回主站\n- fix (agent-core-v2):在# 4719中由@ pvzheroes125更新后协调工具定义\n- fix (agent-core-v2):由# 4720中的@ pvzheroes125在不动态加载的情况下刷新工具\n- chore: # 4722中@ kimi-agent-bot将web dist与code-app同步\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261105045446-836a82b... @ moonshot-ai/kimi-code @ 2.6.0-canary.202616040415-d37c9d2',
-          'h': '6f448090'
+          'body': 'What\'s Changed\n- feat: add session title generation telemetry by @7Sageer in #4699\n- refactor: require explicit retryability for requester errors by @sailist in #4703\n- refactor(agent-core-v2): remove unwired human directories by @sailist in #4706\n- fix: route session status and git data through bound environments by @7Sageer in #4698\n- chore(agent-core-v2): remove same-file Edit restriction and re-read requirement by @RealKai42 in #4708\n- docs(changelog): sync 2.5.1 from apps/kimi-code/CHANGELOG.md by @kimi-agent-bot in #4707\n- chore: sync release/2026-11-05 back to main by @kimi-agent-bot in #4709\n- fix(agent-core-v2): reconcile tool definitions after updates by @pvzheroes125 in #4719\n- fix(agent-core-v2): refresh tools without dynamic loading by @pvzheroes125 in #4720\n- chore: sync web dist from code-app by @kimi-agent-bot in #4722\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261105045446-836a82b...@moonshot-ai/kimi-code@2.6.0-canary.20261106040415-d37c9d2'
+        },
+        {
+          'version': '2.5.2',
+          'title': '@moonshot-ai/kimi-code@2.5.2',
+          'date': '2026-11-06',
+          'dateRaw': '2026-11-06T07:58:59Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.2',
+          'body': 'Patch Changes\n#4728 7b906ea Thanks @sailist ! - Fix duplicate tool declaration errors in select_tools when MCP tool definitions change.\n#4731 ef10107 Thanks @liruifengv ! - web: Fix steered messages being incorrectly queued while a session is running.\n#4731 ef10107 Thanks @liruifengv ! - web: Fix project creation when accessing the Web UI over HTTP.'
         },
         {
           'version': '2.5.1',
@@ -10192,7 +10228,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10777,8 +10813,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
+        {
+          'version': '0.5.6',
+          'title': '日常优化',
+          'date': '2026-11-06',
+          'dateRaw': '2026年11月6日',
+          'tags': [
+            '日常优化',
+            '优化',
+            '官网登录衔接',
+            '额度确认',
+            '计划执行',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '日常优化\n优化\n- 官网登录衔接 ：从已登录的 Qoder 打开受支持的官网页面时，可沿用当前账号登录，减少查看用量、升级计划等操作中的重复登录。支持 Global 与 CN，不适用于自建接入。\n- Remote Control ：支持在桌面端与配套移动端之间双向同步任务的全局置顶和取消置顶，便于在不同设备上继续关注同一任务；工作区内置顶和本机手动排序保持各自的设置。\n- 额度确认 ：在支持的额度提示中点击“继续”，可明确确认本次继续请求使用 Credits；支持从手机远控传递该确认，授权不会自动延续到后续消息。\n- 计划执行 ：完善“按计划执行”和“以目标模式执行此计划”的选项说明与展示，便于根据任务需要选择执行方式。\n修复\n- 修复共享资源包未设个人限额或无可用额度时的用量显示，补充对应状态说明。\n- 修复本地插件安装记录内容损坏时，基础对话也无法继续的问题；不覆盖原有插件记录和启停设置。\n- 修复部分无法继续的对话提示仍提供无效重试操作的问题，支持从相应提示直接打开新任务。\n2026年11月5日'
+        },
         {
           'version': '0.5.5',
           'title': '文档与站点，创作更进一步',
@@ -11143,7 +11195,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '1.38.0',
@@ -11786,7 +11838,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '3.4.15',
@@ -13871,7 +13923,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14058,7 +14110,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '3.17.2',
@@ -14237,7 +14289,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '4.12.3',
@@ -15119,7 +15171,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-06 15:10',
+      'lastOkAt': '2026-11-07 00:07',
       'entries': [
         {
           'version': '5.11.0',
