@@ -164,7 +164,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 238,
+      'modelCount': 239,
       'updated': '2026-11-06',
       'ageDays': 0,
       'completeness': 1,
@@ -186,7 +186,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 129,
+      'modelCount': 128,
       'updated': '2026-11-06',
       'ageDays': 0,
       'completeness': 0,
@@ -882,9 +882,9 @@ window.QUALITY = {
     },
     'hle': {
       'rate': 1,
-      'total': 238,
-      'complete': 238,
-      'modelCount': 238,
+      'total': 239,
+      'complete': 239,
+      'modelCount': 239,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -898,11 +898,11 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 129,
+      'total': 128,
       'complete': 0,
-      'modelCount': 129,
+      'modelCount': 128,
       'missingFields': {
-        'score': 129
+        'score': 128
       },
       'flag': 'warn'
     },

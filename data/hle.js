@@ -13,10 +13,10 @@ window.HLE = {
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-06',
-  'refreshedAt': '2026-11-07 00:07',
+  'refreshedAt': '2026-11-07 05:42',
   'stats': {
     'tasks': 2500,
-    'entries': 238
+    'entries': 239
   },
   'desc': 'Humanity\'s Last Exam(HLE):CAIS 与 Scale AI 推出的前沿知识广度基准,2500 道由各领域专家撰写、无网络可检索解的问题(数学/科学/人文学科等),目的在衡量模型逼近人类专家知识天花板;得分越高越好。本表统一为无工具(闭卷)口径:厂商明确标注无工具的条目优先,AA 无工具复测仅补官方渠道未收录的模型;仅带工具分或未声明协议的模型不收录,表内分数可直接比较。',
   'models': [
@@ -174,8 +174,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Gemini 3.7 Flash',
-      'org': 'Google',
+      'model': 'GPT-6 Sol',
+      'org': 'OpenAI',
       'score': 47.9,
       'protocol': '无工具',
       'src': 'aa',
@@ -183,8 +183,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-6 Sol',
-      'org': 'OpenAI',
+      'model': 'Gemini 3.7 Flash',
+      'org': 'Google',
       'score': 47.9,
       'protocol': '无工具',
       'src': 'aa',
@@ -273,12 +273,21 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
+      'model': 'Inkling 2 Small',
+      'org': 'Thinking Machines Lab',
+      'score': 44.1,
+      'protocol': '无工具',
+      'src': 'aa',
+      'rank': 28,
+      'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
       'model': 'Muse Spark Open',
       'org': 'Meta',
       'score': 43.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 28,
+      'rank': 29,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -287,7 +296,7 @@ window.HLE = {
       'score': 43.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 29,
+      'rank': 30,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -296,7 +305,7 @@ window.HLE = {
       'score': 43.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 30,
+      'rank': 31,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -305,7 +314,7 @@ window.HLE = {
       'score': 43.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 31,
+      'rank': 32,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -314,7 +323,7 @@ window.HLE = {
       'score': 42.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 32,
+      'rank': 33,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -323,7 +332,7 @@ window.HLE = {
       'score': 42.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 33,
+      'rank': 34,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -332,7 +341,7 @@ window.HLE = {
       'score': 42.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 34,
+      'rank': 35,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -341,7 +350,7 @@ window.HLE = {
       'score': 42.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 35,
+      'rank': 36,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -351,7 +360,7 @@ window.HLE = {
       'sourceUrl': 'https://api-docs.deepseek.com/zh-cn/updates',
       'src': 'deepseek-official',
       'protocol': '无工具',
-      'rank': 36,
+      'rank': 37,
       'protocolNote': 'DeepSeek 官方更新页 HLE (w/o tools) 42.6(纯文本 44.0),2026-10-17'
     },
     {
@@ -360,7 +369,7 @@ window.HLE = {
       'score': 42.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 37,
+      'rank': 38,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -369,7 +378,7 @@ window.HLE = {
       'score': 42.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 38,
+      'rank': 39,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -378,7 +387,7 @@ window.HLE = {
       'score': 42.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 39,
+      'rank': 40,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -387,7 +396,7 @@ window.HLE = {
       'score': 42.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 40,
+      'rank': 41,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -396,7 +405,7 @@ window.HLE = {
       'score': 41.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 41,
+      'rank': 42,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -405,7 +414,7 @@ window.HLE = {
       'score': 41.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 42,
+      'rank': 43,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -414,7 +423,7 @@ window.HLE = {
       'score': 41,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 43,
+      'rank': 44,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -423,7 +432,7 @@ window.HLE = {
       'score': 40.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 44,
+      'rank': 45,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -432,7 +441,7 @@ window.HLE = {
       'score': 40.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 45,
+      'rank': 46,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -441,7 +450,7 @@ window.HLE = {
       'score': 40.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 46,
+      'rank': 47,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -450,7 +459,7 @@ window.HLE = {
       'score': 39.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 47,
+      'rank': 48,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -459,7 +468,7 @@ window.HLE = {
       'score': 39.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 48,
+      'rank': 49,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -468,7 +477,7 @@ window.HLE = {
       'score': 39.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 49,
+      'rank': 50,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -477,7 +486,7 @@ window.HLE = {
       'score': 39.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 50,
+      'rank': 51,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -486,7 +495,7 @@ window.HLE = {
       'score': 39,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 51,
+      'rank': 52,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -495,7 +504,7 @@ window.HLE = {
       'score': 38.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 52,
+      'rank': 53,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -504,7 +513,7 @@ window.HLE = {
       'score': 38.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 53,
+      'rank': 54,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -513,7 +522,7 @@ window.HLE = {
       'score': 38,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 54,
+      'rank': 55,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -522,7 +531,7 @@ window.HLE = {
       'score': 37.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 55,
+      'rank': 56,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -531,7 +540,7 @@ window.HLE = {
       'score': 37.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 56,
+      'rank': 57,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -540,7 +549,7 @@ window.HLE = {
       'score': 37.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 57,
+      'rank': 58,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -549,7 +558,7 @@ window.HLE = {
       'score': 35.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 58,
+      'rank': 59,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -558,7 +567,7 @@ window.HLE = {
       'score': 35.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 59,
+      'rank': 60,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -567,7 +576,7 @@ window.HLE = {
       'score': 35.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 60,
+      'rank': 61,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -576,7 +585,7 @@ window.HLE = {
       'score': 35.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 61,
+      'rank': 62,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -585,7 +594,7 @@ window.HLE = {
       'score': 35.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 62,
+      'rank': 63,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -594,7 +603,7 @@ window.HLE = {
       'score': 35,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 63,
+      'rank': 64,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -603,7 +612,7 @@ window.HLE = {
       'score': 34.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 64,
+      'rank': 65,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -612,7 +621,7 @@ window.HLE = {
       'score': 34.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 65,
+      'rank': 66,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -621,7 +630,7 @@ window.HLE = {
       'score': 34.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 66,
+      'rank': 67,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -630,7 +639,7 @@ window.HLE = {
       'score': 33.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 67,
+      'rank': 68,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -639,7 +648,7 @@ window.HLE = {
       'score': 33.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 68,
+      'rank': 69,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -648,7 +657,7 @@ window.HLE = {
       'score': 33.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 69,
+      'rank': 70,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -657,7 +666,7 @@ window.HLE = {
       'score': 33.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 70,
+      'rank': 71,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -666,7 +675,7 @@ window.HLE = {
       'score': 33.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 71,
+      'rank': 72,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -675,7 +684,7 @@ window.HLE = {
       'score': 31.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 72,
+      'rank': 73,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -684,7 +693,7 @@ window.HLE = {
       'score': 30.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 73,
+      'rank': 74,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -693,7 +702,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 74,
+      'rank': 75,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -702,7 +711,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 75,
+      'rank': 76,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -711,7 +720,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 76,
+      'rank': 77,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -720,7 +729,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 77,
+      'rank': 78,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -729,7 +738,7 @@ window.HLE = {
       'score': 30.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 78,
+      'rank': 79,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -738,7 +747,7 @@ window.HLE = {
       'score': 30.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 79,
+      'rank': 80,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -747,7 +756,7 @@ window.HLE = {
       'score': 30.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 80,
+      'rank': 81,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -756,7 +765,7 @@ window.HLE = {
       'score': 29.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 81,
+      'rank': 82,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -765,7 +774,7 @@ window.HLE = {
       'score': 29.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 82,
+      'rank': 83,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -774,7 +783,7 @@ window.HLE = {
       'score': 29.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 83,
+      'rank': 84,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -783,7 +792,7 @@ window.HLE = {
       'score': 29.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 84,
+      'rank': 85,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -792,7 +801,7 @@ window.HLE = {
       'score': 29,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 85,
+      'rank': 86,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -801,7 +810,7 @@ window.HLE = {
       'score': 29,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 86,
+      'rank': 87,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -810,7 +819,7 @@ window.HLE = {
       'score': 28.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 87,
+      'rank': 88,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -819,7 +828,7 @@ window.HLE = {
       'score': 28.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 88,
+      'rank': 89,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -828,7 +837,7 @@ window.HLE = {
       'score': 28.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 89,
+      'rank': 90,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -837,7 +846,7 @@ window.HLE = {
       'score': 28.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 90,
+      'rank': 91,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -846,7 +855,7 @@ window.HLE = {
       'score': 28.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 91,
+      'rank': 92,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -855,7 +864,7 @@ window.HLE = {
       'score': 27.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 92,
+      'rank': 93,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -864,7 +873,7 @@ window.HLE = {
       'score': 27.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 93,
+      'rank': 94,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -873,7 +882,7 @@ window.HLE = {
       'score': 27.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 94,
+      'rank': 95,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -882,7 +891,7 @@ window.HLE = {
       'score': 26.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 95,
+      'rank': 96,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -891,7 +900,7 @@ window.HLE = {
       'score': 25.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 96,
+      'rank': 97,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -900,7 +909,7 @@ window.HLE = {
       'score': 25.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 97,
+      'rank': 98,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -909,7 +918,7 @@ window.HLE = {
       'score': 25.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 98,
+      'rank': 99,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -918,7 +927,7 @@ window.HLE = {
       'score': 25.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 99,
+      'rank': 100,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -927,7 +936,7 @@ window.HLE = {
       'score': 24.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 100,
+      'rank': 101,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -936,7 +945,7 @@ window.HLE = {
       'score': 24.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 101,
+      'rank': 102,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -945,7 +954,7 @@ window.HLE = {
       'score': 23.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 102,
+      'rank': 103,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -954,7 +963,7 @@ window.HLE = {
       'score': 23.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 103,
+      'rank': 104,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -963,7 +972,7 @@ window.HLE = {
       'score': 23.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 104,
+      'rank': 105,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -972,7 +981,7 @@ window.HLE = {
       'score': 23.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 105,
+      'rank': 106,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -981,7 +990,7 @@ window.HLE = {
       'score': 22.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 106,
+      'rank': 107,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -990,7 +999,7 @@ window.HLE = {
       'score': 22.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 107,
+      'rank': 108,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -999,7 +1008,7 @@ window.HLE = {
       'score': 22.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 108,
+      'rank': 109,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1008,7 +1017,7 @@ window.HLE = {
       'score': 22,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 109,
+      'rank': 110,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1017,7 +1026,7 @@ window.HLE = {
       'score': 22,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 110,
+      'rank': 111,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1026,7 +1035,7 @@ window.HLE = {
       'score': 21.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 111,
+      'rank': 112,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1035,7 +1044,7 @@ window.HLE = {
       'score': 21.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 112,
+      'rank': 113,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1044,7 +1053,7 @@ window.HLE = {
       'score': 21,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 113,
+      'rank': 114,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1053,7 +1062,7 @@ window.HLE = {
       'score': 20.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 114,
+      'rank': 115,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1062,7 +1071,7 @@ window.HLE = {
       'score': 20.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 115,
+      'rank': 116,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1071,7 +1080,7 @@ window.HLE = {
       'score': 19.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 116,
+      'rank': 117,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1080,7 +1089,7 @@ window.HLE = {
       'score': 19.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 117,
+      'rank': 118,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1089,7 +1098,7 @@ window.HLE = {
       'score': 19.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 118,
+      'rank': 119,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1098,7 +1107,7 @@ window.HLE = {
       'score': 19.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 119,
+      'rank': 120,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1107,7 +1116,7 @@ window.HLE = {
       'score': 19.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 120,
+      'rank': 121,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1116,7 +1125,7 @@ window.HLE = {
       'score': 18.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 121,
+      'rank': 122,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1125,7 +1134,7 @@ window.HLE = {
       'score': 18.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 122,
+      'rank': 123,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1134,7 +1143,7 @@ window.HLE = {
       'score': 18.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 123,
+      'rank': 124,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1143,7 +1152,7 @@ window.HLE = {
       'score': 17.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 124,
+      'rank': 125,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1152,7 +1161,7 @@ window.HLE = {
       'score': 17.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 125,
+      'rank': 126,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1161,7 +1170,7 @@ window.HLE = {
       'score': 16.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 126,
+      'rank': 127,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1170,7 +1179,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 127,
+      'rank': 128,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1179,7 +1188,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 128,
+      'rank': 129,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1188,7 +1197,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 129,
+      'rank': 130,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1197,7 +1206,7 @@ window.HLE = {
       'score': 15.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 130,
+      'rank': 131,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1206,7 +1215,7 @@ window.HLE = {
       'score': 15,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 131,
+      'rank': 132,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1215,7 +1224,7 @@ window.HLE = {
       'score': 14.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 132,
+      'rank': 133,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1224,7 +1233,7 @@ window.HLE = {
       'score': 13.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 133,
+      'rank': 134,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1233,7 +1242,7 @@ window.HLE = {
       'score': 13.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 134,
+      'rank': 135,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1242,7 +1251,7 @@ window.HLE = {
       'score': 13.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 135,
+      'rank': 136,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1251,7 +1260,7 @@ window.HLE = {
       'score': 13.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 136,
+      'rank': 137,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1260,7 +1269,7 @@ window.HLE = {
       'score': 12.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 137,
+      'rank': 138,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1269,7 +1278,7 @@ window.HLE = {
       'score': 12.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 138,
+      'rank': 139,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1278,7 +1287,7 @@ window.HLE = {
       'score': 12,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 139,
+      'rank': 140,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1287,7 +1296,7 @@ window.HLE = {
       'score': 11.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 140,
+      'rank': 141,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1296,7 +1305,7 @@ window.HLE = {
       'score': 11.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 141,
+      'rank': 142,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1305,7 +1314,7 @@ window.HLE = {
       'score': 11.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 142,
+      'rank': 143,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1314,7 +1323,7 @@ window.HLE = {
       'score': 11.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 143,
+      'rank': 144,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1323,7 +1332,7 @@ window.HLE = {
       'score': 11.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 144,
+      'rank': 145,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1332,7 +1341,7 @@ window.HLE = {
       'score': 11,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 145,
+      'rank': 146,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1341,7 +1350,7 @@ window.HLE = {
       'score': 11,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 146,
+      'rank': 147,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1350,7 +1359,7 @@ window.HLE = {
       'score': 10.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 147,
+      'rank': 148,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1359,7 +1368,7 @@ window.HLE = {
       'score': 10.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 148,
+      'rank': 149,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1368,7 +1377,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 149,
+      'rank': 150,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1377,7 +1386,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 150,
+      'rank': 151,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1386,7 +1395,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 151,
+      'rank': 152,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1395,7 +1404,7 @@ window.HLE = {
       'score': 9.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 152,
+      'rank': 153,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1404,7 +1413,7 @@ window.HLE = {
       'score': 9.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 153,
+      'rank': 154,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1413,7 +1422,7 @@ window.HLE = {
       'score': 9.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 154,
+      'rank': 155,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1422,7 +1431,7 @@ window.HLE = {
       'score': 9.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 155,
+      'rank': 156,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1431,7 +1440,7 @@ window.HLE = {
       'score': 9.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 156,
+      'rank': 157,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1440,7 +1449,7 @@ window.HLE = {
       'score': 8.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 157,
+      'rank': 158,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1449,7 +1458,7 @@ window.HLE = {
       'score': 8.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 158,
+      'rank': 159,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1458,7 +1467,7 @@ window.HLE = {
       'score': 8.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 159,
+      'rank': 160,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1467,7 +1476,7 @@ window.HLE = {
       'score': 8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 160,
+      'rank': 161,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1476,7 +1485,7 @@ window.HLE = {
       'score': 7.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 161,
+      'rank': 162,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1485,7 +1494,7 @@ window.HLE = {
       'score': 7.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 162,
+      'rank': 163,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1494,7 +1503,7 @@ window.HLE = {
       'score': 7.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 163,
+      'rank': 164,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1503,7 +1512,7 @@ window.HLE = {
       'score': 7.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 164,
+      'rank': 165,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1512,7 +1521,7 @@ window.HLE = {
       'score': 7.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 165,
+      'rank': 166,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1521,7 +1530,7 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 166,
+      'rank': 167,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1530,7 +1539,7 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 167,
+      'rank': 168,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1539,7 +1548,7 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 168,
+      'rank': 169,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1548,7 +1557,7 @@ window.HLE = {
       'score': 7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 169,
+      'rank': 170,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1557,7 +1566,7 @@ window.HLE = {
       'score': 7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 170,
+      'rank': 171,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1566,7 +1575,7 @@ window.HLE = {
       'score': 6.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 171,
+      'rank': 172,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1575,7 +1584,7 @@ window.HLE = {
       'score': 6.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 172,
+      'rank': 173,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1584,7 +1593,7 @@ window.HLE = {
       'score': 6.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 173,
+      'rank': 174,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1593,7 +1602,7 @@ window.HLE = {
       'score': 6.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 174,
+      'rank': 175,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1602,7 +1611,7 @@ window.HLE = {
       'score': 6.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 175,
+      'rank': 176,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1611,7 +1620,7 @@ window.HLE = {
       'score': 6.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 176,
+      'rank': 177,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1620,7 +1629,7 @@ window.HLE = {
       'score': 6.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 177,
+      'rank': 178,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1629,7 +1638,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 178,
+      'rank': 179,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1638,7 +1647,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 179,
+      'rank': 180,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1647,7 +1656,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 180,
+      'rank': 181,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1656,7 +1665,7 @@ window.HLE = {
       'score': 5.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 181,
+      'rank': 182,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1665,7 +1674,7 @@ window.HLE = {
       'score': 5.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 182,
+      'rank': 183,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1674,7 +1683,7 @@ window.HLE = {
       'score': 5.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 183,
+      'rank': 184,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1683,7 +1692,7 @@ window.HLE = {
       'score': 5.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 184,
+      'rank': 185,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1692,7 +1701,7 @@ window.HLE = {
       'score': 5.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 185,
+      'rank': 186,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1701,7 +1710,7 @@ window.HLE = {
       'score': 5.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 186,
+      'rank': 187,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1710,7 +1719,7 @@ window.HLE = {
       'score': 5.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 187,
+      'rank': 188,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1719,7 +1728,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 188,
+      'rank': 189,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1728,7 +1737,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 189,
+      'rank': 190,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1737,7 +1746,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 190,
+      'rank': 191,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1746,7 +1755,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 191,
+      'rank': 192,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1755,7 +1764,7 @@ window.HLE = {
       'score': 4.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 192,
+      'rank': 193,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1764,7 +1773,7 @@ window.HLE = {
       'score': 4.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 193,
+      'rank': 194,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1773,7 +1782,7 @@ window.HLE = {
       'score': 4.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 194,
+      'rank': 195,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1782,7 +1791,7 @@ window.HLE = {
       'score': 4.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 195,
+      'rank': 196,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1791,7 +1800,7 @@ window.HLE = {
       'score': 4.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 196,
+      'rank': 197,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1800,7 +1809,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 197,
+      'rank': 198,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1809,7 +1818,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 198,
+      'rank': 199,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1818,7 +1827,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 199,
+      'rank': 200,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1827,7 +1836,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 200,
+      'rank': 201,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1836,7 +1845,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 201,
+      'rank': 202,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1845,7 +1854,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 202,
+      'rank': 203,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1854,7 +1863,7 @@ window.HLE = {
       'score': 4.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 203,
+      'rank': 204,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1863,7 +1872,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 204,
+      'rank': 205,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1872,7 +1881,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 205,
+      'rank': 206,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1881,7 +1890,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 206,
+      'rank': 207,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1890,7 +1899,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 207,
+      'rank': 208,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1899,7 +1908,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 208,
+      'rank': 209,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1908,7 +1917,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 209,
+      'rank': 210,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1917,7 +1926,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 210,
+      'rank': 211,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1926,7 +1935,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 211,
+      'rank': 212,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1935,7 +1944,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 212,
+      'rank': 213,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1944,7 +1953,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 213,
+      'rank': 214,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1953,7 +1962,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 214,
+      'rank': 215,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1962,7 +1971,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 215,
+      'rank': 216,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1971,7 +1980,7 @@ window.HLE = {
       'score': 4.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 216,
+      'rank': 217,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1980,7 +1989,7 @@ window.HLE = {
       'score': 4.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 217,
+      'rank': 218,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1989,7 +1998,7 @@ window.HLE = {
       'score': 4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 218,
+      'rank': 219,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1998,7 +2007,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 219,
+      'rank': 220,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2007,7 +2016,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 220,
+      'rank': 221,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2016,7 +2025,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 221,
+      'rank': 222,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2025,7 +2034,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 222,
+      'rank': 223,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2034,7 +2043,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 223,
+      'rank': 224,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2043,7 +2052,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 224,
+      'rank': 225,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2052,7 +2061,7 @@ window.HLE = {
       'score': 3.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 225,
+      'rank': 226,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2061,7 +2070,7 @@ window.HLE = {
       'score': 3.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 226,
+      'rank': 227,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2070,7 +2079,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 227,
+      'rank': 228,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2079,7 +2088,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 228,
+      'rank': 229,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2088,7 +2097,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 229,
+      'rank': 230,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2097,7 +2106,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 230,
+      'rank': 231,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2106,7 +2115,7 @@ window.HLE = {
       'score': 3.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 231,
+      'rank': 232,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2115,7 +2124,7 @@ window.HLE = {
       'score': 3.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 232,
+      'rank': 233,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2124,7 +2133,7 @@ window.HLE = {
       'score': 3.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 233,
+      'rank': 234,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2133,7 +2142,7 @@ window.HLE = {
       'score': 3.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 234,
+      'rank': 235,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2142,7 +2151,7 @@ window.HLE = {
       'score': 3.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 235,
+      'rank': 236,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2151,7 +2160,7 @@ window.HLE = {
       'score': 2.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 236,
+      'rank': 237,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2160,7 +2169,7 @@ window.HLE = {
       'score': 2.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 237,
+      'rank': 238,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2169,7 +2178,7 @@ window.HLE = {
       'score': 2.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 238,
+      'rank': 239,
       'protocolNote': 'Artificial Analysis 无工具复测'
     }
   ]
