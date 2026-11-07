@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-07',
-  'refreshedAt': '2026-11-08 00:35',
+  'refreshedAt': '2026-11-08 06:11',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,21 +19,17 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '0.167.0',
           'title': '0.167.0',
           'date': '2026-11-06',
-          'dateRaw': '2026-11-06T01:40:00Z',
-          'tags': [
-            'New Features',
-            'Bug Fixes',
-            'Chores',
-            'Changelog'
-          ],
+          'dateRaw': '2026-11-06T01:42:19Z',
+          'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0',
-          'body': '## New Features\n\n- Open the agent command center with `codex agents --no-daemon`. The command center and session picker now mark unread results (#58238, #58239, #58263, #58264).\n- Switch between connected backends from the terminal session picker and keep your drafts when switching (#58280, #58457).\n- Preview local image attachments while composing on supported terminals, and open viewed local images from clickable transcript paths (#58261, #58446).\n- Find API key and cloud provider options under “Sign in another way.” Enable `gcp_setup_wizard` to set up Google Cloud Vertex AI with Application Default Credentials or a credential file (#57857, #58427).\n- Opt into macOS or Windows system proxy settings from `/experimental` (#58157).\n- Expand patch details directly in the transcript while an approval prompt is open (#58281).\n\n## Bug Fixes\n\n- Saved chats stay visible after you switch model providers. If a chat can’t resume, you can read its transcript and prepare an editable prompt to continue in a new chat (#58202).\n- `Ctrl+L` clears the terminal display while keeping earlier messages available through `Ctrl+T` (#58266).\n- Deleting text that exposes a leading `!` keeps an ordinary draft in chat mode (#58412).\n- Network approval prompts close when their requests end. Concurrent requests to the same endpoint prompt one at a time (#58350, #58351).\n- Long realtime V3 conversations save completed speech to chat history as the transcript grows (#58221).\n- Automatic context compaction now accounts for retained output from failed responses and responses with missing token usage data (#58404).\n\n## Documentation\n\n- The app-server README covers managed network constraints under `[permissions.network]` and `prompt-user` command rules that require fresh human approval (#58045, #58182).\n- The `openai-docs` skill recommends the documented replacement when migrating away from a deprecated model (#58134).\n\n## Chores\n\n- DotSlash manifests now reference the Cargo packages shipped with the release (#58717, #58757).\n- Linux musl builds use fewer allocator arenas to reduce idle memory after conversations unload (#58399).\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.166.0...rust-v0.167.0\n\n- #57848 Add bounded Code Mode output collection and rendering @seanh-oai\n- #57850 Wire bounded output collection into the code mode runtime @seanh-oai\n- #57855 Load TUI plugin mentions from installed plugins @zamoshchin-openai\n- #57857 Add Google Cloud Vertex AI setup to TUI onboarding @alexsong-oai\n- #57859 Extend the provider OAuth sign-in timeout to ten minutes @smurching-oai\n- #57861 Skip resource template discovery for hosted Apps @khong-oai\n- #57862 Keep resume picker pagination moving across backends @bc-openai\n- #57864 Allow upstream interruption when canceling Responses Lite turns @liame-oai\n- #57866 Retry transient environment startup failures on the next turn @pansul47-oai\n- #57870 Enable server-side output truncation for Code Mode sessions @seanh-oai\n- #57876 Reuse the cached runtime keymap for default configuration @bc-openai\n- #57883 Preserve status-line hyperlinks through footer layout and animations @joesavona\n- #57970 Add an experimental UI tree renderer for the status line @joesavona\n- #57974 Apply session plugin overrides during MCP config refresh @TAFOYA-OAI\n- #57978 Add per-chat leases for shared MCP connections @charliemarsh-oai\n- #57985 Skip read-only volume-root expansion in the MXC sandbox @iceweasel-oai\n- #58013 Fix argument comment lint tests after rust-clippy branch rename @seanh-oai\n- #58025 Add trace-safe diagnostics for Noise relay request progress @apanasenko-oai\n- #58028 Add direct Guardian review of recorded exec calls @swastik-oai\n- #58034 Add an option to disable successful SSE delta logs @jif-oai\n- #58040 Preserve native tool-call evidence through Guardian review @ioanbudea-OAI\n- #58045 Add managed command checkpoints requiring fresh human approval @jif-oai\n- #58057 Initialize `native_call` in agent host test fixtures @jif-oai\n- #58071 Share the Guardian context delivery token limit @ioanbudea-OAI\n- #58075 Use serving assessments for adaptive Guardian review @jif-oai\n- #58083 Use a dedicated binary for Bazel schema generation @jif-oai\n- #58091 Update default models for memory extraction and consolidation @jif-oai\n- #58110 Ignore RUSTSEC-2026-0418 for the Windows-only libz-sys dependency @swastik-oai\n- #58119 Add experimental Guardian review for injected thread commands @swastik-oai\n- #58121 Centralize provider request preparation auth checks @sgarg-oai\n- #58122 Add an incremental exec tools feature flag @akira-oai\n- #58123 Add validated elastic section budget configuration for Guardian @ioanbudea-OAI\n- #58125 Support negotiated server-side truncation in Code Mode clients @seanh-oai\n- #58127 Honor the tooltip preference for TUI startup help @imac-oai\n- #58129 Persist subagent relationships before creating child storage @radai-oai\n- #58130 Support pasted search text in the skills toggle view @xma-oai\n- #58134 Prefer documented replacements for deprecation-driven model migrations @kkahadze-oai\n- #58140 Route standalone web search through the thread\'s workspace context @sgarg-oai\n- #58144 Record additional context counts, sizes, and truncation metrics @akira-oai\n- #58147 Return standalone web search failures to the model @sgarg-oai\n- #58157 Expose system proxy support as an experimental setting @abhinav-oai\n- #58159 Add a feature flag for code-mode host output truncation @seanh-oai\n- #58161 Include tool names and annotation hints in MCP approval metadata @brisebois-oai\n- #58165 Keep remote plugin bundle URLs out of diagnostics @mzeng-openai\n- #58166 Make rollout recording failures and completion explicit @cassirer-openai\n- #58168 Create missing parent directories for MXC deny paths on Windows @iceweasel-oai\n- #58171 Stabilize cancellation and tracing tests @aakash-oai\n- #58172 Validate trace completion records and payload UTF-8 during replay @cassirer-openai\n- #58182 Support managed network requirements under `permissions.network` @viyatb-oai\n- #58189 Use turn-scoped permissions for standalone web search @sayan-oai\n- #58190 Allow providers to opt into Cyber access programs @jamy-OAI\n- #58195 Preserve remote read compatibility with older executors @dkovalenko-oai\n- #58196 Require Bazel release artifacts and publish DotSlash manifests @dkovalenko-oai\n- #58198 Centralize TOML config deserialization @dkovalenko-oai\n- #58202 Keep chats accessible across model provider changes @abhinav-oai\n- #58219 Add file-backed storage for gateway OAuth credentials @alexsong-oai\n- #58221 Preserve realtime V3 transcripts in conversation history @guinness-oai\n- #58237 Preserve unrelated side conversations when archiving or deleting threads @etraut-openai\n- #58238 Enable the agent command center for embedded sessions @etraut-openai\n- #58239 Enable the agent command center in embedded mode @etraut-openai\n- #58240 Enable TUI task tools for embedded app-server sessions @etraut-openai\n- #58241 Update `mio` from 1.2.0 to 1.2.4 @euroelessar\n- #58251 Reload remote executor credentials safely across token rotation @tgrue-openai\n- #58260 Reuse `LocalImageAttachment` throughout the TUI composer @etraut-openai\n- #58261 Add local image thumbnails to the TUI composer @etraut-openai\n- #58263 Show unread results in the TUI command center @etraut-openai\n- #58264 Show unread sessions and acknowledge viewed transcripts in the picker @etraut-openai\n- #58266 Preserve transcript history when clearing the terminal with Ctrl+L @xma-oai\n- #58270 Recognize Rex terminals and enable Kitty graphics for pets @etraut-openai\n- #58280 Reuse connected backends in the in-app resume picker @bc-openai\n- #58281 Allow inline patch review during approval prompts @etraut-openai\n- #58324 Treat auth reload failures as transient during token refresh @jif-oai\n- #58341 Add an MCP adapter for message-board tools @jif-oai\n- #58343 Preserve fallback token refreshes when the keyring is unreadable @jif-oai\n- #58350 Resolve network approval prompts when their requests end @charliemarsh-oai\n- #58351 Serialize manual network approval prompts per endpoint @charliemarsh-oai\n- #58352 Allow Apps catalog discovery before the initial tool inventory completes @bkotsopoulos\n- #58355 Fix remote executor authentication timeout recovery @jif-oai\n- #58357 Extract pre-tool-use hook handling into a helper @swastik-oai\n- #58361 Preserve model metadata origin through runtime resolution @ioanbudea-OAI\n- #58368 Apply PreToolUse hooks before direct Guardian review policy checks @swastik-oai\n- #58378 Scope agent MCP metadata to a host-selected plugin registration @rhan-oai\n- #58380 Broadcast thread section changes to connected clients @charliemarsh-oai\n- #58381 Fix unsettled refresh detection after workspace switching @jif-oai\n- #58385 Test V8 inline typed array storage limits @fcoury-oai\n- #58388 Add whole-entry elastic allocation for Guardian context @ioanbudea-OAI\n- #58390 Expose parent context for host-managed child startup @rhan-oai\n- #58395 Add scoped host metadata hooks for MCP tool requests @rhan-oai\n- #58399 Reduce jemalloc arena count for Linux musl builds @dkovalenko-oai\n- #58403 Run package updates outside the project on non-Windows platforms @viyatb-oai\n- #58404 Fix context token estimates for responses without usable usage @dkovalenko-oai\n- #58405 Add an option to suppress incremental model change announcements @chetan-oai\n- #58406 Add host-inherited thread instructions and execution policies @rhan-oai\n- #58410 Enable deferred tool world state by default @adaley-openai\n- #58411 Expose non-consuming input activity waits to hosts @rhan-oai\n- #58412 Keep exposed leading bangs literal in the chat composer @xma-oai\n- #58418 Simplify recorded exec command review @swastik-oai\n- #58427 Group alternative sign-in methods in a submenu @alexsong-oai\n- #58428 Support app settings in plugin configuration @mzeng-openai\n- #58430 Add audio file references with explicit runtime rejection @hung-oai\n- #58434 Treat audio validation failures as non-retryable input errors @hung-oai\n- #58436 Add interactive controls and refresh inline visualization styles @philipp-oai\n- #58441 Preserve Apps usage instructions in model catalog messages @goodman-oai\n- #58444 Cap Guardian context entries before elastic allocation @ioanbudea-OAI\n- #58446 Make viewed image paths clickable in the TUI @etraut-openai\n- #58454 Add elastic budgeting for Guardian context preparation @ioanbudea-OAI\n- #58456 Preserve incomplete response output in failed inference traces @cassirer-openai\n- #58457 Enable cross-backend session switching in the TUI @bc-openai\n- #58459 Tighten Bazel CI snapshot handling and OTLP test cleanup @imac-oai\n- #58713 Extract fresh session adoption from TUI session startup @bc-openai\n- #58714 Sort agent center tasks by recency within status groups @etraut-openai\n- #58716 Support OSC 52 clipboard forwarding through GNU screen @etraut-openai\n- #58717 Make Bazel checks advisory and pause Bazel release artifacts @dkovalenko-oai\n- #58718 Support rendering TUI conversations within an inset area @fcoury-oai\n- #58719 Wire native voice dependencies into full Rust CI @bc-openai\n- #58720 Prioritize pending approvals in the subagent picker @tamird\n- #58722 Add naming and navigation helpers for TUI backend sessions @bc-openai\n- #58727 Use local Bazel for voice release builds @fcoury-oai\n- #58751 Release superseded assistant text from live paginated history @btraut-openai\n- #58757 Remove Bazel outputs from DotSlash release configs @fcoury-oai'
+          'body': '新功能\n- 使用codex agents --no-daemon打开agent命令中心。 命令中心和会话选取器现在标记未读结果（ # 58238、# 58239、# 58263、# 58264 ）。\n- 在从终端会话选取器连接的后端之间切换，并在切换时保留草稿（ # 58280 ， # 58457 ）。\n- 在支持的终端上撰写时预览本地图像附件，并从可点击的成绩单路径(# 58261, # 58446)中打开已查看的本地图像。\n- 在“以其他方式签名”下查找API密钥和云提供商选项。 启用gcp_setup_wizard以使用应用程序默认凭据或凭据文件（ # 57857 ， # 58427 ）设置Google Cloud Vertex AI。\n- 从/experimental选择macOS或Windows系统代理设置(# 58157)。\n- 在审批提示打开时，直接在成绩单中展开PATCH详细信息（ # 58281 ）。\n错误修复\n- 切换模型提供商后，已保存的聊天将保持可见。 如果聊天无法恢复，您可以阅读其文字记录并准备可编辑的提示，以便在新的聊天中继续（ # 58202 ）。\n- Ctrl + L清除终端显示，同时通过Ctrl + T （ # 58266 ）保持早期消息可用。\n- 删除暴露前导的文本！在聊天模式下保留普通草稿（ # 58412 ）。\n- 网络审批在他们的请求结束时提示关闭。 对同一端点的并发请求一次提示一个（ # 58350 ， # 58351 ）。\n- 随着成绩单的增加，长时间的实时V3对话会将完成的语音保存到聊天历史记录中（ # 58221 ）。\n- 自动上下文压缩现在考虑了失败的响应和缺少令牌使用数据的响应的保留输出（ ＃ 58404 ）。\n文件\n- 应用服务器README涵盖[permissions.network]下的托管网络约束和需要新人批准的提示用户命令规则（ # 58045 ， # 58182 ）。\n- 当从已弃用的模型（ # 58134 ）迁移时， openai-docs技能建议进行记录的替换。\n家务\n- DotSlash清单现在引用了发行版（ # 58717 ， # 58757 ）附带的Cargo包。\n- Linux musl构建使用更少的分配器竞技场来减少对话卸载后的空闲内存（ # 58399 ）。\n更新日志\n完整更新日志： rust-v0.166.0... rust-v0.167.0\n- # 57848添加边界代码模式输出集合和渲染@ seanh-oai\n- # 57850导线绑定输出集合进入代码模式runtime @ seanh-oai\n- # 57855从已安装的插件加载TUI插件提及@ zamoshchin-openai\n- # 57857将Google Cloud Vertex AI设置添加到TUI onboarding @ alexsong-oai\n- # 57859将提供程序OAuth登录超时延长至十分钟@ smurching-oai\n- # 57861跳过托管应用的资源模板发现@ khong-oai\n- # 57862保持简历选择器分页跨后端移动@ bc-openai\n- # 57864取消Responses Lite变为@ liame-oai时允许上游中断\n- # 57866下一回合重试瞬态环境启动失败@ pansul47-oai\n- # 57870启用代码模式会话@ seanh-oai的服务器端输出截断\n- # 57876重用默认配置@ bc-openai的缓存运行时键映射\n- # 57883通过页脚布局和动画保留状态行超链接@ joesavona\n- # 57970为状态行@ joesavona添加实验UI树渲染器\n- # 57974在MCP配置刷新期间应用会话插件覆盖@ TAFOYA-OAI\n- # 57978为共享MCP连接添加每聊天租约@ charliemarsh-oai\n- # 57985跳过MXC沙盒中的只读卷根扩展@ iceweasel-oai\n- # 58013修复rust-clippy分支重命名@ seanh-oai后的参数注释lint测试\n- # 58025为噪声中继请求进度添加跟踪安全诊断@ apanasenko-oai\n- # 58028添加直接监护人审核录制的高管电话@ swastik-oai\n- # 58034添加选项以禁用成功的SSE增量日志@ jif-oai\n- # 58040通过Guardian review @ ioanbudea-OAI保留本地工具调用证据\n- # 58045添加需要全新人工审批的托管命令检查点@ jif-oai\n- # 58057初始化agent host test fixtures @ jif-oai中的native_call\n- # 58071共享Guardian上下文传递令牌限制@ ioanbudea-OAI\n- # 58075使用服务评估进行自适应Guardian审核@ jif-oai\n- # 58083使用专用二进制文件生成Bazel架构@ jif-oai\n- # 58091更新内存提取和整合的默认模型@ jif-oai\n- # 58110对于仅Windows的libz-sys依赖项，忽略RUSTSEC-2026-0418 @ swastik-oai\n- # 58119添加注入线程命令的实验性Guardian审核@ swastik-oai\n- # 58121集中提供者请求准备身份验证检查@ sgarg-oai\n- # 58122添加增量式执行工具功能标记@ akira-oai\n- # 58123为Guardian @ ioanbudea-OAI添加经过验证的弹性部分预算配置\n- # 58125支持在Code Mode clients @ seanh-oai中协商服务器端截断\n- # 58127尊重TUI启动帮助@ imac-oai的工具提示偏好\n- # 58129在创建子存储@ radai-oai之前持久化子代理关系\n- # 58130技能切换视图@ xma-oai支持粘贴搜索文本\n- # 58134对于弃用驱动的模型迁移，首选有文档记录的替代@ kkahadze-oai\n- # 58140通过线程的工作区上下文@ sgarg-oai路由独立网页搜索\n- # 58144记录额外的上下文计数、大小和截断指标@ akira-oai\n- # 58147将独立网页搜索失败返回模型@ sgarg-oai\n- # 58157将系统代理支持作为实验设置@ abhinav-oai\n- # 58159为code-mode host output truncation @ seanh-oai添加特征标志\n- # 58161在MCP审批元数据中包含工具名称和注释提示@ brisebois-oai\n- # 58165将远程插件包URL排除在diagnostics @ mzeng-openai之外\n- # 58166明确推出录制失败和完成@ cassirer-openai\n- # 58168在Windows @ iceweasel-oai上为MXC拒绝路径创建缺少的父目录\n- # 58171稳定取消和跟踪测试@ aakash-oai\n- # 58172在重播期间验证跟踪完成记录和有效载荷UTF-8 @ cassirer-openai\n- # 58182支持permissions.network @ viyatb-oai下的托管网络要求\n- # 58189使用turn-scoped权限进行独立网页搜索@ sayan-oai\n- # 58190允许提供商选择加入网络访问计划@ jamy-OAI\n- # 58195保留与较旧的executors @ dkovalenko-oai的远程读取兼容性\n- # 58196要求Bazel发布工件并发布DotSlash清单@ dkovalenko-oai\n- # 58198集中TOML配置反序列化@ dkovalenko-oai\n- # 58202在模型提供商更改期间保持聊天可访问@ abhinav-oai\n- # 58219为网关OAuth凭据添加文件支持存储@ alexsong-oai\n- # 58221在对话历史中保留实时V3成绩单@ guinness-oai\n- # 58237存档或删除线程@ etraut-openai时保留不相关的边对话\n- # 58238为嵌入式会话启用代理命令中心@ etraut-openai\n- # 58239在嵌入式模式下启用agent命令中心@ etraut-openai\n- # 58240为嵌入式应用服务器会话启用TUI任务工具@ etraut-openai\n- # 58241将mio从1.2.0更新为1.2.4 @ euroelessar\n- # 58251通过令牌轮换安全地重新加载远程执行器凭据@ tgrue-openai\n- # 58260在整个TUI composer @ etraut-openai中重复使用LocalImageAttachment\n- # 58261将本地图像缩略图添加到TUI composer @ etraut-openai\n- # 58263在TUI命令中心@ etraut-openai中显示未读结果\n- # 58264在选择器@ etraut-openai中显示未读会话并确认已查看的成绩单\n- # 58266使用Ctrl + L @ xma-oai清除终端时保留成绩单历史记录\n- # 58270识别Rex终端并为宠物启用Kitty图形@ etraut-openai\n- # 58280在应用内简历选择器@ bc-openai中重复使用已连接的后端\n- # 58281在批准提示期间允许内联补丁审核@ etraut-openai\n- # 58324在令牌刷新期间将身份验证重新加载失败视为瞬态@ jif-oai\n- # 58341为留言板工具@ jif-oai添加MCP适配器\n- # 58343密钥环不可读时保留回退令牌刷新@ jif-oai\n- # 58350在请求结束时解决网络审批提示@ charliemarsh-oai\n- # 58351每个端点序列化手动网络审批提示@ charliemarsh-oai\n- # 58352在初始工具清单完成前允许应用目录发现@ bkotsopoulos\n- # 58355修复远程执行器身份验证超时恢复@ jif-oai\n- # 58357将工具使用前挂钩处理提取到助手@ swastik-oai\n- # 58361通过运行时解析@ ioanbudea-OAI保留模型元数据源\n- # 58368在直接Guardian审核策略检查前应用PreToolUse挂钩@ swastik-oai\n- # 58378范围代理MCP元数据到主机选择的插件注册@ rhan-oai\n- # 58380广播线程部分更改为连接的客户端@ charliemarsh-oai\n- # 58381修复工作区切换后未结算刷新检测@ jif-oai\n- # 58385测试V8内联类型数组存储限制@ fcoury-oai\n- # 58388为Guardian context @ ioanbudea-OAI添加全入口弹性分配\n- # 58390暴露主机托管子启动的父上下文@ rhan-oai\n- # 58395为MCP工具请求@ rhan-oai添加作用域主机元数据挂钩\n- # 58399减少Linux musl build @ dkovalenko-oai的jemalloc竞技场数量\n- # 58403在非Windows平台@ viyatb-oai上运行项目外的包更新\n- # 58404修复没有可用用法的响应的上下文令牌估计@ dkovalenko-oai\n- # 58405添加一个选项来抑制增量模型更改公告@ chetan-oai\n- # 58406添加主机继承的线程指令和执行策略@ rhan-oai\n- # 58410默认启用延迟工具世界状态@ adaley-openai\n- # 58411向hosts @ rhan-oai公开非消耗输入活动等待\n- # 58412保持在聊天composer @ xma-oai中曝光前导刘海字面\n- # 58418简化记录的EXEC命令审核@ swastik-oai\n- # 58427在子菜单中分组替代登录方法@ alexsong-oai\n- # 58428在插件配置中支持APP设置@ mzeng-openai\n- # 58430添加显式运行时拒绝的音频文件引用@ hung-oai\n- # 58434将音频验证失败视为不可重试的输入错误@ hung-oai\n- # 58436添加交互式控件并刷新内联可视化样式@ philipp-oai\n- # 58441保留模型目录消息中的应用使用说明@ goodman-oai\n- # 58444弹性分配前Cap Guardian上下文条目@ ioanbudea-OAI\n- # 58446在TUI @ etraut-openai中使查看的图像路径可点击\n- # 58454为Guardian上下文准备@ ioanbudea-OAI添加弹性预算\n- # 58456在失败的推理跟踪@ cassirer-openai中保留不完整的响应输出\n- # 58457在TUI @ bc-openai中启用跨后端会话切换\n- # 58459收紧Bazel CI快照处理和OTLP测试清理@ imac-oai\n- # 58713从TUI会话启动@ bc-openai提取新会话采用\n- # 58714按状态组@ etraut-openai中的近期性对座席中心任务进行排序\n- # 58716支持通过GNU screen @ etraut-openai进行OSC 52剪贴板转发\n- # 58717让Bazel检查建议并暂停Bazel发布工件@ dkovalenko-oai\n- # 58718支持在插入区域@ fcoury-oai内渲染TUI对话\n- # 58719将本机语音依赖关系转换为完整的Rust CI @ bc-openai\n- # 58720在子代理选择器@ tamird中优先处理待审批\n- # 58722为TUI后端会话@ bc-openai添加命名和导航助手\n- # 58727使用本地Bazel进行语音发布build @ fcoury-oai\n- # 58751从实时分页历史中发布被取代的助手文本@ btraut-openai\n- # 58757从DotSlash版本配置中删除Bazel输出@ fcoury-oai',
+          'h': '4443229c'
         },
         {
           'version': '0.167.0-alpha.3.2',
@@ -1292,7 +1288,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '2.1.319',
@@ -3646,7 +3642,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '2.2.6',
@@ -9168,7 +9164,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '2.5.2',
@@ -10252,7 +10248,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10837,7 +10833,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '0.5.6',
@@ -11219,7 +11215,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '1.39.1',
@@ -11873,7 +11869,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '3.4.15',
@@ -13958,7 +13954,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14145,7 +14141,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '3.17.2',
@@ -14324,7 +14320,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '4.12.3',
@@ -15206,7 +15202,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-08 00:35',
+      'lastOkAt': '2026-11-08 06:11',
       'entries': [
         {
           'version': '5.11.0',
