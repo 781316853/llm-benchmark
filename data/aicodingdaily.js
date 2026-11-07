@@ -17,7 +17,7 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-10-31',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-07 10:11',
+  'refreshedAt': '2026-11-07 17:03',
   'stats': {
     'entries': 52,
     'models': 35
@@ -285,7 +285,7 @@ window.AICODINGDAILY = {
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 53.31,
-      'costUsd': 0.08,
+      'costUsd': 0.09,
       'timeSec': 904,
       'timeStr': '15:04',
       'harness': 'OpenCode',
@@ -314,22 +314,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 19,
-      'model': 'Muse Spark 1.3',
-      'effort': 'Max',
-      'score': 52.51,
-      'costUsd': 0.01,
-      'timeSec': 222,
-      'timeStr': '03:42',
-      'harness': 'OpenCode',
-      'laravel': 15.6,
-      'reactTs': 18.33,
-      'bugFinding': 4.58,
-      'edgeCase': 14.5,
-      'src': 'aggregate',
-      'configs': 1
-    },
-    {
-      'rank': 20,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Max',
       'score': 52.14,
@@ -345,7 +329,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 21,
+      'rank': 20,
       'model': 'SWE-2 Flash',
       'effort': 'High',
       'score': 51.15,
@@ -361,7 +345,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 22,
+      'rank': 21,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 50.79,
@@ -373,6 +357,22 @@ window.AICODINGDAILY = {
       'reactTs': 17.5,
       'bugFinding': 7.81,
       'edgeCase': 10.15,
+      'src': 'aggregate',
+      'configs': 1
+    },
+    {
+      'rank': 22,
+      'model': 'Muse Spark 1.3',
+      'effort': 'Xhigh',
+      'score': 50.37,
+      'costUsd': null,
+      'timeSec': 411,
+      'timeStr': '06:51',
+      'harness': 'OpenCode',
+      'laravel': 15.9,
+      'reactTs': 16.67,
+      'bugFinding': 6.15,
+      'edgeCase': 12.65,
       'src': 'aggregate',
       'configs': 1
     },
@@ -1041,7 +1041,7 @@ window.AICODINGDAILY = {
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 53.31,
-      'costUsd': 0.08,
+      'costUsd': 0.09,
       'timeSec': 904,
       'timeStr': '15:04',
       'harness': 'OpenCode',
@@ -1068,21 +1068,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 33,
-      'model': 'Muse Spark 1.3',
-      'effort': 'Max',
-      'score': 52.51,
-      'costUsd': 0.01,
-      'timeSec': 222,
-      'timeStr': '03:42',
-      'harness': 'OpenCode',
-      'laravel': 15.6,
-      'reactTs': 18.33,
-      'bugFinding': 4.58,
-      'edgeCase': 14.5,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 34,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Max',
       'score': 52.14,
@@ -1097,7 +1082,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 35,
+      'rank': 34,
       'model': 'GPT-6-Luna',
       'effort': 'High',
       'score': 52.04,
@@ -1112,7 +1097,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 36,
+      'rank': 35,
       'model': 'SWE-2 Flash',
       'effort': 'High',
       'score': 51.15,
@@ -1127,7 +1112,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 37,
+      'rank': 36,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 50.79,
@@ -1139,6 +1124,21 @@ window.AICODINGDAILY = {
       'reactTs': 17.5,
       'bugFinding': 7.81,
       'edgeCase': 10.15,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 37,
+      'model': 'Muse Spark 1.3',
+      'effort': 'Xhigh',
+      'score': 50.37,
+      'costUsd': null,
+      'timeSec': 411,
+      'timeStr': '06:51',
+      'harness': 'OpenCode',
+      'laravel': 15.9,
+      'reactTs': 16.67,
+      'bugFinding': 6.15,
+      'edgeCase': 12.65,
       'src': 'aggregate'
     },
     {

@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 83,
+      'modelCount': 72,
       'updated': '2026-11-07',
       'ageDays': 0,
       'completeness': 1,
@@ -186,7 +186,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 128,
+      'modelCount': 129,
       'updated': '2026-11-07',
       'ageDays': 0,
       'completeness': 0,
@@ -197,7 +197,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 47,
+      'modelCount': 48,
       'updated': '2026-11-07',
       'ageDays': 0,
       'completeness': 1,
@@ -824,9 +824,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 83,
-      'complete': 83,
-      'modelCount': 83,
+      'total': 72,
+      'complete': 72,
+      'modelCount': 72,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -898,19 +898,19 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 128,
+      'total': 129,
       'complete': 0,
-      'modelCount': 128,
+      'modelCount': 129,
       'missingFields': {
-        'score': 128
+        'score': 129
       },
       'flag': 'warn'
     },
     'modeldial': {
       'rate': 1,
-      'total': 47,
-      'complete': 47,
-      'modelCount': 47,
+      'total': 48,
+      'complete': 48,
+      'modelCount': 48,
       'missingFields': {},
       'flag': 'ok'
     },
