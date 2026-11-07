@@ -9,7 +9,7 @@ window.VALSCODEMIGRATION = {
   'officialUrl': 'https://www.vals.ai/benchmarks/code-migration',
   'version': '1',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-11-07 05:42',
+  'refreshedAt': '2026-11-07 10:11',
   'stats': {
     'models': 79
   },
@@ -19,7 +19,7 @@ window.VALSCODEMIGRATION = {
       'id': 'anthropic/claude-sonnet-5-5',
       'model': 'Claude Sonnet 5 5',
       'accuracy': 69.83,
-      'costPerTest': 75.826721,
+      'costPerTest': 46.395198,
       'latencyS': 12004.483,
       'harness': null,
       'avgInputTokens': null,
@@ -55,7 +55,7 @@ window.VALSCODEMIGRATION = {
       'id': 'anthropic/claude-opus-5-5',
       'model': 'Claude Opus 5 5',
       'accuracy': 66.65,
-      'costPerTest': 112.970791,
+      'costPerTest': 69.480849,
       'latencyS': 11925.532,
       'harness': null,
       'avgInputTokens': null,

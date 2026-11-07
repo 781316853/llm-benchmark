@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(2026-11-06 更新;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(2026-11-07 更新;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-4c742f6df0e408044b070835)
+// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion 1.1,batch overall-e6a02bf7a62ad8bbec99f21a)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)
 // ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值
@@ -18,11 +18,11 @@ window.MODELDIAL = {
   'apiUrl': 'https://modeldial.com/api/v1/radar/latest.json',
   'license': 'CC BY 4.0',
   'schemaVersion': '1.1',
-  'batchId': 'overall-4c742f6df0e408044b070835',
-  'batchRevision': 423,
-  'batchPublishedAt': '2026-11-06T09:41:26.221Z',
-  'updated': '2026-11-06',
-  'refreshedAt': '2026-11-07 05:42',
+  'batchId': 'overall-e6a02bf7a62ad8bbec99f21a',
+  'batchRevision': 425,
+  'batchPublishedAt': '2026-11-07T00:52:44.817Z',
+  'updated': '2026-11-07',
+  'refreshedAt': '2026-11-07 10:11',
   'weights': {
     'backend': 0.4,
     'frontend': 0.3,
