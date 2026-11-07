@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 72,
+      'modelCount': 73,
       'updated': '2026-11-07',
       'ageDays': 0,
       'completeness': 1,
@@ -824,9 +824,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 72,
-      'complete': 72,
-      'modelCount': 72,
+      'total': 73,
+      'complete': 73,
+      'modelCount': 73,
       'missingFields': {},
       'flag': 'ok'
     },
