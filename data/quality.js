@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-11-08',
-  'overallScore': 0.955,
+  'overallScore': 0.957,
   'sources': [
     {
       'id': 'aa_coding_agents',
@@ -207,15 +207,13 @@ window.QUALITY = {
     {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
-      'status': 'error',
+      'status': 'ok',
       'modelCount': 55,
       'updated': '2026-11-08',
       'ageDays': 0,
-      'completeness': null,
+      'completeness': 1,
       'fetchAttempts': 1,
-      'errors': [
-        'timeout https://benchlm.ai/benchmarks/nl2repo'
-      ]
+      'errors': []
     },
     {
       'id': 'osworld',
@@ -913,6 +911,14 @@ window.QUALITY = {
       'total': 48,
       'complete': 48,
       'modelCount': 48,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'nl2repo': {
+      'rate': 1,
+      'total': 55,
+      'complete': 55,
+      'modelCount': 55,
       'missingFields': {},
       'flag': 'ok'
     },
