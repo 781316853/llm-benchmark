@@ -2,13 +2,11 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-07',
+  'updated': '2026-11-08',
   'retentionDays': 2,
   'types': [
-    '要闻',
     '开发生态',
-    '模型发布',
-    '产品应用'
+    '模型发布'
   ],
   'items': [
     {
@@ -66,78 +64,6 @@ window.NEWS = {
       'url': 'https://x.com/OpenDesignDevs/status/2118659067728044361',
       'source': '橘鸦AI早报',
       'type': '开发生态'
-    },
-    {
-      'date': '2026-11-06',
-      'title': 'Google 发布 Gemini Omni 1.2 Flash',
-      'brief': 'Google 推出 Gemini Omni 1.2 Flash 视频生成模型。模型原生生成和编辑视频的时长从上一代最长 10 秒 提升至 15 秒 ，用户可按秒设置时长，并通过多轮对话调整同一片段的背景、光线或画面比例。',
-      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-06',
-      'title': 'OpenAI 发布 GPT-6 Cyber 网络安全模型',
-      'brief': 'OpenAI 发布网络安全模型 GPT-6 Cyber ，称其在关键网络安全基准上较上一代 GPT-5.6 Cyber 明显提升： ExploitGym 得分从 32.1% 升至 48.5% ；越界测试中，不使用部署安全提示时 99.93% 的测试守在任务范围内，加上提示后为 100% 。',
-      'url': 'https://openai.com/index/introducing-gpt-6-cyber',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-06',
-      'title': '蚂蚁百灵推出模型 Ling-3.2-flash',
-      'brief': '蚂蚁集团 百灵团队 推出原生多模态模型 Ling-3.2-flash ，总参数量为 560B ，激活参数量为 25B ，支持 1M token 上下文及文本、图像和视频输入。',
-      'url': 'https://x.com/AntLingAGI/status/2118428246664761379',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-06',
-      'title': 'Thinking Machines 发布 Inkling 2 Small：得 31 分，拟下周开放权重',
-      'brief': 'Thinking Machines 发布第二代模型 Inkling 2 Small ，在 Artificial Analysis Intelligence Index v5.0.1 上得分 31 ，较前代 Inkling Small 的 13 分提高 18 分。',
-      'url': 'https://x.com/thinkymachines/status/2118489527362912566',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-06',
-      'title': '百度开放 ERNIE-5.5-Flash-Base 权重',
-      'brief': '百度文心团队 发布 ERNIE-5.5-Flash-Base ，并开放预训练终点权重。该模型是总参数 280B 、每 token 激活 14B 的稀疏 MoE 语言模型，在 33.5T tokens 上从零完成预训练，训练上下文最长 128K ，微调与推理支持 1M tokens 上下文。',
-      'url': 'https://ernie.baidu.com/zh/release/ernie-5-5-flash-base',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-06',
-      'title': '中国科大开源 RNA 基础模型，成果登上《自然》',
-      'brief': '中国科学技术大学 宣布，该校医学影像智能与机器人（ MIRACLE ）实验室 周少华 教授、 熊鹏 特任研究员团队发布开源 RNA 序列基础模型 structRFM ，相关成果发表于《自然》。',
-      'url': 'https://doi.org/10.5281/zenodo.16754363',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-06',
-      'title': '混元 Hy4 调用激增，WorkBuddy 十倍扩容',
-      'brief': '腾讯 混元 Hy4 在 WorkBuddy 首发接入后，凭借 Agent 能力的显著提升，获得大量用户与开发者的积极体验和热情反馈，上线首日即在任务队列中出现大量用户触及额度的情况。',
-      'url': 'https://mp.weixin.qq.com/s/7THoAz6jRFNt3qmIqTnjug?scene=1&amp;click_id=1483109207',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-06',
-      'title': 'Claude 推出个人理财功能测试版，美国逐步开放',
-      'brief': 'Anthropic 推出 Claude 个人理财功能 Personal Finance ，以测试版从 本周起 向美国 Pro、Max 和 Ultra 订阅用户逐步开放。',
-      'url': 'https://claude.com/resources/articles/introducing-personal-finance-in-claude',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-06',
-      'title': 'Meta Muse 应用上线语音视频对话',
-      'brief': 'Meta 在美国 Muse 应用中推出 Muse Realtime Avatar 技术，该技术此前在 Connect 大会上展示，能将 Muse Realtime Voice 转化为有表现力的实时化身，用户可以通过语音或视频与 Meta 面向消费者的 AI 智能体 Muse 对话。',
-      'url': 'https://x.com/AIatMeta/status/2118412135340572850',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
     }
   ]
 };
