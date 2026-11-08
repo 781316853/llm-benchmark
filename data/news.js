@@ -5,10 +5,70 @@ window.NEWS = {
   'updated': '2026-11-08',
   'retentionDays': 2,
   'types': [
+    '要闻',
     '开发生态',
-    '模型发布'
+    '模型发布',
+    '技术与洞察',
+    '前瞻与传闻',
+    '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-08',
+      'title': 'OpenAI 智能体 dots 可用验证码代用户登录',
+      'brief': 'OpenAI 产品团队成员 James Sun 在 X 宣布， OpenAI 全天候智能体产品 dot 现已升级，可以使用发送到连接收件箱的登录验证码，代表用户无缝完成登录。',
+      'url': 'https://x.com/JamesZmSun/status/2119147164039618879',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-08',
+      'title': 'OpenCode 推出 Browse：AI agent 可控制你的真实浏览器',
+      'brief': 'OpenCode 官方宣布， OpenCode Browse 现已上线。',
+      'url': 'https://opencode.ai/product/browse',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-08',
+      'title': 'OpenCode 创始人回应模型卡顿，正增加容量',
+      'brief': '近日有用户反映 OpenCode 上的 DeepSeek V4.1 Flash 响应缓慢，连基本任务也难以完成。OpenCode 创始人 Frank Wang 回应称，正在增加大量容量，预计情况会逐步改善。另一位创始人 dax 表示，随着业务增长，他难以跟进所有事务，用户遇到推理或 Go 相关问题时可联系更专注于这些事务的 Frank Wang。',
+      'url': 'https://x.com/thdxr/status/2118972258479927666',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-08',
+      'title': 'Cua 联合 Scale AI 推出 Cua Driver Bench，评测 agent 后台执行桌面任务',
+      'brief': 'Cua 宣布与 Scale AI 的 AgentEnv 联合推出 Cua Driver Bench ，评测 computer-use 工具层能否让 agent 在后台完成 macOS 桌面任务、不打扰正在操作电脑的用户。该基准目前仅覆盖 macOS ，任务和测量都基于 macOS 26 桌面，共 10 项任务，分属多应用工作流、精准交互、打断与恢复三类。',
+      'url': 'https://x.com/trycua/status/2118754889329230241',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-08',
+      'title': 'Anthropic 须应诉 Claude Max 宣传误导指控',
+      'brief': '加州北区联邦法院治安法官 Alex Tse 裁定， Anthropic 须就原有 Claude Max 套餐“比 Pro 多 5 倍或 20 倍用量”的宣传误导指控应诉。',
+      'url': 'https://courthousenews.com/anthropic-must-face-claims-its-claude-max-pitch-misled-users',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-08',
+      'title': 'OpenAI CFO：继续考虑 2027 年上市',
+      'brief': 'OpenAI 首席财务官 Sarah Friar 在接受 CNBC 采访时表示，公司将继续考虑在 2027 年 上市。',
+      'url': 'https://www.cnbc.com/2026/11/06/cnbc-exclusive-transcript-openai-cfo-sarah-friar-speaks-with-cnbcs-sara-eisen-on-squawk-on-the-street-today.html',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-08',
+      'title': 'Anthropic IPO 估值遭质疑，下周启动 IPO 路演',
+      'brief': '据路透社等媒体报道， Anthropic 的 IPO 计划面临潜在投资者的估值质疑，部分投资者认为近期讨论的 1.5 万亿美元 估值处于预期高端，公司可能需要更大折价才能锁定认购。',
+      'url': 'https://www.theinformation.com/briefings/anthropic-proceed-ipo-roadshow-next-week',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-11-07',
       'title': 'Qwen 发海报预热新一代旗舰模型',
@@ -46,22 +106,6 @@ window.NEWS = {
       'title': 'Google 重新设计 Antigravity，推出远程任务功能',
       'brief': 'Google Antigravity 重新设计了 Antigravity 应用，称使其更加简洁流畅，使用起来也更加愉悦！',
       'url': 'https://x.com/_mohansolo/status/2118478787566588009',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-07',
-      'title': 'TRAE 账号将升级为豆包飞书账号，数据权益保留',
-      'brief': 'TRAE 宣布，自 2026 年 11 月 18 日 起，将中国大陆个人用户的 TRAE CN 版账号自动升级为 豆包飞书 账号，企业客户不在此次升级范围内。',
-      'url': 'https://docs.trae.cn/ide_important-notice-for-trae-account-upgrade-and-integration',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-07',
-      'title': 'OpenDesign 推出 DeepSeek V4.1 Flash Eco，每月提供 220 美元额度',
-      'brief': 'OpenDesign 推出 DeepSeek V4.1 Flash Eco ，适用于批量、非实时工作。',
-      'url': 'https://x.com/OpenDesignDevs/status/2118659067728044361',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     }

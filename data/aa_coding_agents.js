@@ -1,4 +1,4 @@
-// 数据源:Artificial Analysis Coding Agent Index v2.0(源站更新 2026-11-06)
+// 数据源:Artificial Analysis Coding Agent Index v2.0(源站更新 2026-11-07)
 // 来源:https://artificialanalysis.ai/agents/coding-agents
 // 字段:models[]=agent×model×推理档位配置(按 indexScore 降序);indexScore=综合指数(%);
 //      frontiercode/terminalBench/sweAtlas=三项子基准得分(%);costUsd=每任务平均 API 成本($);
@@ -11,8 +11,8 @@ window.AACODING = {
   'officialUrl': 'https://artificialanalysis.ai/agents/coding-agents',
   'methodUrl': 'https://artificialanalysis.ai/methodology/coding-agents-benchmarking',
   'version': 'v2.0',
-  'updated': '2026-11-06',
-  'refreshedAt': '2026-11-08 09:42',
+  'updated': '2026-11-07',
+  'refreshedAt': '2026-11-08 17:20',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'agents': [
     'Claude Code',
@@ -534,26 +534,6 @@ window.AACODING = {
       'rank': 24
     },
     {
-      'id': 'ee13e548b65eeee544cd5b0c6068a4f5',
-      'agent': 'Codex',
-      'model': 'GPT-6.1 Terra (Non-reasoning)',
-      'displayLabel': 'Codex - GPT-6.1 Terra (Non-reasoning)',
-      'multiModel': false,
-      'effort': null,
-      'provider': 'openai',
-      'vendor': 'OpenAI',
-      'indexScore': 39.2,
-      'frontiercode': 46.2,
-      'terminalBench': 25.3,
-      'sweAtlas': 46.2,
-      'costUsd': 0.45,
-      'wallTimeSec': 572.4,
-      'steps': 81.5,
-      'totalTokens': 5776354,
-      'src': 'aggregate',
-      'rank': 25
-    },
-    {
       'id': '1630d319b5e4dc5183cb88a2b2af1646',
       'agent': 'Claude Code',
       'model': 'Qwen3.8 Max',
@@ -570,6 +550,26 @@ window.AACODING = {
       'wallTimeSec': 4568.4,
       'steps': 114.8,
       'totalTokens': 9153421,
+      'src': 'aggregate',
+      'rank': 25
+    },
+    {
+      'id': 'ee13e548b65eeee544cd5b0c6068a4f5',
+      'agent': 'Codex',
+      'model': 'GPT-6.1 Terra (Non-reasoning)',
+      'displayLabel': 'Codex - GPT-6.1 Terra (Non-reasoning)',
+      'multiModel': false,
+      'effort': null,
+      'provider': 'openai',
+      'vendor': 'OpenAI',
+      'indexScore': 39.2,
+      'frontiercode': 46.2,
+      'terminalBench': 25.3,
+      'sweAtlas': 46.2,
+      'costUsd': 0.45,
+      'wallTimeSec': 572.4,
+      'steps': 81.5,
+      'totalTokens': 5776354,
       'src': 'aggregate',
       'rank': 26
     },
