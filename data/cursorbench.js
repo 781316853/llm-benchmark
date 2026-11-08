@@ -9,7 +9,7 @@ window.CURSORBENCH = {
   'officialUrl': 'https://cursor.com/cursorbench',
   'version': '4.0',
   'updated': '2026-11-08',
-  'refreshedAt': '2026-11-08 17:20',
+  'refreshedAt': '2026-11-09 00:45',
   'stats': {
     'entries': 81,
     'models': 19

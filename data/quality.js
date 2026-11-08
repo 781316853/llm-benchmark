@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-11-08',
-  'overallScore': 0.957,
+  'overallScore': 0.955,
   'sources': [
     {
       'id': 'aa_coding_agents',
@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 52,
+      'modelCount': 50,
       'updated': '2026-11-08',
       'ageDays': 0,
       'completeness': 1,
@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 153,
+      'modelCount': 154,
       'updated': '2026-11-08',
       'ageDays': 0,
       'completeness': 1,
@@ -207,13 +207,15 @@ window.QUALITY = {
     {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
-      'status': 'ok',
+      'status': 'error',
       'modelCount': 55,
       'updated': '2026-11-08',
       'ageDays': 0,
-      'completeness': 1,
+      'completeness': null,
       'fetchAttempts': 1,
-      'errors': []
+      'errors': [
+        'timeout https://benchlm.ai/benchmarks/nl2repo'
+      ]
     },
     {
       'id': 'osworld',
@@ -703,7 +705,7 @@ window.QUALITY = {
     {
       'canonId': 'Inkling 2 Small',
       'name': 'Inkling 2 Small',
-      'vendor': '其他',
+      'vendor': 'Thinking Machines',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -776,9 +778,9 @@ window.QUALITY = {
     },
     'aicodingdaily': {
       'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
+      'total': 50,
+      'complete': 50,
+      'modelCount': 50,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -816,9 +818,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 153,
-      'complete': 153,
-      'modelCount': 153,
+      'total': 154,
+      'complete': 154,
+      'modelCount': 154,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -911,14 +913,6 @@ window.QUALITY = {
       'total': 48,
       'complete': 48,
       'modelCount': 48,
-      'missingFields': {},
-      'flag': 'ok'
-    },
-    'nl2repo': {
-      'rate': 1,
-      'total': 55,
-      'complete': 55,
-      'modelCount': 55,
       'missingFields': {},
       'flag': 'ok'
     },

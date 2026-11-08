@@ -45,7 +45,7 @@ window.DATALEARNER = {
       'mode': '最高（工具）',
       'date': '2026-10-24',
       'params': '28000亿',
-      'license': '已宣布 · 待发布'
+      'license': '有条件商用'
     },
     {
       'name': 'Muse Spark 1.3',
