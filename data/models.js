@@ -39,7 +39,8 @@ window.MODEL_MAP = {
     { id: "Kimi K2.6 Code Preview", vendor: "Moonshot", color: "#9C82FF", aliases: ["K2.6-code-preview", "Kimi K2.6 Code Preview"] },
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
     { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)", "k3"] },
-    { id: "Kimi K3.1 Pro",    vendor: "Moonshot",  color: "#5A3DF5", aliases: ["Kimi K3.1 Pro", "kimi-k3-1-pro", "Kimi-K3.1-Pro", "kimi-k3.1-pro", "Kimi K3.1", "kimi-k3.1"] },
+    // ModelDial 的 slug 写作 "k3.1-pro",补别名避免被自动建档成「其他」幽灵条目。
+    { id: "Kimi K3.1 Pro",    vendor: "Moonshot",  color: "#5A3DF5", aliases: ["Kimi K3.1 Pro", "kimi-k3-1-pro", "Kimi-K3.1-Pro", "kimi-k3.1-pro", "Kimi K3.1", "kimi-k3.1", "k3.1-pro", "k3-1-pro", "k3.1 Pro", "K3.1 Pro", "k3.1"] },
     // Kimi K2 世代的历史变体:原先未建档,由 canon() 兜底自动建档(厂商被记为「其他」、颜色取默认灰),
     // 且 id 会随加载顺序漂移(如同一个「Kimi K2」可能被登记为 "Kimi K2" 或 "Kimi-k2")。
     // 四个变体按独立模型建档 —— 沿用 kimi-for-coding 的判断原则:未证实的同一性不合并。
@@ -111,7 +112,8 @@ window.MODEL_MAP = {
     { id: "Muse Glimmer",     vendor: "Meta",      color: "#2E90FF", aliases: ["Muse Glimmer", "muse-glimmer", "Muse Glimmer (high)", "Muse Glimmer-30B", "muse-glimmer-30b"] },
     { id: "A.X-K2",           vendor: "SK Telecom", color: "#8A8F98", aliases: ["A.X-K2", "a-x-k2", "A.X K2"] },
     { id: "K-EXAONE 2.0",     vendor: "LG AI Research", color: "#A14233", aliases: ["K-EXAONE 2.0", "k-exaone-2-0-0803", "K-EXAONE 2.0 (0803)"] },
-    { id: "Mistral Medium 3.5", vendor: "Mistral", color: "#FF8053", aliases: ["Mistral Medium 3.5", "mistral-medium-3-5"] },
+    // 源站两种写法("Mistral Medium 3.5" / 倒装 "Mistral 3.5 Medium")合并为同一 canonical。
+    { id: "Mistral Medium 3.5", vendor: "Mistral", color: "#FF8053", aliases: ["Mistral Medium 3.5", "mistral-medium-3-5", "Mistral 3.5 Medium", "mistral-3.5-medium", "Mistral-Medium-3.5"] },
     { id: "Nemotron 3.5 Lightning", vendor: "NVIDIA", color: "#86C40A", aliases: ["Nemotron 3.5 Lightning", "nemotron-3-5-lightning"] },
     { id: "Command A+",       vendor: "Cohere",    color: "#39594D", aliases: ["Command A+", "command-a-plus"] },
     // ===== AI 能力专项测试(atmeplz,2026-10-16 下线)方向榜补充的新模型(2026-09) =====
@@ -153,6 +155,7 @@ window.MODEL_MAP = {
     { id: "GLM 5",            vendor: "zAI",       color: "#7485FF", aliases: ["GLM 5", "glm-5"] },
     { id: "Kimi-K2.8-Preview", vendor: "Moonshot", color: "#7C5CFF", aliases: ["Kimi-K2.8-Preview", "kimi-k2.8-preview"] },
     { id: "Inkling Small",    vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling Small", "Inkling small", "inkling-small"] },
+    { id: "Inkling 2 Small",  vendor: "Thinking Machines", color: "#A3AEBA", aliases: ["Inkling 2 Small", "inkling-2-small"] },
     { id: "omen-alpha",       vendor: "STEALTH",   color: "#6C7DFF", aliases: ["omen-alpha", "OMEN-ALPHA"] },
     { id: "union-alpha",      vendor: "STEALTH",   color: "#7C8CFF", aliases: ["union-alpha", "UNION-ALPHA"] },
     // ModelDial 榜中的 "kimi-for-coding" 与该站的 "k3" 并列且分数不同(64.2 vs 72.5),
@@ -167,22 +170,25 @@ window.MODEL_MAP = {
     { id: "Grok 4.7",         vendor: "xAI",       color: "#878F9A", aliases: ["Grok 4.7", "grok-4.7", "grok-4.7-high", "grok-4.7-xhigh"] },
     { id: "GPT-6 Sol",        vendor: "OpenAI",    color: "#0A8F6A", aliases: ["GPT-6 Sol", "gpt-6-sol"] },
     { id: "GPT-6.1 Sol",      vendor: "OpenAI",    color: "#0C8560", aliases: ["GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol"] },
+    // 亿模亿样 slug 为 "gpt-6.2-sol"、展示名带「（灰度）」后缀,按同一模型归并。
+    { id: "GPT-6.2 Sol",      vendor: "OpenAI",    color: "#09805E", aliases: ["GPT-6.2 Sol", "gpt-6.2-sol", "gpt-6-2-sol"] },
     // AA Coding Agent Index 2026-10-27 收录 GPT-6.1 Terra 的 max/xhigh/high/medium/low 五档配置
     { id: "GPT-6.1 Terra",    vendor: "OpenAI",    color: "#12A77C", aliases: ["GPT-6.1 Terra", "gpt-6.1-terra", "gpt-6-1-terra"] },
     { id: "GPT-6 Luna",       vendor: "OpenAI",    color: "#15B893", aliases: ["GPT-6 Luna", "gpt-6-luna"] },
     { id: "Composer 2.5",     vendor: "Cursor",    color: "#F44E00", aliases: ["Composer 2.5", "composer-2.5", "composer-2-5"] },
     // SWE-1.x/2 为 Cognition(Devin)自研编码模型,harness 分别为 chisel/devin
     { id: "SWE-2",            vendor: "Cognition", color: "#C4703C", aliases: ["SWE-2", "swe-2"] },
+    { id: "SWE-2 Flash",      vendor: "Cognition", color: "#CE7A44", aliases: ["SWE-2 Flash", "swe-2-flash"] },
     { id: "SWE-1.7",          vendor: "Cognition", color: "#D07C46", aliases: ["SWE-1.7", "swe-1-7", "swe-1.7"] },
     { id: "SWE-1.6",          vendor: "Cognition", color: "#D98850", aliases: ["SWE-1.6", "swe-1-6", "swe-1.6"] },
     { id: "Kimi K2.7",        vendor: "Moonshot",  color: "#7C5CFF", aliases: ["Kimi K2.7", "kimi-k2.7", "Kimi-K2.7"] },
-    { id: "Mistral 3.5 Medium", vendor: "Mistral", color: "#FF8A66", aliases: ["Mistral 3.5 Medium", "mistral-3.5-medium", "Mistral-Medium-3.5"] },
     // ===== 亿模亿样(gallery.arenaofbias.icu)前端盲评榜补充登记的模型(2026-10-16) =====
     // 源站模型标识为 slug(如 qwen3.8-27b),模型展示名为 modelName;两者都登记为别名,
     // 使该榜与其它榜的写法自动合流,避免被自动建档成「其他」而把同一模型拆成两条。
     { id: "Qwen Latest Series Invite 2609", vendor: "Alibaba", color: "#FF9A3D", aliases: ["Qwen Latest Series Invite 2609", "qwen-latest-series-invite-2609"] },
     { id: "GPT-6 Astra Pro",  vendor: "OpenAI",    color: "#12A77C", aliases: ["GPT-6 Astra Pro", "gpt-6-astra-pro", "astra-pro"] },
     { id: "Gemini 4 Argon",   vendor: "Google",    color: "#5C99F2", aliases: ["Gemini 4 Argon", "gemini-4-argon"] },
+    { id: "Gemini 4 Carbon",  vendor: "Google",    color: "#74ABF3", aliases: ["Gemini 4 Carbon", "gemini-4-carbon", "gemini 4 carbon"] },
     { id: "Gemini 2.5 Pro",   vendor: "Google",    color: "#78AEF8", aliases: ["Gemini 2.5 Pro", "gemini-2.5-pro"] },
     { id: "Claude Haiku 5.5", vendor: "Anthropic", color: "#7C5240", aliases: ["Claude Haiku 5.5", "claude-haiku-5.5", "Haiku 5.5"] },
     { id: "DeepSeek R1",      vendor: "DeepSeek",  color: "#7B94FF", aliases: ["DeepSeek R1", "deepseek-r1"] },
