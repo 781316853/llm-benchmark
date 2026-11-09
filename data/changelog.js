@@ -6,8 +6,8 @@
 //   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
-  'updated': '2026-11-08',
-  'refreshedAt': '2026-11-09 06:20',
+  'updated': '2026-11-09',
+  'refreshedAt': '2026-11-09 09:50',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,7 +19,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '0.167.0',
@@ -1292,7 +1292,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '2.1.319',
@@ -3646,7 +3646,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '2.2.6',
@@ -9168,7 +9168,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '2.5.2',
@@ -10252,7 +10252,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10837,7 +10837,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '0.5.6',
@@ -11219,7 +11219,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '1.39.1',
@@ -11873,7 +11873,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '3.4.15',
@@ -13958,7 +13958,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14145,7 +14145,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '3.17.2',
@@ -14324,7 +14324,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '4.12.3',
@@ -15206,7 +15206,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 06:20',
+      'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
           'version': '5.11.0',

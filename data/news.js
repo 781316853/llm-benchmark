@@ -2,17 +2,80 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-08',
+  'updated': '2026-11-09',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '模型发布',
     '技术与洞察',
     '前瞻与传闻',
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-09',
+      'title': '恢复原价未及时公告，WorkBuddy 将返还积分差额',
+      'brief': 'WorkBuddy 发布说明称， DeepSeek-V4.1 Flash 于 9 月 10 日 上线，同步开启为期两周的五折积分活动，原定 9 月 24 日 结束，此后延长至 11 月 5 日 ，并于 11 月 5 日 14:00 起恢复原价。因这一调整未及时向用户公告，WorkBuddy 表示歉意。',
+      'url': 'https://mp.weixin.qq.com/s/SoYZS-V1A1ysYNxfBXlO9Q',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-09',
+      'title': 'OpenAI 员工征询用户意见：是否增设 Pro 50 档位',
+      'brief': 'OpenAI Codex 与 ChatGPT 团队成员 Tibo （@thsottiaux）发文澄清，所有 Pro 订阅方案均无 5 小时 限制。他称是看到一些混淆后作出说明，并给出各档方案相较 Plus 订阅方案的用量： Pro 100 为 10 倍 ， Pro 200 为 20 倍 ， Pro 500 为 50 倍 ，其中仅 Pro 500 包含 ultrafast 使用权限。',
+      'url': 'https://x.com/thsottiaux/status/2119305294291612140',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-09',
+      'title': 'NVIDIA 创始人黄仁勋承认对妻子不忠并道歉',
+      'brief': 'NVIDIA 董事会宣布启动独立调查，审查近期媒体有关其创始人兼 CEO Jensen Huang 成为外国情报行动目标的报道。',
+      'url': 'https://nvidianews.nvidia.com/news/a-message-to-our-company',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-09',
+      'title': 'DeepSeek Harness 负责人回应插件作者：内置功能可被插件替换',
+      'brief': 'DeepSeek Harness 团队负责人 Tianyi Cui 发文，回应插件作者的疑问：什么样的功能官方会做成内置，官方要做的话第三方插件是否还有意义？',
+      'url': 'https://x.com/tianyi/status/2119433744671273441',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-09',
+      'title': 'GPT-6.1 Sol 连续 3 次参与活体小鼠脑手术，定位误差减半',
+      'brief': '据《WIRED》报道及生物科技公司 Exin Therapeutics 联合创始人兼 CEO Gabriel Ocana-Santero 在 X 上公布， OpenAI 旗下模型 GPT-6.1 Sol 连续参与 三次 活体小鼠脑部手术，负责定位颅骨表面的解剖标志 Bregma 和 Lambda ，每次操作后由专业外科医生纠正识别位置，模型保存图像和测量数据供下次参考。',
+      'url': 'https://x.com/OcanaSantero/status/2118282298789650505',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-09',
+      'title': '报道称 Anthropic 34 亿美元买燃气发电机组',
+      'brief': '据英国《金融时报》报道， Anthropic 于 9 月下旬 斥资 34 亿美元 ，从美国得克萨斯州圣安东尼奥的设备供应商 OnePWR Solutions 手中接下总功率 1.7GW 的重型燃气发电机组订单，用于为数据中心供电，按已知交易记录是 AI 公司迄今规模最大的一笔发电设备采购。',
+      'url': 'https://ft.com/content/41bf5c6a-9735-4f1a-a8e3-2bcccad58ba0?syn-25a6b1a6=1',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-09',
+      'title': 'DeepMind 高管预告未来几周发布科学成果',
+      'brief': 'Google DeepMind 副总裁 Pushmeet Kohli 发文称，公司在多个项目中正观察到科学发现速度出现“真正的转变”，并预告外界将在未来几周的发布中看到这一变化的缩影。',
+      'url': 'https://x.com/pushmeet/status/2119373171321196892',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
+    {
+      'date': '2026-11-09',
+      'title': '用户反映 Grok Bot 额度消耗加快，Elon Musk 称将核查用量',
+      'brief': '多名用户在 X 上反映， Grok Bot 的订阅额度消耗明显加快， Elon Musk 对此回应称将核查用量问题。用户 Derek Neighbors 称， 200 美元 方案上周全速使用可维持 7 天 ，本周中等负载下只能用 14 小时 ；另有用户表示，离每周重置还有约 3 天 就把 Ultra 套餐额度用到上限。',
+      'url': 'https://x.com/elonmusk/status/2119415029812609301',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-11-08',
       'title': 'OpenAI 智能体 dots 可用验证码代用户登录',
@@ -68,46 +131,6 @@ window.NEWS = {
       'url': 'https://www.theinformation.com/briefings/anthropic-proceed-ipo-roadshow-next-week',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-07',
-      'title': 'Qwen 发海报预热新一代旗舰模型',
-      'brief': '阿里巴巴 Qwen 官方账号发布一张海报，画面写有「北冥有鱼 其名为_」，配文只有一句 The becoming begins。',
-      'url': 'https://x.com/Alibaba_Qwen/status/2118674834632978755',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-07',
-      'title': '阿里发布 MNN-Pocket-0.3B',
-      'brief': '阿里 MNN 团队发布并开源 MNN-Pocket-0.3B ，面向手机应用的有限算力和内存设计。该稠密语言模型约有 3 亿 参数，支持中英文指令交互，最长支持 32K token 上下文，以 Apache 2.0 许可证开源。其 INT4 量化的 MNN 部署版本体积为 173 MB 。团队称，模型在 iPhone 18 Pro 上通过 MNN 引擎离线运行时，平均解码速度约为 350 token/s 。',
-      'url': 'https://huggingface.co/taobao-mnn/MNN-Pocket-0.3B',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-07',
-      'title': 'Qoder CN 推出匿名模型 Qoduck 限时限量免费活动',
-      'brief': 'Qoder CN 面向所有新老个人用户推出匿名模型 Qoduck 限时免费活动， 11 月 7 日 起每日赠送免费使用额度，额度内调用不消耗 Credits ，该模型计费系数由 0.5× 降至 0.0× ，思考强度调至「最大」时同样免费。',
-      'url': 'https://docs.qoder.cn/events/qoduck-free',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-07',
-      'title': 'Google Antigravity 重置额度并上线语音模式',
-      'brief': '当地时间周五， Google Antigravity 负责人 Varun Mohan 为所有用户重置了 Gemini 和 Argon 额度，称本周更新较多，希望大家周末继续构建，下周还有更多更新。',
-      'url': 'https://antigravity.google/blog/antigravity-voice-mode',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-07',
-      'title': 'Google 重新设计 Antigravity，推出远程任务功能',
-      'brief': 'Google Antigravity 重新设计了 Antigravity 应用，称使其更加简洁流畅，使用起来也更加愉悦！',
-      'url': 'https://x.com/_mohansolo/status/2118478787566588009',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     }
   ]
 };
