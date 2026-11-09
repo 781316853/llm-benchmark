@@ -10,7 +10,7 @@ window.QUALITY = {
       'id': 'aa_coding_agents',
       'name': 'AA Coding Agent Index v2.0',
       'status': 'ok',
-      'modelCount': 33,
+      'modelCount': 35,
       'updated': '2026-11-09',
       'ageDays': 0,
       'completeness': 1,
@@ -54,7 +54,7 @@ window.QUALITY = {
       'id': 'arcagi3',
       'name': 'ARC-AGI-3',
       'status': 'ok',
-      'modelCount': 25,
+      'modelCount': 26,
       'updated': '2026-11-09',
       'ageDays': 0,
       'completeness': 1,
@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 76,
+      'modelCount': 77,
       'updated': '2026-11-09',
       'ageDays': 0,
       'completeness': 1,
@@ -98,7 +98,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 43,
+      'modelCount': 45,
       'updated': '2026-11-09',
       'ageDays': 0,
       'completeness': 1,
@@ -120,7 +120,7 @@ window.QUALITY = {
       'id': 'cursorbench',
       'name': 'CursorBench',
       'status': 'ok',
-      'modelCount': 19,
+      'modelCount': 20,
       'updated': '2026-11-09',
       'ageDays': 0,
       'completeness': 1,
@@ -230,10 +230,10 @@ window.QUALITY = {
       'id': 'programbench',
       'name': 'ProgramBench',
       'status': 'ok',
-      'modelCount': 75,
+      'modelCount': 76,
       'updated': '2026-11-09',
       'ageDays': 0,
-      'completeness': 0.973,
+      'completeness': 0.974,
       'fetchAttempts': 1,
       'errors': []
     },
@@ -296,7 +296,7 @@ window.QUALITY = {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
-      'modelCount': 125,
+      'modelCount': 127,
       'updated': '2026-11-09',
       'ageDays': 0,
       'completeness': 1,
@@ -757,9 +757,9 @@ window.QUALITY = {
   'completeness': {
     'aa_coding_agents': {
       'rate': 1,
-      'total': 33,
-      'complete': 33,
-      'modelCount': 33,
+      'total': 35,
+      'complete': 35,
+      'modelCount': 35,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -789,9 +789,9 @@ window.QUALITY = {
     },
     'arcagi3': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 26,
+      'complete': 26,
+      'modelCount': 26,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -813,17 +813,17 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 76,
-      'complete': 76,
-      'modelCount': 76,
+      'total': 77,
+      'complete': 77,
+      'modelCount': 77,
       'missingFields': {},
       'flag': 'ok'
     },
     'automationbench': {
       'rate': 1,
-      'total': 43,
-      'complete': 43,
-      'modelCount': 43,
+      'total': 45,
+      'complete': 45,
+      'modelCount': 45,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -839,9 +839,9 @@ window.QUALITY = {
     },
     'cursorbench': {
       'rate': 1,
-      'total': 19,
-      'complete': 19,
-      'modelCount': 19,
+      'total': 20,
+      'complete': 20,
+      'modelCount': 20,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -920,10 +920,10 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'programbench': {
-      'rate': 0.973,
-      'total': 75,
-      'complete': 73,
-      'modelCount': 75,
+      'rate': 0.974,
+      'total': 76,
+      'complete': 74,
+      'modelCount': 76,
       'missingFields': {
         'score': 2
       },
@@ -971,9 +971,9 @@ window.QUALITY = {
     },
     'vals_vibe_code': {
       'rate': 1,
-      'total': 125,
-      'complete': 125,
-      'modelCount': 125,
+      'total': 127,
+      'complete': 127,
+      'modelCount': 127,
       'missingFields': {},
       'flag': 'ok'
     }

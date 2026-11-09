@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-09',
-  'refreshedAt': '2026-11-09 18:06',
+  'refreshedAt': '2026-11-10 04:57',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -18,7 +18,7 @@ window.CHANGELOG = {
       'kind': 'github',
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'stale',
-      'error': 'aborted',
+      'error': 'HTTP 504 https://api.github.com/repos/openai/codex/releases?per_page=100&page=1',
       'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
@@ -1292,8 +1292,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
+        {
+          'version': '2.1.321',
+          'title': 'v2.1.321',
+          'date': '2026-11-09',
+          'dateRaw': '2026-11-09T19:22:30Z',
+          'tags': [],
+          'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.321',
+          'body': '## 更改内容添加了\n\n- Claude Fable 5.2 （ `claude-fable-5-2` ） ，现在是默认的Fable模型— 100万上下文，每Mtok $ 8/$ 40 ， $ 0.20/Mtok缓存读数\n- <file>向“claude remote-control”添加了“--settings” ，它将设置文件应用于启动的每个会话；如果文件更改，则在重新启动“claude remote-control”之前不会启动新会话\n- 修复了服务器重定向时MCP OAuth请求向另一台主机发送刷新令牌等密钥的问题\n- 修复了在没有权限提示的情况下在沙盒外部运行只读Bash命令的情况\n- 修复了Bash权限检查判断文件写入来自错误文件夹且未提示的问题\n- 修复了拒绝规则和protected-file提示不适用于“cp”或“mv”写入目录的文件\n- 修复了切换到包含寓言的企业版座位上的寓言后显示的“从使用积分中抽取”注释\n- 修复了当第一个模型在回复之前被阻止时，回退模型有时会拒绝请求或提及停止的响应\n- 修复了“claude mcp login”在每次您再次登录Claude Code注册的服务器时打印SEP-2352颁发者警告的问题\n- 修复了“NotebookEdit”在网络路径（ UNC共享、WSL文件夹、“/net”装载）上名为no cell的调用时删除或覆盖笔记本的第一个单元格的问题\n- 已修复编辑在网络路径（ UNC共享、WSL文件夹、“/net”装载）上更改多个匹配项中的第一个匹配项、替换空“old_string”上的整个文件或将笔记本编辑为文本的问题\n- 修复了“/config”在新会话以自动模式启动时显示“手动”为默认权限模式的问题；现在按“自动（默认）”上的空格键可保存“不要询问” ，而不是“计划”\n- Windows ：修复了当会话的工作目录有小写驱动器号时，第一个shell命令后通过“watchPaths”设置的路径的“FileChanged”钩子停止的问题\n- 修复了`--plugin-dir.`和`--plugin-dir./builtin`将Claude Code内置插件的生成类型文件写入`builtin`文件夹的问题\n- 当确切的令牌计数不可用时，固定的上下文使用率估计过度计算工具定义\n- 已修复“/compact”在网络和移动设备上的“远程控制”中显示两次的问题\n- 修复了插件自动更新和“/plugin”市场更新为存储库的每个工作树或文件夹再次下载插件的问题\n- 修复了自动模式丢失在Claude应答之前对话被压缩时已开始转弯的后台子代理报告\n- 修复了项目技能、命令和代理在文件夹被删除并在会话中途返回后仍然缺失的问题，例如使用“git stash” ，包括在进入工作树后\n- 修复了“claude -p”有时会告诉Claude ，当后台命令在10点后停止时，会显示30分钟\n- 修复了匹配会话自身父进程的云会话中的“pkill”、“pgrep”和“pidwait”\n- 修复了Chrome浏览器和计算机中的Claude在父进程退出代理后使用服务器进程保持活跃，从而使连接停止的问题\n- 修复了一个大钩子输出，将Claude指向一个文件，该文件保存了来自同一工具调用的另一个钩子的输出\n- 修复了嵌入Claude Code的应用程序在两者都被要求时获取自己的PreToolUse钩子的“询问”原因而不是另一个钩子的问题\n- 修复了PreToolUse挂钩的`ask`在另一个挂钩的`defer`首先完成并且无法兑现时丢失的问题\n- 修复了权限提示和后台任务的罕见崩溃问题\n- 修复了Claude进入工作树后，项目技能、命令和代理从SDK和桌面会话菜单中消失的问题\n- 修复了macOS上的“/desktop”在“~/Applications”中时未安装Claude Desktop的问题\n- 修复了从预启动流程启动的Claude Desktop会话中缺少OpenTelemetry存储库属性(`vcs. *`)的问题\n- 修复了WebFetch在读取页面的模型未返回任何文本时将“模型无响应”作为页面内容传递给Claude的问题；现在调用失败并出现明显错误\n- 修复了系统时钟在Claude Code启动时后退时，屏幕阅读器模式在启动时延迟提示的问题\n- 修复了命令的面板有时在对话框关闭后不会返回，直到下次重绘时才会在屏幕上显示面板或提示\n- 修复了当桌面应用程序具有相同名称的MCP服务器或扩展名时，在Claude Desktop Code选项卡会话中的第一条消息后，项目的MCP服务器断开连接的问题\n- 修复了在回复中途连接中断时以“API错误： EPROTO ： TLS握手失败”结尾的转弯；保留部分回复或重试请求，与2.1.302之前一样\n- 修复了从大文件中反复读取单行的长会话中的高内存使用问题\n- 修复了快速模式在速率受限、超载或失败时丢失回复、切换模型或重试几分钟的问题；它现在首先在同一型号上尝试标准速度\n- 修复了一个请求，其中包含的后台客服代表报告比Claude在等待期间停车后的预期要多得多\n- 修复了从Claude桌面代码选项卡会话到其他会话的消息在您键入后在Claude仍在工作时保持暂停\n- 修复了“claude agents”忽略“--permission-mode”、“--dangerously-skip-permissions”、“--model”、“--effort”或“--agent”在“agents”之前键入标记（例如“--verbose” ）的问题\n- 修复了远程控制在桌面应用程序中显示为“登录已过期”而其连接仍处于打开状态的情况，因为应用程序暂时无法交出登录令牌\n- 修复了运行回合中间发送的“稍后排队”到达克劳德的远程控制消息\n- 修复了当git状态失败时，在会话开始读取时给予Claude的git状态为clean ；现在它读取为unavailable\n- 修复了在会话开始时给予Claude的git状态，显示第一个列出的文件在更改未暂存时暂存\n- 修复了当云会话中的连接器列出具有很长名称的资源时出现挂起或内存不足崩溃的问题\n- 修复了会话历史记录仍在上传时，远程控制在连接关闭后显示为已连接的问题\n- 修复了从座席视图返回对话时屏幕阅读器模式关闭的问题\n- 修复了屏幕阅读器模式y/n问题，在打开问题时键入的文本末尾将杂散的“y”视为是\n- 修复了云会话，告知Claude在允许主机且网络代理无法连接时可能不允许主机\n- 修复了MCP服务器在重新连接后或在其工具仍在加载时更改会话目录后有时显示为未连接任何工具的问题\n- 修复了Claude同时发送多个Bash命令，而之前的文件夹更改了文件夹时， Bash命令有时在错误的文件夹中运行的问题\n- 修复了当上传从代理服务器获取HTTP 507时， Claude从云和远程控制会话发送的文件同时失败的问题；上传现在得到第二次尝试\n- 修复了在读取成绩单时内存耗尽时未保存新消息以及“claude -p”、SDK和VS Code会话挂起的问题\n- 修复了登录、令牌刷新和注销在网络上的某些内容接受连接但从未应答TLS握手时无限期等待的问题\n- 修复了当Claude应用程序的名称隐藏文本方向或控制字符时，以不同名称显示的已发送文件； Claude现在拒绝发送此类文件\n- 修复了模型回复工具调用后将请求运行到其末尾的子代理进度摘要\n- 修复了Bash读取，例如`grep -r foo \'$ PWD/src\'`在键入路径的同一命令运行时请求权限而不询问\n- 修复了当“桌面”设置包含比网关更新的字段（例如托管MCP服务器的“oauth.omitResource” ）时， Claude应用程序网关拒绝启动的问题；它现在发出警告并提供服务\n- 修复了“.zshrc”设置为“KSH_OPTION_PRINT”的zsh用户的Bash命令返回为空的问题\n- macOS ：已修复有效MDM配置文件读取缓慢时启动时“无法读取托管策略设置”的问题：读取重试一次，超时现在报告为超时\n- 修复了客服代表视图在未键入任何内容的情况下重新启动更新时擦除另一个客服代表视图的已保存输入文本的问题\n- 修复了当“UserPromptSubmit”挂钩阻止重播权限应答时，远程会话在重新启动后未给予回复的问题；这些挂钩不再在该重播上运行\n- 修复了“claude remote-control”在终端输入结束时第一次运行问题时接受没有Enter的“y”类型的问题\n- 修复了Claude Desktop未在其策略没有“code:”规则的Claude应用程序网关后面显示支出限制警告的问题\n- 修复了某些插件的全屏会话，当工具结果缩短时从屏幕顶部滚动时出现错误\n- 修正了模型使用工具调用回复时提出额外API请求的提示建议\n- 修复了stdio和HTTP MCP服务器上的“PreToolUse” “mcp_tool”钩子在答案超过16 MiB时被跳过的问题；工具调用现在被拒绝\n- 固定技能和命令名称持有一些字体绘制为空白的巴姆姆字母：它们现在被拒绝\n- 修复了Linux上的“claude -p”在完全NFS导出或已用完的NFS配额丢失成绩单行时静默退出0的问题：它现在打印错误，并在文本和json输出中退出1\n- 修复了当服务中断云会话且没有人按下“停止”时，后台代理被用户报告为停止并拒绝恢复的问题\n- 修复了编辑失败时（例如，在打开权限提示时更改笔记本时）将成功报告给挂钩和遥测的问题\n- 修复了当存储的MCP登录记录为空时，启动时出现空白屏幕或无应答，以及空的“claude mcp list”输出的问题\n- 修复了工件工具告诉克劳德在工件的数据库集合太大而无法排序时添加过滤器的问题；它现在说要逐页读取集合页面并对结果进行排序\n- 修复了重新启动的云会话在Claude第一次回复之前重新启动时丢弃带有大图像的消息\n- 修复了重新启动的云会话导致子代理的消息未应答的问题\n- 修复了当您停止或暂停正在运行的工作流时未被告知Claude的问题，因此它不再表示工作流仍在运行\n- 改进了“/模型”选取器： “更多模型”现在是其他模型下方的未编号行，旧模型在其下打开而不对其余模型重新编号\n- 网关：改进了繁忙副本的支出限制，现在可以更快地跳过更少的支票和记录支出\n- 改进了Claude Code和“/device”页面上Claude应用程序网关的登录限制消息：它们不再命名网关设置，网关自己的日志仍然命名\n- 改进的“claude install”和安装脚本：完成时间缩短2到4秒\n- 改进了进程崩溃的远程控制会话可以提取新消息的速度\n- Windows ：通过在路径上查找程序而无需启动辅助进程，改进了启动和第一命令时间\n- 改进了无头会话、桌面应用和VS Code的自动模式：来自一起等待的后台子代理的报告在一个模型调用中得到应答，就像在终端中一样\n- 改进了无法设置其工作树的“claude --bg --worktree”会话的代理视图行：它现在从一开始就显示错误，而不是内部标记或其最后200个字符\n- 改进了工件在另一个组织中时显示的消息：仅当工件是您的工件时才提供“/login” ， Claude现在表示帐户移动后可能会显示副本的位置\n- 改进了会话，在一个请求中包含的图像超出了容量： Claude被告知是否已经看到掉落的图像，并且对未更改的图像的重复读取是有限的\n- 改进了“claude遥控器”的消息，以解决未回答的首次运行问题：现在每个人都在说下一步该怎么做\n- 通过更快地加载受信任的TLS证书来缩短启动时间\n- 改进了Claude应用程序网关错误消息，以显示网关的地址，而无需任何用户名或密码\n- 改进了Claude应用程序网关的支出限制错误：重置现在显示在您的当地时间，例如“重置下午4点（美国/洛杉矶）”\n- Windows ：通过标准的Windows版Git安装，不再检查每次启动时要运行的git.exe ，从而缩短了启动时间\n- 更新了会话反馈消息和“allowedProviders”设置说明，以将Ultra与Pro和Max一起命名，并更新了“forceLoginMethod”说明，以涵盖每个付费Claude计划\n- 更新了捆绑数据采集技能，以建议多个比率的计量表列表，每个项目一行，每个比率都有自己的限制\n- 更新“升级到最大值”选项为“升级到最大值或超级”\n- 已将Claude写入的模组更改为打开，而无需在自动和旁路模式下询问，即使使用托管的`allowUnsandboxedCommands: false`或`allowManagedDomainsOnly` ，并且不以`dontAsk`模式加载\n- 更改了mods自己的工具调用(`$ .tool.call`, `$ .mcp.call`) ，即使在您自己的询问规则下或在`dontAsk\'和\'-p`运行中，也不会引发权限提示；拒绝规则和组织策略仍然适用\n- 将保存的寓言5.1模型选择更改为“寓言” ：在专业和Max计划上，在您的组织允许的情况下，在团队和企业计划上；使用“/model claude-fable-5-1”切换回去\n- 将“/fast”、“/config”和“/model”中的快速模式标签更改为支持快速模式时命名当前模型，并从VS代码行中删除“（仅Opus ）”\n- 更改了嵌套技能加载：当Claude处理其中的文件时， `~/.claude/plugins`中的\'.claude/skills\'文件夹不再加载\n- 自托管运行器：已将服务器因不需要而拒绝的按需运行器（会话已结束或暂停，工单已取代）更改为退出0而不是1\n- Windows ：更改了Claude Code查找其自身启动的程序（如git ）的方式，以跳过相对和UNC路径条目以及到网络共享的链接，并从设置中获取路径更改\n- 更改了非交互式会话中的OpenTelemetry钩子事件，以便在Bash和PowerShell调用后从`num_hooks`和`num_success`中保留两个内置钩子\n- 更改了Claude桌面代码选项卡会话在等待您再次键入之前可以发送到其他会话的消息数量，从10个更改为20个\n- 更改了“claude -p”和SDK会话中的“AskUserQuestion” ，以拒绝设置未记录的“afkTimeoutMs”输入字段的主机权限应答\n- 更改了托管的“extraKnownMarketplaces” ：无法从另一个来源添加声明的名称，隐藏来自其他地方的条目，并从中重新安装声明的市场列表的插件\n- 更改了运行Claude Code的应用程序提供的Chrome中的Claude工具，例如Claude桌面应用程序的“代码”选项卡，以遵循贵组织的Chrome中的Claude政策\n- 在Claude应用程序网关中更改了“policy_mode: layered” ：托管MCP服务器现在累加到每个匹配的策略上，包括“match: {}” ，因此升级后已经在其上的网关提供更多服务\n- 网关：更改了基岩、顶点和铸造上游，以忽略网关环境中的`ANTHROPIC_*_BASE_URL`变量。 在上游设置`base_url`以使用其他端点\n- 更改了无头会话，以便在文件更改时在“.claude/skills”中重新加载MOD ；设置“CLAUDE_CODE_PLUGIN_DIR_WATCH = 0”以关闭此功能\n- 更改了网络安全区块上的网络验证计划句子，改为使用与claude.ai相同的词语\n- 更改了Cowork云会话： PostToolUse钩子不能再替换AskUserQuestion的答案或ExitPlanMode结果中的计划； Claude读取原始文件\n- 更改了由路径拼写的“cp”和“mv” ，例如“/bin/cp” ，以获得与“cp”和“mv”相同的路径检查\n- 更改了后台命令通知和TaskStop结果，以仅显示超过1,000个字符的命令的开始和结束，从而保存上下文\n- 更改了工件设计指南，将Inter和Space Grotesk视为良好的默认字体\n- 更改了帐户电子邮件检查，仅拒绝保存您的电子邮件并命名用户代理的shell命令，而无需询问，因此其他命令和计划的运行不再在其提示符下停止\n- 已更改远程控制会话以保留启动时所在的文件夹：连接的客户端无法再将会话移动到另一个文件夹\n- 更改了来自未声明源的托管“extraKnownMarketplaces”接管：保存的数据被保留为“cleanupPeriodDays” ，以及选项和秘密，直到“claude plugin restore-set-aside”\n- [VSCode]当同时设置了身份验证令牌和API密钥时，在提示框上方添加了一个警告，与终端的启动警告相匹配\n- [VSCode]修复了插件的权限请求显示带有隐藏字符的名称：它现在读取“a plugin”',
+          'h': 'a577e588'
+        },
         {
           'version': '2.1.319',
           'title': 'v2.1.319',
@@ -1311,8 +1321,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-04T00:01:03Z',
           'tags': [],
           'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.318',
-          'body': '## 有哪些变化\n\n- 当Claude Code要求打开其在会话中编写的mod时，添加了您的答案记录\n- 在Claude应用程序网关的“mantle”上游添加了“assume_role” ，用于另一个AWS帐户中的角色以及每个开发人员的AWS成本归因\n- 为mod的`$ .model.fork`添加了\'effort`选项，因此无论会话使用什么工作量，快速副作业都可以以`low`运行；结果报告发送的工作量\n- 将存储的claude.ai登录结束日期添加到“claude auth status” （ “loginExpiresAt” ）和“claude -p” JSON结果（ “credential_expires_at” ）\n- 为“claude -p”文本输出添加了一行stderr警告，从存储的claude.ai登录结束前10天开始\n- 修复了在格式错误的工具调用重试耗尽后， “--continue”有时会丢失早期对话的问题（ 2.1.314中的回归）\n- 修复了许多正在运行的Bash命令在内存增长时停止的macOS会话\n- 修复了在发送消息后或出现慢速提示之前键入的键回答权限提示的问题\n- 修复了当无法在共享网络主目录上更新配置文件时， “/logout”、“claude auth logout”和“claude mcp remove”报告成功，以及对信任、同意或MCP设置的更改被丢弃而无字的问题\n- 修复了当另一个终端或主机再次登录到同一主页上的同一帐户和组织时，退出“未登录”的作业\n- 修复了“claude mcp add”和“remove”在没有锁定的情况下写入配置的问题：他们现在等待它或退出1 ，尽管另一个作业的保存仍然可以替换已保存的服务器\n- 修复了“claude plugin”命令在保存缓慢令牌刷新之前退出的问题，这可能会导致您在下次运行时注销\n- 修复了“claude插件验证”传递“claude插件市场添加”拒绝的自定义命名市场文件的问题\n- 修复了在每次启动时在版本探测器上退出的stdio MCP服务器被重新探测的问题；由于自身原因而在3秒内死亡的服务器也被固定在旧式握手上7天\n- 修复了启动时会话被同一台机器上的另一个登录存储的“allowedProviders”列表拒绝的问题\n- 已修复将对话替换为不是摘要的回复的闲置压缩\n- 修复了后台子代理运行时大约每30秒重新出现的“现在使用使用积分”通知\n- 修复了失败的自定义斜杠命令，或者只有Claude可以调用的斜杠命令，在“claude -p”和SDK会话中不打印任何内容\n- 修复了当API错误在mod挂钩“turn.step”时切断回复时， “claude -p”和代理SDK会话报告成功的问题\n- 修复了在无头会话中停止后仍在运行的模型更改后立即发送的消息：现在停止取消或停止它，就像队列消息一样\n- 修复了在空闲的非交互式会话退出时使用其最后提示重新创建已删除的会话转录\n- 修复了在更新或版本清理删除仍在运行的进程的二进制文件后， “claude remote-control”主机、后台守护程序和自托管运行程序无法启动新会话（ “spawn ENOENT” ）的问题\n- 修复了正在运行的由另一个用户拥有的Claude Code进程（例如由“sudo claude”留下的进程）被版本清理视为死亡，这可能会删除其二进制文件\n- 已修复在连接失败后将会话显示为可用的“/remote-control”\n- 修复了404请求失败时的“/设计吊销”报告成功问题\n- 修复了在会话的启动文件夹中运行自托管运行程序或云会话重新启动后批准的shell命令，而不是请求该命令的文件夹；如果无法输入该文件夹，则该命令未运行\n- 修复了云会话重新启动后经批准的连接器工具不可用时Claude未被告知的问题\n- 修复了当服务拒绝上传几分钟时，云会话在转弯过程中停止的问题\n- 修复了“设置”挂钩写入“CLAUDE_ENV_FILE”的变量在某些云会话中未到达Bash工具的问题\n- 修复了在工具调用切断响应或删除被拒绝的图像或文档后， iPhone应用程序继续运行时显示云会话已完成的问题\n- 修复了重新启动的会话重新发送因API错误而失败的消息的问题，该问题发生在等待其后面的新消息之前\n- 修复了在Claude读取大图像或重试工具调用后立即重新启动时，重新启动的会话中断的问题\n- 修复了“NODE_EXTRA_CA_CERTS”文件为空（而不是PEM ）或以损坏的证书开头时失败的每个连接：现在使用可读证书，并在stderr上显示警告\n- 修复了在使用限制后恢复时重新运行已完成代理的工作流\n- 修复了模型无法使用的云会话计数工具中的“/mcp” ；服务器的行现在显示其可用工具的数量\n- 修复了Claude在PushNotification调用中离开状态字段时的重复通知\n- 修复了请求中图片太大的错误，该请求中超过20张图片的限制始终为2000px ；现在它显示了API的限制\n- 修复了对话框打开时后台shell详细信息中的运行时未更新的问题\n- 修复了MOD的“turn.step”钩子使停止回复完成，作为无头运行的成功\n- 修复了保留清理离开仅运行“claude -p”且没有“~/.claude.json”备份的主页的问题：现在，在删除最后一个好的备份之前，它需要重新备份\n- 修复了当网络主目录没有数据空间但仍需要新文件时，存储的登录名被空文件替换的问题\n- 修复了当令牌属于允许的组织时，在具有`forceLoginOrgUUID`的计算机上启动时，来自`setup-token\'的令牌被拒绝的问题\n- 修复了用默认值替换无效JSON的`~/.claude.json\'的非交互式启动；现在启动失败，说明如何还原文件，并保持原样（ anthropics/claude-code # 87551 ）\n- 修复了空的`~/.claude.json` ，没有备份被报告为损坏； Claude Code现在像文件丢失时一样启动\n- 修复了为损坏或丢失的`~/.claude.json`命名空备份或截止备份或在只读文件上失败而打印的恢复命令\n- 修复了存储的claude.ai登录达到其时间限制时的登录失败：它现在这样说，并且在“claude -p”名称中为“claude auth login”和“claude setup-token”\n- 改进了“~/.claude.json”、设置文件和存储的登录名如何保存在共享网络主目录中：它们不太经常被删除、短暂清空或替换为近空或较旧的副本\n- 改进了网络文件系统上的会话，以便在配置文件被错误地报告为丢失时再次查看，因此，如果没有MCP服务器和受信任的文件夹，开始会话的数量就会减少\n- 改进的MCP工具错误：加载工具之前进行的调用现在返回其输入架构\n- 当Bash工具运行macOS的内置`/bin/bash`时，提高了git提交和拉取请求创建的可靠性\n- 改进了使用限制菜单中的“向管理员询问更多使用情况”功能，以便一步即可发送请求\n- 改进了远程会话在暂停或睡眠后重新连接的速度\n- 改进您应该知道吐司说“再试一次”而不是“按2” ，这仅适用于终端\n- 提高自动更新的可靠性：验证版本时出现短暂的网络故障，现在立即重试，而不是等待下一次检查\n- 改进了无人值守运行（ `claude -p` ， SDK应用程序） ，以停止在每次运行时重写`~/.claude.json\'\n- 已将Claude代码更改为在IDE终端中启动时不再安装或更新IDE扩展；请从外部终端或编辑器的扩展视图使用“/ide”\n- 当“标记消息时切换模型”设置为“每次询问”时，将子代理更改为停止而不是切换模型\n- 更改了后台子代理，以便在所有提供程序上在3分钟后将shell命令移动到后台，因此提示缓存在运行时不会过期\n- 更改了Bedrock、Vertex、Foundry或遥测关闭状态下的子代理进度摘要：在冷提示缓存上，现在可以最多等待5分钟等待子代理的待定响应\n- 更改了mod在「prompt.submit」中附加的内容，以保留在用户的轮流中，而不是作为系统消息外出\n- 更改了“deniedMcpServers” URL条目，以阻止上游URL匹配的Anthropic提供的服务器，以及云会话和自托管运行程序中的连接器，其中会话被赋予连接器自己的URL ；否则按名称拒绝连接器\n- 已将“/权限”规则详细信息、内置规则和删除确认视图更改为使用标准对话框；按Ctrl + C两次后退或取消而不是退出\n- 更改了`/claude-api managed-agents-onboard` ，以提供新的客服代表内置工具和快速入门模板的MCP工具，默认情况下，与Claude控制台匹配的“自动”权限策略（ “判断风险操作” ） ；说“运行而不询问”以选择退出\n- 删除了在恢复2.1.286或更早版本开始的对话时保留模型早期思维的2.1.288修复；现在可以放弃该思维\n- 网关：当来自联合(`external_account`)凭据文件的Google访问令牌即将过期时，添加了一个日志警告\n- 网关：改进了有关“listen.trusted_proxies”的日志提示：他们现在只列出一个将连接地址添加到“X-Forwarded-For”本身的代理\n- 网关：改进了AWS CountTokens在Amazon Bedrock上发生故障时的警告：它说Claude Code ，而不是网关，在501之后计数，并且仅在AWS拒绝访问时指向IAM\n- 自托管运行器：将“CLAUDE_RUNNER_SPAWN_REASON”添加到编排器的生成运行器钩子环境中：为什么Anthropic发送了请求（例如“RUNNER_LOST” ， “RESUMED” ） ；未发送时未设置\n- 自托管运行器：当“--release-idle-session-min”是没有值的最后一个参数（仍然被忽略）或只有空格的值（仍然读作“0” ）时，添加了启动警告\n- 自托管运行器：更改了编排器的日志行： `ok session = …`现在在stdout （仅限调试， stderr ）上的每个日志级别打印`jti = …`之后的`reason = …` ， `nack session = …`在\'retryable = …`之后以`reason = …`结束其字段；更新匹配`retryable = true:`或`retryable = false:`的脚本\n- 远程控制：修复了会话的工作文件夹丢失时的误导性“生成错误： ENOENT” ；错误现在命名文件夹\n- 远程控制：改进了标题：当应用程序未设置分叉时，创建分叉的终端分叉： “名称（分叉2 ）”\n- [VSCode]修复了登录组织设置拒绝每分钟在后台启动新的Claude Code流程的窗口\n- [VSCode]修复了聊天面板错误横幅中的一个长单词将其关闭按钮推出视图的问题\n- [VSCode]改进登录屏幕，显示登录状态检查失败时Claude Code打印的内容\n- [Cloud sessions]添加了No repository选项： Anthropic托管环境中的云会话现在可以在不选择存储库的情况下启动\n- [Cloud sessions]在云会话中添加了常用的Chrome名称，因此Playwright以外的工具可以通过google-chrome和CHROME_PATH找到内置的Chromium\n- 【云会话】在删除云会话环境时显示的卡片中添加了新会话按钮，其中消息框处于隐藏状态\n- [云会话]修复了读取云会话中的GitHub Actions日志的问题： `gh run view --log`和`gh api`日志请求现在可以在大多数环境中获取日志，而不是无法访问的重定向\n- [云会话]改进了大多数在云和远程控制会话中创建PR失败消息：他们现在给出了GitHub的原因或链接，而不是说重试\n- [云会话]更改了连接器搜索结果，以告诉Claude搜索仅覆盖连接器目录的一部分\n- [远程控制]修复了在环境菜单的“远程控制”行中看起来完全相同的一个存储库的并行签出；现在每个存储库都显示自己的文件夹名称\n- [Claude Tag]修复了Claude Tag管理员设置中的键盘焦点和屏幕阅读器公告；按连接表单中的Escape键不再关闭“添加”对话框\n- [代码审查]改进了代码审查分析页面，以便在服务器或网络出现故障后重试一次，然后显示“重试”横幅而不是空卡',
-          'h': '603664b0'
+          'body': '## What\'s changed\n\n- Added a record of your answer when Claude Code asks to turn on the mods it writes in a session\n- Added `assume_role` on `mantle` upstreams of the Claude apps gateway, for a role in another AWS account and for per-developer AWS cost attribution\n- Added an `effort` option to a mod\'s `$.model.fork`, so a quick side job can run at `low` whatever effort the session uses; the result reports the effort sent\n- Added the date a stored claude.ai sign-in ends to `claude auth status` (`loginExpiresAt`) and to `claude -p` JSON results (`credential_expires_at`)\n- Added a one-line stderr warning to `claude -p` text output, starting 10 days before a stored claude.ai sign-in ends\n- Fixed `--continue` sometimes losing the earlier conversation after a malformed tool call\'s retries ran out (regression in 2.1.314)\n- Fixed macOS sessions with many running Bash commands stalling while memory grew\n- Fixed permission prompts being answered by keys typed just after sending a message, or before a slow prompt appeared\n- Fixed `/logout`, `claude auth logout` and `claude mcp remove` reporting success, and changes to trust, consent or MCP settings being dropped with no word, when the config file could not be updated on a shared network home directory\n- Fixed jobs exiting with `Not logged in` when another terminal or host signs in again to the same account and organization on the same home\n- Fixed `claude mcp add` and `remove` writing the config without its lock: they now wait for it or exit 1, though another job\'s save can still replace a saved server\n- Fixed `claude plugin` commands exiting before a slow token refresh was saved, which could sign you out on the next run\n- Fixed `claude plugin validate` passing a custom-named marketplace file that `claude plugin marketplace add` rejects\n- Fixed stdio MCP servers that exit on the version probe being re-probed on every start; a server that dies in under 3s for its own reason is also pinned to the legacy handshake for 7 days\n- Fixed sessions being refused at startup by an `allowedProviders` list that another login on the same machine had stored\n- Fixed idle compaction replacing a conversation with a reply that was not a summary\n- Fixed the \'Now using usage credits\' notice reappearing about every 30 seconds while a background subagent is running\n- Fixed custom slash commands that fail, or that only Claude can invoke, printing nothing in `claude -p` and SDK sessions\n- Fixed `claude -p` and Agent SDK sessions reporting success when an API error cut off a reply while a mod hooked `turn.step`\n- Fixed a message sent right after a model change still running after Stop in headless sessions: Stop now cancels or stops it as it would a queued message\n- Fixed a deleted session transcript being re-created with its last prompt when an idle non-interactive session exited\n- Fixed `claude remote-control` hosts, the background daemon and self-hosted runners failing to start new sessions (`spawn ENOENT`) after an update or version cleanup removed the binary of a still-running process\n- Fixed a running Claude Code process owned by another user (for example one left by `sudo claude`) being treated as dead by version cleanup, which could delete its binary\n- Fixed `/remote-control` showing a session as available after a failed connection\n- Fixed `/design revoke` reporting success when the request failed with a 404\n- Fixed a shell command approved after a self-hosted runner or cloud session restart running in the session\'s start folder, not the folder it was asked in; if that folder can\'t be entered, it is not run\n- Fixed Claude not being told when an approved connector tool was unavailable after a cloud session restart\n- Fixed cloud sessions being stopped in the middle of a turn when the service refuses uploads for several minutes\n- Fixed variables a `Setup` hook writes to `CLAUDE_ENV_FILE` not reaching the Bash tool in some cloud sessions\n- Fixed the iPhone app showing a cloud session\'s turn as finished while it kept running, after a response was cut off at a tool call or a refused image or document was removed\n- Fixed a restarted session re-sending a message that failed with an API error, ahead of the newer message waiting behind it\n- Fixed a restarted session dropping its interrupted turn when the restart came right after Claude read a large image or retried a tool call\n- Fixed every connection failing when the `NODE_EXTRA_CA_CERTS` file is empty, not PEM, or starts with a damaged certificate: readable certificates are now used, with a warning on stderr\n- Fixed workflows re-running finished agents when resumed after a usage limit\n- Fixed `/mcp` in cloud sessions counting tools the model can\'t use; a server\'s row now shows how many of its tools are available\n- Fixed a duplicate notification when Claude left the status field out of a PushNotification call\n- Fixed the error for a too-large image in a request with more than 20 images always saying the limit was 2000px; it now shows the API\'s limit\n- Fixed the runtime in background shell details not updating while the dialog is open\n- Fixed a mod\'s `turn.step` hook making a stopped reply finish as a success in headless runs\n- Fixed retention cleanup leaving a home that only runs `claude -p` with no `~/.claude.json` backup: it now takes a fresh backup before deleting the last good one\n- Fixed the stored login being replaced by an empty file when a network home directory has no room left for data but still takes new files\n- Fixed tokens from `setup-token` being refused at start on machines with `forceLoginOrgUUID`, when the token belongs to a permitted organization\n- Fixed non-interactive launches replacing a `~/.claude.json` that isn\'t valid JSON with defaults; the start now fails, says how to restore the file, and leaves it as is (anthropics/claude-code#87551)\n- Fixed an empty `~/.claude.json` with no backup being reported as corrupted; Claude Code now starts as it does when the file is missing\n- Fixed the restore command printed for a damaged or missing `~/.claude.json` naming an empty or cut-off backup, or failing on a read-only file\n- Fixed the sign-in failure when a stored claude.ai login reaches its time limit: it now says so, and in `claude -p` names `claude auth login` and `claude setup-token`\n- Improved how `~/.claude.json`, settings files and the stored login survive saves on shared network home directories: they are less often deleted, briefly emptied or replaced by a near-empty or older copy\n- Improved sessions on network file systems to look again when the configuration file is wrongly reported as missing, so fewer start without your MCP servers and trusted folders\n- Improved MCP tool errors: a call made before the tool is loaded now returns its input schema\n- Improved the reliability of git commits and pull request creation when the Bash tool runs macOS\'s built-in `/bin/bash`\n- Improved \'Ask your admin for more usage\' in the usage limit menu to send the request in one step\n- Improved how fast remote sessions reconnect after a pause or sleep\n- Improved You should know toasts to say \'try again\' instead of \'press 2\', which only works in the terminal\n- Improved auto-update reliability: a brief network failure while verifying a release is now retried right away instead of waiting for the next check\n- Improved unattended runs (`claude -p`, SDK apps) to stop rewriting `~/.claude.json` on every run when nothing in it changed\n- Changed Claude Code to no longer install or update the IDE extension when started in an IDE terminal; use `/ide` from an outside terminal or your editor\'s extensions view\n- Changed subagents to stop instead of switching models when \'Switch models when a message is flagged\' is set to \'Ask each time\'\n- Changed background subagents to move a shell command to the background after 3 minutes on all providers, so the prompt cache doesn\'t expire while it runs\n- Changed subagent progress summaries on Bedrock, Vertex, Foundry, or with telemetry off: on a cold prompt cache, one can now wait up to 5 minutes for the subagent\'s pending response\n- Changed what a mod attaches at `prompt.submit` to stay in the user\'s turn rather than go out as a system message\n- Changed `deniedMcpServers` URL entries to also block Anthropic-provided servers whose upstream URL matches, and connectors in cloud sessions and on self-hosted runners, where the session is given the connector\'s own URL; otherwise deny a connector by name\n- Changed the `/permissions` rule details, built-in rules and delete confirmation views to use the standard dialog; pressing Ctrl+C twice there now goes back or cancels instead of quitting\n- Changed `/claude-api managed-agents-onboard` to give a new agent\'s built-in tools, and a quickstart template\'s MCP tools, the `auto` permission policy (\'Judge risky actions\') by default, matching the Claude Console; say \'run without asking\' to opt out\n- Removed the 2.1.288 fix that kept the model\'s earlier thinking when resuming a conversation started on 2.1.286 or earlier; that thinking can now be dropped\n- Gateway: Added a log warning when the Google access token from a federation (`external_account`) credentials file is about to expire\n- Gateway: Improved the log hints about `listen.trusted_proxies`: they now say to list only a proxy that adds the connecting address to `X-Forwarded-For` itself\n- Gateway: Improved the warning when AWS CountTokens fails on Amazon Bedrock: it says Claude Code, not the gateway, counts after the 501, and points at IAM only when AWS denies access\n- Self-hosted runner: Added `CLAUDE_RUNNER_SPAWN_REASON` to the orchestrator\'s spawn-runner hook environment: why Anthropic sent the request (e.g. `runner_lost`, `resumed`); unset when none was sent\n- Self-hosted runner: Added a startup warning when `--release-idle-session-min` is the last argument with no value (still ignored) or has a value of only spaces (still read as `0`)\n- Self-hosted runner: Changed the orchestrator\'s log lines: `ok session=…` now prints at every log level on stdout (was debug only, stderr) with `reason=…` after `jti=…`, and `nack session=…` ends its fields with `reason=…` after `retryable=…`; update scripts that match `retryable=true:` or `retryable=false:`\n- Remote Control: Fixed a misleading \'spawn error: ENOENT\' when a session\'s working folder is missing; the error now names the folder\n- Remote Control: Improved the title a fork of a terminal fork is created with when the app doesn\'t set one: \'Name (fork 2)\'\n- [VSCode] Fixed a window whose sign-in the organization\'s settings refuse starting a new Claude Code process in the background every minute\n- [VSCode] Fixed a long word in the chat panel\'s error banner pushing its close button out of view\n- [VSCode] Improved the sign-in screen to show what Claude Code printed when its sign-in status check fails\n- [Cloud sessions] Added a No repository option: a cloud session on an Anthropic-hosted environment can now start without picking a repository\n- [Cloud sessions] Added the usual Chrome names to cloud sessions, so tools other than Playwright can find the built-in Chromium through google-chrome and CHROME_PATH\n- [Cloud sessions] Added a New session button to the card shown when a cloud session\'s environment was deleted, where the message box is hidden\n- [Cloud sessions] Fixed reading GitHub Actions logs in cloud sessions: `gh run view --log` and `gh api` log requests now get the log in most environments, not an unreachable redirect\n- [Cloud sessions] Improved most Create PR failure messages in cloud and Remote Control sessions: they now give the reason or a link to GitHub instead of saying Try again\n- [Cloud sessions] Changed connector search results to tell Claude that the search covers only part of the connector directory\n- [Remote Control] Fixed side-by-side checkouts of one repository looking identical in the environment menu\'s Remote Control rows; each now shows its own folder name\n- [Claude Tag] Fixed keyboard focus and screen reader announcements in Claude Tag admin setup; pressing Escape in the connect form no longer also closes the Add dialog\n- [Code Review] Improved the Code Review analytics page to retry once after a server or network failure, then show a Try again banner instead of empty cards'
         },
         {
           'version': '2.1.317',
@@ -3646,7 +3655,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '2.2.6',
@@ -9168,8 +9177,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
+        {
+          'version': '3.0.0-canary.20261109125038-713a200',
+          'title': '@ moonshot-ai/kimi-code @ 3.0.0-canary.20261109125038-713a200',
+          'date': '2026-11-09',
+          'dateRaw': '2026-11-09T12:45:40Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%403.0.0-canary.20261109125038-713a200',
+          'body': 'chore:从code-app同步web dist (# 4765)',
+          'h': '7d9e127c'
+        },
         {
           'version': '2.6.0-canary.20261109040420-9c1a9c3',
           'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.202619040420-9c1a9c3',
@@ -10261,7 +10280,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10846,8 +10865,23 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
+        {
+          'version': '0.5.7',
+          'title': '日常优化',
+          'date': '2026-11-09',
+          'dateRaw': '2026年11月9日',
+          'tags': [
+            '日常优化',
+            '功能',
+            'PPT 模板',
+            '优化',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '日常优化\n功能\n- PPT 模板 ：支持选择 PPT 模板，预览封面与页面示例，结合自己的要求创建演示文稿。\n优化\n- Remote Control ：优化移动端远程控制长会话性能与速度。\n修复\n- 修复 Remote Control 历史消息中的图片和文件附件可能无法打开的问题。\n- 修复 Remote Control 中已开始执行的用户消息显示延迟，以及插话与后续回复混入原消息段的问题。\n- 修复 Remote Control 中尚未执行的排队消息提前出现在会话历史中的问题。\n2026年11月6日'
+        },
         {
           'version': '0.5.6',
           'title': '日常优化',
@@ -11228,8 +11262,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
+        {
+          'version': '1.39.2',
+          'title': '日常优化',
+          'date': '2026-11-09',
+          'dateRaw': '2026年11月09日',
+          'tags': [
+            '日常优化',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '日常优化\n修复\n- 修复由于 Electron 升级引入的 markdown 预览报错。\n2026年11月07日'
+        },
         {
           'version': '1.39.1',
           'title': '任务耗时与积分用量可视化，Plan 模式支持切换执行模型',
@@ -11885,7 +11931,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '3.4.15',
@@ -13970,7 +14016,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14157,7 +14203,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '3.17.2',
@@ -14336,7 +14382,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '4.12.4',
@@ -15231,7 +15277,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 18:06',
+      'lastOkAt': '2026-11-10 04:57',
       'entries': [
         {
           'version': '5.11.0',

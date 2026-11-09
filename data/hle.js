@@ -13,7 +13,7 @@ window.HLE = {
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-09',
-  'refreshedAt': '2026-11-09 18:06',
+  'refreshedAt': '2026-11-10 04:57',
   'stats': {
     'tasks': 2500,
     'entries': 239
@@ -174,8 +174,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-6 Sol',
-      'org': 'OpenAI',
+      'model': 'Gemini 3.7 Flash',
+      'org': 'Google',
       'score': 47.9,
       'protocol': '无工具',
       'src': 'aa',
@@ -183,8 +183,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Gemini 3.7 Flash',
-      'org': 'Google',
+      'model': 'GPT-6 Sol',
+      'org': 'OpenAI',
       'score': 47.9,
       'protocol': '无工具',
       'src': 'aa',
