@@ -9,13 +9,12 @@
   var PAGES = {
     overview: {
       title: "总览 · 交叉模型矩阵",
-      src: ["DEEPSWE", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH", "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "VALSVCB"]
+      src: ["DEEPSWE", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH", "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY"]
     },
     llm2014: { title: "llm2014 Agentic 编程榜", src: ["LLM2014"] },
     modeldial: { title: "ModelDial 雷达", src: ["MODELDIAL"] },
     arenaofbias: { title: "亿模亿样 · 模型效果对比", src: ["ARENAOFBIAS"] },
     aicodingdaily: { title: "AI Coding Daily", src: ["AICODINGDAILY"] },
-    valsvcb: { title: "VCB-1-100", src: ["VALSVCB"] },
     authority: {
       title: "权威基准测试",
       src: ["DEEPSWE", "TBENCH", "TBSCIENCE", "OSWORLD", "LASTEXAM", "ARCAGI3", "BENCHCAD", "APEX", "HLE",

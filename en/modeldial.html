@@ -45,7 +45,7 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="../css/styles.css?v=20261029b" />
+  <link rel="stylesheet" href="../css/styles.css?v=20261109a" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="../data/models.js?v=20261109a"></script>
@@ -77,9 +77,6 @@
   <!-- AI Coding Daily 编码榜(aicodingdaily.com 独立第三方实测,计入总览综合分(权重 8%)与命中数,
        2026-10-19 入组;并作为「AI Coding Daily」独立标签页的数据源) -->
   <script defer src="../data/aicodingdaily.js?v=20261019a"></script>
-  <!-- VCB-1-100(Vals AI 应用迭代式编码 Agent 榜,固定 OpenHands harness;
-       2026-10-27 起计入总览综合分(权重 7%)与命中数,并作为「VCB-1-100」标签页数据源) -->
-  <script defer src="../data/vals_vcb.js?v=20261027a"></script>
   <script defer src="../data/seen.js?v=20260824a"></script>
   <!-- AI Agent 工具更新日志(12 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
@@ -90,7 +87,7 @@
   <script defer src="../js/compare.js?v=20261109a"></script>
   <script defer src="../js/app.js?v=20261109a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
-  <script defer src="../js/export.js?v=20261029b"></script>
+  <script defer src="../js/export.js?v=20261109a"></script>
   <!-- 意见反馈交互 -->
   <script defer src="../js/feedback.js?v=20260824a"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
@@ -104,7 +101,7 @@
       <div class="brand">
         <p class="brand-eyebrow">LLM Benchmark Index</p>
         <h1>大模型编码基准整合门户</h1>
-        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · VCB-1-100 迭代实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
+        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
       </div>
       <div class="topbar-panel">
         <p class="topbar-label">数据快照</p>
@@ -129,7 +126,6 @@
       <a class="tab active" data-tab="modeldial" href="modeldial.html" aria-current="page">ModelDial</a>
       <a class="tab" data-tab="arenaofbias" href="arenaofbias.html">Arena of Bias</a>
       <a class="tab" data-tab="aicodingdaily" href="aicodingdaily.html">AI Coding Daily</a>
-      <a class="tab" data-tab="valsvcb" href="valsvcb.html">VCB-1-100</a>
       <a class="tab" data-tab="authority" href="authority.html">Benchmarks</a>
       <a class="tab" data-tab="plans" href="plans.html">Plans</a>
     </div>
@@ -169,12 +165,12 @@
           <li><b class="note-term">配置口径</b>同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。源站「包含 Bot」默认关闭,本页同样不含 Bot。</li>
           <li><b class="note-term">外部产品</b>源站主榜含外部产品参考条目(如 Gemini 4 Argon),带「外部」标记;源站标其 api_model_ranking_eligible=false,不与 API 模型排名同口径。</li>
           <li><b class="note-term">成本口径</b>本页费用与耗时取源站五轴汇总口径;外部产品为自报耗时、费用常缺。各模型之间口径一致,可直接横向比较。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 14%)与命中数(分母 9);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 14%)与命中数(分母 8);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与费用说明</summary>
           <ul>
-            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;9 个计分组中第三方实测合计约 76%、榜单基准约 23%。</li>
+            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;8 个计分组中第三方实测权重合计 69%、榜单基准 23%(按在场权重归一)。</li>
             <li><b class="note-term">完整度</b>自 2026-09-20 起取消完整度奖励;在场榜单多少仅通过「缺失权重回流」体现。</li>
             <li><b class="note-term">费用示例</b>MiniMax-M3 本页约 $0.62(五轴汇总口径,费用完整度 partial);外部产品费用可能缺失,散点图仅画有费用条目。散点图 X 轴为参考费用(对数刻度),气泡面积编码五轴总耗时。</li>
           </ul>

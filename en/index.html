@@ -45,7 +45,7 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="../css/styles.css?v=20261029b" />
+  <link rel="stylesheet" href="../css/styles.css?v=20261109a" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="../data/models.js?v=20261109a"></script>
@@ -77,9 +77,6 @@
   <!-- AI Coding Daily 编码榜(aicodingdaily.com 独立第三方实测,计入总览综合分(权重 8%)与命中数,
        2026-10-19 入组;并作为「AI Coding Daily」独立标签页的数据源) -->
   <script defer src="../data/aicodingdaily.js?v=20261019a"></script>
-  <!-- VCB-1-100(Vals AI 应用迭代式编码 Agent 榜,固定 OpenHands harness;
-       2026-10-27 起计入总览综合分(权重 7%)与命中数,并作为「VCB-1-100」标签页数据源) -->
-  <script defer src="../data/vals_vcb.js?v=20261027a"></script>
   <script defer src="../data/seen.js?v=20260824a"></script>
   <!-- AI Agent 工具更新日志(12 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
@@ -90,7 +87,7 @@
   <script defer src="../js/compare.js?v=20261109a"></script>
   <script defer src="../js/app.js?v=20261109a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
-  <script defer src="../js/export.js?v=20261029b"></script>
+  <script defer src="../js/export.js?v=20261109a"></script>
   <!-- 意见反馈交互 -->
   <script defer src="../js/feedback.js?v=20260824a"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
@@ -104,7 +101,7 @@
       <div class="brand">
         <p class="brand-eyebrow">LLM Benchmark Index</p>
         <h1>大模型编码基准整合门户</h1>
-        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · VCB-1-100 迭代实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
+        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
       </div>
       <div class="topbar-panel">
         <p class="topbar-label">数据快照</p>
@@ -129,7 +126,6 @@
       <a class="tab" data-tab="modeldial" href="modeldial.html">ModelDial</a>
       <a class="tab" data-tab="arenaofbias" href="arenaofbias.html">Arena of Bias</a>
       <a class="tab" data-tab="aicodingdaily" href="aicodingdaily.html">AI Coding Daily</a>
-      <a class="tab" data-tab="valsvcb" href="valsvcb.html">VCB-1-100</a>
       <a class="tab" data-tab="authority" href="authority.html">Benchmarks</a>
       <a class="tab" data-tab="plans" href="plans.html">Plans</a>
     </div>
@@ -146,7 +142,7 @@
     <section class="page active" id="page-overview">
       <!-- 总览首屏:左「AI 热点总结」与右「核心基准速览」横向两栏并排(窄屏自动回落为上下堆叠) -->
       <div class="overview-top no-news">
-        <!-- 核心基准速览:9 张基准榜单卡片(由 app.js 注入,新增标题分组) -->
+        <!-- 核心基准速览:8 张基准榜单卡片(由 app.js 注入,新增标题分组) -->
         <section class="bench-section">
           <h2 class="section-title"><span class="title-index">02</span>核心基准速览 <span class="hint">9 大基准榜单关键指标</span></h2>
           <div class="bench-cards" id="benchCards"></div>
@@ -186,7 +182,7 @@
           <ul>
             <li><b class="note-term">梯队</b>按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,勾选「显示综合分」直接显示。</li>
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
-            <li><b class="note-term">命中</b>9 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样 / AI Coding Daily / VCB-1-100;HLE 仅参考,不计分。</li>
+            <li><b class="note-term">命中</b>8 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / ModelDial / 亿模亿样 / AI Coding Daily;HLE 仅参考,不计分。</li>
             <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
             <li><b class="note-term">榜内名次</b>「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮名次可见榜内上榜条目总数。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
@@ -195,8 +191,8 @@
           <details class="notes-more">
             <summary>展开详细口径与数据来源</summary>
             <ul>
-              <li><b class="note-term">权重</b>DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · VCB-1-100 7% · Agent Arena 9%(合计 0.99,按在场榜归一;缺测权重回流)。</li>
-              <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;VCB-1-100 为隐藏测试准确率 %(固定 OpenHands)。</li>
+              <li><b class="note-term">权重</b>DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · Agent Arena 9%(合计 0.92,按在场榜归一;缺测权重回流)。</li>
+              <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
               <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);指数与综合分同源,不可跨日/跨快照比较。</li>
               <li><b class="note-term">数据来源</b>按 官方实测 &gt; 厂商发布 &gt; 第三方聚合 的优先级合并,低层级只补缺;数据为快照,仅用于学习与对比展示,不代表绝对评价。</li>

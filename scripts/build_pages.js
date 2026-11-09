@@ -1,4 +1,4 @@
-// 把 pages/shell.html 拆成 9 个中文独立页面(index.html + 8 个榜单页)与 8 个英文页面(en/),
+// 把 pages/shell.html 拆成 8 个中文独立页面(index.html + 7 个榜单页)与 7 个英文页面(en/),
 // 并生成 sitemap.xml。
 // 为什么要拆:标签页原先只切换 CSS class,全站只有 1 个 URL,搜索引擎无法单独收录某个榜单,
 //   分享/引用也只能落到首页。拆成独立文件后每个榜单有自己的 URL、title、description 与 canonical,
@@ -71,16 +71,6 @@ const PAGES = [
       file: "en/aicodingdaily.html", nav: "AI Coding Daily",
       title: "AI Coding Daily · 7 Projects × 27 Prompts, Independently Tested",
       desc: "Independent coding evaluation: each model runs 27 prompts across 7 real projects, scored 0-70, with cost and time per prompt."
-    }
-  },
-  {
-    id: "valsvcb", file: "valsvcb.html",
-    title: "VCB-1-100 排行 · 固定 OpenHands 的编码 Agent 实测",
-    desc: "Vals AI 的 50 个真实 Web 应用迭代场景,全部模型跑在固定 OpenHands harness 上,主指标为隐藏测试准确率。",
-    en: {
-      file: "en/valsvcb.html", nav: "VCB-1-100",
-      title: "VCB-1-100 · Coding Agents on a Fixed OpenHands Harness",
-      desc: "Vals AI's 50 real-world web-app iterations, all models on a fixed OpenHands harness; the primary metric is hidden-test accuracy."
     }
   },
   {

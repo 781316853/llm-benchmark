@@ -33,7 +33,7 @@ function normKey(s) {
 
 // 解析 vals.ai 镜像:45 模型 Fully Resolved%(tasks.overall.*.accuracy)
 // + Results summary 表格前 5 名 Almost(count)/Raw Pass Rate(%)
-// (devalue 解码与 benchmarkView 提取见 scripts/lib/vals.js,与 vals_vcb / vals_codemigration 共用)
+// (devalue 解码与 benchmarkView 提取见 scripts/lib/vals.js,与 vals_vibe_code / vals_codemigration 共用)
 function parseVals(html) {
   const view = valsLib.extractBenchmarkView(html);
   if (!view || !view.tasks || !view.tasks.overall) return [];

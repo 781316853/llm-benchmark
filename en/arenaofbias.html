@@ -45,7 +45,7 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="../css/styles.css?v=20261029b" />
+  <link rel="stylesheet" href="../css/styles.css?v=20261109a" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="../data/models.js?v=20261109a"></script>
@@ -77,9 +77,6 @@
   <!-- AI Coding Daily 编码榜(aicodingdaily.com 独立第三方实测,计入总览综合分(权重 8%)与命中数,
        2026-10-19 入组;并作为「AI Coding Daily」独立标签页的数据源) -->
   <script defer src="../data/aicodingdaily.js?v=20261019a"></script>
-  <!-- VCB-1-100(Vals AI 应用迭代式编码 Agent 榜,固定 OpenHands harness;
-       2026-10-27 起计入总览综合分(权重 7%)与命中数,并作为「VCB-1-100」标签页数据源) -->
-  <script defer src="../data/vals_vcb.js?v=20261027a"></script>
   <script defer src="../data/seen.js?v=20260824a"></script>
   <!-- AI Agent 工具更新日志(12 个工具官方 changelog,非分数数据,不进基准管线与综合分)。
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
@@ -90,7 +87,7 @@
   <script defer src="../js/compare.js?v=20261109a"></script>
   <script defer src="../js/app.js?v=20261109a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
-  <script defer src="../js/export.js?v=20261029b"></script>
+  <script defer src="../js/export.js?v=20261109a"></script>
   <!-- 意见反馈交互 -->
   <script defer src="../js/feedback.js?v=20260824a"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
@@ -104,7 +101,7 @@
       <div class="brand">
         <p class="brand-eyebrow">LLM Benchmark Index</p>
         <h1>大模型编码基准整合门户</h1>
-        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · VCB-1-100 迭代实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
+        <p class="subtitle">聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比</p>
       </div>
       <div class="topbar-panel">
         <p class="topbar-label">数据快照</p>
@@ -129,7 +126,6 @@
       <a class="tab" data-tab="modeldial" href="modeldial.html">ModelDial</a>
       <a class="tab active" data-tab="arenaofbias" href="arenaofbias.html" aria-current="page">Arena of Bias</a>
       <a class="tab" data-tab="aicodingdaily" href="aicodingdaily.html">AI Coding Daily</a>
-      <a class="tab" data-tab="valsvcb" href="valsvcb.html">VCB-1-100</a>
       <a class="tab" data-tab="authority" href="authority.html">Benchmarks</a>
       <a class="tab" data-tab="plans" href="plans.html">Plans</a>
     </div>
@@ -163,7 +159,7 @@
           <li><b class="note-term">来源</b>亿模亿样前端作品社区盲评:同题两件作品匿名盲评,按 Bradley-Terry 估计偏好强度折算 Elo(1000 为平均,高 400 分约等于被偏好机会高十倍),并给出 ±95% 区间。</li>
           <li><b class="note-term">分档</b>同一模型按推理强度分档多次测试,主榜取最高分档;源站「非官方」条目(量化/改版权重、第三方 harness)已剔除。</li>
           <li><b class="note-term">指标</b>有效比较为投票场次;胜率 = 胜场 ÷ 有效比较;覆盖任务为参与题数;有效比较不足 30 次标注「暂定」。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 10%)与命中数(分母 9),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 10%)与命中数(分母 8),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开抓取方式与区间说明</summary>

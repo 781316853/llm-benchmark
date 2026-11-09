@@ -293,22 +293,10 @@ module.exports = {
       // 单请求即得全表。多数条目跑在 OpenHands harness,源站另含少量 Claude Code / Codex / Factory /
       // Cursor CLI 等 harness 条目,逐行记录于 harness 字段。
       // 渠道:该榜即 Vals AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
-      // 用途:保留抓取;自 2026-10-27 起不上榜(总览第 8 组计分席位已换回 vals_vcb)。
+      // 用途:保留抓取;不在总览矩阵/计分组中展示(VCB-1-100 已于 2026-11-09 整体下线)。
       url: "https://www.vals.ai/benchmarks/vibe-code",
       host: "www.vals.ai", src: "official",
       officialUrl: "https://www.vals.ai/benchmarks/vibe-code"
-    },
-    vals_vcb: {
-      // Vibe Code Bench 1-100(Vals AI):50 个真实 Web 应用迭代场景(从可运行的 Vibe Code Bench v1.1
-      // 应用起步、最多追加 10 轮产品请求),全部模型跑在固定 OpenHands harness 上(apples-to-apples);
-      // 主指标准确率(%),另记每测试平均成本($)与平均耗时(s)。页面为 Astro 服务端渲染 props 内嵌
-      // benchmarkView JSON,单请求即得全表(与 programbench 镜像同法解析)。
-      // 渠道:该榜即 Vals AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
-      // 用途:计入总览综合分(「第三方实测」第 8 组,权重 7%)与命中数,同时作为「VCB-1-100」
-      //      标签页数据源(2026-10-27 起;此前 10-20~10-26 为仅标签页展示)。
-      url: "https://www.vals.ai/benchmarks/vcb-1-100",
-      host: "www.vals.ai", src: "official",
-      officialUrl: "https://www.vals.ai/benchmarks/vcb-1-100"
     },
     vals_codemigration: {
       // Code Migration(Vals AI):40 个仓库(30 CLI + 10 COBOL)跨语言重写,隐藏测试判定;
@@ -472,7 +460,7 @@ module.exports = {
       //   aa_coding_agents(AA Coding Agent Index v2.0)为 agent×model 配置级的 0-100 合成分,
       //     且 Index 自身就是 FrontierCode v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA 的再合成,
       //     与站内各原生基准逐条对比会产生结构性假告警,故排除;
-      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "aa_coding_agents", "vals_vibe_code", "vals_vcb", "vals_codemigration"]
+      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "aa_coding_agents", "vals_vibe_code", "vals_codemigration"]
     },
     completeness: {
       // 每条记录必填字段
@@ -488,14 +476,13 @@ module.exports = {
       alertAgeDays: 7,
       // 按源放宽阈值:周更源 7 天不更新属正常,不能套日更阈值。
       // AI Coding Daily 源站按周更新:超过 7 天 warn、超过 14 天 alert。
-      // Vals AI 三个榜(Vibe Code / VCB-1-100 / Code Migration)按新模型批次更新(非每日),
+      // Vals AI 两个榜(Vibe Code / Code Migration)按新模型批次更新(非每日),
       // 留更宽缓冲:超过 14 天 warn、超过 30 天 alert。
       // Agent Arena 官方数据集按批次发布(历史快照间隔 1~8 天),超过 7 天 warn、超过 14 天 alert。
       perSource: {
         aicodingdaily: { warnAgeDays: 7, alertAgeDays: 14 },
         arena_agent: { warnAgeDays: 7, alertAgeDays: 14 },
         vals_vibe_code: { warnAgeDays: 14, alertAgeDays: 30 },
-        vals_vcb: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 }
       }
     }

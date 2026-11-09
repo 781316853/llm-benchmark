@@ -293,17 +293,6 @@ window.QUALITY = {
       'errors': []
     },
     {
-      'id': 'vals_vcb',
-      'name': 'Vibe Code Bench 1-100',
-      'status': 'ok',
-      'modelCount': 26,
-      'updated': '2026-11-08',
-      'ageDays': 0,
-      'completeness': 1,
-      'fetchAttempts': 1,
-      'errors': []
-    },
-    {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
@@ -980,14 +969,6 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
-    'vals_vcb': {
-      'rate': 1,
-      'total': 26,
-      'complete': 26,
-      'modelCount': 26,
-      'missingFields': {},
-      'flag': 'ok'
-    },
     'vals_vibe_code': {
       'rate': 1,
       'total': 125,
@@ -1174,13 +1155,6 @@ window.QUALITY = {
       'alertAgeDays': 7
     },
     'vals_codemigration': {
-      'updated': '2026-11-08',
-      'ageDays': 0,
-      'flag': 'ok',
-      'warnAgeDays': 14,
-      'alertAgeDays': 30
-    },
-    'vals_vcb': {
       'updated': '2026-11-08',
       'ageDays': 0,
       'flag': 'ok',
