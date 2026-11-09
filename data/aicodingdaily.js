@@ -17,10 +17,10 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-10-31',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-08 17:20',
+  'refreshedAt': '2026-11-09 06:20',
   'stats': {
-    'entries': 52,
-    'models': 35
+    'entries': 50,
+    'models': 33
   },
   'desc': 'AI Coding Daily(Povilas Korop 个人实测站):每个模型在 7 个真实项目上跑 27 个 prompt(全站累计 2000+ 次运行),每个 prompt 从项目全新副本起步、模型看不到隐藏测试、无人工反馈;总分为 Laravel 代码质量(20)+ React-TS 代码质量(20)+ Bug Finding(10)+ Edge-case Testing(20)四轴之和(0-70),另记每 prompt 平均成本与耗时。分数越高越好,成本/耗时越低越优。',
   'models': [
@@ -315,7 +315,7 @@ window.AICODINGDAILY = {
     {
       'rank': 19,
       'model': 'Qwen 3.8 Flash',
-      'effort': 'Max',
+      'effort': 'Xhigh',
       'score': 52.14,
       'costUsd': 0.04,
       'timeSec': 518,
@@ -490,22 +490,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 30,
-      'model': 'LongCat-2.5-Preview',
-      'effort': null,
-      'score': 44.65,
-      'costUsd': null,
-      'timeSec': 1010,
-      'timeStr': '16:50',
-      'harness': 'OpenCode',
-      'laravel': 16.98,
-      'reactTs': 16.67,
-      'bugFinding': 2.4,
-      'edgeCase': 10.6,
-      'src': 'aggregate',
-      'configs': 1
-    },
-    {
-      'rank': 31,
       'model': 'Beam',
       'effort': 'Max',
       'score': 41.76,
@@ -521,23 +505,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 32,
-      'model': 'Gemini-3.1-Pro',
-      'effort': null,
-      'score': 41.36,
-      'costUsd': 0.52,
-      'timeSec': 184,
-      'timeStr': '03:04',
-      'harness': 'OpenCode',
-      'laravel': 12.55,
-      'reactTs': 15.33,
-      'bugFinding': 4.38,
-      'edgeCase': 10.1,
-      'src': 'aggregate',
-      'configs': 1
-    },
-    {
-      'rank': 33,
+      'rank': 31,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 39.89,
@@ -553,7 +521,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 34,
+      'rank': 32,
       'model': 'Mercury 3',
       'effort': 'High',
       'score': 37.4,
@@ -569,7 +537,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 35,
+      'rank': 33,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 34.96,
@@ -1069,7 +1037,7 @@ window.AICODINGDAILY = {
     {
       'rank': 33,
       'model': 'Qwen 3.8 Flash',
-      'effort': 'Max',
+      'effort': 'Xhigh',
       'score': 52.14,
       'costUsd': 0.04,
       'timeSec': 518,
@@ -1263,21 +1231,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 46,
-      'model': 'LongCat-2.5-Preview',
-      'effort': null,
-      'score': 44.65,
-      'costUsd': null,
-      'timeSec': 1010,
-      'timeStr': '16:50',
-      'harness': 'OpenCode',
-      'laravel': 16.98,
-      'reactTs': 16.67,
-      'bugFinding': 2.4,
-      'edgeCase': 10.6,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 47,
       'model': 'GPT-6-Luna',
       'effort': 'Medium',
       'score': 42.54,
@@ -1292,7 +1245,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 48,
+      'rank': 47,
       'model': 'Beam',
       'effort': 'Max',
       'score': 41.76,
@@ -1307,22 +1260,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 49,
-      'model': 'Gemini-3.1-Pro',
-      'effort': null,
-      'score': 41.36,
-      'costUsd': 0.52,
-      'timeSec': 184,
-      'timeStr': '03:04',
-      'harness': 'OpenCode',
-      'laravel': 12.55,
-      'reactTs': 15.33,
-      'bugFinding': 4.38,
-      'edgeCase': 10.1,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 50,
+      'rank': 48,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 39.89,
@@ -1337,7 +1275,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 51,
+      'rank': 49,
       'model': 'Mercury 3',
       'effort': 'High',
       'score': 37.4,
@@ -1352,7 +1290,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 52,
+      'rank': 50,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 34.96,

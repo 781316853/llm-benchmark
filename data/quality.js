@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 52,
+      'modelCount': 50,
       'updated': '2026-11-08',
       'ageDays': 0,
       'completeness': 1,
@@ -76,7 +76,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 153,
+      'modelCount': 154,
       'updated': '2026-11-08',
       'ageDays': 0,
       'completeness': 1,
@@ -692,7 +692,7 @@ window.QUALITY = {
     {
       'canonId': 'Inkling 2 Small',
       'name': 'Inkling 2 Small',
-      'vendor': '其他',
+      'vendor': 'Thinking Machines',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -765,9 +765,9 @@ window.QUALITY = {
     },
     'aicodingdaily': {
       'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
+      'total': 50,
+      'complete': 50,
+      'modelCount': 50,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -805,9 +805,9 @@ window.QUALITY = {
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 153,
-      'complete': 153,
-      'modelCount': 153,
+      'total': 154,
+      'complete': 154,
+      'modelCount': 154,
       'missingFields': {},
       'flag': 'ok'
     },
