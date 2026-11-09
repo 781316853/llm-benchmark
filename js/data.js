@@ -15,6 +15,13 @@
     if (/^pass/i.test(s)) return { raw: "Pass", status: "pass", num: MAX_GRADE };
     if (/^skip/i.test(s)) return { raw: "Skip", status: "skip", num: null };
     if (/^fail/i.test(s)) return { raw: s, status: "failed", num: 0 }; // Failed(n/m)
+    // "Perfect(211.83)":零扣分的完美完成(2026-09 起出现),按 4.5 计(高于 A+ 的加分档),
+    // 括号内为单任务测试成本
+    if (/^perfect/i.test(s)) {
+      var pm = s.match(/^perfect(?:\(\s*(\d+(?:\.\d+)?)\s*\))?$/i);
+      return { raw: s, status: "perfect", num: MAX_GRADE + 0.5,
+        cost: pm && pm[1] != null ? Number(pm[1]) : null };
+    }
     // 形如 "7/A"、"7/A+" 或 2026-08 起 "7/A+(90.52)"(扣分数 / 字母等级,括号内为测试成本 ¥)
     var m = s.match(/^(\d+)\s*\/\s*([A-D]\+?)(?:\(\s*(\d+(?:\.\d+)?)\s*\))?$/i);
     if (m) {
@@ -278,6 +285,243 @@
   }
   function llmMonths() { return Object.keys((window.LLM2014 && window.LLM2014.months) || {}).sort(); }
 
+  // ===== llm2014 全历史难度校正(跨月估算;已接入 unified/总览综合分,权重 10%) =====
+  // 通用计分规则(对所有月份/模型一致,不依赖具体模型名):
+  // 1) 每模型×任务取最新有效值;Pass=4.0、Perfect=4.5、Failed=0,Skip/Pending 缺失;
+  // 2) 两向加性拟合(全局均值 + 模型能力 + 任务难度);
+  // 3) 从最新月份往旧月份加入各月源站相邻名次约束;冲突时以最新月份为准
+  //    (与更新月份成环的旧约束丢弃),再沿拓扑序对加性分做 PAVA(非递增)校准;
+  // 4) 校准分保留 1 位小数;同分按拓扑序(最新月份优先)破平,
+  //    仍不可比时按校准前加性分、计分项数、模型名;
+  // 5) 计分项(含 Pass)≥3 才排名,低于 3 标低样本。
+  // 背景:6 个月的任务集并不相同(06: C-G;08: C,E,F,G,H-L;09: H-M;10/11: H-N),
+  // 且每月模型池不同,直接把月均分再平均会同时混入「换题库」和「换 roster」两种偏差。
+  // 做法:把每个「模型(源站原始名) × 任务字母」的最新一次有效成绩拼成一张稀疏矩阵,
+  //      用两向加性模型 y = μ + 模型能力 + 任务难度 拟合(缺失格不参与,交替最小二乘),
+  //      得到同一把尺上的模型能力;输出校正分 = (μ + 模型能力) / 4.0 × 100。
+  // 口径:
+  //   - 跨月取最新有效成绩;后续月份为 Skip/Pending 时不覆盖更早的有效成绩(源站自己也是滚动继承的);
+  //   - Pass = 前代模型已拿到 A、该模型不再测试,按 4.0 计(视为继承该档),Pass 列单独标出数量;
+  //   - Perfect = 零扣分,按 4.5 计(高于 A+ 的加分档);Failed = 0;Skip/Pending = 缺失;
+  //   - 行粒度用源站原始模型名,带日期/推理档位后缀的快照不合并(如 V4 Pro (max) / V4 Pro 0813 (max))。
+  // 限制:样本量 3-12 项不等,缺失不是随机的;校正分可能超过 100 或低于 0,仅作能力估算。
+  var LLM_ALL_CACHE = null;
+  function llmAllTime() {
+    if (LLM_ALL_CACHE) return LLM_ALL_CACHE;
+    var src = window.LLM2014 || { months: {} };
+    var months = Object.keys(src.months || {}).sort();
+    var cells = {};       // "model|task" -> 最新有效成绩
+    var lastSeen = {};    // "model|task" -> 最近一次状态(含 Skip/Pending,供无有效成绩时展示)
+    var info = {};        // model -> { canon, months:{}, ide, think, month }
+    var taskSet = {}, taskLabel = {};
+    months.forEach(function (mk) {
+      var mo = src.months[mk] || {};
+      var projects = mo.projects || [];
+      var letters = projects.map(function (p) {
+        var mm = String(p).match(/\(([A-Z])\)\s*$/);
+        return mm ? mm[1] : null;
+      });
+      projects.forEach(function (p, i) {
+        if (!letters[i]) return;
+        taskSet[letters[i]] = 1;
+        taskLabel[letters[i]] = p; // 后出现的月份覆盖:列名保持源站表头原样
+      });
+      (mo.rows || []).forEach(function (r) {
+        var it = info[r.model] || (info[r.model] = { canon: canon(r.model), months: {} });
+        it.months[mk] = 1;
+        it.month = mk;
+        it.ide = r.ide || "";
+        it.think = r.think;
+        (r.cells || []).forEach(function (raw, i) {
+          var t = letters[i];
+          if (!t) return;
+          var key = r.model + "|" + t;
+          var c = parseCell(raw);
+          lastSeen[key] = { status: c.status, month: mk, raw: c.raw };
+          if (c.status === "grade" || c.status === "pass" || c.status === "perfect" || c.status === "failed") {
+            cells[key] = { status: c.status, month: mk, raw: c.raw, num: c.num,
+              grade: c.grade, deduction: c.deduction, cost: c.cost };
+          }
+        });
+      });
+    });
+    var tasks = Object.keys(taskSet).sort();
+    // 观测集:全部有效成绩参与拟合,Pass 按 4.0 计
+    var obs = [];
+    Object.keys(cells).forEach(function (k) {
+      var c = cells[k];
+      if (c.num == null) return;
+      var parts = k.split("|");
+      obs.push({ m: parts[0], t: parts[1], y: c.num });
+    });
+    var models = Object.keys(info);
+    var ability = {}, difficulty = {}, byModel = {}, byTask = {};
+    models.forEach(function (m) { ability[m] = 0; });
+    tasks.forEach(function (t) { difficulty[t] = 0; });
+    obs.forEach(function (o) {
+      (byModel[o.m] = byModel[o.m] || []).push(o);
+      (byTask[o.t] = byTask[o.t] || []).push(o);
+    });
+    var mu = obs.length ? obs.reduce(function (s, o) { return s + o.y; }, 0) / obs.length : 0;
+    // 交替最小二乘:先更新任务难度(控制模型能力),再更新模型能力(控制任务难度),最后更新全局均值
+    for (var it = 0; it < 500; it++) {
+      var maxDelta = 0;
+      tasks.forEach(function (t) {
+        var arr = byTask[t] || [];
+        if (!arr.length) return;
+        var v = 0;
+        for (var i = 0; i < arr.length; i++) v += arr[i].y - mu - ability[arr[i].m];
+        v /= arr.length;
+        if (Math.abs(v - difficulty[t]) > maxDelta) maxDelta = Math.abs(v - difficulty[t]);
+        difficulty[t] = v;
+      });
+      models.forEach(function (m) {
+        var arr = byModel[m] || [];
+        if (!arr.length) return;
+        var v = 0;
+        for (var i = 0; i < arr.length; i++) v += arr[i].y - mu - difficulty[arr[i].t];
+        v /= arr.length;
+        if (Math.abs(v - ability[m]) > maxDelta) maxDelta = Math.abs(v - ability[m]);
+        ability[m] = v;
+      });
+      var sum = 0;
+      for (var i = 0; i < obs.length; i++) sum += obs[i].y - ability[obs[i].m] - difficulty[obs[i].t];
+      mu = obs.length ? sum / obs.length : 0;
+      if (maxDelta < 1e-10) break;
+    }
+    // 识别约束:任务难度均值归零;模型能力在有观测的模型上均值归零(μ 保留全池基准的含义)
+    var dMean = 0;
+    tasks.forEach(function (t) { dMean += difficulty[t]; });
+    dMean /= (tasks.length || 1);
+    tasks.forEach(function (t) { difficulty[t] -= dMean; });
+    mu += dMean;
+    var obsModels = models.filter(function (m) { return (byModel[m] || []).length; });
+    var aMean = 0;
+    obsModels.forEach(function (m) { aMean += ability[m]; });
+    aMean /= (obsModels.length || 1);
+    obsModels.forEach(function (m) { ability[m] -= aMean; });
+    mu += aMean;
+    var rows = models.map(function (m) {
+      var it = info[m];
+      var cellsOut = {}, n = 0, passN = 0, rawSum = 0, obsMonths = {};
+      tasks.forEach(function (t) {
+        var key = m + "|" + t;
+        var c = cells[key];
+        if (c) {
+          cellsOut[t] = c;
+          n++;
+          rawSum += c.num;
+          obsMonths[c.month] = 1;
+          if (c.status === "pass") passN++;
+        } else if (lastSeen[key]) {
+          cellsOut[t] = { status: lastSeen[key].status, month: lastSeen[key].month, raw: lastSeen[key].raw, num: null };
+        }
+      });
+      return {
+        model: m, canon: it.canon, cells: cellsOut, n: n, passN: passN,
+        months: Object.keys(it.months).sort(), obsMonths: Object.keys(obsMonths).sort(),
+        rawMean: n ? rawSum / n : null,
+        adj: n ? mu + ability[m] : null,
+        score: n ? (mu + ability[m]) / MAX_GRADE * 100 : null,
+        ide: it.ide, think: it.think, month: it.month, rank: null
+      };
+    });
+    // 通用校准:把各月源站相邻名次作为偏序约束,从最新月份往旧月份加入;
+    // 若旧约束与已加入的更新月份约束成环,直接丢弃——冲突时以最新月份为准。
+    var baseScore = {};
+    rows.forEach(function (r) { if (r.score != null) baseScore[r.model] = r.score; });
+    var graph = {}, indeg = {};
+    rows.forEach(function (r) {
+      if (baseScore[r.model] != null) { graph[r.model] = []; indeg[r.model] = 0; }
+    });
+    function reaches(from, to) {
+      var stack = [from], seen = {};
+      while (stack.length) {
+        var n = stack.pop();
+        if (n === to) return true;
+        if (seen[n]) continue;
+        seen[n] = 1;
+        (graph[n] || []).forEach(function (x) { stack.push(x); });
+      }
+      return false;
+    }
+    var addedEdge = {};
+    for (var mi = months.length - 1; mi >= 0; mi--) {
+      var mo = llmMonth(months[mi]);
+      if (!mo) continue;
+      var order = [];
+      mo.rows.forEach(function (x) { if (baseScore[x.model] != null) order.push(x.model); });
+      for (var oi = 0; oi + 1 < order.length; oi++) {
+        var a = order[oi], b = order[oi + 1];
+        if (a === b) continue;
+        var ek = a + "|" + b;
+        if (addedEdge[ek]) continue;
+        // 加这条旧约束会与更新月份的路径成环 => 冲突时以最新月份为准,丢弃旧约束
+        if (reaches(b, a)) continue;
+        addedEdge[ek] = 1;
+        graph[a].push(b);
+        indeg[b]++;
+      }
+    }
+    // 拓扑排序;同层按校准前加性分降序,保证确定性
+    var byBase = function (a, b) { return (baseScore[b] || 0) - (baseScore[a] || 0) || (a < b ? -1 : 1); };
+    var queue = Object.keys(graph).filter(function (m) { return indeg[m] === 0; });
+    queue.sort(byBase);
+    var topo = [];
+    while (queue.length) {
+      var cur = queue.shift();
+      topo.push(cur);
+      graph[cur].forEach(function (n) {
+        indeg[n]--;
+        if (indeg[n] === 0) { queue.push(n); queue.sort(byBase); }
+      });
+    }
+    // 理论无环;兜底
+    var inTopo = {};
+    topo.forEach(function (m) { inTopo[m] = 1; });
+    Object.keys(graph).filter(function (m) { return !inTopo[m]; }).sort(byBase).forEach(function (m) { topo.push(m); });
+    // 沿拓扑序对加性分做 PAVA(非递增),得到最接近加性分且不违反排名的分数
+    var blocks = [];
+    topo.forEach(function (m) {
+      blocks.push({ sum: baseScore[m] || 0, n: 1, members: [m] });
+      while (blocks.length > 1) {
+        var last = blocks[blocks.length - 1], prev = blocks[blocks.length - 2];
+        if (prev.sum / prev.n < last.sum / last.n) {
+          prev.sum += last.sum; prev.n += last.n; prev.members = prev.members.concat(last.members);
+          blocks.pop();
+        } else break;
+      }
+    });
+    var scoreOf = {}, tieOf = {}, pos = 0;
+    blocks.forEach(function (blk) {
+      var mean = Math.round(blk.sum / blk.n * 10) / 10;
+      blk.members.forEach(function (m) { scoreOf[m] = mean; tieOf[m] = pos++; });
+    });
+    rows.forEach(function (r) {
+      r.baseScore = r.score;
+      if (scoreOf[r.model] != null) {
+        r.score = scoreOf[r.model];
+        r.adj = r.score / 100 * MAX_GRADE;
+      }
+      r.tieRank = tieOf[r.model] != null ? tieOf[r.model] : 999;
+    });
+    // 排名门槛:计分项(含 Pass)≥ 3;样本不足的模型保留估算分但排在末尾、不占名次
+    var ranked = rows.filter(function (r) { return r.n >= 3; }).sort(function (a, b) {
+      return b.score - a.score || a.tieRank - b.tieRank || b.baseScore - a.baseScore ||
+        b.n - a.n || (a.model < b.model ? -1 : 1);
+    });
+    ranked.forEach(function (r, i) { r.rank = i + 1; });
+    var rest = rows.filter(function (r) { return r.n < 3; }).sort(function (a, b) {
+      return (b.score || 0) - (a.score || 0) || a.tieRank - b.tieRank ||
+        (b.baseScore || 0) - (a.baseScore || 0) || b.n - a.n || (a.model < b.model ? -1 : 1);
+    });
+    LLM_ALL_CACHE = {
+      months: months, tasks: tasks, taskLabel: taskLabel, taskDiff: difficulty,
+      mu: mu, rows: ranked.concat(rest), rankedCount: ranked.length
+    };
+    return LLM_ALL_CACHE;
+  }
+
   // ===== 亿模亿样 · 模型效果对比(gallery.arenaofbias.icu)前端作品社区盲评 Elo 榜 =====
   // 每 canonical 模型取最高 Elo(源站按推理强度分档多次测试,快照内已是每模型最高分档);
   // 计入综合分(「第三方实测」组计分组之一,权重 12%,接替原 AI 能力专项测试)与命中数。
@@ -521,7 +765,7 @@
   }
 
   // ===== 统一视图:canonical -> {deepswe, llm, webdev, agentarena, tbench, arenaofbias, modeldial, aicodingdaily} 用于矩阵/雷达 =====
-  // deepswe:同名取最高;llm:用指定月份(默认最新)的均值;webdev:同名取最高;
+  // deepswe:同名取最高;llm:全历史保序校正分(不再用单月);webdev:同名取最高;
   // agentarena:同名取最高净提升(可为负;2026-10-26 起计入综合分与命中数,权重 9%);
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
@@ -544,17 +788,16 @@
       var e = ensure(m.canon);
       if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, version: m.version, norm: (m.pass1 - dsMin) / dsSpan * 100 };
     });
-    // llm2014
-    var lm = llmMonth(llmMonthKey || llmMonths()[llmMonths().length - 1]);
-    if (lm) {
-      lm.rows.forEach(function (r) {
-        var e = ensure(r.canon);
-        // 取首现(CSV 行序最优排名),不再按最高分覆盖;rank 为源站行序名次(0 基,展示时 +1)
-        if (!e.llm) {
-          e.llm = { norm: r.norm, name: r.model, rank: r.norm != null ? r.rank + 1 : null };
-        }
-      });
-    }
+    // llm2014:全历史保序校正分(难度校正 + 月度保序),不再用单月均值。
+    // 只收录有排名的模型(计分项≥3);低样本模型不进综合分与命中数。
+    var la = llmAllTime();
+    la.rows.forEach(function (r) {
+      if (r.rank == null || r.score == null) return;
+      var e = ensure(r.canon);
+      if (!e.llm) {
+        e.llm = { norm: r.score, name: r.model, rank: r.rank, baseScore: r.baseScore };
+      }
+    });
     // Code Arena · WebDev:同名取最高 Elo(前端已做快照内 min-max 归一化到 0-100)
     webdev().forEach(function (m) {
       var e = ensure(m.canon);
@@ -640,10 +883,11 @@
     var acdTop = aicodingdaily()[0] || {};
     var tbN = (tb.models || []).length + ((window.TBENCH_V3 || {}).models || []).length + ((window.TBENCH_V21 || {}).models || []).length;
     var latest = llmMonths().slice(-1)[0];
-    var lmRows = latest ? llmMonth(latest).rows : [];
-    // llm2014 头名 = 源排序第一名(rank 0),展示其综合分(按等级均值归一化,未必恰为 100)
-    var lmTop = lmRows[0] || {};
-    var lmTopScore = lmTop.norm != null ? lmTop.norm : null;
+    // llm2014 头名 = 全历史保序校正分第一名;卡片展示全历史口径
+    var lmAll = llmAllTime();
+    var lmRanked = lmAll.rows.filter(function (r) { return r.rank != null; });
+    var lmTop = lmRanked[0] || {};
+    var lmTopScore = lmTop.score != null ? lmTop.score : null;
     // 亿模亿样:Elo 头名(按 score 降序取首)
     var abTop = arenaofbias()[0] || {};
     return [
@@ -651,8 +895,8 @@
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
         top: dsTop.name + " · " + dsTop.pass1 + "%" },
       { key: "llm2014", name: "llm2014 Agentic", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
-        stats: [{ l: "月份", v: latest }, { l: "模型", v: lmRows.length }],
-        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(2) + "/100" : "—") },
+        stats: [{ l: "月份", v: "06~11" }, { l: "模型", v: lmRanked.length }],
+        top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + " 全历史" : "—") },
       { key: "webdev", name: "Code Arena · WebDev", tag: "前端 Web 应用开发", url: wd.officialUrl || wd.url, updated: wd.updated,
         stats: [{ l: "模型", v: (wd.models || []).length }, { l: "Elo", v: (wdTop.score != null ? wdTop.score : "—") }],
         top: (wdTop.name || "—") + " · " + (wdTop.score != null ? wdTop.score + " Elo" : "") },
@@ -788,6 +1032,7 @@
     arenaofbias: arenaofbias,
     llmMonth: llmMonth,
     llmMonths: llmMonths,
+    llmAllTime: llmAllTime,
     tbench: tbench,
     tbenchAll: tbenchAll,
     tbenchByVersion: tbenchByVersion,

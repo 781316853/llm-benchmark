@@ -742,6 +742,17 @@ a:hover { text-decoration: underline; }
 .tier-Ep { background: linear-gradient(135deg, var(--tier-Ep-a), var(--tier-Ep-b)); }
 .tier-E  { background: linear-gradient(135deg, var(--tier-E-a),  var(--tier-E-b)); }
 
+/* 全历史视图:单元格右上角标成绩来源月份(如 09 = 2026-09);低样本模型名后的小标签。
+   月份走伪元素,不进入 textContent,避免污染 CSV 导出。 */
+.lm-cell[data-month]::after { content: "·" attr(data-month); font-size: 9px; font-weight: 500;
+  color: var(--text-tertiary); margin-left: 3px; font-family: var(--font-num);
+  vertical-align: super; line-height: 0; }
+.lm-cell-missing { color: var(--text-tertiary); }
+.lm-cell-missing::before { content: "·"; }
+
+.lm-cell-low { font-size: var(--fs-2xs); color: var(--text-tertiary); margin-left: 5px;
+  border: 1px solid var(--border-subtle); border-radius: 3px; padding: 0 3px; }
+
 /* 等级着色 */
 .g-A, .g-Ap { color: var(--good); font-weight: 600; }
 .g-B, .g-Bp { color: var(--g-b); }
@@ -1233,6 +1244,28 @@ body {
 #lmTable th { line-height: 1.35; }
 #lmTable td.num { white-space: nowrap; }
 #lmTable th:nth-child(2), #lmTable td:nth-child(2) { min-width: 150px; max-width: 240px; }
+/* 全历史视图:横向滚动时冻结 # / 模型 / 校正分三列;前两列实际宽度由 app.js 写入 CSS 变量 */
+#lmTable.lm-all th:nth-child(1), #lmTable.lm-all td:nth-child(1) {
+  position: sticky; left: 0; z-index: 1; background: var(--panel);
+}
+#lmTable.lm-all th:nth-child(2), #lmTable.lm-all td:nth-child(2) {
+  position: sticky; left: var(--lm-c1, 46px); z-index: 1; background: var(--panel);
+}
+#lmTable.lm-all th:nth-child(3), #lmTable.lm-all td:nth-child(3) {
+  position: sticky; left: calc(var(--lm-c1, 46px) + var(--lm-c2, 150px)); z-index: 1;
+  background: var(--panel); box-shadow: 2px 0 0 var(--border-subtle);
+}
+/* 表头必须压在冻结的正文单元格上;非冻结表头仍保持原 z-index:2 */
+#lmTable.lm-all thead th:nth-child(-n+3) { z-index: 4; background: var(--panel-2); }
+/* row-new / hover 的背景可能是半透明色,先垫一层不透明 panel,避免滚动内容透出 */
+#lmTable.lm-all tbody tr.row-new td:nth-child(-n+3) {
+  background-color: var(--panel);
+  background-image: linear-gradient(var(--row-new), var(--row-new));
+}
+#lmTable.lm-all tbody tr:hover td:nth-child(-n+3) {
+  background-color: var(--panel);
+  background-image: linear-gradient(var(--row-hover), var(--row-hover));
+}
 #matrixTable thead th.th-grp, #matrixTable thead tr.col-row th.grp-start,
 #matrixTable tbody td.grp-start { border-left: 1px solid var(--border-strong); }
 #matrixTable tbody tr:hover { background-image: linear-gradient(90deg, var(--accent) 0 2px, transparent 2px); }

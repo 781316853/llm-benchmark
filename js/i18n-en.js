@@ -275,7 +275,31 @@
         return "Source: " + url + " (methodology: " + method + ") · updated " + upd + " · " + cfgs + " configs / " + agents + " agents · Index v" + idx + " = equal-weight average of FrontierCode v" + fcVer + " (" + fcTasks + " tasks) + Terminal-Bench " + tbVer + " (" + tbTasks + " tasks) + SWE-Atlas-QnA-AA (" + swTasks + " tasks), each averaged over three attempts per task; rows are agent × model × effort, so scores reflect both model ability and agent scaffold. Cost/latency are per-task averages. Shown for reference only, not counted in the composite or coverage.";
       }],
     ["^数据来源:Kimi 官方发布博客自测转录\\(T2\\)·reasoning effort=max、temperature=1\\.0/top-p=0\\.95,TB 4\\.0 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考$",
-      "Source: transcript of Kimi's self-reported results from its official release blog (T2) · reasoning effort=max, temperature=1.0 / top-p=0.95, Terminal-Bench 4.0 uses the Claude Code scaffold; not guaranteed comparable with the official measured board; fills missing models only, for reference"]
+      "Source: transcript of Kimi's self-reported results from its official release blog (T2) · reasoning effort=max, temperature=1.0 / top-p=0.95, Terminal-Bench 4.0 uses the Claude Code scaffold; not guaranteed comparable with the official measured board; fills missing models only, for reference"],
+
+    // ===== llm2014 全历史难度校正 =====
+    ["^(.+?) · 全历史 (\\d{4}-\\d{2}) ~ (\\d{4}-\\d{2})$", "$1 · all history $2 – $3"],
+    ["^全历史难度校正第 (\\d+) / (\\d+) 名$", "Cross-month adjusted rank $1 of $2"],
+    ["^有效样本不足\\(计分项 (\\d+) < 3\\),不参与排名$", "Insufficient sample ($1 scored items < 3); not ranked"],
+    ["^原始均分 ([\\d.]+) / 4\\.0 → 保序校准 ([\\d.]+) / 4\\.0;校准前加性分 ([\\d.]+);同分按最新月份优先的保序拓扑序破平,仍不可比时按校准前加性分$",
+      "Raw mean $1 / 4.0 → order-calibrated $2 / 4.0; pre-calibration additive $3; ties broken by the newest-month-first order topology, then by the pre-calibration score"],
+    ["^(.+?) · ([-\\d.]+) 全历史$", "$1 · $2 all-history"],
+    ["^模型全历史分\\(难度校正 \\+ 月度保序\\) · 前 (\\d+)$",
+      "All-history score (difficulty-adjusted + monthly order) · top $1"],
+    ["^(\\d+) 个计分项\\(其中 (\\d+) 个 Pass 按 4\\.0 计\\);出现月份:(.+);最新成绩来源:(.+)$", "$1 scored items ($2 Pass at 4.0); seen in: $3; latest source months: $4"],
+    ["^(\\d+) 个 Pass\\(前代已 A,按 4\\.0 计\\)$", "$1 Pass cells (predecessor already reached A; counted as 4.0)"],
+    ["^等级分口径,越高越容易:(.+)$", "Grade-point basis, higher = easier:$1"],
+    ["^来自 (\\d{4}-\\d{2}) · 思考:是$", "From $1 · thinking: yes"],
+    ["^来自 (\\d{4}-\\d{2}) · 思考:否$", "From $1 · thinking: no"],
+    ["^来源 (\\d{4}-\\d{2}) · Pass:前代模型已拿到 A,该模型不再测试,按 4\\.0 计$", "Source $1 · Pass: predecessor already reached A; no longer tested; counted as 4.0"],
+    ["^来源 (\\d{4}-\\d{2}) · Perfect\\(零扣分,按 4\\.5 计\\)$", "Source $1 · Perfect (zero deductions, counted as 4.5)"],
+    ["^来源 (\\d{4}-\\d{2}) · Failed\\(按 0 计\\)$", "Source $1 · Failed (counted as 0)"],
+    ["^来源 (\\d{4}-\\d{2}) · Skip\\(未测试\\)$", "Source $1 · Skip (not tested)"],
+    ["^来源 (\\d{4}-\\d{2}) · Pending\\(测试中\\)$", "Source $1 · Pending (in progress)"],
+    ["^来源 (\\d{4}-\\d{2}) · 扣分/等级$", "Source $1 · deduction / grade"],
+    ["^来源 (\\d{4}-\\d{2}) · 任务 ([A-N])$", "Source $1 · task $2"],
+
+
   ];
 
   window.I18N_EN = {
@@ -336,8 +360,8 @@
         "Value index = composite ÷ blended cost per million tokens (¥/M). Cost follows a real coding mix per 1M tokens: 95% cached input + 4.5% uncached input + 0.5% output. Prices come from codingplan.fyi first, with missing prices for ranked models filled from models.dev (USD at 6.8); computed only for ranked models covering at least 4 boards. Hover to see the source and the input / cached input / output prices · Click to sort by this column",
       "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)":
         "Leaderboard benchmarks: the official measured boards (DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%) count toward the composite and coverage; the trailing HLE column is a reference benchmark only and counts toward neither. Each board is standardized by its in-board robust score (median and 1.4826×MAD scaling, clipped at ±3σ) before weighting, and data is merged by channel tier (official measured board > vendor release > third-party aggregator or mirror)",
-      "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);六组同纲计入综合分与命中数,合计占权重约 69%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数":
-        "Third-party tests: independent third-party evaluation (ModelDial Radar, five-axis 20/25/35/10/10 composite, weight 14%; AI Coding Daily coding board, 7 projects × 27 prompts, total out of 70, weight 8% — note each model runs on its own agent harness), community blind tests and real-world usage (Code Arena · WebDev 18% / Agent Arena net gain 9% / Arena of Bias 10%) and the maintainer's own suite (llm2014 private benchmark 10%). All six count toward the composite and coverage on the same footing, together about 69% of the weight. The composite is a weighted sum of in-board relative scores, with untested boards imputed from the model's own level. The #N before each value is the model's actual position on that board (WebDev has no source rank, so ties are ranked by raw entry Elo); hover to see the board's total entry count",
+      "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库全历史保序校正 10%);六组同纲计入综合分与命中数,合计占权重约 69%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数":
+        "Third-party tests: independent third-party evaluation (ModelDial Radar, five-axis 20/25/35/10/10 composite, weight 14%; AI Coding Daily coding board, 7 projects × 27 prompts, total out of 70, weight 8% — note each model runs on its own agent harness), community blind tests and real-world usage (Code Arena · WebDev 18% / Agent Arena net gain 9% / Arena of Bias 10%) and the maintainer's own suite (llm2014 private benchmark, all-history order-calibrated, 10%). All six count toward the composite and coverage on the same footing, together about 69% of the weight. The composite is a weighted sum of in-board relative scores, with untested boards imputed from the model's own level. The #N before each value is the model's actual position on that board (WebDev has no source rank, so ties are ranked by raw entry Elo); hover to see the board's total entry count",
       "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 9%)与命中数 点击按此列排序":
         "LMArena Agent Arena net gain (%): IPS (causal tracing) estimate of a model's improvement over the Arena baseline in real agent sessions, may be negative. When a model appears at several effort levels, its highest score is used. Also records the 95% interval, independent sessions and observation counts; counts toward the composite (weight 9%) and coverage · Click to sort by this column",
       "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 10%)与命中数 点击按此列排序":
@@ -397,6 +421,34 @@
       "默认显示全部模型,取消勾选仅显示命中≥2个榜单的模型":
         "Shows all models by default; untick to keep only models covering at least 2 leaderboards.",
       "模型综合分(按源排序)": "Composite score (source order)",
+      "全部月份 · 难度校正": "All months · difficulty-adjusted",
+      "模型全历史分(难度校正 + 月度保序)": "All-history score (difficulty-adjusted + monthly order)",
+      "模型全历史分(难度校正 + 月度保序) · 前 30": "All-history score (difficulty-adjusted + monthly order) · top 30",
+      "校正分(/100)": "Adjusted (/100)",
+      "计分项": "Scored",
+      "低样本": "low sample",
+      "计分规则": "Scoring rule",
+      "任务难度": "Task difficulty",
+      "样本与限制": "Sample & limits",
+      "该模型未测过此任务": "Not tested on this task",
+      "每个「模型 × 任务」取最新一次有效成绩;后续月份为 Skip/Pending 时不覆盖更早的有效成绩":
+        "Each model × task keeps its latest valid result; a later Skip/Pending does not overwrite an earlier valid result",
+      "Pass 按 4.0、Perfect 按 4.5、Failed 按 0;行粒度为源站原始模型名(含推理档位与日期快照),带日期后缀的快照不合并":
+        "Pass=4.0, Perfect=4.5, Failed=0; rows use the source's raw model names (including effort level and date snapshots); snapshots with a date suffix are not merged",
+      "① 加性拟合:成绩 = 全局均值 + 模型能力 + 任务难度;缺失格不参与,交替最小二乘":
+        "1) Additive fit: score = global mean + model ability + task difficulty; missing cells excluded; alternating least squares",
+      "② 月度保序(冲突以最新月为准):从最新月份往旧月份加入各月源站相邻名次约束;与更新月份成环的旧约束直接丢弃":
+        "2) Monthly order (latest month wins conflicts): add each month's adjacent source-rank constraints from newest to oldest; an older constraint that would create a cycle with newer ones is dropped",
+      "③ 拓扑与同分:对约束图做拓扑排序,沿拓扑序对加性分做 PAVA(非递增);校准分保留 1 位小数,同分按拓扑序(最新月份优先),仍不可比时按校准前加性分、计分项数、模型名":
+        "3) Topology and ties: topologically sort the constraint graph and run PAVA (non-increasing) on the additive score along that order; calibrated scores keep one decimal; ties follow the topology (newest month first), then the pre-calibration additive score, scored-item count and model name",
+      "④ 排名门槛:计分项(含 Pass)≥3;低于 3 标「低样本」,保留分数但不占名次":
+        "4) Ranking threshold: at least 3 scored items (Pass included); fewer than 3 is flagged “low sample”, keeps the score but takes no rank",
+      "同分表示在约束下已无法再区分;名次由最新月份优先的保序拓扑序决定,不代表分数更高":
+        "A tie means the constraints cannot separate the models any further; the rank comes from the newest-month-first order topology, not from a higher score",
+      "不同月份任务集不同,单元格右上角数字为该成绩的来源月份(如 09 = 2026-09)":
+        "Task sets differ by month; the small number at the top-right of a cell is the result's source month (e.g. 09 = 2026-09)",
+      "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(权重 10%)":
+        "This is a cross-month ability estimate, not an official source score; it is part of the overview composite (weight 10%)",
       "来源": "Source",
       "配置口径": "Configurations",
       "成本口径": "Cost basis",
@@ -696,7 +748,7 @@
       "长程软件工程任务": "Long-horizon software engineering",
       "真实 GitHub issue → PR 的长程软件工程评测": "Long-horizon SWE on real GitHub issue → PR tasks",
       "任务": "tasks",
-      "私有题库档位制评测,含单任务测试成本": "Private graded suite, including per-task test cost",
+      "私有题库全历史保序校正,含单任务测试成本": "Private suite with all-history order calibration, including per-task test cost",
       "前端 Web 应用开发": "Frontend web app development",
       "LMArena 前端竞技场 · 匿名盲测 Elo": "LMArena frontend arena · anonymous blind-test Elo",
       "真实智能体会话 · 净提升": "Real agent sessions · net gain",
@@ -721,7 +773,11 @@
       "Terminal-Bench (解决率)": "Terminal-Bench (solve rate)",
       "ModelDial (综合分)": "ModelDial (composite)",
       "Agent Arena (净提升)": "Agent Arena (net gain)",
-      "llm2014 (综合分/100)": "llm2014 (composite/100)",
+      "llm2014 (全历史/100)": "llm2014 (all-history/100)",
+      "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(权重 10%)与命中数":
+        "llm2014 all-history order-calibrated score: difficulty adjustment + monthly order, ties go to the newest month; may exceed 100 or be negative; counts toward the composite (weight 10%) and coverage",
+      "总览综合分使用「全部月份 · 难度校正」分,不是本页月度分":
+        "The overview composite uses the all-months difficulty-adjusted score, not this page's monthly score",
       "亿模亿样 (Elo)": "Arena of Bias (Elo)",
       "AI Coding Daily (总分/70)": "AI Coding Daily (total/70)",
       "最佳性价比": "Best value",

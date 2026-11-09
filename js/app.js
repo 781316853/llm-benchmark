@@ -119,7 +119,7 @@
   // 基准概览行文案与权重;按 benchSummary 的 key 索引
   var BENCH_DESC = {
     deepswe: "真实 GitHub issue → PR 的长程软件工程评测",
-    llm2014: "私有题库档位制评测,含单任务测试成本",
+    llm2014: "私有题库全历史保序校正,含单任务测试成本",
     webdev: "LMArena 前端竞技场 · 匿名盲测 Elo",
     agentarena: "LMArena 真实智能体会话 · 净提升",
     arenaofbias: "前端作品社区盲评 Elo 竞技场",
@@ -161,7 +161,7 @@
   // 单元格 HTML:等级分沿用等级着色,成本用较小的次要色展示
   function lmCellHtml(c) {
     var inner;
-    if (c.status === "grade" && c.cost != null) {
+    if ((c.status === "grade" || c.status === "perfect") && c.cost != null) {
       inner = esc(c.raw.replace(/\(\s*\d+(?:\.\d+)?\s*\)$/, "")) + ' <span class="cell-cost">¥' + c.cost + '</span>';
     } else {
       inner = esc(c.raw);
@@ -193,6 +193,8 @@
     if (cell.status === "failed") return "g-Failed";
     if (cell.status === "skip") return "g-Skip";
     if (cell.status === "pending") return "g-Pending";
+    // Perfect = 零扣分,与 A+ 同色
+    if (cell.status === "perfect") return "g-Ap";
     if (cell.status === "grade") {
       var g = cell.grade;
       return { "A+": "g-Ap", A: "g-A", "B+": "g-Bp", B: "g-B", "C+": "g-Cp", C: "g-C", "D+": "g-Dp", D: "g-D" }[g] || "";
@@ -281,7 +283,9 @@
     { key: "agentarena", label: "Agent Arena (净提升)", type: "num", bench: true, grp: "第三方实测", tone: "agentarena",
       tip: "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 9%)与命中数",
       val: function (r) { return (r.agentarena && r.agentarena.score != null) ? r.agentarena.score : null; } },
-    { key: "llm",     label: "llm2014 (综合分/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm", val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
+    { key: "llm",     label: "llm2014 (全历史/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm",
+      tip: "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(权重 10%)与命中数",
+      val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // 亿模亿样:前端作品社区盲评 Elo 原值(每模型取最高分档);计入综合分与命中数
     { key: "arenaofbias", label: "亿模亿样 (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "arenaofbias",
       tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 10%)与命中数",
@@ -523,12 +527,12 @@
     // 未参与排名的行(命中 <4 榜)序号列固定「—」;参与排名的行取全量排名序中的真实名次
     // 第三方实测各榜的上榜条目数:名次徽标(#N)悬浮提示的分母,直接取各源榜单条目数
     var rsrc = function (k) { return (D.src[k] || {}).models || []; };
-    var llmRows = D.llmMonth(state.llmMonth || D.llmMonths().slice(-1)[0]);
+    var llmAll = D.llmAllTime();
     var RANK_TOTAL = {
       modeldial: rsrc("modeldial").length,
       webdev: rsrc("webdev").length,
       agentarena: rsrc("arena_agent").length,
-      llm: llmRows ? llmRows.rows.length : 0,
+      llm: llmAll.rankedCount,
       arenaofbias: rsrc("arenaofbias").length,
       aicodingdaily: rsrc("aicodingdaily").length
     };
@@ -725,7 +729,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);六组同纲计入综合分与命中数,合计占权重约 69%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库全历史保序校正 10%);六组同纲计入综合分与命中数,合计占权重约 69%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -836,11 +840,64 @@
   }
 
   // ===== 4) llm2014 =====
+  var LLM_ALL_KEY = "__all__"; // 月份下拉的「全部月份 · 难度校正」虚拟月份
+
+  // 脚注单条渲染:字符串内容单行跟随标签;数组内容套 note-body 逐行展示,折行对齐
+  function noteLineHtml(p) {
+    var body = Array.isArray(p.v)
+      ? '<div class="note-body">' + p.v.map(function (l) { return "<div>" + esc(l) + "</div>"; }).join("") + "</div>"
+      : esc(p.v);
+    return '<div class="note-line"><b>' + esc(p.k) + "</b>" + body + "</div>";
+  }
+  function setLlmChartTitle(text) {
+    var el = document.getElementById("lmChartTitle");
+    if (el) el.textContent = text;
+  }
+  function resetLlmTableMode() {
+    var t = document.getElementById("lmTable");
+    if (!t) return;
+    t.classList.remove("lm-all");
+    t.style.removeProperty("--lm-c1");
+    t.style.removeProperty("--lm-c2");
+  }
+  // 全历史表横向滚动时冻结前 3 列(# / 模型 / 校正分);列宽随内容变化,
+  // 这里量出前两列的实际宽度写入 CSS 变量,避免用固定偏移导致错位
+  function syncLlmAllSticky() {
+    var t = document.getElementById("lmTable");
+    if (!t || !t.classList.contains("lm-all")) return;
+    var ths = t.querySelectorAll("thead th");
+    if (ths.length < 3) return;
+    t.style.setProperty("--lm-c1", ths[0].getBoundingClientRect().width + "px");
+    t.style.setProperty("--lm-c2", ths[1].getBoundingClientRect().width + "px");
+  }
+  var lmStickyTimer = 0;
+  function scheduleLlmAllSticky() {
+    clearTimeout(lmStickyTimer);
+    lmStickyTimer = setTimeout(syncLlmAllSticky, 80);
+  }
+  // 全历史矩阵单元格:值沿用月度视图的等级着色,右上角标成绩来源月份;
+  // 只有 Skip/Pending 而没有有效成绩的格按最近状态展示,完全没测过的格显示「·」
+  function lmAllCellHtml(c, task) {
+    if (!c) return '<span class="lm-cell-missing" title="该模型未测过此任务"></span>';
+    var title = "来源 " + c.month + " · 任务 " + task;
+    if (c.status === "pass") title = "来源 " + c.month + " · Pass:前代模型已拿到 A,该模型不再测试,按 4.0 计";
+    else if (c.status === "perfect") title = "来源 " + c.month + " · Perfect(零扣分,按 4.5 计)";
+    else if (c.status === "failed") title = "来源 " + c.month + " · Failed(按 0 计)";
+    else if (c.status === "skip") title = "来源 " + c.month + " · Skip(未测试)";
+    else if (c.status === "pending") title = "来源 " + c.month + " · Pending(测试中)";
+    else if (c.status === "grade") title = "来源 " + c.month + " · 扣分/等级";
+    // 月份用 CSS 伪元素显示,避免进入 textContent/CSV 导出
+    return '<span class="lm-cell" data-month="' + esc(String(c.month).slice(5)) + '" title="' + esc(title) + '">' +
+      lmCellHtml(c) + "</span>";
+  }
   function renderLlm2014(month) {
+    if (month === LLM_ALL_KEY) { state.llmMonth = month; renderLlmAll(); return; }
     var src = D.src.llm || {};
     var mo = D.llmMonth(month);
-    state.llmMonth = month;
     if (!mo) return;
+    state.llmMonth = month;
+    resetLlmTableMode();
+    setLlmChartTitle("模型综合分(按源排序)");
     document.getElementById("lmDesc").textContent = src.desc || "";
     var xLabels = mo.projects;
     // 排名按原站 CSV 行序(rank 升序),不再按均值重排
@@ -917,15 +974,97 @@
     noteParts.push({ k: "综合分", v: [
       "以各已测项目等级均值(A+=4.0、A=3.5 … D=0.5,Pass=4.0,Failed=0)为基础分,不归并档位",
       "保序口径:按源站排名强制分数严格递减、相邻名次至少差 1 分,消除「名次靠前但分数低」的倒挂",
-      "与名次矛盾处相邻模型合并取均值后按名次拉开 1 分/名;未受影响的模型保持基础分不变"
+      "与名次矛盾处相邻模型合并取均值后按名次拉开 1 分/名;未受影响的模型保持基础分不变",
+      "总览综合分使用「全部月份 · 难度校正」分,不是本页月度分"
     ] });
-    // 单条说明渲染:字符串内容单行跟随标签;数组内容套 note-body 逐行展示,折行对齐
-    var noteLineHtml = function (p) {
-      var body = Array.isArray(p.v)
-        ? '<div class="note-body">' + p.v.map(function (l) { return "<div>" + esc(l) + "</div>"; }).join("") + "</div>"
-        : esc(p.v);
-      return '<div class="note-line"><b>' + esc(p.k) + '</b>' + body + '</div>';
-    };
+    var noteHtml = noteParts.map(noteLineHtml).join("");
+    if (!state.showAll.llm) {
+      noteHtml += '<div class="note-line note-sub">仅显示命中≥2榜的 ' + rows.length + '/' + allRows.length + ' 个模型(勾选「显示全部模型」可展开)。</div>';
+    }
+    document.getElementById("lmNote").innerHTML = noteHtml;
+  }
+
+  // 全历史视图:各月任务集不同,用两向加性模型把模型能力放到同一把尺上(估算;见 D.llmAllTime)
+  function renderLlmAll() {
+    var src = D.src.llm || {};
+    var all = D.llmAllTime();
+    document.getElementById("lmDesc").textContent = src.desc || "";
+    var allRows = all.rows;
+    var rows = filterHits(allRows, function (r) { return r.canon.id; }, state.showAll.llm);
+    var ranked = rows.filter(function (r) { return r.rank != null; });
+    // 50+ 根横向柱会挤在一起,图表只画前 20;完整排名见表格
+    var chartRows = ranked.slice(0, 20);
+    setLlmChartTitle("模型全历史分(难度校正 + 月度保序)" + (ranked.length > chartRows.length ? " · 前 20" : ""));
+    var lmH = Math.min(760, Math.max(380, chartRows.length * 26 + 90));
+    var barEl = document.getElementById("lmBar");
+    if (barEl) {
+      barEl.style.height = lmH + "px";
+      var inst = CH.inst("lmBar");
+      if (inst) inst.resize();
+    }
+    var asc = chartRows.slice().sort(function (a, b) { return a.score - b.score; });
+    var peak = Math.max(100, Math.ceil(Math.max.apply(null,
+      ranked.map(function (r) { return r.score; }).concat([100])) / 10) * 10);
+    CH.apply("lmBar", CH.barOption(
+      asc.map(function (r) { return r.model; }),
+      asc.map(function (r) { return Number(r.score.toFixed(1)); }),
+      CH.brand(), "", { max: peak }));
+    // 明细表:12 个任务列 + 校正分 + 有效项 + Pass + 最新 IDE(源站每月 IDE 可能不同,取最新月份)
+    var tasks = all.tasks;
+    var html = rows.map(function (r) {
+      var nw = D.isNewRaw("llm", r.model);
+      var rankTip = r.rank != null
+        ? "全历史难度校正第 " + r.rank + " / " + all.rankedCount + " 名"
+        : "有效样本不足(计分项 " + r.n + " < 3),不参与排名";
+      var tds = '<td class="rank" title="' + esc(rankTip) + '">' + (r.rank != null ? r.rank : "—") + "</td>";
+      tds += "<td>" + vdot(r.canon.vendor) + esc(r.model) + (nw ? newBadge() : "");
+      if (r.rank == null) tds += '<span class="lm-cell-low" data-export-skip title="' + esc(rankTip) + '">低样本</span>';
+      tds += "</td>";
+      // 校正分等关键列紧跟模型名:12 个任务列会把表格撑宽,关键指标不能落在横向滚动区外
+      var score = r.score != null ? r.score.toFixed(1) : "-";
+      var scoreTip = "原始均分 " + (r.rawMean != null ? r.rawMean.toFixed(2) : "-") + " / 4.0 → 保序校准 " +
+        (r.adj != null ? r.adj.toFixed(2) : "-") + " / 4.0;校准前加性分 " +
+        (r.baseScore != null ? r.baseScore.toFixed(1) : "-") + ";同分按最新月份优先的保序拓扑序破平,仍不可比时按校准前加性分";
+      tds += '<td class="num"><span class="bv bv-llm" title="' + esc(scoreTip) + '">' + score + "</span></td>";
+      var obsTip = r.n + " 个计分项(其中 " + r.passN + " 个 Pass 按 4.0 计);出现月份:" +
+        (r.months.join("、") || "无") + ";最新成绩来源:" + (r.obsMonths.join("、") || "无");
+      tds += '<td class="num" title="' + esc(obsTip) + '">' + r.n + "</td>";
+      tds += '<td class="num" title="' + esc(r.passN + " 个 Pass(前代已 A,按 4.0 计)") + '">' + r.passN + "</td>";
+      tds += '<td title="' + esc("来自 " + r.month + " · 思考:" + (r.think ? "是" : "否")) + '">' + esc(r.ide || "—") + "</td>";
+      tasks.forEach(function (t) { tds += '<td class="num">' + lmAllCellHtml(r.cells[t], t) + "</td>"; });
+      return '<tr class="' + (nw ? "row-new" : "") + '">' + tds + "</tr>";
+    });
+    var headers = ["#", "模型", "校正分(/100)", "计分项", "Pass", "IDE/CLI"]
+      .concat(tasks.map(function (t) { return all.taskLabel[t] || t; }));
+    var headCls = ["", "", "num bv bv-llm", "num", "num", ""]
+      .concat(tasks.map(function () { return "num"; }));
+    var lmTable = document.getElementById("lmTable");
+    if (lmTable) lmTable.classList.add("lm-all");
+    fillTable("lmTable", headers, html, headCls);
+    syncLlmAllSticky();
+    scheduleLlmAllSticky();
+    var diffLine = tasks.map(function (t) {
+      return t + " " + (all.taskDiff[t] >= 0 ? "+" : "") + all.taskDiff[t].toFixed(2);
+    }).join(" · ");
+    var noteParts = [
+      { k: "来源", v: src.url + " · 全历史 " + all.months[0] + " ~ " + all.months[all.months.length - 1] },
+      { k: "口径", v: [
+        "每个「模型 × 任务」取最新一次有效成绩;后续月份为 Skip/Pending 时不覆盖更早的有效成绩",
+        "Pass 按 4.0、Perfect 按 4.5、Failed 按 0;行粒度为源站原始模型名(含推理档位与日期快照),带日期后缀的快照不合并"
+      ] },
+      { k: "计分规则", v: [
+        "① 加性拟合:成绩 = 全局均值 + 模型能力 + 任务难度;缺失格不参与,交替最小二乘",
+        "② 月度保序(冲突以最新月为准):从最新月份往旧月份加入各月源站相邻名次约束;与更新月份成环的旧约束直接丢弃",
+        "③ 拓扑与同分:对约束图做拓扑排序,沿拓扑序对加性分做 PAVA(非递增);校准分保留 1 位小数,同分按拓扑序(最新月份优先),仍不可比时按校准前加性分、计分项数、模型名",
+        "④ 排名门槛:计分项(含 Pass)≥3;低于 3 标「低样本」,保留分数但不占名次",
+        "同分表示在约束下已无法再区分;名次由最新月份优先的保序拓扑序决定,不代表分数更高"
+      ] },
+      { k: "任务难度", v: "等级分口径,越高越容易:" + diffLine },
+      { k: "样本与限制", v: [
+        "不同月份任务集不同,单元格右上角数字为该成绩的来源月份(如 09 = 2026-09)",
+        "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(权重 10%)"
+      ] }
+    ];
     var noteHtml = noteParts.map(noteLineHtml).join("");
     if (!state.showAll.llm) {
       noteHtml += '<div class="note-line note-sub">仅显示命中≥2榜的 ' + rows.length + '/' + allRows.length + ' 个模型(勾选「显示全部模型」可展开)。</div>';
@@ -2177,7 +2316,7 @@
     if (llmMonthEl) {
       llmMonthEl.innerHTML = ms.map(function (m) {
         return '<option value="' + m + '"' + (m === state.llmMonth ? " selected" : "") + ">" + m + "</option>";
-      }).join("");
+      }).join("") + '<option value="' + LLM_ALL_KEY + '">全部月份 · 难度校正</option>';
       llmMonthEl.addEventListener("change", function (e) {
         renderLlm2014(e.target.value);
       });
@@ -2207,6 +2346,8 @@
         sw.render();
       });
     });
+    // 全历史表冻结列:窗口尺寸变化后重新测量前两列宽度
+    window.addEventListener("resize", scheduleLlmAllSticky);
     // 总览页「高亮国产模型」开关:切换后重渲染矩阵以应用/取消国产高亮
     var hdEl = document.getElementById("ovHighlightDomestic");
     if (hdEl) hdEl.addEventListener("change", function () {

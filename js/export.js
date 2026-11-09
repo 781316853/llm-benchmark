@@ -61,6 +61,8 @@
       if (n.nodeType === 3) out.push(n.nodeValue);
       else if (n.nodeType === 1) {
         if (n.classList && n.classList.contains("sort-ind")) continue;
+        // 纯展示徽标(如全历史视图的「低样本」)不进 CSV
+        if (n.hasAttribute && n.hasAttribute("data-export-skip")) continue;
         out.push(" ");
         collectText(n, out);
       }

@@ -129,7 +129,7 @@
   //  Code Arena·WebDev 18%(权威第三方,社区匿名盲测投票;实测组权重最高)
   //  Terminal-Bench 9%(权威第三方终端 Agent 榜,4.0/3.0/2.1 多版本合并为一组)
   //  ModelDial 14%(第三方独立实测综合能力榜,五轴:后端 20%/前端 25%/知识 35%/审美 10%/可维护 10%)
-  //  llm2014 10%(个人私有题库、等级折算制,代表性弱于第三方基准)
+  //  llm2014 10%(个人私有题库、全历史保序校正制,代表性弱于第三方基准)
   //  亿模亿样 10%(前端作品社区盲评 Elo 竞技场;2026-10-16 起接替原 AI 能力专项测试的权重席位)
   //  AI Coding Daily 8%(独立第三方实测编码榜,总分 0-70;2026-10-19 入组,理由见下方沿革)
   //  Agent Arena 9%(LMArena 真实智能体会话净提升;2026-10-26 入组,与 WebDev 同为 LMArena,压低防重复计量)
@@ -183,7 +183,7 @@
   // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
-  //   modeldial 源站五轴 20/25/35/10/10 综合分    llm  等级映射综合分    arenaofbias  Elo 原值(每模型最高分档)
+  //   modeldial 源站五轴 20/25/35/10/10 综合分    llm  全历史保序校正分    arenaofbias  Elo 原值(每模型最高分档)
   //   aicodingdaily 源站总分(0-70,四轴之和;尺度不变,原生量纲直接进池定标)
   //   agentarena 净提升 %(相对 Arena 基线,可为负;尺度不变,原生量纲直接进池定标)
   var BOARD_RAW = {
@@ -383,7 +383,8 @@
         value: [
           e.deepswe ? e.deepswe.norm : 0,
           (e.webdev && e.webdev.norm != null) ? e.webdev.norm : 0,
-          (e.llm && e.llm.norm != null) ? e.llm.norm : 0
+          // llm 全历史校正分可超过 100 或为负;雷达轴固定 0-100,显示时截断
+          (e.llm && e.llm.norm != null) ? Math.max(0, Math.min(100, e.llm.norm)) : 0
         ],
         lineStyle: { color: e.color || undefined },
         itemStyle: { color: e.color || undefined },
@@ -402,7 +403,7 @@
         id: id, color: e.color, vendor: e.vendor,
         deepswe: e.deepswe ? (e.deepswe.pass1 + "% · $" + e.deepswe.cost + " · " + e.deepswe.steps + "步") : "—",
         webdev: (e.webdev && e.webdev.score != null) ? (e.webdev.score + " Elo · " + e.webdev.votes + " 票") : "—",
-        llm: e.llm && e.llm.norm != null ? (e.llm.norm.toFixed(2) + " / 100") : "-"
+        llm: e.llm && e.llm.norm != null ? e.llm.norm.toFixed(2) : "-"
       };
     });
   }
