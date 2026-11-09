@@ -124,7 +124,7 @@
     agentarena: "LMArena 真实智能体会话 · 净提升",
     arenaofbias: "前端作品社区盲评 Elo 竞技场",
     tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
-    modeldial: "第三方实测 · 后端 40 / 前端 30 / 知识 30",
+    modeldial: "第三方实测 · 五轴 20/25/35/10/10",
     aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70",
     vcb: "独立第三方实测 · 应用迭代 · 固定 OpenHands · 准确率"
   };
@@ -269,11 +269,11 @@
     { key: "hle", label: "HLE", type: "num", bench: true, grp: "榜单基准", refKey: "hle", tone: "hle",
       tip: "Humanity's Last Exam 闭卷得分(%):2500 道专家撰写、无联网可检索解的前沿题,越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页",
       val: function (r) { var m = refIndex().hle[r.id]; return m ? m.score : null; } },
-    // ModelDial 雷达单值列(归入「第三方实测」组首位):第三方独立实测的综合能力分
-    // (0-100,后端 40%/前端 30%/知识 30% 加权);计入综合分与命中数;
+    // ModelDial 雷达单值列(归入「第三方实测」组首位):第三方独立实测的五轴综合能力分
+    // (0-100,后端 20%/前端 25%/知识 35%/审美 10%/可维护 10% 加权);计入综合分与命中数;
     // 格内为综合分,口径与分项/耗时/费用放 th 悬浮提示;完整榜见「ModelDial」页
     { key: "modeldial", label: "ModelDial (综合分)", type: "num", bench: true, grp: "第三方实测", tone: "modeldial",
-      tip: "ModelDial 雷达综合分(0-100):第三方独立实测,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;计入综合分(权重 14%)与命中数",
+      tip: "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 14%)与命中数",
       val: function (r) { return r.modeldial ? r.modeldial.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):归入「第三方实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
@@ -610,20 +610,25 @@
         ? '<span class="cell-val bv bv-tbench"' + tbTitle + '>' + r.tbench.score + '%</span>' + tbVerBadge(r.tbench.version) +
           ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
         : "—";
-      // ModelDial 单元格:综合分(0-100);悬浮显示三分项/推理强度/耗时/费用
-      // (费用与耗时为后端(coding)单轴口径,故在提示里显式标注)
+      // ModelDial 单元格:五轴综合分(0-100);悬浮显示五分项/推理强度/耗时/费用
+      // (费用与耗时为五轴汇总口径,故在提示里显式标注)
       var mdHtml = "—";
       if (r.modeldial) {
         var mdParts = [];
         if (r.modeldial.backend != null) mdParts.push("后端 " + r.modeldial.backend);
         if (r.modeldial.frontend != null) mdParts.push("前端 " + r.modeldial.frontend);
         if (r.modeldial.knowledge != null) mdParts.push("知识 " + r.modeldial.knowledge);
+        if (r.modeldial.aesthetic != null) mdParts.push("审美 " + r.modeldial.aesthetic);
+        if (r.modeldial.maintainability != null) mdParts.push("可维护 " + r.modeldial.maintainability);
+        if (r.modeldial.threeAxis != null) mdParts.push("旧三轴 " + r.modeldial.threeAxis);
         if (r.modeldial.effort) mdParts.push("强度 " + r.modeldial.effort);
         if (r.modeldial.elapsedMs != null) mdParts.push("耗时 " + fmtDur(r.modeldial.elapsedMs));
-        if (r.modeldial.costUsd != null) mdParts.push("费用 " + fmtUsd(r.modeldial.costUsd) + "(后端轴口径)");
+        if (r.modeldial.costUsd != null) mdParts.push("费用 " + fmtUsd(r.modeldial.costUsd) + "(综合口径)");
         if (r.modeldial.configs) mdParts.push(r.modeldial.configs + " 个配置取最高");
+        if (r.modeldial.external) mdParts.push("外部产品评测(源站标为非 API 排名)");
         mdHtml = rankBadge(r.modeldial.rank, "ModelDial", RANK_TOTAL.modeldial) +
-          '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>';
+          '<span class="bv bv-modeldial" title="' + esc(mdParts.join(" · ")) + '">' + r.modeldial.score.toFixed(1) + '</span>' +
+          (r.modeldial.external ? ' <span class="badge-two" title="源站外部产品参考条目:api_model_ranking_eligible=false">外部</span>' : "");
       }
       // AI Coding Daily 单元格:总分(0-70);悬浮显示四轴分项/推理档位/harness/耗时/费用
       var acdHtml = "—";
@@ -738,7 +743,7 @@
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
       "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;VCB-1-100,50 个真实 Web 应用迭代场景、隐藏测试判定、固定 OpenHands harness,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;VCB-1-100,50 个真实 Web 应用迭代场景、隐藏测试判定、固定 OpenHands harness,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -964,7 +969,7 @@
         '<div class="note-line"><b>暂无数据</b>抓取失败或尚未生成 data/modeldial.js(待下次每日刷新后恢复)。</div>';
       return;
     }
-    // 成本 vs 综合分散点:X=费用(后端轴,对数轴,跨 3 个数量级)、Y=综合分、气泡=耗时(分钟)
+    // 成本 vs 综合分散点:X=费用(五轴汇总口径,对数轴)、Y=综合分、气泡=耗时(分钟)
     var pts = ms.filter(function (m) { return m.costUsd != null && m.overall != null; })
       .map(function (m) { return [m.costUsd, m.overall, m.elapsedMs != null ? m.elapsedMs / 60000 : 1, m.canon.id]; });
     var costs = pts.map(function (p) { return p[0]; });
@@ -973,7 +978,7 @@
     // (直接取极值会得到 0.010781 / 28.09321 这类刻度)
     var span = function (v) { var t = Number(v.toPrecision(1)); return t > 0 ? t : v; };
     CH.apply("mdScatter", CH.scatterOption([{ name: T("模型"), points: pts }], {
-      xName: T("参考费用($" + (src.costBasis === "backend" ? "后端轴" : "") + ")"), yName: T("综合分"),
+      xName: T("参考费用($)"), yName: T("综合分"),
       bubble: true, bubbleName: T("耗时"), bubbleScale: 2.2,
       bubbleFormat: function (min) { return fmtDur(min * 60000); },
       xFormat: fmtUsd,
@@ -985,52 +990,59 @@
     }));
     // 源站决策标记转中文(源站为英文枚举 recommended/value/speed/lightweight)
     var TAG_CN = { recommended: "推荐", value: "高性价比", speed: "快速", lightweight: "轻量" };
-    // 主榜表:排名 / 模型(厂商色点) / 厂商 / 综合分 / 后端 / 前端 / 知识 / 耗时 / 费用 / 配置数
-    // 综合分与三个分项都是 ModelDial 自己的数值,统一上该榜数据色;耗时/费用属元数据,不上色
+    // 主榜表:排名 / 模型(厂商色点) / 厂商 / 综合分 / 后端 / 前端 / 知识 / 审美 / 可维护 / 耗时 / 费用 / 配置数
+    // 综合分与五个分项都是 ModelDial 自己的数值,统一上该榜数据色;耗时/费用属元数据,不上色
     var rows = ms.map(function (m) {
       var tagList = (m.tags || []).map(function (t) { return TAG_CN[t] || t; });
       var tag = tagList.length ? ' <span class="badge-two" title="源站标记">' + esc(tagList.join("/")) + '</span>' : "";
+      var ext = m.external ? ' <span class="badge-two" title="源站外部产品参考条目:api_model_ranking_eligible=false">外部</span>' : "";
       return '<tr><td class="rank">' + m.rank + '</td>' +
-        '<td>' + vdot(m.canon.vendor) + esc(m.canon.id) + tag +
+        '<td>' + vdot(m.canon.vendor) + esc(m.canon.id) + tag + ext +
           (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
         '<td>' + vname(m.canon.vendor) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", m.overall.toFixed(1)) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", m.backend != null ? m.backend : null) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", m.frontend != null ? m.frontend : null) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", m.knowledge != null ? m.knowledge : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", m.aesthetic != null ? m.aesthetic : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", m.maintainability != null ? m.maintainability : null) + '</td>' +
         '<td class="num">' + fmtDur(m.elapsedMs) + '</td>' +
         '<td class="num">' + fmtUsd(m.costUsd) + '</td>' +
         '<td class="num">' + (m.configs || 1) + '</td></tr>';
     });
     fillTable("mdTable",
-      ["#", "模型", "厂商", "综合分", "后端", "前端", "知识", "耗时", "费用", "配置"],
-      rows, headTone(["", "", "", "num", "num", "num", "num", "num", "num", "num"], 3, 6, "modeldial"));
-    // config 明细:模型 × 推理强度,按源站 config 排名升序
+      ["#", "模型", "厂商", "综合分", "后端", "前端", "知识", "审美", "可维护", "耗时", "费用", "配置"],
+      rows, headTone(["", "", "", "num", "num", "num", "num", "num", "num", "num", "num", "num"], 3, 8, "modeldial"));
+    // config 明细:模型 × 推理强度,按综合分排名升序
     var cfgRows = cfgs.map(function (c) {
+      var ext = c.external ? ' <span class="badge-two" title="源站外部产品参考条目:api_model_ranking_eligible=false">外部</span>' : "";
       return '<tr><td class="rank">' + (c.rank != null ? c.rank : "—") + '</td>' +
-        '<td>' + vdot(c.canon.vendor) + esc(c.canon.id) +
+        '<td>' + vdot(c.canon.vendor) + esc(c.canon.id) + ext +
           (c.effort ? ' <span class="cell-cost">' + esc(c.effort) + '</span>' : "") + '</td>' +
         '<td>' + vname(c.canon.vendor) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", c.overall != null ? c.overall.toFixed(1) : null) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", c.backend != null ? c.backend : null) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", c.frontend != null ? c.frontend : null) + '</td>' +
         '<td class="num">' + bvSpan("modeldial", c.knowledge != null ? c.knowledge : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", c.aesthetic != null ? c.aesthetic : null) + '</td>' +
+        '<td class="num">' + bvSpan("modeldial", c.maintainability != null ? c.maintainability : null) + '</td>' +
         '<td class="num">' + fmtDur(c.elapsedMs) + '</td>' +
         '<td class="num">' + fmtUsd(c.costUsd) + '</td></tr>';
     });
     fillTable("mdCfgTable",
-      ["config #", "模型", "厂商", "综合分", "后端", "前端", "知识", "耗时", "费用"],
-      cfgRows, headTone(["", "", "", "num", "num", "num", "num", "num", "num"], 3, 6, "modeldial"));
-    document.getElementById("mdCfgCount").textContent = "共 " + cfgs.length + " 条 config(模型 × 推理强度)";
+      ["config #", "模型", "厂商", "综合分", "后端", "前端", "知识", "审美", "可维护", "耗时", "费用"],
+      cfgRows, headTone(["", "", "", "num", "num", "num", "num", "num", "num", "num", "num"], 3, 8, "modeldial"));
+    document.getElementById("mdCfgCount").textContent = "共 " + cfgs.length + " 条 config(模型 × 推理强度;不含 Bot)";
     // 脚注:口径说明 + 成本口径提醒 + 来源
     document.getElementById("mdNote").innerHTML =
       '<div class="note-line"><b>综合分口径</b>后端与测试 ' + esc(Math.round((w.backend || 0) * 100)) + '% + 前端与交互 ' +
         esc(Math.round((w.frontend || 0) * 100)) + '% + 知识与推理 ' + esc(Math.round((w.knowledge || 0) * 100)) +
-        '%(三分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。</div>' +
+        '% + 视觉审美 ' + esc(Math.round((w.aesthetic || 0) * 100)) + '% + 可维护性 ' + esc(Math.round((w.maintainability || 0) * 100)) +
+        '%(五分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。外部产品条目保留在主榜,带「外部」标记。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
-        '源站主榜显示的是三轴汇总值,故此处数值低于源站显示值;本页各模型之间口径一致、可直接横向比较。</div>' +
+        '本页各模型之间口径一致、可直接横向比较。</div>' +
       '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 14%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;命中数分母为 9(九项基准)。上表为模型级 ' +
-        ms.length + ' 条,下方为全部 config 明细 ' + cfgs.length + ' 条。</div>' +
+        ms.length + ' 条(含外部产品 ' + ms.filter(function (m) { return m.external; }).length + ' 条),下方为全部 config 明细 ' + cfgs.length + ' 条(不含 Bot)。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
         (src.methodUrl ? ' · <a href="' + esc(src.methodUrl) + '" target="_blank" rel="noopener">口径说明 ↗</a>' : "") +

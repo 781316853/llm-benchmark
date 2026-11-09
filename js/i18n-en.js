@@ -96,10 +96,18 @@
       }],
 
     // ===== ModelDial 配置提示 =====
-    ["^后端 ([\\d.]+) · 前端 ([\\d.]+) · 知识 ([\\d.]+) · 强度 (\\S+) · 耗时 (.+?) · 费用 (\\$[\\d.]+)\\(后端轴口径\\) · (\\d+) 个配置取最高$",
-      function (m, be, fe, kn, eff, lat, cost, cfgs) {
-        return "Backend " + be + " · Frontend " + fe + " · Knowledge " + kn + " · effort " + effortLabel(eff) +
-          " · latency " + lat + " · cost " + cost + " (backend axis) · best of " + cfgs + " configs";
+    ["^后端 ([\\d.]+) · 前端 ([\\d.]+) · 知识 ([\\d.]+)(?: · 审美 ([\\d.]+))?(?: · 可维护 ([\\d.]+))?(?: · 旧三轴 ([\\d.]+))?(?: · 强度 (\\S+))?(?: · 耗时 (.+?))?(?: · 费用 (\\$[\\d.]+)\\(综合口径\\))?(?: · (\\d+) 个配置取最高)?(?: · (外部产品评测\\(源站标为非 API 排名\\)))?$",
+      function (m, be, fe, kn, ae, mt, ta, eff, lat, cost, cfgs, ext) {
+        var out = "Backend " + be + " · Frontend " + fe + " · Knowledge " + kn;
+        if (ae) out += " · Aesthetic " + ae;
+        if (mt) out += " · Maintainability " + mt;
+        if (ta) out += " · legacy 3-axis " + ta;
+        if (eff) out += " · effort " + effortLabel(eff);
+        if (lat) out += " · latency " + lat;
+        if (cost) out += " · cost " + cost + " (five-axis)";
+        if (cfgs) out += " · best of " + cfgs + " configs";
+        if (ext) out += " · external product evaluation (not in API ranking)";
+        return out;
       }],
 
     // ===== 榜内名次 =====
@@ -318,7 +326,7 @@
         "Green background = ranked model; blue-grey with “Ref” = covers 2–3 boards, shown inline but not ranked; pale grey with “Single” = covers 1 board, only appears when “Show all models” is ticked; NEW = first appeared within the last 7 days; “Best value” marks the highest value index among the top-20 ranked rows only (reference and single-board rows excluded).",
       "DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · VCB-1-100 7% · Agent Arena 9%(合计 0.99,按在场榜归一;缺测权重回流)。":
         "DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · Arena of Bias 10% · AI Coding Daily 8% · VCB-1-100 7% · Agent Arena 9% (sums to 0.99 and is renormalized over the boards present; missing weights flow back).",
-      "DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为后端 40% + 前端 30% + 知识 30%;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;VCB-1-100 为隐藏测试准确率 %(固定 OpenHands)。":
+      "DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;VCB-1-100 为隐藏测试准确率 %(固定 OpenHands)。":
         "DeepSWE is Pass@1 %; Code Arena·WebDev uses raw Elo; Agent Arena is net gain % versus the Arena baseline (may be negative, IPS/causal-tracing basis); Terminal-Bench uses the highest of 4.0/3.0/2.1, with 3.0/2.1 converted to a 4.0-equivalent score via shared models (2.1's 88 ≈ 4.0's 26); ModelDial is backend 40% + frontend 30% + knowledge 30%; llm2014 maps grade levels to 0–100; Arena of Bias is Elo (1000 = average); AI Coding Daily is a four-axis total out of 70; VCB-1-100 is hidden-test accuracy % (fixed OpenHands).",
       "12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。":
         "The 12 levels are allocated pyramid weights of 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / the remainder, in order.",
@@ -332,7 +340,7 @@
         "Value index = composite ÷ blended cost per million tokens (¥/M). Cost follows a real coding mix per 1M tokens: 95% cached input + 4.5% uncached input + 0.5% output. Prices come from codingplan.fyi first, with missing prices for ranked models filled from models.dev (USD at 6.8); computed only for ranked models covering at least 4 boards. Hover to see the source and the input / cached input / output prices · Click to sort by this column",
       "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%)计入综合分与命中数;组尾 HLE 为权威基准仅参考列,不计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)":
         "Leaderboard benchmarks: the official measured boards (DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9%) count toward the composite and coverage; the trailing HLE column is a reference benchmark only and counts toward neither. Each board is standardized by its in-board robust score (median and 1.4826×MAD scaling, clipped at ±3σ) before weighting, and data is merged by channel tier (official measured board > vendor release > third-party aggregator or mirror)",
-      "第三方实测:第三方独立实测(ModelDial 雷达,后端 40%/前端 30%/知识 30% 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;VCB-1-100,50 个真实 Web 应用迭代场景、隐藏测试判定、固定 OpenHands harness,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数":
+      "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上;VCB-1-100,50 个真实 Web 应用迭代场景、隐藏测试判定、固定 OpenHands harness,权重 7%)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库 10%);七组同纲计入综合分与命中数,合计占权重约 76%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数":
         "Third-party tests: independent third-party evaluation (ModelDial Radar, backend 40% / frontend 30% / knowledge 30% composite, weight 14%; AI Coding Daily coding board, 7 projects × 27 prompts, total out of 70, weight 8% — note each model runs on its own agent harness; VCB-1-100, 50 real web-app iteration scenarios judged by hidden tests on a fixed OpenHands harness, weight 7%), community blind tests and real-world usage (Code Arena · WebDev 18% / Agent Arena net gain 9% / Arena of Bias 10%) and the maintainer's own suite (llm2014 private benchmark 10%). All seven count toward the composite and coverage on the same footing, together about 76% of the weight. The composite is a weighted sum of in-board relative scores, with untested boards imputed from the model's own level. The #N before each value is the model's actual position on that board (WebDev has no source rank, so ties are ranked by raw entry Elo); hover to see the board's total entry count",
       "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 9%)与命中数 点击按此列排序":
         "LMArena Agent Arena net gain (%): IPS (causal tracing) estimate of a model's improvement over the Arena baseline in real agent sessions, may be negative. When a model appears at several effort levels, its highest score is used. Also records the 95% interval, independent sessions and observation counts; counts toward the composite (weight 9%) and coverage · Click to sort by this column",
@@ -473,32 +481,34 @@
         "Where scores conflict with ranks, adjacent models are averaged and then spaced 1 point per rank; unaffected models keep their base score",
 
       // ===== ModelDial 页 =====
-      "ModelDial Radar:第三方独立实测的编码智能体能力榜,分后端与测试(40%)、前端与交互(30%)、知识与推理(30%)三类能力,同一模型按推理强度分档多次测试后取最高分配置入榜;":
-        "ModelDial Radar: an independent third-party capability board for coding agents, split into backend & testing (40%), frontend & interaction (30%) and knowledge & reasoning (30%). Each model is tested at several effort levels and its best configuration enters the board;",
+      "ModelDial Radar:第三方独立实测的编码智能体能力榜,按后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 五轴加权,同一模型按推理强度分档多次测试后取最高分配置入榜,并保留外部产品参考条目。":
+        "ModelDial Radar: an independent third-party capability board for coding agents, weighted across five axes — backend & testing 20% + frontend & interaction 25% + knowledge & reasoning 35% + visual aesthetics 10% + maintainability 10%. Each model is tested at several effort levels and its best configuration enters the board; external product reference entries are retained.",
       "综合分越高越好。": "Higher composite is better.",
       "综合分口径": "Composite basis",
-      "后端与测试 40% + 前端与交互 30% + 知识与推理 30%(三分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。":
-        "Backend & testing 40% + frontend & interaction 30% + knowledge & reasoning 30% (each part scored 0–100); each model is tested at several effort levels and the main board takes its best configuration (matching the source main board).",
+      "后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10%(五分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。外部产品条目保留在主榜,带「外部」标记。":
+        "Backend & testing 20% + frontend & interaction 25% + knowledge & reasoning 35% + visual aesthetics 10% + maintainability 10% (each scored 0–100); each model is tested at several effort levels and the main board takes its best configuration (matching the source main board). Reference entries from external products stay on the board with an “External” badge.",
       "成本/耗时口径": "Cost / latency basis",
-      "成本与耗时为后端(coding)单轴口径;官网主榜显示的是三轴汇总值,故本站数值低于官网显示值。源站主榜显示的是三轴汇总值,故此处数值低于源站显示值;本页各模型之间口径一致、可直接横向比较。":
-        "Cost and latency use the backend (coding) axis alone; the official main board reports a three-axis total, so figures here are lower than those on the source. Values are consistent across models on this page and directly comparable.",
-      "已计入总览综合分(计分组之一,权重 14%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;命中数分母为 9(九项基准)。上表为模型级 44 条,下方为全部 config 明细 100 条。":
-        "Counted in the overview composite (one of the scored groups, weight 14%). The slot comes from NL2Repo-Bench (formerly 9%), which left the scored set at the same time; it rose with the whole “Third-party tests” group on 2026-09-21 (12%→16%) and was scaled back to 14% as the scored set expanded. The coverage denominator is 9. The table above holds 44 model-level rows; the full config detail (100 rows) is below.",
+      "耗时与费用取源站五轴汇总口径;外部产品为自报耗时、费用常缺。本页各模型之间口径一致、可直接横向比较。":
+        "Latency and cost use the source's five-axis total; external products report latency themselves and often have no cost. Values are consistent across models on this page and directly comparable.",
+      "已计入总览综合分(计分组之一,权重 14%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;命中数分母为 9(九项基准)。上表为模型级 51 条(含外部产品 1 条),下方为全部 config 明细 102 条(不含 Bot)。":
+        "Counted in the overview composite (one of the scored groups, weight 14%). The slot comes from NL2Repo-Bench (formerly 9%), which left the scored set at the same time; it rose with the whole “Third-party tests” group on 2026-09-21 (12%→16%) and was scaled back to 14% as the scored set expanded. The coverage denominator is 8. The table above holds 51 model-level rows (including 1 external product); the full config detail (102 rows, excluding bots) is below.",
       "口径说明 ↗": "Method ↗",
-      "ModelDial 雷达(modeldial.com/radar)第三方独立实测,分后端与测试、前端与交互、知识与推理三类评测,按 40% / 30% / 30% 加权为综合分(各 0-100)。":
-        "ModelDial Radar (modeldial.com/radar) is independent third-party testing across backend & testing, frontend & interaction and knowledge & reasoning, weighted 40% / 30% / 30% into a composite (each 0–100).",
-      "同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。":
-        "Each model is tested at several effort levels and the main board takes its best configuration. The “Configs” column is the source's row count; expand “All configurations” for per-row results.",
-      "本页费用与耗时取源站后端(coding)单轴实测,低于主站三轴汇总值;各模型之间口径一致,可直接横向比较。":
-        "Cost and latency here come from the source's backend (coding) axis alone and are lower than the main board's three-axis totals; values are consistent across models and directly comparable.",
+      "ModelDial 雷达(modeldial.com/radar)第三方独立实测,分后端与测试、前端与交互、知识与推理、视觉审美、可维护性五类评测,按 20% / 25% / 35% / 10% / 10% 加权为综合分(各 0-100)。":
+        "ModelDial Radar (modeldial.com/radar) is independent third-party testing across backend & testing, frontend & interaction, knowledge & reasoning, visual aesthetics and maintainability, weighted 20% / 25% / 35% / 10% / 10% into a composite (each 0–100).",
+      "同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。源站「包含 Bot」默认关闭,本页同样不含 Bot。":
+        "Each model is tested at several effort levels and the main board takes its best configuration. The “Configs” column is the source's row count; expand “All configurations” for per-row results. The source's “Include bots” toggle is off by default, and bots are excluded here too.",
+      "源站主榜含外部产品参考条目(如 Gemini 4 Argon),带「外部」标记;源站标其 api_model_ranking_eligible=false,不与 API 模型排名同口径。":
+        "The source main board includes external product reference entries (e.g. Gemini 4 Argon) with an “External” badge; the source marks api_model_ranking_eligible=false, so they are not on the same basis as the API model ranking.",
+      "本页费用与耗时取源站五轴汇总口径;外部产品为自报耗时、费用常缺。各模型之间口径一致,可直接横向比较。":
+        "Cost and latency here use the source's five-axis total; external products report latency themselves and often have no cost. Values are consistent across models and directly comparable.",
       "计入总览综合分(权重 14%)与命中数(分母 9);数据授权 CC BY 4.0,为快照,不代表绝对评价。":
-        "Counts toward the overview composite (weight 14%) and coverage (denominator 9). Data is CC BY 4.0 licensed and is a snapshot, not an absolute verdict.",
+        "Counts toward the overview composite (weight 14%) and coverage (denominator 8). Data is CC BY 4.0 licensed and is a snapshot, not an absolute verdict.",
       "该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;9 个计分组中第三方实测合计约 76%、榜单基准约 23%。":
-        "The slot comes from NL2Repo-Bench (formerly 9%), which left the scored set; it rose with the whole “Third-party tests” group on 2026-09-21 (12%→16%) and was scaled back to 14% as the scored set expanded. Across the 9 scored groups, third-party tests total about 76% and leaderboard benchmarks about 23%.",
+        "The slot comes from NL2Repo-Bench (formerly 9%), which left the scored set; it rose with the whole “Third-party tests” group on 2026-09-21 (12%→16%) and was scaled back to 14% as the scored set expanded. Across the 8 scored groups, third-party tests total 69% and leaderboard benchmarks 23% (normalized over the boards present).",
       "自 2026-09-20 起取消完整度奖励;在场榜单多少仅通过「缺失权重回流」体现。":
         "The completeness bonus was removed on 2026-09-20; how many boards a model covers now shows up only through missing weights flowing back.",
-      "MiniMax-M3 本页约 $0.31、源站主榜约 $0.62;源站紧凑 feed 未提供费用完整度字段,故不做「≥ / 部分费用」标记。散点图 X 轴为参考费用(对数刻度),气泡面积编码总耗时。":
-        "MiniMax-M3 is about $0.31 here versus about $0.62 on the source main board; the source's compact feed carries no cost-completeness field, so no “≥ / partial cost” marker is applied. The scatter's X axis is reference cost (log scale) and bubble area encodes total latency.",
+      "MiniMax-M3 本页约 $0.62(五轴汇总口径,费用完整度 partial);外部产品费用可能缺失,散点图仅画有费用条目。散点图 X 轴为参考费用(对数刻度),气泡面积编码五轴总耗时。":
+        "MiniMax-M3 is about $0.62 here (five-axis total, cost coverage partial); external products may lack cost, so the scatter only plots entries with cost. The scatter's X axis is reference cost (log scale) and bubble area encodes five-axis total latency.",
 
       // ===== Arena of Bias 页 =====
       "前端作品社区盲评竞技场:同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度并折算到 Elo 刻度(1000 为平均水平)。":
@@ -673,8 +683,8 @@
       "llm2014 Agentic 编程榜": "llm2014 Agentic Coding",
       "ModelDial 雷达": "ModelDial Radar",
       "第三方独立实测 · 综合能力分": "Independent third-party · composite capability",
-      "成本 vs 综合分(气泡=耗时 · 费用为后端轴口径)":
-        "Cost vs composite score (bubble = latency · cost on the backend axis)",
+      "成本 vs 综合分(气泡=耗时 · 费用为五轴汇总口径)":
+        "Cost vs composite score (bubble = latency · cost on the five-axis total)",
       "全部配置明细": "All configurations",
       "亿模亿样 · 模型效果对比": "Arena of Bias · Model comparison",
       "前端作品社区盲评 Elo · 计入综合分 10%": "Community blind-test Elo for frontend builds · 10% of composite",
@@ -724,8 +734,8 @@
       "终端命令行任务 · 4.0/3.0/2.1": "Terminal command-line tasks · 4.0/3.0/2.1",
       "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并": "Terminal agent evaluation · 4.0 / 3.0 / 2.1 merged",
       "条目": "entries",
-      "后端 40% / 前端 30% / 知识 30%": "Backend 40% / Frontend 30% / Knowledge 30%",
-      "第三方实测 · 后端 40 / 前端 30 / 知识 30": "Third-party tests · backend 40 / frontend 30 / knowledge 30",
+      "五轴加权 20/25/35/10/10": "Five-axis 20/25/35/10/10",
+      "第三方实测 · 五轴 20/25/35/10/10": "Third-party tests · five-axis 20/25/35/10/10",
       "独立实测 · 7 项目 / 27 prompt": "Independent test · 7 projects / 27 prompts",
       "独立第三方实测 · 7 项目 27 prompt · 总分 70": "Independent test · 7 projects, 27 prompts · total 70",
       "独立实测 · 应用迭代 · 固定 OpenHands": "Independent test · app iteration · fixed OpenHands",
@@ -769,6 +779,12 @@
       "后端": "Backend",
       "前端": "Frontend",
       "知识": "Knowledge",
+      "审美": "Aesthetic",
+      "可维护": "Maintainability",
+      "视觉审美": "Visual aesthetics",
+      "可维护性": "Maintainability",
+      "外部": "External",
+      "外部产品": "External product",
       "分数": "Score",
       "说明": "Notes",
       "月用量": "Monthly usage",
@@ -916,8 +932,8 @@
         "2–3 boards: the model's board-relative robust z-scores are weighted (same basis as ranked composite) and placed in the matching rank band against ranked models. No composite and no rank are computed; the index shows “—”. Only bands inside the top 30 are shown by default; tick “Show all models” to see every one.",
       "Humanity's Last Exam 闭卷得分(%):2500 道专家撰写、无联网可检索解的前沿题,越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页":
         "Humanity's Last Exam closed-book score (%): 2,500 expert-written frontier questions that cannot be answered by searching the web; higher is better. Reference benchmark only — not counted in the composite or coverage. Full board on the “Reference Benchmarks” page.",
-      "ModelDial 雷达综合分(0-100):第三方独立实测,后端与测试 40% + 前端与交互 30% + 知识与推理 30% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;计入综合分(权重 14%)与命中数":
-        "ModelDial Radar composite (0-100): independent third-party test weighted backend & testing 40% + frontend & interaction 30% + knowledge & reasoning 30%; each model is tested at several effort levels and its best configuration enters the board; counted in the composite (weight 14%) and coverage.",
+      "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 14%)与命中数":
+        "ModelDial Radar five-axis composite (0-100): independent third-party test weighted backend & testing 20% + frontend & interaction 25% + knowledge & reasoning 35% + visual aesthetics 10% + maintainability 10%; each model is tested at several effort levels and its best configuration enters the board; external product entries carry an “External” badge (marked as not in the API ranking); counted in the composite (weight 14%) and coverage.",
 
       // ===== 反馈 / 引用 =====
       "引用此榜单": "Cite this page",

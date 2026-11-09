@@ -469,10 +469,12 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== ModelDial 雷达(独立页;计入综合分(「第三方实测」组计分组之一,权重 16%)与命中数) =====
+  // ===== ModelDial 雷达(独立页;计入综合分(「第三方实测」组计分组之一,权重 14%)与命中数) =====
   // 主榜为模型级条目:每条取该模型最高分 config(与源站主榜一致),按综合分降序;
-  // 综合分口径 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项 0-100)。
-  // 源站模型标识为 slug(如 qwen3.8-flash),经 canon() 归一到 canonical 显示名。
+  // 综合分口径 = 后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10%
+  // (五分项均 0-100;源站 2026-11 起由 3 轴扩为 5 轴,overview.json 的 overall=五轴加权分)。
+  // 源站模型标识为 slug(如 qwen3.8-flash),经 canon() 归一到 canonical 显示名;
+  // external=true 为源站外部产品参考条目(apiRankEligible=false),前端加「外部」标记。
   function modeldial() {
     var src = window.MODELDIAL || { models: [] };
     return (src.models || []).slice().sort(function (a, b) { return b.overall - a.overall; })
@@ -594,7 +596,7 @@
     });
     // NL2Repo-Bench 自 2026-09-19 起移出统一视图(不再计入综合分与命中数、不再进总览矩阵),
     // 仅在「权威基准测试」页经 D.nl2repo() 直接展示,故此处不再写入。
-    // ModelDial 雷达:综合分(0-100,直接作 norm,同 AI 能力口径);同名取最高分 config
+    // ModelDial 雷达:五轴综合分(0-100,直接作 norm);同名取最高分 config
     modeldial().forEach(function (m) {
       if (m.overall == null) return;
       var e = ensure(m.canon);
@@ -602,8 +604,12 @@
         e.modeldial = {
           score: m.overall, norm: m.overall, overall: m.overall,
           backend: m.backend, frontend: m.frontend, knowledge: m.knowledge,
-          elapsedMs: m.elapsedMs, costUsd: m.costUsd, configs: m.configs,
-          name: m.model, effort: m.effort, provider: m.provider, rank: m.rank
+          aesthetic: m.aesthetic, maintainability: m.maintainability, threeAxis: m.threeAxis,
+          elapsedMs: m.elapsedMs, costUsd: m.costUsd, tokens: m.tokens,
+          configs: m.configs, external: !!m.external, apiRankEligible: m.apiRankEligible !== false,
+          productName: m.productName || null, releaseDate: m.releaseDate || null, isNew: !!m.isNew,
+          name: m.model, displayName: m.displayName || m.model,
+          effort: m.effort, provider: m.provider, rank: m.rank
         };
     });
     // AI Coding Daily:总分 0-70(四轴之和);源站 models[] 已是模型级最优 config,
@@ -687,7 +693,7 @@
         stats: [{ l: "版本", v: "4.0/3.0/2.1" }, { l: "条目", v: tbN }],
         top: tbTop.model + (tbTop.version ? " · v" + tbTop.version : "") + " · " + (tbTop.score != null ? tbTop.score + "%" : "—") },
       // ModelDial 的模型标识是 slug,卡片展示用 canon() 归一后的显示名(与矩阵一致)
-      { key: "modeldial", name: "ModelDial 雷达", tag: "后端 40% / 前端 30% / 知识 30%", url: md.url, updated: md.updated,
+      { key: "modeldial", name: "ModelDial 雷达", tag: "五轴加权 20/25/35/10/10", url: md.url, updated: md.updated,
         stats: [{ l: "模型", v: (md.models || []).length }, { l: "配置", v: (md.configs || []).length }],
         top: (mdTop.canon ? mdTop.canon.id : mdTop.model) + " · " + (mdTop.overall != null ? mdTop.overall + " / 100" : "—") },
       // AI Coding Daily:独立第三方实测编码榜(总分 0-70);卡片展示用 canon() 归一后的显示名

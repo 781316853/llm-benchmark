@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="../css/styles.css?v=20261029b" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
-  <script defer src="../data/models.js?v=20261105a"></script>
+  <script defer src="../data/models.js?v=20261109a"></script>
   <!-- 模型 API 标价(输入/缓存输入/输出三档单价 → 每百万 token 综合成本):总览矩阵「性价比」列要用,
        而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。
        主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
@@ -73,7 +73,7 @@
   <script defer src="../data/tbench_v2.js?v=20260913a"></script>
   <script defer src="../data/hle.js?v=20261024a"></script>
   <!-- ModelDial 雷达(第三方独立实测综合能力榜,计入总览综合分(权重 14%)与命中数) -->
-  <script defer src="../data/modeldial.js?v=20260930a"></script>
+  <script defer src="../data/modeldial.js?v=20261109a"></script>
   <!-- AI Coding Daily 编码榜(aicodingdaily.com 独立第三方实测,计入总览综合分(权重 8%)与命中数,
        2026-10-19 入组;并作为「AI Coding Daily」独立标签页的数据源) -->
   <script defer src="../data/aicodingdaily.js?v=20261019a"></script>
@@ -85,17 +85,17 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="../js/data.js?v=20261026a"></script>
+  <script defer src="../js/data.js?v=20261109a"></script>
   <script defer src="../js/charts.js?v=20261030a"></script>
-  <script defer src="../js/compare.js?v=20261026a"></script>
-  <script defer src="../js/app.js?v=20261105a"></script>
+  <script defer src="../js/compare.js?v=20261109a"></script>
+  <script defer src="../js/app.js?v=20261109a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="../js/export.js?v=20261029b"></script>
   <!-- 意见反馈交互 -->
   <script defer src="../js/feedback.js?v=20260824a"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
-  <script defer src="../js/i18n-en.js?v=20261105a"></script>
-  <script defer src="../js/i18n.js?v=20261105a"></script>
+  <script defer src="../js/i18n-en.js?v=20261109a"></script>
+  <script defer src="../js/i18n.js?v=20261109a"></script>
 </head>
 <body data-page="authority" data-base="../">
   <!-- 顶部标题区:左侧站名与简介,右侧当前数据快照 -->

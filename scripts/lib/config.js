@@ -375,13 +375,14 @@ module.exports = {
     // ===== ModelDial 雷达(独立标签页;计入总览综合分第 8 组与命中数)=====
     modeldial: {
       // ModelDial 雷达(modeldial.com):第三方独立实测的编码智能体能力榜,config 粒度(model×推理强度)。
-      // 官方 JSON feed(OpenAPI /openapi-v1.json 收录,CC BY 4.0),单请求即得全榜 config 与综合分
-      // (条数随源站扩榜而变,不在注释与文案里写死);
-      // 综合分 = 后端与测试 40% + 前端与交互 30% + 知识与推理 30%。
+      // 雷达页主榜使用 overview.json 的 snapshot.entries(五轴快照,CC BY 4.0),单请求即得全榜 config
+      // 与综合分(条数随源站扩榜而变,不在注释与文案里写死);
+      // 综合分 = 后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10%。
+      // 旧版 latest.json(overallRankings,3 轴 40/30/30)已不足以表达页面主榜:新模型(Gemini 4 Carbon)
+      // 的 three_axis 分为空,外部产品(Gemini 4 Argon)也只在 overview 快照里。
       // 渠道:该站自建 harness 自测,无更高优先级渠道可合并,按 T3 第三方评测处理(src=aggregate)。
-      // 注:feed 内的成本/耗时为后端单轴口径(官网主榜显示三轴汇总值),分轴与 overall 档案均无成本字段
-      //     且批次号与 latest.json 不对齐,无法无损还原,详见 scripts/sources/modeldial.js 头部说明。
-      url: "https://modeldial.com/api/v1/radar/latest.json",
+      // 注:成本/耗时取 metrics[candidateId].overall(五轴汇总口径);外部产品为自报耗时、费用常缺。
+      url: "https://modeldial.com/data/overview.json",
       host: "modeldial.com", src: "aggregate",
       radarUrl: "https://modeldial.com/radar",
       methodUrl: "https://modeldial.com/method"
@@ -462,7 +463,7 @@ module.exports = {
       //   cursorbench/frontiercode 同样仅展示:前者口径绑定 Cursor 自家 agent harness
       //     (模型级头名约 58 分、配置级 52 条),后者分数为 mergeability 端到端质量分(0-100 但整体偏低),
       //     均与主基准的原生量纲不可比;
-      //   modeldial 为「后端 40%/前端 30%/知识 30%」加权合成分(0-100),与主基准的原生量纲不可比
+      //   modeldial 为「五轴 20/25/35/10/10」加权合成分(0-100),与主基准的原生量纲不可比
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
       //     与主基准的原生量纲不可比,同样排除;

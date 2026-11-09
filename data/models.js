@@ -121,7 +121,7 @@ window.MODEL_MAP = {
     { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash", "Qwen 3.8 Flash", "Qwen3.8-Flash-Next", "qwen3.8-flash-next", "Qwen3.8 Flash Next", "qwen-3-8-flash-next"] },
     { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview"] },
     // 2026-11-04 腾讯混元发布 Hy4 正式版(hy.tencent.com/research/hy4),与 Preview 是不同模型,单独建档。
-    { id: "Tencent Hy4", vendor: "Tencent", color: "#12B7F5", aliases: ["Tencent Hy4", "Hy4", "HY4", "hy4", "Hunyuan Hy4", "hunyuan-hy4", "Tencent-Hy4", "tencent/hy4", "Hy4 正式版", "混元 Hy4"] },
+    { id: "Tencent Hy4", vendor: "Tencent", color: "#12B7F5", aliases: ["Tencent Hy4", "Hy4", "HY4", "hy4", "hy4-dev", "Hunyuan Hy4", "hunyuan-hy4", "Tencent-Hy4", "tencent/hy4", "Hy4 正式版", "混元 Hy4"] },
     { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
     { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev", "dots3-note Preview", "dots3-note-preview", "Dots3-Note-Preview", "dots3-note"] },
     { id: "DeepSeek V4 Pro 0821 灰测", vendor: "DeepSeek", color: "#6B86FE", aliases: ["DeepSeek V4 Pro 0821 凌晨灰测", "deepseek-v4-pro-0821凌晨灰测"] },
@@ -158,6 +158,10 @@ window.MODEL_MAP = {
     { id: "Inkling 2 Small",  vendor: "Thinking Machines", color: "#A3AEBA", aliases: ["Inkling 2 Small", "inkling-2-small"] },
     { id: "omen-alpha",       vendor: "STEALTH",   color: "#6C7DFF", aliases: ["omen-alpha", "OMEN-ALPHA"] },
     { id: "union-alpha",      vendor: "STEALTH",   color: "#7C8CFF", aliases: ["union-alpha", "UNION-ALPHA"] },
+    { id: "crouton-alpha",    vendor: "STEALTH",   color: "#8C9CFF", aliases: ["crouton-alpha", "CROUTON-ALPHA"] },
+    { id: "Egg Alpha",        vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Egg Alpha", "egg-alpha"] },
+    // ModelDial 2026-11 新上榜;model_id 为 "qoder/lmodel",展示名 QoDuck。
+    { id: "QoDuck",           vendor: "Qoder",     color: "#5B8CFF", aliases: ["QoDuck", "qoduck", "qoder/lmodel", "lmodel"] },
     // ModelDial 榜中的 "kimi-for-coding" 与该站的 "k3" 并列且分数不同(64.2 vs 72.5),
     // 是否同一底层模型未证实,故单独建档,不并入 Kimi K3。
     { id: "kimi-for-coding",  vendor: "Moonshot",  color: "#8B72FF", aliases: ["kimi-for-coding"] },
@@ -204,6 +208,7 @@ window.MODEL_MAP = {
     { id: "Atria Dawn Preview", vendor: "Shanghai AI Lab", color: "#5FC2A6", aliases: ["Atria Dawn Preview", "atria-dawn-preview"] },
     { id: "Xing4.0-29B-A4B",  vendor: "China Telecom", color: "#63A6F2", aliases: ["Xing4.0-29B-A4B", "xing4.0-29b-a4b"] },
     { id: "Ling-3.1-Flash",   vendor: "inclusionAI", color: "#8FD97A", aliases: ["Ling-3.1-Flash", "Ling 3.1 Flash", "ling-3.1-flash"] },
+    { id: "Ling-3.2-flash",   vendor: "inclusionAI", color: "#A6E38A", aliases: ["Ling-3.2-flash", "Ling 3.2 Flash", "ling-3.2-flash"] },
     // ===== Muse Wonder / Muse Spark Open 系列(2026-10-17 补登记)=====
     // "Muse Wonder Full" 与 "Muse Wonder" 是两个模型(用户确认;源站亦并列给分:
     // DeepSWE 79 / 78.8、Terminal-Bench 57.1 / 52,ProgramBench 只收 Full),故分别建档。
@@ -295,6 +300,7 @@ window.MODEL_MAP = {
     "China Telecom": "#63A6F2",     // 品牌蓝(中国电信)
     "Meituan": "#DFC24E",           // 芥末黄(美团):与 NVIDIA / Xiaomi 错开色相带
     "inclusionAI": "#8FD97A",       // 品牌绿(蚂蚁 inclusionAI / Ling 系列)
+    "Qoder": "#5B8CFF",             // 品牌蓝(QoDuck)
     "Reflection AI": "#8E6BD8",     // 深紫(Beam 系列):与 ByteDance/Moonshot 的浅紫按明度分档
     "Poolside": "#8FA8BE",          // 板岩蓝灰(Laguna 系列)
     "Fireworks": "#F0A35C",         // 暖琥珀(Fireworks 托管模型)

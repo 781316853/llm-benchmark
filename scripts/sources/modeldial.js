@@ -1,108 +1,66 @@
 // 数据源:ModelDial 雷达(modeldial.com/radar,第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method;官方 OpenAPI /openapi-v1.json)
-// 接口:https://modeldial.com/api/v1/radar/latest.json(HTTP 200 / application/json,无鉴权、无需特殊 UA,
-//   单请求即得全榜 config 与综合分(条数随源站扩榜而变;授权 CC BY 4.0)。
-// 数据形态:JSON。overallRankings 为 config 粒度(model × reasoningEffort),字段:
-//   rank/backendRank、id(provider:model:effort)、provider(接入渠道,非模型厂商)、model(slug)、
-//   displayName、reasoningEffort、backendScore/frontendScore/knowledgeScore/overallScore(均 0-100)、
-//   elapsedMs、estimatedReferenceCostUsd、decisionTags。
-//   model 偶有带厂商命名空间的写法(经 OpenRouter 等渠道接入,如 "anthropic/claude-sonnet-5.5"),
-//   本源统一剥掉 "<vendor>/" 前缀后再入榜(见 bareSlug),否则别名表命中不到、跨源归并会拆成两条。
-// 综合分口径(源站 /method):后端与测试 40% + 前端与交互 30% + 知识与推理 30%(已逐条核对与官网一致)。
-// ⚠️ 成本/耗时口径:latest.json 的 elapsedMs 与 estimatedReferenceCostUsd 取自后端(coding)单轴,
-//   官网主榜显示的是三轴汇总值(如 MiniMax-M3 此处 $0.3139、官网 $0.62)。本站按后端轴单轴口径使用,
-//   跨模型内部一致可比,但低于官网主榜显示值,前端列名/图轴已标注「后端轴」。
-//   分轴档案(/data/benchmark-snapshots/*)与 overall 档案均不含成本字段,且批次号与 latest.json 不对齐,
-//   无法无损还原官网的三轴汇总值,故不做汇总。该 feed 亦无 cost_coverage 字段,不做「≥/部分费用」标记。
-// 性质:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(命中分母 7)。
+// 接口:https://modeldial.com/data/overview.json(HTTP 200 / application/json,无鉴权、无需特殊 UA)
+// 数据形态:JSON。雷达页主榜使用 snapshot.entries(不再使用 latest.json 的 overallRankings 3 轴精简榜):
+//   - 五轴加权:后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10%;
+//     overall_score 即该五轴加权分(score_policy=five-axis-b20-f25-k35-a10-m10-cube-half_up-v3),
+//     three_axis_overall_score 为旧 3 轴分(部分新条目为 null),仅作参考;
+//   - 默认展示 51 个模型 / 102 个配置:剔除 overall_score 为空、product_kind=bot
+//     (源站「包含 Bot」开关默认关闭)与 hiddenModelIds 条目;
+//   - 外部产品评测也进入主榜:如 Gemini 4 Argon(productEvaluation,api_model_ranking_eligible=false),
+//     数据保留 external/apiRankEligible 标记,前端以「外部」徽标提示;
+//   - 同一模型按 reasoning effort 分档,主榜取 overall_score 最高的 config;
+//   - 耗时/费用取 metrics[candidate_id].overall(五轴汇总口径);外部产品为自报耗时、费用常缺。
 // 输出:data/modeldial.js(window.MODELDIAL)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
 const registry = require("../lib/registry");
-const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
 
 // 数值清洗:非法/缺失返回 null,合法值保留 6 位小数(成本最小到 $0.02 级)
 function num(v) {
+  if (v == null || v === "") return null;
   const n = Number(v);
   return isFinite(n) ? Math.round(n * 1e6) / 1e6 : null;
 }
 
-// 剥离源站 slug 的厂商命名空间前缀(如 "anthropic/claude-sonnet-5.5" -> "claude-sonnet-5.5")
-// ⚠️ 必须剥:本站以模型名作为跨源归并与别名表的查找键,带前缀的写法归一后是
-//    "anthropic-claude-sonnet-5-5",命中不了别名表,会在「其他」下建出一条与
-//    亿模亿样榜「Claude Sonnet 5.5」并排的幽灵模型。前缀只是渠道侧的命名空间,
-//    厂商信息本就由 provider/别名的 canonical 承担,丢掉不损失可比性。
-// 只认紧邻斜杠的开头段(displayName 的档位分隔是 " / XHigh" 带空格,不能被误伤)。
+// 剥离源站 model_id 的厂商命名空间前缀(如 "anthropic/claude-sonnet-5.5" -> "claude-sonnet-5.5")
+// 站内以模型名作为跨源归并与别名表的查找键;展示名由 displayNames/productEvaluation 提供。
 const NAMESPACE_RE = /^[A-Za-z0-9._+-]+\//;
 function bareSlug(s) {
   return String(s || "").replace(NAMESPACE_RE, "");
 }
 
-// UTC ISO 时间戳 -> 北京日期(YYYY-MM-DD);官网页头「更新于」按北京时间显示,此处与其对齐
+// UTC ISO 时间戳 -> 北京日期(YYYY-MM-DD);官网页头「数据快照」按北京时间显示,此处与其对齐
 function bjDate(iso) {
   const t = Date.parse(iso);
   if (!isFinite(t)) return "";
   return new Date(t + 8 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
-// 取整榜与其各分轴发布时间中的最新者作为 updated。
-// 注:官网页头「更新于」显示的是 overall 档案的发布时间(可能滞后于 feed 内的整体批次),
-//     而其 overall 档案的 batch_id 与 latest.json 的 overallBatch.id 并不一致(档案为更早一次发布),
-//     故此处以 feed 自身的时间戳为准。
-function boardTime(overallBatch, fallbackIso) {
-  const srcs = (overallBatch && overallBatch.sources) || {};
-  let best = overallBatch && overallBatch.publishedAt ? overallBatch.publishedAt : "";
-  Object.keys(srcs).forEach(function (k) {
-    const p = srcs[k] && srcs[k].publishedAt;
-    if (p && (!best || Date.parse(p) > Date.parse(best))) best = p;
-  });
-  return best || fallbackIso || "";
-}
-
-// 单条 config -> 精简结构
-function pickConfig(e) {
+// 从 score_policy 解析五轴权重(如 b20-f25-k35-a10-m10 -> 0.20/0.25/0.35/0.10/0.10)
+const DEFAULT_WEIGHTS = { backend: 0.2, frontend: 0.25, knowledge: 0.35, aesthetic: 0.1, maintainability: 0.1 };
+function policyWeights(policy) {
+  const m = /b(\d+)-f(\d+)-k(\d+)-a(\d+)-m(\d+)/.exec(String(policy || ""));
+  if (!m) return Object.assign({}, DEFAULT_WEIGHTS);
+  const vals = m.slice(1).map(Number);
+  const sum = vals.reduce(function (a, b) { return a + b; }, 0);
+  if (!sum) return Object.assign({}, DEFAULT_WEIGHTS);
   return {
-    rank: e.rank != null ? e.rank : null,
-    provider: e.provider || "",
-    model: bareSlug(e.model),
-    effort: e.reasoningEffort || "default",
-    displayName: bareSlug(e.displayName),
-    overall: num(e.overallScore),
-    backend: num(e.backendScore),
-    frontend: num(e.frontendScore),
-    knowledge: num(e.knowledgeScore),
-    elapsedMs: num(e.elapsedMs),
-    costUsd: num(e.estimatedReferenceCostUsd),
-    tags: Array.isArray(e.decisionTags) ? e.decisionTags : []
+    backend: vals[0] / sum, frontend: vals[1] / sum, knowledge: vals[2] / sum,
+    aesthetic: vals[3] / sum, maintainability: vals[4] / sum
   };
 }
 
-// 模型级主榜:同名 config 取 overallScore 最高的一条(与官网主榜口径一致),
-// 按 overallScore 降序;同分并列采用 competition ranking(1,2,…,17,18,18,20,…),与官网显示一致。
-function groupModels(configs) {
-  const best = {};
-  const count = {};
-  configs.forEach(function (c) {
-    count[c.model] = (count[c.model] || 0) + 1;
-    const cur = best[c.model];
-    if (!cur || (c.overall != null && (cur.overall == null || c.overall > cur.overall))) best[c.model] = c;
+// 同一 overall_score 并列时采用 competition ranking(1,2,2,4…),与源站主榜一致
+function assignRanks(list, key) {
+  let prev = null, prevRank = 0;
+  list.forEach(function (item, i) {
+    const r = (prev != null && item[key] === prev) ? prevRank : i + 1;
+    item.rank = r; prev = item[key]; prevRank = r;
   });
-  const models = Object.keys(best).map(function (m) {
-    const b = best[m];
-    return {
-      model: m, provider: b.provider, effort: b.effort, displayName: b.displayName,
-      overall: b.overall, backend: b.backend, frontend: b.frontend, knowledge: b.knowledge,
-      elapsedMs: b.elapsedMs, costUsd: b.costUsd, tags: b.tags, configs: count[m]
-    };
-  });
-  models.sort(function (a, b) { return b.overall - a.overall; });
-  models.forEach(function (m, i) {
-    m.rank = (i > 0 && m.overall === models[i - 1].overall) ? models[i - 1].rank : i + 1;
-  });
-  return models;
 }
 
 class ModeldialSource extends BaseSource {
@@ -110,79 +68,153 @@ class ModeldialSource extends BaseSource {
     super({
       id: "modeldial", name: "ModelDial 雷达", type: "json",
       url: CONFIG.sources.modeldial.url, host: CONFIG.sources.modeldial.host,
-      version: "1.1",
+      version: "overview-v1",
       outFile: "modeldial.js", windowVar: "MODELDIAL"
     });
   }
   parse(raw) {
     let d;
     try { d = JSON.parse(raw); }
-    catch (e) { throw new Error("ModelDial latest.json 不是合法 JSON(" + e.message + ")"); }
-    const rows = d && d.overallRankings;
-    if (!Array.isArray(rows) || !rows.length) throw new Error("ModelDial overallRankings 为空或结构变更");
-    const configs = rows.map(pickConfig);
-    const models = groupModels(configs);
-    const batch = d.batch || {}, ob = d.overallBatch || {};
+    catch (e) { throw new Error("ModelDial overview.json 不是合法 JSON(" + e.message + ")"); }
+    const snap = d && d.snapshot, entries = snap && snap.entries;
+    if (!Array.isArray(entries) || !entries.length) throw new Error("ModelDial snapshot.entries 为空或结构变更");
+
+    const displayNames = d.displayNames || {};
+    const effortNames = d.effortDisplayNames || {};
+    const releaseDates = d.modelReleaseDates || {};
+    const newSet = new Set(d.newModelIds || []);
+    const hidden = new Set(d.hiddenModelIds || []);
+    const metrics = d.metrics || {};
+    const policy = (d.qualityPublication && d.qualityPublication.policy_id) || "";
+    const weights = policyWeights(policy);
+
+    const configs = [];
+    let bots = 0, hiddenSkipped = 0, nullSkipped = 0;
+    entries.forEach(function (e) {
+      if (!e || e.overall_score == null) { nullSkipped++; return; }
+      if (e.product_kind === "bot") { bots++; return; }
+      if (hidden.has(e.model_id) || hidden.has(e.candidate_id)) { hiddenSkipped++; return; }
+      const pe = (e.productEvaluation && Object.keys(e.productEvaluation).length) ? e.productEvaluation : null;
+      const effortMap = effortNames[e.model_id] || {};
+      const axis = (metrics[e.candidate_id] && metrics[e.candidate_id].overall) || {};
+      configs.push({
+        rank: null,
+        candidateId: e.candidate_id,
+        model: bareSlug(e.model_id),
+        modelId: e.model_id,
+        displayName: displayNames[e.model_id] || (pe && pe.product_name) || e.model_id,
+        provider: e.connection_id || "",
+        effort: effortMap[e.reasoning_effort] || e.reasoning_effort || "default",
+        overall: num(e.overall_score),
+        backend: num(e.backend_score),
+        frontend: num(e.frontend_score),
+        knowledge: num(e.knowledge_score),
+        aesthetic: num(e.aesthetic_score),
+        maintainability: num(e.maintainability_score),
+        threeAxis: num(e.three_axis_overall_score),
+        external: !!pe,
+        apiRankEligible: pe ? !!(pe.api_model_ranking_eligible) : true,
+        productName: pe ? (pe.product_name || null) : null,
+        releaseDate: releaseDates[e.model_id] || null,
+        isNew: newSet.has(e.model_id),
+        elapsedMs: num(axis.elapsed_ms),
+        costUsd: num(axis.estimated_api_cost_usd),
+        tokens: num(axis.token_total),
+        costCoverage: axis.cost_coverage || null
+      });
+    });
+    if (!configs.length) throw new Error("ModelDial 未解析到任何有效 config");
+
+    const sortedConfigs = configs.slice().sort(function (a, b) { return b.overall - a.overall; });
+    assignRanks(sortedConfigs, "overall");
+
+    // 模型级主榜:同一 modelId 取 overall_score 最高的 config;configs 记该模型档位数
+    const best = {}, count = {};
+    sortedConfigs.forEach(function (c) {
+      count[c.modelId] = (count[c.modelId] || 0) + 1;
+      if (!best[c.modelId] || c.overall > best[c.modelId].overall) best[c.modelId] = c;
+    });
+    const models = Object.keys(best).map(function (k) {
+      return Object.assign({}, best[k], { configs: count[k] });
+    }).sort(function (a, b) { return b.overall - a.overall; });
+    assignRanks(models, "overall");
+
     return {
-      schemaVersion: d.schemaVersion || "",
-      batchId: ob.id || batch.id || "",
-      batchRevision: batch.revision != null ? batch.revision : null,
-      batchPublishedAt: ob.publishedAt || d.generatedAt || "",
-      updated: bjDate(boardTime(ob, d.generatedAt)),
-      weights: d.weights || {},
-      configs: configs,
+      updated: bjDate(snap.published_at) || CONFIG.TODAY,
+      batchId: snap.batch_id || "",
+      batchPublishedAt: snap.published_at || "",
+      batchRevision: (d.highlights && d.highlights.revision != null) ? d.highlights.revision : null,
+      publicationKey: d.publicationKey || "",
+      viewKey: d.viewKey || "",
+      scorePolicy: policy,
+      weights: weights,
       models: models,
-      counts: { configs: configs.length, models: models.length }
+      configs: sortedConfigs,
+      counts: {
+        models: models.length, configs: sortedConfigs.length,
+        externalProducts: models.filter(function (m) { return m.external; }).length,
+        botsExcluded: bots, hiddenExcluded: hiddenSkipped, nullExcluded: nullSkipped
+      }
     };
   }
   toStandard(parsed) {
     const T = parsed.updated || CONFIG.TODAY;
-    return normalizer.fromArray(this.cfg.id, parsed.models, function (m, idx) {
+    return normalizer.fromArray(this.cfg.id, parsed.models, function (m) {
       return {
-        // name 用剥离厂商前缀后的 slug(如 qwen3.8-flash):交给别名表归一。
-        // 不拼接 effort 后缀,避免被 effort 剥离规则误伤。
-        name: m.model, score: m.overall, rank: idx, updated: T,
+        name: m.model, score: m.overall, rank: m.rank - 1, updated: T,
         metrics: {
           backend: m.backend, frontend: m.frontend, knowledge: m.knowledge,
-          elapsedMs: m.elapsedMs, costUsd: m.costUsd, configs: m.configs
+          aesthetic: m.aesthetic, maintainability: m.maintainability, threeAxis: m.threeAxis,
+          elapsedMs: m.elapsedMs, costUsd: m.costUsd, tokens: m.tokens,
+          configs: m.configs, external: m.external, apiRankEligible: m.apiRankEligible
         },
-        meta: { provider: m.provider, effort: m.effort, displayName: m.displayName }
+        meta: {
+          provider: m.provider, effort: m.effort, displayName: m.displayName,
+          productName: m.productName, releaseDate: m.releaseDate
+        }
       };
     });
   }
   writeContent(parsed) {
-    const T = parsed.updated || CONFIG.TODAY, R = CONFIG.REFRESHED_AT, C = parsed.counts;
+    const R = CONFIG.REFRESHED_AT, W = parsed.weights, C = parsed.counts;
+    const pct = function (v) { return Math.round((v || 0) * 100); };
     return writers.windowVarTemplate("MODELDIAL",
-      "// 数据源:ModelDial 雷达(" + (parsed.updated || "?") + " 更新;第三方独立实测的综合能力榜)\n" +
-      "// 站点:" + this.cfg.url.replace("/api/v1/radar/latest.json", "/radar") + "(口径说明 https://modeldial.com/method)\n" +
-      "// 接口:https://modeldial.com/api/v1/radar/latest.json(schemaVersion " + parsed.schemaVersion + ",batch " + parsed.batchId + ")\n" +
+      "// 数据源:ModelDial 雷达(源站快照 " + (parsed.updated || "?") + ";第三方独立实测的综合能力榜)\n" +
+      "// 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)\n" +
+      "// 接口:https://modeldial.com/data/overview.json(snapshot " + parsed.batchId + ",policy " + parsed.scorePolicy + ")\n" +
       "// 授权:CC BY 4.0 · 用途:仅学习与对比展示\n" +
-      "// 综合分口径:后端与测试 40% + 前端与交互 30% + 知识与推理 30%(各分项均 0-100)\n" +
-      "// ⚠️ 成本/耗时:elapsedMs 与 costUsd 取自后端(coding)单轴;官网主榜显示的是三轴汇总值\n" +
-      "//   (如 MiniMax-M3 此处 $0.3139、官网 $0.62)。本站统一用后端轴口径,跨模型内部可比但低于官网显示值。\n" +
-      "// 字段说明:model=模型 slug(已剥掉源站偶发的 \"<vendor>/\" 命名空间前缀,如 anthropic/claude-sonnet-5.5);\n" +
-      "//          provider=接入渠道(非模型厂商);effort=推理强度;overall=综合分;\n" +
-      "//          backend/frontend/knowledge=三分项分;elapsedMs=耗时(毫秒);costUsd=参考费用(美元);\n" +
-      "//          configs=该模型在源码中的 config 条数;tags=源站标记(recommended/value/speed/lightweight)\n" +
-      "// 结构:models=模型级主榜(每条取该模型最高分 config,与官网主榜一致);configs=全部 config 明细\n" +
-      "// 用途:已计入总览综合分(「第三方实测」组计分组之一,权重 16%)与命中数(分母 7);「ModelDial」页完整展示。\n",
+      "// 综合分口径:后端与测试 " + pct(W.backend) + "% + 前端与交互 " + pct(W.frontend) + "% + 知识与推理 " + pct(W.knowledge) +
+      "% + 视觉审美 " + pct(W.aesthetic) + "% + 可维护性 " + pct(W.maintainability) + "%(五分项均 0-100);\n" +
+      "//   overall=五轴加权分;threeAxis=源站旧 3 轴分(部分新条目为空),仅作参考。\n" +
+      "// 覆盖口径:默认 " + C.models + " 个模型 / " + C.configs + " 个配置;剔除 overall 为空、bot 与 hidden 条目;\n" +
+      "//   外部产品评测(external=true,apiRankEligible=false)保留在主榜,如 Gemini 4 Argon。\n" +
+      "// 成本/耗时:取 metrics[candidateId].overall 五轴汇总口径;外部产品为自报耗时,费用常缺。\n" +
+      "// 字段:models[]=模型级主榜(每模型取 overall 最高档);configs[]=全部 config 明细;\n" +
+      "//       backend/frontend/knowledge/aesthetic/maintainability=五轴分;configs=该模型档位数;\n" +
+      "//       external=外部产品参考条目;apiRankEligible=是否进入源站 API 模型排名。\n" +
+      "// 用途:计入总览综合分(「第三方实测」组计分组之一,权重 14%)与命中数。\n",
       {
         source: "ModelDial",
         url: "https://modeldial.com/radar",
         methodUrl: "https://modeldial.com/method",
-        apiUrl: "https://modeldial.com/api/v1/radar/latest.json",
+        apiUrl: "https://modeldial.com/data/overview.json",
         license: "CC BY 4.0",
-        schemaVersion: parsed.schemaVersion,
         batchId: parsed.batchId,
         batchRevision: parsed.batchRevision,
         batchPublishedAt: parsed.batchPublishedAt,
-        updated: T,
+        publicationKey: parsed.publicationKey,
+        viewKey: parsed.viewKey,
+        scorePolicy: parsed.scorePolicy,
+        updated: parsed.updated,
         refreshedAt: R,
-        weights: parsed.weights,
-        costBasis: "backend",
-        costBasisNote: "成本与耗时为后端(coding)单轴口径;官网主榜显示的是三轴汇总值,故本站数值低于官网显示值。",
-        stats: { configs: C.configs, models: C.models },
-        desc: "ModelDial Radar:第三方独立实测的编码智能体能力榜,分后端与测试(40%)、前端与交互(30%)、知识与推理(30%)三类能力,同一模型按推理强度分档多次测试后取最高分配置入榜;综合分越高越好。",
+        weights: W,
+        costBasis: "overall",
+        costBasisNote: "耗时与费用取源站五轴汇总口径;外部产品为自报耗时、费用常缺。",
+        stats: {
+          models: C.models, configs: C.configs, externalProducts: C.externalProducts,
+          botsExcluded: C.botsExcluded, hiddenExcluded: C.hiddenExcluded
+        },
+        desc: "ModelDial Radar:第三方独立实测的编码智能体能力榜,按后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 五轴加权,同一模型按推理强度分档多次测试后取最高分配置入榜,并保留外部产品参考条目。",
         models: parsed.models,
         configs: parsed.configs
       }
