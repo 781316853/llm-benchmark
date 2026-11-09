@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-09',
-  'refreshedAt': '2026-11-09 09:50',
+  'refreshedAt': '2026-11-09 18:06',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -17,8 +17,8 @@ window.CHANGELOG = {
       'vendor': 'OpenAI',
       'kind': 'github',
       'changelogUrl': 'https://github.com/openai/codex/releases',
-      'status': 'ok',
-      'error': '',
+      'status': 'stale',
+      'error': 'aborted',
       'lastOkAt': '2026-11-09 09:50',
       'entries': [
         {
@@ -1292,7 +1292,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '2.1.319',
@@ -3646,7 +3646,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '2.2.6',
@@ -9168,8 +9168,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
+        {
+          'version': '2.6.0-canary.20261109040420-9c1a9c3',
+          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.202619040420-9c1a9c3',
+          'date': '2026-11-09',
+          'dateRaw': '2026-11-09T04:19:34Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261109040420-9c1a9c3',
+          'body': '更改内容\n- 家务：在# 4750中由@ kimi-agent-bot将web dist与code-app同步\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261106122412-eb2035f... @ moonshot-ai/kimi-code @ 2.6.0-canary.202619040420-9c1a9c3',
+          'h': '6547548'
+        },
         {
           'version': '2.5.2',
           'title': '@moonshot-ai/kimi-code@2.5.2',
@@ -9181,13 +9191,12 @@ window.CHANGELOG = {
         },
         {
           'version': '2.6.0-canary.20261106122412-eb2035f',
-          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.20261122412-eb2035f',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.20261106122412-eb2035f',
           'date': '2026-11-06',
           'dateRaw': '2026-11-06T12:54:00Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261106122412-eb2035f',
-          'body': '更改内容\n- 家务：在# 4741中由@ kimi-agent-bot将web dist与code-app同步\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261106115820-bc6fa89... @ moonshot-ai/kimi-code @ 2.6.0-canary.20261122412-eb2035f',
-          'h': 'f7685a58'
+          'body': 'What\'s Changed\n- chore: sync web dist from code-app by @kimi-agent-bot in #4741\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261106115820-bc6fa89...@moonshot-ai/kimi-code@2.6.0-canary.20261106122412-eb2035f'
         },
         {
           'version': '2.6.0-canary.20261106115820-bc6fa89',
@@ -10252,7 +10261,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10837,7 +10846,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '0.5.6',
@@ -11219,7 +11228,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '1.39.1',
@@ -11227,7 +11236,10 @@ window.CHANGELOG = {
           'date': '2026-11-07',
           'dateRaw': '2026年11月07日',
           'tags': [
-            '任务结束后展示耗时与用量'
+            '功能',
+            '任务结束后展示耗时与用量',
+            '优化',
+            '修复'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'body': '任务耗时与积分用量可视化，Plan 模式支持切换执行模型\n功能\n- 任务结束后展示耗时与用量 ：任务完成后可直接查看执行耗时、积分用量等信息，便于了解任务执行情况与成本。\n- Plan 模式支持切换执行模型 ：方案生成后，可按任务需要切换模型执行，为规划与执行分别选择合适的模型，兼顾效果与成本。\n- qoder-ide-helper 支持设置与配置管理 ：通过 /qoder-ide-helper 获取产品咨询，也可直接调整回复语言、会话等常用设置，并管理规则、指令与插件。\n- 企业管理员可禁用完全访问模式 ：管理员可在管理后台统一禁用成员的完全访问模式，加强组织权限管控。\n- 设置页新增「保持此设备唤醒」开关 ：开启后可保持设备唤醒，避免长时间任务因设备休眠中断，无需单独调整系统设置。\n优化\n- 工具思考与执行内容在运行过程中自动折叠，减少会话流中的干扰，让阅读更聚焦。\n- 切换模型后即时提示切换结果，便于确认是否生效。\n- 活动模型当日额度耗尽时，明确提示额度状态与后续操作。\n- 默认限制 Agent 单次自动打开的文件数量，减少标签页过多对稳定性的影响，也可按需调整上限或关闭限制。\n- 大仓库首次生成或全量重新生成 Wiki 前，提前展示预计积分消耗，便于评估成本。\n- 优化大段代码变更、多标签页及长会话场景下的处理性能，减少界面卡顿。\n- 优化 WSL 终端配置探测，减少界面卡顿，提升响应速度。\n修复\n- 修复企业版启动恢复时反复登录问题。\n- 修复 WSL 扩展宿主重启后服务重复启动或无法恢复连接问题。\n- 修复 SSH 宿主退出被误判为永久失败问题。\n- 修复 SSH 会话锁屏重连后，待回答的问题澄清被错误取消的问题。\n- 修复企业 Hook 重复注册及 SessionStart 事件重复触发问题。\n- 修复语言服务、粘贴与拖拽编辑、Notebook、评论、Timeline、Output、QuickPick 等模块的资源泄漏。\n- 修复 macOS 文件句柄耗尽问题，提升连接稳定性。\n- 修复历史会话分页异常，提升会话加载效率。\n2026年10月30日'
@@ -11873,7 +11885,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '3.4.15',
@@ -13958,7 +13970,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14145,7 +14157,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '3.17.2',
@@ -14324,8 +14336,21 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
+        {
+          'version': '4.12.4',
+          'title': '4.12.4 (2026-11-06)',
+          'date': '2026-11-06',
+          'dateRaw': '2026-11-06',
+          'tags': [
+            '新增功能',
+            '体验优化',
+            'BUG修复'
+          ],
+          'url': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes#_4-12-4-2026-11-06',
+          'body': '新增功能\n- 更新自定义模型 Token Plan 的模型列表\n体验优化\n- 优化账号管理中的套餐与积分展示，支持 BuddyOne 套餐显示\nBUG修复\n- 修复窗口切到后台再切回后整窗变灰、离开一段时间再回来侧边栏聊天区一片空白的问题\n- 修复文件搜索超时或取消后仍在后台扫完整棵目录、慢盘与远程环境下对话长时间不返回的问题\n- 修复 Agents 窗口提交问答卡片答案后答案重复出现、后续回复不显示的问题\n- 修复远程开发下安装插件市场内容时对话卡住十几分钟的问题\n- 修复 Windows 上未设置默认浏览器时点登录一直停在「登录中」的问题，失败后可直接复制登录链接到浏览器完成登录\n4.12.3 (2026-10-30)'
+        },
         {
           'version': '4.12.3',
           'title': '4.12.3 (2026-10-30)',
@@ -15206,7 +15231,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-09 09:50',
+      'lastOkAt': '2026-11-09 18:06',
       'entries': [
         {
           'version': '5.11.0',
