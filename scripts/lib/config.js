@@ -513,7 +513,7 @@ module.exports = {
   // 再把当天早报按 <h2>分类 / <h3><a>条目 / <p>摘要 拆成逐条新闻写入 data/news.js。
   // 原多源(TechCrunch/Verge/HN/极客公园/InfoQ)已整体下线:改由早报单一来源,内容已中文、已分类,无需关键词过滤与翻译。
   news: {
-    retentionDays: 2,        // 保留最近 N 个自然日(含今天;每日更新 2 次)
+    retentionDays: 2,        // 保留最近 N 个自然日(含今天;每日更新 4 次)
     maxPerDayPerSource: 12,  // 每源每天最多保留条数
     maxPerType: 5,           // 每个新闻类型最多保留条数
     maxTotal: 60,            // 总量上限(兜底;实际受每类型上限约束)

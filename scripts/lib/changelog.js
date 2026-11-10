@@ -855,7 +855,7 @@ async function updateChangelog() {
     tools: tools
   };
   var header =
-    "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)\n" +
+    "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 4 次)\n" +
     "// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;" +
     "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
     "TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);" +

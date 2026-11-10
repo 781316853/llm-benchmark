@@ -402,7 +402,7 @@
     // 顶部提示:更新频率 + 保留天数 + 更新时间
     var hint = document.getElementById("newsHint");
     if (hint) {
-      var base = "每日更新 2 次 · 仅保留最近 " + (NEWS.retentionDays || 2) + " 天";
+      var base = "每日更新 4 次 · 仅保留最近 " + (NEWS.retentionDays || 2) + " 天";
       hint.textContent = NEWS.updated ? (base + " · 更新于 " + NEWS.updated) : base;
     }
     if (!items.length) {
@@ -1940,7 +1940,7 @@
       ["", "", "", "", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每 2 小时自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每天 4 次自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
@@ -2122,7 +2122,7 @@
     }
     var hint = document.getElementById("clHint");
     if (hint) {
-      hint.textContent = "每个工具显示最近 2 条更新 · 每 2 小时刷新一次" +
+      hint.textContent = "每个工具显示最近 2 条更新 · 每天 4 次刷新" +
         (days > 0 ? " · 早于最近 " + days + " 天的条目标注「超出窗口」" : " · 当前不限时间") +
         (badCount ? " · 异常源 " + badCount + " 个(沿用上次数据并标注)" : "");
     }

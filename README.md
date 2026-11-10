@@ -110,7 +110,7 @@ robots.txt / sitemap.xml  爬虫准入与站点地图
 
 ## 定时数据刷新
 
-由 `.github/workflows/refresh.yml` 每 2 小时运行一次(UTC 偶数点 :30,即北京 08:30 起奇数点 :30)执行 `scripts/fetch_all.js`,抓取多源并重写 `data/*.js` 后提交回仓库。**渠道优先级**:各基准数据统一按「基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像 > 无出处的转录行(`src=datalearner-unsourced`,只补缺、不覆盖任何有出处数据)」合并(`scripts/lib/mergeByTier.js` + `config.srcTiers`),高层级分数不被低层级覆盖,低层级仅补缺失模型与回填字段;每条记录带 `src` 渠道标签。主要源:
+由 `.github/workflows/refresh.yml` 每天 4 次(北京 08:30 / 14:30 / 20:30 / 次日 02:30)执行 `scripts/fetch_all.js`,抓取多源并重写 `data/*.js` 后提交回仓库。**渠道优先级**:各基准数据统一按「基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像 > 无出处的转录行(`src=datalearner-unsourced`,只补缺、不覆盖任何有出处数据)」合并(`scripts/lib/mergeByTier.js` + `config.srcTiers`),高层级分数不被低层级覆盖,低层级仅补缺失模型与回填字段;每条记录带 `src` 渠道标签。主要源:
 
 - **llm2014**:GitHub raw CSV,结构化解析;源站已将该类别显示为 Agentic,项目名保留表头字母代号,并同步抓取 i18n.js 中的官方档位/项目说明文案。
 - **DeepSWE**:解析 datacurve.ai 内嵌 run 对象(官方实测榜 T1),按"每模型最高 Pass@1"选榜;datalearner 详情页(厂商官方发布 T2)只补缺、不覆盖官方条目。另以厂商官方发布自测分人工转录为 T2 种子层(`scripts/lib/official-seeds.js`,src=`qwen-official`/`deepseek-official`/`moonshot-official`/`tencent-official`,出处分别为 developer.aliyun.com/article/1763215、api-docs.deepseek.com/zh-cn/updates、kimi.com/en/blog/kimi-k3-1-pro 与 hy.tencent.com/research/hy4——DeepSeek 每个新构建的自测榜都在该更新页、Kimi 每次模型发布都在该博客、腾讯混元每次正式发布都在 hy.tencent.com/research/<版本>,以后适配新版本从这里取数),仅补官方榜未收录的模型(如 Qwen3.8-Flash),绝不覆盖既有分数;协议不可比、effort 未标注,前端逐行挂"厂商发布"徽标标注仅供参考。同一机制亦接入 NL2Repo / Agents' Last Exam / Terminal-Bench 4.0 / Terminal-Bench-Science 0.1 / HLE / ProgramBench 作前向兜底(TB/TB-Science 补充条目 `rank` 留空,不参与官方名次重排;HLE 只收无工具口径;ProgramBench 仅补 Almost 辅助指标、Fully Resolved 留空)。

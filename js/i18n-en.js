@@ -203,8 +203,8 @@
     ["^数据快照 ([\\d\\-]+) · (\\d{4}-\\d{2}-\\d{2})$", "Snapshot $1 · $2"],
 
     // ===== 权威基准页:页头说明与动态快照时间 =====
-    ["^各基准由本站每 2 小时自动抓取合并,当前快照刷新于 ([\\d\\- :]+)\\(北京时间\\);$",
-      "Each benchmark is collected and merged automatically every 2 hours; the current snapshot was refreshed at $1 (Beijing time);"],
+    ["^各基准由本站每天 4 次自动抓取合并,当前快照刷新于 ([\\d\\- :]+)\\(北京时间\\);$",
+      "Each benchmark is collected and merged automatically 4 times a day; the current snapshot was refreshed at $1 (Beijing time);"],
     ["^Terminal-Bench ([\\d.]+) 解决率排行\\(agent×model Top 25\\)$",
       "Terminal-Bench $1 solve rate (agent×model, top 25)"],
 

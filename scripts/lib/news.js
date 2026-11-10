@@ -396,7 +396,7 @@ async function updateNews() {
     items: merged
   };
   var header =
-    "// AI 热点新闻快照(由 scripts/lib/news.js 每日抓取维护,每日 2 次)\n" +
+    "// AI 热点新闻快照(由 scripts/lib/news.js 每日抓取维护,每日 4 次)\n" +
     "// 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 " + cfg.retentionDays + " 天\n" +
     "// 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)\n";
   // 单引号序列化:先转义值内撇号再替换双引号,保证 "OpenAI's ..." 等标题语法安全
