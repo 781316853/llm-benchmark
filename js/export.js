@@ -18,7 +18,7 @@
     authority: {
       title: "权威基准测试",
       src: ["DEEPSWE", "TBENCH", "TBSCIENCE", "OSWORLD", "LASTEXAM", "ARCAGI3", "BENCHCAD", "APEX", "HLE",
-        "NL2REPO", "PROGRAMBENCH", "VALSCODEMIGRATION", "CURSORBENCH", "FRONTIERCODE", "AACODING", "AUTOMATIONBENCH"]
+        "NL2REPO", "PROGRAMBENCH", "VALSCODEMIGRATION", "CURSORBENCH", "FRONTIERCODE", "FRONTIERSWE", "AACODING", "AUTOMATIONBENCH"]
     },
     plans: { title: "订阅套餐 · 额度/价格对比", src: ["CODINGPLAN"] },
     changelog: { title: "Agent 工具更新日志", src: ["CHANGELOG"] }

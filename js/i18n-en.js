@@ -270,6 +270,13 @@
       function (m, url, page, org, ver, upd, models, tasks, devs, hours) {
         return "Source: " + url + " (board page: " + page + ", " + org + " official) · version " + ver + " · updated " + upd + " · " + models + " models (main " + tasks + "-task basis) · tasks authored by " + devs + " senior developers (" + hours + " hours each), scored on correctness / test quality / change scope / style / adherence to codebase conventions to assess end-to-end “mergeability” rather than whether it merely runs; “Standard score” is the best effort level on the main subset (matching the official main board, verified row by row), Pass Rate is raw correctness, and the harness is each vendor's own CLI (devin / claude-code / codex etc.). Shown for reference only, not counted in the composite or coverage (the harness basis is not comparable).";
       }],
+    ["^来源:(https?://\\S+?)\\(Epoch AI 官方榜;方法学:(https?://\\S+?)\\) · 版本 FrontierSWE (v[\\d.]+) · 更新 ([\\d\\-]+) · 共 (\\d+) 个模型 · (\\d+) 个超长周期任务\\(([^)]+)\\),每任务 (\\d+) 次试验、单次最长 (\\d+) 小时;.*本榜仅展示,不计入综合分与命中数。$",
+      function (m, url, blog, ver, upd, models, tasks, domains, trials, hours) {
+        var dom = domains.replace("实现", "implementation").replace("性能优化", "performance optimisation")
+          .replace("科学计算", "scientific computing").replace("视觉推理", "visual reasoning")
+          .replace("AI 研究", "AI research");
+        return "Source: " + url + " (Epoch AI official board; methodology: " + blog + ") · version FrontierSWE " + ver + " · updated " + upd + " · " + models + " models · " + tasks + " ultra-long-horizon tasks (" + dom + "), with " + trials + " trials per task and up to " + hours + " hours each; all models run at maximum reasoning effort inside the benchmark's own minimal agent harness “proximus”. Primary metric mean@5 is the per-task mean of five trials averaged across tasks, with best@5 / worst@5 as the best / worst of the five; cost and time are per-task averages. The official main board shows only each provider's best model by default; this table lists every model. Gemini 4 Argon's cache hit rate is much lower due to a non-production setting, so its cost is inflated (row-level “note”). Shown for reference only, not counted in the composite or coverage.";
+      }],
     ["^来源:(https?://\\S+?)\\(方法学:(https?://\\S+?)\\) · 更新 ([\\d\\-]+) · 共 (\\d+) 条配置 / (\\d+) 个 Agent · Index v([\\d.]+) = FrontierCode v([\\d.]+)\\((\\d+) 题\\)\\+ Terminal-Bench ([\\d.]+)\\((\\d+) 题\\)\\+ SWE-Atlas-QnA-AA\\((\\d+) 题\\)三项等权平均,每项取每题三次尝试的均值;榜单粒度为 agent × model × 推理档位,分数同时反映模型能力与 Agent 脚手架;成本/耗时为每任务平均值。本榜仅展示,不计入综合分与命中数。$",
       function (m, url, method, upd, cfgs, agents, idx, fcVer, fcTasks, tbVer, tbTasks, swTasks) {
         return "Source: " + url + " (methodology: " + method + ") · updated " + upd + " · " + cfgs + " configs / " + agents + " agents · Index v" + idx + " = equal-weight average of FrontierCode v" + fcVer + " (" + fcTasks + " tasks) + Terminal-Bench " + tbVer + " (" + tbTasks + " tasks) + SWE-Atlas-QnA-AA (" + swTasks + " tasks), each averaged over three attempts per task; rows are agent × model × effort, so scores reflect both model ability and agent scaffold. Cost/latency are per-task averages. Shown for reference only, not counted in the composite or coverage.";
@@ -315,8 +322,8 @@
     dict: {
       // ===== 页头 / 页脚 =====
       "大模型编码基准整合门户": "LLM Coding Benchmark Portal",
-      "聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode 等编码评测,聚焦跨基准模型对比":
-        "Aggregating DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · Arena of Bias frontend blind test · Terminal-Bench (4.0/3.0/2.1) · ModelDial Radar · AI Coding Daily · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode and more, focused on cross-benchmark model comparison",
+      "聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode · FrontierSWE 等编码评测,聚焦跨基准模型对比":
+        "Aggregating DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · Arena of Bias frontend blind test · Terminal-Bench (4.0/3.0/2.1) · ModelDial Radar · AI Coding Daily · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode · FrontierSWE and more, focused on cross-benchmark model comparison",
       "数据快照": "Data snapshot",
       "数据为快照,详见各页脚注": "Snapshot data — see the footnote on each page",
       "计分基准": "Scored benchmarks",
@@ -632,8 +639,8 @@
         "the AI Release Tracker aggregator (T3) likewise only fills models each benchmark is missing.",
       "其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;":
         "DeepSWE, Terminal-Bench (4.0/3.0/2.1, switchable within the section, 4.0 by default) and ModelDial Radar count toward the overview composite and coverage (Terminal-Bench is represented by its highest version, and 2.1 uses vendor-published / normalised self-reported scores;",
-      "ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;":
-        "see ModelDial's own tab); the rest (APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AA Coding Agent Index / AutomationBench plus TB-Science / OSWorld / ALE / ARC-AGI-3 / BenchCAD) are reference data for display;",
+      "ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;":
+        "see ModelDial's own tab); the rest (APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench plus TB-Science / OSWorld / ALE / ARC-AGI-3 / BenchCAD) are reference data for display;",
       "HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。":
         "HLE also appears as a reference-only column at the end of the “Leaderboard benchmarks” group in the overview matrix (counted in neither the composite nor coverage), and NL2Repo-Bench moved from counted to display-only on 2026-09-19.",
       "某基准源站未发布新数据时,数字保持不变。":
@@ -661,6 +668,7 @@
       "成本 vs 成绩(气泡=步数)": "Cost vs score (bubble = steps)",
       "全部档位明细": "All configurations",
       "耗时/任务": "Time/task",
+      "注": "note",
 
       // ===== 权威基准页:章节标签与版本切换 =====
       "长程软件工程 · 计入总览 · 主基准": "Long-horizon SWE · counts toward overview · primary",
@@ -678,6 +686,7 @@
       "跨语言程序重写 · 仅展示": "Cross-language rewriting · display only",
       "编码 Agent 实测 · 仅展示": "Coding agent testing · display only",
       "生产级代码质量 · 仅展示": "Production-grade code quality · display only",
+      "超长周期软件工程 · 仅展示": "Ultra-long-horizon software engineering · display only",
       "编码 Agent 综合指数 · 仅展示": "Coding agent composite index · display only",
       "4.0 主榜": "4.0 main",
       "3.0 备选": "3.0 alt",
@@ -724,7 +733,7 @@
         "Independent Vals AI test · fixed OpenHands · 7% of composite",
       "成本 vs 准确率(气泡=每测试平均耗时)":
         "Cost vs accuracy (bubble = average time per test)",
-      "16 大权威基准": "16 reference benchmarks",
+      "17 大权威基准": "17 reference benchmarks",
       "权威基准大纲预览": "Reference benchmark outline",
       "大纲预览": "Outline",
       "订阅套餐 · 额度/价格快速对比": "Coding plans · quota and price comparison",

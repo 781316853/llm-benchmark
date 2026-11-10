@@ -705,6 +705,12 @@
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
+  // FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程):模型级主榜,按 mean@5 降序
+  function frontierSWE() {
+    var src = window.FRONTIERSWE || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
   // AutomationBench(Zapier 跨应用业务工作流智能体基准):模型级严格全通过率(task_completed_correctly,%),
   // 主源 datalearner(T2 厂商官方发布成绩转录)+ llm-stats / benchlm.ai(T3 补充)按渠道层级合并;仅展示。
   function automationbench() {
@@ -995,14 +1001,14 @@
   }
 
   // 各源原始对象(供渲染脚注)的取值视图。用取值器而非直接快照 window.*:
-  // 「权威基准测试」页的 11 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
+  // 「权威基准测试」页的 14 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
   // 若在解析期就取 window.*,这些键会永远停在 undefined。
   var SRC_GLOBALS = {
     deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arena_agent: "ARENA_AGENT", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
     apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
-    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
+    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", frontierswe: "FRONTIERSWE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
     aicodingdaily: "AICODINGDAILY",
     aa_coding_agents: "AACODING",
     vals_codemigration: "VALSCODEMIGRATION"
@@ -1048,6 +1054,7 @@
     cursorbench: cursorbench,
     cursorbenchConfigs: cursorbenchConfigs,
     frontiercode: frontiercode,
+    frontierSWE: frontierSWE,
     automationbench: automationbench,
     modeldial: modeldial,
     modeldialConfigs: modeldialConfigs,

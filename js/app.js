@@ -104,7 +104,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.aa_coding_agents]
+      D.src.cursorbench, D.src.frontiercode, D.src.frontierswe, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.aa_coding_agents]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -1838,7 +1838,29 @@
       ' · 更新 ' + esc(fc.updated || "") + ' · 共 ' + fcMs.length + ' 个模型(main ' + (fcTasks != null ? fcTasks : "—") + ' 题口径)' +
       ' · 任务由 20+ 资深开发者制作(每任务投入 40+ 小时),按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」而非仅能否跑通;' +
       '「标准分」为 main 子集下各推理档位最优(与官方主榜口径一致,已逐条校验),Pass Rate 为原始正确率,harness 为各厂商自家 CLI(devin/claude-code/codex 等)。本榜仅展示,不计入综合分与命中数(harness 口径不可比)。');
-    // 14) AA Coding Agent Index v2.0(Artificial Analysis 独立评测 · 配置级合成分)
+    // 14) FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程)
+    var fswe = S.frontierswe || {};
+    var fsweMs = D.frontierSWE();
+    var fsweRows = fsweMs.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + '</td>' +
+        '<td>' + vname(m.canon.vendor) + '</td>' +
+        '<td class="num">' + (m.score != null ? bvSpan("frontierswe", m.score.toFixed(1) + '%') : "—") + '</td>' +
+        '<td class="num">' + (m.best != null ? m.best.toFixed(1) + '%' : "—") + '</td>' +
+        '<td class="num">' + (m.worst != null ? m.worst.toFixed(1) + '%' : "—") + '</td>' +
+        '<td class="num">' + fmtUsd(m.costUsd) +
+          (m.costCaveat ? ' <span class="cell-cost" title="' + esc(m.costCaveat) + '">注</span>' : "") + '</td>' +
+        '<td class="num">' + (m.durationS != null ? (m.durationS / 3600).toFixed(1) + 'h' : "—") + '</td></tr>';
+    });
+    var fsweStats = fswe.stats || {};
+    html += authSectionHtml("FrontierSWE", "超长周期软件工程 · 仅展示", fswe.officialUrl || fswe.url,
+      '<div class="table-wrap"><table id="authFrontierSweTable" class="data-table"></table></div>',
+      '来源:' + esc(fswe.url || "") + '(Epoch AI 官方榜;方法学:' + esc(fswe.blogUrl || "") + ') · 版本 FrontierSWE ' + esc(fswe.version || "") +
+      ' · 更新 ' + esc(fswe.updated || "") + ' · 共 ' + fsweMs.length + ' 个模型 · ' + (fsweStats.tasks || "—") + ' 个超长周期任务' +
+      '(实现 / 性能优化 / 科学计算 / 视觉推理 / AI 研究),每任务 5 次试验、单次最长 20 小时;' +
+      '所有模型在基准自带的极简 agent harness「proximus」内以最高推理强度运行。主指标 mean@5 = 每任务五次试验均值再跨任务平均,' +
+      'best@5 / worst@5 为五次试验的最好 / 最差;成本与耗时为每任务平均值。官方主表默认仅列每厂商最佳模型,本表展示全部上榜模型;' +
+      'Gemini 4 Argon 的缓存命中率因非生产设置明显偏低,成本偏高(行内「注」)。本榜仅展示,不计入综合分与命中数。');
+    // 15) AA Coding Agent Index v2.0(Artificial Analysis 独立评测 · 配置级合成分)
     var aac = S.aa_coding_agents || {};
     var aacMs = D.aaCodingAgents();
     var aacRows = aacMs.map(function (m, i) {
@@ -1913,11 +1935,12 @@
     // 档位明细在折叠的 <details> 内,折叠态无布局、IntersectionObserver 不会触发,故直接同步填充
     fillTable("authCursorbenchCfgTable", ["源站排名", "模型", "档位", "CursorBench 4.0", "成本/任务", "Tokens/任务", "步数/任务"], cbCfgRows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authFrontiercodeTable", ["#", "模型", "Harness", "档位", "标准分", "Pass Rate", "成本/任务", "Tokens/任务"], fcRows, ["", "", "", "", "num bv bv-frontiercode", "num", "num", "num"]);
+    authDeferTable("authFrontierSweTable", ["#", "模型", "厂商", "mean@5", "best@5", "worst@5", "成本/任务", "耗时/任务"], fsweRows, ["", "", "", "num bv bv-frontierswe", "num", "num", "num", "num"]);
     authDeferTable("authAaCodingTable", ["#", "Agent", "模型", "厂商", "Index", "FrontierCode", "TB 4.0", "SWE-Atlas", "成本/任务", "耗时/任务", "步数", "Tokens"], aacRows,
       ["", "", "", "", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每 2 小时自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;ModelDial 见独立标签页),其余(APEX-1 / HLE / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;HLE 亦在总览矩阵「榜单基准」组尾以仅参考列展示(不计入综合分与命中数),NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每 2 小时自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
@@ -2210,6 +2233,7 @@
     programbench: { src: "data/programbench.js?v=20261105a", global: "PROGRAMBENCH" },
     cursorbench: { src: "data/cursorbench.js?v=20260923a", global: "CURSORBENCH" },
     frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },
+    frontierswe: { src: "data/frontierswe.js?v=20261110a", global: "FRONTIERSWE" },
     automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },
     vals_codemigration: { src: "data/vals_codemigration.js?v=20261020a", global: "VALSCODEMIGRATION" },
     aa_coding_agents: { src: "data/aa_coding_agents.js?v=20261027a", global: "AACODING" },
@@ -2217,7 +2241,7 @@
   };
   // 各标签页渲染前必须就绪的数据
   var TAB_DATA = {
-    authority: ["tbscience", "osworld", "lastexam", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "vals_codemigration", "aa_coding_agents"],
+    authority: ["tbscience", "osworld", "lastexam", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "vals_codemigration", "aa_coding_agents"],
     plans: ["codingplan"]
   };
   var dataState = {};    // key -> "loading" | "ready" | "failed"

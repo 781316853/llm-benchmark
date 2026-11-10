@@ -334,6 +334,23 @@ module.exports = {
       officialUrl: "https://cognition.com/frontiercode",
       boardUrl: "https://cognition.com/frontiercode"
     },
+    frontierswe: {
+      // FrontierSWE v2(Epoch AI / The Proximal Team):34 个真实技术领域的超长周期软件工程任务
+      // (实现 / 性能优化 / 科学计算 / 视觉推理 / AI 研究),每任务 5 次试验、单次最长 20 小时,
+      // 所有模型在基准自带的极简 agent harness「proximus」内以最高推理强度运行。
+      // 官方站为 Next.js:榜单表只服务端渲染「每厂商最佳」10 行,全部模型的
+      // mean@5 / best@5 / worst@5 / 平均成本 / 墙钟耗时在 RSC 流
+      // (self.__next_f.push 文本块)内,本源拼接后按 "best"/"mean"/"worst":[{"model": 锚点提取。
+      // 渠道:该榜即 Epoch AI 自建自测的官方榜(T1),无更高优先级渠道可合并。
+      // 用途:仅「权威基准测试」页展示,不计入综合分与命中数(超长周期任务集,量纲与其他基准不可比)。
+      url: "https://www.frontierswe.com/",
+      host: "www.frontierswe.com",
+      version: "v2",
+      src: "official",
+      officialUrl: "https://www.frontierswe.com/",
+      blogUrl: "https://www.frontierswe.com/blog/v2",
+      epochUrl: "https://epoch.ai/benchmarks/frontierswe"
+    },
     tbench_v3: {
       // Terminal-Bench 3.0(斯坦福/Laude,74 任务):线上 tbench.ai 3.0 路由已并入 4.0,
       // 以 snorkel.ai 全量 12 条 agent×model 榜单为主(服务端渲染 HTML 表格)。
@@ -441,7 +458,7 @@ module.exports = {
       // > warnMaxStddev -> alert
       // 不参与跨源一致性比对的源:arena_webdev 与 arenaofbias(亿模亿样)均为 Elo 分(0–2000 区间),
       // 与其余源的百分制分数不同量纲,混算会产生数百级假标准差告警。
-      // 权威基准 12 源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/apex/hle/nl2repo/programbench)同样排除:
+      // 权威基准各源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/apex/hle/nl2repo/programbench/frontierswe)同样排除:
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
       //   apex 为专业工作产出评分(Mean Score),与编码基准原生生量纲不可比;hle 为知识类口径,仅权威页展示;
@@ -451,6 +468,8 @@ module.exports = {
       //   cursorbench/frontiercode 同样仅展示:前者口径绑定 Cursor 自家 agent harness
       //     (模型级头名约 58 分、配置级 52 条),后者分数为 mergeability 端到端质量分(0-100 但整体偏低),
       //     均与主基准的原生量纲不可比;
+      //   frontierswe 仅展示:34 个超长周期任务(每任务 5 次、单次最长 20 小时)的 mean@5
+      //     整体偏低(头名约 70 分、中位数约 30 分),与主基准混算会产生假告警;
       //   modeldial 为「五轴 20/25/35/10/10」加权合成分(0-100),与主基准的原生量纲不可比
       //     (如 DeepSWE 为 Pass@1 约 20-75),混算会产生假告警,故排除;
       //   automationbench 仅展示(严格全通过率口径),主指标整体 0-60 分且头部仅 60.5%,
@@ -460,7 +479,7 @@ module.exports = {
       //   aa_coding_agents(AA Coding Agent Index v2.0)为 agent×model 配置级的 0-100 合成分,
       //     且 Index 自身就是 FrontierCode v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA 的再合成,
       //     与站内各原生基准逐条对比会产生结构性假告警,故排除;
-      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "modeldial", "automationbench", "aicodingdaily", "aa_coding_agents", "vals_vibe_code", "vals_codemigration"]
+      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "modeldial", "automationbench", "aicodingdaily", "aa_coding_agents", "vals_vibe_code", "vals_codemigration"]
     },
     completeness: {
       // 每条记录必填字段
