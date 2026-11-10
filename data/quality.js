@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-11-10',
-  'overallScore': 0.955,
+  'overallScore': 0.957,
   'sources': [
     {
       'id': 'aa_coding_agents',
@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 50,
+      'modelCount': 51,
       'updated': '2026-11-10',
       'ageDays': 0,
       'completeness': 1,
@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 77,
+      'modelCount': 78,
       'updated': '2026-11-10',
       'ageDays': 0,
       'completeness': 1,
@@ -120,7 +120,7 @@ window.QUALITY = {
       'id': 'cursorbench',
       'name': 'CursorBench',
       'status': 'ok',
-      'modelCount': 20,
+      'modelCount': 21,
       'updated': '2026-11-10',
       'ageDays': 0,
       'completeness': 1,
@@ -153,7 +153,18 @@ window.QUALITY = {
       'id': 'frontiercode',
       'name': 'FrontierCode',
       'status': 'ok',
-      'modelCount': 45,
+      'modelCount': 31,
+      'updated': '2026-11-10',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'frontierswe',
+      'name': 'FrontierSWE',
+      'status': 'ok',
+      'modelCount': 24,
       'updated': '2026-11-10',
       'ageDays': 0,
       'completeness': 1,
@@ -197,7 +208,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 52,
+      'modelCount': 53,
       'updated': '2026-11-10',
       'ageDays': 0,
       'completeness': 1,
@@ -274,7 +285,7 @@ window.QUALITY = {
       'id': 'tbscience',
       'name': 'Terminal-Bench-Science 0.1',
       'status': 'ok',
-      'modelCount': 11,
+      'modelCount': 12,
       'updated': '2026-11-10',
       'ageDays': 0,
       'completeness': 1,
@@ -628,7 +639,7 @@ window.QUALITY = {
     {
       'canonId': 'Claude Fable 5.2',
       'name': 'Claude Fable 5.2',
-      'vendor': '其他',
+      'vendor': 'Anthropic',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -765,9 +776,9 @@ window.QUALITY = {
     },
     'aicodingdaily': {
       'rate': 1,
-      'total': 50,
-      'complete': 50,
-      'modelCount': 50,
+      'total': 51,
+      'complete': 51,
+      'modelCount': 51,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -813,9 +824,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 77,
-      'complete': 77,
-      'modelCount': 77,
+      'total': 78,
+      'complete': 78,
+      'modelCount': 78,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -839,9 +850,9 @@ window.QUALITY = {
     },
     'cursorbench': {
       'rate': 1,
-      'total': 20,
-      'complete': 20,
-      'modelCount': 20,
+      'total': 21,
+      'complete': 21,
+      'modelCount': 21,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -863,9 +874,17 @@ window.QUALITY = {
     },
     'frontiercode': {
       'rate': 1,
-      'total': 45,
-      'complete': 45,
-      'modelCount': 45,
+      'total': 31,
+      'complete': 31,
+      'modelCount': 31,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'frontierswe': {
+      'rate': 1,
+      'total': 24,
+      'complete': 24,
+      'modelCount': 24,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -897,9 +916,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
+      'total': 53,
+      'complete': 53,
+      'modelCount': 53,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -955,9 +974,9 @@ window.QUALITY = {
     },
     'tbscience': {
       'rate': 1,
-      'total': 11,
-      'complete': 11,
-      'modelCount': 11,
+      'total': 12,
+      'complete': 12,
+      'modelCount': 12,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1071,6 +1090,13 @@ window.QUALITY = {
       'alertAgeDays': 7
     },
     'frontiercode': {
+      'updated': '2026-11-10',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 3,
+      'alertAgeDays': 7
+    },
+    'frontierswe': {
       'updated': '2026-11-10',
       'ageDays': 0,
       'flag': 'ok',
