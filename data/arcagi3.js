@@ -1,4 +1,4 @@
-// 数据源:ARC-AGI-3(ARC Prize 交互式智能体推理评测,更新于 2026-11-09)
+// 数据源:ARC-AGI-3(ARC Prize 交互式智能体推理评测,更新于 2026-11-10)
 // 主渠道:https://www.datalearner.com/benchmarks/arc-agi-3(厂商官方发布成绩,Standard harness 口径)
 // 补充:https://llm-stats.com/benchmarks/arc-agi-3(官方:https://arcprize.org/leaderboard)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -9,11 +9,11 @@ window.ARCAGI3 = {
   'url': 'https://llm-stats.com/benchmarks/arc-agi-3',
   'officialUrl': 'https://arcprize.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-09',
-  'refreshedAt': '2026-11-09 09:50',
+  'updated': '2026-11-10',
+  'refreshedAt': '2026-11-10 12:14',
   'stats': {
     'environments': 135,
-    'entries': 25
+    'entries': 26
   },
   'desc': 'ARC-AGI-3:ARC Prize 第三代抽象推理基准,把智能体放入无说明书的 64×64 交互式游戏环境(135 个环境,25 公开/55 半私/55 私),考察探索、世界建模、目标推断与规划;评分指标为 RHAE(相对人类行动效率,人类基线 100%)。',
   'models': [
@@ -31,6 +31,19 @@ window.ARCAGI3 = {
       'rank': 1
     },
     {
+      'model': 'Claude Fable 5.2',
+      'org': 'Anthropic',
+      'score': 97.72,
+      'license': '不开源',
+      'effort': '思考模式 High（无工具）',
+      'date': '2026-11-09',
+      'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 8.00 / $ 40.00',
+      'rank': 2
+    },
+    {
       'model': 'Gemini 4 Argon',
       'org': 'Google DeepMind',
       'score': 97.46,
@@ -38,7 +51,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 Low（无工具）',
       'date': '2026-10-13',
       'src': 'datalearner',
-      'rank': 2
+      'rank': 3
     },
     {
       'model': 'GPT-6.1 Sol',
@@ -48,7 +61,7 @@ window.ARCAGI3 = {
       'effort': '极高强度思考（无工具）',
       'date': '2026-09-29',
       'src': 'datalearner',
-      'rank': 3
+      'rank': 4
     },
     {
       'model': 'Claude Sonnet 5.5',
@@ -58,7 +71,7 @@ window.ARCAGI3 = {
       'effort': '极高强度思考（无工具）',
       'date': '2026-09-28',
       'src': 'datalearner',
-      'rank': 4
+      'rank': 5
     },
     {
       'model': 'Gemini 3.8 Flash',
@@ -68,7 +81,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-09-02',
       'src': 'datalearner',
-      'rank': 5
+      'rank': 6
     },
     {
       'model': 'Claude Opus 5',
@@ -81,7 +94,7 @@ window.ARCAGI3 = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
-      'rank': 6
+      'rank': 7
     },
     {
       'model': 'GPT-6 Sol',
@@ -91,7 +104,7 @@ window.ARCAGI3 = {
       'effort': '最高（无工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 7
+      'rank': 8
     },
     {
       'model': 'Grok 4.7',
@@ -101,7 +114,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-09-21',
       'src': 'datalearner',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -114,7 +127,7 @@ window.ARCAGI3 = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'DeepSeek-V4.1-Flash-1017',
@@ -124,7 +137,7 @@ window.ARCAGI3 = {
       'effort': '最高（无工具）',
       'date': '2026-10-17',
       'src': 'datalearner',
-      'rank': 10
+      'rank': 11
     },
     {
       'model': 'DeepSeek-V4.1-Flash',
@@ -134,7 +147,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 Low（无工具）',
       'date': '2026-09-10',
       'src': 'datalearner',
-      'rank': 11
+      'rank': 12
     },
     {
       'model': 'Claude Haiku 5.5',
@@ -144,7 +157,7 @@ window.ARCAGI3 = {
       'effort': '最高（无工具）',
       'date': '2026-10-07',
       'src': 'datalearner',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'Grok 4.6',
@@ -154,7 +167,7 @@ window.ARCAGI3 = {
       'effort': '极高强度思考（无工具）',
       'date': '2026-08-12',
       'src': 'datalearner',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'Claude Opus 4.8',
@@ -164,7 +177,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-05-28',
       'src': 'datalearner',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'GPT-5.6 Terra',
@@ -177,7 +190,7 @@ window.ARCAGI3 = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 12.00',
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'GPT-6 Luna',
@@ -187,7 +200,7 @@ window.ARCAGI3 = {
       'effort': '最高（无工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'Claude Opus 4.6',
@@ -197,7 +210,7 @@ window.ARCAGI3 = {
       'effort': '最高（无工具）',
       'date': '2026-02-05',
       'src': 'datalearner',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'GPT-5.5',
@@ -207,7 +220,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-04-23',
       'src': 'datalearner',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'Gemini 3.1 Pro Preview',
@@ -217,7 +230,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-02-20',
       'src': 'datalearner',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'Muse Spark Open',
@@ -227,7 +240,7 @@ window.ARCAGI3 = {
       'effort': '极高强度思考（无工具）',
       'date': '2026-10-15',
       'src': 'datalearner',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'Grok 4.5',
@@ -237,7 +250,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 Medium（无工具）',
       'date': '2026-07-08',
       'src': 'datalearner',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'GPT-5.4',
@@ -247,7 +260,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-03-05',
       'src': 'datalearner',
-      'rank': 22
+      'rank': 23
     },
     {
       'model': 'Opus 4.7',
@@ -257,7 +270,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 High（无工具）',
       'date': '2026-04-16',
       'src': 'datalearner',
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'GPT-5.6 Luna',
@@ -270,7 +283,7 @@ window.ARCAGI3 = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'rank': 24
+      'rank': 25
     },
     {
       'model': 'Grok 4.20',
@@ -280,7 +293,7 @@ window.ARCAGI3 = {
       'effort': '思考模式（无工具）',
       'date': '2026-03-09',
       'src': 'datalearner',
-      'rank': 25
+      'rank': 26
     }
   ]
 };
