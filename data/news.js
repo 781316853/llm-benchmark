@@ -2,39 +2,112 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-09',
+  'updated': '2026-11-10',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
+    '模型发布',
     '技术与洞察',
     '前瞻与传闻',
     '行业动态'
   ],
   'items': [
     {
-      'date': '2026-11-09',
-      'title': '恢复原价未及时公告，WorkBuddy 将返还积分差额',
-      'brief': 'WorkBuddy 发布说明称， DeepSeek-V4.1 Flash 于 9 月 10 日 上线，同步开启为期两周的五折积分活动，原定 9 月 24 日 结束，此后延长至 11 月 5 日 ，并于 11 月 5 日 14:00 起恢复原价。因这一调整未及时向用户公告，WorkBuddy 表示歉意。',
-      'url': 'https://mp.weixin.qq.com/s/SoYZS-V1A1ysYNxfBXlO9Q',
+      'date': '2026-11-10',
+      'title': 'Anthropic 发布 Fable 5.2 和 Mythos 5.2，编程与科学评测提升',
+      'brief': 'Anthropic 发布 Claude Fable 5.2 和 Mythos 5.2 ，称其能力提升、输出速度最高快 30% 。',
+      'url': 'https://anthropic.com/claude-fable-and-mythos-5-2',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-09',
-      'title': 'OpenAI 员工征询用户意见：是否增设 Pro 50 档位',
-      'brief': 'OpenAI Codex 与 ChatGPT 团队成员 Tibo （@thsottiaux）发文澄清，所有 Pro 订阅方案均无 5 小时 限制。他称是看到一些混淆后作出说明，并给出各档方案相较 Plus 订阅方案的用量： Pro 100 为 10 倍 ， Pro 200 为 20 倍 ， Pro 500 为 50 倍 ，其中仅 Pro 500 包含 ultrafast 使用权限。',
-      'url': 'https://x.com/thsottiaux/status/2119305294291612140',
+      'date': '2026-11-10',
+      'title': 'Anthropic 随 Fable 5.2 上线推出限时优惠，高阶订阅最多可获 3 次重置',
+      'brief': 'Anthropic 随 Claude Fable 5.2 上线推出限时优惠，向符合条件的付费订阅用户额外提供 Fable 用量。',
+      'url': 'https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-09',
-      'title': 'NVIDIA 创始人黄仁勋承认对妻子不忠并道歉',
-      'brief': 'NVIDIA 董事会宣布启动独立调查，审查近期媒体有关其创始人兼 CEO Jensen Huang 成为外国情报行动目标的报道。',
-      'url': 'https://nvidianews.nvidia.com/news/a-message-to-our-company',
+      'date': '2026-11-10',
+      'title': '字节跳动发布 Seedream 5.5，改图百轮不走样',
+      'brief': '字节跳动 发布图像创作模型 Seedream 5.5 ，重点升级多轮编辑、透明素材生成和图像质量。',
+      'url': 'https://seed.bytedance.com/zh/seedream5_5',
       'source': '橘鸦AI早报',
       'type': '要闻'
+    },
+    {
+      'date': '2026-11-10',
+      'title': '阿里云 Token Plan 个人版额度上调，Pro 月费降至 312 元',
+      'brief': '阿里云 宣布上调大模型订阅服务 Token Plan 个人版的额度： Lite 、 Essential 、 Standard 三档套餐月费不变，月度额度提升约 74% 至 78% ，分别达到 2 万、4.5 万和 8 万 Credits ；最高档 Pro 套餐额度由 18 万 提升至 20 万 Credits ，月费由 499 元 降至 312 元 ，降幅约 37.5% 。',
+      'url': 'https://mp.weixin.qq.com/s/jHMi-kO0VpjQKqezGEiK9g',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'OpenAI dot 现可连接多台电脑，按任务指定用哪台',
+      'brief': 'OpenAI 宣布，其 AI 助理 dot 现可连接多台本地计算机，用户可以为任务指定它用哪台电脑执行，例如让它在专用电脑上构建和测试应用，同时在笔记本上继续编程。',
+      'url': 'https://learn.chatgpt.com/docs/dots/computers-and-apps',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'Meta 发布迄今最小模型 Muse Ember，专攻 agent 重复任务',
+      'brief': 'Meta 发布其迄今最小、最高效的模型 Muse Ember ，模型名为 muse-ember-1.0 ，用于复杂推理以及工具调用、编码子任务、信息抽取等重复性 agent 工作。',
+      'url': 'https://research.meta.ai/blog/muse-ember',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'Adventists AI 开源全双工语音模型 Sophon-Realtime v1',
+      'brief': 'Adventists AI 在魔搭 ModelScope 开源了全双工语音模型系列 Sophon-Realtime v1 ，包含 Tag 、 Flash 、 E2E 三个版本，代码和权重均采用 Apache-2.0 协议，允许商用。',
+      'url': 'https://modelscope.ai/models/AdventistsAI/Sophon-Realtime-v1',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-10',
+      'title': '美团开源 LongCat-2.5，MIT 协议可商用',
+      'brief': '美团 LongCat 团队宣布正式开源 LongCat-2.5 ，模型权重采用 MIT 协议，支持商用推理部署与二次训练，无需额外授权。',
+      'url': 'https://mp.weixin.qq.com/s/EGLDrPxND-xGTyStJIDXrw',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'Inkling 2 Small 上架 OpenRouter，限时免费调用',
+      'brief': 'OpenRouter 宣布， Thinking Machines 的 Inkling 2 Small 模型现已上架该平台，限时免费开放调用。',
+      'url': 'https://openrouter.ai/thinkingmachines/inkling-2-small:free',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'OpenAI Agents API 推出三项新功能，prompt cache 可保留 12 小时',
+      'brief': 'OpenAI Agents API 团队公布三项新功能。',
+      'url': 'https://x.com/AzianMike/status/2119876908066427244',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'AI Studio 可用自然语言生成 Google 地图应用',
+      'brief': 'Google 宣布， Google AI Studio 接入 Google Maps Platform ，用户在 AI Studio 中用自然语言描述想法， Gemini 会自动完成配置并生成地图应用，支持地图瓦片、地点、天气、路径规划、三维建筑和街景等能力。',
+      'url': 'https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-10',
+      'title': 'Ollama 推出使用情况页面，每日花费与 token 用量可查',
+      'brief': 'Ollama 推出了新的使用情况页面，用户可以按日和按周查看自己的用量与花费。',
+      'url': 'https://x.com/ollama/status/2119897229758788041',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-11-09',
@@ -73,62 +146,6 @@ window.NEWS = {
       'title': '用户反映 Grok Bot 额度消耗加快，Elon Musk 称将核查用量',
       'brief': '多名用户在 X 上反映， Grok Bot 的订阅额度消耗明显加快， Elon Musk 对此回应称将核查用量问题。用户 Derek Neighbors 称， 200 美元 方案上周全速使用可维持 7 天 ，本周中等负载下只能用 14 小时 ；另有用户表示，离每周重置还有约 3 天 就把 Ultra 套餐额度用到上限。',
       'url': 'https://x.com/elonmusk/status/2119415029812609301',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'OpenAI 智能体 dots 可用验证码代用户登录',
-      'brief': 'OpenAI 产品团队成员 James Sun 在 X 宣布， OpenAI 全天候智能体产品 dot 现已升级，可以使用发送到连接收件箱的登录验证码，代表用户无缝完成登录。',
-      'url': 'https://x.com/JamesZmSun/status/2119147164039618879',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'OpenCode 推出 Browse：AI agent 可控制你的真实浏览器',
-      'brief': 'OpenCode 官方宣布， OpenCode Browse 现已上线。',
-      'url': 'https://opencode.ai/product/browse',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'OpenCode 创始人回应模型卡顿，正增加容量',
-      'brief': '近日有用户反映 OpenCode 上的 DeepSeek V4.1 Flash 响应缓慢，连基本任务也难以完成。OpenCode 创始人 Frank Wang 回应称，正在增加大量容量，预计情况会逐步改善。另一位创始人 dax 表示，随着业务增长，他难以跟进所有事务，用户遇到推理或 Go 相关问题时可联系更专注于这些事务的 Frank Wang。',
-      'url': 'https://x.com/thdxr/status/2118972258479927666',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'Cua 联合 Scale AI 推出 Cua Driver Bench，评测 agent 后台执行桌面任务',
-      'brief': 'Cua 宣布与 Scale AI 的 AgentEnv 联合推出 Cua Driver Bench ，评测 computer-use 工具层能否让 agent 在后台完成 macOS 桌面任务、不打扰正在操作电脑的用户。该基准目前仅覆盖 macOS ，任务和测量都基于 macOS 26 桌面，共 10 项任务，分属多应用工作流、精准交互、打断与恢复三类。',
-      'url': 'https://x.com/trycua/status/2118754889329230241',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'Anthropic 须应诉 Claude Max 宣传误导指控',
-      'brief': '加州北区联邦法院治安法官 Alex Tse 裁定， Anthropic 须就原有 Claude Max 套餐“比 Pro 多 5 倍或 20 倍用量”的宣传误导指控应诉。',
-      'url': 'https://courthousenews.com/anthropic-must-face-claims-its-claude-max-pitch-misled-users',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'OpenAI CFO：继续考虑 2027 年上市',
-      'brief': 'OpenAI 首席财务官 Sarah Friar 在接受 CNBC 采访时表示，公司将继续考虑在 2027 年 上市。',
-      'url': 'https://www.cnbc.com/2026/11/06/cnbc-exclusive-transcript-openai-cfo-sarah-friar-speaks-with-cnbcs-sara-eisen-on-squawk-on-the-street-today.html',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-08',
-      'title': 'Anthropic IPO 估值遭质疑，下周启动 IPO 路演',
-      'brief': '据路透社等媒体报道， Anthropic 的 IPO 计划面临潜在投资者的估值质疑，部分投资者认为近期讨论的 1.5 万亿美元 估值处于预期高端，公司可能需要更大折价才能锁定认购。',
-      'url': 'https://www.theinformation.com/briefings/anthropic-proceed-ipo-roadshow-next-week',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
     }

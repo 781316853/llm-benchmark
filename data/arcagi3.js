@@ -1,4 +1,4 @@
-// 数据源:ARC-AGI-3(ARC Prize 交互式智能体推理评测,更新于 2026-11-09)
+// 数据源:ARC-AGI-3(ARC Prize 交互式智能体推理评测,更新于 2026-11-10)
 // 主渠道:https://www.datalearner.com/benchmarks/arc-agi-3(厂商官方发布成绩,Standard harness 口径)
 // 补充:https://llm-stats.com/benchmarks/arc-agi-3(官方:https://arcprize.org/leaderboard)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -9,8 +9,8 @@ window.ARCAGI3 = {
   'url': 'https://llm-stats.com/benchmarks/arc-agi-3',
   'officialUrl': 'https://arcprize.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-09',
-  'refreshedAt': '2026-11-10 04:57',
+  'updated': '2026-11-10',
+  'refreshedAt': '2026-11-10 12:14',
   'stats': {
     'environments': 135,
     'entries': 26
@@ -31,6 +31,19 @@ window.ARCAGI3 = {
       'rank': 1
     },
     {
+      'model': 'Claude Fable 5.2',
+      'org': 'Anthropic',
+      'score': 97.72,
+      'license': '不开源',
+      'effort': '思考模式 High（无工具）',
+      'date': '2026-11-09',
+      'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 8.00 / $ 40.00',
+      'rank': 2
+    },
+    {
       'model': 'Gemini 4 Argon',
       'org': 'Google DeepMind',
       'score': 97.46,
@@ -38,7 +51,7 @@ window.ARCAGI3 = {
       'effort': '思考模式 Low（无工具）',
       'date': '2026-10-13',
       'src': 'datalearner',
-      'rank': 2
+      'rank': 3
     },
     {
       'model': 'GPT-6.1 Sol',
@@ -48,18 +61,7 @@ window.ARCAGI3 = {
       'effort': '极高强度思考（无工具）',
       'date': '2026-09-29',
       'src': 'datalearner',
-      'rank': 3
-    },
-    {
-      'rank': 4,
-      'model': 'Claude Fable 5.2',
-      'org': 'Anthropic',
-      'score': 79.3,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 8.00 / $ 40.00',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 4
     },
     {
       'model': 'Claude Sonnet 5.5',

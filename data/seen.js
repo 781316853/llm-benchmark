@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-11-09',
+  'updated': '2026-11-10',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -305,6 +305,10 @@ window.SEEN = {
     'tbench|Hy4': '2026-11-05',
     'deepswe|Inkling 2 Small': '2026-11-06',
     'datalearner|Inkling 2 Small': '2026-11-06',
-    'llm|Hy4 (high)': '2026-11-06'
+    'llm|Hy4 (high)': '2026-11-06',
+    'deepswe|Claude Fable 5.2': '2026-11-10',
+    'datalearner|Claude Fable 5.2': '2026-11-10',
+    'tbench|Claude Mythos 5.2': '2026-11-10',
+    'tbench|Claude Fable 5.2': '2026-11-10'
   }
 };
