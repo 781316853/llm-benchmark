@@ -85,6 +85,7 @@ function pickMode(list) {
 // 取 benchCount>=4 的 canonical id,避免脚本与页面各维护一套「命中≥4榜」判定。
 var RANKED_SOURCE_FILES = [
   "data/models.js",
+  "data/models-auto.js",
   "data/deepswe.js", "data/deepswe_v10.js",
   "data/llm2014.js", "data/arena_webdev.js",
   "data/tbench.js", "data/tbench_v3.js", "data/tbench_v2.js",

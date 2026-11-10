@@ -39,6 +39,14 @@ const MS_CAVEAT = "Kimi 官方博客自测(K3.1 Pro,2026-10-24);官方标注 rea
 // AutomationBench 均非同一榜单,口径不可比;Kimi Code Bench、Internal Finance、Hallu Bench、
 // xdev-bench-hard、OfficeQA Pro、Frontier Finance、SWE-Marathon、PostTrainBench 等站内无对应榜。
 
+// Anthropic 官方发布页(Claude Fable 5.2 / Mythos 5.2,2026-11-10):
+//   https://www.anthropic.com/claude-fable-and-mythos-5-2
+// 同页另有 FrontierCode 2.0 / FrontierSWE v2 / AutomationBench 等;前三项站内已由官方源或
+// datalearner 收录,仅 TB-Science 0.1 尚缺 Fable 5.2。官方表只标 highest-available effort、
+// 未标注 harness,与基准官方实测榜不保证可比,故走种子层补缺。
+const ANTHROPIC_RELEASE_URL = "https://www.anthropic.com/claude-fable-and-mythos-5-2";
+const ANTHROPIC_CAVEAT = "Anthropic 官方发布自测(2026-11-10);表内标注 highest-available effort,未标注 harness/温度,与基准官方实测榜不保证可比";
+
 // 腾讯混元官方发布页(Hy4 正式版,2026-11-04):
 //   https://hy.tencent.com/research/hy4  (SPA,正文与自测表需浏览器/接口取,表格为图片)
 // 官方只给出与站内同口径的 DeepSWE v1.1 / TB 4.0 / TB-Science 0.1(及仅 Almost 的 ProgramBench);
@@ -72,7 +80,9 @@ const SEEDS = {
   tbscience: [
     { name: "Kimi K3.1 Pro", score: 38.1, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
     // 腾讯混元 Hy4 正式版官方自测 19.8(Claude Code 框架,同榜同版本 0.1)。
-    { name: "Hy4", score: 19.8, agent: "Claude Code", date: "2026-11-04", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL }
+    { name: "Hy4", score: 19.8, agent: "Claude Code", date: "2026-11-04", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL },
+    // Anthropic 官方发布自测 74.6(highest-available effort;harness 未标注,与官方实测榜不保证可比)。
+    { name: "Claude Fable 5.2", score: 74.6, date: "2026-11-10", src: "anthropic-official", note: ANTHROPIC_CAVEAT, sourceUrl: ANTHROPIC_RELEASE_URL }
   ],
   // ProgramBench:博客只报 binary/Almost(≥95%)31.5,未给 Fully Resolved 主指标 → 只补一行 Almost,
   // score 留空(前端 Fully Resolved 显示「—」),不参与主指标排序。

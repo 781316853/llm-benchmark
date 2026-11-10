@@ -80,6 +80,7 @@
     "deepseek-official": ["厂商发布", "DeepSeek 官方更新页自测转录(T2)·官方标注 harness(TB 用 Claude Code、DeepSWE 用 Mini-SWE-V2),与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "moonshot-official": ["厂商发布", "Kimi 官方发布博客自测转录(T2)·reasoning effort=max、temperature=1.0/top-p=0.95,TB 4.0 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "tencent-official": ["厂商发布", "腾讯混元官方发布页自测转录(T2)·DeepSWE 用 mini-SWE-agent,TB 4.0 / TB-Science 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
+    "anthropic-official": ["厂商发布", "Anthropic 官方发布页自测转录(T2)·标注 highest-available effort,未标注 harness/温度,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
     aireleasetracker: ["ART 聚合", "AI Release Tracker 第三方聚合站(T3)·分数取自各实验室公开报告、不自行复测;仅补缺失模型,不覆盖主渠道分数"],
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
@@ -353,7 +354,9 @@
   function searchHaystack(r) {
     if (!SEARCH_HAY) {
       SEARCH_HAY = {};
-      ((window.MODEL_MAP && window.MODEL_MAP.canonical) || []).forEach(function (m) {
+      var manualList = (window.MODEL_MAP && window.MODEL_MAP.canonical) || [];
+      var autoList = (window.MODEL_MAP_AUTO && window.MODEL_MAP_AUTO.canonical) || [];
+      manualList.concat(autoList).forEach(function (m) {
         SEARCH_HAY[m.id] = [m.id, m.vendor].concat(m.aliases || [], VENDOR_ALIAS[m.vendor] || []).join(" ");
       });
     }
@@ -2223,7 +2226,7 @@
   // Terminal-Bench 4.0/3.0/2.1 三版已合并进总览(unified),不在此列,仍属首屏。
   // 缓存戳与 index.html 的首屏脚本一致维护(?v= 变更时同步)。
   var DATA_SRC = {
-    tbscience: { src: "data/tbscience.js?v=20261105a", global: "TBSCIENCE" },
+    tbscience: { src: "data/tbscience.js?v=20261110b", global: "TBSCIENCE" },
     osworld: { src: "data/osworld.js?v=20260912a", global: "OSWORLD" },
     lastexam: { src: "data/lastexam.js?v=20261017a", global: "LASTEXAM" },
     arcagi3: { src: "data/arcagi3.js?v=20260912a", global: "ARCAGI3" },
@@ -2232,7 +2235,7 @@
     nl2repo: { src: "data/nl2repo.js?v=20261017a", global: "NL2REPO" },
     programbench: { src: "data/programbench.js?v=20261105a", global: "PROGRAMBENCH" },
     cursorbench: { src: "data/cursorbench.js?v=20260923a", global: "CURSORBENCH" },
-    frontiercode: { src: "data/frontiercode.js?v=20260923a", global: "FRONTIERCODE" },
+    frontiercode: { src: "data/frontiercode.js?v=20261110b", global: "FRONTIERCODE" },
     frontierswe: { src: "data/frontierswe.js?v=20261110a", global: "FRONTIERSWE" },
     automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },
     vals_codemigration: { src: "data/vals_codemigration.js?v=20261020a", global: "VALSCODEMIGRATION" },

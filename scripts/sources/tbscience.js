@@ -112,7 +112,7 @@ class TBScienceSource extends BaseSource {
       "// 来源:" + this.cfg.url + "(官方:" + this.cfg.announcementUrl + ")\n" +
       "// 补充:https://aireleasetracker.com/benchmark/terminal-bench-science-0.1(第三方聚合 T3,只补缺失模型)\n" +
       "// " + CONFIG.channelPolicy + "(主源 explainx 为 T3 镜像;厂商官方发布自测分走种子层 T2,仅补缺)\n" +
-      "// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror/moonshot-official/tencent-official/aireleasetracker)\n" +
+      "// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror/moonshot-official/tencent-official/anthropic-official/aireleasetracker)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "Terminal-Bench-Science",

@@ -4,6 +4,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+const vm = require("vm");
 const CONFIG = require("./config");
 
 // ===== 字符串归一(与 js/data.js 保持一致,确保前后端匹配口径一致) =====
@@ -48,22 +49,35 @@ function keyCandidates(raw) {
 // ⚠ 缺表/解析失败/表为空一律抛错,不做「返回空别名表」的静默兜底:
 // 空别名表下 canon() 会让**每一个**模型都退化成 vendor=「其他」的自动建档条目,
 // 交叉验证与源间归并随即在幽灵条目上互相比对,而管线不报任何错。
+function loadWindowVar(file, varName) {
+  const p = path.join(CONFIG.DATA_DIR, file);
+  if (!fs.existsSync(p)) return null;
+  const txt = fs.readFileSync(p, "utf8");
+  const sandbox = { window: {} };
+  try {
+    vm.createContext(sandbox);
+    vm.runInContext(txt, sandbox, { filename: p });
+  } catch (e) {
+    throw new Error("[model-map] 解析 " + p + " 失败:" + e.message);
+  }
+  return sandbox.window[varName] || null;
+}
+
 function loadModelMap() {
   const p = path.join(CONFIG.DATA_DIR, "models.js");
   if (!fs.existsSync(p)) {
     throw new Error("[model-map] 找不到别名表 " + p +
       "(CONFIG.DATA_DIR 是否错位?根目录应由 scripts/lib/config.js 位置推导,不随启动目录变化)");
   }
-  const txt = fs.readFileSync(p, "utf8");
-  const sandbox = { window: {} };
-  try {
-    new Function("window", txt)(sandbox.window);
-  } catch (e) {
-    throw new Error("[model-map] 解析 " + p + " 失败:" + e.message);
-  }
-  const map = sandbox.window.MODEL_MAP;
+  const map = loadWindowVar("models.js", "MODEL_MAP");
   if (!map || !Array.isArray(map.canonical) || !map.canonical.length) {
     throw new Error("[model-map] " + p + " 未导出非空的 window.MODEL_MAP.canonical");
+  }
+  // 自动建档表(可选):只补 models.js 未覆盖的模型;手工表始终优先
+  const auto = loadWindowVar("models-auto.js", "MODEL_MAP_AUTO");
+  if (auto && Array.isArray(auto.canonical) && auto.canonical.length) {
+    auto.canonical.forEach(function (c) { c.auto = true; });
+    map.canonical = map.canonical.concat(auto.canonical);
   }
   return map;
 }
@@ -71,12 +85,20 @@ function loadModelMap() {
 var MODEL_MAP = loadModelMap();
 
 // 别名索引:归一键 -> canonical 对象(与 js/data.js 构建方式一致)
-var aliasIndex = {};
-(MODEL_MAP.canonical || []).forEach(function (c) {
-  (c.aliases || []).forEach(function (a) { aliasIndex[norm(a)] = c; });
-  aliasIndex[norm(c.id)] = c;
-  aliasIndex[normLight(c.id)] = c;
-});
+// 先登记手工条目;auto 条目只补空缺,绝不覆盖手工别名。
+function buildAliasIndex() {
+  var idx = {};
+  (MODEL_MAP.canonical || []).forEach(function (c) {
+    var keys = [norm(c.id), normLight(c.id)];
+    (c.aliases || []).forEach(function (a) { keys.push(norm(a)); });
+    keys.forEach(function (k) {
+      if (!k) return;
+      if (!idx[k] || !c.auto) idx[k] = c;
+    });
+  });
+  return idx;
+}
+var aliasIndex = buildAliasIndex();
 
 // 未登记模型自动归并缓存:归一键 -> canonical 对象
 // 建档/命中同时使用 norm 精确键与 normLight 宽松键,使 "claude-opus-5" 与
@@ -119,15 +141,10 @@ module.exports = {
   keyCandidates: keyCandidates,
   cleanDisplay: cleanDisplay,
   canon: canon,
-  // 重新加载(测试或 models.js 变更后调用)
+  // 重新加载(测试或 models.js / models-auto.js 变更后调用)
   reload: function () {
     MODEL_MAP = loadModelMap();
-    aliasIndex = {};
-    (MODEL_MAP.canonical || []).forEach(function (c) {
-      (c.aliases || []).forEach(function (a) { aliasIndex[norm(a)] = c; });
-      aliasIndex[norm(c.id)] = c;
-      aliasIndex[normLight(c.id)] = c;
-    });
+    aliasIndex = buildAliasIndex();
     autoIndex = {};
   },
   MODEL_MAP: function () { return MODEL_MAP; }

@@ -6,6 +6,7 @@ window.MODEL_MAP = {
     { id: "Claude Fable 5.1", vendor: "Anthropic", color: "#E0977B", aliases: ["claude-fable-5.1", "claude-fable-5-1", "Claude Fable 5.1", "Claude Fable 5.1 (high)", "Fable-5.1", "Fable-5.1 (high)", "Fable 5.1", "Claude 5.1 Fable"] },
     { id: "Claude Fable 5.2", vendor: "Anthropic", color: "#E88E70", aliases: ["claude-fable-5.2", "claude-fable-5-2", "Claude Fable 5.2", "Claude Fable 5.2 (high)", "Fable-5.2", "Fable 5.2"] },
     { id: "Claude Mythos Preview", vendor: "Anthropic", color: "#C66040", aliases: ["Claude Mythos Preview", "Claude Mythos 5"] },
+    { id: "Claude Mythos 5.2", vendor: "Anthropic", color: "#B34A2C", aliases: ["Claude Mythos 5.2", "claude-mythos-5.2", "claude-mythos-5-2", "Mythos 5.2"] },
     { id: "Claude Opus 4.8",  vendor: "Anthropic", color: "#E29060", aliases: ["claude-opus-4.8", "Claude Opus 4.8", "Claude Opus 4.8 (high)", "claude-opus-4-8", "Opus 4.8", "Opus 4.8 (max)"] },
     { id: "Claude Sonnet 5",  vendor: "Anthropic", color: "#C58A6B", aliases: ["claude-sonnet-5", "Claude Sonnet 5", "Claude Sonnet 5 (high)", "Sonnet 5", "Sonnet 5 (high)", "sonnet-5", "sonnet-5-high"] },
     { id: "Claude Opus 4.7",  vendor: "Anthropic", color: "#B07B5C", aliases: ["Claude Opus 4.7", "claude-opus-4-7", "Opus 4.7"] },
@@ -215,7 +216,7 @@ window.MODEL_MAP = {
     // DeepSWE 79 / 78.8、Terminal-Bench 57.1 / 52,ProgramBench 只收 Full),故分别建档。
     // 各源写法:muse-wonder(ModelDial slug)/ muse-wonder-max(Code Arena)/ Muse Wonder(其余榜);
     // 尾部 effort 由 normLight 剥离,故 Max/XHigh 档位写法自动并入基础名,不必逐个登记。
-    { id: "Muse Wonder",      vendor: "Meta", color: "#1280FF", aliases: ["Muse Wonder", "muse-wonder", "muse-wonder-max"] },
+    { id: "Muse Wonder",      vendor: "Meta", color: "#1280FF", aliases: ["Muse Wonder", "Muse Wonder 1.0", "muse-wonder", "muse-wonder-max"] },
     { id: "Muse Wonder Full", vendor: "Meta", color: "#58A6FF", aliases: ["Muse Wonder Full", "muse-wonder-full"] },
     // HLE 把 "Muse Spark Open"(61) 与 "Muse Spark 1.1"(62.1)、"Muse Spark"(58.4) 三条并列出分,
     // 开放权重版是独立模型,不并入 Spark 1.1;各源写法仅 Muse Spark Open / muse-spark-open。

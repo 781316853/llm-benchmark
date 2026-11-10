@@ -1,12 +1,13 @@
 // 数据源:FrontierCode(Cognition 官方 · 生产级代码质量评测)
-// 站点:榜单页 https://cognition.com/frontiercode;数据 http://cognition.com/data/frontiercode-leaderboard/data.json
+// 站点:榜单页 https://cognition.com/frontiercode;数据 https://cognition.com/data/frontier-code-2.0/data.json
 // 数据形态:榜单页为 Next.js 客户端渲染(原始 HTML 仅 ld+json 吐 Top10 摘要),真实榜单数据在同域静态 JSON:
-//          顶层 { v1, v1_1 } 两版,每版 { models[], efforts{}, harness{}, subsets{}, data{} }。
+//          2.0 为扁平 { models[], efforts{}, harness{}, subsets{}, data{} }(main 132 题);
+//          旧端点 frontiercode-leaderboard/data.json 为 { v1, v1_1 } 两版,解析器保留回退兼容。
 //          data[模型][档位][子集] = { new_score, correct, tokens, cost, duration_min, tool_calls, steps, flagged_rate }。
-// 口径:FrontierCode 1.1(Cognition 官方 benchmark):任务由 20+ 资深开发者制作(每任务投入 40+ 小时),
+// 口径:FrontierCode 2.0(Cognition 官方 benchmark):任务由 20+ 资深开发者制作(每任务投入 40+ 小时),
 //      评估端到端代码质量(正确性/测试质量/改动范围/风格/贴合代码库规范)与「可合并性」,不只看能否跑通;
-//      subsets 为 main(100 题)与 extended(150 题)。站点主榜(Main)的口径经逐条反推校验为:
-//        score = main 子集下各 effort 的 new_score 取最大(对官方 ld+json Top10 精确命中 10/10);
+//      站点主榜(Main)的口径经逐条反推校验为:
+//        score = main 子集下各 effort 的 new_score 取最大(对官方 ld+json Top10 精确命中);
 //      harness 为各厂商自家 CLI(devin/claude-code/codex/grok-build/chisel/mini-swe-agent),故口径不可比。
 // 性质:仅展示,不计入综合分与命中数(harness 绑定厂商自家 CLI)。
 // 输出:data/frontiercode.js(window.FRONTIERCODE)。
@@ -31,10 +32,11 @@ function num(v) {
   return Math.round(Number(v) * 100) / 100;
 }
 
-// 解析官方 JSON:取指定版本(v1_1,缺失回退 v1),逐模型按「main 子集下各 effort 的 new_score 取最大」聚合
+// 解析官方 JSON:2.0 为扁平结构;旧版取指定 key(v1_1,缺失回退 v1)。
+// 逐模型按「main 子集下各 effort 的 new_score 取最大」聚合
 function parseJson(raw, versionKey) {
   const all = JSON.parse(raw);
-  const v = all[versionKey] || all.v1_1 || all.v1;
+  const v = (all && all.data) ? all : (all[versionKey] || all.v1_1 || all.v1);
   if (!v || !v.data) return null;
   const models = [];
   (v.models || Object.keys(v.data)).forEach(function (name) {
@@ -104,7 +106,7 @@ class FrontierCodeSource extends BaseSource {
         updated: T,
         refreshedAt: R,
         stats: { tasks: parsed.tasks, entries: parsed.models.length },
-        desc: "FrontierCode " + cfg.version + "(Cognition 官方):任务由 20+ 资深开发者制作(每个任务投入 40+ 小时),不只看代码能否跑通,而是按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」;分 main(" + (parsed.tasks || 100) + " 题)与 extended(150 题)两个子集,本页取 main 口径、各推理档位最优;分数越高越好。",
+        desc: "FrontierCode " + cfg.version + "(Cognition 官方):任务由 20+ 资深开发者制作(每个任务投入 40+ 小时),不只看代码能否跑通,而是按正确性/测试质量/改动范围/风格/贴合代码库规范评估端到端「可合并性」;本页取 main 子集(" + (parsed.tasks || "—") + " 题)口径、各推理档位最优;分数越高越好。",
         models: parsed.models
       }
     );

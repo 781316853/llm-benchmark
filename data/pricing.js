@@ -10,6 +10,8 @@
 // 补缺:排名模型(总览命中≥4榜,判定复用 js/data.js 的 unified())主源无价时,
 //   按 models.dev 官方 provider 优先、openrouter 兜底,用 canonical 名/别名精确匹配;
 //   补价不覆盖主源;本次未匹配到或补价源不可用时沿用上一版补价;都无价的模型列在 missingRanked。
+// 2026-11-10 增补:Claude Fable 5.2(官方 $8/$40、缓存 $0.20 → models.dev:anthropic);主源 plan-models.json
+//   自 2026-10 起 404,本条按补缺同口径人工补入,其余条目仍为 2026-10-24 快照。
 // 用途:总览矩阵「性价比」列(综合分 ÷ costPerM);价格为快照口径,可能滞后于平台官网。
 window.PRICING = {
   'source': 'Coding Plan 对比(codingplan.fyi);排名模型缺价由 models.dev 补齐',
@@ -28,10 +30,10 @@ window.PRICING = {
     'planModels': 2281,
     'withPricing': 1465,
     'comparable': 1000,
-    'models': 97,
+    'models': 98,
     'unresolved': 15,
     'ranked': 44,
-    'supplemented': 4,
+    'supplemented': 5,
     'carriedOver': 0,
     'missingRanked': 2
   },
@@ -130,6 +132,15 @@ window.PRICING = {
       'outputCnyPerM': 170,
       'costPerM': 5.61,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Claude Fable 5.2',
+      'slug': 'claude-fable-5-2',
+      'inputCnyPerM': 54.4,
+      'cacheCnyPerM': 1.36,
+      'outputCnyPerM': 272,
+      'costPerM': 5.1,
+      'priceSource': 'models.dev:anthropic'
     },
     {
       'id': 'glm-5-2-fast',

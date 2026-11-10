@@ -75,13 +75,18 @@
     return [norm(raw), normLight(raw), norm(base), norm(stripTailEffort(base))];
   }
 
-  // 构建别名索引
+  // 构建别名索引:先手工 models.js,再自动 models-auto.js;
+  // auto 条目只补空缺,绝不覆盖手工别名(id/alias 归一后同名时手工优先)。
   var aliasIndex = {};   // 归一键 -> canonical 对象
-  var canonList = (window.MODEL_MAP && window.MODEL_MAP.canonical) || [];
-  canonList.forEach(function (c) {
-    (c.aliases || []).forEach(function (a) { aliasIndex[norm(a)] = c; });
-    aliasIndex[norm(c.id)] = c;          // canonical id 本身也入索引
-    aliasIndex[normLight(c.id)] = c;
+  var manualList = (window.MODEL_MAP && window.MODEL_MAP.canonical) || [];
+  var autoList = (window.MODEL_MAP_AUTO && window.MODEL_MAP_AUTO.canonical) || [];
+  manualList.concat(autoList).forEach(function (c) {
+    var keys = [norm(c.id), normLight(c.id)];
+    (c.aliases || []).forEach(function (a) { keys.push(norm(a)); });
+    keys.forEach(function (k) {
+      if (!k) return;
+      if (!aliasIndex[k] || !c.auto) aliasIndex[k] = c;
+    });
   });
 
   // 未登记模型自动归并缓存:归一键 -> canonical 对象

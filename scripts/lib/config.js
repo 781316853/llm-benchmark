@@ -65,6 +65,7 @@ module.exports = {
     "deepseek-official": 2, // DeepSeek 官方更新页自测分人工转录(种子层,仅补缺,见 https://api-docs.deepseek.com/zh-cn/updates)
     "moonshot-official": 2, // Kimi 官方发布博客自测分人工转录(种子层,仅补缺,见 https://www.kimi.com/en/blog/kimi-k3-1-pro)
     "tencent-official": 2, // 腾讯混元官方发布页自测分人工转录(种子层,仅补缺,见 https://hy.tencent.com/research/hy4)
+    "anthropic-official": 2, // Anthropic 官方发布页自测分人工转录(种子层,仅补缺,见 https://www.anthropic.com/claude-fable-and-mythos-5-2)
     "llm-stats": 3,  // 第三方聚合站 llm-stats.com
     benchlm: 3,      // 第三方镜像 benchlm.ai
     aa: 3,           // Artificial Analysis 复测口径(benchlm 静态镜像页,分数为 AA 自测、系统性异于官方口径)
@@ -145,7 +146,8 @@ module.exports = {
       // Terminal-Bench-Science 0.1:科研工作流 70 任务。
       // 官方/harbor 榜单为客户端渲染(原始 HTML 无数据、无公开 API),以 explainx 博客镜像表为主
       // (Model | Harness | Resolution rate,与官方公告 0.1 数值一致)。
-      // 渠道:无可用官方/厂商发布渠道,explainx 为唯一 T3 镜像。
+      // 渠道:explainx 为 T3 镜像主源;厂商官方发布自测分走种子层(T2,如 anthropic-official),
+      // AI Release Tracker 聚合(T3)最后补缺。
       url: "https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026",
       version: "0.1", host: "www.explainx.ai", src: "mirror",
       announcementUrl: "https://www.terminal-bench-science.ai/announcement"
@@ -320,17 +322,18 @@ module.exports = {
       officialUrl: "https://cursor.com/cursorbench"
     },
     frontiercode: {
-      // FrontierCode 1.1(Cognition 官方):生产级代码质量评测,任务由 20+ 资深开发者制作
+      // FrontierCode 2.0(Cognition 官方):生产级代码质量评测,任务由 20+ 资深开发者制作
       // (每任务投入 40+ 小时),评估端到端代码质量(correctness/test quality/scope discipline/
       // style/codebase standards 的 mergeability)。
       // 榜单页为客户端渲染(原始 HTML 仅 ld+json 吐 Top10),真实数据在同域静态 JSON:
-      // 单请求即得 v1/v1.1 两版全部 40 个模型 × 各 effort × main(100 题)/extended(150 题)子集,
-      // 每条含 new_score/correct/cost/tokens/steps 等。主榜单口径已逐条反推校验:
-      //   score = main 子集下各 effort 的 new_score 取最大(对官方 Top10 精确命中 10/10)。
+      // 2.0 端点单请求即得全部模型 × 各 effort × main(132 题)子集扁平结构,
+      // 每条含 new_score/correct/cost/tokens/flagged_rate 等。主榜口径沿用 1.1 的逐条反推校验:
+      //   score = main 子集下各 effort 的 new_score 取最大(对官方 Top10 精确命中)。
+      // 旧端点 frontiercode-leaderboard/data.json 仍为 v1/v1.1,解析器保留回退兼容。
       // 渠道:唯一官方榜(T1)。仅展示,不计入综合分与命中数(harness 绑定各厂商自家 CLI,口径不可比)。
-      url: "https://cognition.com/data/frontiercode-leaderboard/data.json",
+      url: "https://cognition.com/data/frontier-code-2.0/data.json",
       host: "cognition.com",
-      version: "1.1",
+      version: "2.0",
       officialUrl: "https://cognition.com/frontiercode",
       boardUrl: "https://cognition.com/frontiercode"
     },

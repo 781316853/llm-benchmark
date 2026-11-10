@@ -12,6 +12,7 @@
 const fs = require("fs");
 const CONFIG = require("./lib/config");
 const pipeline = require("./lib/pipeline");
+const modelAuto = require("./lib/model-auto");
 const seen = require("./lib/seen");
 const news = require("./lib/news");
 const codingplan = require("./lib/codingplan");
@@ -22,6 +23,10 @@ const changelog = require("./lib/changelog");
   if (!fs.existsSync(CONFIG.DATA_DIR)) fs.mkdirSync(CONFIG.DATA_DIR, { recursive: true });
   // 1) 多源抓取(并发/串行由 CONFIG.pipelineMode 控制)+ 标准化 + 写入 + 质量报告
   await pipeline.runPipeline({ mode: CONFIG.pipelineMode });
+  // 1.5) 自动发现新模型名:扫描刚写入的 data/*.js,为 models.js 未覆盖的模型生成 models-auto.js
+  //      (手工条目优先;失败不影响主流程,下次刷新会重试)
+  try { modelAuto.updateAutoModels(); }
+  catch (e) { console.log("[model-auto] 维护失败:" + e.message); }
   // 2) 维护首次上榜记录(读取最新写入的 data/*.js)
   try { seen.updateSeen(); }
   catch (e) { console.log("[seen] 维护失败:" + e.message); }
