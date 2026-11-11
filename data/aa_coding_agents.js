@@ -1,4 +1,4 @@
-// 数据源:Artificial Analysis Coding Agent Index v2.0(源站更新 2026-11-10)
+// 数据源:Artificial Analysis Coding Agent Index v2.0(源站更新 2026-11-11)
 // 来源:https://artificialanalysis.ai/agents/coding-agents
 // 字段:models[]=agent×model×推理档位配置(按 indexScore 降序);indexScore=综合指数(%);
 //      frontiercode/terminalBench/sweAtlas=三项子基准得分(%);costUsd=每任务平均 API 成本($);
@@ -11,8 +11,8 @@ window.AACODING = {
   'officialUrl': 'https://artificialanalysis.ai/agents/coding-agents',
   'methodUrl': 'https://artificialanalysis.ai/methodology/coding-agents-benchmarking',
   'version': 'v2.0',
-  'updated': '2026-11-10',
-  'refreshedAt': '2026-11-11 14:52',
+  'updated': '2026-11-11',
+  'refreshedAt': '2026-11-12 03:46',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'agents': [
     'Claude Code',
@@ -22,10 +22,10 @@ window.AACODING = {
     'Muse Code',
     'Codex',
     'Opencode',
+    'Mistral Vibe',
     'Grok Build',
     'DeepSeek Harness',
     'Kimi Code CLI',
-    'Mistral Vibe',
     'Antigravity SDK',
     'Mirror'
   ],
@@ -47,7 +47,7 @@ window.AACODING = {
     }
   ],
   'stats': {
-    'configs': 35,
+    'configs': 36,
     'models': 26,
     'agents': 13
   },
@@ -81,7 +81,7 @@ window.AACODING = {
       'multiModel': true,
       'effort': null,
       'provider': 'cognition',
-      'vendor': 'Anthropic',
+      'vendor': 'cognition',
       'indexScore': 61.5,
       'frontiercode': 53.6,
       'terminalBench': 62.6,
@@ -101,7 +101,7 @@ window.AACODING = {
       'multiModel': false,
       'effort': 'max',
       'provider': 'github',
-      'vendor': 'Anthropic',
+      'vendor': 'GitHub',
       'indexScore': 59.9,
       'frontiercode': 51.4,
       'terminalBench': 71.2,
@@ -181,7 +181,7 @@ window.AACODING = {
       'multiModel': true,
       'effort': null,
       'provider': 'cognition',
-      'vendor': 'Anthropic',
+      'vendor': 'Cognition',
       'indexScore': 58.7,
       'frontiercode': 51.6,
       'terminalBench': 56.1,
@@ -281,7 +281,7 @@ window.AACODING = {
       'multiModel': true,
       'effort': null,
       'provider': 'cognition',
-      'vendor': 'OpenAI',
+      'vendor': 'cognition',
       'indexScore': 53.1,
       'frontiercode': 49,
       'terminalBench': 50,
@@ -334,6 +334,26 @@ window.AACODING = {
       'rank': 14
     },
     {
+      'id': '9fcf1e000a8ac75cca614977bcac25da',
+      'agent': 'Mistral Vibe',
+      'model': 'Mistral Large 4 (High)',
+      'displayLabel': 'Mistral Vibe - Mistral Large 4 (High)',
+      'multiModel': false,
+      'effort': 'high',
+      'provider': 'mistral',
+      'vendor': 'Mistral',
+      'indexScore': 48.3,
+      'frontiercode': 44.5,
+      'terminalBench': 41.4,
+      'sweAtlas': 58.9,
+      'costUsd': 1.26,
+      'wallTimeSec': 2903.9,
+      'steps': 100.1,
+      'totalTokens': 8453863,
+      'src': 'aggregate',
+      'rank': 15
+    },
+    {
       'id': '9b52f0eb016964fb4421a352b9c9518c',
       'agent': 'Codex',
       'model': 'GPT-6.1 Terra (Xhigh)',
@@ -351,7 +371,7 @@ window.AACODING = {
       'steps': 72,
       'totalTokens': 6886239,
       'src': 'aggregate',
-      'rank': 15
+      'rank': 16
     },
     {
       'id': '5bc9ed9064c8cd589bfd3aaad4bbebf8',
@@ -371,7 +391,7 @@ window.AACODING = {
       'steps': 100.4,
       'totalTokens': 12280717,
       'src': 'aggregate',
-      'rank': 16
+      'rank': 17
     },
     {
       'id': 'ef847aa89b4f0471ffe5275ba2f11771',
@@ -391,7 +411,7 @@ window.AACODING = {
       'steps': 142.9,
       'totalTokens': 27235628,
       'src': 'aggregate',
-      'rank': 17
+      'rank': 18
     },
     {
       'id': 'a92c8b68f37df782f0e978e0e302b023',
@@ -411,7 +431,7 @@ window.AACODING = {
       'steps': 169.9,
       'totalTokens': 15914548,
       'src': 'aggregate',
-      'rank': 18
+      'rank': 19
     },
     {
       'id': '24c98f188d41522a849006ac453fdebe',
@@ -431,7 +451,7 @@ window.AACODING = {
       'steps': 101.5,
       'totalTokens': 16739365,
       'src': 'aggregate',
-      'rank': 19
+      'rank': 20
     },
     {
       'id': '41bcc9881ff1465f62e417e5a7535e20',
@@ -451,7 +471,7 @@ window.AACODING = {
       'steps': 66.8,
       'totalTokens': 5600134,
       'src': 'aggregate',
-      'rank': 20
+      'rank': 21
     },
     {
       'id': '1566a99a00883bdb3cbdb4894e95ca1f',
@@ -471,7 +491,7 @@ window.AACODING = {
       'steps': 215.8,
       'totalTokens': 18765491,
       'src': 'aggregate',
-      'rank': 21
+      'rank': 22
     },
     {
       'id': 'f09fd629724ff1b103982a6158d00183',
@@ -491,7 +511,7 @@ window.AACODING = {
       'steps': 208.3,
       'totalTokens': 17824341,
       'src': 'aggregate',
-      'rank': 22
+      'rank': 23
     },
     {
       'id': '06c2cfad6e3aba9000f2dd5e429d4407',
@@ -511,7 +531,7 @@ window.AACODING = {
       'steps': 142.1,
       'totalTokens': 22141656,
       'src': 'aggregate',
-      'rank': 23
+      'rank': 24
     },
     {
       'id': 'a3eeef492929228973b8da75e051291d',
@@ -531,7 +551,7 @@ window.AACODING = {
       'steps': 58,
       'totalTokens': 4075423,
       'src': 'aggregate',
-      'rank': 24
+      'rank': 25
     },
     {
       'id': '88c83705811535bca8ee000bfd3a256c',
@@ -551,7 +571,7 @@ window.AACODING = {
       'steps': 185.9,
       'totalTokens': 9010346,
       'src': 'aggregate',
-      'rank': 25
+      'rank': 26
     },
     {
       'id': '9f9935acf5ec3f55d1752fd01ff30de9',
@@ -571,7 +591,7 @@ window.AACODING = {
       'steps': 181.9,
       'totalTokens': 17030580,
       'src': 'aggregate',
-      'rank': 26
+      'rank': 27
     },
     {
       'id': '1630d319b5e4dc5183cb88a2b2af1646',
@@ -591,7 +611,7 @@ window.AACODING = {
       'steps': 114.8,
       'totalTokens': 9153421,
       'src': 'aggregate',
-      'rank': 27
+      'rank': 28
     },
     {
       'id': 'ee13e548b65eeee544cd5b0c6068a4f5',
@@ -611,7 +631,7 @@ window.AACODING = {
       'steps': 81.5,
       'totalTokens': 5776354,
       'src': 'aggregate',
-      'rank': 28
+      'rank': 29
     },
     {
       'id': '2a2fed494e0d1343b14efe96e6bc3669',
@@ -631,15 +651,15 @@ window.AACODING = {
       'steps': 114.3,
       'totalTokens': 16053234,
       'src': 'aggregate',
-      'rank': 29
+      'rank': 30
     },
     {
       'id': '730b8ffd93e83875305984c999467c69',
       'agent': 'Mistral Vibe',
-      'model': 'Mistral Large 4 (High)',
-      'displayLabel': 'Mistral Vibe - Mistral Large 4 (High)',
+      'model': 'Mistral Large 4 (Medium)',
+      'displayLabel': 'Mistral Vibe - Mistral Large 4 (Medium)',
       'multiModel': false,
-      'effort': 'high',
+      'effort': 'medium',
       'provider': 'mistral',
       'vendor': 'Mistral',
       'indexScore': 35.4,
@@ -651,7 +671,7 @@ window.AACODING = {
       'steps': 80.7,
       'totalTokens': 5758752,
       'src': 'aggregate',
-      'rank': 30
+      'rank': 31
     },
     {
       'id': 'b54e883be1cff7a6a43a737ee106011c',
@@ -671,7 +691,7 @@ window.AACODING = {
       'steps': 42.7,
       'totalTokens': 1886087,
       'src': 'aggregate',
-      'rank': 31
+      'rank': 32
     },
     {
       'id': 'e17ee3a79eab160154a92f31c6c2b1fa',
@@ -691,7 +711,7 @@ window.AACODING = {
       'steps': 202.5,
       'totalTokens': 14251511,
       'src': 'aggregate',
-      'rank': 32
+      'rank': 33
     },
     {
       'id': 'c54a3c8e7e89d5a784e98211605eaa53',
@@ -711,7 +731,7 @@ window.AACODING = {
       'steps': 80,
       'totalTokens': 8690179,
       'src': 'aggregate',
-      'rank': 33
+      'rank': 34
     },
     {
       'id': 'd843fce803ff4f84ababc47040306116',
@@ -731,7 +751,7 @@ window.AACODING = {
       'steps': 161.4,
       'totalTokens': 13336679,
       'src': 'aggregate',
-      'rank': 34
+      'rank': 35
     },
     {
       'id': 'accfbb12d349c0f2c93547ce814534b2',
@@ -751,7 +771,7 @@ window.AACODING = {
       'steps': 93,
       'totalTokens': 4890063,
       'src': 'aggregate',
-      'rank': 35
+      'rank': 36
     }
   ]
 };

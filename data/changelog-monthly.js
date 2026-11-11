@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-10',
-  'refreshedAt': '2026-11-11 03:54',
+  'updated': '2026-11-11',
+  'refreshedAt': '2026-11-12 03:46',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3308,
-    'afterMerge': 3305,
-    'needsZh': 2133,
-    'translated': 2133,
+    'afterToolDedupe': 3322,
+    'afterMerge': 3319,
+    'needsZh': 2144,
+    'translated': 2144,
     'untranslated': 0
   },
   'zh': {
@@ -25,6 +25,7 @@ window.CHANGELOG_MONTHLY = {
     '109c12e4-14': '同步 LSP 更新',
     '10c0cf10-180': '新增交互式 Bedrock 设置向导，可在登录界面选择「3rd-party platform」时访问 — 引导你完成 AWS 认证、区域配置、凭证验证和模型固定',
     '10c318bc-69': '现在输入 @ 默认会打开统一提及菜单，可用于文件、插件和技能',
+    '10d72240-149': '为 claude 远程控制添加了 --settings 参数，该参数会将设置文件应用于其启动的每个会话；如果文件发生更改，则在您重新启动 claude 远程控制之前，不会启动新的会话。',
     '11388838-39': '在桌面应用的响应式菜单中添加主页图标',
     '116a2834-108': '在$ .tool.register for mods中添加了isDeferred ： false在提示符中从头开始列出工具的架构，而不是在工具搜索后面',
     '11a9014-123': '添加了CLAUDE_CODE_AUTO_MODE_MODEL来选择客户端自动模式分类器使用的模型；它不会更改服务器端自动模式的模型',
@@ -57,6 +58,7 @@ window.CHANGELOG_MONTHLY = {
     '1470a428-176': '新增 --bare 标志用于脚本化 -p 调用——跳过钩子、LSP、插件同步和技能目录遍历；需要 ANTHROPIC_API_KEY 或通过 --settings 指定 apiKeyHelper（OAuth 和钥匙串认证被禁用）；自动记忆完全禁用',
     '14afa3b4-74': '在 /permissions 中新增 Auto mode 标签页，用于查看和编辑 auto 模式分类器规则',
     '14bb9c64-71': '在技能描述和 /skills 菜单中新增插件名称，提升可发现性',
+    '14e1352c-39': '在文件建议中包含被 .gitignore 忽略的文件',
     '14e4870c-70': '增加过渡动画、间距优化、滚动渐隐效果及提示区更新',
     '14e68cb0-62': '新增阅读思考块的帮助说明，提升待办同步的可信度',
     '1501ce80-57': '增加 Copilot 专用提供商，正确处理推理令牌',
@@ -372,6 +374,7 @@ window.CHANGELOG_MONTHLY = {
     '369c07a8-100': '复制回复可以保留富文本应用程序中的格式，并且/copy可以复制状态输出或单个会话字段',
     '36aa95a0-68': '新增独立的终端字体设置，并捆绑 JetBrainsMono Nerd Font Mono',
     '36ad3a84-41': '增加用于会话历史导航的 Cmd+[ 和 Cmd+] 快捷键',
+    '36e6183c-36': '保留用户和项目权限规则',
     '37007cb4-88': '新增 prUrlTemplate 设置，可将页脚的 PR 徽标指向自定义代码审查 URL，而不是 github.com',
     '37055c65-40': '新增对 D 语言文件的 dfmt 格式化器支持',
     '371375a3-93': '新增 codex doctor，可在运行时、认证、终端、网络、配置和本地状态方面提供支持就绪的诊断',
@@ -512,6 +515,7 @@ window.CHANGELOG_MONTHLY = {
     '43938220-94': 'Codex可以并行运行独立的只读工具，包括技能、记忆和对话历史查找',
     '43a747b0-64': '! - 新增可自定义的页脚状态行，可通过 tui.toml 中的 [status_line] 配置',
     '442e35e1-56': 'opencode run 命令新增 --title 标志以自定义会话标题',
+    '44585320-31': '添加最低版本升级提示',
     '446bde34-31': '使用 kimi --add-dir 在启动时添加它们',
     '446dbfb0-89': '新增 /cd 命令，可将会话移动到新的工作目录，且不在会话中途破坏提示缓存',
     '4487cf38-38': '会话聊天新增可选滚动条',
@@ -583,6 +587,7 @@ window.CHANGELOG_MONTHLY = {
     '4b9d8d04-95': '新增可选的 Windows 系统代理身份验证支持，包括 PAC、WPAD、静态代理和绕过规则',
     '4be50d60-54': '/resume 现在可以从 TUI 直接按 ID 或名称跳转到某个会话',
     '4bfd0610-42': '为应用和 UI 包新增土耳其语区域支持',
+    '4c0316f6-19': '导入构件工作线程',
     '4c0781f1-33': '提供商选项中新增 setCacheKey',
     '4c185482-45': '为 TUI 添加系统主题解析与事件处理',
     '4c3c3bcd-95': '使用内联/模型和/权限参数直接设置模型、推理工作量、速度和权限配置文件',
@@ -597,8 +602,8 @@ window.CHANGELOG_MONTHLY = {
     '4d8691b8-62': '新增 kimi upgrade 命令，用于手动检查和升级 Kimi Code CLI',
     '4d8dd291-55': '在 Bedrock 中支持区域和 bearer token 配置',
     '4d9b20c8-88': '为 Slack MCP 发送消息工具调用新增紧凑的 Slack #channel 标题，带可点击的频道链接',
+    '4e06265f-52': '在全屏模式下使用主项目符号显示 NotifyUser 更新',
     '4e15f960-56': '在 Copilot 设备认证中添加 OAuth 轮询安全余量',
-    '4e2fbe96-46': '新增 noReply 参数以控制响应行为',
     '4e968f7e-63': '在 /doctor 中新增对被杀会话遗留的过期沙箱掩码文件的警告',
     '4eada1ad-74': '新增任务管理系统，包含依赖跟踪等新能力',
     '4ebee864-138': '新增 claude project purge [path]，可删除项目的所有 Claude Code 状态（对话记录、任务、文件历史、配置项）——支持 --dry-run、-y/--yes、-i/--interactive 和 --all',
@@ -843,7 +848,6 @@ window.CHANGELOG_MONTHLY = {
     '69abbdf5-46': '新增对 issues 和 workflow_dispatch 事件的支持',
     '69b2f170-40': 'TUI 新增 Ctrl-Z 终端挂起支持',
     '69bf0328-35': '为标签页增加最大宽度并进行文字截断',
-    '69bf1768-31': '提升标题生成的可靠性',
     '69c83d00-167': '推理强度选择更灵活：TUI 为缺少 Alt 键绑定的终端新增了备用快捷键，模型定义的强度级别现在按模型声明的顺序传递',
     '69d252f0-34': '在 Codex 插件中为 GPT 5.2 Codex 添加 family',
     '69e80390-24': '新增 Kilo 作为原生提供方',
@@ -1026,6 +1030,7 @@ window.CHANGELOG_MONTHLY = {
     '817d2350-44': '在桌面应用中添加自动接受编辑开关',
     '8182b4c5-89': '在符合条件的 workspace 中，可在 /status、状态行和终端标题中查看预估的线程额度或费用',
     '81e0486c-100': '新增 CLAUDE_CODE_DISABLE_MOUSE_CLICKS，可在全屏模式下禁用鼠标点击/拖拽/悬停，同时保留滚轮滚动',
+    '81e37aa5-94': '新增了 Claude Fable 5.2（claude-fable-5-2），现在是默认的 Fable 模型——100 万上下文，每百万个 token 8 美元/40 美元，每百万个 token 缓存读取 0.20 美元',
     '8226a77d-147': '新增 ConfigChange 钩子事件，当会话期间配置文件发生变化时触发，可支持企业安全审计并可选阻止设置变更',
     '8229efda-85': '新增 /dataviz 技能，提供图表与仪表盘设计指导，并附带可运行的调色板校验器',
     '8246d648-102': 'Mobile Composer Dock ：在手机和平板电脑上，作曲家操作现在位于键盘上方的触摸底座中，按钮较大',
@@ -1281,6 +1286,7 @@ window.CHANGELOG_MONTHLY = {
     '9c12d398-126': '新增可从 Claude 应用派生出由 claude --remote-control 或 /remote-control 启动的会话；派生会话在你电脑上作为后台会话运行',
     '9c951014-49': '为 File.read 和 File.list 添加路径遍历防护',
     '9ca59a30-44': '为应用添加端到端测试工具',
+    '9cfbf2f8-55': '保持全屏字幕组稳定，并显示实时进度',
     '9cffcbc0-149': '改进插件工作流，包含市场安装、远程包缓存、远程卸载、插件捆绑的钩子、钩子启用状态以及外部代理配置导入',
     '9d06833c-41': 'opentui 发布后重新加入 nightowl 主题',
     '9d157c30-48': '增加 Ctrl+G 时编辑器启动失败的错误提示',
@@ -1529,6 +1535,7 @@ window.CHANGELOG_MONTHLY = {
     'b869dcf4-33': '为 CLI 新增 console 账号子命令',
     'b8a2aebc-189': '在恢复不活跃的会话时，会在Pro和Max计划中添加警告，这会占用您5小时使用限制的明显份额：无论如何都要恢复，或者开始新的会话，如果您引用它， Claude可以查找上一个会话',
     'b8bdfef8-157': '！ -当同一会话在多个客户端中打开时，从第二个客户端发送现在显示带有重试/取消的占用提示，或先重新加载其他地方进行的更新并重新发送您的消息',
+    'b8c460d9-35': '将 tool_call 项目关联到它们运行的任务',
     'b8d57d00-139': '新增 managed-settings.d/ 投放目录，与 managed-settings.json 并存，让不同团队部署各自独立的策略片段并按字母序合并',
     'b8d7bc9c-50': '新增 Nix 安装与包管理支持',
     'b8dd0684-86': '在 /doctor 中增加「更新」区块，显示自动更新通道和可用的 npm 版本（stable/latest）',
@@ -1650,6 +1657,7 @@ window.CHANGELOG_MONTHLY = {
     'c4899354-43': '为 chat.params 和 chat.message 增加输入上下文',
     'c48ad100-38': '为 Kimi 模型新增专用系统提示',
     'c49fa7f4-103': '新增可配置压缩设置，用户可通过配置而非命令行标志禁用自动压缩和修剪',
+    'c4ceb0c4-48': '设置实验性标志时默认为全屏模式',
     'c4eb5ce8-85': '! - web：图片和视频工具结果现在点击即可全屏预览，图片还支持缩放',
     'c5055aa4-67': '桌面应用新增按钮，可加载每个项目的更多会话',
     'c5092df3-33': '将GPT-6.1 TERRA添加到型号目录中',
@@ -1872,6 +1880,7 @@ window.CHANGELOG_MONTHLY = {
     'df5d13b8-104': '企业/管理员流程现在会显示每月额度上限，并可应用云端管理的配置包，包括 EDU 工作区',
     'df89d6d6-75': '当Claude Code要求打开其在会话中编写的mod时，添加了您的答案记录',
     'dfb0883c-103': '新增 PermissionDenied 钩子，在自动模式分类器拒绝后触发 — 返回 {retry: true} 告知模型可以重试',
+    'dfb1a450-47': '支持跨工作空间目录的同名技能',
     'dfb245ad-101': '/plugins 已安装标签页显示更新徽标，回车现在安装可用更新，I 打开插件详情',
     'dfd75a60-104': '在 Claude apps 网关上游新增可选的 headers: 映射，用于向供应商前置的代理发送静态请求头',
     'e07af660-48': '为自动模式选择加入提示新增「不再询问」选项',
@@ -1905,6 +1914,7 @@ window.CHANGELOG_MONTHLY = {
     'e3e3aeff-39': '重新加入子会话循环切换功能',
     'e40e37e8-135': '通过可配置的子智能体模型、推理级别、并发数、可恢复的角色以及改进的智能体导航，稳定了需手动启用的多智能体 V2 体验',
     'e42ac734-53': '为 TextField 组件增加默认剪贴板复制功能',
+    'e44382cc-89': '在全球、美国和欧盟地区为 Vertex 添加了快速模式，如果 Vertex 拒绝，则降级为标准速度',
     'e455516d-158': '当托管策略的availableModels为空或省略模型时，添加了Claude应用程序网关启动警告Claude Code在没有设置model或enforceAvailableModels的情况下启动',
     'e45892d4-43': '在评论卡片中为文件名添加中间截断',
     'e4b6d274-21': '新增 uninstall 命令',
@@ -1998,6 +2008,7 @@ window.CHANGELOG_MONTHLY = {
     'ed5651c9-46': '让 JDTLS 在 Windows 上使用正确的配置目录',
     'ed596f8-38': '为 Trinity 模型增加专用系统提示',
     'ed784d7c-82': '在对话记录、拒绝提示和 /permissions 最近拒绝列表中新增了自动模式拒绝原因',
+    'ed9259e1-37': '在文件历史记录查询中获取 turn_number',
     'ed9b4840-40': '在桌面端为侧边栏切换按钮添加 8px 左边距',
     'ed9cdf28-127': '! - 在终端中将 mermaid 代码块渲染为图表；可在 /settings → Mermaid diagrams 中关闭，或在 tui.toml 的 [markdown] 段设置 mermaid = \'off\'',
     'edad25c7-88': '新增外部代理会话导入，包括后台导入和导入会话的标题处理',
@@ -2154,7 +2165,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 107,
+      'count': 123,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -2163,7 +2174,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '24c7ca0c-88',
@@ -2222,8 +2233,29 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': 'e44382cc-89',
+              'text': 'Added fast mode on Vertex in the global, us and eu regions, falling back to standard speed if Vertex refuses it',
+              'date': '2026-11-10',
+              'version': '2.1.322',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.322'
+            },
+            {
+              'key': '10d72240-149',
+              'text': 'Added --settings to claude remote-control, which applies a settings file to every session it starts; if the file changes, no new session starts until you restart claude remote-control',
+              'date': '2026-11-09',
+              'version': '2.1.321',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.321'
+            },
+            {
+              'key': '81e37aa5-94',
+              'text': 'Added Claude Fable 5.2 (claude-fable-5-2), now the default Fable model — 1M context, $8/$40 per Mtok with $0.20/Mtok cache reads',
+              'date': '2026-11-09',
+              'version': '2.1.321',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.321'
+            },
             {
               'key': '1d85fe78-128',
               'text': 'Added an \'Earlier in this session\' row to /tasks that lists finished subagents, so you can reopen one and message it even after it leaves the list or you restart',
@@ -2428,14 +2460,14 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 29
+          'count': 32
         },
         {
           'id': 'opencode',
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '223a2a0-199',
@@ -2501,8 +2533,78 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
+            {
+              'key': '14e1352c-39',
+              'text': 'include gitignored files in file suggestions',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': '36e6183c-36',
+              'text': 'persist user and project permission rules',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': '44585320-31',
+              'text': 'add minimum version upgrade prompts',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': '4c0316f6-19',
+              'text': 'import artifact woker',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': '4e06265f-52',
+              'text': 'use primary bullet for NotifyUser updates in fullscreen mode',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': '9cfbf2f8-55',
+              'text': 'keep fullscreen transcript groups steady and show live progress',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': 'b8c460d9-35',
+              'text': 'link tool_call items to the task they run as',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': 'c4ceb0c4-48',
+              'text': 'default to fullscreen mode when experimental flag is set',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': 'dfb1a450-47',
+              'text': 'support same-name skills across workspace directories',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
+            {
+              'key': 'ed9259e1-37',
+              'text': 'take turn_number in the file-history queries',
+              'date': '2026-11-11',
+              'version': '2.6.0-canary.20261111052659-f26481d',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+            },
             {
               'key': '20a5f60-34',
               'text': 'add session title generation telemetry',
@@ -2651,15 +2753,36 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261102033430-40590f6'
             }
           ],
-          'count': 21
+          'count': 31
         },
         {
           'id': 'deepseek-harness',
           'name': 'DeepSeek Harness',
           'vendor': 'DeepSeek',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
           'items': [
+            {
+              'key': '95a44030-56',
+              'text': 'SubAgent 支持具名与多层协作，AgentTeam 可按会话开启，共用成员与任务面板。 @Dudu-0223, @Yifffan',
+              'date': '2026-11-11',
+              'version': '0.2.2-rc.2',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.2'
+            },
+            {
+              'key': 'a6914194-60',
+              'text': 'Git Worktree 支持按分支、提交和文件类型审阅改动，并直接处理 GitHub 评审、同步已审阅进度和更新分支。 @LegGasai',
+              'date': '2026-11-11',
+              'version': '0.2.2-rc.2',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.2'
+            },
+            {
+              'key': 'bf16ba80-30',
+              'text': '桌面端支持在设置中切换正式版与开发版更新渠道。 @winewill',
+              'date': '2026-11-11',
+              'version': '0.2.2-rc.2',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.2'
+            },
             {
               'key': '19e438c2-92',
               'text': '新增实验性「变更请求与工作树」：在独立 Git 工作树中运行会话，通过可搜索文件树和逐文件导航查看本地及 PR 差异，将选中代码和评论交给 Agent，并跟踪检查与评审状态。 @LegGasai, @tianyicui',
@@ -2703,14 +2826,14 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-alpha.3'
             }
           ],
-          'count': 6
+          'count': 9
         },
         {
           'id': 'qoder-cn',
           'name': 'Qoder CN',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
             {
               'key': 'bee80cb4-36',
@@ -2762,7 +2885,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '25be1fdc-46',
@@ -2807,7 +2930,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '982a0dab-30',
@@ -2838,7 +2961,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'ZCode',
           'vendor': '智谱',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://zcode.z.ai/changelog',
           'items': [
             {
               'key': '3857d06c-33',
@@ -2960,7 +3083,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '52efae8-21',
@@ -2977,7 +3100,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '832125a0-38',
@@ -3057,7 +3180,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '55a65079-85',
@@ -3347,7 +3470,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '17db2f60-153',
@@ -4155,7 +4278,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '12d121ac-121',
@@ -4326,7 +4449,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
               'key': '5225662c-74',
@@ -4511,7 +4634,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'DeepSeek Harness',
           'vendor': 'DeepSeek',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
           'items': [
             {
               'key': '12da18d8-41',
@@ -4794,7 +4917,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
             {
               'key': '4bd17e28-64',
@@ -4930,7 +5053,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '113b92a4-57',
@@ -4961,7 +5084,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '286cb0ca-41',
@@ -5167,7 +5290,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'ZCode',
           'vendor': '智谱',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://zcode.z.ai/changelog',
           'items': [
             {
               'key': '18c37848-26',
@@ -5387,7 +5510,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '7f57a520-40',
@@ -5418,7 +5541,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '4a03d98c-30',
@@ -5605,7 +5728,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': 'c420ef24-97',
@@ -6021,7 +6144,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '46672da0-112',
@@ -6829,7 +6952,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
               'key': '8621746f-264',
@@ -6972,7 +7095,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'DeepSeek Harness',
           'vendor': 'DeepSeek',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
           'items': [
             {
               'key': '20f07a80-59',
@@ -7388,7 +7511,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
             {
               'key': '60af5b9b-42',
@@ -7517,7 +7640,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '6452c14b-18',
@@ -7569,7 +7692,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '25379f55-8',
@@ -7607,7 +7730,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'ZCode',
           'vendor': '智谱',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://zcode.z.ai/changelog',
           'items': [
             {
               'key': '29f3f084-23',
@@ -7827,7 +7950,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '1279384-34',
@@ -7942,7 +8065,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '17068510-35',
@@ -8269,7 +8392,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '3e6fccc9-110',
@@ -8468,7 +8591,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '3486b764-117',
@@ -8870,7 +8993,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
               'key': '139ba938-120',
@@ -9076,7 +9199,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'DeepSeek Harness',
           'vendor': 'DeepSeek',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
           'items': [
             {
               'key': '22a5b910-29',
@@ -9247,7 +9370,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
             {
               'key': '49c1f2fc-14',
@@ -9299,7 +9422,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '47a79b70-30',
@@ -9407,7 +9530,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'daeb987d-28',
@@ -9445,7 +9568,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeWork',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/work_changelog',
           'items': [
             {
               'key': '51b37d6c-27',
@@ -9518,7 +9641,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'ZCode',
           'vendor': '智谱',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://zcode.z.ai/changelog',
           'items': [
             {
               'key': '171a42c8-24',
@@ -9584,7 +9707,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': 'c710a424-28',
@@ -9636,7 +9759,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '2e52af-40',
@@ -9961,7 +10084,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '223e35cc-85',
@@ -10139,7 +10262,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '1ad3dae8-136',
@@ -10450,7 +10573,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
               'key': '6d1d4e63-182',
@@ -10726,7 +10849,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '16c6f174-37',
@@ -10988,7 +11111,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '891b8d7c-37',
@@ -11019,7 +11142,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeWork',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/work_changelog',
           'items': [
             {
               'key': 'e28af6dc-12',
@@ -11106,7 +11229,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '54a03738-26',
@@ -11291,7 +11414,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '48e66dc4-63',
@@ -11511,7 +11634,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '42317098-123',
@@ -11829,7 +11952,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '5fbd8c16-135',
@@ -12126,7 +12249,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '3c89a710-39',
@@ -12143,7 +12266,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
               'key': '584f21bc-75',
@@ -12566,7 +12689,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '38b09450-46',
@@ -12730,7 +12853,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'ddcec28c-24',
@@ -12789,7 +12912,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeWork',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/work_changelog',
           'items': [
             {
               'key': '30043538-10',
@@ -12862,7 +12985,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '23d36a8c-9',
@@ -13103,7 +13226,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '1749617d-29',
@@ -13465,7 +13588,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '6a2c13d4-97',
@@ -13762,7 +13885,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '3fc506a4-103',
@@ -14052,7 +14175,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
               'key': '74530aa9-98',
@@ -14167,7 +14290,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '1034ce5e-56',
@@ -14233,7 +14356,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '910e2cac-17',
@@ -14271,7 +14394,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeWork',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/work_changelog',
           'items': [
             {
               'key': '41d7c9e0-94',
@@ -14302,7 +14425,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '282d9fdc-38',
@@ -14340,7 +14463,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '1facd830-37',
@@ -14394,7 +14517,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '31328cd4-116',
@@ -14733,7 +14856,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '35a7c2fc-111',
@@ -15156,7 +15279,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '951c441c-40',
@@ -15460,7 +15583,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '4b273aa2-132',
@@ -15533,7 +15656,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '3a841e90-57',
@@ -15620,7 +15743,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeWork',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/work_changelog',
           'items': [
             {
               'key': '8b2587c0-9',
@@ -15637,7 +15760,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '19ceffa7-21',
@@ -15696,7 +15819,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '19a57a6c-25',
@@ -15820,7 +15943,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Codex',
           'vendor': 'OpenAI',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
               'key': '141d82f8-146',
@@ -15900,7 +16023,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': 'c7bea0b8-104',
@@ -16449,7 +16572,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': 'c48ad100-38',
@@ -16865,7 +16988,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': 'f72e5bbc-89',
@@ -16966,7 +17089,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '80a77ac0-27',
@@ -17032,7 +17155,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeWork',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/work_changelog',
           'items': [
             {
               'key': '139867b4-39',
@@ -17063,7 +17186,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '43482a68-17',
@@ -17437,7 +17560,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'WorkBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
               'key': '3554e84c-21',
@@ -18065,7 +18188,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '51a1eaee-79',
@@ -18341,7 +18464,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '2cce3268-28',
@@ -19016,7 +19139,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Qoder CN IDE',
           'vendor': '阿里巴巴',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
               'key': '2d7e1b0-57',
@@ -19124,7 +19247,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'da704b87-18',
@@ -19197,7 +19320,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '44fa10e6-45',
@@ -19237,7 +19360,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '8528e916-42',
@@ -19541,7 +19664,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '1501ce80-57',
@@ -21336,7 +21459,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'cbd81d74-11',
@@ -21458,7 +21581,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '1e3e31e4-25',
@@ -21610,7 +21733,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Claude Code',
           'vendor': 'Anthropic',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
             {
               'key': '13253be2-56',
@@ -21683,7 +21806,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '186fcc1c-28',
@@ -23254,7 +23377,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'd926a6c4-18',
@@ -23355,7 +23478,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '13811c0c-38',
@@ -23444,7 +23567,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': 'b0acd350-37',
@@ -25057,7 +25180,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '2437ecd4-25',
@@ -25144,7 +25267,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '3caa4fbc-29',
@@ -25266,7 +25389,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2025-10',
       'label': '2025年10月',
-      'count': 62,
+      'count': 60,
       'toolCount': 3,
       'multi': [],
       'tools': [
@@ -25275,7 +25398,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'OpenCode',
           'vendor': 'Anomaly (原 SST)',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
               'key': '155a8d86-45',
@@ -25500,30 +25623,16 @@ window.CHANGELOG_MONTHLY = {
               'date': '2025-10-28',
               'version': '0.15.19',
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
-            },
-            {
-              'key': '4e2fbe96-46',
-              'text': 'Added noReply parameter to control response behavior',
-              'date': '2025-10-26',
-              'version': '0.15.18',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.18'
-            },
-            {
-              'key': '69bf1768-31',
-              'text': 'Made title generation more reliable',
-              'date': '2025-10-26',
-              'version': '0.15.18',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.18'
             }
           ],
-          'count': 34
+          'count': 32
         },
         {
           'id': 'traecode',
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '8c5f0bec-26',
@@ -25617,7 +25726,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '453fea06-22',
@@ -25748,7 +25857,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '79c6bdf4-17',
@@ -25786,7 +25895,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '81fdcda8-16',
@@ -25861,7 +25970,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'a0d8a258-29',
@@ -25934,7 +26043,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'CodeBuddy',
           'vendor': '腾讯云',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
           'items': [
             {
               'key': '3245b01c-11',
@@ -26016,7 +26125,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '1461a090-21',
@@ -26154,7 +26263,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '2522cb44-22',
@@ -26285,7 +26394,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '405be7d8-25',
@@ -26353,7 +26462,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': 'b44a1a20-13',
@@ -26554,7 +26663,7 @@ window.CHANGELOG_MONTHLY = {
           'name': 'TraeCode',
           'vendor': '字节跳动',
           'status': 'ok',
-          'changelogUrl': '',
+          'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
               'key': '54e65dac-16',

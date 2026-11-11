@@ -5,9 +5,10 @@
 //   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期
 //   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
+// 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-11',
-  'refreshedAt': '2026-11-11 14:52',
+  'refreshedAt': '2026-11-12 03:46',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '0.167.0-alpha.4.2',
@@ -35,11 +36,13 @@ window.CHANGELOG = {
           'version': '0.167.1',
           'title': '0.167.1',
           'date': '2026-11-10',
-          'dateRaw': '2026-11-10T21:33:57Z',
-          'tags': [],
+          'dateRaw': '2026-11-10T21:32:01Z',
+          'tags': [
+            'Changelog'
+          ],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.1',
-          'body': '更新日志\n完整更新日志： rust-v0.167.0... rust-v0.167.1',
-          'h': 'a60446d5'
+          'body': '## 变更日志\n\n完整更新日志：https://github.com/openai/codex/compare/rust-v0.167.0...rust-v0.167.1',
+          'h': 'f79c170c'
         },
         {
           'version': '0.167.0-alpha.4.2',
@@ -1331,7 +1334,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '2.1.322',
@@ -3703,8 +3706,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
+        {
+          'version': 'daemon-v0.5.1',
+          'title': '进程守护程序-v0.5.1',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T18:27:09Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.1',
+          'body': '杂项（进程守护进程）：0.5.1 版本（#63366）',
+          'h': '99bdc897'
+        },
         {
           'version': '2.2.7',
           'title': 'v2.2.7',
@@ -9211,15 +9224,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19',
           'body': '- Added OPENCODE_FAKE_VCS flag for VCS testing and updated todo tracking instructions\n- Removed temperature setting for Claude models\n- Added MCP server support, file diffs, and default slash commands (/init, /compact) in ACP\n- Fixed LiteLLM error where tool parameter must be specified\n- Removed reasoning effort setting to \'medium\' for gpt-5-pro model\n- Added session.started event that triggers when a new session is created\n- Fixed build script to work cross-platform\n- Removed claude-haiku-4.5 from default priority for GitHub Copilot session title generation'
-        },
-        {
-          'version': '0.15.18',
-          'title': 'v0.15.18',
-          'date': '2025-10-26',
-          'dateRaw': '2025-10-26T03:49:32Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.18',
-          'body': '- Fixed $ invocation not being quiet in LSP server\n- Added noReply parameter to control response behavior\n- Fixed timeout parameter to allow users to disable provider timeout\n- Made title generation more reliable\n- Updated Anthropic prompt'
         }
       ]
     },
@@ -9231,8 +9235,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
+        {
+          'version': '2.6.0-canary.20261111095258-5518d54',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.2026111095258-5518d54',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T10:08:16Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111095258-5518d54',
+          'body': 'What\'s Changed\n- fix(agent-core-v2): stop cancelling compaction when reminders arrive mid-compaction by @liruifengv in #4822\n- fix(windows): 修复长路径启动崩溃与文件搜索失败 by @pvzheroes125 in #4825\n- refactor(kap-server): drop the turn_id alias from the file-history queries by @wbxl2000 in #4826\n- fix(agent-core-v2): preserve Gemini context across turns by @7Sageer in #4827\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261111052659-f26481d...@moonshot-ai/kimi-code@2.6.0-canary.20261111095258-5518d54',
+          'h': '9f93398c'
+        },
         {
           'version': '2.6.0-canary.20261111052659-f26481d',
           'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.20261111052659-f26481d',
@@ -10360,8 +10374,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
+        {
+          'version': '0.2.2-rc.2',
+          'title': 'v0.2.2-rc.2',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T11:33:06Z',
+          'tags': [
+            '新增功能',
+            'New Features',
+            '体验优化',
+            '问题修复',
+            '其他变更',
+            'Improvements'
+          ],
+          'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.2',
+          'body': '新增功能\n\n- Git Worktree 支持按分支、提交和文件类型审阅改动，并直接处理 GitHub 评审、同步已审阅进度和更新分支。 @LegGasai\n- SubAgent 支持具名与多层协作，AgentTeam 可按会话开启，共用成员与任务面板。 @Dudu-0223, @Yifffan\n- 桌面端支持在设置中切换正式版与开发版更新渠道。 @winewill\n\n### 体验优化\n\n- 改善代码审阅时的评论、文件导航与窄屏布局，减少查看大型改动时的卡顿，并放宽大型仓库创建工作树的等待时间。 @LegGasai\n- 改善多层子代理的浏览与任务协调，优先展示任务描述，支持逐层展开和读取失败后重试。 @Dudu-0223\n- 优化左侧栏插件入口的收纳，不常用入口可移入“更多”，重新固定时保持原顺序。 @Yifffan\n- 简化个性化页面安装后的操作，移除“保留”按钮，统一使用撤销与恢复。 @ZiyaZhang\n- 改善自定义主题对通知、卡片、计划和任务等界面颜色的覆盖。 @turtle2099\n- 改善页面缩放、平移及长列表场景下的菜单定位，保持菜单与触发位置对齐；自定义浮层需适配新定位接口。 @Stevring, @LegGasai\n- 改善暗色模式下文件树浮层的显示，使用背景层次区分面板，避免白色投影。 @turtle2099\n- 改善在侧栏查找文件的体验，支持按名称或路径搜索，并可调整排除规则与隐藏文件显示。 @yudshj\n- 改善侧栏长列表的浏览与拖动体验，插件导航和会话列表共用滚动区域，工作区工具栏保持可见。 @Yifffan\n- 优化从会话打开工作目录的操作，统一“在应用中打开”菜单，并改善窄屏使用体验。 @Yifffan\n- 加快文件右键菜单的打开；关联应用查询较慢时，先提供默认应用入口。 @yudshj\n- 向上回看聊天时自动加载更早消息，优先保持阅读位置，并保留手动加载和重试入口。 @imccyu\n- 改善聊天过程的可查看性，可展开工作区指令、技能目录等信息，了解模型收到的上下文。 @turtle2099\n- 改善补丁编辑的回执，折叠状态下也可查看修改的文件，并在成功后直接打开。 @sjw1231\n- 优化会话首页的交互动画。 @ZiyaZhang\n- 改善会话恢复或压缩后的上下文提示，明确当前运行信息与旧信息的替换关系。 @kermanx\n- 改善聊天中代码差异的阅读，显示增删行颜色，并按文件语言高亮。 @mektpoy\n- 改善粘贴图片和文件的体验，未聚焦输入框时也可粘贴到最近使用的可用输入框或主对话。 @std4453\n- 改善暂停、恢复定时任务时的操作反馈，保持按钮焦点与显示稳定，避免重复操作。 @turtle2099\n- 优化目标栏的操作排列与按钮间距，统一为“编辑、清除、暂停或恢复”。 @turtle2099\n- 优化模型请求失败后的重试设置，可在模型设置中选择重试条件、次数和等待时间。 @turtle2099\n- 改善临时请求失败后的恢复操作，可直接点击“继续生成”，无需另写消息。 @LegGasai\n- 改善 API Key 的管理，已保存密钥以掩码显示，支持整体替换或清除，不显示完整旧密钥。 @Magolor\n- 优化多问题检索，单次网页搜索默认支持最多 10 个查询和 10 个来源。 @turtle2099\n- 改善 Agent 终端的可见性与接管体验，命令在侧栏终端运行，用户输入即可接管；允许读取的用户终端内容会进入模型与会话记录。 @LegGasai\n- 优化批量查询文件、任务和资源时的执行效率，更多只读工具可并行运行，结果仍按调用顺序返回。 @turtle2099\n- 改善桌面更新下载时的进度显示，可点击下载百分比或“检查更新”查看状态。 @winewill\n\n### 问题修复\n\n- 修复 PR 更新后审阅差异与提交行号不一致的问题，并改善大量评审讨论的统计。 @LegGasai\n- 修复只有 SSH 凭据时无法查看私有 Git 插件详情的问题。 @turtle2099\n- 修复可选插件加载失败导致整个 Web 页面无法启动的问题；必需插件失败仍会提示。 @imccyu\n- 修复已启用但未成功加载的插件容易被误认为正在运行的问题，明确显示“未运行”及原因。 @turtle1999\n- 修复 PTC 中重复等待子代理消息时，同一条消息反复触发唤醒的问题。 @Dudu-0223\n- 修复浏览特殊文件名或扩展名时，文件树视图崩溃的问题。 @LegGasai\n- 修复“未分组”会话中显示无效“新建会话”按钮的问题。 @turtle2099\n- 修复复制聊天公式时出现乱码的问题，同一条 Markdown 内容中的公式可复制为 TeX 源码。 @turtle2099\n- 修复查看 Perl 代码时，正则表达式导致后续内容高亮错误的问题。 @turtle2099\n- 修复聊天更新出错后，历史加载和新消息显示持续卡住的问题。 @Magolor\n- 改善重复创建会话分支时的标题编号，跳过已用编号，减少同名会话。 @turtle2099\n- 修复停止任务或关闭会话时，部分错误导致任务未中止或资源提前释放的问题。 @liukx0205\n- 修复发送消息或准备附件期间重试请求，导致同一消息被重复提交的问题。 @liukx0205\n- 修复中文目标栏混淆“待继续”与“已暂停”状态的问题。 @imccyu\n- 修复桌面端多次启动后，因鉴权信息累积而无法启动的问题。 @turtle2099\n- 修复 Windows 通过短路径启动命令行时，无法保存欢迎页确认的问题。 @winewill\n- 修复 macOS 窗口拖动与粘贴快捷键问题，以及 Windows 暗色模式启动白闪。 @yxy72, @winewill, @turtle2099\n- 改善 Windows 更新安装期间的反馈，显示安装状态窗口，减少重启过程中的无提示等待。 @winewill\n- 修复移动端 Safari 在展开屏幕或切换视口后，聊天文字被额外放大的问题，保留用户主动缩放。 @Saafo\n- 修复 Linux 存在长期后台进程时，会话加载与新建变慢的问题。 @turtle2099\n- 修复会话中移除或替换工具后，部分模型拒绝继续请求的问题。 @Tuyixiang\n- 通过 Anthropic Messages 接入时，历史前缀变化后省略失效的签名 thinking，减少压缩后持续请求失败。 @turtle2099\n- 修复部分模型网关错误被误报为“API 密钥无效”的问题，使重试按实际响应状态处理。 @LegGasai\n- 修复在 DSH 用户目录中配置 DeepSeek 端点后无法启动的问题；项目目录中的环境配置仍不能覆盖端点。 @LegGasai\n- 修复连续浏览多页 PDF 时加载越来越慢、快速翻页卡顿的问题。 @turtle2099\n- 修复使用 Inspector 查看较大的 Cordis 树时，快照接近上限可能导致服务退出的问题。 @turtle2099\n\n### 其他变更\n\n- 网页搜索默认改用 DeepSeek Search API，搜索与获取可分别选择计费账号或 API Key；旧提供方和自定义配置需按升级指南调整。 @yudshj\n- 归档会话默认清理符合条件的 Git 工作树，保留分支与提交；需保留本地目录时请关闭清理，自定义配置与 Forge 插件需迁移。 @LegGasai\n- AgentTeam 改用统一的具名子代理，中断工具默认关闭；自定义插件与 SDK 集成需迁移，共享会话的进程须同步升级。 @Dudu-0223\n- SDK 可通过配置为新会话默认开启团队协作，恢复已有会话时保留原选择。 @Dudu-0223\n- 允许插件动态注册和移除 MCP 服务，并查询状态、重启或探测连接，无需用户逐项维护服务配置。 @LegGasai\n- 插件可按语言扩展聊天代码块的显示，未匹配或渲染失败时回退为普通代码块。 @imccyu\n- 插件索引可提供 GitHub Star 和 npm 周下载量，默认仍按索引提供的顺序排列。 @turtle1999\n- Creator 的开发指引统一到 dsh-doc，用于定制 DSH 并查阅当前版本资料；引用旧技能名称或路径的扩展需迁移。 @turtle1999\n- 自定义模型提供方支持 Gemini 原生接口，可获取模型列表并设置推理等级。 @turtle2099\n- 模型请求的 User-Agent 增加启动配置标记，便于服务端区分桌面端、Web、命令行与 SDK 请求。 @imccyu\n- 调整账号通知，支持产品公告等消息并随界面语言更新；已有登录保留，自定义账号插件与配置需迁移。 @lsdsjy\n- PTC 按运行时限限制工具调用总量，超限会终止代码并清空保留状态，已完成的操作不会撤销。 @kermanx\n- Session 支持批量追加事件，日志格式不变；自定义追加接口的包装代码需适配批量调用。 @liukx0205\n- 工具失败提供更明确的错误类型与代码，便于定位问题；依赖旧错误分类的插件和 SDK 集成需同步适配。 @sjw1231\n- 调整 Computer Use 的窗口操作、键盘控制和授权，默认不移动系统鼠标；自定义脚本与 helper 需同步升级。 @CreatixChu, @Tuyixiang, @Dudu-0223\n- Office 改用原生工具，Web 与 SDK 均可加载技能；旧包和技能需迁移，文档解析在 DSH 主进程中运行，不受命令行沙箱保护。 @yudshj\n- Windows 的额外目录授权仅供文件工具使用，不扩大终端或 PTC 的访问范围；相关沙箱扩展需迁移。 @Tuyixiang\n- 调整 LiveShare 的多会话分享与插件授权，旧授权需重新配置；PTC 可访问分享目录之外，仅应分享给可信任的人。 @mektpoy\n- npm 安装与桌面端随附对应版本的源码和文档，方便查阅与开发扩展；Python 单文件运行时不包含这些资源。 @turtle1999\n- 升级 Zod 至 4.6.6、Stagehand 至 4.4.0；Stagehand 改为自动发现扩展，旧 extensionId 配置不再生效。 @imccyu\n\nNew Features\n\n- Git Worktree supports reviewing changes by branch, commit, and file category, with GitHub reviews, synchronized viewed-file progress, and branch updates directly in DSH. by @LegGasai\n- SubAgent supports named, multi-level collaboration, while AgentTeam can be enabled per session with a shared member and task panel. by @Dudu-0223, @Yifffan\n- Desktop settings now let you switch between stable and development update channels. by @winewill\n\n### Improvements\n\n- Improve commenting, file navigation, and narrow-screen layouts during code review, reduce lag when viewing large changes, and allow more time to create worktrees in large repositories. by @LegGasai\n- Improve browsing and coordinating nested subagents, prioritizing task descriptions and supporting incremental expansion and retries after failed reads. by @Dudu-0223\n- Improve sidebar plugin organization: move infrequently used entries into More and restore them without changing their original order. by @Yifffan\n- Simplify actions after installing personalized pages, replacing Keep with Undo and Restore. by @ZiyaZhang\n- Improve custom-theme coverage for notifications, cards, plans, tasks, and other interface colors. by @turtle2099\n- Improve menu positioning during page zooming, panning, and browsing long lists, keeping menus aligned with their triggers; custom panels need to adopt the new positioning API. by @Stevring, @LegGasai\n- Improve dark-theme file-tree panels with layered backgrounds instead of white shadows. by @turtle2099\n- Improve file discovery in the sidebar with name and path search, exclusion rules, and hidden-file controls. by @yudshj\n- Improve browsing and dragging in long sidebar lists, with plugin navigation and sessions sharing a scroll area and workspace controls remaining visible. by @Yifffan\n- Streamline opening a session\'s working directory through a consistent Open in menu, with improved narrow-screen usability. by @Yifffan\n- Open file context menus faster; when application lookup is slow, offer a default-app action first. by @yudshj\n- Automatically load earlier messages when scrolling up through chat, prioritizing reading-position stability while retaining manual loading and retry controls. by @imccyu\n- Make chat activity easier to inspect by expanding workspace instructions, skill catalogs, and other context received by the model. by @turtle2099\n- Improve patch-edit receipts by listing affected files even when collapsed and allowing them to be opened after successful edits. by @sjw1231\n- Improve interaction animations on the session home screen. by @ZiyaZhang\n- Improve context reminders after session resume or compaction by clarifying how current runtime information replaces older information. by @kermanx\n- Improve reading code diffs in chat with added and removed row colors and per-file syntax highlighting. by @mektpoy\n- Improve image and file pasting without a focused composer, routing content to the most recently used available composer or the main conversation. by @std4453\n- Improve feedback when pausing or resuming scheduled tasks, keeping focus and appearance stable while preventing duplicate actions. by @turtle2099\n- Refine goal-bar action order and spacing to Edit, Clear, and Pause or Resume. by @turtle2099\n- Improve model-request retry settings with configurable retry conditions, counts, and wait times in model settings. by @turtle2099\n- Make recovery from transient request failures easier with Continue generating, without requiring another message. by @LegGasai\n- Improve API-key management with masked previews and full replacement or removal, without revealing the complete saved key. by @Magolor\n- Improve multi-question research with up to 10 queries and 10 sources per web-search call by default. by @turtle2099\n- Make Agent terminals visible in the sidebar and let users take over by typing; user-terminal content that agents are permitted to read enters model context and session records. by @LegGasai\n- Improve batch file, task, and resource queries by allowing more read-only tools to run concurrently while returning results in call order. by @turtle2099\n- Improve Desktop update progress displays, with status available from the download percentage or Check for updates. by @winewill\n\n### Bug Fixes\n\n- Fix PR updates causing displayed diffs to use mismatched commit line numbers, and improve counts for large numbers of review threads. by @LegGasai\n- Fix private Git plugin details failing to load for users with SSH-only credentials. by @turtle2099\n- Fix optional plugin failures preventing the entire Web app from starting; required-plugin failures remain visible errors. by @imccyu\n- Fix enabled but unloaded plugins appearing to run, clearly showing Not running and the reason. by @turtle1999\n- Fix repeated waits for subagent messages within PTC waking repeatedly for the same message. by @Dudu-0223\n- Fix file-tree crashes when browsing special filenames or extensions. by @LegGasai\n- Fix a nonfunctional New Session button appearing in the Ungrouped session header. by @turtle2099\n- Fix garbled formula copying in chat, copying formulas within a single Markdown document as TeX source. by @turtle2099\n- Fix Perl regular expressions incorrectly coloring subsequent code. by @turtle2099\n- Fix history loading and new-message displays remaining stuck after a chat-update error. by @Magolor\n- Improve title numbering when repeatedly branching a session, skipping used numbers to reduce duplicate names. by @turtle2099\n- Fix some errors during task cancellation or session shutdown leaving work running or releasing resources prematurely. by @liukx0205\n- Fix retried requests during message submission or attachment preparation submitting the same message more than once. by @liukx0205\n- Fix the Chinese goal bar confusing goals awaiting continuation with paused goals. by @imccyu\n- Fix accumulated authentication data preventing Desktop startup after repeated launches. by @turtle2099\n- Fix welcome-screen confirmation failing to save when the Windows CLI is launched through a short path. by @winewill\n- Fix macOS window dragging and paste shortcuts, and white flashes when starting Windows in dark mode. by @yxy72, @winewill, @turtle2099\n- Improve feedback during Windows update installation with an installation-status window, reducing unexplained waiting during restarts. by @winewill\n- Fix mobile Safari enlarging chat text beyond the configured font size when unfolding or changing the viewport, while preserving manual page zoom. by @Saafo\n- Fix long-running background processes slowing session loading and creation on Linux. by @turtle2099\n- Fix some models rejecting further requests after tools are removed or replaced in a session. by @Tuyixiang\n- For Anthropic Messages connections, omit invalid signed thinking after history-prefix changes to reduce persistent request failures after compaction. by @turtle2099\n- Fix some model-gateway failures being misreported as invalid API keys, allowing retries to follow the actual response status. by @LegGasai\n- Fix startup failure after configuring DeepSeek endpoints in the DSH user directory; project environment settings still cannot override these endpoints. by @LegGasai\n- Fix progressively slower loading and rapid-page-navigation stalls when browsing multi-page PDFs. by @turtle2099\n- Fix inspecting large Cordis trees potentially terminating the service when snapshots approach the size limit. by @turtle2099\n\n### Chores\n\n- Web search now defaults to DeepSeek Search API, with separate account or API-key billing choices for Search and Fetch; migrate older providers and custom settings using the upgrade guide. by @yudshj\n- Archiving sessions cleans up eligible Git worktrees by default while preserving branches and commits; disable cleanup to retain local directories, and migrate custom configuration and Forge plugins. by @LegGasai\n- AgentTeam uses unified named subagents, with the interrupt tool disabled by default; migrate custom plugins and SDK integrations and upgrade all processes sharing session storage together. by @Dudu-0223\n- SDK configuration can enable Team collaboration by default for new sessions while preserving the saved choice when resuming existing sessions. by @Dudu-0223\n- Plugins can dynamically register and remove MCP servers, query their status, restart them, and probe connections without requiring users to maintain each server configuration manually. by @LegGasai\n- Plugins can extend chat code-block rendering by language, falling back to ordinary code blocks when no renderer matches or rendering fails. by @imccyu\n- Plugin indexes can provide GitHub stars and weekly npm downloads while keeping the order supplied by the index as the default. by @turtle1999\n- Creator guidance consolidates into dsh-doc for customizing DSH and consulting current-version resources; extensions referencing old skill names or paths need migration. by @turtle1999\n- Custom model providers support the native Gemini API, including model discovery and reasoning-level settings. by @turtle2099\n- Model-request User-Agent headers include the active profile, helping servers distinguish Desktop, Web, CLI, and SDK requests. by @imccyu\n- Account notifications support announcements and refresh with the interface language; existing sign-ins are retained, while custom account plugins and configuration need migration. by @lsdsjy\n- PTC limits total tool calls according to its runtime budget; exceeding the limit terminates the code and clears retained state without undoing completed operations. by @kermanx\n- Session supports batched event appends without changing the log format; custom append wrappers need to support batch calls. by @liukx0205\n- Tool failures provide clearer error types and codes for diagnosis; plugins and SDK integrations relying on older classifications need updating. by @sjw1231\n- Adjust Computer Use window operations, keyboard control, and authorization, keeping the system pointer still by default; upgrade custom scripts and helpers together. by @CreatixChu, @Tuyixiang, @Dudu-0223\n- Office uses native tools, with skills available in Web and SDK sessions; migrate old packages and skills. Document parsing runs in the DSH host process outside the shell sandbox. by @yudshj\n- Windows extra-directory grants apply only to file tools, not terminal or PTC access; related sandbox extensions need migration. by @Tuyixiang\n- Adjust LiveShare multi-session sharing and plugin authorization; reconfigure old grants. PTC can access files outside the shared directory, so share only with trusted people. by @mektpoy\n- npm installations and Desktop include matching source code and documentation for reference and extension development; Python single-file runtimes exclude these resources. by @turtle1999\n- Upgrade Zod to 4.6.6 and Stagehand to 4.4.0; Stagehand automatically discovers extensions, and the old extensionId setting no longer takes effect. by @imccyu\n\nFull Changelog: https://github.com/deepseek-ai/deepseek-harness/compare/dsh-v0.2.2-rc.1...dsh-v0.2.2-rc.2'
+        },
         {
           'version': '0.2.2-rc.1',
           'title': 'v0.2.2-rc.1',
@@ -10392,8 +10422,7 @@ window.CHANGELOG = {
             'Improvements'
           ],
           'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-alpha.3',
-          'body': '新增功能\n\n- 支持统一右键与键盘菜单，覆盖会话、工作区和侧边栏，并支持开发者扩展 @std4453\n- 文件预览支持常驻目录树和文件定位功能。 @yudshj\n- 实验性「变更请求与工作树」统一代码审查与工作树入口，支持通过可搜索文件树和逐文件导航查看本地及 PR 差异，将选中代码和评论交给 Agent，并跟踪检查与评审状态。 @LegGasai\n\n### 体验优化\n\n- 改善手机端侧栏导航与窄屏布局，保持会话标题稳定，并让模型目录输入和插件发现页操作完整可见。 @Stevring @Saafo @EricMoin\n- 菜单和浮窗优先保持在可见区域内，跟随浏览器缩放、平移和软键盘变化。 @Stevring\n- Trajectory 支持独立折叠子调用，保留父调用和摘要；搜索或跨视图定位时可展开对应子调用。 @kermanx\n- 优化对话中思考内容的展示，摘要、展开正文和翻译不再显示模型输出开头的签名前缀。 @LegGasai\n- 减少会话状态更新时的重复发布和目录处理开销，并降低长回复流式组装的运行时成本。 @liukx0205 @imccyu\n- 改善底部输入框的布局稳定性，减少输入、菜单展开和统计更新时的跳动。 @imccyu\n\n### 问题修复\n\n- 通过 pi-ai 接入的模型在会话图片超过请求数量上限时，自动省略最早的图片并继续请求，避免持续失败。 @turtle2099\n- 修复 OpenCode 路由下自动审核在工具执行前失败的问题，审查请求携带对应会话的身份和用途。 @LegGasai\n- 修复 alpha.2 引入的空会话恢复后被当作「未命名」会话持续显示的问题，并恢复按最后提示时间排序。 @imccyu\n- 修复包含旧版子代理描述的历史会话无法打开，并导致会话搜索失败的问题。 @turtle2099\n- 修复加载更早的已压缩会话历史后，聊天记录停止加载和更新的问题。 @turtle2099\n- 聊天中的 Markdown 文件链接容忍无效行号，并支持行范围及行列后缀；无法定位时仍打开原文件，URL 保持为网页链接。 @kermanx\n- 文本和 Markdown 文件预览在刷新后保留阅读位置，文件暂时变短时也保留原位置，避免跳回第一页。 @yudshj\n- Trajectory 保留失败工具实际返回的文本，列表、详情和复制不再用合成错误信息替换它；原生工具和嵌套 PTC 调用使用相同规则。 @kermanx\n- 修复部分历史 `run_code` 记录的代码页缺少 TypeScript 或 Python 语法高亮的问题。 @kermanx\n\n### 其他变更\n\n- 同步 Cordis Core 至 4.0.0-rc.11、Loader 至 1.0.0-rc.8、Include 至 1.1.1，统一配置访问、条目变更和持久化行为。 @shigma @imccyu\n- pi-ai 支持插件按会话和请求用途提供动态请求头；无效请求头在请求发出前报错。 @LegGasai\n- 插件可为自己的设置页面提供导航图标，卸载后恢复默认图标。 @Magolor\n- 插件安装失败时显示完整诊断与 Host 日志入口，并区分安装失败和安装后启用失败。 @kermanx\n- 「Git 工作树」入口已合入「变更请求与工作树」，此前启用独立插件的用户需手动从 profile 的 dsh.profile.bundles 中移除 @deepseek-ai/dsh-experimental-tool-worktree\n- 「自动化任务」改为统一的宿主级管理，支持手动创建、直接编辑和通过预填提示在会话中创建，保留编辑草稿并支持冲突复核，可选择复用或新建会话执行任务。 @ZiyaZhang @Magolor\n- 新增默认关闭的 `apply_patch` 工具，一次完成多文件新增、编辑、删除和移动，并在 Review 中查看变更。 @sjw1231 @CreatixChu\n- TypeScript 与 Python SDK 补齐原生命令和插件管理能力，支持计划审阅、目标续跑与操作审批；插件变更重启后生效。 @LogosVeritas @koalazf99\n- macOS Computer Use 改用独立应用申请系统权限，打开对应系统设置并提供应用拖入引导，返回后刷新权限状态。 @CreatixChu\n- 文件修改的先读和外部修改防护默认关闭，沙箱限制和 Review 保持不变；需要原防护的 profile 可显式恢复观察策略。 @sjw1231\n- 回退 alpha.2 中引入的跨行 `$$` 数学块的不稳定兼容解析。 @yudshj\n\nNew Features\n\n- Unify mouse and keyboard context menus across Sessions, workspaces, and the sidebar, with support for developer extensions. by @std4453\n- Keep a directory tree in file previews and locate the current file. by @yudshj\n- Unify code review and worktree access in the experimental change-request and worktree feature. Browse local and PR diffs through a searchable file tree and per-file navigation, quote selected code and comments to the Agent, and track checks and reviews. by @LegGasai\n\n### Improvements\n\n- Improve mobile sidebar navigation and narrow-screen layouts, keeping Session titles stable and model-catalog inputs and plugin-discovery controls fully visible. by @Stevring, @Saafo, @EricMoin\n- Keep menus and floating panels within the visible viewport where possible, following browser zooming, panning, and on-screen keyboard changes. by @Stevring\n- Fold Trajectory subcalls independently while keeping their parent calls and summaries visible. Reveal matching subcalls through search or cross-view navigation. by @kermanx\n- Improve reasoning presentation in conversations by hiding leading signature metadata from summaries, expanded content, and translations. by @LegGasai\n- Reduce repeated publications and catalog processing during Session state updates, and lower runtime overhead when assembling streaming replies. by @liukx0205, @imccyu\n- Improve the layout stability of the docked composer, reducing movement during typing, menu expansion, and statistics updates. by @imccyu\n\n### Bug Fixes\n\n- Continue pi-ai conversations that exceed the request image-count limit by offloading the oldest images, preventing repeated failures. by @turtle2099\n- Fix Auto review failures before tool execution on OpenCode routes by supplying the reviewed Session identity and request purpose. by @LegGasai\n- Fix a regression introduced in alpha.2 that leaves resumed empty Sessions visible as untitled Sessions, and restore sorting by the last prompt time. by @imccyu\n- Restore opening historical Sessions with older subagent descriptors and fix the resulting Session search failures. by @turtle2099\n- Fix chat history loading and live updates getting stuck after loading earlier compacted history. by @turtle2099\n- Accept line ranges and line/column suffixes in Markdown file links, open the file when a location is invalid, and retain URLs as web links. by @kermanx\n- Retain reading position in text and Markdown previews across refreshes and temporary file shortening instead of jumping back to the first page. by @yudshj\n- Preserve the actual text returned by failed tools in Trajectory lists, details, and copied output, including native tools and nested PTC calls. by @kermanx\n- Restore TypeScript and Python syntax highlighting for affected historical `run_code` records. by @kermanx\n- Show the appropriate date, time, interval, and weekday controls when opening existing scheduled tasks, with field-specific correction guidance. Preserve timing rules when only the name or instruction changes, and retain original text for complex rules or values beyond control precision. by @Magolor\n\n### Chores\n\n- Update Cordis Core to 4.0.0-rc.11, Loader to 1.0.0-rc.8, and Include to 1.1.1, unifying configuration access, entry changes, and persistence behavior. by @shigma, @imccyu\n- Allow plugins to supply dynamic pi-ai headers using Session identity and request purpose, rejecting invalid headers before dispatch. by @LegGasai\n- Allow plugins to supply navigation icons for their settings pages, restoring the default icon when unloaded. by @Magolor\n- Show complete diagnostics and the Host log location for plugin failures, distinguishing installation failures from subsequent activation failures. by @kermanx\n- The Git worktree entry is now included in change requests and worktrees. Users who enabled the standalone plugin must manually remove @deepseek-ai/dsh-experimental-tool-worktree from dsh.profile.bundles in their profile.\n- Unify scheduled-task management across the Host with manual creation, direct editing, and prefilled prompts for creation in a Session. Retain drafts, support conflict review, and run tasks in reusable or new Sessions. by @ZiyaZhang, @Magolor\n- Add `apply_patch`, disabled by default, to create, edit, delete, and move multiple files in one call, with changes available in Review. by @sjw1231, @CreatixChu\n- Extend the TypeScript and Python SDKs with native commands and plugin management, supporting plan review, goal continuation, and operation approvals. Restart the SDK to apply plugin changes. by @LogosVeritas, @koalazf99\n- Request macOS Computer Use permissions through a standalone app, opening the relevant system settings with drag-in guidance and refreshing permission status upon return. by @CreatixChu\n- Disable read-before-write and external-change checks by default while retaining sandbox limits and Review. Profiles requiring the previous checks can explicitly restore the observation policy. by @sjw1231\n- Revert the unstable compatibility parsing for multiline `$$` display math introduced in alpha.2. by @yudshj\n\nFull Changelog: https://github.com/deepseek-ai/deepseek-harness/compare/dsh-v0.2.2-alpha.2...dsh-v0.2.2-alpha.3',
-          'h': '8398c4c8'
+          'body': '新增功能\n\n- 支持统一右键与键盘菜单，覆盖会话、工作区和侧边栏，并支持开发者扩展 @std4453\n- 文件预览支持常驻目录树和文件定位功能。 @yudshj\n- 实验性「变更请求与工作树」统一代码审查与工作树入口，支持通过可搜索文件树和逐文件导航查看本地及 PR 差异，将选中代码和评论交给 Agent，并跟踪检查与评审状态。 @LegGasai\n\n### 体验优化\n\n- 改善手机端侧栏导航与窄屏布局，保持会话标题稳定，并让模型目录输入和插件发现页操作完整可见。 @Stevring @Saafo @EricMoin\n- 菜单和浮窗优先保持在可见区域内，跟随浏览器缩放、平移和软键盘变化。 @Stevring\n- Trajectory 支持独立折叠子调用，保留父调用和摘要；搜索或跨视图定位时可展开对应子调用。 @kermanx\n- 优化对话中思考内容的展示，摘要、展开正文和翻译不再显示模型输出开头的签名前缀。 @LegGasai\n- 减少会话状态更新时的重复发布和目录处理开销，并降低长回复流式组装的运行时成本。 @liukx0205 @imccyu\n- 改善底部输入框的布局稳定性，减少输入、菜单展开和统计更新时的跳动。 @imccyu\n\n### 问题修复\n\n- 通过 pi-ai 接入的模型在会话图片超过请求数量上限时，自动省略最早的图片并继续请求，避免持续失败。 @turtle2099\n- 修复 OpenCode 路由下自动审核在工具执行前失败的问题，审查请求携带对应会话的身份和用途。 @LegGasai\n- 修复 alpha.2 引入的空会话恢复后被当作「未命名」会话持续显示的问题，并恢复按最后提示时间排序。 @imccyu\n- 修复包含旧版子代理描述的历史会话无法打开，并导致会话搜索失败的问题。 @turtle2099\n- 修复加载更早的已压缩会话历史后，聊天记录停止加载和更新的问题。 @turtle2099\n- 聊天中的 Markdown 文件链接容忍无效行号，并支持行范围及行列后缀；无法定位时仍打开原文件，URL 保持为网页链接。 @kermanx\n- 文本和 Markdown 文件预览在刷新后保留阅读位置，文件暂时变短时也保留原位置，避免跳回第一页。 @yudshj\n- Trajectory 保留失败工具实际返回的文本，列表、详情和复制不再用合成错误信息替换它；原生工具和嵌套 PTC 调用使用相同规则。 @kermanx\n- 修复部分历史 `run_code` 记录的代码页缺少 TypeScript 或 Python 语法高亮的问题。 @kermanx\n\n### 其他变更\n\n- 同步 Cordis Core 至 4.0.0-rc.11、Loader 至 1.0.0-rc.8、Include 至 1.1.1，统一配置访问、条目变更和持久化行为。 @shigma @imccyu\n- pi-ai 支持插件按会话和请求用途提供动态请求头；无效请求头在请求发出前报错。 @LegGasai\n- 插件可为自己的设置页面提供导航图标，卸载后恢复默认图标。 @Magolor\n- 插件安装失败时显示完整诊断与 Host 日志入口，并区分安装失败和安装后启用失败。 @kermanx\n- 「Git 工作树」入口已合入「变更请求与工作树」，此前启用独立插件的用户需手动从 profile 的 dsh.profile.bundles 中移除 @deepseek-ai/dsh-experimental-tool-worktree\n- 「自动化任务」改为统一的宿主级管理，支持手动创建、直接编辑和通过预填提示在会话中创建，保留编辑草稿并支持冲突复核，可选择复用或新建会话执行任务。 @ZiyaZhang @Magolor\n- 新增默认关闭的 `apply_patch` 工具，一次完成多文件新增、编辑、删除和移动，并在 Review 中查看变更。 @sjw1231 @CreatixChu\n- TypeScript 与 Python SDK 补齐原生命令和插件管理能力，支持计划审阅、目标续跑与操作审批；插件变更重启后生效。 @LogosVeritas @koalazf99\n- macOS Computer Use 改用独立应用申请系统权限，打开对应系统设置并提供应用拖入引导，返回后刷新权限状态。 @CreatixChu\n- 文件修改的先读和外部修改防护默认关闭，沙箱限制和 Review 保持不变；需要原防护的 profile 可显式恢复观察策略。 @sjw1231\n- 回退 alpha.2 中引入的跨行 `$$` 数学块的不稳定兼容解析。 @yudshj\n\nNew Features\n\n- Unify mouse and keyboard context menus across Sessions, workspaces, and the sidebar, with support for developer extensions. by @std4453\n- Keep a directory tree in file previews and locate the current file. by @yudshj\n- Unify code review and worktree access in the experimental change-request and worktree feature. Browse local and PR diffs through a searchable file tree and per-file navigation, quote selected code and comments to the Agent, and track checks and reviews. by @LegGasai\n\n### Improvements\n\n- Improve mobile sidebar navigation and narrow-screen layouts, keeping Session titles stable and model-catalog inputs and plugin-discovery controls fully visible. by @Stevring, @Saafo, @EricMoin\n- Keep menus and floating panels within the visible viewport where possible, following browser zooming, panning, and on-screen keyboard changes. by @Stevring\n- Fold Trajectory subcalls independently while keeping their parent calls and summaries visible. Reveal matching subcalls through search or cross-view navigation. by @kermanx\n- Improve reasoning presentation in conversations by hiding leading signature metadata from summaries, expanded content, and translations. by @LegGasai\n- Reduce repeated publications and catalog processing during Session state updates, and lower runtime overhead when assembling streaming replies. by @liukx0205, @imccyu\n- Improve the layout stability of the docked composer, reducing movement during typing, menu expansion, and statistics updates. by @imccyu\n\n### Bug Fixes\n\n- Continue pi-ai conversations that exceed the request image-count limit by offloading the oldest images, preventing repeated failures. by @turtle2099\n- Fix Auto review failures before tool execution on OpenCode routes by supplying the reviewed Session identity and request purpose. by @LegGasai\n- Fix a regression introduced in alpha.2 that leaves resumed empty Sessions visible as untitled Sessions, and restore sorting by the last prompt time. by @imccyu\n- Restore opening historical Sessions with older subagent descriptors and fix the resulting Session search failures. by @turtle2099\n- Fix chat history loading and live updates getting stuck after loading earlier compacted history. by @turtle2099\n- Accept line ranges and line/column suffixes in Markdown file links, open the file when a location is invalid, and retain URLs as web links. by @kermanx\n- Retain reading position in text and Markdown previews across refreshes and temporary file shortening instead of jumping back to the first page. by @yudshj\n- Preserve the actual text returned by failed tools in Trajectory lists, details, and copied output, including native tools and nested PTC calls. by @kermanx\n- Restore TypeScript and Python syntax highlighting for affected historical `run_code` records. by @kermanx\n- Show the appropriate date, time, interval, and weekday controls when opening existing scheduled tasks, with field-specific correction guidance. Preserve timing rules when only the name or instruction changes, and retain original text for complex rules or values beyond control precision. by @Magolor\n\n### Chores\n\n- Update Cordis Core to 4.0.0-rc.11, Loader to 1.0.0-rc.8, and Include to 1.1.1, unifying configuration access, entry changes, and persistence behavior. by @shigma, @imccyu\n- Allow plugins to supply dynamic pi-ai headers using Session identity and request purpose, rejecting invalid headers before dispatch. by @LegGasai\n- Allow plugins to supply navigation icons for their settings pages, restoring the default icon when unloaded. by @Magolor\n- Show complete diagnostics and the Host log location for plugin failures, distinguishing installation failures from subsequent activation failures. by @kermanx\n- The Git worktree entry is now included in change requests and worktrees. Users who enabled the standalone plugin must manually remove @deepseek-ai/dsh-experimental-tool-worktree from dsh.profile.bundles in their profile.\n- Unify scheduled-task management across the Host with manual creation, direct editing, and prefilled prompts for creation in a Session. Retain drafts, support conflict review, and run tasks in reusable or new Sessions. by @ZiyaZhang, @Magolor\n- Add `apply_patch`, disabled by default, to create, edit, delete, and move multiple files in one call, with changes available in Review. by @sjw1231, @CreatixChu\n- Extend the TypeScript and Python SDKs with native commands and plugin management, supporting plan review, goal continuation, and operation approvals. Restart the SDK to apply plugin changes. by @LogosVeritas, @koalazf99\n- Request macOS Computer Use permissions through a standalone app, opening the relevant system settings with drag-in guidance and refreshing permission status upon return. by @CreatixChu\n- Disable read-before-write and external-change checks by default while retaining sandbox limits and Review. Profiles requiring the previous checks can explicitly restore the observation policy. by @sjw1231\n- Revert the unstable compatibility parsing for multiline `$$` display math introduced in alpha.2. by @yudshj\n\nFull Changelog: https://github.com/deepseek-ai/deepseek-harness/compare/dsh-v0.2.2-alpha.2...dsh-v0.2.2-alpha.3'
         },
         {
           'version': '0.2.1-rc.5',
@@ -10945,7 +10974,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '0.5.7',
@@ -11342,7 +11371,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '1.39.2',
@@ -12011,7 +12040,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '3.4.17',
@@ -14123,7 +14152,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14310,7 +14339,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '3.17.2',
@@ -14489,7 +14518,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '4.12.4',
@@ -15384,7 +15413,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 14:52',
+      'lastOkAt': '2026-11-12 03:46',
       'entries': [
         {
           'version': '5.11.0',

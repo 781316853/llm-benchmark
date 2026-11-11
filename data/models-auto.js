@@ -4,10 +4,10 @@
 window.MODEL_MAP_AUTO = {
   'updated': '2026-11-11',
   'stats': {
-    'total': 159,
-    'knownVendor': 159,
+    'total': 164,
+    'knownVendor': 164,
     'otherVendor': 0,
-    'skippedManual': 1341,
+    'skippedManual': 1343,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -219,6 +219,16 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'ERNIE 5.5 Flash Preview',
+      'vendor': 'Baidu',
+      'color': '#9298A1',
+      'aliases': [
+        'ERNIE 5.5 Flash Preview',
+        'ERNIE-5.5-Flash-Preview (high)'
+      ],
+      'auto': true
+    },
+    {
       'id': 'EXAONE 4.0 1.2B',
       'vendor': 'LG AI Research',
       'color': '#E67070',
@@ -235,6 +245,16 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'EXAONE 4.0 32B',
         'Exaone 4.0 32B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Fable（灰度）',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Fable（灰度）',
+        'claude-fable-gray'
       ],
       'auto': true
     },
@@ -360,6 +380,16 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'GPT-5.1-Codex-Mini',
         'gpt-5.1-codex-mini'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'GPT-6.2-Astra',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-6.2-Astra',
+        'gpt-6.2-astra'
       ],
       'auto': true
     },
@@ -972,7 +1002,17 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Muse Ember',
         'Muse Ember (Max)',
-        'Muse Ember (Xhigh)'
+        'Muse Ember (Xhigh)',
+        'muse ember (max)'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Muse Ember 1.0',
+      'vendor': 'Meta',
+      'color': '#6791F2',
+      'aliases': [
+        'Muse Ember 1.0'
       ],
       'auto': true
     },
@@ -1448,6 +1488,16 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Trinity-Large-Thinking',
         'trinity large thinking'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'U2 Flash',
+      'vendor': 'Unisound',
+      'color': '#9298A1',
+      'aliases': [
+        'U2 Flash',
+        'u2 flash'
       ],
       'auto': true
     },
