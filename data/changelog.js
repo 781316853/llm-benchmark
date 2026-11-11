@@ -6,8 +6,8 @@
 //   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
-  'updated': '2026-11-10',
-  'refreshedAt': '2026-11-11 03:54',
+  'updated': '2026-11-11',
+  'refreshedAt': '2026-11-11 14:52',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,17 +19,27 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
+          'version': '0.167.0-alpha.4.2',
+          'title': '0.167.0-alpha.4.2',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T01:34:42Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2',
+          'body': '版本0.167.0-alpha.4.2',
+          'h': 'f09ffdfc'
+        },
+        {
           'version': '0.167.1',
-          'title': 'rust-v0.167.1',
+          'title': '0.167.1',
           'date': '2026-11-10',
-          'dateRaw': '2026-11-10T18:02:26Z',
+          'dateRaw': '2026-11-10T21:33:57Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.1',
-          'body': '版本0.167.1',
-          'h': '702034c0'
+          'body': '更新日志\n完整更新日志： rust-v0.167.0... rust-v0.167.1',
+          'h': 'a60446d5'
         },
         {
           'version': '0.167.0-alpha.4.2',
@@ -1321,7 +1331,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '2.1.322',
@@ -3693,7 +3703,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '2.2.7',
@@ -9221,8 +9231,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
+        {
+          'version': '2.6.0-canary.20261111052659-f26481d',
+          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.20261111052659-f26481d',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T05:38:42Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d',
+          'body': '更改内容\n- 重构（ kap-server ） ：在# 4738中通过@ wbxl2000丢弃WebSocket握手和确认\n- fix: # 4713中@ RealKai42通过Skill工具直接调用技能\n- 修复：稳定# 4689中@ liruifengv的工作区主要变化\n- feat: # 4690中@ liruifengv支持跨工作区目录的同名技能\n- feat (tower): import artifact woker by @ tpoisonooo in # 4427\n- fix (agent-core-v2):在# 4747中将工作区注册表读取放大减少@ hunshcn\n- feat (tui):保持全屏成绩单组稳定，并在# 4751中显示@ Grapedge的实时进度\n- 修复： # 4764中@ 7Sageer在链接模式下请求网页搜索\n- 修复：当代理在# 4757中由@ 7Sageer启动时，应用配置的权限规则\n- fix (kimi-code):让全屏副本在tmux和Linux上通过@ Grapedge在# 4755中到达剪贴板\n- 家务：在# 4765中由@ kimi-agent-bot将web dist与code-app同步\n- chore （ release ） ： # 4768中@ sailist使用补丁凸起进行塔架更改\n- fix (agent-core-v2):观看# 4766中@ pvzheroes125的显式技能目录\n- fix (agent-core-v2):在# 4767中重用@ pvzheroes125上传的MCP工具图像\n- fix (agent-core-v2):观看# 4770中@ pvzheroes125的额外技能目录\n- 家务：在# 4783中由@ kimi-agent-bot将web dist与code-app同步\n- feat (agent-core-v2):持久化# 4550中@ sailist的用户和项目权限规则\n- feat:在# 4756中添加@ liruifengv的最低版本升级提示\n- feat (tui): # 4771中@ Grapedge设置实验标志时，默认为全屏模式\n- build (nix): # 4748中@ sailist将pnpm dependency fetcher升级到v5\n- fix (server):支持# 4563中@ kimi-agent-bot的Unicode下载文件名\n- test (tui): # 4793中由@ kimi-agent-bot抽取的绑定队列消息定时器\n- test (server): cover download filename edge cases by @ kimi-agent-bot in # 4790\n- feat:在# 4752中@ sailist的文件建议中包含gitignored文件\n- 修复：在# 4799中@ liruifengv禁用技能工具时，保持技能目录可见\n- fix (server):更正# 4800中@ kimi-agent-bot的原始文件下载响应\n- fix (kap-server):结束工具调用被# 4772中的@ wbxl2000中断时短短切断\n- fix (kap-server) ：当另一个手动压缩由# 4773中的@ wbxl2000运行时，拒绝手动压缩\n- fix (kap-server) ：在# 4774中的@ wbxl2000分页会话列表之前应用忙碌过滤器\n- fix (kap-server): # 4775中@ wbxl2000还原存档会话时广播event.session.restored\n- fix (kap-server) ：将auth和Tower错误映射到它们的代码，并由# 4777中的@ wbxl2000停止发送堆栈跟踪\n- feat (kap-server):在# 4788的@ wbxl2000的文件历史查询中取TURN_NUMBER\n- fix (agent-core-v2):结束由# 4779中的@ wbxl2000取消的由停止短切的问题\n- fix (kap-server):在# 4776中@ wbxl2000将工具结果注释保存在tool_call项上\n- feat (kap-server):将tool_call项目链接到# 4789中@ wbxl2000运行的任务\n- fix (agent-core-v2): # 4791中@ liruifengv通过cmd.exe生成Windows批处理脚本命令\n- fix (kap-server) ：在# 4778中由@ wbxl2000创建会话时应用agent_config和自定义元数据\n- fix (kap-server): # 4780中@ wbxl2000仅在cron触发的用户消息中显示计划的提示\n- docs （更新日志） ：在# 4810中由@ kimi-agent-bot从apps/kimi-code/CHANGELOG.md同步2.5.3\n- docs (server-api):删除已删除的端点，并记录# 4809中@ wbxl2000遗漏的端点\n- 家务：同步释放/2026-11-10通过# 4811中的@ kimi-agent-bot返回主目录\n- refactor (agent-core-v2): # 4630中@ sailist的端口代理循环运行时核心\n- feat (tui): # 4814中@ Grapedge在全屏模式下对NotifyUser更新使用主项目符号\n- 家务：在# 4816中由@ kimi-agent-bot将web dist与code-app同步\n- 家务：删除# 4817中@ sailist的循环运行时工作笔记\n- test ：在# 4746中通过@ kimi-agent-bot删除冗余和低值测试用例\n新贡献者\n- @ hunshcn在# 4747中做出了他们的第一个贡献\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261109040420-9c1a9c3... @ moonshot-ai/kimi-code @ 2.6.0-canary.20261111052659-f26481d',
+          'h': '40251300'
+        },
         {
           'version': '2.5.3',
           'title': '@moonshot-ai/kimi-code@2.5.3',
@@ -9234,22 +9254,12 @@ window.CHANGELOG = {
         },
         {
           'version': '2.5.3',
-          'title': '@ moonshot-ai/kimi-code @ 2.5.3',
+          'title': '@moonshot-ai/kimi-code@2.5.3',
           'date': '2026-11-10',
           'dateRaw': '2026-11-10T13:21:38Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.3',
-          'body': '修补程序更改\n# 4762 e1912c8谢谢@ sailist ！ -使转向中断激活模型请求并继续在同一转弯，并添加POST/api/v1/sessions/{session_id}/steer用于单请求消息转向。\n# 4808 e3c3a12谢谢@ liruifengv ！ -网页：改善互动并修复已知错误。\n# 4804 c50a55b谢谢@ liruifengv ！ -修复使用脚本命令（如npx ）配置的stdio MCP服务器无法在Windows上启动的问题。',
-          'h': 'aa040af8'
-        },
-        {
-          'version': '3.0.0-canary.20261109125038-713a200',
-          'title': '@moonshot-ai/kimi-code@3.0.0-canary.20261109125038-713a200',
-          'date': '2026-11-09',
-          'dateRaw': '2026-11-09T12:45:40Z',
-          'tags': [],
-          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%403.0.0-canary.20261109125038-713a200',
-          'body': 'chore: sync web dist from code-app ( #4765 )'
+          'body': 'Patch Changes\n#4762 e1912c8 Thanks @sailist ! - Make steering interrupt active model requests and continue in the same turn, and add POST /api/v1/sessions/{session_id}/steer for one-request message steering.\n#4808 e3c3a12 Thanks @liruifengv ! - web: Improved interactions and fixed known bugs.\n#4804 c50a55b Thanks @liruifengv ! - Fix stdio MCP servers configured with script commands such as npx failing to start on Windows.'
         },
         {
           'version': '2.6.0-canary.20261109040420-9c1a9c3',
@@ -9259,6 +9269,15 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261109040420-9c1a9c3',
           'body': 'What\'s Changed\n- chore: sync web dist from code-app by @kimi-agent-bot in #4750\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261106122412-eb2035f...@moonshot-ai/kimi-code@2.6.0-canary.20261109040420-9c1a9c3'
+        },
+        {
+          'version': '3.0.0-canary.20261109125038-713a200',
+          'title': '@moonshot-ai/kimi-code@3.0.0-canary.20261109125038-713a200',
+          'date': '2026-11-09',
+          'dateRaw': '2026-11-09T12:45:40Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%403.0.0-canary.20261109125038-713a200',
+          'body': 'chore: sync web dist from code-app ( #4765 )'
         },
         {
           'version': '2.5.2',
@@ -10341,7 +10360,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10926,7 +10945,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '0.5.7',
@@ -11323,7 +11342,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '1.39.2',
@@ -11992,7 +12011,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '3.4.17',
@@ -14104,7 +14123,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14291,7 +14310,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '3.17.2',
@@ -14470,7 +14489,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '4.12.4',
@@ -15365,7 +15384,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-11 03:54',
+      'lastOkAt': '2026-11-11 14:52',
       'entries': [
         {
           'version': '5.11.0',
