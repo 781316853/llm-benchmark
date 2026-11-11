@@ -28,7 +28,7 @@ function hostOf(url) {
   try { return new URL(url).host; } catch (e) { return url; }
 }
 // 对同一 host 串行化"排队等待 + 占位下次时刻",避免同 host 多请求并发计算错乱
-function acquireHost(host) {
+function acquireHost(host, intervalMs) {
   // 确保 host 有自己的 Promise 链尾
   if (!hostLocks[host]) hostLocks[host] = Promise.resolve();
   const tail = hostLocks[host];
@@ -40,7 +40,7 @@ function acquireHost(host) {
     const wait = Math.max(0, readyAt - now);
     return (wait > 0 ? sleep(wait) : Promise.resolve()).then(function () {
       // 占位:下次允许时刻 = 当前 + 间隔
-      hostNextReady[host] = Date.now() + CONFIG.transport.rateLimitMs;
+      hostNextReady[host] = Date.now() + (intervalMs != null ? intervalMs : CONFIG.transport.rateLimitMs);
       return function done() { release(); };
     });
   });
@@ -53,8 +53,10 @@ function fetchOnce(url, opts) {
   opts = opts || {};
   const timeoutMs = opts.timeoutMs || CONFIG.transport.timeoutMs;
   const client = url.startsWith("https") ? https : http;
+  const method = String(opts.method || "GET").toUpperCase();
   return new Promise(function (resolve, reject) {
-    const req = client.get(url, {
+    const req = client.request(url, {
+      method: method,
       headers: Object.assign({
         "User-Agent": CONFIG.transport.userAgent,
         "Accept": "*/*"
@@ -65,7 +67,11 @@ function fetchOnce(url, opts) {
         res.resume();
         const loc = res.headers.location;
         const next = loc.startsWith("http") ? loc : new URL(loc, url).href;
-        return resolve(fetchOnce(next, opts));
+        // 301/302/303 按 HTTP 语义降级为 GET 并丢弃请求体;307/308 保留方法与体
+        const nextOpts = (res.statusCode === 307 || res.statusCode === 308)
+          ? opts
+          : Object.assign({}, opts, { method: "GET", body: null });
+        return resolve(fetchOnce(next, nextOpts));
       }
       if (res.statusCode !== 200) {
         res.resume();
@@ -94,6 +100,8 @@ function fetchOnce(url, opts) {
       req.destroy();
       reject(new Error("timeout " + url));
     });
+    if (opts.body != null) req.write(opts.body);
+    req.end();
   });
 }
 
@@ -103,6 +111,7 @@ function fetchOnce(url, opts) {
 //   timeoutMs      单次超时
 //   rateLimitMs    覆盖同 host 最小间隔(可选)
 //   headers        覆盖默认请求头(可选;如 GitHub API 的 Authorization)
+//   method/body    HTTP 方法与请求体(默认 GET;Next.js Server Action 等需 POST)
 //   binary         true 时 resolve 原始 Buffer(默认 utf8 字符串)
 //   onFailedAttempt p-retry 钩子,用于日志
 //   shouldRetry    自定义重试条件函数(err) => bool(可选,默认 4xx 不重试)
@@ -120,7 +129,7 @@ function fetchWithRetry(url, opts) {
   return globalLimit(function () {
     return pRetry(function () {
       const host = hostOf(url);
-      return acquireHost(host).then(function (release) {
+      return acquireHost(host, opts.rateLimitMs).then(function (release) {
         return fetchOnce(url, opts).then(
           function (ok) { release(); return ok; },
           function (err) {

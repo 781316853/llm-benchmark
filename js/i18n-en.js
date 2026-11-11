@@ -175,6 +175,7 @@
     ["^共 ([\\d,]+) 条$", "$1 entries"],
     ["^([\\d,]+) 条$", "$1 entries"],
     ["^([\\d,]+) 节$", "$1 sections"],
+    ["^([\\d,]+) 节 · (\\d+) 组$", "$1 sections · $2 groups"],
     ["^共 ([\\d,]+) 条 config\\(模型 × 推理强度(?:;不含 Bot)?\\)$", "$1 configs (model × effort; excludes bots)"],
     ["^共 ([\\d,]+) 条实测配置\\(模型 × 推理档位 × harness\\)$", "$1 tested configs (model × effort × harness)"],
 
@@ -220,7 +221,7 @@
       }],
     ["^来源:(https?://\\S+?)\\(官方:(https?://\\S+?)\\) · 版本 ([\\d.]+) · 更新 ([\\d\\-]+) · (\\d+) 个来自真实科研流程的任务\\(每任务 (\\d+) 次独立试验\\),解决率越高越好。.*本榜仅展示,不计入综合分。$",
       function (m, url, official, ver, upd, tasks, trials) {
-        return "Source: " + url + " (official: " + official + ") · version " + ver + " · updated " + upd + " · " + tasks + " tasks drawn from real research workflows (" + trials + " independent trials each); higher solve rate is better. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores (the primary source explainx is a T3 mirror; vendor self-reported T2 scores only fill models the mirror lacks). Shown for reference only, not counted in the composite.";
+        return "Source: " + url + " (official: " + official + ") · version " + ver + " · updated " + upd + " · " + tasks + " tasks drawn from real research workflows (" + trials + " independent trials each); higher solve rate is better. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores (primary source: the Harbor Hub official board, T1; the explainx blog mirror is a T3 fallback; vendor self-reported T2 scores and the AI Release Tracker T3 aggregation only fill models missing from the official board). Shown for reference only, not counted in the composite.";
       }],
     ["^主渠道:datalearner\\(厂商官方发布 partial 口径\\)· 补充:(https?://\\S+?)\\(官方:(https?://\\S+?),系统级条目仅追加\\) · 更新 ([\\d\\-]+) · (\\d+) 个长时程桌面工作流\\(人类中位耗时约 ([\\d.]+) 小时\\),部分得分\\(检查点达成比例\\)越高越好;二进制完成率极低,故按部分得分排序。.*本榜仅展示,不计入综合分。$",
       function (m, url, official, upd, flows, hours) {
@@ -285,6 +286,7 @@
       "Source: transcript of Kimi's self-reported results from its official release blog (T2) · reasoning effort=max, temperature=1.0 / top-p=0.95, Terminal-Bench 4.0 uses the Claude Code scaffold; not guaranteed comparable with the official measured board; fills missing models only, for reference"],
 
     // ===== llm2014 全历史难度校正 =====
+    ["^(\\d+) 项$", "$1 items"],
     ["^(.+?) · 全历史 (\\d{4}-\\d{2}) ~ (\\d{4}-\\d{2})$", "$1 · all history $2 – $3"],
     ["^全历史难度校正第 (\\d+) / (\\d+) 名$", "Cross-month adjusted rank $1 of $2"],
     ["^有效样本不足\\(计分项 (\\d+) < 3\\),不参与排名$", "Insufficient sample ($1 scored items < 3); not ranked"],
@@ -736,6 +738,20 @@
       "17 大权威基准": "17 reference benchmarks",
       "权威基准大纲预览": "Reference benchmark outline",
       "大纲预览": "Outline",
+      "软件工程与编码 Agent": "Software engineering & coding agents",
+      "终端与计算机操作": "Terminal & computer use",
+      "工作流与专业产出": "Workflows & professional deliverables",
+      "推理与知识": "Reasoning & knowledge",
+      "其他基准": "Other benchmarks",
+      "真实 issue→PR、仓库生成、程序重建、跨语言迁移与超长周期软件工程,以及以 Agent 端到端产出、可合并性与综合指数为单位的编码评测。":
+        "Real issue→PR fixes, repo generation, program reconstruction, cross-language migration and ultra-long-horizon software engineering, plus coding evaluations measured by agents' end-to-end output, mergeability and composite index.",
+      "终端命令行、科研终端工作流与桌面 GUI 长时程操作。":
+        "Terminal command-line tasks, research terminal workflows and long-horizon desktop GUI operation.",
+      "真实职业任务、跨应用业务流程、专业交付与参数化 CAD 生成。":
+        "Real professional tasks, cross-app business workflows, professional deliverables and parametric CAD generation.",
+      "交互式智能体推理与闭卷前沿知识。":
+        "Interactive agent reasoning and closed-book frontier knowledge.",
+      "尚未归类的榜单。": "Benchmarks not yet categorized.",
       "订阅套餐 · 额度/价格快速对比": "Coding plans · quota and price comparison",
 
       // ===== 意见反馈 =====
@@ -797,6 +813,8 @@
       "样本数": "Samples",
       "厂商": "Vendor",
       "头名": "Leader",
+      "解决率": "Solve rate",
+      "Tokens": "Tokens",
       "更新": "Updated",
       "版本": "Version",
       "档位": "Configs",

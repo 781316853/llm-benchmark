@@ -1348,6 +1348,81 @@
   var authPendingDeadline = 0;
   var authSpyRaf = 0;
 
+  // 权威基准分组:按任务领域归类,正文与左侧大纲共用同一顺序。
+  // match 按 data-outline 前缀匹配;新基准未登记时落「其他基准」,不会被静默塞进现有组。
+  var AUTH_GROUPS = [
+    { key: "swe", title: "软件工程与编码 Agent",
+      desc: "真实 issue→PR、仓库生成、程序重建、跨语言迁移与超长周期软件工程,以及以 Agent 端到端产出、可合并性与综合指数为单位的编码评测。",
+      match: ["DeepSWE", "NL2Repo-Bench", "ProgramBench", "Code Migration", "FrontierSWE",
+        "CursorBench", "FrontierCode", "AA Coding Agent Index"] },
+    { key: "terminal", title: "终端与计算机操作", desc: "终端命令行、科研终端工作流与桌面 GUI 长时程操作。",
+      match: ["Terminal-Bench", "OSWorld 2.0"] },
+    { key: "workflow", title: "工作流与专业产出", desc: "真实职业任务、跨应用业务流程、专业交付与参数化 CAD 生成。",
+      match: ["Agents' Last Exam", "AutomationBench", "APEX-1", "BenchCAD"] },
+    { key: "reasoning", title: "推理与知识", desc: "交互式智能体推理与闭卷前沿知识。",
+      match: ["ARC-AGI-3", "Humanity's Last Exam"] },
+    { key: "other", title: "其他基准", desc: "尚未归类的榜单。", match: [] }
+  ];
+
+  function authGroupOf(name) {
+    var s = String(name || "");
+    for (var i = 0; i < AUTH_GROUPS.length; i++) {
+      var g = AUTH_GROUPS[i];
+      for (var j = 0; j < g.match.length; j++) {
+        if (s.indexOf(g.match[j]) === 0) return g;
+      }
+    }
+    return null;
+  }
+  function authGroupOrder(g, name) {
+    var s = String(name || "");
+    for (var i = 0; i < g.match.length; i++) if (s.indexOf(g.match[i]) === 0) return i;
+    return g.match.length;
+  }
+  function authGroupHead(g, n) {
+    var d = document.createElement("div");
+    d.className = "auth-group-head";
+    d.setAttribute("data-group", g.key);
+    d.setAttribute("data-group-title", g.title);
+    d.innerHTML = '<h3 class="auth-group-title">' + esc(g.title) +
+      '<span class="auth-group-count">' + n + " 项</span></h3>" +
+      '<p class="auth-group-desc">' + esc(g.desc) + "</p>";
+    return d;
+  }
+  // 把已渲染的 .auth-block 按组重排,并在每组前插入组标题;返回实际分组数
+  function groupAuthSections(wrap) {
+    var secs = Array.prototype.slice.call(wrap.querySelectorAll(".auth-block"));
+    var buckets = {}, other = [];
+    secs.forEach(function (sec) {
+      var name = sec.getAttribute("data-outline") || "";
+      var g = authGroupOf(name);
+      if (!g) { other.push(sec); return; }
+      (buckets[g.key] = buckets[g.key] || []).push(sec);
+    });
+    var frag = document.createDocumentFragment();
+    var groups = 0;
+    AUTH_GROUPS.forEach(function (g) {
+      if (!g.match.length) return;
+      var list = buckets[g.key];
+      if (!list || !list.length) return;
+      list.sort(function (a, b) {
+        return authGroupOrder(g, a.getAttribute("data-outline") || "") -
+          authGroupOrder(g, b.getAttribute("data-outline") || "");
+      });
+      frag.appendChild(authGroupHead(g, list.length));
+      list.forEach(function (sec) { frag.appendChild(sec); });
+      groups += 1;
+    });
+    if (other.length) {
+      var rest = AUTH_GROUPS[AUTH_GROUPS.length - 1];
+      frag.appendChild(authGroupHead(rest, other.length));
+      other.forEach(function (sec) { frag.appendChild(sec); });
+      groups += 1;
+    }
+    wrap.appendChild(frag);
+    return groups;
+  }
+
   function authSectionHtml(head, tag, url, tableHtml, noteHtml) {
     authSecSeq += 1;
     return '<section class="auth-block" id="authSec' + authSecSeq + '" data-outline="' + esc(head) + '">' +
@@ -1408,15 +1483,30 @@
     setAuthNavActive(id); // 立即高亮,避免平滑滚动期间高亮滞后
     window.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
   }
-  // 由已渲染的 .auth-block 生成大纲项(标题取 data-outline,副标题取 tag 首段)
-  function renderAuthOutline() {
+  // 由已渲染的 .auth-block 生成大纲项(标题取 data-outline,副标题取 tag 首段);
+  // 组标题(.auth-group-head)渲染成不可点击的分组标签,章节序号跨组连续编号
+  function renderAuthOutline(groupCount) {
     var list = document.getElementById("authOutlineList");
     var wrap = document.getElementById("authWrap");
     if (!list || !wrap) return;
-    var secs = wrap.querySelectorAll(".auth-block");
     authNavItems = [];
-    list.innerHTML = secs.length ? "" : '<span class="auth-outline-empty">暂无章节</span>';
-    Array.prototype.forEach.call(secs, function (sec) {
+    list.innerHTML = wrap.children.length ? "" : '<span class="auth-outline-empty">暂无章节</span>';
+    Array.prototype.forEach.call(wrap.children, function (node) {
+      if (node.classList && node.classList.contains("auth-group-head")) {
+        var gl = document.createElement("div");
+        gl.className = "auth-outline-group";
+        gl.setAttribute("data-group", node.getAttribute("data-group") || "");
+        var gLabel = node.getAttribute("data-group-title") || "";
+        var gCountEl = node.querySelector(".auth-group-count");
+        var gN = gCountEl ? gCountEl.textContent.replace(/[^\d]/g, "") : "";
+        gl.title = gLabel + (gN ? " · " + gN : "");
+        gl.innerHTML = '<span class="aog-label">' + esc(gLabel) + "</span>" +
+          (gN ? '<span class="aog-n">' + gN + "</span>" : "");
+        list.appendChild(gl);
+        return;
+      }
+      if (!node.classList || !node.classList.contains("auth-block")) return;
+      var sec = node;
       var h = sec.querySelector(".auth-title");
       var tagTxt = h && h.querySelector(".tag") ? h.querySelector(".tag").textContent.trim() : "";
       var label = sec.getAttribute("data-outline") || (h ? h.textContent.trim() : "");
@@ -1435,7 +1525,9 @@
       authNavItems.push(sec);
     });
     var cnt = document.getElementById("authOutlineCount");
-    if (cnt) cnt.textContent = authNavItems.length ? authNavItems.length + " 节" : "";
+    if (cnt) cnt.textContent = authNavItems.length
+      ? authNavItems.length + " 节" + (groupCount ? " · " + groupCount + " 组" : "")
+      : "";
     // 下一帧之后再同步高亮:此时表格/图表已填充完毕,章节高度才是最终值(进入时立即正确高亮)
     scheduleAuthNavSync();
   }
@@ -1644,14 +1736,20 @@
     var tbsMs = D.tbScience();
     var tbsMixed = mixedSrc(tbsMs);
     var tbsRows = tbsMs.map(function (m, i) {
+      var agentCell = esc(m.agent || "—") +
+        (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "");
       return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (tbsMixed ? srcBadge(m.src) : "") + '</td>' +
-        '<td>' + esc(m.agent) + '</td><td class="num">' + m.score + (m.ci != null ? '±' + m.ci + '%' : "%") + '</td></tr>';
+        '<td>' + agentCell + '</td>' +
+        '<td class="num">' + (m.releaseDate ? esc(m.releaseDate) : "—") + '</td>' +
+        '<td class="num">' + m.score + (m.ci != null ? '±' + m.ci + '%' : "%") + '</td>' +
+        '<td class="num">' + (m.totalTokens != null ? (m.totalTokens >= 1e9 ? (m.totalTokens / 1e9).toFixed(1) + "B" : (m.totalTokens / 1e6).toFixed(1) + "M") : "—") + '</td>' +
+        '<td class="num">' + (m.costUsd != null ? fmtUsd(m.costUsd) : "—") + '</td></tr>';
     });
     html += authSectionHtml("Terminal-Bench-Science 0.1", "科研工作流 · 仅展示", tbs.announcementUrl || tbs.url,
       '<div class="table-wrap"><table id="authTBScienceTable" class="data-table"></table></div>',
       '来源:' + esc(tbs.url || "") + '(官方:' + esc(tbs.announcementUrl || "") + ') · 版本 ' + esc(tbs.version || "") + ' · 更新 ' + esc(tbs.updated || "") +
       ' · 70 个来自真实科研流程的任务(每任务 3 次独立试验),解决率越高越好。' + esc(tbs.channelPolicy || "") +
-      '(主源 explainx 为 T3 镜像;厂商官方发布自测分 T2 仅补镜像未收录的模型)。本榜仅展示,不计入综合分。');
+      '(主源 Harbor Hub 官方榜 T1;explainx 镜像仅作回退;厂商官方发布自测分 T2 与 ART 聚合 T3 仅补官方榜未收录的模型)。本榜仅展示,不计入综合分。');
     // 3) OSWorld 2.0
     var os = S.osworld || {};
     var osMs = D.osworld();
@@ -1892,7 +1990,8 @@
     // 渲染 + 图表 + 表格
     var wrap = document.getElementById("authWrap");
     if (wrap) wrap.innerHTML = html;
-    renderAuthOutline(); // 由已渲染章节生成左侧大纲预览
+    var authGroupN = wrap ? groupAuthSections(wrap) : 0;
+    renderAuthOutline(authGroupN); // 由已渲染章节生成左侧大纲预览(按类型分组)
     fillTable("authDeepSweTable", ["#", "模型", "强度", "Pass@1±CI", "平均成本", "输出tokens", "步数"], dsAuthRows, ["", "", "", "num bv bv-deepswe", "num", "num", "num"]);
     // TB 章节:定位章节容器,给来源注与标题原站链接补 id(authSectionHtml 不支持自定义 id),供版本切换时更新
     var tbTableEl = document.getElementById("authTBTable");
@@ -1910,7 +2009,7 @@
     };
     // 首屏以下章节表格统一懒填表(见 authDeferTable 注释):进页只构建章节骨架,
     // 滚动临近时才填充,降低每次进页的构建与布局开销;不支持时自动回退为立即填充
-    authDeferTable("authTBScienceTable", ["#", "模型", "Agent", "解决率"], tbsRows, ["", "", "", "num"]);
+    authDeferTable("authTBScienceTable", ["#", "模型", "Agent", "发布日期", "解决率", "Tokens", "成本"], tbsRows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authOSWorldTable", ["#", "系统(模型·配置)", "部分得分", "厂商", "上报时间", "来源"], osRows, ["", "", "num", "", "num", ""]);
     authDeferTable("authLastExamTable", ["#", "模型", "厂商", "Pass@1", "参数量", "上下文"], aleRows, ["", "", "", "num", "num", "num"]);
     authDeferTable("authAutomationBenchTable", ["#", "模型", "厂商", "得分", "参数量", "上下文"], abzRows, ["", "", "", "num", "num", "num"]);
@@ -2226,7 +2325,7 @@
   // Terminal-Bench 4.0/3.0/2.1 三版已合并进总览(unified),不在此列,仍属首屏。
   // 缓存戳与 index.html 的首屏脚本一致维护(?v= 变更时同步)。
   var DATA_SRC = {
-    tbscience: { src: "data/tbscience.js?v=20261110b", global: "TBSCIENCE" },
+    tbscience: { src: "data/tbscience.js?v=20261111g", global: "TBSCIENCE" },
     osworld: { src: "data/osworld.js?v=20260912a", global: "OSWORLD" },
     lastexam: { src: "data/lastexam.js?v=20261017a", global: "LASTEXAM" },
     arcagi3: { src: "data/arcagi3.js?v=20260912a", global: "ARCAGI3" },

@@ -143,14 +143,20 @@ module.exports = {
       version: "4.0", host: "www.tbench.ai", src: "official"
     },
     tbscience: {
-      // Terminal-Bench-Science 0.1:科研工作流 70 任务。
-      // 官方/harbor 榜单为客户端渲染(原始 HTML 无数据、无公开 API),以 explainx 博客镜像表为主
-      // (Model | Harness | Resolution rate,与官方公告 0.1 数值一致)。
-      // 渠道:explainx 为 T3 镜像主源;厂商官方发布自测分走种子层(T2,如 anthropic-official),
-      // AI Release Tracker 聚合(T3)最后补缺。
-      url: "https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026",
-      version: "0.1", host: "www.explainx.ai", src: "mirror",
-      announcementUrl: "https://www.terminal-bench-science.ai/announcement"
+      // Terminal-Bench-Science 0.1:科研工作流 70 任务(每任务 3 次试验,共 210 次运行)。
+      // 主源:Harbor Hub 官方榜(数据集 terminal-bench-science 的 v0-1-eval 榜单,由 Stanford / Harbor /
+      //   Laude 托管)。页面为 Next.js 客户端渲染,行数据需调用 Server Action「fetchLeaderboardWithRows」;
+      //   action id 随构建变化,运行时从页面脚本块自发现,榜单 id 从页面 RSC 数据中提取。
+      // 回退:explainx 博客镜像表(T3,仅 9 条旧模型,与官方公告 0.1 数值一致)。
+      // 补充:厂商官方发布自测分走种子层(T2,如 anthropic-official),AI Release Tracker 聚合(T3)最后补缺,
+      //   两者都只补官方榜未收录的模型。
+      url: "https://hub.harborframework.com/datasets/terminal-bench-science/terminal-bench-science/latest?tab=leaderboard&leaderboard=v0-1-eval",
+      version: "0.1", host: "hub.harborframework.com", src: "official",
+      leaderboard: "v0-1-eval",
+      datasetUrl: "https://hub.harborframework.com/datasets/terminal-bench-science/terminal-bench-science/latest",
+      officialUrl: "https://www.terminal-bench-science.ai/",
+      announcementUrl: "https://www.terminal-bench-science.ai/announcement",
+      explainxUrl: "https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026"
     },
     osworld: {
       // OSWorld 2.0(xlang-ai):长时程桌面计算机使用 108 任务。

@@ -1,106 +1,329 @@
-// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 2026-11-10)
-// 来源:https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026(官方:https://www.terminal-bench-science.ai/announcement)
+// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 2026-11-11)
+// 来源:https://hub.harborframework.com/datasets/terminal-bench-science/terminal-bench-science/latest?tab=leaderboard&leaderboard=v0-1-eval(官方:https://www.terminal-bench-science.ai/announcement)
+// 回退:https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026(explainx 博客镜像 T3,仅官方榜不可用时使用)
 // 补充:https://aireleasetracker.com/benchmark/terminal-bench-science-0.1(第三方聚合 T3,只补缺失模型)
-// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数(主源 explainx 为 T3 镜像;厂商官方发布自测分走种子层 T2,仅补缺)
-// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);src=数据来源渠道(mirror/moonshot-official/tencent-official/anthropic-official/aireleasetracker)
+// 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数(主源 Harbor Hub 官方榜 T1;厂商官方发布自测分走种子层 T2,仅补缺)
+// 字段说明:model=模型名;agent=Agent 框架;score=解决率(%);ci=标准误(±%);effort=推理档位;
+//   releaseDate=模型发布日期;costUsd/totalTokens=整轮 210 次运行的总成本/总 tokens;runs/passes=运行数/通过数;
+//   agentOrg/modelOrg=Agent / 模型的厂商;
+//   src=数据来源渠道(official/mirror/moonshot-official/tencent-official/anthropic-official/aireleasetracker)
+// actionId=Harbor Server Action 的构建标识(仅网络层缓存,非榜单数据;站点重新部署后自动重发现)
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
 window.TBSCIENCE = {
   'source': 'Terminal-Bench-Science',
-  'url': 'https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026',
+  'url': 'https://hub.harborframework.com/datasets/terminal-bench-science/terminal-bench-science/latest?tab=leaderboard&leaderboard=v0-1-eval',
+  'datasetUrl': 'https://hub.harborframework.com/datasets/terminal-bench-science/terminal-bench-science/latest',
   'announcementUrl': 'https://www.terminal-bench-science.ai/announcement',
+  'explainxUrl': 'https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '0.1',
-  'updated': '2026-11-10',
-  'refreshedAt': '2026-11-10 16:22',
+  'leaderboard': 'v0-1-eval',
+  'actionId': '40775de86105e3d601d31c1040d2235ad70cc4a593',
+  'updated': '2026-11-11',
+  'refreshedAt': '2026-11-11 13:40',
   'stats': {
     'tasks': 70,
-    'entries': 23
+    'trialsPerTask': 3,
+    'entries': 28
   },
   'desc': 'Terminal-Bench-Science 0.1:由斯坦福与 Laude 团队联合各学科专家构建的科研工作流评测(70 个任务,来自真实研究流程,每任务 3 次独立试验),解决率越高越好。',
   'models': [
     {
+      'model': 'GPT-6 Astra',
+      'agent': 'Codex',
+      'score': 68.1,
+      'ci': 3.2,
+      'effort': 'max',
+      'releaseDate': '2026-09-03',
+      'costUsd': 4997.46,
+      'totalTokens': 2288326796,
+      'runs': 210,
+      'passes': 143,
+      'agentOrg': 'OpenAI',
+      'modelOrg': 'OpenAI',
+      'src': 'official',
+      'rank': 1
+    },
+    {
+      'model': 'Claude Opus 5.5',
+      'agent': 'Claude Code',
+      'score': 63.3,
+      'ci': 3.3,
+      'effort': 'max',
+      'releaseDate': '2026-09-22',
+      'costUsd': 4874.26,
+      'totalTokens': 8746928164,
+      'runs': 210,
+      'passes': 133,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Anthropic',
+      'src': 'official',
+      'rank': 2
+    },
+    {
+      'model': 'Claude Fable 5.1',
+      'agent': 'Claude Code',
+      'score': 40,
+      'ci': 3.4,
+      'effort': 'max',
+      'releaseDate': '2026-09-01',
+      'costUsd': 6247.14,
+      'totalTokens': 3753292530,
+      'runs': 210,
+      'passes': 84,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Anthropic',
+      'src': 'official',
+      'rank': 3
+    },
+    {
       'model': 'Claude Opus 5',
       'agent': 'Claude Code',
       'score': 30,
-      'src': 'mirror',
-      'rank': 1
+      'ci': 3.2,
+      'effort': 'max',
+      'releaseDate': '2026-07-24',
+      'costUsd': 6992.68,
+      'totalTokens': 7266668313,
+      'runs': 210,
+      'passes': 63,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Anthropic',
+      'src': 'official',
+      'rank': 4
     },
     {
       'model': 'GPT-5.6 Sol',
       'agent': 'Codex',
       'score': 22.4,
-      'src': 'mirror',
-      'rank': 2
+      'ci': 2.9,
+      'effort': 'max',
+      'releaseDate': '2026-07-09',
+      'costUsd': 4221.87,
+      'totalTokens': 8406870193,
+      'runs': 210,
+      'passes': 47,
+      'agentOrg': 'OpenAI',
+      'modelOrg': 'OpenAI',
+      'src': 'official',
+      'rank': 5
     },
     {
       'model': 'Claude Fable 5',
       'agent': 'Claude Code',
       'score': 21.4,
-      'src': 'mirror',
-      'rank': 3
+      'ci': 2.8,
+      'effort': 'max',
+      'releaseDate': '2026-06-09',
+      'costUsd': 14175.95,
+      'totalTokens': 6363562181,
+      'runs': 210,
+      'passes': 45,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Anthropic',
+      'src': 'official',
+      'rank': 6
+    },
+    {
+      'model': 'DeepSeek V4.1 Flash',
+      'agent': 'Codex',
+      'score': 15.7,
+      'ci': 2.5,
+      'effort': 'max',
+      'releaseDate': '2026-09-10',
+      'costUsd': 385.93,
+      'totalTokens': 14859405919,
+      'runs': 210,
+      'passes': 33,
+      'agentOrg': 'OpenAI',
+      'modelOrg': 'DeepSeek',
+      'src': 'official',
+      'rank': 7
+    },
+    {
+      'model': 'Grok 4.7',
+      'agent': 'Grok Build',
+      'score': 14.3,
+      'ci': 2.4,
+      'effort': 'xhigh',
+      'releaseDate': '2026-09-21',
+      'costUsd': 3070.82,
+      'totalTokens': 4206226774,
+      'runs': 210,
+      'passes': 30,
+      'agentOrg': 'xAI',
+      'modelOrg': 'xAI',
+      'src': 'official',
+      'rank': 8
+    },
+    {
+      'model': 'Gemini 3.8 Flash',
+      'agent': 'mini-SWE-agent',
+      'score': 12.4,
+      'ci': 2.3,
+      'effort': 'high',
+      'releaseDate': '2026-09-02',
+      'costUsd': 1116.98,
+      'totalTokens': 10499649912,
+      'runs': 210,
+      'passes': 26,
+      'agentOrg': 'SWE-agent',
+      'modelOrg': 'Google DeepMind',
+      'src': 'official',
+      'rank': 9
     },
     {
       'model': 'Claude Opus 4.8',
       'agent': 'Claude Code',
       'score': 10.5,
-      'src': 'mirror',
-      'rank': 4
+      'ci': 2.1,
+      'effort': 'max',
+      'releaseDate': '2026-05-28',
+      'costUsd': 5837.72,
+      'totalTokens': 6770231957,
+      'runs': 210,
+      'passes': 22,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Anthropic',
+      'src': 'official',
+      'rank': 10
     },
     {
       'model': 'GPT-5.6 Terra',
       'agent': 'Codex',
       'score': 8.6,
-      'src': 'mirror',
-      'rank': 5
+      'ci': 1.9,
+      'effort': 'max',
+      'releaseDate': '2026-07-09',
+      'costUsd': 1983.92,
+      'totalTokens': 7618801416,
+      'runs': 210,
+      'passes': 18,
+      'agentOrg': 'OpenAI',
+      'modelOrg': 'OpenAI',
+      'src': 'official',
+      'rank': 11
     },
     {
       'model': 'GLM 5.3',
       'agent': 'Claude Code',
       'score': 8.1,
-      'src': 'mirror',
-      'rank': 6
+      'ci': 1.9,
+      'effort': 'max',
+      'releaseDate': '2026-08-14',
+      'costUsd': 2733.16,
+      'totalTokens': 8486097200,
+      'runs': 210,
+      'passes': 17,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Z.AI',
+      'src': 'official',
+      'rank': 12
     },
     {
       'model': 'Kimi K3',
       'agent': 'Claude Code',
       'score': 7.1,
-      'src': 'mirror',
-      'rank': 7
+      'ci': 1.8,
+      'effort': 'max',
+      'releaseDate': '2026-07-16',
+      'costUsd': 1523.8,
+      'totalTokens': 3191602969,
+      'runs': 210,
+      'passes': 15,
+      'agentOrg': 'Anthropic',
+      'modelOrg': 'Moonshot AI',
+      'src': 'official',
+      'rank': 13
     },
     {
       'model': 'Grok 4.6',
       'agent': 'Grok Build',
       'score': 7.1,
-      'src': 'mirror',
-      'rank': 8
+      'ci': 1.8,
+      'effort': 'xhigh',
+      'releaseDate': '2026-08-12',
+      'costUsd': 3344.19,
+      'totalTokens': 3709385002,
+      'runs': 210,
+      'passes': 15,
+      'agentOrg': 'xAI',
+      'modelOrg': 'xAI',
+      'src': 'official',
+      'rank': 14
+    },
+    {
+      'model': 'Gemini 3.7 Flash',
+      'agent': 'mini-SWE-agent',
+      'score': 5.7,
+      'ci': 1.6,
+      'effort': 'high',
+      'releaseDate': '2026-08-13',
+      'costUsd': 1296.59,
+      'totalTokens': 12023077591,
+      'runs': 210,
+      'passes': 12,
+      'agentOrg': 'SWE-agent',
+      'modelOrg': 'Google DeepMind',
+      'src': 'official',
+      'rank': 15
+    },
+    {
+      'model': 'DeepSeek V4 Pro',
+      'agent': 'Codex',
+      'score': 3.8,
+      'ci': 1.3,
+      'effort': 'max',
+      'releaseDate': '2026-08-13',
+      'costUsd': 1120.15,
+      'totalTokens': 11201441597,
+      'runs': 210,
+      'passes': 8,
+      'agentOrg': 'OpenAI',
+      'modelOrg': 'DeepSeek',
+      'src': 'official',
+      'rank': 16
     },
     {
       'model': 'GPT-5.6 Luna',
       'agent': 'Codex',
       'score': 3.3,
-      'src': 'mirror',
-      'rank': 9
+      'ci': 1.2,
+      'effort': 'max',
+      'releaseDate': '2026-07-09',
+      'costUsd': 383.2,
+      'totalTokens': 14246922352,
+      'runs': 210,
+      'passes': 7,
+      'agentOrg': 'OpenAI',
+      'modelOrg': 'OpenAI',
+      'src': 'official',
+      'rank': 17
     },
     {
       'model': 'Kimi K3.1 Pro',
       'agent': 'Claude Code',
       'score': 38.1,
       'src': 'moonshot-official',
-      'rank': null
+      'rank': null,
+      'effort': 'max',
+      'releaseDate': '2026-10-24'
     },
     {
       'model': 'Hy4',
       'agent': 'Claude Code',
       'score': 19.8,
       'src': 'tencent-official',
-      'rank': null
+      'rank': null,
+      'releaseDate': '2026-11-04'
     },
     {
       'model': 'Claude Fable 5.2',
       'agent': null,
       'score': 74.6,
       'src': 'anthropic-official',
-      'rank': null
+      'rank': null,
+      'releaseDate': '2026-11-10'
     },
     {
       'model': 'Claude Mythos 5.2',
@@ -117,23 +340,9 @@ window.TBSCIENCE = {
       'rank': null
     },
     {
-      'model': 'GPT-6 Astra',
-      'agent': null,
-      'score': 64.6,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
       'model': 'Claude Sonnet 5.5',
       'agent': null,
       'score': 59.9,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Claude Opus 5.5',
-      'agent': null,
-      'score': 58.7,
       'src': 'aireleasetracker',
       'rank': null
     },
@@ -155,13 +364,6 @@ window.TBSCIENCE = {
       'model': 'GPT-6.1 Sol',
       'agent': null,
       'score': 57.1,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Claude Fable 5.1',
-      'agent': null,
-      'score': 52.6,
       'src': 'aireleasetracker',
       'rank': null
     },

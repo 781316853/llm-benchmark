@@ -55,6 +55,16 @@ const ANTHROPIC_CAVEAT = "Anthropic 官方发布自测(2026-11-10);表内标注 
 const HY4_URL = "https://hy.tencent.com/research/hy4";
 const HY4_CAVEAT = "腾讯混元 Hy4 正式版官方发布自测(2026-11-04);DeepSWE 用 mini-SWE-agent,TB 4.0 / TB-Science 用 Claude Code 框架,ProgramBench 仅公布 Almost,协议与基准官方实测榜不保证可比";
 
+// OpenAI GPT-6.1 Terra 发布(2026-10-27):
+//   Terminal-Bench 4.0 最高推理档解决率 50.3%;官方发布页未标注 harness/温度,与官方实测榜不保证可比。
+//   OpenAI 未公布该模型的 DeepSWE v1.1,故不设 DeepSWE 种子(不臆造分数)。
+const OPENAI_TERRA_CAVEAT = "OpenAI 官方发布自测(GPT-6.1 Terra,2026-10-27);Terminal-Bench 4.0 最高推理档 50.3%,官方未标注 harness/温度,与基准官方实测榜不保证可比";
+
+// Meta Muse Wonder 模型卡(2026-10-12):
+//   表中标为 Terminal-Bench 4.0-AA(Muse Wonder 52.0 / Full 57.1),竞品为 best-effort,
+//   与 tbench.ai 官方实测榜的 agent×model 口径不保证一致。
+const META_WONDER_CAVEAT = "Meta 官方模型卡自测(Muse Wonder,2026-10-12);Terminal-Bench 4.0-AA 52.0,官方标注竞品为 best-effort,与 tbench.ai 官方榜不保证可比";
+
 // 按榜单键组织。score 为统一百分制数值;各源按自身字段映射(deepswe 用 pass1,merger 源用 model/score)。
 const SEEDS = {
   // DeepSWE v1.1 官方实测榜无 Qwen3.8-Flash,补之。
@@ -74,9 +84,13 @@ const SEEDS = {
     // Kimi 官方博客 65.7%(Claude Code 框架);tbench.ai 官方榜与 datalearner 均尚无 K3.1 Pro。
     { name: "Kimi K3.1 Pro", score: 65.7, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
     // 腾讯混元 Hy4 正式版官方自测 44.4(Claude Code 框架)。
-    { name: "Hy4", score: 44.4, agent: "Claude Code", date: "2026-11-04", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL }
+    { name: "Hy4", score: 44.4, agent: "Claude Code", date: "2026-11-04", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL },
+    // OpenAI 官方发布:最高推理档 50.3%;官方榜与 datalearner 均尚未收录。
+    { name: "GPT-6.1 Terra", score: 50.3, effort: "max", date: "2026-10-27", src: "openai-official", note: OPENAI_TERRA_CAVEAT },
+    // Meta 模型卡:Terminal-Bench 4.0-AA 52.0(Full 为 57.1,站内已由 datalearner 收录 58.08,不覆盖)。
+    { name: "Muse Wonder", score: 52.0, effort: "max", date: "2026-10-12", src: "meta-official", note: META_WONDER_CAVEAT }
   ],
-  // Terminal-Bench-Science 0.1:站内主源为 explainx 博客镜像(仅 9 条旧模型),补 Kimi 官方自测。
+  // Terminal-Bench-Science 0.1:站内主源为 Harbor Hub 官方榜(17 条),explainx 镜像仅作回退;补 Kimi 官方自测。
   tbscience: [
     { name: "Kimi K3.1 Pro", score: 38.1, agent: "Claude Code", effort: "max", date: "2026-10-24", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
     // 腾讯混元 Hy4 正式版官方自测 19.8(Claude Code 框架,同榜同版本 0.1)。
