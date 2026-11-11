@@ -1,4 +1,4 @@
-// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 2 次)
+// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 4 次)
 // 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
 // 口径:仅正式版(不收 alpha/beta/rc);DeepSeek Harness 只发预览版,为唯一例外(收官方 Release 的预发布);本文件存各源可得的全量条目,前端每工具展示最近 2 条(时间窗口只作「超出窗口」标注)
 // 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新
@@ -7,7 +7,7 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 window.CHANGELOG = {
   'updated': '2026-11-10',
-  'refreshedAt': '2026-11-10 12:14',
+  'refreshedAt': '2026-11-11 03:54',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -19,8 +19,28 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
+        {
+          'version': '0.167.1',
+          'title': 'rust-v0.167.1',
+          'date': '2026-11-10',
+          'dateRaw': '2026-11-10T18:02:26Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.1',
+          'body': '版本0.167.1',
+          'h': '702034c0'
+        },
+        {
+          'version': '0.167.0-alpha.4.2',
+          'title': 'rust-v0.167.0-alpha.4.2',
+          'date': '2026-11-10',
+          'dateRaw': '2026-11-10T19:42:33Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2',
+          'body': '版本0.167.0-alpha.4.2',
+          'h': 'd901245c'
+        },
         {
           'version': '0.167.0-alpha.4.1',
           'title': '0.167.0-alpha.4.1',
@@ -28,8 +48,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-09T23:49:13Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.1',
-          'body': '版本0.167.0-alpha.4.1',
-          'h': '4f9087fc'
+          'body': 'Release 0.167.0-alpha.4.1'
         },
         {
           'version': '0.167.0',
@@ -1302,7 +1321,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '2.1.322',
@@ -3674,8 +3693,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
+        {
+          'version': '2.2.7',
+          'title': 'v2.2.7',
+          'date': '2026-11-10',
+          'dateRaw': '2026-11-10T10:37:15Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Improvements',
+            'Bug fixes',
+            'TUI',
+            'Desktop'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.2.7',
+          'body': '### Highlights\n\n- **GitHub Copilot Auto**: Pick **Auto** in the model picker when your Copilot account has an Auto pool, and Copilot\'s router chooses the model for each session at the Auto discount. If routing fails, OpenCode falls back to the account\'s default chat model. ([#62997](https://github.com/anomalyco/opencode/pull/62997))\n- **Side Panel Tab Shortcuts**: Right-click a side panel tab and choose **Close tabs to the right**. `⌘W` now closes side panel tabs wherever focus is, `⌥⌘W` or `Ctrl+Alt+W` always closes the session tab, and `⌘⇧T` reopens the last closed tab of either kind where it was. ([#62922](https://github.com/anomalyco/opencode/pull/62922))\n- **Mark Sessions Read or Unread**: Open the menu on a tab, Home row, project row or inbox card and choose **Mark as unread** to keep its dot until you next visit. ([#62889](https://github.com/anomalyco/opencode/pull/62889))\n\n### Breaking changes\n\n#### `@opencode/ai`: `ImageResponse.image` is removed\n\nThis affects code that imports `@opencode/ai` directly. Read `response.images[0]` instead of `response.image`. ([#63011](https://github.com/anomalyco/opencode/pull/63011))\n\n#### SDK: fewer endpoints wait for plugins to load\n\nOn a Location that is still loading plugins, `agent.list` returns the agents loaded so far, and `integration.list`, `usage.limits`, `vcs.init`, `rpc.call` and `artifact.*` no longer wait up to 5 seconds. Entries and actions that a plugin provides appear when it finishes loading, so refresh on the matching `*.updated` event. Model, provider, `generate.*`, `voice.*` and `websearch.query` endpoints still wait. ([#62796](https://github.com/anomalyco/opencode/pull/62796), [#63040](https://github.com/anomalyco/opencode/pull/63040))\n\n### Core\n\n#### Improvements\n\n- **MCP Logins Stay Signed In**: Remote MCP servers that rotate refresh tokens no longer sign you out when several clients refresh at once or the token endpoint fails for a moment. ([#62827](https://github.com/anomalyco/opencode/pull/62827), [#63012](https://github.com/anomalyco/opencode/pull/63012))\n- `read` accepts a negative `offset` to read from the end of a file, such as `-50` for the last 50 lines. An offset past the end returns the last lines and the file\'s line count instead of failing. ([#62147](https://github.com/anomalyco/opencode/pull/62147))\n- When `read` can\'t find a file, it suggests close names: different capitalization, another extension, a small typo, or the matching path inside the project. ([#62147](https://github.com/anomalyco/opencode/pull/62147))\n- Shell results end with `Exit code: N`. Commands killed by a signal show the signal name, and timeouts say how long they waited and suggest a larger timeout. ([#62141](https://github.com/anomalyco/opencode/pull/62141))\n- Prompt cache warming times its pings from the model\'s `cache.ttl` by default (`interval: \'auto\'`), or every 4 minutes without a TTL. Models whose cache outlasts the warming `duration` are no longer pinged. ([#62831](https://github.com/anomalyco/opencode/pull/62831))\n- When MCP servers connect, disconnect or change tools, Code Mode sends the model a short list of what changed instead of the whole tool catalog. ([#62176](https://github.com/anomalyco/opencode/pull/62176))\n\n#### Bug fixes\n\n- GitHub Copilot session costs use the amount Copilot charged instead of the catalog estimate, and content-filter errors name the filter that blocked the response. ([#62034](https://github.com/anomalyco/opencode/pull/62034))\n- GitHub Copilot picks up a new API endpoint after a plan change on its next model refresh, so you no longer have to sign in again. ([#62171](https://github.com/anomalyco/opencode/pull/62171))\n- Remote MCP servers that rotate refresh tokens no longer log you out when the TUI, desktop app, background service or several projects refresh the same login at once. ([#62827](https://github.com/anomalyco/opencode/pull/62827))\n- A temporary failure while refreshing an MCP OAuth token keeps your login for the next try instead of marking the server `needs_auth`. ([#63012](https://github.com/anomalyco/opencode/pull/63012))\n- MCP tool calls no longer fail when the server\'s result doesn\'t match the tool\'s own output schema, so completed actions aren\'t reported as failed. ([#61254](https://github.com/anomalyco/opencode/pull/61254))\n- MCP prompts stay available when refreshing a server\'s prompt list fails. ([#62266](https://github.com/anomalyco/opencode/pull/62266))\n- With `background_compaction` on, a background summary no longer stops a running Claude Agent session mid tool call. ([#63025](https://github.com/anomalyco/opencode/pull/63025))\n- After `opencode auth logout` on a `.well-known` integration, its remote providers and policies stop applying until you log back in. ([#62760](https://github.com/anomalyco/opencode/pull/62760))\n- OpenCode Console workspace policies still apply when Console\'s instructions or skills fail to load. ([#62702](https://github.com/anomalyco/opencode/pull/62702))\n- Cloudflare AI Gateway providers set up with only `gatewayApiKey` now send that key. ([#62574](https://github.com/anomalyco/opencode/pull/62574))\n- A v1 model override that sets only some capabilities no longer resets the others, so catalog capabilities like PDF input are kept. ([#62573](https://github.com/anomalyco/opencode/pull/62573))\n- A v1 provider config that sets both `api` and `options.baseURL` keeps `options.baseURL`. ([#62570](https://github.com/anomalyco/opencode/pull/62570))\n- Legacy model references with an inline variant, such as `\'openai/gpt-5#high\'`, keep the variant. ([#62254](https://github.com/anomalyco/opencode/pull/62254))\n- A fresh install imports saved provider credentials from the legacy `auth.json`, and skips an invalid one with a warning instead of stopping setup. ([#62568](https://github.com/anomalyco/opencode/pull/62568))\n- Cache warming stops for a session when a ping rebuilds the cache instead of reading it, counts its interval from when a request was sent, and no longer pings during compaction or after the session is deleted. ([#62926](https://github.com/anomalyco/opencode/pull/62926), [#62941](https://github.com/anomalyco/opencode/pull/62941), [#62972](https://github.com/anomalyco/opencode/pull/62972))\n- Tokens and cost from `session.generate` requests, including cache warming pings, count toward the session\'s totals. ([#63006](https://github.com/anomalyco/opencode/pull/63006))\n- Under zsh, a glob that matches nothing, like `rm *.tmp`, is passed through as bash does instead of stopping the command. ([#62141](https://github.com/anomalyco/opencode/pull/62141))\n- Truncated shell output that starts mid-line drops the partial first line, so the \'showing lines X–Y\' notice is exact. ([#62141](https://github.com/anomalyco/opencode/pull/62141))\n- On Windows, multi-line commands no longer lose everything after the first line with PowerShell 7 from the Microsoft Store. ([#62522](https://github.com/anomalyco/opencode/pull/62522))\n- `read` no longer cuts an emoji in half when it shortens a long line. ([#62575](https://github.com/anomalyco/opencode/pull/62575))\n- Generated session titles no longer include the model\'s commentary. Thanks [@shanebishop1](https://github.com/shanebishop1). ([#62267](https://github.com/anomalyco/opencode/pull/62267))\n- Markdown agents whose `description` starts with a bracketed tag, like `[Beta] Reviews code`, now load. ([#62250](https://github.com/anomalyco/opencode/pull/62250))\n- Markdown agent and command files that fail to load log a warning with the file path and frontmatter error. ([#62464](https://github.com/anomalyco/opencode/pull/62464), [#62251](https://github.com/anomalyco/opencode/pull/62251))\n- Markdown agent discovery skips `node_modules`. ([#62571](https://github.com/anomalyco/opencode/pull/62571))\n- Failed plugin installs from git show git\'s own error instead of \'An unknown git error occurred\'. ([#62261](https://github.com/anomalyco/opencode/pull/62261))\n\n### TUI\n\n#### Improvements\n\n- The update and confirm dialogs have buttons you can move between with `←`/`→` and `Tab`/`Shift+Tab`. ([#62906](https://github.com/anomalyco/opencode/pull/62906))\n- The model picker no longer has a **Usage** action; use `/usage` instead. ([#62927](https://github.com/anomalyco/opencode/pull/62927))\n\n#### Bug fixes\n\n- Session exports are saved in the current working directory instead of the system temp folder. ([#62253](https://github.com/anomalyco/opencode/pull/62253))\n- Typing a child session\'s exact ID in the open-session menu lists that session. ([#62262](https://github.com/anomalyco/opencode/pull/62262))\n- The TUI follows the terminal\'s current light or dark mode instead of a cached palette. ([#62248](https://github.com/anomalyco/opencode/pull/62248))\n\n### Desktop\n\n#### Improvements\n\n- Right-click a side panel tab to **Close tabs to the right**. `⌘W` closes side panel tabs wherever focus is, the new **Close session tab** command (`⌥⌘W` or `Ctrl+Alt+W`) always closes the session tab, and `⌘⇧T` reopens the last closed side panel or session tab where it was. ([#62922](https://github.com/anomalyco/opencode/pull/62922))\n- Added **Mark as read** and **Mark as unread** to the menus for tabs, Home rows, project rows and inbox cards, and **Rename** to inbox cards. ([#62889](https://github.com/anomalyco/opencode/pull/62889))\n- The answer you pick in the question dock shows as a raised card. ([#62896](https://github.com/anomalyco/opencode/pull/62896))\n- Inline rename and custom-answer fields no longer show a focus border. ([#62919](https://github.com/anomalyco/opencode/pull/62919))\n\n#### Bug fixes\n\n- On Windows and Linux, `Ctrl+Shift+R` toggles the review panel again instead of reloading the window. ([#62567](https://github.com/anomalyco/opencode/pull/62567))\n- Closing the last side panel tab slides the panel shut. ([#62758](https://github.com/anomalyco/opencode/pull/62758))\n- Selects, menus, tooltips and toasts opened from a dialog are reachable by screen readers. ([#62913](https://github.com/anomalyco/opencode/pull/62913))\n- An error appears when a path can\'t be opened in its default app. ([#62572](https://github.com/anomalyco/opencode/pull/62572))\n- Cut, Copy, Paste and Select All in the right-click menu follow the app language. ([#62252](https://github.com/anomalyco/opencode/pull/62252))\n- Ukrainian tool titles use nouns. ([#62263](https://github.com/anomalyco/opencode/pull/62263))\n- Scrolling titlebar search results no longer jumps back when late results arrive, the inbox no longer announces already-running sessions as working on load, and the quote toolbar comes back after `Escape`. ([#62597](https://github.com/anomalyco/opencode/pull/62597))\n\n### SDK\n\n#### Improvements\n\n- `session.generate` returns `tokens` and `cost` along with `text`. ([#62835](https://github.com/anomalyco/opencode/pull/62835))\n- `credential.updated` includes the `integrationID` and `credentialID` of the login that changed. ([#62762](https://github.com/anomalyco/opencode/pull/62762))\n- Predicate questions in `client.experimental.generate.decisions` accept optional `criteria: { true?, false? }`. ([#62819](https://github.com/anomalyco/opencode/pull/62819))\n\n### Extensions\n\n#### Improvements\n\n- ACP clients can redirect a running turn with the `_session/steering` extension, advertised as `_meta.steering.supported` in `initialize`. Thanks [@smagnuso](https://github.com/smagnuso). ([#54394](https://github.com/anomalyco/opencode/pull/54394))'
+        },
         {
           'version': '2.2.6',
           'title': 'v2.2.6',
@@ -3699,8 +3734,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-05T17:39:04Z',
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.0',
-          'body': 'openencode-pty 0.5.0 （协议8 ） ，作为@ opencode/pty @ 0.5.0发布到npm。',
-          'h': 'cc93a2d2'
+          'body': 'opencode-pty 0.5.0 (protocol 8) from packages/process-daemon, published to npm as @opencode/pty@0.5.0.'
         },
         {
           'version': 'daemon v0.5.0',
@@ -9176,15 +9210,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.18',
           'body': '- Fixed $ invocation not being quiet in LSP server\n- Added noReply parameter to control response behavior\n- Fixed timeout parameter to allow users to disable provider timeout\n- Made title generation more reliable\n- Updated Anthropic prompt'
-        },
-        {
-          'version': '0.15.17',
-          'title': 'v0.15.17',
-          'date': '2025-10-25',
-          'dateRaw': '2025-10-25T06:45:31Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.17',
-          'body': '- ACP: Added slash commands, agents, permissions, and @ references support\n- Fixed bedrock reasoning functionality\n- Made plan agent whitelist more conservative\n- Added Lua LSP support\n- Fixed autoupdate settings to respect local configuration\n- Adjusted edit tool multiple matches error wording for better clarity'
         }
       ]
     },
@@ -9196,27 +9221,44 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
+          'version': '2.5.3',
+          'title': '@moonshot-ai/kimi-code@2.5.3',
+          'date': '2026-11-10',
+          'dateRaw': '2026-11-10T13:06:23Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.3',
+          'body': '### Patch Changes\n\n- [#4762](https://github.com/MoonshotAI/kimi-code/pull/4762) [`e1912c8`](https://github.com/MoonshotAI/kimi-code/commit/e1912c801391c91d917be56a66c1e2e2e12ad2f0) Thanks [@sailist](https://github.com/sailist)! - Make steering interrupt active model requests and continue in the same turn, and add POST /api/v1/sessions/{session_id}/steer for one-request message steering.\n\n- [#4808](https://github.com/MoonshotAI/kimi-code/pull/4808) [`e3c3a12`](https://github.com/MoonshotAI/kimi-code/commit/e3c3a1205ea2fdf1de2067a3b00dd6dececea29c) Thanks [@liruifengv](https://github.com/liruifengv)! - web: Improved interactions and fixed known bugs.\n\n- [#4804](https://github.com/MoonshotAI/kimi-code/pull/4804) [`c50a55b`](https://github.com/MoonshotAI/kimi-code/commit/c50a55bf44ddb6855ec49013e7810e0072376a15) Thanks [@liruifengv](https://github.com/liruifengv)! - Fix stdio MCP servers configured with script commands such as npx failing to start on Windows.'
+        },
+        {
+          'version': '2.5.3',
+          'title': '@ moonshot-ai/kimi-code @ 2.5.3',
+          'date': '2026-11-10',
+          'dateRaw': '2026-11-10T13:21:38Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.3',
+          'body': '修补程序更改\n# 4762 e1912c8谢谢@ sailist ！ -使转向中断激活模型请求并继续在同一转弯，并添加POST/api/v1/sessions/{session_id}/steer用于单请求消息转向。\n# 4808 e3c3a12谢谢@ liruifengv ！ -网页：改善互动并修复已知错误。\n# 4804 c50a55b谢谢@ liruifengv ！ -修复使用脚本命令（如npx ）配置的stdio MCP服务器无法在Windows上启动的问题。',
+          'h': 'aa040af8'
+        },
+        {
           'version': '3.0.0-canary.20261109125038-713a200',
-          'title': '@ moonshot-ai/kimi-code @ 3.0.0-canary.20261109125038-713a200',
+          'title': '@moonshot-ai/kimi-code@3.0.0-canary.20261109125038-713a200',
           'date': '2026-11-09',
           'dateRaw': '2026-11-09T12:45:40Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%403.0.0-canary.20261109125038-713a200',
-          'body': 'chore:从code-app同步web dist (# 4765)',
-          'h': '7d9e127c'
+          'body': 'chore: sync web dist from code-app ( #4765 )'
         },
         {
           'version': '2.6.0-canary.20261109040420-9c1a9c3',
-          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.202619040420-9c1a9c3',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.20261109040420-9c1a9c3',
           'date': '2026-11-09',
           'dateRaw': '2026-11-09T04:19:34Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261109040420-9c1a9c3',
-          'body': '更改内容\n- 家务：在# 4750中由@ kimi-agent-bot将web dist与code-app同步\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261106122412-eb2035f... @ moonshot-ai/kimi-code @ 2.6.0-canary.202619040420-9c1a9c3',
-          'h': '6547548'
+          'body': 'What\'s Changed\n- chore: sync web dist from code-app by @kimi-agent-bot in #4750\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261106122412-eb2035f...@moonshot-ai/kimi-code@2.6.0-canary.20261109040420-9c1a9c3'
         },
         {
           'version': '2.5.2',
@@ -10299,7 +10341,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '0.2.2-rc.1',
@@ -10884,7 +10926,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '0.5.7',
@@ -11281,7 +11323,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '1.39.2',
@@ -11950,7 +11992,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '3.4.17',
@@ -14062,7 +14104,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14249,7 +14291,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '3.17.2',
@@ -14428,7 +14470,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '4.12.4',
@@ -15323,7 +15365,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-10 12:14',
+      'lastOkAt': '2026-11-11 03:54',
       'entries': [
         {
           'version': '5.11.0',
