@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-10',
+  'updated': '2026-11-11',
   'stats': {
-    'total': 158,
-    'knownVendor': 158,
+    'total': 159,
+    'knownVendor': 159,
     'otherVendor': 0,
-    'skippedManual': 1340,
+    'skippedManual': 1341,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -1337,6 +1337,16 @@ window.MODEL_MAP_AUTO = {
         'Qwen3.8 Omni Flash',
         'Qwen3.8-Omni-Flash',
         'qwen3.8-omni-flash'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen4-Max-Preview',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen4-Max-Preview',
+        'qwen4-max-preview'
       ],
       'auto': true
     },

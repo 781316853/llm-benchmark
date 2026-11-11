@@ -20,11 +20,11 @@ window.TBSCIENCE = {
   'leaderboard': 'v0-1-eval',
   'actionId': '40775de86105e3d601d31c1040d2235ad70cc4a593',
   'updated': '2026-11-11',
-  'refreshedAt': '2026-11-11 13:40',
+  'refreshedAt': '2026-11-11 14:52',
   'stats': {
     'tasks': 70,
     'trialsPerTask': 3,
-    'entries': 28
+    'entries': 20
   },
   'desc': 'Terminal-Bench-Science 0.1:由斯坦福与 Laude 团队联合各学科专家构建的科研工作流评测(70 个任务,来自真实研究流程,每任务 3 次独立试验),解决率越高越好。',
   'models': [
@@ -324,62 +324,6 @@ window.TBSCIENCE = {
       'src': 'anthropic-official',
       'rank': null,
       'releaseDate': '2026-11-10'
-    },
-    {
-      'model': 'Claude Mythos 5.2',
-      'agent': null,
-      'score': 75.3,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Gemini 4 Carbon',
-      'agent': null,
-      'score': 64.8,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Claude Sonnet 5.5',
-      'agent': null,
-      'score': 59.9,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'GPT-6.1 Terra',
-      'agent': null,
-      'score': 58.3,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Gemini 4 Argon',
-      'agent': null,
-      'score': 57.6,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'GPT-6.1 Sol',
-      'agent': null,
-      'score': 57.1,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Claude Haiku 5.5',
-      'agent': null,
-      'score': 20.6,
-      'src': 'aireleasetracker',
-      'rank': null
-    },
-    {
-      'model': 'Claude Haiku 4.5',
-      'agent': null,
-      'score': 0.1,
-      'src': 'aireleasetracker',
-      'rank': null
     }
   ]
 };
