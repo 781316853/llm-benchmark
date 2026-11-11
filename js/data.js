@@ -1005,6 +1005,19 @@
     };
   }
 
+  // 月度新增功能汇总(data/changelog-monthly.js 由抓取管线派生;未加载时返回 null)。
+  // 结构已在构建期定稿,前端只读:months[].tools[].items[] + multi[] + zh 译文映射。
+  function changelogMonthly() {
+    var src = window.CHANGELOG_MONTHLY;
+    if (!src || !Array.isArray(src.months)) return null;
+    return src;
+  }
+  // 条目显示文本:优先译文,缺失时回落到源文本(英文条目由页面标「原文」)
+  function clFeatText(item, zh) {
+    if (!item) return "";
+    return (zh && zh[item.key]) || item.text || "";
+  }
+
   // 各源原始对象(供渲染脚注)的取值视图。用取值器而非直接快照 window.*:
   // 「权威基准测试」页的 14 个仅展示榜与 codingplan 已改为按需注入(见 app.js 的 DATA_SRC),
   // 若在解析期就取 window.*,这些键会永远停在 undefined。
@@ -1074,6 +1087,8 @@
     pricing: function () { return window.PRICING || null; },
     // Agent 工具更新日志(「Agent工具更新日志」页;无数据文件时返回 null)
     changelog: changelog,
+    changelogMonthly: changelogMonthly,
+    clFeatText: clFeatText,
     unified: unified,
     hitCount: hitCount,
     benchSummary: benchSummary,

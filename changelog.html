@@ -42,15 +42,15 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261111f" />
+  <link rel="stylesheet" href="css/styles.css?v=20261111r" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="data/models.js?v=20261110b"></script>
   <script defer src="data/models-auto.js?v=20261110a"></script>
   <!-- 模型 API 标价(输入/缓存输入/输出三档单价 → 每百万 token 综合成本):总览矩阵「性价比」列要用,
        而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。
-       主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
-  <script defer src="data/pricing.js?v=20261110a"></script>
+       主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
+  <script defer src="data/pricing.js?v=20261111a"></script>
   <script defer src="data/deepswe.js?v=20261105a"></script>
   <script defer src="data/deepswe_v10.js?v=20260824a"></script>
   <script defer src="data/llm2014.js?v=20260824a"></script>
@@ -81,10 +81,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261110b"></script>
+  <script defer src="js/data.js?v=20261111a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261109b"></script>
-  <script defer src="js/app.js?v=20261111g"></script>
+  <script defer src="js/app.js?v=20261111x"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261110a"></script>
   <!-- 意见反馈交互 -->
@@ -139,18 +139,21 @@
     <section class="page active" id="page-changelog">
       <div class="page-head">
         <p class="page-kicker">Release Notes · Agent Tools</p>
-        <div class="page-head-row"><h2>Agent工具更新日志 <span class="tag">12 个工具官方 changelog · 每个工具显示最近 2 条更新</span></h2></div>
+        <div class="page-head-row"><h2>Agent工具更新日志 <span class="tag">12 个工具官方 changelog · 按工具 / 按月汇总新增功能</span></h2></div>
         <p id="clDesc" class="page-desc"></p>
       </div>
       <!-- 左侧工具目录:点击跳到该工具的最新版本卡片;窄屏自动收为顶部横向胶囊条 -->
       <div class="auth-layout">
-        <aside class="auth-outline" aria-label="更新日志工具目录">
-          <p class="auth-outline-title">工具 <span class="auth-outline-count" id="clOutlineCount"></span></p>
+        <aside class="auth-outline" aria-label="更新日志目录">
+          <p class="auth-outline-title"><span id="clOutlineTitle">工具</span> <span class="auth-outline-count" id="clOutlineCount"></span></p>
           <nav class="auth-outline-list" id="clOutlineList"></nav>
         </aside>
         <div class="auth-main">
           <div class="cl-toolbar">
-            <div class="qc-scope" id="clRangeBtns" role="group" aria-label="时间窗口"></div>
+            <div class="cl-toolbar-scopes">
+              <div class="qc-scope" id="clViewBtns" role="group" aria-label="视图"></div>
+              <div class="qc-scope" id="clRangeBtns" role="group" aria-label="时间窗口"></div>
+            </div>
             <p class="cl-hint" id="clHint"></p>
           </div>
           <div id="clWrap"></div>
@@ -162,9 +165,11 @@
           <span class="notes-hint">要点速览 · 版本筛选与来源可展开</span>
         </div>
         <ul>
-          <li><b class="note-term">范围</b>12 个 Agent 工具的官方更新日志;每卡固定显示最近 2 条,正文保留源站完整内容,「查看源站 ↗」直达原文。</li>
-          <li><b class="note-term">时间窗口</b>近 14 天 / 近 30 天 / 全部只决定「新」的判定,不改变每卡显示条数;早于窗口的条目仍展示,并标注「超出窗口」。</li>
-          <li><b class="note-term">翻译</b>英文条目由 MyMemory 自动翻译;尚未译出的条目保留英文并标注「原文」。</li>
+          <li><b class="note-term">范围</b>12 个 Agent 工具的官方更新日志;「按工具」每卡固定显示最近 2 条,正文保留源站完整内容,「查看源站 ↗」直达原文。</li>
+          <li><b class="note-term">月度汇总</b>「按月汇总」只抽取新增功能类条目(修复 / 优化 / 文档 / 内部变更不计),按功能首次出现的版本日期归月;月内把全部 Agent 的新增功能平铺列出,每条描述后标注 Agent 标签,并附对应版本的源站链接。</li>
+          <li><b class="note-term">去重</b>同一工具跨版本重复宣布的功能只保留首次;同月多个工具宣布的完全相同功能合并为一条,并列工具与各自来源。</li>
+          <li><b class="note-term">时间窗口</b>按工具视图里,近 14 天 / 近 30 天 / 全部只决定「新」的判定,不改变每卡显示条数;早于窗口的条目仍展示,并标注「超出窗口」。</li>
+          <li><b class="note-term">翻译</b>英文条目优先由模型批量翻译,额度不足时回落到 MyMemory;尚未译出的条目保留英文并标注「原文」。</li>
           <li><b class="note-term">刷新与容错</b>每日自动刷新 4 次;某源抓取失败时标「数据滞后」并沿用上一次成功结果。</li>
         </ul>
         <details class="notes-more">

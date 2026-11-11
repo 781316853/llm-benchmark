@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#F3EFE5" />
-  <title>订阅套餐比价 · 额度与综合单价对比</title>
-  <meta name="description" content="codingplan.fyi 套餐快速对比快照:按精选模型分列,对比各平台月价、综合单价(¥/亿 token)与实测月用量。" />
+  <title>套餐比价 · 用量/缓存/品牌筛选与官方价折扣</title>
+  <meta name="description" content="订阅套餐比价:按月用量、缓存占比、模型品牌、购买地区与使用时段筛选,对比月费、可用额度、每亿单价与官方 API 价折扣。主源 codingplan.fyi,额度补充 realapipricing.com。" />
   <meta name="author" content="LLM Benchmark Index" />
   <link rel="canonical" href="https://781316853.github.io/llm-benchmark/plans.html" />
   <link rel="alternate" hreflang="zh-CN" href="https://781316853.github.io/llm-benchmark/plans.html" />
@@ -14,16 +14,16 @@
   <!-- 分享卡片:X / 微信 / Discord / Slack 取 OG,X 取 twitter:*;og:image 为 1200×630 封面 -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大模型编码基准整合门户" />
-  <meta property="og:title" content="订阅套餐比价 · 额度与综合单价对比" />
-  <meta property="og:description" content="codingplan.fyi 套餐快速对比快照:按精选模型分列,对比各平台月价、综合单价(¥/亿 token)与实测月用量。" />
+  <meta property="og:title" content="套餐比价 · 用量/缓存/品牌筛选与官方价折扣" />
+  <meta property="og:description" content="订阅套餐比价:按月用量、缓存占比、模型品牌、购买地区与使用时段筛选,对比月费、可用额度、每亿单价与官方 API 价折扣。主源 codingplan.fyi,额度补充 realapipricing.com。" />
   <meta property="og:url" content="https://781316853.github.io/llm-benchmark/plans.html" />
   <meta property="og:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="zh_CN" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="订阅套餐比价 · 额度与综合单价对比" />
-  <meta name="twitter:description" content="codingplan.fyi 套餐快速对比快照:按精选模型分列,对比各平台月价、综合单价(¥/亿 token)与实测月用量。" />
+  <meta name="twitter:title" content="套餐比价 · 用量/缓存/品牌筛选与官方价折扣" />
+  <meta name="twitter:description" content="订阅套餐比价:按月用量、缓存占比、模型品牌、购买地区与使用时段筛选,对比月费、可用额度、每亿单价与官方 API 价折扣。主源 codingplan.fyi,额度补充 realapipricing.com。" />
   <meta name="twitter:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg" />
   <!-- 访问统计:Cloudflare Web Analytics(无 Cookie、不采集个人数据,无需同意弹窗)。
        在 Cloudflare 控制台 Web Analytics 添加站点后拿到的 token 填进下面引号即可生效;
@@ -45,15 +45,15 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261111f" />
+  <link rel="stylesheet" href="css/styles.css?v=20261111r" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="data/models.js?v=20261110b"></script>
   <script defer src="data/models-auto.js?v=20261110a"></script>
   <!-- 模型 API 标价(输入/缓存输入/输出三档单价 → 每百万 token 综合成本):总览矩阵「性价比」列要用,
        而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。
-       主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
-  <script defer src="data/pricing.js?v=20261110a"></script>
+       主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev 补齐(priceSource 标注来源) -->
+  <script defer src="data/pricing.js?v=20261111a"></script>
   <script defer src="data/deepswe.js?v=20261105a"></script>
   <script defer src="data/deepswe_v10.js?v=20260824a"></script>
   <script defer src="data/llm2014.js?v=20260824a"></script>
@@ -84,10 +84,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261110b"></script>
+  <script defer src="js/data.js?v=20261111a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261109b"></script>
-  <script defer src="js/app.js?v=20261111g"></script>
+  <script defer src="js/app.js?v=20261111x"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261110a"></script>
   <!-- 意见反馈交互 -->
@@ -138,30 +138,36 @@
       <div class="app-loading-spinner"></div>
       <p>正在加载数据...</p>
     </div>
-    <!-- 7) 套餐对比(codingplan.fyi「额度/价格对比」快速对比快照,按模型分列比价,独立展示不计入综合分) -->
+    <!-- 7) 套餐比价:全部套餐可按用量/缓存/品牌/地区/时段筛选,并保留精选模型分列对比 -->
     <section class="page active" id="page-plans">
-      <div class="page-head">
-        <p class="page-kicker">Pricing Snapshot · codingplan.fyi</p>
-        <div class="page-head-row"><h2>订阅套餐 · 额度/价格快速对比 <span class="tag">来源 codingplan.fyi</span></h2></div>
-        <p id="plansDesc" class="page-desc"></p>
+      <div class="qc-hero">
+        <div class="qc-hero-text">
+          <p class="page-kicker">Pricing Snapshot · codingplan.fyi + realapipricing.com</p>
+          <div class="page-head-row"><h2>套餐比价</h2><span class="tag">全部套餐 + 精选模型</span></div>
+          <p id="plansDesc" class="page-desc"></p>
+        </div>
+        <button type="button" class="qc-share" id="plansShare">分享此页</button>
       </div>
       <div id="plansWrap"></div>
       <p class="source-note" id="plansNote"></p>
       <section class="notes-section">
         <div class="notes-head">
           <p class="note-title">阅读说明</p>
-          <span class="notes-hint">要点速览 · 精选模型与平台名单可展开</span>
+          <span class="notes-hint">要点速览 · 筛选口径与数据来源可展开</span>
         </div>
         <ul>
-          <li><b class="note-term">来源</b>codingplan.fyi「额度/价格对比」的快速对比快照,按精选模型分列、每列按综合单价升序,随全站每日刷新。</li>
-          <li><b class="note-term">口径</b>综合单价为 ¥/亿 Token,统一按 95% 缓存命中 + 0.5% 输出构造;月价为连续包月价,按量调用行无月用量。</li>
-          <li><b class="note-term">标签与范围</b>[谷] / [峰] 为错峰/高峰时段档,[高速] 为高速服务档;默认仅精选平台,可切换显示全部;推广跳转链接已去除。</li>
+          <li><b class="note-term">来源</b>套餐与月价来自 codingplan.fyi(开源 MIT),额度由 realapipricing.com(开源 MIT)补充实测值;随全站每日刷新。</li>
+          <li><b class="note-term">筛选</b>「每月用量」用于判断套餐是否够用并生成推荐排序;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。</li>
+          <li><b class="note-term">折扣</b>官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,数值越低越划算;约一半行有可核实的官方三段价,其余显示 —。</li>
+          <li><b class="note-term">标签与范围</b>[谷] / [峰] 为错峰/高峰时段档,[高速] 为高速服务档;已下架套餐不展示,受限套餐标「购买受限」;推广跳转链接已去除。</li>
         </ul>
         <details class="notes-more">
-          <summary>展开精选模型与平台名单</summary>
+          <summary>展开筛选口径、精选模型与数据来源</summary>
           <ul>
+            <li><b class="note-term">置顶</b>选中具体模型后，该模型的所有档位行（谷/峰/厂直供等）置顶；套餐是否够用按该模型在当前缓存与所选时段下的最高额度判断，其余模型可展开。</li>
             <li><b class="note-term">精选模型</b>DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna,以及甜品级、SOTA 两组多模型对比。</li>
-            <li><b class="note-term">平台范围</b>精选平台覆盖阿里·百炼 / 智谱 / 字节·方舟 / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode 九家。价格为快照口径,可能滞后于平台官网;完整筛选与购买入口请前往 <a href="https://www.codingplan.fyi/?view=usage" target="_blank" rel="noopener">codingplan.fyi ↗</a>。</li>
+            <li><b class="note-term">全部套餐</b>覆盖 codingplan.fyi 的在售/受限套餐,并补入 ChatGPT、Gemini、Grok、Devin、Factory Droid 等补充源套餐;只比较价格与额度,不引入第三方评分。</li>
+            <li><b class="note-term">平台范围</b>精选视图覆盖阿里·百炼 / 智谱 / 字节·方舟 / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode 九家。价格为快照口径,可能滞后于平台官网;完整筛选与购买入口请前往 <a href="https://www.codingplan.fyi/?view=usage" target="_blank" rel="noopener">codingplan.fyi ↗</a> 与 <a href="https://realapipricing.com/" target="_blank" rel="noopener">realapipricing.com ↗</a>。</li>
           </ul>
         </details>
       </section>

@@ -7,6 +7,7 @@
   "type": "commonjs",
   "scripts": {
     "refresh": "node scripts/fetch_all.js",
+    "digest": "node scripts/build_changelog_digest.js",
     "pages": "node scripts/build_pages.js",
     "pages:check": "node scripts/build_pages.js --check"
   },

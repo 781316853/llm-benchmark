@@ -570,11 +570,12 @@ module.exports = {
   },
 
   // ===== Coding Plan 套餐快速对比(scripts/lib/codingplan.js 使用,不进基准管线) =====
-  // 数据源 codingplan.fyi(V2 静态站)「额度/价格对比」视图的快速对比板块,按模型分列比价:
-  //   model-comparison-presets.json 固定精选模型分组(单模型列 + 甜品级/SOTA 多模型列);
-  //   plans.json(套餐:月价/币种/billingMode)+ plan-models.json(套餐×模型:综合单价 unitPriceCnyPerM、
+  // 数据源 codingplan.fyi(开源数据,MIT)「额度/价格对比」视图:
+  //   plans.json(套餐:月价/币种/billingMode + 内嵌 planModels:套餐×模型综合单价 unitPriceCnyPerM、
   //   实测月用量 monthlyTokenInM、timeTier 谷/峰)+ models.json(slug→显示名)+ platforms.json(平台名);
   //   config.json 提供美元汇率 usdToCnyRate。
+  // 2026-11 上游改版:plan-models.json 与 model-comparison-presets.json 已 404,planModels 并入
+  //   plans.json;原 presets 的两组精选模型改为下方 presetGroups 硬编码(按 models.json 的 slug 核对)。
   // 仿 news 模式:在 fetch_all.js 旁路调用,不进 registry/校验器,仅「套餐对比」页展示。
   codingplan: {
     host: "www.codingplan.fyi",
@@ -583,15 +584,103 @@ module.exports = {
     plansUrl: "https://www.codingplan.fyi/plans.json",
     platformsUrl: "https://www.codingplan.fyi/platforms.json",
     modelsUrl: "https://www.codingplan.fyi/models.json",
-    planModelsUrl: "https://www.codingplan.fyi/plan-models.json",
-    presetsUrl: "https://www.codingplan.fyi/model-comparison-presets.json",
+    presetGroups: [
+      {
+        id: "high-volume-models",
+        title: "甜品级模型",
+        kind: "multi",
+        modelSlugs: [
+          "deepseek-v4-1-flash", "deepseek-v4-flash-0731", "glm-5-3-flash",
+          "gpt-6-luna", "kimi-k2-8-preview", "minimax-m3-1-flash-preview"
+        ]
+      },
+      {
+        id: "sota-models",
+        title: "头部级模型",
+        kind: "multi",
+        modelSlugs: ["gpt-6-astra", "gpt-6-1-sol", "claude-opus-5-5", "glm-5-3", "kimi-k3"]
+      }
+    ],
+    // 模型品牌归类(按显示名前缀匹配,顺序敏感):用于「选模型」品牌筛选。
+    // 未命中时回退补充源的模型厂商,再回退名称首词。
+    brandRules: [
+      ["claude", "Claude"], ["chatgpt", "ChatGPT"], ["gpt", "ChatGPT"],
+      ["gemini", "Gemini"], ["gemma", "Gemma"], ["glm", "智谱 GLM"],
+      ["deepseek", "DeepSeek"], ["kimi", "Kimi"], ["minimax", "MiniMax"],
+      ["qwen", "通义千问"], ["doubao", "豆包"], ["mimo", "小米 MiMo"],
+      ["muse", "Muse"], ["step", "阶跃星辰"], ["mistral", "Mistral AI"],
+      ["longcat", "LongCat"], ["ling", "inclusionAI"], ["nemotron", "NVIDIA"],
+      ["grok", "Grok"], ["composer", "Cursor"], ["spark", "讯飞星火"],
+      ["sensenova", "商汤"], ["mai-", "Microsoft"], ["hy", "腾讯混元"],
+      ["beam", "Beam"], ["crouton", "Crouton"], ["fugu", "Fugu"],
+      ["glyph", "Glyph"], ["iceman", "Iceman"], ["inkling", "Inkling"],
+      ["laguna", "Laguna"], ["ornith", "Ornith"]
+    ],
     outFile: "codingplan.js",
     windowVar: "CODINGPLAN"
   },
 
+  // ===== 套餐额度补充源 realapipricing.com(scripts/lib/realapi.js 使用,不进基准管线) =====
+  // 开源项目(MIT,github.com/Fei2411/real-api-pricing):实测/官方口径的「套餐月费 ÷ 实际可用 token」,
+  // 覆盖 ChatGPT / Gemini / Grok / Devin / Droid 等 codingplan 未收录的套餐,并为重叠套餐补充额度。
+  // 只取月额度与三段价;其榜单分数、综合分等派生字段一律不采。
+  // planAliases:realapipricing 的 plan 名 → codingplan plan slug;只有确认同款(月价差 ≤ tolerance)才合并,
+  //   未列入的作为独立套餐追加,同厂商同价但名称不一致的不自动合并(避免错配)。
+  realapi: {
+    host: "realapipricing.com",
+    pointsUrl: "https://realapipricing.com/data/points.json",
+    homepage: "https://realapipricing.com/",
+    repoUrl: "https://github.com/Fei2411/real-api-pricing",
+    license: "MIT",
+    priceTolerance: 0.10,
+    // 补充源套餐的「国内可直接购买」判定(平台名),名称含 Global / Alibaba Cloud 的按海外计
+    domesticPlatforms: ["智谱AI", "Kimi", "MiniMax", "阿里·百炼", "阶跃星辰", "小米 MiMo", "腾讯混元", "豆包"],
+    // realapi 的 vendor 是「实际服务模型」的厂商,不等于套餐平台(如 Cursor 套餐的模型来自
+    // SpaceXAI/Anthropic)。按套餐名前缀归类平台,未命中再用 vendor 兜底。
+    planPlatformRules: [
+      ["ChatGPT", "ChatGPT"],
+      ["Claude", "Claude"],
+      ["Devin", "Devin"],
+      ["Droid", "Factory Droid"],
+      ["Google AI", "Google"],
+      ["SuperGrok", "xAI Grok"],
+      ["Cursor", "Cursor"],
+      ["Kimi", "Kimi"],
+      ["GLM", "智谱AI"],
+      ["MiniMax", "MiniMax"],
+      ["阿里云百炼", "阿里·百炼"],
+      ["Alibaba Cloud", "阿里·百炼"],
+      ["Step Plan", "阶跃星辰"],
+      ["MiMo", "小米 MiMo"],
+      ["Ollama", "Ollama"],
+      ["OpenCode", "OpenCode"],
+      ["Command Code", "Command Code"]
+    ],
+    planAliases: {
+      "Claude Pro": "claude-pro",
+      "Claude Max 5x (9/14+)": "claude-max5",
+      "Claude Max 20x (9/14+)": "claude-max20",
+      "Kimi Plus 99": "kimi-plus-2026",
+      "Kimi Pro 199": "kimi-pro-2026",
+      "Kimi Max 699": "kimi-max-2026",
+      "Kimi Ultra 1399": "kimi-ultra-2026",
+      "GLM Coding Lite (新客 ¥118) 中间值": "zhipu-token-lite",
+      "GLM Coding Pro (新客 ¥538) 中间值": "zhipu-token-pro",
+      "GLM Coding Max (新客 ¥1078) 中间值": "zhipu-token-max",
+      "MiniMax M Plan Go (CN)": "minimax-mplan-go",
+      "MiniMax M Plan Explore (CN)": "minimax-mplan-explore",
+      "MiniMax M Plan Build (CN)": "minimax-mplan-build",
+      "Ollama Pro": "ollama-coding-plan-pro",
+      "Ollama Max": "ollama-coding-plan-max",
+      "OpenCode Go": "opencode-go",
+      "Command Code GOAT": "commandcode-goat",
+      "Cursor Ultra (Standard)": "cursor-x-ultra"
+    }
+  },
+
   // ===== 模型 API 标价(scripts/lib/pricing.js 使用,不进基准管线) =====
-  // 与 codingplan 同站、不同视图:那里是「订阅套餐月价」比价,这里是 plan-models.json 里
-  // 每个 plan×model 的 pricing 字段(输入 / 缓存输入 / 输出三档单价,均 $/百万 token)。
+  // 与 codingplan 同站、不同视图:那里是「订阅套餐月价」比价,这里是 plans.json 内每个
+  // plan×model 的 pricing 字段(输入 / 缓存输入 / 输出三档单价,均 $/百万 token)。
   // 供总览矩阵「性价比」列使用:按 1M token 实际编程比例(95% 缓存输入 + 4.5% 未缓存输入
   // + 0.5% 输出)折算「每百万 token 综合成本」,再与综合分相除得性价比指数。
   // 主源 codingplan.fyi 未收录的新模型,由 models.dev 只补「排名模型(命中≥4榜)」的空缺,
@@ -601,7 +690,8 @@ module.exports = {
     host: "www.codingplan.fyi",
     officialUrl: "https://www.codingplan.fyi/?view=usage",
     configUrl: "https://www.codingplan.fyi/config.json",
-    planModelsUrl: "https://www.codingplan.fyi/plan-models.json",
+    // 2026-11 起 plan-models.json 已 404,packages 行内嵌在 plans.json 的 plans[].planModels
+    plansUrl: "https://www.codingplan.fyi/plans.json",
     // 缺价补齐源:models.dev 公开目录(USD/百万 token,input/output/cache_read)。
     // 只用于主源没有的排名模型;抓取失败时 fail-soft,仍写出主源结果。
     modelsDevUrl: "https://models.dev/api.json",
@@ -732,6 +822,30 @@ module.exports = {
       maxCharsPerRun: 25000,   // 单轮字符预算:MyMemory 配了联系邮箱为 5 万字符/天,每日 2 轮各 2.5 万
       chunkMaxChars: 450,      // 单次请求字符上限(MyMemory 匿名接口约 500 字符/请求,长文须按行分块)
       logTag: "changelog"      // 端点熔断日志前缀
+    }
+  },
+
+  // ===== Agent 工具更新日志的「月度新增功能」派生文件 =====
+  // 由 scripts/lib/changelog-digest.js 在 changelog.js 写盘后生成:
+  // 只抽取「新增功能」类条目,按首次出现的月份归组,同工具跨版本去重、同月跨工具合并。
+  // 前端「按月汇总」视图懒加载,不影响按工具视图。
+  changelogDigest: {
+    outFile: "changelog-monthly.js",
+    windowVar: "CHANGELOG_MONTHLY",
+    translate: {
+      enabled: true,
+      batchItems: 40,          // 单次模型请求最多翻译条数
+      batchChars: 8000,        // 单次模型请求的源文本字符上限
+      maxItemsPerRun: 4000,    // 单轮最多翻译条数(初始全量约 3.1k 条,增量通常只有几十条)
+      deadlineMs: 480000,      // 单轮翻译墙钟预算(8 分钟):到点停止并保留部分结果,下轮续传
+      requestTimeoutMs: 60000, // 单次模型请求超时
+      baseUrl: "https://models.github.ai/inference", // 可被 TRANSLATE_BASE_URL 覆盖
+      model: "openai/gpt-4.1-mini",                  // 可被 TRANSLATE_MODEL 覆盖
+      // 模型通道的密钥来源(按顺序取第一个非空);CI 注入 GH_TOKEN,
+      // 并在 refresh.yml 申请 permissions.models=read 后即可调用 GitHub Models。
+      tokenEnvs: ["TRANSLATE_API_KEY", "GH_TOKEN", "GITHUB_TOKEN"],
+      // 模型不可用时的免费接口兜底:与卡片翻译的 25000 字符合计 40000,低于 MyMemory 每日 5 万额度
+      mymemoryMaxCharsPerRun: 15000
     }
   }
 };

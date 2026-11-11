@@ -158,6 +158,31 @@
     ["^¥([\\d,.]+) / 月$", "¥$1 / mo"],
     ["^¥([\\d,.]+) / 亿$", "¥$1 / 100M"],
     ["^([\\d,.]+)亿$", function (m, n) { return fmtTokens(n); }],
+    // ===== 全部套餐视图(动态数字) =====
+    // ===== 套餐比价筛选面板(动态数字) =====
+    ["^共 (\\d+) 个套餐 · 每月 ([\\d.]+)亿 · 缓存 (\\d+%)(?: · (.+))?$", function (m, n, use, cache, brand) {
+      return n + " plans · " + fmtTokens(use) + "/mo · cache " + cache + (brand ? " · " + brand : "");
+    }],
+    ["^够每月 ([\\d.]+)亿里最便宜$", function (m, use) { return "Cheapest covering " + fmtTokens(use) + "/mo"; }],
+    ["^够每月 ([\\d.]+)亿$", function (m, use) { return "Covers " + fmtTokens(use) + "/mo"; }],
+    ["^不够每月 ([\\d.]+)亿$", function (m, use) { return "Below " + fmtTokens(use) + "/mo"; }],
+    ["^每月 ([\\d.]+)亿$", function (m, use) { return "Monthly " + fmtTokens(use); }],
+    ["^缓存 (\\d+%)$", "Cache $1"],
+    ["^共 (\\d+) 个套餐$", "$1 plans"],
+    ["^≤¥([\\d,.]+)/月$", "≤¥$1/mo"],
+    ["^展开全部 (\\d+) 个品牌$", "Show all $1 brands"],
+    ["^(\\d+) 条相关档位$", "$1 matching rows"],
+    ["^(\\d+) 条档位$", "$1 rows"],
+    ["^共 (\\d+) 个套餐 · 缓存占比 (.+)$", "$1 plans · cache share $2"],
+    ["^展开另外 (\\d+) 个模型$", "Show $1 more models"],
+    ["^最低 ¥([\\d,.]+) / 亿 · 最高 ([\\d,.]+)亿$", function (m, u, q) {
+      return "Lowest ¥" + u + " / 100M · highest " + fmtTokens(q);
+    }],
+    ["^单价 — · 最高 ([\\d,.]+)亿$", function (m, q) { return "Unit — · highest " + fmtTokens(q); }],
+    ["^最低 ¥([\\d,.]+) / 亿 · 最高 (.+)$", "Lowest ¥$1 / 100M · highest $2"],
+    ["^最低 ¥([\\d,.]+) / 亿 · 额度 —$", "Lowest ¥$1 / 100M · quota —"],
+    ["^单价 — · 最高 (.+)$", "Unit — · highest $1"],
+    ["^单价 — · 额度 —$", "Unit — · quota —"],
 
     // ===== 取值提示(总览矩阵 / 各榜明细) =====
     ["^性价比 ([\\d.]+) = 综合分 ([\\d.]+) ÷ ¥([\\d.]+)/M · 输入 ¥([\\d.]+) / 缓存输入 ¥([\\d.]+) / 输出 ¥([\\d.]+)\\(¥/百万 token\\)· 综合成本 = 95% 缓存输入 \\+ 4\\.5% 未缓存输入 \\+ 0\\.5% 输出\\(按 1M token 实际编程比例折算\\);单价来源 (.+)$",
@@ -714,6 +739,124 @@
         "DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna, plus two multi-model comparisons for sweet-spot and SOTA models.",
       "精选平台覆盖阿里·百炼 / 智谱 / 字节·方舟 / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode 九家。价格为快照口径,可能滞后于平台官网;完整筛选与购买入口请前往":
         "Featured platforms cover nine providers: Alibaba Bailian / Zhipu / ByteDance Ark / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode. Prices are snapshot values and may lag the platforms' own sites; for full filtering and purchase links see",
+      "套餐比价快照：按用量、缓存占比、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣；另保留精选模型分列对比。":
+        "Plan-comparison snapshot: filter all on-sale plans by monthly usage, cache share, model brand, purchase region and usage time, and compare monthly fee, usable quota, ¥ per 100M tokens and the official-price ratio; the curated-model comparison is also kept.",
+      "套餐比价快照：精选模型分列对比 + 全部在售套餐（月费 / 每模型 4 档缓存占比下的月可用额度 / ¥每亿单价）。":
+        "Plan pricing snapshot: curated-model comparison plus all on-sale plans (monthly fee / usable quota at four cache shares / ¥ per 100M tokens).",
+      "视图": "View",
+      "全部套餐": "All plans",
+      "缓存占比": "Cache share",
+      "月费": "Monthly fee",
+      "每亿单价": "¥ per 100M",
+      "可用额度": "Usable quota",
+      "月可用额度": "Monthly usable quota",
+      "平台": "Platform",
+      "全部平台": "All platforms",
+      "购买受限": "Restricted",
+      "补充": "Supplement",
+      "实测": "Measured",
+      "单值": "Single value",
+      "收起": "Collapse",
+      "平台 / 套餐 / 月费": "Platform / plan / monthly fee",
+      "模型 · 档位": "Model · tier",
+      "全部套餐 + 精选模型": "All plans + curated models",
+      "智谱 GLM": "Zhipu GLM",
+      "通义千问": "Qwen",
+      "小米 MiMo": "Xiaomi MiMo",
+      "腾讯混元": "Tencent Hunyuan",
+      "阶跃星辰": "StepFun",
+      "豆包": "Doubao",
+      "讯飞星火": "iFlytek Spark",
+      "商汤": "SenseTime",
+      "当前筛选下暂无可比较的套餐。": "No comparable plans under this filter.",
+      "套餐视图": "Plan view",
+      "套餐排序": "Plan sort",
+      "对比平台范围": "Platform scope",
+      "套餐比价": "Plan comparison",
+      "分享此页": "Share this page",
+      "已复制链接": "Link copied",
+      "每月用量": "Monthly usage",
+      "选模型": "Models",
+      "具体模型": "Specific model",
+      "全部模型": "All models",
+      "不限模型": "All models",
+      "的模型 · 数字是能用它的套餐数；可选最多 4 个。":
+        "models · the number is how many plans can use it; select up to 4.",
+      "月费上限": "Monthly fee cap",
+      "不限": "No limit",
+      "清除": "Clear",
+      "不限品牌": "All brands",
+      "收起品牌": "Collapse brands",
+      "在哪买": "Where to buy",
+      "国内能直接买": "Buy in China",
+      "全球": "Worldwide",
+      "什么时候用": "When you use it",
+      "白天为主": "Mostly daytime",
+      "主要在夜间用": "Mostly at night",
+      "国内能买的加上要海外付款的，全部一起比": "Plans purchasable in China plus those needing overseas payment, all compared",
+      "只显示国内可直接购买的套餐": "Only plans purchasable directly in China",
+      "夜间谷时档位优先": "Night off-peak tiers first",
+      "白天高峰档位优先": "Daytime peak tiers first",
+      "能用多少": "Usable quota",
+      "官方价几折": "% of official price",
+      "主模型": "Main model",
+      "置顶": "Pinned",
+      "选中具体模型后，该模型的所有档位行（谷/峰/厂直供等）置顶；套餐是否够用按该模型在当前缓存档位下的最高额度判断，其余模型可展开。":
+        "After selecting a model, all of its tier rows (off-peak/peak/direct-supply, etc.) are pinned; coverage is judged by its highest quota at the current cache share, and other models can be expanded.",
+      "选中具体模型后，该模型的所有档位行（谷/峰/厂直供等）置顶；套餐是否够用按该模型在当前缓存与所选时段下的最高额度判断，其余模型可展开。":
+        "After selecting a model, all of its tier rows (off-peak/peak/direct-supply, etc.) are pinned; coverage is judged by its highest quota at the current cache share and usage time, and other models can be expanded.",
+      "选中具体模型后，该模型的所有档位行置顶；套餐是否够用按所选模型在当前缓存档位下的最高额度判断；「实测」为补充源实测/官方口径，「单值」为源站只给单一额度、不参与档位换算；已下架套餐不展示，受限套餐标「购买受限」。":
+        "After selecting a model, all of its tier rows are pinned; coverage is judged by its highest quota at the current cache share. “Measured” marks the supplement source's measured/official values, “Single value” means the source gives only one quota figure that cannot be converted across cache tiers; delisted plans are hidden and restricted plans are marked “Restricted”.",
+      "选中具体模型后，该模型的所有档位行置顶；套餐是否够用按所选模型在当前缓存与所选时段下的最高额度判断；「实测」为补充源实测/官方口径，「单值」为源站只给单一额度、不参与档位换算；已下架套餐不展示，受限套餐标「购买受限」。":
+        "After selecting a model, all of its tier rows are pinned; coverage is judged by its highest quota at the current cache share and usage time. “Measured” marks the supplement source's measured/official values, “Single value” means the source gives only one quota figure that cannot be converted across cache tiers; delisted plans are hidden and restricted plans are marked “Restricted”.",
+      "「每月用量」用于判断套餐是否够用并生成推荐排序;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌、购买地区与使用时段会改变候选套餐与置顶行。":
+        "“Monthly usage” decides whether a plan covers the need and drives the recommended order; cache share converts usable monthly quota at 0% / 50% / 95% / 99% (output fixed at 0.5%); brand, purchase region and usage time change the candidate plans and pinned rows.",
+      "「每月用量」用于判断套餐是否够用并生成推荐排序;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。":
+        "“Monthly usage” decides whether a plan covers the need and drives the recommended order; cache share converts usable monthly quota at 0% / 50% / 95% / 99% (output fixed at 0.5%); brand/purchase region narrow the candidate plans, and usage time decides whether peak or off-peak tiers are used for coverage.",
+      "官方价折扣": "Official-price ratio",
+      "能用得最多": "Most usable quota",
+      "每亿单价最低": "Cheapest per 100M",
+      "购买地区": "Purchase region",
+      "使用时段": "Usage time",
+      "月可用额度按 0% / 50% / 95% / 99% 缓存占比换算(输出固定 0.5%);「每月用量」只用于判断是否够用与推荐排序,不改变显示的额度;官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,越低越划算。":
+        "Usable quota is converted at 0% / 50% / 95% / 99% cache share (output fixed at 0.5%); “Monthly usage” only decides coverage and the recommended order, not the displayed quota; official-price ratio = plan ¥ per 100M ÷ the same model's official API ¥ per 100M, lower is better.",
+      "月可用额度按 0% / 50% / 95% / 99% 缓存占比换算(输出固定 0.5%);只有单一额度的套餐只在 95% 档显示;「每月用量」只用于判断是否够用与推荐排序,不改变显示的额度;官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,越低越划算。":
+        "Usable quota is converted at 0% / 50% / 95% / 99% cache share (output fixed at 0.5%); plans with only a single quota figure appear only at 95%; “Monthly usage” only decides coverage and the recommended order, not the displayed quota; official-price ratio = plan ¥ per 100M ÷ the same model's official API ¥ per 100M, lower is better.",
+      "偶尔用": "Occasional",
+      "天天写代码": "Daily coding",
+      "整天跑 Agent": "All-day agents",
+      "每次都是新问题": "Every prompt is new",
+      "聊天为主": "Mostly chat",
+      "写代码常见": "Common for coding",
+      "长时间跑 Agent": "Long agent runs",
+      "额度补充": "Quota supplement",
+      "主模型取品牌/时段筛选后官方价最高的一行,其余模型可展开;「实测」为补充源实测/官方口径,「单值」为源站只给单一额度、不参与档位换算;已下架套餐不展示,受限套餐标「购买受限」。":
+        "The main model is the highest official-price row remaining after brand/time filters; other models can be expanded. “Measured” marks the supplement source's measured/official values, “Single value” means the source gives only one quota figure that cannot be converted across cache tiers; delisted plans are hidden and restricted plans are marked “Restricted”.",
+      "要点速览 · 筛选口径与数据来源可展开": "Key points · expand for filters and data sources",
+      "筛选": "Filters",
+      "折扣": "Discount",
+      "「每月用量」用于判断套餐是否够用并生成推荐排序;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌、购买地区与使用时段会改变主模型与候选套餐。":
+        "“Monthly usage” decides whether a plan covers the need and drives the recommended order; cache share converts usable monthly quota at 0% / 50% / 95% / 99% (output fixed at 0.5%); brand, purchase region and usage time change the main model and candidate plans.",
+      "官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,数值越低越划算;约一半行有可核实的官方三段价,其余显示 —。":
+        "Official-price ratio = plan ¥ per 100M ÷ the same model's official API ¥ per 100M; lower is better. About half of the rows have a verifiable official three-part price; the rest show —.",
+      "展开筛选口径、精选模型与数据来源": "Show filter basis, curated models and data sources",
+      "按所选品牌与时段筛出候选后,取官方 API 价最高的一行作为主模型(近似主推/最强),其余模型可展开查看。":
+        "After filtering by brand and time, the highest official-priced row becomes the main model (approximating the flagship/strongest), and other models can be expanded.",
+      "月可用额度按 0% / 50% / 95% / 99% 缓存占比换算(输出固定 0.5%),默认 95%;「实测」为补充源实测/官方口径,「单值」为源站只给单一额度、不参与档位换算。":
+        "Usable quota is converted at 0% / 50% / 95% / 99% cache share (output fixed at 0.5%), default 95%; “Measured” marks the supplement source's measured/official values, “Single value” means the source gives only one quota figure that cannot be converted across cache tiers.",
+      "每亿单价 = 折算月费 ÷ 当前档位月可用额度(亿);已下架套餐不展示,受限套餐标记「购买受限」;推广跳转已去除。":
+        "¥ per 100M = converted monthly fee ÷ usable quota (in 100M tokens) at the current cache share; delisted plans are hidden, restricted plans are marked “Restricted”, and referral links are stripped.",
+      "套餐与月价来自 codingplan.fyi(开源 MIT),额度由 realapipricing.com(开源 MIT)补充实测值;随全站每日刷新。":
+        "Plans and monthly prices come from codingplan.fyi (open-source, MIT); quotas are supplemented with measured values from realapipricing.com (open-source, MIT). Refreshed with the rest of the site daily.",
+      "「全部套餐」可按 0% / 50% / 95% / 99% 缓存占比切换月可用额度(输出固定 0.5%,默认 95%);「精选模型」为同一 95% 口径下的综合单价对比。":
+        "“All plans” switches usable monthly quota across 0% / 50% / 95% / 99% cache shares (output fixed at 0.5%, default 95%); “Curated models” compares blended unit prices on the same 95% basis.",
+      "[谷] / [峰] 为错峰/高峰时段档,[高速] 为高速服务档;已下架套餐不展示,受限套餐标「购买受限」;推广跳转链接已去除。":
+        "[Off-peak] / [Peak] mark discounted or peak-hour slots and [Hi-speed] the high-speed service tier; delisted plans are hidden, restricted plans are marked “Restricted”, and referral links are stripped.",
+      "展开精选模型、平台范围与数据来源": "Show curated models, platform scope and data sources",
+      "覆盖 codingplan.fyi 的在售/受限套餐,并补入 ChatGPT、Gemini、Grok、Devin、Factory Droid 等补充源套餐;只比较价格与额度,不引入第三方评分。":
+        "Covers on-sale/restricted plans from codingplan.fyi and adds supplement-source plans such as ChatGPT, Gemini, Grok, Devin and Factory Droid; compares price and quota only, with no third-party scoring.",
+      "精选平台覆盖阿里·百炼 / 智谱 / 字节·方舟 / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode 九家。价格为快照口径,可能滞后于平台官网;完整筛选与购买入口请前往 codingplan.fyi ↗ 与 realapipricing.com ↗。":
+        "Featured platforms cover nine providers: Alibaba Bailian / Zhipu / ByteDance Ark / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode. Prices are snapshot values and may lag the platforms' own sites; for full filtering and purchase links see codingplan.fyi ↗ and realapipricing.com ↗.",
 
       // ===== 页头标题与榜单标签 =====
       "llm2014 Agentic 编程榜": "llm2014 Agentic Coding",

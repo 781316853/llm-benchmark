@@ -1,7 +1,8 @@
 // 模型 API 标价抓取与维护(data/pricing.js)
-// 主源 codingplan.fyi(V2 静态站)plan-models.json 的 pricing 字段:每个 plan×model 的
+// 主源 codingplan.fyi(开源 MIT)plans.json 里每个 plan×model 的 pricing 字段:
 // 输入 / 缓存输入 / 输出三档单价($/百万 token)与对应人民币值,以及顶层 workload
-// (cacheHitRate / outputRatio / tokensPerRequest)。
+// (cacheHitRate / outputRatio / tokensPerRequest)。2026-11 上游已把原 plan-models.json
+// 的 planModels 并入 plans.json(旧地址 404),这里改为从 plans[].planModels 展平。
 // 补缺:主源没收录的「排名模型(总览命中≥4榜)」,用 models.dev/api.json 官方 provider
 //   优先、openrouter 兜底精确匹配补齐;只补空缺、不覆盖主源,每条价格记 priceSource。
 // 用途:总览矩阵「性价比」列 —— 按 1M token 实际编程比例折算「每百万 token 综合成本」,
@@ -209,11 +210,11 @@ async function updatePricing() {
   var cfg = CONFIG.pricing;
   // 汇率与单价表分属两个 URL,由 transport 按 host 自动串行限流
   var texts = {};
-  for (var key of ["configUrl", "planModelsUrl"]) {
+  for (var key of ["configUrl", "plansUrl"]) {
     texts[key] = await transport.fetchWithRetry(cfg[key]);
   }
   var config = JSON.parse(texts.configUrl);
-  var doc = JSON.parse(texts.planModelsUrl);
+  var doc = JSON.parse(texts.plansUrl);
 
   var usdToCnyRate = positiveNumber(config && config.usdToCnyRate) || cfg.fallbackUsdToCny;
 
@@ -230,8 +231,11 @@ async function updatePricing() {
   }
   var restRatio = 1 - cacheHitRate - outputRatio;   // 未命中缓存的输入占比,当前 0.045
 
-  var rows = Array.isArray(doc && doc.planModels) ? doc.planModels : [];
-  if (!rows.length) throw new Error("plan-models.json 未解析到 planModels");
+  var rows = [];
+  (Array.isArray(doc && doc.plans) ? doc.plans : []).forEach(function (p) {
+    (p && Array.isArray(p.planModels) ? p.planModels : []).forEach(function (r) { rows.push(r); });
+  });
+  if (!rows.length) throw new Error("plans.json 未解析到 planModels");
 
   var withPricing = 0;
   var bySlug = {};
@@ -353,7 +357,7 @@ async function updatePricing() {
 
   var obj = {
     source: "Coding Plan 对比(codingplan.fyi);排名模型缺价由 models.dev / 厂商官网价种子补齐",
-    url: cfg.planModelsUrl,
+    url: cfg.plansUrl,
     supplementUrl: cfg.modelsDevUrl,
     officialUrl: cfg.officialUrl,
     updated: CONFIG.TODAY,
@@ -381,8 +385,8 @@ async function updatePricing() {
     models: unique
   };
   var header =
-    "// 数据源:模型 API 标价主源 codingplan.fyi plan-models.json;排名模型缺价由 models.dev/api.json 补齐,更新于 " + CONFIG.TODAY + "\n" +
-    "// 来源:" + cfg.planModelsUrl + " + config.json(汇率;" + cfg.modelsDevUrl + " 仅补缺;官方:" + cfg.officialUrl + ")\n" +
+    "// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 " + CONFIG.TODAY + "\n" +
+    "// 来源:" + cfg.plansUrl + " + config.json(汇率;" + cfg.modelsDevUrl + " 仅补缺;官方:" + cfg.officialUrl + ")\n" +
     "// 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/\n" +
     "//   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/\n" +
     "//   costPerM=每百万 token 综合成本/priceSource=价格来源;按 costPerM 降序。\n" +

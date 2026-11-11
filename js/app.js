@@ -20,7 +20,19 @@
     showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
     searchQuery: "", // 总览页矩阵搜索:非空时跨全部有成绩的模型筛选,不套用默认前30/参考区间截断
     plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
+    plansView: "all", // 套餐页视图:all=全部套餐(默认)/groups=精选模型对比
+    plansUsage: 5, // 每月用量(亿):用于判断套餐是否够用与推荐排序
+    plansCache: 2, // 缓存占比档位索引:0/50/95/99%,默认 95%
+    plansBrand: "all", // 选模型品牌筛选
+    plansModels: [], // 已选具体模型(归一化模型名,最多 4 个;空=不限)
+    plansMaxFee: null, // 月费上限(¥/月;null=不限)
+    plansBrandsExpanded: false, // 品牌 chips 是否展开全部
+    plansRegion: "global", // global=国内+海外全部/domestic=仅国内可直接购买
+    plansTime: "day", // day=白天(峰时)/night=夜间(谷时)
+    plansSort: "fit", // 排序:fit=推荐/fee=月费/quota=能用多少/discount=官方价几折
+    plansExpanded: {}, // 全部套餐中已展开全部模型的套餐 slug
     changelogDays: 14, // 更新日志页时间窗口(天):14(默认)/30/0=不限
+    clView: "tools", // 更新日志页视图:tools=按工具(默认)/monthly=按月新增功能汇总
     // 各页"仅跨榜模型"开关:false=仅显示命中≥2榜的模型,true=显示全部
     // 总览默认收起(聚焦跨榜命中),llm2014 页默认展开全部模型
     showAll: { overview: false, llm: true } };
@@ -2075,10 +2087,362 @@
       '<tbody>' + (body || '<tr><td colspan="2" class="qc-empty">当前暂无可比较的套餐。</td></tr>') +
       '</tbody></table></div></article>';
   }
+  var QC_CACHE = [
+    [0, "0%", "每次都是新问题"], [1, "50%", "聊天为主"],
+    [2, "95%", "写代码常见"], [3, "99%", "长时间跑 Agent"]
+  ];
+  var QC_CACHE_H = [0, 0.5, 0.95, 0.99];
+  var QC_USAGE = [
+    [0.1, "0.1亿", "偶尔用"], [0.5, "0.5亿", ""], [1, "1亿", ""],
+    [5, "5亿", "天天写代码"], [10, "10亿", ""], [30, "30亿", "整天跑 Agent"], [100, "100亿", ""]
+  ];
+  var QC_FEE = [
+    ["0", "不限", ""], ["70", "¥70", ""], ["140", "¥140", ""],
+    ["700", "¥700", ""], ["1400", "¥1400", ""]
+  ];
+  function qcSeg(attr, opts, cur, label) {
+    return '<div class="qc-scope" role="group" aria-label="' + esc(label) + '">' +
+      opts.map(function (o) {
+        var on = String(o[0]) === String(cur);
+        return '<button type="button" class="qc-scope-btn' + (on ? " is-active" : "") +
+          '" data-' + attr + '="' + esc(o[0]) + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>';
+      }).join("") + "</div>";
+  }
+  // 刻度滑杆:点选刻度(比原生 range 更好点按,也便于显示档位说明)
+  function qcSlider(attr, opts, cur) {
+    var n = opts.length;
+    var idx = 0;
+    opts.forEach(function (o, i) { if (String(o[0]) === String(cur)) idx = i; });
+    var pct = n > 1 ? idx / (n - 1) * 100 : 0;
+    return '<div class="qc-slider" style="--n:' + n + '">' +
+      '<div class="qc-slider-track"><span style="width:' + pct + '%"></span></div>' +
+      '<div class="qc-slider-stops">' + opts.map(function (o) {
+        var on = String(o[0]) === String(cur);
+        return '<button type="button" class="qc-stop' + (on ? " is-on" : "") +
+          '" data-' + attr + '="' + esc(o[0]) + '" aria-pressed="' + on + '"><i></i><b>' +
+          esc(o[1]) + '</b>' + (o[2] ? '<em>' + esc(o[2]) + '</em>' : "") + '</button>';
+      }).join("") + '</div></div>';
+  }
+  function qcFmtQuota(qM) {
+    if (qM == null || !isFinite(qM) || qM <= 0) return "—";
+    var yi = qM / 100;
+    var d = yi < 1 ? 3 : yi < 10 ? 2 : 1;
+    return yi.toLocaleString("zh-CN", { maximumFractionDigits: d }) + "亿";
+  }
+  function qcMoney(v) {
+    if (v == null || !isFinite(v)) return "—";
+    var d = v < 1 ? 3 : v < 10 ? 2 : 1;
+    return "¥" + v.toLocaleString("zh-CN", { maximumFractionDigits: d }) + " / 亿";
+  }
+  function qcFee(v) {
+    if (v == null || !isFinite(v)) return "按量";
+    return "¥" + v.toLocaleString("zh-CN", { maximumFractionDigits: 2 }) + " / 月";
+  }
+  // ¥/亿 = 折算月费 ÷ 当前档位月可用额度(亿);按量行回退源站每百万单价
+  function qcUnitYi(plan, row, idx) {
+    var q = row && row.q && row.q[idx];
+    if (q > 0 && plan.feeCny != null) return plan.feeCny * 100 / q;
+    if (row && row.u != null) return row.u * 100;
+    return null;
+  }
+  // 官方 API 混合价(¥/亿):p = [输入, 缓存, 输出] ¥/百万 token
+  function qcOfficialYi(row, idx) {
+    if (!row || !row.p) return null;
+    var h = QC_CACHE_H[idx] || 0.95;
+    var perM = row.p[0] * (1 - h - 0.005) + row.p[1] * h + row.p[2] * 0.005;
+    return perM > 0 ? perM * 100 : null;
+  }
+  function qcDiscount(plan, row, idx) {
+    var u = qcUnitYi(plan, row, idx);
+    var o = qcOfficialYi(row, idx);
+    return u != null && o != null && o > 0 ? u / o * 10 : null;
+  }
+  function qcDiscountText(d) {
+    return d == null ? "—" : (d < 1 ? d.toFixed(2) : d.toFixed(1)) + " 折";
+  }
+  // 模型名归一:忽略大小写、空格、连字符、下划线、点,便于跨源匹配同一模型
+  function qcModelKey(name) {
+    return String(name || "").toLowerCase().replace(/[\s\-_.]/g, "");
+  }
+  function qcModelCatalog(plans) {
+    var map = {};
+    plans.forEach(function (p) {
+      var seen = {};
+      (p.models || []).forEach(function (r) {
+        var k = qcModelKey(r.m);
+        if (!k || seen[k]) return;
+        seen[k] = 1;
+        var e = map[k] || (map[k] = { key: k, names: {}, brand: r.b || "", plans: 0 });
+        e.plans++;
+        e.names[r.m] = (e.names[r.m] || 0) + 1;
+        if (!e.brand) e.brand = r.b || "";
+      });
+    });
+    var out = {};
+    Object.keys(map).forEach(function (k) {
+      var e = map[k];
+      var name = Object.keys(e.names).sort(function (a, b) {
+        return e.names[b] - e.names[a] || a.localeCompare(b);
+      })[0];
+      out[k] = { key: k, name: name, brand: e.brand, plans: e.plans };
+    });
+    return out;
+  }
+  // 选中品牌后,在其下方平铺该品牌的模型 chips(可选最多 4 个)
+  function qcModelPanel(catalog) {
+    if (state.plansBrand === "all") return "";
+    var entries = Object.keys(catalog).map(function (k) { return catalog[k]; })
+      .filter(function (e) { return e.brand === state.plansBrand; })
+      .sort(function (a, b) { return b.plans - a.plans || a.name.localeCompare(b.name, "zh-CN"); });
+    if (!entries.length) return "";
+    var selected = state.plansModels || [];
+    var chips = '<button type="button" class="qc-chip' + (selected.length ? "" : " is-on") +
+      '" data-qc-model="">不限模型</button>' +
+      entries.map(function (e) {
+        var on = selected.indexOf(e.key) >= 0;
+        var full = !on && selected.length >= 4;
+        return '<button type="button" class="qc-chip qc-model-chip' + (on ? " is-on" : "") +
+          '" data-qc-model="' + esc(e.key) + '"' + (full ? " disabled" : "") + '>' +
+          esc(e.name) + '<span>' + e.plans + '</span></button>';
+      }).join("");
+    return '<div class="qc-model-panel"><p class="qc-model-hint"><b>' + esc(state.plansBrand) +
+      '</b> <span>的模型 · 数字是能用它的套餐数；可选最多 4 个。</span></p>' +
+      '<div class="qc-chips">' + chips + '</div></div>';
+  }
+  // 当前筛选范围内参与比较的行:选了具体模型只看该模型;否则按品牌;都不限则看全部。
+  // 时段:白天优先峰时档、夜间优先谷时档;没有对应档位时回落到无档位行,再回落到全部。
+  function qcRelevantRows(plan, idx) {
+    var rows = (plan.models || []).filter(function (r) { return r.q && r.q[idx] != null; });
+    var models = state.plansModels || [];
+    if (models.length) {
+      rows = rows.filter(function (r) { return models.indexOf(qcModelKey(r.m)) >= 0; });
+    } else if (state.plansBrand !== "all") {
+      rows = rows.filter(function (r) { return r.b === state.plansBrand; });
+    }
+    var night = state.plansTime === "night";
+    var timed = rows.filter(function (r) { return night ? /谷/.test(r.t) : /峰/.test(r.t); });
+    if (timed.length) return timed;
+    var untiered = rows.filter(function (r) { return !r.t; });
+    return untiered.length ? untiered : rows;
+  }
+  // 套餐级汇总:够用看最高额度(任一档位够即可),单价/折扣看最划算的一行
+  function qcPlanAgg(plan, rows, idx) {
+    var maxQ = 0, unit = null, discount = null;
+    rows.forEach(function (r) {
+      if (r.q[idx] > maxQ) maxQ = r.q[idx];
+      var u = qcUnitYi(plan, r, idx);
+      if (u != null && (unit == null || u < unit)) unit = u;
+      var d = qcDiscount(plan, r, idx);
+      if (d != null && (discount == null || d < discount)) discount = d;
+    });
+    return { maxQ: maxQ, unit: unit, discount: discount };
+  }
+  // 行置顶:选了具体模型只置顶这些模型(按选择顺序);仅选品牌时置顶同品牌行
+  function qcModelRank(row) {
+    var models = state.plansModels || [];
+    if (models.length) {
+      var mi = models.indexOf(qcModelKey(row.m));
+      return mi >= 0 ? mi : 999;
+    }
+    if (state.plansBrand !== "all") return row.b === state.plansBrand ? 0 : 999;
+    return 999;
+  }
+  function qcSrcBadge(r) {
+    var s = "";
+    if (r && r.s === "r" && r.w === "measured") {
+      s += ' <span class="qc-badge qc-badge--src" title="补充源实测/官方口径' +
+        (r.d ? "，数据日期 " + esc(r.d) : "") + '">实测</span>';
+    }
+    if (r && r.x) s += ' <span class="qc-badge" title="源站只给出单一额度值，不参与缓存档位换算">单值</span>';
+    return s;
+  }
+  function qcAllHtml(data, catalog) {
+    var idx = state.plansCache;
+    var usage = state.plansUsage;
+    var domestic = state.plansRegion === "domestic";
+    var maxFee = state.plansMaxFee;
+    var items = [];
+    data.plans.forEach(function (p) {
+      if (!p.models || !p.models.length) return;
+      if (domestic && !p.dm) return;
+      if (maxFee != null && p.feeCny != null && p.feeCny > maxFee) return;
+      var rel = qcRelevantRows(p, idx);
+      if (!rel.length) return;
+      var agg = qcPlanAgg(p, rel, idx);
+      items.push({
+        plan: p, rel: rel, maxQ: agg.maxQ, unit: agg.unit, discount: agg.discount,
+        covers: agg.maxQ >= usage * 100
+      });
+    });
+    if (!items.length) return '<p class="qc-empty">当前筛选下暂无可比较的套餐。</p>';
+    var mode = state.plansSort;
+    items.sort(function (a, b) {
+      if (mode === "fee") {
+        return (a.plan.feeCny == null ? Infinity : a.plan.feeCny) -
+          (b.plan.feeCny == null ? Infinity : b.plan.feeCny);
+      }
+      if (mode === "quota") return b.maxQ - a.maxQ;
+      if (mode === "discount") {
+        return (a.discount == null ? Infinity : a.discount) -
+          (b.discount == null ? Infinity : b.discount);
+      }
+      // 推荐:够用且可购买的优先,其次够用但受限,最后不够用;同级按价格
+      var fitRank = function (it) {
+        if (!it.covers) return 2;
+        return it.plan.status === "restricted" ? 1 : 0;
+      };
+      var ra = fitRank(a), rb = fitRank(b);
+      if (ra !== rb) return ra - rb;
+      return (a.plan.feeCny == null ? Infinity : a.plan.feeCny) -
+        (b.plan.feeCny == null ? Infinity : b.plan.feeCny) || b.maxQ - a.maxQ;
+    });
+
+    var cheapest = null, most = null, cheapUnit = null;
+    items.forEach(function (it) {
+      if (it.plan.status === "restricted") return; // 推荐位只给可直接购买的套餐
+      if (it.covers && it.plan.feeCny != null &&
+        (!cheapest || it.plan.feeCny < cheapest.plan.feeCny)) cheapest = it;
+      if (!most || it.maxQ > most.maxQ) most = it;
+      if (it.unit != null && (!cheapUnit || it.unit < cheapUnit.unit)) cheapUnit = it;
+    });
+    function tile(label, it, value) {
+      return '<div class="qc-tile"><span>' + esc(label) + '</span><b>' +
+        (it ? '<span>' + esc(it.plan.platform) + '</span> · ' + esc(it.plan.name) : "—") + '</b><em>' +
+        (it ? esc(value) : "—") + '</em></div>';
+    }
+
+    var body = items.map(function (it) {
+      var p = it.plan;
+      // 置顶行:选了具体模型只置顶所选模型;仅选品牌时置顶同品牌行
+      var rows = (p.models || []).slice().sort(function (a, b) {
+        return qcModelRank(a) - qcModelRank(b);
+      });
+      var pinned = rows.filter(function (r) { return qcModelRank(r) < 999; });
+      var rest = rows.filter(function (r) { return qcModelRank(r) >= 999; });
+      var expanded = !!state.plansExpanded[p.slug];
+      var shown = expanded ? rows
+        : pinned.concat(rest.slice(0, Math.max(0, 4 - pinned.length)));
+      var hidden = rows.length - shown.length;
+      var badges = (p.status === "restricted" ? '<span class="qc-badge qc-badge--restricted">购买受限</span>' : "") +
+        (p.billing === "payg" ? '<span class="qc-badge">按量</span>' : "") +
+        (p.origin === "realapi" ? '<span class="qc-badge qc-badge--src" title="该套餐及其额度来自补充源 realapipricing.com">补充</span>' : "");
+      var filtered = (state.plansModels || []).length || state.plansBrand !== "all";
+      var countText = filtered ? it.rel.length + " 条相关档位" : rows.length + " 条档位";
+      var head = '<tr class="qc-plan-head"><td colspan="5"><div class="qc-plan-main">' +
+        '<b class="qc-plan-platform">' + esc(p.platform) + '</b>' +
+        '<span class="qc-plan-name">' + esc(p.name) + '</span>' +
+        '<span class="qc-plan-fee">' + esc(qcFee(p.feeCny)) + '</span>' + badges +
+        '<i class="qc-fit' + (it.covers ? " is-ok" : "") + '" title="当前筛选范围内最高月可用额度 ' +
+        esc(qcFmtQuota(it.maxQ)) + '">' +
+        (it.covers ? "够每月 " + usage + "亿" : "不够每月 " + usage + "亿") + '</i>' +
+        '<span class="qc-plan-count">' + countText + '</span>' +
+        '</div></td></tr>';
+      var modelRows = shown.map(function (r) {
+        return '<tr class="qc-plan-model"><td></td>' +
+          '<td><span class="qc-mdl">' + esc(r.m) + '</span>' +
+          (r.t ? ' <i class="qc-tier">' + esc(r.t) + '</i>' : "") + qcSrcBadge(r) + '</td>' +
+          '<td class="num">' + esc(qcMoney(qcUnitYi(p, r, idx))) + '</td>' +
+          '<td class="num">' + esc(qcFmtQuota(r.q && r.q[idx])) + '</td>' +
+          '<td class="num">' + esc(qcDiscountText(qcDiscount(p, r, idx))) + '</td></tr>';
+      }).join("");
+      var more = hidden > 0
+        ? '<tr class="qc-plan-more"><td colspan="5"><button type="button" class="qc-expand" data-qc-expand="' +
+          esc(p.slug) + '">' + (expanded ? "收起" : "展开另外 " + hidden + " 个模型") + '</button></td></tr>'
+        : "";
+      return '<tbody class="qc-plan-group">' + head + modelRows + more + '</tbody>';
+    }).join("");
+
+    var selectedNames = (state.plansModels || []).map(function (k) {
+      return catalog[k] ? catalog[k].name : k;
+    });
+    var joinSep = (document.documentElement.getAttribute("lang") || "").toLowerCase() === "en" ? ", " : "、";
+    return '<div class="qc-all-meta"><span>共 ' + items.length + ' 个套餐</span> · <span>每月 ' +
+      usage + '亿</span> · <span>缓存 ' + QC_CACHE[idx][1] + '</span>' +
+      (state.plansBrand !== "all" ? ' · <span>' + esc(state.plansBrand) + '</span>' : "") +
+      (selectedNames.length ? ' · <span>' + esc(selectedNames.join(joinSep)) + '</span>' : "") +
+      (maxFee != null ? ' · <span>≤¥' + maxFee.toLocaleString("zh-CN") + '/月</span>' : "") +
+      '</div>' +
+      '<div class="qc-tiles">' +
+      tile("够每月 " + usage + "亿里最便宜", cheapest, cheapest ? qcFee(cheapest.plan.feeCny) : "") +
+      tile("能用得最多", most, most ? qcFmtQuota(most.maxQ) : "") +
+      tile("每亿单价最低", cheapUnit, cheapUnit ? qcMoney(cheapUnit.unit) : "") +
+      '</div>' +
+      '<div class="qc-table-scroll"><table class="qc-table qc-all-table"><thead><tr>' +
+      '<th>平台 / 套餐 / 月费</th><th>模型 · 档位</th><th class="num">每亿单价</th>' +
+      '<th class="num">月可用额度</th><th class="num">官方价折扣</th>' +
+      '</tr></thead>' + body + '</table></div>';
+  }
+  function qcFiltersHtml(data, catalog) {
+    var idx = state.plansCache;
+    var usage = state.plansUsage;
+    var brandCounts = {};
+    data.plans.forEach(function (p) {
+      var seen = {};
+      (p.models || []).forEach(function (r) {
+        if (r.b && !seen[r.b]) { seen[r.b] = 1; brandCounts[r.b] = (brandCounts[r.b] || 0) + 1; }
+      });
+    });
+    if (state.plansBrand !== "all" && !brandCounts[state.plansBrand]) state.plansBrand = "all";
+    var brands = Object.keys(brandCounts).sort(function (a, b) {
+      return brandCounts[b] - brandCounts[a] || String(a).localeCompare(String(b), "zh-CN");
+    });
+    if (state.plansBrand !== "all" && !brandCounts[state.plansBrand]) {
+      state.plansBrand = "all";
+      state.plansModels = [];
+    }
+    var shownBrands = state.plansBrandsExpanded ? brands : brands.slice(0, 12);
+    var chips = '<button type="button" class="qc-chip' + (state.plansBrand === "all" ? " is-on" : "") +
+      '" data-qc-brand="all">不限品牌</button>' +
+      shownBrands.map(function (b) {
+        return '<button type="button" class="qc-chip' + (state.plansBrand === b ? " is-on" : "") +
+          '" data-qc-brand="' + esc(b) + '">' + esc(b) + '<span>' + brandCounts[b] + '</span></button>';
+      }).join("") +
+      (brands.length > 12 ? '<button type="button" class="qc-chip qc-chip--more" data-qc-brands="toggle">' +
+        (state.plansBrandsExpanded ? "收起品牌" : "展开全部 " + brands.length + " 个品牌") + '</button>' : "");
+    return '<div class="qc-filters">' +
+      '<div class="qc-filter-row qc-filter-view"><span class="qc-filter-label">视图</span>' +
+      qcSeg("qc-view", [["all", "全部套餐"], ["groups", "精选模型"]], state.plansView, "套餐视图") + '</div>' +
+      '<div class="qc-filter-grid">' +
+      '<div class="qc-filter-block"><div class="qc-filter-head"><span>每月用量</span><b>' + usage + '亿</b></div>' +
+      qcSlider("qc-use", QC_USAGE, usage) + '</div>' +
+      '<div class="qc-filter-block"><div class="qc-filter-head"><span>缓存占比</span><b>' + QC_CACHE[idx][1] + '</b></div>' +
+      qcSlider("qc-cache", QC_CACHE, idx) + '</div>' +
+      '</div>' +
+      '<div class="qc-filter-block qc-fee-block"><div class="qc-filter-head"><span>月费上限</span><b>' +
+      (state.plansMaxFee == null ? "不限" : "≤¥" + state.plansMaxFee + "/月") + '</b></div>' +
+      qcSlider("qc-fee", QC_FEE, state.plansMaxFee == null ? "0" : String(state.plansMaxFee)) + '</div>' +
+      '<div class="qc-filter-row"><span class="qc-filter-label">选模型</span><div class="qc-chips">' + chips + '</div></div>' +
+      qcModelPanel(catalog) +
+      '<div class="qc-filter-row qc-filter-split">' +
+      '<div class="qc-filter-inline"><span class="qc-filter-label">在哪买</span>' +
+      qcSeg("qc-region", [["domestic", "国内能直接买"], ["global", "全球"]], state.plansRegion, "购买地区") +
+      '<em>' + (state.plansRegion === "global" ? "国内能买的加上要海外付款的，全部一起比" : "只显示国内可直接购买的套餐") + '</em></div>' +
+      '<div class="qc-filter-inline"><span class="qc-filter-label">什么时候用</span>' +
+      qcSeg("qc-time", [["day", "白天为主"], ["night", "主要在夜间用"]], state.plansTime, "使用时段") +
+      '<em>' + (state.plansTime === "night" ? "夜间谷时档位优先" : "白天高峰档位优先") + '</em></div>' +
+      '</div>' +
+      '<div class="qc-filter-row"><span class="qc-filter-label">排序</span>' +
+      qcSeg("qc-sort", [["fit", "推荐"], ["fee", "月费"], ["quota", "能用多少"], ["discount", "官方价几折"]], state.plansSort, "套餐排序") +
+      '</div>' +
+      '</div>';
+  }
   function renderPlans() {
     var wrap = document.getElementById("plansWrap");
     if (!wrap) return;
     var data = D.codingplan();
+    var share = document.getElementById("plansShare");
+    if (share && !share.getAttribute("data-bound")) {
+      share.setAttribute("data-bound", "1");
+      share.onclick = function () {
+        var done = function () {
+          share.textContent = "已复制链接";
+          setTimeout(function () { share.textContent = "分享此页"; }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(location.href).then(done, done);
+        } else done();
+      };
+    }
     document.getElementById("plansDesc").innerHTML = data
       ? (paraHtml(data.desc || "") +
         ((data.siteUpdated || data.refreshedAt) ? "<br>" +
@@ -2086,39 +2450,97 @@
             (data.refreshedAt ? "本站抓取 " + esc(data.refreshedAt) : "")]
             .filter(Boolean).join(" · ") : ""))
       : "暂无数据:抓取失败或尚未生成 data/codingplan.js(待下次每日刷新后恢复)。";
-    if (!data || !Array.isArray(data.groups) || !data.groups.length) {
+    if (!data || (!(data.groups && data.groups.length) && !(data.plans && data.plans.length))) {
       wrap.innerHTML = "";
       document.getElementById("plansNote").innerHTML = "";
       return;
     }
-    var scope = state.plansScope === "all" ? "all" : "featured";
-    var scopeBtn = function (value, label) {
-      return '<button type="button" class="qc-scope-btn' + (scope === value ? " is-active" : "") +
-        '" data-qc-scope="' + value + '" aria-pressed="' + (scope === value) + '">' + label + '</button>';
-    };
-    var singles = data.groups.filter(function (g) { return g.kind === "single"; });
-    var multis = data.groups.filter(function (g) { return g.kind === "multi"; });
-    wrap.innerHTML =
-      (data.caliberNote ? '<div class="qc-note">' + esc(data.caliberNote) + '</div>' : "") +
-      '<div class="qc-head"><div><h3 class="qc-title">' + esc(data.presetTitle || "快速对比") + '</h3>' +
-      (data.presetDesc ? '<p class="qc-desc">' + esc(data.presetDesc) + '</p>' : "") + '</div>' +
-      '<div class="qc-scope" role="group" aria-label="对比平台范围">' +
-      scopeBtn("featured", "仅显示精选平台") + scopeBtn("all", "显示所有平台") +
-      '</div></div>' +
-      '<div class="qc-grid qc-grid--single">' + singles.map(function (g) { return qcCardHtml(g, scope); }).join("") + '</div>' +
-      '<div class="qc-grid qc-grid--multi">' + multis.map(function (g) { return qcCardHtml(g, scope); }).join("") + '</div>';
-    // 平台范围切换(事件委托,重渲染后仍生效)
+    var hasAll = !!(data.plans && data.plans.length);
+    if (!hasAll) state.plansView = "groups";
+    var vAll = state.plansView !== "groups";
+    var catalog = qcModelCatalog(data.plans || []);
+    state.plansModels = (state.plansModels || []).filter(function (k) { return !!catalog[k]; });
+    var body;
+    if (vAll) {
+      body = qcFiltersHtml(data, catalog) + qcAllHtml(data, catalog);
+    } else {
+      var scope = state.plansScope === "all" ? "all" : "featured";
+      var scopeBtn = function (value, label) {
+        return '<button type="button" class="qc-scope-btn' + (scope === value ? " is-active" : "") +
+          '" data-qc-scope="' + value + '" aria-pressed="' + (scope === value) + '">' + label + '</button>';
+      };
+      var singles = data.groups.filter(function (g) { return g.kind === "single"; });
+      var multis = data.groups.filter(function (g) { return g.kind === "multi"; });
+      body = '<div class="qc-filters"><div class="qc-filter-row"><span class="qc-filter-label">视图</span>' +
+        qcSeg("qc-view", [["all", "全部套餐"], ["groups", "精选模型"]], "groups", "套餐视图") +
+        '<span class="qc-filter-label qc-filter-label--push">平台范围</span>' +
+        '<div class="qc-scope" role="group" aria-label="对比平台范围">' +
+        scopeBtn("featured", "仅显示精选平台") + scopeBtn("all", "显示所有平台") + '</div></div></div>' +
+        (data.caliberNote ? '<div class="qc-note">' + esc(data.caliberNote) + '</div>' : "") +
+        '<div class="qc-head"><div><h3 class="qc-title">' + esc(data.presetTitle || "快速对比") + '</h3>' +
+        (data.presetDesc ? '<p class="qc-desc">' + esc(data.presetDesc) + '</p>' : "") + '</div></div>' +
+        '<div class="qc-grid qc-grid--single">' + singles.map(function (g) { return qcCardHtml(g, scope); }).join("") + '</div>' +
+        '<div class="qc-grid qc-grid--multi">' + multis.map(function (g) { return qcCardHtml(g, scope); }).join("") + '</div>';
+    }
+    wrap.innerHTML = body;
     wrap.onclick = function (e) {
-      var btn = e.target && e.target.closest ? e.target.closest("[data-qc-scope]") : null;
-      if (!btn) return;
-      state.plansScope = btn.getAttribute("data-qc-scope");
-      renderPlans();
+      var t = e.target;
+      if (!t || !t.closest) return;
+      var viewBtn = t.closest("[data-qc-view]");
+      if (viewBtn) { state.plansView = viewBtn.getAttribute("data-qc-view"); renderPlans(); return; }
+      var useBtn = t.closest("[data-qc-use]");
+      if (useBtn) { state.plansUsage = Number(useBtn.getAttribute("data-qc-use")); renderPlans(); return; }
+      var cacheBtn = t.closest("[data-qc-cache]");
+      if (cacheBtn) { state.plansCache = Number(cacheBtn.getAttribute("data-qc-cache")) || 0; renderPlans(); return; }
+      var brandBtn = t.closest("[data-qc-brand]");
+      if (brandBtn) {
+        state.plansBrand = brandBtn.getAttribute("data-qc-brand");
+        state.plansModels = []; // 换品牌时清空具体模型
+        renderPlans(); return;
+      }
+      var modelBtn = t.closest("[data-qc-model]");
+      if (modelBtn) {
+        var key = modelBtn.getAttribute("data-qc-model");
+        if (!key) state.plansModels = [];
+        else {
+          var mi = state.plansModels.indexOf(key);
+          if (mi >= 0) state.plansModels.splice(mi, 1);
+          else if (state.plansModels.length < 4) state.plansModels.push(key);
+        }
+        renderPlans(); return;
+      }
+      var feeBtn = t.closest("[data-qc-fee]");
+      if (feeBtn) {
+        var fv = Number(feeBtn.getAttribute("data-qc-fee"));
+        state.plansMaxFee = fv > 0 ? fv : null;
+        renderPlans(); return;
+      }
+      if (t.closest("[data-qc-brands]")) { state.plansBrandsExpanded = !state.plansBrandsExpanded; renderPlans(); return; }
+      var regionBtn = t.closest("[data-qc-region]");
+      if (regionBtn) { state.plansRegion = regionBtn.getAttribute("data-qc-region"); renderPlans(); return; }
+      var timeBtn = t.closest("[data-qc-time]");
+      if (timeBtn) { state.plansTime = timeBtn.getAttribute("data-qc-time"); renderPlans(); return; }
+      var sortBtn = t.closest("[data-qc-sort]");
+      if (sortBtn) { state.plansSort = sortBtn.getAttribute("data-qc-sort"); renderPlans(); return; }
+      var expBtn = t.closest("[data-qc-expand]");
+      if (expBtn) {
+        var slug = expBtn.getAttribute("data-qc-expand");
+        if (state.plansExpanded[slug]) delete state.plansExpanded[slug]; else state.plansExpanded[slug] = 1;
+        renderPlans(); return;
+      }
+      var scopeBtnEl = t.closest("[data-qc-scope]");
+      if (scopeBtnEl) { state.plansScope = scopeBtnEl.getAttribute("data-qc-scope"); renderPlans(); }
     };
+    var src1 = data.sources && data.sources[0];
+    var src2 = data.sources && data.sources[1];
     document.getElementById("plansNote").innerHTML =
-      '<div class="note-line"><b>来源</b><a href="' + esc(data.officialUrl || "") + '" target="_blank" rel="noopener">codingplan.fyi · 额度/价格对比 ↗</a></div>' +
+      '<div class="note-line"><b>来源</b>' +
+      '<a href="' + esc((src1 && src1.url) || data.officialUrl || "") + '" target="_blank" rel="noopener">codingplan.fyi ↗</a>' +
+      (src2 ? ' · 额度补充 <a href="' + esc(src2.url) + '" target="_blank" rel="noopener">realapipricing.com ↗</a>(' + esc(src2.license || "MIT") + ')' : "") +
+      '</div>' +
       '<div class="note-line"><b>更新</b>源站 ' + esc(data.siteUpdated || "—") + ' · 本站抓取 ' + esc(data.refreshedAt || data.updated || "—") + ' · 美元按汇率 ' + esc(data.usdToCnyRate) + ' 折算人民币</div>' +
-      '<div class="note-line"><b>口径</b>' + esc(data.caliberNote || "") + '</div>' +
-      '<div class="note-line"><b>说明</b>综合单价(¥/亿 Token)与月用量为源站实测/计算值,按综合单价升序排列;完整套餐筛选与购买入口请前往源站查看。</div>';
+      '<div class="note-line"><b>口径</b>月可用额度按 0% / 50% / 95% / 99% 缓存占比换算(输出固定 0.5%);只有单一额度的套餐只在 95% 档显示;「每月用量」只用于判断是否够用与推荐排序,不改变显示的额度;官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,越低越划算。</div>' +
+      '<div class="note-line"><b>说明</b>选中具体模型后，该模型的所有档位行置顶；套餐是否够用按所选模型在当前缓存与所选时段下的最高额度判断；「实测」为补充源实测/官方口径，「单值」为源站只给单一额度、不参与档位换算；已下架套餐不展示，受限套餐标「购买受限」。</div>';
   }
 
   // ===== 9) 更新日志(12 个 Agent 工具的官方 changelog;非分数数据,不参与综合分) =====
@@ -2129,10 +2551,15 @@
   // data/changelog.js 含 12 个工具的全量历史(实测约 3.4MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
   var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261017a";
+  var CL_MONTHLY_SRC = SITE_BASE + "data/changelog-monthly.js?v=20261111a";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
   // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
   // 换戳重注入即可原地恢复,不必刷整页。
   var clRetryStamp = "";
+  // 月度汇总独立懒加载与独立失败态:工具视图的 4MB 文件与它互不牵连
+  var clMonthlyState = "idle";
+  var clMonthlyRetryStamp = "";
+  var clMonthlyData = null;
   var CL_FOLD_CHARS = 900;
   function clStatusBadge(t) {
     if (t.status === "stale") {
@@ -2169,7 +2596,31 @@
         '" target="_blank" rel="noopener">查看源站 ↗</a></footer>' +
       '</article>';
   }
+
+  // 更新日志页的视图切换与目录标题。按钮是静态骨架,选中态与目录标题在每次渲染时同步。
+  function clViewBtnsHtml() {
+    return [["tools", "按工具"], ["monthly", "按月汇总"]].map(function (v) {
+      var on = state.clView === v[0];
+      return '<button type="button" class="qc-scope-btn' + (on ? " is-active" : "") +
+        '" data-cl-view="' + v[0] + '" aria-pressed="' + on + '">' + v[1] + '</button>';
+    }).join("");
+  }
+  function renderClChrome() {
+    var vb = document.getElementById("clViewBtns");
+    if (vb) vb.innerHTML = clViewBtnsHtml();
+    var range = document.getElementById("clRangeBtns");
+    if (range) range.style.display = state.clView === "monthly" ? "none" : "";
+    var title = document.getElementById("clOutlineTitle");
+    if (title) title.textContent = state.clView === "monthly" ? "月份" : "工具";
+  }
   function renderChangelog() {
+    renderClChrome();
+    if (state.clView === "monthly") renderClMonthly();
+    else renderClTools();
+  }
+
+  // 按工具视图:每个工具最近 2 条更新(原逻辑,保留完整正文与折叠)
+  function renderClTools() {
     var wrap = document.getElementById("clWrap");
     if (!wrap) return;
     var data = D.changelog(state.changelogDays);
@@ -2266,6 +2717,141 @@
     }).join("");
   }
 
+  // 一条新增功能:中文译文(缺失则源文本 + 「原文」徽标)+ 描述后的 Agent 标签 + 版本 + 日期 + 源站链接
+  function clFeatHtml(item, fallbackUrl, tags) {
+    var zh = (clMonthlyData && clMonthlyData.zh) || {};
+    var text = D.clFeatText(item, zh);
+    var orig = !zh[item.key] && !/[\u4e00-\u9fff]/.test(item.text || "");
+    var tagHtml = "";
+    if (tags && tags.length) {
+      tagHtml = '<span class="cl-feat-tags">' + tags.map(function (t) {
+        return '<span class="cl-feat-tag">' + esc(t.name) + '</span>';
+      }).join("") + "</span>";
+    }
+    var meta = [];
+    if (item.version) meta.push("v" + esc(item.version));
+    if (item.date) meta.push(esc(item.date.slice(5)));
+    meta.push('<a class="cl-feat-src" href="' + esc(safeUrl(item.url, fallbackUrl)) +
+      '" target="_blank" rel="noopener">源 ↗</a>');
+    return '<li class="cl-feat">' +
+      '<span class="cl-feat-text">' + esc(text) + (tagHtml ? " " + tagHtml : "") +
+        (orig ? ' <span class="cl-feat-badge" title="该条尚未译出,此处为源站原文">原文</span>' : "") +
+      '</span>' +
+      '<span class="cl-feat-meta">' + meta.join(" · ") + '</span>' +
+      '</li>';
+  }
+
+  // 把月内的 per-tool items 与 multi 合并成一条按日期降序的平铺清单;
+  // 同一天按各工具在数据里的顺序,再按 key 保证稳定。
+  function clMonthItems(m) {
+    var order = {};
+    (m.tools || []).forEach(function (t, i) { order[t.id] = i; });
+    var out = [];
+    (m.tools || []).forEach(function (t) {
+      (t.items || []).forEach(function (it) {
+        out.push({
+          it: it,
+          fallback: t.changelogUrl || "",
+          tags: [{ id: t.id, name: t.name }]
+        });
+      });
+    });
+    (m.multi || []).forEach(function (it) {
+      out.push({
+        it: it,
+        fallback: it.url,
+        tags: (it.sources || []).map(function (s) { return { id: s.id, name: s.name }; })
+      });
+    });
+    out.sort(function (a, b) {
+      if (a.it.date !== b.it.date) return a.it.date < b.it.date ? 1 : -1;
+      var ai = order[a.tags[0].id], bi = order[b.tags[0].id];
+      ai = ai == null ? 99 : ai;
+      bi = bi == null ? 99 : bi;
+      if (ai !== bi) return ai - bi;
+      return a.it.key < b.it.key ? -1 : (a.it.key > b.it.key ? 1 : 0);
+    });
+    return out;
+  }
+
+  // 一个月:月头统计 + 全部 Agent 的新增功能平铺列表(每条描述后带 Agent 标签)
+  function clMonthHtml(m, open) {
+    var head = '<summary class="cl-month-sum">' +
+      '<span class="cl-month-name">' + esc(m.label) + '</span>' +
+      '<span class="cl-month-count">' + m.count + ' 项</span>' +
+      '<span class="cl-month-meta">' + m.toolCount + ' 个工具' +
+        (m.multi && m.multi.length ? ' · 同月合并 ' + m.multi.length + ' 条' : "") +
+      '</span></summary>';
+    var list = clMonthItems(m).map(function (x) {
+      return clFeatHtml(x.it, x.fallback, x.tags);
+    }).join("");
+    return '<details class="cl-month" id="cl-month-' + esc(m.month) + '"' + (open ? " open" : "") + '>' +
+      head + '<div class="cl-month-body"><ul class="cl-feat-list cl-feat-list--flat">' +
+      list + "</ul></div></details>";
+  }
+
+  // 按月汇总视图:数据脚本独立懒加载,失败可原地重试
+  function renderClMonthly() {
+    var wrap = document.getElementById("clWrap");
+    if (!wrap) return;
+    var data = D.changelogMonthly();
+    var descEl = document.getElementById("clDesc");
+    if (!data) {
+      clMonthlyData = null;
+      if (clMonthlyState === "idle") {
+        clMonthlyState = "loading";
+        var s = document.createElement("script");
+        s.src = CL_MONTHLY_SRC + clMonthlyRetryStamp;
+        s.onload = function () { clMonthlyState = "ready"; renderChangelog(); };
+        s.onerror = function () { clMonthlyState = "failed"; renderChangelog(); };
+        document.head.appendChild(s);
+        wrap.innerHTML = '<div class="cl-empty-page">正在加载月度汇总数据…</div>';
+        return;
+      }
+      var msg = clMonthlyState === "failed"
+        ? "月度汇总数据加载失败(网络或 data/changelog-monthly.js 缺失),可重试或等待下次刷新。"
+        : "暂无月度汇总数据(待下次每日刷新生成)。";
+      if (descEl) descEl.textContent = msg;
+      wrap.innerHTML = '<div class="cl-empty-page">' + esc(msg) +
+        ' <button type="button" class="qc-scope-btn" data-cl-monthly-retry>重新加载数据</button></div>';
+      var out0 = document.getElementById("clOutlineList");
+      if (out0) out0.innerHTML = "";
+      var cnt0 = document.getElementById("clOutlineCount");
+      if (cnt0) cnt0.textContent = "";
+      return;
+    }
+    clMonthlyData = data;
+    var st = data.stats || {};
+    if (descEl) {
+      descEl.innerHTML = "把各工具的新增功能按首次出现月份归组;修复 / 优化 / 文档类更新不计。" +
+        "<br>更新于 " + esc(data.updated || "") +
+        (data.refreshedAt ? " · 本站生成 " + esc(data.refreshedAt) + "(北京时间)" : "") +
+        " · " + esc(String(st.months || data.months.length)) + " 个月 · " +
+        esc(String(st.afterMerge || 0)) + " 项新增" +
+        (st.needsZh ? " · 译文覆盖 " + esc(String(st.translated || 0)) + "/" + esc(String(st.needsZh)) : "");
+    }
+    var hint = document.getElementById("clHint");
+    if (hint) {
+      hint.textContent = "按月归档 · 同月跨工具同一功能已合并 · 每条附源站链接" +
+        (st.needsZh && st.untranslated ? " · 尚有 " + st.untranslated + " 条未译(标「原文」)" : "");
+    }
+    var cnt = document.getElementById("clOutlineCount");
+    if (cnt) cnt.textContent = data.months.length + " 个月";
+    var out = document.getElementById("clOutlineList");
+    if (out) {
+      out.innerHTML = data.months.map(function (m) {
+        return '<a class="auth-outline-item" data-cl-month="' + esc(m.month) +
+          '" href="#cl-month-' + esc(m.month) + '" title="' +
+          esc(m.label + " · " + m.count + " 项新增 · " + m.toolCount + " 个工具") + '">' +
+          '<span class="cl-ol-name">' + esc(m.label) + '</span>' +
+          '<span class="auth-outline-count">' + m.count + '</span></a>';
+      }).join("");
+    }
+    wrap.innerHTML = data.months.length
+      ? data.months.map(function (m, i) { return clMonthHtml(m, i === 0); }).join("")
+      : '<div class="cl-empty-page">暂无新增功能条目。</div>';
+  }
+
   // ===== 滚动与排序的轻微反馈(克制动效) =====
   // 粘性标签栏:滚动离顶后加一层抬升阴影,让"内容在其下滚动"这件事有视觉交代。
   // 与下面权威基准页的滚动高亮各用各的 rAF 节流变量,互不干扰。
@@ -2341,7 +2927,7 @@
     automationbench: { src: "data/automationbench.js?v=20261017a", global: "AUTOMATIONBENCH" },
     vals_codemigration: { src: "data/vals_codemigration.js?v=20261020a", global: "VALSCODEMIGRATION" },
     aa_coding_agents: { src: "data/aa_coding_agents.js?v=20261027a", global: "AACODING" },
-    codingplan: { src: "data/codingplan.js?v=20260913b", global: "CODINGPLAN" }
+    codingplan: { src: "data/codingplan.js?v=20261111a", global: "CODINGPLAN" }
   };
   // 各标签页渲染前必须就绪的数据
   var TAB_DATA = {
@@ -2545,7 +3131,17 @@
       var card = document.getElementById("news-card-" + a.getAttribute("data-rank"));
       if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-    // 更新日志页:时间窗口切换(14/30/全部)
+    // 更新日志页:按工具 / 按月汇总 视图切换
+    var clView = document.getElementById("clViewBtns");
+    if (clView) clView.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest("[data-cl-view]") : null;
+      if (!b) return;
+      var v = b.getAttribute("data-cl-view");
+      if (v === state.clView) return;
+      state.clView = v;
+      renderChangelog();
+    });
+    // 更新日志页:时间窗口切换(14/30/全部,仅工具视图)
     var clBtns = document.getElementById("clRangeBtns");
     if (clBtns) clBtns.addEventListener("click", function (e) {
       var b = e.target.closest ? e.target.closest("[data-cl-days]") : null;
@@ -2563,6 +3159,12 @@
         renderChangelog();
         return;
       }
+      if (e.target.closest && e.target.closest("[data-cl-monthly-retry]")) {
+        clMonthlyRetryStamp = "&retry=" + Date.now();
+        clMonthlyState = "idle";
+        renderChangelog();
+        return;
+      }
       var b = e.target.closest ? e.target.closest("[data-cl-fold]") : null;
       if (!b) return;
       var body = b.parentNode && b.parentNode.querySelector(".cl-body");
@@ -2574,6 +3176,16 @@
     // 更新日志页:左侧工具目录跳到对应工具区块
     var clOutline = document.getElementById("clOutlineList");
     if (clOutline) clOutline.addEventListener("click", function (e) {
+      var m = e.target.closest ? e.target.closest("a[data-cl-month]") : null;
+      if (m) {
+        e.preventDefault();
+        var mon = document.getElementById("cl-month-" + m.getAttribute("data-cl-month"));
+        if (mon) {
+          if (mon.tagName === "DETAILS") mon.open = true;
+          mon.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        return;
+      }
       var a = e.target.closest ? e.target.closest("a[data-cl-target]") : null;
       if (!a) return;
       e.preventDefault();

@@ -26,6 +26,7 @@ const CONFIG = require("./config");
 const transport = require("./transport");
 const writers = require("./writers");
 const news = require("./news");   // 复用 normalizeDate / hasCJK / translateToZh / resetEndpointState
+const digest = require("./changelog-digest");   // 月度新增功能派生文件
 
 const ZERO_WIDTH = /[\u200b-\u200d\ufeff]/g;
 
@@ -842,6 +843,18 @@ async function updateChangelog() {
     };
   });
 
+  // 月度汇总必须在 applyTranslations 之前快照:此时本轮新抓到的 GitHub 条目仍是英文原文,
+  // 否则同一功能的抽取文本会随翻译状态来回变化,跨版本去重与月份归属都不稳定。
+  var digestSnapshot = tools.map(function (t) {
+    return {
+      id: t.id, name: t.name, vendor: t.vendor, status: t.status,
+      changelogUrl: t.changelogUrl || "",
+      entries: (t.entries || []).map(function (e) {
+        return { version: e.version, date: e.date, url: e.url, title: e.title, body: e.body };
+      })
+    };
+  });
+
   // 英文条目译成中文(只译各工具当前显示的那两条;命中缓存不重复请求,失败保留原文)
   await applyTranslations(tools, oldIndex);
 
@@ -865,13 +878,22 @@ async function updateChangelog() {
     "// 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新\n" +
     "//   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期\n" +
     "//   tags=小节/产品线标签 url=源站地址(可深链到具体版本) body=完整正文(纯文本,保留换行,不摘要)\n" +
-    "//   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面\n";
+    "//   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面\n" +
+    "// 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)\n";
   writers.writeWindowVar(cfg.outFile, cfg.windowVar,
     header + "window." + cfg.windowVar + " = " +
     JSON.stringify(payload, null, 2).replace(/'/g, "\\'").replace(/"/g, "'") + ";\n");
   console.log("[changelog] 完成:" + tools.length + " 个工具,共 " +
     tools.reduce(function (n, t) { return n + t.entries.length; }, 0) + " 条" +
     (staleCount ? ",失败/滞后工具 " + staleCount + " 个" : ""));
+
+  // 派生「月度新增功能」汇总;失败只记日志,不影响 changelog.js 本身,
+  // 也不能让单个派生步骤把整轮刷新标成失败。
+  try {
+    await digest.updateDigest(digestSnapshot);
+  } catch (e) {
+    console.log("[changelog] 月度汇总生成失败:" + e.message);
+  }
   return payload;
 }
 
@@ -895,6 +917,9 @@ module.exports = {
   fetchTrae: fetchTrae,   // 便于单测主源失败 -> 备源兜底
   parseZcode: parseZcode,
   parseDocHeadings: parseDocHeadings,
+  // 月度新增功能派生,便于离线验证
+  extractFeatures: digest.extractFeatures,
+  buildDigest: digest.buildDigest,
   // 翻译件,便于单测
   textHash: textHash,
   needsZh: needsZh,
