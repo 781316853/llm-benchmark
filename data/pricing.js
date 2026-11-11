@@ -12,9 +12,11 @@
 //   补价不覆盖主源;本次未匹配到或补价源不可用时沿用上一版补价;都无价的模型列在 missingRanked。
 // 2026-11-10 增补:Claude Fable 5.2(官方 $8/$40、缓存 $0.20 → models.dev:anthropic);主源 plan-models.json
 //   自 2026-10 起 404,本条按补缺同口径人工补入,其余条目仍为 2026-10-24 快照。
+// 2026-11-11 增补:GPT-6.1 Terra(OpenAI 官方 $1/$0.05/$5)与 Kimi K3.1 Pro(Moonshot 官方 ¥13/¥1.30/¥68);
+//   priceSource=official:*;Muse Wonder Full 仅随 Muse Code 订阅提供、无公开 API 价,不补。
 // 用途:总览矩阵「性价比」列(综合分 ÷ costPerM);价格为快照口径,可能滞后于平台官网。
 window.PRICING = {
-  'source': 'Coding Plan 对比(codingplan.fyi);排名模型缺价由 models.dev 补齐',
+  'source': 'Coding Plan 对比(codingplan.fyi);排名模型缺价由 models.dev / 厂商官网价种子补齐',
   'url': 'https://www.codingplan.fyi/plan-models.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
@@ -30,18 +32,19 @@ window.PRICING = {
     'planModels': 2281,
     'withPricing': 1465,
     'comparable': 1000,
-    'models': 98,
+    'models': 100,
     'unresolved': 15,
     'ranked': 44,
     'supplemented': 5,
     'carriedOver': 0,
+    'seeded': 2,
     'missingRanked': 2
   },
   'missingRanked': [
     'Muse Wonder Full',
     'Seed 2.1 Pro'
   ],
-  'desc': '模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),主源 codingplan.fyi,排名模型主源缺价时由 models.dev 官方 provider 优先补齐(priceSource 标注来源),按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。',
+  'desc': '模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),主源 codingplan.fyi,排名模型主源缺价时由 models.dev 官方 provider 优先补齐,仍缺价时按厂商官网标准价种子补入(priceSource 标注来源),按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。',
   'models': [
     {
       'id': 'Claude Fable 5',
@@ -323,6 +326,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'Kimi K3.1 Pro',
+      'slug': 'kimi-k3.1-pro',
+      'inputCnyPerM': 13,
+      'cacheCnyPerM': 1.3,
+      'outputCnyPerM': 68,
+      'costPerM': 2.16,
+      'priceSource': 'official:moonshot'
+    },
+    {
       'id': 'GPT-5.2',
       'slug': 'gpt-5-2',
       'inputCnyPerM': 11.9,
@@ -537,6 +549,15 @@ window.PRICING = {
       'outputCnyPerM': 23.8,
       'costPerM': 0.833,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'GPT-6.1 Terra',
+      'slug': 'gpt-6-1-terra',
+      'inputCnyPerM': 6.8,
+      'cacheCnyPerM': 0.34,
+      'outputCnyPerM': 34,
+      'costPerM': 0.799,
+      'priceSource': 'official:openai'
     },
     {
       'id': 'Step 5 Preview',

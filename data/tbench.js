@@ -1,4 +1,6 @@
 // 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-10)
+// 2026-11-11 手工补录:GPT-6.1 Terra 50.3(OpenAI 官方发布自测)、Muse Wonder 52.0(Meta 模型卡 4.0-AA);
+//   两条均为厂商自测、官方榜未收录,rank 保持 null。
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
@@ -17,7 +19,7 @@ window.TBENCH = {
   'refreshedAt': '2026-11-11 03:54',
   'stats': {
     'tasks': 66,
-    'entries': 44
+    'entries': 46
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -548,6 +550,30 @@ window.TBENCH = {
       'tokens': null,
       'cost': null,
       'src': 'tencent-official'
+    },
+    {
+      'rank': null,
+      'model': 'GPT-6.1 Terra',
+      'agent': null,
+      'effort': 'max',
+      'score': 50.3,
+      'ci': null,
+      'date': '2026-10-27',
+      'tokens': null,
+      'cost': null,
+      'src': 'openai-official'
+    },
+    {
+      'rank': null,
+      'model': 'Muse Wonder',
+      'agent': null,
+      'effort': 'max',
+      'score': 52,
+      'ci': null,
+      'date': '2026-10-12',
+      'tokens': null,
+      'cost': null,
+      'src': 'meta-official'
     }
   ]
 };

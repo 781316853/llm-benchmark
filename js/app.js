@@ -81,6 +81,8 @@
     "moonshot-official": ["厂商发布", "Kimi 官方发布博客自测转录(T2)·reasoning effort=max、temperature=1.0/top-p=0.95,TB 4.0 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "tencent-official": ["厂商发布", "腾讯混元官方发布页自测转录(T2)·DeepSWE 用 mini-SWE-agent,TB 4.0 / TB-Science 用 Claude Code 框架,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
     "anthropic-official": ["厂商发布", "Anthropic 官方发布页自测转录(T2)·标注 highest-available effort,未标注 harness/温度,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
+    "openai-official": ["厂商发布", "OpenAI 官方发布自测转录(T2)·Terminal-Bench 4.0 最高推理档 50.3%,未标注 harness/温度,与基准官方实测榜不保证可比,仅补缺失模型,仅供参考"],
+    "meta-official": ["厂商发布", "Meta 官方模型卡自测转录(T2)·Terminal-Bench 4.0-AA 52.0,官方标注竞品为 best-effort,与 tbench.ai 官方榜不保证可比,仅补缺失模型,仅供参考"],
     "llm-stats": ["第三方", "第三方聚合站 llm-stats(T3)"],
     aireleasetracker: ["ART 聚合", "AI Release Tracker 第三方聚合站(T3)·分数取自各实验室公开报告、不自行复测;仅补缺失模型,不覆盖主渠道分数"],
     benchlm: ["第三方", "第三方镜像 benchlm(T3)"],
@@ -690,7 +692,7 @@
         (function () {
           if (unranked) return '<td class="num"><span class="tier-na">—</span></td>';
           var p = priceOf(r.id);
-          if (!p) return '<td class="num"><span class="tier-na" title="codingplan.fyi 与 models.dev 均未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
+          if (!p) return '<td class="num"><span class="tier-na" title="codingplan.fyi、models.dev 与厂商官网价种子均未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
           var score = CMP.composite(r);
           var idx = valueIndexOf(r);
           var tip = "性价比 " + idx.toFixed(1) + " = 综合分 " + score.toFixed(1) + " ÷ " + fmtCostPerM(p.costPerM) + "/M · " +

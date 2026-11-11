@@ -43,6 +43,33 @@ function nonNegativeNumber(value) {
 // 保留 6 位小数,消除浮点尾差(输出文件按值去重/比对,尾差会让每日刷新产生假变更)
 function round6(n) { return Math.round(n * 1e6) / 1e6; }
 
+// 厂商官网价种子:主源(codingplan.fyi)与 models.dev 都无价时的兜底,只补缺、不覆盖已有价。
+// 单位与 models[] 一致(人民币/百万 token);costPerM 仍按本次 workload 现算,不写死。
+// 2026-11-11:主源 plan-models.json 自 2026-10 起 404,新增模型只能按厂商官网标价人工转录。
+// Muse Wonder Full 不设种子:Meta 只通过 Muse Code 订阅提供,无公开 API 价,订阅价无法折算成每百万 token 成本。
+const OFFICIAL_PRICE_SEEDS = [
+  {
+    id: "GPT-6.1 Terra",
+    slug: "gpt-6-1-terra",
+    currency: "USD",
+    inputPerM: 1,
+    cachePerM: 0.05,
+    outputPerM: 5,
+    priceSource: "official:openai",
+    note: "OpenAI 标准 API 价 $1 / 缓存输入 $0.05 / 输出 $5 每百万 token(2026-10-27),按源站汇率折算人民币"
+  },
+  {
+    id: "Kimi K3.1 Pro",
+    slug: "kimi-k3.1-pro",
+    currency: "CNY",
+    inputPerM: 13,
+    cachePerM: 1.3,
+    outputPerM: 68,
+    priceSource: "official:moonshot",
+    note: "Moonshot 标准 API 价 ¥13 / 缓存命中 ¥1.30 / 输出 ¥68 每百万 token(2026-10-24;Highspeed 双倍不采用)"
+  }
+];
+
 // 单条 pricing 归一为人民币三档单价;不可比(币种不识别/字段缺失)返回 null
 function normalizePricing(pricing, usdToCnyRate) {
   if (!pricing || typeof pricing !== "object") return null;
@@ -298,6 +325,26 @@ async function updatePricing() {
     });
   }
 
+  // 官方价种子:主源与 models.dev 都缺价时兜底补入;已有价一律不覆盖
+  var seeded = 0;
+  OFFICIAL_PRICE_SEEDS.forEach(function (s) {
+    if (byId[s.id]) return;
+    var rate = s.currency === "USD" ? usdToCnyRate : 1;
+    var input = round6(s.inputPerM * rate);
+    var cache = round6(s.cachePerM * rate);
+    var output = round6(s.outputPerM * rate);
+    byId[s.id] = {
+      id: s.id,
+      slug: s.slug,
+      inputCnyPerM: input,
+      cacheCnyPerM: cache,
+      outputCnyPerM: output,
+      costPerM: round6(cache * cacheHitRate + input * restRatio + output * outputRatio),
+      priceSource: s.priceSource
+    };
+    seeded++;
+  });
+
   var unique = Object.keys(byId).map(function (k) { return byId[k]; });
   unique.sort(function (a, b) { return b.costPerM - a.costPerM || (a.id < b.id ? -1 : 1); });
   var missing = rankedKnown ? ranked.filter(function (id) { return !byId[id]; }).sort() : [];
@@ -305,7 +352,7 @@ async function updatePricing() {
     .map(function (m) { return m.id + "(" + m.costPerM + ")"; });
 
   var obj = {
-    source: "Coding Plan 对比(codingplan.fyi);排名模型缺价由 models.dev 补齐",
+    source: "Coding Plan 对比(codingplan.fyi);排名模型缺价由 models.dev / 厂商官网价种子补齐",
     url: cfg.planModelsUrl,
     supplementUrl: cfg.modelsDevUrl,
     officialUrl: cfg.officialUrl,
@@ -323,12 +370,13 @@ async function updatePricing() {
       ranked: rankedKnown ? ranked.length : null,
       supplemented: supplemented,
       carriedOver: carriedOver,
+      seeded: seeded,
       missingRanked: rankedKnown ? missing.length : null
     },
     // 两种源都补不到的排名模型:前端「性价比」显示 —;留档便于发现源站漏录/改名
     missingRanked: rankedKnown ? missing : null,
     desc: "模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),主源 codingplan.fyi," +
-      "排名模型主源缺价时由 models.dev 官方 provider 优先补齐(priceSource 标注来源)," +
+      "排名模型主源缺价时由 models.dev 官方 provider 优先补齐,仍缺价时按厂商官网标准价种子补入(priceSource 标注来源)," +
       "按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。",
     models: unique
   };
@@ -344,7 +392,9 @@ async function updatePricing() {
     "//   同 slug 取 (输入|缓存|输出) 三元组众数;美元按汇率 " + usdToCnyRate + " 折算人民币。\n" +
     "// 补缺:排名模型(总览命中≥4榜,判定复用 js/data.js 的 unified())主源无价时,\n" +
     "//   按 models.dev 官方 provider 优先、openrouter 兜底,用 canonical 名/别名精确匹配;\n" +
-    "//   补价不覆盖主源;本次未匹配到或补价源不可用时沿用上一版补价;都无价的模型列在 missingRanked。\n" +
+    "//   补价不覆盖主源;本次未匹配到或补价源不可用时沿用上一版补价;\n" +
+    "//   仍缺价的模型按厂商官网价种子补入(OFFICIAL_PRICE_SEEDS,priceSource=official:*),\n" +
+    "//   都无价的模型列在 missingRanked。\n" +
     "// 用途:总览矩阵「性价比」列(综合分 ÷ costPerM);价格为快照口径,可能滞后于平台官网。\n";
   writers.writeWindowVar(cfg.outFile, cfg.windowVar, writers.windowVarTemplate(cfg.windowVar, header, obj));
 
@@ -354,7 +404,8 @@ async function updatePricing() {
   console.log("[pricing] ✓ " + unique.length + " 个模型有可比标价(planModels " + rows.length +
     " 条,pricing " + withPricing + " 条,可比 " + comparable + " 条;costPerM " + min + " ~ " + max +
     ";排名模型 " + (rankedKnown ? ranked.length : "?") + ",models.dev 补价 " + supplemented +
-    (carriedOver ? "(沿用上次 " + carriedOver + ")" : "") + ")");
+    (carriedOver ? "(沿用上次 " + carriedOver + ")" : "") +
+    (seeded ? ",官网价种子 " + seeded : "") + ")");
   if (unresolved) console.log("[pricing] ! " + unresolved + " 个 slug 未命中别名表(vendor=其他),前端将忽略");
   if (missing.length) console.warn("[pricing] ⚠ " + missing.length + " 个排名模型仍无标价(性价比显示 —):" + missing.join(", "));
   if (overLimit.length) console.warn("[pricing] ⚠ costPerM 超过哨兵上限 " + cfg.costPerMSanityLimit + ":" + overLimit.join(", "));
