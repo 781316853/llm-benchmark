@@ -3221,6 +3221,12 @@
     });
   }
 
+  // 主题切换后图表里的颜色是构建时写进 option 的,需重建当前页;无图表的页面不必重绘
+  window.addEventListener("llm-theme-change", function () {
+    if (!document.querySelector(".page.active .chart")) return;
+    renderPage();
+  });
+
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

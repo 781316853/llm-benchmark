@@ -55,7 +55,7 @@ index.html + 7 个榜单页   8 个独立页面(index.html / llm2014.html / mode
 en/                      7 个英文页(同上,不含 changelog),同一份模板生成,正文由 js/i18n-en.js 运行时翻译
 pages/shell.html        全站模板(8 个标签的公共骨架 + 各页 section),改页面结构改这里
 scripts/build_pages.js  把模板拆成 8 个页面 + 7 个英文页并生成 sitemap.xml(npm run pages)
-css/styles.css          纸本研报风样式(暖纸底 / 墨绿 / 铁锈红 / 衬线标题)
+css/styles.css          DeepSeek 风样式(浅色默认 + 暗色切换 / 品牌蓝 / 胶囊导航 / 24px 卡片)
 js/i18n.js              英文站运行时翻译引擎(仅 <html lang=en> 生效):dict / html / rules / ctx 四张表
 js/i18n-en.js           英文站翻译字典(中文原文为 key)
 js/data.js              数据归一(canonical 命中映射、unified 视图、hitCount)

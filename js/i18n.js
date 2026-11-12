@@ -152,8 +152,16 @@
     return false;
   }
 
+  function reveal() {
+    document.documentElement.classList.remove("i18n-pending");
+  }
+
   function start() {
     walk(document.body);
+    // 先译静态骨架,再让出两帧给 app.js 的首屏渲染,随后淡入;动态表格由 MutationObserver 补齐
+    requestAnimationFrame(function () {
+      setTimeout(reveal, 120);
+    });
     if (!window.MutationObserver) return;
     new MutationObserver(function (muts) {
       // 自身替换产生的英文变更不含中文,不会再次排队,避免自激循环

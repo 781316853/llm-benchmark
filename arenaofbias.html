@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#F3EFE5" />
+  <!-- 主题:默认浅色,读取上次选择后再上屏,避免暗色用户看到闪白 -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("llm-theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="theme-color" content="#F9F8F8" />
   <title>亿模亿样 · 前端作品社区盲评 Elo 排行</title>
   <meta name="description" content="前端作品匿名盲评的 Bradley-Terry Elo 排行(1000 为平均水平),含 ±95% 区间、有效比较场次与胜率。" />
   <meta name="author" content="LLM Benchmark Index" />
@@ -17,14 +25,14 @@
   <meta property="og:title" content="亿模亿样 · 前端作品社区盲评 Elo 排行" />
   <meta property="og:description" content="前端作品匿名盲评的 Bradley-Terry Elo 排行(1000 为平均水平),含 ±95% 区间、有效比较场次与胜率。" />
   <meta property="og:url" content="https://781316853.github.io/llm-benchmark/arenaofbias.html" />
-  <meta property="og:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg" />
+  <meta property="og:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg?v=20261112" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="zh_CN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="亿模亿样 · 前端作品社区盲评 Elo 排行" />
   <meta name="twitter:description" content="前端作品匿名盲评的 Bradley-Terry Elo 排行(1000 为平均水平),含 ±95% 区间、有效比较场次与胜率。" />
-  <meta name="twitter:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg" />
+  <meta name="twitter:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg?v=20261112" />
   <!-- 访问统计:Cloudflare Web Analytics(无 Cookie、不采集个人数据,无需同意弹窗)。
        在 Cloudflare 控制台 Web Analytics 添加站点后拿到的 token 填进下面引号即可生效;
        留空则不加载脚本,不会产生无效请求。 -->
@@ -45,7 +53,7 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261111r" />
+  <link rel="stylesheet" href="css/styles.css?v=20261112h" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="data/models.js?v=20261110b"></script>
@@ -87,7 +95,7 @@
   <script defer src="js/data.js?v=20261111a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261109b"></script>
-  <script defer src="js/app.js?v=20261111x"></script>
+  <script defer src="js/app.js?v=20261112a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261110a"></script>
   <!-- 意见反馈交互 -->
@@ -111,7 +119,13 @@
           <div><b>2h</b><span>刷新间隔</span></div>
         </div>
         <!-- 语言切换:中文站 ↔ /en/ 英文站;英文页的链接由 scripts/build_pages.js 反转为「中文」 -->
-        <a class="lang-link" href="en/" hreflang="en" lang="en" aria-label="Switch to English">English</a>
+        <span class="topbar-actions">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换到深色主题" aria-pressed="false" title="浅色 / 深色主题">
+            <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </button>
+          <a class="lang-link" href="en/arenaofbias.html" hreflang="en" lang="en" aria-label="Switch to English">English</a>
+        </span>
       </div>
     </div>
   </header>
@@ -243,5 +257,55 @@
       </div>
     </div>
   </div>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById("themeToggle");
+      var meta = document.querySelector('meta[name="theme-color"]');
+      var en = /^en/i.test(root.lang || "");
+      function sync() {
+        var dark = root.getAttribute("data-theme") === "dark";
+        if (btn) {
+          btn.setAttribute("aria-pressed", dark ? "true" : "false");
+          btn.setAttribute("aria-label", dark ? (en ? "Switch to light theme" : "切换到浅色主题") : (en ? "Switch to dark theme" : "切换到深色主题"));
+          btn.title = en ? "Light / dark theme" : "浅色 / 深色主题";
+        }
+        if (meta) meta.setAttribute("content", dark ? "#0B0B0C" : "#F9F8F8");
+      }
+      if (btn) btn.addEventListener("click", function () {
+        var dark = root.getAttribute("data-theme") === "dark";
+        if (dark) root.removeAttribute("data-theme");
+        else root.setAttribute("data-theme", "dark");
+        try { localStorage.setItem("llm-theme", dark ? "light" : "dark"); } catch (e) {}
+        sync();
+        window.dispatchEvent(new CustomEvent("llm-theme-change"));
+      });
+      sync();
+    })();
+  </script>
+  <script>
+    (function () {
+      var KEY = "llm-lang-scroll";
+      var link = document.querySelector(".lang-link");
+      if (link) link.addEventListener("click", function () {
+        try { sessionStorage.setItem(KEY, JSON.stringify({ y: window.scrollY, t: Date.now() })); } catch (e) {}
+      });
+      var saved = null;
+      try { saved = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+      if (!saved || !saved.y || Date.now() - saved.t > 15000 || location.hash) return;
+      try { sessionStorage.removeItem(KEY); } catch (e) {}
+      var tries = 0;
+      function restore() {
+        var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        if (max < 200 && tries++ < 20) { setTimeout(restore, 120); return; }
+        window.scrollTo(0, Math.min(saved.y, max));
+        setTimeout(function () {
+          var m2 = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+          if (Math.abs(window.scrollY - Math.min(saved.y, m2)) > 4) window.scrollTo(0, Math.min(saved.y, m2));
+        }, 550);
+      }
+      setTimeout(restore, 120);
+    })();
+  </script>
 </body>
 </html>
