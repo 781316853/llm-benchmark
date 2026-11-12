@@ -1,4 +1,4 @@
-// 数据源:AutomationBench(Zapier 跨应用业务工作流智能体基准,更新于 2026-11-11)
+// 数据源:AutomationBench(Zapier 跨应用业务工作流智能体基准,更新于 2026-11-12)
 // 主渠道:https://www.datalearner.com/benchmarks/automation-bench(厂商官方发布成绩转录)
 // 补充:https://llm-stats.com/benchmarks/automationbench(官方:https://zapier.com/benchmarks)
 // 补充:https://benchlm.ai/benchmarks/automationbench(benchlm 镜像)
@@ -15,8 +15,8 @@ window.AUTOMATIONBENCH = {
   'repoUrl': 'https://github.com/zapier/AutomationBench',
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-12',
+  'refreshedAt': '2026-11-12 15:29',
   'stats': {
     'tasks': 600,
     'domains': 6,
@@ -37,11 +37,15 @@ window.AUTOMATIONBENCH = {
       'rank': 1
     },
     {
+      'rank': 2,
       'model': 'ERNIE 5.5 Flash Preview',
       'org': 'Baidu',
       'score': 61.9,
-      'src': 'benchlm',
-      'rank': 2
+      'size': '280B',
+      'context': '1.0M',
+      'cost': '$ 0.28 / $ 1.13',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'model': 'DeepSeek-V4.1-Flash-1017',
@@ -99,8 +103,8 @@ window.AUTOMATIONBENCH = {
       'date': '2026-10-28',
       'src': 'datalearner',
       'size': '—',
-      'context': '—',
-      'cost': '—',
+      'context': '1.0M',
+      'cost': '$ 2.00 / $ 10.00',
       'rank': 7
     },
     {

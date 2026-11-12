@@ -1,4 +1,4 @@
-// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-11-11)
+// 数据源:NL2Repo-Bench(长程仓库生成·编码 Agent,更新于 2026-11-12)
 // 来源:https://llm-stats.com/benchmarks/nl2repo(官方:https://github.com/multimodal-art-projection/NL2RepoBench)
 // 主渠道:官方论文评测表 https://arxiv.org/html/2512.12730v2(Table 2) · https://www.datalearner.com/benchmarks/nl2repo-bench(厂商官方发布)
 // 补充:llm-stats 聚合表 · https://www.benchlm.ai/benchmarks/nl2repo(benchlm 镜像)
@@ -11,8 +11,8 @@ window.NL2REPO = {
   'url': 'https://llm-stats.com/benchmarks/nl2repo',
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-12',
+  'refreshedAt': '2026-11-12 15:29',
   'stats': {
     'tasks': 103,
     'entries': 56
@@ -58,11 +58,15 @@ window.NL2REPO = {
       'rank': 4
     },
     {
+      'rank': 5,
       'model': 'ERNIE 5.5 Flash Preview',
       'org': 'Baidu',
       'score': 64.8,
-      'src': 'benchlm',
-      'rank': 5
+      'size': '280B',
+      'context': '1.0M',
+      'cost': '$ 0.28 / $ 1.13',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'model': 'DeepSeek V4 Pro 0813',

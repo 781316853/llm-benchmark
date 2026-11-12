@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-11)
+// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-12)
 // 来源:https://llm-stats.com/benchmarks/terminal-bench-2.1(官方:https://www.tbench.ai/news/terminal-bench-2-1)
 // 主渠道:https://www.datalearner.com/benchmarks/terminal-bench-2-1(厂商官方发布成绩转录)
 // 补充:llm-stats 聚合表(0-1 归一化自报分)
@@ -15,11 +15,11 @@ window.TBENCH_V21 = {
   'officialUrl': 'https://www.tbench.ai/news/terminal-bench-2-1',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2.1',
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-12',
+  'refreshedAt': '2026-11-12 15:29',
   'stats': {
     'tasks': 89,
-    'entries': 59
+    'entries': 58
   },
   'desc': 'Terminal-Bench 2.1:在真实命令行环境中评测编码 Agent(89 个任务,修复 2.0 中 28 个任务问题)。本快照以 datalearner 厂商官方发布成绩为主源、llm-stats 模型级 0-1 归一化自报分(换算为百分比)为补充源,按渠道层级合并,越高越好。',
   'models': [
@@ -141,8 +141,9 @@ window.TBENCH_V21 = {
       'ci': null,
       'date': '2026-11-04',
       'tokens': null,
-      'cost': null,
+      'cost': '—',
       'org': 'Cognition',
+      'size': '276B',
       'src': 'datalearner'
     },
     {
@@ -436,20 +437,6 @@ window.TBENCH_V21 = {
     },
     {
       'rank': 31,
-      'model': 'GLM-5.2',
-      'agent': null,
-      'effort': null,
-      'score': 82.7,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': '$ 0.75 / $ 2.40',
-      'org': 'Zhipu AI',
-      'size': '753B',
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 32,
       'model': 'DeepSeek-V4-Flash-0731',
       'agent': null,
       'effort': null,
@@ -460,6 +447,20 @@ window.TBENCH_V21 = {
       'cost': '$ 0.06 / $ 0.18',
       'org': 'DeepSeek',
       'size': '304B',
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 32,
+      'model': 'GLM-5.2',
+      'agent': null,
+      'effort': null,
+      'score': 82.7,
+      'ci': null,
+      'date': null,
+      'tokens': null,
+      'cost': '$ 0.75 / $ 2.40',
+      'org': 'Zhipu AI',
+      'size': '753B',
       'src': 'llm-stats'
     },
     {
@@ -576,20 +577,6 @@ window.TBENCH_V21 = {
     },
     {
       'rank': 41,
-      'model': 'Laguna S 2.1',
-      'agent': null,
-      'effort': null,
-      'score': 70.2,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': '$ 0.10 / $ 0.20',
-      'org': 'Poolside',
-      'size': '118B',
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 42,
       'model': 'K2 Horizon 375B-A23B',
       'agent': null,
       'effort': null,
@@ -600,6 +587,20 @@ window.TBENCH_V21 = {
       'cost': '—',
       'org': 'Institute of Foundation Models',
       'size': '375B',
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 42,
+      'model': 'Laguna S 2.1',
+      'agent': null,
+      'effort': null,
+      'score': 70.2,
+      'ci': null,
+      'date': null,
+      'tokens': null,
+      'cost': '$ 0.10 / $ 0.20',
+      'org': 'Poolside',
+      'size': '118B',
       'src': 'llm-stats'
     },
     {
@@ -824,20 +825,6 @@ window.TBENCH_V21 = {
       'cost': '—',
       'org': 'Institute of Foundation Models',
       'size': '4B',
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 59,
-      'model': 'K2 Horizon 7B',
-      'agent': null,
-      'effort': null,
-      'score': 39.1,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': '—',
-      'org': 'Institute of Foundation Models',
-      'size': '7B',
       'src': 'llm-stats'
     }
   ]

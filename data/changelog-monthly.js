@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-12',
+  'refreshedAt': '2026-11-12 15:29',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3322,
-    'afterMerge': 3319,
-    'needsZh': 2144,
-    'translated': 2144,
+    'afterToolDedupe': 3330,
+    'afterMerge': 3327,
+    'needsZh': 2146,
+    'translated': 2146,
     'untranslated': 0
   },
   'zh': {
@@ -163,6 +163,7 @@ window.CHANGELOG_MONTHLY = {
     '203f3be8-100': '为claude-api技能添加了OpenTelemetry跟踪指南，包括使用ANT CLI设置跟踪目标',
     '2042ab94-49': '添加密码认证并提升服务器安全性',
     '208ae6f4-91': '! - 新增实验性全屏 TUI 模式。设置环境变量 KIMI_CODE_TUI_FULL_SCREEN=1 即可启用',
+    '2096e33c-133': 'Codex 现在默认在 Google Cloud Vertex AI 上以增量方式发送工具更新。要选择退出，请在 config.toml 的 [features] 下将 incremental_tools_legacy_gcp 设置为 false。( , )',
     '20a5f60-34': '添加会话标题生成遥测',
     '20a98057-80': 'view_image 可通过所选环境解析文件，适用于多环境会话',
     '20b19acc-44': '支持为桌面端配置默认服务器 URL',
@@ -567,7 +568,6 @@ window.CHANGELOG_MONTHLY = {
     '48f815f4-40': '增加 --mdns-domain 标志以自定义 mDNS 主机名',
     '49056cf8-105': 'KIMI_MODEL_TEMPERATURE、KIMI_MODEL_TOP_P — 全局应用于任何 kimi 提供商的采样参数（不绑定 KIMI_MODEL_NAME）',
     '491a8e6e-193': '新增 /ultrareview，用于在云端利用并行多代理分析和评审运行全面的代码审查 — 不带参数调用可审查当前分支，或使用 /ultrareview 获取并审查特定的 GitHub PR',
-    '49233140-60': '新增 session.started 事件，在创建新会话时触发',
     '492660d6-109': '插件现在可通过清单中的 commands 字段提供斜杠命令，注册为 :，并以 $ARGUMENTS 展开调用',
     '4979a68-139': '当服务器连接失败时，claude mcp list 和 /mcp 现在会显示 HTTP 状态和错误文本；同时对 MCP 配置值中隐藏的首尾空白给出警告',
     '4984c900-41': '为桌面应用集成 tauri-specta',
@@ -830,7 +830,6 @@ window.CHANGELOG_MONTHLY = {
     '679bea14-87': '新增 sandbox.allowAppleEvents 可选设置，允许沙盒命令在 macOS 上发送 Apple Events',
     '67b398d1-121': '使用符合条件的Codex帐户授权或专用登录验证企业MCP连接，包括需要密钥的OAuth客户端',
     '67bd5b28-52': '增加 close-small 图标并用于评论卡片的关闭按钮',
-    '67ee07ac-71': '新增 OPENCODE_FAKE_VCS 标志用于 VCS 测试，并更新待办跟踪说明',
     '68202e5d-20': '增加高亮功能',
     '6831df30-128': '在 /cost 和状态行的 prompt_cache 字段中新增提示缓存未命中的可能原因（例如工具定义或系统提示发生变化、空闲超过 TTL）',
     '684a9799-44': '为实验性构建启用项目发现',
@@ -937,6 +936,7 @@ window.CHANGELOG_MONTHLY = {
     '744b50b9-71': '新增 /timeline 命令，快速跳转到会话历史中的特定消息',
     '74530aa9-98': '移除默认的每轮 1000 步限制。用户仍可在配置中设置 max_steps_per_turn 以强制自定义限制',
     '74564c4e-333': 'Daybreak是通过--enable cli_daybreak或features.cli_daybreak = true选择加入的； daybreak = true本身是不够的。默认情况下，控件和指示器被隐藏，/daybreak不可用，自动网络路由被省略，即使对于已保存的Daybreak线程也是如此。已保存的偏好设置将保持不变。选择加入路由需要符合条件的ChatGPT登录、OpenAI提供商和广告模式/计划支持',
+    '74988308-36': '显示插件代理配置文件刷新钩子',
     '74cb22dc-137': '新增内置 kimi vis 命令，可在浏览器中启动会话可视化工具并指向本地会话。支持 --port/--host、--no-open 和 kimi vis 深链接',
     '7532a748-77': '在聊天中新增可点击的文件附件——Cmd/Ctrl 点击可在 Finder/资源管理器中显示文件',
     '755117f4-40': '在 TUI 中为权限按钮添加鼠标支持',
@@ -1486,6 +1486,7 @@ window.CHANGELOG_MONTHLY = {
     'b276c0f8-105': '新增支持通过API配置GPT-6-Astra ，无需更改默认模型或在模型选取器中显示',
     'b2785a78-30': '重试 Anthropic 过载错误',
     'b27cb4b4-91': '在 /status 中新增 Auto 模式服务器一行，显示本会话的 auto 模式分类器是否运行在服务器上',
+    'b2d7a300-36': '添加实验性后续提示建议',
     'b2db3bc4-71': '子会话请求权限时自动跳转到该会话',
     'b2e94220-113': '将 lsof、pgrep、tput、ss、fd 和 fdfind 加入 bash 自动批准白名单，减少常见只读操作的权限提示',
     'b2fd5880-77': '插件可通过本地清单和远程目录提供专用的深色模式 logo',
@@ -1549,7 +1550,6 @@ window.CHANGELOG_MONTHLY = {
     'b97e641c-38': '为 attach 命令新增 --continue 和 --fork 标志',
     'b99a3de3-174': '远程与 app-server 工作流现在支持出站 websocket 传输、远程 --cd 转发、运行时远程控制启用、沙箱感知的文件系统 API，以及实验性的 codex exec-server 子命令',
     'b9a6c264-76': '新增取消并确认步骤：移除不可用的粘贴内容会改变命令文本时进行确认',
-    'b9bc1f94-69': 'ACP 新增 MCP 服务器支持、文件差异以及默认斜杠命令（/init、/compact）',
     'b9c99788-28': '升级了 OpenRouter SDK 包',
     'b9e1b814-26': '为 Web 与 App 添加 Gruvbox 主题',
     'ba4de0e8-53': '精简热门提供商列表，仅显示前 6 个提供商',
@@ -1632,6 +1632,7 @@ window.CHANGELOG_MONTHLY = {
     'c22e8abe-42': '为 SAP AI 提供方新增思考变体支持',
     'c24b5507-53': '引入用于分享会话的新企业版 Web 界面',
     'c26045a8-38': '新增 Grok 资源耗尽时的重试处理',
+    'c2873e78-57': '将页眉向文本方向扫动，并添加 KIMI_CODE_TUI_ANIMATION_FPS',
     'c2a73727-54': '优化消息时间戳，非当天时显示日期',
     'c2b23795-132': '在无头 stream-json 的 init 事件中新增 mcp_server_errors，列出因配置校验被跳过的 --mcp-config 条目；终端运行时会打印启动警告',
     'c2ea20b4-39': '支持在 MCP 工具响应中返回图片',
@@ -1678,6 +1679,7 @@ window.CHANGELOG_MONTHLY = {
     'c6cc0f2c-99': '新增 /reload 以重新加载当前会话并应用更新的配置文件，另有 /reload-tui 仅重新加载 TUI 偏好',
     'c6faf00-101': '在状态行 JSON 输入中新增 workspace.git_worktree，当前目录位于链接的 git 工作树内时会设置',
     'c70353fc-110': 'Amazon Bedrock在兼容型号上支持多Agent V2和Ultra推理； Bedrock Mantle还接受AWS GovCloud区域',
+    'c71b5727-25': '附加 Kimi 请求元数据',
     'c7250e18-42': '会话菜单新增复制上一条助手消息',
     'c747e75c-28': '为应用添加模型变体支持',
     'c7490460-132': '通过将工具名和参数内联到顶层来扁平化工具调用数据，并限制旧记录迁移，使其仅重写匹配的工具调用负载',
@@ -2165,7 +2167,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 123,
+      'count': 134,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -2176,6 +2178,13 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
+            {
+              'key': '2096e33c-133',
+              'text': 'Codex now sends tool updates incrementally by default on Google Cloud Vertex AI. To opt out, set incremental_tools_legacy_gcp = false under [features] in config.toml . ( , )',
+              'date': '2026-11-11',
+              'version': '0.167.2',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.2'
+            },
             {
               'key': '24c7ca0c-88',
               'text': 'Switch between connected backends from the terminal session picker and keep your drafts when switching',
@@ -2226,7 +2235,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/openai/codex/releases/tag/libcap-v2.75'
             }
           ],
-          'count': 7
+          'count': 8
         },
         {
           'id': 'claude-code',
@@ -2536,6 +2545,34 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
+              'key': '74988308-36',
+              'text': 'expose plugin agent profile refresh hooks',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'b2d7a300-36',
+              'text': 'add experimental next-prompt suggestions',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'c2873e78-57',
+              'text': 'sweep running titles toward text and add KIMI_CODE_TUI_ANIMATION_FPS',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'c71b5727-25',
+              'text': 'attach Kimi request metadata',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
               'key': '14e1352c-39',
               'text': 'include gitignored files in file suggestions',
               'date': '2026-11-11',
@@ -2753,7 +2790,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261102033430-40590f6'
             }
           ],
-          'count': 31
+          'count': 35
         },
         {
           'id': 'deepseek-harness',
@@ -2933,6 +2970,48 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
+              'key': '19d01998-48',
+              'text': '支持从历史会话打开关联工作区或转到 Agent Window；macOS Dock 菜单同步展示最近工作区',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': '3e62434e-21',
+              'text': '支持在文档产物中查看代码与表格的结构化差异',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': '8a6efd1c-35',
+              'text': '支持 CN 版本用户在子任务卡片悬停或键盘聚焦时查看该子任务的完整积分消耗',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': 'a26bea04-51',
+              'text': '支持在打开或创建项目时确认目录信任；未信任目录中的项目规则、技能、命令和 Hooks 不会加载，终端命令也不会运行',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': 'e98c15d8-44',
+              'text': '支持在 Agent Window 中直接编辑全局和项目 Hooks 配置，并可在读取或保存失败后重试',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': 'f9b37a00-51',
+              'text': '支持 CN 版企业租户按策略为新生成的 Word、Excel 和 PowerPoint 产物保留、移除或自定义可见水印',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
               'key': '982a0dab-30',
               'text': '支持在消息中查看已完成后台命令的末尾输出，并可在读取失败后重试',
               'date': '2026-11-08',
@@ -2954,7 +3033,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.trae.cn/ide_changelog#hiyTL0Rkm'
             }
           ],
-          'count': 3
+          'count': 9
         },
         {
           'id': 'zcode',
@@ -25389,7 +25468,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2025-10',
       'label': '2025年10月',
-      'count': 60,
+      'count': 57,
       'toolCount': 3,
       'multi': [],
       'tools': [
@@ -25602,30 +25681,9 @@ window.CHANGELOG_MONTHLY = {
               'date': '2025-10-29',
               'version': '0.15.26',
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
-            },
-            {
-              'key': '49233140-60',
-              'text': 'Added session.started event that triggers when a new session is created',
-              'date': '2025-10-28',
-              'version': '0.15.19',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
-            },
-            {
-              'key': '67ee07ac-71',
-              'text': 'Added OPENCODE_FAKE_VCS flag for VCS testing and updated todo tracking instructions',
-              'date': '2025-10-28',
-              'version': '0.15.19',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
-            },
-            {
-              'key': 'b9bc1f94-69',
-              'text': 'Added MCP server support, file diffs, and default slash commands (/init, /compact) in ACP',
-              'date': '2025-10-28',
-              'version': '0.15.19',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
             }
           ],
-          'count': 32
+          'count': 29
         },
         {
           'id': 'traecode',

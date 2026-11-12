@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 2026-11-11)
+// 数据源:Terminal-Bench-Science 0.1(斯坦福/Laude 科研工作流评测,更新于 2026-11-12)
 // 来源:https://hub.harborframework.com/datasets/terminal-bench-science/terminal-bench-science/latest?tab=leaderboard&leaderboard=v0-1-eval(官方:https://www.terminal-bench-science.ai/announcement)
 // 回退:https://www.explainx.ai/blog/terminal-bench-science-ai-scientific-research-benchmark-august-2026(explainx 博客镜像 T3,仅官方榜不可用时使用)
 // 补充:https://aireleasetracker.com/benchmark/terminal-bench-science-0.1(第三方聚合 T3,只补缺失模型)
@@ -19,8 +19,8 @@ window.TBSCIENCE = {
   'version': '0.1',
   'leaderboard': 'v0-1-eval',
   'actionId': '40775de86105e3d601d31c1040d2235ad70cc4a593',
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-12',
+  'refreshedAt': '2026-11-12 15:29',
   'stats': {
     'tasks': 70,
     'trialsPerTask': 3,

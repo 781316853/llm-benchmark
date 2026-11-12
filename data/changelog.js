@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-12',
+  'refreshedAt': '2026-11-12 15:29',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,8 +20,37 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
+        {
+          'version': '0.169.0-alpha.11.1',
+          'title': '0.169.0-alpha.11.1',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T22:27:26Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0-alpha.11.1',
+          'body': '版本 0.169.0-alpha.11.1',
+          'h': '95f20cb8'
+        },
+        {
+          'version': '0.167.2',
+          'title': '0.167.2',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T22:46:17Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.2',
+          'body': '新功能\n- Codex 现在默认在 Google Cloud Vertex AI 上以增量方式发送工具更新。要选择退出，请在config.toml的[features]下将incremental_tools_legacy_gcp设置为false。( #60617 、#60848 )\n变更日志\n完整变更日志：rust-v0.167.1...rust-v0.167.2',
+          'h': '4b416524'
+        },
+        {
+          'version': '0.167.0-alpha.4.3',
+          'title': '0.167.0-alpha.4.3',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T23:59:38Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.3',
+          'body': 'Release 0.167.0-alpha.4.3'
+        },
         {
           'version': '0.167.0-alpha.4.2',
           'title': '0.167.0-alpha.4.2',
@@ -29,20 +58,16 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-11T01:34:42Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.0-alpha.4.2',
-          'body': '版本0.167.0-alpha.4.2',
-          'h': 'f09ffdfc'
+          'body': 'Release 0.167.0-alpha.4.2'
         },
         {
           'version': '0.167.1',
           'title': '0.167.1',
           'date': '2026-11-10',
-          'dateRaw': '2026-11-10T21:32:01Z',
-          'tags': [
-            'Changelog'
-          ],
+          'dateRaw': '2026-11-10T21:33:57Z',
+          'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.1',
-          'body': '## 变更日志\n\n完整更新日志：https://github.com/openai/codex/compare/rust-v0.167.0...rust-v0.167.1',
-          'h': 'f79c170c'
+          'body': 'Changelog\nFull Changelog: rust-v0.167.0...rust-v0.167.1'
         },
         {
           'version': '0.167.0-alpha.4.2',
@@ -1334,7 +1359,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '2.1.322',
@@ -3706,17 +3731,36 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
+          'version': 'daemon-v0.5.2',
+          'title': 'process-daemon v0.5.2',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T21:34:04Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.2',
+          'body': 'opencode-pty 0.5.2（协议 8），来自 packages/process-daemon，以 @opencode/pty@0.5.2 发布到 npm。',
+          'h': 'dbc4afa'
+        },
+        {
+          'version': 'daemon v0.5.2',
+          'title': 'process-daemon v0.5.2',
+          'date': '2026-11-11',
+          'dateRaw': '2026-11-11T21:34:04Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.2',
+          'body': 'opencode-pty 0.5.2（协议 8），来自 packages/process-daemon，以 @opencode/pty@0.5.2 发布到 npm。',
+          'h': 'dbc4afa'
+        },
+        {
           'version': 'daemon-v0.5.1',
-          'title': '进程守护程序-v0.5.1',
+          'title': 'process-daemon-v0.5.1',
           'date': '2026-11-11',
           'dateRaw': '2026-11-11T18:27:09Z',
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.1',
-          'body': '杂项（进程守护进程）：0.5.1 版本（#63366）',
-          'h': '99bdc897'
+          'body': 'chore(process-daemon): release 0.5.1 ( #63366 )'
         },
         {
           'version': '2.2.7',
@@ -9206,24 +9250,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.23',
           'body': '- Fixed timeout parameter validation in bash tool to ensure positive values\n- Fixed MCP status() function to not overwrite connected state with failed state\n- Improved output handling by using process.stdout.write instead of console.log for better CLI experience\n- Added --title flag to opencode run command for custom session titles\n- Fixed additions and deletions counting in edit tool filediff for more accurate change tracking\n- Added OPENCODE_CONFIG_DIR environment variable to allow loading custom config directories'
-        },
-        {
-          'version': '0.15.20',
-          'title': 'v0.15.20',
-          'date': '2025-10-28',
-          'dateRaw': '2025-10-28T15:12:45Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.20',
-          'body': '- Fixed blank version issue in the Go SDK'
-        },
-        {
-          'version': '0.15.19',
-          'title': 'v0.15.19',
-          'date': '2025-10-28',
-          'dateRaw': '2025-10-28T08:12:41Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19',
-          'body': '- Added OPENCODE_FAKE_VCS flag for VCS testing and updated todo tracking instructions\n- Removed temperature setting for Claude models\n- Added MCP server support, file diffs, and default slash commands (/init, /compact) in ACP\n- Fixed LiteLLM error where tool parameter must be specified\n- Removed reasoning effort setting to \'medium\' for gpt-5-pro model\n- Added session.started event that triggers when a new session is created\n- Fixed build script to work cross-platform\n- Removed claude-haiku-4.5 from default priority for GitHub Copilot session title generation'
         }
       ]
     },
@@ -9235,8 +9261,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
+        {
+          'version': '2.6.0-canary.20261112033252-d729f91',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.20261112033252-d729f91',
+          'date': '2026-11-12',
+          'dateRaw': '2026-11-12T03:48:45Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91',
+          'body': '有哪些变化\n- 修复(agent-core-v2)：在分叉代理时继承基准工具，由 @sailist 在 #4832 中完成\n- feat(agent-core-v2)：由 @sailist 在 #4830 中添加 Kimi 请求元数据\n- 修复(桌面端)：保留重试和后台任务行为，由 @sailist 在 #4831 中完成\n- feat(agent-core-v2)：暴露插件代理配置文件刷新钩子，由 @pvzheroes125 在 #4833 中完成\n- 修复(agent-core-v2)：保留显式循环配置文件绑定语义，由 @pvzheroes125 在 #4840 中完成\n- 新增（预测）：添加实验性下一个提示建议，由 @sailist 在 #4754 中完成\n- 新增功能(tui)：将运行标题移至文本旁，并添加 KIMI_CODE_TUI_ANIMATION_FPS，由 @Grapedge 在 #4843 中完成\n- 杂项：由 @kimi-agent-bot 在 #4859 中将 Web 分发与 code-app 同步\n完整变更日志： https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261111095258-5518d54...@moonshot-ai/kimi-code@2.6.0-canary.20261112033252-d729f91',
+          'h': 'bb5a75e4'
+        },
         {
           'version': '2.6.0-canary.20261111095258-5518d54',
           'title': '@moonshot-ai/kimi-code@2.6.0-canary.2026111095258-5518d54',
@@ -9249,13 +9285,12 @@ window.CHANGELOG = {
         },
         {
           'version': '2.6.0-canary.20261111052659-f26481d',
-          'title': '@ moonshot-ai/kimi-code @ 2.6.0-canary.20261111052659-f26481d',
+          'title': '@moonshot-ai/kimi-code@2.6.0-canary.20261111052659-f26481d',
           'date': '2026-11-11',
           'dateRaw': '2026-11-11T05:38:42Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d',
-          'body': '更改内容\n- 重构（ kap-server ） ：在# 4738中通过@ wbxl2000丢弃WebSocket握手和确认\n- fix: # 4713中@ RealKai42通过Skill工具直接调用技能\n- 修复：稳定# 4689中@ liruifengv的工作区主要变化\n- feat: # 4690中@ liruifengv支持跨工作区目录的同名技能\n- feat (tower): import artifact woker by @ tpoisonooo in # 4427\n- fix (agent-core-v2):在# 4747中将工作区注册表读取放大减少@ hunshcn\n- feat (tui):保持全屏成绩单组稳定，并在# 4751中显示@ Grapedge的实时进度\n- 修复： # 4764中@ 7Sageer在链接模式下请求网页搜索\n- 修复：当代理在# 4757中由@ 7Sageer启动时，应用配置的权限规则\n- fix (kimi-code):让全屏副本在tmux和Linux上通过@ Grapedge在# 4755中到达剪贴板\n- 家务：在# 4765中由@ kimi-agent-bot将web dist与code-app同步\n- chore （ release ） ： # 4768中@ sailist使用补丁凸起进行塔架更改\n- fix (agent-core-v2):观看# 4766中@ pvzheroes125的显式技能目录\n- fix (agent-core-v2):在# 4767中重用@ pvzheroes125上传的MCP工具图像\n- fix (agent-core-v2):观看# 4770中@ pvzheroes125的额外技能目录\n- 家务：在# 4783中由@ kimi-agent-bot将web dist与code-app同步\n- feat (agent-core-v2):持久化# 4550中@ sailist的用户和项目权限规则\n- feat:在# 4756中添加@ liruifengv的最低版本升级提示\n- feat (tui): # 4771中@ Grapedge设置实验标志时，默认为全屏模式\n- build (nix): # 4748中@ sailist将pnpm dependency fetcher升级到v5\n- fix (server):支持# 4563中@ kimi-agent-bot的Unicode下载文件名\n- test (tui): # 4793中由@ kimi-agent-bot抽取的绑定队列消息定时器\n- test (server): cover download filename edge cases by @ kimi-agent-bot in # 4790\n- feat:在# 4752中@ sailist的文件建议中包含gitignored文件\n- 修复：在# 4799中@ liruifengv禁用技能工具时，保持技能目录可见\n- fix (server):更正# 4800中@ kimi-agent-bot的原始文件下载响应\n- fix (kap-server):结束工具调用被# 4772中的@ wbxl2000中断时短短切断\n- fix (kap-server) ：当另一个手动压缩由# 4773中的@ wbxl2000运行时，拒绝手动压缩\n- fix (kap-server) ：在# 4774中的@ wbxl2000分页会话列表之前应用忙碌过滤器\n- fix (kap-server): # 4775中@ wbxl2000还原存档会话时广播event.session.restored\n- fix (kap-server) ：将auth和Tower错误映射到它们的代码，并由# 4777中的@ wbxl2000停止发送堆栈跟踪\n- feat (kap-server):在# 4788的@ wbxl2000的文件历史查询中取TURN_NUMBER\n- fix (agent-core-v2):结束由# 4779中的@ wbxl2000取消的由停止短切的问题\n- fix (kap-server):在# 4776中@ wbxl2000将工具结果注释保存在tool_call项上\n- feat (kap-server):将tool_call项目链接到# 4789中@ wbxl2000运行的任务\n- fix (agent-core-v2): # 4791中@ liruifengv通过cmd.exe生成Windows批处理脚本命令\n- fix (kap-server) ：在# 4778中由@ wbxl2000创建会话时应用agent_config和自定义元数据\n- fix (kap-server): # 4780中@ wbxl2000仅在cron触发的用户消息中显示计划的提示\n- docs （更新日志） ：在# 4810中由@ kimi-agent-bot从apps/kimi-code/CHANGELOG.md同步2.5.3\n- docs (server-api):删除已删除的端点，并记录# 4809中@ wbxl2000遗漏的端点\n- 家务：同步释放/2026-11-10通过# 4811中的@ kimi-agent-bot返回主目录\n- refactor (agent-core-v2): # 4630中@ sailist的端口代理循环运行时核心\n- feat (tui): # 4814中@ Grapedge在全屏模式下对NotifyUser更新使用主项目符号\n- 家务：在# 4816中由@ kimi-agent-bot将web dist与code-app同步\n- 家务：删除# 4817中@ sailist的循环运行时工作笔记\n- test ：在# 4746中通过@ kimi-agent-bot删除冗余和低值测试用例\n新贡献者\n- @ hunshcn在# 4747中做出了他们的第一个贡献\n完整更新日志： https://github.com/MoonshotAI/kimi-code/compare/ @ moonshot-ai/kimi-code @ 2.6.0-canary.20261109040420-9c1a9c3... @ moonshot-ai/kimi-code @ 2.6.0-canary.20261111052659-f26481d',
-          'h': '40251300'
+          'body': 'What\'s Changed\n- refactor(kap-server): drop the WebSocket handshake and acks by @wbxl2000 in #4738\n- fix: direct skill invocation through Skill tool by @RealKai42 in #4713\n- fix: stabilize workspace primary changes by @liruifengv in #4689\n- feat: support same-name skills across workspace directories by @liruifengv in #4690\n- feat(tower): import artifact woker by @tpoisonooo in #4427\n- fix(agent-core-v2): reduce workspace registry read amplification by @hunshcn in #4747\n- feat(tui): keep fullscreen transcript groups steady and show live progress by @Grapedge in #4751\n- fix: request web search in links mode by @7Sageer in #4764\n- fix: apply configured permission rules when an agent starts by @7Sageer in #4757\n- fix(kimi-code): make fullscreen copy reach the clipboard in tmux and on Linux by @Grapedge in #4755\n- chore: sync web dist from code-app by @kimi-agent-bot in #4765\n- chore(release): use patch bumps for tower changes by @sailist in #4768\n- fix(agent-core-v2): watch explicit skill directories by @pvzheroes125 in #4766\n- fix(agent-core-v2): reuse uploaded MCP tool images by @pvzheroes125 in #4767\n- fix(agent-core-v2): watch extra skill directories by @pvzheroes125 in #4770\n- chore: sync web dist from code-app by @kimi-agent-bot in #4783\n- feat(agent-core-v2): persist user and project permission rules by @sailist in #4550\n- feat: add minimum version upgrade prompts by @liruifengv in #4756\n- feat(tui): default to fullscreen mode when experimental flag is set by @Grapedge in #4771\n- build(nix): upgrade pnpm dependency fetcher to v5 by @sailist in #4748\n- fix(server): support Unicode download filenames by @kimi-agent-bot in #4563\n- test(tui): bound queued message timer pumping by @kimi-agent-bot in #4793\n- test(server): cover download filename edge cases by @kimi-agent-bot in #4790\n- feat: include gitignored files in file suggestions by @sailist in #4752\n- fix: keep skill catalog visible when Skill tool is disabled by @liruifengv in #4799\n- fix(server): correct raw file download responses by @kimi-agent-bot in #4800\n- fix(kap-server): end tool calls cut short by a stop as interrupted by @wbxl2000 in #4772\n- fix(kap-server): reject a manual compaction while another one is running by @wbxl2000 in #4773\n- fix(kap-server): apply the busy filter before paging the session list by @wbxl2000 in #4774\n- fix(kap-server): broadcast event.session.restored when an archived session is restored by @wbxl2000 in #4775\n- fix(kap-server): map auth and Tower errors to their codes and stop sending stack traces by @wbxl2000 in #4777\n- feat(kap-server): take turn_number in the file-history queries by @wbxl2000 in #4788\n- fix(agent-core-v2): end a question cut short by a stop as cancelled by @wbxl2000 in #4779\n- fix(kap-server): keep the tool result note on tool_call items by @wbxl2000 in #4776\n- feat(kap-server): link tool_call items to the task they run as by @wbxl2000 in #4789\n- fix(agent-core-v2): spawn Windows batch script commands through cmd.exe by @liruifengv in #4791\n- fix(kap-server): apply agent_config and custom metadata when creating a session by @wbxl2000 in #4778\n- fix(kap-server): show only the scheduled prompt in cron-fired user messages by @wbxl2000 in #4780\n- docs(changelog): sync 2.5.3 from apps/kimi-code/CHANGELOG.md by @kimi-agent-bot in #4810\n- docs(server-api): drop removed endpoints and document the ones the reference missed by @wbxl2000 in #4809\n- chore: sync release/2026-11-10 back to main by @kimi-agent-bot in #4811\n- refactor(agent-core-v2): port agent loop runtime core by @sailist in #4630\n- feat(tui): use primary bullet for NotifyUser updates in fullscreen mode by @Grapedge in #4814\n- chore: sync web dist from code-app by @kimi-agent-bot in #4816\n- chore: remove loop runtime working notes by @sailist in #4817\n- test: remove redundant and low-value test cases by @kimi-agent-bot in #4746\nNew Contributors\n- @hunshcn made their first contribution in #4747\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261109040420-9c1a9c3...@moonshot-ai/kimi-code@2.6.0-canary.20261111052659-f26481d'
         },
         {
           'version': '2.5.3',
@@ -10374,7 +10409,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '0.2.2-rc.2',
@@ -10974,7 +11009,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '0.5.7',
@@ -11371,7 +11406,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '1.39.2',
@@ -12040,8 +12075,22 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
+        {
+          'version': '3.4.18',
+          'title': '2026 年 11 月 10 日（功能发布）',
+          'date': '2026-11-10',
+          'dateRaw': '',
+          'tags': [
+            '功能发布',
+            '新增功能',
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9',
+          'body': 'TRAE v3.4.18 版本正式发布。以下是变更细节：\n- 新增功能\n- 支持在打开或创建项目时确认目录信任；未信任目录中的项目规则、技能、命令和 Hooks 不会加载，终端命令也不会运行。\n- 支持在 Agent Window 中直接编辑全局和项目 Hooks 配置，并可在读取或保存失败后重试。\n- 支持从历史会话打开关联工作区或转到 Agent Window；macOS Dock 菜单同步展示最近工作区。\n- 支持在文档产物中查看代码与表格的结构化差异。\n- 支持 CN 版本用户在子任务卡片悬停或键盘聚焦时查看该子任务的完整积分消耗。\n- 支持 CN 版企业租户按策略为新生成的 Word、Excel 和 PowerPoint 产物保留、移除或自定义可见水印。\n- 体验优化\n- 优化斜杠菜单的预加载和缓存刷新，减少首次打开及切换输入范围后的等待，并避免旧结果覆盖当前命令列表。\n- 优化 Remote SSH 添加主机后的自动连接和服务启动等待，减少较慢远程环境中过早连接失败。\n- 优化行内翻译设置为账号级同步，并增强跨窗口更新及保存失败后的回滚与重试。\n- 问题修复\n- 修复任务完成文件列表优先显示业务名称而丢失扩展名的问题，现在会展示真实完整文件名。'
+        },
         {
           'version': '3.4.17',
           'title': '2026 年 11 月 09 日（功能优化）',
@@ -14140,7 +14189,7 @@ window.CHANGELOG = {
           'dateRaw': '',
           'tags': [],
           'url': 'https://docs.trae.cn/ide_changelog#2551211f',
-          'body': 'Trae CN v0.1.0 正式发布。以下是有关此版本的详细信息：\n- 提供 Builder 模式，支持开发需求的自动分析、规划和执行，并提供实时预览功能。\n- 支持通过多轮对话生成项目级代码。\n- 支持快速应用代码变更、代码审查、Diff 查看和版本回退等功能。\n- 支持丰富的上下文类型（如代码片段、文件、文件夹、工作区和终端日志），从而提高问答准确性。\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n设备数量限制\n下一篇\n从《world.execute(me);》开始，用 TRAE 做 MV\n2026 年 11 月 09 日（功能优化）\n2026 年 11 月 08 日（功能发布）\n2026 年 11 月 03 日（功能发布）\n2026 年 11 月 02 日（功能优化）\n2026 年 10 月 31 日（功能优化）\n2026 年 10 月 30 日（功能发布）\n2026 年 10 月 28 日（功能优化）\n2026 年 10 月 27 日（功能发布）\n2026 年 10 月 26 日（功能发布）\n2026 年 10 月 23 日（Hotfix）\n2026 年 10 月 22 日（功能发布）\n2026 年 10 月 21 日（Hotfix）\n2026 年 10 月 20 日（功能发布）\n2026 年 10 月 15 日（功能发布）\n2026 年 10 月 08 日（功能发布）\n2026 年 09 月 17 日（Hotfix）\n2026 年 09 月 15 日（Hotfix）\n2026 年 09 月 11 日（Hotfix）\n2026 年 09 月 08 日（功能发布）\n2026 年 09 月 04 日（Hotfix）\n2026 年 09 月 03 日（功能发布）\n2026 年 09 月 01 日（功能发布）\n2026 年 08 月 20 日（功能发布）\n2026 年 08 月 19 日（Hotfix）\n2026 年 08 月 12 日（功能发布）\n2026 年 08 月 10 日（Hotfix）\n2026 年 08 月 07 日（功能发布）\n2026 年 07 月 30 日（功能发布）\n2026 年 07 月 23 日（功能发布）\n2026 年 07 月 17 日（Hotfix）\n2026 年 07 月 16 日（Hotfix）\n2026 年 07 月 13 日（Hotfix）\n2026 年 07 月 08 日（功能发布）\n2026 年 07 月 06 日（Hotfix）\n2026 年 07 月 02 日（Hotfix）\n2026 年 06 月 29 日（功能发布）\n2026 年 06 月 23 日（Hotfix）\n2026 年 06 月 18 日（Hotfix）\n2026 年 06 月 17 日（功能发布）\n2026 年 06 月 10 日（功能发布）\n2026 年 06 月 09 日（功能发布）\n2026 年 06 月 04 日（功能发布）\n2026 年 05 月 29 日（Hotfix）\n2026 年 05 月 21 日（功能优化）\n2026 年 05 月 15 日（功能发布）\n2026 年 05 月 11 日（Hotfix）\n2026 年 05 月 08 日（功能发布）\n2026 年 04 月 30 日（Hotfix）\n2026 年 04 月 28 日（功能发布）\n2026 年 04 月 20 日（Hotfix）\n2026 年 04 月 15 日（Hotfix）\n2026 年 04 月 14 日（功能发布）\n2026 年 04 月 14 日（Hotfix）\n2026 年 04 月 09 日（功能发布）\n2026 年 04 月 02 日（功能发布）\n2026 年 03 月 31 日（Hotfix）\n2026 年 03 月 28 日（Hotfix）\n2026 年 03 月 26 日（功能发布）\n2026 年 03 月 24 日（功能发布）\n2026 年 03 月 21 日（功能发布）\n2026 年 03 月 14 日（Hotfix）\n2026 年 03 月 11 日（功能发布）\n2026 年 03 月 09 日（Hotfix）\n2026 年 03 月 05 日（功能发布）\n2026 年 02 月 28 日（Hotfix）\n2026 年 02 月 26 日（功能发布）\n2026 年 02 月 14 日（Hotfix）\n2026 年 02 月 12 日（功能发布）\n2026 年 02 月 09 日（Hotfix）\n2026 年 02 月 06 日（功能发布）\n2026 年 02 月 04 日（Hotfix）\n2026 年 02 月 02 日（Hotfix）\n2026 年 01 月 30 日（功能优化）\n2026 年 01 月 23 日（功能发布）\n2026 年 01 月 19 日（Hotfix）\n2026 年 01 月 13 日（功能发布）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 06 日（功能发布）\n2025 年 12 月 31 日（功能优化）\n2025 年 12 月 29 日（Hotfix）\n2025 年 12 月 26 日（功能优化）\n2025 年 12 月 26 日（功能发布）\n2025 年 12 月 25 日（Hotfix）\n2025 年 12 月 24 日（功能发布）\n2025 年 12 月 22 日（Hotfix）\n2025 年 12 月 20 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（功能发布）\n2025 年 12 月 12 日（Hotfix）\n2025 年 12 月 11 日（Hotfix）\n2025 年 12 月 10 日（Hotfix）\n2025 年 12 月 10 日（功能优化）\n2025 年 12 月 04 日（Hotfix）\n2025 年 12 月 03 日（Hotfix）\n2025 年 12 月 03 日（功能发布）\n2025 年 11 月 26 日（Hotfix）\n2025 年 11 月 25 日（Hotfix）\n2025 年 11 月 25 日（功能发布）\n2025 年 11 月 19 日（Hotfix）\n2025 年 11 月 14 日（Hotfix）\n2025 年 11 月 12 日（Hotfix）\n2025 年 11 月 11 日（功能发布）\n2025 年 11 月 07 日（Hotfix）\n2025 年 11 月 05 日（功能发布）\n2025 年 11 月 04 日（Hotfix）\n2025 年 10 月 30 日（功能优化）\n2025 年 10 月 29 日（功能发布）\n2025 年 10 月 25 日（Hotfix）\n2025 年 10 月 24 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（功能优化）\n2025 年 10 月 18 日（Hotfix）\n2025 年 10 月 17 日（Hotfix）\n2025 年 10 月 16 日（Hotfix）\n2025 年 10 月 14 日（Hotfix）\n2025 年 10 月 14 日（功能发布）\n2025 年 10 月 10 日（功能优化）\n2025 年 10 月 09 日（Hotfix）\n2025 年 09 月 30 日（功能优化）\n2025 年 09 月 29 日（功能发布）\n2025 年 09 月 28 日（功能优化）\n2025 年 09 月 26 日（Hotfix）\n2025 年 09 月 25 日（功能优化）\n2025 年 09 月 23 日（功能发布）\n2025 年 09 月 19 日（功能优化）\n2025 年 09 月 17 日（功能发布）\n2025 年 09 月 15 日（Hotfix）\n2025 年 09 月 12 日（功能优化）\n2025 年 09 月 10 日（Hotfix）\n2025 年 09 月 09 日（Hotfix）\n2025 年 09 月 09 日（功能发布）\n2025 年 09 月 02 日（功能发布）\n2025 年 09 月 01 日（Hotfix）\n2025 年 08 月 28 日（Hotfix）\n2025 年 08 月 27 日（Hotfix）\n2025 年 08 月 27 日（功能发布）\n2025 年 08 月 23 日\n2025 年 08 月 22 日\n2025 年 08 月 21 日\n2025 年 08 月 15 日\n2025 年 08 月 13 日\n2025 年 08 月 11 日\n2025 年 08 月 08 日\n2025 年 08 月 05 日\n2025 年 08 月 04 日\n2025 年 08 月 01 日\n2025 年 07 月 30 日\n2025 年 07 月 25 日\n2025 年 07 月 21 日\n2025 年 07 月 19 日\n2025 年 07 月 18 日\n2025 年 07 月 15 日\n2025 年 07 月 09 日\n2025 年 07 月 08 日\n2025 年 07 月 07 日\n2025 年 07 月 04 日\n2025 年 07 月 02 日\n2025 年 07 月 01 日\n2025 年 06 月 30 日\n2025 年 06 月 27 日\n2025 年 06 月 24 日\n2025 年 06 月 17 日\n2025 年 06 月 13 日\n2025 年 06 月 11 日\n2025 年 06 月 05 日\n2025 年 05 月 27 日\n2025 年 05 月 21 日\n2025 年 05 月 16 日\n2025 年 05 月 13 日\n2025 年 05 月 09 日\n2025 年 04 月 28 日\n2025 年 04 月 27 日\n2025 年 04 月 25 日\n2025 年 04 月 23 日\n2025 年 04 月 22 日\n2025 年 04 月 16 日\n2025 年 04 月 15 日\n2025 年 04 月 11 日\n2025 年 04 月 03 日\n2025 年 04 月 02 日\n2025 年 04 月 01 日\n2025 年 03 月 28 日\n2025 年 03 月 27 日\n2025 年 03 月 26 日\n2025 年 03 月 19 日\n2025 年 03 月 17 日\n2025 年 03 月 13 日\n2025 年 03 月 12 日\n2025 年 03 月 11 日\n2025 年 03 月 05 日\n2025 年 03 月 04 日\n2025 年 03 月 03 日\n<script defer=\'true\' src=\'//lf-arcosite.bytecdn.com/obj/arcosites/topic-cdn-1/'
+          'body': 'Trae CN v0.1.0 正式发布。以下是有关此版本的详细信息：\n- 提供 Builder 模式，支持开发需求的自动分析、规划和执行，并提供实时预览功能。\n- 支持通过多轮对话生成项目级代码。\n- 支持快速应用代码变更、代码审查、Diff 查看和版本回退等功能。\n- 支持丰富的上下文类型（如代码片段、文件、文件夹、工作区和终端日志），从而提高问答准确性。\n更新时间: 2026-11-12 03:11\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n设备数量限制\n下一篇\n从《world.execute(me);》开始，用 TRAE 做 MV\n2026 年 11 月 10 日（功能发布）\n2026 年 11 月 09 日（功能优化）\n2026 年 11 月 08 日（功能发布）\n2026 年 11 月 03 日（功能发布）\n2026 年 11 月 02 日（功能优化）\n2026 年 10 月 31 日（功能优化）\n2026 年 10 月 30 日（功能发布）\n2026 年 10 月 28 日（功能优化）\n2026 年 10 月 27 日（功能发布）\n2026 年 10 月 26 日（功能发布）\n2026 年 10 月 23 日（Hotfix）\n2026 年 10 月 22 日（功能发布）\n2026 年 10 月 21 日（Hotfix）\n2026 年 10 月 20 日（功能发布）\n2026 年 10 月 15 日（功能发布）\n2026 年 10 月 08 日（功能发布）\n2026 年 09 月 17 日（Hotfix）\n2026 年 09 月 15 日（Hotfix）\n2026 年 09 月 11 日（Hotfix）\n2026 年 09 月 08 日（功能发布）\n2026 年 09 月 04 日（Hotfix）\n2026 年 09 月 03 日（功能发布）\n2026 年 09 月 01 日（功能发布）\n2026 年 08 月 20 日（功能发布）\n2026 年 08 月 19 日（Hotfix）\n2026 年 08 月 12 日（功能发布）\n2026 年 08 月 10 日（Hotfix）\n2026 年 08 月 07 日（功能发布）\n2026 年 07 月 30 日（功能发布）\n2026 年 07 月 23 日（功能发布）\n2026 年 07 月 17 日（Hotfix）\n2026 年 07 月 16 日（Hotfix）\n2026 年 07 月 13 日（Hotfix）\n2026 年 07 月 08 日（功能发布）\n2026 年 07 月 06 日（Hotfix）\n2026 年 07 月 02 日（Hotfix）\n2026 年 06 月 29 日（功能发布）\n2026 年 06 月 23 日（Hotfix）\n2026 年 06 月 18 日（Hotfix）\n2026 年 06 月 17 日（功能发布）\n2026 年 06 月 10 日（功能发布）\n2026 年 06 月 09 日（功能发布）\n2026 年 06 月 04 日（功能发布）\n2026 年 05 月 29 日（Hotfix）\n2026 年 05 月 21 日（功能优化）\n2026 年 05 月 15 日（功能发布）\n2026 年 05 月 11 日（Hotfix）\n2026 年 05 月 08 日（功能发布）\n2026 年 04 月 30 日（Hotfix）\n2026 年 04 月 28 日（功能发布）\n2026 年 04 月 20 日（Hotfix）\n2026 年 04 月 15 日（Hotfix）\n2026 年 04 月 14 日（功能发布）\n2026 年 04 月 14 日（Hotfix）\n2026 年 04 月 09 日（功能发布）\n2026 年 04 月 02 日（功能发布）\n2026 年 03 月 31 日（Hotfix）\n2026 年 03 月 28 日（Hotfix）\n2026 年 03 月 26 日（功能发布）\n2026 年 03 月 24 日（功能发布）\n2026 年 03 月 21 日（功能发布）\n2026 年 03 月 14 日（Hotfix）\n2026 年 03 月 11 日（功能发布）\n2026 年 03 月 09 日（Hotfix）\n2026 年 03 月 05 日（功能发布）\n2026 年 02 月 28 日（Hotfix）\n2026 年 02 月 26 日（功能发布）\n2026 年 02 月 14 日（Hotfix）\n2026 年 02 月 12 日（功能发布）\n2026 年 02 月 09 日（Hotfix）\n2026 年 02 月 06 日（功能发布）\n2026 年 02 月 04 日（Hotfix）\n2026 年 02 月 02 日（Hotfix）\n2026 年 01 月 30 日（功能优化）\n2026 年 01 月 23 日（功能发布）\n2026 年 01 月 19 日（Hotfix）\n2026 年 01 月 13 日（功能发布）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 13 日（Hotfix）\n2026 年 01 月 06 日（功能发布）\n2025 年 12 月 31 日（功能优化）\n2025 年 12 月 29 日（Hotfix）\n2025 年 12 月 26 日（功能优化）\n2025 年 12 月 26 日（功能发布）\n2025 年 12 月 25 日（Hotfix）\n2025 年 12 月 24 日（功能发布）\n2025 年 12 月 22 日（Hotfix）\n2025 年 12 月 20 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 18 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（Hotfix）\n2025 年 12 月 17 日（功能发布）\n2025 年 12 月 12 日（Hotfix）\n2025 年 12 月 11 日（Hotfix）\n2025 年 12 月 10 日（Hotfix）\n2025 年 12 月 10 日（功能优化）\n2025 年 12 月 04 日（Hotfix）\n2025 年 12 月 03 日（Hotfix）\n2025 年 12 月 03 日（功能发布）\n2025 年 11 月 26 日（Hotfix）\n2025 年 11 月 25 日（Hotfix）\n2025 年 11 月 25 日（功能发布）\n2025 年 11 月 19 日（Hotfix）\n2025 年 11 月 14 日（Hotfix）\n2025 年 11 月 12 日（Hotfix）\n2025 年 11 月 11 日（功能发布）\n2025 年 11 月 07 日（Hotfix）\n2025 年 11 月 05 日（功能发布）\n2025 年 11 月 04 日（Hotfix）\n2025 年 10 月 30 日（功能优化）\n2025 年 10 月 29 日（功能发布）\n2025 年 10 月 25 日（Hotfix）\n2025 年 10 月 24 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（Hotfix）\n2025 年 10 月 21 日（功能优化）\n2025 年 10 月 18 日（Hotfix）\n2025 年 10 月 17 日（Hotfix）\n2025 年 10 月 16 日（Hotfix）\n2025 年 10 月 14 日（Hotfix）\n2025 年 10 月 14 日（功能发布）\n2025 年 10 月 10 日（功能优化）\n2025 年 10 月 09 日（Hotfix）\n2025 年 09 月 30 日（功能优化）\n2025 年 09 月 29 日（功能发布）\n2025 年 09 月 28 日（功能优化）\n2025 年 09 月 26 日（Hotfix）\n2025 年 09 月 25 日（功能优化）\n2025 年 09 月 23 日（功能发布）\n2025 年 09 月 19 日（功能优化）\n2025 年 09 月 17 日（功能发布）\n2025 年 09 月 15 日（Hotfix）\n2025 年 09 月 12 日（功能优化）\n2025 年 09 月 10 日（Hotfix）\n2025 年 09 月 09 日（Hotfix）\n2025 年 09 月 09 日（功能发布）\n2025 年 09 月 02 日（功能发布）\n2025 年 09 月 01 日（Hotfix）\n2025 年 08 月 28 日（Hotfix）\n2025 年 08 月 27 日（Hotfix）\n2025 年 08 月 27 日（功能发布）\n2025 年 08 月 23 日\n2025 年 08 月 22 日\n2025 年 08 月 21 日\n2025 年 08 月 15 日\n2025 年 08 月 13 日\n2025 年 08 月 11 日\n2025 年 08 月 08 日\n2025 年 08 月 05 日\n2025 年 08 月 04 日\n2025 年 08 月 01 日\n2025 年 07 月 30 日\n2025 年 07 月 25 日\n2025 年 07 月 21 日\n2025 年 07 月 19 日\n2025 年 07 月 18 日\n2025 年 07 月 15 日\n2025 年 07 月 09 日\n2025 年 07 月 08 日\n2025 年 07 月 07 日\n2025 年 07 月 04 日\n2025 年 07 月 02 日\n2025 年 07 月 01 日\n2025 年 06 月 30 日\n2025 年 06 月 27 日\n2025 年 06 月 24 日\n2025 年 06 月 17 日\n2025 年 06 月 13 日\n2025 年 06 月 11 日\n2025 年 06 月 05 日\n2025 年 05 月 27 日\n2025 年 05 月 21 日\n2025 年 05 月 16 日\n2025 年 05 月 13 日\n2025 年 05 月 09 日\n2025 年 04 月 28 日\n2025 年 04 月 27 日\n2025 年 04 月 25 日\n2025 年 04 月 23 日\n2025 年 04 月 22 日\n2025 年 04 月 16 日\n2025 年 04 月 15 日\n2025 年 04 月 11 日\n2025 年 04 月 03 日\n2025 年 04 月 02 日\n2025 年 04 月 01 日\n2025 年 03 月 28 日\n2025 年 03 月 27 日\n2025 年 03 月 26 日\n2025 年 03 月 19 日\n2025 年 03 月 17 日\n2025 年 03 月 13 日\n2025 年 03 月 12 日\n2025 年 03 月 11 日\n2025 年 03 月 05 日\n2025 年 03 月 04 日\n2025 年 03 月 03 日\n{\'namedChunks\':[\'$\',\'ra'
         }
       ]
     },
@@ -14152,7 +14201,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14327,7 +14376,7 @@ window.CHANGELOG = {
             '双模式'
           ],
           'url': 'https://docs.trae.cn/work_changelog#00b100d6',
-          'body': 'TRAE SOLO 桌面版 v0.1.0 版本与网页版正式发布。\nTRAE SOLO 以智能体为核心，打造与 AI 协作的全新方式：AI 不再局限于响应指令，而是能够主动理解、拆解并执行复杂任务。\n- 双端协同 ：网页版与桌面版可协同使用，确保你的任务不中断，随时随地都能查看进度、处理工作。\n- 丝滑交互 ：全新的三栏式工作区，让你能够集中管理项目文件、实时查看任务进度、轻松集成 Skill 等工具。你只需通过对话描述需求，AI 便会自动调用所需工具来执行任务并交付结果。\n- 双模式 ：支持在通用任务（Work 模式）和开发场景（Code 模式）之间自由切换。无论是写方案、做分析还是写代码，都可以一站式完成，为开发工程师、产品经理、数据分析师等不同角色的工作提供便利。\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n快速开始：TRAE 移动端\n下一篇\n办公助理使用场景推荐\n2026 年 08 月 21 日\n2026 年 08 月 11 日\n2026 年 08 月 07 日\n2026 年 07 月 31 日\n2026 年 07 月 27 日\n2026 年 07 月 21 日\n2026 年 07 月 14 日\n2026 年 07 月 07 日\n2026 年 06 月 24 日\n2026 年 06 月 18 日\n2026 年 06 月 09 日\n2026 年 06 月 08 日\n2026 年 06 月 01 日\n2026 年 05 月 25 日\n2026 年 05 月 05 日\n2026 年 04 月 30 日\n2026 年 04 月 16 日\n2026 年 04 月 14 日\n2026 年 03 月 31 日'
+          'body': 'TRAE SOLO 桌面版 v0.1.0 版本与网页版正式发布。\nTRAE SOLO 以智能体为核心，打造与 AI 协作的全新方式：AI 不再局限于响应指令，而是能够主动理解、拆解并执行复杂任务。\n- 双端协同 ：网页版与桌面版可协同使用，确保你的任务不中断，随时随地都能查看进度、处理工作。\n- 丝滑交互 ：全新的三栏式工作区，让你能够集中管理项目文件、实时查看任务进度、轻松集成 Skill 等工具。你只需通过对话描述需求，AI 便会自动调用所需工具来执行任务并交付结果。\n- 双模式 ：支持在通用任务（Work 模式）和开发场景（Code 模式）之间自由切换。无论是写方案、做分析还是写代码，都可以一站式完成，为开发工程师、产品经理、数据分析师等不同角色的工作提供便利。\n更新时间: 2026-10-09 02:13\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n快速开始：TRAE 移动端\n下一篇\n办公助理使用场景推荐\n2026 年 08 月 21 日\n2026 年 08 月 11 日\n2026 年 08 月 07 日\n2026 年 07 月 31 日\n2026 年 07 月 27 日\n2026 年 07 月 21 日\n2026 年 07 月 14 日\n2026 年 07 月 07 日\n2026 年 06 月 24 日\n2026 年 06 月 18 日\n2026 年 06 月 09 日\n2026 年 06 月 08 日\n2026 年 06 月 01 日\n2026 年 05 月 25 日\n2026 年 05 月 05 日\n2026 年 04 月 30 日\n2026 年 04 月 16 日\n2026 年 04 月 14 日\n2026 年 03 月 31 日'
         }
       ]
     },
@@ -14339,7 +14388,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '3.17.2',
@@ -14518,7 +14567,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '4.12.4',
@@ -15413,7 +15462,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-12 03:46',
+      'lastOkAt': '2026-11-12 15:29',
       'entries': [
         {
           'version': '5.11.0',

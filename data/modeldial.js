@@ -21,10 +21,10 @@ window.MODELDIAL = {
   'batchRevision': 71,
   'batchPublishedAt': '2026-11-11T16:15:34.392Z',
   'publicationKey': 'sha256:347c6df13aba0c608b335d94c974d23e6aca7c70d49f4eb5c2d6a8028b18454f',
-  'viewKey': '009bb6bc01e007cb90785ea2e621eda307310783868e934ca8d18840057e3498',
+  'viewKey': '74593be2bab0a2405be5e2688204205615442993cc61ff596f80ea497e4446a8',
   'scorePolicy': 'five-axis-b20-f25-k35-a10-m10-cube-half_up-v3',
   'updated': '2026-11-12',
-  'refreshedAt': '2026-11-12 03:46',
+  'refreshedAt': '2026-11-12 15:29',
   'weights': {
     'backend': 0.2,
     'frontend': 0.25,
@@ -90,9 +90,9 @@ window.MODELDIAL = {
       'releaseDate': null,
       'isNew': true,
       'elapsedMs': 5673604,
-      'costUsd': null,
-      'tokens': 48140,
-      'costCoverage': 'unknown',
+      'costUsd': 16.63709,
+      'tokens': 350709,
+      'costCoverage': 'estimated',
       'configs': 5
     },
     {
@@ -1521,9 +1521,9 @@ window.MODELDIAL = {
       'releaseDate': null,
       'isNew': true,
       'elapsedMs': 5673604,
-      'costUsd': null,
-      'tokens': 48140,
-      'costCoverage': 'unknown'
+      'costUsd': 16.63709,
+      'tokens': 350709,
+      'costCoverage': 'estimated'
     },
     {
       'rank': 3,
@@ -1546,9 +1546,9 @@ window.MODELDIAL = {
       'releaseDate': null,
       'isNew': true,
       'elapsedMs': 3236616,
-      'costUsd': null,
-      'tokens': 30560,
-      'costCoverage': 'unknown'
+      'costUsd': 5.31309,
+      'tokens': 124229,
+      'costCoverage': 'estimated'
     },
     {
       'rank': 4,
@@ -1621,9 +1621,9 @@ window.MODELDIAL = {
       'releaseDate': null,
       'isNew': true,
       'elapsedMs': 2266950,
-      'costUsd': null,
-      'tokens': 24204,
-      'costCoverage': 'unknown'
+      'costUsd': 2.95894,
+      'tokens': 77146,
+      'costCoverage': 'estimated'
     },
     {
       'rank': 7,
@@ -1771,9 +1771,9 @@ window.MODELDIAL = {
       'releaseDate': null,
       'isNew': true,
       'elapsedMs': 1520426,
-      'costUsd': null,
-      'tokens': 16014,
-      'costCoverage': 'unknown'
+      'costUsd': 1.01339,
+      'tokens': 38235,
+      'costCoverage': 'estimated'
     },
     {
       'rank': 13,
@@ -1846,9 +1846,9 @@ window.MODELDIAL = {
       'releaseDate': null,
       'isNew': true,
       'elapsedMs': 1691919,
-      'costUsd': null,
-      'tokens': 16322,
-      'costCoverage': 'unknown'
+      'costUsd': 1.28489,
+      'tokens': 43665,
+      'costCoverage': 'estimated'
     },
     {
       'rank': 16,
