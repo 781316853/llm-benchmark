@@ -309,6 +309,7 @@ window.SEEN = {
     'deepswe|Claude Fable 5.2': '2026-11-10',
     'datalearner|Claude Fable 5.2': '2026-11-10',
     'tbench|Claude Mythos 5.2': '2026-11-10',
-    'tbench|Claude Fable 5.2': '2026-11-10'
+    'tbench|Claude Fable 5.2': '2026-11-10',
+    'llm|ERNIE-5.5-Flash-Preview (high)': '2026-11-11'
   }
 };

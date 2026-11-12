@@ -1,4 +1,4 @@
-// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-10)
+// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-11)
 // 来源:https://aicodingdaily.com/leaderboard(方法论:https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas)
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
@@ -15,12 +15,12 @@ window.AICODINGDAILY = {
     'bugFinding': 10,
     'edgeCase': 20
   },
-  'updated': '2026-11-10',
+  'updated': '2026-11-11',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-11 14:52',
+  'refreshedAt': '2026-11-12 03:46',
   'stats': {
-    'entries': 51,
-    'models': 34
+    'entries': 53,
+    'models': 35
   },
   'desc': 'AI Coding Daily(Povilas Korop 个人实测站):每个模型在 7 个真实项目上跑 27 个 prompt(全站累计 2000+ 次运行),每个 prompt 从项目全新副本起步、模型看不到隐藏测试、无人工反馈;总分为 Laravel 代码质量(20)+ React-TS 代码质量(20)+ Bug Finding(10)+ Edge-case Testing(20)四轴之和(0-70),另记每 prompt 平均成本与耗时。分数越高越好,成本/耗时越低越优。',
   'models': [
@@ -378,6 +378,22 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 23,
+      'model': 'Muse Ember 1.0',
+      'effort': 'Max',
+      'score': 66.94,
+      'costUsd': 0.03,
+      'timeSec': 136,
+      'timeStr': '02:16',
+      'harness': 'OpenCode',
+      'laravel': 15.95,
+      'reactTs': 16.67,
+      'bugFinding': 6.77,
+      'edgeCase': 14.33,
+      'src': 'aggregate',
+      'configs': 2
+    },
+    {
+      'rank': 24,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 64.74,
@@ -393,7 +409,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 24,
+      'rank': 25,
       'model': 'Mistral Large 4',
       'effort': 'High',
       'score': 64.39,
@@ -409,7 +425,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 25,
+      'rank': 26,
       'model': 'Tencent Hy4',
       'effort': 'High',
       'score': 63.31,
@@ -425,7 +441,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'Muse Spark 1.3',
       'effort': 'Xhigh',
       'score': 62.27,
@@ -441,7 +457,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 27,
+      'rank': 28,
       'model': 'Tencent Hy3',
       'effort': 'High',
       'score': 61.9,
@@ -457,7 +473,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 28,
+      'rank': 29,
       'model': 'GLM-5.3-Flash',
       'effort': 'Max',
       'score': 61.36,
@@ -473,7 +489,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'Qwen 3.8 27B',
       'effort': 'Xhigh',
       'score': 60.16,
@@ -489,7 +505,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 30,
+      'rank': 31,
       'model': 'Gemini-3.8-Flash',
       'effort': 'High',
       'score': 59.44,
@@ -505,7 +521,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 31,
+      'rank': 32,
       'model': 'Beam',
       'effort': 'Max',
       'score': 51.66,
@@ -521,7 +537,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 32,
+      'rank': 33,
       'model': 'Mercury 3',
       'effort': 'High',
       'score': 50.13,
@@ -537,7 +553,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 33,
+      'rank': 34,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 46.49,
@@ -553,7 +569,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 34,
+      'rank': 35,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 44.96,
@@ -1127,6 +1143,21 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 38,
+      'model': 'Muse Ember 1.0',
+      'effort': 'Max',
+      'score': 66.94,
+      'costUsd': 0.03,
+      'timeSec': 136,
+      'timeStr': '02:16',
+      'harness': 'OpenCode',
+      'laravel': 15.95,
+      'reactTs': 16.67,
+      'bugFinding': 6.77,
+      'edgeCase': 14.33,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 39,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 64.74,
@@ -1141,7 +1172,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 39,
+      'rank': 40,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'High',
       'score': 64.64,
@@ -1156,7 +1187,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 40,
+      'rank': 41,
       'model': 'Mistral Large 4',
       'effort': 'High',
       'score': 64.39,
@@ -1171,7 +1202,22 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 41,
+      'rank': 42,
+      'model': 'Muse Ember 1.0',
+      'effort': 'High',
+      'score': 63.32,
+      'costUsd': 0.02,
+      'timeSec': 110,
+      'timeStr': '01:50',
+      'harness': 'OpenCode',
+      'laravel': 16.05,
+      'reactTs': 15.17,
+      'bugFinding': 6.25,
+      'edgeCase': 13.8,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 43,
       'model': 'Tencent Hy4',
       'effort': 'High',
       'score': 63.31,
@@ -1186,7 +1232,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 42,
+      'rank': 44,
       'model': 'Muse Spark 1.3',
       'effort': 'Xhigh',
       'score': 62.27,
@@ -1201,7 +1247,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 43,
+      'rank': 45,
       'model': 'Tencent Hy3',
       'effort': 'High',
       'score': 61.9,
@@ -1216,7 +1262,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 44,
+      'rank': 46,
       'model': 'GLM-5.3-Flash',
       'effort': 'Max',
       'score': 61.36,
@@ -1231,7 +1277,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 45,
+      'rank': 47,
       'model': 'Qwen 3.8 27B',
       'effort': 'Xhigh',
       'score': 60.16,
@@ -1246,7 +1292,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 46,
+      'rank': 48,
       'model': 'Gemini-3.8-Flash',
       'effort': 'High',
       'score': 59.44,
@@ -1261,7 +1307,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 47,
+      'rank': 49,
       'model': 'GPT-6-Luna',
       'effort': 'Medium',
       'score': 56.37,
@@ -1276,7 +1322,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 48,
+      'rank': 50,
       'model': 'Beam',
       'effort': 'Max',
       'score': 51.66,
@@ -1291,7 +1337,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 49,
+      'rank': 51,
       'model': 'Mercury 3',
       'effort': 'High',
       'score': 50.13,
@@ -1306,7 +1352,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 50,
+      'rank': 52,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 46.49,
@@ -1321,7 +1367,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 51,
+      'rank': 53,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 44.96,
