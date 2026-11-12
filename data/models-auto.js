@@ -4,10 +4,10 @@
 window.MODEL_MAP_AUTO = {
   'updated': '2026-11-12',
   'stats': {
-    'total': 163,
-    'knownVendor': 163,
+    'total': 165,
+    'knownVendor': 165,
     'otherVendor': 0,
-    'skippedManual': 1343,
+    'skippedManual': 1344,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -384,11 +384,11 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'GPT-6.2-Astra',
+      'id': 'GPT-6.2 Astra（灰度）',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
-        'GPT-6.2-Astra',
+        'GPT-6.2 Astra（灰度）',
         'gpt-6.2-astra'
       ],
       'auto': true
@@ -453,6 +453,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#6BA5F7',
       'aliases': [
         'Gemini 2.5 Flash-Lite'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 4 Hydrogen',
+      'vendor': 'Google',
+      'color': '#6BA5F7',
+      'aliases': [
+        'Gemini 4 Hydrogen'
       ],
       'auto': true
     },
@@ -1378,6 +1387,16 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Qwen4-Max-Preview',
         'qwen4-max-preview'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen4.0 Max Preview',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen4.0 Max Preview',
+        'qwen4.0-max-preview'
       ],
       'auto': true
     },

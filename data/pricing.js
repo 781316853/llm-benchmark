@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-12',
-  'refreshedAt': '2026-11-12 15:29',
+  'refreshedAt': '2026-11-13 04:13',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,10 +30,10 @@ window.PRICING = {
     'planModels': 2588,
     'withPricing': 1839,
     'comparable': 1154,
-    'models': 108,
+    'models': 109,
     'unresolved': 16,
-    'ranked': 55,
-    'supplemented': 2,
+    'ranked': 56,
+    'supplemented': 3,
     'carriedOver': 0,
     'seeded': 0,
     'missingRanked': 3
@@ -440,6 +440,15 @@ window.PRICING = {
       'outputCnyPerM': 68,
       'costPerM': 1.598,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Gemini 4 Carbon',
+      'slug': 'gemini-4-carbon',
+      'inputCnyPerM': 13.6,
+      'cacheCnyPerM': 0.68,
+      'outputCnyPerM': 68,
+      'costPerM': 1.598,
+      'priceSource': 'models.dev:google'
     },
     {
       'id': 'Inkling',

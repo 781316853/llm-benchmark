@@ -6,13 +6,13 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-12',
-  'refreshedAt': '2026-11-12 15:29',
+  'refreshedAt': '2026-11-13 04:13',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3330,
-    'afterMerge': 3327,
-    'needsZh': 2146,
-    'translated': 2146,
+    'afterToolDedupe': 3332,
+    'afterMerge': 3329,
+    'needsZh': 2148,
+    'translated': 2148,
     'untranslated': 0
   },
   'zh': {
@@ -634,6 +634,7 @@ window.CHANGELOG_MONTHLY = {
     '5138eef8-43': '让 bash 工具使用外部目录权限',
     '5146979c-27': '新增 SAP AI Core 提供商支持',
     '517314a7-94': '向MOD的按钮添加了子项：字符串和文本，因此列表的一行可以用芯片或暗淡的细节按压',
+    '51872b94-191': '! - 将 fs:suggest 与本地 fd 补全对齐，使用有界扫描，最多显示 20 个结果，并提供可选的流式预览。默认情况下，包括隐藏路径和被 .gitignore 忽略的路径，且在匹配质量相等时优先显示常规文件。',
     '518da808-24': '新增阿拉伯语支持',
     '51a1eaee-79': '新增 HTTP 钩子，可向 URL POST JSON 并接收 JSON，而无需运行 shell 命令',
     '51a6f218-26': '新增 web 和 codesearch 工具',
@@ -1776,6 +1777,7 @@ window.CHANGELOG_MONTHLY = {
     'd38df698-50': '在桌面端支持图片附件的图片预览',
     'd3aeada-76': '新增 codex remote-control pair 命令，可从运行中的守护进程生成手动配对码',
     'd3b6cc54-83': '为 UserPromptSubmit 钩子新增 hookSpecificOutput.sessionTitle，用于设置会话标题',
+    'd40b6c8c-311': '! - 在全屏模式下，将连续的工具调用和思考折叠为摘要行，不再显示模型加载的技能的“已激活技能”卡片。在/settings中，选择“工具调用密度”和“思考折叠”下的折叠量，并可预览每个选项；或者在tui.toml的[transcript]下将tool_call_density设置为“ungrouped”，将thinking设置为“ungrouped”，以保留之前的布局。',
     'd4282c10-84': '现在可检测全局 pnunen 安装，使诊断和更新使用正确的包管理器',
     'd42c48-75': '改进安装脚本：优化视觉效果、自定义进度条和后续步骤指引',
     'd4989110-65': '新增 prompt_async 功能，接收提示后立即返回',
@@ -2167,7 +2169,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 134,
+      'count': 136,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -2545,6 +2547,13 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
             {
+              'key': '51872b94-191',
+              'text': '! - Align fs:suggest with local fd completion, using bounded scans and at most 20 results with optional streamed previews, while including hidden and gitignored paths by default and placing regular files first at equal match quality',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.0'
+            },
+            {
               'key': '74988308-36',
               'text': 'expose plugin agent profile refresh hooks',
               'date': '2026-11-12',
@@ -2571,6 +2580,13 @@ window.CHANGELOG_MONTHLY = {
               'date': '2026-11-12',
               'version': '2.6.0-canary.20261112033252-d729f91',
               'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'd40b6c8c-311',
+              'text': '! - Fold consecutive tool calls and thinking into summary lines in fullscreen mode, and no longer show the Activated skill card for skills the model loads. Choose how much folds under Tool call density and Thinking folding in /settings, with a preview of each choice, or set tool_call_density = \'ungrouped\' and thinking = \'ungrouped\' under [transcript] in tui.toml to keep the previous layout',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.0'
             },
             {
               'key': '14e1352c-39',
@@ -2790,7 +2806,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261102033430-40590f6'
             }
           ],
-          'count': 35
+          'count': 37
         },
         {
           'id': 'deepseek-harness',
