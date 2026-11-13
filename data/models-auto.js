@@ -7,7 +7,7 @@ window.MODEL_MAP_AUTO = {
     'total': 166,
     'knownVendor': 165,
     'otherVendor': 1,
-    'skippedManual': 1357,
+    'skippedManual': 1358,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -224,7 +224,9 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'ERNIE 5.5 Flash Preview',
-        'ERNIE-5.5-Flash-Preview (high)'
+        'ERNIE-5.5-Flash-Preview (high)',
+        'ernie-5.5-flash-preview',
+        'ernie-5.5-flash-preview:free'
       ],
       'auto': true
     },
@@ -463,6 +465,7 @@ window.MODEL_MAP_AUTO = {
       'color': '#6BA5F7',
       'aliases': [
         'Gemini 4 Hydrogen',
+        'Gemini 4 Hydrogen (high)',
         'gemini-4-hydrogen'
       ],
       'auto': true

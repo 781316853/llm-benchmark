@@ -8,7 +8,7 @@
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-13',
-  'refreshedAt': '2026-11-13 15:00',
+  'refreshedAt': '2026-11-14 03:55',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,17 +20,17 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
         {
           'version': '0.169.0',
-          'title': 'rust-v0.169.0',
+          'title': '0.169.0',
           'date': '2026-11-13',
-          'dateRaw': '2026-11-13T04:48:20Z',
+          'dateRaw': '2026-11-13T08:39:10Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0',
-          'body': '0.169.0 版本',
-          'h': '4c68e0c5'
+          'body': '新功能\n- 选择加入的终端工作区支持多个侧边聊天选项卡。使用键盘或鼠标在它们之间切换，并在重启Codex后重新打开已保存的本地侧边聊天。（ #59784 、#60152 、#60181 ）\n- 通过名称、提示预览或工作目录，从代理命令中心搜索旧任务。( #60286 )\n- 在全屏转录中启用“折叠回合详情” ，即可将已完成的活动折叠在每个提示下方，同时保持答案可见，并可搜索工具输出。（ #60554 、#60555 、#60556 、#60557 ）\n- 从终端添加或编辑自定义模型提供商。启用自定义网关引导后，您可以在登录时创建提供商，并通过 SSH 或在没有本地浏览器的情况下，使用设备代码访问受支持的网关。（ #59779 、#60009 、#60186 、#60486 、#60662 ）\n- 在终端报告编辑器中按 Ctrl+S ，即可将诊断ZIP文件保存到本地，即使禁用了上传功能也是如此。（ #60542 ）\n- 通过在 macOS 和 Linux 上选择加入云连接，可以发送图像、选择模型和推理强度，以及从终端存档或恢复云对话。（ #59828 、#60061 、#60635 、#60651 ）\n错误修复\n- 即使使用 --sandbox workspace-write ， codex exec 也会在不受信任的目录中禁用项目配置和 MCP 服务器。将 --trust 与 codex exec 或 codex review 一起使用，以显式保存项目信任。（ #60041 ）\n- 是的，清除上下文并立即执行会将已完全批准的计划移交给新会话，如果移交失败，则会保持当前会话处于打开状态。( #60763 )\n- 修复了 Windows 沙盒对带引号的 cmd.exe 路径以及工作目录的父目录不可读的 PowerShell 会话的处理问题。（ #60624 、#60647 ）\n- 在 macOS 上粘贴的图像保留其预期方向，并在有原生 PNG 或 JPEG 剪贴板数据时使用这些数据。（ #60455 ）\n- 终端不再处于忙碌状态，等待共享应用服务器未报告的 MCP 服务器。（ #60280 、#60622 ）\n- 中断的轮次现在可以干净利落地关闭，延迟中止或文件批准取消不再中断之后的轮次。（ #59910 、#60700 ）\n文档\n- 更新了 openai-docs 技能，重点关注 Codex 和 ChatGPT Work 问题以及首次 API 设置，并提供专门的指南，指导如何在整个团队中配置 Codex。（ #59944 、#59949 ）\n- 记录了应用服务器客户端如何在不更改默认提供商的情况下列出模型或为已配置的提供商授权网关。（ #59776 、 #59819 ）\n杂项\n- 将捆绑的SQLite更新至3.54，以应用预写日志修复。( #60432 )\n- 插件市场升级可以重用已在磁盘上的 Git 对象，从而减少重复下载。( #60528 )\n变更日志\n完整变更日志：rust-v0.168.0...rust-v0.169.0\n- #59739 添加侧边栏选择器和浮动工作区快捷方式面板 @fcoury-oai\n- #59743 使用标头身份验证转发显式网络访问程序 @jamy-OAI\n- #59745 修复 SYSTEM 的旧版 Windows 沙盒 bin 权限 @zm-oai\n- #59746 添加类型化云用户消息提交回执 @bc-openai\n- #59749 对 OpenAI MCP 和应用请求使用运行时身份验证 @cooper-oai\n- #59750 在执行器凭据被拒绝时停止 Noise 中继恢复 @richardopenai\n- #59752 配置 Opus Bazel 补丁并隔离身份验证测试 @bkotsopoulos\n- #59754 按线程强制执行主机必需的网络访问程序 @jamy-OAI\n- #59759 更新 WebSocket 依赖项分支 @charliemarsh-oai\n- #59767 添加侧边栏选项卡和非阻塞式侧边聊天创建 @fcoury-oai\n- #59768 在应用服务器启动时停止预取插件发现 @zamoshchin-openai\n- #59769 在遥测中重用已解码的WebSocket事件类型 @charliemarsh-oai\n- #59770 为主机拥有的代理添加共享服务层支持 @rhan-oai\n- #59772 删除旧版沙盒策略构造函数 @ioanbudea-OAI\n- #59774 删除旧版 Seatbelt 命令包装器 @ioanbudea-OAI\n- #59776 允许在模型/列表中选择已配置的提供商 @abhinav-oai\n- #59778 在 rollout 跟踪中显示验收元数据和代码单元格链接 @tz-openai\n- #59779 将提供商配置编辑功能添加到 TUI @alexsong-oai\n- #59780 为 x86-64 musl 版本启用安全的相同代码折叠 @dkovalenko-oai\n- #59783 将 gRPC 代码模式连接的生命周期与实时会话关联 @frantic-openai\n- #59784 在TUI侧边栏中支持多个侧边聊天 @fcoury-oai\n- #59785 将消息生命周期状态与模型可见项ID解耦 @euroelessar\n- #59787 支持用于网关身份验证的凭据导出命令 @alexsong-oai\n- #59789 在TUI中将委派的线程消息渲染为Markdown @bc-openai\n- #59792 集中管理托管代理准备和沙盒路由 @viyatb-oai\n- #59793 支持跨分叉线程历史记录的更新边界分页 @owenlin0\n- #59794 在模型生成请求之前检查扩展预算 @rhan-oai\n- #59795 在托管文件上传中支持可选的线程 ID @lt-oai\n- #59805 在 x86-64 musl 发布版本中打包相对重定位 @dkovalenko-oai\n- #59816 在收到未经授权的响应后重试导出网关凭据 @alexsong-oai\n- #59817 处理TUI消息提交回执并保留不确定的草稿 @bc-openai\n- #59819 允许为网关 OAuth 读取和登录选择提供商 @abhinav-oai\n- #59822 为网关 OAuth 添加设备代码授权 @smurching-oai\n- #59823 将运行时身份验证绑定到提供商选择的凭据源 @cooper-oai\n- #59824 启用侧边栏选择器的尺寸调整 @fcoury-oai\n- #59826 通过排队的提交请求保留客户端元数据 @eddie-openai\n- #59828 为 TUI 添加受控云后端 @bc-openai\n- #59832 为常规 OpenAI 回复添加选择加入的增量工具 @akira-oai\n- #59842 对最终答案消息执行有针对性的审核决策 @psachdeva-oai\n- #59887 在资源上传失败后移除不完整的预发布版本 @jif-oai\n- #59891 在弹性上下文准备中限制 REPL 溯源成本 @jif-oai\n- #59893 切换模型时重新计算审批审核人 @jif-oai\n- #59902 在弹性预算下完整保留已验证的问题/答案记录 @jif-oai\n- #59903 按发布 ID 删除不完整的预发布版本 @jif-oai\n- #59905 验证 Guardian Decisions 的隐式 API 密钥 @jif-oai\n- #59908 对于原始细节上下文估算，避免进行完整图像解码 @jif-oai\n- #59910 将文件更改批准取消的范围限定为请求的回合 @jif-oai\n- #59913 从已审核线程的目录中解析 Guardian 策略 @jif-oai\n- #59914 将 Guardian Decisions 请求绑定到其凭据源 @jif-oai\n- #59928 改进侧边栏聊天选择和选项卡悬停高亮显示 @fcoury-oai\n- #59933 对受保护模型的启动降级使用权限配置文件 @ioanbudea-OAI\n- #59944 将 openai-docs 范围缩小至产品问答和首次 API 设置 @provencher-oai\n- #59949 通过自我知识指南引导广泛的Codex设置问题 @vb-openai\n- #59954 在读取和安装工具中解析技能显示名称 @jif-oai\n- #59955 将 ignore 升级到 0.4.30 @iceweasel-oai\n- #59958 从每个线程的目录和设置中公开模型元数据 @seanh-oai\n- #59960 当远程决策耗尽时，跳过网络拒绝宽限期 @jif-oai\n- #59963 将回合上下文权限规范化为必需的配置文件 @ioanbudea-OAI\n- #59969 减少线程写入器锁协调中的争用 @dkovalenko-oai\n- #59972 修复使用相对符号链接输入的 Opus 头文件安装 @bc-openai\n- #59973 为代码模式默认启用 gRPC 和主机输出截断 @seanh-oai\n- #59974 在网络拒绝宽限期到期前测试命令补全 @jif-oai\n- #59980 测试对具有可读尺寸但像素损坏的 PNG 文件的拒绝 @fjord-oai\n- #59983 在 TUI 中将键入的提示渲染为 Markdown @bc-openai\n- #59987 使用线程创建选项解析启动模型 @seanh-oai\n- #59988 为 TUI 显示树添加继承样式 @joesavona\n- #59991 在MCP工具刷新过程中保留应用程序调用上下文 @fahad-OAI\n- #59993 为本地消息板添加固定只读视图 @felixxia-oai\n- #59994 为Guardian审核人员添加只读证据检索工具 @felixxia-oai\n- #59995 为Guardian审核人员添加订阅工具 @felixxia-oai\n- #59998 添加原子批量频道订阅更新 @felixxia-oai\n- #59999 添加模型驱动的Guardian频道选择 @felixxia-oai\n- #60000 按源顺序规划Guardian证据交付 @felixxia-oai\n- #60001 为 Guardian 审核人添加有界原始证据交付 @felixxia-oai\n- #60002 将 Guardian 检索与本地消息板句柄解耦 @felixxia-oai\n- #60003 对实时连接应用运行时身份验证 @cooper-oai\n- #60004 在account/read响应中显示ChatGPT用户ID @dand-oai\n- #60006 减少线程活动和历史记录的 SQLite 写入开销 @jonluca\n- #60007 使用本地GitHub项目启动云线程 @bc-openai\n- #60008 重构 TUI 剪贴板和撰写器输入处理 @bc-openai\n- #60009 为TUI登录添加自定义网关选择@alexsong-oai\n- #60010 添加共享的 Windows Bazel 设置操作 @dkovalenko-oai\n- #60011 为托管工具调整多代理模式指南 @rhan-oai\n- #60014 遵循托管运行时身份验证模式并扩展覆盖范围 @cooper-oai\n- #60017 在提示前缀比较测试中禁用捆绑技能 @felixxia-oai\n- #60018 将回合触发器传播到使用情况分析事件 @chrisdong-oai\n- #60019 为扩展 UI 树添加主题感知语义颜色 @joesavona\n- #60020 从UI树字符串中去除终端命令 @joesavona\n- #60021 规范所有样式化叶子中的内联 UI 树文本 @joesavona\n- #60022 将 UI 树准备与行渲染分开 @joesavona\n- #60026 为 UI 树添加多行布局和行换行 @joesavona\n- #60027 在原生渲染器上保留已配置的状态行 @joesavona\n- #60028 重用已准备好的 UI 树进行页脚渲染 @joesavona\n- #60029 将 UI 树直接渲染到终端缓冲区 @joesavona\n- #60031 统一扩展内容TUI状态行布局 @joesavona\n- #60032 允许扩展状态内容使用多行页脚 @joesavona\n- #60034 从spawn跟踪日志中省略敏感的进程输入 @etraut-openai\n- #60035 修复git-attribution设置请求的身份验证 @cooper-oai\n- #60037 延迟缓存的 stdio 启动时保留 MCP 共享发现 @charliemarsh-oai\n- #60038 准备缓存的工具调用时显示 MCP 服务器启动错误 @charliemarsh-oai\n- #60039 为缓存的 stdio MCP 服务器添加可选的延迟启动 @charliemarsh-oai\n- #60040 将旧版增量工具限制为仅限 Amazon Bedrock 提供商使用 @akira-oai\n- #60041 在非交互式运行中要求显式项目信任 @etraut-openai\n- #60042 集中处理 Windows 沙盒文件系统覆盖问题 @viyatb-oai\n- #60046 派生 MCP 网络策略并保留已保存的拒绝 @viyatb-oai\n- #60048 允许插件启动提示最多包含 512 个字符 @karenwong-openai\n- #60049 启动子代理时保留模型目录 @evanz-oai\n- #60055 在重用WebSocket访问之前，重新对运行时请求进行身份验证 @cooper-oai\n- #60061 支持云端图像消息和可编辑的草稿移交 @bc-openai\n- #60064 对 Guardian 决策和内存配额检查使用线程运行时身份验证 @cooper-oai\n- #60067 确保侧边聊天策略达到第一个模型请求 @fcoury-oai\n- #60073 对远程控制请求使用运行时身份验证 @cooper-oai\n- #60075 支持异步主机服务层读取和接受 @rhan-oai\n- #60080 允许异步模型请求预算检查 @rhan-oai\n- #60082 通过应用服务器获取账户安全提醒 @cooper-oai\n- #60096 停止重试终端运行时身份验证拒绝 @cooper-oai\n- #60101 对分析请求使用运行时身份验证 @cooper-oai\n- #60118 在 rollout 跟踪重放期间缓冲负载 JSON 读取 @tz-openai\n- #60122 在 rollout 跟踪中保留代码模式分发错误 @tz-openai\n- #60152 持久化本地工作区侧边聊天，并添加选项卡关闭控件 @fcoury-oai\n- #60157 添加对增量代码模式工具定义的 বাঙ্গালীদের@akira-oai\n- #60163 将增量执行工具更新关联到代码模式会话 @akira-oai\n- #60172 在答案审核中保留显示说明 @psachdeva-oai\n- #60173 测试跨会话和压缩更改的执行目录保留 @akira-oai\n- #60177 为增量执行目录更新添加指标 @akira-oai\n- #60180 将输入的标点符号附加到已完成的技能提及中 @bc-openai\n- #60181 为侧边栏选项卡添加键盘和鼠标导航 @fcoury-oai\n- #60186 允许在登录期间创建自定义提供商 @alexsong-oai\n- #60188 允许对增量代码模式工具消息进行模型覆盖 @akira-oai\n- #60190 公开代理树ID和环境移除@richardopenai\n- #60206 将 Bazel 核心单元测试分片从 8 个增加到 16 个 @seanh-oai\n- #60270 当 ChatGPT 模型列表中缺少 CLI 模型时发出警告 @etraut-openai\n- #60271 当没有要返回的聊天时，保持代理概览处于打开状态 @etraut-openai\n- #60280 修复在连接到共享应用服务器时 MCP 启动跟踪的问题 @charliemarsh-oai\n- #60286 从命令中心搜索任务历史记录 @etraut-openai\n- #60309 预热所选项目时延迟执行器就绪状态 @bc-openai\n- #60319 改进 TUI 中的侧边聊天发现和导航 @fcoury-oai\n- #60320 在完整记录中包含较早的无项目 Cloud 失败 @bc-openai\n- #60327 重新打开线程后，抑制过时的云流断开连接 @bc-openai\n- #60335 恢复云端线程时避免重复的助手消息 @bc-openai\n- #60342 将目标任务视为不受信任的上下文 @dylan-hurd-oai\n- #60389 将Codex应用配置包含在云预热请求中 @bc-openai\n- #60390 允许在线程项目列表中延迟纯文本 MCP 输出 @btraut-openai\n- #60391 简化Guardian的拒绝后批准指南 @olliem-oai\n- #60414 使用网关OAuth启用模型目录发现 @smurching-oai\n- #60416 在全屏Markdown转录中保持适配URL的完整性 @etraut-openai\n- #60418 在后台终端运行时，让终端状态变为“已完成” @etraut-openai\n- #60423 在资源列表中显示延迟的MCP服务器 @charliemarsh-oai\n- #60432 将捆绑的SQLite升级到3.54，以修复WAL @ioanbudea-OAI\n- #60433 将 API 工作负载身份源重用绑定到会话声明 @cooper-oai\n- #60434 在回合开始时重置应用服务器回合摘要 @cooper-oai\n- #60435 在账户使用量恢复时关闭模型切换提示 @etraut-openai\n- #60436 在预算检查后重新验证请求身份验证所有权 @won-openai\n- #60443 支持实时附件的取消和截止时间 @parabolala\n- #60454 更新 OpenSSL Rust 依赖项 @dkovalenko-oai\n- #60455 在 macOS 上优先使用原生剪贴板图像，并尊重图像方向 @dkovalenko-oai\n- #60461 在执行器功能发现中遵守权限授予范围 @dkovalenko-oai\n- #60462 通过云消息准入路由 TUI 问题答案 @bc-openai\n- #60466 诊断日志失败时保持线程存储可用 @dkovalenko-oai\n- #60472 将默认线程权限序列化为权限配置文件 @ioanbudea-OAI\n- #60473 在本地压缩过程中遵守错误重试策略 @charliemarsh-oai\n- #60475 停止重试显式无效工作区错误 @charliemarsh-oai\n- #60476 将访问程序拒绝视为终止错误 @charliemarsh-oai\n- #60479 将内容政策违规视为致命错误 @charliemarsh-oai\n- #60480 将工作空间访问被拒绝视为致命错误 @charliemarsh-oai\n- #60481 将无效的访问程序流错误视为终止错误 @charliemarsh-oai\n- #60482 在所有响应传输中统一处理上下文长度错误 @charliemarsh-oai\n- #60486 为应用服务器网关OAuth添加设备授权 @smurching-oai\n- #60487 默认启用不受信任的上下文工具输出 @akira-oai\n- #60488 删除 Xcode 26.4 MCP 唤起兼容性变通方案 @jameswt-oai\n- #60489 启动应用服务器守护进程时遵循功能覆盖 @iceweasel-oai\n- #60492 添加仅限本地的 Claude Code 技能迁移 @aramaraju-oai\n- #60496 保留类型化 gRPC 代码模式会话准入错误 @seanh-oai\n- #60498 统一所有审核者的 Guardian 上下文准备 @ioanbudea-OAI\n- #60500 直接从权限配置文件中派生沙盒遥测标签 @ioanbudea-OAI\n- #60505 跟踪MCP刷新原因和插件元数据更改 @charliemarsh-oai\n- #60506 禁用跟踪时保留 MCP 跟踪上下文 @joesavona\n- #60507 对 Windows MSVC Bazel 构建使用封闭式 LLVM @zbarsky-openai\n- #60511 将推理钩子拒绝视为终止错误 @ccui-oai\n- #60513 为会话权限授予记录MCP刷新原因 @charliemarsh-oai\n- #60517 通过共享沙盒管理器路由沙盒CLI启动 @viyatb-oai\n- #60519 处理已恢复历史记录中的未完成工具调用 @etraut-openai\n- #60522 将大型Responses WebSocket消息分片为有界帧 @charliemarsh-oai\n- #60523 为 SOCKS 添加经过策略检查的 TCP 上游隧道 @viyatb-oai\n- #60524 封装线程元数据构造 @ioanbudea-OAI\n- #60525 在应用服务器模型列表中保留第一方目录显示顺序 @dpatel-oai\n- #60526 当所选模型缺乏访问权限时禁用 Daybreak @jamy-OAI\n- #60528 升级应用市场时重用已安装的 Git 对象 @charliemarsh-oai\n- #60542 将本地诊断ZIP保存添加到TUI @smurching-oai\n- #60554 将可选的工具调用摘要添加到全屏文本记录 @etraut-openai\n- #60555 将无输出的转录摘要扩展到更多工具 @etraut-openai\n- #60556 在全屏对话中将连续的工具调用分组 @etraut-openai\n- #60557 将已完成的回合活动折叠在转录提示下方 @etraut-openai\n- #60558 创建侧边聊天失败时放弃开场提示 @etraut-openai\n- #60559 为分页线程分支保留继承的预览 @etraut-openai\n- #60560 避免空闲的 Windows 文件监视器定期唤醒 @chess-oai\n- #60568 为 codex tcp-tunnel 添加 OpenSSH ProxyCommand 模式 @apanasenko-oai\n- #60574 允许搜索持久化附加线程 @btraut-openai\n- #60578 将已发布的 OAuth 元数据发现添加到 RMCP 客户端 @vishnu-oai\n- #60568 在打开已保存的侧边聊天时保持 TUI 响应 @fcoury-oai\n- #60613 阐明安全追索消息，并添加举报选项 @xiaohk\n- #60617 支持在 GCP 上进行增量工具声明 @akira-oai\n- #60620 允许使用线程/样本对正在进行的轮次进行采样 @keyz\n- #60622 在 TUI 中使用应用服务器 MCP 配置和启动事件 @etraut-openai\n- #60624 在 Windows 沙盒 cmd 调用中保留脚本引号 @malsamiri-oai\n- #60635 支持存档和恢复云线程 @bc-openai\n- #60637 在共享的浮动快捷键指南中显示待处理的组合键 @fcoury-oai\n- #60638 在自动审批中遵循只读 MCP 工具提示 @cazhang-oai\n- #60639 刷新 MCP 运行时门控之外的 Apps 工具 @dkovalenko-oai\n- #60644 在主机服务层更新期间保持中断响应 @rhan-oai\n- #60645 更新当前对话框的安全同意测试 @ambrosino-oai\n- #60646 对托管策略使用受信任的Guardian模板 @won-openai\n- #60647 在 MXC 沙盒中还原 PowerShell 的工作目录 @zm-oai\n- #60651 为云端对话启用模型和推理工作量选择 @bc-openai\n- #60655 在应用服务器设置 API 中支持环境更新 @sayan-oai\n- #60662 在无头 TUI 会话中支持网关设备代码登录 @smurching-oai\n- #60663 将 exec-server 沙盒准备工作推迟到执行主机 @viyatb-oai\n- #60665 添加用于在代码模式下转发 MCP 块的内容助手 @cconger\n- #60669 检查仓库更改时跳过子模块工作树扫描 @dhavalkapil-oai\n- #60670 从线程历史状态初始化 Guardian 证据游标 @felixxia-oai\n- #60671 添加仅签名模式并加强 macOS 签名验证 @tarunoai\n- #60673 在 rollout 跟踪中保留代理消息传递 @cassirer-openai\n- #60675 切换侧边聊天时避免冗余读取和屏幕清空 @fcoury-oai\n- #60680 将TUI状态内容与编辑器提示分开 @joesavona\n- #60681 分配编辑器页脚行时优先考虑草稿空间 @joesavona\n- #60682 将内置的 TUI 状态行包含在页脚行预算内 @joesavona\n- #60683 使编辑器页脚提示适应可用的终端空间 @joesavona\n- #60695 为 macOS 公证添加签名服务后端 @tarunoai\n- #60697 将 MCP 产品归属限制为已配置的 REPL 支持的调用 @trpcic-openai\n- #60700 完成已中止的回合，并忽略不相关的延迟中止 @etraut-openai\n- #60702 集中权限配置选择和旧版转换 @ioanbudea-OAI\n- #60708 将 Windows 沙盒主目录规范化，并迁移已保存的 Junction 路径 @zm-oai\n- #60721 在功能标志上对Gate插件推荐缓存进行预热 @adaley-openai\n- #60730 在 MCP 配置刷新期间应用会话应用覆盖 @jameswt-oai\n- #60732 允许面向模型的ID序列从已分配的ID恢复 @euroelessar\n- #60735 在工具输出中保留文件支持的音频 @hung-oai\n- #60746 为现有Codex登录添加Git凭据助手 @ccy-oai\n- #60748 在面向模型的 ID 恢复测试中标记种子参数 @bc-openai\n- #60749 捕获原生帮助器的已保存Daybreak偏好设置 @jamy-OAI\n- #60753 为历史记录和笔记工具合约添加快照覆盖范围 @euroelessar\n- #60757 在整个线程持久性中使用类型化上下文窗口 ID @euroelessar\n- #60759 修复线程搜索中的Unicode不区分大小写匹配 @etraut-openai\n- #60763 在新会话中通过附件移交已批准的计划 @dylan-hurd-oai',
+          'h': 'c264a918'
         },
         {
           'version': '0.168.0',
@@ -1378,7 +1378,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
         {
           'version': '2.1.323',
@@ -3758,8 +3758,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
+        {
+          'version': '2.3.0',
+          'title': 'v2.3.0',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T08:55:07Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Improvements',
+            'Bug fixes',
+            'TUI',
+            'Desktop'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.3.0',
+          'body': '### Highlights\n\n- **Background Subagents by Default**: Subagents now return immediately, continue in the background, and report back whenever they become idle. You can keep working in the parent session while multiple subagents run concurrently. ([#63382](https://github.com/anomalyco/opencode/pull/63382))\n- **Quieter Transcripts by Default**: The TUI now summarizes each run of tool calls and thoughts into one collapsible activity row, so the answer is easier to follow. To see every step again, set **Verbosity** to `medium` or `high` in settings, or set `session.verbosity` in your TUI config; an existing setting is kept. ([#63207](https://github.com/anomalyco/opencode/pull/63207))\n- **Jump to an Earlier Prompt**: In the desktop app, open **Jump to message** from the command palette or press `Cmd+Alt+G` (`Ctrl+Alt+G` on Windows and Linux) to search prompts across the current session and jump directly to one. ([#63585](https://github.com/anomalyco/opencode/pull/63585))\n\n### Core\n\n#### Improvements\n\n- Subagents now always run in the background, return their session ID immediately, and report results to their parent whenever they become idle. ([#63382](https://github.com/anomalyco/opencode/pull/63382))\n- Added experimental support for MCP events, behind the `mcp_events` flag. ([#63254](https://github.com/anomalyco/opencode/pull/63254), [#63261](https://github.com/anomalyco/opencode/pull/63261), [#63269](https://github.com/anomalyco/opencode/pull/63269))\n- Shell commands now survive server handoffs and keep their output when interrupted.\n- Added experimental support for moving a shell command to the background when its timeout expires, behind the `shell_timeout_background` flag. With the flag on, an explicit timeout on a background command stops it. ([#63024](https://github.com/anomalyco/opencode/pull/63024), [#63703](https://github.com/anomalyco/opencode/pull/63703))\n- Local Windows shell commands now run through the process daemon.\n- Added support for freeform tool input on compatible models.\n- Added LM Studio decision-model support.\n- Agents are now told when their session is a fork. Thanks @hasta84. ([#63235](https://github.com/anomalyco/opencode/pull/63235))\n- Tool output truncation now keeps the beginning of the output and preserves a usable preview if the full output cannot be saved.\n- Tail reads no longer load the entire file into memory.\n- Providers can present a client certificate for gateways that require mutual TLS. Set `settings.tls` with `cert`, `key` and an optional `passphrase` on the provider; values accept `{file:}` and `{env:}` like `apiKey`. ([#61832](https://github.com/anomalyco/opencode/pull/61832))\n- When a subagent goes idle while its own background work is still running, its report to the parent now says it is still running, so the parent waits for the final report instead of treating the partial answer as done. ([#63675](https://github.com/anomalyco/opencode/pull/63675))\n- Code Mode gets simpler structured results from file and skill tools: `write` and `edit` return their confirmation as a string, `patch` returns an empty result, and `skill` returns the skill\'s directory and content. ([#63616](https://github.com/anomalyco/opencode/pull/63616), [#63635](https://github.com/anomalyco/opencode/pull/63635), [#63618](https://github.com/anomalyco/opencode/pull/63618), [#63623](https://github.com/anomalyco/opencode/pull/63623))\n\n#### Bug fixes\n\n- Fixed case-only file renames in patches on case-insensitive filesystems.\n- Fixed stale thinking being retained after Claude Agent prompts or tools change.\n- Fixed directly driven child sessions not resuming after a restart.\n- Fixed plugin replacement stopping when cleanup of an earlier plugin fails.\n- Fixed MCP OAuth refreshes and localhost redirects when a server rewrites `127.0.0.1`.\n- Fixed saved API keys being omitted from local-model discovery.\n- Local model discovery (Ollama, LM Studio, vLLM) waits up to 15 seconds per request instead of 1, so remote or tunnelled endpoints list their models, and a slow endpoint no longer delays other endpoints or config reloads. ([#63700](https://github.com/anomalyco/opencode/pull/63700))\n- In Code Mode, calling a namespace as if it were a tool now suggests up to three real tools under it. ([#63697](https://github.com/anomalyco/opencode/pull/63697))\n- Fixed retryable provider streams losing completed work when interrupted.\n- Fixed GitHub Copilot requests using the wrong endpoint before models finish loading.\n- Fixed exhausted request rate limits being treated as terminal. Thanks @Kyle-j-bush. ([#59816](https://github.com/anomalyco/opencode/pull/59816))\n- Fixed LM Studio models with a null context length and accepted decision-type models. Thanks @tomzhu1024. ([#56214](https://github.com/anomalyco/opencode/pull/56214))\n\n### TUI\n\n#### Improvements\n\n- Transcript verbosity now defaults to `low`, which summarizes each run of tools and thoughts into one activity row. A `session.verbosity` you already set is kept. ([#63207](https://github.com/anomalyco/opencode/pull/63207))\n- Session IDs found in messages can now be opened directly.\n- Activity tabs are clickable and open the correct view.\n- Shell mode has its own prompt color under the new designs.\n\n#### Bug fixes\n\n- Restored pasted text when undo brings back its placeholder.\n- Restored the live draft after browsing prompt history.\n- Fixed copying a paste from within the prompt selection.\n- Preserved the Mini composer caret when closing the command palette.\n- Prevented image bytes from being retained in transcript storage when image previews are disabled.\n- Fixed paste-chip contrast across light and dark themes.\n- Fixed plugin-provided themes updating live.\n- Session lists now open at the top rather than at the current session.\n- Mini scrollback now shows the subagent card instead of obsolete launch instructions.\n\n### Desktop\n\n#### Improvements\n\n- Added **Jump to message** to the command palette with `Cmd+Alt+G` / `Ctrl+Alt+G`, including prompts not yet loaded in the timeline. Thanks @usrnk1. ([#63585](https://github.com/anomalyco/opencode/pull/63585))\n- Added the experimental **Recent** sessions sidebar, with cross-server recency, local pins, reordering, and standard session-row actions.\n- Recent sessions are limited to the last seven days and 30 rows, and can be hidden or muted.\n- Added an experimental customizable sessions sidebar.\n- Mermaid diagrams can now be maximized for zooming and panning. ([#59250](https://github.com/anomalyco/opencode/pull/59250))\n- Added `Alt+Enter` to place a follow-up first in the queue and `Mod+Enter` to steer the next queued prompt.\n- Holding the modifier key now shows tab shortcut numbers.\n- Each server’s terminal shell can be selected from its menu.\n- Added a free-limit panel in place of the composer when applicable.\n- Session IDs are easier to find and copy.\n\n#### Bug fixes\n\n- Recent sessions now keep stable recency ordering through list reloads, renames, and completed runs.\n- Fixed browser panes not retrying after server plugins finish loading.\n- Fixed mention suggestions being recreated while typing.\n- Fixed SSH prompts failing to advance or close after connection.\n- Fixed pasted provider-auth redirect URLs being rejected.\n- Restored message footers in the New timeline.\n- Fixed links whose labels contain inline code.\n- Fixed the desktop main process freezing while probing the login-shell environment.\n- Fixed the drag region after changing layout direction.\n- Fixed vertical-tab previews snapping to the wrong tab.\n- Fixed the file-tree sidebar opening animation.\n- Fixed pairing QR-code contrast in light themes. Thanks @ssskay. ([#63220](https://github.com/anomalyco/opencode/pull/63220))\n- Fixed activity-tab navigation and click handling. Thanks @OpeOginni. ([#60168](https://github.com/anomalyco/opencode/pull/60168))\n\n### SDK\n\n#### Improvements\n\n- Event subscriptions can now receive `experimental.mcp.event` events from MCP event subscriptions.\n- Model capability schemas now advertise supported freeform tool-input formats.\n- Session throughput is now measured from the first streamed token.\n- Session creation documentation now clarifies the `parentID` field.\n\n### Extensions\n\n#### Improvements\n\n- Promise-based tools can cooperatively stop through `ToolContext.signal`.\n- Added the experimental `session.fork` hook.\n- Promise plugin cleanup failures no longer prevent subsequent plugin replacements.\n- `@opencode/plugin/effect` now exports `Tool`, so an `execute.before` hook can reject a call with `Tool.Error` without importing `@opencode/schema/tool`. ([#63698](https://github.com/anomalyco/opencode/pull/63698))'
+        },
         {
           'version': 'daemon-v0.5.2',
           'title': 'process-daemon v0.5.2',
@@ -3777,8 +3793,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-11T21:34:04Z',
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.5.2',
-          'body': 'opencode-pty 0.5.2（协议 8），来自 packages/process-daemon，以 @opencode/pty@0.5.2 发布到 npm。',
-          'h': 'dbc4afa'
+          'body': 'opencode-pty 0.5.2 (protocol 8) from packages/process-daemon, published to npm as @opencode/pty@0.5.2.'
         },
         {
           'version': 'daemon-v0.5.1',
@@ -9268,15 +9283,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.24',
           'body': '- Added OpenAPI annotations to tui.ts control endpoints\n- Session diff now only includes modified files\n- Fixed models endpoint to be OpenAI compatible'
-        },
-        {
-          'version': '0.15.23',
-          'title': 'v0.15.23',
-          'date': '2025-10-29',
-          'dateRaw': '2025-10-29T01:35:33Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.23',
-          'body': '- Fixed timeout parameter validation in bash tool to ensure positive values\n- Fixed MCP status() function to not overwrite connected state with failed state\n- Improved output handling by using process.stdout.write instead of console.log for better CLI experience\n- Added --title flag to opencode run command for custom session titles\n- Fixed additions and deletions counting in edit tool filediff for more accurate change tracking\n- Added OPENCODE_CONFIG_DIR environment variable to allow loading custom config directories'
         }
       ]
     },
@@ -9288,8 +9294,26 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
+        {
+          'version': '2.6.2',
+          'title': '@moonshot-ai/kimi-code@2.6.2',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T17:20:51Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.2',
+          'body': '### Patch Changes\n\n- [#4875](https://github.com/MoonshotAI/kimi-code/pull/4875) [`4c72e1d`](https://github.com/MoonshotAI/kimi-code/commit/4c72e1d53b33c69c5f3e2bd293cb117577becbd7) Thanks [@7Sageer](https://github.com/7Sageer)! - Support optional `search_url` and `feedback_url` fields on custom registry (`api.json`) providers for `WebSearch` and `/feedback`.\n\n- [#4876](https://github.com/MoonshotAI/kimi-code/pull/4876) [`d532f4f`](https://github.com/MoonshotAI/kimi-code/commit/d532f4f9adf8633a515d0628bc97247dd91dcfbc) Thanks [@7Sageer](https://github.com/7Sageer)! - Remove the text-only \'No attachment\' option from `/feedback` (text-only `/feedback` submissions are no longer available), show the current session\'s files before confirmation, and include session `request_id` metadata.\n\n- [#4885](https://github.com/MoonshotAI/kimi-code/pull/4885) [`ec35f9a`](https://github.com/MoonshotAI/kimi-code/commit/ec35f9ac158c195d17b4736054e4ffc16dac3c3c) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - Fix multi-second loading delays when reopening long sessions with many tool calls.\n\n- [#4905](https://github.com/MoonshotAI/kimi-code/pull/4905) [`90d8e31`](https://github.com/MoonshotAI/kimi-code/commit/90d8e31ba34eef50d25b9e8020501c4e46a59d9d) Thanks [@sailist](https://github.com/sailist)! - Reject failed or unfinished Kimi media uploads instead of caching unusable file references.\n\n- [#4922](https://github.com/MoonshotAI/kimi-code/pull/4922) [`a27bd82`](https://github.com/MoonshotAI/kimi-code/commit/a27bd82d32061d68a012ececa8d6f6dbe6ce9df8) Thanks [@sailist](https://github.com/sailist)! - Fix missing live subagent updates in the Swarm panel during execution.\n\n- [#4927](https://github.com/MoonshotAI/kimi-code/pull/4927) [`102bc1f`](https://github.com/MoonshotAI/kimi-code/commit/102bc1f96b7bbf3845f25c043c3cad30b6f539a9) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - web: Improved interactions and fixed known bugs.'
+        },
+        {
+          'version': '2.6.1',
+          'title': '@moonshot-ai/kimi-code@2.6.1',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T07:11:15Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.1',
+          'body': '### Patch Changes\n\n- [#4888](https://github.com/MoonshotAI/kimi-code/pull/4888) [`0341ca4`](https://github.com/MoonshotAI/kimi-code/commit/0341ca4f81e11fd57df2fa7ac98f42ee8afb80ae) Thanks [@wbxl2000](https://github.com/wbxl2000)! - Fix multi-second loading delays when reopening long sessions.\n\n- [#4907](https://github.com/MoonshotAI/kimi-code/pull/4907) [`397248f`](https://github.com/MoonshotAI/kimi-code/commit/397248f6de1dedf5230e5783e41636390a9fdbe3) Thanks [@sailist](https://github.com/sailist)! - Fix long sessions stalling with empty replies instead of compacting when tool results include notes, errors, or timing headers.'
+        },
         {
           'version': '2.7.0-canary.20261113055733-391d9e7',
           'title': '@moonshot-ai/kimi-code@2.7.0-canary.20261113055733-391d9e7',
@@ -9297,8 +9321,25 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-13T06:14:12Z',
           'tags': [],
           'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.7.0-canary.20261113055733-391d9e7',
-          'body': '有哪些变化\n- feat(tui)：将 cron 和 MCP 授权调用排除在紧凑型转录组之外，由 @Grapedge 在 #4844 中完成\n- 修复(agent-core-v2)：当 timeoutMs 为 0 时禁用子代理截止时间，由 @kimi-agent-bot 在 #4868 中完成\n- docs(changelog)：从 apps/kimi-code/CHANGELOG.md 同步 2.6.0，由 @kimi-agent-bot 在 #4872 中完成\n- 杂项：将 release/2026-11-12 同步回主分支，由 @kimi-agent-bot 在 #4873 中完成\n- 重构(核心)：将循环、LLM 和工具提取到一个不使用依赖注入的包中，由 @sailist 在 #4820 中完成\n- 修复(预测)：由 @sailist 在 #4878 中改进了虚文本的显示\n- 修复(tui)：在修剪、折叠和重播过程中保留转录历史，由 @kimi-agent-bot 在 #4866 中完成\n- 修复(agent-core-v2)：为对话参与者提供可变重播的阶段性选择加入，由@kimi-agent-bot在#4893中完成\n- 修复(agent-core-v2)：在任务输出尾部保留原始字节，由 @pvzheroes125 在 #4886 中完成\n- 修复(agent-core-v2)：将令牌计数和压缩与使用情况挂钩，由@kimi-agent-bot在#4883中完成\n- 测试：通过 #4901 中 @sailist 的工作稳定任务等待和会话重新加载检查\n- 新增功能(tui)：添加 follow_up_behavior ，用于选择按 Enter 键是排队还是转向，由 @Grapedge 在 #4890 中完成\n- 文档：恢复远程环境指南并规范中文引号，由 @wenhua020201-arch 在 #4818 中完成\n- 杂项：由 @kimi-agent-bot 在 #4898 中将 Web 分发与 code-app 同步\n完整变更日志： https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261112033252-d729f91...@moonshot-ai/kimi-code@2.7.0-canary.20261113055733-391d9e7',
-          'h': 'de8f58d0'
+          'body': 'What\'s Changed\n- feat(tui): keep cron and MCP authorization calls out of compact transcript groups by @Grapedge in #4844\n- fix(agent-core-v2): disable subagent deadline when timeoutMs is 0 by @kimi-agent-bot in #4868\n- docs(changelog): sync 2.6.0 from apps/kimi-code/CHANGELOG.md by @kimi-agent-bot in #4872\n- chore: sync release/2026-11-12 back to main by @kimi-agent-bot in #4873\n- refactor(core): extract loop, llm, and tool into a DI-free package by @sailist in #4820\n- fix(prediction): refine ghost text presentation by @sailist in #4878\n- fix(tui): preserve transcript history across trimming, folding, and replay by @kimi-agent-bot in #4866\n- fix(agent-core-v2): stage opt-in mutable replay for conversation participant by @kimi-agent-bot in #4893\n- fix(agent-core-v2): preserve raw bytes in task output tails by @pvzheroes125 in #4886\n- fix(agent-core-v2): keep token counting and compaction anchored to usage by @kimi-agent-bot in #4883\n- test: stabilize task wait and session reload checks by @sailist in #4901\n- feat(tui): add follow_up_behavior to choose whether Enter queues or steers by @Grapedge in #4890\n- docs: restore remote environment guidance and normalize Chinese quotes by @wenhua020201-arch in #4818\n- chore: sync web dist from code-app by @kimi-agent-bot in #4898\nFull Changelog : https://github.com/MoonshotAI/kimi-code/compare/@moonshot-ai/kimi-code@2.6.0-canary.20261112033252-d729f91...@moonshot-ai/kimi-code@2.7.0-canary.20261113055733-391d9e7'
+        },
+        {
+          'version': '2.6.2',
+          'title': '@moonshot-ai/kimi-code@2.6.2',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T17:32:14Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.2',
+          'body': 'Patch Changes\n#4875 4c72e1d Thanks @7Sageer ! - Support optional search_url and feedback_url fields on custom registry ( api.json ) providers for WebSearch and /feedback .\n#4876 d532f4f Thanks @7Sageer ! - Remove the text-only \'No attachment\' option from /feedback (text-only /feedback submissions are no longer available), show the current session\'s files before confirmation, and include session request_id metadata.\n#4885 ec35f9a Thanks @kimi-agent-bot ! - Fix multi-second loading delays when reopening long sessions with many tool calls.\n#4905 90d8e31 Thanks @sailist ! - Reject failed or unfinished Kimi media uploads instead of caching unusable file references.\n#4922 a27bd82 Thanks @sailist ! - Fix missing live subagent updates in the Swarm panel during execution.\n#4927 102bc1f Thanks @kimi-agent-bot ! - web: Improved interactions and fixed known bugs.'
+        },
+        {
+          'version': '2.6.1',
+          'title': '@moonshot-ai/kimi-code@2.6.1',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T07:22:45Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.1',
+          'body': 'Patch Changes\n#4888 0341ca4 Thanks @wbxl2000 ! - Fix multi-second loading delays when reopening long sessions.\n#4907 397248f Thanks @sailist ! - Fix long sessions stalling with empty replies instead of compacting when tool results include notes, errors, or timing headers.'
         },
         {
           'version': '2.6.0',
@@ -10462,8 +10503,22 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
+        {
+          'version': '0.2.2-rc.3',
+          'title': 'v0.2.2-rc.3',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T07:56:55Z',
+          'tags': [
+            '新增功能',
+            'New Features',
+            '问题修复',
+            'Bug Fixes'
+          ],
+          'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.3',
+          'body': '新增功能\n\n- 新增实验性「DeepSeek 会话导入」插件，支持将 DeepSeek App 或网页版的历史会话导入工作区，并继续对话。 @imccyu\n\n### 问题修复\n\n- 修复 Windows 桌面版应用内更新可能失败、无法自动重新打开的问题。 @winewill\n\nNew Features\n\n- Add an experimental DeepSeek chat import plugin to import past conversations from DeepSeek App or its web version into a workspace and continue chatting. by @imccyu\n\n### Bug Fixes\n\n- Fix an issue that could cause Windows desktop in-app updates to fail and prevent the app from reopening automatically. by @winewill\n\nFull Changelog: https://github.com/deepseek-ai/deepseek-harness/compare/dsh-v0.2.2-rc.2...dsh-v0.2.2-rc.3'
+        },
         {
           'version': '0.2.2-rc.2',
           'title': 'v0.2.2-rc.2',
@@ -11062,8 +11117,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
+        {
+          'version': '0.5.11',
+          'title': '不止响应，主动推荐',
+          'date': '2026-11-13',
+          'dateRaw': '2026年11月13日',
+          'tags': [
+            '不止响应，主动推荐',
+            '功能',
+            '下一步推荐',
+            '自定义 UI 插件',
+            'Issue 协作',
+            '数据导入'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '不止响应，主动推荐\n功能\n- 下一步推荐 ：输入框空闲且为空时，Qoder 可主动推荐下一步操作。按 Tab 或右方向键即可填入草稿，确认后再发送。\n- 自定义 UI 插件 ：使用 plugin-creator 技能开发自定义 UI 插件，安装后可作为常驻应用在 Qoder 内持续使用，将专属工具融入日常工作。\n- Issue 协作 ：支持评论、回复和附件交流，可将 Issue 指派给可用智能体执行，并关联讨论、查看执行记录与结果。适用于支持项目协作的账号。\n- 数据导入 ：新增 Kiro IDE 导入支持，可导入任务、记忆及可迁移的技能、MCP 和 Powers，并进行增量更新；同时优化 QoderWork 来源识别，完善 Codex 多目录工作区信息保留。\n优化\n- IM 插件管理 ：集中查看已启用 IM 插件的连接状态、通知和配对请求，优化安装后的配置引导与切换处理设备时的授权确认。\n- 云端自动化 ：支持选择已有的云端资源，并上传受支持的附件，为自动化任务补充所需能力与输入。\n- 浏览器与网页上下文 ：可通过 @ 引用已连接的受支持浏览器标签页，并按需查看公开网页链接的内容摘要。\n- 设备连接 ：在目标设备能力与授权允许时，可直接创建该设备上的工作区，或创建不指定工作区的任务。\n- 知识管理 ：优化 Repo Wiki 与知识卡片的增量更新、进度展示和失败重试；在账号与组织策略允许时，可自动获取可用的团队知识。\n- 任务与提醒 ：支持查看并清理符合条件的本机“需要我”历史；任务监视器中的产出按文件最近修改时间排列，方便查找近期结果。\n- 网络代理 ：手动代理新增 SOCKS5 支持，优化代理凭据编辑与保存后的应用反馈。\n- Qoder Helper ：完善官方文档查阅、功能入口定位与配置说明，帮助更快找到所需信息和操作入口。\n- 远程工作 ：SSH 会话可以发送本机文件，并引用同一台远端主机上的内容。首次连接默认打开远端主目录，重新连接时保留已选目录。\n修复\n- 修复 Word 空表格单元格标注无法发送、编辑器加载时误报连接或权限失败，以及页签图标和分页显示异常。\n- 修复 Excel 批量将公式转为值时内存占用过高的问题，并提高 PPT 创建高密度页面时可容纳的对象数量。\n- 修复 Sites 入口文件改名或备份后的预览恢复、从对话返回有效标注的定位，以及模板列表与设计风格选择的展示问题。\n- 修复 QoderWork 导入中的 Windows 附件路径、历史技能标签和大型记录读取问题；对支持再次导入的来源，个别不可用图片不再阻断其余内容。\n- 修复 Chrome“发送此页面”需要先访问设置才生效的问题，保留已有草稿；修复部分网页链接预览乱码。\n- 修复 SSH 密码输错后无法重新输入、Linux 上 SSH 配置弹窗无法关闭，以及 WSL 切换任务后误报历史丢失的问题。\n2026年11月9日'
+        },
         {
           'version': '0.5.7',
           'title': '日常优化',
@@ -11459,8 +11530,23 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
+        {
+          'version': '1.40.1',
+          'title': '会话标签页新增运行状态显示',
+          'date': '2026-11-13',
+          'dateRaw': '2026年11月13日',
+          'tags': [
+            '会话运行状态直观可见',
+            '会话标签页支持快捷键切换',
+            '本地与远端插件分别安装',
+            '新增“打开浏览器”入口',
+            '企业版用量信息更完整'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '会话标签页新增运行状态显示\n功能\n会话运行状态直观可见 ：在标签页中直接查看会话运行状态，便于掌握任务进度并及时介入。\n会话标签页支持快捷键切换 ：通过快捷键左右切换会话标签页，便于快速浏览和处理多个任务。\n从 IDE 访问官网无需重复登录 ：从 IDE 打开官网相关页面时，可复用客户端登录态，减少重复认证。\n本地与远端插件分别安装 ：在 WSL/SSH 远端窗口中，插件仅安装到远端环境；在本地窗口中，插件安装到本地，避免安装位置混淆。\n新增“打开浏览器”入口 ：可在 IDE 的“更多操作”中一键打开浏览器，便捷访问外部页面。\n企业版用量信息更完整 ：用量面板新增 Enterprise 标签与额度刷新周期，便于了解当前套餐和额度刷新规则。\n优化\n- 优化失败重试时的提示与交互反馈，支持切换模型后使用新模型重试。\n- 支持在会话流中快速点击预览 .md 文件，提升 Markdown 内容的阅读体验。\n- 优化 Auto 模式下的代码搜索，减少不必要的搜索操作，提升任务执行效率。\n- 优化编辑器打开流程，减少界面卡顿，使文件打开更流畅。\n- 优化 Windows 历史会话恢复流程，缩短等待时间。\n- 完善异常重试与恢复机制，减少任务在异常后停滞的情况，提升 Agent 运行稳定性。\n- 提升配置保存与同步的可靠性，减少多窗口操作时设置被覆盖、插件开关状态丢失等问题。\n修复\n- 修复部分情况下重启后登录态与工作区信任丢失、历史会话无法恢复的问题。\n- 修复特殊环境变量导致会话面板一直显示连接中的问题。\n- 修复终端启动失败时反复自动重启的问题。\n2026年11月09日'
+        },
         {
           'version': '1.39.2',
           'title': '日常优化',
@@ -12116,7 +12202,7 @@ window.CHANGELOG = {
             '功能更新'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志'
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lca\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\\'config\\\':\\\'$3:props:config\\\',\\\'prev\\\':null,\\\'next\\\':null,\\\'basePath\\\':\\\'\\\'}]\\nc2:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'AI 会话体验优化：\\\'}]\\nc3:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化输入框超出字数上限时的交互，超出部分将自动转换为文件附件。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持更高效地折叠冗长会话流。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化触发同步时的压缩策略，减少额外开销并提升处理效率。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化新会话首次发送消息的等待时间，提升首次交互响应速度。\\\'}],\\\'\\\\n\\\']}]\\nc4:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'memory-system-self-evolution\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc5:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'记忆系统自进化：\\\'}]\\nc6:[\\\'$\\\',\\\'span\\\',null,{\\\'data-as\\\':\\\'p\\\',\\\'children\\\':\\\'上下文理解更精准、长期记忆更持久；优化记忆生命周期管理与多维追踪，个性化响应更连贯。\\\'}]\\nc7:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'performance-and-stability\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc8:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'性能与稳定性：\\\'}]\\nc9:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':[[\\\'$\\\',\\\'strong\\\',null,{\\\'children\\\':\\\'桌面端架构\\\'}],\\\'：提升兼容性与运行稳定性。\\\']}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':[[\\\'$\\\',\\\'strong\\\',null,{\\\'children\\\':\\\''
         }
       ]
     },
@@ -12128,7 +12214,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
         {
           'version': '3.4.18',
@@ -14254,7 +14340,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14441,8 +14527,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
+        {
+          'version': '3.18.2',
+          'title': '3.18.2',
+          'date': '2026-11-13',
+          'dateRaw': '发布于 2026年11月13日',
+          'tags': [
+            '新功能',
+            '问题修复'
+          ],
+          'url': 'https://zcode.z.ai/changelog',
+          'body': '新功能\n- 输入框支持语音输入，语音内容实时转成文字。\n- 支持 Worktree，并行任务开发。\n- 新增 Design 能力，支持设计系统检查。\n- 新增日语、俄语、韩语三种界面语言。\n- 新增 Session 管理 Tool，增强自管理能力。\n- 统一登录授权入口。\n- 增加插件推荐开关。\n- 内置浏览器支持点选页面元素，本地网页可直接修改并保存。\n- 内置浏览器新增设备尺寸预设，页面可导出为 PNG 或 PDF。\n- 可在输入框编辑最近发送或排队中的消息。\n- 分享支持设置有效期，并新增分享管理页面。\n- 本地网页改动后自动刷新，可设置单击 HTML 直接打开。\n- 归档的会话支持永久删除。\n- 连续的工具执行自动分组汇总，阅读更专注。\n- 选中回复文字可添加批注，随引用一起发送。\n- 回复流式输出时逐词渐显，阅读更自然。\n- 文件卡片和正文链接支持在文件管理器中定位。\n- 浏览器记住各会话最近访问的页面，重启后保留。\n- 授权时可直接选择权限模式，可记住完全访问。\n- 设置新增项目编辑、每设备记忆和手机推送开关。\n- 使用统计记录不再自动过期清除。\n- 图片预览整合操作菜单，可添加到对话、复制或另存。\n- 站点部署新增访问统计。\n- 新增麦克风权限引导，权限被拒后可重新授权。\n- 新增 macOS 字体平滑设置，默认跟随系统显示。\n问题修复\n- 修复会话前进、后退导航无法使用的问题。\n- 托盘图标不再显示常驻红点，角标只计本次新增未读。\n- 修复 Windows 安装失败后文件残留、清理报错的问题。\n- 应用更新改为手动确认安装，关闭窗口不再中断下载。\n- 更新器支持代理与自签名证书，退出登录后仍可检查更新。\n- 修复登录验证码偶发无法加载的问题。\n- 修复时间、日期格式不跟随界面语言等本地化问题。\n- 模型失效时发送会提示重选，横幅关闭后不再误弹。\n- 修复切换模型后设置偶发不生效或卡顿的问题。\n- 修复内置浏览器网页无法接收键盘输入的问题。\n- 机器人会话支持富文本和更大附件，服务恢复后可续答。\n- 修复部分模型内置工具导致回复内容异常的问题。\n- 修复工作流脚本可能绕出沙箱的安全问题。\n- 修复设置页窄窗口下控件重叠的问题。\n- 额度重置核销前增加确认页，避免误核销。\n- 修复用默认应用打开文件时路径错误的问题。\n- 修复添加图片时预览偶发丢失的问题。\n- 修复删除或归档任务后相关页面未关闭的问题。\n- 修复个别异常数据导致对话无法继续同步的问题。\n- 修复国内用户通过网站登录失败的问题。\n- 修复摘要信息反复刷新的问题。\n- 点选网页元素不再切换到完整视图或弹出面板遮挡内容。\n- 对话栏可拖得更窄，减少对页面的遮挡。\n- 修复项目搜索菜单可被误拖动的问题。\n- 修复子代理来源说明显示不全或错乱的问题。\n- 修复更新时残留旧进程导致更新失败、需重启电脑的问题。\n- 更新备份失败时仍可继续安装，失败提示也更准确。\n- 修复 Linux 桌面版在没有系统密钥环服务时无法登录的问题。\n- 修复国内账号未关联 BigModel 时无法使用 Start 套餐权益的问题。\n- 修复切换数据存储目录后可能无法登录或需要重新登录的问题。\n- 修复 Windows 在系统限制或路径含特殊字符时检查更新失败的问题。'
+        },
         {
           'version': '3.17.2',
           'title': '3.17.2',
@@ -14620,7 +14718,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
         {
           'version': '4.12.4',
@@ -15515,7 +15613,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-13 15:00',
+      'lastOkAt': '2026-11-14 03:55',
       'entries': [
         {
           'version': '5.11.0',

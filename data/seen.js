@@ -324,6 +324,7 @@ window.SEEN = {
     'tbench|GPT-5.4 Mini': '2026-11-13',
     'tbench|Inkling Small': '2026-11-13',
     'tbench|Nemotron 3.5 Super VL': '2026-11-13',
-    'tbench|Inkling': '2026-11-13'
+    'tbench|Inkling': '2026-11-13',
+    'llm|Gemini 4 Hydrogen (high)': '2026-11-13'
   }
 };

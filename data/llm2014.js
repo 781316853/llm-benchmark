@@ -14,7 +14,7 @@ window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-11%7C0",
   updated: "2026-11-13",
-  refreshedAt: "2026-11-13 15:00",
+  refreshedAt: "2026-11-14 03:55",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1825,6 +1825,21 @@ window.LLM2014 = {
         ],
         'unprompted': 12,
         'ide': 'Codex CLI',
+        'think': 1
+      },
+      {
+        'model': 'Gemini 4 Hydrogen (high)',
+        'cells': [
+          '6/B+(6.12)',
+          'Skip',
+          '10/B(8.46)',
+          'Skip',
+          'Skip',
+          '10/B(8.51)',
+          'Pending'
+        ],
+        'unprompted': 13,
+        'ide': 'OpenCode CLI',
         'think': 1
       },
       {

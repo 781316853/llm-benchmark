@@ -21,7 +21,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 53,
+      'modelCount': 56,
       'updated': '2026-11-13',
       'ageDays': 0,
       'completeness': 1,
@@ -87,7 +87,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 82,
+      'modelCount': 84,
       'updated': '2026-11-13',
       'ageDays': 0,
       'completeness': 1,
@@ -197,7 +197,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 130,
+      'modelCount': 131,
       'updated': '2026-11-13',
       'ageDays': 0,
       'completeness': 0,
@@ -208,7 +208,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 56,
+      'modelCount': 57,
       'updated': '2026-11-13',
       'ageDays': 0,
       'completeness': 1,
@@ -230,7 +230,7 @@ window.QUALITY = {
       'id': 'osworld',
       'name': 'OSWorld 2.0',
       'status': 'ok',
-      'modelCount': 42,
+      'modelCount': 77,
       'updated': '2026-11-13',
       'ageDays': 0,
       'completeness': 1,
@@ -776,9 +776,9 @@ window.QUALITY = {
     },
     'aicodingdaily': {
       'rate': 1,
-      'total': 53,
-      'complete': 53,
-      'modelCount': 53,
+      'total': 56,
+      'complete': 56,
+      'modelCount': 56,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -824,9 +824,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 82,
-      'complete': 82,
-      'modelCount': 82,
+      'total': 84,
+      'complete': 84,
+      'modelCount': 84,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -906,19 +906,19 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 130,
+      'total': 131,
       'complete': 0,
-      'modelCount': 130,
+      'modelCount': 131,
       'missingFields': {
-        'score': 130
+        'score': 131
       },
       'flag': 'warn'
     },
     'modeldial': {
       'rate': 1,
-      'total': 56,
-      'complete': 56,
-      'modelCount': 56,
+      'total': 57,
+      'complete': 57,
+      'modelCount': 57,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -932,9 +932,9 @@ window.QUALITY = {
     },
     'osworld': {
       'rate': 1,
-      'total': 42,
-      'complete': 42,
-      'modelCount': 42,
+      'total': 77,
+      'complete': 77,
+      'modelCount': 77,
       'missingFields': {},
       'flag': 'ok'
     },

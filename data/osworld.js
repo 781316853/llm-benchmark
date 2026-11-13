@@ -10,10 +10,10 @@ window.OSWORLD = {
   'officialUrl': 'https://osworld-v2.xlang.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-13',
-  'refreshedAt': '2026-11-13 15:00',
+  'refreshedAt': '2026-11-14 03:55',
   'stats': {
     'tasks': 108,
-    'entries': 42
+    'entries': 77
   },
   'desc': 'OSWorld 2.0:108 个长时程、端到端的桌面计算机使用工作流(人类中位耗时约 1.6 小时,平均约 318 次工具调用),按二进制完成率与部分得分(检查点达成比例)双口径计分;因二进制完成率极低,榜单按部分得分排序。',
   'models': [
@@ -50,6 +50,24 @@ window.OSWORLD = {
       'score': 71.4,
       'org': 'OpenAI',
       'reported': '2026-09-29',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '最高（工具）',
+      'score': 70.19,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '极高强度思考（工具）',
+      'score': 70.14,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
       'url': null,
       'src': 'datalearner'
     },
@@ -108,6 +126,15 @@ window.OSWORLD = {
       'src': 'mirror'
     },
     {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 High（工具）',
+      'score': 65.92,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'GPT-5.6 Sol',
       'note': '官方报告最高值（具体推理档位未注明）',
       'score': 65.7,
@@ -131,6 +158,15 @@ window.OSWORLD = {
       'score': 64.4,
       'org': 'OpenAI',
       'reported': '2026-09-22',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '最高（工具）',
+      'score': 64.13,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
       'url': null,
       'src': 'datalearner'
     },
@@ -171,6 +207,15 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'GPT-5.6 Sol',
+      'note': '极高强度思考（工具）',
+      'score': 60.6,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'GPT-6 Sol',
       'note': '极高强度思考（工具）',
       'score': 60.5,
@@ -183,6 +228,15 @@ window.OSWORLD = {
       'system': 'Claude Opus 5',
       'note': '思考模式 Medium（工具）',
       'score': 60.49,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 Medium（工具）',
+      'score': 60.26,
       'org': 'Anthropic',
       'reported': '2026-07-24',
       'url': null,
@@ -207,6 +261,15 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'GPT-5.6 Sol',
+      'note': '思考模式 High（工具）',
+      'score': 56.03,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'Claude Opus 4.8 (Opus 5 card table)',
       'note': 'Partial score from the Opus 5 card\'s comparison table; the benchmark authors\' official-settings run of the same model reaches 54.8% partial (20.6% binary). Self-reported.',
       'score': 55.7,
@@ -218,9 +281,27 @@ window.OSWORLD = {
     {
       'system': 'Claude Opus 5',
       'note': '思考模式 Low（工具）',
+      'score': 55.22,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 Low（工具）',
       'score': 54.89,
       'org': 'Anthropic',
       'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 4.8',
+      'note': '最高（工具）',
+      'score': 54.8,
+      'org': 'Anthropic',
+      'reported': '2026-05-28',
       'url': null,
       'src': 'datalearner'
     },
@@ -252,6 +333,15 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'GPT-5.5',
+      'note': '极高强度思考（工具）',
+      'score': 49.5,
+      'org': 'OpenAI',
+      'reported': '2026-04-23',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'GPT-5.5 (batched tools)',
       'note': 'Author-run; xhigh reasoning with batched tool calls, 500-step budget (~$2,750 per run). 13.0% binary completion, flat across 150/300/500 steps.',
       'score': 49.5,
@@ -261,22 +351,22 @@ window.OSWORLD = {
       'src': 'mirror'
     },
     {
-      'system': 'Claude Opus 4.8',
-      'note': 'Author-run; max thinking, standard tool calls, 500-step budget. 18.52% binary completion. Batched tool calls lift the same model to 54.8% partial (rank 2).',
-      'score': 49.33,
-      'org': 'Anthropic',
-      'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/',
-      'src': 'mirror'
+      'system': 'GPT-5.6 Sol',
+      'note': '思考模式 Medium（工具）',
+      'score': 49.01,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
     },
     {
-      'system': 'Claude Opus 4.7',
-      'note': 'Author-run; max thinking, standard tool calls, 500-step budget (~$3,870 per run). 13.9% binary completion.',
-      'score': 49.1,
+      'system': 'Opus 4.7',
+      'note': '最高（工具）',
+      'score': 48.91,
       'org': 'Anthropic',
-      'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/',
-      'src': 'mirror'
+      'reported': '2026-04-16',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Opus 4.7 (batched tools)',
@@ -297,6 +387,15 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'Claude Sonnet 4.6',
+      'note': '最高（工具）',
+      'score': 41.5,
+      'org': 'Anthropic',
+      'reported': '2026-02-17',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'Claude Sonnet 4.6 (max thinking)',
       'note': 'Author-run; max thinking, standard tool calls, 500-step budget (~$2,410 per run). 8.3% binary completion.',
       'score': 41.5,
@@ -306,6 +405,24 @@ window.OSWORLD = {
       'src': 'mirror'
     },
     {
+      'system': 'Claude Opus 5',
+      'note': '最高（工具）',
+      'score': 34.72,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Sonnet 4.6',
+      'note': '思考模式 Medium（工具）',
+      'score': 33.9,
+      'org': 'Anthropic',
+      'reported': '2026-02-17',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'Claude Sonnet 4.6 (medium thinking)',
       'note': 'Author-run; medium thinking, standard tool calls, 500-step budget (~$1,550 per run). 9.3% binary completion (higher binary than max thinking).',
       'score': 33.9,
@@ -313,6 +430,24 @@ window.OSWORLD = {
       'reported': 'Jun 2026',
       'url': 'https://osworld-v2.xlang.ai/',
       'src': 'mirror'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '极高强度思考（工具）',
+      'score': 33.38,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 High（工具）',
+      'score': 32.69,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Claude Opus 5',
@@ -333,11 +468,29 @@ window.OSWORLD = {
       'src': 'datalearner'
     },
     {
+      'system': 'GPT-5.6 Sol',
+      'note': '思考模式 Low（工具）',
+      'score': 29.63,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'Claude Opus 5',
       'note': '思考模式 High（工具）',
       'score': 28.98,
       'org': 'Anthropic',
       'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '最高（工具）',
+      'score': 28.1,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
       'url': null,
       'src': 'datalearner'
     },
@@ -353,7 +506,34 @@ window.OSWORLD = {
     {
       'system': 'Claude Opus 5',
       'note': '思考模式 Medium（工具）',
+      'score': 27.13,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 Medium（工具）',
       'score': 25.33,
+      'org': 'Anthropic',
+      'reported': '2026-07-24',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '极高强度思考（工具）',
+      'score': 24.63,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Opus 5',
+      'note': '思考模式 Low（工具）',
+      'score': 24.61,
       'org': 'Anthropic',
       'reported': '2026-07-24',
       'url': null,
@@ -370,12 +550,21 @@ window.OSWORLD = {
     },
     {
       'system': 'MiniMax M3',
-      'note': 'Author-run; reasoning enabled, standard tool calls, 500-step budget (~$259 per run). 4.6% binary completion.',
+      'note': '思考模式（工具）',
       'score': 22.3,
-      'org': 'MiniMax',
-      'reported': 'Jun 2026',
-      'url': 'https://osworld-v2.xlang.ai/',
-      'src': 'mirror'
+      'org': 'MiniMaxAI',
+      'reported': '2026-06-01',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Kimi K2.6',
+      'note': '思考模式（工具）',
+      'score': 22.1,
+      'org': 'Moonshot AI',
+      'reported': '2026-04-20',
+      'url': null,
+      'src': 'datalearner'
     },
     {
       'system': 'Kimi 2.6',
@@ -387,6 +576,15 @@ window.OSWORLD = {
       'src': 'mirror'
     },
     {
+      'system': 'Qwen3.7-Plus',
+      'note': '思考模式（工具）',
+      'score': 21.5,
+      'org': '阿里巴巴',
+      'reported': '2026-05-31',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
       'system': 'Qwen 3.7-Plus',
       'note': 'Author-run; thinking mode, standard tool calls, 500-step budget (~$412 per run). 2.8% binary completion.',
       'score': 21.5,
@@ -394,6 +592,123 @@ window.OSWORLD = {
       'reported': 'Jun 2026',
       'url': 'https://osworld-v2.xlang.ai/',
       'src': 'mirror'
+    },
+    {
+      'system': 'Claude Opus 4.8',
+      'note': '最高（工具）',
+      'score': 20.6,
+      'org': 'Anthropic',
+      'reported': '2026-05-28',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '思考模式 High（工具）',
+      'score': 20,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Opus 4.7',
+      'note': '最高（工具）',
+      'score': 18.2,
+      'org': 'Anthropic',
+      'reported': '2026-04-16',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '思考模式 Medium（工具）',
+      'score': 17.56,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '常规模式（工具）',
+      'score': 16.43,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.5',
+      'note': '极高强度思考（工具）',
+      'score': 13,
+      'org': 'OpenAI',
+      'reported': '2026-04-23',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Sonnet 4.6',
+      'note': '思考模式 Medium（工具）',
+      'score': 9.3,
+      'org': 'Anthropic',
+      'reported': '2026-02-17',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Claude Sonnet 4.6',
+      'note': '最高（工具）',
+      'score': 8.3,
+      'org': 'Anthropic',
+      'reported': '2026-02-17',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '思考模式 Low（工具）',
+      'score': 7.32,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'MiniMax M3',
+      'note': '思考模式（工具）',
+      'score': 4.6,
+      'org': 'MiniMaxAI',
+      'reported': '2026-06-01',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Kimi K2.6',
+      'note': '思考模式（工具）',
+      'score': 4.6,
+      'org': 'Moonshot AI',
+      'reported': '2026-04-20',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'GPT-5.6 Sol',
+      'note': '常规模式（工具）',
+      'score': 3.41,
+      'org': 'OpenAI',
+      'reported': '2026-06-26',
+      'url': null,
+      'src': 'datalearner'
+    },
+    {
+      'system': 'Qwen3.7-Plus',
+      'note': '思考模式（工具）',
+      'score': 2.8,
+      'org': '阿里巴巴',
+      'reported': '2026-05-31',
+      'url': null,
+      'src': 'datalearner'
     }
   ]
 };
