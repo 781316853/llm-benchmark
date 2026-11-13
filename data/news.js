@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-12',
+  'updated': '2026-11-13',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -11,28 +11,68 @@ window.NEWS = {
   ],
   'items': [
     {
-      'date': '2026-11-12',
-      'title': 'Google 推出 Gemini Decisions 1 模型',
-      'brief': 'Google 推出由新模型 Gemini Decision 1 驱动的 Gemini Decisions API ，通过 Gemini API 在 Google AI Studio 开放，面向工具选择、政策检查、模型路由这类只需在有限选项中做决定的场景。',
-      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/',
+      'date': '2026-11-13',
+      'title': 'Google 推出 Gemini 4 Hydrogen',
+      'brief': 'Google 发布 Gemini 4 Hydrogen ，主打日常编码和 Agent 任务。官方称，其完成任务比 Gemini 3.8 Flash 快 2.5 倍 。',
+      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-12',
-      'title': '通义千问宣布 Qwen4 即将推出，预览版已可试用',
-      'brief': '阿里通义千问 宣布新一代模型 Qwen4 即将推出，官方称其知识理解更深入、世界感知更立体，编程与 Agent 能力更强，还显著提升 EDA 、 CAD 、 Blender 、 UE5 等专业软件的操作能力。预览版 Qwen4-Max 已在阿里的 Token Plan 开放，个人版提供 Lite 到 Pro 四档套餐，月价 39 元到 312 元 ；用户也可在 QwenWork 、 Qoder 、 Qwen APP 和 QwenStud…',
-      'url': 'https://mp.weixin.qq.com/s/J_zbVHa2R3mmY5KD4v3-bw',
+      'date': '2026-11-13',
+      'title': 'Google Antigravity 推出 Orchestrator 选项',
+      'brief': 'Google 在 Antigravity 中推出 Orchestrator 功能和 Gemini 4 Hydrogen 模型。',
+      'url': 'https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-12',
-      'title': 'OpenAI 成员暗示：周四或有 Codex 储备重置',
-      'brief': 'OpenAI Codex 团队成员 Tibo 在 X 上发文，称已经有一段时间没有进行重置，也许自己该走出地下室了。',
-      'url': 'https://x.com/thsottiaux/status/2120410006273380750',
+      'date': '2026-11-13',
+      'title': 'Jensen Huang 辞任英伟达 CEO',
+      'brief': '英伟达 董事会宣布， Jensen Huang 辞去总裁、CEO 及董事会成员职务，即刻生效。执行副总裁兼 CFO Colette Kress 出任临时 CEO，并继续保留 CFO 职务，直至公司任命永久人选。',
+      'url': 'https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition',
       'source': '橘鸦AI早报',
       'type': '要闻'
+    },
+    {
+      'date': '2026-11-13',
+      'title': 'ChatGPT dot 更新：支持自定义指令和行为规则',
+      'brief': 'OpenAI 官方宣布， ChatGPT 的 dot 现已支持更快回复、更少术语和更好的任务跟进，并能遵循用户自定义指令。',
+      'url': 'https://learn.chatgpt.com/docs/dots/controls',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-13',
+      'title': 'Tibo 确认 banked reset 已开始发放',
+      'brief': 'OpenAI Codex 与 ChatGPT 团队成员 Tibo 此前发文称，已经很久没有发放用量重置，也许自己该从地下室里出来了，并预告周四感觉颇有 codex 味道，或许适合发放一次 banked reset 。',
+      'url': 'https://x.com/thsottiaux/status/2120999993079451919',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-13',
+      'title': 'Inkling 2 Small 权重正式开放',
+      'brief': 'Thinking Machines 宣布在 Hugging Face 以 Apache 2.0 许可开放 Inkling 2 Small 模型权重。该模型是多模态 MoE 模型，总参数 594B 、激活 17B ，支持图文输入与最长 1M token 上下文，提供 NVFP4 和 MXFP8 两种精度， NVFP4 版需至少 500GB 显存。',
+      'url': 'https://x.com/thinkymachines/status/2120982625582195011',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-13',
+      'title': 'IBM 发布 LLMON 标记语言降低提示注入风险',
+      'brief': 'IBM 发布 LLMON 标记语言及 GitHub 工具库，并在 Hugging Face 开源基于 Granite 4.1 微调的 3B 、 8B 两个实验预览模型，采用 Apache 2.0 许可。',
+      'url': 'https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-13',
+      'title': 'OpenAI 推出两款 AI 网络安全防御工具',
+      'brief': 'OpenAI 在 Cyber at the Frontier 主题演讲中发布 Daybreak Red Team 和 Daybreak Defense Factory 两款网络安全工具。',
+      'url': 'https://openai.com/zh-Hans-CN/cyber-at-the-frontier/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-11-12',
@@ -60,22 +100,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-12',
-      'title': 'Runway 开放机器人模型 Praxis-1 权重',
-      'brief': 'Runway 向所有人开放世界动作模型 Praxis-1 的权重和代码，采用 Apache 2.0 许可，支持商业使用。这个 270 亿 参数模型能同时预测视频和机器人动作，开发者可在自己的硬件上运行和微调。',
-      'url': 'https://runway.com/news/company-news/praxis-1-is-now-available',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-12',
-      'title': '小红书升级语音编辑模型 dots.tts.edit',
-      'brief': '小红书 升级发布开源语音编辑模型 dots.tts.edit V1.1 ，新增局部风格描述编辑能力，支持对已有录音中的词句和声音进行局部修改。用户可选中转录文本，设置文字修改或声音参数，一次生成多处编辑结果。',
-      'url': 'https://github.com/studio-dots-ai/dots.tts',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-12',
       'title': '阿里发布 Qwen Code 1.0 Preview',
       'brief': '阿里 发布 Qwen Code 1.0 Preview ，把在 Qoder 中打磨的 Harness 能力融入同一套开源内核，代码继续采用 Apache 2.0 许可证，为开发者提供可嵌入自身产品的 Agent 运行基础。该项目提供终端 CLI 与 SDK ，集成 SubAgents 、 MCP 等特性，通过统一事件机制连接入口与任务，支持 OpenAI 、 Anthropic 、 Gemini 、 Qwen 等多协议模型接入与动态工作…',
       'url': 'https://mp.weixin.qq.com/s/CXUnh_CP0S4gKV5MYwWWtw',
@@ -95,38 +119,6 @@ window.NEWS = {
       'title': 'Gemini API Managed Agents 支持接入自托管 Linux 沙箱',
       'brief': 'Google AI Studio 宣布，使用 Gemini API Managed Agents 的开发者现在可以接入自托管的 Linux 沙箱，让 agent 在自己控制的基础设施中执行工具操作。',
       'url': 'https://x.com/GoogleAIStudio/status/2120610219235660183',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-11',
-      'title': '谷歌正式开放模型 Gemini 4 Carbon',
-      'brief': '谷歌宣布正式开放 Gemini 4 Carbon 模型，称其为目前能力最强的模型，主打网络安全、长周期智能体工作流以及复杂软件工程与科研推理。该模型此前已先行公布，并曾通过 Fairwind Program 向部分网络安全防御人员开放，此次面向所有付费开发者和企业开放 API 。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-11',
-      'title': 'MiniMax 发布 H3-Image 并开放权重',
-      'brief': 'MiniMax 发布基于 H3 的图像生成模型 H3-Image ，并开放模型权重。模型支持文字生图、图像编辑和参考图生图，最多可使用 16 张 参考图，输出可达 4096×4096 像素 ，约 1600 万像素 。',
-      'url': 'https://www.minimax.io/blog/minimax-h3-image',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-11',
-      'title': 'Google Antigravity 推出 /swarm 预览，多 agent 协作并行开发',
-      'brief': 'Google Antigravity 推出新的命令 /swarm ，目前处于预览阶段，覆盖 Antigravity App 和 Antigravity CLI。',
-      'url': 'https://antigravity.google/docs/swarm',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-11',
-      'title': '美团 LongCat 2.5 在 OpenCode 免费两周',
-      'brief': 'OpenCode 宣布， 美团 的 LongCat 2.5 模型目前在平台免费开放两周，支持 1M 上下文、多模态输入和零数据保留。',
-      'url': 'https://x.com/opencode/status/2119789096503746751',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     }

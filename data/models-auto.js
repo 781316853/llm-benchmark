@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-12',
+  'updated': '2026-11-13',
   'stats': {
-    'total': 165,
+    'total': 166,
     'knownVendor': 165,
-    'otherVendor': 0,
-    'skippedManual': 1344,
+    'otherVendor': 1,
+    'skippedManual': 1357,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -384,10 +384,11 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'GPT-6.2 Astra（灰度）',
+      'id': 'GPT-6.2 Astra',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
+        'GPT-6.2 Astra',
         'GPT-6.2 Astra（灰度）',
         'gpt-6.2-astra'
       ],
@@ -461,7 +462,8 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Google',
       'color': '#6BA5F7',
       'aliases': [
-        'Gemini 4 Hydrogen'
+        'Gemini 4 Hydrogen',
+        'gemini-4-hydrogen'
       ],
       'auto': true
     },
@@ -611,6 +613,15 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Grok Code Fast 1',
         'grok code fast 1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Inkling Small 2',
+      'vendor': '其他',
+      'color': '#9298A1',
+      'aliases': [
+        'Inkling Small 2'
       ],
       'auto': true
     },

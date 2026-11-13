@@ -1,4 +1,4 @@
-// 数据源:Artificial Analysis Coding Agent Index v2.0(源站更新 2026-11-12)
+// 数据源:Artificial Analysis Coding Agent Index v2.0(源站更新 2026-11-13)
 // 来源:https://artificialanalysis.ai/agents/coding-agents
 // 字段:models[]=agent×model×推理档位配置(按 indexScore 降序);indexScore=综合指数(%);
 //      frontiercode/terminalBench/sweAtlas=三项子基准得分(%);costUsd=每任务平均 API 成本($);
@@ -11,8 +11,8 @@ window.AACODING = {
   'officialUrl': 'https://artificialanalysis.ai/agents/coding-agents',
   'methodUrl': 'https://artificialanalysis.ai/methodology/coding-agents-benchmarking',
   'version': 'v2.0',
-  'updated': '2026-11-12',
-  'refreshedAt': '2026-11-13 04:13',
+  'updated': '2026-11-13',
+  'refreshedAt': '2026-11-13 15:00',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'agents': [
     'Claude Code',
@@ -81,7 +81,7 @@ window.AACODING = {
       'multiModel': true,
       'effort': null,
       'provider': 'cognition',
-      'vendor': 'Anthropic',
+      'vendor': 'cognition',
       'indexScore': 61.5,
       'frontiercode': 53.6,
       'terminalBench': 62.6,
@@ -101,7 +101,7 @@ window.AACODING = {
       'multiModel': false,
       'effort': 'max',
       'provider': 'github',
-      'vendor': 'Anthropic',
+      'vendor': 'GitHub',
       'indexScore': 59.9,
       'frontiercode': 51.4,
       'terminalBench': 71.2,
@@ -281,7 +281,7 @@ window.AACODING = {
       'multiModel': true,
       'effort': null,
       'provider': 'cognition',
-      'vendor': 'OpenAI',
+      'vendor': 'Cognition',
       'indexScore': 53.1,
       'frontiercode': 49,
       'terminalBench': 50,

@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-12)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-13)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
@@ -13,11 +13,11 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-11-12',
-  'refreshedAt': '2026-11-13 04:13',
+  'updated': '2026-11-13',
+  'refreshedAt': '2026-11-13 15:00',
   'stats': {
     'tasks': 66,
-    'entries': 46
+    'entries': 61
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -34,7 +34,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 2,
+      'rank': 1,
+      'model': 'Fable 5.2',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 65.8,
+      'ci': 2.9,
+      'date': 'Nov 9, 2026',
+      'tokens': '15.7B',
+      'cost': '$16.5k',
+      'src': 'official'
+    },
+    {
+      'rank': 3,
       'model': 'Sonnet 5.5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -46,7 +58,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 3,
+      'rank': 4,
       'model': 'GPT-6.1 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -58,7 +70,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 4,
+      'rank': 5,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'max',
@@ -70,7 +82,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 5,
+      'rank': 6,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'high',
@@ -82,7 +94,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 6,
+      'rank': 7,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'xhigh',
@@ -95,6 +107,18 @@ window.TBENCH = {
     },
     {
       'rank': 7,
+      'model': 'Kimi K3.1 Pro',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 59.7,
+      'ci': 4.2,
+      'date': 'Oct 24, 2026',
+      'tokens': '3.2B',
+      'cost': '$1.1k',
+      'src': 'official'
+    },
+    {
+      'rank': 9,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'xhigh',
@@ -106,7 +130,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 8,
+      'rank': 10,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -118,7 +142,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 9,
+      'rank': 11,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'medium',
@@ -130,7 +154,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 10,
+      'rank': 12,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'high',
@@ -142,7 +166,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 11,
+      'rank': 13,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'medium',
@@ -154,7 +178,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 12,
+      'rank': 14,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'xhigh',
@@ -166,7 +190,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 13,
+      'rank': 14,
+      'model': 'GPT-6.1 Terra',
+      'agent': 'Codex',
+      'effort': 'max',
+      'score': 53.3,
+      'ci': 3.1,
+      'date': 'Oct 26, 2026',
+      'tokens': '8.5B',
+      'cost': '$874.44',
+      'src': 'official'
+    },
+    {
+      'rank': 16,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -178,7 +214,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 14,
+      'rank': 17,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'low',
@@ -190,7 +226,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 15,
+      'rank': 18,
       'model': 'GPT-6 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -202,7 +238,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 16,
+      'rank': 19,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'high',
@@ -214,7 +250,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 17,
+      'rank': 20,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'medium',
@@ -226,7 +262,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 18,
+      'rank': 21,
       'model': 'Fable 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -238,7 +274,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 19,
+      'rank': 22,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'low',
@@ -250,7 +286,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 20,
+      'rank': 23,
       'model': 'GLM-5.3',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -262,7 +298,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 21,
+      'rank': 24,
+      'model': 'Haiku 5.5',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 40,
+      'ci': 3.6,
+      'date': 'Oct 7, 2026',
+      'tokens': '12.1B',
+      'cost': '$952.47',
+      'src': 'official'
+    },
+    {
+      'rank': 25,
       'model': 'Grok 4.7',
       'agent': 'Grok Build',
       'effort': 'xhigh',
@@ -274,7 +322,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 22,
+      'rank': 26,
       'model': 'GPT-5.6 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -286,7 +334,43 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 23,
+      'rank': 26,
+      'model': 'DeepSeek V4.1 Flash 1017',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 38.5,
+      'ci': 3.8,
+      'date': 'Oct 17, 2026',
+      'tokens': '8.2B',
+      'cost': '$184.89',
+      'src': 'official'
+    },
+    {
+      'rank': 28,
+      'model': 'Hy4',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 37.9,
+      'ci': 3.5,
+      'date': 'Nov 4, 2026',
+      'tokens': '5.3B',
+      'cost': '$347.60',
+      'src': 'official'
+    },
+    {
+      'rank': 29,
+      'model': 'GLM-5.3-Flash',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 37,
+      'ci': 3.6,
+      'date': 'Aug 26, 2026',
+      'tokens': '8.2B',
+      'cost': '$374.72',
+      'src': 'official'
+    },
+    {
+      'rank': 30,
       'model': 'GLM-5.3-Flash',
       'agent': 'Claude Code',
       'effort': 'none',
@@ -298,7 +382,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 24,
+      'rank': 31,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'low',
@@ -310,7 +394,31 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 25,
+      'rank': 32,
+      'model': 'Muse Ember',
+      'agent': 'Muse Code',
+      'effort': 'xhigh',
+      'score': 30.6,
+      'ci': 3.8,
+      'date': 'Nov 9, 2026',
+      'tokens': '8.1B',
+      'cost': '$157.18',
+      'src': 'official'
+    },
+    {
+      'rank': 33,
+      'model': 'Mistral Large 4',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 27.6,
+      'ci': 3.9,
+      'date': 'Oct 6, 2026',
+      'tokens': '5.8B',
+      'cost': '$718.40',
+      'src': 'official'
+    },
+    {
+      'rank': 34,
       'model': 'Qwen3.8-Max-0902',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -322,7 +430,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 26,
+      'rank': 34,
+      'model': 'MiMo V2.6 Pro',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 27,
+      'ci': 3.6,
+      'date': 'Sep 22, 2026',
+      'tokens': '7.8B',
+      'cost': '$282.32',
+      'src': 'official'
+    },
+    {
+      'rank': 36,
       'model': 'Opus 4.8',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -334,7 +454,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 27,
+      'rank': 37,
+      'model': 'Kimi K3',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 23,
+      'ci': 3.7,
+      'date': 'Jul 16, 2026',
+      'tokens': '4.9B',
+      'cost': '$1.9k',
+      'src': 'official'
+    },
+    {
+      'rank': 38,
       'model': 'GPT-5.6 Terra',
       'agent': 'Codex',
       'effort': 'max',
@@ -346,7 +478,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 28,
+      'rank': 39,
       'model': 'Grok 4.6',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -358,7 +490,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 29,
+      'rank': 40,
       'model': 'Gemini 3.8 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -370,7 +502,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 30,
+      'rank': 41,
       'model': 'GPT-5.6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -382,7 +514,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 31,
+      'rank': 42,
+      'model': 'MiMo V2.6 Flash',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 16.1,
+      'ci': 3.4,
+      'date': 'Sep 22, 2026',
+      'tokens': '9.9B',
+      'cost': '$194.60',
+      'src': 'official'
+    },
+    {
+      'rank': 43,
       'model': 'GPT-6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -394,7 +538,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 32,
+      'rank': 44,
       'model': 'Muse Spark 1.3',
       'agent': 'Muse Code',
       'effort': 'xhigh',
@@ -406,7 +550,19 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 33,
+      'rank': 45,
+      'model': 'Inkling Small 2',
+      'agent': 'mini-swe-agent',
+      'effort': 'xhigh',
+      'score': 13,
+      'ci': 2.9,
+      'date': 'Nov 5, 2026',
+      'tokens': '27.5B',
+      'cost': '$963.65',
+      'src': 'official'
+    },
+    {
+      'rank': 46,
       'model': 'Gemini 3.7 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -418,7 +574,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 33,
+      'rank': 46,
       'model': 'Grok 4.5',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -430,7 +586,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 35,
+      'rank': 48,
       'model': 'Sonnet 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -442,6 +598,90 @@ window.TBENCH = {
       'src': 'official'
     },
     {
+      'rank': 49,
+      'model': 'MiniMax M3',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 7.6,
+      'ci': 2.8,
+      'date': 'Jun 1, 2026',
+      'tokens': '16.5B',
+      'cost': '$1.1k',
+      'src': 'official'
+    },
+    {
+      'rank': 50,
+      'model': 'DeepSeek V4 Pro 0813',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 6.7,
+      'ci': 2.5,
+      'date': 'Aug 13, 2026',
+      'tokens': '3.8B',
+      'cost': '$727.02',
+      'src': 'official'
+    },
+    {
+      'rank': 51,
+      'model': 'Beam 1.0',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 6.4,
+      'ci': 1.7,
+      'date': 'Oct 16, 2026',
+      'tokens': '4.1B',
+      'cost': '$220.96',
+      'src': 'official'
+    },
+    {
+      'rank': 52,
+      'model': 'GPT-5.4 Mini',
+      'agent': 'Codex',
+      'effort': 'xhigh',
+      'score': 1.8,
+      'ci': 1.3,
+      'date': 'Mar 17, 2026',
+      'tokens': '4.2B',
+      'cost': '$671.57',
+      'src': 'official'
+    },
+    {
+      'rank': 53,
+      'model': 'Inkling Small',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 0.9,
+      'ci': 0.9,
+      'date': 'Jul 30, 2026',
+      'tokens': '373.4M',
+      'cost': '$49.55',
+      'src': 'official'
+    },
+    {
+      'rank': 54,
+      'model': 'Nemotron 3.5 Super VL',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 0.3,
+      'ci': 0.6,
+      'date': 'Oct 15, 2026',
+      'tokens': '3.3B',
+      'cost': '$167.29',
+      'src': 'official'
+    },
+    {
+      'rank': 55,
+      'model': 'Inkling',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 0,
+      'ci': 0,
+      'date': 'Jul 17, 2026',
+      'tokens': '1.4B',
+      'cost': '$1.0k',
+      'src': 'official'
+    },
+    {
       'rank': null,
       'model': 'Claude Mythos 5.2',
       'agent': null,
@@ -449,30 +689,6 @@ window.TBENCH = {
       'score': 70.5,
       'ci': null,
       'date': '2026-11-09',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'Claude Fable 5.2',
-      'agent': null,
-      'effort': '最高（工具）',
-      'score': 67.6,
-      'ci': null,
-      'date': '2026-11-09',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'Kimi K3.1 Pro',
-      'agent': null,
-      'effort': '最高（工具）',
-      'score': 65.7,
-      'ci': null,
-      'date': '2026-10-24',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'
@@ -524,42 +740,6 @@ window.TBENCH = {
       'tokens': null,
       'cost': null,
       'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'DeepSeek-V4.1-Flash-1017',
-      'agent': 'Claude Code',
-      'effort': null,
-      'score': 42.3,
-      'ci': null,
-      'date': '2026-10-17',
-      'tokens': null,
-      'cost': null,
-      'src': 'deepseek-official'
-    },
-    {
-      'rank': null,
-      'model': 'Hy4',
-      'agent': 'Claude Code',
-      'effort': null,
-      'score': 44.4,
-      'ci': null,
-      'date': '2026-11-04',
-      'tokens': null,
-      'cost': null,
-      'src': 'tencent-official'
-    },
-    {
-      'rank': null,
-      'model': 'GPT-6.1 Terra',
-      'agent': null,
-      'effort': 'max',
-      'score': 50.3,
-      'ci': null,
-      'date': '2026-10-27',
-      'tokens': null,
-      'cost': null,
-      'src': 'openai-official'
     },
     {
       'rank': null,
