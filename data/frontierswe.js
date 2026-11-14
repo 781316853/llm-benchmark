@@ -13,7 +13,7 @@ window.FRONTIERSWE = {
   'epochUrl': 'https://epoch.ai/benchmarks/frontierswe',
   'version': 'v2',
   'updated': '2026-11-14',
-  'refreshedAt': '2026-11-14 14:50',
+  'refreshedAt': '2026-11-15 02:22',
   'stats': {
     'tasks': 34,
     'entries': 25,

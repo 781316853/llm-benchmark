@@ -24,7 +24,7 @@ window.MODELDIAL = {
   'viewKey': '509d50851ba6adc2ec8b0c4119ef6976e76270554a6381e1ba930a5d51c71139',
   'scorePolicy': 'five-axis-b20-f25-k35-a10-m10-cube-half_up-v3',
   'updated': '2026-11-13',
-  'refreshedAt': '2026-11-14 14:50',
+  'refreshedAt': '2026-11-15 02:22',
   'weights': {
     'backend': 0.2,
     'frontend': 0.25,

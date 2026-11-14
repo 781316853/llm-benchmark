@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 53,
+      'modelCount': 51,
       'updated': '2026-11-14',
       'ageDays': 0,
       'completeness': 1,
@@ -89,7 +89,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 84,
+      'modelCount': 86,
       'updated': '2026-11-14',
       'ageDays': 0,
       'completeness': 1,
@@ -770,9 +770,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 53,
-      'complete': 53,
-      'modelCount': 53,
+      'total': 51,
+      'complete': 51,
+      'modelCount': 51,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -818,9 +818,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 84,
-      'complete': 84,
-      'modelCount': 84,
+      'total': 86,
+      'complete': 86,
+      'modelCount': 86,
       'missingFields': {},
       'flag': 'ok'
     },
