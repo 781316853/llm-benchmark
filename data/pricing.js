@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-13
+// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-14
 // 来源:https://www.codingplan.fyi/plans.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -18,8 +18,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-11-13',
-  'refreshedAt': '2026-11-14 03:55',
+  'updated': '2026-11-14',
+  'refreshedAt': '2026-11-14 14:50',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,10 +30,10 @@ window.PRICING = {
     'planModels': 2588,
     'withPricing': 1839,
     'comparable': 1154,
-    'models': 109,
+    'models': 110,
     'unresolved': 16,
-    'ranked': 57,
-    'supplemented': 3,
+    'ranked': 58,
+    'supplemented': 4,
     'carriedOver': 0,
     'seeded': 0,
     'missingRanked': 3
@@ -512,6 +512,15 @@ window.PRICING = {
       'outputCnyPerM': 27.2,
       'costPerM': 1.4603,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Gemini 4 Hydrogen',
+      'slug': 'gemini-4-hydrogen',
+      'inputCnyPerM': 10.2,
+      'cacheCnyPerM': 0.51,
+      'outputCnyPerM': 51,
+      'costPerM': 1.1985,
+      'priceSource': 'models.dev:google'
     },
     {
       'id': 'Claude Haiku 4.5',

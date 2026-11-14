@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-13',
-  'refreshedAt': '2026-11-14 03:55',
+  'updated': '2026-11-14',
+  'refreshedAt': '2026-11-14 14:50',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3392,
-    'afterMerge': 3389,
-    'needsZh': 2178,
-    'translated': 2178,
+    'afterToolDedupe': 3395,
+    'afterMerge': 3392,
+    'needsZh': 2181,
+    'translated': 2181,
     'untranslated': 0
   },
   'zh': {
@@ -33,6 +33,7 @@ window.CHANGELOG_MONTHLY = {
     '11df37a8-55': '/plugin 中浏览市场插件时新增搜索栏',
     '11e132c-129': '新增 --forward-subagent-text 标志和 CLAUDE_CODE_FORWARD_SUBAGENT_TEXT 环境变量，可将子智能体的文本和思考内容包含在 stream-json 输出中',
     '11e465b0-142': '添加了effortSlider ： reduceEffort、increaseEffort和toggleUltracode键绑定操作，因此/effort滑块的箭头和Tab键可以在keybindings.json中反弹',
+    '11f1e608-126': '在VS Code和类似的集成终端中添加了关于重新运行笔记本单元格的加载指示器提示，该提示会在Claude读取或编辑Jupyter笔记本后显示一次',
     '1213c9c5-47': '通过映射到 ignore 与 synthetic 支持 ACP audience',
     '121e0564-134': '为命令和HTTP钩子添加了onFailure: \'block\' ：无法启动、超时或使用意外代码退出的钩子会阻止操作，而不是让它通过',
     '12217a90-74': '! - 允许自定义智能体文件限制其可委派的子智能体类型（仅 v2 引擎）',
@@ -793,6 +794,7 @@ window.CHANGELOG_MONTHLY = {
     '6270c5f4-70': '添加了内置的Google Cloud Vertex AI提供程序，配置为model_provider = \'gcp\'',
     '62857b05-64': '新增 opencode agent list 命令，显示所有可用 agent 及其详情',
     '628c7970-119': '将会话标记为已读或未读：打开选项卡、主页行、项目行或收件箱卡片上的菜单，然后选择“标记为未读”以保留其点，直到您下次访问',
+    '62b0375a-126': '在组织政策阻止请求时显示的错误下方添加了一行，说明如何继续：运行 /rewind 并更改消息，或运行 /clear',
     '62b2b160-56': '为支持的 Mistral Small 模型新增高推理变体',
     '62b2bf07-31': '为精简模式添加变体支持',
     '62e544a0-44': '新增用于文本补全的实验性插件钩子',
@@ -1673,6 +1675,7 @@ window.CHANGELOG_MONTHLY = {
     'c3d496a8-112': '将oidc.user_id_claim添加到Claude应用程序网关，以通过sub以外的id_token声明（例如Microsoft Entra ID的oid ）识别人员',
     'c3d49b0c-37': '命令栏新增重命名会话操作',
     'c3dd0d85-123': 'app-server 轮次可在用户输入和生成图像的工具之间保留请求的图像保真度，包括原始分辨率的本地图像',
+    'c3eb4bd8-112': '添加了一条针对 Claude 的备注，说明当沙盒中的 git checkout、git stash 或 autostash pull 无法更新受保护的文件（例如 .claude 中的文件）时的情况。',
     'c420ef24-97': '使用ChatGPT登录的合格本地会话现在可以显示可选的提醒，以完成帐户安全设置',
     'c4530820-108': '新增实验性 Amazon Bedrock 登录、自定义端点和身份验证支持，并将 GPT-5.6 Sol 设为默认 Bedrock 模型',
     'c466f9f8-65': '在 GitHub Actions 和 OpenCode GitHub run 命令中支持 variant 参数',
@@ -2199,7 +2202,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 198,
+      'count': 201,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -2360,6 +2363,27 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': '11f1e608-126',
+              'text': 'Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook',
+              'date': '2026-11-13',
+              'version': '2.1.325',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325'
+            },
+            {
+              'key': '62b0375a-126',
+              'text': 'Added a line under the error shown when your organization\'s policy blocks a request, saying how to continue: run /rewind and change the message, or run /clear',
+              'date': '2026-11-13',
+              'version': '2.1.325',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325'
+            },
+            {
+              'key': 'c3eb4bd8-112',
+              'text': 'Added a note for Claude when a sandboxed git checkout, git stash or autostash pull cannot update protected files such as those in .claude',
+              'date': '2026-11-13',
+              'version': '2.1.325',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325'
+            },
             {
               'key': '1df4cb1e-82',
               'text': 'Added a start-up warning for Bash allow rules with a * in a variable\'s value, such as Bash(PORT=* npm run dev)',
@@ -2690,7 +2714,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 47
+          'count': 50
         },
         {
           'id': 'opencode',

@@ -17,10 +17,10 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-11-13',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-14 03:55',
+  'refreshedAt': '2026-11-14 14:50',
   'stats': {
-    'entries': 56,
-    'models': 36
+    'entries': 53,
+    'models': 34
   },
   'desc': 'AI Coding Daily(Povilas Korop 个人实测站):每个模型在 7 个真实项目上跑 27 个 prompt(全站累计 2000+ 次运行),每个 prompt 从项目全新副本起步、模型看不到隐藏测试、无人工反馈;总分为 Laravel 代码质量(20)+ React-TS 代码质量(20)+ Bug Finding(10)+ Edge-case Testing(20)四轴之和(0-70),另记每 prompt 平均成本与耗时。分数越高越好,成本/耗时越低越优。',
   'models': [
@@ -123,37 +123,21 @@ window.AICODINGDAILY = {
     {
       'rank': 7,
       'model': 'Gemini 4 Hydrogen',
-      'effort': 'Xhigh',
-      'score': 79.62,
+      'effort': 'High',
+      'score': 79.54,
       'costUsd': null,
-      'timeSec': 397,
-      'timeStr': '06:37',
+      'timeSec': 222,
+      'timeStr': '03:42',
       'harness': 'Antigravity',
-      'laravel': 18.25,
-      'reactTs': 18.33,
+      'laravel': 18.23,
+      'reactTs': 17.33,
       'bugFinding': 8.96,
-      'edgeCase': 16.83,
+      'edgeCase': 16.27,
       'src': 'aggregate',
-      'configs': 3
+      'configs': 2
     },
     {
       'rank': 8,
-      'model': 'Fable 5.1',
-      'effort': 'Medium',
-      'score': 77.53,
-      'costUsd': 1.53,
-      'timeSec': 186,
-      'timeStr': '03:06',
-      'harness': 'Claude Code',
-      'laravel': 18.55,
-      'reactTs': 16.83,
-      'bugFinding': 7.4,
-      'edgeCase': 16.5,
-      'src': 'aggregate',
-      'configs': 1
-    },
-    {
-      'rank': 9,
       'model': 'Deepseek-V4.1-Flash-1017',
       'effort': 'Max',
       'score': 77.2,
@@ -169,7 +153,7 @@ window.AICODINGDAILY = {
       'configs': 3
     },
     {
-      'rank': 10,
+      'rank': 9,
       'model': 'GPT-6.1-Terra',
       'effort': 'Max',
       'score': 77.11,
@@ -185,7 +169,7 @@ window.AICODINGDAILY = {
       'configs': 4
     },
     {
-      'rank': 11,
+      'rank': 10,
       'model': 'Haiku 5.5',
       'effort': 'High',
       'score': 76.16,
@@ -201,7 +185,7 @@ window.AICODINGDAILY = {
       'configs': 2
     },
     {
-      'rank': 12,
+      'rank': 11,
       'model': 'Grok 4.7',
       'effort': 'High',
       'score': 75.19,
@@ -217,7 +201,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 13,
+      'rank': 12,
       'model': 'GPT-6-Luna',
       'effort': 'Max',
       'score': 73.6,
@@ -233,7 +217,7 @@ window.AICODINGDAILY = {
       'configs': 4
     },
     {
-      'rank': 14,
+      'rank': 13,
       'model': 'SWE-2',
       'effort': 'Max',
       'score': 73.3,
@@ -249,7 +233,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 15,
+      'rank': 14,
       'model': 'Grok 4.6',
       'effort': 'High',
       'score': 72.28,
@@ -265,7 +249,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 16,
+      'rank': 15,
       'model': 'Gemini 4 Argon',
       'effort': 'High',
       'score': 72.01,
@@ -281,7 +265,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 17,
+      'rank': 16,
       'model': 'MiniMax M3.1-Flash',
       'effort': 'Max',
       'score': 70.49,
@@ -297,7 +281,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 18,
+      'rank': 17,
       'model': 'GLM-5.3',
       'effort': 'High',
       'score': 69.99,
@@ -313,7 +297,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 19,
+      'rank': 18,
       'model': 'Qwen 3.8 Max (0902)',
       'effort': 'High',
       'score': 69.99,
@@ -329,7 +313,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 20,
+      'rank': 19,
       'model': 'SWE-2 Flash',
       'effort': 'High',
       'score': 68.55,
@@ -345,7 +329,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 21,
+      'rank': 20,
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 68.44,
@@ -361,7 +345,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 22,
+      'rank': 21,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Xhigh',
       'score': 67.47,
@@ -377,7 +361,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 23,
+      'rank': 22,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'Max',
       'score': 67.18,
@@ -393,7 +377,7 @@ window.AICODINGDAILY = {
       'configs': 2
     },
     {
-      'rank': 24,
+      'rank': 23,
       'model': 'Muse Ember 1.0',
       'effort': 'Max',
       'score': 66.94,
@@ -409,7 +393,7 @@ window.AICODINGDAILY = {
       'configs': 2
     },
     {
-      'rank': 25,
+      'rank': 24,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 64.74,
@@ -425,7 +409,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 26,
+      'rank': 25,
       'model': 'Mistral Large 4',
       'effort': 'High',
       'score': 64.39,
@@ -441,7 +425,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 27,
+      'rank': 26,
       'model': 'Tencent Hy4',
       'effort': 'High',
       'score': 63.31,
@@ -457,7 +441,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 28,
+      'rank': 27,
       'model': 'Muse Spark 1.3',
       'effort': 'Xhigh',
       'score': 62.27,
@@ -473,7 +457,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 29,
+      'rank': 28,
       'model': 'Tencent Hy3',
       'effort': 'High',
       'score': 61.9,
@@ -489,7 +473,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 30,
+      'rank': 29,
       'model': 'GLM-5.3-Flash',
       'effort': 'Max',
       'score': 61.36,
@@ -505,7 +489,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 31,
+      'rank': 30,
       'model': 'Qwen 3.8 27B',
       'effort': 'Xhigh',
       'score': 60.16,
@@ -521,23 +505,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 32,
-      'model': 'Gemini-3.8-Flash',
-      'effort': 'High',
-      'score': 59.44,
-      'costUsd': null,
-      'timeSec': 176,
-      'timeStr': '02:56',
-      'harness': 'Antigravity',
-      'laravel': 14.8,
-      'reactTs': 16.67,
-      'bugFinding': 5.42,
-      'edgeCase': 13.9,
-      'src': 'aggregate',
-      'configs': 1
-    },
-    {
-      'rank': 33,
+      'rank': 31,
       'model': 'Beam',
       'effort': 'Max',
       'score': 51.66,
@@ -553,7 +521,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 34,
+      'rank': 32,
       'model': 'Mercury 3',
       'effort': 'High',
       'score': 50.13,
@@ -569,7 +537,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 35,
+      'rank': 33,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 46.49,
@@ -585,7 +553,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 36,
+      'rank': 34,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 44.96,
@@ -740,21 +708,6 @@ window.AICODINGDAILY = {
     {
       'rank': 10,
       'model': 'Gemini 4 Hydrogen',
-      'effort': 'Xhigh',
-      'score': 79.62,
-      'costUsd': null,
-      'timeSec': 397,
-      'timeStr': '06:37',
-      'harness': 'Antigravity',
-      'laravel': 18.25,
-      'reactTs': 18.33,
-      'bugFinding': 8.96,
-      'edgeCase': 16.83,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 11,
-      'model': 'Gemini 4 Hydrogen',
       'effort': 'High',
       'score': 79.54,
       'costUsd': null,
@@ -768,7 +721,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 12,
+      'rank': 11,
       'model': 'GPT-6.1-Sol',
       'effort': 'Low',
       'score': 78.8,
@@ -783,7 +736,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 13,
+      'rank': 12,
       'model': 'Opus 5.5',
       'effort': 'Low',
       'score': 78.2,
@@ -798,22 +751,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 14,
-      'model': 'Fable 5.1',
-      'effort': 'Medium',
-      'score': 77.53,
-      'costUsd': 1.53,
-      'timeSec': 186,
-      'timeStr': '03:06',
-      'harness': 'Claude Code',
-      'laravel': 18.55,
-      'reactTs': 16.83,
-      'bugFinding': 7.4,
-      'edgeCase': 16.5,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 15,
+      'rank': 13,
       'model': 'Deepseek-V4.1-Flash-1017',
       'effort': 'Max',
       'score': 77.2,
@@ -828,7 +766,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 16,
+      'rank': 14,
       'model': 'GPT-6.1-Terra',
       'effort': 'Max',
       'score': 77.11,
@@ -843,7 +781,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 17,
+      'rank': 15,
       'model': 'Deepseek-V4.1-Flash-1017',
       'effort': 'Max',
       'score': 76.74,
@@ -858,7 +796,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 18,
+      'rank': 16,
       'model': 'Sonnet 5.5',
       'effort': 'Medium',
       'score': 76.67,
@@ -873,7 +811,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 19,
+      'rank': 17,
       'model': 'Kimi K3.1 Pro',
       'effort': 'High',
       'score': 76.26,
@@ -888,7 +826,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 20,
+      'rank': 18,
       'model': 'Haiku 5.5',
       'effort': 'High',
       'score': 76.16,
@@ -903,7 +841,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 21,
+      'rank': 19,
       'model': 'Haiku 5.5',
       'effort': 'Medium',
       'score': 75.63,
@@ -918,7 +856,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 22,
+      'rank': 20,
       'model': 'Grok 4.7',
       'effort': 'High',
       'score': 75.19,
@@ -933,7 +871,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 23,
+      'rank': 21,
       'model': 'GPT-6-Luna',
       'effort': 'Max',
       'score': 73.6,
@@ -948,7 +886,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 24,
+      'rank': 22,
       'model': 'SWE-2',
       'effort': 'Max',
       'score': 73.3,
@@ -963,7 +901,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 25,
+      'rank': 23,
       'model': 'Gemini 4 Hydrogen',
       'effort': 'Medium',
       'score': 72.85,
@@ -978,7 +916,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 26,
+      'rank': 24,
       'model': 'Grok 4.6',
       'effort': 'High',
       'score': 72.28,
@@ -993,7 +931,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 27,
+      'rank': 25,
       'model': 'GPT-6.1-Terra',
       'effort': 'Xhigh',
       'score': 72.13,
@@ -1008,7 +946,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 28,
+      'rank': 26,
       'model': 'Gemini 4 Argon',
       'effort': 'High',
       'score': 72.01,
@@ -1023,7 +961,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 29,
+      'rank': 27,
       'model': 'Deepseek-V4.1-Flash-1017',
       'effort': 'High',
       'score': 70.86,
@@ -1038,7 +976,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 30,
+      'rank': 28,
       'model': 'GPT-6-Luna',
       'effort': 'Xhigh',
       'score': 70.85,
@@ -1053,7 +991,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 31,
+      'rank': 29,
       'model': 'MiniMax M3.1-Flash',
       'effort': 'Max',
       'score': 70.49,
@@ -1068,7 +1006,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 32,
+      'rank': 30,
       'model': 'GLM-5.3',
       'effort': 'High',
       'score': 69.99,
@@ -1083,7 +1021,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 33,
+      'rank': 31,
       'model': 'Qwen 3.8 Max (0902)',
       'effort': 'High',
       'score': 69.99,
@@ -1098,7 +1036,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 34,
+      'rank': 32,
       'model': 'GPT-6.1-Terra',
       'effort': 'High',
       'score': 69.59,
@@ -1113,7 +1051,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 35,
+      'rank': 33,
       'model': 'SWE-2 Flash',
       'effort': 'High',
       'score': 68.55,
@@ -1128,7 +1066,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 36,
+      'rank': 34,
       'model': 'GPT-6.1-Terra',
       'effort': 'Medium',
       'score': 68.5,
@@ -1143,7 +1081,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 37,
+      'rank': 35,
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 68.44,
@@ -1158,7 +1096,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 38,
+      'rank': 36,
       'model': 'GPT-6-Luna',
       'effort': 'High',
       'score': 67.47,
@@ -1173,7 +1111,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 39,
+      'rank': 37,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Xhigh',
       'score': 67.47,
@@ -1188,7 +1126,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 40,
+      'rank': 38,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'Max',
       'score': 67.18,
@@ -1203,7 +1141,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 41,
+      'rank': 39,
       'model': 'Muse Ember 1.0',
       'effort': 'Max',
       'score': 66.94,
@@ -1218,7 +1156,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 42,
+      'rank': 40,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 64.74,
@@ -1233,7 +1171,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 43,
+      'rank': 41,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'High',
       'score': 64.64,
@@ -1248,7 +1186,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 44,
+      'rank': 42,
       'model': 'Mistral Large 4',
       'effort': 'High',
       'score': 64.39,
@@ -1263,7 +1201,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 45,
+      'rank': 43,
       'model': 'Muse Ember 1.0',
       'effort': 'High',
       'score': 63.32,
@@ -1278,7 +1216,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 46,
+      'rank': 44,
       'model': 'Tencent Hy4',
       'effort': 'High',
       'score': 63.31,
@@ -1293,7 +1231,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 47,
+      'rank': 45,
       'model': 'Muse Spark 1.3',
       'effort': 'Xhigh',
       'score': 62.27,
@@ -1308,7 +1246,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 48,
+      'rank': 46,
       'model': 'Tencent Hy3',
       'effort': 'High',
       'score': 61.9,
@@ -1323,7 +1261,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 49,
+      'rank': 47,
       'model': 'GLM-5.3-Flash',
       'effort': 'Max',
       'score': 61.36,
@@ -1338,7 +1276,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 50,
+      'rank': 48,
       'model': 'Qwen 3.8 27B',
       'effort': 'Xhigh',
       'score': 60.16,
@@ -1353,22 +1291,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 51,
-      'model': 'Gemini-3.8-Flash',
-      'effort': 'High',
-      'score': 59.44,
-      'costUsd': null,
-      'timeSec': 176,
-      'timeStr': '02:56',
-      'harness': 'Antigravity',
-      'laravel': 14.8,
-      'reactTs': 16.67,
-      'bugFinding': 5.42,
-      'edgeCase': 13.9,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 52,
+      'rank': 49,
       'model': 'GPT-6-Luna',
       'effort': 'Medium',
       'score': 56.37,
@@ -1383,7 +1306,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 53,
+      'rank': 50,
       'model': 'Beam',
       'effort': 'Max',
       'score': 51.66,
@@ -1398,7 +1321,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 54,
+      'rank': 51,
       'model': 'Mercury 3',
       'effort': 'High',
       'score': 50.13,
@@ -1413,7 +1336,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 55,
+      'rank': 52,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 46.49,
@@ -1428,7 +1351,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 56,
+      'rank': 53,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 44.96,

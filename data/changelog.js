@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-13',
-  'refreshedAt': '2026-11-14 03:55',
+  'updated': '2026-11-14',
+  'refreshedAt': '2026-11-14 14:50',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '0.169.0',
@@ -1378,8 +1378,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
+        {
+          'version': '2.1.325',
+          'title': 'v2.1.325',
+          'date': '2026-11-13',
+          'dateRaw': '2026-11-13T20:40:01Z',
+          'tags': [],
+          'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325',
+          'body': '## 有哪些变化\n\n- 修复了zstd压缩响应解码方式中的一个安全问题\n- 在 VS Code 和类似的集成终端中添加了有关重新运行笔记本单元格的加载提示，该提示会在 Claude 读取或编辑 Jupyter 笔记本后显示\n- 在组织政策阻止请求时显示的错误下方添加了一行，说明如何继续：运行`/rewind`并更改消息，或运行`/clear`\n- 添加了一条针对 Claude 的备注，说明当沙盒中的 `git checkout`、`git stash` 或自动暂存拉取无法更新受保护的文件（例如 `.claude` 中的文件）时的情况\n- 修复了`/security-review`和技能的内联 Git 命令在裸仓库的工作区、`--separate-git-dir`检出和 Android `repo`检出中因报错而停止的问题\n- 修复了当模型设置为`opusplan`或`haiku`时，具有自己模型的子代理被移至计划模式模型的问题\n- 修复了子代理在不同模型大小的文件读取和MCP结果与主会话模型不一致的问题\n- 修复了许多第三方网关和Foundry上的会话问题，这些会话在每次轮次中都会因上下文长度错误而停止，而不是进行压缩\n- 修复了在 Claude Code 未正常退出而停止后，恢复的会话中有时会丢失最近的回合的问题\n- 修复了在工作目录被删除后，Shell 命令仍在启动目录中运行的问题；现在，该命令将失败并显示一条消息，并且可以重新发出\n- 修复了当“plansDirectory”文件夹无法容纳已批准的计划编辑时，该编辑丢失的问题：现在，计划将保存在默认的计划文件夹中，并会显示一条警告，说明保存位置和原因。\n- 修复了已保存的 `sonnet[1m]` 模型设置在新安装时被重写为 API 拒绝的模型 ID 的问题\n- 修复了当计划任务在提示之后做出回复时，焦点视图隐藏对提示的回复的问题\n- 修复了在全屏关闭时，提示有时会从后台子代理视图中消失的问题\n- 修复了列表中的长选项和权限提示在换行时被部分覆盖，以及首次运行界面在窄终端上丢失行的问题\n- 修复了有关权限规则的启动警告，以及“N 个 MCP 服务器需要身份验证”的通知在滚动出视野时被记录为已查看的问题\n- 修复了当代理的名称或工作文件夹包含控制字符或换行符时，欢迎标题显示控制字符或跨行分割的问题\n- 修复了当 Claude 尝试运行只有您可以运行的命令时显示的红色错误：现在有一行浅色文字提示，说明只有在提示符处输入该命令时才会运行\n- 修复了`/stats`显示“活跃天数”总数多出一天的问题\n- 修复了`/insights`在没有会话符合分析条件时显示报告已就绪的问题，以及在未对两个值进行转义的情况下将其写入HTML报告的问题\n- 修复了`/voice`在托管设置、`--settings`或项目的`.claude/settings.json`或`.claude/settings.local.json`保持原样时显示语音模式已更改的问题；现在它会显示由哪个设置决定语音模式\n- 修复了 IDE 欢迎对话框在 Windows 和 Linux 上显示 Cmd+Esc 用于快速启动的问题\n- 修复了在组织政策拒绝云会话时显示 Slack 应用提示的问题\n- 修复了在没有终端可供读取密钥时“claude purge”静默挂起的问题，以及在stdin被管道传输时，其项目选择器和“-i”提示忽略键盘输入的问题\n- 修复了`claude plugin eval --output-dir \'\'`将报告写入当前文件夹的问题；现在它会报错退出\n- 修复了在传递文本样式以外的控制序列的终端上`claude -p`文本输出的问题；管道和文件保持不变\n- 修复了配置目录中残留的 `.oauth_refresh.lock.owner.tmp.*` 文件堆积问题\n- 修复了在无密钥控制台登录下`/fast`显示“您的组织已禁用快速模式”的问题，其中Claude Code并未向服务器发出请求\n- 修复了`/model`在Claude Code无法进行检查（例如，没有网络）时显示“您的组织限制了模型”的问题\n- 修复了在浏览器步骤后立即按 Esc 时，`/login` 中的“使用您的控制台账户登录”会替换您现有登录信息的问题\n- 修复了在某些登录失败或被取消的情况下，浏览器显示登录成功页面的问题\n- 修复了`claude auth status`和其他短命令在控制台配置文件上留下锁的问题，这导致下一个会话挂起约一分钟\n- 修复了在您的 claude.ai 登录时使用（并计费）启动后台服务的 shell 中的 API 密钥或令牌启动的后台会话问题\n- 修复了更多会话在后台切换到另一个登录的情况；现在将拒绝此类切换，并显示一条消息，说明哪些操作可行\n- 修复了在退出对话框中第二次按Enter键后，在切换到后台被拒绝后停止后台工作的问题\n- 修复了Amazon Bedrock上的令牌计数在`allowedProviders`托管设置不允许的情况下将对话发送到Bedrock的问题\n- 修复了在没有“HOME”环境变量的情况下启动Claude Code时，AWS“credential_process”助手和Google Cloud默认凭据出现故障的问题\n- 修复了在子代理的计划获得批准后，会话有时会恢复到早期权限模式的问题\n- 修复了代理 SDK `applyFlagSettings()` 调用中的一个无效值，该值会悄然丢弃先前所有调用的设置；现在，此类调用将被拒绝并报错\n- 修复了当已完成的拉取请求仅需要您自己进行审核或合并时，会话显示为正在等待输入的问题\n- 修复了无法识别的`teammateMode`设置值被忽略且未发出警告的问题：`claude -p`、启动警告和`claude doctor`现在将其列为已跳过的条目（仍未应用）\n- 修复了在新的主目录中首次运行时，`--worktree`跳过`CLAUDE_CODE_PLUGIN_SEED_DIR`中插件的`WorktreeCreate`钩子的问题\n- 修复了简要模式会话（如Dispatch）在轮到该会话已回复后再次发送回复的问题\n- 修复了当插件在不同网址列出正常运行的 Atlassian、Asana 或 Sentry 连接器时，Claude 仍报告其在云会话中出现故障的问题\n- 修复了在文件夹移动或预热启动后，Claude Desktop 和 SDK 会话将文件夹自身的 MCP 服务器（`.mcp.json`，本地）列为由主机添加或根本不列出，并且不连接 WebSocket 服务器的问题\n- 修复了在插件重新加载时删除了正在连接的插件的 MCP 服务器后，`/mcp` 仍列出该服务器的问题\n- 修复了在令牌刷新被短暂拒绝后，MCP 服务器仍显示“需要身份验证”且其 `mcp_tool` 钩子被跳过的问题\n- 修复了在工具调用期间服务器连接被替换后，MCP 引导请求在无头模式下未征询用户意见即被取消的问题\n- 修复了在工具调用重新连接到 MCP 服务器后，来自 SDK 主机的 MCP 工具调用仍回答“未连接”的问题\n- 修复了 MCP 任务在问题被 Esc 关闭或再次提出后卡住的问题：页脚现在会提示需要您输入，在 `/tasks` 中按 Enter 键会再次显示该问题\n- 修复了后台 MCP 任务在对同一服务器的另一次调用失去连接后停止更新的问题，当之后的调用重新连接时，该问题已得到解决\n- 修复了后台 MCP 任务的问题在您仍在输入的消息上方打开的问题；现在，它会等到您发送或清除草稿后才会打开，并且加载指示器和回合计时器会继续运行\n- 修复了`worktree.sparsePaths`以及稀疏插件和市场克隆在旧版 Git（如 2.34）中省略仓库根文件的问题\n- 修复了包含多个仓库的自托管 Runner 会话无法使用在会话中间添加的仓库的问题\n- 修复了 Claude 在读取您自己的工件或其数据之前请求权限的问题\n- 修复了在某些云会话中不适用的“拒绝”和“请求权限”规则以及工件工具的钩子\n- 修复了代码模式脚本忽略使用“EnterWorktree”输入的“工作树”、将“~”路径写入项目以及在登录过期后“/mcp”仍显示 MCP 服务器已连接的问题\n- 修复了在权限对话框中输入“是”或在计划批准中输入“是”时，这些词语未传达给代码模式下的Claude的问题\n- 修复了在您恢复代码模式脚本执行期间结束的会话时，Claude 会自行开始工作的问题；现在，Claude 会等待您的下一个提示。\n- 修复了在工具调用运行时发送的消息缺少 OpenTelemetry `user_prompt` 事件的问题。该事件具有`delivery.mode: \'mid_turn\'`和正在运行的轮次的`prompt.id`\n- 修复了 OpenTelemetry `user_prompt` 事件在以下情况下省略先前消息文本的问题：排队消息在 VS Code 中合并为一轮，或某条消息包含图像\n- 修复了斜杠命令的`allowed-tools`权限应用于在其轮次期间或之后唤醒的后台代理的问题\n- 修复了`/feedback`和`/bug`，使其仅在其他会话由已登录的账户或组织记录时才上传这些会话\n- 修复了相对拒绝和请求权限规则（例如 `Read(./.env)`）在执行 `cd` 后不再覆盖项目的问题；这些规则现在也适用于添加的目录\n- 修复了以`mcp__plugin_*_`开头的拒绝和请求权限规则缺少插件的MCP服务器或工具（其拼写使用了其他大小写形式）的问题\n- 修复了在自托管 Runner 和“claude remote-control”会话中，拒绝规则未应用于 Claude Code 重启后收到的权限批准的问题\n- 修复了在代码库的某些子文件夹中启动 Claude Code 时，已提交的 `.claude/settings.local.json` 可能被视为用户自己的文件这一问题\n- 修复了一些拒绝和询问规则不适用于某些Bash命令的问题\n- 修复了 Bash 权限检查中的一个漏洞，该漏洞导致某些复合命令可以在不征求用户同意的情况下运行；现在这些命令会征求用户同意\n- 修复了 Bash 允许规则可能运行与规则中指定的程序不同的程序的问题\n- 修复了在插件仍在加载时，云会话中连接器工具的审批提示被自动回答的问题\n- 修复了在设置允许规则或此前已批准上传的情况下，某些子代理在未事先征询意见的情况下更改组织外部人员可见的痕迹或向其上传文件的问题\n- 修复了在为构件选择“不再询问”时，某些构件发布会跳过对组织外部人员可见页面的确认的问题\n- 修复了自动模式仅判断组织外部人员可见的构件的第一次更改的问题；现在，其“是”选项仅涵盖该更改\n- 修复了对代理和技能的托管 `strictPluginOnlyCustomization` 锁定在已运行的会话中未生效的问题\n- 修复了沙盒命令在某些情况下能够写入原生更新程序的下载文件夹的问题\n- 修复了 Bash 沙盒未完全保护工作树的设置和钩子的情况\n- 修复了 Bash 沙盒未完全保护已关联工作树的共享 Git 文件夹的情况\n- 修复了在一些不常见的 Git 状态下 `/teleport` 的暂存选择：现在它会停止并提示该怎么做\n- Windows：修复了当 PATH 条目位于您的账户无法打开的文件夹下时，可能持续约一秒的启动停顿问题\n- 修复了 Windows 上 `/resume` 拒绝或隐藏其文件夹以不同驱动器盘符大小写或斜杠记录的会话的问题\n- 修复了 Windows 上会话内 `/resume` 在会话以不同驱动器盘符大小写记录时，导致项目已保存的信任丢失的问题\n- Linux：修复了当工作目录位于“denyRead”内的“allowRead”文件夹下（例如位于符号链接的主目录之下）时，沙盒中的 Bash 命令报错“bwrap: Can\'t create file”的问题。\n- 修复了 Claude Desktop 的第三方部署在令牌续订完成之前（一旦包含此版本）一直显示“正在停止”的问题\n- 改进了在输出令牌限制处被截断的子代理：现在会再次要求它们提供整个答案，但要更简短，而不是只返回答案的结尾部分\n- 改进了通过无密钥控制台登录或其他 Anthropic 个人资料登录的启动过程：读取仍有效的令牌，无需等待凭据锁定\n- 改进了账户邮箱检查：现在，在命令运行的脚本、文件写入、网页抓取和 MCP 调用中，它也会拒绝将您的邮箱作为客户端的身份\n- 改进了针对私有插件市场的“HTTPS 身份验证失败”消息：现在该消息会说明 Git 的终端提示和 askpass 程序已被禁用，并且该消息也会在新版本的 Git 中显示\n- 改进了“添加应用商店”确认、插件推荐提示和插件安装警告，以说明插件可以在您的计算机上运行代码，并有权访问您的文件和 shell\n- 改进了`claude --desktop`登录错误，以指明导致 Claude 账户登录无法进行的 API 密钥、提供商或设置\n- 改进了 macOS 和 Windows 上的 `/voice`“未检测到音频”消息：现在会说明在哪里选择麦克风\n- 改进了 MCP 任务：现在，当任务正在等待您的回答时，Claude 会收到通知，并可以引导您前往 `/tasks`\n- 改进了`claude remote-control`：现在，当它自行停止时，会以状态 4 退出（单会话运行仍以状态 0 退出）；当它无法注册时，会以状态 69 退出，以便服务管理器可以重新启动它。\n- 改进了当后台会话无法使用其会话的API密钥或令牌时显示的消息：这些消息不再建议将密钥添加到设置中\n- 改进了捆绑的“数据可视化”技能针对静态图像以及具有自然顺序的部分（如年龄段）的“部分-整体”建议\n- 将沙盒中的 Bash 命令更改为默认遵循正常权限流程；将 `sandbox.autoAllowBashIfSandboxed: true` 设置为 true，即可在不提示的情况下继续运行这些命令\n- 更改了启用沙盒的托管设置：要使命令在不提示的情况下继续运行，请在最高级别的托管源中将 `sandbox.autoAllowBashIfSandboxed` 设置为 `true`\n- 已将只读 Git 命令更改为在不属于项目或您不信任的仓库中先进行询问；请使用 `--add-dir` 而不是 `additionalDirectories` 设置来命名，以便在不提示的情况下运行这些命令\n- 更改了计划任务和 `/loop`，以便在运行声明 `allowed-tools` 或钩子的技能之前进行询问；将 `Skill(name)` 添加到 `permissions.allow` 中，即可无人值守运行\n- 更改了桌面、IDE 和 SDK 主机中的“始终允许”：仅当保存规则会再次允许该命令时，才会单独提供该规则，因此依赖于该规则的计划任务现在可以等待您操作\n- 更改了沙盒，使其拒绝沙盒对已添加目录中`.claude`设置、技能、代理、命令和钩子的写入，与在启动文件夹中的行为相同\n- 更改了工作区隔离：隔离的工作区会话或代理现在会被拒绝执行`git bisect run`、`git maintenance register|start`和`scalar`的设置命令，并会告知其仍可执行哪些操作。\n- 将插件 MCP 捆绑包（`.mcpb`、`.dxt`）改为在插件目录（而非插件文件夹中的 `.mcpb-cache`）下解包，以便加载只读插件文件夹；通过 URL 获取的捆绑包会再次下载一次\n- 将由托管设置声明、启用和在 `prependPlugins` 或 `appendPlugins` 中列出的远程市场插件更改为计入组织；`pluginDigests` 已弃用并被忽略\n- 将插件加载方式更改为跳过，并将`claude plugin validate`更改为报告插件文件夹中一些不安全的路径和链接\n- 更改了嵌套技能的加载方式：`--plugin-dir`插件中的`.claude/skills`文件夹不再从其上层启动的会话中加载；改为在插件文件夹中启动Claude Code\n- 更改了 EnterWorktree，使其拒绝穿过项目内符号链接的 `WorktreeCreate` 钩子路径；让钩子打印出真实路径\n- 更改了 tmux 和 iTerm2 的队友，以及使用 ← 打开的代理视图中的新会话，以便在会话的文件夹中启动，而不是在 shell 上次运行 `cd` 的位置启动\n- 更改了终端中的提示建议，在后台或计划任务连续启动 8 次后，刷新频率将降低，从而节省使用量，直到您按下某个键或返回终端为止\n- 将后台 MCP 任务问题上的 Esc 键更改为“稍后回答”：不会向服务器发送任何内容，问题仍保留在 `/tasks` 中\n- 将 `CLAUDE_CODE_MAX_CONTEXT_TOKENS` 更改为也设置以 `claude-` 开头的未识别模型 ID 的上下文窗口，例如网关的 `claude-sonnet-latest`\n- 已将`/login`更改为请求更改您的隐私设置的权限\n- 更改了`/cost`、`$.session.usage()`、`--max-budget-usd`以及成本和令牌指标，以统计mod的`$.model.complete`和`$.model.classify`调用\n- 更改了 Claude Code 沙盒出于自身用途而启动的程序（例如其网络桥接），使其在其环境中运行时无需 Claude Code 的登录令牌和 API 密钥\n- 更改了 ripgrep、本地 git 命令和沙盒运行时自身的帮助程序，使其在其环境中无需 mTLS 客户端密钥的密码即可运行\n- 远程控制：已将 `/resume` 和 `/teleport` 改为在已连接的会话具有共享链接时或无法检查该链接时先断开连接；运行 `/remote-control` 以重新连接\n- 已更改 Web 上的 Claude Code、云端计划任务和 Cowork 云端会话，使其在存在 `sandbox.failIfUnavailable` 的情况下仍可启动：托管容器没有命令沙盒\n- 更改了通过云会话或自托管会话的连接请求设置、权限规则、钩子或状态的请求，使其返回更少或被拒绝；会话中适用的内容保持不变\n- 更改了没有缓存账户数据的`claude -p`，使其在第一次请求之前等待该数据，因此在干净的环境中首次运行时可能会延迟几秒钟才开始\n- 更改了Claude的指令，使其将您需要保留的文件存放在临时草稿纸文件夹之外，该文件夹可以被清空\n- 将应用市场 `ref` 更改为接受分支或标签上任何提交的完整 ID；此版本之前的客户端无法克隆此类锁定，因此以这种方式锁定的应用市场将停止在该处加载\n- 将插件市场和插件下载更改为在`ALL_PROXY`是唯一设置的代理时使用 CONNECT 隧道；拒绝 CONNECT 的代理现在将导致它们失败\n- 更改了 `-p`，并且 SDK 在挂载到容器的工作树或子模块中运行时，仅在文件夹被信任后才应用 `.claude/settings.local.json` 允许规则\n- 将自托管 Runner 改为拒绝会话文件夹或仓库路径为符号链接的会话，但 `checkout` 钩子的签出除外\n- 从云会话中以及“远程控制”下的支出限额和共享预算错误中删除了“请您的管理员提高限额”\n- [VSCode] 在终端显示提示建议的任何位置添加了提示建议：按 Tab 键接受建议的下一个提示；在 Claude Code 的 settings.json 中将 `promptSuggestionEnabled: false` 设置为 false 可关闭提示建议\n- [VSCode] 添加了不会创建 API 密钥的控制台登录方式\n- [VSCode] 添加了一个字段，用于在从 SSH、WSL 和容器窗口中的面板登录到 MCP 服务器时粘贴重定向 URL\n- [VSCode] 修复了在 Claude Code 在另一个模型上重启或通过远程控制切换模型后，模型选择器的勾选标记仍停留在旧模型上的问题\n- [VSCode] 修复了工作量选择器提供高于组织设置的工作量上限或“maxEffortLevel”设置的级别的问题\n- [VSCode] 修复了登录屏幕提供受管`allowedProviders`设置拒绝的登录方式的问题\n- [VSCode] 修复了 MCP 工具的权限提示未说明当安全检查提出问题时 Claude Code 询问原因的问题\n- [VSCode] 修复了无法加载的组织设置消息，该消息提示再次运行命令；现在该消息提示重试，与选项卡的“重试”链接相匹配\n- [VSCode] 改进了针对不受信任文件夹显示的提示：现在会说明扩展被禁用的原因以及如何启用扩展\n- [VSCode] 改进了系统拒绝运行 Claude Code 时显示的错误：现在它会提示您的 IT 团队可以允许被阻止的程序\n- [VSCode] 改进了登录卡，说明当浏览器显示本地主机连接错误时该怎么做\n- [VSCode] 将安装链接的市场确认按钮更改为“信任市场并继续”\n- [网页版 Claude Code] 修复了新云会话将通过工具搜索加载的 MCP 工具描述截断为 4,096 个字符的问题；现在，该限制为 16,384 个字符，与其他 Claude Code 会话相同。\n- [Claude Tag] 修复了粘贴到 Slack 中的工件链接在发帖人的 Claude 登录信息在其组织不管理的工作区中过期时无法显示卡片的问题；现在将显示一张普通卡片。',
+          'h': '73447b74'
+        },
         {
           'version': '2.1.323',
           'title': 'v2.1.323',
@@ -1396,8 +1406,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-10T02:29:43Z',
           'tags': [],
           'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.322',
-          'body': '## 有哪些变化\n\n- 在全局、美国和欧盟区域的顶点上添加了快速模式，如果顶点拒绝，则回退到标准速度',
-          'h': '9e144184'
+          'body': '## What\'s changed\n\n- Added fast mode on Vertex in the global, us and eu regions, falling back to standard speed if Vertex refuses it'
         },
         {
           'version': '2.1.321',
@@ -3758,7 +3767,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '2.3.0',
@@ -9294,7 +9303,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '2.6.2',
@@ -10503,7 +10512,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '0.2.2-rc.3',
@@ -11117,7 +11126,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '0.5.11',
@@ -11530,7 +11539,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '1.40.1',
@@ -12214,7 +12223,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '3.4.18',
@@ -14340,7 +14349,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14527,7 +14536,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '3.18.2',
@@ -14718,7 +14727,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '4.12.4',
@@ -15613,7 +15622,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-14 03:55',
+      'lastOkAt': '2026-11-14 14:50',
       'entries': [
         {
           'version': '5.11.0',
