@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 53,
+      'modelCount': 51,
       'updated': '2026-11-15',
       'ageDays': 0,
       'completeness': 1,
@@ -100,7 +100,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 45,
+      'modelCount': 71,
       'updated': '2026-11-15',
       'ageDays': 0,
       'completeness': 1,
@@ -770,9 +770,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 53,
-      'complete': 53,
-      'modelCount': 53,
+      'total': 51,
+      'complete': 51,
+      'modelCount': 51,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -826,9 +826,9 @@ window.QUALITY = {
     },
     'automationbench': {
       'rate': 1,
-      'total': 45,
-      'complete': 45,
-      'modelCount': 45,
+      'total': 71,
+      'complete': 71,
+      'modelCount': 71,
       'missingFields': {},
       'flag': 'ok'
     },

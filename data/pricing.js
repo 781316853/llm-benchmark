@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-15',
-  'refreshedAt': '2026-11-15 14:54',
+  'refreshedAt': '2026-11-16 03:00',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -27,13 +27,13 @@ window.PRICING = {
   },
   'formula': '综合成本(¥/百万token) = cacheHitRate×缓存输入价 + (1−cacheHitRate−outputRatio)×输入价 + outputRatio×输出价',
   'stats': {
-    'planModels': 2588,
-    'withPricing': 1839,
-    'comparable': 1154,
+    'planModels': 2595,
+    'withPricing': 1849,
+    'comparable': 1174,
     'models': 110,
     'unresolved': 16,
     'ranked': 58,
-    'supplemented': 4,
+    'supplemented': 1,
     'carriedOver': 0,
     'seeded': 0,
     'missingRanked': 3
@@ -142,7 +142,7 @@ window.PRICING = {
       'cacheCnyPerM': 1.36,
       'outputCnyPerM': 272,
       'costPerM': 5.1,
-      'priceSource': 'models.dev:anthropic'
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'qwen-3-8-max-prime',
@@ -448,7 +448,7 @@ window.PRICING = {
       'cacheCnyPerM': 0.68,
       'outputCnyPerM': 68,
       'costPerM': 1.598,
-      'priceSource': 'models.dev:google'
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'Inkling',
@@ -520,7 +520,7 @@ window.PRICING = {
       'cacheCnyPerM': 0.51,
       'outputCnyPerM': 51,
       'costPerM': 1.1985,
-      'priceSource': 'models.dev:google'
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'Claude Haiku 4.5',

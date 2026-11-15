@@ -8,7 +8,7 @@
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-15',
-  'refreshedAt': '2026-11-15 14:54',
+  'refreshedAt': '2026-11-16 03:00',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '0.169.0',
@@ -1378,7 +1378,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '2.1.325',
@@ -3768,7 +3768,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '2.3.0',
@@ -9304,7 +9304,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '2.6.2',
@@ -10513,7 +10513,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '0.2.2-rc.3',
@@ -11127,7 +11127,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '0.5.12',
@@ -11555,7 +11555,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '1.40.1',
@@ -12239,7 +12239,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '3.4.18',
@@ -14365,7 +14365,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14552,7 +14552,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '3.18.2',
@@ -14743,7 +14743,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
         {
           'version': '4.12.4',
@@ -15638,8 +15638,35 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-15 14:54',
+      'lastOkAt': '2026-11-16 03:00',
       'entries': [
+        {
+          'version': '5.11.3',
+          'title': '5.11.3 版本发布 🚀（2026-11-15）',
+          'date': '2026-11-15',
+          'dateRaw': '2026-11-15',
+          'tags': [],
+          'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-3-版本发布-🚀-2026-11-15',
+          'body': '- 新增会话流快速问答入口，可在对话中快速发起推荐问答或切回 Agent 模式\n- 修复定时任务云端任务混入「这台电脑」本地列表的问题\n- 修复任务运行会话顶栏编辑时，分组下拉缺少新建分组与选择本地文件夹选项的问题\n- 修复置顶任务通过右键菜单移入分组时与拖拽行为不一致，取消置顶后未直接落到目标分组的问题\n- 偶现修复拖拽任务时侧栏出现空白置顶区的问题\n- 修复定时任务侧栏入口与聚合页未读红点点击后未及时消失的问题\n- 修复本地历史会话在特定情况下从侧栏任务列表中丢失的问题\n- 修复设置独立窗口在浅色模式下错误显示为深色的问题，以及无外观权限账号被云端外观配置强制切换至深色的问题\n- 修复运行期间切换至新上架皮肤后主窗口回退为浅色的问题\n- 修复企业版账号未折叠限频付费线路的问题\n- 修复 CE 会话缺少项目资源注册导致项目相关 MCP 工具和技能目录不可用的问题\n- 修复 Buddy 应用请求未走正确域名端点的问题\n5.11.2 版本发布 🚀（2026-11-10）'
+        },
+        {
+          'version': '5.11.2',
+          'title': '5.11.2 版本发布 🚀（2026-11-10）',
+          'date': '2026-11-10',
+          'dateRaw': '2026-11-10',
+          'tags': [],
+          'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10',
+          'body': '- 新增侧栏「置顶 / 最近 / 分组」独立分区展示，支持按类型筛选\n- 新增任务置顶交互优化，支持置顶任务管理与排序\n- 新增新建会话时打开本地文件夹入口，会话归属更灵活\n- 新增桌面端与移动端侧栏数据实时同步（置顶、最近及分组）\n- 新增 Extension Service 支持声明继承 WorkBuddy 代理\n- 优化任务执行时即时展示上一轮产物卡片\n- 优化侧栏分组展开/收起动画，消除重启首屏闪烁\n- 优化分组内会话按更新时间排序，涵盖云端项目/助理/机器人\n- 优化轮次结束后及时释放沙箱，降低峰值占用\n- 优化连接器只读连接不再抢先取消授权\n- 优化云端图片识别\n- 优化定时任务卡片去重\n- 优化技能资源文件变更走独立窗口处理\n- 优化沙箱 Office 预览空闲时停止保活轮询\n- 修复侧栏闪烁及未读点显示异常的问题\n- 修复产物卡片偶现消失的问题\n- 修复云端任务被误判为失败的问题\n- 修复部分场景下沙箱未释放的问题\n- 修复思考设置不生效的问题\n- 修复技能分享失败的问题\n- 修复套件删除弹窗无法正常关闭的问题\n5.11.1 版本发布 🚀（2026-11-03）'
+        },
+        {
+          'version': '5.11.1',
+          'title': '5.11.1 版本发布 🚀（2026-11-03）',
+          'date': '2026-11-03',
+          'dateRaw': '2026-11-03',
+          'tags': [],
+          'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-1-版本发布-🚀-2026-11-03',
+          'body': '- 优化云端任务离屏恢复能力\n- 优化输入框工具栏稳定性\n- 优化云电脑连接器体验\n- 优化企业微信授权流程\n- 优化定时任务表现\n- 优化安装速度\n- 修复内容丢失问题\n- 修复会话卡死问题\n- 修复页面崩溃问题\n- 修复产物预览异常\n- 修复技能分享问题\n- 修复海外版显示问题\n5.11.0 版本发布 🚀（2026-11-03）[灰度中]'
+        },
         {
           'version': '5.11.0',
           'title': '5.11.0 版本发布 🚀（2026-11-03）[灰度中]',

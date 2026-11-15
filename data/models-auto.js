@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-14',
+  'updated': '2026-11-15',
   'stats': {
-    'total': 166,
-    'knownVendor': 165,
+    'total': 167,
+    'knownVendor': 166,
     'otherVendor': 1,
-    'skippedManual': 1356,
+    'skippedManual': 1380,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -616,6 +616,15 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Grok Code Fast 1',
         'grok code fast 1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Haiku 4.5',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Haiku 4.5'
       ],
       'auto': true
     },

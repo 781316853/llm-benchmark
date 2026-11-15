@@ -6,11 +6,11 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-15',
-  'refreshedAt': '2026-11-15 14:54',
+  'refreshedAt': '2026-11-16 03:00',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3395,
-    'afterMerge': 3392,
+    'afterToolDedupe': 3402,
+    'afterMerge': 3399,
     'needsZh': 2181,
     'translated': 2181,
     'untranslated': 0
@@ -2202,7 +2202,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 201,
+      'count': 208,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -3686,6 +3686,55 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
+              'key': '8b04b528-21',
+              'text': '偶现修复拖拽任务时侧栏出现空白置顶区的问题',
+              'date': '2026-11-15',
+              'version': '5.11.3',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-3-版本发布-🚀-2026-11-15'
+            },
+            {
+              'key': 'a1d538d-34',
+              'text': '新增会话流快速问答入口，可在对话中快速发起推荐问答或切回 Agent 模式',
+              'date': '2026-11-15',
+              'version': '5.11.3',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-3-版本发布-🚀-2026-11-15'
+            },
+            {
+              'key': '364516d0-24',
+              'text': '新增桌面端与移动端侧栏数据实时同步（置顶、最近及分组）',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': '7f3bfd3e-35',
+              'text': '新增 Extension Service 支持声明继承 WorkBuddy 代理',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': '8f8fbe20-23',
+              'text': '新增新建会话时打开本地文件夹入口，会话归属更灵活',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': 'a6d1cadd-21',
+              'text': '新增任务置顶交互优化，支持置顶任务管理与排序',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': 'd5128b6f-23',
+              'text': '新增侧栏「置顶 / 最近 / 分组」独立分区展示，支持按类型筛选',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
               'key': '832125a0-38',
               'text': '频道 IM 新增组件化消息卡片与自定义表情包，消息可跨端同步，频道与专家支持一键分享',
               'date': '2026-11-03',
@@ -3721,7 +3770,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-0-版本发布-🚀-2026-11-03-灰度中'
             }
           ],
-          'count': 5
+          'count': 12
         }
       ]
     },
