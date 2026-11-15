@@ -2,14 +2,72 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-14',
+  'updated': '2026-11-15',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
-    '模型发布'
+    '模型发布',
+    '技术与洞察',
+    '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-15',
+      'title': 'Grok Bot 多项优化上线，订阅用量增约 7%',
+      'brief': 'Grok Bot 团队成员 Sam Sokolin 发文称，本周已完成多项 Grok Bot harness 优化，订阅方案用量预计可增加约 7% ，日常运行最多可增加约 15% 。',
+      'url': 'https://x.com/mattyp/status/2121624592326480311',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-15',
+      'title': 'Claude Code 桌面版推出 mods 自定义主题',
+      'brief': 'Anthropic 宣布， Claude Code 桌面版现已支持通过 mods 构建自定义主题，用户可以调整颜色、添加动画背景。构建主题时可以直接告诉 Claude 想要的外观，也可以使用官方提供的 theme-examples 插件快速开始。想自己动手的开发者可以参考官方发布的配套文档。该功能需要更新到最新版桌面应用，目前在本地会话中生效，云端会话支持即将推出。',
+      'url': 'https://code.claude.com/docs/en/plugins/mods/interface',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-15',
+      'title': '谷歌 300 美元赠金将不再覆盖 Gemini 调用费用',
+      'brief': 'Google Cloud 官方文档显示， 2026 年 11 月 16 日 或之后注册免费试用或升级为付费结算账号的用户，其 300 美元 迎新赠金将无法用于支付 Gemini Platform （含 Vertex AI ）、 AI Studio 中的 Gemini API ，以及以模型即服务形式提供的生成式 AI 合作伙伴模型的费用，只能用于免费试用计划涵盖的其他 Google Cloud 产品和服务。',
+      'url': 'https://docs.cloud.google.com/free/docs/free-cloud-features',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-15',
+      'title': 'Cloudflare 开源 Kitesurf 浏览器，支持自行部署',
+      'brief': 'Cloudflare 将专为 AI agent 设计的浏览器 Kitesurf 在 GitHub 开源，采用 Apache 2.0 许可证。',
+      'url': 'https://blog.cloudflare.com/kitesurf-open-source/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-15',
+      'title': 'Claude 发布 always-on agents 指南',
+      'brief': 'Claude 团队发布 Building always-on agents 指南，介绍如何搭建能跨会话管理状态、无需直接监督就主动行动的 always-on agents 。指南说明，这类 agent 大部分时间休眠，收到事件后执行一次 run 并保存状态，其架构包含 event inbox 、 timers 、 memory 、 permissions 和 outbox 五个核心模块。',
+      'url': 'https://claude.com/resources/articles/building-always-on-agents',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-15',
+      'title': 'Anthropic 发布 10 项安全评测建议',
+      'brief': 'Anthropic 在工程博客发布 10 项安全评测建议。',
+      'url': 'https://anthropic.com/research/building-strong-safety-evaluations',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-15',
+      'title': 'Cursor 披露安全事件：密钥泄露致部分数据外泄',
+      'brief': 'Cursor 发布安全事件更新：攻击者利用 Fireworks 泄露的访问密钥，复制了部分智能体链路追踪数据，少量数据含未脱敏凭证，API 凭证遭泄露的客户不到 0.01% 。攻击者借此入侵了 Cursor 使用的部分 SaaS 工具。',
+      'url': 'https://cursor.com/blog/security-incident-update',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
     {
       'date': '2026-11-14',
       'title': 'DeepSeek 开放 TTS、ASR 和 OCR 等 API',
@@ -49,70 +107,6 @@ window.NEWS = {
       'url': 'https://antigravity.google/docs/dynamic-workflows',
       'source': '橘鸦AI早报',
       'type': '开发生态'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'Antigravity 为 Pro 用户开放 Orchestrator',
-      'brief': 'Antigravity 团队的 Varun Mohan 宣布， Orchestrator 已向 Pro 订阅用户开放。',
-      'url': 'https://antigravity.google/docs/models',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'Google AI Studio 支持领取订阅附赠的每月 Cloud 额度',
-      'brief': 'Google 宣布，订阅 Google AI Pro 或 Ultra 计划的用户现可直接在 Google AI Studio 领取每月 Google Cloud 推广额度。每月额度有效期为 12 个月 ，可绑定到自有的 Gemini API Key ，用于自己的应用和任意 Gemini 模型。',
-      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/google-cloud-credits-gdp-ai-studio/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'Anthropic 更新 Claude Code Projects 功能',
-      'brief': 'Anthropic 宣布更新 Claude Code 中的 Projects 功能，让协调器在项目聊天中回答问题，并更主动地汇报进行中线程的状态。',
-      'url': 'https://claude.com/form/projects',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'Cognition 宣布免费 SWE-2 成为 Devin 订阅用户永久权益',
-      'brief': 'Cognition 升级 Devin Teams 订阅方案，团队成员无需额外购买席位即可使用 Devin Desktop ，每人可使用两个由 SWE-2 驱动的并发免费会话。',
-      'url': 'https://devin.ai/blog/devin-teams-plan',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-13',
-      'title': 'Google 推出 Gemini 4 Hydrogen',
-      'brief': 'Google 发布 Gemini 4 Hydrogen ，主打日常编码和 Agent 任务。官方称，其完成任务比 Gemini 3.8 Flash 快 2.5 倍 。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-13',
-      'title': 'Google Antigravity 推出 Orchestrator 选项',
-      'brief': 'Google 在 Antigravity 中推出 Orchestrator 功能和 Gemini 4 Hydrogen 模型。',
-      'url': 'https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-13',
-      'title': 'Inkling 2 Small 权重正式开放',
-      'brief': 'Thinking Machines 宣布在 Hugging Face 以 Apache 2.0 许可开放 Inkling 2 Small 模型权重。该模型是多模态 MoE 模型，总参数 594B 、激活 17B ，支持图文输入与最长 1M token 上下文，提供 NVFP4 和 MXFP8 两种精度， NVFP4 版需至少 500GB 显存。',
-      'url': 'https://x.com/thinkymachines/status/2120982625582195011',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-13',
-      'title': 'IBM 发布 LLMON 标记语言降低提示注入风险',
-      'brief': 'IBM 发布 LLMON 标记语言及 GitHub 工具库，并在 Hugging Face 开源基于 Granite 4.1 微调的 3B 、 8B 两个实验预览模型，采用 Apache 2.0 许可。',
-      'url': 'https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };
