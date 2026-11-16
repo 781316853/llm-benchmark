@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-15',
+  'updated': '2026-11-16',
   'stats': {
-    'total': 167,
-    'knownVendor': 166,
+    'total': 168,
+    'knownVendor': 167,
     'otherVendor': 1,
-    'skippedManual': 1380,
+    'skippedManual': 1379,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -616,6 +616,17 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Grok Code Fast 1',
         'grok code fast 1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'HY4-Flash',
+      'vendor': 'Tencent',
+      'color': '#23C6E6',
+      'aliases': [
+        'HY4-Flash',
+        'HY4-flash',
+        'hy4-flash-dev'
       ],
       'auto': true
     },
@@ -1279,6 +1290,17 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen-4-Max',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen-4-Max',
+        'Qwen4-Max',
+        'qwen4-max'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen2.5 Coder 32B Instruct',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
@@ -1404,21 +1426,13 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Qwen4-Max-Preview',
+      'id': 'Qwen4 Max Preview',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
+        'Qwen4 Max Preview',
         'Qwen4-Max-Preview',
-        'qwen4-max-preview'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Qwen4.0 Max Preview',
-      'vendor': 'Alibaba',
-      'color': '#FF9A3D',
-      'aliases': [
-        'Qwen4.0 Max Preview',
+        'qwen4-max-preview',
         'qwen4.0-max-preview'
       ],
       'auto': true

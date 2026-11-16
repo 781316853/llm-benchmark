@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-11-15',
+  'updated': '2026-11-16',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -326,6 +326,8 @@ window.SEEN = {
     'tbench|Nemotron 3.5 Super VL': '2026-11-13',
     'tbench|Inkling': '2026-11-13',
     'llm|Gemini 4 Hydrogen (high)': '2026-11-13',
-    'tbench|Gemini 4 Hydrogen': '2026-11-14'
+    'tbench|Gemini 4 Hydrogen': '2026-11-14',
+    'deepswe|Qwen4-Max': '2026-11-16',
+    'datalearner|Qwen4-Max': '2026-11-16'
   }
 };

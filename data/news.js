@@ -2,16 +2,56 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-15',
+  'updated': '2026-11-16',
   'retentionDays': 2,
   'types': [
-    '要闻',
     '开发生态',
     '模型发布',
     '技术与洞察',
+    '前瞻与传闻',
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-16',
+      'title': '华为云上线 openPangu-2.1-Pro 模型',
+      'brief': '华为云 MaaS 模型即服务平台正式上线开源 盘古模型openPangu-2.1-Pro ，围绕 Agent 开发、 AI 编码和推理优化三大方向升级。',
+      'url': 'https://mp.weixin.qq.com/s/8JfFmscBTDl_mPQMycD8Nw',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-16',
+      'title': 'Agnes AI 开源 187.8B 多模态 MoE 模型',
+      'brief': 'Agnes AI 在 Hugging Face 发布多模态混合专家模型 Agnes 2.5 Pro Theta ，总参数量约 187.8B ，上下文上限 262,144 tokens ，许可证为 Apache License 2.0 。',
+      'url': 'https://huggingface.co/Agnes-AI/Agnes-2.5-Pro-Theta',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-16',
+      'title': 'OpenCode Go 订阅现已支持微信支付付款',
+      'brief': 'OpenCode 在 Console 更新日志中宣布，Go 和 Go Plus 订阅方案现已支持使用微信支付付款。用户在微信中授权一次后，订阅将按月自动续费；若在微信中取消扣款协议，下次续费时会要求重新确认。',
+      'url': 'https://opencode.ai/console/changelog/wechat-pay-go',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-16',
+      'title': 'OpenAI 开设 science blog 并发布 Standard Model 研究解读',
+      'brief': 'OpenAI 宣布开设全新的 OpenAI science blog ，用于分享 OpenAI 、合作方及科研界借助 AI 推进科学发现的成果、实用方法与研究者一线经验。',
+      'url': 'https://openai.com/index/our-new-blog-for-science/',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-16',
+      'title': '报道称 Jensen Huang 考虑重返 NVIDIA 担任 CEO',
+      'brief': '据英国《金融时报》报道， NVIDIA 前 CEO Jensen Huang 正考虑重新出任 CEO，并与几位亲信讨论过回归的可能。一位盟友称，有人正召集硅谷高管游说董事会让他复职，并争取白宫支持。',
+      'url': 'https://wccftech.com/jensen-huang-considers-returning-to-nvidia-as-his-allies-assemble-a-war-room-to-lobby-on-his-behalf-and-a-petition-in-his-favor-crosses-156000-signatures',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-11-15',
       'title': 'Grok Bot 多项优化上线，订阅用量增约 7%',
@@ -67,46 +107,6 @@ window.NEWS = {
       'url': 'https://cursor.com/blog/security-incident-update',
       'source': '橘鸦AI早报',
       'type': '行业动态'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'DeepSeek 开放 TTS、ASR 和 OCR 等 API',
-      'brief': 'DeepSeek 开放全家桶应用 API，将 Search 、 Fetch 、 OCR 、 ASR 和 TTS 等能力提供为独立接口，开发者可单独或组合调用搜索、网页抓取、文字识别、语音识别和合成，接入自己的工作流。',
-      'url': 'https://api-docs.deepseek.com/guides/build_a_chatbot',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'OpenAI 推出 ChatGPT Wallet 支付功能',
-      'brief': 'OpenAI 宣布推出支付功能 ChatGPT Wallet ，与 American Express 、 Mastercard 和 Visa 合作，让旗下的 dot 智能体代替用户完成购物。',
-      'url': 'https://openai.com/index/introducing-chatgpt-wallet/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'Antigravity 重置用户 Gemini 使用额度',
-      'brief': 'Google Antigravity 负责人 Varun Mohan 宣布， Antigravity 正在重置所有用户的 Gemini 使用额度，以纪念一周内的密集发布。',
-      'url': 'https://x.com/_mohansolo/status/2121380918355234957',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-14',
-      'title': '腾讯发布混元实时语音模型 Hy Realtime',
-      'brief': '腾讯 发布全新实时语音模型 Hy Realtime ，在语音理解、指令遵循和拟人化表达等基础能力上升级，并新增 Agentic 工具调用与唱歌能力。模型可结合对话上下文判断是否执行联网搜索，统一搜索决策、调用工具与生成回答。',
-      'url': 'https://mp.weixin.qq.com/s/bFxAT04ohJs9hPcjjin3bg',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-14',
-      'title': 'Antigravity 推出 Dynamic Workflows 功能',
-      'brief': 'Google Antigravity 在 App 和 CLI 中推出 Dynamic Workflows 。用户输入 /run-workflow 或用自己的话描述任务后，agent 会为任务编写 Python 脚本，协调并行或顺序运行的 subagent ，提供确定性的控制流程，避免 prompt 漂移。脚本在运行前会先交给用户确认，也可以保存下来随时重新运行。 Varun Mohan 表示，该功能在内部使用非常频繁，模型应能像 swa…',
-      'url': 'https://antigravity.google/docs/dynamic-workflows',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     }
   ]
 };
