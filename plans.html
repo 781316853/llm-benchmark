@@ -171,14 +171,14 @@
         </div>
         <ul>
           <li><b class="note-term">来源</b>套餐与月价来自 codingplan.fyi(开源 MIT),额度由 realapipricing.com(开源 MIT)补充实测值;随全站每日刷新。</li>
-          <li><b class="note-term">筛选</b>「每月用量」用于判断套餐是否够用并生成推荐排序;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。</li>
+          <li><b class="note-term">筛选</b>「每月用量」决定套餐是否够用与推荐排序,折叠预览优先展示额度够用的模型;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。</li>
           <li><b class="note-term">折扣</b>官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,数值越低越划算;约一半行有可核实的官方三段价,其余显示 —。</li>
           <li><b class="note-term">标签与范围</b>[谷] / [峰] 为错峰/高峰时段档,[高速] 为高速服务档;已下架套餐不展示,受限套餐标「购买受限」;推广跳转链接已去除。</li>
         </ul>
         <details class="notes-more">
           <summary>展开筛选口径、精选模型与数据来源</summary>
           <ul>
-            <li><b class="note-term">置顶</b>选中具体模型后，该模型的所有档位行（谷/峰/厂直供等）置顶；套餐是否够用按该模型在当前缓存与所选时段下的最高额度判断，其余模型可展开。</li>
+            <li><b class="note-term">置顶</b>选中品牌或具体模型后，折叠预览只展示相关档位，所选模型的档位行置顶；套餐是否够用按所选模型在当前缓存与所选时段下的最高额度判断，其余模型可展开。</li>
             <li><b class="note-term">精选模型</b>DeepSeek V4 Flash 0731 / DeepSeek V4.1 Flash / GLM 5.3 Flash / GPT 5.6 Luna,以及甜品级、SOTA 两组多模型对比。</li>
             <li><b class="note-term">全部套餐</b>覆盖 codingplan.fyi 的在售/受限套餐,并补入 ChatGPT、Gemini、Grok、Devin、Factory Droid 等补充源套餐;只比较价格与额度,不引入第三方评分。</li>
             <li><b class="note-term">平台范围</b>精选视图覆盖阿里·百炼 / 智谱 / 字节·方舟 / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode 九家。价格为快照口径,可能滞后于平台官网;完整筛选与购买入口请前往 <a href="https://www.codingplan.fyi/?view=usage" target="_blank" rel="noopener">codingplan.fyi ↗</a> 与 <a href="https://realapipricing.com/" target="_blank" rel="noopener">realapipricing.com ↗</a>。</li>

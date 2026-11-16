@@ -2313,15 +2313,26 @@
 
     var body = items.map(function (it) {
       var p = it.plan;
-      // 置顶行:选了具体模型只置顶所选模型;仅选品牌时置顶同品牌行
-      var rows = (p.models || []).slice().sort(function (a, b) {
-        return qcModelRank(a) - qcModelRank(b);
-      });
-      var pinned = rows.filter(function (r) { return qcModelRank(r) < 999; });
-      var rest = rows.filter(function (r) { return qcModelRank(r) >= 999; });
+      // 预览优先露出额度够当前用量的行,够用的行里再优先相关档位(品牌/模型/缓存/时段);
+      // 当前缓存档无额度的行排最后;同组内选中模型按选择顺序置顶,其余保持源站单价升序。
+      var needQ = usage * 100;
+      var explicit = (state.plansModels || []).length || state.plansBrand !== "all";
+      var rows = (p.models || []).slice();
+      function rowRank(r) {
+        var qv = r.q && r.q[idx];
+        var covers = qv != null && qv >= needQ;
+        return (covers ? 0 : qv != null ? 2 : 4) + (it.rel.indexOf(r) >= 0 ? 0 : 1);
+      }
+      function rowCmp(a, b) {
+        return rowRank(a) - rowRank(b) ||
+          qcModelRank(a) - qcModelRank(b) ||
+          (p.models.indexOf(a) - p.models.indexOf(b));
+      }
+      rows.sort(rowCmp);
       var expanded = !!state.plansExpanded[p.slug];
+      // 选了品牌/具体模型时,折叠态只展示相关档位,不拿其他模型凑数
       var shown = expanded ? rows
-        : pinned.concat(rest.slice(0, Math.max(0, 4 - pinned.length)));
+        : (explicit ? it.rel.slice().sort(rowCmp) : rows).slice(0, 4);
       var hidden = rows.length - shown.length;
       var badges = (p.status === "restricted" ? '<span class="qc-badge qc-badge--restricted">购买受限</span>' : "") +
         (p.billing === "payg" ? '<span class="qc-badge">按量</span>' : "") +
@@ -2345,7 +2356,7 @@
           '<td class="num">' + esc(qcFmtQuota(r.q && r.q[idx])) + '</td>' +
           '<td class="num">' + esc(qcDiscountText(qcDiscount(p, r, idx))) + '</td></tr>';
       }).join("");
-      var more = hidden > 0
+      var more = (expanded || hidden > 0)
         ? '<tr class="qc-plan-more"><td colspan="5"><button type="button" class="qc-expand" data-qc-expand="' +
           esc(p.slug) + '">' + (expanded ? "收起" : "展开另外 " + hidden + " 个模型") + '</button></td></tr>'
         : "";
@@ -2540,7 +2551,7 @@
       '</div>' +
       '<div class="note-line"><b>更新</b>源站 ' + esc(data.siteUpdated || "—") + ' · 本站抓取 ' + esc(data.refreshedAt || data.updated || "—") + ' · 美元按汇率 ' + esc(data.usdToCnyRate) + ' 折算人民币</div>' +
       '<div class="note-line"><b>口径</b>月可用额度按 0% / 50% / 95% / 99% 缓存占比换算(输出固定 0.5%);只有单一额度的套餐只在 95% 档显示;「每月用量」只用于判断是否够用与推荐排序,不改变显示的额度;官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,越低越划算。</div>' +
-      '<div class="note-line"><b>说明</b>选中具体模型后，该模型的所有档位行置顶；套餐是否够用按所选模型在当前缓存与所选时段下的最高额度判断；「实测」为补充源实测/官方口径，「单值」为源站只给单一额度、不参与档位换算；已下架套餐不展示，受限套餐标「购买受限」。</div>';
+      '<div class="note-line"><b>说明</b>折叠预览优先露出额度够所选用量的模型，够用的行里再优先当前缓存/时段的峰谷档位；选中品牌或具体模型后，折叠预览只展示相关档位，所选模型的档位行置顶；套餐是否够用按所选模型在当前缓存与所选时段下的最高额度判断；「实测」为补充源实测/官方口径，「单值」为源站只给单一额度、不参与档位换算；已下架套餐不展示，受限套餐标「购买受限」。</div>';
   }
 
   // ===== 9) 更新日志(12 个 Agent 工具的官方 changelog;非分数数据,不参与综合分) =====
