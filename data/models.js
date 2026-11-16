@@ -157,7 +157,7 @@ window.MODEL_MAP = {
     { id: "GLM 5",            vendor: "zAI",       color: "#7485FF", aliases: ["GLM 5", "glm-5"] },
     { id: "Kimi-K2.8-Preview", vendor: "Moonshot", color: "#7C5CFF", aliases: ["Kimi-K2.8-Preview", "kimi-k2.8-preview"] },
     { id: "Inkling Small",    vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling Small", "Inkling small", "inkling-small"] },
-    { id: "Inkling 2 Small",  vendor: "Thinking Machines", color: "#A3AEBA", aliases: ["Inkling 2 Small", "inkling-2-small"] },
+    { id: "Inkling 2 Small",  vendor: "Thinking Machines", color: "#A3AEBA", aliases: ["Inkling 2 Small", "Inkling Small 2", "inkling-2-small", "inkling-small-2"] },
     { id: "omen-alpha",       vendor: "STEALTH",   color: "#6C7DFF", aliases: ["omen-alpha", "OMEN-ALPHA"] },
     { id: "union-alpha",      vendor: "STEALTH",   color: "#7C8CFF", aliases: ["union-alpha", "UNION-ALPHA"] },
     { id: "crouton-alpha",    vendor: "STEALTH",   color: "#8C9CFF", aliases: ["crouton-alpha", "CROUTON-ALPHA"] },
@@ -251,7 +251,16 @@ window.MODEL_MAP = {
     { id: "Qwen3.8-Max Internal", vendor: "Alibaba", color: "#FF7A2B", aliases: ["Qwen3.8-Max Internal", "Qwen3.8 Max Internal", "qwen3.8-max-internal", "alibaba/qwen3.8-max-internal"] },
     { id: "Qwen3-Max",        vendor: "Alibaba",   color: "#FF8B3D", aliases: ["Qwen3-Max", "Qwen3 Max", "qwen3-max", "alibaba/qwen3-max"] },
     { id: "Ling-3.0-Flash",   vendor: "inclusionAI", color: "#A3E07F", aliases: ["Ling-3.0-Flash", "Ling 3.0 Flash", "ling-3.0-flash", "Ling 3.0 Flash 2607", "ling-3.0-flash-2607", "Ling 3.0 Flash Af Rc3", "ling-3.0-flash-af-rc3"] },
-    { id: "Mistral Small 2603", vendor: "Mistral", color: "#FFA07A", aliases: ["Mistral Small 2603", "mistral-small-2603", "mistralai/mistral-small-2603"] }
+    { id: "Mistral Small 2603", vendor: "Mistral", color: "#FFA07A", aliases: ["Mistral Small 2603", "mistral-small-2603", "mistralai/mistral-small-2603"] },
+    // ===== 2026-11-16 ModelDial / 亿模亿样 当轮新增模型登记 =====
+    // ModelDial 的 model_id 是裸 slug(如 gemini-4-hydrogen),亿模亿样同模型写法可能带 4.0 或 :free 后缀;
+    // 两者都登记为别名,避免刷新后被自动建档成「其他」而与其它榜拆成两条。
+    { id: "Gemini 4 Hydrogen", vendor: "Google", color: "#86B6F6", aliases: ["Gemini 4 Hydrogen", "gemini-4-hydrogen", "Gemini-4-Hydrogen", "gemini 4 hydrogen"] },
+    { id: "Qwen4-Max",        vendor: "Alibaba",  color: "#FF8A2B", aliases: ["Qwen4-Max", "Qwen-4-Max", "Qwen4 Max", "qwen4-max"] },
+    { id: "Qwen4-Max-Preview", vendor: "Alibaba", color: "#FFA45C", aliases: ["Qwen4-Max-Preview", "Qwen-4-Max-Preview", "Qwen4 Max Preview", "qwen4-max-preview", "Qwen4.0-Max-Preview", "Qwen4.0 Max Preview", "qwen4.0-max-preview"] },
+    { id: "Tencent Hy4 Flash", vendor: "Tencent", color: "#36D3F0", aliases: ["Tencent Hy4 Flash", "Tencent HY4-flash", "HY4-flash", "hy4-flash", "hy4-flash-dev", "Hy4 Flash"] },
+    { id: "ERNIE 5.5 Flash Preview", vendor: "Baidu", color: "#5B6CF0", aliases: ["ERNIE 5.5 Flash Preview", "ERNIE-5.5-Flash-Preview", "ERNIE-5.5-Flash-Preview (high)", "ernie-5.5-flash-preview", "ernie-5.5-flash-preview:free"] },
+    { id: "GPT-6.2 Astra",    vendor: "OpenAI",   color: "#0B8C67", aliases: ["GPT-6.2 Astra", "GPT-6.2-Astra", "gpt-6.2-astra", "gpt-6-2-astra"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
   // 该色现在是「模型色点 + 厂商列文字」里未登记厂商(「其他」)所用的色,故按文字色标准取到常态 ≥4.5:1
@@ -306,10 +315,11 @@ window.MODEL_MAP = {
     "Reflection AI": "#8E6BD8",     // 深紫(Beam 系列):与 ByteDance/Moonshot 的浅紫按明度分档
     "Poolside": "#8FA8BE",          // 板岩蓝灰(Laguna 系列)
     "Fireworks": "#F0A35C",         // 暖琥珀(Fireworks 托管模型)
-    "Inception": "#7FC3E0"          // 天青(Mercury 系列)
+    "Inception": "#7FC3E0",         // 天青(Mercury 系列)
+    "Baidu": "#5B6CF0"              // 品牌蓝(ERNIE 系列):与其它蓝系厂商按色相/明度错开
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
-  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI"],
+  domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI", "Baidu"],
   // 厂商中文别名:仅用于总览矩阵搜索(厂商列仍显示英文 canonical 名),照顾按中文厂商名检索的习惯。
   // 含模型家族名(通义/混元/豆包)是因为用户往往先想起家族名,而不是厂商英文名。
   vendorAliases: {

@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-11',
+  'updated': '2026-11-16',
   'stats': {
-    'total': 164,
-    'knownVendor': 164,
+    'total': 166,
+    'knownVendor': 166,
     'otherVendor': 0,
-    'skippedManual': 1343,
+    'skippedManual': 1439,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -219,16 +219,6 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'ERNIE 5.5 Flash Preview',
-      'vendor': 'Baidu',
-      'color': '#9298A1',
-      'aliases': [
-        'ERNIE 5.5 Flash Preview',
-        'ERNIE-5.5-Flash-Preview (high)'
-      ],
-      'auto': true
-    },
-    {
       'id': 'EXAONE 4.0 1.2B',
       'vendor': 'LG AI Research',
       'color': '#E67070',
@@ -300,8 +290,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'zAI',
       'color': '#818DE7',
       'aliases': [
-        'GLM-5V-Turbo',
-        'glm-5v-turbo'
+        'GLM-5V-Turbo'
       ],
       'auto': true
     },
@@ -380,16 +369,6 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'GPT-5.1-Codex-Mini',
         'gpt-5.1-codex-mini'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'GPT-6.2-Astra',
-      'vendor': 'OpenAI',
-      'color': '#35C7A4',
-      'aliases': [
-        'GPT-6.2-Astra',
-        'gpt-6.2-astra'
       ],
       'auto': true
     },
@@ -602,6 +581,15 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Grok Code Fast 1',
         'grok code fast 1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Haiku 4.5',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Haiku 4.5'
       ],
       'auto': true
     },
@@ -1256,6 +1244,33 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen-Drive-1.0',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen-Drive-1.0'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen-Image-2.1',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen-Image-2.1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen-Image-3.0',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen-Image-3.0'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen2.5 Coder 32B Instruct',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
@@ -1381,12 +1396,11 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Qwen4-Max-Preview',
+      'id': 'Qwen3.8-LiveTranslate',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen4-Max-Preview',
-        'qwen4-max-preview'
+        'Qwen3.8-LiveTranslate'
       ],
       'auto': true
     },

@@ -666,7 +666,8 @@
     return out;
   }
 
-  // ===== 新引入权威基准(仅展示,不计入综合分/命中/矩阵):APEX-1 / HLE / NL2Repo-Bench / ProgramBench =====
+  // ===== 新引入权威基准:APEX-1 / NL2Repo-Bench / ProgramBench 仅展示;
+  // HLE 自 2026-11-15 起计入综合分与命中数(总览矩阵「榜单基准」组),hle() 同时供权威页全表使用 =====
   function apex() {
     var src = window.APEX || { models: [] };
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score || (b.pass1 || 0) - (a.pass1 || 0); })
@@ -775,17 +776,18 @@
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
 
-  // ===== 统一视图:canonical -> {deepswe, llm, webdev, agentarena, tbench, arenaofbias, modeldial, aicodingdaily} 用于矩阵/雷达 =====
+  // ===== 统一视图:canonical -> {deepswe, llm, webdev, agentarena, tbench, arenaofbias, modeldial, aicodingdaily, hle} 用于矩阵/雷达 =====
   // deepswe:同名取最高;llm:全历史保序校正分(不再用单月);webdev:同名取最高;
   // agentarena:同名取最高净提升(可为负;2026-10-26 起计入综合分与命中数,权重 9%);
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
   // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数);
-  // aicodingdaily:同名取最高总分(2026-10-19 起计入综合分与命中数,权重 8%)
+  // aicodingdaily:同名取最高总分(2026-10-19 起计入综合分与命中数,权重 8%);
+  // hle:同名取最高无工具闭卷分(2026-11-15 起计入综合分与命中数,权重 8%)
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, hle: null };
       return map[c.id];
     }
     // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
@@ -836,6 +838,14 @@
           winRate: m.winRate, tasks: m.tasks, provisional: m.provisional, configs: m.configs,
           rank: m.rank, name: m.name };
     });
+    // HLE(前沿知识广度,统一无工具闭卷口径):同名取最高分;计入综合分与命中数,
+    // 同时保留源站名次与来源标注供总览格悬浮。
+    hle().forEach(function (m) {
+      if (m.score == null) return;
+      var e = ensure(m.canon);
+      if (!e.hle || m.score > e.hle.score)
+        e.hle = { score: m.score, rank: m.rank, name: m.model, src: m.src, protocol: m.protocol, protocolNote: m.protocolNote };
+    });
     // NL2Repo-Bench 自 2026-09-19 起移出统一视图(不再计入综合分与命中数、不再进总览矩阵),
     // 仅在「权威基准测试」页经 D.nl2repo() 直接展示,故此处不再写入。
     // ModelDial 雷达:五轴综合分(0-100,直接作 norm);同名取最高分 config
@@ -867,7 +877,7 @@
         };
     });
     // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Agent Arena / Terminal-Bench / 亿模亿样 / ModelDial /
-    // AI Coding Daily 共 8 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/HLE/
+    // AI Coding Daily / HLE 共 9 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD/APEX-1/
     // NL2Repo/Code Migration/AA Coding Agent Index)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
@@ -879,6 +889,7 @@
       if (e.arenaofbias) e.benchCount++;
       if (e.modeldial) e.benchCount++;
       if (e.aicodingdaily) e.benchCount++;
+      if (e.hle) e.benchCount++;
     });
     return map;
   }

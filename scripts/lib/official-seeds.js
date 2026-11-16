@@ -55,6 +55,23 @@ const ANTHROPIC_CAVEAT = "Anthropic 官方发布自测(2026-11-10);表内标注 
 const HY4_URL = "https://hy.tencent.com/research/hy4";
 const HY4_CAVEAT = "腾讯混元 Hy4 正式版官方发布自测(2026-11-04);DeepSWE 用 mini-SWE-agent,TB 4.0 / TB-Science 用 Claude Code 框架,ProgramBench 仅公布 Almost,协议与基准官方实测榜不保证可比";
 
+// Qwen4-Max 官方发布(2026-11-16):https://qwen.ai/blog?id=qwen4-max
+// 官方综合图表给出 DeepSWE v1.1 75.7 / Terminal-Bench 4.0 48.5(Xhigh)/ ProgramBench 31.5 /
+// Agents' Last Exam v1.1 46.7 / CodeArena Elo 1750 / AgentArena 净提升 7.5 / HLE 51.7 /
+// AutomationBench-AA 72.5 / APEX-Agents 72.1。HLE 未标无工具口径、AutomationBench-AA 与站内
+// Zapier 主榜不同、APEX-Agents 与站内 APEX-1 非同一榜,均不转录;CodeArena / AgentArena 走
+// 对应源的 ANNOUNCED 人工转录种子(仅补缺)。官方图未标 harness/温度,与基准官方实测榜不保证可比。
+const QWEN4MAX_URL = "https://qwen.ai/blog?id=qwen4-max";
+const QWEN4MAX_CAVEAT = "Qwen 官方发布自测(2026-11-16);官方仅给汇总图表,Terminal-Bench 4.0 为 Xhigh 档、未标 harness/温度,ProgramBench/ALE 同图,与基准官方实测榜不保证可比";
+
+// Hy4 flash 官方发布(2026-11-16):https://hy.tencent.com/research/hy4-flash
+// 官方 Open Benchmarks 表给出 DeepSWE v1.1 64.6(mini-SWE-agent)/ ProgramBench Almost 16.0 /
+// Terminal-Bench 4.0 19.2(Claude Code)/ AutomationBench v1.0.6 52.2(公开 600 题)/
+// HLE-Full 55.2(带工具)/ OSWorld 2.1 68.1 / APEX-Agents 63.1。HLE 带工具、OSWorld 为 2.1
+// (站内为 2.0)、APEX-Agents 与站内 APEX-1 非同一榜,均不转录;ProgramBench 仅 Almost,主指标留空。
+const HY4FLASH_URL = "https://hy.tencent.com/research/hy4-flash";
+const HY4FLASH_CAVEAT = "腾讯混元 Hy4 flash 官方发布自测(2026-11-16);DeepSWE 用 mini-SWE-agent,TB 4.0 用 Claude Code 框架,ProgramBench 仅公布 Almost,AutomationBench 为公开 600 题,协议与基准官方实测榜不保证可比";
+
 // OpenAI GPT-6.1 Terra 发布(2026-10-27):
 //   Terminal-Bench 4.0 最高推理档解决率 50.3%;官方发布页未标注 harness/温度,与官方实测榜不保证可比。
 //   OpenAI 未公布该模型的 DeepSWE v1.1,故不设 DeepSWE 种子(不臆造分数)。
@@ -75,7 +92,11 @@ const SEEDS = {
     // Kimi 发布博客:75.5(Claude Code 框架);官方 datalearner/官方榜均尚无 K3.1 Pro。
     { name: "Kimi K3.1 Pro", score: 75.5, effort: "max", src: "moonshot-official", note: MS_CAVEAT, sourceUrl: MS_BLOG_URL },
     // 腾讯混元 Hy4 正式版官方自测 74.9(mini-SWE-agent,官方表主值)。
-    { name: "Hy4", score: 74.9, effort: "—", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL, publishOrigin: HY4_URL }
+    { name: "Hy4", score: 74.9, effort: "—", src: "tencent-official", note: HY4_CAVEAT, sourceUrl: HY4_URL, publishOrigin: HY4_URL },
+    // Qwen4-Max 官方 75.7(datalearner 已收录同值,此条为前向兜底,已存在则跳过)。
+    { name: "Qwen4-Max", score: 75.7, effort: "—", src: "qwen-official", note: QWEN4MAX_CAVEAT, sourceUrl: QWEN4MAX_URL, publishOrigin: QWEN4MAX_URL },
+    // 腾讯混元 Hy4 flash 官方 64.6(mini-SWE-agent)。
+    { name: "Hy4 flash", score: 64.6, effort: "—", src: "tencent-official", note: HY4FLASH_CAVEAT, sourceUrl: HY4FLASH_URL, publishOrigin: HY4FLASH_URL }
   ],
   // Terminal-Bench 4.0:官方榜(tbench.ai RSC 流)与 datalearner 补充均无 DeepSeek 条目,由种子补入。
   // 官方标注使用 Claude Code 框架,故带 agent 字段(见 tbench 源的种子钩子)。
@@ -88,7 +109,11 @@ const SEEDS = {
     // OpenAI 官方发布:最高推理档 50.3%;官方榜与 datalearner 均尚未收录。
     { name: "GPT-6.1 Terra", score: 50.3, effort: "max", date: "2026-10-27", src: "openai-official", note: OPENAI_TERRA_CAVEAT },
     // Meta 模型卡:Terminal-Bench 4.0-AA 52.0(Full 为 57.1,站内已由 datalearner 收录 58.08,不覆盖)。
-    { name: "Muse Wonder", score: 52.0, effort: "max", date: "2026-10-12", src: "meta-official", note: META_WONDER_CAVEAT }
+    { name: "Muse Wonder", score: 52.0, effort: "max", date: "2026-10-12", src: "meta-official", note: META_WONDER_CAVEAT },
+    // Qwen4-Max 官方 48.5(Xhigh;官方未标 harness)。
+    { name: "Qwen4-Max", score: 48.5, effort: "xhigh", date: "2026-11-16", src: "qwen-official", note: QWEN4MAX_CAVEAT, sourceUrl: QWEN4MAX_URL },
+    // 腾讯混元 Hy4 flash 官方 19.2(Claude Code 框架)。
+    { name: "Hy4 flash", score: 19.2, agent: "Claude Code", date: "2026-11-16", src: "tencent-official", note: HY4FLASH_CAVEAT, sourceUrl: HY4FLASH_URL }
   ],
   // Terminal-Bench-Science 0.1:站内主源为 Harbor Hub 官方榜(17 条),explainx 镜像仅作回退;补 Kimi 官方自测。
   tbscience: [
@@ -105,7 +130,13 @@ const SEEDS = {
       note: "Kimi 官方博客 ProgramBench binary score(Almost,≥95%)31.5;未公布 Fully Resolved", sourceUrl: MS_BLOG_URL },
     // 腾讯混元 Hy4 正式版官方只报 Almost(binary ≥95%)30.0,未公布 Fully Resolved。
     { name: "Hy4", almost: 30.0, src: "tencent-official",
-      note: "腾讯混元 Hy4 官方发布 ProgramBench Almost(≥95%)30.0;未公布 Fully Resolved", sourceUrl: HY4_URL }
+      note: "腾讯混元 Hy4 官方发布 ProgramBench Almost(≥95%)30.0;未公布 Fully Resolved", sourceUrl: HY4_URL },
+    // Qwen4-Max 官方图给出 ProgramBench 31.5(与竞品同图,未标 Almost,按主指标 Fully Resolved 转录)。
+    { name: "Qwen4-Max", score: 31.5, src: "qwen-official",
+      note: "Qwen 官方发布 ProgramBench 31.5,2026-11-16;官方图未标 Almost,按主指标转录,与官方实测榜不保证可比", sourceUrl: QWEN4MAX_URL },
+    // 腾讯混元 Hy4 flash 官方只报 Almost(almost solved)16.0,未公布 Fully Resolved。
+    { name: "Hy4 flash", almost: 16.0, src: "tencent-official",
+      note: "腾讯混元 Hy4 flash 官方发布 ProgramBench Almost 16.0;未公布 Fully Resolved", sourceUrl: HY4FLASH_URL }
   ],
   // NL2Repo-Bench:官方 datalearner/llm-stats 已收录 Flash,通常命中「已存在跳过」;此条为前向兜底。
   nl2repo: [
@@ -115,7 +146,14 @@ const SEEDS = {
   // Agents' Last Exam:datalearner 已收录(Pass@1 24.3);此条为前向兜底。
   lastexam: [
     { name: "Qwen3.8-Flash", score: 24.3, org: "Alibaba Cloud / Qwen Team", effort: "未标注", src: "qwen-official", note: CAVEAT, sourceUrl: SOURCE_URL, publishOrigin: PUBLISH_ORIGIN },
-    { name: "DeepSeek-V4.1-Flash-1017", score: 35.4, org: "DeepSeek-AI", effort: "未标注", date: "2026-10-17", src: "deepseek-official", note: DS_CAVEAT, sourceUrl: DS_UPDATES_URL }
+    { name: "DeepSeek-V4.1-Flash-1017", score: 35.4, org: "DeepSeek-AI", effort: "未标注", date: "2026-10-17", src: "deepseek-official", note: DS_CAVEAT, sourceUrl: DS_UPDATES_URL },
+    // Qwen4-Max 官方 Agents' Last Exam v1.1 46.7。
+    { name: "Qwen4-Max", score: 46.7, org: "Alibaba Cloud / Qwen Team", effort: "未标注", date: "2026-11-16", src: "qwen-official", note: QWEN4MAX_CAVEAT, sourceUrl: QWEN4MAX_URL }
+  ],
+  // AutomationBench:站内为 Zapier 600 公开题严格全通过率;官方 Hy4 flash 表同版本 52.2。
+  automationbench: [
+    { name: "Hy4 flash", score: 52.2, org: "Tencent Hunyuan", effort: "未标注", date: "2026-11-16", src: "tencent-official",
+      note: "腾讯混元 Hy4 flash 官方发布 AutomationBench v1.0.6 52.2(公开 600 题),2026-11-16", sourceUrl: HY4FLASH_URL }
   ],
   // HLE:官方更新页明确标注 w/o tools(42.6);HLE 源统一无工具口径后以 T2 入表,
   // 覆盖 AA 复测同模型的 39.2,避免官方分被第三方无工具分顶掉。

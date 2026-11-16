@@ -13,6 +13,7 @@ const fs = require("fs");
 const CONFIG = require("./lib/config");
 const pipeline = require("./lib/pipeline");
 const modelAuto = require("./lib/model-auto");
+const officialReleases = require("./lib/official-releases");
 const seen = require("./lib/seen");
 const news = require("./lib/news");
 const codingplan = require("./lib/codingplan");
@@ -23,24 +24,28 @@ const changelog = require("./lib/changelog");
   if (!fs.existsSync(CONFIG.DATA_DIR)) fs.mkdirSync(CONFIG.DATA_DIR, { recursive: true });
   // 1) 多源抓取(并发/串行由 CONFIG.pipelineMode 控制)+ 标准化 + 写入 + 质量报告
   await pipeline.runPipeline({ mode: CONFIG.pipelineMode });
-  // 1.5) 自动发现新模型名:扫描刚写入的 data/*.js,为 models.js 未覆盖的模型生成 models-auto.js
+  // 1.5) 官方发布监听(Qwen / 腾讯混元):先落 data/official_releases.js,再让 model-auto 扫描,
+  //      这样新模型发布当轮就能自动建档;分数仍由 official-seeds.js 人工转录(T2)。
+  try { await officialReleases.updateOfficialReleases(); }
+  catch (e) { console.log("[official-releases] 维护失败:" + e.message); }
+  // 2) 自动发现新模型名:扫描刚写入的 data/*.js,为 models.js 未覆盖的模型生成 models-auto.js
   //      (手工条目优先;失败不影响主流程,下次刷新会重试)
   try { modelAuto.updateAutoModels(); }
   catch (e) { console.log("[model-auto] 维护失败:" + e.message); }
-  // 2) 维护首次上榜记录(读取最新写入的 data/*.js)
+  // 3) 维护首次上榜记录(读取最新写入的 data/*.js)
   try { seen.updateSeen(); }
   catch (e) { console.log("[seen] 维护失败:" + e.message); }
-  // 3) 维护 AI 热点新闻(仅保留最近 N 天;fail-soft,失败保留旧文件)
+  // 4) 维护 AI 热点新闻(仅保留最近 N 天;fail-soft,失败保留旧文件)
   try { await news.updateNews(); }
   catch (e) { console.log("[news] 维护失败:" + e.message); }
-  // 4) 维护 Coding Plan 套餐快速对比(codingplan.fyi 推荐分组;fail-soft,失败保留旧文件)
+  // 5) 维护 Coding Plan 套餐快速对比(codingplan.fyi 推荐分组;fail-soft,失败保留旧文件)
   try { await codingplan.updateCodingplan(); }
   catch (e) { console.log("[codingplan] 维护失败:" + e.message); }
-  // 5) 维护 Agent 工具更新日志(12 个工具的官方 changelog;仅正式版,DeepSeek Harness 例外;
+  // 6) 维护 Agent 工具更新日志(12 个工具的官方 changelog;仅正式版,DeepSeek Harness 例外;
   //    fail-soft 在 updateChangelog 内部逐工具处理,单源失败沿用旧条目并标 stale)
   try { await changelog.updateChangelog(); }
   catch (e) { console.log("[changelog] 维护失败:" + e.message); }
-  // 6) 维护模型 API 标价(codingplan.fyi 主源 + models.dev 排名模型缺价补齐;供总览「性价比」列;
+  // 7) 维护模型 API 标价(codingplan.fyi 主源 + models.dev 排名模型缺价补齐;供总览「性价比」列;
   //    fail-soft,失败保留旧文件;补价源不可用时沿用上次补价)
   try { await pricing.updatePricing(); }
   catch (e) { console.log("[pricing] 维护失败:" + e.message); }

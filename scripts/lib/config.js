@@ -95,6 +95,12 @@ module.exports = {
       url: "https://www.datalearner.com/benchmarks/deepswe",
       host: "www.datalearner.com", src: "datalearner"
     },
+    llm_stats_deepswe: {
+      // DeepSWE v1.1 第三方聚合补充(T3):llm-stats 按 0-1 归一化转录,共有模型与官方分差 ≤2 分;
+      // 只补官方 / datalearner / 厂商种子 / AI Release Tracker 均未收录的模型。
+      url: "https://llm-stats.com/benchmarks/deepswe",
+      host: "llm-stats.com", src: "llm-stats"
+    },
     llm2014: {
       // llm2014:站主私有题库实测(T1 同级口径),无外部渠道。
       baseCdn: "https://cdn.jsdelivr.net/gh/llm2014/llm_benchmark@main/docs/",
@@ -386,7 +392,7 @@ module.exports = {
       url: "https://www.datalearner.com/benchmarks/terminal-bench-2-1",
       host: "www.datalearner.com", src: "datalearner"
     },
-    // ===== ModelDial 雷达(独立标签页;计入总览综合分第 8 组与命中数)=====
+    // ===== ModelDial 雷达(独立标签页;计入总览综合分(计分组之一)与命中数)=====
     modeldial: {
       // ModelDial 雷达(modeldial.com):第三方独立实测的编码智能体能力榜,config 粒度(model×推理强度)。
       // 雷达页主榜使用 overview.json 的 snapshot.entries(五轴快照,CC BY 4.0),单请求即得全榜 config
@@ -470,7 +476,8 @@ module.exports = {
       // 权威基准各源(tbench/tbench_v3/tbench_v21/tbscience/osworld/lastexam/arcagi3/benchcad/apex/hle/nl2repo/programbench/frontierswe)同样排除:
       //   tbench/tbench_v3/tbench_v21/tbscience 解决率整体偏低(顶级 ~58%/42%/88%自报/30%),与 DeepSWE/Vibe 混算产生假告警;
       //   osworld/lastexam/arcagi3 为代理级/参考展示口径;benchcad 为 0-1 量纲且仅展示;
-      //   apex 为专业工作产出评分(Mean Score),与编码基准原生生量纲不可比;hle 为知识类口径,仅权威页展示;
+      //   apex 为专业工作产出评分(Mean Score),与编码基准原生生量纲不可比;hle 为知识类口径
+      //     (统一无工具闭卷),2026-11-15 起已计入综合分与命中数,但仍与编码基准原生量纲不可比;
       //   nl2repo 自 2026-09-19 起不再计入综合分与命中数(改为「权威基准测试」页仅展示),
       //     但独立量纲且整体偏低(0-75),仍保持排除;
       //   programbench 仅展示,主指标 Fully Resolved 整体 0-7 分,与主基准混算会产生假告警;
@@ -514,6 +521,32 @@ module.exports = {
         vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 }
       }
     }
+  },
+
+  // ===== 官方发布监听(scripts/lib/official-releases.js 使用,不进基准管线) =====
+  // 目的:厂商在官方博客/研究页发布新模型后,自动发现模型名与相关基准提及,供 models-auto 建档;
+  //       发布页的分数图表多为图片,分数仍按 official-seeds.js 人工转录(T2),此处不臆造分数。
+  officialReleases: {
+    outFile: "official_releases.js",
+    windowVar: "OFFICIAL_RELEASES",
+    maxReleases: 24,        // 最近 N 条发布(按日期倒序)
+    lookbackDays: 120,      // 只保留最近 N 天的发布,避免首次接入时把历史模型全部灌入 models-auto
+    maxImages: 8,           // 每条发布保留的图表图片数(供人工转录核对)
+    sources: [
+      {
+        // Qwen 官方博客:文章列表 API(含全文 HTML;按 extra.date 排序,type=qwen_ai)
+        id: "qwen-official", vendor: "Alibaba", type: "qwen-json",
+        url: "https://qwen.ai/api/v2/article/retrieval?language=zh-CN&type=qwen_ai&page=1&pageSize=50",
+        site: "https://qwen.ai/blog?id=", host: "qwen.ai"
+      },
+      {
+        // 腾讯混元官方博客:模型发布列表(renderType=2 仅模型发布;正文含图片 URL 与发布日期)
+        id: "tencent-official", vendor: "Tencent", type: "hunyuan-json",
+        url: "https://api.hunyuan.tencent.com/api/blog/publicList",
+        site: "https://hy.tencent.com/research/", host: "api.hunyuan.tencent.com",
+        body: { pageNum: 1, pageSize: 1000, renderType: 2 }
+      }
+    ]
   },
 
   // ===== AI 热点新闻(scripts/lib/news.js 使用,不进基准管线) =====

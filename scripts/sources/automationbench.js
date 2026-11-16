@@ -23,6 +23,7 @@ const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const parseLlmStats = require("../lib/parseLlmStats");
+const officialSeeds = require("../lib/official-seeds");
 const { parseBenchlm } = require("../lib/parseBenchlm");
 const { parseDataLearnerBench } = require("./datalearner");
 const art = require("../lib/aireleasetracker");
@@ -88,6 +89,8 @@ class AutomationBenchSource extends BaseSource {
     });
     merger.add(artModels, "aireleasetracker", { fillOnly: true });
     const models = merger.values();
+    // 厂商官方发布种子(T2,仅补缺):如腾讯混元 Hy4 flash 官方 52.2。
+    officialSeeds.appendMissingSeed(models, "automationbench");
     return { tasks: 600, models: models, unsourced: unsourced.length };
   }
   toStandard(parsed) {
@@ -106,7 +109,7 @@ class AutomationBenchSource extends BaseSource {
       "// 官方榜说明:zapier.com/benchmarks 原始 HTML 只渲染 Top 10(其余行由前端展开),且主榜用私有 held-out 集,故仅作来源链接\n" +
       "// 出处校验:datalearner 转录行中 evidence 缺 sourceUrl 的按最低层级处理(src=datalearner-unsourced,仅补缺、不覆盖有出处数据)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
-      "// 字段说明:model=模型名;score=严格全通过率 task_completed_correctly(%);org=厂商;size=参数量;context=上下文;cost=API 价格;effort=评测模式;date=发布日期;src=数据来源渠道(datalearner/datalearner-unsourced/llm-stats/benchlm/aireleasetracker)\n" +
+      "// 字段说明:model=模型名;score=严格全通过率 task_completed_correctly(%);org=厂商;size=参数量;context=上下文;cost=API 价格;effort=评测模式;date=发布日期;src=数据来源渠道(datalearner/datalearner-unsourced/llm-stats/benchlm/aireleasetracker/tencent-official)\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。\n",
       {
         source: "AutomationBench",

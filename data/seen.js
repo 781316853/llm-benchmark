@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-11-11',
+  'updated': '2026-11-16',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -310,6 +310,30 @@ window.SEEN = {
     'datalearner|Claude Fable 5.2': '2026-11-10',
     'tbench|Claude Mythos 5.2': '2026-11-10',
     'tbench|Claude Fable 5.2': '2026-11-10',
-    'llm|ERNIE-5.5-Flash-Preview (high)': '2026-11-11'
+    'llm|ERNIE-5.5-Flash-Preview (high)': '2026-11-11',
+    'deepswe|Qwen4-Max': '2026-11-16',
+    'deepswe|ERNIE 5.5 Flash Preview': '2026-11-16',
+    'deepswe|DeepSeek-V4-Flash-0731': '2026-11-16',
+    'deepswe|Seed 2.1 Pro': '2026-11-16',
+    'deepswe|Seed 2.1 Turbo': '2026-11-16',
+    'deepswe|Hy4 flash': '2026-11-16',
+    'tbench|Fable 5.2': '2026-11-16',
+    'tbench|Gemini 4 Hydrogen': '2026-11-16',
+    'tbench|Haiku 5.5': '2026-11-16',
+    'tbench|DeepSeek V4.1 Flash 1017': '2026-11-16',
+    'tbench|Muse Ember': '2026-11-16',
+    'tbench|MiMo V2.6 Pro': '2026-11-16',
+    'tbench|MiMo V2.6 Flash': '2026-11-16',
+    'tbench|Inkling Small 2': '2026-11-16',
+    'tbench|MiniMax M3': '2026-11-16',
+    'tbench|DeepSeek V4 Pro 0813': '2026-11-16',
+    'tbench|Beam 1.0': '2026-11-16',
+    'tbench|GPT-5.4 Mini': '2026-11-16',
+    'tbench|Inkling Small': '2026-11-16',
+    'tbench|Nemotron 3.5 Super VL': '2026-11-16',
+    'tbench|Inkling': '2026-11-16',
+    'tbench|Qwen4-Max': '2026-11-16',
+    'tbench|Hy4 flash': '2026-11-16',
+    'tbench|Claude Haiku 4.5': '2026-11-16'
   }
 };

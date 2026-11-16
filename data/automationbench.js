@@ -1,4 +1,4 @@
-// 数据源:AutomationBench(Zapier 跨应用业务工作流智能体基准,更新于 2026-11-11)
+// 数据源:AutomationBench(Zapier 跨应用业务工作流智能体基准,更新于 2026-11-16)
 // 主渠道:https://www.datalearner.com/benchmarks/automation-bench(厂商官方发布成绩转录)
 // 补充:https://llm-stats.com/benchmarks/automationbench(官方:https://zapier.com/benchmarks)
 // 补充:https://benchlm.ai/benchmarks/automationbench(benchlm 镜像)
@@ -6,7 +6,7 @@
 // 官方榜说明:zapier.com/benchmarks 原始 HTML 只渲染 Top 10(其余行由前端展开),且主榜用私有 held-out 集,故仅作来源链接
 // 出处校验:datalearner 转录行中 evidence 缺 sourceUrl 的按最低层级处理(src=datalearner-unsourced,仅补缺、不覆盖有出处数据)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
-// 字段说明:model=模型名;score=严格全通过率 task_completed_correctly(%);org=厂商;size=参数量;context=上下文;cost=API 价格;effort=评测模式;date=发布日期;src=数据来源渠道(datalearner/datalearner-unsourced/llm-stats/benchlm/aireleasetracker)
+// 字段说明:model=模型名;score=严格全通过率 task_completed_correctly(%);org=厂商;size=参数量;context=上下文;cost=API 价格;effort=评测模式;date=发布日期;src=数据来源渠道(datalearner/datalearner-unsourced/llm-stats/benchlm/aireleasetracker/tencent-official)
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数。
 window.AUTOMATIONBENCH = {
   'source': 'AutomationBench',
@@ -15,13 +15,13 @@ window.AUTOMATIONBENCH = {
   'repoUrl': 'https://github.com/zapier/AutomationBench',
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-16',
+  'refreshedAt': '2026-11-16 19:47',
   'stats': {
     'tasks': 600,
     'domains': 6,
     'tools': 47,
-    'entries': 45,
+    'entries': 76,
     'unsourced': 6
   },
   'desc': 'AutomationBench(Zapier):跨应用业务工作流智能体基准,600 个公开任务分布在 47 个模拟 SaaS 工具、6 个业务域(销售/营销/运营/客服/财务/HR),把一个真实运营请求交给智能体、再按最终环境状态做确定性断言打分(不看回复文本、无 LLM-as-judge);主指标为严格全通过率 task_completed_correctly,越高越好。分数普遍偏低,主因是「宣称完成但环境状态错误」的假自信。',
@@ -37,11 +37,15 @@ window.AUTOMATIONBENCH = {
       'rank': 1
     },
     {
+      'rank': 2,
       'model': 'ERNIE 5.5 Flash Preview',
       'org': 'Baidu',
       'score': 61.9,
-      'src': 'benchlm',
-      'rank': 2
+      'size': '280B',
+      'context': '1.0M',
+      'cost': '$ 0.28 / $ 1.13',
+      'license': null,
+      'src': 'llm-stats'
     },
     {
       'model': 'DeepSeek-V4.1-Flash-1017',
@@ -99,8 +103,8 @@ window.AUTOMATIONBENCH = {
       'date': '2026-10-28',
       'src': 'datalearner',
       'size': '—',
-      'context': '—',
-      'cost': '—',
+      'context': '1.0M',
+      'cost': '$ 2.00 / $ 10.00',
       'rank': 7
     },
     {
@@ -138,16 +142,26 @@ window.AUTOMATIONBENCH = {
       'rank': 11
     },
     {
+      'model': 'Hy4 Flash',
+      'org': '腾讯AI实验室',
+      'score': 52.2,
+      'license': '已宣布开源（权重待发布）',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-11-16',
+      'src': 'datalearner',
+      'rank': 12
+    },
+    {
       'model': 'LongCat-2.5',
       'org': 'Meituan',
       'score': 51.8,
       'src': 'benchlm',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'Claude Fable 5.2',
       'org': 'Anthropic',
-      'score': 51.4,
+      'score': 51.45,
       'license': '不开源',
       'effort': '最高（工具）',
       'date': '2026-11-09',
@@ -155,7 +169,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 8.00 / $ 40.00',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'Gemini 4 Argon',
@@ -168,7 +182,17 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 14
+      'rank': 15
+    },
+    {
+      'model': 'Gemini 4 Hydrogen',
+      'org': 'Google DeepMind',
+      'score': 51.14,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-11-12',
+      'src': 'datalearner',
+      'rank': 16
     },
     {
       'model': 'Qwen3.8-Max-0902',
@@ -178,27 +202,24 @@ window.AUTOMATIONBENCH = {
       'effort': '极高强度思考（工具）',
       'date': '2026-09-02',
       'src': 'datalearner-unsourced',
-      'rank': 15
+      'rank': 17
     },
     {
       'model': 'Ultramarine 1 Flash',
       'org': 'Paper Instruments',
       'score': 50.2,
       'src': 'benchlm',
-      'rank': 16
+      'rank': 18
     },
     {
-      'rank': 17,
-      'model': 'Muse Spark 1.3',
-      'org': 'Meta',
-      'score': 49.4,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 0.10 / $ 0.20',
-      'license': '不开源',
-      'src': 'llm-stats',
+      'model': 'Qwen3.8-Flash-Next',
+      'org': '阿里巴巴',
+      'score': 49.3,
+      'license': '有条件免费商用授权',
       'effort': '最高（工具）',
-      'date': '2026-09-02'
+      'date': '2026-08-26',
+      'src': 'datalearner',
+      'rank': 19
     },
     {
       'model': 'GLM-5.3-Flash',
@@ -211,7 +232,7 @@ window.AUTOMATIONBENCH = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 18
+      'rank': 20
     },
     {
       'model': 'GLM-5.3',
@@ -224,12 +245,19 @@ window.AUTOMATIONBENCH = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 19
+      'rank': 21
+    },
+    {
+      'model': 'Muse Wonder Full',
+      'score': 45.4,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 22
     },
     {
       'model': 'Claude Sonnet 5.5',
       'org': 'Anthropic',
-      'score': 44.7,
+      'score': 44.75,
       'license': '不开源',
       'effort': '最高（工具）',
       'date': '2026-09-28',
@@ -237,7 +265,7 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 20
+      'rank': 23
     },
     {
       'model': 'Step 5 Preview',
@@ -247,7 +275,20 @@ window.AUTOMATIONBENCH = {
       'effort': '思考模式 High（工具）',
       'date': '2026-09-20',
       'src': 'datalearner',
-      'rank': 21
+      'rank': 24
+    },
+    {
+      'model': 'Claude Opus 5.5',
+      'org': 'Anthropic',
+      'score': 42.47,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-09-22',
+      'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 4.00 / $ 20.00',
+      'rank': 25
     },
     {
       'model': 'GPT-6 Astra',
@@ -260,10 +301,10 @@ window.AUTOMATIONBENCH = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 10.00 / $ 50.00',
-      'rank': 22
+      'rank': 26
     },
     {
-      'rank': 23,
+      'rank': 27,
       'model': 'LFM3-1.7B',
       'org': 'Liquid AI',
       'score': 41.3,
@@ -274,20 +315,7 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'model': 'Claude Opus 5.5',
-      'org': 'Anthropic',
-      'score': 40,
-      'license': '不开源',
-      'effort': '最高（工具）',
-      'date': '2026-09-22',
-      'src': 'datalearner',
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 4.00 / $ 20.00',
-      'rank': 24
-    },
-    {
-      'rank': 25,
+      'rank': 28,
       'model': 'Beam 1.0',
       'org': 'Reflection AI',
       'score': 39.3,
@@ -298,137 +326,189 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'model': 'DeepSeek-V4-Flash',
-      'org': 'DeepSeek-AI',
-      'score': 37.7,
-      'license': '免费商用授权',
+      'model': 'Muse Wonder',
+      'score': 39.1,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 29
+    },
+    {
+      'model': 'Muse Spark 1.2',
+      'score': 38.2,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 30
+    },
+    {
+      'model': 'GPT-6 Luna',
+      'org': 'OpenAI',
+      'score': 38.1,
+      'license': '不开源',
       'effort': '最高（工具）',
-      'date': '2026-04-24',
-      'src': 'datalearner-unsourced',
-      'rank': 26
+      'date': '2026-09-22',
+      'src': 'datalearner',
+      'rank': 31
+    },
+    {
+      'model': 'Beam',
+      'org': 'Reflection AI',
+      'score': 37,
+      'license': '免费商用授权',
+      'effort': '思考档位未公开（工具）',
+      'date': '2026-10-05',
+      'src': 'datalearner',
+      'rank': 32
     },
     {
       'model': 'Ripple-65B Preview',
       'org': 'Ricursive Intelligence',
       'score': 36.4,
       'src': 'benchlm',
-      'rank': 27
-    },
-    {
-      'model': 'GPT-6.1 Sol',
-      'org': 'OpenAI',
-      'score': 36.1,
-      'src': 'benchlm',
-      'rank': 28
+      'rank': 33
     },
     {
       'model': 'GPT-6 Sol',
       'org': 'OpenAI',
       'score': 33.2,
-      'src': 'benchlm',
-      'rank': 29
+      'license': '不开源',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-09-22',
+      'src': 'datalearner',
+      'rank': 34
     },
     {
-      'rank': 30,
       'model': 'Hy4 preview',
-      'org': 'Tencent',
+      'org': '腾讯AI实验室',
       'score': 32.1,
+      'license': '免费商用授权',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-08-28',
+      'src': 'datalearner',
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 35
     },
     {
-      'rank': 31,
-      'model': 'DeepSeek-V4-Pro-0813',
-      'org': 'DeepSeek',
+      'model': 'DeepSeek V4 Pro 0813',
+      'org': 'DeepSeek-AI',
       'score': 31.8,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-08-13',
+      'src': 'datalearner',
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 36
     },
     {
-      'rank': 32,
+      'model': 'GPT-6.1 Sol',
+      'org': 'OpenAI',
+      'score': 31.7,
+      'license': '不开源',
+      'effort': '思考模式 Medium（工具）',
+      'date': '2026-09-29',
+      'src': 'datalearner',
+      'rank': 37
+    },
+    {
       'model': 'Claude Fable 5.1',
       'org': 'Anthropic',
       'score': 31.4,
+      'license': '不开源',
+      'effort': 'Max（各子任务工具配置不同）',
+      'date': '2026-09-01',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 10.00 / $ 50.00',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 38
     },
     {
-      'rank': 33,
-      'model': 'Kimi K3',
-      'org': 'Moonshot AI',
-      'score': 30.8,
-      'size': '2.8T',
-      'context': '1.0M',
-      'cost': '$ 2.85 / $ 14.25',
-      'license': '有条件免费商用授权',
-      'src': 'llm-stats',
-      'effort': '最高（工具）',
-      'date': '2026-07-16'
-    },
-    {
-      'rank': 34,
       'model': 'Gemini 3.7 Flash',
-      'org': 'Google',
-      'score': 30.4,
+      'org': 'Google DeepMind',
+      'score': 30.44,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-08-13',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 3.75',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 39
+    },
+    {
+      'model': 'Gemini 3.8 Flash',
+      'org': 'Google DeepMind',
+      'score': 29.68,
+      'license': '不开源',
+      'effort': '思考模式 Medium（工具）',
+      'date': '2026-09-02',
+      'src': 'datalearner',
+      'rank': 40
+    },
+    {
+      'model': 'GPT-5.6 Sol',
+      'org': 'OpenAI',
+      'score': 28.77,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-06-26',
+      'src': 'datalearner',
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 5.00 / $ 30.00',
+      'rank': 41
     },
     {
       'model': 'LFM2.5-24B-A2B',
       'org': 'LiquidAI',
       'score': 27.69,
       'src': 'benchlm',
-      'rank': 35
+      'rank': 42
     },
     {
-      'rank': 36,
-      'model': 'Qwen3.8 Max',
-      'org': 'Alibaba Cloud / Qwen Team',
+      'model': 'Qwen3.8-Max',
+      'org': '阿里巴巴',
       'score': 27.3,
+      'license': '有条件免费商用授权',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-08-03',
+      'src': 'datalearner',
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 43
     },
     {
-      'rank': 37,
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
-      'score': 26,
+      'score': 26.94,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-07-24',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 5.00 / $ 25.00',
-      'license': '不开源',
-      'src': 'llm-stats',
-      'effort': '最高（工具）',
-      'date': '2026-07-24'
+      'rank': 44
     },
     {
-      'rank': 38,
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
-      'org': 'DeepSeek',
+      'org': 'DeepSeek-AI',
       'score': 25.7,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-08-21',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 45
     },
     {
-      'rank': 39,
+      'rank': 46,
       'model': 'K2 Horizon 375B-A23B',
       'org': 'Institute of Foundation Models',
       'score': 25.3,
@@ -439,72 +519,325 @@ window.AUTOMATIONBENCH = {
       'src': 'llm-stats'
     },
     {
-      'rank': 40,
-      'model': 'DeepSeek-V4-Flash-0731',
-      'org': 'DeepSeek',
+      'model': 'DeepSeek V4 Flash 0731',
+      'org': 'DeepSeek-AI',
       'score': 25.1,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-07-31',
+      'src': 'datalearner',
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 47
     },
     {
-      'rank': 41,
-      'model': 'GPT-5.6 Sol',
-      'org': 'OpenAI',
-      'score': 18.1,
-      'size': '—',
-      'context': '1.1M',
-      'cost': '$ 5.00 / $ 30.00',
-      'license': '不开源',
-      'src': 'llm-stats',
-      'effort': '最高（工具）',
-      'date': '2026-06-26'
-    },
-    {
-      'rank': 42,
-      'model': 'Claude Fable 5',
-      'org': 'Anthropic',
-      'score': 17.4,
-      'size': '—',
-      'context': '1.0M',
-      'cost': '$ 10.00 / $ 50.00',
-      'license': null,
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 43,
       'model': 'GPT-5.6 Terra',
       'org': 'OpenAI',
-      'score': 15.2,
+      'score': 23.59,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-06-26',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 12.00',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 48
     },
     {
-      'rank': 44,
+      'model': 'Kimi K3',
+      'org': 'Moonshot AI',
+      'score': 22.68,
+      'license': '有条件免费商用授权',
+      'effort': '官方报告最高值（具体推理档位未注明）',
+      'date': '2026-07-16',
+      'src': 'datalearner',
+      'size': '2.8T',
+      'context': '1.0M',
+      'cost': '$ 2.85 / $ 14.25',
+      'rank': 49
+    },
+    {
+      'model': 'Muse Spark 1.3',
+      'org': 'Facebook AI研究实验室',
+      'score': 20.7,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-09-02',
+      'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 0.10 / $ 0.20',
+      'rank': 50
+    },
+    {
+      'model': 'DeepSeek-V4-Flash',
+      'org': 'DeepSeek-AI',
+      'score': 18.11,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-04-24',
+      'src': 'datalearner',
+      'rank': 51
+    },
+    {
+      'model': 'Claude Fable 5',
+      'org': 'Anthropic',
+      'score': 17.05,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-06-09',
+      'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 10.00 / $ 50.00',
+      'rank': 52
+    },
+    {
       'model': 'GPT-5.6 Luna',
       'org': 'OpenAI',
-      'score': 14.9,
+      'score': 17.05,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-06-26',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 53
     },
     {
-      'rank': 45,
+      'model': 'Gemini 3.6 Flash',
+      'org': 'Google DeepMind',
+      'score': 17.05,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-07-21',
+      'src': 'datalearner',
+      'rank': 54
+    },
+    {
+      'model': 'Claude Opus 4.8',
+      'org': 'Anthropic',
+      'score': 16.89,
+      'license': '不开源',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-05-28',
+      'src': 'datalearner',
+      'rank': 55
+    },
+    {
+      'model': 'GPT-5.5',
+      'org': 'OpenAI',
+      'score': 16.59,
+      'license': '不开源',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-04-23',
+      'src': 'datalearner',
+      'rank': 56
+    },
+    {
+      'model': 'Opus 4.7',
+      'org': 'Anthropic',
+      'score': 13.39,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-04-16',
+      'src': 'datalearner',
+      'rank': 57
+    },
+    {
+      'model': 'Gemini 3.5 Flash',
+      'org': 'Google DeepMind',
+      'score': 13.39,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-05-19',
+      'src': 'datalearner',
+      'rank': 58
+    },
+    {
+      'model': 'DeepSeek-V4-Pro',
+      'org': 'DeepSeek-AI',
+      'score': 12.8,
+      'license': '免费商用授权',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-08-13',
+      'src': 'datalearner',
+      'rank': 59
+    },
+    {
+      'model': 'Claude Haiku 5.5',
+      'org': 'Anthropic',
+      'score': 12.02,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-10-07',
+      'src': 'datalearner',
+      'rank': 60
+    },
+    {
+      'model': 'GPT-5.4',
+      'org': 'OpenAI',
+      'score': 11.57,
+      'license': '不开源',
+      'effort': '极高强度思考（工具）',
+      'date': '2026-03-05',
+      'src': 'datalearner',
+      'rank': 61
+    },
+    {
       'model': 'Claude Sonnet 5',
       'org': 'Anthropic',
-      'score': 13.5,
+      'score': 10.65,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-06-30',
+      'src': 'datalearner',
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 62
+    },
+    {
+      'model': 'Gemini 3.1 Pro Preview',
+      'org': 'Google DeepMind',
+      'score': 8.68,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-02-20',
+      'src': 'datalearner',
+      'rank': 63
+    },
+    {
+      'model': 'GLM-5.2',
+      'org': '智谱AI',
+      'score': 7.76,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-06-13',
+      'src': 'datalearner',
+      'rank': 64
+    },
+    {
+      'model': 'GLM 5.1',
+      'org': '智谱AI',
+      'score': 6.2,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-03-27',
+      'src': 'datalearner',
+      'rank': 65
+    },
+    {
+      'model': 'Claude Sonnet 4.6',
+      'org': 'Anthropic',
+      'score': 5.33,
+      'license': '不开源',
+      'effort': '最高（工具）',
+      'date': '2026-02-17',
+      'src': 'datalearner',
+      'rank': 66
+    },
+    {
+      'model': 'MiniMax M3',
+      'org': 'MiniMaxAI',
+      'score': 4.87,
+      'license': '不可以商用',
+      'effort': '最高（工具）',
+      'date': '2026-06-01',
+      'src': 'datalearner',
+      'rank': 67
+    },
+    {
+      'model': 'Qwen3.6-Plus',
+      'org': '阿里巴巴',
+      'score': 4.3,
+      'license': '不开源',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-04-01',
+      'src': 'datalearner',
+      'rank': 68
+    },
+    {
+      'model': 'Gemini 3.5 Flash-Lite',
+      'org': 'Google DeepMind',
+      'score': 3.96,
+      'license': '不开源',
+      'effort': '思考模式 Medium（工具）',
+      'date': '2026-07-21',
+      'src': 'datalearner',
+      'rank': 69
+    },
+    {
+      'model': 'Qwen3.7-Plus',
+      'org': '阿里巴巴',
+      'score': 3.7,
+      'license': '不开源',
+      'effort': '官方报告最高值（具体推理档位未注明）',
+      'date': '2026-05-31',
+      'src': 'datalearner',
+      'rank': 70
+    },
+    {
+      'model': 'Kimi K2.7 Code',
+      'org': 'Moonshot AI',
+      'score': 3.2,
+      'license': '免费商用授权',
+      'effort': '官方报告最高值（具体推理档位未注明）',
+      'date': '2026-06-12',
+      'src': 'datalearner',
+      'rank': 71
+    },
+    {
+      'model': 'Kimi K2.6',
+      'org': 'Moonshot AI',
+      'score': 2.59,
+      'license': '免费商用授权',
+      'effort': '官方报告最高值（具体推理档位未注明）',
+      'date': '2026-04-20',
+      'src': 'datalearner',
+      'rank': 72
+    },
+    {
+      'model': 'Gemma 4 31B',
+      'org': 'Google DeepMind',
+      'score': 1.7,
+      'license': '免费商用授权',
+      'effort': '最高（工具）',
+      'date': '2026-04-02',
+      'src': 'datalearner',
+      'rank': 73
+    },
+    {
+      'model': 'Haiku 4.5',
+      'org': 'Anthropic',
+      'score': 0.46,
+      'license': '不开源',
+      'effort': '官方报告最高值（具体推理档位未注明）',
+      'date': '2025-10-15',
+      'src': 'datalearner',
+      'rank': 74
+    },
+    {
+      'model': 'MiniMax-M2.7',
+      'org': 'MiniMaxAI',
+      'score': 0.46,
+      'license': '不可以商用',
+      'effort': '思考模式 High（工具）',
+      'date': '2026-03-18',
+      'src': 'datalearner',
+      'rank': 75
+    },
+    {
+      'model': 'GPT OSS 120B',
+      'org': 'OpenAI',
+      'score': 0.15,
+      'license': '免费商用授权',
+      'effort': '思考模式 High（工具）',
+      'date': '2025-08-06',
+      'src': 'datalearner',
+      'rank': 76
     }
   ]
 };

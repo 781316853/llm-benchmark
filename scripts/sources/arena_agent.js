@@ -44,7 +44,12 @@ const ANNOUNCED = [
   { name: "deepseek-v4.1-flash-20261017 (max)", org: "deepseek", license: "MIT",
     score: 4.37, ci: 0.86, sessions: 34721, observations: null, srcRank: 13,
     category: "overall", date: "2026-10-23", src: "announced",
-    sourceUrl: "https://arena.ai/leaderboard/agent" }
+    sourceUrl: "https://arena.ai/leaderboard/agent" },
+  // Qwen 官方发布图(2026-11-16)AgentArena 净提升 7.5;官方数据集批次未收录,先补缺,收录后自动去重。
+  { name: "qwen4-max (xhigh)", org: "alibaba", license: "Proprietary",
+    score: 7.5, ci: null, sessions: null, observations: null, srcRank: null,
+    category: "overall", date: "2026-11-16", src: "qwen-official",
+    sourceUrl: "https://qwen.ai/blog?id=qwen4-max" }
 ];
 
 // 去重键:忽略 effort 注解,把 20261017 与 1017 折叠为同一键;0910/1017 等构建号保持区分

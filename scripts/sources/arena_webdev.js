@@ -24,7 +24,10 @@ const CONFIG = require("../lib/config");
 // sourceUrl 取官方榜地址(公告无稳定的单条链接)。
 const ANNOUNCED = [
   { name: "deepseek-v4.1-flash-20261017 (max)", org: "DeepSeek", score: 1670, ci: null, votes: null,
-    date: "2026-10-19", sourceUrl: "https://arena.ai/leaderboard/code" }
+    date: "2026-10-19", src: "selftest", sourceUrl: "https://arena.ai/leaderboard/code" },
+  // Qwen 官方发布图(2026-11-16)CodeArena Elo 1750;镜像每日快照通常滞后数日,先补缺,收录后自动去重。
+  { name: "qwen4-max (xhigh)", org: "Alibaba", score: 1750, ci: null, votes: null,
+    date: "2026-11-16", src: "qwen-official", sourceUrl: "https://qwen.ai/blog?id=qwen4-max" }
 ];
 
 // 去重键:忽略 effort 注解,并把 Arena 的 20261017 写法与本站 1017 写法折叠为同一键
@@ -41,7 +44,7 @@ function mergeAnnounced(models) {
   ANNOUNCED.forEach(function (s) {
     if (have[seedKey(s.name)]) return;
     models.push({ name: s.name, org: s.org, score: s.score, ci: s.ci, votes: s.votes,
-      src: "selftest", date: s.date, sourceUrl: s.sourceUrl });
+      src: s.src || "selftest", date: s.date, sourceUrl: s.sourceUrl });
   });
   models.sort(function (a, b) { return b.score - a.score; });
   return models;

@@ -1,6 +1,6 @@
 // 数据源:DeepSWE 官方 JSON 端点(结构化)
 // 迁移自原 fetch_all.js 的 fetchDeepSweJson。
-// 注册两个实例:v1.1(默认榜单,含 datalearner 补充)+ v1.0(历史榜单)。
+// 注册两个实例:v1.1(默认榜单,含 datalearner / 厂商种子 / AI Release Tracker / llm-stats 补充)+ v1.0(历史榜单)。
 // 输出格式与原脚本逐字节等价(window.DEEPSWE / window.DEEPSWE_V10)。
 "use strict";
 const BaseSource = require("../lib/BaseSource");
@@ -11,6 +11,7 @@ const writers = require("../lib/writers");
 const CONFIG = require("../lib/config");
 const officialSeeds = require("../lib/official-seeds");
 const art = require("../lib/aireleasetracker");
+const parseLlmStats = require("../lib/parseLlmStats");
 const { parseDataLearner } = require("./datalearner");
 
 // 模型名归一化(跨源去重匹配):转小写并移除非字母数字字符
@@ -133,6 +134,26 @@ class DeepSweBase extends BaseSource {
     } catch (e) {
       console.log("  [aireleasetracker] DeepSWE 补充失败: " + e.message);
     }
+    // llm-stats(T3)只补缺失模型:官方/datalearner/种子/ART 都未收录时才追加。
+    // 该页为 0-1 转录、百分比与官方口径一致(共有模型分差 ≤2 分),不覆盖任何已有分数。
+    try {
+      const lsHtml = await transport.fetchWithRetry(CONFIG.sources.llm_stats_deepswe.url);
+      const ls = parseLlmStats.parse(lsHtml, { name: "DeepSWE", maxScore: 1 });
+      const have = {};
+      parsed.models.forEach(function (m) { have[normName(m.name)] = true; });
+      ls.models.forEach(function (m) {
+        if (have[normName(m.model)]) return;
+        have[normName(m.model)] = true;
+        parsed.models.push({
+          name: m.model, effort: "-", pass1: m.score,
+          ci: null, cost: null, outTok: null, steps: null, src: "llm-stats"
+        });
+        console.log("  [llm-stats] 补充: " + m.model + " (" + m.score + "%)");
+      });
+      parsed.models.sort(function (a, b) { return b.pass1 - a.pass1; });
+    } catch (e) {
+      console.log("  [llm-stats] DeepSWE 补充失败: " + e.message);
+    }
     if (!parsed.models.length) throw new Error(this.cfg.name + " 未解析到任何数据");
     const standard = this.toStandard(parsed);
     await this.write(parsed, standard);
@@ -170,10 +191,11 @@ class DeepSweV11Source extends DeepSweBase {
 // 补充:https://www.datalearner.com/benchmarks/deepswe(厂商官方发布 T2,只补缺,官方口径优先;更新于 ${T})
 // 补充:厂商官方发布(博客/模型卡/更新页 T2,人工转录种子层,只补缺失模型,协议不可比仅供参考;Qwen 见 https://developer.aliyun.com/article/1763215,DeepSeek 见 https://api-docs.deepseek.com/zh-cn/updates)
 // 补充:https://aireleasetracker.com/benchmark/deepswe-1.1(第三方聚合 T3,只补缺失模型)
+// 补充:https://llm-stats.com/benchmarks/deepswe(第三方聚合 T3,只补缺失模型)
 // ${CONFIG.channelPolicy}
 // 字段说明:name=模型名;effort=推理强度;pass1=Pass@1(%);ci=置信区间(±%);
 //          cost=平均单任务成本($);outTok=平均输出 tokens;steps=平均 Agent 步数;
-//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official/tencent-official=厂商官方发布转录补充条目;aireleasetracker=第三方聚合补缺)
+//          src=数据来源渠道(official=官方榜;datalearner=厂商官方发布补充条目;qwen-official/deepseek-official/tencent-official=厂商官方发布转录补充条目;aireleasetracker/llm-stats=第三方聚合补缺)
 // 注:主源抓取 /artifacts/v1.1/leaderboard-live.json;datalearner.com 补充未收录模型(ci/cost/outTok/steps 为 null)。
 window.DEEPSWE = {
   source: "DeepSWE",
