@@ -7,7 +7,7 @@ window.MODEL_MAP_AUTO = {
     'total': 165,
     'knownVendor': 165,
     'otherVendor': 0,
-    'skippedManual': 1442,
+    'skippedManual': 1444,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -235,16 +235,6 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'EXAONE 4.0 32B',
         'Exaone 4.0 32B'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Fable（灰度）',
-      'vendor': 'Anthropic',
-      'color': '#E0855F',
-      'aliases': [
-        'Fable（灰度）',
-        'claude-fable-gray'
       ],
       'auto': true
     },
@@ -1131,6 +1121,16 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'OpenPangu 2.0 Pro',
         'openpangu-2.0-pro'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'OpenPangu 2.1 Pro',
+      'vendor': 'Huawei',
+      'color': '#9298A1',
+      'aliases': [
+        'OpenPangu 2.1 Pro',
+        'openpangu-2.1-pro'
       ],
       'auto': true
     },

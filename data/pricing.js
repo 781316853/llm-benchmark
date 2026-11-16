@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-16',
-  'refreshedAt': '2026-11-16 14:58',
+  'refreshedAt': '2026-11-17 06:24',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,18 +30,20 @@ window.PRICING = {
     'planModels': 2595,
     'withPricing': 1849,
     'comparable': 1174,
-    'models': 110,
+    'models': 113,
     'unresolved': 16,
-    'ranked': 58,
-    'supplemented': 1,
+    'ranked': 72,
+    'supplemented': 4,
     'carriedOver': 0,
     'seeded': 0,
-    'missingRanked': 3
+    'missingRanked': 5
   },
   'missingRanked': [
+    'ERNIE 5.5 Flash Preview',
     'Muse Wonder Full',
     'SWE-2',
-    'Seed 2.1 Pro'
+    'Seed 2.1 Pro',
+    'Solar Pro 4'
   ],
   'desc': '模型 API 标价快照(输入 / 缓存输入 / 输出三档单价,¥/百万 token),主源 codingplan.fyi,排名模型主源缺价时由 models.dev 官方 provider 优先补齐,仍缺价时按厂商官网标准价种子补入(priceSource 标注来源),按源站统一工作负载(95% 缓存命中、0.5% 输出占比)折算每百万 token 综合成本,供总览矩阵「性价比」列使用。',
   'models': [
@@ -532,6 +534,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'Qwen4-Max',
+      'slug': 'qwen/qwen4-max',
+      'inputCnyPerM': 10.2,
+      'cacheCnyPerM': 0.51,
+      'outputCnyPerM': 30.6,
+      'costPerM': 1.0965,
+      'priceSource': 'models.dev:openrouter'
+    },
+    {
       'id': 'Nemotron 3 Ultra',
       'slug': 'nemotron-3-ultra',
       'inputCnyPerM': 4.08,
@@ -773,6 +784,15 @@ window.PRICING = {
       'outputCnyPerM': 10.2,
       'costPerM': 0.3213,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Inkling 2 Small',
+      'slug': 'thinkingmachines/inkling-2-small',
+      'inputCnyPerM': 2.04,
+      'cacheCnyPerM': 0.204,
+      'outputCnyPerM': 6.8,
+      'costPerM': 0.3196,
+      'priceSource': 'models.dev:openrouter'
     },
     {
       'id': 'Tencent Hy3',
@@ -1034,6 +1054,15 @@ window.PRICING = {
       'outputCnyPerM': 1.36,
       'costPerM': 0.05032,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Tencent Hy4 Flash',
+      'slug': 'tencent/hy4-flash',
+      'inputCnyPerM': 0.238,
+      'cacheCnyPerM': 0.0102,
+      'outputCnyPerM': 0.9554,
+      'costPerM': 0.025177,
+      'priceSource': 'models.dev:openrouter'
     }
   ]
 };

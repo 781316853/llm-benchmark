@@ -14,10 +14,10 @@ window.TBENCH = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
   'updated': '2026-11-16',
-  'refreshedAt': '2026-11-16 19:46',
+  'refreshedAt': '2026-11-17 06:24',
   'stats': {
     'tasks': 66,
-    'entries': 66
+    'entries': 65
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
@@ -539,6 +539,18 @@ window.TBENCH = {
     },
     {
       'rank': 44,
+      'model': 'Hy4 Preview',
+      'agent': 'Claude Code',
+      'effort': 'max',
+      'score': 19.1,
+      'ci': 3.1,
+      'date': 'Aug 28, 2026',
+      'tokens': '6.0B',
+      'cost': '$658.09',
+      'src': 'official'
+    },
+    {
+      'rank': 45,
       'model': 'Gemini 3.8 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -550,7 +562,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 45,
+      'rank': 46,
       'model': 'GPT-5.6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -562,7 +574,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 46,
+      'rank': 47,
       'model': 'MiMo V2.6 Flash',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -574,7 +586,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 47,
+      'rank': 48,
       'model': 'GPT-6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -586,7 +598,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 48,
+      'rank': 49,
       'model': 'Muse Spark 1.3',
       'agent': 'Muse Code',
       'effort': 'xhigh',
@@ -598,7 +610,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 49,
+      'rank': 50,
       'model': 'Inkling Small 2',
       'agent': 'mini-swe-agent',
       'effort': 'xhigh',
@@ -610,7 +622,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'Gemini 3.7 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -622,7 +634,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'Grok 4.5',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -634,7 +646,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'Sonnet 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -646,7 +658,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 53,
+      'rank': 54,
       'model': 'MiniMax M3',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -658,7 +670,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 54,
+      'rank': 55,
       'model': 'DeepSeek V4 Pro 0813',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -670,7 +682,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 55,
+      'rank': 56,
       'model': 'Beam 1.0',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -682,7 +694,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 56,
+      'rank': 57,
       'model': 'GPT-5.4 Mini',
       'agent': 'Codex',
       'effort': 'xhigh',
@@ -694,7 +706,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 57,
+      'rank': 58,
       'model': 'Inkling Small',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -706,7 +718,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 58,
+      'rank': 59,
       'model': 'Nemotron 3.5 Super VL',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -718,7 +730,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 59,
+      'rank': 60,
       'model': 'Inkling',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -788,30 +800,6 @@ window.TBENCH = {
       'tokens': null,
       'cost': null,
       'src': 'tencent-official'
-    },
-    {
-      'rank': null,
-      'model': 'DeepSeek-V4.1-Flash',
-      'agent': null,
-      'effort': null,
-      'score': 31.2,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
-    },
-    {
-      'rank': null,
-      'model': 'Claude Haiku 4.5',
-      'agent': null,
-      'effort': null,
-      'score': 0,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': null,
-      'src': 'aireleasetracker'
     }
   ]
 };

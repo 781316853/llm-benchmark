@@ -336,6 +336,14 @@ window.SEEN = {
     'tbench|Hy4 flash': '2026-11-16',
     'tbench|Claude Haiku 4.5': '2026-11-16',
     'datalearner|Qwen4-Max': '2026-11-16',
-    'llm|Gemini 4 Hydrogen (high)': '2026-11-16'
+    'llm|Gemini 4 Hydrogen (high)': '2026-11-16',
+    'deepswe|GPT-5.6 Sol': '2026-11-16',
+    'deepswe|GPT-5.6 Terra': '2026-11-16',
+    'deepswe|GPT-5.6 Luna': '2026-11-16',
+    'deepswe|DeepSeek-V4-Pro-0813': '2026-11-16',
+    'datalearner|ERNIE 5.5 Flash Preview': '2026-11-16',
+    'tbench|Hy4 Preview': '2026-11-16',
+    'llm|Qwen3.8-Max-0902 (xhigh)': '2026-11-16',
+    'llm|Hy4 flash (high)': '2026-11-16'
   }
 };

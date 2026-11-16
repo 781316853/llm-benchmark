@@ -12,7 +12,7 @@ window.NL2REPO = {
   'officialUrl': 'https://github.com/multimodal-art-projection/NL2RepoBench',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-16',
-  'refreshedAt': '2026-11-16 14:58',
+  'refreshedAt': '2026-11-17 06:24',
   'stats': {
     'tasks': 103,
     'entries': 56
@@ -58,15 +58,15 @@ window.NL2REPO = {
       'rank': 4
     },
     {
-      'rank': 5,
       'model': 'ERNIE 5.5 Flash Preview',
-      'org': 'Baidu',
+      'org': '百度',
       'score': 64.8,
+      'license': '已宣布开源（权重待发布）',
+      'src': 'datalearner',
       'size': '280B',
       'context': '1.0M',
       'cost': '$ 0.28 / $ 1.13',
-      'license': null,
-      'src': 'llm-stats'
+      'rank': 5
     },
     {
       'model': 'DeepSeek V4 Pro 0813',

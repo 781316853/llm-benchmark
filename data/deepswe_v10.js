@@ -8,9 +8,29 @@ window.DEEPSWE_V10 = {
   url: "https://deepswe.datacurve.ai/",
   version: "v1.0",
   captured: "2026-11-16",
-  stats: { models: 21 },
+  stats: { models: 34 },
   desc: "DeepSWE v1.0 历史榜单(测试了更多模型),作为 v1.1 的补充数据合入展示。",
   models: [
+  {
+    'name': 'Kimi K3.1 Pro',
+    'effort': '-',
+    'pass1': 75.5,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
+    'name': 'GPT-5.6 Sol',
+    'effort': '-',
+    'pass1': 72.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
   {
     'name': 'gpt-5-5',
     'effort': 'xhigh',
@@ -20,6 +40,66 @@ window.DEEPSWE_V10 = {
     'outTok': 46977,
     'steps': 79,
     'src': 'official'
+  },
+  {
+    'name': 'GPT-5.6 Terra',
+    'effort': '-',
+    'pass1': 69.6,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
+    'name': 'Kimi K3',
+    'effort': '-',
+    'pass1': 67.5,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
+    'name': 'GPT-5.6 Luna',
+    'effort': '-',
+    'pass1': 67.2,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
+    'name': 'Hy4 preview',
+    'effort': '-',
+    'pass1': 64.3,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
+    'name': 'DeepSeek-V4-Pro-0813',
+    'effort': '-',
+    'pass1': 62.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
+    'name': 'DeepSeek-V4-Flash-Vision-Exp',
+    'effort': '-',
+    'pass1': 59.3,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
   },
   {
     'name': 'claude-opus-4-8',
@@ -42,6 +122,16 @@ window.DEEPSWE_V10 = {
     'src': 'official'
   },
   {
+    'name': 'DeepSeek-V4-Flash-0731',
+    'effort': '-',
+    'pass1': 54.4,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
     'name': 'claude-opus-4-7',
     'effort': 'max',
     'pass1': 54,
@@ -52,6 +142,16 @@ window.DEEPSWE_V10 = {
     'src': 'official'
   },
   {
+    'name': 'Grok 4.5',
+    'effort': '-',
+    'pass1': 53,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
     'name': 'glm-5-2',
     'effort': 'max',
     'pass1': 42,
@@ -60,6 +160,16 @@ window.DEEPSWE_V10 = {
     'outTok': 81513,
     'steps': 125,
     'src': 'official'
+  },
+  {
+    'name': 'Seed 2.1 Pro',
+    'effort': '-',
+    'pass1': 32.7,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
   },
   {
     'name': 'claude-sonnet-4-6',
@@ -92,6 +202,16 @@ window.DEEPSWE_V10 = {
     'src': 'official'
   },
   {
+    'name': 'Hy3',
+    'effort': '-',
+    'pass1': 28,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
+  },
+  {
     'name': 'gpt-5-4-mini',
     'effort': 'xhigh',
     'pass1': 24,
@@ -110,6 +230,16 @@ window.DEEPSWE_V10 = {
     'outTok': 84416,
     'steps': 147,
     'src': 'official'
+  },
+  {
+    'name': 'Seed 2.1 Turbo',
+    'effort': '-',
+    'pass1': 23,
+    'ci': null,
+    'cost': null,
+    'outTok': null,
+    'steps': null,
+    'src': 'llm-stats'
   },
   {
     'name': 'minimax-m3',

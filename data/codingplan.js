@@ -14,7 +14,7 @@ window.CODINGPLAN = {
   'supplementUrl': 'https://realapipricing.com/data/points.json',
   'updated': '2026-11-16',
   'siteUpdated': '2026.11.04',
-  'refreshedAt': '2026-11-16 14:58',
+  'refreshedAt': '2026-11-17 06:24',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 2,
