@@ -1,4 +1,4 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-11-11)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-11-16)
 // 来源:https://www.datalearner.com/benchmarks/hle(主渠道,厂商官方发布无工具成绩) · https://benchlm.ai/benchmarks/aahle(AA 无工具复测镜像)
 // 补充:https://aireleasetracker.com/benchmark/hle-no-tools(第三方聚合 T3,只补缺失模型)
 // 官方:https://lastexam.ai/
@@ -12,8 +12,8 @@ window.HLE = {
   'url': 'https://www.datalearner.com/benchmarks/hle',
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-16',
+  'refreshedAt': '2026-11-16 14:58',
   'stats': {
     'tasks': 2500,
     'entries': 240
@@ -1811,8 +1811,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Gemini 1.5 Pro',
-      'org': 'Google',
+      'model': 'Nemotron 3 Nano 30B',
+      'org': 'NVIDIA',
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
@@ -1820,8 +1820,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Nemotron 3 Nano 30B',
-      'org': 'NVIDIA',
+      'model': 'Gemini 1.5 Pro',
+      'org': 'Google',
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
@@ -2045,8 +2045,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-4.1 nano',
-      'org': 'OpenAI',
+      'model': 'Devstral Small',
+      'org': 'Mistral',
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
@@ -2054,8 +2054,8 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Devstral Small',
-      'org': 'Mistral',
+      'model': 'GPT-4.1 nano',
+      'org': 'OpenAI',
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',

@@ -334,6 +334,8 @@ window.SEEN = {
     'tbench|Inkling': '2026-11-16',
     'tbench|Qwen4-Max': '2026-11-16',
     'tbench|Hy4 flash': '2026-11-16',
-    'tbench|Claude Haiku 4.5': '2026-11-16'
+    'tbench|Claude Haiku 4.5': '2026-11-16',
+    'datalearner|Qwen4-Max': '2026-11-16',
+    'llm|Gemini 4 Hydrogen (high)': '2026-11-16'
   }
 };

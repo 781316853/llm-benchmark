@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-11',
-  'refreshedAt': '2026-11-12 03:46',
+  'updated': '2026-11-16',
+  'refreshedAt': '2026-11-16 14:58',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3322,
-    'afterMerge': 3319,
-    'needsZh': 2144,
-    'translated': 2144,
+    'afterToolDedupe': 3402,
+    'afterMerge': 3399,
+    'needsZh': 2181,
+    'translated': 2181,
     'untranslated': 0
   },
   'zh': {
@@ -33,6 +33,7 @@ window.CHANGELOG_MONTHLY = {
     '11df37a8-55': '/plugin 中浏览市场插件时新增搜索栏',
     '11e132c-129': '新增 --forward-subagent-text 标志和 CLAUDE_CODE_FORWARD_SUBAGENT_TEXT 环境变量，可将子智能体的文本和思考内容包含在 stream-json 输出中',
     '11e465b0-142': '添加了effortSlider ： reduceEffort、increaseEffort和toggleUltracode键绑定操作，因此/effort滑块的箭头和Tab键可以在keybindings.json中反弹',
+    '11f1e608-126': '在VS Code和类似的集成终端中添加了关于重新运行笔记本单元格的加载指示器提示，该提示会在Claude读取或编辑Jupyter笔记本后显示一次',
     '1213c9c5-47': '通过映射到 ignore 与 synthetic 支持 ACP audience',
     '121e0564-134': '为命令和HTTP钩子添加了onFailure: \'block\' ：无法启动、超时或使用意外代码退出的钩子会阻止操作，而不是让它通过',
     '12217a90-74': '! - 允许自定义智能体文件限制其可委派的子智能体类型（仅 v2 引擎）',
@@ -107,6 +108,7 @@ window.CHANGELOG_MONTHLY = {
     '1a0bce98-102': '将agentId添加到插件挂钩的tool.check事件中，以便挂钩可以从主会话的',
     '1a52d060-32': '为桌面应用添加 UI 包',
     '1a53dc03-33': '增加在 TUI 中隐藏会话标题栏的开关',
+    '1a7a1d98-77': '在“会话” → “模型提供商”下浏览模型提供商，然后为新聊天选择默认提供商。（ ， ）',
     '1a827dfc-123': '使审批标题、问题、MCP提示、警告、横幅和验证提示中的URL可点击，包括当链接跨行换行时',
     '1ad3cfd0-60': '为 API 请求新增 x-client-request-id 请求头，用于调试超时',
     '1ad3dae8-136': '在 stream-json 中新增嵌套子智能体转发：设置 --forward-subagent-text 后，深度 2 层及以上派生的子智能体现在也会显示，并以派生它的 Agent 的 tool_use id 作为标识',
@@ -137,12 +139,14 @@ window.CHANGELOG_MONTHLY = {
     '1d9c48a0-208': '在 Claude apps 网关配置中新增 store.connect_timeout_seconds，用于延长 Postgres 连接超时（默认 5 秒）；数据库不可达时改进了启动报错，指向 store.postgres_url 和所配置的超时',
     '1dce3cec-144': '新增 /claude-api upgrade，用于将 Python 项目从 anthropic 0.x 迁移到 1.x，并更新该技能的 Python 参考以适配 1.x（超时使用 anthropic.Timeout，而非 httpx.Timeout）',
     '1df406c6-170': '新增 crossSessionInbound 和 dialogExpiry 设置：发送到以绕过权限运行的会话的跨会话消息会暂存等待你批准，发送到其他会话的消息则自动投递',
+    '1df4cb1e-82': '为 Bash 允许规则添加了启动警告，该规则在变量的值中包含 *，例如 Bash(PORT=* npm run dev)',
     '1e130518-75': 'SDK 用户现可传入精确的 CLI 配置覆盖，并选择 max 或 ultra 推理 effort',
     '1e16abcc-43': '调整 Minimax m2 的 topK，并添加 Minimax m2.1 的 topP',
     '1e3d3324-36': '向自定义工具暴露 Instance.directory',
     '1e61f00a-75': '新增对日语输入法全角空格输入的支持，用于复选框选择',
     '1e6ec2b5-121': '在 TUI 中区分显示计划提醒，向 SDK 客户端暴露 cron 触发事件，并以本地时区偏移报告 cron 触发时间',
     '1f0aa070-54': '添加单实例插件以避免多个桌面窗口',
+    '1f0b47a0-245': '默认情况下，转录内容更简洁：TUI 现在将每次运行的工具调用和思考内容汇总到一个可折叠的活动行中，因此答案更容易理解。要再次查看每个步骤，请在设置中将“详细程度”设置为“中”或“高”，或在 TUI 配置中设置 session.verbosity；现有设置将保留。',
     '1f13fff8-31': '为应用添加日语翻译',
     '1f191a4-50': '升级至 Bun 1.3.1，提升性能与稳定性',
     '1f3483e4-59': 'TUI（终端用户界面）支持滚动加速',
@@ -163,6 +167,7 @@ window.CHANGELOG_MONTHLY = {
     '203f3be8-100': '为claude-api技能添加了OpenTelemetry跟踪指南，包括使用ANT CLI设置跟踪目标',
     '2042ab94-49': '添加密码认证并提升服务器安全性',
     '208ae6f4-91': '! - 新增实验性全屏 TUI 模式。设置环境变量 KIMI_CODE_TUI_FULL_SCREEN=1 即可启用',
+    '2096e33c-133': 'Codex 现在默认在 Google Cloud Vertex AI 上以增量方式发送工具更新。要选择退出，请在 config.toml 的 [features] 下将 incremental_tools_legacy_gcp 设置为 false。( , )',
     '20a5f60-34': '添加会话标题生成遥测',
     '20a98057-80': 'view_image 可通过所选环境解析文件，适用于多环境会话',
     '20b19acc-44': '支持为桌面端配置默认服务器 URL',
@@ -188,6 +193,7 @@ window.CHANGELOG_MONTHLY = {
     '2293ffb4-18': '增加新版本发布弹窗',
     '22bfd7a2-112': '打开/config以搜索跨类别的首选项，立即更改支持的设置，并查看哪些更改需要重新启动',
     '23091465-92': '选择会话记录文本，并在支持的本地Linux X11终端上以全屏模式进行中键单击粘贴',
+    '23104af8-139': '在全屏转录中开启“折叠操作详情”，即可将已完成的操作折叠至每个提示下方，同时保持答案可见，并可搜索工具输出结果。（、、、、）',
     '231106c4-67': '在远程会话和本地后台服务器会话中提供/导入',
     '2313c8f-31': '升级 toast 通知系统',
     '233b92cc-110': '新增会话入口点作为 OpenTelemetry 指标属性（app.entrypoint，需通过 OTEL_METRICS_INCLUDE_ENTRYPOINT=true 选择启用）',
@@ -211,6 +217,7 @@ window.CHANGELOG_MONTHLY = {
     '25259f50-58': '查看详细对话记录（Ctrl+O）时新增「verbose」标记',
     '252f5980-75': '新增 /reload-skills 命令，可重新扫描技能目录而无需重启会话',
     '2554090c-61': '将 OpenTUI 升级至 v0.1.62，启用文本域鼠标滚动和光标设置',
+    '256f8dbc-100': '当模型需要使用积分，而积分已关闭或用完时，添加了选项菜单（停止、切换至使用积分、升级）',
     '257e458a-72': '新增 macOS 用户指引：当 Alt 快捷键因终端配置失效时提供提示',
     '258257a1-118': '为 claude plugin install、uninstall、update、enable 和 disable 新增 --json，并在 claude plugin list --json 的每行新增 errorDetails/noteDetails',
     '258a784e-37': '为应用添加德语翻译',
@@ -294,6 +301,7 @@ window.CHANGELOG_MONTHLY = {
     '2e357dc4-17': '添加变体开关',
     '2e4f33cd-51': '为支持的 Claude 和 GPT 模型新增快速模式变体',
     '2e76e020-31': 'TUI 仅显示最近 100 条消息',
+    '2e79585a-148': '在 claude -p 和 SDK 会话中，当钩子运行时间较长时，每 30 秒添加一个进度心跳，这样，像 Claude Desktop 这样的主机就不会将轮次视为挂起（一旦其包含此版本）。',
     '2e82ea18-116': '新增 OTEL_LOG_RAW_API_BODIES 环境变量，可将完整的 API 请求和响应体作为 OpenTelemetry 日志事件输出，用于调试',
     '2e9adb68-172': '! - web：新增会话诊断导出，可将某个会话以及仅含元数据、有大小上限的排障日志打包为 ZIP 下载。运行 /export 或在会话的更多菜单中选择「导出会话」。Web 下载限制为 64 MiB',
     '2e9b0c50-29': 'Git log 输出（例如 git log 1.0.145..HEAD）',
@@ -444,6 +452,7 @@ window.CHANGELOG_MONTHLY = {
     '3dacf52c-117': '状态行可显示感知主题的颜色，以及可选的 PR 和分支变更摘要，/keymap debug 有助于检查终端按键事件',
     '3db6ea08-39': '命令栏新增中断会话选项',
     '3dc10d91-131': '新增 CLAUDE_CODE_SUBPROCESS_ENV_SCRUB=1，用于从子进程环境（Bash 工具、钩子、MCP stdio 服务器）中清除 Anthropic 和云厂商凭据',
+    '3dd728f9-79': '已添加至 Claude 插件，用于验证模组的 engine.create 钩子添加、保留或替换的 $ nouns',
     '3dd7951e-89': '应用服务器客户端可以配置thread/shellCommand超时，包括超过一小时的截止时间',
     '3dde217c-148': '在没有托管设置的计算机上，在您自己的用户设置中添加了对forceLoginMethod: \'gateway\'和forceLoginGatewayUrl的支持，因此/login在Claude应用程序网关上打开',
     '3e00b92c-60': '增加 plansDirectory 设置，可自定义计划文件的存储位置',
@@ -514,7 +523,6 @@ window.CHANGELOG_MONTHLY = {
     '437f63d8-56': '新增适用于 Windows 的 PowerShell 工具，作为选择加入的预览版。了解更多请访问',
     '43938220-94': 'Codex可以并行运行独立的只读工具，包括技能、记忆和对话历史查找',
     '43a747b0-64': '! - 新增可自定义的页脚状态行，可通过 tui.toml 中的 [status_line] 配置',
-    '442e35e1-56': 'opencode run 命令新增 --title 标志以自定义会话标题',
     '44585320-31': '添加最低版本升级提示',
     '446bde34-31': '使用 kimi --add-dir 在启动时添加它们',
     '446dbfb0-89': '新增 /cd 命令，可将会话移动到新的工作目录，且不在会话中途破坏提示缓存',
@@ -567,7 +575,6 @@ window.CHANGELOG_MONTHLY = {
     '48f815f4-40': '增加 --mdns-domain 标志以自定义 mDNS 主机名',
     '49056cf8-105': 'KIMI_MODEL_TEMPERATURE、KIMI_MODEL_TOP_P — 全局应用于任何 kimi 提供商的采样参数（不绑定 KIMI_MODEL_NAME）',
     '491a8e6e-193': '新增 /ultrareview，用于在云端利用并行多代理分析和评审运行全面的代码审查 — 不带参数调用可审查当前分支，或使用 /ultrareview 获取并审查特定的 GitHub PR',
-    '49233140-60': '新增 session.started 事件，在创建新会话时触发',
     '492660d6-109': '插件现在可通过清单中的 commands 字段提供斜杠命令，注册为 :，并以 $ARGUMENTS 展开调用',
     '4979a68-139': '当服务器连接失败时，claude mcp list 和 /mcp 现在会显示 HTTP 状态和错误文本；同时对 MCP 配置值中隐藏的首尾空白给出警告',
     '4984c900-41': '为桌面应用集成 tauri-specta',
@@ -596,6 +603,7 @@ window.CHANGELOG_MONTHLY = {
     '4cbb2c80-144': '新增 includeGitInstructions 设置（以及 CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS 环境变量），可从 Claude 的系统提示中移除内置的提交和 PR 工作流说明',
     '4ce21e38-70': '向/copy选取器添加了引用文本，因此草稿消息复制时没有>标记',
     '4d12d528-69': '增加 showTurnDuration 设置，可隐藏回合耗时消息（如「Cooked for 1m 6s」）',
+    '4d2fc724-111': '新增了 CLAUDE_CODE_RESUME_HINT_COMMAND，启动 Claude Code 的程序可以将其设置为让退出提示使用其自身的恢复命令',
     '4d541f60-65': '为多代理工作流新增 TeammateIdle 和 TaskCompleted 钩子事件',
     '4d5ca348-121': '在 /web-setup 中新增警告：当 GitHub CLI 令牌缺少 workflow 权限范围时提示，因为向超大仓库推送可能因缺少该范围而被拒绝',
     '4d843688-125': '新增用于输出模态、对话完成事件、原始回合项注入和符号链接感知文件系统元数据的实时与 app-server API',
@@ -604,6 +612,7 @@ window.CHANGELOG_MONTHLY = {
     '4d9b20c8-88': '为 Slack MCP 发送消息工具调用新增紧凑的 Slack #channel 标题，带可点击的频道链接',
     '4e06265f-52': '在全屏模式下使用主项目符号显示 NotifyUser 更新',
     '4e15f960-56': '在 Copilot 设备认证中添加 OAuth 轮询安全余量',
+    '4e724358-105': '启用 features.image_generation_animation 以生成或编辑动画 GIF，并可选择帧数和时间控制。（ ）',
     '4e968f7e-63': '在 /doctor 中新增对被杀会话遗留的过期沙箱掩码文件的警告',
     '4eada1ad-74': '新增任务管理系统，包含依赖跟踪等新能力',
     '4ebee864-138': '新增 claude project purge [path]，可删除项目的所有 Claude Code 状态（对话记录、任务、文件历史、配置项）——支持 --dry-run、-y/--yes、-i/--interactive 和 --all',
@@ -634,6 +643,7 @@ window.CHANGELOG_MONTHLY = {
     '5138eef8-43': '让 bash 工具使用外部目录权限',
     '5146979c-27': '新增 SAP AI Core 提供商支持',
     '517314a7-94': '向MOD的按钮添加了子项：字符串和文本，因此列表的一行可以用芯片或暗淡的细节按压',
+    '51872b94-191': '! - 将 fs:suggest 与本地 fd 补全对齐，使用有界扫描，最多显示 20 个结果，并提供可选的流式预览。默认情况下，包括隐藏路径和被 .gitignore 忽略的路径，且在匹配质量相等时优先显示常规文件。',
     '518da808-24': '新增阿拉伯语支持',
     '51a1eaee-79': '新增 HTTP 钩子，可向 URL POST JSON 并接收 JSON，而无需运行 shell 命令',
     '51a6f218-26': '新增 web 和 codesearch 工具',
@@ -682,6 +692,7 @@ window.CHANGELOG_MONTHLY = {
     '55c8d1f4-64': '为内联任务工具的 ASCII 字符添加代理颜色并高亮代理名称',
     '55da2878-70': '当计划任务（/loop、CronCreate）触发时，在对话记录中新增时间戳标记',
     '56517bd7-99': '当OTEL_LOG_TOOL_CONTENT = 1时，向tool.output OpenTelemetry span事件添加了MCP工具、WebFetch和WebSearch输出',
+    '566023c-60': '将 cron 和 MCP 授权调用排除在紧凑型转录组之外',
     '567bebe4-21': '优化快捷键提示',
     '56ea704c-25': '在 TUI 中显示当前 git 分支',
     '570c0569-92': '当通过 DISABLE_PROMPT_CACHING* 环境变量禁用提示缓存时，启动时会新增警告',
@@ -760,6 +771,7 @@ window.CHANGELOG_MONTHLY = {
     '6032ae78-156': '新增到 Claude apps 网关：在 gateway.yaml 中设置 pricing: 后，已登录的 Claude Code 客户端通过托管设置获得相同费率，使 /cost 和遥测与消费计量一致',
     '6053e60c-119': '新增对 type: \'http\' 的 WorktreeCreate 钩子支持 — 在响应 JSON 中通过 hookSpecificOutput.worktreePath 返回已创建的工作树路径',
     '60584524-33': '! - 为 /btw 侧代理新增只读工具',
+    '605a2b80-134': '通过在 macOS 和 Linux 上启用云连接，您可以发送图像、选择模型和推理工作量，以及从终端存档或恢复云对话。（ 、 、 、 ）',
     '606288a4-200': '新增对 GitLab 令牌系列的密钥脱敏（glrt-、gloas-、glptt-、glagent-、glimt-、glsoat-、glcbt-、glft-、glffct-），并对可路由的 glpat-/gldt- 令牌完全脱敏；glab CLI 配置存储获得与 gh 相同的沙箱和凭据路径保护',
     '6083f04-211': '新增 CLAUDE_CODE_ACCOUNT_UUID、CLAUDE_CODE_USER_EMAIL 和 CLAUDE_CODE_ORGANIZATION_UUID 环境变量，使 SDK 调用方可同步提供账号信息，消除早期遥测事件缺少账号元数据的竞态条件',
     '6091b70-46': '将文件图标资源从桌面端迁移到 UI 包',
@@ -768,6 +780,7 @@ window.CHANGELOG_MONTHLY = {
     '60fa0a90-44': '为 GitLab AI Gateway 请求增加 User-Agent 请求头',
     '60feace4-35': '增加带元数据引用的 SubtaskPart',
     '61244b55-53': '添加 /compact 会话命令以压缩对话历史',
+    '615b93ea-118': '新增了代码模式，这是一种实验性的选择加入功能，其中 Claude 会编写 JavaScript 来调用其工具；请参阅以启用该功能，或为组织禁用该功能。',
     '6166a184-197': '新增服务器托管设置的诊断：设置加载失败时的启动警告，以及 /doctor 和 /status 中说明加载失败或未拉取原因（Bedrock/Vertex/第三方供应商、自定义 ANTHROPIC_BASE_URL）的一行',
     '6172b7f8-157': '远程执行设置现在支持为已批准的 OpenAI 主机注册 CODEX_API_KEY，远程控制 WebSocket 使用短期服务器令牌而非 ChatGPT 访问令牌',
     '617f5ce4-122': '新增 claude self-hosted-runner --client-label（或 SELF_HOSTED_RUNNER_CLIENT_LABEL），用于覆盖 runner 注册时使用的标签（默认：主机名）',
@@ -781,6 +794,7 @@ window.CHANGELOG_MONTHLY = {
     '6270c5f4-70': '添加了内置的Google Cloud Vertex AI提供程序，配置为model_provider = \'gcp\'',
     '62857b05-64': '新增 opencode agent list 命令，显示所有可用 agent 及其详情',
     '628c7970-119': '将会话标记为已读或未读：打开选项卡、主页行、项目行或收件箱卡片上的菜单，然后选择“标记为未读”以保留其点，直到您下次访问',
+    '62b0375a-126': '在组织政策阻止请求时显示的错误下方添加了一行，说明如何继续：运行 /rewind 并更改消息，或运行 /clear',
     '62b2b160-56': '为支持的 Mistral Small 模型新增高推理变体',
     '62b2bf07-31': '为精简模式添加变体支持',
     '62e544a0-44': '新增用于文本补全的实验性插件钩子',
@@ -797,6 +811,7 @@ window.CHANGELOG_MONTHLY = {
     '640ed0e8-134': '在 /copy 选择器中新增“始终复制完整响应”选项。选中后，后续 /copy 命令将跳过代码块选择器，直接复制完整响应',
     '641a0f20-29': '在 TUI 中为变体切换添加提示',
     '6433e2e0-35': '增加侧边栏导航的端到端测试',
+    '643e94e4-140': '选择加入的终端工作区支持多个侧边聊天选项卡。使用键盘或鼠标在它们之间切换，并在重启 Codex 后重新打开已保存的本地侧边聊天。（ 、 、 ）',
     '6452af98-93': 'app-server 客户端可以检查环境、列出后代线程，并在指定轮次处对历史分叉',
     '6459f057-105': '受特性开关控制的独立图像生成扩展可通过原生 Codex 图像产物完成流程运行',
     '64a34d76-70': '让插件 MCP 加载同时接受 .mcp.json 中的 mcpServers 和顶层服务器映射',
@@ -811,6 +826,7 @@ window.CHANGELOG_MONTHLY = {
     '65c1b168-80': '使用 /export 将完整 TUI 对话导出为 Markdown，可导出到剪贴板或新文件',
     '65d20af8-68': '按下 Ctrl/Meta 键时不再触发权限快捷键',
     '65da4a08-146': '在 Claude Code Remote 会话（云端和自托管 runner）中新增快速模式：主机的快速模式设置或会话中输入 /fast 会在组织允许的范围内生效',
+    '65fc232f-53': '添加 follow_up_behavior 以选择是进入队列还是引导',
     '665b3754-33': '为 markdown 元素增加 streaming 属性',
     '666e867c-49': 'TUI：切换会话时自动滚动到底部',
     '668246c8-141': '钩子现已稳定，可在 config.toml 和受管 requirements.toml 中内联配置，并且可以观测 MCP 工具以及 apply_patch 和长时间运行的 Bash 会话',
@@ -824,13 +840,11 @@ window.CHANGELOG_MONTHLY = {
     '67329b5c-92': 'app-server 主机可在运行时提供 Codex 身份验证，并将成功登录重定向到托管页面',
     '6743fcf4-121': '! - 新增 GET /api/v1/fs:content 服务端接口，可按绝对路径将主机上任意文件以原始内容返回，支持 Content-Type、ETag 和 Range',
     '6762e1ea-60': '为 Select 组件添加 triggerStyle 属性，并应用于字体选择器',
-    '67723a03-78': '新增 OPENCODE_CONFIG_DIR 环境变量，支持加载自定义配置目录',
     '67784eb0-100': '新增 claude agents --json，可将活动 Claude 会话以 JSON 列出，便于脚本使用（tmux-resurrect、状态栏、会话选择器）',
     '67827b2e-50': '新增 ExitWorktree 工具，用于退出 EnterWorktree 会话',
     '679bea14-87': '新增 sandbox.allowAppleEvents 可选设置，允许沙盒命令在 macOS 上发送 Apple Events',
     '67b398d1-121': '使用符合条件的Codex帐户授权或专用登录验证企业MCP连接，包括需要密钥的OAuth客户端',
     '67bd5b28-52': '增加 close-small 图标并用于评论卡片的关闭按钮',
-    '67ee07ac-71': '新增 OPENCODE_FAKE_VCS 标志用于 VCS 测试，并更新待办跟踪说明',
     '68202e5d-20': '增加高亮功能',
     '6831df30-128': '在 /cost 和状态行的 prompt_cache 字段中新增提示缓存未命中的可能原因（例如工具定义或系统提示发生变化、空闲超过 TTL）',
     '684a9799-44': '为实验性构建启用项目发现',
@@ -937,6 +951,7 @@ window.CHANGELOG_MONTHLY = {
     '744b50b9-71': '新增 /timeline 命令，快速跳转到会话历史中的特定消息',
     '74530aa9-98': '移除默认的每轮 1000 步限制。用户仍可在配置中设置 max_steps_per_turn 以强制自定义限制',
     '74564c4e-333': 'Daybreak是通过--enable cli_daybreak或features.cli_daybreak = true选择加入的； daybreak = true本身是不够的。默认情况下，控件和指示器被隐藏，/daybreak不可用，自动网络路由被省略，即使对于已保存的Daybreak线程也是如此。已保存的偏好设置将保持不变。选择加入路由需要符合条件的ChatGPT登录、OpenAI提供商和广告模式/计划支持',
+    '74988308-36': '显示插件代理配置文件刷新钩子',
     '74cb22dc-137': '新增内置 kimi vis 命令，可在浏览器中启动会话可视化工具并指向本地会话。支持 --port/--host、--no-open 和 kimi vis 深链接',
     '7532a748-77': '在聊天中新增可点击的文件附件——Cmd/Ctrl 点击可在 Finder/资源管理器中显示文件',
     '755117f4-40': '在 TUI 中为权限按钮添加鼠标支持',
@@ -952,6 +967,7 @@ window.CHANGELOG_MONTHLY = {
     '76fda888-47': '自定义提供商支持本地文件路径',
     '770c3760-25': '新增移动端响应式支持',
     '772947ac-46': '为 InlineTool 和 Task 组件新增 onClick 处理函数',
+    '7742554-77': '添加了在插件的语言服务器无法启动时的警告，指明了服务器的名称以及需要检查的内容',
     '77553bb1-35': '为选择提供商对话框增加过渡动画',
     '77558e94-32': '为 copilot 添加适当的变体支持',
     '778e51b4-48': '新增 macOS 受管偏好设置，用于 MDM 强制配置',
@@ -1061,6 +1077,7 @@ window.CHANGELOG_MONTHLY = {
     '84541b70-60': 'claude_code.lines_of_code.count OTEL 指标新增 model 属性',
     '84901c2c-101': '选择用于语音对话的麦克风、扬声器和麦克风输入通道，并在本地保存首选项',
     '84915b92-116': '在启动时添加了一行命名Claude控制台组织，该组织在Claude Code使用蚂蚁身份验证登录登录的情况下计费',
+    '84d9a9f7-130': '启用 features.tui_workspace，以便在主聊天窗口旁边查看侧边对话。拖动分隔线以调整窗格大小，或按 leader z 缩放焦点窗格。（ 、 、 ）',
     '84db974-57': '工作区中新建会话现在正确使用所选工作区',
     '84dc8c08-46': '时间线回退时恢复输入，并按最新在前显示',
     '84f4b808-23': '新增系统主题支持',
@@ -1072,6 +1089,7 @@ window.CHANGELOG_MONTHLY = {
     '859f150c-24': '增加网页输入框聚焦快捷键',
     '85a3ae9c-107': '扩展 /import，可迁移 Cursor 和 Claude Code 的设置、MCP 服务器、插件、会话、命令以及项目级记忆',
     '85a8b21c-52': '新增用于 MCP 服务器状态的实验性 HTTP API 端点',
+    '85d590f0-86': '在关闭提示中添加了指向差异面板的 /diff，并在“?”快捷键指南中添加了用于聚焦和关闭面板的按键',
     '8621746f-264': '! - 在 /settings 中新增 TUI 模式设置，提供实验性全屏布局；切换模式需重启 Kimi Code 后生效。也可直接在 ~/.kimi-code/tui.toml 中设置 tui_mode：\'regular\' 渲染到终端滚动缓冲区，\'fullscreen\' 使部分界面支持鼠标交互，体验更流畅',
     '8636c9a4-49': '为 GitHub Copilot GPT-5 模型增加 xhigh 推理强度',
     '864f57cb-82': '全屏模式下菜单（权限提示、/model、/config 等）新增鼠标点击选择支持',
@@ -1113,6 +1131,7 @@ window.CHANGELOG_MONTHLY = {
     '89c16088-69': '退出时新增会话恢复提示，说明之后如何继续对话',
     '89e3ec7c-85': '调整 bash agent，使其更了解当前工作目录，并调整了默认超时',
     '8a113b38-107': '新增 /doctor 检查，建议精简已入库的 CLAUDE.md 文件，删去 Claude 可从代码库中推导出的内容',
+    '8a18dace-147': '在第三方提供商的 Claude Desktop 会话托管设置中新增了对 CLAUDE_CODE_AUTO_MODE_MODEL 的支持（在 Claude Desktop 包含此版本后生效）',
     '8a21bc40-91': '优化桌面端消息组件，同时支持用户与助手消息并改进 UI 渲染',
     '8a2292c8-30': '为应用增加模型设置界面',
     '8a458960-22': 'TUI 新增 --prompt 选项',
@@ -1224,6 +1243,7 @@ window.CHANGELOG_MONTHLY = {
     '949c8744-142': '添加了--marketplace到claude插件安装：根据需要添加市场，根据与claude插件市场添加相同的策略检查，然后从中安装插件',
     '949edeec-178': '! - 新增 Remote Control 作为实验性功能，可远程访问本地 web 会话。通过 KIMI_CODE_EXPERIMENTAL_REMOTE_CONTROL=1 启用，然后运行 kimi rc、kimi web --remote-control 或 /remote-control 启动',
     '94b50abc-52': '新增 claude agents CLI 命令，用于列出所有已配置的代理',
+    '94cd6014-88': '在终端报告编辑器中按 Ctrl+S，即可将诊断 ZIP 文件保存到本地，即使上传功能被禁用也可以。（ ）',
     '94d5171c-87': '安装便携式 Agent Plugins，并在本地、个人、workspace 和远程插件目录中搜索',
     '94deabf8-41': '为搜索弹窗中的命令项添加左内边距',
     '95058944-91': '当 TUI 通过远程传输连接时，/status 显示远程连接详情和服务器版本',
@@ -1240,6 +1260,8 @@ window.CHANGELOG_MONTHLY = {
     '9667a59d-140': '新增 workflowSizeGuideline 设置项，可从任意设置文件设定建议性的动态工作流规模指南；设置后 /config 中的对应行将隐藏',
     '966ab180-143': '在工作目录之外的读取之前，对自动模式的提示添加了“是，但下次再问一次”的答案，因此您可以允许读取该提示，但仍会询问以后的提示',
     '966c47bf-62': 'TUI：切换会话时避免重复拉取已同步的会话',
+    '966e00c-158': '已将 engines[\'claude-code\'] 添加到 plugin.json：不会安装、更新或加载超出其指定 Claude Code 版本范围的插件，并且安装和更新会选择符合要求的最新版本',
+    '967bb278-89': '全屏 Codex 在 Ghostty 和 Kitty 的 tmux 中显示图像预览和宠物，并使用 allow-passthrough all。（ ， ）',
     '968d3f2f-90': 'TUI历史记录显示完整的补丁、发送到后台终端的输入以及单个完成的命令',
     '96b56000-40': '! - web：将右侧边栏改造为多标签面板',
     '96c679c0-95': '新增 wheelScrollAccelerationEnabled 设置，可禁用全屏模式下的鼠标滚轮滚动加速',
@@ -1386,6 +1408,7 @@ window.CHANGELOG_MONTHLY = {
     'a52d58e0-28': 'opencode run 新增 --attach 标志',
     'a5311ba4-94': '新增 allowedChannelPlugins 受管设置，供团队或企业管理员定义频道插件允许列表',
     'a5793670-20': '为应用增加文件树模式',
+    'a57d8b2e-177': '从终端添加或编辑自定义模型提供商。启用自定义网关引导后，您可以在登录时创建提供商，并通过 SSH 或在没有本地浏览器的情况下使用设备代码访问受支持的网关。（、、、、）',
     'a59543b0-120': '为mods添加了$ .ui.selection () ：返回您上次在全屏模式下选择的文本，当选择位于一个会话记录行内时，返回该行',
     'a5b55ac0-100': '向/design-sync和/design-login添加了一项通知，即独立的Claude Design （ claude.ai/design ）将于2026年12月14日关闭',
     'a5d75ce4-23': '添加模型选择器冒烟测试',
@@ -1486,6 +1509,7 @@ window.CHANGELOG_MONTHLY = {
     'b276c0f8-105': '新增支持通过API配置GPT-6-Astra ，无需更改默认模型或在模型选取器中显示',
     'b2785a78-30': '重试 Anthropic 过载错误',
     'b27cb4b4-91': '在 /status 中新增 Auto 模式服务器一行，显示本会话的 auto 模式分类器是否运行在服务器上',
+    'b2d7a300-36': '添加实验性后续提示建议',
     'b2db3bc4-71': '子会话请求权限时自动跳转到该会话',
     'b2e94220-113': '将 lsof、pgrep、tput、ss、fd 和 fdfind 加入 bash 自动批准白名单，减少常见只读操作的权限提示',
     'b2fd5880-77': '插件可通过本地清单和远程目录提供专用的深色模式 logo',
@@ -1502,6 +1526,7 @@ window.CHANGELOG_MONTHLY = {
     'b46afe34-45': '新增添加额外工作区目录的功能',
     'b46ef274-93': '新增选项，可将 Claude 的上一条回复作为注释上下文显示在 Ctrl+G 外部编辑器中（通过 /config 启用）',
     'b496a005-54': '新增在 GitHub 工作流中响应 PR 审查评论的能力',
+    'b49be10c-146': '使用支持音频的模型时，请附上录音。Codex 会在之后的轮次中跳过已确认被拒绝的录音，并使用片段时长来保留更多短录音的上下文信息。（ ， ）',
     'b4b49d09-45': '在 OpenCode 升级方式中添加 Chocolatey 和 Scoop',
     'b4c7d19c-129': '添加了CLAUDE插件在插件的README没有安装行时验证的建议：它打印要粘贴的行，并且从不更改退出代码，即使使用--strict',
     'b51a6284-29': '新增对 schedule 事件的支持',
@@ -1549,7 +1574,6 @@ window.CHANGELOG_MONTHLY = {
     'b97e641c-38': '为 attach 命令新增 --continue 和 --fork 标志',
     'b99a3de3-174': '远程与 app-server 工作流现在支持出站 websocket 传输、远程 --cd 转发、运行时远程控制启用、沙箱感知的文件系统 API，以及实验性的 codex exec-server 子命令',
     'b9a6c264-76': '新增取消并确认步骤：移除不可用的粘贴内容会改变命令文本时进行确认',
-    'b9bc1f94-69': 'ACP 新增 MCP 服务器支持、文件差异以及默认斜杠命令（/init、/compact）',
     'b9c99788-28': '升级了 OpenRouter SDK 包',
     'b9e1b814-26': '为 Web 与 App 添加 Gruvbox 主题',
     'ba4de0e8-53': '精简热门提供商列表，仅显示前 6 个提供商',
@@ -1632,6 +1656,7 @@ window.CHANGELOG_MONTHLY = {
     'c22e8abe-42': '为 SAP AI 提供方新增思考变体支持',
     'c24b5507-53': '引入用于分享会话的新企业版 Web 界面',
     'c26045a8-38': '新增 Grok 资源耗尽时的重试处理',
+    'c2873e78-57': '将页眉向文本方向扫动，并添加 KIMI_CODE_TUI_ANIMATION_FPS',
     'c2a73727-54': '优化消息时间戳，非当天时显示日期',
     'c2b23795-132': '在无头 stream-json 的 init 事件中新增 mcp_server_errors，列出因配置校验被跳过的 --mcp-config 条目；终端运行时会打印启动警告',
     'c2ea20b4-39': '支持在 MCP 工具响应中返回图片',
@@ -1650,6 +1675,7 @@ window.CHANGELOG_MONTHLY = {
     'c3d496a8-112': '将oidc.user_id_claim添加到Claude应用程序网关，以通过sub以外的id_token声明（例如Microsoft Entra ID的oid ）识别人员',
     'c3d49b0c-37': '命令栏新增重命名会话操作',
     'c3dd0d85-123': 'app-server 轮次可在用户输入和生成图像的工具之间保留请求的图像保真度，包括原始分辨率的本地图像',
+    'c3eb4bd8-112': '添加了一条针对 Claude 的备注，说明当沙盒中的 git checkout、git stash 或 autostash pull 无法更新受保护的文件（例如 .claude 中的文件）时的情况。',
     'c420ef24-97': '使用ChatGPT登录的合格本地会话现在可以显示可选的提醒，以完成帐户安全设置',
     'c4530820-108': '新增实验性 Amazon Bedrock 登录、自定义端点和身份验证支持，并将 GPT-5.6 Sol 设为默认 Bedrock 模型',
     'c466f9f8-65': '在 GitHub Actions 和 OpenCode GitHub run 命令中支持 variant 参数',
@@ -1678,6 +1704,7 @@ window.CHANGELOG_MONTHLY = {
     'c6cc0f2c-99': '新增 /reload 以重新加载当前会话并应用更新的配置文件，另有 /reload-tui 仅重新加载 TUI 偏好',
     'c6faf00-101': '在状态行 JSON 输入中新增 workspace.git_worktree，当前目录位于链接的 git 工作树内时会设置',
     'c70353fc-110': 'Amazon Bedrock在兼容型号上支持多Agent V2和Ultra推理； Bedrock Mantle还接受AWS GovCloud区域',
+    'c71b5727-25': '附加 Kimi 请求元数据',
     'c7250e18-42': '会话菜单新增复制上一条助手消息',
     'c747e75c-28': '为应用添加模型变体支持',
     'c7490460-132': '通过将工具名和参数内联到顶层来扁平化工具调用数据，并限制旧记录迁移，使其仅重写匹配的工具调用负载',
@@ -1695,6 +1722,7 @@ window.CHANGELOG_MONTHLY = {
     'c8e37cff-68': '新增提示：同时运行多个会话时建议使用 claude agents',
     'c901f278-155': '新增 maxEffortLevel 设置（顶层或 modelSettings 下按模型）：为所有供应商限制 effort 级别，包括 Bedrock、Vertex 和 Foundry；用户仍可选择更低级别',
     'c9509db1-213': '! - 为子 Agent和 swarm 工具新增可选的 fork 参数，使子 Agent以调用方代理的对话历史快照启动；在 config.toml 的 [experimental] 下设置 KIMI_CODE_EXPERIMENTAL_SUBAGENT_FORK=1 或 subagent_fork = true 以启用',
+    'c9678b4c-152': '将 tui.notification_method 设置为“osc777”，以启用终端通知。批准通知显示更长的命令预览，并将终端输入与网络访问请求区分开来。( )',
     'c9825dc7-113': '支持 Agent Plugins 清单、工作区插件发布，以及面向 Amazon Bedrock 和 Claude Code 的额外插件市场',
     'c9a93b74-159': 'TUI 现在提供快捷推理控制：Alt+, 降低推理强度，Alt+. 提高推理强度；接受的模型升级现在会将推理重置为新模型的默认值，而不是沿用旧设置',
     'c9ab2be1-93': '新增 OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS 环境变量，用于配置 bash 命令超时',
@@ -1727,6 +1755,7 @@ window.CHANGELOG_MONTHLY = {
     'ccbca3dc-34': '新增为项目设置颜色的能力',
     'ccc7b1ad-124': '为另一个策略的availableModels还允许一个策略按名称列出的自定义模型ID的情况添加了Claude应用程序网关引导警告',
     'ccf38ac0-93': 'Vim 模式新增文本对象编辑、改进的词/行尾行为，以及可配置的中断轮次绑定',
+    'cd09270-171': '跳转到之前的提示：在桌面版应用中，从命令面板中打开“跳转到消息”，或按 Cmd+Alt+G（Windows 和 Linux 上为 Ctrl+Alt+G）搜索当前会话中的提示，并直接跳转到其中一个提示。',
     'cd1fcfa3-28': '添加调度器与清理模块',
     'cd5592b0-156': '新增 claude self-hosted-runner --proxy-authorization-command / --proxy-authorization-file，适用于每次连接都需要新签发 Proxy-Authorization 请求头的出口代理',
     'cda7b34c-139': 'Node.js 支持：除 Bun 外，opencode 现在也可在 Node.js 上运行，并提供专用的 Node.js 入口点和构建脚本，将服务器与数据库迁移一并打包',
@@ -1749,6 +1778,7 @@ window.CHANGELOG_MONTHLY = {
     'cf323336-50': '通过 server.cors 配置选项新增 CORS 白名单支持',
     'cf605764-29': '将会话上下文移至右上角',
     'cfaa72c4-24': '为会话添加默认图标',
+    'cff0a02c-91': '已将 unsetOptionCount 添加到 claude 插件安装 --json 结果中：尚未设置的 userConfig 选项数量',
     'cff8a4c8-35': '新增在 TUI 中切换 MCP 服务器的能力',
     'cffa6454-155': '以全新的设计系统刷新 Web UI，包括更新的配色、字体、间距、明暗色板、重绘的提示气泡，以及细腻的进入/退出和展开/折叠动画',
     'd017f7a8-56': '新增网页搜索和代码搜索工具，增强功能',
@@ -1774,6 +1804,7 @@ window.CHANGELOG_MONTHLY = {
     'd38df698-50': '在桌面端支持图片附件的图片预览',
     'd3aeada-76': '新增 codex remote-control pair 命令，可从运行中的守护进程生成手动配对码',
     'd3b6cc54-83': '为 UserPromptSubmit 钩子新增 hookSpecificOutput.sessionTitle，用于设置会话标题',
+    'd40b6c8c-311': '! - 在全屏模式下，将连续的工具调用和思考折叠为摘要行，不再显示模型加载的技能的“已激活技能”卡片。在/settings中，选择“工具调用密度”和“思考折叠”下的折叠量，并可预览每个选项；或者在tui.toml的[transcript]下将tool_call_density设置为“ungrouped”，将thinking设置为“ungrouped”，以保留之前的布局。',
     'd4282c10-84': '现在可检测全局 pnunen 安装，使诊断和更新使用正确的包管理器',
     'd42c48-75': '改进安装脚本：优化视觉效果、自定义进度条和后续步骤指引',
     'd4989110-65': '新增 prompt_async 功能，接收提示后立即返回',
@@ -1869,6 +1900,7 @@ window.CHANGELOG_MONTHLY = {
     'de9f420c-134': '新增 claude self-hosted-runner --drain-marker-file ：在 SIGTERM 排空时若该文件存在，runner 会向服务器报告其退出为主机排空（仅遥测）',
     'deca926c-113': '在mod的文本上为从右到左的文本添加了一个目录属性：在Windows和VS Code的终端上，它的行沿着那个方向读取，然后向右齐平',
     'decb3b20-74': '升级 OpenTUI 至 0.1.41，改进终端支持并提升性能',
+    'ded5b5ec-78': '通过名称、提示预览或工作目录，从Agent 命令中心搜索旧任务。（ ）',
     'dee8812e-46': '优化 polaris 指令，使其更贴合实际行为',
     'deebac3c-40': '新增用于列出所有会话的实验性端点',
     'df0aecb6-56': '自动补全新增 /editor 命令以打开外部编辑器',
@@ -1887,6 +1919,7 @@ window.CHANGELOG_MONTHLY = {
     'e0928700-121': '向Claude应用程序网关配置添加了telemetry.resource_attributes ，以便在Claude Desktop和/登录会话的遥测上放置固定标签',
     'e117600c-142': '插件现在是一等公民工作流：Codex 可以在启动时同步产品范围的插件，在 /plugins 中浏览它们，并通过更清晰的认证与设置处理来安装或移除',
     'e148042c-85': '将 fmt、comm、cmp、numfmt、expr、test、printf、getconf、seq、tsort 和 pr 加入 bash 自动批准白名单',
+    'e16a11ec-187': '默认后台子 Agent：子 Agent现在会立即返回，在后台继续运行，并在闲置时报告。在多个子 Agent同时运行时，您可以继续在父会话中工作。',
     'e1715d6d-63': '添加/claude-api api版本，将Claude API代码移至API版本2026-10-21',
     'e1e74194-45': '支持通过 TaskUpdate 工具删除任务',
     'e21dac74-104': '向OTel指标、事件和跨度添加了anthropic.plan、anthropic.seat_type、anthropic.provider和anthropic.custom_base_url',
@@ -1959,6 +1992,7 @@ window.CHANGELOG_MONTHLY = {
     'e8539648-151': '在跨会话 SendMessage 中新增 notify_when_idle：请本机另一个 Claude Code 会话在其下次空闲时发送一条通知 —— 需选择启用、一次性、无轮询（macOS 和 Linux）',
     'e8616246-24': '新增 Venice AI 作为提供商',
     'e89b877a-47': '为桌面应用增加 Tauri 本地化支持',
+    'e8a2e7b4-42': '为痕迹工具资产上传功能添加了对 .docx 的支持',
     'e8aa9556-187': '在Claude应用程序网关的基岩、顶点、Foundry和其他云上游上添加了对timeouts.upstream_ttfb_ms的支持：您现在设置的值限制了流在那里开始的时间，之后它会故障转移或获得502',
     'e8ac7b8c-24': '确保 wl-copy 可用',
     'e8d6dc60-56': '增加 shell.env 钩子，用于在工具和 shell 中操作环境变量',
@@ -2002,6 +2036,7 @@ window.CHANGELOG_MONTHLY = {
     'ebdea5dc-92': '新增安全的 devcontainer 配置，支持 bubblewrap，并为 Unix socket 增加了 macOS 沙箱允许列表',
     'ebf62a54-537': '! - 新增实验性渐进式工具披露（select_tools）。当工具选择实验开关开启且当前模型声明了 select_tools 能力时，MCP 工具 schema 不再出现在请求的顶层 tools[] 中（从而保留提供方提示缓存）；模型通过新的内置 select_tools 工具，依据公告按精确名称按需加载工具。默认关闭，在不具备该能力的模型上不生效——在收录受支持的模型之前行为保持不变。此外，SDK 在根据目录构建模型别名时会映射 select_tools 能力，并通过 getExperimentalFeatures() 上报该新标志',
     'ebfe388-28': '重新启用可选的 mdns 服务',
+    'ec33bcd0-97': '当找到 Perforce 设置且该模式处于关闭状态时，添加了一条名为 CLAUDE_CODE_PERFORCE_MODE 的一次性启动通知',
     'ec66befc-37': '新增内置 Dart LSP 服务器和格式化器',
     'ec9686b4-108': '在/keymap中配置Leader键。默认为Ctrl + X ，快捷方式提示保持打开状态，直到您选择或取消，语音静音移至F9',
     'eca2ad30-37': '跨工作区目录合并技能',
@@ -2079,6 +2114,7 @@ window.CHANGELOG_MONTHLY = {
     'f5c6b16c-45': '斜杠命令支持位置参数',
     'f5cdb0fc-445': '新增实验性目标模式，适用于需要多轮完成的较长任务。启动 Kimi 前用 KIMI_CODE_EXPERIMENTAL_GOAL_COMMAND=1 开启。若想让 Kimi 跨轮次持续处理同一任务，可在 TUI 中使用 `/goal <objective>`。例如：`/goal Fix the failing checkout test`。Kimi 会在 TUI 中显示目标，并在工作时保持进度可见。使用 `/goal status`、`/goal pause`、`/goal resume`、`/goal cancel` 和 `/goal replace <objective>` 管理目标。此功能仍为实验性，欢迎试用并告诉我们怎样能更有用。',
     'f5df76f-43': '! - 支持 kimi.ai 和 kimi.com 两种 OAuth 登录方式',
+    'f6246c28-107': '已将 isPromptCovered 添加到用于绘制模组窗格的属性中，以告知其何时有对话框或字段遮挡提示',
     'f63dab7c-90': '新增加载提示，建议使用 /focus 获得仅含你的提示、一行工作摘要和回复的视图',
     'f65b8dc-104': '独立安装更加自包含，codex app 现在可在 Windows 和 Intel Mac 上正确打开或安装 Desktop',
     'f666c4e0-43': 'kimi web 用于在浏览器中打开服务器托管的 Web UI',
@@ -2096,6 +2132,7 @@ window.CHANGELOG_MONTHLY = {
     'f82121e0-117': 'codex exec resume 现接受 --output-schema，使恢复的自动化可保留会话上下文，同时仍强制结构化 JSON 输出',
     'f862106d-39': '增加更多超时竞态条件防护',
     'f8726218-16': '新增权限',
+    'f8764a4-152': '添加了 CLAUDE_CODE_DISABLE_AGENT_PROGRESS_SUMMARIES （自 2.1.318 起可用）：将其设置为 1 以关闭子 Agent进度摘要以及写入这些摘要的请求（anthropics/claude-code',
     'f878f7fc-93': '为队友添加了agent.spawn ，在插件挂钩事件中添加了一个代理ID ，并在$ .agent.list ()中添加了空闲和等待状态',
     'f89240ac-54': '新增 /debug，供 Claude 帮助排查当前会话问题',
     'f8ad06f0-66': '为 /config 命令增加搜索功能，可快速筛选设置',
@@ -2165,7 +2202,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 123,
+      'count': 208,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -2176,6 +2213,97 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
+            {
+              'key': '1a7a1d98-77',
+              'text': 'Browse model providers under Sessions → Model providers and choose the default for new chats. ( , )',
+              'date': '2026-11-13',
+              'version': '0.168.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.168.0'
+            },
+            {
+              'key': '23104af8-139',
+              'text': 'Turn on Collapse turn details in the full-screen transcript to fold completed activity beneath each prompt while keeping answers visible and tool output searchable. ( , , , )',
+              'date': '2026-11-13',
+              'version': '0.169.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0'
+            },
+            {
+              'key': '4e724358-105',
+              'text': 'Enable features.image_generation_animation to generate or edit animated GIFs with optional frame count and timing controls. ( )',
+              'date': '2026-11-13',
+              'version': '0.168.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.168.0'
+            },
+            {
+              'key': '605a2b80-134',
+              'text': 'With the opt-in Cloud connection on macOS and Linux, send images, choose a model and reasoning effort, and archive or restore Cloud conversations from the terminal. ( , , , )',
+              'date': '2026-11-13',
+              'version': '0.169.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0'
+            },
+            {
+              'key': '643e94e4-140',
+              'text': 'The opt-in terminal workspace supports multiple side-chat tabs. Switch between them with the keyboard or mouse, and reopen saved local side chats after restarting Codex. ( , , )',
+              'date': '2026-11-13',
+              'version': '0.169.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0'
+            },
+            {
+              'key': '84d9a9f7-130',
+              'text': 'Enable features.tui_workspace to view a side conversation beside the main chat. Drag the divider to resize the panes or press leader z to zoom the focused pane. ( , , )',
+              'date': '2026-11-13',
+              'version': '0.168.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.168.0'
+            },
+            {
+              'key': '94cd6014-88',
+              'text': 'Press Ctrl+S in the terminal report editor to save a diagnostic ZIP locally, even when uploads are disabled. ( )',
+              'date': '2026-11-13',
+              'version': '0.169.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0'
+            },
+            {
+              'key': '967bb278-89',
+              'text': 'Fullscreen Codex displays image previews and pets in tmux on Ghostty and Kitty with allow-passthrough all . ( , )',
+              'date': '2026-11-13',
+              'version': '0.168.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.168.0'
+            },
+            {
+              'key': 'a57d8b2e-177',
+              'text': 'Add or edit custom model providers from the terminal. With custom gateway onboarding enabled, you can create a provider during sign-in and use a device code for supported gateways over SSH or without a local browser. ( , , , , )',
+              'date': '2026-11-13',
+              'version': '0.169.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0'
+            },
+            {
+              'key': 'b49be10c-146',
+              'text': 'Attach recordings when using an audio-capable model. Codex skips confirmed rejected recordings on later turns and uses clip duration to keep more short recordings in context. ( , )',
+              'date': '2026-11-13',
+              'version': '0.168.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.168.0'
+            },
+            {
+              'key': 'c9678b4c-152',
+              'text': 'Set tui.notification_method = \'osc777\' for terminal notifications. Approval notifications show longer command previews and distinguish terminal input from network access requests. ( )',
+              'date': '2026-11-13',
+              'version': '0.168.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.168.0'
+            },
+            {
+              'key': 'ded5b5ec-78',
+              'text': 'Search older tasks from the agent command center by name, prompt preview, or working directory. ( )',
+              'date': '2026-11-13',
+              'version': '0.169.0',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.0'
+            },
+            {
+              'key': '2096e33c-133',
+              'text': 'Codex now sends tool updates incrementally by default on Google Cloud Vertex AI. To opt out, set incremental_tools_legacy_gcp = false under [features] in config.toml . ( , )',
+              'date': '2026-11-11',
+              'version': '0.167.2',
+              'url': 'https://github.com/openai/codex/releases/tag/rust-v0.167.2'
+            },
             {
               'key': '24c7ca0c-88',
               'text': 'Switch between connected backends from the terminal session picker and keep your drafts when switching',
@@ -2226,7 +2354,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/openai/codex/releases/tag/libcap-v2.75'
             }
           ],
-          'count': 7
+          'count': 20
         },
         {
           'id': 'claude-code',
@@ -2235,6 +2363,132 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': '11f1e608-126',
+              'text': 'Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook',
+              'date': '2026-11-13',
+              'version': '2.1.325',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325'
+            },
+            {
+              'key': '62b0375a-126',
+              'text': 'Added a line under the error shown when your organization\'s policy blocks a request, saying how to continue: run /rewind and change the message, or run /clear',
+              'date': '2026-11-13',
+              'version': '2.1.325',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325'
+            },
+            {
+              'key': 'c3eb4bd8-112',
+              'text': 'Added a note for Claude when a sandboxed git checkout, git stash or autostash pull cannot update protected files such as those in .claude',
+              'date': '2026-11-13',
+              'version': '2.1.325',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325'
+            },
+            {
+              'key': '1df4cb1e-82',
+              'text': 'Added a start-up warning for Bash allow rules with a * in a variable\'s value, such as Bash(PORT=* npm run dev)',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '256f8dbc-100',
+              'text': 'Added an options menu (stop, switch to usage credits, upgrade) when a model needs usage credits that are turned off or used up',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '2e79585a-148',
+              'text': 'Added a progress heartbeat every 30 seconds while hooks run long in claude -p and SDK sessions, so a host such as Claude Desktop won\'t end the turn as hung (once it includes this version)',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '3dd728f9-79',
+              'text': 'Added to claude plugin validate the $ nouns a mod\'s engine.create hook adds, withholds or replaces',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '4d2fc724-111',
+              'text': 'Added CLAUDE_CODE_RESUME_HINT_COMMAND, which a program that starts Claude Code can set to have the exit hint name its own resume command',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '615b93ea-118',
+              'text': 'Added Code Mode, an experimental opt-in in which Claude writes JavaScript to call its tools; see to turn it on, or to turn it off for an organization',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '7742554-77',
+              'text': 'Added a warning when a plugin\'s language server can\'t start, naming the server and what to check',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '85d590f0-86',
+              'text': 'Added a /diff to close hint to the diff panel, and the keys that focus and close a panel to the ? shortcut guide',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '8a18dace-147',
+              'text': 'Added support for CLAUDE_CODE_AUTO_MODE_MODEL in managed settings for Claude Desktop sessions on third-party providers (takes effect once Claude Desktop includes this version)',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': '966e00c-158',
+              'text': 'Added engines[\'claude-code\'] to plugin.json: plugins outside their stated Claude Code version range are not installed, updated or loaded, and install and update pick the newest version that fits',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': 'cff0a02c-91',
+              'text': 'Added unsetOptionCount to the claude plugin install --json result: how many userConfig options are not yet set',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': 'e8a2e7b4-42',
+              'text': 'Added .docx support to Artifact tool asset uploads',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': 'ec33bcd0-97',
+              'text': 'Added a one-time startup notice naming CLAUDE_CODE_PERFORCE_MODE when Perforce settings are found and the mode is off',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': 'f6246c28-107',
+              'text': 'Added isPromptCovered to the props a mod\'s pane is drawn with, telling it when a dialog or a field above the prompt covers the prompt',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
+            {
+              'key': 'f8764a4-152',
+              'text': 'Added CLAUDE_CODE_DISABLE_AGENT_PROGRESS_SUMMARIES (available since 2.1.318): set it to 1 to turn off subagent progress summaries and the requests that write them (anthropics/claude-code',
+              'date': '2026-11-12',
+              'version': '2.1.323',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.323'
+            },
             {
               'key': 'e44382cc-89',
               'text': 'Added fast mode on Vertex in the global, us and eu regions, falling back to standard speed if Vertex refuses it',
@@ -2460,7 +2714,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 32
+          'count': 50
         },
         {
           'id': 'opencode',
@@ -2469,6 +2723,27 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
+            {
+              'key': '1f0b47a0-245',
+              'text': 'Quieter Transcripts by Default: The TUI now summarizes each run of tool calls and thoughts into one collapsible activity row, so the answer is easier to follow. To see every step again, set Verbosity to medium or high in settings, or set session.verbosity in your TUI config; an existing setting is kept',
+              'date': '2026-11-13',
+              'version': '2.3.0',
+              'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.3.0'
+            },
+            {
+              'key': 'cd09270-171',
+              'text': 'Jump to an Earlier Prompt: In the desktop app, open Jump to message from the command palette or press Cmd+Alt+G (Ctrl+Alt+G on Windows and Linux) to search prompts across the current session and jump directly to one',
+              'date': '2026-11-13',
+              'version': '2.3.0',
+              'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.3.0'
+            },
+            {
+              'key': 'e16a11ec-187',
+              'text': 'Background Subagents by Default: Subagents now return immediately, continue in the background, and report back whenever they become idle. You can keep working in the parent session while multiple subagents run concurrently',
+              'date': '2026-11-13',
+              'version': '2.3.0',
+              'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.3.0'
+            },
             {
               'key': '223a2a0-199',
               'text': 'GitHub Copilot Auto: Pick Auto in the model picker when your Copilot account has an Auto pool, and Copilot\'s router chooses the model for each session at the Auto discount. If routing fails, OpenCode falls back to the account\'s default chat model',
@@ -2526,7 +2801,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.2.6'
             }
           ],
-          'count': 8
+          'count': 11
         },
         {
           'id': 'kimi-code',
@@ -2535,6 +2810,62 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
           'items': [
+            {
+              'key': '566023c-60',
+              'text': 'keep cron and MCP authorization calls out of compact transcript groups',
+              'date': '2026-11-13',
+              'version': '2.7.0-canary.20261113055733-391d9e7',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.7.0-canary.20261113055733-391d9e7'
+            },
+            {
+              'key': '65fc232f-53',
+              'text': 'add follow_up_behavior to choose whether Enter queues or steers',
+              'date': '2026-11-13',
+              'version': '2.7.0-canary.20261113055733-391d9e7',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.7.0-canary.20261113055733-391d9e7'
+            },
+            {
+              'key': '51872b94-191',
+              'text': '! - Align fs:suggest with local fd completion, using bounded scans and at most 20 results with optional streamed previews, while including hidden and gitignored paths by default and placing regular files first at equal match quality',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.0'
+            },
+            {
+              'key': '74988308-36',
+              'text': 'expose plugin agent profile refresh hooks',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'b2d7a300-36',
+              'text': 'add experimental next-prompt suggestions',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'c2873e78-57',
+              'text': 'sweep running titles toward text and add KIMI_CODE_TUI_ANIMATION_FPS',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'c71b5727-25',
+              'text': 'attach Kimi request metadata',
+              'date': '2026-11-12',
+              'version': '2.6.0-canary.20261112033252-d729f91',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
+            },
+            {
+              'key': 'd40b6c8c-311',
+              'text': '! - Fold consecutive tool calls and thinking into summary lines in fullscreen mode, and no longer show the Activated skill card for skills the model loads. Choose how much folds under Tool call density and Thinking folding in /settings, with a preview of each choice, or set tool_call_density = \'ungrouped\' and thinking = \'ungrouped\' under [transcript] in tui.toml to keep the previous layout',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.0'
+            },
             {
               'key': '14e1352c-39',
               'text': 'include gitignored files in file suggestions',
@@ -2753,7 +3084,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261102033430-40590f6'
             }
           ],
-          'count': 31
+          'count': 39
         },
         {
           'id': 'deepseek-harness',
@@ -2762,6 +3093,13 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
           'items': [
+            {
+              'key': '9fe77290-58',
+              'text': '新增实验性「DeepSeek 会话导入」插件，支持将 DeepSeek App 或网页版的历史会话导入工作区，并继续对话。 @imccyu',
+              'date': '2026-11-13',
+              'version': '0.2.2-rc.3',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.3'
+            },
             {
               'key': '95a44030-56',
               'text': 'SubAgent 支持具名与多层协作，AgentTeam 可按会话开启，共用成员与任务面板。 @Dudu-0223, @Yifffan',
@@ -2826,7 +3164,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-alpha.3'
             }
           ],
-          'count': 9
+          'count': 10
         },
         {
           'id': 'qoder-cn',
@@ -2835,6 +3173,34 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
+            {
+              'key': '1f5a4d0c-61',
+              'text': 'Issue 协作 ：支持评论、回复和附件交流，可将 Issue 指派给可用智能体执行，并关联讨论、查看执行记录与结果。适用于支持项目协作的账号',
+              'date': '2026-11-13',
+              'version': '0.5.11',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
+              'key': '27ddda50-82',
+              'text': '数据导入 ：新增 Kiro IDE 导入支持，可导入任务、记忆及可迁移的技能、MCP 和 Powers，并进行增量更新；同时优化 QoderWork 来源识别，完善 Codex 多目录工作区信息保留',
+              'date': '2026-11-13',
+              'version': '0.5.11',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
+              'key': 'c2f2b7fc-50',
+              'text': '下一步推荐 ：输入框空闲且为空时，Qoder 可主动推荐下一步操作。按 Tab 或右方向键即可填入草稿，确认后再发送',
+              'date': '2026-11-13',
+              'version': '0.5.11',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
+              'key': 'dd9e3048-65',
+              'text': '自定义 UI 插件 ：使用 plugin-creator 技能开发自定义 UI 插件，安装后可作为常驻应用在 Qoder 内持续使用，将专属工具融入日常工作',
+              'date': '2026-11-13',
+              'version': '0.5.11',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
             {
               'key': 'bee80cb4-36',
               'text': 'PPT 模板 ：支持选择 PPT 模板，预览封面与页面示例，结合自己的要求创建演示文稿',
@@ -2878,7 +3244,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
             }
           ],
-          'count': 6
+          'count': 10
         },
         {
           'id': 'qoder-cn-ide',
@@ -2933,6 +3299,48 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
+              'key': '19d01998-48',
+              'text': '支持从历史会话打开关联工作区或转到 Agent Window；macOS Dock 菜单同步展示最近工作区',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': '3e62434e-21',
+              'text': '支持在文档产物中查看代码与表格的结构化差异',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': '8a6efd1c-35',
+              'text': '支持 CN 版本用户在子任务卡片悬停或键盘聚焦时查看该子任务的完整积分消耗',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': 'a26bea04-51',
+              'text': '支持在打开或创建项目时确认目录信任；未信任目录中的项目规则、技能、命令和 Hooks 不会加载，终端命令也不会运行',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': 'e98c15d8-44',
+              'text': '支持在 Agent Window 中直接编辑全局和项目 Hooks 配置，并可在读取或保存失败后重试',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
+              'key': 'f9b37a00-51',
+              'text': '支持 CN 版企业租户按策略为新生成的 Word、Excel 和 PowerPoint 产物保留、移除或自定义可见水印',
+              'date': '2026-11-10',
+              'version': '3.4.18',
+              'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
+            },
+            {
               'key': '982a0dab-30',
               'text': '支持在消息中查看已完成后台命令的末尾输出，并可在读取失败后重试',
               'date': '2026-11-08',
@@ -2954,7 +3362,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.trae.cn/ide_changelog#hiyTL0Rkm'
             }
           ],
-          'count': 3
+          'count': 9
         },
         {
           'id': 'zcode',
@@ -2963,6 +3371,181 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://zcode.z.ai/changelog',
           'items': [
+            {
+              'key': '10c8c704-24',
+              'text': '本地网页改动后自动刷新，可设置单击 HTML 直接打开',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '285fcbf8-14',
+              'text': '新增日语、俄语、韩语三种界面语言',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '3a9352e0-10',
+              'text': '站点部署新增访问统计',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '4b3c5bf4-18',
+              'text': '连续的工具执行自动分组汇总，阅读更专注',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '6b046588-16',
+              'text': '回复流式输出时逐词渐显，阅读更自然',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '73a00f34-20',
+              'text': '设置新增项目编辑、每设备记忆和手机推送开关',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '7ac68b78-18',
+              'text': '新增 Design 能力，支持设计系统检查',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '7b147021-22',
+              'text': '新增 Session 管理 Tool，增强自管理能力',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '7cd32418-19',
+              'text': '新增麦克风权限引导，权限被拒后可重新授权',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '8bf7bf2-18',
+              'text': '分享支持设置有效期，并新增分享管理页面',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '8fc440ba-19',
+              'text': '授权时可直接选择权限模式，可记住完全访问',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'a6ff9a7d-19',
+              'text': '输入框支持语音输入，语音内容实时转成文字',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'acbdf370-11',
+              'text': '归档的会话支持永久删除',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'b1956da4-18',
+              'text': '可在输入框编辑最近发送或排队中的消息',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'b2455c70-18',
+              'text': '选中回复文字可添加批注，随引用一起发送',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'bd73e418-25',
+              'text': '内置浏览器支持点选页面元素，本地网页可直接修改并保存',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'c2f8e234-21',
+              'text': '图片预览整合操作菜单，可添加到对话、复制或另存',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'cbe67994-20',
+              'text': '浏览器记住各会话最近访问的页面，重启后保留',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'cf57aa07-20',
+              'text': '文件卡片和正文链接支持在文件管理器中定位',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'd0150f9-8',
+              'text': '增加插件推荐开关',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'e1250054-8',
+              'text': '统一登录授权入口',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'e5bd9760-16',
+              'text': '支持 Worktree，并行任务开发',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'e880be-21',
+              'text': '新增 macOS 字体平滑设置，默认跟随系统显示',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'ea57300e-26',
+              'text': '内置浏览器新增设备尺寸预设，页面可导出为 PNG 或 PDF',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'fcc12bbc-14',
+              'text': '使用统计记录不再自动过期清除',
+              'date': '2026-11-13',
+              'version': '3.18.2',
+              'url': 'https://zcode.z.ai/changelog'
+            },
             {
               'key': '3857d06c-33',
               'text': '新增 Kimi K3.1 Pro、MiniMax M3.1 Flash 等模型配置项',
@@ -3076,7 +3659,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://zcode.z.ai/changelog'
             }
           ],
-          'count': 16
+          'count': 41
         },
         {
           'id': 'codebuddy',
@@ -3102,6 +3685,55 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
+            {
+              'key': '8b04b528-21',
+              'text': '偶现修复拖拽任务时侧栏出现空白置顶区的问题',
+              'date': '2026-11-15',
+              'version': '5.11.3',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-3-版本发布-🚀-2026-11-15'
+            },
+            {
+              'key': 'a1d538d-34',
+              'text': '新增会话流快速问答入口，可在对话中快速发起推荐问答或切回 Agent 模式',
+              'date': '2026-11-15',
+              'version': '5.11.3',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-3-版本发布-🚀-2026-11-15'
+            },
+            {
+              'key': '364516d0-24',
+              'text': '新增桌面端与移动端侧栏数据实时同步（置顶、最近及分组）',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': '7f3bfd3e-35',
+              'text': '新增 Extension Service 支持声明继承 WorkBuddy 代理',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': '8f8fbe20-23',
+              'text': '新增新建会话时打开本地文件夹入口，会话归属更灵活',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': 'a6d1cadd-21',
+              'text': '新增任务置顶交互优化，支持置顶任务管理与排序',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
+            {
+              'key': 'd5128b6f-23',
+              'text': '新增侧栏「置顶 / 最近 / 分组」独立分区展示，支持按类型筛选',
+              'date': '2026-11-10',
+              'version': '5.11.2',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-2-版本发布-🚀-2026-11-10'
+            },
             {
               'key': '832125a0-38',
               'text': '频道 IM 新增组件化消息卡片与自定义表情包，消息可跨端同步，频道与专家支持一键分享',
@@ -3138,7 +3770,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-0-版本发布-🚀-2026-11-03-灰度中'
             }
           ],
-          'count': 5
+          'count': 12
         }
       ]
     },
@@ -25389,7 +26021,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2025-10',
       'label': '2025年10月',
-      'count': 60,
+      'count': 55,
       'toolCount': 3,
       'multi': [],
       'tools': [
@@ -25534,20 +26166,6 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27'
             },
             {
-              'key': '442e35e1-56',
-              'text': 'Added --title flag to opencode run command for custom session titles',
-              'date': '2025-10-29',
-              'version': '0.15.23',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.23'
-            },
-            {
-              'key': '67723a03-78',
-              'text': 'Added OPENCODE_CONFIG_DIR environment variable to allow loading custom config directories',
-              'date': '2025-10-29',
-              'version': '0.15.23',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.23'
-            },
-            {
               'key': '6b6d7ca9-78',
               'text': 'Added enterprise page with contact form for organizations to request enterprise solutions',
               'date': '2025-10-29',
@@ -25602,30 +26220,9 @@ window.CHANGELOG_MONTHLY = {
               'date': '2025-10-29',
               'version': '0.15.26',
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
-            },
-            {
-              'key': '49233140-60',
-              'text': 'Added session.started event that triggers when a new session is created',
-              'date': '2025-10-28',
-              'version': '0.15.19',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
-            },
-            {
-              'key': '67ee07ac-71',
-              'text': 'Added OPENCODE_FAKE_VCS flag for VCS testing and updated todo tracking instructions',
-              'date': '2025-10-28',
-              'version': '0.15.19',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
-            },
-            {
-              'key': 'b9bc1f94-69',
-              'text': 'Added MCP server support, file diffs, and default slash commands (/init, /compact) in ACP',
-              'date': '2025-10-28',
-              'version': '0.15.19',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.19'
             }
           ],
-          'count': 32
+          'count': 27
         },
         {
           'id': 'traecode',

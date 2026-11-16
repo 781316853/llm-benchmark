@@ -4,10 +4,10 @@
 window.MODEL_MAP_AUTO = {
   'updated': '2026-11-16',
   'stats': {
-    'total': 166,
-    'knownVendor': 166,
+    'total': 165,
+    'knownVendor': 165,
     'otherVendor': 0,
-    'skippedManual': 1439,
+    'skippedManual': 1442,
     'skippedNonModel': 4
   },
   'canonical': [
@@ -627,15 +627,6 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'K2 Horizon 375B-A23B'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'K2 Horizon 7B',
-      'vendor': 'Institute of Foundation Models',
-      'color': '#9298A1',
-      'aliases': [
-        'K2 Horizon 7B'
       ],
       'auto': true
     },
