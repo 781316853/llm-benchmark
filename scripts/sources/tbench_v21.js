@@ -1,7 +1,7 @@
 // 数据源:Terminal-Bench 2.1(斯坦福/Laude 终端命令行 Agent 评测,89 任务)
 // 站点:官方 https://www.tbench.ai/news/terminal-bench-2-1(线上无独立 2.1 榜单路由);
-//   按渠道层级合并(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情页
-//   (内嵌 results JSON,厂商官方发布成绩,含模式/发布时间/参数量,~30 条);
+//   按渠道层级合并(T2 厂商官方发布 > T3 第三方聚合):主源 datalearner 详情全量接口
+//   (厂商官方发布成绩,含模式/发布时间/参数量);
 //   补充源 llm-stats.com 聚合表(服务端渲染,0-1 归一化自报分,35 模型);
 //   补充 AI Release Tracker 聚合榜(T3,只补缺失模型)。
 // 数据形态:datalearner results JSON;llm-stats #|Model|Score(0-1)|Size|Context|Cost|License。
@@ -16,7 +16,7 @@ const transport = require("../lib/transport");
 const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const parseLlmStats = require("../lib/parseLlmStats");
-const { parseDataLearnerBench } = require("./datalearner");
+const { fetchDataLearnerBenchAll } = require("./datalearner");
 const art = require("../lib/aireleasetracker");
 const { createTierMerger } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
@@ -38,9 +38,9 @@ class TBenchV21Source extends BaseSource {
     });
   }
   async fetch() {
-    // 主源(datalearner 厂商官方发布)+ 补充源(llm-stats)并行抓取
+    // 主源(datalearner 厂商官方发布全量接口)+ 补充源(llm-stats)并行抓取
     const [extra, primary, artData] = await Promise.all([
-      transport.fetchWithRetry(CONFIG.sources.datalearner_tbench21.url),
+      fetchDataLearnerBenchAll(CONFIG.sources.datalearner_tbench21.url),
       transport.fetchWithRetry(this.cfg.url),
       art.fetchModelsSafe("tbench_v21")
     ]);
@@ -48,7 +48,7 @@ class TBenchV21Source extends BaseSource {
   }
   parse(raw) {
     const primary = parseLlmStats.parse(raw.primary, { name: "Terminal-Bench 2.1", tasks: 89 });
-    const extra = parseDataLearnerBench(raw.extra).map(function (dl) {
+    const extra = raw.extra.map(function (dl) {
       return { model: dl.name, org: dl.org, score: dl.score, license: dl.license, effort: dl.mode || null, date: dl.date || null };
     });
     // 按渠道层级合并:主源(T2 厂商发布)优先入表,llm-stats(T3)仅补缺与回填字段

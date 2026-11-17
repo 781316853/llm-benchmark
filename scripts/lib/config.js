@@ -247,14 +247,17 @@ module.exports = {
     },
     hle: {
       // Humanity's Last Exam(前沿知识广度,2500 题):官方 lastexam.ai(CAIS/Scale AI)。
-      // 统一无工具(闭卷)口径:主源 datalearner 详情页只取「无工具」行(T2 厂商官方发布),
+      // 统一无工具(闭卷)口径:主源 datalearner 只取「无工具」行(T2 厂商官方发布),
       // AA 无工具复测镜像为补充源(T3,仅补缺);由 scripts/sources/hle.js 按渠道层级合并。
+      // ⚠ 页面首屏只内嵌前 30 条(其余滚动加载),故抓取走 apiUrl 分页取全量;
+      //   url 仅作溯源展示,不要改回用页面 HTML 解析。
       url: "https://www.datalearner.com/benchmarks/hle",
+      apiUrl: "https://www.datalearner.com/api/get-benchmark-detail/hle",
       host: "www.datalearner.com", src: "datalearner",
       officialUrl: "https://lastexam.ai/"
     },
     hle_aa: {
-      // HLE 补充源(T3):Artificial Analysis 无工具复测口径的 benchlm 镜像页(内嵌 JSON,236 模型)。
+      // HLE 补充源(T3):Artificial Analysis 无工具复测口径的 benchlm 镜像页(内嵌 JSON,240+ 模型)。
       // AA 为自家 harness 复测,分数系统性低于厂商官方口径约 5 分;仅用于补官方渠道未收录的模型
       // (GPT-5.6 Terra/Luna、Grok 4.6、Gemini 3.8/3.7 Flash、Muse Spark 1.3 等),
       // src=aa 徽标区分;重叠模型由 T2 厂商分覆盖。

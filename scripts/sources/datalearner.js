@@ -61,6 +61,8 @@ function unescapeStream(s) {
 // opts.withEvidence=true 时额外带 evidence:{sourceUrl,sourceTier,evaluationMethod,sourceName}:
 //   供调用方按「该条有无出处」分流(datalearner 部分行的 evidence 缺 sourceUrl,无据可回溯口径,
 //   见 scripts/sources/automationbench.js 的取证说明)。默认不带,保持既有调用方行为不变。
+// ⚠ 页面 HTML 只内嵌首屏 30 条(其余滚动加载):需要全量数据时用 fetchDataLearnerBenchAll(),
+//   不要用本函数直接解析页面 HTML。
 function parseDataLearnerBench(html, opts) {
   var withEvidence = !!(opts && opts.withEvidence);
   var marker = '\\"results\\":[';
@@ -80,8 +82,13 @@ function parseDataLearnerBench(html, opts) {
   try { rows = JSON.parse(unescapeStream("[" + html.slice(start, i - 1) + "]")); }
   catch (e) { throw new Error("datalearner results JSON 解析失败: " + e.message); }
   if (!Array.isArray(rows) || !rows.length) throw new Error("datalearner results 数组为空");
+  return rowsToModels(rows, withEvidence);
+}
+
+// results 行(接口 JSON / 页面内嵌 JSON 同构)-> 统一模型记录
+function rowsToModels(rows, withEvidence) {
   var models = [];
-  rows.forEach(function (r) {
+  (rows || []).forEach(function (r) {
     if (!r || !r.modelAbbrName || r.evalResult == null) return;
     var rec = {
       name: String(r.modelAbbrName).trim(),
@@ -105,6 +112,42 @@ function parseDataLearnerBench(html, opts) {
   });
   if (!models.length) throw new Error("datalearner 详情页未解析到任何模型条目");
   return models;
+}
+
+// 从榜单详情页 URL 推导接口路径:.../benchmarks/<code> -> /api/get-benchmark-detail/<code>
+function benchApiUrl(pageUrl) {
+  var u = new URL(pageUrl);
+  var parts = u.pathname.split("/").filter(Boolean);
+  var code = parts[parts.length - 1];
+  if (!code) throw new Error("datalearner 详情页 URL 缺少基准 code: " + pageUrl);
+  return u.origin + "/api/get-benchmark-detail/" + encodeURIComponent(code);
+}
+
+// 全量抓取:页面首屏只内嵌 30 条,其余由滚动加载的详情接口返回;
+// 按 limit/offset 分页取完,并校验 totalCount,避免静默只拿到榜首小样本。
+async function fetchDataLearnerBenchAll(pageUrl, opts) {
+  var api = benchApiUrl(pageUrl);
+  var limit = 1000;
+  var rows = [];
+  var total = null;
+  while (total == null || rows.length < total) {
+    var sep = api.indexOf("?") >= 0 ? "&" : "?";
+    var url = api + sep + "limit=" + limit + "&offset=" + rows.length + "&locale=zh";
+    var text = await transport.fetchWithRetry(url, { headers: { Accept: "application/json" } });
+    var json;
+    try { json = JSON.parse(text); }
+    catch (e) { throw new Error("datalearner 榜单接口返回非 JSON: " + e.message); }
+    var page = json && json.results;
+    if (!Array.isArray(page) || !page.length) {
+      throw new Error("datalearner 榜单接口未返回 results(站点接口可能已变更)");
+    }
+    rows.push.apply(rows, page);
+    total = json.totalCount != null ? Number(json.totalCount) : rows.length;
+  }
+  if (total != null && rows.length < total) {
+    throw new Error("datalearner 全量抓取不完整:" + rows.length + "/" + total);
+  }
+  return rowsToModels(rows, !!(opts && opts.withEvidence));
 }
 
 class DataLearnerSource extends BaseSource {
@@ -152,5 +195,6 @@ class DataLearnerSource extends BaseSource {
 module.exports = {
   DataLearnerSource: registry.register(DataLearnerSource),
   parseDataLearner: parseDataLearner,
-  parseDataLearnerBench: parseDataLearnerBench
+  parseDataLearnerBench: parseDataLearnerBench,
+  fetchDataLearnerBenchAll: fetchDataLearnerBenchAll
 };

@@ -3,7 +3,7 @@
 // 数据形态:Next.js App Router 页面,榜单数据以 JSON 内嵌于 self.__next_f RSC 流
 //   (形如 \"rows\":[{...}],引号已转义;页面可见的 <tr> 仅为骨架屏)。
 // 渠道层级:主源 tbench.ai 官方实测榜 = T1(最高优先级);
-//   补充源 datalearner.com/benchmarks/terminal-bench-4-0(内嵌 results JSON,厂商官方发布)= T2,
+//   补充源 datalearner.com/benchmarks/terminal-bench-4-0(全量接口,厂商官方发布)= T2,
 //   按"只补缺、不覆盖官方条目"策略合并官方榜未收录模型(官方口径优先)。
 // 性质:agent×model 组合条目(66 终端任务);与 3.0/2.1 合并为单一基准组计入总览页综合分(权重 11%)与命中数。
 // 输出:data/tbench.js(window.TBENCH),供「权威基准测试」页完整展示与总览矩阵。
@@ -15,7 +15,7 @@ const normalizer = require("../lib/normalizer");
 const writers = require("../lib/writers");
 const officialSeeds = require("../lib/official-seeds");
 const art = require("../lib/aireleasetracker");
-const { parseDataLearnerBench } = require("./datalearner");
+const { fetchDataLearnerBenchAll } = require("./datalearner");
 const CONFIG = require("../lib/config");
 
 // 模型名归一化(补充源去重匹配):转小写并移除非字母数字字符(与 deepswe 范式一致)
@@ -72,10 +72,10 @@ class TBenchSource extends BaseSource {
     });
   }
   async fetch() {
-    // 主源(tbench.ai 官方 RSC 流)+ 补充源(datalearner TB 4.0 详情页)并行抓取
+    // 主源(tbench.ai 官方 RSC 流)+ 补充源(datalearner TB 4.0 全量接口)并行抓取
     const [primary, extra, artData] = await Promise.all([
       transport.fetchWithRetry(this.cfg.url),
-      transport.fetchWithRetry(CONFIG.sources.datalearner_tbench40.url),
+      fetchDataLearnerBenchAll(CONFIG.sources.datalearner_tbench40.url),
       art.fetchModelsSafe("tbench")
     ]);
     return { art: artData, primary: primary, extra: extra };
@@ -114,7 +114,7 @@ class TBenchSource extends BaseSource {
         return o === n || (o.length >= 5 && n.endsWith(o)) || (n.length >= 5 && o.endsWith(n));
       });
     }
-    let dlExtra = parseDataLearnerBench(raw.extra);
+    let dlExtra = raw.extra;
     dlExtra.forEach(function (dl) {
       if (isKnown(dl.name)) return;
       officialNames.push(normName(dl.name));

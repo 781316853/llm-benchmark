@@ -121,9 +121,9 @@ window.MODEL_MAP = {
     // ===== AI 能力专项测试(atmeplz,2026-10-16 下线)方向榜补充的新模型(2026-09) =====
     { id: "Gemini 3.8 Flash", vendor: "Google",    color: "#4E8BF0", aliases: ["Gemini 3.8 Flash", "gemini-3.8-flash", "gemini-3.8-flash-high"] },
     { id: "Qwen3.8-Flash",    vendor: "Alibaba",   color: "#FF7A14", aliases: ["Qwen3.8-Flash", "qwen3.8-flash", "Qwen3.8 Flash", "Qwen 3.8 Flash", "Qwen3.8-Flash-Next", "qwen3.8-flash-next", "Qwen3.8 Flash Next", "qwen-3-8-flash-next"] },
-    { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview"] },
+    { id: "Tencent Hy4 Preview", vendor: "Tencent", color: "#2BD0FF", aliases: ["Tencent Hy4 Preview", "hy4-preview", "混元4 Preview", "混元 4 Preview"] },
     // 2026-11-04 腾讯混元发布 Hy4 正式版(hy.tencent.com/research/hy4),与 Preview 是不同模型,单独建档。
-    { id: "Tencent Hy4", vendor: "Tencent", color: "#12B7F5", aliases: ["Tencent Hy4", "Hy4", "HY4", "hy4", "hy4-dev", "Hunyuan Hy4", "hunyuan-hy4", "Tencent-Hy4", "tencent/hy4", "Hy4 正式版", "混元 Hy4"] },
+    { id: "Tencent Hy4", vendor: "Tencent", color: "#12B7F5", aliases: ["Tencent Hy4", "Hy4", "HY4", "hy4", "hy4-dev", "Hunyuan Hy4", "hunyuan-hy4", "Tencent-Hy4", "tencent/hy4", "Hy4 正式版", "混元 Hy4", "混元4", "混元 4"] },
     { id: "Ox-Alpha",         vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Ox-Alpha", "ox-alpha"] },
     { id: "DOTS3-Note-Prev",  vendor: "Dots",      color: "#E0552A", aliases: ["DOTS3-Note-Prev", "dots3-note-prev", "dots3-note Preview", "dots3-note-preview", "Dots3-Note-Preview", "dots3-note"] },
     { id: "DeepSeek V4 Pro 0821 灰测", vendor: "DeepSeek", color: "#6B86FE", aliases: ["DeepSeek V4 Pro 0821 凌晨灰测", "deepseek-v4-pro-0821凌晨灰测"] },
@@ -258,7 +258,7 @@ window.MODEL_MAP = {
     { id: "Gemini 4 Hydrogen", vendor: "Google", color: "#86B6F6", aliases: ["Gemini 4 Hydrogen", "gemini-4-hydrogen", "Gemini-4-Hydrogen", "gemini 4 hydrogen"] },
     { id: "Qwen4-Max",        vendor: "Alibaba",  color: "#FF8A2B", aliases: ["Qwen4-Max", "Qwen-4-Max", "Qwen4 Max", "qwen4-max"] },
     { id: "Qwen4-Max-Preview", vendor: "Alibaba", color: "#FFA45C", aliases: ["Qwen4-Max-Preview", "Qwen-4-Max-Preview", "Qwen4 Max Preview", "qwen4-max-preview", "Qwen4.0-Max-Preview", "Qwen4.0 Max Preview", "qwen4.0-max-preview"] },
-    { id: "Tencent Hy4 Flash", vendor: "Tencent", color: "#36D3F0", aliases: ["Tencent Hy4 Flash", "Tencent HY4-flash", "HY4-flash", "hy4-flash", "hy4-flash-dev", "Hy4 Flash"] },
+    { id: "Tencent Hy4 Flash", vendor: "Tencent", color: "#36D3F0", aliases: ["Tencent Hy4 Flash", "Tencent HY4-flash", "HY4-flash", "hy4-flash", "hy4-flash-dev", "Hy4 Flash", "Hunyuan Hy4 Flash", "hunyuan-hy4-flash", "混元4 Flash", "混元4-flash", "混元 4 Flash", "混元4"] },
     { id: "ERNIE 5.5 Flash Preview", vendor: "Baidu", color: "#5B6CF0", aliases: ["ERNIE 5.5 Flash Preview", "ERNIE-5.5-Flash-Preview", "ERNIE-5.5-Flash-Preview (high)", "ernie-5.5-flash-preview", "ernie-5.5-flash-preview:free"] },
     { id: "GPT-6.2 Astra",    vendor: "OpenAI",   color: "#0B8C67", aliases: ["GPT-6.2 Astra", "GPT-6.2-Astra", "gpt-6.2-astra", "gpt-6-2-astra"] }
   ],

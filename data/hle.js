@@ -1,22 +1,22 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-11-16)
-// 来源:https://www.datalearner.com/benchmarks/hle(主渠道,厂商官方发布无工具成绩) · https://benchlm.ai/benchmarks/aahle(AA 无工具复测镜像)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-11-17)
+// 来源:https://www.datalearner.com/api/get-benchmark-detail/hle(主渠道,厂商官方发布全量无工具成绩;页面首屏仅 30 条) · https://benchlm.ai/benchmarks/aahle(AA 无工具复测镜像)
 // 补充:https://aireleasetracker.com/benchmark/hle-no-tools(第三方聚合 T3,只补缺失模型)
 // 官方:https://lastexam.ai/
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 口径:统一无工具(闭卷)——datalearner 同模型只取「无工具」行(多条取最高),官方种子补充厂商 w/o tools 成绩,
 //   AA 无工具复测仅补官方渠道未收录的模型;仅带工具分或未声明协议的条目已剔除,表内分数可直接比较。
-// 字段说明:model=模型名;score=闭卷得分(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/deepseek-official/moonshot-official/aa/aireleasetracker);protocol=工具口径(统一为无工具);protocolNote=口径原文/说明
-// 用途:「权威基准测试」页展示 + 总览矩阵参考列,仅参考,不计入综合分/命中数。
+// 字段说明:model=模型名;score=闭卷得分(%);org=厂商;size=参数量;context=上下文;cost=API 价格;src=数据来源渠道(datalearner/厂商官方种子/aa/aireleasetracker);protocol=工具口径(统一为无工具);protocolNote=口径原文/说明
+// 用途:「权威基准测试」页展示 + 总览矩阵计分列,计入综合分与命中数(2026-11-15 起)。
 window.HLE = {
   'source': 'Humanity\'s Last Exam',
   'url': 'https://www.datalearner.com/benchmarks/hle',
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-17',
+  'refreshedAt': '2026-11-17 09:12',
   'stats': {
     'tasks': 2500,
-    'entries': 240
+    'entries': 298
   },
   'desc': 'Humanity\'s Last Exam(HLE):CAIS 与 Scale AI 推出的前沿知识广度基准,2500 道由各领域专家撰写、无网络可检索解的问题(数学/科学/人文学科等),目的在衡量模型逼近人类专家知识天花板;得分越高越好。本表统一为无工具(闭卷)口径:厂商明确标注无工具的条目优先,AA 无工具复测仅补官方渠道未收录的模型;仅带工具分或未声明协议的模型不收录,表内分数可直接比较。',
   'models': [
@@ -34,7 +34,7 @@ window.HLE = {
     {
       'model': 'Claude Opus 5.5',
       'org': 'Anthropic',
-      'score': 61.35,
+      'score': 61.3531,
       'license': '不开源',
       'mode': '最高（无工具） · Text only',
       'protocol': '无工具',
@@ -54,77 +54,126 @@ window.HLE = {
       'protocolNote': '最高（无工具）'
     },
     {
-      'model': 'Gemini 4 Argon',
-      'org': 'Google',
-      'score': 57.1,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 4,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
       'model': 'Claude Fable 5',
       'org': 'Anthropic',
-      'score': 55.5,
+      'score': 59,
+      'license': '不开源',
+      'mode': '深度思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
+      'src': 'datalearner',
+      'rank': 4,
+      'protocolNote': '深度思考模式（无工具）'
+    },
+    {
+      'model': 'Gemini 4 Argon',
+      'org': 'Google DeepMind',
+      'score': 57.0899,
+      'license': '不开源',
+      'mode': '思考模式 High（无工具） · Text only',
+      'protocol': '无工具',
+      'src': 'datalearner',
       'rank': 5,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'protocolNote': '思考模式 High（无工具） · Text only'
     },
     {
       'model': 'Claude Sonnet 5.5',
       'org': 'Anthropic',
-      'score': 55,
+      'score': 56.9,
+      'license': '不开源',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
+      'src': 'datalearner',
       'rank': 6,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'protocolNote': '最高（无工具）'
+    },
+    {
+      'model': 'Claude Mythos Preview',
+      'org': 'Anthropic',
+      'score': 56.8,
+      'license': '不开源',
+      'mode': '扩展（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 7,
+      'protocolNote': '扩展（无工具）'
     },
     {
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
-      'score': 54.9,
+      'score': 56.3,
+      'license': '不开源',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 7,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 8,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'GPT-6 Astra',
       'org': 'OpenAI',
-      'score': 54.7,
+      'score': 54.6803,
+      'license': '不开源',
+      'mode': '最高（无工具） · Text only',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 8,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 9,
+      'protocolNote': '最高（无工具） · Text only'
     },
     {
       'model': 'Muse Wonder Full',
-      'org': 'Meta',
-      'score': 53.6,
+      'org': 'Facebook AI研究实验室',
+      'score': 53.6145,
+      'license': '不开源',
+      'mode': '最高（无工具） · Text only',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 9,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 10,
+      'protocolNote': '最高（无工具） · Text only'
     },
     {
       'model': 'GPT-6.1 Sol',
       'org': 'OpenAI',
-      'score': 52.9,
+      'score': 52.9194,
+      'license': '不开源',
+      'mode': '最高（无工具） · Text only',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 10,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 11,
+      'protocolNote': '最高（无工具） · Text only'
     },
     {
       'model': 'Kimi K3.1 Pro',
-      'score': 51.1,
       'org': 'Moonshot AI',
-      'sourceUrl': 'https://www.kimi.com/en/blog/kimi-k3-1-pro',
-      'src': 'moonshot-official',
+      'score': 52.456,
+      'license': '有条件免费商用授权',
+      'mode': '最高（无工具） · Text only',
       'protocol': '无工具',
-      'rank': 11,
-      'protocolNote': 'Kimi 官方博客 HLE-Full (w/o tools) 51.1,2026-10-24;带工具 70.0 未采用'
+      'src': 'datalearner',
+      'sourceUrl': 'https://www.kimi.com/en/blog/kimi-k3-1-pro',
+      'rank': 12,
+      'protocolNote': '最高（无工具） · Text only'
+    },
+    {
+      'model': 'Qwen4-Max',
+      'org': '阿里巴巴',
+      'score': 51.7,
+      'license': '不开源',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 13,
+      'protocolNote': '最高（无工具）'
+    },
+    {
+      'model': 'Muse Spark',
+      'org': 'Facebook AI研究实验室',
+      'score': 50.2,
+      'license': '不开源',
+      'mode': '深度思考（无工具、并行）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 14,
+      'protocolNote': '深度思考（无工具、并行）'
     },
     {
       'model': 'Muse Wonder',
@@ -132,17 +181,19 @@ window.HLE = {
       'score': 50.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 12,
+      'rank': 15,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-5.6 Sol',
-      'org': 'OpenAI',
-      'score': 49.5,
+      'model': 'Claude Opus 4.8',
+      'org': 'Anthropic',
+      'score': 49.8,
+      'license': '不开源',
+      'mode': '扩展（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 13,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 16,
+      'protocolNote': '扩展（无工具）'
     },
     {
       'model': 'MiMo-V2.6-Pro',
@@ -150,16 +201,7 @@ window.HLE = {
       'score': 49.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 14,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Claude Opus 4.8',
-      'org': 'Anthropic',
-      'score': 48.7,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 15,
+      'rank': 17,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -168,8 +210,19 @@ window.HLE = {
       'score': 48.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 16,
+      'rank': 18,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Gemini 3 Deep Think - 2620',
+      'org': 'Google DeepMind',
+      'score': 48.4,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 19,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'MiniMax M3.1 Flash',
@@ -177,7 +230,7 @@ window.HLE = {
       'score': 48,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 17,
+      'rank': 20,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -186,7 +239,7 @@ window.HLE = {
       'score': 47.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 18,
+      'rank': 21,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -195,7 +248,7 @@ window.HLE = {
       'score': 47.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 19,
+      'rank': 22,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -204,7 +257,7 @@ window.HLE = {
       'score': 47.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 20,
+      'rank': 23,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -213,26 +266,52 @@ window.HLE = {
       'score': 47,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 21,
+      'rank': 24,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Kimi K3',
-      'org': 'Moonshot AI',
+      'model': 'Claude Opus 4.7',
+      'org': 'Anthropic',
       'score': 46.9,
+      'license': '不开源',
+      'mode': '扩展（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 22,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 25,
+      'protocolNote': '扩展（无工具）'
     },
     {
       'model': 'Step 5 Preview',
-      'org': 'StepFun',
+      'org': 'StepFunAI',
       'score': 46.5,
+      'license': '有条件免费商用授权（Apache-2.0 风格，附署名与商用许可条件）',
+      'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 23,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 26,
+      'protocolNote': '思考模式 High（无工具）'
+    },
+    {
+      'model': 'Gemini 3.1 Pro Preview',
+      'org': 'Google DeepMind',
+      'score': 46.44,
+      'license': '不开源',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 27,
+      'protocolNote': '思考模式 High（无工具）'
+    },
+    {
+      'model': 'ERNIE 5.5 Flash Preview',
+      'org': '百度',
+      'score': 46.4,
+      'license': '已宣布开源（权重待发布）',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 28,
+      'protocolNote': '思考模式 High（无工具）'
     },
     {
       'model': 'Muse Spark 1.1',
@@ -240,7 +319,7 @@ window.HLE = {
       'score': 46.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 24,
+      'rank': 29,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -249,17 +328,19 @@ window.HLE = {
       'score': 46.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 25,
+      'rank': 30,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-5.5',
-      'org': 'OpenAI',
-      'score': 45.8,
+      'model': 'Claude Haiku 5.5',
+      'org': 'Anthropic',
+      'score': 45.9,
+      'license': '不开源',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 26,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 31,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'Muse Spark 1.2',
@@ -267,26 +348,41 @@ window.HLE = {
       'score': 45.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 27,
+      'rank': 32,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Claude Haiku 5.5',
-      'org': 'Anthropic',
-      'score': 44.4,
+      'model': 'GPT-5.6 Sol',
+      'org': 'OpenAI',
+      'score': 44.5,
+      'license': '不开源',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 28,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 33,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'Inkling 2 Small',
       'org': 'Thinking Machines Lab',
-      'score': 44.1,
+      'score': 44.1149,
+      'license': '免费商用授权',
+      'mode': '极高强度思考（无工具） · Text only',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 29,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 34,
+      'protocolNote': '极高强度思考（无工具） · Text only'
+    },
+    {
+      'model': 'Qwen3.8-Max-0902',
+      'org': '阿里巴巴',
+      'score': 43.9,
+      'license': '不开源',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 35,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'Muse Spark Open',
@@ -294,17 +390,75 @@ window.HLE = {
       'score': 43.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 30,
+      'rank': 36,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-5.4',
-      'org': 'OpenAI',
-      'score': 43.7,
+      'model': 'Qwen3.8-Max',
+      'org': '阿里巴巴',
+      'score': 43.6,
+      'license': '有条件免费商用授权',
+      'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 31,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 37,
+      'protocolNote': '极高强度思考（无工具）'
+    },
+    {
+      'model': 'Kimi K3',
+      'org': 'Moonshot AI',
+      'score': 43.5,
+      'license': '有条件免费商用授权',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 38,
+      'protocolNote': '最高（无工具）'
+    },
+    {
+      'model': 'Hy4 preview',
+      'org': '腾讯AI实验室',
+      'score': 43.4,
+      'license': '免费商用授权',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 39,
+      'protocolNote': '思考模式 High（无工具）'
+    },
+    {
+      'model': 'DeepSeek-V4.1-Flash-1017',
+      'org': 'DeepSeek-AI',
+      'score': 43.3272,
+      'license': '免费商用授权',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'sourceUrl': 'https://api-docs.deepseek.com/zh-cn/updates',
+      'rank': 40,
+      'protocolNote': '最高（无工具）'
+    },
+    {
+      'model': 'Claude Sonnet 5',
+      'org': 'Anthropic',
+      'score': 43.2,
+      'license': '不开源',
+      'mode': '极高强度思考（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 41,
+      'protocolNote': '极高强度思考（无工具）'
+    },
+    {
+      'model': 'GPT-5.5 Pro',
+      'org': 'OpenAI',
+      'score': 43.1,
+      'license': '不开源',
+      'mode': '极高强度思考（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 42,
+      'protocolNote': '极高强度思考（无工具）'
     },
     {
       'model': 'Grok 4.7',
@@ -312,7 +466,7 @@ window.HLE = {
       'score': 43.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 32,
+      'rank': 43,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -321,8 +475,19 @@ window.HLE = {
       'score': 43.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 33,
+      'rank': 44,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GLM-5.3',
+      'org': '智谱AI',
+      'score': 43,
+      'license': '有条件免费商用授权',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 45,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'GPT-5.6 Terra',
@@ -330,7 +495,7 @@ window.HLE = {
       'score': 42.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 34,
+      'rank': 46,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -339,8 +504,30 @@ window.HLE = {
       'score': 42.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 35,
+      'rank': 47,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT-5.4 Pro',
+      'org': 'OpenAI',
+      'score': 42.7,
+      'license': '不开源',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 48,
+      'protocolNote': '思考模式 High（无工具）'
+    },
+    {
+      'model': 'DeepSeek V4 Pro 0813',
+      'org': 'DeepSeek-AI',
+      'score': 42.7,
+      'license': '免费商用授权',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 49,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'Gemini 3.5 Flash',
@@ -348,7 +535,7 @@ window.HLE = {
       'score': 42.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 36,
+      'rank': 50,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -357,18 +544,8 @@ window.HLE = {
       'score': 42.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 37,
+      'rank': 51,
       'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'DeepSeek-V4.1-Flash-1017',
-      'score': 42.6,
-      'org': 'DeepSeek-AI',
-      'sourceUrl': 'https://api-docs.deepseek.com/zh-cn/updates',
-      'src': 'deepseek-official',
-      'protocol': '无工具',
-      'rank': 38,
-      'protocolNote': 'DeepSeek 官方更新页 HLE (w/o tools) 42.6(纯文本 44.0),2026-10-17'
     },
     {
       'model': 'GPT-5.3 Codex',
@@ -376,7 +553,7 @@ window.HLE = {
       'score': 42.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 39,
+      'rank': 52,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -385,7 +562,7 @@ window.HLE = {
       'score': 42.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 40,
+      'rank': 53,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -394,44 +571,41 @@ window.HLE = {
       'score': 42.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 41,
+      'rank': 54,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GLM-5.3',
-      'org': 'Z.AI',
-      'score': 42.3,
+      'model': 'GPT-5.5',
+      'org': 'OpenAI',
+      'score': 41.4,
+      'license': '不开源',
+      'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 42,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 55,
+      'protocolNote': '思考模式 High（无工具）'
     },
     {
-      'model': 'Claude Sonnet 5',
-      'org': 'Anthropic',
-      'score': 41.3,
+      'model': 'Qwen3.7 Max',
+      'org': '阿里巴巴',
+      'score': 41.4,
+      'license': '不开源',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 43,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 56,
+      'protocolNote': '最高（无工具）'
     },
     {
-      'model': 'GLM-5.2',
-      'org': 'Z.AI',
-      'score': 41.1,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 44,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'DeepSeek V4 Pro 0813',
-      'org': 'DeepSeek',
+      'model': 'Gemini 3.0 Pro (Preview 11-2025)',
+      'org': 'Google DeepMind',
       'score': 41,
+      'license': '不开源',
+      'mode': '并行思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 45,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 57,
+      'protocolNote': '并行思考模式（无工具）'
     },
     {
       'model': 'Gemini 3.6 Flash',
@@ -439,26 +613,19 @@ window.HLE = {
       'score': 40.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 46,
+      'rank': 58,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Muse Spark',
-      'org': 'Meta',
-      'score': 40.7,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 47,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Qwen3.7 Max',
-      'org': 'Alibaba',
+      'model': 'GLM-5.2',
+      'org': '智谱AI',
       'score': 40.5,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 48,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 59,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Claude Opus 4.6 (Adaptive)',
@@ -466,7 +633,7 @@ window.HLE = {
       'score': 39.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 49,
+      'rank': 60,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -475,7 +642,7 @@ window.HLE = {
       'score': 39.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 50,
+      'rank': 61,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -484,7 +651,7 @@ window.HLE = {
       'score': 39.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 51,
+      'rank': 62,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -493,7 +660,7 @@ window.HLE = {
       'score': 39.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 52,
+      'rank': 63,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -502,16 +669,7 @@ window.HLE = {
       'score': 39,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 53,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'DeepSeek V4 Flash 0731',
-      'org': 'DeepSeek',
-      'score': 38.6,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 54,
+      'rank': 64,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -520,35 +678,39 @@ window.HLE = {
       'score': 38.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 55,
+      'rank': 65,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Qwen3.8-Flash-Next',
-      'org': 'Alibaba',
-      'score': 38,
+      'model': 'DeepSeek V4 Flash 0731',
+      'org': 'DeepSeek-AI',
+      'score': 37.8,
+      'license': '免费商用授权',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 56,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 66,
+      'protocolNote': '最高（无工具）'
     },
     {
-      'model': 'GPT-5.2',
-      'org': 'OpenAI',
+      'model': 'DeepSeek-V4-Pro',
+      'org': 'DeepSeek-AI',
       'score': 37.7,
+      'license': '免费商用授权',
+      'mode': '最高（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 57,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 67,
+      'protocolNote': '最高（无工具）'
     },
     {
-      'model': 'Kimi K2.6',
-      'org': 'Moonshot AI',
+      'model': 'Gemini 3.0 Pro',
       'score': 37.5,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 68,
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 58,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
     },
     {
       'model': 'Grok 4.3',
@@ -556,8 +718,63 @@ window.HLE = {
       'score': 37.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 59,
+      'rank': 69,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Hy3',
+      'org': '腾讯AI实验室',
+      'score': 37,
+      'license': '免费商用授权',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 70,
+      'protocolNote': '思考模式 High（无工具）'
+    },
+    {
+      'model': 'DeepSeek-V4.1-Flash',
+      'org': 'DeepSeek-AI',
+      'score': 36.8,
+      'license': '免费商用授权',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 71,
+      'protocolNote': '最高（无工具）'
+    },
+    {
+      'model': 'GPT-5.2 Pro',
+      'org': 'OpenAI',
+      'score': 36.6,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 72,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GPT-5.4',
+      'org': 'OpenAI',
+      'score': 36.24,
+      'license': '不开源',
+      'mode': '极高强度思考（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 73,
+      'protocolNote': '极高强度思考（无工具）'
+    },
+    {
+      'model': 'Qwen3.8-Flash-Next',
+      'org': '阿里巴巴',
+      'score': 35.9,
+      'license': '有条件免费商用授权',
+      'mode': '极高强度思考（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 74,
+      'protocolNote': '极高强度思考（无工具）'
     },
     {
       'model': 'GPT-5.2-Codex',
@@ -565,7 +782,7 @@ window.HLE = {
       'score': 35.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 60,
+      'rank': 75,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -574,7 +791,7 @@ window.HLE = {
       'score': 35.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 61,
+      'rank': 76,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -583,7 +800,7 @@ window.HLE = {
       'score': 35.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 62,
+      'rank': 77,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -592,7 +809,7 @@ window.HLE = {
       'score': 35.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 63,
+      'rank': 78,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -601,7 +818,7 @@ window.HLE = {
       'score': 35.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 64,
+      'rank': 79,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -610,8 +827,41 @@ window.HLE = {
       'score': 35,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 65,
+      'rank': 80,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Gemini 2.5 Deep Think',
+      'org': 'Google DeepMind',
+      'score': 34.8,
+      'license': '不开源',
+      'mode': '深度思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 81,
+      'protocolNote': '深度思考模式（无工具）'
+    },
+    {
+      'model': 'DeepSeek-V4-Flash',
+      'org': 'DeepSeek-AI',
+      'score': 34.8,
+      'license': '免费商用授权',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 82,
+      'protocolNote': '最高（无工具）'
+    },
+    {
+      'model': 'Kimi K2.6',
+      'org': 'Moonshot AI',
+      'score': 34.7,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 83,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Beam 1.0 501B-A23B',
@@ -619,8 +869,30 @@ window.HLE = {
       'score': 34.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 66,
+      'rank': 84,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT-5.2',
+      'org': 'OpenAI',
+      'score': 34.5,
+      'license': '不开源',
+      'mode': '极高强度思考（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 85,
+      'protocolNote': '极高强度思考（无工具）'
+    },
+    {
+      'model': 'Claude Opus 4.6',
+      'org': 'Anthropic',
+      'score': 34.44,
+      'license': '不开源',
+      'mode': '最高（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 86,
+      'protocolNote': '最高（无工具）'
     },
     {
       'model': 'Apodex 1.1',
@@ -628,7 +900,7 @@ window.HLE = {
       'score': 34.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 67,
+      'rank': 87,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -637,26 +909,19 @@ window.HLE = {
       'score': 34.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 68,
+      'rank': 88,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Qwen3.8-27B',
-      'org': 'Alibaba',
-      'score': 33.9,
+      'model': 'Gemini 3.0 Flash',
+      'org': 'Google DeepMind',
+      'score': 33.7,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 69,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Hy3',
-      'org': 'Tencent',
-      'score': 33.5,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 70,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 89,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Hy3 Preview',
@@ -664,7 +929,7 @@ window.HLE = {
       'score': 33.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 71,
+      'rank': 90,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -673,26 +938,52 @@ window.HLE = {
       'score': 33.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 72,
+      'rank': 91,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Claude Opus 4.7',
+      'model': 'Claude Sonnet 4.6',
       'org': 'Anthropic',
-      'score': 33.3,
+      'score': 33.2,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 73,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 92,
+      'protocolNote': '思考模式（无工具）'
     },
     {
-      'model': 'Inkling',
-      'org': 'Thinking Machines Lab',
-      'score': 31.9,
+      'model': 'GLM 5.1',
+      'org': '智谱AI',
+      'score': 31,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 74,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 93,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Claude Opus 4.5',
+      'org': 'Anthropic',
+      'score': 30.8,
+      'license': '不开源',
+      'mode': '扩展（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 94,
+      'protocolNote': '扩展（无工具）'
+    },
+    {
+      'model': 'Qwen3.8-27B',
+      'org': '阿里巴巴',
+      'score': 30.8,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 95,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Qwen 3.6 Max (preview)',
@@ -700,8 +991,19 @@ window.HLE = {
       'score': 30.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 75,
+      'rank': 96,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT-5-Pro',
+      'org': 'OpenAI',
+      'score': 30.7,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 97,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Kimi K2.5 (Reasoning)',
@@ -709,16 +1011,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 76,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Kimi K2.5',
-      'org': 'Moonshot AI',
-      'score': 30.7,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 77,
+      'rank': 98,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -727,7 +1020,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 78,
+      'rank': 99,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -736,8 +1029,30 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 79,
+      'rank': 100,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'DeepSeek V3.2 Speciale',
+      'org': 'DeepSeek-AI',
+      'score': 30.6,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 101,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GLM-5',
+      'org': '智谱AI',
+      'score': 30.5,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 102,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'MiMo-V2-Pro',
@@ -745,17 +1060,30 @@ window.HLE = {
       'score': 30.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 80,
+      'rank': 103,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GLM-5.1',
-      'org': 'Z.AI',
-      'score': 30.1,
+      'model': 'Qwen3-Max-Thinking',
+      'org': '阿里巴巴',
+      'score': 30.2,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 81,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 104,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Kimi K2.5',
+      'org': 'Moonshot AI',
+      'score': 30.1,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 105,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Claude Opus 4.5 Thinking',
@@ -763,7 +1091,7 @@ window.HLE = {
       'score': 30.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 82,
+      'rank': 106,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -772,17 +1100,19 @@ window.HLE = {
       'score': 29.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 83,
+      'rank': 107,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'MiniMax M2.7',
-      'org': 'MiniMax',
-      'score': 29.6,
+      'model': 'Inkling',
+      'org': 'Thinking Machines Lab',
+      'score': 29.7,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 84,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 108,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'A.X K2',
@@ -790,16 +1120,7 @@ window.HLE = {
       'score': 29.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 85,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GLM-5',
-      'org': 'Z.AI',
-      'score': 29.3,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 86,
+      'rank': 109,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -808,7 +1129,7 @@ window.HLE = {
       'score': 29,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 87,
+      'rank': 110,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -817,17 +1138,39 @@ window.HLE = {
       'score': 29,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 88,
+      'rank': 111,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-5.1',
-      'org': 'OpenAI',
-      'score': 28.5,
+      'model': 'Qwen 3.6 Plus Preview',
+      'org': '阿里巴巴',
+      'score': 28.8,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 89,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 112,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Qwen3.5-397B-A17B',
+      'org': '阿里巴巴',
+      'score': 28.7,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 113,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Qwen3.5',
+      'score': 28.7,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 114,
+      'protocol': '无工具',
+      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
     },
     {
       'model': 'GPT-5 (high)',
@@ -835,35 +1178,30 @@ window.HLE = {
       'score': 28.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 90,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Nemotron 3 Ultra',
-      'org': 'NVIDIA',
-      'score': 28.4,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 91,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GPT-5.4 nano',
-      'org': 'OpenAI',
-      'score': 28.3,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 92,
+      'rank': 115,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'GPT-5.4 mini',
       'org': 'OpenAI',
-      'score': 28.1,
+      'score': 28.2,
+      'license': '不开源',
+      'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 93,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 116,
+      'protocolNote': '极高强度思考（无工具）'
+    },
+    {
+      'model': 'MiniMax-M2.7',
+      'org': 'MiniMaxAI',
+      'score': 28,
+      'license': '不可以商用',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 117,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Qwen3.6 Plus',
@@ -871,7 +1209,7 @@ window.HLE = {
       'score': 27.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 94,
+      'rank': 118,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -880,26 +1218,41 @@ window.HLE = {
       'score': 27.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 95,
+      'rank': 119,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GLM-4.7',
-      'org': 'Z.AI',
-      'score': 27.4,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 96,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Grok 4',
-      'org': 'xAI',
+      'model': 'Nemotron 3 Ultra',
+      'org': 'NVIDIA',
       'score': 26.7,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 97,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 120,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GPT-5.1',
+      'org': 'OpenAI',
+      'score': 26.5,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 121,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'ERNIE 5.0',
+      'org': '百度',
+      'score': 25.81,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 122,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'GPT-5.1-Codex',
@@ -907,7 +1260,7 @@ window.HLE = {
       'score': 25.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 98,
+      'rank': 123,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -916,8 +1269,19 @@ window.HLE = {
       'score': 25.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 99,
+      'rank': 124,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Grok 4',
+      'org': 'xAI',
+      'score': 25.4,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 125,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'GPT-5 (medium)',
@@ -925,8 +1289,19 @@ window.HLE = {
       'score': 25.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 100,
+      'rank': 126,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT-5',
+      'org': 'OpenAI',
+      'score': 25.32,
+      'license': '不开源',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 127,
+      'protocolNote': '思考模式 High（无工具）'
     },
     {
       'model': 'Qwen3.5-122B-A10B',
@@ -934,8 +1309,30 @@ window.HLE = {
       'score': 25.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 101,
+      'rank': 128,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'DeepSeek V3.2',
+      'org': 'DeepSeek-AI',
+      'score': 25.1,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 129,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GLM-4.7',
+      'org': '智谱AI',
+      'score': 24.8,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 130,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Nemotron 3.5 Bolt 74B-A9B',
@@ -943,7 +1340,7 @@ window.HLE = {
       'score': 24.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 102,
+      'rank': 131,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -952,17 +1349,52 @@ window.HLE = {
       'score': 24.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 103,
+      'rank': 132,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'Qwen3.5-27B',
-      'org': 'Alibaba',
-      'score': 23.9,
+      'org': '阿里巴巴',
+      'score': 24.3,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 104,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 133,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GPT-5.4 nano',
+      'org': 'OpenAI',
+      'score': 24.3,
+      'license': '不开源',
+      'mode': '极高强度思考（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 134,
+      'protocolNote': '极高强度思考（无工具）'
+    },
+    {
+      'model': 'Qwen3.6-27B',
+      'org': '阿里巴巴',
+      'score': 24,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 135,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Kimi K2 Thinking',
+      'org': 'Moonshot AI',
+      'score': 23.9,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 136,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Ling 3.0 Flash',
@@ -970,43 +1402,7 @@ window.HLE = {
       'score': 23.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 105,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Gemma 4 31B',
-      'org': 'Google',
-      'score': 23.6,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 106,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Qwen3.6-27B',
-      'org': 'Alibaba',
-      'score': 23.1,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 107,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Gemini 2.5 Pro',
-      'org': 'Google',
-      'score': 22.5,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 108,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Qwen3.6-35B-A3B',
-      'org': 'Alibaba',
-      'score': 22.2,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 109,
+      'rank': 137,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1015,17 +1411,30 @@ window.HLE = {
       'score': 22.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 110,
+      'rank': 138,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Muse Glimmer 30B',
-      'org': 'Meta',
+      'model': 'M2.1',
+      'org': 'MiniMaxAI',
       'score': 22,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 111,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 139,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Muse Glimmer-30B',
+      'org': 'Facebook AI研究实验室',
+      'score': 22,
+      'license': '免费商用授权',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 140,
+      'protocolNote': '思考模式 High（无工具）'
     },
     {
       'model': 'Ling 3.0 Flash VL',
@@ -1033,17 +1442,41 @@ window.HLE = {
       'score': 22,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 112,
+      'rank': 141,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-5 mini',
-      'org': 'OpenAI',
-      'score': 21.5,
+      'model': 'DeepSeek-V3.1 Terminus',
+      'org': 'DeepSeek-AI',
+      'score': 21.7,
+      'license': '免费商用授权',
+      'mode': '常规模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 113,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 142,
+      'protocolNote': '常规模式（无工具）'
+    },
+    {
+      'model': 'Gemini 2.5-Pro',
+      'org': 'Google DeepMind',
+      'score': 21.6,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 143,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Qwen3.6-35B-A3B',
+      'org': '阿里巴巴',
+      'score': 21.4,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 144,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Step 3.7 Flash',
@@ -1051,8 +1484,28 @@ window.HLE = {
       'score': 21.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 114,
+      'rank': 145,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Qwen3.6',
+      'score': 21.4,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 146,
+      'protocol': '无工具',
+      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
+    },
+    {
+      'model': 'o3-pro',
+      'org': 'OpenAI',
+      'score': 21,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 147,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Qwen3.5-35B-A3B',
@@ -1060,17 +1513,19 @@ window.HLE = {
       'score': 21,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 115,
+      'rank': 148,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'MiniMax M2.5',
-      'org': 'MiniMax',
-      'score': 20.5,
+      'model': 'OpenAI o3',
+      'org': 'OpenAI',
+      'score': 20.32,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 116,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 149,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'o3',
@@ -1078,26 +1533,61 @@ window.HLE = {
       'score': 20.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 117,
+      'rank': 150,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-OSS 120B',
-      'org': 'OpenAI',
-      'score': 19.6,
+      'model': 'Grok 4 Fast',
+      'org': 'xAI',
+      'score': 20,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 118,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 151,
+      'protocolNote': '思考模式（无工具）'
     },
     {
-      'model': 'Gemma 4 26B A4B',
-      'org': 'Google',
-      'score': 19.3,
+      'model': 'DeepSeek V3.2-Exp',
+      'org': 'DeepSeek-AI',
+      'score': 19.8,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 119,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 152,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Gemma 4 31B',
+      'org': 'Google DeepMind',
+      'score': 19.5,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 153,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Gemma 4',
+      'score': 19.5,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 154,
+      'protocol': '无工具',
+      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
+    },
+    {
+      'model': 'MiniMax M2.5',
+      'org': 'MiniMaxAI',
+      'score': 19.4,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 155,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Grok 4.1 Fast (Reasoning)',
@@ -1105,16 +1595,7 @@ window.HLE = {
       'score': 19.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 120,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Claude Opus 4.6',
-      'org': 'Anthropic',
-      'score': 19.1,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 121,
+      'rank': 156,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1123,8 +1604,19 @@ window.HLE = {
       'score': 19.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 122,
+      'rank': 157,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Gemini 2.5 Pro Experimental 03-25',
+      'org': 'Google DeepMind',
+      'score': 18.8,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 158,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Gemini 3.5 Flash-Lite',
@@ -1132,7 +1624,7 @@ window.HLE = {
       'score': 18.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 123,
+      'rank': 159,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1141,7 +1633,7 @@ window.HLE = {
       'score': 18.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 124,
+      'rank': 160,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1150,8 +1642,85 @@ window.HLE = {
       'score': 18.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 125,
+      'rank': 161,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Qwen3-235B-A22B-Thinking-2507',
+      'org': '阿里巴巴',
+      'score': 18.2,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 162,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'OpenAI o4 - mini',
+      'org': 'OpenAI',
+      'score': 18.08,
+      'license': '不开源',
+      'mode': '思考模式 High（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 163,
+      'protocolNote': '思考模式 High（无工具）'
+    },
+    {
+      'model': 'Gemini-2.5-Pro-Preview-05-06',
+      'org': 'Google DeepMind',
+      'score': 17.8,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 164,
+      'protocolNote': '常规模式（无工具）'
+    },
+    {
+      'model': 'DeepSeek-R1-0528',
+      'org': 'DeepSeek-AI',
+      'score': 17.7,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 165,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Claude Sonnet 4.5',
+      'org': 'Anthropic',
+      'score': 17.7,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 166,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Grok 4.1 Fast',
+      'org': 'xAI',
+      'score': 17.6,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 167,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GLM-4.6',
+      'org': '智谱AI',
+      'score': 17.2,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 168,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'GLM-5V-Turbo',
@@ -1159,7 +1728,7 @@ window.HLE = {
       'score': 17.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 126,
+      'rank': 169,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1168,17 +1737,28 @@ window.HLE = {
       'score': 17.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 127,
+      'rank': 170,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'o4-mini',
-      'org': 'OpenAI',
-      'score': 16.5,
+      'model': 'Gemini 3.1 Flash-Lite',
+      'score': 16,
+      'org': null,
+      'src': 'aireleasetracker',
+      'rank': 171,
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 128,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
+    },
+    {
+      'model': 'DeepSeek-V3.1',
+      'org': 'DeepSeek-AI',
+      'score': 15.9,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 172,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'DeepSeek-R1',
@@ -1186,7 +1766,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 129,
+      'rank': 173,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1195,7 +1775,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 130,
+      'rank': 174,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1204,7 +1784,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 131,
+      'rank': 175,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1213,7 +1793,7 @@ window.HLE = {
       'score': 15.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 132,
+      'rank': 176,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1222,8 +1802,41 @@ window.HLE = {
       'score': 15,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 133,
+      'rank': 177,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT OSS 120B',
+      'org': 'OpenAI',
+      'score': 14.9,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 178,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GLM-4.5',
+      'org': '智谱AI',
+      'score': 14.4,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 179,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GLM-4.7-Flash',
+      'org': '智谱AI',
+      'score': 14.4,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 180,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'DeepSeek V3.1 (Reasoning)',
@@ -1231,7 +1844,7 @@ window.HLE = {
       'score': 14.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 134,
+      'rank': 181,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1240,7 +1853,7 @@ window.HLE = {
       'score': 13.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 135,
+      'rank': 182,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1249,26 +1862,30 @@ window.HLE = {
       'score': 13.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 136,
+      'rank': 183,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Claude Sonnet 4.6',
-      'org': 'Anthropic',
-      'score': 13.3,
+      'model': 'OpenAI o3-mini',
+      'org': 'OpenAI',
+      'score': 13.4,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 137,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 184,
+      'protocolNote': '思考模式（无工具）'
     },
     {
-      'model': 'Claude Opus 4.5',
-      'org': 'Anthropic',
-      'score': 13.2,
+      'model': 'MiniMax M2',
+      'org': 'MiniMaxAI',
+      'score': 12.5,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 138,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 185,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Claude 4.1 Opus Thinking',
@@ -1276,8 +1893,19 @@ window.HLE = {
       'score': 12.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 139,
+      'rank': 186,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Spark-X2.5-4B',
+      'org': '科大讯飞',
+      'score': 12.3,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 187,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Claude 4 Opus Thinking',
@@ -1285,7 +1913,7 @@ window.HLE = {
       'score': 12.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 140,
+      'rank': 188,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1294,7 +1922,7 @@ window.HLE = {
       'score': 12,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 141,
+      'rank': 189,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1303,7 +1931,7 @@ window.HLE = {
       'score': 11.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 142,
+      'rank': 190,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1312,17 +1940,19 @@ window.HLE = {
       'score': 11.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 143,
+      'rank': 191,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'DeepSeek V3.2',
-      'org': 'DeepSeek',
-      'score': 11.2,
+      'model': 'Opus 4.1',
+      'org': 'Anthropic',
+      'score': 11.52,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 144,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 192,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Granite 4.2 30B',
@@ -1330,8 +1960,19 @@ window.HLE = {
       'score': 11.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 145,
+      'rank': 193,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Qwen3 Max (Preview)',
+      'org': '阿里巴巴',
+      'score': 11.1,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 194,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'North Mini Code',
@@ -1339,17 +1980,19 @@ window.HLE = {
       'score': 11.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 146,
+      'rank': 195,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GPT-OSS 20B',
-      'org': 'OpenAI',
+      'model': 'Gemini 2.5 Flash',
+      'org': 'Google DeepMind',
       'score': 11,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 147,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 196,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Sarvam 105B',
@@ -1357,8 +2000,41 @@ window.HLE = {
       'score': 11,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 148,
+      'rank': 197,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'gpt-oss-20b',
+      'org': 'OpenAI',
+      'score': 10.9,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 198,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'Claude Opus 4',
+      'org': 'Anthropic',
+      'score': 10.72,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 199,
+      'protocolNote': '思考模式（无工具）'
+    },
+    {
+      'model': 'GLM-4.5-Air',
+      'org': '智谱AI',
+      'score': 10.6,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 200,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Nemotron 3.5 Lightning 30B A3B NVFP4',
@@ -1366,8 +2042,19 @@ window.HLE = {
       'score': 10.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 149,
+      'rank': 201,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Claude Sonnet 3.7',
+      'org': 'Anthropic',
+      'score': 10.3,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 202,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Solar Pro 3',
@@ -1375,7 +2062,7 @@ window.HLE = {
       'score': 10.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 150,
+      'rank': 203,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1384,7 +2071,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 151,
+      'rank': 204,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1393,7 +2080,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 152,
+      'rank': 205,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1402,8 +2089,19 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 153,
+      'rank': 206,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Qwen3-30B-A3B-2507',
+      'org': '阿里巴巴',
+      'score': 9.8,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 207,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Magistral Medium',
@@ -1411,8 +2109,19 @@ window.HLE = {
       'score': 9.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 154,
+      'rank': 208,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Haiku 4.5',
+      'org': 'Anthropic',
+      'score': 9.7,
+      'license': '不开源',
+      'mode': '扩展（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 209,
+      'protocolNote': '扩展（无工具）'
     },
     {
       'model': 'Claude 3.7 Sonnet Thinking',
@@ -1420,7 +2129,7 @@ window.HLE = {
       'score': 9.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 155,
+      'rank': 210,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1429,8 +2138,19 @@ window.HLE = {
       'score': 9.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 156,
+      'rank': 211,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Claude Sonnet 4',
+      'org': 'Anthropic',
+      'score': 9.6,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 212,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'GPT-5 nano',
@@ -1438,7 +2158,7 @@ window.HLE = {
       'score': 9.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 157,
+      'rank': 213,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1447,8 +2167,19 @@ window.HLE = {
       'score': 9.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 158,
+      'rank': 214,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'OpenAI o1',
+      'org': 'OpenAI',
+      'score': 9.1,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 215,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'MiniCPM5-2B',
@@ -1456,17 +2187,19 @@ window.HLE = {
       'score': 8.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 159,
+      'rank': 216,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'MiniMax M1 80k',
-      'org': 'MiniMax',
-      'score': 8.9,
+      'model': 'Gemma 4 26B A4B',
+      'org': 'Google DeepMind',
+      'score': 8.7,
+      'license': '免费商用授权',
+      'mode': '思考模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 160,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 217,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'MiMo-V2-Flash',
@@ -1474,8 +2207,19 @@ window.HLE = {
       'score': 8.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 161,
+      'rank': 218,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'MiniMax-M1-80k',
+      'org': 'MiniMaxAI',
+      'score': 8.4,
+      'license': '免费商用授权',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 219,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Grok Code Fast 1',
@@ -1483,17 +2227,19 @@ window.HLE = {
       'score': 8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 162,
+      'rank': 220,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'o3-mini',
-      'org': 'OpenAI',
-      'score': 7.9,
+      'model': 'Qwen3-235B-A22B',
+      'org': '阿里巴巴',
+      'score': 7.6,
+      'license': '免费商用授权',
+      'mode': '常规模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 163,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 221,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Magistral Small',
@@ -1501,16 +2247,7 @@ window.HLE = {
       'score': 7.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 164,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GLM-4.7-Flash',
-      'org': 'Z.AI',
-      'score': 7.6,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 165,
+      'rank': 222,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1519,7 +2256,7 @@ window.HLE = {
       'score': 7.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 166,
+      'rank': 223,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1528,16 +2265,7 @@ window.HLE = {
       'score': 7.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 167,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Kimi K2',
-      'org': 'Moonshot AI',
-      'score': 7.4,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 168,
+      'rank': 224,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1546,7 +2274,7 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 169,
+      'rank': 225,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1555,8 +2283,19 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 170,
+      'rank': 226,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'MiniMax-M1-40k',
+      'org': 'MiniMaxAI',
+      'score': 7.2,
+      'license': '免费商用授权',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 227,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'o1',
@@ -1564,17 +2303,19 @@ window.HLE = {
       'score': 7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 171,
+      'rank': 228,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'GLM-4.5-Air',
-      'org': 'Z.AI',
-      'score': 7,
+      'model': 'Gemini 2.5 Flash-Lite',
+      'org': 'Google DeepMind',
+      'score': 6.9,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 172,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 229,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'LFM2.5-8B-A1B',
@@ -1582,7 +2323,7 @@ window.HLE = {
       'score': 6.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 173,
+      'rank': 230,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1591,16 +2332,7 @@ window.HLE = {
       'score': 6.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 174,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'DeepSeek V3.1',
-      'org': 'DeepSeek',
-      'score': 6.7,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 175,
+      'rank': 231,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1609,7 +2341,7 @@ window.HLE = {
       'score': 6.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 176,
+      'rank': 232,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1618,7 +2350,7 @@ window.HLE = {
       'score': 6.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 177,
+      'rank': 233,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1627,7 +2359,7 @@ window.HLE = {
       'score': 6.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 178,
+      'rank': 234,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1636,7 +2368,7 @@ window.HLE = {
       'score': 6.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 179,
+      'rank': 235,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1645,7 +2377,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 180,
+      'rank': 236,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1654,7 +2386,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 181,
+      'rank': 237,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1663,7 +2395,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 182,
+      'rank': 238,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1672,16 +2404,7 @@ window.HLE = {
       'score': 5.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 183,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GLM-4.6',
-      'org': 'Z.AI',
-      'score': 5.5,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 184,
+      'rank': 239,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1690,8 +2413,19 @@ window.HLE = {
       'score': 5.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 185,
+      'rank': 240,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT-4.5',
+      'org': 'OpenAI',
+      'score': 5.44,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 241,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Ministral 3 3B (Reasoning)',
@@ -1699,7 +2433,7 @@ window.HLE = {
       'score': 5.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 186,
+      'rank': 242,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1708,17 +2442,41 @@ window.HLE = {
       'score': 5.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 187,
+      'rank': 243,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Grok 4.1 Fast',
-      'org': 'xAI',
-      'score': 5.1,
+      'model': 'GPT-4o',
+      'org': 'OpenAI',
+      'score': 5.3,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 188,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 244,
+      'protocolNote': '常规模式（无工具）'
+    },
+    {
+      'model': 'DeepSeek-V3-0324',
+      'org': 'DeepSeek-AI',
+      'score': 5.2,
+      'license': '免费商用授权',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 245,
+      'protocolNote': '常规模式（无工具）'
+    },
+    {
+      'model': 'Gemini 2.0 Flash Experimental',
+      'org': 'Google DeepMind',
+      'score': 5.1,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 246,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'LFM2.5-VL-1.6B-Extract',
@@ -1726,8 +2484,19 @@ window.HLE = {
       'score': 5.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 189,
+      'rank': 247,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'GPT-5-mini',
+      'org': 'OpenAI',
+      'score': 5,
+      'license': '不开源',
+      'mode': '思考模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 248,
+      'protocolNote': '思考模式（无工具）'
     },
     {
       'model': 'Exaone 4.0 32B',
@@ -1735,7 +2504,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 190,
+      'rank': 249,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1744,7 +2513,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 191,
+      'rank': 250,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1753,7 +2522,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 192,
+      'rank': 251,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1762,7 +2531,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 193,
+      'rank': 252,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1771,7 +2540,7 @@ window.HLE = {
       'score': 4.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 194,
+      'rank': 253,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1780,7 +2549,7 @@ window.HLE = {
       'score': 4.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 195,
+      'rank': 254,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1789,26 +2558,19 @@ window.HLE = {
       'score': 4.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 196,
+      'rank': 255,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'DeepSeek V3 0324',
-      'org': 'DeepSeek',
+      'model': 'Kimi K2',
+      'org': 'Moonshot AI',
       'score': 4.7,
+      'license': '免费商用授权',
+      'mode': '常规模式（无工具）',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 197,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Gemini 2.5 Flash',
-      'org': 'Google',
-      'score': 4.7,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 198,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 256,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Nemotron 3 Nano 30B',
@@ -1816,7 +2578,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 199,
+      'rank': 257,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1825,7 +2587,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 200,
+      'rank': 258,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1834,7 +2596,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 201,
+      'rank': 259,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1843,7 +2605,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 202,
+      'rank': 260,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1852,7 +2614,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 203,
+      'rank': 261,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1861,8 +2623,19 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 204,
+      'rank': 262,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Amazon Nova Pro',
+      'org': '亚马逊',
+      'score': 4.4,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 263,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Gemma 3 27B',
@@ -1870,7 +2643,7 @@ window.HLE = {
       'score': 4.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 205,
+      'rank': 264,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1879,7 +2652,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 206,
+      'rank': 265,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1888,7 +2661,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 207,
+      'rank': 266,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1897,7 +2670,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 208,
+      'rank': 267,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1906,7 +2679,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 209,
+      'rank': 268,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1915,7 +2688,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 210,
+      'rank': 269,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1924,16 +2697,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 211,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GPT-4.1',
-      'org': 'OpenAI',
-      'score': 4.2,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 212,
+      'rank': 270,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1942,7 +2706,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 213,
+      'rank': 271,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1951,7 +2715,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 214,
+      'rank': 272,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1960,7 +2724,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 215,
+      'rank': 273,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1969,7 +2733,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 216,
+      'rank': 274,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1978,7 +2742,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 217,
+      'rank': 275,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1987,7 +2751,7 @@ window.HLE = {
       'score': 4.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 218,
+      'rank': 276,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1996,7 +2760,7 @@ window.HLE = {
       'score': 4.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 219,
+      'rank': 277,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2005,7 +2769,7 @@ window.HLE = {
       'score': 4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 220,
+      'rank': 278,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2014,7 +2778,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 221,
+      'rank': 279,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2023,7 +2787,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 222,
+      'rank': 280,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2032,7 +2796,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 223,
+      'rank': 281,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2041,7 +2805,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 224,
+      'rank': 282,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2050,7 +2814,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 225,
+      'rank': 283,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2059,17 +2823,30 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 226,
+      'rank': 284,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Gemini 2.5 Flash-Lite',
-      'org': 'Google',
+      'model': 'Claude 3.5 Sonnet New',
+      'org': 'Anthropic',
       'score': 3.7,
+      'license': '不开源',
+      'mode': '常规模式（无工具） · Text only',
       'protocol': '无工具',
-      'src': 'aa',
-      'rank': 227,
-      'protocolNote': 'Artificial Analysis 无工具复测'
+      'src': 'datalearner',
+      'rank': 285,
+      'protocolNote': '常规模式（无工具） · Text only'
+    },
+    {
+      'model': 'GPT-4.1',
+      'org': 'OpenAI',
+      'score': 3.7,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 286,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Solar Pro 2',
@@ -2077,8 +2854,19 @@ window.HLE = {
       'score': 3.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 228,
+      'rank': 287,
       'protocolNote': 'Artificial Analysis 无工具复测'
+    },
+    {
+      'model': 'Amazon Nova Lite',
+      'org': '亚马逊',
+      'score': 3.64,
+      'license': '不开源',
+      'mode': '常规模式（无工具）',
+      'protocol': '无工具',
+      'src': 'datalearner',
+      'rank': 288,
+      'protocolNote': '常规模式（无工具）'
     },
     {
       'model': 'Llama 3.3 70B',
@@ -2086,7 +2874,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 229,
+      'rank': 289,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2095,7 +2883,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 230,
+      'rank': 290,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2104,7 +2892,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 231,
+      'rank': 291,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2113,7 +2901,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 232,
+      'rank': 292,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2122,7 +2910,7 @@ window.HLE = {
       'score': 3.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 233,
+      'rank': 293,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2131,16 +2919,7 @@ window.HLE = {
       'score': 3.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 234,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Nova Pro',
-      'org': 'Amazon',
-      'score': 3.2,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 235,
+      'rank': 294,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2149,7 +2928,7 @@ window.HLE = {
       'score': 3.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 236,
+      'rank': 295,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2158,7 +2937,7 @@ window.HLE = {
       'score': 3.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 237,
+      'rank': 296,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2167,7 +2946,7 @@ window.HLE = {
       'score': 2.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 238,
+      'rank': 297,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2176,16 +2955,7 @@ window.HLE = {
       'score': 2.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 239,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'GPT-4o',
-      'org': 'OpenAI',
-      'score': 2.4,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 240,
+      'rank': 298,
       'protocolNote': 'Artificial Analysis 无工具复测'
     }
   ]

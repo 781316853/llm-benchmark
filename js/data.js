@@ -530,11 +530,15 @@
   // ===== 亿模亿样 · 模型效果对比(gallery.arenaofbias.icu)前端作品社区盲评 Elo 榜 =====
   // 每 canonical 模型取最高 Elo(源站按推理强度分档多次测试,快照内已是每模型最高分档);
   // 计入综合分(「第三方实测」组计分组之一,权重 12%,接替原 AI 能力专项测试)与命中数。
+  // 亿模亿样:同一模型按推理强度分档多条,取最高分档;
+  // 归一键用 modelName(源站识别出的模型名),不能只用 name —— 未发布/灰度模型在源站是
+  // 代号 slug(如 space-bunny = MiniMax M3.1 Flash、qwen4.0-max = Qwen4 Max),
+  // 用 slug 归一会被拆成「其他」幽灵模型,导致总览缺这一榜。
   function arenaofbias() {
     var src = window.ARENAOFBIAS || { models: [] };
     var best = {};
     (src.models || []).forEach(function (m) {
-      var c = canon(m.name);
+      var c = canon(m.modelName || m.name);
       if (!best[c.id] || m.score > best[c.id].score) best[c.id] = Object.assign({}, m, { canon: c });
     });
     return Object.keys(best).map(function (k) { return best[k]; })

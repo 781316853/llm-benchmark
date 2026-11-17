@@ -17,7 +17,7 @@
   var state = { tab: CURRENT_TAB, llmMonth: null,
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
-    showScore: false, // 总览页「显示综合分」开关:默认隐藏,仅显示梯队
+    showScore: true, // 总览页「显示综合分」开关:默认显示梯队旁的精确综合分
     searchQuery: "", // 总览页矩阵搜索:非空时跨全部有成绩的模型筛选,不套用默认前40/参考区间截断
     plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
     plansView: "all", // 套餐页视图:all=全部套餐(默认)/groups=精选模型对比
@@ -40,6 +40,10 @@
   var DOMESTIC = {};
   ((window.MODEL_MAP && window.MODEL_MAP.domesticVendors) || []).forEach(function (v) { DOMESTIC[v] = 1; });
   var fmtK = function (n) { return n >= 1000 ? (n / 1000).toFixed(0) + "k" : n; };
+  // HLE 分数统一保留一位小数(数据源与合并结果可能是两位,页面上只展示到 0.1)
+  var fmtHle = function (v) {
+    return (v == null || !isFinite(v)) ? "—" : Number(v).toFixed(1) + "%";
+  };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>\"]/g, function (c) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" }[c]; }); };
   var dot = function (c) { return '<span class="vdot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:' + (c || "#888") + ';margin-right:7px;vertical-align:middle"></span>'; };
@@ -569,7 +573,7 @@
       if (r.hle) {
         var hleMeta = ["HLE 前沿知识广度 · 无工具闭卷口径", "计入综合分(权重 8%)与命中数"];
         if (r.hle.rank != null) hleMeta.push("源站排名 #" + r.hle.rank);
-        hleHtml = '<span class="bv bv-hle" title="' + esc(hleMeta.join(" · ")) + '">' + r.hle.score + '%</span>';
+        hleHtml = '<span class="bv bv-hle" title="' + esc(hleMeta.join(" · ")) + '">' + fmtHle(r.hle.score) + '</span>';
       }
       // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
       // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
@@ -674,7 +678,7 @@
         '<td class="model-cell"><span class="model-name">' + vdot(r.vendor) + hlSearch(r.id, tokens) + '</span>' +
           (rowBadges ? '<span class="model-tags">' + rowBadges + '</span>' : '') + '</td>' +
         '<td><span class="vname" style="color:' + D.vendorColor(r.vendor) + '">' + hlSearch(r.vendor, tokens) + '</span></td>' +
-        // 梯队徽标:默认仅显示梯队标签;showScore 开启时追加精确综合分
+        // 梯队徽标:默认同时显示梯队标签与精确综合分;showScore 关闭时只留梯队
         // 参考 / 单榜行不作梯队分档展示:梯队列显示「—」
         (function () {
           if (unranked) return '<td class="num"><span class="tier-na">—</span></td>';
@@ -1847,16 +1851,16 @@
     var hlRows = hlMs.map(function (m, i) {
       return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (hlMixed ? srcBadge(m.src) : "") + '</td>' +
         '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
-        '<td class="num">' + bvSpan("hle", m.score + '%') + '</td>' +
+        '<td class="num">' + bvSpan("hle", fmtHle(m.score)) + '</td>' +
         '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
         '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
     });
-    html += authSectionHtml("Humanity's Last Exam", "无工具口径 · 仅展示", hl.officialUrl || hl.url,
+    html += authSectionHtml("Humanity's Last Exam", "无工具口径 · 计分", hl.officialUrl || hl.url,
       '<div class="table-wrap"><table id="authHleTable" class="data-table"></table></div>',
       '主渠道:datalearner(厂商官方发布无工具成绩)· 补充:AA 无工具复测 · 更新 ' + esc(hl.updated || "") +
       ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;' + esc(hl.channelPolicy || "") +
       '。本表统一为无工具(闭卷)口径:厂商明确标注无工具的条目优先,AA 无工具复测仅补官方渠道未收录的模型,行级「AA 复测」徽标区分;' +
-      '仅带工具分或未声明协议的模型不收录,表内分数可直接比较。本榜仅展示,不计入综合分。');
+      '仅带工具分或未声明协议的模型不收录,表内分数可直接比较。本榜计入总览综合分与命中数(2026-11-15 起)。');
     // 10) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();

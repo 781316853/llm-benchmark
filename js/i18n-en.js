@@ -281,9 +281,9 @@
       function (m, url, official, upd) {
         return "Source: " + url + " (official: " + official + ") · updated " + upd + " · APEX-1 (AI Productivity Index, Mercor): four kinds of real professional work — investment banking / consulting / law / general practice — on a hidden held-out set of 400 tasks (100 each), 8 attempts per model per task, graded by expert rubrics plus an LM judge; Mean Score is the average share of passing criteria across tasks (the primary ordering metric) and Pass@1 is the share of tasks scoring full marks in a single attempt; higher is better. Shown for reference only, not counted in the composite or coverage.";
       }],
-    ["^主渠道:datalearner\\(厂商官方发布无工具成绩\\)· 补充:AA 无工具复测 · 更新 ([\\d\\-]+) · (\\d+) 道专家撰写、无联网可检索解的前沿题\\(([^)]+)\\),闭卷得分越高越好;.*本榜仅展示,不计入综合分。$",
+    ["^主渠道:datalearner\\(厂商官方发布无工具成绩\\)· 补充:AA 无工具复测 · 更新 ([\\d\\-]+) · (\\d+) 道专家撰写、无联网可检索解的前沿题\\(([^)]+)\\),闭卷得分越高越好;.*本榜计入总览综合分与命中数\\(2026-11-15 起\\)。$",
       function (m, upd, n, fields) {
-        return "Primary channel: datalearner (vendor-published no-tool scores) · supplement: AA no-tool retest · updated " + upd + " · " + n + " expert-written frontier questions that cannot be answered by searching the web (maths / science / humanities etc.); higher closed-book scores are better. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores. This table uses one no-tool (closed-book) basis throughout: entries where the vendor explicitly says no tools take priority, and the AA no-tool retest only fills models the official channels lack, flagged with a row-level “AA retest” badge; models with only tool-assisted scores or no stated protocol are excluded, so scores in the table are directly comparable. Shown for reference only, not counted in the composite.";
+        return "Primary channel: datalearner (vendor-published no-tool scores) · supplement: AA no-tool retest · updated " + upd + " · " + n + " expert-written frontier questions that cannot be answered by searching the web (maths / science / humanities etc.); higher closed-book scores are better. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores. This table uses one no-tool (closed-book) basis throughout: entries where the vendor explicitly says no tools take priority, and the AA no-tool retest only fills models the official channels lack, flagged with a row-level “AA retest” badge; models with only tool-assisted scores or no stated protocol are excluded, so scores in the table are directly comparable. Since 2026-11-15 this board counts toward the overview composite and coverage.";
       }],
     ["^主渠道:官方论文评测表\\(arxiv\\)与 datalearner\\(厂商官方发布\\)· 补充:llm-stats 聚合表与 benchlm\\.ai 镜像、Qwen 官方发布\\(T2,仅补缺\\) · 更新 ([\\d\\-]+) · 给定单一 NL 需求文档从零生成可安装 Python 库\\(约 (\\d+) 个任务\\),test-pass-rate 越高越好;.*本榜仅展示。$",
       function (m, upd, tasks) {
@@ -375,8 +375,8 @@
       "中文": "中文",
 
       // ===== 总览:阅读说明正文(加粗小标题后接整句) =====
-      "按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,勾选「显示综合分」直接显示。":
-        "Tiers follow the visible order on a 12-level pyramid (S+ to E): few at the top, many at the bottom, with boundaries floating with the data. Hover a badge for the exact composite, or tick “Show composite score” to display it inline.",
+      "按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,默认直接显示,取消勾选「显示综合分」后仅保留梯队。":
+        "Tiers follow the visible order on a 12-level pyramid (S+ to E): few at the top, many at the bottom, with boundaries floating with the data. Hover a badge for the exact composite; it is shown inline by default, and untick “Show composite score” to keep only the tier.",
       "各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。":
         "Each board's native score is first robustly standardized within that board (z-score, clipped at ±3), then normalized by weight to 50 + 15 × weighted z. 50 is the median of the pool, so this is a relative score and not comparable across days; weights of missing boards flow back automatically — no bonus, no penalty.",
       "9 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE / ModelDial / 亿模亿样 / AI Coding Daily。":
@@ -440,8 +440,8 @@
       "勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型":
         "Highlight models from Chinese vendors (Zhipu / Moonshot / DeepSeek / Alibaba / Tencent / MiniMax / ByteDance / Xiaomi).",
       "高亮国产模型": "Highlight Chinese models",
-      "默认仅显示梯队,勾选后在梯队旁显示精确综合分(榜内相对分:50 = 全池中位,不可跨日比较)":
-        "Tiers are shown by default; tick to show the exact composite score next to each tier (board-relative: 50 = median of the pool, not comparable across days).",
+      "默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)":
+        "The exact composite score is shown next to each tier by default; untick to show only the tier (board-relative: 50 = median of the pool, not comparable across days).",
       "显示综合分": "Show composite score",
       "阅读说明": "How to read",
       "先看要点;完整计分口径可展开": "Key points first; expand for the full scoring method",
@@ -722,7 +722,7 @@
       "交互式智能体推理 · 仅展示": "Interactive agent reasoning · display only",
       "程序化 CAD 生成 · 仅展示": "Procedural CAD generation · display only",
       "专业工作产出 · 仅展示": "Professional work output · display only",
-      "无工具口径 · 仅展示": "No-tool basis · display only",
+      "无工具口径 · 计分": "No-tool basis · scored",
       "长程仓库生成 · 仅展示": "Long-horizon repo generation · display only",
       "cleanroom 程序重建 · 仅展示": "Cleanroom reconstruction · display only",
       "跨语言程序重写 · 仅展示": "Cross-language rewriting · display only",
