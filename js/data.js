@@ -1093,6 +1093,8 @@
     valscodemigration: valscodemigration,
     // codingplan.fyi 推荐分组快照(「套餐对比」页;文件缺失/加载失败时返回 null)
     codingplan: function () { return window.CODINGPLAN || null; },
+    // ModelDial 订阅额度目录(平台 + 实测额度;按需注入,缺失时返回 null)
+    modeldialSubs: function () { return window.MODELDIAL_SUBS || null; },
     // 模型 API 标价快照(主源 codingplan.fyi,排名模型缺价由 models.dev 补齐;
     // 总览矩阵「性价比」列;文件缺失/加载失败时返回 null)
     pricing: function () { return window.PRICING || null; },

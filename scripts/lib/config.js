@@ -711,6 +711,21 @@ module.exports = {
     }
   },
 
+  // ===== ModelDial 订阅额度(modeldial.com/subscriptions,scripts/lib/modeldial-subs.js 使用) =====
+  // 第三方实测目录:首批厂商套餐(OpenAI/Claude/Grok/GLM/Kimi/MiMo/MiniMax)+
+  // Cursor/Copilot/Factory/Devin/Kiro/Antigravity/WorkBuddy/百炼/火山/OpenCode 等第三方订阅平台。
+  // 页面无独立 JSON 接口,数据内嵌在 Next.js chunk;抓取逻辑见 scripts/lib/modeldial-subs.js。
+  // 仅用于「套餐比价」页的实测目录与性价比排序,不参与总览综合分。
+  modeldialSubs: {
+    host: "modeldial.com",
+    pageUrl: "https://modeldial.com/subscriptions?period=week&view=catalog",
+    homepage: "https://modeldial.com/subscriptions",
+    license: "见源站",
+    usdToCnyRate: 6.8,
+    outFile: "modeldial-subs.js",
+    windowVar: "MODELDIAL_SUBS"
+  },
+
   // ===== 模型 API 标价(scripts/lib/pricing.js 使用,不进基准管线) =====
   // 与 codingplan 同站、不同视图:那里是「订阅套餐月价」比价,这里是 plans.json 内每个
   // plan×model 的 pricing 字段(输入 / 缓存输入 / 输出三档单价,均 $/百万 token)。

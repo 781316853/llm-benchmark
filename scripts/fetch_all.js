@@ -17,6 +17,7 @@ const officialReleases = require("./lib/official-releases");
 const seen = require("./lib/seen");
 const news = require("./lib/news");
 const codingplan = require("./lib/codingplan");
+const modeldialSubs = require("./lib/modeldial-subs");
 const pricing = require("./lib/pricing");
 const changelog = require("./lib/changelog");
 
@@ -41,6 +42,9 @@ const changelog = require("./lib/changelog");
   // 5) 维护 Coding Plan 套餐快速对比(codingplan.fyi 推荐分组;fail-soft,失败保留旧文件)
   try { await codingplan.updateCodingplan(); }
   catch (e) { console.log("[codingplan] 维护失败:" + e.message); }
+  // 5.1) 维护 ModelDial 订阅额度目录(平台 + 实测额度;fail-soft,失败保留旧文件)
+  try { await modeldialSubs.updateModeldialSubs(); }
+  catch (e) { console.log("[modeldial-subs] 维护失败:" + e.message); }
   // 6) 维护 Agent 工具更新日志(12 个工具的官方 changelog;仅正式版,DeepSeek Harness 例外;
   //    fail-soft 在 updateChangelog 内部逐工具处理,单源失败沿用旧条目并标 stale)
   try { await changelog.updateChangelog(); }

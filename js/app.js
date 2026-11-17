@@ -29,7 +29,7 @@
     plansBrandsExpanded: false, // 品牌 chips 是否展开全部
     plansRegion: "global", // global=国内+海外全部/domestic=仅国内可直接购买
     plansTime: "day", // day=白天(峰时)/night=夜间(谷时)
-    plansSort: "fit", // 排序:fit=推荐/fee=月费/quota=能用多少/discount=官方价几折
+    plansSort: "fit", // 排序:fit=推荐/fee=月费/quota=能用多少/value=性价比(每 ¥1 月 Token 最多)/discount=官方价几折
     plansExpanded: {}, // 全部套餐中已展开全部模型的套餐 slug
     changelogDays: 14, // 更新日志页时间窗口(天):14(默认)/30/0=不限
     clView: "tools", // 更新日志页视图:tools=按工具(默认)/monthly=按月新增功能汇总
@@ -2091,7 +2091,8 @@
       opts.map(function (o) {
         var on = String(o[0]) === String(cur);
         return '<button type="button" class="qc-scope-btn' + (on ? " is-active" : "") +
-          '" data-' + attr + '="' + esc(o[0]) + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>';
+          '" data-' + attr + '="' + esc(o[0]) + '" aria-pressed="' + on + '"' +
+          (o[2] ? ' title="' + esc(o[2]) + '"' : "") + '>' + esc(o[1]) + '</button>';
       }).join("") + "</div>";
   }
   // 刻度滑杆:点选刻度(比原生 range 更好点按,也便于显示档位说明)
@@ -2149,6 +2150,116 @@
   // 模型名归一:忽略大小写、空格、连字符、下划线、点,便于跨源匹配同一模型
   function qcModelKey(name) {
     return String(name || "").toLowerCase().replace(/[\s\-_.]/g, "");
+  }
+  // 合并 ModelDial 行时忽略厂商前缀:ModelDial 首批记录常写 "Opus 5.5"/"K3.1 Pro",
+  // 站内已有行写 "Claude Opus 5.5"/"Kimi K3.1 Pro",不剥前缀会把同一模型补成两行。
+  function qcMergeKey(name) {
+    return qcModelKey(name).replace(
+      /^(anthropic|claude|openai|gpt|google|gemini|zhipu|glm|moonshot|kimi|xiaomi|mimo|minimax|grok|xai|deepseek)/,
+      ""
+    );
+  }
+  function qcIsEn() {
+    return (document.documentElement.getAttribute("lang") || "").toLowerCase().indexOf("en") === 0;
+  }
+  function qcPlanName(p) { return qcIsEn() && p.nameEn ? p.nameEn : p.name; }
+  function qcPlatformName(p) { return qcIsEn() && p.platformEn ? p.platformEn : p.platform; }
+  function qcModelName(r) { return qcIsEn() && r.mEn ? r.mEn : r.m; }
+  function qcEffectiveSort() {
+    var s = state.plansSort;
+    return (s === "fee" || s === "quota" || s === "value" || s === "discount") ? s : "fit";
+  }
+  // 把 ModelDial 的单值月额度换算成 0/50/95/99% 四档:有官方三段价时按同一混合价公式
+  // 反推,没有价格时只保留 95% 单值(与 realapi 单值行一致)。
+  function qcMdTiers(monthlyM, p) {
+    if (!(monthlyM > 0)) return [null, null, null, null];
+    if (p && p.length === 3 && p[0] > 0 && p[1] >= 0 && p[2] > 0) {
+      var b95 = p[0] * 0.045 + p[1] * 0.95 + p[2] * 0.005;
+      if (b95 > 0) {
+        return QC_CACHE_H.map(function (h) {
+          var b = p[0] * (1 - h - 0.005) + p[1] * h + p[2] * 0.005;
+          return b > 0 ? Math.round(monthlyM * b95 / b * 10) / 10 : null;
+        });
+      }
+    }
+    return [null, null, monthlyM, null];
+  }
+  // 模型 → 官方三段价(¥/百万 token):先取套餐行内价格,再取定价快照(含 models.dev 补价)。
+  function qcPriceMap(plans) {
+    var map = {};
+    function add(name, price) {
+      if (!price || price.length !== 3) return;
+      var k = qcModelKey(name);
+      if (k && !map[k]) map[k] = price;
+    }
+    plans.forEach(function (p) {
+      (p.models || []).forEach(function (r) { add(r.m, r.p); });
+    });
+    var pr = window.PRICING;
+    (pr && pr.models || []).forEach(function (m) {
+      var price = [m.inputCnyPerM, m.cacheCnyPerM, m.outputCnyPerM];
+      add(m.id, price);
+      add(m.slug, price);
+    });
+    return map;
+  }
+  function qcMdRow(plan, mr, price) {
+    var q = qcMdTiers(mr.q && mr.q[2], price);
+    var row = {
+      m: mr.m,
+      mEn: mr.mEn || mr.m,
+      t: mr.t || "",
+      u: plan.feeCny != null && q[2] > 0 ? Math.round(plan.feeCny * 100 / q[2] * 100) / 100 : null,
+      q: q,
+      s: "m",
+      w: mr.w || "estimate",
+      d: mr.d || "",
+      a: mr.a != null ? mr.a : null,
+      b: mr.b || ""
+    };
+    if (q[0] == null && q[1] == null && q[3] == null) row.x = 1;
+    return row;
+  }
+  // 把 ModelDial 目录并入「全部套餐」:
+  //   - 有 alias 的套餐并入已有套餐,只补该套餐还没有的模型(不覆盖原有档位/额度);
+  //   - 无 alias 的套餐作为新套餐追加(ModelDial 新增平台/档位)。
+  function qcMergeModeldial(plans, md) {
+    var merged = plans.map(function (p) {
+      return Object.assign({}, p, {
+        models: (p.models || []).map(function (r) {
+          return Object.assign({}, r, { q: r.q ? r.q.slice() : r.q });
+        })
+      });
+    });
+    if (!md || !md.plans || !md.plans.length) return merged;
+    var bySlug = {};
+    merged.forEach(function (p) { bySlug[p.slug] = p; });
+    var priceMap = qcPriceMap(plans);
+    md.plans.forEach(function (mp) {
+      var target = mp.alias && bySlug[mp.alias];
+      if (target) {
+        target.md = 1;
+        var have = {};
+        target.models.forEach(function (r) { have[qcMergeKey(r.m)] = 1; });
+        (mp.models || []).forEach(function (mr) {
+          var k = qcMergeKey(mr.m);
+          if (!k || have[k]) return;
+          have[k] = 1;
+          target.models.push(qcMdRow(target, mr, priceMap[qcModelKey(mr.m)]));
+        });
+        return;
+      }
+      var added = Object.assign({}, mp, {
+        origin: "modeldial",
+        md: 1,
+        models: (mp.models || []).map(function (mr) {
+          return qcMdRow(mp, mr, priceMap[qcModelKey(mr.m)]);
+        })
+      });
+      merged.push(added);
+      bySlug[added.slug] = added;
+    });
+    return merged;
   }
   function qcModelCatalog(plans) {
     var map = {};
@@ -2235,20 +2346,28 @@
   }
   function qcSrcBadge(r) {
     var s = "";
-    if (r && r.s === "r" && r.w === "measured") {
+    if (r && r.s === "m") {
+      var label = r.w === "measured" ? "实测" : "估算";
+      s += ' <span class="qc-badge qc-badge--src" title="ModelDial ' + label + '口径' +
+        (r.d ? "，数据日期 " + esc(r.d) : "") + '">' + label + '</span>';
+    } else if (r && r.s === "r" && r.w === "measured") {
       s += ' <span class="qc-badge qc-badge--src" title="补充源实测/官方口径' +
         (r.d ? "，数据日期 " + esc(r.d) : "") + '">实测</span>';
     }
-    if (r && r.x) s += ' <span class="qc-badge" title="源站只给出单一额度值，不参与缓存档位换算">单值</span>';
+    if (r && r.x && r.s !== "m") {
+      s += ' <span class="qc-badge" title="源站只给出单一额度值，不参与缓存档位换算">单值</span>';
+    }
     return s;
   }
-  function qcAllHtml(data, catalog) {
+  function qcAllHtml(data, catalog, opts) {
+    opts = opts || {};
+    var plans = opts.plans || data.plans || [];
     var idx = state.plansCache;
     var usage = state.plansUsage;
     var domestic = state.plansRegion === "domestic";
     var maxFee = state.plansMaxFee;
     var items = [];
-    data.plans.forEach(function (p) {
+    plans.forEach(function (p) {
       if (!p.models || !p.models.length) return;
       if (domestic && !p.dm) return;
       if (maxFee != null && p.feeCny != null && p.feeCny > maxFee) return;
@@ -2261,13 +2380,19 @@
       });
     });
     if (!items.length) return '<p class="qc-empty">当前筛选下暂无可比较的套餐。</p>';
-    var mode = state.plansSort;
+    var mode = qcEffectiveSort();
     items.sort(function (a, b) {
       if (mode === "fee") {
         return (a.plan.feeCny == null ? Infinity : a.plan.feeCny) -
           (b.plan.feeCny == null ? Infinity : b.plan.feeCny);
       }
       if (mode === "quota") return b.maxQ - a.maxQ;
+      if (mode === "value") {
+        // 性价比:每 ¥1 能买到的月 Token 最多 ⇔ 每亿单价最低
+        return (a.unit == null ? Infinity : a.unit) - (b.unit == null ? Infinity : b.unit) ||
+          (a.plan.feeCny == null ? Infinity : a.plan.feeCny) -
+          (b.plan.feeCny == null ? Infinity : b.plan.feeCny) || b.maxQ - a.maxQ;
+      }
       if (mode === "discount") {
         return (a.discount == null ? Infinity : a.discount) -
           (b.discount == null ? Infinity : b.discount);
@@ -2293,7 +2418,7 @@
     });
     function tile(label, it, value) {
       return '<div class="qc-tile"><span>' + esc(label) + '</span><b>' +
-        (it ? '<span>' + esc(it.plan.platform) + '</span> · ' + esc(it.plan.name) : "—") + '</b><em>' +
+        (it ? '<span>' + esc(qcPlatformName(it.plan)) + '</span> · ' + esc(qcPlanName(it.plan)) : "—") + '</b><em>' +
         (it ? esc(value) : "—") + '</em></div>';
     }
 
@@ -2321,13 +2446,15 @@
         : (explicit ? it.rel.slice().sort(rowCmp) : rows).slice(0, 4);
       var hidden = rows.length - shown.length;
       var badges = (p.status === "restricted" ? '<span class="qc-badge qc-badge--restricted">购买受限</span>' : "") +
+        (p.legacy ? '<span class="qc-badge" title="源站标记为旧订阅，可能已停止新购">旧订阅</span>' : "") +
         (p.billing === "payg" ? '<span class="qc-badge">按量</span>' : "") +
-        (p.origin === "realapi" ? '<span class="qc-badge qc-badge--src" title="该套餐及其额度来自补充源 realapipricing.com">补充</span>' : "");
+        (p.origin === "realapi" ? '<span class="qc-badge qc-badge--src" title="该套餐及其额度来自补充源 realapipricing.com">补充</span>' : "") +
+        ((p.md || p.origin === "modeldial") ? '<span class="qc-badge qc-badge--src" title="ModelDial 订阅目录：新平台/档位整包追加；已有套餐只补缺失模型，已有模型保留原缓存档位额度">ModelDial</span>' : "");
       var filtered = (state.plansModels || []).length || state.plansBrand !== "all";
       var countText = filtered ? it.rel.length + " 条相关档位" : rows.length + " 条档位";
       var head = '<tr class="qc-plan-head"><td colspan="5"><div class="qc-plan-main">' +
-        '<b class="qc-plan-platform">' + esc(p.platform) + '</b>' +
-        '<span class="qc-plan-name">' + esc(p.name) + '</span>' +
+        '<b class="qc-plan-platform">' + esc(qcPlatformName(p)) + '</b>' +
+        '<span class="qc-plan-name">' + esc(qcPlanName(p)) + '</span>' +
         '<span class="qc-plan-fee">' + esc(qcFee(p.feeCny)) + '</span>' + badges +
         '<i class="qc-fit' + (it.covers ? " is-ok" : "") + '" title="当前筛选范围内最高月可用额度 ' +
         esc(qcFmtQuota(it.maxQ)) + '">' +
@@ -2336,7 +2463,7 @@
         '</div></td></tr>';
       var modelRows = shown.map(function (r) {
         return '<tr class="qc-plan-model"><td></td>' +
-          '<td><span class="qc-mdl">' + esc(r.m) + '</span>' +
+          '<td><span class="qc-mdl">' + esc(qcModelName(r)) + '</span>' +
           (r.t ? ' <i class="qc-tier">' + esc(r.t) + '</i>' : "") + qcSrcBadge(r) + '</td>' +
           '<td class="num">' + esc(qcMoney(qcUnitYi(p, r, idx))) + '</td>' +
           '<td class="num">' + esc(qcFmtQuota(r.q && r.q[idx])) + '</td>' +
@@ -2352,7 +2479,7 @@
     var selectedNames = (state.plansModels || []).map(function (k) {
       return catalog[k] ? catalog[k].name : k;
     });
-    var joinSep = (document.documentElement.getAttribute("lang") || "").toLowerCase() === "en" ? ", " : "、";
+    var joinSep = qcIsEn() ? ", " : "、";
     return '<div class="qc-all-meta"><span>共 ' + items.length + ' 个套餐</span> · <span>每月 ' +
       usage + '亿</span> · <span>缓存 ' + QC_CACHE[idx][1] + '</span>' +
       (state.plansBrand !== "all" ? ' · <span>' + esc(state.plansBrand) + '</span>' : "") +
@@ -2369,11 +2496,12 @@
       '<th class="num">月可用额度</th><th class="num">官方价折扣</th>' +
       '</tr></thead>' + body + '</table></div>';
   }
-  function qcFiltersHtml(data, catalog) {
+  function qcFiltersHtml(data, catalog, plans) {
     var idx = state.plansCache;
     var usage = state.plansUsage;
+    plans = plans || data.plans || [];
     var brandCounts = {};
-    data.plans.forEach(function (p) {
+    plans.forEach(function (p) {
       var seen = {};
       (p.models || []).forEach(function (r) {
         if (r.b && !seen[r.b]) { seen[r.b] = 1; brandCounts[r.b] = (brandCounts[r.b] || 0) + 1; }
@@ -2396,14 +2524,18 @@
       }).join("") +
       (brands.length > 12 ? '<button type="button" class="qc-chip qc-chip--more" data-qc-brands="toggle">' +
         (state.plansBrandsExpanded ? "收起品牌" : "展开全部 " + brands.length + " 个品牌") + '</button>' : "");
+    var viewOpts = [["all", "全部套餐"]];
+    if (data.groups && data.groups.length) viewOpts.push(["groups", "精选模型"]);
+    var sortOpts = [["fit", "推荐"], ["fee", "月费"], ["quota", "能用多少"],
+      ["value", "性价比", "按每 ¥1 可用月 Token 排序（每亿单价最低）"], ["discount", "官方价几折"]];
     return '<div class="qc-filters">' +
       '<div class="qc-filter-row qc-filter-view"><span class="qc-filter-label">视图</span>' +
-      qcSeg("qc-view", [["all", "全部套餐"], ["groups", "精选模型"]], state.plansView, "套餐视图") + '</div>' +
+      qcSeg("qc-view", viewOpts, state.plansView, "套餐视图") + '</div>' +
       '<div class="qc-filter-grid">' +
       '<div class="qc-filter-block"><div class="qc-filter-head"><span>每月用量</span><b>' + usage + '亿</b></div>' +
       qcSlider("qc-use", QC_USAGE, usage) + '</div>' +
-      '<div class="qc-filter-block"><div class="qc-filter-head"><span>缓存占比</span><b>' + QC_CACHE[idx][1] + '</b></div>' +
-      qcSlider("qc-cache", QC_CACHE, idx) + '</div>' +
+      '<div class="qc-filter-block"><div class="qc-filter-head"><span>缓存占比</span><b>' +
+      QC_CACHE[idx][1] + '</b></div>' + qcSlider("qc-cache", QC_CACHE, idx) + '</div>' +
       '</div>' +
       '<div class="qc-filter-block qc-fee-block"><div class="qc-filter-head"><span>月费上限</span><b>' +
       (state.plansMaxFee == null ? "不限" : "≤¥" + state.plansMaxFee + "/月") + '</b></div>' +
@@ -2418,8 +2550,8 @@
       qcSeg("qc-time", [["day", "白天为主"], ["night", "主要在夜间用"]], state.plansTime, "使用时段") +
       '<em>' + (state.plansTime === "night" ? "夜间谷时档位优先" : "白天高峰档位优先") + '</em></div>' +
       '</div>' +
-      '<div class="qc-filter-row"><span class="qc-filter-label">排序</span>' +
-      qcSeg("qc-sort", [["fit", "推荐"], ["fee", "月费"], ["quota", "能用多少"], ["discount", "官方价几折"]], state.plansSort, "套餐排序") +
+      '<div class="qc-filter-row" data-i18n-ctx="plans-sort"><span class="qc-filter-label">排序</span>' +
+      qcSeg("qc-sort", sortOpts, qcEffectiveSort(), "套餐排序") +
       '</div>' +
       '</div>';
   }
@@ -2453,13 +2585,16 @@
       return;
     }
     var hasAll = !!(data.plans && data.plans.length);
+    var md = D.modeldialSubs ? D.modeldialSubs() : null;
     if (!hasAll) state.plansView = "groups";
     var vAll = state.plansView !== "groups";
-    var catalog = qcModelCatalog(data.plans || []);
+    var mergedPlans = qcMergeModeldial(data.plans || [], md);
+    var catalog = qcModelCatalog(mergedPlans);
     state.plansModels = (state.plansModels || []).filter(function (k) { return !!catalog[k]; });
     var body;
     if (vAll) {
-      body = qcFiltersHtml(data, catalog) + qcAllHtml(data, catalog);
+      body = qcFiltersHtml(data, catalog, mergedPlans) +
+        qcAllHtml(data, catalog, { plans: mergedPlans });
     } else {
       var scope = state.plansScope === "all" ? "all" : "featured";
       var scopeBtn = function (value, label) {
@@ -2534,9 +2669,14 @@
       '<div class="note-line"><b>来源</b>' +
       '<a href="' + esc((src1 && src1.url) || data.officialUrl || "") + '" target="_blank" rel="noopener">codingplan.fyi ↗</a>' +
       (src2 ? ' · 额度补充 <a href="' + esc(src2.url) + '" target="_blank" rel="noopener">realapipricing.com ↗</a>(' + esc(src2.license || "MIT") + ')' : "") +
+      (md ? ' · ModelDial <a href="' + esc(md.pageUrl || md.url) + '" target="_blank" rel="noopener">订阅额度 ↗</a>' : "") +
       '</div>' +
-      '<div class="note-line"><b>更新</b>源站 ' + esc(data.siteUpdated || "—") + ' · 本站抓取 ' + esc(data.refreshedAt || data.updated || "—") + ' · 美元按汇率 ' + esc(data.usdToCnyRate) + ' 折算人民币</div>' +
+      '<div class="note-line"><b>更新</b>源站 ' + esc(data.siteUpdated || "—") + ' · 本站抓取 ' + esc(data.refreshedAt || data.updated || "—") + ' · 美元按汇率 ' + esc(data.usdToCnyRate) + ' 折算人民币' +
+      (md ? ' · ModelDial 源站 ' + esc(md.sourceUpdated || "—") : "") + '</div>' +
       '<div class="note-line"><b>口径</b>月可用额度按 0% / 50% / 95% / 99% 缓存占比换算(输出固定 0.5%);只有单一额度的套餐只在 95% 档显示;「每月用量」只用于判断是否够用与推荐排序,不改变显示的额度;官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,越低越划算。</div>' +
+      (md ? '<div class="note-line"><b>ModelDial</b>订阅额度已并入「全部套餐」:' +
+        esc(md.stats ? md.stats.aliasedPlans : "—") + ' 个档位并入已有套餐(只补缺失模型,不覆盖原有缓存档位),' +
+        esc(md.stats ? md.stats.appendedPlans : "—") + ' 个新平台/档位作为套餐追加;月额度为源站月均可用 Token,周套餐按 52/12 折算,无官方三段价的单值行只在 95% 档显示;行内「实测/估算」沿用源站口径;性价比 = 每 ¥1 可买到的月可用 Token 最多。</div>' : "") +
       '<div class="note-line"><b>说明</b>折叠预览优先露出额度够所选用量的模型，够用的行里再优先当前缓存/时段的峰谷档位；选中品牌或具体模型后，折叠预览只展示相关档位，所选模型的档位行置顶；套餐是否够用按所选模型在当前缓存与所选时段下的最高额度判断；「实测」为补充源实测/官方口径，「单值」为源站只给单一额度、不参与档位换算；已下架套餐不展示，受限套餐标「购买受限」。</div>';
   }
 
@@ -2924,12 +3064,13 @@
     automationbench: { src: "data/automationbench.js?v=20261116b", global: "AUTOMATIONBENCH" },
     vals_codemigration: { src: "data/vals_codemigration.js?v=20261020a", global: "VALSCODEMIGRATION" },
     aa_coding_agents: { src: "data/aa_coding_agents.js?v=20261027a", global: "AACODING" },
-    codingplan: { src: "data/codingplan.js?v=20261111a", global: "CODINGPLAN" }
+    codingplan: { src: "data/codingplan.js?v=20261116a", global: "CODINGPLAN" },
+    modeldialSubs: { src: "data/modeldial-subs.js?v=20261116c", global: "MODELDIAL_SUBS" }
   };
   // 各标签页渲染前必须就绪的数据
   var TAB_DATA = {
     authority: ["tbscience", "osworld", "lastexam", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "vals_codemigration", "aa_coding_agents"],
-    plans: ["codingplan"]
+    plans: ["codingplan", "modeldialSubs"]
   };
   var dataState = {};    // key -> "loading" | "ready" | "failed"
   var dataWaiters = {};  // key -> 待回调队列
@@ -2992,7 +3133,12 @@
   function renderPage() {
     var name = CURRENT_TAB;
     var needData = TAB_DATA[name];
-    if (needData && !needData.every(dataLoaded)) {
+    // 只有「未加载且非 failed」的源才等待;failed 的源按缺数据直接渲染,
+    // 否则 ensureData 对全 failed 的 keys 会同步回调 renderPage,形成无限递归。
+    var pending = needData && needData.some(function (k) {
+      return !dataLoaded(k) && dataState[k] !== "failed";
+    });
+    if (pending) {
       // 数据按需注入:先占位,注入完成后再渲染
       setPagePending(name);
       ensureData(needData, renderPage);
