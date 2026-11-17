@@ -6,13 +6,13 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-16',
-  'refreshedAt': '2026-11-16 14:58',
+  'refreshedAt': '2026-11-17 06:24',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3402,
-    'afterMerge': 3399,
-    'needsZh': 2181,
-    'translated': 2181,
+    'afterToolDedupe': 3410,
+    'afterMerge': 3407,
+    'needsZh': 2189,
+    'translated': 2189,
     'untranslated': 0
   },
   'zh': {
@@ -37,6 +37,7 @@ window.CHANGELOG_MONTHLY = {
     '1213c9c5-47': '通过映射到 ignore 与 synthetic 支持 ACP audience',
     '121e0564-134': '为命令和HTTP钩子添加了onFailure: \'block\' ：无法启动、超时或使用意外代码退出的钩子会阻止操作，而不是让它通过',
     '12217a90-74': '! - 允许自定义智能体文件限制其可委派的子智能体类型（仅 v2 引擎）',
+    '1223a288-60': '在空提示中添加了提示，说明请求失败后该怎么做',
     '128deb7c-41': '新增 stats 命令以显示使用统计',
     '129ba684-27': '为应用新增端到端冒烟测试',
     '129dd494-103': '为mods添加了$ .ui.notify ：通过您自己的通知设置引发本机通知，并说明是哪个频道发送的',
@@ -361,6 +362,7 @@ window.CHANGELOG_MONTHLY = {
     '347169d3-250': '! - 将渐进式工具披露移植到新的智能体引擎：MCP 工具 schema 不再出现在顶层工具列表中，模型通过公告加上 select_tools 工具按名称按需加载，从而保持提示缓存稳定。默认关闭；设置 KIMI_CODE_EXPERIMENTAL_TOOL_SELECT=1 启用',
     '3486b764-117': '在 /usage 中新增 Spend limit 栏，并为位于设有消费上限的 Claude apps 网关之后的开发者提供 rate_limits.spend_limit 状态行字段',
     '348e948-50': '为 Google Vertex Anthropic 提供方添加思考预设',
+    '34b090b8-116': '新增了在启用代理团队时开启代码模式的支持；如果您已经开启了该模式，那么现在启用团队的会话将以代码模式开始。',
     '34bf937c-140': '新增 --system-prompt-snapshot off，使每次请求都重新生成系统提示，而不复用会话已记录的提示（便于迭代提示文本）',
     '34c193b4-228': '/logout 现在会打开选择器，让你选择要退出登录的提供商，而不是始终退出当前模型所绑定的那个。当前提供商默认高亮，因此按 Enter 与之前的行为一致。该命令也可作为 /disconnect 使用',
     '34c39e48-142': '为不支持动态客户端注册的 MCP 服务器（如 Slack）新增预配置的 OAuth 客户端凭据。可在 claude mcp add 中使用 --client-id 和 --client-secret',
@@ -630,6 +632,7 @@ window.CHANGELOG_MONTHLY = {
     '4fe4b04a-23': '新增 ocamlformat 支持',
     '4fefc540-123': '新增 sandbox.network.deniedDomains 设置，即使更宽泛的 allowedDomains 通配符原本会允许，也能阻止特定域名',
     '50246d6c-102': '发现执行器提供的技能并安全读取其关联资源，包括显式选中的技能',
+    '502fbc3a-102': '在/status中添加了一行，说明您的提供商或DISABLE_TELEMETRY等环境变量何时关闭功能',
     '5032a9e8-94': '新增 PreCompact 钩子支持：钩子现在可通过以代码 2 退出或返回 {\'decision\':\'block\'} 来阻止压缩',
     '507744f9-73': '! -使用突出显示的提示替换用户技能卡，并支持Ctrl-S进行技能提示',
     '507f5e2c-113': '新增 --append-subagent-system-prompt-file，用于从文件读取子 Agent系统提示，适用于无法在命令行传递的超大提示',
@@ -665,6 +668,7 @@ window.CHANGELOG_MONTHLY = {
     '533fdd4c-106': '将virtualText添加到mod的提示装饰：在提示框中绘制的文本从未进入草稿或提交的提示',
     '53477f0b-209': '用户现在可为智能体准备多个目标依次处理。当前目标完成后，智能体会从队列中取用下一个目标。使用 /goal next 排队目标，用 /goal next manage 交互式查看和修改队列',
     '53844314-219': '为 Linux 和 WSL 上的沙箱凭据文件新增 mode: \'mask\' —— 沙箱内命令读取哨兵副本（整个文件，或仅 extract 正则捕获的片段），沙箱代理在出口时替换为真实值；在 macOS 上文件掩码会退化为拒绝',
+    '5391f0cc-36': '添加了 Ctrl+O 以显示隐藏的启动通知',
     '53c63bac-102': '在标志和加载动画中新增努力级别显示（如“with low effort”），便于查看当前生效的努力设置',
     '53d4a9e9-22': '添加托管的 git worktree',
     '53e8bc40-47': '增加 crypto.randomUUID 不可用时的回退方案',
@@ -1098,6 +1102,7 @@ window.CHANGELOG_MONTHLY = {
     '871f5386-42': '/plugin 已安装标签页新增「Skills」分区',
     '8748986c-44': '为桌面应用增加更多基础菜单栏项',
     '876612e0-112': '添加Ctrl + F按名称查找会话， Alt +↑/↓在代理视图中在组之间跳转；可以在keybindings.json中反弹和rename',
+    '876f0638-61': '在子 Agent视图中添加了 Esc 键，用于停止页脚提示，因为 Esc 键可以停止该提示',
     '8771d9b3-97': '当新的云计划任务获得您没有要求的连接器时，向/schedule添加了警告，并说明了如何删除它们',
     '87856720-146': '当对话记录写入失败（例如磁盘已满）或因继承的环境变量导致会话保存关闭时新增警告，而不是静默丢失对话记录',
     '87982530-56': '工具或子任务执行失败的错误提示更具描述性',
@@ -1364,6 +1369,7 @@ window.CHANGELOG_MONTHLY = {
     'a17a16c4-105': '在模块的文本中添加了尺寸、重量、单色和表格，并在其框中添加了命名间距步骤（ xs到xl ） ；粗体已被弃用，转而使用重量',
     'a1adf8a8-85': 'TypeScript LSP 改为每个包一个，确保根目录未安装 TypeScript 时也能加载',
     'a1b1837c-87': '插件发现页面新增搜索过滤（输入即可按名称、描述或市场过滤）',
+    'a1c0757c-61': '在模组的 Box 上添加了 overflowX=\'scroll\'，在其 Text 上添加了 maxLines 和 wrap=\'clip\'',
     'a1d51928-125': '实验性工作树支持允许您使用--worktree或/worktree为新的或分叉的会话创建独立的签出，然后浏览并恢复它们',
     'a1ee96e0-76': '增加 TUI 中的会话宽度，以容纳更长的代码块并提升可读性',
     'a1f868d4-38': '默认模型遵循服务端建议',
@@ -1552,7 +1558,6 @@ window.CHANGELOG_MONTHLY = {
     'b800c4ec-207': '插件自动化获得更丰富的结构化输出：添加/移除和市场命令支持 --json，插件列表 JSON 包含市场来源，插件详情数据现在会暴露默认提示、远程 MCP 服务器和不可用的应用模板',
     'b808498c-23': '为应用增加关闭标签页的快捷键',
     'b8091724-53': '为提示输入组件添加国际化支持',
-    'b814088-39': '会话差异现在仅包含已修改文件',
     'b82e0a78-82': '在消息选择器中新增“从此处总结”，可对部分对话进行总结',
     'b83b8c10-292': '新增 KIMI_MODEL_ADAPTIVE_THINKING（及对应的 adaptive_thinking 模型别名字段），强制开启或关闭自适应思考（thinking: { type: \'adaptive\' }），覆盖 Anthropic 模型名版本推断。这使承载自适应能力模型的自定义命名 staff 端点即使模型名未编码可解析的 Claude 版本也能选择启用',
     'b8532710-22': '持久化浅色/深色模式',
@@ -1729,12 +1734,12 @@ window.CHANGELOG_MONTHLY = {
     'c9b762ac-120': '添加了$ .prompt.media ，以便通过托管设置安装的mod的prompt.submit钩子可以读取附加到提示符的图像或文档的字节',
     'c9b99510-19': '新增提示暂存',
     'c9bbba54-64': '新增 codex queue，用于向现有的本地或远程会话发送消息',
+    'c9bd6fb0-106': '当 --allowedTools、--disallowedTools 或 --tools 值包含看起来不像是完整规则的条目时，添加了启动警告',
     'c9c5e119-65': '为 Google Vertex Anthropic 启用提示缓存和缓存令牌跟踪',
     'c9f0a07c-112': '! - web：可通过运行中卡片上的 Move to background 按钮，将正在运行的前台 Bash 命令或子 Agent移至后台',
     'ca1b5f88-110': '在 Bash 工具子进程环境中新增 CLAUDE_CODE_SESSION_ID 环境变量，与传给 hooks 的 session_id 一致',
     'ca474584-129': '新增跨会话消息传递（SendMessage / ListAgents），可在同一台机器上的会话之间使用，支持 Bedrock、Vertex 和 Foundry，以及在禁用遥测时',
     'ca4a2804-90': '为claude -p文本输出添加了一行stderr警告，从存储的claude.ai登录结束前10天开始',
-    'ca5d0c8d-46': '为 tui.ts 控制端点新增 OpenAPI 注解',
     'ca6bb8c4-44': '@ 智能体即使不在提示词开头也能生效',
     'ca7ddaf0-76': '新增 server_error、rate_limit 和 no_kv_space 重试逻辑，以应对 Foundry API 问题',
     'ca7f82dd-100': '处理子目录中的文件时，支持自动从嵌套的 .claude/skills 目录发现技能',
@@ -1742,6 +1747,7 @@ window.CHANGELOG_MONTHLY = {
     'ca97b698-101': '当登录即将过期时新增警告，便于你在后台会话被中断前重新认证',
     'caa968dc-155': '向VS代码和Claude Desktop的代码选项卡添加了空闲压缩：总结了20多万个空闲令牌对话，如果提示缓存已过期，则在下一条消息中使用该摘要',
     'cae95baf-133': '拒绝规则的工具名位置新增 glob 模式支持（\'*\' 拒绝所有工具）；允许规则拒绝非 MCP 的 glob，拒绝规则中的未知工具名会在启动时警告',
+    'cb0a4f40-98': '添加了一条消息，解释了管理员在会话期间添加 managed-mcp.json 时 MCP 服务器停止加载的原因',
     'cb5efa98-93': '在 Claude Desktop 和 Cowork 通过 Claude apps 网关发送的遥测中新增 enduser.sub（IdP 主体）',
     'cb754a14-31': '为 Rust 文件添加 rustfmt 格式化器',
     'cb75b47b-61': '支持从 .opencode/themes 目录加载自定义主题',
@@ -1975,6 +1981,7 @@ window.CHANGELOG_MONTHLY = {
     'e681767d-102': 'TUI 现支持编辑器中的模态 Vim 编辑，包括 /vim、默认模式配置和 Vim 专用键位映射上下文',
     'e68e64a6-29': '为选择器添加管理模型图标',
     'e6f191df-137': '在Claude Desktop的代码选项卡中添加了对关闭归因块的支持：在CLAUDE应用程序网关的代码策略的环境中设置CLAUDE_CODE_ATTRIBUTION_HEADER = 0',
+    'e6f92568-99': '添加了 OTEL_RESOURCE_INCLUDE_HOST，以便在 OpenTelemetry 资源属性中包含 host.name 和 host.id（默认情况下禁用）',
     'e71d77d4-47': '! - web：为移动端会话列表新增扁平/按工作区切换的标签页',
     'e7301514-86': '新增提供商白名单/黑名单配置，用于控制可用提供商',
     'e73d1db4-54': '支持使用 completions 端点的非 OpenAI Azure 模型',
@@ -2102,6 +2109,7 @@ window.CHANGELOG_MONTHLY = {
     'f3ec42a9-90': '新增保存到磁盘的工具结果 1 GB 上限；会话内预览会提示已保存文件被截断',
     'f3fb38c8-62': '为 Venice 增加 temperature、topP、topK 和 smallOption 参数支持',
     'f4129770-76': '使用键盘可访问的“显示更多”操作，在Agent命令中心浏览较旧的任务',
+    'f4392df4-97': '当忽略格式错误的 plugin.json 字段（如作者或主页）时，在 /plugin 和 Claude 插件列表中添加了备注',
     'f46356a8-252': '! -添加可选的NotifyUser进度更新功能（默认情况下关闭） ：新会话可以使用可选的单行标题显示客服代表的中途进度，该标题在TUI/实验或Web/桌面设置的实验室部分中启用；设置[experimental] NOTIFY_USER = true或KIMI_CODE_EXPERIMENTAL_NOTIFY_USER = 1以将其打开',
     'f46adef8-127': '向匹配会话名称和任务的代理视图添加了n: filter ；过滤器现在显示折叠部分中的匹配项， Enter打开第一个匹配项',
     'f4d4b0b0-152': '向Claude应用程序网关添加了可选的login_notice设置，该设置在网关的浏览器验证页面和Claude Code的登录屏幕上显示操作员定义的消息',
@@ -2202,7 +2210,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 208,
+      'count': 218,
       'toolCount': 11,
       'multi': [],
       'tools': [
@@ -2363,6 +2371,76 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': '1223a288-60',
+              'text': 'Added a hint in the empty prompt that says what to do after a request fails',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': '34b090b8-116',
+              'text': 'Added support for turning on Code Mode while agent teams are enabled; if you already turned it on, sessions with teams on now start in Code Mode',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': '502fbc3a-102',
+              'text': 'Added a row to /status that says when your provider or an environment variable such as DISABLE_TELEMETRY turns features off',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': '5391f0cc-36',
+              'text': 'Added Ctrl+O to show hidden startup notices',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': '876f0638-61',
+              'text': 'Added an esc to stop footer hint in a subagent\'s view where Esc would stop it',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': 'a1c0757c-61',
+              'text': 'Added overflowX=\'scroll\' on a mod\'s Box, and maxLines and wrap=\'clip\' on its Text',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': 'c9bd6fb0-106',
+              'text': 'Added a startup warning when an --allowedTools, --disallowedTools or --tools value has an entry that doesn\'t look like a complete rule',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': 'cb0a4f40-98',
+              'text': 'Added a message explaining why MCP servers stop loading when an administrator adds managed-mcp.json during a session',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': 'e6f92568-99',
+              'text': 'Added OTEL_RESOURCE_INCLUDE_HOST to include host.name and host.id in OpenTelemetry resource attributes (off by default)',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
+            {
+              'key': 'f4392df4-97',
+              'text': 'Added a note in /plugin and claude plugin list when a malformed plugin.json field such as author or homepage is ignored',
+              'date': '2026-11-16',
+              'version': '2.1.326',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.326'
+            },
             {
               'key': '11f1e608-126',
               'text': 'Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook',
@@ -2714,7 +2792,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 50
+          'count': 60
         },
         {
           'id': 'opencode',
@@ -26021,7 +26099,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2025-10',
       'label': '2025年10月',
-      'count': 55,
+      'count': 53,
       'toolCount': 3,
       'multi': [],
       'tools': [
@@ -26194,20 +26272,6 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27'
             },
             {
-              'key': 'b814088-39',
-              'text': 'Session diff now only includes modified files',
-              'date': '2025-10-29',
-              'version': '0.15.24',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.24'
-            },
-            {
-              'key': 'ca5d0c8d-46',
-              'text': 'Added OpenAPI annotations to tui.ts control endpoints',
-              'date': '2025-10-29',
-              'version': '0.15.24',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.24'
-            },
-            {
               'key': 'e9b4870-41',
               'text': 'Added enterprise navigation link to header menu',
               'date': '2025-10-29',
@@ -26222,7 +26286,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
             }
           ],
-          'count': 27
+          'count': 25
         },
         {
           'id': 'traecode',

@@ -67,7 +67,7 @@ window.QUALITY = {
       'id': 'arena_agent',
       'name': 'Agent Arena (LMArena)',
       'status': 'ok',
-      'modelCount': 59,
+      'modelCount': 60,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -78,7 +78,7 @@ window.QUALITY = {
       'id': 'arena_webdev',
       'name': 'Code Arena WebDev (LMArena)',
       'status': 'ok',
-      'modelCount': 157,
+      'modelCount': 158,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -89,7 +89,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 86,
+      'modelCount': 87,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -100,7 +100,7 @@ window.QUALITY = {
       'id': 'automationbench',
       'name': 'AutomationBench',
       'status': 'ok',
-      'modelCount': 71,
+      'modelCount': 73,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -133,7 +133,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 46,
+      'modelCount': 52,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -144,7 +144,7 @@ window.QUALITY = {
       'id': 'deepswe_v10',
       'name': 'DeepSWE v1.0',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 34,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -166,7 +166,7 @@ window.QUALITY = {
       'id': 'frontierswe',
       'name': 'FrontierSWE',
       'status': 'ok',
-      'modelCount': 25,
+      'modelCount': 26,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -188,7 +188,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 51,
+      'modelCount': 53,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -199,7 +199,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 131,
+      'modelCount': 132,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 0,
@@ -243,10 +243,10 @@ window.QUALITY = {
       'id': 'programbench',
       'name': 'ProgramBench',
       'status': 'ok',
-      'modelCount': 76,
+      'modelCount': 78,
       'updated': '2026-11-16',
       'ageDays': 0,
-      'completeness': 0.974,
+      'completeness': 0.962,
       'fetchAttempts': 1,
       'errors': []
     },
@@ -254,7 +254,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 62,
+      'modelCount': 65,
       'updated': '2026-11-16',
       'ageDays': 0,
       'completeness': 1,
@@ -328,10 +328,10 @@ window.QUALITY = {
       ],
       'scores': {
         'deepswe_v11': 63,
-        'deepswe_v10': 8
+        'deepswe_v10': 35.35
       },
-      'mean': 35.5,
-      'stddev': 27.5,
+      'mean': 49.2,
+      'stddev': 13.83,
       'flag': 'alert'
     },
     {
@@ -431,6 +431,38 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'DeepSeek V4.1 Flash 1017',
+      'name': 'DeepSeek-V4.1-Flash-1017',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 75.4,
+        'deepswe_v11': 77
+      },
+      'mean': 76.2,
+      'stddev': 0.8,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Kimi K3',
+      'name': 'kimi-k3',
+      'vendor': 'Moonshot',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 69,
+        'deepswe_v10': 67.5
+      },
+      'mean': 68.3,
+      'stddev': 0.75,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'Gemini 3.8 Flash',
       'name': 'Gemini 3.8 Flash',
       'vendor': 'Google',
@@ -459,6 +491,22 @@ window.QUALITY = {
         'deepswe_v10': 58
       },
       'mean': 58.5,
+      'stddev': 0.5,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Grok 4.5',
+      'name': 'grok-4-5',
+      'vendor': 'xAI',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 54,
+        'deepswe_v10': 53
+      },
+      'mean': 53.5,
       'stddev': 0.5,
       'flag': 'ok'
     },
@@ -495,6 +543,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'DeepSeek V4 Flash 0731',
+      'name': 'DeepSeek-V4-Flash-0731',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 53.7,
+        'deepswe_v10': 54.4
+      },
+      'mean': 54.1,
+      'stddev': 0.35,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'GPT-6 Astra',
       'name': 'GPT-6 Astra',
       'vendor': 'OpenAI',
@@ -511,19 +575,53 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'GPT-5.6 Terra',
+      'name': 'gpt-5-6-terra',
+      'vendor': 'OpenAI',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 70,
+        'deepswe_v10': 69.6
+      },
+      'mean': 69.8,
+      'stddev': 0.2,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'GPT-5.6 Sol',
       'name': 'GPT-5.6 Sol',
       'vendor': 'OpenAI',
       'sources': [
         'datalearner',
-        'deepswe_v11'
+        'deepswe_v11',
+        'deepswe_v10'
       ],
       'scores': {
         'datalearner': 72.7,
-        'deepswe_v11': 73
+        'deepswe_v11': 73,
+        'deepswe_v10': 72.7
       },
-      'mean': 72.9,
-      'stddev': 0.15,
+      'mean': 72.8,
+      'stddev': 0.14,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'GPT-5.6 Luna',
+      'name': 'gpt-5-6-luna',
+      'vendor': 'OpenAI',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 67,
+        'deepswe_v10': 67.2
+      },
+      'mean': 67.1,
+      'stddev': 0.1,
       'flag': 'ok'
     },
     {
@@ -575,25 +673,9 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'DeepSeek V4.1 Flash 1017',
-      'name': 'DeepSeek-V4.1-Flash-1017',
-      'vendor': 'DeepSeek',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 77,
-        'deepswe_v11': 77
-      },
-      'mean': 77,
-      'stddev': 0,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'Qwen4-Max',
       'name': 'Qwen4-Max',
-      'vendor': '其他',
+      'vendor': 'Alibaba',
       'sources': [
         'datalearner',
         'deepswe_v11'
@@ -612,11 +694,13 @@ window.QUALITY = {
       'vendor': 'Moonshot',
       'sources': [
         'datalearner',
-        'deepswe_v11'
+        'deepswe_v11',
+        'deepswe_v10'
       ],
       'scores': {
         'datalearner': 75.5,
-        'deepswe_v11': 75.5
+        'deepswe_v11': 75.5,
+        'deepswe_v10': 75.5
       },
       'mean': 75.5,
       'stddev': 0,
@@ -751,34 +835,98 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Grok 4.7',
-      'name': 'Grok 4.7',
-      'vendor': 'xAI',
+      'canonId': 'ERNIE 5.5 Flash Preview',
+      'name': 'ERNIE 5.5 Flash Preview',
+      'vendor': 'Baidu',
       'sources': [
         'datalearner',
         'deepswe_v11'
       ],
       'scores': {
-        'datalearner': 71,
-        'deepswe_v11': 71
+        'datalearner': 71.2,
+        'deepswe_v11': 71.2
       },
-      'mean': 71,
+      'mean': 71.2,
       'stddev': 0,
       'flag': 'ok'
     },
     {
-      'canonId': 'Claude Sonnet 5.5',
-      'name': 'Claude Sonnet 5.5',
-      'vendor': 'Anthropic',
+      'canonId': 'Tencent Hy4 Preview',
+      'name': 'Hy4 preview',
+      'vendor': 'Tencent',
       'sources': [
-        'datalearner',
-        'deepswe_v11'
+        'deepswe_v11',
+        'deepswe_v10'
       ],
       'scores': {
-        'datalearner': 71,
-        'deepswe_v11': 71
+        'deepswe_v11': 64.3,
+        'deepswe_v10': 64.3
       },
-      'mean': 71,
+      'mean': 64.3,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'DeepSeek V4 Flash Vision Exp',
+      'name': 'DeepSeek-V4-Flash-Vision-Exp',
+      'vendor': 'DeepSeek',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 59.3,
+        'deepswe_v10': 59.3
+      },
+      'mean': 59.3,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Seed 2.1 Pro',
+      'name': 'Seed 2.1 Pro',
+      'vendor': 'ByteDance',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 32.7,
+        'deepswe_v10': 32.7
+      },
+      'mean': 32.7,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Tencent Hy3',
+      'name': 'Hy3',
+      'vendor': 'Tencent',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 28,
+        'deepswe_v10': 28
+      },
+      'mean': 28,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Seed 2.1 Turbo',
+      'name': 'Seed 2.1 Turbo',
+      'vendor': 'ByteDance',
+      'sources': [
+        'deepswe_v11',
+        'deepswe_v10'
+      ],
+      'scores': {
+        'deepswe_v11': 23,
+        'deepswe_v10': 23
+      },
+      'mean': 23,
       'stddev': 0,
       'flag': 'ok'
     }
@@ -818,33 +966,33 @@ window.QUALITY = {
     },
     'arena_agent': {
       'rate': 1,
-      'total': 59,
-      'complete': 59,
-      'modelCount': 59,
+      'total': 60,
+      'complete': 60,
+      'modelCount': 60,
       'missingFields': {},
       'flag': 'ok'
     },
     'arena_webdev': {
       'rate': 1,
-      'total': 157,
-      'complete': 157,
-      'modelCount': 157,
+      'total': 158,
+      'complete': 158,
+      'modelCount': 158,
       'missingFields': {},
       'flag': 'ok'
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 86,
-      'complete': 86,
-      'modelCount': 86,
+      'total': 87,
+      'complete': 87,
+      'modelCount': 87,
       'missingFields': {},
       'flag': 'ok'
     },
     'automationbench': {
       'rate': 1,
-      'total': 71,
-      'complete': 71,
-      'modelCount': 71,
+      'total': 73,
+      'complete': 73,
+      'modelCount': 73,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -868,17 +1016,17 @@ window.QUALITY = {
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 46,
-      'complete': 46,
-      'modelCount': 46,
+      'total': 52,
+      'complete': 52,
+      'modelCount': 52,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v10': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -892,9 +1040,9 @@ window.QUALITY = {
     },
     'frontierswe': {
       'rate': 1,
-      'total': 25,
-      'complete': 25,
-      'modelCount': 25,
+      'total': 26,
+      'complete': 26,
+      'modelCount': 26,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -908,19 +1056,19 @@ window.QUALITY = {
     },
     'lastexam': {
       'rate': 1,
-      'total': 51,
-      'complete': 51,
-      'modelCount': 51,
+      'total': 53,
+      'complete': 53,
+      'modelCount': 53,
       'missingFields': {},
       'flag': 'ok'
     },
     'llm2014': {
       'rate': 0,
-      'total': 131,
+      'total': 132,
       'complete': 0,
-      'modelCount': 131,
+      'modelCount': 132,
       'missingFields': {
-        'score': 131
+        'score': 132
       },
       'flag': 'warn'
     },
@@ -949,20 +1097,20 @@ window.QUALITY = {
       'flag': 'ok'
     },
     'programbench': {
-      'rate': 0.974,
-      'total': 76,
-      'complete': 74,
-      'modelCount': 76,
+      'rate': 0.962,
+      'total': 78,
+      'complete': 75,
+      'modelCount': 78,
       'missingFields': {
-        'score': 2
+        'score': 3
       },
       'flag': 'ok'
     },
     'tbench': {
       'rate': 1,
-      'total': 62,
-      'complete': 62,
-      'modelCount': 62,
+      'total': 65,
+      'complete': 65,
+      'modelCount': 65,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1216,7 +1364,7 @@ window.QUALITY = {
       'level': 'error',
       'dimension': 'consistency',
       'sourceId': 'deepswe_v11,deepswe_v10',
-      'message': 'DeepSeek V4 Pro 0813 跨源分数标准差 27.5(>10)'
+      'message': 'DeepSeek V4 Pro 0813 跨源分数标准差 13.83(>10)'
     }
   ]
 };
