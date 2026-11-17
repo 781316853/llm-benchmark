@@ -4,7 +4,9 @@
 //   split=latest),其 agent 子集用 IPS(因果追踪)估计模型相对 Arena 基线的净提升:
 //   score=IPS τ̂(小数,可为负)、score_ci_lower/upper=95% 区间、observation_count=信号观测数、
 //   session_count=独立会话数、rank=官方名次、leaderboard_publish_date=官方发布日。
-//   数据集以 parquet 发布,本机可达的官方镜像为 ModelScope;Hugging Face 为同内容备源。
+//   数据集以 parquet 发布,三源并行抓取:ModelScope / Hugging Face / hf-mirror,
+//   按 leaderboard_publish_date 选最新批次;ModelScope 镜像可能滞后(2026-11-17 实测仍停 11-11,
+//   HF 已到 11-15),不能只在主源失败时才切备源。
 // ⚠ 不发 m.aitntnews.com 的 HTML 快照:它把负的净提升显示成正数(2026-10-26 核对:
 //   官方 Solar Pro 4 为 -19.61%、镜像显示 20.25%),符号丢失后排名与分数都不可用。
 // 补缺:官网榜单领先于数据集快照时,按 ANNOUNCED 人工转录种子,仅补缺失模型、数据集收录后自动去重。
@@ -91,18 +93,74 @@ class ArenaAgentSource extends BaseSource {
       outFile: "arena_agent.js", windowVar: "ARENA_AGENT"
     });
     this.fallbackUrl = CONFIG.sources.arena_agent.fallbackUrl;
+    this.mirrorUrl = CONFIG.sources.arena_agent.mirrorUrl;
     this.datasetUrl = CONFIG.sources.arena_agent.datasetUrl;
     this.officialUrl = CONFIG.sources.arena_agent.officialUrl;
   }
   async fetch() {
-    try {
-      return await transport.fetchWithRetry(this.cfg.url, { binary: true });
-    } catch (e) {
-      console.log("  [arena_agent] ModelScope 镜像抓取失败,尝试 Hugging Face(" + e.message + ")");
-      return transport.fetchWithRetry(this.fallbackUrl, { binary: true });
-    }
+    // 三源并行:ModelScope 镜像可能滞后,不能只把它当主源、失败才切备源;
+    // 抓到后由 parse 按 leaderboard_publish_date 选最新批次。
+    const mirrors = [
+      { label: "ModelScope", url: this.cfg.url },
+      { label: "Hugging Face", url: this.fallbackUrl },
+      { label: "hf-mirror", url: this.mirrorUrl }
+    ].filter(function (m) { return m.url; });
+    const results = await Promise.allSettled(mirrors.map(async function (m) {
+      // 三源冗余,单源少重试:避免 HF 被墙时 4 次 × 30s 超时拖慢整轮刷新
+      return { label: m.label, buf: await transport.fetchWithRetry(m.url, { binary: true, retries: 1 }) };
+    }));
+    const ok = [], errs = [];
+    results.forEach(function (r, i) {
+      if (r.status === "fulfilled") ok.push(r.value);
+      else {
+        errs.push(mirrors[i].label + ": " + r.reason.message);
+        console.log("  [arena_agent] " + mirrors[i].label + " 抓取失败: " + r.reason.message);
+      }
+    });
+    if (!ok.length) throw new Error("Agent Arena 数据集全部镜像抓取失败(" + errs.join("; ") + ")");
+    return ok;
   }
-  async parse(buf) {
+  async parse(raw) {
+    const sources = Array.isArray(raw) ? raw : [{ label: "数据源", buf: raw }];
+    const parsed = [];
+    for (const s of sources) {
+      try {
+        parsed.push(Object.assign({ label: s.label }, await this.parseBuffer(s.buf)));
+      } catch (e) {
+        console.log("  [arena_agent] " + s.label + " 解析失败: " + e.message);
+      }
+    }
+    if (!parsed.length) throw new Error("Agent Arena 数据集未解析到有效条目(所有镜像均失败)");
+    // 选最新批次:ModelScope 2026-11-17 实测仍停 11-11,HF 已到 11-15;日期相同再取条目多者
+    parsed.sort(function (a, b) {
+      if (a.datasetUpdated !== b.datasetUpdated) return a.datasetUpdated < b.datasetUpdated ? 1 : -1;
+      return b.models.length - a.models.length;
+    });
+    const best = parsed[0];
+    parsed.slice(1).forEach(function (o) {
+      if (o.datasetUpdated !== best.datasetUpdated) {
+        console.log("  [arena_agent] 选用 " + best.label + "(" + best.datasetUpdated + ")," +
+          o.label + " 批次较旧(" + o.datasetUpdated + ")");
+      }
+    });
+    const ageDays = (Date.now() - new Date(best.datasetUpdated + "T00:00:00Z").getTime()) / 86400000;
+    if (ageDays > 8) {
+      console.log("  [arena_agent] ⚠ 数据集批次 " + best.datasetUpdated + " 已 " + Math.round(ageDays) +
+        " 天未更新(历史间隔 1~8 天)");
+    }
+    const models = best.models;
+    mergeAnnounced(models);
+    const latest = models.reduce(function (d, m) { return (m.date && m.date > d) ? m.date : d; }, best.datasetUpdated);
+    const sessions = models.reduce(function (s, m) { return s + (m.sessions || 0); }, 0);
+    const observations = models.reduce(function (s, m) { return s + (m.observations || 0); }, 0);
+    return {
+      models: models,
+      updated: latest,
+      datasetUpdated: best.datasetUpdated,
+      stats: { models: models.length, sessions: sessions, observations: observations }
+    };
+  }
+  async parseBuffer(buf) {
     if (!Buffer.isBuffer(buf) || !buf.length) throw new Error("未取到 parquet 二进制内容");
     const { parquetReadObjects } = await import("hyparquet");
     const ab = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
@@ -135,17 +193,7 @@ class ArenaAgentSource extends BaseSource {
     if (!models.length) throw new Error("agent 子集未解析到有效条目");
     models.sort(byScoreName);
     models.forEach(function (m, i) { m.rank = i + 1; });         // 源内名次(原始条目;前端按 canonical 归并后重算)
-    mergeAnnounced(models);
-
-    // 官网转录种子可能比官方数据集快照更新;updated 取两者中最新的一天
-    const latest = models.reduce(function (d, m) { return (m.date && m.date > d) ? m.date : d; }, updated);
-    const sessions = models.reduce(function (s, m) { return s + (m.sessions || 0); }, 0);
-    const observations = models.reduce(function (s, m) { return s + (m.observations || 0); }, 0);
-    return {
-      models: models,
-      updated: latest,
-      stats: { models: models.length, sessions: sessions, observations: observations }
-    };
+    return { models: models, datasetUpdated: updated };
   }
   toStandard(parsed) {
     return normalizer.fromArray(this.cfg.id, parsed.models, function (m, idx) {
@@ -161,13 +209,11 @@ class ArenaAgentSource extends BaseSource {
       "// 数据源:LMArena Agent Arena(真实智能体会话的净提升榜,IPS/因果追踪口径)\n" +
       "// 官方榜:" + this.officialUrl + "(Cloudflare 防护,直抓 403)\n" +
       "// 官方数据集:" + this.datasetUrl + " · config=agent · split=latest\n" +
-      "// 主抓源:" + this.cfg.url + "\n" +
-      "// 备  源:" + this.fallbackUrl + "\n" +
+      "// 镜像:" + [this.cfg.url, this.fallbackUrl, this.mirrorUrl].join(" · ") + "(三源并行,按 leaderboard_publish_date 选最新批次)\n" +
+      "// 数据集批次:" + parsed.datasetUpdated + "(种子可能更新,updated=" + parsed.updated + ")\n" +
       "// 字段说明:score=净提升 %(IPS τ̂ × 100,可为负);ci=±95% 半宽(百分点);sessions=独立会话数;\n" +
       "//          observations=信号观测数;license=模型许可;srcRank=官方名次;rank=源内按净提升排序的名次\n" +
-      "// 补充:官网榜单 2026-10-23 转录 DeepSeek-V4.1-Flash-20261017 (Max) 4.37%±0.86%(34,721 场会话、\n" +
-      "//       总榜 #13);2026-11-14 转录 Gemini 4 Hydrogen (High) +14.8%(约 6,500 场会话、总榜 #5);\n" +
-      "//       官方数据集收录同名条目后自动去重。\n" +
+      "// 种子(仅在数据集缺该模型时启用,收录同名后自动去重):DeepSeek-V4.1-Flash-20261017、Qwen4-Max、Gemini 4 Hydrogen (High)\n" +
       "// 汇总口径:同一模型按推理强度分档多次上榜,前端按 canonical 取最高分那一条入榜。\n" +
       "// 用途:总览「第三方实测」组第 9 个计分组(权重 9%)与交叉矩阵单列。\n",
       {
@@ -176,6 +222,7 @@ class ArenaAgentSource extends BaseSource {
         datasetUrl: this.datasetUrl,
         url: this.cfg.url,
         updated: parsed.updated,
+        datasetUpdated: parsed.datasetUpdated,
         refreshedAt: CONFIG.REFRESHED_AT,
         version: "overall",
         metric: "Net improvement (%)",

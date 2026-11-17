@@ -131,11 +131,14 @@ module.exports = {
     arena_agent: {
       // Agent Arena(LMArena,arena.ai/leaderboard/agent):真实智能体会话的净提升榜。
       // 官方站有 Cloudflare 防护(直抓 403);官方发布排行榜数据集 lmarena-ai/leaderboard-dataset,
-      // agent 子集为 parquet(IPS 净提升、CI、会话数、观测数),主源取本机可达的 ModelScope 镜像,
-      // HF 同内容备源。⚠ 不用 m.aitntnews.com 的 HTML 快照:它丢失负分符号(见 sources/arena_agent.js)。
+      // agent 子集为 parquet(IPS 净提升、CI、会话数、观测数)。
+      // 镜像:ModelScope / Hugging Face / hf-mirror 三源并行抓取,按 leaderboard_publish_date
+      //   选最新批次 —— ModelScope 镜像可能滞后(2026-11-17 实测仍停 11-11,HF 已到 11-15),
+      //   不能只把它当主源、失败才切备源。⚠ 不用 m.aitntnews.com 的 HTML 快照:它丢失负分符号。
       // 渠道:数据集由榜单主办方 LM Arena 自己发布(T1 口径,无厂商发布渠道)。
       url: "https://modelscope.cn/api/v1/datasets/lmarena-ai/leaderboard-dataset/resolve/master/agent/latest-00000-of-00001.parquet",
       fallbackUrl: "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/resolve/main/agent/latest-00000-of-00001.parquet",
+      mirrorUrl: "https://hf-mirror.com/datasets/lmarena-ai/leaderboard-dataset/resolve/main/agent/latest-00000-of-00001.parquet",
       datasetUrl: "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
       officialUrl: "https://arena.ai/leaderboard/agent",
       host: "modelscope.cn", src: "selftest"
