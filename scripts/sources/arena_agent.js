@@ -49,7 +49,14 @@ const ANNOUNCED = [
   { name: "qwen4-max (xhigh)", org: "alibaba", license: "Proprietary",
     score: 7.5, ci: null, sessions: null, observations: null, srcRank: null,
     category: "overall", date: "2026-11-16", src: "qwen-official",
-    sourceUrl: "https://qwen.ai/blog?id=qwen4-max" }
+    sourceUrl: "https://qwen.ai/blog?id=qwen4-max" },
+  // Google 官方博客(2026-11-12)称 Gemini 4 Hydrogen (High) Agent Arena 排名第 5;
+  // Arena 榜单 2026-11-14 转录净提升 +14.8%、约 6,500 场真实智能体会话。
+  // 官方数据集 2026-11-11 快照尚未收录,先补缺,收录后自动去重。
+  { name: "gemini-4-hydrogen (high)", org: "google", license: "Proprietary",
+    score: 14.8, ci: null, sessions: 6500, observations: null, srcRank: 5,
+    category: "overall", date: "2026-11-14", src: "google-official",
+    sourceUrl: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" }
 ];
 
 // 去重键:忽略 effort 注解,把 20261017 与 1017 折叠为同一键;0910/1017 等构建号保持区分
@@ -159,7 +166,8 @@ class ArenaAgentSource extends BaseSource {
       "// 字段说明:score=净提升 %(IPS τ̂ × 100,可为负);ci=±95% 半宽(百分点);sessions=独立会话数;\n" +
       "//          observations=信号观测数;license=模型许可;srcRank=官方名次;rank=源内按净提升排序的名次\n" +
       "// 补充:官网榜单 2026-10-23 转录 DeepSeek-V4.1-Flash-20261017 (Max) 4.37%±0.86%(34,721 场会话、\n" +
-      "//       总榜 #13);官方数据集 2026-10-20 快照尚未收录,数据集收录同名条目后自动去重。\n" +
+      "//       总榜 #13);2026-11-14 转录 Gemini 4 Hydrogen (High) +14.8%(约 6,500 场会话、总榜 #5);\n" +
+      "//       官方数据集收录同名条目后自动去重。\n" +
       "// 汇总口径:同一模型按推理强度分档多次上榜,前端按 canonical 取最高分那一条入榜。\n" +
       "// 用途:总览「第三方实测」组第 9 个计分组(权重 9%)与交叉矩阵单列。\n",
       {

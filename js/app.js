@@ -312,14 +312,14 @@
   }
 
   // 对矩阵行执行 过滤(评测列去无值)+ 排序;返回新数组,不改原数据
-  // keepMissing:搜索态下按评测列排序时保留该列无值的行(显示「—」)并沉底 —— 搜到的模型不该
-  // 因为恰好缺这一榜就从结果里消失;非搜索态仍维持「按评测列排序只列有值模型」
+  // keepMissing:搜索态与「显示全部模型」下按评测列排序时保留该列无值的行(显示「—」)并沉底 ——
+  // 搜到/要求全量的模型不该因为恰好缺这一榜就从结果里消失;非搜索且非全量时仍维持「按评测列排序只列有值模型」
   function sortedMatrixRows(rows, keepMissing) {
     if (!state.sortKey) return rows; // null => 默认综合排序,沿用 CMP.matrix 原序
     var col = MATRIX_COLS.filter(function (c) { return c.key === state.sortKey; })[0];
     if (!col) return rows;
     var list = rows.slice();
-    // 评测列排序时仅保留该列有值的模型(搜索态除外)
+    // 评测列排序时仅保留该列有值的模型(搜索/显示全部时除外)
     if (col.bench && !keepMissing) list = list.filter(function (r) { return col.val(r) != null; });
     list.sort(function (a, b) {
       var va = col.val(a), vb = col.val(b);
@@ -498,20 +498,19 @@
     // 默认:排名行按综合分排序取前40;命中 2-3 榜的「参考」模型不计算综合分(展示为「—」),按在场各榜
     // 的榜内稳健标准分加权(与排名行综合分完全同口径:无豁免、无折减)比对落入相应名次间隔,
     // 仅在前40区间内混排计入(序号计「—」,不占前40名额),第 40 个排名行之后的行(含参考行)一律截断。
-    // 勾选「显示全部模型」:行集门槛降到 1 榜,展开全部在任一基准组有成绩的模型 —— 排名40之后的排名行、
-    // 全部「参考」行,以及命中 1 榜的「单榜」行(不计算综合分、不参与排名,统一排在末尾)。
-    // 单榜行是「显示全部」唯一必然生效的部分:排名行是否超过 40 个随数据浮动,而单榜行始终存在。
+    // 勾选「显示全部模型」:行集门槛降到 2 榜,展开全部命中≥2榜的模型(排名行 + 参考行);
+    // 命中 1 榜的单榜模型不展开,只在搜索态出现,避免单榜长尾淹没跨榜对比。
     // 搜索态:行集门槛同样降到 1 榜(命中 1 榜的模型也要能被搜到),再只保留命中查询的行 ——
     // 默认视图的前40/参考区间截断不生效,否则默认收起的目标模型搜不到。
     var query = String(state.searchQuery || "").trim();
     var tokens = searchTokens(query);
     var searching = tokens.length > 0;
-    var matrixRows = CMP.matrix(state.llmMonth, (state.showAll.overview || searching) ? 1 : 3);
+    var matrixRows = CMP.matrix(state.llmMonth, searching ? 1 : (state.showAll.overview ? 2 : 3));
     CMP.assignTiers(matrixRows.filter(function (r) { return r.benchCount >= 4; }));
     // 排名序号按 CMP.matrix 的默认排名序取:搜索结果里显示真实名次,而不是「第几个匹配」
     var rankById = {}, rankSeq = 0;
     matrixRows.forEach(function (r) { if (r.benchCount >= 4) rankById[r.id] = ++rankSeq; });
-    var allRows = sortedMatrixRows(matrixRows, searching);
+    var allRows = sortedMatrixRows(matrixRows, searching || state.showAll.overview);
     var rows = allRows;
     if (searching) {
       rows = allRows.filter(function (r) { return matchRow(r, tokens); });
@@ -564,7 +563,7 @@
     var html = rows.map(function (r) {
       // 参考行:命中 2-3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
       var inserted = r.benchCount >= 2 && r.benchCount <= 3;
-      // 单榜行:仅命中 1 个基准组,只在「显示全部模型」时出现,统一排在末尾,不排名、不计算综合分
+      // 单榜行:仅命中 1 个基准组,只在搜索态出现,不排名、不计算综合分
       var single = r.benchCount === 1;
       // 不参与排名的行(命中<4榜):梯队列与序号列均显示「—」
       var unranked = inserted || single;
@@ -662,7 +661,7 @@
       var cls = (r.benchCount >= 4 ? "row-hit " : "") + (inserted ? "row-two " : "") + (single ? "row-one " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
       var insertedBadge = inserted ? ' <span class="badge-two" title="命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前40区间内显示,勾选「显示全部模型」可见全部">参考</span>' : "";
-      var singleBadge = single ? ' <span class="badge-one" title="仅命中一榜:不计算综合分、不计排名,统一排在末尾;勾选下方「显示全部模型」可见">仅单榜</span>' : "";
+      var singleBadge = single ? ' <span class="badge-one" title="仅命中一榜:不计算综合分、不计排名,仅在搜索时展示;「显示全部模型」不展开单榜模型">仅单榜</span>' : "";
       // 前20名「最佳性价比」标记:只在排名行上出现
       var bestBadges = "";
       if (bestValueRow === r) {
@@ -785,14 +784,13 @@
     } else if (state.showAll.overview) {
       rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
       refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
-      singleCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
-      note = '当前显示全部 ' + rows.length + ' 个有成绩的模型:排名 ' + rankedCnt + ' · 参考 ' + refCnt + ' · 单榜 ' + singleCnt + '。\n' +
-        '命中 ≤3 榜的模型不计算综合分、不参与排名;参考行混排,单榜行置末。';
+      note = '当前显示全部 ' + rows.length + ' 个命中≥2榜的模型:排名 ' + rankedCnt + ' · 参考 ' + refCnt + '。\n' +
+        '命中 ≤3 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。';
     } else {
       refCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
       rankedCnt = rows.length - refCnt;
       note = '当前显示排名前 ' + rankedCnt + ' 的模型,以及 ' + refCnt + ' 个跻身前 40 区间的「参考」模型(命中 3 榜,不计算综合分、不排名)。\n' +
-        '其余参考模型与命中 ≤2 榜的模型,勾选「显示全部模型」查看。';
+        '其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。';
     }
     var statsEl = document.getElementById("matrixStats");
     if (statsEl) {
@@ -804,7 +802,7 @@
           '<span class="ms-rule">跨全部基准搜索</span>'
         : '<span>排名 <b>' + rankedCnt + '</b></span>' +
           '<span>参考 <b>' + refCnt + '</b></span>' +
-          (state.showAll.overview ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
+          (singleCnt ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
           '<span class="ms-rule">命中 ≥4 榜计分</span>';
     }
     if (state.highlightDomestic) {

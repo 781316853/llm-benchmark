@@ -55,7 +55,8 @@
     return above;
   }
   // 交叉矩阵排序(默认仅含命中≥2榜的模型;minHits=1 时把仅命中一榜的模型也带上;
-  // 总览页默认传 3 仅收命中≥3榜,勾选「显示全部模型」时传 1 收全部在任一基准组有成绩的模型):
+  // 总览页默认传 3 仅收命中≥3榜,勾选「显示全部模型」时传 2 收命中≥2榜的模型,
+  // 搜索态传 1 收全部在任一基准组有成绩的模型):
   // ① 排名行(命中≥4榜)先按综合分降序取基准序,再按「同档跨度 < 容差」划档(每行与档内首名比,
   //    故档内跨度恒 < 1.5),档内依次按 命中数 → 共榜净胜 → 综合分 → id 排序,最后编号 _posKey = 0,1,2…;
   //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),2026-09-24 起曾为 7(无机酸前端实测加入),
@@ -76,7 +77,7 @@
       .filter(function (e) { return e.benchCount >= floor; });
     var ranked = all.filter(function (e) { return e.benchCount >= 4; });
     var inserted = all.filter(function (e) { return e.benchCount >= 2 && e.benchCount <= 3; }); // 命中 2-3 榜:不参与名次、不计算综合分
-    var single = all.filter(function (e) { return e.benchCount === 1; });   // 单榜:仅「显示全部」时出现
+    var single = all.filter(function (e) { return e.benchCount === 1; });   // 单榜:仅搜索态出现
     // 基准序:综合分降序(同分依次 命中数降序 → id 升序兜底确定性),作为划档输入
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);

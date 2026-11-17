@@ -67,7 +67,7 @@
   <script defer src="data/llm2014.js?v=20260824a"></script>
   <script defer src="data/arena_webdev.js?v=20261116b"></script>
   <!-- Agent Arena(LMArena 真实智能体会话净提升;IPS 口径,可为负):计入总览综合分(权重 9%)与命中数 -->
-  <script defer src="data/arena_agent.js?v=20261116b"></script>
+  <script defer src="data/arena_agent.js?v=20261117a"></script>
   <!-- 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(权重 10%)与命中数,
        2026-10-16 起接替原 AI 能力专项测试的计分席位;并作为「亿模亿样」独立标签页的数据源) -->
   <script defer src="data/arenaofbias.js?v=20261116a"></script>
@@ -94,8 +94,8 @@
   <!-- 业务脚本 -->
   <script defer src="js/data.js?v=20261117a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
-  <script defer src="js/compare.js?v=20261116a"></script>
-  <script defer src="js/app.js?v=20261117b"></script>
+  <script defer src="js/compare.js?v=20261117a"></script>
+  <script defer src="js/app.js?v=20261117d"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261110a"></script>
   <!-- 意见反馈交互 -->
@@ -186,7 +186,7 @@
             </div>
             <div class="matrix-stats" id="matrixStats" aria-live="polite"></div>
             <div class="overview-switches">
-              <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前40的模型与跻身前40区间的「参考」模型;勾选可展开全部在任一基准组有成绩的模型(含「参考」与「仅单榜」行)"><input type="checkbox" id="ovShowAll"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
+              <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前40的模型与跻身前40区间的「参考」模型;勾选可展开全部命中≥2榜的模型(含排名行与「参考」行),仅命中1榜的模型请用搜索查看"><input type="checkbox" id="ovShowAll"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
               <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">高亮国产模型</span></label>
               <label class="switch switch-lg" title="默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)"><input type="checkbox" id="ovShowScore" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
             </div>
@@ -207,7 +207,7 @@
             <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
             <li><b class="note-term">榜内名次</b>「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮名次可见榜内上榜条目总数。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
-            <li><b class="note-term">行与徽标</b>绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,勾选「显示全部模型」才出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。</li>
+            <li><b class="note-term">行与徽标</b>绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,仅在搜索时出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。</li>
           </ul>
           <details class="notes-more">
             <summary>展开详细口径与数据来源</summary>

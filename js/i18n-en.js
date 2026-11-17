@@ -71,19 +71,19 @@
       "Best value in the top 20: composite $1 ÷ ¥$2/M = $3"],
 
     // ===== 总览:矩阵行数提示(app.js 拼装,数字随筛选变化) =====
-    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 40 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 ≤2 榜的模型,勾选「显示全部模型」查看。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 40 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
       function (m, ranked, ref, dom) {
         return "Showing the top " + ranked + " models plus " + ref + " “reference” " +
           (ref === "1" ? "model" : "models") + " inside the top-40 band (3 boards, no composite, unranked). " +
-          "Other reference models and models covering ≤2 boards are behind “Show all models”. " +
+          "Other reference models and models covering 2 boards are behind “Show all models”; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
           "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias and AI Coding Daily are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
       }],
-    ["^当前显示全部 (\\d+) 个有成绩的模型:排名 (\\d+) · 参考 (\\d+) · 单榜 (\\d+)。\\s*命中 ≤3 榜的模型不计算综合分、不参与排名;参考行混排,单榜行置末。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
-      function (m, total, ranked, ref, single, dom) {
-        return "Showing all " + total + " scoring models: ranked " + ranked + " · reference " + ref + " · single-board " + single + ". " +
-          "Models covering ≤3 boards get no composite and no rank; reference rows are interleaved and single-board rows go last. " +
+    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤3 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+      function (m, total, ranked, ref, dom) {
+        return "Showing all " + total + " models covering at least 2 boards: ranked " + ranked + " · reference " + ref + ". " +
+          "Models covering ≤3 boards get no composite and no rank; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
           "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias and AI Coding Daily are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
@@ -221,8 +221,8 @@
       }],
     ["^harness (.+?) · 成本 (.+?)/测试 · 耗时 (.+?)/测试$",
       "OpenHands harness · cost $1/test · latency $2/test"],
-    ["^仅命中一榜:不计算综合分、不计排名,统一排在末尾;勾选下方「显示全部模型」可见$",
-      "Single board only: no composite, no rank, always sorted last; tick “Show all models” to see it"],
+    ["^仅命中一榜:不计算综合分、不计排名,仅在搜索时展示;「显示全部模型」不展开单榜模型$",
+      "Single board only: no composite, no rank, shown only in search; “Show all models” does not expand single-board models"],
 
     // ===== 套餐页「包含」清单(模型名保留原文,顿号改逗号) =====
     ["^包含：(.+)$", function (m, list) {
@@ -389,8 +389,8 @@
         "In the “Third-party tests” group, the #N before each value is the model's actual position on that board (taken from the source leaderboard; WebDev has no source rank, so ties are ranked by raw entry Elo). Hover the rank to see the board's total entry count.",
       "综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。":
         "Composite ÷ blended cost per million tokens (95% cached input + 4.5% input + 0.5% output; prices taken from codingplan.fyi first, with missing prices for ranked models filled from models.dev). Computed only for ranked models covering at least 4 boards.",
-      "绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,勾选「显示全部模型」才出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。":
-        "Green background = ranked model; blue-grey with “Ref” = covers 2–3 boards, shown inline but not ranked; pale grey with “Single” = covers 1 board, only appears when “Show all models” is ticked; NEW = first appeared within the last 7 days; “Best value” marks the highest value index among the top-20 ranked rows only (reference and single-board rows excluded).",
+      "绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,仅在搜索时出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。":
+        "Green background = ranked model; blue-grey with “Ref” = covers 2–3 boards, shown inline but not ranked; pale grey with “Single” = covers 1 board, shown only in search; NEW = first appeared within the last 7 days; “Best value” marks the highest value index among the top-20 ranked rows only (reference and single-board rows excluded).",
       "DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · Agent Arena 9%(合计 0.92,按在场榜归一;缺测权重回流)。":
         "DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · Arena of Bias 10% · AI Coding Daily 8% · Agent Arena 9% (sums to 0.92 and is renormalized over the boards present; missing weights flow back).",
       "DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70。":
@@ -434,8 +434,8 @@
       "搜索模型或厂商…": "Search models or vendors…",
       "搜索交叉模型矩阵中的模型或厂商": "Search models or vendors in the cross-benchmark matrix",
       "清空搜索": "Clear search",
-      "默认显示命中≥4个基准组且排名前40的模型与跻身前40区间的「参考」模型;勾选可展开全部在任一基准组有成绩的模型(含「参考」与「仅单榜」行)":
-        "By default shows models covering at least 4 benchmark groups and ranked in the top 40, plus “reference” models inside that range. Tick to expand to every model with a score in any benchmark group (including “reference” and “single-board” rows).",
+      "默认显示命中≥4个基准组且排名前40的模型与跻身前40区间的「参考」模型;勾选可展开全部命中≥2榜的模型(含排名行与「参考」行),仅命中1榜的模型请用搜索查看":
+        "By default shows models covering at least 4 benchmark groups and ranked in the top 40, plus “reference” models inside that range. Tick to expand to every model covering at least 2 boards (ranked and “reference” rows); 1-board models are search-only.",
       "显示全部模型": "Show all models",
       "勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型":
         "Highlight models from Chinese vendors (Zhipu / Moonshot / DeepSeek / Alibaba / Tencent / MiniMax / ByteDance / Xiaomi).",

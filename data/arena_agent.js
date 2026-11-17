@@ -6,7 +6,8 @@
 // 字段说明:score=净提升 %(IPS τ̂ × 100,可为负);ci=±95% 半宽(百分点);sessions=独立会话数;
 //          observations=信号观测数;license=模型许可;srcRank=官方名次;rank=源内按净提升排序的名次
 // 补充:官网榜单 2026-10-23 转录 DeepSeek-V4.1-Flash-20261017 (Max) 4.37%±0.86%(34,721 场会话、
-//       总榜 #13);官方数据集 2026-10-20 快照尚未收录,数据集收录同名条目后自动去重。
+//       总榜 #13);2026-11-14 转录 Gemini 4 Hydrogen (High) +14.8%(约 6,500 场会话、总榜 #5);
+//       官方数据集收录同名条目后自动去重。
 // 汇总口径:同一模型按推理强度分档多次上榜,前端按 canonical 取最高分那一条入榜。
 // 用途:总览「第三方实测」组第 9 个计分组(权重 9%)与交叉矩阵单列。
 window.ARENA_AGENT = {
@@ -15,13 +16,13 @@ window.ARENA_AGENT = {
   'datasetUrl': 'https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset',
   'url': 'https://modelscope.cn/api/v1/datasets/lmarena-ai/leaderboard-dataset/resolve/master/agent/latest-00000-of-00001.parquet',
   'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'refreshedAt': '2026-11-17 09:41',
   'version': 'overall',
   'metric': 'Net improvement (%)',
   'desc': 'LMArena Agent Arena:以 IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的净提升,可为负;另记 95% 区间、独立会话数与会话内信号观测数。分数为社区真实使用数据,不是固定题库的通过率。',
   'stats': {
-    'models': 60,
-    'sessions': 2810198,
+    'models': 61,
+    'sessions': 2816698,
     'observations': 346889668
   },
   'models': [
@@ -91,6 +92,21 @@ window.ARENA_AGENT = {
       'rank': 5
     },
     {
+      'name': 'gemini-4-hydrogen (high)',
+      'org': 'google',
+      'license': 'Proprietary',
+      'score': 14.8,
+      'ci': null,
+      'sessions': 6500,
+      'observations': null,
+      'srcRank': 5,
+      'category': 'overall',
+      'date': '2026-11-14',
+      'src': 'google-official',
+      'sourceUrl': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/',
+      'rank': 6
+    },
+    {
       'name': 'GPT-6 Astra (Max)',
       'org': 'openai',
       'license': 'Proprietary',
@@ -101,7 +117,7 @@ window.ARENA_AGENT = {
       'srcRank': 6,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 6
+      'rank': 7
     },
     {
       'name': 'GPT-6.1 Sol (Max)',
@@ -114,7 +130,7 @@ window.ARENA_AGENT = {
       'srcRank': 7,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 7
+      'rank': 8
     },
     {
       'name': 'GPT-6.1 Terra (Max)',
@@ -127,7 +143,7 @@ window.ARENA_AGENT = {
       'srcRank': 8,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 8
+      'rank': 9
     },
     {
       'name': 'Gemini 4 Argon (High)',
@@ -140,7 +156,7 @@ window.ARENA_AGENT = {
       'srcRank': 9,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 9
+      'rank': 10
     },
     {
       'name': 'Muse Wonder Full (Max)',
@@ -153,7 +169,7 @@ window.ARENA_AGENT = {
       'srcRank': 10,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 10
+      'rank': 11
     },
     {
       'name': 'qwen4-max (xhigh)',
@@ -168,7 +184,7 @@ window.ARENA_AGENT = {
       'date': '2026-11-16',
       'src': 'qwen-official',
       'sourceUrl': 'https://qwen.ai/blog?id=qwen4-max',
-      'rank': 11
+      'rank': 12
     },
     {
       'name': 'Claude Fable 5 (High)',
@@ -181,7 +197,7 @@ window.ARENA_AGENT = {
       'srcRank': 11,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 12
+      'rank': 13
     },
     {
       'name': 'Claude Opus 5 (Max)',
@@ -194,7 +210,7 @@ window.ARENA_AGENT = {
       'srcRank': 12,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 13
+      'rank': 14
     },
     {
       'name': 'GPT-6 Sol (Max)',
@@ -207,7 +223,7 @@ window.ARENA_AGENT = {
       'srcRank': 13,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 14
+      'rank': 15
     },
     {
       'name': 'Hy4',
@@ -220,7 +236,7 @@ window.ARENA_AGENT = {
       'srcRank': 14,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 15
+      'rank': 16
     },
     {
       'name': 'Kimi K3.1 Pro (Max)',
@@ -233,7 +249,7 @@ window.ARENA_AGENT = {
       'srcRank': 15,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 16
+      'rank': 17
     },
     {
       'name': 'GPT-5.6 Sol (xHigh)',
@@ -246,7 +262,7 @@ window.ARENA_AGENT = {
       'srcRank': 16,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 17
+      'rank': 18
     },
     {
       'name': 'Grok 4.7 (xHigh)',
@@ -259,7 +275,7 @@ window.ARENA_AGENT = {
       'srcRank': 17,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 18
+      'rank': 19
     },
     {
       'name': 'Inkling 2 Small',
@@ -272,7 +288,7 @@ window.ARENA_AGENT = {
       'srcRank': 18,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 19
+      'rank': 20
     },
     {
       'name': 'MiMo-V2.6-Pro',
@@ -285,7 +301,7 @@ window.ARENA_AGENT = {
       'srcRank': 19,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 20
+      'rank': 21
     },
     {
       'name': 'Gemini 3.8 Flash (High)',
@@ -298,7 +314,7 @@ window.ARENA_AGENT = {
       'srcRank': 20,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 21
+      'rank': 22
     },
     {
       'name': 'Muse Spark 1.3 (Max)',
@@ -311,7 +327,7 @@ window.ARENA_AGENT = {
       'srcRank': 21,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 22
+      'rank': 23
     },
     {
       'name': 'Claude Sonnet 5 (High)',
@@ -324,7 +340,7 @@ window.ARENA_AGENT = {
       'srcRank': 23,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 23
+      'rank': 24
     },
     {
       'name': 'DeepSeek-V4.1-Flash-20261017 (Max)',
@@ -337,7 +353,7 @@ window.ARENA_AGENT = {
       'srcRank': 22,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 24
+      'rank': 25
     },
     {
       'name': 'Muse Wonder (Max)',
@@ -350,7 +366,7 @@ window.ARENA_AGENT = {
       'srcRank': 24,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 25
+      'rank': 26
     },
     {
       'name': 'Muse Ember (Max)',
@@ -363,7 +379,7 @@ window.ARENA_AGENT = {
       'srcRank': 25,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 26
+      'rank': 27
     },
     {
       'name': 'GPT-6 Luna (Max)',
@@ -376,7 +392,7 @@ window.ARENA_AGENT = {
       'srcRank': 26,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 27
+      'rank': 28
     },
     {
       'name': 'GLM-5.3 (Max)',
@@ -389,7 +405,7 @@ window.ARENA_AGENT = {
       'srcRank': 27,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 28
+      'rank': 29
     },
     {
       'name': 'Kimi K3 (Max)',
@@ -402,7 +418,7 @@ window.ARENA_AGENT = {
       'srcRank': 28,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 29
+      'rank': 30
     },
     {
       'name': 'Claude Haiku 5.5 (High)',
@@ -415,7 +431,7 @@ window.ARENA_AGENT = {
       'srcRank': 29,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 30
+      'rank': 31
     },
     {
       'name': 'Hy4 preview',
@@ -428,7 +444,7 @@ window.ARENA_AGENT = {
       'srcRank': 30,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 31
+      'rank': 32
     },
     {
       'name': 'GLM-5.2 (Max)',
@@ -441,7 +457,7 @@ window.ARENA_AGENT = {
       'srcRank': 31,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 32
+      'rank': 33
     },
     {
       'name': 'Qwen3.8-Max',
@@ -454,7 +470,7 @@ window.ARENA_AGENT = {
       'srcRank': 32,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 33
+      'rank': 34
     },
     {
       'name': 'MiMo-V2.6-Flash',
@@ -467,7 +483,7 @@ window.ARENA_AGENT = {
       'srcRank': 33,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 34
+      'rank': 35
     },
     {
       'name': 'Grok 4.6 (xHigh)',
@@ -480,7 +496,7 @@ window.ARENA_AGENT = {
       'srcRank': 34,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 35
+      'rank': 36
     },
     {
       'name': 'GPT-5.6 Terra (xHigh)',
@@ -493,7 +509,7 @@ window.ARENA_AGENT = {
       'srcRank': 35,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 36
+      'rank': 37
     },
     {
       'name': 'GPT-6 Luna (Medium)',
@@ -506,7 +522,7 @@ window.ARENA_AGENT = {
       'srcRank': 36,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 37
+      'rank': 38
     },
     {
       'name': 'Gemini 3.7 Flash (High)',
@@ -519,7 +535,7 @@ window.ARENA_AGENT = {
       'srcRank': 37,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 38
+      'rank': 39
     },
     {
       'name': 'MiniMax-M3.1-Flash',
@@ -532,7 +548,7 @@ window.ARENA_AGENT = {
       'srcRank': 38,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 39
+      'rank': 40
     },
     {
       'name': 'GLM-5.3-Flash',
@@ -545,7 +561,7 @@ window.ARENA_AGENT = {
       'srcRank': 39,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 40
+      'rank': 41
     },
     {
       'name': 'Step 5 Preview',
@@ -558,7 +574,7 @@ window.ARENA_AGENT = {
       'srcRank': 40,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 41
+      'rank': 42
     },
     {
       'name': 'Gemini 3.1 Pro Preview',
@@ -571,7 +587,7 @@ window.ARENA_AGENT = {
       'srcRank': 41,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 42
+      'rank': 43
     },
     {
       'name': 'Qwen3.8-Flash-Next',
@@ -584,7 +600,7 @@ window.ARENA_AGENT = {
       'srcRank': 42,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 43
+      'rank': 44
     },
     {
       'name': 'Qwen3.8-27B',
@@ -597,7 +613,7 @@ window.ARENA_AGENT = {
       'srcRank': 43,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 44
+      'rank': 45
     },
     {
       'name': 'Mistral Large 4',
@@ -610,7 +626,7 @@ window.ARENA_AGENT = {
       'srcRank': 44,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 45
+      'rank': 46
     },
     {
       'name': 'Beam 1.0 501B A23B',
@@ -623,7 +639,7 @@ window.ARENA_AGENT = {
       'srcRank': 45,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 46
+      'rank': 47
     },
     {
       'name': 'GPT-6 Luna (Low)',
@@ -636,7 +652,7 @@ window.ARENA_AGENT = {
       'srcRank': 46,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 47
+      'rank': 48
     },
     {
       'name': 'Qwen3.7-Max',
@@ -649,7 +665,7 @@ window.ARENA_AGENT = {
       'srcRank': 47,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 48
+      'rank': 49
     },
     {
       'name': 'Hy3',
@@ -662,7 +678,7 @@ window.ARENA_AGENT = {
       'srcRank': 48,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 49
+      'rank': 50
     },
     {
       'name': 'Qwen3.7-Plus',
@@ -675,7 +691,7 @@ window.ARENA_AGENT = {
       'srcRank': 49,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 50
+      'rank': 51
     },
     {
       'name': 'Muse Spark 1.1',
@@ -688,7 +704,7 @@ window.ARENA_AGENT = {
       'srcRank': 50,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 51
+      'rank': 52
     },
     {
       'name': 'Muse Spark 1.2 (xHigh)',
@@ -701,7 +717,7 @@ window.ARENA_AGENT = {
       'srcRank': 51,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 52
+      'rank': 53
     },
     {
       'name': 'MiniMax-M3',
@@ -714,7 +730,7 @@ window.ARENA_AGENT = {
       'srcRank': 52,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 53
+      'rank': 54
     },
     {
       'name': 'Spark-X2.6',
@@ -727,7 +743,7 @@ window.ARENA_AGENT = {
       'srcRank': 53,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 54
+      'rank': 55
     },
     {
       'name': 'Mistral Medium 3.5',
@@ -740,7 +756,7 @@ window.ARENA_AGENT = {
       'srcRank': 54,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 55
+      'rank': 56
     },
     {
       'name': 'Nemotron 3 Ultra',
@@ -753,7 +769,7 @@ window.ARENA_AGENT = {
       'srcRank': 55,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 56
+      'rank': 57
     },
     {
       'name': 'NVIDIA-Nemotron-3.5-Super-VL-120B-A12B (NVFP4)',
@@ -766,7 +782,7 @@ window.ARENA_AGENT = {
       'srcRank': 56,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 57
+      'rank': 58
     },
     {
       'name': 'Inkling',
@@ -779,7 +795,7 @@ window.ARENA_AGENT = {
       'srcRank': 57,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 58
+      'rank': 59
     },
     {
       'name': 'Inkling-Small',
@@ -792,7 +808,7 @@ window.ARENA_AGENT = {
       'srcRank': 58,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 59
+      'rank': 60
     },
     {
       'name': 'Solar Pro 4',
@@ -805,7 +821,7 @@ window.ARENA_AGENT = {
       'srcRank': 59,
       'category': 'overall',
       'date': '2026-11-11',
-      'rank': 60
+      'rank': 61
     }
   ]
 };
