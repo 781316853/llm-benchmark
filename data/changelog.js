@@ -8,7 +8,7 @@
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-17',
-  'refreshedAt': '2026-11-17 16:14',
+  'refreshedAt': '2026-11-18 05:10',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '0.170.0-alpha.4.1',
@@ -31,6 +31,16 @@ window.CHANGELOG = {
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.1',
           'body': '0.170.0-alpha.4.1 版本',
           'h': '7253ad8b'
+        },
+        {
+          'version': '0.169.1',
+          'title': 'rust-v0.169.1',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T21:05:52Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.1',
+          'body': '0.169.1 版本',
+          'h': 'c8a4940c'
         },
         {
           'version': '0.169.0',
@@ -1388,7 +1398,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '2.1.326',
@@ -3786,7 +3796,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '1.19.6',
@@ -9328,8 +9338,28 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
+        {
+          'version': '2.6.3',
+          'title': '@moonshot-ai/kimi-code@2.6.3',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T15:15:21Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.3',
+          'body': '### Patch Changes\n\n- [#4994](https://github.com/MoonshotAI/kimi-code/pull/4994) [`2016917`](https://github.com/MoonshotAI/kimi-code/commit/20169174c815ada19093bc687b1433ef8b52f8f9) Thanks [@sailist](https://github.com/sailist)! - 修复前台 Shell 命令输出重复且加载状态不消失的问题。\n\n- [#4982](https://github.com/MoonshotAI/kimi-code/pull/4982) [`9d7f9af`](https://github.com/MoonshotAI/kimi-code/commit/9d7f9af9fba7d1282873a31ec8486f9ea956c591) Thanks [@sailist](https://github.com/sailist)! - 修复了若干已知的问题。\n\n- [#4999](https://github.com/MoonshotAI/kimi-code/pull/4999) [`9bf2891`](https://github.com/MoonshotAI/kimi-code/commit/9bf2891bc629bd0fa6b826b7c10762e4a45765be) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - 修复 Windows 上 WebBridge 守护进程运行时无法更新的问题。\n\n- [#4995](https://github.com/MoonshotAI/kimi-code/pull/4995) [`f6996a9`](https://github.com/MoonshotAI/kimi-code/commit/f6996a9292cd970491247d00783f18e92991f417) Thanks [@sailist](https://github.com/sailist)! - 修复每轮回复完成后外部 Stop 钩子未执行的问题。\n\n- [#4989](https://github.com/MoonshotAI/kimi-code/pull/4989) [`9c75e5a`](https://github.com/MoonshotAI/kimi-code/commit/9c75e5aa97e6720add1f7e5833d5b31d99bb25c4) Thanks [@sailist](https://github.com/sailist)! - 修复恢复或创建会话分支时后台任务通知意外触发新回复的问题。\n\n- [#4992](https://github.com/MoonshotAI/kimi-code/pull/4992) [`0617b20`](https://github.com/MoonshotAI/kimi-code/commit/0617b20ce76cd4aaf6be8c8b6093b424833e2746) Thanks [@sailist](https://github.com/sailist)! - 修复后台通知导致 Tower 任务意外停止的问题。',
+          'h': '97f510d8'
+        },
+        {
+          'version': '2.6.3',
+          'title': '@moonshot-ai/kimi-code@2.6.3',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T15:28:26Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.3',
+          'body': 'Patch Changes\n#4994 2016917 Thanks @sailist ! - 修复前台 Shell 命令输出重复且加载状态不消失的问题。\n#4982 9d7f9af Thanks @sailist ! - 修复了若干已知的问题。\n#4999 9bf2891 Thanks @kimi-agent-bot ! - 修复 Windows 上 WebBridge 守护进程运行时无法更新的问题。\n#4995 f6996a9 Thanks @sailist ! - 修复每轮回复完成后外部 Stop 钩子未执行的问题。\n#4989 9c75e5a Thanks @sailist ! - 修复恢复或创建会话分支时后台任务通知意外触发新回复的问题。\n#4992 0617b20 Thanks @sailist ! - 修复后台通知导致 Tower 任务意外停止的问题。',
+          'h': '3d37fa8'
+        },
         {
           'version': '2.6.2',
           'title': '@moonshot-ai/kimi-code@2.6.2',
@@ -10537,8 +10567,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
+        {
+          'version': '0.2.2-rc.4',
+          'title': 'v0.2.2-rc.4',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T17:53:41Z',
+          'tags': [
+            '问题修复',
+            'Bug Fixes'
+          ],
+          'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.4',
+          'body': '问题修复\n\n- 优化模型请求收到异常消息响应时的表现。 @turtle2099\n- 修复 LiveShare 在桌面端无法创建分享的问题。 @mektpoy\n\nBug Fixes\n\n- Improve handling of unexpected model responses. by @turtle2099\n- Fix LiveShare failing to create shares in the desktop app. by @mektpoy\n\nFull Changelog: https://github.com/deepseek-ai/deepseek-harness/compare/dsh-v0.2.2-rc.3...dsh-v0.2.2-rc.4'
+        },
         {
           'version': '0.2.2-rc.3',
           'title': 'v0.2.2-rc.3',
@@ -11151,8 +11193,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
+        {
+          'version': '0.5.14',
+          'title': '日常优化',
+          'date': '2026-11-17',
+          'dateRaw': '2026年11月17日',
+          'tags': [
+            '日常优化',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '日常优化\n修复\n- 修复模型校验问题。\n2026年11月16日'
+        },
         {
           'version': '0.5.13',
           'title': '日常优化',
@@ -11591,7 +11645,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '1.40.1',
@@ -12263,7 +12317,7 @@ window.CHANGELOG = {
             '功能更新'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lcb\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\'
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lca\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\\'config\\\':\\\'$3:props:config\\\',\\\'prev\\\':null,\\\'next\\\':null,\\\'basePath\\\':\\\'\\\'}]\\nc2:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'AI 会话体验优化：\\\'}]\\nc3:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化输入框超出字数上限时的交互，超出部分将自动转换为文件附件。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持更高效地折叠冗长会话流。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化触发同步时的压缩策略，减少额外开销并提升处理效率。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化新会话首次发送消息的等待时间，提升首次交互响应速度。\\\'}],\\\'\\\\n\\\']}]\\nc4:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'memory-system-self-evolution\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc5:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'记忆系统自进化：\\\'}]\\nc6:[\\\'$\\\',\\\'span\\\',null,{\\\'data-as\\\':\\\'p\\\',\\\'children\\\':\\\'上下文理解更精准、长期记忆更持久；优化记忆生命周期管理与多维追踪，个性化响应更连贯。\\\'}]\\nc7:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'performance-and-stability\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc8:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'性能与稳定性：\\\'}]\\nc9:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':[[\\\'$\\\',\\\'strong\\\',null,{\\\'children\\\':\\\'桌面端架构\\\''
         }
       ]
     },
@@ -12275,7 +12329,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '3.4.18',
@@ -14401,7 +14455,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14588,7 +14642,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '3.18.2',
@@ -14779,7 +14833,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '4.12.4',
@@ -15674,7 +15728,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 16:14',
+      'lastOkAt': '2026-11-18 05:10',
       'entries': [
         {
           'version': '5.11.3',

@@ -14,15 +14,27 @@ window.TBENCH = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
   'updated': '2026-11-17',
-  'refreshedAt': '2026-11-17 16:14',
+  'refreshedAt': '2026-11-18 05:10',
   'stats': {
     'tasks': 66,
-    'entries': 105
+    'entries': 106
   },
   'desc': 'Terminal-Bench 4.0:在真实命令行环境中评测编码 Agent(66 个任务,校准了时间/CPU/内存资源并移除饱和任务),按 agent×model 组合计分,解决率越高越好。',
   'models': [
     {
       'rank': 1,
+      'model': 'Copilot Fusion',
+      'agent': 'GitHub Copilot',
+      'effort': 'max',
+      'score': 71.2,
+      'ci': 2.9,
+      'date': 'Nov 17, 2026',
+      'tokens': '3.3B',
+      'cost': '$2.0k',
+      'src': 'official'
+    },
+    {
+      'rank': 2,
       'model': 'Opus 5.5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -34,7 +46,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 1,
+      'rank': 2,
       'model': 'Fable 5.2',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -46,7 +58,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 3,
+      'rank': 4,
       'model': 'Gemini 4 Carbon',
       'agent': 'Antigravity CLI',
       'effort': 'high',
@@ -58,7 +70,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 4,
+      'rank': 5,
       'model': 'Sonnet 5.5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -70,7 +82,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 5,
+      'rank': 6,
       'model': 'GPT-6.1 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -82,7 +94,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 6,
+      'rank': 7,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'max',
@@ -94,7 +106,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 7,
+      'rank': 8,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'high',
@@ -106,7 +118,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 8,
+      'rank': 9,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'xhigh',
@@ -118,7 +130,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 8,
+      'rank': 9,
       'model': 'Kimi K3.1 Pro',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -130,7 +142,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 10,
+      'rank': 11,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'xhigh',
@@ -142,7 +154,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 11,
+      'rank': 12,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -154,7 +166,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 12,
+      'rank': 13,
       'model': 'Gemini 4 Hydrogen',
       'agent': 'Antigravity CLI',
       'effort': 'high',
@@ -166,7 +178,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 13,
+      'rank': 14,
       'model': 'Gemini 4 Argon',
       'agent': 'Antigravity CLI',
       'effort': 'high',
@@ -178,7 +190,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 14,
+      'rank': 15,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'medium',
@@ -190,7 +202,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 15,
+      'rank': 16,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'high',
@@ -202,7 +214,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 16,
+      'rank': 17,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'medium',
@@ -214,7 +226,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 17,
+      'rank': 18,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'xhigh',
@@ -226,7 +238,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 17,
+      'rank': 18,
       'model': 'GPT-6.1 Terra',
       'agent': 'Codex',
       'effort': 'max',
@@ -238,7 +250,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 19,
+      'rank': 20,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -250,7 +262,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 20,
+      'rank': 21,
       'model': 'GPT-6 Astra',
       'agent': 'Codex',
       'effort': 'low',
@@ -262,7 +274,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 21,
+      'rank': 22,
       'model': 'GPT-6 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -274,7 +286,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 22,
+      'rank': 23,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'high',
@@ -286,7 +298,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 23,
+      'rank': 24,
       'model': 'Muse Wonder',
       'agent': 'Muse Code',
       'effort': 'xhigh',
@@ -298,7 +310,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 24,
+      'rank': 25,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'medium',
@@ -310,7 +322,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 25,
+      'rank': 26,
       'model': 'Fable 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -322,7 +334,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'Fable 5.1',
       'agent': 'Claude Code',
       'effort': 'low',
@@ -334,7 +346,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 27,
+      'rank': 28,
       'model': 'GLM-5.3',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -346,7 +358,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 28,
+      'rank': 29,
       'model': 'Haiku 5.5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -358,7 +370,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'Grok 4.7',
       'agent': 'Grok Build',
       'effort': 'xhigh',
@@ -370,7 +382,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 30,
+      'rank': 31,
       'model': 'GPT-5.6 Sol',
       'agent': 'Codex',
       'effort': 'max',
@@ -382,7 +394,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 30,
+      'rank': 31,
       'model': 'DeepSeek V4.1 Flash 1017',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -394,7 +406,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 32,
+      'rank': 33,
       'model': 'Hy4',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -406,7 +418,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 33,
+      'rank': 34,
       'model': 'GLM-5.3-Flash',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -418,7 +430,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 34,
+      'rank': 35,
       'model': 'GLM-5.3-Flash',
       'agent': 'Claude Code',
       'effort': 'none',
@@ -430,7 +442,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 35,
+      'rank': 36,
       'model': 'Opus 5',
       'agent': 'Claude Code',
       'effort': 'low',
@@ -442,7 +454,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 36,
+      'rank': 37,
       'model': 'Muse Ember',
       'agent': 'Muse Code',
       'effort': 'xhigh',
@@ -454,7 +466,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 37,
+      'rank': 38,
       'model': 'Mistral Large 4',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -466,7 +478,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 38,
+      'rank': 39,
       'model': 'Qwen3.8-Max-0902',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -478,7 +490,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 38,
+      'rank': 39,
       'model': 'MiMo V2.6 Pro',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -490,7 +502,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 40,
+      'rank': 41,
       'model': 'Opus 4.8',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -502,7 +514,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 41,
+      'rank': 42,
       'model': 'Kimi K3',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -514,7 +526,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 42,
+      'rank': 43,
       'model': 'Ember-1',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -526,7 +538,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 43,
+      'rank': 44,
       'model': 'GPT-5.6 Terra',
       'agent': 'Codex',
       'effort': 'max',
@@ -538,7 +550,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 44,
+      'rank': 45,
       'model': 'Grok 4.6',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -550,7 +562,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 45,
+      'rank': 46,
       'model': 'Hy4 Preview',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -562,7 +574,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 46,
+      'rank': 47,
       'model': 'Gemini 3.8 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -574,7 +586,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 47,
+      'rank': 48,
       'model': 'GPT-5.6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -586,7 +598,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 48,
+      'rank': 49,
       'model': 'MiMo V2.6 Flash',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -598,7 +610,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 49,
+      'rank': 50,
       'model': 'GPT-6 Luna',
       'agent': 'Codex',
       'effort': 'max',
@@ -610,7 +622,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'Muse Spark 1.3',
       'agent': 'Muse Code',
       'effort': 'xhigh',
@@ -622,7 +634,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 51,
+      'rank': 52,
       'model': 'Inkling Small 2',
       'agent': 'mini-swe-agent',
       'effort': 'xhigh',
@@ -634,7 +646,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'Gemini 3.7 Flash',
       'agent': 'mini-SWE-agent',
       'effort': 'high',
@@ -646,7 +658,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'Grok 4.5',
       'agent': 'Grok Build',
       'effort': 'high',
@@ -658,7 +670,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 54,
+      'rank': 55,
       'model': 'Sonnet 5',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -670,7 +682,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 55,
+      'rank': 56,
       'model': 'MiniMax M3',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -682,7 +694,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 56,
+      'rank': 57,
       'model': 'DeepSeek V4 Pro 0813',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -694,7 +706,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 57,
+      'rank': 58,
       'model': 'Beam 1.0',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -706,7 +718,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 58,
+      'rank': 59,
       'model': 'Gemini 3.1 Pro',
       'agent': 'Antigravity CLI',
       'effort': 'high',
@@ -718,7 +730,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 59,
+      'rank': 60,
       'model': 'GPT-5.4 Mini',
       'agent': 'Codex',
       'effort': 'xhigh',
@@ -730,7 +742,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 60,
+      'rank': 61,
       'model': 'Inkling Small',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -742,7 +754,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 61,
+      'rank': 62,
       'model': 'Nemotron 3.5 Super VL',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -754,7 +766,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 62,
+      'rank': 63,
       'model': 'Inkling',
       'agent': 'mini-swe-agent',
       'effort': 'none',

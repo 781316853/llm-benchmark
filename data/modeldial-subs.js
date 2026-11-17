@@ -12,7 +12,7 @@ window.MODELDIAL_SUBS = {
   'license': '见源站;引用请标注 ModelDial',
   'updated': '2026-11-17',
   'sourceUpdated': '2026-11-13',
-  'refreshedAt': '2026-11-17 16:14',
+  'refreshedAt': '2026-11-18 05:10',
   'usdToCnyRate': 6.8,
   'monthlyFactorWeek': 4.333,
   'cacheRatios': [

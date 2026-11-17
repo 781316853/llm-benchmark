@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 51,
+      'modelCount': 53,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 1,
@@ -34,7 +34,7 @@ window.QUALITY = {
       'id': 'apex',
       'name': 'APEX-1',
       'status': 'ok',
-      'modelCount': 78,
+      'modelCount': 80,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 1,
@@ -155,7 +155,7 @@ window.QUALITY = {
       'id': 'frontiercode',
       'name': 'FrontierCode',
       'status': 'ok',
-      'modelCount': 32,
+      'modelCount': 34,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 1,
@@ -188,7 +188,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 53,
+      'modelCount': 55,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 1,
@@ -199,7 +199,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 132,
+      'modelCount': 133,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 0,
@@ -254,7 +254,7 @@ window.QUALITY = {
       'id': 'tbench',
       'name': 'Terminal-Bench 4.0',
       'status': 'ok',
-      'modelCount': 105,
+      'modelCount': 106,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 1,
@@ -309,7 +309,7 @@ window.QUALITY = {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
-      'modelCount': 129,
+      'modelCount': 132,
       'updated': '2026-11-17',
       'ageDays': 0,
       'completeness': 1,
@@ -934,17 +934,17 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 51,
-      'complete': 51,
-      'modelCount': 51,
+      'total': 53,
+      'complete': 53,
+      'modelCount': 53,
       'missingFields': {},
       'flag': 'ok'
     },
     'apex': {
       'rate': 1,
-      'total': 78,
-      'complete': 78,
-      'modelCount': 78,
+      'total': 80,
+      'complete': 80,
+      'modelCount': 80,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1032,9 +1032,9 @@ window.QUALITY = {
     },
     'frontiercode': {
       'rate': 1,
-      'total': 32,
-      'complete': 32,
-      'modelCount': 32,
+      'total': 34,
+      'complete': 34,
+      'modelCount': 34,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1056,19 +1056,19 @@ window.QUALITY = {
     },
     'lastexam': {
       'rate': 1,
-      'total': 53,
-      'complete': 53,
-      'modelCount': 53,
+      'total': 55,
+      'complete': 55,
+      'modelCount': 55,
       'missingFields': {},
       'flag': 'ok'
     },
     'llm2014': {
       'rate': 0,
-      'total': 132,
+      'total': 133,
       'complete': 0,
-      'modelCount': 132,
+      'modelCount': 133,
       'missingFields': {
-        'score': 132
+        'score': 133
       },
       'flag': 'warn'
     },
@@ -1108,9 +1108,9 @@ window.QUALITY = {
     },
     'tbench': {
       'rate': 1,
-      'total': 105,
-      'complete': 105,
-      'modelCount': 105,
+      'total': 106,
+      'complete': 106,
+      'modelCount': 106,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1148,9 +1148,9 @@ window.QUALITY = {
     },
     'vals_vibe_code': {
       'rate': 1,
-      'total': 129,
-      'complete': 129,
-      'modelCount': 129,
+      'total': 132,
+      'complete': 132,
+      'modelCount': 132,
       'missingFields': {},
       'flag': 'ok'
     }

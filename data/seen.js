@@ -379,6 +379,8 @@ window.SEEN = {
     'tbench|Nemotron 3 Ultra': '2026-11-17',
     'tbench|Hy3': '2026-11-17',
     'tbench|Nemotron 3.5 Lightning': '2026-11-17',
-    'tbench|Mercury 2.5': '2026-11-17'
+    'tbench|Mercury 2.5': '2026-11-17',
+    'tbench|Copilot Fusion': '2026-11-17',
+    'llm|Qwen4-Max(xhigh)': '2026-11-17'
   }
 };
