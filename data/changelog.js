@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-17',
+  'refreshedAt': '2026-11-17 16:14',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,8 +20,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
+        {
+          'version': '0.170.0-alpha.4.1',
+          'title': '0.170.0-alpha.4.1',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T02:24:32Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.1',
+          'body': '0.170.0-alpha.4.1 版本',
+          'h': '7253ad8b'
+        },
         {
           'version': '0.169.0',
           'title': '0.169.0',
@@ -1378,7 +1388,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '2.1.326',
@@ -3776,17 +3786,41 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
+          'version': '1.19.6',
+          'title': 'v1.19.6',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T07:21:32Z',
+          'tags': [
+            'Desktop',
+            'Improvements',
+            'Core',
+            'Bugfixes'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v1.19.6',
+          'body': '## 桌面版\n\n### 改进\n- OpenCode 1 现在提供升级到 OpenCode 2.0 的选项。OpenCode 2 在后台下载，并且仅在您选择以下选项时才会安装：重启以升级、退出时升级或稍后。您的会话、项目和设置都将保留。为 OpenCode 1 制作的插件需要更新。\n\n## 核心\n\n### 错误修复\n- 包含大量图像的会话不再发送超大请求。当会话历史记录中的图像超过 25 MiB 时，最旧的图像将被占位符替换。\n- 对于请求正文过大的提供商错误，现在将开始压缩并重试，而不是使轮次失败。',
+          'h': '56b38280'
+        },
+        {
           'version': 'daemon-v0.6.0',
-          'title': '进程守护进程-v0.6.0',
+          'title': '进程守护程序 v0.6.0',
           'date': '2026-11-16',
-          'dateRaw': '2026-11-16T21:39:24Z',
+          'dateRaw': '2026-11-16T23:36:04Z',
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.6.0',
-          'body': '修复（进程守护进程）：退出时回收 shell 命令（协议 9，发布…',
-          'h': '7ed78966'
+          'body': 'opencode-pty 0.6.0（协议 9），来自 packages/process-daemon，以 @opencode/pty@0.6.0 发布到 npm。',
+          'h': '599a2d90'
+        },
+        {
+          'version': 'daemon v0.6.0',
+          'title': 'process-daemon v0.6.0',
+          'date': '2026-11-16',
+          'dateRaw': '2026-11-16T23:36:04Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.6.0',
+          'body': 'opencode-pty 0.6.0 (protocol 9) from packages/process-daemon, published to npm as @opencode/pty@0.6.0.'
         },
         {
           'version': '2.3.0',
@@ -9283,24 +9317,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.28',
           'body': '- Fixed parcel watcher issue by adding missing platform-specific watcher dependencies for Darwin (macOS) and Linux systems'
-        },
-        {
-          'version': '0.15.27',
-          'title': 'v0.15.27',
-          'date': '2025-10-29',
-          'dateRaw': '2025-10-29T18:41:33Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27',
-          'body': '- Only generate user message summary if no diffs are present, improving performance and reducing unnecessary AI calls\n- Enhanced desktop message component to support both user and assistant messages with improved UI rendering\n- Added user message display in session history with text truncation for better readability\n- Improved message part visibility controls with `hideDetails` prop replacing `readonly` for better UI state management'
-        },
-        {
-          'version': '0.15.26',
-          'title': 'v0.15.26',
-          'date': '2025-10-29',
-          'dateRaw': '2025-10-29T16:59:51Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26',
-          'body': '- Added enterprise page with contact form for organizations to request enterprise solutions\n- Added enterprise FAQ section covering data ownership, SSO integration, and self-hosting options\n- Added testimonial section to enterprise page with customer quote\n- Fixed form submission functionality for enterprise inquiries\n- Added enterprise navigation link to header menu'
         }
       ]
     },
@@ -9312,7 +9328,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '2.6.2',
@@ -10521,7 +10537,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '0.2.2-rc.3',
@@ -11135,7 +11151,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '0.5.13',
@@ -11147,7 +11163,7 @@ window.CHANGELOG = {
             '修复'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
-          'body': '日常优化\n修复\n- 修复部分子智能体的模型或配置异常导致主会话无法启动或继续对话的问题。\n- 修复频繁切换任务、后台通知集中更新或会话内容加载失败后，部分任务无法打开的问题。\n- 修复设备信息准备较慢时，活动通知或权益提醒请求提前超时的问题。\n- 修复部分模型的上下文超限错误未被正确识别，导致无法按预期触发压缩恢复的问题。\n- 修复切换模型或调整上下文窗口后，上下文用量计算可能沿用旧配置的问题。\n- 修复从已压缩的会话派生任务或恢复到指定消息时，部分保留消息的关联关系异常的问题。\n2026年11月14日'
+          'body': '日常优化\n修复\n- 修复部分子智能体的模型或配置异常导致主会话无法启动或继续对话的问题。\n- 修复频繁切换任务、后台通知集中更新或会话内容加载失败后，部分任务无法打开的问题。\n- 修复部分用户无法收到权益活动领取通知的问题。\n- 修复部分模型的上下文超限错误未被正确识别，导致无法按预期触发压缩恢复的问题。\n- 修复切换模型或调整上下文窗口后，上下文用量计算可能沿用旧配置的问题。\n- 修复从已压缩的会话派生任务或恢复到指定消息时，部分保留消息的关联关系异常的问题。\n2026年11月14日'
         },
         {
           'version': '0.5.12',
@@ -11575,7 +11591,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '1.40.1',
@@ -12247,7 +12263,7 @@ window.CHANGELOG = {
             '功能更新'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lca\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\\'config\\\':\\\'$3:props:config\\\',\\\'prev\\\':null,\\\'next\\\':null,\\\'basePath\\\':\\\'\\\'}]\\nc2:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'AI 会话体验优化：\\\'}]\\nc3:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化输入框超出字数上限时的交互，超出部分将自动转换为文件附件。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持更高效地折叠冗长会话流。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化触发同步时的压缩策略，减少额外开销并提升处理效率。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化新会话首次发送消息的等待时间，提升首次交互响应速度。\\\'}],\\\'\\\\n\\\']}]\\nc4:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'memory-system-self-evolution\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc5:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'记忆系统自进化：\\\'}]\\nc6:[\\\'$\\\',\\\'span\\\',null,{\\\'data-as\\\':\\\'p\\\',\\\'children\\\':\\\'上下文理解更精准、长期记忆更持久；优化记忆生命周期管理与多维追踪，个性化响应更连贯。\\\'}]\\nc7:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'performance-and-stability\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc8:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'性能与稳定性：\\\'}]\\nc9:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':[[\\\'$\\\',\\\'strong\\\',null,{\\\'children\\\':\\\'桌面端架构\\\'}],\\\'：提升兼容性'
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lcb\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\'
         }
       ]
     },
@@ -12259,7 +12275,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '3.4.18',
@@ -14385,7 +14401,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/work_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '0.1.49-0.1.52',
@@ -14572,7 +14588,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '3.18.2',
@@ -14763,7 +14779,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '4.12.4',
@@ -15658,7 +15674,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-17 16:14',
       'entries': [
         {
           'version': '5.11.3',

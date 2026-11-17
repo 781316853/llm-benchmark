@@ -2,16 +2,113 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-16',
+  'updated': '2026-11-17',
   'retentionDays': 2,
   'types': [
+    '要闻',
     '开发生态',
     '模型发布',
     '技术与洞察',
     '前瞻与传闻',
-    '行业动态'
+    '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-11-17',
+      'title': '阿里巴巴发布 Qwen4-Max：官方称成本降 58%',
+      'brief': '阿里巴巴正式发布新一代基座大模型 Qwen4-Max ，基于全新稀疏 MoE 架构，主干参数 2.4T ，每个 token 激活 71B 参数，并配有 328B N-gram Embedding 参数，支持原生视觉与百万 token 上下文窗口，预训练全程未出现 loss spike 。',
+      'url': 'https://qwen.ai/blog?id=qwen4-max',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-17',
+      'title': '腾讯混元推出 Hy4 flash，官方称迄今最高性价比',
+      'brief': '腾讯混元 宣布推出 Hy4 flash ，称其为迄今为止最高性价比的 Hy 模型。该模型总参数量 224B （其中 64B Engram 参数），激活参数 12B ，支持多模态和 1M 上下文长度。',
+      'url': 'https://hunyuan.tencent.com/research/100145?langVersion=zh',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Antigravity 上下文窗口翻倍，压缩次数大减',
+      'brief': 'Antigravity 负责人 Varun Mohan 宣布，已将 Argon 、 Carbon 和 Hydrogen 的上下文窗口扩大一倍，每轮用户交互的压缩次数降至原先的约 1/3.5 。压缩指上下文空间不足时压缩已有内容、模型再重新读取的过程。',
+      'url': 'https://x.com/_mohansolo/status/2122119826575646918',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'OpenAI 启动嵌入式评估，引入外部机构审查安全',
+      'brief': 'OpenAI 宣布与 Apollo Research 、 METR 、 Transluce 和 Goodfire 四家机构签署协议，启动第一阶段嵌入式评估，让外部专家深入接触内部模型和系统，长期评估模型对齐和安全防护。',
+      'url': 'https://openai.com/index/our-first-phase-of-embedded-assessments',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-17',
+      'title': '字节跳动 Seedance 2.5 4K API 全面开放',
+      'brief': '字节跳动 火山引擎宣布， Seedance 2.5 4K 视频生成模型的 API 全面开放，开发者与企业客户可通过接口调用。',
+      'url': 'https://mp.weixin.qq.com/s/c6pWJXD6YXf8lcwLdNu5zA',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-17',
+      'title': '上海AI实验室开源书生-S2.1 Flash',
+      'brief': '上海人工智能实验室 发布并开源科学多模态模型 书生-S2.1 Flash ，采用 3200亿参数 MoE 架构，支持分子图、晶体结构、蛋白质序列、光谱等十余类科学输入，可操作专业科研软件执行多步骤科研任务。',
+      'url': 'https://internlm.github.io/Sage-S2.1-Flash/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Tibo：Codex 容量报错或已修复',
+      'brief': 'OpenAI Codex 团队成员 Tibo 在 X 平台发文称，一直困扰用户的 model at capacity 报错可能已经修复。这类报错提示模型容量已满，此前反复出现，困扰了不少 Codex 用户。 Tibo 表示， Codex 团队这次可能已经真正解决了这一问题。',
+      'url': 'https://x.com/thsottiaux/status/2122206990101536852',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Claude Code 适配 iPhone Duo 模拟器',
+      'brief': 'Claude Devs 宣布， Claude Code 桌面版现在以公开测试版支持在 iOS 模拟器 的 iPhone Duo 设备上测试应用，需 macOS 和 Xcode 27.1 或更高版本。',
+      'url': 'https://code.claude.com/docs/en/desktop-ios-simulator',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Perplexity Monitor API 现已开放',
+      'brief': 'Perplexity 正式推出 Monitor API ，可按设定周期追踪一个话题的新进展，或跟踪最多 10 个指定网页的文本变化，发现相关更新就通过 webhook 推送给应用。',
+      'url': 'https://x.com/perplexitydevs/status/2122408441042149853',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Google Ultra 5X 土区涨价 用户称涨 2.4 倍',
+      'brief': '据社区用户发帖， Google AI Ultra 5X 订阅在土耳其区的价格当天下午还是 1989.99 里拉 ，随后涨至 4749.99 里拉 ，有用户称刚买完礼品卡就发现价格已经变动。',
+      'url': 'https://x.com/leo114119/status/2122286744263589971',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'ChatGPT for Healthcare 宣布升级',
+      'brief': 'OpenAI 宣布升级 ChatGPT for Healthcare ：推出能在现有医疗软件间操作的 computer-use agents ；改进 trusted clinical search ；并新增 20 多个 医疗插件。',
+      'url': 'https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Gemini Notebook 可把笔记资料变成网站',
+      'brief': 'Google 在官方博客宣布， Gemini Notebook 现在可以把用户的笔记、研究和资料来源转换成可交互、可分享的网站。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-11-16',
       'title': '华为云上线 openPangu-2.1-Pro 模型',
@@ -51,62 +148,6 @@ window.NEWS = {
       'url': 'https://wccftech.com/jensen-huang-considers-returning-to-nvidia-as-his-allies-assemble-a-war-room-to-lobby-on-his-behalf-and-a-petition-in-his-favor-crosses-156000-signatures',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Grok Bot 多项优化上线，订阅用量增约 7%',
-      'brief': 'Grok Bot 团队成员 Sam Sokolin 发文称，本周已完成多项 Grok Bot harness 优化，订阅方案用量预计可增加约 7% ，日常运行最多可增加约 15% 。',
-      'url': 'https://x.com/mattyp/status/2121624592326480311',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Claude Code 桌面版推出 mods 自定义主题',
-      'brief': 'Anthropic 宣布， Claude Code 桌面版现已支持通过 mods 构建自定义主题，用户可以调整颜色、添加动画背景。构建主题时可以直接告诉 Claude 想要的外观，也可以使用官方提供的 theme-examples 插件快速开始。想自己动手的开发者可以参考官方发布的配套文档。该功能需要更新到最新版桌面应用，目前在本地会话中生效，云端会话支持即将推出。',
-      'url': 'https://code.claude.com/docs/en/plugins/mods/interface',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-15',
-      'title': '谷歌 300 美元赠金将不再覆盖 Gemini 调用费用',
-      'brief': 'Google Cloud 官方文档显示， 2026 年 11 月 16 日 或之后注册免费试用或升级为付费结算账号的用户，其 300 美元 迎新赠金将无法用于支付 Gemini Platform （含 Vertex AI ）、 AI Studio 中的 Gemini API ，以及以模型即服务形式提供的生成式 AI 合作伙伴模型的费用，只能用于免费试用计划涵盖的其他 Google Cloud 产品和服务。',
-      'url': 'https://docs.cloud.google.com/free/docs/free-cloud-features',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Cloudflare 开源 Kitesurf 浏览器，支持自行部署',
-      'brief': 'Cloudflare 将专为 AI agent 设计的浏览器 Kitesurf 在 GitHub 开源，采用 Apache 2.0 许可证。',
-      'url': 'https://blog.cloudflare.com/kitesurf-open-source/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Claude 发布 always-on agents 指南',
-      'brief': 'Claude 团队发布 Building always-on agents 指南，介绍如何搭建能跨会话管理状态、无需直接监督就主动行动的 always-on agents 。指南说明，这类 agent 大部分时间休眠，收到事件后执行一次 run 并保存状态，其架构包含 event inbox 、 timers 、 memory 、 permissions 和 outbox 五个核心模块。',
-      'url': 'https://claude.com/resources/articles/building-always-on-agents',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Anthropic 发布 10 项安全评测建议',
-      'brief': 'Anthropic 在工程博客发布 10 项安全评测建议。',
-      'url': 'https://anthropic.com/research/building-strong-safety-evaluations',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Cursor 披露安全事件：密钥泄露致部分数据外泄',
-      'brief': 'Cursor 发布安全事件更新：攻击者利用 Fireworks 泄露的访问密钥，复制了部分智能体链路追踪数据，少量数据含未脱敏凭证，API 凭证遭泄露的客户不到 0.01% 。攻击者借此入侵了 Cursor 使用的部分 SaaS 工具。',
-      'url': 'https://cursor.com/blog/security-incident-update',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
     }
   ]
 };

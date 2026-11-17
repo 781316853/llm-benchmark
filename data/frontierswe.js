@@ -1,4 +1,4 @@
-// 数据源:FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程评测,更新于 2026-11-16)
+// 数据源:FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程评测,更新于 2026-11-17)
 // 来源:https://www.frontierswe.com/(方法学:https://www.frontierswe.com/blog/v2)
 // 补充参考:https://epoch.ai/benchmarks/frontierswe
 // 字段:score=mean@5(%);best/worst=每任务五次试验的最优/最差均值(%);
@@ -12,8 +12,8 @@ window.FRONTIERSWE = {
   'blogUrl': 'https://www.frontierswe.com/blog/v2',
   'epochUrl': 'https://epoch.ai/benchmarks/frontierswe',
   'version': 'v2',
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-17',
+  'refreshedAt': '2026-11-17 16:14',
   'stats': {
     'tasks': 34,
     'entries': 26,
@@ -117,7 +117,7 @@ window.FRONTIERSWE = {
       'harness': 'proximus',
       'vendor': 'google',
       'score': 53.1,
-      'best': 61.2,
+      'best': 61.3,
       'worst': 45.3,
       'costUsd': 61.79,
       'durationS': 40976,
@@ -247,7 +247,7 @@ window.FRONTIERSWE = {
       'harness': 'proximus',
       'vendor': 'thinkingmachines',
       'score': 25.1,
-      'best': 37.1,
+      'best': 37.2,
       'worst': 13.1,
       'costUsd': 11.84,
       'durationS': 50250,

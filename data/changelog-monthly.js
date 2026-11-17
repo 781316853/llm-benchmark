@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-17',
+  'refreshedAt': '2026-11-17 16:14',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3410,
-    'afterMerge': 3407,
-    'needsZh': 2189,
-    'translated': 2189,
+    'afterToolDedupe': 3403,
+    'afterMerge': 3400,
+    'needsZh': 2182,
+    'translated': 2182,
     'untranslated': 0
   },
   'zh': {
@@ -431,7 +431,6 @@ window.CHANGELOG_MONTHLY = {
     '3affcb9c-60': '增加更多上下文溢出场景，并移除过度纠正的场景',
     '3b0abb46-50': '在记忆文件 frontmatter 中新增 ISO 格式的修改时间戳',
     '3b2463d-82': '在会话记录视图的压缩摘要中添加了之前调用的工具的名称（ Ctrl + O ）',
-    '3b292938-98': '仅在无差异时生成用户消息摘要，提升性能并减少不必要的 AI 调用',
     '3b5b168-52': '隐藏了 OpenRouter 推理显示中的 [REDACTED] 片段',
     '3baafc4-122': '当您的组织的远程管理设置尚未为会话加载时，在Claude Desktop的代码选项卡中添加了一个通知，并在加载后添加了另一个通知',
     '3bc0f1e0-65': '支持 PreToolUse 钩子向模型返回 additionalContext',
@@ -880,7 +879,6 @@ window.CHANGELOG_MONTHLY = {
     '6a9dc2cc-50': 'AUR 构建时检查 glibc 与 musl 系统兼容性',
     '6af30b18-98': '新增 TUI 提示历史改进，包括 Ctrl+R 反向搜索和对已接受斜杠命令的本地回溯',
     '6b357d1b-66': '支持从使用它的 LSP 服务器（包括 C# 和 Kotlin）拉取诊断',
-    '6b6d7ca9-78': '新增企业页面，含联系表单，供组织申请企业方案',
     '6b735fec-154': '新增插件市场命令源：本地命令（例如 IDE）打印插件目录，每个会话重新解析并应用，无需重启；mode: \'link\' 则就地使用',
     '6b75c520-42': '新增实验性 chat.messages.transform 钩子',
     '6b84c8f8-22': '应用中新的标签页样式',
@@ -1137,7 +1135,6 @@ window.CHANGELOG_MONTHLY = {
     '89e3ec7c-85': '调整 bash agent，使其更了解当前工作目录，并调整了默认超时',
     '8a113b38-107': '新增 /doctor 检查，建议精简已入库的 CLAUDE.md 文件，删去 Claude 可从代码库中推导出的内容',
     '8a18dace-147': '在第三方提供商的 Claude Desktop 会话托管设置中新增了对 CLAUDE_CODE_AUTO_MODE_MODEL 的支持（在 Claude Desktop 包含此版本后生效）',
-    '8a21bc40-91': '优化桌面端消息组件，同时支持用户与助手消息并改进 UI 渲染',
     '8a2292c8-30': '为应用增加模型设置界面',
     '8a458960-22': 'TUI 新增 --prompt 选项',
     '8a60df80-63': '为应用新增侧边栏展开动画、悬停预览浮层和更弱的分隔线',
@@ -1365,7 +1362,6 @@ window.CHANGELOG_MONTHLY = {
     'a117a746-93': '当首先运行的插件跳过您的mod的一个钩子时，添加了一个脚本行，命名事件和插件',
     'a11c820d-52': '列表中当前活动会话的圆点保持可见',
     'a122665c-126': '新增可选的 spellcheck 设置，使用你已安装的 aspell、hunspell 或 ispell，在输入时对提示中拼写错误的单词加下划线',
-    'a13a04e8-81': '新增企业常见问题区块，涵盖数据所有权、SSO 集成和自托管选项',
     'a17a16c4-105': '在模块的文本中添加了尺寸、重量、单色和表格，并在其框中添加了命名间距步骤（ xs到xl ） ；粗体已被弃用，转而使用重量',
     'a1adf8a8-85': 'TypeScript LSP 改为每个包一个，确保根目录未安装 TypeScript 时也能加载',
     'a1b1837c-87': '插件发现页面新增搜索过滤（输入即可按名称、描述或市场过滤）',
@@ -1544,7 +1540,6 @@ window.CHANGELOG_MONTHLY = {
     'b643b48f-156': '新增 /claude-api cost-optimize，用于分析现有项目的 Claude API 支出，并逐一进行可度量的改动来应用各项成本优化手段（缓存、token 卫生、批处理、effort、模型选择）',
     'b64d50e4-84': '目标功能现已默认启用，由专用存储支撑，并跨活动轮次跟踪进度',
     'b69ef5d6-119': '向mod的turn.step钩子的结果添加了serverToolUses ：工具调用API运行本身（顾问） ，每个都有其id、name、input、start和end',
-    'b6aafd54-77': '会话历史新增用户消息显示，支持文本截断以提升可读性',
     'b6f06624-130': '! - web：在编辑器的可重排媒体轨道中预览图片和视频，按需在文本中引用，并在排队和发送后保留预览',
     'b6f0c15c-57': '明确通用 agent 可执行多个并行任务',
     'b7036fed-128': 'codex remote-control 现在像前台命令一样运行，等待就绪、报告机器状态，并保留显式的守护进程式启动/停止命令',
@@ -2012,7 +2007,6 @@ window.CHANGELOG_MONTHLY = {
     'e93dbc20-25': '新增俄语支持',
     'e9994d3c-119': '! - /fork 不再切换到分叉后的会话：当前会话保持活跃，其后台任务继续运行。可在 /sessions 中找到该分叉',
     'e9ac1654-31': '为 attach 命令添加 --session 标志',
-    'e9b4870-41': '页头菜单新增企业导航链接',
     'e9c5cbc0-103': '为 API 请求新增 X-Claude-Code-Session-Id 请求头，使代理无需解析请求体即可按会话聚合请求',
     'e9d4fb10-52': '为 ToolContext 类型补全缺失的 metadata() 与 ask() 定义',
     'e9d6798-44': '在 skill 工具中为可用技能补全缺失的 await',
@@ -2097,7 +2091,6 @@ window.CHANGELOG_MONTHLY = {
     'f29bb9cd-138': '在 modelPricing 托管设置和 Claude apps 网关定价块中新增支持大于 1、最大为 10 的倍数，用于加价的内部结算费率',
     'f2c03d3c-33': '新增 Zenmux 文档与页头',
     'f2d85f7c-97': 'codex doctor 现可诊断端点保护、网络/代理故障、桌面应用状态和更新连接性',
-    'f304531c-56': '企业页面新增客户评价区块，含客户证言',
     'f30e8caf-71': '增加环境变量 CLAUDE_CODE_ENABLE_TASKS，设为 false 可暂时保留旧系统',
     'f33c1dc0-45': '! - 在 agent-core 上支持用 Markdown 定义的自定义智能体',
     'f35c5280-130': '添加了CLAUDE_CODE_OVERLOADED_RETRY_MAX_DELAY_MS环境变量，以在重试重载(529)请求时为回退设置更长的最大延迟',
@@ -26099,7 +26092,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2025-10',
       'label': '2025年10月',
-      'count': 53,
+      'count': 46,
       'toolCount': 3,
       'multi': [],
       'tools': [
@@ -26235,58 +26228,9 @@ window.CHANGELOG_MONTHLY = {
               'date': '2025-10-30',
               'version': '0.15.29',
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.29'
-            },
-            {
-              'key': '3b292938-98',
-              'text': 'Only generate user message summary if no diffs are present, improving performance and reducing unnecessary AI calls',
-              'date': '2025-10-29',
-              'version': '0.15.27',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27'
-            },
-            {
-              'key': '6b6d7ca9-78',
-              'text': 'Added enterprise page with contact form for organizations to request enterprise solutions',
-              'date': '2025-10-29',
-              'version': '0.15.26',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
-            },
-            {
-              'key': '8a21bc40-91',
-              'text': 'Enhanced desktop message component to support both user and assistant messages with improved UI rendering',
-              'date': '2025-10-29',
-              'version': '0.15.27',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27'
-            },
-            {
-              'key': 'a13a04e8-81',
-              'text': 'Added enterprise FAQ section covering data ownership, SSO integration, and self-hosting options',
-              'date': '2025-10-29',
-              'version': '0.15.26',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
-            },
-            {
-              'key': 'b6aafd54-77',
-              'text': 'Added user message display in session history with text truncation for better readability',
-              'date': '2025-10-29',
-              'version': '0.15.27',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27'
-            },
-            {
-              'key': 'e9b4870-41',
-              'text': 'Added enterprise navigation link to header menu',
-              'date': '2025-10-29',
-              'version': '0.15.26',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
-            },
-            {
-              'key': 'f304531c-56',
-              'text': 'Added testimonial section to enterprise page with customer quote',
-              'date': '2025-10-29',
-              'version': '0.15.26',
-              'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26'
             }
           ],
-          'count': 25
+          'count': 18
         },
         {
           'id': 'traecode',
