@@ -2287,8 +2287,9 @@ html[data-theme="dark"] .qc-tile{
 .table-wrap,.bench-list,.news-ticker,.qc-card,.qc-filters,.auth-outline,.md-details,.qc-tile{
   border-radius:var(--radius-panel);
 }
+/* 除总览矩阵外表头都在横向滚动容器内,top 必须为 0,否则会把表头推下来盖住首行 */
 .data-table thead th{
-  top:62px;
+  top:0;
   background:var(--panel-2);
   color:var(--text-tertiary);
   border-bottom:1px solid var(--border);
@@ -2357,7 +2358,6 @@ html[data-theme="dark"] *{scrollbar-color:hsla(0,0%,100%,.18) transparent}
   .tabs{width:calc(100% - 24px);top:8px;padding:4px}
   .tabs-inner{padding:0 8px;justify-content:flex-start}
   .tab{padding:8px 10px;font-size:12px}
-  .data-table thead th{top:54px}
   .content{padding:32px 20px 64px}
   .page-head h2{font-size:28px}
 }
