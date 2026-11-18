@@ -222,7 +222,7 @@ function buildPageEn(lines, sections, page) {
 
   const url = enUrl(page);
   const subs = [
-    [/<html lang="[^"]*">/, '<html lang="en">'],
+    [/<html lang="[^"]*"[^>]*>/, '<html lang="en" data-theme="dark">'],
     [/<body data-page="[a-z0-9]+"/, '<body data-page="' + page.id + '"'],
     [/<title>[\s\S]*?<\/title>/, "<title>" + page.en.title + "</title>"],
     [/<meta name="description" content="[^"]*" \/>/, '<meta name="description" content="' + page.en.desc + '" />'],

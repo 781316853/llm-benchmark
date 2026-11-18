@@ -821,8 +821,9 @@
     if (!ms || !ms.length) return;
     // 柱状(pass1 升序,使最高在上);模型名后缀版本简标便于区分数据来源
     var sorted = ms.slice().sort(function (a, b) { return a.pass1 - b.pass1; });
-    // Pass@1 排行按模型数量动态加高,避免行距过小导致模型名/数值文字重叠
-    var dsH = Math.min(760, Math.max(380, ms.length * 26 + 90));
+    // Pass@1 排行按模型数量动态加高,避免行距过小导致模型名/数值文字重叠。
+    // 上限 1600px:50+ 模型时每行仍有约 26px,不会把长模型名挤成叠字。
+    var dsH = Math.min(1600, Math.max(380, ms.length * 26 + 90));
     var dsBarEl = document.getElementById("authDsBar");
     if (dsBarEl) { dsBarEl.style.height = dsH + "px"; var dsInst = CH.inst("authDsBar"); if (dsInst) dsInst.resize(); }
     CH.apply("authDsBar", CH.barOption(sorted.map(function (m) { return m.name + (m.version === "v1.0" ? " ·v1.0" : ""); }),
@@ -2689,8 +2690,8 @@
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
   // data/changelog.js 含 12 个工具的全量历史(实测约 3.4MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
-  var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261017a";
-  var CL_MONTHLY_SRC = SITE_BASE + "data/changelog-monthly.js?v=20261111a";
+  var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261118a";
+  var CL_MONTHLY_SRC = SITE_BASE + "data/changelog-monthly.js?v=20261118a";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
   // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
   // 换戳重注入即可原地恢复,不必刷整页。
@@ -3002,6 +3003,34 @@
   }
   function onScrollStuck() { if (!stuckRaf) stuckRaf = requestAnimationFrame(syncTabsStuck); }
 
+  // 视觉:滚动揭示。只加透明度 / 位移 / 轻微 blur,不改变布局;
+  // 不把大容器(表格、目录)纳入,避免 transform 破坏内部 sticky 与图表尺寸计算。
+  var revealObserver = null;
+  function initReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var scope = document.querySelector(".page.active");
+    if (!scope) return;
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("ds-in");
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+    }
+    var nodes = scope.querySelectorAll(
+      ".page-head, .section-title, .qc-hero, .qc-filters, .matrix-head, .cl-tool, .overview-top");
+    Array.prototype.forEach.call(nodes, function (el, i) {
+      if (el.getAttribute("data-ds-reveal")) return;
+      el.setAttribute("data-ds-reveal", "1");
+      el.style.setProperty("--ds-delay", ((i % 4) * 60) + "ms");
+      el.classList.add("ds-reveal");
+      revealObserver.observe(el);
+    });
+  }
+
   // 排序后给该列一次短暂的底色扫过,让"表格被重排了"这件事可见。
   // 总览矩阵是双行表头:非评测列 rowspan=2 纵跨、评测列被 colspan 分组,且「命中」列同样
   // 是 rowspan 却排在两个分组之后 —— 列号必须按表头结构逐格模拟累加。用「rowspan 格总数 +
@@ -3151,6 +3180,8 @@
     if (window.EXP) EXP.decorate();
     // 回放因所在页不可见而暂缓的图表绘制(队列为空时零开销)
     if (window.CH && CH.flush) CH.flush();
+    // 视觉:滚动揭示(只做透明度/位移,不动布局)
+    initReveal();
     // 渲染后重绘图表以适配可见尺寸
     setTimeout(function () { window.dispatchEvent(new Event("resize")); }, 60);
   }
@@ -3169,6 +3200,14 @@
   function init() {
     if (redirectLegacyHash()) return;
     state.llmMonth = D.llmMonths().slice(-1)[0]; // 默认最新月份
+    // 移动端胶囊导航:把当前页签滚进可视区(8 个页签在窄屏会横向溢出,最后一页默认在屏幕外)
+    var activeTab = document.querySelector(".tab.active");
+    if (activeTab && activeTab.parentElement &&
+        activeTab.parentElement.scrollWidth > activeTab.parentElement.clientWidth) {
+      requestAnimationFrame(function () {
+        activeTab.scrollIntoView({ block: "nearest", inline: "center" });
+      });
+    }
     // 月份下拉(仅 llm2014 页存在)
     var ms = D.llmMonths();
     var llmMonthEl = document.getElementById("llmMonth");

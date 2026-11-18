@@ -851,11 +851,15 @@ module.exports = {
         changelogUrl: "https://docs.trae.cn/ide_changelog",
         fallbackUrl: "https://www.trae.ai/api/changelog",
         products: ["TraeCode"] },
-      { id: "traework", name: "TraeWork", vendor: "字节跳动", kind: "trae",
-        url: "https://docs.trae.cn/work_changelog",
-        changelogUrl: "https://docs.trae.cn/work_changelog",
+      // 2026-11-18:TraeWork 已并入全新 TRAE,旧日志页冻结在 2026-08-21,故移除 traework,
+      // 改为抓合并后的新 TRAE 日志。主源 trae.cn/changelog 是 React SSR,按 section 解析;
+      // 国内站在 Actions 海外出口可能不可达,备源用 trae.ai/api/changelog 的 TRAE 产品线
+      // (飞书 block 树,海外可达;版本线可能滞后,但不会让卡片整轮判死)。
+      { id: "trae", name: "TRAE", vendor: "字节跳动", kind: "traecn",
+        url: "https://www.trae.cn/changelog",
+        changelogUrl: "https://www.trae.cn/changelog",
         fallbackUrl: "https://www.trae.ai/api/changelog",
-        products: ["TraeWork"] },
+        products: ["TRAE"] },
       { id: "zcode", name: "ZCode", vendor: "智谱", kind: "zcode",
         url: "https://zcode.z.ai/changelog",
         changelogUrl: "https://zcode.z.ai/changelog" },

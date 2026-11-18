@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 主题:默认浅色,读取上次选择后再上屏,避免暗色用户看到闪白 -->
+  <!-- 主题:默认深色(DeepSeek Harness 视觉),读取上次选择后再上屏,避免浅色用户看到闪黑 -->
   <script>
     (function () {
       try {
-        if (localStorage.getItem("llm-theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        var t = localStorage.getItem("llm-theme");
+        document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "dark");
       } catch (e) {}
     })();
   </script>
-  <meta name="theme-color" content="#F9F8F8" />
+  <meta name="theme-color" content="#0a0a0a" />
   <title>AI Coding Daily 编码榜 · 7 项目 27 prompt 实测</title>
   <meta name="description" content="独立第三方编码实测:每个模型在 7 个真实项目上跑 27 个 prompt,总分 0-70,含每 prompt 成本与耗时。" />
   <meta name="author" content="LLM Benchmark Index" />
@@ -53,7 +54,7 @@
        按需注入(首屏渲染后空闲时预热),库加载期间的绘制请求排队、就绪后回放。 -->
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261116b" />
+  <link rel="stylesheet" href="css/styles.css?v=20261118c" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
   <script defer src="data/models.js?v=20261116b"></script>
@@ -95,7 +96,7 @@
   <script defer src="js/data.js?v=20261117a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261117a"></script>
-  <script defer src="js/app.js?v=20261117d"></script>
+  <script defer src="js/app.js?v=20261118c"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261110a"></script>
   <!-- 意见反馈交互 -->
@@ -223,7 +224,7 @@
         <a href="https://docs.qoder.cn/product-overview/qoder-update-log" target="_blank" rel="noopener">Qoder CN</a>
         <a href="https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log" target="_blank" rel="noopener">Qoder CN IDE</a>
         <a href="https://docs.trae.cn/ide_changelog" target="_blank" rel="noopener">TraeCode</a>
-        <a href="https://docs.trae.cn/work_changelog" target="_blank" rel="noopener">TraeWork</a>
+        <a href="https://www.trae.cn/changelog" target="_blank" rel="noopener">TRAE</a>
         <a href="https://zcode.z.ai/changelog" target="_blank" rel="noopener">ZCode</a>
         <a href="https://www.codebuddy.cn/docs/ide/release-notes/release-notes" target="_blank" rel="noopener">CodeBuddy</a>
         <a href="https://www.codebuddy.cn/docs/workbuddy/Changelog" target="_blank" rel="noopener">WorkBuddy</a>
@@ -276,12 +277,11 @@
           btn.setAttribute("aria-label", dark ? (en ? "Switch to light theme" : "切换到浅色主题") : (en ? "Switch to dark theme" : "切换到深色主题"));
           btn.title = en ? "Light / dark theme" : "浅色 / 深色主题";
         }
-        if (meta) meta.setAttribute("content", dark ? "#0B0B0C" : "#F9F8F8");
+        if (meta) meta.setAttribute("content", dark ? "#0a0a0a" : "#F9F8F8");
       }
       if (btn) btn.addEventListener("click", function () {
         var dark = root.getAttribute("data-theme") === "dark";
-        if (dark) root.removeAttribute("data-theme");
-        else root.setAttribute("data-theme", "dark");
+        root.setAttribute("data-theme", dark ? "light" : "dark");
         try { localStorage.setItem("llm-theme", dark ? "light" : "dark"); } catch (e) {}
         sync();
         window.dispatchEvent(new CustomEvent("llm-theme-change"));

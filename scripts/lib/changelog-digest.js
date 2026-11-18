@@ -4,7 +4,7 @@
 // 新增功能条目。抽取规则按 12 个工具的真实正文结构适配,不依赖固定模板:
 //   - Markdown 小节(## New Features / ### Minor Changes / ### Highlights)
 //   - 扁平小节标签(新增功能 / 功能更新 / 新功能 / 体验优化 / 问题修复,可能带 "- " 前缀)
-//   - 无小节标签的扁平 bullet(WorkBuddy / TraeWork),按行首动词排除修复/优化
+//   - 无小节标签的扁平 bullet(WorkBuddy / TRAE),按行首动词排除修复/优化
 //
 // 去重口径:
 //   ① 同一条目内中英双语并列时只取中文段(DeepSeek Harness);

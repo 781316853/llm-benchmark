@@ -1,6 +1,6 @@
 // AI Agent 工具更新日志汇总(data/changelog.js)
 // 汇总 12 个 Agent 工具(Codex / Claude Code / OpenCode / Kimi Code / DeepSeek Harness /
-// Qoder CN / Qoder CN IDE / TraeCode / TraeWork / ZCode / CodeBuddy / WorkBuddy)的官方 changelog,按工具分组展示,
+// Qoder CN / Qoder CN IDE / TraeCode / TRAE / ZCode / CodeBuddy / WorkBuddy)的官方 changelog,按工具分组展示,
 // 每条保留源站完整正文(不摘要)。
 // 与 news.js / codingplan.js 同模式:在 fetch_all.js 末尾旁路调用,不进基准 registry
 // (避免被 validator.js 当基准源校验、污染 quality.js 与综合分口径 —— 本模块是非分数数据)。
@@ -353,6 +353,40 @@ function parseTraeDocs(html, tool) {
   return out.filter(Boolean);
 }
 
+// ===== 解析器:新 TRAE(trae.cn/changelog,React SSR) =====
+// 2026-11-18 TraeWork + TraeCode 融合为全新 TRAE 后新增的产品线。页面是 React SSR:
+//   <section class="versionEntry-xxx">
+//     <div class="metaItem-xxx date-xxx">2026-11-08</div>
+//     <div class="metaItem-xxx version-xxx">v<!-- -->3.4.15</div>
+//     <span class="metaItem-xxx type-xxx">TRAE</span>
+//     <div class="versionContent-xxx">
+//       <p><strong>新增功能</strong></p><ul><li>...</li></ul> ...
+// 类名带构建哈希,故只认 date-/version- 前缀与正文首个 <p>/<ul>,不依赖整段类名。
+// 新 TRAE 暂无版本级锚点,url 统一回日志页;正文保留全部小节与条目。
+function parseTraeCn(html, tool) {
+  var s = String(html || ""), out = [], m;
+  var re = /<section\b[^>]*>([\s\S]*?)<\/section>/gi;
+  while ((m = re.exec(s))) {
+    var seg = m[1];
+    var dm = seg.match(/class="[^"]*\bdate[^"]*"[^>]*>\s*(\d{4}-\d{2}-\d{2})/i);
+    var vm = seg.match(/class="[^"]*\bversion[^"]*"[^>]*>\s*v(?:<!--\s*-->)?\s*([\d.]+)/i);
+    if (!dm || !vm) continue;
+    var contentStart = seg.slice(vm.index + vm[0].length).search(/<p\b|<ul\b/i);
+    if (contentStart < 0) continue;
+    var content = seg.slice(vm.index + vm[0].length + contentStart);
+    var it = mkEntry(tool, {
+      version: vm[1],
+      title: "v" + vm[1],
+      dateRaw: dm[1],
+      tags: sectionTags(content),
+      url: tool.changelogUrl,
+      body: htmlToBody(content)
+    });
+    if (it) out.push(it);
+  }
+  return out;
+}
+
 // ===== 解析器:Trae 备源(trae.ai/api/changelog 飞书文档 block 树) =====
 // 主源(docs.trae.cn 各产品线独立页)抓不到时启用。实测每个版本一组块,顺序为:
 //   heading1(版本号) -> divider -> table/table_cell 里的 text 单元
@@ -626,6 +660,30 @@ async function fetchTrae(tool) {
   return parseTraeBlocks(await transport.fetchWithRetry(tool.fallbackUrl, { retries: 2 }), tool);
 }
 
+// ===== 新 TRAE 抓取:主源 trae.cn,失败转 trae.ai 的 TRAE 产品线 =====
+// 主源是 React SSR 页面;备源是国内站不可达时的海外兜底(飞书 block 树,标签 "TRAE")。
+// 两路并行且各自短超时:主源在海外出口可能被 WAF 挂住,串行会让 45s 外层 deadline 先到,
+// 备源根本没机会跑(2026-11-18 本机实测主源超时、卡片为空)。主源成功时优先用主源。
+async function fetchTraeCn(tool) {
+  var primaryError = null, fallbackError = null;
+  var primary = transport.fetchWithRetry(tool.url, { retries: 1, timeoutMs: 12000 })
+    .then(function (html) { return parseTraeCn(html, tool); })
+    .catch(function (e) { primaryError = e; return []; });
+  var fallback = tool.fallbackUrl
+    ? transport.fetchWithRetry(tool.fallbackUrl, { retries: 1, timeoutMs: 20000 })
+      .then(function (json) { return parseTraeBlocks(json, tool); })
+      .catch(function (e) { fallbackError = e; return []; })
+    : Promise.resolve([]);
+  var results = await Promise.all([primary, fallback]);
+  if (results[0].length) return results[0];
+  if (results[1].length) {
+    console.log("    [changelog][" + tool.name + "] 主源不可用(" +
+      (primaryError ? primaryError.message.slice(0, 60) : "解析出 0 条") + "),改用备源");
+    return results[1];
+  }
+  throw primaryError || fallbackError || new Error("解析出 0 条(页面结构可能已改版)");
+}
+
 async function fetchEntries(tool) {
   if (tool.kind === "github") {
     var g = await fetchGithubReleases(tool);
@@ -633,6 +691,7 @@ async function fetchEntries(tool) {
     return mergeEntries(parseGithubReleases(tool, g.releases), g.atomEntries);
   }
   if (tool.kind === "trae") return fetchTrae(tool);
+  if (tool.kind === "traecn") return fetchTraeCn(tool);
   var html = await transport.fetchWithRetry(tool.url, { retries: 2 });
   if (tool.kind === "qoder") return parseQoderCn(html, tool);
   if (tool.kind === "zcode") return parseZcode(html, tool);
@@ -871,7 +930,7 @@ async function updateChangelog() {
     "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 4 次)\n" +
     "// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;" +
     "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
-    "TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);" +
+    "TraeCode 取 docs.trae.cn 独立日志页;TRAE 取 trae.cn/changelog(抓不到时转备源 trae.ai);" +
     "ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +
     "// 口径:仅正式版(不收 alpha/beta/rc);DeepSeek Harness 只发预览版,为唯一例外(收官方 Release 的预发布);" +
     "本文件存各源可得的全量条目,前端每工具展示最近 " + DISPLAY_ENTRIES + " 条(时间窗口只作「超出窗口」标注)\n" +
@@ -904,6 +963,9 @@ module.exports = {
   htmlToBody: htmlToBody,
   inlineText: inlineText,
   sectionTags: sectionTags,
+  parseTraeCn: parseTraeCn,
+  parseTraeBlocks: parseTraeBlocks,
+  fetchTool: fetchTool,
   isPrerelease: isPrerelease,
   cleanVersion: cleanVersion,
   mergeEntries: mergeEntries,

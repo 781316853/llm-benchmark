@@ -1,5 +1,5 @@
 // AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 4 次)
-// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode / TraeWork 各取 docs.trae.cn 独立日志页(抓不到时转备源 trae.ai);ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
+// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;TraeCode 取 docs.trae.cn 独立日志页;TRAE 取 trae.cn/changelog(抓不到时转备源 trae.ai);ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页
 // 口径:仅正式版(不收 alpha/beta/rc);DeepSeek Harness 只发预览版,为唯一例外(收官方 Release 的预发布);本文件存各源可得的全量条目,前端每工具展示最近 2 条(时间窗口只作「超出窗口」标注)
 // 字段:tools[]=工具(name/vendor/changelogUrl/status ok|stale|empty/lastOkAt);entries[]=一条更新
 //   entry 字段:version=版本号 title=标题 date=日期(UTC YYYY-MM-DD) dateRaw=源站原文日期
@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-18',
+  'refreshedAt': '2026-11-18 17:28',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,8 +20,46 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
+        {
+          'version': '0.170.0',
+          'title': '0.170.0',
+          'date': '2026-11-18',
+          'dateRaw': '2026-11-18T03:45:39Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.170.0',
+          'body': '新功能\n- 为TUI中的实时语音通话添加了WebRTC协商。( #61172 )\n- 为OpenTelemetry HTTP导出器添加了自动刷新的身份验证标头。( #61028 )\n- 新增了跨环境使用同名MCP服务器的实验性支持。（ #60905 ）\n错误修复\n- 超大WebSocket请求现在会回退到HTTP，而无需不必要的重试。( #60840 、 #60841 )\n- 修复了取消、登录和注销过程中的 MCP OAuth 凭据竞争问题。( #60849 、 #60981 )\n- 改进了云端对话的自动重连，并在客户端重连时保留了活动的恢复轮次。( #60969 、 #61014 )\n- 修复了Windows文件替换、沙盒权限保留和运行时注册恢复。( #60872 、 #60943 、 #60944 )\n- 修复了权限更新和子线程丢失现有沙盒限制的问题。（ #60936 、 #61134 ）\n- 移除了重复的文件搜索结果，并修复了包含空格的查询的线程搜索片段。( #60845 、 #60846 )\n文档\n- 更新了沙盒文档，以说明权限配置文件和文件系统规则。( #61133 )\n变更日志\n完整变更日志：rust-v0.169.0...rust-v0.170.0\n- #60770 从类型化请求中派生历史记录和笔记工具架构 @euroelessar\n- #60771 在保存的历史记录中保留面向模型的 ID 分配 @euroelessar\n- #60773 为每个子代理回合解析已保存的 Daybreak 选择 @sayan-oai\n- #60784 集中同步 Guardian 审核人选择 @felixxia-oai\n- #60839 在整个 rollout replay 中保留已保留的助手修订版本 @euroelessar\n- #60840 对于超大WebSocket请求，立即回退到HTTP @charliemarsh-oai\n- #60841 遵守所声明的WebSocket消息大小限制 @charliemarsh-oai\n- #60842 使TUI线程标题能够抵御生成失败@etraut-openai\n- #60845 对来自重叠根目录的文件搜索结果进行去重 @etraut-openai\n- #60846 修复包含空格的查询的线程搜索片段 @etraut-openai\n- #60848 对 GCP 默认启用增量工具声明 @akira-oai\n- #60849 防止 MCP OAuth 持久性受到过时凭据写入的影响 @mzeng-openai\n- #60871 等待进程内初始化握手完成 @goodman-oai\n- #60872 修复 Windows 原子写入并刷新构建维护 @zm-oai\n- #60882 稳定取消时序测试中的跟踪@bc-openai\n- #60897 使用Responses API提供问题标签建议@GrantBirki\n- #60898 将捆绑的bubblewrap包含在根元数据测试夹具中 @sayan-oai\n- #60904 版本答案显示说明并限制不支持的负载 @psachdeva-oai\n- #60905 在不同环境中将同名 MCP 服务器分开 @sayan-oai\n- #60914 为选定的代码模式执行结果保留 Guardian 上下文预算 @felixxia-oai\n- #60929 在后端切换中保留指挥中心任务所有权 @bc-openai\n- #60936 在TUI权限转换中保留旧版沙盒模板 @ioanbudea-OAI\n- #60942 在重播和压缩过程中保留线程本地模型 ID 状态 @euroelessar\n- #60943 在重复的 Windows 沙盒设置过程中保留文件权限 @zm-oai\n- #60944 在发生服务权限错误后协调 Windows 运行时注册 @zm-oai\n- #60948 在用户验证响应中报告生物识别类型 @bdavis-oai\n- #60962 重构快捷方式叠加层绑定构造 @bc-openai\n- #60964 在发送请求之前验证问题标记器的API密钥 @GrantBirki\n- #60969 在短暂的流丢失后重新连接空闲的云端对话 @bc-openai\n- #60972 将模型状态行中的服务层名称改为小写 @bc-openai\n- #60977 在请求中保留已分配的响应项 ID @euroelessar\n- #60981 使反应式 MCP OAuth 刷新具备取消安全性 @mzeng-openai\n- #61014 客户端重新连接时保留活动恢复回合 @apanasenko-oai\n- #61017 记录推理重播移除指标 @akira-oai\n- #61018 将HTTP标头帮助程序的执行提取到一个共享的crate中 @abhinav-oai\n- #61028 为 OTLP HTTP 导出器添加可刷新的标头 @abhinav-oai\n- #61129 简化非精选插件缓存刷新 @smurching-oai\n- #61133 在沙盒测试和文档中使用权限配置文件 @ioanbudea-OAI\n- #61134 在会话设置准入时规范权限更新 @ioanbudea-OAI\n- #61136 使用权限配置文件标签比较恢复沙盒覆盖 @ioanbudea-OAI\n- #61138 集中化文件系统助手沙盒准备 @viyatb-oai\n- #61141 在未获得焦点的聊天窗格中保留多行状态行 @fcoury-oai\n- #61144 从配置中移除旧版沙盒策略设置器 @ioanbudea-OAI\n- #61153 修复代理 HTTP 503 响应的代码模式会话准入重试 @seanh-oai\n- #61156 在禁用 DNSSEC 时忽略 Hickory DNSSEC 建议 @swastik-oai\n- #61163 对直接审核重复使用 Guardian 审核者历史记录 @swastik-oai\n- #61167 重构 TUI 侧边栏布局和面板周围的焦点处理 @fcoury-oai\n- #61172 在 TUI 中协商实时语音通话 @zahan-oai',
+          'h': 'bd831a88'
+        },
+        {
+          'version': '0.170.0-alpha.4.2',
+          'title': '0.170.0-alpha.4.2',
+          'date': '2026-11-18',
+          'dateRaw': '2026-11-18T02:02:46Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.2',
+          'body': '0.170.0-alpha.4.2 版本',
+          'h': 'bb8fcff8'
+        },
+        {
+          'version': '0.170.0-alpha.4.1',
+          'title': '0.170.0-alpha.4.1',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T02:24:32Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.1',
+          'body': 'Release 0.170.0-alpha.4.1'
+        },
+        {
+          'version': '0.169.1',
+          'title': '0.169.1',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T22:22:49Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.169.1',
+          'body': 'Chores\nNo verified release highlights available.\nChangelog\nFull Changelog: rust-v0.169.0...rust-v0.169.1'
+        },
         {
           'version': '0.169.0',
           'title': '0.169.0',
@@ -1378,8 +1416,17 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
+        {
+          'version': '2.1.327',
+          'title': 'v2.1.327',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T23:17:45Z',
+          'tags': [],
+          'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.327',
+          'body': '## What\'s changed\n\n- Added a confirmation before `/install-github-app` changes a repository\n- Added `claude mcp add-json <name> -` to read the server\'s JSON from stdin, so tokens can stay off the command line; not available inside a Claude Code session\n- Added a line when a resumed session\'s earlier messages can\'t be loaded\n- Added a list in `/status` of broken agent, skill, command and output style files, keybinding errors, an unavailable sandbox, ignored permission settings and hook matchers that never match\n- Added a note in `/config` when other settings override a row\n- Added `x-claude-code-managed-settings-checksum` to the gateway hint headers; sent where managed settings set `CLAUDE_CODE_GATEWAY_HINT_HEADERS=1`, including where they already do\n- Added support for naming a session\'s billing group with the `attributionProject` setting, for Claude apps gateways that set `admin.billing_group_tag`\n- Added `/tui classic` as the name for the non-fullscreen renderer; `/tui default` still works\n- Remote Control: Fixed stopping the server in worktree mode deleting a running session\'s git-ignored files, such as `.env`\n- Fixed self-hosted runners with `--use-anthropic-git-proxy` deleting a non-empty directory named by `GIT_CONFIG_GLOBAL` at startup: the runner now keeps it, ignores the variable and warns\n- Fixed `claude mcp add` and `claude mcp remove` with project scope deleting other top-level keys from `.mcp.json`, such as `$schema` or another tool\'s `servers`\n- Fixed `/export` overwriting an existing file without asking: the dialog now asks, and `/export <name>` keeps the file and says to run `/export`\n- Fixed a command you had allowed still running after you pressed Stop, when the approval arrived after a restart, in cloud and self-hosted runner sessions with no feature flags loaded\n- Fixed Enter closing `/teleport`\'s load error screen\n- Fixed a click followed by Enter in `/plugin` installing or disabling a plugin\n- Fixed a half-typed `!` command running on an extra Enter after the usage limit menu\n- Fixed some `--disallowedTools` rules with parentheses in their content\n- Fixed auto mode ignoring some wildcard PowerShell allow rules that name a script with `.\\`, such as `PowerShell(.\\scripts\\build.ps1 *)`\n- Fixed a running Code Mode script in auto mode getting permission prompts and denials once Claude started a second script that auto mode also allowed\n- Changed some pre-started background sessions to be discarded after an account change\n- Changed a workflow paused at a usage limit in the terminal to stay paused after a login, until the earlier login returns or you type a prompt\n- Fixed a nested `claude` with its own token being refused by `forceLoginOrgUUID`: commands that don\'t get the session\'s token no longer get its `CLAUDE_CODE_OAUTH_SCOPES`; set it on any that need it\n- Fixed headless sessions losing stored messages on resume when a message was sent again with the same UUID after the process was killed\n- Fixed cases where a session resumed after an empty reply or a killed command lost an answer, or brought back a rewound prompt, after another crash or a move to the background\n- Fixed a remote session forgetting messages sent after Stop was pressed during a restart, if Claude Code then crashed\n- Fixed tasks created after `/clear` being lost, and cleared tasks coming back, when a cloud or self-hosted runner session with no feature flags loaded resumed later\n- Fixed a compaction right after a reply cut at the output token limit losing that reply\'s tool call and its result\n- Fixed a settings change from `/config` and similar commands failing to save with no warning; a line under the prompt now says so\n- Fixed `/rewind` closing without a word when some files could not be restored\n- Fixed pasted images being dropped when the prompt starts with a file path such as `/tmp/a.txt`\n- Fixed agents passed with `--agents` being lost once plugins loaded or reloaded\n- Fixed a plugin\'s agent being dropped when resuming a session from the `--resume` picker\n- Fixed Claude Code refusing to start when `https_proxy` or `HTTPS_PROXY` is a bare `host:port` and neither its input nor its output is a terminal (the desktop app, an SDK, cron)\n- Fixed Claude Code on Linux sometimes returning to the shell while restarting itself at startup, such as after the first sign-in to a Claude apps gateway or when turning on Code Mode\n- Fixed `claude -p` hanging before its first request when the fetch of a model\'s settings stalled, such as at a proxy; it now goes on without them after 10 seconds\n- Fixed the screen staying blank or frozen after a brief out-of-memory error\n- Fixed a rare display fault that could freeze the screen or end the session\n- Fixed cloud sessions breaking when a program left thousands of connections open to the session\'s network proxy\n- Fixed a turn hanging when a mod\'s `$.model.complete` or `$.model.classify` call met a usage limit: the call now gets the API\'s error at once; mods should handle that error\n- Fixed stalls on a compaction reply with thousands of unclosed tags and on some very long WebFetch URLs; WebFetch now refuses a URL over 2,000 characters before any permission prompt\n- Fixed a message with thousands of `@` mentions stalling before Claude replies; only the first 100 mentions are now looked up as files\n- Fixed the prompt freezing after rejecting a write to a very large file; a rejected write now shows a short preview\n- Fixed a crash when a burst of keys reached the search box in `/plugin`\n- Fixed a false crash report and exit code when a suspended session resumes, or at exit, where a Linux security policy blocks a process from signalling itself\n- Fixed remote MCP servers staying disconnected after a longer outage such as a VPN drop: most servers on other machines reached by hostname over https are now retried in the background for about a day\n- Fixed Edit refusing with \'File has not been read yet\' after a compaction on unchanged files outside the project that Claude had already read in full\n- Fixed Grep repeating or skipping results when paging with `head_limit` and `offset`; content and count results are now sorted by file path\n- Fixed Read failing on Jupyter notebooks that contain an output of an unknown type\n- Fixed NotebookEdit removing the notebook file\'s final newline\n- Fixed the Read tool reporting 512KB instead of the real size when a file of 10 MB or more is too large to read at once\n- Fixed the Bash tool\'s diff of changed files not naming files that are binary, too large or too many to show\n- Fixed artifact publishes failing with \'the source file changed between approval and publish\' when a synced or remote-backed folder had only changed the file\'s timestamp\n- Fixed a new artifact that you approved being refused in a cloud scheduled task\'s session, in organizations that require approval of each new artifact\n- Fixed a new artifact being refused after an app built on the Agent SDK approved it, in organizations that require approval of each new artifact\n- Fixed `/artifacts` showing part of your list, or \'No artifacts yet\', when a request for more of the list failed: it now tries again, then warns if it can\'t load the whole list\n- Fixed in-process agent teammates on a different model from the lead compacting at the lead\'s context limit and on the wrong model; they now use their own limit and model, at that model\'s rate\n- Fixed a finished subagent resuming on the model and effort of a sibling subagent that messaged it\n- Fixed the main conversation not being told a background agent had finished when the subagent that started it ended by itself without reading the result, outside auto mode\n- Fixed Claude reporting a background agent as still running when it had waited 30 seconds or more on a permission prompt in the desktop app, on the web and in the SDK\n- Fixed Claude not being told in auto mode when a background agent\'s reply to a follow-up message was dropped, and reduced repeat wake-ups there from agents waiting on background commands\n- Fixed the desktop app, Claude Code on the web and VS Code showing a raw task notification as a subagent\'s prompt after its background task woke it\n- Fixed messages sent from another session with \'later\' priority joining the running turn, instead of waiting for it to end, in Remote Control and Claude Desktop sessions\n- Fixed messages to cloud and Remote Control sessions being reported as failed with a stale address after a timeout or rate limit; Claude now says when a message may have arrived\n- Fixed cloud sessions giving no error when a `UserPromptSubmit` hook blocks a message sent while Claude works\n- Fixed failing hooks showing nothing: SubagentStop in background agents, SessionEnd at `/clear` and `/resume`, and CwdChanged and FileChanged in fullscreen\n- Fixed a Stop hook that failed to run being shown as having reported a problem\n- Fixed focus view keeping a finished reply hidden while a Stop hook was running\n- Fixed Claude getting a long managed PostToolUse hook output twice when a mod added context to the tool call\n- Fixed `/model` listing the wrong models in some terminal sessions when a project\'s `.claude/settings.json` sets `ANTHROPIC_BASE_URL` to an LLM gateway\n- Fixed `/statusline` writing to `~/.claude/settings.json` when `CLAUDE_CONFIG_DIR` points to another folder\n- Fixed `claudeMdExcludes` patterns on Windows not matching a path whose drive letter is written in the other case\n- Fixed `claude agents` and `claude rm` refusing to remove a fully pushed session (\'The worktree has unpushed commits\') when its worktree has a file or folder named `HEAD` at the top level\n- Fixed long ListAgents results hiding most sessions on accounts with many cloud or Remote Control sessions: long lists now come in pages\n- Fixed slow turns in resumed sessions for organizations with tens of thousands of connector tool permissions\n- Self-hosted runner: Fixed `claude -p` started by a session\'s script or hook waiting out rate limits, because it inherited the session\'s own retry setting\n- Fixed the spend limit menu reporting a changed limit when the server refused it\n- Fixed a second `x` on a task\'s details in `/tasks` stopping the next task too\n- Fixed Esc being ignored on a permission prompt that had just appeared\n- Fixed lists that load their rows late sometimes ignoring Enter and the arrow keys\n- Fixed `/autofix-pr` holding the keyboard after Esc while it stopped the cloud session; the dialog now closes at once, and a stop that fails is reported afterwards with a link\n- Fixed a blank screen and stray mouse codes in the shell after quitting with ctrl+c just after ← opens the agents view\n- Fixed Ctrl+C right after the trust question leaving the terminal in fullscreen\n- Fixed the shell flashing on screen when ← opens the agents view in fullscreen mode\n- Fixed terminal display faults: most scrambled scrollback in Ghostty on resize, link addresses hidden in Windows Terminal under old tmux and in VTE 0.50.0, and no selection highlight with 16 colors\n- Fixed some garbled rows in tmux with `allow-passthrough` on inside kitty, Ghostty or iTerm2\n- Fixed `/mcp` saying no servers were configured after one was added during a session or declined; it now says what to do\n- Fixed `/hooks` leaving out hooks given by `--settings`\n- Fixed the `/` menu listing a row for each skill of the same name, though every row ran the first\n- Fixed `/teleport` showing no message when the chosen session failed to resume\n- Fixed n and N in transcript search skipping matches\n- Fixed cancelling a transcript search (ctrl+o, then /) in a long session landing far from where the search started\n- Fixed up and down losing the cursor\'s column over a short or blank line\n- Fixed Tab in shell mode filling in a file name after `&&`, `;` or `|`, where a command goes\n- Fixed the selected session leaving the screen in `claude --resume` and `/resume` when branch names or folder paths are long\n- Fixed the MCP tool list in `/mcp` and `/plugin` losing your place when going back from a tool\n- Fixed `/resume` listing one session fewer than the window has room for, and a \'Resend your message\' hint after most spend caps, where resending can\'t help\n- Fixed an MCP server\'s long question being cut off after one row, text fields hiding long pastes with no sign, and a doubled divider line in `/plugin`\'s options and `/login`\'s Bedrock and Vertex steps\n- Fixed the \'+N lines\' count being too high for command output with links or colors, and the transcript\'s `?` help hiding how to exit in a short window\n- Fixed Ctrl+C twice not closing `/chrome` from its browser list\n- Fixed a number and Enter typed too early at an agent\'s plan approval in screen reader mode causing the next number to be dropped too\n- Fixed Claude trying to read design system token files that do not exist when starting a deck or design\n- Fixed exit not saying that a worktree was kept\n- Fixed `/hooks` help naming input fields that do not exist\n- Fixed question dialogs naming ctrl+g after the external editor key was rebound\n- Fixed two sign-in error messages that pointed to the Claude subscription option on computers where `forceLoginMethod` is set to `console`\n- Fixed `/config` saying the dialog was dismissed instead of \'Set theme to …\' after changing the theme\n- Bug fixes and reliability improvements\n- Improved the speed of a session\'s first Bash command: shell start-up files may now run before it\'s approved, even if it\'s refused; set `CLAUDE_CODE_DISABLE_SHELL_HEAD_START=1` to turn this off\n- Improved commits on newer models and in PowerShell: Claude is now told not to commit files that likely contain secrets\n- Improved sandboxed shell commands: Claude now sees when a command exempt from the sandbox stayed in it because its permission check relied on the sandbox\n- Improved the refusal for shell commands with no `rm` that the dangerous `rm` check can\'t parse, so Claude can resend harmless ones in plain syntax instead of giving up\n- Improved resuming very long sessions: a transcript read that ends early is now retried once, so messages are lost less often\n- Improved subagent answers that hit the output token limit twice: they now more often come back whole or say up front that they are partial\n- Improved long replies on unrecognized models: a reply cut at 32,000 output tokens now continues with a limit of 128,000\n- Improved the reminder about a completed subagent after compaction: if Claude can\'t read the agent\'s output file, it is now told to ask the agent with `SendMessage`\n- Improved the warning shown when an API key and an Anthropic profile are both set: it now says which one is in use and how to switch to the profile\n- Improved `/plugin`: the question before removing a marketplace now says that its plugins\' settings and saved data are deleted, and a marketplace\'s page no longer shows another marketplace\'s error\n- Windows: Improved start-up time with no Git Bash and no `pwsh` on PATH by checking PowerShell\'s standard install locations at once; System32\'s `powershell.exe` now wins over one earlier on PATH\n- Improved startup time on Windows when PATH points to Git for Windows\' bin folder, by starting git.exe directly instead of through its launcher\n- Windows: Improved PowerShell tool speed by up to about half a second per command\n- Improved how soon the Bash tool\'s diff of changed files is ready in auto and bypass permissions modes\n- Improved speed of the Bash permission check on very deeply nested missing paths on macOS and Linux, and of secret masking on very long text with a URL\n- Improved transcript search to find text in edits and written files\n- Improved speed of reading large PNG images, and the quality of the JPEG sent in their place\n- Improved the Artifact tool to read an uploaded file by the address the artifact\'s page shows; other forms still fail, most with a message that says to read uploads one per call, by id\n- Improved the Artifact tool to ignore `prompt`, `limit` and `label` on some calls that do not use them instead of failing the call\n- Improved MCP server pages in `/mcp`: local, remote and agent servers share one layout, menus end in Back, and actions are no longer numbered outside screen reader mode; use the arrow keys and Enter\n- Improved narrow terminals: `/status`, forms and detail screens lay out better, `/model` and `/effort` fit at about 40 columns, and key hints such as `←/→ to adjust` stay\n- Improved `/install-github-app`: the repository, secret and API key steps use the standard list and keys, with shorter messages, a spinner and clearer errors\n- Improved `/desktop`: the download question is a standard list instead of y/n\n- Changed `ExitWorktree` to ask before removing a worktree that may hold unsaved work; refused in don\'t-ask mode or with nobody to answer, unless an allow rule, auto or bypass permissions mode allows it\n- Changed `claude mcp add --scope project` to stop, instead of overwriting the file, when `.mcp.json` lists its servers at the top level with no `mcpServers` key\n- Changed the arrow keys on most permission prompts to stop at No instead of wrapping around; a number past the last answer moves to No\n- Changed path checks to refuse some symbolic links\n- Changed what counts as inside a working directory, so some paths now ask for permission\n- Changed `permissions.blockReadsOutsideWorkingDirectories` to ask about more Bash commands in bypass and auto modes, and to deny some in auto mode\n- Changed `permissions.blockReadsOutsideWorkingDirectories` to refuse more Bash commands that name a path under a Read or Edit deny rule, where it used to ask\n- Changed auto mode\'s notice about falling back to billed classifier requests to say that an upcoming release removes the fallback; each action it would have checked will be asked about or denied\n- Changed auto mode to ignore more allow rules that run any package, like `Bash(pnpm dlx *)`, and path or version forms of ones it already ignored (`/usr/bin/npm run:*`); the safety check decides those\n- Changed `/sandbox` and most `/config` value lists to be unnumbered outside screen reader mode; use the arrow keys and Enter\n- Changed Bash commands whose variables expand to very long text to be denied, with a message that says to use shorter values or a file\n- Changed the PowerShell tool to ask before one more command, even under a rule naming it; if nothing answers, it\'s refused unless a whole-tool rule, auto mode or bypass permissions mode allows it\n- Changed a subagent resumed by a sibling\'s message to follow the session\'s permission settings; it may now ask, or be refused where nobody can answer\n- Changed `--worktree` with a relative `--add-dir` beside the launch folder to give the Bash sandbox that folder, not one beside the worktree\n- Changed some `--worktree` starts with a relative `--add-dir` above the launch folder, such as `..`, to give the Bash sandbox, and a `--bg` session, only the worktree\n- Changed Claude in Chrome to refuse uploading some credential files; attach those to the page yourself\n- Changed artifact approval in organizations that require it for each new artifact: an artifact that only a plugin created or allowed can be refused\n- Changed sessions with nobody to ask to refuse a new artifact at once, with no permission prompt, in organizations that require approval of each one\n- Changed the Artifact tool to refuse calls once settings turn Artifacts off, in sessions already running too\n- Changed the Artifact publish prompt to stop offering \'don\'t ask again\' in subagents and after a background task result, someone else\'s message or a compaction\n- Changed `claude plugin eval` to keep its deny rules over a plugin\'s permission hook, and to flag calls the hook let through\n- Changed MCP server logs to record the mode, action, and field names of elicitation requests and hook answers, not their full contents\n- Changed most prompts to ignore answers other than Esc for a moment after resuming with `fg`\n- Changed Code Mode to no longer refuse to start when an installed mod hooks tool calls; an administrator can still keep Code Mode off in managed settings\n- Changed subagents launched without a model to stay on the model they started on when resumed, including after `/model`\n- Changed the first subagent on a model to wait up to 1.5 seconds (10 in `claude -p`) for that model\'s settings from Anthropic, instead of starting without them\n- Changed restarted background subagents, and turns that start by themselves, to wait for plugins to load\n- Changed prompt history to leave out most launch prompts of sessions that another Claude Code session started, such as `claude --bg` run by Claude\n- Changed subagent progress summaries in terminal sessions on Amazon Bedrock, Google Vertex AI and Microsoft Foundry to be written from short notes, not the whole conversation, using far fewer tokens\n- Changed non-interactive (`-p`) mode to run fewer git commands before the first request\n- Changed first-run setup to skip terminal setup in remote VS Code, Cursor and Devin Desktop sessions, where it cannot change settings\n- Changed fullscreen text selection to leave out the glyph of system, thinking and inbound message lines\n- Changed Anthropic-hosted cloud sessions to ignore more of a repository\'s flag and plugin delivery settings; its `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` now acts at most as `DISABLE_TELEMETRY`\n- [VSCode] Added \'Claude Code: Add to Chat\' to the Explorer\'s right-click menu, which @-mentions the selected files and folders in the chat\n- [VSCode] Fixed the permission prompt not showing the reason that a PreToolUse hook gives when it asks for confirmation (anthropics/claude-code#85950)\n- [VSCode] Fixed long tool and file names being cut off in a permission prompt\'s title\n- [VSCode] Fixed a terminal session\'s diff showing the previous proposed edit after you typed in it and Claude edited the same file again\n- [VSCode] Fixed Escape also stopping Claude\'s response when it closes the feedback or \'Build a custom style\' dialog, the @-mention menu, the model, mode or \'+\' menu, or another popup\n- [VSCode] Improved speed when Claude makes several edits in a row: queued edits share one wait for new problems; a problem may be reported with a later edit\n- [VSCode] Improved @-mention file search speed in large workspaces when `rg` is on your `PATH`; results now rank much as in the terminal, with less tolerance for typos\n- [VSCode] Improved startup: the model picker is ready at once in folders opened for the first time, empty windows and worktrees, except on third-party providers\n- [VSCode] Changed a chat edit\'s diff to stay open and keep asking for approval when a terminal session in the same window sends a prompt\n- [VSCode] Removed unused tools from the IDE connection (openFile, saveDocument, getOpenEditors and related)'
+        },
         {
           'version': '2.1.326',
           'title': 'v2.1.326',
@@ -1396,8 +1443,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-13T20:40:01Z',
           'tags': [],
           'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.325',
-          'body': '## 有哪些变化\n\n- 修复了zstd压缩响应解码方式中的一个安全问题\n- 在 VS Code 和类似的集成终端中添加了有关重新运行笔记本单元格的加载提示，该提示会在 Claude 读取或编辑 Jupyter 笔记本后显示\n- 在组织政策阻止请求时显示的错误下方添加了一行，说明如何继续：运行`/rewind`并更改消息，或运行`/clear`\n- 添加了一条针对 Claude 的备注，说明当沙盒中的 `git checkout`、`git stash` 或自动暂存拉取无法更新受保护的文件（例如 `.claude` 中的文件）时的情况\n- 修复了`/security-review`和技能的内联 Git 命令在裸仓库的工作区、`--separate-git-dir`检出和 Android `repo`检出中因报错而停止的问题\n- 修复了当模型设置为`opusplan`或`haiku`时，具有自己模型的子代理被移至计划模式模型的问题\n- 修复了子代理在不同模型大小的文件读取和MCP结果与主会话模型不一致的问题\n- 修复了许多第三方网关和Foundry上的会话问题，这些会话在每次轮次中都会因上下文长度错误而停止，而不是进行压缩\n- 修复了在 Claude Code 未正常退出而停止后，恢复的会话中有时会丢失最近的回合的问题\n- 修复了在工作目录被删除后，Shell 命令仍在启动目录中运行的问题；现在，该命令将失败并显示一条消息，并且可以重新发出\n- 修复了当“plansDirectory”文件夹无法容纳已批准的计划编辑时，该编辑丢失的问题：现在，计划将保存在默认的计划文件夹中，并会显示一条警告，说明保存位置和原因。\n- 修复了已保存的 `sonnet[1m]` 模型设置在新安装时被重写为 API 拒绝的模型 ID 的问题\n- 修复了当计划任务在提示之后做出回复时，焦点视图隐藏对提示的回复的问题\n- 修复了在全屏关闭时，提示有时会从后台子代理视图中消失的问题\n- 修复了列表中的长选项和权限提示在换行时被部分覆盖，以及首次运行界面在窄终端上丢失行的问题\n- 修复了有关权限规则的启动警告，以及“N 个 MCP 服务器需要身份验证”的通知在滚动出视野时被记录为已查看的问题\n- 修复了当代理的名称或工作文件夹包含控制字符或换行符时，欢迎标题显示控制字符或跨行分割的问题\n- 修复了当 Claude 尝试运行只有您可以运行的命令时显示的红色错误：现在有一行浅色文字提示，说明只有在提示符处输入该命令时才会运行\n- 修复了`/stats`显示“活跃天数”总数多出一天的问题\n- 修复了`/insights`在没有会话符合分析条件时显示报告已就绪的问题，以及在未对两个值进行转义的情况下将其写入HTML报告的问题\n- 修复了`/voice`在托管设置、`--settings`或项目的`.claude/settings.json`或`.claude/settings.local.json`保持原样时显示语音模式已更改的问题；现在它会显示由哪个设置决定语音模式\n- 修复了 IDE 欢迎对话框在 Windows 和 Linux 上显示 Cmd+Esc 用于快速启动的问题\n- 修复了在组织政策拒绝云会话时显示 Slack 应用提示的问题\n- 修复了在没有终端可供读取密钥时“claude purge”静默挂起的问题，以及在stdin被管道传输时，其项目选择器和“-i”提示忽略键盘输入的问题\n- 修复了`claude plugin eval --output-dir \'\'`将报告写入当前文件夹的问题；现在它会报错退出\n- 修复了在传递文本样式以外的控制序列的终端上`claude -p`文本输出的问题；管道和文件保持不变\n- 修复了配置目录中残留的 `.oauth_refresh.lock.owner.tmp.*` 文件堆积问题\n- 修复了在无密钥控制台登录下`/fast`显示“您的组织已禁用快速模式”的问题，其中Claude Code并未向服务器发出请求\n- 修复了`/model`在Claude Code无法进行检查（例如，没有网络）时显示“您的组织限制了模型”的问题\n- 修复了在浏览器步骤后立即按 Esc 时，`/login` 中的“使用您的控制台账户登录”会替换您现有登录信息的问题\n- 修复了在某些登录失败或被取消的情况下，浏览器显示登录成功页面的问题\n- 修复了`claude auth status`和其他短命令在控制台配置文件上留下锁的问题，这导致下一个会话挂起约一分钟\n- 修复了在您的 claude.ai 登录时使用（并计费）启动后台服务的 shell 中的 API 密钥或令牌启动的后台会话问题\n- 修复了更多会话在后台切换到另一个登录的情况；现在将拒绝此类切换，并显示一条消息，说明哪些操作可行\n- 修复了在退出对话框中第二次按Enter键后，在切换到后台被拒绝后停止后台工作的问题\n- 修复了Amazon Bedrock上的令牌计数在`allowedProviders`托管设置不允许的情况下将对话发送到Bedrock的问题\n- 修复了在没有“HOME”环境变量的情况下启动Claude Code时，AWS“credential_process”助手和Google Cloud默认凭据出现故障的问题\n- 修复了在子代理的计划获得批准后，会话有时会恢复到早期权限模式的问题\n- 修复了代理 SDK `applyFlagSettings()` 调用中的一个无效值，该值会悄然丢弃先前所有调用的设置；现在，此类调用将被拒绝并报错\n- 修复了当已完成的拉取请求仅需要您自己进行审核或合并时，会话显示为正在等待输入的问题\n- 修复了无法识别的`teammateMode`设置值被忽略且未发出警告的问题：`claude -p`、启动警告和`claude doctor`现在将其列为已跳过的条目（仍未应用）\n- 修复了在新的主目录中首次运行时，`--worktree`跳过`CLAUDE_CODE_PLUGIN_SEED_DIR`中插件的`WorktreeCreate`钩子的问题\n- 修复了简要模式会话（如Dispatch）在轮到该会话已回复后再次发送回复的问题\n- 修复了当插件在不同网址列出正常运行的 Atlassian、Asana 或 Sentry 连接器时，Claude 仍报告其在云会话中出现故障的问题\n- 修复了在文件夹移动或预热启动后，Claude Desktop 和 SDK 会话将文件夹自身的 MCP 服务器（`.mcp.json`，本地）列为由主机添加或根本不列出，并且不连接 WebSocket 服务器的问题\n- 修复了在插件重新加载时删除了正在连接的插件的 MCP 服务器后，`/mcp` 仍列出该服务器的问题\n- 修复了在令牌刷新被短暂拒绝后，MCP 服务器仍显示“需要身份验证”且其 `mcp_tool` 钩子被跳过的问题\n- 修复了在工具调用期间服务器连接被替换后，MCP 引导请求在无头模式下未征询用户意见即被取消的问题\n- 修复了在工具调用重新连接到 MCP 服务器后，来自 SDK 主机的 MCP 工具调用仍回答“未连接”的问题\n- 修复了 MCP 任务在问题被 Esc 关闭或再次提出后卡住的问题：页脚现在会提示需要您输入，在 `/tasks` 中按 Enter 键会再次显示该问题\n- 修复了后台 MCP 任务在对同一服务器的另一次调用失去连接后停止更新的问题，当之后的调用重新连接时，该问题已得到解决\n- 修复了后台 MCP 任务的问题在您仍在输入的消息上方打开的问题；现在，它会等到您发送或清除草稿后才会打开，并且加载指示器和回合计时器会继续运行\n- 修复了`worktree.sparsePaths`以及稀疏插件和市场克隆在旧版 Git（如 2.34）中省略仓库根文件的问题\n- 修复了包含多个仓库的自托管 Runner 会话无法使用在会话中间添加的仓库的问题\n- 修复了 Claude 在读取您自己的工件或其数据之前请求权限的问题\n- 修复了在某些云会话中不适用的“拒绝”和“请求权限”规则以及工件工具的钩子\n- 修复了代码模式脚本忽略使用“EnterWorktree”输入的“工作树”、将“~”路径写入项目以及在登录过期后“/mcp”仍显示 MCP 服务器已连接的问题\n- 修复了在权限对话框中输入“是”或在计划批准中输入“是”时，这些词语未传达给代码模式下的Claude的问题\n- 修复了在您恢复代码模式脚本执行期间结束的会话时，Claude 会自行开始工作的问题；现在，Claude 会等待您的下一个提示。\n- 修复了在工具调用运行时发送的消息缺少 OpenTelemetry `user_prompt` 事件的问题。该事件具有`delivery.mode: \'mid_turn\'`和正在运行的轮次的`prompt.id`\n- 修复了 OpenTelemetry `user_prompt` 事件在以下情况下省略先前消息文本的问题：排队消息在 VS Code 中合并为一轮，或某条消息包含图像\n- 修复了斜杠命令的`allowed-tools`权限应用于在其轮次期间或之后唤醒的后台代理的问题\n- 修复了`/feedback`和`/bug`，使其仅在其他会话由已登录的账户或组织记录时才上传这些会话\n- 修复了相对拒绝和请求权限规则（例如 `Read(./.env)`）在执行 `cd` 后不再覆盖项目的问题；这些规则现在也适用于添加的目录\n- 修复了以`mcp__plugin_*_`开头的拒绝和请求权限规则缺少插件的MCP服务器或工具（其拼写使用了其他大小写形式）的问题\n- 修复了在自托管 Runner 和“claude remote-control”会话中，拒绝规则未应用于 Claude Code 重启后收到的权限批准的问题\n- 修复了在代码库的某些子文件夹中启动 Claude Code 时，已提交的 `.claude/settings.local.json` 可能被视为用户自己的文件这一问题\n- 修复了一些拒绝和询问规则不适用于某些Bash命令的问题\n- 修复了 Bash 权限检查中的一个漏洞，该漏洞导致某些复合命令可以在不征求用户同意的情况下运行；现在这些命令会征求用户同意\n- 修复了 Bash 允许规则可能运行与规则中指定的程序不同的程序的问题\n- 修复了在插件仍在加载时，云会话中连接器工具的审批提示被自动回答的问题\n- 修复了在设置允许规则或此前已批准上传的情况下，某些子代理在未事先征询意见的情况下更改组织外部人员可见的痕迹或向其上传文件的问题\n- 修复了在为构件选择“不再询问”时，某些构件发布会跳过对组织外部人员可见页面的确认的问题\n- 修复了自动模式仅判断组织外部人员可见的构件的第一次更改的问题；现在，其“是”选项仅涵盖该更改\n- 修复了对代理和技能的托管 `strictPluginOnlyCustomization` 锁定在已运行的会话中未生效的问题\n- 修复了沙盒命令在某些情况下能够写入原生更新程序的下载文件夹的问题\n- 修复了 Bash 沙盒未完全保护工作树的设置和钩子的情况\n- 修复了 Bash 沙盒未完全保护已关联工作树的共享 Git 文件夹的情况\n- 修复了在一些不常见的 Git 状态下 `/teleport` 的暂存选择：现在它会停止并提示该怎么做\n- Windows：修复了当 PATH 条目位于您的账户无法打开的文件夹下时，可能持续约一秒的启动停顿问题\n- 修复了 Windows 上 `/resume` 拒绝或隐藏其文件夹以不同驱动器盘符大小写或斜杠记录的会话的问题\n- 修复了 Windows 上会话内 `/resume` 在会话以不同驱动器盘符大小写记录时，导致项目已保存的信任丢失的问题\n- Linux：修复了当工作目录位于“denyRead”内的“allowRead”文件夹下（例如位于符号链接的主目录之下）时，沙盒中的 Bash 命令报错“bwrap: Can\'t create file”的问题。\n- 修复了 Claude Desktop 的第三方部署在令牌续订完成之前（一旦包含此版本）一直显示“正在停止”的问题\n- 改进了在输出令牌限制处被截断的子代理：现在会再次要求它们提供整个答案，但要更简短，而不是只返回答案的结尾部分\n- 改进了通过无密钥控制台登录或其他 Anthropic 个人资料登录的启动过程：读取仍有效的令牌，无需等待凭据锁定\n- 改进了账户邮箱检查：现在，在命令运行的脚本、文件写入、网页抓取和 MCP 调用中，它也会拒绝将您的邮箱作为客户端的身份\n- 改进了针对私有插件市场的“HTTPS 身份验证失败”消息：现在该消息会说明 Git 的终端提示和 askpass 程序已被禁用，并且该消息也会在新版本的 Git 中显示\n- 改进了“添加应用商店”确认、插件推荐提示和插件安装警告，以说明插件可以在您的计算机上运行代码，并有权访问您的文件和 shell\n- 改进了`claude --desktop`登录错误，以指明导致 Claude 账户登录无法进行的 API 密钥、提供商或设置\n- 改进了 macOS 和 Windows 上的 `/voice`“未检测到音频”消息：现在会说明在哪里选择麦克风\n- 改进了 MCP 任务：现在，当任务正在等待您的回答时，Claude 会收到通知，并可以引导您前往 `/tasks`\n- 改进了`claude remote-control`：现在，当它自行停止时，会以状态 4 退出（单会话运行仍以状态 0 退出）；当它无法注册时，会以状态 69 退出，以便服务管理器可以重新启动它。\n- 改进了当后台会话无法使用其会话的API密钥或令牌时显示的消息：这些消息不再建议将密钥添加到设置中\n- 改进了捆绑的“数据可视化”技能针对静态图像以及具有自然顺序的部分（如年龄段）的“部分-整体”建议\n- 将沙盒中的 Bash 命令更改为默认遵循正常权限流程；将 `sandbox.autoAllowBashIfSandboxed: true` 设置为 true，即可在不提示的情况下继续运行这些命令\n- 更改了启用沙盒的托管设置：要使命令在不提示的情况下继续运行，请在最高级别的托管源中将 `sandbox.autoAllowBashIfSandboxed` 设置为 `true`\n- 已将只读 Git 命令更改为在不属于项目或您不信任的仓库中先进行询问；请使用 `--add-dir` 而不是 `additionalDirectories` 设置来命名，以便在不提示的情况下运行这些命令\n- 更改了计划任务和 `/loop`，以便在运行声明 `allowed-tools` 或钩子的技能之前进行询问；将 `Skill(name)` 添加到 `permissions.allow` 中，即可无人值守运行\n- 更改了桌面、IDE 和 SDK 主机中的“始终允许”：仅当保存规则会再次允许该命令时，才会单独提供该规则，因此依赖于该规则的计划任务现在可以等待您操作\n- 更改了沙盒，使其拒绝沙盒对已添加目录中`.claude`设置、技能、代理、命令和钩子的写入，与在启动文件夹中的行为相同\n- 更改了工作区隔离：隔离的工作区会话或代理现在会被拒绝执行`git bisect run`、`git maintenance register|start`和`scalar`的设置命令，并会告知其仍可执行哪些操作。\n- 将插件 MCP 捆绑包（`.mcpb`、`.dxt`）改为在插件目录（而非插件文件夹中的 `.mcpb-cache`）下解包，以便加载只读插件文件夹；通过 URL 获取的捆绑包会再次下载一次\n- 将由托管设置声明、启用和在 `prependPlugins` 或 `appendPlugins` 中列出的远程市场插件更改为计入组织；`pluginDigests` 已弃用并被忽略\n- 将插件加载方式更改为跳过，并将`claude plugin validate`更改为报告插件文件夹中一些不安全的路径和链接\n- 更改了嵌套技能的加载方式：`--plugin-dir`插件中的`.claude/skills`文件夹不再从其上层启动的会话中加载；改为在插件文件夹中启动Claude Code\n- 更改了 EnterWorktree，使其拒绝穿过项目内符号链接的 `WorktreeCreate` 钩子路径；让钩子打印出真实路径\n- 更改了 tmux 和 iTerm2 的队友，以及使用 ← 打开的代理视图中的新会话，以便在会话的文件夹中启动，而不是在 shell 上次运行 `cd` 的位置启动\n- 更改了终端中的提示建议，在后台或计划任务连续启动 8 次后，刷新频率将降低，从而节省使用量，直到您按下某个键或返回终端为止\n- 将后台 MCP 任务问题上的 Esc 键更改为“稍后回答”：不会向服务器发送任何内容，问题仍保留在 `/tasks` 中\n- 将 `CLAUDE_CODE_MAX_CONTEXT_TOKENS` 更改为也设置以 `claude-` 开头的未识别模型 ID 的上下文窗口，例如网关的 `claude-sonnet-latest`\n- 已将`/login`更改为请求更改您的隐私设置的权限\n- 更改了`/cost`、`$.session.usage()`、`--max-budget-usd`以及成本和令牌指标，以统计mod的`$.model.complete`和`$.model.classify`调用\n- 更改了 Claude Code 沙盒出于自身用途而启动的程序（例如其网络桥接），使其在其环境中运行时无需 Claude Code 的登录令牌和 API 密钥\n- 更改了 ripgrep、本地 git 命令和沙盒运行时自身的帮助程序，使其在其环境中无需 mTLS 客户端密钥的密码即可运行\n- 远程控制：已将 `/resume` 和 `/teleport` 改为在已连接的会话具有共享链接时或无法检查该链接时先断开连接；运行 `/remote-control` 以重新连接\n- 已更改 Web 上的 Claude Code、云端计划任务和 Cowork 云端会话，使其在存在 `sandbox.failIfUnavailable` 的情况下仍可启动：托管容器没有命令沙盒\n- 更改了通过云会话或自托管会话的连接请求设置、权限规则、钩子或状态的请求，使其返回更少或被拒绝；会话中适用的内容保持不变\n- 更改了没有缓存账户数据的`claude -p`，使其在第一次请求之前等待该数据，因此在干净的环境中首次运行时可能会延迟几秒钟才开始\n- 更改了Claude的指令，使其将您需要保留的文件存放在临时草稿纸文件夹之外，该文件夹可以被清空\n- 将应用市场 `ref` 更改为接受分支或标签上任何提交的完整 ID；此版本之前的客户端无法克隆此类锁定，因此以这种方式锁定的应用市场将停止在该处加载\n- 将插件市场和插件下载更改为在`ALL_PROXY`是唯一设置的代理时使用 CONNECT 隧道；拒绝 CONNECT 的代理现在将导致它们失败\n- 更改了 `-p`，并且 SDK 在挂载到容器的工作树或子模块中运行时，仅在文件夹被信任后才应用 `.claude/settings.local.json` 允许规则\n- 将自托管 Runner 改为拒绝会话文件夹或仓库路径为符号链接的会话，但 `checkout` 钩子的签出除外\n- 从云会话中以及“远程控制”下的支出限额和共享预算错误中删除了“请您的管理员提高限额”\n- [VSCode] 在终端显示提示建议的任何位置添加了提示建议：按 Tab 键接受建议的下一个提示；在 Claude Code 的 settings.json 中将 `promptSuggestionEnabled: false` 设置为 false 可关闭提示建议\n- [VSCode] 添加了不会创建 API 密钥的控制台登录方式\n- [VSCode] 添加了一个字段，用于在从 SSH、WSL 和容器窗口中的面板登录到 MCP 服务器时粘贴重定向 URL\n- [VSCode] 修复了在 Claude Code 在另一个模型上重启或通过远程控制切换模型后，模型选择器的勾选标记仍停留在旧模型上的问题\n- [VSCode] 修复了工作量选择器提供高于组织设置的工作量上限或“maxEffortLevel”设置的级别的问题\n- [VSCode] 修复了登录屏幕提供受管`allowedProviders`设置拒绝的登录方式的问题\n- [VSCode] 修复了 MCP 工具的权限提示未说明当安全检查提出问题时 Claude Code 询问原因的问题\n- [VSCode] 修复了无法加载的组织设置消息，该消息提示再次运行命令；现在该消息提示重试，与选项卡的“重试”链接相匹配\n- [VSCode] 改进了针对不受信任文件夹显示的提示：现在会说明扩展被禁用的原因以及如何启用扩展\n- [VSCode] 改进了系统拒绝运行 Claude Code 时显示的错误：现在它会提示您的 IT 团队可以允许被阻止的程序\n- [VSCode] 改进了登录卡，说明当浏览器显示本地主机连接错误时该怎么做\n- [VSCode] 将安装链接的市场确认按钮更改为“信任市场并继续”\n- [网页版 Claude Code] 修复了新云会话将通过工具搜索加载的 MCP 工具描述截断为 4,096 个字符的问题；现在，该限制为 16,384 个字符，与其他 Claude Code 会话相同。\n- [Claude Tag] 修复了粘贴到 Slack 中的工件链接在发帖人的 Claude 登录信息在其组织不管理的工作区中过期时无法显示卡片的问题；现在将显示一张普通卡片。',
-          'h': '73447b74'
+          'body': '## What\'s changed\n\n- Fixed a security issue in how zstd-compressed responses are decoded\n- Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook\n- Added a line under the error shown when your organization\'s policy blocks a request, saying how to continue: run `/rewind` and change the message, or run `/clear`\n- Added a note for Claude when a sandboxed `git checkout`, `git stash` or autostash pull cannot update protected files such as those in `.claude`\n- Fixed `/security-review` and skills\' inline git commands stopping with an error in worktrees of bare repositories, `--separate-git-dir` checkouts and Android `repo` checkouts\n- Fixed subagents with their own model being moved to the plan-mode model when the model setting is `opusplan` or `haiku`\n- Fixed subagents on a different model sizing file reads and MCP results with the main session\'s model\n- Fixed sessions on many third-party gateways and Foundry stopping with a context length error on every turn instead of compacting\n- Fixed recent turns sometimes going missing from a resumed session after Claude Code stopped without a clean exit\n- Fixed shell commands running in the launch directory after the working directory was deleted; the command now fails with a message and can be re-issued\n- Fixed an approved plan edit being lost when the `plansDirectory` folder can\'t take it: the plan is now saved in the default plans folder, and a warning says where and why\n- Fixed a saved `sonnet[1m]` model setting being rewritten on a new install to a model id the API rejects\n- Fixed focus view hiding the reply to your prompt when a scheduled task replied after it\n- Fixed the prompt sometimes missing from a background subagent\'s view when fullscreen is off\n- Fixed long options in lists and permission prompts being partly overwritten when they wrap, and first-run screens losing lines on narrow terminals\n- Fixed startup warnings about permission rules and the \'N MCP servers need authentication\' notice being recorded as seen when they were scrolled out of view\n- Fixed the welcome header showing control characters or splitting across lines when an agent\'s name or the working folder contains them or a line break\n- Fixed the red error shown when Claude tries a command only you can run: a dim line now says it runs only when you type it at the prompt\n- Fixed `/stats` showing an Active days total that was one day too high\n- Fixed `/insights` saying a report was ready when no session qualified for analysis, and writing two values into its HTML report without escaping them\n- Fixed `/voice` saying voice mode changed when managed settings, `--settings`, or the project\'s `.claude/settings.json` or `.claude/settings.local.json` kept it as it was; it now says what holds it\n- Fixed the IDE welcome dialog showing Cmd+Esc for Quick Launch on Windows and Linux\n- Fixed Slack app tips showing when your organization\'s policy denies cloud sessions\n- Fixed `claude purge` hanging silently when there is no terminal to read keys from, and its project picker and `-i` prompts ignoring the keyboard when stdin is piped\n- Fixed `claude plugin eval --output-dir \'\'` writing the report into the current folder; it now exits with an error\n- Fixed `claude -p` text output on a terminal passing control sequences other than text styling; pipes and files are unchanged\n- Fixed leftover `.oauth_refresh.lock.owner.tmp.*` files piling up in the config directory\n- Fixed `/fast` saying \'Fast mode has been disabled by your organization\' under the keyless Console sign-in, where Claude Code had not asked the server\n- Fixed `/model` saying that your organization restricts a model when Claude Code could not check that, for example with no network\n- Fixed \'Sign in with your Console account\' in `/login` replacing your existing login when you pressed Esc right after the browser step\n- Fixed the browser showing the sign-in success page in some cases where sign-in failed or was canceled\n- Fixed `claude auth status` and other short commands leaving a lock behind on a Console profile, which made the next session hang for about a minute\n- Fixed background sessions started on your claude.ai login using (and billing) an API key or token from the shell that started the background service\n- Fixed more cases of a session moving to another sign-in in the background; these moves are now refused, with a message saying what works\n- Fixed a second Enter in the exit dialog stopping background work after the move to the background was refused\n- Fixed token counting on Amazon Bedrock sending the conversation to Bedrock when the `allowedProviders` managed setting does not allow it\n- Fixed AWS `credential_process` helpers and Google Cloud default credentials failing when Claude Code is started without a `HOME` environment variable\n- Fixed a session sometimes going back to an earlier permission mode after a subagent\'s plan was approved\n- Fixed one invalid value in an Agent SDK `applyFlagSettings()` call silently discarding all settings from earlier calls; a call that would do this is now refused with an error\n- Fixed sessions showing as waiting for input when a finished pull request only needed your own review or merge\n- Fixed an unrecognized `teammateMode` settings value being ignored without a warning: `claude -p`, the startup warning and `claude doctor` now list it as a skipped entry (still not applied)\n- Fixed `--worktree` skipping a `WorktreeCreate` hook from a plugin in `CLAUDE_CODE_PLUGIN_SEED_DIR` on the first run in a new home directory\n- Fixed brief-mode sessions, such as Dispatch, sending a reply again after the turn had already replied\n- Fixed Claude saying a working Atlassian, Asana or Sentry connector had failed in cloud sessions when a plugin listed it at a different URL\n- Fixed Claude Desktop and SDK sessions listing a folder\'s own MCP servers (`.mcp.json`, local) as host-added or not at all, and not connecting WebSocket ones, after a folder move or pre-warmed start\n- Fixed `/mcp` still listing a plugin\'s MCP server after a plugin reload removed it while it was connecting\n- Fixed an MCP server staying \'needs authentication\', and its `mcp_tool` hooks being skipped, after a token refresh that was refused only for a moment\n- Fixed MCP elicitation requests being cancelled without asking in headless mode after a server\'s connection was replaced during a tool call\n- Fixed MCP tool calls from an SDK host answering \'Not connected\' after a tool call had reconnected the MCP server\n- Fixed an MCP task getting stuck after its question was closed with Esc or asked again: the footer now says it needs your input, and Enter in `/tasks` shows the question again\n- Fixed background MCP tasks that stopped updating after another call to the same server lost the connection, when a later call reconnects\n- Fixed a background MCP task\'s question opening over a message you were still typing; it now waits until you send or clear the draft, and the spinner and turn timer keep running\n- Fixed `worktree.sparsePaths` and sparse plugin and marketplace clones leaving out the repository\'s root files on older git versions, such as 2.34\n- Fixed self-hosted runner sessions with several repositories being unable to use a repository added mid-session\n- Fixed Claude asking for permission before reading your own artifact or its data\n- Fixed deny and ask permission rules and hooks for the Artifact tool not applying in some cloud sessions\n- Fixed Code Mode scripts ignoring a worktree entered with `EnterWorktree`, writing `~` paths into the project, and leaving `/mcp` showing an MCP server as connected after its sign-in expired\n- Fixed words typed with a Yes at a permission dialog or plan approval not reaching Claude in Code Mode\n- Fixed Claude starting work by itself when you resumed a session that ended during a Code Mode script; it now waits for your next prompt\n- Fixed a missing OpenTelemetry `user_prompt` event for a message sent while tool calls run. The event has `delivery.mode: \'mid_turn\'` and the running turn\'s `prompt.id`\n- Fixed the OpenTelemetry `user_prompt` event leaving out earlier messages\' text when queued messages merged into one turn in VS Code, or when one message had an image\n- Fixed a slash command\'s `allowed-tools` grants applying to background agents woken during or after its turn\n- Fixed `/feedback` and `/bug` to upload other sessions only when they were recorded by the signed-in account or organization\n- Fixed relative deny and ask permission rules (e.g. `Read(./.env)`) no longer covering the project after a `cd`; they now also apply in added directories\n- Fixed deny and ask permission rules starting with `mcp__plugin_*_` missing a plugin\'s MCP server or tool spelled in another letter case\n- Fixed deny rules not being applied to a permission approval that arrives after Claude Code restarts, in self-hosted runner and `claude remote-control` sessions\n- Fixed a case where a committed `.claude/settings.local.json` could be treated as the user\'s own when Claude Code was started in certain subfolders of a repository\n- Fixed some deny and ask rules not applying to certain Bash commands\n- Fixed a gap in Bash permission checks where some compound commands could run without asking; these now ask for permission\n- Fixed a case where a Bash allow rule could run a different program than the one it names\n- Fixed a connector tool\'s approval prompt in cloud sessions being answered automatically while plugins were still loading\n- Fixed some subagents changing an artifact that people outside your organization can see, or uploading files to it, without asking first when an allow rule is set or uploads were approved earlier\n- Fixed some artifact publishes skipping the confirmation for pages that people outside your organization can see when \'don\'t ask again\' had been chosen for Artifact\n- Fixed auto mode judging only the first change to an artifact that people outside your organization can see; its yes now covers that change alone\n- Fixed a managed `strictPluginOnlyCustomization` lock on agents and skills not taking effect in sessions that were already running\n- Fixed sandboxed commands being able to write to the native updater\'s download folder in some cases\n- Fixed a case where the Bash sandbox did not fully protect a worktree\'s settings and hooks\n- Fixed a case where the Bash sandbox did not fully protect a linked worktree\'s shared git folder\n- Fixed `/teleport`\'s stash choice in some unusual git states: it now stops and says what to do\n- Windows: Fixed a start-up stall that could last about a second when a PATH entry sits under a folder your account cannot open\n- Fixed `/resume` on Windows refusing or hiding sessions whose folder was recorded with a different drive-letter case or slashes\n- Fixed an in-session `/resume` on Windows dropping a project\'s saved trust when the session was recorded with a different drive-letter case\n- Linux: Fixed sandboxed Bash commands failing with `bwrap: Can\'t create file` when the working directory was below an `allowRead` folder inside a `denyRead`, such as under a symlinked home directory\n- Fixed Claude Desktop\'s third-party deployments staying on \'Stopping\' until a token renewal finished (once it includes this version)\n- Improved subagents cut off at the output token limit: they are now asked for the whole answer again, more briefly, instead of returning only its end\n- Improved startup with a keyless Console sign-in or other Anthropic profile login: a token that is still valid is read without waiting for the credentials lock\n- Improved the account email check: it now also refuses your email as a client\'s identity in scripts a command runs, file writes, web fetches and MCP calls\n- Improved the `HTTPS authentication failed` message for private plugin marketplaces: it now says git\'s terminal prompts and askpass programs are disabled, and it also appears with newer git versions\n- Improved the add-marketplace confirmations, plugin recommendation prompts and plugin install warning to say that plugins can run code on your computer, with access to your files and shell\n- Improved the `claude --desktop` sign-in error to name the API key, provider or setting that stops a Claude account sign-in from working\n- Improved the `/voice` \'No audio detected\' message on macOS and Windows: it now says where to pick your microphone\n- Improved MCP tasks: Claude is now told when a task is waiting for your answer, and can point you to `/tasks`\n- Improved `claude remote-control`: it now exits with status 4 when it stops by itself (single-session runs still exit 0) and 69 when it can\'t register, so a service manager can start it again\n- Improved the messages shown when a background session can\'t use its session\'s API key or token: they no longer suggest adding the key to settings\n- Improved the bundled dataviz skill\'s part-to-whole advice for static images and for parts with a natural order, such as age bands\n- Changed sandboxed Bash commands to follow the normal permission flow by default; set `sandbox.autoAllowBashIfSandboxed: true` to keep running them without prompts\n- Changed managed settings that turn the sandbox on: to keep commands running without prompts, set `sandbox.autoAllowBashIfSandboxed: true` in your highest-ranking managed source\n- Changed read-only git commands to ask first in a repository that isn\'t the project\'s or one you trusted; name it with `--add-dir`, not the `additionalDirectories` setting, to run them without prompts\n- Changed scheduled tasks and `/loop` to ask before running a skill that declares `allowed-tools` or hooks; add `Skill(name)` to `permissions.allow` to run it unattended\n- Changed \'Always allow\' in Desktop, IDE and SDK hosts: a rule alone is offered only when saving it would allow that command again, so a scheduled task that relied on one can now wait for you\n- Changed the sandbox to refuse sandboxed writes to `.claude` settings, skills, agents, commands and hooks in added directories, as it does in the launch folder\n- Changed worktree isolation: an isolated worktree session or agent is now refused `git bisect run`, `git maintenance register|start` and `scalar`\'s set-up commands, and is told what still works\n- Changed plugin MCP bundles (`.mcpb`, `.dxt`) to unpack under the plugins directory, not `.mcpb-cache` in the plugin\'s folder, so read-only plugin folders load; one fetched by URL downloads again once\n- Changed plugins of a remote marketplace that managed settings declare, enable and list in `prependPlugins` or `appendPlugins` to count as the organization\'s; `pluginDigests` is deprecated and ignored\n- Changed plugin loading to skip, and `claude plugin validate` to report, some unsafe paths and links in a plugin\'s folder\n- Changed nested skill loading: `.claude/skills` folders in `--plugin-dir` plugins no longer load from a session started above them; start Claude Code in the plugin folder instead\n- Changed EnterWorktree to refuse a `WorktreeCreate` hook path that goes through a symlink inside the project; have the hook print the real path\n- Changed tmux and iTerm2 teammates, and new sessions from the agents view opened with ←, to start in the session\'s folder instead of where the shell last ran `cd`\n- Changed prompt suggestions in the terminal to refresh less often after 8 turns in a row started by background or scheduled tasks, saving usage until you press a key or return to the terminal\n- Changed Esc on a background MCP task\'s question to \'answer later\': nothing is sent to the server, and the question stays in `/tasks`\n- Changed `CLAUDE_CODE_MAX_CONTEXT_TOKENS` to also set the context window of unrecognized model IDs that start with `claude-`, such as a gateway\'s `claude-sonnet-latest`\n- Changed `/login` to ask for permission to change your privacy settings\n- Changed `/cost`, `$.session.usage()`, `--max-budget-usd` and the cost and token metrics to count a mod\'s `$.model.complete` and `$.model.classify` calls\n- Changed the programs that Claude Code\'s sandbox starts for its own use, such as its network bridge, to run without Claude Code\'s sign-in tokens and API keys in their environment\n- Changed ripgrep, local git commands and the sandbox runtime\'s own helper programs to run without the mTLS client key\'s passphrase in their environment\n- Remote Control: Changed `/resume` and `/teleport` to disconnect first when the connected session has a share link, or when that can\'t be checked; run `/remote-control` to connect again\n- Changed Claude Code on the web, cloud scheduled tasks and Cowork cloud sessions to start despite `sandbox.failIfUnavailable`: the hosted container has no command sandbox\n- Changed requests for settings, permission rules, hooks or status over a cloud or self-hosted session\'s connection to return less or be refused; what applies in the session is unchanged\n- Changed `claude -p` with no cached account data to wait for that data before its first request, so a first run in a clean environment can start a few seconds later\n- Changed Claude\'s instructions to keep files you\'ll want out of its temporary scratchpad folder, which can be cleared\n- Changed marketplace `ref` to accept the full ID of any commit on a branch or tag; clients before this version can\'t clone such a pin, so a marketplace pinned this way stops loading there\n- Changed plugin marketplace and plugin downloads to use a CONNECT tunnel when `ALL_PROXY` is the only proxy set; a proxy that refuses CONNECT now fails them\n- Changed `-p` and SDK runs in a worktree or submodule mounted into a container to apply `.claude/settings.local.json` allow rules only once the folder is trusted\n- Changed self-hosted runners to refuse a session whose session folder or repository path is a symbolic link, other than a `checkout` hook\'s checkout\n- Removed \'ask your admin to raise it\' from spend limit and shared budget errors in cloud sessions and under Remote Control\n- [VSCode] Added prompt suggestions wherever the terminal shows them: Tab accepts the suggested next prompt; `promptSuggestionEnabled: false` in Claude Code\'s settings.json turns them off\n- [VSCode] Added a Console sign-in that creates no API key\n- [VSCode] Added a field to paste the redirect URL when signing in to an MCP server from the panel in SSH, WSL and container windows\n- [VSCode] Fixed the model picker\'s check mark staying on the old model after Claude Code restarted on another model or the model was switched over Remote Control\n- [VSCode] Fixed the effort selector offering levels above the effort cap set by your organization or the `maxEffortLevel` setting\n- [VSCode] Fixed the sign-in screen offering sign-ins that the managed `allowedProviders` setting refuses\n- [VSCode] Fixed the permission prompt for MCP tools not saying why Claude Code asks when a safety check raises the question\n- [VSCode] Fixed the message for organization settings that couldn\'t load saying to run a command again; it now says to try again, matching the tab\'s Retry link\n- [VSCode] Improved the note shown for an untrusted folder: it now says why the extension is off and how to turn it on\n- [VSCode] Improved the error shown when the system refuses to run Claude Code: it now says your IT team can allow a blocked program\n- [VSCode] Improved the sign-in card to say what to do when the browser shows a connection error for localhost\n- [VSCode] Changed the install link\'s marketplace confirmation button to \'Trust marketplace and continue\'\n- [Claude Code on the web] Fixed new cloud sessions cutting MCP tool descriptions loaded through tool search at 4,096 characters; the limit is now 16,384, as in other Claude Code sessions\n- [Claude Tag] Fixed artifact links pasted in Slack getting no card when the poster\'s Claude sign-in had expired in a workspace their organization doesn\'t manage; a plain card now appears'
         },
         {
           'version': '2.1.323',
@@ -3776,17 +3822,68 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
         {
+          'version': '2.3.2',
+          'title': 'v2.3.2',
+          'date': '2026-11-18',
+          'dateRaw': '2026-11-18T01:35:12Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Bug fixes'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.3.2',
+          'body': '### Highlights\n\n- **GPT-6.2 Prompt Caching**: GPT-6.2 models don\'t cache a system prompt sent in the Responses `instructions` field, so every step re-billed it as uncached input. OpenCode now sends it as a leading developer message on every Responses route, including OpenAI (API key and ChatGPT sign-in), GitHub Copilot, Zen, Azure and OpenRouter, so it is cached from the second step on. ([#64542](https://github.com/anomalyco/opencode/pull/64542), [#64544](https://github.com/anomalyco/opencode/pull/64544))\n\n### Core\n\n#### Bug fixes\n\n- Fixed GPT-6.2 models re-billing the system prompt as uncached input on every step. On GitHub Copilot `gpt-6.2-sol`, uncached input per step dropped from about 14,000 tokens to 3. Compaction through `/responses/compact` now reads the same cached prefix. ([#64542](https://github.com/anomalyco/opencode/pull/64542), [#64544](https://github.com/anomalyco/opencode/pull/64544))\n- `webfetch` structured output no longer repeats the `url` and `format` it was called with. ([#64534](https://github.com/anomalyco/opencode/pull/64534))'
+        },
+        {
+          'version': '2.3.1',
+          'title': 'v2.3.1',
+          'date': '2026-11-18',
+          'dateRaw': '2026-11-18T00:17:57Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Improvements',
+            'Bug fixes',
+            'TUI',
+            'Desktop'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.3.1',
+          'body': '### Highlights\n\n- **Timed-Out Shell Commands Keep Running**: A shell command still running when its timeout expires now moves to the background instead of being killed, so long builds and test runs finish and report back. A foreground `timeout: 0` now means the default 120 seconds. ([#63699](https://github.com/anomalyco/opencode/pull/63699))\n- **Compaction Without the Wait**: As a session nears automatic compaction, the summary is now written in the background, so your next prompt doesn\'t pause for it. Set `compaction.background: false` to turn it off; a background summary that ends up unused still costs tokens. ([#64290](https://github.com/anomalyco/opencode/pull/64290))\n- **GPT 6.2 with ChatGPT Sign-In**: GPT 6.2 Sol and GPT 6.2 Astra, plus their fast variants, now show up in the model picker when you sign in with ChatGPT. ([#64508](https://github.com/anomalyco/opencode/pull/64508))\n- **Update Plugins from Settings**: Open **Settings › Extensions**, click **Check for updates**, then **Update** on any plugin with a new version. ([#64511](https://github.com/anomalyco/opencode/pull/64511))\n- **Comment on Selected Code**: Selecting code in diff and file viewers now just selects it, so you can copy it, and an **Add comment** toolbar appears beside the selection. ([#64410](https://github.com/anomalyco/opencode/pull/64410))\n\n### Core\n\n#### Improvements\n\n- Shell commands still running when their timeout expires now move to the background instead of being killed, in every build. The `shell_timeout_background` flag is gone; configs that still set it keep loading. A foreground `timeout: 0` now uses the default 120 second timeout instead of waiting until the command exits. ([#63699](https://github.com/anomalyco/opencode/pull/63699))\n- Background compaction is now on by default: as a session nears automatic compaction, the summary is written in the background so the next prompt doesn\'t wait for it. Turn it off with `compaction.background: false`; a background summary that is never used still costs tokens. The `experimental.background_compaction` setting is removed. ([#64290](https://github.com/anomalyco/opencode/pull/64290))\n- OpenCode again reads `CLAUDE.md` in any directory that has no `AGENTS.md`, and falls back to `~/.claude/CLAUDE.md` when the global `AGENTS.md` is missing. This also applies to instructions found when the agent reads nested files. Set `OPENCODE_DISABLE_CLAUDE_CODE` or `OPENCODE_DISABLE_CLAUDE_CODE_PROMPT` to skip every `CLAUDE.md`. ([#64474](https://github.com/anomalyco/opencode/pull/64474), [#64533](https://github.com/anomalyco/opencode/pull/64533))\n- Added GPT 6.2 Sol and GPT 6.2 Astra, plus their fast variants, to the ChatGPT model list. ([#64508](https://github.com/anomalyco/opencode/pull/64508))\n- `websearch` now returns a flat list of results, each with its `url`, `title`, `content` and `published` date. ([#64471](https://github.com/anomalyco/opencode/pull/64471))\n- Code Mode and plugins get a simpler structured result from `read`: `text` (with `offset`, `lineCount` and `next`), `directory` (entry names) or `media` (a URI instead of base64). What the model sees is unchanged. ([#64361](https://github.com/anomalyco/opencode/pull/64361))\n- Code Mode programs can use Node\'s `Buffer` for encoding and decoding bytes. ([#64365](https://github.com/anomalyco/opencode/pull/64365))\n- In Code Mode, `search(\'issues\')` now works as shorthand for `search({ query: \'issues\' })`. ([#64347](https://github.com/anomalyco/opencode/pull/64347))\n- Code Mode tool summaries in the catalog can now be up to 500 characters instead of 120, so the model sees more of each tool\'s description. ([#64341](https://github.com/anomalyco/opencode/pull/64341))\n- The `glob` and `grep` tools now report a malformed filename glob (for example `[`) as an error that names the parameter to fix, instead of returning no results. ([#63960](https://github.com/anomalyco/opencode/pull/63960))\n- Server requests that crash now return a 500 with a readable JSON `UnknownError` body instead of an empty one. Storage problems name the cause (for example \'Storage is full\' or \'Storage is read-only\'); other crashes include a `ref` you can find in the server log. ([#64022](https://github.com/anomalyco/opencode/pull/64022))\n- The shell tool description now tells the model that its session ID is in the `OPENCODE_SESSION_ID` environment variable. ([#63718](https://github.com/anomalyco/opencode/pull/63718))\n- Experimental schedules are now automations, behind the `automations` flag (the old `schedules` flag still works). An automation runs on a time, an interval, a cron or a pushed MCP event, and either sends a prompt (to the creating session, another session or a new subagent) or runs a Code Mode program that decides whether to send one. Use `/automation` or the `automation_*` tools. Active or paused plain prompt schedules carry over; schedules with a condition or run limit, and finished ones, are dropped. ([#64160](https://github.com/anomalyco/opencode/pull/64160))\n\n#### Bug fixes\n\n- Fixed finished shell commands leaving zombie processes under `opencode-pty`. The process daemon now cleans each command up when it exits. Background processes started by a successful command (`cmd &`) keep running, and a failed command\'s leftovers are stopped. ([#64266](https://github.com/anomalyco/opencode/pull/64266), [#64251](https://github.com/anomalyco/opencode/pull/64251))\n- Fixed ChatGPT and OpenAI subscription logins losing their sharing-limit safeguards and context caps when a token refresh failed. ([#64470](https://github.com/anomalyco/opencode/pull/64470))\n- Fixed Claude Agent models falling back to a 200K context window when Claude Code adds or renames a model. Thanks @Tarquinen. ([#64107](https://github.com/anomalyco/opencode/pull/64107))\n- Fixed requests being rejected after switching models mid-session on OpenAI-compatible providers. Models that declare a different reasoning field (such as `reasoning_content`) no longer receive `reasoning_details` from earlier turns. ([#64243](https://github.com/anomalyco/opencode/pull/64243))\n- Rejecting a permission request now rejects only the other pending requests from the same step, not every pending request in the session. ([#64343](https://github.com/anomalyco/opencode/pull/64343))\n- Fixed a finished subagent being reported to its parent as still running when its answer quoted the \'Background work still running\' heading. ([#64026](https://github.com/anomalyco/opencode/pull/64026))\n- Fixed ACP clients missing turns that a background shell woke after the original turn ended. ([#64262](https://github.com/anomalyco/opencode/pull/64262))\n- Reading a small text file now applies the default line and byte limits, so a short file with very many lines is paged instead of returned whole. ([#63810](https://github.com/anomalyco/opencode/pull/63810))\n- Paged reads that select a single blank line now return that line instead of an empty result. ([#63809](https://github.com/anomalyco/opencode/pull/63809))\n- `read` now rejects `limit: 0` with \'Limit must be a positive integer\'. ([#63808](https://github.com/anomalyco/opencode/pull/63808))\n- Text files that start with `BM` are no longer mistaken for BMP images, and only real `GIF87a`/`GIF89a` headers count as GIFs, so these files read as text again. ([#63822](https://github.com/anomalyco/opencode/pull/63822), [#63811](https://github.com/anomalyco/opencode/pull/63811))\n- Fixed shell output pages, grep previews, generated titles, read lines and shell output tails splitting emoji and other multi-byte characters, which showed up as `�`. ([#63984](https://github.com/anomalyco/opencode/pull/63984), [#63967](https://github.com/anomalyco/opencode/pull/63967))\n- Shell commands using unknown ANSI-C escapes such as `$\'\\q\'` are now read the same way Bash and Zsh read them, so permission rules can match them. ([#64263](https://github.com/anomalyco/opencode/pull/64263))\n- Session title search is now case-insensitive for non-ASCII letters, such as Cyrillic and accented text. ([#64259](https://github.com/anomalyco/opencode/pull/64259))\n- Fixed `grep` results being dropped when a matching line or path is not valid UTF-8. Thanks @Tarquinen. ([#62249](https://github.com/anomalyco/opencode/pull/62249))\n- The `@` file picker now finds files in hidden folders such as `.github/` and dotfiles such as `.env.example` when file search uses ripgrep (the default on Windows and outside git repos). `.git` and gitignored files stay excluded. Thanks @Tarquinen. ([#62577](https://github.com/anomalyco/opencode/pull/62577))\n- An unreachable well-known integration source is now skipped instead of dropping every well-known source. Thanks @Tarquinen. ([#62578](https://github.com/anomalyco/opencode/pull/62578))\n- A corrupt cached project ID is now ignored instead of being used. Thanks @Tarquinen. ([#62576](https://github.com/anomalyco/opencode/pull/62576))\n- Plugin tool renames from `tool.execute.before` now apply to calls inside Code Mode programs, and a renamed call returns the new tool\'s structured result. ([#63633](https://github.com/anomalyco/opencode/pull/63633), [#64333](https://github.com/anomalyco/opencode/pull/64333))\n- In Code Mode, calling a tool that doesn\'t exist now returns a rejected promise, so `.catch` and `Promise.allSettled` can handle it instead of the whole script failing. ([#64510](https://github.com/anomalyco/opencode/pull/64510))\n- A Code Mode program that only logs no longer shows a stray `null` line before its logs. ([#64344](https://github.com/anomalyco/opencode/pull/64344))\n\n### TUI\n\n#### Improvements\n\n- Permission prompts from a subagent, and from that subagent\'s own subagents, now appear while you view the subagent\'s session. Prompts also show in front of an open composer. ([#64343](https://github.com/anomalyco/opencode/pull/64343))\n- The export dialog under the new designs can save to the system temp directory as well as the project folder. Thanks @Tarquinen. ([#62490](https://github.com/anomalyco/opencode/pull/62490))\n- Removed time to first token (ttft) from the assistant message footer. Tokens per second still shows when `session.tps` is on. ([#63759](https://github.com/anomalyco/opencode/pull/63759))\n\n#### Bug fixes\n\n- When another TUI sharing your tabs closes the session you\'re viewing, closing it here now moves to the neighbouring tab. ([#64261](https://github.com/anomalyco/opencode/pull/64261))\n- Fixed broken characters at the edges of the shell output viewer and the inline shell display when output is long. ([#63967](https://github.com/anomalyco/opencode/pull/63967), [#63984](https://github.com/anomalyco/opencode/pull/63984))\n\n### Desktop\n\n#### Improvements\n\n- You can check for and install plugin package updates from **Settings › Extensions**. Use **Check for updates** to look for new versions, then click **Update** on any plugin that has one. ([#64511](https://github.com/anomalyco/opencode/pull/64511), [#64525](https://github.com/anomalyco/opencode/pull/64525))\n- Selecting code in diff and file viewers now just selects text, so you can copy it. An **Add comment** toolbar appears next to the selection to comment on those lines; line numbers and the gutter `+` still start a comment directly. ([#64410](https://github.com/anomalyco/opencode/pull/64410))\n- Cmd+F (Ctrl+F) now finds text in Markdown, Mermaid, CSV and HTML previews in the side panel, using the same find bar as the code view. ([#63663](https://github.com/anomalyco/opencode/pull/63663))\n- Disconnecting a provider or removing an account in **Settings → Providers** now asks for confirmation first. Disconnecting OpenCode Console says how many providers will stop working. ([#64212](https://github.com/anomalyco/opencode/pull/64212))\n- The model picker\'s variant flyout now follows the keyboard: it opens beside the highlighted row, `→` enters it to pick a variant or toggle Favorite, and `←` or `Escape` goes back. A model\'s Console budget and reset time now show in the flyout. ([#64409](https://github.com/anomalyco/opencode/pull/64409), [#64423](https://github.com/anomalyco/opencode/pull/64423))\n- When **New worktree** is selected for a new session, the composer shows the base branch (`from dev ▾`). Click it to pick another base; the choice applies immediately, and **Use main checkout** switches back. ([#64228](https://github.com/anomalyco/opencode/pull/64228))\n- Redesigned the folder picker for remote servers, with a path bar, up to three recent-project pills plus a **More projects** menu, and a search box that shows the selected folder. ([#64241](https://github.com/anomalyco/opencode/pull/64241))\n- ` ```latex ` and ` ```math ` code fences now render as display math once complete. ([#64380](https://github.com/anomalyco/opencode/pull/64380))\n- The new icon set is now the default, and the **New icons** experiment has been removed. ([#64466](https://github.com/anomalyco/opencode/pull/64466), [#64451](https://github.com/anomalyco/opencode/pull/64451))\n- The copy button under assistant messages is now always visible. Message metadata still appears on hover. ([#64478](https://github.com/anomalyco/opencode/pull/64478))\n- Text files opened in side-panel tabs now have the same copy and download actions as other files. ([#64463](https://github.com/anomalyco/opencode/pull/64463))\n- **Manage models** now shows every provider as a card with a `⋯` menu, whether or not you\'re signed in to OpenCode Console. ([#64235](https://github.com/anomalyco/opencode/pull/64235))\n- The connect provider dialog has a cleaner layout for every sign-in step: breadcrumbs, method icons, full-width device codes, and a \'Signing in from another device?\' row for pasting a redirect URL. ([#63829](https://github.com/anomalyco/opencode/pull/63829))\n- **Collapse long messages** is no longer experimental. It is now a setting under **Timeline** preferences. ([#64441](https://github.com/anomalyco/opencode/pull/64441))\n- Settings now opens on your client preferences, which are listed first, pairing is grouped with Servers, and there\'s a **Help & feedback** link. ([#64440](https://github.com/anomalyco/opencode/pull/64440), [#64220](https://github.com/anomalyco/opencode/pull/64220))\n- Automatic compactions now always show as a single quiet divider; manual and failed compactions still show the full record. ([#64290](https://github.com/anomalyco/opencode/pull/64290))\n- Pairing QR codes can carry a server name, which becomes the paired server\'s default name. ([#64139](https://github.com/anomalyco/opencode/pull/64139))\n- Image attachment thumbnails are larger, with a 3:2 crop, and a failed image no longer moves the message below it when retried. ([#64215](https://github.com/anomalyco/opencode/pull/64215))\n- The Hex voice tip no longer appears when Hex is already installed, its copy now says what Hex is, and tips wait an hour after first launch before the first one shows. ([#64130](https://github.com/anomalyco/opencode/pull/64130), [#64131](https://github.com/anomalyco/opencode/pull/64131), [#63974](https://github.com/anomalyco/opencode/pull/63974), [#63760](https://github.com/anomalyco/opencode/pull/63760))\n- Added missing translations for every non-English language, about 920 strings each. ([#64205](https://github.com/anomalyco/opencode/pull/64205))\n\n#### Bug fixes\n\n- Fixed the desktop app failing to start when `drafts.sqlite` was a symlink to or copy of the CLI\'s `opencode.db`. The desktop now moves that file aside and creates its own, leaving the CLI database untouched. ([#64203](https://github.com/anomalyco/opencode/pull/64203))\n- Switching session tabs with a keyboard shortcut now focuses the composer. ([#64418](https://github.com/anomalyco/opencode/pull/64418))\n- Long prompts now stay folded while a new session is being created. ([#64452](https://github.com/anomalyco/opencode/pull/64452))\n- On macOS, the browser pane stays live while you resize panels instead of showing a still image. ([#64443](https://github.com/anomalyco/opencode/pull/64443))\n- Submenus now open one at a time and swap without blinking, and stay open while you move the pointer across other items to reach them. ([#63739](https://github.com/anomalyco/opencode/pull/63739))\n- Pressing a button now dismisses its tooltip until you hover it again, and copy buttons show \'Copied\' for two seconds, including in the `/btw` panel. ([#63834](https://github.com/anomalyco/opencode/pull/63834))\n- Dialogs now use consistent sizes, corner radius and row styles across the command palette, session search, model picker, location picker and other lists. ([#63432](https://github.com/anomalyco/opencode/pull/63432), [#64216](https://github.com/anomalyco/opencode/pull/64216), [#64206](https://github.com/anomalyco/opencode/pull/64206))\n- Sessions on OpenCode Go no longer show a $0.00 cost. ([#63744](https://github.com/anomalyco/opencode/pull/63744))\n- **Use main checkout** now stays on one line in the branch picker, and wrapped question descriptions have better spacing. ([#64450](https://github.com/anomalyco/opencode/pull/64450), [#64446](https://github.com/anomalyco/opencode/pull/64446))\n- Restyled the **Timeline detail** slider and visibility buttons in settings so they read as clickable. ([#64186](https://github.com/anomalyco/opencode/pull/64186))\n- Polished small details: animated counts no longer look faded at rest, the sidebar resize pill is hidden, the sidebar peek insets match, subagent breadcrumbs show a hover background, and screen readers name the redirect URL field after its label only. ([#64155](https://github.com/anomalyco/opencode/pull/64155), [#64219](https://github.com/anomalyco/opencode/pull/64219), [#64192](https://github.com/anomalyco/opencode/pull/64192), [#63742](https://github.com/anomalyco/opencode/pull/63742), [#63885](https://github.com/anomalyco/opencode/pull/63885))\n\n### SDK\n\n#### Improvements\n\n- Unhandled server errors now return a JSON `UnknownError` body (`message` and `ref`) with status 500 instead of an empty body. ([#64022](https://github.com/anomalyco/opencode/pull/64022))\n- Experimental automation endpoints replace the schedule endpoints: `/api/experimental/automation` and `client.experimental.automation.*` (`create`, `list`, `get`, `pause`, `resume`, `delete`). `/api/experimental/schedule` and `client.experimental.schedule.*` are removed. ([#64160](https://github.com/anomalyco/opencode/pull/64160))\n- Config adds `compaction.background`; `experimental.background_compaction` and the `shell_timeout_background` flag are removed. ([#64290](https://github.com/anomalyco/opencode/pull/64290), [#63699](https://github.com/anomalyco/opencode/pull/63699))\n\n#### Bug fixes\n\n- Apps embedding the SDK with an in-memory database no longer import the user\'s legacy `auth.json` credentials. Only a database file opened by path imports them. ([#63716](https://github.com/anomalyco/opencode/pull/63716))\n\n### Extensions\n\n#### Improvements\n\n- Each tool call inside a Code Mode program now has its own call ID in plugin hooks and traces. Its permission requests still show on the `execute` call\'s row. ([#64324](https://github.com/anomalyco/opencode/pull/64324))\n- Plugin `SessionIdleBackground` items can now be `{ kind: \'codemode\', sessionID, jobID }`, and GUI plugin `BridgeLayout` accepts an optional `clip` rectangle. ([#64343](https://github.com/anomalyco/opencode/pull/64343), [#63819](https://github.com/anomalyco/opencode/pull/63819))\n\n#### Bug fixes\n\n- The browser extension\'s URL bar action buttons are now spaced 6px apart. ([#64214](https://github.com/anomalyco/opencode/pull/64214))'
+        },
+        {
+          'version': '1.19.6',
+          'title': 'v1.19.6',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T07:21:32Z',
+          'tags': [
+            'Desktop',
+            'Improvements',
+            'Core',
+            'Bugfixes'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v1.19.6',
+          'body': '## Desktop\n\n### Improvements\n- OpenCode 1 now offers the upgrade to OpenCode 2.0. OpenCode 2 downloads in the background and installs only when you choose: Restart to upgrade, Upgrade on quit, or Later. Your sessions, projects, and settings are kept. Plugins made for OpenCode 1 need an update.\n\n## Core\n\n### Bugfixes\n- Sessions with many images no longer send oversized requests. When the images in a session\'s history pass 25 MiB, the oldest are replaced with a placeholder.\n- A provider error for a request body that is too large now starts compaction and a retry instead of failing the turn.'
+        },
+        {
           'version': 'daemon-v0.6.0',
-          'title': '进程守护进程-v0.6.0',
+          'title': 'process-daemon v0.6.0',
           'date': '2026-11-16',
-          'dateRaw': '2026-11-16T21:39:24Z',
+          'dateRaw': '2026-11-16T23:36:04Z',
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.6.0',
-          'body': '修复（进程守护进程）：退出时回收 shell 命令（协议 9，发布…',
-          'h': '7ed78966'
+          'body': 'opencode-pty 0.6.0 (protocol 9) from packages/process-daemon, published to npm as @opencode/pty@0.6.0.'
+        },
+        {
+          'version': 'daemon v0.6.0',
+          'title': 'process-daemon v0.6.0',
+          'date': '2026-11-16',
+          'dateRaw': '2026-11-16T23:36:04Z',
+          'tags': [],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/process-daemon-v0.6.0',
+          'body': 'opencode-pty 0.6.0 (protocol 9) from packages/process-daemon, published to npm as @opencode/pty@0.6.0.'
         },
         {
           'version': '2.3.0',
@@ -9265,42 +9362,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.30',
           'body': '- Fixed bash permission handling for more accurate command pattern matching\n- Fixed application hanging after exit, improving shutdown reliability\n- Added optional headers field to model configuration for enhanced API customization\n- Fixed hanging permission prompts in headless mode, enabling better automation support\n- Improved Deno LSP server detection and configuration for better TypeScript/JavaScript support\n- Enhanced frontmatter error messages for clearer configuration file troubleshooting'
-        },
-        {
-          'version': '0.15.29',
-          'title': 'v0.15.29',
-          'date': '2025-10-30',
-          'dateRaw': '2025-10-30T06:49:45Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.29',
-          'body': '- Added optional timeout field to MCP config to allow users to use slow responding servers\n- Added doom loop detection\n- Added positional argument support to slash commands'
-        },
-        {
-          'version': '0.15.28',
-          'title': 'v0.15.28',
-          'date': '2025-10-29',
-          'dateRaw': '2025-10-29T19:01:03Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.28',
-          'body': '- Fixed parcel watcher issue by adding missing platform-specific watcher dependencies for Darwin (macOS) and Linux systems'
-        },
-        {
-          'version': '0.15.27',
-          'title': 'v0.15.27',
-          'date': '2025-10-29',
-          'dateRaw': '2025-10-29T18:41:33Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.27',
-          'body': '- Only generate user message summary if no diffs are present, improving performance and reducing unnecessary AI calls\n- Enhanced desktop message component to support both user and assistant messages with improved UI rendering\n- Added user message display in session history with text truncation for better readability\n- Improved message part visibility controls with `hideDetails` prop replacing `readonly` for better UI state management'
-        },
-        {
-          'version': '0.15.26',
-          'title': 'v0.15.26',
-          'date': '2025-10-29',
-          'dateRaw': '2025-10-29T16:59:51Z',
-          'tags': [],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v0.15.26',
-          'body': '- Added enterprise page with contact form for organizations to request enterprise solutions\n- Added enterprise FAQ section covering data ownership, SSO integration, and self-hosting options\n- Added testimonial section to enterprise page with customer quote\n- Fixed form submission functionality for enterprise inquiries\n- Added enterprise navigation link to header menu'
         }
       ]
     },
@@ -9312,8 +9373,28 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
+        {
+          'version': '2.6.3',
+          'title': '@moonshot-ai/kimi-code@2.6.3',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T15:15:21Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.3',
+          'body': '### Patch Changes\n\n- [#4994](https://github.com/MoonshotAI/kimi-code/pull/4994) [`2016917`](https://github.com/MoonshotAI/kimi-code/commit/20169174c815ada19093bc687b1433ef8b52f8f9) Thanks [@sailist](https://github.com/sailist)! - 修复前台 Shell 命令输出重复且加载状态不消失的问题。\n\n- [#4982](https://github.com/MoonshotAI/kimi-code/pull/4982) [`9d7f9af`](https://github.com/MoonshotAI/kimi-code/commit/9d7f9af9fba7d1282873a31ec8486f9ea956c591) Thanks [@sailist](https://github.com/sailist)! - 修复了若干已知的问题。\n\n- [#4999](https://github.com/MoonshotAI/kimi-code/pull/4999) [`9bf2891`](https://github.com/MoonshotAI/kimi-code/commit/9bf2891bc629bd0fa6b826b7c10762e4a45765be) Thanks [@kimi-agent-bot](https://github.com/kimi-agent-bot)! - 修复 Windows 上 WebBridge 守护进程运行时无法更新的问题。\n\n- [#4995](https://github.com/MoonshotAI/kimi-code/pull/4995) [`f6996a9`](https://github.com/MoonshotAI/kimi-code/commit/f6996a9292cd970491247d00783f18e92991f417) Thanks [@sailist](https://github.com/sailist)! - 修复每轮回复完成后外部 Stop 钩子未执行的问题。\n\n- [#4989](https://github.com/MoonshotAI/kimi-code/pull/4989) [`9c75e5a`](https://github.com/MoonshotAI/kimi-code/commit/9c75e5aa97e6720add1f7e5833d5b31d99bb25c4) Thanks [@sailist](https://github.com/sailist)! - 修复恢复或创建会话分支时后台任务通知意外触发新回复的问题。\n\n- [#4992](https://github.com/MoonshotAI/kimi-code/pull/4992) [`0617b20`](https://github.com/MoonshotAI/kimi-code/commit/0617b20ce76cd4aaf6be8c8b6093b424833e2746) Thanks [@sailist](https://github.com/sailist)! - 修复后台通知导致 Tower 任务意外停止的问题。',
+          'h': '97f510d8'
+        },
+        {
+          'version': '2.6.3',
+          'title': '@moonshot-ai/kimi-code@2.6.3',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T15:28:26Z',
+          'tags': [],
+          'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.3',
+          'body': 'Patch Changes\n#4994 2016917 Thanks @sailist ! - 修复前台 Shell 命令输出重复且加载状态不消失的问题。\n#4982 9d7f9af Thanks @sailist ! - 修复了若干已知的问题。\n#4999 9bf2891 Thanks @kimi-agent-bot ! - 修复 Windows 上 WebBridge 守护进程运行时无法更新的问题。\n#4995 f6996a9 Thanks @sailist ! - 修复每轮回复完成后外部 Stop 钩子未执行的问题。\n#4989 9c75e5a Thanks @sailist ! - 修复恢复或创建会话分支时后台任务通知意外触发新回复的问题。\n#4992 0617b20 Thanks @sailist ! - 修复后台通知导致 Tower 任务意外停止的问题。',
+          'h': '3d37fa8'
+        },
         {
           'version': '2.6.2',
           'title': '@moonshot-ai/kimi-code@2.6.2',
@@ -10521,8 +10602,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
+        {
+          'version': '0.2.2-rc.4',
+          'title': 'v0.2.2-rc.4',
+          'date': '2026-11-17',
+          'dateRaw': '2026-11-17T17:53:41Z',
+          'tags': [
+            '问题修复',
+            'Bug Fixes'
+          ],
+          'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.4',
+          'body': '问题修复\n\n- 优化模型请求收到异常消息响应时的表现。 @turtle2099\n- 修复 LiveShare 在桌面端无法创建分享的问题。 @mektpoy\n\nBug Fixes\n\n- Improve handling of unexpected model responses. by @turtle2099\n- Fix LiveShare failing to create shares in the desktop app. by @mektpoy\n\nFull Changelog: https://github.com/deepseek-ai/deepseek-harness/compare/dsh-v0.2.2-rc.3...dsh-v0.2.2-rc.4'
+        },
         {
           'version': '0.2.2-rc.3',
           'title': 'v0.2.2-rc.3',
@@ -11135,8 +11228,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
+        {
+          'version': '0.5.14',
+          'title': '日常优化',
+          'date': '2026-11-17',
+          'dateRaw': '2026年11月17日',
+          'tags': [
+            '日常优化',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '日常优化\n修复\n- 修复模型校验问题。\n2026年11月16日'
+        },
         {
           'version': '0.5.13',
           'title': '日常优化',
@@ -11147,7 +11252,7 @@ window.CHANGELOG = {
             '修复'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
-          'body': '日常优化\n修复\n- 修复部分子智能体的模型或配置异常导致主会话无法启动或继续对话的问题。\n- 修复频繁切换任务、后台通知集中更新或会话内容加载失败后，部分任务无法打开的问题。\n- 修复设备信息准备较慢时，活动通知或权益提醒请求提前超时的问题。\n- 修复部分模型的上下文超限错误未被正确识别，导致无法按预期触发压缩恢复的问题。\n- 修复切换模型或调整上下文窗口后，上下文用量计算可能沿用旧配置的问题。\n- 修复从已压缩的会话派生任务或恢复到指定消息时，部分保留消息的关联关系异常的问题。\n2026年11月14日'
+          'body': '日常优化\n修复\n- 修复部分子智能体的模型或配置异常导致主会话无法启动或继续对话的问题。\n- 修复频繁切换任务、后台通知集中更新或会话内容加载失败后，部分任务无法打开的问题。\n- 修复部分用户无法收到权益活动领取通知的问题。\n- 修复部分模型的上下文超限错误未被正确识别，导致无法按预期触发压缩恢复的问题。\n- 修复切换模型或调整上下文窗口后，上下文用量计算可能沿用旧配置的问题。\n- 修复从已压缩的会话派生任务或恢复到指定消息时，部分保留消息的关联关系异常的问题。\n2026年11月14日'
         },
         {
           'version': '0.5.12',
@@ -11575,7 +11680,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
         {
           'version': '1.40.1',
@@ -12247,7 +12352,7 @@ window.CHANGELOG = {
             '功能更新'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lca\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\\'config\\\':\\\'$3:props:config\\\',\\\'prev\\\':null,\\\'next\\\':null,\\\'basePath\\\':\\\'\\\'}]\\nc2:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'AI 会话体验优化：\\\'}]\\nc3:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化输入框超出字数上限时的交互，超出部分将自动转换为文件附件。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持更高效地折叠冗长会话流。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化触发同步时的压缩策略，减少额外开销并提升处理效率。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化新会话首次发送消息的等待时间，提升首次交互响应速度。\\\'}],\\\'\\\\n\\\']}]\\nc4:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'memory-system-self-evolution\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc5:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'记忆系统自进化：\\\'}]\\nc6:[\\\'$\\\',\\\'span\\\',null,{\\\'data-as\\\':\\\'p\\\',\\\'children\\\':\\\'上下文理解更精准、长期记忆更持久；优化记忆生命周期管理与多维追踪，个性化响应更连贯。\\\'}]\\nc7:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'performance-and-stability\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc8:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'性能与稳定性：\\\'}]\\nc9:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':[[\\\'$\\\',\\\'strong\\\',null,{\\\'children\\\':\\\'桌面端架构\\\'}],\\\'：提升兼容性'
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bf:[\\\'$\\\',\\\'$Lca\\\',null,{\\\'content\\\':\\\'$6:0:props:initialState:content\\\',\\\'headings\\\':\\\'$6:0:props:initialState:headings\\\',\\\'page\\\':\\\'$6:0:props:initialState:page\\\',\\\'navTree\\\':\\\'$6:0:props:initialState:navTree\\\',\\\'config\\\':\\\'$3:props:config\\\',\\\'prev\\\':null,\\\'next\\\':null,\\\'basePath\\\':\\\'\\\'}]\\nc2:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'AI 会话体验优化：\\\'}]\\nc3:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化输入框超出字数上限时的交互，超出部分将自动转换为文件附件。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持更高效地折叠冗长会话流。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化触发同步时的压缩策略，减少额外开销并提升处理效率。\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化新会话首次发送消息的等待时间，提升首次交互响应速度。\\\'}],\\\'\\\\n\\\']}]\\nc4:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'memory-system-self-evolution\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc5:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'记忆系统自进化：\\\'}]\\nc6:[\\\'$\\\',\\\'span\\\',null,{\\\'data-as\\\':\\\'p\\\',\\\'children\\\':\\\'上下文理解更精准、长期记忆更持久；优化记忆生命周期管理与多维追踪，个性化响应更连贯。\\\'}]\\nc7:[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'performance-and-stability\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}]\\nc8:[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'性能与稳定性：\\\'}]\\nc9:[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':[[\\\'$\\\',\\\'strong\\\',null,{\\\'children\\\':\\\'桌面端架构\\\''
         }
       ]
     },
@@ -12259,7 +12364,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
         {
           'version': '3.4.18',
@@ -14378,189 +14483,139 @@ window.CHANGELOG = {
       ]
     },
     {
-      'id': 'traework',
-      'name': 'TraeWork',
+      'id': 'trae',
+      'name': 'TRAE',
       'vendor': '字节跳动',
-      'kind': 'trae',
-      'changelogUrl': 'https://docs.trae.cn/work_changelog',
+      'kind': 'traecn',
+      'changelogUrl': 'https://www.trae.cn/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 17:28',
       'entries': [
         {
-          'version': '0.1.49-0.1.52',
-          'title': '2026 年 08 月 21 日',
-          'date': '2026-08-21',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#huaPTCHgy',
-          'body': 'TraeWork 桌面版 v0.1.49 ~ 0.1.52 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 支持 “电脑控制” 功能。详情参考 电脑控制（Computer Use） 。\n- 支持编辑 Design 模式中生成的图片。详情参考 在画布中预览并管理设计成果 。\n- 支持将对话框最小化为悬浮窗小标。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.47-0.1.48',
-          'title': '2026 年 08 月 11 日',
-          'date': '2026-08-11',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hsg4AFDKF',
-          'body': 'TraeWork 桌面版 v0.1.47 ~ 0.1.48 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 上线 “我的文件” 功能。详情参考 产物空间 。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.44-0.1.46',
-          'title': '2026 年 08 月 07 日',
-          'date': '2026-08-07',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hFhvF7rlU',
-          'body': 'TraeWork 桌面版 v0.1.44 ~ 0.1.46 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 支持对话分享功能。详情参考 分享对话 。\n- 灰度上线插件自动推荐功能。\n- 输入框 / 、附件上传按钮整合进「+」按钮。\n- 上线办公助理功能。详情参考 办公助理 。\nTRAE 移动端 App v0.0.16 版本正式发布。以下是变更细节：\n- 支持直接在对话流内预览视频产物。点击视频卡片即可预览。'
-        },
-        {
-          'version': '0.1.40-0.1.43',
-          'title': '2026 年 07 月 31 日',
-          'date': '2026-07-31',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hHM6DzqFE',
-          'body': 'TraeWork 桌面版 v0.1.40 ~ 0.1.43 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 上线以积分为核心的计费模式。详情参考 套餐与计费 。\n- 上线模板库。详情参考 模板库 。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.0.15',
-          'title': '2026 年 07 月 27 日',
-          'date': '2026-07-27',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hUPS5pApu',
-          'body': 'TRAE 移动端 App v0.0.15 版本正式发布：\n- 支持在对话输入框中选择插件来调用。'
-        },
-        {
-          'version': '0.1.35-0.1.39',
-          'title': '2026 年 07 月 21 日',
-          'date': '2026-07-21',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hCNS4V0EK',
-          'body': 'TraeWork 桌面版 v0.1.35 ~ 0.1.39 版本正式发布，TraeWork 网页版同步更新。以下是变更细节：\n- 上线插件市场。详情参考 插件 。\n- 支持视频生成能力。\n- 修复了已知问题。\nTRAE 移动端 App v0.0.14 版本正式发布：\n- 新增 “一键到底” 按钮：当向上阅读离开底部时，会出现该按钮，点击后可立即回到最新内容。'
-        },
-        {
-          'version': '0.1.24-0.1.34',
-          'title': '2026 年 07 月 14 日',
-          'date': '2026-07-14',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hRDQcmOpU',
-          'body': 'TraeWork 桌面版 v0.1.24 ~ 0.1.34 版本、TRAE 移动端 App v0.0.12 ～ 0.0.13 版本正式发布。TraeWork 网页版同步更新。以下是变更细节：\n- 支持预览 TRAE 移动端 App 对话流中的图片：对话流及语音讨论记录中的图片支持缩略图预览与大图查看切换，支持左右滑翻阅。\n- 支持分享 HTML 格式的产物。\n- 优化任务搜索与置顶：支持按任务标题和发出的对话内容，搜索历史任务/对话信息，支持将任务置顶或取消置顶。\n- 新增站内信消息通知：官方活动、重要通知等，可通过站内信获悉。'
-        },
-        {
-          'version': '0.0.10-0.0.11',
-          'title': '2026 年 07 月 07 日',
-          'date': '2026-07-07',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hkPh6Df8j',
-          'body': 'TRAE 移动端 App v0.0.10 ～ 0.0.11 版本正式发布。以下是变更细节：\n- 语音讨论过程支持最小化对话页，恢复后即可继续对话。\n- 语音讨论过程支持拍照，上传附件或图片。\n- 支持通过抖音登录。'
-        },
-        {
-          'version': '0.1.21-0.1.23',
-          'title': '2026 年 06 月 24 日',
-          'date': '2026-06-24',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hAo3a6Sf4',
-          'body': '- TraeWork 桌面版 v0.1.21 ~ 0.1.23 版本正式发布，网页版同步更新。以下是变更细节：\n- 发布 Design 模式。Design 模式是 TraeWork 中专用于生成和迭代界面设计的工作模式。你可以输入设计需求、上传参考图或选择设计系统，让 AI 生成页面原型或高保真设计。详情参考《 Design 模式 》和《 设计系统 》。\n- 优化语音讨论功能：支持联网搜索、读取调用项目级记忆等。\n- 支持记忆。你可以将对后续协作有价值的偏好与规则保存为记忆。详情参考《 记忆 》。\n- TRAE 移动端 App v0.0.9 版本正式发布。以下是变更细节：\n- 支持仓库检索、分支检索。\n- 产物默认为 HTML 格式。'
-        },
-        {
-          'version': '0.1.19-0.1.20',
-          'title': '2026 年 06 月 18 日',
-          'date': '2026-06-18',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hQbNiilHJ',
-          'body': 'TraeWork 桌面版 v0.1.19 ~ 0.1.20 版本正式发布，网页版同步更新。以下是变更细节：\n- 逐步灰度 Agent 删除工具的自动执行，其删除的文件，可以在系统回收站/废纸篓中找到。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.18',
-          'title': '2026 年 06 月 09 日',
-          'date': '2026-06-09',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hPmTQyR5k',
-          'body': 'TraeWork 桌面版 v0.1.18 版本正式发布，网页版同步更新。以下是变更细节：\n- TRAE SOLO 升级为 TraeWork。\n- TraeWork 支持企业版账号登录。'
-        },
-        {
-          'version': '0.1.16-0.1.17',
-          'title': '2026 年 06 月 08 日',
-          'date': '2026-06-08',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hSPdFGGpW',
-          'body': 'TRAE SOLO 桌面版 v0.1.16 ~ 0.1.17 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.13-0.1.15',
-          'title': '2026 年 06 月 01 日',
-          'date': '2026-06-01',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#hqqBbnz4W',
-          'body': 'TRAE SOLO 桌面版 v0.1.13 ~ 0.1.15 版本正式发布，网页版同步更新。以下是变更细节：\n- TRAE SOLO 桌面版支持在内置浏览器选中元素，并添加到对话/评论。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.10-0.1.12',
-          'title': '2026 年 05 月 25 日',
-          'date': '2026-05-25',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#731285ca',
-          'body': 'TRAE SOLO 桌面版 v0.1.10 ~ 0.1.12 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.8-0.1.9',
-          'title': '2026 年 05 月 05 日',
-          'date': '2026-05-05',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#019b3fe7',
-          'body': 'TRAE SOLO 桌面版 v0.1.8 ~ 0.1.9 版本正式发布，网页版同步更新。以下是变更细节：\n- TRAE SOLO 移动版上线，支持多端设备互联、远程操控电脑端、实时查看任务进度等。详情参考 TraeWork 移动版 。\n- 支持工作树（Worktree）功能，让不同的任务在相互隔离的 Git 环境中执行。它为每个任务创建一个独立的目录，其中包含专属的文件、依赖项和代码变更，从而确保你的主工作目录保持整洁且不受干扰。详情参考 工作树 。\n- 支持语音讨论功能。你可以通过语音与 AI 进行交互式讨论，适用于需求设计、问题分析、想法梳理等需要反复沟通的协作场景。详情参考 语音讨论 。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.6-0.1.7',
-          'title': '2026 年 04 月 30 日',
-          'date': '2026-04-30',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#b5ef0b6e',
-          'body': 'TRAE SOLO 桌面版 v0.1.6 ~ 0.1.7 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.5',
-          'title': '2026 年 04 月 16 日',
-          'date': '2026-04-16',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#3cedade6',
-          'body': 'TRAE SOLO 桌面版 v0.1.5 版本正式发布，网页版同步更新。以下是变更细节：\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.1-0.1.4',
-          'title': '2026 年 04 月 14 日',
-          'date': '2026-04-14',
-          'dateRaw': '',
-          'tags': [],
-          'url': 'https://docs.trae.cn/work_changelog#6340e821',
-          'body': 'TRAE SOLO 桌面版 v0.1.1 ~ 0.1.4 版本正式发布，网页版同步更新。以下是变更细节：\n- 上线优速通抽奖活动。\n- 修复了已知问题。'
-        },
-        {
-          'version': '0.1.0',
-          'title': '2026 年 03 月 31 日',
-          'date': '2026-03-31',
-          'dateRaw': '',
+          'version': '3.4.15',
+          'title': 'v3.4.15',
+          'date': '2026-11-08',
+          'dateRaw': '2026-11-08',
           'tags': [
-            '双端协同',
-            '丝滑交互',
-            '双模式'
+            '新增功能',
+            '体验优化',
+            '问题修复'
           ],
-          'url': 'https://docs.trae.cn/work_changelog#00b100d6',
-          'body': 'TRAE SOLO 桌面版 v0.1.0 版本与网页版正式发布。\nTRAE SOLO 以智能体为核心，打造与 AI 协作的全新方式：AI 不再局限于响应指令，而是能够主动理解、拆解并执行复杂任务。\n- 双端协同 ：网页版与桌面版可协同使用，确保你的任务不中断，随时随地都能查看进度、处理工作。\n- 丝滑交互 ：全新的三栏式工作区，让你能够集中管理项目文件、实时查看任务进度、轻松集成 Skill 等工具。你只需通过对话描述需求，AI 便会自动调用所需工具来执行任务并交付结果。\n- 双模式 ：支持在通用任务（Work 模式）和开发场景（Code 模式）之间自由切换。无论是写方案、做分析还是写代码，都可以一站式完成，为开发工程师、产品经理、数据分析师等不同角色的工作提供便利。\n更新时间: 2026-10-09 02:13\n文档对您有帮助吗?\n有帮助 无帮助\n上一篇\n快速开始：TRAE 移动端\n下一篇\n办公助理使用场景推荐\n2026 年 08 月 21 日\n2026 年 08 月 11 日\n2026 年 08 月 07 日\n2026 年 07 月 31 日\n2026 年 07 月 27 日\n2026 年 07 月 21 日\n2026 年 07 月 14 日\n2026 年 07 月 07 日\n2026 年 06 月 24 日\n2026 年 06 月 18 日\n2026 年 06 月 09 日\n2026 年 06 月 08 日\n2026 年 06 月 01 日\n2026 年 05 月 25 日\n2026 年 05 月 05 日\n2026 年 04 月 30 日\n2026 年 04 月 16 日\n2026 年 04 月 14 日\n2026 年 03 月 31 日'
+          'url': 'https://www.trae.cn/changelog',
+          'body': '新增功能\n- 支持在“我的站点”和任务面板中管理一键部署站点，查看详情、历史、流量与日志，并执行重新部署、访问权限调整和删除等操作【灰度中】。\n- 支持从 HTML 分享界面发起一键部署，并自动带入来源会话与文件上下文供用户确认后发送【灰度中】。\n- 支持【仅企业版】为企业智能体绑定当前成员的个人 MCP 服务，并按成员、智能体及企业策略隔离可用工具【灰度中】。\n- 支持为符合条件且从未安装过 Computer Use 的客户端自动完成首次安装，同时保留用户后续禁用或卸载的选择【灰度中】。\n- 支持在消息中查看已完成后台命令的末尾输出，并可在读取失败后重试。\n体验优化\n- 优化浏览器操作对表单、阴影 DOM、文本等待、页面搜索、文件上传和快捷键的处理，减少超时、卡住输入及目标识别失败。\n- 优化 macOS 浏览器预览在任务结束后的收尾体验，短暂保留最后画面并平滑关闭，恢复任务时可立即继续预览。\n- 优化更新说明的展示效果，支持安全渲染标题、列表、引用、代码块和链接，并限制异常超大内容。\n- 优化企业登录域名填写流程，优先沿用最近成功使用的地址，并在无历史记录时预填部署默认地址。\n- 优化\u0000项目与默认项目任务删除流程，先清理关联部署站点，清理失败时保留原项目或任务以避免遗留资源。\n问题修复\n- 修复受限工作区中内置 MCP 功能无法激活的问题，同时保留原有功能、应用及系统权限控制。\n- 修复 Windows 关闭 GPU 加速时浏览器原生预览无法使用的问题，失败时自动回退到兼容预览。\n- 修复侧边对话命令输出可能打开到错误会话或重复标签的问题，并隐藏无法读取历史输出的无效入口。\n- 修复恢复会话后目标任务状态可能缺失或被旧消息覆盖的问题，确保暂停、继续和完成状态以最新结果为准。\n- 修复 Computer Use 截图错误直接显示内部错误文本的问题，现在会展示对应的本地化提示。\n- 修复助理生成的 HTML 文件位于独立工作目录时分享失败的问题，并在文件数量超限时提供明确提示。'
+        },
+        {
+          'version': '3.4.15',
+          'title': 'v3.4.15',
+          'date': '2026-11-03',
+          'dateRaw': '2026-11-03',
+          'tags': [
+            '新增功能',
+            '体验优化',
+            '问题修复',
+            '用户活动'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '新增功能\n- 支持在首次启动时完成登录、迁移 IDE 配置与快捷键，并通过示例灵感快速开始任务。\n- 支持在模型选择器中通过独立开关切换 Auto 模式，并在暂无可用手动模型时说明原因。\n- 支持将排队消息作为并行子任务发送，无需中断当前任务【灰度中】\n- 支持在独立面板中查看子任务状态、详情与执行进度【灰度中】\n- 支持首次安装插件后在个人助理会话中查看插件能力与使用指引【灰度中】\n- 支持【仅企业版】在“我的空间”中访问飞书内容标签页【灰度中】\n体验优化\n- 优化命令执行卡片，折叠时突出执行目的与命令摘要，展开后集中展示停止、后台运行、复制和终端操作。\n- 优化流式 Markdown 中 LaTeX 公式与代码块的解析，减少未完成公式闪烁并提升长回复渲染效率。\n- 优化远程 SSH 连接恢复，连接失效或恢复中的请求会安全取消并重新建立完整连接。\n- 优化 HTTP 类型 MCP 服务的连接恢复，在会话失效后自动重新握手，并重试工具、资源与通知请求。\n- 优化 Hooks 配置入口，在 Agent 窗口中可直接定位配置文件，并在创建失败时给出明确提示。\n问题修复\n- 修复 Windows 中会话生成图片因路径信息丢失而无法预览的问题。\n- 修复已移交的会话仍可能出现在 IDE 会话列表、被切换或恢复的问题。\n- 修复恢复历史会话时运行环境识别不准确，可能导致本地、远程或 SSH 会话初始化失败的问题。\n- 修复即时通讯来源的后续回复在内部消息触发新轮次后可能无法回传原会话的问题。\n- 修复 Linux 浮动快捷输入窗口重新打开后可能空白、无法聚焦或无法输入的问题。\n- 修复远程环境中的 Agent 头像可能因路径格式或缓存写入失败而无法显示的问题。\n用户活动\n- TRAE 官方训练营第二期火热报名中，2 节课教你用 TRAE 打造个人 Agent 助手，立即报名： 报名链接问卷'
+        },
+        {
+          'version': '3.4.14',
+          'title': 'v3.4.14',
+          'date': '2026-11-02',
+          'dateRaw': '2026-11-02',
+          'tags': [
+            '体验优化'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '体验优化\n- 优化项目助手会话头部的免费标识展示，与个人助手共享同一剩余免费次数状态。\n- 优化金色更新横幅在悬停和按下状态下的文字显示\u0000，提升阅读清晰度。'
+        },
+        {
+          'version': '3.4.13',
+          'title': 'v3.4.13',
+          'date': '2026-10-31',
+          'dateRaw': '2026-10-31',
+          'tags': [
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '体验优化\n- 优化个人助理限免额度展示与提醒，侧边入口和助理页仅在确认仍有额度时显示限免标识，额度用尽后会提示后续使用将消耗积分。\n- 优化悬浮任务提醒与任务卡片跳转，提醒加载较慢或临时切换面板时不易丢失，并可正确打开本地、远程和 SSH 任务。\n问题修复\n- 修复桌面端评测模式下部分模型与对话请求未持续带上评测设置的问题，减少评测结果与所选配置不一致的情况。'
+        },
+        {
+          'version': '3.4.12',
+          'title': 'v3.4.12',
+          'date': '2026-10-30',
+          'dateRaw': '2026-10-30',
+          'tags': [
+            '新增功能',
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '新增功能\n- 支持在桌面悬浮球设置中选择默认打开的面板类型（助手面板或任务面板），并可自定义全局唤起快捷键。\n- 支持在浏览器预览页面上使用画中画模式，将 AI 操作的浏览器页面悬浮展示在桌面上。\n- 支持在插件详情页中单独开关插件的各项 Skill 能力。\n体验优化\n- 优化悬浮球任务通知的入场和退场动画，新增弹跳回弹效果。\n- 优化更新通知中版本发布说明的展示，改用服务端结构化预览数据以提高可靠性。\n- 优化模型列表在打开时自动刷新最新可用模型，减少手动操作。\n- 优化 TRAE Knowledge 面板的激活引导流程，简化为单步启用操作。\n- 优化文件编辑超时场景下的恢复机制，在写入超时后自动校验磁盘内容以避免误回滚。\n- 优化 AI 删除文件后变更差异面板中的展示，删除记录不再残留在文件变更列表中。\n- 优化画中画模式下编辑器标签栏的展示，隐藏正在悬浮预览的浏览器标签页以减少干扰。\n问题修复\n- 修复悬浮球快捷键默认值与系统快捷键冲突的问题，默认快捷键调整为 Alt+Shift+Space。'
+        },
+        {
+          'version': '3.4.11',
+          'title': 'v3.4.11',
+          'date': '2026-10-28',
+          'dateRaw': '2026-10-28',
+          'tags': [
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '体验优化\n- 优化窗口重新获得焦点时的实时同步策略，减少不必要的历史数据刷新请求。\n问题修复\n- 修复侧边对话、快捷对话等非委派子会话完成时，结果通知被错误发送到父会话收件箱的问题。'
+        },
+        {
+          'version': '3.4.10',
+          'title': 'v3.4.10',
+          'date': '2026-10-26',
+          'dateRaw': '2026-10-26',
+          'tags': [
+            '新增功能',
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '新增功能\n- 支持在对话面板通过工具快捷入口直接打开浏览器、终端等常用工具。\n- 支持在更新按钮上悬停预览当前版本的更新说明。\n- 支持为自定义模型配置推理强度选项。\n- 支持通过动态配置活动在版本升级或启动时自动重置模型选择。\n- [Beta] 支持助手工作台面板，集中展示任务概览和产出物。\n- [Beta] 支持浮窗助手消息通知及未读计数。\n体验优化\n- 优化 Windows 安装程序，默认启用右键菜单中的「用 Trae 打开」选项。\n- 优化助手对话中的时间锚点显示，方便区分不同轮次的消息时间。\n- 优化原生浏览器预览窗口的置顶、拖拽和调整大小体验。\n- 优化账号切换时 AI 服务运行时的自动恢复流程，减少需要手动重启的情况。\n问题修复\n- 修复模型重置失败时阻塞账号切换和新建对话的问题。\n- 修复切换推理模型后推理强度设置未保留的问题。\n- 修复企业策略刷新时 MCP 服务意外停止的问题。\n- 修复项目重命名后在工作区初始化时名称丢失的问题。'
+        },
+        {
+          'version': '3.4.9',
+          'title': 'v3.4.9',
+          'date': '2026-10-26',
+          'dateRaw': '2026-10-26',
+          'tags': [
+            '新增功能',
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '新增功能\n- 支持在更新提示中预览目标版本的更新日志，悬停更新按钮即可查看新版本亮点。\n- 支持在聊天面板中通过工具快捷入口直接打开文件、浏览器、终端等工具面板，无需切换侧边栏。\n- 支持 Windows 卸载后自动打开用户反馈调查页面。\n- 支持在 Windows 安装时默认勾选右键菜单集成选项。\n体验优化\n- 优化默认浏览器设置，切换时同步本地链接、飞书链接和 AI 浏览器三项偏好，无需逐项配置。\n- 优化实时预览窗口的拖拽定位和调整大小体验，新增置顶（Pin on Top）功能，支持在切换任务时保持预览窗口位置。\n- 优化助手对话中的未读消息提示和任务状态展示，聊天列表中会显示任务进度和等待操作状态。\n- 优化项目编辑器弹窗的视觉风格和交互体验，新增项目图标和标签展示。\n- 优化浏览器截图能力，改进大区域截图的分块拼接策略并增加内存保护限制。\n- 优化飞助手 IM 对话面板的消息组件和布局样式，支持消息回复、产物文件列表和配置弹窗。\n问题修复\n- 修复终端本地链接检测和自动打开功能误触发的问题，移除独立的链接检测设置项并统一到默认浏览器配置。\n- 修复 Handoff 流程中活跃会话状态未正确通知的问题。\n- 修复浮窗助手中模型选择命令未注册导致无法切换模型的问题。'
+        },
+        {
+          'version': '3.4.8',
+          'title': 'v3.4.8',
+          'date': '2026-10-23',
+          'dateRaw': '2026-10-23',
+          'tags': [
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '问题修复\n- 修复企业版 HTTP Hook 返回非标准格式响应时可能误判为失败，导致 AI 会话或工具调用被意外阻断的问题。'
+        },
+        {
+          'version': '3.4.7',
+          'title': 'v3.4.7',
+          'date': '2026-10-22',
+          'dateRaw': '2026-10-22',
+          'tags': [
+            '新增功能',
+            '体验优化',
+            '问题修复'
+          ],
+          'url': 'https://www.trae.cn/changelog',
+          'body': '新增功能\n- 支持 MCP 插件在对话中展示交互式应用界面，可查看插件工具生成的 HTML 内容并直接操作。\n- 支持将任务产物和动态 UI 快照添加到当前对话草稿中，便于引用和二次编辑。\n- 支持在 Windows 设置中选择关闭最后一个窗口时退出应用或最小化到系统托盘。\n- 支持企业版用户使用全局搜索、语音转录快捷键设置和自定义指令元信息编辑表单。【仅企业版】\n体验优化\n- 优化侧边对话关闭体验，对已有消息的侧边对话在关闭前增加二次确认，防止误删。\n- 优化排队切换模型的交互体验，切换后自动滚动到新消息，并在切换结果未知时提供明确反馈。\n- 优化终端命令输出的内存占用，对过长的命令输出进行自动截断，降低消息传输和序列化开销。\n- 优化危险命令检测提示，在命令卡片中展示具体的破坏性操作原因和影响说明。\n问题修复\n- 修复代码索引在登录状态变化、运行时切换等场景下可能启动失败或状态不一致的问题。\n- 修复远程 SSH 连接场景下文件系统挂载失败和路径归一化不正确的问题。\n- 修复暂停或阻塞状态的 Goal 发送普通消息时无法获取目标上下文的问题。\n- 修复脚本存在语法错误时命令提取和权限审批逻辑异常的问题。'
         }
       ]
     },
@@ -14572,7 +14627,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
         {
           'version': '3.18.2',
@@ -14763,7 +14818,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
         {
           'version': '4.12.4',
@@ -15658,7 +15713,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-17 06:24',
+      'lastOkAt': '2026-11-18 15:48',
       'entries': [
         {
           'version': '5.11.3',
