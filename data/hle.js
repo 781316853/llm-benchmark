@@ -1,4 +1,4 @@
-// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-11-17)
+// 数据源:Humanity's Last Exam(前沿知识广度,更新于 2026-11-18)
 // 来源:https://www.datalearner.com/api/get-benchmark-detail/hle(主渠道,厂商官方发布全量无工具成绩;页面首屏仅 30 条) · https://benchlm.ai/benchmarks/aahle(AA 无工具复测镜像)
 // 补充:https://aireleasetracker.com/benchmark/hle-no-tools(第三方聚合 T3,只补缺失模型)
 // 官方:https://lastexam.ai/
@@ -12,11 +12,11 @@ window.HLE = {
   'url': 'https://www.datalearner.com/benchmarks/hle',
   'officialUrl': 'https://lastexam.ai/',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-17',
-  'refreshedAt': '2026-11-17 09:12',
+  'updated': '2026-11-18',
+  'refreshedAt': '2026-11-18 15:48',
   'stats': {
     'tasks': 2500,
-    'entries': 298
+    'entries': 282
   },
   'desc': 'Humanity\'s Last Exam(HLE):CAIS 与 Scale AI 推出的前沿知识广度基准,2500 道由各领域专家撰写、无网络可检索解的问题(数学/科学/人文学科等),目的在衡量模型逼近人类专家知识天花板;得分越高越好。本表统一为无工具(闭卷)口径:厂商明确标注无工具的条目优先,AA 无工具复测仅补官方渠道未收录的模型;仅带工具分或未声明协议的模型不收录,表内分数可直接比较。',
   'models': [
@@ -566,15 +566,6 @@ window.HLE = {
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
-      'model': 'Claude Opus 4.7 (Adaptive)',
-      'org': 'Anthropic',
-      'score': 42.3,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 54,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
       'model': 'GPT-5.5',
       'org': 'OpenAI',
       'score': 41.4,
@@ -582,7 +573,7 @@ window.HLE = {
       'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 55,
+      'rank': 54,
       'protocolNote': '思考模式 High（无工具）'
     },
     {
@@ -593,7 +584,7 @@ window.HLE = {
       'mode': '最高（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 56,
+      'rank': 55,
       'protocolNote': '最高（无工具）'
     },
     {
@@ -604,7 +595,7 @@ window.HLE = {
       'mode': '并行思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 57,
+      'rank': 56,
       'protocolNote': '并行思考模式（无工具）'
     },
     {
@@ -613,7 +604,7 @@ window.HLE = {
       'score': 40.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 58,
+      'rank': 57,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -624,7 +615,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 59,
+      'rank': 58,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -633,7 +624,7 @@ window.HLE = {
       'score': 39.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 60,
+      'rank': 59,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -642,7 +633,7 @@ window.HLE = {
       'score': 39.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 61,
+      'rank': 60,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -651,7 +642,7 @@ window.HLE = {
       'score': 39.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 62,
+      'rank': 61,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -660,7 +651,7 @@ window.HLE = {
       'score': 39.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 63,
+      'rank': 62,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -669,7 +660,7 @@ window.HLE = {
       'score': 39,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 64,
+      'rank': 63,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -678,7 +669,7 @@ window.HLE = {
       'score': 38.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 65,
+      'rank': 64,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -689,7 +680,7 @@ window.HLE = {
       'mode': '最高（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 66,
+      'rank': 65,
       'protocolNote': '最高（无工具）'
     },
     {
@@ -700,17 +691,8 @@ window.HLE = {
       'mode': '最高（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 67,
+      'rank': 66,
       'protocolNote': '最高（无工具）'
-    },
-    {
-      'model': 'Gemini 3.0 Pro',
-      'score': 37.5,
-      'org': null,
-      'src': 'aireleasetracker',
-      'rank': 68,
-      'protocol': '无工具',
-      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
     },
     {
       'model': 'Grok 4.3',
@@ -718,7 +700,7 @@ window.HLE = {
       'score': 37.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 69,
+      'rank': 67,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -729,7 +711,7 @@ window.HLE = {
       'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 70,
+      'rank': 68,
       'protocolNote': '思考模式 High（无工具）'
     },
     {
@@ -740,7 +722,7 @@ window.HLE = {
       'mode': '最高（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 71,
+      'rank': 69,
       'protocolNote': '最高（无工具）'
     },
     {
@@ -751,7 +733,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 72,
+      'rank': 70,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -762,7 +744,7 @@ window.HLE = {
       'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 73,
+      'rank': 71,
       'protocolNote': '极高强度思考（无工具）'
     },
     {
@@ -773,7 +755,7 @@ window.HLE = {
       'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 74,
+      'rank': 72,
       'protocolNote': '极高强度思考（无工具）'
     },
     {
@@ -782,7 +764,7 @@ window.HLE = {
       'score': 35.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 75,
+      'rank': 73,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -791,7 +773,7 @@ window.HLE = {
       'score': 35.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 76,
+      'rank': 74,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -800,7 +782,7 @@ window.HLE = {
       'score': 35.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 77,
+      'rank': 75,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -809,7 +791,7 @@ window.HLE = {
       'score': 35.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 78,
+      'rank': 76,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -818,7 +800,7 @@ window.HLE = {
       'score': 35.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 79,
+      'rank': 77,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -827,7 +809,7 @@ window.HLE = {
       'score': 35,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 80,
+      'rank': 78,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -838,7 +820,7 @@ window.HLE = {
       'mode': '深度思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 81,
+      'rank': 79,
       'protocolNote': '深度思考模式（无工具）'
     },
     {
@@ -849,7 +831,7 @@ window.HLE = {
       'mode': '最高（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 82,
+      'rank': 80,
       'protocolNote': '最高（无工具）'
     },
     {
@@ -860,7 +842,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 83,
+      'rank': 81,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -869,7 +851,7 @@ window.HLE = {
       'score': 34.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 84,
+      'rank': 82,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -880,7 +862,7 @@ window.HLE = {
       'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 85,
+      'rank': 83,
       'protocolNote': '极高强度思考（无工具）'
     },
     {
@@ -891,7 +873,7 @@ window.HLE = {
       'mode': '最高（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 86,
+      'rank': 84,
       'protocolNote': '最高（无工具）'
     },
     {
@@ -900,7 +882,7 @@ window.HLE = {
       'score': 34.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 87,
+      'rank': 85,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -909,7 +891,7 @@ window.HLE = {
       'score': 34.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 88,
+      'rank': 86,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -920,7 +902,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 89,
+      'rank': 87,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -929,7 +911,7 @@ window.HLE = {
       'score': 33.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 90,
+      'rank': 88,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -938,7 +920,7 @@ window.HLE = {
       'score': 33.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 91,
+      'rank': 89,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -949,7 +931,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 92,
+      'rank': 90,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -960,7 +942,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 93,
+      'rank': 91,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -971,7 +953,7 @@ window.HLE = {
       'mode': '扩展（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 94,
+      'rank': 92,
       'protocolNote': '扩展（无工具）'
     },
     {
@@ -982,7 +964,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 95,
+      'rank': 93,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -991,7 +973,7 @@ window.HLE = {
       'score': 30.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 96,
+      'rank': 94,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1002,17 +984,8 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 97,
+      'rank': 95,
       'protocolNote': '思考模式（无工具）'
-    },
-    {
-      'model': 'Kimi K2.5 (Reasoning)',
-      'org': 'Moonshot AI',
-      'score': 30.7,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 98,
-      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'Nemotron 3.5 Super VL 120B A12B',
@@ -1020,7 +993,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 99,
+      'rank': 96,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1029,7 +1002,7 @@ window.HLE = {
       'score': 30.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 100,
+      'rank': 97,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1040,7 +1013,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 101,
+      'rank': 98,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1051,7 +1024,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 102,
+      'rank': 99,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1060,7 +1033,7 @@ window.HLE = {
       'score': 30.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 103,
+      'rank': 100,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1071,7 +1044,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 104,
+      'rank': 101,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1082,7 +1055,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 105,
+      'rank': 102,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1091,7 +1064,7 @@ window.HLE = {
       'score': 30.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 106,
+      'rank': 103,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1100,7 +1073,7 @@ window.HLE = {
       'score': 29.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 107,
+      'rank': 104,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1111,7 +1084,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 108,
+      'rank': 105,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1120,7 +1093,7 @@ window.HLE = {
       'score': 29.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 109,
+      'rank': 106,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1129,16 +1102,7 @@ window.HLE = {
       'score': 29,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 110,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Qwen3.5 397B (Reasoning)',
-      'org': 'Alibaba',
-      'score': 29,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 111,
+      'rank': 107,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1149,7 +1113,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 112,
+      'rank': 108,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1160,26 +1124,8 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 113,
+      'rank': 109,
       'protocolNote': '思考模式（无工具）'
-    },
-    {
-      'model': 'Qwen3.5',
-      'score': 28.7,
-      'org': null,
-      'src': 'aireleasetracker',
-      'rank': 114,
-      'protocol': '无工具',
-      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
-    },
-    {
-      'model': 'GPT-5 (high)',
-      'org': 'OpenAI',
-      'score': 28.5,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 115,
-      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'GPT-5.4 mini',
@@ -1189,7 +1135,7 @@ window.HLE = {
       'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 116,
+      'rank': 110,
       'protocolNote': '极高强度思考（无工具）'
     },
     {
@@ -1200,7 +1146,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 117,
+      'rank': 111,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1209,7 +1155,7 @@ window.HLE = {
       'score': 27.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 118,
+      'rank': 112,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1218,7 +1164,7 @@ window.HLE = {
       'score': 27.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 119,
+      'rank': 113,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1229,7 +1175,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 120,
+      'rank': 114,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1240,7 +1186,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 121,
+      'rank': 115,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1251,7 +1197,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 122,
+      'rank': 116,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1260,7 +1206,7 @@ window.HLE = {
       'score': 25.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 123,
+      'rank': 117,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1269,7 +1215,7 @@ window.HLE = {
       'score': 25.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 124,
+      'rank': 118,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1280,17 +1226,8 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 125,
+      'rank': 119,
       'protocolNote': '思考模式（无工具）'
-    },
-    {
-      'model': 'GPT-5 (medium)',
-      'org': 'OpenAI',
-      'score': 25.4,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 126,
-      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'GPT-5',
@@ -1300,7 +1237,7 @@ window.HLE = {
       'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 127,
+      'rank': 120,
       'protocolNote': '思考模式 High（无工具）'
     },
     {
@@ -1309,7 +1246,7 @@ window.HLE = {
       'score': 25.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 128,
+      'rank': 121,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1320,7 +1257,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 129,
+      'rank': 122,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1331,7 +1268,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 130,
+      'rank': 123,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1340,7 +1277,7 @@ window.HLE = {
       'score': 24.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 131,
+      'rank': 124,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1349,7 +1286,7 @@ window.HLE = {
       'score': 24.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 132,
+      'rank': 125,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1360,7 +1297,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 133,
+      'rank': 126,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1371,7 +1308,7 @@ window.HLE = {
       'mode': '极高强度思考（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 134,
+      'rank': 127,
       'protocolNote': '极高强度思考（无工具）'
     },
     {
@@ -1382,7 +1319,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 135,
+      'rank': 128,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1393,7 +1330,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 136,
+      'rank': 129,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1402,7 +1339,7 @@ window.HLE = {
       'score': 23.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 137,
+      'rank': 130,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1411,7 +1348,7 @@ window.HLE = {
       'score': 22.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 138,
+      'rank': 131,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1422,7 +1359,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 139,
+      'rank': 132,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1433,7 +1370,7 @@ window.HLE = {
       'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 140,
+      'rank': 133,
       'protocolNote': '思考模式 High（无工具）'
     },
     {
@@ -1442,7 +1379,7 @@ window.HLE = {
       'score': 22,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 141,
+      'rank': 134,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1453,7 +1390,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 142,
+      'rank': 135,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -1464,7 +1401,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 143,
+      'rank': 136,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1475,7 +1412,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 144,
+      'rank': 137,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1484,17 +1421,8 @@ window.HLE = {
       'score': 21.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 145,
+      'rank': 138,
       'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Qwen3.6',
-      'score': 21.4,
-      'org': null,
-      'src': 'aireleasetracker',
-      'rank': 146,
-      'protocol': '无工具',
-      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
     },
     {
       'model': 'o3-pro',
@@ -1504,7 +1432,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 147,
+      'rank': 139,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -1513,7 +1441,7 @@ window.HLE = {
       'score': 21,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 148,
+      'rank': 140,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1524,7 +1452,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 149,
+      'rank': 141,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1533,7 +1461,7 @@ window.HLE = {
       'score': 20.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 150,
+      'rank': 142,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1544,7 +1472,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 151,
+      'rank': 143,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1555,7 +1483,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 152,
+      'rank': 144,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1566,17 +1494,8 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 153,
+      'rank': 145,
       'protocolNote': '思考模式（无工具）'
-    },
-    {
-      'model': 'Gemma 4',
-      'score': 19.5,
-      'org': null,
-      'src': 'aireleasetracker',
-      'rank': 154,
-      'protocol': '无工具',
-      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
     },
     {
       'model': 'MiniMax M2.5',
@@ -1586,7 +1505,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 155,
+      'rank': 146,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1595,7 +1514,7 @@ window.HLE = {
       'score': 19.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 156,
+      'rank': 147,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1604,7 +1523,7 @@ window.HLE = {
       'score': 19.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 157,
+      'rank': 148,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1615,7 +1534,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 158,
+      'rank': 149,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -1624,7 +1543,7 @@ window.HLE = {
       'score': 18.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 159,
+      'rank': 150,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1633,7 +1552,7 @@ window.HLE = {
       'score': 18.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 160,
+      'rank': 151,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1642,7 +1561,7 @@ window.HLE = {
       'score': 18.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 161,
+      'rank': 152,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1653,7 +1572,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 162,
+      'rank': 153,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1664,7 +1583,7 @@ window.HLE = {
       'mode': '思考模式 High（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 163,
+      'rank': 154,
       'protocolNote': '思考模式 High（无工具）'
     },
     {
@@ -1675,7 +1594,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 164,
+      'rank': 155,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -1686,7 +1605,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 165,
+      'rank': 156,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1697,7 +1616,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 166,
+      'rank': 157,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1708,7 +1627,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 167,
+      'rank': 158,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1719,7 +1638,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 168,
+      'rank': 159,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1728,7 +1647,7 @@ window.HLE = {
       'score': 17.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 169,
+      'rank': 160,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1737,17 +1656,8 @@ window.HLE = {
       'score': 17.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 170,
+      'rank': 161,
       'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Gemini 3.1 Flash-Lite',
-      'score': 16,
-      'org': null,
-      'src': 'aireleasetracker',
-      'rank': 171,
-      'protocol': '无工具',
-      'protocolNote': 'AI Release Tracker 聚合(T3,转录公开报告)'
     },
     {
       'model': 'DeepSeek-V3.1',
@@ -1757,7 +1667,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 172,
+      'rank': 162,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1766,7 +1676,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 173,
+      'rank': 163,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1775,7 +1685,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 174,
+      'rank': 164,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1784,7 +1694,7 @@ window.HLE = {
       'score': 15.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 175,
+      'rank': 165,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1793,7 +1703,7 @@ window.HLE = {
       'score': 15.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 176,
+      'rank': 166,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1802,7 +1712,7 @@ window.HLE = {
       'score': 15,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 177,
+      'rank': 167,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1813,7 +1723,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 178,
+      'rank': 168,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1824,7 +1734,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 179,
+      'rank': 169,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1835,17 +1745,8 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 180,
+      'rank': 170,
       'protocolNote': '思考模式（无工具）'
-    },
-    {
-      'model': 'DeepSeek V3.1 (Reasoning)',
-      'org': 'DeepSeek',
-      'score': 14.3,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 181,
-      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'K-Exaone',
@@ -1853,7 +1754,7 @@ window.HLE = {
       'score': 13.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 182,
+      'rank': 171,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1862,7 +1763,7 @@ window.HLE = {
       'score': 13.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 183,
+      'rank': 172,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1873,7 +1774,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 184,
+      'rank': 173,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1884,17 +1785,8 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 185,
+      'rank': 174,
       'protocolNote': '思考模式（无工具）'
-    },
-    {
-      'model': 'Claude 4.1 Opus Thinking',
-      'org': 'Anthropic',
-      'score': 12.5,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 186,
-      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'Spark-X2.5-4B',
@@ -1904,7 +1796,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 187,
+      'rank': 175,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1913,7 +1805,7 @@ window.HLE = {
       'score': 12.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 188,
+      'rank': 176,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1922,7 +1814,7 @@ window.HLE = {
       'score': 12,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 189,
+      'rank': 177,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1931,7 +1823,7 @@ window.HLE = {
       'score': 11.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 190,
+      'rank': 178,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1940,7 +1832,7 @@ window.HLE = {
       'score': 11.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 191,
+      'rank': 179,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1951,7 +1843,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 192,
+      'rank': 180,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -1960,7 +1852,7 @@ window.HLE = {
       'score': 11.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 193,
+      'rank': 181,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1971,7 +1863,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 194,
+      'rank': 182,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -1980,7 +1872,7 @@ window.HLE = {
       'score': 11.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 195,
+      'rank': 183,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -1991,7 +1883,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 196,
+      'rank': 184,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2000,7 +1892,7 @@ window.HLE = {
       'score': 11,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 197,
+      'rank': 185,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2011,7 +1903,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 198,
+      'rank': 186,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2022,7 +1914,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 199,
+      'rank': 187,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2033,7 +1925,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 200,
+      'rank': 188,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2042,7 +1934,7 @@ window.HLE = {
       'score': 10.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 201,
+      'rank': 189,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2053,7 +1945,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 202,
+      'rank': 190,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2062,7 +1954,7 @@ window.HLE = {
       'score': 10.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 203,
+      'rank': 191,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2071,7 +1963,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 204,
+      'rank': 192,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2080,16 +1972,7 @@ window.HLE = {
       'score': 9.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 205,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Mistral Small 4 (Reasoning)',
-      'org': 'Mistral',
-      'score': 9.9,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 206,
+      'rank': 193,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2100,7 +1983,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 207,
+      'rank': 194,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2109,7 +1992,7 @@ window.HLE = {
       'score': 9.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 208,
+      'rank': 195,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2120,7 +2003,7 @@ window.HLE = {
       'mode': '扩展（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 209,
+      'rank': 196,
       'protocolNote': '扩展（无工具）'
     },
     {
@@ -2129,7 +2012,7 @@ window.HLE = {
       'score': 9.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 210,
+      'rank': 197,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2138,7 +2021,7 @@ window.HLE = {
       'score': 9.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 211,
+      'rank': 198,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2149,7 +2032,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 212,
+      'rank': 199,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2158,7 +2041,7 @@ window.HLE = {
       'score': 9.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 213,
+      'rank': 200,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2167,7 +2050,7 @@ window.HLE = {
       'score': 9.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 214,
+      'rank': 201,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2178,7 +2061,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 215,
+      'rank': 202,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2187,7 +2070,7 @@ window.HLE = {
       'score': 8.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 216,
+      'rank': 203,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2198,7 +2081,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 217,
+      'rank': 204,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2207,7 +2090,7 @@ window.HLE = {
       'score': 8.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 218,
+      'rank': 205,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2218,7 +2101,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 219,
+      'rank': 206,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2227,7 +2110,7 @@ window.HLE = {
       'score': 8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 220,
+      'rank': 207,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2238,7 +2121,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 221,
+      'rank': 208,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2247,7 +2130,7 @@ window.HLE = {
       'score': 7.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 222,
+      'rank': 209,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2256,7 +2139,7 @@ window.HLE = {
       'score': 7.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 223,
+      'rank': 210,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2265,7 +2148,7 @@ window.HLE = {
       'score': 7.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 224,
+      'rank': 211,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2274,7 +2157,7 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 225,
+      'rank': 212,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2283,7 +2166,7 @@ window.HLE = {
       'score': 7.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 226,
+      'rank': 213,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2294,7 +2177,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 227,
+      'rank': 214,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2303,7 +2186,7 @@ window.HLE = {
       'score': 7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 228,
+      'rank': 215,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2314,7 +2197,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 229,
+      'rank': 216,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2323,7 +2206,7 @@ window.HLE = {
       'score': 6.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 230,
+      'rank': 217,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2332,7 +2215,7 @@ window.HLE = {
       'score': 6.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 231,
+      'rank': 218,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2341,7 +2224,7 @@ window.HLE = {
       'score': 6.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 232,
+      'rank': 219,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2350,7 +2233,7 @@ window.HLE = {
       'score': 6.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 233,
+      'rank': 220,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2359,7 +2242,7 @@ window.HLE = {
       'score': 6.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 234,
+      'rank': 221,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2368,7 +2251,7 @@ window.HLE = {
       'score': 6.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 235,
+      'rank': 222,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2377,7 +2260,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 236,
+      'rank': 223,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2386,7 +2269,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 237,
+      'rank': 224,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2395,7 +2278,7 @@ window.HLE = {
       'score': 6.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 238,
+      'rank': 225,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2404,7 +2287,7 @@ window.HLE = {
       'score': 5.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 239,
+      'rank': 226,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2413,7 +2296,7 @@ window.HLE = {
       'score': 5.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 240,
+      'rank': 227,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2424,17 +2307,8 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 241,
+      'rank': 228,
       'protocolNote': '常规模式（无工具）'
-    },
-    {
-      'model': 'Ministral 3 3B (Reasoning)',
-      'org': 'Mistral',
-      'score': 5.4,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 242,
-      'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
       'model': 'Ministral 3 3B',
@@ -2442,7 +2316,7 @@ window.HLE = {
       'score': 5.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 243,
+      'rank': 229,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2453,7 +2327,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 244,
+      'rank': 230,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2464,7 +2338,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 245,
+      'rank': 231,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2475,7 +2349,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 246,
+      'rank': 232,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2484,7 +2358,7 @@ window.HLE = {
       'score': 5.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 247,
+      'rank': 233,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2495,7 +2369,7 @@ window.HLE = {
       'mode': '思考模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 248,
+      'rank': 234,
       'protocolNote': '思考模式（无工具）'
     },
     {
@@ -2504,7 +2378,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 249,
+      'rank': 235,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2513,7 +2387,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 250,
+      'rank': 236,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2522,7 +2396,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 251,
+      'rank': 237,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2531,7 +2405,7 @@ window.HLE = {
       'score': 5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 252,
+      'rank': 238,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2540,7 +2414,7 @@ window.HLE = {
       'score': 4.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 253,
+      'rank': 239,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2549,7 +2423,7 @@ window.HLE = {
       'score': 4.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 254,
+      'rank': 240,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2558,7 +2432,7 @@ window.HLE = {
       'score': 4.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 255,
+      'rank': 241,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2569,7 +2443,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 256,
+      'rank': 242,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2578,7 +2452,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 257,
+      'rank': 243,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2587,7 +2461,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 258,
+      'rank': 244,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2596,7 +2470,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 259,
+      'rank': 245,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2605,16 +2479,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 260,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Ministral 3 14B (Reasoning)',
-      'org': 'Mistral',
-      'score': 4.6,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 261,
+      'rank': 246,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2623,7 +2488,7 @@ window.HLE = {
       'score': 4.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 262,
+      'rank': 247,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2634,7 +2499,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 263,
+      'rank': 248,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2643,7 +2508,7 @@ window.HLE = {
       'score': 4.4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 264,
+      'rank': 249,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2652,7 +2517,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 265,
+      'rank': 250,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2661,7 +2526,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 266,
+      'rank': 251,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2670,7 +2535,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 267,
+      'rank': 252,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2679,16 +2544,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 268,
-      'protocolNote': 'Artificial Analysis 无工具复测'
-    },
-    {
-      'model': 'Ministral 3 8B (Reasoning)',
-      'org': 'Mistral',
-      'score': 4.3,
-      'protocol': '无工具',
-      'src': 'aa',
-      'rank': 269,
+      'rank': 253,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2697,7 +2553,7 @@ window.HLE = {
       'score': 4.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 270,
+      'rank': 254,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2706,7 +2562,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 271,
+      'rank': 255,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2715,7 +2571,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 272,
+      'rank': 256,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2724,7 +2580,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 273,
+      'rank': 257,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2733,7 +2589,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 274,
+      'rank': 258,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2742,7 +2598,7 @@ window.HLE = {
       'score': 4.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 275,
+      'rank': 259,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2751,7 +2607,7 @@ window.HLE = {
       'score': 4.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 276,
+      'rank': 260,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2760,7 +2616,7 @@ window.HLE = {
       'score': 4.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 277,
+      'rank': 261,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2769,7 +2625,7 @@ window.HLE = {
       'score': 4,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 278,
+      'rank': 262,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2778,7 +2634,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 279,
+      'rank': 263,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2787,7 +2643,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 280,
+      'rank': 264,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2796,7 +2652,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 281,
+      'rank': 265,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2805,7 +2661,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 282,
+      'rank': 266,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2814,7 +2670,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 283,
+      'rank': 267,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2823,7 +2679,7 @@ window.HLE = {
       'score': 3.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 284,
+      'rank': 268,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2834,7 +2690,7 @@ window.HLE = {
       'mode': '常规模式（无工具） · Text only',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 285,
+      'rank': 269,
       'protocolNote': '常规模式（无工具） · Text only'
     },
     {
@@ -2845,7 +2701,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 286,
+      'rank': 270,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2854,7 +2710,7 @@ window.HLE = {
       'score': 3.7,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 287,
+      'rank': 271,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2865,7 +2721,7 @@ window.HLE = {
       'mode': '常规模式（无工具）',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 288,
+      'rank': 272,
       'protocolNote': '常规模式（无工具）'
     },
     {
@@ -2874,7 +2730,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 289,
+      'rank': 273,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2883,7 +2739,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 290,
+      'rank': 274,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2892,7 +2748,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 291,
+      'rank': 275,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2901,7 +2757,7 @@ window.HLE = {
       'score': 3.6,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 292,
+      'rank': 276,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2910,7 +2766,7 @@ window.HLE = {
       'score': 3.5,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 293,
+      'rank': 277,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2919,7 +2775,7 @@ window.HLE = {
       'score': 3.3,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 294,
+      'rank': 278,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2928,7 +2784,7 @@ window.HLE = {
       'score': 3.2,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 295,
+      'rank': 279,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2937,7 +2793,7 @@ window.HLE = {
       'score': 3.1,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 296,
+      'rank': 280,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2946,7 +2802,7 @@ window.HLE = {
       'score': 2.9,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 297,
+      'rank': 281,
       'protocolNote': 'Artificial Analysis 无工具复测'
     },
     {
@@ -2955,7 +2811,7 @@ window.HLE = {
       'score': 2.8,
       'protocol': '无工具',
       'src': 'aa',
-      'rank': 298,
+      'rank': 282,
       'protocolNote': 'Artificial Analysis 无工具复测'
     }
   ]

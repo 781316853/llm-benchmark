@@ -2,13 +2,13 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-16',
+  'updated': '2026-11-18',
   'stats': {
-    'total': 165,
-    'knownVendor': 165,
+    'total': 197,
+    'knownVendor': 197,
     'otherVendor': 0,
-    'skippedManual': 1444,
-    'skippedNonModel': 4
+    'skippedManual': 1529,
+    'skippedNonModel': 5
   },
   'canonical': [
     {
@@ -18,6 +18,24 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Agnes 3.0 Flash',
         'agnes-3.0-flash'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Amazon Nova Lite',
+      'vendor': '亚马逊',
+      'color': '#9298A1',
+      'aliases': [
+        'Amazon Nova Lite'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Amazon Nova Pro',
+      'vendor': '亚马逊',
+      'color': '#9298A1',
+      'aliases': [
+        'Amazon Nova Pro'
       ],
       'auto': true
     },
@@ -76,6 +94,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Claude 3.5 Sonnet New',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Claude 3.5 Sonnet New'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Claude 3.7 Sonnet',
       'vendor': 'Anthropic',
       'color': '#E0855F',
@@ -105,20 +132,20 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Claude 4.1 Opus Thinking',
-      'vendor': 'Anthropic',
-      'color': '#E0855F',
-      'aliases': [
-        'Claude 4.1 Opus Thinking'
-      ],
-      'auto': true
-    },
-    {
       'id': 'Claude Mythos 5.1',
       'vendor': 'Anthropic',
       'color': '#E0855F',
       'aliases': [
         'Claude Mythos 5.1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Claude Opus 4',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Claude Opus 4'
       ],
       'auto': true
     },
@@ -133,10 +160,20 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Claude-Sonnet-4',
+      'id': 'Claude Sonnet 3.7',
       'vendor': 'Anthropic',
       'color': '#E0855F',
       'aliases': [
+        'Claude Sonnet 3.7'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Claude Sonnet 4',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Claude Sonnet 4',
         'Claude-Sonnet-4'
       ],
       'auto': true
@@ -160,32 +197,57 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'DeepSeek V3 0324',
-      'vendor': 'DeepSeek',
-      'color': '#6E8CFF',
+      'id': 'DeepSeek V3.2 Speciale',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
       'aliases': [
-        'DeepSeek V3 0324'
+        'DeepSeek V3.2 Speciale'
       ],
       'auto': true
     },
     {
-      'id': 'DeepSeek V3.1',
+      'id': 'DeepSeek V3.2-Exp',
       'vendor': 'DeepSeek',
       'color': '#6E8CFF',
       'aliases': [
-        'DeepSeek V3.1',
-        'DeepSeek V3.1 (Reasoning)',
+        'DeepSeek V3.2-Exp',
+        'deepseek-v3.2-exp'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'DeepSeek-R1-0528',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
+      'aliases': [
+        'DeepSeek-R1-0528'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'DeepSeek-V3-0324',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
+      'aliases': [
+        'DeepSeek-V3-0324'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'DeepSeek-V3.1',
+      'vendor': 'DeepSeek',
+      'color': '#6E8CFF',
+      'aliases': [
         'DeepSeek-V3.1'
       ],
       'auto': true
     },
     {
-      'id': 'DeepSeek-V3.2-Exp',
-      'vendor': 'DeepSeek',
-      'color': '#6E8CFF',
+      'id': 'DeepSeek-V3.1 Terminus',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
       'aliases': [
-        'DeepSeek-V3.2-Exp',
-        'deepseek-v3.2-exp'
+        'DeepSeek-V3.1 Terminus'
       ],
       'auto': true
     },
@@ -219,6 +281,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'ERNIE 5.0',
+      'vendor': '百度',
+      'color': '#9298A1',
+      'aliases': [
+        'ERNIE 5.0'
+      ],
+      'auto': true
+    },
+    {
       'id': 'EXAONE 4.0 1.2B',
       'vendor': 'LG AI Research',
       'color': '#E67070',
@@ -239,9 +310,18 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'GLM-4.5',
+      'vendor': '智谱AI',
+      'color': '#9298A1',
+      'aliases': [
+        'GLM-4.5'
+      ],
+      'auto': true
+    },
+    {
       'id': 'GLM-4.5-Air',
-      'vendor': 'zAI',
-      'color': '#818DE7',
+      'vendor': '智谱AI',
+      'color': '#9298A1',
       'aliases': [
         'GLM-4.5-Air'
       ],
@@ -259,8 +339,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'GLM-4.7-Flash',
-      'vendor': 'zAI',
-      'color': '#818DE7',
+      'vendor': '智谱AI',
+      'color': '#9298A1',
       'aliases': [
         'GLM-4.7-Flash'
       ],
@@ -333,6 +413,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'GPT-4.5',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-4.5'
+      ],
+      'auto': true
+    },
+    {
       'id': 'GPT-4o Mini',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
@@ -353,6 +442,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'GPT-5-Pro',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-5-Pro'
+      ],
+      'auto': true
+    },
+    {
       'id': 'GPT-5.1-Codex-Mini',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
@@ -363,11 +461,48 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'GPT-OSS 20B',
+      'id': 'GPT-5.2 Pro',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
-        'GPT-OSS 20B'
+        'GPT-5.2 Pro'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'GPT-5.4 Pro',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-5.4 Pro'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'GPT-5.5 Instant',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-5.5 Instant'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'GPT-5.5 Pro',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-5.5 Pro'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'GPT-Oss-20b',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-Oss-20b',
+        'gpt-oss-20b'
       ],
       'auto': true
     },
@@ -408,9 +543,27 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Gemini 2.0 Flash Experimental',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 2.0 Flash Experimental'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 2.5 Deep Think',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 2.5 Deep Think'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Gemini 2.5 Flash',
-      'vendor': 'Google',
-      'color': '#6BA5F7',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
       'aliases': [
         'Gemini 2.5 Flash'
       ],
@@ -418,10 +571,55 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'Gemini 2.5 Flash-Lite',
-      'vendor': 'Google',
-      'color': '#6BA5F7',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
       'aliases': [
         'Gemini 2.5 Flash-Lite'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 2.5 Pro Experimental 03-25',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 2.5 Pro Experimental 03-25'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 3 Deep Think - 2620',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 3 Deep Think - 2620'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 3.0 Flash',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 3.0 Flash'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 3.0 Pro (Preview 11-2025)',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 3.0 Pro (Preview 11-2025)'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini-2.5-Pro-Preview-05-06',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini-2.5-Pro-Preview-05-06'
       ],
       'auto': true
     },
@@ -580,6 +778,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#E0855F',
       'aliases': [
         'Haiku 4.5'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Intern-S2-397B',
+      'vendor': '上海人工智能实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Intern-S2-397B'
       ],
       'auto': true
     },
@@ -784,9 +991,18 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'M2.1',
+      'vendor': 'MiniMaxAI',
+      'color': '#9298A1',
+      'aliases': [
+        'M2.1'
+      ],
+      'auto': true
+    },
+    {
       'id': 'MAI-Code-1.1-Flash',
-      'vendor': 'Microsoft',
-      'color': '#3FA8F0',
+      'vendor': '微软',
+      'color': '#9298A1',
       'aliases': [
         'MAI-Code-1.1-Flash'
       ],
@@ -860,21 +1076,30 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'MiniMax M1 80k',
+      'id': 'MiniMax M2',
       'vendor': 'MiniMax',
       'color': '#FF6F9E',
       'aliases': [
-        'MiniMax M1 80k'
+        'MiniMax M2',
+        'minimax-m2'
       ],
       'auto': true
     },
     {
-      'id': 'MiniMax-M2',
-      'vendor': 'MiniMax',
-      'color': '#FF6F9E',
+      'id': 'MiniMax-M1-40k',
+      'vendor': 'MiniMaxAI',
+      'color': '#9298A1',
       'aliases': [
-        'MiniMax-M2',
-        'minimax-m2'
+        'MiniMax-M1-40k'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'MiniMax-M1-80k',
+      'vendor': 'MiniMaxAI',
+      'color': '#9298A1',
+      'aliases': [
+        'MiniMax-M1-80k'
       ],
       'auto': true
     },
@@ -883,8 +1108,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Ministral 3 14B',
-        'Ministral 3 14B (Reasoning)'
+        'Ministral 3 14B'
       ],
       'auto': true
     },
@@ -893,8 +1117,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Ministral 3 3B',
-        'Ministral 3 3B (Reasoning)'
+        'Ministral 3 3B'
       ],
       'auto': true
     },
@@ -903,8 +1126,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Ministral 3 8B',
-        'Ministral 3 8B (Reasoning)'
+        'Ministral 3 8B'
       ],
       'auto': true
     },
@@ -959,8 +1181,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Mistral Small 4',
-        'Mistral Small 4 (Reasoning)'
+        'Mistral Small 4'
       ],
       'auto': true
     },
@@ -1096,11 +1317,31 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Nova Pro',
-      'vendor': 'Amazon',
-      'color': '#9298A1',
+      'id': 'OpenAI o1',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
       'aliases': [
-        'Nova Pro'
+        'OpenAI o1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'OpenAI o3-Mini',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'OpenAI o3-Mini',
+        'OpenAI o3-mini'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'OpenAI o4 - Mini',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'OpenAI o4 - Mini',
+        'OpenAI o4 - mini'
       ],
       'auto': true
     },
@@ -1131,6 +1372,15 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'OpenPangu 2.1 Pro',
         'openpangu-2.1-pro'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Opus 4.1',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Opus 4.1'
       ],
       'auto': true
     },
@@ -1235,6 +1485,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen 3.6 Plus Preview',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen 3.6 Plus Preview'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen-Drive-1.0',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
@@ -1271,6 +1530,24 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen3-235B-A22B-Thinking-2507',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-235B-A22B-Thinking-2507'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3-30B-A3B-2507',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-30B-A3B-2507'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen3-Instruct',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
@@ -1302,8 +1579,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5 397B',
-        'Qwen3.5 397B (Reasoning)'
+        'Qwen3.5 397B'
       ],
       'auto': true
     },
@@ -1338,11 +1614,11 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Qwen3.5-397b-A17b',
+      'id': 'Qwen3.5-397B-A17B',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5-397b-A17b',
+        'Qwen3.5-397B-A17B',
         'qwen3.5-397b-a17b'
       ],
       'auto': true
@@ -1432,6 +1708,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Seed2.1 Pro',
+      'vendor': '字节跳动Seed团队',
+      'color': '#9298A1',
+      'aliases': [
+        'Seed2.1 Pro'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Solar Pro 2',
       'vendor': 'Upstage',
       'color': '#6FBFB0',
@@ -1446,6 +1731,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#6FBFB0',
       'aliases': [
         'Solar Pro 3'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Spark-X2.5-4B',
+      'vendor': '科大讯飞',
+      'color': '#9298A1',
+      'aliases': [
+        'Spark-X2.5-4B'
       ],
       'auto': true
     },
@@ -1535,22 +1829,12 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'o3-Mini',
+      'id': 'o3-Pro',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
-        'o3-Mini',
-        'o3-mini'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'o4-Mini',
-      'vendor': 'OpenAI',
-      'color': '#35C7A4',
-      'aliases': [
-        'o4-Mini',
-        'o4-mini'
+        'o3-Pro',
+        'o3-pro'
       ],
       'auto': true
     }

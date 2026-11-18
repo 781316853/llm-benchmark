@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-16
+// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-18
 // 来源:https://www.codingplan.fyi/plans.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -18,8 +18,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-18',
+  'refreshedAt': '2026-11-18 15:48',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,10 +30,10 @@ window.PRICING = {
     'planModels': 2595,
     'withPricing': 1849,
     'comparable': 1174,
-    'models': 113,
+    'models': 114,
     'unresolved': 16,
-    'ranked': 72,
-    'supplemented': 4,
+    'ranked': 75,
+    'supplemented': 5,
     'carriedOver': 0,
     'seeded': 0,
     'missingRanked': 5
@@ -291,6 +291,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'Gemini 3.1 Pro Preview',
+      'slug': 'gemini-3.1-pro-preview',
+      'inputCnyPerM': 13.6,
+      'cacheCnyPerM': 1.36,
+      'outputCnyPerM': 81.6,
+      'costPerM': 2.312,
+      'priceSource': 'models.dev:google'
+    },
+    {
       'id': 'GLM-5.1',
       'slug': 'glm-5-1',
       'inputCnyPerM': 9.52,
@@ -536,10 +545,10 @@ window.PRICING = {
     {
       'id': 'Qwen4-Max',
       'slug': 'qwen/qwen4-max',
-      'inputCnyPerM': 10.2,
-      'cacheCnyPerM': 0.51,
-      'outputCnyPerM': 30.6,
-      'costPerM': 1.0965,
+      'inputCnyPerM': 9.69,
+      'cacheCnyPerM': 0.4845,
+      'outputCnyPerM': 29.07,
+      'costPerM': 1.041675,
       'priceSource': 'models.dev:openrouter'
     },
     {
@@ -804,7 +813,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'GPT-OSS 20B',
+      'id': 'GPT-Oss-20b',
       'slug': 'gpt-oss-20b',
       'inputCnyPerM': 0.476,
       'cacheCnyPerM': 0.238,

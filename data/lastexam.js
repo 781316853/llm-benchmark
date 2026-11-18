@@ -1,4 +1,4 @@
-// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-11-16)
+// 数据源:Agents' Last Exam(UC Berkeley RDI 真实专业工作流评测,更新于 2026-11-18)
 // 主渠道:https://www.datalearner.com/benchmarks/agents-last-exam(厂商官方发布成绩转录)
 // 补充:https://llm-stats.com/benchmarks/agents-last-exam(官方:https://agents-last-exam.org/leaderboard)
 // 补充:Qwen 官方博客/模型卡(厂商官方发布 T2,人工转录,仅补缺失模型,见 https://developer.aliyun.com/article/1763215)
@@ -10,16 +10,38 @@ window.LASTEXAM = {
   'url': 'https://llm-stats.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-17 06:24',
+  'updated': '2026-11-18',
+  'refreshedAt': '2026-11-18 15:48',
   'stats': {
     'tasks': 1490,
-    'entries': 53
+    'entries': 55
   },
   'desc': 'Agents\' Last Exam(ALE):UC Berkeley 主导的覆盖最广的专业工作流评测(1500+ 任务、55 子行业、300+ 领域专家共建),Pass@1 越高越好。',
   'models': [
     {
       'rank': 1,
+      'model': 'GPT-6.2 Astra',
+      'org': 'OpenAI',
+      'score': 78.3,
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 8.00 / $ 40.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 2,
+      'model': 'GPT-6.2 Sol',
+      'org': 'OpenAI',
+      'score': 73,
+      'size': '—',
+      'context': '1.1M',
+      'cost': '$ 2.00 / $ 10.00',
+      'license': null,
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 3,
       'model': 'Gemini 4 Hydrogen',
       'org': 'Google',
       'score': 71.6,
@@ -37,10 +59,10 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-09-22',
       'src': 'datalearner',
-      'rank': 2
+      'rank': 4
     },
     {
-      'rank': 3,
+      'rank': 5,
       'model': 'Muse Ember',
       'org': 'Meta',
       'score': 61.6,
@@ -61,7 +83,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 1.00 / $ 5.00',
-      'rank': 4
+      'rank': 6
     },
     {
       'model': 'GPT-6 Astra',
@@ -74,7 +96,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 10.00 / $ 50.00',
-      'rank': 5
+      'rank': 7
     },
     {
       'model': 'GPT-6 Sol',
@@ -87,7 +109,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 6
+      'rank': 8
     },
     {
       'model': 'GPT-6.1 Sol',
@@ -97,7 +119,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-09-29',
       'src': 'datalearner',
-      'rank': 7
+      'rank': 9
     },
     {
       'model': 'Claude Opus 5',
@@ -107,7 +129,7 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-07-24',
       'src': 'datalearner',
-      'rank': 8
+      'rank': 10
     },
     {
       'model': 'Muse Spark 1.3',
@@ -117,7 +139,7 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-09-02',
       'src': 'datalearner',
-      'rank': 9
+      'rank': 11
     },
     {
       'model': 'MiniMax M3.1 Flash',
@@ -130,7 +152,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.60',
-      'rank': 10
+      'rank': 12
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -143,7 +165,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 5.00 / $ 30.00',
-      'rank': 11
+      'rank': 13
     },
     {
       'model': 'Qwen3.8-Max',
@@ -156,7 +178,7 @@ window.LASTEXAM = {
       'size': '2.4T',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 12
+      'rank': 14
     },
     {
       'model': 'Kimi K3',
@@ -166,7 +188,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-07-16',
       'src': 'datalearner',
-      'rank': 13
+      'rank': 15
     },
     {
       'model': 'Grok 4.5',
@@ -176,7 +198,7 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-07-08',
       'src': 'datalearner',
-      'rank': 14
+      'rank': 16
     },
     {
       'model': 'Qwen3.8-Flash-Next',
@@ -189,10 +211,10 @@ window.LASTEXAM = {
       'size': '125B',
       'context': '—',
       'cost': '—',
-      'rank': 15
+      'rank': 17
     },
     {
-      'rank': 16,
+      'rank': 18,
       'model': 'Qwen3.8 Flash',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 51.2,
@@ -213,7 +235,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.10 / $ 0.50',
-      'rank': 17
+      'rank': 19
     },
     {
       'model': 'GPT-5.6 Terra',
@@ -226,7 +248,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 2.00 / $ 12.00',
-      'rank': 18
+      'rank': 20
     },
     {
       'model': 'GPT-5.6 Luna',
@@ -239,7 +261,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'rank': 19
+      'rank': 21
     },
     {
       'model': 'Claude Fable 5',
@@ -249,7 +271,7 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-06-09',
       'src': 'datalearner',
-      'rank': 20
+      'rank': 22
     },
     {
       'model': 'GPT-5.5',
@@ -259,10 +281,10 @@ window.LASTEXAM = {
       'effort': '极高强度思考（工具）',
       'date': '2026-04-23',
       'src': 'datalearner',
-      'rank': 21
+      'rank': 23
     },
     {
-      'rank': 22,
+      'rank': 24,
       'model': 'Qwen4-Max',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 46.7,
@@ -280,7 +302,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-05-28',
       'src': 'datalearner',
-      'rank': 23
+      'rank': 25
     },
     {
       'model': 'Kimi K3.1 Pro',
@@ -293,7 +315,7 @@ window.LASTEXAM = {
       'size': '2.8T',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 24
+      'rank': 26
     },
     {
       'model': 'Qwen3.8-27B',
@@ -306,7 +328,7 @@ window.LASTEXAM = {
       'size': '28B',
       'context': '262K',
       'cost': '$ 0.40 / $ 3.00',
-      'rank': 25
+      'rank': 27
     },
     {
       'model': 'Opus 4.7',
@@ -316,10 +338,10 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-04-16',
       'src': 'datalearner',
-      'rank': 26
+      'rank': 28
     },
     {
-      'rank': 27,
+      'rank': 29,
       'model': 'Seed 2.1 Pro',
       'org': 'ByteDance',
       'score': 41.4,
@@ -337,7 +359,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-06-13',
       'src': 'datalearner',
-      'rank': 28
+      'rank': 30
     },
     {
       'model': 'Composer 2.5',
@@ -347,7 +369,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-05-18',
       'src': 'datalearner',
-      'rank': 29
+      'rank': 31
     },
     {
       'model': 'Gemini 4 Argon',
@@ -360,7 +382,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 2.00 / $ 10.00',
-      'rank': 30
+      'rank': 32
     },
     {
       'model': 'GPT-5.4',
@@ -370,7 +392,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-03-05',
       'src': 'datalearner',
-      'rank': 31
+      'rank': 33
     },
     {
       'model': 'DeepSeek-V4.1-Flash-1017',
@@ -383,7 +405,7 @@ window.LASTEXAM = {
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.30 / $ 1.20',
-      'rank': 32
+      'rank': 34
     },
     {
       'model': 'Gemini 3.1 Pro Preview',
@@ -393,7 +415,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-02-20',
       'src': 'datalearner',
-      'rank': 33
+      'rank': 35
     },
     {
       'model': 'DeepSeek-V4.1-Flash',
@@ -406,7 +428,7 @@ window.LASTEXAM = {
       'size': '763B',
       'context': '1.0M',
       'cost': '$ 0.22 / $ 0.66',
-      'rank': 34
+      'rank': 36
     },
     {
       'model': 'Qwen3.7 Max',
@@ -416,7 +438,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-05-20',
       'src': 'datalearner',
-      'rank': 35
+      'rank': 37
     },
     {
       'model': 'MiMo-V2.6-Pro',
@@ -429,7 +451,7 @@ window.LASTEXAM = {
       'size': '1.0T',
       'context': '1.0M',
       'cost': '$ 0.43 / $ 0.87',
-      'rank': 36
+      'rank': 38
     },
     {
       'model': 'Step 5 Preview',
@@ -439,10 +461,10 @@ window.LASTEXAM = {
       'effort': '思考模式 High（工具）',
       'date': '2026-09-20',
       'src': 'datalearner',
-      'rank': 37
+      'rank': 39
     },
     {
-      'rank': 38,
+      'rank': 40,
       'model': 'ERNIE 5.5 Flash Preview',
       'org': 'Baidu',
       'score': 29,
@@ -463,7 +485,7 @@ window.LASTEXAM = {
       'size': '753B',
       'context': '1.0M',
       'cost': '$ 1.20 / $ 4.00',
-      'rank': 39
+      'rank': 41
     },
     {
       'model': 'GLM 5.1',
@@ -473,7 +495,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-03-27',
       'src': 'datalearner',
-      'rank': 40
+      'rank': 42
     },
     {
       'model': 'DeepSeek-V4-Pro',
@@ -483,7 +505,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-08-13',
       'src': 'datalearner',
-      'rank': 41
+      'rank': 43
     },
     {
       'model': 'MiMo-V2.6-Flash',
@@ -496,7 +518,7 @@ window.LASTEXAM = {
       'size': '309B',
       'context': '1.0M',
       'cost': '$ 0.14 / $ 0.28',
-      'rank': 42
+      'rank': 44
     },
     {
       'model': 'DeepSeek-V4-Flash-Vision-Exp',
@@ -509,7 +531,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.44 / $ 1.32',
-      'rank': 43
+      'rank': 45
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -522,7 +544,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.0M',
       'cost': '$ 0.75 / $ 3.75',
-      'rank': 44
+      'rank': 46
     },
     {
       'model': 'GLM-5.3-Flash',
@@ -535,7 +557,7 @@ window.LASTEXAM = {
       'size': '320B',
       'context': '1.0M',
       'cost': '$ 0.15 / $ 0.50',
-      'rank': 45
+      'rank': 47
     },
     {
       'model': 'DeepSeek V4 Pro 0813',
@@ -548,7 +570,7 @@ window.LASTEXAM = {
       'size': '1.6T',
       'context': '1.0M',
       'cost': '$ 1.30 / $ 2.60',
-      'rank': 46
+      'rank': 48
     },
     {
       'model': 'DeepSeek V4 Flash 0731',
@@ -561,7 +583,7 @@ window.LASTEXAM = {
       'size': '304B',
       'context': '1.0M',
       'cost': '$ 0.06 / $ 0.18',
-      'rank': 47
+      'rank': 49
     },
     {
       'model': 'Qwen3.6-Plus',
@@ -571,7 +593,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-04-01',
       'src': 'datalearner',
-      'rank': 48
+      'rank': 50
     },
     {
       'model': 'MiMo-V2.5',
@@ -581,7 +603,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-04-27',
       'src': 'datalearner',
-      'rank': 49
+      'rank': 51
     },
     {
       'model': 'Hy4 preview',
@@ -594,7 +616,7 @@ window.LASTEXAM = {
       'size': '770B',
       'context': '—',
       'cost': '—',
-      'rank': 50
+      'rank': 52
     },
     {
       'model': 'Kimi K2.6',
@@ -604,7 +626,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-04-20',
       'src': 'datalearner',
-      'rank': 51
+      'rank': 53
     },
     {
       'model': 'DeepSeek-V4-Flash',
@@ -614,7 +636,7 @@ window.LASTEXAM = {
       'effort': '最高（工具）',
       'date': '2026-04-24',
       'src': 'datalearner',
-      'rank': 52
+      'rank': 54
     },
     {
       'model': 'MiniMax-M2.7',
@@ -624,7 +646,7 @@ window.LASTEXAM = {
       'effort': '思考档位未公开（工具）',
       'date': '2026-03-18',
       'src': 'datalearner',
-      'rank': 53
+      'rank': 55
     }
   ]
 };

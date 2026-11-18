@@ -2,111 +2,142 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-16',
+  'updated': '2026-11-18',
   'retentionDays': 2,
   'types': [
+    '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
-    '前瞻与传闻',
-    '行业动态'
+    '产品应用'
   ],
   'items': [
     {
-      'date': '2026-11-16',
-      'title': '华为云上线 openPangu-2.1-Pro 模型',
-      'brief': '华为云 MaaS 模型即服务平台正式上线开源 盘古模型openPangu-2.1-Pro ，围绕 Agent 开发、 AI 编码和推理优化三大方向升级。',
-      'url': 'https://mp.weixin.qq.com/s/8JfFmscBTDl_mPQMycD8Nw',
+      'date': '2026-11-18',
+      'title': 'OpenAI 发布 GPT-6.2 Astra 与 Sol，分别面向复杂任务和日常工作',
+      'brief': 'OpenAI 发布 GPT-6.2 Astra 和 Sol 。',
+      'url': 'https://openai.com/index/introducing-gpt-6-2-astra-sol/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': '微软在 Ignite 上公布七款新模型',
+      'brief': '微软在 Ignite 大会发布七款 MAI 新模型，主打低价高性能。',
+      'url': 'https://microsoft.ai/news/microsoft-ignite-2026-mai-keynote/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Gemini Tasks 在美日韩加澳印六国免费开放',
+      'brief': 'Google 宣布， Gemini 的 Tasks 功能在 美国、日本、韩国、加拿大、澳大利亚和印度 向数亿符合条件用户免费开放，免费用户都能用新模型 Gemini 4 Hydrogen 运行任务。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Antigravity 重置所有模型配额，Carbon 首词元响应提速',
+      'brief': '为庆祝 Antigravity 上线一周年， Antigravity 负责人 Varun Mohan 发帖称，团队将为所有用户重置全部模型的使用配额。',
+      'url': 'https://x.com/_mohansolo/status/2122836883877347836',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'OpenCode Go GLM 5.3 额度升至 200 美元',
+      'brief': 'OpenCode 宣布 Operation GLM 进入第二阶段，面向所有 OpenCode Go 订阅者， 10 美元 即可获得 200 美元 的 GLM 5.3 使用额度，价格维持不变，该阶段目前已生效，入口为 OpenCode Console 的 Go 页面。此前上线的第一阶段提供的额度为 100 美元 ，价格相同。',
+      'url': 'https://x.com/opencode/status/2122763721923559595',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': '可灵 AI 发布 Kling Image 4.0',
+      'brief': '可灵 AI 发布图像创作模型 Kling Image 4.0 ，同时向企业客户和开发者开放 API 。',
+      'url': 'https://mp.weixin.qq.com/s/p3_DIBRUUgmxShjD5Wp27w',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-11-16',
-      'title': 'Agnes AI 开源 187.8B 多模态 MoE 模型',
-      'brief': 'Agnes AI 在 Hugging Face 发布多模态混合专家模型 Agnes 2.5 Pro Theta ，总参数量约 187.8B ，上下文上限 262,144 tokens ，许可证为 Apache License 2.0 。',
-      'url': 'https://huggingface.co/Agnes-AI/Agnes-2.5-Pro-Theta',
+      'date': '2026-11-18',
+      'title': '商汤正式开源 SenseNova-Loop-9B',
+      'brief': '商汤 正式开源多模态模型 SenseNova-Loop-9B ，权重和代码以 Apache 2.0 许可在 Hugging Face 和 GitHub 开放，首日提供官方 AWQ 4-bit 量化版。',
+      'url': 'https://github.com/OpenSenseNova/SenseNova-Loop',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
     {
-      'date': '2026-11-16',
-      'title': 'OpenCode Go 订阅现已支持微信支付付款',
-      'brief': 'OpenCode 在 Console 更新日志中宣布，Go 和 Go Plus 订阅方案现已支持使用微信支付付款。用户在微信中授权一次后，订阅将按月自动续费；若在微信中取消扣款协议，下次续费时会要求重新确认。',
-      'url': 'https://opencode.ai/console/changelog/wechat-pay-go',
+      'date': '2026-11-18',
+      'title': 'Google AI Studio 更新 Android 应用开发功能',
+      'brief': 'Google AI Studio 更新 Android 应用开发功能，支持通过 Firebase 为应用添加跨设备数据同步、用户登录和 Gemini 调用。',
+      'url': 'https://x.com/GoogleAIStudio/status/2122752241887068565',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-11-16',
-      'title': 'OpenAI 开设 science blog 并发布 Standard Model 研究解读',
-      'brief': 'OpenAI 宣布开设全新的 OpenAI science blog ，用于分享 OpenAI 、合作方及科研界借助 AI 推进科学发现的成果、实用方法与研究者一线经验。',
-      'url': 'https://openai.com/index/our-new-blog-for-science/',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-16',
-      'title': '报道称 Jensen Huang 考虑重返 NVIDIA 担任 CEO',
-      'brief': '据英国《金融时报》报道， NVIDIA 前 CEO Jensen Huang 正考虑重新出任 CEO，并与几位亲信讨论过回归的可能。一位盟友称，有人正召集硅谷高管游说董事会让他复职，并争取白宫支持。',
-      'url': 'https://wccftech.com/jensen-huang-considers-returning-to-nvidia-as-his-allies-assemble-a-war-room-to-lobby-on-his-behalf-and-a-petition-in-his-favor-crosses-156000-signatures',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-15',
-      'title': 'Grok Bot 多项优化上线，订阅用量增约 7%',
-      'brief': 'Grok Bot 团队成员 Sam Sokolin 发文称，本周已完成多项 Grok Bot harness 优化，订阅方案用量预计可增加约 7% ，日常运行最多可增加约 15% 。',
-      'url': 'https://x.com/mattyp/status/2121624592326480311',
+      'date': '2026-11-18',
+      'title': 'Google AI Studio Build 支持自定义域名',
+      'brief': 'Google AI Studio 在 Build 中推出网页应用的自定义域名功能。用户可在发布面板购买并连接域名，也可复用此前在 AI Studio 为同一 Google Cloud 项目购买的域名。',
+      'url': 'https://aistudio.google.com/docs/aistudio-custom-domains',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-11-15',
-      'title': 'Claude Code 桌面版推出 mods 自定义主题',
-      'brief': 'Anthropic 宣布， Claude Code 桌面版现已支持通过 mods 构建自定义主题，用户可以调整颜色、添加动画背景。构建主题时可以直接告诉 Claude 想要的外观，也可以使用官方提供的 theme-examples 插件快速开始。想自己动手的开发者可以参考官方发布的配套文档。该功能需要更新到最新版桌面应用，目前在本地会话中生效，云端会话支持即将推出。',
-      'url': 'https://code.claude.com/docs/en/plugins/mods/interface',
+      'date': '2026-11-18',
+      'title': 'Google DeepMind 推出机器人插件',
+      'brief': 'Google DeepMind 推出 Google Antigravity 机器人插件，配合上周发布的 Gemini 4 Hydrogen 模型，可连接支持的机械臂，在 MuJoCo 仿真中练习，再用对话执行现实任务。',
+      'url': 'https://x.com/GoogleDeepMind/status/2122767528933925363',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-11-15',
-      'title': '谷歌 300 美元赠金将不再覆盖 Gemini 调用费用',
-      'brief': 'Google Cloud 官方文档显示， 2026 年 11 月 16 日 或之后注册免费试用或升级为付费结算账号的用户，其 300 美元 迎新赠金将无法用于支付 Gemini Platform （含 Vertex AI ）、 AI Studio 中的 Gemini API ，以及以模型即服务形式提供的生成式 AI 合作伙伴模型的费用，只能用于免费试用计划涵盖的其他 Google Cloud 产品和服务。',
-      'url': 'https://docs.cloud.google.com/free/docs/free-cloud-features',
+      'date': '2026-11-18',
+      'title': 'Claude Code 实验性 Code Mode 上线',
+      'brief': 'ClaudeDevs 发帖介绍 Claude Code 的实验性功能 Code Mode ：Claude 不再逐个直接调用工具，而是编写 JavaScript 脚本交由 Claude Code 在会话中运行，代码可并行执行命令，长命令后台运行时还能继续与 Claude 对话。',
+      'url': 'http://code.claude.com/docs/en/code-mode',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-11-15',
-      'title': 'Cloudflare 开源 Kitesurf 浏览器，支持自行部署',
-      'brief': 'Cloudflare 将专为 AI agent 设计的浏览器 Kitesurf 在 GitHub 开源，采用 Apache 2.0 许可证。',
-      'url': 'https://blog.cloudflare.com/kitesurf-open-source/',
+      'date': '2026-11-18',
+      'title': 'Claude Platform 上线关联计费测试版',
+      'brief': 'Anthropic 在 Claude Platform 以测试版上线关联计费（ Linked billing ）。终端客户把自己的 Claude 组织与平台关联一次后，就能用自己的组织支付 Claude API 用量，无需向平台共享 API key ；平台可按请求选择付费方，且无需自建计量与开票。已支持 Asana、Linear、Ramp、Warp 等 19 个平台。客户可为每个平台设月度支出上限，并随时解除关联。客户组织须直接向 An…',
+      'url': 'https://claude.com/blog/linked-billing-on-claude-platform',
       'source': '橘鸦AI早报',
       'type': '开发生态'
     },
     {
-      'date': '2026-11-15',
-      'title': 'Claude 发布 always-on agents 指南',
-      'brief': 'Claude 团队发布 Building always-on agents 指南，介绍如何搭建能跨会话管理状态、无需直接监督就主动行动的 always-on agents 。指南说明，这类 agent 大部分时间休眠，收到事件后执行一次 run 并保存状态，其架构包含 event inbox 、 timers 、 memory 、 permissions 和 outbox 五个核心模块。',
-      'url': 'https://claude.com/resources/articles/building-always-on-agents',
+      'date': '2026-11-17',
+      'title': '字节跳动 Seedance 2.5 4K API 全面开放',
+      'brief': '字节跳动 火山引擎宣布， Seedance 2.5 4K 视频生成模型的 API 全面开放，开发者与企业客户可通过接口调用。',
+      'url': 'https://mp.weixin.qq.com/s/c6pWJXD6YXf8lcwLdNu5zA',
       'source': '橘鸦AI早报',
-      'type': '技术与洞察'
+      'type': '模型发布'
     },
     {
-      'date': '2026-11-15',
-      'title': 'Anthropic 发布 10 项安全评测建议',
-      'brief': 'Anthropic 在工程博客发布 10 项安全评测建议。',
-      'url': 'https://anthropic.com/research/building-strong-safety-evaluations',
+      'date': '2026-11-17',
+      'title': '上海AI实验室开源书生-S2.1 Flash',
+      'brief': '上海人工智能实验室 发布并开源科学多模态模型 书生-S2.1 Flash ，采用 3200亿参数 MoE 架构，支持分子图、晶体结构、蛋白质序列、光谱等十余类科学输入，可操作专业科研软件执行多步骤科研任务。',
+      'url': 'https://internlm.github.io/Sage-S2.1-Flash/',
       'source': '橘鸦AI早报',
-      'type': '技术与洞察'
+      'type': '模型发布'
     },
     {
-      'date': '2026-11-15',
-      'title': 'Cursor 披露安全事件：密钥泄露致部分数据外泄',
-      'brief': 'Cursor 发布安全事件更新：攻击者利用 Fireworks 泄露的访问密钥，复制了部分智能体链路追踪数据，少量数据含未脱敏凭证，API 凭证遭泄露的客户不到 0.01% 。攻击者借此入侵了 Cursor 使用的部分 SaaS 工具。',
-      'url': 'https://cursor.com/blog/security-incident-update',
+      'date': '2026-11-17',
+      'title': 'ChatGPT for Healthcare 宣布升级',
+      'brief': 'OpenAI 宣布升级 ChatGPT for Healthcare ：推出能在现有医疗软件间操作的 computer-use agents ；改进 trusted clinical search ；并新增 20 多个 医疗插件。',
+      'url': 'https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/',
       'source': '橘鸦AI早报',
-      'type': '行业动态'
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-17',
+      'title': 'Gemini Notebook 可把笔记资料变成网站',
+      'brief': 'Google 在官方博客宣布， Gemini Notebook 现在可以把用户的笔记、研究和资料来源转换成可交互、可分享的网站。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
     }
   ]
 };
