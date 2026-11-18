@@ -6,7 +6,7 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-18',
-  'refreshedAt': '2026-11-18 23:04',
+  'refreshedAt': '2026-11-19 04:46',
   'stats': {
     'months': 21,
     'afterToolDedupe': 3377,
@@ -3215,7 +3215,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'trae',
           'name': 'TRAE',
           'vendor': '字节跳动',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://www.trae.cn/changelog',
           'items': [
             {
@@ -6009,7 +6009,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'trae',
           'name': 'TRAE',
           'vendor': '字节跳动',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://www.trae.cn/changelog',
           'items': [
             {

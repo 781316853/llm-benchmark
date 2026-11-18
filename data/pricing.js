@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-18',
-  'refreshedAt': '2026-11-18 15:48',
+  'refreshedAt': '2026-11-19 04:46',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -27,13 +27,13 @@ window.PRICING = {
   },
   'formula': '综合成本(¥/百万token) = cacheHitRate×缓存输入价 + (1−cacheHitRate−outputRatio)×输入价 + outputRatio×输出价',
   'stats': {
-    'planModels': 2595,
-    'withPricing': 1849,
-    'comparable': 1174,
-    'models': 114,
+    'planModels': 2665,
+    'withPricing': 1890,
+    'comparable': 1209,
+    'models': 116,
     'unresolved': 16,
-    'ranked': 75,
-    'supplemented': 5,
+    'ranked': 77,
+    'supplemented': 3,
     'carriedOver': 0,
     'seeded': 0,
     'missingRanked': 5
@@ -72,6 +72,15 @@ window.PRICING = {
       'cacheCnyPerM': 6.8,
       'outputCnyPerM': 81.6,
       'costPerM': 8.092,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'GPT-6.2 Astra',
+      'slug': 'gpt-6-2-astra',
+      'inputCnyPerM': 54.4,
+      'cacheCnyPerM': 2.72,
+      'outputCnyPerM': 272,
+      'costPerM': 6.392,
       'priceSource': 'codingplan.fyi'
     },
     {
@@ -444,6 +453,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'GPT-6.2 Sol',
+      'slug': 'gpt-6-2-sol',
+      'inputCnyPerM': 13.6,
+      'cacheCnyPerM': 0.68,
+      'outputCnyPerM': 68,
+      'costPerM': 1.598,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
       'id': 'Gemini 4 Argon',
       'slug': 'gemini-4-argon',
       'inputCnyPerM': 13.6,
@@ -544,12 +562,12 @@ window.PRICING = {
     },
     {
       'id': 'Qwen4-Max',
-      'slug': 'qwen/qwen4-max',
-      'inputCnyPerM': 9.69,
-      'cacheCnyPerM': 0.4845,
-      'outputCnyPerM': 29.07,
-      'costPerM': 1.041675,
-      'priceSource': 'models.dev:openrouter'
+      'slug': 'qwen-4-max',
+      'inputCnyPerM': 10.2,
+      'cacheCnyPerM': 0.51,
+      'outputCnyPerM': 30.6,
+      'costPerM': 1.0965,
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'Nemotron 3 Ultra',
@@ -604,6 +622,15 @@ window.PRICING = {
       'outputCnyPerM': 23.8,
       'costPerM': 0.833,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'MiMo-V2.5-Pro',
+      'slug': 'xiaomi/mimo-v2.5-pro',
+      'inputCnyPerM': 3.264,
+      'cacheCnyPerM': 0.6528,
+      'outputCnyPerM': 12.24,
+      'costPerM': 0.82824,
+      'priceSource': 'models.dev:openrouter'
     },
     {
       'id': 'GPT-6.1 Terra',
@@ -796,12 +823,12 @@ window.PRICING = {
     },
     {
       'id': 'Inkling 2 Small',
-      'slug': 'thinkingmachines/inkling-2-small',
+      'slug': 'inkling-2-small',
       'inputCnyPerM': 2.04,
       'cacheCnyPerM': 0.204,
       'outputCnyPerM': 6.8,
       'costPerM': 0.3196,
-      'priceSource': 'models.dev:openrouter'
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'Tencent Hy3',
@@ -864,15 +891,6 @@ window.PRICING = {
       'cacheCnyPerM': 0.136,
       'outputCnyPerM': 4.352,
       'costPerM': 0.19992,
-      'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'MiMo-V2.5-Pro',
-      'slug': 'mimo-v2-5-pro',
-      'inputCnyPerM': 2.958,
-      'cacheCnyPerM': 0.02465,
-      'outputCnyPerM': 5.916,
-      'costPerM': 0.186108,
       'priceSource': 'codingplan.fyi'
     },
     {
@@ -1011,12 +1029,12 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'MiMo-V2.5',
-      'slug': 'mimo-v2-5',
-      'inputCnyPerM': 0.952,
-      'cacheCnyPerM': 0.01904,
-      'outputCnyPerM': 1.904,
-      'costPerM': 0.070448,
+      'id': 'Muse Ember',
+      'slug': 'muse-ember',
+      'inputCnyPerM': 0.68,
+      'cacheCnyPerM': 0.0272,
+      'outputCnyPerM': 3.4,
+      'costPerM': 0.07344,
       'priceSource': 'codingplan.fyi'
     },
     {
@@ -1056,6 +1074,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'Tencent Hy4 Flash',
+      'slug': 'hy4-flash',
+      'inputCnyPerM': 0.476,
+      'cacheCnyPerM': 0.0204,
+      'outputCnyPerM': 1.9108,
+      'costPerM': 0.050354,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
       'id': 'Meta Muse Spark 1.2',
       'slug': 'muse-spark-1-2',
       'inputCnyPerM': 0.68,
@@ -1063,15 +1090,6 @@ window.PRICING = {
       'outputCnyPerM': 1.36,
       'costPerM': 0.05032,
       'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'Tencent Hy4 Flash',
-      'slug': 'tencent/hy4-flash',
-      'inputCnyPerM': 0.238,
-      'cacheCnyPerM': 0.0102,
-      'outputCnyPerM': 0.9554,
-      'costPerM': 0.025177,
-      'priceSource': 'models.dev:openrouter'
     }
   ]
 };

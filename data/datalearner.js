@@ -168,6 +168,14 @@ window.DATALEARNER = {
       'license': '闭源'
     },
     {
+      'name': 'MAI Code 2',
+      'score': 73.2,
+      'mode': '最高（工具）',
+      'date': '2026-11-17',
+      'params': '28000亿',
+      'license': '闭源'
+    },
+    {
       'name': 'Claude Opus 5',
       'score': 73.2,
       'mode': '极高强度思考（工具）',
@@ -238,14 +246,6 @@ window.DATALEARNER = {
       'date': '2026-11-11',
       'params': '2800亿',
       'license': '已宣布 · 待发布'
-    },
-    {
-      'name': 'Gemini 3.8 Flash',
-      'score': 71,
-      'mode': '思考模式 Medium（工具）',
-      'date': '2026-09-02',
-      'params': '未知',
-      'license': '闭源'
     }
   ]
 };
