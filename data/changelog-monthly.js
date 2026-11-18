@@ -6,13 +6,13 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-18',
-  'refreshedAt': '2026-11-18 17:28',
+  'refreshedAt': '2026-11-18 23:04',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3407,
-    'afterMerge': 3389,
-    'needsZh': 2196,
-    'translated': 2196,
+    'afterToolDedupe': 3377,
+    'afterMerge': 3359,
+    'needsZh': 1973,
+    'translated': 1973,
     'untranslated': 0
   },
   'zh': {
@@ -36,7 +36,6 @@ window.CHANGELOG_MONTHLY = {
     '11f1e608-126': '在VS Code和类似的集成终端中添加了关于重新运行笔记本单元格的加载指示器提示，该提示会在Claude读取或编辑Jupyter笔记本后显示一次',
     '1213c9c5-47': '通过映射到 ignore 与 synthetic 支持 ACP audience',
     '121e0564-134': '为命令和HTTP钩子添加了onFailure: \'block\' ：无法启动、超时或使用意外代码退出的钩子会阻止操作，而不是让它通过',
-    '12217a90-74': '! - 允许自定义智能体文件限制其可委派的子智能体类型（仅 v2 引擎）',
     '1223a288-60': '在空提示中添加了提示，说明请求失败后该怎么做',
     '128deb7c-41': '新增 stats 命令以显示使用统计',
     '129ba684-27': '为应用新增端到端冒烟测试',
@@ -44,11 +43,9 @@ window.CHANGELOG_MONTHLY = {
     '12aff4c0-45': '将 polaris-alpha 模型路由至 polaris 系统提示词',
     '12d121ac-121': '在OpenCode中使用Claude Code ：安装Claude Code ，运行claude auth login ，然后在/connect中选择Claude Agent以使用您的Claude Code登录名和模型',
     '13253be2-56': '/theme 中新增 ctrl+t 快捷键，用于开关语法高亮',
-    '13261790-272': '! - 扩展 coder 子智能体的工具集，纳入后台任务、待办列表、计划模式、技能调用和嵌套智能体，与主智能体的能力保持一致；子智能体运行结束前还会等待其后台任务处理完毕再上报完成。对通过 Agent 工具启动的 coder 子智能体自动生效',
     '1326a57f-61': '首次分享会话前新增一次性确认',
     '1346f0b0-51': '自定义 TUI 状态行可以包含重命名后的线程标题',
     '1370fb01-71': '在 /agents 中为有活动子 Agent实例的Agent 类型新增 ● N running 指示符',
-    '139ba938-120': '! - web：修复移动端斜杠命令和 @ 提及面板无法打开的问题 —— 两个面板和 + 菜单在小屏幕上现为带抓手的底部弹层',
     '13ac69d4-111': 'app-server 客户端可在线程和轮次级别将多智能体委派配置为禁用、仅显式请求或主动发起',
     '141bf660-39': '补充状态消息缺失的翻译',
     '141d82f8-146': '自定义模型提供商现在可以动态获取和刷新短期 bearer token，而不再局限于配置或环境变量中的静态凭证',
@@ -60,7 +57,6 @@ window.CHANGELOG_MONTHLY = {
     '1470a428-176': '新增 --bare 标志用于脚本化 -p 调用——跳过钩子、LSP、插件同步和技能目录遍历；需要 ANTHROPIC_API_KEY 或通过 --settings 指定 apiKeyHelper（OAuth 和钥匙串认证被禁用）；自动记忆完全禁用',
     '14afa3b4-74': '在 /permissions 中新增 Auto mode 标签页，用于查看和编辑 auto 模式分类器规则',
     '14bb9c64-71': '在技能描述和 /skills 菜单中新增插件名称，提升可发现性',
-    '14e1352c-39': '在文件建议中包含被 .gitignore 忽略的文件',
     '14e4870c-70': '增加过渡动画、间距优化、滚动渐隐效果及提示区更新',
     '14e68cb0-62': '新增阅读思考块的帮助说明，提升待办同步的可信度',
     '1501ce80-57': '增加 Copilot 专用提供商，正确处理推理令牌',
@@ -74,10 +70,8 @@ window.CHANGELOG_MONTHLY = {
     '15997300-32': '为应用添加 Windows 端到端测试',
     '159b1890-130': '向Claude应用程序网关的成功推理响应添加了request-id标头，因此Claude Code遥测中的request_id与网关的审核日志匹配',
     '15b31798-32': '为桌面应用添加 readline 快捷键',
-    '15ce0e8c-295': '在市场显示可用的插件更新。已安装插件的市场版本比本地版本更新时显示 update → 徽标（按回车就地更新）；已是最新的插件显示 installed · v 。dev 提供并由 CDN 构建写入的市场版本现由各插件的 manifest 生成，使「latest」保持准确',
     '15dd7ae0-73': '为 GitLab Duo Workflow 工具调用新增权限提示，而不是自动运行',
     '15df8e8c-52': '调整 stats 命令，显示每会话平均和中位数 token 数',
-    '15eae847-145': '! -将客服代表轮流等待后台任务的时间限制为90秒（不再接受更长的超时时间） ，阻止重复等待，并让新消息立即结束等待',
     '15f1681a-46': '为导航添加 TUI 会话选择 API 端点',
     '15f70ac4-77': '在轮次结束的耗时行中新增该轮次的完成时间，例如 ✻ Sautéed for 23s · done 6:05 PM',
     '162af8d4-125': '添加了prompt.change mod钩子，当提示框的文本在没有键入编辑的情况下更改时引发：回调历史记录条目、清除、撤消或插件的填充',
@@ -131,7 +125,6 @@ window.CHANGELOG_MONTHLY = {
     '1c41bd9c-39': '将模型信息纳入任务元数据',
     '1c5eb018-20': '为 Linux 发布 tar.gz',
     '1c64f576-199': '插件市场自动化更丰富、更及时：codex plugin marketplace list --json 现在会包含每个市场来源，插件列表可先返回缓存的远程目录，再在后台刷新',
-    '1c789a34-124': '新增模型别名覆盖，使手动设置的思考强度级别和模型元数据在提供商目录刷新后仍然保留。在 [models.\' \'.overrides] 下设置',
     '1c93734c-60': '模型选择对话框中为零成本模型显示「Free」标记',
     '1cefadf8-58': '为长命令添加可展开的 bash 输出以提升可读性',
     '1cfdd4a0-12': '新的应用布局',
@@ -145,7 +138,6 @@ window.CHANGELOG_MONTHLY = {
     '1e16abcc-43': '调整 Minimax m2 的 topK，并添加 Minimax m2.1 的 topP',
     '1e3d3324-36': '向自定义工具暴露 Instance.directory',
     '1e61f00a-75': '新增对日语输入法全角空格输入的支持，用于复选框选择',
-    '1e6ec2b5-121': '在 TUI 中区分显示计划提醒，向 SDK 客户端暴露 cron 触发事件，并以本地时区偏移报告 cron 触发时间',
     '1e8c97c5-47': '在/config中添加了一条备注，说明其他设置覆盖某行的情况',
     '1f0aa070-54': '添加单实例插件以避免多个桌面窗口',
     '1f0b47a0-245': '默认情况下，转录内容更简洁：TUI 现在将每次运行的工具调用和思考内容汇总到一个可折叠的活动行中，因此答案更容易理解。要再次查看每个步骤，请在设置中将“详细程度”设置为“中”或“高”，或在 TUI 配置中设置 session.verbosity；现有设置将保留。',
@@ -168,9 +160,7 @@ window.CHANGELOG_MONTHLY = {
     '202d1cbd-65': '使用新的 --approve-for-me CLI 标志启用自动审核的批准',
     '203f3be8-100': '为claude-api技能添加了OpenTelemetry跟踪指南，包括使用ANT CLI设置跟踪目标',
     '2042ab94-49': '添加密码认证并提升服务器安全性',
-    '208ae6f4-91': '! - 新增实验性全屏 TUI 模式。设置环境变量 KIMI_CODE_TUI_FULL_SCREEN=1 即可启用',
     '2096e33c-133': 'Codex 现在默认在 Google Cloud Vertex AI 上以增量方式发送工具更新。要选择退出，请在 config.toml 的 [features] 下将 incremental_tools_legacy_gcp 设置为 false。( , )',
-    '20a5f60-34': '添加会话标题生成遥测',
     '20a98057-80': 'view_image 可通过所选环境解析文件，适用于多环境会话',
     '20b19acc-44': '支持为桌面端配置默认服务器 URL',
     '20c1fdd8-36': '在桌面应用中支持分叉会话',
@@ -179,11 +169,9 @@ window.CHANGELOG_MONTHLY = {
     '21242a04-45': 'LSP 禁用时使 LSP 提示更准确',
     '21464049-82': 'chat.params 和 chat.message 插件钩子新增输入上下文（sessionID、agent、model、messageID）',
     '214eba37-26': '增加重做与撤销的端到端测试',
-    '21518ad4-616': '在图片送达模型前自动压缩过大的图片。无论来源如何——粘贴到 CLI、从 Web/桌面客户端上传、通过 ACP 发送、经 ReadMediaFile 读取，还是由 MCP 工具返回——图片都会被降采样（最长边 ≤ 2000px）并重新编码以符合单图字节预算，从而降低视觉 token 成本并避免提供商报图片尺寸错误。截图保持无损 PNG，仅在无法满足字节预算时才降级为 JPEG。压缩在每个接入点的输入阶段（构建内容块时）执行，并会在解码前跳过像素/字节量异常巨大的载荷，以防解压缩炸弹。尽力而为：若因任何原因失败，则原样发送原始图片',
     '21546ca5-58': '为 toast 组件添加宽度约束，确保文字正确换行',
     '216f7a77-77': '默认情况下启用全屏会话记录，并添加Shift +单击以扩展文本选择',
     '217ce720-85': '新增用于记忆模式、记忆重置与删除和记忆扩展清理的 TUI 与 app-server 控制',
-    '21b03644-99': '! - 支持以带 frontmatter 的 Markdown 文件定义自定义智能体，可用作主智能体或子智能体（仅 v2 引擎）',
     '21e433b0-89': '使用 @ 提及引用其他 Codex 任务，并可让代理从终端读取、创建或向任务发送消息',
     '21e64520-140': '向Claude应用网关的推理审计事件添加了upstream_request_id ：来自Amazon Bedrock、Anthropic API或其他上游的请求ID ，用于支持案例',
     '22266d68-123': '在 Claude apps 网关登录中新增已登录账号：当网关指定该账号时，保存凭据前需先确认，/status 也会显示它',
@@ -210,10 +198,8 @@ window.CHANGELOG_MONTHLY = {
     '2470af4a-34': '增加 Trinity 模型系统提示支持',
     '24877f5d-102': '现在可以直接列出和读取远程插件市场，详情查询更可靠，结果页也更大',
     '249f7590-86': '为 /stats 命令增加日期范围筛选，按 r 可在最近 7 天、最近 30 天和全部时间之间切换',
-    '24a53b38-65': '! - 新增 /copy 斜杠命令，可将最后一条助手消息复制到剪贴板',
     '24c7ca0c-88': '在从终端会话选择器连接的后端之间切换，并在切换时保留草稿',
     '24f10924-140': '新增 Claude apps 网关对 desktop policy 块中较新 Claude Desktop 键的支持，包括 userPluginMarketplacesEnabled 和 userPluginUploadsEnabled',
-    '24f3950c-42': '! - 启动时询问是否信任当前文件夹',
     '24f84bc3-118': '新增推送通知工具 — 当启用远程控制和「Push when Claude decides」配置时，Claude 可以发送移动端推送通知',
     '2520e9a6-142': '新增 CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE：在 Homebrew 或 WinGet 安装中设置后，Claude Code 会在后台运行升级命令并提示重启',
     '25259f50-58': '查看详细对话记录（Ctrl+O）时新增「verbose」标记',
@@ -233,7 +219,6 @@ window.CHANGELOG_MONTHLY = {
     '26c260d4-68': '为 Docker 镜像补充缺失的系统库，使 agent 能正常启动',
     '27113b98-126': 'Windows 管理员获得 alpha 版 codex sandbox setup --elevated 配置路径，以及对允许的 Windows 沙箱实现的需求支持',
     '27321d2c-116': '在 Claude Desktop 和 Cowork 通过 Claude apps 网关发送的遥测中新增 user.email 和 user.groups，与终端会话一致',
-    '27b6e304-113': 'KIMI_CODE_NO_AUTO_UPDATE（旧别名 KIMI_CLI_NO_AUTO_UPDATE）——完全禁用更新预检（不检查、不后台安装、不提示）',
     '27daf91-69': '新增 claude auth login、claude auth status 和 claude auth logout CLI 子命令',
     '281ba1e4-22': '新增 Haskell LSP 支持',
     '281e0754-43': '删除会话失败时保持会话对话框打开',
@@ -258,11 +243,9 @@ window.CHANGELOG_MONTHLY = {
     '2a146e54-40': '在命令面板中新增最近项目区域',
     '2a1bf228-128': '新增 Time format（timeFormat）和 timeZone 设置：12 小时、24 小时、24 小时 UTC，或 strftime 模式，用于轮次结束时钟和会话记录视图时间戳',
     '2a46a910-67': '核心：修复 Anthropic 模型的消息缓存，提升响应一致性',
-    '2a48db50-29': '微压缩现在默认关闭',
     '2a4d9fd8-127': '将实验图像和决策生成API添加到插件和sdk ，允许图像生成或决策模型（例如typesafe、clef等）工作流程',
     '2a5f832c-23': '新增 Linux ARM64 构建',
     '2a700d88-34': '为应用增加全局配置支持',
-    '2a93a734-63': '新增 /export-md 斜杠命令，可将当前会话导出为 Markdown 文件',
     '2afde679-72': '避免并发安装 Bun 包导致损坏或冲突',
     '2b2803f8-114': '新增数字小键盘支持，可在 Claude 的提问中选择选项（此前仅支持 QWERTY 上方的数字行）',
     '2b43ac74-66': '新增插件来源类型 git-subdir，可指向 git 仓库内的子目录',
@@ -273,19 +256,15 @@ window.CHANGELOG_MONTHLY = {
     '2b6ebba0-61': '暂时将 codesearch 和 websearch 限制为仅 OpenCode Zen 用户可用',
     '2b6f34b8-35': '新增 Swift 语法高亮支持',
     '2b800fa0-107': '在stream-json system/init plugin_errors中添加了--plugin-dir load-failure条目的路径，命名未加载的目录',
-    '2b9647a4-87': '检测 Homebrew 安装并使用 brew upgrade kimi-code 更新，而不是回退到 npm',
     '2ba350c0-36': '新增 tool_details 快捷键绑定，默认未绑定',
     '2bc815c8-28': '优雅处理配置错误',
-    '2bd2b9a0-78': '将内置技能显示为直接斜杠命令，并将其排在外部技能命令之前',
     '2be2bc8-84': '新增 disableDeepLinkRegistration 设置，用于阻止注册 claude-cli:// 协议处理器',
     '2c29c7ea-40': '主题选择器中新增语法高亮信息',
-    '2c324340-65': '! - 新增服务端接口，用于恢复已归档会话以及仅列出已归档会话',
     '2c4851fc-56': '从/experimental选择macOS或Windows系统代理设置',
     '2c53161b-139': '向网关提示标头添加了x-claude-code-prompt-id ，以便LLM网关可以对服务于一个用户提示的请求进行分组；选择加入CLAUDE_CODE_GATEWAY_HINT_HEADERS = 1',
     '2c620e08-40': '支持通过 well-known RFC 从 URL 发现技能',
     '2c85e4b8-289': 'GPT-6.2提示缓存：GPT-6.2模型不会缓存“回复”指令字段中发送的系统提示，因此每个步骤都会将其重新计费为未缓存输入。OpenCode 现在会在每个“回复”路由上将其作为首个开发者消息发送，包括 OpenAI（API 密钥和 ChatGPT 登录）、GitHub Copilot、Zen、Azure 和 OpenRouter，因此从第二步开始就会被缓存。',
     '2c91ab3c-130': '默认新增操作系统 CA 证书存储信任，因此企业 TLS 代理无需额外配置即可工作（设置 CLAUDE_CODE_CERT_STORE=bundled 可仅使用捆绑 CA）',
-    '2c9aaea0-53': 'Web 聊天布局、会话列表、自动滚动及相关行为',
     '2cb2bdf0-89': '新增 CLAUDE_CODE_DISABLE_CRON 环境变量，可在会话中途立即停止已计划的 cron 任务',
     '2cb676b0-90': '在 /copy 中新增 w 键，可将当前选中内容直接写入文件，绕过剪贴板（在 SSH 环境下很有用）',
     '2cce3268-28': '新增 Go SDK 代码生成脚本',
@@ -300,14 +279,12 @@ window.CHANGELOG_MONTHLY = {
     '2da68c34-119': '在任务通知中内联显示代理的最终回复，无需阅读完整记录文件即可查看结果',
     '2da7439c-134': '向OpenTelemetry tool_decision事件添加了classifier_verdict和permission_mode ，因此可以将自动模式分类器决策与权限规则分开',
     '2dcc4f4c-126': '添加了CLAUDE_CODE_DISABLE_FILE_MENTIONS环境变量： CLAUDE使用其文件工具获取要读取的@ file提及的路径，而不是文件的内容',
-    '2e11431c-56': '新增 doctor 命令，用于校验 Kimi Code 配置文件',
     '2e3477f-33': '新增附件 PDF 拖放',
     '2e357dc4-17': '添加变体开关',
     '2e4f33cd-51': '为支持的 Claude 和 GPT 模型新增快速模式变体',
     '2e76e020-31': 'TUI 仅显示最近 100 条消息',
     '2e79585a-148': '在 claude -p 和 SDK 会话中，当钩子运行时间较长时，每 30 秒添加一个进度心跳，这样，像 Claude Desktop 这样的主机就不会将轮次视为挂起（一旦其包含此版本）。',
     '2e82ea18-116': '新增 OTEL_LOG_RAW_API_BODIES 环境变量，可将完整的 API 请求和响应体作为 OpenTelemetry 日志事件输出，用于调试',
-    '2e9adb68-172': '! - web：新增会话诊断导出，可将某个会话以及仅含元数据、有大小上限的排障日志打包为 ZIP 下载。运行 /export 或在会话的更多菜单中选择「导出会话」。Web 下载限制为 64 MiB',
     '2e9b0c50-29': 'Git log 输出（例如 git log 1.0.145..HEAD）',
     '2ea03099-144': '工具和连接器的输入 schema 现在会保留 oneOf 和 allOf，大 schema 在压缩时能保留更多浅层结构，从而改善与更复杂 MCP 工具的兼容性',
     '2eb6e978-127': '新增 CLAUDE_CODE_PERFORCE_MODE 环境变量：设置后，Edit/Write/NotebookEdit 在只读文件上会失败并给出 p4 edit 提示，而不是静默覆盖',
@@ -340,12 +317,9 @@ window.CHANGELOG_MONTHLY = {
     '316892a8-116': '新增 --channels 权限中继——声明了权限能力的频道服务器可将工具审批提示转发到你的手机',
     '31817528-119': '新增 agent 视图（研究预览）：以单一列表展示所有 Claude Code 会话——运行中、等待你处理或已完成。运行 claude agents 即可开始',
     '31cfea58-90': '在 subagentStatusLine 载荷中新增推理强度，使自定义智能体行可展示模型和强度',
-    '3222a720-112': '对所有出站流量遵循标准 HTTP_PROXY / HTTPS_PROXY / ALL_PROXY / NO_PROXY 环境变量，包括 SOCKS 代理',
     '323962a4-23': '补充应用中缺失的工具提示',
     '3246dc48-106': '远程插件现已默认启用，目录条目更丰富，支持 npm 市场来源，并显示远程/本地版本',
-    '324f561d-146': '! -支持通过远程控制传输大型请求和响应，将传输限制从10 MiB提高到100 MiB ，并发传输限制以保护内存',
     '3264fb90-34': '对提示中的文件引用去重',
-    '32706bd8-36': '允许本地FetchURL中的私有地址',
     '329f883c-32': '优化 TUI 中的错误信息渲染',
     '32b7c48-152': '在全屏模式下向/skills、/mcp和/plugin安装列表添加了一个滚动条，就像现在的/workflows一样：鼠标在列表上时出现，可以单击或拖动',
     '33075270-61': '防止外部 diff 工具干扰快照生成',
@@ -359,17 +333,13 @@ window.CHANGELOG_MONTHLY = {
     '33e44ac3-21': '添加主题功能',
     '3417ac68-195': '持久桌面终端：桌面终端现在属于会话，在服务器重新启动后滚动，并与TUI和其他窗口保持同步。重命名的终端在重新启动时也会保留其名称',
     '3441af08-139': '新增 autoMode.classifyAllShell 设置，可将所有 Bash/PowerShell 命令都交由自动模式分类器处理，而不仅是任意代码执行模式',
-    '344788a0-66': '新增 /connect 命令，可从模型目录配置提供商和模型',
     '3467bd16-181': '添加您应该知道，这是一个内置模块，侧面代理会监视您的背部，并标记您或Claude可能错过的内容。使用/plugin启用cc-plugin-you-should-know @ builtin将其打开（用于启用遥测的第一方会话）',
     '34682e0-44': '为评论卡片增加带悬停状态的 shadow-xs-border',
-    '347169d3-250': '! - 将渐进式工具披露移植到新的智能体引擎：MCP 工具 schema 不再出现在顶层工具列表中，模型通过公告加上 select_tools 工具按名称按需加载，从而保持提示缓存稳定。默认关闭；设置 KIMI_CODE_EXPERIMENTAL_TOOL_SELECT=1 启用',
     '3486b764-117': '在 /usage 中新增 Spend limit 栏，并为位于设有消费上限的 Claude apps 网关之后的开发者提供 rate_limits.spend_limit 状态行字段',
     '348e948-50': '为 Google Vertex Anthropic 提供方添加思考预设',
     '34b090b8-116': '新增了在启用代理团队时开启代码模式的支持；如果您已经开启了该模式，那么现在启用团队的会话将以代码模式开始。',
     '34bf937c-140': '新增 --system-prompt-snapshot off，使每次请求都重新生成系统提示，而不复用会话已记录的提示（便于迭代提示文本）',
-    '34c193b4-228': '/logout 现在会打开选择器，让你选择要退出登录的提供商，而不是始终退出当前模型所绑定的那个。当前提供商默认高亮，因此按 Enter 与之前的行为一致。该命令也可作为 /disconnect 使用',
     '34c39e48-142': '为不支持动态客户端注册的 MCP 服务器（如 Slack）新增预配置的 OAuth 客户端凭据。可在 claude mcp add 中使用 --client-id 和 --client-secret',
-    '34cd2ed9-36': '启动时记录已启用的实验性标志',
     '34cec9bd-68': '为 Amazon Bedrock 启用缓存式网页搜索和远程对话压缩',
     '34cfecfd-70': '新增 LLM Gateway 作为提供商，包括配置支持和模型使用情况报告',
     '34d515e0-50': '在桌面应用中添加项目编辑功能',
@@ -387,7 +357,6 @@ window.CHANGELOG_MONTHLY = {
     '369c07a8-100': '复制回复可以保留富文本应用程序中的格式，并且/copy可以复制状态输出或单个会话字段',
     '36aa95a0-68': '新增独立的终端字体设置，并捆绑 JetBrainsMono Nerd Font Mono',
     '36ad3a84-41': '增加用于会话历史导航的 Cmd+[ 和 Cmd+] 快捷键',
-    '36e6183c-36': '保留用户和项目权限规则',
     '37007cb4-88': '新增 prUrlTemplate 设置，可将页脚的 PR 徽标指向自定义代码审查 URL，而不是 github.com',
     '37055c65-40': '新增对 D 语言文件的 dfmt 格式化器支持',
     '371375a3-93': '新增 codex doctor，可在运行时、认证、终端、网络、配置和本地状态方面提供支持就绪的诊断',
@@ -450,7 +419,6 @@ window.CHANGELOG_MONTHLY = {
     '3cb4f39c-24': '添加 Nix 语法高亮',
     '3cd0e5b8-79': '新增 CwdChanged 和 FileChanged 钩子事件，用于响应式环境管理（如 direnv）',
     '3cfce4e8-34': '优化 Windows 默认滚动速度',
-    '3d0b1490-31': '重构思考强度系统',
     '3d0e7228-146': '新增内置 Concise 输出样式：Claude 先给结果，省略前言和叙述，但同样彻底地完成工作。可在 /config 的 Output style 中选择',
     '3d65cbe1-120': '向/insights添加了自动模式建议，以估计自动模式在最近会话中可以处理的权限提示数量',
     '3da80498-37': '新增禁用加载动画的能力',
@@ -470,7 +438,6 @@ window.CHANGELOG_MONTHLY = {
     '3ebc71c8-27': '为应用添加翻译支持',
     '3ec9ca1e-38': '新增实验性 oxfmt 格式化器支持',
     '3ef13784-56': '支持从命令面板中断运行中的会话',
-    '3f4e9970-116': '通过直接磁盘读取和请求超时保护加快会话快照加载，保留原路径作为旧版回退',
     '3f544830-76': '新增 /claude-api 技能，用于使用 Claude API 和 Anthropic SDK 构建应用',
     '3f57dc28-88': '恢复 experimental.chat.messages.transform 钩子，并新增 experimental.chat.system.transform 钩子',
     '3f58be78-36': '恢复了桌面端终端面板功能',
@@ -528,9 +495,6 @@ window.CHANGELOG_MONTHLY = {
     '436d5735-141': '工具发现和图像生成现在默认启用，提供更高细节的图像处理，并为 MCP 和 js_repl 图像输出支持原始细节元数据',
     '437f63d8-56': '新增适用于 Windows 的 PowerShell 工具，作为选择加入的预览版。了解更多请访问',
     '43938220-94': 'Codex可以并行运行独立的只读工具，包括技能、记忆和对话历史查找',
-    '43a747b0-64': '! - 新增可自定义的页脚状态行，可通过 tui.toml 中的 [status_line] 配置',
-    '44585320-31': '添加最低版本升级提示',
-    '446bde34-31': '使用 kimi --add-dir 在启动时添加它们',
     '446dbfb0-89': '新增 /cd 命令，可将会话移动到新的工作目录，且不在会话中途破坏提示缓存',
     '4487cf38-38': '会话聊天新增可选滚动条',
     '44944e4c-45': '增加加载窗口，并重构 Rust 桌面端代码',
@@ -545,22 +509,18 @@ window.CHANGELOG_MONTHLY = {
     '45ff67f0-70': 'TUI：创建项目实例时增加日志，帮助用户排查启动问题',
     '46109ff4-99': '将 revert memo 拆分为更小的跟踪计算，避免不必要的重复计算并提升性能',
     '4611403c-46': '从 Agent Client Protocol 中排除隐藏代理',
-    '464dea0c-48': '用遗漏通知替换隐藏的媒体工具结果',
     '4658bf0-73': '为 agent create 命令新增 CLI 参数以便脚本化（--path、--description、--mode、--tools）',
     '465f75c-113': '新增 DISABLE_UPDATES 环境变量，可完全阻止所有更新路径，包括手动 claude update — 比 DISABLE_AUTOUPDATER 更严格',
     '46602e10-90': '在工作树中运行脚本：运行opencode run -w以在新的git工作树中启动会话，或--worktree =将其命名',
     '46672da0-112': '在全屏模式下添加了对“N更多”行列表的鼠标支持：单击一个可跳转到列表的末尾，具有悬停和按下状态',
     '4686043b-140': '本地图片附件和独立图像生成现在会向模型暴露其保存的文件路径，使后续编辑和文件引用更可靠',
     '468b766b-137': '新增识别 glab mr create/merge/close/reopen/note/update，使 GitLab 合并请求在折叠的工具摘要中显示为 MR !N，并刷新页脚 MR 徽标',
-    '468c62a8-54': '新增 /auto 斜杠命令和 --auto CLI 标志，用于自动权限模式',
     '4697510-59': '添加对 LSP workspace/didChangeWatchedFiles 通知的支持',
-    '469e5f44-210': '新增由 KIMI_CODE_EXPERIMENTAL_SUB_SKILL 环境变量控制的实验性子技能发现。附带子技能内置包（sub-skill.review、sub-skill.consolidate），用于清点技能并将其整合为层级分组',
     '46b0fdf0-47': '在权限配置中添加音频输入与摄像头权限',
     '46ddf018-158': '新增 /usage-credits，适用于通过 AWS Marketplace 计费的企业组织、自助式企业和企业试用版，使成员可向管理员申请更高用量限额',
     '46e707b4-62': '为会话视图添加顶部间距，并移除过时的文档提示',
     '46fb3ebc-32': '提高 LSP 服务器默认超时',
     '470d5418-106': '新增启动警告：配置的 otelHeadersHelper 失败时提示，以便发现静默不上报遥测的会话',
-    '47169fd0-40': '! - web：在设置中新增并管理自定义提供商',
     '47225210-123': '在Codex响应并立即引导时发送跟进。中断轮次也会停止活动代码模式单元格及其嵌套工具调用',
     '472ba0c8-75': '在计划模式中增加 Shift+Tab 快捷键，可快速选择「自动接受编辑」选项',
     '474c20e8-152': '添加了permissions.denyInsteadOfPrompting设置：将等待权限提示的工具调用被拒绝，并在终端会话、子 Agent和队友中继续轮次',
@@ -580,14 +540,11 @@ window.CHANGELOG_MONTHLY = {
     '48db8d28-57': '为插件客户端增加 directory 参数以支持多项目',
     '48ee3dbc-24': '为所有工具添加截断',
     '48f815f4-40': '增加 --mdns-domain 标志以自定义 mDNS 主机名',
-    '49056cf8-105': 'KIMI_MODEL_TEMPERATURE、KIMI_MODEL_TOP_P — 全局应用于任何 kimi 提供商的采样参数（不绑定 KIMI_MODEL_NAME）',
     '491a8e6e-193': '新增 /ultrareview，用于在云端利用并行多代理分析和评审运行全面的代码审查 — 不带参数调用可审查当前分支，或使用 /ultrareview 获取并审查特定的 GitHub PR',
-    '492660d6-109': '插件现在可通过清单中的 commands 字段提供斜杠命令，注册为 :，并以 $ARGUMENTS 展开调用',
     '4979a68-139': '当服务器连接失败时，claude mcp list 和 /mcp 现在会显示 HTTP 状态和错误文本；同时对 MCP 配置值中隐藏的首尾空白给出警告',
     '4984c900-41': '为桌面应用集成 tauri-specta',
     '49b1f1c4-54': 'Tauri 应用中的图标发现功能现已默认启用',
     '49b64eb2-123': '向/config添加了空闲压缩行，用于关闭或重新打开空闲压缩；空闲压缩后显示的通知现在说明了如何关闭它',
-    '49ef0064-160': '! - 对 Kimi 模型，在思考开启时默认启用保留思考，跨轮次保留此前的推理内容。在 config.toml 中设置 [thinking] keep = \'off\'（或 KIMI_MODEL_THINKING_KEEP=off）可禁用',
     '49f751e4-37': '解决 Mistral API 兼容性问题',
     '4a205338-152': '添加了CLAUDE_CODE_RETRY_WATCHDOG_MAX_USATION_LIMIT_WAIT_MS ，以便无人参与的重试模式（ CLAUDE_CODE_RETRY_WATCHDOG ）以重置得太远而不是等待的使用限制结束请求',
     '4a434462-65': '新增 Poe 作为内置认证提供方，支持 OAuth 和 API 密钥',
@@ -601,12 +558,10 @@ window.CHANGELOG_MONTHLY = {
     '4b9d8d04-95': '新增可选的 Windows 系统代理身份验证支持，包括 PAC、WPAD、静态代理和绕过规则',
     '4be50d60-54': '/resume 现在可以从 TUI 直接按 ID 或名称跳转到某个会话',
     '4bfd0610-42': '为应用和 UI 包新增土耳其语区域支持',
-    '4c0316f6-19': '导入构件工作线程',
     '4c0781f1-33': '提供商选项中新增 setCacheKey',
     '4c185482-45': '为 TUI 添加系统主题解析与事件处理',
     '4c3c3bcd-95': '使用内联/模型和/权限参数直接设置模型、推理工作量、速度和权限配置文件',
     '4c4015b4-40': 'agents 弹窗中新增子 agent（不可选中）',
-    '4c72aa89-150': '! - web：新增 tower 多代理协作模式（实验性），可通过 /tower 命令或编辑器加号菜单启用；/tower 支持指定基础分支（例如 /tower add-new-feature）',
     '4cbb2c80-144': '新增 includeGitInstructions 设置（以及 CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS 环境变量），可从 Claude 的系统提示中移除内置的提交和 PR 工作流说明',
     '4ce21e38-70': '向/copy选取器添加了引用文本，因此草稿消息复制时没有>标记',
     '4d12d528-69': '增加 showTurnDuration 设置，可隐藏回合耗时消息（如「Cooked for 1m 6s」）',
@@ -614,10 +569,8 @@ window.CHANGELOG_MONTHLY = {
     '4d541f60-65': '为多代理工作流新增 TeammateIdle 和 TaskCompleted 钩子事件',
     '4d5ca348-121': '在 /web-setup 中新增警告：当 GitHub CLI 令牌缺少 workflow 权限范围时提示，因为向超大仓库推送可能因缺少该范围而被拒绝',
     '4d843688-125': '新增用于输出模态、对话完成事件、原始回合项注入和符号链接感知文件系统元数据的实时与 app-server API',
-    '4d8691b8-62': '新增 kimi upgrade 命令，用于手动检查和升级 Kimi Code CLI',
     '4d8dd291-55': '在 Bedrock 中支持区域和 bearer token 配置',
     '4d9b20c8-88': '为 Slack MCP 发送消息工具调用新增紧凑的 Slack #channel 标题，带可点击的频道链接',
-    '4e06265f-52': '在全屏模式下使用主项目符号显示 NotifyUser 更新',
     '4e15f960-56': '在 Copilot 设备认证中添加 OAuth 轮询安全余量',
     '4e724358-105': '启用 features.image_generation_animation 以生成或编辑动画 GIF，并可选择帧数和时间控制。（ ）',
     '4e968f7e-63': '在 /doctor 中新增对被杀会话遗留的过期沙箱掩码文件的警告',
@@ -626,7 +579,6 @@ window.CHANGELOG_MONTHLY = {
     '4f42d790-34': '新增对挪威语翻译的支持',
     '4f436498-84': '添加了一个检查，在Web或shell工具调用将您的帐户电子邮件地址发送到网络之前询问',
     '4f47ef9c-200': '使用codex exec --cyber-access-program或TypeScript SDK的cyberAccessProgram选项，每回合选择一个网络访问计划。显式exec覆盖在cli_daybreak禁用时仍然可用，并保持保存的选择不变',
-    '4f56ed40-37': '添加插件市场和本机mcp oauth',
     '4f66d674-151': '添加了allowClaudeInChromeWithManagedMcp托管设置，以允许claude --chrome与专用的managed-mcp.json一起运行； Chrome被阻止时显示的错误现在将其命名为',
     '4f6e9478-173': '发送报价从评论弹出窗口：在报价弹出窗口中按住⌘或Ctrl将其复选标记转为发送，或按⌘ Enter或Ctrl + Enter ，仅发送该报价和评论，同时保持作曲家的其余部分不变',
     '4faf780c-114': '新增交互式 codex agents 仪表板，可搜索、启动、打开、重命名和停止任务，并支持可配置快捷键',
@@ -639,7 +591,6 @@ window.CHANGELOG_MONTHLY = {
     '50246d6c-102': '发现执行器提供的技能并安全读取其关联资源，包括显式选中的技能',
     '502fbc3a-102': '在/status中添加了一行，说明您的提供商或DISABLE_TELEMETRY等环境变量何时关闭功能',
     '5032a9e8-94': '新增 PreCompact 钩子支持：钩子现在可通过以代码 2 退出或返回 {\'decision\':\'block\'} 来阻止压缩',
-    '507744f9-73': '! -使用突出显示的提示替换用户技能卡，并支持Ctrl-S进行技能提示',
     '507f5e2c-113': '新增 --append-subagent-system-prompt-file，用于从文件读取子 Agent系统提示，适用于无法在命令行传递的超大提示',
     '508547a8-52': '为 TUI 添加开发脚本以改善调试流程',
     '50999a20-59': '支持在接受权限提示时提供反馈',
@@ -651,15 +602,12 @@ window.CHANGELOG_MONTHLY = {
     '5138eef8-43': '让 bash 工具使用外部目录权限',
     '5146979c-27': '新增 SAP AI Core 提供商支持',
     '517314a7-94': '向MOD的按钮添加了子项：字符串和文本，因此列表的一行可以用芯片或暗淡的细节按压',
-    '51872b94-191': '! - 将 fs:suggest 与本地 fd 补全对齐，使用有界扫描，最多显示 20 个结果，并提供可选的流式预览。默认情况下，包括隐藏路径和被 .gitignore 忽略的路径，且在匹配质量相等时优先显示常规文件。',
     '518da808-24': '新增阿拉伯语支持',
     '51a1eaee-79': '新增 HTTP 钩子，可向 URL POST JSON 并接收 JSON，而无需运行 shell 命令',
     '51a6f218-26': '新增 web 和 codesearch 工具',
     '51de40c-94': '单个MCP工具支持OUTPUT_TOKEN_LIMIT设置，会话简历之间具有一致的截断',
     '51f91354-56': 'web 命令实现网络 IP 获取以支持远程访问',
-    '5225662c-74': 'sSH和Docker执行目标的远程环境（第1阶段：创建时绑定）',
     '523005cf-297': '新增 claude_code.assistant_response OpenTelemetry 日志事件，包含模型的回复文本。除非设置 OTEL_LOG_ASSISTANT_RESPONSES=1，否则会脱敏；该变量未设置时遵循 OTEL_LOG_USER_PROMPTS，因此已记录提示内容的部署在升级后将开始接收到回复内容——设置 OTEL_LOG_ASSISTANT_RESPONSES=0 可仅保留提示',
-    '523d4c40-38': '将子 Agent限制为配置的模型池',
     '523f20e5-125': '新增 pluginSuggestionMarketplaces 管理设置：管理员可允许通过上下文感知提示推荐其插件的组织市场',
     '52595504-142': '会话现在可从 TUI 用 /archive 归档，或从 CLI 用 codex archive / codex unarchive；已归档会话在恢复前无法被 resume/fork',
     '5290f32c-27': '新增 F# 语言服务器支持',
@@ -668,10 +616,8 @@ window.CHANGELOG_MONTHLY = {
     '52ae319c-33': '为聊天消息输入添加 variant 字段',
     '52c3c494-35': '格式化器支持 uv 格式',
     '52e05228-49': '在选择服务器对话框中为移除服务器添加图标按钮',
-    '52fa7c5c-87': '! - kimi acp 子命令不再遵循 KIMI_CODE_LEGACY_FLAG；它始终运行在默认代理引擎上',
     '532fe3fc-24': '新增消息删除端点',
     '533fdd4c-106': '将virtualText添加到mod的提示装饰：在提示框中绘制的文本从未进入草稿或提交的提示',
-    '53477f0b-209': '用户现在可为智能体准备多个目标依次处理。当前目标完成后，智能体会从队列中取用下一个目标。使用 /goal next 排队目标，用 /goal next manage 交互式查看和修改队列',
     '53844314-219': '为 Linux 和 WSL 上的沙箱凭据文件新增 mode: \'mask\' —— 沙箱内命令读取哨兵副本（整个文件，或仅 extract 正则捕获的片段），沙箱代理在出口时替换为真实值；在 macOS 上文件掩码会退化为拒绝',
     '5391f0cc-36': '添加了 Ctrl+O 以显示隐藏的启动通知',
     '53c63bac-102': '在标志和加载动画中新增努力级别显示（如“with low effort”），便于查看当前生效的努力设置',
@@ -681,13 +627,11 @@ window.CHANGELOG_MONTHLY = {
     '54085104-104': '使用承载令牌保护直接执行服务器WebSocket连接，包括通过应用服务器配置的连接',
     '541e1e8c-129': 'TUI 启动更快，因为终端能力探测现已批量化，不再在首个交互画面之前等待多个串行检查',
     '54307478-160': '新增回顾功能，在返回会话时提供上下文，可在 /config 中配置，并可用 /recap 手动调用；若遥测已禁用，可用 CLAUDE_CODE_ENABLE_AWAY_SUMMARY 强制启用',
-    '54431549-238': '! - 将超时的前台 Bash 命令转为后台运行而不是杀掉，使长时间运行的命令能挺过超时并在完成时回报。在 config.toml 的 [background] 下设置 bash_auto_background_on_timeout = false 可恢复超时即杀的行为',
     '545ea3c-80': '新增完善的动画系统，包含多种缓动函数和过渡工具',
     '547b8690-87': '新增「自动（匹配终端）」主题选项，可匹配终端的深色/浅色模式 — 从 /theme 中选择',
     '549ea6c4-46': '为 Ripgrep.files() 和 GlobTool 增加 AbortSignal 支持',
     '54a21d0f-113': '向OpenTelemetry api_request事件添加了cache_creation_5m_tokens和cache_creation_1h_tokens ，按生存期拆分缓存写入',
     '54d348cc-35': 'TUI 现在仅显示活跃 MCP 服务器数量',
-    '54e1b21c-41': '供 Web 客户端使用的服务器 REST 和 WebSocket API',
     '54e9edf0-109': '新增 sandbox.credentials 设置，阻止沙盒命令读取凭证文件和密钥环境变量',
     '54ef77e4-149': '在终端中添加了对MCP任务的支持：当MCP服务器作为任务运行工具调用时， Claude Code立即将其移至后台，并在完成时告诉Claude结果',
     '550fae64-67': '用户名与时间戳之间新增视觉分隔符，提升可读性',
@@ -701,7 +645,6 @@ window.CHANGELOG_MONTHLY = {
     '55c8d1f4-64': '为内联任务工具的 ASCII 字符添加代理颜色并高亮代理名称',
     '55da2878-70': '当计划任务（/loop、CronCreate）触发时，在对话记录中新增时间戳标记',
     '56517bd7-99': '当OTEL_LOG_TOOL_CONTENT = 1时，向tool.output OpenTelemetry span事件添加了MCP工具、WebFetch和WebSearch输出',
-    '566023c-60': '将 cron 和 MCP 授权调用排除在紧凑型转录组之外',
     '567bebe4-21': '优化快捷键提示',
     '56ea704c-25': '在 TUI 中显示当前 git 分支',
     '570c0569-92': '当通过 DISABLE_PROMPT_CACHING* 环境变量禁用提示缓存时，启动时会新增警告',
@@ -716,13 +659,11 @@ window.CHANGELOG_MONTHLY = {
     '58274a60-94': '启用 respect_system_proxy 后，macOS 身份验证客户端可遵循系统代理、PAC 和 WPAD 设置',
     '583198ba-71': '桌面应用新增 PTY 的 Windows 支持及跨平台构建脚本',
     '58398f99-105': '自动存档的运行：将--archived添加到opencode运行，以将脚本和CI会话排除在收件箱和会话列表之外',
-    '584f21bc-75': '将 AGENTS.md 的静默截断改为 TUI 状态栏和 Web UI 中的可见警告',
     '5871beec-144': '新增 AGENTS.md 支持：在没有 CLAUDE.md 的项目中，Claude Code 改为读取 AGENTS.md；可在 /config 的 Project instructions 中更改（Bedrock、Vertex 和 Foundry 上尚不支持）',
     '58da9dcc-89': 'Opt-in INSTANT_INTERRUPT让新的输入在模型响应或长时间运行的代码模式调用期间引导Codex',
     '58dad2f0-32': '新增 Cloudflare AI Gateway 提供方',
     '58fc89e0-44': '新增 /effort 斜杠命令，用于设置模型努力级别',
     '5902b08-53': '在关闭图标前增加 8px 间距，并在应用中截断过长文件名',
-    '59083d33-51': '从 kimi-cli 迁移仍然相关的环境变量',
     '592e5b02-36': '通过选择加入在桌面中还原待办事项工具',
     '5947271a-78': '为以往长时间无输出的工具调用新增定期进度心跳',
     '597a4b25-47': '为 /config 增加发布通道（stable 或 latest）切换',
@@ -732,10 +673,8 @@ window.CHANGELOG_MONTHLY = {
     '5a113d9c-57': '应用服务器客户端可以从特定项目分页线程历史记录',
     '5a391fc-153': '跨平台远程执行现在会保留执行器原生的工作目录和 shell，包括跨 app-server 和 exec-server 边界的文件系统权限路径',
     '5a713d00-126': '在提示输入框中新增 emoji 短代码自动补全：输入 :heart: 可插入对应表情，输入 :hea 可获得建议——可通过 emojiCompletionEnabled 设置禁用',
-    '5aa9716f-55': '安装第三方插件前新增确认提示',
     '5ab51afc-26': '新增实验性 batch 工具',
     '5ad34418-45': '添加检查，以处理提供方不存在于模型列表的情况',
-    '5b210ed0-477': '将 /plugins 重新设计为单一标签页面板：Installed（管理已安装插件——切换、移除、MCP、详情、重载）、**Official**（Kimi 维护的市场插件）、**Third-party**（其他发布者的市场插件）和 **Custom**（直接从 GitHub URL、zip URL 或本地路径安装）。`Tab` / `Shift-Tab` 切换标签页。Official 和 Third-party 目录按需加载，因此 `/plugins` 可立即打开并支持离线使用——市场获取失败会就地显示而不会关闭面板。标签栏通过新的 `renderTabStrip` 辅助函数与 `/model` 提供商标签页共用。',
     '5b481934-53': '支持从 .agents/skills 目录读取技能',
     '5b7418a8-29': '模型选择器新增收藏功能',
     '5b82897e-80': '新增 ${CLAUDE_SKILL_DIR} 变量，使技能可在 SKILL.md 内容中引用自身目录',
@@ -745,12 +684,9 @@ window.CHANGELOG_MONTHLY = {
     '5bf88168-28': '新增智能体颜色配置',
     '5c346b99-143': '添加了CLAUDE_CODE_DISABLE_NESTED_SESSION_ID ：在自托管运行器上将其设置为1 ，以便使用该会话的ID和会话记录在会话中运行claude -p ，与早期版本一样',
     '5cbe16c0-115': 'Windows 沙箱运行现在可以通过操作系统级出站规则强制仅代理网络，而不再仅依赖环境变量',
-    '5cdf340c-156': '! - 子 Agent模型池（[secondary_model]）在所有启动模式下默认启用，仍可通过 KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL=0 或 [experimental] secondary-model = false 退出',
     '5cec1900-60': '刷新了捆绑的模型元数据，包括当前的 gpt-5.4 默认值',
     '5cf2c024-34': '终端面板功能（跳过 — 已回滚）',
     '5d40e1c8-64': '默认 ACP 配置现在使用 opencode 提供商的 big-pickle 模型',
-    '5d95e0b0-161': '! - web：新增会话管理页面（从侧边栏的列表管理菜单进入），用于跨工作区梳理——按工作区、状态和更新时间筛选，并可批量将会话标记为完成或重新打开',
-    '5db7916c-124': '! -添加/导入会话和kimi导入会话，以导入过去15或30天的Claude Code和Codex会话。运行任意一个并选择一个时间范围',
     '5dc0c18-37': '新增用户为导出文件命名的能力',
     '5dd07e08-89': '在捆绑目录和Amazon Bedrock Mantle和Runtime目录中添加了GPT-6.1 Sol作为默认模型',
     '5df626bd-41': '新增 /simplify 和 /batch 内置斜杠命令',
@@ -779,12 +715,10 @@ window.CHANGELOG_MONTHLY = {
     '6013b67c-67': '为 transform 新增 topK 函数，并为 GLM 和 Minimax 设置默认 temperature',
     '6032ae78-156': '新增到 Claude apps 网关：在 gateway.yaml 中设置 pricing: 后，已登录的 Claude Code 客户端通过托管设置获得相同费率，使 /cost 和遥测与消费计量一致',
     '6053e60c-119': '新增对 type: \'http\' 的 WorktreeCreate 钩子支持 — 在响应 JSON 中通过 hookSpecificOutput.worktreePath 返回已创建的工作树路径',
-    '60584524-33': '! - 为 /btw 侧代理新增只读工具',
     '605a2b80-134': '通过在 macOS 和 Linux 上启用云连接，您可以发送图像、选择模型和推理工作量，以及从终端存档或恢复云对话。（ 、 、 、 ）',
     '606288a4-200': '新增对 GitLab 令牌系列的密钥脱敏（glrt-、gloas-、glptt-、glagent-、glimt-、glsoat-、glcbt-、glft-、glffct-），并对可路由的 glpat-/gldt- 令牌完全脱敏；glab CLI 配置存储获得与 gh 相同的沙箱和凭据路径保护',
     '6083f04-211': '新增 CLAUDE_CODE_ACCOUNT_UUID、CLAUDE_CODE_USER_EMAIL 和 CLAUDE_CODE_ORGANIZATION_UUID 环境变量，使 SDK 调用方可同步提供账号信息，消除早期遥测事件缺少账号元数据的竞态条件',
     '6091b70-46': '将文件图标资源从桌面端迁移到 UI 包',
-    '609ed5a9-32': '支持Windows远程环境',
     '60f37a2-152': '新增立即发送键（ctrl+enter，或 ctrl+x ctrl+s），可中断当前轮次并一次性发送所有排队消息；已发送和排队的消息在模型收到前显示为灰色',
     '60fa0a90-44': '为 GitLab AI Gateway 请求增加 User-Agent 请求头',
     '60feace4-35': '增加带元数据引用的 SubtaskPart',
@@ -825,17 +759,13 @@ window.CHANGELOG_MONTHLY = {
     '6459f057-105': '受特性开关控制的独立图像生成扩展可通过原生 Codex 图像产物完成流程运行',
     '64a34d76-70': '让插件 MCP 加载同时接受 .mcp.json 中的 mcpServers 和顶层服务器映射',
     '64ce5e70-46': '新增对 Zed 编辑器选区作为编辑器上下文的支持',
-    '64dd04ec-65': '新增 /btw，用于进行旁路对话而不干扰当前主轮次',
     '64dd4390-43': '添加滑块图标，并将其用于通用设置标签页',
     '65008520-100': '支持将插件固定到指定 git commit SHA，使市场条目可安装确切版本',
     '6503529c-30': '新增对 models.dev 系列的支持',
-    '6505fbf5-68': '新增内置 update-config 技能——现在可以让 Kimi 编辑它自己的配置文件',
     '657a0df9-121': '为符合条件的交互会话启用了自动后台服务器启动，并在服务器设置不兼容时提供恢复选择',
-    '6597308a-64': '! - 停止在自动压缩前向模型提醒其上下文预算',
     '65c1b168-80': '使用 /export 将完整 TUI 对话导出为 Markdown，可导出到剪贴板或新文件',
     '65d20af8-68': '按下 Ctrl/Meta 键时不再触发权限快捷键',
     '65da4a08-146': '在 Claude Code Remote 会话（云端和自托管 runner）中新增快速模式：主机的快速模式设置或会话中输入 /fast 会在组织允许的范围内生效',
-    '65fc232f-53': '添加 follow_up_behavior 以选择是进入队列还是引导',
     '665b3754-33': '为 markdown 元素增加 streaming 属性',
     '666e867c-49': 'TUI：切换会话时自动滚动到底部',
     '668246c8-141': '钩子现已稳定，可在 config.toml 和受管 requirements.toml 中内联配置，并且可以观测 MCP 工具以及 apply_patch 和长时间运行的 Bash 会话',
@@ -847,7 +777,6 @@ window.CHANGELOG_MONTHLY = {
     '671c96d8-89': '桌面中更快的长会话：流式回复和长对话现在可以大大减少渲染工作',
     '672d6088-111': '新增对插件的后台监控支持，通过顶层 monitors 清单键实现，在会话开始时或技能调用时自动启用',
     '67329b5c-92': 'app-server 主机可在运行时提供 Codex 身份验证，并将成功登录重定向到托管页面',
-    '6743fcf4-121': '! - 新增 GET /api/v1/fs:content 服务端接口，可按绝对路径将主机上任意文件以原始内容返回，支持 Content-Type、ETag 和 Range',
     '6762e1ea-60': '为 Select 组件添加 triggerStyle 属性，并应用于字体选择器',
     '67784eb0-100': '新增 claude agents --json，可将活动 Claude 会话以 JSON 列出，便于脚本使用（tmux-resurrect、状态栏、会话选择器）',
     '67827b2e-50': '新增 ExitWorktree 工具，用于退出 EnterWorktree 会话',
@@ -863,11 +792,9 @@ window.CHANGELOG_MONTHLY = {
     '6882fbfc-109': 'TUI 中的钩子活动更易浏览，正在运行的钩子会单独显示，已完成的钩子输出仅在有用时保留',
     '688b0305-64': '插件CLI可以从远程市场中列出、安装和删除插件',
     '68992d24-135': '新增 keybindingFlavor 设置：设为 \'readline\' 后，提示中的 Ctrl+W 会像 Bash 一样删除到上一个空白符；默认值（\'classic\'）不变',
-    '68a77ab8-112': '! -塔模式：使用TowerRebase和LLM-free状态、目标/塔相互排除和工作空间保护进行确定性编排',
     '6929b34d-165': 'TUI 现提供更丰富的会话控制和显示：数据驱动的服务层级命令、混合 token 用量、权限/审批模式、生效的工作区根目录以及自适应 Markdown 表格',
     '693292a8-103': '从“设置”更新插件：打开“设置”›“扩展”，点击“检查更新”，然后点击任何有新版本的插件旁的“更新”。',
     '693511bc-95': '新增 Elicitation 和 ElicitationResult 钩子，可在响应发送回之前拦截并覆盖',
-    '693e3b63-68': '! - 可从会话选择器删除会话：在某个会话上按 Ctrl+X，再按 y 确认',
     '6976e0-55': '在模型选择对话框中为零成本模型显示「Free」标记',
     '69abbdf5-46': '新增对 issues 和 workflow_dispatch 事件的支持',
     '69b2f170-40': 'TUI 新增 Ctrl-Z 终端挂起支持',
@@ -876,11 +803,8 @@ window.CHANGELOG_MONTHLY = {
     '69d252f0-34': '在 Codex 插件中为 GPT 5.2 Codex 添加 family',
     '69e80390-24': '新增 Kilo 作为原生提供方',
     '69e8d26c-27': '不再隐藏 write 工具的输出',
-    '6a05caa8-28': '支持文件夹作用域的git状态',
-    '6a1b8f54-136': '! - web：用一张内联工具卡片替换群组页脚，展示子智能体的实时进度和聚合结果，并在刷新后保持群组徽标稳定',
     '6a2c13d4-97': '打包的 Codex 构建可在受支持的 macOS 和 Linux 目标上发现并使用内置的修补版 zsh 助手',
     '6a5996b4-239': '新增沙箱凭据掩码选项：针对结构化环境值的 extract 和 onExtractNoMatch，支持 JWT 感知掩码的 decode: \'jwt\' 与 maskClaims，以及用于 AWS SigV4 重新签名的 awsPairs/sigv4；这些需要 network.tlsTerminate，且仅从用户、托管或 --settings 设置中生效',
-    '6a5c9d9-185': '! -Agent工作时允许/model和/effort ；已经开始调用模型的回合保持其设置，开关从下一回合开始应用，并选择紧凑并在当前回合结束后继续运行',
     '6a77e420-71': '在支持的Mac上为本地TUI会话中的MCP请求添加了Touch ID验证',
     '6a7bb30-31': '添加按项目覆盖 MCP 配置',
     '6a9dc2cc-50': 'AUR 构建时检查 glibc 与 musl 系统兼容性',
@@ -897,19 +821,16 @@ window.CHANGELOG_MONTHLY = {
     '6c5f2708-184': '新增堆快照功能，用户可通过“Write heap snapshot”命令捕获 TUI 和服务器进程的内存快照。快照保存到 tui.heapsnapshot 和 server.heapsnapshot 文件',
     '6c616628-136': '将存储库筛选器添加到会话选择器，将目录分组添加到Agent 命令中心，从而更轻松地在链接的工作树中导航会话',
     '6c6e8720-146': '新增支持在发现的 /model 选择器条目上显示网关提供的描述（CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY）；没有描述的条目仍显示 From gateway',
-    '6ca71bcc-32': '支持轮流运行会话分叉',
     '6cc121cc-73': 'app-server 客户端可分页查看大型线程，可选择未加载、摘要或完整轮次项视图',
     '6cde4edc-47': '在 OAuth 流程中添加键盘快捷键 \'c\' 以复制设备代码',
     '6cfb43b3-28': '调整浅色/深色主题切换',
     '6d12a7d8-20': '新增 OCaml LSP 支持',
     '6d1cfe64-156': '新增 PreModelSwitch 和 PostModelSwitch 钩子事件（可阻止、确认或注释模型切换）；SessionStart 恢复钩子现会收到会话陈旧程度和预估的重新缓存成本',
-    '6d1d4e63-182': '! - 新增对插件提供的自定义智能体的支持，可自动发现并用于子智能体委派。在插件中提供 agents/ 目录（或在插件清单中声明 agents 路径）即可提供这些智能体',
     '6d5906bd-107': '新增 CLAUDE_CODE_NO_FLICKER=1 环境变量，可选择启用带虚拟化回滚缓冲的无闪烁 alt-screen 渲染',
     '6d640dd8-67': '本机美人鱼渲染支持更多的流程图边缘、标签和节点组',
     '6d6db568-67': '添加 OPENCODE_DISABLE_FILETIME_CHECK 标志以跳过文件修改时间检查',
     '6dc1d0a9-24': '排除已弃用的模型',
     '6dd408ac-50': '远程 MCP 服务器新增 OAuth 认证支持',
-    '6df4b0d8-115': '发送前修复 tool_use/tool_result 的相邻性，解决工具调用与其结果不再相邻时严格提供商返回 HTTP 400 的问题',
     '6df8e200-57': 'TUI 支持用 Tab 键选择自动补全选项',
     '6e171414-27': '应用的布局改进',
     '6e18c118-35': '在会话导出中添加助手元数据',
@@ -928,7 +849,6 @@ window.CHANGELOG_MONTHLY = {
     '70624d30-93': '新增 claude remote-control 子命令，面向外部构建，使所有用户都能使用本地环境服务',
     '706cb2a0-38': '为 @ 附件功能添加冒烟测试',
     '7080aa60-138': '新增 --safe-mode 标志（及 CLAUDE_CODE_SAFE_MODE），以禁用所有自定义项（CLAUDE.md、插件、技能、hooks、MCP 服务器）启动 Claude Code 用于问题排查',
-    '70837503-117': '! - 新增 /desktop 斜杠命令（别名 /install-desktop）和 kimi install-app 子命令，用于在浏览器中打开 Kimi Code 桌面应用页面',
     '70b6aa30-107': '刷新生成的协议模型和通知，并保留在启动响应之前到达的完成事件',
     '70c2ea58-60': '为 Vertex AI 新增 GOOGLE_VERTEX_LOCATION 环境变量支持',
     '70e72dc2-46': '提供商配置新增 setCacheKey 选项',
@@ -936,9 +856,7 @@ window.CHANGELOG_MONTHLY = {
     '71064da7-42': '新增交互式时间线可视化功能',
     '711120d8-151': '为托管设置安装的mod添加了$ .session.identity () ：如何登录会话，以及托管forceLoginOrgUUID列出该组织时其组织和电子邮件',
     '7138596a-109': 'GitHub Copilot 模型不受支持时提供更清晰的错误提示，并附上在 Copilot 设置中启用模型的链接',
-    '71474974-157': '! - 本地服务器（kimi server run / kimi web）默认在 agent-core-v2 引擎上运行——不再需要 KIMI_CODE_EXPERIMENTAL_FLAG 主动启用，旧的 v1 服务器包已被移除',
     '714fd705-192': '新增插件依赖强制检查：当另一个已启用插件依赖目标插件时，claude plugin disable 会拒绝执行（附可粘贴的禁用链提示），claude plugin enable 会强制启用传递依赖',
-    '71cc3a4c-55': '默认启用微压缩，同时保留其关闭标志',
     '71dde670-113': '新增 parentSettingsBehavior 管理员层级键（\'first-wins\' | \'merge\'），让管理员可将 SDK managedSettings（父层级）纳入策略合并',
     '71f298e4-62': '未连接时隐藏模型对话框中的收藏快捷键，以避免报错',
     '7240c17c-20': '新增提示槽位功能',
@@ -953,15 +871,10 @@ window.CHANGELOG_MONTHLY = {
     '7385a600-141': '新增 OTEL_METRICS_INCLUDE_REPOSITORY，为 OpenTelemetry 指标和事件打上 vcs.* 仓库属性；配合 OTEL_LOG_TOOL_DETAILS 时提交事件会获得 vcs.ref.head.*',
     '73955498-113': '为闲置的后台 shell 命令新增内存压力自动回收（可通过 CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP=1 禁用）',
     '73a2fe84-24': '为应用新增自定义滚动视图',
-    '7401c1b8-72': '! -添加对分叉运行会话和选定历史轮次分叉的支持',
     '7412d1e4-28': 'TUI 中按 Tab 接受自动补全',
-    '741477bc-38': '! - web：为侧边栏会话列表新增扁平视图',
     '741bd78-76': '扩展 Vim 编辑功能，新增字符替换和更多修改动作，如 cw、c$ 和 cc',
     '744b50b9-71': '新增 /timeline 命令，快速跳转到会话历史中的特定消息',
-    '74530aa9-98': '移除默认的每轮 1000 步限制。用户仍可在配置中设置 max_steps_per_turn 以强制自定义限制',
     '74564c4e-333': 'Daybreak是通过--enable cli_daybreak或features.cli_daybreak = true选择加入的； daybreak = true本身是不够的。默认情况下，控件和指示器被隐藏，/daybreak不可用，自动网络路由被省略，即使对于已保存的Daybreak线程也是如此。已保存的偏好设置将保持不变。选择加入路由需要符合条件的ChatGPT登录、OpenAI提供商和广告模式/计划支持',
-    '74988308-36': '显示插件代理配置文件刷新钩子',
-    '74cb22dc-137': '新增内置 kimi vis 命令，可在浏览器中启动会话可视化工具并指向本地会话。支持 --port/--host、--no-open 和 kimi vis 深链接',
     '7532a748-77': '在聊天中新增可点击的文件附件——Cmd/Ctrl 点击可在 Finder/资源管理器中显示文件',
     '755117f4-40': '在 TUI 中为权限按钮添加鼠标支持',
     '7557bc38-64': 'TUI 列表显示更多会话，并修正同步时机以避免竞态条件',
@@ -971,7 +884,6 @@ window.CHANGELOG_MONTHLY = {
     '75f900fc-133': '添加了/claude-api managed-agents-secure ，将Managed Agents代理的设置与Anthropic发布的安全指南进行比较，无需更改任何内容',
     '761394b0-23': '添加 Prisma 语言服务器',
     '7664e268-74': '为技能增加 ${CLAUDE_SESSION_ID} 字符串替换，用于获取当前会话 ID',
-    '76765f78-31': '强制最低有线阅读器版本',
     '76e87797-79': 'CLI 构建时禁用自动加载配置，避免配置干扰',
     '76fda888-47': '自定义提供商支持本地文件路径',
     '770c3760-25': '新增移动端响应式支持',
@@ -1006,38 +918,30 @@ window.CHANGELOG_MONTHLY = {
     '7a057e6c-49': '终端尺寸变化时底部栏不再收缩',
     '7a4a1e94-52': '升级 toast 通知系统，提供更好的用户反馈',
     '7a97d4dc-81': '向Amazon Bedrock的Mantle端点的Claude应用程序网关添加了Mantle上游提供商',
-    '7aaf9a23-237': '新增 @moonshot-ai/acp-adapter 和 kimi acp 子命令：kimi-code 现通过 stdio 使用 Agent Client Protocol 0.23，使 IDE（Zed、JetBrains AI Chat、自定义客户端）可直接驱动会话——覆盖矩阵、Zed 配置和预发布破坏性说明见 kimi acp 子命令页面',
     '7ab1a584-41': '为提示输入中的评论卡片增加激活状态',
     '7abd74df-88': '新增测试版桌面设置，可隐藏导航、搜索、终端、状态和文件树等标题栏工具',
     '7ae2ae4c-44': '/export 命令改为输出到当前工作目录',
     '7af582c8-72': '新增内置 amazon-bedrock 模型提供商，支持可配置的 AWS 配置文件',
-    '7b0cdecc-30': '使工作区信任可配置',
-    '7b660ddc-141': '新增 Interrupt hook 事件，在用户中断一轮对话（例如按 Esc）时触发，让 hooks 能观察到轮次停止，而不是卡在工作状态',
-    '7b7ee084-110': '新增 /undo 斜杠命令，可从对话历史中撤回最后一次提示，并在撤回提示时保持重放记录同步',
     '7b8ec7c8-42': '新增 claude plugins 作为 claude plugin 的别名',
     '7bb01ab8-35': '为 zen 功能新增速率限制',
     '7bd24bcc-82': 'bash.ts 中的 MAX_OUTPUT_LENGTH 可由 OPENCODE_EXPERIMENTAL_BASH_MAX_OUTPUT_LENGTH 覆盖',
     '7bfffb39-136': '新增 /less-permission-prompts 技能 — 扫描对话记录中的常见只读 Bash 和 MCP 工具调用，并为 .claude/settings.json 提出按优先级排序的允许列表',
     '7c475806-29': '新增 Laravel Pint 作为 PHP 格式化工具',
-    '7c7faf68-28': '重做对话压缩',
     '7cc656f6-35': '确保安装命令使用 .quiet',
     '7cdda2ac-102': '新增 sandbox.network.strictAllowlist 设置，对沙箱命令直接拒绝不在白名单中的主机而不再提示',
     '7cf8aaaf-73': '新增 teammateMode: \'iterm2\' 设置，自动模式找不到 it2 CLI 时给出警告',
     '7d1716d6-22': '非企业风格加载动画',
-    '7d23f110-133': '! - web：AI 会话标题现始终开启 —— 首个轮次后生成标题，可从重命名字段重新生成，无需实验性标志',
     '7d6509d0-125': '在 --ax-screen-reader 模式下，为按词和按行删除（Option+Delete、Ctrl+W、Cmd+Backspace、Ctrl+U、Ctrl+K）新增已删除文本的屏幕阅读器播报',
     '7de13a63-46': '对话框打开时阻止快捷键执行',
     '7df35168-82': '新增仅限 Windows 的保护，使 window.getComputedStyle 回退到 document.documentElement',
     '7dffe7e0-33': 'SSE 事件不再使用 Tauri HTTP',
     '7e1ad91c-16': '处理更多错误',
     '7e1cbc00-111': '已添加/mcp重新连接交互式终端中的所有服务器，以重试无法连接或需要一次身份验证的每个MCP服务器',
-    '7e477a4-160': '! - web：允许在聊天中附加任意类型的文件；模型无法内联消费的文件（文档、SVG 图片、压缩包等）会上传到服务器，并以文件路径的形式交给模型按需读取',
     '7e5863ac-34': '添加对 .claude/skills 目录的支持',
     '7e880d92-58': '改进 stats 命令，显示每会话平均和中位数 token 数',
     '7eb4f4f8-39': '为调试命令及子命令添加帮助文本',
     '7ebc9a54-78': '在异步问题、选择、答案和会话记录回复中始终如一地呈现Markdown',
     '7ed92349-167': '快速选择一个基本分支：在创建工作树时，在macOS上打开选择基本分支，在Windows和Linux上打开Ctrl + Alt +。该命令也可在命令面板和设置中找到›快捷方式',
-    '7efd2bed-355': '新增服务器认证和安全的 --host 暴露。本地服务器现在要求所有 API 和 WebSocket 调用携带每次启动生成的 bearer 令牌（CLI 会自动读取），强制执行 Host/Origin 检查，并新增 --host 及公网绑定加固等级：强制 KIMI_CODE_PASSWORD、TLS（或 --insecure-no-tls）、认证失败限流、禁用远程关闭和终端以及安全响应头。详见 packages/server/SECURITY.md。',
     '7f1d55b-216': '无需等待的压缩：当会话即将进行自动压缩时，摘要现在会在后台写入，因此您的下一个提示不会因此而暂停。将 compaction.background 设置为 false 以将其关闭；最终未使用的后台摘要仍会消耗Token。',
     '7f3b7284-46': '新增 Windows ARM64（win32-arm64）原生二进制支持',
     '7f4e2abd-94': '默认情况下为全新配置文件启用了内存v2 ，并添加了对导入外部代理内存的支持',
@@ -1063,7 +967,6 @@ window.CHANGELOG_MONTHLY = {
     '8276f934-95': '新增 Bash 权限提示中的提示，指向 auto 模式，并提供一键 Yes, and switch to auto mode 选项',
     '827ecda-123': '将store.readiness_grace_seconds添加到Claude应用程序网关，以便/readyz可以在数据库故障转移等短暂的Postgres中断期间保持就绪状态',
     '827f1ba8-72': '新增 /reload-plugins 命令，无需重启即可启用待处理的插件变更',
-    '82848b78-82': '让目标、后台提问和子技能发现无需实验性选项即可使用',
     '828a013c-126': '插件工作流现在包含标签页浏览、内联启用/禁用开关、市场移除，以及远程、跨仓库或本地市场来源',
     '829019c4-61': '为 MCP 工具调用添加可配置超时，防止请求挂起',
     '82929e0-85': '用量上限重置额度现在会显示其类型和到期时间，并允许你选择要兑换哪一个',
@@ -1077,7 +980,6 @@ window.CHANGELOG_MONTHLY = {
     '8357c904-115': '代码模式现在可直接调用独立网页搜索，包括从嵌套的 JavaScript 工具调用中调用，并接收明文搜索结果',
     '8362c040-37': '在会话查看器中支持图片预览',
     '837d09b4-75': '符合条件的 ChatGPT 套餐现在默认使用 Fast 服务层级，除非你明确选择退出',
-    '83bfc2e0-77': '! - 轮次级文件历史现始终开启；实验性 file-history 标志已被移除',
     '83c32be0-159': 'App-server 会话现在可以管理多个环境，并按回合选择环境和工作目录，使多工作区和远程环境更容易精确定位',
     '83cbf3e6-27': '将 .slnx 加入 C#/F# LSP 根目录检测',
     '83d8ace0-64': '创建项目实例时增加日志，便于排查启动问题',
@@ -1101,7 +1003,6 @@ window.CHANGELOG_MONTHLY = {
     '85a3ae9c-107': '扩展 /import，可迁移 Cursor 和 Claude Code 的设置、MCP 服务器、插件、会话、命令以及项目级记忆',
     '85a8b21c-52': '新增用于 MCP 服务器状态的实验性 HTTP API 端点',
     '85d590f0-86': '在关闭提示中添加了指向差异面板的 /diff，并在“?”快捷键指南中添加了用于聚焦和关闭面板的按键',
-    '8621746f-264': '! - 在 /settings 中新增 TUI 模式设置，提供实验性全屏布局；切换模式需重启 Kimi Code 后生效。也可直接在 ~/.kimi-code/tui.toml 中设置 tui_mode：\'regular\' 渲染到终端滚动缓冲区，\'fullscreen\' 使部分界面支持鼠标交互，体验更流畅',
     '8636c9a4-49': '为 GitHub Copilot GPT-5 模型增加 xhigh 推理强度',
     '864f57cb-82': '全屏模式下菜单（权限提示、/model、/config 等）新增鼠标点击选择支持',
     '865c630c-154': '新增 --permission-prompts none，适用于无人值守的无头主机：任何本会弹出的询问都会被自动拒绝，同时当前权限模式（包括 auto 模式）继续决策',
@@ -1120,7 +1021,6 @@ window.CHANGELOG_MONTHLY = {
     '881a6890-135': '一些以前未知的通知现在具有类型化的有效负载。读取命名字段而不是.params ；未知或无效的负载仍使用UnknownNotification',
     '88258704-114': '让 MultiAgentV2 配置更明确，包含线程上限、等待时间控制、根代理与子 Agent提示，以及 v2 专属的深度处理',
     '88323ea8-106': '发布追踪现在会记录工具、代码模式、会话和多代理之间的关系，并提供用于检查的调试 reducer 命令',
-    '8850e03c-118': '重构工具权限：在 cwd 之外读取不再提示，会话审批精确匹配对应调用，基于路径的规则不区分大小写',
     '885aee95-51': '在 chat 和 responses 路径上均支持 Azure 模型选项',
     '88769fd4-49': '在错误处理中新增更多溢出错误模式',
     '8890bee-26': '在 /status 命令中显示插件',
@@ -1148,7 +1048,6 @@ window.CHANGELOG_MONTHLY = {
     '8a458960-22': 'TUI 新增 --prompt 选项',
     '8a60df80-63': '为应用新增侧边栏展开动画、悬停预览浮层和更弱的分隔线',
     '8a7859b5-83': '/permissions 现在能识别命名权限配置，并显示已配置的自定义配置',
-    '8a7d9fdc-173': '新增 KIMI_MODEL_* 环境变量通道，可让 Kimi Code 针对特定模型运行（提供商类型、base URL、API 密钥、上下文大小、能力和思考设置）而无需编辑 config.toml',
     '8ab0ac98-142': '在 /status 和 claude doctor 中新增 Organization policy 一行，说明组织策略无法加载的原因，例如代理未放行该端点',
     '8ae0d5c8-111': '添加了一个maxProseWidth设置，该设置在宽端子中限制Claude散文的宽度，而表格和代码块保持全宽',
     '8b440e99-80': '为 /skills 新增输入即过滤的搜索框，让你无需滚动即可在长列表中找到技能',
@@ -1170,7 +1069,6 @@ window.CHANGELOG_MONTHLY = {
     '8cb1ec50-25': '新增 Gleam LSP 和格式化器',
     '8cc09cb8-60': '推理内容改用语法高亮渲染，替代纯文本',
     '8cddc038-39': 'task 工具支持恢复能力',
-    '8ce073f0-146': '为严格提供商（Gemini/Vertex）合并连续的用户轮次，修复压缩后或工具结果后紧接插入轮次时出现的 HTTP 400（「roles must alternate」）',
     '8cf1ec4a-83': '升级 opentui 至 0.1.42，修复 prompt extmarks 相关的部分中日韩字符与字素问题及字符损坏',
     '8d068128-98': '添加了自动模式检查对子 Agent的工具调用无应答的通知，该工具调用曾经在主视图中不留下任何内容',
     '8d3f80b0-31': '支持作用域 npm 插件',
@@ -1209,8 +1107,6 @@ window.CHANGELOG_MONTHLY = {
     '9006c05f-42': '内置 AI SDK 包以提升性能',
     '902311bc-24': '为 run 命令增加 --dir 选项',
     '9092aed9-76': '为Mantle和Runtime全球/美国航线的Amazon Bedrock模型选择器添加了GPT-6-Astra',
-    '909c4550-136': '! - 内置 Kimi Computer Use 能力新增 Windows 支持，并在能力设置失败时显示底层错误。在 Windows x64 上可从 /plugins 安装',
-    '90c8a578-88': '! - web：支持从会话行的上下文菜单永久删除会话，并弹出确认提示',
     '90faf1e0-31': '从标题中过滤子会话',
     '910537c8-68': 'TUI 中模型处理时用动画进度条替代文字微光效果',
     '913101a-81': '新增实验性的 compaction.autocontinue 钩子，用于在压缩后停止自动继续',
@@ -1219,10 +1115,8 @@ window.CHANGELOG_MONTHLY = {
     '9163240-88': '远程控制客户端可通过 app-server v2 RPC 发起配对，并列出或撤销控制器授权',
     '91b24534-48': '增加会话加载上限以防止内存过度占用',
     '91ea5a70-85': 'SessionStart 钩子可以区分由 /clear 创建的会话与全新启动或恢复的会话',
-    '91f2d0ac-51': '新增服务器托管的 Web UI 及其驱动的 CLI 命令',
     '91fdc048-111': '从/daemon重新启动托管后台服务器。Codex警告重新启动可能会中断的工作，然后自动重新连接',
     '920b1534-83': '添加了一个f快捷方式，以便在另一个应用程序中打开分叉对话，保留草稿和排队提示',
-    '923fde8b-242': '! - 支持在 ACP 客户端中选择思考强度级别：思考选择器现在会列出当前模型声明的级别（例如 off / low / medium / high），而不再只是开关二选。在你的 ACP 客户端（如 Zed）中使用思考选择器挑选级别；旧的 on/off 值仍然有效',
     '92441a48-97': '新增 /config 行：Dialog expiry 和 Messages from your other sessions（跨会话入站接受/保持/拒绝）',
     '924433f9-109': '新增 /config key=value 语法，可在提示框中设置任意配置（例如 /config thinking=false），适用于交互模式、-p 和远程控制',
     '9256abb4-107': '新增音频输入和工具输出，涵盖常见的本地音频格式，并引入流式实时 V3 对话',
@@ -1234,7 +1128,6 @@ window.CHANGELOG_MONTHLY = {
     '93052f4-106': '支持选择性启用的 MCP 2026-07-28 协议，包括分页发现、多轮请求和非阻塞式服务器启动',
     '931c102e-41': '为 Venice 提供方添加提示缓存键支持',
     '93317f04-56': '新增 -n / --name CLI 标志，可在启动时为会话设置显示名称',
-    '934bd36e-134': '可直接从 GitHub 仓库 URL 安装插件，并在插件管理器中显示每次安装的来源和信任等级（kimi-official、curated、third-party）',
     '935dc870-87': '为打印模式新增 --exclude-dynamic-system-prompt-sections 标志，以改善跨用户的提示缓存',
     '936a723c-6': '主题',
     '93769201-105': '在云会话中添加了计时器随其容器停止的/loop确认备注，并提供了幸存的循环',
@@ -1252,13 +1145,11 @@ window.CHANGELOG_MONTHLY = {
     '943cefe4-74': '选择对话框选项时阻止 Enter 默认行为以避免冲突',
     '94849c7b-39': '为对话框增加可选的过渡动画',
     '949c8744-142': '添加了--marketplace到claude插件安装：根据需要添加市场，根据与claude插件市场添加相同的策略检查，然后从中安装插件',
-    '949edeec-178': '! - 新增 Remote Control 作为实验性功能，可远程访问本地 web 会话。通过 KIMI_CODE_EXPERIMENTAL_REMOTE_CONTROL=1 启用，然后运行 kimi rc、kimi web --remote-control 或 /remote-control 启动',
     '94b50abc-52': '新增 claude agents CLI 命令，用于列出所有已配置的代理',
     '94cd6014-88': '在终端报告编辑器中按 Ctrl+S，即可将诊断 ZIP 文件保存到本地，即使上传功能被禁用也可以。（ ）',
     '94d5171c-87': '安装便携式 Agent Plugins，并在本地、个人、workspace 和远程插件目录中搜索',
     '94deabf8-41': '为搜索弹窗中的命令项添加左内边距',
     '95058944-91': '当 TUI 通过远程传输连接时，/status 显示远程连接详情和服务器版本',
-    '950ab330-35': '! - web：全面优化 UI/UX 并修复已知问题',
     '951c441c-40': '新增支持推理的 Mistral Medium 3.5',
     '954a7a3c-31': '将 Gemini 3 Flash 添加到快速模型列表',
     '9573bf02-31': '新会话使用代理的模型和变体',
@@ -1274,13 +1165,10 @@ window.CHANGELOG_MONTHLY = {
     '966e00c-158': '已将 engines[\'claude-code\'] 添加到 plugin.json：不会安装、更新或加载超出其指定 Claude Code 版本范围的插件，并且安装和更新会选择符合要求的最新版本',
     '967bb278-89': '全屏 Codex 在 Ghostty 和 Kitty 的 tmux 中显示图像预览和宠物，并使用 allow-passthrough all。（ ， ）',
     '968d3f2f-90': 'TUI历史记录显示完整的补丁、发送到后台终端的输入以及单个完成的命令',
-    '96b56000-40': '! - web：将右侧边栏改造为多标签面板',
     '96c679c0-95': '新增 wheelScrollAccelerationEnabled 设置，可禁用全屏模式下的鼠标滚轮滚动加速',
     '970b77d0-55': '启用 Azure 提示缓存，默认使用每会话缓存键',
-    '97118788-209': '! - 在 v2 CLI 中将 Kimi Computer Use 和 Kimi WebBridge 新增为内置官方市场条目。从 /plugins 安装会一并配置最新的托管运行时和插件，报告未完成的手动步骤，并支持重试被中断的设置',
     '9712b740-59': '新增实验性 OpenTelemetry 配置项，用于启用 OTEL spans',
     '97382330-55': '补全缺失的 StoreExt 导入并修复桌面端未使用的 mut 警告',
-    '9776f208-102': '新增用户级全局插件安装、交互式插件管理、插件提供的技能以及插件自带的 MCP 服务器',
     '977a17ac-32': '为 OpenAI 模型添加 apply_patch 工具',
     '978f69cc-128': '插件发现更易检查，提供感知市场的列表输出、已安装版本、可见的市场根目录和远程集合支持',
     '97e7d215-22': '新增桌面端审查流程',
@@ -1295,8 +1183,6 @@ window.CHANGELOG_MONTHLY = {
     '997b7e64-47': '将 .husky 加入受保护目录（acceptEdits 模式）',
     '998999cc-97': '新增 /plugin 参数自动补全：子命令、已安装插件名以及已知市场中的插件',
     '998e9c5c-103': '增加 auto:N 语法以配置 MCP 工具搜索自动启用阈值，其中 N 为上下文窗口百分比（0-100）',
-    '999095fc-51': '多根工作区注册表和源文件夹管理',
-    '99ba151c-83': '为子智能体使用固定的 30 分钟超时，超时时显示简洁的恢复说明',
     '99d12658-154': '新增加载提示，引导 Bedrock、Vertex AI、Foundry 和 LLM 网关用户使用 Claude 桌面应用；claude.ai 桌面应用提示现建议使用 /desktop，该命令会提示下载应用',
     '99e0c054-44': '新增 db 命令，用于数据库检查与查询',
     '9a067330-93': '新增 InstructionsLoaded 钩子事件，当 CLAUDE.md 或 .claude/rules/*.md 文件加载到上下文时触发',
@@ -1319,21 +1205,17 @@ window.CHANGELOG_MONTHLY = {
     '9c12d398-126': '新增可从 Claude 应用派生出由 claude --remote-control 或 /remote-control 启动的会话；派生会话在你电脑上作为后台会话运行',
     '9c951014-49': '为 File.read 和 File.list 添加路径遍历防护',
     '9ca59a30-44': '为应用添加端到端测试工具',
-    '9cfbf2f8-55': '保持全屏字幕组稳定，并显示实时进度',
     '9cffcbc0-149': '改进插件工作流，包含市场安装、远程包缓存、远程卸载、插件捆绑的钩子、钩子启用状态以及外部代理配置导入',
     '9d06833c-41': 'opentui 发布后重新加入 nightowl 主题',
     '9d157c30-48': '增加 Ctrl+G 时编辑器启动失败的错误提示',
     '9d2192d8-136': '/plugins 现在将远程插件组织为 OpenAI 精选、工作区和共享给我三个分区，同时符合条件的轮次可推荐并安装相关插件',
-    '9d41b664-93': '使用 /add-dir 命令为当前会话添加额外工作目录，或为项目记住它们',
     '9d559aa8-92': '使用Unicode项目符号、复选框、对齐方程和优化表示法改进了终端渲染',
     '9d567e6c-81': '新增 chat:newline 键位绑定动作，可配置多行输入（anthropics/claude-code',
     '9d658508-20': '将 Warp 添加到打开菜单',
     '9d6592e0-63': '为权限对话框添加拒绝消息支持以改善用户反馈',
-    '9da306bc-131': '支持在 listSessions 中按 sessionId 或 workDir 查询会话，并在从不同工作目录恢复会话时显示有用的 cd 命令',
     '9da543fc-144': '新增屏幕阅读器模式：为屏幕阅读器用户提供可选的纯文本渲染。运行 claude --ax-screen-reader、设置 CLAUDE_AX_SCREEN_READER=1，或在设置中添加 \'axScreenReader\': true',
     '9da71ddc-81': '新增 opencode run --dangerously-skip-permissions，自动批准未被拒绝的权限提示',
     '9dab048c-33': '在配置中新增减弱动效模式',
-    '9dcf77f0-112': '! -将主会话和子 Agent状态报告给与OSC 7501兼容的终端，包括挂起的交互和保留的结果',
     '9dea7548-152': '向Claude应用程序网关的managed.policies []添加了一个代码键：与cli相同的设置，也适用于Claude Desktop的代码选项卡；在桌面旁边，它打开Claude Desktop的网关模式',
     '9df98ee3-23': '优化过载提示信息',
     '9dfea104-90': '新增只读模式下对更多 git log 和 git show 标志的支持（如 --topo-order、--cherry-pick、--format、--raw）',
@@ -1353,13 +1235,11 @@ window.CHANGELOG_MONTHLY = {
     '9f8a2b11-97': '在支持Kitty或Sixel图形的终端上预览全屏会话记录中查看和生成的图像',
     '9f8ba808-35': '新增 OTLP 可观测性导出支持',
     '9fa67948-61': '在 opencode.json 中增加 models.dev schema 引用以支持模型自动补全',
-    '9fc1175c-79': '新增 /swarm 命令，用于运行智能体 swarm，带实时进度和感知速率限制的重试',
     '9fc4385a-41': '为桌面应用新增更多端到端测试',
     '9fd2c3d4-104': '启用工作树功能时，添加用于从受信任的本地项目创建和列出托管Git工作树的工具',
     '9fd2cf72-75': '新增 macOS 上仅显示已安装编辑器的支持，并新增 Sublime Text 编辑器',
     'a038e24c-26': '为应用添加文件上下文功能',
     'a03d8b34-53': '终端标题显示改为 \'OpenCode\' 而非 \'opencode\'',
-    'a041e70-133': '! -添加/provider refresh [providerId]以在运行时重新获取提供程序模型列表；未知的/provider子命令现在显示用法提示，而不是打开管理器',
     'a0914eac-20': '优化错误报告',
     'a09a7204-171': '插件管理现支持工作区共享、共享访问控制、来源过滤、本地共享路径跟踪、市场移除/升级、远程包同步和管理员禁用状态处理',
     'a0c70be5-29': '新增 catppuccin-macchiato 主题',
@@ -1367,7 +1247,6 @@ window.CHANGELOG_MONTHLY = {
     'a0dedf00-132': '新增网关流式响应在长时间思考停顿期间的 SSE keepalive ping，防止 Vertex 和 Bedrock 上游出现空闲超时断连',
     'a0e67048-99': '新增 CLAUDE_CODE_GATEWAY_MODEL_DISCOVERY_TIMEOUT_MS，用于延长 LLM 网关 /v1/models 发现超时（默认 3s）',
     'a0edbb8-27': '为桌面端增加 WSL 后端模式',
-    'a106218c-111': '! - web：当模型请求失败并中断对话时，会话中会保留一张常驻失败卡片，可一键恢复',
     'a117a746-93': '当首先运行的插件跳过您的mod的一个钩子时，添加了一个脚本行，命名事件和插件',
     'a11c820d-52': '列表中当前活动会话的圆点保持可见',
     'a122665c-126': '新增可选的 spellcheck 设置，使用你已安装的 aspell、hunspell 或 ispell，在输入时对提示中拼写错误的单词加下划线',
@@ -1386,7 +1265,6 @@ window.CHANGELOG_MONTHLY = {
     'a2604acc-24': 'SAP AI Core 提供商支持 ✓',
     'a26b8f54-46': '默认为在提供商选项中禁用 fetch 超时',
     'a27293fc-138': '在 spinnerTipsOverride 中新增 {id, text, cooldownSessions, priority} 条目、tipsFile 和 label，使组织可在内置提示之外轮换自己的提示',
-    'a27c427e-161': '! - 允许已启用的插件通过 kimi.plugin.json 中的 systemPrompt 或 systemPromptPath 提供智能体系统提示指令，在两个智能体引擎（TUI、kimi -p 和 kimi web）上均生效',
     'a283e050-69': 'Tauri 应用现在会自动查找可用端口，而不再默认使用 4096',
     'a2a022a4-136': '添加了CLAUDE_CODE_RETRY_WATCHDOG_USATION_LIMIT_RECHECK_MS ，以便无人参与的重试模式（ CLAUDE_CODE_RETRY_WATCHDOG ）通知在重置之前取消的使用限制',
     'a2acddf0-43': '为问题工具添加鼠标悬停与点击支持',
@@ -1398,7 +1276,6 @@ window.CHANGELOG_MONTHLY = {
     'a34aab30-56': '为 Tauri 桌面应用增加国际化支持',
     'a362b348-45': '为 Windows CLI 和桌面端新增 ARM64 发布目标',
     'a3835ff4-53': '降低粘贴摘要阈值，较短内容也会触发',
-    'a3bf1170-174': '! -在其限定项下列出插件技能： name so same-named skills from different plugins all stay visible and invocable; invoking a plugin skill by its bare name no longer work, use the qualified name instead',
     'a3bff61c-47': '添加超大对话框尺寸，并将其用于设置弹窗',
     'a4043e7c-97': '新增 claude plugin prune 以移除孤立自动安装的插件依赖；plugin uninstall --prune 会级联执行',
     'a429aeec-44': '重新启用文件/agent 提及的虚拟 extmarks',
@@ -1409,11 +1286,9 @@ window.CHANGELOG_MONTHLY = {
     'a486e568-120': '在 strictKnownMarketplaces 中新增 pathPattern，可对文件或目录市场来源进行正则匹配，与 hostPattern 限制并存',
     'a4953280-78': '当多个权限请求堆叠时，向权限提示添加了计数，例如“2 of 5”',
     'a4aec1b4-62': '为自定义问题 API 主机暴露可复用的 question 处理器工厂',
-    'a4bf83a4-145': '! - CLI 各入口（交互式 TUI、kimi -p、kimi acp、kimi export、kimi provider）默认在 agent-core-v2 引擎上运行。设置 KIMI_CODE_LEGACY_FLAG=1 可回退到旧引擎',
     'a4c2bc94-75': '默认情况下，为支持的模型启用了会话期间的推理工作量更改',
     'a4c8b874-97': '新增会话质量调查——企业管理员可通过 feedbackSurveyRate 设置配置抽样率',
     'a4cdea84-101': 'TUI 可以用 Ctrl+O 复制最新的代理回复，在 SSH 和跨平台环境下的剪贴板行为也更好',
-    'a4d8f6c8-34': '将开发者发布通道重命名为Canary',
     'a4feb61b-158': '新增自托管环境：claude self-hosted-runner 可将你自己的机器或容器变成 Claude Code web、移动端和桌面会话的运行场所，适用于 Team 和 Enterprise 套餐',
     'a52ab374-105': '当他们写入的设置文件未加载时，向claude插件安装、启用、禁用和市场添加添加警告',
     'a52d58e0-28': 'opencode run 新增 --attach 标志',
@@ -1437,7 +1312,6 @@ window.CHANGELOG_MONTHLY = {
     'a6d4f1bc-63': '为从网页会话创建的提交和 PR 增加会话 URL 归属信息',
     'a6f26d80-71': 'shell 模式（! 命令）新增 Windows 支持，兼容 cmd.exe 与 PowerShell',
     'a71ae8-105': '使用六个新主题定制终端，查看支持的美人鱼图，并直接在回复中显示方程式',
-    'a722b92c-43': '通过WebSocket推送代理、使用情况、目标和待办事项状态',
     'a74419fc-73': '为评论输入校验添加 critical 阴影，并将编辑器弹出层圆角设为 14px',
     'a7b57e10-50': '为模糊搜索添加权重，以在 TUI 中保持标题优先',
     'a7c15485-109': '导入由 Cursor 管理的技能，并同步对已导入的 Claude 和 Cursor 对话的更改，且不产生重复',
@@ -1469,7 +1343,6 @@ window.CHANGELOG_MONTHLY = {
     'abb16c1d-59': '支持 OTEL_RESOURCE_ATTRIBUTES 以自定义遥测资源标签',
     'abd32518-17': '新增 \'orng\' 主题',
     'abe7b1fa-43': '为应用增加 Shift+Tab 键盘快捷键',
-    'abfdf688-58': '! - 新增 v2 会话导出支持，可打包诊断 zip 压缩包',
     'ac01a7f0-35': '在桌面应用中添加 Iosevka 作为字体选项',
     'ac10af3c-86': '新增通过 OPENCODE_DISABLE_TERMINAL_TITLE 环境变量禁用终端标题的能力',
     'ac43da0c-46': '调整 bash 工具行为，更好地支持 SHELL 变量',
@@ -1489,12 +1362,9 @@ window.CHANGELOG_MONTHLY = {
     'ae31f6a8-33': '新增主题模式的手动锁定和解锁',
     'ae5eaca4-102': 'TUI 文件查看器新增内联 LSP 诊断，无需离开界面即可查看类型错误和编译问题',
     'ae910564-27': '文件树滚动时添加边框',
-    'ae926551-94': '! - Web和桌面中的会话现在在空闲30分钟后从内存中卸载，并在下次访问时透明地恢复',
     'ae996138-99': '添加了单击发送：在全屏幕中，单击队列消息下的“立即发送”提示会立即发送，就像其密钥一样',
     'aeaac284-38': '升级至 opentui v0.1.36（依赖更新）',
-    'aeb57bc0-106': '新增持久化实验性功能开关，以及通过重新加载当前会话应用已确认更改的 TUI 面板',
     'aebfbaf0-29': '为应用添加更多端到端测试',
-    'aec06da0-85': '! -塔模式：代理运行时发送的消息中止正在进行的回合并作为自己的回合运行',
     'aed3a354-125': 'app-server 集成可利用初始轮次页面恢复线程、查看更丰富的 MCP 服务器状态，并用 codex app-server --stdio 启动 stdio 模式',
     'aeeca84-65': '为 List 组件添加 onFilter 回调，并在搜索时隐藏添加服务器行',
     'af29f000-51': '统一会话面板内容的左侧内边距',
@@ -1516,12 +1386,10 @@ window.CHANGELOG_MONTHLY = {
     'b1382f94-26': '补充应用中缺失的 i18n 字符串',
     'b15f319c-28': '优化 TUI 首次启动时的错误提示',
     'b19541e8-41': '新增对基于 OpenAI 的 GitLab Duo 模型的支持',
-    'b1d9113c-154': '! - 附加到提示中的视频——在 TUI 中粘贴或在 Web UI 中上传——现在会随提示一起送达模型，无需额外的工具往返，并在刷新后仍可在聊天中播放',
     'b2576d83-106': '改进实时交接，使后台代理能接收对话增量，并可在适当时明确保持静默',
     'b276c0f8-105': '新增支持通过API配置GPT-6-Astra ，无需更改默认模型或在模型选取器中显示',
     'b2785a78-30': '重试 Anthropic 过载错误',
     'b27cb4b4-91': '在 /status 中新增 Auto 模式服务器一行，显示本会话的 auto 模式分类器是否运行在服务器上',
-    'b2d7a300-36': '添加实验性后续提示建议',
     'b2db3bc4-71': '子会话请求权限时自动跳转到该会话',
     'b2e94220-113': '将 lsof、pgrep、tput、ss、fd 和 fdfind 加入 bash 自动批准白名单，减少常见只读操作的权限提示',
     'b2fd5880-77': '插件可通过本地清单和远程目录提供专用的深色模式 logo',
@@ -1536,7 +1404,6 @@ window.CHANGELOG_MONTHLY = {
     'b3f4b4ec-32': '增加提供商图标并在设置中使用',
     'b3f89594-99': '使用 /new 或 /clear 命名新会话，置顶重要对话线程，并可在多个侧边对话间切换而无需关闭它们',
     'b4021370-77': '新增插件自带代理对 effort、maxTurns 和 disallowedTools frontmatter 的支持',
-    'b46afe34-45': '新增添加额外工作区目录的功能',
     'b46ef274-93': '新增选项，可将 Claude 的上一条回复作为注释上下文显示在 Ctrl+G 外部编辑器中（通过 /config 启用）',
     'b496a005-54': '新增在 GitHub 工作流中响应 PR 审查评论的能力',
     'b49be10c-146': '使用支持音频的模型时，请附上录音。Codex 会在之后的轮次中跳过已确认被拒绝的录音，并使用片段时长来保留更多短录音的上下文信息。（ ， ）',
@@ -1544,14 +1411,11 @@ window.CHANGELOG_MONTHLY = {
     'b4c7d19c-129': '添加了CLAUDE插件在插件的README没有安装行时验证的建议：它打印要粘贴的行，并且从不更改退出代码，即使使用--strict',
     'b51a6284-29': '新增对 schedule 事件的支持',
     'b540d334-29': '新增 Julia 语言服务器支持',
-    'b557425c-175': '在第二次粘贴时展开折叠的粘贴标记。当光标位于粘贴标记（例如 paste [ +15 lines]）上时再次粘贴，标记会展开为原始内容，而不是插入新的剪贴板数据',
     'b5dca23c-49': '新增 diff_style 选项，可禁用分栏 diff 显示',
-    'b5f836d4-117': '新增自定义颜色主题。可在 ~/.kimi-code/themes/ 中以 JSON 文件定义自己的调色板，或用内置 /custom-theme 技能命令生成',
     'b6084841-48': '优先显示以用户输入开头的 fuzzysort 结果',
     'b643b48f-156': '新增 /claude-api cost-optimize，用于分析现有项目的 Claude API 支出，并逐一进行可度量的改动来应用各项成本优化手段（缓存、token 卫生、批处理、effort、模型选择）',
     'b64d50e4-84': '目标功能现已默认启用，由专用存储支撑，并跨活动轮次跟踪进度',
     'b69ef5d6-119': '向mod的turn.step钩子的结果添加了serverToolUses ：工具调用API运行本身（顾问） ，每个都有其id、name、input、start和end',
-    'b6f06624-130': '! - web：在编辑器的可重排媒体轨道中预览图片和视频，按需在文本中引用，并在排队和发送后保留预览',
     'b6f0c15c-57': '明确通用 agent 可执行多个并行任务',
     'b7036fed-128': 'codex remote-control 现在像前台命令一样运行，等待就绪、报告机器状态，并保留显式的守护进程式启动/停止命令',
     'b70d48c-74': '新增 web 命令，启动无头 opencode 服务器并打开 Web 界面',
@@ -1565,13 +1429,10 @@ window.CHANGELOG_MONTHLY = {
     'b808498c-23': '为应用增加关闭标签页的快捷键',
     'b8091724-53': '为提示输入组件添加国际化支持',
     'b82e0a78-82': '在消息选择器中新增“从此处总结”，可对部分对话进行总结',
-    'b83b8c10-292': '新增 KIMI_MODEL_ADAPTIVE_THINKING（及对应的 adaptive_thinking 模型别名字段），强制开启或关闭自适应思考（thinking: { type: \'adaptive\' }），覆盖 Anthropic 模型名版本推断。这使承载自适应能力模型的自定义命名 staff 端点即使模型名未编码可解析的 Claude 版本也能选择启用',
     'b8532710-22': '持久化浅色/深色模式',
     'b8612246-76': '在TUI中添加了更清晰的安全阻断解释和可选择的更安全的随访提示',
     'b869dcf4-33': '为 CLI 新增 console 账号子命令',
     'b8a2aebc-189': '在恢复不活跃的会话时，会在Pro和Max计划中添加警告，这会占用您5小时使用限制的明显份额：无论如何都要恢复，或者开始新的会话，如果您引用它， Claude可以查找上一个会话',
-    'b8bdfef8-157': '！ -当同一会话在多个客户端中打开时，从第二个客户端发送现在显示带有重试/取消的占用提示，或先重新加载其他地方进行的更新并重新发送您的消息',
-    'b8c460d9-35': '将 tool_call 项目关联到它们运行的任务',
     'b8d57d00-139': '新增 managed-settings.d/ 投放目录，与 managed-settings.json 并存，让不同团队部署各自独立的策略片段并按字母序合并',
     'b8d7bc9c-50': '新增 Nix 安装与包管理支持',
     'b8dd0684-86': '在 /doctor 中增加「更新」区块，显示自动更新通道和可用的 npm 版本（stable/latest）',
@@ -1591,10 +1452,8 @@ window.CHANGELOG_MONTHLY = {
     'ba7206ec-139': '选定的执行器插件可按线程激活其 stdio MCP 服务器；插件发现还新增了「我创建的」市场和按认证区分的精选目录',
     'ba734360-37': 'TUI 底部栏新增权限指示器',
     'baa6c8e0-111': '添加到claude插件validate ：在gating站点的每个hook a mod寄存器都列出了它是否具有.catch （ --json下的gatingHooks ）',
-    'bac24064-44': 'kimi server 用于启动、停止和管理本地服务器',
     'bacc2a48-105': '新增 footerLinksRegexes 设置，在页脚行显示正则匹配的链接徽标，可通过用户或管理设置配置',
     'bad82248-150': '新增 claude agents 标志：--add-dir、--settings、--mcp-config、--plugin-dir、--permission-mode、--model、--effort 和 --dangerously-skip-permissions，用于配置派发的后台会话',
-    'badb6228-86': '新增 /import-from-cc-codex，可导入选定的 Claude Code 和 Codex 指令、Skills 及 MCP 设置',
     'badbebf8-32': '新桌面布局开发中',
     'baee652c-116': '可配置的 rollout token 预算可跨智能体线程跟踪用量，提供剩余预算提醒，并在耗尽时中止轮次',
     'bb14b720-145': '在提示框底部增加 PR 审查状态指示器，以彩色圆点加可点击链接显示当前分支的 PR 状态（已批准、需要修改、待处理或草稿）',
@@ -1607,12 +1466,10 @@ window.CHANGELOG_MONTHLY = {
     'bc42ba24-43': 'opencode models 输出按字母顺序排序',
     'bc546810-46': '桌面客户端新增乐观提示提交',
     'bc61ca8-15': '上游存档',
-    'bc7056c8-74': '! -添加KIMI_CODE_TRUST_WORKSPACE环境变量以将工作区标记为可信',
     'bcaafacd-33': '在审查评论中新增文件提及',
     'bcf84214-27': '在应用中支持文本附件',
     'bd1cc136-57': '为 Google Vertex 提供商增加 OpenAI 兼容端点支持',
     'bd1f5e00-93': '添加/claude-api managed-agents-onboard以设置页面描述为蚂蚁应用文件的托管代理模式',
-    'bd373afe-75': '! - 在单条提示中激活多个技能。在空白字符后输入 / 即可插入技能标记',
     'bd3a381c-40': '在会话标题栏和 /status 对话框中添加版本号',
     'bd493148-54': '在 Electron 应用的目录选择器中新增 createDirectory 选项',
     'bded8cc8-51': '新增为 Gemini 模型显示推理摘要的能力',
@@ -1625,14 +1482,11 @@ window.CHANGELOG_MONTHLY = {
     'beb81f4a-153': '新增通过 _meta[\'anthropic/maxResultSizeChars\'] 注解覆盖 MCP 工具结果持久化的方式（最高 500K），使 DB schema 等较大结果可以不经截断直接通过',
     'bf02307c-56': '新增从主代理系统提示中隐藏子 Agent的能力',
     'bf265dc6-27': '提高默认滚动速度',
-    'bf31757b-110': '! - web：在设置中新增插件面板，可浏览插件市场并安装、启用、停用和移除插件',
     'bf449e78-88': '为模组添加了$ .ui.view ({agentId}) ：当您询问时，在主视图中显示代理的会话记录， $ .ui.view ({})返回',
     'bf754f04-136': '新增 CLAUDE_CODE_MAX_MCP_DESCRIPTION_LENGTH，可调整会话中所有 MCP 服务器的 MCP 工具描述与服务器说明的 2048 字符上限',
-    'bf7990-81': 'Web UI 中退出计划模式时，在计划审查卡片中显示计划正文和方案选择',
     'bf86014c-47': '桌面应用现在会加载用户 shell 环境变量',
     'c0079bc6-106': '在Codex继续工作的同时，使用建议的选择或自定义文本内联回答问题，而不会丢失您的主要草稿',
     'c017e6b4-63': '当只读 MCP 工具声明 readOnlyHint 时，允许其并发运行',
-    'c01ceeb5-172': '! -在具有对话历史记录的会话中切换模型时添加确认对话框：启动新会话、压缩并继续、直接继续或取消。仅在云配置启用时显示',
     'c02b7f20-36': '为最近会话弹出层添加 8px 内边距',
     'c03b436c-21': 'TUI：修复间距问题',
     'c06fb878-32': '新增 agent 循环结束时间显示',
@@ -1655,25 +1509,20 @@ window.CHANGELOG_MONTHLY = {
     'c1781c70-47': '新增桌面端深度链接支持，用于创建新会话',
     'c1796be6-63': '新增 /config --help，用于列出 /config key=value 所有可用的简写键',
     'c1974aa9-91': '新增 Claude Opus 5.5（claude-opus-5-5），现为默认 Opus 模型 —— 1M 上下文，$4/$20 每 Mtok，缓存读取 $0.20/Mtok',
-    'c1a80cc8-56': '允许 /btw 在输入问题前打开旁路面板',
     'c1b3cf09-37': '格式化器支持 R formatter',
     'c1d569d8-63': '在 AskUserQuestion 的「其他」输入框中增加外部编辑器支持（Ctrl+G）',
     'c1dc4954-53': '新增 claude agents --cwd，可将会话列表限定到某个目录',
     'c1dfd625-45': '为 diff 自动换行和隐藏开关增加视觉反馈',
     'c1e1f8a8-79': '添加 OPENCODE_DISABLE_PROJECT_CONFIG 环境变量以禁用项目配置',
-    'c2004cd4-75': '! - 新增 /secondary_model 斜杠命令，用于配置子智能体使用的二级模型',
-    'c20aa94-118': '新增环境变量，可在初始爬坡阶段限制 AgentSwarm 并发数，使大型 swarm 不易触发提供商速率限制',
     'c22a45b4-64': 'Python SDK 现为 thread 和 turn API 暴露友好的 Sandbox 预设',
     'c22e8abe-42': '为 SAP AI 提供方新增思考变体支持',
     'c24b5507-53': '引入用于分享会话的新企业版 Web 界面',
     'c26045a8-38': '新增 Grok 资源耗尽时的重试处理',
-    'c2873e78-57': '将页眉向文本方向扫动，并添加 KIMI_CODE_TUI_ANIMATION_FPS',
     'c2a73727-54': '优化消息时间戳，非当天时显示日期',
     'c2b23795-132': '在无头 stream-json 的 init 事件中新增 mcp_server_errors，列出因配置校验被跳过的 --mcp-config 条目；终端运行时会打印启动警告',
     'c2ea20b4-39': '支持在 MCP 工具响应中返回图片',
     'c2f015e7-56': '为东京区域（ap-northeast-1）添加自动分配 jp. 前缀',
     'c2f6132a-96': '在您批准计划时添加了新权限模式的屏幕阅读器模式公告，包括Shift + Tab',
-    'c2fc9f00-85': '! - 在恢复长时间空闲的会话、或长时间空闲后提交时，显示缓存过期提醒',
     'c31d9990-94': 'Vim编辑获得具有撤消和点重复的R替换模式，以及在旧式终端中更可靠的Escape处理',
     'c33a80b4-48': '向插件暴露 session.summarize 中的 auto 参数',
     'c3528c64-30': '禁用首页路由中的提示显示',
@@ -1694,8 +1543,6 @@ window.CHANGELOG_MONTHLY = {
     'c4899354-43': '为 chat.params 和 chat.message 增加输入上下文',
     'c48ad100-38': '为 Kimi 模型新增专用系统提示',
     'c49fa7f4-103': '新增可配置压缩设置，用户可通过配置而非命令行标志禁用自动压缩和修剪',
-    'c4ceb0c4-48': '设置实验性标志时默认为全屏模式',
-    'c4eb5ce8-85': '! - web：图片和视频工具结果现在点击即可全屏预览，图片还支持缩放',
     'c5055aa4-67': '桌面应用新增按钮，可加载每个项目的更多会话',
     'c5092df3-33': '将GPT-6.1 TERRA添加到型号目录中',
     'c52a3276-45': '为应用添加韩语翻译',
@@ -1712,19 +1559,15 @@ window.CHANGELOG_MONTHLY = {
     'c67e11d7-65': '添加了codex queue --resume ，以便在队列消息后恢复未加载的线程',
     'c684d4f4-90': '速率限制横幅提供用于检查使用情况、管理积分、重置限制和管理计划的操作',
     'c6c1e580-73': '新增 /powerup — 通过动画演示讲解 Claude Code 功能的交互式课程',
-    'c6cc0f2c-99': '新增 /reload 以重新加载当前会话并应用更新的配置文件，另有 /reload-tui 仅重新加载 TUI 偏好',
     'c6faf00-101': '在状态行 JSON 输入中新增 workspace.git_worktree，当前目录位于链接的 git 工作树内时会设置',
     'c70353fc-110': 'Amazon Bedrock在兼容型号上支持多Agent V2和Ultra推理； Bedrock Mantle还接受AWS GovCloud区域',
-    'c71b5727-25': '附加 Kimi 请求元数据',
     'c7250e18-42': '会话菜单新增复制上一条助手消息',
     'c747e75c-28': '为应用添加模型变体支持',
-    'c7490460-132': '通过将工具名和参数内联到顶层来扁平化工具调用数据，并限制旧记录迁移，使其仅重写匹配的工具调用负载',
     'c74920e7-61': '将% motion添加到vim模式：单独或使用d/c/y跳转到匹配的括号',
     'c7bea0b8-104': '将 .jj 和 .sl 加入 VCS 目录排除列表，使 Grep 和文件自动补全不会深入 Jujutsu 或 Sapling 元数据',
     'c7cb24f0-41': '修正 history_next 快捷键说明',
     'c7dd01d8-61': '增加 Claude Code 风格的 --fork 标志，可在继续前复制会话',
     'c7e0ba18-125': '将行添加到模块的输入：终端中多行的文本字段，其中Enter提交， Shift + Enter或反斜杠在Enter开始新行之前',
-    'c7e35fc8-33': '将缓存中断链接到基线请求',
     'c8147d23-67': '新增 opencode export --sanitize，用于对 PII 和机密对话数据进行脱敏',
     'c85a6b60-38': '优化连接失败时的错误提示',
     'c86a2fd8-55': '为 /cd 新增目录路径建议，与 /add-dir 的行为一致',
@@ -1732,7 +1575,6 @@ window.CHANGELOG_MONTHLY = {
     'c8dcf9f4-105': 'codex doctor 现在会在本地报告中包含编辑器和分页器环境详情，同时在 JSON 输出中隐去原始值',
     'c8e37cff-68': '新增提示：同时运行多个会话时建议使用 claude agents',
     'c901f278-155': '新增 maxEffortLevel 设置（顶层或 modelSettings 下按模型）：为所有供应商限制 effort 级别，包括 Bedrock、Vertex 和 Foundry；用户仍可选择更低级别',
-    'c9509db1-213': '! - 为子 Agent和 swarm 工具新增可选的 fork 参数，使子 Agent以调用方代理的对话历史快照启动；在 config.toml 的 [experimental] 下设置 KIMI_CODE_EXPERIMENTAL_SUBAGENT_FORK=1 或 subagent_fork = true 以启用',
     'c9678b4c-152': '将 tui.notification_method 设置为“osc777”，以启用终端通知。批准通知显示更长的命令预览，并将终端输入与网络访问请求区分开来。( )',
     'c9825dc7-113': '支持 Agent Plugins 清单、工作区插件发布，以及面向 Amazon Bedrock 和 Claude Code 的额外插件市场',
     'c9a93b74-159': 'TUI 现在提供快捷推理控制：Alt+, 降低推理强度，Alt+. 提高推理强度；接受的模型升级现在会将推理重置为新模型的默认值，而不是沿用旧设置',
@@ -1742,14 +1584,12 @@ window.CHANGELOG_MONTHLY = {
     'c9bbba54-64': '新增 codex queue，用于向现有的本地或远程会话发送消息',
     'c9bd6fb0-106': '当 --allowedTools、--disallowedTools 或 --tools 值包含看起来不像是完整规则的条目时，添加了启动警告',
     'c9c5e119-65': '为 Google Vertex Anthropic 启用提示缓存和缓存令牌跟踪',
-    'c9f0a07c-112': '! - web：可通过运行中卡片上的 Move to background 按钮，将正在运行的前台 Bash 命令或子 Agent移至后台',
     'ca1b5f88-110': '在 Bash 工具子进程环境中新增 CLAUDE_CODE_SESSION_ID 环境变量，与传给 hooks 的 session_id 一致',
     'ca474584-129': '新增跨会话消息传递（SendMessage / ListAgents），可在同一台机器上的会话之间使用，支持 Bedrock、Vertex 和 Foundry，以及在禁用遥测时',
     'ca4a2804-90': '为claude -p文本输出添加了一行stderr警告，从存储的claude.ai登录结束前10天开始',
     'ca6bb8c4-44': '@ 智能体即使不在提示词开头也能生效',
     'ca7ddaf0-76': '新增 server_error、rate_limit 和 no_kv_space 重试逻辑，以应对 Foundry API 问题',
     'ca7f82dd-100': '处理子目录中的文件时，支持自动从嵌套的 .claude/skills 目录发现技能',
-    'ca8ce5d9-67': '! -添加kimi应用程序[path]以在当前或指定的目录中打开新的桌面聊天',
     'ca97b698-101': '当登录即将过期时新增警告，便于你在后台会话被中断前重新认证',
     'caa968dc-155': '向VS代码和Claude Desktop的代码选项卡添加了空闲压缩：总结了20多万个空闲令牌对话，如果提示缓存已过期，则在下一条消息中使用该摘要',
     'cae95baf-133': '拒绝规则的工具名位置新增 glob 模式支持（\'*\' 拒绝所有工具）；允许规则拒绝非 MCP 的 glob，拒绝规则中的未知工具名会在启动时警告',
@@ -1758,8 +1598,6 @@ window.CHANGELOG_MONTHLY = {
     'cb754a14-31': '为 Rust 文件添加 rustfmt 格式化器',
     'cb75b47b-61': '支持从 .opencode/themes 目录加载自定义主题',
     'cbbc0300-48': '增加可自定义的 spinner 动词设置（spinnerVerbs）',
-    'cbc503cf-77': '新增后台结构化提问，使智能体在等待用户回答时仍可继续工作',
-    'cbd87ed8-113': '! -添加创建时SSH、Docker和自定义命令环境；创建会话时使用--environment ，也可使用--environment-cwd',
     'cbdd5694-127': '为自托管 runner 的派生和会话失败新增结构化失败类别，可区分钩子错误、runner 崩溃和配置错误',
     'cbe13524-135': '新增 codex marketplace add 以及 app-server 支持，可从 GitHub、git URL、本地目录和直接的 marketplace.json URL 安装插件市场',
     'cc6ed570-137': '为子智能体派生新增每会话上限（默认 200，可用 CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION 覆盖），以阻止失控的委派循环；/clear 会重置该额度',
@@ -1772,19 +1610,15 @@ window.CHANGELOG_MONTHLY = {
     'cd5592b0-156': '新增 claude self-hosted-runner --proxy-authorization-command / --proxy-authorization-file，适用于每次连接都需要新签发 Proxy-Authorization 请求头的出口代理',
     'cda7b34c-139': 'Node.js 支持：除 Bun 外，opencode 现在也可在 Node.js 上运行，并提供专用的 Node.js 入口点和构建脚本，将服务器与数据库迁移一并打包',
     'cdaf2d4-86': '新增 Amazon Bedrock 的 GPT-5.6 Sol、Terra 和 Luna 模型，并提供对最大推理强度的原生支持',
-    'cdfc9af0-59': '! - 在 /tasks 面板中显示后台子智能体的实时工作进度',
     'ce035cad-104': '添加了键盘驱动的文字、线条和页面动作、集成搜索和可配置快捷方式的转录选择',
     'ce0f200-155': '文件系统权限现在支持拒绝读取的 glob 策略、受管的拒绝读取要求、平台沙箱强制执行，以及忽略用户配置或规则的隔离 codex exec 运行',
     'ce1aa55d-157': '模型选择器、--model、/model 和 ANTHROPIC_MODEL 新增组织配置的模型限制，选中受限模型时显示「受组织设置限制」提示',
     'ce22edfb-64': '为标题栏和侧边栏按钮添加 aria-label 以提升无障碍性',
-    'ce487bec-108': '! - 新增用于多代理编排的实验性 tower 模式；设置 KIMI_CODE_EXPERIMENTAL_TOWER=1，然后运行 /tower on 和 /tower 启动',
     'ce4a89cc-44': '为应用增加实验性 OpenTUI markdown 组件',
     'ce8acf69-50': '新增对 Razor、.cshtml 和 C# 脚本文件的 Roslyn LSP 支持',
     'cea03dad-54': '增加 diff 虚拟化，提升大型 diff 的性能',
     'cee5fdf4-145': '已将 x-claude-code-managed-settings-checksum 添加到网关提示标头；在托管设置将 CLAUDE_CODE_GATEWAY_HINT_HEADERS=1 的情况下发送，包括已将该值设置为 1 的情况',
     'cefda574-39': '桌面客户端新增启动错误显示',
-    'ceffb98f-77': '! - 使用 API key 访问 Kimi 编程模型时，现在也会自动获取最新的模型列表',
-    'cf0b6184-84': '! -在全屏模式下添加置顶用户消息摘要；单击摘要跳转到原始消息',
     'cf1c8de4-33': '新增字段以支持仅用户消息',
     'cf1f49e0-52': '新增具备会话分享能力的企业版包',
     'cf284c78-66': 'Bedrock 认证现在可使用 aws login 配置文件中的 AWS 控制台登录凭证',
@@ -1793,9 +1627,7 @@ window.CHANGELOG_MONTHLY = {
     'cfaa72c4-24': '为会话添加默认图标',
     'cff0a02c-91': '已将 unsetOptionCount 添加到 claude 插件安装 --json 结果中：尚未设置的 userConfig 选项数量',
     'cff8a4c8-35': '新增在 TUI 中切换 MCP 服务器的能力',
-    'cffa6454-155': '以全新的设计系统刷新 Web UI，包括更新的配色、字体、间距、明暗色板、重绘的提示气泡，以及细腻的进入/退出和展开/折叠动画',
     'd017f7a8-56': '新增网页搜索和代码搜索工具，增强功能',
-    'd01bf28-117': '! -合并多目录项目中每个配置目录的技能，主目录优先于名称冲突',
     'd0438da0-36': '支持在 CLI 中直接调用调试工具',
     'd055e268-28': '在 session 表中新增 workspace_id',
     'd086d5bc-147': '在mod的工具中添加了decider: \'person\'。check answer:只有权限对话框或房东的回调可以批准询问，并且由于mod的原因被拒绝，无法询问任何人',
@@ -1817,23 +1649,17 @@ window.CHANGELOG_MONTHLY = {
     'd38df698-50': '在桌面端支持图片附件的图片预览',
     'd3aeada-76': '新增 codex remote-control pair 命令，可从运行中的守护进程生成手动配对码',
     'd3b6cc54-83': '为 UserPromptSubmit 钩子新增 hookSpecificOutput.sessionTitle，用于设置会话标题',
-    'd40b6c8c-311': '! - 在全屏模式下，将连续的工具调用和思考折叠为摘要行，不再显示模型加载的技能的“已激活技能”卡片。在/settings中，选择“工具调用密度”和“思考折叠”下的折叠量，并可预览每个选项；或者在tui.toml的[transcript]下将tool_call_density设置为“ungrouped”，将thinking设置为“ungrouped”，以保留之前的布局。',
     'd4282c10-84': '现在可检测全局 pnunen 安装，使诊断和更新使用正确的包管理器',
     'd42c48-75': '改进安装脚本：优化视觉效果、自定义进度条和后续步骤指引',
     'd4989110-65': '新增 prompt_async 功能，接收提示后立即返回',
-    'd49da724-129': '! - 新增实验性 Updates 面板，分页显示主代理和子 Agent的进度消息；通过 KIMI_CODE_EXPERIMENTAL_NOTIFY_USER=1 启用',
-    'd4a8c524-44': '! - 全屏模式下，点击折叠块可展开或收起',
-    'd4b7e4f1-87': '! - 新增全局工具门控，可限制智能体可使用的工具，并支持按会话覆盖（仅 v2 引擎）',
     'd4eced74-64': '将GPT-6.1 Terra添加到捆绑、Vertex AI和Amazon Bedrock模型目录中',
     'd54ee478-55': '为 Kimi K2.5 模型增加推荐的 topP 和 temperature 设置',
     'd56c63df-123': '在 PreToolUse 钩子中新增「defer」权限决策 — 无头会话可在工具调用处暂停，并使用 -p --resume 恢复以便钩子重新评估',
     'd57e6419-118': 'Codex 现在可接收定时的 UTC 时间提醒并直接查询当前时间，包括通过客户端提供的 app-server 时钟',
-    'd58a6a18-61': 'Web 聊天中智能体编辑或写入文件时显示逐行差异',
     'd5a9fefc-41': '为设置中的快捷键添加搜索功能',
     'd5afb27f-81': '新增 CLAUDE_CODE_DISABLE_1M_CONTEXT 环境变量，用于禁用 1M 上下文窗口支持',
     'd5cac6b0-112': 'app-server 集成现在可读取账户 token 用量，Codex 身份验证在 CLI 和 app-server 流程中支持 v2 个人访问令牌',
     'd5e65e72-57': '添加 fork 斜杠命令，在 TUI 中通过键盘便捷分叉会话',
-    'd653a3f4-103': '! - web：侧边栏新增打开 / 完成 / 工作区标签页，会话可标记为完成（并可重新打开），让打开列表保持聚焦',
     'd683ea88-100': '代码模式的工具声明现在包含 MCP outputSchema 细节，使结构化工具结果的类型更精确',
     'd6a9170-84': 'Vim模式支持草稿中的/和?搜索，突出显示匹配项，并使用n和N重复导航',
     'd6abf080-39': '在工具选择提示中添加空格切换提示',
@@ -1841,8 +1667,6 @@ window.CHANGELOG_MONTHLY = {
     'd73cd28c-113': '检查后台外壳：单击桌面活动丸中的正在运行的外壳以查看其实时输出，并在不离开菜单的情况下停止它',
     'd74d5244-48': '在 @ 提及的自动补全建议中新增命名子 Agent',
     'd75ecac0-40': '为 ACP 添加会话列表与会话分叉支持',
-    'd7938ba5-73': '除 stdio 和 streamable HTTP 传输外，新增对旧版 SSE MCP 服务器的支持',
-    'd79dcde8-118': '! - 在自动压缩前向模型提醒其上下文预算，并在压缩后引导其查看会话事件日志以获取准确细节',
     'd7a8998c-36': '在 Linux 桌面端增加原生 Wayland 开关',
     'd7b9f6f8-22': '添加文件查看器冒烟测试',
     'd7e23b90-122': '新增 statusline 脚本的 rate_limits 字段，用于显示 Claude.ai 速率限制用量（5 小时和 7 天窗口，含 used_percentage 和 resets_at）',
@@ -1851,7 +1675,6 @@ window.CHANGELOG_MONTHLY = {
     'd87ac6bc-31': '新增动态终端窗口标题',
     'd889f45c-54': '侧边栏中最终目录之前的项目路径变暗',
     'd8999164-30': '新增 PHP Intelephense LSP 支持',
-    'd8c78d28-57': '新增后台自动升级，可在 tui.toml 中禁用',
     'd8f71100-47': '为自定义 GitHub App 安装添加 OIDC_BASE_URL 支持',
     'd9059748-68': '在审批提示打开时，直接在会话记录中展开补丁详细信息',
     'd921edc9-102': '权限配置现在可在 TUI 会话、用户回合、MCP 沙箱状态、shell 提权和 app-server API 之间往返传递',
@@ -1861,15 +1684,11 @@ window.CHANGELOG_MONTHLY = {
     'd9725c93-29': '为 OpenCode 增加代理描述',
     'd9b5d06f-106': 'codex exec 现在支持提示加标准输入的工作流，因此你可以在通过管道输入的同时在命令行传入单独的提示',
     'd9c121a8-152': '多步认证：TUI 和 Desktop 均支持多步认证流程，这意味着 Github Copilot for Enterprise 部署等提供方现在可按预期工作',
-    'da09ffec-270': '! - 新增 TurnStarted、UserPromptQueued、TaskStarted 和 SessionHeartbeat 钩子事件，为钩子载荷补充会话标题和客户端类型，在 SessionStart 中包含模型和配置文件，并在会话被归档而非退出时以 archive 上报 SessionEnd。在 config.toml 的 [[hooks]] 下配置这些新事件',
     'da6ae0b4-52': 'Tauri 服务器启动失败对话框中新增复制日志按钮',
     'da838d0d-109': '在自托管运行器中添加了--hold-idle-file和--max-hold-min ，以便在主机报告处理过程时保持空闲会话继续运行',
     'dacce534-171': '为颁发证书凭据而不是客户端密钥的身份提供程序添加了Claude应用程序网关与其身份提供程序之间的证书客户端身份验证（ private_key_jwt ）',
-    'dad9d418-46': '! -允许使用Ctrl-O在流式传输期间扩展思维',
     'dadd849c-20': '为应用添加设置页面',
-    'daffa378-98': 'KIMI_MODEL_THINKING_KEEP — Moonshot 保留思考透传（thinking.keep），仅在 Thinking 开启时注入',
     'db2cf168-232': '基于 Git 的会话审查：新增基于 Git 的会话审查模式，用户可直接在 opencode 中审查未提交的更改和分支差异。Git 更改现在是默认审查来源，桌面审查树会与所选来源保持同步',
-    'db527278-56': '在全屏幕上将工具调用和思考折叠为会话记录组',
     'dbb4eaf8-70': '在全屏模式下新增点击展开已折叠的队友和代理消息',
     'dbb809c2-33': '增加右键点击的项目上下文菜单',
     'dbc84cbc-58': '新增 opencode import 命令，从 JSON 导出文件恢复会话',
@@ -1882,7 +1701,6 @@ window.CHANGELOG_MONTHLY = {
     'dc655fac-40': '在应用中为命令和文件添加统一搜索',
     'dc6764d3-97': '新增托管的 Amazon Bedrock API key 身份验证，并为 CLI 和 MCP OAuth 凭据提供加密本地存储',
     'dc736d82-42': '为 Tauri 桌面应用添加 CORS 例外',
-    'dc7f3974-50': '! - 在输入框上方新增偶发的会话评分提示',
     'dc9f6a20-266': '新增 worktree.baseRef 设置（fresh | head），用于选择 --worktree、EnterWorktree 和智能体隔离 worktree 从 origin/ 还是本地 HEAD 分支。注意：默认值 fresh 会将 EnterWorktree 的基础改回 origin/（自 2.1.128 起为本地 HEAD）——设置 worktree.baseRef: \'head\' 可在新 worktree 中保留未推送的提交',
     'dcb9bbc0-74': 'MCP 工具现在可以交互式请求身份验证，无需实验性开关',
     'dcced60c-112': '为 OpenAI 兼容提供商新增一等公民的 Amazon Bedrock 支持，包括 AWS SigV4 签名和基于 AWS 凭证的认证',
@@ -1891,7 +1709,6 @@ window.CHANGELOG_MONTHLY = {
     'dcef3d7c-77': '处于根目录时阻止文件系统扫描，避免不必要的操作',
     'dd09fd53-164': '在Claude Desktop 11月10日变更之前，为没有桌面的策略向Claude应用网关添加了启动警告依赖coworkTabEnabled: false或chatSessionRetentionDays的Home',
     'dd207df4-150': '添加了--shutdown-drain-sec到claude self-hosted-runner orchestrator ：在SIGTERM上，它会停止轮询，并在运行中给出轮询和运行生成挂钩，最多可以完成几秒钟',
-    'dd43ab68-74': 'Web 侧边栏新增即时会话搜索，可按标题和最近一次用户提示过滤',
     'dd505ff4-128': '新增网关启动警告：access_control.allow_cidrs 为空时提示，并在首次收到来自公网地址的请求时发出一次性警告',
     'dd57f0b0-115': '添加了CLAUDE_CODE_SUBAGENT_EFFORT ，以设置在没有其他任何名称时运行的工作量级别子 Agent，而不是继承会话的',
     'dd59aa30-24': '支持按 Ctrl+D 退出应用',
@@ -1899,15 +1716,11 @@ window.CHANGELOG_MONTHLY = {
     'ddbd2f1c-161': '统一报价和注释：时间轴报价、终端报价和浏览器注释现在共享一个紧凑的可选注释编辑器，而源高亮仍然附加到本地草稿',
     'ddf97d8c-60': '为 Claude 通过 Bedrock 自定义推理配置添加缓存支持',
     'de079dab-63': '禁用文件/agent 提及的虚拟 extmarks，以提升性能',
-    'de261550-124': '新增全会话选择视图，支持名称搜索、分页浏览，以及为其他工作目录中的会话生成可直接粘贴的恢复命令',
     'de3d6d40-210': '在网关运行此版本或更高版本时，将美元金额添加到Claude应用程序网关的使用限制和状态行（例如“本月花费271.40美元/500.00美元” ） ；状态行的rate_limits.spend_limit也获得used_usd、limit_usd和period',
-    'de3dbff4-141': '! - 子 Agent模型池（[secondary_model]）现始终开启；实验性 secondary-model 标志和 KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL 退出开关已被移除',
-    'de43ef28-38': '在客服代表忙碌时允许/model和/effort',
     'de4f0cbc-121': '为 OpenTelemetry 日志事件新增 message.uuid、client_request_id 和 tool_source 属性，用于消息级关联和工具来源追溯',
     'de535378-47': '应用中增加拖拽 @提及文件的支持',
     'de550cd4-113': '向$ .model.complete添加了mods: prompt和system take文本块的提示缓存，并且块上的cache: true缓存请求直到它',
     'de60f93c-134': '新增启动警告：针对子命令前带通配符的 Bash 允许规则（例如 Bash(git * main)），因为它们也会匹配插入在子命令前的选项',
-    'de6f29ec-39': '将Agent对话作为回合和项目进行流式传输',
     'de8497cd-131': '新增支持将 --plugin-dir 指向一个插件文件夹：每个带清单的子文件夹都会加载，运行期间新增或移除的子文件夹也会被识别',
     'de8f85b2-94': '插件工作流新增机器可读的 codex plugin list --json 输出和缓存的远程目录建议',
     'de9f420c-134': '新增 claude self-hosted-runner --drain-marker-file ：在 SIGTERM 排空时若该文件存在，runner 会向服务器报告其退出为主机排空（仅遥测）',
@@ -1920,13 +1733,10 @@ window.CHANGELOG_MONTHLY = {
     'df197b2c-43': '新增「切换模型变体」的键位绑定选项',
     'df323e44-36': '为 MCP 客户端连接调用添加超时',
     'df4363a4-139': '添加了managed.policy_mode ：分层到Claude应用程序网关：匹配开发人员的每个策略都适用，每个策略都合并到下面列出的策略上，而不仅仅是第一个',
-    'df4f73cc-58': '! - Windows 原生（单文件二进制）CLI 现已支持自动更新',
     'df557e84-92': '当您在等待当前工具完成时停止轮次时，添加←了“后台已取消”消息',
     'df5d13b8-104': '企业/管理员流程现在会显示每月额度上限，并可应用云端管理的配置包，包括 EDU 工作区',
     'df89d6d6-75': '当Claude Code要求打开其在会话中编写的mod时，添加了您的答案记录',
     'dfb0883c-103': '新增 PermissionDenied 钩子，在自动模式分类器拒绝后触发 — 返回 {retry: true} 告知模型可以重试',
-    'dfb1a450-47': '支持跨工作空间目录的同名技能',
-    'dfb245ad-101': '/plugins 已安装标签页显示更新徽标，回车现在安装可用更新，I 打开插件详情',
     'dfd75a60-104': '在 Claude apps 网关上游新增可选的 headers: 映射，用于向供应商前置的代理发送静态请求头',
     'e07af660-48': '为自动模式选择加入提示新增「不再询问」选项',
     'e0928700-121': '向Claude应用程序网关配置添加了telemetry.resource_attributes ，以便在Claude Desktop和/登录会话的遥测上放置固定标签',
@@ -1949,9 +1759,7 @@ window.CHANGELOG_MONTHLY = {
     'e33c2b50-130': '使 --profile 成为 CLI、TUI 权限和沙盒流程中的主要配置选择器，旧版配置会通过迁移指引被拒绝',
     'e3425d7d-103': 'Vim模式现在支持使用u撤消和使用Ctrl + R重做，保留包括粘贴内容和附件在内的完整草稿',
     'e3459bcb-118': 'App-server 客户端现在可以使用设备码流程启动 ChatGPT 登录，这在浏览器回调登录不可靠或不可用时很有帮助',
-    'e34d3f20-185': '新增 kimi provider CLI 子命令，含 add、remove、list 以及 catalog list / catalog add 操作，可从自定义注册表（api.json）或公共 models.dev 目录导入和管理提供商，而无需启动 TUI',
     'e356c6e4-25': 'read 工具新增 PDF 支持',
-    'e3752e8a-342': '! - 在二级模型实验下为派生的子智能体新增可配置模型池（KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL=1 或主开关）：开启实验后，可通过 /secondary-model 命令或 config.toml 中的 [secondary_model] 段设置默认模型，或设置一个小的命名池供主智能体在每次派生时选用。同一段中单独保留的旧模型键仍作为回退默认值生效',
     'e394e34a-137': '在网关运行此版本或更高版本时，为无支出限制的Claude应用程序网关后面的开发人员添加了今天、本周和本月的支出/使用情况',
     'e3af4309-28': '为会话添加骨架屏加载',
     'e3b8ac34-97': '在运行中工作流的状态行中新增当前默认工作流规模，并提示可通过 /config 修改',
@@ -1971,7 +1779,6 @@ window.CHANGELOG_MONTHLY = {
     'e51796f7-33': '降低 task 工具元数据的开销',
     'e5201d60-121': '新增 /copy 命令，在存在代码块时显示交互式选择器，可选择单个代码块或完整响应',
     'e53a5164-49': '在 shell 钩子中暴露工具参数，供插件访问',
-    'e5481940-100': '! - web：在设置中新增「已归档会话」页面，可浏览并恢复已归档会话。打开 设置 → 已归档 即可找到',
     'e56b631-52': '添加支持所有可用语言的新建工作区按钮',
     'e58333fc-35': '消息上下文菜单新增复制选项',
     'e59b5710-173': '为 Read 工具新增 PDF 的 pages 参数，可读取指定页码范围（如 pages: \'1-5\'）。大型 PDF（超过 10 页）在 @ 提及后现在返回轻量引用，而不再内联到上下文中',
@@ -1989,18 +1796,15 @@ window.CHANGELOG_MONTHLY = {
     'e68e64a6-29': '为选择器添加管理模型图标',
     'e6f191df-137': '在Claude Desktop的代码选项卡中添加了对关闭归因块的支持：在CLAUDE应用程序网关的代码策略的环境中设置CLAUDE_CODE_ATTRIBUTION_HEADER = 0',
     'e6f92568-99': '添加了 OTEL_RESOURCE_INCLUDE_HOST，以便在 OpenTelemetry 资源属性中包含 host.name 和 host.id（默认情况下禁用）',
-    'e71d77d4-47': '! - web：为移动端会话列表新增扁平/按工作区切换的标签页',
     'e7301514-86': '新增提供商白名单/黑名单配置，用于控制可用提供商',
     'e73d1db4-54': '支持使用 completions 端点的非 OpenAI Azure 模型',
     'e74dfc29-109': '新增 /advisor 的文本形式（/advisor、/advisor 、/advisor off），用于桌面应用、Remote Control 和其他无头（-p/Agent SDK）会话',
     'e74e7c66-31': '为桌面应用新增 beta 图标',
     'e791aab8-64': '添加 button-primary-base 变量，并为 Comment 按钮使用 primary 变体',
     'e7c1b55-142': '新增 CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1 环境变量，可退出全屏备用屏渲染器，将对话保留在终端原生回滚缓冲区中',
-    'e7c1c9d0-88': '项目级本地配置现由 .kimi-code/local.toml 管理；建议将其加入 .gitignore',
     'e7d34384-58': '在 /install-github-app 更改代码仓库之前添加了确认步骤',
     'e7dd0c40-166': '工作树和Shell模式快捷方式：在macOS上按⌘ ”O” ，在Windows和Linux上按“Ctrl + Alt + O”选择工作树，在“⌘” B或“Ctrl + Alt + B”选择其基本分支。⌘⇧ X或Ctrl + Shift + X现在切换撰写器中的外壳模式',
     'e7f77b18-107': '新增 attribution.sessionUrl 设置，在 web 和远程控制会话中省略提交与 PR 里的 claude.ai 会话链接',
-    'e7ff6410-100': '新增 /provider 命令用于管理 AI 提供商，支持自定义注册表导入，并引入标签式模型选择器',
     'e83d0afc-102': 'codex doctor 现在为支持场景报告更丰富的环境、Git、终端、app-server 和线程清单诊断信息',
     'e8485e60-137': '添加了availableModelsMatch托管设置：使用“exact” ， availableModels条目仅允许其命名的模型版本，因此新版本将保持阻止状态，直到列出',
     'e8504084-28': '新增基础会话列表命令',
@@ -2012,20 +1816,16 @@ window.CHANGELOG_MONTHLY = {
     'e8ac7b8c-24': '确保 wl-copy 可用',
     'e8d6dc60-56': '增加 shell.env 钩子，用于在工具和 shell 中操作环境变量',
     'e8dd7db8-122': '当OTEL_LOG_TOOL_DETAILS = 1时，向OpenTelemetry TOOL_DECISION事件添加了CLASSIFIER_CATEGORY ，将内置规则命名为匹配的分类器块',
-    'e8e2e065-172': '! -将Tower的默认代理并发限制从16提高到256 ，支持现有的max_running_tasks限制和每次生成模型选择，并减少收件箱、审阅和状态处理期间的锁争用',
-    'e8e6431c-56': '! - 思考强度仅保留低于模型最高档（max）的级别',
     'e8ea3451-64': '在 Amazon Bedrock 跨区域推理配置中支持 jp. 前缀',
     'e914420-111': '新增 sandbox.bwrapPath 和 sandbox.socatPath 管理设置（Linux/WSL），可指定自定义 bubblewrap 和 socat 二进制文件位置',
     'e91ea32d-50': '调整消息边框颜色，使其与接收该消息的 agent 颜色一致',
     'e93dbc20-25': '新增俄语支持',
-    'e9994d3c-119': '! - /fork 不再切换到分叉后的会话：当前会话保持活跃，其后台任务继续运行。可在 /sessions 中找到该分叉',
     'e9ac1654-31': '为 attach 命令添加 --session 标志',
     'e9c5cbc0-103': '为 API 请求新增 X-Claude-Code-Session-Id 请求头，使代理无需解析请求体即可按会话聚合请求',
     'e9d4fb10-52': '为 ToolContext 类型补全缺失的 metadata() 与 ask() 定义',
     'e9d6798-44': '在 skill 工具中为可用技能补全缺失的 await',
     'e9d8bd41-97': '新增本地对话历史搜索，包括不区分大小写的内容匹配和结果预览',
     'e9ed167c-82': '新增 vimInsertModeRemaps 设置：可在 vim 模式下把 jj 这类两键插入模式序列映射为 Escape',
-    'e9fd9989-144': '/connect 的提供商和模型选择器现在支持输入即搜索的过滤，长列表会分页显示。当配置了大量模型时，/model 选择器也会分页',
     'ea1e1fa8-95': '新增 /mcp verbose，用于查看完整的 MCP 服务器诊断、资源和资源模板，同时保持普通 /mcp 的快速响应',
     'ea3716a2-72': '模型配置新增可选 headers 字段，增强 API 定制能力',
     'ea42bb88-162': '为 auto 模式新增 Containment Escape 规则，使云元数据凭据获取、出口规避和跨租户访问不再自动批准，除非你的环境将其标记为预期行为',
@@ -2048,22 +1848,17 @@ window.CHANGELOG_MONTHLY = {
     'ebd50078-37': '为设置面板标题添加渐变淡出效果',
     'ebda0587-85': '新增 ENABLE_CLAUDEAI_MCP_SERVERS=false 环境变量，可选择不启用 claude.ai MCP 服务器',
     'ebdea5dc-92': '新增安全的 devcontainer 配置，支持 bubblewrap，并为 Unix socket 增加了 macOS 沙箱允许列表',
-    'ebf62a54-537': '! - 新增实验性渐进式工具披露（select_tools）。当工具选择实验开关开启且当前模型声明了 select_tools 能力时，MCP 工具 schema 不再出现在请求的顶层 tools[] 中（从而保留提供方提示缓存）；模型通过新的内置 select_tools 工具，依据公告按精确名称按需加载工具。默认关闭，在不具备该能力的模型上不生效——在收录受支持的模型之前行为保持不变。此外，SDK 在根据目录构建模型别名时会映射 select_tools 能力，并通过 getExperimentalFeatures() 上报该新标志',
     'ebfe388-28': '重新启用可选的 mdns 服务',
     'ec33bcd0-97': '当找到 Perforce 设置且该模式处于关闭状态时，添加了一条名为 CLAUDE_CODE_PERFORCE_MODE 的一次性启动通知',
     'ec66befc-37': '新增内置 Dart LSP 服务器和格式化器',
     'ec9686b4-108': '在/keymap中配置Leader键。默认为Ctrl + X ，快捷方式提示保持打开状态，直到您选择或取消，语音静音移至F9',
-    'eca2ad30-37': '跨工作区目录合并技能',
     'ed5651c9-46': '让 JDTLS 在 Windows 上使用正确的配置目录',
     'ed596f8-38': '为 Trinity 模型增加专用系统提示',
     'ed784d7c-82': '在对话记录、拒绝提示和 /permissions 最近拒绝列表中新增了自动模式拒绝原因',
-    'ed9259e1-37': '在文件历史记录查询中获取 turn_number',
     'ed9b4840-40': '在桌面端为侧边栏切换按钮添加 8px 左边距',
-    'ed9cdf28-127': '! - 在终端中将 mermaid 代码块渲染为图表；可在 /settings → Mermaid diagrams 中关闭，或在 tui.toml 的 [markdown] 段设置 mermaid = \'off\'',
     'edad25c7-88': '新增外部代理会话导入，包括后台导入和导入会话的标题处理',
     'edd2ddd4-161': '在Claude应用程序网关上游添加了assume_role ：网关调用Bedrock作为通过STS承担的IAM角色，如果需要，在另一个AWS帐户中，可选每个开发人员一个会话',
     'ee3234c3-63': '切换会话时不再重复拉取已同步的会话',
-    'ee398308-34': '编辑当前目标目标到位',
     'ee460368-25': '为应用增加工作区测试',
     'ee5dd520-68': '命令面板新增 \'Open docs\' 命令，便于快速访问文档',
     'ee68a760-128': '向Claude应用程序网关上游添加了guardrail_trace ，以记录哪个Amazon Bedrock护栏过滤器在请求时触发，而没有匹配的文本',
@@ -2075,27 +1870,21 @@ window.CHANGELOG_MONTHLY = {
     'eed73873-63': '为部分 TUI 文本元素添加前景色，提升浅色模式可见性',
     'eef2263c-58': '将 setSelectedTheme 重命名为 set，简化主题选择 API',
     'eefefa3c-40': '新增对 Gemini 3.1 中等推理的支持',
-    'ef049330-120': '! - 新增 WaitFor 工具：智能体现在可在当前轮次内等待后台任务完成，而无需结束轮次后再被重新调用',
     'ef0c813c-151': '新增 ANTHROPIC_DEFAULT_MODEL 环境变量：设置新会话启动所用的模型，而 /model 选择仍会覆盖它并在重启后保留（与 ANTHROPIC_MODEL 不同）',
     'ef174dac-82': '为以--safe-mode开始的后台会话的Agent视图PEEK面板添加了“安全模式”行',
     'ef586dd2-51': '在 TUI 中添加了用于实时语音通话的 WebRTC 协商。（ ）',
-    'efa38268-325': '! - 以 kimi web 替换 kimi server 命令树：服务器在前台运行（后台守护进程和系统服务生命周期命令已移除），多个服务器现在可共用同一个主目录，各自占用下一个空闲端口。可用 kimi web kill [server-id|all]、kimi web ps 和 kimi web rotate-token 管理实例；任何 kimi server … 调用都会打印弃用提示并以状态码 1 退出',
     'efa73f5-66': '增加 $0、$1 等简写，用于在自定义命令中访问单个参数',
     'eff492f0-195': '侧面板选项卡快捷方式：右键单击侧面板选项卡，然后选择右侧的关闭选项卡。⌘ W现在会关闭侧面板选项卡，无论焦点在哪里，都会关闭；钚W或Ctrl + Alt + W会始终关闭会话选项卡； ⌘⇧ T会重新打开上一个关闭的选项卡，无论它在哪里',
-    'f00d4e14-78': '新增审批生命周期 hook 事件，可观察待处理和已完成的权限提示',
-    'f03d24cf-90': '新增 /export-debug-zip 斜杠命令，可直接从 TUI 将当前会话导出为调试 ZIP 压缩包',
     'f0737144-53': 'models 命令新增 --refresh 参数，用于刷新模型列表',
     'f07f4fbc-107': '在/plugin和claude插件中添加了一个注释，用于验证在组织管理Claude代码时跳过的mod钩子的命名',
     'f0a4d928-53': '在 claude auth status --json 的输出中新增 configDirectory',
     'f0d053f0-19': '为应用新增调试窗口',
     'f0debe20-59': '手动触发压缩时不再自动续接',
-    'f0e0a29c-93': '! - 支持用用户级文件为所有会话覆盖默认主智能体系统提示（仅 v2 引擎）',
     'f0fee40c-91': '将可重复使用的提示和斜杠命令保存在十个编号/预设插槽中，并带有键盘菜单以供快速访问',
     'f124aa25-95': '新增 archive 插件源：可通过 HTTPS 从 zip 安装插件，无需 git 或 npm，并可选用 SHA-256 固定',
     'f15aec12-36': '为 Windows Tauri CLI spawn 补全缺失的参数',
     'f163b937-150': '在“以其他方式签名”下查找API密钥和云提供商选项。”启用gcp_setup_wizard使用应用程序默认凭据或凭据文件设置Google Cloud Vertex AI',
     'f18e2f88-69': '扩展现可在 MCP 工具结果到达模型前检查或替换它们',
-    'f1b55cd0-243': '新增 shell 模式以运行 shell 命令。在输入框输入 `!` 即可启用。命令输出对 AI 可见。对于长时间运行的命令，按 Ctrl+B 将其移到后台。例如可运行 `!gh auth login` 登录 GitHub CLI 而无需打开新终端，这样 Kimi 就能使用 `gh`。',
     'f1c04750-35': '新增巴西葡萄牙语区域设置支持',
     'f1e8d674-192': '添加INCLUDE_TURNS ON RESUME/FORK、TURN_SERVICE_TIER用于一个新开始的回合，以及源元历史记录选择更改返回的响应，而不是模型上下文。当这些选项被省略时，现有的默认值将被保留',
     'f1eefe20-77': '新增对话记录搜索——在对话记录模式（Ctrl+O）下按 / 搜索，按 n/N 在匹配项间依次跳转',
@@ -2106,32 +1895,24 @@ window.CHANGELOG_MONTHLY = {
     'f2c03d3c-33': '新增 Zenmux 文档与页头',
     'f2d85f7c-97': 'codex doctor 现可诊断端点保护、网络/代理故障、桌面应用状态和更新连接性',
     'f30e8caf-71': '增加环境变量 CLAUDE_CODE_ENABLE_TASKS，设为 false 可暂时保留旧系统',
-    'f33c1dc0-45': '! - 在 agent-core 上支持用 Markdown 定义的自定义智能体',
     'f35c5280-130': '添加了CLAUDE_CODE_OVERLOADED_RETRY_MAX_DELAY_MS环境变量，以在重试重载(529)请求时为回退设置更长的最大延迟',
     'f37380c8-92': '新增 MessageDisplay hook 事件，让 hooks 可在助手消息文本显示时转换或隐藏它',
     'f38818d0-36': '为 GitHub Action 新增可选提示输入',
     'f39665d0-66': '新增 /thinking 斜杠命令，用于在 OpenTUI 中切换思考区块可见性',
-    'f3ad1a88-232': '! -计划模式现在仅在您打开时启动，并且每个计划都等待您的审核：Agent不能再自行进入计划模式，从不询问不再自动批准计划，并且kimi -p跳过default_plan_mode并且不能批准已经处于计划模式的会话的计划',
     'f3af25a0-55': '编辑含摘要内容的提示词时恢复完整文本',
     'f3ec42a9-90': '新增保存到磁盘的工具结果 1 GB 上限；会话内预览会提示已保存文件被截断',
     'f3fb38c8-62': '为 Venice 增加 temperature、topP、topK 和 smallOption 参数支持',
     'f4129770-76': '使用键盘可访问的“显示更多”操作，在Agent命令中心浏览较旧的任务',
     'f4392df4-97': '当忽略格式错误的 plugin.json 字段（如作者或主页）时，在 /plugin 和 Claude 插件列表中添加了备注',
-    'f46356a8-252': '! -添加可选的NotifyUser进度更新功能（默认情况下关闭） ：新会话可以使用可选的单行标题显示客服代表的中途进度，该标题在TUI/实验或Web/桌面设置的实验室部分中启用；设置[experimental] NOTIFY_USER = true或KIMI_CODE_EXPERIMENTAL_NOTIFY_USER = 1以将其打开',
     'f46adef8-127': '向匹配会话名称和任务的代理视图添加了n: filter ；过滤器现在显示折叠部分中的匹配项， Enter打开第一个匹配项',
     'f4d4b0b0-152': '向Claude应用程序网关添加了可选的login_notice设置，该设置在网关的浏览器验证页面和Claude Code的登录屏幕上显示操作员定义的消息',
     'f4e11094-23': '新增 Agent Skills 支持',
     'f5061fba-90': '为 --worktree 标志和 claude agents 视图新增支持 GitLab 合并请求 URL（其中 MR 显示为 !N）',
     'f524a4d8-33': '为侧边栏增加全高悬停效果',
-    'f53f2578-23': '自动刷新模型目录',
     'f583b68c-42': '为 read 工具增加目录读取能力',
-    'f59e09c8-50': '在WebSocket上同步正在运行的任务，并删除REST任务API',
-    'f5cdb0fc-445': '新增实验性目标模式，适用于需要多轮完成的较长任务。启动 Kimi 前用 KIMI_CODE_EXPERIMENTAL_GOAL_COMMAND=1 开启。若想让 Kimi 跨轮次持续处理同一任务，可在 TUI 中使用 `/goal <objective>`。例如：`/goal Fix the failing checkout test`。Kimi 会在 TUI 中显示目标，并在工作时保持进度可见。使用 `/goal status`、`/goal pause`、`/goal resume`、`/goal cancel` 和 `/goal replace <objective>` 管理目标。此功能仍为实验性，欢迎试用并告诉我们怎样能更有用。',
-    'f5df76f-43': '! - 支持 kimi.ai 和 kimi.com 两种 OAuth 登录方式',
     'f6246c28-107': '已将 isPromptCovered 添加到用于绘制模组窗格的属性中，以告知其何时有对话框或字段遮挡提示',
     'f63dab7c-90': '新增加载提示，建议使用 /focus 获得仅含你的提示、一行工作摘要和回复的视图',
     'f65b8dc-104': '独立安装更加自包含，codex app 现在可在 Windows 和 Intel Mac 上正确打开或安装 Desktop',
-    'f666c4e0-43': 'kimi web 用于在浏览器中打开服务器托管的 Web UI',
     'f726bc04-55': '新增数据库迁移命令，可将 JSON 存储转换为 SQLite',
     'f775cf6c-62': 'TUI：使用标准中点分隔符，提升终端兼容性',
     'f7906938-92': 'MCP服务器名称可以包含：、@、/和. ，在整个CLI命令和身份验证中支持包样式名称',
@@ -2155,7 +1936,6 @@ window.CHANGELOG_MONTHLY = {
     'f8c1c940-127': '新增 /context 命令的可操作建议——识别占用上下文较多的工具、记忆膨胀和容量警告，并给出具体优化提示',
     'f8c591fb-98': '支持 Windows 包管理器（winget）安装方式，并提供自动检测和更新说明',
     'f8e19230-87': '新增 NVIDIA 作为内置提供商选项，包括连接文档和必需的归属请求头',
-    'f8e2abfc-84': '！ -第一次轮次后自动生成会话标题，并将其显示为终端窗口标题',
     'f947d17a-163': '新增 requiredMinimumVersion 和 requiredMaximumVersion 管理设置：版本超出允许范围时 Claude Code 拒绝启动，并引导用户使用已批准的版本',
     'f949de78-37': '为应用添加行选择功能',
     'f9764b50-59': '使“The socket connection was closed unexpectedly”错误可重试',
@@ -2174,7 +1954,6 @@ window.CHANGELOG_MONTHLY = {
     'faec6f64-64': '为 SessionStart 钩子输入增加 agent_type，指定 --agent 时填充',
     'faee5bfc-47': '按 Figma 要求在选择器中添加模型提示元数据',
     'fb6b7048-72': '为工作流模板添加 persist-credentials: false 以防止凭据泄露',
-    'fba2e0c3-81': '在将压缩摘要写入历史前，将当前待办列表以 markdown 追加到摘要',
     'fbc69e4f-25': '为核心新增 WorkspaceContext',
     'fbcba024-40': '在 TUI 中新增对工作区的初步支持',
     'fbdf5bd0-50': '为桌面应用添加系统通知支持',
@@ -2190,7 +1969,6 @@ window.CHANGELOG_MONTHLY = {
     'fcb8230d-92': 'Windows会话现在可以使用守护程序生命周期命令和托管更新共享后台Codex服务器',
     'fcdefdc2-58': '将 TypeScript 语言服务器回滚到标准实现',
     'fcf5a47b-102': '技能和插件 frontmatter 的布尔值除 true/false 外，新增接受 yes/no/on/off/1/0（不区分大小写）',
-    'fd396f9d-79': '仅保留近期的用户提示以及一条用户角色摘要；丢弃助手和工具消息',
     'fd6bc878-38': '添加 GitLab Duo Agentic Chat 提供方支持',
     'fdae1760-88': '应用可利用服务器提供的可见性和更快模型元数据，展示更丰富的安全缓冲 UI',
     'fdae91b4-16': '新的会话布局',
@@ -2198,7 +1976,6 @@ window.CHANGELOG_MONTHLY = {
     'fdde4480-30': '在会话视图中增加技能工具的界面',
     'fe21885c-121': '将调试快捷键（切换调试面板和切换控制台）从隐藏快捷键移至命令面板，提升可发现性',
     'fe431672-45': '为桌面应用添加 AppStream MetaInfo 文件',
-    'fe5b772c-262': '新增计划任务。现在可以让助手在指定时间提醒你、按重复 cron 计划运行任务（例如每 5 分钟检查一次部署，或每个工作日早上 9 点生成日报），或在几分钟后自行回来继续之前的工作。计划使用标准 5 字段 cron 语法。',
     'fe6e99b4-118': 'TUI 通知更可配置，包括 Warp OSC 9 支持，以及在终端处于焦点时仍可通知的选择启用模式',
     'fe802616-75': '警告查看器在关闭时会忽略已查看的警告；按k可保留一个，以便稍后查看',
     'febefb18-98': '新增 experimental.continue_loop_on_deny 配置选项，允许用户拒绝操作时代理继续循环',
@@ -2217,7 +1994,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 243,
+      'count': 216,
       'toolCount': 12,
       'multi': [
         {
@@ -3088,283 +2865,94 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '566023c-60',
-              'text': 'keep cron and MCP authorization calls out of compact transcript groups',
-              'date': '2026-11-13',
-              'version': '2.7.0-canary.20261113055733-391d9e7',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.7.0-canary.20261113055733-391d9e7'
+              'key': '3a17c1e4-45',
+              'text': '为自定义 registry provider 增加 search_url 和 feedback_url 支持',
+              'date': '2026-11-14',
+              'version': '2.6.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-2-2026-11-14'
             },
             {
-              'key': '65fc232f-53',
-              'text': 'add follow_up_behavior to choose whether Enter queues or steers',
-              'date': '2026-11-13',
-              'version': '2.7.0-canary.20261113055733-391d9e7',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.7.0-canary.20261113055733-391d9e7'
-            },
-            {
-              'key': '51872b94-191',
-              'text': '! - Align fs:suggest with local fd completion, using bounded scans and at most 20 results with optional streamed previews, while including hidden and gitignored paths by default and placing regular files first at equal match quality',
+              'key': '322f793c-95',
+              'text': '全屏模式下自动将连续的工具调用和思考过程折叠为摘要行，不再显示模型加载的技能激活卡片；可在 /settings 中调整折叠密度，或在 tui.toml 的 [transcript] 下设为 \'ungrouped\' 恢复原布局',
               'date': '2026-11-12',
               'version': '2.6.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-0-2026-11-12'
             },
             {
-              'key': '74988308-36',
-              'text': 'expose plugin agent profile refresh hooks',
-              'date': '2026-11-12',
-              'version': '2.6.0-canary.20261112033252-d729f91',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
-            },
-            {
-              'key': 'b2d7a300-36',
-              'text': 'add experimental next-prompt suggestions',
-              'date': '2026-11-12',
-              'version': '2.6.0-canary.20261112033252-d729f91',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
-            },
-            {
-              'key': 'c2873e78-57',
-              'text': 'sweep running titles toward text and add KIMI_CODE_TUI_ANIMATION_FPS',
-              'date': '2026-11-12',
-              'version': '2.6.0-canary.20261112033252-d729f91',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
-            },
-            {
-              'key': 'c71b5727-25',
-              'text': 'attach Kimi request metadata',
-              'date': '2026-11-12',
-              'version': '2.6.0-canary.20261112033252-d729f91',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261112033252-d729f91'
-            },
-            {
-              'key': 'd40b6c8c-311',
-              'text': '! - Fold consecutive tool calls and thinking into summary lines in fullscreen mode, and no longer show the Activated skill card for skills the model loads. Choose how much folds under Tool call density and Thinking folding in /settings, with a preview of each choice, or set tool_call_density = \'ungrouped\' and thinking = \'ungrouped\' under [transcript] in tui.toml to keep the previous layout',
+              'key': '3baf5514-42',
+              'text': '多目录工作区支持在独立的 Skills 分组中选择同名技能，并按目录、全局或内置来源标注区分',
               'date': '2026-11-12',
               'version': '2.6.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.6.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-0-2026-11-12'
             },
             {
-              'key': '14e1352c-39',
-              'text': 'include gitignored files in file suggestions',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+              'key': '66e72c80-46',
+              'text': '@ 文件路径补全默认包含隐藏路径与被 .gitignore 忽略的文件，匹配质量相同时优先展示未忽略文件',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-0-2026-11-12'
             },
             {
-              'key': '36e6183c-36',
-              'text': 'persist user and project permission rules',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+              'key': 'c2ce63ac-83',
+              'text': '支持持久化用户级与本地项目级权限规则（保存在 config.toml 与已信任工作区的 .kimi-code/local.toml ）并在会话启动时加载，匹配优先级为 deny > ask > allow',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-0-2026-11-12'
             },
             {
-              'key': '44585320-31',
-              'text': 'add minimum version upgrade prompts',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+              'key': 'e0f818c6-58',
+              'text': 'Tower 新增交付物任务（artifact missions），支持关键交付物审阅与人工验收，并在状态与任务视图中展示任务类型',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-0-2026-11-12'
             },
             {
-              'key': '4c0316f6-19',
-              'text': 'import artifact woker',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+              'key': 'f08f05e4-55',
+              'text': '全屏模式支持按 Ctrl-C 或 Cmd-C 复制选中文本，并在 /settings 中新增选中即复制（Copy on select）开关',
+              'date': '2026-11-12',
+              'version': '2.6.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-6-0-2026-11-12'
             },
             {
-              'key': '4e06265f-52',
-              'text': 'use primary bullet for NotifyUser updates in fullscreen mode',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
+              'key': 'b4cadae4-11',
+              'text': '优化 steer 插话逻辑',
+              'date': '2026-11-10',
+              'version': '2.5.3',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-5-3-2026-11-10'
             },
             {
-              'key': '9cfbf2f8-55',
-              'text': 'keep fullscreen transcript groups steady and show live progress',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
-            },
-            {
-              'key': 'b8c460d9-35',
-              'text': 'link tool_call items to the task they run as',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
-            },
-            {
-              'key': 'c4ceb0c4-48',
-              'text': 'default to fullscreen mode when experimental flag is set',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
-            },
-            {
-              'key': 'dfb1a450-47',
-              'text': 'support same-name skills across workspace directories',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
-            },
-            {
-              'key': 'ed9259e1-37',
-              'text': 'take turn_number in the file-history queries',
-              'date': '2026-11-11',
-              'version': '2.6.0-canary.20261111052659-f26481d',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261111052659-f26481d'
-            },
-            {
-              'key': '20a5f60-34',
-              'text': 'add session title generation telemetry',
-              'date': '2026-11-06',
-              'version': '2.6.0-canary.20261106040415-d37c9d2',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261106040415-d37c9d2'
-            },
-            {
-              'key': 'de6f29ec-39',
-              'text': 'stream agent conversations as turns and items',
-              'date': '2026-11-06',
-              'version': '2.6.0-canary.20261106115820-bc6fa89',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261106115820-bc6fa89'
-            },
-            {
-              'key': 'db527278-56',
-              'text': 'fold tool calls and thinking into transcript groups in fullscreen',
-              'date': '2026-11-05',
-              'version': '2.6.0-canary.20261105045446-836a82b',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.6.0-canary.20261105045446-836a82b'
-            },
-            {
-              'key': '32706bd8-36',
-              'text': 'allow private addresses in local FetchURL',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': '464dea0c-48',
-              'text': 'replace hidden media tool results with omission notices',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': '4f56ed40-37',
-              'text': 'add plugin marketplace and native mcp oauth',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': '609ed5a9-32',
-              'text': 'support Windows remote environments',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': '6a5c9d9-185',
-              'text': '! - Allow /model and /effort while the agent is working; a turn that has already started calling the model keeps its settings, the switch applies from the next turn, and choosing Compact and continue runs after the current turn ends',
+              'key': '9ddcc6ad-70',
+              'text': '新增创建会话时可绑定的 SSH、Docker 和自定义命令远程环境，使用 --environment 选择环境，并可用 --environment-cwd 指定工作目录',
               'date': '2026-11-04',
               'version': '2.5.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-5-0-2026-11-04'
             },
             {
-              'key': '6ca71bcc-32',
-              'text': 'support running session forks by turn',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': '7401c1b8-72',
-              'text': '! - Add support for forking running sessions and forking from a selected historical turn',
+              'key': 'a7aa88dc-70',
+              'text': 'Agent 运行期间也可使用 /model 和 /effort ；已经开始调用模型的当前轮次保持原设置，新设置从下一轮生效，选择“压缩并继续”会在当前轮次结束后执行',
               'date': '2026-11-04',
               'version': '2.5.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-5-0-2026-11-04'
             },
             {
-              'key': '76765f78-31',
-              'text': 'enforce minimum wire reader version',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': 'a722b92c-43',
-              'text': 'push agent, usage, goal and todo state over WebSocket',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': 'c7e35fc8-33',
-              'text': 'link cache breaks to baseline requests',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': 'cbd87ed8-113',
-              'text': '! - Add creation-time SSH, Docker, and custom-command environments; use --environment and optionally --environment-cwd when creating a session',
+              'key': 'be3f8778-37',
+              'text': '多目录项目会合并所有已配置源目录中的 Skills，同名 Skill 由主目录优先',
               'date': '2026-11-04',
               'version': '2.5.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-5-0-2026-11-04'
             },
             {
-              'key': 'd01bf28-117',
-              'text': '! - Merge skills from every configured directory in multi-directory projects, with the primary directory taking precedence on name conflicts',
+              'key': 'f331ff7d-24',
+              'text': '支持从所选历史轮次分叉会话，也支持分叉运行中的会话',
               'date': '2026-11-04',
               'version': '2.5.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.5.0'
-            },
-            {
-              'key': 'de43ef28-38',
-              'text': 'allow /model and /effort while the agent is busy',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': 'ee398308-34',
-              'text': 'edit the current goal objective in place',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': 'f53f2578-23',
-              'text': 'auto-refresh model catalog',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': 'f59e09c8-50',
-              'text': 'sync running tasks over WebSocket and drop the REST task API',
-              'date': '2026-11-04',
-              'version': '2.5.0-canary.20261104024245-8fc5e22',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261104024245-8fc5e22'
-            },
-            {
-              'key': '6a05caa8-28',
-              'text': 'support folder-scoped git status',
-              'date': '2026-11-02',
-              'version': '2.5.0-canary.20261102033430-40590f6',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261102033430-40590f6'
-            },
-            {
-              'key': 'eca2ad30-37',
-              'text': 'merge skills across workspace directories',
-              'date': '2026-11-02',
-              'version': '2.5.0-canary.20261102033430-40590f6',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261102033430-40590f6'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-5-0-2026-11-04'
             }
           ],
-          'count': 39
+          'count': 12
         },
         {
           'id': 'deepseek-harness',
@@ -4102,7 +3690,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-10',
       'label': '2026年10月',
-      'count': 351,
+      'count': 340,
       'toolCount': 12,
       'multi': [
         {
@@ -5756,185 +5344,108 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '5225662c-74',
-              'text': 'remote environments for SSH and Docker execution targets (phase 1: creation-time binding)',
-              'date': '2026-10-30',
-              'version': '2.5.0-canary.20261030040529-bd0d4de',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261030040529-bd0d4de'
-            },
-            {
-              'key': '7b0cdecc-30',
-              'text': 'make workspace trust configurable',
-              'date': '2026-10-30',
-              'version': '2.5.0-canary.20261030040529-bd0d4de',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.5.0-canary.20261030040529-bd0d4de'
-            },
-            {
-              'key': '523d4c40-38',
-              'text': 'limit subagents to the configured model pool',
-              'date': '2026-10-29',
-              'version': '2.4.1-canary.20261029045033-ebe14e1',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.4.1-canary.20261029045033-ebe14e1'
-            },
-            {
-              'key': '999095fc-51',
-              'text': 'multi-root workspace registry and source-folder management',
-              'date': '2026-10-29',
-              'version': '2.4.1-canary.20261029045033-ebe14e1',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.4.1-canary.20261029045033-ebe14e1'
-            },
-            {
-              'key': 'a4d8f6c8-34',
-              'text': 'rename the dev release channel to canary',
-              'date': '2026-10-29',
-              'version': '2.4.1-canary.20261029045033-ebe14e1',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai%2Fkimi-code%402.4.1-canary.20261029045033-ebe14e1'
-            },
-            {
-              'key': '5db7916c-124',
-              'text': '! - Add /import-sessions and kimi import-sessions to import Claude Code and Codex sessions from the last 15 or 30 days. Run either one and choose a time range',
+              'key': '25c07093-63',
+              'text': '新增 /import-sessions 和 kimi import-sessions ，可导入近 15 或 30 天的 Claude Code、Codex 会话',
               'date': '2026-10-28',
               'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-4-0-2026-10-28'
             },
             {
-              'key': '9dcf77f0-112',
-              'text': '! - Report main-session and subagent status to compatible terminals with OSC 7501, including pending interactions and retained results',
+              'key': '6cf72a40-20',
+              'text': '流式输出思考内容时可按 Ctrl-O 展开查看',
               'date': '2026-10-28',
               'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-4-0-2026-10-28'
             },
             {
-              'key': 'a041e70-133',
-              'text': '! - Add /provider refresh [providerId] to re-fetch provider model lists at runtime; unknown /provider subcommands now show a usage hint instead of opening the manager',
+              'key': '773b6290-54',
+              'text': 'Tower 支持按任务选择模型和 max_running_tasks 并发限制，默认 Agent 并发上限从 16 提高到 256',
               'date': '2026-10-28',
               'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-4-0-2026-10-28'
             },
             {
-              'key': 'ae926551-94',
-              'text': '! - Sessions in web and desktop now unload from memory after 30 minutes idle and resume transparently on next access',
+              'key': '993b66fc-48',
+              'text': '新增 /provider refresh [providerId] ，可在运行时重新拉取 provider 模型列表',
               'date': '2026-10-28',
               'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-4-0-2026-10-28'
             },
             {
-              'key': 'dad9d418-46',
-              'text': '! - Allow expanding thinking during streaming with Ctrl-O',
+              'key': '9ff127b2-30',
+              'text': '兼容终端可通过 OSC 7501 展示主会话、子代理状态及待处理交互',
               'date': '2026-10-28',
               'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-4-0-2026-10-28'
             },
             {
-              'key': 'e8e2e065-172',
-              'text': '! - Raise Tower\'s default agent concurrency limit from 16 to 256, support the existing max_running_tasks limit and per-spawn model selection, and reduce lock contention during inbox, review, and status processing',
-              'date': '2026-10-28',
-              'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
+              'key': 'c9698a54-64',
+              'text': '会话被占用时，重试后现可选择接管该会话，被已退出进程锁住的会话可重新使用；新增 KIMI_CODE_SESSION_LOCK=0 开关，可关闭会话锁',
+              'date': '2026-10-23',
+              'version': '2.3.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-3-1-2026-10-23'
             },
             {
-              'key': 'f3ad1a88-232',
-              'text': '! - Plan mode now starts only when you turn it on, and every plan waits for your review: the agent can no longer enter Plan mode by itself, Never Ask no longer approves plans automatically, and kimi -p skips default_plan_mode and cannot approve the plan of a session that is already in Plan mode',
-              'date': '2026-10-28',
-              'version': '2.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.4.0'
-            },
-            {
-              'key': '324f561d-146',
-              'text': '! - Support streaming large requests and responses through remote control, raising the transfer limit from 10 MiB to 100 MiB, with concurrent transfers bounded to protect memory',
+              'key': '2f616034-23',
+              'text': '首轮对话后自动生成会话标题，并显示为终端窗口标题',
               'date': '2026-10-21',
               'version': '2.3.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.3.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-3-0-2026-10-21'
             },
             {
-              'key': 'a3bf1170-174',
-              'text': '! - List plugin skills under their qualified : name so same-named skills from different plugins all stay visible and invocable; invoking a plugin skill by its bare name no longer works, use the qualified name instead',
+              'key': '34ab818-27',
+              'text': '远程控制支持流式传输，上限从 10 MiB 提升至 100 MiB',
               'date': '2026-10-21',
               'version': '2.3.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.3.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-3-0-2026-10-21'
             },
             {
-              'key': 'b8bdfef8-157',
-              'text': '! - When the same session is open in multiple clients, sending from a second one now shows an occupancy prompt with retry/cancel, or reloads updates made elsewhere first and resends your message',
+              'key': '79888f48-32',
+              'text': '同一会话在多个客户端打开时，从他处发消息会显示占用提示，可重试或取消',
               'date': '2026-10-21',
               'version': '2.3.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.3.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-3-0-2026-10-21'
             },
             {
-              'key': 'c01ceeb5-172',
-              'text': '! - Add a confirmation dialog when switching models in a session with conversation history: start a new session, compact and continue, continue directly, or cancel. Shown only when enabled by cloud configuration',
+              'key': 'dd323e24-27',
+              'text': '会话中切换模型时弹出确认框，可开新会话、压缩继续或直接继续',
               'date': '2026-10-21',
               'version': '2.3.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.3.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-3-0-2026-10-21'
             },
             {
-              'key': 'f8e2abfc-84',
-              'text': '! - Automatically generate a session title after the first turn and show it as the terminal window title',
+              'key': 'fb1818b4-29',
+              'text': '插件技能改用限定名 : 调用，同名技能不再互相遮挡；裸名调用不再生效',
               'date': '2026-10-21',
               'version': '2.3.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.3.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-3-0-2026-10-21'
             },
             {
-              'key': '15eae847-145',
-              'text': '! - Cap the agent\'s in-turn wait for background tasks at 90 seconds (longer timeouts are no longer accepted), discourage repeated waits, and let a new message end the wait immediately',
+              'key': 'a022d16a-102',
+              'text': '全屏模式新增用户消息摘要条：用户消息滚出视口后保留一行摘要，点击即可跳回原始消息。全屏模式可在 /settings 的 TUI mode 设置中开启，或在 ~/.kimi-code/tui.toml 中设置 tui_mode = \'fullscreen\'',
               'date': '2026-10-14',
               'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-2-0-2026-10-14'
             },
             {
-              'key': '507744f9-73',
-              'text': '! - Replace user skill cards with highlighted prompts and support Ctrl-S for skill prompts',
+              'key': 'bc2919c0-38',
+              'text': '新增 kimi app [path] 命令，在当前或指定目录打开一个新的 Desktop 会话',
               'date': '2026-10-14',
               'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-2-0-2026-10-14'
             },
             {
-              'key': '68a77ab8-112',
-              'text': '! - Tower mode: deterministic orchestration with TowerRebase and LLM-free status, goal/tower mutual exclusion, and workspace protection',
+              'key': 'e29ff1e8-70',
+              'text': '新增实验性的进度更新功能 NotifyUser（默认关闭）：新会话可展示 Agent 回合内主动发布的进度更新。可在 TUI 的 /experiments 面板开启',
               'date': '2026-10-14',
               'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
-            },
-            {
-              'key': 'aec06da0-85',
-              'text': '! - Tower mode: a message sent while the agent is running aborts the in-progress turn and runs as its own turn',
-              'date': '2026-10-14',
-              'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
-            },
-            {
-              'key': 'bc7056c8-74',
-              'text': '! - Add the KIMI_CODE_TRUST_WORKSPACE environment variable to mark the workspace as trusted',
-              'date': '2026-10-14',
-              'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
-            },
-            {
-              'key': 'ca8ce5d9-67',
-              'text': '! - Add kimi app [path] to open a new desktop chat in the current or specified directory',
-              'date': '2026-10-14',
-              'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
-            },
-            {
-              'key': 'cf0b6184-84',
-              'text': '! - Add sticky user message summaries in fullscreen mode; click a summary to jump to the original message',
-              'date': '2026-10-14',
-              'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
-            },
-            {
-              'key': 'f46356a8-252',
-              'text': '! - Add an opt-in NotifyUser progress update feature (off by default): new sessions can show the agent\'s mid-turn progress with an optional one-line title, enabled in the TUI /experiments or the web/Desktop settings\' Lab section; set [experimental] notify_user = true or KIMI_CODE_EXPERIMENTAL_NOTIFY_USER=1 to turn it on',
-              'date': '2026-10-14',
-              'version': '2.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.2.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-2-0-2026-10-14'
             }
           ],
-          'count': 25
+          'count': 14
         },
         {
           'id': 'deepseek-harness',
@@ -6959,7 +6470,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-09',
       'label': '2026年9月',
-      'count': 365,
+      'count': 370,
       'toolCount': 10,
       'multi': [],
       'tools': [
@@ -8192,143 +7703,178 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '8621746f-264',
-              'text': '! - Add a TUI mode setting to /settings with an experimental fullscreen layout; switching modes takes effect after restarting Kimi Code. You can also set tui_mode in ~/.kimi-code/tui.toml directly: \'regular\' renders into the terminal scrollback, while \'fullscreen\' makes parts of the UI mouse-interactive for a smoother experience',
+              'key': '26275218-25',
+              'text': '全屏界面新增可点击的 \'Jump to bottom\' 指示器',
               'date': '2026-09-23',
               'version': '2.1.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.1.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-1-0-2026-09-23'
             },
             {
-              'key': 'd4a8c524-44',
-              'text': '! - In fullscreen, click a folded block to open or close it',
+              'key': '51d6edd8-17',
+              'text': '全屏模式下，点击折叠块即可展开或收起',
               'date': '2026-09-23',
               'version': '2.1.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.1.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-1-0-2026-09-23'
             },
             {
-              'key': '70837503-117',
-              'text': '! - Add the /desktop slash command (alias /install-desktop) and the kimi install-app subcommand to open the Kimi Code desktop app page in the browser',
+              'key': 'cf48a908-84',
+              'text': '新增实验性全屏模式开关，可在 /settings 的 TUI mode 设置中开启，或在 ~/.kimi-code/tui.toml 中设置 tui_mode = \'fullscreen\' ，重启 Kimi Code 后生效',
+              'date': '2026-09-23',
+              'version': '2.1.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-1-0-2026-09-23'
+            },
+            {
+              'key': '80885c22-84',
+              'text': 'Mermaid 代码块现在会在终端中渲染为图表；可在 /settings → Mermaid diagrams 中关闭，或在 tui.toml 的 [markdown] 配置段中设置 mermaid = \'off\'',
               'date': '2026-09-17',
               'version': '2.0.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.0.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-0-0-2026-09-17'
             },
             {
-              'key': 'ed9cdf28-127',
-              'text': '! - Render mermaid code blocks as diagrams in the terminal; turn it off under /settings → Mermaid diagrams, or set mermaid = \'off\' in the [markdown] section of tui.toml',
+              'key': 'ab9dd6d8-47',
+              'text': '新增 /desktop 斜杠命令（别名 /install-desktop ）与 kimi install-app 子命令',
               'date': '2026-09-17',
               'version': '2.0.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%402.0.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-0-0-2026-09-17'
             },
             {
-              'key': '693e3b63-68',
-              'text': '! - Delete sessions from the session picker: press Ctrl+X on a session, then y to confirm',
+              'key': 'f0cb2770-42',
+              'text': 'Linux X11 环境新增原生剪贴板支持，从终端界面复制内容不再依赖终端的 OSC 52 能力',
+              'date': '2026-09-15',
+              'version': '0.43.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-43-1-2026-09-15'
+            },
+            {
+              'key': '1be98da8-28',
+              'text': '会话选择器中可删除会话：在目标会话上按 Ctrl-X ，再按 y 确认',
               'date': '2026-09-14',
               'version': '0.43.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.43.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-43-0-2026-09-14'
             },
             {
-              'key': '7d23f110-133',
-              'text': '! - web: AI session titles are now always on — a title is generated after the first turn and can be regenerated from the rename field, with no experimental flag required',
+              'key': '80d1d8f0-43',
+              'text': 'kimi upgrade （别名 kimi update ）新增 -y, --yes 选项，跳过确认提示直接安装更新',
               'date': '2026-09-14',
               'version': '0.43.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.43.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-43-0-2026-09-14'
             },
             {
-              'key': '60584524-33',
-              'text': '! - Add read-only tools to the /btw side agent',
+              'key': '932e815c-42',
+              'text': 'Web 版会话的 AI 标题功能默认开启：首轮对话后自动生成标题，并可在重命名输入框中重新生成',
+              'date': '2026-09-14',
+              'version': '0.43.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-43-0-2026-09-14'
+            },
+            {
+              'key': 'f19e5dfc-72',
+              'text': '新增 loop_control.compaction_max_attempts 配置项，可设置压缩请求失败后的最大总尝试次数（默认 5 次），详见 loop_control',
+              'date': '2026-09-14',
+              'version': '0.43.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-43-0-2026-09-14'
+            },
+            {
+              'key': '4b77ab88-44',
+              'text': 'Web 版输入框新增可排序的媒体预览栏，可在文本中按需引用图片和视频，排队与发送后预览仍然保留',
               'date': '2026-09-09',
               'version': '0.42.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.42.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-42-0-2026-09-09'
             },
             {
-              'key': '6597308a-64',
-              'text': '! - Stop reminding the model of its context budget before automatic compaction',
+              'key': '8969ac09-22',
+              'text': '/btw 侧边聊天的 subagent 新增只读工具',
               'date': '2026-09-09',
               'version': '0.42.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.42.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-42-0-2026-09-09'
             },
             {
-              'key': '90c8a578-88',
-              'text': '! - web: support permanently deleting sessions from the session row context menu, with a confirmation prompt',
+              'key': 'aa4730c-78',
+              'text': 'Remote Control 由实验性转为正式，无需再设置 KIMI_CODE_EXPERIMENTAL_REMOTE_CONTROL 实验开关。详见 Remote Control',
               'date': '2026-09-09',
               'version': '0.42.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.42.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-42-0-2026-09-09'
             },
             {
-              'key': 'b6f06624-130',
-              'text': '! - web: preview images and videos in a reorderable media rail in the composer, mention them in the text on demand, and keep the previews after queueing and sending',
+              'key': 'b22ba160-29',
+              'text': 'Web 版支持从会话行的右键菜单永久删除会话，删除前会要求确认',
               'date': '2026-09-09',
               'version': '0.42.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.42.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-42-0-2026-09-09'
             },
             {
-              'key': 'd49da724-129',
-              'text': '! - Add an experimental Updates panel with paginated progress messages from the main agent and subagents; enable it with KIMI_CODE_EXPERIMENTAL_NOTIFY_USER=1',
+              'key': 'fb2d4d0c-49',
+              'text': '模型由 Kimi 提供时，支持在提示词附件与 ReadMediaFile 中使用 HEIC、HEIF 和 BMP 图片',
               'date': '2026-09-09',
               'version': '0.42.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.42.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-42-0-2026-09-09'
             },
             {
-              'key': 'de3dbff4-141',
-              'text': '! - The subagent model pool ([secondary_model]) is now always on; the experimental secondary-model flag and the KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL opt-out have been removed',
-              'date': '2026-09-09',
-              'version': '0.42.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.42.0'
-            },
-            {
-              'key': '4c72aa89-150',
-              'text': '! - web: add tower multi-agent collaboration mode (experimental), enabled via the /tower command or the composer plus menu; /tower supports specifying a base branch (e.g. /tower add-new-feature)',
+              'key': '5ba8e7a4-48',
+              'text': 'Web 版新增划词标注：在消息、文件预览、diff 与每轮改动面板或终端中选中文字，即可添加评论或引用到对话',
               'date': '2026-09-04',
               'version': '0.41.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.41.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-41-0-2026-09-04'
             },
             {
-              'key': '83bfc2e0-77',
-              'text': '! - Turn-level file history is now always on; the experimental file-history flag has been removed',
+              'key': '60713510-29',
+              'text': 'CLI 中新增会话评分提示，适时在输入框上方邀请为本次会话打分',
               'date': '2026-09-04',
               'version': '0.41.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.41.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-41-0-2026-09-04'
             },
             {
-              'key': 'd79dcde8-118',
-              'text': '! - Remind the model of its context budget before automatic compaction, and after compaction point it at the session\'s event log for exact details',
+              'key': 'b7f04c84-55',
+              'text': 'Web 版新增 tower 多智能体协作模式（实验功能），可通过 /tower 命令或输入框加号菜单开启， /tower 可指定基准分支',
               'date': '2026-09-04',
               'version': '0.41.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.41.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-41-0-2026-09-04'
             },
             {
-              'key': 'dc7f3974-50',
-              'text': '! - Add an occasional session rating prompt above the input box',
-              'date': '2026-09-04',
-              'version': '0.41.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.41.0'
-            },
-            {
-              'key': '52fa7c5c-87',
-              'text': '! - The kimi acp subcommand no longer honors KIMI_CODE_LEGACY_FLAG; it always runs on the default agent engine',
+              'key': '1122fdb2-28',
+              'text': 'Web 版设置新增「插件」面板：可浏览插件市场并安装、启停、移除插件',
               'date': '2026-09-02',
               'version': '0.40.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.40.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-40-0-2026-09-02'
             },
             {
-              'key': '5cdf340c-156',
-              'text': '! - The subagent model pool ([secondary_model]) is enabled by default in every launch mode and remains opt-out via KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL=0 or [experimental] secondary-model = false',
+              'key': '6abdb694-16',
+              'text': '支持在一条消息中同时激活多个技能',
               'date': '2026-09-02',
               'version': '0.40.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.40.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-40-0-2026-09-02'
             },
             {
-              'key': 'bf31757b-110',
-              'text': '! - web: Added a Plugins panel to Settings for browsing the plugin marketplace and installing, enabling, disabling, and removing plugins',
+              'key': '9e6973e5-44',
+              'text': 'Tower 模式（实验性）行为调整：agent 不再自行进入，需用 /tower on 或 /tower 显式开启',
               'date': '2026-09-02',
               'version': '0.40.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.40.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-40-0-2026-09-02'
+            },
+            {
+              'key': 'bc89d42b-30',
+              'text': '新增 kimi session list 命令，可在命令行直接列出会话',
+              'date': '2026-09-02',
+              'version': '0.40.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-40-0-2026-09-02'
+            },
+            {
+              'key': 'de53a275-29',
+              'text': '子代理设置（ [secondary_model] ）功能由实验性转为正式',
+              'date': '2026-09-02',
+              'version': '0.40.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-40-0-2026-09-02'
+            },
+            {
+              'key': 'f5b24a63-136',
+              'text': '新增危险命令护栏：Auto 模式直接拦截 shutdown、reboot、rm -rf 等危险命令，Manual 与 YOLO 模式执行前必定询问；可用 [permission] dangerous_command_guard = false 或 KIMI_CODE_DANGEROUS_COMMAND_GUARD=false 关闭',
+              'date': '2026-09-02',
+              'version': '0.40.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-40-0-2026-09-02'
             }
           ],
-          'count': 19
+          'count': 24
         },
         {
           'id': 'deepseek-harness',
@@ -9623,7 +9169,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-08',
       'label': '2026年8月',
-      'count': 212,
+      'count': 217,
       'toolCount': 10,
       'multi': [],
       'tools': [
@@ -10233,206 +9779,241 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '139ba938-120',
-              'text': '! - web: Fix the slash-command and @-mention panels failing to open on mobile — both panels and the + menu are now grab-handle bottom sheets on small screens',
+              'key': '147302d8-66',
+              'text': '新增实验性 tower 多 Agent 编排模式：设置 KIMI_CODE_EXPERIMENTAL_TOWER=1 后运行 /tower on 和 /tower 启动',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': '949edeec-178',
-              'text': '! - Add Remote Control as an experimental feature for accessing a local web session remotely. Enable it with KIMI_CODE_EXPERIMENTAL_REMOTE_CONTROL=1, then run kimi rc, kimi web --remote-control, or /remote-control to start it',
+              'key': '2152a93c-46',
+              'text': '新增 [swarm] timeout_ms 配置项（或环境变量 KIMI_CODE_SWARM_TIMEOUT_MS ）',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': '96b56000-40',
-              'text': '! - web: Revamp the right sidebar as a multi-tab panel',
+              'key': '83ba70f8-37',
+              'text': '内置插件市场新增 Tencent CloudBase 插件，通过 /plugins 安装',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': 'c9509db1-213',
-              'text': '! - Add an optional fork parameter to subagent and swarm tools that starts the subagent with a snapshot of the calling agent\'s conversation history; set KIMI_CODE_EXPERIMENTAL_SUBAGENT_FORK=1 or subagent_fork = true under [experimental] in config.toml to enable it',
+              'key': '954f8c58-43',
+              'text': 'web: 运行卡片新增“转到后台”按钮，可把正在前台运行的 Bash 命令或子 Agent 转为后台运行',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': 'c9f0a07c-112',
-              'text': '! - web: Allow moving a running foreground Bash command or subagent to the background via the \'Move to background\' button on the running card',
+              'key': 'a76deac0-105',
+              'text': '新增实验性远程控制功能：可远程访问本地的 web 会话，设置 KIMI_CODE_EXPERIMENTAL_REMOTE_CONTROL=1 后运行 kimi rc 、 kimi web --remote-control 或 /remote-control 启动',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': 'ce487bec-108',
-              'text': '! - Add experimental tower mode for multi-agent orchestration; set KIMI_CODE_EXPERIMENTAL_TOWER=1, then run /tower on and /tower to start',
+              'key': 'd5e79d80-25',
+              'text': 'web: 移动端会话列表新增平铺/按工作区分组的切换标签',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': 'e71d77d4-47',
-              'text': '! - web: Add a flat/by-workspace tab to the mobile session list',
+              'key': 'f01f3f00-127',
+              'text': 'subagent 与 swarm 工具新增可选 fork 参数，子 Agent 以调用方当前对话历史的快照启动；设置 KIMI_CODE_EXPERIMENTAL_SUBAGENT_FORK=1 或在 config.toml 的 [experimental] 下写 subagent_fork = true 启用',
               'date': '2026-08-27',
               'version': '0.39.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.39.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-39-0-2026-08-27'
             },
             {
-              'key': 'ef049330-120',
-              'text': '! - Add the WaitFor tool: the agent can now wait for a background task to finish within the current turn instead of ending the turn and being re-invoked',
+              'key': '4ab295b8-18',
+              'text': 'web: 聊天头部的更多菜单新增置顶操作',
               'date': '2026-08-20',
               'version': '0.38.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.38.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-38-0-2026-08-20'
             },
             {
-              'key': 'f5df76f-43',
-              'text': '! - Support two OAuth login methods — kimi.ai and kimi.com',
+              'key': '71f0f4ac-125',
+              'text': '官方 Kimi Datasource 插件新增 13 个数据源：中国政府数据（NDA/NBS）与标准（GB/HB/DB/TT）、八个国际组织数据集（WHO、FAO、UNSD、ECB、Eurostat、UNICEF、OECD、FRED）、新华财经和财新。在 /plugins 的 Official 标签页中更新插件',
               'date': '2026-08-20',
               'version': '0.38.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.38.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-38-0-2026-08-20'
             },
             {
-              'key': '5d95e0b0-161',
-              'text': '! - web: added a session management page (from the sidebar\'s list-management menu) for cross-workspace triage — filter by workspace, status, and updated time, and batch mark sessions as done or reopen them',
+              'key': 'afbed3b4-27',
+              'text': '支持 kimi.ai 与 kimi.com 两种 OAuth 登录方式',
+              'date': '2026-08-20',
+              'version': '0.38.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-38-0-2026-08-20'
+            },
+            {
+              'key': 'fe6b9fdc-44',
+              'text': '新增 WaitFor 工具：Agent 可以在当前轮次内等待后台任务完成，无需结束轮次后再次被唤起',
+              'date': '2026-08-20',
+              'version': '0.38.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-38-0-2026-08-20'
+            },
+            {
+              'key': '14678e88-11',
+              'text': 'web: 新增会话管理页面',
               'date': '2026-08-18',
               'version': '0.37.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.37.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-37-0-2026-08-18'
             },
             {
-              'key': 'bd373afe-75',
-              'text': '! - Activate multiple skills in a single prompt. Type / after whitespace to insert a skill token',
+              'key': '4c245308-22',
+              'text': 'Windows 原生（单文件）CLI 现支持自动更新',
               'date': '2026-08-18',
               'version': '0.37.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.37.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-37-0-2026-08-18'
             },
             {
-              'key': 'd653a3f4-103',
-              'text': '! - web: the sidebar gains Open / Done / Workspaces tabs, and sessions can be marked as done (and reopened) to keep the open list focused',
+              'key': '62a2e85c-35',
+              'text': '支持在单条提示词中激活多个 skill：在空白后输入 / 即可插入 skill 标记',
               'date': '2026-08-18',
               'version': '0.37.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.37.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-37-0-2026-08-18'
             },
             {
-              'key': 'df4f73cc-58',
-              'text': '! - The Windows native (single-binary) CLI now supports automatic updates',
+              'key': '6abdae88-39',
+              'text': 'web: 侧边栏新增 Open / Done / Workspaces 标签页，会话可标记为 Done',
               'date': '2026-08-18',
               'version': '0.37.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.37.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-37-0-2026-08-18'
             },
             {
-              'key': '208ae6f4-91',
-              'text': '! - Add an experimental fullscreen TUI mode. Set the KIMI_CODE_TUI_FULL_SCREEN=1 environment variable to enable it',
+              'key': '7470f624-92',
+              'text': 'web: AI 自动生成会话标题（实验性）。默认关闭，设置 KIMI_CODE_EXPERIMENTAL_AUTO_SESSION_TITLE=1 （或实验总开关 KIMI_CODE_EXPERIMENTAL_FLAG=1 ）开启',
+              'date': '2026-08-14',
+              'version': '0.36.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-36-1-2026-08-14'
+            },
+            {
+              'key': '25b4a290-44',
+              'text': '新增实验性全屏 TUI 模式，设置 KIMI_CODE_TUI_FULL_SCREEN=1 环境变量即可启用',
               'date': '2026-08-13',
               'version': '0.36.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.36.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-36-0-2026-08-13'
             },
             {
-              'key': 'e3752e8a-342',
-              'text': '! - Add a configurable model pool for spawned subagents behind the secondary-model experiment (KIMI_CODE_EXPERIMENTAL_SECONDARY_MODEL=1, or the master flag): with the experiment on, the /secondary-model command or the [secondary_model] section in config.toml sets a default model or a small named pool that the main agent picks from per spawn. A lone legacy model key in the same section keeps working as the fallback default',
+              'key': '8134768-41',
+              'text': '配置命名模型池，并为每个别名写一句适用场景的描述——描述会展示给主 Agent 作为挑选依据',
               'date': '2026-08-13',
               'version': '0.36.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.36.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-36-0-2026-08-13'
             },
             {
-              'key': 'c4eb5ce8-85',
-              'text': '! - web: Image and video tool results now open in a fullscreen preview on click, with zoom support for images',
+              'key': 'a2937a48-69',
+              'text': '实验性的子 Agent 模型配置升级为模型池：现在可以在 [secondary_model] 中配置一组带描述的候选模型，由主 Agent 每次派生时按任务挑选',
+              'date': '2026-08-13',
+              'version': '0.36.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-36-0-2026-08-13'
+            },
+            {
+              'key': 'afe445c-101',
+              'text': '极简用法：在 TUI 中运行 /secondary-model 选择，或在 config.toml 中写一行 default_model ，让所有子 Agent 默认跑同一个模型；再加 force = true 可彻底固定该选择，主 Agent 无法改选',
+              'date': '2026-08-13',
+              'version': '0.36.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-36-0-2026-08-13'
+            },
+            {
+              'key': 'd4b44394-36',
+              'text': 'TUI 支持渲染 LaTeX 数学公式（ $…$ 与 $$…$$ ），消息中的公式会显示为 Unicode 公式',
+              'date': '2026-08-13',
+              'version': '0.36.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-36-0-2026-08-13'
+            },
+            {
+              'key': '413f6fc0-25',
+              'text': '/tasks 面板现实时展示后台子 Agent 的工作进度',
               'date': '2026-08-12',
               'version': '0.35.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.35.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-35-0-2026-08-12'
             },
             {
-              'key': 'cdfc9af0-59',
-              'text': '! - Show the live work progress of background subagents in the /tasks panel',
+              'key': 'ad93ed54-57',
+              'text': '内置插件市场新增 Modern Web Guidance 插件，通过 /plugins 选择 Modern Web Guidance 安装',
               'date': '2026-08-12',
               'version': '0.35.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.35.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-35-0-2026-08-12'
             },
             {
-              'key': '741477bc-38',
-              'text': '! - web: Add a flat view to the sidebar session list',
+              'key': '553047c1-52',
+              'text': '会话空闲过久后恢复或发送消息时，现将会弹出缓存过期提醒。将 cache_expiry_hint 设为 false 可关闭',
               'date': '2026-08-06',
               'version': '0.34.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.34.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-34-0-2026-08-06'
             },
             {
-              'key': '909c4550-136',
-              'text': '! - Add Windows support for the built-in Kimi Computer Use capability and show the underlying error when capability setup fails. Install it from /plugins on Windows x64',
+              'key': '7a8165bc-42',
+              'text': 'Kimi Computer Use 插件新增 Windows x64 支持，通过 /plugins 安装',
               'date': '2026-08-06',
               'version': '0.34.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.34.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-34-0-2026-08-06'
             },
             {
-              'key': 'a106218c-111',
-              'text': '! - web: When a model request fails and interrupts a conversation, a persistent failure card now stays in the session with one-click resume',
+              'key': 'bdb8e9c-16',
+              'text': 'web: 侧边栏会话列表新增平铺视图',
               'date': '2026-08-06',
               'version': '0.34.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.34.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-34-0-2026-08-06'
             },
             {
-              'key': 'c2fc9f00-85',
-              'text': '! - Show a cache-expiry reminder when resuming a long-idle session or submitting after a long idle stretch',
-              'date': '2026-08-06',
-              'version': '0.34.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.34.0'
-            },
-            {
-              'key': '24f3950c-42',
-              'text': '! - Ask whether to trust the current folder on startup',
+              'key': '832e2e9-16',
+              'text': 'web: 显示登录账号信息与套餐用量',
               'date': '2026-08-05',
               'version': '0.33.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-33-0-2026-08-05'
             },
             {
-              'key': '47169fd0-40',
-              'text': '! - web: Add and manage custom providers in settings',
+              'key': '84bc9e54-16',
+              'text': 'web: 会话标题支持设置 emoji',
               'date': '2026-08-05',
               'version': '0.33.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-33-0-2026-08-05'
             },
             {
-              'key': '950ab330-35',
-              'text': '! - web: Overhaul the UI/UX and fix known issues',
+              'key': '89103b2c-31',
+              'text': '新增 /bug 命令作为 /feedback 的别名，输入 /bug 即可提交反馈',
               'date': '2026-08-05',
               'version': '0.33.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-33-0-2026-08-05'
             },
             {
-              'key': '97118788-209',
-              'text': '! - Add Kimi Computer Use and Kimi WebBridge as built-in official marketplace entries in the v2 CLI. Installing from /plugins sets up the latest managed runtime and plugin together, reports incomplete manual steps, and supports retrying interrupted setup',
+              'key': 'b7c97724-13',
+              'text': 'web: 侧边栏支持将会话置顶',
               'date': '2026-08-05',
               'version': '0.33.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-33-0-2026-08-05'
             },
             {
-              'key': 'a4bf83a4-145',
-              'text': '! - Run the CLI surfaces (interactive TUI, kimi -p, kimi acp, kimi export, kimi provider) on the agent-core-v2 engine by default. Set KIMI_CODE_LEGACY_FLAG=1 to fall back to the legacy engine',
+              'key': 'ba74a643-64',
+              'text': '/plugins 市场新增 Kimi Computer Use 与 Kimi WebBridge 官方内置插件，安装时自动配置托管运行时，中断后可重试',
               'date': '2026-08-05',
               'version': '0.33.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-33-0-2026-08-05'
             },
             {
-              'key': 'e9994d3c-119',
-              'text': '! - /fork no longer switches to the forked session: the current session stays active and its background tasks keep running. Find the fork in /sessions',
+              'key': 'c1b1cdb8-20',
+              'text': 'web: 支持在设置中添加和管理自定义供应商',
               'date': '2026-08-05',
               'version': '0.33.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.33.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-33-0-2026-08-05'
             },
             {
-              'key': 'da09ffec-270',
-              'text': '! - Add the TurnStarted, UserPromptQueued, TaskStarted, and SessionHeartbeat hook events, enrich hook payloads with the session title and client type, include the model and profile in SessionStart, and report SessionEnd as archive when a session is archived instead of exited. Configure the new events under [[hooks]] in config.toml',
+              'key': '6272575f-92',
+              'text': '新增四个 hook 事件： TurnStarted 、 UserPromptQueued 、 TaskStarted 和 SessionHeartbeat 。在 config.toml 的 [[hooks]] 下配置，详见 Hooks',
               'date': '2026-08-04',
               'version': '0.32.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.32.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-32-0-2026-08-04'
             }
           ],
-          'count': 28
+          'count': 33
         },
         {
           'id': 'deepseek-harness',
@@ -11216,7 +10797,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-07',
       'label': '2026年7月',
-      'count': 195,
+      'count': 188,
       'toolCount': 7,
       'multi': [],
       'tools': [
@@ -11714,276 +11295,227 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '6d1d4e63-182',
-              'text': '! - Add support for plugin-contributed custom agents, discovered automatically and available for sub-agent delegation. Ship an agents/ directory in the plugin (or declare agents paths in the plugin manifest) to provide them',
+              'key': '41df04f0-24',
+              'text': 'TUI 支持 Markdown 定义的自定义 Agent',
               'date': '2026-07-30',
               'version': '0.31.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.31.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-31-0-2026-07-30'
             },
             {
-              'key': 'a27c427e-161',
-              'text': '! - Allow enabled plugins to contribute agent system-prompt instructions through systemPrompt or systemPromptPath in kimi.plugin.json, effective on both agent engines (the TUI, kimi -p, and kimi web)',
+              'key': 'be5eed06-59',
+              'text': '插件可贡献系统提示词，通过 kimi.plugin.json 中的 systemPrompt 或 systemPromptPath 声明',
               'date': '2026-07-30',
               'version': '0.31.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.31.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-31-0-2026-07-30'
             },
             {
-              'key': 'c2004cd4-75',
-              'text': '! - Add the /secondary_model slash command to configure the secondary model used by subagents',
+              'key': 'c6a1628c-29',
+              'text': '插件可贡献自定义 Agent，自动发现并可用于子 Agent 委派',
               'date': '2026-07-30',
               'version': '0.31.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.31.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-31-0-2026-07-30'
             },
             {
-              'key': 'f33c1dc0-45',
-              'text': '! - Support Markdown-defined custom agents on agent-core',
+              'key': 'e8e08969-59',
+              'text': '新增 /secondary_model 斜杠命令，用于配置子 Agent 使用的辅助模型（实验性功能，需先在 /experiments 中开启）',
               'date': '2026-07-30',
               'version': '0.31.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.31.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-31-0-2026-07-30'
             },
             {
-              'key': '43a747b0-64',
-              'text': '! - Add a customizable footer status line, configured via [status_line] in tui.toml',
+              'key': '17e7a7b2-36',
+              'text': '新增可自定义的底部状态栏，可通过 tui.toml 中的 [status_line] 配置',
               'date': '2026-07-29',
               'version': '0.30.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.30.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-30-0-2026-07-29'
             },
             {
-              'key': '12217a90-74',
-              'text': '! - Let custom agent files restrict which sub-agent types they may delegate to (v2 engine only)',
+              'key': '656f80f4-36',
+              'text': '支持在 config.toml 与环境变量中配置全局默认的 MCP 服务器超时时间',
+              'date': '2026-07-24',
+              'version': '0.29.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-1-2026-07-24'
+            },
+            {
+              'key': 'c952c474-31',
+              'text': '新增用于配置网页搜索与网页抓取服务的环境变量，无需 OAuth 登录',
+              'date': '2026-07-24',
+              'version': '0.29.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-1-2026-07-24'
+            },
+            {
+              'key': 'fa0b197a-48',
+              'text': '新增实验性的子 Agent 辅助模型绑定，支持按 Agent 设置模型偏好及仅对子 Agent 生效的模型覆盖',
+              'date': '2026-07-24',
+              'version': '0.29.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-1-2026-07-24'
+            },
+            {
+              'key': '31d86cd5-49',
+              'text': 'web: 支持 Markdown 文件定义 agent，声明 system prompt、名称、描述和工具权限。 查看文档',
               'date': '2026-07-22',
               'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-0-2026-07-22'
             },
             {
-              'key': '21b03644-99',
-              'text': '! - Support custom agents defined as Markdown files with frontmatter, usable as the main agent or a sub-agent (v2 engine only)',
+              'key': '518b088a-15',
+              'text': 'ACP 客户端现支持选择思考强度',
               'date': '2026-07-22',
               'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-0-2026-07-22'
             },
             {
-              'key': '6743fcf4-121',
-              'text': '! - Add a GET /api/v1/fs:content server endpoint that serves any file on the host by absolute path as raw content with Content-Type, ETag, and Range support',
+              'key': '89443b00-33',
+              'text': 'web: 可通过 SYSTEM.md 永久覆盖主 agent 的系统提示。 查看文档',
               'date': '2026-07-22',
               'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-0-2026-07-22'
             },
             {
-              'key': '923fde8b-242',
-              'text': '! - Support selecting a thinking effort level from ACP clients: the thinking picker now lists the current model\'s declared levels (for example off / low / medium / high) instead of only an on/off toggle. Use the thinking selector in your ACP client (e.g. Zed) to pick a level; the legacy on/off values keep working',
+              'key': 'ab3aa48e-105',
+              'text': '新增 Agent 循环与后台任务限制的环境变量覆盖： KIMI_LOOP_MAX_STEPS_PER_TURN 、 KIMI_LOOP_MAX_RETRIES_PER_STEP 和 KIMI_CODE_BACKGROUND_MAX_RUNNING_TASKS',
               'date': '2026-07-22',
               'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-0-2026-07-22'
             },
             {
-              'key': 'b1d9113c-154',
-              'text': '! - Videos attached to a prompt — pasted in the TUI or uploaded in the web UI — now reach the model together with the prompt, with no extra tool round trip, and stay playable in the chat after a reload',
+              'key': 'c63c8b4-34',
+              'text': 'web: 可通过 config.toml 在所有会话中统一启用/禁用工具。 查看文档',
               'date': '2026-07-22',
               'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-0-2026-07-22'
             },
             {
-              'key': 'd4b7e4f1-87',
-              'text': '! - Add global tool gating to constrain which tools agents may use, with a per-session override (v2 engine only)',
+              'key': 'd1a282a8-31',
+              'text': '附加到提示词的视频现在会随提示词一起送达模型，无需额外的工具轮次',
               'date': '2026-07-22',
               'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-29-0-2026-07-22'
             },
             {
-              'key': 'f0e0a29c-93',
-              'text': '! - Support overriding the default main-agent system prompt with a user-level file for every session (v2 engine only)',
-              'date': '2026-07-22',
-              'version': '0.29.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.29.0'
+              'key': '1f3bc01c-34',
+              'text': 'ACP 会话现支持使用已配置的非 OAuth 模型凭据启动，无需再在终端登录',
+              'date': '2026-07-20',
+              'version': '0.28.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-28-1-2026-07-20'
             },
             {
-              'key': 'e8e6431c-56',
-              'text': '! - Thinking effort persists only levels below the model\'s top tier (max)',
+              'key': '3c412068-29',
+              'text': 'kimi server 命令树已被废弃，请使用 kimi web 代替',
               'date': '2026-07-20',
               'version': '0.28.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.28.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-28-0-2026-07-20'
             },
             {
-              'key': 'efa38268-325',
-              'text': '! - Replace the kimi server command tree with kimi web: the server runs in the foreground (the background daemon and OS-service lifecycle commands are removed), and multiple servers can now share one home directory, each taking the next free port. Manage instances with kimi web kill [server-id|all], kimi web ps, and kimi web rotate-token; any kimi server … invocation prints a deprecation notice and exits 1',
+              'key': '4bc05e68-32',
+              'text': 'kimi web 现在在当前终端前台运行并打开浏览器，按 Ctrl+C 停止',
               'date': '2026-07-20',
               'version': '0.28.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.28.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-28-0-2026-07-20'
             },
             {
-              'key': '24a53b38-65',
-              'text': '! - Add the /copy slash command to copy the last assistant message to the clipboard',
+              'key': '36caa0a0-32',
+              'text': '使用 API key 调用 Kimi 编程模型时，现在会自动拉取最新模型列表',
               'date': '2026-07-17',
               'version': '0.27.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.27.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-27-0-2026-07-17'
             },
             {
-              'key': 'ceffb98f-77',
-              'text': '! - Using an API key for Kimi coding models now also fetches the latest model list automatically',
+              'key': '8596eabc-25',
+              'text': '新增 /copy 斜杠命令，可将上一条助手消息复制到剪贴板',
               'date': '2026-07-17',
               'version': '0.27.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.27.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-27-0-2026-07-17'
             },
             {
-              'key': '13261790-272',
-              'text': '! - Expand the coder subagent tool set to include background tasks, todo lists, plan mode, skill invocation, and nested agents, mirroring the main agent\'s capabilities; a subagent run also waits for its background tasks to settle before reporting completion. Applies automatically to coder subagents launched through the Agent tool',
-              'date': '2026-07-16',
-              'version': '0.26.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.26.0'
-            },
-            {
-              'key': '7e477a4-160',
-              'text': '! - web: Allow attaching any file type in chat; files the model cannot consume inline (documents, SVG images, archives, …) are uploaded to the server and given to the model as a file path it can read on demand',
+              'key': '92450414-54',
+              'text': 'web: 聊天支持附加任意类型文件，可直接将文件拖放到窗口任意位置；发送的文件、图片、视频都会以附件标签显示在消息气泡中',
               'date': '2026-07-16',
               'version': '0.25.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.25.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-25-0-2026-07-16'
             },
             {
-              'key': '2e9adb68-172',
-              'text': '! - web: Add session diagnostic export to download a session and bounded metadata-only troubleshooting logs as a ZIP. Run /export or pick Export session from a session\'s more menu. Web downloads are limited to 64 MiB',
+              'key': '7f5b92f8-54',
+              'text': '新增内置 /check-kimi-code-docs Skill，自动基于官方文档回答 Kimi Code 产品问题并附来源链接',
+              'date': '2026-07-15',
+              'version': '0.24.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-24-2-2026-07-15'
+            },
+            {
+              'key': '8503e97e-61',
+              'text': 'web: 新增会话导出功能，运行 /export 或在会话的更多菜单中选择「导出会话」，可将会话与故障排查日志打包为 ZIP 下载（上限 64 MiB）',
               'date': '2026-07-14',
               'version': '0.24.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.24.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-24-0-2026-07-14'
             },
             {
-              'key': '347169d3-250',
-              'text': '! - Port progressive tool disclosure to the new agent engine: MCP tool schemas stay out of the top-level tool list, and the model loads them by name on demand through the announcements plus the select_tools tool, keeping the prompt cache stable. Off by default; set KIMI_CODE_EXPERIMENTAL_TOOL_SELECT=1 to enable',
+              'key': 'e4caf088-101',
+              'text': '前台 Bash 命令超时时不再被终止，而是转入后台继续运行，完成后回报结果。在 config.toml 的 [background] 下设置 bash_auto_background_on_timeout = false 可恢复超时即终止的行为',
               'date': '2026-07-14',
               'version': '0.24.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.24.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-24-0-2026-07-14'
             },
             {
-              'key': '54431549-238',
-              'text': '! - Move foreground Bash commands that hit their timeout to the background instead of killing them, so long-running commands survive the timeout and report back on completion. Set bash_auto_background_on_timeout = false under [background] in config.toml to restore the kill-on-timeout behavior',
-              'date': '2026-07-14',
-              'version': '0.24.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.24.0'
+              'key': 'e77b3bc5-24',
+              'text': 'web: 新增工具需要审批时的通知，并提升通知的可靠性',
+              'date': '2026-07-10',
+              'version': '0.23.4',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-23-4-2026-07-10'
             },
             {
-              'key': '71474974-157',
-              'text': '! - Run the local server (kimi server run / kimi web) on the agent-core-v2 engine by default — the KIMI_CODE_EXPERIMENTAL_FLAG opt-in is no longer needed, and the legacy v1 server package has been removed',
-              'date': '2026-07-14',
-              'version': '0.24.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.24.0'
+              'key': 'b7f596b4-44',
+              'text': '内置插件市场新增 Vercel 插件，运行 /plugins 并选择 Vercel Plugin 即可安装',
+              'date': '2026-07-08',
+              'version': '0.23.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-23-2-2026-07-08'
             },
             {
-              'key': 'abfdf688-58',
-              'text': '! - Add v2 session export support for packaging diagnostic zip archives',
-              'date': '2026-07-14',
-              'version': '0.24.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.24.0'
-            },
-            {
-              'key': '2c324340-65',
-              'text': '! - Add server APIs to restore archived sessions and list only archived sessions',
+              'key': '46a7dad8-112',
+              'text': '新增实验性的按需工具加载（ select_tools ）：开启 tool-select 标志后，支持的模型会按需加载 MCP 工具，而非每次请求都发送全部工具，以保留供应商的 prompt cache。默认关闭，且仅对声明了 select_tools 能力的模型生效',
               'date': '2026-07-06',
               'version': '0.23.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-23-0-2026-07-06'
             },
             {
-              'key': '49ef0064-160',
-              'text': '! - Enable Preserved Thinking by default for Kimi models when Thinking is on, keeping prior reasoning across turns. Set [thinking] keep = \'off\' in config.toml (or KIMI_MODEL_THINKING_KEEP=off) to disable it',
+              'key': 'deb99f3c-37',
+              'text': 'web: 在设置中新增「已归档会话」页面，可浏览并恢复已归档的会话，前往「设置 → 已归档」查看',
               'date': '2026-07-06',
               'version': '0.23.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-23-0-2026-07-06'
             },
             {
-              'key': '6a1b8f54-136',
-              'text': '! - web: Replace the swarm footer with a single inline tool card that shows live subagent progress and the aggregated result, and keep swarm badges stable after refresh',
-              'date': '2026-07-06',
-              'version': '0.23.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.0'
-            },
-            {
-              'key': 'e5481940-100',
-              'text': '! - web: Add an Archived sessions page in Settings to browse and restore archived sessions. Open Settings → Archived to find it',
-              'date': '2026-07-06',
-              'version': '0.23.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.0'
-            },
-            {
-              'key': 'ebf62a54-537',
-              'text': '! - Add experimental progressive tool disclosure (select_tools). When the tool-select experimental flag is on and the active model declares the select_tools capability, MCP tool schemas stay out of the request\'s top-level tools[] (preserving the provider prompt cache); the model loads tools on demand by exact name via the new built-in select_tools tool, guided by / announcements. Off by default and inert on models without the capability — behavior is unchanged until a supporting model is catalogued. The SDK additionally maps the select_tools capability when building model aliases from a catalog and reports the new flag through getExperimentalFeatures()',
-              'date': '2026-07-06',
-              'version': '0.23.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.23.0'
-            },
-            {
-              'key': '1c789a34-124',
-              'text': 'Add model alias overrides so manual thinking effort levels and model metadata survive provider catalog refreshes. Set them under [models.\' \'.overrides]',
+              'key': '4e26433d-52',
+              'text': '自动压缩超过模型限制的超大图片，在送达模型前降采样并重新编码，降低视觉 token 成本并避免供应商图片大小错误',
               'date': '2026-07-02',
               'version': '0.22.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.22.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-22-0-2026-07-02'
             },
             {
-              'key': '21518ad4-616',
-              'text': 'Automatically compress oversized images before they reach the model. Whatever the source — pasted into the CLI, uploaded from the web/desktop client, sent over ACP, read via ReadMediaFile, or returned by an MCP tool — images are downsampled (longest edge ≤ 2000px) and re-encoded to fit a per-image byte budget, cutting vision-token cost and avoiding provider image-size errors. Screenshots stay lossless PNG and only degrade to JPEG when the byte budget cannot otherwise be met. Compression runs as an input-stage step at each ingestion point (while the content part is built), and guards against decompression bombs by skipping absurdly large pixel/byte payloads before decoding. Best-effort: if it fails for any reason the original image is sent unchanged',
+              'key': '7ad09980-42',
+              'text': '新增模型覆盖配置，在 [models.\' \'.overrides] 下配置模型元数据来覆盖供应商刷新结果',
               'date': '2026-07-02',
               'version': '0.22.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.22.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-22-0-2026-07-02'
             },
             {
-              'key': 'cffa6454-155',
-              'text': 'Refresh the web UI with a new design system, including updated colors, typography, spacing, light and dark palettes, restyled tooltips, and subtle enter/exit and expand/collapse animations',
-              'date': '2026-07-02',
-              'version': '0.22.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.22.0'
-            },
-            {
-              'key': '2a48db50-29',
-              'text': 'Micro-compaction now defaults off',
+              'key': '3b70b594-45',
+              'text': '插件现支持在清单的 commands 字段中声明斜杠命令，注册为 : 形式，调用时展开 $ARGUMENTS',
               'date': '2026-07-01',
               'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-21-0-2026-07-01'
             },
             {
-              'key': '3d0b1490-31',
-              'text': 'Refactor the thinking effort system',
+              'key': 'bf2106cd-90',
+              'text': 'web 聊天新增 Mermaid 图表渲染，助手回复中的 mermaid 代码块会渲染为图表。KaTeX 数学公式与 Mermaid 图表的解析移至 Web Workers 执行，提升流式渲染时的界面响应速度',
               'date': '2026-07-01',
               'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
-            },
-            {
-              'key': '492660d6-109',
-              'text': 'Plugins can now provide slash commands via a commands field in their manifest, registered as : and invoked with $ARGUMENTS expansion',
-              'date': '2026-07-01',
-              'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
-            },
-            {
-              'key': '6df4b0d8-115',
-              'text': 'Repair tool_use/tool_result adjacency before sending, fixing a strict-provider HTTP 400 when a tool call and its result became non-adjacent',
-              'date': '2026-07-01',
-              'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
-            },
-            {
-              'key': '7c7faf68-28',
-              'text': 'Rework conversation compaction',
-              'date': '2026-07-01',
-              'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
-            },
-            {
-              'key': '8ce073f0-146',
-              'text': 'Merge consecutive user turns for strict providers (Gemini/Vertex), fixing an HTTP 400 (\'roles must alternate\') after compaction or when a turn is steered in right after a tool result',
-              'date': '2026-07-01',
-              'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
-            },
-            {
-              'key': 'fd396f9d-79',
-              'text': 'Keep only recent user prompts plus a single user-role summary; drop assistant and tool messages',
-              'date': '2026-07-01',
-              'version': '0.21.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.21.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-21-0-2026-07-01'
             }
           ],
-          'count': 38
+          'count': 31
         },
         {
           'id': 'qoder-cn-ide',
@@ -12660,7 +12192,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-06',
       'label': '2026年6月',
-      'count': 257,
+      'count': 259,
       'toolCount': 8,
       'multi': [],
       'tools': [
@@ -13301,423 +12833,437 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '584f21bc-75',
-              'text': 'Replace silent AGENTS.md truncation with a visible warning in the TUI status bar and web UI',
-              'date': '2026-06-25',
-              'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'key': '7747bd84-104',
+              'text': '新增 KIMI_CODE_CUSTOM_HEADERS 环境变量，用于自定义出站 LLM 请求头，并向非 Kimi 供应商发送 User-Agent 请求头。将 KIMI_CODE_CUSTOM_HEADERS 设为由换行分隔的 Name: Value 行',
+              'date': '2026-06-29',
+              'version': '0.20.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-2-2026-06-29'
             },
             {
-              'key': '5aa9716f-55',
-              'text': 'Add a confirmation prompt before installing third-party plugins',
-              'date': '2026-06-25',
-              'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'key': 'b8b9b70a-70',
+              'text': 'web UI 新增完成提示音与问题通知，并在设置中分别提供完成通知、问题通知和提示音的开关。问题通知默认关闭，仅在用户主动开启后才会将问题文本发送到桌面',
+              'date': '2026-06-29',
+              'version': '0.20.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-2-2026-06-29'
             },
             {
-              'key': '5b210ed0-477',
-              'text': 'Redesign /plugins as a single tabbed panel: Installed (manage installed plugins — toggle, remove, MCP, details, reload), **Official** (Kimi-maintained marketplace plugins), **Third-party** (marketplace plugins from other publishers), and **Custom** (install straight from a GitHub URL, zip URL, or local path). `Tab` / `Shift-Tab` switch tabs. The Official and Third-party catalogs load lazily, so `/plugins` opens instantly and keeps working offline — a marketplace fetch failure is shown inline instead of closing the panel. The tab strip is shared with the `/model` provider tabs via the new `renderTabStrip` helper.',
-              'date': '2026-06-25',
-              'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'key': 'db9f10a0-39',
+              'text': '会话列表 API 新增可选的 exclude_empty 参数，用于省略没有任何消息的会话',
+              'date': '2026-06-29',
+              'version': '0.20.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-2-2026-06-29'
             },
             {
-              'key': '7efd2bed-355',
-              'text': 'Add server authentication and safe --host exposure. The local server now requires a per-start bearer token on all API and WebSocket calls (the CLI reads it automatically), enforces Host/Origin checks, and gains `--host` with a public-binding hardening tier: mandatory `KIMI_CODE_PASSWORD`, TLS (or `--insecure-no-tls`), auth-failure rate limiting, disabled remote shutdown/terminals, and security response headers. See `packages/server/SECURITY.md`.',
-              'date': '2026-06-25',
-              'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'key': 'ecb5a4d8-31',
+              'text': 'Kimi Code 现支持 Anthropic 兼容协议，并支持视频输入',
+              'date': '2026-06-29',
+              'version': '0.20.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-2-2026-06-29'
             },
             {
-              'key': 'bf7990-81',
-              'text': 'Show the plan body and approach choices in the plan review card when exiting plan mode in the web UI',
-              'date': '2026-06-25',
+              'key': '5313856c-52',
+              'text': 'CLI 新增 --host 选项，可通过 kimi web --host 将服务器暴露到互联网，并加固 token 鉴权、限流等安全措施',
+              'date': '2026-06-26',
               'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-0-2026-06-26'
             },
             {
-              'key': 'd58a6a18-61',
-              'text': 'Show a line-by-line diff when the agent edits or writes a file in the web chat',
-              'date': '2026-06-25',
+              'key': '69383a60-83',
+              'text': 'TUI 新增 shell 模式。在输入框中键入 ! 即可启用。对于长时间运行的命令，按 Ctrl+B 可将其移至后台。例如，你可以运行 !gh auth login 登录 GitHub CLI，无需打开新的终端',
+              'date': '2026-06-26',
               'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-0-2026-06-26'
             },
             {
-              'key': 'dfb245ad-101',
-              'text': 'Show update badges on the /plugins Installed tab, where Enter now installs the available update and I opens plugin details',
-              'date': '2026-06-25',
+              'key': '6a67e37c-18',
+              'text': 'Web UI 支持渲染 LaTeX 行间公式（ $$…$$ ）',
+              'date': '2026-06-26',
               'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-0-2026-06-26'
             },
             {
-              'key': 'f1b55cd0-243',
-              'text': 'Add shell mode for running shell commands Type `!` in the input box to enable it. The command output is visible to the AI. For long-running commands, press Ctrl+B to move them to the background. For example, you can run `!gh auth login` to sign in to the GitHub CLI without opening a new terminal, so Kimi can use `gh`.',
-              'date': '2026-06-25',
-              'version': '0.20.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.20.0'
+              'key': '73e3f2d4-38',
+              'text': '新增 kimi update 命令，等价于 kimi upgrade ，可用于升级到最新版本',
+              'date': '2026-06-26',
+              'version': '0.20.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-1-2026-06-26'
             },
             {
-              'key': '3f4e9970-116',
-              'text': 'Speed up session snapshot loading with a direct disk reader and a request timeout safeguard, keeping the previous path as a legacy fallback',
+              'key': '855ecc9c-117',
+              'text': 'kimi web 新增 --allowed-host 选项，可将指定 Host 加入 DNS 重绑定白名单；403 错误会提示如何通过 --allowed-host 或 KIMI_CODE_ALLOWED_HOSTS 放行，例如 kimi web --allowed-host example.com',
+              'date': '2026-06-26',
+              'version': '0.20.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-1-2026-06-26'
+            },
+            {
+              'key': '9adf4a30-50',
+              'text': '插件现支持在 kimi.plugin.json 中声明生命周期 hooks，在指定阶段运行脚本。详见 插件 Hooks',
+              'date': '2026-06-26',
+              'version': '0.20.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-1-2026-06-26'
+            },
+            {
+              'key': 'cb9f8125-24',
+              'text': '/feedback 现支持附加诊断日志与代码库上下文',
+              'date': '2026-06-26',
+              'version': '0.20.1',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-20-1-2026-06-26'
+            },
+            {
+              'key': '67961c5c-25',
+              'text': '新增 Ctrl+T 快捷键，用于展开和折叠被截断的待办列表',
+              'date': '2026-06-24',
+              'version': '0.19.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-2-2026-06-24'
+            },
+            {
+              'key': 'a8195c00-34',
+              'text': '在模型选择器中新增 Alt+S 快捷键，仅切换当前会话的模型，而不保存为默认值',
+              'date': '2026-06-24',
+              'version': '0.19.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-2-2026-06-24'
+            },
+            {
+              'key': 'b1c30d84-16',
+              'text': '新增 -c 作为 --continue 的简写',
+              'date': '2026-06-24',
+              'version': '0.19.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-2-2026-06-24'
+            },
+            {
+              'key': 'f1e85f5c-50',
+              'text': '保持 web 侧边栏允许拖放工作区排序，排序结果在本地持久化；现在会话一旦收到新消息也会立即上浮到其分组顶部',
+              'date': '2026-06-24',
+              'version': '0.19.2',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-2-2026-06-24'
+            },
+            {
+              'key': '51a24264-20',
+              'text': '使用 kimi --add-dir 在启动时添加它们',
               'date': '2026-06-22',
               'version': '0.19.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.19.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-0-2026-06-22'
             },
             {
-              'key': '446bde34-31',
-              'text': 'Use kimi --add-dir to add them on startup',
+              'key': '9fa65a64-48',
+              'text': '允许使用 Ctrl+B 将长时间运行的前台命令和子 Agent 移动到后台任务，并通过 /tasks 面板查看它们',
               'date': '2026-06-22',
               'version': '0.19.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.19.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-0-2026-06-22'
             },
             {
-              'key': '9d41b664-93',
-              'text': 'Use the /add-dir command to add extra working directories to the current session, or remember them for the project',
+              'key': 'c40d9a68-33',
+              'text': '使用 /add-dir 命令将额外工作目录添加到当前会话，或将其记住到项目中',
               'date': '2026-06-22',
               'version': '0.19.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.19.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-0-2026-06-22'
             },
             {
-              'key': 'b46afe34-45',
-              'text': 'Added the ability to add extra workspace directories',
+              'key': 'e878ff08-14',
+              'text': '新增添加额外工作区目录的能力',
               'date': '2026-06-22',
               'version': '0.19.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.19.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-0-2026-06-22'
             },
             {
-              'key': 'e7c1c9d0-88',
-              'text': 'Project-level local config is now managed in .kimi-code/local.toml; we recommend adding it to your .gitignore',
+              'key': 'f421aad4-50',
+              'text': '项目级本地配置现在由 .kimi-code/local.toml 管理；我们建议将其添加到你的 .gitignore 中',
               'date': '2026-06-22',
               'version': '0.19.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.19.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-19-0-2026-06-22'
             },
             {
-              'key': 'c20aa94-118',
-              'text': 'Add an environment variable to cap AgentSwarm concurrency during the initial ramp, so large swarms do not trip provider rate limits as easily',
+              'key': '9fde2238-54',
+              'text': '新增环境变量以限制 AgentSwarm 在初始 ramp 阶段的并发数，使大型 swarm 更不容易触发供应商的速率限制',
               'date': '2026-06-18',
               'version': '0.18.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.18.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-18-0-2026-06-18'
             },
             {
-              'key': 'dd43ab68-74',
-              'text': 'Add instant session search to the web sidebar, filtering by title and the last user prompt',
+              'key': 'ab072c2c-28',
+              'text': '在 web 聊天会话视图中新增向上滚动时懒加载更早消息的功能',
               'date': '2026-06-18',
               'version': '0.18.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.18.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-18-0-2026-06-18'
             },
             {
-              'key': '2c9aaea0-53',
-              'text': 'Web chat layout, session list, auto-scroll, and related behaviors',
+              'key': 'daa84d0-29',
+              'text': '在 web 侧边栏中新增会话筛选，可过滤标题和最近一条用户提示词',
+              'date': '2026-06-18',
+              'version': '0.18.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-18-0-2026-06-18'
+            },
+            {
+              'key': '38d1a5e7-50',
+              'text': '新增 Kimi Code Web 模式，可通过 kimi web 或 CLI 内的 /web 启动，在浏览器中的聊天界面继续会话',
               'date': '2026-06-17',
               'version': '0.17.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.17.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-17-0-2026-06-17'
             },
             {
-              'key': '54e1b21c-41',
-              'text': 'Server REST and WebSocket APIs for the web client',
-              'date': '2026-06-17',
-              'version': '0.17.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.17.0'
-            },
-            {
-              'key': '91f2d0ac-51',
-              'text': 'Add the server-hosted web UI and the CLI commands that power it',
-              'date': '2026-06-17',
-              'version': '0.17.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.17.0'
-            },
-            {
-              'key': 'bac24064-44',
-              'text': 'kimi server to start, stop, and manage the local server',
-              'date': '2026-06-17',
-              'version': '0.17.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.17.0'
-            },
-            {
-              'key': 'f666c4e0-43',
-              'text': 'kimi web to open the server-hosted web UI in a browser',
-              'date': '2026-06-17',
-              'version': '0.17.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.17.0'
-            },
-            {
-              'key': '74cb22dc-137',
-              'text': 'Add a built-in kimi vis command that launches the session visualizer in your browser, pointed at your local sessions. Supports --port/--host, --no-open, and kimi vis deep-links',
+              'key': 'b11bb1a0-65',
+              'text': '新增内置的 kimi vis 命令，可在浏览器中启动会话可视化工具，并指向本地会话。支持 --port / --host 、 --no-open 以及 kimi vis 深度链接',
               'date': '2026-06-16',
               'version': '0.16.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.16.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-16-0-2026-06-16'
             },
             {
-              'key': 'd7938ba5-73',
-              'text': 'Add support for legacy SSE MCP servers alongside stdio and streamable HTTP transports',
+              'key': '34137f4c-44',
+              'text': '新增全会话选择器视图，支持按名称搜索、分页浏览，以及为其他工作目录中的会话生成可复制的恢复命令',
               'date': '2026-06-15',
               'version': '0.15.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.15.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-15-0-2026-06-15'
             },
             {
-              'key': 'de261550-124',
-              'text': 'Add an all-sessions picker view with name search, paginated browsing, and clipboard-ready resume commands for sessions in other working directories',
+              'key': 'd3a46bc8-51',
+              'text': '新增对 legacy SSE MCP server 的支持，与 stdio 和 streamable HTTP 传输方式并存',
               'date': '2026-06-15',
               'version': '0.15.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.15.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-15-0-2026-06-15'
             },
             {
-              'key': '15ce0e8c-295',
-              'text': 'Show available plugin updates in the marketplace. An installed plugin whose marketplace version is newer than the local version now renders an update → badge (and updates in place on Enter); up-to-date plugins show installed · v . The marketplace version served in dev and written by the CDN build is now stamped from each plugin\'s manifest so \'latest\' stays accurate',
+              'key': '1636beec-26',
+              'text': '在 marketplace 中显示可用的 plugin 更新',
               'date': '2026-06-10',
               'version': '0.13.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.13.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-13-0-2026-06-10'
             },
             {
-              'key': '7b660ddc-141',
-              'text': 'Add an Interrupt hook event that fires when the user interrupts a turn (e.g. pressing Esc), letting hooks observe the turn stopping instead of getting stuck on a working state',
+              'key': '226ab8ec-66',
+              'text': '新增 Interrupt hook 事件，当用户中断某一轮次时（例如按 Esc）触发，让 hooks 可以观察到轮次正在停止，而不再卡在 working 状态',
               'date': '2026-06-10',
               'version': '0.14.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.14.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-14-0-2026-06-10'
             },
             {
-              'key': 'b5f836d4-117',
-              'text': 'Add custom color themes. Define your own palette as a JSON file in ~/.kimi-code/themes/, or generate one with the built-in /custom-theme skill command',
+              'key': '759a22ba-59',
+              'text': '新增 /import-from-cc-codex 命令，用于导入选定的 Claude Code 和 Codex 指令、Skills 以及 MCP 设置',
               'date': '2026-06-10',
               'version': '0.13.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.13.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-13-0-2026-06-10'
             },
             {
-              'key': 'badb6228-86',
-              'text': 'Add /import-from-cc-codex to import selected Claude Code and Codex instructions, Skills, and MCP settings',
+              'key': 'e9e30f80-66',
+              'text': '新增自定义颜色主题。在 ~/.kimi-code/themes/ 中以 JSON 文件定义自己的调色板，或使用内置的 /custom-theme Skill 命令生成',
               'date': '2026-06-10',
               'version': '0.13.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.13.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-13-0-2026-06-10'
             },
             {
-              'key': '2b9647a4-87',
-              'text': 'Detect Homebrew installations and use brew upgrade kimi-code for updates instead of falling back to npm',
+              'key': '347d827c-35',
+              'text': '默认启用 micro compaction，可在 /experiments 中关闭',
               'date': '2026-06-09',
               'version': '0.12.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.12.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-12-0-2026-06-09'
             },
             {
-              'key': '3222a720-112',
-              'text': 'Honor the standard HTTP_PROXY / HTTPS_PROXY / ALL_PROXY / NO_PROXY environment variables, including SOCKS proxies, for all outbound traffic',
+              'key': '379bf7ff-12',
+              'text': '支持 Homebrew 安装',
               'date': '2026-06-09',
               'version': '0.12.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.12.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-12-0-2026-06-09'
             },
             {
-              'key': '71cc3a4c-55',
-              'text': 'Enable micro compaction by default while keeping its opt-out flag',
+              'key': '48addf14-55',
+              'text': 'goals、background questions 和 sub-skill discovery 不再需要实验性开关即可使用',
               'date': '2026-06-09',
               'version': '0.12.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.12.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-12-0-2026-06-09'
             },
             {
-              'key': '82848b78-82',
-              'text': 'Make goals, background questions, and sub-skill discovery available without experimental opt-ins',
+              'key': 'f7458374-59',
+              'text': '支持标准环境变量 HTTP_PROXY / HTTPS_PROXY / ALL_PROXY / NO_PROXY （包括 SOCKS 代理）用于所有出站流量',
               'date': '2026-06-09',
               'version': '0.12.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.12.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-12-0-2026-06-09'
             },
             {
-              'key': '9fc1175c-79',
-              'text': 'Add the /swarm command for running agent swarms with live progress and rate-limit-aware retries',
+              'key': 'ffa43d4e-40',
+              'text': '新增 /swarm 命令，用于运行 Agent Swarm，支持实时进度展示和速率限制感知重试',
               'date': '2026-06-09',
               'version': '0.12.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.12.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-12-0-2026-06-09'
             },
             {
-              'key': '27b6e304-113',
-              'text': 'KIMI_CODE_NO_AUTO_UPDATE (legacy alias KIMI_CLI_NO_AUTO_UPDATE) — fully disables the update preflight (no check, background install, or prompt)',
+              'key': '4241aab4-116',
+              'text': '新增由环境变量 KIMI_CODE_EXPERIMENTAL_SUB_SKILL 控制的实验性子 Skill 发现能力。随附 sub-skill 内置包（ sub-skill.review 、 sub-skill.consolidate ），用于盘点 Skill 并将其整理为分层分组',
               'date': '2026-06-05',
               'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-11-0-2026-06-05'
             },
             {
-              'key': '2bd2b9a0-78',
-              'text': 'Show built-in skills as direct slash commands and group them ahead of external skill commands',
+              'key': '5bbba910-61',
+              'text': 'KIMI_CODE_NO_AUTO_UPDATE （旧别名 KIMI_CLI_NO_AUTO_UPDATE ）—— 完全禁用更新预检（不检查、不后台安装、不提示）',
               'date': '2026-06-05',
               'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-11-0-2026-06-05'
             },
             {
-              'key': '469e5f44-210',
-              'text': 'Add experimental sub-skill discovery gated by the KIMI_CODE_EXPERIMENTAL_SUB_SKILL environment variable. Ships the sub-skill builtin bundle (sub-skill.review, sub-skill.consolidate) for inventorying and consolidating skills into hierarchical groups',
+              'key': '61cf87c4-69',
+              'text': 'KIMI_MODEL_TEMPERATURE 、 KIMI_MODEL_TOP_P —— 全局应用于任意 kimi 供应商的采样参数（不绑定到 KIMI_MODEL_NAME ）',
               'date': '2026-06-05',
               'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-11-0-2026-06-05'
             },
             {
-              'key': '49056cf8-105',
-              'text': 'KIMI_MODEL_TEMPERATURE, KIMI_MODEL_TOP_P — sampling parameters applied globally to any kimi provider (not tied to KIMI_MODEL_NAME)',
+              'key': '86d938e8-35',
+              'text': '将内置 Skill 显示为直接斜杠命令，并将其分组排在外部 Skill 命令之前',
               'date': '2026-06-05',
               'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-11-0-2026-06-05'
             },
             {
-              'key': '59083d33-51',
-              'text': 'Migrate still-relevant environment variables from kimi-cli',
+              'key': '8fe25b4-8',
+              'text': '新增以下环境变量',
               'date': '2026-06-05',
               'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-11-0-2026-06-05'
             },
             {
-              'key': '99ba151c-83',
-              'text': 'Use a fixed 30-minute timeout for subagents and show concise resume instructions when they time out',
+              'key': '925a73f8-76',
+              'text': 'KIMI_MODEL_THINKING_KEEP —— Moonshot 的 preserved-thinking 透传（ thinking.keep ），仅在开启 Thinking 时注入',
               'date': '2026-06-05',
               'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-11-0-2026-06-05'
             },
             {
-              'key': 'daffa378-98',
-              'text': 'KIMI_MODEL_THINKING_KEEP — Moonshot preserved-thinking passthrough (thinking.keep), injected only while Thinking is on',
-              'date': '2026-06-05',
-              'version': '0.11.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.11.0'
-            },
-            {
-              'key': '2e11431c-56',
-              'text': 'Add a doctor command for validating Kimi Code configuration files',
+              'key': '91c95c4e-42',
+              'text': '新增内置的 update-config Skill —— 你现在可以让 Kimi 编辑它自己的配置文件',
               'date': '2026-06-04',
               'version': '0.10.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.10.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-10-0-2026-06-04'
             },
             {
-              'key': '53477f0b-209',
-              'text': 'Users now can prepare several goals for the agent to work on sequentially. The agent will pick up the next goal from the queue once the current goal is completed. Use /goal next to queue a goal and /goal next manage to review and change the queue interactively',
+              'key': '9d99ff6a-48',
+              'text': '新增 /reload 以重载当前会话并应用更新后的配置文件，以及 /reload-tui 以仅重载 TUI 偏好设置',
               'date': '2026-06-04',
               'version': '0.10.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.10.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-10-0-2026-06-04'
             },
             {
-              'key': '6505fbf5-68',
-              'text': 'Add the built-in update-config skill — you can now have Kimi edit its own config files',
+              'key': 'a5b5d3ee-27',
+              'text': '新增 doctor 命令，用于校验 Kimi Code 的配置文件',
               'date': '2026-06-04',
               'version': '0.10.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.10.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-10-0-2026-06-04'
             },
             {
-              'key': 'aeb57bc0-106',
-              'text': 'Add persistent experimental feature toggles and a TUI panel that applies confirmed changes by reloading the current session',
+              'key': 'c1d4273c-39',
+              'text': '新增持久化的实验性功能开关，以及一个 TUI 面板，确认后会通过重载当前会话来应用变更',
               'date': '2026-06-04',
               'version': '0.10.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.10.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-10-0-2026-06-04'
             },
             {
-              'key': 'c6cc0f2c-99',
-              'text': 'Add /reload to reload the current session and apply updated config files, plus /reload-tui to reload only TUI preferences',
+              'key': 'eb971540-96',
+              'text': '用户现在可以为 Agent 准备多个目标，让它按顺序逐一处理。当前目标完成后，Agent 会自动从队列中取出下一个目标。使用 /goal next 将目标加入队列，使用 /goal next manage 交互式查看和修改队列',
               'date': '2026-06-04',
               'version': '0.10.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.10.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-10-0-2026-06-04'
             },
             {
-              'key': '34cd2ed9-36',
-              'text': 'Log enabled experimental flags at startup',
+              'key': '59cb32e2-122',
+              'text': '支持 kimi acp 子命令：kimi-code 现在可通过 stdio 使用 Agent Client Protocol 0.23 ，因此 IDE（Zed、JetBrains AI Chat、自定义客户端）可以直接驱动会话；覆盖矩阵、Zed 配置和破坏性预发布说明见 kimi acp 子命令页面',
               'date': '2026-06-03',
               'version': '0.9.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.9.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-9-0-2026-06-03'
             },
             {
-              'key': '64dd04ec-65',
-              'text': 'Add /btw for side-channel conversations without steering the active main turn',
+              'key': '82a35c8c-43',
+              'text': '新增 /btw ，用于进行不会引导当前主轮次的侧通道对话，并允许 /btw 在输入问题前打开侧通道面板',
               'date': '2026-06-03',
               'version': '0.9.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.9.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-9-0-2026-06-03'
             },
             {
-              'key': '7aaf9a23-237',
-              'text': 'Add @moonshot-ai/acp-adapter and the kimi acp subcommand: kimi-code now speaks Agent Client Protocol 0.23 over stdio so IDEs (Zed, JetBrains AI Chat, custom clients) can drive sessions directly — coverage matrix, Zed configuration and breaking pre-release notes are in kimi acp Subcommand Page',
-              'date': '2026-06-03',
-              'version': '0.9.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.9.0'
+              'key': '1ddb4e98-116',
+              'text': '新增 kimi provider CLI 子命令，支持 add 、 remove 、 list 以及 catalog list / catalog add 操作，可在不启动终端界面的情况下导入和管理来自自定义 registry（api.json）或公开 models.dev 目录的供应商',
+              'date': '2026-06-02',
+              'version': '0.8.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
             },
             {
-              'key': 'c1a80cc8-56',
-              'text': 'Allow /btw to open the side-channel panel before entering a question',
-              'date': '2026-06-03',
-              'version': '0.9.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.9.0'
+              'key': '3beec234-39',
+              'text': '新增 /undo 斜杠命令，用于从对话历史中撤回上一条提示词，并在撤回时保持回放记录同步',
+              'date': '2026-06-02',
+              'version': '0.8.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
             },
             {
-              'key': '1e6ec2b5-121',
-              'text': 'Render scheduled reminders distinctly in the TUI, expose cron fired events to SDK clients, and report cron fire times with local timezone offsets',
+              'key': '6c441948-134',
+              'text': '新增实验性 goal 模式，用于需要多轮处理的较长任务。在启动 Kimi 前设置 KIMI_CODE_EXPERIMENTAL_GOAL_COMMAND=1 即可开启。 在终端界面中使用 /goal 让 Kimi 跨轮次持续专注于同一任务。例如： text /goal Fix the failing checkout test',
+              'date': '2026-06-02',
+              'version': '0.8.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
+            },
+            {
+              'key': '711215d7-77',
+              'text': '新增用于管理 AI 供应商的 /provider 命令，支持自定义 registry 导入，并引入标签页式模型选择器。该命令替代了已废弃的 /connect ，请改用 /provider',
               'date': '2026-06-02',
               'version': '0.7.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.7.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-7-0-2026-06-02'
             },
             {
-              'key': '4d8691b8-62',
-              'text': 'Add a kimi upgrade command for manually checking and upgrade Kimi Code CLI',
+              'key': '7a7f82df-20',
+              'text': '新增后台自动更新，可在 tui.toml 中关闭',
               'date': '2026-06-02',
               'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
             },
             {
-              'key': '7b7ee084-110',
-              'text': 'Add /undo slash command to withdraw the last prompt from conversation history, and keep replay records in sync when a prompt is undone',
+              'key': '828db0ec-29',
+              'text': '新增后台结构化提问，让 Agent 在等待用户回答时也能继续工作',
               'date': '2026-06-02',
               'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
             },
             {
-              'key': 'b83b8c10-292',
-              'text': 'Add KIMI_MODEL_ADAPTIVE_THINKING (and a matching adaptive_thinking model-alias field) to force adaptive thinking (thinking: { type: \'adaptive\' }) on or off, overriding the Anthropic model-name version inference. This lets custom-named staff endpoints that back an adaptive-capable model opt in even when the model name does not encode a parseable Claude version',
+              'key': 'b735b764-35',
+              'text': '新增 kimi upgrade 命令，用于手动检查并升级 Kimi Code CLI',
+              'date': '2026-06-02',
+              'version': '0.8.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
+            },
+            {
+              'key': 'd626d108-27',
+              'text': '允许子 Agent 使用在其父 Agent 上注册的自定义工具',
+              'date': '2026-06-02',
+              'version': '0.8.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
+            },
+            {
+              'key': 'd8721cbe-30',
+              'text': '新增审批生命周期 hook 事件，用于观察待处理和已完成的权限提示',
+              'date': '2026-06-02',
+              'version': '0.8.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
+            },
+            {
+              'key': 'eafd4c81-178',
+              'text': '新增 KIMI_MODEL_ADAPTIVE_THINKING （以及对应的 adaptive_thinking 模型别名字段），用于强制开启或关闭自适应 thinking（ thinking: { type: \'adaptive\' } ），覆盖基于 Anthropic 模型名的版本推断。这样一来，背后由支持自适应能力的模型驱动、且使用自定义名称的兼容端点，即使模型名没有编码出可解析的 Claude 版本，也能选择启用该能力',
               'date': '2026-06-02',
               'version': '0.7.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.7.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-7-0-2026-06-02'
             },
             {
-              'key': 'cbc503cf-77',
-              'text': 'Add background structured questions so agents can continue while waiting for user answers',
-              'date': '2026-06-02',
-              'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
-            },
-            {
-              'key': 'd8c78d28-57',
-              'text': 'Add background automatic upgrades, which can be disabled in tui.toml',
-              'date': '2026-06-02',
-              'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
-            },
-            {
-              'key': 'e34d3f20-185',
-              'text': 'Add kimi provider CLI subcommand with add, remove, list, and catalog list / catalog add actions, so providers from a custom registry (api.json) or the public models.dev catalog can be imported and managed without launching the TUI',
-              'date': '2026-06-02',
-              'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
-            },
-            {
-              'key': 'e7ff6410-100',
-              'text': 'Add /provider command for managing AI providers, support custom registry imports, and introduce a tabbed model selector',
+              'key': 'ed637fc0-55',
+              'text': '在终端界面中以独立样式渲染定时提醒，向 SDK 客户端暴露 cron 触发事件，并在报告 cron 触发时间时附带本地时区偏移',
               'date': '2026-06-02',
               'version': '0.7.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.7.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-7-0-2026-06-02'
             },
             {
-              'key': 'f00d4e14-78',
-              'text': 'Add approval lifecycle hook events for observing pending and completed permission prompts',
+              'key': 'f7186dda-22',
+              'text': '支持用 glob 搜索显式的绝对路径（工作空间之外）',
               'date': '2026-06-02',
               'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
-            },
-            {
-              'key': 'f5cdb0fc-445',
-              'text': 'Add experimental goal mode for longer tasks that need more than one turn. Turn it on with KIMI_CODE_EXPERIMENTAL_GOAL_COMMAND=1 before you start Kimi Use `/goal <objective>` in the TUI when you want Kimi to keep working on one task across turns. For example: ```text /goal Fix the failing checkout test ``` Kimi shows the goal in the TUI and keeps progress visible while it works. Use `/goal status`, `/goal pause`, `/goal resume`, `/goal cancel`, and `/goal replace <objective>` to manage the goal. This feature is still experimental. Try it and tell us what would make it more useful.',
-              'date': '2026-06-02',
-              'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
-            },
-            {
-              'key': 'fba2e0c3-81',
-              'text': 'Append the current todo list as markdown to compaction summaries before writing them to history',
-              'date': '2026-06-02',
-              'version': '0.8.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.8.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-8-0-2026-06-02'
             }
           ],
-          'count': 59
+          'count': 61
         },
         {
           'id': 'qoder-cn-ide',
@@ -14548,7 +14094,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-05',
       'label': '2026年5月',
-      'count': 117,
+      'count': 120,
       'toolCount': 7,
       'multi': [],
       'tools': [
@@ -15144,115 +14690,136 @@ window.CHANGELOG_MONTHLY = {
           'name': 'Kimi Code',
           'vendor': 'Moonshot AI',
           'status': 'ok',
-          'changelogUrl': 'https://github.com/MoonshotAI/kimi-code/releases',
+          'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
           'items': [
             {
-              'key': '74530aa9-98',
-              'text': 'Remove the default per-turn step limit of 1000. Users can still set max_steps_per_turn in config to enforce a custom limit',
+              'key': '7a8b4e8-79',
+              'text': '支持直接从 GitHub 仓库 URL 安装 plugin，并在 plugin 管理器中展示每次安装的来源和信任级别（kimi-official、curated、third-party）',
               'date': '2026-05-29',
               'version': '0.6.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.6.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-6-0-2026-05-29'
             },
             {
-              'key': '8a7d9fdc-173',
-              'text': 'Add a KIMI_MODEL_* environment-variable channel that lets you run Kimi Code against a specific model (provider type, base URL, API key, context size, capabilities, and thinking settings) without editing config.toml',
+              'key': '83c70600-86',
+              'text': '新增 KIMI_MODEL_* 环境变量通道，让你无需编辑 config.toml 即可让 Kimi Code 使用指定模型（供应商类型、base URL、API 密钥、上下文大小、能力以及 thinking 设置）',
               'date': '2026-05-29',
               'version': '0.6.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.6.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-6-0-2026-05-29'
             },
             {
-              'key': '934bd36e-134',
-              'text': 'Install plugins directly from GitHub repository URLs, and surface each install\'s origin and trust level (kimi-official, curated, third-party) in the plugin manager',
-              'date': '2026-05-29',
-              'version': '0.6.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.6.0'
-            },
-            {
-              'key': '9da306bc-131',
-              'text': 'Support querying sessions by sessionId or workDir in listSessions, and show a helpful cd command when resuming a session from a different working directory',
-              'date': '2026-05-29',
-              'version': '0.6.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.6.0'
-            },
-            {
-              'key': '468c62a8-54',
-              'text': 'Add /auto slash command and --auto CLI flag for auto permission mode',
+              'key': '596385d9-32',
+              'text': '新增 /auto 斜杠命令和 --auto CLI 参数，用于启用 auto 权限模式',
               'date': '2026-05-28',
               'version': '0.5.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.5.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-5-0-2026-05-28'
             },
             {
-              'key': 'fe5b772c-262',
-              'text': 'Add scheduled tasks You can now ask the assistant to remind you at a specific time, run a task on a recurring cron schedule (for example, check a deploy every 5 minutes or run a daily report every weekday at 9am), or come back on its own in a few minutes to continue what it was doing. Schedules use the standard 5-field cron syntax.',
+              'key': 'd6410650-106',
+              'text': '新增定时任务： 你现在可以让 Agent 在指定时间提醒你、按重复的 cron 计划运行任务（例如每 5 分钟检查一次部署，或每个工作日上午 9 点生成一份日报），也可以让它在几分钟后自动回来继续之前的工作。 定时任务使用标准的 5 字段 cron 语法',
               'date': '2026-05-28',
               'version': '0.5.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.5.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-5-0-2026-05-28'
             },
             {
-              'key': '2a93a734-63',
-              'text': 'Add /export-md slash command to export the current session as a Markdown file',
+              'key': 'dc747c0-48',
+              'text': '在 Write 和 Edit 的审批提示中显示文件内容与 diff，并通过 Ctrl-E 在专用的全屏查看器中打开',
+              'date': '2026-05-28',
+              'version': '0.5.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-5-0-2026-05-28'
+            },
+            {
+              'key': '4c6f49da-64',
+              'text': '新增用户全局的 plugin 安装能力，包括交互式 plugin 管理、plugin 提供的 Skill，以及 plugin 自带的 MCP server',
               'date': '2026-05-27',
               'version': '0.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-4-0-2026-05-27'
             },
             {
-              'key': '8850e03c-118',
-              'text': 'Rework tool permissions: reads outside cwd no longer prompt, session approvals match the exact call, and path-based rules are case-insensitive',
+              'key': '5bba3fec-44',
+              'text': '新增 /export-debug-zip 斜杠命令，可直接在终端界面将当前会话导出为调试用 ZIP 归档',
               'date': '2026-05-27',
               'version': '0.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-4-0-2026-05-27'
             },
             {
-              'key': '9776f208-102',
-              'text': 'Add user-global plugin installation, interactive plugin management, plugin-provided skills, and plugin-owned MCP servers',
+              'key': '9bb46c0c-49',
+              'text': '重做工具权限：cwd 之外的读取不再触发提示，会话级授权按完整调用精确匹配，基于路径的规则改为大小写不敏感',
               'date': '2026-05-27',
               'version': '0.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-4-0-2026-05-27'
             },
             {
-              'key': 'b557425c-175',
-              'text': 'Expand folded paste markers on second paste. When the cursor is on a paste marker (e.g. paste [ +15 lines]) and the user pastes again, the marker expands back to the original content instead of inserting new clipboard data',
+              'key': 'f81a760e-33',
+              'text': '新增 /export-md 斜杠命令，可将当前会话导出为 Markdown 文件',
               'date': '2026-05-27',
               'version': '0.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-4-0-2026-05-27'
             },
             {
-              'key': 'f03d24cf-90',
-              'text': 'Add /export-debug-zip slash command to export the current session as a debug ZIP archive directly from the TUI',
+              'key': 'fcd7df48-16',
+              'text': '在第二次粘贴时展开折叠的粘贴标记',
               'date': '2026-05-27',
               'version': '0.4.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.4.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-4-0-2026-05-27'
             },
             {
-              'key': '344788a0-66',
-              'text': 'Add a /connect command that configures a provider and model from a model catalog',
+              'key': '3b8ab2c8-36',
+              'text': '在 stream-json 输出格式中以结构化 meta 消息形式发出会话恢复提示',
               'date': '2026-05-26',
               'version': '0.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.2.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26'
             },
             {
-              'key': '34c193b4-228',
-              'text': '/logout now opens a picker so you can choose which provider to log out of, instead of always logging out the one tied to the current model. The current provider is highlighted by default, so pressing Enter matches the previous behavior. The command is also available as /disconnect',
+              'key': '41af45f8-94',
+              'text': '/logout 现在会打开一个选择器，让你选择要登出的供应商，而不再总是登出当前模型所对应的供应商。当前供应商默认高亮，因此按 Enter 即可保持与此前一致的行为。该命令同时以 /disconnect 别名提供',
               'date': '2026-05-26',
               'version': '0.3.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.3.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-3-0-2026-05-26'
             },
             {
-              'key': 'c7490460-132',
-              'text': 'Flatten tool call data by inlining tool names and arguments at the top level, and limit legacy record migration so it only rewrites matching tool call payloads',
+              'key': '4fb083e8-26',
+              'text': '新增 /connect 命令，可从模型目录中配置供应商和模型',
               'date': '2026-05-26',
               'version': '0.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.2.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26'
             },
             {
-              'key': 'e9fd9989-144',
-              'text': 'The /connect provider and model pickers now support type-to-search filtering, and long lists are paginated. The /model picker is also paginated when many models are configured',
+              'key': '58cb402c-190',
+              'text': 'openai 供应商现在开箱即用地支持 OpenAI 兼容的 reasoner 模型：自动识别响应中的 Thinking 字段（ reasoning_content / reasoning_details / reasoning ），并在历史包含 Thinking 时自动注入 reasoning_effort 。DeepSeek、Qwen、One API 等网关服务无需再手工设置 reasoning_key ，该字段仍可作为非标准网关的显式覆盖项',
+              'date': '2026-05-26',
+              'version': '0.3.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-3-0-2026-05-26'
+            },
+            {
+              'key': '8adca670-20',
+              'text': '在会话回放过程中新增 wire 记录迁移处理',
               'date': '2026-05-26',
               'version': '0.2.0',
-              'url': 'https://github.com/MoonshotAI/kimi-code/releases/tag/%40moonshot-ai/kimi-code%400.2.0'
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26'
+            },
+            {
+              'key': '9c4eceb0-60',
+              'text': '在首次启动迁移期间，将用户 Skill 从 ~/.kimi/skills/ 迁移到 ~/.kimi-code/skills/ ；已存在的目标 Skill 会被保留',
+              'date': '2026-05-26',
+              'version': '0.2.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26'
+            },
+            {
+              'key': 'b97b8398-28',
+              'text': '在终端界面输入框中新增 Ctrl-J 作为插入换行的额外快捷键',
+              'date': '2026-05-26',
+              'version': '0.2.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26'
+            },
+            {
+              'key': 'e376a914-57',
+              'text': '/connect 的供应商和模型选择器现支持键入即搜索过滤，长列表会自动分页；配置了较多模型时， /model 选择器同样支持分页',
+              'date': '2026-05-26',
+              'version': '0.2.0',
+              'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26'
             }
           ],
-          'count': 15
+          'count': 18
         },
         {
           'id': 'qoder-cn-ide',

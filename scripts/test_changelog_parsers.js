@@ -1,9 +1,10 @@
 // 更新日志解析器的机器用例 / 单工具探针。
 // 用法:
 //   node scripts/test_changelog_parsers.js          # 离线 fixture 用例(CI 可跑)
-//   node scripts/test_changelog_parsers.js --fetch # 追加新 TRAE 主源 + 备源实网探针
+//   node scripts/test_changelog_parsers.js --fetch # 追加新 TRAE 主源 + 备源、Kimi Code 文档站实网探针
 //
-// 覆盖 2026-11-18 的变更:TraeWork 移除、新 TRAE(trae.cn/changelog)接入。
+// 覆盖 2026-11-18 的变更:TraeWork 移除、新 TRAE(trae.cn/changelog)接入、
+// Kimi Code 数据源由 GitHub Releases 改为 kimi.com 文档站更新日志页。
 // 离线用例只断言结构契约,不依赖网络;--fetch 用于发布前交叉验证真实响应。
 "use strict";
 const assert = require("assert");
@@ -51,7 +52,40 @@ assert.ok(entries[0].body.indexOf("type-jZDufH") < 0, "正文不应混入元数�
 assert.ok(ch.parseTraeCn("<html><body>无版本区块</body></html>", tool).length === 0,
   "无版本区块应返回空数组");
 
-console.log("offline parser cases OK: trae fixture 1 条, traework 已移除");
+// ===== Kimi Code:kimi.com 文档站(VitePress 标题区块) =====
+const kimi = CONFIG.changelog.tools.filter(function (t) { return t.id === "kimi-code"; })[0];
+assert.ok(kimi, "config 里必须存在 kimi-code 工具");
+assert.strictEqual(kimi.kind, "kimi", "kimi-code 应使用文档站解析器");
+assert.strictEqual(kimi.url, "https://www.kimi.com/code/docs/kimi-code-cli/changelog.html",
+  "kimi-code 主源应为官方文档站更新日志页");
+assert.strictEqual(kimi.kind === "github", false, "kimi-code 不应再走 GitHub Releases");
+
+const kimiFixture = [
+  '<h1 id="变更记录" tabindex="-1">变更记录</h1>',
+  '<h2 id="_2-6-3-2026-11-17" tabindex="-1">2.6.3（2026-11-17）' +
+    '<a class="header-anchor" href="#_2-6-3-2026-11-17">\u200b</a></h2>',
+  '<h3 id="修复" tabindex="-1">修复</h3>',
+  '<ul><li>修复前台 Shell 命令输出重复的问题。</li><li>修复后台通知误停任务的问题。</li></ul>',
+  '<h2 id="_2-6-2-2026-11-14" tabindex="-1">2.6.2（2026-11-14）</h2>',
+  '<h3 id="新功能" tabindex="-1">新功能</h3>',
+  '<ul><li>新增自定义 registry provider 支持。</li></ul>'
+].join("\n");
+
+const kimiEntries = ch.parseDocHeadings(kimiFixture, kimi);
+assert.strictEqual(kimiEntries.length, 2, "Kimi fixture 应解析出 2 条");
+assert.strictEqual(kimiEntries[0].version, "2.6.3", "Kimi 版本号应对");
+assert.strictEqual(kimiEntries[0].date, "2026-11-17", "全角括号内的日期应对");
+assert.deepStrictEqual(kimiEntries[0].tags, ["修复"], "Kimi 小节标签应对");
+assert.strictEqual(kimiEntries[0].url, kimi.changelogUrl + "#_2-6-3-2026-11-17",
+  "Kimi 条目应深链到版本锚点");
+assert.ok(kimiEntries[0].body.indexOf("- 修复前台 Shell 命令输出重复的问题。") >= 0,
+  "Kimi 列表项应转成 - 行");
+assert.ok(kimiEntries[0].body.indexOf("2.6.2") < 0,
+  "正文不应混入下一个版本标题");
+assert.strictEqual(ch.parseDocHeadings("<html><body>无版本区块</body></html>", kimi).length, 0,
+  "Kimi 无版本区块应返回空数组");
+
+console.log("offline parser cases OK: trae fixture 1 条, traework 已移除; kimi fixture 2 条");
 
 function get(url) {
   return new Promise(function (resolve, reject) {
@@ -84,8 +118,17 @@ if (process.argv.indexOf("--fetch") >= 0) {
     const fb = ch.parseTraeBlocks(fallback.body, tool);
     assert.ok(fb.length > 0, "TRAE 备源应解析出 TRAE 产品线条目");
 
+    const kimiLive = await get(kimi.url);
+    assert.strictEqual(kimiLive.status, 200, "Kimi Code 文档站应返回 200");
+    const kl = ch.parseDocHeadings(kimiLive.body, kimi);
+    assert.ok(kl.length > 0, "Kimi Code 文档站应解析出条目");
+    assert.ok(kl[0].date >= "2026-11-17", "Kimi Code 最新日期应 >= 2026-11-17");
+    assert.ok(kl.length < 2 || kl[0].body.indexOf(kl[1].title) < 0,
+      "Kimi 正文不应混入下一个版本标题");
+
     console.log("live probe OK: 主源 " + live.length + " 条,最新 " + live[0].date + " v" + live[0].version +
-      ";备源 " + fb.length + " 条,最新 " + fb[0].date + " v" + fb[0].version);
+      ";备源 " + fb.length + " 条,最新 " + fb[0].date + " v" + fb[0].version +
+      ";Kimi " + kl.length + " 条,最新 " + kl[0].date + " v" + kl[0].version);
   })().catch(function (e) {
     console.error("live probe FAILED: " + e.message);
     process.exit(1);

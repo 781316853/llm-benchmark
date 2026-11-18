@@ -2690,8 +2690,8 @@
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
   // data/changelog.js 含 12 个工具的全量历史(实测约 3.4MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
-  var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261118a";
-  var CL_MONTHLY_SRC = SITE_BASE + "data/changelog-monthly.js?v=20261118a";
+  var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261118b";
+  var CL_MONTHLY_SRC = SITE_BASE + "data/changelog-monthly.js?v=20261118b";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
   // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
   // 换戳重注入即可原地恢复,不必刷整页。

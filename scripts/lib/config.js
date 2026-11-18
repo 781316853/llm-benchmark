@@ -807,8 +807,10 @@ module.exports = {
     //               备源是多产品线混排,由 tools[].products 按标签挑出本卡要收的那条线
     //   zcode    —— zcode.z.ai/changelog 服务端渲染(日期为中文「2026年9月22日」)
     //   codebuddy—— codebuddy.cn/docs 文档页服务端渲染(CodeBuddy 与 WorkBuddy 同框架共用)
-    // 各家源站可用性均于 2026-09-24 实测确认;Kimi 官方文档站是 VitePress 客户端渲染
-    // (HTML 内 0 个日期),故 Kimi Code 走 GitHub 而非文档站。
+    //   kimi     —— kimi.com/code/docs 文档站(VitePress)更新日志页服务端渲染,
+    //               版本标题自带 id 锚点,复用标题区块解析器
+    // 各家源站可用性均于 2026-09-24 实测确认。Kimi 旧文档站是客户端渲染(HTML 内 0 个日期),
+    // 当时改用 GitHub Releases;2026-11-18 起新版文档站已服务端渲染,改回官方文档站。
     tools: [
       { id: "codex", name: "Codex", vendor: "OpenAI", kind: "github",
         repo: "openai/codex",
@@ -820,9 +822,9 @@ module.exports = {
         // sst/opencode 已 301 改名为 anomalyco/opencode
         repo: "anomalyco/opencode",
         changelogUrl: "https://github.com/anomalyco/opencode/releases" },
-      { id: "kimi-code", name: "Kimi Code", vendor: "Moonshot AI", kind: "github",
-        repo: "MoonshotAI/kimi-code",
-        changelogUrl: "https://github.com/MoonshotAI/kimi-code/releases" },
+      { id: "kimi-code", name: "Kimi Code", vendor: "Moonshot AI", kind: "kimi",
+        url: "https://www.kimi.com/code/docs/kimi-code-cli/changelog.html",
+        changelogUrl: "https://www.kimi.com/code/docs/kimi-code-cli/changelog.html" },
       // DeepSeek Harness(dsh)是开发者预览版:2026-08-13 开源至 2026-10-17 共 31 个 release,
       // 全部带 -alpha/-rc 尾缀且 API 均标 prerelease,npm 的 latest 也是 0.2.0-rc.2,
       // 按全局「仅正式版」口径会一条都收不到、整卡为空 —— 单工具放开预发布。

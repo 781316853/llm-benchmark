@@ -71,7 +71,8 @@ if (!tool) {
   };
   const header =
     "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 4 次)\n" +
-    "// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;" +
+    "// 来源:Codex/Claude Code/OpenCode/DeepSeek Harness 取 GitHub Releases;" +
+    "Kimi Code 取 kimi.com 官方文档站更新日志页;" +
     "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
     "TraeCode 取 docs.trae.cn 独立日志页;TRAE 取 trae.cn/changelog(抓不到时转备源 trae.ai);" +
     "ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +

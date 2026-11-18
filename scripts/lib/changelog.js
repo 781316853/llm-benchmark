@@ -17,6 +17,8 @@
 //   zcode     zcode.z.ai/changelog 服务端渲染;日期是中文「2026年9月22日」。
 //   codebuddy codebuddy.cn/docs 文档页(Docusaurus / VitePress)的服务端渲染标题区块,
 //             标题自带 id 锚点 -> 可做版本级深链;CodeBuddy 与 WorkBuddy 共用此解析器。
+//   kimi      kimi.com/code/docs 文档站(VitePress)更新日志页,同上复用标题区块解析器;
+//             2026-11-18 起官方文档站已服务端渲染,替代原先的 GitHub Releases 源。
 //
 // fail-soft:单个工具抓取/解析失败绝不影响其余工具 —— fetchTool 永不外抛,失败时用旧文件里
 // 该工具的条目回填并标 status:"stale";整模块抛错由 fetch_all.js 的 try/catch 兜底,
@@ -478,7 +480,7 @@ function parseZcode(html, tool) {
   return out;
 }
 
-// ===== 解析器:codebuddy.cn 文档页(CodeBuddy 与 WorkBuddy 共用) =====
+// ===== 解析器:文档站标题区块(VitePress;CodeBuddy / WorkBuddy / Kimi Code 共用) =====
 // Docusaurus / VitePress 渲染的 markdown 标题区块:
 //   <h3 id="_4-12-1-2026-09-20">4.12.1 (2026-09-20) <a class="header-anchor">…</a></h3>
 //   <p><strong>新增功能</strong></p><ul><li>…</li></ul>
@@ -492,10 +494,11 @@ function parseDocHeadings(html, tool) {
     var vm = text.match(/\d+\.\d+(?:\.\d+)*/);
     var date = normDate(text);
     if (!vm || !date) continue;
-    hits.push({ version: vm[0], title: text, id: m[2], dateRaw: (text.match(/20\d\d[-/]\d{1,2}[-/]\d{1,2}/) || [date])[0], at: m.index + m[0].length });
+    hits.push({ version: vm[0], title: text, id: m[2], dateRaw: (text.match(/20\d\d[-/]\d{1,2}[-/]\d{1,2}/) || [date])[0], start: m.index, at: m.index + m[0].length });
   }
   hits.forEach(function (h, i) {
-    var end = i + 1 < hits.length ? hits[i + 1].at : Math.min(s.length, h.at + 60000);
+    // 正文止于下个版本标题的起点;只到「标题标签之后」会把下一个版本号混进本条正文
+    var end = i + 1 < hits.length ? hits[i + 1].start : Math.min(s.length, h.at + 60000);
     var seg = s.slice(h.at, end);
     var it = mkEntry(tool, {
       version: h.version,
@@ -695,7 +698,7 @@ async function fetchEntries(tool) {
   var html = await transport.fetchWithRetry(tool.url, { retries: 2 });
   if (tool.kind === "qoder") return parseQoderCn(html, tool);
   if (tool.kind === "zcode") return parseZcode(html, tool);
-  if (tool.kind === "codebuddy") return parseDocHeadings(html, tool);
+  if (tool.kind === "codebuddy" || tool.kind === "kimi") return parseDocHeadings(html, tool);
   throw new Error("未知 kind: " + tool.kind);
 }
 
@@ -928,7 +931,8 @@ async function updateChangelog() {
   };
   var header =
     "// AI Agent 工具更新日志快照(由 scripts/lib/changelog.js 每日抓取维护,每日 4 次)\n" +
-    "// 来源:Codex/Claude Code/OpenCode/Kimi Code/DeepSeek Harness 取 GitHub Releases;" +
+    "// 来源:Codex/Claude Code/OpenCode/DeepSeek Harness 取 GitHub Releases;" +
+    "Kimi Code 取 kimi.com 官方文档站更新日志页;" +
     "Qoder CN / Qoder CN IDE 各取 docs.qoder.cn 对应更新日志页;" +
     "TraeCode 取 docs.trae.cn 独立日志页;TRAE 取 trae.cn/changelog(抓不到时转备源 trae.ai);" +
     "ZCode/CodeBuddy/WorkBuddy 取各官网更新日志页\n" +
