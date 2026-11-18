@@ -2,13 +2,13 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-17',
+  'updated': '2026-11-18',
   'stats': {
-    'total': 198,
-    'knownVendor': 198,
+    'total': 197,
+    'knownVendor': 197,
     'otherVendor': 0,
-    'skippedManual': 1523,
-    'skippedNonModel': 4
+    'skippedManual': 1529,
+    'skippedNonModel': 5
   },
   'canonical': [
     {
@@ -132,15 +132,6 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Claude 4.1 Opus Thinking',
-      'vendor': 'Anthropic',
-      'color': '#E0855F',
-      'aliases': [
-        'Claude 4.1 Opus Thinking'
-      ],
-      'auto': true
-    },
-    {
       'id': 'Claude Mythos 5.1',
       'vendor': 'Anthropic',
       'color': '#E0855F',
@@ -206,16 +197,6 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'DeepSeek V3.1 (Reasoning)',
-      'vendor': 'DeepSeek',
-      'color': '#6E8CFF',
-      'aliases': [
-        'DeepSeek V3.1 (Reasoning)',
-        'DeepSeek-V3.1'
-      ],
-      'auto': true
-    },
-    {
       'id': 'DeepSeek V3.2 Speciale',
       'vendor': 'DeepSeek-AI',
       'color': '#9298A1',
@@ -249,6 +230,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'DeepSeek-V3-0324'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'DeepSeek-V3.1',
+      'vendor': 'DeepSeek',
+      'color': '#6E8CFF',
+      'aliases': [
+        'DeepSeek-V3.1'
       ],
       'auto': true
     },
@@ -1118,8 +1108,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Ministral 3 14B',
-        'Ministral 3 14B (Reasoning)'
+        'Ministral 3 14B'
       ],
       'auto': true
     },
@@ -1128,8 +1117,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Ministral 3 3B',
-        'Ministral 3 3B (Reasoning)'
+        'Ministral 3 3B'
       ],
       'auto': true
     },
@@ -1138,8 +1126,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Ministral 3 8B',
-        'Ministral 3 8B (Reasoning)'
+        'Ministral 3 8B'
       ],
       'auto': true
     },
@@ -1194,8 +1181,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Mistral Small 4',
-        'Mistral Small 4 (Reasoning)'
+        'Mistral Small 4'
       ],
       'auto': true
     },
@@ -1593,8 +1579,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5 397B',
-        'Qwen3.5 397B (Reasoning)'
+        'Qwen3.5 397B'
       ],
       'auto': true
     },

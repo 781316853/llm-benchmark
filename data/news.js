@@ -2,48 +2,110 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-17',
+  'updated': '2026-11-18',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
-    '前瞻与传闻',
     '产品应用'
   ],
   'items': [
     {
-      'date': '2026-11-17',
-      'title': '阿里巴巴发布 Qwen4-Max：官方称成本降 58%',
-      'brief': '阿里巴巴正式发布新一代基座大模型 Qwen4-Max ，基于全新稀疏 MoE 架构，主干参数 2.4T ，每个 token 激活 71B 参数，并配有 328B N-gram Embedding 参数，支持原生视觉与百万 token 上下文窗口，预训练全程未出现 loss spike 。',
-      'url': 'https://qwen.ai/blog?id=qwen4-max',
+      'date': '2026-11-18',
+      'title': 'OpenAI 发布 GPT-6.2 Astra 与 Sol，分别面向复杂任务和日常工作',
+      'brief': 'OpenAI 发布 GPT-6.2 Astra 和 Sol 。',
+      'url': 'https://openai.com/index/introducing-gpt-6-2-astra-sol/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-17',
-      'title': '腾讯混元推出 Hy4 flash，官方称迄今最高性价比',
-      'brief': '腾讯混元 宣布推出 Hy4 flash ，称其为迄今为止最高性价比的 Hy 模型。该模型总参数量 224B （其中 64B Engram 参数），激活参数 12B ，支持多模态和 1M 上下文长度。',
-      'url': 'https://hunyuan.tencent.com/research/100145?langVersion=zh',
+      'date': '2026-11-18',
+      'title': '微软在 Ignite 上公布七款新模型',
+      'brief': '微软在 Ignite 大会发布七款 MAI 新模型，主打低价高性能。',
+      'url': 'https://microsoft.ai/news/microsoft-ignite-2026-mai-keynote/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-17',
-      'title': 'Antigravity 上下文窗口翻倍，压缩次数大减',
-      'brief': 'Antigravity 负责人 Varun Mohan 宣布，已将 Argon 、 Carbon 和 Hydrogen 的上下文窗口扩大一倍，每轮用户交互的压缩次数降至原先的约 1/3.5 。压缩指上下文空间不足时压缩已有内容、模型再重新读取的过程。',
-      'url': 'https://x.com/_mohansolo/status/2122119826575646918',
+      'date': '2026-11-18',
+      'title': 'Gemini Tasks 在美日韩加澳印六国免费开放',
+      'brief': 'Google 宣布， Gemini 的 Tasks 功能在 美国、日本、韩国、加拿大、澳大利亚和印度 向数亿符合条件用户免费开放，免费用户都能用新模型 Gemini 4 Hydrogen 运行任务。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-17',
-      'title': 'OpenAI 启动嵌入式评估，引入外部机构审查安全',
-      'brief': 'OpenAI 宣布与 Apollo Research 、 METR 、 Transluce 和 Goodfire 四家机构签署协议，启动第一阶段嵌入式评估，让外部专家深入接触内部模型和系统，长期评估模型对齐和安全防护。',
-      'url': 'https://openai.com/index/our-first-phase-of-embedded-assessments',
+      'date': '2026-11-18',
+      'title': 'Antigravity 重置所有模型配额，Carbon 首词元响应提速',
+      'brief': '为庆祝 Antigravity 上线一周年， Antigravity 负责人 Varun Mohan 发帖称，团队将为所有用户重置全部模型的使用配额。',
+      'url': 'https://x.com/_mohansolo/status/2122836883877347836',
       'source': '橘鸦AI早报',
       'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'OpenCode Go GLM 5.3 额度升至 200 美元',
+      'brief': 'OpenCode 宣布 Operation GLM 进入第二阶段，面向所有 OpenCode Go 订阅者， 10 美元 即可获得 200 美元 的 GLM 5.3 使用额度，价格维持不变，该阶段目前已生效，入口为 OpenCode Console 的 Go 页面。此前上线的第一阶段提供的额度为 100 美元 ，价格相同。',
+      'url': 'https://x.com/opencode/status/2122763721923559595',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-18',
+      'title': '可灵 AI 发布 Kling Image 4.0',
+      'brief': '可灵 AI 发布图像创作模型 Kling Image 4.0 ，同时向企业客户和开发者开放 API 。',
+      'url': 'https://mp.weixin.qq.com/s/p3_DIBRUUgmxShjD5Wp27w',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-18',
+      'title': '商汤正式开源 SenseNova-Loop-9B',
+      'brief': '商汤 正式开源多模态模型 SenseNova-Loop-9B ，权重和代码以 Apache 2.0 许可在 Hugging Face 和 GitHub 开放，首日提供官方 AWQ 4-bit 量化版。',
+      'url': 'https://github.com/OpenSenseNova/SenseNova-Loop',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Google AI Studio 更新 Android 应用开发功能',
+      'brief': 'Google AI Studio 更新 Android 应用开发功能，支持通过 Firebase 为应用添加跨设备数据同步、用户登录和 Gemini 调用。',
+      'url': 'https://x.com/GoogleAIStudio/status/2122752241887068565',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Google AI Studio Build 支持自定义域名',
+      'brief': 'Google AI Studio 在 Build 中推出网页应用的自定义域名功能。用户可在发布面板购买并连接域名，也可复用此前在 AI Studio 为同一 Google Cloud 项目购买的域名。',
+      'url': 'https://aistudio.google.com/docs/aistudio-custom-domains',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Google DeepMind 推出机器人插件',
+      'brief': 'Google DeepMind 推出 Google Antigravity 机器人插件，配合上周发布的 Gemini 4 Hydrogen 模型，可连接支持的机械臂，在 MuJoCo 仿真中练习，再用对话执行现实任务。',
+      'url': 'https://x.com/GoogleDeepMind/status/2122767528933925363',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Claude Code 实验性 Code Mode 上线',
+      'brief': 'ClaudeDevs 发帖介绍 Claude Code 的实验性功能 Code Mode ：Claude 不再逐个直接调用工具，而是编写 JavaScript 脚本交由 Claude Code 在会话中运行，代码可并行执行命令，长命令后台运行时还能继续与 Claude 对话。',
+      'url': 'http://code.claude.com/docs/en/code-mode',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-18',
+      'title': 'Claude Platform 上线关联计费测试版',
+      'brief': 'Anthropic 在 Claude Platform 以测试版上线关联计费（ Linked billing ）。终端客户把自己的 Claude 组织与平台关联一次后，就能用自己的组织支付 Claude API 用量，无需向平台共享 API key ；平台可按请求选择付费方，且无需自建计量与开票。已支持 Asana、Linear、Ramp、Warp 等 19 个平台。客户可为每个平台设月度支出上限，并随时解除关联。客户组织须直接向 An…',
+      'url': 'https://claude.com/blog/linked-billing-on-claude-platform',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
     },
     {
       'date': '2026-11-17',
@@ -63,38 +125,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-17',
-      'title': 'Tibo：Codex 容量报错或已修复',
-      'brief': 'OpenAI Codex 团队成员 Tibo 在 X 平台发文称，一直困扰用户的 model at capacity 报错可能已经修复。这类报错提示模型容量已满，此前反复出现，困扰了不少 Codex 用户。 Tibo 表示， Codex 团队这次可能已经真正解决了这一问题。',
-      'url': 'https://x.com/thsottiaux/status/2122206990101536852',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-17',
-      'title': 'Claude Code 适配 iPhone Duo 模拟器',
-      'brief': 'Claude Devs 宣布， Claude Code 桌面版现在以公开测试版支持在 iOS 模拟器 的 iPhone Duo 设备上测试应用，需 macOS 和 Xcode 27.1 或更高版本。',
-      'url': 'https://code.claude.com/docs/en/desktop-ios-simulator',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-17',
-      'title': 'Perplexity Monitor API 现已开放',
-      'brief': 'Perplexity 正式推出 Monitor API ，可按设定周期追踪一个话题的新进展，或跟踪最多 10 个指定网页的文本变化，发现相关更新就通过 webhook 推送给应用。',
-      'url': 'https://x.com/perplexitydevs/status/2122408441042149853',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-17',
-      'title': 'Google Ultra 5X 土区涨价 用户称涨 2.4 倍',
-      'brief': '据社区用户发帖， Google AI Ultra 5X 订阅在土耳其区的价格当天下午还是 1989.99 里拉 ，随后涨至 4749.99 里拉 ，有用户称刚买完礼品卡就发现价格已经变动。',
-      'url': 'https://x.com/leo114119/status/2122286744263589971',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-17',
       'title': 'ChatGPT for Healthcare 宣布升级',
       'brief': 'OpenAI 宣布升级 ChatGPT for Healthcare ：推出能在现有医疗软件间操作的 computer-use agents ；改进 trusted clinical search ；并新增 20 多个 医疗插件。',
       'url': 'https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/',
@@ -108,46 +138,6 @@ window.NEWS = {
       'url': 'https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites/',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-11-16',
-      'title': '华为云上线 openPangu-2.1-Pro 模型',
-      'brief': '华为云 MaaS 模型即服务平台正式上线开源 盘古模型openPangu-2.1-Pro ，围绕 Agent 开发、 AI 编码和推理优化三大方向升级。',
-      'url': 'https://mp.weixin.qq.com/s/8JfFmscBTDl_mPQMycD8Nw',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-16',
-      'title': 'Agnes AI 开源 187.8B 多模态 MoE 模型',
-      'brief': 'Agnes AI 在 Hugging Face 发布多模态混合专家模型 Agnes 2.5 Pro Theta ，总参数量约 187.8B ，上下文上限 262,144 tokens ，许可证为 Apache License 2.0 。',
-      'url': 'https://huggingface.co/Agnes-AI/Agnes-2.5-Pro-Theta',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-16',
-      'title': 'OpenCode Go 订阅现已支持微信支付付款',
-      'brief': 'OpenCode 在 Console 更新日志中宣布，Go 和 Go Plus 订阅方案现已支持使用微信支付付款。用户在微信中授权一次后，订阅将按月自动续费；若在微信中取消扣款协议，下次续费时会要求重新确认。',
-      'url': 'https://opencode.ai/console/changelog/wechat-pay-go',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-16',
-      'title': 'OpenAI 开设 science blog 并发布 Standard Model 研究解读',
-      'brief': 'OpenAI 宣布开设全新的 OpenAI science blog ，用于分享 OpenAI 、合作方及科研界借助 AI 推进科学发现的成果、实用方法与研究者一线经验。',
-      'url': 'https://openai.com/index/our-new-blog-for-science/',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-16',
-      'title': '报道称 Jensen Huang 考虑重返 NVIDIA 担任 CEO',
-      'brief': '据英国《金融时报》报道， NVIDIA 前 CEO Jensen Huang 正考虑重新出任 CEO，并与几位亲信讨论过回归的可能。一位盟友称，有人正召集硅谷高管游说董事会让他复职，并争取白宫支持。',
-      'url': 'https://wccftech.com/jensen-huang-considers-returning-to-nvidia-as-his-allies-assemble-a-war-room-to-lobby-on-his-behalf-and-a-petition-in-his-favor-crosses-156000-signatures',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
     }
   ]
 };
