@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-18',
-  'refreshedAt': '2026-11-19 04:46',
+  'updated': '2026-11-19',
+  'refreshedAt': '2026-11-19 15:43',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '0.170.0',
@@ -1416,8 +1416,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
+        {
+          'version': '2.1.328',
+          'title': 'v2.1.328',
+          'date': '2026-11-19',
+          'dateRaw': '2026-11-19T01:14:04Z',
+          'tags': [],
+          'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328',
+          'body': '## 有哪些变化\n\n- 为 Amazon Bedrock、Google Cloud 的 Agent Platform、Microsoft Foundry 和 Claude 应用网关上的 Claude Opus 4.6 和 Sonnet 4.6 添加了自动模式；其中启动了无权限模式的交互式会话\n- 为`mcp_tool`钩子添加了`\'onFailure\': \'block\'`，与命令和HTTP钩子相同：调用失败的钩子将阻止操作\n- 新增警告：当来自跳过权限提示的会话的消息可能被云会话保留并丢弃时，会显示此警告。\n- 在OpenTelemetry导出器没有端点且其数据很可能丢失时，在`/status`和`claude doctor`中添加了通知\n- 新增了`CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME`，该变量可让主机阻止`claude -p --resume`和`--continue`运行被钩子延迟的工具调用\n- 新增对嵌入 Claude Code 的应用程序的支持，以便启用策略插件的 `allowManagedModsOnly` 选项；管理员的管理设置仍具有优先权\n- 当策略的`maxEffortLevel`不是有效的努力级别时，在Claude应用网关中添加了启动警告\n- 自托管 Runner：添加了 `--repository-folder`，用于命名会话在 `--capacity 1` 时用作仓库的文件夹，以替代其在基本文件夹下的路径（该路径不能是符号链接）\n- 自托管 Runner：当主机的 settings.json 设置了会话会忽略的默认权限模式时，添加了启动警告\n- 自托管 Runner：在“claude self-hosted-runner orchestrator”中添加了“--hook-label”，以便将选定的会话标签传递给“spawn-runner”钩子\n- 自托管 Runner：将 `--metadata key=value` 添加到 `claude --environment`，以便为 `spawn-runner` 钩子标记会话\n- 自托管 Runner：将 `claude_code_self_hosted_orchestrator_session_queue_wait_by_reason_seconds` 添加到编排器的 `/metrics` 中，以便能够区分已重新打开的会话的等待时间和新会话的等待时间。\n- 自托管 Runner：添加了编排器指标`claude_code_self_hosted_orchestrator_sessions_given_up_total`，该指标按原因统计 Anthropic 放弃为会话启动 Runner 的频率\n- 修复了 zsh 中的 Bash 命令在以 `=` 开头的单词处停止并报错“未找到”的问题，例如 `echo ====` 或 `[ a == b ]`；`=cmd` 不再扩展为命令的路径\n- 修复了自动压缩重复使用会话的早期系统提示，而不是像 `/compact` 那样重建提示的问题\n- 修复了在某些非常长或格式错误的输入上 Markdown 渲染冻结的问题\n- 修复了罕见的屏幕冻结问题\n- 修复了在权限提示或问题中，当您紧接着输入时，Esc 键经常丢失的问题；在将 Alt 作为 Esc 和一个键发送的终端中，未使用的 Alt 或 Option 键现在将在此处被拒绝\n- 修复了在慢速连接将其截断为两部分时，粘贴内容或终端的回复被输入到提示符中的问题\n- 修复了在无法读取计划任务文件时，保存计划任务会导致项目其他已保存任务被擦除的问题，该问题发生在第三方提供商上，或在遥测或功能标志被关闭的情况下\n- 修复了项目计划任务文件中存在拼写错误时，该计划任务会在下次保存该文件时被删除的问题\n- 修复了在消息延迟保存时，恢复的云会话可能会丢失其压缩摘要或最近消息的问题\n- 修复了加载指示器上的令牌计数，以及子代理将重试的回复计数两次、遗漏未流式传输的回复以及在Claude思考时停滞不动的计数问题\n- 修复了在回复过程中使用额度用完时显示的错误，该错误显示为速率限制\n- 修复了在 Bedrock、Agent Platform、Foundry 或 Claude 应用网关上，在拒绝测试版的网关后设置了 `CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS` 时，Claude Desktop 之外的自动模式每次都会失败的问题\n- 修复了`CLAUDE_STREAM_IDLE_TIMEOUT_MS`无法延长网关、自定义基础URL和云提供商上的5分钟连接限制的问题\n- 修复了第三方提供商上的一些 Claude Desktop 会话（计划任务除外）在出现大量工具结果后永久以“提示过长”结束的问题；现在将不再显示最大的结果。\n- 修复了输入架构以`anyOf`、`oneOf`或`allOf`开头的 MCP 工具在第三方提供商上或在遥测或功能标志关闭时丢失的问题\n- 修复了具有无效输入架构的 MCP 工具在第三方提供商处请求失败或在遥测或功能标志关闭时请求失败的问题；该工具现在被排除在外，并向 Claude 说明了原因\n- 修复了在 Bedrock、Google Cloud 的 Agent Platform 或 Foundry 拒绝其进度摘要的 Effort 设置时，会话中子代理模型的 Effort 被关闭的问题（2.1.327 中的回归）\n- 修复了代码模式在以下情况下停止脚本的问题：自动或绕过模式之外的权限提示、计划审批或问题保持打开状态达十分钟\n- 修复了代码模式脚本在自动模式和绕过权限模式下无法调用在上一个脚本运行时已连接的 MCP 服务器的问题\n- 修复了代码模式脚本在“claude --resume”选择器中选定的会话中，在自动或绕过权限模式下未在后台运行的问题\n- 修复了在恢复一个回复运行了多个脚本的会话时，代码模式丢失已加载的技能、钩子上下文或随权限批准输入的备注的问题\n- 修复了从选择器或在需要权限的模式下恢复会话时，未告知 Claude 代码模式脚本被截断的问题\n- 修复了代码模式对先前失败的脚本从未设置的顶级变量静默使用 `undefined` 的问题\n- 修复了代码模式脚本在失败命令的长输出被截断时未收到通知的问题\n- 修复了代码模式拒绝以“{”块开头的有效脚本的问题\n- 修复了代码模式拒绝同时使用顶级 `await` 和顶级 `return` 的脚本的问题\n- 修复了在脚本读取或写入@提及的小文件后，代码模式下未附加该文件的问题\n- 修复了代码模式向无法调用 `write()` 和 `edit()` 的只读子代理提供这两个方法的问题\n- 修复了在代码模式下，当按下 Esc 键后紧接着输入 `/model` 等命令时，Claude 会自行开始一轮对话的问题\n- 修复了代码模式下的 Claude 未被告知仅在您要求时运行工作流，或未被告知在 `/config` 中设置的工作流大小的问题\n- 修复了远程控制重复显示相同的断开连接消息，并提示您重试无法重新连接的会话的问题\n- 修复了在服务速度较慢时远程会话重启导致等待权限提示丢失且其答案被忽略的问题\n- 修复了云会话在回退后使用`/clear`命令恢复已清除的对话的问题\n- 修复了在重试已中断的模型流后，远程会话的 Runner 或 Worker 丢失时，该会话会丢失某回合的工具调用和结果的问题\n- 修复了刚刚开始或标题中包含 @ 的云会话和远程控制会话无法通过已启用远程控制的会话进行跨会话消息传递的问题\n- 修复了 Claude 被告知云会话永远无法回复的问题；现在，它会了解何时可以收到回复以及如何以其他方式获得结果\n- 修复了`/diff`、远程控制会话的“更改”窗格以及编辑旁边的差异在命令移至另一个仓库后遗漏已提交的工作的问题\n- 修复了当由 IDE 扩展或其他 SDK 应用运行的会话在工作流上次取得进展后超过一小时才打开时，Remote Control 不显示正在运行的工作流的代理的问题\n- Remote Control：修复了在启用Remote Control后，空闲的桌面或VS Code会话显示为正在运行的问题\n- 修复了模型在SDK中断停止后台代理后仍显示其正在运行的问题\n- 修复了桌面应用中的“立即发送”功能以及 SDK 主机向 Claude 报告已停止的网页搜索未找到结果的问题\n- 修复了在报告 Cmd 的终端中将 Cmd+字母键入提示的问题\n- 修复了以下问题：在 GNOME 终端中，Ctrl+单击会打开链接两次；鼠标侧键充当单击；在全屏模式下，暂停后，向另一方向滚动的第一个滚轮刻度被忽略。\n- 修复了 Konsole 中 tmux 和 ssh 之外的 Shift+Enter 组合键，以及在支持 kitty 键盘协议的终端中，非拉丁字母键盘布局上的 Alt 快捷键\n- Linux：修复了在安装了`xclip`或`wl-copy`的情况下，使用Ctrl+Z暂停Claude Code时，在其他应用程序中粘贴操作会冻结的问题\n- Linux：修复了使用Ctrl+V时剪贴板图像缺失、粘贴旧图像或卡住的问题\n- 修复了在全屏模式下复制的文本（包括引用栏）在向上拖动滚动时换行处丢失空格，或在“跳转到底部”按钮下丢失单词的问题\n- 修复了粘贴到“!”命令中的图像路径变为附件的问题\n- 修复了在“?”快捷键列表打开时，按 Ctrl+C 不显示退出警告的问题\n- 修复了全屏模式下的 Ctrl+R 搜索，以及当按键同时按下时“/theme”颜色编辑器选择错误行的问题，以及在该模式下和“/config”及“/plugin”搜索中按键被丢弃的问题\n- 修复了 GNU screen 中颜色错误或缺失的问题\n- 修复了全屏模式下许多背景通知侵入打开对话框顶部边框的问题\n- 修复了发送给后台代理的消息中显示长文件路径而非粘贴的图像的问题\n- 修复了当两个钩子具有相同的措辞时，“/goal”会移除技能的“停止”钩子，或在另一个钩子的结果上提前结束的问题\n- 修复了报告发送后`/bug`显示为已取消的问题\n- 修复了 Pro 和 Max 用户按 Esc 键无法关闭“是否分享记录”提示的问题\n- 修复了`/hooks`在返回时丢失位置的问题\n- 修复了当名称为空时`/export`写入名为“.txt”的文件的问题\n- 修复了 Zed 中的 `/terminal-setup` 将符号链接的 `keymap.json` 替换为普通文件的问题\n- 修复了`/install-github-app`在被要求更新现有工作流文件时添加代码评审工作流的问题\n- 修复了在您返回后，当缓慢的保存或移除操作完成后，`/plugin` 重新打开技能或关闭已打开页面的问题\n- 修复了在更改仍在运行时离开插件后，“/plugin”要求卸载错误的插件或忽略 Esc 的问题\n- 修复了在搜索无结果或点击选项卡行后，`/plugin`“已安装”选项卡上无法使用输入和箭头键的问题\n- 修复了在`/plugin`中按住 Enter 键导致多个已安装插件被禁用的问题\n- 修复了在 1M 上下文模型上 `/usage` 插件总数停在 2,000 个 token 的问题，以及在未选择模型时 `/usage` 和 `/plugin` 中 token 估计值偏低的问题\n- 修复了在 Bedrock 访问密钥步骤中按 Esc 键会关闭 `/login` 而不是返回的问题\n- 修复了`/exit`和Ctrl+D对正在运行的工作描述不一致的问题，以及`/exit`对已停止的工作流发出警告的问题\n- 修复了以下问题：Claude 在共享文件夹中读取制品或将其发布到其他组织后，将制品标记为私有，并表示只有被指名的人员才能打开制品，而实际上其文件夹中的人员也可以打开。\n- 修复了某个插件的吐司通知有时会显示另一个插件的文本的问题\n- 修复了回合开始后立即保存的模组有时会在回合中途而非回合结束时重新加载的问题\n- 修复了一个格式错误的`OTEL_RESOURCE_ATTRIBUTES`条目，该条目从指标点、事件和跨度中删除了变量的其他标签。现在只剩下该条目\n- 修复了在请求因过大而被拒绝后进行压缩时，Agent钩子运行超过其超时时间的问题。\n- 修复了在`FORCE_COLOR`设置为负数时启动时发生的崩溃\n- 修复了当机器内存即将耗尽时，密钥掩码功能发生的崩溃问题。\n- 修复了当分支名称不是有效的 UTF-8 时，Linux 上的 Bash 沙盒在每个命令后重命名 `.git/HEAD` 的问题\n- 自托管 Runner：修复了当代理或 Web 过滤器以 HTTP 200 和 `{}` 这样的正文响应轮询时，所有正在运行的会话都会停止的问题；Runner 现在会重试此类轮询\n- 自托管 Runner：修复了在发生临时磁盘错误后删除保留克隆的对象或引用，以及仅存在于该克隆中的提交的问题；现在，该操作将改为失败。\n- 修复了自托管 Runner 在时钟走慢或被调慢的主机上令牌用尽时停止的问题\n- 自托管 Runner：修复了使用 Anthropic 管理的 Git 的会话在会话中的脚本或钩子再次运行 `claude` 后失去对 GitHub 的 Git 访问权限的问题\n- 修复了使用Anthropic管理的git的自托管Runner无法在机器的git配置设置了`http.proactiveAuth`的情况下进行拉取或推送的问题\n- 自托管 Runner：修复了 Runner 在注册后设置失败时未告知服务器即退出的问题；现在，Runner 会说明原因并注销，而按需 Runner 会报告启动失败。\n- 自托管 Runner：修复了会话在等待另一个会话准备同一仓库时，存档或重新排队操作未生效的问题（`--capacity` 大于 1）\n- 自托管 Runner：修复了`.claude.json`已损坏的会话在`--trust-workspace false`下每次后续启动都会失败的问题；现在，该会话将以默认设置启动，且MCP服务器在此处再次关闭\n- 自托管 Runner：修复了当签出钩子或 Git 输出大量内容时，启动失败消息中缺少说明失败原因的文字的问题\n- 修复了当磁盘停顿几秒钟时，自托管 Runner 跳过其会话后钩子的一个问题；在坏掉的磁盘上，会话结束默认情况下可能多花 25 秒\n- 修复了自托管 Runner：在新 Claude 配置目录中恢复的会话不再丢失其任务列表\n- 修复了在缺少某个仓库的情况下启动自托管会话时，Claude 未被告知以及未告知原因的问题\n- 自托管 Runner：修复了“claude --environment”的“--correlation-id”未到达“spawn-runner”钩子的问题\n- 修复了自托管 Runner 设置向导的密钥轮换建议，该建议现在会警告，吊销密钥将停止在其下运行的会话\n- 改进了`claude -p`和SDK会话，以便在后台为后续会话获取具有自己Git仓库的托管设置插件\n- 改进了在`claude -p`、SDK和Claude Desktop会话中，来自git市场的托管设置插件在新机器上加载的速度；短时运行可能会延迟最多30秒退出\n- 缩短了恢复大型会话所需的时间\n- 改进了恢复包含大量图像的会话时的内存使用情况\n- 在运行缓慢命令或工具的长时间SDK和桌面会话中，改进了内存使用和响应时间\n- 通过在大多数脚本后移除 0.75 秒的暂停，提高了代码模式在自动模式和绕过权限模式下的速度\n- 改进了具有 MCP 服务器的新代码模式会话的提示缓存，现在会在服务器仍在连接以及服务器列表发生变化时通知 Claude\n- 通过缩短工具描述，改进了代码模式的令牌使用情况\n- 改进了代码模式，以便在脚本运行时显示正在运行的命令及其输出\n- 改进了代码模式编辑：不会再因未作任何更改的编辑而停止脚本，并且会告知 Claude 失败的编辑与哪处匹配或最接近\n- 改进的代码模式：现在，当脚本失败时，Claude 会被告知哪些工具调用仍在运行\n- 改进了 Claude 在代码模式的自动模式和绕过模式下启动开发服务器的方式：指示 Claude 将它们作为显示在 `/tasks` 中的后台任务运行\n- Windows：通过告知 Claude 脚本的 shell 命令在 Git Bash 中运行，并且运行的是 PowerShell 别名而非同名函数，从而改进了代码模式\n- 改进了同时启动多个进程内队友的功能：现在出现“锁定文件已被占用”错误的几率大大降低。\n- 改进了计算机使用批准对话框：现在会显示每个应用的访问级别，并提供更简洁的警告\n- 改进了跨会话消息功能：现在，当云会话或其他计算机未列出时，Claude 会说明远程控制已关闭\n- 改进了`claude -p`文本输出，以便在来自其他会话的消息被搁置或丢弃时在stderr上显示，并说明如何允许该消息\n- 改进了 Claude 关于谁可以打开其发布的工件的答案：现在要求 Claude 再次检查工件，而不是重复上次发布的答案\n- 改进了恢复的自托管 Runner 会话：Claude 现在会检查其之前的工作是否仍然存在，并说明缺少哪些内容\n- 更改了第三方提供商上 Opus 4.6 和 Sonnet 4.6 的计划模式和 Bash 提示，以便使用和提供自动模式（与较新型号相同）；`disableAutoMode` 可同时关闭两者\n- 更改了代码模式，使其不再在脚本的输出上运行 UserPromptSubmit 钩子（包括托管钩子）；要编辑该输出，请使用带有 `updatedToolOutput` 的 PostToolUse 钩子\n- 在大多数模型上更改了`/code-review`，使其仅报告漏洞和CLAUDE.md违规；运行`/simplify`以进行重用、简化和效率优化。\n- 更改了`/code-review`，以便在大多数模型中将每个发现标记为“重要”、“已存在”或“细枝末节”，并在每个摘要的末尾提供建议的修复方案；如果未发现问题，则审核列表现在显示“代码审核未发现问题”。\n- 更改了`claude.ai`形式的`deniedMcpServers<name>`条目，使其也适用于云端和自托管 Runner 会话中的该连接器\n- 更改了托管的`PostToolUse`钩子，使其不再针对在运行前被拒绝的调用触发：没有日志条目，不会在那里重写、阻止或停止；`PostToolBatch`会获取大多数调用，不会标记为被拒绝\n- 将`/bug`更改为在发送前询问“是”或“否”，因此重复按Enter键不再发送报告或打开GitHub\n- 更改了`claude -p`、Agent SDK、桌面版和 VS Code 中的子代理，使其在设置`CLAUDE_CODE_FORK_SUBAGENT=0`时默认等待自己的子代理\n- 将 `claude -p` 改为 `CLAUDE_CODE_FORK_SUBAGENT=0`，以便将后台子代理及其等待的子代理计入一次 10 分钟的等待时间；对于更长的链，请提高 `CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS` 的值\n- 将由 PermissionRequest 钩子重写的 shell 命令更改为在沙盒外运行的沙盒排除命令\n- 更改了 Chrome 中的 Claude 欢迎界面和 `/chrome`，以说明 Claude Code 会在 Claude 对网站采取行动之前先征求您的意见，除非您的权限模式或 `/permissions` 中的规则提供了答案\n- 更改了第三方提供商上的 Claude Desktop 和 Agent SDK 会话，或在遥测或功能标志关闭的情况下，当以未回答的问题结束时，会话将结束，而不是在没有答案的情况下继续。\n- 对于第三方提供商，或在遥测或功能标志关闭的情况下，将粘贴的文本标记为已粘贴，以便Claude识别\n- 更改了Anthropic API上终端会话中的子代理进度摘要，由默认的小型快速模型根据简短备注编写，同样关闭了遥测功能，使用的token数量大大减少\n- 更改了无法启动的沙盒的报告方式（除非设置了`sandbox.failIfUnavailable`）：下一个沙盒Bash命令将被拒绝，并提示该会话的沙盒已关闭\n- 已将 `/list-agents` 改为仅向您显示其列表；Claude 会在需要时自行列出会话\n- 自托管 Runner：将内置的 `gh api` 更改为默认关闭，其中设置按名称保护 Claude 的 GitHub 工具；`--use-anthropic-gh true` 可将其打开\n- 自托管 Runner：更改了一个 `claude`，该 `claude` 由包装脚本在会话自身的 `claude` 启动之前或结束后运行，且不使用 Anthropic 管理的 Git\n- 自托管 Runner：将 `CLAUDE_RUNNER_SESSION_UUID` 和 `CLAUDE_CODE_REMOTE_SESSION_UUID` 均设置为针对会话及其 `checkout`、`post-session` 和 `spawn-runner` 钩子\n- 将“--capacity 1”的自托管 Runner 更改为在其推送到的仓库的路径是符号链接时提前拒绝会话\n- [VSCode] 添加了在保留来自另一个会话的消息时的通知，其中包含指向可允许该消息的设置文件的链接\n- [VSCode]修复了当面板位置较低或命令、URL 或描述过长时，权限提示会截断“否”按钮、回复字段或标题的问题\n- [VSCode] 修复了工具调用失败或被阻止时未显示原因或原因被截断的问题，以及 Glob 和 Grep 将错误计入结果的问题',
+          'h': 'ce41f2d0'
+        },
         {
           'version': '2.1.327',
           'title': 'v2.1.327',
@@ -3822,7 +3832,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '2.3.2',
@@ -9373,7 +9383,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '2.6.3',
@@ -10606,7 +10616,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '0.2.2-rc.5',
@@ -11244,7 +11254,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '0.5.14',
@@ -11696,7 +11706,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '1.40.1',
@@ -12380,7 +12390,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '3.4.18',
@@ -14643,7 +14653,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '3.18.2',
@@ -14834,7 +14844,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '4.12.4',
@@ -15729,7 +15739,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 04:46',
+      'lastOkAt': '2026-11-19 15:43',
       'entries': [
         {
           'version': '5.11.3',

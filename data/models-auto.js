@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-18',
+  'updated': '2026-11-19',
   'stats': {
     'total': 199,
     'knownVendor': 199,
     'otherVendor': 0,
-    'skippedManual': 1526,
+    'skippedManual': 1529,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -611,6 +611,17 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'Gemini 3.0 Pro (Preview 11-2025)'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 4 Neon',
+      'vendor': 'Google',
+      'color': '#6BA5F7',
+      'aliases': [
+        'Gemini 4 Neon',
+        'Gemini 4 Neon (High)',
+        'gemini-4-neon'
       ],
       'auto': true
     },
@@ -1526,15 +1537,6 @@ window.MODEL_MAP_AUTO = {
       'color': '#FF9A3D',
       'aliases': [
         'Qwen-Image-2.1'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Qwen-Image-3.0',
-      'vendor': 'Alibaba',
-      'color': '#FF9A3D',
-      'aliases': [
-        'Qwen-Image-3.0'
       ],
       'auto': true
     },

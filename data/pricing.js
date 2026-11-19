@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-18
+// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-19
 // 来源:https://www.codingplan.fyi/plans.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -18,8 +18,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-11-18',
-  'refreshedAt': '2026-11-19 04:46',
+  'updated': '2026-11-19',
+  'refreshedAt': '2026-11-19 15:43',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -752,10 +752,10 @@ window.PRICING = {
     {
       'id': 'Beam',
       'slug': 'reflection/beam-1.0-501b-a23b',
-      'inputCnyPerM': 2.04,
-      'cacheCnyPerM': 0.272,
+      'inputCnyPerM': 1.7,
+      'cacheCnyPerM': 0.34,
       'outputCnyPerM': 6.8,
-      'costPerM': 0.3842,
+      'costPerM': 0.4335,
       'priceSource': 'models.dev:openrouter'
     },
     {

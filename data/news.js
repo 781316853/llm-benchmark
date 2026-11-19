@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-18',
+  'updated': '2026-11-19',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -11,6 +11,102 @@ window.NEWS = {
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-11-19',
+      'title': 'Google 发布 Gemini 4 Neon',
+      'brief': 'Google 发布新模型 Gemini 4 Neon ，定位于 Gemini 4 Carbon 与 Hydrogen 之间，面向复杂软件工程、知识工作和科学工作流。模型支持四档思维水平调节，具备 100 万 token 上下文窗口，可处理表格、PDF、图表与音视频。',
+      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-19',
+      'title': '谷歌新版 Project Genie 开放 Genie 4',
+      'brief': 'Google 宣布推出新版 Project Genie 体验，向已推出 Google AI Ultra 地区的年满 18 周岁 订阅者开放最新世界模型 Genie 4 ，Google AI Pro 会员可加入等候名单。 Genie 4 支持在探索过程中输入提示词实时修改天气、新增角色或改变剧情，并首次搭配适配场景的环境音效与角色对话。',
+      'url': 'https://deepmind.google/blog/genie-4-is-now-available',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'DeepSeek：模型触发的搜索和抓取不再单独计费',
+      'brief': 'DeepSeek API 文档显示，自北京时间 2026 年 11 月 18 日 12:00 起，模型调用触发的服务端搜索和网页抓取不再单独计费，只按模型 token 用量收费，联网工具、 Responses API 与 Anthropic API 的 web_search 等服务端工具均会触发。',
+      'url': 'https://api-docs.deepseek.com/zh-cn/guides/search/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'Antigravity Pro 免费试用仅剩 3.8 Flash',
+      'brief': '社区用户发现， Google 更新 Antigravity 文档，按订阅档位划分模型权限。',
+      'url': 'https://antigravity.google/docs/models',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'OpenCode：10 美元购 500 美元 GLM 5.3',
+      'brief': 'OpenCode 宣布，本周结束前可获得价值 500 美元 的 GLM 5.3 使用额度。这项优惠面向 OpenCode Go 订阅用户，Go 方案每月收费 10 美元 。活动最初推出时， 10 美元 对应 100 美元 额度，随后提升至 200 美元 ，再到目前的限时 500 美元 。',
+      'url': 'https://x.com/opencode/status/2122969474571583885',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'Perplexity 推出 Context API',
+      'brief': 'Perplexity 推出 Context API ，单次调用最多读取 10 个 URL，为每个页面返回清理后的 Markdown 、 HTML 、链接和基于查询的片段。',
+      'url': 'https://www.perplexity.ai/hub/blog/context-api-extracts-full-context-from-any-web-page',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'ChatGPT 语音实时转文字，移除 10 分钟录音上限',
+      'brief': 'OpenAI 宣布， ChatGPT 的 Dictation 功能变得更快、更可靠，并推出 Live Dictation ：说话时语音实时转成文字，减少等待转写的时间，用户可点按波形显示或隐藏文字。',
+      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'ChatGPT 推出会计插件 协助结账和对账',
+      'brief': 'OpenAI 宣布 ChatGPT for Accounting 现已可用，新的 Accounting 插件和合作方插件帮助用户以更少手工操作完成结账，任务覆盖月末报告、银行对账和数据录入等。',
+      'url': 'https://openai.com/business/solutions/accounting',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'Artificial Analysis 推理力度可筛选',
+      'brief': 'AI 分析网站 Artificial Analysis 宣布正努力在其网站展示更多推理力度。',
+      'url': 'https://x.com/ArtificialAnlys/status/2123121873555013816',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'Gemini app 支持低内存 Android 设备',
+      'brief': 'Google 宣布 Gemini app 现已支持低内存 Android 设备，包括符合条件的 Android (Go edition) 手机。该公司重构了应用，让核心体验在低内存硬件上流畅运行，使全球 数亿 更多人能用上其个人 AI 助手。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-19',
+      'title': 'Google 推出 Stitch Loop 持续改进产品',
+      'brief': 'Google Labs 推出 Stitch Loop ，这是设计工具 Stitch 的新实验，定位为长期运行的产品 agent ，连接 GitHub 代码库和实时指标，持续改进已上线的软件。',
+      'url': 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/?ref=testingcatalog.com',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-19',
+      'title': '腾讯混元开放 Hy4 flash 权重',
+      'brief': '腾讯混元 宣布开源 Hy4 flash 系列模型，包含 Hy4 flash 、 Hy4 flash-FP8 和 Hy4 flash-Base ，开发者可在 GitHub 、 Hugging Face 、 ModelScope 和 GitCode 下载部署。',
+      'url': 'https://mp.weixin.qq.com/s/yaFPaQL6MNVz01GD2sIlRw',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
     {
       'date': '2026-11-18',
       'title': 'OpenAI 发布 GPT-6.2 Astra 与 Sol，分别面向复杂任务和日常工作',
@@ -37,22 +133,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-18',
-      'title': 'Antigravity 重置所有模型配额，Carbon 首词元响应提速',
-      'brief': '为庆祝 Antigravity 上线一周年， Antigravity 负责人 Varun Mohan 发帖称，团队将为所有用户重置全部模型的使用配额。',
-      'url': 'https://x.com/_mohansolo/status/2122836883877347836',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'OpenCode Go GLM 5.3 额度升至 200 美元',
-      'brief': 'OpenCode 宣布 Operation GLM 进入第二阶段，面向所有 OpenCode Go 订阅者， 10 美元 即可获得 200 美元 的 GLM 5.3 使用额度，价格维持不变，该阶段目前已生效，入口为 OpenCode Console 的 Go 页面。此前上线的第一阶段提供的额度为 100 美元 ，价格相同。',
-      'url': 'https://x.com/opencode/status/2122763721923559595',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-18',
       'title': '可灵 AI 发布 Kling Image 4.0',
       'brief': '可灵 AI 发布图像创作模型 Kling Image 4.0 ，同时向企业客户和开发者开放 API 。',
       'url': 'https://mp.weixin.qq.com/s/p3_DIBRUUgmxShjD5Wp27w',
@@ -74,70 +154,6 @@ window.NEWS = {
       'url': 'https://x.com/GoogleAIStudio/status/2122752241887068565',
       'source': '橘鸦AI早报',
       'type': '开发生态'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'Google AI Studio Build 支持自定义域名',
-      'brief': 'Google AI Studio 在 Build 中推出网页应用的自定义域名功能。用户可在发布面板购买并连接域名，也可复用此前在 AI Studio 为同一 Google Cloud 项目购买的域名。',
-      'url': 'https://aistudio.google.com/docs/aistudio-custom-domains',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'Google DeepMind 推出机器人插件',
-      'brief': 'Google DeepMind 推出 Google Antigravity 机器人插件，配合上周发布的 Gemini 4 Hydrogen 模型，可连接支持的机械臂，在 MuJoCo 仿真中练习，再用对话执行现实任务。',
-      'url': 'https://x.com/GoogleDeepMind/status/2122767528933925363',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'Claude Code 实验性 Code Mode 上线',
-      'brief': 'ClaudeDevs 发帖介绍 Claude Code 的实验性功能 Code Mode ：Claude 不再逐个直接调用工具，而是编写 JavaScript 脚本交由 Claude Code 在会话中运行，代码可并行执行命令，长命令后台运行时还能继续与 Claude 对话。',
-      'url': 'http://code.claude.com/docs/en/code-mode',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'Claude Platform 上线关联计费测试版',
-      'brief': 'Anthropic 在 Claude Platform 以测试版上线关联计费（ Linked billing ）。终端客户把自己的 Claude 组织与平台关联一次后，就能用自己的组织支付 Claude API 用量，无需向平台共享 API key ；平台可按请求选择付费方，且无需自建计量与开票。已支持 Asana、Linear、Ramp、Warp 等 19 个平台。客户可为每个平台设月度支出上限，并随时解除关联。客户组织须直接向 An…',
-      'url': 'https://claude.com/blog/linked-billing-on-claude-platform',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-17',
-      'title': '字节跳动 Seedance 2.5 4K API 全面开放',
-      'brief': '字节跳动 火山引擎宣布， Seedance 2.5 4K 视频生成模型的 API 全面开放，开发者与企业客户可通过接口调用。',
-      'url': 'https://mp.weixin.qq.com/s/c6pWJXD6YXf8lcwLdNu5zA',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-17',
-      'title': '上海AI实验室开源书生-S2.1 Flash',
-      'brief': '上海人工智能实验室 发布并开源科学多模态模型 书生-S2.1 Flash ，采用 3200亿参数 MoE 架构，支持分子图、晶体结构、蛋白质序列、光谱等十余类科学输入，可操作专业科研软件执行多步骤科研任务。',
-      'url': 'https://internlm.github.io/Sage-S2.1-Flash/',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-17',
-      'title': 'ChatGPT for Healthcare 宣布升级',
-      'brief': 'OpenAI 宣布升级 ChatGPT for Healthcare ：推出能在现有医疗软件间操作的 computer-use agents ；改进 trusted clinical search ；并新增 20 多个 医疗插件。',
-      'url': 'https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-17',
-      'title': 'Gemini Notebook 可把笔记资料变成网站',
-      'brief': 'Google 在官方博客宣布， Gemini Notebook 现在可以把用户的笔记、研究和资料来源转换成可交互、可分享的网站。',
-      'url': 'https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
     }
   ]
 };
