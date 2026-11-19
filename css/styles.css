@@ -1232,10 +1232,13 @@ body {
 }
 #matrixTable th { line-height: 1.35; }
 #matrixTable th:last-child, #matrixTable td:last-child { min-width: 56px; white-space: nowrap; }
-#matrixTable th:nth-child(2), #matrixTable td:nth-child(2) { min-width: 198px; }
-#matrixTable th:nth-child(3), #matrixTable td:nth-child(3) { min-width: 76px; }
-#matrixTable th:nth-child(4), #matrixTable td:nth-child(4) { min-width: 64px; }
-#matrixTable th:nth-child(5), #matrixTable td:nth-child(5) { min-width: 64px; }
+/* 列宽只约束真实列:#/模型/厂商/梯队/性价比 在表头首行以 rowspan=2 占位,
+   第二行(基准列)的 th 从「DeepSWE」重新计 :nth-child,若 th 不限定到 grp-row,
+   198/76px 会错位套到 Terminal-Bench / HLE 列,整表被撑出白卡右缘 15px。 */
+#matrixTable thead tr.grp-row th:nth-child(2), #matrixTable tbody td:nth-child(2) { min-width: 198px; }
+#matrixTable thead tr.grp-row th:nth-child(3), #matrixTable tbody td:nth-child(3) { min-width: 76px; }
+#matrixTable thead tr.grp-row th:nth-child(4), #matrixTable tbody td:nth-child(4) { min-width: 64px; }
+#matrixTable thead tr.grp-row th:nth-child(5), #matrixTable tbody td:nth-child(5) { min-width: 64px; }
 /* 模型列:名称独占一行,徽标另起一行 flex 排布。
    此前名称与徽标混排在同一行内,徽标占掉宽度后「DeepSeek V4.1 Flash 1017」会在构建号前
    断成「…Flash / 1017 NEW 国产」两截;分行后名称可用满列宽,徽标再多也只是整齐换行。 */
