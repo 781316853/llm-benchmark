@@ -163,7 +163,8 @@ window.MODEL_MAP = {
     { id: "crouton-alpha",    vendor: "STEALTH",   color: "#8C9CFF", aliases: ["crouton-alpha", "CROUTON-ALPHA"] },
     { id: "Egg Alpha",        vendor: "STEALTH",   color: "#5B6CFF", aliases: ["Egg Alpha", "egg-alpha"] },
     // ModelDial 2026-11 新上榜;model_id 为 "qoder/lmodel",展示名 QoDuck。
-    { id: "QoDuck",           vendor: "Qoder",     color: "#5B8CFF", aliases: ["QoDuck", "qoduck", "qoder/lmodel", "lmodel"] },
+    // Qoder 为阿里旗下 AI 编程产品,厂商并入 Alibaba(2026-11-19,用户指定)。
+    { id: "QoDuck",           vendor: "Alibaba",   color: "#5B8CFF", aliases: ["QoDuck", "qoduck", "qoder/lmodel", "lmodel"] },
     // ModelDial 榜中的 "kimi-for-coding" 与该站的 "k3" 并列且分数不同(64.2 vs 72.5),
     // 是否同一底层模型未证实,故单独建档,不并入 Kimi K3。
     { id: "kimi-for-coding",  vendor: "Moonshot",  color: "#8B72FF", aliases: ["kimi-for-coding"] },
@@ -311,7 +312,6 @@ window.MODEL_MAP = {
     "China Telecom": "#63A6F2",     // 品牌蓝(中国电信)
     "Meituan": "#DFC24E",           // 芥末黄(美团):与 NVIDIA / Xiaomi 错开色相带
     "inclusionAI": "#8FD97A",       // 品牌绿(蚂蚁 inclusionAI / Ling 系列)
-    "Qoder": "#5B8CFF",             // 品牌蓝(QoDuck)
     "Reflection AI": "#8E6BD8",     // 深紫(Beam 系列):与 ByteDance/Moonshot 的浅紫按明度分档
     "Poolside": "#8FA8BE",          // 板岩蓝灰(Laguna 系列)
     "Fireworks": "#F0A35C",         // 暖琥珀(Fireworks 托管模型)
@@ -320,6 +320,10 @@ window.MODEL_MAP = {
   },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
   domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI", "Baidu"],
+  // 总览页「厂商新模型发布倒计时」默认展示的主要厂商(顺序无关,其余厂商收进「展开更多」)。
+  // 取国际头部 + 国产头部:与矩阵排名行的常驻厂商一致,避免默认视图被小众实验室占满。
+  mainVendors: ["OpenAI", "Anthropic", "Google", "Meta", "xAI", "Microsoft",
+    "Alibaba", "DeepSeek", "Moonshot", "zAI", "ByteDance", "Tencent", "MiniMax"],
   // 厂商中文别名:仅用于总览矩阵搜索(厂商列仍显示英文 canonical 名),照顾按中文厂商名检索的习惯。
   // 含模型家族名(通义/混元/豆包)是因为用户往往先想起家族名,而不是厂商英文名。
   vendorAliases: {

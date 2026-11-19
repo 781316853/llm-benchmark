@@ -18,7 +18,9 @@
     sortKey: null, sortDir: null, // sortKey 为 null 时使用默认综合排序
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     showScore: true, // 总览页「显示综合分」开关:默认显示梯队旁的精确综合分
-    searchQuery: "", // 总览页矩阵搜索:非空时跨全部有成绩的模型筛选,不套用默认前40/参考区间截断
+    releaseSort: "recent", // 总览「厂商新模型发布倒计时」排序:recent=最近发布在前/stale=最久未发在前
+    releaseExpanded: false, // 发布倒计时是否展开全部厂商(默认只列 MODEL_MAP.mainVendors)
+    searchQuery: "", // 总览页矩阵搜索:非空时跨全部有成绩的模型筛选,不套用默认前30/参考区间截断
     plansScope: "featured", // 套餐对比页平台范围:featured=仅精选平台(默认,与源站一致)/all=所有平台
     plansView: "all", // 套餐页视图:all=全部套餐(默认)/groups=精选模型对比
     plansUsage: 5, // 每月用量(亿):用于判断套餐是否够用与推荐排序
@@ -464,9 +466,88 @@
     inner.innerHTML = '<div class="news-toc">' + tocHtml + '</div><div class="news-cards">' + cardsHtml + '</div>';
   }
 
+  // ===== 厂商新模型发布倒计时(总览) =====
+  // 数据:data/releases.js(window.RELEASES),由 scripts/lib/release-clock.js 每日汇总各源发布日期。
+  // 天数按本机日期计算;条形长度按当前可见厂商的最大天数等比,行内保留天数/模型/日期文字。
+  function releasePack() {
+    var data = window.RELEASES;
+    if (!data || !Array.isArray(data.vendors) || !data.vendors.length) return null;
+    var now = new Date();
+    var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var rows = data.vendors.map(function (v) {
+      var t = Date.parse(v.date + "T00:00:00Z");
+      var days = isFinite(t) ? Math.max(0, Math.round((today - t) / 86400000)) : 0;
+      return { vendor: v.vendor, date: v.date, model: v.model, src: v.src, days: days,
+        color: D.vendorColor(v.vendor) };
+    });
+    rows.sort(function (a, b) {
+      if (a.days !== b.days) return state.releaseSort === "stale" ? b.days - a.days : a.days - b.days;
+      return a.vendor < b.vendor ? -1 : (a.vendor > b.vendor ? 1 : 0);
+    });
+    var main = {};
+    ((window.MODEL_MAP && window.MODEL_MAP.mainVendors) || []).forEach(function (v) { main[v] = 1; });
+    var primary = rows.filter(function (r) { return main[r.vendor]; });
+    var rest = rows.filter(function (r) { return !main[r.vendor]; });
+    // 主要厂商清单缺失或全被过滤时兜底取前 12 家,保证区块不会空
+    if (!primary.length) { primary = rows.slice(0, 12); rest = rows.slice(12); }
+    return { data: data, rows: rows, primary: primary, rest: rest };
+  }
+
+  function renderReleaseClock() {
+    var section = document.getElementById("releaseSection");
+    var chart = document.getElementById("releaseChart");
+    if (!section || !chart) return;
+    var pack = releasePack();
+    if (!pack) { section.hidden = true; return; }
+    section.hidden = false;
+    var visible = state.releaseExpanded ? pack.rows : pack.primary;
+    var maxDays = visible.reduce(function (m, r) { return Math.max(m, r.days); }, 0);
+    var scaleMax = Math.max(1, maxDays);
+    var bars = visible.map(function (r) {
+      var pct = Math.max(1.2, r.days / scaleMax * 100);
+      var fill = "width:" + pct.toFixed(2) + "%;" +
+        (r.days <= 7 ? "background:var(--accent)" : "background:" + r.color);
+      var tip = r.vendor + " · " + r.date + " 发布 " + r.model + " · 来源:" + r.src;
+      return '<div class="release-bar-row' + (r.days <= 7 ? " is-fresh" : "") +
+        (r.days > 60 ? " is-stale" : "") + '" title="' + esc(tip) + '">' +
+        '<span class="release-bar-vendor">' + vdot(r.vendor) +
+          '<span class="release-bar-name">' + esc(r.vendor) + '</span></span>' +
+        '<span class="release-bar-track"><i class="release-bar-fill" style="' + fill + '"></i></span>' +
+        '<span class="release-bar-days">' + r.days + ' 天</span>' +
+        '<span class="release-bar-last"><span class="release-bar-model">' + esc(r.model) + '</span>' +
+          '<span class="release-bar-date">' + esc(r.date.slice(5)) + '</span></span>' +
+        '</div>';
+    }).join("");
+    chart.innerHTML =
+      '<div class="release-chart-head"><b>距上次发布天数</b><em>条形按天数等比 · 最长 ' + maxDays + ' 天</em></div>' +
+      '<div class="release-bars">' + bars + '</div>' +
+      '<div class="release-scale"><span></span><span class="release-scale-bar"><i>0</i><i>' + maxDays + ' 天</i></span>' +
+        '<span></span><span></span></div>';
+    var more = document.getElementById("releaseMore");
+    if (more) {
+      more.hidden = !pack.rest.length;
+      more.textContent = state.releaseExpanded ? "收起其他厂商" : "展开其余 " + pack.rest.length + " 家厂商";
+      more.setAttribute("aria-expanded", state.releaseExpanded ? "true" : "false");
+    }
+    var sortWrap = document.getElementById("releaseSort");
+    if (sortWrap) {
+      Array.prototype.forEach.call(sortWrap.querySelectorAll("[data-release-sort]"), function (b) {
+        var on = b.getAttribute("data-release-sort") === state.releaseSort;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    }
+    var note = document.getElementById("releaseNote");
+    if (note) {
+      note.innerHTML = esc("发布日期取自 ModelDial、Terminal-Bench、APEX、datalearner、AutomationBench、Agents' Last Exam 与厂商官方发布监听;仅统计已收录发布日期的主流厂商,天数为本机日期与发布日期的自然日差。") +
+        (pack.data.updated ? ' <span class="release-updated">数据更新于 ' + esc(pack.data.updated) + "</span>" : "");
+    }
+  }
+
   // ===== 1) 总览 =====
   function renderOverview() {
     renderNews();
+    renderReleaseClock();
     // 核心基准速览:紧凑榜单行(序号 / 名称与描述 / 权重与规模 / 头名)
     var sum = D.benchSummary();
     document.getElementById("benchCards").innerHTML = '<div class="bench-list">' + sum.map(function (b, i) {
@@ -495,13 +576,13 @@
   // (整页重绘会把新闻面板的滚动位置重置回顶部,长列表里每敲一个字都会跳)
   function renderMatrix() {
     // 矩阵表:先分配梯队(基于全量排名行(命中≥4榜),按 matrix 的可见序),再选取展示行。
-    // 默认:排名行按综合分排序取前40;命中 2-3 榜的「参考」模型不计算综合分(展示为「—」),按在场各榜
+    // 默认:排名行按综合分排序取前30;命中 2-3 榜的「参考」模型不计算综合分(展示为「—」),按在场各榜
     // 的榜内稳健标准分加权(与排名行综合分完全同口径:无豁免、无折减)比对落入相应名次间隔,
-    // 仅在前40区间内混排计入(序号计「—」,不占前40名额),第 40 个排名行之后的行(含参考行)一律截断。
+    // 仅在前30区间内混排计入(序号计「—」,不占前30名额),第 30 个排名行之后的行(含参考行)一律截断。
     // 勾选「显示全部模型」:行集门槛降到 2 榜,展开全部命中≥2榜的模型(排名行 + 参考行);
     // 命中 1 榜的单榜模型不展开,只在搜索态出现,避免单榜长尾淹没跨榜对比。
     // 搜索态:行集门槛同样降到 1 榜(命中 1 榜的模型也要能被搜到),再只保留命中查询的行 ——
-    // 默认视图的前40/参考区间截断不生效,否则默认收起的目标模型搜不到。
+    // 默认视图的前30/参考区间截断不生效,否则默认收起的目标模型搜不到。
     var query = String(state.searchQuery || "").trim();
     var tokens = searchTokens(query);
     var searching = tokens.length > 0;
@@ -517,7 +598,7 @@
     } else if (!state.showAll.overview) {
       rows = [];
       var ranked = 0;
-      for (var ri = 0; ri < allRows.length && ranked < 40; ri++) {
+      for (var ri = 0; ri < allRows.length && ranked < 30; ri++) {
         var r0 = allRows[ri];
         if (r0.benchCount >= 4) { rows.push(r0); ranked++; }
         else if (r0.benchCount >= 3) rows.push(r0);
@@ -660,7 +741,7 @@
       // CSS 中 row-domestic 置后,确保用户主动开启时国产高亮视觉优先
       var cls = (r.benchCount >= 4 ? "row-hit " : "") + (inserted ? "row-two " : "") + (single ? "row-one " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
-      var insertedBadge = inserted ? ' <span class="badge-two" title="命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前40区间内显示,勾选「显示全部模型」可见全部">参考</span>' : "";
+      var insertedBadge = inserted ? ' <span class="badge-two" title="命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前30区间内显示,勾选「显示全部模型」可见全部">参考</span>' : "";
       var singleBadge = single ? ' <span class="badge-one" title="仅命中一榜:不计算综合分、不计排名,仅在搜索时展示;「显示全部模型」不展开单榜模型">仅单榜</span>' : "";
       // 前20名「最佳性价比」标记:只在排名行上出现
       var bestBadges = "";
@@ -780,7 +861,7 @@
       singleCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
       note = '搜索「' + query + '」在全部 ' + matrixRows.length + ' 个有成绩的模型中命中 ' + rows.length + ' 个' +
         (rows.length ? ':排名 ' + rankedCnt + ' · 参考 ' + refCnt + ' · 单榜 ' + singleCnt + '。' : '。') + '\n' +
-        '搜索不套用默认视图的前 40 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。';
+        '搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。';
     } else if (state.showAll.overview) {
       rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
       refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
@@ -789,7 +870,7 @@
     } else {
       refCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
       rankedCnt = rows.length - refCnt;
-      note = '当前显示排名前 ' + rankedCnt + ' 的模型,以及 ' + refCnt + ' 个跻身前 40 区间的「参考」模型(命中 3 榜,不计算综合分、不排名)。\n' +
+      note = '当前显示排名前 ' + rankedCnt + ' 的模型,以及 ' + refCnt + ' 个跻身前 30 区间的「参考」模型(命中 3 榜,不计算综合分、不排名)。\n' +
         '其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。';
     }
     var statsEl = document.getElementById("matrixStats");
@@ -3231,6 +3312,21 @@
       renderMatrix();
       // 渲染完成后扫一次该列(表头已重建,故按 key 重新定位列号)
       requestAnimationFrame(function () { flashSortedColumn(key); });
+    });
+    // 发布倒计时:排序切换与「展开更多厂商」只重绘该区块
+    var releaseSortEl = document.getElementById("releaseSort");
+    if (releaseSortEl) releaseSortEl.addEventListener("click", function (e) {
+      var btn = e.target.closest ? e.target.closest("[data-release-sort]") : null;
+      if (!btn) return;
+      var key = btn.getAttribute("data-release-sort");
+      if (key === state.releaseSort) return;
+      state.releaseSort = key;
+      renderReleaseClock();
+    });
+    var releaseMoreEl = document.getElementById("releaseMore");
+    if (releaseMoreEl) releaseMoreEl.addEventListener("click", function () {
+      state.releaseExpanded = !state.releaseExpanded;
+      renderReleaseClock();
     });
     // 各页"仅跨榜模型/显示全部"开关
     [

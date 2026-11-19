@@ -63,7 +63,8 @@ const VENDOR_ALIASES = {
   "thinking machines": "Thinking Machines", north: "Cohere", "motif technologies": "Motif Technologies",
   upstage: "Upstage", "sk telecom": "SK Telecom", cursor: "Cursor", cognition: "Cognition",
   stepfun: "StepFun", sensetime: "SenseTime", "shanghai ai lab": "Shanghai AI Lab",
-  "china telecom": "China Telecom", meituan: "Meituan", inclusionai: "inclusionAI", qoder: "Qoder",
+  "china telecom": "China Telecom", meituan: "Meituan", inclusionai: "inclusionAI",
+  qoder: "Alibaba", // Qoder 为阿里旗下 AI 编程产品,并入 Alibaba
   "reflection ai": "Reflection AI", poolside: "Poolside", fireworks: "Fireworks",
   inception: "Inception", "inception ai": "Inception", "liquid ai": "Liquid AI", liquidai: "Liquid AI",
   ibm: "IBM", openbmb: "OpenBMB", sarvam: "Sarvam", "arcee ai": "Arcee AI", "sapiens ai": "Sapiens AI",
@@ -115,7 +116,7 @@ const PREFIX_RULES = [
   [/^composer\b/i, "Cursor"],
   [/^swe-[0-9]/i, "Cognition"],
   [/^beam\b/i, "Reflection AI"],
-  [/^qoder\b/i, "Qoder"],
+  [/^qoder\b/i, "Alibaba"],
   [/^space-bunny\b/i, "MiniMax"],
   [/^ling\b/i, "inclusionAI"],
   [/^xing[0-9.]/i, "China Telecom"],

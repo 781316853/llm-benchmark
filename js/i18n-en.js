@@ -71,10 +71,10 @@
       "Best value in the top 20: composite $1 ÷ ¥$2/M = $3"],
 
     // ===== 总览:矩阵行数提示(app.js 拼装,数字随筛选变化) =====
-    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 40 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
       function (m, ranked, ref, dom) {
         return "Showing the top " + ranked + " models plus " + ref + " “reference” " +
-          (ref === "1" ? "model" : "models") + " inside the top-40 band (3 boards, no composite, unranked). " +
+          (ref === "1" ? "model" : "models") + " inside the top-30 band (3 boards, no composite, unranked). " +
           "Other reference models and models covering 2 boards are behind “Show all models”; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
           "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias and AI Coding Daily are third-party tests; " +
@@ -88,11 +88,11 @@
           "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias and AI Coding Daily are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
       }],
-    ["^搜索「(.+?)」在全部 ([\\d,]+) 个有成绩的模型中命中 ([\\d,]+) 个(?::排名 ([\\d,]+) · 参考 ([\\d,]+) · 单榜 ([\\d,]+)。|。)\\s*搜索不套用默认视图的前 40 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。(?:\\s*当前高亮 (\\d+) 个国产模型。)?(?:\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。)?$",
+    ["^搜索「(.+?)」在全部 ([\\d,]+) 个有成绩的模型中命中 ([\\d,]+) 个(?::排名 ([\\d,]+) · 参考 ([\\d,]+) · 单榜 ([\\d,]+)。|。)\\s*搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。(?:\\s*当前高亮 (\\d+) 个国产模型。)?(?:\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。)?$",
       function (m, query, total, hits, ranked, ref, single, dom) {
         return "“" + query + "” matches " + hits + " of " + total + " scoring models" +
           (ranked ? ": ranked " + ranked + " · reference " + ref + " · single-board " + single + "." : ".") +
-          " Search ignores the default top-40 / reference band cut and includes “reference” and “single-board” rows; clear the box or press Esc to return.";
+          " Search ignores the default top-30 / reference band cut and includes “reference” and “single-board” rows; clear the box or press Esc to return.";
       }],
 
     // ===== ModelDial 配置提示 =====
@@ -343,7 +343,14 @@
     ["^来源 (\\d{4}-\\d{2}) · 任务 ([A-N])$", "Source $1 · task $2"],
 
     // ===== 套餐实测目录 =====
-    ["共享池", "shared pool"]
+    ["共享池", "shared pool"],
+
+    // ===== 总览:厂商新模型发布倒计时 =====
+    ["^(\\d+) 天$", "$1 d"],
+    ["^条形按天数等比 · 最长 (\\d+) 天$", "Bar length is proportional · max $1 days"],
+    ["^展开其余 (\\d+) 家厂商$", "Show $1 more vendors"],
+    ["^数据更新于 ([\\d-]+)$", "Data updated $1"],
+    ["^(.+?) · ([\\d-]+) 发布 (.+?) · 来源:(.+)$", "$1 · released $2 · $3 · source: $4"]
   ];
 
   window.I18N_EN = {
@@ -429,13 +436,23 @@
       "核心基准速览": "Benchmarks at a glance",
       "9 大基准榜单关键指标": "Key metrics across 9 leaderboards",
       "交叉模型矩阵": "Cross-benchmark matrix",
-      "同一模型在多项基准中的成绩;默认按综合分降序,仅命中 ≥4 个基准组的模型参与排名并编号。点击表头可按该列排序,右侧搜索框可直接检索模型或厂商,开关控制显示范围、国产高亮与综合分显示。排名前 20 中性价比指数最高者标注「最佳性价比」。":
-        "Each model's results across multiple benchmarks. Sorted by composite score; only models covering at least 4 benchmark groups are ranked and numbered. Click a header to sort by that column, use the search box to filter by model or vendor, and use the switches to widen the list, highlight Chinese vendors or show exact scores. Among the top 20 ranked models, the best value index is marked “Best value”.",
+      "厂商新模型发布倒计时": "Vendor new-model countdown",
+      "距各厂商上一次发布新模型已过去的天数;条形按天数等比,行内保留天数、上次发布的模型与日期。默认展示主要厂商,可切换为「最久未发」或展开全部厂商。":
+        "Days since each vendor last released a new model. Bar length is proportional to the day count, and each row keeps the day count, last model and date. Major vendors are shown by default; switch to “Longest gap” or expand all.",
+      "发布倒计时排序": "Release countdown sort order",
+      "最近发布": "Most recent",
+      "最久未发": "Longest gap",
+      "距上次发布天数": "Days since last release",
+      "收起其他厂商": "Collapse other vendors",
+      "发布日期取自 ModelDial、Terminal-Bench、APEX、datalearner、AutomationBench、Agents' Last Exam 与厂商官方发布监听;仅统计已收录发布日期的主流厂商,天数为本机日期与发布日期的自然日差。":
+        "Release dates come from ModelDial, Terminal-Bench, APEX, datalearner, AutomationBench, Agents' Last Exam and vendor release feeds; only major vendors with a recorded release date are counted. Day counts are calendar-day differences between the local date and the release date.",
+      "同一模型在多项基准中的成绩;默认按综合分降序展示前 30 个排名模型,仅命中 ≥4 个基准组的模型参与排名并编号。点击表头可按该列排序,右侧搜索框可直接检索模型或厂商,开关控制显示范围、国产高亮与综合分显示。排名前 20 中性价比指数最高者标注「最佳性价比」。":
+        "Each model's results across multiple benchmarks. The top 30 ranked models are shown by default in descending composite order; only models covering at least 4 benchmark groups are ranked and numbered. Click a header to sort by that column, use the search box to filter by model or vendor, and use the switches to widen the list, highlight Chinese vendors or show exact scores. Among the top 20 ranked models, the best value index is marked “Best value”.",
       "搜索模型或厂商…": "Search models or vendors…",
       "搜索交叉模型矩阵中的模型或厂商": "Search models or vendors in the cross-benchmark matrix",
       "清空搜索": "Clear search",
-      "默认显示命中≥4个基准组且排名前40的模型与跻身前40区间的「参考」模型;勾选可展开全部命中≥2榜的模型(含排名行与「参考」行),仅命中1榜的模型请用搜索查看":
-        "By default shows models covering at least 4 benchmark groups and ranked in the top 40, plus “reference” models inside that range. Tick to expand to every model covering at least 2 boards (ranked and “reference” rows); 1-board models are search-only.",
+      "默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型;勾选可展开全部命中≥2榜的模型(含排名行与「参考」行),仅命中1榜的模型请用搜索查看":
+        "By default shows models covering at least 4 benchmark groups and ranked in the top 30, plus “reference” models inside that range. Tick to expand to every model covering at least 2 boards (ranked and “reference” rows); 1-board models are search-only.",
       "显示全部模型": "Show all models",
       "勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型":
         "Highlight models from Chinese vendors (Zhipu / Moonshot / DeepSeek / Alibaba / Tencent / MiniMax / ByteDance / Xiaomi).",
@@ -1178,8 +1195,8 @@
         "No API price found on codingplan.fyi or models.dev; value index unavailable",
       "点击按此列排序": "Click to sort by this column",
       "导出本表(当前排序与筛选后的视图)为 CSV": "Export this table (current sort and filters) as CSV",
-      "命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前40区间内显示,勾选「显示全部模型」可见全部":
-        "2–3 boards: the model's board-relative robust z-scores are weighted (same basis as ranked composite) and placed in the matching rank band against ranked models. No composite and no rank are computed; the index shows “—”. Only bands inside the top 40 are shown by default; tick “Show all models” to see every one.",
+      "命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前30区间内显示,勾选「显示全部模型」可见全部":
+        "2–3 boards: the model's board-relative robust z-scores are weighted (same basis as ranked composite) and placed in the matching rank band against ranked models. No composite and no rank are computed; the index shows “—”. Only bands inside the top 30 are shown by default; tick “Show all models” to see every one.",
       "Humanity's Last Exam 闭卷得分(%):2500 道专家撰写、无联网可检索解的前沿题,越高越好;权威基准·仅参考,不计入综合分与命中数,完整榜单见「权威基准测试」页":
         "Humanity's Last Exam closed-book score (%): 2,500 expert-written frontier questions that cannot be answered by searching the web; higher is better. Reference benchmark only — not counted in the composite or coverage. Full board on the “Reference Benchmarks” page.",
       "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 14%)与命中数":

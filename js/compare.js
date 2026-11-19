@@ -68,7 +68,7 @@
   //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
   //    同一间隔内多个参考行按参考综合分降序先后排列;
   // ③ 单榜行(命中=1)不计算综合分、无可比对区间,统一排在全部 ①② 之后(_posKey > ranked.length),
-  //    既不占用前 40 名额,也不扰乱跨榜模型的名次间隔;
+  //    既不占用前 30 名额,也不扰乱跨榜模型的名次间隔;
   // ④ 合并后按 _posKey 升序
   function matrix(llmMonthKey, minHits) {
     var floor = minHits == null ? 2 : minHits;

@@ -13,6 +13,7 @@ const fs = require("fs");
 const CONFIG = require("./lib/config");
 const pipeline = require("./lib/pipeline");
 const modelAuto = require("./lib/model-auto");
+const releaseClock = require("./lib/release-clock");
 const officialReleases = require("./lib/official-releases");
 const seen = require("./lib/seen");
 const news = require("./lib/news");
@@ -33,6 +34,10 @@ const changelog = require("./lib/changelog");
   //      (手工条目优先;失败不影响主流程,下次刷新会重试)
   try { modelAuto.updateAutoModels(); }
   catch (e) { console.log("[model-auto] 维护失败:" + e.message); }
+  // 2.5) 汇总各源模型发布日期 -> data/releases.js(总览页「厂商新模型发布倒计时」)。
+  //      依赖刚写入的 models-auto.js 做厂商归一;fail-soft,失败保留旧文件
+  try { releaseClock.updateReleases(); }
+  catch (e) { console.log("[release-clock] 维护失败:" + e.message); }
   // 3) 维护首次上榜记录(读取最新写入的 data/*.js)
   try { seen.updateSeen(); }
   catch (e) { console.log("[seen] 维护失败:" + e.message); }
