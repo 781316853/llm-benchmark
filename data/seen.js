@@ -383,6 +383,9 @@ window.SEEN = {
     'tbench|Copilot Fusion': '2026-11-17',
     'llm|Qwen4-Max(xhigh)': '2026-11-17',
     'tbench|GPT-6.2 Astra': '2026-11-18',
-    'tbench|GPT-6.2 Sol': '2026-11-18'
+    'tbench|GPT-6.2 Sol': '2026-11-18',
+    'deepswe|MAI Code 2': '2026-11-18',
+    'datalearner|MAI Code 2': '2026-11-18',
+    'llm|GPT-6.2 Astra (max)': '2026-11-18'
   }
 };

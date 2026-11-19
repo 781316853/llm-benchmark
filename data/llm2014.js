@@ -14,7 +14,7 @@ window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-11%7C0",
   updated: "2026-11-18",
-  refreshedAt: "2026-11-18 15:48",
+  refreshedAt: "2026-11-19 04:46",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
@@ -1787,14 +1787,29 @@ window.LLM2014 = {
         'cells': [
           'Pass',
           'Pass',
-          '4/A+(341.72)',
-          'Perfect(211.83)',
-          '6/A(290.08)',
-          '2/A+(1365.55)',
+          '4/A+(369.62)',
+          'Perfect(230.70)',
+          '6/A(320.75)',
+          '2/A+(1448.79)',
           'Skip'
         ],
         'unprompted': 6,
         'ide': 'Claude Code',
+        'think': 1
+      },
+      {
+        'model': 'GPT-6.2 Astra (max)',
+        'cells': [
+          'Pass',
+          'Pass',
+          'Pass',
+          'Pass',
+          '8/B+(53.22)',
+          '10/A(58.11)',
+          'Skip'
+        ],
+        'unprompted': 8,
+        'ide': 'Codex CLI',
         'think': 1
       },
       {
@@ -1905,12 +1920,12 @@ window.LLM2014 = {
       {
         'model': 'Qwen4-Max(xhigh)',
         'cells': [
-          '10/B(8.28)',
+          '10/B(8.91)',
           'Pass',
-          '20/C(20.24)',
-          '8/B(14.97)',
+          '20/C(21.68)',
+          '8/B(15.71)',
           'Skip',
-          '19/C(21.87)',
+          '19/C(23.31)',
           'Skip'
         ],
         'unprompted': 20,
@@ -2025,10 +2040,10 @@ window.LLM2014 = {
       {
         'model': 'Haiku 5.5 (xhigh)',
         'cells': [
-          '14/B(9.36)',
-          '1/A+(18.81)',
+          '14/B(8.45)',
+          '1/A+(15.13)',
           'Failed',
-          '28/D+(24.43)',
+          '28/D+(19.15)',
           'Skip',
           'Skip',
           'Skip'

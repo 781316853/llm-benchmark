@@ -4,10 +4,10 @@
 window.MODEL_MAP_AUTO = {
   'updated': '2026-11-18',
   'stats': {
-    'total': 197,
-    'knownVendor': 197,
+    'total': 199,
+    'knownVendor': 199,
     'otherVendor': 0,
-    'skippedManual': 1529,
+    'skippedManual': 1526,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -996,6 +996,24 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'M2.1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'MAI Code 2',
+      'vendor': '微软',
+      'color': '#9298A1',
+      'aliases': [
+        'MAI Code 2'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'MAI Code 2 Flash',
+      'vendor': '微软',
+      'color': '#9298A1',
+      'aliases': [
+        'MAI Code 2 Flash'
       ],
       'auto': true
     },

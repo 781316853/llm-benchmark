@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 53,
+      'modelCount': 58,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -56,7 +56,7 @@ window.QUALITY = {
       'id': 'arcagi3',
       'name': 'ARC-AGI-3',
       'status': 'ok',
-      'modelCount': 27,
+      'modelCount': 28,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -89,7 +89,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 89,
+      'modelCount': 91,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -122,7 +122,7 @@ window.QUALITY = {
       'id': 'cursorbench',
       'name': 'CursorBench',
       'status': 'ok',
-      'modelCount': 21,
+      'modelCount': 11,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -133,7 +133,7 @@ window.QUALITY = {
       'id': 'deepswe_v11',
       'name': 'DeepSWE v1.1',
       'status': 'ok',
-      'modelCount': 52,
+      'modelCount': 53,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -199,7 +199,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 133,
+      'modelCount': 134,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 0,
@@ -210,7 +210,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 58,
+      'modelCount': 59,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -265,7 +265,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 80,
+      'modelCount': 83,
       'updated': '2026-11-18',
       'ageDays': 0,
       'completeness': 1,
@@ -463,22 +463,6 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
-      'canonId': 'Gemini 3.8 Flash',
-      'name': 'Gemini 3.8 Flash',
-      'vendor': 'Google',
-      'sources': [
-        'datalearner',
-        'deepswe_v11'
-      ],
-      'scores': {
-        'datalearner': 72.83,
-        'deepswe_v11': 74
-      },
-      'mean': 73.4,
-      'stddev': 0.58,
-      'flag': 'ok'
-    },
-    {
       'canonId': 'Claude Opus 4.8',
       'name': 'claude-opus-4-8',
       'vendor': 'Anthropic',
@@ -606,6 +590,22 @@ window.QUALITY = {
       },
       'mean': 72.8,
       'stddev': 0.14,
+      'flag': 'ok'
+    },
+    {
+      'canonId': 'Gemini 3.8 Flash',
+      'name': 'Gemini 3.8 Flash',
+      'vendor': 'Google',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 73.75,
+        'deepswe_v11': 74
+      },
+      'mean': 73.9,
+      'stddev': 0.13,
       'flag': 'ok'
     },
     {
@@ -787,6 +787,22 @@ window.QUALITY = {
       'flag': 'ok'
     },
     {
+      'canonId': 'MAI Code 2',
+      'name': 'MAI Code 2',
+      'vendor': '其他',
+      'sources': [
+        'datalearner',
+        'deepswe_v11'
+      ],
+      'scores': {
+        'datalearner': 73.2,
+        'deepswe_v11': 73.2
+      },
+      'mean': 73.2,
+      'stddev': 0,
+      'flag': 'ok'
+    },
+    {
       'canonId': 'SWE-2',
       'name': 'SWE-2',
       'vendor': 'Cognition',
@@ -934,9 +950,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 53,
-      'complete': 53,
-      'modelCount': 53,
+      'total': 58,
+      'complete': 58,
+      'modelCount': 58,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -958,9 +974,9 @@ window.QUALITY = {
     },
     'arcagi3': {
       'rate': 1,
-      'total': 27,
-      'complete': 27,
-      'modelCount': 27,
+      'total': 28,
+      'complete': 28,
+      'modelCount': 28,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -982,9 +998,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 89,
-      'complete': 89,
-      'modelCount': 89,
+      'total': 91,
+      'complete': 91,
+      'modelCount': 91,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1008,17 +1024,17 @@ window.QUALITY = {
     },
     'cursorbench': {
       'rate': 1,
-      'total': 21,
-      'complete': 21,
-      'modelCount': 21,
+      'total': 11,
+      'complete': 11,
+      'modelCount': 11,
       'missingFields': {},
       'flag': 'ok'
     },
     'deepswe_v11': {
       'rate': 1,
-      'total': 52,
-      'complete': 52,
-      'modelCount': 52,
+      'total': 53,
+      'complete': 53,
+      'modelCount': 53,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1064,19 +1080,19 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 133,
+      'total': 134,
       'complete': 0,
-      'modelCount': 133,
+      'modelCount': 134,
       'missingFields': {
-        'score': 133
+        'score': 134
       },
       'flag': 'warn'
     },
     'modeldial': {
       'rate': 1,
-      'total': 58,
-      'complete': 58,
-      'modelCount': 58,
+      'total': 59,
+      'complete': 59,
+      'modelCount': 59,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1116,9 +1132,9 @@ window.QUALITY = {
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 80,
-      'complete': 80,
-      'modelCount': 80,
+      'total': 83,
+      'complete': 83,
+      'modelCount': 83,
       'missingFields': {},
       'flag': 'ok'
     },
