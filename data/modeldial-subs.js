@@ -1,4 +1,4 @@
-// 数据源:ModelDial 订阅额度(源站 2026-11-13;https://modeldial.com/subscriptions?period=week&view=catalog)
+// 数据源:ModelDial 订阅额度(源站 2026-11-19;https://modeldial.com/subscriptions?period=week&view=catalog)
 // 抓取方式:订阅页 HTML → Next.js chunk 内嵌数据(套餐记录 + 第三方平台目录);页面结构变更会 fail-soft 保留旧文件。
 // 字段:plans[]={slug/alias 可合并到的 codingplan slug/name/nameEn/platform/platformEn/fee/currency/feeCny/dm/legacy/models[]};
 //   models[]={m 模型名/mEn 英文名/t 档位/u ¥每亿/q 四档月额度(仅 95% 单值)/s=m/w 实测|estimate/d 数据日期/a API 等值(USD/月)}。
@@ -11,8 +11,8 @@ window.MODELDIAL_SUBS = {
   'host': 'modeldial.com',
   'license': '见源站;引用请标注 ModelDial',
   'updated': '2026-11-19',
-  'sourceUpdated': '2026-11-13',
-  'refreshedAt': '2026-11-19 15:43',
+  'sourceUpdated': '2026-11-19',
+  'refreshedAt': '2026-11-20 04:52',
   'usdToCnyRate': 6.8,
   'monthlyFactorWeek': 4.333,
   'cacheRatios': [
@@ -33,9 +33,9 @@ window.MODELDIAL_SUBS = {
     'appendedPlans': 19,
     'skippedRecords': {
       'archived': 21,
-      'historical': 33,
+      'historical': 39,
       'missingPrice': 4,
-      'otherGroup': 39,
+      'otherGroup': 42,
       'noQuota': 10,
       'mixed': 0
     },

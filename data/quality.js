@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 58,
+      'modelCount': 60,
       'updated': '2026-11-19',
       'ageDays': 0,
       'completeness': 1,
@@ -188,7 +188,7 @@ window.QUALITY = {
       'id': 'lastexam',
       'name': 'Agents\' Last Exam',
       'status': 'ok',
-      'modelCount': 55,
+      'modelCount': 56,
       'updated': '2026-11-19',
       'ageDays': 0,
       'completeness': 1,
@@ -210,7 +210,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 59,
+      'modelCount': 54,
       'updated': '2026-11-19',
       'ageDays': 0,
       'completeness': 1,
@@ -950,9 +950,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 58,
-      'complete': 58,
-      'modelCount': 58,
+      'total': 60,
+      'complete': 60,
+      'modelCount': 60,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1072,9 +1072,9 @@ window.QUALITY = {
     },
     'lastexam': {
       'rate': 1,
-      'total': 55,
-      'complete': 55,
-      'modelCount': 55,
+      'total': 56,
+      'complete': 56,
+      'modelCount': 56,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1090,9 +1090,9 @@ window.QUALITY = {
     },
     'modeldial': {
       'rate': 1,
-      'total': 59,
-      'complete': 59,
-      'modelCount': 59,
+      'total': 54,
+      'complete': 54,
+      'modelCount': 54,
       'missingFields': {},
       'flag': 'ok'
     },

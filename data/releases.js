@@ -6,7 +6,7 @@
 // 字段:vendors[]={vendor=厂商, date=发布日期, model=canonical 模型名, src=数据来源}。
 window.RELEASES = {
   'updated': '2026-11-19',
-  'refreshedAt': '2026-11-19 19:18',
+  'refreshedAt': '2026-11-20 04:52',
   'sources': [
     'Official',
     'ModelDial',
@@ -18,15 +18,15 @@ window.RELEASES = {
   ],
   'stats': {
     'vendors': 27,
-    'datedEntries': 394,
-    'latestDate': '2026-11-18'
+    'datedEntries': 389,
+    'latestDate': '2026-11-19'
   },
   'vendors': [
     {
       'vendor': 'Google',
-      'date': '2026-11-18',
+      'date': '2026-11-19',
       'model': 'Gemini 4 Neon',
-      'src': 'Terminal-Bench'
+      'src': 'ModelDial'
     },
     {
       'vendor': 'OpenAI',

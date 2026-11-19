@@ -8,7 +8,7 @@
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-19',
-  'refreshedAt': '2026-11-19 15:43',
+  'refreshedAt': '2026-11-20 04:52',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,8 +20,18 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
+        {
+          'version': '0.171.0-alpha.13.1',
+          'title': 'rust-v0.171.0-alpha.13.1',
+          'date': '2026-11-19',
+          'dateRaw': '2026-11-19T20:39:52Z',
+          'tags': [],
+          'url': 'https://github.com/openai/codex/releases/tag/rust-v0.171.0-alpha.13.1',
+          'body': '0.171.0-alpha.13.1 版本',
+          'h': '9b37e44'
+        },
         {
           'version': '0.170.0',
           'title': '0.170.0',
@@ -39,8 +49,7 @@ window.CHANGELOG = {
           'dateRaw': '2026-11-18T02:02:46Z',
           'tags': [],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.170.0-alpha.4.2',
-          'body': '0.170.0-alpha.4.2 版本',
-          'h': 'bb8fcff8'
+          'body': 'Release 0.170.0-alpha.4.2'
         },
         {
           'version': '0.170.0-alpha.4.1',
@@ -1416,7 +1425,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '2.1.328',
@@ -3832,7 +3841,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '2.3.2',
@@ -9383,7 +9392,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '2.6.3',
@@ -10616,7 +10625,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '0.2.2-rc.5',
@@ -11254,7 +11263,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '0.5.14',
@@ -11706,7 +11715,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '1.40.1',
@@ -12390,7 +12399,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '3.4.18',
@@ -14653,7 +14662,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '3.18.2',
@@ -14844,7 +14853,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '4.12.4',
@@ -15739,7 +15748,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-19 15:43',
+      'lastOkAt': '2026-11-20 04:52',
       'entries': [
         {
           'version': '5.11.3',
