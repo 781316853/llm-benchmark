@@ -4,7 +4,7 @@
 // 判定:isNew = 记录存在 且 firstSeen>since 且 0<=(updated-firstSeen)<=7 天。
 window.SEEN = {
   'since': '2026-07-09',
-  'updated': '2026-11-18',
+  'updated': '2026-11-19',
   'entries': {
     'deepswe|claude-fable-5': '2026-07-09',
     'deepswe|gpt-5-5': '2026-07-09',
@@ -386,6 +386,7 @@ window.SEEN = {
     'tbench|GPT-6.2 Sol': '2026-11-18',
     'deepswe|MAI Code 2': '2026-11-18',
     'datalearner|MAI Code 2': '2026-11-18',
-    'llm|GPT-6.2 Astra (max)': '2026-11-18'
+    'llm|GPT-6.2 Astra (max)': '2026-11-18',
+    'tbench|Gemini 4 Neon': '2026-11-19'
   }
 };

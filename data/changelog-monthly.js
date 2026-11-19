@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-18',
-  'refreshedAt': '2026-11-19 04:46',
+  'updated': '2026-11-19',
+  'refreshedAt': '2026-11-19 15:43',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3377,
-    'afterMerge': 3359,
-    'needsZh': 1973,
-    'translated': 1973,
+    'afterToolDedupe': 3384,
+    'afterMerge': 3366,
+    'needsZh': 1980,
+    'translated': 1980,
     'untranslated': 0
   },
   'zh': {
@@ -77,6 +77,7 @@ window.CHANGELOG_MONTHLY = {
     '162af8d4-125': '添加了prompt.change mod钩子，当提示框的文本在没有键入编辑的情况下更改时引发：回调历史记录条目、清除、撤消或插件的填充',
     '166defa0-33': '提交详情（哈希、作者、消息等）',
     '16b90ec7-113': '通过保留本地 $ref/$defs 结构并在暴露前压缩超大 schema，使连接器工具 schema 更可靠',
+    '16fecdb8-102': '在/status和Claude Doctor中添加了通知，用于提示OpenTelemetry导出器没有端点且其数据可能丢失的情况',
     '1749ca64-192': '默认情况下的图像生成：当连接的提供程序支持图像模型时，代理现在可以使用EXPERIMENT_IMAGE_GENERATE ，而无需通过experimental.image_generate.model设置其首选模型',
     '176310-48': '在外观下拉菜单中悬停时显示配色方案预览',
     '17781218-158': '新增可选的 CLAUDE_CODE_PROJECT_DIR_NAME 环境变量：为每个会话提供独立配置目录的主机可选择按项目会话记录目录的短名称',
@@ -503,6 +504,7 @@ window.CHANGELOG_MONTHLY = {
     '4503e4fc-210': '超时 Shell 命令继续运行：当 Shell 命令的超时时间到期时，该命令仍将继续运行，但现在会移至后台，而不是被终止，因此长时间的构建和测试运行将完成并报告结果。前台超时：0 现在表示默认的 120 秒',
     '45126431-25': '新增项目名称和图标',
     '453f75dc-123': '新增 oauth.authServerMetadataUrl 配置项，使 MCP 服务器在标准发现失败时可指定自定义 OAuth 元数据发现 URL',
+    '4547585e-92': '为 mcp_tool 钩子添加了“onFailure”: “block”，与命令和 HTTP 钩子一样：调用失败的钩子会阻止操作',
     '458eac48-157': '新增子进程沙箱，在 Linux 上设置 CLAUDE_CODE_SUBPROCESS_ENV_SCRUB 时使用 PID 命名空间隔离；并新增 CLAUDE_CODE_SCRIPT_CAPS 环境变量以限制每个会话的脚本调用次数',
     '45e448a8-61': '将 TypeScript 语言服务器回滚到标准实现',
     '45ebd0ae-62': '在新会话界面添加 OpenCode 标志，便于快速识别应用',
@@ -759,6 +761,7 @@ window.CHANGELOG_MONTHLY = {
     '6459f057-105': '受特性开关控制的独立图像生成扩展可通过原生 Codex 图像产物完成流程运行',
     '64a34d76-70': '让插件 MCP 加载同时接受 .mcp.json 中的 mcpServers 和顶层服务器映射',
     '64ce5e70-46': '新增对 Zed 编辑器选区作为编辑器上下文的支持',
+    '64da45d8-119': '添加了 CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME，它允许主机阻止 claude -p --resume 和 --continue 运行由钩子延迟的工具调用',
     '64dd4390-43': '添加滑块图标，并将其用于通用设置标签页',
     '65008520-100': '支持将插件固定到指定 git commit SHA，使市场条目可安装确切版本',
     '6503529c-30': '新增对 models.dev 系列的支持',
@@ -834,6 +837,7 @@ window.CHANGELOG_MONTHLY = {
     '6df8e200-57': 'TUI 支持用 Tab 键选择自动补全选项',
     '6e171414-27': '应用的布局改进',
     '6e18c118-35': '在会话导出中添加助手元数据',
+    '6e1fb2d0-121': '新增对嵌入 Claude Code 的应用的支持，以便启用策略插件的 allowManagedModsOnly 选项；管理员的管理设置仍具有优先权',
     '6ec7fa30-47': 'TUI 新增 /session 命令以列出可用会话',
     '6ed4634-55': '添加错误提示，引导用户重新通过 Copilot 认证',
     '6ef1b922-38': '在 ! 命令中启用 shell 别名展开',
@@ -1382,6 +1386,7 @@ window.CHANGELOG_MONTHLY = {
     'b0ba29fb-27': '支持多选问题',
     'b0c15c00-78': '新增 allowRead 沙箱文件系统设置，可在 denyRead 区域内重新允许读取访问',
     'b0eddce0-92': '新课程获得紧凑的欢迎屏幕和一致的标题，在轮换期间和之后偶尔提供建议',
+    'b0f3bd78-97': '添加了警告，提示当来自跳过权限提示的会话的消息可能被云会话保留和丢弃时',
     'b10f465c-151': '新增 ANTHROPIC_WORKSPACE_ID 环境变量用于工作负载身份联合——当联合规则覆盖多个工作区时，将签发的令牌限定到特定工作区',
     'b1382f94-26': '补充应用中缺失的 i18n 字符串',
     'b15f319c-28': '优化 TUI 首次启动时的错误提示',
@@ -1684,6 +1689,7 @@ window.CHANGELOG_MONTHLY = {
     'd9725c93-29': '为 OpenCode 增加代理描述',
     'd9b5d06f-106': 'codex exec 现在支持提示加标准输入的工作流，因此你可以在通过管道输入的同时在命令行传入单独的提示',
     'd9c121a8-152': '多步认证：TUI 和 Desktop 均支持多步认证流程，这意味着 Github Copilot for Enterprise 部署等提供方现在可按预期工作',
+    'da5d0b54-163': '为 Amazon Bedrock、Google Cloud 的 Agent Platform、Microsoft Foundry 和 Claude 应用网关上的 Claude Opus 4.6 和 Sonnet 4.6 添加了自动模式；其中将启动无权限模式的交互式会话',
     'da6ae0b4-52': 'Tauri 服务器启动失败对话框中新增复制日志按钮',
     'da838d0d-109': '在自托管运行器中添加了--hold-idle-file和--max-hold-min ，以便在主机报告处理过程时保持空闲会话继续运行',
     'dacce534-171': '为颁发证书凭据而不是客户端密钥的身份提供程序添加了Claude应用程序网关与其身份提供程序之间的证书客户端身份验证（ private_key_jwt ）',
@@ -1874,6 +1880,7 @@ window.CHANGELOG_MONTHLY = {
     'ef174dac-82': '为以--safe-mode开始的后台会话的Agent视图PEEK面板添加了“安全模式”行',
     'ef586dd2-51': '在 TUI 中添加了用于实时语音通话的 WebRTC 协商。（ ）',
     'efa73f5-66': '增加 $0、$1 等简写，用于在自定义命令中访问单个参数',
+    'efa78354-90': '当策略的 maxEffortLevel 不是有效的工作量级别时，在 Claude 应用网关中添加了启动警告',
     'eff492f0-195': '侧面板选项卡快捷方式：右键单击侧面板选项卡，然后选择右侧的关闭选项卡。⌘ W现在会关闭侧面板选项卡，无论焦点在哪里，都会关闭；钚W或Ctrl + Alt + W会始终关闭会话选项卡； ⌘⇧ T会重新打开上一个关闭的选项卡，无论它在哪里',
     'f0737144-53': 'models 命令新增 --refresh 参数，用于刷新模型列表',
     'f07f4fbc-107': '在/plugin和claude插件中添加了一个注释，用于验证在组织管理Claude代码时跳过的mod钩子的命名',
@@ -1994,7 +2001,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 216,
+      'count': 223,
       'toolCount': 12,
       'multi': [
         {
@@ -2252,6 +2259,55 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': '16fecdb8-102',
+              'text': 'Added a notice in /status and claude doctor when an OpenTelemetry exporter has no endpoint and its data would likely be lost',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
+            {
+              'key': '4547585e-92',
+              'text': 'Added \'onFailure\': \'block\' for mcp_tool hooks, as for command and HTTP hooks: a hook whose call fails blocks the action',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
+            {
+              'key': '64da45d8-119',
+              'text': 'Added CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME, which lets a host stop claude -p --resume and --continue from running a tool call that a hook deferred',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
+            {
+              'key': '6e1fb2d0-121',
+              'text': 'Added support for apps that embed Claude Code to switch on the policy plugin\'s allowManagedModsOnly option; an admin\'s managed settings still win',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
+            {
+              'key': 'b0f3bd78-97',
+              'text': 'Added a warning when a message from a session that skips permission prompts may be held and dropped by a cloud session',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
+            {
+              'key': 'da5d0b54-163',
+              'text': 'Added auto mode for Claude Opus 4.6 and Sonnet 4.6 on Amazon Bedrock, Google Cloud\'s Agent Platform, Microsoft Foundry and Claude apps gateway; interactive sessions with no permission mode start in it',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
+            {
+              'key': 'efa78354-90',
+              'text': 'Added a startup warning to the Claude apps gateway when a policy\'s maxEffortLevel is not a valid effort level',
+              'date': '2026-11-19',
+              'version': '2.1.328',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.328'
+            },
             {
               'key': '178e2aca-118',
               'text': 'Added claude mcp add-json - to read the server\'s JSON from stdin, so tokens can stay off the command line; not available inside a Claude Code session',
@@ -2729,7 +2785,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 68
+          'count': 75
         },
         {
           'id': 'opencode',

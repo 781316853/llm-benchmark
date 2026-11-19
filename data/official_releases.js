@@ -3,15 +3,15 @@
 // 用途:models[] 供 scripts/lib/model-auto.js 自动建档;benchmarks[] 标记该发布提到的基准,便于后续种子转录。
 // 注:发布页分数图表多为图片,本文件不含分数;分数以 official-seeds.js 的人工转录(T2)为准。
 window.OFFICIAL_RELEASES = {
-  'updated': '2026-11-16',
-  'refreshedAt': '2026-11-16 20:02',
+  'updated': '2026-11-19',
+  'refreshedAt': '2026-11-19 15:43',
   'sources': [
     'qwen-official',
     'tencent-official'
   ],
   'stats': {
-    'releases': 12,
-    'models': 11
+    'releases': 11,
+    'models': 10
   },
   'models': [
     {
@@ -53,14 +53,6 @@ window.OFFICIAL_RELEASES = {
       'date': '2026-09-20',
       'title': 'Qwen-Image-2.1：小模强效，创改一体',
       'url': 'https://qwen.ai/blog?id=qwen-image-2.1'
-    },
-    {
-      'model': 'Qwen-Image-3.0',
-      'vendor': 'Alibaba',
-      'src': 'qwen-official',
-      'date': '2026-07-21',
-      'title': 'Qwen-Image-3.0: 内容丰实、细节真实、知识厚实',
-      'url': 'https://qwen.ai/blog?id=qwen-image-3.0'
     },
     {
       'model': 'Qwen3.8-Flash-Next',
@@ -358,28 +350,6 @@ window.OFFICIAL_RELEASES = {
         'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen3.8/performance.png',
         'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen3.8/work_showcases/training-score-vs-envs-scale.png#center',
         'https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen3.8/work_showcases/harness-generalization-3.8.png#center'
-      ]
-    },
-    {
-      'src': 'qwen-official',
-      'vendor': 'Alibaba',
-      'title': 'Qwen-Image-3.0: 内容丰实、细节真实、知识厚实',
-      'date': '2026-07-21',
-      'url': 'https://qwen.ai/blog?id=qwen-image-3.0',
-      'models': [
-        'Qwen-Image-3.0'
-      ],
-      'benchmarks': [],
-      'cover': 'https://img.alicdn.com/imgextra/i4/O1CN01xIf9ZH22o5MUhuDYF_!!6000000007166-2-tps-1590-954.png',
-      'images': [
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/banner.png#center',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/update1.png',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/update2.png',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/3fa25ce8ca621bc3642b431d6724ecc3.png',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/whale.jpg',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/cca131fe-4ba1-409e-9da0-2358ee2bbb41.png#center',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/update5.png',
-        'https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen-Image/image3/update6.jpeg'
       ]
     }
   ]

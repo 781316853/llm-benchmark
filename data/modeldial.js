@@ -1,6 +1,6 @@
-// 数据源:ModelDial 雷达(源站快照 2026-11-18;第三方独立实测的综合能力榜)
+// 数据源:ModelDial 雷达(源站快照 2026-11-19;第三方独立实测的综合能力榜)
 // 站点:https://modeldial.com/radar(口径说明 https://modeldial.com/method)
-// 接口:https://modeldial.com/data/overview.json(snapshot overall-d6c6f329b79c5733420369a5,policy five-axis-b20-f25-k35-a10-m10-cube-half_up-v3)
+// 接口:https://modeldial.com/data/overview.json(snapshot overall-5fca04beb491eaa62de72f1b,policy five-axis-b20-f25-k35-a10-m10-cube-half_up-v3)
 // 授权:CC BY 4.0 · 用途:仅学习与对比展示
 // 综合分口径:后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10%(五分项均 0-100);
 //   overall=五轴加权分;threeAxis=源站旧 3 轴分(部分新条目为空),仅作参考。
@@ -17,14 +17,14 @@ window.MODELDIAL = {
   'methodUrl': 'https://modeldial.com/method',
   'apiUrl': 'https://modeldial.com/data/overview.json',
   'license': 'CC BY 4.0',
-  'batchId': 'overall-d6c6f329b79c5733420369a5',
+  'batchId': 'overall-5fca04beb491eaa62de72f1b',
   'batchRevision': 76,
-  'batchPublishedAt': '2026-11-18T06:29:52.453Z',
-  'publicationKey': 'sha256:a20fb45f72a5ec3d1ff8556bdd9800b7a5732cccc668d7313d367708a68e9bad',
-  'viewKey': 'fd0b30c3f8dbef8ee7ad9e71538efed360e15187b3bd97b7ff0f1403353fb65b',
+  'batchPublishedAt': '2026-11-19T02:59:35.223Z',
+  'publicationKey': 'sha256:58f23001a11087a1389d1d262b71461660667a22ac583e270ea4e86f7a22d241',
+  'viewKey': 'c912ce5708c9803fed256621bb5e8805689ddce2698865fbe6852de51f09c9ef',
   'scorePolicy': 'five-axis-b20-f25-k35-a10-m10-cube-half_up-v3',
-  'updated': '2026-11-18',
-  'refreshedAt': '2026-11-19 04:46',
+  'updated': '2026-11-19',
+  'refreshedAt': '2026-11-19 15:43',
   'weights': {
     'backend': 0.2,
     'frontend': 0.25,
