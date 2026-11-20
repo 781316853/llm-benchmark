@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-19)
+// 数据源:Terminal-Bench 4.0(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-20)
 // 主渠道:https://www.tbench.ai/leaderboard/terminal-bench/4.0(官方实测榜 T1)
 // 补充:https://www.datalearner.com/benchmarks/terminal-bench-4-0(厂商官方发布 T2,只补缺,官方口径优先)
 // 补充:厂商官方发布自测分种子层(如 DeepSeek 更新页 https://api-docs.deepseek.com/zh-cn/updates,官方榜与 datalearner 均缺时补入)
@@ -13,8 +13,8 @@ window.TBENCH = {
   'url': 'https://www.tbench.ai/leaderboard/terminal-bench/4.0',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '4.0',
-  'updated': '2026-11-19',
-  'refreshedAt': '2026-11-20 04:52',
+  'updated': '2026-11-20',
+  'refreshedAt': '2026-11-20 15:35',
   'stats': {
     'tasks': 66,
     'entries': 108
@@ -707,6 +707,18 @@ window.TBENCH = {
     },
     {
       'rank': 58,
+      'model': 'Hy4 Flash',
+      'agent': 'mini-swe-agent',
+      'effort': 'none',
+      'score': 11.8,
+      'ci': 2.9,
+      'date': 'Nov 16, 2026',
+      'tokens': '4.5B',
+      'cost': '$15.47',
+      'src': 'official'
+    },
+    {
+      'rank': 59,
       'model': 'MiniMax M3',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -718,7 +730,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 59,
+      'rank': 60,
       'model': 'DeepSeek V4 Pro 0813',
       'agent': 'Claude Code',
       'effort': 'max',
@@ -730,7 +742,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 60,
+      'rank': 61,
       'model': 'Beam 1.0',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -742,7 +754,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 61,
+      'rank': 62,
       'model': 'Gemini 3.1 Pro',
       'agent': 'Antigravity CLI',
       'effort': 'high',
@@ -754,7 +766,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 62,
+      'rank': 63,
       'model': 'GPT-5.4 Mini',
       'agent': 'Codex',
       'effort': 'xhigh',
@@ -766,7 +778,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 63,
+      'rank': 64,
       'model': 'Inkling Small',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -778,7 +790,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 64,
+      'rank': 65,
       'model': 'Nemotron 3.5 Super VL',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -790,7 +802,7 @@ window.TBENCH = {
       'src': 'official'
     },
     {
-      'rank': 65,
+      'rank': 66,
       'model': 'Inkling',
       'agent': 'mini-swe-agent',
       'effort': 'none',
@@ -953,18 +965,6 @@ window.TBENCH = {
       'score': 20,
       'ci': null,
       'date': '2026-11-04',
-      'tokens': null,
-      'cost': null,
-      'src': 'datalearner'
-    },
-    {
-      'rank': null,
-      'model': 'Hy4 Flash',
-      'agent': null,
-      'effort': '思考模式 High（工具）',
-      'score': 19.2,
-      'ci': null,
-      'date': '2026-11-16',
       'tokens': null,
       'cost': null,
       'src': 'datalearner'

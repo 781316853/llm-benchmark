@@ -10,9 +10,9 @@ window.MODELDIAL_SUBS = {
   'url': 'https://modeldial.com/subscriptions?period=week&view=catalog',
   'host': 'modeldial.com',
   'license': '见源站;引用请标注 ModelDial',
-  'updated': '2026-11-19',
+  'updated': '2026-11-20',
   'sourceUpdated': '2026-11-19',
-  'refreshedAt': '2026-11-20 04:52',
+  'refreshedAt': '2026-11-20 15:35',
   'usdToCnyRate': 6.8,
   'monthlyFactorWeek': 4.333,
   'cacheRatios': [
