@@ -76,8 +76,8 @@ window.DATALEARNER = {
       'score': 74.9,
       'mode': '思考模式 High（工具）',
       'date': '2026-11-04',
-      'params': '未知',
-      'license': '已宣布 · 待发布'
+      'params': '7700亿',
+      'license': '有条件商用'
     },
     {
       'name': 'Claude Fable 5.2',

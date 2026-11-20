@@ -14,7 +14,7 @@ window.LASTEXAM = {
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'version': 'v1.1',
   'updated': '2026-11-20',
-  'refreshedAt': '2026-11-20 15:35',
+  'refreshedAt': '2026-11-21 04:37',
   'stats': {
     'tasks': 122,
     'entries': 40,
@@ -219,7 +219,8 @@ window.LASTEXAM = {
       'costUsd': 0.68,
       'date': '2026-11-04',
       'src': 'official',
-      'license': '已宣布开源（权重待发布）',
+      'size': '7700.000',
+      'license': '有条件免费商用；大型 MaaS 服务须遵守额外授权条件',
       'rank': 12,
       'version': 'v1.1'
     },

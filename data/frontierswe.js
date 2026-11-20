@@ -13,10 +13,10 @@ window.FRONTIERSWE = {
   'epochUrl': 'https://epoch.ai/benchmarks/frontierswe',
   'version': 'v2',
   'updated': '2026-11-20',
-  'refreshedAt': '2026-11-20 15:35',
+  'refreshedAt': '2026-11-21 04:37',
   'stats': {
     'tasks': 34,
-    'entries': 26,
+    'entries': 27,
     'trialsPerTask': 5
   },
   'desc': 'FrontierSWE v2(Epoch AI):34 个来自真实技术领域的超长周期软件工程任务(实现 / 性能优化 / 科学计算 / 视觉推理 / AI 研究),每任务 5 次试验、单次最长 20 小时;所有模型在基准自带的极简 agent harness「proximus」内以最高推理强度运行。主指标 mean@5 = 每任务五次试验均值再跨任务平均,分数越高越好。',
@@ -48,6 +48,19 @@ window.FRONTIERSWE = {
       'rank': 2
     },
     {
+      'model': 'Gemini 4 Neon',
+      'harness': 'proximus',
+      'vendor': 'google',
+      'score': 62.4,
+      'best': 70.3,
+      'worst': 53.6,
+      'costUsd': 96.13,
+      'durationS': 47711,
+      'costCaveat': null,
+      'src': 'official',
+      'rank': 3
+    },
+    {
       'model': 'Claude Opus 5.5',
       'harness': 'proximus',
       'vendor': 'anthropic',
@@ -58,7 +71,7 @@ window.FRONTIERSWE = {
       'durationS': 51292,
       'costCaveat': null,
       'src': 'official',
-      'rank': 3
+      'rank': 4
     },
     {
       'model': 'Claude Sonnet 5.5',
@@ -71,7 +84,7 @@ window.FRONTIERSWE = {
       'durationS': 57621,
       'costCaveat': null,
       'src': 'official',
-      'rank': 4
+      'rank': 5
     },
     {
       'model': 'Gemini 4 Carbon',
@@ -84,7 +97,7 @@ window.FRONTIERSWE = {
       'durationS': 45284,
       'costCaveat': null,
       'src': 'official',
-      'rank': 5
+      'rank': 6
     },
     {
       'model': 'Claude Fable 5.1',
@@ -97,7 +110,7 @@ window.FRONTIERSWE = {
       'durationS': 41828,
       'costCaveat': null,
       'src': 'official',
-      'rank': 6
+      'rank': 7
     },
     {
       'model': 'Gemini 4 Argon',
@@ -110,7 +123,7 @@ window.FRONTIERSWE = {
       'durationS': 38021,
       'costCaveat': 'Cache hit rate is much lower due to a non-production setting.',
       'src': 'official',
-      'rank': 7
+      'rank': 8
     },
     {
       'model': 'Gemini 4 Hydrogen',
@@ -123,7 +136,7 @@ window.FRONTIERSWE = {
       'durationS': 40976,
       'costCaveat': null,
       'src': 'official',
-      'rank': 8
+      'rank': 9
     },
     {
       'model': 'Claude Opus 5',
@@ -136,7 +149,7 @@ window.FRONTIERSWE = {
       'durationS': 57847,
       'costCaveat': null,
       'src': 'official',
-      'rank': 9
+      'rank': 10
     },
     {
       'model': 'Claude Fable 5',
@@ -149,7 +162,7 @@ window.FRONTIERSWE = {
       'durationS': 56966,
       'costCaveat': null,
       'src': 'official',
-      'rank': 10
+      'rank': 11
     },
     {
       'model': 'Claude Haiku 5.5',
@@ -162,7 +175,7 @@ window.FRONTIERSWE = {
       'durationS': 44699,
       'costCaveat': null,
       'src': 'official',
-      'rank': 11
+      'rank': 12
     },
     {
       'model': 'GPT-5.6 Sol',
@@ -175,7 +188,7 @@ window.FRONTIERSWE = {
       'durationS': 30950,
       'costCaveat': null,
       'src': 'official',
-      'rank': 12
+      'rank': 13
     },
     {
       'model': 'GLM-5.3',
@@ -188,7 +201,7 @@ window.FRONTIERSWE = {
       'durationS': 61507,
       'costCaveat': null,
       'src': 'official',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'Grok 4.7',
@@ -201,7 +214,7 @@ window.FRONTIERSWE = {
       'durationS': 43429,
       'costCaveat': null,
       'src': 'official',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'Kimi K3',
@@ -214,7 +227,7 @@ window.FRONTIERSWE = {
       'durationS': 66481,
       'costCaveat': null,
       'src': 'official',
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'Muse Spark 1.3',
@@ -227,7 +240,7 @@ window.FRONTIERSWE = {
       'durationS': 61074,
       'costCaveat': null,
       'src': 'official',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'Grok 4.6',
@@ -240,7 +253,7 @@ window.FRONTIERSWE = {
       'durationS': 49536,
       'costCaveat': null,
       'src': 'official',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'Inkling 2 Small',
@@ -253,7 +266,7 @@ window.FRONTIERSWE = {
       'durationS': 50250,
       'costCaveat': null,
       'src': 'official',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -266,7 +279,7 @@ window.FRONTIERSWE = {
       'durationS': 28361,
       'costCaveat': null,
       'src': 'official',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'Gemini 3.8 Flash',
@@ -279,7 +292,7 @@ window.FRONTIERSWE = {
       'durationS': 26204,
       'costCaveat': null,
       'src': 'official',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'GLM-5.3 Flash',
@@ -292,7 +305,7 @@ window.FRONTIERSWE = {
       'durationS': 58986,
       'costCaveat': null,
       'src': 'official',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'Qwen3.8-Max-0902',
@@ -305,7 +318,7 @@ window.FRONTIERSWE = {
       'durationS': 69703,
       'costCaveat': null,
       'src': 'official',
-      'rank': 22
+      'rank': 23
     },
     {
       'model': 'Qwen3.8-Max',
@@ -318,7 +331,7 @@ window.FRONTIERSWE = {
       'durationS': 66332,
       'costCaveat': null,
       'src': 'official',
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'DeepSeek V4 Flash Vision Exp',
@@ -331,7 +344,7 @@ window.FRONTIERSWE = {
       'durationS': 53527,
       'costCaveat': null,
       'src': 'official',
-      'rank': 24
+      'rank': 25
     },
     {
       'model': 'Muse Spark 1.2',
@@ -344,7 +357,7 @@ window.FRONTIERSWE = {
       'durationS': 16517,
       'costCaveat': null,
       'src': 'official',
-      'rank': 25
+      'rank': 26
     },
     {
       'model': 'Inkling',
@@ -357,7 +370,7 @@ window.FRONTIERSWE = {
       'durationS': 4186,
       'costCaveat': null,
       'src': 'official',
-      'rank': 26
+      'rank': 27
     }
   ]
 };

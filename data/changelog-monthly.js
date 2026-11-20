@@ -6,7 +6,7 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-20',
-  'refreshedAt': '2026-11-20 15:35',
+  'refreshedAt': '2026-11-21 04:37',
   'stats': {
     'months': 21,
     'afterToolDedupe': 3411,

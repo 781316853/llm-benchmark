@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-19',
+  'updated': '2026-11-20',
   'stats': {
-    'total': 199,
+    'total': 200,
     'knownVendor': 199,
-    'otherVendor': 0,
-    'skippedManual': 1529,
+    'otherVendor': 1,
+    'skippedManual': 1597,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -789,6 +789,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#E0855F',
       'aliases': [
         'Haiku 4.5'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Inkling Mini 1117',
+      'vendor': '其他',
+      'color': '#9298A1',
+      'aliases': [
+        'Inkling Mini 1117'
       ],
       'auto': true
     },

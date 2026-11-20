@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 61,
+      'modelCount': 60,
       'updated': '2026-11-20',
       'ageDays': 0,
       'completeness': 1,
@@ -177,7 +177,7 @@ window.QUALITY = {
       'id': 'frontierswe',
       'name': 'FrontierSWE',
       'status': 'ok',
-      'modelCount': 26,
+      'modelCount': 27,
       'updated': '2026-11-20',
       'ageDays': 0,
       'completeness': 1,
@@ -265,7 +265,7 @@ window.QUALITY = {
       'id': 'programbench',
       'name': 'ProgramBench',
       'status': 'ok',
-      'modelCount': 78,
+      'modelCount': 79,
       'updated': '2026-11-20',
       'ageDays': 0,
       'completeness': 0.962,
@@ -331,7 +331,7 @@ window.QUALITY = {
       'id': 'vals_vibe_code',
       'name': 'Vibe Code Bench v1.1',
       'status': 'ok',
-      'modelCount': 133,
+      'modelCount': 134,
       'updated': '2026-11-20',
       'ageDays': 0,
       'completeness': 1,
@@ -1420,9 +1420,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 61,
-      'complete': 61,
-      'modelCount': 61,
+      'total': 60,
+      'complete': 60,
+      'modelCount': 60,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1534,9 +1534,9 @@ window.QUALITY = {
     },
     'frontierswe': {
       'rate': 1,
-      'total': 26,
-      'complete': 26,
-      'modelCount': 26,
+      'total': 27,
+      'complete': 27,
+      'modelCount': 27,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1600,9 +1600,9 @@ window.QUALITY = {
     },
     'programbench': {
       'rate': 0.962,
-      'total': 78,
-      'complete': 75,
-      'modelCount': 78,
+      'total': 79,
+      'complete': 76,
+      'modelCount': 79,
       'missingFields': {
         'score': 3
       },
@@ -1650,9 +1650,9 @@ window.QUALITY = {
     },
     'vals_vibe_code': {
       'rate': 1,
-      'total': 133,
-      'complete': 133,
-      'modelCount': 133,
+      'total': 134,
+      'complete': 134,
+      'modelCount': 134,
       'missingFields': {},
       'flag': 'ok'
     }

@@ -16,7 +16,7 @@ window.AUTOMATIONBENCH = {
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-20',
-  'refreshedAt': '2026-11-20 15:35',
+  'refreshedAt': '2026-11-21 04:37',
   'stats': {
     'tasks': 600,
     'domains': 6,
@@ -88,7 +88,7 @@ window.AUTOMATIONBENCH = {
       'model': 'Hy4',
       'org': '腾讯AI实验室',
       'score': 56.2,
-      'license': '已宣布开源（权重待发布）',
+      'license': '有条件免费商用；大型 MaaS 服务须遵守额外授权条件',
       'effort': '思考模式 High（工具）',
       'date': '2026-11-04',
       'src': 'datalearner',
