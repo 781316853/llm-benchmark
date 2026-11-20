@@ -28,3 +28,12 @@ Thumbs.db
 # 本地宣传片素材与设计稿(B站视频/封面约 31MB,不入库)
 promo/
 docs/superpowers/
+
+# Qoder 会话用量可视化产物(本机自动生成)
+.qoder-credits/
+
+# Trae 导出的页面分享包(本地副本)
+.trae-html-share-packages/
+
+# 本地功能预览页(按需重生成,不入库)
+preview/
