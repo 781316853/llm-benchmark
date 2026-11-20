@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-19',
-  'refreshedAt': '2026-11-19 15:43',
+  'refreshedAt': '2026-11-20 04:52',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,10 +30,10 @@ window.PRICING = {
     'planModels': 2665,
     'withPricing': 1890,
     'comparable': 1209,
-    'models': 116,
+    'models': 117,
     'unresolved': 16,
-    'ranked': 77,
-    'supplemented': 3,
+    'ranked': 78,
+    'supplemented': 4,
     'carriedOver': 0,
     'seeded': 0,
     'missingRanked': 5
@@ -271,6 +271,15 @@ window.PRICING = {
       'outputCnyPerM': 40.8,
       'costPerM': 2.431,
       'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Gemini 4 Neon',
+      'slug': 'gemini-4-neon',
+      'inputCnyPerM': 20.4,
+      'cacheCnyPerM': 1.02,
+      'outputCnyPerM': 102,
+      'costPerM': 2.397,
+      'priceSource': 'models.dev:google'
     },
     {
       'id': 'Qwen3.6-Max',

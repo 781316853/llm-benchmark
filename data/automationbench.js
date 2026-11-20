@@ -16,7 +16,7 @@ window.AUTOMATIONBENCH = {
   'paperUrl': 'https://arxiv.org/abs/2604.18934',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-19',
-  'refreshedAt': '2026-11-19 15:43',
+  'refreshedAt': '2026-11-20 04:52',
   'stats': {
     'tasks': 600,
     'domains': 6,
@@ -79,6 +79,9 @@ window.AUTOMATIONBENCH = {
       'effort': '极高强度思考（工具）',
       'date': '2026-11-18',
       'src': 'datalearner',
+      'size': '—',
+      'context': '1.0M',
+      'cost': '$ 3.00 / $ 15.00',
       'rank': 5
     },
     {
