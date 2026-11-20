@@ -70,13 +70,16 @@ function parseJson(raw, versionKey) {
 }
 
 class FrontierCodeSource extends BaseSource {
-  constructor() {
-    super({
+  constructor(overrides) {
+    const cfg = Object.assign({
       id: "frontiercode", name: "FrontierCode", type: "json",
       url: CONFIG.sources.frontiercode.url, host: CONFIG.sources.frontiercode.host,
       officialUrl: CONFIG.sources.frontiercode.officialUrl,
+      boardUrl: CONFIG.sources.frontiercode.boardUrl,
+      version: CONFIG.sources.frontiercode.version,
       outFile: "frontiercode.js", windowVar: "FRONTIERCODE"
-    });
+    }, overrides || {});
+    super(cfg);
   }
   parse(raw) {
     const parsed = parseJson(raw, "v1_1");
@@ -90,13 +93,14 @@ class FrontierCodeSource extends BaseSource {
   }
   writeContent(parsed) {
     const T = CONFIG.TODAY, R = CONFIG.REFRESHED_AT;
-    const cfg = CONFIG.sources.frontiercode;
-    return writers.windowVarTemplate("FRONTIERCODE",
-      "// 数据源:FrontierCode(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 " + T + ")\n" +
+    const cfg = this.cfg;
+    return writers.windowVarTemplate(cfg.windowVar,
+      "// 数据源:FrontierCode " + cfg.version + "(Cognition 官方 · 生产级代码质量/可合并性评测,更新于 " + T + ")\n" +
       "// 来源:" + cfg.url + "(榜单页:" + cfg.boardUrl + ")\n" +
       "// 字段:score=标准分(%," + parsed.subset + " 子集下各档位最优);passRate=原始正确率(%);harness=评测所用厂商 CLI;\n" +
       "//      costUsd/tokens/steps=该最优档位下的每任务平均成本/tokens/步数;flaggedRate=被判定不公平联网的运行比例(%)\n" +
-      "// 用途:「权威基准测试」页完整展示;仅展示,不计入综合分与命中数(harness 绑定各厂商自家 CLI,口径不可比)。\n",
+      "// 用途:「权威基准测试」页完整展示;仅展示,不计入综合分与命中数(harness 绑定各厂商自家 CLI,口径不可比)。\n" +
+      "// 版本:2.0 为当前主榜(main 132 题);1.1 为历史榜(main 100 题),仅版本切换对照。\n",
       {
         source: "FrontierCode",
         url: cfg.url,
@@ -113,4 +117,21 @@ class FrontierCodeSource extends BaseSource {
   }
 }
 
-module.exports = registry.register(FrontierCodeSource);
+class FrontierCodeV11Source extends FrontierCodeSource {
+  constructor() {
+    super({
+      id: "frontiercode_v11", name: "FrontierCode v1.1", type: "json",
+      url: CONFIG.sources.frontiercode_v11.url,
+      host: CONFIG.sources.frontiercode_v11.host,
+      officialUrl: CONFIG.sources.frontiercode_v11.officialUrl,
+      boardUrl: CONFIG.sources.frontiercode_v11.boardUrl,
+      version: CONFIG.sources.frontiercode_v11.version,
+      outFile: "frontiercode_v11.js", windowVar: "FRONTIERCODE_V11"
+    });
+  }
+}
+
+registry.register(FrontierCodeSource);
+registry.register(FrontierCodeV11Source);
+
+module.exports = { FrontierCodeSource: FrontierCodeSource, FrontierCodeV11Source: FrontierCodeV11Source, parseJson: parseJson };

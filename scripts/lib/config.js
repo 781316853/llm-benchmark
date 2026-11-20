@@ -182,15 +182,22 @@ module.exports = {
       host: "www.datalearner.com", src: "datalearner"
     },
     lastexam: {
-      // Agents' Last Exam(UC Berkeley RDI):真实专业工作流 1500+ 任务。
-      // 官方榜单 agents-last-exam.org/leaderboard 为 Next.js 客户端渲染(原始 HTML 无数据),
-      // 主源 datalearner 详情页(T2 厂商官方发布),llm-stats 聚合表(T3)为补充。
+      // Agents' Last Exam(UC Berkeley RDI)v1.1:122 个公开任务,55 细分行业 / 13 行业组。
+      // 官方榜单为 Next.js 客户端渲染,数据走同域 API(T1);llm-stats 聚合表(T3)仅补缺。
       url: "https://llm-stats.com/benchmarks/agents-last-exam",
-      host: "llm-stats.com", src: "llm-stats",
+      apiUrl: "https://agents-last-exam.org/api/demo/leaderboard/v1.1",
+      host: "agents-last-exam.org", src: "llm-stats",
+      version: "v1.1",
       officialUrl: "https://agents-last-exam.org/leaderboard"
     },
+    datalearner_lastexam_v11: {
+      // ALE v1.1 补充源(T2):datalearner 的 v1.1 独立页,厂商官方发布成绩转录。
+      // 与 v1.0 页(152 题)分属不同任务集,不可混算。
+      url: "https://www.datalearner.com/benchmarks/agents-last-exam-v1-1",
+      host: "www.datalearner.com", src: "datalearner"
+    },
     datalearner_lastexam: {
-      // ALE 主源:datalearner 详情页(内嵌 results JSON,厂商官方发布成绩)。
+      // ALE v1.0 历史榜(152 题):仅供版本切换保留,不与 v1.1 比较。
       url: "https://www.datalearner.com/benchmarks/agents-last-exam",
       host: "www.datalearner.com", src: "datalearner"
     },
@@ -352,6 +359,15 @@ module.exports = {
       url: "https://cognition.com/data/frontier-code-2.0/data.json",
       host: "cognition.com",
       version: "2.0",
+      officialUrl: "https://cognition.com/frontiercode",
+      boardUrl: "https://cognition.com/frontiercode"
+    },
+    frontiercode_v11: {
+      // FrontierCode 1.1 历史榜(main 100 题),用于权威页版本切换保留。
+      // 旧端点同时含 v1 / v1_1 两版,解析器取 v1_1。
+      url: "https://cognition.com/data/frontiercode-leaderboard/data.json",
+      host: "cognition.com",
+      version: "1.1",
       officialUrl: "https://cognition.com/frontiercode",
       boardUrl: "https://cognition.com/frontiercode"
     },

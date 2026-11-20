@@ -261,9 +261,13 @@
       function (m, url, official, upd, flows, hours) {
         return "Primary channel: datalearner (vendor release, partial credit) · supplement: " + url + " (official: " + official + "; system-level entries are appended only) · updated " + upd + " · " + flows + " long-horizon desktop workflows (human median about " + hours + " hours); higher partial score (share of checkpoints met) is better, and since binary completion rates are extremely low the board is sorted by partial score. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores. Shown for reference only, not counted in the composite.";
       }],
-    ["^主渠道:datalearner\\(厂商官方发布\\)· 补充:(https?://\\S+?)\\(官方:(https?://\\S+?),Qwen 官方发布 T2 仅补缺\\) · 更新 ([\\d\\-]+) · ([\\d,+]+) 个真实专业工作流任务\\((\\d+) 子行业\\),Pass@1 为完美得分运行占比,越高越好。.*本榜仅展示,不计入综合分。$",
-      function (m, url, official, upd, tasks, inds) {
-        return "Primary channel: datalearner (vendor release) · supplement: " + url + " (official: " + official + "; Qwen's T2 release fills gaps only) · updated " + upd + " · " + tasks + " real professional-workflow tasks (" + inds + " sub-industries), where Pass@1 is the share of runs scoring perfectly; higher is better. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores. Shown for reference only, not counted in the composite.";
+    ["^来源:(https?://\\S+?) · 版本 (v1\\.1) · 更新 ([\\d\\-]+) · 122 个公开任务\\(55 细分行业 / 13 行业组\\);.*共 (\\d+) 个模型。.*本榜仅展示,不计入综合分与命中数。$",
+      function (m, url, ver, upd, n) {
+        return "Source: " + url + " (official API, T1) · version " + ver + " · updated " + upd + " · 122 public tasks (55 sub-industries / 13 industry groups); official API T1 + datalearner v1.1 T2 + llm-stats T3 (gaps only); best configuration per model; mean score (0–100) and perfect-pass rate are reported separately (datalearner rows publish mean score only); Fable 5.2 uses 113 tasks (9 downgraded tasks excluded), all others 122; the official slug qwen-4 is listed separately as Qwen4 and is not merged with datalearner's Qwen4-Max (not confirmed to be the same model) · " + n + " models. Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores. Shown for reference only, not counted in the composite or coverage.";
+      }],
+    ["^来源:(https?://\\S+?) · 版本 (v1\\.0) · 更新 ([\\d\\-]+) · 152 个任务历史榜\\(厂商官方发布口径\\);.*共 (\\d+) 个模型。.*本榜仅展示,不计入综合分与命中数。$",
+      function (m, url, ver, upd, n) {
+        return "Source: " + url + " · version " + ver + " · updated " + upd + " · 152-task historical board (vendor-published scores); the task set differs from v1.1 (122 tasks), so scores are not directly comparable; datalearner rows publish mean score only · " + n + " models. Shown for reference only, not counted in the composite or coverage.";
       }],
     ["^主渠道:datalearner\\(厂商官方发布\\)· 补充:(https?://\\S+?)\\(官方:(https?://\\S+?),原始 HTML 只服务端渲染 Top 10、主榜另用私有 held-out 集,故官方页仅作来源链接\\)· benchlm\\.ai 镜像 · 更新 ([\\d\\-]+) · (\\d+) 个公开任务 / (\\d+) 个模拟 SaaS 工具 / (\\d+) 个业务域\\(([^)]+)\\):.*?本榜仅展示,不计入综合分。$",
       function (m, url, official, upd, tasks, tools, domains, doms) {
@@ -301,9 +305,9 @@
       function (m, url, official, org, ver, upd, models, rows, kinds) {
         return "Source: " + url + " (official: " + official + ", " + org + ") · version " + ver + " · updated " + upd + " · " + models + " models / " + rows + " model×config rows · evaluated on Cursor's own agent harness with “fuzzy, cross-file” tasks drawn from real Cursor sessions (editing / refactoring / debugging / intent understanding / long-task management / design consistency), judged by an agentic grader that allows several correct answers; this table is the model-level main board (best configuration per model, same basis as the official scatter), and expanding it shows every configuration; cost is the average per-task cost converted from each model's published price. Shown for reference only, not counted in the composite or coverage (the harness basis is not comparable with other benchmarks).";
       }],
-    ["^来源:(https?://\\S+?)\\(榜单页:(https?://\\S+?),(Cognition) 官方\\)· 版本 ([\\w. ]+?) · 更新 ([\\d\\-]+) · 共 (\\d+) 个模型\\(main (\\d+) 题口径\\) · 任务由 ([\\d+]+) 资深开发者制作\\(每任务投入 ([\\d+]+) 小时\\),.*本榜仅展示,不计入综合分与命中数\\(harness 口径不可比\\)。$",
-      function (m, url, page, org, ver, upd, models, tasks, devs, hours) {
-        return "Source: " + url + " (board page: " + page + ", " + org + " official) · version " + ver + " · updated " + upd + " · " + models + " models (main " + tasks + "-task basis) · tasks authored by " + devs + " senior developers (" + hours + " hours each), scored on correctness / test quality / change scope / style / adherence to codebase conventions to assess end-to-end “mergeability” rather than whether it merely runs; “Standard score” is the best effort level on the main subset (matching the official main board, verified row by row), Pass Rate is raw correctness, and the harness is each vendor's own CLI (devin / claude-code / codex etc.). Shown for reference only, not counted in the composite or coverage (the harness basis is not comparable).";
+    ["^来源:(https?://\\S+?)\\(榜单页:(https?://\\S+?),Cognition 官方\\) · 版本 FrontierCode (2\\.0|1\\.1) · 更新 ([\\d\\-]+) · 共 (\\d+) 个模型\\(main (\\d+) 题口径\\) · .*本榜仅展示,不计入综合分与命中数\\(harness 口径不可比\\)。$",
+      function (m, url, page, ver, upd, models, tasks) {
+        return "Source: " + url + " (board page: " + page + ", Cognition official) · version FrontierCode " + ver + " · updated " + upd + " · " + models + " models (main " + tasks + "-task basis) · tasks authored by 20+ senior developers (40+ hours each), scored on correctness / test quality / change scope / style / adherence to codebase conventions to assess end-to-end “mergeability” rather than whether it merely runs; “Standard score” is the best effort level on the main subset, Pass Rate is raw correctness, and the harness is each vendor's own CLI. Shown for reference only, not counted in the composite or coverage (the harness basis is not comparable).";
       }],
     ["^来源:(https?://\\S+?)\\(Epoch AI 官方榜;方法学:(https?://\\S+?)\\) · 版本 FrontierSWE (v[\\d.]+) · 更新 ([\\d\\-]+) · 共 (\\d+) 个模型 · (\\d+) 个超长周期任务\\(([^)]+)\\),每任务 (\\d+) 次试验、单次最长 (\\d+) 小时;.*本榜仅展示,不计入综合分与命中数。$",
       function (m, url, blog, ver, upd, models, tasks, domains, trials, hours) {
@@ -460,6 +464,16 @@
       "默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)":
         "The exact composite score is shown next to each tier by default; untick to show only the tier (board-relative: 50 = median of the pool, not comparable across days).",
       "显示综合分": "Show composite score",
+      "与参考差值": "Delta vs reference",
+      "参考线": "Reference line",
+      "选择参考模型": "Choose reference model",
+      "选择参考模型:差值模式下,基准列显示各模型与该模型的差值;参考模型自身显示原值":
+        "Choose the reference model: in delta mode each benchmark column shows the difference from this model; the reference model itself shows its original score.",
+      "基准": "Baseline",
+      "勾选后基准列改为与参考模型的差值:参考模型自身显示原值,其余模型显示 该模型成绩 − 参考模型成绩;正数高于参考,负数低于;参考模型某项无成绩时,取排名最靠前且有该成绩的模型(该行原值旁标「基准」)。综合分/梯队/性价比不变":
+        "Convert the benchmark columns to the difference from the reference model: the reference model shows its original score, while other models show model score − reference score; positive values beat the reference and negative values fall below it; when the reference has no score for a benchmark, the highest-ranked model with a score is used (its original value is marked “baseline”). Tier, composite score and value index stay unchanged.",
+      "与参考差值模式:参考模型自身显示原值,其余模型显示 该模型成绩 − 参考模型成绩;正数表示高于参考,负数表示低于;参考模型可在工具栏下拉选择,某项无成绩时取排名最靠前且有该成绩的模型(该行原值旁标「基准」);参考行高亮并标「参考线」;综合分/梯队/性价比不变。":
+        "Delta-vs-reference mode: the reference model shows its original score, while other models show model score − reference score; positive values beat the reference and negative values fall below it; the reference can be chosen from the toolbar; when it has no score for a benchmark, the highest-ranked model with a score is used (its original value is marked “baseline”); the reference row is highlighted and marked “Reference line”; tier, composite score and value index stay unchanged.",
       "阅读说明": "How to read",
       "先看要点;完整计分口径可展开": "Key points first; expand for the full scoring method",
       "展开详细口径与数据来源": "Show the full methodology and data sources",
@@ -735,6 +749,7 @@
       "科研工作流 · 仅展示": "Research workflows · display only",
       "长时程桌面计算机使用 · 仅展示": "Long-horizon desktop use · display only",
       "真实专业工作流 · 仅展示": "Real professional workflows · display only",
+      "真实专业工作流 · 仅展示 · 版本切换": "Real professional workflows · display only · versions",
       "跨应用业务工作流 · 仅展示": "Cross-app business workflows · display only",
       "交互式智能体推理 · 仅展示": "Interactive agent reasoning · display only",
       "程序化 CAD 生成 · 仅展示": "Procedural CAD generation · display only",
@@ -745,12 +760,15 @@
       "跨语言程序重写 · 仅展示": "Cross-language rewriting · display only",
       "编码 Agent 实测 · 仅展示": "Coding agent testing · display only",
       "生产级代码质量 · 仅展示": "Production-grade code quality · display only",
+      "生产级代码质量 · 仅展示 · 版本切换": "Production-grade code quality · display only · versions",
       "超长周期软件工程 · 仅展示": "Ultra-long-horizon software engineering · display only",
       "编码 Agent 综合指数 · 仅展示": "Coding agent composite index · display only",
       "4.0 主榜": "4.0 main",
       "3.0 备选": "3.0 alt",
       "2.1 历史": "2.1 legacy",
       "Terminal-Bench 版本切换": "Terminal-Bench version switch",
+      "Agents' Last Exam 版本切换": "Agents' Last Exam version switch",
+      "FrontierCode 版本切换": "FrontierCode version switch",
       "Vision2Code(图像→CadQuery 代码,主指标 total = 64³ 体素 IoU×exec%)":
         "Vision2Code (image → CadQuery code; primary metric total = 64³ voxel IoU × exec%)",
       "Vision QA(渲染图数值几何推理)": "Vision QA (numeric geometric reasoning on renders)",
@@ -1068,6 +1086,13 @@
       "发布日期": "Release date",
       "源站排名": "Source rank",
       "标准分": "Standard score",
+      "平均得分": "Mean score",
+      "完美通过率": "Perfect pass rate",
+      "Harness / 档位": "Harness / effort",
+      "1.1 主榜": "1.1 main",
+      "1.0 历史": "1.0 history",
+      "2.0 主榜": "2.0 main",
+      "1.1 历史": "1.1 history",
       "解决率±CI": "Solve rate ±CI",
       "平台 / 模型 / 套餐": "Platform / model / plan",
       "综合单价 / 月用量": "Blended price / monthly usage",

@@ -416,6 +416,15 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
   border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--panel);
   font-size: var(--fs-sm); }
 .overview-switches .switch-lg:hover { border-color: var(--brand-muted); }
+/* 差值模式参考模型选择:与开关同高,选中模型在矩阵里以 row-ref 高亮 */
+.matrix-ref { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--panel);
+  font-size: var(--fs-sm); }
+.matrix-ref[hidden] { display: none; }
+.matrix-ref > span { color: var(--text-dim); }
+.matrix-ref select { max-width: 220px; border: 0; background: transparent; color: var(--text);
+  font: inherit; font-size: var(--fs-sm); outline: none; cursor: pointer; }
+.matrix-ref:focus-within { border-color: var(--accent); }
 /* 模型搜索:输入即筛,范围覆盖全部有成绩的模型(含默认视图未展示的参考/单榜行) */
 .matrix-search { display: flex; align-items: center; gap: 7px; width: 300px; max-width: 100%;
   padding: 0 6px 0 10px; background: var(--panel); border: 1px solid var(--border);
@@ -535,6 +544,10 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
 .data-table tr.row-two td, .data-table tr.row-one td { color: var(--text-tertiary); }
 .data-table tr.row-domestic { background: var(--row-domestic); }
 .data-table tr.row-domestic:hover { background: var(--row-domestic-hover); }
+/* 差值模式选中的参考模型行:背景高亮 + 左侧色条(用 id 提高优先级,避免被窄屏 row-hit 透明规则覆盖) */
+#matrixTable tr.row-ref { background: rgba(47, 85, 212, .06); }
+#matrixTable tr.row-ref:hover { background: rgba(47, 85, 212, .12); }
+#matrixTable tr.row-ref td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
 /* 宽表悬停定位:行首 3px 竖条与行语义底色并行,颜色不随行状态变化 */
 #matrixTable tbody tr:hover {
   background-image: linear-gradient(90deg, var(--accent) 0 3px, transparent 3px); }
@@ -575,6 +588,10 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
 .badge-domestic { display: inline-block; font-size: var(--fs-2xs); font-weight: 700; color: var(--bd-dom-fg);
   background: var(--bd-dom-bg); padding: 1px 6px; border-radius: var(--radius-pill);
   margin-left: 6px; vertical-align: 1px; letter-spacing: .3px; }
+/* 差值模式参考模型徽标:与参考行左侧色条同色,不另设背景变量 */
+.badge-ref { display: inline-block; font-size: var(--fs-2xs); font-weight: 700; color: var(--accent);
+  padding: 1px 6px; border-radius: var(--radius-pill); margin-left: 6px; vertical-align: 1px;
+  letter-spacing: .3px; border: 1px solid var(--brand-muted); background: transparent; }
 /* 前20名「最佳性价比」徽标:描边样式(与参考/仅单榜徽标同构),只靠前景与描边色区分 */
 .badge-best { display: inline-block; font-size: var(--fs-2xs); font-weight: 700;
   padding: 1px 6px; border-radius: var(--radius-pill); margin-left: 6px;

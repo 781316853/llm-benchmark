@@ -42,7 +42,7 @@ window.MODEL_MAP = {
     { id: "Kimi K2.5",        vendor: "Moonshot",  color: "#A08FFF", aliases: ["Kimi K2.5", "kimi-k2-instruct", "Kimi K2 Instruct"] },
     { id: "Kimi K3",          vendor: "Moonshot",  color: "#6A4CFF", aliases: ["Kimi K3", "kimi-k3", "Kimi-K3", "Kimi-K3 (max)", "k3"] },
     // ModelDial 的 slug 写作 "k3.1-pro",补别名避免被自动建档成「其他」幽灵条目。
-    { id: "Kimi K3.1 Pro",    vendor: "Moonshot",  color: "#5A3DF5", aliases: ["Kimi K3.1 Pro", "kimi-k3-1-pro", "Kimi-K3.1-Pro", "kimi-k3.1-pro", "Kimi K3.1", "kimi-k3.1", "k3.1-pro", "k3-1-pro", "k3.1 Pro", "K3.1 Pro", "k3.1"] },
+    { id: "Kimi K3.1 Pro",    vendor: "Moonshot",  color: "#5A3DF5", aliases: ["Kimi K3.1 Pro", "kimi-k3-1-pro", "Kimi-K3.1-Pro", "kimi-k3.1-pro", "kimi-3.1-pro", "Kimi-3.1-Pro", "kimi-3-1-pro", "Kimi K3.1", "kimi-k3.1", "k3.1-pro", "k3-1-pro", "k3.1 Pro", "K3.1 Pro", "k3.1"] },
     // Kimi K2 世代的历史变体:原先未建档,由 canon() 兜底自动建档(厂商被记为「其他」、颜色取默认灰),
     // 且 id 会随加载顺序漂移(如同一个「Kimi K2」可能被登记为 "Kimi K2" 或 "Kimi-k2")。
     // 四个变体按独立模型建档 —— 沿用 kimi-for-coding 的判断原则:未证实的同一性不合并。
@@ -147,7 +147,7 @@ window.MODEL_MAP = {
     // ⚠ ModelDial feed 同时单列旧构建(...expires-on-0910),滚动条目即当前 1017;
     //    下一构建发布时须把该滚动名重新指到新行,否则会把新模型算到 1017 头上。
     { id: "DeepSeek V4.1 Flash", vendor: "DeepSeek", color: "#5A74FE", aliases: ["DeepSeek V4.1 Flash", "DeepSeek V4.1 Flash (max)", "DeepSeek-V4.1-Flash", "deepseek-v4.1-flash", "deepseek-v4.1-flash-e0910", "deepseek-v4.1-flash-expires-on-0910", "DeepSeek-V4.1-Flash-20260910", "deepseek-v4.1-flash-20260910"] },
-    { id: "DeepSeek V4.1 Flash 1017", vendor: "DeepSeek", color: "#82A6FE", aliases: ["DeepSeek V4.1 Flash 1017", "DeepSeek-V4.1-Flash-1017", "deepseek-v4.1-flash-1017", "DeepSeek-V4.1-Flash-20261017", "deepseek-v4.1-flash-20261017", "deepseek-flash"] },
+    { id: "DeepSeek V4.1 Flash 1017", vendor: "DeepSeek", color: "#82A6FE", aliases: ["DeepSeek V4.1 Flash 1017", "DeepSeek-V4.1-Flash-1017", "deepseek-v4.1-flash-1017", "DeepSeek-V4.1-Flash-20261017", "deepseek-v4.1-flash-20261017", "deepseek-deepseek-v4-1-flash-1017", "deepseek-deepseek-v4.1-flash-1017", "deepseek-flash"] },
     { id: "DeepSeek V4 Flash Vision Exp", vendor: "DeepSeek", color: "#6286FE", aliases: ["DeepSeek-V4-Flash-Vision-Exp", "DeepSeek V4 Flash Vision Exp", "deepseek-v4-flash-vision-exp"] },
     { id: "Gemini 3.1 Flash Lite", vendor: "Google", color: "#7AB0F8", aliases: ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite", "Gemini 3.1 Flash Lite Preview", "gemini-3.1-flash-lite-preview"] },
     { id: "GPT-5.1",          vendor: "OpenAI",    color: "#28BFA8", aliases: ["GPT 5.1", "gpt-5.1"] },
@@ -257,7 +257,12 @@ window.MODEL_MAP = {
     // ModelDial 的 model_id 是裸 slug(如 gemini-4-hydrogen),亿模亿样同模型写法可能带 4.0 或 :free 后缀;
     // 两者都登记为别名,避免刷新后被自动建档成「其他」而与其它榜拆成两条。
     { id: "Gemini 4 Hydrogen", vendor: "Google", color: "#86B6F6", aliases: ["Gemini 4 Hydrogen", "gemini-4-hydrogen", "Gemini-4-Hydrogen", "gemini 4 hydrogen"] },
+    // Agents' Last Exam 官方榜使用 qwen-4 这个 slug,与 Qwen4-Max 分开建档;
+    // 若后续确认二者同一模型,再把 qwen-4 并回 Qwen4-Max 的别名即可。
+    // 注意顺序:Qwen4-Max 的 normLight("Qwen4-Max") 也是 "qwen4",故 Qwen4 必须排在其后,
+    // 否则 Qwen4 的宽松键会被 Qwen4-Max 覆盖("qwen4-max" 精确键不受影响)。
     { id: "Qwen4-Max",        vendor: "Alibaba",  color: "#FF8A2B", aliases: ["Qwen4-Max", "Qwen-4-Max", "Qwen4 Max", "qwen4-max"] },
+    { id: "Qwen4",            vendor: "Alibaba",  color: "#FF9D4D", aliases: ["Qwen4", "Qwen-4", "qwen-4", "Qwen 4", "qwen 4"] },
     { id: "Qwen4-Max-Preview", vendor: "Alibaba", color: "#FFA45C", aliases: ["Qwen4-Max-Preview", "Qwen-4-Max-Preview", "Qwen4 Max Preview", "qwen4-max-preview", "Qwen4.0-Max-Preview", "Qwen4.0 Max Preview", "qwen4.0-max-preview"] },
     { id: "Tencent Hy4 Flash", vendor: "Tencent", color: "#36D3F0", aliases: ["Tencent Hy4 Flash", "Tencent HY4-flash", "HY4-flash", "hy4-flash", "hy4-flash-dev", "Hy4 Flash", "Hunyuan Hy4 Flash", "hunyuan-hy4-flash", "混元4 Flash", "混元4-flash", "混元 4 Flash", "混元4"] },
     { id: "ERNIE 5.5 Flash Preview", vendor: "Baidu", color: "#5B6CF0", aliases: ["ERNIE 5.5 Flash Preview", "ERNIE-5.5-Flash-Preview", "ERNIE-5.5-Flash-Preview (high)", "ernie-5.5-flash-preview", "ernie-5.5-flash-preview:free"] },

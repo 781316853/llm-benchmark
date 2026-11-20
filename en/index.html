@@ -59,7 +59,7 @@
   <link rel="stylesheet" href="../css/styles.css?v=20261119a" />
   <!-- 所有脚本使用 defer:并行下载、顺序执行、不阻塞 HTML 解析与首屏渲染 -->
   <!-- 数据快照(全局变量);?v= 为 cache-busting 版本号,数据/代码更新时递增,避免浏览器缓存旧文件 -->
-  <script defer src="../data/models.js?v=20261119b"></script>
+  <script defer src="../data/models.js?v=20261120a"></script>
   <script defer src="../data/models-auto.js?v=20261116b"></script>
   <!-- 模型 API 标价(输入/缓存输入/输出三档单价 → 每百万 token 综合成本):总览矩阵「性价比」列要用,
        而总览是默认首屏页,故必须首屏加载,不走 DATA_SRC 按需注入。
@@ -97,17 +97,17 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="../js/data.js?v=20261117a"></script>
+  <script defer src="../js/data.js?v=20261120a"></script>
   <script defer src="../js/charts.js?v=20261030a"></script>
   <script defer src="../js/compare.js?v=20261117a"></script>
-  <script defer src="../js/app.js?v=20261119b"></script>
+  <script defer src="../js/app.js?v=20261120k"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="../js/export.js?v=20261110a"></script>
   <!-- 意见反馈交互 -->
   <script defer src="../js/feedback.js?v=20260824a"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
-  <script defer src="../js/i18n-en.js?v=20261119b"></script>
-  <script defer src="../js/i18n.js?v=20261119b"></script>
+  <script defer src="../js/i18n-en.js?v=20261120i"></script>
+  <script defer src="../js/i18n.js?v=20261120i"></script>
 </head>
 <body data-page="overview" data-base="../">
   <!-- 顶部标题区:左侧站名与简介,右侧当前数据快照 -->
@@ -189,6 +189,8 @@
               <label class="switch switch-lg" title="默认显示命中≥4个基准组且排名前30的模型与跻身前30区间的「参考」模型;勾选可展开全部命中≥2榜的模型(含排名行与「参考」行),仅命中1榜的模型请用搜索查看"><input type="checkbox" id="ovShowAll"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示全部模型</span></label>
               <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">高亮国产模型</span></label>
               <label class="switch switch-lg" title="默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)"><input type="checkbox" id="ovShowScore" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
+              <label class="switch switch-lg" title="勾选后基准列改为与参考模型的差值:参考模型自身显示原值,其余模型显示 该模型成绩 − 参考模型成绩;正数高于参考,负数低于;参考模型某项无成绩时,取排名最靠前且有该成绩的模型(该行原值旁标「基准」)。综合分/梯队/性价比不变"><input type="checkbox" id="ovRelativeFirst"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">与参考差值</span></label>
+              <label class="matrix-ref" id="ovRefWrap" hidden title="选择参考模型:差值模式下,基准列显示各模型与该模型的差值;参考模型自身显示原值"><span>参考</span><select id="ovRefModel" aria-label="选择参考模型"></select></label>
             </div>
           </div>
         </div>

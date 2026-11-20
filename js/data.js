@@ -645,9 +645,10 @@
     return src.models.slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.system) }); });
   }
-  function lastExam() {
-    var src = window.LASTEXAM || { models: [] };
-    return src.models.slice().sort(function (a, b) { return b.pass - a.pass; })
+  function lastExam(ver) {
+    var useV10 = (String(ver) === "1.0" || String(ver) === "v1.0");
+    var src = useV10 ? (window.LASTEXAM_V10 || { models: [] }) : (window.LASTEXAM || { models: [] });
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
   function arcagi3() {
@@ -709,9 +710,10 @@
     return (src.configs || []).slice().sort(function (a, b) { return (a.rank || 0) - (b.rank || 0); })
       .map(function (c) { return Object.assign({}, c, { canon: canon(c.model) }); });
   }
-  // FrontierCode:模型级主榜(main 子集下各档位最优),按分数降序
-  function frontiercode() {
-    var src = window.FRONTIERCODE || { models: [] };
+  // FrontierCode:模型级主榜(main 子集下各档位最优),按分数降序。
+  // ver 缺省取 2.0 主榜;传 "1.1" 取历史榜(权威页版本切换用)。
+  function frontiercode(ver) {
+    var src = (String(ver) === "1.1") ? (window.FRONTIERCODE_V11 || { models: [] }) : (window.FRONTIERCODE || { models: [] });
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
@@ -1039,9 +1041,9 @@
   var SRC_GLOBALS = {
     deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arena_agent: "ARENA_AGENT", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
-    osworld: "OSWORLD", lastexam: "LASTEXAM", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
+    osworld: "OSWORLD", lastexam: "LASTEXAM", lastexamV10: "LASTEXAM_V10", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
     apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
-    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", frontierswe: "FRONTIERSWE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
+    cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", frontiercodeV11: "FRONTIERCODE_V11", frontierswe: "FRONTIERSWE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
     aicodingdaily: "AICODINGDAILY",
     aa_coding_agents: "AACODING",
     vals_codemigration: "VALSCODEMIGRATION"
