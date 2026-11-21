@@ -15,8 +15,8 @@
     })();
   </script>
   <meta name="theme-color" content="#0a0a0a" />
-  <title>Plan Comparison · Usage, Cache, Brand Filters, Value Sort and ModelDial Quotas</title>
-  <meta name="description" content="Subscription plan comparison filtered by monthly usage, cache share, model brand, purchase region and usage time — monthly fee, usable quota, ¥ per 100M tokens, official-price ratio and value sorting; ModelDial's 21 platforms and 68 plan quotas are merged into all plans. Primary source codingplan.fyi; quota supplement realapipricing.com." />
+  <title>Plan Comparison · Usage, Cache, Platform & Brand Filters, Value Sort and ModelDial Quotas</title>
+  <meta name="description" content="Subscription plan comparison filtered by monthly usage, cache share, platform, model brand, purchase region and usage time — monthly fee, usable quota, ¥ per 100M tokens, official-price ratio and value sorting; ModelDial's 21 platforms and 68 plan quotas are merged into all plans. Primary source codingplan.fyi; quota supplement realapipricing.com." />
   <meta name="author" content="LLM Benchmark Index" />
   <link rel="canonical" href="https://781316853.github.io/llm-benchmark/en/plans.html" />
   <link rel="alternate" hreflang="zh-CN" href="https://781316853.github.io/llm-benchmark/plans.html" />
@@ -25,16 +25,16 @@
   <!-- 分享卡片:X / 微信 / Discord / Slack 取 OG,X 取 twitter:*;og:image 为 1200×630 封面 -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="LLM Coding Benchmark Portal" />
-  <meta property="og:title" content="Plan Comparison · Usage, Cache, Brand Filters, Value Sort and ModelDial Quotas" />
-  <meta property="og:description" content="Subscription plan comparison filtered by monthly usage, cache share, model brand, purchase region and usage time — monthly fee, usable quota, ¥ per 100M tokens, official-price ratio and value sorting; ModelDial's 21 platforms and 68 plan quotas are merged into all plans. Primary source codingplan.fyi; quota supplement realapipricing.com." />
+  <meta property="og:title" content="Plan Comparison · Usage, Cache, Platform & Brand Filters, Value Sort and ModelDial Quotas" />
+  <meta property="og:description" content="Subscription plan comparison filtered by monthly usage, cache share, platform, model brand, purchase region and usage time — monthly fee, usable quota, ¥ per 100M tokens, official-price ratio and value sorting; ModelDial's 21 platforms and 68 plan quotas are merged into all plans. Primary source codingplan.fyi; quota supplement realapipricing.com." />
   <meta property="og:url" content="https://781316853.github.io/llm-benchmark/en/plans.html" />
   <meta property="og:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg?v=20261112" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Plan Comparison · Usage, Cache, Brand Filters, Value Sort and ModelDial Quotas" />
-  <meta name="twitter:description" content="Subscription plan comparison filtered by monthly usage, cache share, model brand, purchase region and usage time — monthly fee, usable quota, ¥ per 100M tokens, official-price ratio and value sorting; ModelDial's 21 platforms and 68 plan quotas are merged into all plans. Primary source codingplan.fyi; quota supplement realapipricing.com." />
+  <meta name="twitter:title" content="Plan Comparison · Usage, Cache, Platform & Brand Filters, Value Sort and ModelDial Quotas" />
+  <meta name="twitter:description" content="Subscription plan comparison filtered by monthly usage, cache share, platform, model brand, purchase region and usage time — monthly fee, usable quota, ¥ per 100M tokens, official-price ratio and value sorting; ModelDial's 21 platforms and 68 plan quotas are merged into all plans. Primary source codingplan.fyi; quota supplement realapipricing.com." />
   <meta name="twitter:image" content="https://781316853.github.io/llm-benchmark/assets/og-cover.jpg?v=20261112" />
   <!-- 访问统计:Cloudflare Web Analytics(无 Cookie、不采集个人数据,无需同意弹窗)。
        在 Cloudflare 控制台 Web Analytics 添加站点后拿到的 token 填进下面引号即可生效;
@@ -100,7 +100,7 @@
   <script defer src="../js/data.js?v=20261120a"></script>
   <script defer src="../js/charts.js?v=20261030a"></script>
   <script defer src="../js/compare.js?v=20261117a"></script>
-  <script defer src="../js/app.js?v=20261120k"></script>
+  <script defer src="../js/app.js?v=20261121a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="../js/export.js?v=20261110a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -108,8 +108,8 @@
   <!-- 意见反馈交互 -->
   <script defer src="../js/feedback.js?v=20260824a"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
-  <script defer src="../js/i18n-en.js?v=20261120i"></script>
-  <script defer src="../js/i18n.js?v=20261120i"></script>
+  <script defer src="../js/i18n-en.js?v=20261121a"></script>
+  <script defer src="../js/i18n.js?v=20261121a"></script>
 </head>
 <body data-page="plans" data-base="../">
   <!-- 顶部标题区:左侧站名与简介,右侧当前数据快照 -->
@@ -180,7 +180,7 @@
         </div>
         <ul>
           <li><b class="note-term">来源</b>套餐与月价来自 codingplan.fyi(开源 MIT),额度由 realapipricing.com(开源 MIT)补充实测值;ModelDial 平台与额度数据来自 <a href="https://modeldial.com/subscriptions?period=week&amp;view=catalog" target="_blank" rel="noopener">ModelDial 订阅额度 ↗</a>(平台与社区实测/估算口径),已并入全部套餐。随全站每日刷新。</li>
-          <li><b class="note-term">筛选</b>「每月用量」决定套餐是否够用与推荐排序,折叠预览优先展示额度够用的模型;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。</li>
+          <li><b class="note-term">筛选</b>「每月用量」决定套餐是否够用与推荐排序,折叠预览优先展示额度够用的模型;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);平台/品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。</li>
           <li><b class="note-term">排序</b>新增「性价比」排序 = 每 ¥1 可买到的月可用 Token 最多(等价于每亿单价最低);ModelDial 单值额度没有缓存档位,按源站月均额度直接比较。</li>
           <li><b class="note-term">折扣 / 实测</b>官方价折扣 = 套餐每亿单价 ÷ 同模型官方 API 每亿价,数值越低越划算;约一半行有可核实的官方三段价,其余显示 —。实测目录行内「实测/估算」沿用 ModelDial 口径,「API 等值」为源站按模型官方 API 价折算的月价值。</li>
           <li><b class="note-term">标签与范围</b>[谷] / [峰] 为错峰/高峰时段档,[高速] 为高速服务档;已下架套餐不展示,受限套餐标「购买受限」,旧订阅标「旧订阅」;推广跳转链接已去除。</li>

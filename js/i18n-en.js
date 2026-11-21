@@ -180,6 +180,8 @@
     ["^(\\d+) 个平台$", "$1 platforms"],
     ["^≤¥([\\d,.]+)/月$", "≤¥$1/mo"],
     ["^展开全部 (\\d+) 个品牌$", "Show all $1 brands"],
+    ["^展开全部 (\\d+) 个平台$", "Show all $1 platforms"],
+    ["^(\\d+) 个套餐$", function (m, n) { return n + (n === "1" ? " plan" : " plans"); }],
     ["^(\\d+) 条相关档位$", function (m, n) { return n + (n === "1" ? " matching row" : " matching rows"); }],
     ["^(\\d+) 条档位$", function (m, n) { return n + (n === "1" ? " row" : " rows"); }],
     ["^共 (\\d+) 个套餐 · 缓存占比 (.+)$", "$1 plans · cache share $2"],
@@ -791,6 +793,8 @@
         "Featured platforms cover nine providers: Alibaba Bailian / Zhipu / ByteDance Ark / Codex / Claude / DeepSeek / Kimi / MiniMax / OpenCode. Prices are snapshot values and may lag the platforms' own sites; for full filtering and purchase links see",
       "套餐比价快照：按用量、缓存占比、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣，并支持性价比排序；另保留精选模型分列对比，实测额度目录来自 ModelDial 订阅额度页。":
         "Plan-comparison snapshot: filter all on-sale plans by monthly usage, cache share, model brand, purchase region and usage time, and compare monthly fee, usable quota, ¥ per 100M tokens and the official-price ratio, with value sorting; the curated-model comparison is also kept, and the measured-quota catalog comes from ModelDial's subscription page.",
+      "套餐比价快照：按用量、缓存占比、平台、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣，并支持性价比排序；另保留精选模型分列对比，ModelDial 平台与额度数据已并入全部套餐。":
+        "Plan-comparison snapshot: filter all on-sale plans by monthly usage, cache share, platform, model brand, purchase region and usage time, and compare monthly fee, usable quota, ¥ per 100M tokens and the official-price ratio, with value sorting; the curated-model comparison is also kept, and ModelDial's platform and quota data is merged into all plans.",
       "套餐比价快照：按用量、缓存占比、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣，并支持性价比排序；另保留精选模型分列对比，ModelDial 平台与额度数据已并入全部套餐。":
         "Plan-comparison snapshot: filter all on-sale plans by monthly usage, cache share, model brand, purchase region and usage time, and compare monthly fee, usable quota, ¥ per 100M tokens and the official-price ratio, with value sorting; the curated-model comparison is also kept, and ModelDial's platform and quota data is merged into all plans.",
       "套餐比价快照：按用量、缓存占比、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣；另保留精选模型分列对比。":
@@ -832,6 +836,9 @@
       "分享此页": "Share this page",
       "已复制链接": "Link copied",
       "每月用量": "Monthly usage",
+      "选平台": "Platforms",
+      "不限平台": "All platforms",
+      "收起平台": "Collapse platforms",
       "选模型": "Models",
       "具体模型": "Specific model",
       "全部模型": "All models",
@@ -927,8 +934,8 @@
         "¥ per 100M = converted monthly fee ÷ usable quota (in 100M tokens) at the current cache share; delisted plans are hidden, restricted plans are marked “Restricted”, and referral links are stripped.",
       "套餐与月价来自 codingplan.fyi(开源 MIT),额度由 realapipricing.com(开源 MIT)补充实测值;随全站每日刷新。":
         "Plans and monthly prices come from codingplan.fyi (open-source, MIT); quotas are supplemented with measured values from realapipricing.com (open-source, MIT). Refreshed with the rest of the site daily.",
-      "「每月用量」决定套餐是否够用与推荐排序,折叠预览优先展示额度够用的模型;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。":
-        "“Monthly usage” decides coverage and the recommended order, and previews prioritize models with enough quota; cache share converts monthly usable quota at 0% / 50% / 95% / 99% (output fixed at 0.5%); brand and purchase region narrow the candidate plans, while usage time decides whether peak or off-peak tiers are used for coverage.",
+      "「每月用量」决定套餐是否够用与推荐排序,折叠预览优先展示额度够用的模型;缓存占比按 0% / 50% / 95% / 99% 换算月可用额度(输出固定 0.5%);平台/品牌/购买地区改变候选套餐，使用时段决定够用判断采用的峰/谷档位。":
+        "“Monthly usage” decides coverage and the recommended order, and previews prioritize models with enough quota; cache share converts monthly usable quota at 0% / 50% / 95% / 99% (output fixed at 0.5%); platform, brand and purchase region narrow the candidate plans, while usage time decides whether peak or off-peak tiers are used for coverage.",
       "新增「性价比」排序 = 每 ¥1 可买到的月可用 Token 最多(等价于每亿单价最低);ModelDial 单值额度没有缓存档位,按源站月均额度直接比较。":
         "The new “Value” sort ranks by monthly usable tokens per ¥1 (equivalent to the lowest ¥ per 100M); ModelDial single-value quotas have no cache tiers and compare the source's monthly-average quota directly.",
       "ModelDial 订阅目录(21 个平台 / 68 个套餐)已并入「全部套餐」:平台、套餐名与月价能确认同款的,按别名并入已有套餐并只补该套餐缺失的模型,不覆盖原有缓存档位;Kiro / WorkBuddy / Cline / OpenDesign / X Subscription · Cursor 等无对应档位作为新套餐追加。月额度为源站月均可用 Token,周套餐按 52/12 折算;第三方平台含共享额度池,模型额度不一定可相加。":

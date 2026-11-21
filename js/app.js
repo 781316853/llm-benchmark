@@ -30,6 +30,8 @@
     plansBrand: "all", // 选模型品牌筛选
     plansModels: [], // 已选具体模型(归一化模型名,最多 4 个;空=不限)
     plansMaxFee: null, // 月费上限(¥/月;null=不限)
+    plansPlatforms: [], // 已选平台(空=不限;可多选)
+    plansPlatformsExpanded: false, // 平台 chips 是否展开全部
     plansBrandsExpanded: false, // 品牌 chips 是否展开全部
     plansRegion: "global", // global=国内+海外全部/domestic=仅国内可直接购买
     plansTime: "day", // day=白天(峰时)/night=夜间(谷时)
@@ -2531,6 +2533,37 @@
   }
   function qcPlanName(p) { return qcIsEn() && p.nameEn ? p.nameEn : p.name; }
   function qcPlatformName(p) { return qcIsEn() && p.platformEn ? p.platformEn : p.platform; }
+  // 平台筛选:按 platform 名做键(英文站只换显示名),套餐数按去重后的平台统计
+  function qcPlatformCounts(plans) {
+    var counts = {}, names = {};
+    plans.forEach(function (p) {
+      if (!p.models || !p.models.length) return;
+      counts[p.platform] = (counts[p.platform] || 0) + 1;
+      if (!names[p.platform]) names[p.platform] = qcPlatformName(p);
+    });
+    return { counts: counts, names: names };
+  }
+  function qcPlatformChips(plans) {
+    var pc = qcPlatformCounts(plans);
+    state.plansPlatforms = (state.plansPlatforms || []).filter(function (k) { return pc.counts[k]; });
+    var sel = state.plansPlatforms;
+    var keys = Object.keys(pc.counts).sort(function (a, b) {
+      return pc.counts[b] - pc.counts[a] || String(pc.names[a]).localeCompare(String(pc.names[b]), "zh-CN");
+    });
+    var shown = state.plansPlatformsExpanded ? keys : keys.slice(0, 12);
+    var chips = '<button type="button" class="qc-chip' + (sel.length ? "" : " is-on") +
+      '" data-qc-platform="all">不限平台</button>' +
+      shown.map(function (k) {
+        var on = sel.indexOf(k) >= 0;
+        return '<button type="button" class="qc-chip' + (on ? " is-on" : "") +
+          '" data-qc-platform="' + esc(k) + '" title="' + esc(pc.counts[k]) + ' 个套餐">' +
+          esc(pc.names[k]) + '<span>' + pc.counts[k] + '</span></button>';
+      }).join("") +
+      (keys.length > 12 ? '<button type="button" class="qc-chip qc-chip--more" data-qc-platforms="toggle">' +
+        (state.plansPlatformsExpanded ? "收起平台" : "展开全部 " + keys.length + " 个平台") + '</button>' : "");
+    return '<div class="qc-filter-row"><span class="qc-filter-label">选平台</span>' +
+      '<div class="qc-chips">' + chips + '</div></div>';
+  }
   function qcModelName(r) { return qcIsEn() && r.mEn ? r.mEn : r.m; }
   function qcEffectiveSort() {
     var s = state.plansSort;
@@ -2733,9 +2766,11 @@
     var usage = state.plansUsage;
     var domestic = state.plansRegion === "domestic";
     var maxFee = state.plansMaxFee;
+    var platSel = state.plansPlatforms || [];
     var items = [];
     plans.forEach(function (p) {
       if (!p.models || !p.models.length) return;
+      if (platSel.length && platSel.indexOf(p.platform) < 0) return;
       if (domestic && !p.dm) return;
       if (maxFee != null && p.feeCny != null && p.feeCny > maxFee) return;
       var rel = qcRelevantRows(p, idx);
@@ -2847,8 +2882,15 @@
       return catalog[k] ? catalog[k].name : k;
     });
     var joinSep = qcIsEn() ? ", " : "、";
+    var platNames = [];
+    if (platSel.length) {
+      var pn = {};
+      plans.forEach(function (p) { if (!pn[p.platform]) pn[p.platform] = qcPlatformName(p); });
+      platNames = platSel.map(function (k) { return pn[k] || k; });
+    }
     return '<div class="qc-all-meta"><span>共 ' + items.length + ' 个套餐</span> · <span>每月 ' +
       usage + '亿</span> · <span>缓存 ' + QC_CACHE[idx][1] + '</span>' +
+      (platNames.length ? ' · <span>' + esc(T("平台")) + ' ' + esc(platNames.join(joinSep)) + '</span>' : "") +
       (state.plansBrand !== "all" ? ' · <span>' + esc(state.plansBrand) + '</span>' : "") +
       (selectedNames.length ? ' · <span>' + esc(selectedNames.join(joinSep)) + '</span>' : "") +
       (maxFee != null ? ' · <span>≤¥' + maxFee.toLocaleString("zh-CN") + '/月</span>' : "") +
@@ -2867,8 +2909,11 @@
     var idx = state.plansCache;
     var usage = state.plansUsage;
     plans = plans || data.plans || [];
+    // 品牌计数按已选平台收敛:换平台后品牌/模型仍可选,但与平台无交集的会被重置
+    var platSel = state.plansPlatforms || [];
+    var scoped = platSel.length ? plans.filter(function (p) { return platSel.indexOf(p.platform) >= 0; }) : plans;
     var brandCounts = {};
-    plans.forEach(function (p) {
+    scoped.forEach(function (p) {
       var seen = {};
       (p.models || []).forEach(function (r) {
         if (r.b && !seen[r.b]) { seen[r.b] = 1; brandCounts[r.b] = (brandCounts[r.b] || 0) + 1; }
@@ -2907,6 +2952,7 @@
       '<div class="qc-filter-block qc-fee-block"><div class="qc-filter-head"><span>月费上限</span><b>' +
       (state.plansMaxFee == null ? "不限" : "≤¥" + state.plansMaxFee + "/月") + '</b></div>' +
       qcSlider("qc-fee", QC_FEE, state.plansMaxFee == null ? "0" : String(state.plansMaxFee)) + '</div>' +
+      qcPlatformChips(plans) +
       '<div class="qc-filter-row"><span class="qc-filter-label">选模型</span><div class="qc-chips">' + chips + '</div></div>' +
       qcModelPanel(catalog) +
       '<div class="qc-filter-row qc-filter-split">' +
@@ -2956,7 +3002,14 @@
     if (!hasAll) state.plansView = "groups";
     var vAll = state.plansView !== "groups";
     var mergedPlans = qcMergeModeldial(data.plans || [], md);
-    var catalog = qcModelCatalog(mergedPlans);
+    // 平台筛选:剔除已不存在的平台;模型目录与品牌计数都按所选平台收敛
+    var platExists = {};
+    mergedPlans.forEach(function (p) { platExists[p.platform] = 1; });
+    state.plansPlatforms = (state.plansPlatforms || []).filter(function (k) { return platExists[k]; });
+    var scopedPlans = state.plansPlatforms.length
+      ? mergedPlans.filter(function (p) { return state.plansPlatforms.indexOf(p.platform) >= 0; })
+      : mergedPlans;
+    var catalog = qcModelCatalog(scopedPlans);
     state.plansModels = (state.plansModels || []).filter(function (k) { return !!catalog[k]; });
     var body;
     if (vAll) {
@@ -2991,6 +3044,19 @@
       if (useBtn) { state.plansUsage = Number(useBtn.getAttribute("data-qc-use")); renderPlans(); return; }
       var cacheBtn = t.closest("[data-qc-cache]");
       if (cacheBtn) { state.plansCache = Number(cacheBtn.getAttribute("data-qc-cache")) || 0; renderPlans(); return; }
+      var platBtn = t.closest("[data-qc-platform]");
+      if (platBtn) {
+        var pv = platBtn.getAttribute("data-qc-platform");
+        if (pv === "all") {
+          state.plansPlatforms = [];
+        } else {
+          var pi = state.plansPlatforms.indexOf(pv);
+          if (pi >= 0) state.plansPlatforms.splice(pi, 1);
+          else state.plansPlatforms.push(pv);
+        }
+        renderPlans(); return;
+      }
+      if (t.closest("[data-qc-platforms]")) { state.plansPlatformsExpanded = !state.plansPlatformsExpanded; renderPlans(); return; }
       var brandBtn = t.closest("[data-qc-brand]");
       if (brandBtn) {
         state.plansBrand = brandBtn.getAttribute("data-qc-brand");
