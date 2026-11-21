@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-11-21',
-  'overallScore': 0.953,
+  'overallScore': 0.958,
   'sources': [
     {
       'id': 'aa_coding_agents',
@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 60,
+      'modelCount': 62,
       'updated': '2026-11-21',
       'ageDays': 0,
       'completeness': 1,
@@ -89,7 +89,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 92,
+      'modelCount': 93,
       'updated': '2026-11-21',
       'ageDays': 0,
       'completeness': 1,
@@ -99,15 +99,13 @@ window.QUALITY = {
     {
       'id': 'automationbench',
       'name': 'AutomationBench',
-      'status': 'error',
+      'status': 'ok',
       'modelCount': 75,
-      'updated': '2026-11-20',
-      'ageDays': 1,
-      'completeness': null,
+      'updated': '2026-11-21',
+      'ageDays': 0,
+      'completeness': 1,
       'fetchAttempts': 1,
-      'errors': [
-        'HTTP 500 https://benchlm.ai/benchmarks/automationbench'
-      ]
+      'errors': []
     },
     {
       'id': 'benchcad',
@@ -189,15 +187,13 @@ window.QUALITY = {
     {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
-      'status': 'error',
+      'status': 'ok',
       'modelCount': 282,
-      'updated': '2026-11-20',
-      'ageDays': 1,
-      'completeness': null,
+      'updated': '2026-11-21',
+      'ageDays': 0,
+      'completeness': 1,
       'fetchAttempts': 1,
-      'errors': [
-        'HTTP 500 https://benchlm.ai/benchmarks/aahle'
-      ]
+      'errors': []
     },
     {
       'id': 'lastexam',
@@ -246,15 +242,13 @@ window.QUALITY = {
     {
       'id': 'nl2repo',
       'name': 'NL2Repo-Bench',
-      'status': 'error',
+      'status': 'ok',
       'modelCount': 56,
-      'updated': '2026-11-20',
-      'ageDays': 1,
-      'completeness': null,
+      'updated': '2026-11-21',
+      'ageDays': 0,
+      'completeness': 1,
       'fetchAttempts': 1,
-      'errors': [
-        'HTTP 500 https://benchlm.ai/benchmarks/nl2repo'
-      ]
+      'errors': []
     },
     {
       'id': 'osworld',
@@ -1426,9 +1420,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 60,
-      'complete': 60,
-      'modelCount': 60,
+      'total': 62,
+      'complete': 62,
+      'modelCount': 62,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1474,9 +1468,17 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 92,
-      'complete': 92,
-      'modelCount': 92,
+      'total': 93,
+      'complete': 93,
+      'modelCount': 93,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'automationbench': {
+      'rate': 1,
+      'total': 75,
+      'complete': 75,
+      'modelCount': 75,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1538,6 +1540,14 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
+    'hle': {
+      'rate': 1,
+      'total': 282,
+      'complete': 282,
+      'modelCount': 282,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'lastexam': {
       'rate': 1,
       'total': 40,
@@ -1569,6 +1579,14 @@ window.QUALITY = {
       'total': 54,
       'complete': 54,
       'modelCount': 54,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'nl2repo': {
+      'rate': 1,
+      'total': 56,
+      'complete': 56,
+      'modelCount': 56,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1697,8 +1715,8 @@ window.QUALITY = {
       'alertAgeDays': 7
     },
     'automationbench': {
-      'updated': '2026-11-20',
-      'ageDays': 1,
+      'updated': '2026-11-21',
+      'ageDays': 0,
       'flag': 'ok',
       'warnAgeDays': 3,
       'alertAgeDays': 7
@@ -1753,8 +1771,8 @@ window.QUALITY = {
       'alertAgeDays': 7
     },
     'hle': {
-      'updated': '2026-11-20',
-      'ageDays': 1,
+      'updated': '2026-11-21',
+      'ageDays': 0,
       'flag': 'ok',
       'warnAgeDays': 3,
       'alertAgeDays': 7
@@ -1788,8 +1806,8 @@ window.QUALITY = {
       'alertAgeDays': 7
     },
     'nl2repo': {
-      'updated': '2026-11-20',
-      'ageDays': 1,
+      'updated': '2026-11-21',
+      'ageDays': 0,
       'flag': 'ok',
       'warnAgeDays': 3,
       'alertAgeDays': 7

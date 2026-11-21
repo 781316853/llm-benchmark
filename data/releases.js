@@ -6,7 +6,7 @@
 // 字段:vendors[]={vendor=厂商, date=发布日期, model=canonical 模型名, src=数据来源}。
 window.RELEASES = {
   'updated': '2026-11-21',
-  'refreshedAt': '2026-11-21 15:30',
+  'refreshedAt': '2026-11-22 03:36',
   'sources': [
     'Official',
     'ModelDial',

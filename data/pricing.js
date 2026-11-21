@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-21',
-  'refreshedAt': '2026-11-21 15:30',
+  'refreshedAt': '2026-11-22 03:36',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
