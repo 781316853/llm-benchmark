@@ -2,16 +2,111 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-20',
+  'updated': '2026-11-21',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-11-21',
+      'title': '数学家称与 Claude 合作证明黎曼猜想',
+      'brief': '数学家 Levent Alpöge 在个人网站发布说明，称与 Claude 模型合作发现了数论经典难题黎曼猜想的证明，并称方法可推广至广义黎曼猜想。',
+      'url': 'https://alpo.ge/remark.pdf',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'Thinking Machines 发布并开源 Inkling 2 Mini',
+      'brief': 'Thinking Machines 发布开源模型 Inkling 2 Mini ，总参数 26.4B 、激活参数 3.4B ，采用 looped transformer 架构，中段 12 层 对每个 token 跑三遍，以 Apache 2.0 许可开放权重。官方称其 DeepSWE v1.1 得分 48.2% ，领先所有总参数低于 100B 的开源权重模型， AA Index 得分 20.1 。该模型内存占用约 20GB ，可经 Ol…',
+      'url': 'https://thinkingmachines.ai/news/inkling-2-mini/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'Antigravity 扩大 cache pool，完成后重置配额',
+      'brief': 'Antigravity 负责人 Varun Mohan 表示， Antigravity 正在大幅扩大 cache pool ，以提高 Neon 的缓存命中率。',
+      'url': 'https://x.com/_mohansolo/status/2123848516581892181',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'OpenAI 向 Plus 用户开放 Space 协作空间',
+      'brief': 'OpenAI 宣布向 ChatGPT Plus 用户开放 Space 协作空间。 Plus 用户每月支付 20 美元 即可创建空间，邀请他人共同编辑，与 ChatGPT 一起创建交互式页面、幻灯片和网站。',
+      'url': 'https://x.com/ChatGPT/status/2123850912867471807',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-21',
+      'title': '腾讯混元开源旗舰模型 Hy4：总参数 770B',
+      'brief': '腾讯混元 宣布开放旗舰模型 Hy4 的权重。模型采用原生多模态 MoE 架构，语言模型主干总参数量 770B 、每个 token 激活 49B ，支持 1M 上下文，可理解文本、图像和视频。',
+      'url': 'https://mp.weixin.qq.com/s/M0TIIvCzizkLw7_A3MCSjA',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-21',
+      'title': '微信开源全模态模型系列WeMM-Video',
+      'brief': '腾讯 以 Apache 2.0 协议在 GitHub 和 Hugging Face 开源中英双语全模态模型系列 WeMM-Video 。',
+      'url': 'https://github.com/Tencent/WeMM-Video',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'Codex 更新对话线程，改善切换与加载体验',
+      'brief': 'Codex 更新了对话线程，改善状态切换和对话加载体验。',
+      'url': 'https://x.com/matteing/status/2123884630654996756',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'Codex WebSocket 请求上限提至 128 MB',
+      'brief': 'OpenAI 团队成员 Charlie Marsh 发文称， Codex 已将模型请求的 WebSocket 大小上限从 16 MB 提高到 128 MB ，让大型轮次不再回退到 HTTP ，整体 HTTP 回退率降低约 20% 。',
+      'url': 'https://x.com/charliermarsh/status/2123849871480463669',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'OpenAI API 为 GPT-6.2 启用跨轮推理复用',
+      'brief': 'OpenAI 宣布，在 Responses API 中使用 GPT-6.2 的 Agent 可跨轮复用推理，以减少 token 消耗并提升缓存命中率。',
+      'url': 'https://developers.openai.com/api/docs/guides/keep-prefix-unchanged',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'Google 在 Gemini API 开放语音编辑预览',
+      'brief': 'Google 宣布， Gemini 3.5 Transcribe 的语音编辑能力已通过 Gemini API 在 Google AI Studio 和 Gemini for business 开启公开预览。开发者可以借此构建让用户只用语音编辑、改写和翻译已有文本的体验，这套技术也用于 Gboard 的 Rambler 和 macOS 版 Gemini App 。',
+      'url': 'https://aistudio.google.com/docs/models/gemini-3.5-transcribe',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'Google 黑五早鸟优惠上线，AI 订阅最高五折',
+      'brief': 'Google Gemini 订阅产品负责人 Vikas Kansal 发文表示， Google 面向现有 AI 和存储订阅用户开启黑色星期五早鸟优惠， Google AI Plus 和 Pro 年度方案即日起至当地时间 11 月 26 日 最高可享五折。',
+      'url': 'https://x.com/vikaskansalHQ/status/2123833450297995624',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-21',
+      'title': 'OpenAI 上线 CarPlay Dot 通话功能',
+      'brief': 'OpenAI 开发者体验负责人 Romain Huet 在 X 上发文称，用户现在可以通过 Apple CarPlay 呼叫自己的 Dot，开车途中靠说话就能把事情办完。',
+      'url': 'https://x.com/romainhuet/status/2123924316110966824',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
     {
       'date': '2026-11-20',
       'title': 'ChatGPT dots 向 Business Standard 用户以及部分 Plus 开放',
@@ -19,46 +114,6 @@ window.NEWS = {
       'url': 'https://x.com/thsottiaux/status/2123556256392847657',
       'source': '橘鸦AI早报',
       'type': '要闻'
-    },
-    {
-      'date': '2026-11-20',
-      'title': 'ChatGPT 健康功能扩展至桌面端、Android 和 dots',
-      'brief': 'OpenAI 宣布 ChatGPT 健康功能 Health 扩展至桌面应用、 Android 、 dots 和 Sites ，并支持通过 Android Health Connect 连接健康数据。',
-      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-20',
-      'title': 'Antigravity 桌面应用新增 SSH 连接功能',
-      'brief': 'Google Antigravity 桌面应用推出 SSH 连接功能，可从侧边栏或命令面板连接远程 64 位 Linux 机器。',
-      'url': 'https://antigravity.google/docs/ssh',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-20',
-      'title': 'Mac 版 Gemini 应用上线 computer use 功能',
-      'brief': 'Google 宣布 Mac 版 Gemini 应用上线 computer use 功能，AI 能在后台导航本地文件、桌面应用和网页，完成原本需要几十次点击的多步任务。',
-      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-20',
-      'title': 'Gemini API 预览推出工具按需加载功能',
-      'brief': 'Google 在 Gemini API 预览推出 Tool Retrieval 功能，AI agent 可按需加载工具参数结构，无需每次请求发送完整工具定义，支持接入数百种工具并减少 tokens 消耗。',
-      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-20',
-      'title': 'Qoder 免费用户不能再领每日 100 Credits',
-      'brief': 'Qoder 调整每日领取 100 通用 Credits 活动的适用范围，自 11 月 19 日 10 时 起，体验版（免费）用户不再开放领取。',
-      'url': 'https://docs.qoder.cn/events/100credits',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
     },
     {
       'date': '2026-11-20',
@@ -107,70 +162,6 @@ window.NEWS = {
       'url': 'https://developers.openai.com/api/docs/models/gpt-live-1.1',
       'source': '橘鸦AI早报',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'Google 发布 Gemini 4 Neon',
-      'brief': 'Google 发布新模型 Gemini 4 Neon ，定位于 Gemini 4 Carbon 与 Hydrogen 之间，面向复杂软件工程、知识工作和科学工作流。模型支持四档思维水平调节，具备 100 万 token 上下文窗口，可处理表格、PDF、图表与音视频。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'DeepSeek：模型触发的搜索和抓取不再单独计费',
-      'brief': 'DeepSeek API 文档显示，自北京时间 2026 年 11 月 18 日 12:00 起，模型调用触发的服务端搜索和网页抓取不再单独计费，只按模型 token 用量收费，联网工具、 Responses API 与 Anthropic API 的 web_search 等服务端工具均会触发。',
-      'url': 'https://api-docs.deepseek.com/zh-cn/guides/search/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'Antigravity Pro 免费试用仅剩 3.8 Flash',
-      'brief': '社区用户发现， Google 更新 Antigravity 文档，按订阅档位划分模型权限。',
-      'url': 'https://antigravity.google/docs/models',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'OpenCode：10 美元购 500 美元 GLM 5.3',
-      'brief': 'OpenCode 宣布，本周结束前可获得价值 500 美元 的 GLM 5.3 使用额度。这项优惠面向 OpenCode Go 订阅用户，Go 方案每月收费 10 美元 。活动最初推出时， 10 美元 对应 100 美元 额度，随后提升至 200 美元 ，再到目前的限时 500 美元 。',
-      'url': 'https://x.com/opencode/status/2122969474571583885',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'ChatGPT 推出会计插件 协助结账和对账',
-      'brief': 'OpenAI 宣布 ChatGPT for Accounting 现已可用，新的 Accounting 插件和合作方插件帮助用户以更少手工操作完成结账，任务覆盖月末报告、银行对账和数据录入等。',
-      'url': 'https://openai.com/business/solutions/accounting',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'Artificial Analysis 推理力度可筛选',
-      'brief': 'AI 分析网站 Artificial Analysis 宣布正努力在其网站展示更多推理力度。',
-      'url': 'https://x.com/ArtificialAnlys/status/2123121873555013816',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-19',
-      'title': '腾讯混元开放 Hy4 flash 权重',
-      'brief': '腾讯混元 宣布开源 Hy4 flash 系列模型，包含 Hy4 flash 、 Hy4 flash-FP8 和 Hy4 flash-Base ，开发者可在 GitHub 、 Hugging Face 、 ModelScope 和 GitCode 下载部署。',
-      'url': 'https://mp.weixin.qq.com/s/yaFPaQL6MNVz01GD2sIlRw',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'OpenAI 披露 AI 芯片设计进展，AMD GPU 电路指标最高改善 14%',
-      'brief': 'OpenAI 披露，其模型提出的电路优化方案通过了该公司首款定制推理芯片 Jalapeño 的实际芯片验证。 OpenAI 估计，这些方案使芯片向量单元和矩阵单元的标准单元面积分别减少约 13% 和 10% 。',
-      'url': 'https://openai.com/index/advancing-chip-design-with-our-models',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
     }
   ]
 };

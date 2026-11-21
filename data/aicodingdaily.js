@@ -17,7 +17,7 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-11-19',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-21 04:37',
+  'refreshedAt': '2026-11-21 15:30',
   'stats': {
     'entries': 60,
     'models': 38

@@ -1,4 +1,4 @@
-// 数据源:套餐与月价 codingplan.fyi(开源 MIT);额度补充 realapipricing.com(开源 MIT,https://github.com/Fei2411/real-api-pricing),更新于 2026-11-20
+// 数据源:套餐与月价 codingplan.fyi(开源 MIT);额度补充 realapipricing.com(开源 MIT,https://github.com/Fei2411/real-api-pricing),更新于 2026-11-21
 // 来源:https://www.codingplan.fyi/plans.json(内嵌 planModels)、config.json、models.json、platforms.json;补充:https://realapipricing.com/data/points.json
 // 字段说明:groups[]=精选模型分组比价行(旧视图);plans[]=全部在售/受限套餐目录
 //   (slug/name/platform/status/billing/origin/fee/currency/feeCny/models[]);
@@ -12,9 +12,9 @@ window.CODINGPLAN = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'supplementUrl': 'https://realapipricing.com/data/points.json',
-  'updated': '2026-11-20',
+  'updated': '2026-11-21',
   'siteUpdated': '2026.11.18',
-  'refreshedAt': '2026-11-21 04:37',
+  'refreshedAt': '2026-11-21 15:30',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 2,
@@ -30,12 +30,12 @@ window.CODINGPLAN = {
     'plans': 139,
     'fromCodingplan': 93,
     'fromRealapi': 46,
-    'plansRows': 1950,
+    'plansRows': 1951,
     'realapi': {
-      'points': 345,
+      'points': 346,
       'plans': 63,
-      'rows': 274,
-      'fixed': 86,
+      'rows': 275,
+      'fixed': 87,
       'duplicates': 22,
       'skipped': 22
     }
@@ -43,7 +43,7 @@ window.CODINGPLAN = {
   'presetTitle': '精选模型价格与用量',
   'presetDesc': '订阅套餐与按量 API 使用同一口径比较综合单价；用量为参考值，各模型额度不相加。',
   'caliberNote': '统一口径：有具体输入、输出、缓存价格的为计算得出，其余按实测数据换算，实测尽量构造 95% 缓存命中率和 0.5% 的输出占比。',
-  'desc': '套餐比价快照：按用量、缓存占比、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣，并支持性价比排序；另保留精选模型分列对比，ModelDial 平台与额度数据已并入全部套餐。',
+  'desc': '套餐比价快照：按用量、缓存占比、平台、品牌、购买地区与使用时段筛选全部在售套餐，对比月费、月可用额度、每亿单价与官方价折扣，并支持性价比排序；另保留精选模型分列对比，ModelDial 平台与额度数据已并入全部套餐。',
   'cacheRatios': [
     0,
     0.5,
@@ -67,7 +67,7 @@ window.CODINGPLAN = {
       'url': 'https://realapipricing.com/',
       'repo': 'https://github.com/Fei2411/real-api-pricing',
       'license': 'MIT',
-      'generatedAt': '2026-11-10'
+      'generatedAt': '2026-11-21'
     }
   ],
   'groups': [
@@ -37862,6 +37862,23 @@ window.CODINGPLAN = {
           'p': null,
           'x': 1,
           'd': '2026-10-16'
+        },
+        {
+          'm': 'Gemini 4 Neon',
+          't': '',
+          'u': 0.2536,
+          'q': [
+            null,
+            null,
+            536,
+            null
+          ],
+          's': 'r',
+          'w': 'lowCache',
+          'b': 'Gemini',
+          'p': null,
+          'x': 1,
+          'd': '2026-11-20'
         }
       ]
     },
