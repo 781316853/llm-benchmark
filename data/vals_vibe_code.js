@@ -1,4 +1,4 @@
-// 数据源:Vibe Code Bench v1.1(Vals AI,源站更新 2026-11-18)
+// 数据源:Vibe Code Bench v1.1(Vals AI,源站更新 2026-11-19)
 // 来源:https://www.vals.ai/benchmarks/vibe-code
 // 字段:models[]=模型级主榜(按 accuracy 降序);accuracy=准确率(%);costPerTest=每测试平均成本($);
 //      latencyS=每测试平均耗时(秒);harness=实测所用 harness(源站以 OpenHands/Claude Code/Factory/Codex/Cursor CLI/Grok Build/Devin CLI 为主)
@@ -8,8 +8,8 @@ window.VALSVIBECODE = {
   'url': 'https://www.vals.ai/benchmarks/vibe-code',
   'officialUrl': 'https://www.vals.ai/benchmarks/vibe-code',
   'version': '1.1',
-  'updated': '2026-11-18',
-  'refreshedAt': '2026-11-20 04:52',
+  'updated': '2026-11-19',
+  'refreshedAt': '2026-11-21 04:37',
   'harnesses': [
     'OpenHands',
     'Claude Code',
@@ -20,7 +20,7 @@ window.VALSVIBECODE = {
     'Devin CLI'
   ],
   'stats': {
-    'models': 133
+    'models': 134
   },
   'desc': 'Vibe Code Bench v1.1(Vals AI):从零构建 Web 应用的真实编码 Agent 实测,每份应用规格配 20-60 条隐藏自动化测试,模型在隔离容器中最多跑 5 小时或 1000 轮;多数模型跑在 OpenHands harness 上,源站另含少量 Claude Code / Codex / Factory 等 harness 条目,主指标为准确率(%),另记每测试平均成本与平均耗时。',
   'models': [
@@ -541,6 +541,18 @@ window.VALSVIBECODE = {
       'src': 'official'
     },
     {
+      'id': 'thinkingmachines/inkling-mini-1117',
+      'model': 'Inkling Mini 1117',
+      'accuracy': 77.92,
+      'costPerTest': 1.971329,
+      'latencyS': 1540.687,
+      'harness': 'OpenHands',
+      'avgInputTokens': null,
+      'avgOutputTokens': null,
+      'rank': 44,
+      'src': 'official'
+    },
+    {
       'id': 'anthropic/claude-opus-4-8-claude-code',
       'model': 'Claude Opus 4 8 Claude Code',
       'accuracy': 77.49,
@@ -549,7 +561,7 @@ window.VALSVIBECODE = {
       'harness': 'Claude Code',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 44,
+      'rank': 45,
       'src': 'official'
     },
     {
@@ -561,7 +573,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 45,
+      'rank': 46,
       'src': 'official'
     },
     {
@@ -573,7 +585,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 46,
+      'rank': 47,
       'src': 'official'
     },
     {
@@ -585,7 +597,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 47,
+      'rank': 48,
       'src': 'official'
     },
     {
@@ -597,7 +609,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 48,
+      'rank': 49,
       'src': 'official'
     },
     {
@@ -609,7 +621,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 49,
+      'rank': 50,
       'src': 'official'
     },
     {
@@ -621,7 +633,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 50,
+      'rank': 51,
       'src': 'official'
     },
     {
@@ -633,7 +645,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 51,
+      'rank': 52,
       'src': 'official'
     },
     {
@@ -645,7 +657,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 52,
+      'rank': 53,
       'src': 'official'
     },
     {
@@ -657,7 +669,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 53,
+      'rank': 54,
       'src': 'official'
     },
     {
@@ -669,7 +681,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 54,
+      'rank': 55,
       'src': 'official'
     },
     {
@@ -681,7 +693,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 55,
+      'rank': 56,
       'src': 'official'
     },
     {
@@ -693,7 +705,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 56,
+      'rank': 57,
       'src': 'official'
     },
     {
@@ -705,7 +717,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 57,
+      'rank': 58,
       'src': 'official'
     },
     {
@@ -717,7 +729,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 58,
+      'rank': 59,
       'src': 'official'
     },
     {
@@ -729,7 +741,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 59,
+      'rank': 60,
       'src': 'official'
     },
     {
@@ -741,7 +753,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 60,
+      'rank': 61,
       'src': 'official'
     },
     {
@@ -753,7 +765,7 @@ window.VALSVIBECODE = {
       'harness': 'Factory',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 61,
+      'rank': 62,
       'src': 'official'
     },
     {
@@ -765,7 +777,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 62,
+      'rank': 63,
       'src': 'official'
     },
     {
@@ -777,7 +789,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 63,
+      'rank': 64,
       'src': 'official'
     },
     {
@@ -789,7 +801,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 64,
+      'rank': 65,
       'src': 'official'
     },
     {
@@ -801,7 +813,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 65,
+      'rank': 66,
       'src': 'official'
     },
     {
@@ -813,7 +825,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 66,
+      'rank': 67,
       'src': 'official'
     },
     {
@@ -825,7 +837,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 67,
+      'rank': 68,
       'src': 'official'
     },
     {
@@ -837,7 +849,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 68,
+      'rank': 69,
       'src': 'official'
     },
     {
@@ -849,7 +861,7 @@ window.VALSVIBECODE = {
       'harness': 'Codex',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 69,
+      'rank': 70,
       'src': 'official'
     },
     {
@@ -861,7 +873,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 70,
+      'rank': 71,
       'src': 'official'
     },
     {
@@ -873,7 +885,7 @@ window.VALSVIBECODE = {
       'harness': 'Claude Code',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 71,
+      'rank': 72,
       'src': 'official'
     },
     {
@@ -885,7 +897,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 72,
+      'rank': 73,
       'src': 'official'
     },
     {
@@ -897,7 +909,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 73,
+      'rank': 74,
       'src': 'official'
     },
     {
@@ -909,7 +921,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 74,
+      'rank': 75,
       'src': 'official'
     },
     {
@@ -921,7 +933,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 75,
+      'rank': 76,
       'src': 'official'
     },
     {
@@ -933,7 +945,7 @@ window.VALSVIBECODE = {
       'harness': 'Cursor CLI',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 76,
+      'rank': 77,
       'src': 'official'
     },
     {
@@ -945,7 +957,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 77,
+      'rank': 78,
       'src': 'official'
     },
     {
@@ -957,7 +969,7 @@ window.VALSVIBECODE = {
       'harness': 'Codex',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 78,
+      'rank': 79,
       'src': 'official'
     },
     {
@@ -969,7 +981,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 79,
+      'rank': 80,
       'src': 'official'
     },
     {
@@ -981,7 +993,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 80,
+      'rank': 81,
       'src': 'official'
     },
     {
@@ -993,7 +1005,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 81,
+      'rank': 82,
       'src': 'official'
     },
     {
@@ -1005,7 +1017,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 82,
+      'rank': 83,
       'src': 'official'
     },
     {
@@ -1017,7 +1029,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 83,
+      'rank': 84,
       'src': 'official'
     },
     {
@@ -1029,7 +1041,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 84,
+      'rank': 85,
       'src': 'official'
     },
     {
@@ -1041,7 +1053,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 85,
+      'rank': 86,
       'src': 'official'
     },
     {
@@ -1053,7 +1065,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 86,
+      'rank': 87,
       'src': 'official'
     },
     {
@@ -1065,7 +1077,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 87,
+      'rank': 88,
       'src': 'official'
     },
     {
@@ -1077,7 +1089,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 88,
+      'rank': 89,
       'src': 'official'
     },
     {
@@ -1089,7 +1101,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 89,
+      'rank': 90,
       'src': 'official'
     },
     {
@@ -1101,7 +1113,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 90,
+      'rank': 91,
       'src': 'official'
     },
     {
@@ -1113,7 +1125,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 91,
+      'rank': 92,
       'src': 'official'
     },
     {
@@ -1125,7 +1137,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 92,
+      'rank': 93,
       'src': 'official'
     },
     {
@@ -1137,7 +1149,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 93,
+      'rank': 94,
       'src': 'official'
     },
     {
@@ -1149,7 +1161,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 94,
+      'rank': 95,
       'src': 'official'
     },
     {
@@ -1161,7 +1173,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 95,
+      'rank': 96,
       'src': 'official'
     },
     {
@@ -1173,7 +1185,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 96,
+      'rank': 97,
       'src': 'official'
     },
     {
@@ -1185,7 +1197,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 97,
+      'rank': 98,
       'src': 'official'
     },
     {
@@ -1197,7 +1209,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 98,
+      'rank': 99,
       'src': 'official'
     },
     {
@@ -1209,7 +1221,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 99,
+      'rank': 100,
       'src': 'official'
     },
     {
@@ -1221,7 +1233,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 100,
+      'rank': 101,
       'src': 'official'
     },
     {
@@ -1233,7 +1245,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 101,
+      'rank': 102,
       'src': 'official'
     },
     {
@@ -1245,7 +1257,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 102,
+      'rank': 103,
       'src': 'official'
     },
     {
@@ -1257,7 +1269,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 103,
+      'rank': 104,
       'src': 'official'
     },
     {
@@ -1269,7 +1281,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 104,
+      'rank': 105,
       'src': 'official'
     },
     {
@@ -1281,7 +1293,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 105,
+      'rank': 106,
       'src': 'official'
     },
     {
@@ -1293,7 +1305,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 106,
+      'rank': 107,
       'src': 'official'
     },
     {
@@ -1305,7 +1317,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 107,
+      'rank': 108,
       'src': 'official'
     },
     {
@@ -1317,7 +1329,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 108,
+      'rank': 109,
       'src': 'official'
     },
     {
@@ -1329,7 +1341,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 109,
+      'rank': 110,
       'src': 'official'
     },
     {
@@ -1341,7 +1353,7 @@ window.VALSVIBECODE = {
       'harness': 'Grok Build',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 110,
+      'rank': 111,
       'src': 'official'
     },
     {
@@ -1353,7 +1365,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 111,
+      'rank': 112,
       'src': 'official'
     },
     {
@@ -1365,7 +1377,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 112,
+      'rank': 113,
       'src': 'official'
     },
     {
@@ -1377,7 +1389,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 113,
+      'rank': 114,
       'src': 'official'
     },
     {
@@ -1389,7 +1401,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 114,
+      'rank': 115,
       'src': 'official'
     },
     {
@@ -1401,7 +1413,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 115,
+      'rank': 116,
       'src': 'official'
     },
     {
@@ -1413,7 +1425,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 116,
+      'rank': 117,
       'src': 'official'
     },
     {
@@ -1425,7 +1437,7 @@ window.VALSVIBECODE = {
       'harness': 'Devin CLI',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 117,
+      'rank': 118,
       'src': 'official'
     },
     {
@@ -1437,7 +1449,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 118,
+      'rank': 119,
       'src': 'official'
     },
     {
@@ -1449,7 +1461,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 119,
+      'rank': 120,
       'src': 'official'
     },
     {
@@ -1461,7 +1473,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 120,
+      'rank': 121,
       'src': 'official'
     },
     {
@@ -1473,7 +1485,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 121,
+      'rank': 122,
       'src': 'official'
     },
     {
@@ -1485,7 +1497,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 122,
+      'rank': 123,
       'src': 'official'
     },
     {
@@ -1497,7 +1509,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 123,
+      'rank': 124,
       'src': 'official'
     },
     {
@@ -1509,7 +1521,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 124,
+      'rank': 125,
       'src': 'official'
     },
     {
@@ -1521,7 +1533,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 125,
+      'rank': 126,
       'src': 'official'
     },
     {
@@ -1533,7 +1545,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 126,
+      'rank': 127,
       'src': 'official'
     },
     {
@@ -1545,7 +1557,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 127,
+      'rank': 128,
       'src': 'official'
     },
     {
@@ -1557,7 +1569,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 128,
+      'rank': 129,
       'src': 'official'
     },
     {
@@ -1569,7 +1581,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 129,
+      'rank': 130,
       'src': 'official'
     },
     {
@@ -1581,7 +1593,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 130,
+      'rank': 131,
       'src': 'official'
     },
     {
@@ -1593,7 +1605,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 131,
+      'rank': 132,
       'src': 'official'
     },
     {
@@ -1605,7 +1617,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 132,
+      'rank': 133,
       'src': 'official'
     },
     {
@@ -1617,7 +1629,7 @@ window.VALSVIBECODE = {
       'harness': 'OpenHands',
       'avgInputTokens': null,
       'avgOutputTokens': null,
-      'rank': 133,
+      'rank': 134,
       'src': 'official'
     }
   ]

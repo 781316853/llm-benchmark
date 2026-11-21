@@ -17,7 +17,7 @@ window.AICODINGDAILY = {
   },
   'updated': '2026-11-19',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-20 04:52',
+  'refreshedAt': '2026-11-21 04:37',
   'stats': {
     'entries': 60,
     'models': 38
@@ -90,6 +90,22 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 5,
+      'model': 'GPT-6.2-Sol',
+      'effort': 'High',
+      'score': 83.53,
+      'costUsd': 0.3,
+      'timeSec': 337,
+      'timeStr': '05:37',
+      'harness': 'Codex CLI',
+      'laravel': 19.17,
+      'reactTs': 19.17,
+      'bugFinding': 8.92,
+      'edgeCase': 17.27,
+      'src': 'aggregate',
+      'configs': 3
+    },
+    {
+      'rank': 6,
       'model': 'GPT-6.2-Astra',
       'effort': 'High',
       'score': 83.48,
@@ -103,22 +119,6 @@ window.AICODINGDAILY = {
       'edgeCase': 17.77,
       'src': 'aggregate',
       'configs': 2
-    },
-    {
-      'rank': 6,
-      'model': 'GPT-6.2-Sol',
-      'effort': 'High',
-      'score': 83.15,
-      'costUsd': 0.3,
-      'timeSec': 337,
-      'timeStr': '05:37',
-      'harness': 'Codex CLI',
-      'laravel': 19.17,
-      'reactTs': 19.17,
-      'bugFinding': 8.54,
-      'edgeCase': 17.27,
-      'src': 'aggregate',
-      'configs': 3
     },
     {
       'rank': 7,
@@ -138,6 +138,22 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 8,
+      'model': 'Gemini 4 Neon',
+      'effort': 'Xhigh',
+      'score': 80.13,
+      'costUsd': null,
+      'timeSec': 656,
+      'timeStr': '10:56',
+      'harness': 'Antigravity',
+      'laravel': 18.08,
+      'reactTs': 17.5,
+      'bugFinding': 10,
+      'edgeCase': 15.8,
+      'src': 'aggregate',
+      'configs': 3
+    },
+    {
+      'rank': 9,
       'model': 'Kimi K3.1 Pro',
       'effort': 'Max',
       'score': 79.85,
@@ -149,22 +165,6 @@ window.AICODINGDAILY = {
       'reactTs': 18.33,
       'bugFinding': 8.75,
       'edgeCase': 16.47,
-      'src': 'aggregate',
-      'configs': 2
-    },
-    {
-      'rank': 9,
-      'model': 'Gemini 4 Neon',
-      'effort': 'High',
-      'score': 79.85,
-      'costUsd': null,
-      'timeSec': 445,
-      'timeStr': '07:25',
-      'harness': 'Antigravity',
-      'laravel': 17.8,
-      'reactTs': 17.5,
-      'bugFinding': 10,
-      'edgeCase': 15.8,
       'src': 'aggregate',
       'configs': 2
     },
@@ -214,7 +214,7 @@ window.AICODINGDAILY = {
       'bugFinding': 8.47,
       'edgeCase': 16.27,
       'src': 'aggregate',
-      'configs': 3
+      'configs': 2
     },
     {
       'rank': 13,
@@ -711,6 +711,21 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 6,
+      'model': 'GPT-6.2-Sol',
+      'effort': 'High',
+      'score': 83.53,
+      'costUsd': 0.3,
+      'timeSec': 337,
+      'timeStr': '05:37',
+      'harness': 'Codex CLI',
+      'laravel': 19.17,
+      'reactTs': 19.17,
+      'bugFinding': 8.92,
+      'edgeCase': 17.27,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 7,
       'model': 'GPT-6.2-Astra',
       'effort': 'High',
       'score': 83.48,
@@ -725,7 +740,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 7,
+      'rank': 8,
       'model': 'GPT-6.2-Astra',
       'effort': 'Medium',
       'score': 83.39,
@@ -737,21 +752,6 @@ window.AICODINGDAILY = {
       'reactTs': 19.17,
       'bugFinding': 7.57,
       'edgeCase': 18.23,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 8,
-      'model': 'GPT-6.2-Sol',
-      'effort': 'High',
-      'score': 83.15,
-      'costUsd': 0.3,
-      'timeSec': 337,
-      'timeStr': '05:37',
-      'harness': 'Codex CLI',
-      'laravel': 19.17,
-      'reactTs': 19.17,
-      'bugFinding': 8.54,
-      'edgeCase': 17.27,
       'src': 'aggregate'
     },
     {
@@ -832,6 +832,21 @@ window.AICODINGDAILY = {
     {
       'rank': 14,
       'model': 'Gemini 4 Neon',
+      'effort': 'Xhigh',
+      'score': 80.13,
+      'costUsd': null,
+      'timeSec': 656,
+      'timeStr': '10:56',
+      'harness': 'Antigravity',
+      'laravel': 18.08,
+      'reactTs': 17.5,
+      'bugFinding': 10,
+      'edgeCase': 15.8,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 15,
+      'model': 'Gemini 4 Neon',
       'effort': 'High',
       'score': 79.85,
       'costUsd': null,
@@ -845,7 +860,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 15,
+      'rank': 16,
       'model': 'Kimi K3.1 Pro',
       'effort': 'Max',
       'score': 79.85,
@@ -860,7 +875,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 16,
+      'rank': 17,
       'model': 'GPT-6.1-Sol',
       'effort': 'Low',
       'score': 78.8,
@@ -875,7 +890,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 17,
+      'rank': 18,
       'model': 'Opus 5.5',
       'effort': 'Low',
       'score': 78.19,
@@ -890,7 +905,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 18,
+      'rank': 19,
       'model': 'Gemini 4 Hydrogen',
       'effort': 'High',
       'score': 78.01,
@@ -905,7 +920,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 19,
+      'rank': 20,
       'model': 'GPT-6.1-Terra',
       'effort': 'Max',
       'score': 77.67,
@@ -920,7 +935,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 20,
+      'rank': 21,
       'model': 'Gemini 4 Neon',
       'effort': 'Medium',
       'score': 77.34,
@@ -935,7 +950,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 21,
+      'rank': 22,
       'model': 'Deepseek-V4.1-Flash-1017',
       'effort': 'Max',
       'score': 77.08,
@@ -947,21 +962,6 @@ window.AICODINGDAILY = {
       'reactTs': 18.17,
       'bugFinding': 8.47,
       'edgeCase': 16.27,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 22,
-      'model': 'Deepseek-V4.1-Flash-1017',
-      'effort': 'Max',
-      'score': 76.99,
-      'costUsd': null,
-      'timeSec': 298,
-      'timeStr': '04:58',
-      'harness': 'DeepSeek Harness',
-      'laravel': 18.07,
-      'reactTs': 18.67,
-      'bugFinding': 8.75,
-      'edgeCase': 16.5,
       'src': 'aggregate'
     },
     {

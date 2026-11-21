@@ -2,28 +2,117 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-19',
+  'updated': '2026-11-20',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
+    '技术与洞察',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-11-20',
+      'title': 'ChatGPT dots 向 Business Standard 用户以及部分 Plus 开放',
+      'brief': 'OpenAI 员工 Tibo 发文宣布，已开始向少量 ChatGPT Plus 用户测试 dots 功能。此外， dots 将从今日起向所有 ChatGPT Business Standard 用户开放。',
+      'url': 'https://x.com/thsottiaux/status/2123556256392847657',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'ChatGPT 健康功能扩展至桌面端、Android 和 dots',
+      'brief': 'OpenAI 宣布 ChatGPT 健康功能 Health 扩展至桌面应用、 Android 、 dots 和 Sites ，并支持通过 Android Health Connect 连接健康数据。',
+      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Antigravity 桌面应用新增 SSH 连接功能',
+      'brief': 'Google Antigravity 桌面应用推出 SSH 连接功能，可从侧边栏或命令面板连接远程 64 位 Linux 机器。',
+      'url': 'https://antigravity.google/docs/ssh',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Mac 版 Gemini 应用上线 computer use 功能',
+      'brief': 'Google 宣布 Mac 版 Gemini 应用上线 computer use 功能，AI 能在后台导航本地文件、桌面应用和网页，完成原本需要几十次点击的多步任务。',
+      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Gemini API 预览推出工具按需加载功能',
+      'brief': 'Google 在 Gemini API 预览推出 Tool Retrieval 功能，AI agent 可按需加载工具参数结构，无需每次请求发送完整工具定义，支持接入数百种工具并减少 tokens 消耗。',
+      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Qoder 免费用户不能再领每日 100 Credits',
+      'brief': 'Qoder 调整每日领取 100 通用 Credits 活动的适用范围，自 11 月 19 日 10 时 起，体验版（免费）用户不再开放领取。',
+      'url': 'https://docs.qoder.cn/events/100credits',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'ChatGPT 推出新移动端界面，首批面向部分 Pro 用户',
+      'brief': 'OpenAI 员工表示， ChatGPT 正在推出新的移动端界面，首先面向拥有 dot 或符合创建条件的 Pro 用户。',
+      'url': 'https://x.com/thsottiaux/status/2123557171321561133',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Google AI Studio 上线元素周期表式模型选择器',
+      'brief': 'Google AI Studio 团队成员 Ammaar Reshi 发文确认， Model Selection 模型选择功能已正式上线。新界面以元素周期表式的网格展示可选模型，其中包含 Gemini 4 等多个模型选项。',
+      'url': 'https://x.com/ammaar/status/2123209472227061800',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Grok Bot 社区目录上线一天收到超 1200 个提交',
+      'brief': 'SpaceXSI 工作人员 Eric Zakariasson 发帖介绍了社区目录 Grok Bot Directory ，用户可在上面浏览并安装他人为 Grok Bot 制作的机器人和应用，也能提交自己的作品。',
+      'url': 'https://grok-bot.directory',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'Google 将 Genie 4 上线 Gemini API 和 AI Studio',
+      'brief': 'Google 将 Genie 4 上线 Gemini API 和 Google AI Studio ，支持根据文字或图片生成交互世界。该模型输出 720p 、 24 帧每秒 的画面和同步的 48 kHz 立体声音频，用户可以通过 WASD 、方向键和文字实时控制场景。',
+      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-20',
+      'title': '火山引擎上线豆包实时音视频通话模型API服务',
+      'brief': '火山引擎 宣布，豆包实时音视频通话模型 SeedRealtime 1.0 的 API 服务正式上线。',
+      'url': 'https://mp.weixin.qq.com/s/fyNH7Y6o32kxc4GeK8Qb3A',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-20',
+      'title': 'GPT-Live-1.1 上线 API，新增待机选项',
+      'brief': 'OpenAI 宣布， GPT-Live-1.1 现已在 API 中可用，该模型此前已用于 ChatGPT Plus 和 Pro 版语音功能。',
+      'url': 'https://developers.openai.com/api/docs/models/gpt-live-1.1',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
     {
       'date': '2026-11-19',
       'title': 'Google 发布 Gemini 4 Neon',
       'brief': 'Google 发布新模型 Gemini 4 Neon ，定位于 Gemini 4 Carbon 与 Hydrogen 之间，面向复杂软件工程、知识工作和科学工作流。模型支持四档思维水平调节，具备 100 万 token 上下文窗口，可处理表格、PDF、图表与音视频。',
       'url': 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-19',
-      'title': '谷歌新版 Project Genie 开放 Genie 4',
-      'brief': 'Google 宣布推出新版 Project Genie 体验，向已推出 Google AI Ultra 地区的年满 18 周岁 订阅者开放最新世界模型 Genie 4 ，Google AI Pro 会员可加入等候名单。 Genie 4 支持在探索过程中输入提示词实时修改天气、新增角色或改变剧情，并首次搭配适配场景的环境音效与角色对话。',
-      'url': 'https://deepmind.google/blog/genie-4-is-now-available',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
@@ -53,22 +142,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-19',
-      'title': 'Perplexity 推出 Context API',
-      'brief': 'Perplexity 推出 Context API ，单次调用最多读取 10 个 URL，为每个页面返回清理后的 Markdown 、 HTML 、链接和基于查询的片段。',
-      'url': 'https://www.perplexity.ai/hub/blog/context-api-extracts-full-context-from-any-web-page',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'ChatGPT 语音实时转文字，移除 10 分钟录音上限',
-      'brief': 'OpenAI 宣布， ChatGPT 的 Dictation 功能变得更快、更可靠，并推出 Live Dictation ：说话时语音实时转成文字，减少等待转写的时间，用户可点按波形显示或隐藏文字。',
-      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-19',
       'title': 'ChatGPT 推出会计插件 协助结账和对账',
       'brief': 'OpenAI 宣布 ChatGPT for Accounting 现已可用，新的 Accounting 插件和合作方插件帮助用户以更少手工操作完成结账，任务覆盖月末报告、银行对账和数据录入等。',
       'url': 'https://openai.com/business/solutions/accounting',
@@ -85,22 +158,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-19',
-      'title': 'Gemini app 支持低内存 Android 设备',
-      'brief': 'Google 宣布 Gemini app 现已支持低内存 Android 设备，包括符合条件的 Android (Go edition) 手机。该公司重构了应用，让核心体验在低内存硬件上流畅运行，使全球 数亿 更多人能用上其个人 AI 助手。',
-      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-19',
-      'title': 'Google 推出 Stitch Loop 持续改进产品',
-      'brief': 'Google Labs 推出 Stitch Loop ，这是设计工具 Stitch 的新实验，定位为长期运行的产品 agent ，连接 GitHub 代码库和实时指标，持续改进已上线的软件。',
-      'url': 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/?ref=testingcatalog.com',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-19',
       'title': '腾讯混元开放 Hy4 flash 权重',
       'brief': '腾讯混元 宣布开源 Hy4 flash 系列模型，包含 Hy4 flash 、 Hy4 flash-FP8 和 Hy4 flash-Base ，开发者可在 GitHub 、 Hugging Face 、 ModelScope 和 GitCode 下载部署。',
       'url': 'https://mp.weixin.qq.com/s/yaFPaQL6MNVz01GD2sIlRw',
@@ -108,52 +165,12 @@ window.NEWS = {
       'type': '模型发布'
     },
     {
-      'date': '2026-11-18',
-      'title': 'OpenAI 发布 GPT-6.2 Astra 与 Sol，分别面向复杂任务和日常工作',
-      'brief': 'OpenAI 发布 GPT-6.2 Astra 和 Sol 。',
-      'url': 'https://openai.com/index/introducing-gpt-6-2-astra-sol/',
+      'date': '2026-11-19',
+      'title': 'OpenAI 披露 AI 芯片设计进展，AMD GPU 电路指标最高改善 14%',
+      'brief': 'OpenAI 披露，其模型提出的电路优化方案通过了该公司首款定制推理芯片 Jalapeño 的实际芯片验证。 OpenAI 估计，这些方案使芯片向量单元和矩阵单元的标准单元面积分别减少约 13% 和 10% 。',
+      'url': 'https://openai.com/index/advancing-chip-design-with-our-models',
       'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-18',
-      'title': '微软在 Ignite 上公布七款新模型',
-      'brief': '微软在 Ignite 大会发布七款 MAI 新模型，主打低价高性能。',
-      'url': 'https://microsoft.ai/news/microsoft-ignite-2026-mai-keynote/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'Gemini Tasks 在美日韩加澳印六国免费开放',
-      'brief': 'Google 宣布， Gemini 的 Tasks 功能在 美国、日本、韩国、加拿大、澳大利亚和印度 向数亿符合条件用户免费开放，免费用户都能用新模型 Gemini 4 Hydrogen 运行任务。',
-      'url': 'https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-18',
-      'title': '可灵 AI 发布 Kling Image 4.0',
-      'brief': '可灵 AI 发布图像创作模型 Kling Image 4.0 ，同时向企业客户和开发者开放 API 。',
-      'url': 'https://mp.weixin.qq.com/s/p3_DIBRUUgmxShjD5Wp27w',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-18',
-      'title': '商汤正式开源 SenseNova-Loop-9B',
-      'brief': '商汤 正式开源多模态模型 SenseNova-Loop-9B ，权重和代码以 Apache 2.0 许可在 Hugging Face 和 GitHub 开放，首日提供官方 AWQ 4-bit 量化版。',
-      'url': 'https://github.com/OpenSenseNova/SenseNova-Loop',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-18',
-      'title': 'Google AI Studio 更新 Android 应用开发功能',
-      'brief': 'Google AI Studio 更新 Android 应用开发功能，支持通过 Firebase 为应用添加跨设备数据同步、用户登录和 Gemini 调用。',
-      'url': 'https://x.com/GoogleAIStudio/status/2122752241887068565',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
+      'type': '技术与洞察'
     }
   ]
 };

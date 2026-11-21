@@ -1,4 +1,4 @@
-// 数据源:ModelDial 订阅额度(源站 2026-11-19;https://modeldial.com/subscriptions?period=week&view=catalog)
+// 数据源:ModelDial 订阅额度(源站 2026-11-20;https://modeldial.com/subscriptions?period=week&view=catalog)
 // 抓取方式:订阅页 HTML → Next.js chunk 内嵌数据(套餐记录 + 第三方平台目录);页面结构变更会 fail-soft 保留旧文件。
 // 字段:plans[]={slug/alias 可合并到的 codingplan slug/name/nameEn/platform/platformEn/fee/currency/feeCny/dm/legacy/models[]};
 //   models[]={m 模型名/mEn 英文名/t 档位/u ¥每亿/q 四档月额度(仅 95% 单值)/s=m/w 实测|estimate/d 数据日期/a API 等值(USD/月)}。
@@ -10,9 +10,9 @@ window.MODELDIAL_SUBS = {
   'url': 'https://modeldial.com/subscriptions?period=week&view=catalog',
   'host': 'modeldial.com',
   'license': '见源站;引用请标注 ModelDial',
-  'updated': '2026-11-19',
-  'sourceUpdated': '2026-11-19',
-  'refreshedAt': '2026-11-20 04:52',
+  'updated': '2026-11-20',
+  'sourceUpdated': '2026-11-20',
+  'refreshedAt': '2026-11-21 04:37',
   'usdToCnyRate': 6.8,
   'monthlyFactorWeek': 4.333,
   'cacheRatios': [
@@ -24,9 +24,9 @@ window.MODELDIAL_SUBS = {
   'stats': {
     'platforms': 21,
     'plans': 68,
-    'rows': 133,
+    'rows': 141,
     'measuredRows': 31,
-    'estimatedRows': 102,
+    'estimatedRows': 110,
     'firstPartyPlans': 34,
     'thirdPartyPlans': 34,
     'aliasedPlans': 49,
@@ -270,6 +270,40 @@ window.MODELDIAL_SUBS = {
           ],
           'u': 6.61,
           'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Astra',
+          'mEn': 'GPT-6.2 Astra',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 286,
+          'q': [
+            null,
+            null,
+            362.9,
+            null
+          ],
+          'u': 37.48,
+          'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Sol',
+          'mEn': 'GPT-6.2 Sol',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 286,
+          'q': [
+            null,
+            null,
+            1451.8,
+            null
+          ],
+          'u': 9.37,
+          'b': 'ChatGPT'
         }
       ]
     },
@@ -372,6 +406,40 @@ window.MODELDIAL_SUBS = {
             null
           ],
           'u': 2.24,
+          'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Astra',
+          'mEn': 'GPT-6.2 Astra',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 4168.67,
+          'q': [
+            null,
+            null,
+            5290.2,
+            null
+          ],
+          'u': 12.85,
+          'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Sol',
+          'mEn': 'GPT-6.2 Sol',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 4168.67,
+          'q': [
+            null,
+            null,
+            21160.7,
+            null
+          ],
+          'u': 3.21,
           'b': 'ChatGPT'
         }
       ]
@@ -476,6 +544,40 @@ window.MODELDIAL_SUBS = {
           ],
           'u': 3.33,
           'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Astra',
+          'mEn': 'GPT-6.2 Astra',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 5794,
+          'q': [
+            null,
+            null,
+            7352.8,
+            null
+          ],
+          'u': 18.5,
+          'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Sol',
+          'mEn': 'GPT-6.2 Sol',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 5794,
+          'q': [
+            null,
+            null,
+            29411.2,
+            null
+          ],
+          'u': 4.62,
+          'b': 'ChatGPT'
         }
       ]
     },
@@ -578,6 +680,40 @@ window.MODELDIAL_SUBS = {
             null
           ],
           'u': 3.23,
+          'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Astra',
+          'mEn': 'GPT-6.2 Astra',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 13910,
+          'q': [
+            null,
+            null,
+            17652.3,
+            null
+          ],
+          'u': 19.26,
+          'b': 'ChatGPT'
+        },
+        {
+          'm': 'GPT-6.2 Sol',
+          'mEn': 'GPT-6.2 Sol',
+          't': '',
+          's': 'm',
+          'w': 'estimate',
+          'd': '2026-11-20',
+          'a': 13910,
+          'q': [
+            null,
+            null,
+            70609.1,
+            null
+          ],
+          'u': 4.82,
           'b': 'ChatGPT'
         }
       ]

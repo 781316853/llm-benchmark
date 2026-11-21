@@ -5,8 +5,8 @@
 // 用途:总览页「厂商新模型发布倒计时」;天数由前端按本机日期计算。
 // 字段:vendors[]={vendor=厂商, date=发布日期, model=canonical 模型名, src=数据来源}。
 window.RELEASES = {
-  'updated': '2026-11-19',
-  'refreshedAt': '2026-11-20 04:52',
+  'updated': '2026-11-20',
+  'refreshedAt': '2026-11-21 04:37',
   'sources': [
     'Official',
     'ModelDial',
@@ -17,8 +17,8 @@ window.RELEASES = {
     'Agents\' Last Exam'
   ],
   'stats': {
-    'vendors': 27,
-    'datedEntries': 389,
+    'vendors': 26,
+    'datedEntries': 361,
     'latestDate': '2026-11-19'
   },
   'vendors': [
@@ -177,12 +177,6 @@ window.RELEASES = {
       'date': '2026-08-26',
       'model': 'GLM-5.3-Flash',
       'src': 'ModelDial'
-    },
-    {
-      'vendor': 'Cursor',
-      'date': '2026-05-18',
-      'model': 'Composer 2.5',
-      'src': 'Agents\' Last Exam'
     }
   ]
 };
