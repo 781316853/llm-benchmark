@@ -2,7 +2,7 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-20',
+  'updated': '2026-11-21',
   'stats': {
     'total': 200,
     'knownVendor': 199,
@@ -793,6 +793,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Inkling 2 Mini',
+      'vendor': 'Thinking Machines Lab',
+      'color': '#9298A1',
+      'aliases': [
+        'Inkling 2 Mini'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Inkling Mini 1117',
       'vendor': '其他',
       'color': '#9298A1',
@@ -817,15 +826,6 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'K-EXAONE',
         'K-Exaone'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'K2 Horizon 3.7B',
-      'vendor': 'Institute of Foundation Models',
-      'color': '#9298A1',
-      'aliases': [
-        'K2 Horizon 3.7B'
       ],
       'auto': true
     },

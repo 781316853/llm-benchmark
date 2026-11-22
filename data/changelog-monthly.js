@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-20',
-  'refreshedAt': '2026-11-21 04:37',
+  'updated': '2026-11-21',
+  'refreshedAt': '2026-11-22 03:36',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3411,
-    'afterMerge': 3393,
-    'needsZh': 1992,
-    'translated': 1992,
+    'afterToolDedupe': 3418,
+    'afterMerge': 3400,
+    'needsZh': 1999,
+    'translated': 1999,
     'untranslated': 0
   },
   'zh': {
@@ -132,6 +132,7 @@ window.CHANGELOG_MONTHLY = {
     '1cefadf8-58': '为长命令添加可展开的 bash 输出以提升可读性',
     '1cfdd4a0-12': '新的应用布局',
     '1d01eaa4-44': '为桌面构建新增 latest.json 终结脚本',
+    '1d4c6418-157': '将 claude_code_self_hosted_runner_order_to_first_session_seconds 添加到自托管 Runner 的 /metrics：从工作订单到移交第一个会话的秒数，适用于为会话启动的 Runner',
     '1d85fe78-128': '向/列出已完成子 Agent的任务添加了“此会话中的早期”行，因此即使它离开列表或重新启动后，您也可以重新打开一个子 Agent并发送消息',
     '1d9c48a0-208': '在 Claude apps 网关配置中新增 store.connect_timeout_seconds，用于延长 Postgres 连接超时（默认 5 秒）；数据库不可达时改进了启动报错，指向 store.postgres_url 和所配置的超时',
     '1dce3cec-144': '新增 /claude-api upgrade，用于将 Python 项目从 anthropic 0.x 迁移到 1.x，并更新该技能的 Python 参考以适配 1.x（超时使用 anthropic.Timeout，而非 httpx.Timeout）',
@@ -636,6 +637,7 @@ window.CHANGELOG_MONTHLY = {
     '54307478-160': '新增回顾功能，在返回会话时提供上下文，可在 /config 中配置，并可用 /recap 手动调用；若遥测已禁用，可用 CLAUDE_CODE_ENABLE_AWAY_SUMMARY 强制启用',
     '545ea3c-80': '新增完善的动画系统，包含多种缓动函数和过渡工具',
     '547b8690-87': '新增「自动（匹配终端）」主题选项，可匹配终端的深色/浅色模式 — 从 /theme 中选择',
+    '548eabcc-105': '添加了 CLAUDE_CODE_FULL_SIGN_IN_LINK=1，以便在短链接显示错误或脚本从中读取值时打印完整登录链接',
     '549ea6c4-46': '为 Ripgrep.files() 和 GlobTool 增加 AbortSignal 支持',
     '54a21d0f-113': '向OpenTelemetry api_request事件添加了cache_creation_5m_tokens和cache_creation_1h_tokens ，按生存期拆分缓存写入',
     '54d348cc-35': 'TUI 现在仅显示活跃 MCP 服务器数量',
@@ -704,6 +706,7 @@ window.CHANGELOG_MONTHLY = {
     '5e7499e4-94': '新增技能和斜杠命令的 effort frontmatter 支持，可在调用时覆盖模型努力级别',
     '5e7c7f6c-22': '为桌面端添加 shell 模式',
     '5e827fdc-142': '向claude插件validate添加了MCP服务器检查：它报告将在加载时静默丢弃的.mcp.json条目、未声明的$ {user_config. *}引用和不安全的URL',
+    '5ea82238-154': '在 claude plugin install --json 结果中添加了 commandPrinted，当插件的安装命令写入 stderr 时为 true，当插件因出错、被终止或超时而退出时为 commandFailed',
     '5ed06317-153': '新增 CLAUDE_CODE_PROCESS_WRAPPER：agent view 和后台服务现在会遵循企业启动器，把每次 Claude Code 自派生都通过指定的包装可执行文件运行',
     '5ef88048-72': '新增端点：POST /permission/:requestID/reply，用于响应权限请求',
     '5f0e4e5c-40': '为评论卡片悬停状态增加 transition-all',
@@ -848,6 +851,7 @@ window.CHANGELOG_MONTHLY = {
     '6ed4634-55': '添加错误提示，引导用户重新通过 Copilot 认证',
     '6ef1b922-38': '在 ! 命令中启用 shell 别名展开',
     '6efb1990-92': '新增循环切换最近使用模型的快捷键（F2 向前，Shift+F2 向后）',
+    '6f18a3e0-121': '在云端和自托管 Runner 会话中添加了通知，用于提示无法获取插件市场，因为其代码仓库不是会话的代码仓库之一。',
     '6f679006-49': 'TUI：修复时长计算中 user.time 的空值检查',
     '6fa34154-55': '规范化类 Unix 标识符以支持 Windows 上的 Git Bash',
     '6fce0ce-62': '为 zhipuai-coding-plan 启用思考，并修复韩语输入法截断问题',
@@ -1171,6 +1175,7 @@ window.CHANGELOG_MONTHLY = {
     '9626c254-94': '在 /plugin 市场浏览窗格中新增预计上下文开销（每轮和每次调用的 token 估算）',
     '962cd04a-106': '向HOOK_EXECUTION_COMPLETE OpenTelemetry事件添加了保存到文件的钩子输出大小和超大输出数量',
     '965c4500-81': '将思考区块显示状态持久化到 KV，并在命令列表中显示当前状态',
+    '9666c47d-157': '新增了 Easel，这是一个内置的模组，可在收到请求时以及在 MCP 指标结果下绘制图表，适用于 Pro、Max 以及（如适用）macOS 和 Linux 上的 Team 和 Enterprise；可在 /config 中关闭自动图表功能',
     '9667a59d-140': '新增 workflowSizeGuideline 设置项，可从任意设置文件设定建议性的动态工作流规模指南；设置后 /config 中的对应行将隐藏',
     '966ab180-143': '在工作目录之外的读取之前，对自动模式的提示添加了“是，但下次再问一次”的答案，因此您可以允许读取该提示，但仍会询问以后的提示',
     '966c47bf-62': 'TUI：切换会话时避免重复拉取已同步的会话',
@@ -1262,6 +1267,7 @@ window.CHANGELOG_MONTHLY = {
     'a117a746-93': '当首先运行的插件跳过您的mod的一个钩子时，添加了一个脚本行，命名事件和插件',
     'a11c820d-52': '列表中当前活动会话的圆点保持可见',
     'a122665c-126': '新增可选的 spellcheck 设置，使用你已安装的 aspell、hunspell 或 ispell，在输入时对提示中拼写错误的单词加下划线',
+    'a1458b6-160': '已添加对在 Anthropic 的企业管理控制台中管理的组织的登录功能：在完成 Claude 身份验证登录后，Claude Code 将应用该组织的设置，并使用其云提供商或网关。',
     'a17a16c4-105': '在模块的文本中添加了尺寸、重量、单色和表格，并在其框中添加了命名间距步骤（ xs到xl ） ；粗体已被弃用，转而使用重量',
     'a1adf8a8-85': 'TypeScript LSP 改为每个包一个，确保根目录未安装 TypeScript 时也能加载',
     'a1b1837c-87': '插件发现页面新增搜索过滤（输入即可按名称、描述或市场过滤）',
@@ -1691,6 +1697,7 @@ window.CHANGELOG_MONTHLY = {
     'd8999164-30': '新增 PHP Intelephense LSP 支持',
     'd8f71100-47': '为自定义 GitHub App 安装添加 OIDC_BASE_URL 支持',
     'd9059748-68': '在审批提示打开时，直接在会话记录中展开补丁详细信息',
+    'd917ca8c-160': '已将 claude_code_self_hosted_runner_order_to_registered_seconds 添加到自托管 Runner 的 /metrics 中：从发出工作指令到接受注册的秒数，适用于 Orchestrator 生成的 Runner。',
     'd921edc9-102': '权限配置现在可在 TUI 会话、用户回合、MCP 沙箱状态、shell 提权和 app-server API 之间往返传递',
     'd92bb34-53': '为 MCP 工具附件补充缺失的 id、sessionID 和 messageID',
     'd93cc430-150': '向CLAUDE应用程序网关添加了CLAUDE_GATEWAY_LOG_FORMAT = json ：对于从字段读取级别的日志收集器，操作日志行将成为具有严重性、时间和消息的JSON',
@@ -2013,7 +2020,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 250,
+      'count': 257,
       'toolCount': 12,
       'multi': [
         {
@@ -2313,6 +2320,55 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': '1d4c6418-157',
+              'text': 'Added claude_code_self_hosted_runner_order_to_first_session_seconds to the self-hosted runner\'s /metrics: seconds from work order to first session handed over, on runners started for a session',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
+            {
+              'key': '548eabcc-105',
+              'text': 'Added CLAUDE_CODE_FULL_SIGN_IN_LINK=1 to print the full sign-in link, if the short one shows an error or a script reads values from it',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
+            {
+              'key': '5ea82238-154',
+              'text': 'Added commandPrinted to claude plugin install --json results, true when the plugin\'s install command wrote to stderr, and commandFailed when it exited with an error, was killed or timed out',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
+            {
+              'key': '6f18a3e0-121',
+              'text': 'Added a notice in cloud and self-hosted runner sessions when a plugin marketplace can\'t be fetched because its repository isn\'t one of the session\'s',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
+            {
+              'key': '9666c47d-157',
+              'text': 'Added easel, a built-in mod that draws charts when asked and under MCP metrics results, on Pro, Max and, where available, Team and Enterprise on macOS and Linux; turn automatic charts off in /config',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
+            {
+              'key': 'a1458b6-160',
+              'text': 'Added sign-in to organizations managed in Anthropic\'s Enterprise Admin Console: after claude auth login, Claude Code applies the organization\'s settings and uses its cloud provider or gateway',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
+            {
+              'key': 'd917ca8c-160',
+              'text': 'Added claude_code_self_hosted_runner_order_to_registered_seconds to the self-hosted runner\'s /metrics: seconds from work order issued to registration accepted, on orchestrator-spawned runners',
+              'date': '2026-11-20',
+              'version': '2.1.330',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330'
+            },
             {
               'key': '16fecdb8-102',
               'text': 'Added a notice in /status and claude doctor when an OpenTelemetry exporter has no endpoint and its data would likely be lost',
@@ -2881,7 +2937,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 81
+          'count': 88
         },
         {
           'id': 'opencode',

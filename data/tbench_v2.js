@@ -1,4 +1,4 @@
-// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-20)
+// 数据源:Terminal-Bench 2.1(斯坦福/Laude)终端命令行 Agent 评测(更新于 2026-11-21)
 // 来源:https://llm-stats.com/benchmarks/terminal-bench-2.1(官方:https://www.tbench.ai/news/terminal-bench-2-1)
 // 主渠道:https://www.datalearner.com/benchmarks/terminal-bench-2-1(厂商官方发布成绩转录)
 // 补充:llm-stats 聚合表(0-1 归一化自报分)
@@ -15,8 +15,8 @@ window.TBENCH_V21 = {
   'officialUrl': 'https://www.tbench.ai/news/terminal-bench-2-1',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2.1',
-  'updated': '2026-11-20',
-  'refreshedAt': '2026-11-21 04:37',
+  'updated': '2026-11-21',
+  'refreshedAt': '2026-11-22 03:36',
   'stats': {
     'tasks': 89,
     'entries': 83
@@ -732,6 +732,20 @@ window.TBENCH_V21 = {
     },
     {
       'rank': 53,
+      'model': 'Inkling 2 Mini',
+      'agent': null,
+      'effort': null,
+      'score': 71.6,
+      'ci': null,
+      'date': null,
+      'tokens': null,
+      'cost': '$ 0.15 / $ 0.50',
+      'org': 'Thinking Machines Lab',
+      'size': '26B',
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 54,
       'model': 'Seed2.1 Pro',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -744,7 +758,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 54,
+      'rank': 55,
       'model': 'Seed 2.1 Pro',
       'agent': null,
       'effort': null,
@@ -758,7 +772,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 55,
+      'rank': 56,
       'model': 'K2 Horizon 375B-A23B',
       'agent': null,
       'effort': null,
@@ -772,7 +786,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 56,
+      'rank': 57,
       'model': 'Laguna S 2.1',
       'agent': null,
       'effort': null,
@@ -786,7 +800,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 57,
+      'rank': 58,
       'model': 'Opus 4.7',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -799,7 +813,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 58,
+      'rank': 59,
       'model': 'Seed 2.1 Turbo',
       'agent': null,
       'effort': null,
@@ -813,7 +827,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 59,
+      'rank': 60,
       'model': 'Kimi K2.7 Code',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -826,7 +840,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 60,
+      'rank': 61,
       'model': 'Nemotron 3.5 Super VL (120B A12B)',
       'agent': null,
       'effort': null,
@@ -840,7 +854,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 61,
+      'rank': 62,
       'model': 'MiniMax M3',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -854,7 +868,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 62,
+      'rank': 63,
       'model': 'Gemini 3.1 Pro Preview',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -867,7 +881,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 63,
+      'rank': 64,
       'model': 'Inkling-Small',
       'agent': null,
       'effort': '思考档位未公开（工具）',
@@ -881,7 +895,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 64,
+      'rank': 65,
       'model': 'Intern-S2-397B',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -894,7 +908,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 65,
+      'rank': 66,
       'model': 'Inkling',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -908,7 +922,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 66,
+      'rank': 67,
       'model': 'MAI-Code-1.1-Flash',
       'agent': null,
       'effort': '官方报告最高值（具体推理档位未注明）',
@@ -922,7 +936,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 67,
+      'rank': 68,
       'model': 'K2 Horizon 32B',
       'agent': null,
       'effort': null,
@@ -936,7 +950,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 68,
+      'rank': 69,
       'model': 'Nemotron 3.5 Super VL',
       'agent': null,
       'effort': '思考档位未公开（工具）',
@@ -949,7 +963,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 69,
+      'rank': 70,
       'model': 'Step 3.7 Flash',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -963,7 +977,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 70,
+      'rank': 71,
       'model': 'GLM 5.1',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -976,7 +990,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 71,
+      'rank': 72,
       'model': 'K2 Horizon MoVA 36B-A4B',
       'agent': null,
       'effort': null,
@@ -990,7 +1004,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 72,
+      'rank': 73,
       'model': 'Gemini 3.0 Flash',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -1001,20 +1015,6 @@ window.TBENCH_V21 = {
       'cost': null,
       'org': 'Google DeepMind',
       'src': 'datalearner'
-    },
-    {
-      'rank': 73,
-      'model': 'Solar Pro 4',
-      'agent': null,
-      'effort': null,
-      'score': 57,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': '$ 0.30 / $ 1.20',
-      'org': 'Upstage',
-      'size': '—',
-      'src': 'llm-stats'
     },
     {
       'rank': 74,
@@ -1032,6 +1032,20 @@ window.TBENCH_V21 = {
     },
     {
       'rank': 75,
+      'model': 'Solar Pro 4',
+      'agent': null,
+      'effort': null,
+      'score': 57,
+      'ci': null,
+      'date': null,
+      'tokens': null,
+      'cost': '$ 0.30 / $ 1.20',
+      'org': 'Upstage',
+      'size': '—',
+      'src': 'llm-stats'
+    },
+    {
+      'rank': 76,
       'model': 'Nemotron 3 Ultra',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -1044,7 +1058,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 76,
+      'rank': 77,
       'model': 'Nemotron 3 Ultra (550B A55B)',
       'agent': null,
       'effort': null,
@@ -1058,7 +1072,7 @@ window.TBENCH_V21 = {
       'src': 'llm-stats'
     },
     {
-      'rank': 77,
+      'rank': 78,
       'model': 'Gemini 3.5 Flash-Lite',
       'agent': null,
       'effort': '思考模式（工具）',
@@ -1072,7 +1086,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 78,
+      'rank': 79,
       'model': 'Nemotron 3.5 Bolt 74B-A9B',
       'agent': null,
       'effort': '思考档位未公开（工具）',
@@ -1085,7 +1099,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 79,
+      'rank': 80,
       'model': 'Kimi K2.6',
       'agent': null,
       'effort': '思考模式（无工具）',
@@ -1098,7 +1112,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 80,
+      'rank': 81,
       'model': 'Muse Glimmer-30B',
       'agent': null,
       'effort': '思考模式 High（工具）',
@@ -1112,7 +1126,7 @@ window.TBENCH_V21 = {
       'src': 'datalearner'
     },
     {
-      'rank': 81,
+      'rank': 82,
       'model': 'Nemotron 3.5 Bolt (74B A9B 24GB)',
       'agent': null,
       'effort': null,
@@ -1123,20 +1137,6 @@ window.TBENCH_V21 = {
       'cost': '—',
       'org': 'NVIDIA',
       'size': '74B',
-      'src': 'llm-stats'
-    },
-    {
-      'rank': 82,
-      'model': 'K2 Horizon 3.7B',
-      'agent': null,
-      'effort': null,
-      'score': 39.7,
-      'ci': null,
-      'date': null,
-      'tokens': null,
-      'cost': '—',
-      'org': 'Institute of Foundation Models',
-      'size': '4B',
       'src': 'llm-stats'
     },
     {
