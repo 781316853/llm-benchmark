@@ -5,12 +5,12 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-21',
-  'refreshedAt': '2026-11-22 03:36',
+  'updated': '2026-11-22',
+  'refreshedAt': '2026-11-23 03:54',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3418,
-    'afterMerge': 3400,
+    'afterToolDedupe': 3447,
+    'afterMerge': 3429,
     'needsZh': 1999,
     'translated': 1999,
     'untranslated': 0
@@ -2020,7 +2020,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 257,
+      'count': 286,
       'toolCount': 12,
       'multi': [
         {
@@ -3219,6 +3219,69 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
           'items': [
             {
+              'key': '37e6acb0-45',
+              'text': '插件市场支持添加 Git 仓库作为插件来源，私有仓库中的插件也能浏览和安装。 @acehinnnqru',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': '44b0f798-59',
+              'text': '新增实验性时间线插件，可查看智能体任务树、阻塞事项和进展报告，点击进度条可展开任务树，任务与报告语言可选跟随对话。 @Magolor',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': '4aeb3024-63',
+              'text': 'Web 连接模式新增远程登录，可使用独立登录链接或设备配对方式访问，并提供标准化连接鉴权 API 供插件注册 @EricMoin, @imccyu',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': '96f11d2b-53',
+              'text': '新增会话已读/未读状态，完成后提醒未读，可用菜单或快捷键切换；改善最近会话切换并保留侧栏状态。 @Saafo, @imccyu',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': '9807e532-72',
+              'text': '代码审阅插件新增扩展机制，插件可添加自己的审阅视图和行注解，并在工具栏、文件菜单和评论框中加入自定义操作；同时支持评审和合并 GitLab。 @LegGasai',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': 'b9359b1c-53',
+              'text': '新增代码审阅页面，可集中查看本人相关的 GitHub PR，浏览描述和变更，并在页内与智能体协作审阅。 @LegGasai',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': 'ce43ae28-66',
+              'text': '新增可选的 Linear、Notion、腾讯文档、飞书、企业微信、腾讯会议和钉钉连接器插件，可在插件页连接或授权后在对话中使用相应服务。 @grllll',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': 'df8f1c32-61',
+              'text': '插件页支持统一管理连接器账号，MCP 支持 OAuth 授权与凭据自动刷新；CLI 应用插件共用账号管理和上游技能下载能力。 @grllll',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
+              'key': 'f31de082-58',
+              'text': '新增会话状态区域，可集中查看工作目录、变更请求、子智能体、任务和插件状态，支持在较窄窗口停靠及拖动调整分区顺序。 @LegGasai',
+              'date': '2026-11-22',
+              'version': '0.2.3-alpha.1',
+              'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.3-alpha.1'
+            },
+            {
               'key': '9fe77290-58',
               'text': '新增实验性「DeepSeek 会话导入」插件，支持将 DeepSeek App 或网页版的历史会话导入工作区，并继续对话。 @imccyu',
               'date': '2026-11-13',
@@ -3289,7 +3352,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-alpha.3'
             }
           ],
-          'count': 10
+          'count': 19
         },
         {
           'id': 'qoder-cn',
@@ -3598,6 +3661,146 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://zcode.z.ai/changelog',
           'items': [
             {
+              'key': '17a00870-17',
+              'text': '工具执行失败时也会触发已配置的钩子',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '1a148ed8-17',
+              'text': 'MCP 服务改为异步启动，应用打开更快',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '253c8d8c-22',
+              'text': '「立即发送」时前台 Agent 自动转入后台继续运行',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '2d8da7a4-24',
+              'text': '文件链接支持行号和区间，打开后自动定位并高亮对应行',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '49429c46-14',
+              'text': '辅助对话支持选中文本添加评论',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '684b1cb5-16',
+              'text': '模型选择菜单支持搜索，快速定位模型',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '6d40eaa7-21',
+              'text': '会话中新增或删除的技能实时生效，无需重开会话',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '79d8dd18-19',
+              'text': '站点部署支持连接 http(s) 官方服务地址',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '9369bf23-20',
+              'text': '输入框状态区重新设计，各类运行状态统一展示',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '97d9c6ac-16',
+              'text': 'Git 状态卡支持一键查看全部变更',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': '9bac928f-18',
+              'text': '工具升级期间旧版本继续可用，不中断使用',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'a78027d6-29',
+              'text': '子任务默认在后台运行，命令行单次执行会等待后台任务完成再退出',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'b996fc3c-19',
+              'text': '已结束的活动保留展示，输入新内容后再收起',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'cb2bce0d-10',
+              'text': '应用崩溃后可一键重启',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'd2fcfc58-14',
+              'text': '分叉会话标题自动编号，便于区分',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'd7461087-19',
+              'text': '分享被拒时指明问题文件、对话轮次和下一步',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'deb3194-18',
+              'text': '新增回复语言设置，可指定回复使用的语言',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'e381ddb1-11',
+              'text': '语音输入支持快捷键开关',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'f66a2728-18',
+              'text': '内置 design 插件升级，新增生图能力',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
+              'key': 'f6825e38-40',
+              'text': '内置 LibreOffice、Python、Poppler 等常用工具，方便文档插件的使用',
+              'date': '2026-11-22',
+              'version': '3.19.1',
+              'url': 'https://zcode.z.ai/changelog'
+            },
+            {
               'key': '10c8c704-24',
               'text': '本地网页改动后自动刷新，可设置单击 HTML 直接打开',
               'date': '2026-11-13',
@@ -3885,7 +4088,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://zcode.z.ai/changelog'
             }
           ],
-          'count': 41
+          'count': 61
         },
         {
           'id': 'codebuddy',

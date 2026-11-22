@@ -1,4 +1,4 @@
-// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-21)
+// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-22)
 // 来源:https://aicodingdaily.com/leaderboard(方法论:https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas)
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
@@ -15,12 +15,12 @@ window.AICODINGDAILY = {
     'bugFinding': 10,
     'edgeCase': 20
   },
-  'updated': '2026-11-21',
+  'updated': '2026-11-22',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-22 03:36',
+  'refreshedAt': '2026-11-23 03:54',
   'stats': {
-    'entries': 62,
-    'models': 40
+    'entries': 66,
+    'models': 42
   },
   'desc': 'AI Coding Daily(Povilas Korop 个人实测站):每个模型在 7 个真实项目上跑 27 个 prompt(全站累计 2000+ 次运行),每个 prompt 从项目全新副本起步、模型看不到隐藏测试、无人工反馈;总分为 Laravel 代码质量(20)+ React-TS 代码质量(20)+ Bug Finding(10)+ Edge-case Testing(20)四轴之和(0-70),另记每 prompt 平均成本与耗时。分数越高越好,成本/耗时越低越优。',
   'models': [
@@ -29,7 +29,7 @@ window.AICODINGDAILY = {
       'model': 'Opus 5.5',
       'effort': 'High',
       'score': 84.95,
-      'costUsd': 0.83,
+      'costUsd': 0.839,
       'timeSec': 222,
       'timeStr': '03:42',
       'harness': 'Claude Code',
@@ -61,7 +61,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6-Astra',
       'effort': 'High',
       'score': 84.25,
-      'costUsd': 0.96,
+      'costUsd': 0.9616,
       'timeSec': 274,
       'timeStr': '04:34',
       'harness': 'Codex CLI',
@@ -77,7 +77,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.1-Sol',
       'effort': 'High',
       'score': 83.86,
-      'costUsd': 0.23,
+      'costUsd': 0.231,
       'timeSec': 259,
       'timeStr': '04:19',
       'harness': 'Codex CLI',
@@ -93,7 +93,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.2-Sol',
       'effort': 'High',
       'score': 83.53,
-      'costUsd': 0.3,
+      'costUsd': 0.308,
       'timeSec': 337,
       'timeStr': '05:37',
       'harness': 'Codex CLI',
@@ -125,7 +125,7 @@ window.AICODINGDAILY = {
       'model': 'Sonnet 5.5',
       'effort': 'High',
       'score': 80.58,
-      'costUsd': 0.34,
+      'costUsd': 0.344,
       'timeSec': 113,
       'timeStr': '01:53',
       'harness': 'Claude Code',
@@ -173,7 +173,7 @@ window.AICODINGDAILY = {
       'model': 'Gemini 4 Hydrogen',
       'effort': 'High',
       'score': 78.01,
-      'costUsd': null,
+      'costUsd': 9,
       'timeSec': 222,
       'timeStr': '03:42',
       'harness': 'Antigravity',
@@ -189,7 +189,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.1-Terra',
       'effort': 'Max',
       'score': 77.67,
-      'costUsd': 0.27,
+      'costUsd': 0.2714,
       'timeSec': 475,
       'timeStr': '07:55',
       'harness': 'Codex CLI',
@@ -237,7 +237,7 @@ window.AICODINGDAILY = {
       'model': 'Haiku 5.5',
       'effort': 'High',
       'score': 76.3,
-      'costUsd': 0.05,
+      'costUsd': 0.051,
       'timeSec': 217,
       'timeStr': '03:37',
       'harness': 'Claude Code',
@@ -285,7 +285,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6-Luna',
       'effort': 'Max',
       'score': 73.06,
-      'costUsd': 0.03,
+      'costUsd': 0.032,
       'timeSec': 663,
       'timeStr': '11:03',
       'harness': 'Codex CLI',
@@ -394,6 +394,22 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 24,
+      'model': 'Inkling 2 Small',
+      'effort': 'Max',
+      'score': 69.77,
+      'costUsd': 0.08,
+      'timeSec': 107,
+      'timeStr': '01:47',
+      'harness': 'OpenCode',
+      'laravel': 17.77,
+      'reactTs': 16.83,
+      'bugFinding': 5.93,
+      'edgeCase': 15.4,
+      'src': 'aggregate',
+      'configs': 2
+    },
+    {
+      'rank': 25,
       'model': 'Tencent Hy4 Flash',
       'effort': 'High',
       'score': 68.81,
@@ -409,7 +425,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 25,
+      'rank': 26,
       'model': 'SWE-2 Flash',
       'effort': 'High',
       'score': 68.62,
@@ -425,7 +441,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 68.37,
@@ -441,7 +457,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 27,
+      'rank': 28,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Xhigh',
       'score': 67.31,
@@ -457,7 +473,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 28,
+      'rank': 29,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'Max',
       'score': 66.9,
@@ -473,7 +489,7 @@ window.AICODINGDAILY = {
       'configs': 2
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'Mistral Large 4',
       'effort': 'High',
       'score': 65.01,
@@ -489,7 +505,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 30,
+      'rank': 31,
       'model': 'Muse Ember 1.0',
       'effort': 'Max',
       'score': 64.52,
@@ -505,7 +521,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 31,
+      'rank': 32,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 64.39,
@@ -521,7 +537,23 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 32,
+      'rank': 33,
+      'model': 'Inkling 2 Mini',
+      'effort': 'Max',
+      'score': 63.14,
+      'costUsd': 0.05,
+      'timeSec': 211,
+      'timeStr': '03:31',
+      'harness': 'OpenCode',
+      'laravel': 17.29,
+      'reactTs': 15.67,
+      'bugFinding': 2.95,
+      'edgeCase': 14.2,
+      'src': 'aggregate',
+      'configs': 2
+    },
+    {
+      'rank': 34,
       'model': 'Tencent Hy4',
       'effort': 'High',
       'score': 62.69,
@@ -537,7 +569,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 33,
+      'rank': 35,
       'model': 'Tencent Hy3',
       'effort': 'High',
       'score': 62.25,
@@ -553,7 +585,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 34,
+      'rank': 36,
       'model': 'Muse Spark 1.3',
       'effort': 'Xhigh',
       'score': 61.69,
@@ -569,7 +601,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 35,
+      'rank': 37,
       'model': 'GLM-5.3-Flash',
       'effort': 'Max',
       'score': 61.46,
@@ -585,7 +617,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 36,
+      'rank': 38,
       'model': 'Qwen 3.8 27B',
       'effort': 'Xhigh',
       'score': 60.71,
@@ -601,7 +633,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 37,
+      'rank': 39,
       'model': 'MAI Code 2 Flash',
       'effort': 'High',
       'score': 52.98,
@@ -617,7 +649,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 38,
+      'rank': 40,
       'model': 'Beam',
       'effort': 'Max',
       'score': 51.94,
@@ -633,7 +665,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 39,
+      'rank': 41,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 45.75,
@@ -649,7 +681,7 @@ window.AICODINGDAILY = {
       'configs': 1
     },
     {
-      'rank': 40,
+      'rank': 42,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 44,
@@ -671,7 +703,7 @@ window.AICODINGDAILY = {
       'model': 'Opus 5.5',
       'effort': 'High',
       'score': 84.95,
-      'costUsd': 0.83,
+      'costUsd': 0.839,
       'timeSec': 222,
       'timeStr': '03:42',
       'harness': 'Claude Code',
@@ -701,7 +733,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6-Astra',
       'effort': 'High',
       'score': 84.25,
-      'costUsd': 0.96,
+      'costUsd': 0.9616,
       'timeSec': 274,
       'timeStr': '04:34',
       'harness': 'Codex CLI',
@@ -716,7 +748,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6-Astra',
       'effort': 'Medium',
       'score': 83.89,
-      'costUsd': 0.69,
+      'costUsd': 0.6916,
       'timeSec': 188,
       'timeStr': '03:08',
       'harness': 'Codex CLI',
@@ -731,7 +763,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.1-Sol',
       'effort': 'High',
       'score': 83.86,
-      'costUsd': 0.23,
+      'costUsd': 0.231,
       'timeSec': 259,
       'timeStr': '04:19',
       'harness': 'Codex CLI',
@@ -746,7 +778,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.2-Sol',
       'effort': 'High',
       'score': 83.53,
-      'costUsd': 0.3,
+      'costUsd': 0.308,
       'timeSec': 337,
       'timeStr': '05:37',
       'harness': 'Codex CLI',
@@ -791,7 +823,7 @@ window.AICODINGDAILY = {
       'model': 'Opus 5.5',
       'effort': 'Medium',
       'score': 83.15,
-      'costUsd': 0.57,
+      'costUsd': 0.576,
       'timeSec': 140,
       'timeStr': '02:20',
       'harness': 'Claude Code',
@@ -806,7 +838,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.2-Sol',
       'effort': 'Medium',
       'score': 83.1,
-      'costUsd': 0.22,
+      'costUsd': 0.226,
       'timeSec': 330,
       'timeStr': '05:30',
       'harness': 'Codex CLI',
@@ -821,7 +853,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.2-Sol',
       'effort': 'Low',
       'score': 83.08,
-      'costUsd': 0.13,
+      'costUsd': 0.134,
       'timeSec': 132,
       'timeStr': '02:12',
       'harness': 'Codex CLI',
@@ -836,7 +868,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.1-Sol',
       'effort': 'Medium',
       'score': 83.04,
-      'costUsd': 0.15,
+      'costUsd': 0.156,
       'timeSec': 144,
       'timeStr': '02:24',
       'harness': 'Codex CLI',
@@ -851,7 +883,7 @@ window.AICODINGDAILY = {
       'model': 'Sonnet 5.5',
       'effort': 'High',
       'score': 80.58,
-      'costUsd': 0.34,
+      'costUsd': 0.344,
       'timeSec': 113,
       'timeStr': '01:53',
       'harness': 'Claude Code',
@@ -878,21 +910,6 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 15,
-      'model': 'Gemini 4 Neon',
-      'effort': 'High',
-      'score': 79.85,
-      'costUsd': null,
-      'timeSec': 445,
-      'timeStr': '07:25',
-      'harness': 'Antigravity',
-      'laravel': 17.8,
-      'reactTs': 17.5,
-      'bugFinding': 10,
-      'edgeCase': 15.8,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 16,
       'model': 'Kimi K3.1 Pro',
       'effort': 'Max',
       'score': 79.85,
@@ -907,11 +924,26 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
+      'rank': 16,
+      'model': 'Gemini 4 Neon',
+      'effort': 'High',
+      'score': 78.87,
+      'costUsd': 21,
+      'timeSec': 445,
+      'timeStr': '07:25',
+      'harness': 'Antigravity',
+      'laravel': 17.8,
+      'reactTs': 17.5,
+      'bugFinding': 9.27,
+      'edgeCase': 15.8,
+      'src': 'aggregate'
+    },
+    {
       'rank': 17,
       'model': 'GPT-6.1-Sol',
       'effort': 'Low',
       'score': 78.8,
-      'costUsd': 0.1,
+      'costUsd': 0.104,
       'timeSec': 81,
       'timeStr': '01:21',
       'harness': 'Codex CLI',
@@ -926,7 +958,7 @@ window.AICODINGDAILY = {
       'model': 'Opus 5.5',
       'effort': 'Low',
       'score': 78.19,
-      'costUsd': 0.37,
+      'costUsd': 0.374,
       'timeSec': 81,
       'timeStr': '01:21',
       'harness': 'Claude Code',
@@ -941,7 +973,7 @@ window.AICODINGDAILY = {
       'model': 'Gemini 4 Hydrogen',
       'effort': 'High',
       'score': 78.01,
-      'costUsd': null,
+      'costUsd': 9,
       'timeSec': 222,
       'timeStr': '03:42',
       'harness': 'Antigravity',
@@ -956,7 +988,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.1-Terra',
       'effort': 'Max',
       'score': 77.67,
-      'costUsd': 0.27,
+      'costUsd': 0.2714,
       'timeSec': 475,
       'timeStr': '07:55',
       'harness': 'Codex CLI',
@@ -986,7 +1018,7 @@ window.AICODINGDAILY = {
       'model': 'Gemini 4 Neon',
       'effort': 'Medium',
       'score': 77.34,
-      'costUsd': null,
+      'costUsd': 11,
       'timeSec': 237,
       'timeStr': '03:57',
       'harness': 'Antigravity',
@@ -1016,7 +1048,7 @@ window.AICODINGDAILY = {
       'model': 'Haiku 5.5',
       'effort': 'High',
       'score': 76.3,
-      'costUsd': 0.05,
+      'costUsd': 0.051,
       'timeSec': 217,
       'timeStr': '03:37',
       'harness': 'Claude Code',
@@ -1031,7 +1063,7 @@ window.AICODINGDAILY = {
       'model': 'Haiku 5.5',
       'effort': 'Medium',
       'score': 75.84,
-      'costUsd': 0.03,
+      'costUsd': 0.031,
       'timeSec': 157,
       'timeStr': '02:37',
       'harness': 'Claude Code',
@@ -1061,7 +1093,7 @@ window.AICODINGDAILY = {
       'model': 'Sonnet 5.5',
       'effort': 'Medium',
       'score': 75.44,
-      'costUsd': 0.2,
+      'costUsd': 0.203,
       'timeSec': 58,
       'timeStr': '00:58',
       'harness': 'Claude Code',
@@ -1106,7 +1138,7 @@ window.AICODINGDAILY = {
       'model': 'Gemini 4 Hydrogen',
       'effort': 'Medium',
       'score': 73.44,
-      'costUsd': null,
+      'costUsd': 4,
       'timeSec': 103,
       'timeStr': '01:43',
       'harness': 'Antigravity',
@@ -1121,7 +1153,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6-Luna',
       'effort': 'Max',
       'score': 73.06,
-      'costUsd': 0.03,
+      'costUsd': 0.032,
       'timeSec': 663,
       'timeStr': '11:03',
       'harness': 'Codex CLI',
@@ -1181,7 +1213,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6.1-Terra',
       'effort': 'Xhigh',
       'score': 71.99,
-      'costUsd': 0.07,
+      'costUsd': 0.075,
       'timeSec': 89,
       'timeStr': '01:29',
       'harness': 'Codex CLI',
@@ -1226,7 +1258,7 @@ window.AICODINGDAILY = {
       'model': 'GPT-6-Luna',
       'effort': 'Xhigh',
       'score': 70.75,
-      'costUsd': 0.03,
+      'costUsd': 0.032,
       'timeSec': 608,
       'timeStr': '10:08',
       'harness': 'Codex CLI',
@@ -1268,10 +1300,25 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 41,
+      'model': 'Inkling 2 Small',
+      'effort': 'Max',
+      'score': 69.77,
+      'costUsd': 0.08,
+      'timeSec': 107,
+      'timeStr': '01:47',
+      'harness': 'OpenCode',
+      'laravel': 17.77,
+      'reactTs': 16.83,
+      'bugFinding': 5.93,
+      'edgeCase': 15.4,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 42,
       'model': 'GPT-6.1-Terra',
       'effort': 'High',
       'score': 69.31,
-      'costUsd': 0.05,
+      'costUsd': 0.052,
       'timeSec': 46,
       'timeStr': '00:46',
       'harness': 'Codex CLI',
@@ -1282,7 +1329,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 42,
+      'rank': 43,
       'model': 'Tencent Hy4 Flash',
       'effort': 'High',
       'score': 68.81,
@@ -1297,7 +1344,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 43,
+      'rank': 44,
       'model': 'SWE-2 Flash',
       'effort': 'High',
       'score': 68.62,
@@ -1312,7 +1359,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 44,
+      'rank': 45,
       'model': 'MiMo-V2.6 Pro',
       'effort': 'High',
       'score': 68.37,
@@ -1327,11 +1374,11 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 45,
+      'rank': 46,
       'model': 'GPT-6.1-Terra',
       'effort': 'Medium',
       'score': 68.22,
-      'costUsd': 0.04,
+      'costUsd': 0.042,
       'timeSec': 31,
       'timeStr': '00:31',
       'harness': 'Codex CLI',
@@ -1342,11 +1389,11 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 46,
+      'rank': 47,
       'model': 'GPT-6-Luna',
       'effort': 'High',
       'score': 67.33,
-      'costUsd': 0.01,
+      'costUsd': 0.011,
       'timeSec': 231,
       'timeStr': '03:51',
       'harness': 'Codex CLI',
@@ -1357,7 +1404,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 47,
+      'rank': 48,
       'model': 'Qwen 3.8 Flash',
       'effort': 'Xhigh',
       'score': 67.31,
@@ -1372,7 +1419,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 48,
+      'rank': 49,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'Max',
       'score': 66.9,
@@ -1387,7 +1434,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 49,
+      'rank': 50,
       'model': 'Deepseek-V4-Pro-0813',
       'effort': 'High',
       'score': 65.07,
@@ -1402,7 +1449,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'Mistral Large 4',
       'effort': 'High',
       'score': 65.01,
@@ -1417,7 +1464,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 51,
+      'rank': 52,
       'model': 'Muse Ember 1.0',
       'effort': 'Max',
       'score': 64.52,
@@ -1432,7 +1479,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'MiMo-V2.6 Flash',
       'effort': 'High',
       'score': 64.39,
@@ -1447,7 +1494,22 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 53,
+      'rank': 54,
+      'model': 'Inkling 2 Mini',
+      'effort': 'Max',
+      'score': 63.14,
+      'costUsd': 0.05,
+      'timeSec': 211,
+      'timeStr': '03:31',
+      'harness': 'OpenCode',
+      'laravel': 17.29,
+      'reactTs': 15.67,
+      'bugFinding': 2.95,
+      'edgeCase': 14.2,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 55,
       'model': 'Tencent Hy4',
       'effort': 'High',
       'score': 62.69,
@@ -1462,7 +1524,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 54,
+      'rank': 56,
       'model': 'Tencent Hy3',
       'effort': 'High',
       'score': 62.25,
@@ -1477,7 +1539,22 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 55,
+      'rank': 57,
+      'model': 'Inkling 2 Small',
+      'effort': 'Medium',
+      'score': 61.77,
+      'costUsd': 0.04,
+      'timeSec': 43,
+      'timeStr': '00:43',
+      'harness': 'OpenCode',
+      'laravel': 17.43,
+      'reactTs': 13.5,
+      'bugFinding': 4.15,
+      'edgeCase': 13.4,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 58,
       'model': 'Muse Spark 1.3',
       'effort': 'Xhigh',
       'score': 61.69,
@@ -1492,7 +1569,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 56,
+      'rank': 59,
       'model': 'GLM-5.3-Flash',
       'effort': 'Max',
       'score': 61.46,
@@ -1507,7 +1584,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 57,
+      'rank': 60,
       'model': 'Qwen 3.8 27B',
       'effort': 'Xhigh',
       'score': 60.71,
@@ -1522,11 +1599,11 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 58,
+      'rank': 61,
       'model': 'GPT-6-Luna',
       'effort': 'Medium',
       'score': 56.7,
-      'costUsd': 0.01,
+      'costUsd': 0.011,
       'timeSec': 133,
       'timeStr': '02:13',
       'harness': 'Codex CLI',
@@ -1537,7 +1614,22 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 59,
+      'rank': 62,
+      'model': 'Inkling 2 Mini',
+      'effort': 'Medium',
+      'score': 55.08,
+      'costUsd': 0.03,
+      'timeSec': 298,
+      'timeStr': '04:58',
+      'harness': 'OpenCode',
+      'laravel': 16.66,
+      'reactTs': 14.67,
+      'bugFinding': 3.13,
+      'edgeCase': 14.93,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 63,
       'model': 'MAI Code 2 Flash',
       'effort': 'High',
       'score': 52.98,
@@ -1552,7 +1644,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 60,
+      'rank': 64,
       'model': 'Beam',
       'effort': 'Max',
       'score': 51.94,
@@ -1567,7 +1659,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 61,
+      'rank': 65,
       'model': 'Composer 2.5',
       'effort': null,
       'score': 45.75,
@@ -1582,7 +1674,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 62,
+      'rank': 66,
       'model': 'Nemotron 3.5 Super VL',
       'effort': 'High',
       'score': 44,
