@@ -2543,12 +2543,53 @@
     });
     return { counts: counts, names: names };
   }
+  // 热门平台/品牌置顶:名称归一(去空白与分隔符)后按关键词组匹配,组序即热门优先级;
+  // 未命中的仍按套餐数从多到少。平台名带套餐后缀(阿里·百炼 Token Plan 等),按关键词归组。
+  var QC_HOT_PLATFORMS = [
+    ["claude"],
+    ["codex", "chatgpt", "openai"],
+    ["gemini", "google"],
+    ["cursor"],
+    ["deepseek"],
+    ["kimi"],
+    ["智谱", "glm", "zhipu"],
+    ["minimax"],
+    ["百炼", "bailian"],
+    ["方舟", "火山", "bytedance", "volcengine"],
+    ["mimo", "小米", "xiaomi"],
+    ["opencode"]
+  ];
+  var QC_HOT_BRANDS = [
+    ["claude"],
+    ["chatgpt"],
+    ["gemini"],
+    ["deepseek"],
+    ["kimi"],
+    ["智谱", "glm", "zhipu"],
+    ["minimax"],
+    ["通义千问", "qwen"],
+    ["mimo", "小米", "xiaomi"],
+    ["grok"]
+  ];
+  function qcHotKey(name) {
+    return String(name || "").toLowerCase().replace(/[\s·\-_.()（）]/g, "");
+  }
+  function qcHotRank(name, table) {
+    var k = qcHotKey(name);
+    for (var i = 0; i < table.length; i++) {
+      for (var j = 0; j < table[i].length; j++) {
+        if (k.indexOf(table[i][j]) >= 0) return i;
+      }
+    }
+    return table.length;
+  }
   function qcPlatformChips(plans) {
     var pc = qcPlatformCounts(plans);
     state.plansPlatforms = (state.plansPlatforms || []).filter(function (k) { return pc.counts[k]; });
     var sel = state.plansPlatforms;
     var keys = Object.keys(pc.counts).sort(function (a, b) {
-      return pc.counts[b] - pc.counts[a] || String(pc.names[a]).localeCompare(String(pc.names[b]), "zh-CN");
+      return qcHotRank(pc.names[a], QC_HOT_PLATFORMS) - qcHotRank(pc.names[b], QC_HOT_PLATFORMS) ||
+        pc.counts[b] - pc.counts[a] || String(pc.names[a]).localeCompare(String(pc.names[b]), "zh-CN");
     });
     var shown = state.plansPlatformsExpanded ? keys : keys.slice(0, 12);
     var chips = '<button type="button" class="qc-chip' + (sel.length ? "" : " is-on") +
@@ -2921,7 +2962,8 @@
     });
     if (state.plansBrand !== "all" && !brandCounts[state.plansBrand]) state.plansBrand = "all";
     var brands = Object.keys(brandCounts).sort(function (a, b) {
-      return brandCounts[b] - brandCounts[a] || String(a).localeCompare(String(b), "zh-CN");
+      return qcHotRank(a, QC_HOT_BRANDS) - qcHotRank(b, QC_HOT_BRANDS) ||
+        brandCounts[b] - brandCounts[a] || String(a).localeCompare(String(b), "zh-CN");
     });
     if (state.plansBrand !== "all" && !brandCounts[state.plansBrand]) {
       state.plansBrand = "all";
