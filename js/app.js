@@ -1916,7 +1916,7 @@
   var ALE_VER_META = [
     { ver: "1.1", label: "1.1 主榜", srcKey: "lastexam",
       url: "https://agents-last-exam.org/leaderboard",
-      note: "122 个公开任务(55 细分行业 / 13 行业组);官方 API T1 + datalearner v1.1 T2 + llm-stats T3 补缺;每模型取最高分配置;平均得分为 0-100 平均分,完美通过率为整任务全部检查通过的运行占比(datalearner 行仅公布平均得分);Fable 5.2 为 113 题(剔除 9 道降级题),其余 122 题;官方 slug qwen-4 按 Qwen4 单列,与 datalearner 的 Qwen4-Max 不合并(未确认同一模型)" },
+      note: "122 个公开任务(55 细分行业 / 13 行业组);官方 API T1 + datalearner v1.1 T2 + llm-stats T3 补缺;每模型取最高分配置;平均得分为 0-100 平均分,完美通过率为整任务全部检查通过的运行占比(datalearner 行仅公布平均得分);Fable 5.2 为 113 题(剔除 9 道降级题),其余 122 题;官方 slug qwen-4 与 datalearner 的 Qwen4-Max 为同一模型(通过率 46.7 / 平均分 74.4 一致),已并为一行" },
     { ver: "1.0", label: "1.0 历史", srcKey: "lastexamV10",
       url: "https://www.datalearner.com/benchmarks/agents-last-exam",
       note: "152 个任务历史榜(厂商官方发布口径);与 v1.1 任务集不同,分数不可直接比较;datalearner 行仅公布平均得分" }

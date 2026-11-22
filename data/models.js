@@ -257,12 +257,13 @@ window.MODEL_MAP = {
     // ModelDial 的 model_id 是裸 slug(如 gemini-4-hydrogen),亿模亿样同模型写法可能带 4.0 或 :free 后缀;
     // 两者都登记为别名,避免刷新后被自动建档成「其他」而与其它榜拆成两条。
     { id: "Gemini 4 Hydrogen", vendor: "Google", color: "#86B6F6", aliases: ["Gemini 4 Hydrogen", "gemini-4-hydrogen", "Gemini-4-Hydrogen", "gemini 4 hydrogen"] },
-    // Agents' Last Exam 官方榜使用 qwen-4 这个 slug,与 Qwen4-Max 分开建档;
-    // 若后续确认二者同一模型,再把 qwen-4 并回 Qwen4-Max 的别名即可。
+    // Agents' Last Exam 官方榜的 qwen-4 slug 已确认即 Qwen4-Max:2026-11-16 批次 datalearner
+    // 把它明确标注为 Qwen4-Max,且 122 题通过率 46.7 / 平均分 74.4 与官方 API 完全一致。
+    // 故 qwen-4 并回 Qwen4-Max 别名,不再按独立模型建档;裸名 Qwen4 仅保留无分隔符写法。
     // 注意顺序:Qwen4-Max 的 normLight("Qwen4-Max") 也是 "qwen4",故 Qwen4 必须排在其后,
     // 否则 Qwen4 的宽松键会被 Qwen4-Max 覆盖("qwen4-max" 精确键不受影响)。
-    { id: "Qwen4-Max",        vendor: "Alibaba",  color: "#FF8A2B", aliases: ["Qwen4-Max", "Qwen-4-Max", "Qwen4 Max", "qwen4-max"] },
-    { id: "Qwen4",            vendor: "Alibaba",  color: "#FF9D4D", aliases: ["Qwen4", "Qwen-4", "qwen-4", "Qwen 4", "qwen 4"] },
+    { id: "Qwen4-Max",        vendor: "Alibaba",  color: "#FF8A2B", aliases: ["Qwen4-Max", "Qwen-4-Max", "Qwen4 Max", "qwen4-max", "Qwen-4", "qwen-4"] },
+    { id: "Qwen4",            vendor: "Alibaba",  color: "#FF9D4D", aliases: ["Qwen4"] },
     { id: "Qwen4-Max-Preview", vendor: "Alibaba", color: "#FFA45C", aliases: ["Qwen4-Max-Preview", "Qwen-4-Max-Preview", "Qwen4 Max Preview", "qwen4-max-preview", "Qwen4.0-Max-Preview", "Qwen4.0 Max Preview", "qwen4.0-max-preview"] },
     { id: "Tencent Hy4 Flash", vendor: "Tencent", color: "#36D3F0", aliases: ["Tencent Hy4 Flash", "Tencent HY4-flash", "HY4-flash", "hy4-flash", "hy4-flash-dev", "Hy4 Flash", "Hunyuan Hy4 Flash", "hunyuan-hy4-flash", "混元4 Flash", "混元4-flash", "混元 4 Flash", "混元4"] },
     { id: "ERNIE 5.5 Flash Preview", vendor: "Baidu", color: "#5B6CF0", aliases: ["ERNIE 5.5 Flash Preview", "ERNIE-5.5-Flash-Preview", "ERNIE-5.5-Flash-Preview (high)", "ernie-5.5-flash-preview", "ernie-5.5-flash-preview:free"] },

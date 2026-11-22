@@ -69,10 +69,13 @@
     return norm(stripTailEffort(stripParen(s)));
   }
   // 匹配候选键:同一原始名的多种写法策略取并集,任一命中别名索引即视为同一模型。
-  // 依次为:原样归一 / 去括号+去尾部 effort / 仅去括号 / 去括号后再去尾部 effort。
+  // 依次为:原样归一 / 仅去括号 / 去括号后再去尾部 effort。
+  // 去括号后的名字(如 "Qwen4-Max (xHigh)" → "qwen4-max")比剥掉尾部 Max 的宽松键("qwen4")
+  // 更贴近模型身份,必须先于 effort 剥离匹配:否则带括号 effort 的 Qwen4-Max 行会被抢先归到
+  // 单独建档的 Qwen4,webdev / Agent Arena / llm2014 三榜数据在总览被拆散。
   function keyCandidates(raw) {
     var base = stripParen(raw);
-    return [norm(raw), normLight(raw), norm(base), norm(stripTailEffort(base))];
+    return [norm(raw), norm(base), norm(stripTailEffort(base))];
   }
 
   // 构建别名索引:先手工 models.js,再自动 models-auto.js;

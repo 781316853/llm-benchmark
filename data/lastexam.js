@@ -1,10 +1,10 @@
-// 数据源:Agents' Last Exam v1.1(UC Berkeley RDI 真实专业工作流评测,更新于 2026-11-21)
+// 数据源:Agents' Last Exam v1.1(UC Berkeley RDI 真实专业工作流评测,更新于 2026-11-22)
 // 主渠道:https://agents-last-exam.org/api/demo/leaderboard/v1.1(官方 API,T1;榜单页:https://agents-last-exam.org/leaderboard)
 // 补充:https://www.datalearner.com/benchmarks/agents-last-exam-v1-1(厂商官方发布 T2,只补缺)
 // 补充:https://llm-stats.com/benchmarks/agents-last-exam(llm-stats 聚合 T3,只补缺)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 口径:v1.1 为 122 个公开任务、55 细分行业 / 13 行业组;平均得分(0-100)与完美通过率分别记录,越高越好。
-// 注:官方 slug qwen-4 按 Qwen4 单列,与 datalearner 的 Qwen4-Max 不合并(未确认同一模型)。
+// 注:官方 slug qwen-4 即 Qwen4-Max(datalearner 同名同分:通过率 46.7 / 平均分 74.4),已并回同一 canonical。
 // 字段:model=模型名;score=得分(%);pass=完美通过率(%);harness=官方榜所用 agent harness;effort=推理档位;
 //      tasks=该条运行的任务数(Fable 5.2 为 113,其余 122);costUsd=每任务平均成本(USD);src=数据来源渠道
 // 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数;v1.0 历史榜见 data/lastexam_v10.js。
@@ -13,11 +13,11 @@ window.LASTEXAM = {
   'url': 'https://agents-last-exam.org/leaderboard',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'version': 'v1.1',
-  'updated': '2026-11-21',
-  'refreshedAt': '2026-11-22 03:36',
+  'updated': '2026-11-22',
+  'refreshedAt': '2026-11-22 14:56',
   'stats': {
     'tasks': 122,
-    'entries': 40,
+    'entries': 39,
     'channels': {
       'official': 19,
       'datalearner': 21,
@@ -94,7 +94,7 @@ window.LASTEXAM = {
       'version': 'v1.1'
     },
     {
-      'model': 'Qwen4',
+      'model': 'Qwen4-Max',
       'org': 'Alibaba',
       'score': 74.4,
       'pass': 46.7,
@@ -102,8 +102,12 @@ window.LASTEXAM = {
       'effort': 'xhigh',
       'tasks': 122,
       'costUsd': 9.85,
-      'date': null,
+      'date': '2026-11-16',
       'src': 'official',
+      'size': '24000.000',
+      'license': '不开源',
+      'context': '984K',
+      'cost': '$ 1.50 / $ 4.50',
       'rank': 5,
       'version': 'v1.1'
     },
@@ -425,22 +429,6 @@ window.LASTEXAM = {
       'version': 'v1.1'
     },
     {
-      'model': 'Qwen4-Max',
-      'org': 'Alibaba',
-      'score': 46.7,
-      'pass': null,
-      'harness': null,
-      'effort': '最高（工具）',
-      'size': '24000.000',
-      'license': '不开源',
-      'date': '2026-11-16',
-      'src': 'datalearner',
-      'context': '984K',
-      'cost': '$ 1.50 / $ 4.50',
-      'rank': 26,
-      'version': 'v1.1'
-    },
-    {
       'model': 'Qwen3.8-27B',
       'org': 'Alibaba Cloud / Qwen Team',
       'score': 42.9,
@@ -450,7 +438,7 @@ window.LASTEXAM = {
       'cost': '$ 0.40 / $ 3.00',
       'license': null,
       'src': 'llm-stats',
-      'rank': 27,
+      'rank': 26,
       'version': 'v1.1'
     },
     {
@@ -463,7 +451,7 @@ window.LASTEXAM = {
       'cost': '—',
       'license': null,
       'src': 'llm-stats',
-      'rank': 28,
+      'rank': 27,
       'version': 'v1.1'
     },
     {
@@ -476,7 +464,7 @@ window.LASTEXAM = {
       'cost': '$ 0.22 / $ 0.66',
       'license': null,
       'src': 'llm-stats',
-      'rank': 29,
+      'rank': 28,
       'version': 'v1.1'
     },
     {
@@ -489,7 +477,7 @@ window.LASTEXAM = {
       'cost': '$ 0.43 / $ 0.87',
       'license': null,
       'src': 'llm-stats',
-      'rank': 30,
+      'rank': 29,
       'version': 'v1.1'
     },
     {
@@ -505,7 +493,7 @@ window.LASTEXAM = {
       'src': 'datalearner',
       'context': '1.0M',
       'cost': '$ 0.28 / $ 1.13',
-      'rank': 31,
+      'rank': 30,
       'version': 'v1.1'
     },
     {
@@ -521,7 +509,7 @@ window.LASTEXAM = {
       'src': 'datalearner',
       'context': '1.0M',
       'cost': '$ 1.65 / $ 4.95',
-      'rank': 32,
+      'rank': 31,
       'version': 'v1.1'
     },
     {
@@ -534,7 +522,7 @@ window.LASTEXAM = {
       'cost': '$ 0.14 / $ 0.28',
       'license': null,
       'src': 'llm-stats',
-      'rank': 33,
+      'rank': 32,
       'version': 'v1.1'
     },
     {
@@ -547,7 +535,7 @@ window.LASTEXAM = {
       'cost': '$ 0.44 / $ 1.32',
       'license': null,
       'src': 'llm-stats',
-      'rank': 34,
+      'rank': 33,
       'version': 'v1.1'
     },
     {
@@ -565,7 +553,7 @@ window.LASTEXAM = {
       'size': '—',
       'context': '1.1M',
       'cost': '$ 0.20 / $ 1.20',
-      'rank': 35,
+      'rank': 34,
       'version': 'v1.1'
     },
     {
@@ -578,7 +566,7 @@ window.LASTEXAM = {
       'cost': '$ 0.75 / $ 3.75',
       'license': null,
       'src': 'llm-stats',
-      'rank': 36,
+      'rank': 35,
       'version': 'v1.1'
     },
     {
@@ -591,7 +579,7 @@ window.LASTEXAM = {
       'cost': '$ 0.15 / $ 0.50',
       'license': null,
       'src': 'llm-stats',
-      'rank': 37,
+      'rank': 36,
       'version': 'v1.1'
     },
     {
@@ -604,7 +592,7 @@ window.LASTEXAM = {
       'cost': '$ 1.30 / $ 2.60',
       'license': null,
       'src': 'llm-stats',
-      'rank': 38,
+      'rank': 37,
       'version': 'v1.1'
     },
     {
@@ -617,7 +605,7 @@ window.LASTEXAM = {
       'cost': '$ 0.06 / $ 0.18',
       'license': null,
       'src': 'llm-stats',
-      'rank': 39,
+      'rank': 38,
       'version': 'v1.1'
     },
     {
@@ -630,7 +618,7 @@ window.LASTEXAM = {
       'cost': '—',
       'license': null,
       'src': 'llm-stats',
-      'rank': 40,
+      'rank': 39,
       'version': 'v1.1'
     }
   ]

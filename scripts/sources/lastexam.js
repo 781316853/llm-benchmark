@@ -185,7 +185,7 @@ class LastExamV11Source extends BaseSource {
       "// 补充:" + cfg.url + "(llm-stats 聚合 T3,只补缺)\n" +
       "// " + CONFIG.channelPolicy + "\n" +
       "// 口径:v1.1 为 122 个公开任务、55 细分行业 / 13 行业组;平均得分(0-100)与完美通过率分别记录,越高越好。\n" +
-      "// 注:官方 slug qwen-4 按 Qwen4 单列,与 datalearner 的 Qwen4-Max 不合并(未确认同一模型)。\n" +
+      "// 注:官方 slug qwen-4 即 Qwen4-Max(datalearner 同名同分:通过率 46.7 / 平均分 74.4),已并回同一 canonical。\n" +
       "// 字段:model=模型名;score=得分(%);pass=完美通过率(%);harness=官方榜所用 agent harness;effort=推理档位;\n" +
       "//      tasks=该条运行的任务数(Fable 5.2 为 113,其余 122);costUsd=每任务平均成本(USD);src=数据来源渠道\n" +
       "// 用途:「权威基准测试」页展示,仅参考,不计入综合分/命中数;v1.0 历史榜见 data/lastexam_v10.js。\n",
