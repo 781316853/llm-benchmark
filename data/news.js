@@ -2,7 +2,7 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-22',
+  'updated': '2026-11-23',
   'retentionDays': 2,
   'types': [
     '要闻',
@@ -14,6 +14,62 @@ window.NEWS = {
     '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-23',
+      'title': 'OpenAI 公开内部指标 Perplexity，提议设共同开发限制',
+      'brief': 'OpenAI 首席科学家 Jakub Pachocki 发文《Perplexity and Intelligence》，首次公开 OpenAI 过去五年的内部预训练评测指标 Perplexity ，并提议行业建立统一发展限制标准。',
+      'url': 'https://openai.com/index/perplexity-and-intelligence',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-23',
+      'title': '蚂蚁集团开源医疗模型 LingSante 3.1 Flash 与 air-VL',
+      'brief': '蚂蚁集团 百灵大模型发布两款医疗模型 LingSante-3.1-flash 和 LingSante-3.1-air-VL 。',
+      'url': 'https://huggingface.co/inclusionAI/LingSante-3.1-flash',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-23',
+      'title': '马斯克披露 Tesla Reality View 技术细节',
+      'brief': '马斯克 回复 FSD v15 体验帖，披露了 Tesla Reality View 技术细节。他称特斯拉自去年已有接近像素级的 world model ，车端部署的大幅缩小版是基于 Tesla Universal Vision Encoder 特征的 conditional mean-flow model 。',
+      'url': 'https://x.com/elonmusk/status/2124458557525397780',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-23',
+      'title': 'Elon Musk 预警 AI 行业明年严重资金短缺',
+      'brief': 'Elon Musk 在 X 上回复 Keras 创始人 François Chollet 时表示，让如此规模的算力设备通电、冷却并稳定运行极其困难。',
+      'url': 'https://x.com/elonmusk/status/2124271725927903388',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-23',
+      'title': 'OpenRouter 终止 3 家供应商合作，移除 125 个端点的 ZDR 资格',
+      'brief': 'OpenRouter 发布公告称，安全研究人员发现其平台上部分推理供应商存在数据处理问题，公司调查未发现自身遭入侵或数据泄露。该公司已终止与 3 家供应商的合作，将 125 个端点移出 Zero Data Retention（ZDR） 资格，并通知可能受影响的客户； ZDR 要求供应商不存储提示词和响应。',
+      'url': 'https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-23',
+      'title': '甲骨文称与 OpenAI 基础设施合同已获全额资金支持',
+      'brief': '甲骨文表示，随着本月初完成一轮 200 亿美元 融资，其与 OpenAI 的基础设施合同已获得全部所需资金。',
+      'url': 'https://www.oracle.com/news/announcement/oracle-statement-2026-11-20/',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
+    {
+      'date': '2026-11-23',
+      'title': 'OpenAI 团队：ChatGPT/Codex 桌面应用又将迎来重大更新',
+      'brief': 'OpenAI 负责 ChatGPT 与 Codex 的团队成员 Tibo 发帖称， ChatGPT 与 Codex 桌面应用团队已在准备又一次重大更新，并询问用户更新后还有哪些不足。',
+      'url': 'https://x.com/thsottiaux/status/2124322968499282388',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-11-22',
       'title': 'Antigravity 重置全部用户的 Gemini 配额',
@@ -109,70 +165,6 @@ window.NEWS = {
       'url': 'https://mp.weixin.qq.com/s/LHZxKjzVkEpnsCDcNlaMXw',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-21',
-      'title': '数学家称与 Claude 合作证明黎曼猜想',
-      'brief': '数学家 Levent Alpöge 在个人网站发布说明，称与 Claude 模型合作发现了数论经典难题黎曼猜想的证明，并称方法可推广至广义黎曼猜想。',
-      'url': 'https://alpo.ge/remark.pdf',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-21',
-      'title': 'Thinking Machines 发布并开源 Inkling 2 Mini',
-      'brief': 'Thinking Machines 发布开源模型 Inkling 2 Mini ，总参数 26.4B 、激活参数 3.4B ，采用 looped transformer 架构，中段 12 层 对每个 token 跑三遍，以 Apache 2.0 许可开放权重。官方称其 DeepSWE v1.1 得分 48.2% ，领先所有总参数低于 100B 的开源权重模型， AA Index 得分 20.1 。该模型内存占用约 20GB ，可经 Ol…',
-      'url': 'https://thinkingmachines.ai/news/inkling-2-mini/',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-21',
-      'title': 'Antigravity 扩大 cache pool，完成后重置配额',
-      'brief': 'Antigravity 负责人 Varun Mohan 表示， Antigravity 正在大幅扩大 cache pool ，以提高 Neon 的缓存命中率。',
-      'url': 'https://x.com/_mohansolo/status/2123848516581892181',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-21',
-      'title': 'OpenAI 向 Plus 用户开放 Space 协作空间',
-      'brief': 'OpenAI 宣布向 ChatGPT Plus 用户开放 Space 协作空间。 Plus 用户每月支付 20 美元 即可创建空间，邀请他人共同编辑，与 ChatGPT 一起创建交互式页面、幻灯片和网站。',
-      'url': 'https://x.com/ChatGPT/status/2123850912867471807',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-21',
-      'title': '腾讯混元开源旗舰模型 Hy4：总参数 770B',
-      'brief': '腾讯混元 宣布开放旗舰模型 Hy4 的权重。模型采用原生多模态 MoE 架构，语言模型主干总参数量 770B 、每个 token 激活 49B ，支持 1M 上下文，可理解文本、图像和视频。',
-      'url': 'https://mp.weixin.qq.com/s/M0TIIvCzizkLw7_A3MCSjA',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-21',
-      'title': '微信开源全模态模型系列WeMM-Video',
-      'brief': '腾讯 以 Apache 2.0 协议在 GitHub 和 Hugging Face 开源中英双语全模态模型系列 WeMM-Video 。',
-      'url': 'https://github.com/Tencent/WeMM-Video',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-21',
-      'title': 'Codex 更新对话线程，改善切换与加载体验',
-      'brief': 'Codex 更新了对话线程，改善状态切换和对话加载体验。',
-      'url': 'https://x.com/matteing/status/2123884630654996756',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-21',
-      'title': 'OpenAI 上线 CarPlay Dot 通话功能',
-      'brief': 'OpenAI 开发者体验负责人 Romain Huet 在 X 上发文称，用户现在可以通过 Apple CarPlay 呼叫自己的 Dot，开车途中靠说话就能把事情办完。',
-      'url': 'https://x.com/romainhuet/status/2123924316110966824',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
     }
   ]
 };
