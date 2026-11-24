@@ -1,4 +1,4 @@
-// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-22)
+// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-23)
 // 来源:https://aicodingdaily.com/leaderboard(方法论:https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas)
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
@@ -15,9 +15,9 @@ window.AICODINGDAILY = {
     'bugFinding': 10,
     'edgeCase': 20
   },
-  'updated': '2026-11-22',
+  'updated': '2026-11-23',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-23 15:57',
+  'refreshedAt': '2026-11-24 08:09',
   'stats': {
     'entries': 66,
     'models': 42
@@ -58,6 +58,22 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 3,
+      'model': 'GPT-6.2-Astra',
+      'effort': 'High',
+      'score': 84.48,
+      'costUsd': 0.72,
+      'timeSec': 340,
+      'timeStr': '05:40',
+      'harness': 'Codex CLI',
+      'laravel': 18.73,
+      'reactTs': 19.83,
+      'bugFinding': 8.15,
+      'edgeCase': 17.77,
+      'src': 'aggregate',
+      'configs': 2
+    },
+    {
+      'rank': 4,
       'model': 'GPT-6-Astra',
       'effort': 'High',
       'score': 84.25,
@@ -73,7 +89,7 @@ window.AICODINGDAILY = {
       'configs': 2
     },
     {
-      'rank': 4,
+      'rank': 5,
       'model': 'GPT-6.1-Sol',
       'effort': 'High',
       'score': 83.86,
@@ -89,7 +105,7 @@ window.AICODINGDAILY = {
       'configs': 3
     },
     {
-      'rank': 5,
+      'rank': 6,
       'model': 'GPT-6.2-Sol',
       'effort': 'High',
       'score': 83.53,
@@ -103,22 +119,6 @@ window.AICODINGDAILY = {
       'edgeCase': 17.27,
       'src': 'aggregate',
       'configs': 3
-    },
-    {
-      'rank': 6,
-      'model': 'GPT-6.2-Astra',
-      'effort': 'High',
-      'score': 83.48,
-      'costUsd': 0.72,
-      'timeSec': 340,
-      'timeStr': '05:40',
-      'harness': 'Codex CLI',
-      'laravel': 18.73,
-      'reactTs': 19.83,
-      'bugFinding': 7.15,
-      'edgeCase': 17.77,
-      'src': 'aggregate',
-      'configs': 2
     },
     {
       'rank': 7,
@@ -730,6 +730,21 @@ window.AICODINGDAILY = {
     },
     {
       'rank': 3,
+      'model': 'GPT-6.2-Astra',
+      'effort': 'High',
+      'score': 84.48,
+      'costUsd': 0.72,
+      'timeSec': 340,
+      'timeStr': '05:40',
+      'harness': 'Codex CLI',
+      'laravel': 18.73,
+      'reactTs': 19.83,
+      'bugFinding': 8.15,
+      'edgeCase': 17.77,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 4,
       'model': 'GPT-6-Astra',
       'effort': 'High',
       'score': 84.25,
@@ -744,7 +759,22 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 4,
+      'rank': 5,
+      'model': 'GPT-6.2-Astra',
+      'effort': 'Medium',
+      'score': 84.06,
+      'costUsd': 0.48,
+      'timeSec': 140,
+      'timeStr': '02:20',
+      'harness': 'Codex CLI',
+      'laravel': 18.42,
+      'reactTs': 19.17,
+      'bugFinding': 8.24,
+      'edgeCase': 18.23,
+      'src': 'aggregate'
+    },
+    {
+      'rank': 6,
       'model': 'GPT-6-Astra',
       'effort': 'Medium',
       'score': 83.89,
@@ -759,7 +789,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 5,
+      'rank': 7,
       'model': 'GPT-6.1-Sol',
       'effort': 'High',
       'score': 83.86,
@@ -774,7 +804,7 @@ window.AICODINGDAILY = {
       'src': 'aggregate'
     },
     {
-      'rank': 6,
+      'rank': 8,
       'model': 'GPT-6.2-Sol',
       'effort': 'High',
       'score': 83.53,
@@ -786,36 +816,6 @@ window.AICODINGDAILY = {
       'reactTs': 19.17,
       'bugFinding': 8.92,
       'edgeCase': 17.27,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 7,
-      'model': 'GPT-6.2-Astra',
-      'effort': 'High',
-      'score': 83.48,
-      'costUsd': 0.72,
-      'timeSec': 340,
-      'timeStr': '05:40',
-      'harness': 'Codex CLI',
-      'laravel': 18.73,
-      'reactTs': 19.83,
-      'bugFinding': 7.15,
-      'edgeCase': 17.77,
-      'src': 'aggregate'
-    },
-    {
-      'rank': 8,
-      'model': 'GPT-6.2-Astra',
-      'effort': 'Medium',
-      'score': 83.39,
-      'costUsd': 0.48,
-      'timeSec': 140,
-      'timeStr': '02:20',
-      'harness': 'Codex CLI',
-      'laravel': 18.42,
-      'reactTs': 19.17,
-      'bugFinding': 7.57,
-      'edgeCase': 18.23,
       'src': 'aggregate'
     },
     {
