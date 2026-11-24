@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write          # 允许把刷新后的 data/*.js 提交回仓库
+  actions: read            # 允许 deploy-pages 读取构建产物元数据
   pages: write             # 允许部署到 GitHub Pages
   id-token: write          # Pages 部署所需的 OIDC 令牌
   models: read             # 允许用 GITHUB_TOKEN 调 GitHub Models 批量翻译月度新增功能
@@ -73,19 +74,13 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-  # 部署阶段:重新拉取最新代码后部署,确保线上与提交一致
-  # needs refresh 但允许 refresh 被跳过(push 事件时直接部署)
-  deploy:
+  # 构建阶段:独立 job 上传 Pages 产物。artifact 在 job 结束后才稳定可读;
+  # 若与 deploy 同 job,deploy-pages 会报找不到 github-pages。
+  build:
     if: always()
     needs: refresh
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # deploy 不进任何 concurrency 组:GitHub Pages 的 environment=github-pages
-    # 本身就保证同一环境同时只有一个部署,无需额外的 workflow 级锁。
-    # 这样即便 refresh 的 job 卡死,部署也不会被它连带阻塞。
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -100,6 +95,18 @@ jobs:
         with:
           path: "."
 
+  # 部署阶段:只取 build 产物部署,确保 artifact 已完成上传
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # deploy 不进任何 concurrency 组:GitHub Pages 的 environment=github-pages
+    # 本身就保证同一环境同时只有一个部署,无需额外的 workflow 级锁。
+    # 这样即便 refresh 的 job 卡死,部署也不会被它连带阻塞。
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
