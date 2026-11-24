@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-24',
-  'refreshedAt': '2026-11-24 08:09',
+  'refreshedAt': '2026-11-24 18:11',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -33,8 +33,8 @@ window.PRICING = {
     'models': 117,
     'unresolved': 16,
     'ranked': 78,
-    'supplemented': 4,
-    'carriedOver': 0,
+    'supplemented': 3,
+    'carriedOver': 1,
     'seeded': 0,
     'missingRanked': 5
   },

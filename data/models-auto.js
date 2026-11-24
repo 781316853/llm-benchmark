@@ -4,9 +4,9 @@
 window.MODEL_MAP_AUTO = {
   'updated': '2026-11-24',
   'stats': {
-    'total': 201,
+    'total': 202,
     'knownVendor': 200,
-    'otherVendor': 1,
+    'otherVendor': 2,
     'skippedManual': 1599,
     'skippedNonModel': 5
   },
@@ -799,6 +799,16 @@ window.MODEL_MAP_AUTO = {
       'color': '#E0855F',
       'aliases': [
         'Haiku 4.5'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'HungerG',
+      'vendor': '其他',
+      'color': '#9298A1',
+      'aliases': [
+        'HungerG',
+        'hmodel'
       ],
       'auto': true
     },
