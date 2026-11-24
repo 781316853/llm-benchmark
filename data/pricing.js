@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-21
+// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-24
 // 来源:https://www.codingplan.fyi/plans.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -18,8 +18,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-11-21',
-  'refreshedAt': '2026-11-22 03:36',
+  'updated': '2026-11-24',
+  'refreshedAt': '2026-11-24 18:11',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -33,8 +33,8 @@ window.PRICING = {
     'models': 117,
     'unresolved': 16,
     'ranked': 78,
-    'supplemented': 4,
-    'carriedOver': 0,
+    'supplemented': 3,
+    'carriedOver': 1,
     'seeded': 0,
     'missingRanked': 5
   },

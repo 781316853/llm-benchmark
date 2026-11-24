@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-21',
+  'updated': '2026-11-24',
   'stats': {
-    'total': 200,
-    'knownVendor': 199,
-    'otherVendor': 1,
-    'skippedManual': 1597,
+    'total': 202,
+    'knownVendor': 200,
+    'otherVendor': 2,
+    'skippedManual': 1599,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -352,6 +352,16 @@ window.MODEL_MAP_AUTO = {
       'color': '#818DE7',
       'aliases': [
         'GLM-5-Turbo'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'GLM-5.4',
+      'vendor': 'zAI',
+      'color': '#818DE7',
+      'aliases': [
+        'GLM-5.4',
+        'glm-5.4'
       ],
       'auto': true
     },
@@ -789,6 +799,16 @@ window.MODEL_MAP_AUTO = {
       'color': '#E0855F',
       'aliases': [
         'Haiku 4.5'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'HungerG',
+      'vendor': '其他',
+      'color': '#9298A1',
+      'aliases': [
+        'HungerG',
+        'hmodel'
       ],
       'auto': true
     },

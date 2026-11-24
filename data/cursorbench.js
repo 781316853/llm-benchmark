@@ -1,4 +1,4 @@
-// 数据源:CursorBench(Cursor 官方 · 编码 Agent 实测,更新于 2026-11-21)
+// 数据源:CursorBench(Cursor 官方 · 编码 Agent 实测,更新于 2026-11-24)
 // 来源:https://cursor.com/cursorbench(官方:https://cursor.com/cursorbench)
 // 字段:models[]=模型级主榜(每模型取最优档位);configs[]=源站全表 model×档位配置
 //      score=CursorBench 4.0 分(%);costUsd=平均每任务成本(USD);tokens/steps=每任务平均
@@ -8,8 +8,8 @@ window.CURSORBENCH = {
   'url': 'https://cursor.com/cursorbench',
   'officialUrl': 'https://cursor.com/cursorbench',
   'version': '4.0',
-  'updated': '2026-11-21',
-  'refreshedAt': '2026-11-22 03:36',
+  'updated': '2026-11-24',
+  'refreshedAt': '2026-11-24 18:11',
   'stats': {
     'entries': 53,
     'models': 12
