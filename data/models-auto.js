@@ -4,10 +4,10 @@
 window.MODEL_MAP_AUTO = {
   'updated': '2026-11-24',
   'stats': {
-    'total': 202,
-    'knownVendor': 200,
+    'total': 201,
+    'knownVendor': 199,
     'otherVendor': 2,
-    'skippedManual': 1599,
+    'skippedManual': 1627,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -352,16 +352,6 @@ window.MODEL_MAP_AUTO = {
       'color': '#818DE7',
       'aliases': [
         'GLM-5-Turbo'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'GLM-5.4',
-      'vendor': 'zAI',
-      'color': '#818DE7',
-      'aliases': [
-        'GLM-5.4',
-        'glm-5.4'
       ],
       'auto': true
     },

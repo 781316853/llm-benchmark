@@ -8,7 +8,7 @@
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-24',
-  'refreshedAt': '2026-11-24 18:11',
+  'refreshedAt': '2026-11-25 06:39',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '0.172.0',
@@ -1486,7 +1486,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '2.1.331',
@@ -3929,7 +3929,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '2.4.1',
@@ -9494,7 +9494,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '2.7.3',
@@ -10771,7 +10771,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '0.2.3-alpha.2',
@@ -11439,8 +11439,22 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
+        {
+          'version': '0.5.18',
+          'title': '日常优化',
+          'date': '2026-11-24',
+          'dateRaw': '2026年11月24日',
+          'tags': [
+            '日常优化',
+            '优化',
+            '远程设备控制',
+            '修复'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '日常优化\n优化\n- 远程设备控制 ：完善远控设备后台任务进度与结束状态同步，修复设备时钟偏差导致的配对失败。\n修复\n- 修复部分 Remote SSH 工作区预检、旧会话续聊或分叉，以及主机地址变更后的重连问题。\n- 修复本地 MCP 配置冲突、损坏或无法读取时阻断会话和自动化的问题。\n- 修复跨文件系统保存图片附件失败、导致部分图文消息无法发送的问题。\n- 修复部分插件分享、导入或安装失败时只显示通用提示的问题，现会提供更具体的失败原因。\n- 修复部分远控后台续跑期间手机端无法及时看到工具进度的问题。\n2026年11月20日'
+        },
         {
           'version': '0.5.17',
           'title': '日常优化',
@@ -11921,7 +11935,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '1.41.1',
@@ -12617,7 +12631,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '3.4.18',
@@ -14880,7 +14894,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '4.0.0',
@@ -15095,7 +15109,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '4.12.4',
@@ -15992,7 +16006,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-24 18:11',
+      'lastOkAt': '2026-11-25 06:39',
       'entries': [
         {
           'version': '5.11.3',

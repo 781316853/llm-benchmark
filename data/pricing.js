@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-24',
-  'refreshedAt': '2026-11-24 18:11',
+  'refreshedAt': '2026-11-25 06:39',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -32,14 +32,15 @@ window.PRICING = {
     'comparable': 1209,
     'models': 117,
     'unresolved': 16,
-    'ranked': 78,
+    'ranked': 79,
     'supplemented': 3,
     'carriedOver': 1,
     'seeded': 0,
-    'missingRanked': 5
+    'missingRanked': 6
   },
   'missingRanked': [
     'ERNIE 5.5 Flash Preview',
+    'LongCat 2.5',
     'Muse Wonder Full',
     'SWE-2',
     'Seed 2.1 Pro',

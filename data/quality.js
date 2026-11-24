@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-11-24',
-  'overallScore': 0.958,
+  'overallScore': 0.96,
   'sources': [
     {
       'id': 'aa_coding_agents',
@@ -89,7 +89,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 93,
+      'modelCount': 94,
       'updated': '2026-11-24',
       'ageDays': 0,
       'completeness': 1,
@@ -244,6 +244,17 @@ window.QUALITY = {
       'name': 'NL2Repo-Bench',
       'status': 'ok',
       'modelCount': 56,
+      'updated': '2026-11-24',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'octathlon',
+      'name': 'AI 十项全能',
+      'status': 'ok',
+      'modelCount': 27,
       'updated': '2026-11-24',
       'ageDays': 0,
       'completeness': 1,
@@ -1468,9 +1479,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 93,
-      'complete': 93,
-      'modelCount': 93,
+      'total': 94,
+      'complete': 94,
+      'modelCount': 94,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1587,6 +1598,14 @@ window.QUALITY = {
       'total': 56,
       'complete': 56,
       'modelCount': 56,
+      'missingFields': {},
+      'flag': 'ok'
+    },
+    'octathlon': {
+      'rate': 1,
+      'total': 27,
+      'complete': 27,
+      'modelCount': 27,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1811,6 +1830,13 @@ window.QUALITY = {
       'flag': 'ok',
       'warnAgeDays': 3,
       'alertAgeDays': 7
+    },
+    'octathlon': {
+      'updated': '2026-11-24',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
     },
     'osworld': {
       'updated': '2026-11-24',
