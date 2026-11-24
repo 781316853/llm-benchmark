@@ -97,6 +97,7 @@ jobs:
 
   # 部署阶段:只取 build 产物部署,确保 artifact 已完成上传
   deploy:
+    if: always() && needs.build.result == 'success'
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
