@@ -106,6 +106,7 @@ window.MODEL_MAP = {
     // ===== 各源新上榜补充登记的模型(2026-08) =====
     { id: "Qwen3.8 2.4T A95B", vendor: "Alibaba",  color: "#FF8533", aliases: ["Qwen3.8 2.4T A95B", "qwen3-8-2-4t-a95b"] },
     { id: "GLM-5.3-Flash",    vendor: "zAI",       color: "#6C7DFF", aliases: ["GLM-5.3-Flash", "glm-5-3-flash", "GLM 5.3 Flash", "GLM5.3 Flash", "GLM5.3Flash"] },
+    { id: "GLM-5.4",          vendor: "zAI",       color: "#5B6CFF", aliases: ["GLM-5.4", "glm-5.4", "GLM 5.4", "GLM-5.4 (high)", "glm-5.4-high"] },
     { id: "Motif 3",          vendor: "Motif Technologies", color: "#8A8F98", aliases: ["Motif 3", "motif-3"] },
     { id: "Inkling",          vendor: "Thinking Machines", color: "#9AA5B1", aliases: ["Inkling", "inkling"] },
     { id: "Nemotron 3 Ultra", vendor: "NVIDIA",    color: "#76B900", aliases: ["Nemotron 3 Ultra", "nvidia-nemotron-3-ultra-550b-a55b", "Nemotron 3 Ultra 550B", "Nemotron 3 Ultra 550b A55b", "Nemotron 3 Ultra (550B A55B)", "nemotron-3-ultra-550b-a55b:free"] },
@@ -267,6 +268,7 @@ window.MODEL_MAP = {
     { id: "Qwen4-Max-Preview", vendor: "Alibaba", color: "#FFA45C", aliases: ["Qwen4-Max-Preview", "Qwen-4-Max-Preview", "Qwen4 Max Preview", "qwen4-max-preview", "Qwen4.0-Max-Preview", "Qwen4.0 Max Preview", "qwen4.0-max-preview"] },
     { id: "Tencent Hy4 Flash", vendor: "Tencent", color: "#36D3F0", aliases: ["Tencent Hy4 Flash", "Tencent HY4-flash", "HY4-flash", "hy4-flash", "hy4-flash-dev", "Hy4 Flash", "Hunyuan Hy4 Flash", "hunyuan-hy4-flash", "混元4 Flash", "混元4-flash", "混元 4 Flash", "混元4"] },
     { id: "ERNIE 5.5 Flash Preview", vendor: "Baidu", color: "#5B6CF0", aliases: ["ERNIE 5.5 Flash Preview", "ERNIE-5.5-Flash-Preview", "ERNIE-5.5-Flash-Preview (high)", "ernie-5.5-flash-preview", "ernie-5.5-flash-preview:free"] },
+    { id: "ERNIE 5.5 Flash",  vendor: "Baidu",     color: "#5B6CF0", aliases: ["ERNIE 5.5 Flash", "ERNIE-5.5-Flash", "ernie-5.5-flash", "ERNIE-5.5-Flash (high)"] },
     { id: "GPT-6.2 Astra",    vendor: "OpenAI",   color: "#0B8C67", aliases: ["GPT-6.2 Astra", "GPT-6.2-Astra", "gpt-6.2-astra", "gpt-6-2-astra"] }
   ],
   // 厂商默认色(用于未登记模型的兜底着色)
