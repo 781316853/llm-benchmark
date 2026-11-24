@@ -23,14 +23,16 @@
   var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
-  // 9 个计分组的键(与 WEIGHTS 一致;VCB-1-100 已于 2026-11-09 下线,HLE 于 2026-11-15 入组)
-  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "agentarena", "hle"];
+  // 10 个计分组的键(与 WEIGHTS 一致;VCB-1-100 已于 2026-11-09 下线,HLE 于 2026-11-15 入组,
+  // AI 十项全能于 2026-11-24 入组)
+  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hle"];
 
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
   // 亿模亿样取 Elo 原值(源站已是每模型最高分档)
-  // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily / Agent Arena 计入综合分与命中;NL2Repo 与其余权威基准(仅展示)不参与任何定位
+  // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily / AI 十项全能 / Agent Arena 计入综合分与命中;
+  // NL2Repo 与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
@@ -40,6 +42,7 @@
     modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
     aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
+    octathlon: function (e) { return e.octathlon ? e.octathlon.score : null; },
     hle: function (e) { return e.hle ? e.hle.score : null; },
   };
   // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
@@ -62,7 +65,7 @@
   //    注:命中分母 2026-09-19 起为 6(NL2Repo 移出、ModelDial 加入),2026-09-24 起曾为 7(无机酸前端实测加入),
   //    2026-10-12 起无机酸前端实测退出计分、分母回到 6,2026-10-19 起随 AI Coding Daily 入组再升为 7,
   //    2026-10-20 起 Vibe Code 入组为 8,2026-10-26 起 Agent Arena 入组为 9,
-  //    2026-11-09 起 VCB 下线回到 8,2026-11-15 起 HLE 入组回到 9;
+  //    2026-11-09 起 VCB 下线回到 8,2026-11-15 起 HLE 入组回到 9,2026-11-24 起 AI 十项全能入组为 10;
   //    门槛仍取 4,保持与历史排名的可比性;
   // ② 参考行(命中 2-3 榜)不计算综合分、不参与排名,按「参考综合分」在排名行综合分序列的应处名次落入
   //    相应名次间隔,_posKey = refPosition − 0.5,恰好落在两个排名行的间隔中(仅显示数据,序号计「—」);
@@ -183,14 +186,20 @@
   //  2026-11-15 起:新增第 9 组「HLE」8%(前沿知识广度,统一无工具闭卷口径;主办方 CAIS/Scale AI 为独立第三方,
   //  HLE 分数由厂商发布与 AA 无工具复测按渠道优先级合并)。HLE 原为总览矩阵「榜单基准」组尾仅参考列,
   //  现计入综合分与命中数;其余八组权重不变,九组之和 1.00,命中数分母回到 9。
+  //  2026-11-24 起:新增第 10 组「AI 十项全能·定时挑战赛」8%(octathlon.wendystars.com,主办方 wendystars)。
+  //  按站内判据,主办方不是被评厂商、属独立第三方实测 → 计入综合分与命中数;但每模型跑在各自的
+  //  agent harness(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等)上,分数混杂
+  //  「模型 + 脚手架」质量,且两位评分员(Claude Opus 5.5 / GPT 6.1 Sol)本身也在被评名单中,
+  //  故按 AI Coding Daily 同档取 8%;为保持十组之和 1.00,其余九组按比例回调(×0.92),命中数分母回到 10。
   //  加权按在场权重归一化,缺失基准的权重自动回流(等价于「缺失榜按该模型自身水平填补」),
-  //  故上列权重无需凑满 100%(9 组之和 1.00)。
-  var WEIGHTS = { deepswe: 0.14, webdev: 0.18, tbench: 0.09, modeldial: 0.14, llm: 0.10, arenaofbias: 0.10, aicodingdaily: 0.08, agentarena: 0.09, hle: 0.08 };
+  //  故上列权重无需凑满 100%(10 组之和 1.00)。
+  var WEIGHTS = { deepswe: 0.1288, webdev: 0.1656, tbench: 0.0828, modeldial: 0.1288, llm: 0.092, arenaofbias: 0.092, aicodingdaily: 0.0736, octathlon: 0.08, agentarena: 0.0828, hle: 0.0736 };
   // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
   //   modeldial 源站五轴 20/25/35/10/10 综合分    llm  全历史保序校正分    arenaofbias  Elo 原值(每模型最高分档)
   //   aicodingdaily 源站总分(0-70,四轴之和;尺度不变,原生量纲直接进池定标)
+  //   octathlon 源站总分(0-100,13 题按 10 类各 10% 加权;尺度不变,原生量纲直接进池定标)
   //   agentarena 净提升 %(相对 Arena 基线,可为负;尺度不变,原生量纲直接进池定标)
   var BOARD_RAW = {
     deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
@@ -201,6 +210,7 @@
     llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
     aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
+    octathlon: function (e) { return e.octathlon ? e.octathlon.score : null; },
     hle: function (e) { return e.hle ? e.hle.score : null; },
   };
   // 中位数(调用方传入已升序数组;偶数长度取两中均值 —— 朴素取下中位数会让统计量随样本 ±1 跳档)

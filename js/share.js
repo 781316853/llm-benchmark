@@ -18,20 +18,21 @@
     tagline: "Cross-benchmark comparison",
     boardKicker: "Overview · Cross-benchmark composite",
     boardTitle: "Cross-Benchmark Leaderboard",
-    boardSub: function (n) { return "9 scored benchmarks · " + n + " ranked models · Relative scale, 50 = pool median"; },
+    boardSub: function (n) { return "10 scored benchmarks · " + n + " ranked models · Relative scale, 50 = pool median"; },
     colModel: "Model", colScore: "Composite / 100",
     snap: "Snapshot ",
     footNote: "Composite = weighted within-board robust z-scores · 50 = pool median",
     legend: "Benchmarks & weights",
     modelKicker: "Model scorecard · Overview composite",
     rankLine: function (i, n, vendor, hits) {
-      return "Rank #" + i + " / " + n + " · " + vendor + " · Hits " + hits + " / 9 benchmarks";
+      return "Rank #" + i + " / " + n + " · " + vendor + " · Hits " + hits + " / 10 benchmarks";
     },
     scoreLabel: "Composite (relative scale, 50 = pool median)",
     bench: {
       deepswe: "DeepSWE", llm: "llm2014 all-history", webdev: "WebDev Elo",
       agentarena: "Agent Arena", tbench: "Terminal-Bench", modeldial: "ModelDial",
-      arenaofbias: "Arena of Bias Elo", aicodingdaily: "AI Coding Daily", hle: "HLE"
+      arenaofbias: "Arena of Bias Elo", aicodingdaily: "AI Coding Daily",
+      octathlon: "AI Decathlon", hle: "HLE"
     },
     dialogTitle: "Share leaderboard", dialogDesc: "Pick a layout, then copy or save the image.",
     mode: "Content", modeBoard: "Leaderboard", modeModel: "Scorecard",
@@ -50,20 +51,21 @@
     tagline: "跨基准模型对比",
     boardKicker: "总览 · 跨基准综合分",
     boardTitle: "跨基准模型综合榜",
-    boardSub: function (n) { return "9 项计分基准 · " + n + " 个排名模型 · 相对分口径,50 = 全池中位"; },
+    boardSub: function (n) { return "10 项计分基准 · " + n + " 个排名模型 · 相对分口径,50 = 全池中位"; },
     colModel: "模型", colScore: "综合分 / 100",
     snap: "数据快照 ",
     footNote: "综合分 = 各榜榜内稳健标准分加权 · 50 = 全池中位",
     legend: "计分基准与权重",
     modelKicker: "模型成绩卡 · 总览综合分",
     rankLine: function (i, n, vendor, hits) {
-      return "排名 #" + i + " / " + n + " · " + vendor + " · 命中 " + hits + " / 9 项计分基准";
+      return "排名 #" + i + " / " + n + " · " + vendor + " · 命中 " + hits + " / 10 项计分基准";
     },
     scoreLabel: "综合分(相对分,50 = 全池中位)",
     bench: {
       deepswe: "DeepSWE", llm: "llm2014 全历史", webdev: "WebDev Elo",
       agentarena: "Agent Arena", tbench: "Terminal-Bench", modeldial: "ModelDial",
-      arenaofbias: "亿模亿样 Elo", aicodingdaily: "AI Coding Daily", hle: "HLE"
+      arenaofbias: "亿模亿样 Elo", aicodingdaily: "AI Coding Daily",
+      octathlon: "AI 十项全能", hle: "HLE"
     },
     dialogTitle: "分享榜单", dialogDesc: "选择版式,复制或保存图片。",
     mode: "分享内容", modeBoard: "榜单图", modeModel: "成绩卡",
@@ -103,18 +105,19 @@
     }
   };
 
-  // 计分基准与权重(与 app.js BENCH_WEIGHT + HLE 8% 一致);缺测显示「—」,不是「—%」
+  // 计分基准与权重(与 app.js BENCH_WEIGHT 一致,十组之和 1.00);缺测显示「—」,不是「—%」
   function pc(v) { return v == null || !isFinite(v) ? "—" : Number(v).toFixed(1) + "%"; }
   var BENCH = [
-    { key: "deepswe", weight: "14%", fmt: pc },
-    { key: "llm", weight: "10%", fmt: function (v) { return n1(v); } },
-    { key: "webdev", weight: "18%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
-    { key: "agentarena", weight: "9%", fmt: function (v) { return v == null ? "—" : (v > 0 ? "+" : "") + n1(v) + "%"; } },
-    { key: "tbench", weight: "9%", fmt: pc },
-    { key: "modeldial", weight: "14%", fmt: function (v) { return n1(v); } },
-    { key: "arenaofbias", weight: "10%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
-    { key: "aicodingdaily", weight: "8%", fmt: function (v) { return v == null ? "—" : n1(v) + "/70"; } },
-    { key: "hle", weight: "8%", fmt: pc }
+    { key: "deepswe", weight: "12.9%", fmt: pc },
+    { key: "llm", weight: "9.2%", fmt: function (v) { return n1(v); } },
+    { key: "webdev", weight: "16.6%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
+    { key: "agentarena", weight: "8.3%", fmt: function (v) { return v == null ? "—" : (v > 0 ? "+" : "") + n1(v) + "%"; } },
+    { key: "tbench", weight: "8.3%", fmt: pc },
+    { key: "modeldial", weight: "12.9%", fmt: function (v) { return n1(v); } },
+    { key: "arenaofbias", weight: "9.2%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
+    { key: "aicodingdaily", weight: "7.4%", fmt: function (v) { return v == null ? "—" : n1(v) + "/70"; } },
+    { key: "octathlon", weight: "8%", fmt: function (v) { return v == null ? "—" : n1(v) + "/100"; } },
+    { key: "hle", weight: "7.4%", fmt: pc }
   ];
 
   function n1(v) { return v == null || !isFinite(v) ? "—" : Number(v).toFixed(1); }
@@ -347,8 +350,9 @@
       ctx.fillText(S.legend, 64, legendY);
       setFont(ctx, 19);
       ctx.fillStyle = T.dim;
-      var line1 = "DeepSWE 14% · llm2014 10% · WebDev 18% · Agent Arena 9% · Terminal-Bench 9%";
-      var line2 = "ModelDial 14% · " + S.bench.arenaofbias.replace(" Elo", "") + " 10% · AI Coding Daily 8% · HLE 8%";
+      var line1 = "DeepSWE 12.9% · llm2014 9.2% · WebDev 16.6% · Agent Arena 8.3% · Terminal-Bench 8.3%";
+      var line2 = "ModelDial 12.9% · " + S.bench.arenaofbias.replace(" Elo", "") + " 9.2% · AI Coding Daily 7.4% · " +
+        S.bench.octathlon + " 8% · HLE 7.4%";
       ctx.fillText(line1, 64, legendY + 38);
       ctx.fillText(line2, 64, legendY + 70);
     }
@@ -440,11 +444,14 @@
     ctx.fillStyle = T.dim;
     ctx.fillText(S.scoreLabel, 64, scoreY + 46);
 
-    // 分项 3 × 3
+    // 分项 3 列 × N 行;10 项时 1:1 版按可用高度压缩行高,避免压到页脚
     var gridTop = ratio45 ? 720 : 660;
     var gap = ratio45 ? 20 : 16;
+    var rows = Math.ceil(BENCH.length / 3);
     var cellW = (W - 128 - gap * 2) / 3;
-    var cellH = ratio45 ? 124 : 100;
+    var avail = (H - 180) - gridTop;
+    var cellH = Math.min(ratio45 ? 124 : 100, Math.floor((avail - gap * (rows - 1)) / rows));
+    var compact = cellH < 90;
     BENCH.forEach(function (b, i) {
       var cx = 64 + (i % 3) * (cellW + gap);
       var cy = gridTop + Math.floor(i / 3) * (cellH + gap);
@@ -454,13 +461,13 @@
       rr(ctx, cx, cy, cellW, cellH, 16);
       ctx.fill();
       ctx.stroke();
-      setFont(ctx, 19);
+      setFont(ctx, compact ? 16 : 19);
       ctx.fillStyle = T.faint;
       ctx.textAlign = "left";
-      ctx.fillText(S.bench[b.key] + "  " + b.weight, cx + 24, cy + 36);
-      setFont(ctx, ratio45 ? 38 : 34, 600, true);
+      ctx.fillText(S.bench[b.key] + "  " + b.weight, cx + 20, cy + (compact ? 26 : 36));
+      setFont(ctx, compact ? 28 : (ratio45 ? 38 : 34), 600, true);
       ctx.fillStyle = T.text;
-      ctx.fillText(b.fmt(row[b.key]), cx + 24, cy + cellH - 34);
+      ctx.fillText(b.fmt(row[b.key]), cx + 20, cy + cellH - (compact ? 18 : 34));
     });
 
     paintFooter(ctx, W, H, T, meta);
@@ -488,11 +495,12 @@
         agentarena: r.agentarena ? r.agentarena.score : null,
         llm: r.llm ? r.llm.norm : null,
         arenaofbias: r.arenaofbias ? r.arenaofbias.score : null,
-        aicodingdaily: r.aicodingdaily ? r.aicodingdaily.score : null
+        aicodingdaily: r.aicodingdaily ? r.aicodingdaily.score : null,
+        octathlon: r.octathlon ? r.octathlon.score : null
       };
     });
     var keys = ["DEEPSWE", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH",
-      "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "HLE"];
+      "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE"];
     var snap = null;
     keys.forEach(function (k) {
       var g = window[k];

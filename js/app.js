@@ -129,7 +129,7 @@
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
       D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
-      D.src.cursorbench, D.src.frontiercode, D.src.frontierswe, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.aa_coding_agents]
+      D.src.cursorbench, D.src.frontiercode, D.src.frontierswe, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.octathlon, D.src.aa_coding_agents]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
   }
@@ -150,11 +150,14 @@
     arenaofbias: "前端作品社区盲评 Elo 竞技场",
     tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
     modeldial: "第三方实测 · 五轴 20/25/35/10/10",
-    aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70"
+    aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70",
+    octathlon: "独立第三方实测 · 13 题 10 类 · 总分 100"
   };
+  // 十组之和 1.00;2026-11-24 起 AI 十项全能入组 8%,其余九组按比例回调
   var BENCH_WEIGHT = {
-    deepswe: "14%", llm2014: "10%", webdev: "18%", agentarena: "9%",
-    arenaofbias: "10%", tbench: "9%", modeldial: "14%", aicodingdaily: "8%"
+    deepswe: "12.9%", llm2014: "9.2%", webdev: "16.6%", agentarena: "8.3%",
+    arenaofbias: "9.2%", tbench: "8.3%", modeldial: "12.9%", aicodingdaily: "7.4%",
+    octathlon: "8%"
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -279,35 +282,39 @@
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
     // NL2Repo-Bench 自 2026-09-19 起移出总览矩阵(不再计入综合分与命中数),改由
     // 「权威基准测试」页仅展示;数据仍加载(data/nl2repo.js)供该页使用。
-    // HLE:权威知识基准,归入「榜单基准」组;2026-11-15 起计入综合分(权重 8%)与命中数,
+    // HLE:权威知识基准,归入「榜单基准」组;2026-11-15 起计入综合分(权重 8%,2026-11-24 起回调为 7.4%)与命中数,
     // 分数统一为无工具(闭卷)口径;完整榜单见「权威基准测试」页
     { key: "hle", label: "HLE", type: "num", bench: true, grp: "榜单基准", tone: "hle",
-      tip: "HLE(Humanity's Last Exam)前沿知识广度得分(%):2500 道专家撰写、无联网可检索解的闭卷题,统一无工具口径;2026-11-15 起计入综合分(权重 8%)与命中数,完整榜单见「权威基准测试」页",
+      tip: "HLE(Humanity's Last Exam)前沿知识广度得分(%):2500 道专家撰写、无联网可检索解的闭卷题,统一无工具口径;2026-11-15 起计入综合分(权重 7.4%)与命中数,完整榜单见「权威基准测试」页",
       val: function (r) { return r.hle ? r.hle.score : null; } },
     // ModelDial 雷达单值列(归入「第三方实测」组首位):第三方独立实测的五轴综合能力分
     // (0-100,后端 20%/前端 25%/知识 35%/审美 10%/可维护 10% 加权);计入综合分与命中数;
     // 格内为综合分,口径与分项/耗时/费用放 th 悬浮提示;完整榜见「ModelDial」页
     { key: "modeldial", label: "ModelDial (综合分)", type: "num", bench: true, grp: "第三方实测", tone: "modeldial",
-      tip: "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 14%)与命中数",
+      tip: "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 12.9%)与命中数",
       val: function (r) { return r.modeldial ? r.modeldial.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):归入「第三方实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
-    // Agent Arena:真实智能体会话的净提升 %(可为负;同一模型按推理强度取最高分档);计入综合分(权重 9%)与命中数
+    // Agent Arena:真实智能体会话的净提升 %(可为负;同一模型按推理强度取最高分档);计入综合分(权重 8.3%)与命中数
     { key: "agentarena", label: "Agent Arena (净提升)", type: "num", bench: true, grp: "第三方实测", tone: "agentarena",
-      tip: "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 9%)与命中数",
+      tip: "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 8.3%)与命中数",
       val: function (r) { return (r.agentarena && r.agentarena.score != null) ? r.agentarena.score : null; } },
     { key: "llm",     label: "llm2014 (全历史/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm",
-      tip: "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(权重 10%)与命中数",
+      tip: "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(权重 9.2%)与命中数",
       val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // 亿模亿样:前端作品社区盲评 Elo 原值(每模型取最高分档);计入综合分与命中数
     { key: "arenaofbias", label: "亿模亿样 (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "arenaofbias",
-      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 10%)与命中数",
+      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 9.2%)与命中数",
       val: function (r) { return (r.arenaofbias && r.arenaofbias.score != null) ? r.arenaofbias.score : null; } },
     // AI Coding Daily:独立第三方实测编码榜总分(0-70,四轴之和;每模型取最高分 config);计入综合分与命中数
     { key: "aicodingdaily", label: "AI Coding Daily (总分/70)", type: "num", bench: true, grp: "第三方实测", tone: "aicodingdaily",
-      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 8%)与命中数,完整榜单见「AI Coding Daily」页",
+      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 7.4%)与命中数,完整榜单见「AI Coding Daily」页",
       val: function (r) { return (r.aicodingdaily && r.aicodingdaily.score != null) ? r.aicodingdaily.score : null; } },
+    // AI 十项全能:独立第三方限时 Agent 实测(13 题 / 10 类,总分 0-100);每模型连同自身 harness 一起测
+    { key: "octathlon", label: "AI 十项全能 (总分/100)", type: "num", bench: true, grp: "第三方实测", tone: "octathlon",
+      tip: "AI 十项全能·定时挑战赛总分(0-100):独立第三方(octathlon.wendystars.com)实测,13 道题 / 10 个类别,单题限时 60–100 分钟、无人答疑、到时中止;总分 = 10 类各 10% 加权,类内各题平分。7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。注:模型连同它自己的 agent harness(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等)一起测,分数混杂模型与脚手架质量;计入综合分(权重 8%)与命中数,完整榜单见「AI 十项全能」页",
+      val: function (r) { return (r.octathlon && r.octathlon.score != null) ? r.octathlon.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
   ];
 
@@ -659,7 +666,8 @@
       agentarena: rsrc("arena_agent").length,
       llm: llmAll.rankedCount,
       arenaofbias: rsrc("arenaofbias").length,
-      aicodingdaily: rsrc("aicodingdaily").length
+      aicodingdaily: rsrc("aicodingdaily").length,
+      octathlon: rsrc("octathlon").length
     };
     // ===== 与参考差值模式 =====
     // 参考模型默认综合排名第 1,可在工具栏下拉切换;某项参考模型无成绩时,
@@ -742,7 +750,7 @@
       // HLE 单元格:无工具闭卷分 + 悬浮(口径与源站名次);2026-11-15 起计入综合分与命中数
       var hleHtml = "—";
       if (r.hle) {
-        var hleMeta = ["HLE 前沿知识广度 · 无工具闭卷口径", "计入综合分(权重 8%)与命中数"];
+        var hleMeta = ["HLE 前沿知识广度 · 无工具闭卷口径", "计入综合分(权重 7.4%)与命中数"];
         if (r.hle.rank != null) hleMeta.push("源站排名 #" + r.hle.rank);
         hleHtml = scoreSpan("hle", r.hle.score, "hle", fmtHle(r.hle.score), hleMeta.join(" · "), null, r.id);
       }
@@ -825,6 +833,25 @@
           scoreSpan("aicodingdaily", ac.score, "aicodingdaily", String(ac.score), acParts.join(" · "), null, r.id) +
           (ac.harness ? ' <span class="cell-cost">' + esc(ac.harness) + '</span>' : "");
       }
+      // AI 十项全能单元格:总分(0-100);悬浮显示两类题得分/开销/Token/TPS/agent/档位/测试日
+      var octHtml = "—";
+      if (r.octathlon) {
+        var oc = r.octathlon, ocParts = [];
+        if (oc.standard != null) ocParts.push(T("标准题") + " " + oc.standard);
+        if (oc.design != null) ocParts.push(T("设计题") + " " + oc.design);
+        if (oc.agent) ocParts.push("agent " + oc.agent);
+        if (oc.effort) ocParts.push(T("档位") + " " + oc.effort);
+        if (oc.costCny != null) ocParts.push(T("开销") + " ¥" + oc.costCny);
+        if (oc.tokens != null) ocParts.push("Token " + (oc.tokens >= 1e8
+          ? (oc.tokens / 1e8).toFixed(1) + " 亿"
+          : Math.round(oc.tokens / 1e4) + " 万"));
+        if (oc.tps != null) ocParts.push("TPS " + oc.tps);
+        if (oc.tested) ocParts.push(T("测试于") + " " + oc.tested);
+        ocParts.push(T("13 题 / 10 类,模型连同自身 harness 一起测"));
+        octHtml = rankBadge(oc.rank, "AI 十项全能", RANK_TOTAL.octathlon) +
+          scoreSpan("octathlon", oc.score, "octathlon", String(oc.score), ocParts.join(" · "), null, r.id) +
+          (oc.agent ? ' <span class="cell-cost">' + esc(oc.agent) + '</span>' : "");
+      }
       // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
       var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
@@ -897,6 +924,8 @@
         '<td class="num">' + biasCell(r) + '</td>' +
         // AI Coding Daily 列(「第三方实测」组):总分 0-70 上该榜数据色,后随 harness 小灰字(元数据)
         '<td class="num">' + acdHtml + '</td>' +
+        // AI 十项全能列(「第三方实测」组):总分 0-100 上该榜数据色,后随 agent 小灰字(元数据)
+        '<td class="num">' + octHtml + '</td>' +
         '<td class="num">' + r.benchCount + '/' + CMP.GROUPS.length + '</td></tr>';
     });
     // 搜索无结果:给出覆盖范围提示,避免误以为搜的是全站(表里只有计分基准组有成绩的模型)
@@ -911,8 +940,8 @@
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
-      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 14% / Terminal-Bench 4.0/3.0/2.1 9% / HLE 8%)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 14%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 18% / Agent Arena 净提升 9% / 亿模亿样 10%)与站主实测口径(llm2014 私有题库全历史保序校正 10%);六组同纲计入综合分与命中数,合计占权重约 69%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
+      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE 12.9% / Terminal-Bench 4.0/3.0/2.1 8.3% / HLE 7.4%)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 12.9%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 7.4%;AI 十项全能,13 题 10 类限时 Agent 实测、总分 0-100,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 16.6% / Agent Arena 净提升 8.3% / 亿模亿样 9.2%)与站主实测口径(llm2014 私有题库全历史保序校正 9.2%);七组同纲计入综合分与命中数,合计占权重约 71.5%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -995,7 +1024,7 @@
         "参考模型可在工具栏下拉选择,某项无成绩时取排名最靠前且有该成绩的模型(该行原值旁标「基准」);参考行高亮并标「参考线」;综合分/梯队/性价比不变。";
     }
     // 口径细节统一收进下方「阅读说明」
-    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。';
+    note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。';
     var noteEl = document.getElementById("overviewNote");
     noteEl.textContent = note;
     // 相对模式说明单独成节点,便于英文站按整句翻译(主 note 是多行拼接,无法整句命中)
@@ -1262,7 +1291,7 @@
       { k: "任务难度", v: "等级分口径,越高越容易:" + diffLine },
       { k: "样本与限制", v: [
         "不同月份任务集不同,单元格右上角数字为该成绩的来源月份(如 09 = 2026-09)",
-        "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(权重 10%)"
+        "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(权重 9.2%)"
       ] }
     ];
     var noteHtml = noteParts.map(noteLineHtml).join("");
@@ -1272,7 +1301,7 @@
     document.getElementById("lmNote").innerHTML = noteHtml;
   }
 
-  // ===== 6) ModelDial 雷达(第三方独立实测的综合能力榜;计入综合分(计分组之一,权重 14%)与命中数) =====
+  // ===== 6) ModelDial 雷达(第三方独立实测的综合能力榜;计入综合分(计分组之一,权重 12.9%)与命中数) =====
   // 主榜为模型级条目(每条取该模型最高分 config,与源站主榜一致),config 明细另附折叠表(条数取源站快照)。
   function renderModeldial() {
     var src = D.src.modeldial || {};
@@ -1362,7 +1391,7 @@
         '%(五分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。外部产品条目保留在主榜,带「外部」标记。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
         '本页各模型之间口径一致、可直接横向比较。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 14%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;命中数分母为 9(九项基准)。上表为模型级 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,权重 12.9%),该席位来自同期移出计分组的 NL2Repo-Bench(原 9%),2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 12.9%;命中数分母为 10(十项基准)。上表为模型级 ' +
         ms.length + ' 条(含外部产品 ' + ms.filter(function (m) { return m.external; }).length + ' 条),下方为全部 config 明细 ' + cfgs.length + ' 条(不含 Bot)。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -1370,7 +1399,7 @@
         (src.license ? ' · ' + esc(src.license) : "") + '</div>';
   }
 
-  // ===== 7) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计分组之一,权重 10%) =====
+  // ===== 7) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计分组之一,权重 9.2%) =====
   // 源站按推理强度分档多次测试;data/arenaofbias.js 已是每模型最高分档,表内展示 Elo 与源站统计字段。
   function renderArenaofbias() {
     var src = D.src.arenaofbias || {};
@@ -1425,7 +1454,7 @@
         '「档位」= 该模型在源站的配置(推理强度)条数;「暂定」表示源站标注有效比较不足 30 次。</div>' +
       '<div class="note-line"><b>入榜口径</b>同一模型按推理强度分档多次测试,主榜取<b>最高分那一档</b>(与源站主榜一致);' +
         '源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)已剔除。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(权重 10%,「第三方实测」组)与命中数,计分组共 9 组;' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(权重 9.2%,「第三方实测」组)与命中数,计分组共 10 组;' +
         '本页展示 ' + ms.length + ' 个模型' +
         (st.votes != null ? '、源站快照 ' + esc(st.votes) + ' 次有效比较' : '') +
         (st.tasks != null ? ' / ' + esc(st.tasks) + ' 道题' : '') + '。</div>' +
@@ -1434,7 +1463,7 @@
         (src.url ? ' · <a href="' + esc(src.url) + '" target="_blank" rel="noopener">公开 API ↗</a>' : '') + '</div>';
   }
 
-  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 8%) =====
+  // ===== 7b) AI Coding Daily 编码榜(独立第三方实测;计分组之一,权重 7.4%) =====
   // 主榜为模型级条目(每模型取总分最高的「档位 × harness」配置),config 明细另附折叠表。
   function renderAicodingdaily() {
     var src = D.src.aicodingdaily || {};
@@ -1520,7 +1549,7 @@
         '主办方为独立第三方(非被评厂商),故仍计入综合分,但按站内判据压低权重。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>均为<b>每 prompt</b> 平均值(非每模型总测试成本);源站对 ' +
         ms.filter(function (m) { return m.costUsd == null; }).length + ' 个模型未给成本(显示「—」),这些条目不进散点图。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 8%)与命中数(分母 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 7.4%)与命中数(分母 ' +
         CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,下方为全部实测配置明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -1532,6 +1561,160 @@
     var out = [];
     ms.forEach(function (m) { if (m.harness && out.indexOf(m.harness) < 0) out.push(m.harness); });
     return out;
+  }
+
+  // ===== 7c) AI 十项全能·定时挑战赛(独立第三方限时 Agent 实测;计分组之一,权重 8%) =====
+  // 总榜 + 10 类得分 + 折叠的 13 题矩阵;模型连同自身 agent harness 一起测。
+  function renderOctathlon() {
+    var src = D.src.octathlon || {};
+    var ms = D.octathlon();
+    var cats = src.categories || [];
+    var tasks = (src.tasks || []).slice().sort(function (a, b) { return (a.no || 0) - (b.no || 0); });
+    var stats = src.stats || {};
+    var maxPts = src.maxPoints || 100;
+    var fmtTokens = function (v) {
+      if (v == null || !isFinite(v)) return "—";
+      try {
+        return new Intl.NumberFormat(/^en/i.test(document.documentElement.lang || "") ? "en" : "zh-CN",
+          { notation: "compact", maximumFractionDigits: 1 }).format(v);
+      } catch (e) {
+        return v >= 1e8 ? (v / 1e8).toFixed(1) + " 亿" : (v >= 1e4 ? Math.round(v / 1e4) + " 万" : String(Math.round(v)));
+      }
+    };
+    document.getElementById("octaDesc").innerHTML = paraHtml(src.desc || "") +
+      ((src.updated || src.refreshedAt) ? "<br>" +
+        [(src.updated ? "源站发布 " + esc(src.updated) : ""),
+          (src.refreshedAt ? "本站抓取 " + esc(src.refreshedAt) : ""),
+          ("收录 " + ms.length + " 个模型 / " + tasks.length + " 道题 / " + cats.length + " 个类别")]
+          .filter(Boolean).join(" · ") : "");
+    document.getElementById("octaStats").innerHTML =
+      "<span><b>" + ms.length + "</b>个参赛模型</span>" +
+      "<span><b>" + tasks.length + "</b>道题 / " + cats.length + " 个类别</span>" +
+      "<span><b>" + (stats.standardTasks != null ? stats.standardTasks : "—") + "</b>道标准评判题 · <b>" +
+        (stats.designTasks != null ? stats.designTasks : "—") + "</b>道主动设计题</span>" +
+      "<span><b>60–100</b>分钟 / 题</span>";
+    if (!ms.length) {
+      document.getElementById("octaNote").innerHTML =
+        '<div class="note-line"><b>暂无数据</b>抓取失败或尚未生成 data/octathlon.js(待下次每日刷新后恢复)。</div>';
+      return;
+    }
+    // 总榜:两级表头(成绩 / 测试开销 / 实测配置);数值列用本榜色,元数据保持灰字
+    var totalRows = ms.map(function (m) {
+      var c = m.canon;
+      var cost = m.cost || {};
+      var costParts = [];
+      if (cost.basis === "subscription") costParts.push(T("按订阅折算"));
+      else if (cost.basis === "api") costParts.push(T("按 API 标价折算"));
+      else if (cost.basis) costParts.push(cost.basis);
+      if (cost.plan && cost.plan.name) {
+        costParts.push(cost.plan.name + (cost.plan.price != null ? " $" + cost.plan.price + "/" + (cost.plan.period || "month") : ""));
+      }
+      if (cost.apiCny != null) costParts.push(T("官方 API 等值") + " ¥" + cost.apiCny);
+      if (cost.hours != null) costParts.push(T("作答") + " " + cost.hours + T(" 小时"));
+      if (cost.tpsReplies != null) costParts.push(T("回复") + " " + cost.tpsReplies + T(" 次"));
+      return '<tr><td class="rank">' + esc(m.rank) + '</td>' +
+        '<td>' + vdot(c.vendor) + esc(c.id) + '</td>' +
+        '<td>' + vname(c.vendor) + '</td>' +
+        '<td class="num">' + bvSpan("octathlon", m.score) + '</td>' +
+        '<td class="num">' + bvSpan("octathlon", m.standard) + '</td>' +
+        '<td class="num">' + bvSpan("octathlon", m.design) + '</td>' +
+        '<td class="num">' + (cost.cny != null
+          ? '<span title="' + esc(costParts.join(" · ") || "测试开销(元)") + '">¥' + cost.cny + '</span>'
+          : '<span title="源站未给该模型的测试开销">—</span>') + '</td>' +
+        '<td class="num">' + fmtTokens(cost.tokens) + '</td>' +
+        '<td class="num">' + (cost.tps != null ? cost.tps : "—") + '</td>' +
+        '<td>' + esc(m.agent || "—") + '</td>' +
+        '<td>' + esc(m.effort || "—") + '</td>' +
+        '<td>' + esc(m.tested || "—") + '</td></tr>';
+    });
+    fillTableHead("octaTable",
+      '<tr class="octa-group-row">' +
+        '<th rowspan="2">#</th><th rowspan="2">模型</th><th rowspan="2">厂商</th>' +
+        '<th colspan="3">成绩(0–' + maxPts + ')</th><th colspan="3">测试开销</th><th colspan="3">实测配置</th></tr><tr>' +
+        '<th class="num" title="总分 0-' + maxPts + ',10 类各 10% 加权">总分</th>' +
+        '<th class="num" title="7 道标准评判题得分(程序校验)">标准题</th>' +
+        '<th class="num" title="6 道主动设计题得分(两位评分员各评一次取平均)">设计题</th>' +
+        '<th class="num" title="测试开销(元);悬浮可见折算方式与订阅套餐">开销(¥)</th>' +
+        '<th class="num" title="全部 13 题累计 Token">Token</th>' +
+        '<th class="num" title="源站记录的每秒输出 token">TPS</th>' +
+        '<th title="' + esc(T("所用 agent harness")) + '">Agent</th>' +
+        '<th title="' + esc(T("推理档位")) + '">' + T("推理档位") + '</th>' +
+        '<th title="' + esc(T("源站测试日期")) + '">' + T("测试日") + '</th></tr>');
+    document.querySelector("#octaTable tbody").innerHTML = totalRows.join("");
+
+    // 类别成绩:10 类各 10%;表头带类别说明,数值列同榜色
+    var catHeads = ["#", "模型", "厂商"].concat(cats.map(function (g) {
+      return esc(g.name) + ' <span class="cell-cost">' + (g.weight != null ? g.weight + "%" : "") + '</span>';
+    })).concat(["总分"]);
+    var catClasses = ["", "", ""].concat(cats.map(function () { return "num"; })).concat(["num"]);
+    var catRows = ms.map(function (m) {
+      var c = m.canon;
+      return '<tr><td class="rank">' + esc(m.rank) + '</td>' +
+        '<td>' + vdot(c.vendor) + esc(c.id) + '</td>' +
+        '<td>' + vname(c.vendor) + '</td>' +
+        cats.map(function (g) {
+          var v = m.categories ? m.categories[g.key] : null;
+          return '<td class="num">' + bvSpan("octathlon", v) + '</td>';
+        }).join("") +
+        '<td class="num">' + bvSpan("octathlon", m.score) + '</td></tr>';
+    });
+    // 类别表头悬浮:类别简介
+    var catHeadHtml = '<tr>' + catHeads.map(function (h, i) {
+      var tip = (i >= 3 && i < 3 + cats.length)
+        ? T(cats[i - 3].name) + " · " + T("类别权重") + " " + cats[i - 3].weight + "%"
+        : "";
+      var cls = catClasses[i] ? ' class="' + catClasses[i] + (i >= 3 ? " bv bv-octathlon" : "") + '"' : "";
+      return "<th" + cls + (tip ? ' title="' + esc(tip) + '"' : "") + ">" + h + "</th>";
+    }).join("") + '</tr>';
+    fillTableHead("octaCatTable", catHeadHtml);
+    document.querySelector("#octaCatTable tbody").innerHTML = catRows.join("");
+
+    // 13 题明细:列头带题号、简称与限时/权重悬浮
+    var taskHeads = ["#", "模型"].concat(tasks.map(function (t) {
+      return (t.no < 10 ? "0" : "") + t.no + " " + esc(t.short);
+    })).concat(["总分"]);
+    var taskTips = [null, null].concat(tasks.map(function (t) {
+      return T(t.name) + " · " + t.minutes + T(" 分钟") + " · " + T("权重") + " " + t.weight + "%" +
+        " · " + (t.kind === "standard" ? T("标准评判题(程序校验)") : T("主动设计题(两位评分员取平均)"));
+    })).concat([T("总分") + " 0-" + maxPts]);
+    var taskHeadHtml = '<tr>' + taskHeads.map(function (h, i) {
+      var cls = i >= 2 ? ' class="num bv bv-octathlon"' : "";
+      return "<th" + cls + (taskTips[i] ? ' title="' + esc(taskTips[i]) + '"' : "") + ">" + h + "</th>";
+    }).join("") + '</tr>';
+    var taskRows = ms.map(function (m) {
+      var c = m.canon;
+      return '<tr><td class="rank">' + esc(m.rank) + '</td>' +
+        '<td>' + vdot(c.vendor) + esc(c.id) + '</td>' +
+        tasks.map(function (t) {
+          var v = m.tasks ? m.tasks[t.key] : null;
+          return '<td class="num">' + bvSpan("octathlon", v) + '</td>';
+        }).join("") +
+        '<td class="num">' + bvSpan("octathlon", m.score) + '</td></tr>';
+    });
+    fillTableHead("octaTaskTable", taskHeadHtml);
+    document.querySelector("#octaTaskTable tbody").innerHTML = taskRows.join("");
+    document.getElementById("octaTaskCount").textContent = "共 " + tasks.length + " 题 · 与类别表同源";
+
+    var cs = src.costSource || {};
+    var agentList = [];
+    ms.forEach(function (m) { if (m.agent && agentList.indexOf(m.agent) < 0) agentList.push(m.agent); });
+    document.getElementById("octaNote").innerHTML =
+      '<div class="note-line"><b>总分口径</b>13 题各折算 0–' + maxPts + ',类别权重各 10%、类内各题平分;' +
+        '7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。</div>' +
+      '<div class="note-line"><b>混口径提醒</b>模型连同其<b>自己的</b> agent harness 一起测(' +
+        esc(agentList.join(" / ")) + '),分数同时反映模型能力与脚手架质量;两位评分员本身也在被评名单中,' +
+        '故按站内判据压低权重,与站内其他基准不是同一协议。</div>' +
+      '<div class="note-line"><b>开销口径</b>订阅模型按每周额度折算订阅费,或按官方 API 等值与套餐价格比例折算;' +
+        '积分制套餐按档价折算;API 模型按官方标价计算。' +
+        (cs.usdCny ? '汇率 1 美元 = ' + esc(cs.usdCny) + ' 元' : "") +
+        (cs.fetched ? ',额度数据 ' + esc(cs.fetched) : "") +
+        (cs.name ? ';额度来源 <a href="' + esc(cs.url || "") + '" target="_blank" rel="noopener">' + esc(cs.name) + ' ↗</a>' : "") + '。</div>' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,权重 8%)与命中数(分母 ' +
+        CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,按站内 canonical 名归并展示。</div>' +
+      '<div class="note-line"><b>来源</b>' +
+        '<a href="' + esc(src.boardUrl || "") + '" target="_blank" rel="noopener">排行总榜 ↗</a>' +
+        (src.aboutUrl ? ' · <a href="' + esc(src.aboutUrl) + '" target="_blank" rel="noopener">挑战赛说明 ↗</a>' : "") +
+        (src.repoUrl ? ' · <a href="' + esc(src.repoUrl) + '" target="_blank" rel="noopener">题目与评测脚本 ↗</a>' : "") + '</div>';
   }
 
   // ===== 7) 权威基准测试(权威基准) =====
@@ -1847,7 +2030,7 @@
   function tbNoteHtml(meta) {
     var s = D.src[meta.srcKey] || {};
     return '来源:' + esc(tbVerUrl(meta)) + ' · 更新 ' + esc(s.updated || "") + ' · ' + meta.tasks +
-      ',得分越高越好。三版合并为一个基准组计入总览综合分(「榜单基准」组,权重 9%)与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
+      ',得分越高越好。三版合并为一个基准组计入总览综合分(「榜单基准」组,权重 8.3%)与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
       '其中 2.1 为厂商发布/归一化自报分口径,与 4.0/3.0 的官方 agent×model 解决率不同。';
   }
   // 柱状图条目标签:2.1 为模型级数据无 agent 字段,以「—」占位
@@ -2081,7 +2264,7 @@
       (v10At ? ' · v1.0 历史快照(' + esc(v10At) + ')' : '') +
       ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
       (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
-      '。本榜属「榜单基准」组,计入总览综合分(权重 14%)与命中数。');
+      '。本榜属「榜单基准」组,计入总览综合分(权重 12.9%)与命中数。');
     // 1) Terminal-Bench 多版本(4.0/3.0/2.1):合并为单一章节,章节内切换版本查看(默认 4.0 主榜);
     //    多版本仍合并为一个基准组计入总览,优先以最高版本为代表
     html += authSectionHtml("Terminal-Bench", "终端命令行任务 · 计入总览 · 版本切换", tbVerUrl(tbMeta(authTbVer)),
@@ -3665,6 +3848,7 @@
     else if (name === "modeldial") renderModeldial();
     else if (name === "arenaofbias") renderArenaofbias();
     else if (name === "aicodingdaily") renderAicodingdaily();
+    else if (name === "octathlon") renderOctathlon();
     else if (name === "authority") renderAuthority();
     else if (name === "plans") renderPlans();
     else if (name === "changelog") renderChangelog();

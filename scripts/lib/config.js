@@ -445,6 +445,24 @@ module.exports = {
       maxPoints: 70,
       axes: { laravel: 20, reactTs: 20, bugFinding: 10, edgeCase: 20 }
     },
+    // ===== AI 十项全能·定时挑战赛(octathlon.wendystars.com;独立第三方限时 Agent 实测)=====
+    octathlon: {
+      // 主办方 wendystars(个人站),不是被评厂商之一;测的是「模型 + 各自 agent harness」
+      // (Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等),推理强度默认 xhigh。
+      // 13 题 / 10 类:7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol
+      // 各评一次取平均;每题折算 0-100,类别权重各 10%(类内平分),总分 0-100。
+      // 站点为 Vite 静态站,页面运行时从 /decathlon/data/ 读取 models/tasks/scores 三份公开 JSON,
+      // 本源直接抓这三份接口;榜单条数随源站扩榜而变,不在注释与文案里写死。
+      // 渠道:该站自建自测,无更高优先级渠道可合并,按 T3 第三方评测处理(src=aggregate)。
+      url: "https://octathlon.wendystars.com/decathlon/data/scores.json",
+      modelsUrl: "https://octathlon.wendystars.com/decathlon/data/models.json",
+      tasksUrl: "https://octathlon.wendystars.com/decathlon/data/tasks.json",
+      boardUrl: "https://octathlon.wendystars.com/decathlon/leaderboard/",
+      aboutUrl: "https://octathlon.wendystars.com/decathlon/about/",
+      repoUrl: "https://github.com/Wendystar0628/AI-All-Round-Bench",
+      host: "octathlon.wendystars.com", src: "aggregate",
+      maxPoints: 100
+    },
     // ===== AA Coding Agent Index v2.0(「权威基准测试」页展示;仅展示,不计入综合分与命中数)=====
     aa_coding_agents: {
       // Artificial Analysis Coding Agent Index v2.0(artificialanalysis.ai/agents/coding-agents)。
@@ -517,7 +535,7 @@ module.exports = {
       //   aa_coding_agents(AA Coding Agent Index v2.0)为 agent×model 配置级的 0-100 合成分,
       //     且 Index 自身就是 FrontierCode v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA 的再合成,
       //     与站内各原生基准逐条对比会产生结构性假告警,故排除;
-      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "modeldial", "automationbench", "aicodingdaily", "aa_coding_agents", "vals_vibe_code", "vals_codemigration"]
+      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "modeldial", "automationbench", "aicodingdaily", "octathlon", "aa_coding_agents", "vals_vibe_code", "vals_codemigration"]
     },
     completeness: {
       // 每条记录必填字段
@@ -539,6 +557,8 @@ module.exports = {
       perSource: {
         aicodingdaily: { warnAgeDays: 7, alertAgeDays: 14 },
         arena_agent: { warnAgeDays: 7, alertAgeDays: 14 },
+        // AI 十项全能为按批次举办的定时挑战赛,不是日更榜:超过 14 天 warn、超过 30 天 alert。
+        octathlon: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_vibe_code: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 }
       }

@@ -131,6 +131,7 @@
   --bench-llm: #4338CA;
   --bench-arenaofbias: #0E7490;
   --bench-aicodingdaily: #86198F;
+  --bench-octathlon: #BE123C;
   --bench-aacoding: #7C2D12;
   --bench-valscodemigration: #155E75;
   --bench-programbench: #3F6212;
@@ -513,6 +514,7 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
 .bv-llm { --bv-color: var(--bench-llm); }
 .bv-arenaofbias { --bv-color: var(--bench-arenaofbias); }
 .bv-aicodingdaily { --bv-color: var(--bench-aicodingdaily); }
+.bv-octathlon { --bv-color: var(--bench-octathlon); }
 .bv-aacoding { --bv-color: var(--bench-aacoding); }
 .bv-valscodemigration { --bv-color: var(--bench-valscodemigration); }
 .bv-programbench { --bv-color: var(--bench-programbench); }
@@ -698,6 +700,18 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
 .md-details[open] > summary::before { transform: rotate(90deg); }
 .md-details > summary:hover { color: var(--text); }
 .md-details > .table-wrap { margin: 0; border: 0; border-top: 1px solid var(--border); border-radius: 0; }
+
+/* ===== AI 十项全能页 ===== */
+.octa-stats { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 14px 0 4px;
+  color: var(--text-tertiary); font-size: var(--fs-sm); }
+.octa-stats b { color: var(--text); font-size: var(--fs-md); margin-right: 2px; font-variant-numeric: tabular-nums; }
+.octa-sec { margin-top: 30px; }
+.octa-sub { color: var(--text-tertiary); font-size: var(--fs-sm); margin: -6px 0 10px; }
+/* 总榜两级表头:成绩 / 测试开销 / 实测配置 */
+#octaTable thead tr.octa-group-row th { text-align: center; color: var(--text-tertiary); font-weight: 600; }
+#octaTable thead tr.octa-group-row th:first-child,
+#octaTable thead tr.octa-group-row th:nth-child(2),
+#octaTable thead tr.octa-group-row th:nth-child(3) { text-align: left; }
 
 /* ===== 开关 =====
    对比度契约:关闭 轨道/底色 1.79、滑块/轨道 4.48;开启 轨道/底色 4.87、滑块/轨道 3.34。
@@ -2025,6 +2039,7 @@ html[data-theme="dark"] {
   --bench-llm: #A5B0FF;
   --bench-arenaofbias: #67E8F9;
   --bench-aicodingdaily: #E9A6E8;
+  --bench-octathlon: #FB7185;
   --bench-aacoding: #D8AD86;
   --bench-valscodemigration: #9ADFD8;
   --bench-programbench: #B5E06A;

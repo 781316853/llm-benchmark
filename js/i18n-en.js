@@ -71,24 +71,24 @@
       "Best value in the top 20: composite $1 ÷ ¥$2/M = $3"],
 
     // ===== 总览:矩阵行数提示(app.js 拼装,数字随筛选变化) =====
-    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
       function (m, ranked, ref, dom) {
         return "Showing the top " + ranked + " models plus " + ref + " “reference” " +
           (ref === "1" ? "model" : "models") + " inside the top-30 band (3 boards, no composite, unranked). " +
           "Other reference models and models covering 2 boards are behind “Show all models”; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
-          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias and AI Coding Daily are third-party tests; " +
+          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias, AI Coding Daily and AI Decathlon are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
       }],
-    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤3 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤3 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
       function (m, total, ranked, ref, dom) {
         return "Showing all " + total + " models covering at least 2 boards: ranked " + ranked + " · reference " + ref + ". " +
           "Models covering ≤3 boards get no composite and no rank; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
-          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias and AI Coding Daily are third-party tests; " +
+          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias, AI Coding Daily and AI Decathlon are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
       }],
-    ["^搜索「(.+?)」在全部 ([\\d,]+) 个有成绩的模型中命中 ([\\d,]+) 个(?::排名 ([\\d,]+) · 参考 ([\\d,]+) · 单榜 ([\\d,]+)。|。)\\s*搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。(?:\\s*当前高亮 (\\d+) 个国产模型。)?(?:\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。)?$",
+    ["^搜索「(.+?)」在全部 ([\\d,]+) 个有成绩的模型中命中 ([\\d,]+) 个(?::排名 ([\\d,]+) · 参考 ([\\d,]+) · 单榜 ([\\d,]+)。|。)\\s*搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。(?:\\s*当前高亮 (\\d+) 个国产模型。)?(?:\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。)?$",
       function (m, query, total, hits, ranked, ref, single, dom) {
         return "“" + query + "” matches " + hits + " of " + total + " scoring models" +
           (ranked ? ": ranked " + ranked + " · reference " + ref + " · single-board " + single + "." : ".") +
@@ -131,7 +131,7 @@
       }],
     ["^harness OpenHands · 成本 (\\$[\\d.]+)/测试 · 耗时 (.+?)/测试$",
       "OpenHands harness · $1/test · $2/test"],
-    ["^HLE 前沿知识广度 · 无工具闭卷口径 · 计入综合分\\(权重 8%\\)与命中数(?: · 源站排名 #(\\d+))?$",
+    ["^HLE 前沿知识广度 · 无工具闭卷口径 · 计入综合分\\(权重 7.4%\\)与命中数(?: · 源站排名 #(\\d+))?$",
       function (m, rank) { return "HLE frontier knowledge breadth · closed-book without tools · counted in the composite (weight 8%) and coverage" + (rank ? " · source rank #" + rank : ""); }],
 
     // ===== 版本徽标 / 时间 =====
@@ -246,11 +246,11 @@
       "Terminal-Bench $1 solve rate (agent×model, top 25)"],
 
     // ===== 权威基准页:各榜 source-note(URL / 日期 / 条数随抓取变化) =====
-    ["^(.+?) 主渠道:(https?://\\S+?)\\(官方实测榜 T1\\)· 补充:datalearner\\(厂商官方发布 T2,只补缺\\)· Qwen 官方博客/模型卡\\(T2 厂商发布,仅补缺,effort 未标注·协议不可比·仅供参考\\) · v1\\.1 更新 ([\\d\\-]+) · v1\\.0 历史快照\\(([\\d\\-]+)\\) · 共 (\\d+) 个模型\\(v1\\.1: (\\d+) / v1\\.0 独有: (\\d+)\\)(?: · v1\\.1 (\\d+) 任务 / (\\d+) 仓库)?。.*本榜属「榜单基准」组,计入总览综合分\\(权重 (\\d+)%\\)与命中数。$",
+    ["^(.+?) 主渠道:(https?://\\S+?)\\(官方实测榜 T1\\)· 补充:datalearner\\(厂商官方发布 T2,只补缺\\)· Qwen 官方博客/模型卡\\(T2 厂商发布,仅补缺,effort 未标注·协议不可比·仅供参考\\) · v1\\.1 更新 ([\\d\\-]+) · v1\\.0 历史快照\\(([\\d\\-]+)\\) · 共 (\\d+) 个模型\\(v1\\.1: (\\d+) / v1\\.0 独有: (\\d+)\\)(?: · v1\\.1 (\\d+) 任务 / (\\d+) 仓库)?。.*本榜属「榜单基准」组,计入总览综合分\\(权重 ([\\d.]+)%\\)与命中数。$",
       function (m, desc, url, upd, hist, total, v11, v10, tasks, repos, w) {
         return "Evaluates frontier coding agents on original, long-horizon software engineering tasks (uncontaminated, 91 repositories, 5 languages). Primary channel: " + url + " (official measured board, T1) · supplements: datalearner (vendor release, T2, gaps only) · Qwen official blog / model card (T2 vendor release, gaps only; effort unlabelled, protocol not comparable, reference only) · v1.1 updated " + upd + " · v1.0 historical snapshot (" + hist + ") · " + total + " models (v1.1: " + v11 + " / v1.0 only: " + v10 + ")" + (tasks ? " · v1.1 " + tasks + " tasks / " + repos + " repositories" : "") + ". Channel priority: official measured board > vendor release (paper / release page) > third-party aggregators and mirrors; lower tiers only fill missing models and fields and never override higher-tier scores. This board belongs to the “Leaderboard benchmarks” group and counts toward the overview composite (weight " + w + "%) and coverage.";
       }],
-    ["^来源:(https?://\\S+?) · 更新 ([\\d\\-]+) · (\\d+) 个任务(.*),得分越高越好。.*权重 (\\d+)%\\)与命中数,优先以最高版本为代表\\(4\\.0>3\\.0>2\\.1\\);其中 2\\.1 为厂商发布/归一化自报分口径,与 4\\.0/3\\.0 的官方 agent×model 解决率不同。$",
+    ["^来源:(https?://\\S+?) · 更新 ([\\d\\-]+) · (\\d+) 个任务(.*),得分越高越好。.*权重 ([\\d.]+)%\\)与命中数,优先以最高版本为代表\\(4\\.0>3\\.0>2\\.1\\);其中 2\\.1 为厂商发布/归一化自报分口径,与 4\\.0/3\\.0 的官方 agent×model 解决率不同。$",
       function (m, url, upd, tasks, detail, w) {
         return "Source: " + url + " · updated " + upd + " · " + tasks + " tasks" + taskPhrase(detail) +
           "; higher is better. The three versions merge into one benchmark group that counts toward the overview composite (in the “Leaderboard benchmarks” group, weight " + w + "%) and coverage, represented by the highest version (4.0 > 3.0 > 2.1); 2.1 uses vendor-published / normalised self-reported scores, unlike the official agent×model solve rates of 4.0 and 3.0.";
@@ -356,7 +356,31 @@
     ["^条形按天数等比 · 最长 (\\d+) 天$", "Bar length is proportional · max $1 days"],
     ["^展开其余 (\\d+) 家厂商$", "Show $1 more vendors"],
     ["^数据更新于 ([\\d-]+)$", "Data updated $1"],
-    ["^(.+?) · ([\\d-]+) 发布 (.+?) · 来源:(.+)$", "$1 · released $2 · $3 · source: $4"]
+    ["^(.+?) · ([\\d-]+) 发布 (.+?) · 来源:(.+)$", "$1 · released $2 · $3 · source: $4"],
+
+    // ===== AI 十项全能页:动态口径文案(数字与 agent 清单随数据变化) =====
+    ["^的 agent harness 上\\((.+?)\\),分数同时反映模型能力与脚手架质量,与站内其他基准不是同一协议;主办方为独立第三方\\(非被评厂商\\),故仍计入综合分,但按站内判据压低权重。$",
+      " agent harness ($1), so scores reflect both model and scaffold quality and are not on the same protocol as other benchmarks here. The organiser is an independent third party (not one of the evaluated vendors), so it still counts toward the composite, but with a reduced weight under this site's criteria."],
+    ["^agent harness 一起测\\((.+?)\\),分数同时反映模型能力与脚手架质量;两位评分员本身也在被评名单中,故按站内判据压低权重,与站内其他基准不是同一协议。$",
+      " agent harness ($1), so scores reflect both model and scaffold quality. Both graders are themselves in the evaluated list, so the board carries a reduced weight and is not on the same protocol as other benchmarks here."],
+    ["^订阅模型按每周额度折算订阅费,或按官方 API 等值与套餐价格比例折算;积分制套餐按档价折算;API 模型按官方标价计算。汇率 1 美元 = ([\\d.]+) 元,额度数据 ([\\d-]+);额度来源$",
+      "Subscription models are converted from the weekly quota to a subscription fee, or from the official API equivalent proportional to the plan price; credit-based plans use their tier price; API models use official list price. FX: US$1 = ¥$1, quota data $2; quota source"],
+    ["^已计入总览综合分\\(「第三方实测」计分组之一,权重 8%\\)与命中数\\(分母 (\\d+)\\);上表为模型级 (\\d+) 条,按站内 canonical 名归并展示。$",
+      "Counted in the overview composite (third-party tests group, weight 8%) and coverage (out of $1); the table above has $2 model rows, merged under this site's canonical names."],
+
+    // ===== 其它页:随十组权重变化的动态说明 =====
+    ["^已计入总览综合分\\(计分组之一,权重 12\\.9%\\),该席位来自同期移出计分组的 NL2Repo-Bench\\(原 9%\\),2026-09-21 随「第三方实测」组整体上调\\(12%→16%\\),后随计分组扩展按比例回调至 12\\.9%;命中数分母为 (\\d+)\\(十项基准\\)。上表为模型级 (\\d+) 条\\(含外部产品 (\\d+) 条\\),下方为全部 config 明细 (\\d+) 条\\(不含 Bot\\)。$",
+      "Counted in the overview composite (one of the scored groups, weight 12.9%); the seat comes from NL2Repo-Bench (9%), which left the scored groups, and was raised with the third-party tests group on 2026-09-21 (12%→16%) before scaling back to 12.9%. Coverage is out of $1 scored groups. The table above has $2 model rows (including $3 external products); the config table below has $4 rows (excluding bots)."],
+    ["^已计入总览综合分\\(权重 9\\.2%,「第三方实测」组\\)与命中数,计分组共 (\\d+) 组;本页展示 (\\d+) 个模型、源站快照 (\\d+) 次有效比较 / (\\d+) 道题。$",
+      "Counted in the overview composite (weight 9.2%, third-party tests group) and coverage, across $1 scored groups; this page shows $2 models, a source snapshot of $3 comparisons and $4 tasks."],
+    ["^已计入总览综合分\\(「第三方实测」计分组之一,权重 7\\.4%\\)与命中数\\(分母 (\\d+)\\);上表为模型级 (\\d+) 条,下方为全部实测配置明细 (\\d+) 条。$",
+      "Counted in the overview composite (third-party tests group, weight 7.4%) and coverage (out of $1); the table above has $2 model rows and the details below have $3 tested configurations."],
+    ["^均为每 prompt 平均值\\(非每模型总测试成本\\);源站对 (\\d+) 个模型未给成本\\(显示「—」\\),这些条目不进散点图。$",
+      "Values are per-prompt averages (not a model's total test cost); the source gives no cost for $1 models (shown as “—”), which stay out of the scatter."],
+    ["^本榜属「榜单基准」组,计入总览综合分\\(权重 12\\.9%\\)与命中数。$",
+      "This board is in the “Benchmark boards” group and counts toward the overview composite (weight 12.9%) and coverage."],
+    ["^三版合并为一个基准组计入总览综合分\\(「榜单基准」组,权重 8\\.3%\\)与命中数,优先以最高版本为代表\\(4\\.0>3\\.0>2\\.1\\);其中 2\\.1 为厂商发布/归一化自报分口径,与 4\\.0/3\\.0 的官方 agent×model 解决率不同。$",
+      "The three versions merge into one board counted in the overview composite (“Benchmark boards” group, weight 8.3%) and coverage, with the highest version as representative (4.0 > 3.0 > 2.1). Version 2.1 is a vendor-published / normalised self-reported basis and differs from the official agent × model solve rate of 4.0/3.0."]
   ];
 
   window.I18N_EN = {
@@ -364,7 +388,7 @@
     // data-i18n-ctx="card-stats"(见 benchSummary),那里「模型/任务/会话」跟在数字后应为复数。
     ctx: {
       "card-stats": {
-        "模型": "models", "任务": "tasks", "会话": "sessions", "场景": "scenarios",
+        "模型": "models", "任务": "tasks", "题目": "tasks", "会话": "sessions", "场景": "scenarios",
         "条目": "entries", "有效比较": "comparisons", "版本": "versions", "配置": "configs"
       },
       "card-weight": { "权重": "weight" },
@@ -373,9 +397,12 @@
     dict: {
       // ===== 页头 / 页脚 =====
       "大模型编码基准整合门户": "LLM Coding Benchmark Portal",
-      "聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode · FrontierSWE 等编码评测,聚焦跨基准模型对比":
-        "Aggregating DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · Arena of Bias frontend blind test · Terminal-Bench (4.0/3.0/2.1) · ModelDial Radar · AI Coding Daily · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode · FrontierSWE and more, focused on cross-benchmark model comparison",
+      "聚合 DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · 亿模亿样前端盲评 · Terminal-Bench(4.0/3.0/2.1) · ModelDial 雷达 · AI Coding Daily 独立实测 · AI 十项全能 · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode · FrontierSWE 等编码评测,聚焦跨基准模型对比":
+        "Aggregating DeepSWE · llm2014 Agentic · Code Arena·WebDev · Agent Arena · Arena of Bias frontend blind test · Terminal-Bench (4.0/3.0/2.1) · ModelDial Radar · AI Coding Daily · AI Decathlon · AA Coding Agent Index · Code Migration · NL2Repo-Bench · CursorBench · FrontierCode · FrontierSWE and more, focused on cross-benchmark model comparison",
       "数据快照": "Data snapshot",
+      "基准目录": "Benchmark index",
+      "26 个基准 · 每日刷新": "26 benchmarks · Daily refresh",
+      "数据来源索引见页首": "Data sources indexed at the top",
       "数据为快照,详见各页脚注": "Snapshot data — see the footnote on each page",
       "计分基准": "Scored benchmarks",
       "权威基准": "Reference benchmarks",
@@ -631,8 +658,8 @@
         "Cost and latency here use the source's five-axis total; external products report latency themselves and often have no cost. Values are consistent across models and directly comparable.",
       "计入总览综合分(权重 14%)与命中数(分母 9);数据授权 CC BY 4.0,为快照,不代表绝对评价。":
         "Counts toward the overview composite (weight 14%) and coverage (denominator 9). Data is CC BY 4.0 licensed and is a snapshot, not an absolute verdict.",
-      "该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 14%;9 个计分组中第三方实测权重合计 69%、榜单基准 31%(按在场权重归一)。":
-        "The slot comes from NL2Repo-Bench (formerly 9%), which left the scored set; it rose with the whole “Third-party tests” group on 2026-09-21 (12%→16%) and was scaled back to 14% as the scored set expanded. Across the 9 scored groups, third-party tests total 69% and leaderboard benchmarks 31% (normalized over the boards present).",
+      "该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 12.9%;10 个计分组中第三方实测权重合计约 71.5%、榜单基准约 28.5%(按在场权重归一)。":
+        "The slot comes from NL2Repo-Bench (formerly 9%), which left the scored set; it rose with the whole “Third-party tests” group on 2026-09-21 (12%→16%) and was scaled back to 12.9% as the scored set expanded. Across the 10 scored groups, third-party tests total about 71.5% and leaderboard benchmarks about 28.5% (normalized over the boards present).",
       "自 2026-09-20 起取消完整度奖励;在场榜单多少仅通过「缺失权重回流」体现。":
         "The completeness bonus was removed on 2026-09-20; how many boards a model covers now shows up only through missing weights flowing back.",
       "MiniMax-M3 本页约 $0.62(五轴汇总口径,费用完整度 partial);外部产品费用可能缺失,散点图仅画有费用条目。散点图 X 轴为参考费用(对数刻度),气泡面积编码五轴总耗时。":
@@ -686,8 +713,8 @@
       "每 prompt": "per-prompt",
       "平均值(非每模型总测试成本);源站对 8 个模型未给成本(显示「—」),这些条目不进散点图。":
         "averages (not a model's total testing cost); the source gives no cost for 8 models (shown as “—”) and those rows stay out of the scatter.",
-      "已计入总览综合分(「第三方实测」计分组之一,权重 8%)与命中数(分母 9);上表为模型级 33 条,下方为全部实测配置明细 50 条。":
-        "Counted in the overview composite (one of the “Third-party tests” groups, weight 8%) and coverage (denominator 9). The table above holds 33 model-level rows; all 50 tested configurations are below.",
+      "已计入总览综合分(「第三方实测」计分组之一,权重 7.4%)与命中数(分母 10);上表为模型级 34 条,下方为全部实测配置明细 51 条。":
+        "Counted in the overview composite (one of the “Third-party tests” groups, weight 7.4%) and coverage (out of 10). The table above holds 34 model-level rows; all 51 tested configurations are below.",
       "方法论与计分公式 ↗": "Methodology and scoring ↗",
       "· 源站按周更新": "· updated weekly on the source",
       "AI Coding Daily(aicodingdaily.com),主办方为独立开发者 Povilas Korop,不是被评厂商之一;每个模型在 7 个真实项目上跑 27 个 prompt,源站累计 2000+ 次运行。":
@@ -696,10 +723,10 @@
         "Total 0–70 = Laravel code quality 20 + React-TS code quality 20 + Bug Finding 10 + Edge-case Testing 20. Every prompt starts from a fresh copy of the project, the model cannot see the hidden tests, and there is no human feedback.",
       "的 agent harness 上(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),分数同时反映模型能力与脚手架质量。":
         "agent harness (Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness), so scores reflect both model and scaffold quality.",
-      "计入总览综合分(权重 8%)与命中数(分母 9);数据为快照,不代表绝对评价。":
-        "Counts toward the overview composite (weight 8%) and coverage (denominator 9). Data is a snapshot, not an absolute verdict.",
-      "按站内判据(主办方是否被评厂商自身)独立第三方实测榜计入综合分;因 harness 逐模型混杂、且与同为编码 agent 实测的 ModelDial(14%)存在重复计量,取 8% 压低,与 2026-09-24 无机酸前端实测入组时的处理同法。":
-        "Under this site's rule (is the organiser one of the evaluated vendors?), independent third-party boards count toward the composite. Because the harness varies by model and overlaps with ModelDial (14%), which also measures coding agents, the weight is lowered to 8% — the same treatment applied when the Wujisuan frontend test joined on 2026-09-24.",
+      "计入总览综合分(权重 7.4%)与命中数(分母 10);数据为快照,不代表绝对评价。":
+        "Counts toward the overview composite (weight 7.4%) and coverage (out of 10). Data is a snapshot, not an absolute verdict.",
+      "按站内判据(主办方是否被评厂商自身)独立第三方实测榜计入综合分;因 harness 逐模型混杂、且与同为编码 agent 实测的 ModelDial(12.9%)存在重复计量,2026-10-19 入组时取 10%,2026-11-24 随十组归一回调至 7.4%,与 2026-09-24 无机酸前端实测入组时的处理同法。":
+        "Under this site's rule (is the organiser one of the evaluated vendors?), independent third-party boards count toward the composite. Because the harness varies by model and overlaps with ModelDial (12.9%), which also measures coding agents, the seat started at 10% on 2026-10-19 and was scaled to 7.4% when the scored groups were renormalised to 10 on 2026-11-24 — the same treatment applied when the Wujisuan frontend test joined on 2026-09-24.",
       "平均值,不是每模型整轮测试成本;源站对部分模型未给成本(显示「—」),这些条目不进散点图但仍在下表。":
         "averages, not a model's cost for a full test round; the source gives no cost for some models (shown as “—”), which stay out of the scatter but remain in the table.",
       "源站按周更新,本页「源站发布」取页面 Last update 标注,「本站抓取」为每日刷新时间。":
@@ -1233,6 +1260,162 @@
         "Humanity's Last Exam closed-book score (%): 2,500 expert-written frontier questions that cannot be answered by searching the web; higher is better. Reference benchmark only — not counted in the composite or coverage. Full board on the “Reference Benchmarks” page.",
       "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 14%)与命中数":
         "ModelDial Radar five-axis composite (0-100): independent third-party test weighted backend & testing 20% + frontend & interaction 25% + knowledge & reasoning 35% + visual aesthetics 10% + maintainability 10%; each model is tested at several effort levels and its best configuration enters the board; external product entries carry an “External” badge (marked as not in the API ranking); counted in the composite (weight 14%) and coverage.",
+
+      // ===== AI 十项全能页(2026-11-24 入组) =====
+      "AI 十项全能·定时挑战赛": "AI Decathlon · Timed Agent Challenge",
+      "独立第三方实测 · 13 题 10 类 · 计入综合分 8%":
+        "Independent test · 13 tasks, 10 categories · 8% of composite",
+      "AI 十项全能·定时挑战赛(octathlon.wendystars.com):13 道题 / 10 个类别,AI 编程智能体在 60–100 分钟内独立作答、到时中止、无人答疑。":
+        "AI Decathlon · timed challenge (octathlon.wendystars.com): 13 tasks across 10 categories. Coding agents answer independently within 60–100 minutes per task, are stopped at the deadline, and receive no help.",
+      "7 道标准评判题由程序校验(Lean 编译、加速比、对局实力值、拆解步数、形状吻合度等),6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均;":
+        "Seven standard tasks are program-checked (Lean compilation, speedup, battle rating, disassembly steps, surface match, etc.); six design tasks are scored once each by Claude Opus 5.5 and GPT 6.1 Sol and averaged;",
+      "每题折算 0-100,类别权重各 10%,总分 0-100。":
+        "each task is normalised to 0–100, categories weigh 10% each, total 0–100.",
+      "模型连同其自己的 agent harness 一起测。":
+        "Models are tested together with their own agent harness.",
+      "源站发布 2026-11-23 · 本站抓取 2026-11-24 09:37 · 收录 27 个模型 / 13 道题 / 10 个类别":
+        "Source published 2026-11-23 · fetched 2026-11-24 09:37 · 27 models / 13 tasks / 10 categories",
+      "个参赛模型": " models",
+      "道题 / 10 个类别": " tasks / 10 categories",
+      "道标准评判题 ·": " standard-checked tasks ·",
+      "道主动设计题": " design tasks",
+      "分钟 / 题": " min / task",
+      "总榜": "Leaderboard",
+      "总分 = 10 个类别按权重相加(每类 10%,类内各题平分);标准评判题由程序校验,主动设计题由两位评分员各评一次取平均。":
+        "Total = the 10 categories weighted equally (10% each, split across their tasks); standard tasks are program-checked and design tasks average two graders.",
+      "成绩(0–100)": "Score (0–100)",
+      "测试开销": "Test cost",
+      "实测配置": "Test setup",
+      "标准题": "Standard",
+      "设计题": "Design",
+      "开销(¥)": "Cost (¥)",
+      "推理档位": "Effort",
+      "测试日": "Tested",
+      "类别成绩": "Category scores",
+      "10 个类别各占 10 分;悬浮表头可看类别说明。":
+        "Each category weighs 10 points; hover a header for its description.",
+      "数学推理": "Math Reasoning",
+      "性能优化": "Performance Optimization",
+      "算法对抗": "Algorithm Battle",
+      "空间推理": "Spatial Reasoning",
+      "几何建模": "Geometric Modeling",
+      "复杂交互应用": "Complex Interactive Apps",
+      "游戏设计与开发": "Game Design & Development",
+      "物理模拟": "Physics Simulation",
+      "视觉设计与渲染": "Visual Design & Rendering",
+      "系统架构与实现": "System Architecture & Implementation",
+      "13 题成绩明细": "All 13 task scores",
+      "共 13 题 · 与类别表同源": "13 tasks · same data as the category table",
+      "01 形式化证明": "01 Formal Proofs",
+      "02 数学竞赛": "02 Math Olympiad",
+      "03 光线追踪加速": "03 Ray Tracing",
+      "04 电路仿真加速": "04 Circuit Sim",
+      "05 攻城略地": "05 Conquest",
+      "06 鲁班锁拆解": "06 Burr Puzzle",
+      "07 结构重建": "07 Structure Rebuild",
+      "08 AE 动效编辑器": "08 AE Editor",
+      "09 动态路由塔防": "09 Routing TD",
+      "10 果冻水槽": "10 Jelly Tank",
+      "11 太阳雨渔港": "11 Sun-Rain Harbor",
+      "12 星际战舰": "12 Starship Fleet",
+      "13 操作系统嵌套": "13 Nested OS",
+      "总分口径": "Scoring basis",
+      "13 题各折算 0–100,类别权重各 10%、类内各题平分;7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。":
+        "Each of the 13 tasks is normalised to 0–100; categories weigh 10% each and split evenly across their tasks. Seven standard tasks are program-checked; six design tasks are scored once each by Claude Opus 5.5 and GPT 6.1 Sol and averaged.",
+      "混口径提醒": "Mixed harnesses",
+      "模型连同其": "Models are tested together with ",
+      "自己的": "their own",
+      "agent harness 一起测(": " agent harness (",
+      "开销口径": "Cost basis",
+      "说明": "Notes",
+      "要点速览 · 权重席位与混口径可展开":
+        "Key points · weight seat and mixed harness details expandable",
+      "AI 十项全能·定时挑战赛(octathlon.wendystars.com),主办方为独立第三方,不是被评厂商之一;13 道题、10 个类别,单题限时 60–100 分钟,无人答疑、到时中止。":
+        "AI Decathlon · timed challenge (octathlon.wendystars.com) is run by an independent third party, not one of the evaluated vendors. It has 13 tasks across 10 categories, each limited to 60–100 minutes, with no help and a hard stop at the deadline.",
+      "每题折算 0–100 分,类别权重各 10%、类内各题平分,总分 0–100。7 道标准评判题由程序校验(Lean 编译、加速比、对局实力值、拆解步数、形状吻合度等),6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次、逐项取平均。":
+        "Each task is normalised to 0–100; categories weigh 10% each and split evenly across their tasks, for a 0–100 total. Seven standard tasks are program-checked (Lean compilation, speedup, battle rating, disassembly steps, surface match, etc.); six design tasks are scored item by item by Claude Opus 5.5 and GPT 6.1 Sol and averaged.",
+      "模型连同": "Models are tested together with ",
+      "它自己的 agent harness": "their own agent harness",
+      "一起测(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等),分数同时反映模型能力与脚手架质量;两位评分员本身也在被评名单中。":
+        " (Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode and others); scores reflect both model and scaffold quality, and both graders are themselves in the evaluated list.",
+      "计入总览综合分(权重 8%,「第三方实测」组)与命中数(分母 10);数据为快照,不代表绝对评价。":
+        "Counted in the overview composite (weight 8%, “third-party tests” group) and coverage (out of 10); data are a snapshot, not an absolute judgement.",
+      "展开开销口径与题目清单": "Expand cost basis and task list",
+      "开销": "Cost",
+      "订阅模型按每周额度折算订阅费,或按官方 API 等值与套餐价格比例折算;积分制套餐按档价折算;API 模型按官方标价计算;汇率与额度数据源见页脚。":
+        "Subscription models are converted from the weekly quota to a subscription fee, or from the official API equivalent proportional to the plan price; credit-based plans use their tier price; API models use official list price; see the footer for FX and quota sources.",
+      "Token 为该次全部 13 题的累计消耗;TPS 为源站记录的每秒输出 token 数,「—」表示源站未给。":
+        "Tokens are the cumulative usage across all 13 tasks; TPS is the source's output tokens per second, and “—” means the source did not provide it.",
+      "题目清单": "Task list",
+      "数学推理 / 性能优化 / 算法对抗 / 空间推理 / 几何建模 / 复杂交互应用 / 游戏设计与开发 / 物理模拟 / 视觉设计与渲染 / 系统架构与实现,共 13 题。":
+        "Math Reasoning / Performance Optimization / Algorithm Battle / Spatial Reasoning / Geometric Modeling / Complex Interactive Apps / Game Design & Development / Physics Simulation / Visual Design & Rendering / System Architecture & Implementation — 13 tasks in total.",
+      "测试开销(元);悬浮可见折算方式与订阅套餐": "Test cost (CNY); hover for the conversion basis and subscription plan",
+      "源站未给该模型的测试开销": "The source did not provide a test cost for this model",
+      "总分 0-100,10 类各 10% 加权": "Total 0–100, 10 categories weighted 10% each",
+      "7 道标准评判题得分(程序校验)": "Seven standard tasks (program-checked)",
+      "6 道主动设计题得分(两位评分员各评一次取平均)": "Six design tasks (two graders averaged)",
+      "全部 13 题累计 Token": "Cumulative tokens across all 13 tasks",
+      "源站记录的每秒输出 token": "Output tokens per second reported by the source",
+      "所用 agent harness": "Agent harness used",
+      "源站测试日期": "Source test date",
+      "按订阅折算": "subscription basis",
+      "按 API 标价折算": "API list price basis",
+      "官方 API 等值": "official API equivalent",
+      "作答": "run",
+      " 小时": " h",
+      "回复": "replies",
+      " 次": "",
+      "类别权重": "category weight",
+      "权重": "weight",
+      "标准评判题(程序校验)": "standard task (program-checked)",
+      "主动设计题(两位评分员取平均)": "design task (two graders averaged)",
+      " 分钟": " min",
+      "测试于": "tested",
+      "13 题 / 10 类,模型连同自身 harness 一起测": "13 tasks / 10 categories, model tested with its own harness",
+      "排行总榜 ↗": "Leaderboard ↗",
+      "挑战赛说明 ↗": "About the challenge ↗",
+      "题目与评测脚本 ↗": "Tasks & evaluation scripts ↗",
+      "ModelDial 订阅额度 ↗": "ModelDial subscription quotas ↗",
+      "AI 十项全能 (总分/100)": "AI Decathlon (total/100)",
+      "AI 十项全能": "AI Decathlon",
+      "独立实测 · 13 题 / 10 类": "Independent · 13 tasks / 10 categories",
+      "独立第三方实测 · 13 题 10 类 · 总分 100": "Independent test · 13 tasks, 10 categories · total 100",
+      "AI 十项全能·定时挑战赛总分(0-100):独立第三方(octathlon.wendystars.com)实测,13 道题 / 10 个类别,单题限时 60–100 分钟、无人答疑、到时中止;总分 = 10 类各 10% 加权,类内各题平分。7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。注:模型连同它自己的 agent harness(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等)一起测,分数混杂模型与脚手架质量;计入综合分(权重 8%)与命中数,完整榜单见「AI 十项全能」页":
+        "AI Decathlon total (0–100): independent third-party test (octathlon.wendystars.com) with 13 tasks across 10 categories, each limited to 60–100 minutes with no help and a hard stop. Total = 10 categories weighted 10% each, split across their tasks. Seven standard tasks are program-checked; six design tasks are scored once each by Claude Opus 5.5 and GPT 6.1 Sol and averaged. Note: models run with their own agent harness (Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode etc.), so scores mix model and scaffold quality; counted in the composite (weight 8%) and coverage. Full board on the “AI Decathlon” page.",
+      "10 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE / ModelDial / 亿模亿样 / AI Coding Daily / AI 十项全能。":
+        "How many of the 10 scored benchmark groups the model appears on: DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench (4.0·3.0·2.1) / HLE / ModelDial / Arena of Bias / AI Coding Daily / AI Decathlon.",
+      "外部产品": "External product",
+
+      // ===== 2026-11-24 十组权重(替代九组口径) =====
+      "榜单基准:基准官方实测榜(DeepSWE 12.9% / Terminal-Bench 4.0/3.0/2.1 8.3% / HLE 7.4%)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标后按权重加权,再按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)":
+        "Benchmark boards: official leaderboards (DeepSWE 12.9% / Terminal-Bench 4.0/3.0/2.1 8.3% / HLE 7.4%) count toward the composite and coverage. Each board is standardised by within-board robust z-scores (median and 1.4826×MAD, clipped at ±3σ), weighted, then merged by channel tier (official leaderboard > vendor release > third-party aggregate or mirror).",
+      "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分,权重 12.9%;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70,权重 7.4%;AI 十项全能,13 题 10 类限时 Agent 实测、总分 0-100,权重 8%,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev 16.6% / Agent Arena 净提升 8.3% / 亿模亿样 9.2%)与站主实测口径(llm2014 私有题库全历史保序校正 9.2%);七组同纲计入综合分与命中数,合计占权重约 71.5%;综合分为各榜榜内相对分的加权,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数":
+        "Third-party tests: independent third-party evaluations (ModelDial Radar, five-axis 20/25/35/10/10, weight 12.9%; AI Coding Daily, 7 projects × 27 prompts, total 0-70, weight 7.4%; AI Decathlon, 13 tasks / 10 categories timed agent test, total 0-100, weight 8% — each model runs on its own agent harness), community blind tests and real-world usage (Code Arena · WebDev 16.6% / Agent Arena net gain 8.3% / Arena of Bias 9.2%) and the maintainer's own suite (llm2014 all-history order-calibrated, 9.2%). Seven groups count toward the composite and coverage on the same footing, about 71.5% of the weight. The composite is a weighted sum of in-board relative scores, with untested boards imputed from the model's own level. The #N before each value is the model's actual position on that board (WebDev has no source rank, so ties are ranked by raw entry Elo); hover to see the board's total entry count.",
+      "HLE(Humanity's Last Exam)前沿知识广度得分(%):2500 道专家撰写、无联网可检索解的闭卷题,统一无工具口径;2026-11-15 起计入综合分(权重 7.4%)与命中数,完整榜单见「权威基准测试」页":
+        "HLE (Humanity's Last Exam) frontier knowledge score (%): 2,500 expert-written closed-book questions that cannot be answered by web search, all under a no-tools protocol. Counted in the composite (weight 7.4%) and coverage since 2026-11-15; full board on the “Reference Benchmarks” page.",
+      "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(权重 8.3%)与命中数":
+        "LMArena Agent Arena net gain (%): IPS (causal tracing) estimate of a model's improvement over the Arena baseline in real agent sessions; may be negative. When a model appears at several effort levels, its best score is used; the 95% interval, unique sessions and observations are also recorded. Counted in the composite (weight 8.3%) and coverage.",
+      "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(权重 9.2%)与命中数":
+        "Arena of Bias community blind-test Elo for frontend builds (1000 = average; +400 points ≈ ten times the odds of being preferred): two builds for the same prompt are judged anonymously and Bradley-Terry estimates preference strength. When a model is tested at several effort levels, its best config enters the board. Counted in the composite (weight 9.2%) and coverage.",
+      "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(权重 7.4%)与命中数,完整榜单见「AI Coding Daily」页":
+        "AI Coding Daily total (0–70): independent third-party testing (aicodingdaily.com), 7 real projects and 27 prompts per model, total = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20. When a model is tested at several effort levels and harnesses, its highest-scoring configuration enters the board. Note each model runs on its own agent harness (Codex CLI / Claude Code / OpenCode etc.), so scores mix model and scaffold quality; counts toward the composite (weight 7.4%) and coverage. Full board on the “AI Coding Daily” page.",
+      "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(权重 9.2%)与命中数":
+        "llm2014 all-history order-calibrated score: difficulty adjustment + monthly order, ties go to the newest month; may exceed 100 or be negative; counts toward the composite (weight 9.2%) and coverage.",
+      "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(权重 12.9%)与命中数":
+        "ModelDial Radar five-axis composite (0-100): independent third-party test weighted backend & testing 20% + frontend & interaction 25% + knowledge & reasoning 35% + visual aesthetics 10% + maintainability 10%; each model is tested at several effort levels and its best configuration enters the board; external product entries carry an “External” badge (marked as not in the API ranking); counted in the composite (weight 12.9%) and coverage.",
+      "计入总览综合分(权重 12.9%)与命中数(分母 10);数据授权 CC BY 4.0,为快照,不代表绝对评价。":
+        "Counted in the overview composite (weight 12.9%) and coverage (out of 10); data licensed CC BY 4.0, a snapshot, not an absolute judgement.",
+      "计入总览综合分(权重 9.2%)与命中数(分母 10),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。":
+        "Counted in the overview composite (weight 9.2%) and coverage (out of 10); replaced the retired AI Capability suite on 2026-10-16. Data are a snapshot, not an absolute judgement.",
+      "计入总览综合分(权重 7.4%)与命中数(分母 10);数据为快照,不代表绝对评价。":
+        "Counted in the overview composite (weight 7.4%) and coverage (out of 10); data are a snapshot, not an absolute judgement.",
+      "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(权重 9.2%)":
+        "The result is an estimate of cross-month capability, not an official source score; counted in the overview composite (weight 9.2%).",
+      "DeepSWE 12.9% · Code Arena·WebDev 16.6% · Terminal-Bench 8.3% · ModelDial 12.9% · llm2014 9.2% · 亿模亿样 9.2% · AI Coding Daily 7.4% · AI 十项全能 8% · Agent Arena 8.3% · HLE 7.4%(合计 1.00,按在场榜归一;缺测权重回流)。":
+        "DeepSWE 12.9% · Code Arena·WebDev 16.6% · Terminal-Bench 8.3% · ModelDial 12.9% · llm2014 9.2% · Arena of Bias 9.2% · AI Coding Daily 7.4% · AI Decathlon 8% · Agent Arena 8.3% · HLE 7.4% (sums to 1.00 and is renormalised over the boards present; missing weights flow back).",
+      "DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;AI 十项全能 为 13 题按 10 类各 10% 加权的总分 0-100。":
+        "DeepSWE is Pass@1 %; Code Arena·WebDev uses raw Elo; Agent Arena is net gain % versus the Arena baseline (may be negative, IPS/causal-tracing basis); Terminal-Bench uses the highest of 4.0/3.0/2.1, with 3.0/2.1 converted to a 4.0-equivalent score via shared models (2.1's 88 ≈ 4.0's 26); ModelDial is five-axis 20/25/35/10/10; llm2014 maps grade levels to 0–100; Arena of Bias is Elo (1000 = average); AI Coding Daily is a four-axis total out of 70; AI Decathlon is a 0–100 total from 13 tasks across 10 categories weighted 10% each.",
+      "微软": "Microsoft",
 
       // ===== 反馈 / 引用 =====
       "引用此榜单": "Cite this page",
