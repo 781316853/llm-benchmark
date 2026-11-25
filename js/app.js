@@ -357,9 +357,11 @@
     return m;
   }
   // 按 showAll 过滤:list=待过滤项; getId=取 canonical id; showAll=真则全量,否则仅命中≥2榜
+  // 第二批榜源还没到时不筛:否则会按半个数据集把命中 2-3 榜的模型整批砍掉
+  // (到达后由 refreshAfterDeferred 重绘一次自动修正)。
   // 过滤后若为空(理论上不会)自动回退全量,保证页面不空
   function filterHits(list, getId, showAll) {
-    if (showAll) return list;
+    if (showAll || !benchComplete()) return list;
     var m = hitMap();
     var kept = list.filter(function (it) { return (m[getId(it)] || 0) >= 2; });
     return kept.length ? kept : list;
@@ -558,7 +560,8 @@
   // ===== 1) 总览 =====
   function renderOverview() {
     renderNews();
-    renderReleaseClock();
+    // 发布倒计时:位于首屏之下,先出骨架,滚到附近再渲染(图表容器独立,不动 section 里的工具条)
+    lazyRender(document.getElementById("releaseChart"), "block", 0, 0, renderReleaseClock);
     // 核心基准速览:紧凑榜单行(序号 / 名称与描述 / 权重与规模 / 头名)
     var sum = D.benchSummary();
     document.getElementById("benchCards").innerHTML = '<div class="bench-list">' + sum.map(function (b, i) {
@@ -580,7 +583,9 @@
         '</a>';
     }).join("") + '</div>';
 
-    renderMatrix();
+    // 矩阵在首屏之下(实测顶部 1759px,视口 1108px):骨架先占位,滚到附近再真正构建。
+    // 骨架按 10 列 × 12 行铺,让区块预先有接近真实的高度,滚动时不会突然撑开。
+    lazyRender(document.getElementById("matrixTable"), "table", 10, 12, renderMatrix);
   }
 
   // 交叉模型矩阵:搜索、开关与表头排序只重绘这一块,不连带重建新闻目录与基准卡片
@@ -3345,7 +3350,7 @@
   // 折叠只是视觉收起、不删任何字,点「展开全文」即可看全。
   // data/changelog.js 含 12 个工具的全量历史(实测约 3.4MB),不进首屏脚本清单:
   // 首次切到本页时才注入,避免每个访客都为低频页面付一次大文件下载与解析。
-  var CL_DATA_SRC = SITE_BASE + "data/changelog.js?v=20261118b";
+  var CL_DATA_SRC = SITE_BASE + "data/changelog-lite.js?v=20261125a";
   var CL_MONTHLY_SRC = SITE_BASE + "data/changelog-monthly.js?v=20261118b";
   var clLoadState = "idle"; // idle -> loading -> ready | failed
   // 重试时附加的缓存戳:一次失败就把这个会话永久钉在「加载失败」上(见下方 onerror 注释),
@@ -3434,8 +3439,8 @@
       }
       if (descEl) {
         descEl.textContent = clLoadState === "failed"
-          ? "更新日志数据加载失败(网络或 data/changelog.js 缺失),重试本页或等待下次每日刷新。"
-          : "暂无数据:抓取失败或尚未生成 data/changelog.js(待下次每日刷新后恢复)。";
+          ? "更新日志数据加载失败(网络或 data/changelog-lite.js 缺失),重试本页或等待下次每日刷新。"
+          : "暂无数据:抓取失败或尚未生成 data/changelog-lite.js(待下次每日刷新后恢复)。";
       }
       wrap.innerHTML = '<div class="cl-empty-page">' + esc(descEl ? descEl.textContent : "暂无更新日志数据。") +
         ' <button type="button" class="qc-scope-btn" data-cl-retry>重新加载数据</button></div>';
@@ -3736,6 +3741,25 @@
   // Terminal-Bench 4.0/3.0/2.1 三版已合并进总览(unified),不在此列,仍属首屏。
   // 缓存戳与 index.html 的首屏脚本一致维护(?v= 变更时同步)。
   var DATA_SRC = {
+    // ===== 首屏榜源(2026-11-25 起从 HTML 静态标签改为这里声明,按页分批) =====
+    pricing: { src: "data/pricing.js?v=20261111a", global: "PRICING" },
+    deepswe: { src: "data/deepswe.js?v=20261116b", global: "DEEPSWE" },
+    deepswe_v10: { src: "data/deepswe_v10.js?v=20260824a", global: "DEEPSWE_V10" },
+    llm2014: { src: "data/llm2014.js?v=20260824a", global: "LLM2014" },
+    arena_webdev: { src: "data/arena_webdev.js?v=20261116b", global: "ARENA_WEBDEV" },
+    arena_agent: { src: "data/arena_agent.js?v=20261117b", global: "ARENA_AGENT" },
+    arenaofbias: { src: "data/arenaofbias.js?v=20261116a", global: "ARENAOFBIAS" },
+    tbench: { src: "data/tbench.js?v=20261117b", global: "TBENCH" },
+    tbench_v3: { src: "data/tbench_v3.js?v=20260912b", global: "TBENCH_V3" },
+    tbench_v2: { src: "data/tbench_v2.js?v=20261117a", global: "TBENCH_V21" },
+    hle: { src: "data/hle.js?v=20261117a", global: "HLE" },
+    modeldial: { src: "data/modeldial.js?v=20261116a", global: "MODELDIAL" },
+    releases: { src: "data/releases.js?v=20261119b", global: "RELEASES" },
+    aicodingdaily: { src: "data/aicodingdaily.js?v=20261110b", global: "AICODINGDAILY" },
+    octathlon: { src: "data/octathlon.js?v=20261124a", global: "OCTATHLON" },
+    seen: { src: "data/seen.js?v=20261116b", global: "SEEN" },
+    news: { src: "data/news.js?v=20260921a", global: "NEWS" },
+    // ===== 仅展示榜(权威基准页 / 套餐对比页首屏,其余页面从不加载) =====
     tbscience: { src: "data/tbscience.js?v=20261111g", global: "TBSCIENCE" },
     osworld: { src: "data/osworld.js?v=20260912a", global: "OSWORLD" },
     lastexam: { src: "data/lastexam.js?v=20261120a", global: "LASTEXAM" },
@@ -3760,6 +3784,47 @@
     authority: ["tbscience", "osworld", "lastexam", "lastexamV10", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontiercodeV11", "frontierswe", "vals_codemigration", "aa_coding_agents"],
     plans: ["codingplan", "modeldialSubs"]
   };
+
+  // ===== 首屏批次计划(2026-11-25) =====
+  // 每页首屏只等「自己这张表 + 新闻/发布时钟」需要的榜源,拿到就渲染;
+  // 其余榜源(其余页面从不独立使用,只为 D.unified() 的跨榜命中数与综合分服务)留到第二批。
+  // 第二批在首屏渲染后的空闲时段注入,到达后再修正一次行数(见 refreshAfterDeferred)。
+  // 这样首屏字节:总览 ~524KB(仅延后 pricing/deepswe_v10/hle 三个仅矩阵列),
+  // 子页 46~138KB(原先每页固定 631KB)。
+  var BENCH_KEYS = [
+    "pricing", "deepswe", "deepswe_v10", "llm2014", "arena_webdev", "arena_agent",
+    "arenaofbias", "tbench", "tbench_v3", "tbench_v2", "hle", "modeldial",
+    "releases", "aicodingdaily", "octathlon", "seen", "news"
+  ];
+  var PAGE_EAGER = {
+    // 总览:新闻 + 基准速览(benchSummary 读 10 个榜)+ 矩阵。矩阵要 pricing/hle/deepswe_v10 三列,
+    // 但那三列只在矩阵里用,矩阵本身在首屏之下且是懒渲染,故一并留到第二批。
+    overview: ["deepswe", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
+      "tbench_v3", "tbench_v2", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
+    llm2014: ["llm2014", "seen"],
+    modeldial: ["modeldial", "seen"],
+    arenaofbias: ["arenaofbias", "seen"],
+    aicodingdaily: ["aicodingdaily", "seen"],
+    octathlon: ["octathlon", "seen"],
+    // 权威基准页要把 DeepSWE / Terminal-Bench 三版 / HLE / ModelDial 等已计入综合分的榜单
+    // 连同自己的 16 个展示型榜源一起渲染,少了这些表会整片空白(2026-11-25 实测发现),
+    // 故这里与旧版「19 个脚本全量首屏」保持一致,不做精简。
+    authority: BENCH_KEYS.slice(),
+    plans: [],
+    changelog: []
+  };
+  // 本页第二批榜源(第一批之外的都算);authority/plans/changelog 自己有成套按需数据,不需要第二批
+  function deferredKeys(tab) {
+    if (tab === "authority" || tab === "plans" || tab === "changelog") return [];
+    var eager = PAGE_EAGER[tab] || [];
+    return BENCH_KEYS.filter(function (k) { return eager.indexOf(k) < 0; });
+  }
+  // 第二批是否已经全部落地(含失败):未落地时跨榜命中筛选先不生效,避免按半个数据集砍掉行
+  var deferredSettled = false;
+  function benchComplete() {
+    var keys = deferredKeys(CURRENT_TAB).concat(PAGE_EAGER[CURRENT_TAB] || []);
+    return keys.every(function (k) { return dataLoaded(k) || dataState[k] === "failed"; });
+  }
   var dataState = {};    // key -> "loading" | "ready" | "failed"
   var dataWaiters = {};  // key -> 待回调队列
   function dataLoaded(key) {
@@ -3770,6 +3835,19 @@
     var ws = dataWaiters[key] || [];
     dataWaiters[key] = [];
     ws.forEach(function (f) { f(); });
+    markLoading();
+  }
+  // 加载指示器进度:按「本页首屏批次里已落地(含失败)的源数」推进
+  function markLoading() {
+    var el = document.getElementById("appLoading");
+    if (!el) return;
+    var keys = (TAB_DATA[CURRENT_TAB] || []).concat(PAGE_EAGER[CURRENT_TAB] || []);
+    var total = keys.length;
+    var done = keys.filter(function (k) { return dataLoaded(k) || dataState[k] === "failed"; }).length;
+    var bar = el.querySelector(".app-loading-bar > i");
+    var txt = el.querySelector(".app-loading-text");
+    if (bar) bar.style.transform = "scaleX(" + (total ? done / total : 1) + ")";
+    if (txt) txt.textContent = total ? "正在加载数据 " + done + " / " + total : "正在加载数据";
   }
   // 确保 keys 全部就绪后回调 done;并发调用对同一 key 合并等待,不重复注入
   function ensureData(keys, done) {
@@ -3808,6 +3886,163 @@
     }
   }
 
+  // ===== 可见即渲染(懒渲染)+ 骨架屏 + 进场动画 =====
+  // 2026-11-25:重区块(总览矩阵、发布倒计时、子页长表与图表)不再在 init 里同步构建。
+  // 首屏先出骨架占位,IntersectionObserver 提前 260px 触达才真正渲染,渲染后逐行/逐块进场。
+  // 尊重 prefers-reduced-motion:直接渲染、不加动画(与 initReveal 的口径一致)。
+  var lazyReduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var lazyObserver = null;
+  var lazyThreshold = 260;
+
+  function lazyNear(el) {
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    return r.top < vh + lazyThreshold && r.bottom > -lazyThreshold;
+  }
+
+  // 骨架:表格型(表头一条 + N 行,每行若干不同宽度的块)
+  function skeletonTableRows(cols, rows) {
+    var out = [];
+    for (var i = 0; i < cols; i++) {
+      out.push('<td><span class="sk-cell" style="width:' + (52 + ((i * 37) % 46)) + '%"></span></td>');
+    }
+    var head = '<thead><tr>' + out.join("") + '</tr></thead>';
+    var body = [];
+    for (var r = 0; r < rows; r++) {
+      var cells = [];
+      for (var c = 0; c < cols; c++) {
+        cells.push('<td><span class="sk-cell" style="width:' + (40 + ((r * 23 + c * 41) % 52)) + '%"></span></td>');
+      }
+      body.push('<tr class="sk-row">' + cells.join("") + '</tr>');
+    }
+    return head + '<tbody>' + body.join("") + '</tbody>';
+  }
+
+  // 骨架:块型(卡片/图表占位)
+  function skeletonBlock(height) {
+    return '<div class="sk-block" style="min-height:' + (height || 220) + 'px">' +
+      '<span class="sk-bar" style="width:38%"></span>' +
+      '<span class="sk-bar" style="width:64%"></span>' +
+      '<span class="sk-bar" style="width:52%"></span>' +
+      '</div>';
+  }
+
+  // 给容器塞骨架;kind: table=按表格结构(需容器是 table 或含 table),block=块
+  function showSkeleton(host, kind, cols, rows) {
+    if (!host) return;
+    var t = host.tagName === "TABLE" ? host : host.querySelector("table");
+    if (kind === "table" && t) {
+      t.innerHTML = skeletonTableRows(cols || 6, rows || 10);
+      t.classList.add("is-skeleton");
+      return;
+    }
+    host.innerHTML = skeletonBlock();
+    host.classList.add("is-skeleton");
+  }
+  function hideSkeleton(host) {
+    if (!host) return;
+    host.classList.remove("is-skeleton");
+    var t = host.tagName === "TABLE" ? host : host.querySelector("table");
+    if (t) t.classList.remove("is-skeleton");
+  }
+
+  // 登记一个可见才渲染的任务:已在视口附近 → 立即执行;否则先出骨架,进视口再执行
+  function lazyRender(host, kind, cols, rows, fn) {
+    if (!host || lazyReduceMotion || !("IntersectionObserver" in window) || lazyNear(host)) {
+      hideSkeleton(host);
+      fn();
+      return;
+    }
+    if (host.__lzDone) return;
+    showSkeleton(host, kind, cols, rows);
+    // 调试/预览用:?skeleton=1 只画骨架不渲染,便于核对骨架样式与高度
+    if (/(?:^|[?&])skeleton=1/.test(location.search)) return;
+    host.__lzFn = function () {
+      if (host.__lzDone) return;
+      host.__lzDone = 1;
+      hideSkeleton(host);
+      fn();
+      staggerRegion(host);
+    };
+    if (!lazyObserver) {
+      lazyObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          lazyObserver.unobserve(entry.target);
+          var f = entry.target.__lzFn;
+          entry.target.__lzFn = null;
+          if (f) f();
+        });
+      }, { rootMargin: lazyThreshold + "px 0px", threshold: 0 });
+    }
+    lazyObserver.observe(host);
+  }
+
+  // 渲染后逐行进场(表格行只做透明度:tr 上加 transform 会让内部 sticky 列临时失去包含块)
+  function staggerRows(tbody) {
+    if (!tbody || lazyReduceMotion) return;
+    var rows = tbody.children;
+    var n = Math.min(rows.length, 30);
+    for (var i = 0; i < n; i++) {
+      rows[i].style.animationDelay = Math.min(i, 14) * 18 + "ms";
+      rows[i].classList.add("st-in");
+    }
+  }
+  // 渲染后逐块进场(卡片/统计数字/图表容器)
+  function staggerNodes(list, sel) {
+    if (lazyReduceMotion) return;
+    var nodes = list.querySelectorAll(sel);
+    Array.prototype.forEach.call(nodes, function (el, i) {
+      el.style.animationDelay = Math.min(i, 10) * 45 + "ms";
+      el.classList.add("st-rise");
+    });
+  }
+
+  // 一次把某块区域里的表格行 + 卡片块都排进动画队列。
+  // 由 renderPage / lazyRender / refreshAfterDeferred 统一调用,各页 renderX 不必各自关心。
+  function staggerRegion(root) {
+    if (!root || lazyReduceMotion) return;
+    Array.prototype.forEach.call(root.querySelectorAll("table tbody"), function (tb) {
+      var t = tb.parentNode;
+      if (t && t.classList && t.classList.contains("is-skeleton")) return;
+      staggerRows(tb);
+    });
+    staggerNodes(root, ".bench-item, .matrix-stat, .octa-stat, .stats-row, .qc-hero, .pl-card, .cl-tool");
+  }
+
+  // 第二批榜源到达后的修正:只在表格区块重绘,不重建新闻面板(否则滚动位置被重置)
+  function refreshAfterDeferred() {
+    if (CURRENT_TAB === "overview") {
+      var mt = document.getElementById("matrixTable");
+      if (mt && mt.__lzDone) { renderMatrix(); staggerRegion(mt); }
+      return;
+    }
+    if (CURRENT_TAB === "llm2014") renderLlm2014(state.llmMonth);
+    else if (CURRENT_TAB === "modeldial") renderModeldial();
+    else if (CURRENT_TAB === "arenaofbias") renderArenaofbias();
+    else if (CURRENT_TAB === "aicodingdaily") renderAicodingdaily();
+    else if (CURRENT_TAB === "octathlon") renderOctathlon();
+    staggerRegion(document.querySelector(".page.active"));
+    if (window.EXP) EXP.decorate();
+  }
+
+  // 首屏渲染之后,空闲时段取第二批榜源;一到齐就修正一次
+  function scheduleDeferredData() {
+    var todo = deferredKeys(CURRENT_TAB).filter(function (k) {
+      return !dataLoaded(k) && dataState[k] !== "failed";
+    });
+    if (!todo.length) { deferredSettled = true; return; }
+    var run = function () {
+      ensureData(todo, function () {
+        deferredSettled = true;
+        refreshAfterDeferred();
+      });
+    };
+    // 首屏先让出主线程:空闲回调优先,3s 兜底;慢网下也不会一直不取
+    if (window.requestIdleCallback) window.requestIdleCallback(run, { timeout: 3000 });
+    else setTimeout(run, 800);
+  }
+
   // ===== 当前页渲染 =====
   // 旧的 #page-<tab> 深链(上一版的引用链接、搜索结果可能还带着)改跳独立页面,
   // 由 init 在渲染前调用;返回 true 表示已发起跳转,本次不再渲染。
@@ -3820,19 +4055,22 @@
   }
   function renderPage() {
     var name = CURRENT_TAB;
-    var needData = TAB_DATA[name];
+    // 首屏批次(本页榜单数据)+ 该页特有的按需数据(authority/plans)
+    var needData = (TAB_DATA[name] || []).concat(PAGE_EAGER[name] || []);
     // 只有「未加载且非 failed」的源才等待;failed 的源按缺数据直接渲染,
     // 否则 ensureData 对全 failed 的 keys 会同步回调 renderPage,形成无限递归。
-    var pending = needData && needData.some(function (k) {
+    var pending = needData.some(function (k) {
       return !dataLoaded(k) && dataState[k] !== "failed";
     });
     if (pending) {
-      // 数据按需注入:先占位,注入完成后再渲染
+      // 主题切换等重绘路径上若数据还没到:先占位,注入完成后再渲染
       setPagePending(name);
       ensureData(needData, renderPage);
-    } else {
-      renderTab(name);
+      return;
     }
+    renderTab(name);
+    // 逐行/逐块进场(表格行只淡入,块做位移;reduced-motion 下整体跳过)
+    staggerRegion(document.querySelector(".page.active"));
     // 补引用/导出控件(表格随渲染重建,由 export.js 幂等装饰)
     if (window.EXP) EXP.decorate();
     // 回放因所在页不可见而暂缓的图表绘制(队列为空时零开销)
@@ -3857,7 +4095,6 @@
   // ===== 初始化 =====
   function init() {
     if (redirectLegacyHash()) return;
-    state.llmMonth = D.llmMonths().slice(-1)[0]; // 默认最新月份
     // 移动端胶囊导航:把当前页签滚进可视区(8 个页签在窄屏会横向溢出,最后一页默认在屏幕外)
     var activeTab = document.querySelector(".tab.active");
     if (activeTab && activeTab.parentElement &&
@@ -3866,10 +4103,11 @@
         activeTab.scrollIntoView({ block: "nearest", inline: "center" });
       });
     }
-    // 月份下拉(仅 llm2014 页存在)
-    var ms = D.llmMonths();
-    var llmMonthEl = document.getElementById("llmMonth");
-    if (llmMonthEl) {
+    // 月份下拉(仅 llm2014 页存在):数据到位后再填,故抽成函数由首屏批次回调调用
+    function fillLlmMonthSelect() {
+      var ms = D.llmMonths();
+      var llmMonthEl = document.getElementById("llmMonth");
+      if (!llmMonthEl) return;
       llmMonthEl.innerHTML = ms.map(function (m) {
         return '<option value="' + m + '"' + (m === state.llmMonth ? " selected" : "") + ">" + m + "</option>";
       }).join("") + '<option value="' + LLM_ALL_KEY + '">全部月份 · 难度校正</option>';
@@ -4073,19 +4311,31 @@
     ["wheel", "touchstart", "keydown"].forEach(function (ev) {
       window.addEventListener(ev, function () { authPendingTarget = null; }, { passive: true });
     });
-    // 刷新时间节点:取各源 refreshedAt 最新值;旧数据缺字段时不显示
-    var refreshedAt = maxRefreshedAt();
-    document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
-      + (refreshedAt ? " · 刷新于 " + refreshedAt + "(北京时间)" : "");
-    // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行渲染并移除指示器
-    requestAnimationFrame(function () {
+    // ===== 首屏数据分批注入(2026-11-25) =====
+    // 脚本标签里只剩 models.js/models-auto.js:本页首屏需要的榜源在这里按 PAGE_EAGER/TAB_DATA 注入,
+    // 到齐后双 rAF 出首帧(先让浏览器把加载指示器画出来),再在空闲时取第二批。
+    var eagerKeys = (TAB_DATA[CURRENT_TAB] || []).concat(PAGE_EAGER[CURRENT_TAB] || []);
+    markLoading();
+    ensureData(eagerKeys, function () {
+      state.llmMonth = D.llmMonths().slice(-1)[0] || state.llmMonth; // 默认最新月份
+      fillLlmMonthSelect();
+      // 刷新时间节点:取各源 refreshedAt 最新值;旧数据缺字段时不显示
+      var refreshedAt = maxRefreshedAt();
+      document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
+        + (refreshedAt ? " · 刷新于 " + refreshedAt + "(北京时间)" : "");
+      // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行渲染并移除指示器
       requestAnimationFrame(function () {
-        renderPage();
-        var loading = document.getElementById("appLoading");
-        if (loading) loading.remove();
-        // ECharts 按需加载(约 1MB):首屏不需要图表库,故移到首屏渲染之后空闲时预热。
-        if (window.requestIdleCallback) window.requestIdleCallback(function () { CH.warmup(); }, { timeout: 2000 });
-        else setTimeout(function () { CH.warmup(); }, 1200);
+        requestAnimationFrame(function () {
+          renderPage();
+          var loading = document.getElementById("appLoading");
+          if (loading) loading.classList.add("is-done");
+          setTimeout(function () { if (loading && loading.parentNode) loading.parentNode.removeChild(loading); }, 220);
+          // 首屏已出:空闲时补第二批榜源(到齐后修正跨榜筛选)
+          scheduleDeferredData();
+          // ECharts 按需加载(约 1MB):首屏不需要图表库,故移到首屏渲染之后空闲时预热。
+          if (window.requestIdleCallback) window.requestIdleCallback(function () { CH.warmup(); }, { timeout: 2000 });
+          else setTimeout(function () { CH.warmup(); }, 1200);
+        });
       });
     });
   }

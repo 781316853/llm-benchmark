@@ -946,6 +946,13 @@ async function updateChangelog() {
   writers.writeWindowVar(cfg.outFile, cfg.windowVar,
     header + "window." + cfg.windowVar + " = " +
     JSON.stringify(payload, null, 2).replace(/'/g, "\\'").replace(/"/g, "'") + ";\n");
+  // 派生页面实际加载的精简版:每工具只留最近 DISPLAY_ENTRIES 条(+ entryCount 保留全量条数)。
+  // 全量文件仍是合并基线与历史存档,只是不再被浏览器请求。
+  try {
+    require("./changelog-lite").writeLite(payload);
+  } catch (e) {
+    console.log("[changelog] 精简版派生失败(页面会回落到全量文件):" + e.message);
+  }
   console.log("[changelog] 完成:" + tools.length + " 个工具,共 " +
     tools.reduce(function (n, t) { return n + t.entries.length; }, 0) + " 条" +
     (staleCount ? ",失败/滞后工具 " + staleCount + " 个" : ""));

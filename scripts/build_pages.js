@@ -153,8 +153,45 @@ function assemble(lines, sections, id) {
   return { head: head, body: body, tail: tail };
 }
 
-function alternates(p) {
-  if (!p.en) return "";
+// ===== 首屏榜源(2026-11-25) =====
+// 2026-11-25 前所有页面都在 head 里静态挂 19 个 data 脚本;现在只有各页首屏真正要用的那几个
+// 静态挂载,其余由 js/app.js 的 DATA_SRC 在首屏渲染后空闲时注入。
+// cache-busting 版本号必须与 js/app.js 的 DATA_SRC 保持一致(两处同一份数据文件)。
+const DATA_VER = {
+  pricing: "20261111a", deepswe: "20261116b", deepswe_v10: "20260824a",
+  llm2014: "20260824a", arena_webdev: "20261116b", arena_agent: "20261117b",
+  arenaofbias: "20261116a", tbench: "20261117b", tbench_v3: "20260912b",
+  tbench_v2: "20261117a", hle: "20261117a", modeldial: "20261116a",
+  releases: "20261119b", aicodingdaily: "20261110b", octathlon: "20261124a",
+  seen: "20261116b", news: "20260921a"
+};
+// 与 js/app.js 的 PAGE_EAGER 同源:总览要 14 个(benchSummary 读 10 个榜 + 新闻/发布时钟),
+// 其它子页只要自己那一张表 + 新上榜标记所需的 seen。authority/plans/changelog 各自另有按需加载。
+const PAGE_EAGER = {
+  overview: ["deepswe", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
+    "tbench_v3", "tbench_v2", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
+  llm2014: ["llm2014", "seen"],
+  modeldial: ["modeldial", "seen"],
+  arenaofbias: ["arenaofbias", "seen"],
+  aicodingdaily: ["aicodingdaily", "seen"],
+  octathlon: ["octathlon", "seen"],
+  // 权威基准页还要渲染已计入综合分的榜单(DeepSWE/Terminal-Bench 三版/HLE/ModelDial 等),
+  // 清单必须与 js/app.js 的 PAGE_EAGER.authority 一致,否则该页表格会整片空白。
+  authority: ["deepswe", "deepswe_v10", "llm2014", "arena_webdev", "arena_agent", "arenaofbias",
+    "tbench", "tbench_v3", "tbench_v2", "hle", "modeldial", "releases", "aicodingdaily",
+    "octathlon", "seen", "pricing"],
+  plans: [],
+  changelog: []
+};
+function eagerTags(pageId) {
+  const keys = PAGE_EAGER[pageId] || [];
+  if (!keys.length) return "  <!-- 本页首屏不需要榜单数据(authority/plans/changelog 走各自的按需加载) -->";
+  return keys.map(function (k) {
+    return '  <script defer src="data/' + k + '.js?v=' + DATA_VER[k] + '"></script>';
+  }).join("\n");
+}
+
+function alternates(p) {  if (!p.en) return "";
   return '  <link rel="alternate" hreflang="zh-CN" href="' + zhUrl(p) + '" />\n' +
     '  <link rel="alternate" hreflang="en" href="' + enUrl(p) + '" />\n' +
     '  <link rel="alternate" hreflang="x-default" href="' + zhUrl(p) + '" />';
@@ -164,6 +201,10 @@ function alternates(p) {
 function buildPage(lines, sections, page) {
   const parts = assemble(lines, sections, page.id);
   let out = parts.head + "\n" + parts.body + "\n" + parts.tail;
+
+  // 首屏榜源按页静态挂在 head(见 eagerTags):必须在解析期就发起下载,
+  // 否则要等 js/app.js 执行完才注入,白白晚一个 RTT 才开始取数据。
+  out = out.replace("<!--EAGER_DATA-->", eagerTags(page.id));
 
   const url = zhUrl(page);
   const subs = [
@@ -223,6 +264,9 @@ function buildPageEn(lines, sections, page) {
   }
 
   let out = parts.head + "\n" + body + "\n" + parts.tail;
+
+  // 首屏榜源:与中文页同一份清单(下面的 ../ 重写会把 src="data/ 改成 src="../data/)
+  out = out.replace("<!--EAGER_DATA-->", eagerTags(page.id));
 
   // 页面在 /en/ 子目录:样式、脚本、数据、图片改走 ../,按需注入的数据脚本由 body[data-base] 补齐
   out = out.replace(/(\s(?:src|href)=")((?:css|js|data|assets)\/)/g, "$1../$2");

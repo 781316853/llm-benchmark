@@ -1046,7 +1046,8 @@
       return Object.assign({}, t, {
         entries: entries,
         inWindow: inWindow,
-        total: all.length,
+        // changelog-lite.js 只带最近 N 条,全量条数由 entryCount 单独给出(否则「全量 N 条」会失真)
+        total: (t.entryCount != null ? t.entryCount : all.length),
         latestDate: latest ? latest.date : ""
       });
     });
