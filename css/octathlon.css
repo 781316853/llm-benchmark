@@ -2457,7 +2457,18 @@ html[data-theme="dark"] body {
           直接溢出到面板外，最右「命中」列和表格底部就落在页面底色上，像没有底。
    修法：overflow 收回到 auto（横向滚动，面板底不再被穿透）；两行表头按行高精确堆叠；
           只对「有两行表头」的表生效，单行表头不受影响。 */
-.matrix-section .table-wrap { overflow-x: auto; max-width: 100%; }
+/* 宽屏(>=1367px):矩阵已收窄到塞进面板(实测 1191 vs 1192),不再需要横向滚动条。
+   这里必须用 visible —— 只要 wrapper 是滚动容器(overflow-x 非 visible),
+   粘滞表头就会以 wrapper 为滚动端口,而 wrapper 高度=内容高度,永远不滚,
+   结果是表头根本不吸顶(实测 th.top 随页面滚动 220→20→-180)。
+   让 wrapper 不参与滚动,th 才能对着视口吸顶。 */
+.matrix-section .table-wrap { overflow-x: visible; max-width: 100%; }
+/* 窄屏:面板宽 <1200px 时表格确实塞不下(实测 1240 视口下 1191 表宽 vs 1176 面板),
+   只能横向滚动;滚动期间粘滞表头失效,属可接受取舍。
+   阈值取 1320:此时面板约 1216px,对 1191px 的表留 25px 余量,避免 1px 误差导致切边。 */
+@media (max-width: 1319px) {
+  .matrix-section .table-wrap { overflow-x: auto; }
+}
 .table-wrap .data-table thead:has(tr + tr) tr:first-child th {
   top: var(--tabs-h, 56px);
   z-index: 5;
