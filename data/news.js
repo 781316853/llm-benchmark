@@ -2,47 +2,92 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-24',
+  'updated': '2026-11-25',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
-    '前瞻与传闻',
-    '产品应用',
-    '行业动态'
+    '产品应用'
   ],
   'items': [
     {
-      'date': '2026-11-24',
-      'title': '智谱发布旗舰模型 GLM-5.4',
-      'brief': '智谱 正式发布新一代旗舰模型 GLM-5.4 ，这是其首款采用 Loop Transformer 架构的模型，核心瞄向“泛 Coding”。官方称 GLM-5.4 对 750B 基座中的 28 层 做两轮循环，在不增加参数量的前提下实现更深度推理，智能水平达到 2–3T 级模型。在 200 个 真实场景编程实战评测中， GLM-5.4 在视觉 Coding、视觉复刻与长程任务上表现突出，并将代码能力外推至视频生成与处理、完整游戏构建…',
-      'url': 'https://mp.weixin.qq.com/s/D-IZr-QaT1or_chminK8IQ',
+      'date': '2026-11-25',
+      'title': 'ChatGPT 合并 Chat 和 Work，部分用户率先体验',
+      'brief': 'OpenAI 团队成员表示， ChatGPT 开始向一小部分 Pro 用户推出合并后的 Chat 和 Work 模式。',
+      'url': 'https://x.com/thsottiaux/status/2125284868414394550',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-24',
-      'title': 'OpenAI 在 ChatGPT 上线日常对话版 GPT-6.2 Sol',
-      'brief': 'OpenAI 在 ChatGPT 的 Chat 模式推出 GPT-6.2 Sol 版本，针对日常对话优化，面向 Plus、Pro、Business 和 Enterprise 用户。官方测试中，新模型图像理解得分 71.7% ，高于 GPT-6 的 47.4% ；高难度指令遵循率 78.1% ，高于 GPT-6 的 62.5% 。它也更擅长按价格、位置等因素缩小在线比较范围，并适时提出跟进。',
-      'url': 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes',
+      'date': '2026-11-25',
+      'title': 'OpenAI 员工宣布 Business 套餐 Fast mode 免费至年底',
+      'brief': 'OpenAI 员工 Tibo 发帖称， ChatGPT Business 用户可获得一次 banked reset ，并可免费使用 Fast mode 至 12 月 31 日 。他的个人资料显示其在 OpenAI 从事 Codex 与 ChatGPT 相关工作。',
+      'url': 'https://x.com/thsottiaux/status/2125299248782778588',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-24',
-      'title': 'Antigravity 重置所有用户 Gemini 配额并向付费 Pro 开放 Carbon',
-      'brief': 'Antigravity 负责人 Varun Mohan 在 X 宣布，Antigravity 正为各层级升级模型，并重置所有用户的 Gemini 配额。此次调整后，付费 Pro 用户可获得 Carbon 访问权限， Hydrogen 按承诺向所有用户开放。',
-      'url': 'https://x.com/_mohansolo/status/2124971131312734707',
+      'date': '2026-11-25',
+      'title': 'OpenAI 改进 Dots 审核，减少任务中的额外审批',
+      'brief': 'OpenAI 改进了 Dots 的自动审核安全检查，减少执行任务时要求用户审批的次数。',
+      'url': 'https://x.com/frits__vp/status/2125285321491259626',
       'source': '橘鸦AI早报',
       'type': '要闻'
     },
     {
-      'date': '2026-11-24',
-      'title': 'Qoder 独家上线匿名模型 HungerG，免费试用 7 天',
-      'brief': 'Qoder 宣布一款新的匿名模型独家上线其平台，代号 HungerG ，官方未公开它由谁打造，并邀请用户交给它真实任务，猜猜是谁开发的。该模型于 11 月 23 日至 30 日 在 Qoder 和 Qoder IDE 免费开放 7 天 。',
-      'url': 'https://x.com/qoder_ai_ide/status/2124899980632822148',
+      'date': '2026-11-25',
+      'title': 'Antigravity 新版非必要审批减半，Neon 任务快 17%',
+      'brief': 'Antigravity 负责人 Varun Mohan 发文称， Antigravity 新版本把 Auto 模式中的非必要审批减少了 50% ，带来一次明显的体验提升，之后还会在这一方向带来更多改进。',
+      'url': 'https://x.com/_mohansolo/status/2125337132021780867',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-25',
+      'title': 'Anthropic 推出测试功能：artifacts 可装成桌面应用',
+      'brief': 'Anthropic 为 Claude 推出 Install as app 功能的测试版，Mac 和 Windows 用户可把 Claude 生成的 artifacts 安装成桌面应用。应用在独立窗口打开，可使用 Claude 和 connectors ，经授权可发送通知或添加菜单栏项目，并随原 artifact 编辑自动更新。',
+      'url': 'https://claude.com/resources/articles/install-as-app',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-25',
+      'title': 'Cognition 发布编码模型 SWE-2.1',
+      'brief': 'Cognition 发布编码模型 SWE-2.1 ，称其基于 Kimi K3 用纯强化学习训练，在 FrontierCode 2.0 、 Terminal-Bench 4.1 等多项基准上较 SWE-2 大幅提升。新模型已在 Devin Cloud 、 Devin Desktop 和 Devin CLI 上线，未来两周对 Devin Pro 、 Max 和 Teams 免费。',
+      'url': 'https://cognition.com/blog/swe-2-1',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-25',
+      'title': '腾讯混元发布并开源第三代翻译模型 Hy MT3',
+      'brief': '腾讯混元 发布并开源第三代翻译模型 Hy MT3 ，提供 1.8B 、 7B 、 30B-A3B 三个尺寸，支持语种从 38 种 增至 102 种 ，已上线 Hy 翻译 App 和小程序。',
+      'url': 'https://huggingface.co/collections/tencent/hy-mt3',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-25',
+      'title': 'LlamaIndex 开放文档解析模型 OCRia-1 权重',
+      'brief': 'LlamaIndex 宣布在 Hugging Face 和 Ollama 开放文档解析模型 OCRia-1 的权重。 OCRia-1 是基于 Qwen3.5-4B 的 4B 视觉语言模型，能把页面图像转成 Markdown，表格和图表数据写成 HTML 表格。 LlamaIndex 称其为两个 ParseBench 榜单上得分最高的开放权重模型； LlamaIndex CEO Jerry Liu 称，其准确率与成本在多个基准上处于 4B…',
+      'url': 'https://ollama.com/llamaindex/ocria-1',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-25',
+      'title': '百灵大模型发布并开源 Ling-3.2-air',
+      'brief': '百灵大模型团队发布并开源 Ling-3.2-air ，权重已上架 Hugging Face 和 ModelScope 。',
+      'url': 'https://huggingface.co/inclusionAI/Ling-3.2-air',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-25',
+      'title': '蚂蚁百灵团队发布并开源生理信号基础模型 LingSante-Pulse',
+      'brief': '蚂蚁百灵团队 发布生理信号基础模型 LingSante-Pulse ，已按 MIT 许可证开放权重与代码。该模型在超过 15 万小时 多场景生理数据上预训练，用单个冻结编码器统一处理心电、脑电、肌电等信号，并支持连续血糖（ CGM ）分析，权重可在 Hugging Face 获取。',
+      'url': 'https://huggingface.co/inclusionAI/LingSante-Pulse-1.0',
       'source': '橘鸦AI早报',
       'type': '模型发布'
     },
@@ -93,62 +138,6 @@ window.NEWS = {
       'url': 'https://support.claude.com/en/articles/13837440-use-plugins-in-claude',
       'source': '橘鸦AI早报',
       'type': '产品应用'
-    },
-    {
-      'date': '2026-11-23',
-      'title': 'OpenAI 公开内部指标 Perplexity，提议设共同开发限制',
-      'brief': 'OpenAI 首席科学家 Jakub Pachocki 发文《Perplexity and Intelligence》，首次公开 OpenAI 过去五年的内部预训练评测指标 Perplexity ，并提议行业建立统一发展限制标准。',
-      'url': 'https://openai.com/index/perplexity-and-intelligence',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-23',
-      'title': '蚂蚁集团开源医疗模型 LingSante 3.1 Flash 与 air-VL',
-      'brief': '蚂蚁集团 百灵大模型发布两款医疗模型 LingSante-3.1-flash 和 LingSante-3.1-air-VL 。',
-      'url': 'https://huggingface.co/inclusionAI/LingSante-3.1-flash',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-23',
-      'title': '马斯克披露 Tesla Reality View 技术细节',
-      'brief': '马斯克 回复 FSD v15 体验帖，披露了 Tesla Reality View 技术细节。他称特斯拉自去年已有接近像素级的 world model ，车端部署的大幅缩小版是基于 Tesla Universal Vision Encoder 特征的 conditional mean-flow model 。',
-      'url': 'https://x.com/elonmusk/status/2124458557525397780',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-23',
-      'title': 'Elon Musk 预警 AI 行业明年严重资金短缺',
-      'brief': 'Elon Musk 在 X 上回复 Keras 创始人 François Chollet 时表示，让如此规模的算力设备通电、冷却并稳定运行极其困难。',
-      'url': 'https://x.com/elonmusk/status/2124271725927903388',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-23',
-      'title': 'OpenRouter 终止 3 家供应商合作，移除 125 个端点的 ZDR 资格',
-      'brief': 'OpenRouter 发布公告称，安全研究人员发现其平台上部分推理供应商存在数据处理问题，公司调查未发现自身遭入侵或数据泄露。该公司已终止与 3 家供应商的合作，将 125 个端点移出 Zero Data Retention（ZDR） 资格，并通知可能受影响的客户； ZDR 要求供应商不存储提示词和响应。',
-      'url': 'https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-23',
-      'title': '甲骨文称与 OpenAI 基础设施合同已获全额资金支持',
-      'brief': '甲骨文表示，随着本月初完成一轮 200 亿美元 融资，其与 OpenAI 的基础设施合同已获得全部所需资金。',
-      'url': 'https://www.oracle.com/news/announcement/oracle-statement-2026-11-20/',
-      'source': '橘鸦AI早报',
-      'type': '行业动态'
-    },
-    {
-      'date': '2026-11-23',
-      'title': 'OpenAI 团队：ChatGPT/Codex 桌面应用又将迎来重大更新',
-      'brief': 'OpenAI 负责 ChatGPT 与 Codex 的团队成员 Tibo 发帖称， ChatGPT 与 Codex 桌面应用团队已在准备又一次重大更新，并询问用户更新后还有哪些不足。',
-      'url': 'https://x.com/thsottiaux/status/2124322968499282388',
-      'source': '橘鸦AI早报',
-      'type': '前瞻与传闻'
     }
   ]
 };

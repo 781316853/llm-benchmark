@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-24',
-  'refreshedAt': '2026-11-24 18:11',
+  'updated': '2026-11-25',
+  'refreshedAt': '2026-11-25 16:56',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3469,
-    'afterMerge': 3451,
-    'needsZh': 2017,
-    'translated': 2017,
+    'afterToolDedupe': 3485,
+    'afterMerge': 3467,
+    'needsZh': 2025,
+    'translated': 2025,
     'untranslated': 0
   },
   'zh': {
@@ -216,6 +216,7 @@ window.CHANGELOG_MONTHLY = {
     '258257a1-118': '为 claude plugin install、uninstall、update、enable 和 disable 新增 --json，并在 claude plugin list --json 的每行新增 errorDetails/noteDetails',
     '258a784e-37': '为应用添加德语翻译',
     '25c792c8-120': '为 Opus 4.7 新增 xhigh 努力级别，位于 high 和 max 之间。可通过 /effort、--effort 和模型选择器使用；其他模型会回退到 high',
+    '2614f2d4-147': '添加了 PreSkillShellCommand 钩子事件，该事件可以在技能或命令的内联 shell 命令加载时拒绝这些命令；在 2.1.331 及更早版本中，名为该名称的设置文件会在启动时打开一个对话框',
     '26223e8c-121': '新增 /resume 对后台会话的支持——通过 claude --bg 或 agent 视图启动的会话现与交互式会话一同显示，并标记为 bg',
     '2638b3c8-73': '添加了CLAUDE_CODE_DISABLE_WEB_FETCH环境变量以关闭WebFetch工具',
     '263dd810-160': '在 /config 中新增「动态工作流规模」设置，用于控制 Claude 创建动态工作流的大致规模（少量/中等/大量智能体）——这是建议性指南，并非强制上限',
@@ -319,6 +320,7 @@ window.CHANGELOG_MONTHLY = {
     '305692e8-69': '在帮助菜单中增加外部编辑器快捷键（Ctrl+G），提升可发现性',
     '30936c08-38': '为应用增加翻译支持',
     '3099a5ce-38': '因缺陷暂时移除 bun 的 strip ansi',
+    '30c551a4-84': '添加了来自 MCP 服务器的技能（测试版）。它们在“/”菜单中显示为“服务器：技能”；其他技能保留其名称',
     '30eab1f0-152': '引导式Claude Agent设置：从提供商选择器中选择Claude Agent以复制claude身份验证登录、安装Claude Code并验证连接，然后再继续模型选择',
     '31131eb8-54': '为 auth login 命令新增选项，用于跳过交互式提问',
     '3129b40-49': '为 Session.list() 过滤器增加全面测试覆盖',
@@ -449,6 +451,7 @@ window.CHANGELOG_MONTHLY = {
     '3ebc71c8-27': '为应用添加翻译支持',
     '3ec9ca1e-38': '新增实验性 oxfmt 格式化器支持',
     '3ef13784-56': '支持从命令面板中断运行中的会话',
+    '3f1bd1dc-61': '在其他会话中被搁置消息的提示中添加了“始终传送”',
     '3f2c5c68-63': '在 config.toml 中为各个关联应用工具设置审批审核人',
     '3f4b88e8-108': '在 Claude Desktop 和其他非交互式主机中，当托管设置中的钩子无法加载时，在对话中添加了警告',
     '3f544830-76': '新增 /claude-api 技能，用于使用 Claude API 和 Anthropic SDK 构建应用',
@@ -633,6 +636,7 @@ window.CHANGELOG_MONTHLY = {
     '52ae319c-33': '为聊天消息输入添加 variant 字段',
     '52c3c494-35': '格式化器支持 uv 格式',
     '52e05228-49': '在选择服务器对话框中为移除服务器添加图标按钮',
+    '531eceec-145': '当您的会员等级适用于该模型且您使用 claude.ai 账户登录时，您的网络验证计划会员等级已添加到启动页标题中，位于模型名称旁边。',
     '532fe3fc-24': '新增消息删除端点',
     '533fdd4c-106': '将virtualText添加到mod的提示装饰：在提示框中绘制的文本从未进入草稿或提交的提示',
     '53844314-219': '为 Linux 和 WSL 上的沙箱凭据文件新增 mode: \'mask\' —— 沙箱内命令读取哨兵副本（整个文件，或仅 extract 正则捕获的片段），沙箱代理在出口时替换为真实值；在 macOS 上文件掩码会退化为拒绝',
@@ -672,6 +676,7 @@ window.CHANGELOG_MONTHLY = {
     '5768b8c0-145': '添加了CLAUDE_CODE_DISABLE_FEATURE_FLAGS环境变量，该变量在不关闭遥测的情况下停止特征标志获取；然后每个标志都使用其内置默认值',
     '576e0c90-122': '在 claude --help 中新增 attach、logs、stop、respawn 和 rm；针对运行中的后台会话的 --resume 消息现会给出确切的 claude attach 命令',
     '57761dd8-120': 'TUI 新外观：TUI 的新设计默认为启用状态，opencode 主题是新主题。在“主题”中选择“opencode-classic”以保留之前的颜色',
+    '578381f8-110': '当恢复的会话的早期消息未加载时，在 VS Code 和桌面版的“代码”选项卡中添加了通知，因为终端已经显示了这些消息。',
     '57a71618-105': '使用 --session-id 配合 --resume 或 --continue 及 --fork-session 分叉会话时，支持自定义会话 ID',
     '57e84bb8-42': '添加键盘快捷键（Mod+,）以打开设置对话框',
     '57f76b80-44': '增加用于选择和插入技能的技能对话框',
@@ -769,6 +774,7 @@ window.CHANGELOG_MONTHLY = {
     '630c057c-100': '使用codex agents --no-daemon打开agent命令中心。命令中心和会话选择器现在标记未读结果',
     '6321ab16-87': '新增 Ctrl+X Ctrl+E 作为打开外部编辑器的别名（readline 原生绑定；Ctrl+G 仍然可用）',
     '63288888-56': '新增 messages_last_user 命令，可将 TUI 滚动到最后一条用户消息',
+    '63370d58-125': '当响应日志记录开启时，为Claude通过SendUserMessage或Cowork的消息工具发送的文本添加了OpenTelemetry assistant_response事件',
     '6338c42d-82': '新增从 --add-dir 目录读取 enabledPlugins 和 extraKnownMarketplaces 的支持',
     '63554ce5-129': '添加了CLAUDE_CODE_DISABLE_LOOPED_CROSS_CERT_DROP ，以保持在循环中相互认证的系统交叉证书，适用于需要私有CA的服务器',
     '637b4521-105': '新增 selection:clear 键绑定动作，可将某个键绑定为清除应用内文本选择；在 agents 视图中同样有效',
@@ -1038,6 +1044,7 @@ window.CHANGELOG_MONTHLY = {
     '865c630c-154': '新增 --permission-prompts none，适用于无人值守的无头主机：任何本会弹出的询问都会被自动拒绝，同时当前权限模式（包括 auto 模式）继续决策',
     '86d1d36c-44': '允许压缩钩子完全替换提示',
     '871f5386-42': '/plugin 已安装标签页新增「Skills」分区',
+    '8727e5c-99': '在 VS Code 和 Desktop 的“代码”选项卡中添加了警告，提示当会话的某一部分无法保存时，如何使用 /compact 进行保存。',
     '8748986c-44': '为桌面应用增加更多基础菜单栏项',
     '876612e0-112': '添加Ctrl + F按名称查找会话， Alt +↑/↓在代理视图中在组之间跳转；可以在keybindings.json中反弹和rename',
     '876f0638-61': '在子 Agent视图中添加了 Esc 键，用于停止页脚提示，因为 Esc 键可以停止该提示',
@@ -1627,6 +1634,7 @@ window.CHANGELOG_MONTHLY = {
     'ca6bb8c4-44': '@ 智能体即使不在提示词开头也能生效',
     'ca7ddaf0-76': '新增 server_error、rate_limit 和 no_kv_space 重试逻辑，以应对 Foundry API 问题',
     'ca7f82dd-100': '处理子目录中的文件时，支持自动从嵌套的 .claude/skills 目录发现技能',
+    'ca8c0788-100': '添加了一条页脚行，当标记的消息使您的会话处于不同的模型上时，该行将一直保留，直到您使用/model选择一个模型为止。',
     'ca97b698-101': '当登录即将过期时新增警告，便于你在后台会话被中断前重新认证',
     'caa968dc-155': '向VS代码和Claude Desktop的代码选项卡添加了空闲压缩：总结了20多万个空闲令牌对话，如果提示缓存已过期，则在下一条消息中使用该摘要',
     'cae95baf-133': '拒绝规则的工具名位置新增 glob 模式支持（\'*\' 拒绝所有工具）；允许规则拒绝非 MCP 的 glob，拒绝规则中的未知工具名会在启动时警告',
@@ -2038,7 +2046,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 312,
+      'count': 328,
       'toolCount': 12,
       'multi': [
         {
@@ -2380,6 +2388,62 @@ window.CHANGELOG_MONTHLY = {
           'status': 'ok',
           'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
           'items': [
+            {
+              'key': '2614f2d4-147',
+              'text': 'Added a PreSkillShellCommand hook event that can refuse a skill or command\'s inline shell commands as it loads; on 2.1.331 and older, a settings file naming it opens a dialog at start',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': '30c551a4-84',
+              'text': 'Added skills from MCP servers (beta). They show as server:skill in the / menu; other skills keep their names',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': '3f1bd1dc-61',
+              'text': 'Added \'Always deliver\' to the prompt for held messages from other sessions',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': '531eceec-145',
+              'text': 'Added your Cyber Verification Program access tier to the startup header, beside the model name when your tier applies to that model and you\'re signed in with a claude.ai account',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': '578381f8-110',
+              'text': 'Added a notice in VS Code and Desktop\'s Code tab when a resumed session\'s earlier messages weren\'t loaded, as the terminal already shows',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': '63370d58-125',
+              'text': 'Added an OpenTelemetry assistant_response event for text Claude sends through SendUserMessage or Cowork\'s message tool, when response logging is on',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': '8727e5c-99',
+              'text': 'Added a warning in VS Code and Desktop\'s Code tab when part of a session couldn\'t be saved, saying how to save it with /compact',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
+            {
+              'key': 'ca8c0788-100',
+              'text': 'Added a footer line that stays while a flagged message has your session on a different model, until you pick one with /model',
+              'date': '2026-11-25',
+              'version': '2.1.332',
+              'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.332'
+            },
             {
               'key': '29831400-116',
               'text': 'Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud\'s Agent Platform, Microsoft Foundry and Claude Platform on AWS',
@@ -3053,7 +3117,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anthropics/claude-code/releases/tag/v2.1.317'
             }
           ],
-          'count': 96
+          'count': 104
         },
         {
           'id': 'opencode',
@@ -3715,6 +3779,62 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://docs.trae.cn/ide_changelog',
           'items': [
             {
+              'key': '262a9983-38',
+              'text': '支持在宿主弹窗中浏览完整插件详情，并可进入 Skill 详情后返回原页面和滚动位置',
+              'date': '2026-11-17',
+              'version': '3.4.21',
+              'url': 'https://docs.trae.cn/ide_changelog#hhBwN7toE'
+            },
+            {
+              'key': '3745c230-70',
+              'text': '支持在浏览器预览中模拟 iPhone 17、iPhone 17 Pro、iPhone 17 Pro Max、iPhone 18 Pro 和 iPhone 18 Pro Max',
+              'date': '2026-11-17',
+              'version': '3.4.21',
+              'url': 'https://docs.trae.cn/ide_changelog#hhBwN7toE'
+            },
+            {
+              'key': '87c06c78-51',
+              'text': '支持在 Agent 窗口中检测本地项目所需的 Python、Node.js、Java 和 Go 运行时，并引导完成环境配置',
+              'date': '2026-11-17',
+              'version': '3.4.21',
+              'url': 'https://docs.trae.cn/ide_changelog#hhBwN7toE'
+            },
+            {
+              'key': 'd2d1c3cc-43',
+              'text': '支持从 HTML 产物分享入口直接部署站点，并查看部署进度、恢复部署状态、重新部署及进入站点详情',
+              'date': '2026-11-17',
+              'version': '3.4.21',
+              'url': 'https://docs.trae.cn/ide_changelog#hhBwN7toE'
+            },
+            {
+              'key': 'd56aba8c-46',
+              'text': '【个人版】支持在本地项目选择器和项目编辑器中拖入单个或多个文件夹，并保留工作区信任与多根工作区流程',
+              'date': '2026-11-17',
+              'version': '3.4.21',
+              'url': 'https://docs.trae.cn/ide_changelog#hhBwN7toE'
+            },
+            {
+              'key': '4e5033c0-28',
+              'text': '【灰度中】支持置顶本地与远程项目，便于在侧边栏快速访问常用项目',
+              'date': '2026-11-12',
+              'version': '3.4.19-3.4.20',
+              'url': 'https://docs.trae.cn/ide_changelog#hMhasMaZE'
+            },
+            {
+              'key': '62e1bc14-34',
+              'text': '【灰度中】支持在侧边栏归档和恢复项目与任务，并按本地、远程环境筛选已归档内容',
+              'date': '2026-11-12',
+              'version': '3.4.19-3.4.20',
+              'url': 'https://docs.trae.cn/ide_changelog#hMhasMaZE'
+            },
+            {
+              'key': 'c4acfc1e-47',
+              'text': '支持在 Agent Window 中持续保存会话输入草稿和处理中图片，切换会话或重启后可继续编辑与处理',
+              'date': '2026-11-12',
+              'version': '3.4.19-3.4.20',
+              'url': 'https://docs.trae.cn/ide_changelog#hMhasMaZE'
+            },
+            {
               'key': '19d01998-48',
               'text': '支持从历史会话打开关联工作区或转到 Agent Window；macOS Dock 菜单同步展示最近工作区',
               'date': '2026-11-10',
@@ -3757,7 +3877,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.trae.cn/ide_changelog#hWMca85H9'
             }
           ],
-          'count': 6
+          'count': 14
         },
         {
           'id': 'trae',

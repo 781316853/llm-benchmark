@@ -1,4 +1,4 @@
-// 数据源:FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程评测,更新于 2026-11-24)
+// 数据源:FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程评测,更新于 2026-11-25)
 // 来源:https://www.frontierswe.com/(方法学:https://www.frontierswe.com/blog/v2)
 // 补充参考:https://epoch.ai/benchmarks/frontierswe
 // 字段:score=mean@5(%);best/worst=每任务五次试验的最优/最差均值(%);
@@ -12,11 +12,11 @@ window.FRONTIERSWE = {
   'blogUrl': 'https://www.frontierswe.com/blog/v2',
   'epochUrl': 'https://epoch.ai/benchmarks/frontierswe',
   'version': 'v2',
-  'updated': '2026-11-24',
-  'refreshedAt': '2026-11-24 18:11',
+  'updated': '2026-11-25',
+  'refreshedAt': '2026-11-25 16:56',
   'stats': {
     'tasks': 34,
-    'entries': 27,
+    'entries': 28,
     'trialsPerTask': 5
   },
   'desc': 'FrontierSWE v2(Epoch AI):34 个来自真实技术领域的超长周期软件工程任务(实现 / 性能优化 / 科学计算 / 视觉推理 / AI 研究),每任务 5 次试验、单次最长 20 小时;所有模型在基准自带的极简 agent harness「proximus」内以最高推理强度运行。主指标 mean@5 = 每任务五次试验均值再跨任务平均,分数越高越好。',
@@ -178,6 +178,19 @@ window.FRONTIERSWE = {
       'rank': 12
     },
     {
+      'model': 'Muse Wonder',
+      'harness': 'proximus',
+      'vendor': 'meta',
+      'score': 40.2,
+      'best': 49.9,
+      'worst': 29.4,
+      'costUsd': 99.65,
+      'durationS': 41028,
+      'costCaveat': null,
+      'src': 'official',
+      'rank': 13
+    },
+    {
       'model': 'GPT-5.6 Sol',
       'harness': 'proximus',
       'vendor': 'openai',
@@ -188,7 +201,7 @@ window.FRONTIERSWE = {
       'durationS': 30950,
       'costCaveat': null,
       'src': 'official',
-      'rank': 13
+      'rank': 14
     },
     {
       'model': 'GLM-5.3',
@@ -201,7 +214,7 @@ window.FRONTIERSWE = {
       'durationS': 61507,
       'costCaveat': null,
       'src': 'official',
-      'rank': 14
+      'rank': 15
     },
     {
       'model': 'Grok 4.7',
@@ -214,7 +227,7 @@ window.FRONTIERSWE = {
       'durationS': 43429,
       'costCaveat': null,
       'src': 'official',
-      'rank': 15
+      'rank': 16
     },
     {
       'model': 'Kimi K3',
@@ -227,7 +240,7 @@ window.FRONTIERSWE = {
       'durationS': 66481,
       'costCaveat': null,
       'src': 'official',
-      'rank': 16
+      'rank': 17
     },
     {
       'model': 'Muse Spark 1.3',
@@ -240,7 +253,7 @@ window.FRONTIERSWE = {
       'durationS': 61074,
       'costCaveat': null,
       'src': 'official',
-      'rank': 17
+      'rank': 18
     },
     {
       'model': 'Grok 4.6',
@@ -253,7 +266,7 @@ window.FRONTIERSWE = {
       'durationS': 49536,
       'costCaveat': null,
       'src': 'official',
-      'rank': 18
+      'rank': 19
     },
     {
       'model': 'Inkling 2 Small',
@@ -266,7 +279,7 @@ window.FRONTIERSWE = {
       'durationS': 50250,
       'costCaveat': null,
       'src': 'official',
-      'rank': 19
+      'rank': 20
     },
     {
       'model': 'Gemini 3.7 Flash',
@@ -279,7 +292,7 @@ window.FRONTIERSWE = {
       'durationS': 28361,
       'costCaveat': null,
       'src': 'official',
-      'rank': 20
+      'rank': 21
     },
     {
       'model': 'Gemini 3.8 Flash',
@@ -292,7 +305,7 @@ window.FRONTIERSWE = {
       'durationS': 26204,
       'costCaveat': null,
       'src': 'official',
-      'rank': 21
+      'rank': 22
     },
     {
       'model': 'GLM-5.3 Flash',
@@ -305,7 +318,7 @@ window.FRONTIERSWE = {
       'durationS': 58986,
       'costCaveat': null,
       'src': 'official',
-      'rank': 22
+      'rank': 23
     },
     {
       'model': 'Qwen3.8-Max-0902',
@@ -318,7 +331,7 @@ window.FRONTIERSWE = {
       'durationS': 69703,
       'costCaveat': null,
       'src': 'official',
-      'rank': 23
+      'rank': 24
     },
     {
       'model': 'Qwen3.8-Max',
@@ -331,7 +344,7 @@ window.FRONTIERSWE = {
       'durationS': 66332,
       'costCaveat': null,
       'src': 'official',
-      'rank': 24
+      'rank': 25
     },
     {
       'model': 'DeepSeek V4 Flash Vision Exp',
@@ -344,7 +357,7 @@ window.FRONTIERSWE = {
       'durationS': 53527,
       'costCaveat': null,
       'src': 'official',
-      'rank': 25
+      'rank': 26
     },
     {
       'model': 'Muse Spark 1.2',
@@ -357,7 +370,7 @@ window.FRONTIERSWE = {
       'durationS': 16517,
       'costCaveat': null,
       'src': 'official',
-      'rank': 26
+      'rank': 27
     },
     {
       'model': 'Inkling',
@@ -370,7 +383,7 @@ window.FRONTIERSWE = {
       'durationS': 4186,
       'costCaveat': null,
       'src': 'official',
-      'rank': 27
+      'rank': 28
     }
   ]
 };

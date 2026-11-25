@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-24
+// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-25
 // 来源:https://www.codingplan.fyi/plans.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -18,8 +18,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-11-24',
-  'refreshedAt': '2026-11-24 18:11',
+  'updated': '2026-11-25',
+  'refreshedAt': '2026-11-25 16:56',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -28,12 +28,12 @@ window.PRICING = {
   'formula': '综合成本(¥/百万token) = cacheHitRate×缓存输入价 + (1−cacheHitRate−outputRatio)×输入价 + outputRatio×输出价',
   'stats': {
     'planModels': 2665,
-    'withPricing': 1890,
-    'comparable': 1209,
-    'models': 117,
-    'unresolved': 16,
-    'ranked': 78,
-    'supplemented': 3,
+    'withPricing': 1907,
+    'comparable': 1232,
+    'models': 120,
+    'unresolved': 15,
+    'ranked': 79,
+    'supplemented': 1,
     'carriedOver': 1,
     'seeded': 0,
     'missingRanked': 5
@@ -279,7 +279,7 @@ window.PRICING = {
       'cacheCnyPerM': 1.02,
       'outputCnyPerM': 102,
       'costPerM': 2.397,
-      'priceSource': 'models.dev:google'
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'Qwen3.6-Max',
@@ -615,21 +615,21 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'Gemini 3.8 Flash',
+      'slug': 'gemini-3-8-flash',
+      'inputCnyPerM': 5.1,
+      'cacheCnyPerM': 0.51,
+      'outputCnyPerM': 25.5,
+      'costPerM': 0.8415,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
       'id': 'Inkling Small',
       'slug': 'inkling-small',
       'inputCnyPerM': 3.4,
       'cacheCnyPerM': 0.68,
       'outputCnyPerM': 8.16,
       'costPerM': 0.8398,
-      'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'Gemini 3.8 Flash',
-      'slug': 'gemini-3-8-flash',
-      'inputCnyPerM': 5.1,
-      'cacheCnyPerM': 0.51,
-      'outputCnyPerM': 23.8,
-      'costPerM': 0.833,
       'priceSource': 'codingplan.fyi'
     },
     {
@@ -759,13 +759,22 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'Beam',
-      'slug': 'reflection/beam-1.0-501b-a23b',
-      'inputCnyPerM': 1.7,
-      'cacheCnyPerM': 0.34,
-      'outputCnyPerM': 6.8,
-      'costPerM': 0.4335,
-      'priceSource': 'models.dev:openrouter'
+      'id': 'DeepSeek V4 Pro 0813',
+      'slug': 'deepseek-v4-pro-0813',
+      'inputCnyPerM': 4.488,
+      'cacheCnyPerM': 0.1496,
+      'outputCnyPerM': 13.464,
+      'costPerM': 0.4114,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'MAI Code 2',
+      'slug': 'mai-code-2',
+      'inputCnyPerM': 3.4,
+      'cacheCnyPerM': 0.17,
+      'outputCnyPerM': 17,
+      'costPerM': 0.3995,
+      'priceSource': 'codingplan.fyi'
     },
     {
       'id': 'Gemma 4 31B',
@@ -801,15 +810,6 @@ window.PRICING = {
       'cacheCnyPerM': 0.272,
       'outputCnyPerM': 3.4,
       'costPerM': 0.3366,
-      'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'DeepSeek V4 Pro 0813',
-      'slug': 'deepseek-v4-pro-preview',
-      'inputCnyPerM': 3.6,
-      'cacheCnyPerM': 0.12,
-      'outputCnyPerM': 10.8,
-      'costPerM': 0.33,
       'priceSource': 'codingplan.fyi'
     },
     {
@@ -921,6 +921,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'LongCat 2.5',
+      'slug': 'longcat-2-5',
+      'inputCnyPerM': 2.04,
+      'cacheCnyPerM': 0.0408,
+      'outputCnyPerM': 8.16,
+      'costPerM': 0.17136,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
       'id': 'longcat-2-0',
       'slug': 'longcat-2-0',
       'inputCnyPerM': 2.04,
@@ -981,6 +990,24 @@ window.PRICING = {
       'cacheCnyPerM': 0.0952,
       'outputCnyPerM': 4.08,
       'costPerM': 0.15674,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Beam',
+      'slug': 'beam-1-0',
+      'inputCnyPerM': 0.85,
+      'cacheCnyPerM': 0.102,
+      'outputCnyPerM': 2.72,
+      'costPerM': 0.14875,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Inkling 2 Mini',
+      'slug': 'inkling-2-mini',
+      'inputCnyPerM': 0.51,
+      'cacheCnyPerM': 0.102,
+      'outputCnyPerM': 2.04,
+      'costPerM': 0.13005,
       'priceSource': 'codingplan.fyi'
     },
     {
@@ -1065,12 +1092,12 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'deepseek-v4-preview',
-      'slug': 'deepseek-v4-preview',
-      'inputCnyPerM': 0.8,
-      'cacheCnyPerM': 0.016,
-      'outputCnyPerM': 3.2,
-      'costPerM': 0.0672,
+      'id': 'MAI Code 2 Flash',
+      'slug': 'mai-code-2-flash',
+      'inputCnyPerM': 0.34,
+      'cacheCnyPerM': 0.034,
+      'outputCnyPerM': 1.7,
+      'costPerM': 0.0561,
       'priceSource': 'codingplan.fyi'
     },
     {

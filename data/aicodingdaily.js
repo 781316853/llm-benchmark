@@ -1,4 +1,4 @@
-// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 2026-11-23)
+// 数据源:AI Coding Daily 编码榜(独立第三方实测,源站更新 未知)
 // 来源:https://aicodingdaily.com/leaderboard(方法论:https://aicodingdaily.com/article/llm-coding-leaderboard-my-methodology-and-scoring-formulas)
 // 字段:configs[]=源站全表(模型 × 推理档位 × harness);models[]=模型级主榜(每模型取最高总分配置)
 //      score=总分(0-70),四轴 laravel(20)/reactTs(20)/bugFinding(10)/edgeCase(20);costUsd=每 prompt 平均成本(USD,源站未给为 null)
@@ -15,9 +15,9 @@ window.AICODINGDAILY = {
     'bugFinding': 10,
     'edgeCase': 20
   },
-  'updated': '2026-11-23',
+  'updated': '',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-24 18:11',
+  'refreshedAt': '2026-11-25 16:56',
   'stats': {
     'entries': 66,
     'models': 42
@@ -140,14 +140,14 @@ window.AICODINGDAILY = {
       'rank': 8,
       'model': 'Gemini 4 Neon',
       'effort': 'Xhigh',
-      'score': 80.13,
-      'costUsd': null,
+      'score': 80.05,
+      'costUsd': 27,
       'timeSec': 656,
       'timeStr': '10:56',
       'harness': 'Antigravity',
       'laravel': 18.08,
       'reactTs': 17.5,
-      'bugFinding': 10,
+      'bugFinding': 9.92,
       'edgeCase': 15.8,
       'src': 'aggregate',
       'configs': 3
@@ -897,14 +897,14 @@ window.AICODINGDAILY = {
       'rank': 14,
       'model': 'Gemini 4 Neon',
       'effort': 'Xhigh',
-      'score': 80.13,
-      'costUsd': null,
+      'score': 80.05,
+      'costUsd': 27,
       'timeSec': 656,
       'timeStr': '10:56',
       'harness': 'Antigravity',
       'laravel': 18.08,
       'reactTs': 17.5,
-      'bugFinding': 10,
+      'bugFinding': 9.92,
       'edgeCase': 15.8,
       'src': 'aggregate'
     },

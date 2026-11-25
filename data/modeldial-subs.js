@@ -1,4 +1,4 @@
-// 数据源:ModelDial 订阅额度(源站 2026-11-20;https://modeldial.com/subscriptions?period=week&view=catalog)
+// 数据源:ModelDial 订阅额度(源站 2026-11-25;https://modeldial.com/subscriptions?period=week&view=catalog)
 // 抓取方式:订阅页 HTML → Next.js chunk 内嵌数据(套餐记录 + 第三方平台目录);页面结构变更会 fail-soft 保留旧文件。
 // 字段:plans[]={slug/alias 可合并到的 codingplan slug/name/nameEn/platform/platformEn/fee/currency/feeCny/dm/legacy/models[]};
 //   models[]={m 模型名/mEn 英文名/t 档位/u ¥每亿/q 四档月额度(仅 95% 单值)/s=m/w 实测|estimate/d 数据日期/a API 等值(USD/月)}。
@@ -10,9 +10,9 @@ window.MODELDIAL_SUBS = {
   'url': 'https://modeldial.com/subscriptions?period=week&view=catalog',
   'host': 'modeldial.com',
   'license': '见源站;引用请标注 ModelDial',
-  'updated': '2026-11-24',
-  'sourceUpdated': '2026-11-20',
-  'refreshedAt': '2026-11-24 18:11',
+  'updated': '2026-11-25',
+  'sourceUpdated': '2026-11-25',
+  'refreshedAt': '2026-11-25 16:56',
   'usdToCnyRate': 6.8,
   'monthlyFactorWeek': 4.333,
   'cacheRatios': [
@@ -329,15 +329,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-10-31',
-          'a': 4168.67,
+          'd': '2026-11-25',
+          'a': 2897,
           'q': [
             null,
             null,
-            1964.6,
+            1900,
             null
           ],
-          'u': 34.61,
+          'u': 35.79,
           'b': 'ChatGPT'
         },
         {
@@ -346,15 +346,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-10-31',
-          'a': 2990.32,
+          'd': '2026-11-25',
+          'a': 2084,
           'q': [
             null,
             null,
-            15179.3,
+            10200,
             null
           ],
-          'u': 4.48,
+          'u': 6.67,
           'b': 'ChatGPT'
         },
         {
@@ -363,15 +363,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-10-31',
-          'a': 4217.11,
+          'd': '2026-11-25',
+          'a': 2878.82,
           'q': [
             null,
             null,
-            16563.7,
+            11307.2,
             null
           ],
-          'u': 4.11,
+          'u': 6.01,
           'b': 'ChatGPT'
         },
         {
@@ -380,15 +380,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-10-31',
-          'a': 5226,
+          'd': '2026-11-25',
+          'a': 4073.1,
           'q': [
             null,
             null,
-            9980.9,
+            7779,
             null
           ],
-          'u': 6.81,
+          'u': 8.74,
           'b': 'ChatGPT'
         },
         {
@@ -397,15 +397,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-10-31',
-          'a': 2990.32,
+          'd': '2026-11-25',
+          'a': 2084,
           'q': [
             null,
             null,
-            30358.6,
+            20400,
             null
           ],
-          'u': 2.24,
+          'u': 3.33,
           'b': 'ChatGPT'
         },
         {
@@ -414,15 +414,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-11-20',
-          'a': 4168.67,
+          'd': '2026-11-25',
+          'a': 2897,
           'q': [
             null,
             null,
-            5290.2,
+            3676.4,
             null
           ],
-          'u': 12.85,
+          'u': 18.5,
           'b': 'ChatGPT'
         },
         {
@@ -431,15 +431,15 @@ window.MODELDIAL_SUBS = {
           't': '',
           's': 'm',
           'w': 'estimate',
-          'd': '2026-11-20',
-          'a': 4168.67,
+          'd': '2026-11-25',
+          'a': 2897,
           'q': [
             null,
             null,
-            21160.7,
+            14705.6,
             null
           ],
-          'u': 3.21,
+          'u': 4.62,
           'b': 'ChatGPT'
         }
       ]
