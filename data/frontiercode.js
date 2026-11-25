@@ -11,7 +11,7 @@ window.FRONTIERCODE = {
   'officialUrl': 'https://cognition.com/frontiercode',
   'version': '2.0',
   'updated': '2026-11-24',
-  'refreshedAt': '2026-11-25 06:39',
+  'refreshedAt': '2026-11-24 18:11',
   'stats': {
     'tasks': 132,
     'entries': 35
@@ -21,7 +21,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Fable 5.2',
       'effort': 'xhigh',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 50.2,
       'passRate': 54.7,
       'costUsd': 17.73,
@@ -34,7 +34,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Opus 5.5',
       'effort': 'max',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 47.3,
       'passRate': 51.8,
       'costUsd': 12.82,
@@ -47,7 +47,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 4 Neon',
       'effort': 'high',
-      'harness': 'Antigravity CLI',
+      'harness': 'antigravity-cli',
       'score': 46.2,
       'passRate': 50.8,
       'costUsd': 4.38,
@@ -60,7 +60,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-6.2 Astra',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 44.2,
       'passRate': 48.2,
       'costUsd': 5.97,
@@ -73,7 +73,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-6 Astra',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 44,
       'passRate': 47.6,
       'costUsd': 6.68,
@@ -86,7 +86,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-6.2 Sol',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 43.8,
       'passRate': 48.2,
       'costUsd': 1.29,
@@ -99,7 +99,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 4 Carbon',
       'effort': 'high',
-      'harness': 'Antigravity CLI',
+      'harness': 'antigravity-cli',
       'score': 42.6,
       'passRate': 46.9,
       'costUsd': 5.06,
@@ -112,7 +112,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Sonnet 5.5',
       'effort': 'max',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 42.2,
       'passRate': 46.4,
       'costUsd': 19.94,
@@ -125,7 +125,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-6.1 Sol',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 39.7,
       'passRate': 43,
       'costUsd': 1.03,
@@ -138,7 +138,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 4 Hydrogen',
       'effort': 'xhigh',
-      'harness': 'Antigravity CLI',
+      'harness': 'antigravity-cli',
       'score': 38.9,
       'passRate': 43.2,
       'costUsd': 4.95,
@@ -151,7 +151,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-6 Sol',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 34.9,
       'passRate': 38.3,
       'costUsd': 2.35,
@@ -164,7 +164,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Fable 5.1',
       'effort': 'xhigh',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 34,
       'passRate': 37.6,
       'costUsd': 8.68,
@@ -177,7 +177,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-5.6 Sol',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 28.9,
       'passRate': 32.3,
       'costUsd': 5.5,
@@ -190,7 +190,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Grok 4.7',
       'effort': 'xhigh',
-      'harness': 'Grok Build',
+      'harness': 'grok-build',
       'score': 28.9,
       'passRate': 32.3,
       'costUsd': 14.36,
@@ -203,7 +203,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Haiku 5.5',
       'effort': 'max',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 28.9,
       'passRate': 31.9,
       'costUsd': 0.37,
@@ -216,7 +216,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Opus 5',
       'effort': 'high',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 28.1,
       'passRate': 31.4,
       'costUsd': 8.36,
@@ -229,7 +229,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Gemini 4 Argon',
       'effort': 'high',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 27.6,
       'passRate': 30.6,
       'costUsd': 6.51,
@@ -242,7 +242,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Muse Wonder 1.0',
       'effort': 'xhigh',
-      'harness': 'Muse Code',
+      'harness': 'muse',
       'score': 25.3,
       'passRate': 28.8,
       'costUsd': 3.79,
@@ -255,7 +255,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-2',
       'effort': 'high',
-      'harness': 'Devin CLI',
+      'harness': 'devin',
       'score': 24.1,
       'passRate': 27.1,
       'costUsd': 0.96,
@@ -268,7 +268,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-2 Flash',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin',
       'score': 24,
       'passRate': 27.3,
       'costUsd': 0.2,
@@ -281,7 +281,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-5.5',
       'effort': 'xhigh',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 23.6,
       'passRate': 26.4,
       'costUsd': 5.28,
@@ -294,7 +294,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GPT-6 Luna',
       'effort': 'max',
-      'harness': 'Codex',
+      'harness': 'codex',
       'score': 22.7,
       'passRate': 25.2,
       'costUsd': 0.17,
@@ -307,7 +307,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Inkling 2 Small',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 22.6,
       'passRate': 25.5,
       'costUsd': 0.58,
@@ -320,7 +320,7 @@ window.FRONTIERCODE = {
     {
       'model': 'DeepSeek V4.1 Flash 1017',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 20.2,
       'passRate': 23,
       'costUsd': 0.38,
@@ -333,7 +333,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GLM 5.3',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 20.2,
       'passRate': 22.7,
       'costUsd': 7.52,
@@ -346,7 +346,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Kimi K3.1 Pro',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 19.9,
       'passRate': 22,
       'costUsd': 3.03,
@@ -359,7 +359,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Mistral Large 4',
       'effort': 'high',
-      'harness': 'Mistral Vibe',
+      'harness': 'vibe',
       'score': 19.7,
       'passRate': 22,
       'costUsd': 1.55,
@@ -372,7 +372,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Kimi K3',
       'effort': 'high',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 18.9,
       'passRate': 21.1,
       'costUsd': 4.47,
@@ -385,7 +385,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-1.7',
       'effort': 'na',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli-swe1',
       'score': 15.5,
       'passRate': 17.6,
       'costUsd': 3.52,
@@ -398,7 +398,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Claude Opus 4.8',
       'effort': 'max',
-      'harness': 'Claude Code',
+      'harness': 'claude-code',
       'score': 15.3,
       'passRate': 17.1,
       'costUsd': 12.13,
@@ -411,7 +411,7 @@ window.FRONTIERCODE = {
     {
       'model': 'GLM 5.3 Flash',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 15,
       'passRate': 16.7,
       'costUsd': 0.79,
@@ -424,7 +424,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Muse Spark Open',
       'effort': 'xhigh',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 6.5,
       'passRate': 7.3,
       'costUsd': 9.16,
@@ -437,7 +437,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Inkling Small',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 4,
       'passRate': 4.6,
       'costUsd': 3.68,
@@ -450,7 +450,7 @@ window.FRONTIERCODE = {
     {
       'model': 'Beam 1.0',
       'effort': 'max',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli',
       'score': 3.4,
       'passRate': 3.8,
       'costUsd': 1.3,
@@ -463,7 +463,7 @@ window.FRONTIERCODE = {
     {
       'model': 'SWE-1.6',
       'effort': 'na',
-      'harness': 'Devin CLI',
+      'harness': 'devin-cli-swe1',
       'score': 1.3,
       'passRate': 1.5,
       'costUsd': 1.36,

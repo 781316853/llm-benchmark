@@ -17,7 +17,7 @@ window.OCTATHLON = {
   'modelsUrl': 'https://octathlon.wendystars.com/decathlon/data/models.json',
   'tasksUrl': 'https://octathlon.wendystars.com/decathlon/data/tasks.json',
   'updated': '2026-11-23',
-  'refreshedAt': '2026-11-25 06:39',
+  'refreshedAt': '2026-11-24 11:55',
   'maxPoints': 100,
   'costSource': {
     'name': 'ModelDial 订阅额度',

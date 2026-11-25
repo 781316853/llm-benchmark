@@ -20,7 +20,7 @@ window.TBSCIENCE = {
   'leaderboard': 'v0-1-eval',
   'actionId': '40d4165d2db225603adb98bf66cbe6fee358edb2d4',
   'updated': '2026-11-24',
-  'refreshedAt': '2026-11-25 06:39',
+  'refreshedAt': '2026-11-24 18:11',
   'stats': {
     'tasks': 70,
     'trialsPerTask': 3,
