@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 66,
+      'modelCount': 67,
       'updated': '2026-11-25',
       'ageDays': 0,
       'completeness': 1,
@@ -89,7 +89,7 @@ window.QUALITY = {
       'id': 'arenaofbias',
       'name': '亿模亿样 模型效果对比',
       'status': 'ok',
-      'modelCount': 94,
+      'modelCount': 95,
       'updated': '2026-11-25',
       'ageDays': 0,
       'completeness': 1,
@@ -221,7 +221,7 @@ window.QUALITY = {
       'id': 'llm2014',
       'name': 'llm2014',
       'status': 'ok',
-      'modelCount': 134,
+      'modelCount': 135,
       'updated': '2026-11-25',
       'ageDays': 0,
       'completeness': 0,
@@ -232,7 +232,7 @@ window.QUALITY = {
       'id': 'modeldial',
       'name': 'ModelDial 雷达',
       'status': 'ok',
-      'modelCount': 56,
+      'modelCount': 57,
       'updated': '2026-11-25',
       'ageDays': 0,
       'completeness': 1,
@@ -1431,9 +1431,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 66,
-      'complete': 66,
-      'modelCount': 66,
+      'total': 67,
+      'complete': 67,
+      'modelCount': 67,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1479,9 +1479,9 @@ window.QUALITY = {
     },
     'arenaofbias': {
       'rate': 1,
-      'total': 94,
-      'complete': 94,
-      'modelCount': 94,
+      'total': 95,
+      'complete': 95,
+      'modelCount': 95,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -1577,19 +1577,19 @@ window.QUALITY = {
     },
     'llm2014': {
       'rate': 0,
-      'total': 134,
+      'total': 135,
       'complete': 0,
-      'modelCount': 134,
+      'modelCount': 135,
       'missingFields': {
-        'score': 134
+        'score': 135
       },
       'flag': 'warn'
     },
     'modeldial': {
       'rate': 1,
-      'total': 56,
-      'complete': 56,
-      'modelCount': 56,
+      'total': 57,
+      'complete': 57,
+      'modelCount': 57,
       'missingFields': {},
       'flag': 'ok'
     },

@@ -7,7 +7,7 @@ window.MODEL_MAP_AUTO = {
     'total': 202,
     'knownVendor': 200,
     'otherVendor': 2,
-    'skippedManual': 1628,
+    'skippedManual': 1630,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -1733,7 +1733,9 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Cognition',
       'color': '#D8915C',
       'aliases': [
-        'SWE-2.1'
+        'SWE-2.1',
+        'swe-2-1',
+        'swe-2.1'
       ],
       'auto': true
     },

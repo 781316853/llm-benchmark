@@ -3,7 +3,7 @@
 // 全量历史见同目录 changelog.js(抓取端合并基线,页面不加载)。
 window.CHANGELOG = {
   'updated': '2026-11-25',
-  'refreshedAt': '2026-11-25 16:56',
+  'refreshedAt': '2026-11-26 05:52',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -15,7 +15,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 122,
       'entries': [
         {
@@ -48,7 +48,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 271,
       'entries': [
         {
@@ -79,7 +79,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 500,
       'entries': [
         {
@@ -124,7 +124,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 100,
       'entries': [
         {
@@ -159,7 +159,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 44,
       'entries': [
         {
@@ -202,7 +202,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 34,
       'entries': [
         {
@@ -243,7 +243,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 56,
       'entries': [
         {
@@ -283,7 +283,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 200,
       'entries': [
         {
@@ -364,7 +364,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 17,
       'entries': [
         {
@@ -401,7 +401,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 92,
       'entries': [
         {
@@ -442,7 +442,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-25 16:56',
+      'lastOkAt': '2026-11-26 05:52',
       'entryCount': 92,
       'entries': [
         {

@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-25',
-  'refreshedAt': '2026-11-25 16:56',
+  'refreshedAt': '2026-11-26 05:52',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -27,19 +27,20 @@ window.PRICING = {
   },
   'formula': '综合成本(¥/百万token) = cacheHitRate×缓存输入价 + (1−cacheHitRate−outputRatio)×输入价 + outputRatio×输出价',
   'stats': {
-    'planModels': 2665,
-    'withPricing': 1907,
-    'comparable': 1232,
-    'models': 120,
-    'unresolved': 15,
-    'ranked': 79,
+    'planModels': 2716,
+    'withPricing': 1953,
+    'comparable': 1266,
+    'models': 123,
+    'unresolved': 16,
+    'ranked': 80,
     'supplemented': 1,
     'carriedOver': 1,
     'seeded': 0,
-    'missingRanked': 5
+    'missingRanked': 6
   },
   'missingRanked': [
     'ERNIE 5.5 Flash Preview',
+    'GLM-5.4',
     'Muse Wonder Full',
     'SWE-2',
     'Seed 2.1 Pro',
@@ -257,6 +258,15 @@ window.PRICING = {
     {
       'id': 'GPT-5.4',
       'slug': 'gpt-5-4',
+      'inputCnyPerM': 17,
+      'cacheCnyPerM': 1.7,
+      'outputCnyPerM': 102,
+      'costPerM': 2.89,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Gemini 2.5 Pro',
+      'slug': 'gemini-2-5-pro',
       'inputCnyPerM': 17,
       'cacheCnyPerM': 1.7,
       'outputCnyPerM': 102,
@@ -552,6 +562,15 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
+      'id': 'kimi-k2-0905',
+      'slug': 'kimi-k2-0905',
+      'inputCnyPerM': 4.08,
+      'cacheCnyPerM': 1.02,
+      'outputCnyPerM': 17,
+      'costPerM': 1.2376,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
       'id': 'Gemini 4 Hydrogen',
       'slug': 'gemini-4-hydrogen',
       'inputCnyPerM': 10.2,
@@ -783,6 +802,15 @@ window.PRICING = {
       'cacheCnyPerM': 0.34,
       'outputCnyPerM': 2.72,
       'costPerM': 0.37944,
+      'priceSource': 'codingplan.fyi'
+    },
+    {
+      'id': 'Gemini 2.5 Flash',
+      'slug': 'gemini-2-5-flash',
+      'inputCnyPerM': 2.04,
+      'cacheCnyPerM': 0.204,
+      'outputCnyPerM': 17,
+      'costPerM': 0.3706,
       'priceSource': 'codingplan.fyi'
     },
     {

@@ -387,6 +387,7 @@ window.SEEN = {
     'deepswe|MAI Code 2': '2026-11-18',
     'datalearner|MAI Code 2': '2026-11-18',
     'llm|GPT-6.2 Astra (max)': '2026-11-18',
-    'tbench|Gemini 4 Neon': '2026-11-19'
+    'tbench|Gemini 4 Neon': '2026-11-19',
+    'llm|GLM-5.4 (max)': '2026-11-25'
   }
 };

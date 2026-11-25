@@ -6,7 +6,7 @@
 // 字段:vendors[]={vendor=厂商, date=发布日期, model=canonical 模型名, src=数据来源}。
 window.RELEASES = {
   'updated': '2026-11-25',
-  'refreshedAt': '2026-11-25 16:56',
+  'refreshedAt': '2026-11-26 05:52',
   'sources': [
     'Official',
     'ModelDial',
@@ -18,10 +18,16 @@ window.RELEASES = {
   ],
   'stats': {
     'vendors': 26,
-    'datedEntries': 363,
-    'latestDate': '2026-11-23'
+    'datedEntries': 364,
+    'latestDate': '2026-11-25'
   },
   'vendors': [
+    {
+      'vendor': 'Cognition',
+      'date': '2026-11-25',
+      'model': 'SWE-2.1',
+      'src': 'ModelDial'
+    },
     {
       'vendor': 'zAI',
       'date': '2026-11-23',
@@ -86,12 +92,6 @@ window.RELEASES = {
       'vendor': 'Thinking Machines',
       'date': '2026-11-05',
       'model': 'Inkling 2 Small',
-      'src': 'Terminal-Bench'
-    },
-    {
-      'vendor': 'Cognition',
-      'date': '2026-11-04',
-      'model': 'SWE-2 Flash',
       'src': 'Terminal-Bench'
     },
     {

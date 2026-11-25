@@ -13,13 +13,13 @@ window.CODINGPLAN = {
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'supplementUrl': 'https://realapipricing.com/data/points.json',
   'updated': '2026-11-25',
-  'siteUpdated': '2026.11.25',
-  'refreshedAt': '2026-11-25 16:56',
+  'siteUpdated': '2026.11.26',
+  'refreshedAt': '2026-11-26 05:52',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 2,
     'rows': 352,
-    'points': 1845,
+    'points': 1861,
     'aliasMatched': 17,
     'addedPlans': 50,
     'rowsFromRealapi': 139,
@@ -30,11 +30,11 @@ window.CODINGPLAN = {
     'plans': 146,
     'fromCodingplan': 96,
     'fromRealapi': 50,
-    'plansRows': 2029,
+    'plansRows': 2046,
     'realapi': {
-      'points': 387,
+      'points': 388,
       'plans': 67,
-      'rows': 309,
+      'rows': 310,
       'fixed': 95,
       'duplicates': 22,
       'skipped': 29
@@ -298,6 +298,26 @@ window.CODINGPLAN = {
           'featured': true
         },
         {
+          'platform': '智谱AI',
+          'model': 'GLM-5.3-Flash',
+          'plan': '新Max',
+          'qualifier': '[谷]',
+          'price': '¥1,078 / 月',
+          'unit': '¥3.2906 / 亿',
+          'usage': '327.6亿',
+          'featured': true
+        },
+        {
+          'platform': '智谱国际版',
+          'model': 'GLM-5.3-Flash',
+          'plan': '新Max',
+          'qualifier': '[谷]',
+          'price': '¥1,142.4 / 月',
+          'unit': '¥3.4872 / 亿',
+          'usage': '327.6亿',
+          'featured': false
+        },
+        {
           'platform': 'Command Code',
           'model': 'GPT-6-Luna',
           'plan': 'Go',
@@ -316,6 +336,26 @@ window.CODINGPLAN = {
           'unit': '¥3.727 / 亿',
           'usage': '83.7亿',
           'featured': true
+        },
+        {
+          'platform': '智谱AI',
+          'model': 'GLM-5.3-Flash',
+          'plan': '新Pro',
+          'qualifier': '[谷]',
+          'price': '¥538 / 月',
+          'unit': '¥3.8319 / 亿',
+          'usage': '140.4亿',
+          'featured': true
+        },
+        {
+          'platform': '智谱国际版',
+          'model': 'GLM-5.3-Flash',
+          'plan': '新Pro',
+          'qualifier': '[谷]',
+          'price': '¥544 / 月',
+          'unit': '¥3.8747 / 亿',
+          'usage': '140.4亿',
+          'featured': false
         },
         {
           'platform': '阿里·百炼 Token Plan',
@@ -368,6 +408,16 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
+          'platform': '智谱AI',
+          'model': 'GLM-5.3-Flash',
+          'plan': '新Lite',
+          'qualifier': '[谷]',
+          'price': '¥118 / 月',
+          'unit': '¥5.0428 / 亿',
+          'usage': '23.4亿',
+          'featured': true
+        },
+        {
           'platform': '阿里·百炼 Token Plan',
           'model': 'DeepSeek-V4.1-Flash',
           'plan': 'Pro',
@@ -385,6 +435,16 @@ window.CODINGPLAN = {
           'price': '¥136 / 月',
           'unit': '¥5.1673 / 亿',
           'usage': '26.3亿',
+          'featured': false
+        },
+        {
+          'platform': '智谱国际版',
+          'model': 'GLM-5.3-Flash',
+          'plan': '新Lite',
+          'qualifier': '[谷]',
+          'price': '¥122.4 / 月',
+          'unit': '¥5.2308 / 亿',
+          'usage': '23.4亿',
           'featured': false
         },
         {
@@ -501,7 +561,7 @@ window.CODINGPLAN = {
           'platform': '智谱AI',
           'model': 'GLM-5.3-Flash',
           'plan': '新Max',
-          'qualifier': '[谷]',
+          'qualifier': '[峰]',
           'price': '¥1,078 / 月',
           'unit': '¥6.5812 / 亿',
           'usage': '163.8亿',
@@ -551,7 +611,7 @@ window.CODINGPLAN = {
           'platform': '智谱国际版',
           'model': 'GLM-5.3-Flash',
           'plan': '新Max',
-          'qualifier': '[谷]',
+          'qualifier': '[峰]',
           'price': '¥1,142.4 / 月',
           'unit': '¥6.9744 / 亿',
           'usage': '163.8亿',
@@ -578,10 +638,30 @@ window.CODINGPLAN = {
           'featured': true
         },
         {
+          'platform': '超算 · Token Plan',
+          'model': 'DeepSeek-V4.1-Flash',
+          'plan': '旗舰版',
+          'qualifier': '',
+          'price': '¥899 / 月',
+          'unit': '¥7.5763 / 亿',
+          'usage': '118.7亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'DeepSeek-V4.1-Flash',
+          'plan': '基础版',
+          'qualifier': '',
+          'price': '¥30 / 月',
+          'unit': '¥7.5848 / 亿',
+          'usage': '3.96亿',
+          'featured': false
+        },
+        {
           'platform': '智谱AI',
           'model': 'GLM-5.3-Flash',
           'plan': '新Pro',
-          'qualifier': '[谷]',
+          'qualifier': '[峰]',
           'price': '¥538 / 月',
           'unit': '¥7.6639 / 亿',
           'usage': '70.2亿',
@@ -651,10 +731,20 @@ window.CODINGPLAN = {
           'platform': '智谱国际版',
           'model': 'GLM-5.3-Flash',
           'plan': '新Pro',
-          'qualifier': '[谷]',
+          'qualifier': '[峰]',
           'price': '¥544 / 月',
           'unit': '¥7.7493 / 亿',
           'usage': '70.2亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'DeepSeek-V4.1-Flash',
+          'plan': '高级版',
+          'qualifier': '',
+          'price': '¥310 / 月',
+          'unit': '¥7.8376 / 亿',
+          'usage': '39.6亿',
           'featured': false
         },
         {
@@ -666,6 +756,16 @@ window.CODINGPLAN = {
           'unit': '¥8.0177 / 亿',
           'usage': '17亿',
           'featured': true
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'DeepSeek-V4.1-Flash',
+          'plan': '标准版',
+          'qualifier': '',
+          'price': '¥130 / 月',
+          'unit': '¥8.2168 / 亿',
+          'usage': '15.8亿',
+          'featured': false
         },
         {
           'platform': '阿里·百炼 Token Plan',
@@ -801,7 +901,7 @@ window.CODINGPLAN = {
           'platform': '智谱AI',
           'model': 'GLM-5.3-Flash',
           'plan': '新Lite',
-          'qualifier': '[谷]',
+          'qualifier': '[峰]',
           'price': '¥118 / 月',
           'unit': '¥10.0855 / 亿',
           'usage': '11.7亿',
@@ -811,30 +911,10 @@ window.CODINGPLAN = {
           'platform': '智谱国际版',
           'model': 'GLM-5.3-Flash',
           'plan': '新Lite',
-          'qualifier': '[谷]',
+          'qualifier': '[峰]',
           'price': '¥122.4 / 月',
           'unit': '¥10.4616 / 亿',
           'usage': '11.7亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'DeepSeek-V4.1-Flash',
-          'plan': '旗舰版',
-          'qualifier': '',
-          'price': '¥899 / 月',
-          'unit': '¥10.7684 / 亿',
-          'usage': '83.5亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'DeepSeek-V4.1-Flash',
-          'plan': '基础版',
-          'qualifier': '',
-          'price': '¥30 / 月',
-          'unit': '¥10.7804 / 亿',
-          'usage': '2.78亿',
           'featured': false
         },
         {
@@ -855,16 +935,6 @@ window.CODINGPLAN = {
           'price': '¥680 / 月',
           'unit': '¥11.0857 / 亿',
           'usage': '61.3亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'DeepSeek-V4.1-Flash',
-          'plan': '高级版',
-          'qualifier': '',
-          'price': '¥310 / 月',
-          'unit': '¥11.1397 / 亿',
-          'usage': '27.8亿',
           'featured': false
         },
         {
@@ -929,12 +999,22 @@ window.CODINGPLAN = {
         },
         {
           'platform': '超算 · Token Plan',
-          'model': 'DeepSeek-V4.1-Flash',
-          'plan': '标准版',
+          'model': 'GLM-5.3-Flash',
+          'plan': '旗舰版',
           'qualifier': '',
-          'price': '¥130 / 月',
-          'unit': '¥11.6788 / 亿',
-          'usage': '11.1亿',
+          'price': '¥899 / 月',
+          'unit': '¥12.0291 / 亿',
+          'usage': '74.7亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'GLM-5.3-Flash',
+          'plan': '基础版',
+          'qualifier': '',
+          'price': '¥30 / 月',
+          'unit': '¥12.0425 / 亿',
+          'usage': '2.49亿',
           'featured': false
         },
         {
@@ -989,6 +1069,16 @@ window.CODINGPLAN = {
         },
         {
           'platform': '超算 · Token Plan',
+          'model': 'GLM-5.3-Flash',
+          'plan': '高级版',
+          'qualifier': '',
+          'price': '¥310 / 月',
+          'unit': '¥12.4439 / 亿',
+          'usage': '24.9亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
           'model': 'DeepSeek-V4-Flash-0731',
           'plan': '高级版',
           'qualifier': '',
@@ -1000,32 +1090,12 @@ window.CODINGPLAN = {
         {
           'platform': '超算 · Token Plan',
           'model': 'GLM-5.3-Flash',
-          'plan': '旗舰版',
+          'plan': '标准版',
           'qualifier': '',
-          'price': '¥899 / 月',
-          'unit': '¥13.0606 / 亿',
-          'usage': '68.8亿',
+          'price': '¥130 / 月',
+          'unit': '¥13.046 / 亿',
+          'usage': '9.96亿',
           'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3-Flash',
-          'plan': '基础版',
-          'qualifier': '',
-          'price': '¥30 / 月',
-          'unit': '¥13.0751 / 亿',
-          'usage': '2.29亿',
-          'featured': false
-        },
-        {
-          'platform': '智谱AI',
-          'model': 'GLM-5.3-Flash',
-          'plan': '新Max',
-          'qualifier': '[峰]',
-          'price': '¥1,078 / 月',
-          'unit': '¥13.1625 / 亿',
-          'usage': '81.9亿',
-          'featured': true
         },
         {
           'platform': '超算 · Token Plan',
@@ -1035,36 +1105,6 @@ window.CODINGPLAN = {
           'price': '¥130 / 月',
           'unit': '¥13.4208 / 亿',
           'usage': '9.69亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3-Flash',
-          'plan': '高级版',
-          'qualifier': '',
-          'price': '¥310 / 月',
-          'unit': '¥13.5109 / 亿',
-          'usage': '22.9亿',
-          'featured': false
-        },
-        {
-          'platform': '智谱国际版',
-          'model': 'GLM-5.3-Flash',
-          'plan': '新Max',
-          'qualifier': '[峰]',
-          'price': '¥1,142.4 / 月',
-          'unit': '¥13.9488 / 亿',
-          'usage': '81.9亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3-Flash',
-          'plan': '标准版',
-          'qualifier': '',
-          'price': '¥130 / 月',
-          'unit': '¥14.1647 / 亿',
-          'usage': '9.18亿',
           'featured': false
         },
         {
@@ -1125,26 +1165,6 @@ window.CODINGPLAN = {
           'price': '¥68 / 月',
           'unit': '¥14.7809 / 亿',
           'usage': '4.6亿',
-          'featured': false
-        },
-        {
-          'platform': '智谱AI',
-          'model': 'GLM-5.3-Flash',
-          'plan': '新Pro',
-          'qualifier': '[峰]',
-          'price': '¥538 / 月',
-          'unit': '¥15.3277 / 亿',
-          'usage': '35.1亿',
-          'featured': true
-        },
-        {
-          'platform': '智谱国际版',
-          'model': 'GLM-5.3-Flash',
-          'plan': '新Pro',
-          'qualifier': '[峰]',
-          'price': '¥544 / 月',
-          'unit': '¥15.4987 / 亿',
-          'usage': '35.1亿',
           'featured': false
         },
         {
@@ -1245,26 +1265,6 @@ window.CODINGPLAN = {
           'price': '¥599 / 月',
           'unit': '¥18.9845 / 亿',
           'usage': '31.6亿',
-          'featured': false
-        },
-        {
-          'platform': '智谱AI',
-          'model': 'GLM-5.3-Flash',
-          'plan': '新Lite',
-          'qualifier': '[峰]',
-          'price': '¥118 / 月',
-          'unit': '¥20.1711 / 亿',
-          'usage': '5.85亿',
-          'featured': true
-        },
-        {
-          'platform': '智谱国际版',
-          'model': 'GLM-5.3-Flash',
-          'plan': '新Lite',
-          'qualifier': '[峰]',
-          'price': '¥122.4 / 月',
-          'unit': '¥20.9232 / 亿',
-          'usage': '5.85亿',
           'featured': false
         },
         {
@@ -2826,6 +2826,36 @@ window.CODINGPLAN = {
           'featured': true
         },
         {
+          'platform': '超算 · Token Plan',
+          'model': 'GLM-5.3',
+          'plan': '旗舰版',
+          'qualifier': '',
+          'price': '¥899 / 月',
+          'unit': '¥124.7498 / 亿',
+          'usage': '7.21亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'GLM-5.3',
+          'plan': '基础版',
+          'qualifier': '',
+          'price': '¥30 / 月',
+          'unit': '¥124.8886 / 亿',
+          'usage': '0.24亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'GLM-5.3',
+          'plan': '高级版',
+          'qualifier': '',
+          'price': '¥310 / 月',
+          'unit': '¥129.0516 / 亿',
+          'usage': '2.4亿',
+          'featured': false
+        },
+        {
           'platform': '字节·方舟 Coding Plan',
           'model': 'Kimi-K3',
           'plan': 'Lite',
@@ -2906,6 +2936,16 @@ window.CODINGPLAN = {
           'featured': true
         },
         {
+          'platform': '超算 · Token Plan',
+          'model': 'GLM-5.3',
+          'plan': '标准版',
+          'qualifier': '',
+          'price': '¥130 / 月',
+          'unit': '¥135.296 / 亿',
+          'usage': '0.961亿',
+          'featured': false
+        },
+        {
           'platform': 'Kimi',
           'model': 'Kimi-K3',
           'plan': 'Plus',
@@ -2936,26 +2976,6 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3',
-          'plan': '旗舰版',
-          'qualifier': '',
-          'price': '¥899 / 月',
-          'unit': '¥155.9249 / 亿',
-          'usage': '5.77亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3',
-          'plan': '基础版',
-          'qualifier': '',
-          'price': '¥30 / 月',
-          'unit': '¥156.0983 / 亿',
-          'usage': '0.192亿',
-          'featured': false
-        },
-        {
           'platform': 'GitHub',
           'model': 'GPT-6.1-Sol',
           'plan': 'Max',
@@ -2963,16 +2983,6 @@ window.CODINGPLAN = {
           'price': '¥680 / 月',
           'unit': '¥157.437 / 亿',
           'usage': '4.32亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3',
-          'plan': '高级版',
-          'qualifier': '',
-          'price': '¥310 / 月',
-          'unit': '¥161.3016 / 亿',
-          'usage': '1.92亿',
           'featured': false
         },
         {
@@ -3046,16 +3056,6 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '超算 · Token Plan',
-          'model': 'GLM-5.3',
-          'plan': '标准版',
-          'qualifier': '',
-          'price': '¥130 / 月',
-          'unit': '¥169.1065 / 亿',
-          'usage': '0.769亿',
-          'featured': false
-        },
-        {
           'platform': 'Command Code',
           'model': 'Kimi-K3',
           'plan': 'GOAT',
@@ -3096,6 +3096,26 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
+          'platform': '超算 · Token Plan',
+          'model': 'Kimi-K3',
+          'plan': '旗舰版',
+          'qualifier': '',
+          'price': '¥899 / 月',
+          'unit': '¥188.4322 / 亿',
+          'usage': '4.77亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'Kimi-K3',
+          'plan': '基础版',
+          'qualifier': '',
+          'price': '¥30 / 月',
+          'unit': '¥188.6418 / 亿',
+          'usage': '0.159亿',
+          'featured': false
+        },
+        {
           'platform': 'GitHub',
           'model': 'Kimi-K3',
           'plan': 'Pro+',
@@ -3113,6 +3133,16 @@ window.CODINGPLAN = {
           'price': '按量',
           'unit': '¥194.28 / 亿',
           'usage': '—',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'Kimi-K3',
+          'plan': '高级版',
+          'qualifier': '',
+          'price': '¥310 / 月',
+          'unit': '¥194.9298 / 亿',
+          'usage': '1.59亿',
           'featured': false
         },
         {
@@ -3143,6 +3173,16 @@ window.CODINGPLAN = {
           'price': '¥1,000 / 月',
           'unit': '¥200 / 亿',
           'usage': '5亿',
+          'featured': false
+        },
+        {
+          'platform': '超算 · Token Plan',
+          'model': 'Kimi-K3',
+          'plan': '标准版',
+          'qualifier': '',
+          'price': '¥130 / 月',
+          'unit': '¥204.3619 / 亿',
+          'usage': '0.636亿',
           'featured': false
         },
         {
@@ -3216,26 +3256,6 @@ window.CODINGPLAN = {
           'featured': false
         },
         {
-          'platform': '超算 · Token Plan',
-          'model': 'Kimi-K3',
-          'plan': '旗舰版',
-          'qualifier': '',
-          'price': '¥899 / 月',
-          'unit': '¥246.3706 / 亿',
-          'usage': '3.65亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'Kimi-K3',
-          'plan': '基础版',
-          'qualifier': '',
-          'price': '¥30 / 月',
-          'unit': '¥246.6446 / 亿',
-          'usage': '0.122亿',
-          'featured': false
-        },
-        {
           'platform': '腾讯云',
           'model': 'Kimi-K3',
           'plan': 'Lite',
@@ -3273,26 +3293,6 @@ window.CODINGPLAN = {
           'price': '¥299 / 月',
           'unit': '¥253.9125 / 亿',
           'usage': '1.18亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'Kimi-K3',
-          'plan': '高级版',
-          'qualifier': '',
-          'price': '¥310 / 月',
-          'unit': '¥254.8661 / 亿',
-          'usage': '1.22亿',
-          'featured': false
-        },
-        {
-          'platform': '超算 · Token Plan',
-          'model': 'Kimi-K3',
-          'plan': '标准版',
-          'qualifier': '',
-          'price': '¥130 / 月',
-          'unit': '¥267.1984 / 亿',
-          'usage': '0.487亿',
           'featured': false
         },
         {
@@ -3774,11 +3774,11 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.11666666666666667,
+          'u': 0.1,
           'q': [
             null,
             null,
-            342.9,
+            400,
             null
           ],
           's': 'c',
@@ -3814,6 +3814,21 @@ window.CODINGPLAN = {
           's': 'c',
           'w': null,
           'b': 'Kimi',
+          'p': null
+        },
+        {
+          'm': 'GLM-5.4',
+          't': '',
+          'u': 0.4799999999999999,
+          'q': [
+            null,
+            null,
+            83.3,
+            null
+          ],
+          's': 'c',
+          'w': null,
+          'b': '智谱 GLM',
           'p': null
         }
       ]
@@ -3983,11 +3998,11 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.11666666666666667,
+          'u': 0.1,
           'q': [
             null,
             null,
-            1714.3,
+            2000,
             null
           ],
           's': 'c',
@@ -4023,6 +4038,21 @@ window.CODINGPLAN = {
           's': 'c',
           'w': null,
           'b': 'Kimi',
+          'p': null
+        },
+        {
+          'm': 'GLM-5.4',
+          't': '',
+          'u': 0.48,
+          'q': [
+            null,
+            null,
+            416.7,
+            null
+          ],
+          's': 'c',
+          'w': null,
+          'b': '智谱 GLM',
           'p': null
         }
       ]
@@ -5690,12 +5720,12 @@ window.CODINGPLAN = {
         {
           'm': 'Kimi-K3.1-Pro',
           't': '',
-          'u': 1.5347600000000001,
+          'u': 0.7673800000000001,
           'q': [
-            28.7,
-            51.3,
-            177.2,
-            226.7
+            57.3,
+            102.6,
+            354.5,
+            453.4
           ],
           's': 'c',
           'w': null,
@@ -6369,12 +6399,12 @@ window.CODINGPLAN = {
         {
           'm': 'Kimi-K3.1-Pro',
           't': '',
-          'u': 2.3021400000000005,
+          'u': 0.7083507692307693,
           'q': [
-            9.6,
-            17.1,
-            59.1,
-            75.6
+            31.1,
+            55.6,
+            192,
+            245.6
           ],
           's': 'c',
           'w': null,
@@ -7108,12 +7138,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[谷]',
-          'u': 0.10085533750000002,
+          'u': 0.05042766875000001,
           'q': [
-            339.4,
-            541.9,
-            1170,
-            1304.4
+            678.8,
+            1083.8,
+            2340,
+            2608.8
           ],
           's': 'c',
           'w': null,
@@ -7123,12 +7153,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[峰]',
-          'u': 0.20171067500000003,
+          'u': 0.10085533750000002,
           'q': [
-            169.7,
-            270.9,
-            585,
-            652.2
+            339.4,
+            541.9,
+            1170,
+            1304.4
           ],
           's': 'c',
           'w': null,
@@ -7212,12 +7242,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[谷]',
-          'u': 0.07663866041666667,
+          'u': 0.038319330208333335,
           'q': [
-            2036.5,
-            3251.3,
-            7020,
-            7826.3
+            4073,
+            6502.5,
+            14039.9,
+            15652.7
           ],
           's': 'c',
           'w': null,
@@ -7227,12 +7257,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[峰]',
-          'u': 0.15327732083333334,
+          'u': 0.07663866041666667,
           'q': [
-            1018.2,
-            1625.6,
-            3510,
-            3913.2
+            2036.5,
+            3251.3,
+            7020,
+            7826.3
           ],
           's': 'c',
           'w': null,
@@ -7316,12 +7346,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[谷]',
-          'u': 0.06581238125000001,
+          'u': 0.032906190625000005,
           'q': [
-            4751.8,
-            7586.3,
-            16379.9,
-            18261.5
+            9503.6,
+            15172.6,
+            32759.8,
+            36522.9
           ],
           's': 'c',
           'w': null,
@@ -7331,12 +7361,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[峰]',
-          'u': 0.13162476250000002,
+          'u': 0.06581238125000001,
           'q': [
-            2375.9,
-            3793.2,
-            8189.9,
-            9130.7
+            4751.8,
+            7586.3,
+            16379.9,
+            18261.5
           ],
           's': 'c',
           'w': null,
@@ -9212,12 +9242,12 @@ window.CODINGPLAN = {
         {
           'm': 'Gemini 4 Neon',
           't': '',
-          'u': 0.12439052362500001,
+          'u': 0.10365876968750001,
           'q': [
-            125.9,
-            235.6,
-            1092.8,
-            1615.1
+            151.1,
+            282.7,
+            1311.3,
+            1938.1
           ],
           's': 'c',
           'w': null,
@@ -9269,12 +9299,12 @@ window.CODINGPLAN = {
         {
           'm': 'Gemini 4 Hydrogen',
           't': '',
-          'u': 0.05923358267857144,
+          'u': 0.05182938484375001,
           'q': [
-            264.4,
-            494.8,
-            2294.8,
-            3391.8
+            302.1,
+            565.4,
+            2622.7,
+            3876.3
           ],
           's': 'c',
           'w': null,
@@ -9288,12 +9318,12 @@ window.CODINGPLAN = {
         {
           'm': 'Gemini-3.8-Flash',
           't': '',
-          'u': 0.041089088035714295,
+          'u': 0.035952952031250006,
           'q': [
-            535.2,
-            957.6,
-            3308.2,
-            4231.5
+            611.6,
+            1094.5,
+            3780.8,
+            4835.9
           ],
           's': 'c',
           'w': null,
@@ -17514,6 +17544,25 @@ window.CODINGPLAN = {
             1.02,
             102
           ]
+        },
+        {
+          'm': 'Claude Fable 5.2',
+          't': '',
+          'u': 5.351940000000002,
+          'q': [
+            11.7,
+            22.4,
+            127.1,
+            217.6
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Claude',
+          'p': [
+            54.4,
+            1.36,
+            272
+          ]
         }
       ]
     },
@@ -19827,6 +19876,25 @@ window.CODINGPLAN = {
             1.02,
             102
           ]
+        },
+        {
+          'm': 'Claude Fable 5.2',
+          't': '',
+          'u': 5.351940000000002,
+          'q': [
+            23.4,
+            44.7,
+            254.1,
+            435.1
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Claude',
+          'p': [
+            54.4,
+            1.36,
+            272
+          ]
         }
       ]
     },
@@ -19980,12 +20048,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.17500000000000002,
+          'u': 0.15,
           'q': [
-            228.6,
-            228.6,
-            228.6,
-            228.6
+            266.7,
+            266.7,
+            266.7,
+            266.7
           ],
           's': 'c',
           'w': null,
@@ -20204,12 +20272,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.175,
+          'u': 0.15,
           'q': [
-            1142.9,
-            1142.9,
-            1142.9,
-            1142.9
+            1333.3,
+            1333.3,
+            1333.3,
+            1333.3
           ],
           's': 'c',
           'w': null,
@@ -20428,12 +20496,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.17500000000000002,
+          'u': 0.15,
           'q': [
-            2857.1,
-            2857.1,
-            2857.1,
-            2857.1
+            3333.3,
+            3333.3,
+            3333.3,
+            3333.3
           ],
           's': 'c',
           'w': null,
@@ -20652,12 +20720,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.17500000000000002,
+          'u': 0.15,
           'q': [
-            5714.3,
-            5714.3,
-            5714.3,
-            5714.3
+            6666.7,
+            6666.7,
+            6666.7,
+            6666.7
           ],
           's': 'c',
           'w': null,
@@ -20786,12 +20854,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[谷]',
-          'u': 0.104616045,
+          'u': 0.0523080225,
           'q': [
-            339.4,
-            541.9,
-            1170,
-            1304.4
+            678.8,
+            1083.8,
+            2340,
+            2608.8
           ],
           's': 'c',
           'w': null,
@@ -20801,12 +20869,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[峰]',
-          'u': 0.20923209,
+          'u': 0.104616045,
           'q': [
-            169.7,
-            270.9,
-            585,
-            652.2
+            339.4,
+            541.9,
+            1170,
+            1304.4
           ],
           's': 'c',
           'w': null,
@@ -20890,12 +20958,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[谷]',
-          'u': 0.07749336666666667,
+          'u': 0.03874668333333334,
           'q': [
-            2036.5,
-            3251.3,
-            7020,
-            7826.3
+            4073,
+            6502.5,
+            14039.9,
+            15652.7
           ],
           's': 'c',
           'w': null,
@@ -20905,12 +20973,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[峰]',
-          'u': 0.15498673333333335,
+          'u': 0.07749336666666667,
           'q': [
-            1018.2,
-            1625.6,
-            3510,
-            3913.2
+            2036.5,
+            3251.3,
+            7020,
+            7826.3
           ],
           's': 'c',
           'w': null,
@@ -20994,12 +21062,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[谷]',
-          'u': 0.06974403,
+          'u': 0.034872015,
           'q': [
-            4751.8,
-            7586.3,
-            16379.9,
-            18261.5
+            9503.6,
+            15172.6,
+            32759.8,
+            36522.9
           ],
           's': 'c',
           'w': null,
@@ -21009,12 +21077,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '[峰]',
-          'u': 0.13948806,
+          'u': 0.06974403,
           'q': [
-            2375.9,
-            3793.2,
-            8189.9,
-            9130.7
+            4751.8,
+            7586.3,
+            16379.9,
+            18261.5
           ],
           's': 'c',
           'w': null,
@@ -25124,21 +25192,6 @@ window.CODINGPLAN = {
           'w': null,
           'b': '智谱 GLM',
           'p': null
-        },
-        {
-          'm': 'DeepSeek-V4.1-Flash-1017',
-          't': '',
-          'u': 0.99,
-          'q': [
-            10,
-            10,
-            10,
-            10
-          ],
-          's': 'c',
-          'w': null,
-          'b': 'DeepSeek',
-          'p': null
         }
       ]
     },
@@ -25272,21 +25325,6 @@ window.CODINGPLAN = {
           's': 'c',
           'w': null,
           'b': '智谱 GLM',
-          'p': null
-        },
-        {
-          'm': 'DeepSeek-V4.1-Flash-1017',
-          't': '',
-          'u': 0.9285714285714286,
-          'q': [
-            42,
-            42,
-            42,
-            42
-          ],
-          's': 'c',
-          'w': null,
-          'b': 'DeepSeek',
           'p': null
         }
       ]
@@ -25422,21 +25460,6 @@ window.CODINGPLAN = {
           'w': null,
           'b': '智谱 GLM',
           'p': null
-        },
-        {
-          'm': 'DeepSeek-V4.1-Flash-1017',
-          't': '',
-          'u': 0.8695652173913043,
-          'q': [
-            230,
-            230,
-            230,
-            230
-          ],
-          's': 'c',
-          'w': null,
-          'b': 'DeepSeek',
-          'p': null
         }
       ]
     },
@@ -25570,21 +25593,6 @@ window.CODINGPLAN = {
           's': 'c',
           'w': null,
           'b': '智谱 GLM',
-          'p': null
-        },
-        {
-          'm': 'DeepSeek-V4.1-Flash-1017',
-          't': '',
-          'u': 0.8571428571428571,
-          'q': [
-            700,
-            700,
-            700,
-            700
-          ],
-          's': 'c',
-          'w': null,
-          'b': 'DeepSeek',
           'p': null
         }
       ]
@@ -26076,6 +26084,51 @@ window.CODINGPLAN = {
           'w': null,
           'b': '腾讯混元',
           'p': null
+        },
+        {
+          'm': 'GLM-5.4',
+          't': '',
+          'u': 2.4284999999999997,
+          'q': [
+            4.8,
+            7.6,
+            16.1,
+            17.8
+          ],
+          's': 'c',
+          'w': null,
+          'b': '智谱 GLM',
+          'p': null
+        },
+        {
+          'm': 'MiniMax-M3.1-Flash',
+          't': '',
+          'u': 0.164275,
+          'q': [
+            37.4,
+            67.2,
+            237.4,
+            306.3
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'MiniMax',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.9940175000000004,
+          'q': [
+            3.2,
+            5.7,
+            19.6,
+            25
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
+          'p': null
         }
       ]
     },
@@ -26389,6 +26442,51 @@ window.CODINGPLAN = {
           's': 'c',
           'w': null,
           'b': '腾讯混元',
+          'p': null
+        },
+        {
+          'm': 'GLM-5.4',
+          't': '',
+          'u': 2.4284999999999997,
+          'q': [
+            12.1,
+            19.2,
+            40.8,
+            45.3
+          ],
+          's': 'c',
+          'w': null,
+          'b': '智谱 GLM',
+          'p': null
+        },
+        {
+          'm': 'MiniMax-M3.1-Flash',
+          't': '',
+          'u': 0.164275,
+          'q': [
+            95,
+            170.7,
+            602.6,
+            777.6
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'MiniMax',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.9940175000000004,
+          'q': [
+            8.1,
+            14.4,
+            49.6,
+            63.4
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
           'p': null
         }
       ]
@@ -26704,6 +26802,51 @@ window.CODINGPLAN = {
           'w': null,
           'b': '腾讯混元',
           'p': null
+        },
+        {
+          'm': 'GLM-5.4',
+          't': '',
+          'u': 2.4285,
+          'q': [
+            36.5,
+            57.9,
+            123.1,
+            136.8
+          ],
+          's': 'c',
+          'w': null,
+          'b': '智谱 GLM',
+          'p': null
+        },
+        {
+          'm': 'MiniMax-M3.1-Flash',
+          't': '',
+          'u': 0.164275,
+          'q': [
+            286.9,
+            515.4,
+            1820.1,
+            2348.5
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'MiniMax',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.9940175000000002,
+          'q': [
+            24.4,
+            43.6,
+            149.9,
+            191.4
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
+          'p': null
         }
       ]
     },
@@ -27017,6 +27160,51 @@ window.CODINGPLAN = {
           's': 'c',
           'w': null,
           'b': '腾讯混元',
+          'p': null
+        },
+        {
+          'm': 'GLM-5.4',
+          't': '',
+          'u': 2.4284999999999997,
+          'q': [
+            73.1,
+            116.1,
+            246.7,
+            274.1
+          ],
+          's': 'c',
+          'w': null,
+          'b': '智谱 GLM',
+          'p': null
+        },
+        {
+          'm': 'MiniMax-M3.1-Flash',
+          't': '',
+          'u': 0.16427500000000003,
+          'q': [
+            574.8,
+            1032.6,
+            3646.3,
+            4704.9
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'MiniMax',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.9940175000000007,
+          'q': [
+            48.9,
+            87.4,
+            300.4,
+            383.5
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
           'p': null
         }
       ]
@@ -35102,12 +35290,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash',
           't': '',
-          'u': 0.10780387500000005,
+          'u': 0.07584750000000004,
           'q': [
-            23.4,
-            45.1,
-            278.3,
-            514.9
+            32.7,
+            63.2,
+            395.5,
+            742.9
           ],
           's': 'c',
           'w': null,
@@ -35132,12 +35320,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4-Pro-0813',
           't': '',
-          'u': 0.4122656250000002,
+          'u': 0.37120787500000013,
           'q': [
-            6.7,
-            12.8,
-            72.8,
-            124.9
+            7.3,
+            14.1,
+            80.8,
+            139.8
           ],
           's': 'c',
           'w': null,
@@ -35147,12 +35335,12 @@ window.CODINGPLAN = {
         {
           'm': 'Kimi-K3',
           't': '',
-          'u': 2.4664463750000003,
+          'u': 1.8864178750000005,
           'q': [
-            2,
-            3.5,
-            12.2,
-            15.6
+            2.6,
+            4.6,
+            15.9,
+            20.3
           ],
           's': 'c',
           'w': null,
@@ -35207,12 +35395,12 @@ window.CODINGPLAN = {
         {
           'm': 'Qwen-3.8-Max',
           't': '',
-          'u': 1.5049850000000002,
+          'u': 1.414986,
           'q': [
-            3.5,
-            6.2,
-            19.9,
-            24.8
+            3.8,
+            6.6,
+            21.2,
+            26.3
           ],
           's': 'c',
           'w': null,
@@ -35237,12 +35425,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3',
           't': '',
-          'u': 1.5609831250000004,
+          'u': 1.2488860000000002,
           'q': [
-            5.7,
-            9,
-            19.2,
-            21.4
+            7.1,
+            11.3,
+            24,
+            26.7
           ],
           's': 'c',
           'w': null,
@@ -35252,12 +35440,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '',
-          'u': 0.13075112500000002,
+          'u': 0.120425,
           'q': [
-            77.8,
-            119.3,
-            229.4,
-            249.9
+            85.6,
+            130.7,
+            249.1,
+            270.9
           ],
           's': 'c',
           'w': null,
@@ -35357,16 +35545,31 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.10780387500000005,
+          'u': 0.07584750000000004,
           'q': [
-            23.4,
-            45.1,
-            278.3,
-            514.9
+            32.7,
+            63.2,
+            395.5,
+            742.9
           ],
           's': 'c',
           'w': null,
           'b': 'DeepSeek',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.7668110000000004,
+          'q': [
+            2.8,
+            4.9,
+            17,
+            21.7
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
           'p': null
         }
       ]
@@ -35386,12 +35589,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash',
           't': '',
-          'u': 0.11678753125000005,
+          'u': 0.08216812500000005,
           'q': [
-            93.4,
-            180.4,
-            1113.1,
-            2059.7
+            130.7,
+            252.7,
+            1582.1,
+            2971.6
           ],
           's': 'c',
           'w': null,
@@ -35416,12 +35619,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4-Pro-0813',
           't': '',
-          'u': 0.44662109375000025,
+          'u': 0.40214186458333345,
           'q': [
-            26.7,
-            51.1,
-            291.1,
-            499.5
+            29.3,
+            56.3,
+            323.3,
+            559.2
           ],
           's': 'c',
           'w': null,
@@ -35431,12 +35634,12 @@ window.CODINGPLAN = {
         {
           'm': 'Kimi-K3',
           't': '',
-          'u': 2.671983572916667,
+          'u': 2.043619364583334,
           'q': [
-            7.9,
-            14.1,
-            48.7,
-            62.2
+            10.3,
+            18.4,
+            63.6,
+            81.4
           ],
           's': 'c',
           'w': null,
@@ -35491,12 +35694,12 @@ window.CODINGPLAN = {
         {
           'm': 'Qwen-3.8-Max',
           't': '',
-          'u': 1.6304004166666668,
+          'u': 1.5329015,
           'q': [
-            14.1,
-            24.9,
-            79.7,
-            99.1
+            15.1,
+            26.5,
+            84.8,
+            105.4
           ],
           's': 'c',
           'w': null,
@@ -35521,12 +35724,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3',
           't': '',
-          'u': 1.6910650520833337,
+          'u': 1.3529598333333335,
           'q': [
-            22.8,
-            36.2,
-            76.9,
-            85.4
+            28.5,
+            45.2,
+            96.1,
+            106.8
           ],
           's': 'c',
           'w': null,
@@ -35536,12 +35739,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '',
-          'u': 0.14164705208333334,
+          'u': 0.1304604166666667,
           'q': [
-            311.3,
-            477.3,
-            917.8,
-            999.8
+            342.3,
+            523,
+            996.5,
+            1083.7
           ],
           's': 'c',
           'w': null,
@@ -35641,16 +35844,31 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.11678753125000005,
+          'u': 0.08216812500000005,
           'q': [
-            93.4,
-            180.4,
-            1113.1,
-            2059.7
+            130.7,
+            252.7,
+            1582.1,
+            2971.6
           ],
           's': 'c',
           'w': null,
           'b': 'DeepSeek',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.9140452500000005,
+          'q': [
+            11.1,
+            19.8,
+            67.9,
+            86.7
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
           'p': null
         }
       ]
@@ -35670,12 +35888,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash',
           't': '',
-          'u': 0.11139733750000005,
+          'u': 0.07837575000000004,
           'q': [
-            233.6,
-            451,
-            2782.8,
-            5149.3
+            326.7,
+            631.8,
+            3955.3,
+            7429.1
           ],
           's': 'c',
           'w': null,
@@ -35700,12 +35918,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4-Pro-0813',
           't': '',
-          'u': 0.4260078125000002,
+          'u': 0.3835814708333335,
           'q': [
-            66.7,
-            127.8,
-            727.7,
-            1248.7
+            73.3,
+            140.6,
+            808.2,
+            1398
           ],
           's': 'c',
           'w': null,
@@ -35715,12 +35933,12 @@ window.CODINGPLAN = {
         {
           'm': 'Kimi-K3',
           't': '',
-          'u': 2.548661254166667,
+          'u': 1.9492984708333336,
           'q': [
-            19.7,
-            35.2,
-            121.6,
-            155.6
+            25.7,
+            46,
+            159,
+            203.4
           ],
           's': 'c',
           'w': null,
@@ -35775,12 +35993,12 @@ window.CODINGPLAN = {
         {
           'm': 'Qwen-3.8-Max',
           't': '',
-          'u': 1.555151166666667,
+          'u': 1.4621522000000002,
           'q': [
-            35.3,
-            62.2,
-            199.3,
-            247.9
+            37.6,
+            66.4,
+            212,
+            263.4
           ],
           's': 'c',
           'w': null,
@@ -35805,12 +36023,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3',
           't': '',
-          'u': 1.6130158958333334,
+          'u': 1.2905155333333334,
           'q': [
-            56.9,
-            90.4,
-            192.2,
-            213.5
+            71.2,
+            113,
+            240.2,
+            266.9
           ],
           's': 'c',
           'w': null,
@@ -35820,12 +36038,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '',
-          'u': 0.13510949583333334,
+          'u': 0.12443916666666668,
           'q': [
-            778.3,
-            1193.4,
-            2294.4,
-            2499.4
+            855.7,
+            1307.4,
+            2491.2,
+            2709.2
           ],
           's': 'c',
           'w': null,
@@ -35925,16 +36143,31 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.11139733750000005,
+          'u': 0.07837575000000004,
           'q': [
-            233.6,
-            451,
-            2782.8,
-            5149.3
+            326.7,
+            631.8,
+            3955.3,
+            7429.1
           ],
           's': 'c',
           'w': null,
           'b': 'DeepSeek',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.8257047000000004,
+          'q': [
+            27.6,
+            49.4,
+            169.8,
+            216.7
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
           'p': null
         }
       ]
@@ -35954,12 +36187,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash',
           't': '',
-          'u': 0.10768409291666671,
+          'u': 0.07576322500000005,
           'q': [
-            700.7,
-            1353,
-            8348.5,
-            15448
+            980.2,
+            1895.4,
+            11865.9,
+            22287.3
           ],
           's': 'c',
           'w': null,
@@ -35984,12 +36217,12 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4-Pro-0813',
           't': '',
-          'u': 0.41180755208333353,
+          'u': 0.3707954218055557,
           'q': [
-            200.1,
-            383.4,
-            2183.1,
-            3746.2
+            220,
+            421.9,
+            2424.5,
+            4193.9
           ],
           's': 'c',
           'w': null,
@@ -35999,12 +36232,12 @@ window.CODINGPLAN = {
         {
           'm': 'Kimi-K3',
           't': '',
-          'u': 2.463705879027778,
+          'u': 1.8843218551388892,
           'q': [
-            59,
-            105.6,
-            364.9,
-            466.7
+            77.2,
+            138.1,
+            477.1,
+            610.2
           ],
           's': 'c',
           'w': null,
@@ -36059,12 +36292,12 @@ window.CODINGPLAN = {
         {
           'm': 'Qwen-3.8-Max',
           't': '',
-          'u': 1.5033127944444447,
+          'u': 1.4134137933333335,
           'q': [
-            105.8,
-            186.7,
-            598,
-            743.6
+            112.9,
+            199.1,
+            636,
+            790.2
           ],
           's': 'c',
           'w': null,
@@ -36089,12 +36322,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3',
           't': '',
-          'u': 1.5592486993055554,
+          'u': 1.247498348888889,
           'q': [
-            170.8,
-            271.3,
-            576.6,
-            640.6
+            213.5,
+            339.1,
+            720.6,
+            800.7
           ],
           's': 'c',
           'w': null,
@@ -36104,12 +36337,12 @@ window.CODINGPLAN = {
         {
           'm': 'GLM-5.3-Flash',
           't': '',
-          'u': 0.13060584597222222,
+          'u': 0.12029119444444446,
           'q': [
-            2335,
-            3580.1,
-            6883.3,
-            7498.3
+            2567,
+            3922.3,
+            7473.5,
+            8127.6
           ],
           's': 'c',
           'w': null,
@@ -36209,16 +36442,31 @@ window.CODINGPLAN = {
         {
           'm': 'DeepSeek-V4.1-Flash-1017',
           't': '',
-          'u': 0.10768409291666671,
+          'u': 0.07576322500000005,
           'q': [
-            700.7,
-            1353,
-            8348.5,
-            15448
+            980.2,
+            1895.4,
+            11865.9,
+            22287.3
           ],
           's': 'c',
           'w': null,
           'b': 'DeepSeek',
+          'p': null
+        },
+        {
+          'm': 'Kimi-K3.1-Pro',
+          't': '',
+          'u': 1.7648478766666673,
+          'q': [
+            82.9,
+            148.2,
+            509.4,
+            650.2
+          ],
+          's': 'c',
+          'w': null,
+          'b': 'Kimi',
           'p': null
         }
       ]
@@ -38746,6 +38994,26 @@ window.CODINGPLAN = {
           'p': null,
           'x': 1,
           'd': '2026-09-12~2026-09-27'
+        },
+        {
+          'm': 'Gemini 4 Neon',
+          't': '',
+          'u': 0.1884,
+          'q': [
+            415.8,
+            778.2,
+            3609.7,
+            5335.1
+          ],
+          's': 'r',
+          'w': 'gemini',
+          'b': 'Gemini',
+          'p': [
+            20.4,
+            1.02,
+            102
+          ],
+          'd': '2026-11-23~2026-11-25'
         }
       ]
     },
@@ -38781,12 +39049,12 @@ window.CODINGPLAN = {
         {
           'm': 'Gemini 4 Neon',
           't': '',
-          'u': 0.1239,
+          'u': 0.1146,
           'q': [
-            1264.1,
-            2365.8,
-            10973.3,
-            16218.4
+            1366.9,
+            2558.3,
+            11866.1,
+            17538
           ],
           's': 'r',
           'w': 'gemini',
@@ -38796,7 +39064,7 @@ window.CODINGPLAN = {
             1.02,
             102
           ],
-          'd': '2026-11-23~2026-11-24'
+          'd': '2026-11-23~2026-11-25'
         }
       ]
     },
