@@ -1,0 +1,70 @@
+﻿/* ============================================================================
+   矩阵三层悬停联动 · 全站共用
+   数字悬停 / 整行点亮 / 整列点亮 / 交叉点外压暗 0.26
+   用法：页面引入本文件 + js/mx-restyle.js；表格加 class="data-table" 即生效。
+   需要豁免某张表时，给它再加 class="no-mx"。
+   颜色全部走站点令牌（--accent / --on-accent / --panel / --border），
+   深色主题自动跟随，无需另写一套。
+   ============================================================================ */
+
+.data-table.mx-on tbody td {
+  transition: background-color .16s var(--ease-out, cubic-bezier(.2,.7,.1,1)),
+              box-shadow .16s var(--ease-out, cubic-bezier(.2,.7,.1,1));
+}
+
+/* ② 整行：淡品牌底 + 首列 3px 品牌色竖条 */
+.data-table.mx-on tbody tr.is-hot > td {
+  background: rgba(57, 100, 254, .06);
+}
+.data-table.mx-on tbody tr.is-hot > td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent, #2F55D4);
+}
+
+/* ③ 整列：整列淡品牌带 + 列头加粗下划线 */
+.data-table.mx-on tbody td.is-hot {
+  background: rgba(47, 85, 212, .10);
+}
+.data-table.mx-on thead th.is-hot {
+  color: var(--accent, #2F55D4);
+  box-shadow: inset 0 -2px 0 var(--accent, #2F55D4);
+}
+
+/* 交叉点之外压暗；行内与列内的数字保持满强度 */
+.data-table.mx-on.has-hot tbody .num { opacity: .26; }
+.data-table.mx-on.has-hot tbody tr.is-hot .num,
+.data-table.mx-on.has-hot tbody td.is-hot .num { opacity: 1; }
+
+/* ① 数字本体：品牌底 + 白字 + 弹跳 */
+.data-table.mx-on tbody td.num { cursor: crosshair; }
+.data-table.mx-on tbody td.num .bv {
+  transition: transform .18s var(--ease-out, cubic-bezier(.2,.7,.1,1)),
+              color .16s var(--ease-out, cubic-bezier(.2,.7,.1,1));
+}
+.data-table.mx-on tbody td.num:hover {
+  /* !important:站点自带的 const dark 行悬停规则特异性更高,不压住会变成「深底深字」 */
+  background: var(--accent, #2F55D4) !important;
+  box-shadow: inset 0 0 0 1px var(--accent, #2F55D4);
+}
+.data-table.mx-on tbody td.num:hover,
+.data-table.mx-on tbody td.num:hover .bv {
+  color: var(--on-accent, #fff) !important;
+}
+.data-table.mx-on tbody td.num:hover .bv {
+  display: inline-block;
+  transform: scale(1.18);
+  font-weight: 700;
+}
+
+/* 深色主题：压暗后仍要能读，稍微提亮底纹 */
+:root[data-theme="dark"] .data-table.mx-on tbody tr.is-hot > td {
+  background: rgba(120, 150, 255, .10);
+}
+:root[data-theme="dark"] .data-table.mx-on tbody td.is-hot {
+  background: rgba(120, 150, 255, .14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .data-table.mx-on tbody td,
+  .data-table.mx-on tbody td.num .bv { transition: none; }
+  .data-table.mx-on tbody td.num:hover .bv { transform: none; }
+}

@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    Octathlon 预览皮肤 · 只换视觉与动效，不改布局与信息架构
    参考风格：浅纸底、墨色规格条、品牌蓝 + 荧光黄绿强调、
    发丝线、直角、宽体字、星形标记、标尺条形与跑马灯。
@@ -2422,3 +2422,31 @@ html[data-theme="dark"] body {
   background-position: 84% 9%, 68% 20%, 14% 34%, 42% 12%;
   background-repeat: no-repeat;
 }
+/* ===== 矩阵排版：向参考站 decathlon 靠一档(2026-11-25) =====
+   参考站基准(取其 core CSS)：数值 .92rem/700/字宽112%/tabular-nums，行高 2.75rem，
+   表头 .66–.8rem、姓名 .88rem/600。本站原值 12.5px 偏小、表头 9.5px 偏轻、行内边距 7px 偏紧。
+   这里按同一比例放大一档，并统一改用展示字体 + 等宽数字，保证全站 8 张 data-table 一致。
+   只调排版，不动颜色与交互。 */
+.table-wrap .data-table { font-size: .8125rem; }
+.table-wrap .data-table thead th {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .07em;
+}
+.table-wrap .data-table thead th.num { font-size: .6875rem; font-weight: 700; letter-spacing: .04em; }
+.table-wrap .data-table tbody td { padding-top: 10px; padding-bottom: 10px; }
+.table-wrap .data-table .num {
+  font-family: var(--font-display);
+  font-size: .875rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-stretch: 112%;
+  letter-spacing: .005em;
+}
+.table-wrap .data-table .rank { font-size: .8125rem; font-weight: 600; }
+.table-wrap .data-table tbody td:nth-child(2) { font-size: .8125rem; font-weight: 600; }
+/* 总览矩阵有 id 级原始规则(内边距/字宽)，用同 id 追加覆盖，保证与其余表一致 */
+#matrixTable { font-size: .8125rem; }
+#matrixTable tbody td { padding-top: 10px; padding-bottom: 10px; }
+#matrixTable .num { font-stretch: 112%; }
+#matrixTable tbody td.num { font-stretch: 112%; }
