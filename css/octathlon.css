@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    Octathlon 预览皮肤 · 只换视觉与动效，不改布局与信息架构
    参考风格：浅纸底、墨色规格条、品牌蓝 + 荧光黄绿强调、
    发丝线、直角、宽体字、星形标记、标尺条形与跑马灯。
@@ -2450,3 +2450,26 @@ html[data-theme="dark"] body {
 #matrixTable tbody td { padding-top: 10px; padding-bottom: 10px; }
 #matrixTable .num { font-stretch: 112%; }
 #matrixTable tbody td.num { font-stretch: 112%; }
+/* ===== 总览矩阵：表头堆叠 + 溢出修正(2026-11-25) =====
+   问题1：两行表头都 sticky，第二行 top 写在 87px，第一行 56+32=88px，差 1px 互相压；
+          且第一行只有 8 个单元格，右侧列在它的高度带里没有底色，看起来"表头缺一块"。
+   问题2：.matrix-section .table-wrap 早期把 overflow 设成 visible，表格比面板宽 66px 时
+          直接溢出到面板外，最右「命中」列和表格底部就落在页面底色上，像没有底。
+   修法：overflow 收回到 auto（横向滚动，面板底不再被穿透）；两行表头按行高精确堆叠；
+          只对「有两行表头」的表生效，单行表头不受影响。 */
+.matrix-section .table-wrap { overflow-x: auto; max-width: 100%; }
+.table-wrap .data-table thead:has(tr + tr) tr:first-child th {
+  top: var(--tabs-h, 56px);
+  z-index: 5;
+  height: 32px;
+  white-space: nowrap;
+}
+.table-wrap .data-table thead:has(tr + tr) tr:last-child th {
+  top: calc(var(--tabs-h, 56px) + 32px);
+  z-index: 4;
+}
+#matrixTable thead tr:nth-child(2) th { top: calc(var(--tabs-h, 56px) + 32px); }
+/* 总览矩阵收窄：16 列比面板宽 66px，会横向溢出/滚动。收窄列内边距并降半档字号，
+   让整表塞进面板(实测 -2px)，最右「命中」列和底部才都有面板底承载。其他表不受影响。 */
+#matrixTable thead th, #matrixTable tbody td { padding-left: 2px; padding-right: 2px; }
+#matrixTable .num { font-size: 13px; }
