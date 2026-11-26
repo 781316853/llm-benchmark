@@ -1927,7 +1927,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
 .oct-sources-inner {
   display: flex;
   align-items: stretch;
-  max-width: 1400px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -1944,7 +1944,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
   color: var(--oct-blue-deep);
   font-family: var(--font-display);
   font-stretch: 112%;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .14em;
   line-height: 1.2;
@@ -1952,7 +1952,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
 .oct-sources-label em {
   color: var(--oct-ink-3);
   font-style: normal;
-  font-size: 7.5px;
+  font-size: 8.5px;
   letter-spacing: .24em;
   line-height: 1.3;
 }
@@ -1967,7 +1967,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
   color: var(--oct-ink-2);
   font-family: var(--font-display);
   font-stretch: 106%;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
   text-decoration: none;
   white-space: nowrap;
@@ -2024,7 +2024,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
 }
 .oct-sources-links::-webkit-scrollbar { display: none; }
 .oct-sources-links + .oct-sources-links { margin-top: 1px; }
-.oct-sources-links a { font-size: 9.5px; line-height: 1.55; }
+.oct-sources-links a { font-size: 11px; line-height: 1.6; }
 .oct-sources-links a + a::before { margin: 0 5px; }
 @media (max-width: 900px) {
   .oct-sources-lists { padding: 3px 0 4px; }
@@ -2389,9 +2389,9 @@ html[data-theme="dark"] { --bench-octathlon: #9DB4FF; }
 html[lang="en"] .topbar-label em { display: none; }
 
 /* 来源条两行在窄屏也必须各占一行（flex 列内不被压缩） */
-.oct-sources-lists > .oct-sources-links { flex: 0 0 auto; min-height: 15px; }
-.oct-sources-links a { font-size: 9px; }
-.oct-sources-links a + a::before { margin: 0 4px; }
+.oct-sources-lists > .oct-sources-links { flex: 0 0 auto; min-height: 18px; }
+.oct-sources-links a { font-size: 11px; }
+.oct-sources-links a + a::before { margin: 0 5px; }
 
 /* 大纲分组与日志日期:去掉旧纸本棕底，日期改为轻量文本 */
 .auth-outline-group {
@@ -2504,4 +2504,18 @@ html[data-theme="dark"] body {
   #matrixTable thead tr.col-row th,
   #matrixTable thead tr:nth-child(2) th,
   #matrixTable thead th { top: 0; }
+}
+
+/* ===== 数据来源索引条:字号加大的配套(2026-11-26) =====
+   链接 9px → 11px 后,1520px 以内的视口放不下两行(1440 实测第一行溢出 74px)。
+   平板到笔记本区间改为折行显示,不再用横向滚动 + 渐隐遮罩裁掉末尾几个来源;
+   宽屏(≥1521)仍是整齐两行,手机(≤900)保留原有的横向滑动,避免折成十几行撑高首屏。 */
+@media (min-width: 901px) and (max-width: 1520px) {
+  .oct-sources-links {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .oct-sources-links a + a::before { margin: 0 4px; }
 }
