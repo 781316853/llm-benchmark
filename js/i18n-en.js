@@ -73,19 +73,19 @@
       "Source snapshot ends $1; this model is not listed yet"],
 
     // ===== 总览:矩阵行数提示(app.js 拼装,数字随筛选变化) =====
-    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
-      function (m, ranked, ref, dom) {
+    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 (\\d+) 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+      function (m, ranked, ref, refHits, dom) {
         return "Showing the top " + ranked + " models plus " + ref + " “reference” " +
-          (ref === "1" ? "model" : "models") + " inside the top-30 band (3 boards, no composite, unranked). " +
+          (ref === "1" ? "model" : "models") + " inside the top-30 band (" + refHits + " boards, no composite, unranked). " +
           "Other reference models and models covering 2 boards are behind “Show all models”; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
           "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias, AI Coding Daily and AI Decathlon are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
       }],
-    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤3 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
-      function (m, total, ranked, ref, dom) {
+    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤(\\d+) 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",
+      function (m, total, ranked, ref, refFloor, dom) {
         return "Showing all " + total + " models covering at least 2 boards: ranked " + ranked + " · reference " + ref + ". " +
-          "Models covering ≤3 boards get no composite and no rank; 1-board models are search-only. " +
+          "Models covering ≤" + refFloor + " boards get no composite and no rank; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
           "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias, AI Coding Daily and AI Decathlon are third-party tests; " +
           "Agent Arena is net gain on LMArena real agent sessions; HLE counts toward the composite and coverage, while the remaining reference benchmarks are reference only.";
@@ -1080,8 +1080,8 @@
         "Independent test · app iteration · fixed OpenHands · accuracy",
       "场景": "scenarios",
       "命中 ≥4 榜计分": "Composite (≥4 boards)",
-      "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 3 组(DeepSWE / Terminal-Bench / HLE)仅供参考、不参与打分。":
-        "Third-party basis: the composite averages only the 7 third-party groups (WebDev / Agent Arena / Arena of Bias / ModelDial / AI Coding Daily / AI Decathlon / llm2014) at 1/7 each; the 3 official-benchmark groups (DeepSWE / Terminal-Bench / HLE) are reference only and do not count.",
+      "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 3 列(FrontierCode / Terminal-Bench / HLE)已隐藏,不参与打分。":
+        "Third-party basis: the composite averages only the 7 third-party groups (WebDev / Agent Arena / Arena of Bias / ModelDial / AI Coding Daily / AI Decathlon / llm2014) at 1/7 each; the 3 official-benchmark columns (FrontierCode / Terminal-Bench / HLE) are hidden and do not count.",
       "榜单基准": "Leaderboard benchmarks",
       "第三方实测": "Third-party tests",
       "Terminal-Bench (解决率)": "Terminal-Bench (solve rate)",

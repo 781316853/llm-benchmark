@@ -767,6 +767,10 @@
     // 区分「源站快照还没收录这个型号」与「页面没抓到数据」—— 前者是事实,后者是故障。
     var wdSnapshot = (window.ARENA_WEBDEV && window.ARENA_WEBDEV.updated) || "";
     var wdMissTitle = wdSnapshot ? "源站快照止于 " + wdSnapshot + "，该模型尚未上榜" : "";
+    // 第三方口径:榜单基准 3 列(FrontierCode / Terminal-Bench / HLE)不参与打分,直接隐藏,避免"看得见不算分"
+    var visibleCols = state.thirdPartyOnly
+      ? MATRIX_COLS.filter(function (c) { return !c.bench || c.grp !== "榜单基准"; })
+      : MATRIX_COLS;
     var html = rows.map(function (r) {
       // 参考行:命中 2-3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
       var inserted = (hitOf(r) >= 2 && hitOf(r) < rankedFloor());
@@ -933,10 +937,12 @@
             '<br><span class="cell-cost">' + fmtCostPerM(p.costPerM) + '/M</span></td>';
         })() +
         // ds=榜单基准组起点、wd=第三方实测组起点:grp-start 竖线与表头 th-grp 左边框对齐,须随 MATRIX_COLS 分组调整同步
-        '<td class="num grp-start">' + fcHtml + '</td>' +
-        '<td class="num">' + tbHtml + '</td>' +
-        // HLE 计分列:属「榜单基准」组尾,组起点竖线 ds 不变
-        '<td class="num">' + hleHtml + '</td>' +
+        // 第三方口径下这三列被隐藏(见 visibleCols)
+        (state.thirdPartyOnly ? "" :
+          '<td class="num grp-start">' + fcHtml + '</td>' +
+          '<td class="num">' + tbHtml + '</td>' +
+          // HLE 计分列:属「榜单基准」组尾,组起点竖线 ds 不变
+          '<td class="num">' + hleHtml + '</td>') +
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
         // 后续 llm2014/亿模亿样 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
@@ -958,7 +964,7 @@
     });
     // 搜索无结果:给出覆盖范围提示,避免误以为搜的是全站(表里只有计分基准组有成绩的模型)
     if (searching && !rows.length) {
-      html = ['<tr class="matrix-empty"><td colspan="' + (MATRIX_COLS.length + 1) + '">' +
+      html = ['<tr class="matrix-empty"><td colspan="' + (visibleCols.length + 1) + '">' +
         '未找到匹配「' + esc(query) + '」的模型' +
         '<span class="matrix-empty-hint">可试试模型名(Kimi、Qwen、GPT-5.4)或厂商(Moonshot、Alibaba、Anthropic);仅能检索本矩阵已收录计分基准成绩的模型。</span>' +
         '</td></tr>'];
@@ -988,14 +994,14 @@
     }
     // 第 1 行:非评测列 rowspan=2 纵跨两行(可排序);评测列按 grp 连续段输出分组格(colspan=组内列数)
     var grpRow = '<th class="num" rowspan="2">#</th>', subRow = "";
-    MATRIX_COLS.forEach(function (c, i) {
+    visibleCols.forEach(function (c, i) {
       if (!c.bench) {
         grpRow += thAttr(c).replace("<th ", '<th rowspan="2" ');
         return;
       }
       var span = 1;
-      while (i + span < MATRIX_COLS.length && MATRIX_COLS[i + span].grp === c.grp) span++;
-      var grpStart = i === 0 || MATRIX_COLS[i - 1].grp !== c.grp;
+      while (i + span < visibleCols.length && visibleCols[i + span].grp === c.grp) span++;
+      var grpStart = i === 0 || visibleCols[i - 1].grp !== c.grp;
       if (grpStart) {
         grpRow += '<th class="th-grp" colspan="' + span + '" title="' + GROUP_TITLES[c.grp] + '">' +
           c.grp + '</th>';
@@ -1059,7 +1065,7 @@
     if (state.thirdPartyOnly) {
       var tpNote = document.createElement("span");
       tpNote.className = "note-line";
-      tpNote.textContent = "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 3 组(DeepSWE / Terminal-Bench / HLE)仅供参考、不参与打分。";
+      tpNote.textContent = "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 3 列(FrontierCode / Terminal-Bench / HLE)已隐藏,不参与打分。";
       noteEl.insertBefore(tpNote, noteEl.firstChild);
       noteEl.insertBefore(document.createElement("br"), noteEl.firstChild.nextSibling);
     }
@@ -4318,6 +4324,8 @@
     var tpEl = document.getElementById("ovThirdParty");
     if (tpEl) tpEl.addEventListener("change", function () {
       state.thirdPartyOnly = tpEl.checked;
+      // 被隐藏的榜单基准列若正作为排序列,退回默认综合排序
+      if (state.thirdPartyOnly && state.sortKey && /^(frontiercode|tbench|hle)$/.test(state.sortKey)) state.sortKey = null;
       if (CMP && CMP.setThirdMode) CMP.setThirdMode(state.thirdPartyOnly);
       renderMatrix();
     });
