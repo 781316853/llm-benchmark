@@ -2,15 +2,112 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-25',
+  'updated': '2026-11-26',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
+    '技术与洞察',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-11-26',
+      'title': 'Antigravity 称再度提升 Neon 缓存命中率，额度内任务增 28%',
+      'brief': 'Antigravity 团队的 Varun Mohan 在 X 发文称，Antigravity 中 Gemini 4 Neon 的缓存命中率再次提升 4.5% ，这意味着用户在额度内可完成的任务增加 28% 。他还表示，过去 5 天 通过缓存和运行框架改进，订阅中 Neon 的有效使用量累计提升近 75% 。他补充称，本轮改进主要来自增加缓存容量、减少长期缓存淘汰和优化路由，其余部分来自一些修复难度大得多的长尾问题。',
+      'url': 'https://x.com/_mohansolo/status/2125641696377712968',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'OpenAI 邮件称部分 Codex 请求少扣额度已修正，用户或更快达限额',
+      'brief': '多名用户在社区发帖称，收到了 OpenAI 发来的邮件：此前部分 Codex 请求少扣了使用额度，这一错误已经修正，按原有用法可能更快达到使用限额。',
+      'url': 'https://linux.do/t/topic/3239841',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'Sand.ai发布MAGI-2视频模型，独家上线Higgsfield',
+      'brief': 'Sand.ai 推出 AI视频生成模型``MAGI-2 ，已在 Higgsfield 平台及`API`独家上线，全球可用。它能根据文本提示和最多**20 个参考（ 10 张图像、 5 个视频、 5 段音频）生成最长 30 秒的 1080p**、 25 fps 带声视频，价格为每秒 0.08美元 。',
+      'url': 'https://higgsfield.ai/announcing-magi-2',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'NVIDIA 开放 Nemotron-Labs-Image-30B-A3B',
+      'brief': 'NVIDIA 在 Hugging Face 开放自回归生图模型 Nemotron-Labs-Image-30B-A3B 的权重，它是 Nemotron-Labs-VisualCreation 框架的图像生成组件，采用 混合专家架构 ，总参数 300 亿 、激活 30 亿 。',
+      'url': 'https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'PrismML 发布并开源 5.9 GB 三值模型 Bonsai 2.5 27B',
+      'brief': 'PrismML 发布并开源三值模型 Ternary Bonsai 2.5 27B ，为上一代 Ternary Bonsai 2 27B 的升级版，基于 Qwen3.8 27B ，体积保持 5.9 GB ，约为其全精度原模型的九分之一。',
+      'url': 'https://prismml.com/news/bonsai-2-5-27b',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'Antigravity 工程师宣布开发 banked reset 功能',
+      'brief': 'Antigravity 团队工程师 Eliza Huang 在 X 发文称，她此前发布的 hello world 帖子浏览量超过 5 万 ，让她没想到的是，粉丝数也借此突破 1000 。',
+      'url': 'https://x.com/eliza_huang/status/2125509510630678798',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'OpenCode 推出 Gimme Kimi：10 美元得 60 美元额度',
+      'brief': 'OpenCode 宣布推出 Gimme Kimi 第一阶段（ Phase 1 ）优惠活动。',
+      'url': 'https://x.com/opencode/status/2125413495629926551',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'Charlie Marsh 称 ChatGPT 桌面应用基础内存降超 40%',
+      'brief': 'OpenAI 员工 Charlie Marsh 在 X 上表示，过去两周，ChatGPT 桌面应用的基础内存使用量降低了超过 40% ，各版本均在 macOS 上运行五分钟后测量。',
+      'url': 'https://x.com/charliermarsh/status/2125675768231727399',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'Google Gemini Live Guided Vision 登陆 iOS',
+      'brief': 'Google 宣布， Gemini Live 中的 Guided Vision 功能现已登陆 iOS。该功能与盲人及低视力社区共同开发，可提供对话式的实时视觉辅助。',
+      'url': 'https://x.com/GeminiApp/status/2125685936344236471',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-26',
+      'title': '阿里千问 Go 全面开放免费代打电话服务，支持订餐厅、找快递、寻失物',
+      'brief': '阿里旗下 AI 智能体 千问 Go 全面开放免费代打电话服务。用户告知拨打对象和通话需求，经授权后，千问即可联系餐厅预订包间、向酒店询问遗失物品、联系快递员查询配送进度等，也可以定时代打电话，提前设置拨打时间和沟通事项。',
+      'url': 'https://mp.weixin.qq.com/s/jZumD5cprhI7bgmOI7mUEw',
+      'source': '橘鸦AI早报',
+      'type': '产品应用'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'Anthropic CEO 驳斥向 AI 让渡人类治理权',
+      'brief': '针对 Axios 关于“ Anthropic 内部有声音支持人类向超级智能 AI 让渡部分决策权”的报道， Anthropic CEO Dario Amodei 在 X 发长文公开驳斥，称自己绝不认同放弃人类自由意志，强调 AI 必须受到合法民主程序的治理。',
+      'url': 'https://www.axios.com/2026/11/25/anthropic-ai-human-control-debate-free-will',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
+    {
+      'date': '2026-11-26',
+      'title': 'Anthropic 发文介绍其将 Messages API 从 Python 迁移到 Rust',
+      'brief': 'Anthropic 介绍将 Claude Messages API 从 Python 迁移到 Rust 。该 API 是客户以及 Claude Code 等 Anthropic 自家应用访问 Claude 的主要通道， 2024 年初 至 2026 年秋 流量增长约 1800 倍 。',
+      'url': 'https://anthropic.com/research/migrating-api-to-rust',
+      'source': '橘鸦AI早报',
+      'type': '技术与洞察'
+    },
     {
       'date': '2026-11-25',
       'title': 'ChatGPT 合并 Chat 和 Work，部分用户率先体验',
@@ -37,22 +134,6 @@ window.NEWS = {
     },
     {
       'date': '2026-11-25',
-      'title': 'Antigravity 新版非必要审批减半，Neon 任务快 17%',
-      'brief': 'Antigravity 负责人 Varun Mohan 发文称， Antigravity 新版本把 Auto 模式中的非必要审批减少了 50% ，带来一次明显的体验提升，之后还会在这一方向带来更多改进。',
-      'url': 'https://x.com/_mohansolo/status/2125337132021780867',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-25',
-      'title': 'Anthropic 推出测试功能：artifacts 可装成桌面应用',
-      'brief': 'Anthropic 为 Claude 推出 Install as app 功能的测试版，Mac 和 Windows 用户可把 Claude 生成的 artifacts 安装成桌面应用。应用在独立窗口打开，可使用 Claude 和 connectors ，经授权可发送通知或添加菜单栏项目，并随原 artifact 编辑自动更新。',
-      'url': 'https://claude.com/resources/articles/install-as-app',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-25',
       'title': 'Cognition 发布编码模型 SWE-2.1',
       'brief': 'Cognition 发布编码模型 SWE-2.1 ，称其基于 Kimi K3 用纯强化学习训练，在 FrontierCode 2.0 、 Terminal-Bench 4.1 等多项基准上较 SWE-2 大幅提升。新模型已在 Devin Cloud 、 Devin Desktop 和 Devin CLI 上线，未来两周对 Devin Pro 、 Max 和 Teams 免费。',
       'url': 'https://cognition.com/blog/swe-2-1',
@@ -66,78 +147,6 @@ window.NEWS = {
       'url': 'https://huggingface.co/collections/tencent/hy-mt3',
       'source': '橘鸦AI早报',
       'type': '模型发布'
-    },
-    {
-      'date': '2026-11-25',
-      'title': 'LlamaIndex 开放文档解析模型 OCRia-1 权重',
-      'brief': 'LlamaIndex 宣布在 Hugging Face 和 Ollama 开放文档解析模型 OCRia-1 的权重。 OCRia-1 是基于 Qwen3.5-4B 的 4B 视觉语言模型，能把页面图像转成 Markdown，表格和图表数据写成 HTML 表格。 LlamaIndex 称其为两个 ParseBench 榜单上得分最高的开放权重模型； LlamaIndex CEO Jerry Liu 称，其准确率与成本在多个基准上处于 4B…',
-      'url': 'https://ollama.com/llamaindex/ocria-1',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-25',
-      'title': '百灵大模型发布并开源 Ling-3.2-air',
-      'brief': '百灵大模型团队发布并开源 Ling-3.2-air ，权重已上架 Hugging Face 和 ModelScope 。',
-      'url': 'https://huggingface.co/inclusionAI/Ling-3.2-air',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-25',
-      'title': '蚂蚁百灵团队发布并开源生理信号基础模型 LingSante-Pulse',
-      'brief': '蚂蚁百灵团队 发布生理信号基础模型 LingSante-Pulse ，已按 MIT 许可证开放权重与代码。该模型在超过 15 万小时 多场景生理数据上预训练，用单个冻结编码器统一处理心电、脑电、肌电等信号，并支持连续血糖（ CGM ）分析，权重可在 Hugging Face 获取。',
-      'url': 'https://huggingface.co/inclusionAI/LingSante-Pulse-1.0',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-24',
-      'title': 'ChatGPT 宣布 12 月 23 日下线 GPT-5.6 Sol 与 Terra',
-      'brief': 'ChatGPT 官方在 X 上发文宣布，将于 12 月 23 日 在 Chat 服务中下线 GPT-5.6 Sol ，并在 Work 和 Codex 服务中下线 GPT-5.6 Sol 与 Terra 两款模型。',
-      'url': 'https://x.com/ChatGPT/status/2124981905380569283',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-24',
-      'title': 'OpenAI：ChatGPT Business 新工作空间可享双倍用量',
-      'brief': 'OpenAI 的 Codex 与 ChatGPT 团队成员 Tibo 在 X 上宣布， 11 月 30 日 前创建的 ChatGPT Business 工作空间，可在 12 月 31 日 前获得双倍包含用量，适用所有席位类型。',
-      'url': 'https://x.com/thsottiaux/status/2124922313019953319',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-24',
-      'title': 'Antigravity 开放 Orchestrator 模型组合自定义',
-      'brief': 'Varun Mohan 在 X 平台表示， Antigravity 用户现在可为 Orchestrator 显式设置模型组合和思考级别，他自己已设为 Neon High 与 Hydrogen High 。',
-      'url': 'https://antigravity.google/docs/models',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-24',
-      'title': '谷歌为 Gemini API 推出文件切片控制，仅按实际处理内容付费',
-      'brief': '谷歌 宣布 Gemini API 新增文件切片控制功能，直接支持 PDF 、 Word 、 PowerPoint 、 Excel 及 OpenDocument 文件。',
-      'url': 'https://blog.google/innovation-and-ai/technology/developers-tools/file-slicing-controls/',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-24',
-      'title': 'Anthropic 重新设计 Claude Code 桌面端侧边栏',
-      'brief': 'ClaudeDevs 宣布重新设计 Claude Code 桌面端侧边栏。 Files 、 Changes 、 Terminal 等工具现在以标签页形式显示在会话旁边，用户可以移动标签并排查看多个工具，也可以把标签弹出为独立窗口。',
-      'url': 'https://x.com/ClaudeDevs/status/2124978802006851961',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-24',
-      'title': 'Claude 的 Connectors 与 Skills 整合为 plugins',
-      'brief': 'Anthropic 宣布将 Claude 的 Connectors 与 Skills 整合为 plugins ，用户此后通过同一种方式连接工具或教 Claude 新技能。',
-      'url': 'https://support.claude.com/en/articles/13837440-use-plugins-in-claude',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
     }
   ]
 };

@@ -1,4 +1,4 @@
-// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-25
+// 数据源:模型 API 标价主源 codingplan.fyi plans.json(内嵌 planModels);排名模型缺价由 models.dev/api.json 补齐,更新于 2026-11-26
 // 来源:https://www.codingplan.fyi/plans.json + config.json(汇率;https://models.dev/api.json 仅补缺;官方:https://www.codingplan.fyi/?view=usage)
 // 字段说明:models[]=模型级标准价(id=canonical 模型名/slug=源站或 models.dev 键/
 //   inputCnyPerM·cacheCnyPerM·outputCnyPerM=输入·缓存输入·输出单价(人民币/百万 token)/
@@ -18,8 +18,8 @@ window.PRICING = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
-  'updated': '2026-11-25',
-  'refreshedAt': '2026-11-26 05:52',
+  'updated': '2026-11-26',
+  'refreshedAt': '2026-11-26 16:42',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -30,19 +30,17 @@ window.PRICING = {
     'planModels': 2716,
     'withPricing': 1953,
     'comparable': 1266,
-    'models': 123,
+    'models': 121,
     'unresolved': 16,
-    'ranked': 80,
-    'supplemented': 1,
-    'carriedOver': 1,
+    'ranked': 71,
+    'supplemented': 0,
+    'carriedOver': 0,
     'seeded': 0,
-    'missingRanked': 6
+    'missingRanked': 4
   },
   'missingRanked': [
     'ERNIE 5.5 Flash Preview',
     'GLM-5.4',
-    'Muse Wonder Full',
-    'SWE-2',
     'Seed 2.1 Pro',
     'Solar Pro 4'
   ],
@@ -317,15 +315,6 @@ window.PRICING = {
       'outputCnyPerM': 81.6,
       'costPerM': 2.312,
       'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'Gemini 3.1 Pro Preview',
-      'slug': 'gemini-3.1-pro-preview',
-      'inputCnyPerM': 13.6,
-      'cacheCnyPerM': 1.36,
-      'outputCnyPerM': 81.6,
-      'costPerM': 2.312,
-      'priceSource': 'models.dev:google'
     },
     {
       'id': 'GLM-5.1',
@@ -650,15 +639,6 @@ window.PRICING = {
       'outputCnyPerM': 8.16,
       'costPerM': 0.8398,
       'priceSource': 'codingplan.fyi'
-    },
-    {
-      'id': 'MiMo-V2.5-Pro',
-      'slug': 'xiaomi/mimo-v2.5-pro',
-      'inputCnyPerM': 3.264,
-      'cacheCnyPerM': 0.6528,
-      'outputCnyPerM': 12.24,
-      'costPerM': 0.82824,
-      'priceSource': 'models.dev:openrouter'
     },
     {
       'id': 'GPT-6.1 Terra',

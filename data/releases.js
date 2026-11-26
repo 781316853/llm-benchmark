@@ -5,8 +5,8 @@
 // 用途:总览页「厂商新模型发布倒计时」;天数由前端按本机日期计算。
 // 字段:vendors[]={vendor=厂商, date=发布日期, model=canonical 模型名, src=数据来源}。
 window.RELEASES = {
-  'updated': '2026-11-25',
-  'refreshedAt': '2026-11-26 05:52',
+  'updated': '2026-11-26',
+  'refreshedAt': '2026-11-26 16:42',
   'sources': [
     'Official',
     'ModelDial',

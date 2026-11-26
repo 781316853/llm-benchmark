@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-25',
+  'updated': '2026-11-26',
   'stats': {
-    'total': 202,
-    'knownVendor': 200,
+    'total': 198,
+    'knownVendor': 196,
     'otherVendor': 2,
-    'skippedManual': 1630,
+    'skippedManual': 1595,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -150,12 +150,11 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Claude Opus 4.1 (20250805)',
+      'id': 'Claude Opus 4.1',
       'vendor': 'Anthropic',
       'color': '#E0855F',
       'aliases': [
-        'Claude Opus 4.1 (20250805)',
-        'claude opus 4.1 (20250805)'
+        'Claude Opus 4.1'
       ],
       'auto': true
     },
@@ -197,6 +196,16 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'DeepSeek V3.2 Exp',
+      'vendor': 'DeepSeek',
+      'color': '#6E8CFF',
+      'aliases': [
+        'DeepSeek V3.2 Exp',
+        'DeepSeek V3.2-Exp'
+      ],
+      'auto': true
+    },
+    {
       'id': 'DeepSeek V3.2 Speciale',
       'vendor': 'DeepSeek-AI',
       'color': '#9298A1',
@@ -206,12 +215,20 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'DeepSeek V3.2-Exp',
+      'id': 'DeepSeek V4 Flash 0423',
       'vendor': 'DeepSeek',
       'color': '#6E8CFF',
       'aliases': [
-        'DeepSeek V3.2-Exp',
-        'deepseek-v3.2-exp'
+        'DeepSeek V4 Flash 0423'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'DeepSeek V4 Pro 0423',
+      'vendor': 'DeepSeek',
+      'color': '#6E8CFF',
+      'aliases': [
+        'DeepSeek V4 Pro 0423'
       ],
       'auto': true
     },
@@ -248,26 +265,6 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'DeepSeek-V3.1 Terminus'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Devstral 2',
-      'vendor': 'Mistral',
-      'color': '#FF8A66',
-      'aliases': [
-        'Devstral 2',
-        'devstral 2'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Devstral Medium (2507)',
-      'vendor': 'Mistral',
-      'color': '#FF8A66',
-      'aliases': [
-        'Devstral Medium (2507)',
-        'devstral medium (2507)'
       ],
       'auto': true
     },
@@ -310,6 +307,16 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'GLM 4.7',
+      'vendor': 'zAI',
+      'color': '#818DE7',
+      'aliases': [
+        'GLM 4.7',
+        'GLM-4.7'
+      ],
+      'auto': true
+    },
+    {
       'id': 'GLM-4.5',
       'vendor': '智谱AI',
       'color': '#9298A1',
@@ -324,16 +331,6 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'GLM-4.5-Air'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'GLM-4.7',
-      'vendor': 'zAI',
-      'color': '#818DE7',
-      'aliases': [
-        'GLM-4.7',
-        'glm-4.7'
       ],
       'auto': true
     },
@@ -455,8 +452,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
-        'GPT-5.1-Codex-Mini',
-        'gpt-5.1-codex-mini'
+        'GPT-5.1-Codex-Mini'
       ],
       'auto': true
     },
@@ -648,8 +644,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Google',
       'color': '#6BA5F7',
       'aliases': [
-        'Gemma 4 26B A4B',
-        'gemma 4 26b a4b'
+        'Gemma 4 26B A4B'
       ],
       'auto': true
     },
@@ -678,16 +673,6 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Gemma-4-31B-It',
         'Gemma-4-31B-it'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Granite 4.1 8b',
-      'vendor': 'IBM',
-      'color': '#9298A1',
-      'aliases': [
-        'Granite 4.1 8b',
-        'granite 4.1 8b'
       ],
       'auto': true
     },
@@ -764,22 +749,11 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
-      'id': 'Grok 4.20 Beta (reasoning, 0309)',
-      'vendor': 'xAI',
-      'color': '#B4BCC8',
-      'aliases': [
-        'Grok 4.20 Beta (reasoning, 0309)',
-        'grok 4.20 beta (reasoning, 0309)'
-      ],
-      'auto': true
-    },
-    {
       'id': 'Grok Code Fast 1',
       'vendor': 'xAI',
       'color': '#B4BCC8',
       'aliases': [
-        'Grok Code Fast 1',
-        'grok code fast 1'
+        'Grok Code Fast 1'
       ],
       'auto': true
     },
@@ -804,8 +778,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'Inkling 2 Mini',
-      'vendor': 'Thinking Machines Lab',
-      'color': '#9298A1',
+      'vendor': 'Thinking Machines',
+      'color': '#9FB4C4',
       'aliases': [
         'Inkling 2 Mini'
       ],
@@ -863,16 +837,6 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'K2 Horizon MoVA 36B-A4B'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Kat-Coder-Pro V1',
-      'vendor': 'KwaiKAT',
-      'color': '#9298A1',
-      'aliases': [
-        'Kat-Coder-Pro V1',
-        'kat-coder-pro v1'
       ],
       'auto': true
     },
@@ -1079,8 +1043,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Inception',
       'color': '#7FC3E0',
       'aliases': [
-        'Mercury 2',
-        'mercury 2'
+        'Mercury 2'
       ],
       'auto': true
     },
@@ -1089,9 +1052,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Xiaomi',
       'color': '#FFB84D',
       'aliases': [
-        'MiMo-V2-Flash',
-        'mimo-v2-flash (non-thinking)',
-        'mimo-v2-flash (thinking)'
+        'MiMo-V2-Flash'
       ],
       'auto': true
     },
@@ -1109,8 +1070,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Xiaomi',
       'color': '#FFB84D',
       'aliases': [
-        'MiMo-V2-Pro',
-        'mimo-v2-pro'
+        'MiMo-V2-Pro'
       ],
       'auto': true
     },
@@ -1128,8 +1088,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'MiniMax',
       'color': '#FF6F9E',
       'aliases': [
-        'MiniMax M2',
-        'minimax-m2'
+        'MiniMax M2'
       ],
       'auto': true
     },
@@ -1192,8 +1151,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Mistral',
       'color': '#FF8A66',
       'aliases': [
-        'Mistral Large 3',
-        'mistral large 3'
+        'Mistral Large 3'
       ],
       'auto': true
     },
@@ -1240,8 +1198,7 @@ window.MODEL_MAP_AUTO = {
       'aliases': [
         'Muse Ember',
         'Muse Ember (Max)',
-        'Muse Ember (Xhigh)',
-        'muse ember (max)'
+        'Muse Ember (Xhigh)'
       ],
       'auto': true
     },
@@ -1259,8 +1216,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'NVIDIA',
       'color': '#9FD12C',
       'aliases': [
-        'NVIDIA-Nemotron-3.5-Super-VL-120B-A12B (NVFP4)',
-        'nvidia-nemotron-3.5-super-vl-120b-a12b (nvfp4)'
+        'NVIDIA-Nemotron-3.5-Super-VL-120B-A12B (NVFP4)'
       ],
       'auto': true
     },
@@ -1623,12 +1579,21 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen3.5 397B A17B',
+      'vendor': 'Alibaba',
+      'color': '#FF9A3D',
+      'aliases': [
+        'Qwen3.5 397B A17B',
+        'Qwen3.5-397B-A17B'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen3.5-122B-A10B',
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5-122B-A10B',
-        'qwen3.5-122b-a10b'
+        'Qwen3.5-122B-A10B'
       ],
       'auto': true
     },
@@ -1637,8 +1602,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5-27B',
-        'qwen3.5-27b'
+        'Qwen3.5-27B'
       ],
       'auto': true
     },
@@ -1647,18 +1611,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5-35B-A3B',
-        'qwen3.5-35b-a3b'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Qwen3.5-397B-A17B',
-      'vendor': 'Alibaba',
-      'color': '#FF9A3D',
-      'aliases': [
-        'Qwen3.5-397B-A17B',
-        'qwen3.5-397b-a17b'
+        'Qwen3.5-35B-A3B'
       ],
       'auto': true
     },
@@ -1676,8 +1629,7 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'Alibaba',
       'color': '#FF9A3D',
       'aliases': [
-        'Qwen3.5-Flash',
-        'qwen3.5-flash'
+        'Qwen3.5-Flash'
       ],
       'auto': true
     },
@@ -1795,11 +1747,10 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'Spark-X2.6',
-      'vendor': 'XHToken',
+      'vendor': 'synlan',
       'color': '#9298A1',
       'aliases': [
-        'Spark-X2.6',
-        'spark-x2.6'
+        'Spark-X2.6'
       ],
       'auto': true
     },
@@ -1822,31 +1773,21 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Trinity Large Thinking',
+      'vendor': 'Arcee AI',
+      'color': '#9298A1',
+      'aliases': [
+        'Trinity Large Thinking',
+        'Trinity-Large-Thinking'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Trinity-Large-Preview',
       'vendor': 'Arcee AI',
       'color': '#9298A1',
       'aliases': [
         'Trinity-Large-Preview'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'Trinity-Large-Thinking',
-      'vendor': 'Arcee AI',
-      'color': '#9298A1',
-      'aliases': [
-        'Trinity-Large-Thinking',
-        'trinity large thinking'
-      ],
-      'auto': true
-    },
-    {
-      'id': 'U2 Flash',
-      'vendor': 'Unisound',
-      'color': '#9298A1',
-      'aliases': [
-        'U2 Flash',
-        'u2 flash'
       ],
       'auto': true
     },

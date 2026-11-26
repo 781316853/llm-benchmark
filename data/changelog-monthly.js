@@ -5,14 +5,14 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-25',
-  'refreshedAt': '2026-11-26 05:52',
+  'updated': '2026-11-26',
+  'refreshedAt': '2026-11-26 16:42',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3485,
-    'afterMerge': 3467,
-    'needsZh': 2025,
-    'translated': 2025,
+    'afterToolDedupe': 3492,
+    'afterMerge': 3474,
+    'needsZh': 2028,
+    'translated': 2028,
     'untranslated': 0
   },
   'zh': {
@@ -1300,6 +1300,7 @@ window.CHANGELOG_MONTHLY = {
     'a1f96b34-44': '升级至 opentui 0.1.32，启用 kitty keyboard',
     'a204a7cc-88': '新增显式回退模型处理，并阻止在不可用时直接调用 opencode 提供商',
     'a225ec90-34': '为 shell 脚本添加 shfmt 格式化器',
+    'a240f4b8-86': 'GPT-6.2 系统提示：GPT-6.2 Sol 和 Astra 以及 gpt-latest 别名使用为 GPT-6.2 编写的系统提示。',
     'a249525c-87': '新增 claude plugin details，显示插件的组件清单和预计每会话 token 开销',
     'a254bc4a-63': '分叉会话时将分叉消息文本重新填入提示输入框',
     'a2604acc-24': 'SAP AI Core 提供商支持 ✓',
@@ -1451,6 +1452,7 @@ window.CHANGELOG_MONTHLY = {
     'b49be10c-146': '使用支持音频的模型时，请附上录音。Codex 会在之后的轮次中跳过已确认被拒绝的录音，并使用片段时长来保留更多短录音的上下文信息。（ ， ）',
     'b4b49d09-45': '在 OpenCode 升级方式中添加 Chocolatey 和 Scoop',
     'b4c7d19c-129': '添加了CLAUDE插件在插件的README没有安装行时验证的建议：它打印要粘贴的行，并且从不更改退出代码，即使使用--strict',
+    'b50f875c-200': 'Esc 撤回您的上一条消息：如果撰写框为空，在模型撰写任何内容或调用工具之前使用 Esc 停止回复，将删除您的消息并将其放回撰写框（包括图片），以便您可以编辑并再次发送。',
     'b51a6284-29': '新增对 schedule 事件的支持',
     'b533f72a-64': '应用程序服务器客户端可以在设置或登录时选择 Amazon Bedrock Runtime',
     'b540d334-29': '新增 Julia 语言服务器支持',
@@ -2000,6 +2002,7 @@ window.CHANGELOG_MONTHLY = {
     'fa1082d0-78': '添加交互式提问工具，用于收集用户偏好并澄清指令',
     'fa238c20-67': '增加 --from-pr 标志，用于恢复关联到指定 GitHub PR 编号或 URL 的会话',
     'fa3e11e8-39': '为 SAP AI Core 增加推理变体支持',
+    'fabac64-80': 'OpenCode Go 入门流程修复：连接 OpenCode 后，模型选择器会首先列出 OpenCode Go',
     'fadf8d98-162': '新增 CLAUDE_GATEWAY_PROXY_IS_EGRESS_BOUNDARY=1，适用于唯一出口为正向代理的 Claude apps 网关：所有出站请求将主机名交由代理处理，而不在本地解析',
     'fae505b4-39': '使首页 Logo 不可选中',
     'faec6f64-64': '为 SessionStart 钩子输入增加 agent_type，指定 --agent 时填充',
@@ -2046,7 +2049,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 328,
+      'count': 335,
       'toolCount': 12,
       'multi': [
         {
@@ -3127,6 +3130,27 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
           'items': [
             {
+              'key': 'a240f4b8-86',
+              'text': 'GPT-6.2 System Prompt: GPT-6.2 Sol and Astra, and the gpt-latest aliases, use a system prompt written for GPT-6.2',
+              'date': '2026-11-26',
+              'version': '2.4.2',
+              'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.4.2'
+            },
+            {
+              'key': 'b50f875c-200',
+              'text': 'Esc Takes Back Your Last Message: If the composer is empty, stopping a response with Esc before the model has written anything or called a tool removes your message and puts it back in the composer, images included, so you can edit it and send again',
+              'date': '2026-11-26',
+              'version': '2.4.2',
+              'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.4.2'
+            },
+            {
+              'key': 'fabac64-80',
+              'text': 'OpenCode Go Onboarding Fix: After you connect OpenCode, the model picker lists OpenCode Go first',
+              'date': '2026-11-26',
+              'version': '2.4.2',
+              'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.4.2'
+            },
+            {
               'key': '16014620-96',
               'text': 'macOS 12 Session Fix: OpenCode can save assistant messages again on the older SQLite version included with macOS 12',
               'date': '2026-11-23',
@@ -3302,7 +3326,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.2.6'
             }
           ],
-          'count': 25
+          'count': 28
         },
         {
           'id': 'kimi-code',
@@ -3598,6 +3622,34 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
             {
+              'key': '4eae3dd0-41',
+              'text': '跨设备协作 ：支持从已连接设备的工作区下载文件，并可按权限查看和管理该设备上的自动化任务',
+              'date': '2026-11-25',
+              'version': '0.5.20',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
+              'key': '98161cf8-30',
+              'text': '云端任务 ：可在桌面端创建或继续云端任务，查看执行进度和生成的文件',
+              'date': '2026-11-25',
+              'version': '0.5.20',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
+              'key': 'c9b8df8-34',
+              'text': '受管设备登录 ：企业管理员可将受管设备的登录范围限定为指定组织的企业账号',
+              'date': '2026-11-25',
+              'version': '0.5.20',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
+              'key': 'eafdf40c-37',
+              'text': '本机任务恢复 ：退出或更新 Qoder 后，可恢复符合条件的未完成任务，继续在本机执行',
+              'date': '2026-11-25',
+              'version': '0.5.20',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
               'key': '1462b0ca-66',
               'text': 'Issue 团队协作 ：支持项目协作的账号可将 Issue 指派给智能体团队、改派 Issue，并查看哪些执行需要人工介入。从评论发起执行会保留原指派',
               'date': '2026-11-19',
@@ -3710,7 +3762,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
             }
           ],
-          'count': 16
+          'count': 20
         },
         {
           'id': 'qoder-cn-ide',

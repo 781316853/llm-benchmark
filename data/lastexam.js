@@ -1,4 +1,4 @@
-// 数据源:Agents' Last Exam v1.1(UC Berkeley RDI 真实专业工作流评测,更新于 2026-11-25)
+// 数据源:Agents' Last Exam v1.1(UC Berkeley RDI 真实专业工作流评测,更新于 2026-11-26)
 // 主渠道:https://agents-last-exam.org/api/demo/leaderboard/v1.1(官方 API,T1;榜单页:https://agents-last-exam.org/leaderboard)
 // 补充:https://www.datalearner.com/benchmarks/agents-last-exam-v1-1(厂商官方发布 T2,只补缺)
 // 补充:https://llm-stats.com/benchmarks/agents-last-exam(llm-stats 聚合 T3,只补缺)
@@ -13,8 +13,8 @@ window.LASTEXAM = {
   'url': 'https://agents-last-exam.org/leaderboard',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'version': 'v1.1',
-  'updated': '2026-11-25',
-  'refreshedAt': '2026-11-26 05:52',
+  'updated': '2026-11-26',
+  'refreshedAt': '2026-11-26 16:42',
   'stats': {
     'tasks': 122,
     'entries': 39,

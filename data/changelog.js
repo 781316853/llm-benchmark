@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-25',
-  'refreshedAt': '2026-11-26 05:52',
+  'updated': '2026-11-26',
+  'refreshedAt': '2026-11-26 16:42',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '0.172.0',
@@ -1486,7 +1486,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '2.1.332',
@@ -3937,8 +3937,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
+        {
+          'version': '2.4.2',
+          'title': 'v2.4.2',
+          'date': '2026-11-26',
+          'dateRaw': '2026-11-26T00:59:05Z',
+          'tags': [
+            'Highlights',
+            'Core',
+            'Improvements',
+            'Bug fixes',
+            'TUI',
+            'Desktop'
+          ],
+          'url': 'https://github.com/anomalyco/opencode/releases/tag/v2.4.2',
+          'body': '### Highlights\n\n- **GPT-6.2 System Prompt**: GPT-6.2 Sol and Astra, and the `gpt-latest` aliases, use a system prompt written for GPT-6.2. ([#66297](https://github.com/anomalyco/opencode/pull/66297))\n- **OpenCode Go Onboarding Fix**: After you connect OpenCode, the model picker lists OpenCode Go first. ([#66363](https://github.com/anomalyco/opencode/pull/66363))\n- **Esc Takes Back Your Last Message**: If the composer is empty, stopping a response with Esc before the model has written anything or called a tool removes your message and puts it back in the composer, images included, so you can edit it and send again. ([#65505](https://github.com/anomalyco/opencode/pull/65505))\n\n### Upgrade notes\n\n- **\'Always allow\' for a web fetch allows that site only.** It used to allow every URL. Approvals saved by earlier versions stay as they were. ([#66000](https://github.com/anomalyco/opencode/pull/66000))\n- **Automations keep running after a failed run.** A failed run is recorded and the next one runs on schedule. Automations still pause when the session that created them or their directory is gone, or when their setup is no longer valid. A shell command in an automation\'s code that runs past its timeout is now stopped and fails the call instead of moving to the background. ([#66422](https://github.com/anomalyco/opencode/pull/66422), [#65626](https://github.com/anomalyco/opencode/pull/65626))\n- **Sending to an archived session unarchives it.** This applies to messages, commands, skills and shell commands, including ones sent through the API. ([#66348](https://github.com/anomalyco/opencode/pull/66348))\n- **Plan mode\'s rules are in the system prompt.** Sessions already in Plan mode get the rules once more after upgrading. ([#63669](https://github.com/anomalyco/opencode/pull/63669))\n\n### Core\n\n#### Improvements\n\n- Added a system prompt for GPT-6.2. ([#66297](https://github.com/anomalyco/opencode/pull/66297))\n- `generate_image` and `generate_video` run inside Code Mode instead of as top-level tools, so their definitions no longer add about 700 tokens to every request. ([#66465](https://github.com/anomalyco/opencode/pull/66465))\n- Moving a session also moves its subagents. ([#66215](https://github.com/anomalyco/opencode/pull/66215))\n- The `report` skill checks the docs, searches for duplicate issues and includes the relevant log lines. ([#66290](https://github.com/anomalyco/opencode/pull/66290))\n- Cost estimates for service tiers that list their own prices use those prices, including their long-context rates. ([#65861](https://github.com/anomalyco/opencode/pull/65861), [#65984](https://github.com/anomalyco/opencode/pull/65984))\n\n#### Bug fixes\n\n- Fixed sign-in to MCP servers whose configured URL has a query string, such as the AWS MCP Server. ([#66036](https://github.com/anomalyco/opencode/pull/66036))\n- Fixed Plan mode re-adding its reminder after every compaction, which could keep a session running in a loop. ([#63669](https://github.com/anomalyco/opencode/pull/63669))\n- Fixed tools staying visible to the model when a blanket deny was followed by narrower denies. ([#65899](https://github.com/anomalyco/opencode/pull/65899))\n- Fixed PDFs with bytes before the `%PDF-` header not being read as PDFs. ([#65967](https://github.com/anomalyco/opencode/pull/65967))\n- Fixed branches whose names end in `/HEAD` missing from the branch list. ([#65904](https://github.com/anomalyco/opencode/pull/65904))\n- Fixed files added by a patch losing a trailing blank line. ([#66378](https://github.com/anomalyco/opencode/pull/66378))\n- Fixed moving a session to a `~\\` path on Windows. ([#66269](https://github.com/anomalyco/opencode/pull/66269))\n- Fixed OpenAI custom tool calls failing as malformed on providers that end them only with the completed response. ([#65849](https://github.com/anomalyco/opencode/pull/65849))\n\n### TUI\n\n#### Improvements\n\n- The model picker stays responsive with large catalogs, such as OpenRouter\'s. ([#66370](https://github.com/anomalyco/opencode/pull/66370))\n- The goal dialog scrolls when the goal is long. ([#65906](https://github.com/anomalyco/opencode/pull/65906))\n- Updated OpenTUI to 0.9.9. ([#65919](https://github.com/anomalyco/opencode/pull/65919))\n\n#### Bug fixes\n\n- Fixed `/models` showing only free models when the TUI opened a session in another directory. ([#66424](https://github.com/anomalyco/opencode/pull/66424))\n- Fixed type-to-filter in Message Actions. ([#65903](https://github.com/anomalyco/opencode/pull/65903))\n- Fixed removing `theme` from config not switching back to the default theme. ([#65925](https://github.com/anomalyco/opencode/pull/65925))\n- Fixed quick successive settings changes overwriting each other. ([#65761](https://github.com/anomalyco/opencode/pull/65761))\n- Fixed the session list losing the selected row after a deletion. ([#65855](https://github.com/anomalyco/opencode/pull/65855))\n\n### Desktop\n\n#### Improvements\n\n- On macOS and Windows, desktop updates download only the parts of the app that changed instead of the full installer again. ([#66042](https://github.com/anomalyco/opencode/pull/66042))\n- Enter in the question dock moves to the next question and submits on the last one. Set **Submit question answers with** to Cmd/Ctrl+Enter in **Settings → Preferences** to keep the previous behavior. ([#66169](https://github.com/anomalyco/opencode/pull/66169))\n- To move the file tree to the right in the Files and Review panels, right-click its header and choose **Sidebar position → Right**. ([#66012](https://github.com/anomalyco/opencode/pull/66012))\n- `/rename` with no title generates a new title, and `/rename <title>` sets one. ([#66396](https://github.com/anomalyco/opencode/pull/66396))\n- Search sessions also finds archived sessions and shows them dimmed. ([#66356](https://github.com/anomalyco/opencode/pull/66356))\n- In the Inbox sidebar, you can pin sessions, open archived sessions in a collapsible section and choose where working sessions appear. Archived sessions waiting on you show under Needs attention. ([#65961](https://github.com/anomalyco/opencode/pull/65961), [#66327](https://github.com/anomalyco/opencode/pull/66327))\n- Cmd+Shift+S (Ctrl+Shift+S on Windows and Linux) unarchives the open session when it\'s archived. ([#66327](https://github.com/anomalyco/opencode/pull/66327))\n- Custom answers to questions can span several lines. ([#66169](https://github.com/anomalyco/opencode/pull/66169))\n- Subagent sessions show their parent session\'s side panel tabs. ([#65957](https://github.com/anomalyco/opencode/pull/65957))\n- Sessions in open tabs keep browser access after a restart or when an automation wakes them. ([#65969](https://github.com/anomalyco/opencode/pull/65969))\n\n#### Bug fixes\n\n- Fixed older messages you had loaded disappearing after a reconnect. ([#66035](https://github.com/anomalyco/opencode/pull/66035))\n- Fixed the timeline jumping while older history loads or a focused row scrolls out of view, and made scrolling in long sessions smoother. ([#66014](https://github.com/anomalyco/opencode/pull/66014), [#65921](https://github.com/anomalyco/opencode/pull/65921), [#66034](https://github.com/anomalyco/opencode/pull/66034), [#65631](https://github.com/anomalyco/opencode/pull/65631))\n- Fixed the background indicator flashing \'1 shell\' for each shell command a script runs. ([#66402](https://github.com/anomalyco/opencode/pull/66402))\n- Fixed screen readers skipping a reply while it\'s being written. ([#66120](https://github.com/anomalyco/opencode/pull/66120))\n- Fixed the app menu missing from the side tabs header on Linux. ([#65912](https://github.com/anomalyco/opencode/pull/65912))\n- Fixed the model list jumping when you unfavorite a model with the mouse. ([#65649](https://github.com/anomalyco/opencode/pull/65649))\n\n### SDK\n\n- `@opencode/sdk/workerd`: forward your Durable Object\'s `alarm()` to `opencode.alarm()` so idle remote workspaces suspend. ([#66183](https://github.com/anomalyco/opencode/pull/66183), [#66240](https://github.com/anomalyco/opencode/pull/66240))\n\n### Extensions\n\n- Promise plugin API calls honor `signal`. Aborting rejects the call. ([#65980](https://github.com/anomalyco/opencode/pull/65980))\n- Plugins can give an agent `instructions` that apply while that agent is selected, without busting the prompt cache. Switching agents or changing the instructions mid-session sends an update instead of rewriting the system prompt. ([#63669](https://github.com/anomalyco/opencode/pull/63669))'
+        },
         {
           'version': '2.4.1',
           'title': 'v2.4.1',
@@ -9478,19 +9494,6 @@ window.CHANGELOG = {
           'tags': [],
           'url': 'https://github.com/anomalyco/opencode/releases/tag/v1.0.1',
           'body': '- Added persistent key-value storage for user preferences in TUI\n- Added `/session` command to list available sessions in TUI'
-        },
-        {
-          'version': '1.0.0',
-          'title': 'v1.0.0',
-          'date': '2025-10-31',
-          'dateRaw': '2025-10-31T19:28:15Z',
-          'tags': [
-            'Upgrading',
-            'UX changes',
-            'Theme'
-          ],
-          'url': 'https://github.com/anomalyco/opencode/releases/tag/v1.0.0',
-          'body': 'OpenCode 1.0 is a complete rewrite of the TUI.\n\nWe moved from the go+bubbletea based TUI which had performance and capability issues to an in-house framework (OpenTUI) written in zig+solidjs.\n\nThe new TUI works like the old one since it connects to the same opencode server.\n\n---\n\n## Upgrading\n\nYou should not be autoupgraded to 1.0 if you are currently using a previous\nversion. However some older versions of OpenCode always grab latest.\n\n\nTo upgrade manually, run\n```bash\n$ opencode upgrade 1.0.0\n```\n\nTo downgrade back to 0.x, run\n```bash\n$ opencode upgrade 0.15.31\n```\n\n---\n\n## UX changes\n\nThe session history is more compressed, only showing full details of the edit and bash tool.\n\nWe added a command bar which almost everything flows through. Press ctrl+p to bring it up in any context and see everything you can do.\n\nAdded a session sidebar (can be toggled) with useful information.\n\nWe removed some functionality that we weren\'t sure anyone actually used. If something important is missing please open an issue and we\'ll add it back quickly.\n\n---\n\n## Breaking changes\n\n### Theme\n\nThe `system` theme has not yet been ported and custom themes aren\'t loaded yet but both of these will be fixed this week.\n\n### Keybinds renamed\n\n- messages_revert -> messages_undo\n- switch_agent -> agent_cycle\n- switch_agent_reverse -> agent_cycle_reverse\n- switch_mode -> agent_cycle\n- switch_mode_reverse -> agent_cycle_reverse\n\n### Keybinds removed\n\n- messages_layout_toggle\n- messages_next\n- messages_previous\n- file_diff_toggle\n- file_search\n- file_close\n- file_list\n- app_help\n- project_init\n- tool_details\n- thinking_blocks'
         }
       ]
     },
@@ -9502,7 +9505,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '2.7.3',
@@ -10779,7 +10782,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '0.2.3-alpha.2',
@@ -11447,8 +11450,24 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
+        {
+          'version': '0.5.20',
+          'title': '跨设备协作与云端任务',
+          'date': '2026-11-25',
+          'dateRaw': '2026年11月25日',
+          'tags': [
+            '跨设备协作与云端任务',
+            '功能',
+            '云端任务',
+            '跨设备协作',
+            '本机任务恢复',
+            '受管设备登录'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-update-log',
+          'body': '跨设备协作与云端任务\n功能\n- 云端任务 ：可在桌面端创建或继续云端任务，查看执行进度和生成的文件。\n- 跨设备协作 ：支持从已连接设备的工作区下载文件，并可按权限查看和管理该设备上的自动化任务。\n- 本机任务恢复 ：退出或更新 Qoder 后，可恢复符合条件的未完成任务，继续在本机执行。\n- 受管设备登录 ：企业管理员可将受管设备的登录范围限定为指定组织的企业账号。\n优化\n- 归档管理 ：支持按组恢复或删除已归档的本机任务。在搜索结果中批量删除时，仅删除匹配项。\n- 字号与界面缩放 ：对话正文和输入框新增特大字号，界面缩放可单独设为 125%。\n修复\n- 修复数据目录迁移后部分插件无法安装，以及部分插件的后台服务在受限 Windows 环境下无法启动的问题。\n- 修复自动化任务保存结果后，因后台连接中断而阻塞下一次运行的问题。\n- 修复已选择可用模型却无法开始对话的问题。\n- 修复远程控制会话中部分历史消息补传后显示顺序不正确的问题。\n2026年11月24日'
+        },
         {
           'version': '0.5.18',
           'title': '日常优化',
@@ -11943,7 +11962,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '1.41.1',
@@ -12639,7 +12658,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '3.4.21',
@@ -14930,7 +14949,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '4.0.0',
@@ -15145,7 +15164,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '4.12.4',
@@ -16042,7 +16061,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 05:52',
+      'lastOkAt': '2026-11-26 16:42',
       'entries': [
         {
           'version': '5.11.3',
