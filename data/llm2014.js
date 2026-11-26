@@ -14,12 +14,16 @@ window.LLM2014 = {
   source: "llm2014 Agentic",
   url: "https://llm2014.github.io/llm_benchmark/#category=code_v3&dataset=code_v3%7C2026-11%7C0",
   updated: "2026-11-26",
-  refreshedAt: "2026-11-27 05:47",
+  refreshedAt: "2026-11-27 00:04",
   desc: "个人私有滚动题库的长期跟踪评测,要求从零构建实际应用(MacOS/Flutter/Web/Game/Rust 等)并按通过情况评级。",
   // 官方说明文案(源站 i18n.js):grades=档位说明,projects=项目说明(字母代号 -> 项目构成)
   notes: {
   'cellFormat': '1/A 代表扣分数/档位',
   'grades': [
+    {
+      'k': 'Perfect',
+      't': '：完整实现所有要求。'
+    },
     {
       'k': 'A',
       't': '档：几乎不犯错，只犯微小的 UI、交互类错误。'
@@ -98,6 +102,14 @@ window.LLM2014 = {
     {
       'k': 'N',
       't': 'Rust 桌面 App'
+    },
+    {
+      'k': 'O',
+      't': '无提示修复破损工程'
+    },
+    {
+      'k': 'P',
+      't': '平面排版，世界知识，美学，常识'
     }
   ]
 },

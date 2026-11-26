@@ -16,6 +16,7 @@ const CONFIG = require("../lib/config");
 const NOTES_FALLBACK = {
   cellFormat: "1/A 代表扣分数/档位",
   grades: [
+    { k: "Perfect", t: "：完整实现所有要求。" },
     { k: "A", t: "档：几乎不犯错，只犯微小的 UI、交互类错误。" },
     { k: "B", t: "档：大概率会错，但只要描述错误现象，都可以1轮修复。" },
     { k: "C", t: "档：大概率错，但需要交互更多轮，模型能自主推进修复，无需人工提供辅助。" },
@@ -37,13 +38,15 @@ const NOTES_FALLBACK = {
     { k: "K", t: "Harmony OS App + C++ Native" },
     { k: "L", t: "Metal + 图形算法优化" },
     { k: "M", t: "科学细节的教学可视化展示" },
-    { k: "N", t: "Rust 桌面 App" }
+    { k: "N", t: "Rust 桌面 App" },
+    { k: "O", t: "无提示修复破损工程" },
+    { k: "P", t: "平面排版，世界知识，美学，常识" }
   ]
 };
 const I18N_PATH = "assets/i18n.js";
-const I18N_GRADE_KEYS = [["A", "gradeA"], ["B", "gradeB"], ["C", "gradeC"], ["D", "gradeD"],
+const I18N_GRADE_KEYS = [["Perfect", "perfect"], ["A", "gradeA"], ["B", "gradeB"], ["C", "gradeC"], ["D", "gradeD"],
   ["Failed", "failed"], ["Pass", "pass"], ["Skip", "skip"], ["Pending", "pending"]];
-const I18N_PROJECT_KEYS = ["C", "E", "F", "H", "I", "J", "K", "L", "M", "N"];
+const I18N_PROJECT_KEYS = ["C", "E", "F", "H", "I", "J", "K", "L", "M", "N", "O", "P"];
 
 // 从 i18n.js 源文本提取指定 key 的 zh-CN 文案;key 形如 "codev3Note.gradeA" / "meta.codev3CellFormat"
 function pickI18n(text, key) {
