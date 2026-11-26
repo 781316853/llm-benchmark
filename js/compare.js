@@ -28,6 +28,22 @@
   // AI 十项全能于 2026-11-24 入组)
   var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hle"];
 
+  // ===== 「只看第三方」口径 =====
+  // 矩阵的「第三方实测」分组 = 第三方独立实测(ModelDial / AI Coding Daily / AI 十项全能)
+  // + 社区盲评与真实使用(WebDev / Agent Arena / 亿模亿样)+ 站主实测(llm2014),共 7 组。
+  // 打开后:综合分只在这 7 组上等权平均(在场 N 组各 1/N),排名/梯队/性价比/命中都按第三方口径算;
+  // 榜单基准 3 组(DeepSWE / Terminal-Bench / HLE)不参与打分,矩阵里仍以参考列展示。
+  var THIRD_GROUPS = ["modeldial", "webdev", "agentarena", "llm", "arenaofbias", "aicodingdaily", "octathlon"];
+  var thirdMode = false;
+  function setThirdMode(v) { thirdMode = !!v; }
+  function isThirdMode() { return thirdMode; }
+  function activeGroups() { return thirdMode ? THIRD_GROUPS : GROUPS; }
+  function activeGroupCount() { return activeGroups().length; }
+  // 排名门槛:全口径命中≥4 才排名;第三方口径只有 7 组,门槛降到 ≥3,参考行=2,单榜=1
+  function rankedFloor() { return thirdMode ? 3 : 4; }
+  // 当前口径下的命中数(全口径 = benchCount;第三方口径 = 七个第三方组里出现的组数)
+  function hitCount(e) { return thirdMode ? (e._cnt3 || 0) : (e.benchCount || 0); }
+
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
   // Terminal-Bench 用跨版本校准后的 norm(0-100):原始分跨版本不可比(2.1 自报分 88 ≈ 4.0 官方 26),
   // 直接数原始分高低会把 2.1 代表的参考行整体抬到官方实测 4.0 模型之上
@@ -77,17 +93,19 @@
   // ④ 合并后按 _posKey 升序
   function matrix(llmMonthKey, minHits) {
     var floor = minHits == null ? 2 : minHits;
+    var rankedMin = rankedFloor();
     var map = scoreTable(llmMonthKey).map;
     var all = Object.keys(map).map(function (k) { return map[k]; })
-      .filter(function (e) { return e.benchCount >= floor; });
-    var ranked = all.filter(function (e) { return e.benchCount >= 4; });
-    var inserted = all.filter(function (e) { return e.benchCount >= 2 && e.benchCount <= 3; }); // 命中 2-3 榜:不参与名次、不计算综合分
-    var single = all.filter(function (e) { return e.benchCount === 1; });   // 单榜:仅搜索态出现
+      .filter(function (e) { return hitCount(e) >= floor; });
+    var ranked = all.filter(function (e) { return hitCount(e) >= rankedMin; });
+    var inserted = all.filter(function (e) { var h = hitCount(e); return h >= 2 && h < rankedMin; }); // 参考行:不参与名次、不计算综合分
+    var single = all.filter(function (e) { return hitCount(e) === 1; });   // 单榜:仅搜索态出现
     // 基准序:综合分降序(同分依次 命中数降序 → id 升序兜底确定性),作为划档输入
     ranked.sort(function (a, b) {
       var ca = composite(a), cb = composite(b);
       if (ca !== cb) return cb - ca;
-      if (a.benchCount !== b.benchCount) return b.benchCount - a.benchCount;
+      var ha = hitCount(a), hb = hitCount(b);
+      if (ha !== hb) return hb - ha;
       return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
     });
     // 划档:与档内首名(本档最高分)差距 ≥ 容差即另起一档 —— 档内跨度因此恒 < SCORE_TOLERANCE
@@ -283,6 +301,7 @@
     var stats = boardStats(entries);
     entries.forEach(function (e) {
       var zs = {}, sum = 0, wsum = 0;
+      var zs3 = {}, sum3 = 0, wsum3 = 0, cnt3 = 0;
       GROUPS.forEach(function (g) {
         if (!stats[g]) return;
         var x = BOARD_RAW[g](e);
@@ -293,9 +312,20 @@
         sum += z * WEIGHTS[g];
         wsum += WEIGHTS[g];
       });
+      // 第三方口径:同一套榜内 z,只在 7 个第三方组上等权平均(权重归一,榜单基准 3 组不参与)
+      THIRD_GROUPS.forEach(function (g) {
+        if (zs[g] == null) return;
+        zs3[g] = zs[g];
+        sum3 += zs[g] * WEIGHTS[g];
+        wsum3 += WEIGHTS[g];
+        cnt3++;
+      });
       e._z = zs;
+      e._z3 = zs3;
+      e._cnt3 = cnt3;
       // 显示分 = 50 + 15×加权标准分,夹到 0-100:50 即全池中位,每 15 分差 = 1 个榜内稳健标准差
       e._disp = wsum > 0 ? Math.max(0, Math.min(100, 50 + Z_DISPLAY_SCALE * (sum / wsum))) : null;
+      e._disp3 = wsum3 > 0 ? Math.max(0, Math.min(100, 50 + Z_DISPLAY_SCALE * (sum3 / wsum3))) : null;
     });
     scoreCache[ck] = { map: map, entries: entries, stats: stats };
     return scoreCache[ck];
@@ -305,12 +335,15 @@
   // 2026-09-22 起不再含「一榜豁免」与「一致性折减」:前者与「缺榜按自身水平填补」是同一动机的
   // 两次实现,叠加会把只挑强项参赛的模型持续抬分;后者在新量纲下(σ_z 中位约 0.7)折减不足
   // 0.2 分,已属噪声,而「各榜更均衡者优先」的语义改由档内 tie-break 明确承担。
-  function composite(e) { return e._disp == null ? 0 : e._disp; }
+  function composite(e) {
+    var v = thirdMode ? e._disp3 : e._disp;
+    return v == null ? 0 : v;
+  }
   // 共榜成对净胜(0..1):只在双方都在场的榜上比标准分,分差经 logistic 软化以保留「赢多少」;
   // 无共榜返回 null。缺测的榜既不当 0 分也不当满分 —— 没有任何证据,就不做假设。
   function headToHead(a, b) {
     var sum = 0, wsum = 0;
-    GROUPS.forEach(function (g) {
+    activeGroups().forEach(function (g) {
       var x = a._z && a._z[g], y = b._z && b._z[g];
       if (x == null || y == null) return;
       sum += WEIGHTS[g] / (1 + Math.exp(-(x - y) / H2H_TAU));
@@ -332,8 +365,9 @@
   // 支配是双向定义(共榜集合对 both 相同),故不会出现 A、B 互相支配。
   function dominatesStrict(a, b) {
     var shared = 0, i, g, x, y;
-    for (i = 0; i < GROUPS.length; i++) {
-      g = GROUPS[i];
+    var gs = activeGroups();
+    for (i = 0; i < gs.length; i++) {
+      g = gs[i];
       x = a._z && a._z[g]; y = b._z && b._z[g];
       if (x == null || y == null) continue;
       shared++;
@@ -360,7 +394,8 @@
       layer.sort(function (a, b) {
         var d = composite(b) - composite(a);
         if (d) return d;
-        if (a.benchCount !== b.benchCount) return b.benchCount - a.benchCount;
+        var ha = hitCount(a), hb = hitCount(b);
+        if (ha !== hb) return hb - ha;
         if (a._pw !== b._pw) return b._pw - a._pw;
         return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
       });
@@ -482,6 +517,9 @@
     INDICATORS: INDICATORS,
     GROUPS: GROUPS, WEIGHTS: WEIGHTS, Z_DISPLAY_SCALE: Z_DISPLAY_SCALE, TOL_Z: TOL_Z,
     groupCount: groupCount, groupPct: groupPct,
+    // 「只看第三方」口径
+    THIRD_GROUPS: THIRD_GROUPS, setThirdMode: setThirdMode, isThirdMode: isThirdMode,
+    activeGroupCount: activeGroupCount, rankedFloor: rankedFloor, hitCount: hitCount,
     SCORE_TOLERANCE: SCORE_TOLERANCE
   };
 })();

@@ -2,6 +2,9 @@
 (function () {
   "use strict";
   var D = window.D, CH = window.CH, CMP = window.CMP;
+  // 「只看第三方」口径下的命中数/排名门槛(全口径:命中≥4 排名;第三方口径:7 组里≥3 排名)
+  function hitOf(r) { return CMP && CMP.hitCount ? CMP.hitCount(r) : (r.benchCount || 0); }
+  function rankedFloor() { return CMP && CMP.rankedFloor ? CMP.rankedFloor() : 4; }
   // 当前页由 <body data-page> 指定:每页只渲染自己那一节,页间跳转是普通链接而非页内切 class
   var CURRENT_TAB = (document.body && document.body.getAttribute("data-page")) || "overview";
   // 英文页位于 /en/ 子目录,按需注入的数据脚本要加 ../ 前缀(生成器写入 body[data-base])
@@ -19,6 +22,7 @@
     highlightDomestic: true, // 总览页「高亮国产模型」开关:默认开启,高亮国产厂商模型
     showScore: true, // 总览页「显示综合分」开关:默认显示梯队旁的精确综合分
     relativeFirst: false, // 总览页「与参考差值」开关:默认关闭;开启后基准列显示与参考模型的差值
+    thirdPartyOnly: false, // 总览页「只看第三方」开关:综合分只按 7 个第三方实测组等权计算
     refModelId: null, // 差值模式的参考模型 canonical id;null=综合第1
     releaseSort: "recent", // 总览「厂商新模型发布倒计时」排序:recent=最近发布在前/stale=最久未发在前
     releaseExpanded: false, // 发布倒计时是否展开全部厂商(默认只列 MODEL_MAP.mainVendors)
@@ -250,7 +254,7 @@
   // 性价比指数 = 综合分 ÷ 每百万 token 综合成本;仅参与排名的行(命中≥4榜)且匹配到标价时可算。
   // 列排序、格内显示与「最佳性价比」标记共用这一处,避免同一口径写三遍后走样
   function valueIndexOf(r) {
-    if (!r || r.benchCount < 4) return null;
+    if (!r || hitOf(r) < rankedFloor()) return null;
     var p = priceOf(r.id);
     return p ? CMP.composite(r) / p.costPerM : null;
   }
@@ -321,7 +325,7 @@
     { key: "octathlon", label: "AI 十项全能 (总分/100)", type: "num", bench: true, grp: "第三方实测", tone: "octathlon",
       tip: "AI 十项全能·定时挑战赛总分(0-100):独立第三方(octathlon.wendystars.com)实测,13 道题 / 10 个类别,单题限时 60–100 分钟、无人答疑、到时中止;总分 = 10 类各 10% 加权,类内各题平分。7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。注:模型连同它自己的 agent harness(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等)一起测,分数混杂模型与脚手架质量;计入综合分(十组等权,权重 " + W_TXT + ")与命中数,完整榜单见「AI 十项全能」页",
       val: function (r) { return (r.octathlon && r.octathlon.score != null) ? r.octathlon.score : null; } },
-    { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return r.benchCount; } }
+    { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return hitOf(r); } }
   ];
 
   // 计算点击某列后的排序方向:新列首击一律降序(高->低),同列在升序/降序间翻转
@@ -609,10 +613,10 @@
     var tokens = searchTokens(query);
     var searching = tokens.length > 0;
     var matrixRows = CMP.matrix(state.llmMonth, searching ? 1 : (state.showAll.overview ? 2 : 3));
-    CMP.assignTiers(matrixRows.filter(function (r) { return r.benchCount >= 4; }));
+    CMP.assignTiers(matrixRows.filter(function (r) { return hitOf(r) >= rankedFloor(); }));
     // 排名序号按 CMP.matrix 的默认排名序取:搜索结果里显示真实名次,而不是「第几个匹配」
     var rankById = {}, rankSeq = 0;
-    matrixRows.forEach(function (r) { if (r.benchCount >= 4) rankById[r.id] = ++rankSeq; });
+    matrixRows.forEach(function (r) { if (hitOf(r) >= rankedFloor()) rankById[r.id] = ++rankSeq; });
     var allRows = sortedMatrixRows(matrixRows, searching || state.showAll.overview);
     var rows = allRows;
     if (searching) {
@@ -622,14 +626,14 @@
       var ranked = 0;
       for (var ri = 0; ri < allRows.length && ranked < 30; ri++) {
         var r0 = allRows[ri];
-        if (r0.benchCount >= 4) { rows.push(r0); ranked++; }
-        else if (r0.benchCount >= 3) rows.push(r0);
+        if (hitOf(r0) >= rankedFloor()) { rows.push(r0); ranked++; }
+        else if (hitOf(r0) >= rankedFloor() - 1) rows.push(r0);
       }
     }
     if (!rows.length && !searching) rows = allRows;
     // 差值模式参考模型:默认综合第 1;工具栏下拉可选当前可见行中的任意模型。
     // 选中行在矩阵里加 row-ref 高亮,未选中时下拉框隐藏。
-    var rankedRows = matrixRows.filter(function (r) { return r.benchCount >= 4; });
+    var rankedRows = matrixRows.filter(function (r) { return hitOf(r) >= rankedFloor(); });
     var firstOverall = rankedRows[0] || null;
     var selectedRefRow = null;
     var refWrap = document.getElementById("ovRefWrap");
@@ -650,7 +654,7 @@
         refSel.innerHTML = refOptions.map(function (r) {
           var rk = rankById[r.id];
           var label = rk ? "#" + rk + " · " + r.id
-            : (r.benchCount >= 2 && r.benchCount <= 3 ? T("参考") + " · " + r.id : T("单榜") + " · " + r.id);
+            : ((hitOf(r) >= 2 && hitOf(r) < rankedFloor()) ? T("参考") + " · " + r.id : T("单榜") + " · " + r.id);
           return '<option value="' + esc(r.id) + '">' + esc(label) + '</option>';
         }).join("");
         refSel.value = selectedRefRow ? selectedRefRow.id : "";
@@ -661,7 +665,7 @@
     // 前20名「最佳性价比」标记:只在排名行(命中≥4榜,不含参考/单榜)里取性价比指数最高者。
     // 以 matrixRows 的排名序而非当前可见序为准 —— 点其它列排序或勾选「显示全部」时,标记对象保持不变。
     // 并列时保留排名更靠前者(严格大于,首个最大值即排名最高者)
-    var topRanked = matrixRows.filter(function (r) { return r.benchCount >= 4; }).slice(0, 20);
+    var topRanked = matrixRows.filter(function (r) { return hitOf(r) >= rankedFloor(); }).slice(0, 20);
     var bestValueRow = null, bestValueIdx = -Infinity;
     topRanked.forEach(function (r) {
       var idx = valueIndexOf(r);
@@ -757,9 +761,9 @@
     var wdMissTitle = wdSnapshot ? "源站快照止于 " + wdSnapshot + "，该模型尚未上榜" : "";
     var html = rows.map(function (r) {
       // 参考行:命中 2-3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
-      var inserted = r.benchCount >= 2 && r.benchCount <= 3;
+      var inserted = (hitOf(r) >= 2 && hitOf(r) < rankedFloor());
       // 单榜行:仅命中 1 个基准组,只在搜索态出现,不排名、不计算综合分
-      var single = r.benchCount === 1;
+      var single = hitOf(r) === 1;
       // 不参与排名的行(命中<4榜):梯队列与序号列均显示「—」
       var unranked = inserted || single;
       // HLE 单元格:无工具闭卷分 + 悬浮(口径与源站名次);2026-11-15 起计入综合分与命中数
@@ -875,7 +879,7 @@
       var isRefRow = !!(state.relativeFirst && selectedRefRow && r.id === selectedRefRow.id);
       // row-hit(跨榜命中)、row-new(新上榜)、row-domestic(国产高亮)、row-ref(参考线)可并存;
       // CSS 中 row-ref 置后,确保参考线高亮视觉优先
-      var cls = (r.benchCount >= 4 ? "row-hit " : "") + (inserted ? "row-two " : "") + (single ? "row-one " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic " : "") + (isRefRow ? "row-ref" : "");
+      var cls = (hitOf(r) >= rankedFloor() ? "row-hit " : "") + (inserted ? "row-two " : "") + (single ? "row-one " : "") + (nw ? "row-new " : "") + (dom ? "row-domestic " : "") + (isRefRow ? "row-ref" : "");
       var domBadge = dom ? ' <span class="badge-domestic">国产</span>' : "";
       var refBadge = isRefRow ? ' <span class="badge-ref">' + T("参考线") + '</span>' : "";
       var insertedBadge = (inserted && !isRefRow) ? ' <span class="badge-two" title="命中 2-3 榜:按在场各榜的榜内稳健标准分加权(与排名行综合分同口径)与排名模型比对落入相应名次区间,不计算综合分、不计排名;序号计「—」;默认视图仅前30区间内显示,勾选「显示全部模型」可见全部">参考</span>' : "";
@@ -944,7 +948,7 @@
         '<td class="num">' + acdHtml + '</td>' +
         // AI 十项全能列(「第三方实测」组):总分 0-100 上该榜数据色,后随 agent 小灰字(元数据)
         '<td class="num">' + octHtml + '</td>' +
-        '<td class="num">' + r.benchCount + '/' + CMP.GROUPS.length + '</td></tr>';
+        '<td class="num">' + hitOf(r) + '/' + CMP.activeGroupCount() + '</td></tr>';
     });
     // 搜索无结果:给出覆盖范围提示,避免误以为搜的是全站(表里只有计分基准组有成绩的模型)
     if (searching && !rows.length) {
@@ -998,21 +1002,21 @@
     // 动态行数提示与工具区摘要(默认视图含混排的参考模型,排名数与参考数分开统计)
     var note, rankedCnt, refCnt, singleCnt = 0;
     if (searching) {
-      rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
-      refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
-      singleCnt = rows.filter(function (r) { return r.benchCount === 1; }).length;
+      rankedCnt = rows.filter(function (r) { return hitOf(r) >= rankedFloor(); }).length;
+      refCnt = rows.filter(function (r) { return (hitOf(r) >= 2 && hitOf(r) < rankedFloor()); }).length;
+      singleCnt = rows.filter(function (r) { return hitOf(r) === 1; }).length;
       note = '搜索「' + query + '」在全部 ' + matrixRows.length + ' 个有成绩的模型中命中 ' + rows.length + ' 个' +
         (rows.length ? ':排名 ' + rankedCnt + ' · 参考 ' + refCnt + ' · 单榜 ' + singleCnt + '。' : '。') + '\n' +
         '搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。';
     } else if (state.showAll.overview) {
-      rankedCnt = rows.filter(function (r) { return r.benchCount >= 4; }).length;
-      refCnt = rows.filter(function (r) { return r.benchCount >= 2 && r.benchCount <= 3; }).length;
+      rankedCnt = rows.filter(function (r) { return hitOf(r) >= rankedFloor(); }).length;
+      refCnt = rows.filter(function (r) { return (hitOf(r) >= 2 && hitOf(r) < rankedFloor()); }).length;
       note = '当前显示全部 ' + rows.length + ' 个命中≥2榜的模型:排名 ' + rankedCnt + ' · 参考 ' + refCnt + '。\n' +
-        '命中 ≤3 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。';
+        '命中 ≤' + (rankedFloor() - 1) + ' 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。';
     } else {
-      refCnt = rows.filter(function (r) { return r.benchCount === 3; }).length;
+      refCnt = rows.filter(function (r) { return hitOf(r) === rankedFloor() - 1; }).length;
       rankedCnt = rows.length - refCnt;
-      note = '当前显示排名前 ' + rankedCnt + ' 的模型,以及 ' + refCnt + ' 个跻身前 30 区间的「参考」模型(命中 3 榜,不计算综合分、不排名)。\n' +
+      note = '当前显示排名前 ' + rankedCnt + ' 的模型,以及 ' + refCnt + ' 个跻身前 30 区间的「参考」模型(命中 ' + (rankedFloor() - 1) + ' 榜,不计算综合分、不排名)。\n' +
         '其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。';
     }
     var statsEl = document.getElementById("matrixStats");
@@ -1030,7 +1034,7 @@
         : '<span>排名 <b>' + rankedCnt + '</b></span>' +
           '<span>参考 <b>' + refCnt + '</b></span>' +
           (singleCnt ? '<span>单榜 <b>' + singleCnt + '</b></span>' : '') +
-          '<span class="ms-rule">命中 ≥4 榜计分</span>' + relStats;
+          '<span class="ms-rule">命中 ≥' + rankedFloor() + ' 榜计分' + (state.thirdPartyOnly ? ' · 第三方口径' : '') + '</span>' + relStats;
     }
     if (state.highlightDomestic) {
       var domCnt = rows.filter(function (r) { return DOMESTIC[r.vendor]; }).length;
@@ -1045,6 +1049,14 @@
     note += '\nTerminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。';
     var noteEl = document.getElementById("overviewNote");
     noteEl.textContent = note;
+    // 第三方口径说明单独成节点,便于英文站按整句翻译(主 note 是多行拼接,无法整句命中)
+    if (state.thirdPartyOnly) {
+      var tpNote = document.createElement("span");
+      tpNote.className = "note-line";
+      tpNote.textContent = "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 3 组(DeepSWE / Terminal-Bench / HLE)仅供参考、不参与打分。";
+      noteEl.insertBefore(tpNote, noteEl.firstChild);
+      noteEl.insertBefore(document.createElement("br"), noteEl.firstChild.nextSibling);
+    }
     // 相对模式说明单独成节点,便于英文站按整句翻译(主 note 是多行拼接,无法整句命中)
     if (relNote) {
       noteEl.appendChild(document.createElement("br"));
@@ -4284,6 +4296,13 @@
     var rfEl = document.getElementById("ovRelativeFirst");
     if (rfEl) rfEl.addEventListener("change", function () {
       state.relativeFirst = rfEl.checked;
+      renderMatrix();
+    });
+    // 总览页「只看第三方」开关:综合分只按 7 个第三方实测组(共 1/7 等权)计算,榜单基准 3 组不参与打分
+    var tpEl = document.getElementById("ovThirdParty");
+    if (tpEl) tpEl.addEventListener("change", function () {
+      state.thirdPartyOnly = tpEl.checked;
+      if (CMP && CMP.setThirdMode) CMP.setThirdMode(state.thirdPartyOnly);
       renderMatrix();
     });
     // 参考模型下拉:切换后把该模型作为差值基准,并在矩阵中高亮该行

@@ -96,7 +96,7 @@
   <script defer src="js/data.js?v=20261125a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261126b"></script>
-  <script defer src="js/app.js?v=20261126d"></script>
+  <script defer src="js/app.js?v=20261126f"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261124a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -276,6 +276,7 @@
               <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">高亮国产模型</span></label>
               <label class="switch switch-lg" title="默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)"><input type="checkbox" id="ovShowScore" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
               <label class="switch switch-lg" title="勾选后基准列改为与参考模型的差值:参考模型自身显示原值,其余模型显示 该模型成绩 − 参考模型成绩;正数高于参考,负数低于;参考模型某项无成绩时,取排名最靠前且有该成绩的模型(该行原值旁标「基准」)。综合分/梯队/性价比不变"><input type="checkbox" id="ovRelativeFirst"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">与参考差值</span></label>
+              <label class="switch switch-lg" title="综合分只按 7 个第三方实测组等权计算,榜单基准 3 组不参与打分"><input type="checkbox" id="ovThirdParty"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">只看第三方</span></label>
               <label class="matrix-ref" id="ovRefWrap" hidden title="选择参考模型:差值模式下,基准列显示各模型与该模型的差值;参考模型自身显示原值"><span>参考</span><select id="ovRefModel" aria-label="选择参考模型"></select></label>
             </div>
           </div>

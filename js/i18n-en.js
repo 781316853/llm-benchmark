@@ -97,6 +97,9 @@
           " Search ignores the default top-30 / reference band cut and includes “reference” and “single-board” rows; clear the box or press Esc to return.";
       }],
 
+    // ===== 总览:第三方口径 =====
+    ["^命中 ≥(\\d+) 榜计分 · 第三方口径$", "Composite (≥$1 third-party groups)"],
+
     // ===== ModelDial 配置提示 =====
     ["^后端 ([\\d.]+) · 前端 ([\\d.]+) · 知识 ([\\d.]+)(?: · 审美 ([\\d.]+))?(?: · 可维护 ([\\d.]+))?(?: · 旧三轴 ([\\d.]+))?(?: · 强度 (\\S+))?(?: · 耗时 (.+?))?(?: · 费用 (\\$[\\d.]+)\\(综合口径\\))?(?: · (\\d+) 个配置取最高)?(?: · (外部产品评测\\(源站标为非 API 排名\\)))?$",
       function (m, be, fe, kn, ae, mt, ta, eff, lat, cost, cfgs, ext) {
@@ -511,6 +514,9 @@
         "The exact composite score is shown next to each tier by default; untick to show only the tier (board-relative: 50 = median of the pool, not comparable across days).",
       "显示综合分": "Show composite score",
       "与参考差值": "Delta vs reference",
+      "只看第三方": "Third-party only",
+      "综合分只按 7 个第三方实测组等权计算,榜单基准 3 组不参与打分":
+        "The composite is computed only from the 7 third-party groups (equal weight); the 3 official-benchmark groups do not count.",
       "参考线": "Reference line",
       "选择参考模型": "Choose reference model",
       "选择参考模型:差值模式下,基准列显示各模型与该模型的差值;参考模型自身显示原值":
@@ -1074,6 +1080,8 @@
         "Independent test · app iteration · fixed OpenHands · accuracy",
       "场景": "scenarios",
       "命中 ≥4 榜计分": "Composite (≥4 boards)",
+      "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 3 组(DeepSWE / Terminal-Bench / HLE)仅供参考、不参与打分。":
+        "Third-party basis: the composite averages only the 7 third-party groups (WebDev / Agent Arena / Arena of Bias / ModelDial / AI Coding Daily / AI Decathlon / llm2014) at 1/7 each; the 3 official-benchmark groups (DeepSWE / Terminal-Bench / HLE) are reference only and do not count.",
       "榜单基准": "Leaderboard benchmarks",
       "第三方实测": "Third-party tests",
       "Terminal-Bench (解决率)": "Terminal-Bench (solve rate)",
