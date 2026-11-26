@@ -282,7 +282,8 @@ module.exports = {
       // 主源:benchlm.ai 镜像页(__NEXT_DATA__ 内嵌全量表:score 为原始正确率,%);
       // 与 HLE-Diamond 同源同渠道,供总览矩阵与「权威基准测试」页展示。
       url: "https://benchlm.ai/benchmarks/gpqa-diamond",
-      host: "benchlm.ai", src: "benchlm",
+      apiUrl: "https://www.datalearner.com/api/get-benchmark-detail/gpqa-diamond",
+      host: "www.datalearner.com", src: "datalearner",
       officialUrl: "https://github.com/idavidrein/gpqa",
       version: "diamond"
     },
