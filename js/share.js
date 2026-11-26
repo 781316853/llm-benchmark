@@ -254,10 +254,11 @@
     ctx.textAlign = "left";
     ctx.fillText("LLM BENCHMARK INDEX", 64, H - 96);
 
-    setFont(ctx, 19, 400, true);
-    ctx.fillStyle = T.faint;
+    // 访问地址:带协议头的完整地址 + 提亮,转发后能直接认出/照抄;右侧快照与脚注让位
+    setFont(ctx, 18, 500, true);
+    ctx.fillStyle = T.dim;
     ctx.textAlign = "left";
-    var urlText = "781316853.github.io/llm-benchmark";
+    var urlText = "https://781316853.github.io/llm-benchmark";
     ctx.fillText(urlText, 64, H - 62);
     var urlW = ctx.measureText(urlText).width;
 
@@ -269,7 +270,7 @@
     // 脚注按左侧 URL 之后的剩余宽度截断,长文案不会压到站点地址
     setFont(ctx, 18);
     ctx.fillStyle = T.faint;
-    ctx.fillText(ellipsis(ctx, meta.footNote, W - 64 - (64 + urlW + 40)), W - 64, H - 62);
+    ctx.fillText(ellipsis(ctx, meta.footNote, W - 64 - (64 + urlW + 32)), W - 64, H - 62);
   }
 
   function paintTicks(ctx, T, x, w, y) {
