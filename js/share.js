@@ -1,6 +1,8 @@
 // 分享榜单(总览页):引用条新增「分享榜单」按钮,打开弹层用 canvas 生成分享图。
-// 两种版式:榜单图(前 10 / 前 25 / 全部长图,可高亮一个模型)与单模型成绩卡;
+// 三种版式:榜单图(前 10 / 前 25 / 全部长图,可高亮一个模型)、单模型成绩卡、
+//   厂商新模型发布倒计时(主要 / 全部厂商,行高随行数压缩,长图);
 // 支持深/浅色卡、1:1 / 4:5、复制图片、下载 PNG、复制结果链接。
+// 发布倒计时区块自带「分享此数据」入口,直接以该版式打开同一弹层。
 // 数据口径与总览矩阵完全一致:排名行 = 命中≥4 榜,CMP.composite 相对分(50 = 全池中位)。
 // 采用 IIFE + ES5 风格,与 app.js / export.js / feedback.js 保持一致。
 (function () {
@@ -46,7 +48,16 @@
     viewResult: "View result", copyLink: "Copy result link",
     copiedImg: "Image copied", copyImgFail: "Copy failed, use download",
     copiedLink: "Link copied", copyLinkFail: "Copy failed",
-    btn: "Share leaderboard"
+    btn: "Share leaderboard",
+    modeRelease: "Release clock",
+    releaseKicker: "Overview · New-model release clock",
+    releaseTitle: "New-Model Release Clock",
+    releaseSub: function (n) { return n + " vendors · days since each vendor's latest release"; },
+    releaseFoot: "Latest model per vendor · ModelDial / official release watch",
+    releaseBtn: "Share this data",
+    scope: "Vendors", scopeMain: "Main vendors", scopeAll: "All vendors",
+    sortLabel: "Order", sortRecent: "Most recent", sortStale: "Longest wait",
+    colVendor: "Vendor", colDays: "Days since last release", colLast: "Latest model · date"
   } : {
     tagline: "跨基准模型对比",
     boardKicker: "总览 · 跨基准综合分",
@@ -79,7 +90,16 @@
     viewResult: "查看对应结果", copyLink: "复制结果链接",
     copiedImg: "已复制图片", copyImgFail: "复制失败,请下载",
     copiedLink: "已复制链接", copyLinkFail: "复制失败",
-    btn: "分享榜单"
+    btn: "分享榜单",
+    modeRelease: "发布倒计时",
+    releaseKicker: "总览 · 厂商新模型发布倒计时",
+    releaseTitle: "厂商新模型发布倒计时",
+    releaseSub: function (n) { return n + " 家厂商 · 天数为本机日期与厂商最近一次发布日期的自然日差"; },
+    releaseFoot: "每家厂商取最近一次发布 · 来源:ModelDial / 厂商官方发布监听 / 基准榜单",
+    releaseBtn: "分享此数据",
+    scope: "厂商范围", scopeMain: "主要厂商", scopeAll: "全部厂商",
+    sortLabel: "排序", sortRecent: "最近发布", sortStale: "最久未发",
+    colVendor: "厂商", colDays: "距上次发布天数", colLast: "上次发布的模型 · 日期"
   };
 
   // ===== 卡片绘制 =====
@@ -205,14 +225,19 @@
     ctx.fillStyle = T.text;
     ctx.fillText(meta.title, 64, 258);
 
+    // 副标题与右上角快照同行:先量出快照宽,副标题按剩余宽度截断,避免中英文长文案互相压字
+    var snapText = S.snap + meta.snap;
+    setFont(ctx, 19, 500, true);
+    var snapW = ctx.measureText(snapText).width;
+
     setFont(ctx, 23);
     ctx.fillStyle = T.dim;
-    ctx.fillText(meta.subtitle, 64, 308);
+    ctx.fillText(ellipsis(ctx, meta.subtitle, W - 64 - snapW - 100), 64, 308);
 
     setFont(ctx, 19, 500, true);
     ctx.fillStyle = T.faint;
     ctx.textAlign = "right";
-    ctx.fillText(S.snap + meta.snap, W - 64, 308);
+    ctx.fillText(snapText, W - 64, 308);
   }
 
   function paintFooter(ctx, W, H, T, meta) {
@@ -231,16 +256,20 @@
 
     setFont(ctx, 19, 400, true);
     ctx.fillStyle = T.faint;
-    ctx.fillText("781316853.github.io/llm-benchmark", 64, H - 62);
+    ctx.textAlign = "left";
+    var urlText = "781316853.github.io/llm-benchmark";
+    ctx.fillText(urlText, 64, H - 62);
+    var urlW = ctx.measureText(urlText).width;
 
     setFont(ctx, 22, 600, true);
     ctx.fillStyle = T.dim;
     ctx.textAlign = "right";
     ctx.fillText(S.snap + meta.snap, W - 64, H - 96);
 
+    // 脚注按左侧 URL 之后的剩余宽度截断,长文案不会压到站点地址
     setFont(ctx, 18);
     ctx.fillStyle = T.faint;
-    ctx.fillText(meta.footNote, W - 64, H - 62);
+    ctx.fillText(ellipsis(ctx, meta.footNote, W - 64 - (64 + urlW + 40)), W - 64, H - 62);
   }
 
   function paintTicks(ctx, T, x, w, y) {
@@ -473,11 +502,120 @@
     paintFooter(ctx, W, H, T, meta);
   }
 
+  // 发布倒计时:每行一家厂商 —— 色点 + 厂商名 / 按天数等比的条形 / 天数 / 上次发布的模型与日期。
+  // 行高随行数压缩(主要厂商 ~13 家最舒展,全量 26 家压到 38px);条形长度按当前行集最大天数等比。
+  // 天数 ≤7 的「刚发布」行用强调色 + 行底高亮,与页面 is-fresh 口径一致;>60 天条形降透明度,对应 is-stale。
+  function drawRelease(ctx, opts) {
+    var data = opts.data, T = THEMES[opts.theme], W = 1200;
+    var rows = opts.scope === "all" ? data.rows : (data.primary.length ? data.primary : data.rows);
+    var n = rows.length;
+    var dense = n > 12;
+    var rowH = n > 26 ? 38 : (n > 16 ? 44 : (dense ? 50 : 58));
+    var top = 384;
+    var ticksH = 46;
+    var footH = 190;
+    var H = top + n * rowH + ticksH + footH;
+    var maxDays = rows.reduce(function (m, r) { return Math.max(m, r.days); }, 0);
+    var scaleMax = Math.max(1, maxDays);
+    var meta = {
+      kicker: S.releaseKicker,
+      title: S.releaseTitle,
+      subtitle: S.releaseSub(n),
+      snap: data.snap,
+      footNote: S.releaseFoot
+    };
+
+    ctx.canvas.width = W;
+    ctx.canvas.height = H;
+    paintBg(ctx, W, H, T);
+    paintHeader(ctx, W, T, meta);
+
+    var vendorX = 64, vendorW = 214;
+    var barX = 280, barW = 330;
+    var daysRight = 696;
+    var modelX = 712, modelW = 262;
+    var dateRight = W - 64;
+
+    setFont(ctx, 19);
+    ctx.fillStyle = T.faint;
+    ctx.textAlign = "left";
+    ctx.fillText(S.colVendor, vendorX, 372);
+    ctx.fillText(S.colDays, barX, 372);
+    ctx.textAlign = "right";
+    ctx.fillText(S.colLast, dateRight, 372);
+
+    rows.forEach(function (r, i) {
+      var y = top + i * rowH;
+      var cy = y + rowH / 2;
+      var fresh = r.days <= 7;
+      if (fresh) {
+        ctx.fillStyle = T.rowHi;
+        rr(ctx, 56, y + 2, W - 112, rowH - 4, 12);
+        ctx.fill();
+        ctx.fillStyle = T.bar2;
+        rr(ctx, 56, y + 12, 4, rowH - 24, 2);
+        ctx.fill();
+      }
+
+      ctx.fillStyle = r.color;
+      ctx.beginPath();
+      ctx.arc(vendorX + 6, cy, dense ? 4 : 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      setFont(ctx, dense ? 19 : 23, 600);
+      ctx.fillStyle = T.text;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "middle";
+      ctx.fillText(ellipsis(ctx, r.vendor, vendorW - 26), vendorX + 20, cy);
+
+      var bh = dense ? 10 : 13;
+      ctx.fillStyle = T.track;
+      rr(ctx, barX, cy - bh / 2, barW, bh, bh / 2);
+      ctx.fill();
+      var pw = barW * Math.max(0.008, Math.min(1, r.days / scaleMax));
+      if (r.days > 60) ctx.globalAlpha = 0.45;
+      ctx.fillStyle = fresh ? T.accent : r.color;
+      rr(ctx, barX, cy - bh / 2, Math.max(bh, pw), bh, bh / 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      setFont(ctx, dense ? 20 : 24, fresh ? 700 : 600, true);
+      ctx.fillStyle = fresh ? T.accent : T.text;
+      ctx.textAlign = "right";
+      ctx.fillText(r.days + (EN ? " d" : " 天"), daysRight, cy);
+
+      setFont(ctx, dense ? 18 : 20, 500);
+      ctx.fillStyle = T.dim;
+      ctx.textAlign = "left";
+      ctx.fillText(ellipsis(ctx, r.model || "—", modelW), modelX, cy);
+
+      setFont(ctx, dense ? 18 : 20, 500, true);
+      ctx.fillStyle = T.faint;
+      ctx.textAlign = "right";
+      ctx.fillText(r.date, dateRight, cy);
+    });
+    ctx.textBaseline = "alphabetic";
+
+    setFont(ctx, 16, 400, true);
+    ctx.fillStyle = T.faint;
+    ctx.textAlign = "center";
+    var ty = top + n * rowH + 32;
+    ctx.fillText("0", barX + 10, ty);
+    ctx.fillText(String(Math.round(scaleMax / 2)), barX + barW / 2, ty);
+    ctx.fillText(maxDays + (EN ? " d" : " 天"), barX + barW - 10, ty);
+    ctx.textAlign = "left";
+
+    paintFooter(ctx, W, H, T, meta);
+  }
+
   function draw(canvas, opts) {
     var ctx = canvas.getContext("2d");
     opts.theme = opts.theme === "light" ? "light" : "dark";
     if (opts.mode === "model") drawModel(ctx, opts);
-    else drawBoard(ctx, opts);
+    else if (opts.mode === "release") {
+      if (!opts.relData) return;
+      drawRelease(ctx, { data: opts.relData, theme: opts.theme, scope: opts.scope });
+    } else drawBoard(ctx, opts);
   }
 
   // ===== 数据(与总览矩阵同口径)=====
@@ -510,6 +648,36 @@
     return { top: top, rankedCount: top.length, snap: snap || "" };
   }
 
+  // 发布倒计时(与总览区块同口径):数据来自 window.RELEASES,天数按本机日期计算;
+  // 排序跟随弹层内的「排序」选择,厂商范围按主要厂商(MODEL_MAP.mainVendors)/全部切分,
+  // 主要厂商清单缺失时兜底取前 12 家,保证卡片不出空图。
+  function collectRelease() {
+    var g = window.RELEASES;
+    if (!g || !Array.isArray(g.vendors) || !g.vendors.length) return null;
+    var now = new Date();
+    var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var mm = window.MODEL_MAP || {};
+    var colors = mm.vendorColors || {};
+    var defColor = mm.vendorDefaultColor || "#9298A1";
+    var rows = g.vendors.map(function (v) {
+      var t = Date.parse(v.date + "T00:00:00Z");
+      var days = isFinite(t) ? Math.max(0, Math.round((today - t) / 86400000)) : 0;
+      return {
+        vendor: v.vendor, date: v.date, model: v.model, src: v.src,
+        days: days, color: colors[v.vendor] || defColor
+      };
+    });
+    rows.sort(function (a, b) {
+      if (a.days !== b.days) return state.releaseSort === "stale" ? b.days - a.days : a.days - b.days;
+      return a.vendor < b.vendor ? -1 : (a.vendor > b.vendor ? 1 : 0);
+    });
+    var main = {};
+    (mm.mainVendors || []).forEach(function (v) { main[v] = 1; });
+    var primary = rows.filter(function (r) { return main[r.vendor]; });
+    if (!primary.length) primary = rows.slice(0, 12);
+    return { rows: rows, primary: primary, snap: g.updated || "" };
+  }
+
   // 结果链接:取本页 canonical(与 export.js 同口径),去掉查询串/hash;
   // 没有 canonical 时回落到线上站点根 —— 不能用 location.href,避免把本机地址当分享链接
   function pageUrl() {
@@ -523,9 +691,10 @@
   var state = {
     mode: "board", count: "10", ratio: "1:1",
     theme: document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark",
-    highlight: "", modelId: null
+    highlight: "", modelId: null,
+    releaseScope: "primary", releaseSort: "recent"
   };
-  var data = null;
+  var data = null, relData = null;
   var modal = null, canvas = null, sizeEl = null, hintEl = null;
   var lastFocus = null;
 
@@ -563,13 +732,15 @@
             '<button class="share-close" type="button" data-share-close aria-label="' + esc(S.dialogTitle) + '">&times;</button>' +
           '</header>' +
           '<div class="share-body">' +
-            field(S.mode, seg("mode", [["board", S.modeBoard], ["model", S.modeModel]])) +
+            field(S.mode, seg("mode", [["board", S.modeBoard], ["model", S.modeModel], ["release", S.modeRelease]])) +
             field(S.count, seg("count", [["10", S.countTen], ["25", S.count25], ["all", S.countAll]]) +
               '<p class="share-hint" id="shareCountHint" hidden>' + esc(S.countHint) + '</p>', "board") +
             field(S.highlight, '<select class="share-select" id="shareHl"></select>', "board") +
             field(S.pick, '<select class="share-select" id="sharePick"></select>', "model") +
             field(S.ratio, seg("ratio", [["1:1", S.ratio11], ["4:5", S.ratio45]]), "board") +
             field(S.ratio, seg("ratio2", [["1:1", S.ratio11], ["4:5", S.ratio45]]), "model") +
+            field(S.scope, seg("scope", [["primary", S.scopeMain], ["all", S.scopeAll]]), "release") +
+            field(S.sortLabel, seg("rsort", [["recent", S.sortRecent], ["stale", S.sortStale]]), "release") +
             field(S.theme, seg("theme", [["dark", S.dark], ["light", S.light]])) +
           '</div>' +
           '<footer class="share-foot">' +
@@ -595,10 +766,19 @@
     return modal;
   }
 
-  function openModal() {
+  // modeHint:入口按钮可直接指定初始版式(release-tools 的「分享此数据」走倒计时卡片)
+  function openModal(modeHint) {
+    if (modeHint) state.mode = modeHint;
     data = collectData();
-    if (!data.top.length) return;
-    if (!state.modelId || !data.top.some(function (r) { return r.id === state.modelId; })) {
+    relData = collectRelease();
+    // 倒计时数据缺失时回落到榜单图,避免 draw 里拿不到数据留下空白画布
+    if (state.mode === "release" && !relData) state.mode = "board";
+    if (state.mode !== "release" && (!data || !data.top.length)) {
+      if (relData) state.mode = "release";
+      else return;
+    }
+    if (data && data.top.length &&
+      (!state.modelId || !data.top.some(function (r) { return r.id === state.modelId; }))) {
       state.modelId = data.top[0].id;
     }
     buildModal();
@@ -620,6 +800,7 @@
   function fillSelects() {
     var hl = document.getElementById("shareHl");
     var pick = document.getElementById("sharePick");
+    if (!data || !data.top.length) return;
     var opts = data.top.map(function (r, i) {
       return '<option value="' + esc(r.id) + '">#' + (i + 1) + ' · ' + esc(r.id) + "</option>";
     }).join("");
@@ -639,7 +820,9 @@
       count: state.count === "all" ? "all" : Number(state.count),
       highlight: state.highlight,
       modelId: state.modelId,
-      data: data
+      data: data,
+      relData: relData,
+      scope: state.releaseScope
     });
     sizeEl.textContent = canvas.width + " × " + canvas.height + " · PNG";
     hintEl.hidden = !isLong();
@@ -652,7 +835,8 @@
   }
 
   function setSeg(name, val) {
-    var normalized = name === "ratio2" ? "ratio" : name;
+    var normalized = name === "ratio2" ? "ratio"
+      : (name === "scope" ? "releaseScope" : (name === "rsort" ? "releaseSort" : name));
     state[normalized] = val;
     Array.prototype.forEach.call(modal.querySelectorAll('[data-seg="' + name + '"] button'), function (b) {
       b.classList.toggle("is-on", b.getAttribute("data-val") === val);
@@ -671,6 +855,8 @@
     setSeg("count", state.count);
     setSeg("theme", state.theme);
     setSeg("ratio", state.ratio);
+    setSeg("scope", state.releaseScope);
+    setSeg("rsort", state.releaseSort);
   }
 
   function flash(btn, text) {
@@ -693,8 +879,10 @@
   }
 
   function fileName() {
-    var base = state.mode === "model" ? state.modelId : "overview-leaderboard";
-    var snap = data && data.snap ? "_" + data.snap.replace(/-/g, "") : "";
+    var base = state.mode === "model" ? state.modelId
+      : (state.mode === "release" ? "release-clock" + (state.releaseScope === "all" ? "-all" : "") : "overview-leaderboard");
+    var snapSrc = state.mode === "release" ? relData : data;
+    var snap = snapSrc && snapSrc.snap ? "_" + snapSrc.snap.replace(/-/g, "") : "";
     return "llm-benchmark_" + String(base).replace(/[\\/:*?"<>|\s]+/g, "-") + snap + ".png";
   }
 
@@ -768,11 +956,31 @@
     var cite = bar.querySelector("[data-cite-tab]");
     bar.insertBefore(btn, cite || null);
     btn.addEventListener("click", function () {
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(openModal);
-      else openModal();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { openModal("board"); });
+      else openModal("board");
     });
   }
 
-  if (document.readyState !== "loading") addButton();
-  else document.addEventListener("DOMContentLoaded", addButton);
+  // 发布倒计时区块的入口:挂在 release-tools 里(排序控件之后),直接以「发布倒计时」版式打开同一弹层。
+  // 区块是 lazyRender 延迟渲染的,但工具条在 section 里始终存在,DOM 就绪后即可注入。
+  function addReleaseButton() {
+    var tools = document.querySelector(".release-tools");
+    if (!tools) { setTimeout(addReleaseButton, 300); return; }
+    if (tools.querySelector(".release-share-btn")) return;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "release-share-btn";
+    btn.textContent = S.releaseBtn;
+    btn.title = EN ? "Generate a shareable release-clock image" : "生成可分享的发布倒计时图";
+    tools.appendChild(btn);
+    btn.addEventListener("click", function () {
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { openModal("release"); });
+      else openModal("release");
+    });
+  }
+
+  function boot() { addButton(); addReleaseButton(); }
+
+  if (document.readyState !== "loading") boot();
+  else document.addEventListener("DOMContentLoaded", boot);
 })();

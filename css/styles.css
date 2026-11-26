@@ -2449,6 +2449,12 @@ html[data-theme="dark"] .release-chart { box-shadow: inset 0 1px 0 hsla(0,0%,100
 .release-more:hover { color: var(--text); border-color: var(--accent); }
 .release-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .release-updated { white-space: nowrap; }
+/* 发布倒计时区块的分享入口:与 release-tools 里的排序分段并排,同款细描边胶囊 */
+.release-share-btn { appearance: none; flex: none; border: 1px solid var(--border-strong); background: var(--panel); color: var(--text-dim);
+  border-radius: var(--radius-pill); padding: 6px 14px; font-size: 11px; line-height: 1.4; cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, background .15s ease; }
+.release-share-btn:hover { color: var(--text); border-color: var(--accent); }
+.release-share-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 1100px) {
   .release-bar-row { grid-template-columns: 124px minmax(0, 1fr) 52px; }
   .release-bar-last { grid-column: 2 / 4; justify-content: flex-start; padding-top: 2px; }
