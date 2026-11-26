@@ -404,6 +404,8 @@
       "数据快照": "Data snapshot",
       "基准目录": "Benchmark index",
       "26 个基准 · 每日刷新": "26 benchmarks · Daily refresh",
+      "前沿知识广度 · 无工具闭卷": "Frontier knowledge · closed-book, no tools",
+      "前沿知识广度 · 2500 题无工具闭卷": "Frontier knowledge breadth · 2,500 questions, closed-book",
       "数据来源索引见页首": "Data sources indexed at the top",
       "数据为快照,详见各页脚注": "Snapshot data — see the footnote on each page",
       "计分基准": "Scored benchmarks",

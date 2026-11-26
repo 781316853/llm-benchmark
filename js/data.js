@@ -929,9 +929,9 @@
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / AI 十项全能 共 9 张) =====
+  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / AI 十项全能 / HLE 共 10 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, oct = window.OCTATHLON || {};
+    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, oct = window.OCTATHLON || {}, hl = window.HLE || {};
     var dsTop = (ds.models || [])[0] || {};
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var aaTop = arenaAgent()[0] || {};
@@ -948,6 +948,8 @@
     var lmTopScore = lmTop.score != null ? lmTop.score : null;
     // 亿模亿样:Elo 头名(按 score 降序取首)
     var abTop = arenaofbias()[0] || {};
+    // HLE:无工具闭卷分头名(与总览矩阵 HLE 列同源 data/hle.js)
+    var hlTop = hle()[0] || {};
     return [
       { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
         stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
@@ -980,7 +982,11 @@
       // AI 十项全能:独立第三方限时 Agent 实测(13 题 / 10 类,总分 0-100);卡片展示用 canon() 归一后的显示名
       { key: "octathlon", name: "AI 十项全能", tag: "独立实测 · 13 题 / 10 类", url: oct.boardUrl || oct.url, updated: oct.updated,
         stats: [{ l: "模型", v: (oct.models || []).length }, { l: "题目", v: (oct.stats && oct.stats.tasks) }],
-        top: (octTop.canon ? octTop.canon.id : octTop.name) + " · " + (octTop.score != null ? octTop.score + " / 100" : "—") }
+        top: (octTop.canon ? octTop.canon.id : octTop.name) + " · " + (octTop.score != null ? octTop.score + " / 100" : "—") },
+      // HLE(Humanity's Last Exam):2500 题前沿知识闭卷;总览矩阵 HLE 列与之同源,这里补一张速览卡
+      { key: "hle", name: "HLE", tag: "前沿知识广度 · 无工具闭卷", url: hl.officialUrl || hl.url, updated: hl.updated,
+        stats: [{ l: "题目", v: (hl.stats && hl.stats.tasks) }, { l: "模型", v: (hl.models || []).length }],
+        top: (hlTop.model || "—") + " · " + (hlTop.score != null ? hlTop.score + "%" : "") }
     ];
   }
 

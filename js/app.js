@@ -151,7 +151,8 @@
     tbench: "终端 Agent 评测 · 4.0 / 3.0 / 2.1 合并",
     modeldial: "第三方实测 · 五轴 20/25/35/10/10",
     aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70",
-    octathlon: "独立第三方实测 · 13 题 10 类 · 总分 100"
+    octathlon: "独立第三方实测 · 13 题 10 类 · 总分 100",
+    hle: "前沿知识广度 · 2500 题无工具闭卷"
   };
   // 综合分权重口径(2026-11-26 起等权):在场 N 个计分组,每组 1/N(当前 10 组各 10%)。
   // 文案里的百分比统一从这里取,避免「权重 12.9%」这类硬编码在分组增减后再次走样。
@@ -162,7 +163,7 @@
   var BENCH_WEIGHT = {
     deepswe: W_TXT, llm2014: W_TXT, webdev: W_TXT, agentarena: W_TXT,
     arenaofbias: W_TXT, tbench: W_TXT, modeldial: W_TXT, aicodingdaily: W_TXT,
-    octathlon: W_TXT
+    octathlon: W_TXT, hle: W_TXT
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -3910,7 +3911,7 @@
     // 总览:新闻 + 基准速览(benchSummary 读 10 个榜)+ 矩阵。矩阵要 pricing/hle/deepswe_v10 三列,
     // 但那三列只在矩阵里用,矩阵本身在首屏之下且是懒渲染,故一并留到第二批。
     overview: ["deepswe", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
-      "tbench_v3", "tbench_v2", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
+      "tbench_v3", "tbench_v2", "hle", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
     llm2014: ["llm2014", "seen"],
     modeldial: ["modeldial", "seen"],
     arenaofbias: ["arenaofbias", "seen"],
