@@ -8,7 +8,7 @@
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
   'updated': '2026-11-26',
-  'refreshedAt': '2026-11-26 16:42',
+  'refreshedAt': '2026-11-27 05:47',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '0.172.0',
@@ -1486,7 +1486,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '2.1.332',
@@ -3937,7 +3937,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '2.4.2',
@@ -9505,8 +9505,31 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
+        {
+          'version': '2.8.1',
+          'title': '2.8.1（2026-11-26）',
+          'date': '2026-11-26',
+          'dateRaw': '2026-11-26',
+          'tags': [
+            '修复'
+          ],
+          'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-8-1-2026-11-26',
+          'body': '修复\n- 修复 Gemini Provider 的部分问题。\n- 修复会导致报 unloaded_tool 会话错误的情况。'
+        },
+        {
+          'version': '2.8.0',
+          'title': '2.8.0（2026-11-25）',
+          'date': '2026-11-25',
+          'dateRaw': '2026-11-25',
+          'tags': [
+            '优化',
+            '修复'
+          ],
+          'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-8-0-2026-11-25',
+          'body': '优化\n- 优化提示词预测功能，可在 /experiments 开启。\n- TUI 连续排队发送消息时，中间回合不再弹出完成通知；后台任务仍会照常提醒。\n修复\n- 修复使用已失效的模型的会话不能恢复的问题。\n- 修复了一些已知问题，并做了若干细节优化。更多技术条目见 GitHub 。'
+        },
         {
           'version': '2.7.3',
           'title': '2.7.3（2026-11-24）',
@@ -9550,7 +9573,7 @@ window.CHANGELOG = {
             '修复'
           ],
           'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-7-0-2026-11-19',
-          'body': '功能\n- /settings 新增 Follow-up 行为设置，选择 Steer 后 Enter 可将消息即时送入当前运行回合。\n- 可在 /tasks 查看前台运行中的 Agent 及其活动。\n- Web 端：支持浏览器标签页标题显示项目与会话标题。\n- 支持为项目配置 SSH 主机，各主机独立登录，并可复制自定义模型提供商。\n- 允许恢复已在其他客户端打开的会话。\n- 支持接入 Amazon Bedrock 模型服务。详见 Amazon Bedrock 配置文档 。\n- TUI 新增实验性下一提示词预测，设置 KIMI_CODE_EXPERIMENTAL_PROMPT_PREDICTION=1 后按 Tab 或右方向键采纳。\n修复\n- 修复 kimi -p 及 [subagent] timeout_ms = 0 配置下子 Agent 立即超时的问题。\n- 修复了一些已知问题，并做了若干细节优化。更详细的变更记录见 GitHub 。'
+          'body': '功能\n- /settings 新增 Follow-up 行为设置，选择 Steer 后 Enter 可将消息即时送入当前运行回合。\n- 可在 /tasks 查看前台运行中的 Agent 及其活动。\n- Web 端：支持浏览器标签页标题显示项目与会话标题。\n- 支持为项目配置 SSH 主机，各主机独立登录，并可复制自定义模型提供商。\n- 允许恢复已在其他客户端打开的会话。\n- 支持接入 Amazon Bedrock 模型服务。详见 Amazon Bedrock 配置文档\n- TUI 新增实验性下一提示词预测，设置 KIMI_CODE_EXPERIMENTAL_PROMPT_PREDICTION=1 后按 Tab 或右方向键采纳。\n修复\n- 修复 kimi -p 及 [subagent] timeout_ms = 0 配置下子 Agent 立即超时的问题。\n- 修复了一些已知问题，并做了若干细节优化。更详细的变更记录见 GitHub 。'
         },
         {
           'version': '2.6.3',
@@ -10770,7 +10793,7 @@ window.CHANGELOG = {
             '其他'
           ],
           'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_0-2-0-2026-05-26',
-          'body': '新功能\n- 新增 /connect 命令，可从模型目录中配置供应商和模型。\n- /connect 的供应商和模型选择器现支持键入即搜索过滤，长列表会自动分页；配置了较多模型时， /model 选择器同样支持分页。\n- 在终端界面输入框中新增 Ctrl-J 作为插入换行的额外快捷键。\n- 在会话回放过程中新增 wire 记录迁移处理。\n- 在首次启动迁移期间，将用户 Skill 从 ~/.kimi/skills/ 迁移到 ~/.kimi-code/skills/ ；已存在的目标 Skill 会被保留。\n- 在 stream-json 输出格式中以结构化 meta 消息形式发出会话恢复提示。\n修复\n- 在 OAuth 设备信息中改为上报 macOS 产品版本，而不是 Darwin 内核版本。\n- 将 X-Msh-Platform 请求头的取值修正为 kimi_code_cli 。\n- 在未配置模型时，澄清提示词模式下的错误提示，引导用户走登录流程。\n- 在会话选择器中隐藏空的当前会话，同时保留其他空会话可见。\n- 不再在迁移界面中提及 OAuth 凭据 —— 它们从不会被迁移，此前的 \'needs /login\' 提示会被误读为失败。仅使用 OAuth 的安装不再触发迁移界面。\n- 在反馈、用量、登录和模型设置失败时，展示 API 返回的错误信息。\n- 将终端界面中的模型选择持久化到默认配置，并在新会话中遵循已配置的默认 Thinking 状态。\n- 在更新对话历史之前，对不包含摘要的压缩响应进行重试。\n- 避免大体量流式工具参数导致的 CPU 峰值，并合并高频的流式 UI 更新。\n- 在 wire 协议版本较新时改为继续恢复会话而不是失败。终端界面会显示一条警告，并在不进行迁移的情况下回放记录。\n- 当 tmux 的扩展按键设置可能导致带修饰键的 Enter 快捷键无法工作时，向 tmux 用户发出提示。\n- 默认让 Kimi 请求使用剩余的上下文窗口作为补全 token 的额度，同时将显式设置的环境变量上限作为硬上限保留。\n重构\n- 将工具调用数据扁平化，把工具名和参数内联到顶层，并限制旧版记录迁移仅重写匹配的工具调用数据。\n- 将 wire 元数据处理移动到记录层，并将持久化后端的职责限制在存储操作上。\n其他\n- 当未配置模型时， /model 和欢迎面板现在会引导用户使用 /login （针对 Kimi）和 /connect （针对其他供应商）。\nPager 上一页 服务 API\n下一页 快速开始'
+          'body': '新功能\n- 新增 /connect 命令，可从模型目录中配置供应商和模型。\n- /connect 的供应商和模型选择器现支持键入即搜索过滤，长列表会自动分页；配置了较多模型时， /model 选择器同样支持分页。\n- 在终端界面输入框中新增 Ctrl-J 作为插入换行的额外快捷键。\n- 在会话回放过程中新增 wire 记录迁移处理。\n- 在首次启动迁移期间，将用户 Skill 从 ~/.kimi/skills/ 迁移到 ~/.kimi-code/skills/ ；已存在的目标 Skill 会被保留。\n- 在 stream-json 输出格式中以结构化 meta 消息形式发出会话恢复提示。\n修复\n- 在 OAuth 设备信息中改为上报 macOS 产品版本，而不是 Darwin 内核版本。\n- 将 X-Msh-Platform 请求头的取值修正为 kimi_code_cli 。\n- 在未配置模型时，澄清提示词模式下的错误提示，引导用户走登录流程。\n- 在会话选择器中隐藏空的当前会话，同时保留其他空会话可见。\n- 不再在迁移界面中提及 OAuth 凭据 —— 它们从不会被迁移，此前的 \'needs /login\' 提示会被误读为失败。仅使用 OAuth 的安装不再触发迁移界面。\n- 在反馈、用量、登录和模型设置失败时，展示 API 返回的错误信息。\n- 将终端界面中的模型选择持久化到默认配置，并在新会话中遵循已配置的默认 Thinking 状态。\n- 在更新对话历史之前，对不包含摘要的压缩响应进行重试。\n- 避免大体量流式工具参数导致的 CPU 峰值，并合并高频的流式 UI 更新。\n- 在 wire 协议版本较新时改为继续恢复会话而不是失败。终端界面会显示一条警告，并在不进行迁移的情况下回放记录。\n- 当 tmux 的扩展按键设置可能导致带修饰键的 Enter 快捷键无法工作时，向 tmux 用户发出提示。\n- 默认让 Kimi 请求使用剩余的上下文窗口作为补全 token 的额度，同时将显式设置的环境变量上限作为硬上限保留。\n重构\n- 将工具调用数据扁平化，把工具名和参数内联到顶层，并限制旧版记录迁移仅重写匹配的工具调用数据。\n- 将 wire 元数据处理移动到记录层，并将持久化后端的职责限制在存储操作上。\n其他\n- 当未配置模型时， /model 和欢迎面板现在会引导用户使用 /login （针对 Kimi）和 /connect （针对其他供应商）。\nPager 上一页 键盘快捷键\n下一页 快速开始'
         }
       ]
     },
@@ -10782,7 +10805,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '0.2.3-alpha.2',
@@ -11450,7 +11473,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '0.5.20',
@@ -11962,7 +11985,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '1.41.1',
@@ -12646,7 +12669,7 @@ window.CHANGELOG = {
             '功能更新'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bb:[\\\'$\\\',\\\'$L1a\\\',null,{\\\'id\\\':\\\'2026年03月05日\\\',\\\'label\\\':\\\'2026年03月05日\\\',\\\'description\\\':\\\'0.4.0\\\',\\\'tags\\\':\\\'$undefined\\\',\\\'isVisible\\\':true,\\\'children\\\':[[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'feature-updates-17\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'功能更新\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'内置 create-skill 和 create-agent 技能，以引导和简化用户创建技能和自定义 Agent。同时支持通过 / 快速唤起并使用 skills、subagents\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Quest 模式增加文件树，提升当前项目中文件查阅能力，可便捷添加到上下文\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Quest 模式支持通过对话唤起 Vercel Skill，可快速部署应用上线\\\'}],\\\'\\\\n\\\']}],[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'experience-improvements-14\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'体验优化\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'一键优化提示词：优化对提示词内包含 @上下文场景的处理\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持 .agents/skills 目录：现已支持从 .agents/skills 读取技能，遵循行业统一标准\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'自定义 Subagent 执行详情支持展开浮窗查看\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'NEXT 支持读取剪贴板历史\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'增'
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bb:[\\\'$\\\',\\\'$L1a\\\',null,{\\\'id\\\':\\\'2026年03月05日\\\',\\\'label\\\':\\\'2026年03月05日\\\',\\\'description\\\':\\\'0.4.0\\\',\\\'tags\\\':\\\'$undefined\\\',\\\'isVisible\\\':true,\\\'children\\\':[[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'feature-updates-17\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'功能更新\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'内置 create-skill 和 create-agent 技能，以引导和简化用户创建技能和自定义 Agent。同时支持通过 / 快速唤起并使用 skills、subagents\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Quest 模式增加文件树，提升当前项目中文件查阅能力，可便捷添加到上下文\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Quest 模式支持通过对话唤起 Vercel Skill，可快速部署应用上线\\\'}],\\\'\\\\n\\\']}],[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'experience-improvements-14\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'体验优化\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'一键优化提示词：优化对提示词内包含 @上下文场景的处理\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持 .agents/skills 目录：现已支持从 .agents/skills 读取技能，遵循行业统一标准\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'自定义 Subagent 执行详情支持展开浮窗查看\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'NEXT 支持读取剪贴板历史\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'增强 Quest 任务中 Agent 调用 Skills 能力\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化 Quest 模式页面中新建任务、工具栏折叠的体验\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'更新 Quest 模式首页案例内容\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'登录稳定性优化：提升登录稳定性（如升级后遇到登录、权限等问题，请尝试退出并重新登录）\\\'}],\\\'\\\\n\\\']}],[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'fixes-12\\\',\\\'style'
         }
       ]
     },
@@ -12658,7 +12681,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '3.4.21',
@@ -14949,7 +14972,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '4.0.0',
@@ -15164,7 +15187,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '4.12.4',
@@ -16061,7 +16084,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entries': [
         {
           'version': '5.11.3',

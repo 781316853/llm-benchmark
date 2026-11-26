@@ -9,7 +9,7 @@ window.VALSCODEMIGRATION = {
   'officialUrl': 'https://www.vals.ai/benchmarks/code-migration',
   'version': '1',
   'updated': '2026-10-29',
-  'refreshedAt': '2026-11-26 16:42',
+  'refreshedAt': '2026-11-27 05:47',
   'stats': {
     'models': 79
   },

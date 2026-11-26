@@ -23,7 +23,7 @@ window.QUALITY = {
       'id': 'aicodingdaily',
       'name': 'AI Coding Daily',
       'status': 'ok',
-      'modelCount': 67,
+      'modelCount': 69,
       'updated': '2026-11-26',
       'ageDays': 0,
       'completeness': 1,
@@ -1431,9 +1431,9 @@ window.QUALITY = {
   'completeness': {
     'aicodingdaily': {
       'rate': 1,
-      'total': 67,
-      'complete': 67,
-      'modelCount': 67,
+      'total': 69,
+      'complete': 69,
+      'modelCount': 69,
       'missingFields': {},
       'flag': 'ok'
     },

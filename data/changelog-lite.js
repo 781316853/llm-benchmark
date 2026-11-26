@@ -3,7 +3,7 @@
 // 全量历史见同目录 changelog.js(抓取端合并基线,页面不加载)。
 window.CHANGELOG = {
   'updated': '2026-11-26',
-  'refreshedAt': '2026-11-26 16:42',
+  'refreshedAt': '2026-11-27 05:47',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -15,7 +15,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 122,
       'entries': [
         {
@@ -48,7 +48,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 271,
       'entries': [
         {
@@ -79,7 +79,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 500,
       'entries': [
         {
@@ -124,30 +124,31 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
-      'entryCount': 100,
+      'lastOkAt': '2026-11-27 05:47',
+      'entryCount': 102,
       'entries': [
         {
-          'version': '2.7.3',
-          'title': '2.7.3（2026-11-24）',
-          'date': '2026-11-24',
-          'dateRaw': '2026-11-24',
+          'version': '2.8.1',
+          'title': '2.8.1（2026-11-26）',
+          'date': '2026-11-26',
+          'dateRaw': '2026-11-26',
           'tags': [
             '修复'
           ],
-          'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-7-3-2026-11-24',
-          'body': '修复\n- 修复模型不可用后会话无法打开的问题。'
+          'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-8-1-2026-11-26',
+          'body': '修复\n- 修复 Gemini Provider 的部分问题。\n- 修复会导致报 unloaded_tool 会话错误的情况。'
         },
         {
-          'version': '2.7.2',
-          'title': '2.7.2（2026-11-20）',
-          'date': '2026-11-20',
-          'dateRaw': '2026-11-20',
+          'version': '2.8.0',
+          'title': '2.8.0（2026-11-25）',
+          'date': '2026-11-25',
+          'dateRaw': '2026-11-25',
           'tags': [
+            '优化',
             '修复'
           ],
-          'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-7-2-2026-11-20',
-          'body': '修复\n- Web：修复发送后草稿从全局设置继承的思考强度被重置为模型默认值的问题。'
+          'url': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html#_2-8-0-2026-11-25',
+          'body': '优化\n- 优化提示词预测功能，可在 /experiments 开启。\n- TUI 连续排队发送消息时，中间回合不再弹出完成通知；后台任务仍会照常提醒。\n修复\n- 修复使用已失效的模型的会话不能恢复的问题。\n- 修复了一些已知问题，并做了若干细节优化。更多技术条目见 GitHub 。'
         }
       ]
     },
@@ -159,7 +160,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 44,
       'entries': [
         {
@@ -202,7 +203,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 35,
       'entries': [
         {
@@ -245,7 +246,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 56,
       'entries': [
         {
@@ -285,7 +286,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 200,
       'entries': [
         {
@@ -366,7 +367,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 17,
       'entries': [
         {
@@ -403,7 +404,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 92,
       'entries': [
         {
@@ -444,7 +445,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-26 16:42',
+      'lastOkAt': '2026-11-27 05:47',
       'entryCount': 92,
       'entries': [
         {
