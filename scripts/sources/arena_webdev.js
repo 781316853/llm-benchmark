@@ -110,6 +110,41 @@ function parseArenaWebdev(html) {
   return mergeAnnounced(models);
 }
 
+// 解析 llmbenchmark.ai 的 LMArena WebDev 表(<table class="pt">):
+// 行内 <a class="name">模型</a> + <span class="by">厂商</span>,结果在 span.mono.tabular.key-n,
+// 其后两个 mono 单元格依次是投票数与 ±95% 区间(部分行可能缺其一)。
+function decodeEntities(s) {
+  return String(s || "")
+    .replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ").trim();
+}
+function parseLlmBenchmarkWebdev(html) {
+  const rows = html.match(/<tr>[\s\S]*?<\/tr>/g) || [];
+  const models = [];
+  rows.forEach(function (tr) {
+    const nm = tr.match(/<a class="name"[^>]*>([\s\S]*?)<\/a>/);
+    const sc = tr.match(/key-n">([\d.]+)</);
+    if (!nm || !sc) return;
+    const org = tr.match(/<span class="by">([\s\S]*?)<\/span>/);
+    const monos = (tr.match(/<span class="mono tabular">[\s\S]*?<\/span>/g) || []).map(function (x) {
+      return decodeEntities(x.replace(/<[^>]+>/g, ""));
+    });
+    const votes = monos.find(function (s) { return /^[\d,]+$/.test(s); });
+    const ci = monos.find(function (s) { return /^±/.test(s); });
+    models.push({
+      name: decodeEntities(nm[1]),
+      org: org ? decodeEntities(org[1]) : "",
+      score: Math.round(parseFloat(sc[1]) * 1000) / 1000,
+      ci: ci ? parseFloat(ci.replace(/[^\d.]/g, "")) : null,
+      votes: votes ? Number(votes.replace(/,/g, "")) : null,
+      src: "llmbenchmark"
+    });
+  });
+  if (!models.length) throw new Error("llmbenchmark 页未解析到 WebDev 表格(站点结构变更)");
+  models.sort(function (a, b) { return b.score - a.score; });
+  return mergeAnnounced(models);
+}
+
 class ArenaWebdevSource extends BaseSource {
   constructor() {
     super({
@@ -120,19 +155,26 @@ class ArenaWebdevSource extends BaseSource {
     this.officialUrl = CONFIG.sources.arena_webdev.officialUrl;
   }
   async fetch() {
-    // 主抓日常镜像(m.aitntnews.com);若镜像整体不可用则尝试官方(大概率 403,失败保留旧文件 fail-soft)。
+    // 主源 llmbenchmark.ai(每日快照,含最新模型);失败回退旧镜像 aitntnews;再失败回退官方(大概率 403)。
     try {
-      return await transport.fetchWithRetry(this.cfg.url);
+      return await transport.fetchWithRetry(this.cfg.url, { retries: this.cfg.retries });
     } catch (e) {
-      console.log("  [arena_webdev] 镜像抓取失败,尝试官方(" + e.message + ")");
-      return transport.fetchWithRetry(this.officialUrl);
+      console.log("  [arena_webdev] 主源抓取失败,尝试旧镜像(" + e.message + ")");
+      try {
+        return await transport.fetchWithRetry(CONFIG.sources.arena_webdev.legacyUrl);
+      } catch (e2) {
+        console.log("  [arena_webdev] 旧镜像也失败,尝试官方(" + e2.message + ")");
+        return transport.fetchWithRetry(this.officialUrl);
+      }
     }
   }
   parse(html) {
-    // 先记源站数据日期(写文件时作 updated),再解析榜单行
+    // 先记源站数据日期(写文件时作 updated),再按页面结构选择解析器
     this.dataDate = parseSourceDate(html);
-    if (!this.dataDate) console.log("  [arena_webdev] 镜像未声明 temporalCoverage/dateModified,updated 退回抓取日");
-    return parseArenaWebdev(html);
+    if (!this.dataDate) console.log("  [arena_webdev] 源页未声明数据日期,updated 退回抓取日");
+    const lmb = /<a class="name"[^>]*>/.test(html) && /class="mono tabular key-n"/.test(html);
+    this.sourceKind = lmb ? "llmbenchmark" : "aitntnews";
+    return lmb ? parseLlmBenchmarkWebdev(html) : parseArenaWebdev(html);
   }
   toStandard(models) {
     var srcId = this.cfg.id;
@@ -148,16 +190,17 @@ class ArenaWebdevSource extends BaseSource {
     // updated 取源站数据日期(镜像 JSON-LD temporalCoverage);镜像没声明时才退回抓取日,
     // 并在注释里说明,避免把"抓取日"当成"榜单数据日"。
     const dataDate = this.dataDate || CONFIG.TODAY;
-    const dateNote = this.dataDate ? "镜像快照数据日期 " + dataDate : "镜像未声明数据日期,updated 取抓取日 " + dataDate;
+    const dateNote = this.dataDate ? "源页数据日期 " + dataDate : "源页未声明数据日期,updated 取抓取日 " + dataDate;
     return writers.windowVarTemplate("ARENA_WEBDEV",
       "// 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)\n" +
-      "// 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:\n" +
+      "// 官方:https://arena.ai/leaderboard/code(Cloudflare 防护,直连 403);主抓源(2026-11-26 起):\n" +
       "//     " + this.cfg.url + " (" + dateNote + ")\n" +
-      "// 说明:updated 是镜像页 JSON-LD 的 temporalCoverage(榜单数据日期),不是抓取日 —— 镜像可能连续多日不更新。\n" +
-      "// 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分\n" +
-      "//     (总榜 #12、开源第一;上一版 20260910 为镜像现有的 deepseek-v4.1-flash 1618)。镜像收录后自动去重。\n" +
+      "// 回退源:" + (CONFIG.sources.arena_webdev.legacyUrl || "旧镜像") + "(快照停在 2026-11-14,仅主源失败时兜底,不混排)\n" +
+      "// 说明:updated 取源页 JSON-LD 的 dateModified/temporalCoverage(榜单数据日期),不是抓取日。\n" +
+      "// 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分;\n" +
+      "//     主源已收录同名条目后按 seedKey 自动去重。\n" +
       "// 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)\n" +
-      "// 用途:总览页「第三方实测」组基准,计入综合分与命中数(权重 22%);前端按 canonical 取最高分归入。\n",
+      "// 用途:总览页「第三方实测」组基准之一,十组等权计入综合分与命中数;前端按 canonical 取最高分归入。\n",
       {
         source: "Code Arena WebDev (LMArena)",
         officialUrl: this.officialUrl,

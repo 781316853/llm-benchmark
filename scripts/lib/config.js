@@ -110,14 +110,14 @@ module.exports = {
     },
     arena_webdev: {
       // Code Arena | WebDev(LMArena):前端 Web 开发权威竞技场,Elo 评分。
-      // 官方站 https://arena.ai/leaderboard/code 有 Cloudflare 防护,直接抓取返 403;
-      // 故以权威镜像 m.aitntnews.com/arena/code/ 为主(其 ld+json 声明:
-      //   creator=LM Arena、isBasedOn=https://arena.ai/leaderboard/code,每日快照官方数据)。
-      // 解析镜像页 <tr data-name/... data-score/... data-org/...> 行,含 Elo/CI/投票。
-      // 渠道:官方站不可抓取,该镜像为官方数据每日快照,按 T1 口径处理(无厂商发布渠道)。
-      url: "https://m.aitntnews.com/arena/code/",
+      // 官方站 https://arena.ai/leaderboard/code 有 Cloudflare 防护,直接抓取返 403。
+      // 主抓源(2026-11-26 起):llmbenchmark.ai 的 LMArena WebDev 每日快照表(114 个模型,
+      //   含 GPT-6.2 Astra/Sol、Gemini 4 Neon;页内 Dataset JSON-LD 的 dateModified 即数据日期)。
+      // 回退源:旧镜像 m.aitntnews.com/arena/code/(快照长期停在 2026-11-14,仅主源失败时兜底)。
+      url: "https://llmbenchmark.ai/benchmarks/lmarena-webdev",
+      legacyUrl: "https://m.aitntnews.com/arena/code/",
       officialUrl: "https://arena.ai/leaderboard/code",
-      host: "m.aitntnews.com", src: "selftest"
+      host: "llmbenchmark.ai", src: "llmbenchmark"
     },
     arenaofbias: {
       // 亿模亿样 · 模型效果对比(gallery.arenaofbias.icu):前端作品社区盲评 Elo 竞技场。

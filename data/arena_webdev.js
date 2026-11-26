@@ -1,1286 +1,935 @@
 // 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)
-// 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:
-//     https://m.aitntnews.com/arena/code/ (镜像快照数据日期 2026-11-14)
-// 说明:updated 是镜像页 JSON-LD 的 temporalCoverage(榜单数据日期),不是抓取日 —— 镜像可能连续多日不更新。
-// 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分
-//     (总榜 #12、开源第一;上一版 20260910 为镜像现有的 deepseek-v4.1-flash 1618)。镜像收录后自动去重。
+// 官方:https://arena.ai/leaderboard/code(Cloudflare 防护,直连 403);主抓源(2026-11-26 起):
+//     https://llmbenchmark.ai/benchmarks/lmarena-webdev (源页数据日期 2026-11-26)
+// 回退源:https://m.aitntnews.com/arena/code/(快照停在 2026-11-14,仅主源失败时兜底,不混排)
+// 说明:updated 取源页 JSON-LD 的 dateModified/temporalCoverage(榜单数据日期),不是抓取日。
+// 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分;
+//     主源已收录同名条目后按 seedKey 自动去重。
 // 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)
-// 用途:总览页「第三方实测」组基准,计入综合分与命中数(权重 22%);前端按 canonical 取最高分归入。
+// 用途:总览页「第三方实测」组基准之一,十组等权计入综合分与命中数;前端按 canonical 取最高分归入。
 window.ARENA_WEBDEV = {
   'source': 'Code Arena WebDev (LMArena)',
   'officialUrl': 'https://arena.ai/leaderboard/code',
-  'url': 'https://m.aitntnews.com/arena/code/',
-  'updated': '2026-11-14',
+  'url': 'https://llmbenchmark.ai/benchmarks/lmarena-webdev',
+  'updated': '2026-11-26',
   'version': 'overall',
   'metric': 'Elo score',
   'desc': 'LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。',
   'stats': {
-    'models': 158
+    'models': 114
   },
   'models': [
     {
-      'name': 'claude fable 5.2 (xhigh)',
+      'name': 'Claude Fable 5.2',
       'org': 'Anthropic',
-      'score': 1826,
-      'ci': 19,
-      'votes': 1400,
-      'src': 'selftest'
+      'score': 1822,
+      'ci': 15.3,
+      'votes': 2159,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 5.5 (max)',
+      'name': 'Claude Opus 5.5',
       'org': 'Anthropic',
-      'score': 1816,
-      'ci': 12,
-      'votes': 4400,
-      'src': 'selftest'
+      'score': 1820,
+      'ci': 10.7,
+      'votes': 5121,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude sonnet 5.5 (xhigh)',
+      'name': 'Claude Sonnet 5.5',
       'org': 'Anthropic',
-      'score': 1772,
-      'ci': 10,
-      'votes': 6100,
-      'src': 'selftest'
+      'score': 1773,
+      'ci': 9.1,
+      'votes': 6973,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 4 carbon (high)',
+      'name': 'Gemini 4 Carbon',
       'org': 'Google',
-      'score': 1768,
-      'ci': 15,
-      'votes': 2100,
-      'src': 'selftest'
+      'score': 1769,
+      'ci': 15.4,
+      'votes': 2091,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-6 astra (max)',
+      'name': 'Gemini 4 Neon',
+      'org': 'Google',
+      'score': 1765,
+      'ci': 13.7,
+      'votes': 2308,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'GPT-6 Astra',
       'org': 'OpenAI',
-      'score': 1763,
-      'ci': 8,
-      'votes': 8700,
-      'src': 'selftest'
+      'score': 1764,
+      'ci': 8.1,
+      'votes': 9541,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen4-max (xhigh)',
-      'org': 'Alibaba',
-      'score': 1750,
-      'ci': 15,
-      'votes': 1800,
-      'src': 'selftest'
+      'name': 'GPT-6.2 Astra',
+      'org': 'OpenAI',
+      'score': 1761,
+      'ci': 14.4,
+      'votes': 2170,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude fable 5.1 (max)',
+      'name': 'GPT-6.2 Sol',
+      'org': 'OpenAI',
+      'score': 1755,
+      'ci': 13.8,
+      'votes': 2336,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Qwen4 Max',
+      'org': 'Qwen',
+      'score': 1752,
+      'ci': 15.5,
+      'votes': 1794,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'GPT-6.1 Sol',
+      'org': 'OpenAI',
+      'score': 1745,
+      'ci': 9,
+      'votes': 6737,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Claude Fable 5.1',
       'org': 'Anthropic',
-      'score': 1743,
-      'ci': 8,
-      'votes': 10000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-6.1 sol (max)',
-      'org': 'OpenAI',
       'score': 1742,
-      'ci': 10,
-      'votes': 5800,
-      'src': 'selftest'
+      'ci': 7.5,
+      'votes': 10805,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse wonder full (max)',
-      'org': 'Meta',
-      'score': 1724,
-      'ci': 14,
-      'votes': 2100,
-      'src': 'selftest'
-    },
-    {
-      'name': 'claude sonnet 5.5 (high)',
-      'org': 'Anthropic',
-      'score': 1716,
-      'ci': 8,
-      'votes': 8200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 4 hydrogen (high)',
+      'name': 'Gemini 4 Hydrogen',
       'org': 'Google',
-      'score': 1704,
-      'ci': 14,
-      'votes': 2000,
-      'src': 'selftest'
+      'score': 1701,
+      'ci': 14.3,
+      'votes': 2012,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 5 (max)',
+      'name': 'Claude Opus 5',
       'org': 'Anthropic',
-      'score': 1691,
-      'ci': 6,
-      'votes': 19500,
-      'src': 'selftest'
+      'score': 1692,
+      'ci': 6.1,
+      'votes': 19435,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kimi k3.1 pro (max)',
-      'org': 'Moonshot',
+      'name': 'GPT-6.1 Terra',
+      'org': 'OpenAI',
       'score': 1686,
-      'ci': 9,
-      'votes': 5200,
-      'src': 'selftest'
+      'ci': 9.3,
+      'votes': 5462,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-6.1 terra (max)',
-      'org': 'OpenAI',
-      'score': 1681,
-      'ci': 10,
-      'votes': 4300,
-      'src': 'selftest'
+      'name': 'Kimi K3.1 Pro',
+      'org': 'Moonshot AI',
+      'score': 1683,
+      'ci': 8.8,
+      'votes': 6207,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 4 argon (high)',
+      'name': 'Gemini 4 Argon',
       'org': 'Google',
-      'score': 1679,
-      'ci': 10,
-      'votes': 5200,
-      'src': 'selftest'
+      'score': 1682,
+      'ci': 8.8,
+      'votes': 6227,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.8-max (0902)',
-      'org': 'Alibaba',
-      'score': 1676,
-      'ci': 6,
-      'votes': 23000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-6 sol (max)',
+      'name': 'GPT-6 Sol',
       'org': 'OpenAI',
+      'score': 1675,
+      'ci': 7.8,
+      'votes': 8574,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Qwen3.8 Max (0902)',
+      'org': 'Qwen',
       'score': 1673,
-      'ci': 8,
-      'votes': 7600,
-      'src': 'selftest'
+      'ci': 5.8,
+      'votes': 26061,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.8-max',
-      'org': 'Alibaba',
-      'score': 1670,
-      'ci': 12,
-      'votes': 3400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'deepseek-v4.1-flash-20261017 (max)',
+      'name': 'DeepSeek V4.1 Flash 1017',
       'org': 'DeepSeek',
-      'score': 1661,
-      'ci': 7,
-      'votes': 15400,
-      'src': 'selftest'
+      'score': 1659,
+      'ci': 6.3,
+      'votes': 18638,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kimi k3 (max)',
-      'org': 'Moonshot',
+      'name': 'Kimi K3',
+      'org': 'Moonshot AI',
       'score': 1658,
-      'ci': 6,
-      'votes': 22700,
-      'src': 'selftest'
+      'ci': 5.6,
+      'votes': 23561,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 5 (high)',
-      'org': 'Anthropic',
-      'score': 1657,
-      'ci': 5,
-      'votes': 26900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'muse spark 1.3 (max)',
+      'name': 'Muse Spark 1.3',
       'org': 'Meta',
-      'score': 1655,
-      'ci': 7,
-      'votes': 12500,
-      'src': 'selftest'
+      'score': 1652,
+      'ci': 6.7,
+      'votes': 13627,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse wonder (max)',
-      'org': 'Meta',
-      'score': 1647,
-      'ci': 9,
-      'votes': 5600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'inkling 2 small',
-      'org': 'Thinky',
-      'score': 1645,
-      'ci': 19,
-      'votes': 1100,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok 4.7 (xhigh)',
-      'org': 'SpaceXAI',
-      'score': 1640,
-      'ci': 8,
-      'votes': 8500,
-      'src': 'selftest'
-    },
-    {
-      'name': 'mimo-v2.6-flash',
-      'org': 'Xiaomi',
-      'score': 1639,
-      'ci': 8,
-      'votes': 9200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'hy4 preview',
+      'name': 'Hy4',
       'org': 'Tencent',
-      'score': 1632,
-      'ci': 10,
-      'votes': 4600,
-      'src': 'selftest'
+      'score': 1650,
+      'ci': 12,
+      'votes': 2909,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude fable 5 (high)',
+      'name': 'Muse Wonder',
+      'org': 'Meta',
+      'score': 1646,
+      'ci': 8.4,
+      'votes': 6833,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Inkling 2 Small',
+      'org': 'Thinking Machines',
+      'score': 1642,
+      'ci': 17.6,
+      'votes': 1214,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Grok 4.7',
+      'org': 'xAI',
+      'score': 1639,
+      'ci': 7.4,
+      'votes': 9526,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'MiMo-V2.6-Flash',
+      'org': 'Xiaomi',
+      'score': 1637,
+      'ci': 7.3,
+      'votes': 10215,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Hy4 preview',
+      'org': 'Tencent',
+      'score': 1631,
+      'ci': 9.8,
+      'votes': 4562,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Claude Fable 5',
       'org': 'Anthropic',
       'score': 1626,
       'ci': 6,
-      'votes': 16900,
-      'src': 'selftest'
+      'votes': 16844,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.8-flash-next',
-      'org': 'Alibaba',
-      'score': 1625,
-      'ci': 7,
-      'votes': 11700,
-      'src': 'selftest'
-    },
-    {
-      'name': 'mimo-v2.6-pro',
-      'org': 'Xiaomi',
-      'score': 1624,
-      'ci': 8,
-      'votes': 9200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'glm-5.3 (max)',
+      'name': 'GLM 5.3',
       'org': 'Z.ai',
+      'score': 1623,
+      'ci': 6.6,
+      'votes': 13948,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'MiMo-V2.6-Pro',
+      'org': 'Xiaomi',
       'score': 1622,
-      'ci': 7,
-      'votes': 13000,
-      'src': 'selftest'
+      'ci': 7.2,
+      'votes': 10521,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse spark 1.3 (xhigh)',
-      'org': 'Meta',
-      'score': 1621,
-      'ci': 7,
-      'votes': 12000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'deepseek-v4.1-flash-20260910 (max)',
+      'name': 'DeepSeek V4.1 Flash',
       'org': 'DeepSeek',
       'score': 1621,
-      'ci': 11,
-      'votes': 3400,
-      'src': 'selftest'
+      'ci': 11.2,
+      'votes': 3359,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'grok 4.6 (high)',
-      'org': 'SpaceXAI',
+      'name': 'Grok 4.6',
+      'org': 'xAI',
       'score': 1618,
-      'ci': 7,
-      'votes': 12200,
-      'src': 'selftest'
+      'ci': 6.9,
+      'votes': 12088,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.6 sol (xhigh, codex harness)',
+      'name': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 1616,
-      'ci': 6,
-      'votes': 18900,
-      'src': 'selftest'
+      'ci': 5.7,
+      'votes': 18750,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'u2 flash',
-      'org': 'Unisound',
-      'score': 1612,
-      'ci': 17,
-      'votes': 1500,
-      'src': 'selftest'
-    },
-    {
-      'name': 'glm-5.3-flash',
+      'name': 'GLM 5.3 Flash',
       'org': 'Z.ai',
-      'score': 1609,
+      'score': 1611,
       'ci': 6,
-      'votes': 23900,
-      'src': 'selftest'
+      'votes': 25005,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse ember (max)',
+      'name': 'Muse Ember',
       'org': 'Meta',
-      'score': 1608,
-      'ci': 17,
-      'votes': 1300,
-      'src': 'selftest'
+      'score': 1607,
+      'ci': 16.9,
+      'votes': 1318,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'glm-5.2 (max)',
+      'name': 'GLM 5.2',
       'org': 'Z.ai',
-      'score': 1608,
-      'ci': 6,
-      'votes': 17900,
-      'src': 'selftest'
+      'score': 1607,
+      'ci': 5.9,
+      'votes': 17818,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude haiku 5.5 (high)',
+      'name': 'Claude Haiku 5.5',
       'org': 'Anthropic',
-      'score': 1593,
-      'ci': 8,
-      'votes': 7100,
-      'src': 'selftest'
+      'score': 1595,
+      'ci': 7.7,
+      'votes': 8776,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.8-27b',
-      'org': 'Alibaba',
+      'name': 'Qwen3.8 27B',
+      'org': 'Qwen',
       'score': 1590,
-      'ci': 6,
-      'votes': 21200,
-      'src': 'selftest'
+      'ci': 5.9,
+      'votes': 22378,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 3.7 flash (high)',
+      'name': 'Gemini 3.7 Flash',
       'org': 'Google',
-      'score': 1588,
-      'ci': 6,
-      'votes': 14500,
-      'src': 'selftest'
+      'score': 1589,
+      'ci': 6.5,
+      'votes': 14472,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 3.8 flash (high)',
+      'name': 'Gemini 3.8 Flash',
       'org': 'Google',
-      'score': 1583,
-      'ci': 7,
-      'votes': 14200,
-      'src': 'selftest'
+      'score': 1584,
+      'ci': 6.3,
+      'votes': 15356,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'minimax-m3.1-flash',
-      'org': 'MiniMax',
-      'score': 1582,
-      'ci': 9,
-      'votes': 5200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'deepseek-v4-flash (high)',
+      'name': 'DeepSeek V4 Flash 0423',
       'org': 'DeepSeek',
       'score': 1582,
-      'ci': 9,
-      'votes': 4800,
-      'src': 'selftest'
+      'ci': 9.4,
+      'votes': 4798,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'deepseek-v4-pro (high, 20260813)',
+      'name': 'MiniMax M3.1 Flash',
+      'org': 'MiniMax',
+      'score': 1582,
+      'ci': 8.7,
+      'votes': 6187,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'DeepSeek V4 Pro 0813',
       'org': 'DeepSeek',
       'score': 1581,
-      'ci': 10,
-      'votes': 4600,
-      'src': 'selftest'
+      'ci': 9.5,
+      'votes': 4592,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-6 luna (max)',
+      'name': 'GPT-6 Luna',
       'org': 'OpenAI',
-      'score': 1577,
-      'ci': 6,
-      'votes': 31100,
-      'src': 'selftest'
+      'score': 1579,
+      'ci': 5.8,
+      'votes': 32623,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'step 5 preview (high)',
-      'org': 'StepFun',
+      'name': 'Mistral Large 4',
+      'org': 'Mistral AI',
       'score': 1572,
-      'ci': 8,
-      'votes': 8000,
-      'src': 'selftest'
+      'ci': 12,
+      'votes': 2950,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'mistral large 4',
-      'org': 'Mistral',
-      'score': 1566,
-      'ci': 14,
-      'votes': 2000,
-      'src': 'selftest'
+      'name': 'Step 5 Preview',
+      'org': 'StepFun',
+      'score': 1570,
+      'ci': 7.8,
+      'votes': 8315,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.7 (high)',
+      'name': 'Inkling 2 Mini',
+      'org': 'Thinking Machines',
+      'score': 1560,
+      'ci': 17.2,
+      'votes': 1312,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Claude Opus 4.7',
       'org': 'Anthropic',
       'score': 1557,
-      'ci': 6,
-      'votes': 17600,
-      'src': 'selftest'
+      'ci': 5.8,
+      'votes': 17544,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.8 (high)',
+      'name': 'Claude Opus 4.8',
       'org': 'Anthropic',
-      'score': 1555,
-      'ci': 6,
-      'votes': 18000,
-      'src': 'selftest'
+      'score': 1556,
+      'ci': 5.8,
+      'votes': 17912,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.7',
-      'org': 'Anthropic',
-      'score': 1555,
-      'ci': 6,
-      'votes': 17900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok 4.5',
-      'org': 'SpaceXAI',
+      'name': 'Grok 4.5',
+      'org': 'xAI',
       'score': 1552,
-      'ci': 7,
-      'votes': 10800,
-      'src': 'selftest'
+      'ci': 6.7,
+      'votes': 10737,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.6 (high)',
+      'name': 'Claude Opus 4.6',
       'org': 'Anthropic',
-      'score': 1547,
-      'ci': 6,
-      'votes': 19000,
-      'src': 'selftest'
+      'score': 1546,
+      'ci': 5.5,
+      'votes': 19016,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse spark 1.1',
+      'name': 'Muse Spark 1.1',
       'org': 'Meta',
-      'score': 1542,
-      'ci': 8,
-      'votes': 7800,
-      'src': 'selftest'
+      'score': 1541,
+      'ci': 7.7,
+      'votes': 7795,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude sonnet 5 (high)',
+      'name': 'Claude Sonnet 5',
       'org': 'Anthropic',
       'score': 1539,
-      'ci': 6,
-      'votes': 16700,
-      'src': 'selftest'
+      'ci': 5.8,
+      'votes': 16656,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 3.6 flash (high)',
+      'name': 'Gemini 3.6 Flash',
       'org': 'Google',
       'score': 1538,
-      'ci': 8,
-      'votes': 8500,
-      'src': 'selftest'
+      'ci': 7.6,
+      'votes': 8454,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.6',
-      'org': 'Anthropic',
-      'score': 1537,
-      'ci': 5,
-      'votes': 20400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'claude opus 4.8',
-      'org': 'Anthropic',
-      'score': 1536,
-      'ci': 6,
-      'votes': 16900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'muse spark 1.2 (xhigh)',
+      'name': 'Muse Spark 1.2',
       'org': 'Meta',
-      'score': 1534,
-      'ci': 14,
-      'votes': 2100,
-      'src': 'selftest'
+      'score': 1533,
+      'ci': 13.8,
+      'votes': 2112,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse spark open (max)',
+      'name': 'Muse Spark Open',
       'org': 'Meta',
       'score': 1527,
-      'ci': 15,
-      'votes': 1900,
-      'src': 'selftest'
+      'ci': 14.1,
+      'votes': 2038,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude sonnet 4.6',
+      'name': 'Claude Sonnet 4.6',
       'org': 'Anthropic',
       'score': 1522,
-      'ci': 5,
-      'votes': 22500,
-      'src': 'selftest'
+      'ci': 5.2,
+      'votes': 22515,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.6 terra (xhigh, codex harness)',
+      'name': 'GPT-5.6 Terra',
       'org': 'OpenAI',
       'score': 1520,
-      'ci': 6,
-      'votes': 15400,
-      'src': 'selftest'
+      'ci': 6.1,
+      'votes': 15347,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'seed2.1 pro preview',
-      'org': 'Bytedance',
-      'score': 1519,
-      'ci': 6,
-      'votes': 18000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.6 luna (xhigh, codex harness)',
+      'name': 'GPT-5.6 Luna',
       'org': 'OpenAI',
       'score': 1519,
-      'ci': 6,
-      'votes': 12200,
-      'src': 'selftest'
+      'ci': 6.5,
+      'votes': 12115,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.7-max (20260517)',
-      'org': 'Alibaba',
-      'score': 1515,
-      'ci': 7,
-      'votes': 8700,
-      'src': 'selftest'
+      'name': 'Qwen3.7 Max',
+      'org': 'Qwen',
+      'score': 1516,
+      'ci': 7.4,
+      'votes': 8708,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.5 (xhigh, codex harness)',
+      'name': 'GPT-5.5',
       'org': 'OpenAI',
-      'score': 1512,
+      'score': 1513,
       'ci': 6,
-      'votes': 15400,
-      'src': 'selftest'
+      'votes': 15339,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kimi k2.6',
-      'org': 'Moonshot',
-      'score': 1510,
-      'ci': 7,
-      'votes': 10000,
-      'src': 'selftest'
+      'name': 'Kimi K2.6',
+      'org': 'Moonshot AI',
+      'score': 1509,
+      'ci': 7.3,
+      'votes': 9993,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'glm-5.1',
+      'name': 'GLM 5.1',
       'org': 'Z.ai',
       'score': 1508,
-      'ci': 7,
-      'votes': 10500,
-      'src': 'selftest'
+      'ci': 6.8,
+      'votes': 10497,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'hy3',
+      'name': 'Hy3',
       'org': 'Tencent',
       'score': 1506,
-      'ci': 8,
-      'votes': 7400,
-      'src': 'selftest'
+      'ci': 7.7,
+      'votes': 7680,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini-3.5-flash',
-      'org': 'Google',
-      'score': 1505,
-      'ci': 16,
-      'votes': 1800,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 3.5 flash (high)',
+      'name': 'Gemini 3.5 Flash',
       'org': 'Google',
       'score': 1500,
-      'ci': 7,
-      'votes': 9100,
-      'src': 'selftest'
+      'ci': 7.3,
+      'votes': 9120,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.5 (high, 32k, 20251101)',
+      'name': 'Claude Opus 4.5',
       'org': 'Anthropic',
-      'score': 1493,
-      'ci': 8,
-      'votes': 11000,
-      'src': 'selftest'
+      'score': 1494,
+      'ci': 8.3,
+      'votes': 10959,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 3.5 flash (medium)',
-      'org': 'Google',
-      'score': 1490,
-      'ci': 7,
-      'votes': 11900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.5 (high, codex harness)',
-      'org': 'OpenAI',
-      'score': 1487,
-      'ci': 6,
-      'votes': 17600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'spark-x2.6',
-      'org': 'XHToken',
-      'score': 1485,
-      'ci': 19,
-      'votes': 1200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'minimax-m3',
+      'name': 'MiniMax M3',
       'org': 'MiniMax',
       'score': 1484,
-      'ci': 5,
-      'votes': 21000,
-      'src': 'selftest'
+      'ci': 5.4,
+      'votes': 20926,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.6-max-preview',
-      'org': 'Alibaba',
-      'score': 1482,
-      'ci': 13,
-      'votes': 2700,
-      'src': 'selftest'
-    },
-    {
-      'name': 'mimo-v2.5-pro',
+      'name': 'MiMo-V2.5-Pro',
       'org': 'Xiaomi',
       'score': 1479,
-      'ci': 5,
-      'votes': 22000,
-      'src': 'selftest'
+      'ci': 5.3,
+      'votes': 21915,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kimi k2.7 code',
-      'org': 'Moonshot',
-      'score': 1474,
-      'ci': 9,
-      'votes': 4900,
-      'src': 'selftest'
+      'name': 'Kimi K2.7 Code',
+      'org': 'Moonshot AI',
+      'score': 1475,
+      'ci': 9.5,
+      'votes': 4868,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.5 (20251101)',
-      'org': 'Anthropic',
-      'score': 1469,
-      'ci': 7,
-      'votes': 13300,
-      'src': 'selftest'
+      'name': 'Qwen3.6 Plus',
+      'org': 'Qwen',
+      'score': 1462,
+      'ci': 5.6,
+      'votes': 18217,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'deepseek-v4-pro preview (high)',
-      'org': 'DeepSeek',
-      'score': 1464,
-      'ci': 6,
-      'votes': 12900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.4 (high, codex harness)',
+      'name': 'GPT-5.4',
       'org': 'OpenAI',
       'score': 1462,
-      'ci': 19,
-      'votes': 1300,
-      'src': 'selftest'
+      'ci': 18.9,
+      'votes': 1336,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.6-plus',
-      'org': 'Alibaba',
-      'score': 1461,
-      'ci': 6,
-      'votes': 18300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.5 (codex harness)',
-      'org': 'OpenAI',
-      'score': 1456,
-      'ci': 6,
-      'votes': 15600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'deepseek-v4-pro',
+      'name': 'DeepSeek V4 Pro 0423',
       'org': 'DeepSeek',
-      'score': 1449,
-      'ci': 6,
-      'votes': 13800,
-      'src': 'selftest'
+      'score': 1448,
+      'ci': 6.4,
+      'votes': 13737,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemini 3.1 pro preview',
+      'name': 'Gemini 3.1 Pro Preview',
       'org': 'Google',
       'score': 1446,
-      'ci': 5,
-      'votes': 23800,
-      'src': 'selftest'
+      'ci': 5.1,
+      'votes': 23798,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.4 (medium, codex harness)',
-      'org': 'OpenAI',
-      'score': 1442,
-      'ci': 18,
-      'votes': 1400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 3 pro',
-      'org': 'Google',
-      'score': 1441,
-      'ci': 8,
-      'votes': 14000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 3 flash',
-      'org': 'Google',
-      'score': 1440,
-      'ci': 9,
-      'votes': 10800,
-      'src': 'selftest'
-    },
-    {
-      'name': 'mimo-v2.5',
+      'name': 'MiMo-V2.5',
       'org': 'Xiaomi',
       'score': 1438,
-      'ci': 6,
-      'votes': 14600,
-      'src': 'selftest'
+      'ci': 6.1,
+      'votes': 14575,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kimi k2.5 (thinking)',
-      'org': 'Moonshot',
-      'score': 1437,
-      'ci': 5,
-      'votes': 19800,
-      'src': 'selftest'
-    },
-    {
-      'name': 'beam 1.0 501b a23b',
+      'name': 'Beam 1.0 501B A23B',
       'org': 'Reflection',
-      'score': 1436,
-      'ci': 14,
-      'votes': 2500,
-      'src': 'selftest'
+      'score': 1437,
+      'ci': 13.7,
+      'votes': 2482,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'glm-4.7',
+      'name': 'Kimi K2.5',
+      'org': 'Moonshot AI',
+      'score': 1436,
+      'ci': 5.3,
+      'votes': 19769,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'GLM 4.7',
       'org': 'Z.ai',
       'score': 1436,
-      'ci': 12,
-      'votes': 4000,
-      'src': 'selftest'
+      'ci': 12.1,
+      'votes': 3988,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'glm-5',
+      'name': 'GLM 5',
       'org': 'Z.ai',
       'score': 1435,
-      'ci': 8,
-      'votes': 7400,
-      'src': 'selftest'
+      'ci': 8.2,
+      'votes': 7429,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'mimo-v2-pro',
-      'org': 'Xiaomi',
-      'score': 1434,
-      'ci': 8,
-      'votes': 7200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 3.5 flash-lite',
+      'name': 'Gemini 3.5 Flash Lite',
       'org': 'Google',
-      'score': 1432,
-      'ci': 41,
+      'score': 1434,
+      'ci': 41.2,
       'votes': 231,
-      'src': 'selftest'
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'deepseek-v4-flash preview (high)',
-      'org': 'DeepSeek',
-      'score': 1431,
-      'ci': 7,
-      'votes': 10000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.2',
+      'name': 'GPT-5.2',
       'org': 'OpenAI',
       'score': 1419,
-      'ci': 23,
-      'votes': 1100,
-      'src': 'selftest'
+      'ci': 22.7,
+      'votes': 1074,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5 (medium)',
+      'name': 'GPT-5',
       'org': 'OpenAI',
-      'score': 1417,
-      'ci': 16,
-      'votes': 3100,
-      'src': 'selftest'
+      'score': 1418,
+      'ci': 15.6,
+      'votes': 3076,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'inkling',
-      'org': 'Thinky',
+      'name': 'Inkling',
+      'org': 'Thinking Machines',
       'score': 1414,
       'ci': 6,
-      'votes': 17100,
-      'src': 'selftest'
+      'votes': 17046,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'inkling-small',
-      'org': 'Thinky',
-      'score': 1408,
-      'ci': 9,
-      'votes': 5200,
-      'src': 'selftest'
+      'name': 'Inkling Small',
+      'org': 'Thinking Machines',
+      'score': 1407,
+      'ci': 9.2,
+      'votes': 5193,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.3-codex (codex harness)',
+      'name': 'GPT-5.3-Codex',
       'org': 'OpenAI',
       'score': 1406,
-      'ci': 14,
-      'votes': 2600,
-      'src': 'selftest'
+      'ci': 13.7,
+      'votes': 2630,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kimi k2.5 (instant)',
-      'org': 'Moonshot',
-      'score': 1406,
-      'ci': 12,
-      'votes': 3200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'nvidia-nemotron-3.5-super-vl-120b-a12b (nvfp4)',
-      'org': 'Nvidia',
-      'score': 1401,
-      'ci': 11,
-      'votes': 5400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'qwen3.5-397b-a17b',
-      'org': 'Alibaba',
+      'name': 'Qwen3.5 397B A17B',
+      'org': 'Qwen',
       'score': 1400,
-      'ci': 5,
-      'votes': 20800,
-      'src': 'selftest'
+      'ci': 5.2,
+      'votes': 20805,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.4',
+      'name': 'GPT-5.4 Mini',
       'org': 'OpenAI',
-      'score': 1400,
-      'ci': 10,
-      'votes': 4600,
-      'src': 'selftest'
+      'score': 1398,
+      'ci': 6.6,
+      'votes': 11783,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'minimax-m2.7',
+      'name': 'MiniMax M2.7',
       'org': 'MiniMax',
       'score': 1398,
-      'ci': 6,
-      'votes': 15700,
-      'src': 'selftest'
+      'ci': 5.8,
+      'votes': 15670,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.4 mini (high)',
+      'name': 'GPT-5.1',
       'org': 'OpenAI',
-      'score': 1398,
-      'ci': 7,
-      'votes': 11800,
-      'src': 'selftest'
+      'score': 1397,
+      'ci': 11.6,
+      'votes': 4876,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.1 (medium)',
-      'org': 'OpenAI',
-      'score': 1398,
-      'ci': 12,
-      'votes': 4900,
-      'src': 'selftest'
-    },
-    {
-      'name': 'claude sonnet 4.5 (high, 32k, 20250929)',
+      'name': 'Claude Sonnet 4.5',
       'org': 'Anthropic',
       'score': 1394,
-      'ci': 8,
-      'votes': 13200,
-      'src': 'selftest'
+      'ci': 7.8,
+      'votes': 13158,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude opus 4.1 (20250805)',
+      'name': 'Claude Opus 4.1',
       'org': 'Anthropic',
       'score': 1390,
-      'ci': 11,
-      'votes': 6900,
-      'src': 'selftest'
+      'ci': 10.8,
+      'votes': 6879,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'minimax-m2.5',
+      'name': 'MiniMax M2.5',
       'org': 'MiniMax',
       'score': 1386,
-      'ci': 8,
-      'votes': 7600,
-      'src': 'selftest'
+      'ci': 8.4,
+      'votes': 7588,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'claude sonnet 4.5 (20250929)',
-      'org': 'Anthropic',
-      'score': 1385,
-      'ci': 7,
-      'votes': 15600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 3 flash (minimal)',
+      'name': 'Gemma 4 31B',
       'org': 'Google',
-      'score': 1385,
-      'ci': 5,
-      'votes': 22000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'minimax-m2.1 preview',
-      'org': 'MiniMax',
-      'score': 1384,
-      'ci': 10,
-      'votes': 7600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok 4.20 beta (reasoning, 0309)',
-      'org': 'SpaceXAI',
-      'score': 1376,
-      'ci': 6,
-      'votes': 15300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.3-codex (codex harness)',
-      'org': 'OpenAI',
       'score': 1371,
-      'ci': 11,
-      'votes': 3600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemma 4 31b',
-      'org': 'Google',
-      'score': 1370,
       'ci': 6,
-      'votes': 16600,
-      'src': 'selftest'
+      'votes': 16532,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'solar pro 4',
+      'name': 'Solar Pro 4',
       'org': 'Upstage',
       'score': 1369,
-      'ci': 11,
-      'votes': 4500,
-      'src': 'selftest'
+      'ci': 10.5,
+      'votes': 4475,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'deepseek-v3.2 (thinking)',
+      'name': 'DeepSeek V3.2',
       'org': 'DeepSeek',
-      'score': 1362,
-      'ci': 9,
-      'votes': 6900,
-      'src': 'selftest'
+      'score': 1363,
+      'ci': 9.2,
+      'votes': 6870,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.5-122b-a10b',
-      'org': 'Alibaba',
+      'name': 'Qwen3.5-122B-A10B',
+      'org': 'Qwen',
       'score': 1360,
-      'ci': 8,
-      'votes': 8200,
-      'src': 'selftest'
+      'ci': 7.7,
+      'votes': 8195,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gemma 4 26b a4b',
+      'name': 'Hy3 preview',
+      'org': 'Tencent',
+      'score': 1359,
+      'ci': 17.5,
+      'votes': 1427,
+      'src': 'llmbenchmark'
+    },
+    {
+      'name': 'Gemma 4 26B A4B',
       'org': 'Google',
       'score': 1358,
       'ci': 17,
-      'votes': 1500,
-      'src': 'selftest'
+      'votes': 1487,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'hy3 preview',
-      'org': 'Tencent',
-      'score': 1358,
-      'ci': 18,
-      'votes': 1400,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok 4.3',
-      'org': 'SpaceXAI',
+      'name': 'Grok 4.3',
+      'org': 'xAI',
       'score': 1357,
-      'ci': 6,
-      'votes': 14700,
-      'src': 'selftest'
+      'ci': 6.3,
+      'votes': 14652,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.5-27b',
-      'org': 'Alibaba',
+      'name': 'Qwen3.5-27B',
+      'org': 'Qwen',
       'score': 1357,
-      'ci': 8,
-      'votes': 7700,
-      'src': 'selftest'
+      'ci': 8.1,
+      'votes': 7745,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'muse glimmer',
-      'org': 'Meta',
-      'score': 1354,
-      'ci': 16,
-      'votes': 1600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'laguna m.1',
-      'org': 'Poolside',
-      'score': 1350,
-      'ci': 9,
-      'votes': 5300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gpt-5.1',
-      'org': 'OpenAI',
-      'score': 1342,
-      'ci': 9,
-      'votes': 10600,
-      'src': 'selftest'
-    },
-    {
-      'name': 'glm-4.6',
+      'name': 'GLM 4.6',
       'org': 'Z.ai',
       'score': 1342,
-      'ci': 11,
-      'votes': 6700,
-      'src': 'selftest'
+      'ci': 10.9,
+      'votes': 6718,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.2-codex',
+      'name': 'GPT-5.2-Codex',
       'org': 'OpenAI',
       'score': 1339,
       'ci': 9,
-      'votes': 6700,
-      'src': 'selftest'
+      'votes': 6669,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.1-codex',
+      'name': 'GPT-5.1-Codex',
       'org': 'OpenAI',
       'score': 1338,
-      'ci': 12,
-      'votes': 5000,
-      'src': 'selftest'
+      'ci': 11.7,
+      'votes': 4964,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'mimo-v2-flash (non-thinking)',
-      'org': 'Xiaomi',
-      'score': 1331,
-      'ci': 10,
-      'votes': 5700,
-      'src': 'selftest'
-    },
-    {
-      'name': 'claude haiku 4.5 (20251001)',
+      'name': 'Claude Haiku 4.5',
       'org': 'Anthropic',
       'score': 1330,
       'ci': 5,
-      'votes': 28700,
-      'src': 'selftest'
+      'votes': 28706,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'deepseek-v3.2',
-      'org': 'DeepSeek',
-      'score': 1326,
-      'ci': 8,
-      'votes': 9300,
-      'src': 'selftest'
-    },
-    {
-      'name': 'kimi k2 thinking turbo',
-      'org': 'Moonshot',
-      'score': 1322,
-      'ci': 8,
-      'votes': 13000,
-      'src': 'selftest'
-    },
-    {
-      'name': 'laguna xs.2',
-      'org': 'Poolside',
-      'score': 1304,
-      'ci': 11,
-      'votes': 4200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'minimax-m2',
+      'name': 'MiniMax M2',
       'org': 'MiniMax',
       'score': 1299,
       'ci': 11,
-      'votes': 6700,
-      'src': 'selftest'
+      'votes': 6654,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'mimo-v2-flash (thinking)',
-      'org': 'Xiaomi',
-      'score': 1292,
-      'ci': 17,
-      'votes': 1700,
-      'src': 'selftest'
-    },
-    {
-      'name': 'qwen3-coder-480b-a35b-instruct',
-      'org': 'Alibaba',
+      'name': 'Qwen3 Coder 480B A35B',
+      'org': 'Qwen',
       'score': 1274,
-      'ci': 8,
-      'votes': 12600,
-      'src': 'selftest'
+      'ci': 7.9,
+      'votes': 12630,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'deepseek-v3.2-exp',
+      'name': 'DeepSeek V3.2 Exp',
       'org': 'DeepSeek',
-      'score': 1272,
-      'ci': 14,
-      'votes': 3900,
-      'src': 'selftest'
+      'score': 1271,
+      'ci': 13.6,
+      'votes': 3936,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'mistral medium 3.5',
-      'org': 'Mistral',
+      'name': 'Mistral Medium 3.5',
+      'org': 'Mistral AI',
       'score': 1263,
-      'ci': 15,
-      'votes': 2300,
-      'src': 'selftest'
+      'ci': 14.9,
+      'votes': 2274,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'kat-coder-pro v1',
-      'org': '',
-      'score': 1257,
-      'ci': 20,
-      'votes': 1500,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 3.1 flash-lite preview',
+      'name': 'Gemini 3.1 Flash Lite Preview',
       'org': 'Google',
       'score': 1256,
-      'ci': 7,
-      'votes': 14200,
-      'src': 'selftest'
+      'ci': 6.9,
+      'votes': 14229,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.5-35b-a3b',
-      'org': 'Alibaba',
+      'name': 'Qwen3.5-35B-A3B',
+      'org': 'Qwen',
       'score': 1253,
-      'ci': 17,
-      'votes': 1600,
-      'src': 'selftest'
+      'ci': 17.5,
+      'votes': 1610,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'qwen3.5-flash',
-      'org': 'Alibaba',
-      'score': 1244,
-      'ci': 20,
-      'votes': 1300,
-      'src': 'selftest'
+      'name': 'Qwen3.5-Flash',
+      'org': 'Qwen',
+      'score': 1243,
+      'ci': 19.7,
+      'votes': 1321,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'gpt-5.1-codex-mini',
+      'name': 'GPT-5.1-Codex-Mini',
       'org': 'OpenAI',
       'score': 1243,
-      'ci': 22,
-      'votes': 1100,
-      'src': 'selftest'
+      'ci': 22.3,
+      'votes': 1135,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'grok 4.1 fast (reasoning)',
-      'org': 'SpaceXAI',
-      'score': 1242,
-      'ci': 11,
-      'votes': 5500,
-      'src': 'selftest'
-    },
-    {
-      'name': 'trinity large thinking',
-      'org': '',
+      'name': 'Trinity Large Thinking',
+      'org': 'Arcee AI',
       'score': 1237,
-      'ci': 20,
-      'votes': 1400,
-      'src': 'selftest'
+      'ci': 20.1,
+      'votes': 1346,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'mistral large 3',
-      'org': 'Mistral',
-      'score': 1231,
-      'ci': 26,
-      'votes': 821,
-      'src': 'selftest'
-    },
-    {
-      'name': 'gemini 2.5 pro',
+      'name': 'Gemini 2.5 Pro',
       'org': 'Google',
       'score': 1226,
-      'ci': 16,
-      'votes': 2700,
-      'src': 'selftest'
+      'ci': 15.9,
+      'votes': 2705,
+      'src': 'llmbenchmark'
     },
     {
-      'name': 'grok 4.1 (thinking)',
-      'org': 'SpaceXAI',
-      'score': 1216,
-      'ci': 25,
-      'votes': 957,
-      'src': 'selftest'
-    },
-    {
-      'name': 'devstral 2',
-      'org': 'Mistral',
-      'score': 1195,
-      'ci': 21,
-      'votes': 1200,
-      'src': 'selftest'
-    },
-    {
-      'name': 'granite 4.1 8b',
-      'org': 'IBM',
-      'score': 1193,
-      'ci': 19,
-      'votes': 1800,
-      'src': 'selftest'
-    },
-    {
-      'name': 'mercury 2',
-      'org': 'Inception AI',
-      'score': 1171,
-      'ci': 25,
-      'votes': 940,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok code fast 1',
-      'org': 'SpaceXAI',
-      'score': 1165,
-      'ci': 28,
-      'votes': 781,
-      'src': 'selftest'
-    },
-    {
-      'name': 'grok 4 fast (reasoning)',
-      'org': 'SpaceXAI',
-      'score': 1159,
-      'ci': 27,
-      'votes': 741,
-      'src': 'selftest'
-    },
-    {
-      'name': 'devstral medium (2507)',
-      'org': 'Mistral',
-      'score': 1071,
-      'ci': 31,
-      'votes': 835,
-      'src': 'selftest'
+      'name': 'Mercury 2',
+      'org': 'Inception',
+      'score': 1170,
+      'ci': 24.8,
+      'votes': 939,
+      'src': 'llmbenchmark'
     }
   ]
 };

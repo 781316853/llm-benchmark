@@ -432,8 +432,8 @@
         "HLE (Humanity's Last Exam) frontier knowledge breadth score (%): 2,500 expert-written closed-book questions with no web-searchable solutions, unified no-tools protocol. Since 2026-11-15 it counts toward the composite (equal weight, 10%) and coverage; see the Reference Benchmarks page for the full board.",
       "综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 综合分 → 命中数 → 共榜净胜排列。":
         "Models within 1.5 composite points count as the same tier; within a tier, ordering goes by shared-board dominance → composite score → coverage → shared-board net wins.",
-      "「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮名次可见榜内上榜条目总数。":
-        "In the “Third-party tests” group, the #N before each value is the model's actual position on that board (taken from the source leaderboard; WebDev has no source rank, so ties are ranked by raw entry Elo). Hover the rank to see the board's total entry count.",
+      "「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 按 Elo 降序计名次、同分并列),悬浮名次可见榜内上榜条目总数。":
+        "In the “Third-party tests” group, the #N before each value is the model's actual position on that board (taken from the source leaderboard; WebDev ranks by Elo, with tied scores sharing a rank). Hover the rank to see the board's total entry count.",
       "综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。":
         "Composite ÷ blended cost per million tokens (95% cached input + 4.5% input + 0.5% output; prices taken from codingplan.fyi first, with missing prices for ranked models filled from models.dev). Computed only for ranked models covering at least 4 boards.",
       "绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,仅在搜索时出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。":

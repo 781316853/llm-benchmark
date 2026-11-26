@@ -3882,7 +3882,7 @@
     deepswe: { src: "data/deepswe.js?v=20261116b", global: "DEEPSWE" },
     deepswe_v10: { src: "data/deepswe_v10.js?v=20260824a", global: "DEEPSWE_V10" },
     llm2014: { src: "data/llm2014.js?v=20260824a", global: "LLM2014" },
-    arena_webdev: { src: "data/arena_webdev.js?v=20261126a", global: "ARENA_WEBDEV" },
+    arena_webdev: { src: "data/arena_webdev.js?v=20261126b", global: "ARENA_WEBDEV" },
     arena_agent: { src: "data/arena_agent.js?v=20261117b", global: "ARENA_AGENT" },
     arenaofbias: { src: "data/arenaofbias.js?v=20261116a", global: "ARENAOFBIAS" },
     tbench: { src: "data/tbench.js?v=20261117b", global: "TBENCH" },
