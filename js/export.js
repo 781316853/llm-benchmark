@@ -9,7 +9,7 @@
   var PAGES = {
     overview: {
       title: "总览 · 交叉模型矩阵",
-      src: ["DEEPSWE", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH", "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON"]
+      src: ["FRONTIERCODE", "FRONTIERCODE_V11", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH", "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE"]
     },
     llm2014: { title: "llm2014 Agentic 编程榜", src: ["LLM2014"] },
     modeldial: { title: "ModelDial 雷达", src: ["MODELDIAL"] },

@@ -578,6 +578,13 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
 .badge-tb20 { display: inline-block; font-size: var(--fs-2xs); font-weight: 700; color: var(--bd-pur-fg);
   background: var(--bd-pur-bg); padding: 1px 6px; border-radius: var(--radius-pill); margin-left: 6px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid var(--bd-pur-bd); }
+/* FrontierCode 版本徽标:2.0 主榜(蓝) / 1.1 兜底(橙) */
+.badge-fc20 { display: inline-block; font-size: var(--fs-2xs); font-weight: 700; color: var(--bd-info-fg);
+  background: var(--bd-info-bg); padding: 1px 6px; border-radius: var(--radius-pill); margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid var(--bd-info-bd); }
+.badge-fc11 { display: inline-block; font-size: var(--fs-2xs); font-weight: 700; color: var(--bd-warn-fg);
+  background: var(--bd-warn-bg); padding: 1px 6px; border-radius: var(--radius-pill); margin-left: 6px;
+  vertical-align: 1px; letter-spacing: .3px; border: 1px solid var(--bd-warn-bd); }
 .badge-src { display: inline-block; font-size: var(--fs-2xs); font-weight: 600; color: var(--bd-gray-fg);
   background: var(--bd-gray-bg); padding: 1px 5px; border-radius: var(--radius-pill); margin-left: 5px;
   vertical-align: 1px; letter-spacing: .3px; border: 1px solid var(--bd-gray-bd); cursor: help; }

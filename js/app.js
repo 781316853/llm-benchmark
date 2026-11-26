@@ -95,6 +95,12 @@
     var cls = v === "4.0" ? "badge-tb40" : (v === "3.0" ? "badge-tb30" : "badge-tb21");
     return ' <span class="' + cls + '" title="榜单版本 v' + esc(v) + '">v' + esc(v) + '</span>';
   };
+  // FrontierCode 版本徽标:2.0 主榜优先,1.1 只补 2.0 未收录的模型(两版任务集不同,不可直接比)
+  var fcVerBadge = function (v) {
+    if (!v) return "";
+    var cls = v === "2.0" ? "badge-fc20" : "badge-fc11";
+    return ' <span class="' + cls + '" title="FrontierCode 榜单版本 ' + esc(v) + (v === "1.1" ? "(2.0 未收录,任务集与 2.0 不同)" : "") + '">' + esc(v) + '</span>';
+  };
   // 数据来源渠道徽标:official/selftest=官方榜/实测;paper/datalearner/qwen-official/deepseek-official=厂商官方发布;其余=第三方
   var SRC_LABELS = {
     official: ["官方榜", "基准官方实测榜(T1)"],
@@ -147,7 +153,7 @@
 
   // 基准概览行文案与权重;按 benchSummary 的 key 索引
   var BENCH_DESC = {
-    deepswe: "真实 GitHub issue → PR 的长程软件工程评测",
+    frontiercode: "生产级代码质量 · 2.0 主榜 / 1.1 兜底",
     llm2014: "私有题库全历史保序校正,含单任务测试成本",
     webdev: "LMArena 前端竞技场 · 匿名盲测 Elo",
     agentarena: "LMArena 真实智能体会话 · 净提升",
@@ -165,7 +171,7 @@
   var W_TXT = W_PCT + "%";
   // 十组等权,各 10%(随 CMP.GROUPS 自动跟随;分组增减时这里自动同步)
   var BENCH_WEIGHT = {
-    deepswe: W_TXT, llm2014: W_TXT, webdev: W_TXT, agentarena: W_TXT,
+    frontiercode: W_TXT, llm2014: W_TXT, webdev: W_TXT, agentarena: W_TXT,
     arenaofbias: W_TXT, tbench: W_TXT, modeldial: W_TXT, aicodingdaily: W_TXT,
     octathlon: W_TXT, hle: W_TXT
   };
@@ -286,7 +292,9 @@
     { key: "value", label: "性价比", type: "num", bench: false, nullLast: true,
       tip: "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价优先取 codingplan.fyi,排名模型缺价时由 models.dev 补齐(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见来源与输入/缓存输入/输出三档单价",
       val: valueIndexOf },
-    { key: "deepswe", label: "DeepSWE (Pass@1)", type: "num", bench: true, grp: "榜单基准", tone: "deepswe", val: function (r) { return r.deepswe ? r.deepswe.pass1 : null; } },
+    { key: "frontiercode", label: "FrontierCode (2.0/1.1)", type: "num", bench: true, grp: "榜单基准", tone: "frontiercode",
+      tip: "FrontierCode(Cognition 生产级代码质量榜):真实仓库任务端到端交付并通过隐藏测试的比例;2.0 主榜优先,未收录的模型回退 1.1(两版任务集不同、分数不可直接比较,故综合分按版本内归一定标);计入综合分(十组等权)与命中数",
+      val: function (r) { return r.frontiercode ? r.frontiercode.score : null; } },
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "榜单基准", tone: "tbench",
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
@@ -773,16 +781,14 @@
         if (r.hle.rank != null) hleMeta.push("源站排名 #" + r.hle.rank);
         hleHtml = scoreSpan("hle", r.hle.score, "hle", fmtHle(r.hle.score), hleMeta.join(" · "), null, r.id);
       }
-      // DeepSWE 分数后标数据版本(v1.1/v1.0),便于区分历史与当前数据来源
-      // 分数后追加单次任务成本($),仅当存在有效数字成本时显示
-      // 分数包一层 .cell-val 固定宽度轨道:分数位数不同(74% / 69.3%)时,版本徽标仍落在整列同一 x 上
-      var dsCost = (r.deepswe && typeof r.deepswe.cost === "number" && r.deepswe.cost > 0)
-        ? ' <span class="cell-cost">$' + r.deepswe.cost + '</span>' : "";
-      // 数值主体用 bv bv-<tone> 上该榜的数据色;±ci / $成本 / 版本徽标等辅助小字保持 .cell-cost 灰,
-      // 让"榜色标数值主体、灰字标元数据"这条分工在 13 列宽表里稳定成立
-      var ds = r.deepswe
-        ? scoreSpan("deepswe", r.deepswe.pass1, "deepswe", r.deepswe.pass1 + "%", "", "cell-val", r.id) +
-          verBadge(r.deepswe.version) + dsCost : "—";
+      // FrontierCode 单元格:原始分 + 版本徽标(2.0 主榜 / 1.1 兜底) + harness 灰字;
+      // 分数包一层 .cell-val 固定宽度轨道:分数位数不同(44.2% / 3.8%)时,版本徽标仍落在整列同一 x 上
+      var fc = r.frontiercode;
+      var fcHtml = fc
+        ? scoreSpan("frontiercode", fc.score, "frontiercode", fc.score + "%", "", "cell-val", r.id) +
+          fcVerBadge(fc.version) +
+          (fc.harness ? ' <span class="cell-cost">' + esc(fc.harness) + '</span>' : "")
+        : "—";
       var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(2) : "-";
       // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci
       // (不再追加 norm 折算分小字:2026-09-22 起综合分改用各榜榜内稳健标准分,快照内 min-max
@@ -871,8 +877,8 @@
           scoreSpan("octathlon", oc.score, "octathlon", String(oc.score), ocParts.join(" · "), null, r.id) +
           (oc.agent ? ' <span class="cell-cost">' + esc(oc.agent) + '</span>' : "");
       }
-      // NEW 判定:基于 DeepSWE/llm2014/Terminal-Bench 三基准
-      var nw = D.isNewAny(r.deepswe && r.deepswe.name, r.llm && r.llm.name, r.tbench && r.tbench.name);
+      // NEW 判定:基于 FrontierCode / llm2014 / Terminal-Bench 三基准
+      var nw = D.isNewAny(null, r.llm && r.llm.name, r.tbench && r.tbench.name);
       // 国产高亮:开关开启且该模型厂商属于国产清单时,加行高亮类与「国产」徽标
       var dom = state.highlightDomestic && DOMESTIC[r.vendor];
       // 差值模式选中的参考模型:整行高亮 + 「参考线」徽标
@@ -927,7 +933,7 @@
             '<br><span class="cell-cost">' + fmtCostPerM(p.costPerM) + '/M</span></td>';
         })() +
         // ds=榜单基准组起点、wd=第三方实测组起点:grp-start 竖线与表头 th-grp 左边框对齐,须随 MATRIX_COLS 分组调整同步
-        '<td class="num grp-start">' + ds + '</td>' +
+        '<td class="num grp-start">' + fcHtml + '</td>' +
         '<td class="num">' + tbHtml + '</td>' +
         // HLE 计分列:属「榜单基准」组尾,组起点竖线 ds 不变
         '<td class="num">' + hleHtml + '</td>' +
@@ -962,7 +968,7 @@
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
-      "榜单基准": "榜单基准:基准官方实测榜(DeepSWE / Terminal-Bench 4.0/3.0/2.1 / HLE)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标,再与其他计分组等权平均(2026-11-26 起:在场 N 组各 1/N,十组时每组 10%),按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
+      "榜单基准": "榜单基准:基准官方实测榜(FrontierCode / Terminal-Bench 4.0/3.0/2.1 / HLE)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标,再与其他计分组等权平均(2026-11-26 起:在场 N 组各 1/N,十组时每组 10%),按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
       "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70;AI 十项全能,13 题 10 类限时 Agent 实测、总分 0-100,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev / Agent Arena 净提升 / 亿模亿样)与站主实测口径(llm2014 私有题库全历史保序校正);七组同纲计入综合分与命中数;2026-11-26 起所有计分组等权(在场 N 组各 1/N,十组时每组 10%),不再按分组压低或抬权;综合分为各榜榜内相对分的等权平均,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
     };
     function thAttr(c, extra) {
@@ -3915,14 +3921,16 @@
   // 这样首屏字节:总览 ~524KB(仅延后 pricing/deepswe_v10/hle 三个仅矩阵列),
   // 子页 46~138KB(原先每页固定 631KB)。
   var BENCH_KEYS = [
-    "pricing", "deepswe", "deepswe_v10", "llm2014", "arena_webdev", "arena_agent",
+    "pricing", "deepswe", "deepswe_v10", "frontiercode", "frontiercodeV11", "llm2014", "arena_webdev", "arena_agent",
     "arenaofbias", "tbench", "tbench_v3", "tbench_v2", "hle", "modeldial",
     "releases", "aicodingdaily", "octathlon", "seen", "news"
   ];
+  // 总览已把矩阵的 DeepSWE 列换成 FrontierCode,这两个源在总览只被权威页使用,不进第二批注入
+  var PAGE_SKIP = { overview: ["deepswe", "deepswe_v10"] };
   var PAGE_EAGER = {
     // 总览:新闻 + 基准速览(benchSummary 读 10 个榜)+ 矩阵。矩阵要 pricing/hle/deepswe_v10 三列,
     // 但那三列只在矩阵里用,矩阵本身在首屏之下且是懒渲染,故一并留到第二批。
-    overview: ["deepswe", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
+    overview: ["frontiercode", "frontiercodeV11", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
       "tbench_v3", "tbench_v2", "hle", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
     llm2014: ["llm2014", "seen"],
     modeldial: ["modeldial", "seen"],
@@ -3940,7 +3948,8 @@
   function deferredKeys(tab) {
     if (tab === "authority" || tab === "plans" || tab === "changelog") return [];
     var eager = PAGE_EAGER[tab] || [];
-    return BENCH_KEYS.filter(function (k) { return eager.indexOf(k) < 0; });
+    var skip = PAGE_SKIP[tab] || [];
+    return BENCH_KEYS.filter(function (k) { return eager.indexOf(k) < 0 && skip.indexOf(k) < 0; });
   }
   // 第二批是否已经全部落地(含失败):未落地时跨榜命中筛选先不生效,避免按半个数据集砍掉行
   var deferredSettled = false;
@@ -4457,7 +4466,7 @@
       fillLlmMonthSelect();
       // 刷新时间节点:取各源 refreshedAt 最新值;旧数据缺字段时不显示
       var refreshedAt = maxRefreshedAt();
-      document.getElementById("topMeta").textContent = "快照数据 · DeepSWE " + (D.src.deepswe ? D.src.deepswe.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
+      document.getElementById("topMeta").textContent = "快照数据 · FrontierCode " + (D.src.frontiercode ? D.src.frontiercode.updated : "") + " / llm2014 " + (D.src.llm ? D.src.llm.updated : state.llmMonth)
         + (refreshedAt ? " · 刷新于 " + refreshedAt + "(北京时间)" : "");
       // 使用双 rAF:先让浏览器绘制 loading 指示器,再在下一帧执行渲染并移除指示器
       requestAnimationFrame(function () {

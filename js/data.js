@@ -720,6 +720,38 @@
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
+  // 总览计分口径:2.0 主榜优先,1.1 只补 2.0 未收录的模型(需求明确「有 2.0 就展示 2.0」)。
+  // 两版任务集不同(2.0 main 132 题 / 1.1 main 100 题,官方注明分数不可直接比较),
+  // 因此先按版本各自 min-max 归一到 0-100(norm)再进综合分;矩阵展示仍保留原始分并挂版本徽标。
+  function frontiercodeBoard() {
+    var v2 = (window.FRONTIERCODE || { models: [] }).models || [];
+    var v11 = (window.FRONTIERCODE_V11 || { models: [] }).models || [];
+    var best = {};   // canon id -> { …, version }
+    function absorb(list, version) {
+      list.forEach(function (m) {
+        if (m.score == null) return;
+        var c = canon(m.model);
+        var cur = best[c.id];
+        if (!cur) { best[c.id] = Object.assign({}, m, { canon: c, version: version }); return; }
+        // 2.0 永远优先;同版本取最高分
+        if (version === "2.0" && cur.version === "1.1") best[c.id] = Object.assign({}, m, { canon: c, version: version });
+        else if (version === cur.version && m.score > cur.score) best[c.id] = Object.assign({}, m, { canon: c, version: version });
+      });
+    }
+    absorb(v11, "1.1");
+    absorb(v2, "2.0");
+    var list = Object.keys(best).map(function (k) { return best[k]; });
+    // 版本内 min-max 归一(两版任务集不同,不能混着直接归一)
+    ["2.0", "1.1"].forEach(function (ver) {
+      var pool = list.filter(function (m) { return m.version === ver; });
+      if (!pool.length) return;
+      var min = Infinity, max = -Infinity;
+      pool.forEach(function (m) { if (m.score < min) min = m.score; if (m.score > max) max = m.score; });
+      var span = (max - min) || 1;
+      pool.forEach(function (m) { m.norm = Math.round((m.score - min) / span * 1000) / 10; });
+    });
+    return list.sort(function (a, b) { return b.score - a.score; });
+  }
   // FrontierSWE v2(Epoch AI 官方 · 超长周期软件工程):模型级主榜,按 mean@5 降序
   function frontierSWE() {
     var src = window.FRONTIERSWE || { models: [] };
@@ -807,19 +839,18 @@
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, deepswe: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, octathlon: null, hle: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, frontiercode: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, octathlon: null, hle: null };
       return map[c.id];
     }
-    // DeepSWE(合并后每条带 version:v1.1/v1.0,供总览矩阵标注数据版本)
-    // 综合分口径:按合并快照内 min-max 归一到 0-100(norm),与 tbench 等 0-100 基准同量纲,
-    // 不再直接用 Pass@1 原始值(头名约 74,量纲低于 0-100)。矩阵 DeepSWE 列展示仍用 pass1 原始值。
-    var dsAll = deepSwe();
-    var dsMin = Infinity, dsMax = -Infinity;
-    dsAll.forEach(function (m) { if (m.pass1 < dsMin) dsMin = m.pass1; if (m.pass1 > dsMax) dsMax = m.pass1; });
-    var dsSpan = (dsMax - dsMin) || 1;
-    dsAll.forEach(function (m) {
+    // FrontierCode:2.0 主榜优先、1.1 只补 2.0 未收录的模型;norm 为版本内 min-max 0-100,
+    // 与 tbench 等 0-100 基准同量纲(综合分用它);矩阵列展示仍用原始分并挂版本徽标。
+    frontiercodeBoard().forEach(function (m) {
       var e = ensure(m.canon);
-      if (!e.deepswe || m.pass1 > e.deepswe.pass1) e.deepswe = { pass1: m.pass1, ci: m.ci, cost: m.cost, outTok: m.outTok, steps: m.steps, name: m.name, version: m.version, norm: (m.pass1 - dsMin) / dsSpan * 100 };
+      var cur = e.frontiercode;
+      if (!cur || (m.version === "2.0" && cur.version === "1.1") || (m.version === cur.version && m.score > cur.score)) {
+        e.frontiercode = { score: m.score, version: m.version, norm: m.norm, harness: m.harness, effort: m.effort,
+          passRate: m.passRate, costUsd: m.costUsd, name: m.model };
+      }
     });
     // llm2014:全历史保序校正分(难度校正 + 月度保序),不再用单月均值。
     // 只收录有排名的模型(计分项≥3);低样本模型不进综合分与命中数。
@@ -915,7 +946,7 @@
     // BenchCAD/APEX-1/NL2Repo/Code Migration/AA Coding Agent Index)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
-      if (e.deepswe) e.benchCount++;
+      if (e.frontiercode) e.benchCount++;
       if (e.llm) e.benchCount++;
       if (e.webdev) e.benchCount++;
       if (e.agentarena) e.benchCount++;
@@ -929,10 +960,11 @@
     return map;
   }
 
-  // ===== 汇总卡片信息(DeepSWE / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / AI 十项全能 / HLE 共 10 张) =====
+  // ===== 汇总卡片信息(FrontierCode / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / AI 十项全能 / HLE 共 10 张) =====
   function benchSummary() {
-    var ds = window.DEEPSWE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, oct = window.OCTATHLON || {}, hl = window.HLE || {};
-    var dsTop = (ds.models || [])[0] || {};
+    var fc = window.FRONTIERCODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, oct = window.OCTATHLON || {}, hl = window.HLE || {};
+    var fcList = frontiercodeBoard();
+    var fcTop = fcList[0] || { canon: {} };
     var wdTop = wd.models ? webdev()[0] || {} : {};
     var aaTop = arenaAgent()[0] || {};
     var tbTop = tbench()[0] || {};
@@ -951,9 +983,9 @@
     // HLE:无工具闭卷分头名(与总览矩阵 HLE 列同源 data/hle.js)
     var hlTop = hle()[0] || {};
     return [
-      { key: "deepswe", name: "DeepSWE", tag: "长程软件工程任务", url: ds.url, updated: ds.updated,
-        stats: [{ l: "任务", v: ds.stats && ds.stats.tasks }, { l: "模型", v: (ds.models || []).length }],
-        top: dsTop.name + " · " + dsTop.pass1 + "%" },
+      { key: "frontiercode", name: "FrontierCode", tag: "生产级代码质量 · 2.0/1.1", url: fc.boardUrl || fc.officialUrl || fc.url, updated: fc.updated,
+        stats: [{ l: "模型", v: fcList.length }, { l: "版本", v: "2.0/1.1" }],
+        top: (fcTop.canon.id || fcTop.model || "—") + " · " + (fcTop.score != null ? fcTop.score + "% (" + fcTop.version + ")" : "—") },
       { key: "llm2014", name: "llm2014 Agentic", tag: "个人私有题库", url: lm.url, updated: lm.updated || latest,
         stats: [{ l: "月份", v: "06~11" }, { l: "模型", v: lmRanked.length }],
         top: lmTop.model + " · " + (lmTopScore != null ? lmTopScore.toFixed(1) + " 全历史" : "—") },
@@ -1130,7 +1162,7 @@
     programbench: programbench,
     cursorbench: cursorbench,
     cursorbenchConfigs: cursorbenchConfigs,
-    frontiercode: frontiercode,
+    frontiercode: frontiercode, frontiercodeBoard: frontiercodeBoard,
     frontierSWE: frontierSWE,
     automationbench: automationbench,
     modeldial: modeldial,

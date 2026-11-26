@@ -26,7 +26,7 @@
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
   // 10 个计分组的键(与 WEIGHTS 一致;VCB-1-100 已于 2026-11-09 下线,HLE 于 2026-11-15 入组,
   // AI 十项全能于 2026-11-24 入组)
-  var GROUPS = ["deepswe", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hle"];
+  var GROUPS = ["frontiercode", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hle"];
 
   // ===== 「只看第三方」口径 =====
   // 矩阵的「第三方实测」分组 = 第三方独立实测(ModelDial / AI Coding Daily / AI 十项全能)
@@ -51,7 +51,7 @@
   // Terminal-Bench / ModelDial / 亿模亿样 / AI Coding Daily / AI 十项全能 / Agent Arena 计入综合分与命中;
   // NL2Repo 与其余权威基准(仅展示)不参与任何定位
   var BOARD_VALS = {
-    deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
+    frontiercode: function (e) { return e.frontiercode ? e.frontiercode.norm : null; },
     llm:     function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
     webdev:  function (e) { return (e.webdev && e.webdev.score != null) ? e.webdev.score : null; },
     agentarena: function (e) { return (e.agentarena && e.agentarena.score != null) ? e.agentarena.score : null; },
@@ -227,13 +227,14 @@
   function groupPct() { return Math.round(1000 / GROUPS.length) / 10; }
   // 各榜原生分(值越大越好)。综合分不用 data.js 的 norm —— 那是各榜快照内的 min-max 相对位置,
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
-  //   deepswe   Pass@1 %       webdev  Elo 原值      tbench  4.0 等效解决率 %(跨版本按共有模型折算)
+  //   frontiercode 版本内 min-max 0-100(2.0/1.1 任务集不同,先各自归一再定标)  webdev  Elo 原值
+  //   tbench  4.0 等效解决率 %(跨版本按共有模型折算)
   //   modeldial 源站五轴 20/25/35/10/10 综合分    llm  全历史保序校正分    arenaofbias  Elo 原值(每模型最高分档)
   //   aicodingdaily 源站总分(0-70,四轴之和;尺度不变,原生量纲直接进池定标)
   //   octathlon 源站总分(0-100,13 题按 10 类各 10% 加权;尺度不变,原生量纲直接进池定标)
   //   agentarena 净提升 %(相对 Arena 基线,可为负;尺度不变,原生量纲直接进池定标)
   var BOARD_RAW = {
-    deepswe: function (e) { return e.deepswe ? e.deepswe.pass1 : null; },
+    frontiercode: function (e) { return e.frontiercode ? e.frontiercode.norm : null; },
     webdev: function (e) { return e.webdev ? e.webdev.score : null; },
     agentarena: function (e) { return e.agentarena ? e.agentarena.score : null; },
     tbench: function (e) { return e.tbench ? e.tbench.equiv : null; },
@@ -441,7 +442,7 @@
 
   // 雷达:三轴归一化 0-100
   var INDICATORS = [
-    { name: "DeepSWE", max: 100 },
+    { name: "FrontierCode", max: 100 },
     { name: "WebDev", max: 100 },
     { name: "llm2014", max: 100 }
   ];
@@ -452,7 +453,7 @@
       return {
         name: id,
         value: [
-          e.deepswe ? e.deepswe.norm : 0,
+          e.frontiercode ? e.frontiercode.norm : 0,
           (e.webdev && e.webdev.norm != null) ? e.webdev.norm : 0,
           // llm 全历史校正分可超过 100 或为负;雷达轴固定 0-100,显示时截断
           (e.llm && e.llm.norm != null) ? Math.max(0, Math.min(100, e.llm.norm)) : 0
@@ -472,23 +473,23 @@
       var e = map[id] || { id: id };
       return {
         id: id, color: e.color, vendor: e.vendor,
-        deepswe: e.deepswe ? (e.deepswe.pass1 + "% · $" + e.deepswe.cost + " · " + e.deepswe.steps + "步") : "—",
+        frontiercode: e.frontiercode ? (e.frontiercode.score + "% · " + e.frontiercode.version + (e.frontiercode.harness ? " · " + e.frontiercode.harness : "")) : "—",
         webdev: (e.webdev && e.webdev.score != null) ? (e.webdev.score + " Elo · " + e.webdev.votes + " 票") : "—",
         llm: e.llm && e.llm.norm != null ? e.llm.norm.toFixed(2) : "-"
       };
     });
   }
 
-  // 成本对比:DeepSWE 单次任务平均成本(单序列;WebDev 为 Elo 投票榜,无成本口径)
+  // 成本对比:FrontierCode 单次任务平均成本(单序列;WebDev 为 Elo 投票榜,无成本口径)
   function costSeries(ids, llmMonthKey) {
     var map = D.unified(llmMonthKey);
     var cats = [], ds = [];
     ids.forEach(function (id) {
       var e = map[id] || {};
       cats.push(id);
-      ds.push(e.deepswe ? e.deepswe.cost : 0);
+      ds.push(e.frontiercode && e.frontiercode.costUsd != null ? e.frontiercode.costUsd : 0);
     });
-    return { cats: cats, deepswe: ds };
+    return { cats: cats, frontiercode: ds };
   }
 
   // 默认选中:三榜全命中的头部模型(取前 4 个)

@@ -31,7 +31,7 @@
     },
     scoreLabel: "Composite (relative scale, 50 = pool median)",
     bench: {
-      deepswe: "DeepSWE", llm: "llm2014 all-history", webdev: "WebDev Elo",
+      frontiercode: "FrontierCode", llm: "llm2014 all-history", webdev: "WebDev Elo",
       agentarena: "Agent Arena", tbench: "Terminal-Bench", modeldial: "ModelDial",
       arenaofbias: "Arena of Bias Elo", aicodingdaily: "AI Coding Daily",
       octathlon: "AI Decathlon", hle: "HLE"
@@ -73,7 +73,7 @@
     },
     scoreLabel: "综合分(相对分,50 = 全池中位)",
     bench: {
-      deepswe: "DeepSWE", llm: "llm2014 全历史", webdev: "WebDev Elo",
+      frontiercode: "FrontierCode", llm: "llm2014 全历史", webdev: "WebDev Elo",
       agentarena: "Agent Arena", tbench: "Terminal-Bench", modeldial: "ModelDial",
       arenaofbias: "亿模亿样 Elo", aicodingdaily: "AI Coding Daily",
       octathlon: "AI 十项全能", hle: "HLE"
@@ -125,19 +125,19 @@
     }
   };
 
-  // 计分基准与权重(与 app.js BENCH_WEIGHT 一致,十组之和 1.00);缺测显示「—」,不是「—%」
+  // 计分基准与权重(2026-11-26 起十组等权,每组 10%);缺测显示「—」,不是「—%」
   function pc(v) { return v == null || !isFinite(v) ? "—" : Number(v).toFixed(1) + "%"; }
   var BENCH = [
-    { key: "deepswe", weight: "12.9%", fmt: pc },
-    { key: "llm", weight: "9.2%", fmt: function (v) { return n1(v); } },
-    { key: "webdev", weight: "16.6%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
-    { key: "agentarena", weight: "8.3%", fmt: function (v) { return v == null ? "—" : (v > 0 ? "+" : "") + n1(v) + "%"; } },
-    { key: "tbench", weight: "8.3%", fmt: pc },
-    { key: "modeldial", weight: "12.9%", fmt: function (v) { return n1(v); } },
-    { key: "arenaofbias", weight: "9.2%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
-    { key: "aicodingdaily", weight: "7.4%", fmt: function (v) { return v == null ? "—" : n1(v) + "/70"; } },
-    { key: "octathlon", weight: "8%", fmt: function (v) { return v == null ? "—" : n1(v) + "/100"; } },
-    { key: "hle", weight: "7.4%", fmt: pc }
+    { key: "frontiercode", weight: "10%", fmt: pc },
+    { key: "llm", weight: "10%", fmt: function (v) { return n1(v); } },
+    { key: "webdev", weight: "10%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
+    { key: "agentarena", weight: "10%", fmt: function (v) { return v == null ? "—" : (v > 0 ? "+" : "") + n1(v) + "%"; } },
+    { key: "tbench", weight: "10%", fmt: pc },
+    { key: "modeldial", weight: "10%", fmt: function (v) { return n1(v); } },
+    { key: "arenaofbias", weight: "10%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
+    { key: "aicodingdaily", weight: "10%", fmt: function (v) { return v == null ? "—" : n1(v) + "/70"; } },
+    { key: "octathlon", weight: "10%", fmt: function (v) { return v == null ? "—" : n1(v) + "/100"; } },
+    { key: "hle", weight: "10%", fmt: pc }
   ];
 
   function n1(v) { return v == null || !isFinite(v) ? "—" : Number(v).toFixed(1); }
@@ -380,9 +380,9 @@
       ctx.fillText(S.legend, 64, legendY);
       setFont(ctx, 19);
       ctx.fillStyle = T.dim;
-      var line1 = "DeepSWE 12.9% · llm2014 9.2% · WebDev 16.6% · Agent Arena 8.3% · Terminal-Bench 8.3%";
-      var line2 = "ModelDial 12.9% · " + S.bench.arenaofbias.replace(" Elo", "") + " 9.2% · AI Coding Daily 7.4% · " +
-        S.bench.octathlon + " 8% · HLE 7.4%";
+      var line1 = "FrontierCode 10% · llm2014 10% · WebDev 10% · Agent Arena 10% · Terminal-Bench 10%";
+      var line2 = "ModelDial 10% · " + S.bench.arenaofbias.replace(" Elo", "") + " 10% · AI Coding Daily 10% · " +
+        S.bench.octathlon + " 10% · HLE 10%";
       ctx.fillText(line1, 64, legendY + 38);
       ctx.fillText(line2, 64, legendY + 70);
     }
@@ -626,7 +626,7 @@
       return {
         id: r.id, vendor: r.vendor, color: r.color, hits: r.benchCount,
         score: Math.round(window.CMP.composite(r) * 10) / 10,
-        deepswe: r.deepswe ? r.deepswe.pass1 : null,
+        frontiercode: r.frontiercode ? r.frontiercode.score : null,
         tbench: r.tbench ? r.tbench.score : null,
         hle: r.hle ? r.hle.score : null,
         modeldial: r.modeldial ? r.modeldial.score : null,
@@ -638,7 +638,7 @@
         octathlon: r.octathlon ? r.octathlon.score : null
       };
     });
-    var keys = ["DEEPSWE", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH",
+    var keys = ["FRONTIERCODE", "FRONTIERCODE_V11", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH",
       "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE"];
     var snap = null;
     keys.forEach(function (k) {
