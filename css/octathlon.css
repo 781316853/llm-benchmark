@@ -1927,7 +1927,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
 .oct-sources-inner {
   display: flex;
   align-items: stretch;
-  max-width: 1680px;
+  max-width: 1880px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -1936,25 +1936,25 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6px 16px 6px 0;
-  margin-right: 14px;
+  padding: 10px 18px 10px 0;
+  margin-right: 16px;
   border-right: 1px solid var(--oct-rule);
 }
 .oct-sources-label b {
   color: var(--oct-blue-deep);
   font-family: var(--font-display);
   font-stretch: 112%;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .14em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 .oct-sources-label em {
   color: var(--oct-ink-3);
   font-style: normal;
-  font-size: 8.5px;
+  font-size: 9px;
   letter-spacing: .24em;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 .oct-sources-links {
   display: flex;
@@ -1967,16 +1967,18 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
   color: var(--oct-ink-2);
   font-family: var(--font-display);
   font-stretch: 106%;
-  font-size: 11px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.8;
   text-decoration: none;
   white-space: nowrap;
 }
-.oct-sources-links a + a::before {
+/* 分隔符放在每条链接末尾(最后一条不加):折行时不会整条挂到下一行行首 */
+.oct-sources-links a::after {
   content: "/";
-  margin: 0 6px;
+  margin: 0 3px;
   color: var(--oct-rule);
 }
+.oct-sources-links a:last-child::after { content: none; }
 .oct-sources-links a:hover {
   color: var(--oct-blue-deep);
   text-decoration: underline;
@@ -2012,7 +2014,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
   justify-content: center;
   flex: 1 1 auto;
   min-width: 0;
-  padding: 4px 0 5px;
+  padding: 9px 0 10px;
 }
 .oct-sources-links {
   flex-wrap: nowrap;
@@ -2024,10 +2026,9 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
 }
 .oct-sources-links::-webkit-scrollbar { display: none; }
 .oct-sources-links + .oct-sources-links { margin-top: 1px; }
-.oct-sources-links a { font-size: 11px; line-height: 1.6; }
-.oct-sources-links a + a::before { margin: 0 5px; }
+.oct-sources-links a { font-size: 12px; line-height: 1.8; }
 @media (max-width: 900px) {
-  .oct-sources-lists { padding: 3px 0 4px; }
+  .oct-sources-lists { padding: 6px 0 7px; }
 }
 
 /* 内页区块的轻量淡入(不位移，避免影响表头吸顶) */
@@ -2389,9 +2390,8 @@ html[data-theme="dark"] { --bench-octathlon: #9DB4FF; }
 html[lang="en"] .topbar-label em { display: none; }
 
 /* 来源条两行在窄屏也必须各占一行（flex 列内不被压缩） */
-.oct-sources-lists > .oct-sources-links { flex: 0 0 auto; min-height: 18px; }
-.oct-sources-links a { font-size: 11px; }
-.oct-sources-links a + a::before { margin: 0 5px; }
+.oct-sources-lists > .oct-sources-links { flex: 0 0 auto; min-height: 22px; }
+.oct-sources-links a { font-size: 12px; }
 
 /* 大纲分组与日志日期:去掉旧纸本棕底，日期改为轻量文本 */
 .auth-outline-group {
@@ -2507,15 +2507,14 @@ html[data-theme="dark"] body {
 }
 
 /* ===== 数据来源索引条:字号加大的配套(2026-11-26) =====
-   链接 9px → 11px 后,1520px 以内的视口放不下两行(1440 实测第一行溢出 74px)。
-   平板到笔记本区间改为折行显示,不再用横向滚动 + 渐隐遮罩裁掉末尾几个来源;
-   宽屏(≥1521)仍是整齐两行,手机(≤900)保留原有的横向滑动,避免折成十几行撑高首屏。 */
-@media (min-width: 901px) and (max-width: 1520px) {
+   链接 9px → 12px 后,第一行 17 个来源实测 1430px(含分隔符),加上标签与内边距需视口 ≥1568px 才排得下两行。
+   窄于 1619 时允许折行(1440 实测折成两行,条高 86px),不再用横向滚动 + 渐隐遮罩裁掉末尾几个来源;
+   宽屏(≥1620)仍是整齐两行,手机(≤900)保留原有的横向滑动,避免折成十几行撑高首屏。 */
+@media (min-width: 901px) and (max-width: 1619px) {
   .oct-sources-links {
     flex-wrap: wrap;
     overflow-x: visible;
     -webkit-mask-image: none;
     mask-image: none;
   }
-  .oct-sources-links a + a::before { margin: 0 4px; }
 }
