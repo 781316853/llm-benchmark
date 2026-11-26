@@ -1153,6 +1153,20 @@ details[open] > .cl-month-sum::before { content: "▾"; }
   background: rgba(162, 78, 44, .08); border: 1px solid rgba(162, 78, 44, .22);
   border-radius: var(--radius-pill); white-space: nowrap; vertical-align: baseline; }
 .cl-feat-src { font-size: var(--fs-2xs); color: var(--accent); white-space: nowrap; }
+/* 月度汇总里的一层「Agent 分组」:组头(名字 + 精选计数 + 展开全部)在前,条目列表在后。
+   组间只用一条细分隔线,避免和月份卡片的边框叠成双重框。 */
+.cl-agent { padding: 6px 0 2px; border-top: 1px solid var(--border-subtle); }
+.cl-agent:first-child { border-top: 0; padding-top: 10px; }
+.cl-agent-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cl-agent-name { font-family: var(--font-display); font-size: var(--fs-md); font-weight: 700; line-height: 1.4; }
+.cl-agent-count { font-size: var(--fs-2xs); font-weight: 600; color: var(--text-tertiary);
+  font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
+.cl-agent-more { padding: 1px 9px; border: 1px solid var(--border); border-radius: var(--radius-pill);
+  background: transparent; color: var(--text-dim); font-size: var(--fs-2xs); font-weight: 600;
+  cursor: pointer; transition: color var(--dur-fast), border-color var(--dur-fast); }
+.cl-agent-more:hover { color: var(--accent); border-color: var(--accent); }
+.cl-agent-src { margin-left: auto; font-size: var(--fs-2xs); }
+.cl-agent--multi .cl-agent-name { color: var(--accent-2); }
 
 @media (max-width: 760px) {
   .cl-feat { flex-direction: column; align-items: flex-start; gap: 3px; }

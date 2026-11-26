@@ -3541,53 +3541,126 @@
       '</li>';
   }
 
-  // 把月内的 per-tool items 与 multi 合并成一条按日期降序的平铺清单;
-  // 同一天按各工具在数据里的顺序,再按 key 保证稳定。
-  function clMonthItems(m) {
-    var order = {};
-    (m.tools || []).forEach(function (t, i) { order[t.id] = i; });
-    var out = [];
-    (m.tools || []).forEach(function (t) {
-      (t.items || []).forEach(function (it) {
-        out.push({
-          it: it,
-          fallback: t.changelogUrl || "",
-          tags: [{ id: t.id, name: t.name }]
-        });
-      });
-    });
-    (m.multi || []).forEach(function (it) {
-      out.push({
-        it: it,
-        fallback: it.url,
-        tags: (it.sources || []).map(function (s) { return { id: s.id, name: s.name }; })
-      });
-    });
-    out.sort(function (a, b) {
+  // ===== 月度汇总的「精选」口径 =====
+  // 用户口径:每个 Agent 每个月最多 5 条。原先按月把所有新增功能平铺成一条清单
+  // (2026-11 单月 312 条、其中 Claude Code 一家 96 条),读完等于没读。现在改成
+  // 月内按 Agent 分组、每组给精选:
+  //   1) 先按发布日期从新到旧,每个版本只取 1 条 —— 5 条覆盖 5 个版本,
+  //      而不是同一次发版里的 5 行小修小补;
+  //   2) 同一版本内优先「影响面」词(模型 / Agent / MCP / 插件 / 技能 / 终端 / 沙箱 /
+  //      权限 / 审查 / 工作流 / 子智能体 / 语音 / 图像 …),其次正文更长(信息更具体);
+  //   3) 版本不足 5 个时,用同一口径的剩余条目补齐到 5 条。
+  // 精选只改展示:数据文件仍是全量,每组「展开全部」可看原样,左目录的月份计数也不变。
+  var CL_PICK_MAX = 5;
+  var CL_PICK_KEYS = /(model|模型|agent|智能体|subagent|子智能体|mcp|plugin|插件|skill|技能|cli|ide|terminal|终端|sandbox|沙箱|permission|权限|team|团队|协作|enterprise|企业|voice|语音|image|图像|multimodal|多模态|review|审查|workflow|工作流|context|上下文|memory|记忆|browser|浏览器|automation|自动化|plan mode|plan模式|deploy|部署|hook|钩子)/i;
+
+  // 影响面打分:命中关键词算一档,正文更长算细档(同一版本内用来挑"最值得看"的那一条)
+  function clPickScore(it, zh) {
+    var text = D.clFeatText(it, zh || {}) || "";
+    return (CL_PICK_KEYS.test(text) ? 10000 : 0) + Math.min(text.length, 1999);
+  }
+  // 一组条目里挑精选:先一个版本一条(新→旧),不足上限再用次优补齐;不超过上限时原样返回
+  function clPickItems(items, zh) {
+    var list = (items || []).slice();
+    if (list.length <= CL_PICK_MAX) return list;
+    // 稳定排序:日期新→旧,同日保留数据原顺序
+    list = list.map(function (it, i) { return { it: it, i: i }; }).sort(function (a, b) {
       if (a.it.date !== b.it.date) return a.it.date < b.it.date ? 1 : -1;
-      var ai = order[a.tags[0].id], bi = order[b.tags[0].id];
-      ai = ai == null ? 99 : ai;
-      bi = bi == null ? 99 : bi;
-      if (ai !== bi) return ai - bi;
-      return a.it.key < b.it.key ? -1 : (a.it.key > b.it.key ? 1 : 0);
+      return a.i - b.i;
     });
-    return out;
+    // 按版本分组(组的顺序＝首次出现的日期序,即新→旧)
+    var order = [], byVer = {};
+    list.forEach(function (x) {
+      var v = x.it.version || "";
+      if (!byVer[v]) { byVer[v] = []; order.push(v); }
+      byVer[v].push(x);
+    });
+    // 版本内按影响面挑代表项
+    order.forEach(function (v) {
+      byVer[v].sort(function (a, b) {
+        var d = clPickScore(b.it, zh) - clPickScore(a.it, zh);
+        return d || a.i - b.i;
+      });
+    });
+    var picked = order.map(function (v) { return byVer[v][0].it; });
+    if (picked.length >= CL_PICK_MAX) return picked.slice(0, CL_PICK_MAX);
+    // 版本数不足 5 个:同口径补齐
+    var rest = [];
+    order.forEach(function (v) {
+      rest = rest.concat(byVer[v].slice(1).map(function (x) { return x.it; }));
+    });
+    rest.sort(function (a, b) {
+      var d = clPickScore(b, zh) - clPickScore(a, zh);
+      if (d) return d;
+      return a.date < b.date ? 1 : (a.date > b.date ? -1 : 0);
+    });
+    return picked.concat(rest.slice(0, CL_PICK_MAX - picked.length));
   }
 
-  // 一个月:月头统计 + 全部 Agent 的新增功能平铺列表(每条描述后带 Agent 标签)
+  // 一组精选条目(纯列表;工具分组与跨工具合并共用)
+  function clFeatListHtml(items, fallbackUrl, tags) {
+    return '<ul class="cl-feat-list cl-feat-list--flat">' + (items || []).map(function (it) {
+      return clFeatHtml(it, fallbackUrl, tags);
+    }).join("") + "</ul>";
+  }
+
+  // 月内单个 Agent 分组:标题 + 「精选 5 / 共 96 条」+ 展开全部
+  function clAgentHtml(m, t, zh) {
+    var all = t.items || [];
+    if (!all.length) return "";
+    var picked = clPickItems(all, zh);
+    var more = all.length > picked.length;
+    return '<div class="cl-agent" data-cl-month="' + esc(m.month) + '" data-cl-tool="' + esc(t.id) + '">' +
+      '<div class="cl-agent-head">' +
+        '<span class="cl-agent-name">' + esc(t.name) + '</span>' +
+        '<span class="cl-agent-count">' + (more
+          ? "精选 " + picked.length + " / 共 " + all.length + " 条"
+          : all.length + " 条") + '</span>' +
+        (more
+          ? '<button type="button" class="cl-agent-more" data-cl-agent-more="' + esc(m.month) + "|" + esc(t.id) +
+            '" aria-expanded="false">展开全部</button>'
+          : "") +
+        (t.changelogUrl
+          ? '<a class="cl-src cl-agent-src" href="' + esc(t.changelogUrl) + '" target="_blank" rel="noopener">源站 ↗</a>'
+          : "") +
+      '</div>' +
+      clFeatListHtml(picked, t.changelogUrl) +
+      '</div>';
+  }
+
+  // 一个月:月头统计 + 按 Agent 分组的精选列表(每组 ≤5 条)+ 同月跨工具合并条目
   function clMonthHtml(m, open) {
+    var zh = (clMonthlyData && clMonthlyData.zh) || {};
+    var total = 0, shown = 0, groups = [];
+    (m.tools || []).forEach(function (t) {
+      var n = (t.items || []).length;
+      if (!n) return;
+      total += n;
+      shown += clPickItems(t.items, zh).length;
+      groups.push(clAgentHtml(m, t, zh));
+    });
+    var multiHtml = "";
+    if (m.multi && m.multi.length) {
+      total += m.multi.length;
+      shown += m.multi.length;
+      // 跨工具合并条目:描述后带上各自工具标签(这条是多家同月发布同一功能)
+      multiHtml = '<div class="cl-agent cl-agent--multi">' +
+        '<div class="cl-agent-head">' +
+          '<span class="cl-agent-name">同月跨工具合并</span>' +
+          '<span class="cl-agent-count">' + m.multi.length + ' 条</span>' +
+        '</div><ul class="cl-feat-list cl-feat-list--flat">' +
+        m.multi.map(function (it) {
+          return clFeatHtml(it, it.url, (it.sources || []).map(function (s) { return { id: s.id, name: s.name }; }));
+        }).join("") + "</ul></div>";
+    }
     var head = '<summary class="cl-month-sum">' +
       '<span class="cl-month-name">' + esc(m.label) + '</span>' +
-      '<span class="cl-month-count">' + m.count + ' 项</span>' +
-      '<span class="cl-month-meta">' + m.toolCount + ' 个工具' +
+      '<span class="cl-month-count">精选 ' + shown + ' / 共 ' + total + ' 项</span>' +
+      '<span class="cl-month-meta">' + m.toolCount + ' 个工具 · 每个 Agent 最多 ' + CL_PICK_MAX + ' 条' +
         (m.multi && m.multi.length ? ' · 同月合并 ' + m.multi.length + ' 条' : "") +
       '</span></summary>';
-    var list = clMonthItems(m).map(function (x) {
-      return clFeatHtml(x.it, x.fallback, x.tags);
-    }).join("");
     return '<details class="cl-month" id="cl-month-' + esc(m.month) + '"' + (open ? " open" : "") + '>' +
-      head + '<div class="cl-month-body"><ul class="cl-feat-list cl-feat-list--flat">' +
-      list + "</ul></div></details>";
+      head + '<div class="cl-month-body">' + groups.join("") + multiHtml + "</div></details>";
   }
 
   // 按月汇总视图:数据脚本独立懒加载,失败可原地重试
@@ -3623,7 +3696,9 @@
     clMonthlyData = data;
     var st = data.stats || {};
     if (descEl) {
-      descEl.innerHTML = "把各工具的新增功能按首次出现月份归组;修复 / 优化 / 文档类更新不计。" +
+      descEl.innerHTML = "把各工具的新增功能按首次出现月份归组,月内按 Agent 分组、每组最多 " + CL_PICK_MAX +
+        " 条精选(按版本覆盖选,同版本取影响面最大的一条;点「展开全部」可看该 Agent 当月全部条目)。" +
+        "修复 / 优化 / 文档类更新不计。" +
         "<br>更新于 " + esc(data.updated || "") +
         (data.refreshedAt ? " · 本站生成 " + esc(data.refreshedAt) + "(北京时间)" : "") +
         " · " + esc(String(st.months || data.months.length)) + " 个月 · " +
@@ -3632,7 +3707,8 @@
     }
     var hint = document.getElementById("clHint");
     if (hint) {
-      hint.textContent = "按月归档 · 同月跨工具同一功能已合并 · 每条附源站链接" +
+      hint.textContent = "按月归档 · 点组头「展开全部」看该 Agent 当月全部条目 · " +
+        "同月跨工具同一功能已合并 · 每条附源站链接" +
         (st.needsZh && st.untranslated ? " · 尚有 " + st.untranslated + " 条未译(标「原文」)" : "");
     }
     var cnt = document.getElementById("clOutlineCount");
@@ -3650,6 +3726,28 @@
     wrap.innerHTML = data.months.length
       ? data.months.map(function (m, i) { return clMonthHtml(m, i === 0); }).join("")
       : '<div class="cl-empty-page">暂无新增功能条目。</div>';
+  }
+
+  // 月度汇总:展开某 Agent 当月的全部条目(再点一次收回精选)。数据已在内存里,不重新下载。
+  function clFindTool(month, id) {
+    var d = D.changelogMonthly();
+    var m = d && (d.months || []).filter(function (x) { return x.month === month; })[0];
+    var t = m && (m.tools || []).filter(function (x) { return x.id === id; })[0];
+    return t || null;
+  }
+  function clToggleAgent(group, btn) {
+    var t = clFindTool(group.getAttribute("data-cl-month"), group.getAttribute("data-cl-tool"));
+    var listEl = group.querySelector(".cl-feat-list");
+    if (!t || !listEl) return;
+    var expanded = group.getAttribute("data-expanded") === "1";
+    var zh = (clMonthlyData && clMonthlyData.zh) || {};
+    var items = expanded ? clPickItems(t.items, zh) : (t.items || []).slice();
+    listEl.innerHTML = items.map(function (it) {
+      return clFeatHtml(it, t.changelogUrl, null);
+    }).join("");
+    group.setAttribute("data-expanded", expanded ? "0" : "1");
+    btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+    btn.textContent = expanded ? "展开全部" : "收起,只看精选";
   }
 
   // ===== 滚动与排序的轻微反馈(克制动效) =====
@@ -4270,6 +4368,12 @@
         clMonthlyRetryStamp = "&retry=" + Date.now();
         clMonthlyState = "idle";
         renderChangelog();
+        return;
+      }
+      var moreBtn = e.target.closest ? e.target.closest("[data-cl-agent-more]") : null;
+      if (moreBtn) {
+        var grp = moreBtn.closest ? moreBtn.closest(".cl-agent") : null;
+        if (grp) clToggleAgent(grp, moreBtn);
         return;
       }
       var b = e.target.closest ? e.target.closest("[data-cl-fold]") : null;
