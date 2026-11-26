@@ -69,6 +69,8 @@
       "Composite $1 (board-relative: 50 = median of the pool, 15 points = 1 robust SD within the board; not comparable across days)"],
     ["^综合排名前 20 中性价比指数最高:综合分 ([\\d.]+) ÷ ¥([\\d.]+)/M = ([\\d.]+)$",
       "Best value in the top 20: composite $1 ÷ ¥$2/M = $3"],
+    ["^源站快照止于 (\\d{4}-\\d{2}-\\d{2})，该模型尚未上榜$",
+      "Source snapshot ends $1; this model is not listed yet"],
 
     // ===== 总览:矩阵行数提示(app.js 拼装,数字随筛选变化) =====
     ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 3 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE 计入综合分与命中数;其余权威基准仅参考。$",

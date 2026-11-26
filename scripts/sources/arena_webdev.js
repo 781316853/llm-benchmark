@@ -50,6 +50,29 @@ function mergeAnnounced(models) {
   return models;
 }
 
+// 源站数据日期:优先 JSON-LD 的 temporalCoverage,其次 dateModified(格式 YYYY-MM-DD)。
+// 为什么不用抓取日:镜像经常连续多日不更新(如 2026-11-14 的快照一直挂到 11-26),
+// 抓取日只能说明"哪天来抓的",拿它当 updated 会让页面把陈旧数据标成当天更新。
+function parseSourceDate(html) {
+  const blocks = String(html || "").match(/<script[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi) || [];
+  const DAY = /^\d{4}-\d{2}-\d{2}$/;
+  let fallback = null;
+  for (let i = 0; i < blocks.length; i++) {
+    const body = blocks[i].replace(/^[\s\S]*?>/, "").replace(/<\/script>\s*$/i, "");
+    let data = null;
+    try { data = JSON.parse(body); } catch (e) { continue; }
+    const list = Array.isArray(data) ? data : [data];
+    for (let j = 0; j < list.length; j++) {
+      const d = list[j] || {};
+      const tc = typeof d.temporalCoverage === "string" ? d.temporalCoverage.trim() : "";
+      if (DAY.test(tc)) return tc;
+      const dm = typeof d.dateModified === "string" ? d.dateModified.trim() : "";
+      if (DAY.test(dm) && !fallback) fallback = dm;
+    }
+  }
+  return fallback;
+}
+
 // 从镜像页 HTML 解析模型行数组
 // 每行:{name, org, score(整数 Elo), ci(±), votes(去掉 K 后缀的近似整数)}
 function parseArenaWebdev(html) {
@@ -106,6 +129,9 @@ class ArenaWebdevSource extends BaseSource {
     }
   }
   parse(html) {
+    // 先记源站数据日期(写文件时作 updated),再解析榜单行
+    this.dataDate = parseSourceDate(html);
+    if (!this.dataDate) console.log("  [arena_webdev] 镜像未声明 temporalCoverage/dateModified,updated 退回抓取日");
     return parseArenaWebdev(html);
   }
   toStandard(models) {
@@ -119,10 +145,15 @@ class ArenaWebdevSource extends BaseSource {
     });
   }
   writeContent(models) {
+    // updated 取源站数据日期(镜像 JSON-LD temporalCoverage);镜像没声明时才退回抓取日,
+    // 并在注释里说明,避免把"抓取日"当成"榜单数据日"。
+    const dataDate = this.dataDate || CONFIG.TODAY;
+    const dateNote = this.dataDate ? "镜像快照数据日期 " + dataDate : "镜像未声明数据日期,updated 取抓取日 " + dataDate;
     return writers.windowVarTemplate("ARENA_WEBDEV",
       "// 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)\n" +
       "// 官方:https://arena.ai/leaderboard/code(有 Cloudflare 防护);主抓源为每日快照官方数据的权威镜像:\n" +
-      "//     " + this.cfg.url + " (更新于 " + CONFIG.TODAY + ")\n" +
+      "//     " + this.cfg.url + " (" + dateNote + ")\n" +
+      "// 说明:updated 是镜像页 JSON-LD 的 temporalCoverage(榜单数据日期),不是抓取日 —— 镜像可能连续多日不更新。\n" +
       "// 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分\n" +
       "//     (总榜 #12、开源第一;上一版 20260910 为镜像现有的 deepseek-v4.1-flash 1618)。镜像收录后自动去重。\n" +
       "// 字段说明:name=模型原始名;org=厂商;score=Elo 得分;ci=±95% 置信区间;votes=投票数(近似)\n" +
@@ -131,7 +162,7 @@ class ArenaWebdevSource extends BaseSource {
         source: "Code Arena WebDev (LMArena)",
         officialUrl: this.officialUrl,
         url: this.cfg.url,
-        updated: CONFIG.TODAY,
+        updated: dataDate,
         version: "overall",
         metric: "Elo score",
         desc: "LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。",

@@ -750,6 +750,10 @@
         scoreSpan("arenaofbias", m.score, "arenaofbias", String(m.score), meta.join(" · "), null, r.id) +
         (typeof m.interval === "number" ? '<span class="cell-cost">±' + m.interval + '</span>' : "");
     };
+    // WebDev 空单元格提示:带上源站数据日期(口径见 scripts/sources/arena_webdev.js 的 temporalCoverage),
+    // 区分「源站快照还没收录这个型号」与「页面没抓到数据」—— 前者是事实,后者是故障。
+    var wdSnapshot = (window.ARENA_WEBDEV && window.ARENA_WEBDEV.updated) || "";
+    var wdMissTitle = wdSnapshot ? "源站快照止于 " + wdSnapshot + "，该模型尚未上榜" : "";
     var html = rows.map(function (r) {
       // 参考行:命中 2-3 个基准组,按各榜成绩与排名模型比对插入展示但不计排名、不计算综合分
       var inserted = r.benchCount >= 2 && r.benchCount <= 3;
@@ -925,8 +929,11 @@
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
         // 后续 llm2014/亿模亿样 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
-        // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰
-        '<td class="num">' + (wd != null ? wdRank + scoreSpan("webdev", wd, "webdev", String(wd), "", null, r.id) + wdCi : "—") + '</td>' +
+        // WebDev 仅给 Elo 原值上色,其后的 ±ci 属元数据,保持灰;
+        // 空缺时给「源站快照止于 X,该模型尚未上榜」的悬浮,说明是源站没收录而不是页面漏抓
+        '<td class="num">' + (wd != null
+          ? wdRank + scoreSpan("webdev", wd, "webdev", String(wd), "", null, r.id) + wdCi
+          : (wdMissTitle ? '<span title="' + esc(wdMissTitle) + '">—</span>' : "—")) + '</td>' +
         // Agent Arena 列:净提升带符号上该榜数据色,后随 ±95% 半宽(灰字)
         '<td class="num">' + aaHtml + '</td>' +
         '<td class="num">' + (lm === "-" ? lm : rankBadge(r.llm.rank, "llm2014", RANK_TOTAL.llm) + scoreSpan("llm", r.llm.norm, "llm", lm, "", null, r.id)) + '</td>' +
@@ -3849,7 +3856,7 @@
     deepswe: { src: "data/deepswe.js?v=20261116b", global: "DEEPSWE" },
     deepswe_v10: { src: "data/deepswe_v10.js?v=20260824a", global: "DEEPSWE_V10" },
     llm2014: { src: "data/llm2014.js?v=20260824a", global: "LLM2014" },
-    arena_webdev: { src: "data/arena_webdev.js?v=20261116b", global: "ARENA_WEBDEV" },
+    arena_webdev: { src: "data/arena_webdev.js?v=20261126a", global: "ARENA_WEBDEV" },
     arena_agent: { src: "data/arena_agent.js?v=20261117b", global: "ARENA_AGENT" },
     arenaofbias: { src: "data/arenaofbias.js?v=20261116a", global: "ARENAOFBIAS" },
     tbench: { src: "data/tbench.js?v=20261117b", global: "TBENCH" },
