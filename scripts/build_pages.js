@@ -162,7 +162,7 @@ const DATA_VER = {
   frontiercode: "20261120a", frontiercodeV11: "20261120a",
   llm2014: "20260824a", arena_webdev: "20261126b", arena_agent: "20261117b",
   arenaofbias: "20261116a", tbench: "20261117b", tbench_v3: "20260912b",
-  tbench_v2: "20261117a", hle: "20261117a", modeldial: "20261116a",
+  tbench_v2: "20261117a", hle_diamond: "20261126a", gpqa_diamond: "20261126a", modeldial: "20261116a", modeldial_subs: "20261116c",
   releases: "20261119b", aicodingdaily: "20261110b", octathlon: "20261124a",
   seen: "20261116b", news: "20260921a"
 };
@@ -170,7 +170,7 @@ const DATA_VER = {
 // 其它子页只要自己那一张表 + 新上榜标记所需的 seen。authority/plans/changelog 各自另有按需加载。
 const PAGE_EAGER = {
   overview: ["frontiercode", "frontiercodeV11", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
-    "tbench_v3", "tbench_v2", "hle", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
+    "tbench_v3", "tbench_v2", "hle_diamond", "gpqa_diamond", "modeldial", "modeldial_subs", "releases", "aicodingdaily", "octathlon", "seen", "news"],
   llm2014: ["llm2014", "seen"],
   modeldial: ["modeldial", "seen"],
   arenaofbias: ["arenaofbias", "seen"],
@@ -179,7 +179,7 @@ const PAGE_EAGER = {
   // 权威基准页还要渲染已计入综合分的榜单(DeepSWE/Terminal-Bench 三版/HLE/ModelDial 等),
   // 清单必须与 js/app.js 的 PAGE_EAGER.authority 一致,否则该页表格会整片空白。
   authority: ["deepswe", "deepswe_v10", "llm2014", "arena_webdev", "arena_agent", "arenaofbias",
-    "tbench", "tbench_v3", "tbench_v2", "hle", "modeldial", "releases", "aicodingdaily",
+    "tbench", "tbench_v3", "tbench_v2", "hle_diamond", "gpqa_diamond", "modeldial", "releases", "aicodingdaily",
     "octathlon", "seen", "pricing"],
   plans: [],
   changelog: []
@@ -188,7 +188,7 @@ function eagerTags(pageId) {
   const keys = PAGE_EAGER[pageId] || [];
   if (!keys.length) return "  <!-- 本页首屏不需要榜单数据(authority/plans/changelog 走各自的按需加载) -->";
   // 键名与文件名不一致的源(DATA_SRC 的 key 是驼峰,文件名是下划线)
-  const FILE_NAME = { frontiercodeV11: "frontiercode_v11" };
+  const FILE_NAME = { frontiercodeV11: "frontiercode_v11", modeldial_subs: "modeldial-subs" };
   return keys.map(function (k) {
     return '  <script defer src="data/' + (FILE_NAME[k] || k) + '.js?v=' + DATA_VER[k] + '"></script>';
   }).join("\n");

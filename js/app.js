@@ -315,14 +315,14 @@
       tip: "性价比指数 = 综合分 ÷ 每百万 token 成本(¥/M)。成本双口径取低者:① API 按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算(codingplan.fyi 为主、models.dev 补缺,美元按 6.8 折人民币);② 订阅摊销 = 套餐月费 ÷ 月可用额度(ModelDial 订阅页实测/估算,月额度按 95% 缓存档,取该模型最便宜的套餐)。仅命中≥4榜的排名模型计算,悬浮可见两口径明细",
       val: valueIndexOf },
     { key: "frontiercode", label: "FrontierCode (2.0/1.1)", type: "num", bench: true, grp: "榜单基准", tone: "frontiercode",
-      tip: "FrontierCode(Cognition 生产级代码质量榜):真实仓库任务端到端交付并通过隐藏测试的比例;2.0 主榜优先,未收录的模型回退 1.1(两版任务集不同、分数不可直接比较,故综合分按版本内归一定标);计入综合分(十组等权)与命中数",
+      tip: "FrontierCode(Cognition 生产级代码质量榜):真实仓库任务端到端交付并通过隐藏测试的比例;2.0 主榜优先,未收录的模型回退 1.1(两版任务集不同、分数不可直接比较,故综合分按版本内归一定标);计入综合分(十一组等权)与命中数",
       val: function (r) { return r.frontiercode ? r.frontiercode.score : null; } },
     // Terminal-Bench 多版本(4.0/3.0/2.1)单值列:得分%,版本内取最高、跨版本取优先级最高版本(4.0>3.0>2.1);计入综合分与命中数;完整条目见「权威基准测试」页
     { key: "tbench", label: "Terminal-Bench (解决率)", type: "num", bench: true, grp: "榜单基准", tone: "tbench",
       val: function (r) { return r.tbench ? r.tbench.score : null; } },
     // NL2Repo-Bench 自 2026-09-19 起移出总览矩阵(不再计入综合分与命中数),改由
     // 「权威基准测试」页仅展示;数据仍加载(data/nl2repo.js)供该页使用。
-    // HLE:权威知识基准,归入「榜单基准」组;2026-11-15 起计入综合分(2026-11-26 起十组等权 10%)与命中数,
+    // HLE:权威知识基准,归入「榜单基准」组;2026-11-15 起计入综合分(2026-11-26 起十一组等权 10%)与命中数,
     // 分数统一为无工具(闭卷)口径;完整榜单见「权威基准测试」页
     // HLE-Diamond:2026-11-26 起接替原 HLE 的位置,归入「榜单基准」组并计入综合分与命中数。
     // 题集为 1000 题子集(无工具 high reasoning),与原 2500 题全量 HLE 分数不可直接比较。
@@ -337,29 +337,29 @@
     // (0-100,后端 20%/前端 25%/知识 35%/审美 10%/可维护 10% 加权);计入综合分与命中数;
     // 格内为综合分,口径与分项/耗时/费用放 th 悬浮提示;完整榜见「ModelDial」页
     { key: "modeldial", label: "ModelDial (综合分)", type: "num", bench: true, grp: "第三方实测", tone: "modeldial",
-      tip: "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(十组等权,权重 " + W_TXT + ")与命中数",
+      tip: "ModelDial 雷达五轴综合分(0-100):第三方独立实测,后端与测试 20% + 前端与交互 25% + 知识与推理 35% + 视觉审美 10% + 可维护性 10% 加权;同一模型按推理强度分档多次测试后取最高分配置入榜;外部产品条目带「外部」标记(源站标为非 API 排名);计入综合分(十一组等权,权重 " + W_TXT + ")与命中数",
       val: function (r) { return r.modeldial ? r.modeldial.score : null; } },
     // Code Arena · WebDev 单值列(Elo 原值):归入「第三方实测」组(社区盲测竞技场);排序时仅显示有值的模型
     { key: "webdev", label: "WebDev (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "webdev",
       val: function (r) { return (r.webdev && r.webdev.score != null) ? r.webdev.score : null; } },
     // Agent Arena:真实智能体会话的净提升 %(可为负;同一模型按推理强度取最高分档);计入综合分(2026-11-26 起等权)与命中数
     { key: "agentarena", label: "Agent Arena (净提升)", type: "num", bench: true, grp: "第三方实测", tone: "agentarena",
-      tip: "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(十组等权,权重 " + W_TXT + ")与命中数",
+      tip: "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(十一组等权,权重 " + W_TXT + ")与命中数",
       val: function (r) { return (r.agentarena && r.agentarena.score != null) ? r.agentarena.score : null; } },
     { key: "llm",     label: "llm2014 (全历史/100)", type: "num", bench: true, grp: "第三方实测", tone: "llm",
-      tip: "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(十组等权,权重 " + W_TXT + ")与命中数",
+      tip: "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(十一组等权,权重 " + W_TXT + ")与命中数",
       val: function (r) { return (r.llm && r.llm.norm != null) ? r.llm.norm : null; } },
     // 亿模亿样:前端作品社区盲评 Elo 原值(每模型取最高分档);计入综合分与命中数
     { key: "arenaofbias", label: "亿模亿样 (Elo)", type: "num", bench: true, grp: "第三方实测", tone: "arenaofbias",
-      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(十组等权,权重 " + W_TXT + ")与命中数",
+      tip: "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(十一组等权,权重 " + W_TXT + ")与命中数",
       val: function (r) { return (r.arenaofbias && r.arenaofbias.score != null) ? r.arenaofbias.score : null; } },
     // AI Coding Daily:独立第三方实测编码榜总分(0-70,四轴之和;每模型取最高分 config);计入综合分与命中数
     { key: "aicodingdaily", label: "AI Coding Daily (总分/70)", type: "num", bench: true, grp: "第三方实测", tone: "aicodingdaily",
-      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(十组等权,权重 " + W_TXT + ")与命中数,完整榜单见「AI Coding Daily」页",
+      tip: "AI Coding Daily 总分(0-70):独立第三方(aicodingdaily.com)实测,每模型 7 个真实项目 / 27 个 prompt,总分 = Laravel 20 + React-TS 20 + Bug Finding 10 + Edge-case 20;同一模型按推理档位与 harness 多次实测后取最高分配置入榜。注:各模型跑在各自 agent harness(Codex CLI / Claude Code / OpenCode 等)上,分数混杂模型与脚手架质量;计入综合分(十一组等权,权重 " + W_TXT + ")与命中数,完整榜单见「AI Coding Daily」页",
       val: function (r) { return (r.aicodingdaily && r.aicodingdaily.score != null) ? r.aicodingdaily.score : null; } },
     // AI 十项全能:独立第三方限时 Agent 实测(13 题 / 10 类,总分 0-100);每模型连同自身 harness 一起测
     { key: "octathlon", label: "AI 十项全能 (总分/100)", type: "num", bench: true, grp: "第三方实测", tone: "octathlon",
-      tip: "AI 十项全能·定时挑战赛总分(0-100):独立第三方(octathlon.wendystars.com)实测,13 道题 / 10 个类别,单题限时 60–100 分钟、无人答疑、到时中止;总分 = 10 类各 10% 加权,类内各题平分。7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。注:模型连同它自己的 agent harness(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等)一起测,分数混杂模型与脚手架质量;计入综合分(十组等权,权重 " + W_TXT + ")与命中数,完整榜单见「AI 十项全能」页",
+      tip: "AI 十项全能·定时挑战赛总分(0-100):独立第三方(octathlon.wendystars.com)实测,13 道题 / 10 个类别,单题限时 60–100 分钟、无人答疑、到时中止;总分 = 10 类各 10% 加权,类内各题平分。7 道标准评判题由程序校验,6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均。注:模型连同它自己的 agent harness(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等)一起测,分数混杂模型与脚手架质量;计入综合分(十一组等权,权重 " + W_TXT + ")与命中数,完整榜单见「AI 十项全能」页",
       val: function (r) { return (r.octathlon && r.octathlon.score != null) ? r.octathlon.score : null; } },
     { key: "hits",    label: "命中", type: "num", bench: false, val: function (r) { return hitOf(r); } }
   ];
@@ -1020,8 +1020,8 @@
     // 默认综合排序(sortKey=null)时,综合分列视为激活(降序),让默认排序依据可见
     // GROUP_TITLES 的键即 MATRIX_COLS 的 grp 值(grp 直接用作分组表头显示名)
     var GROUP_TITLES = {
-      "榜单基准": "榜单基准:基准官方实测榜(FrontierCode / Terminal-Bench 4.0/3.0/2.1 / HLE)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标,再与其他计分组等权平均(2026-11-26 起:在场 N 组各 1/N,十组时每组 10%),按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
-      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70;AI 十项全能,13 题 10 类限时 Agent 实测、总分 0-100,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev / Agent Arena 净提升 / 亿模亿样)与站主实测口径(llm2014 私有题库全历史保序校正);七组同纲计入综合分与命中数;2026-11-26 起所有计分组等权(在场 N 组各 1/N,十组时每组 10%),不再按分组压低或抬权;综合分为各榜榜内相对分的等权平均,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
+      "榜单基准": "榜单基准:基准官方实测榜(FrontierCode / Terminal-Bench 4.0/3.0/2.1 / HLE-Diamond / GPQA Diamond)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标,再与其他计分组等权平均(2026-11-26 起:在场 N 组各 1/N,十一组时每组 9.1%),按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)",
+      "第三方实测": "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70;AI 十项全能,13 题 10 类限时 Agent 实测、总分 0-100,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev / Agent Arena 净提升 / 亿模亿样)与站主实测口径(llm2014 私有题库全历史保序校正);七组同纲计入综合分与命中数;2026-11-26 起所有计分组等权(在场 N 组各 1/N,十一组时每组 9.1%),不再按分组压低或抬权;综合分为各榜榜内相对分的等权平均,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数"
     };
     function thAttr(c, extra) {
       var isDefaultComposite = state.sortKey === null && c.key === "composite";
@@ -1390,7 +1390,7 @@
       { k: "任务难度", v: "等级分口径,越高越容易:" + diffLine },
       { k: "样本与限制", v: [
         "不同月份任务集不同,单元格右上角数字为该成绩的来源月份(如 09 = 2026-09)",
-        "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(十组等权,权重 " + W_TXT + ")"
+        "结果是对跨月能力的估算,不是源站官方分;已计入总览综合分(十一组等权,权重 " + W_TXT + ")"
       ] }
     ];
     var noteHtml = noteParts.map(noteLineHtml).join("");
@@ -1490,7 +1490,7 @@
         '%(五分项均 0-100);同一模型按推理强度分档多次测试,主榜取该模型最高分配置(与源站主榜一致)。外部产品条目保留在主榜,带「外部」标记。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>' + esc(src.costBasisNote || "") +
         '本页各模型之间口径一致、可直接横向比较。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,十组等权 ' + W_TXT + '),该席位来自同期移出计分组的 NL2Repo-Bench;2026-11-26 起取消分组差异化权重,本榜与其余九组同权;命中数分母为 10(十项基准)。上表为模型级 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(计分组之一,十一组等权 ' + W_TXT + '),该席位来自同期移出计分组的 NL2Repo-Bench;2026-11-26 起取消分组差异化权重,本榜与其余十组同权;命中数分母为 11(十一项基准)。上表为模型级 ' +
         ms.length + ' 条(含外部产品 ' + ms.filter(function (m) { return m.external; }).length + ' 条),下方为全部 config 明细 ' + cfgs.length + ' 条(不含 Bot)。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -1553,7 +1553,7 @@
         '「档位」= 该模型在源站的配置(推理强度)条数;「暂定」表示源站标注有效比较不足 30 次。</div>' +
       '<div class="note-line"><b>入榜口径</b>同一模型按推理强度分档多次测试,主榜取<b>最高分那一档</b>(与源站主榜一致);' +
         '源站「非官方」条目(社区自跑的量化/改版权重与第三方 harness)已剔除。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」组,十组等权 ' + W_TXT + ')与命中数,计分组共 ' + CMP.GROUPS.length + ' 组;' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」组,十一组等权 ' + W_TXT + ')与命中数,计分组共 ' + CMP.GROUPS.length + ' 组;' +
         '本页展示 ' + ms.length + ' 个模型' +
         (st.votes != null ? '、源站快照 ' + esc(st.votes) + ' 次有效比较' : '') +
         (st.tasks != null ? ' / ' + esc(st.tasks) + ' 道题' : '') + '。</div>' +
@@ -1648,7 +1648,7 @@
         '主办方为独立第三方(非被评厂商),故计入综合分;2026-11-26 起各计分组等权,不再按分组压低权重。</div>' +
       '<div class="note-line"><b>成本/耗时口径</b>均为<b>每 prompt</b> 平均值(非每模型总测试成本);源站对 ' +
         ms.filter(function (m) { return m.costUsd == null; }).length + ' 个模型未给成本(显示「—」),这些条目不进散点图。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,十组等权 ' + W_TXT + ')与命中数(分母 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,十一组等权 ' + W_TXT + ')与命中数(分母 ' +
         CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,下方为全部实测配置明细 ' + cfgs.length + ' 条。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.url || "") + '" target="_blank" rel="noopener">' + esc(src.url || "") + ' ↗</a>' +
@@ -1808,7 +1808,7 @@
         (cs.usdCny ? '汇率 1 美元 = ' + esc(cs.usdCny) + ' 元' : "") +
         (cs.fetched ? ',额度数据 ' + esc(cs.fetched) : "") +
         (cs.name ? ';额度来源 <a href="' + esc(cs.url || "") + '" target="_blank" rel="noopener">' + esc(cs.name) + ' ↗</a>' : "") + '。</div>' +
-      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,十组等权 ' + W_TXT + ')与命中数(分母 ' +
+      '<div class="note-line"><b>说明</b>已计入总览综合分(「第三方实测」计分组之一,十一组等权 ' + W_TXT + ')与命中数(分母 ' +
         CMP.GROUPS.length + ');上表为模型级 ' + ms.length + ' 条,按站内 canonical 名归并展示。</div>' +
       '<div class="note-line"><b>来源</b>' +
         '<a href="' + esc(src.boardUrl || "") + '" target="_blank" rel="noopener">排行总榜 ↗</a>' +
@@ -2129,7 +2129,7 @@
   function tbNoteHtml(meta) {
     var s = D.src[meta.srcKey] || {};
     return '来源:' + esc(tbVerUrl(meta)) + ' · 更新 ' + esc(s.updated || "") + ' · ' + meta.tasks +
-      ',得分越高越好。三版合并为一个基准组计入总览综合分(「榜单基准」组,十组等权 ' + W_TXT + ')与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
+      ',得分越高越好。三版合并为一个基准组计入总览综合分(「榜单基准」组,十一组等权 ' + W_TXT + ')与命中数,优先以最高版本为代表(4.0>3.0>2.1);' +
       '其中 2.1 为厂商发布/归一化自报分口径,与 4.0/3.0 的官方 agent×model 解决率不同。';
   }
   // 柱状图条目标签:2.1 为模型级数据无 agent 字段,以「—」占位
@@ -2363,7 +2363,7 @@
       (v10At ? ' · v1.0 历史快照(' + esc(v10At) + ')' : '') +
       ' · 共 ' + dsMs.length + ' 个模型(v1.1: ' + dsvc.v11 + ' / v1.0 独有: ' + dsvc.v10 + ')' +
       (ds.stats ? ' · v1.1 ' + ds.stats.tasks + ' 任务 / ' + ds.stats.repos + ' 仓库' : "") + '。' + esc(ds.channelPolicy || "") +
-      '。本榜属「榜单基准」组,计入总览综合分(十组等权 ' + W_TXT + ')与命中数。');
+      '。本榜属「榜单基准」组,计入总览综合分(十一组等权 ' + W_TXT + ')与命中数。');
     // 1) Terminal-Bench 多版本(4.0/3.0/2.1):合并为单一章节,章节内切换版本查看(默认 4.0 主榜);
     //    多版本仍合并为一个基准组计入总览,优先以最高版本为代表
     html += authSectionHtml("Terminal-Bench", "终端命令行任务 · 计入总览 · 版本切换", tbVerUrl(tbMeta(authTbVer)),
@@ -2710,7 +2710,7 @@
       ["", "", "", "", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)、HLE 与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;HLE 统一无工具闭卷口径;ModelDial 见独立标签页),其余(APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每天 4 次自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)、HLE-Diamond、GPQA Diamond 与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;HLE-Diamond 为 1000 题子集、GPQA Diamond 为研究生级科学问答;ModelDial 见独立标签页),其余(APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每天 4 次自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
