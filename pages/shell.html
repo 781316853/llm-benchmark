@@ -74,8 +74,8 @@
   <!-- 业务脚本 -->
   <script defer src="js/data.js?v=20261125a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
-  <script defer src="js/compare.js?v=20261124a"></script>
-  <script defer src="js/app.js?v=20261126a"></script>
+  <script defer src="js/compare.js?v=20261126b"></script>
+  <script defer src="js/app.js?v=20261126b"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261124a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -269,7 +269,7 @@
             <li><b class="note-term">梯队</b>按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,默认直接显示,取消勾选「显示综合分」后仅保留梯队。</li>
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
             <li><b class="note-term">命中</b>10 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE / ModelDial / 亿模亿样 / AI Coding Daily / AI 十项全能。</li>
-            <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
+            <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 综合分 → 命中数 → 共榜净胜排列(分数优先,覆盖数只作同分次序)。</li>
             <li><b class="note-term">榜内名次</b>「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮名次可见榜内上榜条目总数。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
             <li><b class="note-term">行与徽标</b>绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,仅在搜索时出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。</li>
@@ -277,7 +277,7 @@
           <details class="notes-more">
             <summary>展开详细口径与数据来源</summary>
             <ul>
-              <li><b class="note-term">权重</b>DeepSWE 12.9% · Code Arena·WebDev 16.6% · Terminal-Bench 8.3% · ModelDial 12.9% · llm2014 9.2% · 亿模亿样 9.2% · AI Coding Daily 7.4% · AI 十项全能 8% · Agent Arena 8.3% · HLE 7.4%(合计 1.00,按在场榜归一;缺测权重回流)。</li>
+              <li><b class="note-term">权重</b>十个计分组<b>等权</b>:DeepSWE / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / 亿模亿样 / AI Coding Daily / AI 十项全能 / Agent Arena / HLE 各 <b>10%</b>(在场 N 组各 1/N,按在场榜归一;缺测权重回流)。</li>
               <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;AI 十项全能 为 13 题按 10 类各 10% 加权的总分 0-100。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
               <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);指数与综合分同源,不可跨日/跨快照比较。</li>
@@ -327,7 +327,7 @@
       <p class="source-note" id="lmNote"></p>
     </section>
 
-    <!-- 6) ModelDial 雷达(第三方独立实测综合能力榜,属总览「第三方实测」组,计入综合分(权重 12.9%)与命中数) -->
+    <!-- 6) ModelDial 雷达(第三方独立实测综合能力榜,属总览「第三方实测」组,计入综合分(2026-11-26 起十组等权 10%)与命中数) -->
     <section class="page" id="page-modeldial">
       <div class="page-head">
         <p class="page-kicker">Independent Lab · ModelDial</p>
@@ -354,12 +354,12 @@
           <li><b class="note-term">配置口径</b>同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。源站「包含 Bot」默认关闭,本页同样不含 Bot。</li>
           <li><b class="note-term">外部产品</b>源站主榜含外部产品参考条目(如 Gemini 4 Argon),带「外部」标记;源站标其 api_model_ranking_eligible=false,不与 API 模型排名同口径。</li>
           <li><b class="note-term">成本口径</b>本页费用与耗时取源站五轴汇总口径;外部产品为自报耗时、费用常缺。各模型之间口径一致,可直接横向比较。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 12.9%)与命中数(分母 10);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%)与命中数(分母 10);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与费用说明</summary>
           <ul>
-            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench(原 9%)调整而来,2026-09-21 随「第三方实测」组整体上调(12%→16%),后随计分组扩展按比例回调至 12.9%;10 个计分组中第三方实测权重合计约 71.5%、榜单基准约 28.5%(按在场权重归一)。</li>
+            <li><b class="note-term">权重席位</b>该席位由移出计分组的 NL2Repo-Bench 调整而来;2026-11-26 起取消分组差异化权重,十个计分组等权,本榜与其余九组各占 10%(按在场权重归一,缺测回流)。</li>
             <li><b class="note-term">完整度</b>自 2026-09-20 起取消完整度奖励;在场榜单多少仅通过「缺失权重回流」体现。</li>
             <li><b class="note-term">费用示例</b>MiniMax-M3 本页约 $0.62(五轴汇总口径,费用完整度 partial);外部产品费用可能缺失,散点图仅画有费用条目。散点图 X 轴为参考费用(对数刻度),气泡面积编码五轴总耗时。</li>
           </ul>
@@ -367,7 +367,7 @@
       </section>
     </section>
 
-    <!-- 6b) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(权重 10%)与命中数) -->
+    <!-- 6b) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(十组等权 10%)与命中数) -->
     <section class="page" id="page-arenaofbias">
       <div class="page-head">
         <p class="page-kicker">Community Blind Test · Elo</p>
@@ -388,7 +388,7 @@
           <li><b class="note-term">来源</b>亿模亿样前端作品社区盲评:同题两件作品匿名盲评,按 Bradley-Terry 估计偏好强度折算 Elo(1000 为平均,高 400 分约等于被偏好机会高十倍),并给出 ±95% 区间。</li>
           <li><b class="note-term">分档</b>同一模型按推理强度分档多次测试,主榜取最高分档;源站「非官方」条目(量化/改版权重、第三方 harness)已剔除。</li>
           <li><b class="note-term">指标</b>有效比较为投票场次;胜率 = 胜场 ÷ 有效比较;覆盖任务为参与题数;有效比较不足 30 次标注「暂定」。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 9.2%)与命中数(分母 10),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%)与命中数(分母 10),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开抓取方式与区间说明</summary>
@@ -400,7 +400,7 @@
       </section>
     </section>
 
-    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(权重 8%)与命中数) -->
+    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(十组等权 10%)与命中数) -->
     <section class="page" id="page-aicodingdaily">
       <div class="page-head">
         <p class="page-kicker">Independent Real-World Test · AI Coding Daily</p>
@@ -426,12 +426,12 @@
           <li><b class="note-term">来源</b>AI Coding Daily(aicodingdaily.com),主办方为独立开发者 Povilas Korop,不是被评厂商之一;每个模型在 7 个真实项目上跑 27 个 prompt,源站累计 2000+ 次运行。</li>
           <li><b class="note-term">分数口径</b>总分 0-70 = Laravel 代码质量 20 + React-TS 代码质量 20 + Bug Finding 10 + Edge-case Testing 20;每个 prompt 从项目全新副本起步,模型看不到隐藏测试,无人工反馈。</li>
           <li><b class="note-term">混口径</b>源站「Tested with」列显示每个模型跑在<b>各自</b>的 agent harness 上(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),分数同时反映模型能力与脚手架质量。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 7.4%)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与成本说明</summary>
           <ul>
-            <li><b class="note-term">权重席位</b>按站内判据(主办方是否被评厂商自身)独立第三方实测榜计入综合分;因 harness 逐模型混杂、且与同为编码 agent 实测的 ModelDial(12.9%)存在重复计量,2026-10-19 入组时取 10%,2026-11-24 随十组归一回调至 7.4%,与 2026-09-24 无机酸前端实测入组时的处理同法。</li>
+            <li><b class="note-term">权重席位</b>按站内判据(主办方是否被评厂商自身)独立第三方实测榜计入综合分;因 harness 逐模型混杂,2026-10-19 入组时曾压低权重;2026-11-26 起取消分组差异化权重,十个计分组等权,本榜与其余九组各占 10%。</li>
             <li><b class="note-term">成本/耗时</b>均为<b>每 prompt</b> 平均值,不是每模型整轮测试成本;源站对部分模型未给成本(显示「—」),这些条目不进散点图但仍在下表。</li>
             <li><b class="note-term">更新频率</b>源站按周更新,本页「源站发布」取页面 Last update 标注,「本站抓取」为每日刷新时间。</li>
           </ul>
@@ -440,7 +440,7 @@
     </section>
 
     <!-- 6d) AI 十项全能·定时挑战赛(octathlon.wendystars.com 独立第三方限时 Agent 实测;
-         13 题 / 10 类,计入总览综合分(权重 8%)与命中数,2026-11-24 入组) -->
+         13 题 / 10 类,计入总览综合分(十组等权 10%)与命中数,2026-11-24 入组) -->
     <section class="page" id="page-octathlon">
       <div class="page-head">
         <p class="page-kicker">Independent Timed Agent Challenge · Octathlon</p>
@@ -472,7 +472,7 @@
           <li><b class="note-term">来源</b>AI 十项全能·定时挑战赛(octathlon.wendystars.com),主办方为独立第三方,不是被评厂商之一;13 道题、10 个类别,单题限时 60–100 分钟,无人答疑、到时中止。</li>
           <li><b class="note-term">分数口径</b>每题折算 0–100 分,类别权重各 10%、类内各题平分,总分 0–100。7 道标准评判题由程序校验(Lean 编译、加速比、对局实力值、拆解步数、形状吻合度等),6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次、逐项取平均。</li>
           <li><b class="note-term">混口径</b>模型连同<b>它自己的 agent harness</b> 一起测(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等),分数同时反映模型能力与脚手架质量;两位评分员本身也在被评名单中。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(权重 8%,「第三方实测」组)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%,「第三方实测」组)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开开销口径与题目清单</summary>

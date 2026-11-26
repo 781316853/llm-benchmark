@@ -91,8 +91,8 @@
   <!-- 业务脚本 -->
   <script defer src="../js/data.js?v=20261125a"></script>
   <script defer src="../js/charts.js?v=20261030a"></script>
-  <script defer src="../js/compare.js?v=20261124a"></script>
-  <script defer src="../js/app.js?v=20261126a"></script>
+  <script defer src="../js/compare.js?v=20261126b"></script>
+  <script defer src="../js/app.js?v=20261126b"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="../js/export.js?v=20261124a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -102,8 +102,8 @@
   <!-- 规格书皮肤动效:入场、滚动揭示、列表 stagger、吸顶导航兜底 -->
   <script defer src="../js/octathlon.js?v=20261124e"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
-  <script defer src="../js/i18n-en.js?v=20261124b"></script>
-  <script defer src="../js/i18n.js?v=20261124b"></script>
+  <script defer src="../js/i18n-en.js?v=20261126b"></script>
+  <script defer src="../js/i18n.js?v=20261126b"></script>
 </head>
 <body data-page="overview" data-base="../">
   <!-- 数据来源索引:全站最顶端的来源站点直达(两行) -->
@@ -281,7 +281,7 @@
             <li><b class="note-term">梯队</b>按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,默认直接显示,取消勾选「显示综合分」后仅保留梯队。</li>
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
             <li><b class="note-term">命中</b>10 个计分基准组中进入榜单的数量:DeepSWE / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE / ModelDial / 亿模亿样 / AI Coding Daily / AI 十项全能。</li>
-            <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 命中数 → 共榜净胜 → 综合分排列。</li>
+            <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 综合分 → 命中数 → 共榜净胜排列(分数优先,覆盖数只作同分次序)。</li>
             <li><b class="note-term">榜内名次</b>「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮名次可见榜内上榜条目总数。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
             <li><b class="note-term">行与徽标</b>绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,仅在搜索时出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。</li>
@@ -289,7 +289,7 @@
           <details class="notes-more">
             <summary>展开详细口径与数据来源</summary>
             <ul>
-              <li><b class="note-term">权重</b>DeepSWE 12.9% · Code Arena·WebDev 16.6% · Terminal-Bench 8.3% · ModelDial 12.9% · llm2014 9.2% · 亿模亿样 9.2% · AI Coding Daily 7.4% · AI 十项全能 8% · Agent Arena 8.3% · HLE 7.4%(合计 1.00,按在场榜归一;缺测权重回流)。</li>
+              <li><b class="note-term">权重</b>十个计分组<b>等权</b>:DeepSWE / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / 亿模亿样 / AI Coding Daily / AI 十项全能 / Agent Arena / HLE 各 <b>10%</b>(在场 N 组各 1/N,按在场榜归一;缺测权重回流)。</li>
               <li><b class="note-term">各榜口径</b>DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;AI 十项全能 为 13 题按 10 类各 10% 加权的总分 0-100。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
               <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);指数与综合分同源,不可跨日/跨快照比较。</li>
