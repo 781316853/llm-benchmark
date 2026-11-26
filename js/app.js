@@ -791,7 +791,7 @@
       var fcHtml = fc
         ? scoreSpan("frontiercode", fc.score, "frontiercode", fc.score + "%", "", "cell-val", r.id) +
           fcVerBadge(fc.version) +
-          (fc.harness ? ' <span class="cell-cost">' + esc(fc.harness) + '</span>' : "")
+          (fc.harness ? ' <span class="cell-cost cell-harness" title="' + esc(fc.harness) + '">' + esc(fc.harness) + '</span>' : "")
         : "—";
       var lm = (r.llm && r.llm.norm != null) ? r.llm.norm.toFixed(2) : "-";
       // Code Arena · WebDev 单值显示:原始 Elo + 可选 ±ci
@@ -823,7 +823,7 @@
       var tbHtml = r.tbench
         ? scoreSpan("tbench", r.tbench.score, "tbench", r.tbench.score + "%", tbMeta.join(" · "), "cell-val", r.id) +
           tbVerBadge(r.tbench.version) +
-          ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
+          ((r.tbench.agent || r.tbench.effort) ? ' <span class="cell-cost cell-harness" title="' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '">' + esc([r.tbench.agent, r.tbench.effort].filter(Boolean).join("·")) + '</span>' : "")
         : "—";
       // ModelDial 单元格:五轴综合分(0-100);悬浮显示五分项/推理强度/耗时/费用
       // (费用与耗时为五轴汇总口径,故在提示里显式标注)
@@ -860,7 +860,7 @@
         if (ac.configs) acParts.push(ac.configs + " 个配置取最高");
         acdHtml = rankBadge(ac.rank, "AI Coding Daily", RANK_TOTAL.aicodingdaily) +
           scoreSpan("aicodingdaily", ac.score, "aicodingdaily", String(ac.score), acParts.join(" · "), null, r.id) +
-          (ac.harness ? ' <span class="cell-cost">' + esc(ac.harness) + '</span>' : "");
+          (ac.harness ? ' <span class="cell-cost cell-harness" title="' + esc(ac.harness) + '">' + esc(ac.harness) + '</span>' : "");
       }
       // AI 十项全能单元格:总分(0-100);悬浮显示两类题得分/开销/Token/TPS/agent/档位/测试日
       var octHtml = "—";
@@ -879,7 +879,7 @@
         ocParts.push(T("13 题 / 10 类,模型连同自身 harness 一起测"));
         octHtml = rankBadge(oc.rank, "AI 十项全能", RANK_TOTAL.octathlon) +
           scoreSpan("octathlon", oc.score, "octathlon", String(oc.score), ocParts.join(" · "), null, r.id) +
-          (oc.agent ? ' <span class="cell-cost">' + esc(oc.agent) + '</span>' : "");
+          (oc.agent ? ' <span class="cell-cost cell-harness" title="' + esc(oc.agent) + '">' + esc(oc.agent) + '</span>' : "");
       }
       // NEW 判定:基于 FrontierCode / llm2014 / Terminal-Bench 三基准
       var nw = D.isNewAny(null, r.llm && r.llm.name, r.tbench && r.tbench.name);
@@ -990,7 +990,18 @@
       if (extra) classes.push(extra);
       var cls = classes.length ? ' class="' + classes.join(" ") + '"' : "";
       var tip = (c.tip ? esc(c.tip) + " " : "") + "点击按此列排序";
-      return '<th data-key="' + c.key + '"' + cls + ' title="' + tip + '">' + c.label + ind + '</th>';
+      // 列名拆成「名称 + 括号单位」两行:单位整段不换行,避免窄列里出现
+      // "Terminal-Bench (解 / 决率)" 这种把括号短语拦腰截断、看着像和邻列串了的排版
+      var lm = String(c.label || "").match(/^(.+?)\s*(\([^)]*\))\s*$/);
+      var labelHtml;
+      if (c.bench) {
+        // 评测列统一两行:名称 + 单位;没有单位的列补一个空行,保证所有列名在同一基线上
+        labelHtml = '<span class="th-name">' + (lm ? lm[1] : c.label) + '</span>' +
+          '<span class="th-unit">' + (lm ? lm[2] : "&nbsp;") + '</span>';
+      } else {
+        labelHtml = '<span class="th-name">' + c.label + '</span>';
+      }
+      return '<th data-key="' + c.key + '"' + cls + ' title="' + tip + '">' + labelHtml + ind + '</th>';
     }
     // 第 1 行:非评测列 rowspan=2 纵跨两行(可排序);评测列按 grp 连续段输出分组格(colspan=组内列数)
     var grpRow = '<th class="num" rowspan="2">#</th>', subRow = "";
