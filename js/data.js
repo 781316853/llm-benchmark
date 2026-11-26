@@ -1128,6 +1128,41 @@
     if (!src || !Array.isArray(src.months)) return null;
     return src;
   }
+  // ===== 订阅折算成本(¥/百万 token) =====
+  // 口径:套餐月费 ¥ ÷ 月可用额度(95% 缓存档,单位百万 token);源站已给「¥每亿」字段 u,
+  // 换算 ¥/M = u / 100。同一模型可能出现在多个套餐里(如 Plus / Pro 100 / Pro 200),取最低。
+  // 数据源 data/modeldial-subs.js(MODELDIAL_SUBS);未加载时返回空表。
+  // ⚠ 与 API 按量不是同一口径:订阅是「包月摊销」,额度用不完就比 API 贵、用满才便宜。
+  var SUBS_CACHE = null;
+  function subsCost() {
+    if (SUBS_CACHE) return SUBS_CACHE;
+    var src = window.MODELDIAL_SUBS;
+    var out = {};
+    if (!src || !Array.isArray(src.plans)) { SUBS_CACHE = out; return out; }
+    src.plans.forEach(function (p) {
+      (p.models || []).forEach(function (m) {
+        var u = Number(m.u);
+        if (!isFinite(u) || u <= 0) return;
+        var c = canon(m.m || m.mEn);
+        var v = u / 100;
+        var cur = out[c.id];
+        if (!cur || v < cur.costPerM) {
+          out[c.id] = {
+            costPerM: v,
+            planName: p.name || p.slug || "",
+            platform: p.platform || m.b || "",
+            feeCny: p.feeCny != null ? p.feeCny : null,
+            quotaM: Array.isArray(m.q) ? m.q[2] : null,
+            basis: m.w || "",
+            date: m.d || ""
+          };
+        }
+      });
+    });
+    SUBS_CACHE = out;
+    return out;
+  }
+
   // 条目显示文本:优先译文,缺失时回落到源文本(英文条目由页面标「原文」)
   function clFeatText(item, zh) {
     if (!item) return "";
@@ -1206,6 +1241,8 @@
     // 模型 API 标价快照(主源 codingplan.fyi,排名模型缺价由 models.dev 补齐;
     // 总览矩阵「性价比」列;文件缺失/加载失败时返回 null)
     pricing: function () { return window.PRICING || null; },
+    // 订阅折算成本表(canon id -> ¥/M;来自 data/modeldial-subs.js)
+    subsCost: subsCost,
     // Agent 工具更新日志(「Agent工具更新日志」页;无数据文件时返回 null)
     changelog: changelog,
     changelogMonthly: changelogMonthly,

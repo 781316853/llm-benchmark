@@ -258,12 +258,33 @@
     return PRICE_IDX;
   }
   function priceOf(id) { return priceIndex()[id] || null; }
+  // 订阅折算成本索引(canon id -> { costPerM, planName, ... }),来自 data/modeldial-subs.js。
+  // 与 API 按量并列参与性价比:两个口径都算,成本取低者(对用户最有利),悬浮里两个值都给。
+  function subsOf(id) {
+    var t = D.subsCost ? D.subsCost() : null;
+    return t ? (t[id] || null) : null;
+  }
+  // 某行的双口径成本:api=按量付费,subs=订阅摊销,used=实际参与指数计算的较低值
+  function costOf(r) {
+    if (!r) return null;
+    var api = priceOf(r.id);
+    var subs = subsOf(r.id);
+    var apiC = api ? api.costPerM : null;
+    var subsC = subs ? subs.costPerM : null;
+    var used = null, mode = null;
+    if (apiC != null && subsC != null) { if (subsC < apiC) { used = subsC; mode = "subs"; } else { used = apiC; mode = "api"; } }
+    else if (apiC != null) { used = apiC; mode = "api"; }
+    else if (subsC != null) { used = subsC; mode = "subs"; }
+    if (used == null) return null;
+    return { api: apiC, subs: subsC, used: used, mode: mode, apiSrc: api ? (api.priceSource || "") : "", subsInfo: subs };
+  }
   // 性价比指数 = 综合分 ÷ 每百万 token 综合成本;仅参与排名的行(命中≥4榜)且匹配到标价时可算。
   // 列排序、格内显示与「最佳性价比」标记共用这一处,避免同一口径写三遍后走样
   function valueIndexOf(r) {
     if (!r || hitOf(r) < rankedFloor()) return null;
     var p = priceOf(r.id);
-    return p ? CMP.composite(r) / p.costPerM : null;
+    var c2 = costOf(r);
+    return c2 && c2.used ? CMP.composite(r) / c2.used : null;
   }
   // 每百万 token 成本(¥)按量级保留小数:避免「¥0.05」与「¥11.22」在同一列里宽度跳动
   function fmtCostPerM(v) {
@@ -291,7 +312,7 @@
     //   (它们格内显示「—」,若这里仍返回数,排序时会把它们按比值插进排名行之间 —— 排序依据与
     //    看到的内容就对不上了);nullLast 再把 null 行恒定沉底,不随升/降序翻转跑到最前
     { key: "value", label: "性价比", type: "num", bench: false, nullLast: true,
-      tip: "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价优先取 codingplan.fyi,排名模型缺价时由 models.dev 补齐(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见来源与输入/缓存输入/输出三档单价",
+      tip: "性价比指数 = 综合分 ÷ 每百万 token 成本(¥/M)。成本双口径取低者:① API 按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算(codingplan.fyi 为主、models.dev 补缺,美元按 6.8 折人民币);② 订阅摊销 = 套餐月费 ÷ 月可用额度(ModelDial 订阅页实测/估算,月额度按 95% 缓存档,取该模型最便宜的套餐)。仅命中≥4榜的排名模型计算,悬浮可见两口径明细",
       val: valueIndexOf },
     { key: "frontiercode", label: "FrontierCode (2.0/1.1)", type: "num", bench: true, grp: "榜单基准", tone: "frontiercode",
       tip: "FrontierCode(Cognition 生产级代码质量榜):真实仓库任务端到端交付并通过隐藏测试的比例;2.0 主榜优先,未收录的模型回退 1.1(两版任务集不同、分数不可直接比较,故综合分按版本内归一定标);计入综合分(十组等权)与命中数",
@@ -941,15 +962,24 @@
         (function () {
           if (unranked) return '<td class="num"><span class="tier-na">—</span></td>';
           var p = priceOf(r.id);
-          if (!p) return '<td class="num"><span class="tier-na" title="codingplan.fyi、models.dev 与厂商官网价种子均未匹配到该模型的 API 标价,性价比不可计算">—</span></td>';
+          var cst = costOf(r);
+          if (!cst) return '<td class="num"><span class="tier-na" title="API 标价(codingplan.fyi / models.dev)与订阅额度(ModelDial 订阅页)均未匹配到该模型，性价比不可计算">—</span></td>';
           var score = CMP.composite(r);
           var idx = valueIndexOf(r);
-          var tip = "性价比 " + idx.toFixed(1) + " = 综合分 " + score.toFixed(1) + " ÷ " + fmtCostPerM(p.costPerM) + "/M · " +
-            "输入 ¥" + p.inputCnyPerM + " / 缓存输入 ¥" + p.cacheCnyPerM + " / 输出 ¥" + p.outputCnyPerM + "(¥/百万 token)· " +
-            "综合成本 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出(按 1M token 实际编程比例折算);单价来源 " +
-            (p.priceSource || "codingplan.fyi");
+          var modeTxt = cst.mode === "subs" ? "订阅摊销" : "API 按量";
+          var tip = "性价比 " + idx.toFixed(1) + " = 综合分 " + score.toFixed(1) + " ÷ " + fmtCostPerM(cst.used) + "/M（" + modeTxt + "）";
+          if (cst.api != null) {
+            tip += " · API 按量：输入 ¥" + (p ? p.inputCnyPerM : "—") + " / 缓存输入 ¥" + (p ? p.cacheCnyPerM : "—") + " / 输出 ¥" + (p ? p.outputCnyPerM : "—") +
+              " → 综合 " + fmtCostPerM(cst.api) + "/M（95% 缓存输入 + 4.5% 未缓存 + 0.5% 输出，来源 " + (cst.apiSrc || "codingplan.fyi") + "）";
+          }
+          if (cst.subs != null) {
+            var si = cst.subsInfo || {};
+            tip += " · 订阅摊销：" + (si.planName || "") + " ¥" + (si.feeCny != null ? si.feeCny : "—") + "/月 ÷ 月额度 " +
+              (si.quotaM != null ? si.quotaM + "M" : "—") + " → " + fmtCostPerM(cst.subs) + "/M" + (si.basis ? "（" + si.basis + "）" : "");
+          }
+          if (cst.api != null && cst.subs != null) tip += " · 两口径取低者参与指数；订阅为包月摊销，额度用满才便宜";
           return '<td class="num"><span class="bv bv-value" title="' + esc(tip) + '">' + idx.toFixed(1) + '</span>' +
-            '<br><span class="cell-cost">' + fmtCostPerM(p.costPerM) + '/M</span></td>';
+            '<br><span class="cell-cost">' + fmtCostPerM(cst.used) + '/M</span></td>';
         })() +
         // ds=榜单基准组起点、wd=第三方实测组起点:grp-start 竖线与表头 th-grp 左边框对齐,须随 MATRIX_COLS 分组调整同步
         // 第三方口径下这三列被隐藏(见 visibleCols)
@@ -3980,7 +4010,7 @@
   // 子页 46~138KB(原先每页固定 631KB)。
   var BENCH_KEYS = [
     "pricing", "deepswe", "deepswe_v10", "frontiercode", "frontiercodeV11", "llm2014", "arena_webdev", "arena_agent",
-    "arenaofbias", "tbench", "tbench_v3", "tbench_v2", "hle_diamond", "gpqa_diamond", "modeldial",
+    "arenaofbias", "tbench", "tbench_v3", "tbench_v2", "hle_diamond", "gpqa_diamond", "modeldial", "modeldialSubs",
     "releases", "aicodingdaily", "octathlon", "seen", "news"
   ];
   // 总览已把矩阵的 DeepSWE 列换成 FrontierCode,这两个源在总览只被权威页使用,不进第二批注入
