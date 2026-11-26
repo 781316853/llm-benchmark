@@ -3573,26 +3573,33 @@
   }
 
   // ===== 月度汇总的「精选」口径 =====
-  // 用户口径:每个 Agent 每个月最多 5 条。原先按月把所有新增功能平铺成一条清单
-  // (2026-11 单月 312 条、其中 Claude Code 一家 96 条),读完等于没读。现在改成
-  // 月内按 Agent 分组、每组给精选:
-  //   1) 先按发布日期从新到旧,每个版本只取 1 条 —— 5 条覆盖 5 个版本,
-  //      而不是同一次发版里的 5 行小修小补;
-  //   2) 同一版本内优先「影响面」词(模型 / Agent / MCP / 插件 / 技能 / 终端 / 沙箱 /
-  //      权限 / 审查 / 工作流 / 子智能体 / 语音 / 图像 …),其次正文更长(信息更具体);
-  //   3) 版本不足 5 个时,用同一口径的剩余条目补齐到 5 条。
+  // 用户口径:每个 Agent 每个月最多 3 条,且只从「功能」里选,修复 / 优化 / 体验类不进精选。
+  // 月内按 Agent 分组、每组精选:
+  //   1) 先剔除修复、优化、调整、体验类条目(见 clIsFeature);
+  //   2) 再按发布日期从新到旧,每个版本只取 1 条;
+  //   3) 同一版本内优先「影响面」词,其次正文更长;
+  //   4) 版本不足 3 个时,用同一口径的剩余功能条目补齐到 3 条。
   // 精选只改展示:数据文件仍是全量,每组「展开全部」可看原样,左目录的月份计数也不变。
-  var CL_PICK_MAX = 5;
+  var CL_PICK_MAX = 3;
   var CL_PICK_KEYS = /(model|模型|agent|智能体|subagent|子智能体|mcp|plugin|插件|skill|技能|cli|ide|terminal|终端|sandbox|沙箱|permission|权限|team|团队|协作|enterprise|企业|voice|语音|image|图像|multimodal|多模态|review|审查|workflow|工作流|context|上下文|memory|记忆|browser|浏览器|automation|自动化|plan mode|plan模式|deploy|部署|hook|钩子)/i;
+
+  // 「功能」判定:标题以修复 / 优化 / 调整等动词开头的、或正文本身就是修 bug / 性能 / 体验的条目排除。
+  // 不在句中排除「优化」等词 —— 很多功能条目会写「新增 X,并优化 Y」,那仍然是功能。
+  var CL_NONFEATURE_HEAD = /^(修复|修正|优化|改进|改善|调整|回退|回滚|移除|删除|废弃|解决|完善|打磨|重构|文案|文档|体验)/;
+  var CL_NONFEATURE_TEXT = /(修复了|问题修复|偶现修复|bug ?(?:fix|修复)|崩溃|闪退|白屏|卡死|异常退出|内存占用过高|性能优化|体验优化|交互优化|稳定性优化|加载速度|启动速度)/i;
+  function clIsFeature(it, zh) {
+    var text = D.clFeatText(it, zh || {}) || "";
+    return !CL_NONFEATURE_HEAD.test(text) && !CL_NONFEATURE_TEXT.test(text);
+  }
 
   // 影响面打分:命中关键词算一档,正文更长算细档(同一版本内用来挑"最值得看"的那一条)
   function clPickScore(it, zh) {
     var text = D.clFeatText(it, zh || {}) || "";
     return (CL_PICK_KEYS.test(text) ? 10000 : 0) + Math.min(text.length, 1999);
   }
-  // 一组条目里挑精选:先一个版本一条(新→旧),不足上限再用次优补齐;不超过上限时原样返回
+  // 一组条目里挑精选:先剔除修复/优化/体验类,再一个版本一条(新→旧),不足上限用次优功能条目补齐
   function clPickItems(items, zh) {
-    var list = (items || []).slice();
+    var list = (items || []).filter(function (it) { return clIsFeature(it, zh); });
     if (list.length <= CL_PICK_MAX) return list;
     // 稳定排序:日期新→旧,同日保留数据原顺序
     list = list.map(function (it, i) { return { it: it, i: i }; }).sort(function (a, b) {
@@ -3635,7 +3642,7 @@
     }).join("") + "</ul>";
   }
 
-  // 月内单个 Agent 分组:标题 + 「精选 5 / 共 96 条」+ 展开全部
+  // 月内单个 Agent 分组:标题 + 「精选 N / 共 M 条」+ 展开全部
   function clAgentHtml(m, t, zh) {
     var all = t.items || [];
     if (!all.length) return "";
@@ -3659,7 +3666,7 @@
       '</div>';
   }
 
-  // 一个月:月头统计 + 按 Agent 分组的精选列表(每组 ≤5 条)+ 同月跨工具合并条目
+  // 一个月:月头统计 + 按 Agent 分组的精选列表(每组 ≤3 条)+ 同月跨工具合并条目
   function clMonthHtml(m, open) {
     var zh = (clMonthlyData && clMonthlyData.zh) || {};
     var total = 0, shown = 0, groups = [];
