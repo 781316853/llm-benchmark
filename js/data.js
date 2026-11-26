@@ -681,9 +681,17 @@
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score || (b.pass1 || 0) - (a.pass1 || 0); })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
-  function hle() {
-    var src = window.HLE || { models: [] };
-    return src.models.slice().sort(function (a, b) { return b.score - a.score; })
+  // HLE-Diamond(1,000 题子集):2026-11-26 起取代原 HLE 在总览矩阵的计分位。
+  // ⚠ 原全量 HLE(2500 题)已不再加载(data/hle.js 保留为备用文件),两者题集不同、分数不可直接比较。
+  function hleDiamond() {
+    var src = window.HLE_DIAMOND || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  // GPQA Diamond(研究生级科学问答):2026-11-26 起计入综合分与命中数。
+  function gpqaDiamond() {
+    var src = window.GPQA_DIAMOND || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
   function nl2repo() {
@@ -835,11 +843,12 @@
   // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数);
   // aicodingdaily:同名取最高总分(2026-10-19 起计入综合分与命中数,权重 8%);
   // octathlon:同名取最高总分(2026-11-24 起计入综合分与命中数,权重 8%);
-  // hle:同名取最高无工具闭卷分(2026-11-15 起计入综合分与命中数,权重 8%)
+  // hlediamond:同名取最高准确率(2026-11-26 起接替原 HLE 计入综合分与命中数);
+  // gpqa:同名取最高正确率(2026-11-26 起新增计分组)
   function unified(llmMonthKey) {
     var map = {}; // canonical id -> entry
     function ensure(c) {
-      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, frontiercode: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, octathlon: null, hle: null };
+      if (!map[c.id]) map[c.id] = { id: c.id, vendor: c.vendor, color: c.color, benchCount: 0, frontiercode: null, llm: null, webdev: null, agentarena: null, tbench: null, arenaofbias: null, modeldial: null, aicodingdaily: null, octathlon: null, hlediamond: null, gpqa: null };
       return map[c.id];
     }
     // FrontierCode:2.0 主榜优先、1.1 只补 2.0 未收录的模型;norm 为版本内 min-max 0-100,
@@ -889,13 +898,24 @@
           winRate: m.winRate, tasks: m.tasks, provisional: m.provisional, configs: m.configs,
           rank: m.rank, name: m.name };
     });
-    // HLE(前沿知识广度,统一无工具闭卷口径):同名取最高分;计入综合分与命中数,
-    // 同时保留源站名次与来源标注供总览格悬浮。
-    hle().forEach(function (m) {
+    // HLE-Diamond(1,000 题子集,无工具 high reasoning):同名取最高分;计入综合分与命中数,
+    // 同时保留榜内标准分/档位/来源标注供总览格悬浮。
+    hleDiamond().forEach(function (m) {
       if (m.score == null) return;
       var e = ensure(m.canon);
-      if (!e.hle || m.score > e.hle.score)
-        e.hle = { score: m.score, rank: m.rank, name: m.model, src: m.src, protocol: m.protocol, protocolNote: m.protocolNote };
+      if (!e.hlediamond || m.score > e.hlediamond.score)
+        e.hlediamond = { score: m.score, overallScore: m.overallScore, rank: m.rank, name: m.model,
+          org: m.org, effort: m.effort, harness: m.harness, src: m.src,
+          protocol: m.protocol, protocolNote: m.protocolNote };
+    });
+    // GPQA Diamond(研究生级科学问答):同名取最高正确率;计入综合分与命中数。
+    gpqaDiamond().forEach(function (m) {
+      if (m.score == null) return;
+      var e = ensure(m.canon);
+      if (!e.gpqa || m.score > e.gpqa.score)
+        e.gpqa = { score: m.score, overallScore: m.overallScore, rank: m.rank, name: m.model,
+          org: m.org, effort: m.effort, src: m.src,
+          protocol: m.protocol, protocolNote: m.protocolNote };
     });
     // NL2Repo-Bench 自 2026-09-19 起移出统一视图(不再计入综合分与命中数、不再进总览矩阵),
     // 仅在「权威基准测试」页经 D.nl2repo() 直接展示,故此处不再写入。
@@ -942,7 +962,7 @@
         };
     });
     // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Agent Arena / Terminal-Bench / 亿模亿样 / ModelDial /
-    // AI Coding Daily / AI 十项全能 / HLE 共 10 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/
+    // AI Coding Daily / AI 十项全能 / HLE-Diamond / GPQA Diamond 共 11 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/
     // BenchCAD/APEX-1/NL2Repo/Code Migration/AA Coding Agent Index)仅展示不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
@@ -955,14 +975,15 @@
       if (e.modeldial) e.benchCount++;
       if (e.aicodingdaily) e.benchCount++;
       if (e.octathlon) e.benchCount++;
-      if (e.hle) e.benchCount++;
+      if (e.hlediamond) e.benchCount++;
+      if (e.gpqa) e.benchCount++;
     });
     return map;
   }
 
-  // ===== 汇总卡片信息(FrontierCode / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / AI 十项全能 / HLE 共 10 张) =====
+  // ===== 汇总卡片信息(FrontierCode / llm2014 / WebDev / Agent Arena / 亿模亿样 / Terminal-Bench / ModelDial / AI Coding Daily / AI 十项全能 / HLE-Diamond / GPQA Diamond 共 11 张) =====
   function benchSummary() {
-    var fc = window.FRONTIERCODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, oct = window.OCTATHLON || {}, hl = window.HLE || {};
+    var fc = window.FRONTIERCODE || {}, lm = window.LLM2014 || {}, wd = window.ARENA_WEBDEV || {}, aa = window.ARENA_AGENT || {}, ab = window.ARENAOFBIAS || {}, tb = window.TBENCH || {}, md = window.MODELDIAL || {}, acd = window.AICODINGDAILY || {}, oct = window.OCTATHLON || {}, hl = window.HLE_DIAMOND || {}, gq = window.GPQA_DIAMOND || {};
     var fcList = frontiercodeBoard();
     var fcTop = fcList[0] || { canon: {} };
     var wdTop = wd.models ? webdev()[0] || {} : {};
@@ -981,7 +1002,8 @@
     // 亿模亿样:Elo 头名(按 score 降序取首)
     var abTop = arenaofbias()[0] || {};
     // HLE:无工具闭卷分头名(与总览矩阵 HLE 列同源 data/hle.js)
-    var hlTop = hle()[0] || {};
+    var hlTop = hleDiamond()[0] || {};
+    var gqTop = gpqaDiamond()[0] || {};
     return [
       { key: "frontiercode", name: "FrontierCode", tag: "生产级代码质量 · 2.0/1.1", url: fc.boardUrl || fc.officialUrl || fc.url, updated: fc.updated,
         stats: [{ l: "模型", v: fcList.length }, { l: "版本", v: "2.0/1.1" }],
@@ -1015,10 +1037,14 @@
       { key: "octathlon", name: "AI 十项全能", tag: "独立实测 · 13 题 / 10 类", url: oct.boardUrl || oct.url, updated: oct.updated,
         stats: [{ l: "模型", v: (oct.models || []).length }, { l: "题目", v: (oct.stats && oct.stats.tasks) }],
         top: (octTop.canon ? octTop.canon.id : octTop.name) + " · " + (octTop.score != null ? octTop.score + " / 100" : "—") },
-      // HLE(Humanity's Last Exam):2500 题前沿知识闭卷;总览矩阵 HLE 列与之同源,这里补一张速览卡
-      { key: "hle", name: "HLE", tag: "前沿知识广度 · 无工具闭卷", url: hl.officialUrl || hl.url, updated: hl.updated,
+      // HLE-Diamond(1000 题子集):2026-11-26 起接替原 HLE 卡;总览矩阵 HLE-Diamond 列与之同源
+      { key: "hlediamond", name: "HLE-Diamond", tag: "前沿知识 1000 题 · 无工具 high", url: hl.officialUrl || hl.url, updated: hl.updated,
         stats: [{ l: "题目", v: (hl.stats && hl.stats.tasks) }, { l: "模型", v: (hl.models || []).length }],
-        top: (hlTop.model || "—") + " · " + (hlTop.score != null ? hlTop.score + "%" : "") }
+        top: (hlTop.model || "—") + " · " + (hlTop.score != null ? hlTop.score + "%" : "") },
+      // GPQA Diamond(研究生级科学问答):新增知识类计分榜,这里补一张速览卡
+      { key: "gpqa", name: "GPQA Diamond", tag: "研究生级科学问答 · 正确率", url: gq.officialUrl || gq.url, updated: gq.updated,
+        stats: [{ l: "模型", v: (gq.models || []).length }],
+        top: (gqTop.model || "—") + " · " + (gqTop.score != null ? gqTop.score + "%" : "") }
     ];
   }
 
@@ -1115,7 +1141,7 @@
     deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arena_agent: "ARENA_AGENT", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", lastexamV10: "LASTEXAM_V10", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
-    apex: "APEX", hle: "HLE", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
+    apex: "APEX", hle: "HLE", hleDiamond: "HLE_DIAMOND", gpqa: "GPQA_DIAMOND", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
     cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", frontiercodeV11: "FRONTIERCODE_V11", frontierswe: "FRONTIERSWE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
     aicodingdaily: "AICODINGDAILY",
     octathlon: "OCTATHLON",
@@ -1157,7 +1183,8 @@
     arcagi3: arcagi3,
     benchcad: benchcad,
     apex: apex,
-    hle: hle,
+    hleDiamond: hleDiamond,
+    gpqaDiamond: gpqaDiamond,
     nl2repo: nl2repo,
     programbench: programbench,
     cursorbench: cursorbench,

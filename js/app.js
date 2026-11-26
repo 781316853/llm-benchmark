@@ -138,7 +138,7 @@
   // 旧数据缺字段时返回 undefined,调用方须兜底不显示
   function maxRefreshedAt() {
     return [D.src.deepswe, D.src.llm, D.src.tbench, D.src.tbscience, D.src.osworld,
-      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hle, D.src.nl2repo, D.src.programbench,
+      D.src.lastexam, D.src.arcagi3, D.src.benchcad, D.src.hleDiamond, D.src.gpqa, D.src.nl2repo, D.src.programbench,
       D.src.cursorbench, D.src.frontiercode, D.src.frontierswe, D.src.arena_agent, D.src.arenaofbias, D.src.aicodingdaily, D.src.octathlon, D.src.aa_coding_agents]
       .map(function (s) { return s && s.refreshedAt; })
       .filter(Boolean).sort().pop();
@@ -162,18 +162,19 @@
     modeldial: "第三方实测 · 五轴 20/25/35/10/10",
     aicodingdaily: "独立第三方实测 · 7 项目 27 prompt · 总分 70",
     octathlon: "独立第三方实测 · 13 题 10 类 · 总分 100",
-    hle: "前沿知识广度 · 2500 题无工具闭卷"
+    hlediamond: "前沿知识 HLE-Diamond · 1000 题无工具 high",
+    gpqa: "研究生级科学问答 · GPQA Diamond"
   };
-  // 综合分权重口径(2026-11-26 起等权):在场 N 个计分组,每组 1/N(当前 10 组各 10%)。
+  // 综合分权重口径(2026-11-26 起等权):在场 N 个计分组,每组 1/N(当前 11 组各 9.1%)。
   // 文案里的百分比统一从这里取,避免「权重 12.9%」这类硬编码在分组增减后再次走样。
-  var N_GROUPS = (CMP && CMP.groupCount) ? CMP.groupCount() : 10;
-  var W_PCT = (CMP && CMP.groupPct) ? CMP.groupPct() : 10;
+  var N_GROUPS = (CMP && CMP.groupCount) ? CMP.groupCount() : 11;
+  var W_PCT = (CMP && CMP.groupPct) ? CMP.groupPct() : 9.1;
   var W_TXT = W_PCT + "%";
-  // 十组等权,各 10%(随 CMP.GROUPS 自动跟随;分组增减时这里自动同步)
+  // 十一组等权,各 9.1%(随 CMP.GROUPS 自动跟随;分组增减时这里自动同步)
   var BENCH_WEIGHT = {
     frontiercode: W_TXT, llm2014: W_TXT, webdev: W_TXT, agentarena: W_TXT,
     arenaofbias: W_TXT, tbench: W_TXT, modeldial: W_TXT, aicodingdaily: W_TXT,
-    octathlon: W_TXT, hle: W_TXT
+    octathlon: W_TXT, hlediamond: W_TXT, gpqa: W_TXT
   };
 
   // 毫秒 -> "34m 26s"(ModelDial 耗时展示;不足 1 分钟只显示秒)
@@ -302,9 +303,15 @@
     // 「权威基准测试」页仅展示;数据仍加载(data/nl2repo.js)供该页使用。
     // HLE:权威知识基准,归入「榜单基准」组;2026-11-15 起计入综合分(2026-11-26 起十组等权 10%)与命中数,
     // 分数统一为无工具(闭卷)口径;完整榜单见「权威基准测试」页
-    { key: "hle", label: "HLE", type: "num", bench: true, grp: "榜单基准", tone: "hle",
-      tip: "HLE(Humanity's Last Exam)前沿知识广度得分(%):2500 道专家撰写、无联网可检索解的闭卷题,统一无工具口径;2026-11-15 起计入综合分(十组等权,权重 " + W_TXT + ")与命中数,完整榜单见「权威基准测试」页",
-      val: function (r) { return r.hle ? r.hle.score : null; } },
+    // HLE-Diamond:2026-11-26 起接替原 HLE 的位置,归入「榜单基准」组并计入综合分与命中数。
+    // 题集为 1000 题子集(无工具 high reasoning),与原 2500 题全量 HLE 分数不可直接比较。
+    { key: "hlediamond", label: "HLE-Diamond", type: "num", bench: true, grp: "榜单基准", tone: "hle",
+      tip: "HLE-Diamond 准确率(%):Humanity's Last Exam 的 1000 题精炼子集(500 推理 + 500 知识),无工具 high reasoning;与原 2500 题全量 HLE 是不同题集、分数不可直接比较;计入综合分(十一组等权,权重 " + W_TXT + ")与命中数,完整榜单见「权威基准测试」页",
+      val: function (r) { return r.hlediamond ? r.hlediamond.score : null; } },
+    // GPQA Diamond:2026-11-26 新增的知识类计分榜(研究生级科学问答),计入综合分与命中数
+    { key: "gpqa", label: "GPQA Diamond", type: "num", bench: true, grp: "榜单基准", tone: "gpqa",
+      tip: "GPQA Diamond 正确率(%):研究生级科学问答(物理/化学/生物),专家可答、搜索引擎不可答;各厂商发布口径的工具使用不统一,源站未逐行标注 harness;计入综合分(十一组等权,权重 " + W_TXT + ")与命中数,完整榜单见「权威基准测试」页",
+      val: function (r) { return r.gpqa ? r.gpqa.score : null; } },
     // ModelDial 雷达单值列(归入「第三方实测」组首位):第三方独立实测的五轴综合能力分
     // (0-100,后端 20%/前端 25%/知识 35%/审美 10%/可维护 10% 加权);计入综合分与命中数;
     // 格内为综合分,口径与分项/耗时/费用放 th 悬浮提示;完整榜见「ModelDial」页
@@ -767,7 +774,7 @@
     // 区分「源站快照还没收录这个型号」与「页面没抓到数据」—— 前者是事实,后者是故障。
     var wdSnapshot = (window.ARENA_WEBDEV && window.ARENA_WEBDEV.updated) || "";
     var wdMissTitle = wdSnapshot ? "源站快照止于 " + wdSnapshot + "，该模型尚未上榜" : "";
-    // 第三方口径:榜单基准 3 列(FrontierCode / Terminal-Bench / HLE)不参与打分,直接隐藏,避免"看得见不算分"
+    // 第三方口径:榜单基准 4 列(FrontierCode / Terminal-Bench / HLE-Diamond / GPQA Diamond)不参与打分,直接隐藏,避免"看得见不算分"
     var visibleCols = state.thirdPartyOnly
       ? MATRIX_COLS.filter(function (c) { return !c.bench || c.grp !== "榜单基准"; })
       : MATRIX_COLS;
@@ -778,12 +785,20 @@
       var single = hitOf(r) === 1;
       // 不参与排名的行(命中<4榜):梯队列与序号列均显示「—」
       var unranked = inserted || single;
-      // HLE 单元格:无工具闭卷分 + 悬浮(口径与源站名次);2026-11-15 起计入综合分与命中数
+      // HLE-Diamond 单元格:准确率 + 悬浮(口径与榜内名次);2026-11-26 起计入综合分与命中数
       var hleHtml = "—";
-      if (r.hle) {
-        var hleMeta = ["HLE 前沿知识广度 · 无工具闭卷口径", "计入综合分(十组等权,权重 " + W_TXT + ")与命中数"];
-        if (r.hle.rank != null) hleMeta.push("源站排名 #" + r.hle.rank);
-        hleHtml = scoreSpan("hle", r.hle.score, "hle", fmtHle(r.hle.score), hleMeta.join(" · "), null, r.id);
+      if (r.hlediamond) {
+        var hleMeta = ["HLE-Diamond 1000 题 · 无工具 high reasoning", "计入综合分(十一组等权,权重 " + W_TXT + ")与命中数"];
+        if (r.hlediamond.overallScore != null) hleMeta.push("榜内标准分 " + r.hlediamond.overallScore);
+        if (r.hlediamond.rank != null) hleMeta.push("源站排名 #" + r.hlediamond.rank);
+        hleHtml = scoreSpan("hle", r.hlediamond.score, "hle", fmtHle(r.hlediamond.score), hleMeta.join(" · "), null, r.id);
+      }
+      // GPQA Diamond 单元格:正确率 + 悬浮;2026-11-26 起计入综合分与命中数
+      var gpqaHtml = "—";
+      if (r.gpqa) {
+        var gqMeta = ["GPQA Diamond 研究生级科学问答 · 正确率(%)", "计入综合分(十一组等权,权重 " + W_TXT + ")与命中数"];
+        if (r.gpqa.rank != null) gqMeta.push("源站排名 #" + r.gpqa.rank);
+        gpqaHtml = scoreSpan("gpqa", r.gpqa.score, "gpqa", fmtHle(r.gpqa.score), gqMeta.join(" · "), null, r.id);
       }
       // FrontierCode 单元格:原始分 + 版本徽标(2.0 主榜 / 1.1 兜底) + harness 灰字;
       // 分数包一层 .cell-val 固定宽度轨道:分数位数不同(44.2% / 3.8%)时,版本徽标仍落在整列同一 x 上
@@ -942,7 +957,8 @@
           '<td class="num grp-start">' + fcHtml + '</td>' +
           '<td class="num">' + tbHtml + '</td>' +
           // HLE 计分列:属「榜单基准」组尾,组起点竖线 ds 不变
-          '<td class="num">' + hleHtml + '</td>') +
+          '<td class="num">' + hleHtml + '</td>' +
+          '<td class="num">' + gpqaHtml + '</td>') +
         // ModelDial 列:第三方实测组起点,须带 grp-start(与表头 th-grp 左边框对齐);
         // 后续 llm2014/亿模亿样 属同组中部,不再带 grp-start —— 随 MATRIX_COLS 分组同步
         '<td class="num grp-start">' + mdHtml + '</td>' +
@@ -2427,23 +2443,39 @@
       '<div class="table-wrap"><table id="authApexTable" class="data-table"></table></div>',
       '来源:' + esc(ap.url || "") + '(官方:' + esc(ap.officialUrl || "") + ') · 更新 ' + esc(ap.updated || "") +
       ' · APEX-1(AI Productivity Index,Mercor):投行 / 咨询 / 律所 / 全科医生四类真实专业工作,隐藏 held-out 集 400 题(每类 100),每题每模型 8 次,专家 rubric + LM judge 评分;Mean Score = 所有任务通过标准比例的平均(主排序指标),Pass@1 = 单次尝试拿到满分的任务比例;越高越好。本榜仅展示,不计入综合分与命中数。');
-    // 9) HLE(Humanity's Last Exam)
-    var hl = S.hle || {};
-    var hlMs = D.hle();
-    var hlMixed = mixedSrc(hlMs);
+    // 9) HLE-Diamond(1000 题子集;2026-11-26 起接替原全量 HLE 的计分位)
+    var hl = S.hleDiamond || {};
+    var hlMs = D.hleDiamond();
     var hlRows = hlMs.map(function (m, i) {
-      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + (hlMixed ? srcBadge(m.src) : "") + '</td>' +
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + srcBadge(m.src) + '</td>' +
         '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
         '<td class="num">' + bvSpan("hle", fmtHle(m.score)) + '</td>' +
-        '<td class="num">' + esc(m.size || "—") + '</td><td class="num">' + esc(m.context || "—") + '</td>' +
-        '<td class="num">' + esc(m.cost || "—") + '</td></tr>';
+        '<td class="num">' + esc(m.overallScore != null ? m.overallScore : "—") + '</td>' +
+        '<td class="num">' + esc(m.context || "—") + '</td></tr>';
     });
-    html += authSectionHtml("Humanity's Last Exam", "无工具口径 · 计分", hl.officialUrl || hl.url,
+    html += authSectionHtml("HLE-Diamond", "无工具 · high reasoning · 计分", hl.officialUrl || hl.url,
       '<div class="table-wrap"><table id="authHleTable" class="data-table"></table></div>',
-      '主渠道:datalearner(厂商官方发布无工具成绩)· 补充:AA 无工具复测 · 更新 ' + esc(hl.updated || "") +
-      ' · 2500 道专家撰写、无联网可检索解的前沿题(数学/科学/人文学科等),闭卷得分越高越好;' + esc(hl.channelPolicy || "") +
-      '。本表统一为无工具(闭卷)口径:厂商明确标注无工具的条目优先,AA 无工具复测仅补官方渠道未收录的模型,行级「AA 复测」徽标区分;' +
-      '仅带工具分或未声明协议的模型不收录,表内分数可直接比较。本榜计入总览综合分与命中数(2026-11-15 起)。');
+      '来源:' + esc(hl.url || "") + ' · 更新 ' + esc(hl.updated || "") +
+      ' · Humanity’s Last Exam 的 1000 题精炼子集(500 推理 + 500 知识),无工具 high reasoning;' + esc(hl.variantNote || "") +
+      '。⚠ 与原 2500 题全量 HLE 是不同题集、分数不可直接比较(原全量 HLE 表已降为备用文件,前端不再加载)。' +
+      '本榜计入总览综合分与命中数(2026-11-26 起)。');
+    // 9.5) GPQA Diamond(研究生级科学问答;2026-11-26 新增计分榜)
+    var gq = S.gpqa || {};
+    var gqMs = D.gpqaDiamond();
+    var gqRows = gqMs.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + srcBadge(m.src) + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
+        '<td class="num">' + bvSpan("gpqa", fmtHle(m.score)) + '</td>' +
+        '<td class="num">' + esc(m.overallScore != null ? m.overallScore : "—") + '</td>' +
+        '<td class="num">' + esc(m.context || "—") + '</td></tr>';
+    });
+    html += authSectionHtml("GPQA Diamond", "研究生级科学问答 · 计分", gq.officialUrl || gq.url,
+      '<div class="table-wrap"><table id="authGpqaTable" class="data-table"></table></div>',
+      '来源:' + esc(gq.url || "") + ' · 更新 ' + esc(gq.updated || "") +
+      ' · 物理 / 化学 / 生物研究生级四选一题,专家可答、搜索引擎不可答;score 为原始正确率(%);' +
+      '各厂商发布口径的工具使用不统一、源站未逐行标注 harness,故本表不做跨模型工具口径的严格比较。' +
+      '本榜计入总览综合分与命中数(2026-11-26 起)。');
+
     // 10) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();
@@ -2616,7 +2648,8 @@
     bcTable("authBCVQATable", vqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
     bcTable("authBCCQATable", cqaRows, ["l1", "l2", "l3", "l4", "total"], ["num", "num", "num", "num", "num"]);
     authDeferTable("authApexTable", ["#", "模型", "厂商", "Mean Score", "Pass@1", "强度", "样本数"], apRows, ["", "", "", "num bv bv-apex", "num", "num", "num"]);
-    authDeferTable("authHleTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], hlRows, ["", "", "", "num bv bv-hle", "num", "num", "num"]);
+    authDeferTable("authHleTable", ["#", "模型", "厂商", "HLE-Diamond", "榜内标准分", "上下文"], hlRows, ["", "", "", "num bv bv-hle", "num", "num"]);
+    authDeferTable("authGpqaTable", ["#", "模型", "厂商", "GPQA Diamond", "榜内标准分", "上下文"], gqRows, ["", "", "", "num bv bv-gpqa", "num", "num"]);
     authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authProgrambenchTable", ["#", "模型", "Agent", "Fully Resolved", "Almost", "Raw Pass Rate"], pbRows, ["", "", "", "num bv bv-programbench", "num", "num"]);
     authDeferTable("authCodeMigrationTable", ["#", "模型", "准确率", "成本/测试", "耗时/测试"], cmRows, ["", "", "num bv bv-valscodemigration", "num", "num"]);
@@ -3905,7 +3938,8 @@
     tbench: { src: "data/tbench.js?v=20261117b", global: "TBENCH" },
     tbench_v3: { src: "data/tbench_v3.js?v=20260912b", global: "TBENCH_V3" },
     tbench_v2: { src: "data/tbench_v2.js?v=20261117a", global: "TBENCH_V21" },
-    hle: { src: "data/hle.js?v=20261117a", global: "HLE" },
+    hle_diamond: { src: "data/hle_diamond.js?v=20261126a", global: "HLE_DIAMOND" },
+    gpqa_diamond: { src: "data/gpqa_diamond.js?v=20261126a", global: "GPQA_DIAMOND" },
     modeldial: { src: "data/modeldial.js?v=20261116a", global: "MODELDIAL" },
     releases: { src: "data/releases.js?v=20261119b", global: "RELEASES" },
     aicodingdaily: { src: "data/aicodingdaily.js?v=20261110b", global: "AICODINGDAILY" },
@@ -3946,7 +3980,7 @@
   // 子页 46~138KB(原先每页固定 631KB)。
   var BENCH_KEYS = [
     "pricing", "deepswe", "deepswe_v10", "frontiercode", "frontiercodeV11", "llm2014", "arena_webdev", "arena_agent",
-    "arenaofbias", "tbench", "tbench_v3", "tbench_v2", "hle", "modeldial",
+    "arenaofbias", "tbench", "tbench_v3", "tbench_v2", "hle_diamond", "gpqa_diamond", "modeldial",
     "releases", "aicodingdaily", "octathlon", "seen", "news"
   ];
   // 总览已把矩阵的 DeepSWE 列换成 FrontierCode,这两个源在总览只被权威页使用,不进第二批注入
@@ -3955,7 +3989,7 @@
     // 总览:新闻 + 基准速览(benchSummary 读 10 个榜)+ 矩阵。矩阵要 pricing/hle/deepswe_v10 三列,
     // 但那三列只在矩阵里用,矩阵本身在首屏之下且是懒渲染,故一并留到第二批。
     overview: ["frontiercode", "frontiercodeV11", "llm2014", "arena_webdev", "arena_agent", "arenaofbias", "tbench",
-      "tbench_v3", "tbench_v2", "hle", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
+      "tbench_v3", "tbench_v2", "hle_diamond", "gpqa_diamond", "modeldial", "releases", "aicodingdaily", "octathlon", "seen", "news"],
     llm2014: ["llm2014", "seen"],
     modeldial: ["modeldial", "seen"],
     arenaofbias: ["arenaofbias", "seen"],
@@ -4336,7 +4370,7 @@
     if (tpEl) tpEl.addEventListener("change", function () {
       state.thirdPartyOnly = tpEl.checked;
       // 被隐藏的榜单基准列若正作为排序列,退回默认综合排序
-      if (state.thirdPartyOnly && state.sortKey && /^(frontiercode|tbench|hle)$/.test(state.sortKey)) state.sortKey = null;
+      if (state.thirdPartyOnly && state.sortKey && /^(frontiercode|tbench|hlediamond|gpqa)$/.test(state.sortKey)) state.sortKey = null;
       if (CMP && CMP.setThirdMode) CMP.setThirdMode(state.thirdPartyOnly);
       renderMatrix();
     });

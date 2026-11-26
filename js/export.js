@@ -9,7 +9,7 @@
   var PAGES = {
     overview: {
       title: "总览 · 交叉模型矩阵",
-      src: ["FRONTIERCODE", "FRONTIERCODE_V11", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH", "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE"]
+      src: ["FRONTIERCODE", "FRONTIERCODE_V11", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH", "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE_DIAMOND", "GPQA_DIAMOND"]
     },
     llm2014: { title: "llm2014 Agentic 编程榜", src: ["LLM2014"] },
     modeldial: { title: "ModelDial 雷达", src: ["MODELDIAL"] },
@@ -18,7 +18,7 @@
     octathlon: { title: "AI 十项全能·定时挑战赛", src: ["OCTATHLON"] },
     authority: {
       title: "权威基准测试",
-      src: ["DEEPSWE", "TBENCH", "TBSCIENCE", "OSWORLD", "LASTEXAM", "ARCAGI3", "BENCHCAD", "APEX", "HLE",
+      src: ["DEEPSWE", "TBENCH", "TBSCIENCE", "OSWORLD", "LASTEXAM", "ARCAGI3", "BENCHCAD", "APEX", "HLE_DIAMOND", "GPQA_DIAMOND",
         "NL2REPO", "PROGRAMBENCH", "VALSCODEMIGRATION", "CURSORBENCH", "FRONTIERCODE", "FRONTIERSWE", "AACODING", "AUTOMATIONBENCH"]
     },
     plans: { title: "订阅套餐 · 额度/价格对比", src: ["CODINGPLAN"] },

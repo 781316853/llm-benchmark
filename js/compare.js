@@ -24,15 +24,16 @@
   var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
-  // 10 个计分组的键(与 WEIGHTS 一致;VCB-1-100 已于 2026-11-09 下线,HLE 于 2026-11-15 入组,
-  // AI 十项全能于 2026-11-24 入组)
-  var GROUPS = ["frontiercode", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hle"];
+  // 11 个计分组的键(与 WEIGHTS 一致;VCB-1-100 已于 2026-11-09 下线,HLE 于 2026-11-15 入组,
+  // AI 十项全能于 2026-11-24 入组;2026-11-26 起原 HLE 组换为 HLE-Diamond(1000 题子集),
+  // 同时新增 GPQA Diamond 组)
+  var GROUPS = ["frontiercode", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hlediamond", "gpqa"];
 
   // ===== 「只看第三方」口径 =====
   // 矩阵的「第三方实测」分组 = 第三方独立实测(ModelDial / AI Coding Daily / AI 十项全能)
   // + 社区盲评与真实使用(WebDev / Agent Arena / 亿模亿样)+ 站主实测(llm2014),共 7 组。
   // 打开后:综合分只在这 7 组上等权平均(在场 N 组各 1/N),排名/梯队/性价比/命中都按第三方口径算;
-  // 榜单基准 3 组(DeepSWE / Terminal-Bench / HLE)不参与打分,矩阵里仍以参考列展示。
+  // 榜单基准 4 组(FrontierCode / Terminal-Bench / HLE-Diamond / GPQA Diamond)不参与打分,矩阵里仍以参考列展示。
   var THIRD_GROUPS = ["modeldial", "webdev", "agentarena", "llm", "arenaofbias", "aicodingdaily", "octathlon"];
   var thirdMode = false;
   function setThirdMode(v) { thirdMode = !!v; }
@@ -60,7 +61,8 @@
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
     aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
     octathlon: function (e) { return e.octathlon ? e.octathlon.score : null; },
-    hle: function (e) { return e.hle ? e.hle.score : null; },
+    hlediamond: function (e) { return e.hlediamond ? e.hlediamond.score : null; },
+    gpqa:    function (e) { return e.gpqa ? e.gpqa.score : null; },
   };
   // 参考行(命中 3 榜)的区间位置:按其「参考综合分」在排名行综合分序列中的应处名次。
   // 参考综合分与排名行完全同口径(各榜榜内稳健标准分按在场权重归一,无豁免、无折减),
@@ -151,7 +153,7 @@
     return best === -Infinity ? 0 : best;
   }
   // 计分组权重(2026-11-26 起:**等权**)
-  // 口径:参与积分的分组一律同权 —— 在场 N 组,每组就是 1/N(当前 10 组,各 10%)。
+  // 口径:参与积分的分组一律同权 —— 在场 N 组,每组就是 1/N(当前 11 组,各 9.1%)。
   // 权重不再表达「哪个榜更权威 / 更该信」的价值判断,区分度全部交给各榜榜内稳健标准分(z)。
   // 为什么可以这么改:2026-09-22 起综合分已是「榜内稳健标准分 + 按在场权重归一」,
   // 各榜量纲不可比、区分度差异的问题已在榜内定标阶段解决;差异化权重原本是给「量纲不可比」
@@ -243,7 +245,8 @@
     arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
     aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
     octathlon: function (e) { return e.octathlon ? e.octathlon.score : null; },
-    hle: function (e) { return e.hle ? e.hle.score : null; },
+    hlediamond: function (e) { return e.hlediamond ? e.hlediamond.score : null; },
+    gpqa:    function (e) { return e.gpqa ? e.gpqa.score : null; },
   };
   // 中位数(调用方传入已升序数组;偶数长度取两中均值 —— 朴素取下中位数会让统计量随样本 ±1 跳档)
   function median(sorted) {

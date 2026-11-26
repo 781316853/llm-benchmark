@@ -266,6 +266,26 @@ module.exports = {
       host: "www.datalearner.com", src: "datalearner",
       officialUrl: "https://lastexam.ai/"
     },
+    hle_diamond: {
+      // HLE-Diamond:Humanity's Last Exam 的 1,000 题精炼子集(500 推理 + 500 知识),
+      // ⚠ 与原 HLE(2500 题全量)/ HLE-Rolling / HLE-Verified 是**不同题集**,分数不可直接比较。
+      // 主源:benchlm.ai 镜像页(内嵌 __NEXT_DATA__,含全量无工具 high reasoning 成绩);
+      // 原源 lastexam.ai/blog/hle-diamond 只有博客图,无结构化接口,故以 benchlm 为主源而非补充源。
+      // 站点 2026-11-26 起以本榜取代原 HLE 计分位置(原全量 HLE 文件保留、不再加载)。
+      url: "https://benchlm.ai/benchmarks/hle-diamond",
+      host: "benchlm.ai", src: "benchlm",
+      officialUrl: "https://lastexam.ai/blog/hle-diamond",
+      version: "1.0", tasks: 1000
+    },
+    gpqa_diamond: {
+      // GPQA Diamond:研究生级科学问答(物理/化学/生物),无工具口径。
+      // 主源:benchlm.ai 镜像页(__NEXT_DATA__ 内嵌全量表:score 为原始正确率,%);
+      // 与 HLE-Diamond 同源同渠道,供总览矩阵与「权威基准测试」页展示。
+      url: "https://benchlm.ai/benchmarks/gpqa-diamond",
+      host: "benchlm.ai", src: "benchlm",
+      officialUrl: "https://github.com/idavidrein/gpqa",
+      version: "diamond"
+    },
     hle_aa: {
       // HLE 补充源(T3):Artificial Analysis 无工具复测口径的 benchlm 镜像页(内嵌 JSON,240+ 模型)。
       // AA 为自家 harness 复测,分数系统性低于厂商官方口径约 5 分;仅用于补官方渠道未收录的模型

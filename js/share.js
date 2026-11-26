@@ -34,7 +34,7 @@
       frontiercode: "FrontierCode", llm: "llm2014 all-history", webdev: "WebDev Elo",
       agentarena: "Agent Arena", tbench: "Terminal-Bench", modeldial: "ModelDial",
       arenaofbias: "Arena of Bias Elo", aicodingdaily: "AI Coding Daily",
-      octathlon: "AI Decathlon", hle: "HLE"
+      octathlon: "AI Decathlon", hlediamond: "HLE-Diamond", gpqa: "GPQA Diamond"
     },
     dialogTitle: "Share leaderboard", dialogDesc: "Pick a layout, then copy or save the image.",
     mode: "Content", modeBoard: "Leaderboard", modeModel: "Scorecard",
@@ -76,7 +76,7 @@
       frontiercode: "FrontierCode", llm: "llm2014 全历史", webdev: "WebDev Elo",
       agentarena: "Agent Arena", tbench: "Terminal-Bench", modeldial: "ModelDial",
       arenaofbias: "亿模亿样 Elo", aicodingdaily: "AI Coding Daily",
-      octathlon: "AI 十项全能", hle: "HLE"
+      octathlon: "AI 十项全能", hlediamond: "HLE-Diamond", gpqa: "GPQA Diamond"
     },
     dialogTitle: "分享榜单", dialogDesc: "选择版式,复制或保存图片。",
     mode: "分享内容", modeBoard: "榜单图", modeModel: "成绩卡",
@@ -137,7 +137,8 @@
     { key: "arenaofbias", weight: "10%", fmt: function (v) { return v == null ? "—" : String(Math.round(v)); } },
     { key: "aicodingdaily", weight: "10%", fmt: function (v) { return v == null ? "—" : n1(v) + "/70"; } },
     { key: "octathlon", weight: "10%", fmt: function (v) { return v == null ? "—" : n1(v) + "/100"; } },
-    { key: "hle", weight: "10%", fmt: pc }
+    { key: "hlediamond", weight: "9.1%", fmt: pc },
+    { key: "gpqa", weight: "9.1%", fmt: pc }
   ];
 
   function n1(v) { return v == null || !isFinite(v) ? "—" : Number(v).toFixed(1); }
@@ -382,7 +383,7 @@
       ctx.fillStyle = T.dim;
       var line1 = "FrontierCode 10% · llm2014 10% · WebDev 10% · Agent Arena 10% · Terminal-Bench 10%";
       var line2 = "ModelDial 10% · " + S.bench.arenaofbias.replace(" Elo", "") + " 10% · AI Coding Daily 10% · " +
-        S.bench.octathlon + " 10% · HLE 10%";
+        S.bench.octathlon + " 9.1% · HLE-Diamond 9.1% · GPQA Diamond 9.1%";
       ctx.fillText(line1, 64, legendY + 38);
       ctx.fillText(line2, 64, legendY + 70);
     }
@@ -628,7 +629,8 @@
         score: Math.round(window.CMP.composite(r) * 10) / 10,
         frontiercode: r.frontiercode ? r.frontiercode.score : null,
         tbench: r.tbench ? r.tbench.score : null,
-        hle: r.hle ? r.hle.score : null,
+        hlediamond: r.hlediamond ? r.hlediamond.score : null,
+        gpqa: r.gpqa ? r.gpqa.score : null,
         modeldial: r.modeldial ? r.modeldial.score : null,
         webdev: r.webdev ? r.webdev.score : null,
         agentarena: r.agentarena ? r.agentarena.score : null,
@@ -639,7 +641,7 @@
       };
     });
     var keys = ["FRONTIERCODE", "FRONTIERCODE_V11", "LLM2014", "ARENA_WEBDEV", "ARENA_AGENT", "TBENCH",
-      "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE"];
+      "MODELDIAL", "ARENAOFBIAS", "AICODINGDAILY", "OCTATHLON", "HLE_DIAMOND", "GPQA_DIAMOND"];
     var snap = null;
     keys.forEach(function (k) {
       var g = window[k];
