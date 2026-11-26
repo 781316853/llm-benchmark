@@ -500,7 +500,9 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
 #matrixTable thead tr.col-row th { white-space: normal; line-height: 1.3; vertical-align: top; }
 /* 表头拆两行:列名 + 括号单位。单位整段 nowrap,避免窄列把 "(解决率)" 拦腰截断后
    看起来像串到右边 HLE 列里;名称行可正常折行。 */
-#matrixTable thead tr.col-row th .th-name { display: block; }
+#matrixTable thead tr.col-row th .th-name { display: block; font-size: 12px; }
+/* 英文列名更长,再收一号,保证 EN 站表格同样与卡片同宽、不横向溢出 */
+html[lang="en"] #matrixTable thead tr.col-row th .th-name { font-size: 11px; }
 #matrixTable thead tr.col-row th .th-unit { display: block; margin-top: 2px; font-size: var(--fs-2xs);
   font-weight: 600; color: var(--text-tertiary); letter-spacing: 0; }
 /* 单元格里的 harness / agent 元数据独占一行:整格宽度下 Claude Code / Codex CLI 一行放得下,
@@ -1813,7 +1815,9 @@ html[lang="en"] .topbar-meta { flex: 1 1 100%; }
 
 /* 矩阵在 1440 宽内收住:略收单元格留白与梯队胶囊,避免末列被视口裁切 */
 #matrixTable { font-size: 12.5px; }
-#matrixTable th, #matrixTable td { padding: 9px 4px; }
+#matrixTable th, #matrixTable td { padding: 9px 3px; font-size: 12.5px; }
+/* 数字列 11.5px:16 列在卡片宽度内正好放下,表格右缘与卡片平齐(不再横向溢出 30px) */
+#matrixTable tbody td.num { font-size: 11.5px; }
 #matrixTable th:last-child, #matrixTable td:last-child { min-width: 44px; }
 .tier-badge { min-width: 28px; padding: 2px 6px; }
 

@@ -1088,6 +1088,13 @@
       "ModelDial (综合分)": "ModelDial (composite)",
       "Agent Arena (净提升)": "Agent Arena (net gain)",
       "llm2014 (全历史/100)": "llm2014 (all-history/100)",
+      // 表头拆成「名称 + 单位」两行后,单位是独立文本节点,需单独给词条
+      "(解决率)": "(solve rate)",
+      "(综合分)": "(composite)",
+      "(净提升)": "(net gain)",
+      "(全历史/100)": "(all-history/100)",
+      "(总分/70)": "(total/70)",
+      "(总分/100)": "(total/100)",
       "llm2014 全历史保序校正分:难度校正 + 月度保序,同分按最新月份优先;可超过 100 或为负;已计入综合分(十组等权,权重 10%)与命中数":
         "llm2014 all-history order-calibrated score: difficulty adjustment + monthly order, ties go to the newest month; may exceed 100 or be negative; counts toward the composite (equal weight, 10%) and coverage",
       "总览综合分使用「全部月份 · 难度校正」分,不是本页月度分":
