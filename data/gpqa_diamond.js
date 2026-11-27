@@ -13,10 +13,10 @@ window.GPQA_DIAMOND = {
   'officialUrl': 'https://github.com/idavidrein/gpqa',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 20:29',
+  'refreshedAt': '2026-11-27 20:42',
   'stats': {
     'tasks': 198,
-    'entries': 264,
+    'entries': 266,
     'datalearner': 280,
     'benchlm': 90
   },
@@ -546,11 +546,17 @@ window.GPQA_DIAMOND = {
       'protocol': '无工具'
     },
     {
+      'model': 'Qwen3.6-Plus',
+      'score': 90.4,
+      'src': 'qwen-official',
+      'rank': 61
+    },
+    {
       'model': 'Beam 1.0 501B-A23B FP8',
       'org': 'Reflection AI',
       'score': 90.3,
       'src': 'benchlm',
-      'rank': 61,
+      'rank': 62,
       'protocol': '无工具'
     },
     {
@@ -560,7 +566,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 62
+      'rank': 63
     },
     {
       'model': 'Claude Sonnet 4.6',
@@ -569,14 +575,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 63
+      'rank': 64
     },
     {
       'model': 'Interfaze Beta',
       'org': 'Interfaze',
       'score': 89.9,
       'src': 'benchlm',
-      'rank': 64,
+      'rank': 65,
       'protocol': '无工具'
     },
     {
@@ -584,7 +590,7 @@ window.GPQA_DIAMOND = {
       'org': 'NVIDIA',
       'score': 89.9,
       'src': 'benchlm',
-      'rank': 65,
+      'rank': 66,
       'protocol': '无工具'
     },
     {
@@ -594,14 +600,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 66
+      'rank': 67
     },
     {
       'model': 'Nemotron 3.5 Super VL 120B A12B',
       'org': 'NVIDIA',
       'score': 89.52,
       'src': 'benchlm',
-      'rank': 67,
+      'rank': 68,
       'protocol': '无工具'
     },
     {
@@ -611,14 +617,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 68
+      'rank': 69
     },
     {
       'model': 'Inkling-Small',
       'org': 'Thinking Machines Lab',
       'score': 89.5,
       'src': 'benchlm',
-      'rank': 69,
+      'rank': 70,
       'protocol': '无工具'
     },
     {
@@ -626,7 +632,7 @@ window.GPQA_DIAMOND = {
       'org': 'Reflection AI',
       'score': 89.3,
       'src': 'benchlm',
-      'rank': 70,
+      'rank': 71,
       'protocol': '无工具'
     },
     {
@@ -634,7 +640,7 @@ window.GPQA_DIAMOND = {
       'org': 'Inception',
       'score': 89.23,
       'src': 'benchlm',
-      'rank': 71,
+      'rank': 72,
       'protocol': '无工具'
     },
     {
@@ -644,14 +650,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 72
+      'rank': 73
     },
     {
       'model': 'Ornith-1.5-35B-A3B',
       'org': 'Ornith AI',
       'score': 89.2,
       'src': 'benchlm',
-      'rank': 73,
+      'rank': 74,
       'protocol': '无工具'
     },
     {
@@ -659,7 +665,7 @@ window.GPQA_DIAMOND = {
       'org': 'DeepSeek',
       'score': 89.1,
       'src': 'benchlm',
-      'rank': 74,
+      'rank': 75,
       'protocol': '无工具'
     },
     {
@@ -669,14 +675,14 @@ window.GPQA_DIAMOND = {
       'license': '有条件免费商用；提供模型服务且连续12个月合计营收超过2000万美元须与Meta另签协议',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 75
+      'rank': 76
     },
     {
       'model': 'Solar Pro 4',
       'org': 'Upstage',
       'score': 89,
       'src': 'benchlm',
-      'rank': 76,
+      'rank': 77,
       'protocol': '无工具'
     },
     {
@@ -686,14 +692,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 77
+      'rank': 78
     },
     {
       'model': 'Nemotron 3.5 Bolt 74B-A9B BF16',
       'org': 'NVIDIA',
       'score': 88.83,
       'src': 'benchlm',
-      'rank': 78,
+      'rank': 79,
       'protocol': '无工具'
     },
     {
@@ -703,14 +709,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 79
+      'rank': 80
     },
     {
       'model': 'Grok 4.20',
       'org': 'xAI',
       'score': 88.5,
       'src': 'benchlm',
-      'rank': 80,
+      'rank': 81,
       'protocol': '无工具'
     },
     {
@@ -720,7 +726,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 81
+      'rank': 82
     },
     {
       'model': 'Qwen3.5-397B-A17B',
@@ -729,14 +735,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 82
+      'rank': 83
     },
     {
       'model': 'OrcaCyber-Nano-1.0',
       'org': 'OrcaRouter',
       'score': 88.28,
       'src': 'benchlm',
-      'rank': 83,
+      'rank': 84,
       'protocol': '无工具'
     },
     {
@@ -746,7 +752,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 84
+      'rank': 85
     },
     {
       'model': 'GPT-5.1',
@@ -755,14 +761,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 85
+      'rank': 86
     },
     {
       'model': 'DeepSeek V4 Flash 0731',
       'org': 'DeepSeek',
       'score': 88.1,
       'src': 'benchlm',
-      'rank': 86,
+      'rank': 87,
       'protocol': '无工具'
     },
     {
@@ -772,7 +778,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 87
+      'rank': 88
     },
     {
       'model': 'Kimi K2.5',
@@ -781,13 +787,13 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 88
+      'rank': 89
     },
     {
       'model': 'K2.5-1T-A32B',
       'score': 87.6,
       'src': 'qwen-official',
-      'rank': 89
+      'rank': 90
     },
     {
       'model': 'Qwen3-Max-Thinking',
@@ -796,14 +802,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 90
+      'rank': 91
     },
     {
       'model': 'DeepSeek V4 Flash (High)',
       'org': 'DeepSeek',
       'score': 87.4,
       'src': 'benchlm',
-      'rank': 91,
+      'rank': 92,
       'protocol': '无工具'
     },
     {
@@ -811,7 +817,7 @@ window.GPQA_DIAMOND = {
       'org': 'Tencent',
       'score': 87.2,
       'src': 'benchlm',
-      'rank': 92,
+      'rank': 93,
       'protocol': '无工具'
     },
     {
@@ -821,7 +827,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 93
+      'rank': 94
     },
     {
       'model': 'Opus 4.5',
@@ -830,14 +836,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 94
+      'rank': 95
     },
     {
       'model': 'MiniMax M2.7',
       'org': 'MiniMax',
       'score': 87,
       'src': 'benchlm',
-      'rank': 95,
+      'rank': 96,
       'protocol': '无工具'
     },
     {
@@ -845,7 +851,7 @@ window.GPQA_DIAMOND = {
       'org': 'NVIDIA',
       'score': 87,
       'src': 'benchlm',
-      'rank': 96,
+      'rank': 97,
       'protocol': '无工具'
     },
     {
@@ -853,7 +859,7 @@ window.GPQA_DIAMOND = {
       'org': 'Thinking Machines Lab',
       'score': 86.6,
       'src': 'benchlm',
-      'rank': 97,
+      'rank': 98,
       'protocol': '无工具'
     },
     {
@@ -861,7 +867,7 @@ window.GPQA_DIAMOND = {
       'org': 'NVIDIA',
       'score': 86.43,
       'src': 'benchlm',
-      'rank': 98,
+      'rank': 99,
       'protocol': '无工具'
     },
     {
@@ -871,14 +877,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 99
+      'rank': 100
     },
     {
       'model': 'Ornith-1.5-9B',
       'org': 'Ornith AI',
       'score': 86.4,
       'src': 'benchlm',
-      'rank': 100,
+      'rank': 101,
       'protocol': '无工具'
     },
     {
@@ -888,14 +894,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 101
+      'rank': 102
     },
     {
       'model': 'Solar Open 2',
       'org': 'Upstage',
       'score': 86.3,
       'src': 'benchlm',
-      'rank': 102,
+      'rank': 103,
       'protocol': '无工具'
     },
     {
@@ -905,7 +911,13 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 103
+      'rank': 104
+    },
+    {
+      'model': 'GLM-5.1 Thinking',
+      'score': 86.2,
+      'src': 'qwen-official',
+      'rank': 105
     },
     {
       'model': 'GPT-5',
@@ -914,7 +926,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 104
+      'rank': 106
     },
     {
       'model': 'GLM-5',
@@ -923,19 +935,19 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 105
+      'rank': 107
     },
     {
       'model': 'Qwen3.6-35BA3B',
       'score': 86,
       'src': 'qwen-official',
-      'rank': 106
+      'rank': 108
     },
     {
       'model': 'Qwen3.5-Plus-NoThinking',
       'score': 85.9,
       'src': 'qwen-official',
-      'rank': 107
+      'rank': 109
     },
     {
       'model': 'Claude Fable 5',
@@ -944,14 +956,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 108
+      'rank': 110
     },
     {
       'model': 'Ternary Bonsai 2 27B',
       'org': 'Prism ML',
       'score': 85.76,
       'src': 'benchlm',
-      'rank': 109,
+      'rank': 111,
       'protocol': '无工具'
     },
     {
@@ -961,7 +973,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 110
+      'rank': 112
     },
     {
       'model': 'GLM-4.7',
@@ -970,14 +982,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 111
+      'rank': 113
     },
     {
       'model': 'A.X K2',
       'org': 'SK Telecom',
       'score': 85.6,
       'src': 'benchlm',
-      'rank': 112,
+      'rank': 114,
       'protocol': '无工具'
     },
     {
@@ -987,7 +999,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 113
+      'rank': 115
     },
     {
       'model': 'MiniMax M2.5',
@@ -996,14 +1008,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 114
+      'rank': 116
     },
     {
       'model': 'Ripple-65B Preview',
       'org': 'Ricursive Intelligence',
       'score': 85.2,
       'src': 'benchlm',
-      'rank': 115,
+      'rank': 117,
       'protocol': '无工具'
     },
     {
@@ -1011,7 +1023,7 @@ window.GPQA_DIAMOND = {
       'org': 'InclusionAI',
       'score': 84.97,
       'src': 'benchlm',
-      'rank': 116,
+      'rank': 118,
       'protocol': '无工具'
     },
     {
@@ -1021,7 +1033,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 117
+      'rank': 119
     },
     {
       'model': 'Claude Sonnet 3.7',
@@ -1030,7 +1042,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 118
+      'rank': 120
     },
     {
       'model': 'Grok-3 - Reasoning Beta',
@@ -1039,7 +1051,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 119
+      'rank': 121
     },
     {
       'model': 'Kimi K2 Thinking',
@@ -1048,7 +1060,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 120
+      'rank': 122
     },
     {
       'model': 'Gemma 4 31B',
@@ -1057,7 +1069,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 121
+      'rank': 123
     },
     {
       'model': 'MAI-Thinking-1',
@@ -1066,13 +1078,13 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 122
+      'rank': 124
     },
     {
       'model': 'Qwen3.5-35BA3B',
       'score': 84.2,
       'src': 'qwen-official',
-      'rank': 123
+      'rank': 125
     },
     {
       'model': 'Grok-3 mini - Reasoning',
@@ -1081,7 +1093,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 124
+      'rank': 126
     },
     {
       'model': 'Gemini 2.5 Pro Experimental 03-25',
@@ -1090,7 +1102,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 125
+      'rank': 127
     },
     {
       'model': 'o3-pro',
@@ -1099,21 +1111,21 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 126
+      'rank': 128
     },
     {
       'model': 'Ling 3.0 Flash FP8',
       'org': 'InclusionAI',
       'score': 84,
       'src': 'benchlm',
-      'rank': 127,
+      'rank': 129,
       'protocol': '无工具'
     },
     {
       'model': 'Qwen3.5-Omni-Plus',
       'score': 83.9,
       'src': 'qwen-official',
-      'rank': 128
+      'rank': 130
     },
     {
       'model': 'Muse Glimmer-30B',
@@ -1122,7 +1134,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 129
+      'rank': 131
     },
     {
       'model': 'Gemini 3.5 Flash-Lite',
@@ -1131,7 +1143,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 130
+      'rank': 132
     },
     {
       'model': 'OpenAI o3',
@@ -1140,7 +1152,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 131
+      'rank': 133
     },
     {
       'model': 'Gemini-2.5-Pro-Preview-05-06',
@@ -1149,7 +1161,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 132
+      'rank': 134
     },
     {
       'model': 'Gemini 2.5 Flash',
@@ -1158,7 +1170,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 133
+      'rank': 135
     },
     {
       'model': 'DeepSeek V3.2',
@@ -1167,7 +1179,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 134
+      'rank': 136
     },
     {
       'model': 'Gemma 4 26B A4B',
@@ -1176,20 +1188,20 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 135
+      'rank': 137
     },
     {
       'model': 'Gemma4-26BA4B',
       'score': 82.3,
       'src': 'qwen-official',
-      'rank': 136
+      'rank': 138
     },
     {
       'model': 'K-EXAONE 2.0',
       'org': 'LG AI Research',
       'score': 82.2,
       'src': 'benchlm',
-      'rank': 137,
+      'rank': 139,
       'protocol': '无工具'
     },
     {
@@ -1199,7 +1211,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 138
+      'rank': 140
     },
     {
       'model': 'Gemini 3.1 Flash-Lite',
@@ -1208,7 +1220,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 139
+      'rank': 141
     },
     {
       'model': 'Qwen3.5-9B',
@@ -1217,7 +1229,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 140
+      'rank': 142
     },
     {
       'model': 'OpenAI o4 - mini',
@@ -1226,7 +1238,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 141
+      'rank': 143
     },
     {
       'model': 'MiniMax M3',
@@ -1235,7 +1247,7 @@ window.GPQA_DIAMOND = {
       'license': '不可以商用',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 142
+      'rank': 144
     },
     {
       'model': 'Qwen3-235B-A22B-Thinking-2507',
@@ -1244,7 +1256,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 143
+      'rank': 145
     },
     {
       'model': 'DeepSeek-R1-0528',
@@ -1253,7 +1265,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 144
+      'rank': 146
     },
     {
       'model': 'Opus 4.1',
@@ -1262,7 +1274,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 145
+      'rank': 147
     },
     {
       'model': 'GLM-4.6',
@@ -1271,7 +1283,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 146
+      'rank': 148
     },
     {
       'model': 'M2.1',
@@ -1280,7 +1292,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 147
+      'rank': 149
     },
     {
       'model': 'DeepSeek-V3.1 Terminus',
@@ -1289,7 +1301,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 148
+      'rank': 150
     },
     {
       'model': 'Grok 3',
@@ -1298,7 +1310,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 149
+      'rank': 151
     },
     {
       'model': 'GPT OSS 120B',
@@ -1307,7 +1319,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 150
+      'rank': 152
     },
     {
       'model': 'DeepSeek-V3.1',
@@ -1316,7 +1328,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 151
+      'rank': 153
     },
     {
       'model': 'DeepSeek V3.2-Exp',
@@ -1325,7 +1337,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 152
+      'rank': 154
     },
     {
       'model': 'OpenAI o3-mini (high)',
@@ -1334,7 +1346,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 153
+      'rank': 155
     },
     {
       'model': 'GLM-4.5',
@@ -1343,14 +1355,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 154
+      'rank': 156
     },
     {
       'model': 'Mercury 2.5',
       'org': 'Inception',
       'score': 79,
       'src': 'benchlm',
-      'rank': 155,
+      'rank': 157,
       'protocol': '无工具'
     },
     {
@@ -1358,7 +1370,7 @@ window.GPQA_DIAMOND = {
       'org': 'Google',
       'score': 78.8,
       'src': 'benchlm',
-      'rank': 156,
+      'rank': 158,
       'protocol': '无工具'
     },
     {
@@ -1368,7 +1380,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 157
+      'rank': 159
     },
     {
       'model': 'Qwen3-235B-A22B-2507',
@@ -1377,7 +1389,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 158
+      'rank': 160
     },
     {
       'model': 'OpenAI o1',
@@ -1386,7 +1398,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 159
+      'rank': 161
     },
     {
       'model': 'Intern-S1',
@@ -1395,14 +1407,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 160
+      'rank': 162
     },
     {
       'model': 'Spark-X2.6-4B',
       'org': 'SparkLLM',
       'score': 77.1,
       'src': 'benchlm',
-      'rank': 161,
+      'rank': 163,
       'protocol': '无工具'
     },
     {
@@ -1412,20 +1424,20 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 162
+      'rank': 164
     },
     {
       'model': 'Qwen3.5-Omni-Flash',
       'score': 76.4,
       'src': 'qwen-official',
-      'rank': 163
+      'rank': 165
     },
     {
       'model': 'Trinity-Large-Thinking',
       'org': 'Arcee AI',
       'score': 76.3,
       'src': 'benchlm',
-      'rank': 164,
+      'rank': 166,
       'protocol': '无工具'
     },
     {
@@ -1433,7 +1445,7 @@ window.GPQA_DIAMOND = {
       'org': 'NVIDIA',
       'score': 75.57,
       'src': 'benchlm',
-      'rank': 165,
+      'rank': 167,
       'protocol': '无工具'
     },
     {
@@ -1443,7 +1455,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 166
+      'rank': 168
     },
     {
       'model': 'GLM-4.7-Flash',
@@ -1452,7 +1464,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 167
+      'rank': 169
     },
     {
       'model': 'Kimi K2',
@@ -1461,7 +1473,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 168
+      'rank': 170
     },
     {
       'model': 'GLM-4.5-Air',
@@ -1470,14 +1482,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 169
+      'rank': 171
     },
     {
       'model': 'LFM2.5-24B-A2B',
       'org': 'LiquidAI',
       'score': 74.42,
       'src': 'benchlm',
-      'rank': 170,
+      'rank': 172,
       'protocol': '无工具'
     },
     {
@@ -1487,7 +1499,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 171
+      'rank': 173
     },
     {
       'model': 'Pangu Pro MoE',
@@ -1496,7 +1508,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 172
+      'rank': 174
     },
     {
       'model': 'Claude Sonnet 4.5',
@@ -1505,14 +1517,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 173
+      'rank': 175
     },
     {
       'model': 'Mercury 2',
       'org': 'Inception',
       'score': 73.6,
       'src': 'benchlm',
-      'rank': 174,
+      'rank': 176,
       'protocol': '无工具'
     },
     {
@@ -1522,7 +1534,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 175
+      'rank': 177
     },
     {
       'model': 'Step3',
@@ -1531,7 +1543,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 176
+      'rank': 178
     },
     {
       'model': 'DeepSeek-V4-Pro',
@@ -1540,7 +1552,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 177
+      'rank': 179
     },
     {
       'model': 'GPT-5.4 nano',
@@ -1549,14 +1561,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 178
+      'rank': 180
     },
     {
       'model': 'Nemotron 3 Nano Omni 30B A3B',
       'org': 'NVIDIA',
       'score': 72.2,
       'src': 'benchlm',
-      'rank': 179,
+      'rank': 181,
       'protocol': '无工具'
     },
     {
@@ -1566,7 +1578,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 180
+      'rank': 182
     },
     {
       'model': 'gpt-oss-20b',
@@ -1575,7 +1587,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 181
+      'rank': 183
     },
     {
       'model': 'GPT-4.5',
@@ -1584,7 +1596,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 182
+      'rank': 184
     },
     {
       'model': 'Hunyuan-A13B-Instruct',
@@ -1593,7 +1605,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 183
+      'rank': 185
     },
     {
       'model': 'DeepSeek-V4-Flash',
@@ -1602,7 +1614,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 184
+      'rank': 186
     },
     {
       'model': 'Qwen3-235B-A22B',
@@ -1611,14 +1623,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 185
+      'rank': 187
     },
     {
       'model': 'ZAYA1-8B',
       'org': 'Zyphra',
       'score': 71,
       'src': 'benchlm',
-      'rank': 186,
+      'rank': 188,
       'protocol': '无工具'
     },
     {
@@ -1628,7 +1640,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 187
+      'rank': 189
     },
     {
       'model': 'OpenAI o3-mini',
@@ -1637,7 +1649,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 188
+      'rank': 190
     },
     {
       'model': 'Qwen3-30B-A3B-2507',
@@ -1646,14 +1658,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 189
+      'rank': 191
     },
     {
       'model': 'MiniCPM5-2B',
       'org': 'OpenBMB',
       'score': 70.2,
       'src': 'benchlm',
-      'rank': 190,
+      'rank': 192,
       'protocol': '无工具'
     },
     {
@@ -1663,7 +1675,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 191
+      'rank': 193
     },
     {
       'model': 'Claude Opus 4',
@@ -1672,7 +1684,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 192
+      'rank': 194
     },
     {
       'model': 'MiniMax-M1-80k',
@@ -1681,7 +1693,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 193
+      'rank': 195
     },
     {
       'model': 'Llama 4 Maverick Instruct',
@@ -1690,14 +1702,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 194
+      'rank': 196
     },
     {
       'model': 'LongCat-Flash-Lite-Sparse',
       'org': 'Meituan',
       'score': 69.49,
       'src': 'benchlm',
-      'rank': 195,
+      'rank': 197,
       'protocol': '无工具'
     },
     {
@@ -1707,7 +1719,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 196
+      'rank': 198
     },
     {
       'model': 'MiniMax-M1-40k',
@@ -1716,7 +1728,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 197
+      'rank': 199
     },
     {
       'model': 'GPT-5-mini',
@@ -1725,7 +1737,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 198
+      'rank': 200
     },
     {
       'model': 'DeepSeek-V3-0324',
@@ -1734,7 +1746,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 199
+      'rank': 201
     },
     {
       'model': 'Qwen3-32B',
@@ -1743,7 +1755,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 200
+      'rank': 202
     },
     {
       'model': 'Magistral-Small-2506',
@@ -1752,7 +1764,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 201
+      'rank': 203
     },
     {
       'model': 'GPT-4o(2025-03-27)',
@@ -1761,7 +1773,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 202
+      'rank': 204
     },
     {
       'model': 'Gemini 2.5 Flash-Lite',
@@ -1770,7 +1782,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 203
+      'rank': 205
     },
     {
       'model': 'GPT-4.1',
@@ -1779,7 +1791,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 204
+      'rank': 206
     },
     {
       'model': 'Grok 3 mini',
@@ -1788,7 +1800,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 205
+      'rank': 207
     },
     {
       'model': 'Qwen3-4B-Thinking-2507',
@@ -1797,7 +1809,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 206
+      'rank': 208
     },
     {
       'model': 'Gemini 2.0 Flash Experimental',
@@ -1806,7 +1818,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 207
+      'rank': 209
     },
     {
       'model': 'DeepSeek-R1-Distill-Llama-70B',
@@ -1815,7 +1827,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 208
+      'rank': 210
     },
     {
       'model': 'Claude 3.5 Sonnet New',
@@ -1824,7 +1836,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 209
+      'rank': 211
     },
     {
       'model': 'GPT-4.1 mini',
@@ -1833,7 +1845,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 210
+      'rank': 212
     },
     {
       'model': 'Gemini 2.0 Pro Experimental',
@@ -1842,14 +1854,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 211
+      'rank': 213
     },
     {
       'model': 'Mellum2.1-12B-A2.5B-Thinking',
       'org': 'JetBrains',
       'score': 64.6,
       'src': 'benchlm',
-      'rank': 212,
+      'rank': 214,
       'protocol': '无工具'
     },
     {
@@ -1859,14 +1871,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 213
+      'rank': 215
     },
     {
       'model': 'LFM3-1.7B',
       'org': 'LiquidAI',
       'score': 63.37,
       'src': 'benchlm',
-      'rank': 214,
+      'rank': 216,
       'protocol': '无工具'
     },
     {
@@ -1874,7 +1886,7 @@ window.GPQA_DIAMOND = {
       'org': 'Arcee AI',
       'score': 63.3,
       'src': 'benchlm',
-      'rank': 215,
+      'rank': 217,
       'protocol': '无工具'
     },
     {
@@ -1884,7 +1896,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 216
+      'rank': 218
     },
     {
       'model': 'Qwen3-4B-2507',
@@ -1893,7 +1905,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 217
+      'rank': 219
     },
     {
       'model': 'Hunyuan-7B',
@@ -1902,7 +1914,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 218
+      'rank': 220
     },
     {
       'model': 'OpenAI o1-mini',
@@ -1911,7 +1923,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 219
+      'rank': 221
     },
     {
       'model': 'Claude 3.5 Sonnet',
@@ -1920,7 +1932,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 220
+      'rank': 222
     },
     {
       'model': 'DeepSeek-V3',
@@ -1929,7 +1941,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 221
+      'rank': 223
     },
     {
       'model': 'Gemma 4 E4B',
@@ -1938,7 +1950,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 222
+      'rank': 224
     },
     {
       'model': 'QwQ-32B',
@@ -1947,14 +1959,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 223
+      'rank': 225
     },
     {
       'model': 'Mellum2-12B-A2.5B-Thinking',
       'org': 'JetBrains',
       'score': 57.6,
       'src': 'benchlm',
-      'rank': 224,
+      'rank': 226,
       'protocol': '无工具'
     },
     {
@@ -1964,7 +1976,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 225
+      'rank': 227
     },
     {
       'model': 'Hunyuan-TurboS',
@@ -1973,14 +1985,14 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 226
+      'rank': 228
     },
     {
       'model': 'ZAYA1-74B-Preview',
       'org': 'Zyphra',
       'score': 57.3,
       'src': 'benchlm',
-      'rank': 227,
+      'rank': 229,
       'protocol': '无工具'
     },
     {
@@ -1990,7 +2002,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 228
+      'rank': 230
     },
     {
       'model': 'Grok 2',
@@ -1999,7 +2011,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 229
+      'rank': 231
     },
     {
       'model': 'Qwen3-30B-A3B',
@@ -2008,7 +2020,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 230
+      'rank': 232
     },
     {
       'model': 'Gemini 1.5 Pro',
@@ -2017,7 +2029,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 231
+      'rank': 233
     },
     {
       'model': 'Gemini 2.0 Flash-Lite',
@@ -2026,7 +2038,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 232
+      'rank': 234
     },
     {
       'model': 'Llama3.3-70B-Instruct',
@@ -2035,7 +2047,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 233
+      'rank': 235
     },
     {
       'model': 'Claude3-Opus',
@@ -2044,7 +2056,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 234
+      'rank': 236
     },
     {
       'model': 'GPT-4.1 nano',
@@ -2053,7 +2065,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 235
+      'rank': 237
     },
     {
       'model': 'DeepSeek-R1-Distill-Qwen-7B',
@@ -2062,7 +2074,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 236
+      'rank': 238
     },
     {
       'model': 'Llama3.1-405B Instruct',
@@ -2071,7 +2083,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 237
+      'rank': 239
     },
     {
       'model': 'Phi-4-instruct (reasoning-trained)',
@@ -2080,7 +2092,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 238
+      'rank': 240
     },
     {
       'model': 'Llama3.1-70B-Instruct',
@@ -2089,13 +2101,13 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 239
+      'rank': 241
     },
     {
       'model': 'K2-1T-A32B',
       'score': 46.78,
       'src': 'qwen-official',
-      'rank': 240
+      'rank': 242
     },
     {
       'model': 'Mistral-Small-3.2',
@@ -2104,7 +2116,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 241
+      'rank': 243
     },
     {
       'model': 'Mistral-Small-3.1-24B-Instruct-2503',
@@ -2113,7 +2125,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 242
+      'rank': 244
     },
     {
       'model': 'Qwen2.5-72B',
@@ -2122,34 +2134,34 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 243
+      'rank': 245
     },
     {
       'model': 'GLM-4.5-355B-A32B',
       'score': 44.63,
       'src': 'qwen-official',
-      'rank': 244
+      'rank': 246
     },
     {
       'model': 'LLaDA2.2-mini',
       'org': 'InclusionAI',
       'score': 44.41,
       'src': 'benchlm',
-      'rank': 245,
+      'rank': 247,
       'protocol': '无工具'
     },
     {
       'model': 'DeepSeeK-V3.2-671B-A37B',
       'score': 44.16,
       'src': 'qwen-official',
-      'rank': 246
+      'rank': 248
     },
     {
       'model': 'Soofi S 30B-A3B',
       'org': 'Soofi Project',
       'score': 43.4,
       'src': 'benchlm',
-      'rank': 247,
+      'rank': 249,
       'protocol': '无工具'
     },
     {
@@ -2159,7 +2171,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 248
+      'rank': 250
     },
     {
       'model': 'Claude 3.5 Haiku',
@@ -2168,7 +2180,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 249
+      'rank': 251
     },
     {
       'model': 'GPT-4o mini',
@@ -2177,7 +2189,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 250
+      'rank': 252
     },
     {
       'model': 'Gemma 3 - 12B (IT)',
@@ -2186,14 +2198,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 251
+      'rank': 253
     },
     {
       'model': 'Mellum2-12B-A2.5B-Instruct',
       'org': 'JetBrains',
       'score': 40.9,
       'src': 'benchlm',
-      'rank': 252,
+      'rank': 254,
       'protocol': '无工具'
     },
     {
@@ -2203,7 +2215,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 253
+      'rank': 255
     },
     {
       'model': 'Phi-4-mini-instruct (3.8B)',
@@ -2212,7 +2224,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 254
+      'rank': 256
     },
     {
       'model': 'Grok-1.5',
@@ -2221,7 +2233,7 @@ window.GPQA_DIAMOND = {
       'license': '不开源',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 255
+      'rank': 257
     },
     {
       'model': 'C4AI Aya Vision 32B',
@@ -2230,7 +2242,7 @@ window.GPQA_DIAMOND = {
       'license': '不可以商用',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 256
+      'rank': 258
     },
     {
       'model': 'Gemma 2 - 9B',
@@ -2239,7 +2251,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 257
+      'rank': 259
     },
     {
       'model': 'Llama-3.2-3B',
@@ -2248,7 +2260,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 258
+      'rank': 260
     },
     {
       'model': 'Llama3.1-8B-Instruct',
@@ -2257,7 +2269,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 259
+      'rank': 261
     },
     {
       'model': 'MiniCPM5-1B',
@@ -2266,7 +2278,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 260
+      'rank': 262
     },
     {
       'model': 'Llama3.1-8B',
@@ -2275,14 +2287,14 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 261
+      'rank': 263
     },
     {
       'model': 'LFM2.5-230M',
       'org': 'LiquidAI',
       'score': 25.41,
       'src': 'benchlm',
-      'rank': 262,
+      'rank': 264,
       'protocol': '无工具'
     },
     {
@@ -2292,7 +2304,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 263
+      'rank': 265
     },
     {
       'model': 'Qwen2.5-3B',
@@ -2301,7 +2313,7 @@ window.GPQA_DIAMOND = {
       'license': '免费商用授权',
       'protocol': '无工具',
       'src': 'datalearner',
-      'rank': 264
+      'rank': 266
     }
   ]
 };

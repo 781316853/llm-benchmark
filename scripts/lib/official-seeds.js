@@ -203,33 +203,75 @@ function mergeAutoScores() {
   autoMerged = true;
   const scores = loadAutoScores();
   if (!scores) return 0;
-  let added = 0;
+  let added = 0, replaced = 0;
   AUTO_BENCHES.forEach(function (bench) {
     const list = scores[bench] || [];
     if (!list.length) return;
     if (!SEEDS[bench]) SEEDS[bench] = [];
-    const have = {};
-    SEEDS[bench].forEach(function (s) { have[canonKey(s.name)] = 1; });
+
+    // 已存在条目的索引:canonKey -> SEEDS 里的那条(用于层级比较与替换)
+    const byKey = {};
+    SEEDS[bench].forEach(function (s) {
+      const k = canonKey(s.name);
+      if (k && !byKey[k]) byKey[k] = s;
+    });
+
     // 自动条目自身也按 canonKey 去重:官方不同发布页对同一模型有不同写法
     // (「Claude-Opus-4.6」与「Opus-4.6 Max」),不去重会把同一条分数补两次。
     list.forEach(function (r) {
       const k = canonKey(r.model);
-      if (!k || have[k]) return;   // 人工转录优先,自动条目不覆盖
-      have[k] = 1;
-      SEEDS[bench].push({
+      if (!k) return;
+      const autoSrc = r.src || "official-auto";
+      const cur = byKey[k];
+      if (cur) {
+        // 已存在同模型:按渠道层级决定是否用官方分替换。
+        // 人工转录(T2)与自动解析(T2)同级 -> 保留人工(人工经过口径核对);
+        // 表内是 T3 第三方(benchlm / aa / 聚合)而官方是 T2 -> 官方更权威,替换。
+        const curTier = tierOf(cur.src);
+        const newTier = tierOf(autoSrc);
+        if (newTier < curTier) {
+          console.log("  [official-scores] 官方分替换低层级来源: " + r.model +
+            "  " + cur.score + "(" + (cur.src || "?") + " T" + curTier + ")" +
+            " -> " + r.score + "(" + autoSrc + " T" + newTier + ")");
+          cur.score = r.score;
+          cur.src = autoSrc;
+          cur.note = "官方发布页表格自动解析" + (r.title ? "(" + r.title + ")" : "") +
+            (r.date ? "," + r.date : "") + ";HLE 仅取无工具行;替换原 T" + curTier + " 第三方分";
+          cur.sourceUrl = r.url || "";
+          cur.auto = true;
+          replaced++;
+        }
+        return;
+      }
+      const rec = {
         name: r.model,
         score: r.score,
-        src: r.src || "official-auto",
+        src: autoSrc,
         note: "官方发布页表格自动解析" + (r.title ? "(" + r.title + ")" : "") +
           (r.date ? "," + r.date : "") + ";HLE 仅取无工具行",
         sourceUrl: r.url || "",
         auto: true
-      });
+      };
+      SEEDS[bench].push(rec);
+      byKey[k] = rec;
       added++;
     });
   });
   if (added) console.log("  [official-scores] 自动并入 HLE/GPQA 种子 " + added + " 条");
+  if (replaced) console.log("  [official-scores] 官方分替换低层级来源 " + replaced + " 条");
   return added;
+}
+
+// 渠道层级(数字越小越可信):取自 config.srcTiers;未登记的按最不可信处理。
+// 用途:官方发布页(T2)遇到表内已有 T3 第三方分时,应以官方分为准 ——
+// 第三方聚合常有子集/复测口径差异(实测 Qwen3-Max-Thinking 官方 37.6 vs aa 11.9)。
+var _tiers;
+function tierOf(src) {
+  if (_tiers === undefined) {
+    try { _tiers = require("./config").srcTiers || {}; } catch (e) { _tiers = {}; }
+  }
+  const t = _tiers[src];
+  return t != null ? t : 9;
 }
 // 立即执行:各榜单源在 require 本模块后马上调用 forBenchmark,必须在此之前并好。
 // 注意:调用必须放在本文件最末尾 —— canonKey 依赖下方定义的 ABBR,
@@ -244,25 +286,28 @@ function mergeAutoScores() {
 // 反而把同一模型判成两个。canon 只在宽松键为空时兜底。
 // 合并与补缺两处必须用同一口径,否则会补进重复条目。
 var _canon;
-// 厂商名缩写:官方表格受列宽限制常用缩写,展开后再比较
+// 厂商名缩写:官方表格受列宽限制常用缩写,展开后再比较。
+// ⚠ openai 不能无条件替换成 gpt:「OpenAI o4 - mini」与「GPT-4o mini」是不同模型,
+//   替换后两者会撞键被误判为同一模型。只在「openai + 数字」这种写法下才折叠。
 var ABBR = [
   [/deepseek/g, "deepseek"], [/^ds(?=[0-9\- ]|v[0-9])/g, "deepseek"],
   [/kimi/g, "kimi"], [/^k(?=[0-9])/g, "kimi"],
   [/claude/g, "claude"], [/anthropic/g, "claude"],
   [/gemini/g, "gemini"], [/^g(?=[0-9])/g, "gemini"],
   [/qwen/g, "qwen"], [/glm/g, "glm"], [/zhipu/g, "glm"],
-  [/gemma/g, "gemma"], [/gpt/g, "gpt"], [/openai/g, "gpt"]
+  [/gemma/g, "gemma"]
 ];
 function canonKey(name) {
   let s = String(name || "").toLowerCase();
   ABBR.forEach(function (p) { s = s.replace(p[0], p[1]); });
   let words = (s.match(/[a-z]+/g) || []);
-  // 去掉纯档位词:官方表格里同一个模型常带「Max / High / Thinking」等档位标注
+  // 去掉「纯档位/规格」词:官方表格里同一个模型常带档位标注
   // (「Opus-4.6 Max」与「Claude-Opus-4.6」是同一模型),这些词不参与判重。
-  // 同时去掉可省略的厂商前缀 claude/anthropic —— 官方表头有时写全称、有时只写型号。
+  // ⚠ Thinking / Preview / Instruct 是真变体(分数可能不同,如 Claude Opus 4.5 30.8
+  //   与 Claude Opus 4.5 Thinking 30.1),绝不能当作档位词去掉,否则会误合并两个模型。
   const EFFORT = {
-    max: 1, high: 1, medium: 1, low: 1, xhigh: 1, thinking: 1, nonthinking: 1,
-    base: 1, full: 1, preview: 1, instruct: 1, claude: 1, anthropic: 1
+    max: 1, high: 1, medium: 1, low: 1, xhigh: 1,
+    base: 1, full: 1, claude: 1, anthropic: 1
   };
   words = words.filter(function (w) { return !EFFORT[w]; });
   const w = words.sort().join("");
