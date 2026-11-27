@@ -125,8 +125,17 @@
   // 厂商身份色(表格里的模型色点与「厂商」列文字共用):取 MODEL_MAP.vendorColors,
   // 未登记的厂商(含自动建档的「其他」)落 vendorDefaultColor。与 canon().color 分工不同 ——
   // 后者是模型身份色,仍由图表按模型区分曲线时使用。
+  // 主题分流:vendorColors 按深色底校准(暗底 ≥4.5:1),白底只有 1.7~3.3:1,
+  // 故浅色主题优先取 vendorColorsLight(同色相压暗版),缺项回退 vendorColors。
+  function isDarkTheme() {
+    return document.documentElement.getAttribute("data-theme") === "dark";
+  }
   function vendorColor(vendor) {
     var map = (window.MODEL_MAP && window.MODEL_MAP.vendorColors) || {};
+    if (!isDarkTheme()) {
+      var light = (window.MODEL_MAP && window.MODEL_MAP.vendorColorsLight) || {};
+      if (vendor && light[vendor]) return light[vendor];
+    }
     return map[vendor] || (window.MODEL_MAP && window.MODEL_MAP.vendorDefaultColor) || "#8A8F98";
   }
 

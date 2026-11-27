@@ -55,7 +55,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="assets/fonts/saira-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css?v=20261127a" />
-  <link rel="stylesheet" href="css/octathlon.css?v=20261128a" />
+  <link rel="stylesheet" href="css/octathlon.css?v=20261128b" />
   <!-- 矩阵三层悬停联动(数字/整行/整列 + 非交叉区压暗)。2026-11-26 修:
        这两行原先只手工加在 17 个生成页里,下一次 build_pages 从模板重建就被抹掉了(630f690),
        悬停动效随之消失。放进模板后,重新生成、每日刷新都不会再丢。 -->
@@ -68,7 +68,7 @@
        跨榜命中筛选所需的全量榜源会在第二批到达后自动修正行数。
        models.js / models-auto.js 仍静态加载:js/app.js 在模块初始化阶段就要读 MODEL_MAP
        (国产厂商集合、厂商别名、搜索 haystack),晚到会让这些表为空。 -->
-  <script defer src="data/models.js?v=20261122a"></script>
+  <script defer src="data/models.js?v=20261128b"></script>
   <script defer src="data/models-auto.js?v=20261116b"></script>
   <!-- 本页首屏榜源:由 scripts/build_pages.js 的 eagerTags() 按页注入(各页只取自己那一张表需要的源) -->
   <!--EAGER_DATA-->
@@ -76,10 +76,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261127c"></script>
+  <script defer src="js/data.js?v=20261128b"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261127a"></script>
-  <script defer src="js/app.js?v=20261128a"></script>
+  <script defer src="js/app.js?v=20261128b"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261126a"></script>
   <!-- llm2014 宽表:顶部横向滑动条 + 固定 #/模型列 -->
@@ -244,7 +244,7 @@
         <div class="matrix-head">
           <div class="matrix-head-text">
             <h2 class="section-title"><span class="title-index">03</span>交叉模型矩阵</h2>
-            <p class="section-desc">同一模型在多项基准中的成绩;默认按综合分降序展示前 30 个排名模型,仅命中 ≥4 个基准组的模型参与排名并编号。点击表头可按该列排序,右侧搜索框可直接检索模型或厂商,开关控制显示范围、国产高亮与综合分显示。排名前 20 中性价比指数最高者标注「最佳性价比」。</p>
+            <p class="section-desc">同一模型在多项基准中的成绩;默认按综合分降序展示前 30 个排名模型,仅命中 ≥4 个基准组的模型参与排名并编号。点击表头排序,右侧搜索框可检索模型或厂商,开关控制显示范围与国产高亮。</p>
           </div>
           <div class="matrix-tools">
             <div class="matrix-search">
@@ -302,7 +302,7 @@
         <div class="release-head">
           <div class="release-head-text">
             <h2 class="section-title"><span class="title-index">04</span>厂商新模型发布倒计时</h2>
-            <p class="section-desc">距各厂商上一次发布新模型已过去的天数;条形按天数等比,行内保留天数、上次发布的模型与日期。默认展示主要厂商,可切换为「最久未发」或展开全部厂商。</p>
+            <p class="section-desc">距各厂商上一次发布新模型已过去的天数;条形按天数等比,行内保留天数、模型与日期。默认展示主要厂商,可切换排序或展开全部。</p>
           </div>
           <div class="release-tools">
             <div class="qc-scope release-sort" id="releaseSort" role="group" aria-label="发布倒计时排序">

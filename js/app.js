@@ -600,7 +600,7 @@
     }
     var note = document.getElementById("releaseNote");
     if (note) {
-      note.innerHTML = esc("发布日期取自 ModelDial、Terminal-Bench、APEX、datalearner、AutomationBench、Agents' Last Exam 与厂商官方发布监听;仅统计已收录发布日期的主流厂商,天数为本机日期与发布日期的自然日差。") +
+      note.innerHTML = esc("发布日期取自 ModelDial、Terminal-Bench、APEX、datalearner 等榜单与厂商官方发布监听;仅统计已收录发布日期的主流厂商,天数为本机日期与发布日期的自然日差。") +
         (pack.data.updated ? ' <span class="release-updated">数据更新于 ' + esc(pack.data.updated) + "</span>" : "");
     }
   }
@@ -4709,9 +4709,13 @@
     });
   }
 
-  // 主题切换后图表里的颜色是构建时写进 option 的,需重建当前页;无图表的页面不必重绘
+  // 主题切换后图表里的颜色是构建时写进 option 的,需重建当前页;
+  // 厂商色(vname 与色点)按主题取不同色值(vendorColors / vendorColorsLight),
+  // 也是渲染时写进行内 style 的,故含厂商色的表格同样要重绘。
   window.addEventListener("llm-theme-change", function () {
-    if (!document.querySelector(".page.active .chart")) return;
+    var page = document.querySelector(".page.active");
+    if (!page) return;
+    if (!page.querySelector(".chart") && !page.querySelector(".vname, .vdot")) return;
     renderPage();
   });
 

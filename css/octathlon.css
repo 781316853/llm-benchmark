@@ -139,22 +139,26 @@ html[data-theme="light"] {
   --bd-best-value-fg: var(--oct-lime);
   --bd-best-value-bg: var(--oct-ink);
   --bd-best-value-bd: var(--oct-ink);
-  --bench-deepswe: #3964FE;
+  /* 榜单色:这些值会用作表头列名与格内数值的文字色,必须满足白底 AA(≥4.5:1)。
+     原值多为亮青/亮绿(如 hle #3aa6c4 仅 2.83:1、webdev #8fae2a 仅 2.54:1),
+     在同一色相内按明度压暗到达标;校准基准取最不利的实际行底色 #f4f6ff(国产高亮行),
+     比纯白更暗,故按它算能覆盖白底/斑马行/NEW 行。深色主题见下方 dark 段,另用一套提亮值。 */
+  --bench-deepswe: #3862f9;
   --bench-tbench: #2F55D4;
-  --bench-hle: #3aa6c4;
-  --bench-apex: #62d4f5;
-  --bench-modeldial: #6B8CFF;
-  --bench-webdev: #8fae2a;
+  --bench-hle: #2b7a91;
+  --bench-apex: #38798c;
+  --bench-modeldial: #536cc5;
+  --bench-webdev: #64791d;
   --bench-agentarena: #1a1726;
   --bench-llm: #2f55d4;
   --bench-arenaofbias: #2F55D4;
-  --bench-aicodingdaily: #5f9ea0;
-  --bench-aacoding: #9a8f7a;
-  --bench-valscodemigration: #4a7f8c;
-  --bench-programbench: #6f8f4a;
+  --bench-aicodingdaily: #49797b;
+  --bench-aacoding: #797060;
+  --bench-valscodemigration: #477885;
+  --bench-programbench: #5e793e;
   --bench-cursorbench: #4c5fd5;
-  --bench-frontiercode: #b06a3a;
-  --bench-frontierswe: #3c7fa0;
+  --bench-frontiercode: #a16135;
+  --bench-frontierswe: #397898;
   --bench-arcagi2: #6a4bb5;
   --bench-frontiermath: #b5522c;
   --bench-critpt: #1f7a6b;
@@ -378,7 +382,7 @@ body {
   flex-direction: column;
   font-family: var(--font-display);
   font-stretch: 114%;
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   font-weight: 800;
   letter-spacing: .08em;
   line-height: 1.05;
@@ -601,7 +605,7 @@ body {
   max-width: 58ch;
   color: var(--oct-ink-2);
   font-family: var(--font-body);
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   line-height: 1.9;
   text-align: left;
 }
@@ -894,7 +898,10 @@ body {
 }
 .section-desc {
   margin: 10px 0 0;
-  max-width: 78ch;
+  /* 按中文字宽限行:1 个汉字约等于 2 个 ch,45 字正文 ≈ 45em,
+     用 em 而非 ch 才能让中英文混排都收在约 45 字/行(ch 按西文 0 宽算,
+     78ch 实际能放近 78 个汉字,一行过长) */
+  max-width: 45em;
   color: var(--oct-ink-2);
   font-size: 12px;
   line-height: 1.85;
@@ -1000,7 +1007,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   line-height: 1.6;
 }
 .news-toc-link:hover .news-toc-title {
@@ -1104,7 +1111,8 @@ body {
   color: var(--oct-ink);
   font-family: var(--font-display);
   font-stretch: 114%;
-  font-size: 16.5px;
+  /* 原写死 16.5px,是全站唯一孤值;归入字号阶梯(原 16px 档并入 --fs-lg) */
+  font-size: var(--fs-lg);
   font-weight: 800;
   letter-spacing: -.01em;
 }
@@ -1163,7 +1171,7 @@ body {
 .matrix-section { margin-top: 56px; }
 .matrix-head { align-items: flex-end; gap: 28px; }
 .matrix-head .section-title { margin: 0; }
-.matrix-head .section-desc { max-width: 82ch; }
+.matrix-head .section-desc { max-width: 45em; }
 .matrix-tools { gap: 10px; }
 .matrix-stats {
   gap: 14px;
@@ -1351,7 +1359,9 @@ body {
   font-weight: 700;
 }
 .cell-rank { color: var(--oct-ink-3); font-family: var(--font-display); font-size: 12px; }
-.cell-cost { color: var(--oct-ink-3); font-family: var(--font-display); font-size: 12px; }
+/* 成本单价 ¥0.220/M 是不可断行的整体:列宽 74px 时按空格/斜杠会折成两行,
+   加 nowrap 后由列宽容纳(实测 53px 内容宽仍可放下) */
+.cell-cost { color: var(--oct-ink-3); font-family: var(--font-display); font-size: 12px; white-space: nowrap; }
 .badge-tb40, .badge-tb30, .badge-tb21, .badge-tb20, .badge-v11, .badge-v10,
 .badge-src, .badge-two, .badge-one, .badge-ref, .badge-best {
   border-radius: 0;
@@ -1427,6 +1437,9 @@ html[data-theme="dark"] .tier-badge { box-shadow: none; }
   color: var(--oct-ink-2);
   font-size: 12px;
   line-height: 1.85;
+  /* 两列布局下每列约 582px、12px 字可排 49 字,超过 45 字的阅读上限;
+     用 em 限行(1 汉字 ≈ 1em)收到约 45 字/行 */
+  max-width: 45em;
 }
 .notes-section li:first-child { border-top: 0; }
 .note-term {
@@ -1449,6 +1462,8 @@ html[data-theme="dark"] .tier-badge { box-shadow: none; }
 .notes-more summary:hover { text-decoration: underline; text-underline-offset: 3px; }
 .source-note {
   margin-top: 12px;
+  /* 同 .section-desc:按中文字宽限行,避免注释在宽表下一行铺满上百字 */
+  max-width: 45em;
   color: var(--oct-ink-3);
   font-size: 12px;
   line-height: 1.7;
@@ -1901,7 +1916,7 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
   gap: 28px;
 }
 .matrix-head-text { min-width: 0; }
-.matrix-head-text .section-desc { max-width: 76ch; }
+.matrix-head-text .section-desc { max-width: 45em; }
 .matrix-tools { width: 100%; align-items: flex-end; }
 .matrix-tools .matrix-search { width: 100%; }
 .matrix-stats { justify-content: flex-end; }
@@ -2092,8 +2107,8 @@ html[data-theme="light"] .tabs.is-stuck .tab.active {
    内页规格化：页头、图表卡、表格头、筛选控件、侧栏与日志卡
    ============================================================ */
 
-/* 十项全能系列色并入品牌蓝 */
-:root { --bench-octathlon: #4D6BFE; }
+/* 十项全能系列色并入品牌蓝(浅色压到最不利行底 #f4f6ff 上 4.51:1,深色沿用提亮值) */
+:root { --bench-octathlon: #4864ed; }
 html[data-theme="dark"] { --bench-octathlon: #9DB4FF; }
 
 /* 页头 */
@@ -2505,6 +2520,9 @@ html[data-theme="dark"] body {
 #matrixTable tbody td { padding-top: 10px; padding-bottom: 10px; }
 #matrixTable .num { font-stretch: 112%; }
 #matrixTable tbody td.num { font-stretch: 112%; }
+/* 数值不折行:107.60 / +27.4% 这类在 78px 的窄列里会被拆成两行,
+   数字断行既难读也破坏纵向对齐;列宽不足时宁可溢出由表格横向滚动承接 */
+#matrixTable tbody td.num, #matrixTable tbody td.num .bv, #matrixTable tbody td.num .cell-val { white-space: nowrap; }
 /* ===== 总览矩阵：表头堆叠 + 溢出修正(2026-11-25) =====
    问题1：两行表头都 sticky，第二行 top 写在 87px，第一行 56+32=88px，差 1px 互相压；
           且第一行只有 8 个单元格，右侧列在它的高度带里没有底色，看起来"表头缺一块"。
@@ -2542,7 +2560,7 @@ html[data-theme="dark"] body {
 /* 总览矩阵收窄：16 列比面板宽 66px，会横向溢出/滚动。收窄列内边距并降半档字号，
    让整表塞进面板(实测 -2px)，最右「命中」列和底部才都有面板底承载。其他表不受影响。 */
 #matrixTable thead th, #matrixTable tbody td { padding-left: 2px; padding-right: 2px; }
-#matrixTable .num { font-size: 13px; }
+#matrixTable .num { font-size: var(--fs-xs); }
 
 /* ===== 表头定位收口(2026-11-26) =====
    规律只有一条:sticky 的 top 是相对「最近的滚动容器」算的。

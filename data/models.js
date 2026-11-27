@@ -326,6 +326,51 @@ window.MODEL_MAP = {
     "Inception": "#7FC3E0",         // 天青(Mercury 系列)
     "Baidu": "#5B6CF0"              // 品牌蓝(ERNIE 系列):与其它蓝系厂商按色相/明度错开
   },
+  // 厂商色的「浅色主题」变体:vendorColors 那套是按深色底校准的(暗底最小对比度 ≥4.5),
+  // 直接放到白底上只有 1.7~3.3:1,远低于 AA。这里同色相压暗到达标,
+  // 校准基准取最不利的实际行底色 #f4f6ff(国产高亮行),比纯白更暗,可覆盖白底/斑马行/NEW 行。
+  // 由 js/data.js 的 vendorColor() 按当前 data-theme 选择:浅色取本表、深色取 vendorColors。
+  // 缺项的厂商回退到 vendorColors(如 StepFun 原本就达标)。改色值前按同一口径核算。
+  vendorColorsLight: {
+    "OpenAI": "#227f69",            // 品牌青绿压暗
+    "Anthropic": "#a26045",         // 陶橙压暗
+    "Google": "#4a72ab",            // 品牌蓝压暗
+    "Alibaba": "#a26227",           // 品牌橙压暗
+    "DeepSeek": "#546cc4",          // 品牌蓝压暗
+    "Moonshot": "#7867a8",          // 紫罗兰压暗
+    "zAI": "#636cb2",               // 靛蓝压暗
+    "ByteDance": "#8f5ab7",         // 品紫压暗
+    "MiniMax": "#b54f70",           // 品牌粉压暗
+    "Tencent": "#167c90",           // 品牌青压暗
+    "Microsoft": "#2d76aa",         // 天蓝压暗
+    "Meta": "#4f6fba",              // 钴蓝压暗
+    "xAI": "#6c7179",               // 中性灰压暗
+    "NVIDIA": "#5e7b1a",            // 黄绿压暗
+    "Mistral": "#aa5c44",           // 暖橙红压暗
+    "Xiaomi": "#92692c",            // 琥珀橙压暗
+    "Cohere": "#357e5d",            // 深绿压暗
+    "LG AI Research": "#b05656",    // 砖红压暗
+    "Dots": "#ae5943",              // 珊瑚橙红压暗
+    "Qwen": "#a26227",              // 与 Alibaba 同色
+    "STEALTH": "#6b708b",           // 板岩紫压暗
+    "Thinking Machines": "#66737d", // 板岩青灰压暗
+    "North": "#6c7179",             // 灰压暗
+    "Motif Technologies": "#86649d",// 淡紫压暗
+    "Upstage": "#477a71",           // 灰绿压暗
+    "SK Telecom": "#b35262",        // 玫红压暗
+    "Cursor": "#b45631",            // 橙红压暗
+    "Cognition": "#986641",         // 陶土橙压暗
+    "SenseTime": "#397a84",         // 青蓝压暗
+    "Shanghai AI Lab": "#3d7c6a",   // 薄荷绿压暗
+    "China Telecom": "#4574a9",     // 品牌蓝压暗
+    "Meituan": "#81702d",           // 芥末黄压暗
+    "inclusionAI": "#517c46",       // 品牌绿压暗
+    "Reflection AI": "#7e60c0",     // 深紫压暗
+    "Poolside": "#637383",          // 板岩蓝灰压暗
+    "Fireworks": "#97673a",         // 暖琥珀压暗
+    "Inception": "#4e7789",         // 天青压暗
+    "Baidu": "#5465e0"              // 品牌蓝压暗
+  },
   // 国产(中国大陆)厂商清单:用于总览页「高亮国产模型」开关判定
   domesticVendors: ["zAI", "Moonshot", "DeepSeek", "Alibaba", "Tencent", "MiniMax", "ByteDance", "Xiaomi", "StepFun", "SenseTime", "Shanghai AI Lab", "China Telecom", "Meituan", "inclusionAI", "Baidu"],
   // 总览页「厂商新模型发布倒计时」默认展示的主要厂商(顺序无关,其余厂商收进「展开更多」)。

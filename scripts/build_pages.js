@@ -236,7 +236,9 @@ function buildPage(lines, sections, page) {
     });
 
   // 语言切换:指向同一页的英文版(没有英文版的 changelog 回英文首页)
-  const enHref = page.en ? page.en.file.replace(/^en\/index\.html$/, "en/") : "en/";
+  // 用显式文件名而非 en/ 目录形式:目录索引依赖托管端的 index 解析,
+  // 且与反向链接(../index.html)保持一致,避免本地静态检查与部分托管判 404。
+  const enHref = page.en ? page.en.file : "en/index.html";
   out = out.replace(/<a class="lang-link"[^>]*>[^<]*<\/a>/,
     '<a class="lang-link" href="' + enHref + '" hreflang="en" lang="en" aria-label="Switch to English">English</a>');
 
