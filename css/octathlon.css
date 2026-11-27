@@ -2547,3 +2547,27 @@ html[data-theme="dark"] body {
 .oct-ticker-badge { color: #eceaf3; }
 .oct-ticker-view { overflow: hidden; position: relative; }
 .table-wrap .data-table th, .table-wrap .data-table td { white-space: nowrap !important; }
+
+/* ===== 总览矩阵:窄列高行,内容优先换行 ===== */
+.matrix-combined-score { display: flex; flex-direction: column; gap: 2px; line-height: 1.25; }
+.matrix-combined-score .matrix-combined-label { font-size: var(--fs-sm); color: var(--text-tertiary); white-space: nowrap; }
+.matrix-dual-score { display: flex; flex-direction: column; gap: 4px; line-height: 1.25; }
+.matrix-dual-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; white-space: nowrap; }
+.matrix-dual-label { font-size: var(--fs-sm); color: var(--text-tertiary); letter-spacing: .02em; }
+#matrixTable { table-layout: fixed; width: 100%; }
+#matrixTable th, #matrixTable td {
+  min-width: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding: 12px 6px !important;
+  vertical-align: top;
+}
+#matrixTable thead tr:first-child th { height: auto !important; white-space: normal !important; }
+#matrixTable thead tr.col-row th .th-name,
+#matrixTable thead tr.col-row th .th-unit { white-space: normal !important; }
+#matrixTable .num, #matrixTable tbody td.num { font-size: 12px; }
+#matrixTable .cell-harness { white-space: normal !important; overflow-wrap: anywhere; }
+#matrixTable .knowledge-cell { vertical-align: middle; }
+#matrixTable .cell-ci { display: block; }
+#matrixTable .matrix-dual-row { white-space: normal; flex-wrap: wrap; gap: 2px 6px; }

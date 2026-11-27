@@ -54,8 +54,8 @@
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="assets/fonts/saira-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261126t" />
-  <link rel="stylesheet" href="css/octathlon.css?v=20261126c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261127a" />
+  <link rel="stylesheet" href="css/octathlon.css?v=20261127a" />
   <!-- 矩阵三层悬停联动(数字/整行/整列 + 非交叉区压暗)。2026-11-26 修:
        这两行原先只手工加在 17 个生成页里,下一次 build_pages 从模板重建就被抹掉了(630f690),
        悬停动效随之消失。放进模板后,重新生成、每日刷新都不会再丢。 -->
@@ -76,10 +76,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261126a"></script>
+  <script defer src="js/data.js?v=20261127a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
-  <script defer src="js/compare.js?v=20261126c"></script>
-  <script defer src="js/app.js?v=20261126m"></script>
+  <script defer src="js/compare.js?v=20261127a"></script>
+  <script defer src="js/app.js?v=20261127a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261126a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -87,7 +87,7 @@
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
   <!-- 规格书皮肤动效:入场、滚动揭示、列表 stagger、吸顶导航兜底 -->
-  <script defer src="js/octathlon.js?v=20261124e"></script>
+  <script defer src="js/octathlon.js?v=20261127a"></script>
   <!-- 三层悬停联动:事件委托在 document 上,表格重渲染后无需重绑(与 mx-restyle.css 配对) -->
   <script defer src="js/mx-restyle.js?v=20261126c"></script>
 </head>
@@ -259,8 +259,8 @@
               <label class="switch switch-lg" title="勾选后以醒目底色高亮国产厂商(智谱/月之暗面/深度求索/阿里/腾讯/MiniMax/字节/小米)的模型"><input type="checkbox" id="ovHighlightDomestic" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">高亮国产模型</span></label>
               <label class="switch switch-lg" title="默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)"><input type="checkbox" id="ovShowScore" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
               <label class="switch switch-lg" title="勾选后基准列改为与参考模型的差值:参考模型自身显示原值,其余模型显示 该模型成绩 − 参考模型成绩;正数高于参考,负数低于;参考模型某项无成绩时,取排名最靠前且有该成绩的模型(该行原值旁标「基准」)。综合分/梯队/性价比不变"><input type="checkbox" id="ovRelativeFirst"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">与参考差值</span></label>
-              <label class="switch switch-lg" title="综合分只按 7 个第三方实测组等权计算,榜单基准 3 组不参与打分"><input type="checkbox" id="ovThirdParty"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">只看第三方</span></label>
-              <label class="matrix-ref" id="ovCostWrap" title="性价比的成本口径:按量 = API 按量付费(codingplan.fyi / models.dev 单价按 95% 缓存输入 + 4.5% 未缓存 + 0.5% 输出 折算);订阅 = 套餐月费 ÷ 月可用额度(ModelDial 订阅额度 95% 档);取低 = 两者较低者参与指数(默认)"><span>成本口径</span><select id="ovCostMode" aria-label="性价比成本口径"><option value="best" selected>取低</option><option value="api">按量</option><option value="subs">订阅</option></select></label>
+              <label class="switch switch-lg" title="综合分只按 6 个第三方实测组等权计算,榜单基准 4 组不参与打分"><input type="checkbox" id="ovThirdParty"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">只看第三方</span></label>
+              <label class="matrix-ref" id="ovCostWrap" title="性价比的成本口径:按量 = API 按量付费(codingplan.fyi / models.dev 单价按 95% 缓存输入 + 4.5% 未缓存 + 0.5% 输出 折算);订阅 = 套餐月费 ÷ 95% 缓存档月额度(合并套餐对比页 codingplan + ModelDial;Google/Claude/千问/腾讯/zAI/xAI 按厂商优先平台,DeepSeek/Meta 优先高额度平台);取低 = 两者较低者参与指数(默认)"><span>成本口径</span><select id="ovCostMode" aria-label="性价比成本口径"><option value="best" selected>取低</option><option value="api">按量</option><option value="subs">订阅</option></select></label>
               <label class="matrix-ref" id="ovRefWrap" hidden title="选择参考模型:差值模式下,基准列显示各模型与该模型的差值;参考模型自身显示原值"><span>参考</span><select id="ovRefModel" aria-label="选择参考模型"></select></label>
             </div>
           </div>
@@ -276,7 +276,7 @@
           <ul>
             <li><b class="note-term">梯队</b>按可见序金字塔分 12 档(S+ 至 E),高档少、低档多,边界随数据浮动;悬停徽标看精确综合分,默认直接显示,取消勾选「显示综合分」后仅保留梯队。</li>
             <li><b class="note-term">综合分</b>各榜原生分先做榜内稳健标准化(z 值,截断 ±3),再按权重归一为 50 + 15 × 加权 z。50 为全池中位,是相对分,不可跨日比较;缺测榜权重自动回流,不奖不罚。</li>
-            <li><b class="note-term">命中</b>10 个计分基准组中进入榜单的数量:FrontierCode / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE / ModelDial / 亿模亿样 / AI Coding Daily / AI 十项全能。</li>
+            <li><b class="note-term">命中</b>10 个计分基准组中进入榜单的数量:FrontierCode / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE-Diamond / GPQA Diamond / ModelDial / AI Coding Daily / AI 十项全能。亿模亿样仅独立展示,不计命中。</li>
             <li><b class="note-term">排序</b>综合分相差不到 1.5 分视为同档;同档依次按共榜支配 → 综合分 → 命中数 → 共榜净胜排列(分数优先,覆盖数只作同分次序)。</li>
             <li><b class="note-term">榜内名次</b>「第三方实测」组各列数值前的 #N 为该模型在对应榜单中的实际序号(取源站榜单名次;WebDev 按 Elo 降序计名次、同分并列),悬浮名次可见榜内上榜条目总数。</li>
             <li><b class="note-term">性价比</b>综合分 ÷ 每百万 token 综合成本(95% 缓存输入 + 4.5% 输入 + 0.5% 输出,价格优先取自 codingplan.fyi,排名模型缺价由 models.dev 补齐);仅对命中 ≥4 榜的排名模型计算。</li>
@@ -285,10 +285,10 @@
           <details class="notes-more">
             <summary>展开详细口径与数据来源</summary>
             <ul>
-              <li><b class="note-term">权重</b>十个计分组<b>等权</b>:FrontierCode / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / 亿模亿样 / AI Coding Daily / AI 十项全能 / Agent Arena / HLE 各 <b>10%</b>(在场 N 组各 1/N,按在场榜归一;缺测权重回流)。</li>
-              <li><b class="note-term">各榜口径</b>FrontierCode 取原始分(2.0 主榜优先,2.0 未收录的模型回退 1.1;两版任务集不同,综合分按版本内归一定标);Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70;AI 十项全能 为 13 题按 10 类各 10% 加权的总分 0-100。</li>
+              <li><b class="note-term">权重</b>十个计分组<b>等权</b>:FrontierCode / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / AI Coding Daily / AI 十项全能 / Agent Arena / HLE-Diamond / GPQA Diamond 各 <b>10%</b>(在场 N 组各 1/N,按在场榜归一;缺测权重回流)。亿模亿样不计分。</li>
+              <li><b class="note-term">各榜口径</b>FrontierCode 取原始分(2.0 主榜优先,2.0 未收录的模型回退 1.1;两版任务集不同,综合分按版本内归一定标);Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;AI Coding Daily 为四轴总分 0-70;AI 十项全能为 13 题按 10 类各 10% 加权的总分 0-100;HLE-Diamond 与 GPQA Diamond 在矩阵中合并为一列并分别显示两项成绩,点击表头排序时按两项平均值排序,综合分仍按两组独立计算。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
-              <li><b class="note-term">性价比换算</b>每百万 token 综合成本按 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);指数与综合分同源,不可跨日/跨快照比较。</li>
+              <li><b class="note-term">性价比换算</b>每百万 token 成本按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);订阅 = 套餐月费 ÷ 95% 缓存档月额度,数据合并套餐对比页 codingplan 与 ModelDial,并按厂商优先平台选择;指数与综合分同源,不可跨日/跨快照比较。</li>
               <li><b class="note-term">数据来源</b>按 官方实测 &gt; 厂商发布 &gt; 第三方聚合 的优先级合并,低层级只补缺;数据为快照,仅用于学习与对比展示,不代表绝对评价。</li>
             </ul>
           </details>
@@ -335,7 +335,7 @@
       <p class="source-note" id="lmNote"></p>
     </section>
 
-    <!-- 6) ModelDial 雷达(第三方独立实测综合能力榜,属总览「第三方实测」组,计入综合分(2026-11-26 起十一组等权 9.1%)与命中数) -->
+    <!-- 6) ModelDial 雷达(第三方独立实测综合能力榜,属总览「第三方实测」组,计入综合分(2026-11-26 起十组等权 10%)与命中数) -->
     <section class="page" id="page-modeldial">
       <div class="page-head">
         <p class="page-kicker">Independent Lab · ModelDial</p>
@@ -362,7 +362,7 @@
           <li><b class="note-term">配置口径</b>同一模型按推理强度分档多次测试,主榜取最高分配置;「配置」列为源站条数,展开「全部配置明细」可看逐条成绩。源站「包含 Bot」默认关闭,本页同样不含 Bot。</li>
           <li><b class="note-term">外部产品</b>源站主榜含外部产品参考条目(如 Gemini 4 Argon),带「外部」标记;源站标其 api_model_ranking_eligible=false,不与 API 模型排名同口径。</li>
           <li><b class="note-term">成本口径</b>本页费用与耗时取源站五轴汇总口径;外部产品为自报耗时、费用常缺。各模型之间口径一致,可直接横向比较。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(十一组等权 9.1%)与命中数(分母 11);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%)与命中数(分母 10);数据授权 CC BY 4.0,为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与费用说明</summary>
@@ -375,11 +375,11 @@
       </section>
     </section>
 
-    <!-- 6b) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;计入总览综合分(十一组等权 9.1%)与命中数) -->
+    <!-- 6b) 亿模亿样 · 模型效果对比(前端作品社区盲评 Elo 竞技场;2026-11-27 起仅独立展示,不计分) -->
     <section class="page" id="page-arenaofbias">
       <div class="page-head">
         <p class="page-kicker">Community Blind Test · Elo</p>
-        <div class="page-head-row"><h2>亿模亿样 · 模型效果对比 <span class="tag">前端作品社区盲评 Elo · 计入综合分 10%</span></h2></div>
+        <div class="page-head-row"><h2>亿模亿样 · 模型效果对比 <span class="tag">前端作品社区盲评 Elo · 独立展示不计分</span></h2></div>
         <p id="abDesc" class="page-desc"></p>
       </div>
       <div class="chart-row single">
@@ -396,7 +396,7 @@
           <li><b class="note-term">来源</b>亿模亿样前端作品社区盲评:同题两件作品匿名盲评,按 Bradley-Terry 估计偏好强度折算 Elo(1000 为平均,高 400 分约等于被偏好机会高十倍),并给出 ±95% 区间。</li>
           <li><b class="note-term">分档</b>同一模型按推理强度分档多次测试,主榜取最高分档;源站「非官方」条目(量化/改版权重、第三方 harness)已剔除。</li>
           <li><b class="note-term">指标</b>有效比较为投票场次;胜率 = 胜场 ÷ 有效比较;覆盖任务为参与题数;有效比较不足 30 次标注「暂定」。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(十一组等权 9.1%)与命中数(分母 11),2026-10-16 起接替下线的 AI 能力专项测试;数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>自 2026-11-27 起,亿模亿样仅保留独立榜单展示,不再计入总览综合分与命中数;数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开抓取方式与区间说明</summary>
@@ -408,11 +408,11 @@
       </section>
     </section>
 
-    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(十一组等权 9.1%)与命中数) -->
+    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(十组等权 10%)与命中数) -->
     <section class="page" id="page-aicodingdaily">
       <div class="page-head">
         <p class="page-kicker">Independent Real-World Test · AI Coding Daily</p>
-        <div class="page-head-row"><h2>AI Coding Daily <span class="tag">独立第三方实测 · 7 项目 27 prompt · 计入综合分 8%</span></h2></div>
+        <div class="page-head-row"><h2>AI Coding Daily <span class="tag">独立第三方实测 · 7 项目 27 prompt · 计入综合分 10%</span></h2></div>
         <p id="acdDesc" class="page-desc"></p>
       </div>
       <div class="chart-row single">
@@ -434,7 +434,7 @@
           <li><b class="note-term">来源</b>AI Coding Daily(aicodingdaily.com),主办方为独立开发者 Povilas Korop,不是被评厂商之一;每个模型在 7 个真实项目上跑 27 个 prompt,源站累计 2000+ 次运行。</li>
           <li><b class="note-term">分数口径</b>总分 0-70 = Laravel 代码质量 20 + React-TS 代码质量 20 + Bug Finding 10 + Edge-case Testing 20;每个 prompt 从项目全新副本起步,模型看不到隐藏测试,无人工反馈。</li>
           <li><b class="note-term">混口径</b>源站「Tested with」列显示每个模型跑在<b>各自</b>的 agent harness 上(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),分数同时反映模型能力与脚手架质量。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(十一组等权 9.1%)与命中数(分母 11);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与成本说明</summary>
@@ -448,11 +448,11 @@
     </section>
 
     <!-- 6d) AI 十项全能·定时挑战赛(octathlon.wendystars.com 独立第三方限时 Agent 实测;
-         13 题 / 10 类,计入总览综合分(十一组等权 9.1%)与命中数,2026-11-24 入组) -->
+         13 题 / 10 类,计入总览综合分(十组等权 10%)与命中数,2026-11-24 入组) -->
     <section class="page" id="page-octathlon">
       <div class="page-head">
         <p class="page-kicker">Independent Timed Agent Challenge · Octathlon</p>
-        <div class="page-head-row"><h2>AI 十项全能·定时挑战赛 <span class="tag">独立第三方实测 · 13 题 10 类 · 计入综合分 8%</span></h2></div>
+        <div class="page-head-row"><h2>AI 十项全能·定时挑战赛 <span class="tag">独立第三方实测 · 13 题 10 类 · 计入综合分 10%</span></h2></div>
         <p id="octaDesc" class="page-desc"></p>
         <div class="octa-stats" id="octaStats"></div>
       </div>
@@ -480,7 +480,7 @@
           <li><b class="note-term">来源</b>AI 十项全能·定时挑战赛(octathlon.wendystars.com),主办方为独立第三方,不是被评厂商之一;13 道题、10 个类别,单题限时 60–100 分钟,无人答疑、到时中止。</li>
           <li><b class="note-term">分数口径</b>每题折算 0–100 分,类别权重各 10%、类内各题平分,总分 0–100。7 道标准评判题由程序校验(Lean 编译、加速比、对局实力值、拆解步数、形状吻合度等),6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次、逐项取平均。</li>
           <li><b class="note-term">混口径</b>模型连同<b>它自己的 agent harness</b> 一起测(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等),分数同时反映模型能力与脚手架质量;两位评分员本身也在被评名单中。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(十一组等权 9.1%,「第三方实测」组)与命中数(分母 11);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%,「第三方实测」组)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开开销口径与题目清单</summary>

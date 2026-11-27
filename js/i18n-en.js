@@ -73,24 +73,26 @@
       "Source snapshot ends $1; this model is not listed yet"],
 
     // ===== 总览:矩阵行数提示(app.js 拼装,数字随筛选变化) =====
-    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 (\\d+) 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;其余权威基准仅参考。$",
+    ["^当前显示排名前 (\\d+) 的模型,以及 (\\d+) 个跻身前 30 区间的「参考」模型\\(命中 (\\d+) 榜,不计算综合分、不排名\\)。\\s*其余参考模型与命中 2 榜的模型,勾选「显示全部模型」查看;仅命中 1 榜的模型可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;亿模亿样仅独立展示,不计分;其余权威基准仅参考。\\s*订阅成本合并套餐对比页的 codingplan 与 ModelDial 数据;Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 与 Meta 优先高额度平台。$",
       function (m, ranked, ref, refHits, dom) {
         return "Showing the top " + ranked + " models plus " + ref + " “reference” " +
           (ref === "1" ? "model" : "models") + " inside the top-30 band (" + refHits + " boards, no composite, unranked). " +
           "Other reference models and models covering 2 boards are behind “Show all models”; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
-          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias, AI Coding Daily and AI Decathlon are third-party tests; " +
-          "Agent Arena is net gain on LMArena real agent sessions; HLE-Diamond and GPQA Diamond count toward the composite and coverage, while the remaining reference benchmarks are reference only.";
+          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, AI Coding Daily and AI Decathlon are third-party tests; " +
+          "Agent Arena is net gain on LMArena real agent sessions; HLE-Diamond and GPQA Diamond count toward the composite and coverage. " +
+          "Arena of Bias is reference-only and no longer scores. Subscription costs merge codingplan and ModelDial, with vendor-preferred platforms for Google, Claude, Qwen, Tencent, zAI and xAI; DeepSeek and Meta prefer the highest-quota platforms.";
       }],
-    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤(\\d+) 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;其余权威基准仅参考。$",
+    ["^当前显示全部 (\\d+) 个命中≥2榜的模型:排名 (\\d+) · 参考 (\\d+)。\\s*命中 ≤(\\d+) 榜的模型不计算综合分、不参与排名;仅命中 1 榜的模型不在此视图,可用搜索查找。(?:\\s*当前高亮 (\\d+) 个国产模型。)?\\s*Terminal-Bench 三版合并计分;ModelDial、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;亿模亿样仅独立展示,不计分;其余权威基准仅参考。\\s*订阅成本合并套餐对比页的 codingplan 与 ModelDial 数据;Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 与 Meta 优先高额度平台。$",
       function (m, total, ranked, ref, refFloor, dom) {
         return "Showing all " + total + " models covering at least 2 boards: ranked " + ranked + " · reference " + ref + ". " +
           "Models covering ≤" + refFloor + " boards get no composite and no rank; 1-board models are search-only. " +
           (dom ? dom + " Chinese models highlighted. " : "") +
-          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, Arena of Bias, AI Coding Daily and AI Decathlon are third-party tests; " +
-          "Agent Arena is net gain on LMArena real agent sessions; HLE-Diamond and GPQA Diamond count toward the composite and coverage, while the remaining reference benchmarks are reference only.";
+          "Terminal-Bench 4.0/3.0/2.1 score as one board; ModelDial, AI Coding Daily and AI Decathlon are third-party tests; " +
+          "Agent Arena is net gain on LMArena real agent sessions; HLE-Diamond and GPQA Diamond count toward the composite and coverage. " +
+          "Arena of Bias is reference-only and no longer scores. Subscription costs merge codingplan and ModelDial, with vendor-preferred platforms for Google, Claude, Qwen, Tencent, zAI and xAI; DeepSeek and Meta prefer the highest-quota platforms.";
       }],
-    ["^搜索「(.+?)」在全部 ([\\d,]+) 个有成绩的模型中命中 ([\\d,]+) 个(?::排名 ([\\d,]+) · 参考 ([\\d,]+) · 单榜 ([\\d,]+)。|。)\\s*搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。(?:\\s*当前高亮 (\\d+) 个国产模型。)?(?:\\s*Terminal-Bench 三版合并计分;ModelDial、亿模亿样、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;其余权威基准仅参考。)?$",
+    ["^搜索「(.+?)」在全部 ([\\d,]+) 个有成绩的模型中命中 ([\\d,]+) 个(?::排名 ([\\d,]+) · 参考 ([\\d,]+) · 单榜 ([\\d,]+)。|。)\\s*搜索不套用默认视图的前 30 / 参考区间截断,含「参考」与「仅单榜」行;清空搜索框或按 Esc 返回当前视图。(?:\\s*当前高亮 (\\d+) 个国产模型。)?(?:\\s*Terminal-Bench 三版合并计分;ModelDial、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;亿模亿样仅独立展示,不计分;其余权威基准仅参考。\\s*订阅成本合并套餐对比页的 codingplan 与 ModelDial 数据;Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 与 Meta 优先高额度平台。)?$",
       function (m, query, total, hits, ranked, ref, single, dom) {
         return "“" + query + "” matches " + hits + " of " + total + " scoring models" +
           (ranked ? ": ranked " + ranked + " · reference " + ref + " · single-board " + single + "." : ".") +
@@ -441,6 +443,16 @@
         "Composite ÷ blended cost per million tokens (95% cached input + 4.5% input + 0.5% output; prices taken from codingplan.fyi first, with missing prices for ranked models filled from models.dev). Computed only for ranked models covering at least 4 boards.",
       "绿底为排名模型;灰蓝 +「参考」为命中 2-3 榜,混排展示但不排名;淡灰 +「仅单榜」为命中 1 榜,仅在搜索时出现;NEW 为近 7 天首次上榜;「最佳性价比」只标在排名前 20 的排名行(不含参考/仅单榜)中性价比指数最高者。":
         "Green background = ranked model; blue-grey with “Ref” = covers 2–3 boards, shown inline but not ranked; pale grey with “Single” = covers 1 board, shown only in search; NEW = first appeared within the last 7 days; “Best value” marks the highest value index among the top-20 ranked rows only (reference and single-board rows excluded).",
+      "10 个计分基准组中进入榜单的数量:FrontierCode / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench(4.0·3.0·2.1) / HLE-Diamond / GPQA Diamond / ModelDial / AI Coding Daily / AI 十项全能。亿模亿样仅独立展示,不计命中。":
+        "How many of the 10 scored benchmark groups the model appears on: FrontierCode / llm2014 / Code Arena·WebDev / Agent Arena / Terminal-Bench (4.0·3.0·2.1) / HLE-Diamond / GPQA Diamond / ModelDial / AI Coding Daily / AI Decathlon. Arena of Bias is standalone and does not count toward coverage.",
+      "十个计分组等权:FrontierCode / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / AI Coding Daily / AI 十项全能 / Agent Arena / HLE-Diamond / GPQA Diamond 各 10%(在场 N 组各 1/N,按在场榜归一;缺测权重回流)。亿模亿样不计分。":
+        "Ten scored groups have equal weight: FrontierCode / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / AI Coding Daily / AI Decathlon / Agent Arena / HLE-Diamond / GPQA Diamond, 10% each (1/N over present groups and renormalized; missing weights flow back). Arena of Bias is not scored.",
+      "FrontierCode 取原始分(2.0 主榜优先,2.0 未收录的模型回退 1.1;两版任务集不同,综合分按版本内归一定标);Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;AI Coding Daily 为四轴总分 0-70;AI 十项全能为 13 题按 10 类各 10% 加权的总分 0-100;HLE-Diamond 与 GPQA Diamond 在矩阵中合并为一列并分别显示两项成绩,点击表头排序时按两项平均值排序,综合分仍按两组独立计算。":
+        "FrontierCode uses raw scores (2.0 first, 1.1 only when absent from 2.0; the two task sets are standardized separately); Code Arena·WebDev uses raw Elo; Agent Arena is net gain % versus the Arena baseline (may be negative, IPS/causal tracing); Terminal-Bench uses the highest of 4.0/3.0/2.1, converting 3.0/2.1 to a 4.0-equivalent score via shared models (2.1's 88 ≈ 4.0's 26); ModelDial is five-axis 20/25/35/10/10; llm2014 maps grade levels to 0–100; AI Coding Daily is a four-axis total out of 70; AI Decathlon is a 13-task, 10-category weighted total out of 100. HLE-Diamond and GPQA Diamond share one matrix column showing both scores; sorting uses their average, while composite scoring still uses the two groups independently.",
+      "每百万 token 成本按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);订阅 = 套餐月费 ÷ 95% 缓存档月额度,数据合并套餐对比页 codingplan 与 ModelDial,并按厂商优先平台选择;指数与综合分同源,不可跨日/跨快照比较。":
+        "API cost per million tokens = 95% cached input + 4.5% uncached input + 0.5% output, with USD converted to CNY at 6.8 (models.dev fill-in prices use the same rate). Subscription cost = monthly fee ÷ monthly quota at the 95% cache tier, merging codingplan and ModelDial and selecting vendor-preferred platforms. The index shares its source with the composite and is not comparable across days or snapshots.",
+      "自 2026-11-27 起,亿模亿样仅保留独立榜单展示,不再计入总览综合分与命中数;数据为快照,不代表绝对评价。":
+        "Since 2026-11-27, Arena of Bias remains a standalone board and no longer counts toward the overview composite or coverage. Data is a snapshot and not an absolute verdict.",
       "DeepSWE 14% · Code Arena·WebDev 18% · Terminal-Bench 9% · ModelDial 14% · llm2014 10% · 亿模亿样 10% · AI Coding Daily 8% · Agent Arena 9%(合计 0.92,按在场榜归一;缺测权重回流)。":
         "All eleven scored groups carry equal weight: DeepSWE / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / Arena of Bias / AI Coding Daily / AI Decathlon / Agent Arena / HLE at 9.1% each (1/N over the groups present and renormalized; missing weights flow back).",
       "DeepSWE 为 Pass@1 %;Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;亿模亿样为 Elo(1000 为平均水平);AI Coding Daily 为四轴总分 0-70。":
@@ -453,12 +465,16 @@
         "Merged by priority of official measurements > vendor releases > third-party aggregators, where lower tiers only fill gaps. Data is a snapshot, used for study and comparison only, and does not constitute an absolute verdict.",
 
       // ===== 总览:矩阵表头提示 =====
-      "性价比指数 = 综合分 ÷ 每百万 token 综合成本(¥/M)。成本按 1M token 实际编程比例折算:95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出;单价优先取 codingplan.fyi,排名模型缺价时由 models.dev 补齐(美元按 6.8 折人民币),仅命中≥4榜的排名模型计算,悬浮可见来源与输入/缓存输入/输出三档单价 点击按此列排序":
-        "Value index = composite ÷ blended cost per million tokens (¥/M). Cost follows a real coding mix per 1M tokens: 95% cached input + 4.5% uncached input + 0.5% output. Prices come from codingplan.fyi first, with missing prices for ranked models filled from models.dev (USD at 6.8); computed only for ranked models covering at least 4 boards. Hover to see the source and the input / cached input / output prices · Click to sort by this column",
-      "榜单基准:基准官方实测榜(FrontierCode / Terminal-Bench 4.0/3.0/2.1 / HLE-Diamond / GPQA Diamond)计入综合分与命中数;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标,再与其他计分组等权平均(2026-11-26 起:在场 N 组各 1/N,十一组时每组 9.1%),按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)":
-        "Leaderboard benchmarks: the official measured boards (FrontierCode / Terminal-Bench 4.0/3.0/2.1 / HLE-Diamond / GPQA Diamond) count toward the composite and coverage. Each board is standardized by its in-board robust score (median and 1.4826×MAD scaling, clipped at ±3σ) and then averaged with every other scored group at equal weight (since 2026-11-26: 1/N over the groups present, 10% each with ten groups). Data is merged by channel tier (official measured board > vendor release > third-party aggregator or mirror)",
-      "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70;AI 十项全能,13 题 10 类限时 Agent 实测、总分 0-100,注:各模型跑在各自 agent harness 上)、社区盲评与真实使用(Code Arena · WebDev / Agent Arena 净提升 / 亿模亿样)与站主实测口径(llm2014 私有题库全历史保序校正);七组同纲计入综合分与命中数;2026-11-26 起所有计分组等权(在场 N 组各 1/N,十一组时每组 9.1%),不再按分组压低或抬权;综合分为各榜榜内相对分的等权平均,未测榜按该模型自身水平填补;各列数值前的 #N 为该模型在对应榜单中的实际名次(WebDev 源站无序号,按原始条目 Elo 并列计名次),悬浮可见榜内条目总数":
-        "Third-party tests: independent third-party evaluation (ModelDial Radar, five-axis 20/25/35/10/10 composite; AI Coding Daily coding board, 7 projects × 27 prompts, total out of 70; AI Decathlon, 13 timed tasks across 10 categories, total out of 100 — note each model runs on its own agent harness), community blind tests and real-world usage (Code Arena · WebDev / Agent Arena net gain / Arena of Bias) and the maintainer's own suite (llm2014 private benchmark, all-history order-calibrated). All seven count toward the composite and coverage. Since 2026-11-26 every scored group carries equal weight (1/N over the groups present, 10% each with ten groups); no group is down- or up-weighted. The composite is an equal-weight average of in-board relative scores, with untested boards imputed from the model's own level. The #N before each value is the model's actual position on that board (WebDev has no source rank, so ties are ranked by raw entry Elo); hover to see the board's total entry count",
+      "性价比指数 = 综合分 ÷ 每百万 token 成本(¥/M)。成本双口径取低者:① API 按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算(codingplan.fyi 为主、models.dev 补缺,美元按 6.8 折人民币);② 订阅摊销 = 套餐月费 ÷ 95% 缓存档月额度,合并套餐对比页的 codingplan 与 ModelDial 数据。Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 与 Meta 优先高额度平台。仅命中≥4榜的排名模型计算,悬浮可见两口径明细 点击按此列排序":
+        "Value index = composite ÷ cost per million tokens (¥/M), taking the lower of two bases. API cost uses 95% cached input + 4.5% uncached input + 0.5% output (codingplan.fyi first, models.dev fills gaps, USD at 6.8). Subscription cost is monthly fee ÷ monthly quota at the 95% cache tier, merging codingplan and ModelDial. Google prefers Google/Antigravity, Claude its official plans, Qwen Qoder/Alibaba Cloud, Tencent WorkBuddy/Tencent Cloud, zAI Zhipu/GLM, xAI Grok/X Subscription; DeepSeek and Meta prefer the highest-quota platforms. Computed only for ranked models covering at least 4 boards; hover shows both bases · Click to sort by this column",
+      "HLE-Diamond 与 GPQA Diamond 合并为一列,分别显示两项原始成绩;点击排序按两项在场成绩的平均值排序,综合分与命中数仍按原两组独立计算 点击按此列排序":
+        "HLE-Diamond and GPQA Diamond share one column and show both raw scores. Click to sort by the average of the available scores; composite and coverage still use the two original groups · Click to sort by this column",
+      "AI Coding Daily(总分/70)与 AI 十项全能(总分/100)合并展示;格内第一行为 AI Coding Daily,第二行为 AI 十项全能;点击排序按两项归一化百分比的平均值排序,综合分与命中数仍按原两组独立计算 点击按此列排序":
+        "AI Coding Daily (total/70) and AI Decathlon (total/100) share one column: AI Coding Daily on the first line, AI Decathlon on the second. Click to sort by the average of their normalized percentages; composite and coverage still use the two original groups · Click to sort by this column",
+      "榜单基准:基准官方实测榜(FrontierCode / Terminal-Bench 4.0/3.0/2.1 / HLE-Diamond 与 GPQA Diamond 合并列(分别显示两项成绩,排序取平均))计入综合分与命中数;合并列仅用于展示,综合分仍按原两组独立计算;各榜先按榜内稳健标准分(中位数与 1.4826×MAD 定标、截断 ±3σ)定标,再与其他计分组等权平均(2026-11-26 起:在场 N 组各 1/N,十组时每组 10%),按渠道层级合并数据(基准官方实测榜 > 厂商官方发布 > 第三方聚合与镜像)":
+        "Leaderboard benchmarks: official measured boards (FrontierCode / Terminal-Bench 4.0/3.0/2.1 / a combined HLE-Diamond and GPQA Diamond column showing both scores, sorted by their average) count toward the composite and coverage. The combined column is display-only; scoring still uses the two original groups. Each board is standardized by its in-board robust score (median and 1.4826×MAD scaling, clipped at ±3σ), then averaged at equal weight with the other scored groups (1/N over present groups; 10% each with ten groups). Data is merged by channel tier (official measured board > vendor release > third-party aggregator or mirror)",
+      "第三方实测:第三方独立实测(ModelDial 雷达,五轴 20/25/35/10/10 合成分;AI Coding Daily 编码榜,7 项目 27 prompt 实测、总分 0-70;AI 十项全能,13 题 10 类限时 Agent 实测,总分 0-100,两项合并为一列展示)、社区盲评与真实使用(Code Arena · WebDev / Agent Arena 净提升)与站主实测口径(llm2014 私有题库全历史保序校正);亿模亿样已退出计分,仅保留独立榜单页;综合分与命中数按当前 10 个计分组计算;各列数值前的 #N 为该模型在对应榜单中的实际名次,悬浮可见榜内条目总数":
+        "Third-party tests: independent evaluations (ModelDial Radar five-axis 20/25/35/10/10 composite; AI Coding Daily, 7 projects × 27 prompts, total out of 70; AI Decathlon, 13 timed tasks across 10 categories, total out of 100 — the last two share one display column), community blind tests and real-world usage (Code Arena · WebDev / Agent Arena net gain), and the maintainer's own llm2014 all-history order-calibrated suite. Arena of Bias has left scoring and remains a standalone board. Composite and coverage use the current 10 scored groups. #N before a value is the model's actual position on that board; hover to see the board's total entry count",
       "LMArena Agent Arena 净提升(%):IPS(因果追踪)估计模型在真实智能体会话中相对 Arena 基线的提升,可为负;同一模型按推理强度分档多次上榜时取最高分;另记 95% 区间、独立会话数与观测数;计入综合分(十一组等权,权重 9.1%)与命中数 点击按此列排序":
         "LMArena Agent Arena net gain (%): IPS (causal tracing) estimate of a model's improvement over the Arena baseline in real agent sessions, may be negative. When a model appears at several effort levels, its highest score is used. Also records the 95% interval, independent sessions and observation counts; counts toward the composite (equal weight, 10%) and coverage · Click to sort by this column",
       "亿模亿样前端作品社区盲评 Elo(1000 为平均水平,高 400 分约等于被偏好机会高十倍):同一道题匿名盲评两件作品,按 Bradley-Terry 估计偏好强度;同一模型按推理强度分档多次测试后取最高分档入榜;计入综合分(十一组等权,权重 9.1%)与命中数 点击按此列排序":
@@ -1013,11 +1029,11 @@
         "Cost vs composite score (bubble = latency · cost on the five-axis total)",
       "全部配置明细": "All configurations",
       "亿模亿样 · 模型效果对比": "Arena of Bias · Model comparison",
-      "前端作品社区盲评 Elo · 计入综合分 10%": "Community blind-test Elo for frontend builds · 10% of composite",
+      "前端作品社区盲评 Elo · 独立展示不计分": "Community blind-test Elo for frontend builds · standalone, not scored",
       "Elo 排行(前 20,完整榜单见下表;1000 为平均水平)":
         "Elo ranking (top 20; full board below; 1000 = average)",
-      "独立第三方实测 · 7 项目 27 prompt · 计入综合分 8%":
-        "Independent test · 7 projects, 27 prompts · 8% of composite",
+      "独立第三方实测 · 7 项目 27 prompt · 计入综合分 10%":
+        "Independent test · 7 projects, 27 prompts · 10% of composite",
       "成本 vs 总分(气泡=每 prompt 平均耗时)":
         "Cost vs total score (bubble = average time per prompt)",
       "全部实测配置明细": "All tested configurations",
@@ -1083,16 +1099,19 @@
         "Independent test · app iteration · fixed OpenHands · accuracy",
       "场景": "scenarios",
       "命中 ≥4 榜计分": "Composite (≥4 boards)",
-      "第三方口径:综合分只按 7 个第三方实测组(WebDev / Agent Arena / 亿模亿样 / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/7;榜单基准 4 列(FrontierCode / Terminal-Bench / HLE-Diamond / GPQA Diamond)已隐藏,不参与打分。":
-        "Third-party basis: the composite averages only the 7 third-party groups (WebDev / Agent Arena / Arena of Bias / ModelDial / AI Coding Daily / AI Decathlon / llm2014) at 1/7 each; the 4 official-benchmark columns (FrontierCode / Terminal-Bench / HLE-Diamond / GPQA Diamond) are hidden and do not count.",
+      "第三方口径:综合分只按 6 个第三方实测组(WebDev / Agent Arena / ModelDial / AI Coding Daily / AI 十项全能 / llm2014)等权计算,每组 1/6;榜单基准列已隐藏,不参与打分。":
+        "Third-party basis: the composite averages only the 6 third-party groups (WebDev / Agent Arena / ModelDial / AI Coding Daily / AI Decathlon / llm2014) at 1/6 each; the official-benchmark columns are hidden and do not count.",
       "榜单基准": "Leaderboard benchmarks",
       "第三方实测": "Third-party tests",
       "Terminal-Bench (解决率)": "Terminal-Bench (solve rate)",
+      "HLE / GPQA (两项%)": "HLE / GPQA (two scores)",
+      "AI Coding / 十项全能": "AI Coding / Decathlon",
       "ModelDial (综合分)": "ModelDial (composite)",
       "Agent Arena (净提升)": "Agent Arena (net gain)",
       "llm2014 (全历史/100)": "llm2014 (all-history/100)",
       // 表头拆成「名称 + 单位」两行后,单位是独立文本节点,需单独给词条
       "(解决率)": "(solve rate)",
+      "(两项%)": "(two scores)",
       "(综合分)": "(composite)",
       "(净提升)": "(net gain)",
       "(全历史/100)": "(all-history/100)",
@@ -1296,8 +1315,8 @@
 
       // ===== AI 十项全能页(2026-11-24 入组) =====
       "AI 十项全能·定时挑战赛": "AI Decathlon · Timed Agent Challenge",
-      "独立第三方实测 · 13 题 10 类 · 计入综合分 8%":
-        "Independent test · 13 tasks, 10 categories · 8% of composite",
+      "独立第三方实测 · 13 题 10 类 · 计入综合分 10%":
+        "Independent test · 13 tasks, 10 categories · 10% of composite",
       "AI 十项全能·定时挑战赛(octathlon.wendystars.com):13 道题 / 10 个类别,AI 编程智能体在 60–100 分钟内独立作答、到时中止、无人答疑。":
         "AI Decathlon · timed challenge (octathlon.wendystars.com): 13 tasks across 10 categories. Coding agents answer independently within 60–100 minutes per task, are stopped at the deadline, and receive no help.",
       "7 道标准评判题由程序校验(Lean 编译、加速比、对局实力值、拆解步数、形状吻合度等),6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次取平均;":

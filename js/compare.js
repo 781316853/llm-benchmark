@@ -24,17 +24,15 @@
   var SCORE_TOLERANCE = Z_DISPLAY_SCALE * TOL_Z; // = 1.5 显示分
   var N_MIN = 12;             // 榜内在场模型数低于此值则本榜不计分(统计量抽样噪声不可控)
   var H2H_TAU = 0.8;          // 共榜胜负 logistic 温度(以标准分 z 为单位)
-  // 11 个计分组的键(与 WEIGHTS 一致;VCB-1-100 已于 2026-11-09 下线,HLE 于 2026-11-15 入组,
-  // AI 十项全能于 2026-11-24 入组;2026-11-26 起原 HLE 组换为 HLE-Diamond(1000 题子集),
-  // 同时新增 GPQA Diamond 组)
-  var GROUPS = ["frontiercode", "webdev", "tbench", "modeldial", "llm", "arenaofbias", "aicodingdaily", "octathlon", "agentarena", "hlediamond", "gpqa"];
+  // 10 个计分组的键(2026-11-27 起亿模亿样退出计分,仅保留独立榜单页)
+  var GROUPS = ["frontiercode", "webdev", "tbench", "modeldial", "llm", "aicodingdaily", "octathlon", "agentarena", "hlediamond", "gpqa"];
 
   // ===== 「只看第三方」口径 =====
   // 矩阵的「第三方实测」分组 = 第三方独立实测(ModelDial / AI Coding Daily / AI 十项全能)
-  // + 社区盲评与真实使用(WebDev / Agent Arena / 亿模亿样)+ 站主实测(llm2014),共 7 组。
-  // 打开后:综合分只在这 7 组上等权平均(在场 N 组各 1/N),排名/梯队/性价比/命中都按第三方口径算;
-  // 榜单基准 4 组(FrontierCode / Terminal-Bench / HLE-Diamond / GPQA Diamond)不参与打分,矩阵里仍以参考列展示。
-  var THIRD_GROUPS = ["modeldial", "webdev", "agentarena", "llm", "arenaofbias", "aicodingdaily", "octathlon"];
+  // + 社区盲评与真实使用(WebDev / Agent Arena)+ 站主实测(llm2014),共 6 组。
+  // 打开后:综合分只在这 6 组上等权平均(在场 N 组各 1/N),排名/梯队/性价比/命中都按第三方口径算;
+  // 榜单基准 4 组(FrontierCode / Terminal-Bench / HLE-Diamond / GPQA Diamond)不参与打分。
+  var THIRD_GROUPS = ["modeldial", "webdev", "agentarena", "llm", "aicodingdaily", "octathlon"];
   var thirdMode = false;
   function setThirdMode(v) { thirdMode = !!v; }
   function isThirdMode() { return thirdMode; }
@@ -42,7 +40,7 @@
   function activeGroupCount() { return activeGroups().length; }
   // 排名门槛:全口径命中≥4 才排名;第三方口径只有 7 组,门槛降到 ≥3,参考行=2,单榜=1
   function rankedFloor() { return thirdMode ? 3 : 4; }
-  // 当前口径下的命中数(全口径 = benchCount;第三方口径 = 七个第三方组里出现的组数)
+  // 当前口径下的命中数(全口径 = benchCount;第三方口径 = 六个第三方组里出现的组数)
   function hitCount(e) { return thirdMode ? (e._cnt3 || 0) : (e.benchCount || 0); }
 
   // 各榜成绩取值(与矩阵列一致,值越大越好);供单榜行稳定排序使用。
@@ -58,7 +56,6 @@
     agentarena: function (e) { return (e.agentarena && e.agentarena.score != null) ? e.agentarena.score : null; },
     tbench:  function (e) { return e.tbench ? e.tbench.norm : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.score : null; },
-    arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
     aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
     octathlon: function (e) { return e.octathlon ? e.octathlon.score : null; },
     hlediamond: function (e) { return e.hlediamond ? e.hlediamond.score : null; },
@@ -231,7 +228,7 @@
   // 榜与榜之间量纲依旧不可比;这里直接取各榜原生量纲,由 boardStats() 在榜内做稳健定标。
   //   frontiercode 版本内 min-max 0-100(2.0/1.1 任务集不同,先各自归一再定标)  webdev  Elo 原值
   //   tbench  4.0 等效解决率 %(跨版本按共有模型折算)
-  //   modeldial 源站五轴 20/25/35/10/10 综合分    llm  全历史保序校正分    arenaofbias  Elo 原值(每模型最高分档)
+  //   modeldial 源站五轴 20/25/35/10/10 综合分    llm  全历史保序校正分
   //   aicodingdaily 源站总分(0-70,四轴之和;尺度不变,原生量纲直接进池定标)
   //   octathlon 源站总分(0-100,13 题按 10 类各 10% 加权;尺度不变,原生量纲直接进池定标)
   //   agentarena 净提升 %(相对 Arena 基线,可为负;尺度不变,原生量纲直接进池定标)
@@ -242,7 +239,6 @@
     tbench: function (e) { return e.tbench ? e.tbench.equiv : null; },
     modeldial: function (e) { return e.modeldial ? e.modeldial.overall : null; },
     llm: function (e) { return (e.llm && e.llm.norm != null) ? e.llm.norm : null; },
-    arenaofbias: function (e) { return e.arenaofbias ? e.arenaofbias.score : null; },
     aicodingdaily: function (e) { return e.aicodingdaily ? e.aicodingdaily.score : null; },
     octathlon: function (e) { return e.octathlon ? e.octathlon.score : null; },
     hlediamond: function (e) { return e.hlediamond ? e.hlediamond.score : null; },
@@ -316,7 +312,7 @@
         sum += z * WEIGHTS[g];
         wsum += WEIGHTS[g];
       });
-      // 第三方口径:同一套榜内 z,只在 7 个第三方组上等权平均(权重归一,榜单基准 3 组不参与)
+      // 第三方口径:同一套榜内 z,只在 6 个第三方组上等权平均(权重归一,榜单基准 4 组不参与)
       THIRD_GROUPS.forEach(function (g) {
         if (zs[g] == null) return;
         zs3[g] = zs[g];

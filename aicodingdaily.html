@@ -57,8 +57,8 @@
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="assets/fonts/saira-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261126t" />
-  <link rel="stylesheet" href="css/octathlon.css?v=20261126c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261127a" />
+  <link rel="stylesheet" href="css/octathlon.css?v=20261127a" />
   <!-- 矩阵三层悬停联动(数字/整行/整列 + 非交叉区压暗)。2026-11-26 修:
        这两行原先只手工加在 17 个生成页里,下一次 build_pages 从模板重建就被抹掉了(630f690),
        悬停动效随之消失。放进模板后,重新生成、每日刷新都不会再丢。 -->
@@ -80,10 +80,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261126a"></script>
+  <script defer src="js/data.js?v=20261127a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
-  <script defer src="js/compare.js?v=20261126c"></script>
-  <script defer src="js/app.js?v=20261126m"></script>
+  <script defer src="js/compare.js?v=20261127a"></script>
+  <script defer src="js/app.js?v=20261127a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261126a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -91,7 +91,7 @@
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
   <!-- 规格书皮肤动效:入场、滚动揭示、列表 stagger、吸顶导航兜底 -->
-  <script defer src="js/octathlon.js?v=20261124e"></script>
+  <script defer src="js/octathlon.js?v=20261127a"></script>
   <!-- 三层悬停联动:事件委托在 document 上,表格重渲染后无需重绑(与 mx-restyle.css 配对) -->
   <script defer src="js/mx-restyle.js?v=20261126c"></script>
 </head>
@@ -225,11 +225,11 @@
       <p class="app-loading-text">正在加载数据</p>
       <div class="app-loading-bar"><i></i></div>
     </div>
-    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(十一组等权 9.1%)与命中数) -->
+    <!-- 6c) AI Coding Daily(aicodingdaily.com 独立第三方实测编码榜;计入总览综合分(十组等权 10%)与命中数) -->
     <section class="page active" id="page-aicodingdaily">
       <div class="page-head">
         <p class="page-kicker">Independent Real-World Test · AI Coding Daily</p>
-        <div class="page-head-row"><h2>AI Coding Daily <span class="tag">独立第三方实测 · 7 项目 27 prompt · 计入综合分 8%</span></h2></div>
+        <div class="page-head-row"><h2>AI Coding Daily <span class="tag">独立第三方实测 · 7 项目 27 prompt · 计入综合分 10%</span></h2></div>
         <p id="acdDesc" class="page-desc"></p>
       </div>
       <div class="chart-row single">
@@ -251,7 +251,7 @@
           <li><b class="note-term">来源</b>AI Coding Daily(aicodingdaily.com),主办方为独立开发者 Povilas Korop,不是被评厂商之一;每个模型在 7 个真实项目上跑 27 个 prompt,源站累计 2000+ 次运行。</li>
           <li><b class="note-term">分数口径</b>总分 0-70 = Laravel 代码质量 20 + React-TS 代码质量 20 + Bug Finding 10 + Edge-case Testing 20;每个 prompt 从项目全新副本起步,模型看不到隐藏测试,无人工反馈。</li>
           <li><b class="note-term">混口径</b>源站「Tested with」列显示每个模型跑在<b>各自</b>的 agent harness 上(Codex CLI / Claude Code / OpenCode / Cursor / Devin / Antigravity / DeepSeek Harness),分数同时反映模型能力与脚手架质量。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(十一组等权 9.1%)与命中数(分母 11);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开权重席位与成本说明</summary>

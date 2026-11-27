@@ -57,8 +57,8 @@
   <link rel="preconnect" href="https://registry.npmmirror.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="assets/fonts/saira-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261126t" />
-  <link rel="stylesheet" href="css/octathlon.css?v=20261126c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261127a" />
+  <link rel="stylesheet" href="css/octathlon.css?v=20261127a" />
   <!-- 矩阵三层悬停联动(数字/整行/整列 + 非交叉区压暗)。2026-11-26 修:
        这两行原先只手工加在 17 个生成页里,下一次 build_pages 从模板重建就被抹掉了(630f690),
        悬停动效随之消失。放进模板后,重新生成、每日刷新都不会再丢。 -->
@@ -80,10 +80,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261126a"></script>
+  <script defer src="js/data.js?v=20261127a"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
-  <script defer src="js/compare.js?v=20261126c"></script>
-  <script defer src="js/app.js?v=20261126m"></script>
+  <script defer src="js/compare.js?v=20261127a"></script>
+  <script defer src="js/app.js?v=20261127a"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261126a"></script>
   <!-- 分享榜单:总览页引用条「分享榜单」按钮 + canvas 分享图(榜单图 / 单模型成绩卡) -->
@@ -91,7 +91,7 @@
   <!-- 意见反馈交互 -->
   <script defer src="js/feedback.js?v=20260824a"></script>
   <!-- 规格书皮肤动效:入场、滚动揭示、列表 stagger、吸顶导航兜底 -->
-  <script defer src="js/octathlon.js?v=20261124e"></script>
+  <script defer src="js/octathlon.js?v=20261127a"></script>
   <!-- 三层悬停联动:事件委托在 document 上,表格重渲染后无需重绑(与 mx-restyle.css 配对) -->
   <script defer src="js/mx-restyle.js?v=20261126c"></script>
 </head>
@@ -228,7 +228,7 @@
     <section class="page active" id="page-octathlon">
       <div class="page-head">
         <p class="page-kicker">Independent Timed Agent Challenge · Octathlon</p>
-        <div class="page-head-row"><h2>AI 十项全能·定时挑战赛 <span class="tag">独立第三方实测 · 13 题 10 类 · 计入综合分 8%</span></h2></div>
+        <div class="page-head-row"><h2>AI 十项全能·定时挑战赛 <span class="tag">独立第三方实测 · 13 题 10 类 · 计入综合分 10%</span></h2></div>
         <p id="octaDesc" class="page-desc"></p>
         <div class="octa-stats" id="octaStats"></div>
       </div>
@@ -256,7 +256,7 @@
           <li><b class="note-term">来源</b>AI 十项全能·定时挑战赛(octathlon.wendystars.com),主办方为独立第三方,不是被评厂商之一;13 道题、10 个类别,单题限时 60–100 分钟,无人答疑、到时中止。</li>
           <li><b class="note-term">分数口径</b>每题折算 0–100 分,类别权重各 10%、类内各题平分,总分 0–100。7 道标准评判题由程序校验(Lean 编译、加速比、对局实力值、拆解步数、形状吻合度等),6 道主动设计题由 Claude Opus 5.5 与 GPT 6.1 Sol 各评一次、逐项取平均。</li>
           <li><b class="note-term">混口径</b>模型连同<b>它自己的 agent harness</b> 一起测(Claude Code / Codex / Qwen Code / Kimi Code / ZCode / OpenCode 等),分数同时反映模型能力与脚手架质量;两位评分员本身也在被评名单中。</li>
-          <li><b class="note-term">计分与免责</b>计入总览综合分(十一组等权 9.1%,「第三方实测」组)与命中数(分母 11);数据为快照,不代表绝对评价。</li>
+          <li><b class="note-term">计分与免责</b>计入总览综合分(十组等权 10%,「第三方实测」组)与命中数(分母 10);数据为快照,不代表绝对评价。</li>
         </ul>
         <details class="notes-more">
           <summary>展开开销口径与题目清单</summary>

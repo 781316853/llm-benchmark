@@ -840,7 +840,7 @@
   // agentarena:同名取最高净提升(可为负;2026-10-26 起计入综合分与命中数,权重 9%);
   // tbench:同名取最高(计入综合分与命中数);modeldial:同名取最高(2026-09 起计入综合分与命中数);
   // nl2repo 自 2026-09-19 起,与 benchcad 等其余权威基准一样仅展示、不进统一视图;
-  // arenaofbias:同名取最高 Elo(2026-10-16 起接替 AI 能力专项测试计入综合分与命中数);
+  // arenaofbias:同名取最高 Elo;2026-11-27 起仅保留独立榜单展示,不再计入综合分与命中数;
   // aicodingdaily:同名取最高总分(2026-10-19 起计入综合分与命中数,权重 8%);
   // octathlon:同名取最高总分(2026-11-24 起计入综合分与命中数,权重 8%);
   // hlediamond:同名取最高准确率(2026-11-26 起接替原 HLE 计入综合分与命中数);
@@ -961,9 +961,8 @@
           tps: m.cost ? m.cost.tps : null
         };
     });
-    // 统计跨榜命中数:DeepSWE / llm2014 / WebDev / Agent Arena / Terminal-Bench / 亿模亿样 / ModelDial /
-    // AI Coding Daily / AI 十项全能 / HLE-Diamond / GPQA Diamond 共 11 基准组;其余权威基准(TB-Science/OSWorld/ALE/ARC-AGI-3/
-    // BenchCAD/APEX-1/NL2Repo/Code Migration/AA Coding Agent Index)仅展示不计命中。
+    // 统计跨榜命中数:FrontierCode / llm2014 / WebDev / Agent Arena / Terminal-Bench / ModelDial /
+    // AI Coding Daily / AI 十项全能 / HLE-Diamond / GPQA Diamond 共 10 基准组;亿模亿样仅独立展示,不计命中。
     Object.keys(map).forEach(function (k) {
       var e = map[k];
       if (e.frontiercode) e.benchCount++;
@@ -971,7 +970,6 @@
       if (e.webdev) e.benchCount++;
       if (e.agentarena) e.benchCount++;
       if (e.tbench) e.benchCount++;
-      if (e.arenaofbias) e.benchCount++;
       if (e.modeldial) e.benchCount++;
       if (e.aicodingdaily) e.benchCount++;
       if (e.octathlon) e.benchCount++;
@@ -1129,37 +1127,77 @@
     return src;
   }
   // ===== 订阅折算成本(¥/百万 token) =====
-  // 口径:套餐月费 ¥ ÷ 月可用额度(95% 缓存档,单位百万 token);源站已给「¥每亿」字段 u,
-  // 换算 ¥/M = u / 100。同一模型可能出现在多个套餐里(如 Plus / Pro 100 / Pro 200),取最低。
-  // 数据源 data/modeldial-subs.js(MODELDIAL_SUBS);未加载时返回空表。
-  // ⚠ 与 API 按量不是同一口径:订阅是「包月摊销」,额度用不完就比 API 贵、用满才便宜。
-  var SUBS_CACHE = null;
+  // 合并套餐对比页的两份订阅数据:codingplan.fyi + ModelDial;统一按 95% 缓存档月额度摊销。
+  // 平台优先级:Google=Google/Antigravity;Claude=Claude 官方;千问=Qoder/阿里云;
+  // 腾讯=WorkBuddy/腾讯云;zAI=智谱/GLM;xAI=xAI Grok/X Subscription。
+  // DeepSeek 与 Meta 没有限定平台,优先选月额度最高的套餐;其余厂商在优先平台内取最低 ¥/M。
+  // ⚠ 订阅是包月摊销,额度用不完就比 API 贵;与按量口径分开显示。
+  var SUBS_CACHE = null, SUBS_SIG = "";
   function subsCost() {
-    if (SUBS_CACHE) return SUBS_CACHE;
-    var src = window.MODELDIAL_SUBS;
-    var out = {};
-    if (!src || !Array.isArray(src.plans)) { SUBS_CACHE = out; return out; }
-    src.plans.forEach(function (p) {
+    var cp = window.CODINGPLAN, md = window.MODELDIAL_SUBS;
+    var sig = (cp ? (cp.updated || "") + "/" + (cp.refreshedAt || "") : "0") + "|" +
+      (md ? (md.updated || "") + "/" + (md.refreshedAt || "") : "0");
+    if (SUBS_CACHE && SUBS_SIG === sig) return SUBS_CACHE;
+    var all = {};
+    function add(rawName, platform, planName, feeCny, quotaM, costPerM, basis, date, source) {
+      if (costPerM == null || !isFinite(costPerM) || costPerM <= 0) return;
+      var c = canon(rawName);
+      if (!all[c.id]) all[c.id] = [];
+      all[c.id].push({
+        costPerM: costPerM, planName: planName || "", platform: platform || "",
+        feeCny: feeCny != null ? feeCny : null, quotaM: quotaM != null ? quotaM : null,
+        basis: basis || "", date: date || "", source: source || "", vendor: c.vendor
+      });
+    }
+    ((cp && cp.plans) || []).forEach(function (p) {
       (p.models || []).forEach(function (m) {
-        var u = Number(m.u);
-        if (!isFinite(u) || u <= 0) return;
-        var c = canon(m.m || m.mEn);
-        var v = u / 100;
-        var cur = out[c.id];
-        if (!cur || v < cur.costPerM) {
-          out[c.id] = {
-            costPerM: v,
-            planName: p.name || p.slug || "",
-            platform: p.platform || m.b || "",
-            feeCny: p.feeCny != null ? p.feeCny : null,
-            quotaM: Array.isArray(m.q) ? m.q[2] : null,
-            basis: m.w || "",
-            date: m.d || ""
-          };
-        }
+        var q = Array.isArray(m.q) ? m.q[2] : null;
+        var fee = p.feeCny;
+        var cost = q > 0 && fee != null ? fee / q : (m.u != null ? Number(m.u) : null);
+        add(m.m || m.mEn, p.platform, p.name || p.slug, fee, q, cost, m.w || m.s || "", m.d || "", "codingplan");
       });
     });
+    ((md && md.plans) || []).forEach(function (p) {
+      (p.models || []).forEach(function (m) {
+        var q = Array.isArray(m.q) ? m.q[2] : null;
+        var fee = p.feeCny;
+        var u = Number(m.u);
+        var cost = isFinite(u) && u > 0 ? u / 100 : (q > 0 && fee != null ? fee / q : null);
+        add(m.m || m.mEn, p.platform, p.name || p.slug, fee, q, cost, m.w || "", m.d || "", "modeldial");
+      });
+    });
+    function platformKey(s) { return String(s || "").toLowerCase().replace(/[\s·\-_.()（）]/g, ""); }
+    function preferred(vendor, platform) {
+      var k = platformKey(platform);
+      if (vendor === "Google") return k.indexOf("google") >= 0 || k.indexOf("antigravity") >= 0;
+      if (vendor === "Anthropic") return k.indexOf("claude") >= 0;
+      if (vendor === "Alibaba") return k.indexOf("qoder") >= 0 || k.indexOf("阿里") >= 0 || k.indexOf("百炼") >= 0 || k.indexOf("bailian") >= 0 || k.indexOf("alibaba") >= 0;
+      if (vendor === "Tencent") return k.indexOf("workbuddy") >= 0 || k.indexOf("腾讯") >= 0 || k.indexOf("tencent") >= 0;
+      if (vendor === "zAI") return k.indexOf("智谱") >= 0 || k.indexOf("glm") >= 0 || k.indexOf("zhipu") >= 0;
+      if (vendor === "xAI") return k.indexOf("xaigrok") >= 0 || k.indexOf("grok") >= 0 || k.indexOf("xsubscription") >= 0;
+      return false;
+    }
+    var out = {};
+    Object.keys(all).forEach(function (id) {
+      var list = all[id];
+      var vendor = list[0].vendor;
+      var preferredList = list.filter(function (c) { return preferred(vendor, c.platform); });
+      var pool = preferredList.length ? preferredList : list;
+      if (vendor === "DeepSeek" || vendor === "Meta") {
+        pool.sort(function (a, b) {
+          var qa = a.quotaM != null ? a.quotaM : 0, qb = b.quotaM != null ? b.quotaM : 0;
+          return qb - qa || a.costPerM - b.costPerM;
+        });
+      } else {
+        pool.sort(function (a, b) {
+          return a.costPerM - b.costPerM ||
+            (b.quotaM || 0) - (a.quotaM || 0);
+        });
+      }
+      out[id] = pool[0];
+    });
     SUBS_CACHE = out;
+    SUBS_SIG = sig;
     return out;
   }
 
