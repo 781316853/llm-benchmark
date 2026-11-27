@@ -168,6 +168,118 @@ const SEEDS = {
 
 function forBenchmark(benchKey) { return SEEDS[benchKey] || []; }
 
+// ===== 官方发布页自动抽取的成绩(scripts/lib/official-scores.js -> official_releases.js) =====
+// 与上面人工转录的 SEEDS 同形状、同语义,区别只是来源是自动解析而非手抄。
+// 合并策略:
+//   1) 启动时把 data/official_releases.js 的 scores 并入 SEEDS(自动条目排在人工条目之后,
+//      appendMissingSeed 按「已存在则跳过」处理,故人工转录的分数优先级更高,不会被自动值顶掉);
+//   2) 只并入 hle / gpqa 两榜 —— 这两榜的官方表格口径与站内一致(实测同型号分数相同),
+//      其它榜单的官方表 harness 差异大,仍走人工核对。
+const AUTO_BENCHES = ["hle", "gpqa"];
+function loadAutoScores() {
+  let data = null;
+  try {
+    const fs = require("fs");
+    const path = require("path");
+    const vm = require("vm");
+    const CONFIG = require("./config");
+    const p = path.join(CONFIG.DATA_DIR, "official_releases.js");
+    if (!fs.existsSync(p)) return null;
+    const sb = { window: {} };
+    vm.createContext(sb);
+    vm.runInContext(fs.readFileSync(p, "utf8"), sb, { filename: p });
+    data = sb.window.OFFICIAL_RELEASES || null;
+  } catch (e) {
+    console.log("  [official-scores] 读取官方发布成绩失败,跳过自动并入: " + e.message);
+    return null;
+  }
+  if (!data || !data.scores) return null;
+  return data.scores;
+}
+
+let autoMerged = false;
+function mergeAutoScores() {
+  if (autoMerged) return 0;
+  autoMerged = true;
+  const scores = loadAutoScores();
+  if (!scores) return 0;
+  let added = 0;
+  AUTO_BENCHES.forEach(function (bench) {
+    const list = scores[bench] || [];
+    if (!list.length) return;
+    if (!SEEDS[bench]) SEEDS[bench] = [];
+    const have = {};
+    SEEDS[bench].forEach(function (s) { have[canonKey(s.name)] = 1; });
+    // 自动条目自身也按 canonKey 去重:官方不同发布页对同一模型有不同写法
+    // (「Claude-Opus-4.6」与「Opus-4.6 Max」),不去重会把同一条分数补两次。
+    list.forEach(function (r) {
+      const k = canonKey(r.model);
+      if (!k || have[k]) return;   // 人工转录优先,自动条目不覆盖
+      have[k] = 1;
+      SEEDS[bench].push({
+        name: r.model,
+        score: r.score,
+        src: r.src || "official-auto",
+        note: "官方发布页表格自动解析" + (r.title ? "(" + r.title + ")" : "") +
+          (r.date ? "," + r.date : "") + ";HLE 仅取无工具行",
+        sourceUrl: r.url || "",
+        auto: true
+      });
+      added++;
+    });
+  });
+  if (added) console.log("  [official-scores] 自动并入 HLE/GPQA 种子 " + added + " 条");
+  return added;
+}
+// 立即执行:各榜单源在 require 本模块后马上调用 forBenchmark,必须在此之前并好。
+// 注意:调用必须放在本文件最末尾 —— canonKey 依赖下方定义的 ABBR,
+// 若在此之前执行会读到 undefined(函数声明会提升,但 var 赋值不会)。
+
+// 判重键:官方表头的写法常与站内不同(「Claude 4.5 Opus」vs「Claude Opus 4.5」、
+// 「DS-V4-Pro Max」vs「DeepSeek-V4-Pro Max」),单一策略都会漏判。
+// 采用「宽松键」为主:先折叠厂商缩写,再拆成字母段与数字段各自排序后拼接 ——
+//   "Claude 4.5 Opus" / "Claude Opus 4.5"  → w:claudeopus|4-5
+//   "DS-V4-Pro Max"   / "DeepSeek-V4-Pro Max" → w:deepseekvpromax|4
+// 这比 canon() 更适合做「判重」:canon 对未登记写法会退化成自动建档(vendor=其他),
+// 反而把同一模型判成两个。canon 只在宽松键为空时兜底。
+// 合并与补缺两处必须用同一口径,否则会补进重复条目。
+var _canon;
+// 厂商名缩写:官方表格受列宽限制常用缩写,展开后再比较
+var ABBR = [
+  [/deepseek/g, "deepseek"], [/^ds(?=[0-9\- ]|v[0-9])/g, "deepseek"],
+  [/kimi/g, "kimi"], [/^k(?=[0-9])/g, "kimi"],
+  [/claude/g, "claude"], [/anthropic/g, "claude"],
+  [/gemini/g, "gemini"], [/^g(?=[0-9])/g, "gemini"],
+  [/qwen/g, "qwen"], [/glm/g, "glm"], [/zhipu/g, "glm"],
+  [/gemma/g, "gemma"], [/gpt/g, "gpt"], [/openai/g, "gpt"]
+];
+function canonKey(name) {
+  let s = String(name || "").toLowerCase();
+  ABBR.forEach(function (p) { s = s.replace(p[0], p[1]); });
+  let words = (s.match(/[a-z]+/g) || []);
+  // 去掉纯档位词:官方表格里同一个模型常带「Max / High / Thinking」等档位标注
+  // (「Opus-4.6 Max」与「Claude-Opus-4.6」是同一模型),这些词不参与判重。
+  // 同时去掉可省略的厂商前缀 claude/anthropic —— 官方表头有时写全称、有时只写型号。
+  const EFFORT = {
+    max: 1, high: 1, medium: 1, low: 1, xhigh: 1, thinking: 1, nonthinking: 1,
+    base: 1, full: 1, preview: 1, instruct: 1, claude: 1, anthropic: 1
+  };
+  words = words.filter(function (w) { return !EFFORT[w]; });
+  const w = words.sort().join("");
+  const nums = (s.match(/\d+(?:\.\d+)?/g) || [])
+    .map(function (n) { return n.split(".").join("-"); })
+    .sort().join("");
+  if (w) return "w:" + w + "|" + nums;
+  // 纯数字/符号名:退回 canon 或 normName
+  if (_canon === undefined) {
+    try { _canon = require("./model-map").canon || false; } catch (e) { _canon = false; }
+  }
+  if (_canon) {
+    try { const c = _canon(name); if (c && c.id) return "c:" + String(c.id).toLowerCase(); } catch (e) {}
+  }
+  return "n:" + normName(name);
+}
+
 // 为走 createTierMerger 的源做「后处理补缺」:仅追加 seed 中尚未出现的模型,
 // 不改动既有条目的分数/来源;追加后按 score 降序重排并重编 rank(从 1 起)。
 // nameOf: 从已合并记录取模型名的函数(merger 源记录用 .model)。返回新增条数。
@@ -175,13 +287,14 @@ function appendMissingSeed(models, benchKey, nameOf) {
   const seeds = forBenchmark(benchKey);
   if (!seeds.length) return 0;
   const have = {};
-  (models || []).forEach(function (m) { have[normName(nameOf ? nameOf(m) : m.model)] = true; });
+  (models || []).forEach(function (m) { have[canonKey(nameOf ? nameOf(m) : m.model)] = true; });
   let added = 0;
   seeds.forEach(function (s) {
-    if (have[normName(s.name)]) { console.log("  [" + srcOf(s) + "] 已收录,跳过: " + s.name); return; }
-    have[normName(s.name)] = true;
+    const k = canonKey(s.name);
+    if (have[k]) { console.log("  [" + srcOf(s) + "] 已收录,跳过: " + s.name); return; }
+    have[k] = true;
     const rec = { model: s.name, score: s.score, src: srcOf(s) };
-    ["org", "effort", "agent", "date", "size", "context", "cost", "license"].forEach(function (k) { if (s[k] != null) rec[k] = s[k]; });
+    ["org", "effort", "agent", "date", "size", "context", "cost", "license"].forEach(function (k2) { if (s[k2] != null) rec[k2] = s[k2]; });
     models.push(rec);
     added++;
     console.log("  [" + srcOf(s) + "] 补缺: " + s.name + " (" + s.score + ")");
@@ -193,4 +306,7 @@ function appendMissingSeed(models, benchKey, nameOf) {
   return added;
 }
 
-module.exports = { SEEDS: SEEDS, forBenchmark: forBenchmark, normName: normName, srcOf: srcOf, appendMissingSeed: appendMissingSeed };
+// 模块加载即并入官方自动成绩(必须放在文件末尾:canonKey 依赖上方定义的 ABBR)
+mergeAutoScores();
+
+module.exports = { SEEDS: SEEDS, forBenchmark: forBenchmark, normName: normName, srcOf: srcOf, appendMissingSeed: appendMissingSeed, canonKey: canonKey };

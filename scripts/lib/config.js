@@ -66,6 +66,7 @@ module.exports = {
     "moonshot-official": 2, // Kimi 官方发布博客自测分人工转录(种子层,仅补缺,见 https://www.kimi.com/en/blog/kimi-k3-1-pro)
     "tencent-official": 2, // 腾讯混元官方发布页自测分人工转录(种子层,仅补缺,见 https://hy.tencent.com/research/hy4)
     "anthropic-official": 2, // Anthropic 官方发布页自测分人工转录(种子层,仅补缺,见 https://www.anthropic.com/claude-fable-and-mythos-5-2)
+    "official-auto": 2, // 官方发布页 HTML 表格自动解析的 HLE / GPQA 成绩(scripts/lib/official-scores.js;仅补缺,人工转录优先)
     "llm-stats": 3,  // 第三方聚合站 llm-stats.com
     benchlm: 3,      // 第三方镜像 benchlm.ai
     aa: 3,           // Artificial Analysis 复测口径(benchlm 静态镜像页,分数为 AA 自测、系统性异于官方口径)

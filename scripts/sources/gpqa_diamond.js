@@ -17,6 +17,7 @@ const writers = require("../lib/writers");
 const { parseBenchlmBoard } = require("../lib/parseBenchlmBoard");
 const { createTierMerger } = require("../lib/mergeByTier");
 const CONFIG = require("../lib/config");
+const officialSeeds = require("../lib/official-seeds");
 
 const DL_LIMIT = 1000;
 
@@ -109,10 +110,18 @@ class GpqaDiamondSource extends BaseSource {
     models.sort(function (a, b) { return b.score - a.score; });
     models.forEach(function (m, i) { m.rank = i + 1; });
 
+    // 厂商官方发布成绩种子层(T2):补 datalearner / benchlm 都未收录、但厂商在发布页
+    // 表格里公布的模型。只补缺失,不覆盖已有分数;自动解析的条目由 official-seeds 并入。
+    const seedAdded = officialSeeds.appendMissingSeed(models, "gpqa");
+    if (seedAdded) {
+      models.sort(function (a, b) { return b.score - a.score; });
+      models.forEach(function (m, i) { m.rank = i + 1; });
+    }
+
     return {
       tasks: 198,
       models: models,
-      stats: { datalearner: vendor.length, benchlm: bmRows.length, merged: models.length }
+      stats: { datalearner: vendor.length, benchlm: bmRows.length, merged: models.length, seeds: seedAdded }
     };
   }
 

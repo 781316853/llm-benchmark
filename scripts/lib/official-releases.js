@@ -1,4 +1,4 @@
-// 官方发布监听(Qwen / 腾讯混元官方博客)
+﻿// 官方发布监听(Qwen / 腾讯混元官方博客)
 // 目的:厂商发布新模型后,自动发现「模型名 + 相关基准提及」并写入 data/official_releases.js,
 //       再由 scripts/lib/model-auto.js 把未登记模型自动建档,避免后续榜单出现 vendor=「其他」。
 // 边界:发布页的基准分数多为图表图片,本模块不解析/臆造分数;分数仍由 scripts/lib/official-seeds.js
@@ -9,6 +9,7 @@ const CONFIG = require("./config");
 const transport = require("./transport");
 const writers = require("./writers");
 const officialSeeds = require("./official-seeds");
+const officialScores = require("./official-scores");
 
 const CFG = CONFIG.officialReleases;
 const MONTHS = {
@@ -141,7 +142,9 @@ async function fetchQwen(src, limit) {
       models: models,
       benchmarks: extractBenchmarks(title + " " + content),
       cover: extra.cover_small || null,
-      images: collectImages(content, limit)
+      images: collectImages(content, limit),
+      // 从正文的「基准 × 模型」HTML 表格抽取 HLE / GPQA 成绩
+      scores: officialScores.extractAll(content)
     };
   }).filter(function (r) { return r.title && r.url; });
 }
@@ -165,7 +168,9 @@ async function fetchHunyuan(src, limit) {
       models: extractModels(title, src.vendor),
       benchmarks: extractBenchmarks(title + " " + content),
       cover: images[0] || null,
-      images: images
+      images: images,
+      // 同 Qwen:从正文 HTML 表格抽取 HLE / GPQA 成绩(混元正文亦为 HTML)
+      scores: officialScores.extractAll(content)
     };
   }).filter(function (r) { return r.title && r.url; });
 }
@@ -189,6 +194,53 @@ function flattenModels(releases) {
   return Object.keys(byKey).sort().map(function (k) { return byKey[k]; });
 }
 
+// 通用 HTML 列表源:抓一个普通网页(博客列表/单篇发布页),用正则切出文章块。
+// 用途:不是所有厂商都提供 Qwen/混元那样的 JSON 列表接口,但绝大多数官方博客的
+// HTML 里都有 <article> / <a> 结构。配置项:
+//   url          要抓的页面
+//   itemPattern  切分单条文章的正则(含 1 个捕获组,组内为单篇文章 HTML)
+//   titlePattern 从单篇 HTML 取标题的正则(第 1 捕获组)
+//   linkPattern  从单篇 HTML 取链接的正则(第 1 捕获组;可为相对路径,与 site 拼接)
+//   datePattern  从单篇 HTML 取日期的正则(第 1 捕获组,YYYY-MM-DD 或 ISO)
+//   maxItems     最多取几条(默认 30)
+// 分数抽取对所有源一致生效(extractFromHtml),因此新接入的源只要能给出正文 HTML,
+// HLE / GPQA 就会被自动解析,无需为每个厂商写解析器。
+async function fetchHtmlList(src, limit) {
+  const raw = await transport.fetchWithRetry(src.url, {
+    headers: { "user-agent": "Mozilla/5.0 (compatible; llm-benchmark/1.0)", accept: "text/html" }
+  });
+  const html = String(raw || "");
+  const itemRe = new RegExp(src.itemPattern, "gi");
+  const out = [];
+  let m, n = 0;
+  while ((m = itemRe.exec(html))) {
+    if (++n > (src.maxItems || 30)) break;
+    const block = m[1] || m[0];
+    const pick = function (re) {
+      if (!re) return "";
+      const r = block.match(new RegExp(re, "i"));
+      return r ? String(r[1] || "").trim() : "";
+    };
+    const title = pick(src.titlePattern);
+    let link = pick(src.linkPattern);
+    if (link && !/^https?:\/\//i.test(link)) {
+      link = (src.site || src.url).replace(/\/$/, "") + "/" + link.replace(/^\//, "");
+    }
+    const date = isoSlice(pick(src.datePattern)) || "";
+    if (!title) continue;
+    out.push({
+      src: src.id, vendor: src.vendor, title: title, date: date,
+      url: link || src.url,
+      models: extractModels(title, src.vendor),
+      benchmarks: extractBenchmarks(title + " " + block),
+      cover: null,
+      images: collectImages(block, limit),
+      scores: officialScores.extractAll(block)
+    });
+  }
+  return out;
+}
+
 async function updateOfficialReleases() {
   const prev = writers.loadJsGlobal(CFG.outFile, CFG.windowVar);
   const prevReleases = (prev && prev.releases) || [];
@@ -203,9 +255,10 @@ async function updateOfficialReleases() {
   for (const src of (CFG.sources || [])) {
     try {
       console.log("[official-releases] 抓取 " + src.id + " " + src.url);
-      const got = src.type === "hunyuan-json"
-        ? await fetchHunyuan(src, CFG.maxImages || 8)
-        : await fetchQwen(src, CFG.maxImages || 8);
+      let got;
+      if (src.type === "hunyuan-json") got = await fetchHunyuan(src, CFG.maxImages || 8);
+      else if (src.type === "html-list") got = await fetchHtmlList(src, CFG.maxImages || 8);
+      else got = await fetchQwen(src, CFG.maxImages || 8);
       got.forEach(function (r) { releases.push(r); });
       console.log("  [official-releases] " + src.id + ": " + got.length + " 条");
     } catch (e) {
@@ -214,14 +267,46 @@ async function updateOfficialReleases() {
     }
   }
 
+  // 自动抽取 HLE / GPQA 成绩(scripts/lib/official-scores.js):
+  // 在 lookbackDays / maxReleases 截断之前汇总 —— 分数只用于「补缺失模型」,
+  // 历史文章的官方表格同样是有效数据源(如 Qwen3.5/3.6/3.7 系列都带 HLE/GPQA 表),
+  // 若先截断再抽取,这些模型的分数会永远进不来。发布条目本身仍按窗口截断。
+  // 同模型多篇发布命中时保留「日期更新」的那篇(merged 已按日期倒序)。
+  const scoreIndex = {};
+  releases
+    .filter(function (r) { return r.scores; })
+    .sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); })
+    .forEach(function (r) {
+      const got = r.scores;
+      ["gpqa", "hle"].forEach(function (bench) {
+        Object.keys(got[bench] || {}).forEach(function (name) {
+          const k = normKey(name);
+          if (!k) return;
+          if (scoreIndex[bench + "|" + k]) return;  // 已有更新的发布日期,不覆盖
+          scoreIndex[bench + "|" + k] = { name: name, score: got[bench][name], date: r.date, src: r.src, url: r.url, title: r.title };
+        });
+      });
+    });
+
   const merged = releases
     .filter(function (r) { return !r.date || !cutoff || r.date >= cutoff; })
     .sort(function (a, b) { return (b.date || "").localeCompare(a.date || "") || (a.title < b.title ? -1 : 1); })
     .slice(0, CFG.maxReleases || 24);
   const models = flattenModels(merged);
+  const autoScores = { gpqa: [], hle: [] };
+  Object.keys(scoreIndex).forEach(function (k) {
+    const v = scoreIndex[k];
+    autoScores[k.split("|")[0]].push({ model: v.name, score: v.score, date: v.date, src: v.src, url: v.url, title: v.title });
+  });
+  Object.keys(autoScores).forEach(function (b) {
+    autoScores[b].sort(function (x, y) { return y.score - x.score; });
+  });
+  const scoreCount = autoScores.gpqa.length + autoScores.hle.length;
 
-  const payload = { releases: merged, models: models };
-  const prevPayload = { releases: prevReleases, models: prevModels };
+  // 比对必须带上 scores:解析规则变更(如新增排除 Base 模型)后,
+  // 即使发布列表本身没变,抽取出的成绩也会变,否则会一直判「无变化」而永不落盘。
+  const payload = { releases: merged, models: models, scores: autoScores };
+  const prevPayload = { releases: prevReleases, models: prevModels, scores: (prev && prev.scores) || { gpqa: [], hle: [] } };
   if (prev && JSON.stringify(payload) === JSON.stringify(prevPayload)) {
     console.log("[official-releases] 无变化,跳过 " + CFG.outFile);
     return { changed: false, releases: merged.length, models: models.length };
@@ -231,15 +316,21 @@ async function updateOfficialReleases() {
     updated: CONFIG.TODAY,
     refreshedAt: CONFIG.REFRESHED_AT,
     sources: (CFG.sources || []).map(function (s) { return s.id; }),
-    stats: { releases: merged.length, models: models.length },
+    stats: { releases: merged.length, models: models.length, gpqa: autoScores.gpqa.length, hle: autoScores.hle.length },
     models: models,
-    releases: merged
+    releases: merged,
+    // 从官方发布页表格自动抽取的 HLE / GPQA 成绩,供 official-seeds.js 合并进 HLE / GPQA 表。
+    // 口径:HLE 仅收无工具行(带工具行在解析阶段已丢弃);GPQA 只认 GPQA(Diamond),排除 SuperGPQA。
+    scores: autoScores
   };
   const header =
     "// 官方发布监听(由 scripts/lib/official-releases.js 生成)\n" +
     "// 来源:Qwen 官方博客 / 腾讯混元官方博客的公开列表 API;只收录最近 " + (CFG.lookbackDays || 120) + " 天发布。\n" +
-    "// 用途:models[] 供 scripts/lib/model-auto.js 自动建档;benchmarks[] 标记该发布提到的基准,便于后续种子转录。\n" +
-    "// 注:发布页分数图表多为图片,本文件不含分数;分数以 official-seeds.js 的人工转录(T2)为准。\n";
+    "// 用途:models[] 供 scripts/lib/model-auto.js 自动建档;benchmarks[] 标记该发布提到的基准;\n" +
+    "//       scores[] 为从发布页 HTML 表格自动抽取的 HLE / GPQA 成绩(scripts/lib/official-scores.js),\n" +
+    "//       由 official-seeds.js 并入 HLE / GPQA 表(仅补缺失模型,不覆盖官方实测榜已有分数)。\n" +
+    "// 口径:HLE 只收无工具行;GPQA 只认 GPQA(Diamond),SuperGPQA / MMLU 等不入。\n" +
+    "// 注:图表为图片、或表格结构非常规的发布页无法解析,其分数仍按 official-seeds.js 人工转录(T2)补充。\n";
   writers.writeWindowVar(CFG.outFile, CFG.windowVar, writers.windowVarTemplate(CFG.windowVar, header, obj));
 
   const prevSet = {};
