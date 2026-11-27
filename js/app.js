@@ -1081,14 +1081,40 @@
       subRow += thAttr(c, grpStart ? "th-sub grp-start" : "th-sub");
     });
     fillTableHead("matrixTable", '<tr class="grp-row">' + grpRow + '</tr><tr class="col-row">' + subRow + '</tr>');
-    // 固定 14 列宽度,总宽 1190px;窄列 + 高行,内容优先换行而不是撑宽
+    // 列宽:必须与「当前实际渲染的列」一一对应,否则 colgroup 会把前几列宽度套给错位的列。
+    // 旧实现只在首次渲染时插一次写死的 14 列;「只看第三方」下少 3 个榜单列 → 只剩 11 列 td,
+    // 却仍套 14 个宽度,命中列拿到 llm2014 的宽度、AI Coding 列拿到 agentarena 的宽度,
+    // 于是命中数挤进窄列、AI Coding 挤成两行(2026-11-27 修复)。
+    // 新做法:
+    //   全口径   —— 严格用原设计列宽(总和 1190,零回归);
+    //   第三方口径 —— 非评测列保持原宽,评测列(只剩「第三方实测」5 列)等分剩余宽度,
+    //                实现「均分平铺」,不再一堆窄列挤在左边、右边留空。
     var matrixTableEl = document.getElementById("matrixTable");
-    var matrixColgroup = matrixTableEl.querySelector("colgroup");
-    if (!matrixColgroup) {
-      matrixColgroup = document.createElement("colgroup");
-      matrixColgroup.innerHTML = '<col style="width:30px"><col style="width:134px"><col style="width:74px"><col style="width:64px"><col style="width:74px"><col style="width:100px"><col style="width:98px"><col style="width:88px"><col style="width:82px"><col style="width:88px"><col style="width:98px"><col style="width:78px"><col style="width:132px"><col style="width:50px">';
-      matrixTableEl.insertBefore(matrixColgroup, matrixTableEl.firstChild);
-    }
+    matrixTableEl.querySelectorAll("colgroup").forEach(function (g) { g.remove(); });
+    var matrixColgroup = document.createElement("colgroup");
+    // 各列设计宽度(= 修复前写死的 14 列,顺序与 MATRIX_COLS 一致,# 列单列)
+    var DESIGN_W = {
+      "": 30, model: 134, vendor: 74, composite: 64, value: 74,
+      frontiercode: 100, tbench: 98, knowledgeavg: 88,
+      modeldial: 82, webdev: 88, agentarena: 98, llm: 78, agentdaily: 132, hits: 50
+    };
+    // 表格固定总宽(与设计列宽之和一致,保证全口径下逐像素不变)
+    var TABLE_W = 1190;
+    var benchCols = visibleCols.filter(function (c) { return c.bench; });
+    var nonBenchSum = DESIGN_W[""] + visibleCols.reduce(function (s, c) {
+      return s + (c.bench ? 0 : (DESIGN_W[c.key] || 0));
+    }, 0);
+    // 评测列等分剩余宽度(全口径下 hiddenW=0,直接用各自设计宽)
+    var hidden = MATRIX_COLS.filter(function (c) { return c.bench && visibleCols.indexOf(c) < 0; }).length;
+    var evenW = (hidden && benchCols.length)
+      ? Math.floor((TABLE_W - nonBenchSum) / benchCols.length)
+      : 0;
+    matrixColgroup.innerHTML = '<col style="width:' + DESIGN_W[""] + 'px">' +
+      visibleCols.map(function (c) {
+        var w = evenW && c.bench ? evenW : (DESIGN_W[c.key] || 92);
+        return '<col style="width:' + w + 'px">';
+      }).join("");
+    matrixTableEl.insertBefore(matrixColgroup, matrixTableEl.firstChild);
     document.querySelector("#matrixTable tbody").innerHTML = html.join("");
     // 动态行数提示与工具区摘要(默认视图含混排的参考模型,排名数与参考数分开统计)
     var note, rankedCnt, refCnt, singleCnt = 0;
