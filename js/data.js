@@ -1130,13 +1130,15 @@
   // 合并套餐对比页的两份订阅数据:codingplan.fyi + ModelDial;统一按 95% 缓存档月额度摊销。
   // 平台优先级:Google=Google/Antigravity;Claude=Claude 官方;千问=Qoder/阿里云;
   // 腾讯=WorkBuddy/腾讯云;zAI=智谱/GLM;xAI=xAI Grok/X Subscription。
-  // DeepSeek 与 Meta 没有限定平台,优先选月额度最高的套餐;其余厂商在优先平台内取最低 ¥/M。
+  // DeepSeek 按官方价折扣最低的前三平台优先,平台内取最低 ¥/M;Meta 仍优先月额度最高。
+  // 其余厂商在优先平台内取最低 ¥/M。
   // ⚠ 订阅是包月摊销,额度用不完就比 API 贵;与按量口径分开显示。
   var SUBS_CACHE = null, SUBS_SIG = "";
   function subsCost() {
-    var cp = window.CODINGPLAN, md = window.MODELDIAL_SUBS;
+    var cp = window.CODINGPLAN, md = window.MODELDIAL_SUBS, pr = window.PRICING;
     var sig = (cp ? (cp.updated || "") + "/" + (cp.refreshedAt || "") : "0") + "|" +
-      (md ? (md.updated || "") + "/" + (md.refreshedAt || "") : "0");
+      (md ? (md.updated || "") + "/" + (md.refreshedAt || "") : "0") + "|" +
+      (pr ? (pr.updated || "") + "/" + (pr.refreshedAt || "") : "0");
     if (SUBS_CACHE && SUBS_SIG === sig) return SUBS_CACHE;
     var all = {};
     function add(rawName, platform, planName, feeCny, quotaM, costPerM, basis, date, source) {
@@ -1166,6 +1168,23 @@
         add(m.m || m.mEn, p.platform, p.name || p.slug, fee, q, cost, m.w || "", m.d || "", "modeldial");
       });
     });
+    var officialPrice = {};
+    ((pr && pr.models) || []).forEach(function (p) {
+      if (p && p.id && p.costPerM > 0) officialPrice[p.id] = p.costPerM;
+    });
+    var deepseekPlatformDiscount = {};
+    Object.keys(all).forEach(function (id) {
+      if (all[id][0].vendor !== "DeepSeek" || !officialPrice[id]) return;
+      all[id].forEach(function (c) {
+        var discount = c.costPerM / officialPrice[id] * 10;
+        if (!deepseekPlatformDiscount[c.platform] || discount < deepseekPlatformDiscount[c.platform]) {
+          deepseekPlatformDiscount[c.platform] = discount;
+        }
+      });
+    });
+    var deepseekTopPlatforms = Object.keys(deepseekPlatformDiscount).sort(function (a, b) {
+      return deepseekPlatformDiscount[a] - deepseekPlatformDiscount[b] || a.localeCompare(b, "zh-CN");
+    }).slice(0, 3);
     function platformKey(s) { return String(s || "").toLowerCase().replace(/[\s·\-_.()（）]/g, ""); }
     function preferred(vendor, platform) {
       var k = platformKey(platform);
@@ -1183,7 +1202,18 @@
       var vendor = list[0].vendor;
       var preferredList = list.filter(function (c) { return preferred(vendor, c.platform); });
       var pool = preferredList.length ? preferredList : list;
-      if (vendor === "DeepSeek" || vendor === "Meta") {
+      if (vendor === "DeepSeek") {
+        var discountPool = list.filter(function (c) { return deepseekTopPlatforms.indexOf(c.platform) >= 0; });
+        if (discountPool.length) {
+          pool = discountPool;
+          pool.sort(function (a, b) { return a.costPerM - b.costPerM || (b.quotaM || 0) - (a.quotaM || 0); });
+        } else {
+          pool.sort(function (a, b) {
+            var qa = a.quotaM != null ? a.quotaM : 0, qb = b.quotaM != null ? b.quotaM : 0;
+            return qb - qa || a.costPerM - b.costPerM;
+          });
+        }
+      } else if (vendor === "Meta") {
         pool.sort(function (a, b) {
           var qa = a.quotaM != null ? a.quotaM : 0, qb = b.quotaM != null ? b.quotaM : 0;
           return qb - qa || a.costPerM - b.costPerM;

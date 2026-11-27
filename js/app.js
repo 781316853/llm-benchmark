@@ -316,7 +316,7 @@
     //   (它们格内显示「—」,若这里仍返回数,排序时会把它们按比值插进排名行之间 —— 排序依据与
     //    看到的内容就对不上了);nullLast 再把 null 行恒定沉底,不随升/降序翻转跑到最前
     { key: "value", label: "性价比", type: "num", bench: false, nullLast: true,
-      tip: "性价比指数 = 综合分 ÷ 每百万 token 成本(¥/M)。成本双口径取低者:① API 按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算(codingplan.fyi 为主、models.dev 补缺,美元按 6.8 折人民币);② 订阅摊销 = 套餐月费 ÷ 95% 缓存档月额度,合并套餐对比页的 codingplan 与 ModelDial 数据。Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 与 Meta 优先高额度平台。仅命中≥4榜的排名模型计算,悬浮可见两口径明细",
+      tip: "性价比指数 = 综合分 ÷ 每百万 token 成本(¥/M)。成本双口径取低者:① API 按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算(codingplan.fyi 为主、models.dev 补缺,美元按 6.8 折人民币);② 订阅摊销 = 套餐月费 ÷ 95% 缓存档月额度,合并套餐对比页的 codingplan 与 ModelDial 数据。Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 优先官方价折扣前三平台,Meta 优先高额度平台。仅命中≥4榜的排名模型计算,悬浮可见两口径明细",
       val: valueIndexOf },
     { key: "frontiercode", label: "FrontierCode (2.0/1.1)", type: "num", bench: true, grp: "榜单基准", tone: "frontiercode",
       tip: "FrontierCode(Cognition 生产级代码质量榜):真实仓库任务端到端交付并通过隐藏测试的比例;2.0 主榜优先,未收录的模型回退 1.1(两版任务集不同、分数不可直接比较,故综合分按版本内归一定标);计入综合分(十组等权)与命中数",
@@ -1138,7 +1138,7 @@
     }
     // 口径细节统一收进下方「阅读说明」
     note += '\nTerminal-Bench 三版合并计分;ModelDial、AI Coding Daily、AI 十项全能 为第三方实测;Agent Arena 为 LMArena 真实智能体会话净提升;HLE-Diamond 与 GPQA Diamond 计入综合分与命中数;亿模亿样仅独立展示,不计分;其余权威基准仅参考。';
-    note += '\n订阅成本合并套餐对比页的 codingplan 与 ModelDial 数据;Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 与 Meta 优先高额度平台。';
+    note += '\n订阅成本合并套餐对比页的 codingplan 与 ModelDial 数据;Google 优先 Google/Antigravity,Claude 优先官方订阅,千问优先 Qoder/阿里云,腾讯优先 WorkBuddy/腾讯云,zAI 优先智谱/GLM,xAI 优先 Grok/X Subscription;DeepSeek 优先官方价折扣前三平台,Meta 优先高额度平台。';
     var noteEl = document.getElementById("overviewNote");
     noteEl.textContent = note;
     // 第三方口径说明单独成节点,便于英文站按整句翻译(主 note 是多行拼接,无法整句命中)
