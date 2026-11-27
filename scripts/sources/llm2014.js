@@ -154,20 +154,31 @@ class Llm2014Source extends BaseSource {
         continue;
       }
       const header = rows[0];
-      const projCount = header.length - 4;
+      // 尾部元数据列(Unprompted / Scaffold(旧称 IDE) / Think) 必须按**列名**识别,不能写死列数:
+      // 源站会增删项目和元数据列 —— 2026-11 就删了 Unprompted、加上 Layout(P),净列数仍 11,
+      // 若仍用 header.length - 4 则项目数算出 7(应为 8),P 列被当成 Unprompted,整张表错位一列。
+      const META_RE = /^(unprompted|scaffold|ide|think)$/i;
+      const norm = function (h) { return String(h == null ? "" : h).replace(/^"|"$/g, "").trim(); };
+      let metaStart = header.length;
+      while (metaStart > 1 && META_RE.test(norm(header[metaStart - 1]))) metaStart--;
+      const projCount = metaStart - 1;
+      const metaNames = header.slice(metaStart).map(function (h) { return norm(h).toLowerCase(); });
+      const metaAt = function (name) { const k = metaNames.indexOf(name); return k >= 0 ? metaStart + k : -1; };
+      const iUnp = metaAt("unprompted");
+      const iIde = metaAt("scaffold") >= 0 ? metaAt("scaffold") : metaAt("ide");
+      const iThink = metaAt("think");
       // 项目名保留源站表头原样(含字母代号,如 "MacOS App(C)"),用于对应"项目说明"
-      const projects = header.slice(1, 1 + projCount).map(function (h) { return h.trim(); });
+      const projects = header.slice(1, metaStart).map(norm);
       const dataRows = [];
       for (let r = 1; r < rows.length; r++) {
         const cells = rows[r];
-        if (!cells[0] || cells[0] === "Model") continue;
-        // 末 3 列为 Unprompted / Scaffold(原称 IDE,即所用编码 CLI/脚手架,如 Claude Code/Codex)/ Think,按位置取值
+        if (!cells[0] || norm(cells[0]) === "Model") continue;
         dataRows.push({
-          model: cells[0].trim(),
-          cells: cells.slice(1, 1 + projCount),
-          unprompted: parseInt(cells[1 + projCount], 10) || 0,
-          ide: (cells[2 + projCount] || "").trim(),
-          think: parseInt(cells[3 + projCount], 10) || 0
+          model: norm(cells[0]),
+          cells: cells.slice(1, metaStart),
+          unprompted: iUnp >= 0 ? (parseInt(cells[iUnp], 10) || 0) : 0,
+          ide: iIde >= 0 ? norm(cells[iIde]) : "",
+          think: iThink >= 0 ? (parseInt(cells[iThink], 10) || 0) : 0
         });
       }
       // 月份键用报告月(reportDate),与新版站点数据集键一致(csv 文件名可能与报告月不一致,

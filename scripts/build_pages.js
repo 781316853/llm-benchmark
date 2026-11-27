@@ -160,7 +160,7 @@ function assemble(lines, sections, id) {
 const DATA_VER = {
   pricing: "20261111a", deepswe: "20261116b", deepswe_v10: "20260824a",
   frontiercode: "20261120a", frontiercodeV11: "20261120a",
-  llm2014: "20261127a", arena_webdev: "20261126b", arena_agent: "20261117b",
+  llm2014: "20261127b", arena_webdev: "20261126b", arena_agent: "20261117b",
   arenaofbias: "20261116a", tbench: "20261117b", tbench_v3: "20260912b",
   tbench_v2: "20261117a", hle_diamond: "20261126a", gpqa_diamond: "20261126a", modeldial: "20261116a", modeldial_subs: "20261116c",
   releases: "20261119b", aicodingdaily: "20261110b", octathlon: "20261124a",
