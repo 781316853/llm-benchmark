@@ -1249,6 +1249,36 @@ body {
   font-size: 12px;
 }
 .matrix-ref:focus-within { border-color: var(--oct-blue); }
+/* 成本口径:原为原生 select(下拉面板由系统绘制,蓝底直角与本皮肤冲突),改为站内墨色分段组。
+   外层沿用 .matrix-ref 的描边盒,内层 .qc-scope 去掉自身描边,三段共享一条分隔线。 */
+.matrix-ref--seg { gap: 8px; padding: 4px 4px 4px 10px; }
+.matrix-ref--seg > span { flex: none; }
+.matrix-ref--seg .qc-scope {
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+}
+.matrix-ref--seg .qc-scope-btn {
+  padding: 3px 10px;
+  font-family: var(--font-display);
+  font-stretch: 108%;
+  font-size: 12px;
+  letter-spacing: .04em;
+  /* 与站内 .qc-scope-btn 同用 ink-2:ink-3 在深色底上只有 4.3:1,低于 AA 4.5:1 */
+  color: var(--oct-ink-2);
+}
+/* 分隔线不画:站内 .qc-scope(版本切换 / 发布排序)同为无分隔线 + 实心填充选中,
+   且选中块会压住相邻的 border-left,造成一侧有线一侧无线的不对称 */
+.matrix-ref--seg .qc-scope-btn:hover { color: var(--oct-ink); }
+.matrix-ref--seg .qc-scope-btn.is-active {
+  background: var(--oct-ink);
+  color: var(--oct-panel);
+  font-weight: 700;
+}
+.matrix-ref--seg .qc-scope-btn:focus-visible {
+  outline: 2px solid var(--oct-blue);
+  outline-offset: -2px;
+}
 .table-wrap {
   margin-top: 18px;
   border: 1px solid var(--oct-ink);

@@ -4501,12 +4501,25 @@
       state.showScore = ssEl.checked;
       renderMatrix();
     });
-    // 总览页「成本口径」切换:按量 / 订阅 / 取低(默认取低),切换后重算性价比与最佳性价比标记
+    // 总览页「成本口径」切换:取低 / 按量 / 订阅(默认取低),切换后重算性价比与最佳性价比标记
+    // 由原生 select 改为三段点击分组(避开系统蓝色下拉面板),切换后同步 is-active / aria-pressed
     var cmEl = document.getElementById("ovCostMode");
     if (cmEl) {
-      cmEl.value = state.costMode;
-      cmEl.addEventListener("change", function () {
-        state.costMode = cmEl.value || "best";
+      var syncCostMode = function () {
+        Array.prototype.forEach.call(cmEl.querySelectorAll("[data-cost-mode]"), function (b) {
+          var on = b.getAttribute("data-cost-mode") === (state.costMode || "best");
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      };
+      syncCostMode();
+      cmEl.addEventListener("click", function (e) {
+        var btn = e.target.closest ? e.target.closest("[data-cost-mode]") : null;
+        if (!btn) return;
+        var key = btn.getAttribute("data-cost-mode");
+        if (key === state.costMode) return;
+        state.costMode = key || "best";
+        syncCostMode();
         renderMatrix();
       });
     }
