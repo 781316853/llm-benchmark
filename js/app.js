@@ -23,6 +23,7 @@
     showScore: true, // 总览页「显示综合分」开关:默认显示梯队旁的精确综合分
     relativeFirst: false, // 总览页「与参考差值」开关:默认关闭;开启后基准列显示与参考模型的差值
     thirdPartyOnly: false, // 总览页「只看第三方」开关:综合分只按 7 个第三方实测组等权计算
+    costMode: "best",       // 性价比成本口径:"best"=API 与订阅取低(默认) / "api"=只用按量 / "subs"=只用订阅
     refModelId: null, // 差值模式的参考模型 canonical id;null=综合第1
     releaseSort: "recent", // 总览「厂商新模型发布倒计时」排序:recent=最近发布在前/stale=最久未发在前
     releaseExpanded: false, // 发布倒计时是否展开全部厂商(默认只列 MODEL_MAP.mainVendors)
@@ -272,7 +273,10 @@
     var apiC = api ? api.costPerM : null;
     var subsC = subs ? subs.costPerM : null;
     var used = null, mode = null;
-    if (apiC != null && subsC != null) { if (subsC < apiC) { used = subsC; mode = "subs"; } else { used = apiC; mode = "api"; } }
+    var cm = state.costMode || "best";
+    if (cm === "api") { if (apiC != null) { used = apiC; mode = "api"; } }
+    else if (cm === "subs") { if (subsC != null) { used = subsC; mode = "subs"; } }
+    else if (apiC != null && subsC != null) { if (subsC < apiC) { used = subsC; mode = "subs"; } else { used = apiC; mode = "api"; } }
     else if (apiC != null) { used = apiC; mode = "api"; }
     else if (subsC != null) { used = subsC; mode = "subs"; }
     if (used == null) return null;
@@ -4390,6 +4394,15 @@
       state.showScore = ssEl.checked;
       renderMatrix();
     });
+    // 总览页「成本口径」切换:按量 / 订阅 / 取低(默认取低),切换后重算性价比与最佳性价比标记
+    var cmEl = document.getElementById("ovCostMode");
+    if (cmEl) {
+      cmEl.value = state.costMode;
+      cmEl.addEventListener("change", function () {
+        state.costMode = cmEl.value || "best";
+        renderMatrix();
+      });
+    }
     // 总览页「与参考差值」开关:基准列改为显示与参考模型的差值
     var rfEl = document.getElementById("ovRelativeFirst");
     if (rfEl) rfEl.addEventListener("change", function () {
