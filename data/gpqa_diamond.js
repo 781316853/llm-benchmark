@@ -1,4 +1,4 @@
-// 数据源:GPQA Diamond(研究生级科学问答,198 题子集,更新于 2026-11-26)
+// 数据源:GPQA Diamond(研究生级科学问答,198 题子集,更新于 2026-11-27)
 // 主源:https://www.datalearner.com/api/get-benchmark-detail/gpqa-diamond(T2 厂商官方发布成绩转录,单请求取全量)
 // 补充:https://benchlm.ai/benchmarks/gpqa-diamond(T3 第三方镜像,只补主源未收录的模型)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
@@ -12,8 +12,8 @@ window.GPQA_DIAMOND = {
   'apiUrl': 'https://www.datalearner.com/api/get-benchmark-detail/gpqa-diamond',
   'officialUrl': 'https://github.com/idavidrein/gpqa',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
-  'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 00:11',
+  'updated': '2026-11-27',
+  'refreshedAt': '2026-11-27 16:53',
   'stats': {
     'tasks': 198,
     'entries': 251,

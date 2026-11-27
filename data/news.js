@@ -2,16 +2,73 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-26',
+  'updated': '2026-11-27',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
     '技术与洞察',
+    '前瞻与传闻',
     '产品应用'
   ],
   'items': [
+    {
+      'date': '2026-11-27',
+      'title': 'Antigravity 为所有用户重置 Gemini 额度',
+      'brief': 'Antigravity 开发者 Varun Mohan 于北京时间 11 月 26 日 15:19 发文表示，为庆祝感恩节，Antigravity 面向所有用户重置了 Gemini 额度。',
+      'url': 'https://x.com/_mohansolo/status/2125851902009311306',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-27',
+      'title': 'OpenAI 修复 GPT-6.2 计费错误，补偿已上线',
+      'brief': 'OpenAI 员工 Tibo 发文称， GPT-6.2 上线时出现计费错误，导致多数用户使用 GPT-6.2 Astra 和 Sol 时的额度消耗被错误折减，这一问题现已修复。',
+      'url': 'https://x.com/thsottiaux/status/2125784147889393806',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-27',
+      'title': '腾讯混元开源草稿模型 DFly2',
+      'brief': '腾讯混元团队 开源了用于加速大模型生成的草稿模型 DFly2 ，同步公开权重、训练代码和技术报告，并推出适配 Hy4 flash 、 DeepSeek-V4.1-Flash 及 GLM-5.3-Flash 的 MoE 草稿模型。',
+      'url': 'https://mp.weixin.qq.com/s/d1HMHrSEChCJiBRZ0tNOyg',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-27',
+      'title': '蚂蚁百灵开源 Ming-Image-0.2-Design，并预告图层分解版',
+      'brief': '蚂蚁集团 百灵团队开源图像生成模型 Ming-Image-0.2-Design ，权重以 MIT 协议托管于 ModelScope 等平台。该模型强化了复杂构图、光影与文字渲染表现，可用于电商主图、UI 设计稿与空间效果图，并在 Artificial Analysis 的 AA-Image-T2I v2.1 评测中以 1095 Elo 位列开放权重模型第一。',
+      'url': 'https://modelscope.cn/models/inclusionAI/Ming-Image-0.2-Design',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-27',
+      'title': 'Antigravity banked resets 开发中，被曝现身 CLI',
+      'brief': '有用户发现， Antigravity CLI 从 v1.5.17 升级至 v1.5.18 后，已出现 banked resets 功能，包含到期时间和领取所需的使用量门槛。该发现来自 zAI 制作的 Antigravity CLI 更新追踪截图，其中显示当用户的使用量超过规定门槛后，即可领取带有到期时间的储存重置额度。',
+      'url': 'https://x.com/_mohansolo/status/2124962746844565692',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
+    {
+      'date': '2026-11-27',
+      'title': '报道称智谱 GLM-5.5 进度受阻，智谱否认',
+      'brief': '据路透社援引知情人士报道， 智谱 原计划本月发布约 3 万亿参数 的下一代旗舰模型 GLM-5.5 ，但部分受 OpenAI 与 Anthropic 反蒸馏措施以及美国新算力限制影响，开发进度受阻，原定年底前完成的训练和发布或推迟至 2027 年第一季度 及以后。',
+      'url': 'https://www.reuters.com/world/china/us-chip-curbs-distillation-crackdown-threaten-chinese-ai-model-development-2026-11-26/',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
+    {
+      'date': '2026-11-27',
+      'title': '据报道，NVIDIA要求Dell等伙伴暂停向东南亚四国发运服务器',
+      'brief': '美国商务部 AI 芯片出口新规已于 11 月 19 日 生效：向印尼、马来西亚、新加坡、泰国和巴西出口先进 AI 芯片 须申请许可，海外 数据中心 向中国等地企业远程提供大量算力也须报批，存量 数据中心 须在 90 天 内取得许可。',
+      'url': 'https://www.wsj.com/tech/nvidia-tells-partners-to-pause-shipments-to-southeast-asia-5b791cb0',
+      'source': '橘鸦AI早报',
+      'type': '前瞻与传闻'
+    },
     {
       'date': '2026-11-26',
       'title': 'Antigravity 称再度提升 Neon 缓存命中率，额度内任务增 28%',
@@ -107,46 +164,6 @@ window.NEWS = {
       'url': 'https://anthropic.com/research/migrating-api-to-rust',
       'source': '橘鸦AI早报',
       'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-25',
-      'title': 'ChatGPT 合并 Chat 和 Work，部分用户率先体验',
-      'brief': 'OpenAI 团队成员表示， ChatGPT 开始向一小部分 Pro 用户推出合并后的 Chat 和 Work 模式。',
-      'url': 'https://x.com/thsottiaux/status/2125284868414394550',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-25',
-      'title': 'OpenAI 员工宣布 Business 套餐 Fast mode 免费至年底',
-      'brief': 'OpenAI 员工 Tibo 发帖称， ChatGPT Business 用户可获得一次 banked reset ，并可免费使用 Fast mode 至 12 月 31 日 。他的个人资料显示其在 OpenAI 从事 Codex 与 ChatGPT 相关工作。',
-      'url': 'https://x.com/thsottiaux/status/2125299248782778588',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-25',
-      'title': 'OpenAI 改进 Dots 审核，减少任务中的额外审批',
-      'brief': 'OpenAI 改进了 Dots 的自动审核安全检查，减少执行任务时要求用户审批的次数。',
-      'url': 'https://x.com/frits__vp/status/2125285321491259626',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-25',
-      'title': 'Cognition 发布编码模型 SWE-2.1',
-      'brief': 'Cognition 发布编码模型 SWE-2.1 ，称其基于 Kimi K3 用纯强化学习训练，在 FrontierCode 2.0 、 Terminal-Bench 4.1 等多项基准上较 SWE-2 大幅提升。新模型已在 Devin Cloud 、 Devin Desktop 和 Devin CLI 上线，未来两周对 Devin Pro 、 Max 和 Teams 免费。',
-      'url': 'https://cognition.com/blog/swe-2-1',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-25',
-      'title': '腾讯混元发布并开源第三代翻译模型 Hy MT3',
-      'brief': '腾讯混元 发布并开源第三代翻译模型 Hy MT3 ，提供 1.8B 、 7B 、 30B-A3B 三个尺寸，支持语种从 38 种 增至 102 种 ，已上线 Hy 翻译 App 和小程序。',
-      'url': 'https://huggingface.co/collections/tencent/hy-mt3',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
     }
   ]
 };

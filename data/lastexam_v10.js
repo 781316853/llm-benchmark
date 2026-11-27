@@ -1,4 +1,4 @@
-// 数据源:Agents' Last Exam v1.0 历史榜(152 题,厂商官方发布口径,抓取于 2026-11-26)
+// 数据源:Agents' Last Exam v1.0 历史榜(152 题,厂商官方发布口径,抓取于 2026-11-27)
 // 来源:https://www.datalearner.com/benchmarks/agents-last-exam(官方:https://agents-last-exam.org/leaderboard)
 // 用途:权威页版本切换保留;v1.0 与 v1.1(122 题)任务集不同,分数不可直接比较。
 // 字段同 data/lastexam.js;src=datalearner 为厂商官方发布转录。
@@ -7,8 +7,8 @@ window.LASTEXAM_V10 = {
   'url': 'https://www.datalearner.com/benchmarks/agents-last-exam',
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'version': 'v1.0',
-  'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 05:47',
+  'updated': '2026-11-27',
+  'refreshedAt': '2026-11-27 16:53',
   'stats': {
     'tasks': 152,
     'entries': 45

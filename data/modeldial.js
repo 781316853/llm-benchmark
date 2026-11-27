@@ -21,10 +21,10 @@ window.MODELDIAL = {
   'batchRevision': 81,
   'batchPublishedAt': '2026-11-26T02:41:14.286Z',
   'publicationKey': 'sha256:da42d82629ef33f965d40a9b3bd55e324f150b18e8842a640fc62dc8729c773c',
-  'viewKey': '1b18f513cf9a8d62048c8c0038e70dec7dca146de870fff9b1612d7ea9862572',
+  'viewKey': 'cb956cd30088a915f1a872b06cb644ae4eac3840a23ec88e5c843209b77059ef',
   'scorePolicy': 'five-axis-b30-f15-k25-a15-m15-backend7-sql25-gorm20-claudeplus5-cube-once-half-up-20261118',
   'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 05:47',
+  'refreshedAt': '2026-11-27 16:53',
   'weights': {
     'backend': 0.3,
     'frontend': 0.15,

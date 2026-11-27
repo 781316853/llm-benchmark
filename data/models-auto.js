@@ -2,12 +2,12 @@
 // 仅补 data/models.js 未覆盖的模型名;手工条目始终优先。
 // 厂商优先取源记录 vendor/org/creator,缺失时按模型名家族推断;颜色取 models.js 的 vendorColors。
 window.MODEL_MAP_AUTO = {
-  'updated': '2026-11-26',
+  'updated': '2026-11-27',
   'stats': {
-    'total': 198,
-    'knownVendor': 196,
+    'total': 273,
+    'knownVendor': 271,
     'otherVendor': 2,
-    'skippedManual': 1595,
+    'skippedManual': 1722,
     'skippedNonModel': 5
   },
   'canonical': [
@@ -58,6 +58,33 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Beam 1.0 501B-A23B FP8',
+      'vendor': 'Reflection AI',
+      'color': '#8E6BD8',
+      'aliases': [
+        'Beam 1.0 501B-A23B FP8'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Beam 1.0 501B-A23B NVFP4',
+      'vendor': 'Reflection AI',
+      'color': '#8E6BD8',
+      'aliases': [
+        'Beam 1.0 501B-A23B NVFP4'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'C4AI Aya Vision 32B',
+      'vendor': 'CohereAI',
+      'color': '#9298A1',
+      'aliases': [
+        'C4AI Aya Vision 32B'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Celeris-1',
       'vendor': 'Celeris',
       'color': '#9298A1',
@@ -90,6 +117,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#E0855F',
       'aliases': [
         'Claude 3.5 Haiku'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Claude 3.5 Sonnet',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Claude 3.5 Sonnet'
       ],
       'auto': true
     },
@@ -178,6 +214,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Claude3-Opus',
+      'vendor': 'Anthropic',
+      'color': '#E0855F',
+      'aliases': [
+        'Claude3-Opus'
+      ],
+      'auto': true
+    },
+    {
       'id': 'DeepSeek R1 Distill Qwen 32B',
       'vendor': 'DeepSeek',
       'color': '#6E8CFF',
@@ -191,14 +236,15 @@ window.MODEL_MAP_AUTO = {
       'vendor': 'DeepSeek',
       'color': '#6E8CFF',
       'aliases': [
-        'DeepSeek V3'
+        'DeepSeek V3',
+        'DeepSeek-V3'
       ],
       'auto': true
     },
     {
       'id': 'DeepSeek V3.2 Exp',
-      'vendor': 'DeepSeek',
-      'color': '#6E8CFF',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
       'aliases': [
         'DeepSeek V3.2 Exp',
         'DeepSeek V3.2-Exp'
@@ -242,6 +288,24 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'DeepSeek-R1-Distill-Llama-70B',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
+      'aliases': [
+        'DeepSeek-R1-Distill-Llama-70B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'DeepSeek-R1-Distill-Qwen-7B',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
+      'aliases': [
+        'DeepSeek-R1-Distill-Qwen-7B'
+      ],
+      'auto': true
+    },
+    {
       'id': 'DeepSeek-V3-0324',
       'vendor': 'DeepSeek-AI',
       'color': '#9298A1',
@@ -252,8 +316,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'DeepSeek-V3.1',
-      'vendor': 'DeepSeek',
-      'color': '#6E8CFF',
+      'vendor': 'DeepSeek-AI',
+      'color': '#9298A1',
       'aliases': [
         'DeepSeek-V3.1'
       ],
@@ -287,6 +351,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'ERNIE-4.5-VL-424B-A47B-Base',
+      'vendor': '百度',
+      'color': '#9298A1',
+      'aliases': [
+        'ERNIE-4.5-VL-424B-A47B-Base'
+      ],
+      'auto': true
+    },
+    {
       'id': 'EXAONE 4.0 1.2B',
       'vendor': 'LG AI Research',
       'color': '#E67070',
@@ -308,8 +381,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'GLM 4.7',
-      'vendor': 'zAI',
-      'color': '#818DE7',
+      'vendor': '智谱AI',
+      'color': '#9298A1',
       'aliases': [
         'GLM 4.7',
         'GLM-4.7'
@@ -429,12 +502,22 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'GPT-4o(2025-03-27)',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'GPT-4o(2025-03-27)'
+      ],
+      'auto': true
+    },
+    {
       'id': 'GPT-5 Nano',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
         'GPT-5 Nano',
-        'GPT-5 nano'
+        'GPT-5 nano',
+        'GPT-5-Nano'
       ],
       'auto': true
     },
@@ -548,6 +631,24 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Gemini 2.0 Flash-Lite',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 2.0 Flash-Lite'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemini 2.0 Pro Experimental',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemini 2.0 Pro Experimental'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Gemini 2.5 Deep Think',
       'vendor': 'Google DeepMind',
       'color': '#9298A1',
@@ -631,6 +732,24 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Gemma 2 - 9B',
+      'vendor': 'Google Research',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemma 2 - 9B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Gemma 3 - 12B (IT)',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
+      'aliases': [
+        'Gemma 3 - 12B (IT)'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Gemma 4 12B',
       'vendor': 'Google',
       'color': '#6BA5F7',
@@ -641,8 +760,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'Gemma 4 26B A4B',
-      'vendor': 'Google',
-      'color': '#6BA5F7',
+      'vendor': 'Google DeepMind',
+      'color': '#9298A1',
       'aliases': [
         'Gemma 4 26B A4B'
       ],
@@ -731,6 +850,43 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Grok 2',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok 2'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Grok 3',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok 3'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Grok 3 Mini',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok 3 Mini',
+        'Grok 3 mini'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Grok 4 Heavy',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok 4 Heavy'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Grok 4.20',
       'vendor': 'xAI',
       'color': '#B4BCC8',
@@ -749,11 +905,48 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Grok 4.3 Beta',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok 4.3 Beta'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Grok Code Fast 1',
       'vendor': 'xAI',
       'color': '#B4BCC8',
       'aliases': [
         'Grok Code Fast 1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Grok-1.5',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok-1.5'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Grok-3 - Reasoning Beta',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok-3 - Reasoning Beta'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Grok-3 Mini - Reasoning',
+      'vendor': 'xAI',
+      'color': '#B4BCC8',
+      'aliases': [
+        'Grok-3 Mini - Reasoning',
+        'Grok-3 mini - Reasoning'
       ],
       'auto': true
     },
@@ -777,9 +970,45 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Hunyuan-7B',
+      'vendor': '腾讯AI实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Hunyuan-7B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Hunyuan-A13B-Instruct',
+      'vendor': '腾讯AI实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Hunyuan-A13B-Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Hunyuan-T1',
+      'vendor': '腾讯AI实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Hunyuan-T1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Hunyuan-TurboS',
+      'vendor': '腾讯AI实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Hunyuan-TurboS'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Inkling 2 Mini',
-      'vendor': 'Thinking Machines',
-      'color': '#9FB4C4',
+      'vendor': 'Thinking Machines Lab',
+      'color': '#9298A1',
       'aliases': [
         'Inkling 2 Mini'
       ],
@@ -791,6 +1020,24 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'Inkling Mini 1117'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Interfaze Beta',
+      'vendor': 'Interfaze',
+      'color': '#9298A1',
+      'aliases': [
+        'Interfaze Beta'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Intern-S1',
+      'vendor': '上海人工智能实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Intern-S1'
       ],
       'auto': true
     },
@@ -877,6 +1124,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'LFM2.5-230M',
+      'vendor': 'Liquid AI',
+      'color': '#9298A1',
+      'aliases': [
+        'LFM2.5-230M'
+      ],
+      'auto': true
+    },
+    {
       'id': 'LFM2.5-24B-A2B',
       'vendor': 'Liquid AI',
       'color': '#9298A1',
@@ -913,6 +1169,16 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'LLaDA2.2-Mini',
+      'vendor': 'inclusionAI',
+      'color': '#8FD97A',
+      'aliases': [
+        'LLaDA2.2-Mini',
+        'LLaDA2.2-mini'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Laguna S 2.1',
       'vendor': 'Poolside',
       'color': '#8FA8BE',
@@ -927,6 +1193,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#8FD97A',
       'aliases': [
         'Ling 2.6 Flash'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Ling 3.0 Flash FP8',
+      'vendor': 'inclusionAI',
+      'color': '#8FD97A',
+      'aliases': [
+        'Ling 3.0 Flash FP8'
       ],
       'auto': true
     },
@@ -976,11 +1251,92 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Llama 4 Behemoth Instruct',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama 4 Behemoth Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama 4 Maverick Instruct',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama 4 Maverick Instruct'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Llama 4 Scout',
       'vendor': 'Meta',
       'color': '#6791F2',
       'aliases': [
         'Llama 4 Scout'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama 4 Scout Instruct',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama 4 Scout Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama-3.2-3B',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama-3.2-3B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama3.1-70B-Instruct',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama3.1-70B-Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama3.1-8B',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama3.1-8B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama3.1-8B-Instruct',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama3.1-8B-Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Llama3.3-70B-Instruct',
+      'vendor': 'Facebook AI研究实验室',
+      'color': '#9298A1',
+      'aliases': [
+        'Llama3.3-70B-Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'LongCat-Flash-Lite-Sparse',
+      'vendor': 'Meituan',
+      'color': '#DFC24E',
+      'aliases': [
+        'LongCat-Flash-Lite-Sparse'
       ],
       'auto': true
     },
@@ -1039,6 +1395,51 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Magistral-Medium-2506',
+      'vendor': 'MistralAI',
+      'color': '#9298A1',
+      'aliases': [
+        'Magistral-Medium-2506'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Magistral-Small-2506',
+      'vendor': 'MistralAI',
+      'color': '#9298A1',
+      'aliases': [
+        'Magistral-Small-2506'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Mellum2-12B-A2.5B-Instruct',
+      'vendor': 'JetBrains',
+      'color': '#9298A1',
+      'aliases': [
+        'Mellum2-12B-A2.5B-Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Mellum2-12B-A2.5B-Thinking',
+      'vendor': 'JetBrains',
+      'color': '#9298A1',
+      'aliases': [
+        'Mellum2-12B-A2.5B-Thinking'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Mellum2.1-12B-A2.5B-Thinking',
+      'vendor': 'JetBrains',
+      'color': '#9298A1',
+      'aliases': [
+        'Mellum2.1-12B-A2.5B-Thinking'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Mercury 2',
       'vendor': 'Inception',
       'color': '#7FC3E0',
@@ -1075,6 +1476,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'MiniCPM5-1B',
+      'vendor': 'OpenBMB',
+      'color': '#9298A1',
+      'aliases': [
+        'MiniCPM5-1B'
+      ],
+      'auto': true
+    },
+    {
       'id': 'MiniCPM5-2B',
       'vendor': 'OpenBMB',
       'color': '#9298A1',
@@ -1085,8 +1495,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'MiniMax M2',
-      'vendor': 'MiniMax',
-      'color': '#FF6F9E',
+      'vendor': 'MiniMaxAI',
+      'color': '#9298A1',
       'aliases': [
         'MiniMax M2'
       ],
@@ -1192,6 +1602,34 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Mistral-7B-Instruct-V0.3',
+      'vendor': 'MistralAI',
+      'color': '#9298A1',
+      'aliases': [
+        'Mistral-7B-Instruct-V0.3',
+        'Mistral-7B-Instruct-v0.3'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Mistral-Small-3.1-24B-Instruct-2503',
+      'vendor': 'MistralAI',
+      'color': '#9298A1',
+      'aliases': [
+        'Mistral-Small-3.1-24B-Instruct-2503'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Mistral-Small-3.2',
+      'vendor': 'MistralAI',
+      'color': '#9298A1',
+      'aliases': [
+        'Mistral-Small-3.2'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Muse Ember',
       'vendor': 'Meta',
       'color': '#6791F2',
@@ -1254,6 +1692,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#9FD12C',
       'aliases': [
         'Nemotron 3.5 Bolt 74B-A9B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Nemotron 3.5 Bolt 74B-A9B BF16',
+      'vendor': 'NVIDIA',
+      'color': '#9FD12C',
+      'aliases': [
+        'Nemotron 3.5 Bolt 74B-A9B BF16'
       ],
       'auto': true
     },
@@ -1330,12 +1777,23 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'OpenAI o1-Mini',
+      'vendor': 'OpenAI',
+      'color': '#35C7A4',
+      'aliases': [
+        'OpenAI o1-Mini',
+        'OpenAI o1-mini'
+      ],
+      'auto': true
+    },
+    {
       'id': 'OpenAI o3-Mini',
       'vendor': 'OpenAI',
       'color': '#35C7A4',
       'aliases': [
         'OpenAI o3-Mini',
-        'OpenAI o3-mini'
+        'OpenAI o3-mini',
+        'OpenAI o3-mini (high)'
       ],
       'auto': true
     },
@@ -1385,6 +1843,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#E0855F',
       'aliases': [
         'Opus 4.1'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'OrcaCyber-Nano-1.0',
+      'vendor': 'OrcaRouter',
+      'color': '#9298A1',
+      'aliases': [
+        'OrcaCyber-Nano-1.0'
       ],
       'auto': true
     },
@@ -1443,6 +1910,33 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Pangu Pro MoE',
+      'vendor': '华为',
+      'color': '#9298A1',
+      'aliases': [
+        'Pangu Pro MoE'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Pareto 26.10 Preview',
+      'vendor': 'Unbiased',
+      'color': '#9298A1',
+      'aliases': [
+        'Pareto 26.10 Preview'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Particle-1',
+      'vendor': 'Particle AI',
+      'color': '#9298A1',
+      'aliases': [
+        'Particle-1'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Phi-4',
       'vendor': 'Microsoft',
       'color': '#3FA8F0',
@@ -1457,6 +1951,26 @@ window.MODEL_MAP_AUTO = {
       'color': '#3FA8F0',
       'aliases': [
         'Phi-4 Multimodal Instruct'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Phi-4-Instruct (reasoning-Trained)',
+      'vendor': '微软',
+      'color': '#9298A1',
+      'aliases': [
+        'Phi-4-Instruct (reasoning-Trained)',
+        'Phi-4-instruct (reasoning-trained)'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Phi-4-Mini-Instruct (3.8B)',
+      'vendor': '微软',
+      'color': '#9298A1',
+      'aliases': [
+        'Phi-4-Mini-Instruct (3.8B)',
+        'Phi-4-mini-instruct (3.8B)'
       ],
       'auto': true
     },
@@ -1525,6 +2039,42 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen2.5-3B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen2.5-3B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen2.5-72B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen2.5-72B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen2.5-7B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen2.5-7B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3-235B-A22B-2507',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-235B-A22B-2507'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen3-235B-A22B-Thinking-2507',
       'vendor': '阿里巴巴',
       'color': '#9298A1',
@@ -1534,11 +2084,56 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Qwen3-30B-A3B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-30B-A3B'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Qwen3-30B-A3B-2507',
       'vendor': '阿里巴巴',
       'color': '#9298A1',
       'aliases': [
         'Qwen3-30B-A3B-2507'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3-32B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-32B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3-4B-2507',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-4B-2507'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3-4B-Thinking-2507',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-4B-Thinking-2507'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3-8B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3-8B'
       ],
       'auto': true
     },
@@ -1580,8 +2175,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'Qwen3.5 397B A17B',
-      'vendor': 'Alibaba',
-      'color': '#FF9A3D',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
       'aliases': [
         'Qwen3.5 397B A17B',
         'Qwen3.5-397B-A17B'
@@ -1599,8 +2194,8 @@ window.MODEL_MAP_AUTO = {
     },
     {
       'id': 'Qwen3.5-27B',
-      'vendor': 'Alibaba',
-      'color': '#FF9A3D',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
       'aliases': [
         'Qwen3.5-27B'
       ],
@@ -1621,6 +2216,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#FF9A3D',
       'aliases': [
         'Qwen3.5-4B'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Qwen3.5-9B',
+      'vendor': '阿里巴巴',
+      'color': '#9298A1',
+      'aliases': [
+        'Qwen3.5-9B'
       ],
       'auto': true
     },
@@ -1692,6 +2296,24 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Sakana Fugu',
+      'vendor': 'Sakana AI',
+      'color': '#9298A1',
+      'aliases': [
+        'Sakana Fugu'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Sakana Fugu-Ultra',
+      'vendor': 'Sakana AI',
+      'color': '#9298A1',
+      'aliases': [
+        'Sakana Fugu-Ultra'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Sarvam 105B',
       'vendor': 'Sarvam',
       'color': '#9298A1',
@@ -1719,6 +2341,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Solar Open 2',
+      'vendor': 'Upstage',
+      'color': '#6FBFB0',
+      'aliases': [
+        'Solar Open 2'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Solar Pro 2',
       'vendor': 'Upstage',
       'color': '#6FBFB0',
@@ -1733,6 +2364,15 @@ window.MODEL_MAP_AUTO = {
       'color': '#6FBFB0',
       'aliases': [
         'Solar Pro 3'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Soofi S 30B-A3B',
+      'vendor': 'Soofi Project',
+      'color': '#9298A1',
+      'aliases': [
+        'Soofi S 30B-A3B'
       ],
       'auto': true
     },
@@ -1755,6 +2395,15 @@ window.MODEL_MAP_AUTO = {
       'auto': true
     },
     {
+      'id': 'Spark-X2.6-4B',
+      'vendor': 'SparkLLM',
+      'color': '#9298A1',
+      'aliases': [
+        'Spark-X2.6-4B'
+      ],
+      'auto': true
+    },
+    {
       'id': 'Step 3.5 Flash',
       'vendor': 'StepFun',
       'color': '#6C4AB6',
@@ -1769,6 +2418,24 @@ window.MODEL_MAP_AUTO = {
       'color': '#6C4AB6',
       'aliases': [
         'Step 3.7 Flash'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Step3',
+      'vendor': 'StepFunAI',
+      'color': '#9298A1',
+      'aliases': [
+        'Step3'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'Ternary Bonsai 2 27B',
+      'vendor': 'Prism ML',
+      'color': '#9298A1',
+      'aliases': [
+        'Ternary Bonsai 2 27B'
       ],
       'auto': true
     },
@@ -1797,6 +2464,24 @@ window.MODEL_MAP_AUTO = {
       'color': '#9298A1',
       'aliases': [
         'Ultramarine 1 Flash'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'ZAYA1-74B-Preview',
+      'vendor': 'Zyphra',
+      'color': '#9298A1',
+      'aliases': [
+        'ZAYA1-74B-Preview'
+      ],
+      'auto': true
+    },
+    {
+      'id': 'ZAYA1-8B',
+      'vendor': 'Zyphra',
+      'color': '#9298A1',
+      'aliases': [
+        'ZAYA1-8B'
       ],
       'auto': true
     },
