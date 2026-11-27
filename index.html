@@ -96,10 +96,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="js/data.js?v=20261127b"></script>
+  <script defer src="js/data.js?v=20261127c"></script>
   <script defer src="js/charts.js?v=20261030a"></script>
   <script defer src="js/compare.js?v=20261127a"></script>
-  <script defer src="js/app.js?v=20261127b"></script>
+  <script defer src="js/app.js?v=20261127c"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="js/export.js?v=20261126a"></script>
   <!-- llm2014 宽表:顶部横向滑动条 + 固定 #/模型列 -->
@@ -282,7 +282,7 @@
               <label class="switch switch-lg" title="默认在梯队旁显示精确综合分,取消勾选后只显示梯队(榜内相对分:50 = 全池中位,不可跨日比较)"><input type="checkbox" id="ovShowScore" checked><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">显示综合分</span></label>
               <label class="switch switch-lg" title="勾选后基准列改为与参考模型的差值:参考模型自身显示原值,其余模型显示 该模型成绩 − 参考模型成绩;正数高于参考,负数低于;参考模型某项无成绩时,取排名最靠前且有该成绩的模型(该行原值旁标「基准」)。综合分/梯队/性价比不变"><input type="checkbox" id="ovRelativeFirst"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">与参考差值</span></label>
               <label class="switch switch-lg" title="综合分只按 6 个第三方实测组等权计算,榜单基准 4 组不参与打分"><input type="checkbox" id="ovThirdParty"><span class="switch-track"><span class="switch-glyph" aria-hidden="true"></span></span><span class="switch-text">只看第三方</span></label>
-              <label class="matrix-ref" id="ovCostWrap" title="性价比的成本口径:按量 = API 按量付费(codingplan.fyi / models.dev 单价按 95% 缓存输入 + 4.5% 未缓存 + 0.5% 输出 折算);订阅 = 套餐月费 ÷ 95% 缓存档月额度(合并套餐对比页 codingplan + ModelDial;Google/Claude/千问/腾讯/zAI/xAI 按厂商优先平台,DeepSeek 优先折扣前三平台,Meta 优先高额度平台);取低 = 两者较低者参与指数(默认)"><span>成本口径</span><select id="ovCostMode" aria-label="性价比成本口径"><option value="best" selected>取低</option><option value="api">按量</option><option value="subs">订阅</option></select></label>
+              <label class="matrix-ref" id="ovCostWrap" title="性价比的成本口径:按量 = API 按量付费(codingplan.fyi / models.dev 单价按 95% 缓存输入 + 4.5% 未缓存 + 0.5% 输出 折算);订阅 = 月费 ≥ ¥50 的套餐月费 ÷ 95% 缓存档月额度(合并套餐对比页 codingplan + ModelDial;Google/Claude/千问/腾讯/zAI/xAI 按厂商优先平台,DeepSeek 优先折扣前三平台,Meta 优先高额度平台);取低 = 两者较低者参与指数(默认)"><span>成本口径</span><select id="ovCostMode" aria-label="性价比成本口径"><option value="best" selected>取低</option><option value="api">按量</option><option value="subs">订阅</option></select></label>
               <label class="matrix-ref" id="ovRefWrap" hidden title="选择参考模型:差值模式下,基准列显示各模型与该模型的差值;参考模型自身显示原值"><span>参考</span><select id="ovRefModel" aria-label="选择参考模型"></select></label>
             </div>
           </div>
@@ -310,7 +310,7 @@
               <li><b class="note-term">权重</b>十个计分组<b>等权</b>:FrontierCode / Code Arena·WebDev / Terminal-Bench 4.0·3.0·2.1 / ModelDial / llm2014 / AI Coding Daily / AI 十项全能 / Agent Arena / HLE-Diamond / GPQA Diamond 各 <b>10%</b>(在场 N 组各 1/N,按在场榜归一;缺测权重回流)。亿模亿样不计分。</li>
               <li><b class="note-term">各榜口径</b>FrontierCode 取原始分(2.0 主榜优先,2.0 未收录的模型回退 1.1;两版任务集不同,综合分按版本内归一定标);Code Arena·WebDev 取原始 Elo;Agent Arena 为相对 Arena 基线的净提升 %(可为负,IPS/因果追踪口径);Terminal-Bench 取 4.0/3.0/2.1 最高版本,3.0/2.1 按共有模型折算 4.0 等效分(2.1 的 88 分约等于 4.0 的 26 分);ModelDial 为五轴 20/25/35/10/10 加权;llm2014 为等级映射 0-100;AI Coding Daily 为四轴总分 0-70;AI 十项全能为 13 题按 10 类各 10% 加权的总分 0-100;HLE-Diamond 与 GPQA Diamond 在矩阵中合并为一列并分别显示两项成绩,点击表头排序时按两项平均值排序,综合分仍按两组独立计算。</li>
               <li><b class="note-term">梯队分配</b>12 级按 1 / 3 / 5 / 7 / 9 / 11 / 13 / 15 / 17 / 19 / 21 / 剩余 的金字塔权重依次分配。</li>
-              <li><b class="note-term">性价比换算</b>每百万 token 成本按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);订阅 = 套餐月费 ÷ 95% 缓存档月额度,数据合并套餐对比页 codingplan 与 ModelDial,并按厂商优先平台选择;指数与综合分同源,不可跨日/跨快照比较。</li>
+              <li><b class="note-term">性价比换算</b>每百万 token 成本按量 = 95% 缓存输入 + 4.5% 未缓存输入 + 0.5% 输出 折算,美元按 6.8 折合人民币(models.dev 补齐价同汇率折算);订阅 = 月费 ≥ ¥50 的套餐月费 ÷ 95% 缓存档月额度,数据合并套餐对比页 codingplan 与 ModelDial,并按厂商优先平台选择;指数与综合分同源,不可跨日/跨快照比较。</li>
               <li><b class="note-term">数据来源</b>按 官方实测 &gt; 厂商发布 &gt; 第三方聚合 的优先级合并,低层级只补缺;数据为快照,仅用于学习与对比展示,不代表绝对评价。</li>
             </ul>
           </details>

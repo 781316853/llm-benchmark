@@ -1132,6 +1132,7 @@
   // 腾讯=WorkBuddy/腾讯云;zAI=智谱/GLM;xAI=xAI Grok/X Subscription。
   // DeepSeek 按官方价折扣最低的前三平台优先,平台内取最低 ¥/M;Meta 仍优先月额度最高。
   // 其余厂商在优先平台内取最低 ¥/M。
+  // 订阅套餐月费低于 ¥50 不参与性价比计算;API 按量口径不受影响。
   // ⚠ 订阅是包月摊销,额度用不完就比 API 贵;与按量口径分开显示。
   var SUBS_CACHE = null, SUBS_SIG = "";
   function subsCost() {
@@ -1142,6 +1143,7 @@
     if (SUBS_CACHE && SUBS_SIG === sig) return SUBS_CACHE;
     var all = {};
     function add(rawName, platform, planName, feeCny, quotaM, costPerM, basis, date, source) {
+      if (feeCny == null || !isFinite(Number(feeCny)) || Number(feeCny) < 50) return;
       if (costPerM == null || !isFinite(costPerM) || costPerM <= 0) return;
       var c = canon(rawName);
       if (!all[c.id]) all[c.id] = [];

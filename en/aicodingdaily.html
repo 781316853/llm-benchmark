@@ -82,10 +82,10 @@
        不进首屏脚本清单:该文件保存各源全量历史(实测约 3.4MB),而标签页是低频入口,
        故由 js/app.js 的 renderChangelog() 在首次进入本页时按需注入(缓存戳见 CL_DATA_SRC)。 -->
   <!-- 业务脚本 -->
-  <script defer src="../js/data.js?v=20261127b"></script>
+  <script defer src="../js/data.js?v=20261127c"></script>
   <script defer src="../js/charts.js?v=20261030a"></script>
   <script defer src="../js/compare.js?v=20261127a"></script>
-  <script defer src="../js/app.js?v=20261127b"></script>
+  <script defer src="../js/app.js?v=20261127c"></script>
   <!-- 引用/导出:页面级「引用此榜单」+ 每表 CSV,表格重建后自动补按钮 -->
   <script defer src="../js/export.js?v=20261126a"></script>
   <!-- llm2014 宽表:顶部横向滑动条 + 固定 #/模型列 -->
@@ -99,8 +99,8 @@
   <!-- 三层悬停联动:事件委托在 document 上,表格重渲染后无需重绑(与 mx-restyle.css 配对) -->
   <script defer src="../js/mx-restyle.js?v=20261126c"></script>
   <!-- 英文站运行时翻译:字典 + 引擎;i18n.js 仅在 <html lang=en> 下生效 -->
-  <script defer src="../js/i18n-en.js?v=20261127b"></script>
-  <script defer src="../js/i18n.js?v=20261127b"></script>
+  <script defer src="../js/i18n-en.js?v=20261127c"></script>
+  <script defer src="../js/i18n.js?v=20261127c"></script>
 </head>
 <body data-page="aicodingdaily" data-base="../">
   <!-- 数据来源索引:全站最顶端的来源站点直达(两行) -->
