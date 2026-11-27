@@ -938,7 +938,7 @@
       var bestBadges = "";
       if (bestValueRow === r) {
         bestBadges += '<span class="badge-best badge-best-value" title="综合排名前 20 中性价比指数最高:综合分 ' +
-          CMP.composite(r).toFixed(1) + ' ÷ ' + fmtCostPerM(priceOf(r.id).costPerM) + '/M = ' + bestValueIdx.toFixed(1) + '">最佳性价比</span>';
+          CMP.composite(r).toFixed(1) + ' ÷ ' + fmtCostPerM(costOf(r).used) + '/M = ' + bestValueIdx.toFixed(1) + '">最佳性价比</span>';
       }
       var rowBadges = refBadge + bestBadges + (nw ? newBadge() : "") + domBadge + insertedBadge + singleBadge;
       // 序号列:参与排名的行取全量排名序中的名次;参考行 / 单榜行固定「—」,不参与排序

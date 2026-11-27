@@ -26,15 +26,6 @@
     if (doc.getAttribute("data-oct-init") === "1") return;
     doc.setAttribute("data-oct-init", "1");
 
-    var track = document.querySelector(".oct-ticker-track");
-    var group = track && track.firstElementChild;
-    if (group && !track.querySelector("[data-clone]")) {
-      var clone = group.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.setAttribute("data-clone", "1");
-      track.appendChild(clone);
-    }
-
     setStagger(".news-toc-link, .news-card", 12);
     setStagger(".bench-item", 9);
     setStagger("#matrixTable tbody tr", 14);

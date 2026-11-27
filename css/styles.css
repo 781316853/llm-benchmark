@@ -391,7 +391,7 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
   background: var(--panel-2); padding: 1px 7px; border-radius: var(--radius-sm); }
 .news-card-date { font-size: var(--fs-xs); color: var(--text-tertiary);
   font-family: var(--font-num); font-variant-numeric: tabular-nums slashed-zero; }
-.news-card-link { font-size: var(--fs-sm); white-space: nowrap; margin-left: auto; }
+.news-card-link { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 4px; font-size: var(--fs-sm); white-space: nowrap; margin-left: auto; }
 .news-orig { flex: none; font-size: var(--fs-2xs); font-weight: 600; white-space: nowrap;
   color: var(--bd-warn-fg); background: var(--bd-warn-bg); border: 1px solid var(--bd-warn-bd);
   border-radius: var(--radius-pill); padding: 0 6px; letter-spacing: .3px; }
@@ -423,7 +423,7 @@ html.i18n-pending body { opacity: 0; pointer-events: none; }
   font-size: var(--fs-sm); }
 .matrix-ref[hidden] { display: none; }
 .matrix-ref > span { color: var(--text-dim); }
-.matrix-ref select { max-width: 220px; border: 0; background: transparent; color: var(--text);
+.matrix-ref select { max-width: 220px; min-height: 24px; border: 0; background: transparent; color: var(--text);
   font: inherit; font-size: var(--fs-sm); outline: none; cursor: pointer; }
 .matrix-ref:focus-within { border-color: var(--accent); }
 /* 模型搜索:输入即筛,范围覆盖全部有成绩的模型(含默认视图未展示的参考/单榜行) */
@@ -512,6 +512,7 @@ html[lang="en"] #matrixTable thead tr.col-row th .th-name { font-size: 12px; }
 #matrixTable tbody td.num:first-child { text-align: center; }
 #matrixTable tbody td.num .cell-val { display: inline-block; min-width: 5ch; }
 #matrixTable tbody td.num [class^="badge-"] { font-variant-numeric: tabular-nums; }
+.matrix-dual-label, .matrix-combined-label { font-size: var(--fs-sm); }
 
 /* 榜单数据色:列头与数值同色,只染主体 */
 .bv-deepswe { --bv-color: var(--bench-deepswe); }
