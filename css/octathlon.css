@@ -2571,3 +2571,55 @@ html[data-theme="dark"] body {
 #matrixTable .knowledge-cell { vertical-align: middle; }
 #matrixTable .cell-ci { display: block; }
 #matrixTable .matrix-dual-row { white-space: normal; flex-wrap: wrap; gap: 2px 6px; }
+
+/* ===== llm2014:顶部横向滑动条 + 固定 #/模型列 ===== */
+.table-xscroll {
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  user-select: none;
+}
+.table-xscroll[hidden] { display: none; }
+.table-xscroll-thumb {
+  flex: none;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--text-tertiary);
+  cursor: grab;
+  touch-action: none;
+}
+.table-xscroll-thumb:hover,
+.table-xscroll-thumb:active { background: var(--accent); }
+.table-xscroll-thumb:active { cursor: grabbing; }
+.table-wrap.has-xscroll { scrollbar-width: none; }
+.table-wrap.has-xscroll::-webkit-scrollbar { display: none; }
+#lmTable th:nth-child(1), #lmTable td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background: var(--panel);
+}
+#lmTable th:nth-child(2), #lmTable td:nth-child(2) {
+  position: sticky;
+  left: var(--lm-c1, 46px);
+  z-index: 5;
+  background: var(--panel);
+  box-shadow: 2px 0 0 var(--border-subtle);
+}
+#lmTable thead th:nth-child(-n+2) { z-index: 6; background: var(--panel-2); }
+#lmTable tbody tr.row-new td:nth-child(-n+2) {
+  background-color: var(--panel);
+  background-image: linear-gradient(var(--row-new), var(--row-new));
+}
+#lmTable tbody tr:hover td:nth-child(-n+2) {
+  background-color: var(--panel);
+  background-image: linear-gradient(var(--row-hover), var(--row-hover));
+}
