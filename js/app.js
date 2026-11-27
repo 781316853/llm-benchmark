@@ -1862,8 +1862,12 @@
       match: ["Terminal-Bench", "OSWorld 2.0"] },
     { key: "workflow", title: "工作流与专业产出", desc: "真实职业任务、跨应用业务流程、专业交付与参数化 CAD 生成。",
       match: ["Agents' Last Exam", "AutomationBench", "APEX-1", "BenchCAD"] },
-    { key: "reasoning", title: "推理与知识", desc: "交互式智能体推理与闭卷前沿知识。",
-      match: ["ARC-AGI-3", "Humanity's Last Exam"] },
+    // 2026-11-27:HLE-Diamond / GPQA Diamond 由「其他基准」并入本组;ARC-AGI-2 / FrontierMath v2 /
+    // CritPt 同日新增。原「其他基准」只在出现未登记新基准时兜底显示(正常不渲染),
+    // 不再作为独立分类出现在页面上。match 顺序即组内章节顺序。
+    { key: "reasoning", title: "推理与知识",
+      desc: "交互式智能体推理、抽象模式推理、私有高难数学、研究级物理、研究生级科学问答与闭卷前沿知识。",
+      match: ["ARC-AGI-3", "ARC-AGI-2", "HLE-Diamond", "GPQA Diamond", "FrontierMath", "CritPt"] },
     { key: "other", title: "其他基准", desc: "尚未归类的榜单。", match: [] }
   ];
 
@@ -2530,6 +2534,55 @@
       '各厂商发布口径的工具使用不统一、源站未逐行标注 harness,故本表不做跨模型工具口径的严格比较。' +
       '本榜计入总览综合分与命中数(2026-11-26 起)。');
 
+    // 9.6) ARC-AGI-2(ARC Prize 抽象与推理 v2,半私有集;2026-11-27 新增)
+    // 表内不列 benchlm 的 overallScore:该字段是 benchlm 自家跨榜综合分(同一模型在 HLE /
+    // FrontierMath / CritPt 上取值完全相同),不是本榜榜内标准分,且大量为 0,列出来只会误导。
+    var ag2 = S.arcAgi2 || {};
+    var ag2Ms = D.arcAgi2();
+    var ag2Rows = ag2Ms.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) +
+          (m.effort ? ' <span class="cell-cost">' + esc(m.effort) + '</span>' : "") + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
+        '<td class="num">' + bvSpan("arcagi2", fmtHle(m.score)) + '</td>' +
+        '<td class="num">' + esc(m.context || "—") + '</td></tr>';
+    });
+    html += authSectionHtml("ARC-AGI-2", "抽象模式推理 · 仅展示", ag2.officialUrl || ag2.url,
+      '<div class="table-wrap"><table id="authArcAgi2Table" class="data-table"></table></div>',
+      '来源:' + esc(ag2.url || "") + '(ARC Prize 官方:' + esc(ag2.officialUrl || "") + ') · 更新 ' + esc(ag2.updated || "") +
+      ' · 半私有集 120 个网格变换谜题:只给若干组「输入→输出」示例,模型须自行归纳变换规则再套用到新网格;' +
+      '源站按推理档位分行,本表每模型取最优档,模型名后的档位即取得该分数时所用档位。' +
+      '⚠ 与 ARC-AGI-1(头部已饱和至 98.5)与 ARC-AGI-3(交互式游戏环境)是不同测试,分数不可直接比较。' +
+      '本榜仅展示,不计入综合分与命中数。');
+    // 9.7) FrontierMath v2(Epoch AI 私有高难数学,Tiers 1-3;2026-11-27 新增)
+    var fmv2 = S.frontierMath || {};
+    var fmv2Ms = D.frontierMath();
+    var fmv2Rows = fmv2Ms.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
+        '<td class="num">' + bvSpan("frontiermath", fmtHle(m.score)) + '</td>' +
+        '<td class="num">' + esc(m.context || "—") + '</td></tr>';
+    });
+    html += authSectionHtml("FrontierMath v2", "私有高难数学 · 仅展示", fmv2.officialUrl || fmv2.url,
+      '<div class="table-wrap"><table id="authFrontierMathTable" class="data-table"></table></div>',
+      '来源:' + esc(fmv2.url || "") + '(Epoch AI 官方:' + esc(fmv2.officialUrl || "") + ') · 更新 ' + esc(fmv2.updated || "") +
+      ' · 285 道私有数学题(Tiers 1-3),难度自奥赛以上到早期研究级,题目不公开以防污染;评测允许模型写 Python 迭代求解,' +
+      'score 为私有集通过率(%)。同基准的 Tier 4(41 题极限难度)前六名已达 95-100、头部饱和,单列区分度不足故不收录。' +
+      '本榜仅展示,不计入综合分与命中数。');
+    // 9.8) CritPt(研究级物理推理,Artificial Analysis 自测;2026-11-27 新增)
+    var cp = S.critpt || {};
+    var cpMs = D.critpt();
+    var cpRows = cpMs.map(function (m, i) {
+      return '<tr><td class="rank">' + (i + 1) + '</td><td>' + vdot(m.canon.vendor) + esc(m.model) + '</td>' +
+        '<td>' + (m.org ? vname(m.canon.vendor, m.org) : "—") + '</td>' +
+        '<td class="num">' + bvSpan("critpt", fmtHle(m.score)) + '</td>' +
+        '<td class="num">' + esc(m.context || "—") + '</td></tr>';
+    });
+    html += authSectionHtml("CritPt", "研究级物理推理 · 仅展示", cp.url,
+      '<div class="table-wrap"><table id="authCritptTable" class="data-table"></table></div>',
+      '来源:' + esc(cp.url || "") + '(指标由独立第三方 Artificial Analysis 自建自测、经 benchlm 转录) · 更新 ' + esc(cp.updated || "") +
+      ' · 研究级物理题正确率(%),题目面向科研场景而非教科书习题;与厂商自报口径不同,分数整体偏低(榜首约 35 分)。' +
+      '源站未逐行标注 harness 与推理档位,故本表不做跨模型工具口径的严格比较。本榜仅展示,不计入综合分与命中数。');
+
     // 10) NL2Repo-Bench
     var n2 = S.nl2repo || {};
     var n2Ms = D.nl2repo();
@@ -2704,6 +2757,9 @@
     authDeferTable("authApexTable", ["#", "模型", "厂商", "Mean Score", "Pass@1", "强度", "样本数"], apRows, ["", "", "", "num bv bv-apex", "num", "num", "num"]);
     authDeferTable("authHleTable", ["#", "模型", "厂商", "HLE-Diamond", "榜内标准分", "上下文"], hlRows, ["", "", "", "num bv bv-hle", "num", "num"]);
     authDeferTable("authGpqaTable", ["#", "模型", "厂商", "GPQA Diamond", "榜内标准分", "上下文"], gqRows, ["", "", "", "num bv bv-gpqa", "num", "num"]);
+    authDeferTable("authArcAgi2Table", ["#", "模型", "厂商", "ARC-AGI-2", "上下文"], ag2Rows, ["", "", "", "num bv bv-arcagi2", "num"]);
+    authDeferTable("authFrontierMathTable", ["#", "模型", "厂商", "FrontierMath v2", "上下文"], fmv2Rows, ["", "", "", "num bv bv-frontiermath", "num"]);
+    authDeferTable("authCritptTable", ["#", "模型", "厂商", "CritPt", "上下文"], cpRows, ["", "", "", "num bv bv-critpt", "num"]);
     authDeferTable("authNl2repoTable", ["#", "模型", "厂商", "Score", "参数量", "上下文", "API 价格"], n2Rows, ["", "", "", "num", "num", "num", "num"]);
     authDeferTable("authProgrambenchTable", ["#", "模型", "Agent", "Fully Resolved", "Almost", "Raw Pass Rate"], pbRows, ["", "", "", "num bv bv-programbench", "num", "num"]);
     authDeferTable("authCodeMigrationTable", ["#", "模型", "准确率", "成本/测试", "耗时/测试"], cmRows, ["", "", "num bv bv-valscodemigration", "num", "num"]);
@@ -2734,7 +2790,9 @@
       ["", "", "", "", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num bv bv-aacoding", "num", "num", "num", "num"]);
     var authRefAt = maxRefreshedAt();
     document.getElementById("authDesc").innerHTML = paraHtml(
-      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)、HLE-Diamond、GPQA Diamond 与 ModelDial 雷达计入总览综合分与命中数(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;HLE-Diamond 为 1000 题子集、GPQA Diamond 为研究生级科学问答;ModelDial 见独立标签页),其余(APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。各基准由本站每天 4 次自动抓取合并,当前快照刷新于 " +
+      "以下权威基准数据按渠道优先级合并:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像,低层级仅补缺不覆盖;AI Release Tracker 聚合页(T3)亦按此只补各基准缺失模型。其中 DeepSWE、Terminal-Bench(4.0/3.0/2.1,单章节内可切换版本查看,默认 4.0)、HLE-Diamond、GPQA Diamond 与 ModelDial 雷达计入总览综合分与命中数" +
+      "(TB 优先以最高版本为代表,其中 2.1 为厂商发布/归一化自报分口径;HLE-Diamond 为 1000 题子集、GPQA Diamond 为研究生级科学问答;ModelDial 见独立标签页),其余(APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench / ARC-AGI-2 / FrontierMath v2 / CritPt 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。" +
+      "各基准由本站每天 4 次自动抓取合并,当前快照刷新于 " +
       (authRefAt || "—") + "(北京时间);某基准源站未发布新数据时,数字保持不变。");
     authRendered = true; // 标记已渲染,后续切页仅复用(不再重建 DOM / 重init 图表)
   }
@@ -3994,6 +4052,10 @@
     tbench_v2: { src: "data/tbench_v2.js?v=20261117a", global: "TBENCH_V21" },
     hle_diamond: { src: "data/hle_diamond.js?v=20261126a", global: "HLE_DIAMOND" },
     gpqa_diamond: { src: "data/gpqa_diamond.js?v=20261126a", global: "GPQA_DIAMOND" },
+    // 2026-11-27 新增三个「推理与知识」展示型榜(权威页按需注入,不进首屏)
+    arc_agi_2: { src: "data/arc_agi_2.js?v=20261127a", global: "ARC_AGI_2" },
+    frontiermath_v2: { src: "data/frontiermath_v2.js?v=20261127a", global: "FRONTIERMATH_V2" },
+    critpt: { src: "data/critpt.js?v=20261127a", global: "CRITPT" },
     modeldial: { src: "data/modeldial.js?v=20261116a", global: "MODELDIAL" },
     releases: { src: "data/releases.js?v=20261119b", global: "RELEASES" },
     aicodingdaily: { src: "data/aicodingdaily.js?v=20261110b", global: "AICODINGDAILY" },
@@ -4022,7 +4084,7 @@
   };
   // 各标签页渲染前必须就绪的数据
   var TAB_DATA = {
-    authority: ["tbscience", "osworld", "lastexam", "lastexamV10", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontiercodeV11", "frontierswe", "vals_codemigration", "aa_coding_agents"],
+    authority: ["tbscience", "osworld", "lastexam", "lastexamV10", "automationbench", "arcagi3", "benchcad", "apex", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontiercodeV11", "frontierswe", "vals_codemigration", "aa_coding_agents", "arc_agi_2", "frontiermath_v2", "critpt"],
     plans: ["codingplan", "modeldialSubs"]
   };
 

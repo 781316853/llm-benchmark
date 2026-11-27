@@ -138,6 +138,9 @@
   --bench-cursorbench: #1E3A8A;
   --bench-frontiercode: #9A3412;
   --bench-frontierswe: #075985;
+  --bench-arcagi2: #6D28D9;
+  --bench-frontiermath: #B45309;
+  --bench-critpt: #0F766E;
   --bench-value: #065F46;
 
   /* 图表(js/charts.js 读取) */
@@ -532,6 +535,10 @@ html[lang="en"] #matrixTable thead tr.col-row th .th-name { font-size: 12px; }
 .bv-cursorbench { --bv-color: var(--bench-cursorbench); }
 .bv-frontiercode { --bv-color: var(--bench-frontiercode); }
 .bv-frontierswe { --bv-color: var(--bench-frontierswe); }
+/* 2026-11-27 新增「推理与知识」三榜配色(同色系深→浅:抽象推理→数学→物理) */
+.bv-arcagi2 { --bv-color: var(--bench-arcagi2); }
+.bv-frontiermath { --bv-color: var(--bench-frontiermath); }
+.bv-critpt { --bv-color: var(--bench-critpt); }
 .bv-value { --bv-color: var(--bench-value); }
 .bv { color: var(--bv-color, inherit); }
 #matrixTable thead th.bv, .data-table thead th.bv { color: #2f55d4; }
@@ -2080,6 +2087,9 @@ html[data-theme="dark"] {
   --bench-cursorbench: #8FC8FF;
   --bench-frontiercode: #F0B07A;
   --bench-frontierswe: #7CC7E8;
+  --bench-arcagi2: #B69CFF;
+  --bench-frontiermath: #F3B27A;
+  --bench-critpt: #6FD8C4;
   --bench-value: #6EE7B7;
 
   --chart-text: #F2F4F7;

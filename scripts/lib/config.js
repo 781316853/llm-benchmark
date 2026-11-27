@@ -287,6 +287,35 @@ module.exports = {
       officialUrl: "https://github.com/idavidrein/gpqa",
       version: "diamond"
     },
+    // ===== 2026-11-27 新增:推理与知识组三个权威榜 =====
+    // 三者同为 benchlm.ai 榜单页(__NEXT_DATA__ 内嵌全量榜)单源,故共用
+    // scripts/lib/benchlmBoardSource.js 工厂;仅「权威基准测试」页展示,不计入综合分与命中数。
+    arc_agi_2: {
+      // ARC-AGI-2(ARC Prize · 抽象与推理语料 v2):半私有集 120 题网格变换谜题,
+      // 每题需从示例网格推断规则再套用到新网格,官方按推理档位分别报分(同模型多档)。
+      // 与 ARC-AGI-1(同榜另一列)/ ARC-AGI-3(交互式,站内已收录)是不同测试,分数不可互比。
+      url: "https://benchlm.ai/benchmarks/arc-agi-2",
+      host: "benchlm.ai", src: "benchlm",
+      officialUrl: "https://arcprize.org/arc-agi/2",
+      version: "ARC-AGI-2", tasks: 120
+    },
+    frontiermath_v2: {
+      // FrontierMath v2 Tiers 1-3(Epoch AI):285 道私有高难数学题,允许用 Python 迭代求解,
+      // 主指标为私有集通过率(%)。与 Tier 4(41 题极限难度)是同一基准的不同难度档,
+      // 站内只收 Tiers 1-3 主榜(Tier 4 头部已饱和到 100 分,区分度不足)。
+      url: "https://benchlm.ai/benchmarks/frontiermathv2tiers13",
+      host: "benchlm.ai", src: "benchlm",
+      officialUrl: "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
+      version: "v2 (Tiers 1-3)", tasks: 285
+    },
+    critpt: {
+      // CritPt(Critical Physics Tasks):研究级物理推理,主指标为正确率(%)。
+      // ⚠ 该指标由 Artificial Analysis 自建自测并经 benchlm 转录,AA 官网在本机网络下不可达,
+      //   故 officialUrl 留空、只挂 benchlm 榜页,避免填一个未核实过的地址。
+      url: "https://benchlm.ai/benchmarks/critpt",
+      host: "benchlm.ai", src: "benchlm",
+      version: "2026"
+    },
     hle_aa: {
       // HLE 补充源(T3):Artificial Analysis 无工具复测口径的 benchlm 镜像页(内嵌 JSON,240+ 模型)。
       // AA 为自家 harness 复测,分数系统性低于厂商官方口径约 5 分;仅用于补官方渠道未收录的模型
@@ -556,7 +585,10 @@ module.exports = {
       //   aa_coding_agents(AA Coding Agent Index v2.0)为 agent×model 配置级的 0-100 合成分,
       //     且 Index 自身就是 FrontierCode v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA 的再合成,
       //     与站内各原生基准逐条对比会产生结构性假告警,故排除;
-      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "modeldial", "automationbench", "aicodingdaily", "octathlon", "aa_coding_agents", "vals_vibe_code", "vals_codemigration"]
+      //   2026-11-27 新增三榜同样排除:arc_agi_2 为半私有集准确率但整体区间与主基准不同
+      //     (中位数仅 13.6 分、尾部大量 0 分),frontiermath_v2 为私有集通过率(头部 95、中位 64),
+      //     critpt 为研究级物理正确率(榜首仅 35 分、222 条多数接近 0)—— 三者都与编码类主基准量纲不可比。
+      excludedSources: ["arena_webdev", "arenaofbias", "arena_agent", "tbench", "tbench_v3", "tbench_v21", "tbscience", "osworld", "lastexam", "arcagi3", "benchcad", "apex", "hle", "nl2repo", "programbench", "cursorbench", "frontiercode", "frontierswe", "modeldial", "automationbench", "aicodingdaily", "octathlon", "aa_coding_agents", "vals_vibe_code", "vals_codemigration", "arc_agi_2", "frontiermath_v2", "critpt"]
     },
     completeness: {
       // 每条记录必填字段
@@ -581,7 +613,12 @@ module.exports = {
         // AI 十项全能为按批次举办的定时挑战赛,不是日更榜:超过 14 天 warn、超过 30 天 alert。
         octathlon: { warnAgeDays: 14, alertAgeDays: 30 },
         vals_vibe_code: { warnAgeDays: 14, alertAgeDays: 30 },
-        vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 }
+        vals_codemigration: { warnAgeDays: 14, alertAgeDays: 30 },
+        // 2026-11-27 新增三榜都跑在 benchlm.ai 同一份镜像快照上(源站按批次更新,非每日),
+        // 与模型发布节奏绑定:超过 14 天 warn、超过 30 天 alert。
+        arc_agi_2: { warnAgeDays: 14, alertAgeDays: 30 },
+        frontiermath_v2: { warnAgeDays: 14, alertAgeDays: 30 },
+        critpt: { warnAgeDays: 14, alertAgeDays: 30 }
       }
     }
   },

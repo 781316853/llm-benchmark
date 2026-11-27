@@ -694,6 +694,25 @@
     return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
       .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
   }
+  // ARC-AGI-2(ARC Prize 抽象与推理语料 v2,半私有集):仅展示,不计入综合分与命中数。
+  // 与 ARC-AGI-3(交互式智能体)是不同测试;入库时已按模型取最优推理档位。
+  function arcAgi2() {
+    var src = window.ARC_AGI_2 || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  // FrontierMath v2 Tiers 1-3(Epoch AI 私有高难数学题):仅展示,不计入综合分与命中数。
+  function frontierMath() {
+    var src = window.FRONTIERMATH_V2 || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
+  // CritPt(研究级物理推理,Artificial Analysis 自测):仅展示,不计入综合分与命中数。
+  function critpt() {
+    var src = window.CRITPT || { models: [] };
+    return (src.models || []).slice().sort(function (a, b) { return b.score - a.score; })
+      .map(function (m) { return Object.assign({}, m, { canon: canon(m.model) }); });
+  }
   function nl2repo() {
     var src = window.NL2REPO || { models: [] };
     return src.models.slice().sort(function (a, b) { return b.score - a.score; })
@@ -1246,7 +1265,9 @@
     deepswe: "DEEPSWE", llm: "LLM2014", webdev: "ARENA_WEBDEV", arena_agent: "ARENA_AGENT", arenaofbias: "ARENAOFBIAS",
     tbench: "TBENCH", tbenchV3: "TBENCH_V3", tbenchV21: "TBENCH_V21", tbscience: "TBSCIENCE",
     osworld: "OSWORLD", lastexam: "LASTEXAM", lastexamV10: "LASTEXAM_V10", arcagi3: "ARCAGI3", benchcad: "BENCHCAD",
-    apex: "APEX", hle: "HLE", hleDiamond: "HLE_DIAMOND", gpqa: "GPQA_DIAMOND", nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
+    apex: "APEX", hle: "HLE", hleDiamond: "HLE_DIAMOND", gpqa: "GPQA_DIAMOND",
+    arcAgi2: "ARC_AGI_2", frontierMath: "FRONTIERMATH_V2", critpt: "CRITPT",
+    nl2repo: "NL2REPO", programbench: "PROGRAMBENCH",
     cursorbench: "CURSORBENCH", frontiercode: "FRONTIERCODE", frontiercodeV11: "FRONTIERCODE_V11", frontierswe: "FRONTIERSWE", automationbench: "AUTOMATIONBENCH", modeldial: "MODELDIAL",
     aicodingdaily: "AICODINGDAILY",
     octathlon: "OCTATHLON",
@@ -1290,6 +1311,9 @@
     apex: apex,
     hleDiamond: hleDiamond,
     gpqaDiamond: gpqaDiamond,
+    arcAgi2: arcAgi2,
+    frontierMath: frontierMath,
+    critpt: critpt,
     nl2repo: nl2repo,
     programbench: programbench,
     cursorbench: cursorbench,

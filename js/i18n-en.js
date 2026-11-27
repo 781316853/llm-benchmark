@@ -783,8 +783,8 @@
         "DeepSWE, Terminal-Bench (4.0/3.0/2.1, switchable within the section, 4.0 by default), HLE and ModelDial Radar count toward the overview composite and coverage (Terminal-Bench is represented by its highest version, and 2.1 uses vendor-published / normalised self-reported scores;",
       "HLE 统一无工具闭卷口径;":
         "HLE uses a unified closed-book, no-tools protocol;",
-      "ModelDial 见独立标签页),其余(APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;":
-        "see ModelDial's own tab); the rest (APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench plus TB-Science / OSWorld / ALE / ARC-AGI-3 / BenchCAD) are reference data for display;",
+      "ModelDial 见独立标签页),其余(APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench / ARC-AGI-2 / FrontierMath v2 / CritPt 及 TB-Science/OSWorld/ALE/ARC-AGI-3/BenchCAD)为展示型参考数据;":
+        "see ModelDial's own tab); the rest (APEX-1 / NL2Repo-Bench / ProgramBench / CursorBench / FrontierCode / FrontierSWE / AA Coding Agent Index / AutomationBench / ARC-AGI-2 / FrontierMath v2 / CritPt plus TB-Science / OSWorld / ALE / ARC-AGI-3 / BenchCAD) are reference data for display;",
       "NL2Repo-Bench 自 2026-09-19 起由计入改为仅展示。":
         "NL2Repo-Bench moved from counted to display-only on 2026-09-19.",
       "某基准源站未发布新数据时,数字保持不变。":
@@ -823,6 +823,16 @@
       "真实专业工作流 · 仅展示 · 版本切换": "Real professional workflows · display only · versions",
       "跨应用业务工作流 · 仅展示": "Cross-app business workflows · display only",
       "交互式智能体推理 · 仅展示": "Interactive agent reasoning · display only",
+      "抽象模式推理 · 仅展示": "Abstract pattern reasoning · display only",
+      "私有高难数学 · 仅展示": "Private hard mathematics · display only",
+      "研究级物理推理 · 仅展示": "Research-level physics · display only",
+      // 左侧大纲副标题取章节标签的第一段,这些短语需单独收录(缺失时英文站会回落成中文)
+      "抽象模式推理": "Abstract pattern reasoning",
+      "私有高难数学": "Private hard mathematics",
+      "研究级物理推理": "Research-level physics",
+      "无工具": "No tools",
+      "研究生级科学问答": "Graduate-level science Q&A",
+      "超长周期软件工程": "Ultra-long-horizon software engineering",
       "程序化 CAD 生成 · 仅展示": "Procedural CAD generation · display only",
       "专业工作产出 · 仅展示": "Professional work output · display only",
       "无工具口径 · 计分": "No-tool basis · scored",
@@ -1042,6 +1052,7 @@
       "成本 vs 准确率(气泡=每测试平均耗时)":
         "Cost vs accuracy (bubble = average time per test)",
       "17 大权威基准": "17 reference benchmarks",
+      "21 大权威基准": "21 reference benchmarks",
       "权威基准大纲预览": "Reference benchmark outline",
       "大纲预览": "Outline",
       "软件工程与编码 Agent": "Software engineering & coding agents",
@@ -1055,6 +1066,8 @@
         "Terminal command-line tasks, research terminal workflows and long-horizon desktop GUI operation.",
       "真实职业任务、跨应用业务流程、专业交付与参数化 CAD 生成。":
         "Real professional tasks, cross-app business workflows, professional deliverables and parametric CAD generation.",
+      "交互式智能体推理、抽象模式推理、私有高难数学、研究级物理、研究生级科学问答与闭卷前沿知识。":
+        "Interactive agent reasoning, abstract pattern reasoning, private hard mathematics, research-level physics, graduate-level science Q&A and closed-book frontier knowledge.",
       "交互式智能体推理与闭卷前沿知识。":
         "Interactive agent reasoning and closed-book frontier knowledge.",
       "尚未归类的榜单。": "Benchmarks not yet categorized.",

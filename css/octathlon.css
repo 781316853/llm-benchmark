@@ -155,6 +155,9 @@ html[data-theme="light"] {
   --bench-cursorbench: #4c5fd5;
   --bench-frontiercode: #b06a3a;
   --bench-frontierswe: #3c7fa0;
+  --bench-arcagi2: #6a4bb5;
+  --bench-frontiermath: #b5522c;
+  --bench-critpt: #1f7a6b;
   --bench-value: #2343B8;
   --chart-brand: #3964FE;
   --chart-text: var(--oct-ink);
@@ -290,6 +293,9 @@ html[data-theme="dark"] {
   --bench-cursorbench: #8da2ff;
   --bench-frontiercode: #e0a06a;
   --bench-frontierswe: #7fc4e0;
+  --bench-arcagi2: #b39bf0;
+  --bench-frontiermath: #f0a184;
+  --bench-critpt: #6fd8c4;
   --bench-value: #d1ff57;
   --chart-brand: #7C9BFF;
   --chart-text: var(--oct-ink);
