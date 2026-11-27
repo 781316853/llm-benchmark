@@ -42,8 +42,32 @@ function createTierMerger(opts) {
 
   function aliasKey(k) { return aliases[k] || k; }
 
-  // 命中已有条目的键:先精确(经别名),再双向后缀匹配(≥5 字符)
-  function findKey(nk) {
+  // 词序无关键(仅作 findKey 的最后兜底):同一模型在不同渠道常换词序书写
+  // (「Claude Opus 4.5」vs「Opus 4.5」vs「Claude 4.5 Opus」、「Gemma 4 31B」vs「Gemma4-31B」),
+  // 精确键与后缀匹配都认不出,会留下同模型两行。
+  // 规则:
+  //   1) 纯厂商前缀词(claude/anthropic/openai/google)视为可省略——渠道常省写厂商名;
+  //      只放真正的厂商名,模型名(gemma/qwen/glm/gpt 等)绝不能进这张表,否则会误并;
+  //   2) 字母词按字典序排列(词序无关),数字保持原出现顺序(版本号顺序有意义,
+  //      「GPT-5.4」得到 5-4、「GPT-4.5」得到 4-5,不会被误并);
+  //   3) 纯数字/符号名返回 null(没有字母词可依据,合并风险大于收益)。
+  // ⚠ 该键只在分数相同时启用(见 findKey):同模型不同来源给不同分属口径差异,
+  //   强行合并会掩盖分歧,只合并「分数完全一致」的纯写法重复。
+  const VENDOR_WORDS = { claude: 1, anthropic: 1, openai: 1, google: 1 };
+
+  function variantKey(name) {
+    // 先把小数点折成连字符:findKey 收到的键来自 normKey(点号已折叠),
+    // 而比对对象是原始模型名(仍带点),不统一会出现「4-5」与「4.5」对不上。
+    var s = String(name || "").toLowerCase().replace(/\./g, "-");
+    var words = (s.match(/[a-z]+/g) || []).filter(function (w) { return !VENDOR_WORDS[w]; });
+    if (!words.length) return null;
+    var nums = (s.match(/[0-9]+/g) || []).join("-");
+    return words.sort().join("") + "|" + nums;
+  }
+
+  // 命中已有条目的键:先精确(经别名),再双向后缀匹配(≥5 字符),最后词序无关兜底。
+  // score 仅用于词序兜底:分数不同时不做词序合并,保留两行供人工核对口径。
+  function findKey(nk, score) {
     var k = aliasKey(nk);
     if (entries[k]) return k;
     if (nk.length >= 5) {
@@ -52,6 +76,15 @@ function createTierMerger(opts) {
         return (ek.length >= 5 && nk.endsWith(ek)) || (ek.length >= 5 && ek.endsWith(nk));
       })[0];
       if (hit) return hit;
+    }
+    var vk = variantKey(nk);
+    if (vk) {
+      var hitV = Object.keys(entries).filter(function (key) {
+        var e = entries[key];
+        if (score != null && e.rec.score !== score) return false;
+        return variantKey(e.rec.model) === vk;
+      })[0];
+      if (hitV) return hitV;
     }
     return null;
   }
@@ -75,7 +108,7 @@ function createTierMerger(opts) {
       var score = m.score;
       if (score == null || !isFinite(score)) return;
       var nk = normKey(name);
-      var k = findKey(nk);
+      var k = findKey(nk, score);
       if (!k) {
         var rec = Object.assign({}, m, { model: name, score: score, src: src });
         delete rec.name;
