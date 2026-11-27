@@ -7,8 +7,8 @@
 //   h=英文原文哈希(仅已翻译条目携带):title/body 为中文译文,原文见 url 指向的源站页面
 // 同目录 changelog-monthly.js 由本模块派生:按月份汇总各工具的新增功能(单工具跨版本去重、同月跨工具合并)
 window.CHANGELOG = {
-  'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 05:47',
+  'updated': '2026-11-27',
+  'refreshedAt': '2026-11-27 16:53',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -20,7 +20,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '0.172.0',
@@ -1486,7 +1486,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '2.1.332',
@@ -3937,7 +3937,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '2.4.2',
@@ -9505,7 +9505,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '2.8.1',
@@ -10805,7 +10805,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '0.2.3-alpha.2',
@@ -11473,7 +11473,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '0.5.20',
@@ -11985,8 +11985,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
+        {
+          'version': '1.42.0',
+          'title': 'Qoder IDE 支持移动端远程控制',
+          'date': '2026-11-27',
+          'dateRaw': '2026年11月27日',
+          'tags': [
+            '移动端远程控制',
+            '自定义会话布局'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Qoder IDE 支持移动端远程控制\n特性\n- 移动端远程控制 ：离开电脑后，可通过 Qoder 移动端查看任务进度、处理确认请求、追加指令或停止任务，也可为 IDE 中已打开的项目新建 Agent 任务。\n- 自定义会话布局 ：可通过拖拽或标签页菜单，将会话在侧栏与编辑区之间自由移动，草稿、附件、模型选择和会话状态均会保留，方便边看代码边对话，或为长会话扩大阅读区域。\n优化\n- 支持为自定义模型配置最大输出 Token 数。\n- 对话框「优化输入」不可用时，会明确提示原因。\n- 聊天框用户提问不再固定在顶部；默认浅色主题下，用户消息气泡与回复更容易区分。\n- Agent 修改大文件时减少无关内容重写，降低编辑卡顿，同时降低保存和恢复大量编辑记录时的内存峰值。\n- 减少发送带图片消息时的重复上传和准备开销。\n- 优化内置浏览器打开和关闭新弹窗、新标签页时的处理，减少页面状态丢失。\n- 改善语音连接对系统受信任证书的兼容性，减少使用企业证书或代理时的连接失败。\n- 行内 Diff 中被删除的内容可随编辑器布局完整显示，并支持选中复制，方便审查时保留部分原文。\n- 优化 IDE 打包策略，减小安装包体积，加快启动速度。\n修复\n- 修复本地 AI 服务断连或持续连接失败后无法自动恢复，导致聊天面板长期不可用的问题。\n- 修复 Windows 更新中断后可能无法启动或快捷方式失效的问题。\n- 修复终端命令结束后仍持续等待、提示符缺失影响后续命令的问题。\n- 修复较大的编辑历史无法恢复的问题。\n- 修复断网重载或重新打开历史会话后，因旧状态残留而无法接受改动的问题。\n- 修复换行符变化后，选择「保留当前内容」仍无法接受改动的问题。\n- 修复删除空文件后无法继续查看下一个文件的问题。\n- 修复多张截图一起发送时被误判为消息过大的问题。\n- 修复复制历史消息中的失效图片会导致输入框崩溃的问题。\n- 修复调整输入框高度后，图片删除按钮被裁切、多余空白未及时释放的问题。\n- 修复打开历史会话时，未发送的草稿丢失的问题。\n- 修复将搜索编辑器中的选中文字加入对话时，因缺少文件位置而报错的问题。\n- 修复内置浏览器页面加载失败时被欢迎页遮挡的问题。\n- 修复部分任务信息导致专家团全景图渲染崩溃的问题。\n- 修复交互组件没有可滚动内容或已滚到边界时，外层会话无法继续滚动的问题。\n- 修复开启终端鼠标滚轮缩放字体后，缩放受滚动位置限制的问题。\n2026年11月20日'
+        },
         {
           'version': '1.41.1',
           'title': '企业设备账号管控',
@@ -12669,7 +12681,7 @@ window.CHANGELOG = {
             '功能更新'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'bb:[\\\'$\\\',\\\'$L1a\\\',null,{\\\'id\\\':\\\'2026年03月05日\\\',\\\'label\\\':\\\'2026年03月05日\\\',\\\'description\\\':\\\'0.4.0\\\',\\\'tags\\\':\\\'$undefined\\\',\\\'isVisible\\\':true,\\\'children\\\':[[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'feature-updates-17\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'功能更新\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'内置 create-skill 和 create-agent 技能，以引导和简化用户创建技能和自定义 Agent。同时支持通过 / 快速唤起并使用 skills、subagents\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Quest 模式增加文件树，提升当前项目中文件查阅能力，可便捷添加到上下文\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Quest 模式支持通过对话唤起 Vercel Skill，可快速部署应用上线\\\'}],\\\'\\\\n\\\']}],[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'experience-improvements-14\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'体验优化\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'一键优化提示词：优化对提示词内包含 @上下文场景的处理\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持 .agents/skills 目录：现已支持从 .agents/skills 读取技能，遵循行业统一标准\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'自定义 Subagent 执行详情支持展开浮窗查看\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'NEXT 支持读取剪贴板历史\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'增强 Quest 任务中 Agent 调用 Skills 能力\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'优化 Quest 模式页面中新建任务、工具栏折叠的体验\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'更新 Quest 模式首页案例内容\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'登录稳定性优化：提升登录稳定性（如升级后遇到登录、权限等问题，请尝试退出并重新登录）\\\'}],\\\'\\\\n\\\']}],[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'fixes-12\\\',\\\'style'
+          'body': '功能更新\n- 模型重磅升级 Qwen-Coder-Qoder：为提升端到端编程体验而打造的深度定制模型，该模型基于 Qwen-Coder，并针对 Agent 框架、工具和场景进行了大规模强化学习。在我们的真实软件工程任务评测中，其任务解决率表现优异，尤其在 Windows 系统下的终端命令准确率方面高出 50%\n- Lingma IDE 支持 Quest 自主编程，开放 Beta 体验：\n- 自主编程智能体：Agent 自主完成高质量、端到端、可交付的结果，无需持续人工介入\n- 需求对齐机制：意图识别、需求澄清、共创 Spec，执行前把任务交代清楚\n- 长程任务能力：大幅提升长时间持续执行能力，Agent 监督任务运行完毕\n- 质量自主保障：集成结果验证能力，自主验证、修复交付物质量\n- 持续自主进化：不只是执行，更会主动进化。记住你的风格，持续学习新技术\n- 支持更多应用场景：Quest 对用户输入进行意图识别，自动路由最适配的能力\n- Spec 驱动开发：先对齐需求与约束，再执行并验收，确保结果清晰、可追溯\n- 从想法到产品：支持 0-1 创建网站和原型，集成顶尖视觉模型，大幅提升设计质量和可用性\n- Agentic Chat：多智能体并行执行，内置规划智能体与自定义扩展能力全面升级：\n- 新增内置规划智能体：在处理复杂任务时，用户可通过人机协同模式提前制定可落地的执行规划。可显著提升任务执行的效率，避免重复返工，增强 Agent 代码生成质量以及结果的高度可控性\n- 自定义扩展能力再升级：支持自定义智能体（subagents）、技能（Skills）、指令（Commands），打造专属于您的智能工作流\n- 多智能体并行会话：支持多会话窗口并行运行，同时处理不同任务，显著提升多任务处理效率\nQoder CN 更新日志 home page\nzh\nIDE\n- 更新日志\nself.__next_f.push([1,\'b0:[\\\'$\\\',\\\'$L1a\\\',null,{\\\'id\\\':\\\'2026年03月18日\\\',\\\'label\\\':\\\'2026年03月18日\\\',\\\'description\\\':\\\'0.6.0\\\',\\\'tags\\\':\\\'$undefined\\\',\\\'isVisible\\\':true,\\\'children\\\':[[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'feature-updates-15\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'功能更新\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'支持自定义模型：Qoder CN 个人专业版支持通过 API 密钥接入阿里云百炼、智谱、Kimi、MiniMax 供应商的 Coding Plan，以使用第三方模型\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Agent 模式支持 Workspace 跨不同工程检索和文件编辑\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'VS Code 内核升级至 1.106.3\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'Repo wiki 升级：\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'核心体验升级：生成进度可视化、操作引导优化区分生成和更新、双向同步增加导入导出说明、增加自动导出能力\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'溯源更高效：关联 Git 的项目生成后自动展示 Commit ID、参考来源标注增加行号\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'新用户活动透出：展示剩余免费生成次数（说明：目前 Repo Wiki 面向企业版开放 Beta 体验）\\\'}],\\\'\\\\n\\\']}],[\\\'$\\\',\\\'a\\\',null,{\\\'id\\\':\\\'experience-improvements-12\\\',\\\'style\\\':{\\\'display\\\':\\\'block\\\',\\\'scrollMarginTop\\\':\\\'calc(max(var(--topbar-height, 112px), calc(var(--topbar-height-h5, 62px) + 40px)) + 8px)\\\'}}],[\\\'$\\\',\\\'h4\\\',null,{\\\'children\\\':\\\'体验优化\\\'}],[\\\'$\\\',\\\'ul\\\',null,{\\\'children\\\':[\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{\\\'children\\\':\\\'输入框允许添加最多 20 个图片及 20 个文件\\\'}],\\\'\\\\n\\\',[\\\'$\\\',\\\'li\\\',null,{'
         }
       ]
     },
@@ -12681,7 +12693,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '3.4.21',
@@ -14972,7 +14984,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '4.0.0',
@@ -15187,7 +15199,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '4.12.4',
@@ -16084,7 +16096,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entries': [
         {
           'version': '5.11.3',

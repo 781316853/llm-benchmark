@@ -1,4 +1,4 @@
-// 数据源:APEX-1(AI Productivity Index,Mercor,更新于 2026-11-26)
+// 数据源:APEX-1(AI Productivity Index,Mercor,更新于 2026-11-27)
 // 官方榜:https://www.mercor.com/apex/apex-v1-leaderboard/
 // 口径:隐藏 held-out 集 400 题(投行 / 咨询 / 律所 / 全科医生各 100),每题每模型 8 次,
 //   LM judge 按专家 rubric 评分;Mean Score = 所有任务通过标准比例的平均(主排序指标),
@@ -10,8 +10,8 @@ window.APEX = {
   'source': 'APEX-1',
   'url': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
   'officialUrl': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
-  'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 05:47',
+  'updated': '2026-11-27',
+  'refreshedAt': '2026-11-27 16:53',
   'stats': {
     'tasks': 400,
     'entries': 83

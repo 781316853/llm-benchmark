@@ -2,8 +2,8 @@
 // 每个工具只保留最近 2 条(页面显示上限)+ entryCount(全量条数);
 // 全量历史见同目录 changelog.js(抓取端合并基线,页面不加载)。
 window.CHANGELOG = {
-  'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 05:47',
+  'updated': '2026-11-27',
+  'refreshedAt': '2026-11-27 16:53',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -15,7 +15,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/openai/codex/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 122,
       'entries': [
         {
@@ -48,7 +48,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 271,
       'entries': [
         {
@@ -79,7 +79,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 500,
       'entries': [
         {
@@ -124,7 +124,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 102,
       'entries': [
         {
@@ -160,7 +160,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 44,
       'entries': [
         {
@@ -203,7 +203,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 35,
       'entries': [
         {
@@ -246,9 +246,21 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
-      'entryCount': 56,
+      'lastOkAt': '2026-11-27 16:53',
+      'entryCount': 57,
       'entries': [
+        {
+          'version': '1.42.0',
+          'title': 'Qoder IDE 支持移动端远程控制',
+          'date': '2026-11-27',
+          'dateRaw': '2026年11月27日',
+          'tags': [
+            '移动端远程控制',
+            '自定义会话布局'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': 'Qoder IDE 支持移动端远程控制\n特性\n- 移动端远程控制 ：离开电脑后，可通过 Qoder 移动端查看任务进度、处理确认请求、追加指令或停止任务，也可为 IDE 中已打开的项目新建 Agent 任务。\n- 自定义会话布局 ：可通过拖拽或标签页菜单，将会话在侧栏与编辑区之间自由移动，草稿、附件、模型选择和会话状态均会保留，方便边看代码边对话，或为长会话扩大阅读区域。\n优化\n- 支持为自定义模型配置最大输出 Token 数。\n- 对话框「优化输入」不可用时，会明确提示原因。\n- 聊天框用户提问不再固定在顶部；默认浅色主题下，用户消息气泡与回复更容易区分。\n- Agent 修改大文件时减少无关内容重写，降低编辑卡顿，同时降低保存和恢复大量编辑记录时的内存峰值。\n- 减少发送带图片消息时的重复上传和准备开销。\n- 优化内置浏览器打开和关闭新弹窗、新标签页时的处理，减少页面状态丢失。\n- 改善语音连接对系统受信任证书的兼容性，减少使用企业证书或代理时的连接失败。\n- 行内 Diff 中被删除的内容可随编辑器布局完整显示，并支持选中复制，方便审查时保留部分原文。\n- 优化 IDE 打包策略，减小安装包体积，加快启动速度。\n修复\n- 修复本地 AI 服务断连或持续连接失败后无法自动恢复，导致聊天面板长期不可用的问题。\n- 修复 Windows 更新中断后可能无法启动或快捷方式失效的问题。\n- 修复终端命令结束后仍持续等待、提示符缺失影响后续命令的问题。\n- 修复较大的编辑历史无法恢复的问题。\n- 修复断网重载或重新打开历史会话后，因旧状态残留而无法接受改动的问题。\n- 修复换行符变化后，选择「保留当前内容」仍无法接受改动的问题。\n- 修复删除空文件后无法继续查看下一个文件的问题。\n- 修复多张截图一起发送时被误判为消息过大的问题。\n- 修复复制历史消息中的失效图片会导致输入框崩溃的问题。\n- 修复调整输入框高度后，图片删除按钮被裁切、多余空白未及时释放的问题。\n- 修复打开历史会话时，未发送的草稿丢失的问题。\n- 修复将搜索编辑器中的选中文字加入对话时，因缺少文件位置而报错的问题。\n- 修复内置浏览器页面加载失败时被欢迎页遮挡的问题。\n- 修复部分任务信息导致专家团全景图渲染崩溃的问题。\n- 修复交互组件没有可滚动内容或已滚到边界时，外层会话无法继续滚动的问题。\n- 修复开启终端鼠标滚轮缩放字体后，缩放受滚动位置限制的问题。\n2026年11月20日'
+        },
         {
           'version': '1.41.1',
           'title': '企业设备账号管控',
@@ -260,21 +272,6 @@ window.CHANGELOG = {
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'body': '企业设备账号管控\n功能\n- 企业设备账号管控 ：企业 IT 可通过系统托管配置，限制设备仅允许登录指定企业的账号。\n- 会话内查找 ：按 Ctrl/Cmd+F 搜索当前会话，支持区分大小写、全词匹配和正则表达式，快速定位历史内容。\n优化\n- 悬停在已发送的消息上即可复制，粘贴回输入框时保留引用文件等附件标签，方便修改后重新发送。\n- 加快大仓库中通过 @ 搜索和引用文件的速度，减少等待。\n- 缩短部分模型的上下文压缩耗时，提升长对话的流畅度。\n- 优化文件上下文的使用，按需读取附件，并结合对话判断当前打开的文件是否相关。\n- 缩短网页登录成功后返回 IDE 完成认证的等待时间。\n修复\n- 修复 Windows 启动和退出时的卡顿，以及服务重新连接后历史会话无法自动恢复的问题。\n- 修复文件保存失败后 Agent 继续编辑或重试，以及 Hook 拦截后文件占用和“生成中”状态残留的问题。\n- 修复 Agent 新建后又删除的文件仍留在 Review 列表、导致审查页无法打开的问题。\n- 修复终端输出导致内存持续增长的问题，提升长时间使用的稳定性。\n- 修复企业模型与官方模型同名时选择错误的问题，并在切换模型和恢复会话时保留明确选择的企业模型。\n2026年11月13日'
-        },
-        {
-          'version': '1.40.1',
-          'title': '会话标签页新增运行状态显示',
-          'date': '2026-11-13',
-          'dateRaw': '2026年11月13日',
-          'tags': [
-            '会话运行状态直观可见',
-            '会话标签页支持快捷键切换',
-            '本地与远端插件分别安装',
-            '新增“打开浏览器”入口',
-            '企业版用量信息更完整'
-          ],
-          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '会话标签页新增运行状态显示\n功能\n会话运行状态直观可见 ：在标签页中直接查看会话运行状态，便于掌握任务进度并及时介入。\n会话标签页支持快捷键切换 ：通过快捷键左右切换会话标签页，便于快速浏览和处理多个任务。\n从 IDE 访问官网无需重复登录 ：从 IDE 打开官网相关页面时，可复用客户端登录态，减少重复认证。\n本地与远端插件分别安装 ：在 WSL/SSH 远端窗口中，插件仅安装到远端环境；在本地窗口中，插件安装到本地，避免安装位置混淆。\n新增“打开浏览器”入口 ：可在 IDE 的“更多操作”中一键打开浏览器，便捷访问外部页面。\n企业版用量信息更完整 ：用量面板新增 Enterprise 标签与额度刷新周期，便于了解当前套餐和额度刷新规则。\n优化\n- 优化失败重试时的提示与交互反馈，支持切换模型后使用新模型重试。\n- 支持在会话流中快速点击预览 .md 文件，提升 Markdown 内容的阅读体验。\n- 优化 Auto 模式下的代码搜索，减少不必要的搜索操作，提升任务执行效率。\n- 优化编辑器打开流程，减少界面卡顿，使文件打开更流畅。\n- 优化 Windows 历史会话恢复流程，缩短等待时间。\n- 完善异常重试与恢复机制，减少任务在异常后停滞的情况，提升 Agent 运行稳定性。\n- 提升配置保存与同步的可靠性，减少多窗口操作时设置被覆盖、插件开关状态丢失等问题。\n修复\n- 修复部分情况下重启后登录态与工作区信任丢失、历史会话无法恢复的问题。\n- 修复特殊环境变量导致会话面板一直显示连接中的问题。\n- 修复终端启动失败时反复自动重启的问题。\n2026年11月09日'
         }
       ]
     },
@@ -286,7 +283,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 200,
       'entries': [
         {
@@ -367,7 +364,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 17,
       'entries': [
         {
@@ -404,7 +401,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 92,
       'entries': [
         {
@@ -445,7 +442,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-27 05:47',
+      'lastOkAt': '2026-11-27 16:53',
       'entryCount': 92,
       'entries': [
         {

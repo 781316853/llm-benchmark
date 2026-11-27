@@ -5,12 +5,12 @@
 //   tools[].items[] 与 multi[] = key(译文缓存键)/text(源文本)/date/version/url;
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
-  'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 05:47',
+  'updated': '2026-11-27',
+  'refreshedAt': '2026-11-27 16:53',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3492,
-    'afterMerge': 3474,
+    'afterToolDedupe': 3494,
+    'afterMerge': 3476,
     'needsZh': 2028,
     'translated': 2028,
     'untranslated': 0
@@ -2049,7 +2049,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 335,
+      'count': 337,
       'toolCount': 12,
       'multi': [
         {
@@ -3772,6 +3772,20 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
           'items': [
             {
+              'key': '938b1da8-66',
+              'text': '移动端远程控制 ：离开电脑后，可通过 Qoder 移动端查看任务进度、处理确认请求、追加指令或停止任务，也可为 IDE 中已打开的项目新建 Agent 任务',
+              'date': '2026-11-27',
+              'version': '1.42.0',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log'
+            },
+            {
+              'key': 'ba88a4a8-71',
+              'text': '自定义会话布局 ：可通过拖拽或标签页菜单，将会话在侧栏与编辑区之间自由移动，草稿、附件、模型选择和会话状态均会保留，方便边看代码边对话，或为长会话扩大阅读区域',
+              'date': '2026-11-27',
+              'version': '1.42.0',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log'
+            },
+            {
               'key': 'b9bd8a1c-45',
               'text': '会话内查找 ：按 Ctrl/Cmd+F 搜索当前会话，支持区分大小写、全词匹配和正则表达式，快速定位历史内容',
               'date': '2026-11-20',
@@ -3821,7 +3835,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log'
             }
           ],
-          'count': 7
+          'count': 9
         },
         {
           'id': 'traecode',

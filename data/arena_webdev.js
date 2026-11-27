@@ -1,6 +1,6 @@
 // 数据源:LMArena Code Arena | WebDev(前端 Web 开发权威竞技场,Elo 评分)
 // 官方:https://arena.ai/leaderboard/code(Cloudflare 防护,直连 403);主抓源(2026-11-26 起):
-//     https://llmbenchmark.ai/benchmarks/lmarena-webdev (源页数据日期 2026-11-26)
+//     https://llmbenchmark.ai/benchmarks/lmarena-webdev (源页数据日期 2026-11-27)
 // 回退源:https://m.aitntnews.com/arena/code/(快照停在 2026-11-14,仅主源失败时兜底,不混排)
 // 说明:updated 取源页 JSON-LD 的 dateModified/temporalCoverage(榜单数据日期),不是抓取日。
 // 补充:Arena 官方公告(2026-10-19)转录 DeepSeek-V4.1-Flash-20261017 (Max) 1670 分;
@@ -11,7 +11,7 @@ window.ARENA_WEBDEV = {
   'source': 'Code Arena WebDev (LMArena)',
   'officialUrl': 'https://arena.ai/leaderboard/code',
   'url': 'https://llmbenchmark.ai/benchmarks/lmarena-webdev',
-  'updated': '2026-11-26',
+  'updated': '2026-11-27',
   'version': 'overall',
   'metric': 'Elo score',
   'desc': 'LMArena Code Arena 前端竞技场:社区匿名盲测投票,衡量模型生成可交互 Web 应用的能力,Elo 评分(0-2000 区间)。',
