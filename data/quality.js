@@ -4,7 +4,7 @@
 // 注:前端暂不展示,仅供抓取端记录与 CI 日志溯源。
 window.QUALITY = {
   'generatedAt': '2026-11-27',
-  'overallScore': 0.962,
+  'overallScore': 0.965,
   'sources': [
     {
       'id': 'aa_coding_agents',
@@ -35,6 +35,17 @@ window.QUALITY = {
       'name': 'APEX-1',
       'status': 'ok',
       'modelCount': 83,
+      'updated': '2026-11-27',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
+      'id': 'arc_agi_2',
+      'name': 'ARC-AGI-2',
+      'status': 'ok',
+      'modelCount': 148,
       'updated': '2026-11-27',
       'ageDays': 0,
       'completeness': 1,
@@ -119,6 +130,17 @@ window.QUALITY = {
       'errors': []
     },
     {
+      'id': 'critpt',
+      'name': 'CritPt',
+      'status': 'ok',
+      'modelCount': 222,
+      'updated': '2026-11-27',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'cursorbench',
       'name': 'CursorBench',
       'status': 'ok',
@@ -174,6 +196,17 @@ window.QUALITY = {
       'errors': []
     },
     {
+      'id': 'frontiermath_v2',
+      'name': 'FrontierMath v2',
+      'status': 'ok',
+      'modelCount': 74,
+      'updated': '2026-11-27',
+      'ageDays': 0,
+      'completeness': 1,
+      'fetchAttempts': 1,
+      'errors': []
+    },
+    {
       'id': 'frontierswe',
       'name': 'FrontierSWE',
       'status': 'ok',
@@ -188,7 +221,7 @@ window.QUALITY = {
       'id': 'gpqa_diamond',
       'name': 'GPQA Diamond',
       'status': 'ok',
-      'modelCount': 251,
+      'modelCount': 266,
       'updated': '2026-11-27',
       'ageDays': 0,
       'completeness': 1,
@@ -199,7 +232,7 @@ window.QUALITY = {
       'id': 'hle',
       'name': 'Humanity\'s Last Exam',
       'status': 'ok',
-      'modelCount': 282,
+      'modelCount': 296,
       'updated': '2026-11-27',
       'ageDays': 0,
       'completeness': 1,
@@ -320,7 +353,7 @@ window.QUALITY = {
       'id': 'tbench_v21',
       'name': 'Terminal-Bench 2.1',
       'status': 'ok',
-      'modelCount': 83,
+      'modelCount': 82,
       'updated': '2026-11-27',
       'ageDays': 0,
       'completeness': 1,
@@ -389,6 +422,24 @@ window.QUALITY = {
       },
       'mean': 33.7,
       'stddev': 38.11,
+      'flag': 'alert'
+    },
+    {
+      'canonId': 'Qwen3.6-Plus',
+      'name': 'qwen3-6-plus',
+      'vendor': 'Alibaba',
+      'sources': [
+        'deepswe_v10',
+        'gpqa_diamond',
+        'lastexam_v10'
+      ],
+      'scores': {
+        'deepswe_v10': 3,
+        'gpqa_diamond': 90.4,
+        'lastexam_v10': 24.6
+      },
+      'mean': 39.3,
+      'stddev': 37.17,
       'flag': 'alert'
     },
     {
@@ -1558,22 +1609,6 @@ window.QUALITY = {
       'flag': 'alert'
     },
     {
-      'canonId': 'Qwen3.6-Plus',
-      'name': 'qwen3-6-plus',
-      'vendor': 'Alibaba',
-      'sources': [
-        'deepswe_v10',
-        'lastexam_v10'
-      ],
-      'scores': {
-        'deepswe_v10': 3,
-        'lastexam_v10': 24.6
-      },
-      'mean': 13.8,
-      'stddev': 10.8,
-      'flag': 'alert'
-    },
-    {
       'canonId': 'Inkling 2 Small',
       'name': 'Inkling 2 Small',
       'vendor': 'Thinking Machines',
@@ -1813,6 +1848,14 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
+    'arc_agi_2': {
+      'rate': 1,
+      'total': 148,
+      'complete': 148,
+      'modelCount': 148,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'datalearner': {
       'rate': 1,
       'total': 30,
@@ -1871,6 +1914,14 @@ window.QUALITY = {
       },
       'flag': 'ok'
     },
+    'critpt': {
+      'rate': 1,
+      'total': 222,
+      'complete': 222,
+      'modelCount': 222,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'cursorbench': {
       'rate': 1,
       'total': 12,
@@ -1911,6 +1962,14 @@ window.QUALITY = {
       'missingFields': {},
       'flag': 'ok'
     },
+    'frontiermath_v2': {
+      'rate': 1,
+      'total': 74,
+      'complete': 74,
+      'modelCount': 74,
+      'missingFields': {},
+      'flag': 'ok'
+    },
     'frontierswe': {
       'rate': 1,
       'total': 28,
@@ -1921,17 +1980,17 @@ window.QUALITY = {
     },
     'gpqa_diamond': {
       'rate': 1,
-      'total': 251,
-      'complete': 251,
-      'modelCount': 251,
+      'total': 266,
+      'complete': 266,
+      'modelCount': 266,
       'missingFields': {},
       'flag': 'ok'
     },
     'hle': {
       'rate': 1,
-      'total': 282,
-      'complete': 282,
-      'modelCount': 282,
+      'total': 296,
+      'complete': 296,
+      'modelCount': 296,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -2021,9 +2080,9 @@ window.QUALITY = {
     },
     'tbench_v21': {
       'rate': 1,
-      'total': 83,
-      'complete': 83,
-      'modelCount': 83,
+      'total': 82,
+      'complete': 82,
+      'modelCount': 82,
       'missingFields': {},
       'flag': 'ok'
     },
@@ -2082,6 +2141,13 @@ window.QUALITY = {
       'warnAgeDays': 3,
       'alertAgeDays': 7
     },
+    'arc_agi_2': {
+      'updated': '2026-11-27',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
+    },
     'datalearner': {
       'updated': '2026-11-27',
       'ageDays': 0,
@@ -2131,6 +2197,13 @@ window.QUALITY = {
       'warnAgeDays': 3,
       'alertAgeDays': 7
     },
+    'critpt': {
+      'updated': '2026-11-27',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
+    },
     'cursorbench': {
       'updated': '2026-11-27',
       'ageDays': 0,
@@ -2165,6 +2238,13 @@ window.QUALITY = {
       'flag': 'ok',
       'warnAgeDays': 3,
       'alertAgeDays': 7
+    },
+    'frontiermath_v2': {
+      'updated': '2026-11-27',
+      'ageDays': 0,
+      'flag': 'ok',
+      'warnAgeDays': 14,
+      'alertAgeDays': 30
     },
     'frontierswe': {
       'updated': '2026-11-27',
@@ -2311,6 +2391,12 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'deepswe_v10,gpqa_diamond,lastexam_v10',
       'message': 'minimax-m2-7 跨源分数标准差 38.11(>10)'
+    },
+    {
+      'level': 'error',
+      'dimension': 'consistency',
+      'sourceId': 'deepswe_v10,gpqa_diamond,lastexam_v10',
+      'message': 'qwen3-6-plus 跨源分数标准差 37.17(>10)'
     },
     {
       'level': 'error',
@@ -2671,12 +2757,6 @@ window.QUALITY = {
       'dimension': 'consistency',
       'sourceId': 'datalearner,deepswe_v11,frontiercode_v11',
       'message': 'SWE-2 跨源分数标准差 10.84(>10)'
-    },
-    {
-      'level': 'error',
-      'dimension': 'consistency',
-      'sourceId': 'deepswe_v10,lastexam_v10',
-      'message': 'qwen3-6-plus 跨源分数标准差 10.8(>10)'
     }
   ]
 };

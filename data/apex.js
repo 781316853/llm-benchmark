@@ -11,7 +11,7 @@ window.APEX = {
   'url': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
   'officialUrl': 'https://www.mercor.com/apex/apex-v1-leaderboard/',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 16:53',
+  'refreshedAt': '2026-11-28 05:30',
   'stats': {
     'tasks': 400,
     'entries': 83

@@ -24,7 +24,7 @@ window.MODELDIAL = {
   'viewKey': 'cb956cd30088a915f1a872b06cb644ae4eac3840a23ec88e5c843209b77059ef',
   'scorePolicy': 'five-axis-b30-f15-k25-a15-m15-backend7-sql25-gorm20-claudeplus5-cube-once-half-up-20261118',
   'updated': '2026-11-26',
-  'refreshedAt': '2026-11-27 16:53',
+  'refreshedAt': '2026-11-28 05:30',
   'weights': {
     'backend': 0.3,
     'frontend': 0.15,

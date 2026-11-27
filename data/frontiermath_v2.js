@@ -13,12 +13,12 @@ window.FRONTIERMATH_V2 = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': 'v2 (Tiers 1-3)',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 18:04',
-  'dataDate': 'November 23, 2026',
+  'refreshedAt': '2026-11-28 05:30',
+  'dataDate': 'November 27, 2026',
   'scoreLabel': null,
   'stats': {
     'tasks': 285,
-    'entries': 73
+    'entries': 74
   },
   'variantNote': null,
   'desc': 'FrontierMath v2(Epoch AI):285 道私有数学题,难度覆盖奥赛以上到早期研究级,题目由专业数学家编写且不公开,题目集防止污染;评测允许模型写 Python 反复迭代求解,主指标为私有集通过率(%)。站内只收 Tiers 1-3 主榜——同基准的 Tier 4(41 题极限难度)前六名已达 95-100 分、头部饱和,单列区分度不足故不收录。',
@@ -361,6 +361,20 @@ window.FRONTIERMATH_V2 = {
     },
     {
       'rank': 25,
+      'model': 'Qwen4 Max',
+      'org': 'Alibaba',
+      'score': 78.596,
+      'effort': null,
+      'harness': null,
+      'context': '1M',
+      'license': 'Proprietary',
+      'src': 'benchlm',
+      'confidence': 1,
+      'protocol': '未标注',
+      'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
+    },
+    {
+      'rank': 26,
       'model': 'Claude Haiku 5.5',
       'org': 'Anthropic',
       'score': 75.088,
@@ -374,7 +388,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'Qwen3.8 Max',
       'org': 'Alibaba',
       'score': 74.737,
@@ -388,7 +402,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 27,
+      'rank': 28,
       'model': 'Muse Spark 1.3',
       'org': 'Meta',
       'score': 74.035,
@@ -402,7 +416,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 28,
+      'rank': 29,
       'model': 'Gemini 3.7 Flash',
       'org': 'Google',
       'score': 71.579,
@@ -416,7 +430,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'Claude Opus 4.7',
       'org': 'Anthropic',
       'score': 70.175,
@@ -430,7 +444,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 30,
+      'rank': 31,
       'model': 'GLM-5.3',
       'org': 'Z.AI',
       'score': 68.772,
@@ -444,7 +458,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 31,
+      'rank': 32,
       'model': 'Gemini 3.8 Flash',
       'org': 'Google',
       'score': 68.421,
@@ -458,7 +472,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 32,
+      'rank': 33,
       'model': 'GPT-5.2',
       'org': 'OpenAI',
       'score': 67.4,
@@ -472,7 +486,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 33,
+      'rank': 34,
       'model': 'DeepSeek V4.1 Flash 1017',
       'org': 'DeepSeek',
       'score': 67.368,
@@ -486,7 +500,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 34,
+      'rank': 35,
       'model': 'Claude Opus 4.6',
       'org': 'Anthropic',
       'score': 65.965,
@@ -500,7 +514,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 35,
+      'rank': 36,
       'model': 'Grok 4.6',
       'org': 'xAI',
       'score': 65.965,
@@ -514,7 +528,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 36,
+      'rank': 37,
       'model': 'Claude Sonnet 5',
       'org': 'Anthropic',
       'score': 65.614,
@@ -528,7 +542,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 37,
+      'rank': 38,
       'model': 'Qwen3.7 Max',
       'org': 'Alibaba',
       'score': 64.561,
@@ -542,7 +556,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 38,
+      'rank': 39,
       'model': 'DeepSeek V4 Pro',
       'org': 'DeepSeek',
       'score': 64.561,
@@ -556,7 +570,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 39,
+      'rank': 40,
       'model': 'Gemini 3.5 Flash',
       'org': 'Google',
       'score': 62.807,
@@ -570,7 +584,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 40,
+      'rank': 41,
       'model': 'Gemini 3.1 Pro',
       'org': 'Google',
       'score': 59.649,
@@ -584,7 +598,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 41,
+      'rank': 42,
       'model': 'GLM-5.2',
       'org': 'Z.AI',
       'score': 59.206,
@@ -598,7 +612,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 42,
+      'rank': 43,
       'model': 'Gemini 3.6 Flash',
       'org': 'Google',
       'score': 58.947,
@@ -612,7 +626,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 43,
+      'rank': 44,
       'model': 'Kimi K2.6',
       'org': 'Moonshot AI',
       'score': 57.193,
@@ -626,7 +640,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 44,
+      'rank': 45,
       'model': 'Grok 4.5',
       'org': 'xAI',
       'score': 57.193,
@@ -640,7 +654,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 45,
+      'rank': 46,
       'model': 'GLM-5.3-Flash',
       'org': 'Z.AI',
       'score': 55.789,
@@ -654,7 +668,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 46,
+      'rank': 47,
       'model': 'Kimi K2.7 Code',
       'org': 'Moonshot AI',
       'score': 54.035,
@@ -668,7 +682,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 47,
+      'rank': 48,
       'model': 'Grok 4.7',
       'org': 'xAI',
       'score': 52.982,
@@ -682,7 +696,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 48,
+      'rank': 49,
       'model': 'Gemini 3 Flash',
       'org': 'Google',
       'score': 51.228,
@@ -696,7 +710,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 49,
+      'rank': 50,
       'model': 'GPT-5.4 mini',
       'org': 'OpenAI',
       'score': 51.228,
@@ -710,7 +724,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'GPT-5 mini',
       'org': 'OpenAI',
       'score': 46.667,
@@ -724,7 +738,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 51,
+      'rank': 52,
       'model': 'Inkling-Small',
       'org': 'Thinking Machines Lab',
       'score': 46.316,
@@ -738,7 +752,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'GPT-5.4 nano',
       'org': 'OpenAI',
       'score': 44.912,
@@ -752,7 +766,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 53,
+      'rank': 54,
       'model': 'Grok 4.3',
       'org': 'xAI',
       'score': 42.807,
@@ -766,7 +780,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 54,
+      'rank': 55,
       'model': 'Qwen3.6 Plus',
       'org': 'Alibaba',
       'score': 38.246,
@@ -780,7 +794,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 55,
+      'rank': 56,
       'model': 'GLM-5.1',
       'org': 'Z.AI',
       'score': 36.842,
@@ -794,7 +808,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 56,
+      'rank': 57,
       'model': 'o4-mini',
       'org': 'OpenAI',
       'score': 36.14,
@@ -808,7 +822,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 57,
+      'rank': 58,
       'model': 'Qwen3.6-27B',
       'org': 'Alibaba',
       'score': 35.088,
@@ -822,7 +836,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 58,
+      'rank': 59,
       'model': 'Qwen3.7 Plus',
       'org': 'Alibaba',
       'score': 34.386,
@@ -836,7 +850,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 59,
+      'rank': 60,
       'model': 'Claude Opus 4.5',
       'org': 'Anthropic',
       'score': 34.386,
@@ -850,7 +864,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 60,
+      'rank': 61,
       'model': 'o3',
       'org': 'OpenAI',
       'score': 33.333,
@@ -864,7 +878,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 61,
+      'rank': 62,
       'model': 'Inkling',
       'org': 'Thinking Machines Lab',
       'score': 33.333,
@@ -878,7 +892,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 62,
+      'rank': 63,
       'model': 'Gemini 3.1 Flash-Lite',
       'org': 'Google',
       'score': 27.719,
@@ -892,7 +906,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 63,
+      'rank': 64,
       'model': 'Gemini 3.5 Flash-Lite',
       'org': 'Google',
       'score': 25.965,
@@ -906,7 +920,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 64,
+      'rank': 65,
       'model': 'Gemini 2.5 Pro',
       'org': 'Google',
       'score': 24.561,
@@ -920,7 +934,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 65,
+      'rank': 66,
       'model': 'Claude Sonnet 4.5',
       'org': 'Anthropic',
       'score': 23.86,
@@ -934,7 +948,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 66,
+      'rank': 67,
       'model': 'Qwen3.6-35B-A3B',
       'org': 'Alibaba',
       'score': 20.351,
@@ -948,7 +962,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 67,
+      'rank': 68,
       'model': 'GPT-5 nano',
       'org': 'OpenAI',
       'score': 20,
@@ -962,7 +976,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 68,
+      'rank': 69,
       'model': 'Qwen3.7 Flash',
       'org': 'Alibaba',
       'score': 19.298,
@@ -976,7 +990,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 69,
+      'rank': 70,
       'model': 'Qwen3.5 Flash',
       'org': 'Alibaba',
       'score': 18.246,
@@ -990,7 +1004,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 70,
+      'rank': 71,
       'model': 'o1',
       'org': 'OpenAI',
       'score': 14.737,
@@ -1004,7 +1018,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 71,
+      'rank': 72,
       'model': 'GPT-4.1 mini',
       'org': 'OpenAI',
       'score': 6.667,
@@ -1018,7 +1032,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 72,
+      'rank': 73,
       'model': 'GPT-4.1',
       'org': 'OpenAI',
       'score': 5.965,
@@ -1032,7 +1046,7 @@ window.FRONTIERMATH_V2 = {
       'protocolNote': '源站未逐行标注 harness(基准允许 Python)'
     },
     {
-      'rank': 73,
+      'rank': 74,
       'model': 'GPT-4o',
       'org': 'OpenAI',
       'score': 0.351,

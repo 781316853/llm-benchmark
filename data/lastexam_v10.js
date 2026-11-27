@@ -8,7 +8,7 @@ window.LASTEXAM_V10 = {
   'officialUrl': 'https://agents-last-exam.org/leaderboard',
   'version': 'v1.0',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 16:53',
+  'refreshedAt': '2026-11-28 05:30',
   'stats': {
     'tasks': 152,
     'entries': 45

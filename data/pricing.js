@@ -19,7 +19,7 @@ window.PRICING = {
   'supplementUrl': 'https://models.dev/api.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 16:53',
+  'refreshedAt': '2026-11-28 05:30',
   'usdToCnyRate': 6.8,
   'workload': {
     'cacheHitRate': 0.95,
@@ -854,7 +854,7 @@ window.PRICING = {
       'priceSource': 'codingplan.fyi'
     },
     {
-      'id': 'GPT-Oss-20b',
+      'id': 'GPT-OSS 20B',
       'slug': 'gpt-oss-20b',
       'inputCnyPerM': 0.476,
       'cacheCnyPerM': 0.238,

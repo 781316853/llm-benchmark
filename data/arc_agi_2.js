@@ -13,12 +13,12 @@ window.ARC_AGI_2 = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': 'ARC-AGI-2',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 18:04',
-  'dataDate': 'Captured 2026-11-23',
+  'refreshedAt': '2026-11-28 05:30',
+  'dataDate': 'Captured 2026-11-27',
   'scoreLabel': 'Semi-Private score',
   'stats': {
     'tasks': 120,
-    'entries': 147
+    'entries': 148
   },
   'variantNote': 'ARC-AGI-1, ARC-AGI-2, and the interactive ARC-AGI-3 track are different tests. Match the evaluation split and attempt rule within ARC-AGI-2 before treating a score gap as a model difference.',
   'desc': 'ARC-AGI-2:ARC Prize 的第二代抽象与推理基准,半私有集 120 个网格变换谜题——每题只给若干组「输入网格→输出网格」示例,模型须自行归纳变换规则并套用到新网格,考察的是样本内规则归纳而非知识检索。本表统一取半私有集口径、每个模型取最优推理档位;⚠️ 它与 ARC-AGI-1(同源另一列,头部已饱和)和 ARC-AGI-3(交互式游戏环境)是不同测试,题集与评分规则都不同,分数不可直接比较。源站按推理档位分行,表中 effort 标注该模型取得最高分时所用档位。源站口径原文:ARC-AGI-1, ARC-AGI-2, and the interactive ARC-AGI-3 track are different tests. Match the evaluation split and attempt rule within ARC-AGI-2 before treating a score gap as a model difference.',
@@ -105,6 +105,22 @@ window.ARC_AGI_2 = {
     },
     {
       'rank': 6,
+      'model': 'Gemini 4 Neon',
+      'org': 'Google',
+      'score': 93.75,
+      'effort': 'low',
+      'harness': 'Semi-Private evaluation',
+      'context': null,
+      'license': null,
+      'src': 'benchlm',
+      'confidence': 0,
+      'srcLabel': 'Gemini 4 Neon (Low)',
+      'srcUrl': 'https://arcprize.org/results/google-gemini-4-neon',
+      'protocol': '未标注',
+      'protocolNote': 'Semi-Private evaluation · low reasoning'
+    },
+    {
+      'rank': 7,
       'model': 'Claude Opus 5.5',
       'org': 'Anthropic',
       'score': 93.333333,
@@ -120,7 +136,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 7,
+      'rank': 8,
       'model': 'Gemini 4 Hydrogen',
       'org': 'Google',
       'score': 92.5,
@@ -136,7 +152,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 8,
+      'rank': 9,
       'model': 'GPT-5.6 Sol',
       'org': 'OpenAI',
       'score': 92.5,
@@ -152,7 +168,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 9,
+      'rank': 10,
       'model': 'Gemini 4 Argon',
       'org': 'Google',
       'score': 91.25,
@@ -168,7 +184,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 10,
+      'rank': 11,
       'model': 'Claude Opus 5',
       'org': 'Anthropic',
       'score': 90.42,
@@ -184,7 +200,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 11,
+      'rank': 12,
       'model': 'Claude Fable 5.1',
       'org': 'Anthropic',
       'score': 90,
@@ -200,7 +216,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 12,
+      'rank': 13,
       'model': 'GPT-6 Sol',
       'org': 'OpenAI',
       'score': 89.583333,
@@ -216,7 +232,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 13,
+      'rank': 14,
       'model': 'Claude Fable 5',
       'org': 'Anthropic',
       'score': 89.166667,
@@ -232,7 +248,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 14,
+      'rank': 15,
       'model': 'Gemini 3.8 Flash',
       'org': 'Google',
       'score': 89.166667,
@@ -248,7 +264,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 15,
+      'rank': 16,
       'model': 'GPT-6.2 Sol',
       'org': 'OpenAI',
       'score': 85.833333,
@@ -264,7 +280,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 16,
+      'rank': 17,
       'model': 'GPT-5.5',
       'org': 'OpenAI',
       'score': 85,
@@ -280,7 +296,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 17,
+      'rank': 18,
       'model': 'Gemini 3.7 Flash',
       'org': 'Google',
       'score': 84.583333,
@@ -296,7 +312,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 18,
+      'rank': 19,
       'model': 'Gemini 3 Deep Think (2/26)',
       'org': 'Google',
       'score': 84.58,
@@ -312,7 +328,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 19,
+      'rank': 20,
       'model': 'GPT-5.5 Pro',
       'org': 'OpenAI',
       'score': 84.58,
@@ -328,7 +344,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 20,
+      'rank': 21,
       'model': 'Claude Sonnet 5.5',
       'org': 'Anthropic',
       'score': 83.888889,
@@ -344,7 +360,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 21,
+      'rank': 22,
       'model': 'GPT-5.4 Pro',
       'org': 'OpenAI',
       'score': 83.33,
@@ -360,7 +376,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 22,
+      'rank': 23,
       'model': 'GPT-5.6 Terra',
       'org': 'OpenAI',
       'score': 82.5,
@@ -376,7 +392,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 23,
+      'rank': 24,
       'model': 'Inkling 2 Small',
       'org': 'Thinking Machines Lab',
       'score': 81.666667,
@@ -392,7 +408,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 24,
+      'rank': 25,
       'model': 'DeepSeek V4.1 Flash 1017',
       'org': 'DeepSeek',
       'score': 78.055556,
@@ -408,7 +424,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 25,
+      'rank': 26,
       'model': 'Gemini 3.1 Pro (Preview)',
       'org': 'Google',
       'score': 77.08,
@@ -424,7 +440,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 26,
+      'rank': 27,
       'model': 'Dots3-Note Preview',
       'org': 'Dots Studio',
       'score': 76.805556,
@@ -440,7 +456,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 27,
+      'rank': 28,
       'model': 'Claude 4.7',
       'org': 'Anthropic',
       'score': 75.83,
@@ -456,7 +472,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 28,
+      'rank': 29,
       'model': 'GPT-5.4',
       'org': 'OpenAI',
       'score': 73.95,
@@ -472,7 +488,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 29,
+      'rank': 30,
       'model': 'DeepSeek V4.1 Flash',
       'org': 'DeepSeek',
       'score': 72.916667,
@@ -488,7 +504,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 30,
+      'rank': 31,
       'model': 'GPT-5.2 (Refinement)',
       'org': 'Johan Land',
       'score': 72.9,
@@ -504,7 +520,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 31,
+      'rank': 32,
       'model': 'Claude Opus 4.8',
       'org': 'Anthropic',
       'score': 72.08,
@@ -520,7 +536,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 32,
+      'rank': 33,
       'model': 'Gemini 3.5 Flash',
       'org': 'Google',
       'score': 72.08,
@@ -536,7 +552,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 33,
+      'rank': 34,
       'model': 'Claude Opus 4.6 (120K, High)',
       'org': 'Anthropic',
       'score': 69.17,
@@ -552,7 +568,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 34,
+      'rank': 35,
       'model': 'Claude Opus 4.6 (120K, Max)',
       'org': 'Anthropic',
       'score': 68.75,
@@ -568,7 +584,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 35,
+      'rank': 36,
       'model': 'Grok 4.6',
       'org': 'xAI',
       'score': 67.083333,
@@ -584,7 +600,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 36,
+      'rank': 37,
       'model': 'Claude Opus 4.6 (120K, Medium)',
       'org': 'Anthropic',
       'score': 66.25,
@@ -600,7 +616,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 37,
+      'rank': 38,
       'model': 'GLM-5.3-Flash',
       'org': 'Z.ai',
       'score': 65.833333,
@@ -616,7 +632,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 38,
+      'rank': 39,
       'model': 'Grok 4.20 (Reasoning)',
       'org': 'xAI',
       'score': 65.14,
@@ -632,7 +648,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 39,
+      'rank': 40,
       'model': 'Claude Opus 4.6 (120K, Low)',
       'org': 'Anthropic',
       'score': 64.58,
@@ -648,7 +664,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 40,
+      'rank': 41,
       'model': 'Mercury 3 Preview',
       'org': 'Inception',
       'score': 61.805556,
@@ -664,7 +680,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 41,
+      'rank': 42,
       'model': 'DeepSeek V4 Flash 0731',
       'org': 'DeepSeek',
       'score': 61.388889,
@@ -680,7 +696,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 42,
+      'rank': 43,
       'model': 'Grok 4.7',
       'org': 'xAI',
       'score': 61.388889,
@@ -696,7 +712,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 43,
+      'rank': 44,
       'model': 'Claude Haiku 5.5',
       'org': 'Anthropic',
       'score': 61.25,
@@ -712,7 +728,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 44,
+      'rank': 45,
       'model': 'DeepSeek V4 Pro 0813',
       'org': 'DeepSeek',
       'score': 61.25,
@@ -728,7 +744,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 45,
+      'rank': 46,
       'model': 'Claude Sonnet 4.6',
       'org': 'Anthropic',
       'score': 60.42,
@@ -744,7 +760,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 46,
+      'rank': 47,
       'model': 'Gemini 3.6 Flash',
       'org': 'Google',
       'score': 60.416667,
@@ -760,7 +776,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 47,
+      'rank': 48,
       'model': 'Kimi K3',
       'org': 'Moonshot AI',
       'score': 60.416667,
@@ -776,7 +792,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 48,
+      'rank': 49,
       'model': 'GPT-5.6 Luna 2026-07-30',
       'org': 'OpenAI',
       'score': 59.583333,
@@ -792,7 +808,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 49,
+      'rank': 50,
       'model': 'GPT-5.6 Luna',
       'org': 'OpenAI',
       'score': 59.54,
@@ -808,7 +824,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 50,
+      'rank': 51,
       'model': 'GPT-6 Luna',
       'org': 'OpenAI',
       'score': 59.305556,
@@ -824,7 +840,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · max reasoning'
     },
     {
-      'rank': 51,
+      'rank': 52,
       'model': 'Muse Spark Open',
       'org': 'Meta AI',
       'score': 57.5,
@@ -840,7 +856,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 52,
+      'rank': 53,
       'model': 'GPT-5.2 Pro',
       'org': 'OpenAI',
       'score': 54.16,
@@ -856,7 +872,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 53,
+      'rank': 54,
       'model': 'Gemini 3 Pro (Refinement)',
       'org': 'Poetiq',
       'score': 54,
@@ -872,7 +888,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 54,
+      'rank': 55,
       'model': 'GPT-5.2',
       'org': 'OpenAI',
       'score': 52.91,
@@ -888,7 +904,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 55,
+      'rank': 56,
       'model': 'Grok 4.5',
       'org': 'xAI',
       'score': 52.64,
@@ -904,7 +920,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 56,
+      'rank': 57,
       'model': 'Inkling 2 Mini',
       'org': 'Thinking Machines',
       'score': 49.305556,
@@ -920,7 +936,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 57,
+      'rank': 58,
       'model': 'Gemini 3 Deep Think (Preview) ²',
       'org': 'Google',
       'score': 45.14,
@@ -936,7 +952,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 58,
+      'rank': 59,
       'model': 'Qwen3.8-27B',
       'org': 'Alibaba',
       'score': 42.361111,
@@ -952,7 +968,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 59,
+      'rank': 60,
       'model': 'Inkling Small',
       'org': 'Thinking Machines Lab',
       'score': 40.138889,
@@ -968,7 +984,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 60,
+      'rank': 61,
       'model': 'Opus 4.5 (Thinking, 64K)',
       'org': 'Anthropic',
       'score': 37.64,
@@ -984,7 +1000,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 61,
+      'rank': 62,
       'model': 'Inkling',
       'org': 'Thinking Machines',
       'score': 36.527778,
@@ -1000,7 +1016,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 62,
+      'rank': 63,
       'model': 'Gemini 3 Flash Preview',
       'org': 'Google',
       'score': 33.61,
@@ -1016,7 +1032,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 63,
+      'rank': 64,
       'model': 'Gemini 3 Pro',
       'org': 'Google',
       'score': 31.11,
@@ -1032,7 +1048,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 64,
+      'rank': 65,
       'model': 'Grok 4 (Refinement)',
       'org': 'J. Berman',
       'score': 29.44,
@@ -1048,7 +1064,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 65,
+      'rank': 66,
       'model': 'NVARC',
       'org': 'ARC Prize 2025',
       'score': 27.64,
@@ -1064,7 +1080,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 66,
+      'rank': 67,
       'model': 'Beam 1.0',
       'org': 'Reflection',
       'score': 23.472222,
@@ -1080,7 +1096,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 67,
+      'rank': 68,
       'model': 'Opus 4.5 (Thinking, 16K)',
       'org': 'Anthropic',
       'score': 22.78,
@@ -1096,7 +1112,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 68,
+      'rank': 69,
       'model': 'GLM-5.2',
       'org': 'Z.ai',
       'score': 22.775,
@@ -1112,7 +1128,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 69,
+      'rank': 70,
       'model': 'GPT-5.4 Mini',
       'org': 'OpenAI',
       'score': 18.9,
@@ -1128,7 +1144,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 70,
+      'rank': 71,
       'model': 'GPT-5 Pro',
       'org': 'OpenAI',
       'score': 18.33,
@@ -1144,7 +1160,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 71,
+      'rank': 72,
       'model': 'GPT-5.1 (Thinking, High)',
       'org': 'OpenAI',
       'score': 17.64,
@@ -1160,7 +1176,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 72,
+      'rank': 73,
       'model': 'Grok 4 (Thinking)',
       'org': 'xAI',
       'score': 15.975,
@@ -1176,7 +1192,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 73,
+      'rank': 74,
       'model': 'Opus 4.5 (Thinking, 8K)',
       'org': 'Anthropic',
       'score': 13.89,
@@ -1192,7 +1208,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 74,
+      'rank': 75,
       'model': 'Claude Sonnet 4.5 (Thinking 32K)',
       'org': 'Anthropic',
       'score': 13.61,
@@ -1208,7 +1224,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 75,
+      'rank': 76,
       'model': 'Kimi K2.5',
       'org': 'Moonshot AI',
       'score': 11.81,
@@ -1224,7 +1240,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 76,
+      'rank': 77,
       'model': 'Gemini 3.5 Flash-Lite',
       'org': 'Google',
       'score': 10.277778,
@@ -1240,7 +1256,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 77,
+      'rank': 78,
       'model': 'GPT-5',
       'org': 'OpenAI',
       'score': 9.86,
@@ -1256,7 +1272,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 78,
+      'rank': 79,
       'model': 'Claude Opus 4 (Thinking 16K)',
       'org': 'Anthropic',
       'score': 8.61,
@@ -1272,7 +1288,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 79,
+      'rank': 80,
       'model': 'Opus 4.5 (Thinking, None)',
       'org': 'Anthropic',
       'score': 7.78,
@@ -1288,7 +1304,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 80,
+      'rank': 81,
       'model': 'Claude Sonnet 4.5 (Thinking 16K)',
       'org': 'Anthropic',
       'score': 6.94,
@@ -1304,7 +1320,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 81,
+      'rank': 82,
       'model': 'Claude Sonnet 4.5 (Thinking 8K)',
       'org': 'Anthropic',
       'score': 6.94,
@@ -1320,7 +1336,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 82,
+      'rank': 83,
       'model': 'GPT-5.1 (Thinking, Medium)',
       'org': 'OpenAI',
       'score': 6.53,
@@ -1336,7 +1352,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 83,
+      'rank': 84,
       'model': 'o3',
       'org': 'OpenAI',
       'score': 6.53,
@@ -1352,7 +1368,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 84,
+      'rank': 85,
       'model': 'Tiny Recursion Model (TRM)',
       'org': 'Bespoke',
       'score': 6.25,
@@ -1368,7 +1384,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 85,
+      'rank': 86,
       'model': 'o4-mini',
       'org': 'OpenAI',
       'score': 6.11,
@@ -1384,7 +1400,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 86,
+      'rank': 87,
       'model': 'Claude Sonnet 4 (Thinking 16K)',
       'org': 'Anthropic',
       'score': 5.93,
@@ -1400,7 +1416,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 87,
+      'rank': 88,
       'model': 'Claude Sonnet 4.5 (Thinking 1K)',
       'org': 'Anthropic',
       'score': 5.83,
@@ -1416,7 +1432,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 88,
+      'rank': 89,
       'model': 'GPT-5.4 Nano',
       'org': 'OpenAI',
       'score': 5.69,
@@ -1432,7 +1448,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · xhigh reasoning'
     },
     {
-      'rank': 89,
+      'rank': 90,
       'model': 'Grok 4 (Fast Reasoning)',
       'org': 'xAI',
       'score': 5.28,
@@ -1448,7 +1464,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 90,
+      'rank': 91,
       'model': 'Gemini 2.5 Pro (Thinking 32K)',
       'org': 'Google',
       'score': 4.86,
@@ -1464,7 +1480,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 91,
+      'rank': 92,
       'model': 'GLM-5',
       'org': 'Z.ai',
       'score': 4.86,
@@ -1480,7 +1496,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 92,
+      'rank': 93,
       'model': 'Minimax M2.5',
       'org': 'Minimax',
       'score': 4.86,
@@ -1496,7 +1512,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 93,
+      'rank': 94,
       'model': 'o3-Pro',
       'org': 'OpenAI',
       'score': 4.86,
@@ -1512,7 +1528,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 94,
+      'rank': 95,
       'model': 'Claude Opus 4 (Thinking 8K)',
       'org': 'Anthropic',
       'score': 4.52,
@@ -1528,7 +1544,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 95,
+      'rank': 96,
       'model': 'GPT-5 Mini',
       'org': 'OpenAI',
       'score': 4.44,
@@ -1544,7 +1560,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 96,
+      'rank': 97,
       'model': 'Claude Haiku 4.5 (Thinking 32K)',
       'org': 'Anthropic',
       'score': 4.03,
@@ -1560,7 +1576,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 97,
+      'rank': 98,
       'model': 'Deepseek V3.2',
       'org': 'DeepSeek',
       'score': 4.03,
@@ -1576,7 +1592,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 98,
+      'rank': 99,
       'model': 'Gemini 2.5 Pro (Thinking 16K)',
       'org': 'Google',
       'score': 4.03,
@@ -1592,7 +1608,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 99,
+      'rank': 100,
       'model': 'Claude Sonnet 4.5',
       'org': 'Anthropic',
       'score': 3.75,
@@ -1608,7 +1624,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 100,
+      'rank': 101,
       'model': 'Gemini 2.5 Pro (Thinking 8K)',
       'org': 'Google',
       'score': 2.92,
@@ -1624,7 +1640,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 101,
+      'rank': 102,
       'model': 'Claude Haiku 4.5 (Thinking 16K)',
       'org': 'Anthropic',
       'score': 2.78,
@@ -1640,7 +1656,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 102,
+      'rank': 103,
       'model': 'GPT-5 Nano',
       'org': 'OpenAI',
       'score': 2.61,
@@ -1656,7 +1672,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · high reasoning'
     },
     {
-      'rank': 103,
+      'rank': 104,
       'model': 'Gemini 2.5 Flash (Preview) (Thinking 24K)',
       'org': 'Google',
       'score': 2.54,
@@ -1672,7 +1688,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 104,
+      'rank': 105,
       'model': 'ARChitects',
       'org': 'ARC Prize 2024',
       'score': 2.5,
@@ -1688,7 +1704,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 105,
+      'rank': 106,
       'model': 'Gemini 2.5 Flash (Preview) (Thinking 1K)',
       'org': 'Google',
       'score': 2.16,
@@ -1704,7 +1720,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 106,
+      'rank': 107,
       'model': 'Claude Sonnet 4 (Thinking 8K)',
       'org': 'Anthropic',
       'score': 2.12,
@@ -1720,7 +1736,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 107,
+      'rank': 108,
       'model': 'Gemini 2.5 Flash (Preview) (Thinking 8K)',
       'org': 'Google',
       'score': 2.12,
@@ -1736,7 +1752,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 108,
+      'rank': 109,
       'model': 'o3-mini',
       'org': 'OpenAI',
       'score': 2.08,
@@ -1752,7 +1768,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · medium reasoning'
     },
     {
-      'rank': 109,
+      'rank': 110,
       'model': 'Gemini 2.5 Flash (Preview) (Thinking 16K)',
       'org': 'Google',
       'score': 1.98,
@@ -1768,7 +1784,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 110,
+      'rank': 111,
       'model': 'Nemotron 3.5 Super VL',
       'org': 'NVIDIA',
       'score': 1.944444,
@@ -1784,7 +1800,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · medium reasoning'
     },
     {
-      'rank': 111,
+      'rank': 112,
       'model': 'GPT-5.1 (Thinking, Low)',
       'org': 'OpenAI',
       'score': 1.94,
@@ -1800,7 +1816,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 112,
+      'rank': 113,
       'model': 'Gemini 2.5 Flash (Preview)',
       'org': 'Google',
       'score': 1.69,
@@ -1816,7 +1832,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 113,
+      'rank': 114,
       'model': 'Claude Haiku 4.5 (Thinking 8K)',
       'org': 'Anthropic',
       'score': 1.67,
@@ -1832,7 +1848,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 114,
+      'rank': 115,
       'model': 'Icecuber',
       'org': 'ARC Prize 2024',
       'score': 1.6,
@@ -1848,7 +1864,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 115,
+      'rank': 116,
       'model': 'Deepseek R1',
       'org': 'DeepSeek',
       'score': 1.3,
@@ -1864,7 +1880,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 116,
+      'rank': 117,
       'model': 'Gemini 2.0 Flash',
       'org': 'Google',
       'score': 1.3,
@@ -1880,7 +1896,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 117,
+      'rank': 118,
       'model': 'Claude Opus 4',
       'org': 'Anthropic',
       'score': 1.27,
@@ -1896,7 +1912,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 118,
+      'rank': 119,
       'model': 'Claude Sonnet 4',
       'org': 'Anthropic',
       'score': 1.27,
@@ -1912,7 +1928,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 119,
+      'rank': 120,
       'model': 'Codex Mini (Latest)',
       'org': 'OpenAI',
       'score': 1.27,
@@ -1928,7 +1944,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 120,
+      'rank': 121,
       'model': 'Claude Haiku 4.5',
       'org': 'Anthropic',
       'score': 1.25,
@@ -1944,7 +1960,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 121,
+      'rank': 122,
       'model': 'Claude Haiku 4.5 (Thinking 1K)',
       'org': 'Anthropic',
       'score': 1.25,
@@ -1960,7 +1976,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 122,
+      'rank': 123,
       'model': 'Mercury 3 Preview (Instant)',
       'org': 'Inception',
       'score': 1.25,
@@ -1976,7 +1992,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 123,
+      'rank': 124,
       'model': 'Qwen3-235b-a22b Instruct (25/07)',
       'org': 'Alibaba',
       'score': 1.25,
@@ -1992,7 +2008,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 124,
+      'rank': 125,
       'model': 'Deepseek R1 (05/28)',
       'org': 'DeepSeek',
       'score': 1.12,
@@ -2008,7 +2024,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 125,
+      'rank': 126,
       'model': 'Claude 3.7 (8K)',
       'org': 'Anthropic',
       'score': 0.9,
@@ -2024,7 +2040,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 126,
+      'rank': 127,
       'model': 'Claude Sonnet 4 (Thinking 1K)',
       'org': 'Anthropic',
       'score': 0.85,
@@ -2040,7 +2056,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 127,
+      'rank': 128,
       'model': 'o1-mini',
       'org': 'OpenAI',
       'score': 0.83,
@@ -2056,7 +2072,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 128,
+      'rank': 129,
       'model': 'Gemini 1.5 Pro',
       'org': 'Google',
       'score': 0.8,
@@ -2072,7 +2088,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 129,
+      'rank': 130,
       'model': 'GPT-4.5',
       'org': 'OpenAI',
       'score': 0.8,
@@ -2088,7 +2104,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 130,
+      'rank': 131,
       'model': 'Claude 3.7 (16K)',
       'org': 'Anthropic',
       'score': 0.7,
@@ -2104,7 +2120,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 131,
+      'rank': 132,
       'model': 'GPT-4.1',
       'org': 'OpenAI',
       'score': 0.42,
@@ -2120,7 +2136,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 132,
+      'rank': 133,
       'model': 'GPT-5.1 (Thinking, None)',
       'org': 'OpenAI',
       'score': 0.42,
@@ -2136,7 +2152,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 133,
+      'rank': 134,
       'model': 'Grok 3 Mini',
       'org': 'xAI',
       'score': 0.42,
@@ -2152,7 +2168,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation · low reasoning'
     },
     {
-      'rank': 134,
+      'rank': 135,
       'model': 'Claude 3.7 (1K)',
       'org': 'Anthropic',
       'score': 0.4,
@@ -2168,7 +2184,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 135,
+      'rank': 136,
       'model': 'Claude 3.7',
       'org': 'Anthropic',
       'score': 0,
@@ -2184,7 +2200,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 136,
+      'rank': 137,
       'model': 'Claude Opus 4 (Thinking 1K)',
       'org': 'Anthropic',
       'score': 0,
@@ -2200,7 +2216,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 137,
+      'rank': 138,
       'model': 'Gemini 2.5 Pro (Thinking 1K)',
       'org': 'Google',
       'score': 0,
@@ -2216,7 +2232,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 138,
+      'rank': 139,
       'model': 'GPT-4.1-Mini',
       'org': 'OpenAI',
       'score': 0,
@@ -2232,7 +2248,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 139,
+      'rank': 140,
       'model': 'GPT-4.1-Nano',
       'org': 'OpenAI',
       'score': 0,
@@ -2248,7 +2264,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 140,
+      'rank': 141,
       'model': 'GPT-4o',
       'org': 'OpenAI',
       'score': 0,
@@ -2264,7 +2280,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 141,
+      'rank': 142,
       'model': 'GPT-4o-mini',
       'org': 'OpenAI',
       'score': 0,
@@ -2280,7 +2296,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 142,
+      'rank': 143,
       'model': 'Grok 3',
       'org': 'xAI',
       'score': 0,
@@ -2296,7 +2312,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 143,
+      'rank': 144,
       'model': 'Llama 4 Maverick',
       'org': 'Meta',
       'score': 0,
@@ -2312,7 +2328,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 144,
+      'rank': 145,
       'model': 'Llama 4 Scout',
       'org': 'Meta',
       'score': 0,
@@ -2328,7 +2344,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 145,
+      'rank': 146,
       'model': 'Magistral Medium',
       'org': 'Mistral',
       'score': 0,
@@ -2344,7 +2360,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 146,
+      'rank': 147,
       'model': 'Magistral Medium (Thinking)',
       'org': 'Mistral',
       'score': 0,
@@ -2360,7 +2376,7 @@ window.ARC_AGI_2 = {
       'protocolNote': 'Semi-Private evaluation'
     },
     {
-      'rank': 147,
+      'rank': 148,
       'model': 'Magistral Small',
       'org': 'Mistral',
       'score': 0,

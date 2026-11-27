@@ -17,7 +17,7 @@ window.AICODINGDAILY = {
   },
   'updated': '',
   'refreshNote': '源站按周更新',
-  'refreshedAt': '2026-11-27 16:53',
+  'refreshedAt': '2026-11-28 05:30',
   'stats': {
     'entries': 69,
     'models': 44
@@ -189,7 +189,7 @@ window.AICODINGDAILY = {
       'model': 'Gemini 4 Hydrogen',
       'effort': 'High',
       'score': 78.01,
-      'costUsd': 9,
+      'costUsd': 8,
       'timeSec': 222,
       'timeStr': '03:42',
       'harness': 'Antigravity',
@@ -1020,7 +1020,7 @@ window.AICODINGDAILY = {
       'model': 'Gemini 4 Hydrogen',
       'effort': 'High',
       'score': 78.01,
-      'costUsd': 9,
+      'costUsd': 8,
       'timeSec': 222,
       'timeStr': '03:42',
       'harness': 'Antigravity',

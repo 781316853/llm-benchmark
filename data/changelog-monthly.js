@@ -6,11 +6,11 @@
 //   multi[].sources[]=同月宣布同一功能的各工具(含各自 url);zh{} = key -> 中文译文(缺失时前端显示源文本并标「原文」)
 window.CHANGELOG_MONTHLY = {
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 16:53',
+  'refreshedAt': '2026-11-28 05:30',
   'stats': {
     'months': 21,
-    'afterToolDedupe': 3494,
-    'afterMerge': 3476,
+    'afterToolDedupe': 3500,
+    'afterMerge': 3482,
     'needsZh': 2028,
     'translated': 2028,
     'untranslated': 0
@@ -2049,7 +2049,7 @@ window.CHANGELOG_MONTHLY = {
     {
       'month': '2026-11',
       'label': '2026年11月',
-      'count': 337,
+      'count': 343,
       'toolCount': 12,
       'multi': [
         {
@@ -2133,7 +2133,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -3622,6 +3622,13 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
           'items': [
             {
+              'key': '6d6a95df-63',
+              'text': 'AppHub 连接器同步 ：可将本机已授权、使用 Streamable HTTP 的 AppHub 连接器同步到云端，供云端智能体和自动化任务使用',
+              'date': '2026-11-27',
+              'version': '0.5.21',
+              'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
+            },
+            {
               'key': '4eae3dd0-41',
               'text': '跨设备协作 ：支持从已连接设备的工作区下载文件，并可按权限查看和管理该设备上的自动化任务',
               'date': '2026-11-25',
@@ -3762,7 +3769,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://docs.qoder.cn/product-overview/qoder-update-log'
             }
           ],
-          'count': 20
+          'count': 21
         },
         {
           'id': 'qoder-cn-ide',
@@ -4501,6 +4508,41 @@ window.CHANGELOG_MONTHLY = {
           'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
           'items': [
             {
+              'key': '3cddd19d-22',
+              'text': '新增海外版 PC 端支持通过邮箱验证注销个人账号',
+              'date': '2026-11-23',
+              'version': '5.12.0',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-12-0-版本发布-🚀-2026-11-23-灰度中'
+            },
+            {
+              'key': '6bb16b48-20',
+              'text': '新增支持查询冷归档中的云端任务和历史会话',
+              'date': '2026-11-23',
+              'version': '5.12.0',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-12-0-版本发布-🚀-2026-11-23-灰度中'
+            },
+            {
+              'key': '74491b10-44',
+              'text': '新增插件市场，将连接器、技能、专家统一整合为「插件」概念，支持在会话「+」号中统一管理插件的安装、开关与授权',
+              'date': '2026-11-23',
+              'version': '5.12.0',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-12-0-版本发布-🚀-2026-11-23-灰度中'
+            },
+            {
+              'key': '973d0fcc-27',
+              'text': '新增资料库外观皮肤切换，可在设置中自由切换主题并即时生效',
+              'date': '2026-11-23',
+              'version': '5.12.0',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-12-0-版本发布-🚀-2026-11-23-灰度中'
+            },
+            {
+              'key': 'b5b11c34-44',
+              'text': '新增快速问答模式，支持在项目与会话中独立切换，快速问答与自主工作模式的模型设置相互隔离不干扰',
+              'date': '2026-11-23',
+              'version': '5.12.0',
+              'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-12-0-版本发布-🚀-2026-11-23-灰度中'
+            },
+            {
               'key': '8b04b528-21',
               'text': '偶现修复拖拽任务时侧栏出现空白置顶区的问题',
               'date': '2026-11-15',
@@ -4585,7 +4627,7 @@ window.CHANGELOG_MONTHLY = {
               'url': 'https://www.codebuddy.cn/docs/workbuddy/Changelog#_5-11-0-版本发布-🚀-2026-11-03-灰度中'
             }
           ],
-          'count': 12
+          'count': 17
         }
       ]
     },
@@ -4976,7 +5018,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -7380,7 +7422,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -10079,7 +10121,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -11707,7 +11749,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -13102,7 +13144,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -15004,7 +15046,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -15923,7 +15965,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {
@@ -17332,7 +17374,7 @@ window.CHANGELOG_MONTHLY = {
           'id': 'codex',
           'name': 'Codex',
           'vendor': 'OpenAI',
-          'status': 'ok',
+          'status': 'stale',
           'changelogUrl': 'https://github.com/openai/codex/releases',
           'items': [
             {

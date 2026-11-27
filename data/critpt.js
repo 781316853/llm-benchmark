@@ -11,8 +11,8 @@ window.CRITPT = {
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2026',
   'updated': '2026-11-27',
-  'refreshedAt': '2026-11-27 18:04',
-  'dataDate': 'November 23, 2026',
+  'refreshedAt': '2026-11-28 05:30',
+  'dataDate': 'November 27, 2026',
   'scoreLabel': null,
   'stats': {
     'tasks': null,
