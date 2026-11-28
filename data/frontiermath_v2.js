@@ -1,4 +1,4 @@
-// 数据源:FrontierMath v2 Tiers 1-3(Epoch AI 私有高难数学题,更新于 2026-11-27)
+// 数据源:FrontierMath v2 Tiers 1-3(Epoch AI 私有高难数学题,更新于 2026-11-28)
 // 来源:https://benchlm.ai/benchmarks/frontiermathv2tiers13(主源,内嵌 __NEXT_DATA__ 全量榜) · https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2(Epoch AI 官方)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 口径:285 道私有题,难度自奥赛以上到早期研究级,允许用 Python 迭代求解;score 为通过率(%)。
@@ -12,8 +12,8 @@ window.FRONTIERMATH_V2 = {
   'officialUrl': 'https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': 'v2 (Tiers 1-3)',
-  'updated': '2026-11-27',
-  'refreshedAt': '2026-11-28 05:30',
+  'updated': '2026-11-28',
+  'refreshedAt': '2026-11-28 16:13',
   'dataDate': 'November 27, 2026',
   'scoreLabel': null,
   'stats': {

@@ -1,4 +1,4 @@
-// 数据源:CritPt(Critical Physics Tasks 研究级物理推理,更新于 2026-11-27)
+// 数据源:CritPt(Critical Physics Tasks 研究级物理推理,更新于 2026-11-28)
 // 来源:https://benchlm.ai/benchmarks/critpt(主源,内嵌 __NEXT_DATA__ 全量榜;指标由 Artificial Analysis 自建自测)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 口径:研究级物理题正确率(%);源站未逐行标注 harness 与推理档位。
@@ -10,8 +10,8 @@ window.CRITPT = {
   'url': 'https://benchlm.ai/benchmarks/critpt',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '2026',
-  'updated': '2026-11-27',
-  'refreshedAt': '2026-11-28 05:30',
+  'updated': '2026-11-28',
+  'refreshedAt': '2026-11-28 16:13',
   'dataDate': 'November 27, 2026',
   'scoreLabel': null,
   'stats': {

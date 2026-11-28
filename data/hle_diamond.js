@@ -1,4 +1,4 @@
-// 数据源:HLE-Diamond(Humanity's Last Exam 1,000 题精炼子集,更新于 2026-11-27)
+// 数据源:HLE-Diamond(Humanity's Last Exam 1,000 题精炼子集,更新于 2026-11-28)
 // 来源:https://benchlm.ai/benchmarks/hle-diamond(主源,内嵌 __NEXT_DATA__ 全量榜) · https://lastexam.ai/blog/hle-diamond(题集发布博文)
 // 渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数
 // 口径:1,000 题(500 推理 + 500 知识),无工具、high reasoning;与 2500 题全量 HLE 不是同一题集,
@@ -12,8 +12,8 @@ window.HLE_DIAMOND = {
   'officialUrl': 'https://lastexam.ai/blog/hle-diamond',
   'channelPolicy': '渠道优先级:基准官方实测榜 > 厂商官方发布(论文/发布页)> 第三方聚合与镜像;低层级仅补缺失模型与字段,不覆盖高层级分数',
   'version': '1.0',
-  'updated': '2026-11-27',
-  'refreshedAt': '2026-11-28 05:30',
+  'updated': '2026-11-28',
+  'refreshedAt': '2026-11-28 16:13',
   'dataDate': 'October 5, 2026 source observation',
   'scoreLabel': 'Accuracy without tools at high reasoning effort',
   'stats': {

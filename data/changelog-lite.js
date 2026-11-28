@@ -2,8 +2,8 @@
 // 每个工具只保留最近 2 条(页面显示上限)+ entryCount(全量条数);
 // 全量历史见同目录 changelog.js(抓取端合并基线,页面不加载)。
 window.CHANGELOG = {
-  'updated': '2026-11-27',
-  'refreshedAt': '2026-11-28 05:30',
+  'updated': '2026-11-28',
+  'refreshedAt': '2026-11-28 16:13',
   'uiWindowDays': 14,
   'desc': '12 个 Agent 工具的官方更新日志汇总(仅正式版;DeepSeek Harness 尚处开发者预览期,按官方 Release 收录预发布版);每个工具展示最近 2 条更新,早于 14 天的条目仍保留并标注「超出窗口」',
   'tools': [
@@ -13,20 +13,24 @@ window.CHANGELOG = {
       'vendor': 'OpenAI',
       'kind': 'github',
       'changelogUrl': 'https://github.com/openai/codex/releases',
-      'status': 'stale',
-      'error': 'HTTP 504 https://api.github.com/repos/openai/codex/releases?per_page=100&page=1',
-      'lastOkAt': '2026-11-27 16:53',
+      'status': 'ok',
+      'error': '',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 122,
       'entries': [
         {
           'version': '0.172.0',
           'title': '0.172.0',
           'date': '2026-11-24',
-          'dateRaw': '2026-11-24T00:06:41Z',
-          'tags': [],
+          'dateRaw': '2026-11-24T00:03:55Z',
+          'tags': [
+            'New Features',
+            'Bug Fixes',
+            'Chores',
+            'Changelog'
+          ],
           'url': 'https://github.com/openai/codex/releases/tag/rust-v0.172.0',
-          'body': '新功能\n- 点击搜索结果和记录中的线程链接，即可在终端中打开已保存的对话和嵌套代理。（#62332）\n- 按 Tab 键可补全受支持的斜杠命令的参数。例如， /mcp lo 会补全为 /mcp login 。( #62343 )\n- 使用 Shift+向上键和 Shift+向下键在代理命令中心的不同任务组之间切换。( #62200 )\n- 具有缓存工具列表的可选 stdio MCP 服务器现在默认在第一次工具调用时启动。( #62366 )\n- 在 config.toml 中为各个已连接的应用程序工具设置审批审核人。( #62360 )\n- 应用服务器客户端可以在设置或登录过程中选择Amazon Bedrock Runtime。（#62222）\n错误修复\n- 除非被明确覆盖，否则 codex exec resume 会恢复已保存的沙盒权限、工作目录和工作区根目录。( #62194 )\n- 当客户端和服务器在不同的操作系统上运行时，远程会话会保留工作目录、工作区根目录和可写路径。( #62375 、 #62376 、 #62377 )\n- Codex会在提供商错误到达响应流时立即报告，并识别达到了哪个API支出限额。( #62329 、#62356 )\n- 中断父级回合可保留来自子级代理的排队回复，供下一回合使用。( #62348 )\n- 使用 PageUp 和 PageDown 来阅读和提交超出终端答案区域高度的答案选项。( #62209 )\n- 在历史记录加载完成后完成的云回复现在会在原处更新，从而使终端记录保持有序。( #62403 )\n文档\n- 捆绑的 openai-docs 技能现已涵盖迁移到 GPT-6.2 Astra 和 Sol 的内容，包括端点选择和工具调用要求。( #62447 )\n杂项任务\n- 代码模式现在对所有主机连接都使用 gRPC。code_mode_host_grpc 设置已弃用。( #62476 )\n- Python 格式化和 SDK 类型生成现在会根据仓库的锁文件验证依赖项哈希。(#62346)\n变更日志\n完整变更日志：rust-v0.171.0...rust-v0.172.0\n- #62190 通过 rollout budget 策略路由转弯和响应检查点 @anp-oai\n- #62192 区分 Windows 沙盒配置超时和管道关闭 @zm-oai\n- #62194 在恢复 Codex 执行时保留已保存的沙盒权限 @viyatb-oai\n- #62200 将任务组导航添加到代理命令中心 @bc-openai\n- #62202 从/status中省略未知服务器版本 @bc-openai\n- #62205 在通过启动执行命令时保留沙盒准备 @viyatb-oai\n- #62206 防止在注入与第一轮竞争时出现重复的初始上下文 @euroelessar\n- #62209 允许在异步问题中分页浏览较长的选项 @bc-openai\n- #62215 在启动助手之前先解决 Linux 沙盒模式问题 @viyatb-oai\n- #62222 允许在设置和登录过程中选择 Bedrock Runtime @alexsong-oai\n- #62225 为Guardian审核计数添加轮次来源标签 @cazhang-oai\n- #62245 重构实时移交和历史记录访问 @zahan-oai\n- #62251 从线程历史记录中派生实时输入回执 @zahan-oai\n- #62271 在分页存储上对本地实时帧历史记录进行门控 @zahan-oai\n- #62274 支持独立刷新托管的 Guardian 策略 @ioanbudea-OAI\n- #62276 独立于 MCP 刷新托管的 Guardian 策略 @ioanbudea-OAI\n- #62284 对内存中的 MCP 消息板使用系统时钟 @jif-oai\n- #62288 在接受轮流输入之前保留实时交接 @zahan-oai\n- #62292 通过原生邮箱路由注入的明文代理邮件 @jif-oai\n- #62299 通话结束时保留待处理的实时语音 @zahan-oai\n- #62302 通过响应项注入路由本地 MCP 面板通知 @jif-oai\n- #62308 提取 Guardian 裁决执行和待处理操作的上下文 @felixxia-oai\n- #62309 使用附加的 Guardian 审核人进行同步审批 @felixxia-oai\n- #62310 使用 Guardian V3 看板证据进行同步审批 @felixxia-oai\n- #62314 将授权证据保留在代理分支的本地 @rhan-oai\n- #62317 将沙盒准备工作移至平台后端 @viyatb-oai\n- #62320 跟踪MCP绑定捕获和工具目录刷新 @bkotsopoulos\n- #62325 在远程执行服务器中接受入站Noise连接 @richardopenai\n- #62326 在初始上下文设置期间测量插件推荐延迟 @bkotsopoulos\n- #62329 按范围报告 API 支出限额错误 @apcha-oai\n- #62331 将 Windows MXC 沙盒迁移到公共 V1 SDK @iceweasel-oai\n- #62332 在 TUI 中打开 Codex 线程链接 @bc-openai\n- #62335 让用户从提供商错误界面打开命令中心 @bc-openai\n- #62337 为持久性 MCP 工具批准封装配置重新加载的 Future @dylan-hurd-oai\n- #62338 在 Bazel 中考虑 macOS 语音构建并行性 @dylan-hurd-oai\n- #62343 为 TUI 编辑器添加斜杠命令参数补全功能 @bc-openai\n- #62346 运行 Python 代码仓库工具时验证依赖项哈希值 @colby-oai\n- #62348 当父级回合中断时，保留排队的代理消息 @jif-oai\n- #62350 启动 Seatbelt 沙盒命令时支持管道 I/O @charliemarsh-oai\n- #62353 为 Linux 和 macOS 添加共享沙盒启动器 @charliemarsh-oai\n- #62354 将无状态生物和网络策略错误视为终止错误 @charliemarsh-oai\n- #62356 Surface Responses 流错误一出现即报告 @charliemarsh-oai\n- #62357 报告转弯关键路径捕获不完整的原因 @akak-oai\n- #62358 在Codex配置中保留凭据权限表 @viyatb-oai\n- #62360 允许为Codex应用设置每个工具的审批审核人 @jameswt-oai\n- #62362 让侧边栏文件预览错误更容易处理 @fcoury-oai\n- #62366 默认情况下为 stdio MCP 服务器启用延迟启动 @charliemarsh-oai\n- #62370 在快照之间共享配置层条目 @charliemarsh-oai\n- #62372 使 Guardian V3 路由和检索指南可配置 @felixxia-oai\n- #62373 为 Guardian v3 添加选择加入的内存消息板 @felixxia-oai\n- #62374 重新考虑所附Guardian审核中的拒绝情况 @felixxia-oai\n- #62375 在所有平台上保留应用服务器线程工作目录 @etraut-openai\n- #62376 在客户端和服务器平台之间保留沙盒可写根目录 @etraut-openai\n- #62377 在客户端和服务器平台之间保留工作空间根目录 @etraut-openai\n- #62378 取消对线程/样本的 4,000 字节提示限制 @keyz\n- #62382 当统一执行输出关闭时，跳过沙盒拒绝等待 @richardopenai\n- #62384 集中管理转录叠加输入路由 @fcoury-oai\n- #62386 每个沙盒命令准备一次托管代理设置 @viyatb-oai\n- #62387 在/experimental中显示自定义状态行 @joesavona\n- #62388 支持可选的 Apps 工具结果，用于 Responses 请求 @ssetty-oai\n- #62389 暂停运行时沙盒完整性检查 @iceweasel-oai\n- #62390 在全屏 TUI 中，鼠标悬停时突出显示可点击的链接和控件 @fcoury-oai\n- #62392 将符合条件的连接器结果传递给 ChatGPT 回应 @ssetty-oai\n- #62400 测试侧边栏选择器中已保存聊天的悬停高亮显示 @fcoury-oai\n- #62403 对TUI转录中未完成的云回复进行协调 @bc-openai\n- #62407 在 rollout 跟踪中对大型工具输出字符串进行去重 @cassirer-openai\n- #62415 在shell快照文件系统测试中启用网络访问 @TAFOYA-OAI\n- #62419 允许在线程/样本中对每个样本进行模型覆盖 @keyz\n- #62420 将响应项注入返回的未来值封装为盒式结构 @charliemarsh-oai\n- #62421 拒绝用于连接器结果传递的提供商查询参数 @ssetty-oai\n- #62423 在代码模式采样请求中包含嵌套的Apps工具结果 @ssetty-oai\n- #62430 在代码模式下支持特定于工具的 JavaScript 预加载 @hlevy-openai\n- #62432 为配置服务器加载器添加选择加入的 OAuth 发现 @vishnu-oai\n- #62434 在所有身份验证配置中扩展连接器结果元数据的覆盖范围 @ssetty-oai\n- #62435 让扩展将元数据附加到 MCP 工具请求 @tepman-oai\n- #62437 将 Git 工作区状态推迟到回合开始时 @ningyi-oai\n- #62439 添加 Windows MXC 沙盒启动诊断@iceweasel-oai\n- #62447 为 GPT-6.2 更新 openai-docs 技能 @kkahadze-oai\n- #62474 通过响应 WebSocket 发送授权连接器结果 @ssetty-oai\n- #62476 对所有代码模式主机连接使用 gRPC @cconger\n- #62477 在 spawn_thread 中将线程启动 future 封装在 Box 中 @charliemarsh-oai\n- #62489 对附加的 Guardian 审核遵循弹性预算 @felixxia-oai\n- #62496 在所有Codex线程中刷新托管的Guardian策略 @ioanbudea-OAI\n- #62499 在模型发现中显示Daybreak可用性 @igorrybalka-oai\n- #62507 为 exec_command 延迟添加 Statsig 计数器 @jif-oai',
-          'h': 'ba847a03'
+          'body': '## New Features\n\n- Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. (#62332)\n- Press `Tab` to complete arguments for supported slash commands. For example, `/mcp lo` completes to `/mcp login`. (#62343)\n- Jump between task groups in the agent command center with `Shift+Up` and `Shift+Down`. (#62200)\n- Optional stdio MCP servers with cached tool lists now start on their first tool call by default. (#62366)\n- Set an approval reviewer for individual connected app tools in `config.toml`. (#62360)\n- App-server clients can select Amazon Bedrock Runtime during setup or sign-in. (#62222)\n\n## Bug Fixes\n\n- `codex exec resume` restores saved sandbox permissions, the working directory, and workspace roots unless explicitly overridden. (#62194)\n- Remote sessions preserve working directories, workspace roots, and writable paths when the client and server run on different operating systems. (#62375, #62376, #62377)\n- Codex reports provider errors as soon as they arrive in a response stream and identifies which API spend limit was reached. (#62329, #62356)\n- Interrupting a parent turn preserves queued replies from child agents for the next turn. (#62348)\n- Use `PageUp` and `PageDown` to read and submit answer choices that are taller than the terminal’s answer area. (#62209)\n- Cloud replies that finish after history loads now update in place, keeping the terminal transcript in order. (#62403)\n\n## Documentation\n\n- The bundled `openai-docs` skill now covers migration to GPT-6.2 Astra and Sol, including endpoint choices and tool-calling requirements. (#62447)\n\n## Chores\n\n- Code Mode now uses gRPC for all host connections. The `code_mode_host_grpc` setting is deprecated. (#62476)\n- Python formatting and SDK type generation now verify dependency hashes against the repository lockfile. (#62346)\n\n## Changelog\n\nFull Changelog: https://github.com/openai/codex/compare/rust-v0.171.0...rust-v0.172.0\n\n- #62190 Route turn and response checkpoints through the rollout budget policy @anp-oai\n- #62192 Distinguish Windows sandbox provisioning timeouts and pipe closures @zm-oai\n- #62194 Preserve saved sandbox permissions when resuming `codex exec` @viyatb-oai\n- #62200 Add task group navigation to the agent command center @bc-openai\n- #62202 Omit unknown server versions from `/status` @bc-openai\n- #62205 Keep sandbox preparation with the command through launch @viyatb-oai\n- #62206 Prevent duplicate initial context when injection races the first turn @euroelessar\n- #62209 Allow paging through long choices in async questions @bc-openai\n- #62215 Resolve Linux sandbox mode once before launching the helper @viyatb-oai\n- #62222 Allow Bedrock Runtime selection during setup and login @alexsong-oai\n- #62225 Tag Guardian review counts with turn origin @cazhang-oai\n- #62245 Refactor realtime handoff and history access @zahan-oai\n- #62251 Derive realtime input receipts from thread history @zahan-oai\n- #62271 Gate local realtime frame history on paginated storage @zahan-oai\n- #62274 Support independent refreshes of managed Guardian policy @ioanbudea-OAI\n- #62276 Refresh managed Guardian policy independently of MCP @ioanbudea-OAI\n- #62284 Use the system clock for in-memory MCP message boards @jif-oai\n- #62288 Persist realtime handoffs before accepting turn input @zahan-oai\n- #62292 Route injected plaintext agent mail through the native mailbox @jif-oai\n- #62299 Preserve pending realtime speech when a call ends @zahan-oai\n- #62302 Route local MCP board notifications through response item injection @jif-oai\n- #62308 Extract Guardian verdict execution and pending-action context @felixxia-oai\n- #62309 Use attached Guardian reviewers for synchronous approvals @felixxia-oai\n- #62310 Use Guardian V3 board evidence for synchronous approvals @felixxia-oai\n- #62314 Keep authorization evidence local to agent forks @rhan-oai\n- #62317 Move sandbox preparation into platform backends @viyatb-oai\n- #62320 Trace MCP binding capture and tool catalog refresh @bkotsopoulos\n- #62325 Accept inbound Noise connections in remote exec-server @richardopenai\n- #62326 Measure plugin recommendation latency during initial context setup @bkotsopoulos\n- #62329 Report API spend limit errors by scope @apcha-oai\n- #62331 Migrate the Windows MXC sandbox to the public V1 SDK @iceweasel-oai\n- #62332 Open Codex thread links inside the TUI @bc-openai\n- #62335 Let users open the command center from provider error screens @bc-openai\n- #62337 Box the config reload future for persistent MCP tool approvals @dylan-hurd-oai\n- #62338 Account for macOS voice build parallelism in Bazel @dylan-hurd-oai\n- #62343 Add slash command argument completion to the TUI composer @bc-openai\n- #62346 Verify dependency hashes when running Python repository tools @colby-oai\n- #62348 Preserve queued agent messages when a parent turn is interrupted @jif-oai\n- #62350 Support piped I/O when starting Seatbelt sandbox commands @charliemarsh-oai\n- #62353 Add a shared sandbox launcher for Linux and macOS @charliemarsh-oai\n- #62354 Treat statusless bio and cyber policy errors as terminal @charliemarsh-oai\n- #62356 Surface Responses stream errors as soon as they arrive @charliemarsh-oai\n- #62357 Report why turn critical path capture is incomplete @akak-oai\n- #62358 Reserve credential permission tables in Codex configuration @viyatb-oai\n- #62360 Allow per-tool approval reviewers for Codex apps @jameswt-oai\n- #62362 Make sidebar file preview errors easier to act on @fcoury-oai\n- #62366 Enable lazy startup for stdio MCP servers by default @charliemarsh-oai\n- #62370 Share config layer entries across snapshots @charliemarsh-oai\n- #62372 Make Guardian V3 routing and retrieval guidance configurable @felixxia-oai\n- #62373 Add opt-in in-memory message boards for Guardian v3 @felixxia-oai\n- #62374 Reconsider denials in attached Guardian reviews @felixxia-oai\n- #62375 Preserve app-server thread working directories across platforms @etraut-openai\n- #62376 Preserve sandbox writable roots across client and server platforms @etraut-openai\n- #62377 Preserve workspace roots across client and server platforms @etraut-openai\n- #62378 Remove the 4,000-byte prompt limit for `thread/sample` @keyz\n- #62382 Skip the sandbox denial wait when unified exec output closes @richardopenai\n- #62384 Centralize transcript overlay input routing @fcoury-oai\n- #62386 Prepare managed proxy settings once per sandbox command @viyatb-oai\n- #62387 Expose custom status lines in `/experimental` @joesavona\n- #62388 Support optional Apps tool results in Responses requests @ssetty-oai\n- #62389 Pause runtime sandbox integrity checks @iceweasel-oai\n- #62390 Highlight clickable links and controls on hover in the fullscreen TUI @fcoury-oai\n- #62392 Pass eligible connector results through to ChatGPT Responses @ssetty-oai\n- #62400 Test saved chat hover highlighting in the sidebar chooser @fcoury-oai\n- #62403 Reconcile unfinished Cloud replies in the TUI transcript @bc-openai\n- #62407 Deduplicate large tool output strings in rollout traces @cassirer-openai\n- #62415 Enable network access in the shell snapshot filesystem test @TAFOYA-OAI\n- #62419 Allow per-sample model overrides in `thread/sample` @keyz\n- #62420 Box the future returned by response item injection @charliemarsh-oai\n- #62421 Reject provider query parameters for connector result passthrough @ssetty-oai\n- #62423 Include nested Apps tool results in Code Mode sampling requests @ssetty-oai\n- #62430 Support tool-specific JavaScript preloads in Code Mode @hlevy-openai\n- #62432 Add opt-in OAuth discovery to config server loaders @vishnu-oai\n- #62434 Expand connector result metadata coverage across auth configurations @ssetty-oai\n- #62435 Let extensions attach metadata to MCP tool requests @tepman-oai\n- #62437 Defer Git worktree status until the turn starts @ningyi-oai\n- #62439 Add Windows MXC sandbox launch diagnostics @iceweasel-oai\n- #62447 Update the `openai-docs` skill for GPT-6.2 @kkahadze-oai\n- #62474 Send authorized connector results over Responses WebSockets @ssetty-oai\n- #62476 Use gRPC for all code-mode host connections @cconger\n- #62477 Box the thread startup future in `spawn_thread` @charliemarsh-oai\n- #62489 Honor elastic budgets for attached Guardian reviews @felixxia-oai\n- #62496 Refresh managed Guardian policy across Codex threads @ioanbudea-OAI\n- #62499 Expose Daybreak availability in model discovery @igorrybalka-oai\n- #62507 Add Statsig counters for `exec_command` latency @jif-oai'
         },
         {
           'version': '0.172.0-alpha.2.1',
@@ -48,7 +52,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anthropics/claude-code/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 271,
       'entries': [
         {
@@ -79,7 +83,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/anomalyco/opencode/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 500,
       'entries': [
         {
@@ -124,7 +128,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.kimi.com/code/docs/kimi-code-cli/changelog.html',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 102,
       'entries': [
         {
@@ -160,7 +164,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://github.com/deepseek-ai/deepseek-harness/releases',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 44,
       'entries': [
         {
@@ -203,7 +207,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 36,
       'entries': [
         {
@@ -248,9 +252,20 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 58,
       'entries': [
+        {
+          'version': '1.42.1',
+          'title': '日常优化',
+          'date': '2026-11-27',
+          'dateRaw': '2026年11月27日',
+          'tags': [
+            '日常优化'
+          ],
+          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
+          'body': '日常优化\n修复\n- 修复部分 Windows 用户打开或重启 IDE 后的会话启动兼容性问题，确保会话正常可用。\n2026年11月27日'
+        },
         {
           'version': '1.42.0',
           'title': 'Qoder IDE 支持移动端远程控制',
@@ -261,18 +276,7 @@ window.CHANGELOG = {
             '自定义会话布局'
           ],
           'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': 'Qoder IDE 支持移动端远程控制\n特性\n- 移动端远程控制 ：离开电脑后，可通过 Qoder 移动端查看任务进度、处理确认请求、追加指令或停止任务，也可为 IDE 中已打开的项目新建 Agent 任务。目前仅支持 iOS 版 Qoder Mobile App，需使用 1.48.0 或更高版本。\n- 自定义会话布局 ：可通过拖拽或标签页菜单，将会话在侧栏与编辑区之间自由移动，草稿、附件、模型选择和会话状态均会保留，方便边看代码边对话，或为长会话扩大阅读区域。\n优化\n- 支持为自定义模型配置最大输出 Token 数。\n- 对话框「优化输入」不可用时，会明确提示原因。\n- 聊天框用户提问不再固定在顶部；默认浅色主题下，用户消息气泡与回复更容易区分。\n- Agent 修改大文件时减少无关内容重写，降低编辑卡顿，同时降低保存和恢复大量编辑记录时的内存峰值。\n- 减少发送带图片消息时的重复上传和准备开销。\n- 优化内置浏览器打开和关闭新弹窗、新标签页时的处理，减少页面状态丢失。\n- 改善语音连接对系统受信任证书的兼容性，减少使用企业证书或代理时的连接失败。\n- 行内 Diff 中被删除的内容可随编辑器布局完整显示，并支持选中复制，方便审查时保留部分原文。\n- 优化 IDE 打包策略，减小安装包体积，加快启动速度。\n修复\n- 修复本地 AI 服务断连或持续连接失败后无法自动恢复，导致聊天面板长期不可用的问题。\n- 修复 Windows 更新中断后可能无法启动或快捷方式失效的问题。\n- 修复终端命令结束后仍持续等待、提示符缺失影响后续命令的问题。\n- 修复较大的编辑历史无法恢复的问题。\n- 修复断网重载或重新打开历史会话后，因旧状态残留而无法接受改动的问题。\n- 修复换行符变化后，选择「保留当前内容」仍无法接受改动的问题。\n- 修复删除空文件后无法继续查看下一个文件的问题。\n- 修复多张截图一起发送时被误判为消息过大的问题。\n- 修复复制历史消息中的失效图片会导致输入框崩溃的问题。\n- 修复调整输入框高度后，图片删除按钮被裁切、多余空白未及时释放的问题。\n- 修复打开历史会话时，未发送的草稿丢失的问题。\n- 修复将搜索编辑器中的选中文字加入对话时，因缺少文件位置而报错的问题。\n- 修复内置浏览器页面加载失败时被欢迎页遮挡的问题。\n- 修复部分任务信息导致专家团全景图渲染崩溃的问题。\n- 修复交互组件没有可滚动内容或已滚到边界时，外层会话无法继续滚动的问题。\n- 修复开启终端鼠标滚轮缩放字体后，缩放受滚动位置限制的问题。\n2026年11月27日'
-        },
-        {
-          'version': '1.42.1',
-          'title': '日常优化',
-          'date': '2026-11-27',
-          'dateRaw': '2026年11月27日',
-          'tags': [
-            '日常优化'
-          ],
-          'url': 'https://docs.qoder.cn/product-overview/qoder-cn-ide-update-log',
-          'body': '日常优化\n修复\n- 修复部分 Windows 用户打开或重启 IDE 后的会话启动兼容性问题，确保会话正常可用。\n2026年11月20日'
+          'body': 'Qoder IDE 支持移动端远程控制\n特性\n- 移动端远程控制 ：离开电脑后，可通过 Qoder 移动端查看任务进度、处理确认请求、追加指令或停止任务，也可为 IDE 中已打开的项目新建 Agent 任务。目前仅支持 iOS 版 Qoder Mobile App，需使用 1.48.0 或更高版本。\n- 自定义会话布局 ：可通过拖拽或标签页菜单，将会话在侧栏与编辑区之间自由移动，草稿、附件、模型选择和会话状态均会保留，方便边看代码边对话，或为长会话扩大阅读区域。\n优化\n- 支持为自定义模型配置最大输出 Token 数。\n- 对话框「优化输入」不可用时，会明确提示原因。\n- 聊天框用户提问不再固定在顶部；默认浅色主题下，用户消息气泡与回复更容易区分。\n- Agent 修改大文件时减少无关内容重写，降低编辑卡顿，同时降低保存和恢复大量编辑记录时的内存峰值。\n- 减少发送带图片消息时的重复上传和准备开销。\n- 优化内置浏览器打开和关闭新弹窗、新标签页时的处理，减少页面状态丢失。\n- 改善语音连接对系统受信任证书的兼容性，减少使用企业证书或代理时的连接失败。\n- 行内 Diff 中被删除的内容可随编辑器布局完整显示，并支持选中复制，方便审查时保留部分原文。\n- 优化 IDE 打包策略，减小安装包体积，加快启动速度。\n修复\n- 修复本地 AI 服务断连或持续连接失败后无法自动恢复，导致聊天面板长期不可用的问题。\n- 修复 Windows 更新中断后可能无法启动或快捷方式失效的问题。\n- 修复终端命令结束后仍持续等待、提示符缺失影响后续命令的问题。\n- 修复较大的编辑历史无法恢复的问题。\n- 修复断网重载或重新打开历史会话后，因旧状态残留而无法接受改动的问题。\n- 修复换行符变化后，选择「保留当前内容」仍无法接受改动的问题。\n- 修复删除空文件后无法继续查看下一个文件的问题。\n- 修复多张截图一起发送时被误判为消息过大的问题。\n- 修复复制历史消息中的失效图片会导致输入框崩溃的问题。\n- 修复调整输入框高度后，图片删除按钮被裁切、多余空白未及时释放的问题。\n- 修复打开历史会话时，未发送的草稿丢失的问题。\n- 修复将搜索编辑器中的选中文字加入对话时，因缺少文件位置而报错的问题。\n- 修复内置浏览器页面加载失败时被欢迎页遮挡的问题。\n- 修复部分任务信息导致专家团全景图渲染崩溃的问题。\n- 修复交互组件没有可滚动内容或已滚到边界时，外层会话无法继续滚动的问题。\n- 修复开启终端鼠标滚轮缩放字体后，缩放受滚动位置限制的问题。\n2026年11月20日'
         }
       ]
     },
@@ -284,7 +288,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://docs.trae.cn/ide_changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 200,
       'entries': [
         {
@@ -365,7 +369,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://zcode.z.ai/changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 17,
       'entries': [
         {
@@ -402,7 +406,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/ide/release-notes/release-notes',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 92,
       'entries': [
         {
@@ -443,7 +447,7 @@ window.CHANGELOG = {
       'changelogUrl': 'https://www.codebuddy.cn/docs/workbuddy/Changelog',
       'status': 'ok',
       'error': '',
-      'lastOkAt': '2026-11-28 05:30',
+      'lastOkAt': '2026-11-28 16:13',
       'entryCount': 93,
       'entries': [
         {

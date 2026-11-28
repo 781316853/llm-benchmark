@@ -2,17 +2,96 @@
 // 来源:「橘鸦AI早报」官方 RSS https://daily.juya.uk/rss.xml(每日整篇早报拆成逐条);仅保留最近 2 天
 // 字段说明:date=新闻日期(UTC);title=标题;brief=简要;url=详情链接;source=来源;type=新闻类型(早报正文分类)
 window.NEWS = {
-  'updated': '2026-11-27',
+  'updated': '2026-11-28',
   'retentionDays': 2,
   'types': [
     '要闻',
     '开发生态',
     '模型发布',
-    '技术与洞察',
     '前瞻与传闻',
-    '产品应用'
+    '行业动态'
   ],
   'items': [
+    {
+      'date': '2026-11-28',
+      'title': 'pi 提交新 PR 拟接入 Google AI Ultra 订阅',
+      'brief': '开源编程 agent pi 的仓库成员 davidbrai 提交了 PR #12614 （Google AI plan），拟让 Google AI Ultra 订阅用户在终端通过 Google Interactions API 的按用户额度端点（ :createPerUserQuota ）调用模型，走独立每日额度而非按 token 计费。',
+      'url': 'https://github.com/earendil-works/pi/pull/12614/files',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-28',
+      'title': '豆包工作独家接入剪映官方插件',
+      'brief': '豆包官方宣布， 豆包工作 独家接入 剪映 官方插件，用户把视频素材交给 豆包工作 ，一句话描述需求即可调用 剪映 完成剪辑，之后可以边看边提修改要求，也能打开多轨草稿自行细调。用户还可一句话调用 剪映 Hub ，将文稿、商品图等转化为科普动画、知识短视频、短漫剧或营销短片。',
+      'url': 'https://mp.weixin.qq.com/s/gwpuHRMWvJyYcYf_EfBqzQ',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-28',
+      'title': '知乎宣布与 DeepSeek 展开内容合作，提供内容检索',
+      'brief': '知乎 宣布与 DeepSeek 展开内容合作。',
+      'url': 'https://mp.weixin.qq.com/s/eMnIqTFFM3ml9WNlyCpQNw',
+      'source': '橘鸦AI早报',
+      'type': '要闻'
+    },
+    {
+      'date': '2026-11-28',
+      'title': '腾讯混元发布 3D 大模型 Hy3D 3.6',
+      'brief': '腾讯混元 发布新一代 3D 大模型 Hy3D 3.6 ，面向专业 3D 创作，重点优化高模和 PBR 材质贴图的生成能力，生成的几何表面整洁、结构清晰。',
+      'url': 'https://mp.weixin.qq.com/s/idKcOSLWE_wd5cBloQsR_Q',
+      'source': '橘鸦AI早报',
+      'type': '模型发布'
+    },
+    {
+      'date': '2026-11-28',
+      'title': 'Qoder 上线 Developer Pass：开源贡献者免费享 1 个月 Ultra',
+      'brief': 'Qoder 正式推出 Developer Pass ，开源维护者和活跃贡献者可申请。',
+      'url': 'https://qoder.com/zh/open-source-activity',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-28',
+      'title': 'Qoder 科研支持计划第一期开放申请：通过可获 2 万顶级模型积分',
+      'brief': 'Qoder 科研支持计划第一期现已开放申请，面向全球在读硕士生、博士生、博士后，以及高校教职与科研机构研究人员。审核通过后可获 2 万 Qoder 顶级模型积分 ，定向发放至申请人的 qoder.com 个人账号，可用于数据分析、代码复现、科研工具开发等研究工作。',
+      'url': 'https://alidocs.dingtalk.com/notable/share/form/v01maOgB4wyEm37KqWN_wqiGk2F_MeCQLdV?sessionid=&amp;source=link',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-28',
+      'title': '月之暗面开放 Kimi for Science：入选最高 2 万美元 API 额度',
+      'brief': '月之暗面 开放 Kimi for Science 科研支持计划申请，面向全球自然科学、工程学及相关交叉学科的科研人员，博士研究生、博士后、PI 等各职业阶段均可报名。入选者最高可获得 2 万美元 的 Kimi API 免费额度，约合 70 亿 token ，具体数额按研究需求和评审结果确定；额度按研究项目提供，可与合作者共享。',
+      'url': 'https://www.kimi.com/news/kimi-for-science-program',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-28',
+      'title': '阶跃星辰 Frontier AI4S：免费赠送 3 个月 Step Plan Pro',
+      'brief': '阶跃星辰 公开重申 Frontier AI4S 计划，表示此前已持续发放免费 token 订阅，后续还将推出更大规模的 AI4S 应用。',
+      'url': 'https://x.com/sheriyuo/status/2126213271204352442',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-28',
+      'title': 'Antigravity 更新 Auto 模式不必要审批再减 15%',
+      'brief': 'Antigravity 负责人 Varun Mohan 宣布新版 Antigravity 发布，称 Auto 模式中不必要的审批进一步减少了 15% ，并为开发者新增原生 GitHub 集成。他在回复用户时透露，应用内原生 browser use 已推出几周， computer use 则即将推出。',
+      'url': 'https://x.com/_mohansolo/status/2126383370091556884',
+      'source': '橘鸦AI早报',
+      'type': '开发生态'
+    },
+    {
+      'date': '2026-11-28',
+      'title': 'Qwen 团队辟谣：后训练负责人离职文章纯属造谣，将起诉',
+      'brief': '自媒体“ Top华人科创社 ”此前发布文章《Qwen 后训练负责人周浩离职》，称 Qwen 大模型团队后训练负责人 周浩 已经离职。对此， Qwen 团队在微信公众号发文辟谣，称文章纯属造谣，不仅杜撰事实，连当事人名字都是错的，其真实姓名为 周昊 。 Qwen 团队表示，将起诉追究该自媒体的法律责任。',
+      'url': 'https://mp.weixin.qq.com/s/H0FrNzf4ac-R6xVoRW3ZbA',
+      'source': '橘鸦AI早报',
+      'type': '行业动态'
+    },
     {
       'date': '2026-11-27',
       'title': 'Antigravity 为所有用户重置 Gemini 额度',
@@ -68,102 +147,6 @@ window.NEWS = {
       'url': 'https://www.wsj.com/tech/nvidia-tells-partners-to-pause-shipments-to-southeast-asia-5b791cb0',
       'source': '橘鸦AI早报',
       'type': '前瞻与传闻'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Antigravity 称再度提升 Neon 缓存命中率，额度内任务增 28%',
-      'brief': 'Antigravity 团队的 Varun Mohan 在 X 发文称，Antigravity 中 Gemini 4 Neon 的缓存命中率再次提升 4.5% ，这意味着用户在额度内可完成的任务增加 28% 。他还表示，过去 5 天 通过缓存和运行框架改进，订阅中 Neon 的有效使用量累计提升近 75% 。他补充称，本轮改进主要来自增加缓存容量、减少长期缓存淘汰和优化路由，其余部分来自一些修复难度大得多的长尾问题。',
-      'url': 'https://x.com/_mohansolo/status/2125641696377712968',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'OpenAI 邮件称部分 Codex 请求少扣额度已修正，用户或更快达限额',
-      'brief': '多名用户在社区发帖称，收到了 OpenAI 发来的邮件：此前部分 Codex 请求少扣了使用额度，这一错误已经修正，按原有用法可能更快达到使用限额。',
-      'url': 'https://linux.do/t/topic/3239841',
-      'source': '橘鸦AI早报',
-      'type': '要闻'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Sand.ai发布MAGI-2视频模型，独家上线Higgsfield',
-      'brief': 'Sand.ai 推出 AI视频生成模型``MAGI-2 ，已在 Higgsfield 平台及`API`独家上线，全球可用。它能根据文本提示和最多**20 个参考（ 10 张图像、 5 个视频、 5 段音频）生成最长 30 秒的 1080p**、 25 fps 带声视频，价格为每秒 0.08美元 。',
-      'url': 'https://higgsfield.ai/announcing-magi-2',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'NVIDIA 开放 Nemotron-Labs-Image-30B-A3B',
-      'brief': 'NVIDIA 在 Hugging Face 开放自回归生图模型 Nemotron-Labs-Image-30B-A3B 的权重，它是 Nemotron-Labs-VisualCreation 框架的图像生成组件，采用 混合专家架构 ，总参数 300 亿 、激活 30 亿 。',
-      'url': 'https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'PrismML 发布并开源 5.9 GB 三值模型 Bonsai 2.5 27B',
-      'brief': 'PrismML 发布并开源三值模型 Ternary Bonsai 2.5 27B ，为上一代 Ternary Bonsai 2 27B 的升级版，基于 Qwen3.8 27B ，体积保持 5.9 GB ，约为其全精度原模型的九分之一。',
-      'url': 'https://prismml.com/news/bonsai-2-5-27b',
-      'source': '橘鸦AI早报',
-      'type': '模型发布'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Antigravity 工程师宣布开发 banked reset 功能',
-      'brief': 'Antigravity 团队工程师 Eliza Huang 在 X 发文称，她此前发布的 hello world 帖子浏览量超过 5 万 ，让她没想到的是，粉丝数也借此突破 1000 。',
-      'url': 'https://x.com/eliza_huang/status/2125509510630678798',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'OpenCode 推出 Gimme Kimi：10 美元得 60 美元额度',
-      'brief': 'OpenCode 宣布推出 Gimme Kimi 第一阶段（ Phase 1 ）优惠活动。',
-      'url': 'https://x.com/opencode/status/2125413495629926551',
-      'source': '橘鸦AI早报',
-      'type': '开发生态'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Charlie Marsh 称 ChatGPT 桌面应用基础内存降超 40%',
-      'brief': 'OpenAI 员工 Charlie Marsh 在 X 上表示，过去两周，ChatGPT 桌面应用的基础内存使用量降低了超过 40% ，各版本均在 macOS 上运行五分钟后测量。',
-      'url': 'https://x.com/charliermarsh/status/2125675768231727399',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Google Gemini Live Guided Vision 登陆 iOS',
-      'brief': 'Google 宣布， Gemini Live 中的 Guided Vision 功能现已登陆 iOS。该功能与盲人及低视力社区共同开发，可提供对话式的实时视觉辅助。',
-      'url': 'https://x.com/GeminiApp/status/2125685936344236471',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-26',
-      'title': '阿里千问 Go 全面开放免费代打电话服务，支持订餐厅、找快递、寻失物',
-      'brief': '阿里旗下 AI 智能体 千问 Go 全面开放免费代打电话服务。用户告知拨打对象和通话需求，经授权后，千问即可联系餐厅预订包间、向酒店询问遗失物品、联系快递员查询配送进度等，也可以定时代打电话，提前设置拨打时间和沟通事项。',
-      'url': 'https://mp.weixin.qq.com/s/jZumD5cprhI7bgmOI7mUEw',
-      'source': '橘鸦AI早报',
-      'type': '产品应用'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Anthropic CEO 驳斥向 AI 让渡人类治理权',
-      'brief': '针对 Axios 关于“ Anthropic 内部有声音支持人类向超级智能 AI 让渡部分决策权”的报道， Anthropic CEO Dario Amodei 在 X 发长文公开驳斥，称自己绝不认同放弃人类自由意志，强调 AI 必须受到合法民主程序的治理。',
-      'url': 'https://www.axios.com/2026/11/25/anthropic-ai-human-control-debate-free-will',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
-    },
-    {
-      'date': '2026-11-26',
-      'title': 'Anthropic 发文介绍其将 Messages API 从 Python 迁移到 Rust',
-      'brief': 'Anthropic 介绍将 Claude Messages API 从 Python 迁移到 Rust 。该 API 是客户以及 Claude Code 等 Anthropic 自家应用访问 Claude 的主要通道， 2024 年初 至 2026 年秋 流量增长约 1800 倍 。',
-      'url': 'https://anthropic.com/research/migrating-api-to-rust',
-      'source': '橘鸦AI早报',
-      'type': '技术与洞察'
     }
   ]
 };

@@ -1,4 +1,4 @@
-// 数据源:套餐与月价 codingplan.fyi(开源 MIT);额度补充 realapipricing.com(开源 MIT,https://github.com/Fei2411/real-api-pricing),更新于 2026-11-27
+// 数据源:套餐与月价 codingplan.fyi(开源 MIT);额度补充 realapipricing.com(开源 MIT,https://github.com/Fei2411/real-api-pricing),更新于 2026-11-28
 // 来源:https://www.codingplan.fyi/plans.json(内嵌 planModels)、config.json、models.json、platforms.json;补充:https://realapipricing.com/data/points.json
 // 字段说明:groups[]=精选模型分组比价行(旧视图);plans[]=全部在售/受限套餐目录
 //   (slug/name/platform/status/billing/origin/fee/currency/feeCny/models[]);
@@ -12,9 +12,9 @@ window.CODINGPLAN = {
   'url': 'https://www.codingplan.fyi/plans.json',
   'officialUrl': 'https://www.codingplan.fyi/?view=usage',
   'supplementUrl': 'https://realapipricing.com/data/points.json',
-  'updated': '2026-11-27',
+  'updated': '2026-11-28',
   'siteUpdated': '2026.11.26',
-  'refreshedAt': '2026-11-28 05:30',
+  'refreshedAt': '2026-11-28 16:13',
   'usdToCnyRate': 6.8,
   'stats': {
     'groups': 2,
